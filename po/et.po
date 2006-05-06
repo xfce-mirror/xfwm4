@@ -1,16 +1,16 @@
 # Estonian translation of xfwm4.
 # Copyright (C) 2002-2005 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Peeter Vois <peeter.vois@proekspert.ee>, 2004.
-# Mart Tõnso <mart.tonso@ttu.ee>, 2004.
+# Peeter Vois <Peeter.Vois@mail.ee>, 2004.
+# Mart Tõnso <tm@rinjin.pri.ee>, 2004, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.2.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-24 15:50+0100\n"
-"PO-Revision-Date: 2005-09-29 18:00+0900\n"
-"Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
+"PO-Revision-Date: 2006-05-03 18:16+0300\n"
+"Last-Translator: Mart Tõnso <tm@rinjin.pri.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -239,11 +239,11 @@ msgstr "Viivitus enne fokuseeritud akna tõstmist :"
 
 #: mcs-plugin/xfwm4_plugin.c:1662
 msgid "Slow"
-msgstr "Väike"
+msgstr "Suur"
 
 #: mcs-plugin/xfwm4_plugin.c:1668
 msgid "Fast"
-msgstr "Suur"
+msgstr "Väike"
 
 #: mcs-plugin/xfwm4_plugin.c:1684
 msgid "Raise on click"
@@ -463,12 +463,12 @@ msgstr "Saada aken parempoolsesse tööruumi"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:320
 msgid "Show desktop"
-msgstr ""
+msgstr "Näita töölauda"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:429
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Saada aken tööruumi 1"
+msgstr "Saada aken tööruumi %d"
 
 #: mcs-plugin/xfwm4_shortcuteditor.c:572
 msgid "Cannot open the theme directory !"
