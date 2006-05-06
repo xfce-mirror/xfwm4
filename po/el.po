@@ -331,7 +331,7 @@ msgstr "Στοίχιση τίτλου"
 #. XXX
 #: ../mcs-plugin/xfwm4_plugin.c:1489
 msgid "Text alignment inside title bar :"
-msgstr "Στοίχηση κειμένου μέσα στη μπάρα τίτλου :"
+msgstr "Στοίχιση κειμένου μέσα στη μπάρα τίτλου :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1495
 msgid "Button layout"
@@ -659,7 +659,7 @@ msgid ""
 "Are you sure you want to use it ?"
 msgstr ""
 "Η συντόμευση χρησιμοποιείται ήδη!\n"
-"Είστε σίγουρος οτι θέλετε να την χρησιμοποιήσετε ?"
+"Είστε σίγουρος ότι θέλετε να την χρησιμοποιήσετε ;"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:847
 msgid "Compose shortcut for :"
@@ -698,7 +698,7 @@ msgstr "Απόκρυ_ψη"
 
 #: ../src/menu.c:44
 msgid "Hide _all others"
-msgstr "Απόκρυψη όλων των _αλλων"
+msgstr "Απόκρυψη όλων των _άλλων"
 
 #: ../src/menu.c:45
 msgid "S_how"
