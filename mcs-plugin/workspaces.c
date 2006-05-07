@@ -41,7 +41,7 @@
 #include <libxfce4mcs/mcs-manager.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 
-#include "plugin.h"
+#include "workspaces_plugin.h"
 #include "workspaces.h"
 
 #define MAX_COUNT 32
@@ -387,24 +387,19 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
 static gboolean
 cb_activate_item (GtkTreeView * tree, GdkEventButton * event, McsManager * manager)
 {
+    GtkTreeSelection *selection;
     GtkTreePath *path;
     GtkTreeIter iter;
     GtkTreeModel *model;
+    char *name;
+    int number;
 
-    if (gtk_tree_view_get_path_at_pos (tree, event->x, event->y, &path, NULL, NULL, NULL))
-    {
-        char *name;
-        int number;
+    selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
+    gtk_tree_selection_get_selected (selection, &model, &iter);
+    gtk_tree_model_get (model, &iter, NUMBER_COLUMN, &number, NAME_COLUMN, &name, -1);
 
-        model = gtk_tree_view_get_model (tree);
-        gtk_tree_model_get_iter (model, &iter, path);
-        gtk_tree_view_set_cursor (tree, path, NULL, FALSE);
-
-        gtk_tree_model_get (model, &iter, NUMBER_COLUMN, &number, NAME_COLUMN, &name, -1);
-
-        edit_name_dialog (model, &iter, number, name, manager);
-        g_free (name);
-    }
+    edit_name_dialog (model, &iter, number, name, manager);
+    g_free (name);
 
     return TRUE;
 }
@@ -443,6 +438,7 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
         GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (treeview_scroll), GTK_SHADOW_IN);
     gtk_box_pack_start (GTK_BOX (vbox), treeview_scroll, TRUE, TRUE, 0);
+    gtk_widget_set_size_request (treeview_scroll, -1, 120);
 
     store = gtk_list_store_new (N_COLUMNS, G_TYPE_INT, G_TYPE_STRING);
     treeview = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
@@ -470,7 +466,7 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
 
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
 
-    g_signal_connect (treeview, "activate", G_CALLBACK (cb_activate_item), manager);
+    g_signal_connect (treeview, "row-activated", G_CALLBACK (cb_activate_item), manager);
 }
 
 /* workspace count */

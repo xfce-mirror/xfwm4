@@ -61,8 +61,8 @@ workspaces_plugin_la_SOURCES =						\
 	margins.h							\
 	workspaces.c							\
 	workspaces.h							\
-	plugin.c							\
-	plugin.h							\
+	workspaces_plugin.c						\
+	workspaces_plugin.h						\
 	monitor-icon.h
 
 workspaces_plugin_la_CFLAGS =						\

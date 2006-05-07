@@ -38,7 +38,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 
-#include "plugin.h"
+#include "workspaces_plugin.h"
 #include "monitor-icon.h"
 #include "margins.h"
 

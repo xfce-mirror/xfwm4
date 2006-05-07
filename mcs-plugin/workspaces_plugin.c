@@ -42,7 +42,7 @@
 #include <libxfce4mcs/mcs-common.h>
 #include <libxfce4mcs/mcs-manager.h>
 
-#include "plugin.h"
+#include "workspaces_plugin.h"
 #include "margins.h"
 #include "workspaces.h"
 
