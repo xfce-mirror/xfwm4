@@ -71,9 +71,12 @@ msgid "Window Manager Tweaks"
 msgstr "Opcje Menadżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
+#, fuzzy
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr "Dołącz okna z włączonymi opcjam omijania taskbarów"
+msgstr ""
+"Dołącz okna z włączonymi opcjami \n"
+"omijania taskbarów"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
@@ -121,14 +124,15 @@ msgstr "Dostępność"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr "Zmieniaj Pulpity za pomocą rolki miszy"
+msgstr "Zmieniaj Pulpity za pomocą rolki myszy"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:479
+#, fuzzy
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
-"Zapamiętaj i przywróć poprzedni pulpit przy przechodzeniu za pomocą skrótów "
-"klawiszowych"
+"Zapamiętaj i przywróć poprzedni pulpit przy przechodzeniu\n"
+"za pomocą skrótów klawiszowych"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
