@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 12:32+0200\n"
-"PO-Revision-Date: 2006-05-04 10:35+0300\n"
+"POT-Creation-Date: 2006-05-07 10:52+0300\n"
+"PO-Revision-Date: 2006-05-07 10:53+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -46,16 +46,16 @@ msgstr "Alareuna:"
 msgid "Button Label|Workspaces and Margins"
 msgstr "Työtilat ja reunukset"
 
-#: ../mcs-plugin/plugin.c:143
+#: ../mcs-plugin/plugin.c:145
 msgid "Workspaces and Margins"
 msgstr "Työtilat ja reunukset"
 
-#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
 #: ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "Työtilat"
 
-#: ../mcs-plugin/plugin.c:170
+#: ../mcs-plugin/plugin.c:172
 msgid "Margins"
 msgstr "Reunukset"
 
@@ -69,7 +69,6 @@ msgid "Window Manager Tweaks"
 msgstr "Ikkunamanagerin viritys"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
-#, fuzzy
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
@@ -195,7 +194,7 @@ msgstr "Komposoija"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Ikkunamanagerin viritys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
+#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
@@ -667,96 +666,96 @@ msgstr "%s (isäntäkoneella %s)"
 msgid "%s: Segmentation fault"
 msgstr "%s: Muistinosoitusvirhe"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:40
 msgid "Ma_ximize"
 msgstr "_Suurenna"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:41
 msgid "Un_maximize"
 msgstr "Pala_uta"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:42
 msgid "_Hide"
 msgstr "_Piilota"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Hide _all others"
 msgstr "Piilota k_aikki muut"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "S_how"
 msgstr "_Näytä"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "_Shade"
 msgstr "_Varjosta"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Un_shade"
 msgstr "Poista va_rjostus"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_tick"
 msgstr "_Kiinnitä"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "Uns_tick"
 msgstr "Poista K_iinnitys"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "Context _help"
 msgstr "Tilannekohtainen _ohje"
 
-#: ../src/menu.c:51 ../src/menu.c:52
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr "Aina päällimmäisenä"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Send to..."
 msgstr "Lähetä..."
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "_Close"
 msgstr "Sulj_e"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Destroy"
 msgstr "Tuhoa"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-#: ../src/menu.c:170
+#: ../src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Työtila %i (%s)"
 
-#: ../src/menu.c:174
+#: ../src/menu.c:173
 #, c-format
 msgid "Workspace %i"
 msgstr "Työtila %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 
-#: ../src/settings.c:854
+#: ../src/settings.c:853
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Väriä %s ei voi varata\n"
 
-#: ../src/settings.c:860
+#: ../src/settings.c:859
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Värimääritys %s ei kelpaa\n"
 
-#: ../src/tabwin.c:95
+#: ../src/tabwin.c:94
 msgid "Unknown application!"
 msgstr "Tuntematon sovellus!"
 
@@ -783,9 +782,3 @@ msgstr "Työtilojen asetukset"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Työtilojen asetukset"
-
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "Ikkunamanagerin lisäasetukset"
-
-#~ msgid "Window Manager Preferences"
-#~ msgstr "Ikkunamanagerin asetukset"
