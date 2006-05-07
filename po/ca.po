@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 12:32+0200\n"
+"POT-Creation-Date: 2006-05-07 18:40+0900\n"
 "PO-Revision-Date: 2006-04-02 21:25+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
@@ -55,18 +55,18 @@ msgstr "Inferior:"
 msgid "Button Label|Workspaces and Margins"
 msgstr "Àrees de treball i Marges"
 
-#: ../mcs-plugin/plugin.c:143
+#: ../mcs-plugin/plugin.c:145
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "Àrees de treball i Marges"
 
-#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
 #: ../mcs-plugin/workspaces.c:520
 #, fuzzy
 msgid "Workspaces"
 msgstr "Àrees de treball"
 
-#: ../mcs-plugin/plugin.c:170
+#: ../mcs-plugin/plugin.c:172
 #, fuzzy
 msgid "Margins"
 msgstr "Marges"
@@ -233,7 +233,7 @@ msgstr "Nou missatge drecera"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Finestra Gestor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
+#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -805,112 +805,112 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault (violació de segment)"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:40
 #, fuzzy
 msgid "Ma_ximize"
 msgstr "Ma_ximitza"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:41
 #, fuzzy
 msgid "Un_maximize"
 msgstr "Des_maximitza"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:42
 #, fuzzy
 msgid "_Hide"
 msgstr "_Amaga"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 #, fuzzy
 msgid "Hide _all others"
 msgstr "Oculta all"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 #, fuzzy
 msgid "S_how"
 msgstr "S"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 #, fuzzy
 msgid "_Shade"
 msgstr "Ombra"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 #, fuzzy
 msgid "Un_shade"
 msgstr "Des_ocultar"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 #, fuzzy
 msgid "S_tick"
 msgstr "S"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 #, fuzzy
 msgid "Uns_tick"
 msgstr "Des_plega"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 #, fuzzy
 msgid "Context _help"
 msgstr "Context ajuda"
 
-#: ../src/menu.c:51 ../src/menu.c:52
+#: ../src/menu.c:50 ../src/menu.c:51
 #, fuzzy
 msgid "Always on top"
 msgstr "Sempre en primer pla"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 #, fuzzy
 msgid "Send to..."
 msgstr "Envia a ."
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 #, fuzzy
 msgid "_Close"
 msgstr "Tan_ca"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 #, fuzzy
 msgid "Destroy"
 msgstr "Destrueix"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 #, fuzzy
 msgid "_Quit"
 msgstr "_Surt"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 #, fuzzy
 msgid "Restart"
 msgstr "Torna a iniciar"
 
-#: ../src/menu.c:170
+#: ../src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Àrea de treball %i (%s)"
 
-#: ../src/menu.c:174
+#: ../src/menu.c:173
 #, c-format
 msgid "Workspace %i"
 msgstr "Àrea de treball %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut captura el punter\n"
 
-#: ../src/settings.c:854
+#: ../src/settings.c:853
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: no s'ha pogut situar el color %s\n"
 
-#: ../src/settings.c:860
+#: ../src/settings.c:859
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: no s'ha pogut analitzar el color %s\n"
 
-#: ../src/tabwin.c:95
+#: ../src/tabwin.c:94
 #, fuzzy
 msgid "Unknown application!"
 msgstr "Desconegut aplicació!"
@@ -944,11 +944,3 @@ msgstr "Marges dels espais de treball"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Marges dels espais de treball"
-
-#, fuzzy
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "Finestra Gestor Avançat Configuració"
-
-#, fuzzy
-#~ msgid "Window Manager Preferences"
-#~ msgstr "Finestra Gestor Preferències"

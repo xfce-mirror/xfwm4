@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 12:32+0200\n"
+"POT-Creation-Date: 2006-05-07 18:40+0900\n"
 "PO-Revision-Date: 2005-04-07 12:14+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -47,16 +47,16 @@ msgstr "নীচে :"
 msgid "Button Label|Workspaces and Margins"
 msgstr "কর্মক্ষেত্র ও প্রান্তরেখা"
 
-#: ../mcs-plugin/plugin.c:143
+#: ../mcs-plugin/plugin.c:145
 msgid "Workspaces and Margins"
 msgstr "কর্মক্ষেত্র ও প্রান্তরেখা"
 
-#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
 #: ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "কর্মক্ষেত্র"
 
-#: ../mcs-plugin/plugin.c:170
+#: ../mcs-plugin/plugin.c:172
 msgid "Margins"
 msgstr "প্রান্তরেখা"
 
@@ -205,7 +205,7 @@ msgstr "শর্টকাট নির্মাণ করুন"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "উইন্ডো পরিচালন ব্যবস্থা"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
+#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -682,96 +682,96 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr "%s: সেগমেনটেশন সংক্রান্ত সমস্যা"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:40
 msgid "Ma_ximize"
 msgstr "বড় করুন (_x)"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:41
 msgid "Un_maximize"
 msgstr "ছোট করুন (_m)"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:42
 msgid "_Hide"
 msgstr "লুকিয়ে ফেলুন (_H)"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Hide _all others"
 msgstr "অন্যান্য সমস্ত লুকিয়ে ফেলুন (_a)"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "S_how"
 msgstr "প্রদর্শন (_h)"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "_Shade"
 msgstr "ছায়া (_S)"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Un_shade"
 msgstr "ছায়াবিহীন (_s)"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_tick"
 msgstr "আটক করুন (_t)"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "Uns_tick"
 msgstr "আটকমুক্ত করুন (_t)"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "Context _help"
 msgstr "প্রাসঙ্গিক সহায়তা (_h)"
 
-#: ../src/menu.c:51 ../src/menu.c:52
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr "সর্বদা উপরে রাখা হবে"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Send to..."
 msgstr "উল্লিখিত স্থানে প্রেরিত হবে..."
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "_Close"
 msgstr "বন্ধ করুন (_C)"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Destroy"
 msgstr "বিনাশ"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "_Quit"
 msgstr "প্রস্থান (_Q)"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Restart"
 msgstr "পুনরাম্ভ"
 
-#: ../src/menu.c:170
+#: ../src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "কর্মক্ষেত্র %i (%s)"
 
-#: ../src/menu.c:174
+#: ../src/menu.c:173
 #, c-format
 msgid "Workspace %i"
 msgstr "কর্মক্ষেত্র %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu পয়েন্টার আটক করতে সক্ষম হয়নি\n"
 
-#: ../src/settings.c:854
+#: ../src/settings.c:853
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: সক্রিয় রং আরক্ষণ করা যায়নি %s\n"
 
-#: ../src/settings.c:860
+#: ../src/settings.c:859
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: সক্রিয় রং পার্স করা যায়নি %s\n"
 
-#: ../src/tabwin.c:95
+#: ../src/tabwin.c:94
 msgid "Unknown application!"
 msgstr "অজানা অ্যাপ্লিকেশন!"
 
@@ -804,10 +804,3 @@ msgstr "কর্মক্ষেত্রের প্রান্তরেখ�
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "কর্মক্ষেত্রের প্রান্তরেখা"
-
-#, fuzzy
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "উইন্ডো পরিচালন ব্যবস্থার বৈশিষ্ট্যাবলী"
-
-#~ msgid "Window Manager Preferences"
-#~ msgstr "উইন্ডো পরিচালন ব্যবস্থা সংক্রান্ত পছন্দ"

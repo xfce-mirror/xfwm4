@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 12:32+0200\n"
+"POT-Creation-Date: 2006-05-07 18:40+0900\n"
 "PO-Revision-Date: 2005-10-09 20:51+0900\n"
 "Last-Translator: Nuno Donato <nunodonato@gmail.com>\n"
 "Language-Team: Portuguese <translation-team-pt@lists.sourceforge.net>\n"
@@ -47,16 +47,16 @@ msgstr "Baixo:"
 msgid "Button Label|Workspaces and Margins"
 msgstr "Áreas de Trabalho e Margens"
 
-#: ../mcs-plugin/plugin.c:143
+#: ../mcs-plugin/plugin.c:145
 msgid "Workspaces and Margins"
 msgstr "Áreas de Trabalho e Margens"
 
-#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
 #: ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "Areas de Trabalho"
 
-#: ../mcs-plugin/plugin.c:170
+#: ../mcs-plugin/plugin.c:172
 msgid "Margins"
 msgstr "Margens"
 
@@ -205,7 +205,7 @@ msgstr "Definir atalho"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Gestor de Janelas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
+#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -699,96 +699,96 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:40
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:41
 msgid "Un_maximize"
 msgstr "Des_maximizar"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:42
 msgid "_Hide"
 msgstr "_Esconder"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Hide _all others"
 msgstr "Esconder _todas as outras"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "S_how"
 msgstr "M_ostrar"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "_Shade"
 msgstr "En_rolar"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Un_shade"
 msgstr "_Desenrolar"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_tick"
 msgstr "_Omnipresente"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "Uns_tick"
 msgstr "Remo_ver Omnipresença"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "Context _help"
 msgstr "Ajuda no _Contexto"
 
-#: ../src/menu.c:51 ../src/menu.c:52
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr "Sempre no topo"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Send to..."
 msgstr "Enviar para..."
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "_Close"
 msgstr "_Fechar"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Destroy"
 msgstr "Destruir"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "_Quit"
 msgstr "_Sair"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../src/menu.c:170
+#: ../src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Área de Trabalho %i (%s)"
 
-#: ../src/menu.c:174
+#: ../src/menu.c:173
 #, c-format
 msgid "Workspace %i"
 msgstr "Área de Trabalho %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falhou a captar o ponteiro\n"
 
-#: ../src/settings.c:854
+#: ../src/settings.c:853
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Não foi possível alocar a cor activa %s\n"
 
-#: ../src/settings.c:860
+#: ../src/settings.c:859
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Não foi possível alocar a cor activa %s\n"
 
-#: ../src/tabwin.c:95
+#: ../src/tabwin.c:94
 msgid "Unknown application!"
 msgstr "Aplicação desconhecida!"
 
@@ -821,10 +821,3 @@ msgstr "Margens da Área de Trabalho"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Margens da Área de Trabalho"
-
-#, fuzzy
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "Gestor de Janelas"
-
-#~ msgid "Window Manager Preferences"
-#~ msgstr "Preferências do Gestor de Janelas"

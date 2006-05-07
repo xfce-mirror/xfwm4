@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 12:32+0200\n"
+"POT-Creation-Date: 2006-05-07 18:40+0900\n"
 "PO-Revision-Date: 2005-08-19 21:11+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -48,18 +48,18 @@ msgstr "Долу :"
 msgid "Button Label|Workspaces and Margins"
 msgstr "Граница на работно място"
 
-#: ../mcs-plugin/plugin.c:143
+#: ../mcs-plugin/plugin.c:145
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "Граница на работно място"
 
-#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
 #: ../mcs-plugin/workspaces.c:520
 #, fuzzy
 msgid "Workspaces"
 msgstr "Работно място %i"
 
-#: ../mcs-plugin/plugin.c:170
+#: ../mcs-plugin/plugin.c:172
 msgid "Margins"
 msgstr ""
 
@@ -209,7 +209,7 @@ msgstr "Клавишни комбинации"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Мениджър на прозорци"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
+#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -726,96 +726,96 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: ../src/menu.c:41
+#: ../src/menu.c:40
 msgid "Ma_ximize"
 msgstr "Максимизира"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:41
 msgid "Un_maximize"
 msgstr "Смалява"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:42
 msgid "_Hide"
 msgstr "Скрива"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Hide _all others"
 msgstr "Скрива всички останали"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "S_how"
 msgstr "Показва"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "_Shade"
 msgstr "Сгъване"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Un_shade"
 msgstr "Разгъва"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_tick"
 msgstr "Забожда"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "Uns_tick"
 msgstr "Отбожда"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "Context _help"
 msgstr ""
 
-#: ../src/menu.c:51 ../src/menu.c:52
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr ""
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Send to..."
 msgstr "Изпраща на..."
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "_Close"
 msgstr "Затваря"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Destroy"
 msgstr "Унищожава"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "_Quit"
 msgstr "Край"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Restart"
 msgstr "Рестартиране"
 
-#: ../src/menu.c:170
+#: ../src/menu.c:169
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "Работно място %i"
 
-#: ../src/menu.c:174
+#: ../src/menu.c:173
 #, c-format
 msgid "Workspace %i"
 msgstr "Работно място %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: ../src/settings.c:854
+#: ../src/settings.c:853
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr ""
 
-#: ../src/settings.c:860
+#: ../src/settings.c:859
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr ""
 
-#: ../src/tabwin.c:95
+#: ../src/tabwin.c:94
 msgid "Unknown application!"
 msgstr ""
 
@@ -848,10 +848,3 @@ msgstr "Граница на работно място"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Граница на работно място"
-
-#, fuzzy
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "Мениджър на прозорци"
-
-#~ msgid "Window Manager Preferences"
-#~ msgstr "Настройки на мениджъра·на·прозорци"

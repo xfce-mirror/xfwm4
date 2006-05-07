@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 12:32+0200\n"
+"POT-Creation-Date: 2006-05-07 18:40+0900\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -46,18 +46,18 @@ msgstr "नीचे: "
 msgid "Button Label|Workspaces and Margins"
 msgstr "कार्यस्थान हाशिया "
 
-#: ../mcs-plugin/plugin.c:143
+#: ../mcs-plugin/plugin.c:145
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "कार्यस्थान हाशिया "
 
-#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
 #: ../mcs-plugin/workspaces.c:520
 #, fuzzy
 msgid "Workspaces"
 msgstr "कार्यस्थान %i"
 
-#: ../mcs-plugin/plugin.c:170
+#: ../mcs-plugin/plugin.c:172
 msgid "Margins"
 msgstr ""
 
@@ -209,7 +209,7 @@ msgstr "कीबोर्ड शार्टकट"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "विन्डो प्रबंधक"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
+#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -733,97 +733,97 @@ msgstr ""
 msgid "%s: Segmentation fault"
 msgstr "%s: सेगमेन्टेशन फाल्ट"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:40
 msgid "Ma_ximize"
 msgstr "बडा करें (_x)"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:41
 msgid "Un_maximize"
 msgstr "अधिकतम हटाएं (_m)"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:42
 msgid "_Hide"
 msgstr "छुपाएँ (_H)"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Hide _all others"
 msgstr "अन्य सभी को छुपाएं (_a)"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "S_how"
 msgstr "दिखाएँ (_h)"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "_Shade"
 msgstr "छाया (_S)"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Un_shade"
 msgstr "छाया हटाएं (_s)"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_tick"
 msgstr "स्टिक (_t)"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "Uns_tick"
 msgstr "अनस्टिक (_t)"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "Context _help"
 msgstr ""
 
-#: ../src/menu.c:51 ../src/menu.c:52
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr ""
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Send to..."
 msgstr "को भेजें..."
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "_Close"
 msgstr "बंद करें (_C)"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Destroy"
 msgstr "नष्ट करें"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "_Quit"
 msgstr "निकलें (_Q)"
 
 # gnome-session/session-properties.c:173
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Restart"
 msgstr "पुन शुरु करें"
 
-#: ../src/menu.c:170
+#: ../src/menu.c:169
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "कार्यस्थान %i"
 
-#: ../src/menu.c:174
+#: ../src/menu.c:173
 #, c-format
 msgid "Workspace %i"
 msgstr "कार्यस्थान %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: जीटीके मेन्यू पाइन्टर पकड़ने में  असफल\n"
 
-#: ../src/settings.c:854
+#: ../src/settings.c:853
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: सक्रिय रंग निर्धारित नहीं कर सकता %s\n"
 
-#: ../src/settings.c:860
+#: ../src/settings.c:859
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s:  सक्रिय रंग पारसे नहीं कर सकता  %s\n"
 
-#: ../src/tabwin.c:95
+#: ../src/tabwin.c:94
 msgid "Unknown application!"
 msgstr ""
 
@@ -860,11 +860,3 @@ msgstr "कार्यस्थान हाशिया "
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "कार्यस्थान हाशिया "
-
-# gnome-session/splash.c:71
-#, fuzzy
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "विन्डो प्रबंधक"
-
-#~ msgid "Window Manager Preferences"
-#~ msgstr "विंडो प्रबंधक वरीयताएँ"

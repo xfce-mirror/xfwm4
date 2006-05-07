@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 12:32+0200\n"
+"POT-Creation-Date: 2006-05-07 18:40+0900\n"
 "PO-Revision-Date: 2006-04-23 16:05+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -50,16 +50,16 @@ msgstr ""
 "Χώροι εργασίας\n"
 "και περιθώρια"
 
-#: ../mcs-plugin/plugin.c:143
+#: ../mcs-plugin/plugin.c:145
 msgid "Workspaces and Margins"
 msgstr "Χώροι εργασίας και περιθώρια"
 
-#: ../mcs-plugin/plugin.c:161 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
 #: ../mcs-plugin/workspaces.c:520
 msgid "Workspaces"
 msgstr "Χώροι εργασίας"
 
-#: ../mcs-plugin/plugin.c:170
+#: ../mcs-plugin/plugin.c:172
 msgid "Margins"
 msgstr "Περιθώρια"
 
@@ -208,7 +208,7 @@ msgstr ""
 "Προσαρμογή\n"
 "διαχειριστή παραθύρων"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:723 ../mcs-plugin/xfwm4_plugin.c:2354
+#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -684,96 +684,96 @@ msgstr "%s (στο %s)"
 msgid "%s: Segmentation fault"
 msgstr "%s: Σφάλμα κατάτμησης"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:40
 msgid "Ma_ximize"
 msgstr "Με_γιστοποίηση"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:41
 msgid "Un_maximize"
 msgstr "Απο_μεγιστοποίηση"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:42
 msgid "_Hide"
 msgstr "Απόκρυ_ψη"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Hide _all others"
 msgstr "Απόκρυψη όλων των _άλλων"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "S_how"
 msgstr "Εμ_φάνιση"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "_Shade"
 msgstr "_Σκίαση"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Un_shade"
 msgstr "Απ_οσκίαση"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_tick"
 msgstr "_Επικόλληση"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "Uns_tick"
 msgstr "Αποεπικό_λληση"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "Context _help"
 msgstr "Βοήθεια πε_ριεχομένου"
 
-#: ../src/menu.c:51 ../src/menu.c:52
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr "Πάντα στην κορυφή"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Send to..."
 msgstr "Αποστολή.στο..."
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Destroy"
 msgstr "Καταστροφή"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "_Quit"
 msgstr "Έ_ξοδος"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Restart"
 msgstr "Επανεκκίνηση"
 
-#: ../src/menu.c:170
+#: ../src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Χώρος εργασίας %i (%s)"
 
-#: ../src/menu.c:174
+#: ../src/menu.c:173
 #, c-format
 msgid "Workspace %i"
 msgstr "Χώρος εργασίας %i "
 
-#: ../src/menu.c:409
+#: ../src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Το GtkMenu απέτυχε να αρπάξει τον δείκτη\n"
 
-#: ../src/settings.c:854
+#: ../src/settings.c:853
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Αδύνατος ο προσδιορισμός του χρώματος %s\n"
 
-#: ../src/settings.c:860
+#: ../src/settings.c:859
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Αδύνατη η ανάλυση του χρώματος %s\n"
 
-#: ../src/tabwin.c:95
+#: ../src/tabwin.c:94
 msgid "Unknown application!"
 msgstr "Άγνωστη εφαρμογή!"
 
@@ -800,9 +800,3 @@ msgstr "Χώροι εργασίας"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Ρυθμίσεις χώρων εργασίας Xfce 4"
-
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "Προχωρημένες ρυθμίσεις διαχειριστή παραθύρων"
-
-#~ msgid "Window Manager Preferences"
-#~ msgstr "Προτιμήσεις διαχειριστή παραθύρων"
