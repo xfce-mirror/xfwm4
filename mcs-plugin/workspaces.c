@@ -385,7 +385,7 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
 }
 
 static gboolean
-button_pressed (GtkTreeView * tree, GdkEventButton * event, McsManager * manager)
+cb_activate_item (GtkTreeView * tree, GdkEventButton * event, McsManager * manager)
 {
     GtkTreePath *path;
     GtkTreeIter iter;
@@ -470,7 +470,7 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
 
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (treeview));
 
-    g_signal_connect (treeview, "button-press-event", G_CALLBACK (button_pressed), manager);
+    g_signal_connect (treeview, "activate", G_CALLBACK (cb_activate_item), manager);
 }
 
 /* workspace count */

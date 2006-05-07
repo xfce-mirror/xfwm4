@@ -137,7 +137,6 @@ run_dialog (McsPlugin * mcs_plugin)
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     dialog = xfce_titled_dialog_new ();
-    gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
     gtk_window_set_icon (GTK_WINDOW (dialog), mcs_plugin->icon);
     gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);

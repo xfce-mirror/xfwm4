@@ -16,8 +16,8 @@
         Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
 */
 
-#ifndef __PLUGIN_H
-#define __PLUGIN_H
+#ifndef __PLUGIN_H__
+#define __PLUGIN_H__
 
 #define RCFILE1 "workspaces.xml"
 #define RCFILE2 "margins.xml"
