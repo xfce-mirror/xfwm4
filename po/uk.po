@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 18:40+0900\n"
+"POT-Creation-Date: 2006-05-07 19:48+0200\n"
 "PO-Revision-Date: 2005-01-06 01:53+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.ua>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -41,20 +41,20 @@ msgid "Bottom :"
 msgstr "Знизу:"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:110
 msgid "Button Label|Workspaces and Margins"
 msgstr "Робочі області та поля"
 
-#: ../mcs-plugin/plugin.c:145
+#: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
 msgstr "Робочі області та поля"
 
-#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
-#: ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Робочі області"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/workspaces_plugin.c:171
 msgid "Margins"
 msgstr "Поля"
 
@@ -221,15 +221,15 @@ msgstr "Робоча область %i"
 msgid "Name:"
 msgstr "Назва:"
 
-#: ../mcs-plugin/workspaces.c:432
+#: ../mcs-plugin/workspaces.c:427
 msgid "Click on a workspace name to edit it"
 msgstr "Клацніть на назві робочої області, щоб змінити її"
 
-#: ../mcs-plugin/workspaces.c:497
+#: ../mcs-plugin/workspaces.c:493
 msgid "Number of workspaces:"
 msgstr "Кількість робочих областей:"
 
-#: ../mcs-plugin/workspaces.c:531
+#: ../mcs-plugin/workspaces.c:527
 msgid "Workspace names"
 msgstr "Назви робочих областей"
 

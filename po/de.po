@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 18:40+0900\n"
+"POT-Creation-Date: 2006-05-07 19:48+0200\n"
 "PO-Revision-Date: 2006-02-19 12:09+0100\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -44,21 +44,21 @@ msgid "Bottom :"
 msgstr "Unten:"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:110
 #, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "Arbeitsflächen und Seitenränder"
 
-#: ../mcs-plugin/plugin.c:145
+#: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
 msgstr "Arbeitsflächen und Seitenränder"
 
-#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
-#: ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Arbeitsflächen"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/workspaces_plugin.c:171
 msgid "Margins"
 msgstr "Seitenränder"
 
@@ -242,15 +242,15 @@ msgstr "Arbeitsfläche %i"
 msgid "Name:"
 msgstr "Name:"
 
-#: ../mcs-plugin/workspaces.c:432
+#: ../mcs-plugin/workspaces.c:427
 msgid "Click on a workspace name to edit it"
 msgstr "Klicken Sie einen Namen an, um ihn zu ändern"
 
-#: ../mcs-plugin/workspaces.c:497
+#: ../mcs-plugin/workspaces.c:493
 msgid "Number of workspaces:"
 msgstr "Anzahl der Arbeitsflächen:"
 
-#: ../mcs-plugin/workspaces.c:531
+#: ../mcs-plugin/workspaces.c:527
 msgid "Workspace names"
 msgstr "Arbeitsflächennamen"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 18:40+0900\n"
+"POT-Creation-Date: 2006-05-07 19:48+0200\n"
 "PO-Revision-Date: 2006-02-02 21:32+0100\n"
 "Last-Translator: Olivier Fourdan <fourdan@xfce.org>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -43,21 +43,20 @@ msgid "Bottom :"
 msgstr "Bas :"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/plugin.c:110
-#, fuzzy
+#: ../mcs-plugin/workspaces_plugin.c:110
 msgid "Button Label|Workspaces and Margins"
 msgstr "Marges et espaces de travail"
 
-#: ../mcs-plugin/plugin.c:145
+#: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
 msgstr "Marges et espaces de travail"
 
-#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
-#: ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Espaces de travail"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/workspaces_plugin.c:171
 msgid "Margins"
 msgstr "Marges"
 
@@ -138,7 +137,7 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr "Basculer d'espace en fonction de l'agencement du bureau"
+msgstr "Basculer d'espace en ffonction de l'agencement du bureau"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 msgid "Wrap workspaces when the first or last workspace is reached"
@@ -202,7 +201,6 @@ msgstr "Compositeur"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:610
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Peaufinages des fenêtres"
 
@@ -225,15 +223,15 @@ msgstr "Espace de travail %d"
 msgid "Name:"
 msgstr "Nom :"
 
-#: ../mcs-plugin/workspaces.c:432
+#: ../mcs-plugin/workspaces.c:427
 msgid "Click on a workspace name to edit it"
 msgstr "Cliquer sur le nom d'un espace pour l'éditer"
 
-#: ../mcs-plugin/workspaces.c:497
+#: ../mcs-plugin/workspaces.c:493
 msgid "Number of workspaces:"
 msgstr "Nombre d'espaces de travail :"
 
-#: ../mcs-plugin/workspaces.c:531
+#: ../mcs-plugin/workspaces.c:527
 msgid "Workspace names"
 msgstr "Noms des espaces de travail"
 
@@ -480,7 +478,6 @@ msgstr "Avancé"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1988
-#, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "Gestionnaire de fenêtres"
 

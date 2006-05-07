@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 18:40+0900\n"
+"POT-Creation-Date: 2006-05-07 19:48+0200\n"
 "PO-Revision-Date: 2006-04-26 22:43+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
 "Language-Team: Vietnamese <vi_VN@googlegroups.com>\n"
@@ -44,20 +44,20 @@ msgid "Bottom :"
 msgstr "Dưới:"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:110
 msgid "Button Label|Workspaces and Margins"
 msgstr "Vùng làm việc và Biên"
 
-#: ../mcs-plugin/plugin.c:145
+#: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
 msgstr "Vùng làm việc và Biên"
 
-#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
-#: ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Vùng làm việc"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/workspaces_plugin.c:171
 msgid "Margins"
 msgstr "Biên"
 
@@ -217,15 +217,15 @@ msgstr "Vùng làm việc %d"
 msgid "Name:"
 msgstr "Tên:"
 
-#: ../mcs-plugin/workspaces.c:432
+#: ../mcs-plugin/workspaces.c:427
 msgid "Click on a workspace name to edit it"
 msgstr "Nhấp chuột lên tên vùng làm việc để thay đổi"
 
-#: ../mcs-plugin/workspaces.c:497
+#: ../mcs-plugin/workspaces.c:493
 msgid "Number of workspaces:"
 msgstr "Số vùng làm việc:"
 
-#: ../mcs-plugin/workspaces.c:531
+#: ../mcs-plugin/workspaces.c:527
 msgid "Workspace names"
 msgstr "Tên vùng làm việc"
 

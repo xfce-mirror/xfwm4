@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 18:40+0900\n"
+"POT-Creation-Date: 2006-05-07 19:48+0200\n"
 "PO-Revision-Date: 2006-04-02 21:25+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
@@ -50,23 +50,23 @@ msgid "Bottom :"
 msgstr "Inferior:"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:110
 #, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "Àrees de treball i Marges"
 
-#: ../mcs-plugin/plugin.c:145
+#: ../mcs-plugin/workspaces_plugin.c:144
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "Àrees de treball i Marges"
 
-#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
-#: ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:516
 #, fuzzy
 msgid "Workspaces"
 msgstr "Àrees de treball"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/workspaces_plugin.c:171
 #, fuzzy
 msgid "Margins"
 msgstr "Marges"
@@ -253,17 +253,17 @@ msgstr "Espai de treball %d"
 msgid "Name:"
 msgstr "Nom:"
 
-#: ../mcs-plugin/workspaces.c:432
+#: ../mcs-plugin/workspaces.c:427
 #, fuzzy
 msgid "Click on a workspace name to edit it"
 msgstr "Feu clic on a l'àrea de treball nom a  edita"
 
-#: ../mcs-plugin/workspaces.c:497
+#: ../mcs-plugin/workspaces.c:493
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "Nú~mero de:"
 
-#: ../mcs-plugin/workspaces.c:531
+#: ../mcs-plugin/workspaces.c:527
 #, fuzzy
 msgid "Workspace names"
 msgstr "Noms de les àrees de treball"

@@ -1,7 +1,7 @@
 # List of source files containing translatable strings.
 
 mcs-plugin/margins.c
-mcs-plugin/plugin.c
+mcs-plugin/workspaces_plugin.c
 mcs-plugin/wmtweaks_plugin.c
 mcs-plugin/workspaces.c
 mcs-plugin/xfwm4_plugin.c

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 18:40+0900\n"
+"POT-Creation-Date: 2006-05-07 19:48+0200\n"
 "PO-Revision-Date: 2005-10-09 20:52+0900\n"
 "Last-Translator: Juraj Brosz <juro@jurajbrosz.info>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -42,21 +42,21 @@ msgid "Bottom :"
 msgstr "Dole :"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:110
 #, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "Virtuálne plochy a okraje"
 
-#: ../mcs-plugin/plugin.c:145
+#: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
 msgstr "Virtuálne plochy a okraje"
 
-#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
-#: ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Virtuálne plochy"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/workspaces_plugin.c:171
 msgid "Margins"
 msgstr "Okraje"
 
@@ -221,15 +221,15 @@ msgstr "Virtuálna plocha %d"
 msgid "Name:"
 msgstr "Meno:"
 
-#: ../mcs-plugin/workspaces.c:432
+#: ../mcs-plugin/workspaces.c:427
 msgid "Click on a workspace name to edit it"
 msgstr "K zmene názvu virtuálnej plochy kliknite na jej meno"
 
-#: ../mcs-plugin/workspaces.c:497
+#: ../mcs-plugin/workspaces.c:493
 msgid "Number of workspaces:"
 msgstr "Počet virtuálnych plôch:"
 
-#: ../mcs-plugin/workspaces.c:531
+#: ../mcs-plugin/workspaces.c:527
 msgid "Workspace names"
 msgstr "Názvy virtuálnych plôch"
 

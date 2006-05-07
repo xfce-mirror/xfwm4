@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 18:40+0900\n"
+"POT-Creation-Date: 2006-05-07 19:48+0200\n"
 "PO-Revision-Date: 2005-10-09 20:50+0900\n"
 "Last-Translator: Jaswinder Singh Phulewala <jaswinderphulewala@yahoo.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -45,21 +45,21 @@ msgid "Bottom :"
 msgstr "ਹੇਠਾਂ:"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:110
 #, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "ਅਖਾੜਾ ਤੇ ਹਾਸ਼ੀਆ"
 
-#: ../mcs-plugin/plugin.c:145
+#: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
 msgstr "ਅਖਾੜਾ ਤੇ ਹਾਸ਼ੀਆ"
 
-#: ../mcs-plugin/plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:498
-#: ../mcs-plugin/workspaces.c:520
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "ਅਖਾੜਾ"
 
-#: ../mcs-plugin/plugin.c:172
+#: ../mcs-plugin/workspaces_plugin.c:171
 msgid "Margins"
 msgstr "ਹਾਸ਼ੀਆ"
 
@@ -226,15 +226,15 @@ msgstr "ਅਖਾੜਾ %d"
 msgid "Name:"
 msgstr "ਨਾਂ:"
 
-#: ../mcs-plugin/workspaces.c:432
+#: ../mcs-plugin/workspaces.c:427
 msgid "Click on a workspace name to edit it"
 msgstr "ਇਸ ਨੂੰ ਸੋਧਣ ਲਈ ਅਖਾੜਾ ਨਾਂ ਤੇ ਕਲਿੱਕ ਕਰੋ"
 
-#: ../mcs-plugin/workspaces.c:497
+#: ../mcs-plugin/workspaces.c:493
 msgid "Number of workspaces:"
 msgstr "ਅਖਾੜਿਆਂ ਦੀ ਗਿਣਤੀ:"
 
-#: ../mcs-plugin/workspaces.c:531
+#: ../mcs-plugin/workspaces.c:527
 msgid "Workspace names"
 msgstr "ਅਖਾੜਾ ਨਾਂ"
 
