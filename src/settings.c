@@ -867,7 +867,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     DisplayInfo *display_info = NULL;
     gchar *theme;
     gchar *font;
-    XpmColorSymbol colsym[XPM_COLOR_SYMBOL_SIZE];
+    xfwmColorSymbol colsym[ XPM_COLOR_SYMBOL_SIZE + 1 ];
     PangoFontDescription *desc = NULL;
     guint i;
     GValue tmp_val = { 0, };
@@ -916,6 +916,8 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         colsym[i].name = rc[i].option;
         colsym[i].value = rc[i].value;
     }
+    colsym[XPM_COLOR_SYMBOL_SIZE].name = NULL;
+    colsym[XPM_COLOR_SYMBOL_SIZE].value = NULL;
 
     display_info->dbl_click_time = abs (TOINT (getValue ("dbl_click_time", rc)));
     g_value_init (&tmp_val, G_TYPE_INT);
@@ -955,107 +957,107 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     g_object_ref (G_OBJECT (widget->style->white_gc));
 
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_LEFT][ACTIVE], theme,
-        "left-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "left-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_LEFT][INACTIVE], theme,
-        "left-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "left-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_RIGHT][ACTIVE], theme,
-        "right-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "right-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_RIGHT][INACTIVE], theme,
-        "right-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "right-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_BOTTOM][ACTIVE], theme,
-        "bottom-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "bottom-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_BOTTOM][INACTIVE], theme,
-        "bottom-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "bottom-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_LEFT][ACTIVE], theme,
-        "top-left-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "top-left-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_LEFT][INACTIVE], theme,
-        "top-left-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "top-left-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_RIGHT][ACTIVE], theme,
-        "top-right-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "top-right-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_RIGHT][INACTIVE], theme,
-        "top-right-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "top-right-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_LEFT][ACTIVE], theme,
-        "bottom-left-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "bottom-left-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_LEFT][INACTIVE], theme,
-        "bottom-left-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "bottom-left-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme,
-        "bottom-right-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "bottom-right-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme,
-        "bottom-right-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "bottom-right-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][ACTIVE], theme,
-        "hide-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "hide-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][INACTIVE], theme,
-        "hide-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "hide-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][PRESSED], theme,
-        "hide-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "hide-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][ACTIVE], theme,
-        "close-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "close-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][INACTIVE], theme,
-        "close-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "close-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][PRESSED], theme,
-        "close-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "close-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][ACTIVE], theme,
-        "maximize-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "maximize-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][INACTIVE], theme,
-        "maximize-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "maximize-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][PRESSED], theme,
-        "maximize-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "maximize-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][ACTIVE], theme,
-        "shade-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "shade-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][INACTIVE], theme,
-        "shade-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "shade-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][PRESSED], theme,
-        "shade-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "shade-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][ACTIVE], theme,
-        "stick-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "stick-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][INACTIVE], theme,
-        "stick-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "stick-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][PRESSED], theme,
-        "stick-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "stick-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][ACTIVE], theme,
-        "menu-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "menu-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][INACTIVE], theme,
-        "menu-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "menu-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][PRESSED], theme,
-        "menu-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "menu-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_ACTIVE], theme,
-        "shade-toggled-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "shade-toggled-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_INACTIVE], theme,
-        "shade-toggled-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "shade-toggled-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_PRESSED], theme,
-        "shade-toggled-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "shade-toggled-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_ACTIVE], theme,
-        "stick-toggled-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "stick-toggled-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_INACTIVE], theme,
-        "stick-toggled-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "stick-toggled-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_PRESSED], theme,
-        "stick-toggled-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "stick-toggled-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme,
-        "maximize-toggled-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "maximize-toggled-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme,
-        "maximize-toggled-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "maximize-toggled-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_PRESSED], theme,
-        "maximize-toggled-pressed", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "maximize-toggled-pressed", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_1][ACTIVE], theme,
-        "title-1-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-1-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_1][INACTIVE], theme,
-        "title-1-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-1-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_2][ACTIVE], theme,
-        "title-2-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-2-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_2][INACTIVE], theme,
-        "title-2-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-2-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_3][ACTIVE], theme,
-        "title-3-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-3-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_3][INACTIVE], theme,
-        "title-3-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-3-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_4][ACTIVE], theme,
-        "title-4-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-4-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_4][INACTIVE], theme,
-        "title-4-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-4-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_5][ACTIVE], theme,
-        "title-5-active", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-5-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_5][INACTIVE], theme,
-        "title-5-inactive", colsym, XPM_COLOR_SYMBOL_SIZE);
+        "title-5-inactive", colsym);
 
     screen_info->box_gc = createGC (screen_info, "#FFFFFF", GXxor, NULL, 2, TRUE);
 

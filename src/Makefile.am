@@ -67,7 +67,6 @@ xfwm4_CFLAGS =								\
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_CLIENT_CFLAGS@					\
 	@LIBXFCEGUI4_CFLAGS@						\
-	@LIBXPM_CFLAGS@							\
 	@RENDER_CFLAGS@							\
 	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
 	@COMPOSITOR_CFLAGS@						\
@@ -80,17 +79,14 @@ xfwm4_LDADD =								\
 	@LIBX11_LIBS@							\
 	@LIBXFCE4MCS_CLIENT_LIBS@					\
 	@LIBXFCEGUI4_LIBS@						\
-	@LIBXPM_LIBS@							\
 	@LIBSTARTUP_NOTIFICATION_LIBS@					\
 	@RENDER_LIBS@							\
 	@COMPOSITOR_LIBS@						\
 	@RANDR_LIBS@
 
-xfwm4_LDFLAGS =								\
-	@LIBXPM_LDFLAGS@
-
 EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png                       \
-	inline-default-icon.h default_icon.png
+	inline-default-icon.h default_icon.png				\
+	gen-color-table.pl
 
 noinst_DATA = inline-tabwin-icon.h tabwin-icon.png
 

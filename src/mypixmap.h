@@ -23,7 +23,6 @@
 #  include "config.h"
 #endif
 
-#include <X11/xpm.h>
 #include <glib.h>
 #include "screen.h"
 
@@ -35,6 +34,13 @@
 #define INC_MYPIXMAP_H
 
 #define MYPIXMAP_XPIXMAP(p) (p.pixmap)
+
+typedef struct 
+{
+    gchar *name;
+    gchar *value;
+}
+xfwmColorSymbol;
 
 struct _xfwmPixmap
 {
@@ -53,8 +59,7 @@ gboolean xfwmPixmapLoad            (ScreenInfo *,
                                     xfwmPixmap *, 
                                     gchar *, 
                                     gchar *,
-                                    XpmColorSymbol *,
-                                    gint);
+                                    xfwmColorSymbol *);
 void xfwmPixmapCreate              (ScreenInfo *,
                                     xfwmPixmap *, 
                                     gint, 

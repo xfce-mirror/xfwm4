@@ -46,7 +46,6 @@ XDT_I18N([ar az be bg bn_IN ca cs de el en_GB eo es es_MX et eu fa fi fr gu
 
 dnl Check for X11 window system
 XDT_CHECK_LIBX11_REQUIRE
-XDT_CHECK_LIBXPM_REQUIRE
 XDT_CHECK_LIBSM
 
 dnl Check for Xext library
