@@ -61,7 +61,8 @@ xfwm4_SOURCES =								\
 	workspaces.c							\
 	workspaces.h							\
 	wireframe.c							\
-	wireframe.h
+	wireframe.h							\
+	xpm-color-table.h
 
 xfwm4_CFLAGS =								\
 	@LIBX11_CFLAGS@							\
