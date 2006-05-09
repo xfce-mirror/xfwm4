@@ -14,13 +14,16 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        XPM load routines taken from GdkPixbuf:
+        XPM load routines taken from gdk-pixbuf:
  
         Copyright (C) 1999 Mark Crichton
         Copyright (C) 1999 The Free Software Foundation
  
         Authors: Mark Crichton <crichton@gimp.org>
                  Federico Mena-Quintero <federico@gimp.org>
+ 
+        A specific version of the gdk-pixbuf routines are required to support
+        XPM color substituion used by the themes.
  
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
@@ -499,7 +502,7 @@ file_buffer (enum buf_op op, gpointer handle)
 
 /* This function does all the work. */
 static GdkPixbuf *
-pixbuf_create_from_xpm (const gchar * (*get_buf) (enum buf_op op, gpointer handle), gpointer handle, xfwmColorSymbol *color_sym)
+pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
 {
     gint w, h, n_col, cpp, x_hot, y_hot, items;
     gint cnt, xcnt, ycnt, wbytes, n;
@@ -514,7 +517,7 @@ pixbuf_create_from_xpm (const gchar * (*get_buf) (enum buf_op op, gpointer handl
 
     fallbackcolor = NULL;
 
-    buffer = (*get_buf) (op_header, handle);
+    buffer = file_buffer (op_header, handle);
     if (!buffer) 
     {
         return NULL;
@@ -534,6 +537,7 @@ pixbuf_create_from_xpm (const gchar * (*get_buf) (enum buf_op op, gpointer handl
         (n_col >= G_MAXINT / (cpp + 1)) || 
         (n_col >= G_MAXINT / sizeof (XPMColor)))
     {
+        g_warning ("Pixmap definition contains invalid attributes");
         return NULL;
     }
 
@@ -547,7 +551,8 @@ pixbuf_create_from_xpm (const gchar * (*get_buf) (enum buf_op op, gpointer handl
     }
 
     colors = (XPMColor *) g_try_malloc (sizeof (XPMColor) * n_col);
-    if (!colors) {
+    if (!colors) 
+    {
         g_hash_table_destroy (color_hash);
         g_free (name_buf);
         return NULL;
@@ -557,7 +562,7 @@ pixbuf_create_from_xpm (const gchar * (*get_buf) (enum buf_op op, gpointer handl
     {
         gchar *color_name;
 
-        buffer = (*get_buf) (op_cmap, handle);
+        buffer = file_buffer (op_cmap, handle);
         if (!buffer) 
         {
             g_hash_table_destroy (color_hash);
@@ -611,7 +616,7 @@ pixbuf_create_from_xpm (const gchar * (*get_buf) (enum buf_op op, gpointer handl
     {
         pixtmp = gdk_pixbuf_get_pixels (pixbuf) + ycnt * gdk_pixbuf_get_rowstride(pixbuf);
 
-        buffer = (*get_buf) (op_body, handle);
+        buffer = file_buffer (op_body, handle);
         if ((!buffer) || (strlen (buffer) < wbytes))
         {
             continue;
@@ -687,7 +692,7 @@ xpm_image_load (const char *filename, xfwmColorSymbol *color_sym)
     fseek (f, 0, SEEK_SET);
     memset (&h, 0, sizeof (h));
     h.infile = f;
-    pixbuf = pixbuf_create_from_xpm (file_buffer, &h, color_sym);
+    pixbuf = pixbuf_create_from_xpm (&h, color_sym);
     g_free (h.buffer);
     fclose (f);
 
@@ -720,39 +725,50 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
 #endif
 }
 
-static gboolean
+static GdkPixbuf *
 xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
 {
     gchar *filepng;
     gchar *filename;
-    GdkPixbuf *alpha;
+    GdkPixbuf *alpha = NULL;
     GError *error = NULL;
     gint width, height;
     gboolean status;
+    int i;
 
-    filepng = g_strdup_printf ("%s.%s", file, "png");
-    filename = g_build_filename (dir, filepng, NULL);
-    g_free (filepng);
+    static const char* image_types[] = {
+      "svg",
+      "png",
+      "bmp",
+      "gif",
+      "jpg",
+      "jpeg",
+      NULL };
 
-    if (!g_file_test (filename, G_FILE_TEST_IS_REGULAR))
+    i = 0;
+    while ((image_types[i]) && (!alpha))
     {
+        filepng = g_strdup_printf ("%s.%s", file, image_types[i]);
+        filename = g_build_filename (dir, filepng, NULL);
+        g_free (filepng);
+
+        if (g_file_test (filename, G_FILE_TEST_IS_REGULAR))
+        {
+            alpha = gdk_pixbuf_new_from_file (filename, &error);
+            if (error)
+            {
+                g_warning ("%s", error->message);
+                g_error_free (error);
+            }
+        }
         g_free (filename);
-        return FALSE;
+        ++i;
     }
 
-    alpha = gdk_pixbuf_new_from_file (filename, &error);
-    g_free (filename);
-    if (error)
+    if (!pixbuf)
     {
-        g_warning ("%s", error->message);
-        g_error_free (error);
-        return FALSE;
-    }
-
-    if (!gdk_pixbuf_get_has_alpha (alpha))
-    {
-        g_object_unref (alpha);
-        return FALSE;
+        /* We have no XPM canvas and found a suitable image, use it... */
+        return (alpha);
     }
 
     width  = MIN (gdk_pixbuf_get_width (pixbuf), 
@@ -765,7 +781,7 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
 
     g_object_unref (alpha);
 
-    return TRUE;
+    return pixbuf;
 }
 
 static gboolean
@@ -914,22 +930,25 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     pm->mask = None;
     pm->width = 1;
     pm->height = 1;
+
+    /*
+     * Always try to load the XPM first, using our own routine
+     * that supports XPM color symbol susbstitution (used to
+     * apply the gtk colors.
+     */
     filexpm = g_strdup_printf ("%s.%s", file, "xpm");
     filename = g_build_filename (dir, filexpm, NULL);
     g_free (filexpm);
-
     pixbuf = xpm_image_load (filename, cs);
-    if (!pixbuf)
-    {
-        TRACE ("%s not found", filename);
-        g_free (filename);
-        return FALSE;
-    }
     g_free (filename);
 
-    /* Apply the alpha channel from PNG if available */
-    xfwmPixmapCompose (pixbuf, dir, file);
-
+    /* Compose with other image formats if available */
+    pixbuf = xfwmPixmapCompose (pixbuf, dir, file);
+    if (!pixbuf)
+    {
+        g_warning ("Cannot find a suitable image format for %s", file);
+        return FALSE;
+    }
     xfwmPixmapCreate (screen_info, pm, 
                       gdk_pixbuf_get_width (pixbuf),
                       gdk_pixbuf_get_height (pixbuf));
