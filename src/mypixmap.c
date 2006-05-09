@@ -14,7 +14,7 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
-        XPM load routines taken from gdk-pixbuf:
+        Original XPM load routines from gdk-pixbuf:
  
         Copyright (C) 1999 Mark Crichton
         Copyright (C) 1999 The Free Software Foundation
@@ -23,7 +23,7 @@
                  Federico Mena-Quintero <federico@gimp.org>
  
         A specific version of the gdk-pixbuf routines are required to support
-        XPM color substituion used by the themes.
+        XPM color substitution used by the themes to apply gtk+ colors.
  
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
@@ -933,7 +933,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     /*
      * Always try to load the XPM first, using our own routine
      * that supports XPM color symbol susbstitution (used to
-     * apply the gtk colors.
+     * apply the gtk+ colors to the pixmaps).
      */
     filexpm = g_strdup_printf ("%s.%s", file, "xpm");
     filename = g_build_filename (dir, filexpm, NULL);
@@ -941,7 +941,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     pixbuf = xpm_image_load (filename, cs);
     g_free (filename);
 
-    /* Compose with other image formats if available */
+    /* Compose with other image formats, if any available. */
     pixbuf = xfwmPixmapCompose (pixbuf, dir, file);
     if (!pixbuf)
     {
