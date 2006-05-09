@@ -8,6 +8,7 @@ Add your favorite wish list here :
 * Add compositor for newer X.org                         *done*
 * Add support for alpha in window frame components       *done*
 * Remove keyboard shortcut support from the WM           *done*
-* Implement keyboard shortcut in a separate MCS plugin
-* Add new "power tweak" MCS plugin
-
+* Implement keyboard shortcut in a separate MCS plugin   *done*
+* Add new "power tweak" MCS plugin                       *done*
+* Remove dependency on libXPM                            *done*
+* Add support for multiple image formats in themes       *done*

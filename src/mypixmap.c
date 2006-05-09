@@ -739,10 +739,9 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
     static const char* image_types[] = {
       "svg",
       "png",
-      "bmp",
       "gif",
       "jpg",
-      "jpeg",
+      "bmp",
       NULL };
 
     i = 0;
