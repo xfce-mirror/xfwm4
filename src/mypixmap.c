@@ -134,9 +134,9 @@ find_color(const char *name, XPMColor *colorPtr)
         return FALSE;
     }
 
-    colorPtr->red = (found->red * 65535) / 255;
-    colorPtr->green = (found->green * 65535) / 255;
-    colorPtr->blue = (found->blue * 65535) / 255;
+    colorPtr->red   = (found->red   * 0xFFFF) / 0xFF;
+    colorPtr->green = (found->green * 0xFFFF) / 0xFF;
+    colorPtr->blue  = (found->blue  * 0xFFFF) / 0xFF;
 
     return TRUE;
 }
@@ -163,27 +163,27 @@ parse_color (const char *spec, XPMColor   *colorPtr)
         }
         if (i == 4) 
         {
-            colorPtr->red = red;
+            colorPtr->red   = red;
             colorPtr->green = green;
-            colorPtr->blue = blue;
+            colorPtr->blue  = blue;
         }
         else if (i == 1) 
         {
-            colorPtr->red = (red * 65535) / 15;
-            colorPtr->green = (green * 65535) / 15;
-            colorPtr->blue = (blue * 65535) / 15;
+            colorPtr->red   = (red   * 0xFFFF) / 0xF;
+            colorPtr->green = (green * 0xFFFF) / 0xF;
+            colorPtr->blue  = (blue  * 0xFFFF) / 0xF;
         }
         else if (i == 2)
         {
-            colorPtr->red = (red * 65535) / 255;
-            colorPtr->green = (green * 65535) / 255;
-            colorPtr->blue = (blue * 65535) / 255;
+            colorPtr->red   = (red   * 0xFFFF) / 0xFF;
+            colorPtr->green = (green * 0xFFFF) / 0xFF;
+            colorPtr->blue  = (blue  * 0xFFFF) / 0xFF;
         }
         else /* if (i == 3) */ 
         {
-            colorPtr->red = (red * 65535) / 4095;
-            colorPtr->green = (green * 65535) / 4095;
-            colorPtr->blue = (blue * 65535) / 4095;
+            colorPtr->red   = (red   * 0xFFFF) / 0xFFF;
+            colorPtr->green = (green * 0xFFFF) / 0xFFF;
+            colorPtr->blue  = (blue  * 0xFFFF) / 0xFFF;
         }
     } 
     else 
@@ -506,7 +506,6 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
 {
     gint w, h, n_col, cpp, x_hot, y_hot, items;
     gint cnt, xcnt, ycnt, wbytes, n;
-    gint is_trans = FALSE;
     const gchar *buffer;
     gchar *name_buf;
     gchar pixel_str[32];
@@ -520,12 +519,14 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     buffer = file_buffer (op_header, handle);
     if (!buffer) 
     {
+        g_warning ("Cannot read Pixmap header");
         return NULL;
     }
     items = sscanf (buffer, "%d %d %d %d %d %d", &w, &h, &n_col, &cpp, &x_hot, &y_hot);
 
-    if (items != 4 && items != 6) 
+    if ((items != 4) && (items != 6))
     {
+        g_warning ("Pixmap definition contains invalid number of size attributes");
         return NULL;
     }
 
@@ -547,6 +548,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     name_buf = g_try_malloc (n_col * (cpp + 1));
     if (!name_buf) {
         g_hash_table_destroy (color_hash);
+        g_warning ("Cannot allocate name buf");
         return NULL;
     }
 
@@ -555,6 +557,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     {
         g_hash_table_destroy (color_hash);
         g_free (name_buf);
+        g_warning ("Cannot allocate colors for Pixmap");
         return NULL;
     }
 
@@ -568,6 +571,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
             g_hash_table_destroy (color_hash);
             g_free (name_buf);
             g_free (colors);
+            g_warning ("Cannot load colormap attributes");
             return NULL;
         }
 
@@ -588,7 +592,6 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
             color->red = 0;
             color->green = 0;
             color->blue = 0;
-            is_trans = TRUE;
         }
 
         g_free (color_name);
@@ -600,13 +603,14 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
         }
     }
 
-    pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, is_trans, 8, w, h);
+    pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, w, h);
 
     if (!pixbuf) 
     {
         g_hash_table_destroy (color_hash);
         g_free (colors);
         g_free (name_buf);
+        g_warning ("Cannot alloocate memory for pixbuf");
         return NULL;
     }
 
@@ -639,11 +643,11 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
             *pixtmp++ = color->green >> 8;
             *pixtmp++ = color->blue >> 8;
 
-            if (is_trans && color->transparent)
+            if (color->transparent)
             {
                 *pixtmp++ = 0;
             }
-            else if (is_trans)
+            else
             {
                 *pixtmp++ = 0xFF;
             }
@@ -764,6 +768,12 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
         ++i;
     }
 
+    if (!alpha)
+    {
+        /* We have no suitable image to layer on top of the XPM, stop here... */
+        return (pixbuf);
+    }
+
     if (!pixbuf)
     {
         /* We have no XPM canvas and found a suitable image, use it... */
@@ -776,7 +786,7 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
                   gdk_pixbuf_get_height (alpha));
 
     gdk_pixbuf_composite (alpha, pixbuf, 0, 0, width, height,
-                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 0xFF);
 
     g_object_unref (alpha);
 
@@ -848,7 +858,7 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
 
     gdk_pixbuf_render_threshold_alpha (pixbuf, dest_bitmap,
                                        0, 0, dest_x, dest_y,
-                                       width, height, 255);
+                                       width, height, 0xFF);
 
     g_object_unref (cmap);
     g_object_unref (dest_pixmap);
@@ -901,7 +911,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap, 
                                         dest_x, dest_y, 0, 0, width, height);
     gdk_pixbuf_composite (pixbuf, src, 0, 0, width, height,
-                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 0xFF);
     gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, dest_x, dest_y,
                      width, height, GDK_RGB_DITHER_NONE, 0, 0);
 
@@ -945,7 +955,11 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     pixbuf = xfwmPixmapCompose (pixbuf, dir, file);
     if (!pixbuf)
     {
-        g_warning ("Cannot find a suitable image format for %s", file);
+        /* 
+         * Cannot find a suitable image format for some part, 
+         * it's not critical though as most themes are missing 
+         * buttons 
+         */
         return FALSE;
     }
     xfwmPixmapCreate (screen_info, pm, 
