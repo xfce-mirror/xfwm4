@@ -504,11 +504,11 @@ file_buffer (enum buf_op op, gpointer handle)
 static GdkPixbuf *
 pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
 {
-    gint w, h, n_col, cpp, x_hot, y_hot, items;
-    gint cnt, xcnt, ycnt, wbytes, n;
+    gchar pixel_str[32];
     const gchar *buffer;
     gchar *name_buf;
-    gchar pixel_str[32];
+    gint w, h, n_col, cpp, items;
+    gint cnt, xcnt, ycnt, wbytes, n;
     GHashTable *color_hash;
     XPMColor *colors, *color, *fallbackcolor;
     guchar *pixtmp;
@@ -522,11 +522,11 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
         g_warning ("Cannot read Pixmap header");
         return NULL;
     }
-    items = sscanf (buffer, "%d %d %d %d %d %d", &w, &h, &n_col, &cpp, &x_hot, &y_hot);
+    items = sscanf (buffer, "%d %d %d %d", &w, &h, &n_col, &cpp);
 
-    if ((items != 4) && (items != 6))
+    if (items != 4)
     {
-        g_warning ("Pixmap definition contains invalid number of size attributes");
+        g_warning ("Pixmap definition contains invalid number attributes (expecting at least 4, got %i)", items);
         return NULL;
     }
 
@@ -548,7 +548,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     name_buf = g_try_malloc (n_col * (cpp + 1));
     if (!name_buf) {
         g_hash_table_destroy (color_hash);
-        g_warning ("Cannot allocate name buf");
+        g_warning ("Cannot allocate buffer");
         return NULL;
     }
 
@@ -610,7 +610,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
         g_hash_table_destroy (color_hash);
         g_free (colors);
         g_free (name_buf);
-        g_warning ("Cannot alloocate memory for pixbuf");
+        g_warning ("Cannot allocate Pixbuf");
         return NULL;
     }
 
@@ -639,9 +639,9 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
                 color = fallbackcolor;
             }
 
-            *pixtmp++ = color->red >> 8;
+            *pixtmp++ = color->red   >> 8;
             *pixtmp++ = color->green >> 8;
-            *pixtmp++ = color->blue >> 8;
+            *pixtmp++ = color->blue  >> 8;
 
             if (color->transparent)
             {
@@ -657,15 +657,6 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     g_hash_table_destroy (color_hash);
     g_free (colors);
     g_free (name_buf);
-
-    if (items == 6) 
-    {
-        gchar hot[10];
-        g_snprintf (hot, 10, "%d", x_hot);
-        gdk_pixbuf_set_option (pixbuf, "x_hot", hot);
-        g_snprintf (hot, 10, "%d", y_hot);
-        gdk_pixbuf_set_option (pixbuf, "y_hot", hot);
-    }
 
     return pixbuf;
 }
