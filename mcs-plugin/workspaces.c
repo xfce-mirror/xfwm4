@@ -385,10 +385,10 @@ edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
 }
 
 static gboolean
-cb_activate_item (GtkTreeView * tree, GdkEventButton * event, McsManager * manager)
+cb_activate_item (GtkWidget * tree, GtkTreePath * path, GtkTreeViewColumn * column, gpointer data)
 {
+    McsManager * manager = (McsManager *) data;
     GtkTreeSelection *selection;
-    GtkTreePath *path;
     GtkTreeIter iter;
     GtkTreeModel *model;
     char *name;
