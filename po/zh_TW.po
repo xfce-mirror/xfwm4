@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-07 19:48+0200\n"
-"PO-Revision-Date: 2005-10-09 20:55+0900\n"
+"PO-Revision-Date: 2006-05-13 12:43+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -44,9 +44,8 @@ msgstr "底部："
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
-msgstr "工作區和邊緣"
+msgstr "按鈕標籤|工作區和邊緣"
 
 #: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
@@ -64,13 +63,12 @@ msgstr "邊緣"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:356
 msgid "None"
-msgstr ""
+msgstr "無"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:364
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "視窗管理程式"
+msgstr "視窗管理程式調校"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
 msgid ""
@@ -79,20 +77,19 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "包含隱藏(如：圖示化的)視窗"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:395
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "將視窗移至左方工作區"
+msgstr "在所有工作區的視窗間循環"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid "Cycling"
-msgstr ""
+msgstr "循環"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:412
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "啟用「預防偷竊焦點」"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:418
 msgid "Honor the standard ICCCM focus hint"
@@ -104,97 +101,91 @@ msgstr "焦點"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Key used to grab and move windows"
-msgstr ""
+msgstr "用來抓住及移動視窗的按鍵"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:441
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "按下任一滑鼠鍵時揚起視窗"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:448
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "移動視窗時顯示其內容"
+msgstr "移動視窗時回復最大化視窗原本的大小"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "使用邊緣阻抗取代視窗吸引"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Accessibility"
-msgstr ""
+msgstr "可近性"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "在桌面上使用滾輪切換工作區"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:479
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
+"由鍵盤捷徑切換時，記住並回到先前的作區"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "以實際上的桌面輸出決定工作區迴繞"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "鼠標移到螢幕邊緣時迴繞工作區"
+msgstr "抵達第一個或最後一個工作區時時迴繞工作區"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "觸發智慧配置的最小視窗大小"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:511
-#, fuzzy
 msgid "Size|Small"
-msgstr "窄"
+msgstr "大小|小"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Large"
-msgstr ""
+msgstr "大小|大"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:515
 msgid "Placement"
-msgstr ""
+msgstr "配置"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "在一般視窗下顯示陰影"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:540
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "在跳出視窗下顯示陰影"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:546
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "縮放視窗時顯示其內容"
+msgstr "視窗裝飾的不透明程度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Transparent"
-msgstr ""
+msgstr "透明"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
 #: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
 msgid "Opaque"
-msgstr ""
+msgstr "不透明"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:552
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "移動視窗時顯示其內容"
+msgstr "移動視窗時的不透明程度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "縮放視窗時顯示其內容"
+msgstr "縮放視窗時的不透明程度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:564
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "移動視窗時顯示其內容"
+msgstr "跳出視窗的不透明程度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:569
 #, fuzzy
@@ -203,14 +194,13 @@ msgstr "設定快速鍵"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:610
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "視窗管理程式"
+msgstr "按鈕標籤|視窗管理程式調校"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "這些設定無法運作於您目前的視窗管理程式 (%s) "
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -367,7 +357,7 @@ msgstr "點選獲取焦點"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1614
 msgid "Focus follows mouse"
-msgstr "焦點跟隨鼠標"
+msgstr "焦點跟隨游標"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1625
 msgid "Automatically give focus to newly created windows"
@@ -422,14 +412,12 @@ msgid "Distance :"
 msgstr "距離："
 
 #: ../mcs-plugin/xfwm4_plugin.c:1738
-#, fuzzy
 msgid "Distance|Small"
-msgstr "距離："
+msgstr "距離|窄"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1745
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "距離："
+msgstr "距離|寬"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces"
@@ -437,7 +425,7 @@ msgstr "迴繞工作區"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1772
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "鼠標移到螢幕邊緣時迴繞工作區"
+msgstr "遊標移到螢幕邊緣時迴繞工作區"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1780
 msgid "Wrap workspaces when dragging a window off the screen"
@@ -445,17 +433,15 @@ msgstr "拖曳視窗離開螢幕時回繞工作區"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1790
 msgid "Edge Resistance :"
-msgstr "螢幕邊緣阻力："
+msgstr "螢幕邊緣阻抗："
 
 #: ../mcs-plugin/xfwm4_plugin.c:1797
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "距離："
+msgstr "阻抗|弱"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1804
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "距離："
+msgstr "阻抗|強"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1826
 msgid "Opaque move and resize"
@@ -483,9 +469,8 @@ msgstr "進階"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1988
-#, fuzzy
 msgid "Button Label|Window Manager"
-msgstr "視窗管理程式"
+msgstr "按鈕|視窗管理程式"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
@@ -688,7 +673,7 @@ msgstr "沒有快速鍵"
 #: ../src/hints.c:77
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (於 %s)"
 
 #: ../src/main.c:188
 #, c-format
@@ -773,48 +758,42 @@ msgstr "工作區 %i"
 #: ../src/menu.c:408
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu 無法取得鼠標\n"
+msgstr "%s: GtkMenu 無法取得遊標\n"
 
 #: ../src/settings.c:853
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: 無法分配使用的顏色 %s\n"
+msgstr "%s: 無法分配顏色 %s\n"
 
 #: ../src/settings.c:859
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: 無法分析使用的顏色 %s\n"
+msgstr "%s: 無法處理顏色 %s\n"
 
 #: ../src/tabwin.c:94
 msgid "Unknown application!"
 msgstr "不明的應用程式！"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "視窗管理程式"
+msgstr "視窗管理程式設定"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "視窗管理程式"
+msgstr "Xfce 4 視窗管理程式設定"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "設定視窗管理程式"
+msgstr "進階組態設定"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "視窗管理程式"
+msgstr "Xfce 4 視窗管理程式調校"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "工作區邊緣"
+msgstr "工作區設定"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "工作區邊緣"
+msgstr "Xfce 4 工作區設定"
