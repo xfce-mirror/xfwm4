@@ -1,3 +1,13 @@
+2006-05-13  Daichi Kawahata <daichi@xfce.org>
+
+	* pl.po: Updated Polish translations by Szymon Kalasz
+	  <szymon_maestro@gazeta.pl>.
+
+2006-05-08  Daichi Kawahata <daichi@xfce.org>
+
+	* pl.po: Updated Polish translations by Szymon Kalasz
+	  <szymon_maestro@gazeta.pl>.
+
 2006-05-07  Daichi Kawahata <daichi@xfce.org>
 
 	* pl.po: Updated Polish translations by Piotr Malinski
@@ -19,12 +29,7 @@
 
 2006-01-07  Daichi Kawahata <daichi@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, zh_CN.po, zh_TW.po: Updated copyright information.
+	* *.po: Updated copyright information.
 
 2006-01-01  Daichi Kawahata <daichi@xfce.org>
 
@@ -32,21 +37,11 @@
 
 2006-01-01  Daichi Kawahata <daichi@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Updated.
+	* *.po: Updated.
 
 2005-12-20  Daichi Kawahata <daichi@xfce.org>
 
-	* ChangeLog, ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po,
-	  de.po, el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po,
-	  fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po,
-	  ko.po, lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po,
-	  pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po,
-	  uk.po, vi.po, zh_CN.po, zh_TW.po: Updated.
+	* *.po: Updated.
 
 2005-12-11  Stavros Giannouris <stavrosg2002@freemail.gr>
 
@@ -66,12 +61,7 @@
 
 2005-11-21  Daichi Kawahata <daichi@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Updated.
+	* *.po: Updated.
 
 2005-11-21  Daichi Kawahata <daichi@xfce.org>
 
@@ -79,29 +69,11 @@
 
 2005-11-11  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
+	* *.po: Resync
 
 2005-11-07  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync po
-
-2005-11-05  Daichi Kawahata <daichi@xfce.org>
-
-	* ChangeLog: Deciphering.
-
-2005-11-05  Daichi Kawahata <daichi@xfce.org>
-
-	* ChangeLog: Trimmed and updated.
+	* *.po: Resync po
 
 2005-10-27  Pau Rullan Ferragut <paurullan@bulma.net>
 
@@ -110,13 +82,8 @@
 
 2005-10-21  Daichi Kawahata <daichi@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, zh_CN.po, zh_TW.po: Updated with the latest POT file.
-	  Discarded obsolete translations.
+	* *.po: Updated with the latest POT file. Discarded obsolete
+	  translations.
 
 2005-10-21  Alex Dupre <ale@FreeBSD.org>
 
@@ -154,12 +121,7 @@
 
 2005-10-16  Daichi Kawahata <daichi@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Updated.
+	* xfwm4.pot, *.po: Updated.
 
 2005-10-15  Daichi Kawahata <daichi@xfce.org>
 
@@ -172,12 +134,7 @@
 
 2005-10-14  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
+	* xfwm4.pot, *.po: Resync
 
 2005-10-13  Daichi Kawahata <daichi@xfce.org>
 
@@ -194,60 +151,30 @@
 
 2005-10-09  Daichi Kawahata <daichi@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, zh_CN.po, zh_TW.po: Modified initial header/comment
-	  strings. Discarded obsolete translations.
+	* *.po: Modified initial header/comment strings. Discarded
+	  obsolete translations.
 	* po2tbl.sed.in: Removed.
 	* xfwm4.pot: Updated.
 
 2005-10-08  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
+	* xfwm4.pot, *.po: Resync
 
 2005-10-03  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync po
+	* xfwm4.pot, *.po: Resync po
 
 2005-10-02  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync po
+	* xfwm4.pot, *.po: Resync po
 
 2005-09-27  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
+	* xfwm4.pot, *.po: resync
 
 2005-09-25  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
+	* xfwm4.pot, *.po: Resync
 
 2005-09-24  Daichi Kawahata <daichi@xfce.org>
 
@@ -255,39 +182,19 @@
 
 2005-09-19  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
+	* xfwm4.pot, *.po: resync
 
 2005-09-15  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
+	* xfwm4.pot, *.po: resync
 
 2005-09-13  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
+	* xfwm4.pot, *.po: resync
 
 2005-09-13  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
+	* xfwm4.pot, *.po: resync
 
 2005-09-09  Daichi Kawahata <daichi@xfce.org>
 
@@ -296,67 +203,27 @@
 
 2005-09-07  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync po
+	* xfwm4.pot, *.po: resync po
 
 2005-09-06  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync po
+	* xfwm4.pot, *.po: resync po
 
 2005-09-05  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
+	* xfwm4.pot, *.po: resync
 
 2005-09-04  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
+	* xfwm4.pot, *.po: resync
 
 2005-09-02  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: Resync
+	* xfwm4.pot, *.po: Resync
 
 2005-09-01  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  el.po, en_GB.po, eo.po, es.po, es_MX.po, et.po, eu.po, fa.po,
-	  fi.po, fr.po, gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po,
-	  lt.po, mr.po, ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po,
-	  pt_PT.po, ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po,
-	  vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: resync
-
-2005-09-01  Olivier Fourdan <fourdan@xfce.org>
-
-	* xfwm4/trunk/configure.ac, ar.po, az.po, be.po, bg.po, bn_IN.po,
-	  ca.po, cs.po, de.po, el.po, en_GB.po, eo.po, es.po, es_MX.po,
-	  et.po, eu.po, fa.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po,
-	  it.po, ja.po, ko.po, lt.po, mr.po, ms.po, nb_NO.po, nl.po,
-	  pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po, ru.po, sk.po, sv.po,
-	  ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po, zh_TW.po: fix
-	  configure script
+	* xfwm4.pot, *.po: resync
 
 2005-08-29  Daichi Kawahata <daichi@xfce.org>
 
@@ -411,58 +278,23 @@
 
 2005-06-25  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
-	  gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po, mr.po,
-	  ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po,
-	  ro.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po,
-	  xfwm4.pot, zh_CN.po, zh_TW.po: Update snapshot generation
+	* xfwm4.pot, *.po: Update snapshot generation
 
 2005-06-22  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
-	  gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po, mr.po,
-	  ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po,
-	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
-	  zh_CN.po, zh_TW.po: Po stuff as always
+	* xfwm4.pot, *.po: Po stuff as always
 
 2005-06-20  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
-	  gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po, mr.po,
-	  ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po,
-	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
-	  zh_CN.po, zh_TW.po: Sync
+	* xfwm4.pot, *.po: Sync
 
 2005-06-19  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
-	  gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po, mr.po,
-	  ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po,
-	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
-	  zh_CN.po, zh_TW.po: Po
+	* xfwm4.pot, *.po: Po
 
 2005-06-16  Olivier Fourdan <fourdan@xfce.org>
 
-	* ar.po, az.po, be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po,
-	  en_GB.po, es.po, es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po,
-	  gu.po, he.po, hi.po, hu.po, it.po, ja.po, ko.po, lt.po, mr.po,
-	  ms.po, nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po,
-	  ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot,
-	  zh_CN.po, zh_TW.po: sync
-
-2005-06-13  Olivier Fourdan <fourdan@xfce.org>
-
-	* xfwm4/trunk/Makefile.am, xfwm4/trunk/configure.ac, ar.po, az.po,
-	  be.po, bg.po, bn_IN.po, ca.po, cs.po, de.po, en_GB.po, es.po,
-	  es_MX.po, et.po, eu.po, fa.po, fi.po, fr.po, gu.po, he.po,
-	  hi.po, hu.po, it.po, ja.po, ko.po, lt.po, mr.po, ms.po,
-	  nb_NO.po, nl.po, pa.po, pl.po, pt_BR.po, pt_PT.po, ro.po, ru.po,
-	  sk.po, sv.po, ta.po, tr.po, uk.po, vi.po, xfwm4.pot, zh_CN.po,
-	  zh_TW.po: Add new "make snapshot" and "make snapshot-bz2" targets
+	* xfwm4.pot, *.po: sync
 
 2005-06-07  Jean-Francois Wauthy <pollux@xfce.org>
 
