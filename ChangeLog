@@ -1,3 +1,45 @@
+2006-05-13 20:54  olivier
+
+	* themes/default/menu-active.png, themes/default/menu-active.xpm,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png,
+	  themes/default/menu-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.xpm: Increase title height by
+	  1 pixel, it gives a more balanced look.
+
+2006-05-13 19:17  paurullan
+
+	* po/ChangeLog, po/ca.po: [i18n] catalan translation
+	  Update of xfwm4 by Carles Muñoz Gorriz
+
 2006-05-13 08:30  olivier
 
 	* mcs-plugin/workspaces.c: Fix plugin crashing when editing
