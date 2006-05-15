@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -672,12 +672,12 @@ msgid "No shortcut"
 msgstr "शॉर्टकट नाही"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: विभाजन चूक"
@@ -756,17 +756,17 @@ msgstr "कार्यक्षेत्र %i (%s)"
 msgid "Workspace %i"
 msgstr "कार्यक्षेत्र %i"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s:पॉइन्टर पकडन्यासाठी Gtk मेन्यू असक्षम\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: सक्रिय रंग निर्धारित करु शकत नाही%s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: सक्रिय रंगाचे परस्पर संबध स्पष्ट करु शकत नाही%s\n"

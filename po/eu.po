@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2006-05-14 19:27+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
@@ -23,7 +23,8 @@ msgid "Workspace Margins"
 msgstr "Idazmahai Marjinak"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak leihorik ipiniko ez diren pantailaren zatiak dira"
 
 #: ../mcs-plugin/margins.c:167
@@ -70,8 +71,11 @@ msgid "Window Manager Tweaks"
 msgstr "Leiho Kudeatzaile Gomendioak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
-msgid "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr "\"paginatzailea utzi\" edo \"ataza-barra utzi\" propietateak ezarririk duten leihoa barne"
+msgid ""
+"Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr ""
+"\"paginatzailea utzi\" edo \"ataza-barra utzi\" propietateak ezarririk duten "
+"leihoa barne"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
@@ -122,8 +126,11 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Idazmahaia aldatu idazmahaiean sagu errubera erabiliaz"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:479
-msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr "Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla birtartez aldatzean"
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr ""
+"Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla birtartez "
+"aldatzean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -656,12 +663,12 @@ msgid "No shortcut"
 msgstr "laster-tekla gabe"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (%s-(e)n)"
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentazio errorea"
@@ -740,17 +747,17 @@ msgstr "%i (%s) Idazmahaia"
 msgid "Workspace %i"
 msgstr "%i Idazmahaia"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu errorea arratoi markatzailea eskuratzerakoan\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Ezin da %s kolorea esleitu\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Ezin da %s kolorea analizatu\n"
@@ -782,4 +789,3 @@ msgstr "Idazmahai Ezarpenak"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
-

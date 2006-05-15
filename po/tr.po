@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2005-10-09 20:53+0900\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -704,12 +704,12 @@ msgid "No shortcut"
 msgstr "Klavye Kısayolu"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Parçalanma hatası"
@@ -788,17 +788,17 @@ msgstr "Çalışma alanı %i"
 msgid "Workspace %i"
 msgstr "Çalışma alanı %i"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"

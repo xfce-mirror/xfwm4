@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2004-11-14 19:01+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -674,12 +674,12 @@ msgid "No shortcut"
 msgstr "Nici o combinaţie"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Eroare de segmentare"
@@ -758,17 +758,17 @@ msgstr "Spaţiu de lucru %i (%s)"
 msgid "Workspace %i"
 msgstr "Spaţiu de lucru %i"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nu a reuşit să captureze cursorul\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nu am reuşit să aloc culoarea activă %s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nu am reuşit să prelucrez culoarea activă %s\n"

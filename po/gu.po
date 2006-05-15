@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati <fedora-trans-gu@redhat.com>\n"
@@ -673,12 +673,12 @@ msgid "No shortcut"
 msgstr "કોઈ ટુંકાણ નથી"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
@@ -757,17 +757,17 @@ msgstr "કામ કરવાની જગ્યા %i (%s)"
 msgid "Workspace %i"
 msgstr "કામ કરવાની જગ્યા %i"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu એ નિર્દેશક મેળવવામાં નિષ્ફળ ગયું\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: સક્રિય રંગ %s સોંપી શકાતો નથી\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: સક્રિય રંગ %s પદચ્છેદ કરી શકાતો નથી\n"

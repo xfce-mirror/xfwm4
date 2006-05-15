@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2005-01-06 01:53+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.ua>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -666,12 +666,12 @@ msgid "No shortcut"
 msgstr "Немає комбінації клавіш"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: помилка сегментації"
@@ -750,17 +750,17 @@ msgstr "Робочу область %i (%s)"
 msgid "Workspace %i"
 msgstr "Робочу область %i"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Неможливо зарезервувати колір %s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Неможливо проаналізувати колір %s\n"

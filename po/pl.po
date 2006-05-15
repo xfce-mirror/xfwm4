@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2006-05-07 19:50+0200\n"
 "Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -664,12 +664,12 @@ msgid "No shortcut"
 msgstr "Brak aktywatora"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Naruszenie ochrony pamięci"
@@ -748,17 +748,17 @@ msgstr "Obszar roboczy %i (%s)"
 msgid "Workspace %i"
 msgstr "Obszar roboczy %i"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nie uzyskało wskaźnika\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nie mogę przypisać koloru %s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nie mogę zidentyfikować aktywnego koloru %s\n"

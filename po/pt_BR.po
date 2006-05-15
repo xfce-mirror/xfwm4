@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2006-05-05 15:28-0300\n"
 "Last-Translator: Adriano Winter Bess <awbess@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -670,12 +670,12 @@ msgid "No shortcut"
 msgstr "Sem atalho"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Falha de segmentação"
@@ -754,17 +754,17 @@ msgstr "Área de Trabalho %i (%s)"
 msgid "Workspace %i"
 msgstr "Área de Trabalho %i"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu não conseguiu encontrar o ponteiro\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Não é possível alocar cor %s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Não é possível interpretar cor %s\n"

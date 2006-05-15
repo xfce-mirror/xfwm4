@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-07 19:48+0200\n"
+"POT-Creation-Date: 2006-05-15 23:58+0200\n"
 "PO-Revision-Date: 2005-08-19 21:14+0900\n"
 "Last-Translator: Edscott Wilson Garcia <edscott@xfce.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -688,12 +688,12 @@ msgid "No shortcut"
 msgstr "Generar atajo"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:77
+#: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:188
+#: ../src/main.c:190
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Violación de segmento"
@@ -772,17 +772,17 @@ msgstr "Escritorio %i (%s)"
 msgid "Workspace %i"
 msgstr "Escritorio %i"
 
-#: ../src/menu.c:408
+#: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
 
-#: ../src/settings.c:853
+#: ../src/settings.c:858
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: No se puede reservar el color activo %s\n"
 
-#: ../src/settings.c:859
+#: ../src/settings.c:864
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: No se puede interpretar el color activo %s\n"
