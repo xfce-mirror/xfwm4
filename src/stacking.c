@@ -39,11 +39,12 @@ clientApplyStackList (ScreenInfo *screen_info)
 {
     Window *xwinstack;
     guint nwindows;
-    gint i = 0;
+    gint i;
 
     DBG ("applying stack list");
     nwindows = g_list_length (screen_info->windows_stack);
 
+    i = 0;
     xwinstack = g_new (Window, nwindows + 4);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[0]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[1]);
@@ -52,7 +53,7 @@ clientApplyStackList (ScreenInfo *screen_info)
 
     if (nwindows)
     {
-        GList *index = NULL;
+        GList *index;
         Client *c = NULL;
 
         for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
@@ -71,14 +72,15 @@ clientApplyStackList (ScreenInfo *screen_info)
 Client *
 clientGetLowestTransient (Client * c)
 {
-    Client *lowest_transient = NULL, *c2;
-    GList *index = NULL;
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
+    Client *lowest_transient, *c2;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, NULL);
 
     TRACE ("entering clientGetLowestTransient");
 
+    lowest_transient = NULL;
     screen_info = c->screen_info;
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
@@ -95,15 +97,16 @@ clientGetLowestTransient (Client * c)
 Client *
 clientGetHighestTransientOrModalFor (Client * c)
 {
-    Client *highest_transient = NULL;
-    Client *c2 = NULL;
-    GList *index = NULL;
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
+    Client *highest_transient;
+    Client *c2;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetHighestTransientOrModalFor");
 
     screen_info = c->screen_info;
+    highest_transient = NULL;
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
@@ -122,15 +125,16 @@ clientGetHighestTransientOrModalFor (Client * c)
 Client *
 clientGetTopMostForGroup (Client * c)
 {
-    Client *top_most = NULL;
-    Client *c2 = NULL;
-    GList *index = NULL;
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
+    Client *top_most;
+    Client *c2;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetTopMostForGroup");
 
     screen_info = c->screen_info;
+    top_most = NULL;
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c2 = (Client *) index->data;
@@ -150,7 +154,7 @@ gboolean
 clientIsTopMost (Client *c)
 {
     ScreenInfo *screen_info;
-    GList *index = NULL;
+    GList *index;
     
     g_return_val_if_fail (c != NULL, FALSE);
     TRACE ("entering clientIsTopMost");
@@ -177,11 +181,12 @@ clientIsTopMost (Client *c)
 Client *
 clientGetNextTopMost (ScreenInfo *screen_info, int layer, Client * exclude)
 {
-    Client *top = NULL, *c;
-    GList *index = NULL;
+    Client *top, *c;
+    GList *index;
 
     TRACE ("entering clientGetNextTopMost");
 
+    top = NULL;
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
@@ -202,11 +207,12 @@ clientGetNextTopMost (ScreenInfo *screen_info, int layer, Client * exclude)
 Client *
 clientGetBottomMost (ScreenInfo *screen_info, int layer, Client * exclude)
 {
-    Client *bot = NULL, *c;
-    GList *index = NULL;
+    Client *bot, *c;
+    GList *index;
 
     TRACE ("entering clientGetBottomMost");
 
+    bot = NULL;
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
@@ -230,18 +236,19 @@ clientGetBottomMost (ScreenInfo *screen_info, int layer, Client * exclude)
     return bot;
 }
 
+/*
+ * This function does the same as XQueryPointer but w/out the race
+ * conditions caused by querying the X server
+ */
 Client *
 clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
 {
-    /* This function does the same as XQueryPointer but w/out the race
-       conditions caused by querying the X server
-     */
-    GList *index = NULL;
-    Client *c = NULL;
-    Client *c2 = NULL;
+    GList *index;
+    Client *c, *c2;
 
     TRACE ("entering clientAtPosition");
 
+    c = NULL;
     for (index = g_list_last (screen_info->windows_stack); index; index = g_list_previous (index))
     {
         c2 = (Client *) index->data;
@@ -263,14 +270,23 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
 void
 clientRaise (Client * c, Window wsibling)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *c2, *c3, *client_sibling;
+    GList *transients;
+    GList *sibling;
+    GList *index1, *index2;
+    GList *windows_stack_copy;
 
     g_return_if_fail (c != NULL);
+
     TRACE ("entering clientRaise");
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    client_sibling = NULL;
+    transients = NULL;
+    sibling = NULL;
 
     if (c == screen_info->last_raise)
     {
@@ -291,13 +307,6 @@ clientRaise (Client * c, Window wsibling)
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        Client *c2, *c3;
-        Client *client_sibling = NULL;
-        GList *transients = NULL;
-        GList *sibling = NULL;
-        GList *index1, *index2;
-        GList *windows_stack_copy;
-
         /* Copy the existing window stack temporarily as reference */
         windows_stack_copy = g_list_copy (screen_info->windows_stack);
         /* Search for the window that will be just on top of the raised window  */
@@ -415,15 +424,23 @@ clientRaise (Client * c, Window wsibling)
 void
 clientLower (Client * c, Window wsibling)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *c2, *client_sibling;
+    GList *sibling;
+    GList *index;
+    gint position;
 
     g_return_if_fail (c != NULL);
+
     TRACE ("entering clientLower");
     TRACE ("lowering client \"%s\" (0x%lx) below (0x%lx)", c->name, c->window, wsibling);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    client_sibling = NULL;
+    sibling = NULL;
+    c2 = NULL;
 
     if (g_list_length (screen_info->windows_stack) < 1)
     {
@@ -432,12 +449,6 @@ clientLower (Client * c, Window wsibling)
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        Client *client_sibling = NULL;
-        GList *sibling = NULL;
-        Client *c2 = NULL;
-        GList *index = NULL;
-        gint position;
-
         if (clientIsTransientOrModalForGroup (c))
         {
             client_sibling = clientGetTopMostForGroup (c);
@@ -540,8 +551,8 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
 void
 clientAddToList (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientAddToList");
@@ -578,8 +589,8 @@ clientAddToList (Client * c)
 void
 clientRemoveFromList (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientRemoveFromList");
@@ -622,21 +633,19 @@ clientRemoveFromList (Client * c)
 GList *
 clientGetStackList (ScreenInfo *screen_info)
 {
-    GList *windows_stack_copy = NULL;
-
     g_return_val_if_fail (screen_info, NULL);
 
     if (screen_info->windows_stack)
     {
-        windows_stack_copy = g_list_copy (screen_info->windows_stack);
+        return g_list_copy (screen_info->windows_stack);
     }
-    return windows_stack_copy;
+    return NULL;
 }
 
 void
 clientSetLastRaise (Client *c)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
 

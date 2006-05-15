@@ -108,19 +108,21 @@ struct _XfwmButtonClickData
     DisplayInfo *display_info;
     Window w;
     guint button;
-    gboolean allow_double_click;
     guint clicks;
+    guint timeout;
     gint x;
     gint y;
     gint xcurrent;
     gint ycurrent;
-    guint timeout;
+    gboolean allow_double_click;
 };
 
 static gboolean
 typeOfClick_break (gpointer data)
 {
-    XfwmButtonClickData *passdata = (XfwmButtonClickData *) data;
+    XfwmButtonClickData *passdata;
+
+    passdata = (XfwmButtonClickData *) data;
     if (passdata->timeout)
     {
         g_source_remove (passdata->timeout);
@@ -135,10 +137,14 @@ typeOfClick_break (gpointer data)
 static eventFilterStatus
 typeOfClick_event_filter (XEvent * xevent, gpointer data)
 {
-    gboolean keep_going = TRUE;
-    eventFilterStatus status = EVENT_FILTER_STOP;
-    XfwmButtonClickData *passdata = (XfwmButtonClickData *) data;
-    
+    XfwmButtonClickData *passdata;
+    eventFilterStatus status;
+    gboolean keep_going;
+
+    keep_going = TRUE;
+    passdata = (XfwmButtonClickData *) data;
+    status = EVENT_FILTER_STOP;
+
     /* Update the display time */
     myDisplayUpdateCurentTime (passdata->display_info, xevent);
 
@@ -189,7 +195,7 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
 static XfwmButtonClickType
 typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_double_click)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     XfwmButtonClickData passdata;
     gboolean g;
 
@@ -262,7 +268,8 @@ clear_timeout (void)
 static gboolean
 raise_cb (gpointer data)
 {
-    Client *c = NULL;
+    Client *c;
+
     TRACE ("entering raise_cb");
 
     clear_timeout ();
@@ -349,13 +356,14 @@ getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
 static void
 handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 {
-    unsigned long mode = 0L;
-    ScreenInfo *screen_info = NULL;
-    Client *c = NULL;
+    unsigned long mode;
+    ScreenInfo *screen_info;
+    Client *c;
     int key;
 
     TRACE ("entering handleKeyEvent");
 
+    mode = 0;
     c = clientGetFocus ();
     if (c)
     {
@@ -580,9 +588,9 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
 static void
 button1Action (Client * c, XButtonEvent * ev)
 {
-    unsigned long mode = 0L;
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    unsigned long mode;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XEvent copy_event;
     XfwmButtonClickType tclick;
 
@@ -630,8 +638,8 @@ button1Action (Client * c, XButtonEvent * ev)
 static void
 titleButton (Client * c, int state, XButtonEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
@@ -718,7 +726,7 @@ static void
 rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
 {
     static Time lastscroll = (Time) 0;
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
 
     if ((ev->time - lastscroll) < 25)  /* ms */
     {
@@ -748,10 +756,11 @@ rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
 static void
 handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    Client *c = NULL;
+    ScreenInfo *screen_info;
+    Client *c;
     Window win;
-    int state, replay = FALSE;
+    int state;
+    gboolean replay;
 
     TRACE ("entering handleButtonPress");
 
@@ -763,7 +772,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         return;
     }
 #endif
-     
+
+    replay = FALSE;
     c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
     if (c)
     {
@@ -1004,7 +1014,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 static void
 handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
+
     TRACE ("entering handleButtonRelease");
 
 #if CHECK_BUTTON_TIME
@@ -1029,9 +1040,9 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
 static void
 handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
 {
-    Client *c = NULL;
+    Client *c;
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
 #endif
 
     TRACE ("entering handleDestroyNotify");
@@ -1039,7 +1050,7 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     screen_info = myDisplayGetScreenFromSystray (display_info, ev->window);
-    if  (screen_info)
+    if (screen_info)
     {
         /* systray window is gone */
         screen_info->systray = None;
@@ -1059,7 +1070,7 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
 static void
 handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
 {
-    Client *c = NULL;
+    Client *c;
 
     TRACE ("entering handleMapRequest");
     TRACE ("MapRequest on window (0x%lx)", ev->window);
@@ -1102,7 +1113,7 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
 static void
 handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
 {
-    Client *c = NULL;
+    Client *c;
 
     TRACE ("entering handleMapNotify");
     TRACE ("MapNotify on window (0x%lx)", ev->window);
@@ -1126,8 +1137,8 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
 static void
 handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    Client *c = NULL;
+    ScreenInfo *screen_info;
+    Client *c;
 
     TRACE ("entering handleUnmapNotify");
     TRACE ("UnmapNotify on window (0x%lx)", ev->window);
@@ -1202,9 +1213,12 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 static gboolean
 update_screen_idle_cb (gpointer data)
 {
-    ScreenInfo *screen_info = (ScreenInfo *) data;
-    DisplayInfo *display_info = screen_info->display_info;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     
+    screen_info = (ScreenInfo *) data;
+    display_info = screen_info->display_info;
+
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
                     gdk_screen_get_width (screen_info->gscr),
                     gdk_screen_get_height (screen_info->gscr),
@@ -1218,7 +1232,7 @@ update_screen_idle_cb (gpointer data)
 static void
 handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
 
     TRACE ("entering handleConfigureNotify");
 
@@ -1410,9 +1424,9 @@ static void
 handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
     static Time lastresist = (Time) 0;
-    Client *c = NULL;
-    ScreenInfo *screen_info = NULL;
-    gboolean warp_pointer = FALSE;
+    ScreenInfo *screen_info;
+    Client *c;
+    gboolean warp_pointer;
 
     TRACE ("entering handleEnterNotify");
 
@@ -1425,6 +1439,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 
     TRACE ("EnterNotify on window (0x%lx)", ev->window);
 
+    warp_pointer = FALSE;
     c = myDisplayGetClientFromWindow (display_info, ev->window, FRAME);
     if (c)
     {
@@ -1571,9 +1586,8 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 static void
 handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    Client *c = NULL;
-    Client *last_raised = NULL;
+    ScreenInfo *screen_info;
+    Client *c, *last_raised;
         
 
     TRACE ("entering handleFocusIn");
@@ -1605,6 +1619,8 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 "(unknown)");
 
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
+    last_raised = NULL;
+
     if (screen_info && (ev->window == screen_info->xroot) && (ev->mode == NotifyNormal) && 
         (ev->detail == NotifyDetailNone))
     {
@@ -1650,7 +1666,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 static void
 handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
-    Client *c = NULL;
+    Client *c;
     
     TRACE ("entering handleFocusOut");
     TRACE ("handleFocusOut (0x%lx) mode = %s",
@@ -1699,8 +1715,8 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
 static void
 handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    Client *c = NULL;
+    ScreenInfo *screen_info;
+    Client *c;
 
     TRACE ("entering handlePropertyNotify");
 
@@ -1864,9 +1880,9 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 static void
 handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    Client *c = NULL;
-    gboolean is_transient = FALSE;
+    ScreenInfo *screen_info;
+    Client *c;
+    gboolean is_transient;
 
     TRACE ("entering handleClientMessage");
 
@@ -2049,7 +2065,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 static void
 handleShape (DisplayInfo *display_info, XShapeEvent * ev)
 {
-    Client *c = NULL;
+    Client *c;
 
     TRACE ("entering handleShape");
 
@@ -2074,7 +2090,7 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
 static void
 handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
 {
-    Client *c = NULL;
+    Client *c;
 
     TRACE ("entering handleColormapNotify");
 
@@ -2214,9 +2230,9 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
 eventFilterStatus
 xfwm4_event_filter (XEvent * xevent, gpointer data)
 {
-    DisplayInfo *display_info = (DisplayInfo *) data;
-    
-    g_assert (display_info);
+    DisplayInfo *display_info;
+
+    display_info = (DisplayInfo *) data;
     
     TRACE ("entering xfwm4_event_filter");
     handleEvent (display_info, xevent);
@@ -2229,8 +2245,8 @@ xfwm4_event_filter (XEvent * xevent, gpointer data)
 static void
 menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer item_data)
 {
-    unsigned long mode = 0L;
-    Client *c = NULL;
+    unsigned long mode;
+    Client *c;
 
     TRACE ("entering menu_callback");
 
@@ -2239,6 +2255,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
         xfwmWindowDelete (&menu_event_window);
     }
 
+    c = NULL;
     if ((menu_data != NULL) && (xid != None))
     {
         ScreenInfo *screen_info = (ScreenInfo *) menu_data;
@@ -2323,17 +2340,20 @@ initMenuEventWin (void)
 static gboolean
 show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     Menu *menu;
     MenuOp ops;
     MenuOp insensitive;
-    Client *c = (Client *) data;
-    gint x = ev->x_root;
-    gint y = ev->y_root;
+    Client *c;
+    gint x;
+    gint y;
     
     TRACE ("entering show_popup_cb");
 
+    x = ev->x_root;
+    y = ev->y_root;
+    c = (Client *) data;
     if ((c) && ((ev->button == 1) || (ev->button == 3)))
     {
         c->button_pressed[MENU_BUTTON] = TRUE;
@@ -2506,11 +2526,12 @@ set_reload (GObject * obj, GdkEvent * ev, gpointer data)
 static gboolean
 dbl_click_time_cb (GObject * obj, GdkEvent * ev, gpointer data)
 {
-    DisplayInfo *display_info = (DisplayInfo *) data;
+    DisplayInfo *display_info;
     GValue tmp_val = { 0, };
 
+    display_info = (DisplayInfo *) data;
     g_return_val_if_fail (display_info, TRUE);
-    
+
     g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
     {

@@ -32,16 +32,13 @@
 Client *
 clientGetTransient (Client * c)
 {
-    Client *c2 = NULL;
-
     g_return_val_if_fail (c != NULL, NULL);
 
     TRACE ("entering clientGetTransient");
 
     if ((c->transient_for) && (c->transient_for != c->screen_info->xroot))
     {
-        c2 = clientGetFromWindow (c->screen_info, c->transient_for, WINDOW);
-        return c2;
+        return clientGetFromWindow (c->screen_info, c->transient_for, WINDOW);
     }
     return NULL;
 }
@@ -210,9 +207,9 @@ clientIsValidTransientOrModal (Client * c)
 gboolean
 clientTransientOrModalHasAncestor (Client * c, int ws)
 {
-    Client *c2 = NULL;
-    GList *index = NULL;
-    ScreenInfo *screen_info = NULL;
+    Client *c2;
+    GList *index;
+    ScreenInfo *screen_info;
     
     g_return_val_if_fail (c != NULL, FALSE);
 
@@ -242,15 +239,17 @@ clientTransientOrModalHasAncestor (Client * c, int ws)
 Client *
 clientGetModalFor (Client * c)
 {
-    Client *latest_modal = NULL;
-    Client *c2, *c3;
     ScreenInfo *screen_info;
-    GList *modals = NULL;
+    Client *latest_modal;
+    Client *c2, *c3;
+    GList *modals;
     GList *index1, *index2;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetModalFor");
     
+    modals = NULL;
+    latest_modal = NULL;
     screen_info = c->screen_info;
     for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
     {
@@ -291,12 +290,13 @@ GList *
 clientListTransient (Client * c)
 {
     ScreenInfo *screen_info;
-    GList *transients = NULL;
-    GList *index1, *index2;
     Client *c2, *c3;
+    GList *transients;
+    GList *index1, *index2;
 
     g_return_val_if_fail (c != NULL, NULL);
 
+    transients = NULL;
     screen_info = c->screen_info;
     transients = g_list_append (transients, c);
     for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
@@ -331,13 +331,14 @@ GList *
 clientListTransientOrModal (Client * c)
 {
     ScreenInfo *screen_info;
-    GList *transients = NULL;
-    GList *index1, *index2;
     Client *c2, *c3;
+    GList *transients;
+    GList *index1, *index2;
 
     g_return_val_if_fail (c != NULL, NULL);
 
     screen_info = c->screen_info;
+    transients = NULL;
     transients = g_list_append (transients, c);
     for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
     {
@@ -372,7 +373,7 @@ clientListTransientOrModal (Client * c)
 gboolean
 clientCheckTransientWindow (Client *c, Window w)
 {
-    GList *transients = NULL;
+    GList *transients;
     GList *index;
     Client *c2;
 

@@ -585,17 +585,16 @@ ScreenInfo *
 myDisplayGetDefaultScreen (DisplayInfo *display)
 {
     GSList *index;
-    ScreenInfo *screen = NULL;
 
     g_return_val_if_fail (display != NULL, NULL);
 
     index = display->screens;
     if (index)
     {
-        screen = (ScreenInfo *) index->data;
+        return (ScreenInfo *) index->data;
     }
 
-    return screen;
+    return NULL;
 }
 
 Time 

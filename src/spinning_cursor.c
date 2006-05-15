@@ -56,10 +56,10 @@ static const unsigned char xlib_spinning_mask_bits[] = {
 Cursor
 cursorCreateSpinning (Display * dpy)
 {
-    Pixmap cursor = None;
-    Pixmap mask = None;
+    Pixmap cursor;
+    Pixmap mask;
     XColor fg, bg;
-    Cursor xcursor = None;
+    Cursor xcursor;
 
     fg.pixel = 0;
     fg.red = 0;

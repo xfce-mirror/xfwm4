@@ -81,7 +81,7 @@
 static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISION " $";
 #endif
 
-static DisplayInfo *display_info = NULL;
+static DisplayInfo *display_info;
 gboolean xfwm4_quit           = FALSE;
 gboolean xfwm4_reload         = FALSE;
 
@@ -113,10 +113,11 @@ static char *
 build_session_filename(SessionClient *client_session)
 {
     gchar *filename, *path, *file;
-    GError *error = NULL;
+    GError *error;
 
     path = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
-    
+
+    error = NULL;
     if (!xfce_mkdirhier(path, 0700, &error)) 
     {
         g_warning("Unable to create session dir %s: %s", path, error->message);
@@ -149,9 +150,10 @@ load_saved_session (SessionClient *client_session)
 static void
 save_phase_2 (gpointer data)
 {
-    SessionClient *client_session = (SessionClient *) data;
+    SessionClient *client_session;
     gchar *filename;
 
+    client_session = (SessionClient *) data;
     filename = build_session_filename(client_session);
     if (filename)
     {
@@ -196,7 +198,7 @@ static void
 ensure_basedir_spec (void)
 {
     char *new, *old, path[PATH_MAX];
-    GError *error = NULL;
+    GError *error;
     GDir *gdir;
     const char *name;
 
@@ -212,6 +214,7 @@ ensure_basedir_spec (void)
         return;
     }
 
+    error = NULL;
     if (!xfce_mkdirhier(new, 0700, &error)) 
     {
         g_warning("Unable to create config dir %s: %s", new, error->message);
@@ -264,7 +267,6 @@ ensure_basedir_spec (void)
     /* copy saved session data */
     
     new = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
-
     if (!xfce_mkdirhier(new, 0700, &error)) 
     {
         g_warning("Unable to create session dir %s: %s", new, error->message);
@@ -403,23 +405,24 @@ static gint
 parse_compositor (const gchar *s)
 {
     gchar *rvalue;
-    gboolean retval = 2;
+    gint retval;
 
+    retval = 2;
     rvalue = strrchr (s, '=');
     if (rvalue)
     {
         rvalue++;
         if (!strcmp (rvalue, "off"))
         {
-            retval=0;
+            retval = 0;
         }
         else if (!strcmp (rvalue, "auto"))
         {
-            retval=1;
+            retval = 1;
         }
         else if (!strcmp (rvalue, "on"))
         {
-            retval=2;
+            retval = 2;
         }
         else
         {
@@ -483,7 +486,7 @@ initialize (int argc, char **argv, gint compositor_mode)
     nscreens = gdk_display_get_n_screens(display_info->gdisplay);
     for(i = 0; i < nscreens; i++) 
     {
-        ScreenInfo *screen_info = NULL;
+        ScreenInfo *screen_info;
         GdkScreen *gscr;
         
         gscr = gdk_display_get_screen(display_info->gdisplay, i);
@@ -557,12 +560,15 @@ initialize (int argc, char **argv, gint compositor_mode)
 int
 main (int argc, char **argv)
 {
-    int i;
-    gboolean daemon_mode = FALSE;
-    gint compositor = -1;
+    gboolean daemon_mode;
+    gint compositor;
     int status;
+    int i;
 
     DBG ("xfwm4 starting");
+
+    daemon_mode = FALSE;
+    compositor = -1;
     for (i = 1; i < argc; i++)
     {
         if (!strcmp (argv[i], "--daemon"))

@@ -104,11 +104,12 @@ escape_quote (gchar * s)
 {
     gchar *ns;
     gchar *idx1, *idx2;
-    gint nbquotes = 0;
-    gint lg = 0;
+    gint nbquotes, lg;
 
     g_return_val_if_fail (s != NULL, NULL);
 
+    nbquotes = 0;
+    lg = 0;
     lg = strlen (s);
     /* First, count quotes in string */
     idx1 = s;
@@ -197,12 +198,13 @@ static gchar *
 getsubstring (gchar * s, gint * length)
 {
     gchar pbrk;
-    gchar *ns;
-    gchar *end, *idx1, *idx2, *skip;
+    gchar *ns, *end, *idx1, *idx2, *skip;
     gint lg;
-    gboolean finished = FALSE, backslash = FALSE;
+    gboolean finished, backslash;
 
     lg = *length = 0;
+    finished = FALSE;
+    backslash = FALSE;
     g_return_val_if_fail (s != NULL, NULL);
 
     end = skip = s;
@@ -258,15 +260,19 @@ getsubstring (gchar * s, gint * length)
 static void
 sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     Client *c;
+    char *client_id, *window_role;
+    char **wm_command;
+    int wm_command_count;
     gint client_idx;
-    char *client_id = NULL;
-    char *window_role = NULL;
-    int wm_command_count = 0;
-    char **wm_command = NULL;
-    
+
     display_info = screen_info->display_info;
+    wm_command_count = 0;
+    wm_command = NULL;
+    window_role = NULL;
+    client_id = NULL;
+
     for (c = screen_info->clients, client_idx = 0; client_idx < screen_info->client_count;
         c = c->next, client_idx++)
     {
@@ -490,6 +496,7 @@ void
 sessionFreeWindowStates (void)
 {
     int i;
+
     for (i = 0; i < num_match; i++)
     {
         if (matches[i].client_id)
@@ -541,21 +548,24 @@ sessionFreeWindowStates (void)
 static gboolean
 matchWin (Client * c, Match * m)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    char *client_id = NULL;
-    char *window_role = NULL;
-    int wm_command_count = 0;
-    char **wm_command = NULL;
-    gboolean found;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    char *client_id;
+    char *window_role;
+    char **wm_command;
+    int wm_command_count;
     int i;
+    gboolean found;
 
     g_return_val_if_fail (c != NULL, FALSE);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-
+    wm_command = NULL;
+    window_role = NULL;
+    client_id = NULL;
     found = FALSE;
+
     getClientID (display_info, c->window, &client_id);
     if (xstreq (client_id, m->client_id))
     {

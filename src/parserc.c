@@ -81,10 +81,11 @@ gboolean
 checkRc (Settings *rc)
 {
     gint i;
-    gboolean rval = TRUE;
+    gboolean rval;
 
     TRACE ("entering checkRc");
 
+    rval = TRUE;
     for (i = 0; rc[i].option; i++)
     {
         if (rc[i].required && !rc[i].value)

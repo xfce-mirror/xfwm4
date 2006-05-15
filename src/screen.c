@@ -53,10 +53,10 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     gchar selection[32];
 #endif
-    long desktop_visible = 0;
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     GdkWindow *event_win;
-    PangoLayout *layout = NULL;
+    PangoLayout *layout;
+    long desktop_visible;
     int i;
     
     g_return_val_if_fail (display_info, NULL);
@@ -68,6 +68,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     
     screen_info->display_info = display_info;
     screen_info->gscr = gscr;
+    desktop_visible = 0;
+    layout = NULL;
 
     /* Create a GTK window so that we are just like any other GTK application */
     screen_info->gtk_win = gtk_window_new (GTK_WINDOW_POPUP);
@@ -222,7 +224,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 ScreenInfo *
 myScreenClose (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     
     g_return_val_if_fail (screen_info, NULL);
     TRACE ("entering myScreenClose");
@@ -264,7 +266,7 @@ myScreenClose (ScreenInfo *screen_info)
 Display *
 myScreenGetXDisplay (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     
     g_return_val_if_fail (screen_info, NULL);
     g_return_val_if_fail (screen_info->display_info, NULL);
@@ -295,11 +297,13 @@ myScreenGetGdkWindow (ScreenInfo *screen_info)
 gboolean
 myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
 {
-    gboolean grab = TRUE;
+    gboolean grab;
 
     g_return_val_if_fail (screen_info, FALSE);
+    
     TRACE ("entering myScreenGrabKeyboard");
 
+    grab = TRUE;
     if (screen_info->key_grabs == 0)
     {
         grab = (XGrabKeyboard (myScreenGetXDisplay (screen_info), 
@@ -317,11 +321,12 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
 gboolean
 myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, Time time)
 {
-    gboolean grab = TRUE;
+    gboolean grab;
 
     g_return_val_if_fail (screen_info, FALSE);
     TRACE ("entering myScreenGrabPointer");
 
+    grab = TRUE;
     if (screen_info->pointer_grabs == 0)
     {
         grab = (XGrabPointer (myScreenGetXDisplay (screen_info), 

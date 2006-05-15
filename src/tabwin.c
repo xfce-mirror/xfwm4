@@ -43,7 +43,7 @@
 static GdkColor *
 get_color (GtkWidget * win, GtkStateType state_type)
 {
-    GtkStyle *style = NULL;
+    GtkStyle *style;
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
@@ -164,19 +164,22 @@ createWindowIcon (Client * c)
 static GtkWidget *
 createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin * t)
 {
+    ScreenInfo *screen_info;
+    Client *c2 = NULL;
+    GList *next;
     GdkRectangle monitor_sz;
     GtkWidget *windowlist, *icon;
-    GList *next;
-    Client *c2 = NULL;
-    ScreenInfo *screen_info;
     unsigned int grid_cols;
     unsigned int n_clients;
     unsigned int grid_rows;
-    int i = 0, packpos = 0;
-    int msx = 0, msy = 0;
+    int i, packpos;
+    int msx, msy;
     gint monitor;
 
     g_return_val_if_fail (c != NULL, NULL);
+
+    i = 0;
+    packpos = 0;
 
     /* calculate the wrapping */
     screen_info = c->screen_info;
@@ -300,16 +303,14 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean di
 Client *
 tabwinGetSelected (Tabwin * t)
 {
-    Client *c = NULL;
-
     g_return_val_if_fail (t != NULL, NULL);
 
     if ((t->current) && (t->current->data))
     {
-        c = (Client *) g_object_get_data (G_OBJECT (t->current->data), "client-ptr-val");
+        return (Client *) g_object_get_data (G_OBJECT (t->current->data), "client-ptr-val");
     }
 
-    return c;
+    return NULL;
 }
 
 Client *

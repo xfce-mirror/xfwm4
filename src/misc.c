@@ -105,7 +105,7 @@ createGC (ScreenInfo *screen_info, char *col, int func, XFontStruct * font,
 void
 sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, Time timestamp)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     XClientMessageEvent ev;
 
     g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
@@ -124,7 +124,7 @@ sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, Time timestam
 void
 sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, Time timestamp)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     XClientMessageEvent ev;
 
     g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
@@ -148,16 +148,18 @@ sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, Time timestam
 gboolean
 checkWindowOnRoot(ScreenInfo *screen_info, Window w)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     Window dummy_root, parent;
-    Window *wins = NULL;
-    unsigned int count;
+    Window *wins;
     Status test;
+    unsigned int count;
     
     g_return_val_if_fail (screen_info != NULL, FALSE);
     g_return_val_if_fail (w != None, FALSE);
 
     display_info = screen_info->display_info;
+    wins = NULL;
+
     gdk_error_trap_push ();
     test = XQueryTree(display_info->dpy, w, &dummy_root, &parent, &wins, &count);
     if (wins)
@@ -170,13 +172,14 @@ checkWindowOnRoot(ScreenInfo *screen_info, Window w)
 void
 placeSidewalks(ScreenInfo *screen_info, gboolean activate)
 {
-    NetWmDesktopLayout l = screen_info->desktop_layout;
+    NetWmDesktopLayout l;
 
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[0]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[1]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[2]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[3]) != None);
 
+    l = screen_info->desktop_layout;
     if ((activate) && (l.cols > 1))
     {
         /*left*/
@@ -236,15 +239,10 @@ gint
 find_monitor_at_point (GdkScreen *screen, gint x, gint y)
 {
     static gint cache_monitor = -1;
-    static gint cache_x;
-    static gint cache_y;
-
-    gint dx, dy;
-    gint center_x, center_y;
+    static gint cache_x, cache_y;
+    gint dx, dy, center_x, center_y;
     guint32 distsquare, min_distsquare;
-
-    gint num_monitors, i;
-    gint nearest_monitor;
+    gint num_monitors, nearest_monitor, i;
     GdkRectangle monitor;
 
     g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
@@ -254,7 +252,7 @@ find_monitor_at_point (GdkScreen *screen, gint x, gint y)
     {
         return (cache_monitor);
     }
-    
+
     cache_x = x;
     cache_y = y;
 

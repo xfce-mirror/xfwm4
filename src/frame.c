@@ -194,15 +194,15 @@ frameHeight (Client * c)
 static void
 frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap * pm)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    GdkPixmap *gpixmap = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    GdkPixmap *gpixmap;
     GdkGCValues values;
-    GdkGC *gc = NULL;
-    PangoLayout *layout = NULL;
+    GdkGC *gc;
+    PangoLayout *layout;
     PangoRectangle logical_rect;
-    int width, x = 0, hoffset = 0, w1 = 0, w2, w3, w4, w5, temp;
-    int voffset = 0, title_x = 0, title_y = 0;
+    int width, x, hoffset, w1, w2, w3, w4, w5, temp;
+    int voffset, title_x, title_y;
 
     TRACE ("entering frameCreateTitlePixmap");
 
@@ -219,9 +219,8 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         right = temp;
     }
 
-    width =
-        frameWidth (c) - screen_info->corners[CORNER_TOP_LEFT][state].width -
-        screen_info->corners[CORNER_TOP_RIGHT][state].width;
+    width = frameWidth (c) - screen_info->corners[CORNER_TOP_LEFT][state].width -
+            screen_info->corners[CORNER_TOP_RIGHT][state].width;
     if (width < 1)
     {
         pm->pixmap = None;
@@ -249,6 +248,11 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     left = left - screen_info->corners[CORNER_TOP_LEFT][state].width;
     right = right - screen_info->corners[CORNER_TOP_LEFT][state].width;
 
+    x = 0;
+    hoffset = 0;
+    voffset = 0;
+
+    w1 = 0;
     w2 = screen_info->title[TITLE_2][state].width;
     w4 = screen_info->title[TITLE_4][state].width;
 
@@ -373,10 +377,11 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
 static int
 getButtonFromLetter (char chr, Client * c)
 {
-    int b = -1;
+    int b;
 
     TRACE ("entering getButtonFromLetter");
 
+    b = -1;
     switch (chr)
     {
         case 'H':
@@ -424,10 +429,11 @@ getButtonFromLetter (char chr, Client * c)
 static char
 getLetterFromButton (int i, Client * c)
 {
-    char chr = 0;
+    char chr;
 
     TRACE ("entering getLetterFromButton");
 
+    chr = 0;
     switch (i)
     {
         case HIDE_BUTTON:
@@ -472,8 +478,9 @@ getLetterFromButton (int i, Client * c)
 static xfwmPixmap *
 frameGetPixmap (Client * c, int button, int state)
 {
-    ScreenInfo *screen_info = c->screen_info;
+    ScreenInfo *screen_info;
 
+    screen_info = c->screen_info;
     switch (button)
     {
         case MENU_BUTTON:
@@ -516,8 +523,8 @@ frameGetPixmap (Client * c, int button, int state)
 static void
 frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x[BUTTON_COUNT])
 {
-    ScreenInfo *screen_info = c->screen_info;
-    DisplayInfo *display_info = screen_info->display_info;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     Window temp;
     XRectangle rect;
     xfwmPixmap *my_pixmap;
@@ -525,6 +532,9 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
    
     TRACE ("entering frameSetShape");
     TRACE ("setting shape for client (0x%lx)", c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     if (!display_info->have_shape)
     {
@@ -721,16 +731,15 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
 void
 frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     xfwmPixmap *my_pixmap;
-    gboolean requires_clearing = FALSE;
-    gboolean width_changed = FALSE;
-    gboolean height_changed = FALSE;
-    gboolean title_changed = FALSE;
-    int state = ACTIVE;
-    int i, j, x, button, left, right;
+    int state, i, j, x, button, left, right;
     int top_width, bottom_width, left_height, right_height;
     int button_x[BUTTON_COUNT];
+    gboolean requires_clearing;
+    gboolean width_changed;
+    gboolean height_changed;
+    gboolean title_changed;
 
     TRACE ("entering frameDraw");
     TRACE ("drawing frame for \"%s\" (0x%lx)", c->name, c->window);
@@ -738,6 +747,12 @@ frameDraw (Client * c, gboolean invalidate_cache, gboolean force_shape_update)
     g_return_if_fail (c != NULL);
 
     screen_info = c->screen_info;
+    requires_clearing = FALSE;
+    width_changed = FALSE;
+    height_changed = FALSE;
+    title_changed = FALSE;
+    state = ACTIVE;
+
     if (c != clientGetFocus ())
     {
         TRACE ("\"%s\" is not the active window", c->name);

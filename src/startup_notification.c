@@ -120,14 +120,16 @@ sn_remove_sequence (ScreenInfo *screen_info, SnStartupSequence * sequence)
 static void
 sn_collect_timed_out_foreach (void *element, void *data)
 {
-    CollectTimedOutData *ctod = data;
-    SnStartupSequence *sequence = element;
+    CollectTimedOutData *ctod;
+    SnStartupSequence *sequence;
     long tv_sec, tv_usec;
     double elapsed;
 
     g_return_if_fail (data != NULL);
     g_return_if_fail (element != NULL);
 
+    sequence = element;
+    ctod = (CollectTimedOutData *) data;
     sn_startup_sequence_get_last_active_time (sequence, &tv_sec, &tv_usec);
 
     elapsed =
@@ -143,10 +145,11 @@ sn_collect_timed_out_foreach (void *element, void *data)
 static gboolean
 sn_startup_sequence_timeout (void *data)
 {
-    ScreenInfo * screen_info = (ScreenInfo *) data;
+    ScreenInfo * screen_info;
     CollectTimedOutData ctod;
     GSList *tmp;
 
+    screen_info = (ScreenInfo *) data;
     g_return_val_if_fail (screen_info != NULL, FALSE);
 
     ctod.list = NULL;
@@ -181,13 +184,14 @@ static void
 sn_screen_event (SnMonitorEvent * event, void *user_data)
 {
     const char *wmclass;
+    ScreenInfo *screen_info;
     SnStartupSequence *sequence;
-    ScreenInfo *screen_info = (ScreenInfo *) user_data;
     
     g_return_if_fail (event != NULL);
-    g_return_if_fail (screen_info != NULL);
-
     sequence = sn_monitor_event_get_startup_sequence (event);
+
+    screen_info = (ScreenInfo *) user_data;
+    g_return_if_fail (screen_info != NULL);
 
     switch (sn_monitor_event_get_type (event))
     {
@@ -212,10 +216,10 @@ sn_screen_event (SnMonitorEvent * event, void *user_data)
 void
 sn_client_startup_properties (Client * c)
 {
-    char *startup_id = NULL;
-    GSList *tmp = NULL;
-    SnStartupSequence *sequence;
     ScreenInfo *screen_info;
+    GSList *tmp;
+    SnStartupSequence *sequence;
+    char *startup_id;
 
     g_return_if_fail (c != NULL);
 

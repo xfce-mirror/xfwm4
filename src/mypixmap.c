@@ -258,11 +258,13 @@ static gint
 xpm_read_string (FILE *infile, gchar **buffer, guint *buffer_size)
 {
     gint c;
-    guint cnt = 0, bufsiz, ret = FALSE;
+    guint cnt = 0, bufsiz, ret;
     gchar *buf;
 
     buf = *buffer;
     bufsiz = *buffer_size;
+    ret = FALSE;
+
     if (buf == NULL) 
     {
         bufsiz = 10 * sizeof (gchar);
@@ -336,17 +338,23 @@ search_color_symbol (gchar *symbol, xfwmColorSymbol *color_sym)
 static gchar *
 xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
 {
-    const gchar *p = &buffer[0];
-    gint new_key = 0;
-    gint key = 0;
-    gint current_key = 1;
-    gint space = 128;
+    const gchar *p;
     gchar word[129], color[129], current_color[129];
     gchar *r; 
+    gint new_key;
+    gint key;
+    gint current_key;
+    gint space;
 
+    p = &buffer[0];
+    space = 128;
     word[0] = '\0';
     color[0] = '\0';
     current_color[0] = '\0';
+    current_key = 1;
+    new_key = 0;
+    key = 0;
+
     while (1) 
     {
         /* skip whitespace */
@@ -466,8 +474,9 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
 static const gchar *
 file_buffer (enum buf_op op, gpointer handle)
 {
-    struct file_handle *h = handle;
+    struct file_handle *h;
 
+    h = handle;
     switch (op) 
     {
         case op_header:
@@ -698,8 +707,9 @@ static void
 xfwmPixmapRefreshPict (xfwmPixmap * pm)
 {
 #ifdef HAVE_RENDER
-    ScreenInfo * screen_info = pm->screen_info;
+    ScreenInfo * screen_info;
 
+    screen_info = pm->screen_info;
     if (!pm->pict_format)
     {
         pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
@@ -723,12 +733,11 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
 static GdkPixbuf *
 xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
 {
+    GdkPixbuf *alpha;
+    GError *error;
     gchar *filepng;
     gchar *filename;
-    GdkPixbuf *alpha = NULL;
-    GError *error = NULL;
     gint width, height;
-    gboolean status;
     int i;
 
     static const char* image_types[] = {
@@ -740,6 +749,9 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
       NULL };
 
     i = 0;
+    error = NULL;
+    alpha = NULL;
+    
     while ((image_types[i]) && (!alpha))
     {
         filepng = g_strdup_printf ("%s.%s", file, image_types[i]);

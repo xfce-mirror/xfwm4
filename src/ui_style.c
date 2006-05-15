@@ -128,6 +128,7 @@ print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
 {
     gchar *s;
     gint n, m;
+
     g_return_val_if_fail (state != NULL, NULL);
     g_return_val_if_fail (name != NULL, NULL);
 
@@ -165,8 +166,8 @@ print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
 gchar *
 getUIStyle (GtkWidget * win, const gchar * name, const gchar * state)
 {
-    GtkStyle *style = NULL;
-    gchar *s = NULL;
+    GtkStyle *style;
+    gchar *s;
 
     TRACE ("entering getUIStyle");
 
@@ -187,7 +188,7 @@ getUIStyle (GtkWidget * win, const gchar * name, const gchar * state)
 static GdkGC *
 _getUIStyle_gc (const gchar * name, const gchar * state, GtkStyle * style)
 {
-    GdkGC *gc = NULL;
+    GdkGC *gc;
     gint n, m;
 
     g_return_val_if_fail (state != NULL, NULL);
@@ -230,7 +231,7 @@ _getUIStyle_gc (const gchar * name, const gchar * state, GtkStyle * style)
 GdkGC *
 getUIStyle_gc (GtkWidget * win, const gchar * name, const gchar * state)
 {
-    GtkStyle *style = NULL;
+    GtkStyle *style;
 
     TRACE ("entering getUIStyle_gc");
 

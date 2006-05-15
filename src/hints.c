@@ -52,11 +52,14 @@ check_type_and_format (int expected_format, Atom expected_type, int n_items, int
 static gchar *
 internal_utf8_strndup (const gchar *src, gssize max_len)
 {
-    const gchar *s = src;
+    const gchar *s;
 
     if (max_len <= 0)
+    {
         return g_strdup (src);
+    }
 
+    s = src;
     while (max_len && *s)
     {
         s = g_utf8_next_char (s);
@@ -69,7 +72,7 @@ internal_utf8_strndup (const gchar *src, gssize max_len)
 static gchar*
 create_name_with_host (DisplayInfo *display_info, const gchar *name, const gchar *hostname)
 {
-    gchar *title = NULL;
+    gchar *title;
     
     if (strlen (hostname) && (display_info->hostname) && (g_strcasecmp (display_info->hostname, hostname)))
     {
@@ -90,11 +93,13 @@ getWMState (DisplayInfo *display_info, Window w)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned char *data = NULL;
-    unsigned long state = WithdrawnState;
+    unsigned char *data;
+    unsigned long state;
 
     TRACE ("entering getWmState");
 
+    data = NULL;
+    state = WithdrawnState;
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_STATE], 
                              0, 3L, FALSE, display_info->atoms[WM_STATE],
                              &real_type, &real_format, &items_read, &items_left,
@@ -130,11 +135,13 @@ getMotifHints (DisplayInfo *display_info, Window w)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned char *data = NULL;
-    PropMwmHints *result = NULL;
+    unsigned char *data;
+    PropMwmHints *result;
 
     TRACE ("entering getMotifHints");
 
+    data = NULL;
+    result = NULL;
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[MOTIF_WM_HINTS], 0L, MWM_HINTS_ELEMENTS, 
                 FALSE, display_info->atoms[MOTIF_WM_HINTS], &real_type, &real_format, &items_read,
                 &items_left, (unsigned char **) &data) == Success))
@@ -159,12 +166,13 @@ getWMProtocols (DisplayInfo *display_info, Window w)
     int i, n;
     Atom atype;
     int aformat;
-    unsigned int result = 0;
+    unsigned int result;
     unsigned long bytes_remain, nitems;
     unsigned char *data;
 
     TRACE ("entering getWMProtocols");
 
+    result = 0;
     if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
@@ -225,15 +233,17 @@ gboolean
 getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
 {
     Atom real_type;
-    int real_format;
-    gboolean success = FALSE;
     unsigned long items_read, items_left;
-    unsigned char *data = NULL;
+    unsigned char *data;
+    int real_format;
+    gboolean success;
 
     g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getHint");
 
+    success = FALSE;
     *value = 0;
+    data = NULL;
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 0L, 1L, 
                              FALSE, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left,
@@ -263,14 +273,18 @@ void
 getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDesktopLayout * layout)
 {
     Atom real_type;
-    int real_format;
-    gboolean success = FALSE;
     unsigned long items_read, items_left;
     unsigned long orientation, cols, rows, start;
-    unsigned long *ptr = NULL;
-    unsigned char *data = NULL;
+    unsigned long *ptr;
+    unsigned char *data;
+    int real_format;
+    gboolean success;
 
     TRACE ("entering getDesktopLayout");
+
+    ptr = NULL;
+    data = NULL;
+    success = FALSE;
 
     if ((XGetWindowProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_LAYOUT],
                 0L, 4L, FALSE, XA_CARDINAL,
@@ -336,11 +350,13 @@ getGnomeDesktopMargins (DisplayInfo *display_info, Window root, int * m)
     Atom real_type;
     int real_format;
     unsigned long items_read, items_left;
-    unsigned long *ptr = NULL;
-    unsigned char *data = NULL;
+    unsigned long *ptr;
+    unsigned char *data;
 
     TRACE ("entering getGnomeDesktopMargins");
 
+    ptr = NULL;
+    data = NULL;
     if ((XGetWindowProperty (display_info->dpy, root,
                 display_info->atoms[GNOME_PANEL_DESKTOP_AREA], 0L, 4L, FALSE, XA_CARDINAL,
                 &real_type, &real_format, &items_read, &items_left,
@@ -379,8 +395,9 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 {
     Atom atoms[64];
     unsigned long data[1];
-    int i = 0;
+    int i;
 
+    i = 0;
     atoms[i++] = display_info->atoms[NET_ACTIVE_WINDOW];
     atoms[i++] = display_info->atoms[NET_CLIENT_LIST];
     atoms[i++] = display_info->atoms[NET_CLIENT_LIST_STACKING];
@@ -804,7 +821,7 @@ gboolean
 getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
 {
     char *str;
-    gboolean status = FALSE;
+    gboolean status;
 
     TRACE ("entering getClientMachine");
 
@@ -812,6 +829,7 @@ getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
     *machine = NULL;
     g_return_val_if_fail (w != None, FALSE);
 
+    status = FALSE;
     str = get_text_property (display_info, w, display_info->atoms[WM_CLIENT_MACHINE]);
     if (str)
     {
@@ -833,7 +851,7 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **title)
     int len;
     gchar *machine;
     gchar *name;
-    gboolean status = FALSE;
+    gboolean status;
     
     TRACE ("entering getWindowName");
 
@@ -841,6 +859,7 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **title)
     *title = NULL;
     g_return_val_if_fail (w != None, FALSE);
 
+    status = FALSE;
     getClientMachine (display_info, w, &machine);
     if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len) ||
         (str = get_text_property (display_info, w, XA_WM_NAME)))
@@ -890,7 +909,7 @@ getWindowRole (DisplayInfo *display_info, Window window, gchar **role)
 Window
 getClientLeader (DisplayInfo *display_info, Window window)
 {
-    Window client_leader = None;
+    Window client_leader;
     Atom actual_type;
     int actual_format;
     unsigned long nitems;
@@ -901,6 +920,7 @@ getClientLeader (DisplayInfo *display_info, Window window)
 
     g_return_val_if_fail (window != None, None);
 
+    client_leader = None;
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[WM_CLIENT_LEADER], 
                             0L, 1L, FALSE, AnyPropertyType, &actual_type, &actual_format, &nitems,
                             &bytes_after, (unsigned char **) &prop) == Success)
@@ -1066,12 +1086,13 @@ getRGBIconData (DisplayInfo *display_info, Window window, unsigned long **data, 
 gboolean
 getOpacity (DisplayInfo *display_info, Window window, guint *opacity)
 {
-    long val = 0;
+    long val;
     
     g_return_val_if_fail (window != None, FALSE);
     g_return_val_if_fail (opacity != NULL, FALSE);
     TRACE ("entering getOpacity");    
 
+    val = 0;
     if (getHint (display_info, window, NET_WM_WINDOW_OPACITY, &val))
     {
         *opacity = (guint) val;
@@ -1169,7 +1190,7 @@ sendSystrayReqDock(DisplayInfo *display_info, Window window, Window systray)
 Window
 getSystrayWindow (DisplayInfo *display_info, Atom net_system_tray_selection)
 {
-    Window systray_win = None;
+    Window systray_win;
 
     TRACE ("entering getSystrayWindow");
 

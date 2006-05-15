@@ -118,15 +118,17 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 void 
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
-    Client *c2 = NULL;
-    int i, delta = 0;
-    int screen_width = 0;
-    int screen_height = 0;
+    Client *c2;
+    int i, delta, screen_width, screen_height;
     
     g_return_if_fail (x != NULL);
     g_return_if_fail (y != NULL);
     g_return_if_fail (w != NULL);
     g_return_if_fail (h != NULL);
+
+    screen_width = 0;
+    screen_height = 0;
+    delta = 0;
 
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
@@ -178,8 +180,8 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 gboolean
 clientCkeckTitle (Client * c)
 {
-    Client *c2 = NULL;
-    ScreenInfo *screen_info = NULL;
+    Client *c2;
+    ScreenInfo *screen_info;
     int i, frame_x, frame_y, frame_width, frame_top;
     
     frame_x = frameX (c);
@@ -212,13 +214,13 @@ clientCkeckTitle (Client * c)
 unsigned int
 clientConstrainPos (Client * c, gboolean show_full)
 {
-    Client *c2 = NULL;
-    ScreenInfo *screen_info = NULL;
+    Client *c2;
+    ScreenInfo *screen_info;
     int i, cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_height, frame_width, frame_top, frame_left;
     int frame_x, frame_y, frame_visible;
     int screen_width, screen_height;
-    unsigned int ret = 0;
+    unsigned int ret;
     GdkRectangle rect;
     gint monitor_nbr;
     gint min_visible;
@@ -237,6 +239,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     frame_left = frameLeft (c);
     frame_visible = (frame_top ? frame_top : frame_height);
     min_visible = MAX (frame_top, CLIENT_MIN_VISIBLE);
+    ret = 0;
 
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
@@ -531,11 +534,10 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 {
     Client *c2;
     ScreenInfo *screen_info;
-    int test_x = 0, test_y = 0;
-    int xmax, ymax, best_x, best_y, i;
+    gfloat best_overlaps;
+    int test_x, test_y, xmax, ymax, best_x, best_y, i;
     int frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
-    gfloat best_overlaps = 0.0;
-    gboolean first = TRUE;
+    gboolean first;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering smartPlacement");
@@ -547,6 +549,10 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     frame_width = frameWidth (c);
     frame_left = frameLeft(c);
     frame_top = frameTop (c);
+    test_x = 0;
+    test_y = 0;
+    best_overlaps = 0.0;
+    first = TRUE;
 
     xmax = full_x + full_w - c->width - frameRight (c);
     ymax = full_y + full_h - c->height - frameBottom (c);
@@ -614,11 +620,10 @@ centerPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 void
 clientInitPosition (Client * c)
 {
-    Client *c2;
     ScreenInfo *screen_info;
-    int full_x, full_y, full_w, full_h;
-    int msx = 0, msy = 0;
+    Client *c2;
     GdkRectangle rect;
+    int full_x, full_y, full_w, full_h, msx, msy;
     gint monitor_nbr;
     gboolean place = TRUE;
 
@@ -628,6 +633,9 @@ clientInitPosition (Client * c)
     clientGravitate (c, APPLY);
 
     screen_info = c->screen_info;
+    msx = 0;
+    msy = 0;
+
     if ((c->size->flags & (PPosition | USPosition)) ||
         (c->type & (WINDOW_TYPE_DONT_PLACE)) ||
         ((c->type & (WINDOW_TYPE_DIALOG)) && !clientIsTransient (c)))

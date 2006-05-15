@@ -153,11 +153,11 @@ menu_closed (GtkMenu * widget, gpointer data)
 static GtkWidget *
 menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn, gint wsn_items)
 {
-    gint i;
     GtkWidget *menu_widget;
     GtkWidget *menuitem;
     MenuData *menudata;
     gchar *name;
+    gint i;
 
     menu_widget = gtk_menu_new ();
     gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
@@ -197,8 +197,13 @@ Menu *
 menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func, 
     gint ws, gint nws, gchar **wsn, gint wsn_items, eventFilterSetup *filter_setup, gpointer data)
 {
-    int i;
+    GtkWidget *menuitem;
+    GtkWidget *image;
+    GtkWidget *ws_menu;
+    MenuData *menudata;
     Menu *menu;
+    const gchar *label;
+    int i;
 
     TRACE ("entering menu_new");
     menu = g_new (Menu, 1);
@@ -217,12 +222,6 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
     {
         if ((ops & menuitems[i].op) || (menuitems[i].op == MENU_OP_SEPARATOR))
         {
-            GtkWidget *menuitem;
-            GtkWidget *image;
-            GtkWidget *ws_menu;
-            MenuData *menudata;
-            const gchar *label;
-
             label = _(menuitems[i].label);
             ws_menu = NULL;
             switch (menuitems[i].op)
@@ -332,20 +331,22 @@ menu_check_and_close (void)
 static gboolean
 grab_available (GdkWindow *win, guint32 timestamp)
 {
-    GdkEventMask mask =
-        GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-        GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
-        GDK_POINTER_MOTION_MASK;
+    GdkEventMask mask;
     GdkGrabStatus g1;
     GdkGrabStatus g2;
-    gboolean grab_failed = FALSE;
-    gint i = 0;
+    gboolean grab_failed;
+    gint i;
 
     TRACE ("entering grab_available");
 
+    mask = GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+           GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
+           GDK_POINTER_MOTION_MASK;
     g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
     g2 = gdk_keyboard_grab (win, TRUE, timestamp);
+    grab_failed = FALSE;
 
+    i = 0;
     while ((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS)
                 || (g2 != GDK_GRAB_SUCCESS))))
     {
@@ -419,10 +420,13 @@ void
 menu_free (Menu * menu)
 {
     TRACE ("entering menu_free");
+
     g_return_if_fail (menu != NULL);
     g_return_if_fail (menu->menu != NULL);
     g_return_if_fail (GTK_IS_MENU (menu->menu));
+
     TRACE ("freeing menu");
+
     gtk_widget_destroy (menu->menu);
     g_free (menu);
 }

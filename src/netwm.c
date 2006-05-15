@@ -45,8 +45,8 @@
 void
 clientSetNetState (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     Atom data[16];
     int i;
 
@@ -137,10 +137,10 @@ clientSetNetState (Client * c)
 void
 clientGetNetState (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    int n_atoms = 0;
-    Atom *atoms = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    int n_atoms;
+    Atom *atoms;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGetNetState");
@@ -148,6 +148,8 @@ clientGetNetState (Client * c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    atoms = NULL;
+    n_atoms = 0;
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED))
     {
@@ -275,9 +277,9 @@ clientGetNetState (Client * c)
 void
 clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    unsigned long action;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    unsigned long action, mode;
     Atom first;
     Atom second;
 
@@ -291,6 +293,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     action = ((XEvent *) ev)->xclient.data.l[0];
     first  = ((XEvent *) ev)->xclient.data.l[1];
     second = ((XEvent *) ev)->xclient.data.l[2];
+    mode = 0;
 
     if ((first  == display_info->atoms[NET_WM_STATE_SHADED]) || 
         (second == display_info->atoms[NET_WM_STATE_SHADED]))
@@ -356,7 +359,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         {
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
-                unsigned long mode = 0;
+                mode = 0;
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
                 {
@@ -371,7 +374,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             }
             else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
-                unsigned long mode = 0;
+                mode = 0;
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
                 {
@@ -386,7 +389,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
-                unsigned long mode = 0;
+                mode = 0;
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
                 {
@@ -605,10 +608,10 @@ clientUpdateFullscreenState (Client * c)
 void
 clientGetNetWmType (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    int n_atoms = 0;
-    Atom *atoms = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    int n_atoms;
+    Atom *atoms;
     int i;
 
     g_return_if_fail (c != NULL);
@@ -617,7 +620,6 @@ clientGetNetWmType (Client * c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-
     n_atoms = 0;
     atoms = NULL;
 
@@ -669,10 +671,10 @@ clientGetNetWmType (Client * c)
 void
 clientGetInitialNetWmDesktop (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    Client *c2 = NULL;
-    long val = 0;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *c2;
+    long val;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGetInitialNetWmDesktop");
@@ -680,6 +682,7 @@ clientGetInitialNetWmDesktop (Client * c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    val = 0;
 
     /* This is to make sure that transient are shown with their "ancestor" window */
     c2 = clientGetTransient (c);
@@ -780,9 +783,9 @@ clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
 void
 clientGetNetStruts (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    gulong *struts = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gulong *struts;
     int nitems;
     int i;
 
@@ -791,6 +794,7 @@ clientGetNetStruts (Client * c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    struts = NULL;
 
     for (i = 0; i < 12; i++)
     {
@@ -856,16 +860,17 @@ clientGetNetStruts (Client * c)
 void
 clientSetNetActions (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     Atom atoms[6];
-    int i = 0;
+    int i;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSetNetActions");
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    i = 0;
 
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CLOSE];
     if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
@@ -889,8 +894,8 @@ clientSetNetActions (Client * c)
 void
 clientWindowType (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     netWindowType old_type;
 
     g_return_if_fail (c != NULL);

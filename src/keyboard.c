@@ -42,9 +42,10 @@ int
 getModifierMap (char *str)
 {
     gchar *tmp;
-    int map = 0;
+    int map;
 
     tmp = g_ascii_strdown ((gchar *) str, -1);
+    map = 0;
 
     if (strstr (tmp, "shift"))
     {
@@ -259,10 +260,11 @@ initModifiers (Display * dpy)
 {
     XModifierKeymap *modmap;
     KeySym *keymap;
-    int i;
+    unsigned int keycode;
     int keysyms_per_keycode;
     int min_keycode;
     int max_keycode;
+    int i;
 
     AltMask = 0;
     MetaMask = 0;
@@ -280,8 +282,7 @@ initModifiers (Display * dpy)
 
     for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
     {
-        unsigned int keycode = modmap->modifiermap[i];
-
+        keycode = modmap->modifiermap[i];
         if ((keycode >= min_keycode) && (keycode <= max_keycode))
         {
             int j;

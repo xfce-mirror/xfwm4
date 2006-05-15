@@ -45,9 +45,10 @@
 static void
 workspaceGetPosition (ScreenInfo *screen_info, int n, int * row, int * col)
 {
-    NetWmDesktopLayout l = screen_info->desktop_layout;
+    NetWmDesktopLayout l;
     int major_length, minor_length, tmp;
 
+    l = screen_info->desktop_layout;
     if (l.orientation == NET_WM_ORIENTATION_HORZ)
     {
         major_length = l.cols;
@@ -94,9 +95,10 @@ workspaceGetPosition (ScreenInfo *screen_info, int n, int * row, int * col)
 static int
 workspaceGetNumber (ScreenInfo *screen_info, int row, int col)
 {
-    NetWmDesktopLayout l = screen_info->desktop_layout;
+    NetWmDesktopLayout l;
     int major_length, minor_length, n, tmp;
 
+    l = screen_info->desktop_layout;
     if (l.orientation == NET_WM_ORIENTATION_HORZ)
     {
         major_length = l.cols;
@@ -227,8 +229,8 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
 void
 workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean update_focus)
 {
-    DisplayInfo *display_info = screen_info->display_info;
-    Client *c, *new_focus = NULL;
+    DisplayInfo *display_info;
+    Client *c, *new_focus;
     Client *previous;
     GList *index;
     GList *list_hide;
@@ -239,6 +241,8 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     
     TRACE ("entering workspaceSwitch");
 
+    display_info = screen_info->display_info;
+    new_focus = NULL;
     if ((new_ws == screen_info->current_ws) && (screen_info->params->toggle_workspaces))
     {
         new_ws = screen_info->previous_ws;
@@ -382,7 +386,7 @@ workspaceSetNames (ScreenInfo * screen_info, gchar **names, int items)
 void
 workspaceSetCount (ScreenInfo * screen_info, int count)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     Client *c;
     int i;
 
@@ -425,7 +429,7 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
 void
 workspaceUpdateArea (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     Client *c;
     int prev_top;
     int prev_left;

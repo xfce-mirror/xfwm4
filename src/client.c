@@ -180,12 +180,13 @@ void
 clientInstallColormaps (Client * c)
 {
     XWindowAttributes attr;
-    gboolean installed = FALSE;
+    gboolean installed;
     int i;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientInstallColormaps");
 
+    installed = FALSE;
     if (c->ncmap)
     {
         for (i = c->ncmap - 1; i >= 0; i--)
@@ -225,9 +226,9 @@ clientUpdateColormaps (Client * c)
 void
 clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 {
-    Client *c = NULL;
-    int i;
+    Client *c;
     XWindowChanges wc;
+    int i;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -278,7 +279,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 void
 clientGrabKeys (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabKeys");
@@ -358,7 +359,7 @@ clientUngrabKeys (Client * c)
 void
 clientGrabButtons (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabButtons");
@@ -384,11 +385,11 @@ clientUngrabButtons (Client * c)
 static gboolean
 urgent_cb (gpointer data)
 {
-    Client *c = (Client *) data;
-    g_return_val_if_fail (c, FALSE);
+    Client *c;
 
     TRACE ("entering urgent_cb");
 
+    c = (Client *) data;
     if (c != clientGetFocus ())
     {
         FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
@@ -435,13 +436,12 @@ clientUpdateUrgency (Client *c)
 void
 clientCoordGravitate (Client * c, int mode, int *x, int *y)
 {
-    int dx = 0, dy = 0;
+    int dx, dy;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCoordGravitate");
 
-    c->gravity =
-        c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
+    c->gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
     switch (c->gravity)
     {
         case CenterGravity:
@@ -692,8 +692,8 @@ void
 clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags)
 {
     XConfigureEvent ce;
-    gboolean moved = FALSE;
-    gboolean resized = FALSE;
+    int px, py, pwidth, pheight;
+    gboolean moved, resized;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -702,6 +702,8 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
     TRACE ("configuring client \"%s\" (0x%lx) %s, type %u", c->name,
         c->window, flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->type);
 
+    moved = FALSE;
+    resized = FALSE;
     if (mask & CWX)
     {
         moved = TRUE;
@@ -780,10 +782,10 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
          && CONSTRAINED_WINDOW (c)
          && !((c->gravity == StaticGravity) && (c->x == 0) && (c->y == 0)))
     {
-        int px = c->x;
-        int py = c->y;
-        int pwidth = c->width;
-        int pheight = c->height;
+        px = c->x;
+        py = c->y;
+        pwidth = c->width;
+        pheight = c->height;
 
         /* Keep fully visible only on resize */
         clientConstrainPos (c, (mask & (CWWidth | CWHeight)));
@@ -860,8 +862,8 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
 void
 clientGetMWMHints (Client * c, gboolean update)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     PropMwmHints *mwm_hints;
     XWindowChanges wc;
 
@@ -966,9 +968,9 @@ clientGetMWMHints (Client * c, gboolean update)
 void
 clientGetWMNormalHints (Client * c, gboolean update)
 {
-    unsigned long previous_value;
-    long dummy = 0;
     XWindowChanges wc;
+    unsigned long previous_value;
+    long dummy;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -981,6 +983,8 @@ clientGetWMNormalHints (Client * c, gboolean update)
         c->size = XAllocSizeHints ();
     }
     g_assert (c->size);
+
+    dummy = 0;
     if (!XGetWMNormalHints (clientGetXDisplay (c), c->window, c->size, &dummy))
     {
         c->size->flags = 0;
@@ -1126,9 +1130,9 @@ clientGetWMNormalHints (Client * c, gboolean update)
 void
 clientGetWMProtocols (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    unsigned int wm_protocols_flags = 0;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    unsigned int wm_protocols_flags;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1371,8 +1375,8 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
 static gboolean
 clientCheckShape (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     int xws, yws, xbs, ybs;
     unsigned wws, hws, wbs, hbs;
     int boundingShaped, clipShaped;
@@ -1409,8 +1413,8 @@ clientClearPixmapCache (Client * c)
 void
 clientGetUserTime (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1427,8 +1431,8 @@ clientGetUserTime (Client * c)
 void
 clientUpdateIcon (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     gint size;
     GdkPixbuf *icon;
 
@@ -1464,7 +1468,7 @@ clientUpdateIcon (Client * c)
 Client *
 clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     XWindowAttributes attr;
     XWindowChanges wc;
     XSetWindowAttributes attributes;
@@ -1880,10 +1884,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 void
 clientUnframe (Client * c, gboolean remap)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    int i;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XEvent ev;
+    int i;
     gboolean reparented;
 
     TRACE ("entering clientUnframe");
@@ -1969,12 +1973,11 @@ clientUnframe (Client * c, gboolean remap)
 void
 clientFrameAll (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info = NULL;
-
-    unsigned int count, i;
-    xfwmWindow shield;
-    Window w1, w2, *wins = NULL;
+    DisplayInfo *display_info;
     XWindowAttributes attr;
+    xfwmWindow shield;
+    Window w1, w2, *wins;
+    unsigned int count, i;
 
     TRACE ("entering clientFrameAll");
 
@@ -2021,10 +2024,10 @@ clientFrameAll (ScreenInfo *screen_info)
 void
 clientUnframeAll (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info = NULL;
-    Client *c = NULL;
+    DisplayInfo *display_info;
+    Client *c;
+    Window w1, w2, *wins;
     unsigned int count, i;
-    Window w1, w2, *wins = NULL;
 
     TRACE ("entering clientUnframeAll");
 
@@ -2052,7 +2055,7 @@ clientUnframeAll (ScreenInfo *screen_info)
 Client *
 clientGetFromWindow (ScreenInfo *screen_info, Window w, int mode)
 {
-    Client *c = NULL;
+    Client *c;
     int i;
 
     g_return_val_if_fail (w != None, NULL);
@@ -2095,8 +2098,9 @@ clientGetFromWindow (ScreenInfo *screen_info, Window w, int mode)
 static void
 clientSetWorkspaceSingle (Client * c, int ws)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
     g_return_if_fail (c != NULL);
 
     TRACE ("entering clientSetWorkspaceSingle");
@@ -2130,10 +2134,10 @@ clientSetWorkspaceSingle (Client * c, int ws)
 void
 clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
 {
-    GList *list_of_windows = NULL;
-    GList *index = NULL;
-    Client *c2 = NULL;
-    int previous_ws = 0;
+    Client *c2;
+    GList *list_of_windows;
+    GList *index;
+    int previous_ws;
 
     g_return_if_fail (c != NULL);
 
@@ -2170,8 +2174,8 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
 static void
 clientShowSingle (Client * c, gboolean change_state)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
 
@@ -2200,9 +2204,9 @@ clientShowSingle (Client * c, gboolean change_state)
 void
 clientShow (Client * c, gboolean change_state)
 {
-    GList *list_of_windows = NULL;
-    GList *index = NULL;
-    Client *c2 = NULL;
+    Client *c2;
+    GList *list_of_windows;
+    GList *index;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientShow \"%s\" (0x%lx) [with %s]",
@@ -2230,8 +2234,8 @@ clientShow (Client * c, gboolean change_state)
 static void
 clientHideSingle (Client * c, gboolean change_state)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
 
@@ -2262,9 +2266,9 @@ clientHideSingle (Client * c, gboolean change_state)
 void
 clientHide (Client * c, int ws, gboolean change_state)
 {
-    GList *list_of_windows = NULL;
-    GList *index = NULL;
-    Client *c2 = NULL;
+    Client *c2;
+    GList *list_of_windows;
+    GList *index;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientHide");
@@ -2304,8 +2308,8 @@ clientHide (Client * c, int ws, gboolean change_state)
 void
 clientHideAll (Client * c, int ws)
 {
-    Client *c2 = NULL;
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
+    Client *c2;
     int i;
 
     g_return_if_fail (c != NULL);
@@ -2351,7 +2355,7 @@ clientClearAllShowDesktop (ScreenInfo *screen_info)
 void
 clientToggleShowDesktop (ScreenInfo *screen_info)
 {
-    GList *index = NULL;
+    GList *index;
 
     TRACE ("entering clientToggleShowDesktop");
 
@@ -2390,8 +2394,8 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
 void
 clientClose (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
 
@@ -2425,8 +2429,8 @@ clientKill (Client * c)
 void
 clientEnterContextMenuState (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
 
@@ -2446,8 +2450,8 @@ clientEnterContextMenuState (Client * c)
 void
 clientSetLayer (Client * c, int l)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     GList *list_of_windows = NULL;
     GList *index = NULL;
     Client *c2 = NULL;
@@ -2554,11 +2558,11 @@ clientToggleShaded (Client * c)
 void
 clientStick (Client * c, gboolean include_transients)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    GList *list_of_windows = NULL;
-    GList *index = NULL;
-    Client *c2 = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *c2;
+    GList *list_of_windows;
+    GList *index;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientStick");
@@ -2595,11 +2599,11 @@ clientStick (Client * c, gboolean include_transients)
 void
 clientUnstick (Client * c, gboolean include_transients)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    GList *list_of_windows = NULL;
-    GList *index = NULL;
-    Client *c2 = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *c2;
+    GList *list_of_windows;
+    GList *index;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUnstick");
@@ -2724,10 +2728,10 @@ clientRemoveMaximizeFlag (Client * c)
 void
 clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
+    GdkRectangle rect;
     XWindowChanges wc;
     int cx, cy, full_x, full_y, full_w, full_h;
-    GdkRectangle rect;
     gint monitor_nbr;
 
     g_return_if_fail (c != NULL);
@@ -2862,8 +2866,8 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 void
 clientDecOpacity (Client * c)
 {
-   ScreenInfo *screen_info = NULL;
-   DisplayInfo *display_info = NULL;
+   ScreenInfo *screen_info;
+   DisplayInfo *display_info;
 
    screen_info = c->screen_info;
    display_info = screen_info->display_info;
@@ -2878,8 +2882,8 @@ clientDecOpacity (Client * c)
 void
 clientIncOpacity (Client * c)
 {
-   ScreenInfo *screen_info = NULL;
-   DisplayInfo *display_info = NULL;
+   ScreenInfo *screen_info;
+   DisplayInfo *display_info;
 
    screen_info = c->screen_info;
    display_info = screen_info->display_info;
@@ -2970,8 +2974,8 @@ clientDrawOutline (Client * c)
 static void
 clientSnapPosition (Client * c, int prev_x, int prev_y)
 {
-    Client *c2 = NULL;
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
+    Client *c2;
     int cx, cy, i, delta;
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
@@ -3131,8 +3135,8 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     static int edge_scroll_y = 0;
     static gboolean toggled_maximize = FALSE;
     static Time lastresist = (Time) 0;
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     eventFilterStatus status = EVENT_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = NULL;
@@ -3471,14 +3475,14 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 void
 clientMove (Client * c, XEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XWindowChanges wc;
     MoveResizeData passdata;
-    Cursor cursor = None;
+    Cursor cursor;
+    int changes;
     gboolean g1, g2;
-    gboolean restore_opacity = FALSE;
-    int changes = CWX | CWY;
+    gboolean restore_opacity;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientDoMove");
@@ -3486,6 +3490,9 @@ clientMove (Client * c, XEvent * ev)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+
+    restore_opacity = FALSE;
+    changes = CWX | CWY;
 
     passdata.c = c;
     passdata.ox = c->x;
@@ -3600,28 +3607,30 @@ clientMove (Client * c, XEvent * ev)
 static eventFilterStatus
 clientResize_event_filter (XEvent * xevent, gpointer data)
 {
-    Client *c = NULL;
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    eventFilterStatus status = EVENT_FILTER_STOP;
-    MoveResizeData *passdata = (MoveResizeData *) data;
-    gboolean resizing = TRUE;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *c;
+    GdkRectangle rect;
+    MoveResizeData *passdata;
+    eventFilterStatus status;
     XWindowChanges wc;
-    int prev_y = 0, prev_x = 0;
-    int prev_height = 0, prev_width = 0;
+    int prev_y, prev_x, prev_height, prev_width;
     int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
     int frame_top, frame_left, frame_right, frame_bottom;
     int move_top, move_bottom, move_left, move_right;
-    GdkRectangle rect;
     gint monitor_nbr;
     gint min_visible;
+    gboolean resizing;
 
     TRACE ("entering clientResize_event_filter");
 
+    passdata = (MoveResizeData *) data;
     c = passdata->c;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    status = EVENT_FILTER_STOP;
+    resizing = TRUE;
 
     frame_x = frameX (c);
     frame_y = frameY (c);
@@ -3939,13 +3948,13 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 void
 clientResize (Client * c, int corner, XEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XWindowChanges wc;
     MoveResizeData passdata;
     int w_orig, h_orig;
     gboolean g1, g2;
-    gboolean restore_opacity = FALSE;
+    gboolean restore_opacity;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientResize");
@@ -3953,6 +3962,7 @@ clientResize (Client * c, int corner, XEvent * ev)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    restore_opacity = FALSE;
 
     passdata.c = c;
     passdata.ox = c->width;
@@ -4067,19 +4077,18 @@ clientResize (Client * c, int corner, XEvent * ev)
 static eventFilterStatus
 clientCycle_event_filter (XEvent * xevent, gpointer data)
 {
-    ClientCycleData *passdata = (ClientCycleData *) data;
-    Client *c, *removed;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    eventFilterStatus status = EVENT_FILTER_STOP;
+    ClientCycleData *passdata;
+    Client *c, *removed;
+    eventFilterStatus status;
     KeyCode keycode;
     int modifier;
-    gboolean key_pressed;
-    gboolean cycling = TRUE;
-    gboolean gone = FALSE;
+    gboolean key_pressed, cycling, gone;
 
     TRACE ("entering clientCycle_event_filter");
 
+    passdata = (ClientCycleData *) data;
     if (passdata->c == NULL)
     {
         return EVENT_FILTER_CONTINUE;
@@ -4092,6 +4101,9 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
     keycode = screen_info->params->keys[KEY_CYCLE_WINDOWS].keycode;
     modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
     key_pressed = ((xevent->type == KeyPress) && (xevent->xkey.keycode == keycode));
+    status = EVENT_FILTER_STOP;
+    cycling = TRUE;
+    gone = FALSE;
 
     /* Update the display time */
     myDisplayUpdateCurentTime (display_info, xevent);
@@ -4179,8 +4191,8 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
 void
 clientCycle (Client * c, XEvent * ev)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     ClientCycleData passdata;
     gboolean g1, g2;
 
@@ -4279,15 +4291,26 @@ clientCycle (Client * c, XEvent * ev)
 static eventFilterStatus
 clientButtonPress_event_filter (XEvent * xevent, gpointer data)
 {
-    eventFilterStatus status = EVENT_FILTER_STOP;
-    gboolean pressed = TRUE;
-    Client *c = ((ButtonPressData *) data)->c;
-    ScreenInfo *screen_info = c->screen_info;
-    DisplayInfo *display_info = screen_info->display_info;
-    int b = ((ButtonPressData *) data)->b;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *c;
+    ButtonPressData *passdata;
+    eventFilterStatus status;
+    int b;
+    gboolean pressed;
+
+    passdata = (ButtonPressData *) data;
+    c = passdata->c;
+    b = passdata->b;
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     /* Update the display time */
     myDisplayUpdateCurentTime (display_info, xevent);
+
+    status = EVENT_FILTER_STOP;
+    pressed = TRUE;
 
     if (xevent->type == EnterNotify)
     {
@@ -4328,8 +4351,8 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
 void
 clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     ButtonPressData passdata;
     int b, g1;
 
@@ -4427,35 +4450,34 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 Client *
 clientGetLeader (Client * c)
 {
-    Client *c2 = NULL;
-
     TRACE ("entering clientGetLeader");
     g_return_val_if_fail (c != NULL, NULL);
 
     if (c->group_leader != None)
     {
-        c2 = clientGetFromWindow (c->screen_info, c->group_leader, WINDOW);
+        return clientGetFromWindow (c->screen_info, c->group_leader, WINDOW);
     }
     else if (c->client_leader != None)
     {
-        c2 = clientGetFromWindow (c->screen_info, c->client_leader, WINDOW);
+        return clientGetFromWindow (c->screen_info, c->client_leader, WINDOW);
     }
-    return c2;
+    return NULL;
 }
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char *
 clientGetStartupId (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    gboolean got_startup_id = FALSE;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gboolean got_startup_id;
     
     g_return_val_if_fail (c != NULL, NULL);
     g_return_val_if_fail (c->window != None, NULL);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    got_startup_id = FALSE;
     
     if (c->startup_id)
     {

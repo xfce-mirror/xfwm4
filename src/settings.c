@@ -159,10 +159,11 @@ set_easy_click (ScreenInfo *screen_info, char *modifier)
 static void
 notify_cb (const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
 {
-    ScreenInfo *screen_info = (ScreenInfo *) data;
-    
+    ScreenInfo *screen_info;
+
+    screen_info = (ScreenInfo *) data;
     g_return_if_fail (screen_info != NULL);
-    
+
     if (!g_ascii_strcasecmp (CHANNEL1, channel_name))
     {
         switch (action)
@@ -459,8 +460,11 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
 static GdkFilterReturn
 client_event_filter (GdkXEvent * xevent, GdkEvent * event, gpointer data)
 {
-    ScreenInfo *screen_info = (ScreenInfo *) data;
-    
+    ScreenInfo *screen_info;
+
+    screen_info = (ScreenInfo *) data;
+    g_return_val_if_fail (screen_info != NULL, GDK_FILTER_CONTINUE);
+
     if (mcs_client_process_event (screen_info->mcs_client, (XEvent *) xevent))
     {
         return GDK_FILTER_REMOVE;
@@ -506,7 +510,6 @@ loadRcData (ScreenInfo *screen_info, Settings *rc)
     gchar *keytheme;
     gchar *system_keytheme;
 
-
     if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
     {
         g_warning ("Missing defaults file");
@@ -538,6 +541,7 @@ static void
 loadMcsData (ScreenInfo *screen_info, Settings *rc)
 {
     McsSetting *setting;
+
     if (screen_info->mcs_client)
     {
         /* "Regular" channel */
@@ -833,6 +837,7 @@ setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, c
         gdk_colormap_free_colors (gdk_screen_get_rgb_colormap (screen_info->gscr), &color->col, 1);
         color->allocated = FALSE;
     }
+
     if (gdk_color_parse (rc[id].value, &color->col))
     {
         if (gdk_colormap_alloc_color (gdk_screen_get_rgb_colormap (screen_info->gscr),
@@ -863,17 +868,19 @@ setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, c
 static void
 loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
-    GtkWidget *widget = NULL;
-    DisplayInfo *display_info = NULL;
+    GValue tmp_val = { 0, };
+    DisplayInfo *display_info;
+    xfwmColorSymbol colsym[ XPM_COLOR_SYMBOL_SIZE + 1 ];
+    GtkWidget *widget;
     gchar *theme;
     gchar *font;
-    xfwmColorSymbol colsym[ XPM_COLOR_SYMBOL_SIZE + 1 ];
-    PangoFontDescription *desc = NULL;
+    PangoFontDescription *desc;
     guint i;
-    GValue tmp_val = { 0, };
 
     widget = myScreenGetGtkWidget (screen_info);
     display_info = screen_info->display_info;
+
+    desc = NULL;
 
     rc[0].value  = getUIStyle (widget, "fg",    "selected");
     rc[1].value  = getUIStyle (widget, "fg",    "insensitive");
@@ -1550,17 +1557,20 @@ reloadSettings (DisplayInfo *display_info, int mask)
 gboolean
 initSettings (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info = NULL;
-    int i = 0;
-    long val = 0;
-    char **names = NULL;
+    DisplayInfo *display_info;
+    char **names;
+    long val;
+    int i;
 
     g_return_val_if_fail (screen_info, FALSE);
     
     TRACE ("entering initSettings");
 
     display_info = screen_info->display_info;
-
+    names = NULL;
+    val = 0;
+    i = 0;
+    
     if (!mcs_client_check_manager (myScreenGetXDisplay (screen_info), screen_info->screen, "xfce-mcs-manager"))
     {
         g_warning ("MCS manager not running, startup delayed for 5 seconds");

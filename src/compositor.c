@@ -168,14 +168,15 @@ static gaussian_conv *
 make_gaussian_map (gdouble r)
 {
     gaussian_conv *c;
-    gint size = ((gint) ceil ((r * 3)) + 1) & ~1;
-    gint center = size / 2;
+    gint size, center;
     gint x, y;
     gdouble t;
     gdouble g;
 
     TRACE ("entering make_gaussian_map");
 
+    size = ((gint) ceil ((r * 3)) + 1) & ~1;
+    center = size / 2;
     c = g_malloc (sizeof (gaussian_conv) + size * size * sizeof (gdouble));
     c->size = size;
     c->data = (gdouble *) (c + 1);
@@ -222,18 +223,19 @@ make_gaussian_map (gdouble r)
 static guchar
 sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, gint height)
 {
+    gdouble *g_data, *g_line;
+    gdouble v;
     gint fx, fy;
-    gdouble *g_data;
-    gdouble *g_line = map->data;
-    gint g_size = map->size;
-    gint center = g_size / 2;
     gint fx_start, fx_end;
     gint fy_start, fy_end;
-    gdouble v;
+    gint g_size, center;
 
     g_return_val_if_fail (map != NULL, (guchar) 255.0);
     TRACE ("entering sum_gaussian");
 
+    g_line = map->data;
+    g_size = map->size;
+    center = g_size / 2;
     fx_start = center - x;
     if (fx_start < 0)
     {
@@ -602,8 +604,8 @@ static XserverRegion
 border_size (CWindow *cw)
 {
     XserverRegion border;
-    DisplayInfo *display_info = NULL;
-    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
 
     g_return_val_if_fail (cw != NULL, None);
     TRACE ("entering border_size");
@@ -624,7 +626,7 @@ border_size (CWindow *cw)
 static Picture
 root_tile (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     Display *dpy;
     Picture picture;
     Pixmap pixmap;
@@ -756,7 +758,7 @@ paint_root (ScreenInfo *screen_info)
 static XserverRegion
 win_extents (CWindow *cw)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     Client *c;
     XRectangle r;
     gboolean has_frame;
@@ -885,8 +887,8 @@ static Picture
 get_window_picture (CWindow *cw)
 {
     Display *dpy;
-    DisplayInfo *display_info = NULL;
-    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
     Drawable draw;
@@ -922,8 +924,8 @@ static void
 paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
 {
     Client *c;
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     gboolean has_frame;
     gboolean paint_solid;
     
@@ -1049,7 +1051,7 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
 static void
 paint_all (ScreenInfo *screen_info, XserverRegion region)
 {
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     Display *dpy;
     GList *index;
     gint screen_width;
@@ -1274,8 +1276,9 @@ compositor_idle_cb (gpointer data)
 static gboolean
 compositor_timeout_cb (gpointer data)
 {
-    DisplayInfo *display_info = (DisplayInfo *) data;
+    DisplayInfo *display_info;
 
+    display_info = (DisplayInfo *) data;
     display_info->compositor_timeout_id = 0;
     repair_display (display_info);
 
@@ -1400,9 +1403,9 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
 static void
 repair_win (CWindow *cw)
 {
-    XserverRegion   parts;
-    DisplayInfo *display_info = NULL;
-    ScreenInfo *screen_info = NULL;
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    XserverRegion parts;
 
     g_return_if_fail (cw != NULL);
 
@@ -1457,11 +1460,12 @@ damage_win (CWindow *cw)
 static void
 determine_mode(CWindow *cw)
 {
-    ScreenInfo *screen_info = NULL;
-    XRenderPictFormat *format = NULL;
+    ScreenInfo *screen_info;
+    XRenderPictFormat *format;
 
     TRACE ("entering determine_mode");
     screen_info = cw->screen_info;
+    format = NULL;
     if (cw->alphaPict)
     {
         XRenderFreePicture (myScreenGetXDisplay (screen_info), cw->alphaPict);
@@ -1534,7 +1538,7 @@ set_win_opacity (CWindow *cw, guint opacity)
 static void
 map_win (CWindow *cw)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
 
     TRACE ("entering map_win");
     g_return_if_fail (cw != NULL);
@@ -1548,7 +1552,7 @@ map_win (CWindow *cw)
 static void
 unmap_win (CWindow *cw)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
 
     TRACE ("entering unmap_win");
     g_return_if_fail (cw != NULL);
@@ -1569,9 +1573,9 @@ unmap_win (CWindow *cw)
 static void
 init_opacity (CWindow *cw)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
-    Client *c = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *c;
 
     TRACE ("set_opacity");
     g_return_if_fail (cw != NULL);
@@ -1594,7 +1598,7 @@ init_opacity (CWindow *cw)
 static void
 add_win (DisplayInfo *display_info, Window id, Client *c)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     CWindow *new;
         
     TRACE ("entering add_win: 0x%lx", id);
@@ -1694,8 +1698,8 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 void
 restack_win (CWindow *cw, Window above)
 {
-    ScreenInfo *screen_info = NULL;
-    Window previous_above = None;
+    ScreenInfo *screen_info;
+    Window previous_above;
     GList *sibling;
     GList *next;
 
@@ -1705,6 +1709,7 @@ restack_win (CWindow *cw, Window above)
     screen_info = cw->screen_info;
     sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
     next = g_list_next (sibling);
+    previous_above = None;
 
     if (next)
     {
@@ -1941,7 +1946,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 static void
 compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     XRectangle rect[1];
     CWindow *cw;
 
@@ -2005,7 +2010,7 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     CWindow *cw;
     CWindow *top;
     GList *first;
-    Window above = None;
+    Window above;
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
@@ -2447,7 +2452,7 @@ gboolean
 compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
 {
 #ifdef HAVE_COMPOSITOR
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     XRenderPictureAttributes pa;
     XRenderPictFormat *visual_format;
 
@@ -2526,9 +2531,9 @@ void
 compositorUnmanageScreen (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     GList *index;
-    gint i = 0;
+    gint i;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering compositorUnmanageScreen");
@@ -2544,6 +2549,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         return;
     }
 
+    i = 0;
     for (index = screen_info->cwindows; index; index = g_list_next (index))
     {
         CWindow *cw2 = (CWindow *) index->data;
@@ -2600,7 +2606,7 @@ void
 compositorRepairScreen (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering compositorRepairScreen");
@@ -2624,7 +2630,7 @@ void
 compositorUpdateScreenSize (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
-    DisplayInfo *display_info = screen_info->display_info;
+    DisplayInfo *display_info;
     
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering compositorUpdateScreenSize");
@@ -2643,7 +2649,7 @@ void
 compositorRebuildScreen (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
     GList *index;
 
     g_return_if_fail (screen_info != NULL);

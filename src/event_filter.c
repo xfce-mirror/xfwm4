@@ -139,14 +139,19 @@ default_event_filter (XEvent * xevent, gpointer data)
 static GdkFilterReturn
 eventXfwmFilter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 {
-    XEvent *xevent = (XEvent *) gdk_xevent;
-    eventFilterStatus loop = EVENT_FILTER_CONTINUE;
-    eventFilterSetup *setup = (eventFilterSetup *) data;
+    XEvent *xevent;
+    eventFilterStatus loop;
+    eventFilterSetup *setup;
     eventFilterStack *filterelt;
 
+    setup = (eventFilterSetup *) data;
     g_return_val_if_fail (setup != NULL, GDK_FILTER_CONTINUE);
+
     filterelt = setup->filterstack;
     g_return_val_if_fail (filterelt != NULL, GDK_FILTER_CONTINUE);
+
+    xevent = (XEvent *) gdk_xevent;
+    loop = EVENT_FILTER_CONTINUE;
 
     while ((filterelt) && (loop == EVENT_FILTER_CONTINUE))
     {
@@ -184,10 +189,14 @@ eventFilterPush (eventFilterSetup *setup, XfwmFilter filter, gpointer data)
 eventFilterStack *
 eventFilterPop (eventFilterSetup *setup)
 {
-    eventFilterStack *oldfilterstack = setup->filterstack;
+    eventFilterStack *oldfilterstack;
+
     g_return_val_if_fail (setup->filterstack != NULL, NULL);
+
+    oldfilterstack = setup->filterstack;
     setup->filterstack = oldfilterstack->next;
     g_free (oldfilterstack);
+
     return (setup->filterstack);
 }
 
@@ -242,7 +251,9 @@ eventFilterInit (gpointer data)
 void
 eventFilterClose (eventFilterSetup *setup)
 {
-    eventFilterStack *filterelt = setup->filterstack;
+    eventFilterStack *filterelt;
+
+    filterelt = setup->filterstack;
     while ((filterelt = eventFilterPop (setup)));
     gdk_window_remove_filter (NULL, eventXfwmFilter, NULL);
     setup->filterstack = NULL;

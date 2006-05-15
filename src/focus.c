@@ -60,8 +60,8 @@ static ClientPair
 clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
 {
     ClientPair top_client;
-    Client *c = NULL;
-    GList *index = NULL;
+    Client *c;
+    GList *index;
 
     TRACE ("entering clientGetTopMostFocusable");
 
@@ -102,7 +102,7 @@ void
 clientFocusTop (ScreenInfo *screen_info, int layer)
 {
     ClientPair top_client;
-    DisplayInfo *display_info = NULL;
+    DisplayInfo *display_info;
 
     display_info = screen_info->display_info;
     top_client = clientGetTopMostFocusable (screen_info, layer, NULL);
@@ -123,8 +123,8 @@ clientFocusTop (ScreenInfo *screen_info, int layer)
 gboolean
 clientFocusNew(Client * c)
 {
-    ScreenInfo *screen_info = NULL;
-    DisplayInfo *display_info = NULL;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     gboolean give_focus;
     gboolean prevent_focus_stealing;
     gboolean prevented;
@@ -243,7 +243,7 @@ clientSelectMask (Client * c, int mask, int type)
 Client *
 clientGetNext (Client * c, int mask)
 {
-    Client *c2 = NULL;
+    Client *c2;
     unsigned int i;
 
     TRACE ("entering clientGetNext");
@@ -266,7 +266,7 @@ clientGetNext (Client * c, int mask)
 Client *
 clientGetPrevious (Client * c, int mask)
 {
-    Client *c2 = NULL;
+    Client *c2;
     unsigned int i;
 
     TRACE ("entering clientGetPrevious");
@@ -289,17 +289,22 @@ clientGetPrevious (Client * c, int mask)
 void
 clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
 {
-    DisplayInfo *display_info = NULL;
-    Client *new_focus = NULL;
-    Client *current_focus = client_focus;
+    DisplayInfo *display_info;
     ClientPair top_most;
-    Client *c2 = NULL;
+    Client *new_focus;
+    Client *current_focus;
+    Client *c2;
     Window dr, window;
-    int rx, ry, wx, wy;
     unsigned int mask;
-    int look_in_layer = (c ? c->win_layer : WIN_LAYER_NORMAL);
+    int rx, ry, wx, wy;
+    int look_in_layer;
 
     TRACE ("entering clientPassFocus");
+
+    look_in_layer = (c ? c->win_layer : WIN_LAYER_NORMAL);
+    new_focus = NULL;
+    current_focus = client_focus;
+    c2 = NULL;
 
     if (pending_focus)
     {
@@ -392,7 +397,7 @@ clientAcceptFocus (Client * c)
 void
 clientSortRing(Client *c)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     
     g_return_if_fail (c != NULL);
 
@@ -414,12 +419,13 @@ clientSortRing(Client *c)
 void
 clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 {
-    DisplayInfo *display_info = NULL;
-    Client *c2 = ((client_focus != c) ? client_focus : NULL);
+    DisplayInfo *display_info;
+    Client *c2;
     unsigned long data[2];
 
     TRACE ("entering clientUpdateFocus");
 
+    c2 = ((client_focus != c) ? client_focus : NULL);
     display_info = screen_info->display_info;
     pending_focus = NULL;
     if ((c) && !clientAcceptFocus (c))
@@ -477,12 +483,13 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 void
 clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned short flags)
 {
-    DisplayInfo *display_info = NULL;
-    Client *c2 = NULL;
+    DisplayInfo *display_info;
+    Client *c2;
 
     TRACE ("entering clientSetFocus");
     
     display_info = screen_info->display_info;
+    c2 = NULL;
     if ((c) && !(flags & FOCUS_IGNORE_MODAL))
     {
         c2 = clientGetModalFor (c);
@@ -557,7 +564,7 @@ clientClearFocus (void)
 void
 clientGrabMouseButton (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabMouseButton");
@@ -577,7 +584,7 @@ clientGrabMouseButton (Client * c)
 void
 clientUngrabMouseButton (Client * c)
 {
-    ScreenInfo *screen_info = NULL;
+    ScreenInfo *screen_info;
     
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUngrabMouseButton");

@@ -292,13 +292,14 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 void
 xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
 {
-    gboolean done = FALSE;
-    
+    gboolean done;
+
     if ((win->width < 1) || (win->height < 1) || (pix->width < 1) || (pix->height < 1))
     {
         return;
     }
 
+    done = FALSE;
 #ifdef HAVE_RENDER
     if ((win->visual != win->screen_info->visual) || 
         (win->depth  != win->screen_info->depth))
