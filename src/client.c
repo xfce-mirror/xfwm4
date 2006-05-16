@@ -1702,6 +1702,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         (c->width >= gdk_screen_get_width (screen_info->gscr)) &&
         (c->height >= gdk_screen_get_height (screen_info->gscr)) &&
         !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_BORDER) &&
+        !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_ABOVE) &&
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
     {
