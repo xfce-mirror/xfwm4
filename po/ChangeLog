@@ -1,13 +1,17 @@
-2006-05-15 Piarres Beobide <pi@beobide.net>
+2006-05-18  Daichi Kawahata <daichi@xfce.org>
 
-        * eu.po: Basque translation update.
+	* ja.po: Updated Japanese translations.
 
-2006-05-13 Pau Rul·lan Ferragut <paurullan@bulma.net>
-	
+2006-05-15  Piarres Beobide <pi@beobide.net>
+
+	* eu.po: Basque translation update.
+
+2006-05-13  Pau Rul-lan Ferragut <paurullan@bulma.net>
+
 	* ca.po: Update catalan translation by Carles Muñoz Gorriz
 	<carlesmu@internautas.org>
 
-2006-05-13 Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>
+2006-05-13  Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>
 
 	* zh_TW: Update traditional Chinese translation.
 
@@ -36,7 +40,7 @@
 	  <miko.vaji@gmail.com>.
 	* ja.po: Updated Japanese translations.
 
-2006-01-08  Pau Rullan Ferragut <paurullan@bulma.net>
+2006-01-08  Pau Rul-lan Ferragut <paurullan@bulma.net>
 
 	* ca.po: little heading fixing
 
@@ -68,10 +72,6 @@
 
 	* ja.po: Fixed mistranslations. Revised some translations.
 
-2005-11-28  Daichi Kawahata <daichi@xfce.org>
-
-	* ChangeLog: Updated.
-
 2005-11-21  Daichi Kawahata <daichi@xfce.org>
 
 	* *.po: Updated.
@@ -88,7 +88,7 @@
 
 	* *.po: Resync po
 
-2005-10-27  Pau Rullan Ferragut <paurullan@bulma.net>
+2005-10-27  Pau Rul-lan Ferragut <paurullan@bulma.net>
 
 	* ca.po: begin process to 4.4 work autotranslation of most of
 	  the actual po -- paurullan@bulma.net , ca translator
