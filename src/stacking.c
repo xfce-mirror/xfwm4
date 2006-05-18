@@ -295,9 +295,24 @@ clientRaise (Client * c, Window wsibling)
     }
     TRACE ("raising client \"%s\" (0x%lx) over (0x%lx)", c->name, c->window, wsibling);
 
+    /* 
+     * If the raised window is the one that has focus, fine, we can
+     * release the grab we have on it since there is no use for it
+     * anymore.
+     * 
+     * However, if the raised window is not the focused one, then we
+     * end up with some kind of indermination, so we need to regrab
+     * the buttons for the user to be able to raise or focus the window
+     * by clicking inside.
+     */
+
     if (c == clientGetFocus ())
     {
         clientPassGrabMouseButton (c);
+    }
+    else
+    {
+        clientPassGrabMouseButton (NULL);
     }
 
     if (g_list_length (screen_info->windows_stack) < 1)

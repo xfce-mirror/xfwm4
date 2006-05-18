@@ -1393,10 +1393,6 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             constrained = TRUE;
         }
 #if 0
-        if (ev->value_mask & CWStackMode)
-        {
-            clientPassGrabMouseButton (NULL);
-        }
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
         {
