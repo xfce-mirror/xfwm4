@@ -72,7 +72,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
             c->window, (int) c->win_layer);
 
-        if (c->type & WINDOW_TYPE_DONT_FOCUS)
+        if ((c->type & WINDOW_TYPE_DONT_FOCUS) || !clientAcceptFocus (c))
         {
             continue;
         }
@@ -385,11 +385,12 @@ clientAcceptFocus (Client * c)
     {
         return FALSE;
     }
-    if (!FLAG_TEST (c->wm_flags, WM_FLAG_INPUT | WM_FLAG_TAKEFOCUS))
+    if ((c->screen_info->params->focus_hint) 
+        && !FLAG_TEST (c->wm_flags, WM_FLAG_INPUT | WM_FLAG_TAKEFOCUS))
     {
         return FALSE;
     }
-    
+
     return TRUE;
 }
 
@@ -513,7 +514,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
             TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
             return;
         }
-        if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT))
+        if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT) || !(screen_info->params->focus_hint))
         {
             pending_focus = c;
             XSetInputFocus (myScreenGetXDisplay (screen_info), c->window, RevertToPointerRoot, timestamp);

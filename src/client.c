@@ -74,12 +74,6 @@
     PropertyChangeMask
 
 /* Useful macros */
-#define ACCEPT_INPUT(wmhints) \
-    (!(screen_info->params->focus_hint) || \
-     ((!(wmhints) || \
-       ((wmhints) && !(wmhints->flags & InputHint)) || \
-       ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input)))))
-
 #define START_ICONIC(c) \
     ((c->wmhints) && \
      (c->wmhints->initial_state == IconicState) && \
@@ -1670,7 +1664,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->type_atom = None;
 
     FLAG_SET (c->flags, START_ICONIC (c) ? CLIENT_FLAG_ICONIFIED : 0);
-    FLAG_SET (c->wm_flags, ACCEPT_INPUT (c->wmhints) ? WM_FLAG_INPUT : 0);
+    FLAG_SET (c->wm_flags, HINTS_ACCEPT_INPUT (c->wmhints) ? WM_FLAG_INPUT : 0);
 
     clientGetWMProtocols (c);
     clientGetMWMHints (c, FALSE);
@@ -2259,8 +2253,8 @@ clientHideSingle (Client * c, gboolean change_state)
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info, c->window, IconicState);
     }
-    XUnmapWindow (display_info->dpy, c->frame);
     XUnmapWindow (display_info->dpy, c->window);
+    XUnmapWindow (display_info->dpy, c->frame);
     myDisplayUngrabServer (display_info);
     clientSetNetState (c);
 }

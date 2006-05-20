@@ -179,6 +179,10 @@
                                          FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK) && \
                                          !FLAG_TEST(c->flags, CLIENT_FLAG_SKIP_TASKBAR))
 
+#define HINTS_ACCEPT_INPUT(wmhints)     (!(wmhints) || \
+                                         ((wmhints) && !(wmhints->flags & InputHint)) || \
+                                         ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input)))
+
 typedef enum
 {
     UNSET = 0,

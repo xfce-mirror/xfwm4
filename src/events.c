@@ -1762,6 +1762,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                     frameDraw (c, TRUE, FALSE);
                 }
             }
+            FLAG_SET (c->wm_flags, HINTS_ACCEPT_INPUT (c->wmhints) ? WM_FLAG_INPUT : 0);
             clientUpdateUrgency (c);
         }
         else if (ev->atom == display_info->atoms[WM_PROTOCOLS])
