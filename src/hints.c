@@ -123,11 +123,13 @@ getWMProtocols (DisplayInfo *display_info, Window w)
     int i, n;
     Atom atype;
     int aformat;
-    unsigned int result = 0;
+    unsigned int result;
     unsigned long bytes_remain, nitems;
+    unsigned char *data;
 
     TRACE ("entering getWMProtocols");
 
+    result = 0;
     if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
@@ -146,14 +148,20 @@ getWMProtocols (DisplayInfo *display_info, Window w)
                 result |= WM_PROTOCOLS_CONTEXT_HELP;
             }
         }
+        if (protocols)
+        {
+            XFree (protocols);
+        }
     }
     else
     {
-        if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_PROTOCOLS], 0L, 10L, FALSE,
-                    display_info->atoms[WM_PROTOCOLS], &atype, &aformat, &nitems, &bytes_remain,
-                    (unsigned char **) &protocols)) == Success)
+        if ((XGetWindowProperty (display_info->dpy, w,
+                    display_info->atoms[WM_PROTOCOLS], 0L, 10L, FALSE,
+                    display_info->atoms[WM_PROTOCOLS], &atype,
+                    &aformat, &nitems, &bytes_remain,
+                    (unsigned char **) &data)) == Success)
         {
-            for (i = 0, ap = protocols; i < nitems; i++, ap++)
+            for (i = 0, ap = (Atom *) data; i < nitems; i++, ap++)
             {
                 if (*ap == display_info->atoms[WM_TAKE_FOCUS])
                 {
@@ -169,11 +177,11 @@ getWMProtocols (DisplayInfo *display_info, Window w)
                     result |= WM_PROTOCOLS_CONTEXT_HELP;
                 }
             }
+            if (data)
+            {
+                XFree (data);
+            }
         }
-    }
-    if (protocols)
-    {
-        XFree (protocols);
     }
     return result;
 }
