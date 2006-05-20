@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-15 23:58+0200\n"
+"POT-Creation-Date: 2006-05-20 15:20+0200\n"
 "PO-Revision-Date: 2005-10-09 20:37+0900\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -216,7 +216,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Зьмяніць назву"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:470
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:472
 #, c-format
 msgid "Workspace %d"
 msgstr "Працоўная прастора %d"
@@ -261,15 +261,15 @@ msgstr "Найбольшыць"
 msgid "Close"
 msgstr "Зачыніць"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:356
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Shade window"
 msgstr "Згарнуць вакно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:355
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Hide window"
 msgstr "Схаваць вакно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:352
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Maximize window"
 msgstr "Найбольшыць вакно"
 
@@ -507,144 +507,149 @@ msgstr ""
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Close window"
 msgstr "Зачыніць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window vertically"
 msgstr "Вэртыкальна найбольшыць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Maximize window horizontally"
 msgstr "Гарызантальна найбольшыць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Stick window"
 msgstr "Прыляпіць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#, fuzzy
+msgid "Cycle windows"
+msgstr "Зачыніць вакно"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window up"
 msgstr "Перамясьціць вакно ўгору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window down"
 msgstr "Перамясьціць вакно да долу"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Move window left"
 msgstr "Перамясьціць вакно ўлева"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Move window right"
 msgstr "Перамясьціць вакно ўправа"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Resize window up"
 msgstr "Зьмяніць памер вакна ўгары"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Resize window down"
 msgstr "Зьмяніць памер вакна ля долу"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Resize window left"
 msgstr "Зьмяніць памер вакна зьлева"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Resize window right"
 msgstr "Зьмяніць памер вакна зправа"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Raise window"
 msgstr "Узьняць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Lower window"
 msgstr "Апусьціць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Toggle fullscreen"
 msgstr "Пераключыць поўнаэкранны рэжым"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 #, fuzzy
 msgid "Upper workspace"
 msgstr "Наступная прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "Наступная прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 #, fuzzy
 msgid "Left workspace"
 msgstr "Наступная прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 #, fuzzy
 msgid "Right workspace"
 msgstr "Наступная прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Next workspace"
 msgstr "Наступная прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Previous workspace"
 msgstr "Папярэдняя прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Add workspace"
 msgstr "Дадаць прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Delete workspace"
 msgstr "Выдаліць прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Move window to next workspace"
 msgstr "Перамясьціць вакно на наступную прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Move window to previous workspace"
 msgstr "Перамясьціць вакно на папярэднюю прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "Перамясьціць вакно на наступную прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "Перамясьціць вакно на наступную прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "Перамясьціць вакно на наступную прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "Перамясьціць вакно на наступную прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Show desktop"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:491
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:493
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Перамясьціць вакно на першую прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:578
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:573
 msgid "Cannot open the theme directory !"
 msgstr "Немагчыма адчыніць тэчку з тэмамі!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:597
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:592
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -653,8 +658,8 @@ msgstr ""
 "Немагчыма адчыніць %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:611
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:622
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:606
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -663,7 +668,7 @@ msgstr ""
 "Немагчыма запісаць %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -671,15 +676,15 @@ msgstr ""
 "Камбінацыя ўжо выкарыстоўваецца!\n"
 "Вы насамрэч жадаеце выкарыстоўваць яе?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:847
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
 msgid "Compose shortcut for :"
 msgstr "Прызначыць гарачыя клявішы для:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
 msgid "Compose shortcut"
 msgstr "Прызначыць гарачыя клявішы"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
 #, fuzzy
 msgid "No shortcut"
 msgstr "Прызначыць гарачыя клявішы"
@@ -690,7 +695,7 @@ msgstr "Прызначыць гарачыя клявішы"
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:190
+#: ../src/main.c:128
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: збой сэгмэнтаваньня"

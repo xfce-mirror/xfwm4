@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-15 23:58+0200\n"
+"POT-Creation-Date: 2006-05-20 15:20+0200\n"
 "PO-Revision-Date: 2006-04-18 10:02+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -208,7 +208,7 @@ msgstr "Need seadistused ei saa töötada teie praeguse aknahalduriga (%s)"
 msgid "Change name"
 msgstr "Muuda nime"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:470
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:472
 #, c-format
 msgid "Workspace %d"
 msgstr "Tööruum %d"
@@ -253,15 +253,15 @@ msgstr "Suurenda"
 msgid "Close"
 msgstr "Sulge"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:356
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Shade window"
 msgstr "Varja aken"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:355
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Hide window"
 msgstr "Peida aken"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:352
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Maximize window"
 msgstr "Suurenda aken"
 
@@ -493,136 +493,141 @@ msgstr "Selle nimega kiirklahvide teema on juba olemas"
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Sa pead sisestama kiirklahvide teemale nime "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Close window"
 msgstr "Sulge aken"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window vertically"
 msgstr "Suurenda akent vertikaalselt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Maximize window horizontally"
 msgstr "Suurenda akent horisontaalselt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Stick window"
 msgstr "Kleebi aken"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#, fuzzy
+msgid "Cycle windows"
+msgstr "Sulge aken"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window up"
 msgstr "Liiguta akent üles"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window down"
 msgstr "Liiguta akent alla"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Move window left"
 msgstr "Liiguta akent vasakule"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Move window right"
 msgstr "Liiguta akent paremale"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Resize window up"
 msgstr "Suurenda akent üles"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Resize window down"
 msgstr "Suurenda akent alla"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Resize window left"
 msgstr "Suurenda akent vasakule"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Resize window right"
 msgstr "Suurenda akent paremale"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Raise window"
 msgstr "Tõsta aken"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Lower window"
 msgstr "Langeta aken"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Toggle fullscreen"
 msgstr "Lülita täisekraani"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Upper workspace"
 msgstr "Ülemine töölaud"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Bottom workspace"
 msgstr "Alumine töölaud"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Left workspace"
 msgstr "Vasak töölaud"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Right workspace"
 msgstr "Parem töölaud"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Next workspace"
 msgstr "Järgmine töölaud"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Previous workspace"
 msgstr "Eelmine töölaud"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Add workspace"
 msgstr "Lisa töölaud"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Delete workspace"
 msgstr "Kustuta töölaud"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Move window to next workspace"
 msgstr "Saada aken järgmisesse tööruumi"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Move window to previous workspace"
 msgstr "Saada aken eelmisesse tööruumi"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Move window to upper workspace"
 msgstr "Saada aken ülemisse tööruumi"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Move window to bottom workspace"
 msgstr "Saada aken alumisse tööruumi"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Move window to left workspace"
 msgstr "Saada aken vasakpoolsesse tööruumi"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Move window to right workspace"
 msgstr "Saada aken parempoolsesse tööruumi"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Show desktop"
 msgstr "Näita töölauda"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:491
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:493
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Saada aken tööruumi %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:578
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:573
 msgid "Cannot open the theme directory !"
 msgstr "Teema kataloogi ei õnnestu avada!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:597
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:592
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -631,8 +636,8 @@ msgstr ""
 "Ei õnnestu avada %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:611
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:622
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:606
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -641,7 +646,7 @@ msgstr ""
 "Ei õnnestu kirjutada %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -649,15 +654,15 @@ msgstr ""
 "Kiirvalik on juba kasutuses !\n"
 "Kas sa kindlasti soovid seda kasutada?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:847
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
 msgid "Compose shortcut for :"
 msgstr "Tekita kiirvalik : "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
 msgid "Compose shortcut"
 msgstr "Tekita kiirvalik"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
 msgid "No shortcut"
 msgstr "Kiirvalik puudub"
 
@@ -667,7 +672,7 @@ msgstr "Kiirvalik puudub"
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:190
+#: ../src/main.c:128
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: segmendi viga"

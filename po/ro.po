@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-15 23:58+0200\n"
+"POT-Creation-Date: 2006-05-20 15:20+0200\n"
 "PO-Revision-Date: 2004-11-14 19:01+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -216,7 +216,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Schimbare nume"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:470
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:472
 #, c-format
 msgid "Workspace %d"
 msgstr "Spaţiu de lucru %d"
@@ -261,15 +261,15 @@ msgstr "Maximizează"
 msgid "Close"
 msgstr "Închide"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:356
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Shade window"
 msgstr "Strângere fereastră"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:355
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Hide window"
 msgstr "Ascundere fereastră"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:352
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Maximize window"
 msgstr "Maximizare fereastră"
 
@@ -505,136 +505,141 @@ msgstr "O temă cu acest nume există deja"
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Trebuie să precizaţi un nume pentru tema de combinaţii de taste"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:351
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Close window"
 msgstr "Închidere fereastră"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window vertically"
 msgstr "Maximizare verticală fereastră"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Maximize window horizontally"
 msgstr "Maximizare orizontală fereastră"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Stick window"
 msgstr "Lipire fereastră"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#, fuzzy
+msgid "Cycle windows"
+msgstr "Închidere fereastră"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window up"
 msgstr "Mutare fereastră în sus"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window down"
 msgstr "Mutare fereastră în jos"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Move window left"
 msgstr "Mutare fereastră în stânga"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Move window right"
 msgstr "Mutare fereastră în dreapta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Resize window up"
 msgstr "Redimensionare fereastră în sus"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Resize window down"
 msgstr "Redimensionare fereastră în jos"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Resize window left"
 msgstr "Redimensionare fereastră în stânga"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Resize window right"
 msgstr "Redimensionare fereastră în dreapta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Raise window"
 msgstr "Ridicare fereastră deasupra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Lower window"
 msgstr "Coborâre fereastră dedesubt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Toggle fullscreen"
 msgstr "Comutare stare „pe toate ecranele”"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Upper workspace"
 msgstr "Spaţiul de lucru de sus"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Bottom workspace"
 msgstr "Spaţiul de lucru de jos"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Left workspace"
 msgstr "Spaţiul de lucru din stânga"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Right workspace"
 msgstr "Spaţiul de lucru din dreapta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Next workspace"
 msgstr "Spaţiul de lucru următor"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Previous workspace"
 msgstr "Spaţiul de lucru anterior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Add workspace"
 msgstr "Adăugare spaţiu de lucru"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Delete workspace"
 msgstr "Ştergere spaţiu de lucru"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Move window to next workspace"
 msgstr "Mutare fereastră în spaţiul următor"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Move window to previous workspace"
 msgstr "Mutare fereastră în spaţiul anterior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Move window to upper workspace"
 msgstr "Mutare fereastră în spaţiul de sus"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Move window to bottom workspace"
 msgstr "Mutare fereastră în spaţiul de jos"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Move window to left workspace"
 msgstr "Mutare fereastră în spaţiul din stânga"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Move window to right workspace"
 msgstr "Mutare fereastră în spaţiul din dreapta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Show desktop"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:491
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:493
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Mutare fereastră în spaţiul de lucru 1"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:578
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:573
 msgid "Cannot open the theme directory !"
 msgstr "Nu am reuşit să deschid directorul temei!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:597
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:592
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -643,8 +648,8 @@ msgstr ""
 "Nu am reuşit să deschid %s: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:611
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:622
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:606
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -653,7 +658,7 @@ msgstr ""
 "Nu am reuşit să scriu în %s: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:783
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -661,15 +666,15 @@ msgstr ""
 "Combinaţia de taste este deja asignată!\n"
 "Sigur doriţi să o mai asociaţi o dată?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:847
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
 msgid "Compose shortcut for :"
 msgstr "Compunere combinaţie de taste pentru:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
 msgid "Compose shortcut"
 msgstr "Compunere combinaţie de taste"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
 msgid "No shortcut"
 msgstr "Nici o combinaţie"
 
@@ -679,7 +684,7 @@ msgstr "Nici o combinaţie"
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:190
+#: ../src/main.c:128
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Eroare de segmentare"
