@@ -177,6 +177,10 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->gdisplay = gdisplay;
     display->dpy = (Display *) gdk_x11_display_get_xdisplay (gdisplay);
 
+    display->session = NULL;
+    display->quit = FALSE;
+    display->reload = FALSE;
+
     XSetErrorHandler (handleXError);
 
     /* Initialize internal atoms */

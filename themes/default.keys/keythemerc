@@ -5,7 +5,6 @@ maximize_horiz_key=Alt+F7
 hide_window_key=Alt+F8
 shade_window_key=Alt+F9
 stick_window_key=Alt+F10
-cycle_windows_key=Alt+Tab
 move_window_up_key=Control+Shift+Alt+Up
 move_window_down_key=Control+Shift+Alt+Down
 move_window_left_key=Control+Shift+Alt+Left

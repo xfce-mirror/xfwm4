@@ -82,8 +82,6 @@ static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISIO
 #endif
 
 static DisplayInfo *display_info;
-gboolean xfwm4_quit           = FALSE;
-gboolean xfwm4_reload         = FALSE;
 
 static void
 cleanUp (void)
@@ -109,66 +107,6 @@ cleanUp (void)
     display_info = NULL;
 }
 
-static char *
-build_session_filename(SessionClient *client_session)
-{
-    gchar *filename, *path, *file;
-    GError *error;
-
-    path = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
-
-    error = NULL;
-    if (!xfce_mkdirhier(path, 0700, &error)) 
-    {
-        g_warning("Unable to create session dir %s: %s", path, error->message);
-        g_error_free (error);
-        g_free (path);
-        return NULL;
-    }
-
-    file = g_strdup_printf("xfwm4-%s", client_session->given_client_id);
-    filename = g_build_filename (path, file, NULL);
-    g_free (file);
-    g_free (path);
-    
-    return filename;
-}
-
-static void
-load_saved_session (SessionClient *client_session)
-{
-    gchar *filename;
-    
-    filename = build_session_filename(client_session);
-    if (filename)
-    {
-        sessionLoadWindowStates (filename);
-        g_free (filename);
-    }
-}
-
-static void
-save_phase_2 (gpointer data)
-{
-    SessionClient *client_session;
-    gchar *filename;
-
-    client_session = (SessionClient *) data;
-    filename = build_session_filename(client_session);
-    if (filename)
-    {
-        sessionSaveWindowStates (display_info, filename);
-        g_free (filename);
-    }
-}
-
-static void
-session_die (gpointer client_data)
-{
-    gtk_main_quit ();
-    xfwm4_quit = TRUE;
-}
-
 static void
 handleSignal (int sig)
 {
@@ -179,11 +117,11 @@ handleSignal (int sig)
         case SIGINT:
         case SIGTERM:
             gtk_main_quit ();
-            xfwm4_quit = TRUE;
+            display_info->quit = TRUE;
             break;
         case SIGHUP:
         case SIGUSR1:
-            xfwm4_reload = TRUE;
+            display_info->reload = TRUE;
             break;
         case SIGSEGV:
             cleanUp ();
@@ -542,19 +480,7 @@ initialize (int argc, char **argv, gint compositor_mode)
     display_info->xfilter = eventFilterInit ((gpointer) display_info);
     eventFilterPush (display_info->xfilter, xfwm4_event_filter, (gpointer) display_info);
 
-    client_session = client_session_new (argc, argv, (gpointer) display_info, 
-                                         SESSION_RESTART_IF_RUNNING, 20);
-    client_session->data = (gpointer) client_session;
-    client_session->save_phase_2 = save_phase_2;
-    client_session->die = session_die;
-
-    if (session_init (client_session))
-    {
-        load_saved_session (client_session);
-        return 1;
-    }
-
-    return 0;
+    return sessionStart (argc, argv, display_info);
 }
 
 int

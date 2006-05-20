@@ -500,13 +500,6 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
             g_free (option);
         }
 
-        if (!found)
-        {
-            gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
-            gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, *shortcut,
-                COLUMN_SHORTCUT, entry_value, -1);
-        }
-
         shortcut++;
     }
 

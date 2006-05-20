@@ -27,24 +27,38 @@
 #include "screen.h"
 
 /*
-**  Save window states to file which name is given in argument.
-*/
-gboolean sessionSaveWindowStates (DisplayInfo *, gchar *);
+ *  Save window states to file which name is given in argument.
+ */
+gboolean 
+sessionSaveWindowStates                (DisplayInfo *, 
+                                        gchar *);
 
 /*
-**  Load window states to file which name is given in argument.
-*/
-gboolean sessionLoadWindowStates (gchar *);
+ *  Load window states to file which name is given in argument.
+ */
+gboolean
+sessionLoadWindowStates                (gchar *);
 
 /*
-** Free allocated structure. Should be called before xfwm4 dies
-*/
-void sessionFreeWindowStates (void);
+ * Free allocated structure. Should be called before xfwm4 dies
+ */
+void
+sessionFreeWindowStates                (void);
 
 /*
-** Search for existing client in saved session and update
-** relevant client fields if found.
-*/
-gboolean sessionMatchWinToSM (Client *);
+ * Search for existing client in saved session and update
+ * relevant client fields if found.
+ */
+gboolean
+sessionMatchWinToSM                    (Client *);
+
+/*
+ * Initiate session, connect to session manager and
+ * load saved states if the connection succeeds.
+ */
+int
+sessionStart                           (int, 
+                                        char **,
+                                        DisplayInfo *);
 
 #endif /* INC_CLIENT_H */

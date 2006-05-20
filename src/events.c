@@ -76,9 +76,6 @@
                                  SuperMask | \
                                  HyperMask)
 
-extern gboolean xfwm4_quit;
-extern gboolean xfwm4_reload;
-
 static guint raise_timeout = 0;
 static GdkAtom atom_rcfiles = GDK_NONE;
 static xfwmWindow menu_event_window;
@@ -484,6 +481,12 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 if (screen_info->clients)
                 {
                     clientCycle (screen_info->clients->prev, (XEvent *) ev);
+                }
+                break;
+            case KEY_CLOSE_WINDOW:
+                if (display_info->session)
+                {
+                    logout_session (display_info->session);
                 }
                 break;
             default:
@@ -2211,12 +2214,12 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
     }
     if (!gdk_events_pending () && !XPending (display_info->dpy))
     {
-        if (xfwm4_reload)
+        if (display_info->reload)
         {
             reloadSettings (display_info, UPDATE_ALL);
-            xfwm4_reload = FALSE;
+            display_info->reload = FALSE;
         }
-        else if (xfwm4_quit)
+        else if (display_info->quit)
         {
             gtk_main_quit ();
         }
@@ -2514,8 +2517,12 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 static gboolean
 set_reload (GObject * obj, GdkEvent * ev, gpointer data)
 {
+    DisplayInfo *display_info;
+    
     TRACE ("setting reload flag so all prefs will be reread at next event loop");
-    xfwm4_reload = TRUE;
+
+    display_info = (DisplayInfo *) data;
+    display_info->reload = TRUE;
     return (TRUE);
 }
 
@@ -2564,14 +2571,14 @@ initGtkCallbacks (ScreenInfo *screen_info)
         g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)),
                           "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
     g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
-                      GTK_SIGNAL_FUNC (client_event_cb), NULL);
+                      GTK_SIGNAL_FUNC (client_event_cb), (gpointer) (screen_info->display_info));
     settings = gtk_settings_get_default ();
     if (settings)
     {
         g_signal_connect (settings, "notify::gtk-theme-name",
-            G_CALLBACK (set_reload), NULL);
+            G_CALLBACK (set_reload), (gpointer) (screen_info->display_info));
         g_signal_connect (settings, "notify::gtk-font-name",
-            G_CALLBACK (set_reload), NULL);
+            G_CALLBACK (set_reload), (gpointer) (screen_info->display_info));
         g_signal_connect (settings, "notify::gtk-double-click-time",
             G_CALLBACK (dbl_click_time_cb), (gpointer) (screen_info->display_info));
     }

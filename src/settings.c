@@ -1290,7 +1290,7 @@ loadSettings (ScreenInfo *screen_info)
         /* Keys */
         {"add_workspace_key", NULL, TRUE},
         {"close_window_key", NULL, TRUE},
-        {"cycle_windows_key", NULL, TRUE},
+        {"cycle_windows_key", NULL, FALSE},
         {"del_workspace_key", NULL, TRUE},
         {"fullscreen_key", NULL, TRUE},
         {"hide_window_key", NULL, TRUE},

@@ -36,6 +36,10 @@
 #include <sys/types.h>
 #include <signal.h>
 
+#include <gtk/gtk.h>
+#include <glib.h>
+#include <libxfcegui4/libxfcegui4.h>
+
 #include "display.h"
 #include "screen.h"
 #include "hints.h"
@@ -693,3 +697,92 @@ sessionMatchWinToSM (Client * c)
     }
     return FALSE;
 }
+
+static char *
+sessionBuildFilename(SessionClient *client_session)
+{
+    gchar *filename, *path, *file;
+    GError *error;
+
+    path = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
+
+    error = NULL;
+    if (!xfce_mkdirhier(path, 0700, &error)) 
+    {
+        g_warning("Unable to create session dir %s: %s", path, error->message);
+        g_error_free (error);
+        g_free (path);
+        return NULL;
+    }
+
+    file = g_strdup_printf("xfwm4-%s", client_session->given_client_id);
+    filename = g_build_filename (path, file, NULL);
+    g_free (file);
+    g_free (path);
+    
+    return filename;
+}
+
+static void
+sessionLoad (DisplayInfo *display_info)
+{
+    SessionClient *session;
+    gchar *filename;
+
+    session = display_info->session;
+    filename = sessionBuildFilename(session);
+    if (filename)
+    {
+        sessionLoadWindowStates (filename);
+        g_free (filename);
+    }
+}
+
+static void
+sessionSavePhase2 (gpointer data)
+{
+    DisplayInfo *display_info;
+    SessionClient *session;
+    gchar *filename;
+
+    display_info = (DisplayInfo *) data;
+    session = display_info->session;
+    filename = sessionBuildFilename(session);
+    if (filename)
+    {
+        sessionSaveWindowStates (display_info, filename);
+        g_free (filename);
+    }
+}
+
+static void
+sessionDie (gpointer data)
+{
+    DisplayInfo *display_info;
+
+    display_info = (DisplayInfo *) data;
+    display_info->quit = TRUE;
+    gtk_main_quit ();
+}
+
+int
+sessionStart (int argc, char **argv, DisplayInfo *display_info)
+{
+    SessionClient *session;
+    
+    display_info->session = client_session_new (argc, argv, (gpointer) display_info, 
+                                                SESSION_RESTART_IF_RUNNING, 20);
+    session = display_info->session;
+    session->data = (gpointer) display_info;
+    session->save_phase_2 = sessionSavePhase2;
+    session->die = sessionDie;
+
+    if (session_init (session))
+    {
+        sessionLoad (display_info);
+        return 1;
+    }
+
+    return 0;
+}
+
