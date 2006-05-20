@@ -156,7 +156,8 @@
 #define WINDOW_REGULAR_FOCUSABLE        (WINDOW_NORMAL | \
                                          WINDOW_DIALOG | \
                                          WINDOW_MODAL_DIALOG)
-#define WINDOW_TYPE_DONT_FOCUS          (WINDOW_DOCK)
+#define WINDOW_TYPE_DONT_FOCUS          (WINDOW_SPLASHSCREEN | \
+                                         WINDOW_DOCK)
 
 
 
