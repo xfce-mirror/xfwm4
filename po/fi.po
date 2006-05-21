@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-20 15:20+0200\n"
-"PO-Revision-Date: 2006-05-07 10:53+0300\n"
+"POT-Creation-Date: 2006-05-21 11:11+0300\n"
+"PO-Revision-Date: 2006-05-21 11:11+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -504,9 +504,8 @@ msgid "Stick window"
 msgstr "Kiinnitä ikkuna"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:359
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Sulje ikkuna"
+msgstr "Selaa ikkunoita"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window up"
