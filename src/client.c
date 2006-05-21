@@ -2178,7 +2178,6 @@ clientShowSingle (Client * c, gboolean change_state)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    myDisplayGrabServer (display_info);
     if ((c->win_workspace == screen_info->current_ws) || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
@@ -2193,7 +2192,6 @@ clientShowSingle (Client * c, gboolean change_state)
         FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info, c->window, NormalState);
     }
-    myDisplayUngrabServer (display_info);
     clientSetNetState (c);
 }
 
@@ -2238,7 +2236,6 @@ clientHideSingle (Client * c, gboolean change_state)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    myDisplayGrabServer (display_info);
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c->screen_info, c, c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
@@ -2255,7 +2252,6 @@ clientHideSingle (Client * c, gboolean change_state)
     }
     XUnmapWindow (display_info->dpy, c->window);
     XUnmapWindow (display_info->dpy, c->frame);
-    myDisplayUngrabServer (display_info);
     clientSetNetState (c);
 }
 
