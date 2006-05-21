@@ -1,11 +1,25 @@
 2006-05-21  Daichi Kawahata <daichi@xfce.org>
 
+	* ja.po: Updated Japanese translation.
 	* pl.po: Updated Polish translations by Szymon Kalasz
 	  <szymon_maestro@gazeta.pl>.
+
+2006-05-20  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: wm & terminal update
+
+2006-05-20  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Put back configurable shortcut for window
+	  cycling.
 
 2006-05-18  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated Japanese translations.
+
+2006-05-15  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Update potfiles
 
 2006-05-15  Piarres Beobide <pi@beobide.net>
 
@@ -13,37 +27,344 @@
 
 2006-05-13  Pau Rul-lan Ferragut <paurullan@bulma.net>
 
-	* ca.po: Update catalan translation by Carles Mu√±oz Gorriz
-	<carlesmu@internautas.org>
+	* ca.po: Update catalan translation by Carles Muè´–oz Gorriz
+	  <carlesmu@internautas.org>
 
 2006-05-13  Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>
 
-	* zh_TW: Update traditional Chinese translation.
+	* zh_TW.po: Update traditional Chinese translation.
 
 2006-05-13  Daichi Kawahata <daichi@xfce.org>
 
 	* pl.po: Updated Polish translations by Szymon Kalasz
 	  <szymon_maestro@gazeta.pl>.
 
-2006-05-08  Daichi Kawahata <daichi@xfce.org>
+2006-05-07  Olivier Fourdan <fourdan@xfce.org>
 
-	* pl.po: Updated Polish translations by Szymon Kalasz
-	  <szymon_maestro@gazeta.pl>.
+	* POTFILES.in, xfwm4.pot, *.po: Update po
 
 2006-05-07  Daichi Kawahata <daichi@xfce.org>
 
 	* pl.po: Updated Polish translations by Piotr Malinski
 	  <admin@rk.edu.pl>.
+	* xfwm4.pot, *.po: Updated.
+
+2006-05-07  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
+
+	* fi.po: Finnish translations updated.
+
+2006-05-06  Adriano Winter Bess <awbess@gmail.com>
+
+	* pt_BR.po: Updated Brazilian Portuguese translations.
 
 2006-05-06  Stavros Giannouris <stavrosg2002@freemail.gr>
 
 	* el.po: Updated Greek translation.
+
+2006-05-06  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Update po
+
+2006-05-05  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Let gtk warp long lines, update po accordingly.
 
 2006-05-05  Daichi Kawahata <daichi@xfce.org>
 
 	* cs.po: Updated Czech translations by Michal Varady
 	  <miko.vaji@gmail.com>.
 	* ja.po: Updated Japanese translations.
+
+2006-05-04  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Refactoring and small cleanup.
+
+2006-05-04  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
+
+	* fi.po: Minor update to the Finnish translation.
+
+2006-05-03  Olivier Fourdan <fourdan@xfce.org>
+
+	* POTFILES.in, xfwm4.pot, *.po: Use a separate implementation from
+	  libxfcegui4 for gtk style and event filters, update theme, add
+	  new theme 'Moheli'.
+
+2006-05-02  Daichi Kawahata <daichi@xfce.org>
+
+	* pl.po: Updated Polish translations by Piotr Malinski
+	  <admin@rk.edu.pl>.
+
+2006-05-01  Daichi Kawahata <daichi@xfce.org>
+
+	* hu.po: Updated.
+
+2006-04-30  Daichi Kawahata <daichi@xfce.org>
+
+	* pl.po: Updated Polish translations by Piotr Malinski
+	  <admin@rk.edu.pl>.
+
+2006-04-30  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: updates
+
+2006-04-30  Daichi Kawahata <daichi@xfce.org>
+
+	* xfwm4.pot, *.po: Updated.
+
+2006-04-29  Daichi Kawahata <daichi@xfce.org>
+
+	* pl.po: Updated Polish translations by Piotr Malinski
+	  <riklaunim@gmail.com>.
+	* vi.po: Updated Vietnamese translations by Phan Vinh Thinh
+	  <teppi@vnlinux.org>.
+
+2006-04-26  Peeter Vois <Peeter.Vois@proekspert.ee>
+
+	* et.po:
+
+2006-04-25  Maxim V. Dziumanenko <mvd@mylinux.ua>
+
+	* uk.po: Updated Ukrainian translation.
+
+2006-04-23  Stavros Giannouris <stavrosg2002@freemail.gr>
+
+	* el.po: Greek translation update.
+
+2006-04-23  Daichi Kawahata <daichi@xfce.org>
+
+	* ru.po: Updated Russian translations by Sergey Fedoseev
+	  <fedoseev.sergey@gmail.com>.
+	* ja.po: Updated Japanese translations.
+
+2006-04-23  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
+
+	* fi.po: Finnish translations updated.
+
+2006-04-23  Daichi Kawahata <daichi@xfce.org>
+
+	* vi.po: Updated Vietnamese translations by Phan Vinh Thinh
+	  <teppi@vnlinux.org>.
+
+2006-04-22  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Add note to translators as requested.
+
+2006-04-22  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: some wm & orage updates
+
+2006-04-21  Stavros Giannouris <stavrosg2002@freemail.gr>
+
+	* el.po: Greek translation update.
+
+2006-04-20  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Same strings, different sources, need to
+	  update the po that reference the file and line of the
+	  strings.
+
+2006-04-20  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: wm updated
+
+2006-04-19  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: updates
+
+2006-04-19  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
+
+	* fi.po: Finnish translation updated.
+
+2006-04-18  Daichi Kawahata <daichi@xfce.org>
+
+	* et.po: Updated Estonian translations by Peeter Vois
+	  <Peeter.Vois@proekspert.ee>.
+
+2006-04-16  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: panel, wm & mcs-plugins updates
+
+2006-04-16  Daichi Kawahata <daichi@xfce.org>
+
+	* ru.po: Updated Russian translations by Andrey Fedoseev
+	  <andrey.fedoseev@gmail.com>.
+
+2006-04-15  Daichi Kawahata <daichi@xfce.org>
+
+	* *.po: Bump, etc.
+	* ja.po: Updated Japanese translations.
+	* ru.po: Updated Russian translations by Andrey Fedoseev
+	  <andrey.fedoseev@gmail.com>.
+
+2006-04-14  Daichi Kawahata <daichi@xfce.org>
+
+	* fi.po: Updated Finnish translations by Jari Rahkonen
+	  <jari.rahkonen@pp1.inet.fi>.
+
+2006-04-14  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: wm & print updates
+
+2006-04-13  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Add new theme 'Katiola' (as in RCI).
+
+2006-04-08  Daichi Kawahata <daichi@xfce.org>
+
+	* fi.po: Updated Finnish translations by Jari Rahkonen
+	  <jari.rahkonen@pp1.inet.fi>.
+
+2006-04-06  Daichi Kawahata <daichi@xfce.org>
+
+	* vi.po: Updated Vietnamese translations by Phan Vinh Thinh
+	  <teppi@vnlinux.org>.
+
+2006-04-02  Pau Rul-lan Ferragut <paurullan@bulma.net>
+
+	* ca.po: [i18n] catalan little of work on catalan translations
+
+2006-04-02  Daichi Kawahata <daichi@xfce.org>
+
+	* ja.po: Fixed according to the context.
+	* ja.po: Updated Japanese translations.
+
+2006-04-02  Stavros Giannouris <stavrosg2002@freemail.gr>
+
+	* el.po: Really corrected now
+	* el.po: Greek fuzzy
+
+2006-04-01  Olivier Fourdan <fourdan@xfce.org>
+
+	* fr.po: Fuzzy
+	* xfwm4.pot, *.po: /me stupid; when adding context, use a
+	  meaningful context...
+	* xfwm4.pot, *.po: Add context to some translations as suggested
+	  by Adriano Winter Bess <awbess@gmail.com> (Fix bug #1629)
+	  - Beware, it breaks existing translations :(
+
+2006-04-01  Stavros Giannouris <stavrosg2002@freemail.gr>
+
+	* el.po: Greek translations update & polish by Stathis Kamperis
+	  <ekamperi@auth.gr>
+
+2006-03-30  Daichi Kawahata <daichi@xfce.org>
+
+	* vi.po: Updated Vietnamese translations by Phan Vinh Thinh
+	  <teppi@vnlinux.org>.
+
+2006-03-27  Daichi Kawahata <daichi@xfce.org>
+
+	* ru.po: Updated Russian translations by
+	  Andrey Fedoseev <andrey.fedoseev@gmail.com>,
+	  Sergey Fedoseev <fedoseev.sergey@gmail.com>.
+
+2006-03-26  Daichi Kawahata <daichi@xfce.org>
+
+	* ja.po: Updated Japanese translations.
+
+2006-03-26  Stavros Giannouris <stavrosg2002@freemail.gr>
+
+	* el.po: Greek translation update.
+
+2006-03-24  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Update po
+
+2006-03-19  Pau Rul-lan Ferragut <paurullan@bulma.net>
+
+	* ca.po: [i18n] catalan seems a lot of work but they all are
+	  fuzzy
+
+2006-03-19  Daichi Kawahata <daichi@xfce.org>
+
+	* ja.po: Updated Japanese translations.
+
+2006-03-18  Piarres Beobide <pi@beobide.net>
+
+	* eu.po: Basque tarsnaltion litle update.
+
+2006-03-18  Pau Rul-lan Ferragut <paurullan@bulma.net>
+
+	* ca.po: [i18n] catalan added null translation and some little
+	  tweaks to not-parsing ones
+
+2006-03-18  Daichi Kawahata <daichi@xfce.org>
+
+	* ru.po: Updated Russian translations by
+	  Andrey Fedoseev <andrey.fedoseev@gmail.com>,
+	  Sergey Fedoseev <fedoseev.sergey@gmail.com>.
+
+2006-03-11  Sylvain Vedrenne <gnu_sylvain@xfce.org>
+
+	* eo.po: Esperanto translations update: corrected two strings, and
+	  email address.
+	* eo.po: Esperanto translation update.
+
+2006-03-04  Daichi Kawahata <daichi@xfce.org>
+
+	* xfwm4.pot, *.po: Updated.
+
+2006-02-26  Daichi Kawahata <daichi@xfce.org>
+
+	* ja.po: Updated Japanese translations.
+
+2006-02-24  Daichi Kawahata <daichi@xfce.org>
+
+	* fi.po: Updated Finnish translations by Jari Rahkonen
+	  <jari.rahkonen@pp1.inet.fi>.
+
+2006-02-22  Stavros Giannouris <stavrosg2002@freemail.gr>
+
+	* el.po: Updated Greek translations.
+
+2006-02-19  Daichi Kawahata <daichi@xfce.org>
+
+	* de.po: Updated German translations by Fabian Nowak
+	  <timystery@arcor.de>.
+
+2006-02-16  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Update po
+
+2006-02-13  Jean-Francois Wauthy <pollux@xfce.org>
+
+	* vi.po: updated VI translations.
+
+2006-02-12  Daichi Kawahata <daichi@xfce.org>
+
+	* fi.po: Updated Finnish translations by Jari Rahkonen
+	  <jari.rahkonen@pp1.inet.fi>.
+	* xfwm4.pot, *.po: Updated.
+
+2006-02-12  Stavros Giannouris <stavrosg2002@freemail.gr>
+
+	* el.po: Updated Greek translation.
+
+2006-02-05  Yuval Tanny <tanai@int.gov.il>
+
+	* he.po: Update Hebrew translations.
+
+2006-02-02  Olivier Fourdan <fourdan@xfce.org>
+
+	* fr.po: String too long in french...
+	* POTFILES.in, xfwm4.pot, *.po: Resync
+
+2006-02-01  Olivier Fourdan <fourdan@xfce.org>
+
+	* fr.po: Update french locale
+
+2006-01-30  Olivier Fourdan <fourdan@xfce.org>
+
+	* xfwm4.pot, *.po: Update french localization and other pot files.
+
+2006-01-29  Daichi Kawahata <daichi@xfce.org>
+
+	* ja.po: Updated Japanese translations.
+	* xfwm4.pot, *.po: Updated.
+
+2006-01-20  Olivier Fourdan <fourdan@xfce.org>
+
+	* POTFILES.in: Add the long awaited wm tweaks plugin.
 
 2006-01-08  Pau Rul-lan Ferragut <paurullan@bulma.net>
 
@@ -119,9 +440,6 @@
 2005-10-21  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated Japanese translations.
-
-2005-10-21  Daichi Kawahata <daichi@xfce.org>
-
 	* pl.po: Updated Polish translations by Piotr Malinski
 	  <riklaunim@gmail.com>.
 
