@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-20 15:20+0200\n"
-"PO-Revision-Date: 2006-05-07 19:50+0200\n"
+"PO-Revision-Date: 2006-05-20 21:10+0200\n"
 "Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -72,12 +72,9 @@ msgid "Window Manager Tweaks"
 msgstr "Opcje Menadżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
-#, fuzzy
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
-"Dołącz okna z włączonymi opcjami \n"
-"omijania taskbarów"
+msgstr "Dołącz okna z włączonymi opcjami omijania pasków zadań lub pagerów"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
@@ -128,12 +125,11 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Zmieniaj Pulpity za pomocą rolki myszy"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:479
-#, fuzzy
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
-"Zapamiętaj i przywróć poprzedni pulpit przy przechodzeniu\n"
-"za pomocą skrótów klawiszowych"
+"Zapamiętaj i przywróć poprzedni pulpit przy przechodzeniu za pomocą skrótów "
+"klawiszowych"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
