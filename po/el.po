@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-20 15:20+0200\n"
-"PO-Revision-Date: 2006-04-23 16:05+0200\n"
+"PO-Revision-Date: 2006-05-21 17:55+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -522,9 +522,8 @@ msgid "Stick window"
 msgstr "Επικόλληση παραθύρου"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:359
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Κλείσιμο παραθύρου"
+msgstr "Εναλλαγή παραθύρων"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window up"
