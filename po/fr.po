@@ -82,11 +82,11 @@ msgstr "Inclure les fenêtres iconifiées"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:395
 msgid "Cycle through windows from all workspaces"
-msgstr "Parcourir les fenêtres de tous les espaces de travail"
+msgstr "Naviguer entre les fenêtres de tous les espaces de travail"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid "Cycling"
-msgstr "Cyclage"
+msgstr "Navigation"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:412
 msgid "Activate focus stealing prevention"
@@ -519,9 +519,8 @@ msgid "Stick window"
 msgstr "Coller la fenêtre"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:359
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Fermer la fenêtre"
+msgstr "Naviguer entre les fenêtres"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window up"
