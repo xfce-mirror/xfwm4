@@ -300,6 +300,12 @@ print_version (void)
 #else
     g_print ("No\n");
 #endif    
+    g_print ("\t- KDE systray proxy (deprecated):               ");
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
+    g_print ("Yes\n");
+#else
+    g_print ("No\n");
+#endif    
     exit (0);
 }
 

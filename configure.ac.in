@@ -113,7 +113,7 @@ AC_SUBST([RANDR_LIBS])
 dnl
 dnl Xcomposite and related extensions
 dnl
-build_compositor="no"
+compositor="no"
 ENABLE_COMPOSITOR=""
 AC_ARG_ENABLE([compositor],
 AC_HELP_STRING([--enable-compositor], [enable compositor in xfwm4 (default)])
@@ -126,11 +126,27 @@ if test x"$enable_compositor" = x"yes"; then
       PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 0.2 xfixes xdamage)
       AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
       ENABLE_COMPOSITOR="--enable-compositor"
-      build_compositor="yes"
+      compositor="yes"
     fi
   fi
 fi
 AC_SUBST(ENABLE_COMPOSITOR)
+
+dnl
+dnl Old unsupported KDE systray protocol
+dnl
+ENABLE_KDE_SYSTRAY=""
+kde_systray="no"
+AC_ARG_ENABLE([kde_systray],
+  AC_HELP_STRING([--enable-kde-systray], [enable KDE systray proxy (deprecated)]),
+  kde_systray="$enableval",
+  kde_systray="no")
+
+if test x"$kde_systray" = x"yes"; then
+  AC_DEFINE([ENABLE_KDE_SYSTRAY_PROXY], [1], [Define to enable KDE systray proxy support])
+  ENABLE_KDE_SYSTRAY="--enable-kde-systray"
+fi
+AC_SUBST(ENABLE_KDE_SYSTRAY)
 
 dnl Check for debugging support
 XDT_FEATURE_DEBUG
@@ -174,5 +190,6 @@ echo "Build Configuration for $PACKAGE version $VERSION revision $REVISION:"
 echo "  Startup notification support:                 $LIBSTARTUP_NOTIFICATION_FOUND"
 echo "  Render support:                               $have_render"
 echo "  Xrandr support:                               $have_xrandr"
-echo "  Embedded compositor:                          $build_compositor"
+echo "  Embedded compositor:                          $compositor"
+echo "  KDE systray protocol proxy:                   $kde_systray"
 echo
