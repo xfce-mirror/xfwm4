@@ -1974,7 +1974,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 
                 /* We are simply ignoring XServer time wraparound here */
                 TRACE ("Time of event received is %u, current XServer time is %u", (unsigned int) ev_time, (unsigned int) current);
-                if ((ev_time != (Time) 0) && (ev_time < current))
+                if ((screen_info->params->prevent_focus_stealing) && (ev_time != (Time) 0) && (ev_time < current))
                 {
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
