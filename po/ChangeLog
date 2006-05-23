@@ -1,6 +1,11 @@
+2006-05-23  Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>
+
+	* zh_TW.po: Correct the strings containing Button Label in
+	  traditional Chinese translations.
+
 2006-05-23 Piarres Beobide <pi@beobide.net>
 
-        * eu.po: Basque translation update.
+	* eu.po: Basque translation update.
 
 2006-05-21  Stavros Giannouris <stavrosg2002@freemail.gr>
 
@@ -21,6 +26,7 @@
 	* xfwm4.pot, *.po: Put back configurable shortcut for window
 	  cycling.
 
+>>>>>>> .r21800
 2006-05-18  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated Japanese translations.
