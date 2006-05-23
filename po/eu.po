@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-20 15:20+0200\n"
-"PO-Revision-Date: 2006-05-14 19:27+0200\n"
+"PO-Revision-Date: 2006-05-23 13:11+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,8 +23,7 @@ msgid "Workspace Margins"
 msgstr "Idazmahai Marjinak"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak leihorik ipiniko ez diren pantailaren zatiak dira"
 
 #: ../mcs-plugin/margins.c:167
@@ -71,15 +70,14 @@ msgid "Window Manager Tweaks"
 msgstr "Leiho Kudeatzaile Gomendioak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
-msgid ""
-"Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "\"paginatzailea utzi\" edo \"ataza-barra utzi\" propietateak ezarririk duten "
 "leihoa barne"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
-msgstr "Ezkutatuako leiohal (adib, txikitutakoak) barne"
+msgstr "Ezkutatutako leihoak (adib, txikitutakoak) barne"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:395
 msgid "Cycle through windows from all workspaces"
@@ -126,10 +124,9 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Idazmahaia aldatu idazmahaiean sagu errubera erabiliaz"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:479
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
-"Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla birtartez "
+"Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla bitartez "
 "aldatzean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
@@ -166,7 +163,7 @@ msgstr "Popup leihoen azpian itzalak bistarazi"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:546
 msgid "Opacity of window decorations"
-msgstr "Leiho dekoreazioaren opakotasuna"
+msgstr "Leiho dekorazioaren opakotasuna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
@@ -221,7 +218,7 @@ msgstr "Izena:"
 
 #: ../mcs-plugin/workspaces.c:427
 msgid "Click on a workspace name to edit it"
-msgstr "Klikatu idazmahai izenenan aldatzeko"
+msgstr "Klikatu idazmahai izenean aldatzeko"
 
 #: ../mcs-plugin/workspaces.c:493
 msgid "Number of workspaces:"
@@ -277,7 +274,7 @@ msgstr "Ezkerra"
 
 #: ../mcs-plugin/xfwm4_plugin.c:87
 msgid "Center"
-msgstr "Zentratuta"
+msgstr "Zentratua"
 
 #: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Right"
@@ -305,7 +302,7 @@ msgstr "Ezkutukoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1373
 msgid "Font Selection Dialog"
-msgstr "Karaktere-joko Aukera lehioa"
+msgstr "Karaktere-joko Aukera leihoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1438
 msgid "Window Manager"
@@ -350,7 +347,7 @@ msgstr "Teklatua"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1600
 msgid "Focus model"
-msgstr "Foku modelua"
+msgstr "Foku modeloa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1604
 msgid "Click to focus"
@@ -358,7 +355,7 @@ msgstr "Egin klik fokoa ezartzeko"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1614
 msgid "Focus follows mouse"
-msgstr "Fokoak arratoia jarraitzen du"
+msgstr "Fokoak sagua jarraitzen du"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1625
 msgid "Automatically give focus to newly created windows"
@@ -378,7 +375,7 @@ msgstr "Automatikoki bistaratu leihoak fokoa dutenean"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Delay before raising focused window :"
-msgstr "Fokoa duen lehioa bistaratu arte itxarongo den denbora :"
+msgstr "Fokoa duen leihoa bistaratu arte itxarongo den denbora :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1659
 msgid "Slow"
@@ -390,7 +387,7 @@ msgstr "Azkarra"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1687
 msgid "Raise window when clicking inside application window"
-msgstr "Bistaratu lehioa, honen barnean klikatzerakoan"
+msgstr "Bistaratu leihoa, honen barnean klikatzerakoan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1691
 msgid "Raise on click"
@@ -398,15 +395,15 @@ msgstr "Bistaratu klikatzerakoan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Windows snapping"
-msgstr "Leiho Itsaskarritasuna"
+msgstr "Leiho Itsasgarritasuna"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1714
 msgid "Snap windows to screen border"
-msgstr "Itxasi leihoak pantaila ertzari"
+msgstr "Itsatsi leihoak pantaila ertzari"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1720
 msgid "Snap windows to other windows"
-msgstr "Itsasi lehioak berien artean"
+msgstr "Itsatsi leihoak beraien artean"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1731
 msgid "Distance :"
@@ -430,7 +427,7 @@ msgstr "Joan hurrengo idazmahaiera sagua pantaila ertzera ailatzerakoan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1780
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Lehioak mugitzen hurrengo mahaigainera pasa"
+msgstr "Leihoak mugitzen hurrengo mahaigainera pasa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1790
 msgid "Edge Resistance :"
@@ -446,7 +443,7 @@ msgstr "Ertaina"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1826
 msgid "Opaque move and resize"
-msgstr "Tamaina aldatza eta mugitze ikusezina"
+msgstr "Tamaina aldatzea eta mugitze ikusezina"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1831
 msgid "Display content of windows when resizing"
@@ -488,11 +485,11 @@ msgstr "Idatzi izen berri bat gaiarentzat:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:178
 msgid "A keybinding theme with the same name already exists"
-msgstr "Izn horretako laster-tekla gai bat badago dagoeneko"
+msgstr "Izen horretako laster-tekla gai bat badago dagoeneko"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:184
 msgid "You have to provide a name for the keybinding theme"
-msgstr "LAster-tekla gaiarentzat izen bat eman behar duzu"
+msgstr "Laster-tekla gaiarentzat izen bat eman behar duzu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:352
 msgid "Close window"
@@ -511,9 +508,8 @@ msgid "Stick window"
 msgstr "Ezkutatu leihoa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:359
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Ezkutatu leihoa"
+msgstr "Leiho ziklikoak"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window up"
@@ -617,7 +613,7 @@ msgstr "Mugitu leihoa eskuineko idazmahaiera"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Show desktop"
-msgstr "Ikusi idazmhaia"
+msgstr "Ikusi idazmahaia"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:493
 #, c-format
@@ -708,7 +704,7 @@ msgstr "Ire_ki"
 
 #: ../src/menu.c:47
 msgid "S_tick"
-msgstr "I_tsasi"
+msgstr "I_tsatsi"
 
 #: ../src/menu.c:48
 msgid "Uns_tick"
@@ -755,7 +751,7 @@ msgstr "%i Idazmahaia"
 #: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu errorea arratoi markatzailea eskuratzerakoan\n"
+msgstr "%s: GtkMenu errorea sagu markatzailea eskuratzerakoan\n"
 
 #: ../src/settings.c:858
 #, c-format
@@ -794,3 +790,4 @@ msgstr "Idazmahai Ezarpenak"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
+
