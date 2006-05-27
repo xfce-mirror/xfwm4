@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-20 15:20+0200\n"
-"PO-Revision-Date: 2006-05-20 21:10+0200\n"
+"PO-Revision-Date: 2006-05-27 13:02+0200\n"
 "Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -114,7 +114,7 @@ msgstr "Przywróć oryginalny rozmiar okna przy przesuwaniu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Użyj oporu krawędzi zamiast przyciągania okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Accessibility"
@@ -508,9 +508,8 @@ msgid "Stick window"
 msgstr "Przypnij okno"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:359
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Zamknij okno"
+msgstr "Przechodzenie między oknami"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Move window up"

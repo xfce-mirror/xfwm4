@@ -1,3 +1,8 @@
+2006-05-27  Daichi Kawahata <daichi@xfce.org>
+
+	* pl.po: Updated Polish translations by Szymon Kalasz
+	  <szymon_maestro@gazeta.pl>.
+
 2006-05-23  Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>
 
 	* zh_TW.po: Correct the strings containing Button Label in
@@ -26,7 +31,6 @@
 	* xfwm4.pot, *.po: Put back configurable shortcut for window
 	  cycling.
 
->>>>>>> .r21800
 2006-05-18  Daichi Kawahata <daichi@xfce.org>
 
 	* ja.po: Updated Japanese translations.
