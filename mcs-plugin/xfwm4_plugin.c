@@ -64,7 +64,7 @@ struct _TitleButton
     gchar *stock_icon;
 };
 
-static TitleButton title_button[] = {
+static const TitleButton title_button[] = {
     {"O", N_("Menu"), "gtk-index"},
     {"T", N_("Stick"), "gtk-add"},
     {"S", N_("Shade"), "gtk-goto-top"},
@@ -74,7 +74,7 @@ static TitleButton title_button[] = {
 };
 
 
-MenuTmpl dbl_click_values[] = {
+static const MenuTmpl dbl_click_values[] = {
     {N_("Shade window"), "shade"},
     {N_("Hide window"), "hide"},
     {N_("Maximize window"), "maximize"},
@@ -82,7 +82,7 @@ MenuTmpl dbl_click_values[] = {
     {NULL, NULL}
 };
 
-MenuTmpl title_align_values[] = {
+static const MenuTmpl title_align_values[] = {
     {N_("Left"), "left"},
     {N_("Center"), "center"},
     {N_("Right"), "right"},
@@ -643,7 +643,7 @@ create_layout_buttons (gchar * layout, gpointer user_data)
 }
 
 static GtkWidget *
-create_option_menu_box (MenuTmpl template[], guint size, gchar * display_label, gchar * value,
+create_option_menu_box (const MenuTmpl template[], guint size, gchar * display_label, gchar * value,
     GCallback handler, gpointer user_data)
 {
     GtkWidget *hbox;
