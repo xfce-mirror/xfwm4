@@ -1,30 +1,30 @@
+# translation of he.po to Hebrew
 # Hebrew translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
+#
 # Dotan Kamber <kamberd@yahoo.com>, 2004.
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004.
-# Yuval Tanny <tanai@int.gov.il>, 2004.
-#
+# Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.90.2\n"
+"Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-20 15:20+0200\n"
-"PO-Revision-Date: 2005-10-09 20:44+0900\n"
+"PO-Revision-Date: 2006-05-31 02:27+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
-"Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
+"Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
 msgstr "שולי סביבת העבודה"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
 #: ../mcs-plugin/margins.c:167
@@ -45,7 +45,6 @@ msgstr "למטה:"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "סביבות עבודה ושוליים"
 
@@ -64,17 +63,16 @@ msgstr "שוליים"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:356
 msgid "None"
-msgstr ""
+msgstr "כלום"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:364
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "מנהל חלונות"
+msgstr "התאמה אישית של מנהל החלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
-msgid ""
-"Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
@@ -128,8 +126,7 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:479
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
@@ -682,7 +679,7 @@ msgstr "אין קיצור"
 #: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (על %s)"
 
 #: ../src/main.c:128
 #, c-format
@@ -783,19 +780,16 @@ msgid "Unknown application!"
 msgstr "יישום לא ידוע."
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "מנהל חלונות"
+msgstr "הגדרות מנהל חלונות"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "מנהל חלונות"
+msgstr "הגדרות מנהל חלונות Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "הגדרות מנהל החלונות"
+msgstr "הגדרות מתקדמות"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 #, fuzzy
@@ -803,11 +797,10 @@ msgid "Xfce 4 Window Manager Tweaks"
 msgstr "מנהל חלונות"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "שולי סביבת העבודה"
+msgstr "הגדרות סביבות עבודה"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "שולי סביבת העבודה"
+msgstr "הגדרות סביבות עבודה Xfce 4"
+
