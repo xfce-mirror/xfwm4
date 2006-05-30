@@ -1761,8 +1761,15 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                     clientUpdateIcon (c);
                     frameDraw (c, TRUE, FALSE);
                 }
+                if (HINTS_ACCEPT_INPUT (c->wmhints))
+                {
+                    FLAG_SET (c->wm_flags, WM_FLAG_INPUT);
+                }
+                else
+                {
+                    FLAG_UNSET (c->wm_flags, WM_FLAG_INPUT);
+                }
             }
-            FLAG_SET (c->wm_flags, HINTS_ACCEPT_INPUT (c->wmhints) ? WM_FLAG_INPUT : 0);
             clientUpdateUrgency (c);
         }
         else if (ev->atom == display_info->atoms[WM_PROTOCOLS])
