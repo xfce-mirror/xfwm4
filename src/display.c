@@ -58,6 +58,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
         "_MOTIF_WM_HINTS",
+        "_MOTIF_WM_INFO",
         "_NET_ACTIVE_WINDOW",
         "_NET_CLIENT_LIST",
         "_NET_CLIENT_LIST_STACKING",
