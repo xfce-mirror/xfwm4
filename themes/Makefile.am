@@ -2,6 +2,7 @@
 #
 
 SUBDIRS =								\
+	daloa								\
 	default								\
 	default.keys							\
 	default-4.0							\
