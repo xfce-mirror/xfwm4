@@ -183,6 +183,7 @@ clientFocusNew(Client * c)
 
         if (prevented && c2 && (c2->win_layer == c->win_layer))
         {
+            FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             clientSortRing(c);
             clientLower (c, c2->frame);
             clientSortRing(c2);
@@ -194,7 +195,6 @@ clientFocusNew(Client * c)
         }
 
         clientShow (c, TRUE);
-        FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         clientSetNetState (c);
         clientGrabMouseButton (c);
     }
