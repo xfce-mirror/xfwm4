@@ -2245,13 +2245,13 @@ clientHideSingle (Client * c, gboolean change_state)
         /* Adjust to urgency state as the window is not visible */
         clientUpdateUrgency (c);
     }
+    XUnmapWindow (display_info->dpy, c->window);
+    XUnmapWindow (display_info->dpy, c->frame);
     if (change_state)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info, c->window, IconicState);
     }
-    XUnmapWindow (display_info->dpy, c->window);
-    XUnmapWindow (display_info->dpy, c->frame);
     clientSetNetState (c);
 }
 
