@@ -792,24 +792,3 @@ msgstr "Inställningar för arbetsytor"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Inställningar för arbetsytor"
-
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "Avancerade inställningar för fönsterhanterare"
-
-#~ msgid "Window cycling"
-#~ msgstr "Fönsterväxling"
-
-#~ msgid "Tweaks"
-#~ msgstr "Finjusteringar"
-
-#~ msgid "Compositing"
-#~ msgstr "Skuggor och genomskinlighet"
-
-#~ msgid "Window Manager Preferences"
-#~ msgstr "Fönsterhanterarinställningar"
-
-#~ msgid "Wide"
-#~ msgstr "Stort"
-
-#~ msgid "Window Manager Tweak"
-#~ msgstr "Finjusteringar för fönsterhanteraren"
