@@ -32,24 +32,35 @@
 #include "screen.h"
 #include "client.h"
 
-void     compositorMapWindow        (DisplayInfo *, Window);
-void     compositorUnmapWindow      (DisplayInfo *, Window);
-void     compositorAddWindow        (DisplayInfo *, Window, Client *);
-void     compositorRemoveWindow     (DisplayInfo *, Window);
+void     compositorMapWindow        (DisplayInfo *,
+                                     Window);
+void     compositorUnmapWindow      (DisplayInfo *,
+                                     Window);
+void     compositorAddWindow        (DisplayInfo *, 
+                                     Window, 
+                                     Client *);
+void     compositorRemoveWindow     (DisplayInfo *,
+                                     Window);
 
-void     compositorHandleEvent      (DisplayInfo *, XEvent *);
-gboolean compositorCheckDamageEvent (DisplayInfo *display_info);
+void     compositorHandleEvent      (DisplayInfo *,
+                                     XEvent *);
+gboolean compositorCheckDamageEvent (DisplayInfo *);
 void     compositorInitDisplay      (DisplayInfo *);
 void     compositorRepairDisplay    (DisplayInfo *);
+void     compositorSetCompositeMode (DisplayInfo *,
+                                     gboolean);
 
-gboolean compositorManageScreen     (ScreenInfo *, gboolean);
+gboolean compositorManageScreen     (ScreenInfo *);
 void     compositorUnmanageScreen   (ScreenInfo *);
 void     compositorRepairScreen     (ScreenInfo *);
 void     compositorRebuildScreen    (ScreenInfo *);
 void     compositorUpdateScreenSize (ScreenInfo *);
 
-void     compositorWindowSetOpacity (DisplayInfo *, Window, guint);
-void     compositorDamageWindow     (DisplayInfo *, Window);
+void     compositorWindowSetOpacity (DisplayInfo *,
+                                     Window,
+                                     guint);
+void     compositorDamageWindow     (DisplayInfo *,
+                                     Window);
 gboolean compositorTestServer       (DisplayInfo *);
 
 #endif /* INC_COMPOSITOR_H */

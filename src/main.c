@@ -413,6 +413,7 @@ initialize (int argc, char **argv, gint compositor_mode)
     {
         display_info->enable_compositor = FALSE;
     }
+    compositorSetCompositeMode (display_info, (compositor_mode == 2));
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
@@ -448,7 +449,7 @@ initialize (int argc, char **argv, gint compositor_mode)
         
         if (compositor_mode)
         {
-            if (compositorManageScreen (screen_info, (compositor_mode == 2)))
+            if (compositorManageScreen (screen_info))
             {
                 setCompositingManagerOwner (display_info,  screen_info->xroot, screen_info->xfwm4_win);
             }

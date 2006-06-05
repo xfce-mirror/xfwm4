@@ -73,11 +73,14 @@ struct _CWindow
     Window id;
     XWindowAttributes attr;
 
-    Damage damage;
     gboolean damaged;
     gboolean viewable;
     gboolean shaped;
+    gboolean redirected;
+    gboolean argb;
+    gboolean skipped;
 
+    Damage damage;
 #if HAVE_NAME_WINDOW_PIXMAP
     Pixmap name_window_pixmap;
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
@@ -86,16 +89,16 @@ struct _CWindow
     Picture alphaPict;
     Picture shadowPict;
     Picture alphaBorderPict;
+
     XserverRegion borderSize;
     XserverRegion borderClip;
     XserverRegion extents;
+
     gint shadow_dx;
     gint shadow_dy;
     gint shadow_width;
     gint shadow_height;
     guint opacity;
-    gboolean argb;
-    gboolean skipped;
 };
 
 static CWindow*
@@ -1655,6 +1658,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->screen_info = screen_info;
     new->id = id;
     new->damaged = FALSE;
+    new->redirected = TRUE;
     new->shaped = is_shaped (display_info, id);
     new->viewable = (new->attr.map_state == IsViewable);
     if ((new->attr.class != InputOnly) && (id != screen_info->xroot))
@@ -1695,7 +1699,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     myDisplayUngrabServer (display_info);
 }
 
-void
+static void
 restack_win (CWindow *cw, Window above)
 {
     ScreenInfo *screen_info;
@@ -1751,7 +1755,7 @@ restack_win (CWindow *cw, Window above)
     }
 }
 
-void
+static void
 resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
 {
     XserverRegion extents;
@@ -2359,9 +2363,6 @@ compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
 
-    g_return_if_fail (display_info != NULL);
-    TRACE ("entering compositorInitDisplay");
-
     if (!XCompositeQueryExtension (display_info->dpy,
                                 &display_info->composite_event_base,
                                 &display_info->composite_error_base))
@@ -2427,6 +2428,9 @@ compositorInitDisplay (DisplayInfo *display_info)
     {
         g_warning ("Compositing manager disabled.");
     }
+
+    display_info->composite_mode = 0;
+
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
@@ -2448,8 +2452,26 @@ compositorRepairDisplay (DisplayInfo *display_info)
 #endif /* HAVE_COMPOSITOR */
 }
 
+void
+compositorSetCompositeMode (DisplayInfo *display_info, gboolean use_manual_redirect)
+{
+#ifdef HAVE_COMPOSITOR
+    g_return_if_fail (display_info != NULL);
+    TRACE ("entering compositorSetCompositeMode");
+
+    if (use_manual_redirect)
+    {
+        display_info->composite_mode = CompositeRedirectManual;
+    }
+    else
+    {
+        display_info->composite_mode = CompositeRedirectAutomatic;
+    }
+#endif /* HAVE_COMPOSITOR */
+}
+
 gboolean
-compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
+compositorManageScreen (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
@@ -2461,7 +2483,6 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
 
     display_info = screen_info->display_info;
     screen_info->compositor_active = FALSE;
-    screen_info->manual_redirect = manual_redirect;
 
     if (!(display_info->enable_compositor))
     {
@@ -2469,22 +2490,16 @@ compositorManageScreen (ScreenInfo *screen_info, gboolean manual_redirect)
     }
 
     gdk_error_trap_push ();
-    if (screen_info->manual_redirect)
-    {
-        XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
-    }
-    else
-    {
-        XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectAutomatic);
-    }
+    XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
     XSync (display_info->dpy, FALSE);
+
     if (gdk_error_trap_pop ())
     {
         g_warning ("Another compositing manager is running on screen %i", screen_info->screen);
         return FALSE;
     }
 
-    if (!manual_redirect)
+    if (display_info->composite_mode == CompositeRedirectAutomatic)
     {
         /* That's enough for automatic compositing */
         return TRUE;
@@ -2590,15 +2605,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
 
     screen_info->gsize = -1;
-
-    if (screen_info->manual_redirect)
-    {
-        XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
-    }
-    else
-    {
-        XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectAutomatic);
-    }
+    XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
 #endif /* HAVE_COMPOSITOR */
 }
 
