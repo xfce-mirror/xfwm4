@@ -63,6 +63,12 @@
 #define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 4)
 #endif /* SHADOW_OFFSET_Y */
 
+#define WIN_IS_OPAQUE(cw)               (!(cw->argb) && \
+                                        (cw->opacity == NET_WM_OPAQUE) && \
+                                        ((cw->c == NULL) || \
+                                            !FLAG_TEST (cw->c->xfwm_flags, XFWM_FLAG_HAS_BORDER) || \
+                                            (cw->screen_info->params->frame_opacity == 100.0f)))
+
 #define IDLE_REPAINT
 
 typedef struct _CWindow CWindow;
@@ -924,6 +930,112 @@ get_window_picture (CWindow *cw)
 }
 
 static void
+free_win_data (CWindow *cw, gboolean delete)
+{
+#if HAVE_NAME_WINDOW_PIXMAP
+    if (cw->name_window_pixmap)
+    {
+        XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
+        cw->name_window_pixmap = None;
+    }
+#endif
+
+    if (cw->picture)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->picture);
+        cw->picture = None;
+    }
+
+    if (cw->alphaPict)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->alphaPict);
+        cw->alphaPict = None;
+    }
+
+    if (cw->shadowPict)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadowPict);
+        cw->shadowPict = None;
+    }
+
+    if (cw->alphaBorderPict)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->alphaBorderPict);
+        cw->alphaBorderPict = None;
+    }
+
+    if ((delete) && (cw->damage != None))
+    {
+        XDamageDestroy (myScreenGetXDisplay (cw->screen_info), cw->damage);
+        cw->damage = None;
+    }
+
+    if (cw->borderSize)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
+        cw->borderSize = None;
+    }
+
+    if (cw->shadow)
+    {
+        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
+        cw->shadow = None;
+    }
+
+    if (cw->borderClip)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderClip);
+        cw->borderClip = None;
+    }
+
+    if (delete)
+    {
+        g_free (cw);
+    }
+}
+
+#if 0
+static void
+redirect_win (CWindow *cw)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("entering redirect_win");
+
+    if (!cw->redirected)
+    {
+        screen_info = cw->screen_info;
+        display_info = screen_info->display_info;    
+
+        XCompositeRedirectSubwindows (display_info->dpy, cw->id, display_info->composite_mode);
+        cw->redirected = TRUE;
+    }
+}
+
+static void
+unredirect_win (CWindow *cw)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("entering unredirect_win");
+
+    if (cw->redirected)
+    {
+        screen_info = cw->screen_info;
+        display_info = screen_info->display_info;    
+
+        XCompositeUnredirectSubwindows (display_info->dpy, cw->id, display_info->composite_mode);
+        free_win_data (cw, FALSE);
+        cw->redirected = FALSE;
+    }
+}
+#endif
+
+static void
 paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
 {
     Client *c;
@@ -1313,71 +1425,6 @@ add_repair (DisplayInfo *display_info)
 }
 
 static void
-free_win_data (CWindow *cw, gboolean delete)
-{
-#if HAVE_NAME_WINDOW_PIXMAP
-    if (cw->name_window_pixmap)
-    {
-        XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
-        cw->name_window_pixmap = None;
-    }
-#endif
-
-    if (cw->picture)
-    {
-        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->picture);
-        cw->picture = None;
-    }
-
-    if (cw->alphaPict)
-    {
-        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->alphaPict);
-        cw->alphaPict = None;
-    }
-
-    if (cw->shadowPict)
-    {
-        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadowPict);
-        cw->shadowPict = None;
-    }
-
-    if (cw->alphaBorderPict)
-    {
-        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->alphaBorderPict);
-        cw->alphaBorderPict = None;
-    }
-
-    if ((delete) && (cw->damage != None))
-    {
-        XDamageDestroy (myScreenGetXDisplay (cw->screen_info), cw->damage);
-        cw->damage = None;
-    }
-
-    if (cw->borderSize)
-    {
-        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
-        cw->borderSize = None;
-    }
-
-    if (cw->shadow)
-    {
-        XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
-        cw->shadow = None;
-    }
-
-    if (cw->borderClip)
-    {
-        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderClip);
-        cw->borderClip = None;
-    }
-
-    if (delete)
-    {
-        g_free (cw);
-    }
-}
-
-static void
 add_damage (ScreenInfo *screen_info, XserverRegion damage)
 {
     TRACE ("entering add_damage");
@@ -1441,6 +1488,22 @@ repair_win (CWindow *cw)
 
     if (parts)
     {
+        GList *index;
+        GList *sibling;
+
+        /* Exclude opaque windows in front of this window from damage */
+        sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
+        for (index = g_list_previous(sibling); index; index = g_list_previous(index))
+        {
+            CWindow *cw2 = (CWindow *) index->data;
+
+            if (WIN_IS_OPAQUE (cw2) && (cw2->borderSize))
+            {
+                XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
+                                     parts, cw2->borderSize);
+            }
+        }
+
         cw->damaged = TRUE;
         add_damage (cw->screen_info, parts);
     }

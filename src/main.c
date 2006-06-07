@@ -383,7 +383,6 @@ initialize (int argc, char **argv, gint compositor_mode)
 {
     struct sigaction act;
     long ws;
-    SessionClient *client_session;
     gint i, nscreens;
     
     TRACE ("entering initialize");
