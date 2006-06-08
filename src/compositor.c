@@ -63,11 +63,11 @@
 #define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 4)
 #endif /* SHADOW_OFFSET_Y */
 
-#define WIN_IS_OPAQUE(cw)               (!(cw->argb) && \
-                                        (cw->opacity == NET_WM_OPAQUE) && \
-                                        ((cw->c == NULL) || \
-                                            !FLAG_TEST (cw->c->xfwm_flags, XFWM_FLAG_HAS_BORDER) || \
-                                            (cw->screen_info->params->frame_opacity == 100.0f)))
+/* Some convenient macros */
+#define WIN_HAS_FRAME(cw)               ((cw->c != NULL) && \
+                                         !FLAG_TEST (cw->c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
+#define WIN_IS_OPAQUE(cw)               ((cw->opacity == NET_WM_OPAQUE) && \
+                                         !(cw->argb))
 
 #define IDLE_REPAINT
 
@@ -97,6 +97,7 @@ struct _CWindow
     Picture alphaBorderPict;
 
     XserverRegion borderSize;
+    XserverRegion clientSize;
     XserverRegion borderClip;
     XserverRegion extents;
 
@@ -610,24 +611,44 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
 }
 
 static XserverRegion
-border_size (CWindow *cw)
+border_size (CWindow *cw, gboolean client_only)
 {
     XserverRegion border;
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
+    Window id;
+    int dx, dy;
 
     g_return_val_if_fail (cw != NULL, None);
     TRACE ("entering border_size");
 
+    if (client_only)
+    {
+        Client *c;
+
+        c = cw->c;
+        if (!WIN_HAS_FRAME(cw))
+        {
+            return None;
+        }
+        id = c->window;
+        dx = frameX (c) + frameLeft (c);
+        dy = frameY (c) + frameTop (c);
+    }
+    else
+    {
+        id = cw->id;
+        dx = cw->attr.x + cw->attr.border_width;
+        dy = cw->attr.y + cw->attr.border_width;
+    }
+
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
-    border = XFixesCreateRegionFromWindow (display_info->dpy, cw->id, WindowRegionBounding);
+    border = XFixesCreateRegionFromWindow (display_info->dpy, id, WindowRegionBounding);
     g_return_val_if_fail (border != None, None);
 
-    XFixesTranslateRegion (display_info->dpy, border,
-                           cw->attr.x + cw->attr.border_width,
-                           cw->attr.y + cw->attr.border_width);
+    XFixesTranslateRegion (display_info->dpy, border, dx, dy);
 
     return border;
 }
@@ -976,6 +997,12 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->borderSize = None;
     }
 
+    if (cw->clientSize)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->clientSize);
+        cw->clientSize = None;
+    }
+
     if (cw->shadow)
     {
         XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
@@ -1237,7 +1264,11 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         }
         if (cw->borderSize == None)
         {
-            cw->borderSize = border_size (cw);
+            cw->borderSize = border_size (cw, FALSE);
+        }
+        if (cw->clientSize == None)
+        {
+            cw->clientSize = border_size (cw, TRUE);
         }
         if (cw->picture == None)
         {
@@ -1489,18 +1520,28 @@ repair_win (CWindow *cw)
     if (parts)
     {
         GList *index;
-        GList *sibling;
 
         /* Exclude opaque windows in front of this window from damage */
-        sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
-        for (index = g_list_previous(sibling); index; index = g_list_previous(index))
+        for (index = screen_info->cwindows; index; index = g_list_next (index))
         {
             CWindow *cw2 = (CWindow *) index->data;
 
-            if (WIN_IS_OPAQUE (cw2) && (cw2->borderSize))
+            if (cw2 == cw)
             {
-                XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
-                                     parts, cw2->borderSize);
+                break;
+            }
+            else if (WIN_IS_OPAQUE(cw2))
+            {
+                if (WIN_HAS_FRAME(cw2) && (screen_info->params->frame_opacity == 100.0f) && (cw2->borderSize))
+                {
+                    XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
+                                         parts, cw2->borderSize);
+                }
+                else if (cw2->clientSize)
+                {
+                    XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
+                                         parts, cw2->clientSize);
+                }
             }
         }
 
@@ -1740,6 +1781,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->alphaBorderPict = None;
     new->shadowPict = None;
     new->borderSize = None;
+    new->clientSize = None;
     new->extents = None;
     new->shadow = None;
     new->shadow_dx = 0;
@@ -1849,6 +1891,12 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         cw->borderSize = None;
     }
 
+    if (cw->clientSize != None)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->clientSize);
+        cw->clientSize = None;
+    }
+
     if ((cw->attr.width != width) || (cw->attr.height != height))
     {
 #if HAVE_NAME_WINDOW_PIXMAP
@@ -1874,6 +1922,12 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         {
             XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
             cw->borderSize = None;
+        }
+
+        if (cw->clientSize != None)
+        {
+            XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->clientSize);
+            cw->clientSize = None;
         }
 
         if (cw->extents)
