@@ -181,7 +181,7 @@ ensure_basedir_spec (void)
         
         if (w && r)
         {
-            char c;
+            int c;
             
             while ((c = getc (r)) != EOF)
             {
@@ -230,7 +230,7 @@ ensure_basedir_spec (void)
 
             if (w && r)
             {
-                char c;
+                int c;
                 
                 while ((c = getc (r)) != EOF)
                     putc (c, w);
