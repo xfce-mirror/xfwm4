@@ -3375,7 +3375,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
                 passdata->move_resized = TRUE;
                 passdata->ox = c->x;
-                passdata->mx = c->x + c->width * xratio;
+                passdata->mx = CLAMP(c->x + c->width * xratio, c->x, c->x + c->width);
                 passdata->oy = c->y;
                 passdata->my = c->y - frameTop(c) / 2;
                 toggled_maximize = TRUE;
