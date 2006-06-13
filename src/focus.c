@@ -163,7 +163,7 @@ clientFocusNew(Client * c)
     if ((give_focus) || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         give_focus = TRUE;
-        if (client_focus)
+        if ((client_focus) && !(clientIsTransientOrModalFor (c, client_focus)))
         {
             clientAdjustFullscreenLayer (client_focus, FALSE);
         }

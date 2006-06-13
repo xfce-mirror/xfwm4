@@ -182,7 +182,7 @@ clientIsValidTransientOrModal (Client * c)
         ScreenInfo *screen_info = c->screen_info;
         GList *index;
         
-        /* Look for a valid transient ormodal for the same group */
+        /* Look for a valid transient or modal for the same group */
         for (index = screen_info->windows_stack; index; index = g_list_next (index))
         {
             Client *c2 = (Client *) index->data;
