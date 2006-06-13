@@ -77,7 +77,7 @@
                                          (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
 #define WIN_IS_VISIBLE(cw)              ((cw->damaged) && (cw->viewable))
 
-#define IDLE_REPAINT
+/* #define IDLE_REPAINT */
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -105,6 +105,7 @@ struct _CWindow
     Picture alphaBorderPict;
 
     XserverRegion borderSize;
+    XserverRegion clientSize;
     XserverRegion borderClip;
     XserverRegion extents;
 
@@ -112,7 +113,9 @@ struct _CWindow
     gint shadow_dy;
     gint shadow_width;
     gint shadow_height;
+
     guint opacity;
+    guint ignore_unmap;
 };
 
 static CWindow*
@@ -969,13 +972,15 @@ unredirect_win (CWindow *cw)
 #endif
         cw->redirected = FALSE;
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
+        
+        /* Unredirect will cause an unmap notify, ignore it */
+        cw->ignore_unmap++;
     }
 }
 
 static void
 paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
 {
-    XserverRegion clientRegion;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     gboolean paint_solid;
@@ -988,9 +993,8 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
     display_info = screen_info->display_info;
     paint_solid = ((solid_part) && WIN_IS_OPAQUE(cw));
     get_paint_bounds (cw, &x, &y, &w, &h);
-    clientRegion = client_size (cw);
 
-    if ((clientRegion) && (screen_info->params->frame_opacity < 100))
+    if ((cw->clientSize) && (screen_info->params->frame_opacity < 100))
     {
         XserverRegion frameClip;
 
@@ -1002,13 +1006,13 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
             /* Client */
             if (WIN_IS_OPAQUE(cw))
             {
-                XFixesIntersectRegion (display_info->dpy, frameClip, region, clientRegion);
+                XFixesIntersectRegion (display_info->dpy, frameClip, region, cw->clientSize);
                 XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, frameClip);
 
                 XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
                                  screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
 
-                XFixesSubtractRegion (display_info->dpy, region, region, clientRegion);
+                XFixesSubtractRegion (display_info->dpy, region, region, cw->clientSize);
             }
         }
         else
@@ -1023,7 +1027,7 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
 
                 cw->alphaBorderPict = solid_picture (screen_info, FALSE, frame_opacity, 0, 0, 0);
             }
-            XFixesSubtractRegion (display_info->dpy, frameClip, cw->borderClip, clientRegion);
+            XFixesSubtractRegion (display_info->dpy, frameClip, cw->borderClip, cw->clientSize);
             XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, frameClip);
 
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
@@ -1032,7 +1036,7 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
             /* Client */
             if (!WIN_IS_OPAQUE(cw))
             {
-                XFixesIntersectRegion (display_info->dpy, frameClip, cw->borderClip, clientRegion);
+                XFixesIntersectRegion (display_info->dpy, frameClip, cw->borderClip, cw->clientSize);
                 XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, frameClip);
 
                 XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict,
@@ -1063,10 +1067,6 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
             }
         }
     }
-    if (clientRegion)
-    {
-        XFixesDestroyRegion (display_info->dpy, clientRegion);
-    }
 }
 
 static void
@@ -1086,10 +1086,9 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
 
     index = screen_info->cwindows;
     cw = (CWindow *) index->data;
-
     if (WIN_IS_FULLSCREEN(cw) && WIN_IS_VISIBLE(cw) && WIN_IS_OVERRIDE(cw) && WIN_IS_OPAQUE(cw) && (cw->redirected))
     {
-        g_print ("Toplevel window 0x%lx is fullscreen, unredirecting.\n", cw->id);
+        TRACE ("Toplevel window 0x%lx is fullscreen, unredirecting", cw->id);
         unredirect_win (cw);
     }
 
@@ -1140,6 +1139,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         if (cw->borderSize == None)
         {
             cw->borderSize = border_size (cw);
+        }
+        if (cw->clientSize == None)
+        {
+            cw->clientSize = client_size (cw);
         }
         if (cw->picture == None)
         {
@@ -1378,6 +1381,12 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->borderSize = None;
     }
 
+    if (cw->clientSize)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->clientSize);
+        cw->clientSize = None;
+    }
+
     if (cw->shadow)
     {
         XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
@@ -1460,6 +1469,41 @@ repair_win (CWindow *cw)
 
     if (parts)
     {
+        GList *index;
+
+        /* Exclude opaque windows in front of this window from damage */
+        for (index = screen_info->cwindows; index; index = g_list_next (index))
+        {
+            CWindow *cw2 = (CWindow *) index->data;
+
+            if (cw2 == cw)
+            {
+                break;
+            }
+            else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE (cw2))
+            {
+                if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
+                {
+                    TRACE ("Subtract client region of 0x%lx (%i, %i) %ix%i from 0x%lx", 
+                             cw2->id, cw2->attr.x, cw2->attr.y, cw2->attr.width, cw2->attr.height, cw->id);
+                    XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
+                                         parts, cw2->clientSize);
+                }
+                else if (cw2->borderSize)
+                {
+                    TRACE ("Subtract border region of 0x%lx (%i, %i) %ix%i from 0x%lx", 
+                             cw2->id, cw2->attr.x, cw2->attr.y, cw2->attr.width, cw2->attr.height, cw->id);
+                    XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
+                                         parts, cw2->borderSize);
+                }
+                else
+                {
+                    TRACE ("Nothing to substract of 0x%lx (%i, %i) %ix%i from 0x%lx", 
+                             cw2->id, cw2->attr.x, cw2->attr.y, cw2->attr.width, cw2->attr.height, cw->id);
+                }
+            }
+        }
+
         add_damage (cw->screen_info, parts);
         cw->damaged = TRUE;
     }
@@ -1579,6 +1623,13 @@ unmap_win (CWindow *cw)
     g_return_if_fail (cw != NULL);
     TRACE ("entering unmap_win 0x%lx", cw->id);
 
+    if (cw->ignore_unmap > 0)
+    {
+        TRACE ("Ignore unmap of unredirected 0x%lx", cw->id);
+        cw->ignore_unmap--;
+        return;
+    }
+
     cw->damaged = FALSE;
     screen_info = cw->screen_info;
     cw->viewable = FALSE;
@@ -1680,6 +1731,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->redirected = TRUE;
     new->shaped = is_shaped (display_info, id);
     new->viewable = (new->attr.map_state == IsViewable);
+
     if ((new->attr.class != InputOnly) && (id != screen_info->xroot))
     {
         new->damage = XDamageCreate (myScreenGetXDisplay (screen_info), id, XDamageReportNonEmpty);
@@ -1696,13 +1748,16 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->alphaBorderPict = None;
     new->shadowPict = None;
     new->borderSize = None;
+    new->clientSize = None;
     new->extents = None;
     new->shadow = None;
+    new->ignore_unmap = 0;
     new->shadow_dx = 0;
     new->shadow_dy = 0;
     new->shadow_width = 0;
     new->shadow_height = 0;
     new->borderClip = None;
+
     init_opacity (new);
     determine_mode (new);
 
@@ -1727,7 +1782,7 @@ restack_win (CWindow *cw, Window above)
     GList *next;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering restack_win");
+    TRACE ("entering restack_win, 0x%lx above 0x%lx", cw->id, above);
 
     screen_info = cw->screen_info;
     sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
@@ -1783,11 +1838,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     g_return_if_fail (cw != NULL);
     TRACE ("entering resize_win");
 
-    if (!cw->redirected)
-    {
-        return;
-    }
-
     damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), NULL, 0);
     if (cw->extents)    
     {
@@ -1799,12 +1849,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     {
         XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
         cw->extents = None;
-    }
-
-    if (cw->borderSize)
-    {
-        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
-        cw->borderSize = None;
     }
 
     if ((cw->attr.width != width) || (cw->attr.height != height))
@@ -1828,12 +1872,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
             cw->shadow = None;
         }
 
-        if (cw->borderSize)
-        {
-            XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
-            cw->borderSize = None;
-        }
-
         if (cw->extents)
         {
             XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
@@ -1846,6 +1884,18 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     cw->attr.width = width;
     cw->attr.height = height;
     cw->attr.border_width = bw;
+
+    if (cw->borderSize)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
+        cw->borderSize = None;
+    }
+
+    if (cw->clientSize)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->clientSize);
+        cw->clientSize = None;
+    }
 
     extents = win_extents (cw);
     XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, extents);
