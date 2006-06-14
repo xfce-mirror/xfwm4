@@ -981,8 +981,7 @@ unredirect_win (CWindow *cw)
         screen_info->overlays++;
         cw->redirected = FALSE;
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
-
-        TRACE ("Window 0x%lx unredirected");
+        TRACE ("Window 0x%lx unredirected", cw->id);
     }
 }
 
