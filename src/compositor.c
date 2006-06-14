@@ -1621,8 +1621,6 @@ map_win (CWindow *cw)
     {
         screen_info->overlays++;
     }
-
-    add_repair (screen_info->display_info);
 }
 
 static void
@@ -1633,10 +1631,10 @@ unmap_win (CWindow *cw)
     g_return_if_fail (cw != NULL);
     TRACE ("entering unmap_win 0x%lx", cw->id);
 
-    cw->damaged = FALSE;
-    screen_info = cw->screen_info;
     cw->viewable = FALSE;
+    cw->damaged = FALSE;
 
+    screen_info = cw->screen_info;
     if (!(cw->redirected) && (screen_info->overlays > 0))
     {
         screen_info->overlays--;
@@ -1781,6 +1779,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         map_win (new);
     }
+
     TRACE ("window 0x%lx added", id);
 
     myDisplayUngrabServer (display_info);

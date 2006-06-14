@@ -1171,7 +1171,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 
         screen_info = c->screen_info;
         clientPassFocus (screen_info, c, c);
-        
+
         /*
          * ICCCM spec states that a client wishing to switch
          * to WithdrawnState should send a synthetic UnmapNotify 
