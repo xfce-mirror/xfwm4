@@ -112,9 +112,10 @@
 #define NET_WM_OPAQUE                           0xffffffff
 
 /* Convenient macro */
-#define HINTS_ACCEPT_INPUT(wmhints)     (!(wmhints) || \
-                                         ((wmhints) && !(wmhints->flags & InputHint)) || \
+#define HINTS_ACCEPT_INPUT(wmhints)     (!(wmhints) ||                                                              \
+                                         ((wmhints) && !(wmhints->flags & InputHint)) ||                            \
                                          ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input)))
+
 typedef struct
 {
     unsigned long orientation;

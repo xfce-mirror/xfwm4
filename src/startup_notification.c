@@ -38,6 +38,7 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h> 
 
+#include "display.h"
 #include "screen.h"
 #include "client.h"
 
@@ -284,9 +285,10 @@ sn_client_startup_properties (Client * c)
         /* Set initial time */
         timestamp = sn_startup_sequence_get_timestamp (sequence);
         TRACE ("Given startup time: %u", (unsigned int) timestamp);
-        if (timestamp > c->user_time)
+        if ((c->user_time == (Time) 0) || TIMESTAMP_IS_BEFORE(c->user_time, timestamp))
         {
             c->user_time = timestamp;
+            myDisplaySetLastUserTime (screen_info->display_info, c->user_time);
         }
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME);
         

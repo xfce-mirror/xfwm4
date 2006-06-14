@@ -68,16 +68,19 @@
                                          !FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN))
 #define WIN_IS_OVERRIDE(cw)             (cw->c == NULL)
 #define WIN_IS_ARGB(cw)                 (cw->argb)
-#define WIN_IS_OPAQUE(cw)               ((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw))
+#define WIN_IS_OPAQUE(cw)               (((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw)) || (cw->screen_info->overlays))
+#define WIN_IS_NATIVE_OPAQUE(cw)        ((cw->native_opacity) && !WIN_IS_ARGB(cw))
 #define WIN_IS_FULLSCREEN(cw)           ((cw->attr.x == 0) && \
                                          (cw->attr.y == 0) && \
                                          (cw->attr.width == gdk_screen_get_width (cw->screen_info->gscr)) && \
                                          (cw->attr.height == gdk_screen_get_height (cw->screen_info->gscr)))
 #define WIN_IS_SHAPED(cw)               ((!WIN_IS_OVERRIDE(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
                                          (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
-#define WIN_IS_VISIBLE(cw)              ((cw->damaged) && (cw->viewable))
+#define WIN_IS_VISIBLE(cw)              ((cw->viewable) && (cw->damage))
+#define WIN_IS_DAMAGED(cw)              (cw->damaged)
+#define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
-/* #define IDLE_REPAINT */
+#define USE_IDLE_REPAINT
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -93,6 +96,7 @@ struct _CWindow
     gboolean redirected;
     gboolean argb;
     gboolean skipped;
+    gboolean native_opacity;
 
     Damage damage;
 #if HAVE_NAME_WINDOW_PIXMAP
@@ -115,7 +119,6 @@ struct _CWindow
     gint shadow_height;
 
     guint opacity;
-    guint ignore_unmap;
 };
 
 static CWindow*
@@ -311,7 +314,7 @@ presum_gaussian (ScreenInfo *screen_info)
     TRACE ("entering presum_gaussian");
 
     map = screen_info->gaussianMap;
-    screen_info->gsize = map->size;
+    screen_info->gaussianSize = map->size;
     center = map->size / 2;
 
     if (screen_info->shadowCorner)
@@ -323,50 +326,50 @@ presum_gaussian (ScreenInfo *screen_info)
         g_free (screen_info->shadowTop);
     }
 
-    screen_info->shadowCorner = (guchar *) (g_malloc ((screen_info->gsize + 1)
-                                                    * (screen_info->gsize + 1) * 26));
-    screen_info->shadowTop = (guchar *) (g_malloc ((screen_info->gsize + 1) * 26));
+    screen_info->shadowCorner = (guchar *) (g_malloc ((screen_info->gaussianSize + 1)
+                                                    * (screen_info->gaussianSize + 1) * 26));
+    screen_info->shadowTop = (guchar *) (g_malloc ((screen_info->gaussianSize + 1) * 26));
 
-    for (x = 0; x <= screen_info->gsize; x++)
+    for (x = 0; x <= screen_info->gaussianSize; x++)
     {
-        screen_info->shadowTop[25 * (screen_info->gsize + 1) + x] =
+        screen_info->shadowTop[25 * (screen_info->gaussianSize + 1) + x] =
             sum_gaussian (map, 1, x - center, center,
-                                screen_info->gsize * 2,
-                                screen_info->gsize * 2);
+                          screen_info->gaussianSize * 2,
+                          screen_info->gaussianSize * 2);
 
         for(opacity = 0; opacity < 25; opacity++)
         {
-            screen_info->shadowTop[opacity * (screen_info->gsize + 1) + x] =
-                screen_info->shadowTop[25 * (screen_info->gsize + 1) + x] * opacity / 25;
+            screen_info->shadowTop[opacity * (screen_info->gaussianSize + 1) + x] =
+                screen_info->shadowTop[25 * (screen_info->gaussianSize + 1) + x] * opacity / 25;
         }
 
         for(y = 0; y <= x; y++)
         {
-            screen_info->shadowCorner[25 * (screen_info->gsize + 1)
-                                        * (screen_info->gsize + 1)
-                                    + y * (screen_info->gsize + 1) + x]
+            screen_info->shadowCorner[25 * (screen_info->gaussianSize + 1)
+                                         * (screen_info->gaussianSize + 1)
+                                     + y * (screen_info->gaussianSize + 1) + x]
                 = sum_gaussian (map, 1, x - center,
                                         y - center,
-                                        screen_info->gsize * 2,
-                                        screen_info->gsize * 2);
-            screen_info->shadowCorner[25 * (screen_info->gsize + 1)
-                                        * (screen_info->gsize + 1)
-                                    + x * (screen_info->gsize + 1) + y]
-                = screen_info->shadowCorner[25 * (screen_info->gsize + 1)
-                                            * (screen_info->gsize + 1)
-                                        + y * (screen_info->gsize + 1) + x];
+                                        screen_info->gaussianSize * 2,
+                                        screen_info->gaussianSize * 2);
+            screen_info->shadowCorner[25 * (screen_info->gaussianSize + 1)
+                                         * (screen_info->gaussianSize + 1)
+                                     + x * (screen_info->gaussianSize + 1) + y]
+                = screen_info->shadowCorner[25 * (screen_info->gaussianSize + 1)
+                                               * (screen_info->gaussianSize + 1)
+                                           + y * (screen_info->gaussianSize + 1) + x];
 
             for(opacity = 0; opacity < 25; opacity++)
             {
-                screen_info->shadowCorner[opacity * (screen_info->gsize + 1)
-                                                * (screen_info->gsize + 1)
-                                            + y * (screen_info->gsize + 1) + x]
-                    = screen_info->shadowCorner[opacity * (screen_info->gsize + 1)
-                                                        * (screen_info->gsize + 1)
-                                                    + x * (screen_info->gsize + 1) + y]
-                    = screen_info->shadowCorner[25 * (screen_info->gsize + 1)
-                                                * (screen_info->gsize + 1)
-                                            + y * (screen_info->gsize + 1) + x] * opacity / 25;
+                screen_info->shadowCorner[opacity * (screen_info->gaussianSize + 1)
+                                                  * (screen_info->gaussianSize + 1)
+                                              + y * (screen_info->gaussianSize + 1) + x]
+                    = screen_info->shadowCorner[opacity * (screen_info->gaussianSize + 1)
+                                                        * (screen_info->gaussianSize + 1)
+                                                    + x * (screen_info->gaussianSize + 1) + y]
+                    = screen_info->shadowCorner[25 * (screen_info->gaussianSize + 1)
+                                                   * (screen_info->gaussianSize + 1)
+                                               + y * (screen_info->gaussianSize + 1) + x] * opacity / 25;
             }
         }
     }
@@ -378,7 +381,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     XImage *ximage;
     guchar *data;
     guchar d;
-    gint gsize;
+    gint gaussianSize;
     gint ylimit, xlimit;
     gint swidth;
     gint sheight;
@@ -390,10 +393,10 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("entering make_shadow");
 
-    gsize = screen_info->gaussianMap->size;
-    swidth = width + gsize - screen_info->params->shadow_delta_width - screen_info->params->shadow_delta_x;
-    sheight = height + gsize - screen_info->params->shadow_delta_height - screen_info->params->shadow_delta_y;
-    center = gsize / 2;
+    gaussianSize = screen_info->gaussianMap->size;
+    swidth = width + gaussianSize - screen_info->params->shadow_delta_width - screen_info->params->shadow_delta_x;
+    sheight = height + gaussianSize - screen_info->params->shadow_delta_height - screen_info->params->shadow_delta_y;
+    center = gaussianSize / 2;
     opacity_int = (gint) (opacity * 25);
 
     if ((swidth < 1) || (sheight < 1))
@@ -418,9 +421,9 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     * Build the gaussian in sections
     */
 
-    if (screen_info->gsize > 0)
+    if (screen_info->gaussianSize > 0)
     {
-        d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + screen_info->gsize];
+        d = screen_info->shadowTop[opacity_int * (screen_info->gaussianSize + 1) + screen_info->gaussianSize];
     }
     else
     {
@@ -432,12 +435,12 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     * corners
     */
 
-    ylimit = gsize;
+    ylimit = gaussianSize;
     if (ylimit > sheight / 2)
     {
         ylimit = (sheight + 1) / 2;
     }
-    xlimit = gsize;
+    xlimit = gaussianSize;
     if (xlimit > swidth / 2)
     {
         xlimit = (swidth + 1) / 2;
@@ -446,11 +449,11 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     {
         for (x = 0; x < xlimit; x++)
         {
-            if ((xlimit == screen_info->gsize) && (ylimit == screen_info->gsize))
+            if ((xlimit == screen_info->gaussianSize) && (ylimit == screen_info->gaussianSize))
             {
-                d = screen_info->shadowCorner[opacity_int * (screen_info->gsize + 1)
-                                                        * (screen_info->gsize + 1)
-                                                    + y * (screen_info->gsize + 1) + x];
+                d = screen_info->shadowCorner[opacity_int * (screen_info->gaussianSize + 1)
+                                                        * (screen_info->gaussianSize + 1)
+                                                    + y * (screen_info->gaussianSize + 1) + x];
             }
             else
             {
@@ -469,21 +472,21 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     * top/bottom
     */
 
-    x_diff = swidth - (gsize * 2);
+    x_diff = swidth - (gaussianSize * 2);
     if (x_diff > 0 && ylimit > 0)
     {
         for (y = 0; y < ylimit; y++)
         {
-            if (ylimit == screen_info->gsize)
+            if (ylimit == screen_info->gaussianSize)
             {
-                d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + y];
+                d = screen_info->shadowTop[opacity_int * (screen_info->gaussianSize + 1) + y];
             }
             else
             {
                 d = sum_gaussian (screen_info->gaussianMap, opacity, center, y - center, width, height);
             }
-            memset (&data[y * swidth + gsize], d, x_diff);
-            memset (&data[(sheight - y - 1) * swidth + gsize], d, x_diff);
+            memset (&data[y * swidth + gaussianSize], d, x_diff);
+            memset (&data[(sheight - y - 1) * swidth + gaussianSize], d, x_diff);
         }
     }
 
@@ -493,15 +496,15 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
 
     for (x = 0; x < xlimit; x++)
     {
-        if (xlimit == screen_info->gsize)
+        if (xlimit == screen_info->gaussianSize)
         {
-            d = screen_info->shadowTop[opacity_int * (screen_info->gsize + 1) + x];
+            d = screen_info->shadowTop[opacity_int * (screen_info->gaussianSize + 1) + x];
         }
         else
         {
             d = sum_gaussian (screen_info->gaussianMap, opacity, x - center, center, width, height);
         }
-        for (y = gsize; y < sheight - gsize; y++)
+        for (y = gaussianSize; y < sheight - gaussianSize; y++)
         {
             data[y * swidth + x] = d;
             data[y * swidth + (swidth - x - 1)] = d;
@@ -813,15 +816,20 @@ win_extents (CWindow *cw)
 
     /* 
        We apply a shadow to the window if:
-       
+       - There is no overlay (ie unredirected windows)
        - It's a window with a frame and the user asked for shadows under regular
          windows,
        - it's an override redirect window that is not shaped, not an argb and
          the user asked for shadows on so called "popup" windows.
      */
 
-    if ((WIN_IS_OVERRIDE(cw) && !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)) && screen_info->params->show_popup_shadow) || 
-       (!WIN_IS_OVERRIDE(cw) && (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) && screen_info->params->show_frame_shadow))
+    if (!(screen_info->overlays) &&
+         (WIN_IS_OVERRIDE(cw) && 
+             !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)) && 
+             screen_info->params->show_popup_shadow) || 
+         (!WIN_IS_OVERRIDE(cw) && 
+             (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) && 
+             screen_info->params->show_frame_shadow))
     {
         XRectangle sr;
 
@@ -958,7 +966,7 @@ unredirect_win (CWindow *cw)
     g_return_if_fail (cw != NULL);
     TRACE ("entering unredirect_win");
 
-    if (cw->redirected)
+    if (WIN_IS_REDIRECTED(cw))
     {
         screen_info = cw->screen_info;
         display_info = screen_info->display_info;
@@ -966,15 +974,15 @@ unredirect_win (CWindow *cw)
 #if HAVE_NAME_WINDOW_PIXMAP
         if (cw->name_window_pixmap)
         {
-            XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
+            XFreePixmap (display_info->dpy, cw->name_window_pixmap);
             cw->name_window_pixmap = None;
         }
 #endif
+        screen_info->overlays++;
         cw->redirected = FALSE;
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
-        
-        /* Unredirect will cause an unmap notify, ignore it */
-        cw->ignore_unmap++;
+
+        TRACE ("Window 0x%lx unredirected");
     }
 }
 
@@ -1086,7 +1094,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
 
     index = screen_info->cwindows;
     cw = (CWindow *) index->data;
-    if (WIN_IS_FULLSCREEN(cw) && WIN_IS_VISIBLE(cw) && WIN_IS_OVERRIDE(cw) && WIN_IS_OPAQUE(cw) && (cw->redirected))
+    if (WIN_IS_FULLSCREEN(cw) && WIN_IS_VISIBLE(cw) && WIN_IS_OVERRIDE(cw) && WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw))
     {
         TRACE ("Toplevel window 0x%lx is fullscreen, unredirecting", cw->id);
         unredirect_win (cw);
@@ -1117,13 +1125,13 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         cw = (CWindow *) index->data;
         TRACE ("painting forward 0x%lx", cw->id);
 
-        if (!WIN_IS_VISIBLE(cw))
+        if (!WIN_IS_VISIBLE(cw) || !WIN_IS_DAMAGED(cw) || !WIN_IS_REDIRECTED(cw))
         {
             TRACE ("skipped, not damaged or not viewable 0x%lx", cw->id);
             cw->skipped = TRUE;
             continue;
         }
-
+        
         if ((cw->attr.x + cw->attr.width < 1) || (cw->attr.y + cw->attr.height < 1) ||
             (cw->attr.x >= screen_width) || (cw->attr.y >= screen_height))
         {
@@ -1246,7 +1254,7 @@ repair_screen (ScreenInfo *screen_info)
     }
 }
 
-#ifdef IDLE_REPAINT
+#ifdef USE_IDLE_REPAINT
 static void
 remove_timeouts (DisplayInfo *display_info)
 {
@@ -1262,7 +1270,7 @@ remove_timeouts (DisplayInfo *display_info)
         display_info->compositor_timeout_id = 0;
     }
 }
-#endif /* IDLE_REPAINT */
+#endif /* USE_IDLE_REPAINT */
 
 static void
 repair_display (DisplayInfo *display_info)
@@ -1278,16 +1286,16 @@ repair_display (DisplayInfo *display_info)
         return;
     }
 
-#ifdef IDLE_REPAINT
+#ifdef USE_IDLE_REPAINT
     remove_timeouts (display_info);
-#endif /* IDLE_REPAINT */
+#endif /* USE_IDLE_REPAINT */
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
         repair_screen ((ScreenInfo *) screens->data);
     }
 }
 
-#ifdef IDLE_REPAINT
+#ifdef USE_IDLE_REPAINT
 static gboolean
 compositor_idle_cb (gpointer data)
 {
@@ -1310,12 +1318,12 @@ compositor_timeout_cb (gpointer data)
 
     return FALSE;
 }
-#endif /* IDLE_REPAINT */
+#endif /* USE_IDLE_REPAINT */
 
 static void
 add_repair (DisplayInfo *display_info)
 {
-#ifdef IDLE_REPAINT
+#ifdef USE_IDLE_REPAINT
     if (display_info->compositor_idle_id != 0)
     {
         return;
@@ -1331,7 +1339,7 @@ add_repair (DisplayInfo *display_info)
     display_info->compositor_timeout_id = 
         g_timeout_add (50 /* ms */, 
                        compositor_timeout_cb, display_info);
-#endif /* IDLE_REPAINT */
+#endif /* USE_IDLE_REPAINT */
 }
 
 static void
@@ -1475,31 +1483,27 @@ repair_win (CWindow *cw)
         for (index = screen_info->cwindows; index; index = g_list_next (index))
         {
             CWindow *cw2 = (CWindow *) index->data;
-
             if (cw2 == cw)
             {
                 break;
             }
-            else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE (cw2))
+            else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE(cw2))
             {
-                if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
+                if (!WIN_IS_REDIRECTED(cw2))
                 {
-                    TRACE ("Subtract client region of 0x%lx (%i, %i) %ix%i from 0x%lx", 
-                             cw2->id, cw2->attr.x, cw2->attr.y, cw2->attr.width, cw2->attr.height, cw->id);
+                    XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), parts);
+                    cw->damaged = FALSE;
+                    return;
+                }
+                else if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
+                {
                     XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
                                          parts, cw2->clientSize);
                 }
                 else if (cw2->borderSize)
                 {
-                    TRACE ("Subtract border region of 0x%lx (%i, %i) %ix%i from 0x%lx", 
-                             cw2->id, cw2->attr.x, cw2->attr.y, cw2->attr.width, cw2->attr.height, cw->id);
                     XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
                                          parts, cw2->borderSize);
-                }
-                else
-                {
-                    TRACE ("Nothing to substract of 0x%lx (%i, %i) %ix%i from 0x%lx", 
-                             cw2->id, cw2->attr.x, cw2->attr.y, cw2->attr.width, cw2->attr.height, cw->id);
                 }
             }
         }
@@ -1611,8 +1615,14 @@ map_win (CWindow *cw)
 
     cw->viewable = TRUE;
     cw->damaged = FALSE;
+
     screen_info = cw->screen_info;
-    add_repair (cw->screen_info->display_info);
+    if (!(cw->redirected))
+    {
+        screen_info->overlays++;
+    }
+
+    add_repair (screen_info->display_info);
 }
 
 static void
@@ -1623,16 +1633,14 @@ unmap_win (CWindow *cw)
     g_return_if_fail (cw != NULL);
     TRACE ("entering unmap_win 0x%lx", cw->id);
 
-    if (cw->ignore_unmap > 0)
-    {
-        TRACE ("Ignore unmap of unredirected 0x%lx", cw->id);
-        cw->ignore_unmap--;
-        return;
-    }
-
     cw->damaged = FALSE;
     screen_info = cw->screen_info;
     cw->viewable = FALSE;
+
+    if (!(cw->redirected) && (screen_info->overlays > 0))
+    {
+        screen_info->overlays--;
+    }
 
     if (cw->extents != None)
     {
@@ -1657,15 +1665,21 @@ init_opacity (CWindow *cw)
     display_info = screen_info->display_info;    
     c = cw->c;
 
+    cw->native_opacity = FALSE;
     if (c)
     {
         cw->opacity = c->opacity;
+        cw->native_opacity = WIN_IS_OPAQUE(cw);
+    }
+    else if (getOpacity (display_info, cw->id, &cw->opacity))
+    {
+        cw->native_opacity = WIN_IS_OPAQUE(cw);
     }
     else
     {
         cw->opacity = (double) (screen_info->params->popup_opacity / 100.0) * NET_WM_OPAQUE;
+        cw->native_opacity = TRUE;
     }
-    getOpacity (display_info, cw->id, &cw->opacity);
 }
 
 static void
@@ -1686,7 +1700,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
         TRACE ("An error occured getting window attributes, 0x%lx not added", id);
         return;
     }
-    
+
     if (c)
     {
         screen_info = c->screen_info;
@@ -1751,7 +1765,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->clientSize = None;
     new->extents = None;
     new->shadow = None;
-    new->ignore_unmap = 0;
     new->shadow_dx = 0;
     new->shadow_dy = 0;
     new->shadow_width = 0;
@@ -1851,7 +1864,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         cw->extents = None;
     }
 
-    if ((cw->attr.width != width) || (cw->attr.height != height))
+    if ((cw->attr.width != width) || (cw->attr.height != height) || (cw->attr.border_width != bw))
     {
 #if HAVE_NAME_WINDOW_PIXMAP
         if (cw->name_window_pixmap)
@@ -1859,12 +1872,12 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
             XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
             cw->name_window_pixmap = None;
         }
-#endif
         if (cw->picture)
         {
             XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->picture);
             cw->picture = None;
         }
+#endif
 
         if (cw->shadow)
         {
@@ -1932,7 +1945,7 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
     TRACE ("entering compositorHandleDamage for 0x%lx", ev->drawable);
 
     cw = find_cwindow_in_display (display_info, ev->drawable);
-    if ((cw) && (cw->redirected))
+    if ((cw) && WIN_IS_REDIRECTED(cw))
     {
         repair_win (cw);
         add_repair (display_info);
@@ -1996,6 +2009,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
                 cw->opacity = NET_WM_OPAQUE;
             }
             set_win_opacity (cw, cw->opacity);
+            cw->native_opacity = WIN_IS_OPAQUE(cw);
 
             /* Transset changes the property on the frame, not the client 
                window. We need to check and update the client "opacity"
@@ -2180,6 +2194,50 @@ compositorHandleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent *e
 }
 
 static void
+compositorHandleMapNotify (DisplayInfo *display_info, XMapEvent *ev)
+{
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleUnmapNotify for 0x%lx", ev->window);
+
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");
+        return;
+    }
+    
+    cw = find_cwindow_in_display (display_info, ev->window);
+    if (cw)
+    {
+        map_win (cw);
+    }
+}
+
+static void
+compositorHandleUnmapNotify (DisplayInfo *display_info, XUnmapEvent *ev)
+{
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleUnmapNotify for 0x%lx", ev->window);
+
+    if (!(display_info->enable_compositor))
+    {
+        TRACE ("compositor disabled");
+        return;
+    }
+    
+    cw = find_cwindow_in_display (display_info, ev->window);
+    if (cw)
+    {
+        unmap_win (cw);
+    }
+}
+
+static void
 compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
 {
     CWindow *cw;
@@ -2216,6 +2274,26 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
 
 #endif /* HAVE_COMPOSITOR */
 
+static gboolean
+compositorIsUsable (DisplayInfo *display_info)
+{
+#ifdef HAVE_COMPOSITOR
+    if (!display_info->enable_compositor)
+    {
+        TRACE ("compositor disabled");
+        return FALSE;
+    }
+    else if (display_info->composite_mode != CompositeRedirectManual)
+    {
+        TRACE ("compositor not set to manual redirect mode");
+        return FALSE;
+    }
+    return TRUE;
+#else
+    return FALSE;
+#endif /* HAVE_COMPOSITOR */
+}
+
 void
 compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
 {
@@ -2226,9 +2304,8 @@ compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
     g_return_if_fail (id != None);
     TRACE ("entering compositorSetOpacity for 0x%lx", id);
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        TRACE ("compositor disabled");
         return;
     }
 
@@ -2250,9 +2327,8 @@ compositorMapWindow (DisplayInfo *display_info, Window id)
     g_return_if_fail (id != None);
     TRACE ("entering compositorMapWindow for 0x%lx", id);
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        TRACE ("compositor disabled");
         return;
     }
 
@@ -2277,9 +2353,8 @@ compositorUnmapWindow (DisplayInfo *display_info, Window id)
     g_return_if_fail (id != None);
     TRACE ("entering compositorUnmapWindow for 0x%lx", id);
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        TRACE ("compositor disabled");
         return;
     }
 
@@ -2301,9 +2376,8 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     g_return_if_fail (id != None);
     TRACE ("entering compositorAddWindow for 0x%lx", id);
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        TRACE ("compositor disabled");
         return;
     }
 
@@ -2336,9 +2410,8 @@ compositorRemoveWindow (DisplayInfo *display_info, Window id)
     g_return_if_fail (id != None);
     TRACE ("entering compositorRemoveWindow: 0x%lx", id);
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        TRACE ("compositor disabled");
         return;
     }
 
@@ -2359,13 +2432,11 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleEvent");
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        TRACE ("compositor disabled");
         return;
     }
-
-    if (ev->type == CreateNotify)
+    else if (ev->type == CreateNotify)
     {
         compositorHandleCreateNotify (display_info, (XCreateWindowEvent *) ev);
     }
@@ -2393,6 +2464,14 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandlePropertyNotify (display_info, (XPropertyEvent *) ev);
     }
+    else if (ev->type == MapNotify)
+    {
+        compositorHandleMapNotify (display_info, (XMapEvent *) ev);
+    }
+    else if (ev->type == UnmapNotify)
+    {
+        compositorHandleUnmapNotify (display_info, (XUnmapEvent *) ev);
+    }
     else if (ev->type == (display_info->damage_event_base + XDamageNotify))
     {
         compositorHandleDamage (display_info, (XDamageNotifyEvent *) ev);
@@ -2401,9 +2480,9 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
-#ifndef IDLE_REPAINT
+#ifndef USE_IDLE_REPAINT
     repair_display (display_info);
-#endif /* IDLE_REPAINT */
+#endif /* USE_IDLE_REPAINT */
 
 #endif /* HAVE_COMPOSITOR */
 }
@@ -2417,9 +2496,8 @@ compositorCheckDamageEvent (DisplayInfo *display_info)
     g_return_val_if_fail (display_info != NULL, FALSE);
     TRACE ("entering compositorCheckDamageEvent");
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        TRACE ("compositor disabled");
         return FALSE;
     }
 
@@ -2436,6 +2514,7 @@ void
 compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
+    int composite_major, composite_minor;
 
     if (!XCompositeQueryExtension (display_info->dpy,
                                 &display_info->composite_event_base,
@@ -2504,6 +2583,12 @@ compositorInitDisplay (DisplayInfo *display_info)
     }
 
     display_info->composite_mode = 0;
+#if HAVE_NAME_WINDOW_PIXMAP
+    XCompositeQueryVersion (display_info->dpy, &composite_major, &composite_minor);
+    display_info->have_name_window_pixmap = ((composite_major > 0) || (composite_minor >= 2));
+#else
+    display_info->have_name_window_pixmap = FALSE;
+#endif
 
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
@@ -2518,10 +2603,11 @@ compositorRepairDisplay (DisplayInfo *display_info)
     g_return_if_fail (display_info != NULL);
     TRACE ("entering compositorInitDisplay");
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
         return;
     }
+
     repair_display (display_info);
 #endif /* HAVE_COMPOSITOR */
 }
@@ -2558,9 +2644,9 @@ compositorManageScreen (ScreenInfo *screen_info)
     display_info = screen_info->display_info;
     screen_info->compositor_active = FALSE;
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        return FALSE;
+        return;
     }
 
     gdk_error_trap_push ();
@@ -2598,7 +2684,7 @@ compositorManageScreen (ScreenInfo *screen_info)
         return FALSE;
     }
 
-    screen_info->gsize = -1;
+    screen_info->gaussianSize = -1;
     screen_info->gaussianMap = make_gaussian_map(SHADOW_RADIUS);
     presum_gaussian (screen_info);
     screen_info->rootBuffer = None;
@@ -2607,6 +2693,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->allDamage = None;
     screen_info->cwindows = NULL;
     screen_info->compositor_active = TRUE;
+    screen_info->overlays = 0;
 
     XClearArea (myScreenGetXDisplay (screen_info), screen_info->xroot, 0, 0, 0, 0, TRUE);
 
@@ -2628,12 +2715,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     TRACE ("entering compositorUnmanageScreen");
 
     display_info = screen_info->display_info;
-    if (!(display_info->enable_compositor))
-    {
-        return;
-    }
-
-    if (!(screen_info->compositor_active))
+    if (!compositorIsUsable (display_info))
     {
         return;
     }
@@ -2678,7 +2760,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         screen_info->gaussianMap = NULL;
     }
 
-    screen_info->gsize = -1;
+    screen_info->gaussianSize = -1;
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
 #endif /* HAVE_COMPOSITOR */
 }
@@ -2693,12 +2775,7 @@ compositorRepairScreen (ScreenInfo *screen_info)
     TRACE ("entering compositorRepairScreen");
 
     display_info = screen_info->display_info;
-    if (!(display_info->enable_compositor))
-    {
-        return;
-    }
-
-    if (!(screen_info->compositor_active))
+    if (!compositorIsUsable (display_info))
     {
         return;
     }
@@ -2717,6 +2794,11 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
     TRACE ("entering compositorUpdateScreenSize");
 
     display_info = screen_info->display_info;
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
     if (screen_info->rootBuffer)
     {
         XRenderFreePicture (display_info->dpy, screen_info->rootBuffer);
@@ -2737,12 +2819,7 @@ compositorRebuildScreen (ScreenInfo *screen_info)
     TRACE ("entering compositorRepairScreen");
 
     display_info = screen_info->display_info;
-    if (!(display_info->enable_compositor))
-    {
-        return;
-    }
-
-    if (!(screen_info->compositor_active))
+    if (!compositorIsUsable (display_info))
     {
         return;
     }
@@ -2767,9 +2844,8 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
     g_return_if_fail (id != None);
     TRACE ("entering compositorDamageWindow: 0x%lx", id);
 
-    if (!(display_info->enable_compositor))
+    if (!compositorIsUsable (display_info))
     {
-        TRACE ("compositor disabled");
         return;
     }
 

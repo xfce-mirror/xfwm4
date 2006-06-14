@@ -650,6 +650,28 @@ myDisplayGetCurrentTime (DisplayInfo *display)
     return (Time) display->current_time;
 }
 
+Time          myDisplayGetLastUserTime      (DisplayInfo *);
+void          myDisplaySetLastUserTime      (DisplayInfo *,
+                                             Time);
+Time 
+myDisplayGetLastUserTime (DisplayInfo *display)
+{
+    g_return_val_if_fail (display != NULL, (Time) CurrentTime);
+
+    return (Time) display->last_user_time;
+}
+
+void 
+myDisplaySetLastUserTime (DisplayInfo *display, Time timestamp)
+{
+    g_return_if_fail (display != NULL);
+
+    if (TIMESTAMP_IS_BEFORE(display->last_user_time, timestamp))
+    {
+        display->last_user_time = timestamp;
+    }
+}
+
 static gdouble
 get_time(void)
 {

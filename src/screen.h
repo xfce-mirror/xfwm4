@@ -131,21 +131,21 @@ struct _ScreenInfo
 #endif
 
 #ifdef HAVE_COMPOSITOR
-    gboolean compositor_active;
-    
     GList *cwindows;
 
     gaussian_conv *gaussianMap;
-    gint gsize;
+    gint gaussianSize;
     guchar *shadowCorner;
     guchar *shadowTop;
-
     
     Picture rootPicture;
     Picture rootBuffer;
     Picture blackPicture;
     Picture rootTile;
     XserverRegion allDamage;
+    
+    guint overlays;
+    gboolean compositor_active;
     gboolean clipChanged;
 #endif /* HAVE_COMPOSITOR */
 };

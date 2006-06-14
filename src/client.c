@@ -1420,6 +1420,7 @@ clientGetUserTime (Client * c)
     if (getNetWMUserTime (display_info, c->window, &c->user_time))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
+        myDisplaySetLastUserTime (display_info, c->user_time);
     }
 }
 

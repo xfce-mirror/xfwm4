@@ -64,6 +64,17 @@
 #define WINDOW                                                  1
 #define FRAME                                                   2
 
+/* 
+ * The following macro is taken straight from metacity, 
+ * if that needs some explanation, please refer to metacity's 
+ * display.h source where it is explaned
+ */
+#define TIMESTAMP_IS_BEFORE_REAL(time1, time2)  ((((time1) < (time2)) && ((time2) - (time1) < ((guint32)-1)/2 )) || \
+                                                 (((time1) > (time2)) && ((time1) - (time2) > ((guint32)-1)/2 )))
+#define TIMESTAMP_IS_BEFORE(time1, time2)       ((time1) == 0 ||                                                    \
+                                                (TIMESTAMP_IS_BEFORE_REAL(time1, time2) &&                          \
+                                                (time2) != 0))
+
 enum 
 {
     COMPOSITING_MANAGER = 0,
@@ -200,6 +211,7 @@ struct _DisplayInfo
     gchar* hostname;
 
     Time current_time;
+    Time last_user_time;
 
     gboolean enable_compositor;
 #ifdef HAVE_RENDER 
@@ -271,6 +283,9 @@ ScreenInfo *  myDisplayGetDefaultScreen     (DisplayInfo *);
 Time          myDisplayUpdateCurentTime     (DisplayInfo *, 
                                              XEvent *);
 Time          myDisplayGetCurrentTime       (DisplayInfo *);
+Time          myDisplayGetLastUserTime      (DisplayInfo *);
+void          myDisplaySetLastUserTime      (DisplayInfo *,
+                                             Time);
 gboolean      myDisplayTestXrender          (DisplayInfo *,
                                              gdouble);
 

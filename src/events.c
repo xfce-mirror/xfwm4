@@ -366,7 +366,6 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     {
         screen_info = c->screen_info;
         key = getKeyPressed (screen_info, ev);
-        c->user_time = myDisplayGetCurrentTime (display_info);
         mode = c->win_state & WIN_STATE_MAXIMIZED;
 
         switch (key)
@@ -783,7 +782,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         state = ev->state & MODIFIER_MASK;
         win = ev->subwindow;
         screen_info = c->screen_info;
-        c->user_time = myDisplayGetCurrentTime (display_info);
 
         if ((ev->button == Button1) && (screen_info->params->easy_click) && (state == screen_info->params->easy_click))
         {
@@ -1129,11 +1127,6 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
         {
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
         }
-        compositorMapWindow (display_info, c->frame);
-    }
-    else if (myDisplayGetScreenFromRoot (display_info, ev->event))
-    {
-        compositorMapWindow (display_info, ev->window);
     }
 }
 
@@ -1178,7 +1171,6 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 
         screen_info = c->screen_info;
         clientPassFocus (screen_info, c, c);
-        compositorUnmapWindow (display_info, c->frame);
         
         /*
          * ICCCM spec states that a client wishing to switch
@@ -1206,10 +1198,6 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
                  c->name, c->ignore_unmap);
             clientUnframe (c, FALSE);
         }
-    }
-    else
-    {
-        compositorUnmapWindow (display_info, ev->window);
     }
 }
 
@@ -1820,6 +1808,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_user_time notify", c->name, c->window);
             if (getNetWMUserTime (display_info, c->window, &c->user_time))
             {
+                myDisplaySetLastUserTime (display_info, c->user_time);
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
             }
         }
@@ -1976,12 +1965,11 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a net_active_window event", c->name, c->window);
             if (ev->data.l[0] != 0)
             {
-                Time current = myDisplayGetCurrentTime (screen_info->display_info);
+                Time current = myDisplayGetLastUserTime (screen_info->display_info);
                 Time ev_time = (Time) ev->data.l[1];
 
-                /* We are simply ignoring XServer time wraparound here */
                 TRACE ("Time of event received is %u, current XServer time is %u", (unsigned int) ev_time, (unsigned int) current);
-                if ((screen_info->params->prevent_focus_stealing) && (ev_time != (Time) 0) && (ev_time < current))
+                if ((screen_info->params->prevent_focus_stealing) && (ev_time != (Time) 0) && TIMESTAMP_IS_BEFORE(ev_time, current))
                 {
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
