@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-20 15:20+0200\n"
+"POT-Creation-Date: 2006-06-14 11:34+0200\n"
 "PO-Revision-Date: 2006-05-31 02:27+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
@@ -24,7 +24,8 @@ msgid "Workspace Margins"
 msgstr "שולי סביבת העבודה"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
 #: ../mcs-plugin/margins.c:167
@@ -72,7 +73,8 @@ msgid "Window Manager Tweaks"
 msgstr "התאמה אישית של מנהל החלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
-msgid "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid ""
+"Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
@@ -126,7 +128,8 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:479
-msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
@@ -803,4 +806,3 @@ msgstr "הגדרות סביבות עבודה"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "הגדרות סביבות עבודה Xfce 4"
-
