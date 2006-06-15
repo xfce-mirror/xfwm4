@@ -157,7 +157,7 @@ clientFocusNew(Client * c)
     clientGrabMouseButton (c);
     if (give_focus || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
-        if (client_focus)
+        if ((client_focus) && !(clientIsTransientOrModalFor (c, client_focus)))
         {
             if (clientAdjustFullscreenLayer (client_focus, FALSE))
             {

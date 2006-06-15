@@ -1257,8 +1257,26 @@ repair_win (CWindow *cw)
 
     if (parts)
     {
-        cw->damaged = TRUE;
+        GList *index;
+
+        /* Exclude opaque windows in front of this window from damage */
+        for (index = screen_info->cwindows; index; index = g_list_next (index))
+        {
+            CWindow *cw2 = (CWindow *) index->data;
+            if (cw2 == cw)
+            {
+                break;
+            }
+            else if ((cw2->opacity == NET_WM_OPAQUE) && (cw2->mode != WINDOW_ARGB) && 
+                     (cw2->viewable) && (cw2->damage) && (cw2->borderSize))
+            {
+                XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
+                                     parts, cw2->borderSize);
+            }
+        }
+
         add_damage (cw->screen_info, parts);
+        cw->damaged = TRUE;
     }
 }
 
@@ -1361,15 +1379,11 @@ set_win_opacity (CWindow *cw, guint opacity)
 static void
 map_win (CWindow *cw)
 {
-    ScreenInfo *screen_info = NULL;
-
     TRACE ("entering map_win");
     g_return_if_fail (cw != NULL);
 
     cw->viewable = TRUE;
     cw->damaged = FALSE;
-    screen_info = cw->screen_info;
-    add_repair (cw->screen_info->display_info);
 }
 
 static void
@@ -1551,20 +1565,17 @@ void
 resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
 {
     XserverRegion extents;
+    XserverRegion damage;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering resize_win");
 
-    extents = win_extents (cw);
-    add_damage (cw->screen_info, extents);
-
-    if (!(shape_notify) && (x == cw->attr.x) && (y == cw->attr.y) &&
-        (width == cw->attr.width) && (height == cw->attr.height) &&
-        (bw == cw->attr.border_width))
+    damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), NULL, 0);
+    if (cw->extents)    
     {
-        return;
+        XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
     }
-    
+
     TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
     if (cw->extents)
     {
@@ -1572,13 +1583,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         cw->extents = None;
     }
 
-    if (cw->borderSize != None)
-    {
-        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
-        cw->borderSize = None;
-    }
-
-    if ((cw->attr.width != width) || (cw->attr.height != height))
+    if ((cw->attr.width != width) || (cw->attr.height != height) || (cw->attr.border_width != bw))
     {
 #if HAVE_NAME_WINDOW_PIXMAP
         if (cw->name_window_pixmap)
@@ -1586,23 +1591,16 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
             XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
             cw->name_window_pixmap = None;
         }
-#endif
         if (cw->picture)
         {
             XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->picture);
             cw->picture = None;
         }
-
+#endif
         if (cw->shadow)
         {
             XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
             cw->shadow = None;
-        }
-
-        if (cw->borderSize != None)
-        {
-            XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
-            cw->borderSize = None;
         }
 
         if (cw->extents)
@@ -1618,8 +1616,16 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     cw->attr.height = height;
     cw->attr.border_width = bw;
 
+    if (cw->borderSize)
+    {
+        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
+        cw->borderSize = None;
+    }
+
     extents = win_extents (cw);
-    add_damage (cw->screen_info, extents);
+    XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, extents);
+    XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), extents);
+    add_damage (cw->screen_info, damage);
 }
 
 static void
@@ -2132,6 +2138,9 @@ void
 compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
+#if HAVE_NAME_WINDOW_PIXMAP
+    int composite_major, composite_minor;
+#endif
 
     g_return_if_fail (display_info != NULL);
     TRACE ("entering compositorInitDisplay");
@@ -2186,6 +2195,14 @@ compositorInitDisplay (DisplayInfo *display_info)
     {
         g_warning ("Compositing manager disabled.");
     }
+
+#if HAVE_NAME_WINDOW_PIXMAP
+    XCompositeQueryVersion (display_info->dpy, &composite_major, &composite_minor);
+    display_info->have_name_window_pixmap = ((composite_major > 0) || (composite_minor >= 2));
+#else
+    display_info->have_name_window_pixmap = FALSE;
+#endif
+
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
