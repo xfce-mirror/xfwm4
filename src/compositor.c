@@ -1876,7 +1876,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
             cw->picture = None;
         }
 #endif
-
         if (cw->shadow)
         {
             XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
@@ -2512,7 +2511,9 @@ void
 compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
+#if HAVE_NAME_WINDOW_PIXMAP
     int composite_major, composite_minor;
+#endif
 
     if (!XCompositeQueryExtension (display_info->dpy,
                                 &display_info->composite_event_base,
