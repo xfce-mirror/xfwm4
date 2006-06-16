@@ -1579,7 +1579,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         cw->extents = None;
     }
 
-    if ((cw->attr.width != width) || (cw->attr.height != height) || (cw->attr.border_width != bw))
+    if ((cw->attr.width != width) || (cw->attr.height != height))
     {
 #if HAVE_NAME_WINDOW_PIXMAP
         if (cw->name_window_pixmap)
@@ -1601,17 +1601,20 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         }
     }
 
+    if ((cw->attr.width != width) || (cw->attr.height != height) || (cw->attr.x != x) || (cw->attr.y != y))
+    {
+        if (cw->borderSize)
+        {
+            XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
+            cw->borderSize = None;
+        }
+    }
+
     cw->attr.x = x;
     cw->attr.y = y;
     cw->attr.width = width;
     cw->attr.height = height;
     cw->attr.border_width = bw;
-
-    if (cw->borderSize)
-    {
-        XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->borderSize);
-        cw->borderSize = None;
-    }
 
     extents = win_extents (cw);
     XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, extents);
