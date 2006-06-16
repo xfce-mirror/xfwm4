@@ -558,15 +558,6 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
     }
 
     gc = XCreateGC (myScreenGetXDisplay (screen_info), shadowPixmap, 0, NULL);
-    if (gc == None)
-    {
-        XDestroyImage (shadowImage);
-        XFreePixmap (myScreenGetXDisplay (screen_info), shadowPixmap);
-        XRenderFreePicture (myScreenGetXDisplay (screen_info), shadowPicture);
-        g_warning ("(gc != None) failed");
-        return None;
-    }
-
     XPutImage (myScreenGetXDisplay (screen_info), shadowPixmap, gc, shadowImage, 0, 0, 0, 0,
             shadowImage->width, shadowImage->height);
 
@@ -1460,13 +1451,10 @@ repair_win (CWindow *cw)
     if (cw->damaged)
     {
         parts = XFixesCreateRegion (myScreenGetXDisplay (screen_info), NULL, 0);
-        if (parts)
-        {
-            XDamageSubtract (myScreenGetXDisplay (screen_info), cw->damage, None, parts);
-            XFixesTranslateRegion (myScreenGetXDisplay (screen_info), parts,
-                                   cw->attr.x + cw->attr.border_width,
-                                   cw->attr.y + cw->attr.border_width);
-        }
+        XDamageSubtract (myScreenGetXDisplay (screen_info), cw->damage, None, parts);
+        XFixesTranslateRegion (myScreenGetXDisplay (screen_info), parts,
+                               cw->attr.x + cw->attr.border_width,
+                               cw->attr.y + cw->attr.border_width);
     }
     else
     {
@@ -1558,12 +1546,11 @@ determine_mode(CWindow *cw)
     if (cw->extents)
     {
         XserverRegion damage;
+
         damage = XFixesCreateRegion (myScreenGetXDisplay (screen_info), NULL, 0);
-        if (damage != None)
-        {
-            XFixesCopyRegion (myScreenGetXDisplay (screen_info), damage, cw->extents);
-            add_damage (screen_info, damage);
-        }
+        XFixesCopyRegion (myScreenGetXDisplay (screen_info), damage, cw->extents);
+        /* damage region will be destroyed by add_damage () */
+        add_damage (screen_info, damage);
     }
 }
 
@@ -1574,20 +1561,18 @@ expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
 
     g_return_if_fail (rects != NULL);
     g_return_if_fail (nrects > 0);
-
     TRACE ("entering expose_area");
+
     region = XFixesCreateRegion (myScreenGetXDisplay (screen_info), rects, nrects);
-    if (region != None)
-    {
-        add_damage (screen_info, region);
-    }
+    /* damage region will be destroyed by add_damage () */
+    add_damage (screen_info, region);
 }
 
 static void
 set_win_opacity (CWindow *cw, guint opacity)
 {
-    TRACE ("entering set_win_opacity");
     g_return_if_fail (cw != NULL);
+    TRACE ("entering set_win_opacity");
 
     cw->opacity = opacity;
     determine_mode(cw);
@@ -1843,21 +1828,16 @@ restack_win (CWindow *cw, Window above)
 static void
 resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
 {
-    XserverRegion extents;
     XserverRegion damage;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering resize_win");
+    TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
 
     damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), NULL, 0);
     if (cw->extents)    
     {
         XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
-    }
-
-    TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
-    if (cw->extents)
-    {
         XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
         cw->extents = None;
     }
@@ -1870,22 +1850,17 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
             XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
             cw->name_window_pixmap = None;
         }
+#endif
         if (cw->picture)
         {
             XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->picture);
             cw->picture = None;
         }
-#endif
+
         if (cw->shadow)
         {
             XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
             cw->shadow = None;
-        }
-
-        if (cw->extents)
-        {
-            XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
-            cw->extents = None;
         }
     }
 
@@ -1907,9 +1882,9 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         cw->clientSize = None;
     }
 
-    extents = win_extents (cw);
-    XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, extents);
-    XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), extents);
+    cw->extents = win_extents (cw);
+    XFixesUnionRegion (myScreenGetXDisplay (cw->screen_info), damage, damage, cw->extents);
+    /* damage region will be destroyed by add_damage () */
     add_damage (cw->screen_info, damage);
 }
 
@@ -2035,8 +2010,9 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
     XRectangle rect[1];
     CWindow *cw;
 
-    TRACE ("entering compositorHandleExpose for 0x%lx", ev->window);
     g_return_if_fail (display_info);
+    TRACE ("entering compositorHandleExpose for 0x%lx", ev->window);
+
     if (!(display_info->enable_compositor))
     {
         TRACE ("compositor disabled");
