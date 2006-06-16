@@ -1569,16 +1569,12 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering resize_win");
+    TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
 
     damage = XFixesCreateRegion (myScreenGetXDisplay (cw->screen_info), NULL, 0);
     if (cw->extents)    
     {
         XFixesCopyRegion (myScreenGetXDisplay (cw->screen_info), damage, cw->extents);
-    }
-
-    TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
-    if (cw->extents)
-    {
         XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
         cw->extents = None;
     }
@@ -1591,22 +1587,17 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
             XFreePixmap (myScreenGetXDisplay (cw->screen_info), cw->name_window_pixmap);
             cw->name_window_pixmap = None;
         }
+#endif
         if (cw->picture)
         {
             XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->picture);
             cw->picture = None;
         }
-#endif
+
         if (cw->shadow)
         {
             XRenderFreePicture (myScreenGetXDisplay (cw->screen_info), cw->shadow);
             cw->shadow = None;
-        }
-
-        if (cw->extents)
-        {
-            XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), cw->extents);
-            cw->extents = None;
         }
     }
 
