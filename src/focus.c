@@ -503,6 +503,11 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
     if ((c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
+        if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+            clientSetNetState (c);
+        }
         if ((c == client_focus) && !(flags & FOCUS_FORCE))
         {
             TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request",
@@ -522,11 +527,6 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
             sendClientMessage (c->screen_info, c->window, WM_TAKE_FOCUS, timestamp);
-        }
-        if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
-        {
-            FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-            clientSetNetState (c);
         }
     }
     else
