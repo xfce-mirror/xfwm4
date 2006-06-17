@@ -1470,13 +1470,17 @@ repair_win (CWindow *cw)
             }
             else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE(cw2))
             {
-                if (!WIN_IS_REDIRECTED(cw2))
+                /* Make sure the window's areas are up-to-date... */
+                if (cw2->borderSize == None)
                 {
-                    XFixesDestroyRegion (myScreenGetXDisplay (cw->screen_info), parts);
-                    cw->damaged = FALSE;
-                    return;
+                    cw2->borderSize = border_size (cw2);
                 }
-                else if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
+                if (cw2->clientSize == None)
+                {
+                    cw2->clientSize = client_size (cw2);
+                }
+                /* ...before substracting them from the damaged zone. */  
+                if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
                 {
                     XFixesSubtractRegion (myScreenGetXDisplay (screen_info), parts,
                                          parts, cw2->clientSize);
