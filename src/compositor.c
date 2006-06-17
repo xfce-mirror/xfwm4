@@ -1270,12 +1270,6 @@ repair_display (DisplayInfo *display_info)
     g_return_if_fail (display_info);
     TRACE ("entering repair_display");
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-
 #ifdef USE_IDLE_REPAINT
     remove_timeouts (display_info);
 #endif /* USE_IDLE_REPAINT */
@@ -1892,21 +1886,23 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
 }
 
 static void
-destroy_win (ScreenInfo *screen_info, Window id)
+destroy_win (DisplayInfo *display_info, Window id)
 {
     CWindow *cw;
 
-    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
     TRACE ("entering destroy_win: 0x%lx\n", id);
 
-    cw = find_cwindow_in_screen (screen_info, id);
+    cw = find_cwindow_in_display (display_info, id);
     if (cw)
     {
+        ScreenInfo *screen_info;
+
         unmap_win (cw);
+        screen_info = cw->screen_info;
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
         free_win_data (cw, TRUE);
-        TRACE ("window 0x%lx removed", id);
     }
 }
 
@@ -1942,12 +1938,6 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 #ifdef MONITOR_ROOT_PIXMAP    
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
-
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
 
     for (p = 0; p < 2; p++)
     {
@@ -2016,12 +2006,6 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
     g_return_if_fail (display_info);
     TRACE ("entering compositorHandleExpose for 0x%lx", ev->window);
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw != NULL)
     {
@@ -2054,12 +2038,6 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleConfigureNotify for 0x%lx", ev->window);
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
     {
@@ -2079,12 +2057,6 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleCirculateNotify for 0x%lx", ev->window);
-
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
 
     cw = find_cwindow_in_display (display_info, ev->window);
     if (!cw)
@@ -2110,23 +2082,23 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
 static void
 compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
 {
+    CWindow *cw;
+
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleCreateNotify for 0x%lx", ev->window);
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-    
     /* 
        We are only interested in top level windows, other will
        be caught by the WM.
      */
+    
     if (myDisplayGetScreenFromRoot (display_info, ev->parent) != NULL)
     {
-        compositorAddWindow (display_info, ev->window, NULL);
+        if (!find_cwindow_in_display (display_info, ev->window))
+        {
+            add_win (display_info, ev->window, NULL);
+        }
     }
 }
 
@@ -2137,19 +2109,13 @@ compositorHandleReparentNotify (DisplayInfo *display_info, XReparentEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleReparentNotify for 0x%lx", ev->window);
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-    
     if (myDisplayGetScreenFromRoot (display_info, ev->parent) != NULL)
     {
-        compositorAddWindow (display_info, ev->window, NULL);
+        add_win (display_info, ev->window, NULL);
     }
     else
     {
-        compositorRemoveWindow (display_info, ev->window);
+        destroy_win (display_info, ev->window);
     }
 }
 
@@ -2160,13 +2126,7 @@ compositorHandleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent *e
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleDestroyNotify for 0x%lx", ev->window);
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-    
-    compositorRemoveWindow (display_info, ev->window);
+    destroy_win (display_info, ev->window);
 }
 
 static void
@@ -2178,12 +2138,6 @@ compositorHandleMapNotify (DisplayInfo *display_info, XMapEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleUnmapNotify for 0x%lx", ev->window);
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-    
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
     {
@@ -2200,12 +2154,6 @@ compositorHandleUnmapNotify (DisplayInfo *display_info, XUnmapEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleUnmapNotify for 0x%lx", ev->window);
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-    
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
     {
@@ -2222,12 +2170,6 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleShapeNotify for 0x%lx", ev->window);
 
-    if (!(display_info->enable_compositor))
-    {
-        TRACE ("compositor disabled");
-        return;
-    }
-    
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
     {
@@ -2361,8 +2303,8 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     if (cw)
     {
         /* 
-           The compositor window is already known, just update the client if
-           that is meaningfull...
+         * The compositor window is already known, just update the client if
+         * that is meaningfull...
          */
         if (c)
         {
@@ -2380,8 +2322,6 @@ void
 compositorRemoveWindow (DisplayInfo *display_info, Window id)
 {
 #ifdef HAVE_COMPOSITOR
-    CWindow *cw;
-
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
     TRACE ("entering compositorRemoveWindow: 0x%lx", id);
@@ -2391,12 +2331,7 @@ compositorRemoveWindow (DisplayInfo *display_info, Window id)
         return;
     }
 
-    cw = find_cwindow_in_display (display_info, id);
-    if (cw)
-    {
-        ScreenInfo *screen_info = cw->screen_info;
-        destroy_win (screen_info, id);
-    }
+    destroy_win (display_info, id);
 #endif /* HAVE_COMPOSITOR */
 }
 
