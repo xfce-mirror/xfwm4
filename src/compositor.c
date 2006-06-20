@@ -119,6 +119,7 @@ struct _CWindow
     gint shadow_height;
 
     guint opacity;
+    guint ignore_unmaps;
 };
 
 static CWindow*
@@ -993,9 +994,12 @@ unredirect_win (CWindow *cw)
         }
 #endif
         screen_info->overlays++;
+        cw->ignore_unmaps++;
         cw->redirected = FALSE;
+
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
         XSync (display_info->dpy, FALSE);
+
         TRACE ("Window 0x%lx unredirected", cw->id);
     }
 }
@@ -1102,17 +1106,9 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     gint screen_number;
     Window xroot;
     CWindow *cw;
-
+    
     TRACE ("entering paint_all");
     g_return_if_fail (screen_info);
-
-    index = screen_info->cwindows;
-    cw = (CWindow *) index->data;
-    if (WIN_IS_FULLSCREEN(cw) && WIN_IS_VISIBLE(cw) && WIN_IS_OVERRIDE(cw) && WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw))
-    {
-        TRACE ("Toplevel window 0x%lx is fullscreen, unredirecting", cw->id);
-        unredirect_win (cw);
-    }
 
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
@@ -1138,14 +1134,20 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     {
         cw = (CWindow *) index->data;
         TRACE ("painting forward 0x%lx", cw->id);
-
-        if (!WIN_IS_VISIBLE(cw) || !WIN_IS_DAMAGED(cw) || !WIN_IS_REDIRECTED(cw))
+        if (!WIN_IS_VISIBLE(cw) || !WIN_IS_DAMAGED(cw))
         {
             TRACE ("skipped, not damaged or not viewable 0x%lx", cw->id);
             cw->skipped = TRUE;
             continue;
         }
-        
+
+        if (!WIN_IS_REDIRECTED(cw))
+        {
+            TRACE ("skipped, not redirected 0x%lx", cw->id);
+            cw->skipped = TRUE;
+            continue;
+        }
+
         if ((cw->attr.x + cw->attr.width < 1) || (cw->attr.y + cw->attr.height < 1) ||
             (cw->attr.x >= screen_width) || (cw->attr.y >= screen_height))
         {
@@ -1638,17 +1640,27 @@ static void
 map_win (CWindow *cw)
 {
     ScreenInfo *screen_info;
+    CWindow *top;
+    GList *index;
 
-    TRACE ("entering map_win");
     g_return_if_fail (cw != NULL);
+    TRACE ("entering map_win 0x%lx", cw->id);
 
     cw->viewable = TRUE;
     cw->damaged = FALSE;
 
-    screen_info = cw->screen_info;
-    if (!(cw->redirected))
+    if (cw->ignore_unmaps)
     {
-        screen_info->overlays++;
+        cw->ignore_unmaps++;
+    }
+
+    screen_info = cw->screen_info;
+    index = screen_info->cwindows;
+    top = (CWindow *) index->data;
+    if (WIN_IS_FULLSCREEN(cw) && WIN_IS_VISIBLE(cw) && WIN_IS_OVERRIDE(cw) && WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && (cw == top))
+    {
+        TRACE ("Toplevel window 0x%lx is fullscreen, unredirecting", cw->id);
+        unredirect_win (cw);
     }
 }
 
@@ -1660,14 +1672,20 @@ unmap_win (CWindow *cw)
     g_return_if_fail (cw != NULL);
     TRACE ("entering unmap_win 0x%lx", cw->id);
 
-    cw->viewable = FALSE;
-    cw->damaged = FALSE;
+    if (cw->ignore_unmaps)
+    {
+        cw->ignore_unmaps--;
+        return;
+    }
 
     screen_info = cw->screen_info;
-    if (!(cw->redirected) && (screen_info->overlays > 0))
+    if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
     {
         screen_info->overlays--;
     }
+
+    cw->viewable = FALSE;
+    cw->damaged = FALSE;
 
     if (cw->extents != None)
     {
@@ -1772,6 +1790,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->redirected = TRUE;
     new->shaped = is_shaped (display_info, id);
     new->viewable = (new->attr.map_state == IsViewable);
+    new->ignore_unmaps = 0;
 
     if ((new->attr.class != InputOnly) && (id != screen_info->xroot))
     {
@@ -1804,7 +1823,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     /* Insert window at top of stack */
     screen_info->cwindows = g_list_prepend (screen_info->cwindows, new);
 
-    if (new->viewable)
+    if (WIN_IS_VISIBLE(new))
     {
         map_win (new);
     }
@@ -2197,7 +2216,7 @@ compositorHandleMapNotify (DisplayInfo *display_info, XMapEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleUnmapNotify for 0x%lx", ev->window);
+    TRACE ("entering compositorHandleMapNotify for 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
@@ -2214,6 +2233,12 @@ compositorHandleUnmapNotify (DisplayInfo *display_info, XUnmapEvent *ev)
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleUnmapNotify for 0x%lx", ev->window);
+
+    if (ev->from_configure)
+    {
+        TRACE ("Ignoring UnmapNotify caused by parent's resize");
+        return;
+    }
 
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
