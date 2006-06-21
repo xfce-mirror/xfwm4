@@ -4187,7 +4187,6 @@ clientCycle (Client * c, XEvent * ev)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     ClientCycleData passdata;
-    Client *focused;
     gboolean g1, g2;
 
     g_return_if_fail (c != NULL);
@@ -4257,9 +4256,9 @@ clientCycle (Client * c, XEvent * ev)
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
-    focused = clientGetFocus ();
-    if ((passdata.c) && (passdata.c != focused))
+    if (passdata.c)
     {
+        Client *focused;
         int workspace;
 
         c = passdata.c;
@@ -4273,7 +4272,8 @@ clientCycle (Client * c, XEvent * ev)
         clientShow (c, TRUE);
         clientClearAllShowDesktop (screen_info);
         clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
-        if (focused)
+        focused = clientGetFocus ();
+        if ((focused) && (passdata.c != focused))
         {
             clientAdjustFullscreenLayer (focused, FALSE);
         }
