@@ -3847,7 +3847,7 @@ clientCycle (Client * c, XEvent * ev)
         focused = clientGetFocus ();
         clientShow (passdata.c, TRUE);
         clientSetFocus (passdata.c->screen_info, passdata.c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
-        if (focused)
+        if ((focused) && (passdata.c != focused))
         {
             clientAdjustFullscreenLayer (focused, FALSE);
         }
