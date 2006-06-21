@@ -4187,6 +4187,7 @@ clientCycle (Client * c, XEvent * ev)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     ClientCycleData passdata;
+    Client *focused;
     gboolean g1, g2;
 
     g_return_if_fail (c != NULL);
@@ -4256,15 +4257,14 @@ clientCycle (Client * c, XEvent * ev)
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
-    if (passdata.c)
+    focused = clientGetFocus ();
+    if ((passdata.c) && (passdata.c != focused))
     {
-        Client *focused;
         int workspace;
 
         c = passdata.c;
         workspace = c->win_workspace;
 
-        focused = clientGetFocus ();
         if (workspace != screen_info->current_ws)
         {
             workspaceSwitch (screen_info, workspace, c, FALSE);
