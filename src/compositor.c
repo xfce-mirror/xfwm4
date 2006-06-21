@@ -76,7 +76,9 @@
                                          (cw->attr.height == gdk_screen_get_height (cw->screen_info->gscr)))
 #define WIN_IS_SHAPED(cw)               ((!WIN_IS_OVERRIDE(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
                                          (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
-#define WIN_IS_VISIBLE(cw)              ((cw->viewable) && (cw->damage))
+#define WIN_IS_VIEWABLE(cw)             (cw->viewable)
+#define WIN_HAS_DAMAGE(cw)              (cw->damage)
+#define WIN_IS_VISIBLE(cw)              (WIN_IS_VIEWABLE(cw) && WIN_HAS_DAMAGE(cw))
 #define WIN_IS_DAMAGED(cw)              (cw->damaged)
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
@@ -1639,10 +1641,6 @@ set_win_opacity (CWindow *cw, guint opacity)
 static void
 map_win (CWindow *cw)
 {
-    ScreenInfo *screen_info;
-    CWindow *top;
-    GList *index;
-
     g_return_if_fail (cw != NULL);
     TRACE ("entering map_win 0x%lx", cw->id);
 
@@ -1654,13 +1652,23 @@ map_win (CWindow *cw)
         cw->ignore_unmaps++;
     }
 
-    screen_info = cw->screen_info;
-    index = screen_info->cwindows;
-    top = (CWindow *) index->data;
-    if (WIN_IS_FULLSCREEN(cw) && WIN_IS_VISIBLE(cw) && WIN_IS_OVERRIDE(cw) && WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && (cw == top))
+    /* Check for new windows to un-redirect. */
+    if (WIN_IS_FULLSCREEN(cw) &&  WIN_HAS_DAMAGE(cw) &&  WIN_IS_OVERRIDE(cw) && 
+        WIN_IS_NATIVE_OPAQUE(cw) &&  WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw))
     {
-        TRACE ("Toplevel window 0x%lx is fullscreen, unredirecting", cw->id);
-        unredirect_win (cw);
+        ScreenInfo *screen_info;
+        CWindow *top;
+        GList *index;
+
+        screen_info = cw->screen_info;
+        index = screen_info->cwindows;
+        top = (CWindow *) index->data;
+        
+        if (cw == top)
+        {
+            TRACE ("Toplevel window 0x%lx is fullscreen, unredirecting", cw->id);
+            unredirect_win (cw);
+        }
     }
 }
 
