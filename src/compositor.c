@@ -1101,6 +1101,7 @@ static void
 paint_all (ScreenInfo *screen_info, XserverRegion region)
 {
     DisplayInfo *display_info;
+    XserverRegion paint_region;
     Display *dpy;
     GList *index;
     gint screen_width;
@@ -1108,7 +1109,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     gint screen_number;
     Window xroot;
     CWindow *cw;
-    
+
     TRACE ("entering paint_all");
     g_return_if_fail (screen_info);
 
@@ -1126,7 +1127,12 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         g_return_if_fail (screen_info->rootBuffer != None);
     }
 
-    XFixesSetPictureClipRegion (dpy, screen_info->rootPicture, 0, 0, region);
+    /* Copy the original given region */
+    paint_region = XFixesCreateRegion (dpy, NULL, 0);
+    XFixesCopyRegion (dpy, paint_region, region);
+
+    /* Set clipping to the given region */
+    XFixesSetPictureClipRegion (dpy, screen_info->rootPicture, 0, 0, paint_region);
 
     /*
      * Painting from top to bottom, reducing the clipping area at each iteration.
@@ -1176,12 +1182,12 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         }
         if (WIN_IS_OPAQUE(cw))
         {
-            paint_win (cw, region, TRUE);
+            paint_win (cw, paint_region, TRUE);
         }
         if (cw->borderClip == None)
         {
             cw->borderClip = XFixesCreateRegion (dpy, NULL, 0);
-            XFixesCopyRegion (dpy, cw->borderClip, region);
+            XFixesCopyRegion (dpy, cw->borderClip, paint_region);
         }
 
         cw->skipped = FALSE;
@@ -1191,7 +1197,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
      * region has changed because of the XFixesSubtractRegion (),
      * reapply clipping for the last iteration.
      */
-    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
+    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, paint_region);
     paint_root (screen_info);
 
     /*
@@ -1234,7 +1240,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             }
             XFixesIntersectRegion (dpy, cw->borderClip, cw->borderClip, cw->borderSize);
             XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
-            paint_win (cw, region, FALSE);
+            paint_win (cw, paint_region, FALSE);
         }
 
         if (shadowClip)
@@ -1249,13 +1255,13 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         }
     }
 
-    if (screen_info->rootBuffer != screen_info->rootPicture)
-    {
-        TRACE ("Copying data back to screen");
-        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, None);
-        XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
-                          0, 0, 0, 0, 0, 0, screen_width, screen_height);
-    }
+    TRACE ("Copying data back to screen");
+
+    /* Set clipping back to the given region */
+    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
+    XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
+                      0, 0, 0, 0, 0, 0, screen_width, screen_height);
+    XFixesDestroyRegion (dpy, paint_region);
 }
 
 static void
