@@ -313,6 +313,7 @@ myDisplayClose (DisplayInfo *display)
     g_slist_free (display->screens);
     display->screens = NULL;
 
+    XCloseDisplay (display->dpy);
     return display;
 }
 
