@@ -4263,20 +4263,21 @@ clientCycle (Client * c, XEvent * ev)
 
         c = passdata.c;
         workspace = c->win_workspace;
+        focused = clientGetFocus ();
 
         if (workspace != screen_info->current_ws)
         {
             workspaceSwitch (screen_info, workspace, c, FALSE);
         }
 
-        clientShow (c, TRUE);
-        clientClearAllShowDesktop (screen_info);
-        clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
-        focused = clientGetFocus ();
         if ((focused) && (passdata.c != focused))
         {
+            clientClearAllShowDesktop (screen_info);
             clientAdjustFullscreenLayer (focused, FALSE);
         }
+
+        clientShow (c, TRUE);
+        clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
         clientRaise (c, None);
     }
 }
