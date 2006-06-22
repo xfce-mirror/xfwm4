@@ -1030,14 +1030,11 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         }
     }
 
+    TRACE ("Copying data back to screen");
     XFixesDestroyRegion (dpy, region);
-    if (screen_info->rootBuffer != screen_info->rootPicture)
-    {
-        TRACE ("Copying data back to screen");
-        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, None);
-        XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
-                          0, 0, 0, 0, 0, 0, screen_width, screen_height);
-    }
+    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, None);
+    XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
+                      0, 0, 0, 0, 0, 0, screen_width, screen_height);
 }
 
 static void
