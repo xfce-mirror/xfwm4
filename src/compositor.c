@@ -1647,6 +1647,8 @@ set_win_opacity (CWindow *cw, guint opacity)
 static void
 map_win (CWindow *cw)
 {
+    ScreenInfo *screen_info;
+
     g_return_if_fail (cw != NULL);
     TRACE ("entering map_win 0x%lx", cw->id);
 
@@ -1656,17 +1658,23 @@ map_win (CWindow *cw)
     if (cw->ignore_unmaps)
     {
         cw->ignore_unmaps++;
+        return;
+    }
+    
+    screen_info = cw->screen_info;
+    if (!WIN_IS_REDIRECTED(cw))
+    {
+        screen_info->overlays++;
+        return;
     }
 
     /* Check for new windows to un-redirect. */
     if (WIN_IS_FULLSCREEN(cw) &&  WIN_HAS_DAMAGE(cw) &&  WIN_IS_OVERRIDE(cw) && 
         WIN_IS_NATIVE_OPAQUE(cw) &&  WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw))
     {
-        ScreenInfo *screen_info;
         CWindow *top;
         GList *index;
 
-        screen_info = cw->screen_info;
         index = screen_info->cwindows;
         top = (CWindow *) index->data;
         
@@ -1686,16 +1694,16 @@ unmap_win (CWindow *cw)
     g_return_if_fail (cw != NULL);
     TRACE ("entering unmap_win 0x%lx", cw->id);
 
-    if (cw->ignore_unmaps)
-    {
-        cw->ignore_unmaps--;
-        return;
-    }
-
     screen_info = cw->screen_info;
     if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
     {
         screen_info->overlays--;
+    }
+
+    if (cw->ignore_unmaps)
+    {
+        cw->ignore_unmaps--;
+        return;
     }
 
     cw->viewable = FALSE;
