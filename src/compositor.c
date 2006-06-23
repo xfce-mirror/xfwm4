@@ -1386,6 +1386,12 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->picture = None;
     }
 
+    if (cw->shadow)
+    {
+        XRenderFreePicture (display_info->dpy, cw->shadow);
+        cw->shadow = None;
+    }
+
     if (cw->alphaPict)
     {
         XRenderFreePicture (display_info->dpy, cw->alphaPict);
@@ -1404,10 +1410,10 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->alphaBorderPict = None;
     }
 
-    if ((delete) && (cw->damage != None))
+    if (cw->clientSize)
     {
-        XDamageDestroy (display_info->dpy, cw->damage);
-        cw->damage = None;
+        XFixesDestroyRegion (display_info->dpy, cw->clientSize);
+        cw->clientSize = None;
     }
 
     if (cw->borderSize)
@@ -1416,16 +1422,10 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->borderSize = None;
     }
 
-    if (cw->clientSize)
+    if (cw->extents)
     {
-        XFixesDestroyRegion (display_info->dpy, cw->clientSize);
-        cw->clientSize = None;
-    }
-
-    if (cw->shadow)
-    {
-        XRenderFreePicture (display_info->dpy, cw->shadow);
-        cw->shadow = None;
+        XFixesDestroyRegion (display_info->dpy, cw->extents);
+        cw->extents = None;
     }
 
     if (cw->borderClip)
@@ -1436,6 +1436,12 @@ free_win_data (CWindow *cw, gboolean delete)
 
     if (delete)
     {
+        if (cw->damage != None)
+        {
+            XDamageDestroy (display_info->dpy, cw->damage);
+            cw->damage = None;
+        }
+
         g_free (cw);
     }
 }
@@ -1467,6 +1473,52 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
     }
 
     add_repair (screen_info->display_info);
+}
+
+static void
+fix_region (CWindow *cw, XserverRegion region)
+{
+    GList *index;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
+    /* Exclude opaque windows in front of the given area */
+    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    {
+        CWindow *cw2;
+        
+        cw2 = (CWindow *) index->data;
+        if (cw2 == cw)
+        {
+            break;
+        }
+        else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE(cw2))
+        {
+            /* Make sure the window's areas are up-to-date... */
+            if (cw2->borderSize == None)
+            {
+                cw2->borderSize = border_size (cw2);
+            }
+            if (cw2->clientSize == None)
+            {
+                cw2->clientSize = client_size (cw2);
+            }
+            /* ...before substracting them from the damaged zone. */  
+            if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
+            {
+                XFixesSubtractRegion (display_info->dpy, region,
+                                     region, cw2->clientSize);
+            }
+            else if (cw2->borderSize)
+            {
+                XFixesSubtractRegion (display_info->dpy, region,
+                                     region, cw2->borderSize);
+            }
+        }
+    }
 }
 
 static void
@@ -1504,41 +1556,7 @@ repair_win (CWindow *cw)
 
     if (parts)
     {
-        GList *index;
-
-        /* Exclude opaque windows in front of this window from damage */
-        for (index = screen_info->cwindows; index; index = g_list_next (index))
-        {
-            CWindow *cw2 = (CWindow *) index->data;
-            if (cw2 == cw)
-            {
-                break;
-            }
-            else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE(cw2))
-            {
-                /* Make sure the window's areas are up-to-date... */
-                if (cw2->borderSize == None)
-                {
-                    cw2->borderSize = border_size (cw2);
-                }
-                if (cw2->clientSize == None)
-                {
-                    cw2->clientSize = client_size (cw2);
-                }
-                /* ...before substracting them from the damaged zone. */  
-                if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
-                {
-                    XFixesSubtractRegion (display_info->dpy, parts,
-                                         parts, cw2->clientSize);
-                }
-                else if (cw2->borderSize)
-                {
-                    XFixesSubtractRegion (display_info->dpy, parts,
-                                         parts, cw2->borderSize);
-                }
-            }
-        }
-
+        fix_region (cw, parts);
         add_damage (cw->screen_info, parts);
         cw->damaged = TRUE;
     }
@@ -1554,6 +1572,7 @@ damage_win (CWindow *cw)
     TRACE ("entering damage_win");
 
     extents = win_extents (cw);
+    fix_region (cw, extents);
     add_damage (cw->screen_info, extents);
 #endif /* HAVE_COMPOSITOR */
 }
@@ -1596,6 +1615,7 @@ determine_mode(CWindow *cw)
 
         damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
         XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+        fix_region (cw, damage);
         /* damage region will be destroyed by add_damage () */
         add_damage (screen_info, damage);
     }
@@ -1694,27 +1714,22 @@ unmap_win (CWindow *cw)
     g_return_if_fail (cw != NULL);
     TRACE ("entering unmap_win 0x%lx", cw->id);
 
-    screen_info = cw->screen_info;
-    if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
-    {
-        screen_info->overlays--;
-    }
-
     if (cw->ignore_unmaps)
     {
         cw->ignore_unmaps--;
         return;
     }
 
+    screen_info = cw->screen_info;
+    if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
+    {
+        screen_info->overlays--;
+        TRACE ("overlay decreased to %i", screen_info->overlays);
+    }
+
     cw->viewable = FALSE;
     cw->damaged = FALSE;
-
-    if (cw->extents != None)
-    {
-        add_damage (screen_info, cw->extents);
-        /* cw->extents is destroyed by add_damage () */
-        cw->extents = None;
-    }
+    damage_win (cw);
     free_win_data (cw, FALSE);
 }
 
@@ -1912,6 +1927,16 @@ restack_win (CWindow *cw, Window above)
 }
 
 static void
+set_size_attributes (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
+{
+    cw->attr.x = x;
+    cw->attr.y = y;
+    cw->attr.width = width;
+    cw->attr.height = height;
+    cw->attr.border_width = bw;
+}
+
+static void
 resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
 {
     DisplayInfo *display_info;
@@ -1922,8 +1947,15 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     TRACE ("entering resize_win");
     TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
 
+    if (!WIN_IS_VISIBLE(cw))
+    {
+        set_size_attributes (cw, x, y, width, height, bw);
+        return;
+    }
+
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
+
     damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
     if (cw->extents)    
     {
@@ -1969,11 +2001,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         }
     }
 
-    cw->attr.x = x;
-    cw->attr.y = y;
-    cw->attr.width = width;
-    cw->attr.height = height;
-    cw->attr.border_width = bw;
+    set_size_attributes (cw, x, y, width, height, bw);
 
     cw->extents = win_extents (cw);
     XFixesUnionRegion (display_info->dpy, damage, damage, cw->extents);
@@ -1983,6 +2011,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         XFixesDestroyRegion (display_info->dpy, cw->extents);
         cw->extents = None;
     }
+    fix_region (cw, damage);
     /* damage region will be destroyed by add_damage () */
     add_damage (screen_info, damage);
 }
@@ -1994,7 +2023,7 @@ destroy_win (DisplayInfo *display_info, Window id)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
-    TRACE ("entering destroy_win: 0x%lx\n", id);
+    TRACE ("entering destroy_win: 0x%lx", id);
 
     cw = find_cwindow_in_display (display_info, id);
     if (cw)
@@ -2004,6 +2033,13 @@ destroy_win (DisplayInfo *display_info, Window id)
         unmap_win (cw);
         screen_info = cw->screen_info;
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
+
+        if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
+        {
+            screen_info->overlays--;
+            TRACE ("overlay decreased to %i", screen_info->overlays);
+        }
+
         free_win_data (cw, TRUE);
     }
 }
@@ -2341,55 +2377,6 @@ compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
         set_win_opacity (cw, opacity);
     }
 #endif
-}
-
-void
-compositorMapWindow (DisplayInfo *display_info, Window id)
-{
-#ifdef HAVE_COMPOSITOR
-    CWindow *cw;
-
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (id != None);
-    TRACE ("entering compositorMapWindow for 0x%lx", id);
-
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    cw = find_cwindow_in_display (display_info, id);
-    if (cw)
-    {
-        if (!(cw->viewable))
-        {
-            map_win (cw);
-        }
-    }
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
-compositorUnmapWindow (DisplayInfo *display_info, Window id)
-{
-#ifdef HAVE_COMPOSITOR
-    CWindow *cw;
-
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (id != None);
-    TRACE ("entering compositorUnmapWindow for 0x%lx", id);
-
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    cw = find_cwindow_in_display (display_info, id);
-    if (cw)
-    {
-        unmap_win (cw);
-    }
-#endif /* HAVE_COMPOSITOR */
 }
 
 void

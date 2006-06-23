@@ -32,12 +32,8 @@
 #include "screen.h"
 #include "client.h"
 
-void     compositorMapWindow        (DisplayInfo *,
-                                     Window);
-void     compositorUnmapWindow      (DisplayInfo *,
-                                     Window);
-void     compositorAddWindow        (DisplayInfo *, 
-                                     Window, 
+void     compositorAddWindow        (DisplayInfo *,
+                                     Window,
                                      Client *);
 void     compositorRemoveWindow     (DisplayInfo *,
                                      Window);
