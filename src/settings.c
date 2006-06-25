@@ -1524,6 +1524,7 @@ reloadScreenSettings (ScreenInfo *screen_info, int mask)
     if (mask)
     {
         clientUpdateAllFrames (screen_info, mask);
+        compositorRebuildScreen (screen_info);
     }
 
     return TRUE;

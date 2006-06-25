@@ -2770,6 +2770,32 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
 #endif /* HAVE_COMPOSITOR */
 }
 
+void
+compositorRebuildScreen (ScreenInfo *screen_info)
+{
+#ifdef HAVE_COMPOSITOR
+    DisplayInfo *display_info;
+    GList *index;
+
+    g_return_if_fail (screen_info != NULL);
+    TRACE ("entering compositorRepairScreen");
+
+    display_info = screen_info->display_info;
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
+    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    {
+        CWindow *cw2 = (CWindow *) index->data;
+        free_win_data (cw2, FALSE);
+        init_opacity (cw2);
+    }
+    repair_screen (screen_info);
+#endif /* HAVE_COMPOSITOR */
+}
+
 gboolean
 compositorTestServer (DisplayInfo *display_info)
 {
