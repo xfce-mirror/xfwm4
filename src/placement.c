@@ -54,18 +54,18 @@ clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
                          c->struts[LEFT], 
                          c->struts[LEFT_END_Y])
               + overlap (x, y, x + w, y + h,
-                         gdk_screen_get_width (c->screen_info->gscr) - c->struts[RIGHT], 
+                         c->screen_info->width - c->struts[RIGHT], 
                          c->struts[RIGHT_START_Y],
-                         gdk_screen_get_width (c->screen_info->gscr), c->struts[RIGHT_END_Y])
+                         c->screen_info->width, c->struts[RIGHT_END_Y])
               + overlap (x, y, x + w, y + h,
                          c->struts[TOP_START_X], 0, 
                          c->struts[TOP_END_X], 
                          c->struts[TOP])
               + overlap (x, y, x + w, y + h,
                          c->struts[BOTTOM_START_X], 
-                         gdk_screen_get_height (c->screen_info->gscr) - c->struts[BOTTOM],
+                         c->screen_info->height - c->struts[BOTTOM],
                          c->struts[BOTTOM_END_X], 
-                         gdk_screen_get_height (c->screen_info->gscr));
+                         c->screen_info->height);
     }
     return sigma;
 }
@@ -135,8 +135,8 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
         if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
             && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
-            screen_width = gdk_screen_get_width (c2->screen_info->gscr);
-            screen_height = gdk_screen_get_height (c2->screen_info->gscr);
+            screen_width = c2->screen_info->width;
+            screen_height = c2->screen_info->height;
 
             /* Left */
             if (overlap (*x, *y, *x + *w, *y + *h, 
@@ -248,8 +248,8 @@ clientConstrainPos (Client * c, gboolean show_full)
     monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
-    screen_width = gdk_screen_get_width (screen_info->gscr);
-    screen_height = gdk_screen_get_height (screen_info->gscr);
+    screen_width = screen_info->width;
+    screen_height = screen_info->height;
     
     disp_x = rect.x;
     disp_y = rect.y;
@@ -482,8 +482,8 @@ clientKeepVisible (Client * c)
     
     /* Translate coodinates to center on physical screen */
 
-    diff_x = abs (c->size->x - ((gdk_screen_get_width (c->screen_info->gscr) - c->width) / 2));
-    diff_y = abs (c->size->y - ((gdk_screen_get_height (c->screen_info->gscr) - c->height) / 2));
+    diff_x = abs (c->size->x - ((c->screen_info->width - c->width) / 2));
+    diff_y = abs (c->size->y - ((c->screen_info->height - c->height) / 2));
 
     if (((gdk_screen_get_n_monitors (c->screen_info->gscr) > 1) && (diff_x < 25) && (diff_y < 25)) ||
         ((frameX (c) == 0) && (frameY (c) == 0) && (c->type & (WINDOW_TYPE_DIALOG)) && !clientIsTransient (c)))
@@ -673,9 +673,9 @@ clientInitPosition (Client * c)
     
     full_x = MAX (screen_info->params->xfwm_margins[LEFT], rect.x);
     full_y = MAX (screen_info->params->xfwm_margins[TOP], rect.y);
-    full_w = MIN (gdk_screen_get_width (screen_info->gscr) - screen_info->params->xfwm_margins[RIGHT], 
+    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[RIGHT], 
                   rect.x + rect.width) - full_x;
-    full_h = MIN (gdk_screen_get_height (screen_info->gscr) - screen_info->params->xfwm_margins[BOTTOM], 
+    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[BOTTOM], 
                   rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */

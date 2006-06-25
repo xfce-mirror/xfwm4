@@ -1211,9 +1211,7 @@ update_screen_idle_cb (gpointer data)
     display_info = screen_info->display_info;
 
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
-                    gdk_screen_get_width (screen_info->gscr),
-                    gdk_screen_get_height (screen_info->gscr),
-                    screen_info->margins);
+                    screen_info->width, screen_info->height, screen_info->margins);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
     compositorUpdateScreenSize (screen_info);
@@ -1245,11 +1243,15 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
         screen_info->xscreen->width  = ev->width;
         screen_info->xscreen->height = ev->height;
     }
+
+    screen_info->width = WidthOfScreen (screen_info->xscreen);
+    screen_info->height = HeightOfScreen (screen_info->xscreen);
+
     /* 
        We need to use an idle function to update our screen layout to give gdk the
-       time to update its internal structures, ie let the current event be processed
-       by gdk otherwise the functions gdk_screen_get_width() and gdk_screen_get_height()
-       don't return accurate values...
+       time to update its internal structures for Xinerama and monitor size, 
+       otherwise the functions gdk_screen_get_monitor_geometry () don't return 
+       accurate values...
      */
     g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, update_screen_idle_cb, screen_info, NULL);
 }
@@ -1469,8 +1471,8 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 
         msx = ev->x_root;
         msy = ev->y_root;
-        maxx = gdk_screen_get_width (screen_info->gscr) - 1;
-        maxy = gdk_screen_get_height (screen_info->gscr) - 1;
+        maxx = screen_info->width - 1;
+        maxy = screen_info->height - 1;
         rx = 0;
         ry = 0;
         warp_pointer = FALSE;
@@ -2490,8 +2492,8 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
                     NULL, 0,
                     screen_info->xroot,
                     &menu_event_window, 0, 0, 
-                    gdk_screen_get_width (screen_info->gscr),
-                    gdk_screen_get_height (screen_info->gscr), 
+                    screen_info->width,
+                    screen_info->height, 
                     NoEventMask);
     menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback, 
                          c->win_workspace, screen_info->workspace_count, 

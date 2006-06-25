@@ -70,10 +70,10 @@
 #define WIN_IS_ARGB(cw)                 (cw->argb)
 #define WIN_IS_OPAQUE(cw)               (((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw)) || (cw->screen_info->overlays))
 #define WIN_IS_NATIVE_OPAQUE(cw)        ((cw->native_opacity) && !WIN_IS_ARGB(cw))
-#define WIN_IS_FULLSCREEN(cw)           ((cw->attr.x == 0) && \
-                                         (cw->attr.y == 0) && \
-                                         (cw->attr.width == gdk_screen_get_width (cw->screen_info->gscr)) && \
-                                         (cw->attr.height == gdk_screen_get_height (cw->screen_info->gscr)))
+#define WIN_IS_FULLSCREEN(cw)           ((cw->attr.x <= 0) && \
+                                         (cw->attr.y <= 0) && \
+                                         (cw->attr.width >= cw->screen_info->width) && \
+                                         (cw->attr.height >= cw->screen_info->height))
 #define WIN_IS_SHAPED(cw)               ((!WIN_IS_OVERRIDE(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
                                          (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
 #define WIN_IS_VIEWABLE(cw)             (cw->viewable)
@@ -768,8 +768,8 @@ create_root_buffer (ScreenInfo *screen_info)
     TRACE ("entering create_root_buffer");
 
     display_info = screen_info->display_info;
-    screen_width = gdk_screen_get_width (screen_info->gscr);
-    screen_height = gdk_screen_get_height (screen_info->gscr);
+    screen_width = screen_info->width;
+    screen_height = screen_info->height;
     screen_number = screen_info->screen;
     visual = DefaultVisual (display_info->dpy, screen_number);
     depth = DefaultDepth (display_info->dpy, screen_number);
@@ -808,8 +808,8 @@ paint_root (ScreenInfo *screen_info)
     XRenderComposite (display_info->dpy, PictOpSrc,
                       screen_info->rootTile, None, screen_info->rootBuffer,
                       0, 0, 0, 0, 0, 0,
-                      gdk_screen_get_width (screen_info->gscr),
-                      gdk_screen_get_height (screen_info->gscr));
+                      screen_info->width,
+                      screen_info->height);
 }
 
 static XserverRegion
@@ -839,12 +839,12 @@ win_extents (CWindow *cw)
      */
 
     if (!(screen_info->overlays) &&
-         (WIN_IS_OVERRIDE(cw) && 
+         ((WIN_IS_OVERRIDE(cw) && 
              !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)) && 
              screen_info->params->show_popup_shadow) || 
          (!WIN_IS_OVERRIDE(cw) && 
              (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) && 
-             screen_info->params->show_frame_shadow))
+             screen_info->params->show_frame_shadow)))
     {
         XRectangle sr;
 
@@ -1115,8 +1115,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
 
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
-    screen_width = gdk_screen_get_width (screen_info->gscr);
-    screen_height = gdk_screen_get_height (screen_info->gscr);
+    screen_width = screen_info->width;
+    screen_height = screen_info->height;
     screen_number = screen_info->screen;
     xroot = screen_info->xroot;
 
@@ -1560,6 +1560,25 @@ repair_win (CWindow *cw)
         add_damage (cw->screen_info, parts);
         cw->damaged = TRUE;
     }
+}
+
+static void
+damage_screen (ScreenInfo *screen_info)
+{
+#ifdef HAVE_COMPOSITOR
+    DisplayInfo *display_info;
+    XserverRegion region;
+    XRectangle  r;
+
+    display_info = screen_info->display_info;
+    r.x = 0;
+    r.y = 0;
+    r.width = screen_info->width;
+    r.height = screen_info->height;
+    region = XFixesCreateRegion (display_info->dpy, &r, 1);
+    /* Region will be freed by add_damage () */
+    add_damage (screen_info, region);
+#endif /* HAVE_COMPOSITOR */
 }
 
 static void
@@ -2220,8 +2239,6 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
 static void
 compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
 {
-    CWindow *cw;
-
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleCreateNotify for 0x%lx", ev->window);
@@ -2334,12 +2351,9 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
     }
 }
 
-#endif /* HAVE_COMPOSITOR */
-
 static gboolean
 compositorIsUsable (DisplayInfo *display_info)
 {
-#ifdef HAVE_COMPOSITOR
     if (!display_info->enable_compositor)
     {
         TRACE ("compositor disabled");
@@ -2351,10 +2365,9 @@ compositorIsUsable (DisplayInfo *display_info)
         return FALSE;
     }
     return TRUE;
-#else
-    return FALSE;
-#endif /* HAVE_COMPOSITOR */
 }
+
+#endif /* HAVE_COMPOSITOR */
 
 void
 compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
@@ -2493,29 +2506,6 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
 #endif /* HAVE_COMPOSITOR */
 }
 
-gboolean
-compositorCheckDamageEvent (DisplayInfo *display_info)
-{
-#ifdef HAVE_COMPOSITOR
-    XEvent ev;
-
-    g_return_val_if_fail (display_info != NULL, FALSE);
-    TRACE ("entering compositorCheckDamageEvent");
-
-    if (!compositorIsUsable (display_info))
-    {
-        return FALSE;
-    }
-
-    if (XCheckTypedEvent (display_info->dpy, (display_info->damage_event_base + XDamageNotify), &ev))
-    {
-        compositorHandleDamage (display_info, (XDamageNotifyEvent *) &ev);
-        return TRUE;
-    }
-#endif /* HAVE_COMPOSITOR */
-    return FALSE;
-}
-
 void
 compositorInitDisplay (DisplayInfo *display_info)
 {
@@ -2604,23 +2594,6 @@ compositorInitDisplay (DisplayInfo *display_info)
 }
 
 void
-compositorRepairDisplay (DisplayInfo *display_info)
-{
-#ifdef HAVE_COMPOSITOR
-
-    g_return_if_fail (display_info != NULL);
-    TRACE ("entering compositorInitDisplay");
-
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    repair_display (display_info);
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
 compositorSetCompositeMode (DisplayInfo *display_info, gboolean use_manual_redirect)
 {
 #ifdef HAVE_COMPOSITOR
@@ -2654,7 +2627,7 @@ compositorManageScreen (ScreenInfo *screen_info)
 
     if (!compositorIsUsable (display_info))
     {
-        return;
+        return FALSE;
     }
 
     gdk_error_trap_push ();
@@ -2774,25 +2747,6 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 }
 
 void
-compositorRepairScreen (ScreenInfo *screen_info)
-{
-#ifdef HAVE_COMPOSITOR
-    DisplayInfo *display_info;
-
-    g_return_if_fail (screen_info != NULL);
-    TRACE ("entering compositorRepairScreen");
-
-    display_info = screen_info->display_info;
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    repair_screen (screen_info);
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
 compositorUpdateScreenSize (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
@@ -2812,57 +2766,7 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
         XRenderFreePicture (display_info->dpy, screen_info->rootBuffer);
         screen_info->rootBuffer = None;
     }
-    add_repair (display_info);
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
-compositorRebuildScreen (ScreenInfo *screen_info)
-{
-#ifdef HAVE_COMPOSITOR
-    DisplayInfo *display_info;
-    GList *index;
-
-    g_return_if_fail (screen_info != NULL);
-    TRACE ("entering compositorRepairScreen");
-
-    display_info = screen_info->display_info;
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    for (index = screen_info->cwindows; index; index = g_list_next (index))
-    {
-        CWindow *cw2 = (CWindow *) index->data;
-        free_win_data (cw2, FALSE);
-        init_opacity (cw2);
-    }
-    repair_screen (screen_info);
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
-compositorDamageWindow (DisplayInfo *display_info, Window id)
-{
-#ifdef HAVE_COMPOSITOR
-    CWindow *cw;
-
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (id != None);
-    TRACE ("entering compositorDamageWindow: 0x%lx", id);
-
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    cw = find_cwindow_in_display (display_info, id);
-    if (cw)
-    {
-        damage_win (cw);
-        add_repair (display_info);
-    }
+    damage_screen (screen_info);
 #endif /* HAVE_COMPOSITOR */
 }
 

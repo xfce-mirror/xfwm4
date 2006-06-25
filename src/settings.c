@@ -109,9 +109,9 @@ set_settings_margin (ScreenInfo *screen_info, int idx, int value)
             {
                 val = 0;
             }
-            else if (value > gdk_screen_get_width (screen_info->gscr) / 4)
+            else if (value > screen_info->width / 4)
             {
-                val = gdk_screen_get_width (screen_info->gscr) / 4;
+                val = screen_info->width / 4;
             }
             else
             {
@@ -125,9 +125,9 @@ set_settings_margin (ScreenInfo *screen_info, int idx, int value)
             {
                 val = 0;
             }
-            else if (value > gdk_screen_get_height (screen_info->gscr) / 4)
+            else if (value > screen_info->height / 4)
             {
-                val = gdk_screen_get_height (screen_info->gscr) / 4;
+                val = screen_info->height / 4;
             }
             else
             {
@@ -1524,7 +1524,6 @@ reloadScreenSettings (ScreenInfo *screen_info, int mask)
     if (mask)
     {
         clientUpdateAllFrames (screen_info, mask);
-        compositorRebuildScreen (screen_info);
     }
 
     return TRUE;

@@ -85,6 +85,8 @@ struct _ScreenInfo
     GdkScreen *gscr;
     Screen *xscreen;
     int depth;
+    int width;
+    int height;
     Visual *visual;
 
     GtkWidget *gtk_win;

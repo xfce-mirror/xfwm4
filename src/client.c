@@ -1695,8 +1695,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     /* Fullscreen for older legacy apps */
     if ((c->x <= 0) && (c->y <= 0) &&
-        (c->width >= gdk_screen_get_width (screen_info->gscr)) &&
-        (c->height >= gdk_screen_get_height (screen_info->gscr)) &&
+        (c->width >= screen_info->width) &&
+        (c->height >= screen_info->height) &&
         !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_BORDER) &&
         !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_ABOVE) &&
         (c->win_layer == WIN_LAYER_NORMAL) &&
@@ -1985,8 +1985,8 @@ clientFrameAll (ScreenInfo *screen_info)
                     screen_info->xroot,
                     &shield, 
                     0, 0,
-                    gdk_screen_get_width (screen_info->gscr),
-                    gdk_screen_get_height (screen_info->gscr),
+                    screen_info->width,
+                    screen_info->height,
                     EnterWindowMask);
 
     XSync (display_info->dpy, FALSE);
@@ -2747,9 +2747,9 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 
     full_x = MAX (screen_info->params->xfwm_margins[LEFT], rect.x);
     full_y = MAX (screen_info->params->xfwm_margins[TOP], rect.y);
-    full_w = MIN (gdk_screen_get_width (screen_info->gscr) - screen_info->params->xfwm_margins[RIGHT],
+    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[RIGHT],
                   rect.x + rect.width) - full_x;
-    full_h = MIN (gdk_screen_get_height (screen_info->gscr) - screen_info->params->xfwm_margins[BOTTOM],
+    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[BOTTOM],
                   rect.y + rect.height) - full_y;
 
     if (((mode & WIN_STATE_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ)) &&
@@ -3253,8 +3253,8 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
 
                 msx = xevent->xmotion.x_root;
                 msy = xevent->xmotion.y_root;
-                maxx = gdk_screen_get_width (screen_info->gscr) - 1;
-                maxy = gdk_screen_get_height (screen_info->gscr) - 1;
+                maxx = screen_info->width - 1;
+                maxy = screen_info->height - 1;
                 rx = 0;
                 ry = 0;
                 warp_pointer = FALSE;
@@ -3852,7 +3852,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         if (move_top)
         {
             if ((c->y > disp_max_y - min_visible)
-                || (c->y > gdk_screen_get_height (screen_info->gscr)
+                || (c->y > screen_info->height
                            - screen_info->margins [BOTTOM] - min_visible))
             {
                 c->y = prev_y;
@@ -3870,7 +3870,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         if (move_left)
         {
             if ((c->x > disp_max_x - min_visible)
-                || (c->x > gdk_screen_get_width (screen_info->gscr)
+                || (c->x > screen_info->width
                            - screen_info->margins [RIGHT] - min_visible))
             {
                 c->x = prev_x;

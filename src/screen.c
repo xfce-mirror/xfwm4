@@ -103,6 +103,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->screen = gdk_screen_get_number (gscr);
     screen_info->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (gscr));
     screen_info->depth = DefaultDepth (display_info->dpy, screen_info->screen);
+    screen_info->width = WidthOfScreen (screen_info->xscreen);
+    screen_info->height = HeightOfScreen (screen_info->xscreen);
     screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
     screen_info->current_ws = 0;
     screen_info->previous_ws = 0;
@@ -143,7 +145,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     screen_info->xroot,
                     &screen_info->sidewalk[0], 
                     0, 0, 
-                    1, gdk_screen_get_height (gscr), 
+                    1, screen_info->height, 
                     EnterWindowMask);
 
     /*right*/
@@ -151,8 +153,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     NULL, 0,
                     screen_info->xroot,
                     &screen_info->sidewalk[1], 
-                    gdk_screen_get_width (gscr) - 1, 0, 
-                    1, gdk_screen_get_height (gscr), 
+                    screen_info->width - 1, 0, 
+                    1, screen_info->height, 
                     EnterWindowMask);
 
     /*top*/
@@ -161,7 +163,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     screen_info->xroot,
                     &screen_info->sidewalk[2], 
                     0, 0, 
-                    gdk_screen_get_width (gscr), 1,
+                    screen_info->width, 1,
                     EnterWindowMask);
 
     /*bottom*/
@@ -169,8 +171,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     NULL, 0,
                     screen_info->xroot,
                     &screen_info->sidewalk[3], 
-                    0, gdk_screen_get_height (gscr) - 1, 
-                    gdk_screen_get_width (gscr), 1,
+                    0, screen_info->height - 1, 
+                    screen_info->width, 1,
                     EnterWindowMask);
 
     screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);

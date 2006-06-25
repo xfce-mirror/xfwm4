@@ -466,8 +466,8 @@ initialize (int argc, char **argv, gint compositor_mode)
         setUTF8StringHint (display_info, screen_info->xfwm4_win, NET_WM_NAME, "Xfwm4");
         setNetSupportedHint (display_info, screen_info->xroot, screen_info->xfwm4_win);
         initNetDesktopInfo (display_info, screen_info->xroot, screen_info->current_ws,
-                                   gdk_screen_get_width (screen_info->gscr), 
-                                   gdk_screen_get_height (screen_info->gscr));
+                                   screen_info->width, 
+                                   screen_info->height);
         workspaceUpdateArea (screen_info);
         XSetInputFocus (display_info->dpy, screen_info->xfwm4_win, RevertToPointerRoot, CurrentTime);
 

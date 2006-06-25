@@ -847,10 +847,10 @@ clientGetNetStruts (Client * c)
         /* Fill(in values as for partial struts */
         c->struts[TOP_START_X] = c->struts[BOTTOM_START_X] = 0;
         c->struts[TOP_END_X] = c->struts[BOTTOM_END_X] = 
-            gdk_screen_get_width (c->screen_info->gscr);
+            c->screen_info->width;
         c->struts[LEFT_START_Y] = c->struts[RIGHT_START_Y] = 0;
         c->struts[LEFT_END_Y] = c->struts[RIGHT_END_Y] = 
-            gdk_screen_get_height (c->screen_info->gscr);
+            c->screen_info->height;
         
         XFree (struts);
         workspaceUpdateArea (c->screen_info);

@@ -40,23 +40,17 @@ void     compositorRemoveWindow     (DisplayInfo *,
 
 void     compositorHandleEvent      (DisplayInfo *,
                                      XEvent *);
-gboolean compositorCheckDamageEvent (DisplayInfo *);
 void     compositorInitDisplay      (DisplayInfo *);
-void     compositorRepairDisplay    (DisplayInfo *);
 void     compositorSetCompositeMode (DisplayInfo *,
                                      gboolean);
 
 gboolean compositorManageScreen     (ScreenInfo *);
 void     compositorUnmanageScreen   (ScreenInfo *);
-void     compositorRepairScreen     (ScreenInfo *);
-void     compositorRebuildScreen    (ScreenInfo *);
 void     compositorUpdateScreenSize (ScreenInfo *);
 
 void     compositorWindowSetOpacity (DisplayInfo *,
                                      Window,
                                      guint);
-void     compositorDamageWindow     (DisplayInfo *,
-                                     Window);
 gboolean compositorTestServer       (DisplayInfo *);
 
 #endif /* INC_COMPOSITOR_H */

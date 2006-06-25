@@ -418,9 +418,7 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
         workspaceSwitch (screen_info, count - 1, NULL, TRUE);
     }
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
-                    gdk_screen_get_width (screen_info->gscr),
-                    gdk_screen_get_height (screen_info->gscr),
-                    screen_info->margins);
+                    screen_info->width, screen_info->height, screen_info->margins);
     /* Recompute the layout based on the (changed) number of desktops */
     getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, 
                      &screen_info->desktop_layout);
@@ -472,9 +470,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
     {
         TRACE ("Margins have changed, updating net_workarea");
         setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
-                        gdk_screen_get_width (screen_info->gscr),
-                        gdk_screen_get_height (screen_info->gscr),
-                        screen_info->margins);
+                        screen_info->width, screen_info->height, screen_info->margins);
         /* Also prevent windows from being off screen, just like when screen is resized */
         clientScreenResize(screen_info);
     }
