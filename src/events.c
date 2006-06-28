@@ -722,6 +722,16 @@ titleButton (Client * c, int state, XButtonEvent * ev)
             clientUnshade (c);
         }
     }
+    else if (ev->button == Button6)
+    {
+        /* Mouse wheel scroll left, or left side button */
+        clientDecOpacity(c);
+    }
+    else if (ev->button == Button7)
+    {
+        /* Mouse wheel scroll right, or right side button */
+        clientIncOpacity(c);
+    }
 }
 
 static void
@@ -1822,6 +1832,11 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 c->opacity =  NET_WM_OPAQUE;
             }
             compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+        }
+        else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY_LOCKED])
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a net_wm_opacity_locked notify", c->name, c->window);
+            c->opacity_locked = getOpacityLock (display_info, c->window);
         }
         else if ((screen_info->params->show_app_icon) &&
                  ((ev->atom == display_info->atoms[NET_WM_ICON]) ||

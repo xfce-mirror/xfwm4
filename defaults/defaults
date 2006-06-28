@@ -14,6 +14,7 @@ focus_hint=true
 focus_new=true
 frame_opacity=100
 full_width_title=true
+inactive_opacity=100
 keytheme=Default
 move_opacity=100
 placement_ratio=25

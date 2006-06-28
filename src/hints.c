@@ -1103,6 +1103,18 @@ getOpacity (DisplayInfo *display_info, Window window, guint *opacity)
 }
 
 gboolean
+getOpacityLock (DisplayInfo *display_info, Window window)
+{
+    long val;
+
+    g_return_val_if_fail (window != None, FALSE);
+    TRACE ("entering getOpacityLock");
+
+    /* only presence/absence matters */
+    return !!getHint (display_info, window, NET_WM_WINDOW_OPACITY_LOCKED, &val);
+}
+
+gboolean
 setCompositingManagerOwner (DisplayInfo *display_info, Window root, Window w)
 {
     XClientMessageEvent ev;

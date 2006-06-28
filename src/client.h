@@ -269,6 +269,7 @@ struct _Client
     ClientPixmapCache pm_cache;
     /* Opacity for the compositor */
     guint opacity;
+    gboolean opacity_locked;
     
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     /* Startup notification */

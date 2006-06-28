@@ -113,7 +113,8 @@
 #define KEY_MOVE_DOWN_WORKSPACE         67
 #define KEY_MOVE_LEFT_WORKSPACE         68
 #define KEY_MOVE_RIGHT_WORKSPACE        69
-#define KEY_COUNT                       70
+#define KEY_MOVE_CANCEL                 70
+#define KEY_COUNT                       71
 
 #define ALIGN_LEFT                      0
 #define ALIGN_RIGHT                     1

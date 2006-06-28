@@ -1,3 +1,865 @@
+2006-06-25 21:08  olivier
+
+	* src/compositor.c, src/compositor.h, src/settings.c: Revert some
+	  removal that was needed, woops...
+
+2006-06-25 09:06  olivier
+
+	* src/client.c, src/compositor.c, src/compositor.h, src/events.c,
+	  src/main.c, src/misc.c, src/netwm.c, src/placement.c,
+	  src/screen.c, src/screen.h, src/settings.c, src/workspaces.c:
+	  Change to maintain and use our own copy of the screen size, code
+	  cleanup.
+
+2006-06-23 16:54  olivier
+
+	* src/compositor.c, src/compositor.h: More optimizations for the
+	  compositor.
+
+2006-06-23 13:03  olivier
+
+	* src/compositor.c: Fix count of overlays.
+
+2006-06-23 09:42  olivier
+
+	* src/compositor.c: Change default root color to plain grey.
+
+2006-06-22 19:49  olivier
+
+	* src/display.c: Woops, revert, gtk+ does that for us (I forgot
+	  gtk in the equation).
+
+2006-06-22 19:41  olivier
+
+	* src/display.c: Close display on exit.
+
+2006-06-22 12:58  olivier
+
+	* src/compositor.c: Compositor optimization, save the painted
+	  region for reuse as clipping when painting back to screen.
+
+2006-06-22 07:43  olivier
+
+	* src/client.c: Don't clear the show desktop flag if cycling back
+	  to the current focused window.
+
+2006-06-21 20:26  olivier
+
+	* src/client.c: Simpler, safer.
+
+2006-06-21 19:52  olivier
+
+	* src/compositor.c: Small compositor enhancement.
+
+2006-06-21 19:48  olivier
+
+	* src/client.c: Fix fullscreen window being set back in Z-order
+	  after cycling back to the current fullscreen window. (Fix bug
+	  #1949)
+
+2006-06-20 20:00  olivier
+
+	* src/compositor.c: Rework the mapping/unmapping when unredirecting
+
+2006-06-18 07:44  olivier
+
+	* src/compositor.c: Optimizations.
+
+2006-06-18 07:32  olivier
+
+	* src/compositor.c: A few more optimizations.
+
+2006-06-17 19:28  olivier
+
+	* src/focus.c: Make sure the 'demand attention' flags gets cleared
+	  on focus.
+
+2006-06-17 16:37  olivier
+
+	* src/compositor.c: Sync after unredirect.
+
+2006-06-17 16:13  olivier
+
+	* src/compositor.c: Be smarter with damage areas, and do not treat
+	  unredirected windows specifically. (should fix #1930).
+
+2006-06-17 15:55  olivier
+
+	* src/compositor.c: Small optimzations, remove useless tests
+
+2006-06-16 20:04  olivier
+
+	* src/compositor.c: Yet another one
+
+2006-06-16 19:53  olivier
+
+	* src/compositor.c: Optimizations for the compositor
+
+2006-06-15 21:54  olivier
+
+	* src/compositor.c: Avoid compiler warnings.
+
+2006-06-14 21:33  olivier
+
+	* src/compositor.c: Missing argument in debug trace
+
+2006-06-14 21:08  olivier
+
+	* src/compositor.c, src/events.c: Small adjustments
+
+2006-06-14 09:35  olivier
+
+	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
+	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
+	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
+	  po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
+	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
+	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po: Resync pot file
+
+2006-06-14 09:27  olivier
+
+	* src/client.c, src/compositor.c, src/display.c, src/display.h,
+	  src/events.c, src/hints.h, src/screen.h,
+	  src/startup_notification.c: Finish rework of the compositor,
+	  which should fix quite few bugs and improve performance (by
+	  discarding damages of covered windows, for example),
+	  unredirecting fullscreen overrides seems to work fine which
+	  gives a huge performance boost on fullscreen games, fixes
+	  translucent xscreensaver window, rework the NET_ACTIVE_WINDOW
+	  message handling to improve focus passing (see this thread on
+	  the ML
+	  http://foo-projects.org/pipermail/xfce4-dev/2006-June/020471.html)
+
+2006-06-13 20:03  olivier
+
+	* src/focus.c, src/transients.c: Don't adjust fullscreen window if
+	  newly focused window is one if its transients or modal.
+
+2006-06-13 05:55  olivier
+
+	* src/compositor.c: Still work on compositor, not there yet
+	  though, need more work.
+
+2006-06-12 14:26  hydonsingore
+
+	* libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/zh_TW.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/zh_TW.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/zh_TW.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/zh_TW.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/zh_TW.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/zh_TW.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/zh_TW.po,
+	  xfce-utils/trunk/po/ChangeLog, xfce-utils/trunk/po/zh_TW.po,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/zh_TW.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/zh_TW.po,
+	  xfce4-mailwatch-plugin/trunk/po/ChangeLog,
+	  xfce4-mailwatch-plugin/trunk/po/zh_TW.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/zh_TW.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/zh_TW.po,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/zh_TW.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/zh_TW.po,
+	  xfmedia/trunk/po/ChangeLog, xfmedia/trunk/po/zh_TW.po,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/zh_TW.po,
+	  po/ChangeLog, po/zh_TW.po: Update traditional Chinese
+	  translations; Modify personal e-mail address.
+
+2006-06-11 22:10  olivier
+
+	* src/main.c: Fix fgetc() not returning EOF on architectures where
+	  char isn't signed (Patch from Michel Danzer
+	  <michel@tungstengraphics.com>)
+
+2006-06-11 22:07  olivier
+
+	* src/client.c: Clamp pointer position when
+	  maximizing/unmaximizing window on move (Patch from Ori Bernstein
+	  <rand_chars@rogers.com>, fixes #1909)
+
+2006-06-11 22:05  olivier
+
+	* src/compositor.c: Fixes, improvements and optimizations for the
+	  compositor.
+
+2006-06-09 16:37  olivier
+
+	* themes/default/menu-active.png,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-pressed.png,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-inactive.png,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-inactive.png: Smoother gradient with
+	  dark colors
+
+2006-06-08 19:16  olivier
+
+	* src/compositor.c: Compositor improvements.
+
+2006-06-07 21:22  olivier
+
+	* src/compositor.c, src/main.c: Avoid needlessly re-compositing
+	  opaque windows in front of other damaged windows. This also
+	  helps with stuff that isn't properly redirected yet, such as Xv
+	  and DRI with free drivers (patch originally contributed by
+	  Michel Dänzer <michel@tungstengraphics.com>).
+	  Fix compilation with --enable-debug=full.
+
+2006-06-05 23:11  adriano
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/pt_BR.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/pt_BR.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/pt_BR.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/pt_BR.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/pt_BR.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/pt_BR.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/pt_BR.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/pt_BR.po,
+	  po/ChangeLog, po/pt_BR.po: Updated brazilian portuguese
+	  translations.
+
+2006-06-05 21:24  olivier
+
+	* src/compositor.c, src/compositor.h, src/display.h, src/main.c,
+	  src/screen.h: Small code reorg.
+
+2006-06-04 08:12  eulex
+
+	* libexo/trunk/po/ChangeLog, libxfcegui4/trunk/po/ChangeLog,
+	  terminal/trunk/po/ChangeLog, thunar/trunk/po/ChangeLog,
+	  xfcalendar/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfdesktop/trunk/po/ChangeLog, po/ChangeLog: Changelogs for
+	  appfinder, exo, utils, mcs-plugins, mcs-manager,
+	  xfce4-session, xfce4-mixer, thunar, libgui, xfwm4, the panel,
+	  orage, trigger-launcher and terminal updated.
+	  Also couldn't resist to fix a small error in the xfce4-mixer
+	  Changelog.
+	  Didn't updated the changelog of xfprint, because I discovered
+	  that that translation wasn't updated, it had just slipped through
+	  the commit by mistake.
+
+2006-06-04 00:10  eulex
+
+	* libxfcegui4/trunk/po/sv.po, thunar/trunk/po/sv.po,
+	  xfcalendar/trunk/po/sv.po, xfce-mcs-plugins/trunk/po/sv.po,
+	  xfce-utils/trunk/po/sv.po, xfce4-panel/trunk/po/sv.po,
+	  xfce4-session/trunk/po/sv.po, xfdesktop/trunk/po/sv.po,
+	  xfprint/trunk/po/sv.po, po/sv.po: obsolete strings in the
+	  swedish translations removed
+
+2006-06-03 23:44  eulex
+
+	* libexo/trunk/po/LINGUAS, libexo/trunk/po/sv.po,
+	  libxfcegui4/trunk/po/sv.po, terminal/trunk/po/LINGUAS,
+	  terminal/trunk/po/sv.po, thunar/trunk/po/sv.po,
+	  xfcalendar/trunk/po/sv.po, xfce-mcs-manager/trunk/po/sv.po,
+	  xfce-mcs-plugins/trunk/po/sv.po, xfce-utils/trunk/po/sv.po,
+	  xfce4-appfinder/trunk/po/sv.po, xfce4-mixer/trunk/po/sv.po,
+	  xfce4-panel/trunk/po/sv.po, xfce4-session/trunk/po/sv.po,
+	  xfce4-trigger-launcher/trunk/po/sv.po, xfdesktop/trunk/po/sv.po,
+	  xfprint/trunk/po/sv.po, po/sv.po: Merged Swedish translations
+	  (by me and Jens Hagerman) into the xfce svn.
+	  This includes updated translations of appfinder, xfce-utils,
+	  mcs-plugins,
+	  xfprint, xfce4-session, xfce4-mixer, thunar, libxfcegui4, xfwm4,
+	  xfce4-panel, xfdesktop, orage, xfce4-trigger-launcher and
+	  mcs-manager,
+	  and added translations for libexo and terminal.
+	  The appropriate LINGUAS files were also updated.
+
+2006-06-03 12:42  olivier
+
+	* themes/daloa/close-active.xpm, themes/daloa/close-pressed.xpm,
+	  themes/daloa/hide-active.xpm, themes/daloa/hide-pressed.xpm,
+	  themes/daloa/maximize-active.xpm,
+	  themes/daloa/maximize-pressed.xpm,
+	  themes/daloa/maximize-toggled-active.xpm,
+	  themes/daloa/maximize-toggled-pressed.xpm,
+	  themes/daloa/shade-active.xpm, themes/daloa/shade-pressed.xpm,
+	  themes/daloa/shade-toggled-active.xpm,
+	  themes/daloa/shade-toggled-pressed.xpm,
+	  themes/daloa/stick-active.xpm, themes/daloa/stick-inactive.xpm,
+	  themes/daloa/stick-pressed.xpm,
+	  themes/daloa/stick-toggled-active.xpm,
+	  themes/daloa/stick-toggled-pressed.xpm,
+	  themes/daloa/title-3-active.xpm,
+	  themes/daloa/title-3-inactive.xpm,
+	  themes/daloa/title-4-active.xpm,
+	  themes/daloa/title-4-inactive.xpm,
+	  themes/daloa/title-5-active.xpm,
+	  themes/daloa/title-5-inactive.xpm,
+	  themes/daloa/top-left-active.xpm,
+	  themes/daloa/top-left-inactive.xpm,
+	  themes/daloa/top-right-active.xpm,
+	  themes/daloa/top-right-inactive.xpm: Alignment in color table :)
+
+2006-06-03 12:35  olivier
+
+	* configure.ac.in, themes/Makefile.am, themes/daloa,
+	  themes/daloa/Makefile.am, themes/daloa/README,
+	  themes/daloa/bottom-active.png, themes/daloa/bottom-active.xpm,
+	  themes/daloa/bottom-inactive.png,
+	  themes/daloa/bottom-inactive.xpm,
+	  themes/daloa/bottom-left-active.png,
+	  themes/daloa/bottom-left-active.xpm,
+	  themes/daloa/bottom-left-inactive.png,
+	  themes/daloa/bottom-left-inactive.xpm,
+	  themes/daloa/bottom-right-active.png,
+	  themes/daloa/bottom-right-active.xpm,
+	  themes/daloa/bottom-right-inactive.png,
+	  themes/daloa/bottom-right-inactive.xpm,
+	  themes/daloa/close-active.png, themes/daloa/close-active.xpm,
+	  themes/daloa/close-inactive.png,
+	  themes/daloa/close-inactive.xpm, themes/daloa/close-pressed.png,
+	  themes/daloa/close-pressed.xpm, themes/daloa/hide-active.png,
+	  themes/daloa/hide-active.xpm, themes/daloa/hide-inactive.png,
+	  themes/daloa/hide-inactive.xpm, themes/daloa/hide-pressed.png,
+	  themes/daloa/hide-pressed.xpm, themes/daloa/left-active.png,
+	  themes/daloa/left-active.xpm, themes/daloa/left-inactive.png,
+	  themes/daloa/left-inactive.xpm,
+	  themes/daloa/maximize-active.png,
+	  themes/daloa/maximize-active.xpm,
+	  themes/daloa/maximize-inactive.png,
+	  themes/daloa/maximize-inactive.xpm,
+	  themes/daloa/maximize-pressed.png,
+	  themes/daloa/maximize-pressed.xpm,
+	  themes/daloa/maximize-toggled-active.png,
+	  themes/daloa/maximize-toggled-active.xpm,
+	  themes/daloa/maximize-toggled-inactive.png,
+	  themes/daloa/maximize-toggled-inactive.xpm,
+	  themes/daloa/maximize-toggled-pressed.png,
+	  themes/daloa/maximize-toggled-pressed.xpm,
+	  themes/daloa/menu-active.png, themes/daloa/menu-active.xpm,
+	  themes/daloa/menu-inactive.png, themes/daloa/menu-inactive.xpm,
+	  themes/daloa/menu-pressed.png, themes/daloa/menu-pressed.xpm,
+	  themes/daloa/right-active.png, themes/daloa/right-active.xpm,
+	  themes/daloa/right-inactive.png,
+	  themes/daloa/right-inactive.xpm, themes/daloa/shade-active.png,
+	  themes/daloa/shade-active.xpm, themes/daloa/shade-inactive.png,
+	  themes/daloa/shade-inactive.xpm, themes/daloa/shade-pressed.png,
+	  themes/daloa/shade-pressed.xpm,
+	  themes/daloa/shade-toggled-active.png,
+	  themes/daloa/shade-toggled-active.xpm,
+	  themes/daloa/shade-toggled-inactive.png,
+	  themes/daloa/shade-toggled-inactive.xpm,
+	  themes/daloa/shade-toggled-pressed.png,
+	  themes/daloa/shade-toggled-pressed.xpm,
+	  themes/daloa/stick-active.png, themes/daloa/stick-active.xpm,
+	  themes/daloa/stick-inactive.png,
+	  themes/daloa/stick-inactive.xpm, themes/daloa/stick-pressed.png,
+	  themes/daloa/stick-pressed.xpm,
+	  themes/daloa/stick-toggled-active.png,
+	  themes/daloa/stick-toggled-active.xpm,
+	  themes/daloa/stick-toggled-inactive.png,
+	  themes/daloa/stick-toggled-inactive.xpm,
+	  themes/daloa/stick-toggled-pressed.png,
+	  themes/daloa/stick-toggled-pressed.xpm, themes/daloa/themerc,
+	  themes/daloa/title-1-active.png,
+	  themes/daloa/title-1-active.xpm,
+	  themes/daloa/title-1-inactive.png,
+	  themes/daloa/title-1-inactive.xpm,
+	  themes/daloa/title-2-active.png,
+	  themes/daloa/title-2-active.xpm,
+	  themes/daloa/title-2-inactive.png,
+	  themes/daloa/title-2-inactive.xpm,
+	  themes/daloa/title-3-active.png,
+	  themes/daloa/title-3-active.xpm,
+	  themes/daloa/title-3-inactive.png,
+	  themes/daloa/title-3-inactive.xpm,
+	  themes/daloa/title-4-active.png,
+	  themes/daloa/title-4-active.xpm,
+	  themes/daloa/title-4-inactive.png,
+	  themes/daloa/title-4-inactive.xpm,
+	  themes/daloa/title-5-active.png,
+	  themes/daloa/title-5-active.xpm,
+	  themes/daloa/title-5-inactive.png,
+	  themes/daloa/title-5-inactive.xpm,
+	  themes/daloa/top-left-active.png,
+	  themes/daloa/top-left-active.xpm,
+	  themes/daloa/top-left-inactive.png,
+	  themes/daloa/top-left-inactive.xpm,
+	  themes/daloa/top-right-active.png,
+	  themes/daloa/top-right-active.xpm,
+	  themes/daloa/top-right-inactive.png,
+	  themes/daloa/top-right-inactive.xpm: Missing a small theme in
+	  the default set of themes, so add the theme contributed by Mike
+	  Massonnet <mmassonnet@gmail.com> -now renamed Daloa-
+
+2006-06-03 12:31  olivier
+
+	* src/focus.c: Do not set the demand attention flag if not needed,
+	  like for windows that don't want focus.
+
+2006-06-03 09:21  olivier
+
+	* src/client.c, src/compositor.c: Fix shape and shadow redraw
+	  (again).
+
+2006-06-03 07:55  olivier
+
+	* src/display.c, src/display.h: Create _MOTIF_WM_INFO from the WM
+	  to make rxvt-unicode happy and not use override-redirect windows
+	  but proper Motif decoration hints to get borderless windows (Fix
+	  bug #1877).
+
+2006-05-31 19:53  olivier
+
+	* themes/default/close-pressed.png,
+	  themes/default/hide-pressed.png,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-toggled-pressed.png: Adjust hilighting of
+	  pressed buttons.
+
+2006-05-30 23:21  yuvaltanny
+
+	* terminal/trunk/po/he.po, xfce-mcs-plugins/trunk/po/he.po,
+	  xfce4-mixer/trunk/po/he.po, xfce4-panel/trunk/po/he.po,
+	  xfce4-trigger-launcher/trunk/po/he.po, xfdesktop/trunk/po/he.po,
+	  po/he.po: Update Hebrew translation
+
+2006-05-30 22:17  olivier
+
+	* src/focus.c: Do not pass focus to the desktop by default (Fix
+	  bug #1853). The problem is that xfdesktop sets its InputHint
+	  from WM Hints property to False to avoid focus, but GTK+ itself
+	  sets the WM_TAKE_FOCUS property, so it's impossible for the WM
+	  to tell whether or not the windows may or may not accept focus,
+	  which leads to unpredictable results when the last available
+	  focusable window vanishes (which is just what happens in bug
+	  #1853. From what I saw, metacity and kwin have the same problem.
+	  The workaround used here is to simply not use the desktop as a
+	  fallback focusable window. If the user wants to focus the
+	  desktop, (s)he just has to explicitely click on it.
+
+2006-05-30 21:39  olivier
+
+	* src/events.c: Fix input flag not being updated on XA_WM_HINTS
+	  property change
+
+2006-05-30 13:35  piarres
+
+	* po/eu.po: [l10n:eu] Basque translation little fix
+
+2006-05-29 20:27  olivier
+
+	* mcs-plugin/xfwm4_plugin.c: Set internals vars to static const
+	  (patch from Nick Schermer <nick@xfce.org>, bug #1870)
+
+2006-05-29 20:23  olivier
+
+	* themes/default/close-active.xpm,
+	  themes/default/close-pressed.xpm,
+	  themes/default/hide-active.xpm, themes/default/hide-pressed.xpm,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-pressed.xpm: Add a shadow to
+	  symbols in frame buttons.
+
+2006-05-29 20:09  olivier
+
+	* src/compositor.c: Reorg. shape notify to catch all cases
+
+2006-05-27 16:04  daichi
+
+	* xfcalendar/trunk/po/LINGUAS, xfce-mcs-manager/trunk/po/LINGUAS,
+	  xfce-utils/trunk/po/LINGUAS, xfce4-appfinder/trunk/po/LINGUAS,
+	  xfce4-session/trunk/po/LINGUAS,
+	  xfce4-trigger-launcher/trunk/po/LINGUAS, po/LINGUAS: *
+	  xfcalendar/trunk/po/LINGUAS, xfce-utils/trunk/po/LINGUAS,
+	  xfce4-appfinder/trunk/po/LINGUAS,
+	  xfce4-session/trunk/po/LINGUAS:
+	  Added a newline at the end of file.
+	  * xfce-mcs-manager/trunk/po/LINGUAS: Removed an extra white
+	  space.
+	  * xfce4-trigger-launcher/trunk/po/LINGUAS,
+	  xfwm4/trunk/po/LINGUAS:
+	  Removed an extra white line.
+
+2006-05-27 15:25  daichi
+
+	* terminal/trunk/po/ChangeLog, terminal/trunk/po/pl.po,
+	  xarchiver/trunk/po/ChangeLog, xarchiver/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/pl.po,
+	  po/ChangeLog, po/pl.po: Updated Polish translations by Szymon
+	  Kalasz <szymon_maestro@gazeta.pl>.
+
+2006-05-25 18:40  pollux
+
+	* xfce4-session/trunk/autogen.sh,
+	  xfce4-session/trunk/configure.in.in, xfce4-session/trunk/po,
+	  xfce4-session/trunk/po/LINGUAS,
+	  xfce4-trigger-launcher/trunk/autogen.sh,
+	  xfce4-trigger-launcher/trunk/configure.ac,
+	  xfce4-trigger-launcher/trunk/configure.in.in,
+	  xfce4-trigger-launcher/trunk/po/LINGUAS, xfdesktop/trunk,
+	  xfdesktop/trunk/autogen.sh, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/configure.in.in, xfdesktop/trunk/panel-plugin,
+	  xfdesktop/trunk/po, xfdesktop/trunk/po/LINGUAS, ., autogen.sh,
+	  configure.ac.in, mcs-plugin, po, po/LINGUAS, src,
+	  themes/katiola, themes/moheli, themes/stoneage: * add LINGUAS
+	  support
+	  * update svn:ignore
+
+2006-05-23 21:55  olivier
+
+	* src/events.c: Set demand attention flag or actually activate a
+	  window on NET_WM_ACTIVE notification based on user preference,
+	  too.
+
+2006-05-23 17:32  hydonsingore
+
+	* xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/zh_TW.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/zh_TW.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/zh_TW.po,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/zh_TW.po, xfdesktop/trunk/po/ChangeLog,
+	  xfdesktop/trunk/po/zh_TW.po, po/ChangeLog, po/zh_TW.po: Correct
+	  strings containing Button Label in traditional Chinese
+	  translations.
+
+2006-05-23 11:08  piarres
+
+	* po/ChangeLog, po/eu.po: [l10n:eu] Basque translation update
+
+2006-05-23 02:45  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/fi.po,
+	  libxfce4util/trunk/po/ChangeLog, libxfce4util/trunk/po/fi.po,
+	  libxfcegui4/branches/xfce_4_2/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_2/po/fi.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/fi.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/fi.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/fi.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/fi.po,
+	  xfcalendar/branches/xfce_4_2/po/ChangeLog,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/fi.po,
+	  xfce-mcs-manager/branches/xfce_4_2/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_2/po/fi.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/fi.po,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/fi.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/fi.po,
+	  xfce-utils/branches/xfce_4_2/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_2/po/fi.po,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.az,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ca,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.de,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.es,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.eu,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.fi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.fr,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.he,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.az,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ca,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.de,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.es,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.eu,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.fi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.fr,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.it,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ja,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.lt,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ro,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ru,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.sk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.vi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.zh_TW,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.it,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ja,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.lt,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ro,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ru,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.sk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.uk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.vi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.zh_TW,
+	  xfce-utils/trunk/po/ChangeLog, xfce-utils/trunk/po/fi.po,
+	  xfce-utils/trunk/xfce4-about/AUTHORS,
+	  xfce4-appfinder/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_2/po/fi.po,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/fi.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/fi.po,
+	  xfce4-iconbox/branches/xfce_4_2/po/fi.po,
+	  xfce4-mailwatch-plugin/trunk/po/fi.po,
+	  xfce4-mixer/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_2/po/fi.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/fi.po,
+	  xfce4-panel/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_2/po/fi.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/fi.po,
+	  xfce4-session/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_2/po/fi.po,
+	  xfce4-session/trunk/po/ChangeLog, xfce4-session/trunk/po/fi.po,
+	  xfce4-toys/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-toys/branches/xfce_4_2/po/fi.po,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/fi.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/fi.po,
+	  xfdesktop/branches/xfce_4_2/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_2/po/fi.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/fi.po,
+	  xffm/branches/xfce_4_2/po/ChangeLog,
+	  xffm/branches/xfce_4_2/po/fi.po, xfmedia/trunk/po/fi.po,
+	  xfprint/branches/xfce_4_2/po/ChangeLog,
+	  xfprint/branches/xfce_4_2/po/fi.po, xfprint/trunk/po/ChangeLog,
+	  xfprint/trunk/po/fi.po, xfwm4/branches/xfce_4_2/po/ChangeLog,
+	  xfwm4/branches/xfce_4_2/po/fi.po, po/ChangeLog, po/fi.po:
+	  Changed an address.
+
+2006-05-22 20:25  olivier
+
+	* configure.ac.in, src/main.c, xfwm4.spec.in: Add an option to
+	  enable proxy for deprecated KDE systray protocol (may help for
+	  bug #1836 eventually).
+
+2006-05-21 16:40  olivier
+
+	* po/fr.po: Update French translation.
+
+2006-05-21 15:18  stavrosg
+
+	* terminal/trunk/po/ChangeLog, terminal/trunk/po/el.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/el.po, po/ChangeLog,
+	  po/el.po: Greek translations update.
+
+2006-05-21 09:06  jari
+
+	* terminal/trunk/po/fi.po, xfdesktop/trunk/po/fi.po, po/fi.po:
+	  Updated Finnish translations.
+
+2006-05-21 07:39  olivier
+
+	* src/client.c: Why do we need to grab the Xserver here?
+
+2006-05-21 05:09  daichi
+
+	* po/ChangeLog: Fixed.
+
+2006-05-21 04:59  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/ja.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/ja.po,
+	  po/ChangeLog, po/ja.po: Updated Japanese translations.
+
+2006-05-21 03:13  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/pl.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/pl.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/pl.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/pl.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/pl.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/pl.po, po/ChangeLog, po/pl.po:
+	  Updated Polish translations by Szymon Kalasz
+	  <szymon_maestro@gazeta.pl>.
+
+2006-05-20 22:50  olivier
+
+	* src/client.c, src/client.h, src/events.c, src/focus.c,
+	  src/hints.h: Fix bug with WM hints for focus not being updated
+	  properly, fix bug with gtk+ apps seen as focused even when
+	  iconified (!)
+
+2006-05-20 21:16  sas
+
+	* terminal/trunk/po/hu.po, po/hu.po: hu trunk: wm & terminal update
+
+2006-05-20 21:15  olivier
+
+	* src/client.h, src/focus.c: Return focus to the desktop if no
+	  other window is focused.
+
+2006-05-20 19:40  olivier
+
+	* configure.ac.in: Fix the configure script that produced empty
+	  Makefiles.
+
+2006-05-20 13:25  olivier
+
+	* mcs-plugin/xfwm4_shortcuteditor.c, po/ar.po, po/az.po, po/be.po,
+	  po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
+	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po,
+	  po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po,
+	  po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po, src/client.c, src/settings.c,
+	  themes/default.keys/keythemerc: Put back configurable shortcut
+	  for window cycling.
+
+2006-05-20 11:33  olivier
+
+	* mcs-plugin/xfwm4_shortcuteditor.c, src/display.c, src/display.h,
+	  src/events.c, src/main.c, src/session.c, src/session.h,
+	  src/settings.c, themes/default.keys/keythemerc: Refactoring,
+	  allowing to close session the close window shortcut (fixes bug
+	  #1776).
+	  Fix the shortcut manager to not show additional un-managed
+	  shortcuts.
+
+2006-05-18 19:11  olivier
+
+	* src/events.c, src/stacking.c: Fix an old bug with mouse button
+	  grabs circulation.
+
+2006-05-18 13:13  daichi
+
+	* thunar/trunk/po/ChangeLog, thunar/trunk/po/ja.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/ja.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ja.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/ja.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ja.po, po/ChangeLog, po/ja.po:
+	  Updated Japanese translations.
+
+2006-05-16 19:02  olivier
+
+	* src/client.c, src/events.c: Don't consider windows that have the
+	  below/ontop property as older legacy windows trying to achieve
+	  fullscreen mode (should fix the issue reported on the ML).
+
+2006-05-15 22:00  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2006-05-15 21:58  olivier
+
+	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
+	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
+	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
+	  po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
+	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
+	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po: Update potfiles
+
+2006-05-15 21:57  olivier
+
+	* src/client.c, src/compositor.c, src/display.c,
+	  src/event_filter.c, src/events.c, src/focus.c, src/frame.c,
+	  src/hints.c, src/icons.c, src/keyboard.c, src/main.c,
+	  src/menu.c, src/misc.c, src/mypixmap.c, src/mywindow.c,
+	  src/netwm.c, src/parserc.c, src/placement.c, src/screen.c,
+	  src/session.c, src/settings.c, src/spinning_cursor.c,
+	  src/stacking.c, src/startup_notification.c, src/tabwin.c,
+	  src/transients.c, src/ui_style.c, src/workspaces.c: Code cleanup.
+
+2006-05-15 21:53  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/close-active.png,
+	  themes/default/close-inactive.png,
+	  themes/default/close-pressed.png,
+	  themes/default/hide-active.png,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-pressed.png, themes/default/left-active.png,
+	  themes/default/left-inactive.png,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/menu-active.png,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-pressed.png,
+	  themes/default/right-active.png,
+	  themes/default/right-inactive.png,
+	  themes/default/shade-active.png,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/stick-active.png,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-inactive.png,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-inactive.png: Use greyscale composite,
+	  the files are smaller.
+
+2006-05-15 09:57  piarres
+
+	* po/ChangeLog, po/eu.po: [l10n:eu] Basque translation update
+
+2006-05-13 21:03  olivier
+
+	* ChangeLog: Update ChangeLog.
+
 2006-05-13 20:54  olivier
 
 	* themes/default/menu-active.png, themes/default/menu-active.xpm,

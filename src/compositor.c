@@ -99,6 +99,7 @@ struct _CWindow
     gboolean argb;
     gboolean skipped;
     gboolean native_opacity;
+    gboolean opacity_locked;
 
     Damage damage;
 #if HAVE_NAME_WINDOW_PIXMAP
@@ -1447,7 +1448,7 @@ free_win_data (CWindow *cw, gboolean delete)
 }
 
 static void
-add_damage (ScreenInfo *screen_info, XserverRegion damage)
+add_damage (ScreenInfo *screen_info, XserverRegion damage, gboolean repair)
 {
     DisplayInfo *display_info;
 
@@ -1472,7 +1473,10 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
         screen_info->allDamage = damage;
     }
 
-    add_repair (screen_info->display_info);
+    if (repair)
+    {
+        add_repair (screen_info->display_info);
+    }
 }
 
 static void
@@ -1557,7 +1561,7 @@ repair_win (CWindow *cw)
     if (parts)
     {
         fix_region (cw, parts);
-        add_damage (cw->screen_info, parts);
+        add_damage (cw->screen_info, parts, TRUE);
         cw->damaged = TRUE;
     }
 }
@@ -1577,12 +1581,12 @@ damage_screen (ScreenInfo *screen_info)
     r.height = screen_info->height;
     region = XFixesCreateRegion (display_info->dpy, &r, 1);
     /* Region will be freed by add_damage () */
-    add_damage (screen_info, region);
+    add_damage (screen_info, region, TRUE);
 #endif /* HAVE_COMPOSITOR */
 }
 
 static void
-damage_win (CWindow *cw)
+damage_win (CWindow *cw, gboolean repair)
 {
 #ifdef HAVE_COMPOSITOR
     XserverRegion extents;
@@ -1592,7 +1596,7 @@ damage_win (CWindow *cw)
 
     extents = win_extents (cw);
     fix_region (cw, extents);
-    add_damage (cw->screen_info, extents);
+    add_damage (cw->screen_info, extents, repair);
 #endif /* HAVE_COMPOSITOR */
 }
 
@@ -1636,7 +1640,7 @@ determine_mode(CWindow *cw)
         XFixesCopyRegion (display_info->dpy, damage, cw->extents);
         fix_region (cw, damage);
         /* damage region will be destroyed by add_damage () */
-        add_damage (screen_info, damage);
+        add_damage (screen_info, damage, TRUE);
     }
 }
 
@@ -1653,7 +1657,7 @@ expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
     display_info = screen_info->display_info;
     region = XFixesCreateRegion (display_info->dpy, rects, nrects);
     /* damage region will be destroyed by add_damage () */
-    add_damage (screen_info, region);
+    add_damage (screen_info, region, TRUE);
 }
 
 static void
@@ -1748,7 +1752,7 @@ unmap_win (CWindow *cw)
 
     cw->viewable = FALSE;
     cw->damaged = FALSE;
-    damage_win (cw);
+    damage_win (cw, TRUE);
     free_win_data (cw, FALSE);
 }
 
@@ -1769,17 +1773,20 @@ init_opacity (CWindow *cw)
     cw->native_opacity = FALSE;
     if (c)
     {
+        cw->opacity_locked = c->opacity_locked;
         cw->opacity = c->opacity;
         cw->native_opacity = WIN_IS_OPAQUE(cw);
     }
     else if (getOpacity (display_info, cw->id, &cw->opacity))
     {
         cw->native_opacity = WIN_IS_OPAQUE(cw);
+        cw->opacity_locked = getOpacityLock (display_info, cw->id);
     }
     else
     {
         cw->opacity = (double) (screen_info->params->popup_opacity / 100.0) * NET_WM_OPAQUE;
         cw->native_opacity = TRUE;
+        cw->opacity_locked = getOpacityLock (display_info, cw->id);
     }
 }
 
@@ -2032,7 +2039,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     }
     fix_region (cw, damage);
     /* damage region will be destroyed by add_damage () */
-    add_damage (screen_info, damage);
+    add_damage (screen_info, damage, TRUE);
 }
 
 static void
@@ -2143,6 +2150,20 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
                 {
                     c->opacity = cw->opacity;
                 }
+            }
+        }
+    }
+    else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY_LOCKED])
+    {
+        CWindow *cw = find_cwindow_in_display (display_info, ev->window);
+        TRACE ("Opacity locking property changed for id 0x%lx", ev->window);
+
+        if (cw)
+        {
+            cw->opacity_locked = getOpacityLock (display_info, cw->id);
+            if (cw->c)
+            {
+                cw->c->opacity_locked = cw->opacity_locked;
             }
         }
     }
@@ -2791,8 +2812,9 @@ compositorRebuildScreen (ScreenInfo *screen_info)
         CWindow *cw2 = (CWindow *) index->data;
         free_win_data (cw2, FALSE);
         init_opacity (cw2);
+        damage_win (cw2, FALSE);
     }
-    repair_screen (screen_info);
+    add_repair (screen_info->display_info);
 #endif /* HAVE_COMPOSITOR */
 }
 

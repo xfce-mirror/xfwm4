@@ -98,6 +98,7 @@ struct _MoveResizeData
     gboolean grab;
     gboolean is_transient;
     gboolean move_resized;
+    int cancel_x, cancel_y; /* for cancellation (either position or size) */
     int mx, my;
     int ox, oy;
     int oldw, oldh;
@@ -1629,6 +1630,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->opacity = NET_WM_OPAQUE;
     getOpacity (display_info, c->window, &c->opacity);
 
+    c->opacity_locked = getOpacityLock (display_info, c->window);
+
     /* Timeout for blinking on urgency */
     c->blink_timeout_id = 0;
 
@@ -2865,7 +2868,7 @@ clientDecOpacity (Client * c)
    screen_info = c->screen_info;
    display_info = screen_info->display_info;
 
-   if ( c->opacity > OPACITY_SET_MIN )
+   if ((c->opacity > OPACITY_SET_MIN) && !(c->opacity_locked ))
    {
         c->opacity -= OPACITY_SET_STEP;
         compositorWindowSetOpacity (display_info, c->frame, c->opacity);
@@ -2881,7 +2884,7 @@ clientIncOpacity (Client * c)
    screen_info = c->screen_info;
    display_info = screen_info->display_info;
 
-   if ( c->opacity < NET_WM_OPAQUE )
+   if ((c->opacity < NET_WM_OPAQUE) && !(c->opacity_locked ))
    {
         c->opacity += OPACITY_SET_STEP;
 
@@ -3210,7 +3213,30 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == KeyRelease)
     {
-        if (passdata->use_keys)
+        if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_CANCEL].keycode)
+        {
+            moving = FALSE;
+
+            if (screen_info->params->box_move)
+            {
+                clientDrawOutline (c);
+            }
+
+            c->x = passdata->cancel_x;
+            c->y = passdata->cancel_y;
+
+            if (screen_info->params->box_move)
+            {
+                clientDrawOutline (c);
+            }
+            else
+            {
+                wc.x = c->x;
+                wc.y = c->y;
+                clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
+            }
+        }
+        else if (passdata->use_keys)
         {
             if (IsModifierKey (XLookupKeysym (&xevent->xkey, 0)))
             {
@@ -3488,8 +3514,8 @@ clientMove (Client * c, XEvent * ev)
     changes = CWX | CWY;
 
     passdata.c = c;
-    passdata.ox = c->x;
-    passdata.oy = c->y;
+    passdata.cancel_x = passdata.ox = c->x;
+    passdata.cancel_y = passdata.oy = c->y;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.is_transient = clientIsValidTransientOrModal (c);
@@ -3534,7 +3560,7 @@ clientMove (Client * c, XEvent * ev)
 #endif /* SHOW_POSITION */
 
     /* Set window translucent while moving, looks nice */
-    if ((screen_info->params->move_opacity < 100) && !(screen_info->params->box_move))
+    if ((screen_info->params->move_opacity < 100) && !(screen_info->params->box_move) && !(c->opacity_locked))
     {
         compositorWindowSetOpacity (display_info, c->frame, 
             (guint) (c->opacity * (double) (screen_info->params->move_opacity / 100.0)));
@@ -3764,7 +3790,41 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == KeyRelease)
     {
-        if (passdata->use_keys)
+        if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_CANCEL].keycode)
+        {
+            resizing = FALSE;
+
+            if (screen_info->params->box_resize)
+            {
+                clientDrawOutline (c);
+            }
+
+            /* restore the pre-resize position & size */
+            if (move_left)
+            {
+                c->x += c->width - passdata->cancel_x;
+            }
+            if (move_top)
+            {
+                c->y += c->height - passdata->cancel_y;
+            }
+            c->width = passdata->cancel_x;
+            c->height = passdata->cancel_y;
+
+            if (screen_info->params->box_resize)
+            {
+                clientDrawOutline (c);
+            }
+            else
+            {
+                wc.x = c->x;
+                wc.y = c->y;
+                wc.width = c->width;
+                wc.height = c->height;
+                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+            }
+        }
+        else if (passdata->use_keys)
         {
             if (IsModifierKey (XLookupKeysym (&xevent->xkey, 0)))
             {
@@ -3958,8 +4018,8 @@ clientResize (Client * c, int corner, XEvent * ev)
     restore_opacity = FALSE;
 
     passdata.c = c;
-    passdata.ox = c->width;
-    passdata.oy = c->height;
+    passdata.cancel_x = passdata.ox = c->width;
+    passdata.cancel_y = passdata.oy = c->height;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.corner = corner;
@@ -4014,7 +4074,7 @@ clientResize (Client * c, int corner, XEvent * ev)
 #endif /* SHOW_POSITION */
 
     /* Set window translucent while resizing, doesn't looks too nice  :( */
-    if ((screen_info->params->resize_opacity < 100) && !(screen_info->params->box_resize))
+    if ((screen_info->params->resize_opacity < 100) && !(screen_info->params->box_resize) && !(c->opacity_locked))
     {
         compositorWindowSetOpacity (display_info, c->frame, 
             (guint) (c->opacity * (double) (screen_info->params->resize_opacity / 100.0)));

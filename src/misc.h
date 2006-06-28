@@ -31,6 +31,18 @@
 #ifndef INC_MISC_H
 #define INC_MISC_H
 
+/* 
+   Just for completion, being a bit pedantic, X seems to be missing 
+   those so far, so create them for now.
+ */
+#ifndef Button6
+#define Button6 6
+#endif
+
+#ifndef Button7
+#define Button7 7
+#endif
+
 void getMouseXY (ScreenInfo *, Window, int *, int *);
 Window getMouseWindow (ScreenInfo *, Window);
 GC createGC (ScreenInfo *, char *, int, XFontStruct *, int, gboolean);

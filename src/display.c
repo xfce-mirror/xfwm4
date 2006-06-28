@@ -106,6 +106,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_MOVERESIZE",
         "_NET_WM_NAME",
         "_NET_WM_WINDOW_OPACITY",
+        "_NET_WM_WINDOW_OPACITY_LOCKED",
         "_NET_WM_STATE",
         "_NET_WM_STATE_ABOVE",
         "_NET_WM_STATE_BELOW",

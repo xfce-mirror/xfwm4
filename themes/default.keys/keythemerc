@@ -10,6 +10,7 @@ lower_window_key=Shift+Alt+Page_Down
 maximize_horiz_key=Alt+F7
 maximize_vert_key=Alt+F6
 maximize_window_key=Alt+F5
+move_resize_cancel_key=Escape
 move_window_down_key=Control+Shift+Alt+Down
 move_window_down_workspace_key=None
 move_window_left_key=Control+Shift+Alt+Left
