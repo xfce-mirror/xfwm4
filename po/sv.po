@@ -76,7 +76,7 @@ msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Inkludera fönster som är osynliga i aktivitetsfältet eller "
-"skrivbordsväljaren."
+"skrivbordsbläddraren."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:389
 msgid "Include hidden (i.e. iconified) windows"
@@ -112,7 +112,7 @@ msgstr "Höj fönster vid klick oavsett musknapp"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:448
 msgid "Restore original size of maximized windows when moving"
-msgstr "Återställ maximerade fönster när de flyttas"
+msgstr "Återställ maximerade fönster till sin ursprungliga storlek när de flyttas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Use edge resistance instead of windows snapping"
@@ -120,7 +120,7 @@ msgstr "Använd kantmotstånd istället för attraktion mellan fönster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:459
 msgid "Accessibility"
-msgstr "Tillgänglighet"
+msgstr "Hjälpmedel"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Switch workspaces using the mouse wheel over the desktop"
@@ -130,7 +130,7 @@ msgstr "Växla arbetsyta genom att rulla mushjulet över skrivbordet"
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
-"Kom ihåg och återkalla föregående arbetsyta vid växlingmed snabbtangenter"
+"Kom ihåg och återkalla föregående arbetsyta vid växling med snabbtangenter"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:486
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -146,11 +146,11 @@ msgstr "Minsta fönsterstorlek för att aktivera smart placering:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Small"
-msgstr "Litet"
+msgstr "Liten"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:511
 msgid "Size|Large"
-msgstr "Stort"
+msgstr "Stor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:515
 msgid "Placement"
@@ -158,11 +158,11 @@ msgstr "Placering"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Show shadows under regular windows"
-msgstr "Visa skuggor runt vanliga fönster"
+msgstr "Visa skuggor under vanliga fönster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:540
 msgid "Show shadows under popup windows"
-msgstr "Visa skuggor runt popup-fönster"
+msgstr "Visa skuggor under popup-fönster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:546
 msgid "Opacity of window decorations"
@@ -176,7 +176,7 @@ msgstr "Genomskinlig"
 #: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
 #: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
 msgid "Opaque"
-msgstr "Ogenomskinlig"
+msgstr "Solid"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:552
 msgid "Opacity of windows during move"
@@ -184,7 +184,7 @@ msgstr "Genomskinlighet då fönster flyttas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558
 msgid "Opacity of windows during resize"
-msgstr "Genomskinlighet vid storleksändring av fönster"
+msgstr "Genomskinlighet då storleken på ett fönster ändras"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Opacity of popup windows"
@@ -203,7 +203,7 @@ msgstr "Fönsterhanterare - finjusteringar"
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
-"Dessa inställningar fungerar inte med den aktuella fönsterhanteraren (%s)"
+"De här inställningarna fungerar inte med den här fönsterhanteraren (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -236,7 +236,7 @@ msgstr "Meny"
 
 #: ../mcs-plugin/xfwm4_plugin.c:69
 msgid "Stick"
-msgstr "Fäst"
+msgstr "Visa på alla arbetsytor"
 
 #: ../mcs-plugin/xfwm4_plugin.c:70
 msgid "Shade"
@@ -296,7 +296,7 @@ msgstr "Titel"
 
 #: ../mcs-plugin/xfwm4_plugin.c:591
 msgid "The window title, it cannot be removed"
-msgstr "Fönstrets titel, den kan inte tas bort"
+msgstr "Fönstrets titel (kan ej döljas)"
 
 #: ../mcs-plugin/xfwm4_plugin.c:599
 msgid "Hidden"
@@ -312,7 +312,7 @@ msgstr "Fönsterhanterare"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1478
 msgid "Title font"
-msgstr "Teckensnitt för fönstertitel"
+msgstr "Teckensnitt för fönstertiteln"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1487
 msgid "Title Alignment"
@@ -321,7 +321,7 @@ msgstr "Titeljustering"
 #. XXX
 #: ../mcs-plugin/xfwm4_plugin.c:1489
 msgid "Text alignment inside title bar :"
-msgstr "Textjustering inom titelraden:"
+msgstr "Textjustering i titelraden:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1495
 msgid "Button layout"
@@ -373,11 +373,11 @@ msgstr "Höj vid fokus"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1642
 msgid "Automatically raise windows when they receive focus"
-msgstr "Höj automatiskt fönster när de får fokus"
+msgstr "Höj automatiskt fönster då de får fokus"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Delay before raising focused window :"
-msgstr "Fördröjning innan fokuserat fönster höjs:"
+msgstr "Fördröjning innan ett fokuserat fönster höjs:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1659
 msgid "Slow"
@@ -499,7 +499,7 @@ msgstr "Stäng fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window vertically"
-msgstr "Maximera fönster veritkalt"
+msgstr "Maximera fönster vertikalt"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Maximize window horizontally"
@@ -531,19 +531,19 @@ msgstr "Flytta fönster åt höger"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Resize window up"
-msgstr "Minska fönster i höjdled"
+msgstr "Minska höjd på fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Resize window down"
-msgstr "Förstora fönster i höjdled"
+msgstr "Öka höjd på fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Resize window left"
-msgstr "Minska fönster i sidled"
+msgstr "Minska bredd på fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Resize window right"
-msgstr "Förstora fönster i sidled"
+msgstr "Öka bredd på fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Raise window"
@@ -551,7 +551,7 @@ msgstr "Höj fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Lower window"
-msgstr "Göm fönster"
+msgstr "Sänk fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Toggle fullscreen"
@@ -559,19 +559,19 @@ msgstr "Fullskärm av/på"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Upper workspace"
-msgstr "Byt arbetsyta uppåt"
+msgstr "Växla till arbetsytan ovan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Bottom workspace"
-msgstr "Byt arbetsyta nedåt"
+msgstr "Växla till arbetsytan nedan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Left workspace"
-msgstr "Byt arbetsyta åt vänster"
+msgstr "Växla till arbetsytan till vänster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Right workspace"
-msgstr "Byt arbetsyta åt höger"
+msgstr "Växla till arbetsytan till höger"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Next workspace"
@@ -669,7 +669,7 @@ msgstr "Ingen genväg"
 #: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
-msgstr "%s (körs på %s)"
+msgstr "%s (på %s)"
 
 #: ../src/main.c:128
 #, c-format
@@ -706,15 +706,15 @@ msgstr "_Rulla ned"
 
 #: ../src/menu.c:47
 msgid "S_tick"
-msgstr "_Fäst"
+msgstr "_Visa på alla arbetsytor"
 
 #: ../src/menu.c:48
 msgid "Uns_tick"
-msgstr "_Fäst ej"
+msgstr "_Visa ej på alla arbetsytor"
 
 #: ../src/menu.c:49
 msgid "Context _help"
-msgstr "Meny_hjälp"
+msgstr "Ämnes_hjälp"
 
 #: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
@@ -753,17 +753,17 @@ msgstr "Arbetsyta %i"
 #: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu misslyckades att fånga pekaren\n"
+msgstr "%s: GtkMenu misslyckades med att fånga pekaren\n"
 
 #: ../src/settings.c:858
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Kan inte allokera färgen %s\n"
+msgstr "%s: Kunde inte allokera färgen %s\n"
 
 #: ../src/settings.c:864
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Kan ej avläsa färgen %s\n"
+msgstr "%s: Kunde inte tolka färgen %s\n"
 
 #: ../src/tabwin.c:94
 msgid "Unknown application!"
@@ -771,11 +771,11 @@ msgstr "Okänt program!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Inställningar för fönsterhanterare"
+msgstr "Inställningar för Fönsterhanteraren"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Inställningar för fönsterhanterare"
+msgstr "Xfce 4 Inställningar för fönsterhanteraren"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
@@ -783,12 +783,12 @@ msgstr "Avancerad konfiguration"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Avancerade inställningar för fönsterhanterare"
+msgstr "Avancerade inställningar för fönsterhanteraren"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
-msgstr "Inställningar för arbetsytor"
+msgstr "Inställningar för Arbetsytorna"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Inställningar för arbetsytor"
+msgstr "Xfce 4 Inställningar för Arbetsytorna"
