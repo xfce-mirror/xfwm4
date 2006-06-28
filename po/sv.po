@@ -69,7 +69,7 @@ msgstr "Ingen"
 #: ../mcs-plugin/wmtweaks_plugin.c:364
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "Fönsterhanterare - finjusteringar"
+msgstr "Finjusteringar för Fönsterhanteraren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:383
 msgid ""
