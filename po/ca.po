@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-14 11:34+0200\n"
+"POT-Creation-Date: 2006-06-28 23:20+0200\n"
 "PO-Revision-Date: 2006-05-13 20:27+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
@@ -222,7 +222,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Canvia el nom"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:472
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:474
 #, c-format
 msgid "Workspace %d"
 msgstr "Espai de treball %d"
@@ -267,15 +267,15 @@ msgstr "Maximitza"
 msgid "Close"
 msgstr "Tanca"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Shade window"
 msgstr "Enrotlla la finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:356
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Hide window"
 msgstr "Amaga la finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:353
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window"
 msgstr "Maximitza la finestra"
 
@@ -515,141 +515,146 @@ msgstr "Ja hi ha un altre esquema d'assignació de tecles amb aquest nom"
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Introduïu un nom per l'esquema d'assignació de tecles"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Close window"
 msgstr "Tanca la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Maximize window vertically"
 msgstr "Maximitza la finestra verticalment"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Maximize window horizontally"
 msgstr "Maximitza la finestra horitzontalment"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Stick window"
 msgstr "Finestra omnipresent"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 #, fuzzy
 msgid "Cycle windows"
 msgstr "Tanca la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window up"
 msgstr "Mou la finestra amunt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Move window down"
 msgstr "Mou la finestra avall"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Move window left"
 msgstr "Mou la finestra cap a l'esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Move window right"
 msgstr "Mou la finestra cap a la dreta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Resize window up"
 msgstr "Redimensiona la finestra cap amunt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Resize window down"
 msgstr "Redimensiona la finestra cap avall"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Resize window left"
 msgstr "Redimensiona la finestra cap a l'esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Resize window right"
 msgstr "Redimensiona la finestra cap a la dreta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#, fuzzy
+msgid "Cancel move/resize window"
+msgstr "Tanca la finestra"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Raise window"
 msgstr "Eleva la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Lower window"
 msgstr "Abaixa la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Toggle fullscreen"
 msgstr "Commuta a pantalla completa"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Upper workspace"
 msgstr "Espai de treball superior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Bottom workspace"
 msgstr "Espai de treball inferior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Left workspace"
 msgstr "Espai de treball esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Right workspace"
 msgstr "Espai de treball dret"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Next workspace"
 msgstr "Espai de treball següent"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Previous workspace"
 msgstr "Espai de treball anterior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Add workspace"
 msgstr "Afegeix espai de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Delete workspace"
 msgstr "Esborra l'espai de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Move window to next workspace"
 msgstr "Mou la finestra a l'espai de treball següent"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Move window to previous workspace"
 msgstr "Mou la finestra a l'espai de treball anterior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Move window to upper workspace"
 msgstr "Mou la finestra a l'espai de treball superior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Move window to bottom workspace"
 msgstr "Mou la finestra a l'espai de treball esquerra inferior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Move window to left workspace"
 msgstr "Mou la finestra a l'espai de treball esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Move window to right workspace"
 msgstr "Mou la finestra a l'espai de treball dret"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Show desktop"
 msgstr "Mostrar l'escriptori"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:493
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:495
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Mou la finestra a l'àrea de treball %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:573
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:575
 msgid "Cannot open the theme directory !"
 msgstr "No s'ha pogut obrir el directori de l'esquema"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:592
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:594
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -658,8 +663,8 @@ msgstr ""
 "No s'ha pogut obrir %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:606
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:608
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:619
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -668,7 +673,7 @@ msgstr ""
 "No s'ha pogut escriure a %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -676,15 +681,15 @@ msgstr ""
 "La drecera ja s'està emprant.\n"
 "Esteu segur de voler emprar-la?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
 msgid "Compose shortcut for :"
 msgstr "Creo una drecera per:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
 msgid "Compose shortcut"
 msgstr "Crea una drecera"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
 msgid "No shortcut"
 msgstr "Sense drecera"
 

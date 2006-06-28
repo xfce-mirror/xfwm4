@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-14 11:34+0200\n"
+"POT-Creation-Date: 2006-06-28 23:20+0200\n"
 "PO-Revision-Date: 2006-04-26 22:43+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
 "Language-Team: Vietnamese <vi_VN@googlegroups.com>\n"
@@ -208,7 +208,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Đổi tên"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:472
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:474
 #, c-format
 msgid "Workspace %d"
 msgstr "Vùng làm việc %d"
@@ -253,15 +253,15 @@ msgstr "Phóng to"
 msgid "Close"
 msgstr "Đóng"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Shade window"
 msgstr "Che cửa sổ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:356
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Hide window"
 msgstr "Ẩn cửa sổ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:353
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window"
 msgstr "Phóng to cửa sổ"
 
@@ -492,141 +492,146 @@ msgstr "Đã có bộ phím nóng với tên đó"
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Cần đặt tên cho bộ phím nóng"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:352
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Close window"
 msgstr "Đóng cửa sổ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
 msgid "Maximize window vertically"
 msgstr "Phóng to cửa sổ theo chiều dọc"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
 msgid "Maximize window horizontally"
 msgstr "Phóng to cửa sổ theo chiều ngang"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Stick window"
 msgstr "Dán cửa sổ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 #, fuzzy
 msgid "Cycle windows"
 msgstr "Đóng cửa sổ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window up"
 msgstr "Di chuyển cửa sổ lên"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Move window down"
 msgstr "Di chuyển cửa sổ xuống"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Move window left"
 msgstr "Di chuyển cửa sổ sang trái"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Move window right"
 msgstr "Di chuyển cửa sổ sang phải"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Resize window up"
 msgstr "Thay đổi kích thước cửa sổ lên trên"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Resize window down"
 msgstr "Thay đổi kích thước cửa sổ xuống dưới"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Resize window left"
 msgstr "Thay đổi kích thước cửa sổ sang trái"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Resize window right"
 msgstr "Thay đổi kích thước cửa sổ sang phải"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#, fuzzy
+msgid "Cancel move/resize window"
+msgstr "Đóng cửa sổ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Raise window"
 msgstr "Nâng cửa sổ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Lower window"
 msgstr "Hạ cửa sổ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Toggle fullscreen"
 msgstr "Tăt/bật toàn màn hình"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Upper workspace"
 msgstr "Vùng làm việc trên"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Bottom workspace"
 msgstr "Vùng làm việc dưới"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Left workspace"
 msgstr "Vùng làm việc bên trái"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Right workspace"
 msgstr "Vùng làm việc bên phải"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Next workspace"
 msgstr "Vùng làm việc tiếp theo"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Previous workspace"
 msgstr "Vùng làm việc trước"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Add workspace"
 msgstr "Thêm vùng làm việc"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Delete workspace"
 msgstr "Xoá vùng làm việc"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Move window to next workspace"
 msgstr "Di chuyển cửa sổ sang vùng làm việc kế"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Move window to previous workspace"
 msgstr "Di chuyển cửa sổ sang vùng làm việc trước"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Move window to upper workspace"
 msgstr "Di chuyển cửa sổ sang vùng làm việc ở trên"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Move window to bottom workspace"
 msgstr "Di chuyển cửa sổ sang vùng làm việc ở dưới"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Move window to left workspace"
 msgstr "Di chuyển cửa sổ sang vùng làm việc bên trái"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Move window to right workspace"
 msgstr "Di chuyển cửa sổ sang vùng làm việc bên phải"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Show desktop"
 msgstr "Hiện ảnh nền"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:493
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:495
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Di chuyển cửa sổ sang vùng làm việc %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:573
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:575
 msgid "Cannot open the theme directory !"
 msgstr "Không thể mở thư mục chủ đề!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:592
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:594
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -635,8 +640,8 @@ msgstr ""
 "Không thể mở %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:606
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:617
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:608
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:619
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -645,7 +650,7 @@ msgstr ""
 "Không thể viết trong %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -653,15 +658,15 @@ msgstr ""
 "Phím tắt đã được dùng!\n"
 "Bạn chắc chắn muốn dùng nó?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
 msgid "Compose shortcut for :"
 msgstr "Soạn phím tắt cho:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
 msgid "Compose shortcut"
 msgstr "Soạn phím tắt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
 msgid "No shortcut"
 msgstr "Không có phím nóng"
 
