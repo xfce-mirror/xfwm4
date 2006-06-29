@@ -944,8 +944,6 @@ clientGetMWMHints (Client * c, gboolean update)
 
     if (update)
     {
-        /* EWMH window type takes precedences over Motif hints */
-        clientWindowType (c);
         if (FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_LEGACY_FULLSCREEN)
             && !FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
