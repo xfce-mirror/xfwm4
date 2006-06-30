@@ -2862,8 +2862,15 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 void
 clientUpdateOpacity (ScreenInfo *screen_info, Client *focus)
 {
+    DisplayInfo *display_info;
     Client *c;
     int i;
+
+    display_info = screen_info->display_info;
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, ++i)
     {
@@ -2879,7 +2886,17 @@ clientUpdateOpacity (ScreenInfo *screen_info, Client *focus)
 void
 clientSetOpacity (Client *c, guint opacity, guint clear, guint xor)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     guint applied;
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
 
     c->opacity_flags = (c->opacity_flags & ~clear) ^ xor;
 
@@ -2915,44 +2932,54 @@ clientSetOpacity (Client *c, guint opacity, guint clear, guint xor)
     if (applied != c->opacity_applied)
     {
         c->opacity_applied = applied;
-        compositorWindowSetOpacity (c->screen_info->display_info, c->frame, applied);
+        compositorWindowSetOpacity (display_info, c->frame, applied);
     }
 }
 
 void
 clientDecOpacity (Client * c)
 {
-     ScreenInfo *screen_info;
-     DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
-     screen_info = c->screen_info;
-     display_info = screen_info->display_info;
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
-     if ((c->opacity > OPACITY_SET_MIN) && !(c->opacity_locked ))
-     {
-          clientSetOpacity (c, c->opacity - OPACITY_SET_STEP, 0, 0);
-     }
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
+    if ((c->opacity > OPACITY_SET_MIN) && !(c->opacity_locked ))
+    {
+         clientSetOpacity (c, c->opacity - OPACITY_SET_STEP, 0, 0);
+    }
 }
 
 void
 clientIncOpacity (Client * c)
 {
-     ScreenInfo *screen_info;
-     DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
-     screen_info = c->screen_info;
-     display_info = screen_info->display_info;
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
-     if ((c->opacity < NET_WM_OPAQUE) && !(c->opacity_locked ))
-     {
-          guint opacity = c->opacity + OPACITY_SET_STEP;
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
 
-          if (opacity < OPACITY_SET_MIN)
-          {
-              opacity = NET_WM_OPAQUE;
-          }
-          clientSetOpacity (c, opacity, 0, 0);
-     }
+    if ((c->opacity < NET_WM_OPAQUE) && !(c->opacity_locked ))
+    {
+         guint opacity = c->opacity + OPACITY_SET_STEP;
+
+         if (opacity < OPACITY_SET_MIN)
+         {
+             opacity = NET_WM_OPAQUE;
+         }
+         clientSetOpacity (c, opacity, 0, 0);
+    }
 }
 
 /* Xrandr stuff: on screen size change, make sure all clients are still visible */

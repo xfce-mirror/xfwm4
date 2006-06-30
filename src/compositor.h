@@ -32,6 +32,7 @@
 #include "screen.h"
 #include "client.h"
 
+gboolean compositorIsUsable         (DisplayInfo *);
 void     compositorAddWindow        (DisplayInfo *,
                                      Window,
                                      Client *);

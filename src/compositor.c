@@ -2372,9 +2372,12 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
     }
 }
 
-static gboolean
+#endif /* HAVE_COMPOSITOR */
+
+gboolean
 compositorIsUsable (DisplayInfo *display_info)
 {
+#ifdef HAVE_COMPOSITOR
     if (!display_info->enable_compositor)
     {
         TRACE ("compositor disabled");
@@ -2386,31 +2389,9 @@ compositorIsUsable (DisplayInfo *display_info)
         return FALSE;
     }
     return TRUE;
-}
-
+#else
+    return FALSE;
 #endif /* HAVE_COMPOSITOR */
-
-void
-compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
-{
-#ifdef HAVE_COMPOSITOR
-    CWindow *cw;
-
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (id != None);
-    TRACE ("entering compositorSetOpacity for 0x%lx", id);
-
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    cw = find_cwindow_in_display (display_info, id);
-    if (cw)
-    {
-        set_win_opacity (cw, opacity);
-    }
-#endif
 }
 
 void
@@ -2788,6 +2769,29 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
         screen_info->rootBuffer = None;
     }
     damage_screen (screen_info);
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
+compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
+{
+#ifdef HAVE_COMPOSITOR
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorSetOpacity for 0x%lx", id);
+
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        set_win_opacity (cw, opacity);
+    }
 #endif /* HAVE_COMPOSITOR */
 }
 
