@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-28 23:20+0200\n"
+"POT-Creation-Date: 2006-06-30 11:19+0200\n"
 "PO-Revision-Date: 2006-05-13 20:27+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Workspaces and Margins"
 msgstr "Espais de treball i marges"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:500
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Espais de treball"
@@ -66,153 +66,160 @@ msgstr "Espais de treball"
 msgid "Margins"
 msgstr "Marges"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:356
+#: ../mcs-plugin/wmtweaks_plugin.c:358
 msgid "None"
 msgstr "Cap"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:364
+#: ../mcs-plugin/wmtweaks_plugin.c:366
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Ajustaments avançats del gestor de finestres"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:383
+#: ../mcs-plugin/wmtweaks_plugin.c:385
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Inclou les finestres que tinguin la propietat «omet paginador» o «omet barra "
 "de tasques» activada."
 
-#: ../mcs-plugin/wmtweaks_plugin.c:389
+#: ../mcs-plugin/wmtweaks_plugin.c:391
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Inclou les finestres amagades (i.e. les iconificades)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:395
+#: ../mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycle through windows from all workspaces"
 msgstr "Inclou les finestres dels altres espais de treball"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:400
+#: ../mcs-plugin/wmtweaks_plugin.c:402
 msgid "Cycling"
 msgstr "Rotació"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:412
+#: ../mcs-plugin/wmtweaks_plugin.c:414
 msgid "Activate focus stealing prevention"
 msgstr "Activa la prevenció de furt de l'enfocament"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:418
+#: ../mcs-plugin/wmtweaks_plugin.c:420
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Fes cas de la senyal ICCCM d'enfocament"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:423 ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/wmtweaks_plugin.c:425 ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Focus"
 msgstr "Enfocament"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:435
+#: ../mcs-plugin/wmtweaks_plugin.c:437
 msgid "Key used to grab and move windows"
 msgstr "Tecla emprada per arrossegar i moure finestres"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:441
+#: ../mcs-plugin/wmtweaks_plugin.c:443
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Coŀloca en primer pla quan es pitgi qualsevol botó del ratolí"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:450
 msgid "Restore original size of maximized windows when moving"
 msgstr "Restaura la mida original de les finestres maximitzades quan es mouen"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:454
+#: ../mcs-plugin/wmtweaks_plugin.c:456
 #, fuzzy
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
 "Empra resistència a les vores en lloc de l'alineació ràpida de finestres"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:461
 msgid "Accessibility"
 msgstr "Accessibilitat"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:474
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 "Canvia d'espai de treball mitjançant la roda del ratolí sobre l'escriptori"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:479
+#: ../mcs-plugin/wmtweaks_plugin.c:481
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Recorda i recrida l'espai de treball previ quan canvii mitjançant les "
 "dreceres de tecles"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:486
+#: ../mcs-plugin/wmtweaks_plugin.c:488
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Canvia d'espai de treball en funció del format actual de l'escriptori"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/wmtweaks_plugin.c:495
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Canvia d'espai de treball quan s'arribi al primer o últim"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:510
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Mida mínima de les finestres per emplaçar-les «inteŀligentment»"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/wmtweaks_plugin.c:513
 msgid "Size|Small"
 msgstr "Petit"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/wmtweaks_plugin.c:513
 msgid "Size|Large"
 msgstr "Gran"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:515
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Placement"
 msgstr "Emplaçament"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:534
+#: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "Show shadows under regular windows"
 msgstr "Mostra ombres a les finestres normals"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:540
+#: ../mcs-plugin/wmtweaks_plugin.c:542
 msgid "Show shadows under popup windows"
 msgstr "Mostra ombres a les finestres emergents"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:546
+#: ../mcs-plugin/wmtweaks_plugin.c:548
 msgid "Opacity of window decorations"
 msgstr "Opacitat de la decoració de les finestres"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:548 ../mcs-plugin/wmtweaks_plugin.c:554
+#: ../mcs-plugin/wmtweaks_plugin.c:560 ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:572
 msgid "Transparent"
 msgstr "Transparent"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
-#: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
+#: ../mcs-plugin/wmtweaks_plugin.c:549 ../mcs-plugin/wmtweaks_plugin.c:555
+#: ../mcs-plugin/wmtweaks_plugin.c:561 ../mcs-plugin/wmtweaks_plugin.c:567
+#: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Opaque"
 msgstr "Opacitat"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:554
+#, fuzzy
+msgid "Opacity of inactive windows"
+msgstr "Opacitat de les finestres emergents"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:560
 msgid "Opacity of windows during move"
 msgstr "Opacitat de les finestres al moure-les"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558
+#: ../mcs-plugin/wmtweaks_plugin.c:566
 msgid "Opacity of windows during resize"
 msgstr "Opacitat de les finestres al redimensinar-les"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:572
 msgid "Opacity of popup windows"
 msgstr "Opacitat de les finestres emergents"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:569
+#: ../mcs-plugin/wmtweaks_plugin.c:577
 #, fuzzy
 msgid "Compositor"
 msgstr "«Compositor»"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:618
 #, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr ""
 "Gestor de finestres,\n"
 "ajustaments avançats"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -783,12 +790,12 @@ msgstr "Àrea de treball %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut captura el punter\n"
 
-#: ../src/settings.c:858
+#: ../src/settings.c:870
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: no s'ha pogut situar el color %s\n"
 
-#: ../src/settings.c:864
+#: ../src/settings.c:876
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: no s'ha pogut analitzar el color %s\n"

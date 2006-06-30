@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-28 23:20+0200\n"
+"POT-Creation-Date: 2006-06-30 11:19+0200\n"
 "PO-Revision-Date: 2004-08-23 18:04+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
@@ -51,7 +51,7 @@ msgstr "İş Sahələri və Kənarlar"
 msgid "Workspaces and Margins"
 msgstr "İş Sahələri və Kənarlar"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:500
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "İş Sahələri"
@@ -60,152 +60,159 @@ msgstr "İş Sahələri"
 msgid "Margins"
 msgstr "Kənarlar"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:356
+#: ../mcs-plugin/wmtweaks_plugin.c:358
 msgid "None"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:364
+#: ../mcs-plugin/wmtweaks_plugin.c:366
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Pəncərə İdarəçisi"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:383
+#: ../mcs-plugin/wmtweaks_plugin.c:385
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:389
+#: ../mcs-plugin/wmtweaks_plugin.c:391
 msgid "Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:395
+#: ../mcs-plugin/wmtweaks_plugin.c:397
 #, fuzzy
 msgid "Cycle through windows from all workspaces"
 msgstr "Pəncərəni növbəti iş sahəsinə daşı"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:400
+#: ../mcs-plugin/wmtweaks_plugin.c:402
 msgid "Cycling"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:412
+#: ../mcs-plugin/wmtweaks_plugin.c:414
 msgid "Activate focus stealing prevention"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:418
+#: ../mcs-plugin/wmtweaks_plugin.c:420
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:423 ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/wmtweaks_plugin.c:425 ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Focus"
 msgstr "Fokus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:435
+#: ../mcs-plugin/wmtweaks_plugin.c:437
 msgid "Key used to grab and move windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:441
+#: ../mcs-plugin/wmtweaks_plugin.c:443
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:450
 #, fuzzy
 msgid "Restore original size of maximized windows when moving"
 msgstr "Daşındığında pəncərələrin məzmununu göstər"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:454
+#: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:461
 msgid "Accessibility"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:474
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:479
+#: ../mcs-plugin/wmtweaks_plugin.c:481
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:486
+#: ../mcs-plugin/wmtweaks_plugin.c:488
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/wmtweaks_plugin.c:495
 #, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Siçan ekran kənarına gəldiyində iş sahələrini dəyişdir"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:510
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/wmtweaks_plugin.c:513
 #, fuzzy
 msgid "Size|Small"
 msgstr "Kiçik"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/wmtweaks_plugin.c:513
 msgid "Size|Large"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:515
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Placement"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:534
+#: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "Show shadows under regular windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:540
+#: ../mcs-plugin/wmtweaks_plugin.c:542
 msgid "Show shadows under popup windows"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:546
+#: ../mcs-plugin/wmtweaks_plugin.c:548
 #, fuzzy
 msgid "Opacity of window decorations"
 msgstr "Ölçüləndirirkən pəncərələrin məzmununu göstər"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:548 ../mcs-plugin/wmtweaks_plugin.c:554
+#: ../mcs-plugin/wmtweaks_plugin.c:560 ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:572
 msgid "Transparent"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
-#: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
+#: ../mcs-plugin/wmtweaks_plugin.c:549 ../mcs-plugin/wmtweaks_plugin.c:555
+#: ../mcs-plugin/wmtweaks_plugin.c:561 ../mcs-plugin/wmtweaks_plugin.c:567
+#: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Opaque"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:554
+#, fuzzy
+msgid "Opacity of inactive windows"
+msgstr "Daşındığında pəncərələrin məzmununu göstər"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:560
 #, fuzzy
 msgid "Opacity of windows during move"
 msgstr "Daşındığında pəncərələrin məzmununu göstər"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558
+#: ../mcs-plugin/wmtweaks_plugin.c:566
 #, fuzzy
 msgid "Opacity of windows during resize"
 msgstr "Ölçüləndirirkən pəncərələrin məzmununu göstər"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:572
 #, fuzzy
 msgid "Opacity of popup windows"
 msgstr "Daşındığında pəncərələrin məzmununu göstər"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:569
+#: ../mcs-plugin/wmtweaks_plugin.c:577
 #, fuzzy
 msgid "Compositor"
 msgstr "Qısa yol yarat"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:618
 #, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Pəncərə İdarəçisi"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -780,12 +787,12 @@ msgstr "İş Sahəsi %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu oxu ala bilmədi\n"
 
-#: ../src/settings.c:858
+#: ../src/settings.c:870
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Fəal rəng tapıla bilmir %s\n"
 
-#: ../src/settings.c:864
+#: ../src/settings.c:876
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Fəal rəng oxuna bilmir %s\n"

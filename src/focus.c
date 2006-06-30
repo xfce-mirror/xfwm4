@@ -187,6 +187,7 @@ clientFocusNew(Client * c)
             clientSortRing(c);
             clientLower (c, c2->frame);
             clientSortRing(c2);
+            clientSetOpacity (c, c->opacity, 0, 0);
         }
         else
         {
@@ -478,6 +479,8 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     XChangeProperty (display_info->dpy, screen_info->xroot, 
                      display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                      PropModeReplace, (unsigned char *) data, 2);
+
+    clientUpdateOpacity (screen_info, c);
 }
 
 void
@@ -523,6 +526,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         {
             pending_focus = c;
             XSetInputFocus (myScreenGetXDisplay (screen_info), c->window, RevertToPointerRoot, timestamp);
+            clientUpdateOpacity (screen_info, c);
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
@@ -546,6 +550,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                          PropModeReplace, (unsigned char *) data, 2);
         XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
+        clientUpdateOpacity (screen_info, c);
     }
 }
 

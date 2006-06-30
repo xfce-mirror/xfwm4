@@ -1774,7 +1774,7 @@ init_opacity (CWindow *cw)
     if (c)
     {
         cw->opacity_locked = c->opacity_locked;
-        cw->opacity = c->opacity;
+        cw->opacity = c->opacity_applied;
         cw->native_opacity = WIN_IS_OPAQUE(cw);
     }
     else if (getOpacity (display_info, cw->id, &cw->opacity))
@@ -2148,7 +2148,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             {
                 if (c->opacity != cw->opacity)
                 {
-                    c->opacity = cw->opacity;
+                    clientSetOpacity (c, cw->opacity, 0, 0);
                 }
             }
         }

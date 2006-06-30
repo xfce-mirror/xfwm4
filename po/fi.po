@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-28 23:20+0200\n"
+"POT-Creation-Date: 2006-06-30 11:19+0200\n"
 "PO-Revision-Date: 2006-05-21 11:11+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp2.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -50,7 +50,7 @@ msgstr "Työtilat ja reunukset"
 msgid "Workspaces and Margins"
 msgstr "Työtilat ja reunukset"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:500
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Työtilat"
@@ -59,142 +59,149 @@ msgstr "Työtilat"
 msgid "Margins"
 msgstr "Reunukset"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:356
+#: ../mcs-plugin/wmtweaks_plugin.c:358
 msgid "None"
 msgstr "Ei mitään"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:364
+#: ../mcs-plugin/wmtweaks_plugin.c:366
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Ikkunamanagerin viritys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:383
+#: ../mcs-plugin/wmtweaks_plugin.c:385
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Sisällytä ikkunat, jotka eivät näy työtilan vaihtajassa tai tehtäväpalkissa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:389
+#: ../mcs-plugin/wmtweaks_plugin.c:391
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Sisällytä piilotetut (eli pienennetyt) ikkunat"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:395
+#: ../mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycle through windows from all workspaces"
 msgstr "Selaa kaikkien työtilojen ikkunoita"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:400
+#: ../mcs-plugin/wmtweaks_plugin.c:402
 msgid "Cycling"
 msgstr "Selaaminen"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:412
+#: ../mcs-plugin/wmtweaks_plugin.c:414
 msgid "Activate focus stealing prevention"
 msgstr "Käytä kohdistuksen ryöstön estoa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:418
+#: ../mcs-plugin/wmtweaks_plugin.c:420
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Kunnioita standardia ICCCM -kohdistusvihjettä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:423 ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/wmtweaks_plugin.c:425 ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Focus"
 msgstr "Kohdistus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:435
+#: ../mcs-plugin/wmtweaks_plugin.c:437
 msgid "Key used to grab and move windows"
 msgstr "Ikkunoiden liikutteluun käytettävä näppäin"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:441
+#: ../mcs-plugin/wmtweaks_plugin.c:443
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Nosta ikkuna napsautettaessa millä tahansa hiiren painikeella"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:450
 msgid "Restore original size of maximized windows when moving"
 msgstr "Palauta suurennettujen ikkunoiden koko siirrettäessä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:454
+#: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Käytä reunavastusta ikkunoiden loksahtamisen sijaan"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:461
 msgid "Accessibility"
 msgstr "Esteettömyys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:474
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Vaihda työtilaa hiiren vierityspainikkeella työpöydän yllä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:479
+#: ../mcs-plugin/wmtweaks_plugin.c:481
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr "Muista edellinen työtila pikanäppäimillä vaihdettaessa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:486
+#: ../mcs-plugin/wmtweaks_plugin.c:488
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Kierrätä työtiloja työpöytäasettelun mukaisesti"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/wmtweaks_plugin.c:495
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Kierrätä työtiloja, kun ohitetaan ensimmäinen tai viimeinen tila"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:510
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/wmtweaks_plugin.c:513
 msgid "Size|Small"
 msgstr "Pieni"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/wmtweaks_plugin.c:513
 msgid "Size|Large"
 msgstr "Suuri"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:515
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Placement"
 msgstr "Sijoittelu"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:534
+#: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "Show shadows under regular windows"
 msgstr "Näytä varjot tavallisten ikkunoiden alla"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:540
+#: ../mcs-plugin/wmtweaks_plugin.c:542
 msgid "Show shadows under popup windows"
 msgstr "Näytä varjot ponnahdusikkunoiden alla"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:546
+#: ../mcs-plugin/wmtweaks_plugin.c:548
 msgid "Opacity of window decorations"
 msgstr "Ikkunoiden kehysten läpinäkyvyys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:546 ../mcs-plugin/wmtweaks_plugin.c:552
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:548 ../mcs-plugin/wmtweaks_plugin.c:554
+#: ../mcs-plugin/wmtweaks_plugin.c:560 ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:572
 msgid "Transparent"
 msgstr "Läpinäkyvä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:547 ../mcs-plugin/wmtweaks_plugin.c:553
-#: ../mcs-plugin/wmtweaks_plugin.c:559 ../mcs-plugin/wmtweaks_plugin.c:565
+#: ../mcs-plugin/wmtweaks_plugin.c:549 ../mcs-plugin/wmtweaks_plugin.c:555
+#: ../mcs-plugin/wmtweaks_plugin.c:561 ../mcs-plugin/wmtweaks_plugin.c:567
+#: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Opaque"
 msgstr "Läpinäkymätön"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:554
+#, fuzzy
+msgid "Opacity of inactive windows"
+msgstr "Ponnahdusikkunoiden läpinäkyvyys"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:560
 msgid "Opacity of windows during move"
 msgstr "Ikkunoiden läpinäkyvyys siirrettäessä"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558
+#: ../mcs-plugin/wmtweaks_plugin.c:566
 msgid "Opacity of windows during resize"
 msgstr "Ikkunoiden läpinäkyvyys kokoa muutettaessa"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:572
 msgid "Opacity of popup windows"
 msgstr "Ponnahdusikkunoiden läpinäkyvyys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:569
+#: ../mcs-plugin/wmtweaks_plugin.c:577
 msgid "Compositor"
 msgstr "Komposoija"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:618
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Ikkunamanagerin viritys"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:725 ../mcs-plugin/xfwm4_plugin.c:2356
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
@@ -754,12 +761,12 @@ msgstr "Työtila %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 
-#: ../src/settings.c:858
+#: ../src/settings.c:870
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Väriä %s ei voi varata\n"
 
-#: ../src/settings.c:864
+#: ../src/settings.c:876
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Värimääritys %s ei kelpaa\n"

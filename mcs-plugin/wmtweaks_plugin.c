@@ -71,6 +71,7 @@ static gboolean wrap_layout = FALSE;
 static gboolean wrap_cycle = FALSE;
 
 static int placement_ratio = 25;
+static int inactive_opacity = 100;
 static int move_opacity = 100;
 static int resize_opacity = 100;
 static int popup_opacity = 100;
@@ -84,6 +85,7 @@ static char *easy_click = "Alt";
     "Xfwm/EasyClick"
     "Xfwm/FocusHint"
     "Xfwm/FrameOpacity"
+    "Xfwm/InactiveOpacity"
     "Xfwm/MoveOpacity"
     "Xfwm/PlacementRatio"
     "Xfwm/PopupOpacity"
@@ -549,6 +551,12 @@ create_dialog (McsPlugin * mcs_plugin)
         gtk_widget_show (range);
 
         range =
+            create_int_range (mcs_plugin, _("Opacity of inactive windows"), _("Transparent"),
+            _("Opaque"), "Xfwm/InactiveOpacity", 10, 100, 5, &inactive_opacity);
+        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
+        gtk_widget_show (range);
+
+        range =
             create_int_range (mcs_plugin, _("Opacity of windows during move"), _("Transparent"),
             _("Opaque"), "Xfwm/MoveOpacity", 10, 100, 5, &move_opacity);
         gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
@@ -703,6 +711,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_gboolean_setting (mcs_plugin, "Xfwm/WrapCycle", &wrap_cycle);
 
     init_int_setting (mcs_plugin, "Xfwm/PlacementRatio", &placement_ratio);
+    init_int_setting (mcs_plugin, "Xfwm/InactiveOpacity", &inactive_opacity);
     init_int_setting (mcs_plugin, "Xfwm/FrameOpacity", &frame_opacity);
     init_int_setting (mcs_plugin, "Xfwm/MoveOpacity", &move_opacity);
     init_int_setting (mcs_plugin, "Xfwm/ResizeOpacity", &resize_opacity);

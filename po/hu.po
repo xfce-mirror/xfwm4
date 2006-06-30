@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-28 23:20+0200\n"
+"POT-Creation-Date: 2006-06-30 11:19+0200\n"
 "PO-Revision-Date: 2006-06-29 08:26+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -23,7 +23,8 @@ msgid "Workspace Margins"
 msgstr "Munkaterület margók"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "A margók olyan területek a képernyő szélén, amelyekre nem kerül ablak."
 
 #: ../mcs-plugin/margins.c:167
@@ -51,8 +52,7 @@ msgstr "Munkaterületek és margók"
 msgid "Workspaces and Margins"
 msgstr "Munkaterületek és Margók"
 
-#: ../mcs-plugin/workspaces_plugin.c:162
-#: ../mcs-plugin/wmtweaks_plugin.c:498
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:500
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Munkaterületek"
@@ -61,145 +61,150 @@ msgstr "Munkaterületek"
 msgid "Margins"
 msgstr "Margók"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:356
+#: ../mcs-plugin/wmtweaks_plugin.c:358
 msgid "None"
 msgstr "Nincs"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:364
+#: ../mcs-plugin/wmtweaks_plugin.c:366
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Ablakkezelő trükkök"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:383
-msgid "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#: ../mcs-plugin/wmtweaks_plugin.c:385
+msgid ""
+"Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr "A \"lapozóba nem\" vagy \"feladatsávba nem\" tulajdonságú ablakokat is"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:389
+#: ../mcs-plugin/wmtweaks_plugin.c:391
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Rejtett (ikonizált) ablakokat is"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:395
+#: ../mcs-plugin/wmtweaks_plugin.c:397
 msgid "Cycle through windows from all workspaces"
 msgstr "Minden munkaterület ablakai közt köröz"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:400
+#: ../mcs-plugin/wmtweaks_plugin.c:402
 msgid "Cycling"
 msgstr "Körözés"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:412
+#: ../mcs-plugin/wmtweaks_plugin.c:414
 msgid "Activate focus stealing prevention"
 msgstr "Fókusz lopás védelem bekapcsolása"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:418
+#: ../mcs-plugin/wmtweaks_plugin.c:420
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Szabvány ICCCM fókusz tippek fogadása"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:423
-#: ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/wmtweaks_plugin.c:425 ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Focus"
 msgstr "Fókusz"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:435
+#: ../mcs-plugin/wmtweaks_plugin.c:437
 msgid "Key used to grab and move windows"
 msgstr "Ablakok megfogására és mozgatására használt billentyű"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:441
+#: ../mcs-plugin/wmtweaks_plugin.c:443
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Ablakok elővevése egérgombra"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:450
 msgid "Restore original size of maximized windows when moving"
 msgstr "A maximált ablakok eredeti mérete visszaállítása mozgatáskor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:454
+#: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Szélellenállás váratlan ablakütközések ellen"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:459
+#: ../mcs-plugin/wmtweaks_plugin.c:461
 msgid "Accessibility"
 msgstr "Hozzáférhetőség"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:474
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Munkaterületek váltása az asztalon való görgetésre"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:479
-msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr "Előző munkaterület megjegyzése és visszahívása gyorsbillentyűkkel való váltáskor"
+#: ../mcs-plugin/wmtweaks_plugin.c:481
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr ""
+"Előző munkaterület megjegyzése és visszahívása gyorsbillentyűkkel való "
+"váltáskor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:486
+#: ../mcs-plugin/wmtweaks_plugin.c:488
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Munkaterület váltás a jelen asztal elrendezés alapján"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/wmtweaks_plugin.c:495
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Munkaterület váltás az 1. vagy utolsó munkaterület elérésekor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:510
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Ablakok minimum mérete az okos elhelyezéskor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/wmtweaks_plugin.c:513
 msgid "Size|Small"
 msgstr "Kicsi"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/wmtweaks_plugin.c:513
 msgid "Size|Large"
 msgstr "Nagy"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:515
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Placement"
 msgstr "Elhelyezés"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:534
+#: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "Show shadows under regular windows"
 msgstr "Normál ablakok árnyékolása"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:540
+#: ../mcs-plugin/wmtweaks_plugin.c:542
 msgid "Show shadows under popup windows"
 msgstr "Árnyékok előugró ablakok alatt"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:546
+#: ../mcs-plugin/wmtweaks_plugin.c:548
 msgid "Opacity of window decorations"
 msgstr "Ablakdíszek átlátszósága"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:546
-#: ../mcs-plugin/wmtweaks_plugin.c:552
-#: ../mcs-plugin/wmtweaks_plugin.c:558
-#: ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:548 ../mcs-plugin/wmtweaks_plugin.c:554
+#: ../mcs-plugin/wmtweaks_plugin.c:560 ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:572
 msgid "Transparent"
 msgstr "Átlátszó"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:547
-#: ../mcs-plugin/wmtweaks_plugin.c:553
-#: ../mcs-plugin/wmtweaks_plugin.c:559
-#: ../mcs-plugin/wmtweaks_plugin.c:565
+#: ../mcs-plugin/wmtweaks_plugin.c:549 ../mcs-plugin/wmtweaks_plugin.c:555
+#: ../mcs-plugin/wmtweaks_plugin.c:561 ../mcs-plugin/wmtweaks_plugin.c:567
+#: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Opaque"
 msgstr "Átlátszatlan"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:552
+#: ../mcs-plugin/wmtweaks_plugin.c:554
+#, fuzzy
+msgid "Opacity of inactive windows"
+msgstr "Előugró ablakok átlátszósága"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:560
 msgid "Opacity of windows during move"
 msgstr "Ablakok átlátszósága mozgatáskor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558
+#: ../mcs-plugin/wmtweaks_plugin.c:566
 msgid "Opacity of windows during resize"
 msgstr "Ablakok átlátszósága átméretezéskor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:572
 msgid "Opacity of popup windows"
 msgstr "Előugró ablakok átlátszósága"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:569
+#: ../mcs-plugin/wmtweaks_plugin.c:577
 msgid "Compositor"
 msgstr "Kompozítor"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:618
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Ablakkezelő trükkök"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:725
-#: ../mcs-plugin/xfwm4_plugin.c:2356
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/xfwm4_plugin.c:2356
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "E beállítások nem működnek a jelenlegi (%s) ablakkezelőddel"
@@ -208,8 +213,7 @@ msgstr "E beállítások nem működnek a jelenlegi (%s) ablakkezelőddel"
 msgid "Change name"
 msgstr "Új név"
 
-#: ../mcs-plugin/workspaces.c:338
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:474
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:474
 #, c-format
 msgid "Workspace %d"
 msgstr "%d munkaterület"
@@ -254,18 +258,15 @@ msgstr "Maximálás"
 msgid "Close"
 msgstr "Bezárás"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Shade window"
 msgstr "Ablak felgördítése"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Hide window"
 msgstr "Ablak rejtése"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window"
 msgstr "Ablak maximálása"
 
@@ -723,8 +724,7 @@ msgstr "_Leválasztás"
 msgid "Context _help"
 msgstr "Helyi _súgó"
 
-#: ../src/menu.c:50
-#: ../src/menu.c:51
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr "Mindig felül"
 
@@ -763,12 +763,12 @@ msgstr "%i. munkaterület"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: a GtkMenu nem tudta elkapni a mutatót\n"
 
-#: ../src/settings.c:858
+#: ../src/settings.c:870
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nem lehet lefoglalni a színt: %s\n"
 
-#: ../src/settings.c:864
+#: ../src/settings.c:876
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nem lehet értelmezni a színt: %s\n"
@@ -800,4 +800,3 @@ msgstr "Munkaterület beállítások"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 munkaterület beállítások"
-

@@ -1627,6 +1627,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* Opacity for compositing manager */
     c->opacity = NET_WM_OPAQUE;
     getOpacity (display_info, c->window, &c->opacity);
+    c->opacity_applied = c->opacity;
+    c->opacity_flags = 0;
 
     c->opacity_locked = getOpacityLock (display_info, c->window);
 
@@ -2858,40 +2860,99 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 }
 
 void
+clientUpdateOpacity (ScreenInfo *screen_info, Client *focus)
+{
+    Client *c;
+    int i;
+
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, ++i)
+    {
+        gboolean o = FLAG_TEST(c->type, WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DONT_FOCUS)
+                     || (focus == c)
+                     || (focus && ((focus->transient_for == c->window) || (focus->window == c->transient_for)))
+                     || (focus && (clientIsModalFor (c, focus) || clientIsModalFor (focus, c)));
+
+        clientSetOpacity (c, c->opacity, OPACITY_INACTIVE, o ? 0 : OPACITY_INACTIVE);
+    }
+}
+
+void
+clientSetOpacity (Client *c, guint opacity, guint clear, guint xor)
+{
+    guint applied;
+
+    c->opacity_flags = (c->opacity_flags & ~clear) ^ xor;
+
+    if (c->opacity_locked)
+    {
+        applied = c->opacity;
+    }
+    else
+    {
+        long long multiplier = 1, divisor = 1;
+
+        c->opacity = applied = opacity;
+
+        if (FLAG_TEST (c->opacity_flags, OPACITY_MOVE))
+        {
+            multiplier *= c->screen_info->params->move_opacity;
+            divisor *= 100;
+        }
+        if (FLAG_TEST (c->opacity_flags, OPACITY_RESIZE))
+        {
+            multiplier *= c->screen_info->params->resize_opacity;
+            divisor *= 100;
+        }
+        if (FLAG_TEST (c->opacity_flags, OPACITY_INACTIVE))
+        {
+            multiplier *= c->screen_info->params->inactive_opacity;
+            divisor *= 100;
+        }
+
+        applied = (guint) ((long long) applied * multiplier / divisor);
+    }
+
+    if (applied != c->opacity_applied)
+    {
+        c->opacity_applied = applied;
+        compositorWindowSetOpacity (c->screen_info->display_info, c->frame, applied);
+    }
+}
+
+void
 clientDecOpacity (Client * c)
 {
-   ScreenInfo *screen_info;
-   DisplayInfo *display_info;
+     ScreenInfo *screen_info;
+     DisplayInfo *display_info;
 
-   screen_info = c->screen_info;
-   display_info = screen_info->display_info;
+     screen_info = c->screen_info;
+     display_info = screen_info->display_info;
 
-   if ((c->opacity > OPACITY_SET_MIN) && !(c->opacity_locked ))
-   {
-        c->opacity -= OPACITY_SET_STEP;
-        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
-   }
+     if ((c->opacity > OPACITY_SET_MIN) && !(c->opacity_locked ))
+     {
+          clientSetOpacity (c, c->opacity - OPACITY_SET_STEP, 0, 0);
+     }
 }
 
 void
 clientIncOpacity (Client * c)
 {
-   ScreenInfo *screen_info;
-   DisplayInfo *display_info;
+     ScreenInfo *screen_info;
+     DisplayInfo *display_info;
 
-   screen_info = c->screen_info;
-   display_info = screen_info->display_info;
+     screen_info = c->screen_info;
+     display_info = screen_info->display_info;
 
-   if ((c->opacity < NET_WM_OPAQUE) && !(c->opacity_locked ))
-   {
-        c->opacity += OPACITY_SET_STEP;
+     if ((c->opacity < NET_WM_OPAQUE) && !(c->opacity_locked ))
+     {
+          guint opacity = c->opacity + OPACITY_SET_STEP;
 
-        if ( c->opacity < OPACITY_SET_MIN )
-        {
-            c->opacity = NET_WM_OPAQUE ;
-        }
-        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
-   }
+          if (opacity < OPACITY_SET_MIN)
+          {
+              opacity = NET_WM_OPAQUE;
+          }
+          clientSetOpacity (c, opacity, 0, 0);
+     }
 }
 
 /* Xrandr stuff: on screen size change, make sure all clients are still visible */
@@ -3499,7 +3560,6 @@ clientMove (Client * c, XEvent * ev)
     Cursor cursor;
     int changes;
     gboolean g1, g2;
-    gboolean restore_opacity;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientDoMove");
@@ -3508,7 +3568,6 @@ clientMove (Client * c, XEvent * ev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    restore_opacity = FALSE;
     changes = CWX | CWY;
 
     passdata.c = c;
@@ -3560,9 +3619,7 @@ clientMove (Client * c, XEvent * ev)
     /* Set window translucent while moving, looks nice */
     if ((screen_info->params->move_opacity < 100) && !(screen_info->params->box_move) && !(c->opacity_locked))
     {
-        compositorWindowSetOpacity (display_info, c->frame, 
-            (guint) (c->opacity * (double) (screen_info->params->move_opacity / 100.0)));
-        restore_opacity = TRUE;
+        clientSetOpacity (c, c->opacity, OPACITY_MOVE, OPACITY_MOVE);
     }
 
     /* 
@@ -3598,10 +3655,7 @@ clientMove (Client * c, XEvent * ev)
         clientDrawOutline (c);
     }
     /* Set window opacity to its original value */
-    if (restore_opacity)
-    {
-        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
-    }
+    clientSetOpacity (c, c->opacity, OPACITY_MOVE, 0);
 
     wc.x = c->x;
     wc.y = c->y;
@@ -4005,7 +4059,6 @@ clientResize (Client * c, int corner, XEvent * ev)
     MoveResizeData passdata;
     int w_orig, h_orig;
     gboolean g1, g2;
-    gboolean restore_opacity;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientResize");
@@ -4013,7 +4066,6 @@ clientResize (Client * c, int corner, XEvent * ev)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    restore_opacity = FALSE;
 
     passdata.c = c;
     passdata.cancel_x = passdata.ox = c->width;
@@ -4074,9 +4126,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     /* Set window translucent while resizing, doesn't looks too nice  :( */
     if ((screen_info->params->resize_opacity < 100) && !(screen_info->params->box_resize) && !(c->opacity_locked))
     {
-        compositorWindowSetOpacity (display_info, c->frame, 
-            (guint) (c->opacity * (double) (screen_info->params->resize_opacity / 100.0)));
-        restore_opacity = TRUE;
+        clientSetOpacity (c, c->opacity, OPACITY_RESIZE, OPACITY_RESIZE);
     }
     
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
@@ -4100,10 +4150,7 @@ clientResize (Client * c, int corner, XEvent * ev)
         clientDrawOutline (c);
     }
     /* Set window opacity to its original value */
-    if (restore_opacity)
-    {
-        compositorWindowSetOpacity (display_info, c->frame, c->opacity);
-    }
+    clientSetOpacity (c, c->opacity, OPACITY_RESIZE, 0);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) && 
         ((w_orig != c->width) || (h_orig != c->height)))

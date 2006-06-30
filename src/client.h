@@ -159,7 +159,10 @@
 #define WINDOW_TYPE_DONT_FOCUS          (WINDOW_SPLASHSCREEN | \
                                          WINDOW_DOCK)
 
-
+/* Which bits of opacity are applied */
+#define OPACITY_MOVE			(1<<0)
+#define OPACITY_RESIZE			(1<<1)
+#define OPACITY_INACTIVE		(1<<2)
 
 /* Convenient macros */
 #define FLAG_TEST(flag,bits)                   (flag & (bits))
@@ -269,6 +272,8 @@ struct _Client
     ClientPixmapCache pm_cache;
     /* Opacity for the compositor */
     guint opacity;
+    guint opacity_applied;
+    guint opacity_flags;
     gboolean opacity_locked;
     
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
@@ -325,6 +330,8 @@ void     clientToggleAbove (Client *);
 void     clientToggleBelow (Client *);
 void     clientRemoveMaximizeFlag (Client *);
 void     clientToggleMaximized (Client *, int, gboolean);
+void     clientUpdateOpacity (ScreenInfo *, Client *);
+void     clientSetOpacity (Client *, guint opacity, guint clear, guint xor);
 void     clientIncOpacity (Client *);
 void     clientDecOpacity (Client *);
 void     clientScreenResize(ScreenInfo *);

@@ -380,6 +380,12 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                         screen_info->params->frame_opacity = setting->data.v_int;
                         reloadScreenSettings (screen_info, UPDATE_FRAME);
                     }
+                    else if (!strcmp (name, "Xfwm/InactiveOpacity"))
+                    {
+                        screen_info->params->inactive_opacity = setting->data.v_int;
+                        reloadScreenSettings (screen_info, UPDATE_FRAME);
+                        clientUpdateOpacity (screen_info, clientGetFocus ());
+                    }
                     else if (!strcmp (name, "Xfwm/MoveOpacity"))
                     {
                         screen_info->params->move_opacity = setting->data.v_int;
@@ -743,6 +749,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt ("placement_ratio", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/InactiveOpacity", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("inactive_opacity", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/MoveOpacity", CHANNEL5,
@@ -1244,6 +1256,7 @@ loadSettings (ScreenInfo *screen_info)
         {"focus_new", NULL, TRUE},
         {"frame_opacity", NULL, TRUE},
         {"full_width_title", NULL, TRUE},
+        {"inactive_opacity", NULL, TRUE},
         {"keytheme", NULL, TRUE},
         {"margin_bottom", NULL, FALSE},
         {"margin_left", NULL, FALSE},
@@ -1390,6 +1403,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("restore_on_move", rc));
     screen_info->params->frame_opacity = 
         abs (TOINT (getValue ("frame_opacity", rc)));
+    screen_info->params->inactive_opacity = 
+        abs (TOINT (getValue ("inactive_opacity", rc)));
     screen_info->params->move_opacity = 
         abs (TOINT (getValue ("move_opacity", rc)));
     screen_info->params->resize_opacity = 
