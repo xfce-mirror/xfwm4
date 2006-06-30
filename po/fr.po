@@ -186,9 +186,8 @@ msgid "Opaque"
 msgstr "Opaque"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:554
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Opacité des fenêtres contextuelles"
+msgstr "Opacité des fenêtres inactives"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:560
 msgid "Opacity of windows during move"
@@ -562,9 +561,8 @@ msgid "Resize window right"
 msgstr "Retailler la fenêtre vers la droite"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "Fermer la fenêtre"
+msgstr "Annuler le déplacement/redimensionnement de la fenêtre"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Raise window"
