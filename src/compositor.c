@@ -1003,7 +1003,7 @@ unredirect_win (CWindow *cw)
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
         XSync (display_info->dpy, FALSE);
 
-        TRACE ("Window 0x%lx unredirected", cw->id);
+        TRACE ("Window 0x%lx unredirected, overlays is %i", cw->id, screen_info->overlays);
     }
 }
 
@@ -1708,6 +1708,7 @@ map_win (CWindow *cw)
     if (!WIN_IS_REDIRECTED(cw))
     {
         screen_info->overlays++;
+        TRACE ("overlay increased to %i", screen_info->overlays);
         return;
     }
 
