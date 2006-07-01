@@ -98,7 +98,10 @@ struct _MoveResizeData
     gboolean grab;
     gboolean is_transient;
     gboolean move_resized;
+    gboolean released;
+    int button;
     int cancel_x, cancel_y; /* for cancellation (either position or size) */
+    int cancel_workspace;
     int mx, my;
     int ox, oy;
     int oldw, oldh;
@@ -3211,6 +3214,23 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
 }
 
 static eventFilterStatus
+clientMoveResize_release_filter (XEvent * xevent, gpointer data)
+{
+    MoveResizeData *passdata = (MoveResizeData *) data;
+
+    TRACE ("entering clientMoveResize_release_filter");
+
+    if ((xevent->type == ButtonRelease) &&
+        (xevent->xbutton.button == passdata->button))
+    {
+        gtk_main_quit ();
+        return EVENT_FILTER_STOP;
+    }
+
+    return EVENT_FILTER_CONTINUE;
+}
+
+static eventFilterStatus
 clientMove_event_filter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
@@ -3302,6 +3322,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_CANCEL].keycode)
         {
             moving = FALSE;
+            passdata->released = passdata->use_keys;
 
             if (screen_info->params->box_move)
             {
@@ -3321,6 +3342,16 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
                 wc.y = c->y;
                 clientConfigure (c, &wc, CWX | CWY, NO_CFG_FLAG);
             }
+            if (screen_info->current_ws != passdata->cancel_workspace)
+            {
+                workspaceSwitch (screen_info, passdata->cancel_workspace, c, FALSE);
+            }
+            if (toggled_maximize)
+            {
+                toggled_maximize = FALSE;
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
+                passdata->move_resized = TRUE;
+            }
         }
         else if (passdata->use_keys)
         {
@@ -3335,6 +3366,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         if (!passdata->use_keys)
         {
             moving = FALSE;
+            passdata->released = (xevent->xbutton.button == passdata->button);
         }
     }
     else if (xevent->type == MotionNotify)
@@ -3350,12 +3382,10 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
-
         if (screen_info->params->box_move)
         {
             clientDrawOutline (c);
         }
-
         if ((screen_info->workspace_count > 1) && !(passdata->is_transient))
         {
             if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
@@ -3600,15 +3630,18 @@ clientMove (Client * c, XEvent * ev)
     passdata.c = c;
     passdata.cancel_x = passdata.ox = c->x;
     passdata.cancel_y = passdata.oy = c->y;
+    passdata.cancel_workspace = c->win_workspace;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
+    passdata.released = FALSE;
+    passdata.button = ev->xbutton.button;
     passdata.is_transient = clientIsValidTransientOrModal (c);
     passdata.move_resized = FALSE;
     
     if (ev->type == KeyPress)
     {
         cursor = None;
-        passdata.use_keys = TRUE;
+        passdata.released = passdata.use_keys = TRUE;
         passdata.mx = ev->xkey.x_root;
         passdata.my = ev->xkey.y_root;
     }
@@ -3676,7 +3709,6 @@ clientMove (Client * c, XEvent * ev)
         poswinDestroy (passdata.poswin);
     }
 #endif /* SHOW_POSITION */
-
     if (passdata.grab && screen_info->params->box_move)
     {
         clientDrawOutline (c);
@@ -3695,6 +3727,15 @@ clientMove (Client * c, XEvent * ev)
     clientConfigure (c, &wc, changes, NO_CFG_FLAG);
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    if (!passdata.released)
+    {
+        /* If this is a drag-move, wait for the button to be released.
+         * If we don't, we might get release events in the wrong place.
+         */
+        eventFilterPush (display_info->xfilter, clientMoveResize_release_filter, &passdata);
+        gtk_main ();
+        eventFilterPop (display_info->xfilter);
+    }
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     if (passdata.grab && screen_info->params->box_move)
     {
@@ -3785,12 +3826,10 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             {
                 key_width_inc = ((int) (10 / key_width_inc)) * key_width_inc;
             }
-
             if (key_height_inc < 10)
             {
                 key_height_inc = ((int) (10 / key_height_inc)) * key_height_inc;
             }
-
             if (!passdata->grab && screen_info->params->box_resize)
             {
                 myDisplayGrabServer (display_info);
@@ -3872,6 +3911,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_CANCEL].keycode)
         {
             resizing = FALSE;
+            passdata->released = passdata->use_keys;
 
             if (screen_info->params->box_resize)
             {
@@ -3889,7 +3929,6 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             }
             c->width = passdata->cancel_x;
             c->height = passdata->cancel_y;
-
             if (screen_info->params->box_resize)
             {
                 clientDrawOutline (c);
@@ -3924,7 +3963,6 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             resizing = FALSE;
             clientClearLastOpTime (c);
         }
-
         if (!passdata->grab && screen_info->params->box_resize)
         {
             myDisplayGrabServer (display_info);
@@ -3987,7 +4025,6 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
             c->y = prev_y;
             c->height = prev_height;
         }
-
         if (move_top)
         {
             if ((c->y > disp_max_y - min_visible)
@@ -4051,6 +4088,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         if (!passdata->use_keys)
         {
             resizing = FALSE;
+            passdata->released = (xevent->xbutton.button == passdata->button);
         }
     }
     else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
@@ -4099,13 +4137,15 @@ clientResize (Client * c, int corner, XEvent * ev)
     passdata.cancel_y = passdata.oy = c->height;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
+    passdata.released = FALSE;
+    passdata.button = ev->xbutton.button;
     passdata.corner = corner;
     w_orig = c->width;
     h_orig = c->height;
 
     if (ev->type == KeyPress)
     {
-        passdata.use_keys = TRUE;
+        passdata.released = passdata.use_keys = TRUE;
         passdata.mx = ev->xkey.x_root;
         passdata.my = ev->xkey.y_root;
     }
@@ -4192,6 +4232,15 @@ clientResize (Client * c, int corner, XEvent * ev)
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    if (!passdata.released)
+    {
+        /* If this is a drag-resize, wait for the button to be released.
+         * If we don't, we might get release events in the wrong place.
+         */
+        eventFilterPush (display_info->xfilter, clientMoveResize_release_filter, &passdata);
+        gtk_main ();
+        eventFilterPop (display_info->xfilter);
+    }
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     if (passdata.grab && screen_info->params->box_resize)
     {
