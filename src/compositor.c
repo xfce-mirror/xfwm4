@@ -996,7 +996,6 @@ unredirect_win (CWindow *cw)
             cw->name_window_pixmap = None;
         }
 #endif
-        screen_info->overlays++;
         cw->ignore_unmaps++;
         cw->redirected = FALSE;
 
@@ -1257,7 +1256,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     }
 
     TRACE ("Copying data back to screen");
-
     /* Set clipping back to the given region */
     XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
     XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
@@ -1569,7 +1567,6 @@ repair_win (CWindow *cw)
 static void
 damage_screen (ScreenInfo *screen_info)
 {
-#ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
     XserverRegion region;
     XRectangle  r;
@@ -1582,13 +1579,11 @@ damage_screen (ScreenInfo *screen_info)
     region = XFixesCreateRegion (display_info->dpy, &r, 1);
     /* Region will be freed by add_damage () */
     add_damage (screen_info, region, TRUE);
-#endif /* HAVE_COMPOSITOR */
 }
 
 static void
 damage_win (CWindow *cw, gboolean repair)
 {
-#ifdef HAVE_COMPOSITOR
     XserverRegion extents;
     
     g_return_if_fail (cw != NULL);
@@ -1597,7 +1592,6 @@ damage_win (CWindow *cw, gboolean repair)
     extents = win_extents (cw);
     fix_region (cw, extents);
     add_damage (cw->screen_info, extents, repair);
-#endif /* HAVE_COMPOSITOR */
 }
 
 static void
@@ -1708,7 +1702,7 @@ map_win (CWindow *cw)
     if (!WIN_IS_REDIRECTED(cw))
     {
         screen_info->overlays++;
-        TRACE ("overlay increased to %i", screen_info->overlays);
+        TRACE ("Mapped window 0x%lx, overlays increased to %i", cw->id, screen_info->overlays);
         return;
     }
 
@@ -1748,7 +1742,7 @@ unmap_win (CWindow *cw)
     if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
     {
         screen_info->overlays--;
-        TRACE ("overlay decreased to %i", screen_info->overlays);
+        TRACE ("Unmapped window 0x%lx, overlays decreased to %i\n", cw->id, screen_info->overlays);
     }
 
     cw->viewable = FALSE;
@@ -2060,12 +2054,6 @@ destroy_win (DisplayInfo *display_info, Window id)
         unmap_win (cw);
         screen_info = cw->screen_info;
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
-
-        if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
-        {
-            screen_info->overlays--;
-            TRACE ("overlay decreased to %i", screen_info->overlays);
-        }
 
         free_win_data (cw, TRUE);
     }
