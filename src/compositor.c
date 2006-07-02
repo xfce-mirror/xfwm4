@@ -2665,7 +2665,8 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->overlays = 0;
 
     XClearArea (display_info->dpy, screen_info->xroot, 0, 0, 0, 0, TRUE);
-    setAtomManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, screen_info->xfwm4_win);
+    setAtomManagerOwner (display_info, COMPOSITING_MANAGER, 
+                         screen_info->xroot, screen_info->xfwm4_win);
 
     return TRUE;
 #else
@@ -2737,7 +2738,8 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
 
     screen_info->gaussianSize = -1;
-    XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
+    XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, 
+                                    display_info->composite_mode);
     screen_info->compositor_active = FALSE;
 
     setAtomManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, None);

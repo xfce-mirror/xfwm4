@@ -447,11 +447,24 @@ initialize (int argc, char **argv, gint compositor_mode)
             return -2;
         }
         
-        if ((compositor_mode) && (screen_info->params->use_compositing))
+        if (compositor_mode)
         {
-            if (compositorManageScreen (screen_info))
+            gboolean xfwm4_compositor;
+            
+            xfwm4_compositor = (compositor_mode > 1);
+            if (screen_info->params->use_compositing)
             {
-                setAtomManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER, screen_info->xroot, screen_info->xfwm4_win);
+                xfwm4_compositor = compositorManageScreen (screen_info);
+            }
+            if (xfwm4_compositor)
+            {
+                /* 
+                   Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
+                   compositing manager (used by WM tweaks to determine whether or not
+                   show the "compositor" tab.
+                 */
+                setAtomManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER, 
+                                     screen_info->xroot, screen_info->xfwm4_win);
             }
         }
 
