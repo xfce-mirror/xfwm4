@@ -340,13 +340,15 @@ cb_dialog_response (GtkWidget * dialog, gint response_id)
 static Itf *
 create_dialog (McsPlugin * mcs_plugin)
 {
+#ifdef HAVE_COMPOSITOR
     static Atom composite = None;
+    GtkWidget *compositor_options_vbox;
+#endif
     Itf *dialog;
     GtkWidget *dialog_vbox;
     GtkWidget *notebook;
     GtkWidget *label;
     GtkWidget *vbox;
-    GtkWidget *compositor_options_vbox;
     GtkWidget *check_button;
     GtkWidget *option_menu;
     GtkWidget *range;
@@ -531,6 +533,7 @@ create_dialog (McsPlugin * mcs_plugin)
         gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), nth++), label);
     gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
+#ifdef HAVE_COMPOSITOR
     if (G_UNLIKELY (!composite))
     {
         composite = XInternAtom (GDK_DISPLAY (), "XFWM4_COMPOSITING_MANAGER", False);
@@ -605,6 +608,7 @@ create_dialog (McsPlugin * mcs_plugin)
             gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), nth++), label);
         gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
     }
+#endif
 
     action_area = GTK_DIALOG (dialog->tweaks_dialog)->action_area;
     gtk_widget_show (action_area);
