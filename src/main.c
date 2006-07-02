@@ -330,6 +330,7 @@ get_default_compositor (DisplayInfo *display_info)
         return 0;
     }
 
+#if 0
     /* 
      * Test if the XRender implementation is fast enough for the
      * compositor.
@@ -339,7 +340,7 @@ get_default_compositor (DisplayInfo *display_info)
         g_warning ("The XRender implementation currently in use on this system is too slow for the compositor");
         return 0;
     }
-
+#endif
     return 2;
 }
 #endif /* HAVE_COMPOSITOR */
@@ -446,11 +447,11 @@ initialize (int argc, char **argv, gint compositor_mode)
             return -2;
         }
         
-        if (compositor_mode)
+        if ((compositor_mode) && (screen_info->params->use_compositing))
         {
             if (compositorManageScreen (screen_info))
             {
-                setCompositingManagerOwner (display_info,  screen_info->xroot, screen_info->xfwm4_win);
+                setAtomManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER, screen_info->xroot, screen_info->xfwm4_win);
             }
         }
 

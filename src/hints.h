@@ -177,7 +177,7 @@ gboolean getKDEIcon (DisplayInfo *, Window, Pixmap *, Pixmap *);
 gboolean getRGBIconData (DisplayInfo *, Window, unsigned long **, unsigned long *);
 gboolean getOpacity (DisplayInfo *, Window, guint *);
 gboolean getOpacityLock (DisplayInfo *, Window);
-gboolean setCompositingManagerOwner (DisplayInfo *, Window , Window);
+gboolean setAtomManagerOwner (DisplayInfo *, int, Window , Window);
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
 gboolean checkKdeSystrayWindow(DisplayInfo *, Window);

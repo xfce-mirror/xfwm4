@@ -67,6 +67,7 @@ static gboolean restore_on_move = TRUE;
 static gboolean scroll_workspaces = TRUE;
 static gboolean snap_resist = FALSE;
 static gboolean toggle_workspaces = TRUE;
+static gboolean use_compositing = FALSE;
 static gboolean wrap_layout = FALSE;
 static gboolean wrap_cycle = FALSE;
 
@@ -306,6 +307,14 @@ create_option_menu (McsPlugin * mcs_plugin, gchar * values[], const gchar * labe
     return (hbox);
 }
 
+#ifdef HAVE_COMPOSITOR
+static void
+cb_compositor_changed (GtkWidget * widget, gpointer user_data)
+{
+    gtk_widget_set_sensitive (GTK_WIDGET (user_data), gtk_toggle_button_get_active GTK_TOGGLE_BUTTON (widget));
+}
+#endif
+
 static void
 cb_dialog_response (GtkWidget * dialog, gint response_id)
 {
@@ -337,6 +346,7 @@ create_dialog (McsPlugin * mcs_plugin)
     GtkWidget *notebook;
     GtkWidget *label;
     GtkWidget *vbox;
+    GtkWidget *compositor_options_vbox;
     GtkWidget *check_button;
     GtkWidget *option_menu;
     GtkWidget *range;
@@ -344,7 +354,8 @@ create_dialog (McsPlugin * mcs_plugin)
     GtkWidget *button;
     guint nth = 0;
 
-    gchar *modifier_list[] = { "Alt",
+    gchar *modifier_list[] = { 
+        "Alt",
         "Control",
         "Hyper",
         "Meta",
@@ -373,7 +384,7 @@ create_dialog (McsPlugin * mcs_plugin)
     notebook = gtk_notebook_new ();
     gtk_container_set_border_width (GTK_CONTAINER (notebook), BORDER + 1);
     gtk_widget_show (notebook);
-    gtk_box_pack_start (GTK_BOX (dialog_vbox), notebook, FALSE, TRUE, BORDER);
+    gtk_box_pack_start (GTK_BOX (dialog_vbox), notebook, TRUE, TRUE, BORDER);
 
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
@@ -522,7 +533,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     if (G_UNLIKELY (!composite))
     {
-        composite = XInternAtom (GDK_DISPLAY (), "COMPOSITING_MANAGER", False);
+        composite = XInternAtom (GDK_DISPLAY (), "XFWM4_COMPOSITING_MANAGER", False);
     }
 
     if (XGetSelectionOwner (GDK_DISPLAY (), composite))
@@ -533,45 +544,59 @@ create_dialog (McsPlugin * mcs_plugin)
         gtk_widget_show (vbox);
 
         check_button =
+            create_gboolean_button (mcs_plugin, _("Enable display compositing"),
+            "Xfwm/UseCompositing", &use_compositing);
+        gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
+        gtk_widget_show (check_button);
+
+        compositor_options_vbox = gtk_vbox_new (FALSE, 0);
+        gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
+        gtk_container_add (GTK_CONTAINER (vbox), compositor_options_vbox);
+        gtk_widget_show (compositor_options_vbox);
+
+        gtk_widget_set_sensitive (compositor_options_vbox, gtk_toggle_button_get_active GTK_TOGGLE_BUTTON (check_button));
+        g_signal_connect (G_OBJECT (check_button), "toggled", G_CALLBACK (cb_compositor_changed), compositor_options_vbox);
+
+        check_button =
             create_gboolean_button (mcs_plugin, _("Show shadows under regular windows"),
             "Xfwm/ShowFrameShadow", &show_frame_shadow);
-        gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), check_button, FALSE, TRUE, 0);
         gtk_widget_show (check_button);
 
         check_button =
             create_gboolean_button (mcs_plugin, _("Show shadows under popup windows"),
             "Xfwm/ShowPopupShadow", &show_popup_shadow);
-        gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), check_button, FALSE, TRUE, 0);
         gtk_widget_show (check_button);
 
         range =
             create_int_range (mcs_plugin, _("Opacity of window decorations"), _("Transparent"),
             _("Opaque"), "Xfwm/FrameOpacity", 50, 100, 5, &frame_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         range =
             create_int_range (mcs_plugin, _("Opacity of inactive windows"), _("Transparent"),
             _("Opaque"), "Xfwm/InactiveOpacity", 10, 100, 5, &inactive_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         range =
             create_int_range (mcs_plugin, _("Opacity of windows during move"), _("Transparent"),
             _("Opaque"), "Xfwm/MoveOpacity", 10, 100, 5, &move_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         range =
             create_int_range (mcs_plugin, _("Opacity of windows during resize"), _("Transparent"),
             _("Opaque"), "Xfwm/ResizeOpacity", 10, 100, 5, &resize_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         range =
             create_int_range (mcs_plugin, _("Opacity of popup windows"), _("Transparent"),
             _("Opaque"), "Xfwm/PopupOpacity", 10, 100, 5, &popup_opacity);
-        gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), range, FALSE, TRUE, 0);
         gtk_widget_show (range);
 
         label = gtk_label_new (_("Compositor"));
@@ -707,6 +732,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_gboolean_setting (mcs_plugin, "Xfwm/SnapResist", &snap_resist);
     init_gboolean_setting (mcs_plugin, "Xfwm/ScrollWorkspaces", &scroll_workspaces);
     init_gboolean_setting (mcs_plugin, "Xfwm/ToggleWorkspaces", &toggle_workspaces);
+    init_gboolean_setting (mcs_plugin, "Xfwm/UseCompositing", &use_compositing);
     init_gboolean_setting (mcs_plugin, "Xfwm/WrapLayout", &wrap_layout);
     init_gboolean_setting (mcs_plugin, "Xfwm/WrapCycle", &wrap_cycle);
 

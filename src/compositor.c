@@ -1446,7 +1446,7 @@ free_win_data (CWindow *cw, gboolean delete)
 }
 
 static void
-add_damage (ScreenInfo *screen_info, XserverRegion damage, gboolean repair)
+add_damage (ScreenInfo *screen_info, XserverRegion damage)
 {
     DisplayInfo *display_info;
 
@@ -1471,10 +1471,7 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage, gboolean repair)
         screen_info->allDamage = damage;
     }
 
-    if (repair)
-    {
-        add_repair (screen_info->display_info);
-    }
+    add_repair (screen_info->display_info);
 }
 
 static void
@@ -1559,7 +1556,7 @@ repair_win (CWindow *cw)
     if (parts)
     {
         fix_region (cw, parts);
-        add_damage (cw->screen_info, parts, TRUE);
+        add_damage (cw->screen_info, parts);
         cw->damaged = TRUE;
     }
 }
@@ -1578,11 +1575,11 @@ damage_screen (ScreenInfo *screen_info)
     r.height = screen_info->height;
     region = XFixesCreateRegion (display_info->dpy, &r, 1);
     /* Region will be freed by add_damage () */
-    add_damage (screen_info, region, TRUE);
+    add_damage (screen_info, region);
 }
 
 static void
-damage_win (CWindow *cw, gboolean repair)
+damage_win (CWindow *cw)
 {
     XserverRegion extents;
     
@@ -1591,7 +1588,7 @@ damage_win (CWindow *cw, gboolean repair)
 
     extents = win_extents (cw);
     fix_region (cw, extents);
-    add_damage (cw->screen_info, extents, repair);
+    add_damage (cw->screen_info, extents);
 }
 
 static void
@@ -1634,7 +1631,7 @@ determine_mode(CWindow *cw)
         XFixesCopyRegion (display_info->dpy, damage, cw->extents);
         fix_region (cw, damage);
         /* damage region will be destroyed by add_damage () */
-        add_damage (screen_info, damage, TRUE);
+        add_damage (screen_info, damage);
     }
 }
 
@@ -1651,7 +1648,7 @@ expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
     display_info = screen_info->display_info;
     region = XFixesCreateRegion (display_info->dpy, rects, nrects);
     /* damage region will be destroyed by add_damage () */
-    add_damage (screen_info, region, TRUE);
+    add_damage (screen_info, region);
 }
 
 static void
@@ -1747,7 +1744,7 @@ unmap_win (CWindow *cw)
 
     cw->viewable = FALSE;
     cw->damaged = FALSE;
-    damage_win (cw, TRUE);
+    damage_win (cw);
     free_win_data (cw, FALSE);
 }
 
@@ -1978,7 +1975,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     display_info = screen_info->display_info;
 
     damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
-    if (cw->extents)    
+    if (cw->extents)
     {
         XFixesCopyRegion (display_info->dpy, damage, cw->extents);
         XFixesDestroyRegion (display_info->dpy, cw->extents);
@@ -2034,7 +2031,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     }
     fix_region (cw, damage);
     /* damage region will be destroyed by add_damage () */
-    add_damage (screen_info, damage, TRUE);
+    add_damage (screen_info, damage);
 }
 
 static void
@@ -2668,6 +2665,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->overlays = 0;
 
     XClearArea (display_info->dpy, screen_info->xroot, 0, 0, 0, 0, TRUE);
+    setAtomManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, screen_info->xfwm4_win);
 
     return TRUE;
 #else
@@ -2689,6 +2687,12 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
     {
+        return;
+    }
+
+    if (!(screen_info->compositor_active))
+    {
+        TRACE ("Compositor not active on screen %i", screen_info->screen);
         return;
     }
 
@@ -2734,6 +2738,78 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 
     screen_info->gaussianSize = -1;
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
+    screen_info->compositor_active = FALSE;
+
+    setAtomManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, None);
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
+compositorAddAllWindows (ScreenInfo *screen_info)
+{
+#ifdef HAVE_COMPOSITOR
+    DisplayInfo *display_info;
+    Window w1, w2, *wins;
+    unsigned int count, i;
+
+    TRACE ("entering compositorAddScreen");
+
+    display_info = screen_info->display_info;
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
+    XSync (display_info->dpy, FALSE);
+    myDisplayGrabServer (display_info);
+    XQueryTree (display_info->dpy, screen_info->xroot, &w1, &w2, &wins, &count);
+
+    for (i = 0; i < count; i++)
+    {
+        Client *c;
+        
+        c = clientGetFromWindow (screen_info, wins[i], FRAME);
+        compositorAddWindow (display_info, wins[i], c);
+    }
+    if (wins)
+    {
+        XFree (wins);
+    }
+    myDisplayUngrabServer (display_info);
+    XSync (display_info->dpy, FALSE);
+#endif /* HAVE_COMPOSITOR */
+}
+
+gboolean
+compositorActivateScreen (ScreenInfo *screen_info, gboolean active)
+{
+#ifdef HAVE_COMPOSITOR
+    DisplayInfo *display_info;
+
+    display_info = screen_info->display_info;
+    if (!compositorIsUsable (display_info))
+    {
+        return FALSE;
+    }
+
+    if (screen_info->compositor_active == active)
+    {
+        return FALSE;
+    }
+
+    if (active)
+    {
+        compositorManageScreen (screen_info);
+        compositorAddAllWindows (screen_info);
+    }
+    else
+    {
+        compositorUnmanageScreen (screen_info);
+    }
+
+    return TRUE;
+#else /* HAVE_COMPOSITOR */
+    return FALSE;
 #endif /* HAVE_COMPOSITOR */
 }
 
@@ -2805,9 +2881,8 @@ compositorRebuildScreen (ScreenInfo *screen_info)
         CWindow *cw2 = (CWindow *) index->data;
         free_win_data (cw2, FALSE);
         init_opacity (cw2);
-        damage_win (cw2, FALSE);
     }
-    add_repair (screen_info->display_info);
+    damage_screen (screen_info);
 #endif /* HAVE_COMPOSITOR */
 }
 

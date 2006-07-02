@@ -32,27 +32,30 @@
 #include "screen.h"
 #include "client.h"
 
-gboolean compositorIsUsable         (DisplayInfo *);
-void     compositorAddWindow        (DisplayInfo *,
-                                     Window,
-                                     Client *);
-void     compositorRemoveWindow     (DisplayInfo *,
-                                     Window);
+gboolean compositorIsUsable           (DisplayInfo *);
+void     compositorAddWindow          (DisplayInfo *,
+                                       Window,
+                                       Client *);
+void     compositorRemoveWindow       (DisplayInfo *,
+                                       Window);
 
-void     compositorHandleEvent      (DisplayInfo *,
-                                     XEvent *);
-void     compositorInitDisplay      (DisplayInfo *);
-void     compositorSetCompositeMode (DisplayInfo *,
-                                     gboolean);
+void     compositorHandleEvent        (DisplayInfo *,
+                                       XEvent *);
+void     compositorInitDisplay        (DisplayInfo *);
+void     compositorSetCompositeMode   (DisplayInfo *,
+                                       gboolean);
 
-gboolean compositorManageScreen     (ScreenInfo *);
-void     compositorUnmanageScreen   (ScreenInfo *);
-void     compositorUpdateScreenSize (ScreenInfo *);
+gboolean compositorManageScreen       (ScreenInfo *);
+void     compositorUnmanageScreen     (ScreenInfo *);
+void     compositorAddAllWindows      (ScreenInfo *);
+gboolean compositorActivateScreen     (ScreenInfo *,
+                                       gboolean);
+void     compositorUpdateScreenSize   (ScreenInfo *);
 
-void     compositorWindowSetOpacity (DisplayInfo *,
-                                     Window,
-                                     guint);
-void     compositorRebuildScreen    (ScreenInfo *);
-gboolean compositorTestServer       (DisplayInfo *);
+void     compositorWindowSetOpacity   (DisplayInfo *,
+                                       Window,
+                                       guint);
+void     compositorRebuildScreen      (ScreenInfo *);
+gboolean compositorTestServer         (DisplayInfo *);
 
 #endif /* INC_COMPOSITOR_H */

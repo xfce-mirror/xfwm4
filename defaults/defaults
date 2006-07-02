@@ -46,6 +46,7 @@ title_shadow_inactive=false
 title_vertical_offset_active=0
 title_vertical_offset_inactive=0
 toggle_workspaces=false
+use_compositing=false
 workspace_count=4
 wrap_cycle=true
 wrap_layout=true

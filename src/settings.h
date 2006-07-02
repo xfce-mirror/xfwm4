@@ -188,6 +188,7 @@ struct _XfwmParams
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;
     gboolean toggle_workspaces;
+    gboolean use_compositing;
     gboolean wrap_cycle;
     gboolean wrap_layout;
     gboolean wrap_windows;

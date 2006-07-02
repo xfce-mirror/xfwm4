@@ -157,6 +157,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "WM_TAKE_FOCUS",
         "WM_TRANSIENT_FOR",
         "WM_WINDOW_ROLE",
+        "XFWM4_COMPOSITING_MANAGER",
         "_XROOTPMAP_ID",
         "_XSETROOT_ID"
     };

@@ -238,7 +238,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
     int real_format;
     gboolean success;
 
-    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getHint");
 
     success = FALSE;
@@ -262,7 +262,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
 void
 setHint (DisplayInfo *display_info, Window w, int atom_id, long value)
 {
-    g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
+    g_return_if_fail ((atom_id >= 0) && (atom_id < NB_ATOMS));
     TRACE ("entering setHint");
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], XA_CARDINAL, 
@@ -479,7 +479,7 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
-    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getAtomList()");
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
@@ -519,7 +519,7 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
 
-    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getCardinalList()");
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 
@@ -599,7 +599,7 @@ initNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int w
 void
 setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar *val)
 {
-    g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
+    g_return_if_fail ((atom_id >= 0) && (atom_id < NB_ATOMS));
     TRACE ("entering setUTF8StringHint");
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], 
@@ -695,7 +695,7 @@ getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str
     unsigned char *str;
     unsigned long n_items;
 
-    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getUTF8StringData");
 
     *str_p = NULL;
@@ -728,7 +728,7 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, 
 {
     char *xstr;
     
-    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
     TRACE ("entering getUTF8String");
 
     if (!getUTF8StringData (display_info, w, atom_id, &xstr, length))
@@ -769,7 +769,7 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***st
     guint i;
     int length;
 
-    g_return_val_if_fail (((atom_id > 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
 
     TRACE ("entering getUTF8StringList");
 
@@ -1115,15 +1115,16 @@ getOpacityLock (DisplayInfo *display_info, Window window)
 }
 
 gboolean
-setCompositingManagerOwner (DisplayInfo *display_info, Window root, Window w)
+setAtomManagerOwner (DisplayInfo *display_info, int atom_id, Window root, Window w)
 {
     XClientMessageEvent ev;
     Time server_time;
     int status;
     
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
     server_time = myDisplayGetCurrentTime (display_info);
     status = XSetSelectionOwner (display_info->dpy, 
-                                 display_info->atoms[COMPOSITING_MANAGER],
+                                 display_info->atoms[atom_id],
                                  w, server_time);
 
     if ((status == BadAtom) || (status == BadWindow))
@@ -1131,13 +1132,13 @@ setCompositingManagerOwner (DisplayInfo *display_info, Window root, Window w)
         return FALSE;
     }
 
-    if (XGetSelectionOwner (display_info->dpy, display_info->atoms[COMPOSITING_MANAGER]) == w)
+    if (XGetSelectionOwner (display_info->dpy, display_info->atoms[atom_id]) == w)
     {
         ev.type = ClientMessage;
-        ev.message_type = display_info->atoms[COMPOSITING_MANAGER];
+        ev.message_type = display_info->atoms[atom_id];
         ev.format = 32;
         ev.data.l[0] = server_time;
-        ev.data.l[1] = display_info->atoms[COMPOSITING_MANAGER];
+        ev.data.l[1] = display_info->atoms[atom_id];
         ev.data.l[2] = w;
         ev.data.l[3] = 0;
         ev.data.l[4] = 0;
