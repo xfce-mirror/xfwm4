@@ -541,8 +541,11 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
 
     temp = XCreateSimpleWindow (display_info->dpy, c->frame, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
 
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    {
         XShapeCombineShape (display_info->dpy, temp, ShapeBounding, frameLeft (c),
                             frameTop (c), c->window, ShapeBounding, ShapeSet);
+    }
     if (pm_cache)
     {
         XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->title), ShapeBounding,
