@@ -1271,6 +1271,11 @@ repair_screen (ScreenInfo *screen_info)
     g_return_if_fail (screen_info);
     TRACE ("entering repair_screen");
 
+    if (!screen_info->compositor_active)
+    {
+        return;
+    }
+
     display_info = screen_info->display_info;
     if (screen_info->allDamage != None)
     {
@@ -2696,6 +2701,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         TRACE ("Compositor not active on screen %i", screen_info->screen);
         return;
     }
+    screen_info->compositor_active = FALSE;
 
     i = 0;
     for (index = screen_info->cwindows; index; index = g_list_next (index))
@@ -2738,9 +2744,10 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
 
     screen_info->gaussianSize = -1;
+    screen_info->overlays = 0;
+
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, 
                                     display_info->composite_mode);
-    screen_info->compositor_active = FALSE;
 
     setAtomManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, None);
 #endif /* HAVE_COMPOSITOR */
