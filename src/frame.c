@@ -570,7 +570,16 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
 
     temp = XCreateSimpleWindow (display_info->dpy, c->frame, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    {
+        rect.x = 0;
+        rect.y = 0;
+        rect.width  = frameWidth (c);
+        rect.height = frameHeight (c);
+        XShapeCombineRectangles (display_info->dpy, temp, ShapeBounding, 0, 0, &rect, 1,
+                                 ShapeSubtract, 0);
+    }
+    else
     {
         XShapeCombineShape (display_info->dpy, temp, ShapeBounding, frameLeft (c),
                             frameTop (c), c->window, ShapeBounding, ShapeSet);
