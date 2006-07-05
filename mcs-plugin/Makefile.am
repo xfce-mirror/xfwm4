@@ -22,10 +22,10 @@ xfwm4_plugin_la_SOURCES =						\
 	xfwm4_shortcuteditor.h
 
 xfwm4_plugin_la_CFLAGS =						\
-	@LIBX11_CFLAGS@							\
-	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
-	@LIBXFCEGUI4_CFLAGS@						\
-	@XFCE_MCS_MANAGER_CFLAGS@					\
+	$(LIBX11_CFLAGS)						\
+	$(LIBXFCE4MCS_MANAGER_CFLAGS)					\
+	$(LIBXFCEGUI4_CFLAGS)						\
+	$(XFCE_MCS_MANAGER_CFLAGS)					\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
@@ -33,13 +33,13 @@ xfwm4_plugin_la_CFLAGS =						\
         -DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_plugin_la_LIBADD =						\
-	@LIBXFCEGUI4_LIBS@						\
-	@LIBXFCE4MCS_MANAGER_LIBS@					\
-	@LIBS@
+	$(LIBXFCEGUI4_LIBS)						\
+	$(LIBXFCE4MCS_MANAGER_LIBS)					\
+	$(LIBS)
 
 if HAVE_CYGWIN
 xfwm4_plugin_la_LIBADD +=						\
-	@LIBX11_LIBS@
+	$(LIBX11_LIBS)
 endif
 
 workspaces_plugindir = $(libdir)/xfce4/mcs-plugins
@@ -51,8 +51,8 @@ workspaces_plugin_la_LDFLAGS =						\
 	-module
 
 if HAVE_CYGWIN
-workspaces_plugin_la_LDFLAGS +=                                         \
-	-no-undefined                                                   \
+workspaces_plugin_la_LDFLAGS +=						\
+        -no-undefined							\
 	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
 endif
 
@@ -66,23 +66,23 @@ workspaces_plugin_la_SOURCES =						\
 	monitor-icon.h
 
 workspaces_plugin_la_CFLAGS =						\
-	@LIBX11_CFLAGS@							\
-	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
-	@LIBXFCEGUI4_CFLAGS@						\
-	@XFCE_MCS_MANAGER_CFLAGS@					\
+	$(LIBX11_CFLAGS)						\
+	$(LIBXFCE4MCS_MANAGER_CFLAGS)					\
+	$(LIBXFCEGUI4_CFLAGS)						\
+	$(XFCE_MCS_MANAGER_CFLAGS)					\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\" 
 
 workspaces_plugin_la_LIBADD =						\
-	@LIBXFCEGUI4_LIBS@						\
-	@LIBXFCE4MCS_MANAGER_LIBS@					\
-	@LIBS@
+	$(LIBXFCEGUI4_LIBS)						\
+	$(LIBXFCE4MCS_MANAGER_LIBS)					\
+	$(LIBS)
 
 if HAVE_CYGWIN
-workspaces_plugin_la_LIBADD +=                                          \
-	@LIBX11_LIBS@
+workspaces_plugin_la_LIBADD +=						\
+	$(LIBX11_LIBS)
 endif
 
 wmtweaks_plugindir = $(libdir)/xfce4/mcs-plugins
@@ -94,8 +94,8 @@ wmtweaks_plugin_la_LDFLAGS =						\
 	-module
 
 if HAVE_CYGWIN
-wmtweaks_plugin_la_LDFLAGS +=                                         \
-	-no-undefined                                                   \
+wmtweaks_plugin_la_LDFLAGS +=						\
+	-no-undefined							\
 	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
 endif
 
@@ -103,23 +103,23 @@ wmtweaks_plugin_la_SOURCES =						\
 	wmtweaks_plugin.c
 
 wmtweaks_plugin_la_CFLAGS =						\
-	@LIBX11_CFLAGS@							\
-	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
-	@LIBXFCEGUI4_CFLAGS@						\
-	@XFCE_MCS_MANAGER_CFLAGS@					\
+	$(LIBX11_CFLAGS)						\
+	$(LIBXFCE4MCS_MANAGER_CFLAGS)					\
+	$(LIBXFCEGUI4_CFLAGS)						\
+	$(XFCE_MCS_MANAGER_CFLAGS)					\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\" 
 
 wmtweaks_plugin_la_LIBADD =						\
-	@LIBXFCEGUI4_LIBS@						\
-	@LIBXFCE4MCS_MANAGER_LIBS@					\
-	@LIBS@
+	$(LIBXFCEGUI4_LIBS)						\
+	$(LIBXFCE4MCS_MANAGER_LIBS)					\
+	$(LIBS)
 
 if HAVE_CYGWIN
-wmtweaks_plugin_la_LIBADD +=                                          \
-	@LIBX11_LIBS@
+wmtweaks_plugin_la_LIBADD +=						\
+	$(LIBX11_LIBS)
 endif
 
 

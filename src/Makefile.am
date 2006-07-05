@@ -65,25 +65,26 @@ xfwm4_SOURCES =								\
 	xpm-color-table.h
 
 xfwm4_CFLAGS =								\
-	@LIBX11_CFLAGS@							\
-	@LIBXFCE4MCS_CLIENT_CFLAGS@					\
-	@LIBXFCEGUI4_CFLAGS@						\
-	@RENDER_CFLAGS@							\
-	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
-	@COMPOSITOR_CFLAGS@						\
+	$(LIBX11_CFLAGS)						\
+	$(LIBXFCE4MCS_CLIENT_CFLAGS)					\
+	$(LIBXFCEGUI4_CFLAGS)						\
+	$(RENDER_CFLAGS)						\
+	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
+	$(COMPOSITOR_CFLAGS)						\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD =								\
-	@LIBX11_LIBS@							\
-	@LIBXFCE4MCS_CLIENT_LIBS@					\
-	@LIBXFCEGUI4_LIBS@						\
-	@LIBSTARTUP_NOTIFICATION_LIBS@					\
-	@RENDER_LIBS@							\
-	@COMPOSITOR_LIBS@						\
-	@RANDR_LIBS@
+	$(LIBX11_LIBS)							\
+	$(LIBX11_LDFLAGS)						\
+	$(LIBXFCE4MCS_CLIENT_LIBS)					\
+	$(LIBXFCEGUI4_LIBS)						\
+	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
+	$(RENDER_LIBS)							\
+	$(COMPOSITOR_LIBS)						\
+	$(RANDR_LIBS)
 
 EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png                       \
 	inline-default-icon.h default_icon.png				\
