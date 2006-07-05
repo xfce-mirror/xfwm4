@@ -1704,7 +1704,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         (c->width >= screen_info->width) &&
         (c->height >= screen_info->height) &&
         !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_BORDER) &&
-        !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_ABOVE) &&
+        !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN) &&
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
     {
@@ -3033,7 +3033,7 @@ clientScreenResize(ScreenInfo *screen_info)
         {
              wc.x = c->x;
              wc.y = c->y;
-             clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED);
+             clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST);
         }
     }
     myScreenUngrabPointer (screen_info, CurrentTime);
