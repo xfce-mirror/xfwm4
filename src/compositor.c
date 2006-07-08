@@ -1584,14 +1584,25 @@ damage_screen (ScreenInfo *screen_info)
 }
 
 static void
-damage_win (CWindow *cw)
+damage_extents (CWindow *cw)
 {
     XserverRegion extents;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     
     g_return_if_fail (cw != NULL);
-    TRACE ("entering damage_win");
+    TRACE ("entering damage_extents");
+
+    if (cw->borderSize == None)
+    {
+        cw->borderSize = border_size (cw);
+    }
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
 
     extents = win_extents (cw);
+    XFixesSubtractRegion (display_info->dpy, extents, extents, cw->borderSize);
     fix_region (cw, extents);
     add_damage (cw->screen_info, extents);
 }
@@ -1747,9 +1758,13 @@ unmap_win (CWindow *cw)
         TRACE ("Unmapped window 0x%lx, overlays decreased to %i\n", cw->id, screen_info->overlays);
     }
 
+    if (WIN_IS_VISIBLE(cw))
+    {
+        damage_extents (cw);
+    }
+
     cw->viewable = FALSE;
     cw->damaged = FALSE;
-    damage_win (cw);
     free_win_data (cw, FALSE);
 }
 
