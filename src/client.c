@@ -3814,6 +3814,12 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
 
     if (xevent->type == KeyPress)
     {
+        while (XCheckMaskEvent (display_info->dpy, KeyPressMask, xevent))
+        {
+            /* Update the display time */
+            myDisplayUpdateCurentTime (display_info, xevent);
+        }
+
         if (passdata->use_keys)
         {
             int key_width_inc, key_height_inc;
