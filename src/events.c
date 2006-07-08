@@ -143,7 +143,7 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
     status = EVENT_FILTER_STOP;
 
     /* Update the display time */
-    myDisplayUpdateCurentTime (passdata->display_info, xevent);
+    myDisplayUpdateCurrentTime (passdata->display_info, xevent);
 
     if ((xevent->type == ButtonRelease) || (xevent->type == ButtonPress))
     {
@@ -1280,7 +1280,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     while (XCheckTypedWindowEvent (display_info->dpy, ev->window, ConfigureRequest, &otherEvent))
     {
         /* Update the display time */
-        myDisplayUpdateCurentTime (display_info, &otherEvent);
+        myDisplayUpdateCurrentTime (display_info, &otherEvent);
 
         if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
         {
@@ -2159,7 +2159,7 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
     TRACE ("entering handleEvent");
 
     /* Update the display time */
-    myDisplayUpdateCurentTime (display_info, ev);
+    myDisplayUpdateCurrentTime (display_info, ev);
 
     sn_process_event (ev);
     compositorHandleEvent (display_info, ev);

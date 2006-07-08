@@ -3256,11 +3256,17 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     display_info = screen_info->display_info;
 
     /* Update the display time */
-    myDisplayUpdateCurentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, xevent);
 
 
     if (xevent->type == KeyPress)
     {
+        while (XCheckMaskEvent (display_info->dpy, KeyPressMask, xevent))
+        {
+            /* Update the display time */
+            myDisplayUpdateCurrentTime (display_info, xevent);
+        }
+
         if (passdata->use_keys)
         {
             int key_move = 16;
@@ -3374,7 +3380,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask, xevent))
         {
             /* Update the display time */
-            myDisplayUpdateCurentTime (display_info, xevent);
+            myDisplayUpdateCurrentTime (display_info, xevent);
         }
         if (!passdata->grab && screen_info->params->box_move)
         {
@@ -3656,16 +3662,16 @@ clientMove (Client * c, XEvent * ev)
         cursor = myDisplayGetCursorMove(display_info);
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
-    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    g1 = myScreenGrabKeyboard (screen_info, CurrentTime);
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
-                              cursor, myDisplayGetCurrentTime (display_info));
+                              cursor, CurrentTime);
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientMove");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabKeyboard (screen_info, CurrentTime);
+        myScreenUngrabPointer (screen_info, CurrentTime);
 
         return;
     }
@@ -3810,14 +3816,14 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     disp_max_y = rect.y + rect.height;
 
     /* Update the display time */
-    myDisplayUpdateCurentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, xevent);
 
     if (xevent->type == KeyPress)
     {
         while (XCheckMaskEvent (display_info->dpy, KeyPressMask, xevent))
         {
             /* Update the display time */
-            myDisplayUpdateCurentTime (display_info, xevent);
+            myDisplayUpdateCurrentTime (display_info, xevent);
         }
 
         if (passdata->use_keys)
@@ -3961,7 +3967,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask | PointerMotionMask, xevent))
         {
             /* Update the display time */
-            myDisplayUpdateCurentTime (display_info, xevent);
+            myDisplayUpdateCurrentTime (display_info, xevent);
         }
 
         if (xevent->type == ButtonRelease)
@@ -4165,18 +4171,18 @@ clientResize (Client * c, int corner, XEvent * ev)
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
 
-    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    g1 = myScreenGrabKeyboard (screen_info, CurrentTime);
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
                               myDisplayGetCursorResize(display_info, passdata.corner), 
-                              myDisplayGetCurrentTime (display_info));
+                              CurrentTime);
 
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientResize");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabKeyboard (screen_info, CurrentTime);
+        myScreenUngrabPointer (screen_info, CurrentTime);
 
         return;
     }
@@ -4286,7 +4292,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
     gone = FALSE;
 
     /* Update the display time */
-    myDisplayUpdateCurentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, xevent);
 
     switch (xevent->type)
     {
@@ -4382,17 +4388,16 @@ clientCycle (Client * c, XEvent * ev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, 
-                              myDisplayGetCurrentTime (display_info));
+    g1 = myScreenGrabKeyboard (screen_info, CurrentTime);
+    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, CurrentTime);
 
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientCycle");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabKeyboard (screen_info, CurrentTime);
+        myScreenUngrabPointer (screen_info, CurrentTime);
 
         return;
     }
@@ -4488,7 +4493,7 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
     display_info = screen_info->display_info;
 
     /* Update the display time */
-    myDisplayUpdateCurentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, xevent);
 
     status = EVENT_FILTER_STOP;
     pressed = TRUE;

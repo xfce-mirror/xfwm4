@@ -282,7 +282,7 @@ ScreenInfo *  myDisplayGetScreenFromSystray (DisplayInfo *,
                                              Window);
 #endif
 ScreenInfo *  myDisplayGetDefaultScreen     (DisplayInfo *);
-Time          myDisplayUpdateCurentTime     (DisplayInfo *, 
+Time          myDisplayUpdateCurrentTime     (DisplayInfo *, 
                                              XEvent *);
 Time          myDisplayGetCurrentTime       (DisplayInfo *);
 Time          myDisplayGetLastUserTime      (DisplayInfo *);

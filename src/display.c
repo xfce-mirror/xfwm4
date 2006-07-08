@@ -605,7 +605,7 @@ myDisplayGetDefaultScreen (DisplayInfo *display)
 }
 
 Time 
-myDisplayUpdateCurentTime (DisplayInfo *display, XEvent *ev)
+myDisplayUpdateCurrentTime (DisplayInfo *display, XEvent *ev)
 {
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
     
