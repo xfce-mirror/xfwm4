@@ -169,16 +169,20 @@ cb_gint_changed (GtkWidget * widget, gpointer user_data)
 static void
 cb_menuitem_changed (GtkWidget * widget, gpointer user_data)
 {
-    gchar **value = (gchar **) user_data;
-    gchar *setting_name = NULL;
-    McsPlugin *mcs_plugin = NULL;
+    const gchar **value = user_data;
+    gchar *setting_name;
+    McsPlugin *mcs_plugin;
+    const gchar *const *values;
 
-    *value = (gchar *) g_object_get_data (G_OBJECT (widget), "setting-value");
+    values = g_object_get_data (G_OBJECT (widget), "setting-values");
     setting_name = (gchar *) g_object_get_data (G_OBJECT (widget), "setting-name");
     mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT (widget), "mcs-plugin");
 
     g_assert (setting_name);
     g_assert (mcs_plugin);
+    g_assert (values);
+
+    *value = values[gtk_combo_box_get_active (GTK_COMBO_BOX (widget))];
 
     mcs_manager_set_string (mcs_plugin->manager, setting_name, CHANNEL, *value);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL);
@@ -261,12 +265,11 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label
 }
 
 static GtkWidget *
-create_option_menu (McsPlugin * mcs_plugin, gchar * values[], const gchar * label, gchar * setting_name,
-    gchar ** value)
+create_option_menu (McsPlugin * mcs_plugin, const gchar *const values[],
+    const gchar * label, gchar * setting_name, gchar ** value)
 {
     GtkWidget *hbox;
     GtkWidget *label_widget;
-    GtkWidget *menu;
     GtkWidget *omenu;
     GtkWidget *item;
     guint n;
@@ -281,28 +284,23 @@ create_option_menu (McsPlugin * mcs_plugin, gchar * values[], const gchar * labe
     gtk_misc_set_alignment (GTK_MISC (label_widget), 0.0, 0.5);
     gtk_widget_show (label_widget);
 
-    omenu = gtk_option_menu_new ();
+    omenu = gtk_combo_box_new_text ();
     gtk_box_pack_start (GTK_BOX (hbox), omenu, FALSE, TRUE, 2);
     gtk_widget_show (omenu);
 
-    menu = gtk_menu_new ();
-    gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
-    gtk_widget_show (menu);
-
     for (n = 0; n < 12; n++)
     {
-        item = gtk_menu_item_new_with_mnemonic (values[n]);
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-        gtk_widget_show (item);
+        gtk_combo_box_append_text (GTK_COMBO_BOX (omenu),
+				   (n == 11) ? gettext (values[n]) : values[n]);
 
         if (!g_ascii_strcasecmp (*value, values[n]))
-            gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), n);
-
-        g_object_set_data (G_OBJECT (item), "setting-name", setting_name);
-        g_object_set_data (G_OBJECT (item), "mcs-plugin", mcs_plugin);
-        g_object_set_data (G_OBJECT (item), "setting-value", values[n]);
-        g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (cb_menuitem_changed), value);
+            gtk_combo_box_set_active (GTK_COMBO_BOX (omenu), n);
     }
+
+    g_object_set_data (G_OBJECT (omenu), "mcs-plugin", mcs_plugin);
+    g_object_set_data (G_OBJECT (omenu), "setting-name", setting_name);
+    g_object_set_data (G_OBJECT (omenu), "setting-values", (gpointer) values);
+    g_signal_connect (G_OBJECT (omenu), "changed", G_CALLBACK (cb_menuitem_changed), value);
 
     return (hbox);
 }
@@ -356,7 +354,7 @@ create_dialog (McsPlugin * mcs_plugin)
     GtkWidget *button;
     guint nth = 0;
 
-    gchar *modifier_list[] = { 
+    static const gchar *const modifier_list[] = { 
         "Alt",
         "Control",
         "Hyper",

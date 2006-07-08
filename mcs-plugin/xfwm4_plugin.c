@@ -660,27 +660,19 @@ create_option_menu_box (const MenuTmpl template[], guint size, gchar * display_l
     gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
     gtk_widget_show (hbox);
 
-    omenu = gtk_option_menu_new ();
+    omenu = gtk_combo_box_new_text ();
     gtk_box_pack_start (GTK_BOX (hbox), omenu, TRUE, TRUE, 0);
     gtk_widget_show (omenu);
 
-    menu = gtk_menu_new ();
-    gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
-    gtk_widget_show (menu);
-
     for (n = 0; n < size; n++)
     {
-        item = gtk_menu_item_new_with_mnemonic (_(template[n].label));
-        gtk_widget_show (item);
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+        gtk_combo_box_append_text (GTK_COMBO_BOX (omenu), _(template[n].label));
 
         if (strcmp (value, template[n].action) == 0)
-            gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), n);
-
-        g_object_set_data (G_OBJECT (item), "user-data", template[n].action);
-
-        g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (handler), user_data);
+            gtk_combo_box_set_active (GTK_COMBO_BOX (omenu), n);
     }
+
+    g_signal_connect (G_OBJECT (omenu), "changed", G_CALLBACK (handler), user_data);
 
     return (vbox);
 }
@@ -1308,14 +1300,12 @@ static void
 cb_dblclick_action_value_changed (GtkWidget * widget, gpointer user_data)
 {
     McsPlugin *mcs_plugin = (McsPlugin *) user_data;
-    const gchar *action;
+    gint active;
 
-    action = (const gchar *) g_object_get_data (G_OBJECT (widget), "user-data");
+    g_free (dbl_click_action);
+    active = gtk_combo_box_get_active (GTK_COMBO_BOX (widget));
+    dbl_click_action = g_strdup (dbl_click_values[active].action);
 
-    if (dbl_click_action)
-        g_free (dbl_click_action);
-
-    dbl_click_action = g_strdup (action);
     mcs_manager_set_string (mcs_plugin->manager, "Xfwm/DblClickAction", CHANNEL1, dbl_click_action);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     xfwm4_plugin_write_options (mcs_plugin);
@@ -1325,14 +1315,12 @@ static void
 cb_title_align_value_changed (GtkWidget * widget, gpointer user_data)
 {
     McsPlugin *mcs_plugin = (McsPlugin *) user_data;
-    const gchar *action;
+    gint active;
 
-    action = (const gchar *) g_object_get_data (G_OBJECT (widget), "user-data");
+    g_free (title_align);
+    active = gtk_combo_box_get_active (GTK_COMBO_BOX (widget));
+    title_align = g_strdup (title_align_values[active].action);
 
-    if (title_align)
-        g_free (title_align);
-
-    title_align = g_strdup (action);
     mcs_manager_set_string (mcs_plugin->manager, "Xfwm/TitleAlign", CHANNEL1, title_align);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
     xfwm4_plugin_write_options (mcs_plugin);
