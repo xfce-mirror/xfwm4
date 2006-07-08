@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-30 11:19+0200\n"
+"POT-Creation-Date: 2006-07-08 21:17+0200\n"
 "PO-Revision-Date: 2006-06-12 21:21+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -52,7 +52,7 @@ msgid "Workspaces and Margins"
 msgstr "工作區和邊緣"
 
 #  Number of workspaces
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:500
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:511
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "工作區"
@@ -61,149 +61,153 @@ msgstr "工作區"
 msgid "Margins"
 msgstr "邊緣"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:358
+#: ../mcs-plugin/wmtweaks_plugin.c:369
 msgid "None"
 msgstr "無"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:366
+#: ../mcs-plugin/wmtweaks_plugin.c:377
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "視窗管理程式調校"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:385
+#: ../mcs-plugin/wmtweaks_plugin.c:396
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:391
+#: ../mcs-plugin/wmtweaks_plugin.c:402
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "包含隱藏(如：圖示化的)視窗"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:397
+#: ../mcs-plugin/wmtweaks_plugin.c:408
 msgid "Cycle through windows from all workspaces"
 msgstr "在所有工作區的視窗間循環"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:402
+#: ../mcs-plugin/wmtweaks_plugin.c:413
 msgid "Cycling"
 msgstr "循環"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:414
+#: ../mcs-plugin/wmtweaks_plugin.c:425
 msgid "Activate focus stealing prevention"
 msgstr "啟用「預防偷竊焦點」"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:420
+#: ../mcs-plugin/wmtweaks_plugin.c:431
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:425 ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/wmtweaks_plugin.c:436 ../mcs-plugin/xfwm4_plugin.c:1683
 msgid "Focus"
 msgstr "焦點"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:437
+#: ../mcs-plugin/wmtweaks_plugin.c:448
 msgid "Key used to grab and move windows"
 msgstr "用來抓住及移動視窗的按鍵"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:443
+#: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Raise windows when any mouse button is pressed"
 msgstr "按下任一滑鼠鍵時揚起視窗"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:450
+#: ../mcs-plugin/wmtweaks_plugin.c:461
 msgid "Restore original size of maximized windows when moving"
 msgstr "移動視窗時回復最大化視窗原本的大小"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:456
+#: ../mcs-plugin/wmtweaks_plugin.c:467
 msgid "Use edge resistance instead of windows snapping"
 msgstr "使用邊緣阻抗取代視窗吸引"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Accessibility"
 msgstr "可近性"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:474
+#: ../mcs-plugin/wmtweaks_plugin.c:485
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "在桌面上使用滾輪切換工作區"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:481
+#: ../mcs-plugin/wmtweaks_plugin.c:492
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr "由鍵盤捷徑切換時，記住並回到先前的作區"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:488
+#: ../mcs-plugin/wmtweaks_plugin.c:499
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "以實際上的桌面輸出決定工作區迴繞"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:495
+#: ../mcs-plugin/wmtweaks_plugin.c:506
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "抵達第一個或最後一個工作區時時迴繞工作區"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:512
+#: ../mcs-plugin/wmtweaks_plugin.c:523
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "觸發智慧配置的最小視窗大小"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:513
+#: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Size|Small"
 msgstr "大小|小"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:513
+#: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Size|Large"
 msgstr "大小|大"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:517
+#: ../mcs-plugin/wmtweaks_plugin.c:528
 msgid "Placement"
 msgstr "配置"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:536
+#: ../mcs-plugin/wmtweaks_plugin.c:548
+msgid "Enable display compositing"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:562
 msgid "Show shadows under regular windows"
 msgstr "在一般視窗下顯示陰影"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:542
+#: ../mcs-plugin/wmtweaks_plugin.c:568
 msgid "Show shadows under popup windows"
 msgstr "在跳出視窗下顯示陰影"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:548
+#: ../mcs-plugin/wmtweaks_plugin.c:574
 msgid "Opacity of window decorations"
 msgstr "視窗裝飾的不透明程度"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:548 ../mcs-plugin/wmtweaks_plugin.c:554
-#: ../mcs-plugin/wmtweaks_plugin.c:560 ../mcs-plugin/wmtweaks_plugin.c:566
-#: ../mcs-plugin/wmtweaks_plugin.c:572
+#: ../mcs-plugin/wmtweaks_plugin.c:574 ../mcs-plugin/wmtweaks_plugin.c:580
+#: ../mcs-plugin/wmtweaks_plugin.c:586 ../mcs-plugin/wmtweaks_plugin.c:592
+#: ../mcs-plugin/wmtweaks_plugin.c:598
 msgid "Transparent"
 msgstr "透明"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:549 ../mcs-plugin/wmtweaks_plugin.c:555
-#: ../mcs-plugin/wmtweaks_plugin.c:561 ../mcs-plugin/wmtweaks_plugin.c:567
-#: ../mcs-plugin/wmtweaks_plugin.c:573
+#: ../mcs-plugin/wmtweaks_plugin.c:575 ../mcs-plugin/wmtweaks_plugin.c:581
+#: ../mcs-plugin/wmtweaks_plugin.c:587 ../mcs-plugin/wmtweaks_plugin.c:593
+#: ../mcs-plugin/wmtweaks_plugin.c:599
 msgid "Opaque"
 msgstr "不透明"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:554
+#: ../mcs-plugin/wmtweaks_plugin.c:580
 #, fuzzy
 msgid "Opacity of inactive windows"
 msgstr "跳出視窗的不透明程度"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:560
+#: ../mcs-plugin/wmtweaks_plugin.c:586
 msgid "Opacity of windows during move"
 msgstr "移動視窗時的不透明程度"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:592
 msgid "Opacity of windows during resize"
 msgstr "縮放視窗時的不透明程度"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:572
+#: ../mcs-plugin/wmtweaks_plugin.c:598
 msgid "Opacity of popup windows"
 msgstr "跳出視窗的不透明程度"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:577
+#: ../mcs-plugin/wmtweaks_plugin.c:603
 #, fuzzy
 msgid "Compositor"
 msgstr "設定快速鍵"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:618
+#: ../mcs-plugin/wmtweaks_plugin.c:645
 msgid "Button Label|Window Manager Tweaks"
 msgstr "視窗管理程式調校"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/xfwm4_plugin.c:2356
+#: ../mcs-plugin/wmtweaks_plugin.c:762 ../mcs-plugin/xfwm4_plugin.c:2344
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "這些設定無法運作於您目前的視窗管理程式 (%s) "
@@ -308,173 +312,173 @@ msgstr "視窗標題，不可移走"
 msgid "Hidden"
 msgstr "隱藏"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1373
+#: ../mcs-plugin/xfwm4_plugin.c:1361
 msgid "Font Selection Dialog"
 msgstr "字型選擇對話框"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1438
+#: ../mcs-plugin/xfwm4_plugin.c:1426
 msgid "Window Manager"
 msgstr "視窗管理程式"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1478
+#: ../mcs-plugin/xfwm4_plugin.c:1466
 msgid "Title font"
 msgstr "標題字型"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1487
+#: ../mcs-plugin/xfwm4_plugin.c:1475
 msgid "Title Alignment"
 msgstr "標題對齊方式"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1489
+#: ../mcs-plugin/xfwm4_plugin.c:1477
 msgid "Text alignment inside title bar :"
 msgstr "標題欄內的本文對齊方式："
 
-#: ../mcs-plugin/xfwm4_plugin.c:1495
+#: ../mcs-plugin/xfwm4_plugin.c:1483
 msgid "Button layout"
 msgstr "按鈕布局"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1500
+#: ../mcs-plugin/xfwm4_plugin.c:1488
 msgid "Style"
 msgstr "風格"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1548
+#: ../mcs-plugin/xfwm4_plugin.c:1536
 msgid "Window shortcuts"
 msgstr "有關視窗的快速鍵"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1562
+#: ../mcs-plugin/xfwm4_plugin.c:1550
 msgid "Command"
 msgstr "指令"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1568
+#: ../mcs-plugin/xfwm4_plugin.c:1556
 msgid "Shortcut"
 msgstr "快速鍵"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1585
+#: ../mcs-plugin/xfwm4_plugin.c:1573
 msgid "Keyboard"
 msgstr "鍵盤"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1600
+#: ../mcs-plugin/xfwm4_plugin.c:1588
 msgid "Focus model"
 msgstr "焦點模式"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1604
+#: ../mcs-plugin/xfwm4_plugin.c:1592
 msgid "Click to focus"
 msgstr "點選獲取焦點"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1614
+#: ../mcs-plugin/xfwm4_plugin.c:1602
 msgid "Focus follows mouse"
 msgstr "焦點跟隨游標"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1625
+#: ../mcs-plugin/xfwm4_plugin.c:1613
 msgid "Automatically give focus to newly created windows"
 msgstr "自動為新建立的視窗獲取焦點"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1629
+#: ../mcs-plugin/xfwm4_plugin.c:1617
 msgid "New window focus"
 msgstr "新視窗獲取焦點"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1636
+#: ../mcs-plugin/xfwm4_plugin.c:1624
 msgid "Raise on focus"
 msgstr "獲取焦點時置頂"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1642
+#: ../mcs-plugin/xfwm4_plugin.c:1630
 msgid "Automatically raise windows when they receive focus"
 msgstr "當視窗獲取焦點時自動將該視窗置頂"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1652
+#: ../mcs-plugin/xfwm4_plugin.c:1640
 msgid "Delay before raising focused window :"
 msgstr "置頂焦點所在視窗前的延遲："
 
-#: ../mcs-plugin/xfwm4_plugin.c:1659
+#: ../mcs-plugin/xfwm4_plugin.c:1647
 msgid "Slow"
 msgstr "慢"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1666
+#: ../mcs-plugin/xfwm4_plugin.c:1654
 msgid "Fast"
 msgstr "快"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1687
+#: ../mcs-plugin/xfwm4_plugin.c:1675
 msgid "Raise window when clicking inside application window"
 msgstr "點選視窗內部時將視窗置頂"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1691
+#: ../mcs-plugin/xfwm4_plugin.c:1679
 msgid "Raise on click"
 msgstr "點選置頂"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1709
+#: ../mcs-plugin/xfwm4_plugin.c:1697
 msgid "Windows snapping"
 msgstr "視窗吸引"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1714
+#: ../mcs-plugin/xfwm4_plugin.c:1702
 msgid "Snap windows to screen border"
 msgstr "在螢幕邊緣吸引視窗"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1720
+#: ../mcs-plugin/xfwm4_plugin.c:1708
 msgid "Snap windows to other windows"
 msgstr "將視窗吸引到其他視窗"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1731
+#: ../mcs-plugin/xfwm4_plugin.c:1719
 msgid "Distance :"
 msgstr "距離："
 
-#: ../mcs-plugin/xfwm4_plugin.c:1738
+#: ../mcs-plugin/xfwm4_plugin.c:1726
 msgid "Distance|Small"
 msgstr "距離|窄"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1745
+#: ../mcs-plugin/xfwm4_plugin.c:1733
 msgid "Distance|Wide"
 msgstr "距離|寬"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1766
+#: ../mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wrap workspaces"
 msgstr "迴繞工作區"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1772
+#: ../mcs-plugin/xfwm4_plugin.c:1760
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "遊標移到螢幕邊緣時迴繞工作區"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1780
+#: ../mcs-plugin/xfwm4_plugin.c:1768
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "拖曳視窗離開螢幕時回繞工作區"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1790
+#: ../mcs-plugin/xfwm4_plugin.c:1778
 msgid "Edge Resistance :"
 msgstr "螢幕邊緣阻抗："
 
-#: ../mcs-plugin/xfwm4_plugin.c:1797
+#: ../mcs-plugin/xfwm4_plugin.c:1785
 msgid "Resistance|Small"
 msgstr "阻抗|弱"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1804
+#: ../mcs-plugin/xfwm4_plugin.c:1792
 msgid "Resistance|Wide"
 msgstr "阻抗|強"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1826
+#: ../mcs-plugin/xfwm4_plugin.c:1814
 msgid "Opaque move and resize"
 msgstr "移動和縮放時顯示其內容"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1831
+#: ../mcs-plugin/xfwm4_plugin.c:1819
 msgid "Display content of windows when resizing"
 msgstr "縮放視窗時顯示其內容"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1837
+#: ../mcs-plugin/xfwm4_plugin.c:1825
 msgid "Display content of windows when moving"
 msgstr "移動視窗時顯示其內容"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1842
+#: ../mcs-plugin/xfwm4_plugin.c:1830
 msgid "Double click action"
 msgstr "雙擊執行動作"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1844
+#: ../mcs-plugin/xfwm4_plugin.c:1832
 msgid "Action to perform when double clicking on title bar :"
 msgstr "雙擊標題列執行的動作："
 
-#: ../mcs-plugin/xfwm4_plugin.c:1849
+#: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Advanced"
 msgstr "進階"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1988
+#: ../mcs-plugin/xfwm4_plugin.c:1976
 msgid "Button Label|Window Manager"
 msgstr "視窗管理程式"
 
@@ -775,12 +779,12 @@ msgstr "工作區 %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 無法取得遊標\n"
 
-#: ../src/settings.c:870
+#: ../src/settings.c:881
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: 無法分配顏色 %s\n"
 
-#: ../src/settings.c:876
+#: ../src/settings.c:887
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 無法處理顏色 %s\n"
