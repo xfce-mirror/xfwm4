@@ -898,9 +898,9 @@ getTitleShadow (Settings *rc, const gchar * name)
     {
         return TITLE_SHADOW_UNDER;
     }
-    else if (!g_ascii_strcasecmp ("bevel", val))
+    else if (!g_ascii_strcasecmp ("frame", val))
     {
-        return TITLE_SHADOW_BEVEL;
+        return TITLE_SHADOW_FRAME;
     }
     return TITLE_SHADOW_NONE;
 }

@@ -4,5 +4,5 @@ full_width_title=true
 title_horizontal_offset=1
 title_vertical_offset_active=1
 title_vertical_offset_inactive=2
-title_shadow_active=true
+title_shadow_active=under
 show_app_icon=true

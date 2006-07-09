@@ -41,7 +41,7 @@
 
 #define TITLE_SHADOW_NONE               0
 #define TITLE_SHADOW_UNDER              1
-#define TITLE_SHADOW_BEVEL              2
+#define TITLE_SHADOW_FRAME              2
 
 #define MENU_BUTTON                     0
 #define STICK_BUTTON                    1
