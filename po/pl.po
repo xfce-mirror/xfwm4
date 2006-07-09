@@ -157,7 +157,7 @@ msgstr "Lokacja"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:548
 msgid "Enable display compositing"
-msgstr ""
+msgstr "Włącz wyświetlanie composite"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:562
 msgid "Show shadows under regular windows"
@@ -184,9 +184,8 @@ msgid "Opaque"
 msgstr "Półprzeźroczysty"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:580
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Przeźroczystość popupów"
+msgstr "Przeźroczystość nieaktywnych okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:586
 msgid "Opacity of windows during move"
@@ -555,9 +554,8 @@ msgid "Resize window right"
 msgstr "Rozszerz okno w prawo"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "Zamknij okno"
+msgstr "Anuluj przenieś/skaluj okno"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Raise window"
