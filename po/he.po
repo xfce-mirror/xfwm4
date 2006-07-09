@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-07-08 21:17+0200\n"
-"PO-Revision-Date: 2006-05-31 02:27+0300\n"
+"PO-Revision-Date: 2006-06-30 22:51+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -68,35 +68,36 @@ msgstr "כלום"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:377
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "התאמה אישית של מנהל החלונות"
+msgstr "הגדרות נוספות של מנהל החלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:396
+#, fuzzy
 msgid ""
 "Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
+"שתף חלונות שהמאפיין \"דלג מחליף סביבות עבודה\"\n"
+"או \"דלג שרות משימות\" בהם מאפשר"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:402
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "שתף חלונות ממוזערים"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:408
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "העבר חלון לסביבת העבודה השמאלית"
+msgstr "עבור דרך חלונות מכל סביבות העבודה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:413
 msgid "Cycling"
-msgstr ""
+msgstr "מעבר מחזורי"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:425
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "מנע גנבת מיקוד חלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:431
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "כבד את סטנדרט סימני מיקוד החלונות ICCCM"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:436 ../mcs-plugin/xfwm4_plugin.c:1683
 msgid "Focus"
@@ -104,33 +105,33 @@ msgstr "התמקדות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:448
 msgid "Key used to grab and move windows"
-msgstr ""
+msgstr "מקש המשמש לתפיסת והזזת חלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:454
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "הבא חלון לקדימה עבור כל לחיצת עכבר"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:461
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "הצג את תוכן החלון בעת הזזה"
+msgstr "החזר את הגודל המקורי של החלון המוגדל כאשר הוא מוזז"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:467
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "השתמש בהתנגדות שוליים במקום הצמדת החלונות אליהם"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Accessibility"
-msgstr ""
+msgstr "נגישות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:485
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "החלף סביבות עבודה באמצעות גלגלת העכבר על שולחן העבודה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:492
+#, fuzzy
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
+msgstr "זכור והחזר סביבת עבודה קודמת כאשר מחליפים\b במצעות קיצורי המקדלת."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:499
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -143,20 +144,19 @@ msgstr "גלוש בין סביבות עבודה כאשר המצביע מגיע �
 
 #: ../mcs-plugin/wmtweaks_plugin.c:523
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "גודל חלון מינימלי להפעלת התמקמות חכמה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:524
-#, fuzzy
 msgid "Size|Small"
 msgstr "קטן"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Size|Large"
-msgstr ""
+msgstr "גדול"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:528
 msgid "Placement"
-msgstr ""
+msgstr "התמקמות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:548
 msgid "Enable display compositing"
@@ -164,64 +164,58 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:562
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "הראה צל מתחת לחלון רגיל"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:568
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "הראה צל מתחת לחלון קופץ"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:574
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "הצג את תוכן החלון בעת שינוי גודל"
+msgstr "אטימות של קישוטי חלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:574 ../mcs-plugin/wmtweaks_plugin.c:580
 #: ../mcs-plugin/wmtweaks_plugin.c:586 ../mcs-plugin/wmtweaks_plugin.c:592
 #: ../mcs-plugin/wmtweaks_plugin.c:598
 msgid "Transparent"
-msgstr ""
+msgstr "שקיפות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:575 ../mcs-plugin/wmtweaks_plugin.c:581
 #: ../mcs-plugin/wmtweaks_plugin.c:587 ../mcs-plugin/wmtweaks_plugin.c:593
 #: ../mcs-plugin/wmtweaks_plugin.c:599
 msgid "Opaque"
-msgstr ""
+msgstr "אטום"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:580
 #, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "הצג את תוכן החלון בעת הזזה"
+msgstr "אטימות של חלונות קופצים"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:586
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "הצג את תוכן החלון בעת הזזה"
+msgstr "אטימות של חלונות בזמן גרירה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:592
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "הצג את תוכן החלון בעת שינוי גודל"
+msgstr "אטימות של חלונות בזמן שינוי גודל"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:598
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "הצג את תוכן החלון בעת הזזה"
+msgstr "אטימות של חלונות קופצים"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
-#, fuzzy
 msgid "Compositor"
-msgstr "צור קיצור"
+msgstr "Compositor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:645
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "מנהל חלונות"
+msgstr "הגדרות נוספות של מנהל החלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:762 ../mcs-plugin/xfwm4_plugin.c:2344
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "הגדרות אלה לא יכולות לעבוד עם מנהל החלונות הנוכחי שלך (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -430,14 +424,12 @@ msgid "Distance :"
 msgstr "מרחק:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1726
-#, fuzzy
 msgid "Distance|Small"
-msgstr "מרחק:"
+msgstr "קטן"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1733
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "מרחק:"
+msgstr "גדול"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1754
 msgid "Wrap workspaces"
@@ -456,14 +448,12 @@ msgid "Edge Resistance :"
 msgstr "התנגדות למעבר:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1785
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "מרחק:"
+msgstr "חלשה"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1792
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "מרחק:"
+msgstr "חזקה"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1814
 msgid "Opaque move and resize"
@@ -491,7 +481,6 @@ msgstr "מתקדם"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1976
-#, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "מנהל חלונות"
 
@@ -644,16 +633,16 @@ msgstr "העבר חלון לסביבת העבודה הימינית"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Show desktop"
-msgstr ""
+msgstr "הצג שולחן עבודה"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:495
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "העבר חלון לסביבת עבודה 1"
+msgstr "העבר חלון לסביבת עבודה %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:575
 msgid "Cannot open the theme directory !"
-msgstr "אין אפשרות לפתוח תיקיית ערכת הנושא."
+msgstr "אין אפשרות לפתוח את תיקיית ערכת הנושא."
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:594
 #, c-format
@@ -785,14 +774,14 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu כשל בלכידת המצביע \n"
 
 #: ../src/settings.c:881
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: אין אפשרות לאתר צבע פעיל %s\n"
+msgstr "%s: לא ניתן להקצות צבע %s\n"
 
 #: ../src/settings.c:887
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: אין אפשרות לקבוע צבע פעיל %s\n"
+msgstr "%s: לא ניתן לקרוא צבע %s\n"
 
 #: ../src/tabwin.c:94
 msgid "Unknown application!"
@@ -804,16 +793,15 @@ msgstr "הגדרות מנהל חלונות"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "הגדרות מנהל חלונות Xfce 4"
+msgstr "הגדרות מנהל חלונות Xfce4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
 msgstr "הגדרות מתקדמות"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "מנהל חלונות"
+msgstr "הגדרות נספות של מנהל החלונות Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
@@ -822,3 +810,9 @@ msgstr "הגדרות סביבות עבודה"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "הגדרות סביבות עבודה Xfce 4"
+
+#~ msgid "Window Manager Advanced Configuration"
+#~ msgstr "הגדרות מתקדמות של מנהל החלונות"
+
+#~ msgid "Window Manager Preferences"
+#~ msgstr "מנהל חלונות"
