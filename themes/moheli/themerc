@@ -5,5 +5,5 @@ full_width_title=true
 title_horizontal_offset=8
 title_vertical_offset_active=1
 title_vertical_offset_inactive=1
-title_shadow_active=true
+title_shadow_active=bevel
 show_app_icon=true

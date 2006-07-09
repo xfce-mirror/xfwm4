@@ -348,7 +348,17 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         {
             gdk_gc_get_values (screen_info->title_shadow_colors[state].gc, &values);
             gdk_gc_set_values (gc, &values, GDK_GC_FOREGROUND);
-            gdk_draw_layout (gpixmap, gc, title_x + 1, title_y + 1, layout);
+            if (screen_info->params->title_shadow[state] == TITLE_SHADOW_UNDER)
+            {
+                gdk_draw_layout (gpixmap, gc, title_x + 1, title_y + 1, layout);
+            }
+            else 
+            {
+                gdk_draw_layout (gpixmap, gc, title_x - 1, title_y, layout);
+                gdk_draw_layout (gpixmap, gc, title_x, title_y - 1, layout);
+                gdk_draw_layout (gpixmap, gc, title_x + 1, title_y, layout);
+                gdk_draw_layout (gpixmap, gc, title_x, title_y + 1, layout);
+            }
         }
         gdk_gc_get_values (screen_info->title_colors[state].gc, &values);
         gdk_gc_set_values (gc, &values, GDK_GC_FOREGROUND);

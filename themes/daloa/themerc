@@ -4,6 +4,6 @@ button_spacing=-1
 title_horizontal_offset=0
 title_vertical_offset_active=1
 title_vertical_offset_inactive=1
-title_shadow_active=true
+title_shadow_active=bevel
 title_shadow_inactive=false
 show_app_icon=true

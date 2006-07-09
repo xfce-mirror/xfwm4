@@ -888,6 +888,23 @@ setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, c
     }
 }
 
+static int
+getTitleShadow (Settings *rc, const gchar * name)
+{
+    const gchar *val;
+    
+    val = getValue (name, rc);
+    if (!g_ascii_strcasecmp ("true", val) || !g_ascii_strcasecmp ("under", val))
+    {
+        return TITLE_SHADOW_UNDER;
+    }
+    else if (!g_ascii_strcasecmp ("bevel", val))
+    {
+        return TITLE_SHADOW_BEVEL;
+    }
+    return TITLE_SHADOW_NONE;
+}
+
 static void
 loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
@@ -1106,10 +1123,8 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
     screen_info->params->full_width_title =
         !g_ascii_strcasecmp ("true", getValue ("full_width_title", rc));
-    screen_info->params->title_shadow[ACTIVE] =
-        !g_ascii_strcasecmp ("true", getValue ("title_shadow_active", rc));
-    screen_info->params->title_shadow[INACTIVE] =
-        !g_ascii_strcasecmp ("true", getValue ("title_shadow_inactive", rc));
+    screen_info->params->title_shadow[ACTIVE] = getTitleShadow (rc, "title_shadow_active");
+    screen_info->params->title_shadow[INACTIVE] = getTitleShadow (rc, "title_shadow_inactive");
 
     strncpy (screen_info->params->button_layout, getValue ("button_layout", rc), 7);
     screen_info->params->button_spacing = TOINT (getValue ("button_spacing", rc));

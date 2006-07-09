@@ -39,6 +39,10 @@
 #define TITLE_4                         3
 #define TITLE_5                         4
 
+#define TITLE_SHADOW_NONE               0
+#define TITLE_SHADOW_UNDER              1
+#define TITLE_SHADOW_BEVEL              2
+
 #define MENU_BUTTON                     0
 #define STICK_BUTTON                    1
 #define SHADE_BUTTON                    2
@@ -163,8 +167,8 @@ struct _XfwmParams
     int snap_width;
     int title_alignment;
     int title_horizontal_offset;
+    int title_shadow[2];
     int wrap_resistance;
-    gboolean title_shadow[2];
     gboolean box_move;
     gboolean box_resize;
     gboolean click_to_focus;
