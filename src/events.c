@@ -1271,27 +1271,9 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
 {
     Client *c = NULL;
     XWindowChanges wc;
-    XEvent otherEvent;
 
     TRACE ("entering handleConfigureRequest");
     TRACE ("ConfigureRequest on window (0x%lx)", ev->window);
-
-    /* Compress events - logic taken from kwin */
-    while (XCheckTypedWindowEvent (display_info->dpy, ev->window, ConfigureRequest, &otherEvent))
-    {
-        /* Update the display time */
-        myDisplayUpdateCurrentTime (display_info, &otherEvent);
-
-        if (otherEvent.xconfigurerequest.value_mask == ev->value_mask)
-        {
-            ev = &otherEvent.xconfigurerequest;
-        }
-        else
-        {
-            XPutBackEvent (display_info->dpy, &otherEvent);
-            break;
-        }
-    }
 
     wc.x = ev->x;
     wc.y = ev->y;
