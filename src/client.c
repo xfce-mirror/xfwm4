@@ -4434,8 +4434,8 @@ clientCycle (Client * c, XEvent * ev)
         TRACE ("entering cycle loop");
         passdata.wireframe = wireframeCreate (passdata.c);
         icon = getAppIcon (display_info, passdata.c->window, 32, 32);
-        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, c, 
-                                        passdata.cycle_range, 
+        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, c,
+                                        passdata.c, passdata.cycle_range,
                                         screen_info->params->cycle_workspaces);
         eventFilterPush (display_info->xfilter, clientCycle_event_filter, &passdata);
         gtk_main ();

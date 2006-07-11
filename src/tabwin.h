@@ -48,7 +48,7 @@ struct _Tabwin
     int grid_rows;
 };
 
-Tabwin *tabwinCreate (GdkScreen *, Client *, unsigned int, gboolean);
+Tabwin *tabwinCreate (GdkScreen *, Client *, Client *, unsigned int, gboolean);
 Client *tabwinGetSelected (Tabwin *);
 Client *tabwinSelectNext (Tabwin *);
 Client *tabwinSelectPrev (Tabwin *);

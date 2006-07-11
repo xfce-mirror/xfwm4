@@ -162,13 +162,13 @@ createWindowIcon (Client * c)
 }
 
 static GtkWidget *
-createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin * t)
+createWindowlist (GdkScreen * scr, Client * current, Client * new, unsigned int cycle_range, Tabwin * t)
 {
     ScreenInfo *screen_info;
-    Client *c2 = NULL;
-    GList *next;
+    Client *c2;
     GdkRectangle monitor_sz;
     GtkWidget *windowlist, *icon;
+    GList *next;
     unsigned int grid_cols;
     unsigned int n_clients;
     unsigned int grid_rows;
@@ -176,13 +176,15 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin 
     int msx, msy;
     gint monitor;
 
-    g_return_val_if_fail (c != NULL, NULL);
+    g_return_val_if_fail (current != NULL, NULL);
 
     i = 0;
     packpos = 0;
+    c2 = NULL;
+    next = NULL;
 
     /* calculate the wrapping */
-    screen_info = c->screen_info;
+    screen_info = current->screen_info;
     n_clients = screen_info->client_count;
     
     g_return_val_if_fail (n_clients > 0, NULL);
@@ -199,7 +201,7 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin 
     t->grid_cols = grid_cols;
     t->grid_rows = grid_rows;
     /* pack the client icons */
-    for (c2 = c, i = 0; c2 && i < n_clients; i++, c2 = c2->next)
+    for (c2 = current, i = 0; c2 && i < n_clients; i++, c2 = c2->next)
     {
         if (!clientSelectMask (c2, cycle_range, WINDOW_REGULAR_FOCUSABLE))
             continue;
@@ -210,23 +212,21 @@ createWindowlist (GdkScreen * scr, Client * c, unsigned int cycle_range, Tabwin 
             GTK_FILL, GTK_FILL, 7, 7);
         packpos++;
         t->head = g_list_append (t->head, icon);
+        if (c2 == new)
+        {
+            next = g_list_last (t->head);
+        }
     }
-
-    next = g_list_next (t->head);
-    if (!next)
-    {
-        next = t->head;
-    }
-    t->current = next;
     if (next)
     {
         tabwinSetSelected (t, next->data);
     }
+    t->current = next;
     return windowlist;
 }
 
 Tabwin *
-tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean display_workspace)
+tabwinCreate (GdkScreen * scr, Client * current, Client * new, unsigned int cycle_range, gboolean display_workspace)
 {
     Tabwin *tabwin;
     GtkWidget *frame;
@@ -278,7 +278,7 @@ tabwinCreate (GdkScreen * scr, Client * c, unsigned int cycle_range, gboolean di
     gtk_box_pack_start (GTK_BOX (vbox), tabwin->label, TRUE, TRUE, 0);
     gtk_widget_set_size_request (GTK_WIDGET (tabwin->label), 240, -1);
 
-    windowlist = createWindowlist (scr, c, cycle_range, tabwin);
+    windowlist = createWindowlist (scr, current, new, cycle_range, tabwin);
     tabwin->container = windowlist;
     gtk_container_add (GTK_CONTAINER (frame), windowlist);
 
