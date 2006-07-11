@@ -1974,12 +1974,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     TRACE ("entering resize_win");
     TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
 
-    if (!WIN_IS_VISIBLE(cw))
-    {
-        set_size_attributes (cw, x, y, width, height, bw);
-        return;
-    }
-
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
@@ -2029,6 +2023,12 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     }
 
     set_size_attributes (cw, x, y, width, height, bw);
+
+    if (!WIN_IS_VISIBLE(cw))
+    {
+        /* 'nuff for invisible windows... */
+        return;
+    }
 
     cw->extents = win_extents (cw);
     XFixesUnionRegion (display_info->dpy, damage, damage, cw->extents);
