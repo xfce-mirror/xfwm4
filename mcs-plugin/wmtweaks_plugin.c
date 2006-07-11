@@ -271,7 +271,6 @@ create_option_menu (McsPlugin * mcs_plugin, const gchar *const values[],
     GtkWidget *hbox;
     GtkWidget *label_widget;
     GtkWidget *omenu;
-    GtkWidget *item;
     guint n;
 
     hbox = gtk_hbox_new (FALSE, 0);

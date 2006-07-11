@@ -648,9 +648,7 @@ create_option_menu_box (const MenuTmpl template[], guint size, gchar * display_l
 {
     GtkWidget *hbox;
     GtkWidget *vbox;
-    GtkWidget *menu;
     GtkWidget *omenu;
-    GtkWidget *item;
     guint n;
 
     vbox = gtk_vbox_new (FALSE, 0);
