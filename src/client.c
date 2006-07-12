@@ -3662,16 +3662,16 @@ clientMove (Client * c, XEvent * ev)
         cursor = myDisplayGetCursorMove(display_info);
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
-    g1 = myScreenGrabKeyboard (screen_info, CurrentTime);
+    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
-                              cursor, CurrentTime);
+                              cursor, myDisplayGetCurrentTime (display_info));
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientMove");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, CurrentTime);
-        myScreenUngrabPointer (screen_info, CurrentTime);
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
     }
@@ -3732,7 +3732,7 @@ clientMove (Client * c, XEvent * ev)
     }
     clientConfigure (c, &wc, changes, NO_CFG_FLAG);
 
-    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabKeyboard (screen_info, CurrentTime);
     if (!passdata.released)
     {
         /* If this is a drag-move, wait for the button to be released.
@@ -3742,7 +3742,7 @@ clientMove (Client * c, XEvent * ev)
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, CurrentTime);
     if (passdata.grab && screen_info->params->box_move)
     {
         myDisplayUngrabServer (display_info);
@@ -4171,18 +4171,18 @@ clientResize (Client * c, int corner, XEvent * ev)
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
 
-    g1 = myScreenGrabKeyboard (screen_info, CurrentTime);
+    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
                               myDisplayGetCursorResize(display_info, passdata.corner), 
-                              CurrentTime);
+                              myDisplayGetCurrentTime (display_info));
 
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientResize");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, CurrentTime);
-        myScreenUngrabPointer (screen_info, CurrentTime);
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
     }
@@ -4243,7 +4243,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
 
-    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabKeyboard (screen_info, CurrentTime);
     if (!passdata.released)
     {
         /* If this is a drag-resize, wait for the button to be released.
@@ -4253,7 +4253,7 @@ clientResize (Client * c, int corner, XEvent * ev)
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, CurrentTime);
     if (passdata.grab && screen_info->params->box_resize)
     {
         myDisplayUngrabServer (display_info);
@@ -4316,6 +4316,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                 if (key_pressed)
                 {
                     Client *c2 = NULL;
+
                     /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
                     if (!(modifier & ShiftMask) && (xevent->xkey.state & ShiftMask))
                     {
@@ -4331,6 +4332,12 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                     {
                         c = c2;
                         passdata->c = c;
+                    }
+
+                    /* If last key press event had not our modifier pressed, finish cycling */
+                    if (!(xevent->xkey.state & modifier))
+                    {
+                        cycling = FALSE;
                     }
                 }
 
@@ -4348,7 +4355,8 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
             {
                 int keysym = XLookupKeysym (&xevent->xkey, 0);
 
-                if (IsModifierKey(keysym) && (keysym != XK_Shift_L) && (keysym != XK_Shift_R))
+                if (!(xevent->xkey.state & modifier) ||
+                    (IsModifierKey(keysym) && (keysym != XK_Shift_L) && (keysym != XK_Shift_R)))
                 {
                     cycling = FALSE;
                 }
@@ -4388,16 +4396,16 @@ clientCycle (Client * c, XEvent * ev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    g1 = myScreenGrabKeyboard (screen_info, CurrentTime);
-    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, CurrentTime);
+    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, myDisplayGetCurrentTime (display_info));
 
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientCycle");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, CurrentTime);
-        myScreenUngrabPointer (screen_info, CurrentTime);
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
     }
@@ -4445,8 +4453,8 @@ clientCycle (Client * c, XEvent * ev)
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
     }
-    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabKeyboard (screen_info, CurrentTime);
+    myScreenUngrabPointer (screen_info, CurrentTime);
 
     if (passdata.c)
     {
