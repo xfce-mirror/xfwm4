@@ -519,7 +519,8 @@ clientSetWidth (Client * c, int w1)
     TRACE ("setting width %i for client \"%s\" (0x%lx)", w1, c->name,
         c->window);
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
+        FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         /* Bypass resize increment and max sizes for fullscreen */
         c->width = w1;
@@ -562,7 +563,8 @@ clientSetHeight (Client * c, int h1)
     TRACE ("setting height %i for client \"%s\" (0x%lx)", h1, c->name,
         c->window);
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
+        FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         /* Bypass resize increment and max sizes for fullscreen */
         c->height = h1;
@@ -738,7 +740,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         switch (wc->stack_mode)
         {
             /*
-             * Limitation: we don't support neither sibling,
+             * Limitation: we don't support neither
              * TopIf, BottomIf nor Opposite ...
              */
             case Above:
@@ -1260,7 +1262,7 @@ clientApplyInitialState (Client * c)
     TRACE ("entering clientApplyInitialState");
 
     /* We check that afterwards to make sure all states are now known */
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
         {
@@ -2735,8 +2737,7 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleMaximized");
-    TRACE ("maximzing/unmaximizing client \"%s\" (0x%lx)", c->name,
-        c->window);
+    TRACE ("maximzing/unmaximizing client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
@@ -2757,33 +2758,43 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
                   rect.x + rect.width) - full_x;
     full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[BOTTOM],
                   rect.y + rect.height) - full_y;
+    /* Adjust size to the largest size available, not covering struts */
+    clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
 
-    if (((mode & WIN_STATE_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ)) &&
-        ((mode & WIN_STATE_MAXIMIZED_VERT) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT)))
-    {
-        /* Adjust size to the largest size available, not covering struts */
-        clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
-    }
-    else if ((mode & WIN_STATE_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
-    {
-        int tmp_y, tmp_h;
+    wc.x = c->x;
+    wc.y = c->y;
+    wc.width = c->width;
+    wc.height = c->height;
 
-        tmp_y = frameY (c); 
-        tmp_h = frameHeight (c);
-        /* Adjust size to the widest size available, for the current vertical position/height */
-        clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
-    }
-    else if ((mode & WIN_STATE_MAXIMIZED_VERT) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
+    if ((mode & WIN_STATE_MAXIMIZED_HORIZ) && (mode & WIN_STATE_MAXIMIZED_VERT))
     {
-        int tmp_x, tmp_w;
-        
-        tmp_x = frameX (c);
-        tmp_w = frameWidth (c);
-        /* Adjust size to the tallest size available, for the current horizontal position/width */
-        clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        {
+            if (restore_position)
+            {
+                c->old_x = c->x;
+                c->old_y = c->y;
+                c->old_width = c->width;
+                c->old_height = c->height;
+            }
+            c->win_state |= (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
+            wc.x = full_x + frameLeft (c);
+            wc.y = full_y + frameTop (c);
+            wc.width = full_w - frameLeft (c) - frameRight (c);
+            wc.height = full_h - frameTop (c) - frameBottom (c);
+        }
+        else
+        {
+            c->win_state &= ~(WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
+            wc.x = c->old_x;
+            wc.y = c->old_y;
+            wc.width = c->old_width;
+            wc.height = c->old_height;
+        }
     }
-
-    if (mode & WIN_STATE_MAXIMIZED_HORIZ)
+    else if (mode & WIN_STATE_MAXIMIZED_HORIZ)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
@@ -2792,26 +2803,20 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
                 c->old_x = c->x;
                 c->old_width = c->width;
             }
-            wc.x = full_x + frameLeft (c);
-            wc.width = full_w - frameLeft (c) - frameRight (c);
             c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            wc.x = full_x + frameLeft (c);
+            wc.width = full_w - frameLeft (c) - frameRight (c);
         }
         else
         {
-            wc.x = c->old_x;
-            wc.width = c->old_width;
             c->win_state &= ~WIN_STATE_MAXIMIZED_HORIZ;
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            wc.x = c->old_x;
+            wc.width = c->old_width;
         }
     }
-    else
-    {
-        wc.x = c->x;
-        wc.width = c->width;
-    }
-
-    if (mode & WIN_STATE_MAXIMIZED_VERT)
+    else if (mode & WIN_STATE_MAXIMIZED_VERT)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
@@ -2820,23 +2825,18 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
                 c->old_y = c->y;
                 c->old_height = c->height;
             }
-            wc.y = full_y + frameTop (c);
-            wc.height = full_h - frameTop (c) - frameBottom (c);
             c->win_state |= WIN_STATE_MAXIMIZED_VERT;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+            wc.y = full_y + frameTop (c);
+            wc.height = full_h - frameTop (c) - frameBottom (c);
         }
         else
         {
-            wc.y = c->old_y;
-            wc.height = c->old_height;
             c->win_state &= ~WIN_STATE_MAXIMIZED_VERT;
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+            wc.y = c->old_y;
+            wc.height = c->old_height;
         }
-    }
-    else
-    {
-        wc.y = c->y;
-        wc.height = c->height;
     }
 
     c->x = wc.x;
@@ -3665,6 +3665,7 @@ clientMove (Client * c, XEvent * ev)
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
                               cursor, myDisplayGetCurrentTime (display_info));
+    XFlush (myScreenGetXDisplay (screen_info));
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientMove");
@@ -4141,6 +4142,11 @@ clientResize (Client * c, int corner, XEvent * ev)
     TRACE ("entering clientResize");
     TRACE ("resizing client \"%s\" (0x%lx)", c->name, c->window);
 
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    {
+        return;
+    }
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
@@ -4175,6 +4181,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
                               myDisplayGetCursorResize(display_info, passdata.corner), 
                               myDisplayGetCurrentTime (display_info));
+    XFlush (myScreenGetXDisplay (screen_info));
 
     if (!g1 || !g2)
     {
@@ -4398,6 +4405,7 @@ clientCycle (Client * c, XEvent * ev)
 
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, myDisplayGetCurrentTime (display_info));
+    XFlush (myScreenGetXDisplay (screen_info));
 
     if (!g1 || !g2)
     {

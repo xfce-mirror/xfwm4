@@ -1351,6 +1351,13 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
 
             ev->value_mask |= (CWX | CWY | CWWidth | CWHeight);
         }
+        else if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        {
+            wc.x = c->x;
+            wc.y = c->y;
+            wc.width = c->width;
+            wc.height = c->height;
+        }
         /* Clean up buggy requests that set all flags */
         if ((ev->value_mask & CWX) && (wc.x == c->x))
         {

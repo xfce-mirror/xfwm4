@@ -1129,6 +1129,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     strncpy (screen_info->params->button_layout, getValue ("button_layout", rc), 7);
     screen_info->params->button_spacing = TOINT (getValue ("button_spacing", rc));
     screen_info->params->button_offset = TOINT (getValue ("button_offset", rc));
+    screen_info->params->maximized_offset = TOINT (getValue ("maximized_offset", rc));
     screen_info->params->title_vertical_offset_active =
         TOINT (getValue ("title_vertical_offset_active", rc));
     screen_info->params->title_vertical_offset_inactive =
@@ -1288,6 +1289,7 @@ loadSettings (ScreenInfo *screen_info)
         {"margin_left", NULL, FALSE},
         {"margin_right", NULL, FALSE},
         {"margin_top", NULL, FALSE},
+        {"maximized_offset", NULL, TRUE},
         {"move_opacity", NULL, TRUE},
         {"placement_ratio", NULL, TRUE},
         {"popup_opacity", NULL, TRUE},
