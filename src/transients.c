@@ -28,6 +28,7 @@
 #include "screen.h"
 #include "client.h"
 #include "stacking.h"
+#include "transients.h"
 
 Client *
 clientGetTransient (Client * c)

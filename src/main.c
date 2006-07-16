@@ -257,7 +257,6 @@ print_usage (void)
              "[--compositor=off|on|auto] "
 #endif
              "[--daemon] [--version|-V] [--help|-H]\n", PACKAGE);
-    exit (0);
 }
 
 static void
@@ -306,7 +305,6 @@ print_version (void)
 #else
     g_print ("No\n");
 #endif    
-    exit (0);
 }
 
 #ifdef HAVE_COMPOSITOR
@@ -530,10 +528,12 @@ main (int argc, char **argv)
         else if (!strcmp(argv[i], "--version") || !strcmp(argv[i], "-V"))
         {
             print_version ();
+	    exit (0);
         }
         else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-H"))
         {
             print_usage ();
+	    exit (0);
         }
     }
 

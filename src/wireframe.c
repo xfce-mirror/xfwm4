@@ -36,6 +36,7 @@
 #include "screen.h"
 #include "client.h"
 #include "frame.h"
+#include "wireframe.h"
 
 #ifndef OUTLINE_WIDTH
 #define OUTLINE_WIDTH 5

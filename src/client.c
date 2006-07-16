@@ -1409,7 +1409,7 @@ clientClearPixmapCache (Client * c)
     xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
 }
 
-void
+static void
 clientGetUserTime (Client * c)
 {
     ScreenInfo *screen_info;
@@ -3041,7 +3041,7 @@ clientScreenResize(ScreenInfo *screen_info)
     g_list_free (list_of_windows);
 }
 
-void
+static void
 clientDrawOutline (Client * c)
 {
     TRACE ("entering clientDrawOutline");
@@ -4285,7 +4285,8 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
     if (passdata->c == NULL)
     {
         return EVENT_FILTER_CONTINUE;
-        gtk_main_quit ();
+        /*  will never be executed */
+	/* gtk_main_quit (); */
     }
 
     c = passdata->c;
