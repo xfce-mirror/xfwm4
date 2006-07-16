@@ -5,6 +5,7 @@ button_spacing=1
 full_width_title=true
 inactive_text_color=#808080
 inactive_text_shadow_color=#f2f2f2
+maximized_offset=3
 show_app_icon=true
 title_horizontal_offset=0
 title_shadow_active=frame
