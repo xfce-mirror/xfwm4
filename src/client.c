@@ -2726,28 +2726,82 @@ clientRemoveMaximizeFlag (Client * c)
     clientSetNetState (c);
 }
 
-void
-clientToggleMaximized (Client * c, int mode, gboolean restore_position)
+static void
+clientNewMaxState (Client * c, XWindowChanges *wc, int mode, gboolean restore_position)
+{
+    /*
+     * We treat differently full maximization from vertical or horizontal maximization.
+     * This is for usability concerns, otherwise maximization acts like a toggle, 
+     * switching from horizontal to vertical instead of switching to full maximization.
+     * 
+     * The full size is not computed yet, as full maximization removes borders
+     * while either horizontal or vertical maximization still shows decorations...
+     */
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) && (restore_position))
+    {
+        c->old_x = c->x;
+        c->old_y = c->y;
+        c->old_width = c->width;
+        c->old_height = c->height;
+    }
+
+    if ((mode & WIN_STATE_MAXIMIZED) == WIN_STATE_MAXIMIZED)
+    {
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        {
+            c->win_state |= WIN_STATE_MAXIMIZED;
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
+            return;
+        }
+    }
+
+    if (mode & WIN_STATE_MAXIMIZED_HORIZ)
+    {
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+        {
+            c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            return;
+        }
+    }
+
+    if (mode & WIN_STATE_MAXIMIZED_VERT)
+    {
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
+        {
+            c->win_state |= WIN_STATE_MAXIMIZED_VERT;
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+            return;
+        }
+    }
+
+    c->win_state &= ~WIN_STATE_MAXIMIZED;
+    FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
+    wc->x = c->old_x;
+    wc->y = c->old_y;
+    wc->width = c->old_width;
+    wc->height = c->old_height;
+}
+
+static void 
+clientNewMaxSize (Client * c, XWindowChanges *wc)
 {
     ScreenInfo *screen_info;
     GdkRectangle rect;
-    XWindowChanges wc;
     int cx, cy, full_x, full_y, full_w, full_h;
+    int tmp_x, tmp_y, tmp_w, tmp_h;
     gint monitor_nbr;
 
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleMaximized");
-    TRACE ("maximzing/unmaximizing client \"%s\" (0x%lx)", c->name, c->window);
+    tmp_x = frameX (c);
+    tmp_y = frameY (c); 
+    tmp_h = frameHeight (c);
+    tmp_w = frameWidth (c);
+
+    cx = tmp_x + (tmp_w / 2);
+    cy = tmp_y + (tmp_h / 2);
 
     screen_info = c->screen_info;
-
-    if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
-    {
-        return;
-    }
-
-    cx = frameX (c) + (frameWidth (c) / 2);
-    cy = frameY (c) + (frameHeight (c) / 2);
 
     monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
@@ -2759,102 +2813,65 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[BOTTOM],
                   rect.y + rect.height) - full_y;
 
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    {
+        /* Adjust size to the largest size available, not covering struts */
+        clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
+        wc->x = full_x + frameLeft (c);
+        wc->y = full_y + frameTop (c);
+        wc->width = full_w - frameLeft (c) - frameRight (c);
+        wc->height = full_h - frameTop (c) - frameBottom (c);
+
+        return;
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+    {
+        /* Adjust size to the widest size available, for the current vertical position/height */
+        clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
+        wc->x = full_x + frameLeft (c);
+        wc->width = full_w - frameLeft (c) - frameRight (c);
+
+        return;
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
+    {
+        /* Adjust size to the tallest size available, for the current horizontal position/width */
+        clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
+        wc->y = full_y + frameTop (c);
+        wc->height = full_h - frameTop (c) - frameBottom (c);
+
+        return;
+    }
+}
+
+void
+clientToggleMaximized (Client * c, int mode, gboolean restore_position)
+{
+    XWindowChanges wc;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientToggleMaximized");
+    TRACE ("maximzing/unmaximizing client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
+    {
+        return;
+    }
+
     wc.x = c->x;
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
 
-    if ((mode & WIN_STATE_MAXIMIZED_HORIZ) && (mode & WIN_STATE_MAXIMIZED_VERT))
-    {
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
-        {
-            if (restore_position)
-            {
-                c->old_x = c->x;
-                c->old_y = c->y;
-                c->old_width = c->width;
-                c->old_height = c->height;
-            }
-            c->win_state |= (WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT);
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
-            /* Adjust size to the largest size available, not covering struts */
-            clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
-            wc.x = full_x + frameLeft (c);
-            wc.y = full_y + frameTop (c);
-            wc.width = full_w - frameLeft (c) - frameRight (c);
-            wc.height = full_h - frameTop (c) - frameBottom (c);
-        }
-        else
-        {
-            c->win_state &= ~(WIN_STATE_MAXIMIZED_HORIZ | WIN_STATE_MAXIMIZED_VERT);
-            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-            wc.x = c->old_x;
-            wc.y = c->old_y;
-            wc.width = c->old_width;
-            wc.height = c->old_height;
-        }
-    }
-    else if (mode & WIN_STATE_MAXIMIZED_HORIZ)
-    {
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
-        {
-            int tmp_y, tmp_h;
+    /* 1) Compute the new state */
+    clientNewMaxState (c, &wc, mode, restore_position);
+       
+    /* 2) Compute the new size, based on the state */
+    clientNewMaxSize (c, &wc);
 
-            if (restore_position)
-            {
-                c->old_x = c->x;
-                c->old_width = c->width;
-            }
-            c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
-            tmp_y = frameY (c); 
-            tmp_h = frameHeight (c);
-            /* Adjust size to the widest size available, for the current vertical position/height */
-            clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
-            wc.x = full_x + frameLeft (c);
-            wc.width = full_w - frameLeft (c) - frameRight (c);
-        }
-        else
-        {
-            c->win_state &= ~WIN_STATE_MAXIMIZED_HORIZ;
-            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
-            wc.x = c->old_x;
-            wc.width = c->old_width;
-        }
-    }
-    else if (mode & WIN_STATE_MAXIMIZED_VERT)
-    {
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
-        {
-            int tmp_x, tmp_w;
-
-            if (restore_position)
-            {
-                c->old_y = c->y;
-                c->old_height = c->height;
-            }
-            c->win_state |= WIN_STATE_MAXIMIZED_VERT;
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
-            tmp_x = frameX (c);
-            tmp_w = frameWidth (c);
-            /* Adjust size to the tallest size available, for the current horizontal position/width */
-            clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
-            wc.y = full_y + frameTop (c);
-            wc.height = full_h - frameTop (c) - frameBottom (c);
-        }
-        else
-        {
-            c->win_state &= ~WIN_STATE_MAXIMIZED_VERT;
-            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
-            wc.y = c->old_y;
-            wc.height = c->old_height;
-        }
-    }
-
-    c->x = wc.x;
-    c->y = wc.y;
-    c->height = wc.height;
-    c->width = wc.width;
+    /* 3) Update window fields */
     clientSetNetState (c);
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
@@ -2867,11 +2884,18 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
                grab focus in focus follow mouse mode. Grab the pointer to
                avoid these effects
              */
-            myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
+            myScreenGrabPointer (c->screen_info, EnterWindowMask, None, CurrentTime);
             clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_NOTIFY);
-            myScreenUngrabPointer (screen_info, CurrentTime);
+            myScreenUngrabPointer (c->screen_info, CurrentTime);
         }
+        return;
     }
+
+    /* Window is not managed yet, just update its fields */
+    c->x = wc.x;
+    c->y = wc.y;
+    c->height = wc.height;
+    c->width = wc.width;
 }
 
 void
@@ -4630,19 +4654,17 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
             case MAXIMIZE_BUTTON:
                 if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
                 {
-                    unsigned long mode = c->win_state & WIN_STATE_MAXIMIZED;
-
                     if (bev->button == Button1)
                     {
-                        clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED, TRUE);
+                        clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                     }
                     else if (bev->button == Button2)
                     {
-                        clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED_VERT, TRUE);
+                        clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT, TRUE);
                     }
                     else if (bev->button == Button3)
                     {
-                        clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED_HORIZ, TRUE);
+                        clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ, TRUE);
                     }
                 }
                 break;

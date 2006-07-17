@@ -70,7 +70,8 @@
 #define WIN_STATE_STICKY                        (1L<<0)
 #define WIN_STATE_MAXIMIZED_VERT                (1L<<2)
 #define WIN_STATE_MAXIMIZED_HORIZ               (1L<<3)
-#define WIN_STATE_MAXIMIZED                     ((1L<<2)|(1L<<3))
+#define WIN_STATE_MAXIMIZED                     (WIN_STATE_MAXIMIZED_VERT | \
+                                                 WIN_STATE_MAXIMIZED_HORIZ)
 #define WIN_STATE_SHADED                        (1L<<5)
 
 #define WIN_HINTS_SKIP_FOCUS                    (1L<<0)

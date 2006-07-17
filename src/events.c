@@ -353,20 +353,17 @@ getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
 static void
 handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 {
-    unsigned long mode;
     ScreenInfo *screen_info;
     Client *c;
     int key;
 
     TRACE ("entering handleKeyEvent");
 
-    mode = 0;
     c = clientGetFocus ();
     if (c)
     {
         screen_info = c->screen_info;
         key = getKeyPressed (screen_info, ev);
-        mode = c->win_state & WIN_STATE_MAXIMIZED;
 
         switch (key)
         {
@@ -398,13 +395,13 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_MAXIMIZE_WINDOW:
-                clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED, TRUE);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 break;
             case KEY_MAXIMIZE_VERT:
-                clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED_VERT, TRUE);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT, TRUE);
                 break;
             case KEY_MAXIMIZE_HORIZ:
-                clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED_HORIZ, TRUE);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ, TRUE);
                 break;
             case KEY_SHADE_WINDOW:
                 clientToggleShaded (c);
@@ -591,7 +588,6 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
 static void
 button1Action (Client * c, XButtonEvent * ev)
 {
-    unsigned long mode;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     XEvent copy_event;
@@ -602,7 +598,6 @@ button1Action (Client * c, XButtonEvent * ev)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    mode = c->win_state & WIN_STATE_MAXIMIZED;
 
     if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
     {
@@ -623,7 +618,7 @@ button1Action (Client * c, XButtonEvent * ev)
         switch (screen_info->params->double_click_action)
         {
             case ACTION_MAXIMIZE:
-                clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED, TRUE);
+                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 break;
             case ACTION_SHADE:
                 clientToggleShaded (c);
@@ -2247,7 +2242,6 @@ xfwm4_event_filter (XEvent * xevent, gpointer data)
 static void
 menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer item_data)
 {
-    unsigned long mode;
     Client *c;
 
     TRACE ("entering menu_callback");
@@ -2267,7 +2261,6 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
     if (c)
     {
         c->button_pressed[MENU_BUTTON] = FALSE;
-        mode = c->win_state & WIN_STATE_MAXIMIZED;
 
         switch (op)
         {
@@ -2278,7 +2271,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_UNMAXIMIZE:
                 if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
                 {
-                    clientToggleMaximized (c, mode ? mode : WIN_STATE_MAXIMIZED, TRUE);
+                    clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 }
                 break;
             case MENU_OP_MINIMIZE:
