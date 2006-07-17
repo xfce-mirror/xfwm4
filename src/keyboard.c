@@ -140,35 +140,35 @@ grabKey (Display * dpy, MyKey * key, Window w)
         if (key->modifier == 0)
         {
             XGrabKey (dpy, key->keycode, AnyModifier, w, FALSE,
-                GrabModeAsync, GrabModeAsync);
+                GrabModeAsync, GrabModeSync);
         }
         else
         {
             /* Here we grab all combinations of well known modifiers */
             XGrabKey (dpy, key->keycode, 
                 key->modifier, w, FALSE,
-                GrabModeAsync, GrabModeAsync);
+                GrabModeAsync, GrabModeSync);
             XGrabKey (dpy, key->keycode, 
                 key->modifier | ScrollLockMask, w,
-                FALSE, GrabModeAsync, GrabModeAsync);
+                FALSE, GrabModeAsync, GrabModeSync);
             XGrabKey (dpy, key->keycode, 
                 key->modifier | NumLockMask, w,
-                FALSE, GrabModeAsync, GrabModeAsync);
+                FALSE, GrabModeAsync, GrabModeSync);
             XGrabKey (dpy, key->keycode, 
                 key->modifier | LockMask, w,
-                FALSE, GrabModeAsync, GrabModeAsync);
+                FALSE, GrabModeAsync, GrabModeSync);
             XGrabKey (dpy, key->keycode,
                 key->modifier | ScrollLockMask | NumLockMask, w, FALSE,
-                GrabModeAsync, GrabModeAsync);
+                GrabModeAsync, GrabModeSync);
             XGrabKey (dpy, key->keycode,
                 key->modifier | ScrollLockMask | LockMask, w, FALSE,
-                GrabModeAsync, GrabModeAsync);
+                GrabModeAsync, GrabModeSync);
             XGrabKey (dpy, key->keycode,
                 key->modifier | LockMask | NumLockMask, w, FALSE,
-                GrabModeAsync, GrabModeAsync);
+                GrabModeAsync, GrabModeSync);
             XGrabKey (dpy, key->keycode,
                 key->modifier | ScrollLockMask | LockMask | NumLockMask,
-                w, FALSE, GrabModeAsync, GrabModeAsync);
+                w, FALSE, GrabModeAsync, GrabModeSync);
         }
     }
 }

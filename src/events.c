@@ -545,6 +545,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         default:
             break;
     }
+    XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
 }
 
 /* User has clicked on an edge or corner.
