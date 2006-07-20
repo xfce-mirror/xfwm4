@@ -542,7 +542,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         default:
             break;
     }
-    XAllowEvents (display_info->dpy, SyncKeyboard, myDisplayGetCurrentTime (display_info));
+    XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
 }
 
 /* User has clicked on an edge or corner.
@@ -986,11 +986,11 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 
         if (replay)
         {
-            XAllowEvents (display_info->dpy, ReplayPointer, myDisplayGetCurrentTime (display_info));
+            XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
         }
         else
         {
-            XAllowEvents (display_info->dpy, SyncPointer, myDisplayGetCurrentTime (display_info));
+            XAllowEvents (display_info->dpy, SyncPointer, ev->time);
         }
 
         return;
