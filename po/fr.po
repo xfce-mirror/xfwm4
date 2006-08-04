@@ -137,7 +137,7 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:499
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr "Basculer d'espace en ffonction de l'agencement du bureau"
+msgstr "Basculer d'espace en fonction de l'agencement du bureau"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:506
 msgid "Wrap workspaces when the first or last workspace is reached"
