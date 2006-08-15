@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-08 21:17+0200\n"
+"POT-Creation-Date: 2006-08-14 15:28+0200\n"
 "PO-Revision-Date: 2006-04-18 10:02+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -51,7 +51,7 @@ msgstr "Tööruumid ja ääred"
 msgid "Workspaces and Margins"
 msgstr "Tööruumid ja ääred"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:513
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Tööruumid"
@@ -60,157 +60,162 @@ msgstr "Tööruumid"
 msgid "Margins"
 msgstr "Ääred"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:369
+#: ../mcs-plugin/wmtweaks_plugin.c:371
 msgid "None"
 msgstr "Tühjus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:377
+#: ../mcs-plugin/wmtweaks_plugin.c:379
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Aknahalduri ülehäälestamine"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:396
+#: ../mcs-plugin/wmtweaks_plugin.c:398
+#, fuzzy
 msgid ""
-"Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Lisa aknad, millel on \"eira lehitsejat\" või \"eira tegumiriba\" omadused "
 "seatud"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:402
+#: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Lisa varjatud (ehk ikoniseeritud) aknad"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:408
+#: ../mcs-plugin/wmtweaks_plugin.c:410
 msgid "Cycle through windows from all workspaces"
 msgstr "Tsükleeri üle kõigi töölaudade akende"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:413
+#: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Cycling"
 msgstr "Tsükleerimine"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:425
+#: ../mcs-plugin/wmtweaks_plugin.c:427
 msgid "Activate focus stealing prevention"
 msgstr "Aktiveeri fookuse näppamise ennetustegevus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:431
+#: ../mcs-plugin/wmtweaks_plugin.c:433
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Austa standartset ICCCM fookuse vihjet"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:436 ../mcs-plugin/xfwm4_plugin.c:1683
+#: ../mcs-plugin/wmtweaks_plugin.c:438 ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
 msgstr "Fookus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:450
 msgid "Key used to grab and move windows"
 msgstr "Klahv, mida kasutada akna haaramiseks ja liigutamiseks"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:454
+#: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Tõsta aken kui ükskõik millist hiire nuppu toksitakse"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:463
 msgid "Restore original size of maximized windows when moving"
 msgstr "Taasta suurendatud akende originaalne suurus nende liigutamisel"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:469
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Kasuta ääre vastuhakku akende haakimise asemel"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:474
 msgid "Accessibility"
 msgstr "Käsitletavus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:485
+#: ../mcs-plugin/wmtweaks_plugin.c:487
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Lülita töölaudu kasutades hiire rulli töölaua kohal"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:492
+#: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Pea meeles ja kutsu esile eelmine töölaud kui lülitamine käib klaviatuuri "
 "kiirklahvide abil."
 
-#: ../mcs-plugin/wmtweaks_plugin.c:499
+#: ../mcs-plugin/wmtweaks_plugin.c:501
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Muuda töölaudu sõltuvalt tegelikust töölaua laotusest"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:506
+#: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Vaheta töölaud teise äärde, kui esimene või viimane töölaud on ees"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:523
+#: ../mcs-plugin/wmtweaks_plugin.c:525
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Akende vähim suurus, mis käivitab targa paigutuse"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:524
+#: ../mcs-plugin/wmtweaks_plugin.c:526
 msgid "Size|Small"
 msgstr "Suurus|Väike"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:524
+#: ../mcs-plugin/wmtweaks_plugin.c:526
 msgid "Size|Large"
 msgstr "Suurus|Suur"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:528
+#: ../mcs-plugin/wmtweaks_plugin.c:530
 msgid "Placement"
 msgstr "Asetus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:548
+#: ../mcs-plugin/wmtweaks_plugin.c:550
 msgid "Enable display compositing"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:562
+#: ../mcs-plugin/wmtweaks_plugin.c:564
+msgid "Display full screen overlay windows directly"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Show shadows under regular windows"
 msgstr "Näita varje tavaliste akende taga"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:568
+#: ../mcs-plugin/wmtweaks_plugin.c:576
 msgid "Show shadows under popup windows"
 msgstr "Näita varju hüpikakende taga"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:574
+#: ../mcs-plugin/wmtweaks_plugin.c:582
 msgid "Opacity of window decorations"
 msgstr "Akna kaunistuste läbipaistmatus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:574 ../mcs-plugin/wmtweaks_plugin.c:580
-#: ../mcs-plugin/wmtweaks_plugin.c:586 ../mcs-plugin/wmtweaks_plugin.c:592
-#: ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:582 ../mcs-plugin/wmtweaks_plugin.c:588
+#: ../mcs-plugin/wmtweaks_plugin.c:594 ../mcs-plugin/wmtweaks_plugin.c:600
+#: ../mcs-plugin/wmtweaks_plugin.c:606
 msgid "Transparent"
 msgstr "Läbipaistev"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:575 ../mcs-plugin/wmtweaks_plugin.c:581
-#: ../mcs-plugin/wmtweaks_plugin.c:587 ../mcs-plugin/wmtweaks_plugin.c:593
-#: ../mcs-plugin/wmtweaks_plugin.c:599
+#: ../mcs-plugin/wmtweaks_plugin.c:583 ../mcs-plugin/wmtweaks_plugin.c:589
+#: ../mcs-plugin/wmtweaks_plugin.c:595 ../mcs-plugin/wmtweaks_plugin.c:601
+#: ../mcs-plugin/wmtweaks_plugin.c:607
 msgid "Opaque"
 msgstr "Läbipaistmatu"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:580
+#: ../mcs-plugin/wmtweaks_plugin.c:588
 #, fuzzy
 msgid "Opacity of inactive windows"
 msgstr "Hüpikakende läbipaistmatus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:586
+#: ../mcs-plugin/wmtweaks_plugin.c:594
 msgid "Opacity of windows during move"
 msgstr "Akna läbipaistmatus liigutamise ajal"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:592
+#: ../mcs-plugin/wmtweaks_plugin.c:600
 msgid "Opacity of windows during resize"
 msgstr "Akna läbipaistmatus suuruse muutmise ajal"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:606
 msgid "Opacity of popup windows"
 msgstr "Hüpikakende läbipaistmatus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:603
+#: ../mcs-plugin/wmtweaks_plugin.c:611
 msgid "Compositor"
 msgstr "Kujundaja"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:645
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 #, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Aknahalduri ülehäälestamine"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:762 ../mcs-plugin/xfwm4_plugin.c:2344
+#: ../mcs-plugin/wmtweaks_plugin.c:771 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Need seadistused ei saa töötada teie praeguse aknahalduriga (%s)"
@@ -312,173 +317,173 @@ msgstr "Akna pealkirja ei saa eemaldada."
 msgid "Hidden"
 msgstr "Varjatud"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1361
+#: ../mcs-plugin/xfwm4_plugin.c:1359
 msgid "Font Selection Dialog"
 msgstr "Fondi valimise dialoog"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1426
+#: ../mcs-plugin/xfwm4_plugin.c:1424
 msgid "Window Manager"
 msgstr "Aknahaldur"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1466
+#: ../mcs-plugin/xfwm4_plugin.c:1464
 msgid "Title font"
 msgstr "Pealkirja font"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1475
+#: ../mcs-plugin/xfwm4_plugin.c:1473
 msgid "Title Alignment"
 msgstr "Pealkirja paigutus"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1477
+#: ../mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "Teksti paigutus pealkirjas :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1483
+#: ../mcs-plugin/xfwm4_plugin.c:1481
 msgid "Button layout"
 msgstr "Nuppude asetus"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1488
+#: ../mcs-plugin/xfwm4_plugin.c:1486
 msgid "Style"
 msgstr "Stiil"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1536
+#: ../mcs-plugin/xfwm4_plugin.c:1534
 msgid "Window shortcuts"
 msgstr "Akende kiirklahvid"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1550
+#: ../mcs-plugin/xfwm4_plugin.c:1548
 msgid "Command"
 msgstr "Käsk"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1556
+#: ../mcs-plugin/xfwm4_plugin.c:1554
 msgid "Shortcut"
 msgstr "Kiirklahvid"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1573
+#: ../mcs-plugin/xfwm4_plugin.c:1571
 msgid "Keyboard"
 msgstr "Klaviatuur"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1588
+#: ../mcs-plugin/xfwm4_plugin.c:1586
 msgid "Focus model"
 msgstr "Fookuse mudel"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1592
+#: ../mcs-plugin/xfwm4_plugin.c:1590
 msgid "Click to focus"
 msgstr "Klõpsa fokuseerimiseks"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1602
+#: ../mcs-plugin/xfwm4_plugin.c:1600
 msgid "Focus follows mouse"
 msgstr "Fookus järgib hiirt"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1613
+#: ../mcs-plugin/xfwm4_plugin.c:1611
 msgid "Automatically give focus to newly created windows"
 msgstr "Anna fookus automaatselt uutele akendele"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1617
+#: ../mcs-plugin/xfwm4_plugin.c:1615
 msgid "New window focus"
 msgstr "Uue akna fookus"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1624
+#: ../mcs-plugin/xfwm4_plugin.c:1622
 msgid "Raise on focus"
 msgstr "Tõsta aken fookuse saamisel"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1630
+#: ../mcs-plugin/xfwm4_plugin.c:1628
 msgid "Automatically raise windows when they receive focus"
 msgstr "Tõsta aknaid automaatselt, kui nad saavad fookuse"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1640
+#: ../mcs-plugin/xfwm4_plugin.c:1638
 msgid "Delay before raising focused window :"
 msgstr "Viivitus enne fokuseeritud akna tõstmist :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1647
+#: ../mcs-plugin/xfwm4_plugin.c:1645
 msgid "Slow"
 msgstr "Väike"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1654
+#: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Fast"
 msgstr "Suur"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1675
+#: ../mcs-plugin/xfwm4_plugin.c:1673
 msgid "Raise window when clicking inside application window"
 msgstr "Tõsta aken, kui akna sees klõpsatakse"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1679
+#: ../mcs-plugin/xfwm4_plugin.c:1677
 msgid "Raise on click"
 msgstr "Tõsta klõpsu korral"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1697
+#: ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Windows snapping"
 msgstr "Akna haakumine"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1702
+#: ../mcs-plugin/xfwm4_plugin.c:1700
 msgid "Snap windows to screen border"
 msgstr "Haagi aknaid ekraani äärtel"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1708
+#: ../mcs-plugin/xfwm4_plugin.c:1706
 msgid "Snap windows to other windows"
 msgstr "Haagi aknaid teiste akende külge"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1719
+#: ../mcs-plugin/xfwm4_plugin.c:1717
 msgid "Distance :"
 msgstr "Kaugus :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1726
+#: ../mcs-plugin/xfwm4_plugin.c:1724
 msgid "Distance|Small"
 msgstr "Kaugus|Väike"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1733
+#: ../mcs-plugin/xfwm4_plugin.c:1731
 msgid "Distance|Wide"
 msgstr "Kaugus|Lai"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1754
+#: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Wrap workspaces"
 msgstr "Töölaua vahetus"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1760
+#: ../mcs-plugin/xfwm4_plugin.c:1758
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Vaheta töölauda, kui kursor jõuab akna äärde"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1768
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Vaheta töölauda, kui akent kantakse üle ekraani ääre"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1778
+#: ../mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
 msgstr "Ääre vastupanu :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1785
+#: ../mcs-plugin/xfwm4_plugin.c:1783
 msgid "Resistance|Small"
 msgstr "Vastuhakk|Väike"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1792
+#: ../mcs-plugin/xfwm4_plugin.c:1790
 msgid "Resistance|Wide"
 msgstr "Vastuhakk|Lai"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1814
+#: ../mcs-plugin/xfwm4_plugin.c:1812
 msgid "Opaque move and resize"
 msgstr "Akna liigutamine ja suuruse muutmine"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1819
+#: ../mcs-plugin/xfwm4_plugin.c:1817
 msgid "Display content of windows when resizing"
 msgstr "Näita akna sisu selle suuruse muutmise ajal"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1825
+#: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Display content of windows when moving"
 msgstr "Näita akna sisu selle liigutamise ajal"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1830
+#: ../mcs-plugin/xfwm4_plugin.c:1828
 msgid "Double click action"
 msgstr "Topeltklõpsu tegevus"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1832
+#: ../mcs-plugin/xfwm4_plugin.c:1830
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Mida teha kui topeltklõpsatakse pealkirja ribal"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1837
+#: ../mcs-plugin/xfwm4_plugin.c:1835
 msgid "Advanced"
 msgstr "Edasijõudnud"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1976
+#: ../mcs-plugin/xfwm4_plugin.c:1974
 #, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "Aknahaldur"
@@ -772,12 +777,12 @@ msgstr "Töölaud %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: 'GtkMenu'-l ebaõnnestus kursori haaramine\n"
 
-#: ../src/settings.c:881
+#: ../src/settings.c:891
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Ei suutnud tekitada värvi %s\n"
 
-#: ../src/settings.c:887
+#: ../src/settings.c:897
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Ei suutnud parsida värvi %s\n"

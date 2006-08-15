@@ -214,7 +214,8 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
                 gint depth, Window parent,
                 xfwmWindow * win, 
                 int x, int y, int width, int height, 
-                long eventmask)
+                long eventmask,
+                gboolean bottom)
 {
     XSetWindowAttributes attributes;
 
@@ -225,7 +226,15 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
                                  InputOnly, CopyFromParent,
                                  CWEventMask | CWOverrideRedirect, 
                                  &attributes);
-    XMapRaised (myScreenGetXDisplay (screen_info), win->window);
+    XMapWindow (myScreenGetXDisplay (screen_info), win->window);
+    if (bottom)
+    {
+        XLowerWindow (myScreenGetXDisplay (screen_info), win->window);
+    }
+    else
+    {
+        XRaiseWindow (myScreenGetXDisplay (screen_info), win->window);
+    }
     XFlush (myScreenGetXDisplay (screen_info));
 
     win->map = TRUE;

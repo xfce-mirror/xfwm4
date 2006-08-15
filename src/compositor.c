@@ -676,6 +676,89 @@ border_size (CWindow *cw)
     return border;
 }
 
+static void
+free_win_data (CWindow *cw, gboolean delete)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
+#if HAVE_NAME_WINDOW_PIXMAP
+    if (cw->name_window_pixmap)
+    {
+        XFreePixmap (display_info->dpy, cw->name_window_pixmap);
+        cw->name_window_pixmap = None;
+    }
+#endif
+
+    if (cw->picture)
+    {
+        XRenderFreePicture (display_info->dpy, cw->picture);
+        cw->picture = None;
+    }
+
+    if (cw->shadow)
+    {
+        XRenderFreePicture (display_info->dpy, cw->shadow);
+        cw->shadow = None;
+    }
+
+    if (cw->alphaPict)
+    {
+        XRenderFreePicture (display_info->dpy, cw->alphaPict);
+        cw->alphaPict = None;
+    }
+
+    if (cw->shadowPict)
+    {
+        XRenderFreePicture (display_info->dpy, cw->shadowPict);
+        cw->shadowPict = None;
+    }
+
+    if (cw->alphaBorderPict)
+    {
+        XRenderFreePicture (display_info->dpy, cw->alphaBorderPict);
+        cw->alphaBorderPict = None;
+    }
+
+    if (cw->clientSize)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->clientSize);
+        cw->clientSize = None;
+    }
+
+    if (cw->borderSize)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->borderSize);
+        cw->borderSize = None;
+    }
+
+    if (cw->extents)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->extents);
+        cw->extents = None;
+    }
+
+    if (cw->borderClip)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->borderClip);
+        cw->borderClip = None;
+    }
+
+    if (delete)
+    {
+        if (cw->damage != None)
+        {
+            XDamageDestroy (display_info->dpy, cw->damage);
+            cw->damage = None;
+        }
+
+        g_free (cw);
+    }
+}
+
 static Picture
 root_tile (ScreenInfo *screen_info)
 {
@@ -989,13 +1072,7 @@ unredirect_win (CWindow *cw)
         screen_info = cw->screen_info;
         display_info = screen_info->display_info;
 
-#if HAVE_NAME_WINDOW_PIXMAP
-        if (cw->name_window_pixmap)
-        {
-            XFreePixmap (display_info->dpy, cw->name_window_pixmap);
-            cw->name_window_pixmap = None;
-        }
-#endif
+        free_win_data (cw, FALSE);
         cw->ignore_unmaps++;
         cw->redirected = FALSE;
 
@@ -1368,89 +1445,6 @@ add_repair (DisplayInfo *display_info)
 }
 
 static void
-free_win_data (CWindow *cw, gboolean delete)
-{
-    DisplayInfo *display_info;
-    ScreenInfo *screen_info;
-
-    screen_info = cw->screen_info;
-    display_info = screen_info->display_info;
-
-#if HAVE_NAME_WINDOW_PIXMAP
-    if (cw->name_window_pixmap)
-    {
-        XFreePixmap (display_info->dpy, cw->name_window_pixmap);
-        cw->name_window_pixmap = None;
-    }
-#endif
-
-    if (cw->picture)
-    {
-        XRenderFreePicture (display_info->dpy, cw->picture);
-        cw->picture = None;
-    }
-
-    if (cw->shadow)
-    {
-        XRenderFreePicture (display_info->dpy, cw->shadow);
-        cw->shadow = None;
-    }
-
-    if (cw->alphaPict)
-    {
-        XRenderFreePicture (display_info->dpy, cw->alphaPict);
-        cw->alphaPict = None;
-    }
-
-    if (cw->shadowPict)
-    {
-        XRenderFreePicture (display_info->dpy, cw->shadowPict);
-        cw->shadowPict = None;
-    }
-
-    if (cw->alphaBorderPict)
-    {
-        XRenderFreePicture (display_info->dpy, cw->alphaBorderPict);
-        cw->alphaBorderPict = None;
-    }
-
-    if (cw->clientSize)
-    {
-        XFixesDestroyRegion (display_info->dpy, cw->clientSize);
-        cw->clientSize = None;
-    }
-
-    if (cw->borderSize)
-    {
-        XFixesDestroyRegion (display_info->dpy, cw->borderSize);
-        cw->borderSize = None;
-    }
-
-    if (cw->extents)
-    {
-        XFixesDestroyRegion (display_info->dpy, cw->extents);
-        cw->extents = None;
-    }
-
-    if (cw->borderClip)
-    {
-        XFixesDestroyRegion (display_info->dpy, cw->borderClip);
-        cw->borderClip = None;
-    }
-
-    if (delete)
-    {
-        if (cw->damage != None)
-        {
-            XDamageDestroy (display_info->dpy, cw->damage);
-            cw->damage = None;
-        }
-
-        g_free (cw);
-    }
-}
-
-static void
 add_damage (ScreenInfo *screen_info, XserverRegion damage)
 {
     DisplayInfo *display_info;
@@ -1708,9 +1702,15 @@ map_win (CWindow *cw)
         return;
     }
 
+    if (!screen_info->params->unredirect_overlays)
+    {
+        TRACE ("Not unredirecting overlays");
+        return;
+    }
+
     /* Check for new windows to un-redirect. */
-    if (WIN_IS_FULLSCREEN(cw) &&  WIN_HAS_DAMAGE(cw) &&  WIN_IS_OVERRIDE(cw) && 
-        WIN_IS_NATIVE_OPAQUE(cw) &&  WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw))
+    if (WIN_IS_FULLSCREEN(cw) && WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) && 
+        WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw))
     {
         CWindow *top;
         GList *index;
@@ -1919,7 +1919,16 @@ restack_win (CWindow *cw, Window above)
         previous_above = ncw->id;
     }
 
-    if (previous_above != above)
+    /* If above is set to None, the window whose state was changed is on 
+     * the bottom of the stack with respect to sibling.
+     */
+    if (above == None)
+    {
+        /* Insert at bottom of window stack */
+        screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
+        screen_info->cwindows = g_list_append (screen_info->cwindows, cw);
+    }
+    else if (previous_above != above)
     {
         GList *index;
 
@@ -1936,19 +1945,6 @@ restack_win (CWindow *cw, Window above)
         {
             screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
             screen_info->cwindows = g_list_insert_before (screen_info->cwindows, index, cw);
-        }
-        else if (above == None)
-        {
-            /* Insert at bottom of window stack */
-            screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
-            screen_info->cwindows = g_list_append (screen_info->cwindows, cw);
-        }
-        else
-        {
-            /* Don't know what to do */
-            g_warning ("The window 0x%lx has not been restacked\n"
-                       "because the specified sibling 0x%lx was "
-                       "not found in our stack", cw->id, above);
         }
     }
 }
@@ -1985,7 +1981,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         cw->extents = None;
     }
 
-    if ((cw->attr.width != width) || (cw->attr.height != height) || shape_notify)
+    if ((cw->attr.width != width) || (cw->attr.height != height))
     {
 #if HAVE_NAME_WINDOW_PIXMAP
         if (cw->name_window_pixmap)
@@ -1994,6 +1990,10 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
             cw->name_window_pixmap = None;
         }
 #endif
+    }
+
+    if ((cw->attr.width != width) || (cw->attr.height != height) || shape_notify)
+    {
         if (cw->picture)
         {
             XRenderFreePicture (display_info->dpy, cw->picture);
@@ -2409,13 +2409,9 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     if (cw)
     {
         /* 
-         * The compositor window is already known, just update the client if
-         * that is meaningfull...
+         * The compositor window is already known, just update the client...
          */
-        if (c)
-        {
-            cw->c = c;
-        }
+        cw->c = c;
     }
     else
     {

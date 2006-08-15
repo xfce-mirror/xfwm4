@@ -880,29 +880,28 @@ clientGetMWMHints (Client * c, gboolean update)
     mwm_hints = getMotifHints (display_info, c->window);
     if (mwm_hints)
     {
-        if (mwm_hints->flags & MWM_HINTS_DECORATIONS)
+        if ((mwm_hints->flags & MWM_HINTS_DECORATIONS))
         {
-            if (mwm_hints->decorations & MWM_DECOR_ALL)
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
             {
-                FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_MENU);
-            }
-            else
-            {
-                FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_MENU);
-                FLAG_SET (c->xfwm_flags,
-                    (mwm_hints->
-                        decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) ?
-                    XFWM_FLAG_HAS_BORDER : 0);
-                FLAG_SET (c->xfwm_flags,
-                    (mwm_hints->
-                        decorations & (MWM_DECOR_MENU)) ? XFWM_FLAG_HAS_MENU
-                    : 0);
-                /*
-                   FLAG_UNSET(c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
-                   FLAG_UNSET(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE);
-                   FLAG_SET(c->xfwm_flags, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? XFWM_FLAG_HAS_HIDE : 0);
-                   FLAG_SET(c->xfwm_flags, (mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? XFWM_FLAG_HAS_MAXIMIZE : 0);
-                 */
+                if (mwm_hints->decorations & MWM_DECOR_ALL)
+                {
+                    FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_MENU);
+                }
+                else
+                {
+                    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_MENU);
+                    FLAG_SET (c->xfwm_flags, (mwm_hints-> decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER)) 
+                                             ? XFWM_FLAG_HAS_BORDER : 0);
+                    FLAG_SET (c->xfwm_flags, (mwm_hints->decorations & (MWM_DECOR_MENU)) 
+                                             ? XFWM_FLAG_HAS_MENU : 0);
+                    /*
+                       FLAG_UNSET(c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
+                       FLAG_UNSET(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE);
+                       FLAG_SET(c->xfwm_flags, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? XFWM_FLAG_HAS_HIDE : 0);
+                       FLAG_SET(c->xfwm_flags, (mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? XFWM_FLAG_HAS_MAXIMIZE : 0);
+                     */
+                }
             }
         }
         /* The following is from Metacity : */
@@ -1905,6 +1904,8 @@ clientUnframe (Client * c, gboolean remap)
     display_info = screen_info->display_info;
 
     clientRemoveFromList (c);
+    compositorRemoveWindow (display_info, c->frame);
+
     myDisplayGrabServer (display_info);
     gdk_error_trap_push ();
     clientUngrabKeys (c);
@@ -1995,7 +1996,8 @@ clientFrameAll (ScreenInfo *screen_info)
                     0, 0,
                     screen_info->width,
                     screen_info->height,
-                    EnterWindowMask);
+                    EnterWindowMask,
+                    FALSE);
 
     XSync (display_info->dpy, FALSE);
     myDisplayGrabServer (display_info);
@@ -2727,7 +2729,7 @@ clientRemoveMaximizeFlag (Client * c)
 }
 
 static void
-clientNewMaxState (Client * c, XWindowChanges *wc, int mode, gboolean restore_position)
+clientNewMaxState (Client * c, XWindowChanges *wc, int mode)
 {
     /*
      * We treat differently full maximization from vertical or horizontal maximization.
@@ -2737,14 +2739,6 @@ clientNewMaxState (Client * c, XWindowChanges *wc, int mode, gboolean restore_po
      * The full size is not computed yet, as full maximization removes borders
      * while either horizontal or vertical maximization still shows decorations...
      */
-
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) && (restore_position))
-    {
-        c->old_x = c->x;
-        c->old_y = c->y;
-        c->old_width = c->width;
-        c->old_height = c->height;
-    }
 
     if ((mode & WIN_STATE_MAXIMIZED) == WIN_STATE_MAXIMIZED)
     {
@@ -2865,37 +2859,41 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     wc.width = c->width;
     wc.height = c->height;
 
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) && (restore_position))
+    {
+        c->old_x = c->x;
+        c->old_y = c->y;
+        c->old_width = c->width;
+        c->old_height = c->height;
+    }
+
     /* 1) Compute the new state */
-    clientNewMaxState (c, &wc, mode, restore_position);
+    clientNewMaxState (c, &wc, mode);
        
     /* 2) Compute the new size, based on the state */
     clientNewMaxSize (c, &wc);
 
-    /* 3) Update window fields */
+    /* 3) Update window state fields */
     clientSetNetState (c);
 
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
-    {
-        if (restore_position)
-        {
-            /*
-               For some reason, the configure can generate EnterNotify events
-               on lower windows, causing a nasty race cond with apps trying to
-               grab focus in focus follow mouse mode. Grab the pointer to
-               avoid these effects
-             */
-            myScreenGrabPointer (c->screen_info, EnterWindowMask, None, CurrentTime);
-            clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_NOTIFY);
-            myScreenUngrabPointer (c->screen_info, CurrentTime);
-        }
-        return;
-    }
-
-    /* Window is not managed yet, just update its fields */
+    /* 4) Update size and position fields */
     c->x = wc.x;
     c->y = wc.y;
     c->height = wc.height;
     c->width = wc.width;
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
+    {
+        /*
+           For some reason, the configure can generate EnterNotify events
+           on lower windows, causing a nasty race cond with apps trying to
+           grab focus in focus follow mouse mode. Grab the pointer to
+           avoid these effects
+         */
+        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, CurrentTime);
+        clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
+        myScreenUngrabPointer (c->screen_info, CurrentTime);
+    }
 }
 
 void

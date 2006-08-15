@@ -2063,24 +2063,33 @@ static void
 handleShape (DisplayInfo *display_info, XShapeEvent * ev)
 {
     Client *c;
+    gboolean update;
 
     TRACE ("entering handleShape");
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
     if (c)
     {
+        update = FALSE;
         if (ev->kind == ShapeBounding)
         {
             if ((ev->shaped) && !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_SHAPE);
+                clientGetMWMHints (c, TRUE);
+                update = TRUE;
             }
             else if (!(ev->shaped) && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_SHAPE);
+                clientGetMWMHints (c, TRUE);
+                update = TRUE;
             }
         }
-        frameDraw (c, FALSE, TRUE);
+        if (!update)
+        {
+            frameDraw (c, FALSE, TRUE);
+        }
     }
 }
 
@@ -2492,7 +2501,8 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
                     &menu_event_window, 0, 0, 
                     screen_info->width,
                     screen_info->height, 
-                    NoEventMask);
+                    NoEventMask,
+                    FALSE);
     menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback, 
                          c->win_workspace, screen_info->workspace_count, 
                          screen_info->workspace_names, screen_info->workspace_names_items,

@@ -68,7 +68,8 @@ void xfwmWindowTemp        (ScreenInfo *,
                             int,
                             int,
                             int,
-                            long); 
+                            long,
+                            gboolean); 
 void xfwmWindowDelete      (xfwmWindow *);
 void xfwmWindowShow        (xfwmWindow *, 
                             int, 

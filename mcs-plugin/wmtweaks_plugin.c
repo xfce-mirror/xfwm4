@@ -67,11 +67,12 @@ static gboolean restore_on_move = TRUE;
 static gboolean scroll_workspaces = TRUE;
 static gboolean snap_resist = FALSE;
 static gboolean toggle_workspaces = TRUE;
+static gboolean unredirect_overlays = FALSE;
 static gboolean use_compositing = FALSE;
 static gboolean wrap_layout = FALSE;
 static gboolean wrap_cycle = FALSE;
 
-static int placement_ratio = 25;
+static int placement_ratio = 20;
 static int inactive_opacity = 100;
 static int move_opacity = 100;
 static int resize_opacity = 100;
@@ -99,6 +100,8 @@ static char *easy_click = "Alt";
     "Xfwm/ShowFrameShadow"
     "Xfwm/ShowPopupShadow"
     "Xfwm/SnapResist"
+    "Xfwm/UnredirectOverlays"
+    "Xfwm/UseCompositing"
     "Xfwm/WrapCycle"
     "Xfwm/WrapLayout"
  */
@@ -392,7 +395,7 @@ create_dialog (McsPlugin * mcs_plugin)
 
     check_button =
         create_gboolean_button (mcs_plugin,
-        _("Include windows that have \"skip pager\" or \"skip taskbar\" properties set"),
+        _("Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"),
         "Xfwm/CycleMinimum", &cycle_minimum);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
@@ -556,6 +559,12 @@ create_dialog (McsPlugin * mcs_plugin)
 
         gtk_widget_set_sensitive (compositor_options_vbox, gtk_toggle_button_get_active GTK_TOGGLE_BUTTON (check_button));
         g_signal_connect (G_OBJECT (check_button), "toggled", G_CALLBACK (cb_compositor_changed), compositor_options_vbox);
+
+        check_button =
+            create_gboolean_button (mcs_plugin, _("Display full screen overlay windows directly"),
+            "Xfwm/UnredirectOverlays", &unredirect_overlays);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), check_button, FALSE, TRUE, 0);
+        gtk_widget_show (check_button);
 
         check_button =
             create_gboolean_button (mcs_plugin, _("Show shadows under regular windows"),
@@ -733,6 +742,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_gboolean_setting (mcs_plugin, "Xfwm/SnapResist", &snap_resist);
     init_gboolean_setting (mcs_plugin, "Xfwm/ScrollWorkspaces", &scroll_workspaces);
     init_gboolean_setting (mcs_plugin, "Xfwm/ToggleWorkspaces", &toggle_workspaces);
+    init_gboolean_setting (mcs_plugin, "Xfwm/UnredirectOverlays", &unredirect_overlays);
     init_gboolean_setting (mcs_plugin, "Xfwm/UseCompositing", &use_compositing);
     init_gboolean_setting (mcs_plugin, "Xfwm/WrapLayout", &wrap_layout);
     init_gboolean_setting (mcs_plugin, "Xfwm/WrapCycle", &wrap_cycle);

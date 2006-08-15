@@ -146,7 +146,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     &screen_info->sidewalk[0], 
                     0, 0, 
                     1, screen_info->height, 
-                    EnterWindowMask);
+                    EnterWindowMask,
+                    TRUE);
 
     /*right*/
     xfwmWindowTemp (screen_info,
@@ -155,7 +156,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     &screen_info->sidewalk[1], 
                     screen_info->width - 1, 0, 
                     1, screen_info->height, 
-                    EnterWindowMask);
+                    EnterWindowMask,
+                    TRUE);
 
     /*top*/
     xfwmWindowTemp (screen_info,
@@ -164,7 +166,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     &screen_info->sidewalk[2], 
                     0, 0, 
                     screen_info->width, 1,
-                    EnterWindowMask);
+                    EnterWindowMask,
+                    TRUE);
 
     /*bottom*/
     xfwmWindowTemp (screen_info,
@@ -173,7 +176,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     &screen_info->sidewalk[3], 
                     0, screen_info->height - 1, 
                     screen_info->width, 1,
-                    EnterWindowMask);
+                    EnterWindowMask,
+                    TRUE);
 
     screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
 

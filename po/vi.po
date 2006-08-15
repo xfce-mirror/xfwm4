@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-08 21:17+0200\n"
+"POT-Creation-Date: 2006-08-14 15:28+0200\n"
 "PO-Revision-Date: 2006-04-26 22:43+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
 "Language-Team: Vietnamese <vi_VN@googlegroups.com>\n"
@@ -52,7 +52,7 @@ msgstr "Vùng làm việc và Biên"
 msgid "Workspaces and Margins"
 msgstr "Vùng làm việc và Biên"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:511
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:513
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Vùng làm việc"
@@ -61,155 +61,160 @@ msgstr "Vùng làm việc"
 msgid "Margins"
 msgstr "Biên"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:369
+#: ../mcs-plugin/wmtweaks_plugin.c:371
 msgid "None"
 msgstr "Không"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:377
+#: ../mcs-plugin/wmtweaks_plugin.c:379
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Tinh chỉnh của trình quản lí cửa sổ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:396
+#: ../mcs-plugin/wmtweaks_plugin.c:398
+#, fuzzy
 msgid ""
-"Include windows that have \"skip pager\" or \"skip taskbar\" properties set"
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Bao gồm cả những cửa sổ có đặt thuộc tính \"skip pager\" hoặc \"skip taskbar"
 "\""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:402
+#: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Gồm cả những tập tin ẩn (ví dụ thu nhỏ)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:408
+#: ../mcs-plugin/wmtweaks_plugin.c:410
 msgid "Cycle through windows from all workspaces"
 msgstr "Quay vòng cửa sổ của tất cả các vùng làm"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:413
+#: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Cycling"
 msgstr "Chu kỳ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:425
+#: ../mcs-plugin/wmtweaks_plugin.c:427
 msgid "Activate focus stealing prevention"
 msgstr "Kích hoạt sự bảo vệ chọn khỏi mất cắp"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:431
+#: ../mcs-plugin/wmtweaks_plugin.c:433
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Gợi ý chọn theo chuẩn ICCCM vinh dự"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:436 ../mcs-plugin/xfwm4_plugin.c:1683
+#: ../mcs-plugin/wmtweaks_plugin.c:438 ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
 msgstr "Chọn"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:448
+#: ../mcs-plugin/wmtweaks_plugin.c:450
 msgid "Key used to grab and move windows"
 msgstr "Phím dùng để giữ và di chuyển cửa sổ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:454
+#: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Chọn cửa sổ khi nhấn bất kỳ phím chuột nào"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:461
+#: ../mcs-plugin/wmtweaks_plugin.c:463
 msgid "Restore original size of maximized windows when moving"
 msgstr "Phục hồi kích thước ban đầu của cửa sổ đã phóng to khi di chuyển"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:469
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Sử dụng sức chống của đường biên cửa sổ thay cho sự dính"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:474
 msgid "Accessibility"
 msgstr "Mở rộng"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:485
+#: ../mcs-plugin/wmtweaks_plugin.c:487
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Chuyển không gian làm việc khi quay bánh xe chuột trên nền màn hình"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:492
+#: ../mcs-plugin/wmtweaks_plugin.c:494
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr "Nhớ và gọi lại cửa sổ trước đây khi chuyển bằng phím nóng"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:499
+#: ../mcs-plugin/wmtweaks_plugin.c:501
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Chuyển vùng làm việc theo vẻ ngoài thực sự của màn hình"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:506
+#: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr ""
 "Nhảy tiếp vùng làm việc khi đã đạt đến vùng làm việc cuối cùng hoặc đầu tiên"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:523
+#: ../mcs-plugin/wmtweaks_plugin.c:525
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Kích thước nhỏ nhất của cửa sổ để đặt thông minh"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:524
+#: ../mcs-plugin/wmtweaks_plugin.c:526
 msgid "Size|Small"
 msgstr "Nhỏ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:524
+#: ../mcs-plugin/wmtweaks_plugin.c:526
 msgid "Size|Large"
 msgstr "Lớn"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:528
+#: ../mcs-plugin/wmtweaks_plugin.c:530
 msgid "Placement"
 msgstr "Sắp đặt"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:548
+#: ../mcs-plugin/wmtweaks_plugin.c:550
 msgid "Enable display compositing"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:562
+#: ../mcs-plugin/wmtweaks_plugin.c:564
+msgid "Display full screen overlay windows directly"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Show shadows under regular windows"
 msgstr "Hiện bóng ở dưới các cửa sổ thường"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:568
+#: ../mcs-plugin/wmtweaks_plugin.c:576
 msgid "Show shadows under popup windows"
 msgstr "Hiện bóng ở dưới các cửa sổ bật ra"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:574
+#: ../mcs-plugin/wmtweaks_plugin.c:582
 msgid "Opacity of window decorations"
 msgstr "Độ mờ của trang trí cửa sổ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:574 ../mcs-plugin/wmtweaks_plugin.c:580
-#: ../mcs-plugin/wmtweaks_plugin.c:586 ../mcs-plugin/wmtweaks_plugin.c:592
-#: ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:582 ../mcs-plugin/wmtweaks_plugin.c:588
+#: ../mcs-plugin/wmtweaks_plugin.c:594 ../mcs-plugin/wmtweaks_plugin.c:600
+#: ../mcs-plugin/wmtweaks_plugin.c:606
 msgid "Transparent"
 msgstr "Trong suốt"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:575 ../mcs-plugin/wmtweaks_plugin.c:581
-#: ../mcs-plugin/wmtweaks_plugin.c:587 ../mcs-plugin/wmtweaks_plugin.c:593
-#: ../mcs-plugin/wmtweaks_plugin.c:599
+#: ../mcs-plugin/wmtweaks_plugin.c:583 ../mcs-plugin/wmtweaks_plugin.c:589
+#: ../mcs-plugin/wmtweaks_plugin.c:595 ../mcs-plugin/wmtweaks_plugin.c:601
+#: ../mcs-plugin/wmtweaks_plugin.c:607
 msgid "Opaque"
 msgstr "Mờ đục"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:580
+#: ../mcs-plugin/wmtweaks_plugin.c:588
 #, fuzzy
 msgid "Opacity of inactive windows"
 msgstr "Độ mờ của cửa sổ tự hiện lên (popup)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:586
+#: ../mcs-plugin/wmtweaks_plugin.c:594
 msgid "Opacity of windows during move"
 msgstr "Độ mờ của cửa sổ khi di chuyển"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:592
+#: ../mcs-plugin/wmtweaks_plugin.c:600
 msgid "Opacity of windows during resize"
 msgstr "Độ mờ của cửa sổ khi thay đổi kích thước"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:606
 msgid "Opacity of popup windows"
 msgstr "Độ mờ của cửa sổ tự hiện lên (popup)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:603
+#: ../mcs-plugin/wmtweaks_plugin.c:611
 msgid "Compositor"
 msgstr "Trình soạn"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:645
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Tinh chỉnh Trình quản lí cửa sổ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:762 ../mcs-plugin/xfwm4_plugin.c:2344
+#: ../mcs-plugin/wmtweaks_plugin.c:771 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -312,173 +317,173 @@ msgstr "Tiêu đề cửa sổ, không thể bỏ đi"
 msgid "Hidden"
 msgstr "Ẩn"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1361
+#: ../mcs-plugin/xfwm4_plugin.c:1359
 msgid "Font Selection Dialog"
 msgstr "Hộp thoại chọn phông"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1426
+#: ../mcs-plugin/xfwm4_plugin.c:1424
 msgid "Window Manager"
 msgstr "Trình quản lí cửa sổ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1466
+#: ../mcs-plugin/xfwm4_plugin.c:1464
 msgid "Title font"
 msgstr "Phông tiêu đề"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1475
+#: ../mcs-plugin/xfwm4_plugin.c:1473
 msgid "Title Alignment"
 msgstr "Canh tiêu đề"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1477
+#: ../mcs-plugin/xfwm4_plugin.c:1475
 msgid "Text alignment inside title bar :"
 msgstr "Canh văn bản bên trong thanh tiêu đề:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1483
+#: ../mcs-plugin/xfwm4_plugin.c:1481
 msgid "Button layout"
 msgstr "Bố cục nút"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1488
+#: ../mcs-plugin/xfwm4_plugin.c:1486
 msgid "Style"
 msgstr "Phong cách"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1536
+#: ../mcs-plugin/xfwm4_plugin.c:1534
 msgid "Window shortcuts"
 msgstr "Phím tắt cửa sổ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1550
+#: ../mcs-plugin/xfwm4_plugin.c:1548
 msgid "Command"
 msgstr "Lệnh"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1556
+#: ../mcs-plugin/xfwm4_plugin.c:1554
 msgid "Shortcut"
 msgstr "Phím tắt"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1573
+#: ../mcs-plugin/xfwm4_plugin.c:1571
 msgid "Keyboard"
 msgstr "Bàn phím"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1588
+#: ../mcs-plugin/xfwm4_plugin.c:1586
 msgid "Focus model"
 msgstr "Kiểu chọn cửa sổ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1592
+#: ../mcs-plugin/xfwm4_plugin.c:1590
 msgid "Click to focus"
 msgstr "Nhấp chuột để chọn"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1602
+#: ../mcs-plugin/xfwm4_plugin.c:1600
 msgid "Focus follows mouse"
 msgstr "Chọn theo vị trí chuột"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1613
+#: ../mcs-plugin/xfwm4_plugin.c:1611
 msgid "Automatically give focus to newly created windows"
 msgstr "Tự động chọn cửa sổ mới được tạo"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1617
+#: ../mcs-plugin/xfwm4_plugin.c:1615
 msgid "New window focus"
 msgstr "Chọn cửa sổ mới mở"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1624
+#: ../mcs-plugin/xfwm4_plugin.c:1622
 msgid "Raise on focus"
 msgstr "Nâng khi chọn"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1630
+#: ../mcs-plugin/xfwm4_plugin.c:1628
 msgid "Automatically raise windows when they receive focus"
 msgstr "Tự động nâng cửa sổ khi chúng được chọn"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1640
+#: ../mcs-plugin/xfwm4_plugin.c:1638
 msgid "Delay before raising focused window :"
 msgstr "Thời gian trễn trước khi nâng cửa sổ được chọn:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1647
+#: ../mcs-plugin/xfwm4_plugin.c:1645
 msgid "Slow"
 msgstr "Chậm"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1654
+#: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Fast"
 msgstr "Nhanh"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1675
+#: ../mcs-plugin/xfwm4_plugin.c:1673
 msgid "Raise window when clicking inside application window"
 msgstr "Nâng cửa sổ khi nhấp chuột bên trong cửa sổ ứng dụng"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1679
+#: ../mcs-plugin/xfwm4_plugin.c:1677
 msgid "Raise on click"
 msgstr "Nâng khi nhấp chuột"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1697
+#: ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Windows snapping"
 msgstr "Điều chỉnh bờ cửa sổ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1702
+#: ../mcs-plugin/xfwm4_plugin.c:1700
 msgid "Snap windows to screen border"
 msgstr "Bờ cửa sổ theo bờ màn hình"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1708
+#: ../mcs-plugin/xfwm4_plugin.c:1706
 msgid "Snap windows to other windows"
 msgstr "Bờ cửa sổ theo các cửa sổ khác"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1719
+#: ../mcs-plugin/xfwm4_plugin.c:1717
 msgid "Distance :"
 msgstr "Khoảng cách:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1726
+#: ../mcs-plugin/xfwm4_plugin.c:1724
 msgid "Distance|Small"
 msgstr "Nhỏ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1733
+#: ../mcs-plugin/xfwm4_plugin.c:1731
 msgid "Distance|Wide"
 msgstr "Rộng"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1754
+#: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Wrap workspaces"
 msgstr "Chuyển vùng làm việc"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1760
+#: ../mcs-plugin/xfwm4_plugin.c:1758
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Chuyển vùng làm việc khi con trỏ đến bờ màn hình"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1768
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Chuyển vùng làm việc khi kéo cửa sổ ra khỏi màn hình"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1778
+#: ../mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
 msgstr "Sức đề kháng bờ:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1785
+#: ../mcs-plugin/xfwm4_plugin.c:1783
 msgid "Resistance|Small"
 msgstr "Nhỏ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1792
+#: ../mcs-plugin/xfwm4_plugin.c:1790
 msgid "Resistance|Wide"
 msgstr "Rộng"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1814
+#: ../mcs-plugin/xfwm4_plugin.c:1812
 msgid "Opaque move and resize"
 msgstr "Mờ khi di chuyển và thay đổi kích thước"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1819
+#: ../mcs-plugin/xfwm4_plugin.c:1817
 msgid "Display content of windows when resizing"
 msgstr "Hiển thị nội dung cửa sổ khi thay đổi kích thước"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1825
+#: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Display content of windows when moving"
 msgstr "Hiển thị nội dung cửa sổ khi di chuyển"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1830
+#: ../mcs-plugin/xfwm4_plugin.c:1828
 msgid "Double click action"
 msgstr "Hành động khi nhấp đúp chuột"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1832
+#: ../mcs-plugin/xfwm4_plugin.c:1830
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Hành động khi nhấp đúp trên thanh tiêu đề:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1837
+#: ../mcs-plugin/xfwm4_plugin.c:1835
 msgid "Advanced"
 msgstr "Cao cấp"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1976
+#: ../mcs-plugin/xfwm4_plugin.c:1974
 msgid "Button Label|Window Manager"
 msgstr "Trình quản lí cửa sổ"
 
@@ -771,12 +776,12 @@ msgstr "Vùng làm việc %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu không bắt được con trỏ\n"
 
-#: ../src/settings.c:881
+#: ../src/settings.c:891
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Không thể định vị màu %s\n"
 
-#: ../src/settings.c:887
+#: ../src/settings.c:897
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Không thể phân tích màu %s\n"

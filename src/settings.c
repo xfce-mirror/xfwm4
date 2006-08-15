@@ -439,6 +439,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->toggle_workspaces = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/UnredirectOverlays"))
+                    {
+                        screen_info->params->unredirect_overlays = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/UseCompositing"))
                     {
                         screen_info->params->use_compositing = setting->data.v_int;
@@ -828,6 +832,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("toggle_workspaces", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/UnredirectOverlays", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("unredirect_overlays", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/UseCompositing", CHANNEL5,
@@ -1321,6 +1331,7 @@ loadSettings (ScreenInfo *screen_info)
         {"title_vertical_offset_active", NULL, TRUE},
         {"title_vertical_offset_inactive", NULL, TRUE},
         {"toggle_workspaces", NULL, TRUE},
+        {"unredirect_overlays", NULL, TRUE},
         {"use_compositing", NULL, TRUE},
         {"workspace_count", NULL, TRUE},
         {"wrap_cycle", NULL, TRUE},
@@ -1493,6 +1504,8 @@ loadSettings (ScreenInfo *screen_info)
 
     screen_info->params->toggle_workspaces =
         !g_ascii_strcasecmp ("true", getValue ("toggle_workspaces", rc));
+    screen_info->params->unredirect_overlays =
+        !g_ascii_strcasecmp ("true", getValue ("unredirect_overlays", rc));
     screen_info->params->use_compositing =
         !g_ascii_strcasecmp ("true", getValue ("use_compositing", rc));
     screen_info->params->wrap_workspaces =
