@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 15:28+0200\n"
-"PO-Revision-Date: 2006-08-01 21:17+0300\n"
+"POT-Creation-Date: 2006-08-15 17:53+0300\n"
+"PO-Revision-Date: 2006-08-15 17:55+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -69,11 +69,10 @@ msgid "Window Manager Tweaks"
 msgstr "Ikkunamanagerin viritys"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:398
-#, fuzzy
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"Sisällytä ikkunat, jotka eivät näy työtilan vaihtajassa tai tehtäväpalkissa"
+"Ohita ikkunat, jotka eivät näy työtilan vaihtajassa tai tehtäväpalkissa"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Include hidden (i.e. iconified) windows"
@@ -158,7 +157,7 @@ msgstr "Käytä näytön komposointia"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "Näytä kokoruudun peittokuvaikkunat suoraan"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Show shadows under regular windows"
