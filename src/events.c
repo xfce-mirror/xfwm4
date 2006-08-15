@@ -542,7 +542,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         default:
             break;
     }
-    XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
+    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
 }
 
 /* User has clicked on an edge or corner.
@@ -986,11 +986,11 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 
         if (replay)
         {
-            XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
+            XAllowEvents (display_info->dpy, ReplayPointer, CurrentTime);
         }
         else
         {
-            XAllowEvents (display_info->dpy, SyncPointer, ev->time);
+            XAllowEvents (display_info->dpy, SyncPointer, CurrentTime);
         }
 
         return;
@@ -1581,6 +1581,10 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 "NotifyNormal" :
                 (ev->mode == NotifyWhileGrabbed) ?
                 "NotifyWhileGrabbed" :
+                (ev->mode == NotifyGrab) ?
+                "NotifyGrab" :
+                (ev->mode == NotifyUngrab) ?
+                "NotifyUngrab" :
                 "(unknown)");
     TRACE ("handleFocusIn (0x%lx) detail = %s",
                 ev->window,
@@ -1606,7 +1610,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     last_raised = NULL;
 
     if (screen_info && (ev->window == screen_info->xroot) && (ev->mode == NotifyNormal) && 
-        (ev->detail == NotifyDetailNone))
+        (ev->detail == NotifyDetailNone || ev->detail == NotifyInferior))
     {
         /* Handle focus transition to root (means that an unknown
            window has vanished and the focus is returned to the root
