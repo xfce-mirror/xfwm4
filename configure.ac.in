@@ -79,6 +79,13 @@ if $PKG_CONFIG --print-errors --exists xrender 2>&1; then
   PKG_CHECK_MODULES(RENDER, xrender)
   have_render="yes"
   AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
+else
+  dnl fallback to check for libXrender 
+  AC_CHECK_LIB([Xrender], [XRenderCreatePicture],
+      [ have_render="yes"
+        RENDER_LIBS=" -lXrender"
+        AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
+      ],[])
 fi
 
 dnl
