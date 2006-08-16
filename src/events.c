@@ -542,7 +542,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         default:
             break;
     }
-    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
+    XAllowEvents (display_info->dpy, AsyncKeyboard, CurrentTime);
 }
 
 /* User has clicked on an edge or corner.
@@ -1610,7 +1610,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     last_raised = NULL;
 
     if (screen_info && (ev->window == screen_info->xroot) && (ev->mode == NotifyNormal) && 
-        (ev->detail == NotifyDetailNone || ev->detail == NotifyInferior))
+        ((ev->detail == NotifyDetailNone) || (ev->detail == NotifyInferior)))
     {
         /* Handle focus transition to root (means that an unknown
            window has vanished and the focus is returned to the root
