@@ -1176,7 +1176,6 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         }
 
         screen_info = c->screen_info;
-        clientPassFocus (screen_info, c, c);
 
         /*
          * ICCCM spec states that a client wishing to switch
@@ -1189,9 +1188,11 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         if ((ev->event == screen_info->xroot) && (ev->send_event))
         {
             TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
+            clientPassFocus (screen_info, c, c);
             clientUnframe (c, FALSE);
             return;
         }
+
         if (c->ignore_unmap)
         {
             c->ignore_unmap--;
@@ -1202,6 +1203,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         {
             TRACE ("unmapping \"%s\" as ignore_unmap is %i", 
                  c->name, c->ignore_unmap);
+            clientPassFocus (screen_info, c, c);
             clientUnframe (c, FALSE);
         }
     }
@@ -1630,7 +1632,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         return;
     }
 
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
     TRACE ("FocusIn on window (0x%lx)", ev->window);
     if (c)
     {
@@ -1687,7 +1689,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
         && ((ev->detail == NotifyNonlinear) 
             || (ev->detail == NotifyNonlinearVirtual)))
     {
-        c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+        c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
         TRACE ("FocusOut on window (0x%lx)", ev->window);
         if ((c) && (c == clientGetFocus ()))
         {

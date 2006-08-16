@@ -61,10 +61,11 @@
 #define CFG_FORCE_REDRAW                (1<<3)
 
 #define INCLUDE_HIDDEN                  (1<<0)
-#define INCLUDE_SKIP_FOCUS              (1<<1)
+#define INCLUDE_SHADED                  (1<<1)
 #define INCLUDE_ALL_WORKSPACES          (1<<2)
-#define INCLUDE_SKIP_PAGER              (1<<3)
-#define INCLUDE_SKIP_TASKBAR            (1<<4)
+#define INCLUDE_SKIP_FOCUS              (1<<3)
+#define INCLUDE_SKIP_PAGER              (1<<4)
+#define INCLUDE_SKIP_TASKBAR            (1<<5)
 
 #define NO_UPDATE_FLAG                  0
 #define UPDATE_KEY_GRABS                (1<<0)

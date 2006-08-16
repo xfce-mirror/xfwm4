@@ -65,6 +65,7 @@
 #define FRAME_EVENT_MASK \
     SubstructureNotifyMask|\
     SubstructureRedirectMask|\
+    FocusChangeMask|\
     EnterWindowMask|\
     PropertyChangeMask
 
@@ -814,16 +815,8 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         }
     }
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
-    {
-        XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), - c->height,
-                                c->width, c->height);
-    }
-    else
-    {
-        XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c),
-                                c->width, c->height);
-    }
+    XMoveResizeWindow (clientGetXDisplay (c), c->window, frameLeft (c), frameTop (c),
+                            c->width, c->height);
 
     if (mask & (CWWidth | CWHeight))
     {
@@ -1755,6 +1748,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XSelectInput (display_info->dpy, c->window, 0);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);
     XReparentWindow (display_info->dpy, c->window, c->frame, frameLeft (c), frameTop (c));
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    {
+        XUnmapWindow (display_info->dpy, c->window);
+    }
 
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
@@ -2194,7 +2191,10 @@ clientShowSingle (Client * c, gboolean change_state)
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
         XMapWindow (display_info->dpy, c->frame);
-        XMapWindow (display_info->dpy, c->window);
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+        {
+            XMapWindow (display_info->dpy, c->window);
+        }
         /* Adjust to urgency state as the window is visible */
         clientUpdateUrgency (c);
     }
@@ -2489,6 +2489,8 @@ void
 clientShade (Client * c)
 {
     XWindowChanges wc;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleShaded");
@@ -2506,17 +2508,33 @@ clientShade (Client * c)
         return;
     }
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     c->win_state |= WIN_STATE_SHADED;
     FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
     clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         clientConstrainPos (c, FALSE);
-        wc.x = c->x;
-        wc.y = c->y;
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+        {
+            c->ignore_unmap++;
+        }
+        /*
+         * Shading unmaps the client window. We therefore have to transfer focus to its frame
+         * so that focus doesn't return to root. clientSetFocus() will take care of focusing
+         * the window frame since the SHADED flag is now set.
+         */
+        if (c == clientGetFocus ())
+        {
+            clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
+        }
+        XUnmapWindow (display_info->dpy, c->window);
+
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
+        clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
 }
 
@@ -2524,6 +2542,8 @@ void
 clientUnshade (Client * c)
 {
     XWindowChanges wc;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleShaded");
@@ -2534,11 +2554,27 @@ clientUnshade (Client * c)
         TRACE ("\"%s\" (0x%lx) is not shaded", c->name, c->window);
         return;
     }
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     c->win_state &= ~WIN_STATE_SHADED;
     FLAG_UNSET (c->flags, CLIENT_FLAG_SHADED);
     clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+        {
+            XMapWindow (display_info->dpy, c->window);
+        }
+        /*
+         * Unshading will show the client window, so we need to focus it when unshading.
+         */
+        if (c == clientGetFocus ())
+        {
+            clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
+        }
+
         wc.width = c->width;
         wc.height = c->height;
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);

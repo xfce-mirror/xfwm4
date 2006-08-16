@@ -525,7 +525,18 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT) || !(screen_info->params->focus_hint))
         {
             pending_focus = c;
-            XSetInputFocus (myScreenGetXDisplay (screen_info), c->window, RevertToPointerRoot, timestamp);
+            /* 
+             * When shaded, the client window is unmapped, so it can not be focused.
+             * Instead, we focus the frame that is still mapped.
+             */
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+            {
+                XSetInputFocus (myScreenGetXDisplay (screen_info), c->frame, RevertToPointerRoot, timestamp);
+            }
+            else
+            {
+                XSetInputFocus (myScreenGetXDisplay (screen_info), c->window, RevertToPointerRoot, timestamp);
+            }
             clientUpdateOpacity (screen_info, c);
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
