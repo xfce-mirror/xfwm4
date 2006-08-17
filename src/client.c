@@ -1747,12 +1747,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     XSelectInput (display_info->dpy, c->window, 0);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);
-    XReparentWindow (display_info->dpy, c->window, c->frame, frameLeft (c), frameTop (c));
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         XUnmapWindow (display_info->dpy, c->window);
     }
-
+    XReparentWindow (display_info->dpy, c->window, c->frame, frameLeft (c), frameTop (c));
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (display_info->dpy, c->window, valuemask, &attributes);
