@@ -642,7 +642,7 @@ client_size (CWindow *cw)
     {
         XRectangle  r;
         Client *c;
-        
+
         c = cw->c;
         r.x = frameX (c) + frameLeft (c);
         r.y = frameY (c) + frameTop (c);
@@ -769,7 +769,7 @@ root_tile (ScreenInfo *screen_info)
     gboolean fill = FALSE;
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
-#ifdef MONITOR_ROOT_PIXMAP    
+#ifdef MONITOR_ROOT_PIXMAP
     gint p;
     Atom backgroundProps[2];
 #endif
@@ -780,7 +780,7 @@ root_tile (ScreenInfo *screen_info)
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
     pixmap = None;
-#ifdef MONITOR_ROOT_PIXMAP    
+#ifdef MONITOR_ROOT_PIXMAP
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
 
@@ -1089,7 +1089,6 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     gboolean paint_solid;
-    gint x, y, w, h;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering paint_win: 0x%lx", cw->id);
@@ -1097,32 +1096,23 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
     paint_solid = ((solid_part) && WIN_IS_OPAQUE(cw));
-    get_paint_bounds (cw, &x, &y, &w, &h);
 
-    if ((cw->clientSize) && (screen_info->params->frame_opacity < 100))
+    if (WIN_HAS_FRAME(cw) && (screen_info->params->frame_opacity < 100))
     {
-        XserverRegion frameClip;
+        int frame_x, frame_y, frame_width, frame_height;
+        int frame_top, frame_bottom, frame_left, frame_right;
 
-        frameClip = XFixesCreateRegion (display_info->dpy, NULL, 0);
+        frame_x = frameX (cw->c);
+        frame_y = frameY (cw->c);
+        frame_width = frameWidth (cw->c);
+        frame_height = frameHeight (cw->c);
+        frame_top = frameTop (cw->c);
+        frame_bottom = frameBottom (cw->c);
+        frame_left = frameLeft (cw->c);
+        frame_right = frameRight (cw->c);
 
-        /* Client Window */
-        if (solid_part)
+        if (!solid_part)
         {
-            /* Client */
-            if (WIN_IS_OPAQUE(cw))
-            {
-                XFixesIntersectRegion (display_info->dpy, frameClip, region, cw->clientSize);
-                XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, frameClip);
-
-                XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
-                                 screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
-
-                XFixesSubtractRegion (display_info->dpy, region, region, cw->clientSize);
-            }
-        }
-        else
-        {
-            /* Frame */
             if (!cw->alphaBorderPict)
             {
                 double frame_opacity;
@@ -1132,44 +1122,87 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
 
                 cw->alphaBorderPict = solid_picture (screen_info, FALSE, frame_opacity, 0, 0, 0);
             }
-            XFixesSubtractRegion (display_info->dpy, frameClip, cw->borderClip, cw->clientSize);
-            XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, frameClip);
 
+            /* Top Border (title bar) */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
+                              screen_info->rootBuffer, 
+                              0, 0, 
+                              0, 0, 
+                              frame_x, frame_y, 
+                              frame_width, frame_top);
 
-            /* Client */
-            if (!WIN_IS_OPAQUE(cw))
-            {
-                XFixesIntersectRegion (display_info->dpy, frameClip, cw->borderClip, cw->clientSize);
-                XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, frameClip);
+            /* Bottom Border */
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+                              screen_info->rootBuffer, 
+                              0, frame_height - frame_bottom, 
+                              0, 0,
+                              frame_x, frame_y + frame_height - frame_bottom, 
+                              frame_width, frame_bottom);
+            /* Left Border */
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+                              screen_info->rootBuffer, 
+                              0, frame_top, 
+                              0, 0,
+                              frame_x, frame_y + frame_top, 
+                              frame_left, frame_height - frame_top - frame_bottom);
 
-                XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict,
-                                 screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
-            }
+            /* Right Border */
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+                              screen_info->rootBuffer, 
+                              frame_width - frame_right, frame_top, 
+                              0, 0,
+                              frame_x + frame_width - frame_right, 
+                              frame_y + frame_top, frame_right, 
+                              frame_height - frame_top - frame_bottom);
         }
+        /* Client Window */
+        if (paint_solid)
+        {
+            XRectangle  r;
+            XserverRegion client_region;
 
-        XFixesDestroyRegion (display_info->dpy, frameClip);
+            XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, region);
+            XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
+                              screen_info->rootBuffer, 
+                              frame_left, frame_top, 
+                              0, 0,
+                              frame_x + frame_left, frame_y + frame_top, 
+                              frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
+
+            r.x = frame_x + frame_left;
+            r.y = frame_y + frame_top;
+            r.width = frame_width - frame_left - frame_right;
+            r.height = frame_height - frame_top - frame_bottom;
+            client_region = XFixesCreateRegion (display_info->dpy, &r, 1);
+            XFixesSubtractRegion (display_info->dpy, region, region, client_region);
+            XFixesDestroyRegion (display_info->dpy, client_region);
+        }
+        else if (!solid_part)
+        {
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict,
+                              screen_info->rootBuffer, 
+                              frame_left, frame_top, 
+                              0, 0,
+                              frame_x + frame_left, frame_y + frame_top, 
+                              frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
+        }
     }
     else
     {
-        if (solid_part)
+        gint x, y, w, h;
+
+        get_paint_bounds (cw, &x, &y, &w, &h);
+        if (paint_solid)
         {
-            if (WIN_IS_OPAQUE(cw))
-            {
-                XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, region);
-                XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer,
-                                  0, 0, 0, 0, x, y, w, h);
-                XFixesSubtractRegion (display_info->dpy, region, region, cw->borderSize);
-            }
+            XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, region);
+            XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None, screen_info->rootBuffer,
+                              0, 0, 0, 0, x, y, w, h);
+            XFixesSubtractRegion (display_info->dpy, region, region, cw->borderSize);
         }
-        else
+        else if (!solid_part)
         {
-            if (!WIN_IS_OPAQUE(cw))
-            {
-                XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict, 
-                                  screen_info->rootBuffer, 0, 0, 0, 0, x, y, w, h);
-            }
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict, screen_info->rootBuffer, 
+                              0, 0, 0, 0, x, y, w, h);
         }
     }
 }
@@ -1487,7 +1520,7 @@ fix_region (CWindow *cw, XserverRegion region)
     for (index = screen_info->cwindows; index; index = g_list_next (index))
     {
         CWindow *cw2;
-        
+
         cw2 = (CWindow *) index->data;
         if (cw2 == cw)
         {
@@ -1693,7 +1726,7 @@ map_win (CWindow *cw)
         cw->ignore_unmaps++;
         return;
     }
-    
+
     screen_info = cw->screen_info;
     if (!WIN_IS_REDIRECTED(cw))
     {
@@ -1717,7 +1750,7 @@ map_win (CWindow *cw)
 
         index = screen_info->cwindows;
         top = (CWindow *) index->data;
-        
+
         if (cw == top)
         {
             TRACE ("Toplevel window 0x%lx is fullscreen, unredirecting", cw->id);
@@ -1766,9 +1799,9 @@ init_opacity (CWindow *cw)
 
     TRACE ("set_opacity");
     g_return_if_fail (cw != NULL);
-    
+
     screen_info = cw->screen_info;
-    display_info = screen_info->display_info;    
+    display_info = screen_info->display_info;
     c = cw->c;
 
     cw->native_opacity = FALSE;
@@ -1796,7 +1829,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 {
     ScreenInfo *screen_info;
     CWindow *new;
-        
+
     TRACE ("entering add_win: 0x%lx", id);
 
     new = g_new0 (CWindow, 1);
@@ -1919,16 +1952,7 @@ restack_win (CWindow *cw, Window above)
         previous_above = ncw->id;
     }
 
-    /* If above is set to None, the window whose state was changed is on 
-     * the bottom of the stack with respect to sibling.
-     */
-    if (above == None)
-    {
-        /* Insert at bottom of window stack */
-        screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
-        screen_info->cwindows = g_list_append (screen_info->cwindows, cw);
-    }
-    else if (previous_above != above)
+    if (previous_above != above)
     {
         GList *index;
 
@@ -1945,6 +1969,22 @@ restack_win (CWindow *cw, Window above)
         {
             screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
             screen_info->cwindows = g_list_insert_before (screen_info->cwindows, index, cw);
+        }
+        else if (above == None)
+        {
+           /* If above is set to None, the window whose state was changed is on 
+            * the bottom of the stack with respect to sibling.
+            *     => Insert at bottom of window stack 
+            */
+            screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
+            screen_info->cwindows = g_list_append (screen_info->cwindows, cw);
+        }
+        else
+        {
+            /* Don't know what to do */
+            g_warning ("The window 0x%lx has not been restacked\n"
+                       "because the specified sibling 0x%lx was "
+                       "not found in our stack", cw->id, above);
         }
     }
 }
@@ -2048,7 +2088,7 @@ static void
 destroy_win (DisplayInfo *display_info, Window id)
 {
     CWindow *cw;
-
+ 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
     TRACE ("entering destroy_win: 0x%lx", id);
@@ -2086,7 +2126,7 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
 static void
 compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 {
-#ifdef MONITOR_ROOT_PIXMAP    
+#ifdef MONITOR_ROOT_PIXMAP
     gint p;
     Atom backgroundProps[2];
 #endif
@@ -2095,7 +2135,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandlePropertyNotify for 0x%lx", ev->window);
 
-#ifdef MONITOR_ROOT_PIXMAP    
+#ifdef MONITOR_ROOT_PIXMAP
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
 
@@ -2126,7 +2166,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         if (cw)
         {
             Client *c = cw->c;
-            
+
             TRACE ("Opacity changed for 0x%lx", cw->id);
             if (!getOpacity (display_info, cw->id, &cw->opacity))
             {
@@ -2264,7 +2304,7 @@ compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
        We are only interested in top level windows, other will
        be caught by the WM.
      */
-    
+
     if (myDisplayGetScreenFromRoot (display_info, ev->parent) != NULL)
     {
         if (!find_cwindow_in_display (display_info, ev->window))
@@ -2777,7 +2817,7 @@ compositorAddAllWindows (ScreenInfo *screen_info)
     for (i = 0; i < count; i++)
     {
         Client *c;
-        
+
         c = clientGetFromWindow (screen_info, wins[i], FRAME);
         compositorAddWindow (display_info, wins[i], c);
     }
@@ -2828,7 +2868,7 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
-    
+
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering compositorUpdateScreenSize");
 
