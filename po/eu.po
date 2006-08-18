@@ -159,7 +159,7 @@ msgstr "Pantaila konposizioa gaitu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "Zuzenean leihoak pantaila osoan bistarazi"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Show shadows under regular windows"
