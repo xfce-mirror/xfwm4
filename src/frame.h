@@ -27,7 +27,15 @@
 #endif
 
 #include "screen.h"
+#include "mypixmap.h"
 #include "client.h"
+
+struct _FramePixmap
+{
+    xfwmPixmap pm_title;
+    xfwmPixmap pm_sides[3];
+};
+typedef struct _FramePixmap FramePixmap;
 
 int frameDecorationLeft (ScreenInfo *);
 int frameDecorationRight (ScreenInfo *);

@@ -176,7 +176,6 @@ enum
 };
 
 typedef struct _Client            Client;
-typedef struct _ClientPixmapCache ClientPixmapCache;
 typedef struct _DisplayInfo       DisplayInfo;
 typedef struct _XfwmColor         XfwmColor;
 typedef struct _xfwmPixmap        xfwmPixmap;

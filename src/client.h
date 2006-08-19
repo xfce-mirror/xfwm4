@@ -202,14 +202,6 @@ typedef enum
 }
 netWindowType;
 
-struct _ClientPixmapCache
-{
-    xfwmPixmap pm_title[2];
-    xfwmPixmap pm_sides[3][2];
-    int previous_width;
-    int previous_height;
-};
-
 struct _Client
 {
     /* Reference to our screen structure */
@@ -257,6 +249,8 @@ struct _Client
     int fullscreen_old_width;
     int fullscreen_old_height;
     int fullscreen_old_layer;
+    int previous_width;
+    int previous_height;
     int initial_layer;
     int ncmap;
     int button_pressed[BUTTON_COUNT];
@@ -269,8 +263,6 @@ struct _Client
     unsigned long xfwm_flags;
     /* Timout to manage blinking decorations for urgent windows */
     guint blink_timeout_id;
-    /* Pixmap caching */
-    ClientPixmapCache pm_cache;
     /* Opacity for the compositor */
     guint opacity;
     guint opacity_applied;
@@ -296,7 +288,6 @@ void     clientConfigure (Client *, XWindowChanges *, int, unsigned short);
 void     clientGetMWMHints (Client *, gboolean);
 void     clientGetWMNormalHints (Client *, gboolean);
 void     clientGetWMProtocols (Client *);
-void     clientClearPixmapCache (Client *);
 void     clientUpdateIcon (Client * c);
 Client  *clientFrame (DisplayInfo *, Window, gboolean);
 void     clientUnframe (Client *, gboolean);

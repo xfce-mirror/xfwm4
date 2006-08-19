@@ -248,7 +248,6 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_CACHE)
         {
-            clientClearPixmapCache (c);
             clientUpdateIcon (c);
         }
         if (mask & UPDATE_GRAVITY)
@@ -1386,21 +1385,6 @@ clientCheckShape (Client * c)
     return FALSE;
 }
 
-void
-clientClearPixmapCache (Client * c)
-{
-    g_return_if_fail (c != NULL);
-
-    xfwmPixmapFree (&c->pm_cache.pm_title[ACTIVE]);
-    xfwmPixmapFree (&c->pm_cache.pm_title[INACTIVE]);
-    xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-    xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-    xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-    xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
-    xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-    xfwmPixmapFree (&c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
-}
-
 static void
 clientGetUserTime (Client * c)
 {
@@ -1592,6 +1576,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->fullscreen_old_y = c->y;
     c->fullscreen_old_width = c->width;
     c->fullscreen_old_height = c->height;
+    c->previous_width = -1;
+    c->previous_height = -1;
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
 
@@ -1771,18 +1757,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     xfwmPixmapInit (screen_info, &c->appmenu[INACTIVE]);
     xfwmPixmapInit (screen_info, &c->appmenu[PRESSED]);
 
-    /* Initialize pixmap caching */
-    xfwmPixmapInit (screen_info, &c->pm_cache.pm_title[ACTIVE]);
-    xfwmPixmapInit (screen_info, &c->pm_cache.pm_title[INACTIVE]);
-    xfwmPixmapInit (screen_info, &c->pm_cache.pm_sides[SIDE_LEFT][ACTIVE]);
-    xfwmPixmapInit (screen_info, &c->pm_cache.pm_sides[SIDE_LEFT][INACTIVE]);
-    xfwmPixmapInit (screen_info, &c->pm_cache.pm_sides[SIDE_RIGHT][ACTIVE]);
-    xfwmPixmapInit (screen_info, &c->pm_cache.pm_sides[SIDE_RIGHT][INACTIVE]);
-    xfwmPixmapInit (screen_info, &c->pm_cache.pm_sides[SIDE_BOTTOM][ACTIVE]);
-    xfwmPixmapInit (screen_info, &c->pm_cache.pm_sides[SIDE_BOTTOM][INACTIVE]);
-    c->pm_cache.previous_width = -1;
-    c->pm_cache.previous_height = -1;
-
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,  
         &c->sides[SIDE_LEFT], 
         myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_LEFT));
@@ -1956,7 +1930,6 @@ clientUnframe (Client * c, gboolean remap)
     xfwmPixmapFree (&c->appmenu[INACTIVE]);
     xfwmPixmapFree (&c->appmenu[PRESSED]);
 
-    clientClearPixmapCache (c);
     for (i = 0; i < BUTTON_COUNT; i++)
     {
         xfwmWindowDelete (&c->buttons[i]);
