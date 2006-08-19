@@ -832,6 +832,7 @@ root_tile (ScreenInfo *screen_info)
         c.alpha = 0xffff;
         XRenderFillRectangle (dpy, PictOpSrc, picture, &c, 0, 0, 1, 1);
     }
+    XFreePixmap (dpy, pixmap);
     return picture;
 }
 

@@ -764,8 +764,11 @@ clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
     if (size < 1)
     {
         XDeleteProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, a);
+        return;
     }
-    else if ((listw = (Window *) malloc ((size + 1) * sizeof (Window))))
+
+    listw = g_new (Window, size + 1);
+    if (listw)
     {
         TRACE ("%i windows in list for %i clients", size, screen_info->client_count);
         for (i = 0, index_dest = listw, index_src = list; i < size;
@@ -776,7 +779,7 @@ clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
         }
         XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, a, XA_WINDOW, 32, PropModeReplace,
             (unsigned char *) listw, size);
-        free (listw);
+        g_free (listw);
     }
 }
 

@@ -607,14 +607,7 @@ clientUngrabMouseButton (Client * c)
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    if (screen_info->params->raise_with_any_button)
-    {
-        ungrabButton(clientGetXDisplay (c), AnyButton, AnyModifier, c->window);
-    }
-    else
-    {
-        ungrabButton(clientGetXDisplay (c), Button1, AnyModifier, c->window);
-    }
+    ungrabButton(clientGetXDisplay (c), AnyButton, AnyModifier, c->window);
     /* We've ungrabbed way too much, so regrab the regular buttons/modifiers */
     clientGrabButtons (c);
 }

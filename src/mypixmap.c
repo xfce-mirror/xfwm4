@@ -887,7 +887,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     }
     else
     {
-         destw = gdk_pixmap_foreign_new (pm->pixmap);
+        destw = gdk_pixmap_foreign_new (pm->pixmap);
     }
     
     if (!destw)
