@@ -806,6 +806,10 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     gint width, height;
     gint dest_x, dest_y;
 
+    g_return_val_if_fail (pm != NULL, FALSE);
+    g_return_val_if_fail (pm->pixmap != None, FALSE);
+    g_return_val_if_fail (pm->mask != None, FALSE);
+
     dest_pixmap = gdk_xid_table_lookup (pm->pixmap);
     if (dest_pixmap)
     {
@@ -880,6 +884,10 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     gint width, height;
     gint dest_x, dest_y;
 
+    g_return_val_if_fail (pm != NULL, FALSE);
+    g_return_val_if_fail (pm->pixmap != None, FALSE);
+    g_return_val_if_fail (pm->mask != None, FALSE);
+
     destw = gdk_xid_table_lookup (pm->pixmap);
     if (destw)
     {
@@ -934,6 +942,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
 
     TRACE ("entering xfwmPixmapLoad");
 
+    g_return_val_if_fail (pm != NULL, FALSE);
     g_return_val_if_fail (dir != NULL, FALSE);
     g_return_val_if_fail (file != NULL, FALSE);
 

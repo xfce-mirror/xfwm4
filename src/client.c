@@ -268,7 +268,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_FRAME)
         {
-            frameDraw (c, TRUE, FALSE);
+            frameDraw (c, TRUE);
         }
     }
     myScreenUngrabPointer (screen_info, CurrentTime);
@@ -392,7 +392,7 @@ urgent_cb (gpointer data)
     if (c != clientGetFocus ())
     {
         FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
     }
     return (TRUE);
 }
@@ -408,7 +408,7 @@ clientUpdateUrgency (Client *c)
     if (c->blink_timeout_id)
     {
         g_source_remove (c->blink_timeout_id);
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
     }
     FLAG_UNSET (c->wm_flags, WM_FLAG_URGENT);
 
@@ -428,7 +428,7 @@ clientUpdateUrgency (Client *c)
         && (c != clientGetFocus ()))
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
     }
 }
 
@@ -828,7 +828,7 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
 
     if (resized || (flags & CFG_FORCE_REDRAW))
     {
-        frameDraw (c, (flags & CFG_FORCE_REDRAW), TRUE);
+        frameDraw (c, (flags & CFG_FORCE_REDRAW));
     }
 
     if ((flags & CFG_NOTIFY) ||
@@ -1107,7 +1107,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
-            frameDraw (c, TRUE, FALSE);
+            frameDraw (c, TRUE);
         }
     }
     else
@@ -1350,7 +1350,7 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
             {
                 clientUnstick (c, TRUE);
             }
-            frameDraw (c, FALSE, FALSE);
+            frameDraw (c, FALSE);
         }
     }
     else if ((action & WIN_STATE_MAXIMIZED)
@@ -1431,14 +1431,17 @@ clientUpdateIcon (Client * c)
 
     size = MIN (screen_info->buttons[MENU_BUTTON][ACTIVE].width, 
                 screen_info->buttons[MENU_BUTTON][ACTIVE].height);
-                
-    icon = getAppIcon (display_info, c->window, size, size);
 
-    xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], icon);
-    xfwmPixmapRenderGdkPixbuf (&c->appmenu[INACTIVE], icon);
-    xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRESSED], icon);
+    if (size > 1)
+    {
+        icon = getAppIcon (display_info, c->window, size, size);
 
-    g_object_unref (icon);
+        xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], icon);
+        xfwmPixmapRenderGdkPixbuf (&c->appmenu[INACTIVE], icon);
+        xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRESSED], icon);
+
+        g_object_unref (icon);
+    }
 }
 
 Client *
@@ -2732,7 +2735,7 @@ clientRemoveMaximizeFlag (Client * c)
 
     c->win_state &= ~WIN_STATE_MAXIMIZED;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    frameDraw (c, FALSE, FALSE);
+    frameDraw (c, FALSE);
     clientSetNetState (c);
 }
 
@@ -4557,12 +4560,12 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
     if (xevent->type == EnterNotify)
     {
         c->button_pressed[b] = TRUE;
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
     }
     else if (xevent->type == LeaveNotify)
     {
         c->button_pressed[b] = FALSE;
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
     }
     else if (xevent->type == ButtonRelease)
     {
@@ -4633,7 +4636,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     passdata.b = b;
 
     c->button_pressed[b] = TRUE;
-    frameDraw (c, FALSE, FALSE);
+    frameDraw (c, FALSE);
 
     TRACE ("entering button press loop");
     eventFilterPush (display_info->xfilter, clientButtonPress_event_filter, &passdata);
@@ -4683,7 +4686,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
             default:
                 break;
         }
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
     }
 }
 

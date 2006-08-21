@@ -410,7 +410,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 if (CLIENT_CAN_STICK_WINDOW(c))
                 {
                     clientToggleSticky (c, TRUE);
-                    frameDraw (c, FALSE, FALSE);
+                    frameDraw (c, FALSE);
                 }
                 break;
             case KEY_RAISE_WINDOW:
@@ -1730,7 +1730,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             }
             getWindowName (display_info, c->window, &c->name);
             FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
-            frameDraw (c, TRUE, FALSE);
+            frameDraw (c, TRUE);
         }
         else if (ev->atom == display_info->atoms[MOTIF_WM_HINTS])
         {
@@ -1750,7 +1750,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 if ((c->wmhints->flags & IconPixmapHint) && (screen_info->params->show_app_icon))
                 {
                     clientUpdateIcon (c);
-                    frameDraw (c, TRUE, FALSE);
+                    frameDraw (c, TRUE);
                 }
                 if (HINTS_ACCEPT_INPUT (c->wmhints))
                 {
@@ -1789,7 +1789,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_window_type notify", c->name, c->window);
             clientGetNetWmType (c);
-            frameDraw (c, TRUE, FALSE);
+            frameDraw (c, TRUE);
         }
         else if ((ev->atom == display_info->atoms[NET_WM_STRUT]) || 
                  (ev->atom == display_info->atoms[NET_WM_STRUT_PARTIAL]))
@@ -1834,7 +1834,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                   (ev->atom == display_info->atoms[KWM_WIN_ICON])))
         {
             clientUpdateIcon (c);
-            frameDraw (c, TRUE, FALSE);
+            frameDraw (c, TRUE);
         }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == display_info->atoms[NET_STARTUP_ID])
@@ -1935,7 +1935,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                     {
                         clientStick (c, TRUE);
-                        frameDraw (c, FALSE, FALSE);
+                        frameDraw (c, FALSE);
                     }
                 }
                 else
@@ -1943,7 +1943,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                     {
                         clientUnstick (c, TRUE);
-                        frameDraw (c, FALSE, FALSE);
+                        frameDraw (c, FALSE);
                     }
                     if (ev->data.l[0] != c->win_workspace)
                     {
@@ -2094,7 +2094,7 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
         }
         if (!update)
         {
-            frameDraw (c, FALSE, TRUE);
+            frameDraw (c, FALSE);
         }
     }
 }
@@ -2294,11 +2294,11 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 {
                     clientHide (c, c->win_workspace, TRUE);
                 }
-                frameDraw (c, FALSE, FALSE);
+                frameDraw (c, FALSE);
                 break;
             case MENU_OP_MINIMIZE_ALL:
                 clientHideAll (c, c->win_workspace);
-                frameDraw (c, FALSE, FALSE);
+                frameDraw (c, FALSE);
                 break;
             case MENU_OP_UNMINIMIZE:
                 clientShow (c, TRUE);
@@ -2311,26 +2311,26 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_STICK:
             case MENU_OP_UNSTICK:
                 clientToggleSticky (c, TRUE);
-                frameDraw (c, FALSE, FALSE);
+                frameDraw (c, FALSE);
                 break;
             case MENU_OP_WORKSPACES:
                 clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
-                frameDraw (c, FALSE, FALSE);
+                frameDraw (c, FALSE);
                 break;
             case MENU_OP_DELETE:
-                frameDraw (c, FALSE, FALSE);
+                frameDraw (c, FALSE);
                 clientClose (c);
                 break;
             case MENU_OP_CONTEXT_HELP:
                 clientEnterContextMenuState (c);
-                frameDraw (c, FALSE, FALSE);
+                frameDraw (c, FALSE);
                 break;
             case MENU_OP_ABOVE:
             case MENU_OP_NORMAL:
                 clientToggleAbove (c);
                 /* Fall thru */
             default:
-                frameDraw (c, FALSE, FALSE);
+                frameDraw (c, FALSE);
                 break;
         }
     }
@@ -2367,7 +2367,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
     if ((c) && ((ev->button == 1) || (ev->button == 3)))
     {
         c->button_pressed[MENU_BUTTON] = TRUE;
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
         y = c->y;
         ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
         insensitive = 0;
@@ -2519,7 +2519,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         TRACE ("Cannot open menu");
         gdk_beep ();
         c->button_pressed[MENU_BUTTON] = FALSE;
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
         xfwmWindowDelete (&menu_event_window);
         menu_free (menu);
     }

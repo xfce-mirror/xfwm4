@@ -460,7 +460,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         }
         data[0] = c->window;
         clientAdjustFullscreenLayer (c, TRUE);
-        frameDraw (c, FALSE, FALSE);
+        frameDraw (c, FALSE);
     }
     else
     {
@@ -473,7 +473,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
             clientAdjustFullscreenLayer (c2, FALSE);
             /* clientRaise (c, None); */
         }
-        frameDraw (c2, FALSE, FALSE);
+        frameDraw (c2, FALSE);
     }
     data[1] = None;
     XChangeProperty (display_info->dpy, screen_info->xroot, 
@@ -554,7 +554,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         client_focus = NULL;
         if (c2)
         {
-            frameDraw (c2, FALSE, FALSE);
+            frameDraw (c2, FALSE);
             XChangeProperty (clientGetXDisplay (c2), c2->screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                              PropModeReplace, (unsigned char *) data, 2);
         }
