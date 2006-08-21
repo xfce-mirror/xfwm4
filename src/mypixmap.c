@@ -1036,6 +1036,8 @@ xfwmPixmapFree (xfwmPixmap * pm)
     
     TRACE ("entering xfwmPixmapFree");
     
+    pm->width = 0;
+    pm->height = 0;
     if (pm->pixmap != None)
     {
         XFreePixmap (myScreenGetXDisplay(pm->screen_info), pm->pixmap);

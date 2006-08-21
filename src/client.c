@@ -1422,6 +1422,12 @@ clientUpdateIcon (Client * c)
     xfwmPixmapFree (&c->appmenu[INACTIVE]);
     xfwmPixmapFree (&c->appmenu[PRESSED]);
 
+    if (screen_info->buttons[MENU_BUTTON][ACTIVE].pixmap == None)
+    {
+        /* The current theme has no menu button */
+        return;
+    }
+
     xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][ACTIVE],
                          &c->appmenu[ACTIVE]);
     xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][INACTIVE],
