@@ -82,6 +82,7 @@
 #define WIN_IS_VISIBLE(cw)              (WIN_IS_VIEWABLE(cw) && WIN_HAS_DAMAGE(cw))
 #define WIN_IS_DAMAGED(cw)              (cw->damaged)
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
+
 #define USE_IDLE_REPAINT
 
 typedef struct _CWindow CWindow;
