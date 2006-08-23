@@ -36,9 +36,11 @@ gboolean compositorIsUsable           (DisplayInfo *);
 void     compositorAddWindow          (DisplayInfo *,
                                        Window,
                                        Client *);
+gboolean compositorSetClient          (DisplayInfo *,
+                                       Window,
+                                       Client *);
 void     compositorRemoveWindow       (DisplayInfo *,
                                        Window);
-
 void     compositorHandleEvent        (DisplayInfo *,
                                        XEvent *);
 void     compositorInitDisplay        (DisplayInfo *);

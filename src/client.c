@@ -1883,7 +1883,7 @@ clientUnframe (Client * c, gboolean remap)
     display_info = screen_info->display_info;
 
     clientRemoveFromList (c);
-    compositorRemoveWindow (display_info, c->frame);
+    compositorSetClient (display_info, c->frame, NULL);
 
     myDisplayGrabServer (display_info);
     gdk_error_trap_push ();

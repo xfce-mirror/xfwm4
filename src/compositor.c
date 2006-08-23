@@ -1953,7 +1953,16 @@ restack_win (CWindow *cw, Window above)
         previous_above = ncw->id;
     }
 
-    if (previous_above != above)
+    /* If above is set to None, the window whose state was changed is on 
+     * the bottom of the stack with respect to sibling.
+     */
+    if (above == None)
+    {
+        /* Insert at bottom of window stack */
+        screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
+        screen_info->cwindows = g_list_append (screen_info->cwindows, cw);
+    }
+    else if (previous_above != above)
     {
         GList *index;
 
@@ -1970,22 +1979,6 @@ restack_win (CWindow *cw, Window above)
         {
             screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
             screen_info->cwindows = g_list_insert_before (screen_info->cwindows, index, cw);
-        }
-        else if (above == None)
-        {
-           /* If above is set to None, the window whose state was changed is on 
-            * the bottom of the stack with respect to sibling.
-            *     => Insert at bottom of window stack 
-            */
-            screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
-            screen_info->cwindows = g_list_append (screen_info->cwindows, cw);
-        }
-        else
-        {
-            /* Don't know what to do */
-            g_warning ("The window 0x%lx has not been restacked\n"
-                       "because the specified sibling 0x%lx was "
-                       "not found in our stack", cw->id, above);
         }
     }
 }
@@ -2447,18 +2440,50 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
     }
 
     cw = find_cwindow_in_display (display_info, id);
-    if (cw)
-    {
-        /* 
-         * The compositor window is already known, just update the client...
-         */
-        cw->c = c;
-    }
-    else
+    if (!compositorSetClient (display_info, id, c))
     {
         add_win (display_info, id, c);
     }
 #endif /* HAVE_COMPOSITOR */
+}
+
+gboolean
+compositorSetClient (DisplayInfo *display_info, Window id, Client *c)
+{
+#ifdef HAVE_COMPOSITOR
+    CWindow *cw;
+
+    g_return_val_if_fail (display_info != NULL, FALSE);
+    g_return_val_if_fail (id != None, FALSE);
+    TRACE ("entering compositorSetClient: 0x%lx", id);
+
+    if (!compositorIsUsable (display_info))
+    {
+        return FALSE;
+    }
+
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        if (cw->c != c)
+        {
+            if (WIN_IS_VISIBLE(cw))
+            {
+                damage_win (cw);
+            }
+
+            if (cw->extents)
+            {
+                XFixesDestroyRegion (display_info->dpy, cw->extents);
+                cw->extents = None;
+            }
+
+            cw->c = c;
+        }
+        return TRUE;
+    }
+#endif /* HAVE_COMPOSITOR */
+    return FALSE;
 }
 
 void
