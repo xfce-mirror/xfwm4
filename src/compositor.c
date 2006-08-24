@@ -1627,6 +1627,30 @@ damage_win (CWindow *cw)
 }
 
 static void
+update_extents (CWindow *cw)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("entering update_extents");
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
+    if (WIN_IS_VISIBLE(cw))
+    {
+        damage_win (cw);
+    }
+
+    if (cw->extents)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->extents);
+        cw->extents = None;
+    }
+}
+
+static void
 determine_mode(CWindow *cw)
 {
     DisplayInfo *display_info;
@@ -2469,17 +2493,7 @@ compositorSetClient (DisplayInfo *display_info, Window id, Client *c)
     {
         if (cw->c != c)
         {
-            if (WIN_IS_VISIBLE(cw))
-            {
-                damage_win (cw);
-            }
-
-            if (cw->extents)
-            {
-                XFixesDestroyRegion (display_info->dpy, cw->extents);
-                cw->extents = None;
-            }
-
+            update_extents (cw);
             cw->c = c;
         }
         return TRUE;
@@ -2502,6 +2516,30 @@ compositorRemoveWindow (DisplayInfo *display_info, Window id)
     }
 
     destroy_win (display_info, id);
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
+compositorDamageWindow (DisplayInfo *display_info, Window id)
+{
+#ifdef HAVE_COMPOSITOR
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorDamageWindow: 0x%lx", id);
+
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        /* that will also damage the window */
+        update_extents (cw);
+    }
 #endif /* HAVE_COMPOSITOR */
 }
 

@@ -41,6 +41,8 @@ gboolean compositorSetClient          (DisplayInfo *,
                                        Client *);
 void     compositorRemoveWindow       (DisplayInfo *,
                                        Window);
+void     compositorDamageWindow       (DisplayInfo *, 
+                                       Window);
 void     compositorHandleEvent        (DisplayInfo *,
                                        XEvent *);
 void     compositorInitDisplay        (DisplayInfo *);
