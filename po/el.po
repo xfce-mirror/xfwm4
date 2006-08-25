@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-14 15:28+0200\n"
-"PO-Revision-Date: 2006-07-09 19:27+0200\n"
+"PO-Revision-Date: 2006-08-24 18:07+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -73,12 +73,11 @@ msgid "Window Manager Tweaks"
 msgstr "προσαρμογή διαχειριστή παραθύρων"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:398
-#, fuzzy
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"Περίληψη παραθύρων που έχουν ορισμένες τις ιδιότητες \"όχι στη λίστα εργασιών"
-"\" ή \"όχι στον ειδοποιητή\""
+"Προσπέραση παραθύρων που έχουν ορισμένες τις ιδιότητες \"όχι στη λίστα "
+"εργασιών\" ή \"όχι στον ειδοποιητή\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Include hidden (i.e. iconified) windows"
@@ -170,7 +169,7 @@ msgstr "Ενεργοποίηση compositing"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "Να απεικονίζονται απευθείας τα παράθυρα πλήρους οθόνης"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Show shadows under regular windows"
