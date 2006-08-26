@@ -24,7 +24,7 @@
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <glib.h>

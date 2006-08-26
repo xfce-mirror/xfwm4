@@ -37,9 +37,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/utf8.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/xinerama.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -126,6 +124,15 @@ Atom kde_net_wm_system_tray_window_for;
 Atom net_system_tray_manager;
 Atom net_system_tray_selection;
 Atom net_system_tray_opcode;
+
+#if LIBXFCE4UTIL_CHECK_VERSION(4,2,0)
+/* Function deprecated in 4.2 and dropped in 4.4, thus the test above */
+gchar*
+utf8_string_remove_controls (gchar *str, gssize max_len, const gchar *end)
+{
+  return xfce_utf8_remove_controls (str, max_len, end);
+}
+#endif
 
 static gboolean
 check_type_and_format (Display * dpy, Window w, Atom a, int expected_format,

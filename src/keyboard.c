@@ -23,7 +23,7 @@
 #endif
 
 #include <X11/Xlib.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

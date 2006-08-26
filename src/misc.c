@@ -37,7 +37,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/xinerama.h>
 
 #include "main.h"

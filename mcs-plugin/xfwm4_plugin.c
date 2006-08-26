@@ -37,9 +37,8 @@
 
 #include <libxfce4mcs/mcs-common.h>
 #include <libxfce4mcs/mcs-manager.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
 #include <xfce-mcs-manager/manager-plugin.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include "xfwm4-icon.h"
 
