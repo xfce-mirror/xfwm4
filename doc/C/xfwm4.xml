@@ -211,8 +211,8 @@ maintainers, etc. Commented out by default.
 	<para>If you maximize a window, it will expand on your display and use
 	  all avaible space (as it is defined by <ulink
 	    url="xfdesktop.html#xfdesktop-workspace" type="http">workspace
-	    settings</ulink>). Moreover, you can maximize a window only
-	  vertically or horizontally.
+	    settings</ulink>). You can maximize a window either vertically, 
+	    horizontally, or both at once.
 	</para>
 	<para>To maximize a window, perform one of those actions:</para>
 	<itemizedlist>
