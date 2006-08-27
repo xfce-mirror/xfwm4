@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.90.2\n"
+"Project-Id-Version: xfwm4 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 15:28+0200\n"
-"PO-Revision-Date: 2006-02-19 12:09+0100\n"
+"POT-Creation-Date: 2006-08-25 10:01+0200\n"
+"PO-Revision-Date: 2006-08-15 20:12+0200\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,6 @@ msgstr "Unten:"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "Arbeitsflächen und Seitenränder"
 
@@ -64,7 +63,7 @@ msgstr "Seitenränder"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:371
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:379
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -72,12 +71,11 @@ msgid "Window Manager Tweaks"
 msgstr "Fenstermanager-Tweaks"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:398
-#, fuzzy
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"Fenster, die \"skip pager\" oder \"skip taskbar\" gesetzt haben, "
-"miteinbeziehen"
+"Fenster, die \"skip pager\" oder \"skip taskbar\"\n"
+"gesetzt haben, übergehen."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:404
 msgid "Include hidden (i.e. iconified) windows"
@@ -91,7 +89,7 @@ msgstr "Durch Fenster aller Arbeitsflächen bewegen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:415
 msgid "Cycling"
-msgstr ""
+msgstr "Fensterwechsel"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:427
 msgid "Activate focus stealing prevention"
@@ -106,28 +104,26 @@ msgid "Focus"
 msgstr "Fokus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:450
-#, fuzzy
 msgid "Key used to grab and move windows"
-msgstr ""
-"Die \"Alt\"-Taste verwenden, um Fenster\n"
-"anzufassen"
+msgstr "Taste zum Bewegen der Fenster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Raise windows when any mouse button is pressed"
 msgstr ""
-"Fenster hervorbringen wenn eine beliebige\n"
-"Maustaste dgedrückt wird"
+"Fenster hervorbringen, wenn eine beliebige\n"
+"Maustaste gedrückt wird"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:463
 msgid "Restore original size of maximized windows when moving"
 msgstr ""
-"Ursprüngliche Größe maximierte Fenster nach\n"
+"Ursprüngliche Größe maximierter Fenster nach\n"
 "Verschieben wiederherstellen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:469
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
-"Verwende Widerstand an den Kanten statt die Fenster einrasten zu lassen"
+"Verwende Widerstand an den Kanten, statt die\n"
+"Fenster einrasten zu lassen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:474
 msgid "Accessibility"
@@ -143,13 +139,14 @@ msgstr ""
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
-"Vorige Arbeitsfläche merken und abrufen beim Wechseln mittels Tastenkürzeln"
+"Vorige Arbeitsfläche merken und abrufen beim\n"
+"Wechseln mittels Tastenkürzeln"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:501
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
-"Arbeitsflächen in Abhängigkeit der derzeitigen Desktopanordnung\n"
-"umbrechen"
+"Arbeitsflächen in Abhängigkeit der derzeitigen\n"
+"Desktopanordnung umbrechen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
 msgid "Wrap workspaces when the first or last workspace is reached"
@@ -164,27 +161,24 @@ msgstr ""
 "intelligent platziert werden"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:526
-#, fuzzy
 msgid "Size|Small"
 msgstr "Klein"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:526
-#, fuzzy
 msgid "Size|Large"
 msgstr "Groß"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:530
-#, fuzzy
 msgid "Placement"
-msgstr "Intelligente Platzierung"
+msgstr "Platzierung"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:550
 msgid "Enable display compositing"
-msgstr ""
+msgstr "Anzeigen-Compositing aktivieren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "Vollbildfenster mit Overlay direkt anzeigen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Show shadows under regular windows"
@@ -195,15 +189,14 @@ msgid "Show shadows under popup windows"
 msgstr "Schatten unter Popup-Fenstern anzeigen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:582
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Deckkraft bei Größenänderung"
+msgstr "Deckkraft der Fensterdekoration"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:582 ../mcs-plugin/wmtweaks_plugin.c:588
 #: ../mcs-plugin/wmtweaks_plugin.c:594 ../mcs-plugin/wmtweaks_plugin.c:600
 #: ../mcs-plugin/wmtweaks_plugin.c:606
 msgid "Transparent"
-msgstr "Transparent"
+msgstr "Durchsichtig"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:583 ../mcs-plugin/wmtweaks_plugin.c:589
 #: ../mcs-plugin/wmtweaks_plugin.c:595 ../mcs-plugin/wmtweaks_plugin.c:601
@@ -212,9 +205,8 @@ msgid "Opaque"
 msgstr "Undurchsichtig"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:588
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Deckkraft von Popup-Fenstern"
+msgstr "Deckkraft von inaktiven Fenstern"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:594
 msgid "Opacity of windows during move"
@@ -234,7 +226,6 @@ msgstr "Compositor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:653
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Fenstermanager-Tweaks"
 
@@ -324,7 +315,7 @@ msgstr "Rechts"
 
 #: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "Click and drag buttons to change the layout"
-msgstr "Ziehen Sie die Buttons nach unten, um das Layout zu verändern"
+msgstr "Ziehen Sie die Buttons nach unten, um die Anordnung zu verändern"
 
 #: ../mcs-plugin/xfwm4_plugin.c:579
 msgid "Active"
@@ -365,7 +356,7 @@ msgstr "Textausrichtung in der Titelleiste:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1481
 msgid "Button layout"
-msgstr "Lage der Buttons"
+msgstr "Anordnung der Knöpfe"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1486
 msgid "Style"
@@ -377,7 +368,7 @@ msgstr "Tastenkürzel für Fenster"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1548
 msgid "Command"
-msgstr "Kommando"
+msgstr "Befehl"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1554
 msgid "Shortcut"
@@ -417,15 +408,15 @@ msgstr "Bringe Fenster in den Vordergrund, wenn sie den Fokus erhalten"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1638
 msgid "Delay before raising focused window :"
-msgstr "Verzögerung, bevor ein Fenster in den Vordergrund gebracht wird:"
+msgstr "Dauer, bis ein Fenster in den Vordergrund gebracht wird:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
 msgid "Slow"
-msgstr "Langsam"
+msgstr "Lang"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1652
 msgid "Fast"
-msgstr "Schnell"
+msgstr "Kurz"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1673
 msgid "Raise window when clicking inside application window"
@@ -437,29 +428,27 @@ msgstr "Hervorheben durch Klicken"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Windows snapping"
-msgstr "Einschnappen von Fenstern"
+msgstr "Einrasten von Fenstern"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1700
 msgid "Snap windows to screen border"
-msgstr "Fenster am Seitenrand einschnappen lassen"
+msgstr "Fenster am Seitenrand einrasten lassen"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1706
 msgid "Snap windows to other windows"
-msgstr "Fenster an anderen Fensterrändern einschnappen lassen"
+msgstr "Fenster an anderen Fenstern einrasten lassen"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1717
 msgid "Distance :"
-msgstr "Distanz:"
+msgstr "Abstand:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1724
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Distanz:"
+msgstr "Klein"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1731
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Distanz:"
+msgstr "Groß"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Wrap workspaces"
@@ -475,17 +464,15 @@ msgstr "...wenn ein Fenster aus dem Sichtfeld gezogen wird"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
-msgstr "Distanz zum Rand:"
+msgstr "Widerstand am Rand:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1783
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Distanz:"
+msgstr "Klein"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1790
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Distanz:"
+msgstr "Groß"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1812
 msgid "Opaque move and resize"
@@ -505,7 +492,7 @@ msgstr "Aktion bei Doppelklick"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1830
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Aktion, welche beim Doppeklicken auf die Titelleiste ausgeführt wird:"
+msgstr "Aktion, die beim Doppeklicken auf die Titelleiste ausgeführt wird:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1835
 msgid "Advanced"
@@ -513,30 +500,29 @@ msgstr "Weitere Optionen"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1974
-#, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "Fenstermanager"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Wollen Sie dieses Tastenkombinations-Schema wirklich entfernen?"
+msgstr "Wollen Sie dieses Tastenkürzel-Schema wirklich entfernen?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:139
 msgid "Add keybinding theme"
-msgstr "Tastenkombinations-Schema hinzufügen"
+msgstr "Tastenkürzel-Schema hinzufügen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:143
 msgid "Enter a name for the theme:"
-msgstr "Namen des Themas eingeben:"
+msgstr "Namen des Schema eingeben:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:178
 msgid "A keybinding theme with the same name already exists"
-msgstr "Es gibt bereits ein Thema mit diesem Namen"
+msgstr "Es gibt bereits ein Schema mit diesem Namen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:184
 msgid "You have to provide a name for the keybinding theme"
-msgstr "Sie müssen einen Namen eingeben"
+msgstr "Sie müssen einen Namen für dieses Schema eingeben"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Close window"
@@ -555,9 +541,8 @@ msgid "Stick window"
 msgstr "Fenster anheften"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Fenster schließen"
+msgstr "Fenster durchwechseln"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window up"
@@ -592,9 +577,8 @@ msgid "Resize window right"
 msgstr "Fenster nach rechts vergrößern"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "Fenster schließen"
+msgstr "Verschieben/Größenänderung eines Fensters abbrechen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Raise window"
@@ -720,7 +704,7 @@ msgstr "Kein Tastenkürzel"
 #: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (auf %s)"
 
 #: ../src/main.c:128
 #, c-format
@@ -821,31 +805,25 @@ msgid "Unknown application!"
 msgstr "Unbekannte Anwendung!"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "Fenstermanager-Tweaks"
+msgstr "Fenstermanagereinstellungen"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Fenstermanager-Tweaks"
+msgstr "Xfce 4 Fenstermanagereinstellungen"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Zusätzliche Einstellungen für den Fenstermanager"
+msgstr "Weitere Einstellungen"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Fenstermanager-Tweaks"
+msgstr "Xfce 4 Fenstermanager-Tweaks"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "Seitenränder"
+msgstr "Arbeitsflächeneinstellungen"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Seitenränder"
+msgstr "Xfce 4 Arbeitsflächeneinstellungen"
