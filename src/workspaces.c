@@ -174,7 +174,7 @@ modify_with_wrap (int value, int by, int limit, gboolean wrap)
 
 /* returns TRUE if the workspace was changed, FALSE otherwise */
 gboolean
-workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
+workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c)
 {
     int row, col, newrow, newcol, previous_ws, n;
 
@@ -191,7 +191,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
     previous_ws = screen_info->current_ws;
     if ((n >= 0) && (n < screen_info->workspace_count))
     {
-        workspaceSwitch(screen_info, n, c2, TRUE);
+        workspaceSwitch(screen_info, n, c, TRUE);
     }
     else if (screen_info->params->wrap_layout)
     {
@@ -220,7 +220,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c2)
 
             n = workspaceGetNumber(screen_info, newrow, newcol);
         }
-        workspaceSwitch(screen_info, n, c2, TRUE);
+        workspaceSwitch(screen_info, n, c, TRUE);
     }
 
     return (screen_info->current_ws != previous_ws);

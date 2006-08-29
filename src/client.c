@@ -3265,11 +3265,11 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
 }
 
 static eventFilterStatus
-clientMoveResize_release_filter (XEvent * xevent, gpointer data)
+clientButtonReleaseFilter (XEvent * xevent, gpointer data)
 {
     MoveResizeData *passdata = (MoveResizeData *) data;
 
-    TRACE ("entering clientMoveResize_release_filter");
+    TRACE ("entering clientButtonReleaseFilter");
 
     if ((xevent->type == ButtonRelease) &&
         (xevent->xbutton.button == passdata->button))
@@ -3282,7 +3282,7 @@ clientMoveResize_release_filter (XEvent * xevent, gpointer data)
 }
 
 static eventFilterStatus
-clientMove_event_filter (XEvent * xevent, gpointer data)
+clientMoveEventFilter (XEvent * xevent, gpointer data)
 {
     static int edge_scroll_x = 0;
     static int edge_scroll_y = 0;
@@ -3298,7 +3298,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
     XWindowChanges wc;
     int prev_x, prev_y;
 
-    TRACE ("entering clientMove_event_filter");
+    TRACE ("entering clientMoveEventFilter");
 
     c = passdata->c;
     prev_x=c->x;
@@ -3318,9 +3318,10 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             myDisplayUpdateCurrentTime (display_info, xevent);
         }
 
-        if (passdata->use_keys)
+        if ((passdata->use_keys) && !FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED)) 
         {
             int key_move = 16;
+            unsigned int edge;
 
             if ((screen_info->params->snap_to_border) || (screen_info->params->snap_to_windows))
             {
@@ -3353,9 +3354,49 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
             {
                 c->y = c->y + key_move;
             }
-            clientSnapPosition (c, prev_x, prev_y);
-            clientConstrainPos (c, FALSE);
 
+            clientSnapPosition (c, prev_x, prev_y);
+            edge = clientConstrainPos (c, FALSE);
+            if ((edge) && (screen_info->params->wrap_windows))
+            {
+                int maxx, maxy, maxw, maxh;
+
+                maxx = 0;
+                maxy = 0;
+                maxw = screen_info->width;
+                maxh = screen_info->height;
+                clientMaxSpace (screen_info, &maxx, &maxy, &maxw, &maxh);
+
+                if (edge & CLIENT_CONSTRAINED_TOP)
+                {
+                    if (workspaceMove (screen_info, -1, 0, c))
+                    {
+                        c->y = maxh + frameTop (c) - key_move;
+                    }
+                }
+                else if (edge & CLIENT_CONSTRAINED_BOTTOM)
+                {
+                    if (workspaceMove (screen_info, 1, 0, c))
+                    {
+                        c->y = maxy + frameTop (c) + key_move;
+                    }
+                }
+
+                if (edge & CLIENT_CONSTRAINED_LEFT)
+                {
+                    if (workspaceMove (screen_info, 0, -1, c))
+                    {
+                        c->x = maxw - frameRight (c) - key_move;
+                    }
+                }
+                else if (edge & CLIENT_CONSTRAINED_RIGHT)
+                {
+                    if (workspaceMove (screen_info, 0, 1, c))
+                    {
+                        c->x = maxx - frameWidth (c) + frameLeft (c) + key_move;
+                    }
+                }
+            }
 #ifdef SHOW_POSITION
             if (passdata->poswin)
             {
@@ -3650,7 +3691,7 @@ clientMove_event_filter (XEvent * xevent, gpointer data)
         status = EVENT_FILTER_CONTINUE;
     }
 
-    TRACE ("leaving clientMove_event_filter");
+    TRACE ("leaving clientMoveEventFilter");
 
     if (!moving)
     {
@@ -3727,10 +3768,15 @@ clientMove (Client * c, XEvent * ev)
         return;
     }
 
+    passdata.poswin = NULL;
 #ifdef SHOW_POSITION
-    passdata.poswin = poswinCreate(screen_info->gscr);
-    poswinSetPosition (passdata.poswin, c);
-    poswinShow (passdata.poswin);
+    if (!screen_info->params->box_move)
+    {
+        passdata.poswin = poswinCreate(screen_info->gscr);
+        poswinSetPosition (passdata.poswin, c);
+        poswinShow (passdata.poswin);
+    }
+    else
 #endif /* SHOW_POSITION */
 
     /* Set window translucent while moving, looks nice */
@@ -3747,7 +3793,7 @@ clientMove (Client * c, XEvent * ev)
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
-    eventFilterPush (display_info->xfilter, clientMove_event_filter, &passdata);
+    eventFilterPush (display_info->xfilter, clientMoveEventFilter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (display_info->dpy, ev);
@@ -3789,7 +3835,7 @@ clientMove (Client * c, XEvent * ev)
         /* If this is a drag-move, wait for the button to be released.
          * If we don't, we might get release events in the wrong place.
          */
-        eventFilterPush (display_info->xfilter, clientMoveResize_release_filter, &passdata);
+        eventFilterPush (display_info->xfilter, clientButtonReleaseFilter, &passdata);
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
@@ -3801,7 +3847,7 @@ clientMove (Client * c, XEvent * ev)
 }
 
 static eventFilterStatus
-clientResize_event_filter (XEvent * xevent, gpointer data)
+clientResizeEventFilter (XEvent * xevent, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -3819,7 +3865,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
     gint min_visible;
     gboolean resizing;
 
-    TRACE ("entering clientResize_event_filter");
+    TRACE ("entering clientResizeEventFilter");
 
     passdata = (MoveResizeData *) data;
     c = passdata->c;
@@ -4167,7 +4213,7 @@ clientResize_event_filter (XEvent * xevent, gpointer data)
         status = EVENT_FILTER_CONTINUE;
     }
 
-    TRACE ("leaving clientResize_event_filter");
+    TRACE ("leaving clientResizeEventFilter");
 
     if (!resizing)
     {
@@ -4243,20 +4289,15 @@ clientResize (Client * c, int corner, XEvent * ev)
         return;
     }
 
+    passdata.poswin = NULL;
 #ifndef SHOW_POSITION
-    if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+    if (((c->size->width_inc > 1) || (c->size->height_inc > 1)) && (!screen_info->params->box_resize))
 #endif /* SHOW_POSITION */
     {
         passdata.poswin = poswinCreate(screen_info->gscr);
         poswinSetPosition (passdata.poswin, c);
         poswinShow (passdata.poswin);
     }
-#ifndef SHOW_POSITION
-    else
-    {
-        passdata.poswin = NULL;
-    }
-#endif /* SHOW_POSITION */
 
     /* Set window translucent while resizing, doesn't looks too nice  :( */
     if ((screen_info->params->resize_opacity < 100) && !(screen_info->params->box_resize) && !(c->opacity_locked))
@@ -4266,7 +4307,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
-    eventFilterPush (display_info->xfilter, clientResize_event_filter, &passdata);
+    eventFilterPush (display_info->xfilter, clientResizeEventFilter, &passdata);
     if (passdata.use_keys)
     {
         XPutBackEvent (display_info->dpy, ev);
@@ -4305,7 +4346,7 @@ clientResize (Client * c, int corner, XEvent * ev)
         /* If this is a drag-resize, wait for the button to be released.
          * If we don't, we might get release events in the wrong place.
          */
-        eventFilterPush (display_info->xfilter, clientMoveResize_release_filter, &passdata);
+        eventFilterPush (display_info->xfilter, clientButtonReleaseFilter, &passdata);
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
@@ -4317,7 +4358,7 @@ clientResize (Client * c, int corner, XEvent * ev)
 }
 
 static eventFilterStatus
-clientCycle_event_filter (XEvent * xevent, gpointer data)
+clientCycleEventFilter (XEvent * xevent, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -4328,7 +4369,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
     int modifier;
     gboolean key_pressed, cycling, gone;
 
-    TRACE ("entering clientCycle_event_filter");
+    TRACE ("entering clientCycleEventFilter");
 
     passdata = (ClientCycleData *) data;
     if (passdata->c == NULL)
@@ -4502,7 +4543,7 @@ clientCycle (Client * c, XEvent * ev)
         passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, c,
                                         passdata.c, passdata.cycle_range,
                                         screen_info->params->cycle_workspaces);
-        eventFilterPush (display_info->xfilter, clientCycle_event_filter, &passdata);
+        eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
         gtk_main ();
         eventFilterPop (display_info->xfilter);
         wireframeDelete (screen_info, passdata.wireframe);
@@ -4540,7 +4581,7 @@ clientCycle (Client * c, XEvent * ev)
 }
 
 static eventFilterStatus
-clientButtonPress_event_filter (XEvent * xevent, gpointer data)
+clientButtonPressEventFilter (XEvent * xevent, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -4645,7 +4686,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     frameDraw (c, FALSE);
 
     TRACE ("entering button press loop");
-    eventFilterPush (display_info->xfilter, clientButtonPress_event_filter, &passdata);
+    eventFilterPush (display_info->xfilter, clientButtonPressEventFilter, &passdata);
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving button press loop");
