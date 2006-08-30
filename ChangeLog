@@ -1,3 +1,101 @@
+2006-08-30 06:17  olivier
+
+	* src/client.c: Reverting the removal of window size/position
+	  indicator
+
+2006-08-30 06:03  olivier
+
+	* src/client.c: Improve window placement after workspace switch
+	  using keyboard.
+
+2006-08-29 21:57  olivier
+
+	* src/client.c, src/workspaces.c: Do not show window size/position
+	  when not showing content as the server is grabbed and other apps
+	  cannot update their contents (bug #2239), switch workspace when
+	  reaching screen edges even when moving the window using keyboard
+	  shortcuts (bug #2234)
+
+2006-08-29 19:49  olivier
+
+	* src/stacking.c: Pass focus to window on top of stack when
+	  lowering the focused window
+
+2006-08-27 12:57  pollux
+
+	* libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/de.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/de.po,
+	  xfburn/trunk/po/ChangeLog, xfburn/trunk/po/de.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/de.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/de.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/de.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/de.po, xfdesktop/trunk/po/ChangeLog,
+	  xfdesktop/trunk/po/de.po, po/ChangeLog, po/de.po: Updated German
+	  translations
+
+2006-08-27 11:35  pollux
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/LINGUAS,
+	  libexo/trunk/po/ka.po, libxfce4util/trunk/po/ChangeLog,
+	  libxfce4util/trunk/po/LINGUAS, libxfce4util/trunk/po/ka.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/LINGUAS,
+	  libxfcegui4/trunk/po/ka.po, mousepad/trunk/po/ChangeLog,
+	  mousepad/trunk/po/LINGUAS, mousepad/trunk/po/ka.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/LINGUAS,
+	  thunar/trunk/po/ka.po, xfcalendar/trunk/po/ChangeLog,
+	  xfcalendar/trunk/po/LINGUAS, xfcalendar/trunk/po/ka.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/LINGUAS,
+	  xfce-mcs-manager/trunk/po/ka.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/LINGUAS,
+	  xfce-mcs-plugins/trunk/po/ka.po, xfce-utils/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/LINGUAS, xfce-utils/trunk/po/ka.po,
+	  xfce-utils/trunk/xfce4-about/AUTHORS,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/LINGUAS,
+	  xfce4-appfinder/trunk/po/ka.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/LINGUAS,
+	  xfce4-icon-theme/trunk/po/ka.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/LINGUAS, xfce4-mixer/trunk/po/ka.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/LINGUAS,
+	  xfce4-panel/trunk/po/ka.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/LINGUAS, xfce4-session/trunk/po/ka.po,
+	  xfce4-terminal/trunk/configure.ac,
+	  xfce4-terminal/trunk/po/ChangeLog,
+	  xfce4-terminal/trunk/po/ka.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/LINGUAS,
+	  xfce4-trigger-launcher/trunk/po/ka.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/LINGUAS,
+	  xfdesktop/trunk/po/ka.po, xfmedia/trunk/configure.ac,
+	  xfmedia/trunk/po/ChangeLog, xfmedia/trunk/po/ka.po,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/LINGUAS,
+	  xfprint/trunk/po/ka.po, po/ChangeLog, po/LINGUAS, po/ka.po: add
+	  Georgian translations
+
+2006-08-26 21:03  olivier
+
+	* doc/C/xfwm4.html, doc/C/xfwm4.xml, doc/fr/xfwm4.html,
+	  doc/it/xfwm4.html: Documentation fix (bug #1607)
+
+2006-08-25 23:33  stavrosg
+
+	* xarchiver/trunk/po/el.po, xfce-utils/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/el.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/el.po, po/ChangeLog, po/el.po: Greek
+	  translations update
+
+2006-08-24 17:08  olivier
+
+	* src/compositor.c, src/compositor.h, src/netwm.c: Restore the
+	  compositorDamageWindow() hook, use it when the
+	  NET_WM_STATE_BELOW is updated to ensure that the shadow gets
+	  updated too.
+
 2006-08-23 21:59  olivier
 
 	* src/compositor.c:
