@@ -461,7 +461,7 @@ initialize (int argc, char **argv, gint compositor_mode)
                    compositing manager (used by WM tweaks to determine whether or not
                    show the "compositor" tab.
                  */
-                setAtomManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER, 
+                setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER, 
                                      screen_info->xroot, screen_info->xfwm4_win);
             }
         }

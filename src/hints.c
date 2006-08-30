@@ -1115,30 +1115,29 @@ getOpacityLock (DisplayInfo *display_info, Window window)
 }
 
 gboolean
-setAtomManagerOwner (DisplayInfo *display_info, int atom_id, Window root, Window w)
+setXAtomManagerOwner (DisplayInfo *display_info, Atom atom, Window root, Window w)
 {
     XClientMessageEvent ev;
     Time server_time;
     int status;
-    
-    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+
+    g_return_val_if_fail (root != None, FALSE);
+
     server_time = myDisplayGetCurrentTime (display_info);
-    status = XSetSelectionOwner (display_info->dpy, 
-                                 display_info->atoms[atom_id],
-                                 w, server_time);
+    status = XSetSelectionOwner (display_info->dpy, atom, w, server_time);
 
     if ((status == BadAtom) || (status == BadWindow))
     {
         return FALSE;
     }
 
-    if (XGetSelectionOwner (display_info->dpy, display_info->atoms[atom_id]) == w)
+    if (XGetSelectionOwner (display_info->dpy, atom) == w)
     {
         ev.type = ClientMessage;
-        ev.message_type = display_info->atoms[atom_id];
+        ev.message_type = atom;
         ev.format = 32;
         ev.data.l[0] = server_time;
-        ev.data.l[1] = display_info->atoms[atom_id];
+        ev.data.l[1] = atom;
         ev.data.l[2] = w;
         ev.data.l[3] = 0;
         ev.data.l[4] = 0;
@@ -1150,6 +1149,14 @@ setAtomManagerOwner (DisplayInfo *display_info, int atom_id, Window root, Window
     }
 
     return FALSE;
+}
+
+gboolean
+setAtomIdManagerOwner (DisplayInfo *display_info, int atom_id, Window root, Window w)
+{
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+
+    return setXAtomManagerOwner(display_info, display_info->atoms[atom_id], root, w);
 }
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY

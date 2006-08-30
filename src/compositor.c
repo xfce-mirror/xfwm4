@@ -2711,6 +2711,26 @@ compositorSetCompositeMode (DisplayInfo *display_info, gboolean use_manual_redir
 #endif /* HAVE_COMPOSITOR */
 }
 
+static void
+compositorSetCMSelection (ScreenInfo *screen_info, Window w)
+{
+    DisplayInfo *display_info;
+    gchar selection[32];
+    Atom a;
+    
+    g_return_if_fail (screen_info != NULL);
+
+    display_info = screen_info->display_info;
+    /* Newer EWMH standard property "_NET_WM_CM_S<n>" */
+    g_snprintf (selection, sizeof (selection), "_NET_WM_CM_S%d", screen_info->screen);
+    a = XInternAtom (display_info->dpy, selection, FALSE);
+    setXAtomManagerOwner (display_info, a, screen_info->xroot, w);
+
+    /* Older property "COMPOSITING_MANAGER" */
+    setAtomIdManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, w);
+}
+
+
 gboolean
 compositorManageScreen (ScreenInfo *screen_info)
 {
@@ -2777,8 +2797,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->overlays = 0;
 
     XClearArea (display_info->dpy, screen_info->xroot, 0, 0, 0, 0, TRUE);
-    setAtomManagerOwner (display_info, COMPOSITING_MANAGER, 
-                         screen_info->xroot, screen_info->xfwm4_win);
+    compositorSetCMSelection (screen_info, screen_info->xfwm4_win);
 
     return TRUE;
 #else
@@ -2856,7 +2875,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, 
                                     display_info->composite_mode);
 
-    setAtomManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, None);
+    compositorSetCMSelection (screen_info, None);
 #endif /* HAVE_COMPOSITOR */
 }
 
