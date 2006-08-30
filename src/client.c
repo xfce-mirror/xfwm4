@@ -3770,13 +3770,9 @@ clientMove (Client * c, XEvent * ev)
 
     passdata.poswin = NULL;
 #ifdef SHOW_POSITION
-    if (!screen_info->params->box_move)
-    {
-        passdata.poswin = poswinCreate(screen_info->gscr);
-        poswinSetPosition (passdata.poswin, c);
-        poswinShow (passdata.poswin);
-    }
-    else
+    passdata.poswin = poswinCreate(screen_info->gscr);
+    poswinSetPosition (passdata.poswin, c);
+    poswinShow (passdata.poswin);
 #endif /* SHOW_POSITION */
 
     /* Set window translucent while moving, looks nice */
@@ -4291,7 +4287,7 @@ clientResize (Client * c, int corner, XEvent * ev)
 
     passdata.poswin = NULL;
 #ifndef SHOW_POSITION
-    if (((c->size->width_inc > 1) || (c->size->height_inc > 1)) && (!screen_info->params->box_resize))
+    if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
 #endif /* SHOW_POSITION */
     {
         passdata.poswin = poswinCreate(screen_info->gscr);
