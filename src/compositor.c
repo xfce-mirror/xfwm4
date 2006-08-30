@@ -925,13 +925,13 @@ win_extents (CWindow *cw)
      */
 
     if (!(screen_info->overlays) &&
-         (screen_info->params->show_popup_shadow && 
+         ((screen_info->params->show_popup_shadow && 
               WIN_IS_OVERRIDE(cw) && 
               !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) || 
-         (screen_info->params->show_frame_shadow &&
+          (screen_info->params->show_frame_shadow &&
               !WIN_IS_OVERRIDE(cw) && 
               !WIN_NO_SHADOW(cw) &&
-              (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)))))
+              (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))))))
     {
         XRectangle sr;
 
