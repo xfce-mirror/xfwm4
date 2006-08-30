@@ -1,3 +1,17 @@
+2006-08-30 19:41  olivier
+
+	* src/compositor.c, src/hints.c, src/hints.h, src/main.c: Add
+	  support for newest _NET_WM_CM_S<n> property used by
+	  gdk_screen_is_composited() in gtk+-2.10.x
+
+2006-08-30 16:47  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2006-08-30 16:44  olivier
+
+	* ChangeLog, src/focus.c, src/stacking.c: Improve focus passing
+
 2006-08-30 06:17  olivier
 
 	* src/client.c: Reverting the removal of window size/position
