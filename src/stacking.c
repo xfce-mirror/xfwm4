@@ -522,10 +522,7 @@ clientLower (Client * c, Window wsibling)
         clientApplyStackList (screen_info);
         clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
         clientPassGrabMouseButton (NULL);
-        if (c == clientGetFocus())
-        {
-            clientFocusTop (screen_info, c->win_layer);
-        }
+        clientPassFocus (screen_info, c, NULL);
         if (screen_info->last_raise == c)
         {
             screen_info->last_raise = NULL;

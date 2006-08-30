@@ -1,3 +1,22 @@
+2006-08-23 21:59  olivier
+
+	* src/compositor.c:
+
+2006-08-23 21:56  olivier
+
+	* src/compositor.c: Don't show shadow with fullscreen and windows
+	  that set the NET_WM_STATE_BELOW property (like gdesklet for
+	  example)
+
+2006-08-23 19:08  olivier
+
+	* src/client.c, src/compositor.c, src/compositor.h: Spot and fix
+	  an issue with stacking reordering.
+
+2006-08-21 20:35  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2006-08-21 20:28  olivier
 
 	* src/client.c, src/mypixmap.c: Improve the fix for themes which

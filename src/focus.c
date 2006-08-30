@@ -342,6 +342,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
                     clientRaise (c2, None);
                 }
             }
+#if 0
             else
             {
                 c2 = clientGetNext (c, 0);
@@ -350,6 +351,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
                     new_focus = c2;
                 }
             }
+#endif
         }
     }
     else if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
