@@ -3371,14 +3371,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 {
                     if (workspaceMove (screen_info, -1, 0, c))
                     {
-                        c->y = maxh + frameTop (c) - key_move;
+                        c->y = maxy + maxh;
                     }
                 }
                 else if (edge & CLIENT_CONSTRAINED_BOTTOM)
                 {
                     if (workspaceMove (screen_info, 1, 0, c))
                     {
-                        c->y = maxy + frameTop (c) + key_move;
+                        c->y = maxy + frameTop (c);
                     }
                 }
 
@@ -3386,14 +3386,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 {
                     if (workspaceMove (screen_info, 0, -1, c))
                     {
-                        c->x = maxw - frameRight (c) - key_move;
+                        c->x = maxx + maxw - frameWidth (c) + frameRight (c);
                     }
                 }
                 else if (edge & CLIENT_CONSTRAINED_RIGHT)
                 {
                     if (workspaceMove (screen_info, 0, 1, c))
                     {
-                        c->x = maxx - frameWidth (c) + frameLeft (c) + key_move;
+                        c->x = maxx + frameLeft (c);
                     }
                 }
             }
