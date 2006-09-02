@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-14 15:28+0200\n"
-"PO-Revision-Date: 2006-08-18 23:30+0100\n"
+"PO-Revision-Date: 2006-08-30 21:18+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -210,7 +210,9 @@ msgstr "Kompozitor"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Pokročilá nastavení správce oken"
+msgstr ""
+"Pokročilá nastavení\n"
+"správce oken"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:771
 #: ../mcs-plugin/xfwm4_plugin.c:2342
