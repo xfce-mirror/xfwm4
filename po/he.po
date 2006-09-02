@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-14 15:28+0200\n"
-"PO-Revision-Date: 2006-06-30 22:51+0300\n"
+"PO-Revision-Date: 2006-09-02 04:33+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +24,7 @@ msgid "Workspace Margins"
 msgstr "שולי סביבת העבודה"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
 #: ../mcs-plugin/margins.c:167
@@ -72,11 +71,9 @@ msgid "Window Manager Tweaks"
 msgstr "הגדרות נוספות של מנהל החלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:398
-#, fuzzy
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"שתף חלונות שהמאפיין \"דלג מחליף סביבות עבודה\"\n"
+"דלג על חלונות שהמאפיין \"דלג מחליף סביבות עבודה\"\n"
 "או \"דלג שרות משימות\" בהם מאפשר"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:404
@@ -128,19 +125,16 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "החלף סביבות עבודה באמצעות גלגלת העכבר על שולחן העבודה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:494
-#, fuzzy
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr "זכור והחזר סביבת עבודה קודמת כאשר מחליפים\b במצעות קיצורי המקדלת."
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "זכור והחזר את סביבת העבודה הקודמת כאשר מחליפים באמצעות קיצורי המקדלת."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:501
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "גלוש בין סביבות עבודה לפי פריסת השולחנות האמתית"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:508
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "גלוש בין סביבות עבודה כאשר המצביע מגיע לגבול המסך"
+msgstr "אפשר גלישה גם בין סביבות העבודה הראשונה והאחרונה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:525
 msgid "Minimum size of windows to trigger smart placement"
@@ -160,7 +154,7 @@ msgstr "התמקמות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:550
 msgid "Enable display compositing"
-msgstr ""
+msgstr "אפשר compositing לתצוגה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:564
 msgid "Display full screen overlay windows directly"
@@ -191,9 +185,8 @@ msgid "Opaque"
 msgstr "אטום"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:588
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "אטימות של חלונות קופצים"
+msgstr "אטימות של חלונות לא פעילים"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:594
 msgid "Opacity of windows during move"
@@ -526,9 +519,8 @@ msgid "Stick window"
 msgstr "הדבק חלון"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
-#, fuzzy
 msgid "Cycle windows"
-msgstr "סגור חלון"
+msgstr "עבור בין חלונות"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window up"
@@ -563,9 +555,8 @@ msgid "Resize window right"
 msgstr "הזז קצה ימני של חלון"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "סגור חלון"
+msgstr "בטל הזזה או שינוי גודל של חלון"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Raise window"
@@ -815,8 +806,3 @@ msgstr "הגדרות סביבות עבודה"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "הגדרות סביבות עבודה Xfce 4"
 
-#~ msgid "Window Manager Advanced Configuration"
-#~ msgstr "הגדרות מתקדמות של מנהל החלונות"
-
-#~ msgid "Window Manager Preferences"
-#~ msgstr "מנהל חלונות"
