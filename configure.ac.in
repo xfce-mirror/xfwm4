@@ -3,7 +3,7 @@ dnl
 dnl xfwm4 - window manager for the Xfce4 desktop environment
 dnl
 
-m4_define([xfwm4_version], [4.3.90.2])
+m4_define([xfwm4_version], [4.3.99.1])
 
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2005
@@ -55,11 +55,11 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
-XDT_CHECK_PACKAGE(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, [4.3.90.2])
-XDT_CHECK_PACKAGE(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, [4.3.90.2])
-XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.3.90.2])
-XDT_CHECK_PACKAGE(LIBXFCEGUI4, libxfcegui4-1.0, [4.3.90.2])
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.90.2])
+XDT_CHECK_PACKAGE(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, [4.3.99.1])
+XDT_CHECK_PACKAGE(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, [4.3.99.1])
+XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.3.99.1])
+XDT_CHECK_PACKAGE(LIBXFCEGUI4, libxfcegui4-1.0, [4.3.99.1])
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.99.1])
 
 dnl
 dnl Startup notification support
