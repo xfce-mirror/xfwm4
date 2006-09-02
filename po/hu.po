@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-14 15:28+0200\n"
-"PO-Revision-Date: 2006-08-16 06:42+0100\n"
+"PO-Revision-Date: 2006-09-02 10:16+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -105,7 +105,7 @@ msgstr "Ablakok megfogására és mozgatására használt billentyű"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:456
 msgid "Raise windows when any mouse button is pressed"
-msgstr "Ablakok elővevése egérgombra"
+msgstr "Ablakok elővevése az egér bármely gombjára"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:463
 msgid "Restore original size of maximized windows when moving"
@@ -113,7 +113,7 @@ msgstr "A maximált ablakok eredeti mérete visszaállítása mozgatáskor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:469
 msgid "Use edge resistance instead of windows snapping"
-msgstr "Szélellenállás váratlan ablakütközések ellen"
+msgstr "Szél-ellenállás váratlan ablak-ütközések ellen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:474
 msgid "Accessibility"
@@ -226,7 +226,7 @@ msgstr "Új név"
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:474
 #, c-format
 msgid "Workspace %d"
-msgstr "%d munkaterület"
+msgstr "%d. munkaterület"
 
 #: ../mcs-plugin/workspaces.c:348
 msgid "Name:"
@@ -250,7 +250,7 @@ msgstr "Menü"
 
 #: ../mcs-plugin/xfwm4_plugin.c:69
 msgid "Stick"
-msgstr "Megjelenés minden munkaterületen"
+msgstr "Kitűzés"
 
 #: ../mcs-plugin/xfwm4_plugin.c:70
 msgid "Shade"
@@ -313,7 +313,7 @@ msgstr "Cím"
 
 #: ../mcs-plugin/xfwm4_plugin.c:591
 msgid "The window title, it cannot be removed"
-msgstr "Az ablak címe. Ez nem távolítható el."
+msgstr "Az ablak címe; ez nem távolítható el"
 
 #: ../mcs-plugin/xfwm4_plugin.c:599
 msgid "Hidden"
@@ -321,7 +321,7 @@ msgstr "Rejtve"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1359
 msgid "Font Selection Dialog"
-msgstr "Betűkészlet-kijelölés párbeszédablak"
+msgstr "Betűkészlet-kijelölés párbeszéd"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1424
 msgid "Window Manager"
@@ -329,11 +329,11 @@ msgstr "Ablakkezelő"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1464
 msgid "Title font"
-msgstr "Címsor betűkészlete"
+msgstr "Cím betűi"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1473
 msgid "Title Alignment"
-msgstr "Címsor igazítása"
+msgstr "Cím igazítása"
 
 #. XXX
 #: ../mcs-plugin/xfwm4_plugin.c:1475
@@ -414,7 +414,7 @@ msgstr "Kattintásra előhozás"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Windows snapping"
-msgstr "Ablakillesztés"
+msgstr "Ablak-illesztés"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1700
 msgid "Snap windows to screen border"
@@ -491,12 +491,12 @@ msgstr "Ablakkezelő"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Valóban törölni akarod ezt a billentyűtémát?"
+msgstr "Valóban törölni akarod ezt a billentyű-témát?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:139
 msgid "Add keybinding theme"
-msgstr "Billentyűtéma hozzáadása"
+msgstr "Billentyű-téma hozzáadása"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:143
 msgid "Enter a name for the theme:"
@@ -504,11 +504,11 @@ msgstr "Adj nevet e témának:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:178
 msgid "A keybinding theme with the same name already exists"
-msgstr "Már van ilyen nevű billentyűtéma"
+msgstr "Már van ilyen nevű billentyű-téma"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:184
 msgid "You have to provide a name for the keybinding theme"
-msgstr "Nevet kell adnod a billentyűtémának"
+msgstr "Nevet kell adnod a billentyű-témának"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:353
 msgid "Close window"
@@ -653,7 +653,7 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
-"Nem lehet megnyitni ezt: %s : \n"
+"%s nem nyitható meg: \n"
 "%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:608
@@ -663,7 +663,7 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
-"Az alábbi fájl nem írható: %s : \n"
+"%s nem írható : \n"
 ":%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:780
