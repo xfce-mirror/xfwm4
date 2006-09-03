@@ -519,8 +519,9 @@ clientSetWidth (Client * c, int w1)
     TRACE ("setting width %i for client \"%s\" (0x%lx)", w1, c->name,
         c->window);
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
-        FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        || (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            && (c->screen_info->params->borderless_maximize)))
     {
         /* Bypass resize increment and max sizes for fullscreen */
         c->width = w1;
@@ -563,8 +564,9 @@ clientSetHeight (Client * c, int h1)
     TRACE ("setting height %i for client \"%s\" (0x%lx)", h1, c->name,
         c->window);
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
-        FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        || (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            && (c->screen_info->params->borderless_maximize)))
     {
         /* Bypass resize increment and max sizes for fullscreen */
         c->height = h1;
@@ -4234,13 +4236,14 @@ clientResize (Client * c, int corner, XEvent * ev)
     TRACE ("entering clientResize");
     TRACE ("resizing client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+        && (screen_info->params->borderless_maximize))
     {
         return;
     }
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     passdata.c = c;
     passdata.cancel_x = passdata.ox = c->width;

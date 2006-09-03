@@ -81,7 +81,8 @@ frameLeft (Client * c)
     g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
     {
         return c->screen_info->sides[SIDE_LEFT][ACTIVE].width;
     }
@@ -96,7 +97,8 @@ frameRight (Client * c)
     g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
     {
         return c->screen_info->sides[SIDE_RIGHT][ACTIVE].width;
     }
@@ -125,7 +127,8 @@ frameBottom (Client * c)
     g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
     {
         return c->screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
     }
@@ -140,7 +143,8 @@ frameX (Client * c)
     g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
     {
         return c->x - frameLeft (c);
     }
@@ -154,7 +158,7 @@ frameY (Client * c)
 
     g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return c->y - frameTop (c);
     }
@@ -169,7 +173,8 @@ frameWidth (Client * c)
     g_return_val_if_fail (c != NULL, 0);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
     {
         return c->width + frameLeft (c) + frameRight (c);
     }
@@ -199,7 +204,11 @@ frameHeight (Client * c)
 static int
 frameTopLeftWidth (Client * c, int state)
 {
-    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    TRACE ("entering frameTopLeftWidth");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+        && c->screen_info->params->borderless_maximize)
     {
         return 0;
     }
@@ -210,7 +219,11 @@ frameTopLeftWidth (Client * c, int state)
 static int
 frameTopRightWidth (Client * c, int state)
 {
-    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    TRACE ("entering frameTopRightWidth");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+        && c->screen_info->params->borderless_maximize)
     {
         return 0;
     }
@@ -220,7 +233,11 @@ frameTopRightWidth (Client * c, int state)
 static int
 frameButtonOffset (Client *c)
 {
-    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    TRACE ("entering frameButtonOffset");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+        && c->screen_info->params->borderless_maximize)
     {
         return MAX (0, c->screen_info->params->maximized_offset);
     }
@@ -990,7 +1007,8 @@ frameDraw (Client * c, gboolean clear_all)
                 &screen_info->corners[CORNER_BOTTOM_RIGHT][state]);
         }
 
-        if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            && (c->screen_info->params->borderless_maximize))
         {
             xfwmWindowHide (&c->sides[SIDE_LEFT]);
             xfwmWindowHide (&c->sides[SIDE_RIGHT]);

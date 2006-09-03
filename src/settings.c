@@ -177,7 +177,15 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
             case MCS_ACTION_CHANGED:
                 if (setting->type == MCS_TYPE_INT)
                 {
-                    if (!strcmp (name, "Xfwm/ClickToFocus"))
+                    if (!strcmp (name, "Xfwm/BoxMove"))
+                    {
+                        screen_info->params->box_move = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/BoxResize"))
+                    {
+                        screen_info->params->box_resize = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/ClickToFocus"))
                     {
                         screen_info->params->click_to_focus = setting->data.v_int;
                         check_for_grabs (screen_info);
@@ -223,14 +231,6 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/WrapResistance"))
                     {
                         screen_info->params->wrap_resistance = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/BoxMove"))
-                    {
-                        screen_info->params->box_move = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/BoxResize"))
-                    {
-                        screen_info->params->box_resize = setting->data.v_int;
                     }
                 }
                 else if (setting->type == MCS_TYPE_STRING)
@@ -359,7 +359,11 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
             case MCS_ACTION_CHANGED:
                 if (setting->type == MCS_TYPE_INT)
                 {
-                    if (!strcmp (name, "Xfwm/CycleMinimum"))
+                    if (!strcmp (name, "Xfwm/BorderlessMaximize"))
+                    {
+                        screen_info->params->borderless_maximize = setting->data.v_int;
+                    }
+                    else if (!strcmp (name, "Xfwm/CycleMinimum"))
                     {
                         screen_info->params->cycle_minimum = setting->data.v_int;
                     }
@@ -715,6 +719,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
         }
 
         /* Tweaks channel */
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/BorderlessMaximize", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("borderless_maximize", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleMinimum", CHANNEL5,
                 &setting) == MCS_SUCCESS)
         {
@@ -1277,6 +1287,7 @@ loadSettings (ScreenInfo *screen_info)
         {"inactive_shadow_2", NULL, FALSE},
         {"inactive_mid_2", NULL, FALSE},
         /* You can change the order of the following parameters */
+        {"borderless_maximize", NULL, TRUE},
         {"box_move", NULL, TRUE},
         {"box_resize", NULL, TRUE},
         {"button_layout", NULL, TRUE},
@@ -1414,10 +1425,12 @@ loadSettings (ScreenInfo *screen_info)
         return FALSE;
     }
 
+    screen_info->params->borderless_maximize =
+        !g_ascii_strcasecmp ("true", getValue ("borderless_maximize", rc));
     screen_info->params->box_resize =
         !g_ascii_strcasecmp ("true", getValue ("box_resize", rc));
-    screen_info->params->box_move = !g_ascii_strcasecmp ("true", getValue ("box_move", rc));
-
+    screen_info->params->box_move = 
+        !g_ascii_strcasecmp ("true", getValue ("box_move", rc));
     screen_info->params->click_to_focus =
         !g_ascii_strcasecmp ("true", getValue ("click_to_focus", rc));
     screen_info->params->cycle_minimum =
@@ -1434,7 +1447,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("raise_on_focus", rc));
     screen_info->params->prevent_focus_stealing =
         !g_ascii_strcasecmp ("true", getValue ("prevent_focus_stealing", rc));
-    screen_info->params->raise_delay = abs (TOINT (getValue ("raise_delay", rc)));
+    screen_info->params->raise_delay = 
+        abs (TOINT (getValue ("raise_delay", rc)));
     screen_info->params->raise_on_click =
         !g_ascii_strcasecmp ("true", getValue ("raise_on_click", rc));
     screen_info->params->raise_with_any_button =
@@ -1465,7 +1479,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("snap_to_windows", rc));
     screen_info->params->snap_resist =
         !g_ascii_strcasecmp ("true", getValue ("snap_resist", rc));
-    screen_info->params->snap_width = abs (TOINT (getValue ("snap_width", rc)));
+    screen_info->params->snap_width = 
+        abs (TOINT (getValue ("snap_width", rc)));
 
     set_settings_margin (screen_info, LEFT,   TOINT (getValue ("margin_left", rc)));
     set_settings_margin (screen_info, RIGHT,  TOINT (getValue ("margin_right", rc)));
@@ -1518,7 +1533,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("wrap_cycle", rc));
     screen_info->params->scroll_workspaces =
         !g_ascii_strcasecmp ("true", getValue ("scroll_workspaces", rc));
-    screen_info->params->wrap_resistance = abs (TOINT (getValue ("wrap_resistance", rc)));
+    screen_info->params->wrap_resistance = 
+        abs (TOINT (getValue ("wrap_resistance", rc)));
 
     freeRc (rc);
     return TRUE;

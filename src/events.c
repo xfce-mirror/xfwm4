@@ -1349,7 +1349,8 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
 
             ev->value_mask |= (CWX | CWY | CWWidth | CWHeight);
         }
-        else if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        else if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+                 && (screen_info->params->borderless_maximize))
         {
             wc.x = c->x;
             wc.y = c->y;

@@ -780,124 +780,13 @@ maintainers, etc. Commented out by default.
 
 <variablelist>
 	<varlistentry>
-		<term>cycle_minimum=false</term>
+		<term>borderless_maximize=false</term>
 			<listitem>
-			<para>Add this line to your xfwm4rc file if you want apps that do not appear 
-			in the taskbar to be included when you switch the focus using the Alt+Tab 
-			shortcut.
+			<para>Set this option to false to show decoration borders on
+			maximized windows.
 			</para>
 			</listitem>
 	</varlistentry>
-
-	<varlistentry>
-		<term>cycle_hidden=false</term>
-			<listitem>
-			<para>Add this line to your xfwm4rc file if you want to exclude hidden windows 
-			from the list presented when using the Alt+Tab shortcut.
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>easy_click=false</term>
-			<listitem>
-			<para>Add this line to your xfwm4rc file if you want to disable the ability to move 
-			and resize windows using the Alt button + mouse click shortcut.
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>focus_hint=false</term>
-			<listitem>
-			<para>Add this line to your xfwm4rc file to instruct xfwm4 to ignore the focus hint 
-			provided by the applications.
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>prevent_focus_stealing=true</term>
-			<listitem>
-			<para>Add this line to your xfwm4rc file to prevent windows from stealing focus. 
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>raise_with_any_button=false</term>
-			<listitem>
-			<para>Add this line to your xfwm4rc file if you want to raise a window only when 
-			clicked with the left mouse button.
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>move_opacity=100</term>
-			<listitem>
-			<para>Set the window opacity while being moved. Opacity is an integer value between 0 and 100;
-			100 being opaque, 0 totally invisible.
-			</para>
-			<para>That option has no effect if the compositing manager is not enabled.</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>resize_opacity=100</term>
-			<listitem>
-			<para>Set the window opacity while being resized. Opacity is an integer value between 0 and 100;
-			100 being opaque, 0 totally invisible.
-			</para>
-			<para>That option has no effect if the compositing manager is not enabled.</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>placement_ratio=25</term>
-			<listitem>
-			<para>Windows larger than this ratio of the actual screen size will be placed using a "smart" but 
-			CPU consuming placement algorithm, while other smaller windows will be simply paced at the center 
-			of the screen. 0 will instruct the window manager to always use the "smart" placement algorithm, while 
-			100 will place all windows at the center of the screen.
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>scroll_workspaces=false</term>
-			<listitem>
-			<para>Add this line to your xfwm4rc file if you want to disable workspace switching 
-			with the mouse wheel.
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>toggle_workspaces=true</term>
-			<listitem>
-			<para>Add this line to your xfwm4rc file if you want the Control+F(N) keyboard shortcut
-			to remember the previous workspace.
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>wrap_layout=true</term>
-			<listitem>
-			<para>wrap workspaces depending on the actual desktop layout. 
-			</para>
-			</listitem>
-	</varlistentry>
-
-	<varlistentry>
-		<term>wrap_cycle=true</term>
-			<listitem>
-			<para>wrap workspaces when the first or last workspace is reached. 
-			</para>
-			</listitem>
-	</varlistentry>
-	
 </variablelist>
 
 </sect2>
