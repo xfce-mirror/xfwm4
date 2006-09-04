@@ -771,26 +771,6 @@ maintainers, etc. Commented out by default.
   </variablelist>
 </sect2>
 
-
-<sect2 id="hidden_options">
-  <title>Hidden options</title>
-
-	<para>Some hidden options allow you to customize &app; behaviour. They have to be added by hand to your
-	HOME/.config/xfce4/xfwm4/xfwm4rc file. You may have to create this file.</para>
-
-<variablelist>
-	<varlistentry>
-		<term>borderless_maximize=false</term>
-			<listitem>
-			<para>Set this option to false to show decoration borders on
-			maximized windows.
-			</para>
-			</listitem>
-	</varlistentry>
-</variablelist>
-
-</sect2>
-
 </sect1>
 
   <!-- extra space -->

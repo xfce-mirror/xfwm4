@@ -55,6 +55,7 @@ static void run_dialog (McsPlugin * mcs_plugin);
 
 static gboolean is_running = FALSE;
 
+static gboolean borderless_maximize = TRUE;
 static gboolean cycle_minimum = TRUE;
 static gboolean cycle_hidden = TRUE;
 static gboolean cycle_workspaces = FALSE;
@@ -81,6 +82,7 @@ static int frame_opacity = 100;
 
 static char *easy_click = "Alt";
 /* 
+    "Xfwm/BorderlessMaximize"
     "Xfwm/CycleHidden"
     "Xfwm/CycleMinimum"
     "Xfwm/CycleWorkspaces"
@@ -460,6 +462,13 @@ create_dialog (McsPlugin * mcs_plugin)
 
     check_button =
         create_gboolean_button (mcs_plugin,
+        _("Hide frame of windows when maximized"), "Xfwm/BorderlessMaximize",
+        &borderless_maximize);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
+    gtk_widget_show (check_button);
+
+    check_button =
+        create_gboolean_button (mcs_plugin,
         _("Restore original size of maximized windows when moving"), "Xfwm/RestoreOnMove",
         &restore_on_move);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
@@ -730,6 +739,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     }
     g_free (rcfile);
 
+    init_gboolean_setting (mcs_plugin, "Xfwm/BorderlessMaximize", &borderless_maximize);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleMinimum", &cycle_minimum);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleHidden", &cycle_hidden);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleWorkspaces", &cycle_workspaces);

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 15:28+0200\n"
+"POT-Creation-Date: 2006-09-04 21:05+0200\n"
 "PO-Revision-Date: 2006-09-03 15:24-0300\n"
 "Last-Translator: Rodrigo Coacci <rcoacci@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -21,7 +21,8 @@ msgid "Workspace Margins"
 msgstr "Margens da Área de Trabalho"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Margens são áreas nos cantos da tela onde nenhuma janela será colocada"
 
 #: ../mcs-plugin/margins.c:167
@@ -51,8 +52,7 @@ msgstr ""
 msgid "Workspaces and Margins"
 msgstr "Áreas de Trabalho e Margens"
 
-#: ../mcs-plugin/workspaces_plugin.c:162
-#: ../mcs-plugin/wmtweaks_plugin.c:513
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:522
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Áreas de Trabalho"
@@ -61,171 +61,181 @@ msgstr "Áreas de Trabalho"
 msgid "Margins"
 msgstr "Margens"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:371
+#: ../mcs-plugin/wmtweaks_plugin.c:373
 msgid "None"
 msgstr "Nenhuma"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:379
+#: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Ajustes Especiais do Gerenciador de Janelas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:398
-msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr "Ignorar as janelas que possuem as propriedades \"ignorar paginador\" ou \"ignorar barra de tarefas\" ajustadas"
+#: ../mcs-plugin/wmtweaks_plugin.c:400
+msgid ""
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr ""
+"Ignorar as janelas que possuem as propriedades \"ignorar paginador\" ou "
+"\"ignorar barra de tarefas\" ajustadas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:404
+#: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Incluir janelas escondidas (iconificadas)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:410
+#: ../mcs-plugin/wmtweaks_plugin.c:412
 msgid "Cycle through windows from all workspaces"
 msgstr "Circular pelas janelas de todas as áreas de trabalho"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:415
+#: ../mcs-plugin/wmtweaks_plugin.c:417
 msgid "Cycling"
 msgstr "Circulação"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:427
+#: ../mcs-plugin/wmtweaks_plugin.c:429
 msgid "Activate focus stealing prevention"
 msgstr "Ativar prevenção de roubo de foco"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:433
+#: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Honrar o padrão ICCCM para dica de foco"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:438
-#: ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
 msgstr "Foco"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:450
+#: ../mcs-plugin/wmtweaks_plugin.c:452
 msgid "Key used to grab and move windows"
 msgstr "Tecla usada para agarrar e mover janelas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:456
+#: ../mcs-plugin/wmtweaks_plugin.c:458
 msgid "Raise windows when any mouse button is pressed"
-msgstr "Trazer janelas para frente quando qualquer botão do mouse for pressionado"
+msgstr ""
+"Trazer janelas para frente quando qualquer botão do mouse for pressionado"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:463
+#: ../mcs-plugin/wmtweaks_plugin.c:465
+msgid "Hide frame of windows when maximized"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
 msgstr "Restaurar o tamanho original de janelas maximizadas ao movê-las"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:469
+#: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Usar resistência de bordas ao invés de atração de janelas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:474
+#: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Accessibility"
 msgstr "Acessibilidade"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:487
+#: ../mcs-plugin/wmtweaks_plugin.c:496
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr "Mudar de área de trabalho usando a roda do mouse sobre o ambiente de trabalho"
+msgstr ""
+"Mudar de área de trabalho usando a roda do mouse sobre o ambiente de trabalho"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:494
-msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr "Lembrar a área de trabalho anterior ao alternar através de atalhos do teclado"
+#: ../mcs-plugin/wmtweaks_plugin.c:503
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr ""
+"Lembrar a área de trabalho anterior ao alternar através de atalhos do teclado"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:501
+#: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr "Juntar áreas de trabalho dependendo da disposição atual do ambiente de trabalho"
+msgstr ""
+"Juntar áreas de trabalho dependendo da disposição atual do ambiente de "
+"trabalho"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:508
+#: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Juntar áreas de trabalho quando a primeira ou última área de trabalho for atingida"
+msgstr ""
+"Juntar áreas de trabalho quando a primeira ou última área de trabalho for "
+"atingida"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:525
+#: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Tamanho mínimo das janelas para ativar o posicionamento inteligente"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:526
+#: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Size|Small"
 msgstr "Pequeno"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:526
+#: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Size|Large"
 msgstr "Grande"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:530
+#: ../mcs-plugin/wmtweaks_plugin.c:539
 msgid "Placement"
 msgstr "Posicionamento"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:550
+#: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
 msgstr "Habilita composição de tela"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:564
+#: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
 msgstr "Exibe as janelas sobrepostas em tela cheia diretamente"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:570
+#: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
 msgstr "Mostrar sombras sob janelas normais"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:576
+#: ../mcs-plugin/wmtweaks_plugin.c:585
 msgid "Show shadows under popup windows"
 msgstr "Mostrar sombras sob janelas flutuantes"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:582
+#: ../mcs-plugin/wmtweaks_plugin.c:591
 msgid "Opacity of window decorations"
 msgstr "Opacidade da decoração das janelas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:582
-#: ../mcs-plugin/wmtweaks_plugin.c:588
-#: ../mcs-plugin/wmtweaks_plugin.c:594
-#: ../mcs-plugin/wmtweaks_plugin.c:600
-#: ../mcs-plugin/wmtweaks_plugin.c:606
+#: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:603 ../mcs-plugin/wmtweaks_plugin.c:609
+#: ../mcs-plugin/wmtweaks_plugin.c:615
 msgid "Transparent"
 msgstr "Transparente"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:583
-#: ../mcs-plugin/wmtweaks_plugin.c:589
-#: ../mcs-plugin/wmtweaks_plugin.c:595
-#: ../mcs-plugin/wmtweaks_plugin.c:601
-#: ../mcs-plugin/wmtweaks_plugin.c:607
+#: ../mcs-plugin/wmtweaks_plugin.c:592 ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:604 ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:616
 msgid "Opaque"
 msgstr "Opaco"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:588
+#: ../mcs-plugin/wmtweaks_plugin.c:597
 msgid "Opacity of inactive windows"
 msgstr "Opacidade das janelas flutuantes"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:594
+#: ../mcs-plugin/wmtweaks_plugin.c:603
 msgid "Opacity of windows during move"
 msgstr "Opacidade das janelas ao mover"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:600
+#: ../mcs-plugin/wmtweaks_plugin.c:609
 msgid "Opacity of windows during resize"
 msgstr "Opacidade das janelas ao redimensionar"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:606
+#: ../mcs-plugin/wmtweaks_plugin.c:615
 msgid "Opacity of popup windows"
 msgstr "Opacidade das janelas flutuantes"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:611
+#: ../mcs-plugin/wmtweaks_plugin.c:620
 msgid "Compositor"
 msgstr "Compositor"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:653
+#: ../mcs-plugin/wmtweaks_plugin.c:662
 msgid "Button Label|Window Manager Tweaks"
 msgstr ""
 "Ajustes Especiais do\n"
 "Gerenciador de Janelas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:771
-#: ../mcs-plugin/xfwm4_plugin.c:2342
+#: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Essas configurações não podem funcionar com seu gerenciador de janelas atual (%s)"
+msgstr ""
+"Essas configurações não podem funcionar com seu gerenciador de janelas atual "
+"(%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
 msgstr "Mudar nome"
 
-#: ../mcs-plugin/workspaces.c:338
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:474
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:474
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de Trabalho %d"
@@ -270,18 +280,15 @@ msgstr "Maximizar"
 msgid "Close"
 msgstr "Fechar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Shade window"
 msgstr "Sombrear janela"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Hide window"
 msgstr "Esconder janela"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:354
 msgid "Maximize window"
 msgstr "Maximizar janela"
 
@@ -739,8 +746,7 @@ msgstr "Des_prender"
 msgid "Context _help"
 msgstr "A_juda de contexto"
 
-#: ../src/menu.c:50
-#: ../src/menu.c:51
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr "Sempre no topo"
 
@@ -779,12 +785,12 @@ msgstr "Área de Trabalho %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu não conseguiu encontrar o ponteiro\n"
 
-#: ../src/settings.c:891
+#: ../src/settings.c:902
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Não é possível alocar cor %s\n"
 
-#: ../src/settings.c:897
+#: ../src/settings.c:908
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Não é possível interpretar cor %s\n"
@@ -816,4 +822,3 @@ msgstr "Configurações das Áreas de Trabalho"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Configurações das Áreas de Trabalho do Xfce 4"
-

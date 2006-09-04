@@ -241,7 +241,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     }
                     else if (!strcmp (name, "Xfwm/ThemeName"))
                     {
-                        reloadScreenSettings (screen_info, UPDATE_GRAVITY | UPDATE_CACHE);
+                        reloadScreenSettings (screen_info, UPDATE_MAXIMIZE | UPDATE_GRAVITY | UPDATE_CACHE);
                     }
                     else if (!strcmp (name, "Xfwm/ButtonLayout"))
                     {
@@ -362,6 +362,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     if (!strcmp (name, "Xfwm/BorderlessMaximize"))
                     {
                         screen_info->params->borderless_maximize = setting->data.v_int;
+                        reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
                     }
                     else if (!strcmp (name, "Xfwm/CycleMinimum"))
                     {

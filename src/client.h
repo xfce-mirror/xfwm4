@@ -72,11 +72,13 @@
 #define UPDATE_BUTTON_GRABS             (1<<1)
 #define UPDATE_FRAME                    (1<<2)
 #define UPDATE_GRAVITY                  (1<<3)
-#define UPDATE_CACHE                    (1<<4)
+#define UPDATE_MAXIMIZE                 (1<<4)
+#define UPDATE_CACHE                    (1<<5)
 #define UPDATE_ALL                      (UPDATE_KEY_GRABS | \
                                          UPDATE_BUTTON_GRABS | \
                                          UPDATE_FRAME | \
                                          UPDATE_GRAVITY | \
+                                         UPDATE_MAXIMIZE | \
                                          UPDATE_CACHE)
 
 #ifndef CLIENT_MIN_VISIBLE

@@ -726,27 +726,6 @@ maintainers, etc. Commented out by default.
   </variablelist>
 </sect2>
 
-
-<sect2 id="hidden_options">
-  <title>Options cachées</title>
-
-	<para>Certaines options cachées permettent de personnaliser le comportement de &app;. Elles doivent être ajoutées à la main 
-	dans un fichier HOME/.config/xfce4/xfwm4/xfwm4rc. Il est souvent nécessaire de créer ce fichier.</para>
-
-<variablelist>
-	<varlistentry>
-		<term>borderless_maximize=false</term>
-			<listitem>
-			<para>Ajouter cette option pour afficher les décorations
-                        des fenêtres lorsque celles-ci sont agrandies.
-			</para>
-			</listitem>
-	</varlistentry>
-	
-</variablelist>
-
-</sect2>
-
 </sect1>
 
   <!-- extra space -->
