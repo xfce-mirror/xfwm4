@@ -682,7 +682,6 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     guint keyval;
     guint modifiers;
     gchar *accelerator;
-    gint i;
     gchar **shortcuts;
     gchar **current_shortcut;
 
@@ -733,14 +732,7 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     modifiers = event->state & (~consumed_modifiers | GDK_MODIFIER_MASK);
     modifiers = modifiers & gtk_accelerator_get_default_mod_mask ();
     accelerator = gtk_accelerator_name (keyval, modifiers);
-
-    for (i = 0; i < strlen (accelerator); i++)
-    {
-        if (accelerator[i] == '>')
-            accelerator[i] = '<';
-    }
-
-    shortcuts = g_strsplit (accelerator, "<", 0);
+    shortcuts = g_strsplit_set (accelerator, "<>", 0);
 
     current_shortcut = shortcuts;
     while (*current_shortcut)
@@ -878,7 +870,7 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
         GTK_BUTTONBOX_SPREAD);
 
     /* Connect signals */
-    g_signal_connect (G_OBJECT (dialog), "key-press-event", G_CALLBACK (cb_compose_shortcut), itf);
+    g_signal_connect (G_OBJECT (dialog), "key-release-event", G_CALLBACK (cb_compose_shortcut), itf);
 
     /* Take control on the keyboard */
     if (gdk_keyboard_grab (gtk_widget_get_root_window (dialog), TRUE,
