@@ -6,25 +6,24 @@
 # Piarres Beobide Egaña <pi@beobide.net>, 2004, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.99.1\n"
+"Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-04 21:05+0200\n"
-"PO-Revision-Date: 2006-08-15 22:46+0200\n"
+"PO-Revision-Date: 2006-09-09 23:16+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
 msgstr "Idazmahai Marjinak"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak leihorik ipiniko ez diren pantailaren zatiak dira"
 
 #: ../mcs-plugin/margins.c:167
@@ -71,8 +70,7 @@ msgid "Window Manager Tweaks"
 msgstr "Leiho Kudeatzaile Gomendioak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "\"paginatzailea utzi\" edo \"ataza-barra utzi\" propietateak ezarririk duten "
 "leihoa ezik"
@@ -111,7 +109,7 @@ msgstr "Leihoa erakarri saguaren edozein botoi sakatzean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Leiho markoa ezkutatu guztiz handitzean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
@@ -130,8 +128,7 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Idazmahaia aldatu idazmahaiean sagu errubera erabiliaz"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla bitartez "
 "aldatzean"
@@ -815,3 +812,4 @@ msgstr "Idazmahai Ezarpenak"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
+
