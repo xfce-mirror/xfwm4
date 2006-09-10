@@ -337,7 +337,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                 {
                     if (!strcmp (name, "Xfwm/KeyThemeName"))
                     {
-                        reloadScreenSettings (screen_info, UPDATE_KEY_GRABS);
+                        reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
                     }
                 }
                 break;
@@ -1255,6 +1255,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_11], getValue ("workspace_11_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_12], getValue ("workspace_12_key", rc));
 
+    myScreenUngrabKeys (screen_info);
     myScreenGrabKeys (screen_info);
 
     return TRUE;

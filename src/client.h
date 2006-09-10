@@ -68,14 +68,12 @@
 #define INCLUDE_SKIP_TASKBAR            (1<<5)
 
 #define NO_UPDATE_FLAG                  0
-#define UPDATE_KEY_GRABS                (1<<0)
-#define UPDATE_BUTTON_GRABS             (1<<1)
-#define UPDATE_FRAME                    (1<<2)
-#define UPDATE_GRAVITY                  (1<<3)
-#define UPDATE_MAXIMIZE                 (1<<4)
-#define UPDATE_CACHE                    (1<<5)
-#define UPDATE_ALL                      (UPDATE_KEY_GRABS | \
-                                         UPDATE_BUTTON_GRABS | \
+#define UPDATE_BUTTON_GRABS             (1<<0)
+#define UPDATE_FRAME                    (1<<1)
+#define UPDATE_GRAVITY                  (1<<2)
+#define UPDATE_MAXIMIZE                 (1<<3)
+#define UPDATE_CACHE                    (1<<4)
+#define UPDATE_ALL                      (UPDATE_BUTTON_GRABS | \
                                          UPDATE_FRAME | \
                                          UPDATE_GRAVITY | \
                                          UPDATE_MAXIMIZE | \
@@ -163,9 +161,9 @@
                                          WINDOW_DOCK)
 
 /* Which bits of opacity are applied */
-#define OPACITY_MOVE			(1<<0)
-#define OPACITY_RESIZE			(1<<1)
-#define OPACITY_INACTIVE		(1<<2)
+#define OPACITY_MOVE                    (1<<0)
+#define OPACITY_RESIZE                  (1<<1)
+#define OPACITY_INACTIVE                (1<<2)
 
 /* Convenient macros */
 #define FLAG_TEST(flag,bits)                   (flag & (bits))
@@ -298,8 +296,6 @@ void     clientUnframeAll (ScreenInfo *);
 void     clientInstallColormaps (Client *);
 void     clientUpdateColormaps (Client *);
 void     clientUpdateAllFrames (ScreenInfo *, gboolean);
-void     clientGrabKeys (Client *);
-void     clientUngrabKeys (Client *);
 void     clientGrabButtons (Client *);
 void     clientUngrabButtons (Client *);
 Client  *clientGetFromWindow (ScreenInfo *, Window, int);

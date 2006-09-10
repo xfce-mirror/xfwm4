@@ -394,14 +394,57 @@ myScreenGrabKeys (ScreenInfo *screen_info)
 {
     Display *dpy;
 
+    TRACE ("entering myScreenUnrabKeys");
+    g_return_if_fail (screen_info != NULL);
+
     dpy = myScreenGetXDisplay (screen_info);
 
-    ungrabKeys (dpy, screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_CLOSE_WINDOW], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_HIDE_WINDOW], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MAXIMIZE_VERT], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_DOWN], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_LEFT], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_NEXT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_PREV_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_UP], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_1], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_2], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_3], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_4], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_5], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_6], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_7], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_8], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_9], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_10], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_11], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_12], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], screen_info->xroot);
-    grabKey (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], screen_info->xroot);
-    grabKey (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_RESIZE_DOWN], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_RESIZE_LEFT], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_RESIZE_RIGHT], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_RESIZE_UP], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHADE_WINDOW], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_STICK_WINDOW], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_2], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_3], screen_info->xroot);
@@ -411,10 +454,20 @@ myScreenGrabKeys (ScreenInfo *screen_info)
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_7], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_8], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_9], screen_info->xroot);
-    grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->xroot);
-    grabKey (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], screen_info->xroot);
-    grabKey (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], screen_info->xroot);
-    grabKey (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], screen_info->xroot);
-    grabKey (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_10], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_11], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_12], screen_info->xroot);
+}
+
+void
+myScreenUngrabKeys (ScreenInfo *screen_info)
+{
+    Display *dpy;
+
+    TRACE ("entering myScreenUnrabKeys");
+    g_return_if_fail (screen_info != NULL);
+
+    dpy = myScreenGetXDisplay (screen_info);
+    ungrabKeys (dpy, screen_info->xroot);
 }
 
