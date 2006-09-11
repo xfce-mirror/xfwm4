@@ -1,23 +1,23 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -208,10 +208,10 @@ eventFilterAddWin (GdkScreen *gscr, long event_mask)
     Window xroot;
     GdkWindow *event_win;
     guint error;
-    
+
     g_return_val_if_fail (gscr, NULL);
     g_return_val_if_fail (GDK_IS_SCREEN (gscr), NULL);
-    
+
     event_win = gdk_screen_get_root_window (gscr);
     xroot = (Window) GDK_DRAWABLE_XID(event_win);
     dpy = GDK_DRAWABLE_XDISPLAY(event_win);
@@ -221,17 +221,17 @@ eventFilterAddWin (GdkScreen *gscr, long event_mask)
 
     XGetWindowAttributes (dpy, xroot, &attribs);
     XSelectInput (dpy, xroot, attribs.your_event_mask | event_mask);
-    
+
     gdk_x11_ungrab_server ();
     gdk_flush ();
-    
+
     error = gdk_error_trap_pop ();
     if (error)
     {
         TRACE ("eventFilterAddWin error code: %i", error);
         return (NULL);
     }
-    
+
     return event_win;
 }
 
@@ -239,7 +239,7 @@ eventFilterSetup *
 eventFilterInit (gpointer data)
 {
     eventFilterSetup *setup;
-    
+
     setup = g_new0 (eventFilterSetup, 1);
     setup->filterstack = NULL;
     eventFilterPush (setup, default_event_filter, data);

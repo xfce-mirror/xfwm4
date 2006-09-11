@@ -1,19 +1,19 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
           based on a patch from Joshua Blanton <jblanton@irg.cs.ohiou.edu>
  */
@@ -26,7 +26,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "client.h"
 #include "frame.h"
@@ -67,18 +67,18 @@ poswinSetPosition (Poswin * poswin, Client *c)
     gchar label[32];
     gint x, y, px, py, pw, ph;
     gint wsize, hsize;
-    
+
     g_return_if_fail (poswin != NULL);
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->size->width_inc != 0);
     g_return_if_fail (c->size->height_inc != 0);
-    
+
     x = frameX (c);
     y = frameY (c);
-    
+
     wsize = (c->width - c->size->base_width) / c->size->width_inc;
     hsize = (c->height - c->size->base_height) / c->size->height_inc;
-    
+
     if (wsize < 0)
     {
         wsize = 0;
@@ -99,7 +99,7 @@ poswinSetPosition (Poswin * poswin, Client *c)
     px = x + (frameWidth (c) - pw) / 2;
     py = y + (frameHeight (c) - ph) / 2;
     if (GTK_WIDGET_REALIZED (poswin->window))
-    { 
+    {
         gdk_window_move_resize (poswin->window->window, px, py, pw, ph);
     }
     else
@@ -120,7 +120,7 @@ void
 poswinShow (Poswin * poswin)
 {
     g_return_if_fail (poswin != NULL);
-    
+
     gtk_widget_show (poswin->window);
 }
 
@@ -128,6 +128,6 @@ void
 poswinHide(Poswin * poswin)
 {
     g_return_if_fail (poswin != NULL);
-    
+
     gtk_widget_hide (poswin->window);
 }

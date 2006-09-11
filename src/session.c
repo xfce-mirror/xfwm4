@@ -1,19 +1,19 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
  */
 
@@ -100,7 +100,7 @@ my_free_string_list (gchar ** list, gint n)
 
 /*
    2-pass function to compute new string length,
-   allocate memory and finally copy string 
+   allocate memory and finally copy string
    - Returned value must be freed -
  */
 static gchar *
@@ -155,7 +155,7 @@ escape_quote (gchar * s)
 
 /*
    single-pass function to replace backslash+quotes
-   by quotes. 
+   by quotes.
    - Returned value must be freed -
  */
 static gchar *
@@ -589,7 +589,7 @@ matchWin (Client * c, Match * m)
         }
         else
         {
-            /* 
+            /*
              * Compare res_class, res_name and WM_NAME, unless the
              * WM_NAME has changed
              */
@@ -622,7 +622,7 @@ matchWin (Client * c, Match * m)
                             found = TRUE;
                         }
                     }           /* if (wm_command_count ==... */
-                    /* 
+                    /*
                      * We have to deal with a now-SM-aware client, it means that it won't probably
                      * restore its state in a proper manner.
                      * Thus, we also mark all other instances of this application as used, to avoid
@@ -707,7 +707,7 @@ sessionBuildFilename(SessionClient *client_session)
     path = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
 
     error = NULL;
-    if (!xfce_mkdirhier(path, 0700, &error)) 
+    if (!xfce_mkdirhier(path, 0700, &error))
     {
         g_warning("Unable to create session dir %s: %s", path, error->message);
         g_error_free (error);
@@ -719,7 +719,7 @@ sessionBuildFilename(SessionClient *client_session)
     filename = g_build_filename (path, file, NULL);
     g_free (file);
     g_free (path);
-    
+
     return filename;
 }
 
@@ -769,8 +769,8 @@ int
 sessionStart (int argc, char **argv, DisplayInfo *display_info)
 {
     SessionClient *session;
-    
-    display_info->session = client_session_new (argc, argv, (gpointer) display_info, 
+
+    display_info->session = client_session_new (argc, argv, (gpointer) display_info,
                                                 SESSION_RESTART_IF_RUNNING, 20);
     session = display_info->session;
     session->data = (gpointer) display_info;

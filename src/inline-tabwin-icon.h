@@ -4,9 +4,9 @@
 #pragma align 4 (tabwin_icon_data)
 #endif
 #ifdef __GNUC__
-static const guint8 tabwin_icon_data[] __attribute__ ((__aligned__ (4))) = 
+static const guint8 tabwin_icon_data[] __attribute__ ((__aligned__ (4))) =
 #else
-static const guint8 tabwin_icon_data[] = 
+static const guint8 tabwin_icon_data[] =
 #endif
 { ""
   /* Pixbuf magic (0x47646b50) */

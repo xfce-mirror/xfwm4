@@ -1,19 +1,19 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
  */
@@ -27,7 +27,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include <libxfce4mcs/mcs-client.h>
 
 #include "screen.h"
@@ -55,32 +55,32 @@
 /* Forward static decls. */
 
 static void              check_for_grabs      (ScreenInfo *);
-static void              set_settings_margin  (ScreenInfo *, 
-                                               int , 
+static void              set_settings_margin  (ScreenInfo *,
+                                               int ,
                                                int);
 static void              notify_cb            (const char *,
                                                const char *,
-                                               McsAction, 
+                                               McsAction,
                                                McsSetting *,
                                                void *);
 static GdkFilterReturn   client_event_filter  (GdkXEvent *,
-                                               GdkEvent *, 
+                                               GdkEvent *,
                                                gpointer);
-static void              watch_cb             (Window, 
-                                               Bool, 
-                                               long, 
+static void              watch_cb             (Window,
+                                               Bool,
+                                               long,
                                                void *);
-static void              loadRcData           (ScreenInfo *, 
+static void              loadRcData           (ScreenInfo *,
                                                Settings *);
 static void              loadMcsData          (ScreenInfo *,
                                                Settings *);
-static void              loadTheme            (ScreenInfo *, 
+static void              loadTheme            (ScreenInfo *,
                                                Settings *);
-static gboolean          loadKeyBindings      (ScreenInfo *, 
+static gboolean          loadKeyBindings      (ScreenInfo *,
                                                Settings *);
 static void              unloadTheme          (ScreenInfo *);
 static void              unloadSettings       (ScreenInfo *);
-static gboolean          reloadScreenSettings (ScreenInfo *, 
+static gboolean          reloadScreenSettings (ScreenInfo *,
                                                int);
 
 static void
@@ -451,7 +451,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/UseCompositing"))
                     {
                         screen_info->params->use_compositing = setting->data.v_int;
-                        compositorActivateScreen (screen_info, 
+                        compositorActivateScreen (screen_info,
                                                   screen_info->params->use_compositing);
                     }
                     else if (!strcmp (name, "Xfwm/WrapLayout"))
@@ -541,7 +541,7 @@ loadRcData (ScreenInfo *screen_info, Settings *rc)
     {
         system_keytheme = getSystemThemeDir ();
         parseRc (KEYTHEMERC, system_keytheme, rc);
-        
+
         keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
         if (keytheme)
         {
@@ -551,7 +551,7 @@ loadRcData (ScreenInfo *screen_info, Settings *rc)
         }
         g_free (system_keytheme);
     }
-    homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, 
+    homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG,
                                            "xfce4" G_DIR_SEPARATOR_S "xfwm4",
                                            FALSE);
     parseRc ("xfwm4rc", homedir, rc);
@@ -913,7 +913,7 @@ static int
 getTitleShadow (Settings *rc, const gchar * name)
 {
     const gchar *val;
-    
+
     val = getValue (name, rc);
     if (!g_ascii_strcasecmp ("true", val) || !g_ascii_strcasecmp ("under", val))
     {
@@ -970,13 +970,13 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     theme = getThemeDir (getValue ("theme", rc), THEMERC);
     parseRc (THEMERC, theme, rc);
 
-    screen_info->params->shadow_delta_x = 
+    screen_info->params->shadow_delta_x =
         - (TOINT (getValue ("shadow_delta_x", rc)));
-    screen_info->params->shadow_delta_y = 
+    screen_info->params->shadow_delta_y =
         - (TOINT (getValue ("shadow_delta_y", rc)));
-    screen_info->params->shadow_delta_width = 
+    screen_info->params->shadow_delta_width =
         - (TOINT (getValue ("shadow_delta_width", rc)));
-    screen_info->params->shadow_delta_height = 
+    screen_info->params->shadow_delta_height =
         - (TOINT (getValue ("shadow_delta_height", rc)));
 
     for (i = 0; i < XPM_COLOR_SYMBOL_SIZE; i++)
@@ -1004,12 +1004,12 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
             pango_font_description_free (desc);
         }
     }
- 
+
     setXfwmColor (screen_info, &screen_info->title_colors[ACTIVE], rc, 0, "fg", "selected");
     setXfwmColor (screen_info, &screen_info->title_colors[INACTIVE], rc, 1, "fg", "insensitive");
     setXfwmColor (screen_info, &screen_info->title_shadow_colors[ACTIVE], rc, 2, "dark", "selected");
     setXfwmColor (screen_info, &screen_info->title_shadow_colors[INACTIVE], rc, 3, "dark", "insensitive");
-    
+
     if (screen_info->black_gc)
     {
         g_object_unref (G_OBJECT (screen_info->black_gc));
@@ -1169,8 +1169,8 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     gchar *keythemevalue;
 
     dpy = myScreenGetXDisplay (screen_info);
-    /* 
-       Load defaults keytheme so that even if there are 
+    /*
+       Load defaults keytheme so that even if there are
        missing shortcuts in an older user defined key theme
        the missing keys will be taken from the default
      */
@@ -1431,7 +1431,7 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("borderless_maximize", rc));
     screen_info->params->box_resize =
         !g_ascii_strcasecmp ("true", getValue ("box_resize", rc));
-    screen_info->params->box_move = 
+    screen_info->params->box_move =
         !g_ascii_strcasecmp ("true", getValue ("box_move", rc));
     screen_info->params->click_to_focus =
         !g_ascii_strcasecmp ("true", getValue ("click_to_focus", rc));
@@ -1449,7 +1449,7 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("raise_on_focus", rc));
     screen_info->params->prevent_focus_stealing =
         !g_ascii_strcasecmp ("true", getValue ("prevent_focus_stealing", rc));
-    screen_info->params->raise_delay = 
+    screen_info->params->raise_delay =
         abs (TOINT (getValue ("raise_delay", rc)));
     screen_info->params->raise_on_click =
         !g_ascii_strcasecmp ("true", getValue ("raise_on_click", rc));
@@ -1457,21 +1457,21 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("raise_with_any_button", rc));
     screen_info->params->restore_on_move =
         !g_ascii_strcasecmp ("true", getValue ("restore_on_move", rc));
-    screen_info->params->frame_opacity = 
+    screen_info->params->frame_opacity =
         abs (TOINT (getValue ("frame_opacity", rc)));
-    screen_info->params->inactive_opacity = 
+    screen_info->params->inactive_opacity =
         abs (TOINT (getValue ("inactive_opacity", rc)));
-    screen_info->params->move_opacity = 
+    screen_info->params->move_opacity =
         abs (TOINT (getValue ("move_opacity", rc)));
-    screen_info->params->resize_opacity = 
+    screen_info->params->resize_opacity =
         abs (TOINT (getValue ("resize_opacity", rc)));
-    screen_info->params->popup_opacity = 
+    screen_info->params->popup_opacity =
         abs (TOINT (getValue ("popup_opacity", rc)));
-    screen_info->params->placement_ratio = 
+    screen_info->params->placement_ratio =
         abs (TOINT (getValue ("placement_ratio", rc)));
-    screen_info->params->show_app_icon = 
+    screen_info->params->show_app_icon =
         !g_ascii_strcasecmp ("true", getValue ("show_app_icon", rc));
-    screen_info->params->show_frame_shadow = 
+    screen_info->params->show_frame_shadow =
         !g_ascii_strcasecmp ("true", getValue ("show_frame_shadow", rc));
     screen_info->params->show_popup_shadow =
         !g_ascii_strcasecmp ("true", getValue ("show_popup_shadow", rc));
@@ -1481,7 +1481,7 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("snap_to_windows", rc));
     screen_info->params->snap_resist =
         !g_ascii_strcasecmp ("true", getValue ("snap_resist", rc));
-    screen_info->params->snap_width = 
+    screen_info->params->snap_width =
         abs (TOINT (getValue ("snap_width", rc)));
 
     set_settings_margin (screen_info, LEFT,   TOINT (getValue ("margin_left", rc)));
@@ -1535,7 +1535,7 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("wrap_cycle", rc));
     screen_info->params->scroll_workspaces =
         !g_ascii_strcasecmp ("true", getValue ("scroll_workspaces", rc));
-    screen_info->params->wrap_resistance = 
+    screen_info->params->wrap_resistance =
         abs (TOINT (getValue ("wrap_resistance", rc)));
 
     freeRc (rc);
@@ -1584,7 +1584,7 @@ static void
 unloadSettings (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info);
-    
+
     TRACE ("entering unloadSettings");
 
     unloadTheme (screen_info);
@@ -1618,9 +1618,9 @@ reloadSettings (DisplayInfo *display_info, int mask)
     GSList *screens;
 
     g_return_val_if_fail (display_info, FALSE);
-    
+
     TRACE ("entering reloadSettings");
-    
+
     /* Refresh all screens, not just one */
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
@@ -1643,14 +1643,14 @@ initSettings (ScreenInfo *screen_info)
     int i;
 
     g_return_val_if_fail (screen_info, FALSE);
-    
+
     TRACE ("entering initSettings");
 
     display_info = screen_info->display_info;
     names = NULL;
     val = 0;
     i = 0;
-    
+
     if (!mcs_client_check_manager (myScreenGetXDisplay (screen_info), screen_info->screen, "xfce-mcs-manager"))
     {
         g_warning ("MCS manager not running, startup delayed for 5 seconds");
@@ -1706,7 +1706,7 @@ void
 closeSettings (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info);
-    
+
     if (screen_info->mcs_client)
     {
         mcs_client_destroy (screen_info->mcs_client);

@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -29,7 +29,7 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "display.h"
 #include "screen.h"
@@ -150,21 +150,21 @@ modify_with_wrap (int value, int by, int limit, gboolean wrap)
     if (value >= limit)
     {
         if (!wrap)
-        { 
+        {
             value = limit - 1;
         }
-        else 
+        else
         {
             value = value % limit;
         }
     }
     else if (value < 0)
     {
-        if (!wrap) 
+        if (!wrap)
         {
             value = 0;
         }
-        else 
+        else
         {
             value = (value + limit) % limit;
         }
@@ -183,7 +183,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c)
     newcol = modify_with_wrap(col, colmod, screen_info->desktop_layout.cols, screen_info->params->wrap_layout);
     n = workspaceGetNumber(screen_info, newrow, newcol);
 
-    if (n == screen_info->current_ws) 
+    if (n == screen_info->current_ws)
     {
         return FALSE;
     }
@@ -201,19 +201,19 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c)
         }
         else
         {
-            if (colmod > 0) 
+            if (colmod > 0)
             {
                 newcol = 0;
             }
-            else if (rowmod > 0) 
+            else if (rowmod > 0)
             {
                 newrow = 0;
             }
-            else if (rowmod < 0) 
+            else if (rowmod < 0)
             {
                 newrow--;
             }
-            else 
+            else
             {
                 return FALSE;
             }
@@ -238,7 +238,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     int rx, ry, wx, wy;
     unsigned int mask;
     unsigned long data[1];
-    
+
     TRACE ("entering workspaceSwitch");
 
     display_info = screen_info->display_info;
@@ -286,7 +286,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     {
         c = (Client *) index->data;
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE)
-            && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) 
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
             && ((c->win_workspace != new_ws)))
         {
             if (c == previous)
@@ -348,7 +348,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
 
     setHint (display_info, screen_info->xroot, WIN_WORKSPACE, new_ws);
     data[0] = new_ws;
-    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, 
+    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot,
                      display_info->atoms[NET_CURRENT_DESKTOP], XA_CARDINAL, 32,
                      PropModeReplace, (unsigned char *) data, 1);
     if (!(screen_info->params->click_to_focus))
@@ -417,10 +417,10 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
     {
         workspaceSwitch (screen_info, count - 1, NULL, TRUE);
     }
-    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
+    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                     screen_info->width, screen_info->height, screen_info->margins);
     /* Recompute the layout based on the (changed) number of desktops */
-    getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, 
+    getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count,
                      &screen_info->desktop_layout);
 }
 
@@ -469,7 +469,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         || (prev_bottom != screen_info->margins[BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
-        setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
+        setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                         screen_info->width, screen_info->height, screen_info->margins);
         /* Also prevent windows from being off screen, just like when screen is resized */
         clientScreenResize(screen_info);

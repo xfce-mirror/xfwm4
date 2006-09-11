@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -34,7 +34,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "display.h"
 #include "screen.h"
@@ -137,13 +137,13 @@ sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, Time timestam
     ev.format = 32;
     ev.data.l[0] = value;
     ev.data.l[1] = timestamp;
-    XSendEvent (myScreenGetXDisplay (screen_info), screen_info->xroot, FALSE, 
+    XSendEvent (myScreenGetXDisplay (screen_info), screen_info->xroot, FALSE,
                 SubstructureRedirectMask | SubstructureNotifyMask, (XEvent *)&ev);
 }
 
 /*
  * it's safer to grab the display before calling this routine
- * Returns true if the given window is present and mapped on root 
+ * Returns true if the given window is present and mapped on root
  */
 gboolean
 checkWindowOnRoot(ScreenInfo *screen_info, Window w)
@@ -153,7 +153,7 @@ checkWindowOnRoot(ScreenInfo *screen_info, Window w)
     Window *wins;
     Status test;
     unsigned int count;
-    
+
     g_return_val_if_fail (screen_info != NULL, FALSE);
     g_return_val_if_fail (w != None, FALSE);
 
@@ -183,59 +183,59 @@ placeSidewalks(ScreenInfo *screen_info, gboolean activate)
     if ((activate) && (l.cols > 1))
     {
         /*left*/
-        xfwmWindowShow (&screen_info->sidewalk[0], 
+        xfwmWindowShow (&screen_info->sidewalk[0],
                         0, 0,
                         1, screen_info->height, FALSE);
 
         /*right*/
          xfwmWindowShow (&screen_info->sidewalk[1],
-                        screen_info->width - 1, 0, 
+                        screen_info->width - 1, 0,
                         1, screen_info->height, FALSE);
     }
     else /* Place the windows off screen */
     {
         /*left*/
-        xfwmWindowShow (&screen_info->sidewalk[0], 
+        xfwmWindowShow (&screen_info->sidewalk[0],
                         -1, 0,
                         1, screen_info->height, FALSE);
 
         /*right*/
         xfwmWindowShow (&screen_info->sidewalk[1],
-                        screen_info->width, 0, 
+                        screen_info->width, 0,
                         1, screen_info->height, FALSE);
     }
 
     if ((activate) && (l.rows > 1))
     {
         /*top*/
-        xfwmWindowShow (&screen_info->sidewalk[2], 
-                        0, 0, 
+        xfwmWindowShow (&screen_info->sidewalk[2],
+                        0, 0,
                         screen_info->width, 1, FALSE);
 
         /*bottom*/
         xfwmWindowShow (&screen_info->sidewalk[3],
-                        0, screen_info->height - 1, 
+                        0, screen_info->height - 1,
                         screen_info->width, 1, FALSE);
     }
     else /* Place the windows off screen */
     {
         /*top*/
-        xfwmWindowShow (&screen_info->sidewalk[2], 
-                        0, -1, 
+        xfwmWindowShow (&screen_info->sidewalk[2],
+                        0, -1,
                         screen_info->width, 1, FALSE);
 
         /*bottom*/
         xfwmWindowShow (&screen_info->sidewalk[3],
-                        0, screen_info->height, 
+                        0, screen_info->height,
                         screen_info->width, 1, FALSE);
     }
 }
 
-/* 
+/*
    gdk_screen_get_monitor_at_point () doesn't give accurate results
    when the point is off screen, use my own implementation from xfce 3
  */
-gint 
+gint
 find_monitor_at_point (GdkScreen *screen, gint x, gint y)
 {
     static gint cache_monitor = -1;

@@ -2,7 +2,7 @@
  *
  *  Date: Tue Mar  8 03:54:56 2005
  *
- * Do not edit.   
+ * Do not edit.
  */
 static const char color_names[] =
   "alice blue\0"

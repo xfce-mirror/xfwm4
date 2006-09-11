@@ -1,33 +1,33 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         Original XPM load routines from gdk-pixbuf:
- 
+
         Copyright (C) 1999 Mark Crichton
         Copyright (C) 1999 The Free Software Foundation
- 
+
         Authors: Mark Crichton <crichton@gimp.org>
                  Federico Mena-Quintero <federico@gimp.org>
- 
+
         A specific version of the gdk-pixbuf routines are required to support
         XPM color substitution used by the themes to apply gtk+ colors.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -40,21 +40,21 @@
 #include <glib/gstdio.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include <stdlib.h>
 #include <stdio.h>
 
 #include "mypixmap.h"
 #include "xpm-color-table.h"
 
-enum buf_op 
+enum buf_op
 {
     op_header,
     op_cmap,
     op_body
 };
 
-typedef struct 
+typedef struct
 {
     gchar *color_string;
     guint16 red;
@@ -64,7 +64,7 @@ typedef struct
 }
 XPMColor;
 
-struct file_handle 
+struct file_handle
 {
     FILE *infile;
     gchar *buffer;
@@ -78,7 +78,7 @@ struct file_handle
  * California, Sun Microsystems, Inc., and other parties.  The following
  * terms apply to all files associated with the software unless explicitly
  * disclaimed in individual files.
- * 
+ *
  * The authors hereby grant permission to use, copy, modify, distribute,
  * and license this software and its documentation for any purpose, provided
  * that existing copyright notices are retained in all copies and that this
@@ -88,23 +88,23 @@ struct file_handle
  * and need not follow the licensing terms described here, provided that
  * the new terms are clearly indicated on the first page of each file where
  * they apply.
- * 
+ *
  * IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY
  * FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
  * ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY
  * DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE
  * IS PROVIDED ON AN "AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE
  * NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
  * MODIFICATIONS.
- * 
+ *
  * GOVERNMENT USE: If you are acquiring this software on behalf of the
  * U.S. government, the Government shall have only "Restricted Rights"
- * in the software and related documentation as defined in the Federal 
+ * in the software and related documentation as defined in the Federal
  * Acquisition Regulations (FARs) in Clause 52.227.19 (c) (2).  If you
  * are acquiring the software on behalf of the Department of Defense, the
  * software shall be classified as "Commercial Computer Software" and the
@@ -114,11 +114,11 @@ struct file_handle
  * permission to use and distribute the software in accordance with the
  * terms specified in this license.
  */
- 
+
 static int
 compare_xcolor_entries (const void *a, const void *b)
 {
-    return g_ascii_strcasecmp ((const char *) a, 
+    return g_ascii_strcasecmp ((const char *) a,
                                color_names + ((const XPMColorEntry *) b)->name_offset);
 }
 
@@ -144,12 +144,12 @@ find_color(const char *name, XPMColor *colorPtr)
 static gboolean
 parse_color (const char *spec, XPMColor   *colorPtr)
 {
-    if (spec[0] == '#') 
+    if (spec[0] == '#')
     {
         char fmt[16];
         int i, red, green, blue;
 
-        if ((i = strlen (spec + 1)) % 3) 
+        if ((i = strlen (spec + 1)) % 3)
         {
                 return FALSE;
         }
@@ -161,13 +161,13 @@ parse_color (const char *spec, XPMColor   *colorPtr)
         {
             return FALSE;
         }
-        if (i == 4) 
+        if (i == 4)
         {
             colorPtr->red   = red;
             colorPtr->green = green;
             colorPtr->blue  = blue;
         }
-        else if (i == 1) 
+        else if (i == 1)
         {
             colorPtr->red   = (red   * 0xFFFF) / 0xF;
             colorPtr->green = (green * 0xFFFF) / 0xF;
@@ -179,14 +179,14 @@ parse_color (const char *spec, XPMColor   *colorPtr)
             colorPtr->green = (green * 0xFFFF) / 0xFF;
             colorPtr->blue  = (blue  * 0xFFFF) / 0xFF;
         }
-        else /* if (i == 3) */ 
+        else /* if (i == 3) */
         {
             colorPtr->red   = (red   * 0xFFFF) / 0xFFF;
             colorPtr->green = (green * 0xFFFF) / 0xFFF;
             colorPtr->blue  = (blue  * 0xFFFF) / 0xFFF;
         }
-    } 
-    else 
+    }
+    else
     {
         if (!find_color(spec, colorPtr))
         {
@@ -201,7 +201,7 @@ xpm_seek_string (FILE *infile, const gchar *str)
 {
     char instr[1024];
 
-    while (!feof (infile)) 
+    while (!feof (infile))
     {
         if (fscanf (infile, "%1023s", instr) < 0)
         {
@@ -221,19 +221,19 @@ xpm_seek_char (FILE *infile, gchar c)
 {
     gint b, oldb;
 
-    while ((b = getc (infile)) != EOF) 
+    while ((b = getc (infile)) != EOF)
     {
-        if (c != b && b == '/') 
+        if (c != b && b == '/')
         {
             b = getc (infile);
             if (b == EOF)
             {
                 return FALSE;
             }
-            else if (b == '*') 
+            else if (b == '*')
             {   /* we have a comment */
                  b = -1;
-                 do 
+                 do
                  {
                      oldb = b;
                      b = getc (infile);
@@ -241,10 +241,10 @@ xpm_seek_char (FILE *infile, gchar c)
                      {
                              return FALSE;
                      }
-                 } 
+                 }
                  while (!(oldb == '*' && b == '/'));
             }
-        } 
+        }
         else if (c == b)
         {
             return TRUE;
@@ -265,25 +265,25 @@ xpm_read_string (FILE *infile, gchar **buffer, guint *buffer_size)
     bufsiz = *buffer_size;
     ret = FALSE;
 
-    if (buf == NULL) 
+    if (buf == NULL)
     {
         bufsiz = 10 * sizeof (gchar);
         buf = g_new (gchar, bufsiz);
     }
 
-    do 
+    do
     {
         c = getc (infile);
-    } 
+    }
     while (c != EOF && c != '"');
 
     if (c != '"')
     {
         goto out;
     }
-    while ((c = getc (infile)) != EOF) 
+    while ((c = getc (infile)) != EOF)
     {
-        if (cnt == bufsiz) 
+        if (cnt == bufsiz)
         {
             guint new_size = bufsiz * 2;
 
@@ -303,7 +303,7 @@ xpm_read_string (FILE *infile, gchar **buffer, guint *buffer_size)
         {
             buf[cnt++] = c;
         }
-        else 
+        else
         {
             buf[cnt] = 0;
             ret = TRUE;
@@ -322,7 +322,7 @@ static gchar *
 search_color_symbol (gchar *symbol, xfwmColorSymbol *color_sym)
 {
     xfwmColorSymbol *i;
-    
+
     i = color_sym;
     while (i && i->name)
     {
@@ -340,7 +340,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
 {
     const gchar *p;
     gchar word[129], color[129], current_color[129];
-    gchar *r; 
+    gchar *r;
     gint new_key;
     gint key;
     gint current_key;
@@ -355,27 +355,27 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
     new_key = 0;
     key = 0;
 
-    while (1) 
+    while (1)
     {
         /* skip whitespace */
-        for (; *p != '\0' && g_ascii_isspace (*p); p++) 
+        for (; *p != '\0' && g_ascii_isspace (*p); p++)
         {
-        } 
+        }
         /* copy word */
-        for (r = word; 
-                 (*p != '\0') && 
-                 (!g_ascii_isspace (*p)) && 
-                 (r - word < sizeof (word) - 1); 
-             p++, r++) 
+        for (r = word;
+                 (*p != '\0') &&
+                 (!g_ascii_isspace (*p)) &&
+                 (r - word < sizeof (word) - 1);
+             p++, r++)
         {
                 *r = *p;
         }
         *r = '\0';
-        if (*word == '\0') 
+        if (*word == '\0')
         {
             if (color[0] == '\0')  /* incomplete colormap entry */
             {
-                return NULL;                            
+                return NULL;               
             }
             else  /* end of entry, still store the last color */
             {
@@ -385,8 +385,8 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
         else if (key > 0 && color[0] == '\0')  /* next word must be a color name part */
         {
                 new_key = 0;
-        } 
-        else 
+        }
+        else
         {
             if (strcmp (word, "s") == 0)
             {
@@ -408,19 +408,19 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
             {
                 new_key = 1;
             }
-            else 
+            else
             {
                 new_key = 0;
             }
         }
-        if (new_key == 0) 
+        if (new_key == 0)
         {  /* word is a color name part */
             if (key == 0)  /* key expected */
             {
                 return NULL;
             }
             /* accumulate color name */
-            if (color[0] != '\0') 
+            if (color[0] != '\0')
             {
                 strncat (color, " ", space);
                 space -= MIN (space, 1);
@@ -440,14 +440,14 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
             space = 128;
             color[0] = '\0';
             key = new_key;
-            if (*p == '\0') 
+            if (*p == '\0')
             {
                 break;
             }
         }
         else
         {  /* word is a key */
-            if (key > current_key) 
+            if (key > current_key)
             {
                 current_key = key;
                 strcpy (current_color, color);
@@ -455,7 +455,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
             space = 128;
             color[0] = '\0';
             key = new_key;
-            if (*p == '\0') 
+            if (*p == '\0')
             {
                 break;
             }
@@ -467,7 +467,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
     }
     else
     {
-        return NULL; 
+        return NULL;
     }
 }
 
@@ -477,7 +477,7 @@ file_buffer (enum buf_op op, gpointer handle)
     struct file_handle *h;
 
     h = handle;
-    switch (op) 
+    switch (op)
     {
         case op_header:
             if (xpm_seek_string (h->infile, "XPM") != TRUE)
@@ -526,7 +526,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     fallbackcolor = NULL;
 
     buffer = file_buffer (op_header, handle);
-    if (!buffer) 
+    if (!buffer)
     {
         g_warning ("Cannot read Pixmap header");
         return NULL;
@@ -539,12 +539,12 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
         return NULL;
     }
 
-    if ((w <= 0) || 
-        (h <= 0) || 
-        (cpp <= 0) || 
-        (cpp >= 32) || 
-        (n_col <= 0) || 
-        (n_col >= G_MAXINT / (cpp + 1)) || 
+    if ((w <= 0) ||
+        (h <= 0) ||
+        (cpp <= 0) ||
+        (cpp >= 32) ||
+        (n_col <= 0) ||
+        (n_col >= G_MAXINT / (cpp + 1)) ||
         (n_col >= G_MAXINT / sizeof (XPMColor)))
     {
         g_warning ("Pixmap definition contains invalid attributes");
@@ -562,7 +562,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     }
 
     colors = (XPMColor *) g_try_malloc (sizeof (XPMColor) * n_col);
-    if (!colors) 
+    if (!colors)
     {
         g_hash_table_destroy (color_hash);
         g_free (name_buf);
@@ -570,12 +570,12 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
         return NULL;
     }
 
-    for (cnt = 0; cnt < n_col; cnt++) 
+    for (cnt = 0; cnt < n_col; cnt++)
     {
         gchar *color_name;
 
         buffer = file_buffer (op_cmap, handle);
-        if (!buffer) 
+        if (!buffer)
         {
             g_hash_table_destroy (color_hash);
             g_free (name_buf);
@@ -593,9 +593,9 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
 
         color_name = xpm_extract_color (buffer, color_sym);
 
-        if ((color_name == NULL) || 
+        if ((color_name == NULL) ||
             (g_ascii_strcasecmp (color_name, "None") == 0) ||
-            (parse_color (color_name, color) == FALSE)) 
+            (parse_color (color_name, color) == FALSE))
         {
             color->transparent = TRUE;
             color->red = 0;
@@ -614,7 +614,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
 
     pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, w, h);
 
-    if (!pixbuf) 
+    if (!pixbuf)
     {
         g_hash_table_destroy (color_hash);
         g_free (colors);
@@ -625,7 +625,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
 
     wbytes = w * cpp;
 
-    for (ycnt = 0; ycnt < h; ycnt++) 
+    for (ycnt = 0; ycnt < h; ycnt++)
     {
         pixtmp = gdk_pixbuf_get_pixels (pixbuf) + ycnt * gdk_pixbuf_get_rowstride(pixbuf);
 
@@ -635,7 +635,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
             continue;
         }
 
-        for (n = 0, cnt = 0, xcnt = 0; n < wbytes; n += cpp, xcnt++) 
+        for (n = 0, cnt = 0, xcnt = 0; n < wbytes; n += cpp, xcnt++)
         {
             strncpy (pixel_str, &buffer[n], cpp);
             pixel_str[cpp] = 0;
@@ -681,13 +681,13 @@ xpm_image_load (const char *filename, xfwmColorSymbol *color_sym)
     FILE *f;
 
     f = g_fopen (filename, "rb");
-    if (!f) 
+    if (!f)
     {
         return NULL;
     }
 
     size = fread (&buffer, 1, sizeof (buffer), f);
-    if (size == 0) 
+    if (size == 0)
     {
         fclose (f);
         return NULL;
@@ -712,7 +712,7 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
     screen_info = pm->screen_info;
     if (!pm->pict_format)
     {
-        pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
+        pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info),
                                                    screen_info->visual);
     }
 
@@ -724,7 +724,7 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
 
     if ((pm->pixmap) && (pm->pict_format))
     {
-        pm->pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info), 
+        pm->pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info),
                                          pm->pixmap, pm->pict_format, 0, NULL);
     }
 #endif
@@ -751,7 +751,7 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
     i = 0;
     error = NULL;
     alpha = NULL;
-    
+
     while ((image_types[i]) && (!alpha))
     {
         filepng = g_strdup_printf ("%s.%s", file, image_types[i]);
@@ -783,9 +783,9 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
         return (alpha);
     }
 
-    width  = MIN (gdk_pixbuf_get_width (pixbuf), 
+    width  = MIN (gdk_pixbuf_get_width (pixbuf),
                   gdk_pixbuf_get_width (alpha));
-    height = MIN (gdk_pixbuf_get_height (pixbuf), 
+    height = MIN (gdk_pixbuf_get_height (pixbuf),
                   gdk_pixbuf_get_height (alpha));
 
     gdk_pixbuf_composite (alpha, pixbuf, 0, 0, width, height,
@@ -819,7 +819,7 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     {
         dest_pixmap = gdk_pixmap_foreign_new (pm->pixmap);
     }
-    
+
     if (!dest_pixmap)
     {
         g_warning ("Cannot get pixmap");
@@ -835,7 +835,7 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     {
         dest_bitmap = gdk_pixmap_foreign_new (pm->mask);
     }
-    
+
     if (!dest_bitmap)
     {
         g_warning ("Cannot get bitmap");
@@ -844,7 +844,7 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     }
 
     gvisual = gdk_screen_get_system_visual (pm->screen_info->gscr);
-    cmap = gdk_x11_colormap_foreign_new (gvisual, pm->screen_info->cmap);    
+    cmap = gdk_x11_colormap_foreign_new (gvisual, pm->screen_info->cmap);
 
     if (!cmap)
     {
@@ -897,7 +897,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     {
         destw = gdk_pixmap_foreign_new (pm->pixmap);
     }
-    
+
     if (!destw)
     {
         g_warning ("Cannot get pixmap");
@@ -905,7 +905,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     }
 
     gvisual = gdk_screen_get_system_visual (pm->screen_info->gscr);
-    cmap = gdk_x11_colormap_foreign_new (gvisual, pm->screen_info->cmap);    
+    cmap = gdk_x11_colormap_foreign_new (gvisual, pm->screen_info->cmap);
 
     if (!cmap)
     {
@@ -919,7 +919,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     dest_x = (pm->width - width) / 2;
     dest_y = (pm->height - height) / 2;
 
-    src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap, 
+    src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap,
                                         dest_x, dest_y, 0, 0, width, height);
     gdk_pixbuf_composite (pixbuf, src, 0, 0, width, height,
                           0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 0xFF);
@@ -967,14 +967,14 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     pixbuf = xfwmPixmapCompose (pixbuf, dir, file);
     if (!pixbuf)
     {
-        /* 
-         * Cannot find a suitable image format for some part, 
-         * it's not critical though as most themes are missing 
-         * buttons 
+        /*
+         * Cannot find a suitable image format for some part,
+         * it's not critical though as most themes are missing
+         * buttons
          */
         return FALSE;
     }
-    xfwmPixmapCreate (screen_info, pm, 
+    xfwmPixmapCreate (screen_info, pm,
                       gdk_pixbuf_get_width (pixbuf),
                       gdk_pixbuf_get_height (pixbuf));
     xfwmPixmapDrawFromGdkPixbuf (pm, pixbuf);
@@ -987,7 +987,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
 }
 
 void
-xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm, 
+xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm,
                   gint width, gint height)
 {
     TRACE ("entering xfwmPixmapCreate, width=%i, height=%i", width, height);
@@ -1000,15 +1000,15 @@ xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm,
     else
     {
         pm->screen_info = screen_info;
-        pm->pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info), 
-                                    screen_info->xroot, 
+        pm->pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info),
+                                    screen_info->xroot,
                                     width, height, screen_info->depth);
-        pm->mask = XCreatePixmap (myScreenGetXDisplay (screen_info), 
+        pm->mask = XCreatePixmap (myScreenGetXDisplay (screen_info),
                                   pm->pixmap, width, height, 1);
         pm->width = width;
         pm->height = height;
 #ifdef HAVE_RENDER
-        pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
+        pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info),
                                                    screen_info->visual);
         pm->pict = None;
 #endif
@@ -1024,7 +1024,7 @@ xfwmPixmapInit (ScreenInfo * screen_info, xfwmPixmap * pm)
     pm->width = 0;
     pm->height = 0;
 #ifdef HAVE_RENDER
-    pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), 
+    pm->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info),
                                                screen_info->visual);
     pm->pict = None;
 #endif
@@ -1033,9 +1033,9 @@ xfwmPixmapInit (ScreenInfo * screen_info, xfwmPixmap * pm)
 void
 xfwmPixmapFree (xfwmPixmap * pm)
 {
-    
+
     TRACE ("entering xfwmPixmapFree");
-    
+
     pm->width = 0;
     pm->height = 0;
     if (pm->pixmap != None)
@@ -1058,7 +1058,7 @@ xfwmPixmapFree (xfwmPixmap * pm)
 }
 
 static void
-xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d, 
+xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d,
                          int x, int y, int width, int height)
 {
     XGCValues gv;
@@ -1090,7 +1090,7 @@ xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d,
 }
 
 void
-xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst, 
+xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
                 gint x, gint y, gint width, gint height)
 {
     TRACE ("entering xfwmWindowFill");
@@ -1100,11 +1100,11 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
         return;
     }
 
-    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info), 
-                             src->screen_info->screen,  
+    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info),
+                             src->screen_info->screen,
                              src->pixmap, dst->pixmap, x, y, width, height);
-    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info), 
-                             src->screen_info->screen,  
+    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info),
+                             src->screen_info->screen,
                              src->mask, dst->mask, x, y, width, height);
 #ifdef HAVE_RENDER
     xfwmPixmapRefreshPict (dst);

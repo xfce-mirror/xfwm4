@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         Metacity - (c) 2001 Havoc Pennington
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -30,7 +30,7 @@
 #include <gtk/gtk.h>
 #include <unistd.h>
 #include <string.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "event_filter.h"
 #include "menu.h"
@@ -128,9 +128,9 @@ activate_cb (GtkWidget * menuitem, gpointer data)
 
     TRACE ("deactivating menu_filter");
     eventFilterPop (menudata->menu->filter_setup);
-    (*menudata->menu->func) (menudata->menu, 
-                             menudata->op, 
-                             menudata->menu->xid, 
+    (*menudata->menu->func) (menudata->menu,
+                             menudata->op,
+                             menudata->menu->xid,
                              menudata->menu->data,
                              menudata->data);
     return (FALSE);
@@ -194,7 +194,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
 }
 
 Menu *
-menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func, 
+menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
     gint ws, gint nws, gchar **wsn, gint wsn_items, eventFilterSetup *filter_setup, gpointer data)
 {
     GtkWidget *menuitem;

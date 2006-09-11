@@ -1,21 +1,21 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -33,7 +33,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #ifdef HAVE_RENDER
 #include <X11/extensions/Xrender.h>
 #endif
@@ -55,9 +55,9 @@ handleXError (Display * dpy, XErrorEvent * err)
     char buf[64];
 
     XGetErrorText (dpy, err->error_code, buf, 63);
-    g_print ("XError: %s\n", buf);                                                  
-    g_print ("==>  XID 0x%lx, Request %d, Error %d <==\n", 
-              err->resourceid, err->request_code, err->error_code); 
+    g_print ("XError: %s\n", buf);                                    
+    g_print ("==>  XID 0x%lx, Request %d, Error %d <==\n",
+              err->resourceid, err->request_code, err->error_code);
 #endif
     return 0;
 }
@@ -161,10 +161,10 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_XROOTPMAP_ID",
         "_XSETROOT_ID"
     };
-    
+
     g_assert (NB_ATOMS == G_N_ELEMENTS (atom_names));
-    return (XInternAtoms (display_info->dpy, 
-                          (char **) atom_names, 
+    return (XInternAtoms (display_info->dpy,
+                          (char **) atom_names,
                           NB_ATOMS,
                           FALSE, display_info->atoms) != 0);
 }
@@ -193,8 +193,8 @@ myDisplayInit (GdkDisplay *gdisplay)
     }
 
     /* Test XShape extension support */
-    if (XShapeQueryExtension (display->dpy, 
-                              &display->shape_event_base, 
+    if (XShapeQueryExtension (display->dpy,
+                              &display->shape_event_base,
                               &dummy))
     {
         display->have_shape = TRUE;
@@ -226,7 +226,7 @@ myDisplayInit (GdkDisplay *gdisplay)
 
 #ifdef HAVE_RANDR
     if (XRRQueryExtension (display->dpy,
-                            &display->xrandr_event_base, 
+                            &display->xrandr_event_base,
                             &display->xrandr_error_base))
     {
         display->have_xrandr = TRUE;
@@ -242,11 +242,11 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->have_xrandr = FALSE;
 #endif
 
-    display->root_cursor = 
+    display->root_cursor =
         XCreateFontCursor (display->dpy, XC_left_ptr);
-    display->move_cursor = 
+    display->move_cursor =
         XCreateFontCursor (display->dpy, XC_fleur);
-    display->busy_cursor = 
+    display->busy_cursor =
         cursorCreateSpinning (display->dpy);
     display->resize_cursor[CORNER_TOP_LEFT] =
         XCreateFontCursor (display->dpy, XC_top_left_corner);
@@ -256,13 +256,13 @@ myDisplayInit (GdkDisplay *gdisplay)
         XCreateFontCursor (display->dpy, XC_bottom_left_corner);
     display->resize_cursor[CORNER_BOTTOM_RIGHT] =
         XCreateFontCursor (display->dpy, XC_bottom_right_corner);
-    display->resize_cursor[4 + SIDE_LEFT] = 
+    display->resize_cursor[4 + SIDE_LEFT] =
         XCreateFontCursor (display->dpy, XC_left_side);
-    display->resize_cursor[4 + SIDE_RIGHT] = 
+    display->resize_cursor[4 + SIDE_RIGHT] =
         XCreateFontCursor (display->dpy, XC_right_side);
-    display->resize_cursor[4 + SIDE_TOP] = 
+    display->resize_cursor[4 + SIDE_TOP] =
         XCreateFontCursor (display->dpy, XC_top_side);
-    display->resize_cursor[4 + SIDE_BOTTOM] = 
+    display->resize_cursor[4 + SIDE_BOTTOM] =
         XCreateFontCursor (display->dpy, XC_bottom_side);
 
     display->xfilter = NULL;
@@ -279,7 +279,7 @@ myDisplayInit (GdkDisplay *gdisplay)
         g_free (display->hostname);
         display->hostname = NULL;
     }
-    
+
     compositorInitDisplay (display);
 
     return display;
@@ -296,7 +296,7 @@ myDisplayClose (DisplayInfo *display)
     display->move_cursor = None;
     XFreeCursor (display->dpy, display->root_cursor);
     display->root_cursor = None;
-    
+
     if (display->hostname)
     {
         g_free (display->hostname);
@@ -308,10 +308,10 @@ myDisplayClose (DisplayInfo *display)
         XFreeCursor (display->dpy, display->resize_cursor[i]);
         display->resize_cursor[i] = None;
     }
-    
+
     g_slist_free (display->clients);
     display->clients = NULL;
-    
+
     g_slist_free (display->screens);
     display->screens = NULL;
 
@@ -322,7 +322,7 @@ gboolean
 myDisplayHaveShape (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, FALSE);
-    
+
     return (display->have_shape);
 }
 
@@ -330,35 +330,35 @@ gboolean
 myDisplayHaveRender (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, FALSE);
-    
+
     return (display->have_render);
 }
 
-Cursor 
+Cursor
 myDisplayGetCursorBusy (DisplayInfo *display)
 {
     g_return_val_if_fail (display, None);
-    
+
     return display->busy_cursor;
 }
 
-Cursor 
+Cursor
 myDisplayGetCursorMove  (DisplayInfo *display)
 {
     g_return_val_if_fail (display, None);
-    
+
     return display->move_cursor;
 }
 
-Cursor 
+Cursor
 myDisplayGetCursorRoot (DisplayInfo *display)
 {
     g_return_val_if_fail (display, None);
-    
+
     return display->root_cursor;
 }
 
-Cursor 
+Cursor
 myDisplayGetCursorResize (DisplayInfo *display, guint index)
 {
     g_return_val_if_fail (display, None);
@@ -372,7 +372,7 @@ void
 myDisplayGrabServer (DisplayInfo *display)
 {
     g_return_if_fail (display);
-    
+
     DBG ("entering myDisplayGrabServer");
     if (display->xgrabcount == 0)
     {
@@ -401,7 +401,7 @@ myDisplayUngrabServer (DisplayInfo *display)
     DBG ("grabs : %i", display->xgrabcount);
 }
 
-void 
+void
 myDisplayAddClient (DisplayInfo *display, Client *c)
 {
     g_return_if_fail (c != None);
@@ -410,7 +410,7 @@ myDisplayAddClient (DisplayInfo *display, Client *c)
     display->clients = g_slist_append (display->clients, c);
 }
 
-void 
+void
 myDisplayRemoveClient (DisplayInfo *display, Client *c)
 {
     g_return_if_fail (c != None);
@@ -461,7 +461,7 @@ myDisplayGetClientFromWindow (DisplayInfo *display, Window w, int mode)
     return NULL;
 }
 
-void 
+void
 myDisplayAddScreen (DisplayInfo *display, ScreenInfo *screen)
 {
     g_return_if_fail (screen != NULL);
@@ -471,7 +471,7 @@ myDisplayAddScreen (DisplayInfo *display, ScreenInfo *screen)
     display->nb_screens = display->nb_screens + 1;
 }
 
-void 
+void
 myDisplayRemoveScreen (DisplayInfo *display, ScreenInfo *screen)
 {
     g_return_if_fail (screen != NULL);
@@ -604,11 +604,11 @@ myDisplayGetDefaultScreen (DisplayInfo *display)
     return NULL;
 }
 
-Time 
+Time
 myDisplayUpdateCurrentTime (DisplayInfo *display, XEvent *ev)
 {
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
-    
+
     switch (ev->type)
     {
         case KeyPress:
@@ -644,7 +644,7 @@ myDisplayUpdateCurrentTime (DisplayInfo *display, XEvent *ev)
     return display->current_time;
 }
 
-Time 
+Time
 myDisplayGetCurrentTime (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
@@ -655,7 +655,7 @@ myDisplayGetCurrentTime (DisplayInfo *display)
 Time          myDisplayGetLastUserTime      (DisplayInfo *);
 void          myDisplaySetLastUserTime      (DisplayInfo *,
                                              Time);
-Time 
+Time
 myDisplayGetLastUserTime (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
@@ -663,7 +663,7 @@ myDisplayGetLastUserTime (DisplayInfo *display)
     return (Time) display->last_user_time;
 }
 
-void 
+void
 myDisplaySetLastUserTime (DisplayInfo *display, Time timestamp)
 {
     g_return_if_fail (display != NULL);
@@ -729,7 +729,7 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
     format_src = XRenderFindStandardFormat (dpy, PictStandardA8);
     g_return_val_if_fail (format_src != NULL , FALSE);
 
-    ximage = XGetImage (dpy, 
+    ximage = XGetImage (dpy,
                         DefaultRootWindow(dpy),
                         x, y, w, h,
                         AllPlanes, ZPixmap);
@@ -738,7 +738,7 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
     rootPixmap = XCreatePixmap (dpy,
                                 DefaultRootWindow(dpy),
                                 w, h, depth);
-    XPutImage (dpy, rootPixmap, 
+    XPutImage (dpy, rootPixmap,
                DefaultGC (dpy, screen_number), ximage,
                0, 0, 0, 0, w, h);
     XDestroyImage (ximage);
@@ -746,7 +746,7 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
     attrs.override_redirect = TRUE;
     output = XCreateWindow (dpy,
                             DefaultRootWindow(dpy),
-                            x, y, w, h, 
+                            x, y, w, h,
                             0, CopyFromParent, CopyFromParent,
                             (Visual *) CopyFromParent,
                             CWOverrideRedirect, &attrs);
@@ -757,30 +757,30 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
                                 1, 1, 8);
 
     t1 = get_time();
-    
+
     pa.repeat = TRUE;
-    picture1 = XRenderCreatePicture (dpy, 
+    picture1 = XRenderCreatePicture (dpy,
                                      rootPixmap,
                                      format_dst, 0, NULL);
-    picture2 = XRenderCreatePicture (dpy, 
+    picture2 = XRenderCreatePicture (dpy,
                                      fillPixmap,
                                      format_src, CPRepeat, &pa);
-    picture3 = XRenderCreatePicture (dpy, 
+    picture3 = XRenderCreatePicture (dpy,
                                      output,
                                      format_dst, 0, NULL);
-    XRenderComposite (dpy, PictOpSrc, 
-                    picture1, None, picture3, 
+    XRenderComposite (dpy, PictOpSrc,
+                    picture1, None, picture3,
                     0, 0, 0, 0, 0, 0, w, h);
     XRenderFillRectangle (dpy, PictOpSrc,
-                          picture2, &c, 0, 0, 
+                          picture2, &c, 0, 0,
                           1, 1);
     for (iterations = 0; iterations < 10; iterations++)
     {
-        XRenderComposite (dpy, PictOpOver, 
-                        picture1, picture2, picture3, 
+        XRenderComposite (dpy, PictOpOver,
+                        picture1, picture2, picture3,
                         0, 0, 0, 0, 0, 0, w, h);
-        ximage = XGetImage (dpy, output, 
-                            0, 0, 1, 1, 
+        ximage = XGetImage (dpy, output,
+                            0, 0, 1, 1,
                             AllPlanes, ZPixmap);
         if (ximage)
         {

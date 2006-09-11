@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -28,7 +28,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <glib.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "settings.h"
 #include "parserc.h"
@@ -176,7 +176,7 @@ getThemeDir (const gchar * theme, const gchar * file)
 {
     if (!theme)
     {
-        return g_build_filename (DATADIR, "themes", DEFAULT_THEME, "xfwm4", 
+        return g_build_filename (DATADIR, "themes", DEFAULT_THEME, "xfwm4",
                                  NULL);
     }
     else if (g_path_is_absolute (theme))
@@ -193,10 +193,10 @@ getThemeDir (const gchar * theme, const gchar * file)
     else
     {
         gchar *test_file, *path;
-        
+
         path = g_build_filename (theme, "xfwm4", file, NULL);
 
-        xfce_resource_push_path (XFCE_RESOURCE_THEMES, 
+        xfce_resource_push_path (XFCE_RESOURCE_THEMES,
                                  DATADIR G_DIR_SEPARATOR_S "themes");
         test_file = xfce_resource_lookup (XFCE_RESOURCE_THEMES, path);
         xfce_resource_pop_path (XFCE_RESOURCE_THEMES);
@@ -210,7 +210,7 @@ getThemeDir (const gchar * theme, const gchar * file)
             return path;
         }
     }
-    
+
     /* Pfew, really can't find that theme nowhere! */
     return getSystemThemeDir ();
 }

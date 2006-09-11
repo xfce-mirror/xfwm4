@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         Metacity - (c) 2001 Havoc Pennington
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifndef INC_MENU_H
@@ -91,24 +91,24 @@ struct _Menu
 
 Menu *menu_default             (GdkScreen *,
                                 Window,
-                                MenuOp, 
-                                MenuOp, 
-                                MenuFunc, 
-                                gint, 
-                                gint, 
-                                gchar **, 
-                                gint, 
-                                eventFilterSetup*, 
+                                MenuOp,
+                                MenuOp,
+                                MenuFunc,
+                                gint,
+                                gint,
+                                gchar **,
+                                gint,
+                                eventFilterSetup*,
                                 gpointer);
 Menu *menu_connect             (Menu * menu);
-GtkWidget *menu_item_connect   (GtkWidget *, 
+GtkWidget *menu_item_connect   (GtkWidget *,
                                 MenuData *);
 gboolean menu_is_opened        (void);
 gboolean menu_check_and_close  (void);
-gboolean menu_popup            (Menu *, 
-                                int, 
-                                int, 
-                                int, 
+gboolean menu_popup            (Menu *,
+                                int,
+                                int,
+                                int,
                                 guint32);
 void menu_free                 (Menu *);
 

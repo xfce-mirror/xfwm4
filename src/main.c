@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -28,7 +28,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include <sys/stat.h>
@@ -87,9 +87,9 @@ static void
 cleanUp (void)
 {
     GSList *screens;
-    
+
     g_return_if_fail (display_info);
-    
+
     TRACE ("entering cleanUp");
 
     eventFilterClose (display_info->xfilter);
@@ -101,7 +101,7 @@ cleanUp (void)
     }
     sn_close_display ();
     sessionFreeWindowStates ();
-    
+
     myDisplayClose (display_info);
     g_free (display_info);
     display_info = NULL;
@@ -141,11 +141,11 @@ ensure_basedir_spec (void)
     const char *name;
 
     /* test if new directory is there */
-    
-    new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, 
-                                       "xfce4" G_DIR_SEPARATOR_S "xfwm4", 
+
+    new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG,
+                                       "xfce4" G_DIR_SEPARATOR_S "xfwm4",
                                        FALSE);
-    
+
     if (g_file_test (new, G_FILE_TEST_IS_DIR))
     {
         g_free (new);
@@ -153,7 +153,7 @@ ensure_basedir_spec (void)
     }
 
     error = NULL;
-    if (!xfce_mkdirhier(new, 0700, &error)) 
+    if (!xfce_mkdirhier(new, 0700, &error))
     {
         g_warning("Unable to create config dir %s: %s", new, error->message);
         g_error_free (error);
@@ -164,7 +164,7 @@ ensure_basedir_spec (void)
     g_free (new);
 
     /* copy xfwm4rc */
-    
+
     old = xfce_get_userfile ("xfwm4rc", NULL);
 
     if (g_file_test (old, G_FILE_TEST_EXISTS))
@@ -178,11 +178,11 @@ ensure_basedir_spec (void)
         w = fopen (new, "w");
 
         g_free (new);
-        
+
         if (w && r)
         {
             int c;
-            
+    
             while ((c = getc (r)) != EOF)
             {
                 putc (c, w);
@@ -199,13 +199,13 @@ ensure_basedir_spec (void)
             fclose (w);
         }
     }
-    
+
     g_free (old);
 
     /* copy saved session data */
-    
+
     new = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
-    if (!xfce_mkdirhier(new, 0700, &error)) 
+    if (!xfce_mkdirhier(new, 0700, &error))
     {
         g_warning("Unable to create session dir %s: %s", new, error->message);
         g_error_free (error);
@@ -231,7 +231,7 @@ ensure_basedir_spec (void)
             if (w && r)
             {
                 int c;
-                
+        
                 while ((c = getc (r)) != EOF)
                     putc (c, w);
             }
@@ -262,12 +262,12 @@ print_usage (void)
 static void
 print_version (void)
 {
-    g_print ("\tThis is %s version %s (revision %s) for Xfce %s\n", 
+    g_print ("\tThis is %s version %s (revision %s) for Xfce %s\n",
                     PACKAGE, VERSION, REVISION, xfce_version_string());
-    g_print ("\tReleased under the terms of the GNU General Public License.\n"); 
-    g_print ("\tCompiled against GTK+-%d.%d.%d, ", 
+    g_print ("\tReleased under the terms of the GNU General Public License.\n");
+    g_print ("\tCompiled against GTK+-%d.%d.%d, ",
                     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-    g_print ("using GTK+-%d.%d.%d.\n", 
+    g_print ("using GTK+-%d.%d.%d.\n",
                     gtk_major_version, gtk_minor_version, gtk_micro_version);
     g_print ("\n");
     g_print ("\tBuild configuration and supported features:\n");
@@ -277,41 +277,41 @@ print_version (void)
     g_print ("Yes\n");
 #else
     g_print ("No\n");
-#endif    
+#endif
 
     g_print ("\t- Render support:                               ");
 #ifdef HAVE_RENDER
     g_print ("Yes\n");
 #else
     g_print ("No\n");
-#endif    
+#endif
 
     g_print ("\t- Xrandr support:                               ");
 #ifdef HAVE_RANDR
     g_print ("Yes\n");
 #else
     g_print ("No\n");
-#endif    
+#endif
 
     g_print ("\t- Embedded compositor:                          ");
 #ifdef HAVE_COMPOSITOR
     g_print ("Yes\n");
 #else
     g_print ("No\n");
-#endif    
+#endif
     g_print ("\t- KDE systray proxy (deprecated):               ");
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     g_print ("Yes\n");
 #else
     g_print ("No\n");
-#endif    
+#endif
 }
 
 #ifdef HAVE_COMPOSITOR
 static gint
 get_default_compositor (DisplayInfo *display_info)
 {
-    /* 
+    /*
      * Don't even check for the render speed if there is no compositor.
      */
     if (!display_info->enable_compositor)
@@ -319,7 +319,7 @@ get_default_compositor (DisplayInfo *display_info)
         return 0;
     }
 
-    /* 
+    /*
      * Check if the XServer is black listed.
      */
     if (!compositorTestServer (display_info))
@@ -329,7 +329,7 @@ get_default_compositor (DisplayInfo *display_info)
     }
 
 #if 0
-    /* 
+    /*
      * Test if the XRender implementation is fast enough for the
      * compositor.
      */
@@ -383,29 +383,29 @@ initialize (int argc, char **argv, gint compositor_mode)
     struct sigaction act;
     long ws;
     gint i, nscreens;
-    
+
     TRACE ("entering initialize");
-    
+
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     gtk_init (&argc, &argv);
 
-    DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version, 
+    DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version,
          gtk_minor_version, gtk_micro_version);
 
     ensure_basedir_spec ();
-    
+
     initMenuEventWin ();
     clientClearFocus ();
 
     display_info = myDisplayInit (gdk_display_get_default ());
-    
+
 #ifdef HAVE_COMPOSITOR
     if (compositor_mode < 0)
     {
         compositor_mode = get_default_compositor (display_info);
     }
-    
+
     /* Disabling compositor from command line */
     if (!compositor_mode)
     {
@@ -415,7 +415,7 @@ initialize (int argc, char **argv, gint compositor_mode)
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
-    
+
     initModifiers (display_info->dpy);
 
     act.sa_handler = handleSignal;
@@ -427,11 +427,11 @@ initialize (int argc, char **argv, gint compositor_mode)
     sigaction (SIGSEGV, &act, NULL);
 
     nscreens = gdk_display_get_n_screens(display_info->gdisplay);
-    for(i = 0; i < nscreens; i++) 
+    for(i = 0; i < nscreens; i++)
     {
         ScreenInfo *screen_info;
         GdkScreen *gscr;
-        
+
         gscr = gdk_display_get_screen(display_info->gdisplay, i);
         screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK);
 
@@ -439,16 +439,16 @@ initialize (int argc, char **argv, gint compositor_mode)
         {
             continue;
         }
-        
+
         if (!initSettings (screen_info))
         {
             return -2;
         }
-        
+
         if (compositor_mode)
         {
             gboolean xfwm4_compositor;
-            
+    
             xfwm4_compositor = (compositor_mode > 1);
             if (screen_info->params->use_compositing)
             {
@@ -456,12 +456,12 @@ initialize (int argc, char **argv, gint compositor_mode)
             }
             if (xfwm4_compositor)
             {
-                /* 
+                /*
                    Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
                    compositing manager (used by WM tweaks to determine whether or not
                    show the "compositor" tab.
                  */
-                setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER, 
+                setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
                                      screen_info->xroot, screen_info->xfwm4_win);
             }
         }
@@ -478,13 +478,13 @@ initialize (int argc, char **argv, gint compositor_mode)
         setUTF8StringHint (display_info, screen_info->xfwm4_win, NET_WM_NAME, "Xfwm4");
         setNetSupportedHint (display_info, screen_info->xroot, screen_info->xfwm4_win);
         initNetDesktopInfo (display_info, screen_info->xroot, screen_info->current_ws,
-                                   screen_info->width, 
+                                   screen_info->width,
                                    screen_info->height);
         workspaceUpdateArea (screen_info);
         XSetInputFocus (display_info->dpy, screen_info->xfwm4_win, RevertToPointerRoot, CurrentTime);
 
         clientFrameAll (screen_info);
-        
+
         initGtkCallbacks (screen_info);
 
         XDefineCursor (display_info->dpy, screen_info->xroot, myDisplayGetCursorRoot(display_info));
@@ -528,17 +528,17 @@ main (int argc, char **argv)
         else if (!strcmp(argv[i], "--version") || !strcmp(argv[i], "-V"))
         {
             print_version ();
-	    exit (0);
+            exit (0);
         }
         else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-H"))
         {
             print_usage ();
-	    exit (0);
+            exit (0);
         }
     }
 
     status = initialize (argc, argv, compositor);
-    /* 
+    /*
        status  < 0   =>   Error, cancel execution
        status == 0   =>   Run w/out session manager
        status == 1   =>   Connected to session manager
@@ -557,7 +557,7 @@ main (int argc, char **argv)
             if (daemon_mode)
             {
 #ifdef HAVE_DAEMON
-                if (daemon(TRUE, TRUE) < 0) 
+                if (daemon(TRUE, TRUE) < 0)
                 {
                         g_warning("Failed to enter daemon mode: %s", g_strerror(errno));
                         exit(EXIT_FAILURE);

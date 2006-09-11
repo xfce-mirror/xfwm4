@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -52,11 +52,11 @@ struct _gaussian_conv {
 typedef struct _gaussian_conv gaussian_conv;
 #endif /* HAVE_COMPOSITOR */
 
-struct _ScreenInfo 
+struct _ScreenInfo
 {
     /* The display this screen belongs to */
     DisplayInfo *display_info;
-    
+
     /* Window stacking, per screen */
     GList *windows_stack;
     Client *last_raise;
@@ -66,7 +66,7 @@ struct _ScreenInfo
     unsigned long client_serial;
     int key_grabs;
     int pointer_grabs;
-    
+
     /* Theme pixmaps and other params, per screen */
     XfwmColor title_colors[2];
     XfwmColor title_shadow_colors[2];
@@ -79,7 +79,7 @@ struct _ScreenInfo
     GC box_gc;
     GdkGC *black_gc;
     GdkGC *white_gc;
-    
+
     /* Screen data */
     Colormap cmap;
     GdkScreen *gscr;
@@ -93,7 +93,7 @@ struct _ScreenInfo
     xfwmWindow sidewalk[4];
     Window xfwm4_win;
     Window xroot;
-    
+
     int gnome_margins[4];
     int margins[4];
     int screen;
@@ -112,13 +112,13 @@ struct _ScreenInfo
     /* MCS stuff */
     McsClient *mcs_client;
     gboolean mcs_initted;
-    
+
     /* Per screen parameters */
     XfwmParams *params;
 
     /* show desktop flag */
     gboolean show_desktop;
-    
+
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     /* There can be one systray per screen */
     Atom net_system_tray_selection;
@@ -139,36 +139,36 @@ struct _ScreenInfo
     gint gaussianSize;
     guchar *shadowCorner;
     guchar *shadowTop;
-    
+
     Picture rootPicture;
     Picture rootBuffer;
     Picture blackPicture;
     Picture rootTile;
     XserverRegion allDamage;
-    
+
     guint overlays;
     gboolean compositor_active;
     gboolean clipChanged;
 #endif /* HAVE_COMPOSITOR */
 };
 
-ScreenInfo *     myScreenInit           (DisplayInfo *, 
-                                         GdkScreen *, 
+ScreenInfo *     myScreenInit           (DisplayInfo *,
+                                         GdkScreen *,
                                          unsigned long);
 ScreenInfo *     myScreenClose          (ScreenInfo *);
 Display *        myScreenGetXDisplay    (ScreenInfo *);
 GtkWidget *      myScreenGetGtkWidget   (ScreenInfo *);
 GtkWidget *      myScreenGetGtkWidget   (ScreenInfo *);
 GdkWindow *      myScreenGetGdkWindow   (ScreenInfo *);
-gboolean         myScreenGrabKeyboard   (ScreenInfo *, 
+gboolean         myScreenGrabKeyboard   (ScreenInfo *,
                                          Time);
-gboolean         myScreenGrabPointer    (ScreenInfo *, 
-                                         unsigned int, 
-                                         Cursor, 
+gboolean         myScreenGrabPointer    (ScreenInfo *,
+                                         unsigned int,
+                                         Cursor,
                                          Time);
-unsigned int     myScreenUngrabKeyboard (ScreenInfo *, 
+unsigned int     myScreenUngrabKeyboard (ScreenInfo *,
                                          Time);
-unsigned int     myScreenUngrabPointer  (ScreenInfo *, 
+unsigned int     myScreenUngrabPointer  (ScreenInfo *,
                                          Time);
 void             myScreenGrabKeys       (ScreenInfo *);
 void             myScreenUngrabKeys     (ScreenInfo *);

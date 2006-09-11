@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -34,7 +34,7 @@
 #ifdef HAVE_RANDR
 #include <X11/extensions/Xrandr.h>
 #endif
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include <string.h>
 
 #include "misc.h"
@@ -68,7 +68,7 @@
                                  PointerMotionMask | \
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
-                                 
+                  
 #define MODIFIER_MASK           (ShiftMask | \
                                  ControlMask | \
                                  AltMask | \
@@ -152,7 +152,7 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
             passdata->clicks++;
         }
         if (((XfwmButtonClickType) passdata->clicks == XFWM_BUTTON_DOUBLE_CLICK)
-            || (!(passdata->allow_double_click) && 
+            || (!(passdata->allow_double_click) &&
                  (XfwmButtonClickType) passdata->clicks == XFWM_BUTTON_CLICK))
         {
             keep_going = FALSE;
@@ -178,7 +178,7 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
         status = EVENT_FILTER_CONTINUE;
     }
 
-    if ((ABS (passdata->x - passdata->xcurrent) > 1) || 
+    if ((ABS (passdata->x - passdata->xcurrent) > 1) ||
         (ABS (passdata->y - passdata->ycurrent) > 1) ||
         (!keep_going))
     {
@@ -199,8 +199,8 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     g_return_val_if_fail (screen_info != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail (ev != NULL, XFWM_BUTTON_UNDEFINED);
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
-    
-    display_info = screen_info->display_info;    
+
+    display_info = screen_info->display_info;
     XFlush (display_info->dpy);
     g = myScreenGrabPointer (screen_info, DBL_CLICK_GRAB, None, ev->xbutton.time);
 
@@ -221,8 +221,8 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.ycurrent = passdata.y;
     passdata.clicks = 1;
     passdata.allow_double_click = allow_double_click;
-    passdata.timeout = g_timeout_add_full (0, display_info->dbl_click_time, 
-                                              (GtkFunction) typeOfClick_break, 
+    passdata.timeout = g_timeout_add_full (0, display_info->dbl_click_time,
+                                              (GtkFunction) typeOfClick_break,
                                               (gpointer) &passdata, NULL);
 
     TRACE ("entering typeOfClick loop");
@@ -241,7 +241,7 @@ static gboolean
 check_button_time (XButtonEvent *ev)
 {
     static Time last_button_time = (Time) 0;
-    
+
     if (last_button_time > ev->time)
     {
         return FALSE;
@@ -251,7 +251,7 @@ check_button_time (XButtonEvent *ev)
     return TRUE;
 }
  #endif
- 
+
 static void
 clear_timeout (void)
 {
@@ -271,7 +271,7 @@ raise_cb (gpointer data)
 
     clear_timeout ();
     c = clientGetFocus ();
-    
+
     if (c)
     {
         clientRaise (c, None);
@@ -320,9 +320,9 @@ static void
 toggle_show_desktop (ScreenInfo *screen_info)
 {
     screen_info->show_desktop = !screen_info->show_desktop;
-    setHint (screen_info->display_info, screen_info->xroot, NET_SHOWING_DESKTOP, 
+    setHint (screen_info->display_info, screen_info->xroot, NET_SHOWING_DESKTOP,
              screen_info->show_desktop);
-    sendRootMessage (screen_info, NET_SHOWING_DESKTOP, screen_info->show_desktop, 
+    sendRootMessage (screen_info, NET_SHOWING_DESKTOP, screen_info->show_desktop,
                      myDisplayGetCurrentTime (screen_info->display_info));
 }
 
@@ -336,7 +336,7 @@ static int
 getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
 {
     int key, state;
-    
+
     state = ev->state & MODIFIER_MASK;
     for (key = 0; key < KEY_COUNT; key++)
     {
@@ -346,7 +346,7 @@ getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
             break;
         }
     }
-    
+
     return key;
 }
 
@@ -469,7 +469,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         {
             return;
         }
-        
+
         key = getKeyPressed (screen_info, ev);
         switch (key)
         {
@@ -489,8 +489,8 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 break;
         }
     }
-    /* 
-       Here we know that "screen_info" is defined, otherwise, we would 
+    /*
+       Here we know that "screen_info" is defined, otherwise, we would
        already have returned...
      */
     switch (key)
@@ -742,7 +742,7 @@ rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
         return;
     }
     lastscroll = ev->time;
-    
+
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!screen_info)
@@ -973,7 +973,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 {
                     clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
                 }
-                if ((screen_info->params->raise_on_click) || 
+                if ((screen_info->params->raise_on_click) ||
                     !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
                 {
                     /* Clear timeout */
@@ -996,7 +996,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         return;
     }
 
-    /* 
+    /*
        The event did not occur in one of our known good client...
        Get the screen structure from the root of the event.
      */
@@ -1005,7 +1005,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     {
         return;
     }
-    
+
     if ((ev->window == screen_info->xroot) && (screen_info->params->scroll_workspaces)
             && ((ev->button == Button4) || (ev->button == Button5)))
     {
@@ -1144,7 +1144,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 
     TRACE ("entering handleUnmapNotify");
     TRACE ("UnmapNotify on window (0x%lx)", ev->window);
-    
+
     if (ev->from_configure)
     {
         TRACE ("Ignoring UnmapNotify caused by parent's resize");
@@ -1166,9 +1166,9 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
-            /* 
+            /*
              * This UnmapNotify event is caused by reparenting
-             * so we just ignore it, so the window won't return 
+             * so we just ignore it, so the window won't return
              * to withdrawn state by mistake.
              */
             TRACE ("Client \"%s\" is not mapped, event ignored", c->name);
@@ -1179,8 +1179,8 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 
         /*
          * ICCCM spec states that a client wishing to switch
-         * to WithdrawnState should send a synthetic UnmapNotify 
-         * with the event field set to root if the client window 
+         * to WithdrawnState should send a synthetic UnmapNotify
+         * with the event field set to root if the client window
          * is already unmapped.
          * Therefore, bypass the ignore_unmap counter and
          * unframe the client.
@@ -1196,12 +1196,12 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         if (c->ignore_unmap)
         {
             c->ignore_unmap--;
-            TRACE ("ignore_unmap for \"%s\" is now %i", 
+            TRACE ("ignore_unmap for \"%s\" is now %i",
                  c->name, c->ignore_unmap);
         }
         else
         {
-            TRACE ("unmapping \"%s\" as ignore_unmap is %i", 
+            TRACE ("unmapping \"%s\" as ignore_unmap is %i",
                  c->name, c->ignore_unmap);
             clientPassFocus (screen_info, c, c);
             clientUnframe (c, FALSE);
@@ -1214,11 +1214,11 @@ update_screen_idle_cb (gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    
+
     screen_info = (ScreenInfo *) data;
     display_info = screen_info->display_info;
 
-    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count, 
+    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                     screen_info->width, screen_info->height, screen_info->margins);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
@@ -1238,7 +1238,7 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
     {
         return;
     }
-    
+
     if (display_info->have_xrandr)
     {
 #ifdef HAVE_RANDR
@@ -1255,10 +1255,10 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
     screen_info->width = WidthOfScreen (screen_info->xscreen);
     screen_info->height = HeightOfScreen (screen_info->xscreen);
 
-    /* 
+    /*
        We need to use an idle function to update our screen layout to give gdk the
-       time to update its internal structures for Xinerama and monitor size, 
-       otherwise the functions gdk_screen_get_monitor_geometry () don't return 
+       time to update its internal structures for Xinerama and monitor size,
+       otherwise the functions gdk_screen_get_monitor_geometry () don't return
        accurate values...
      */
     g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, update_screen_idle_cb, screen_info, NULL);
@@ -1387,7 +1387,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
         /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
         {
-            if ((c->win_workspace == screen_info->current_ws) || 
+            if ((c->win_workspace == screen_info->current_ws) ||
                 (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)))
             {
                 if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
@@ -1431,7 +1431,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     if (c)
     {
         screen_info = c->screen_info;
-        
+
         if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
         {
             TRACE ("EnterNotify window is \"%s\"", c->name);
@@ -1440,11 +1440,11 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
                 clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
             }
         }
-        
+
         /* No need to process the event any further */
         return;
     }
-    
+
     /* The event was not for a client window */
 
     if (display_info->nb_screens > 1)
@@ -1452,7 +1452,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         /* Wrap workspace/wrap windows is disabled with multiscreen */
         return;
     }
-    
+
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
 
@@ -1460,7 +1460,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     {
         return;
     }
-    
+
     if (screen_info->workspace_count && screen_info->params->wrap_workspaces
         && screen_info->params->wrap_resistance)
     {
@@ -1485,7 +1485,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             {
                 edge_scroll_x++;
             }
-            if (msx == 0) 
+            if (msx == 0)
             {
                 rx = 1;
             }
@@ -1506,7 +1506,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             {
                 edge_scroll_y++;
             }
-            if (msy == 0) 
+            if (msy == 0)
             {
                 ry = 1;
             }
@@ -1575,7 +1575,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
     ScreenInfo *screen_info;
     Client *c, *last_raised;
-        
+
 
     TRACE ("entering handleFocusIn");
     TRACE ("handleFocusIn (0x%lx) mode = %s",
@@ -1612,7 +1612,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
     last_raised = NULL;
 
-    if (screen_info && (ev->window == screen_info->xroot) && (ev->mode == NotifyNormal) && 
+    if (screen_info && (ev->window == screen_info->xroot) && (ev->mode == NotifyNormal) &&
         ((ev->detail == NotifyDetailNone) || (ev->detail == NotifyInferior)))
     {
         /* Handle focus transition to root (means that an unknown
@@ -1625,7 +1625,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         }
         return;
     }
-    
+
     if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) ||
              (ev->detail > NotifyNonlinearVirtual))
     {
@@ -1641,8 +1641,8 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         screen_info = c->screen_info;
         clientUpdateFocus (screen_info, c, FOCUS_SORT);
         last_raised = clientGetLastRaise (screen_info);
-        if ((screen_info->params->click_to_focus) && 
-            (screen_info->params->raise_on_click) && 
+        if ((screen_info->params->click_to_focus) &&
+            (screen_info->params->raise_on_click) &&
             (last_raised != NULL) && (c != last_raised))
         {
             clientRaise (c, None);
@@ -1658,7 +1658,7 @@ static void
 handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
     Client *c;
-    
+
     TRACE ("entering handleFocusOut");
     TRACE ("handleFocusOut (0x%lx) mode = %s",
                 ev->window,
@@ -1687,7 +1687,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 "NotifyDetailNone" :
                 "(unknown)");
     if ((ev->mode == NotifyNormal)
-        && ((ev->detail == NotifyNonlinear) 
+        && ((ev->detail == NotifyNonlinear)
             || (ev->detail == NotifyNonlinearVirtual)))
     {
         c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
@@ -1720,8 +1720,8 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NORMAL_HINTS notify", c->name, c->window);
             clientGetWMNormalHints (c, TRUE);
         }
-        else if ((ev->atom == XA_WM_NAME) || 
-                 (ev->atom == display_info->atoms[NET_WM_NAME]) || 
+        else if ((ev->atom == XA_WM_NAME) ||
+                 (ev->atom == display_info->atoms[NET_WM_NAME]) ||
                  (ev->atom == display_info->atoms[WM_CLIENT_MACHINE]))
         {
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME/NET_WM_NAME/WM_CLIENT_MACHINE notify", c->name, c->window);
@@ -1792,7 +1792,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             clientGetNetWmType (c);
             frameDraw (c, TRUE);
         }
-        else if ((ev->atom == display_info->atoms[NET_WM_STRUT]) || 
+        else if ((ev->atom == display_info->atoms[NET_WM_STRUT]) ||
                  (ev->atom == display_info->atoms[NET_WM_STRUT_PARTIAL]))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_strut notify", c->name, c->window);
@@ -1850,7 +1850,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 #endif
         return;
     }
-    
+
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
     if (!screen_info)
     {
@@ -1896,7 +1896,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
     {
         screen_info = c->screen_info;
         is_transient = clientIsValidTransientOrModal (c);
-        
+
         if ((ev->message_type == display_info->atoms[WM_CHANGE_STATE]) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             TRACE ("client \"%s\" (0x%lx) has received a wm_change_state event", c->name, c->window);
@@ -2005,7 +2005,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_request_frame_extents event", c->name, c->window);
             setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
-                                                         frameRight (c), frameBottom (c)); 
+                                                         frameRight (c), frameBottom (c));
         }
     }
     else
@@ -2015,8 +2015,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         {
             return;
         }
-        
-        if (((ev->message_type == display_info->atoms[WIN_WORKSPACE]) || 
+
+        if (((ev->message_type == display_info->atoms[WIN_WORKSPACE]) ||
              (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace or a net_current_desktop event %li", ev->data.l[0]);
@@ -2025,7 +2025,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE);
             }
         }
-        else if (((ev->message_type == display_info->atoms[WIN_WORKSPACE_COUNT]) || 
+        else if (((ev->message_type == display_info->atoms[WIN_WORKSPACE_COUNT]) ||
                   (ev->message_type == display_info->atoms[NET_NUMBER_OF_DESKTOPS])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace_count event");
@@ -2053,7 +2053,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         {
             TRACE ("window (0x%lx) has received a net_request_frame_extents event", ev->window);
             /* Size estimate from the decoration extents */
-            setNetFrameExtents (display_info, ev->window, 
+            setNetFrameExtents (display_info, ev->window,
                                 frameDecorationTop (screen_info),
                                 frameDecorationLeft (screen_info),
                                 frameDecorationRight (screen_info),
@@ -2246,7 +2246,7 @@ xfwm4_event_filter (XEvent * xevent, gpointer data)
     DisplayInfo *display_info;
 
     display_info = (DisplayInfo *) data;
-    
+
     TRACE ("entering xfwm4_event_filter");
     handleEvent (display_info, xevent);
     TRACE ("leaving xfwm4_event_filter");
@@ -2359,7 +2359,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
     Client *c;
     gint x;
     gint y;
-    
+
     TRACE ("entering show_popup_cb");
 
     x = ev->x_root;
@@ -2437,7 +2437,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
                 insensitive |= MENU_OP_STICK;
             }
         }
-    
+
         /* KDE extension */
         clientGetWMProtocols(c);
         if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
@@ -2448,7 +2448,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE))
         {
             ops |= MENU_OP_NORMAL;
-            if (clientIsValidTransientOrModal (c) || 
+            if (clientIsValidTransientOrModal (c) ||
                 FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
             {
                 insensitive |= MENU_OP_NORMAL;
@@ -2457,7 +2457,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         else
         {
             ops |= MENU_OP_ABOVE;
-            if (clientIsValidTransientOrModal (c) || 
+            if (clientIsValidTransientOrModal (c) ||
                 FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
             {
                 insensitive |= MENU_OP_ABOVE;
@@ -2475,11 +2475,11 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
     {
         return (TRUE);
     }
-    
+
     /* c is not null here */
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    
+
     if (screen_info->button_handler_id)
     {
         g_signal_handler_disconnect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), screen_info->button_handler_id);
@@ -2502,16 +2502,16 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
        Don't forget to delete that window once the menu is closed, though, or we'll get in
        trouble.
      */
-    xfwmWindowTemp (screen_info,  
+    xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
-                    &menu_event_window, 0, 0, 
+                    &menu_event_window, 0, 0,
                     screen_info->width,
-                    screen_info->height, 
+                    screen_info->height,
                     NoEventMask,
                     FALSE);
-    menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback, 
-                         c->win_workspace, screen_info->workspace_count, 
+    menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback,
+                         c->win_workspace, screen_info->workspace_count,
                          screen_info->workspace_names, screen_info->workspace_names_items,
                          display_info->xfilter, screen_info);
 
@@ -2531,7 +2531,7 @@ static gboolean
 set_reload (GObject * obj, GdkEvent * ev, gpointer data)
 {
     DisplayInfo *display_info;
-    
+
     TRACE ("setting reload flag so all prefs will be reread at next event loop");
 
     display_info = (DisplayInfo *) data;
@@ -2580,7 +2580,7 @@ initGtkCallbacks (ScreenInfo *screen_info)
 {
     GtkSettings *settings;
 
-    screen_info->button_handler_id = 
+    screen_info->button_handler_id =
         g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)),
                           "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
     g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",

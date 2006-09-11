@@ -667,11 +667,11 @@ border_size (CWindow *cw)
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
-    border = XFixesCreateRegionFromWindow (display_info->dpy, 
+    border = XFixesCreateRegionFromWindow (display_info->dpy,
                                            cw->id, WindowRegionBounding);
     g_return_val_if_fail (border != None, None);
-    XFixesTranslateRegion (display_info->dpy, border, 
-                           cw->attr.x + cw->attr.border_width, 
+    XFixesTranslateRegion (display_info->dpy, border,
+                           cw->attr.x + cw->attr.border_width,
                            cw->attr.y + cw->attr.border_width);
 
     return border;
@@ -915,7 +915,7 @@ win_extents (CWindow *cw)
     r.width = cw->attr.width + cw->attr.border_width * 2;
     r.height = cw->attr.height + cw->attr.border_width * 2;
 
-    /* 
+    /*
        We apply a shadow to the window if:
        - There is no overlay (ie unredirected windows)
        - It's a window with a frame and the user asked for shadows under regular
@@ -925,11 +925,11 @@ win_extents (CWindow *cw)
      */
 
     if (!(screen_info->overlays) &&
-         ((screen_info->params->show_popup_shadow && 
-              WIN_IS_OVERRIDE(cw) && 
-              !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) || 
+         ((screen_info->params->show_popup_shadow &&
+              WIN_IS_OVERRIDE(cw) &&
+              !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) ||
           (screen_info->params->show_frame_shadow &&
-              !WIN_IS_OVERRIDE(cw) && 
+              !WIN_IS_OVERRIDE(cw) &&
               !WIN_NO_SHADOW(cw) &&
               (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))))))
     {
@@ -1128,34 +1128,34 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
 
             /* Top Border (title bar) */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              screen_info->rootBuffer, 
-                              0, 0, 
-                              0, 0, 
-                              frame_x, frame_y, 
+                              screen_info->rootBuffer,
+                              0, 0,
+                              0, 0,
+                              frame_x, frame_y,
                               frame_width, frame_top);
 
             /* Bottom Border */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              screen_info->rootBuffer, 
-                              0, frame_height - frame_bottom, 
+                              screen_info->rootBuffer,
+                              0, frame_height - frame_bottom,
                               0, 0,
-                              frame_x, frame_y + frame_height - frame_bottom, 
+                              frame_x, frame_y + frame_height - frame_bottom,
                               frame_width, frame_bottom);
             /* Left Border */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              screen_info->rootBuffer, 
-                              0, frame_top, 
+                              screen_info->rootBuffer,
+                              0, frame_top,
                               0, 0,
-                              frame_x, frame_y + frame_top, 
+                              frame_x, frame_y + frame_top,
                               frame_left, frame_height - frame_top - frame_bottom);
 
             /* Right Border */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              screen_info->rootBuffer, 
-                              frame_width - frame_right, frame_top, 
+                              screen_info->rootBuffer,
+                              frame_width - frame_right, frame_top,
                               0, 0,
-                              frame_x + frame_width - frame_right, 
-                              frame_y + frame_top, frame_right, 
+                              frame_x + frame_width - frame_right,
+                              frame_y + frame_top, frame_right,
                               frame_height - frame_top - frame_bottom);
         }
         /* Client Window */
@@ -1166,10 +1166,10 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
 
             XFixesSetPictureClipRegion (display_info->dpy, screen_info->rootBuffer, 0, 0, region);
             XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
-                              screen_info->rootBuffer, 
-                              frame_left, frame_top, 
+                              screen_info->rootBuffer,
+                              frame_left, frame_top,
                               0, 0,
-                              frame_x + frame_left, frame_y + frame_top, 
+                              frame_x + frame_left, frame_y + frame_top,
                               frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
 
             r.x = frame_x + frame_left;
@@ -1183,10 +1183,10 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
         else if (!solid_part)
         {
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict,
-                              screen_info->rootBuffer, 
-                              frame_left, frame_top, 
+                              screen_info->rootBuffer,
+                              frame_left, frame_top,
                               0, 0,
-                              frame_x + frame_left, frame_y + frame_top, 
+                              frame_x + frame_left, frame_y + frame_top,
                               frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
         }
     }
@@ -1204,7 +1204,7 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
         }
         else if (!solid_part)
         {
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict, screen_info->rootBuffer, 
+            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict, screen_info->rootBuffer,
                               0, 0, 0, 0, x, y, w, h);
         }
     }
@@ -1474,8 +1474,8 @@ add_repair (DisplayInfo *display_info)
         return;
     }
 
-    display_info->compositor_timeout_id = 
-        g_timeout_add (50 /* ms */, 
+    display_info->compositor_timeout_id =
+        g_timeout_add (50 /* ms */,
                        compositor_timeout_cb, display_info);
 #endif /* USE_IDLE_REPAINT */
 }
@@ -1540,7 +1540,7 @@ fix_region (CWindow *cw, XserverRegion region)
             {
                 cw2->clientSize = client_size (cw2);
             }
-            /* ...before substracting them from the damaged zone. */  
+            /* ...before substracting them from the damaged zone. */
             if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
             {
                 XFixesSubtractRegion (display_info->dpy, region,
@@ -1769,7 +1769,7 @@ map_win (CWindow *cw)
     }
 
     /* Check for new windows to un-redirect. */
-    if (WIN_IS_FULLSCREEN(cw) && WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) && 
+    if (WIN_IS_FULLSCREEN(cw) && WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) &&
         WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw))
     {
         CWindow *top;
@@ -1979,7 +1979,7 @@ restack_win (CWindow *cw, Window above)
         previous_above = ncw->id;
     }
 
-    /* If above is set to None, the window whose state was changed is on 
+    /* If above is set to None, the window whose state was changed is on
      * the bottom of the stack with respect to sibling.
      */
     if (above == None)
@@ -2067,7 +2067,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         }
     }
 
-    if ((cw->attr.width != width) || (cw->attr.height != height) || 
+    if ((cw->attr.width != width) || (cw->attr.height != height) ||
         (cw->attr.x != x) || (cw->attr.y != y) || shape_notify)
     {
         if (cw->borderSize)
@@ -2108,7 +2108,7 @@ static void
 destroy_win (DisplayInfo *display_info, Window id)
 {
     CWindow *cw;
- 
+
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
     TRACE ("entering destroy_win: 0x%lx", id);
@@ -2196,7 +2196,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             set_win_opacity (cw, cw->opacity);
             cw->native_opacity = WIN_IS_OPAQUE(cw);
 
-            /* Transset changes the property on the frame, not the client 
+            /* Transset changes the property on the frame, not the client
                window. We need to check and update the client "opacity"
                value accordingly.
               */
@@ -2320,7 +2320,7 @@ compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleCreateNotify for 0x%lx", ev->window);
 
-    /* 
+    /*
        We are only interested in top level windows, other will
        be caught by the WM.
      */
@@ -2417,8 +2417,8 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
             {
                 cw->shaped = FALSE;
             }
-            resize_win (cw, cw->attr.x, cw->attr.y, 
-                            ev->width + ev->x, ev->height + ev->y, 
+            resize_win (cw, cw->attr.x, cw->attr.y,
+                            ev->width + ev->x, ev->height + ev->y,
                             cw->attr.border_width, TRUE);
             if ((ev->shaped) && !(cw->shaped))
             {
@@ -2717,7 +2717,7 @@ compositorSetCMSelection (ScreenInfo *screen_info, Window w)
     DisplayInfo *display_info;
     gchar selection[32];
     Atom a;
-    
+
     g_return_if_fail (screen_info != NULL);
 
     display_info = screen_info->display_info;
@@ -2872,7 +2872,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     screen_info->gaussianSize = -1;
     screen_info->overlays = 0;
 
-    XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot, 
+    XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot,
                                     display_info->composite_mode);
 
     compositorSetCMSelection (screen_info, None);
@@ -3034,7 +3034,7 @@ compositorTestServer (DisplayInfo *display_info)
 
     if (vendor && (!strstr ("X.Org", vendor)))
     {
-        /* 
+        /*
            Check the version, X.org 6.8.x has some bugs that makes
            it not suitable for use with xfwm4 compositor
          */

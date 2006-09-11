@@ -1,29 +1,29 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
 #include <glib.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "screen.h"
 #include "client.h"
@@ -51,7 +51,7 @@ clientIsTransient (Client * c)
 
     TRACE ("entering clientIsTransient");
 
-    return (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) || 
+    return (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) ||
             ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None) && (c->group_leader != c->window)));
 }
 
@@ -85,8 +85,8 @@ clientSameGroup (Client * c1, Client * c2)
 
     TRACE ("entering clientSameGroup");
 
-    return ((c1 != c2) && 
-            (((c1->group_leader != None) && 
+    return ((c1 != c2) &&
+            (((c1->group_leader != None) &&
               (c1->group_leader == c2->group_leader)) ||
              (c1->group_leader == c2->window) ||
              (c2->group_leader == c1->window)));
@@ -182,7 +182,7 @@ clientIsValidTransientOrModal (Client * c)
     {
         ScreenInfo *screen_info = c->screen_info;
         GList *index;
-        
+
         /* Look for a valid transient or modal for the same group */
         for (index = screen_info->windows_stack; index; index = g_list_next (index))
         {
@@ -211,7 +211,7 @@ clientTransientOrModalHasAncestor (Client * c, int ws)
     Client *c2;
     GList *index;
     ScreenInfo *screen_info;
-    
+
     g_return_val_if_fail (c != NULL, FALSE);
 
     TRACE ("entering clientTransientOrModalHasAncestor");
@@ -248,7 +248,7 @@ clientGetModalFor (Client * c)
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetModalFor");
-    
+
     modals = NULL;
     latest_modal = NULL;
     screen_info = c->screen_info;

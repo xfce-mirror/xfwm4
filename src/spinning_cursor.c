@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         mozilla  - (c) 1998 mozilla.org
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -75,11 +75,11 @@ cursorCreateSpinning (Display * dpy)
     bg.blue = 0xffff;
     bg.flags = 0xf;
 
-    cursor = XCreatePixmapFromBitmapData (dpy, DefaultRootWindow(dpy), 
+    cursor = XCreatePixmapFromBitmapData (dpy, DefaultRootWindow(dpy),
                                           (char *) xlib_spinning_bits,
                                           32, 32, 0xffffffff, 0x0, 1);
     mask   = XCreatePixmapFromBitmapData (dpy, DefaultRootWindow(dpy),
-                                          (char *) xlib_spinning_mask_bits, 
+                                          (char *) xlib_spinning_mask_bits,
                                           32, 32, 0xffffffff, 0x0, 1);
     xcursor = XCreatePixmapCursor (dpy, cursor, mask, &fg, &bg, 2, 2);
     XFreePixmap (dpy, mask);

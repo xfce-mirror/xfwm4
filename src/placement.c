@@ -1,23 +1,23 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -25,7 +25,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <glib.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "screen.h"
 #include "misc.h"
@@ -38,33 +38,33 @@
 
 static unsigned long overlapX (int x0, int x1, int tx0, int tx1);
 static unsigned long overlapY (int y0, int y1, int ty0, int ty1);
-static unsigned long overlap (int x0, int y0, int x1, int y1, 
+static unsigned long overlap (int x0, int y0, int x1, int y1,
                               int tx0, int ty0, int tx1, int ty1);
 
 static unsigned long
 clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
 {
     unsigned long sigma = 0;
-    
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT)
         && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
-        sigma = overlap (x, y, x + w, y + h, 
-                         0, c->struts[LEFT_START_Y], 
-                         c->struts[LEFT], 
+        sigma = overlap (x, y, x + w, y + h,
+                         0, c->struts[LEFT_START_Y],
+                         c->struts[LEFT],
                          c->struts[LEFT_END_Y])
               + overlap (x, y, x + w, y + h,
-                         c->screen_info->width - c->struts[RIGHT], 
+                         c->screen_info->width - c->struts[RIGHT],
                          c->struts[RIGHT_START_Y],
                          c->screen_info->width, c->struts[RIGHT_END_Y])
               + overlap (x, y, x + w, y + h,
-                         c->struts[TOP_START_X], 0, 
-                         c->struts[TOP_END_X], 
+                         c->struts[TOP_START_X], 0,
+                         c->struts[TOP_END_X],
                          c->struts[TOP])
               + overlap (x, y, x + w, y + h,
-                         c->struts[BOTTOM_START_X], 
+                         c->struts[BOTTOM_START_X],
                          c->screen_info->height - c->struts[BOTTOM],
-                         c->struts[BOTTOM_END_X], 
+                         c->struts[BOTTOM_END_X],
                          c->screen_info->height);
     }
     return sigma;
@@ -115,12 +115,12 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
     return (overlapX (x0, x1, tx0, tx1) * overlapY (y0, y1, ty0, ty1));
 }
 
-void 
+void
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
     Client *c2;
     int i, delta, screen_width, screen_height;
-    
+
     g_return_if_fail (x != NULL);
     g_return_if_fail (y != NULL);
     g_return_if_fail (w != NULL);
@@ -139,7 +139,7 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
             screen_height = c2->screen_info->height;
 
             /* Left */
-            if (overlap (*x, *y, *x + *w, *y + *h, 
+            if (overlap (*x, *y, *x + *w, *y + *h,
                          0, c2->struts[LEFT_START_Y], c2->struts[LEFT], c2->struts[LEFT_END_Y]))
             {
                 delta = c2->struts[LEFT] - *x;
@@ -148,7 +148,7 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
             }
 
             /* Right */
-            if (overlap (*x, *y, *x + *w, *y + *h, 
+            if (overlap (*x, *y, *x + *w, *y + *h,
                          screen_width - c2->struts[RIGHT], c2->struts[RIGHT_START_Y],
                          screen_width, c2->struts[RIGHT_END_Y]))
             {
@@ -157,7 +157,7 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
             }
 
             /* Top */
-            if (overlap (*x, *y, *x + *w, *y + *h, 
+            if (overlap (*x, *y, *x + *w, *y + *h,
                          c2->struts[TOP_START_X], 0, c2->struts[TOP_END_X], c2->struts[TOP]))
             {
                 delta = c2->struts[TOP] - *y;
@@ -166,7 +166,7 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
             }
 
             /* Bottom */
-            if (overlap (*x, *y, *x + *w, *y + *h, 
+            if (overlap (*x, *y, *x + *w, *y + *h,
                          c2->struts[BOTTOM_START_X], screen_height - c2->struts[BOTTOM],
                          c2->struts[BOTTOM_END_X], screen_height))
             {
@@ -183,7 +183,7 @@ clientCkeckTitle (Client * c)
     Client *c2;
     ScreenInfo *screen_info;
     int i, frame_x, frame_y, frame_width, frame_top;
-    
+
     frame_x = frameX (c);
     frame_y = frameY (c);
     frame_width = frameWidth (c);
@@ -203,7 +203,7 @@ clientCkeckTitle (Client * c)
 
 /* clientConstrainPos() is used when moving windows
    to ensure that the window stays accessible to the user
-   
+
    Returns the position in which the window was constrained.
     CLIENT_CONSTRAINED_TOP    = 1<<0
     CLIENT_CONSTRAINED_BOTTOM = 1<<1
@@ -250,7 +250,7 @@ clientConstrainPos (Client * c, gboolean show_full)
 
     screen_width = screen_info->width;
     screen_height = screen_info->height;
-    
+
     disp_x = rect.x;
     disp_y = rect.y;
     disp_max_x = rect.x + rect.width;
@@ -479,7 +479,7 @@ clientKeepVisible (Client * c)
 
     cx = frameX (c) + (frameWidth (c) / 2);
     cy = frameY (c) + (frameHeight (c) / 2);
-    
+
     /* Translate coodinates to center on physical screen */
 
     diff_x = abs (c->size->x - ((c->screen_info->width - c->width) / 2));
@@ -490,13 +490,13 @@ clientKeepVisible (Client * c)
     {
         GdkRectangle rect;
         gint monitor_nbr;
-        
+
         /* We consider that the windows is centered on screen,
          * Thus, will move it so its center on the current
          * physical screen
          */
         getMouseXY (c->screen_info, c->screen_info->xroot, &cx, &cy);
-        
+
         monitor_nbr = find_monitor_at_point (c->screen_info->gscr, cx, cy);
         gdk_screen_get_monitor_geometry (c->screen_info->gscr, monitor_nbr, &rect);
 
@@ -509,20 +509,20 @@ clientKeepVisible (Client * c)
 static void
 clientAutoMaximize (Client * c, int full_w, int full_h)
 {
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) || 
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
         FLAG_TEST (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
     {
         /* Fullscree nwindows should not be maximized */
         return;
     }
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && 
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) &&
         (frameWidth (c) > full_w))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
     }
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && 
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) &&
         (frameHeight (c) > full_h))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
@@ -573,11 +573,11 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                     && (c->win_workspace == c2->win_workspace)
                     && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
-                    count_overlaps += overlap (test_x - frame_left, 
-                                               test_y - frame_top, 
+                    count_overlaps += overlap (test_x - frame_left,
+                                               test_y - frame_top,
                                                test_x - frame_left + frame_width,
-                                               test_y - frame_top + frame_height, 
-                                               frameX (c2), 
+                                               test_y - frame_top + frame_height,
+                                               frameX (c2),
                                                frameY (c2),
                                                frameX (c2) + frameWidth (c2),
                                                frameY (c2) + frameHeight (c2));
@@ -650,7 +650,7 @@ clientInitPosition (Client * c)
     }
     else if (clientIsTransient (c) && (c2 = clientGetTransient (c)))
     {
-        
+
         /* Center transient relative to their parent window */
         c->x = c2->x + (c2->width - c->width) / 2;
         c->y = c2->y + (c2->height - c->height) / 2;
@@ -667,30 +667,30 @@ clientInitPosition (Client * c)
         getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
         place = TRUE;
     }
-    
+
     monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
-    
+
     full_x = MAX (screen_info->params->xfwm_margins[LEFT], rect.x);
     full_y = MAX (screen_info->params->xfwm_margins[TOP], rect.y);
-    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[RIGHT], 
+    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[RIGHT],
                   rect.x + rect.width) - full_x;
-    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[BOTTOM], 
+    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[BOTTOM],
                   rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */
     clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
 
-    /* 
-       If the windows is smaller than the given ratio of the available screen area, 
-       or if the window is larger than the screen area or if the given ratio is higher 
+    /*
+       If the windows is smaller than the given ratio of the available screen area,
+       or if the window is larger than the screen area or if the given ratio is higher
        than 100% place the window at the center.
        Otherwise, place the window "smartly", using the good old CPU consuming algorithm...
      */
     if (place)
     {
         if ((screen_info->params->placement_ratio > 100) ||
-            ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h)) || 
+            ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h)) ||
             (100 * frameWidth(c) * frameHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
         {
             centerPlacement (c, full_x, full_y, full_w, full_h);

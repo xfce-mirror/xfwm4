@@ -1,23 +1,23 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -29,7 +29,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "client.h"
 #include "compositor.h"
@@ -125,11 +125,11 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : demands_attention");
         data[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
     }
-    XChangeProperty (display_info->dpy, c->window, 
+    XChangeProperty (display_info->dpy, c->window,
                      display_info->atoms[NET_WM_STATE], XA_ATOM, 32,
                      PropModeReplace, (unsigned char *) data, i);
     /*
-       We also set GNOME hint here for consistency and convenience, 
+       We also set GNOME hint here for consistency and convenience,
        although the meaning of net_wm_state and win_state aren't the same.
      */
     setHint (display_info, c->window, WIN_STATE, c->win_state);
@@ -179,7 +179,7 @@ clientGetNetState (Client * c)
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
         }
     }
-    
+
     if (getAtomList (display_info, c->window, NET_WM_STATE, &atoms, &n_atoms))
     {
         int i;
@@ -296,7 +296,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     second = ((XEvent *) ev)->xclient.data.l[2];
     mode = 0;
 
-    if ((first  == display_info->atoms[NET_WM_STATE_SHADED]) || 
+    if ((first  == display_info->atoms[NET_WM_STATE_SHADED]) ||
         (second == display_info->atoms[NET_WM_STATE_SHADED]))
     {
         if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
@@ -313,7 +313,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
     }
 
-    if ((first  == display_info->atoms[NET_WM_STATE_STICKY]) || 
+    if ((first  == display_info->atoms[NET_WM_STATE_STICKY]) ||
         (second == display_info->atoms[NET_WM_STATE_STICKY]))
     {
         if (!clientIsValidTransientOrModal (c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
@@ -334,7 +334,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
     }
 
-    if ((first  == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION]) || 
+    if ((first  == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION]) ||
         (second == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION]))
     {
         if (action == NET_WM_STATE_ADD)
@@ -351,7 +351,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
     }
 
-    if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) || 
+    if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
         (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
         (first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]) ||
         (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]))
@@ -396,7 +396,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 {
                     mode |= WIN_STATE_MAXIMIZED_HORIZ;
                 }
-                if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]) || 
+                if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]))
                 {
                     mode |= WIN_STATE_MAXIMIZED_VERT;
@@ -406,7 +406,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
     }
 
-    if ((first  == display_info->atoms[NET_WM_STATE_MODAL]) || 
+    if ((first  == display_info->atoms[NET_WM_STATE_MODAL]) ||
         (second == display_info->atoms[NET_WM_STATE_MODAL]))
     {
         if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
@@ -453,7 +453,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
     }
 
-    if ((first  == display_info->atoms[NET_WM_STATE_ABOVE]) || 
+    if ((first  == display_info->atoms[NET_WM_STATE_ABOVE]) ||
         (second == display_info->atoms[NET_WM_STATE_ABOVE]))
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
@@ -476,7 +476,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
     }
 
-    if ((first  == display_info->atoms[NET_WM_STATE_BELOW]) || 
+    if ((first  == display_info->atoms[NET_WM_STATE_BELOW]) ||
         (second == display_info->atoms[NET_WM_STATE_BELOW]))
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
@@ -589,7 +589,7 @@ clientUpdateFullscreenState (Client * c)
     clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        /* 
+        /*
            For some reason, the configure can generate EnterNotify events
            on lower windows, causing a nasty race cond with apps trying to
            grab focus in focus follow mouse mode. Grab the pointer to
@@ -650,13 +650,13 @@ clientGetNetWmType (Client * c)
         i = 0;
         while (i < n_atoms)
         {
-            if ((atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP]) || 
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DOCK])    || 
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_TOOLBAR]) || 
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_MENU])    || 
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG])  || 
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL])  || 
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_UTILITY]) || 
+            if ((atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP]) ||
+                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DOCK])    ||
+                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_TOOLBAR]) ||
+                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_MENU])    ||
+                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG])  ||
+                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL])  ||
+                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_UTILITY]) ||
                 (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_SPLASH]))
             {
                 c->type_atom = atoms[i];
@@ -853,12 +853,12 @@ clientGetNetStruts (Client * c)
         }
         /* Fill(in values as for partial struts */
         c->struts[TOP_START_X] = c->struts[BOTTOM_START_X] = 0;
-        c->struts[TOP_END_X] = c->struts[BOTTOM_END_X] = 
+        c->struts[TOP_END_X] = c->struts[BOTTOM_END_X] =
             c->screen_info->width;
         c->struts[LEFT_START_Y] = c->struts[RIGHT_START_Y] = 0;
-        c->struts[LEFT_END_Y] = c->struts[RIGHT_END_Y] = 
+        c->struts[LEFT_END_Y] = c->struts[RIGHT_END_Y] =
             c->screen_info->height;
-        
+
         XFree (struts);
         workspaceUpdateArea (c->screen_info);
     }
@@ -894,7 +894,7 @@ clientSetNetActions (Client * c)
     {
         atoms[i++] = display_info->atoms[NET_WM_ACTION_SHADE];
     }
-    XChangeProperty (clientGetXDisplay (c), c->window, display_info->atoms[NET_WM_ALLOWED_ACTIONS], 
+    XChangeProperty (clientGetXDisplay (c), c->window, display_info->atoms[NET_WM_ALLOWED_ACTIONS],
                      XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
 }
 
@@ -926,8 +926,8 @@ clientWindowType (Client * c)
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
                 CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
-                XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_HAS_MOVE | 
-                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE | 
+                XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_HAS_MOVE |
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
                 XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_STICK |
                 XFWM_FLAG_HAS_BORDER);
         }
@@ -940,7 +940,7 @@ clientWindowType (Client * c)
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
                 XFWM_FLAG_HAS_BORDER |  XFWM_FLAG_HAS_MOVE |
-                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE | 
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
                 XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_STICK);
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_TOOLBAR])

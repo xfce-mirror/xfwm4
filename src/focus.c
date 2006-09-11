@@ -1,24 +1,24 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -32,7 +32,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "screen.h"
 #include "focus.h"
@@ -76,7 +76,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
         {
             continue;
         }
-        
+
         if (!exclude || (c != exclude))
         {
             if ((c->win_layer <= layer) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
@@ -107,14 +107,14 @@ clientFocusTop (ScreenInfo *screen_info, int layer)
     top_client = clientGetTopMostFocusable (screen_info, layer, NULL);
     if (top_client.prefered)
     {
-        clientSetFocus (screen_info, top_client.prefered, 
-                        myDisplayGetCurrentTime (screen_info->display_info), 
+        clientSetFocus (screen_info, top_client.prefered,
+                        myDisplayGetCurrentTime (screen_info->display_info),
                         NO_FOCUS_FLAG);
     }
     else
     {
-        clientSetFocus (screen_info, top_client.highest, 
-                        myDisplayGetCurrentTime (screen_info->display_info), 
+        clientSetFocus (screen_info, top_client.highest,
+                        myDisplayGetCurrentTime (screen_info->display_info),
                         NO_FOCUS_FLAG);
     }
 }
@@ -129,13 +129,13 @@ clientFocusNew(Client * c)
     gboolean prevented;
 
     g_return_val_if_fail (c != NULL, FALSE);
-    
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     give_focus = (c-> type & WINDOW_REGULAR_FOCUSABLE) && (screen_info->params->focus_new);
     prevent_focus_stealing = screen_info->params->prevent_focus_stealing;
     prevented = FALSE;
-    
+
     /*  Try to avoid focus stealing */
     if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
     {
@@ -169,11 +169,11 @@ clientFocusNew(Client * c)
         }
         clientRaise (c, None);
         clientShow (c, TRUE);
-        clientSetFocus (screen_info, c, 
+        clientSetFocus (screen_info, c,
 #if 0
-                        myDisplayGetCurrentTime (display_info), 
+                        myDisplayGetCurrentTime (display_info),
 #else
-                        CurrentTime, 
+                        CurrentTime,
 #endif
                         FOCUS_IGNORE_MODAL);
     }
@@ -206,9 +206,8 @@ clientFocusNew(Client * c)
 gboolean
 clientSelectMask (Client * c, int mask, int type)
 {
-    TRACE ("entering clientSelectMask");
-
     g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("entering clientSelectMask");
 
     if ((!clientAcceptFocus (c)) && !(mask & INCLUDE_SKIP_FOCUS))
     {
@@ -331,7 +330,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
             {
                 /* If the window is a modal, send focus back to its parent window.
                    Modals are transients, and we aren't interested in modal
-                   for group, so it safe to use clientGetTransient because 
+                   for group, so it safe to use clientGetTransient because
                    it's really what we want...
                  */
                 c2 = clientGetTransient (c);
@@ -362,11 +361,11 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
-    clientSetFocus (screen_info, new_focus, 
+    clientSetFocus (screen_info, new_focus,
 #if 0
-                    myDisplayGetCurrentTime (screen_info->display_info), 
+                    myDisplayGetCurrentTime (screen_info->display_info),
 #else
-                    CurrentTime, 
+                    CurrentTime,
 #endif
                     FOCUS_IGNORE_MODAL | FOCUS_FORCE);
 }
@@ -375,20 +374,19 @@ gboolean
 clientAcceptFocus (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
-
     TRACE ("entering clientAcceptFocus");
 
     /* Modal dialogs *always* accept focus */
     if (FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
-        return TRUE; 
+        return TRUE;
     }
     /* First check GNOME protocol */
     if (c->win_hints & WIN_HINTS_SKIP_FOCUS)
     {
         return FALSE;
     }
-    if ((c->screen_info->params->focus_hint) 
+    if ((c->screen_info->params->focus_hint)
         && !FLAG_TEST (c->wm_flags, WM_FLAG_INPUT | WM_FLAG_TAKEFOCUS))
     {
         return FALSE;
@@ -401,12 +399,12 @@ void
 clientSortRing(Client *c)
 {
     ScreenInfo *screen_info;
-    
-    g_return_if_fail (c != NULL);
 
+    g_return_if_fail (c != NULL);
     TRACE ("Sorting...");
+
     screen_info = c->screen_info;
-    if ((screen_info->client_count > 2) && (c != screen_info->clients)) 
+    if ((screen_info->client_count > 2) && (c != screen_info->clients))
     {
         c->prev->next = c->next;
         c->next->prev = c->prev;
@@ -443,7 +441,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         return;
     }
 
-    /* 
+    /*
        We can release the button mouse grab if we don't raise on click or if the focused window
        is the one that has been raised at last.
      */
@@ -478,7 +476,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         frameDraw (c2, FALSE);
     }
     data[1] = None;
-    XChangeProperty (display_info->dpy, screen_info->xroot, 
+    XChangeProperty (display_info->dpy, screen_info->xroot,
                      display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                      PropModeReplace, (unsigned char *) data, 2);
 
@@ -492,7 +490,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
     Client *c2;
 
     TRACE ("entering clientSetFocus");
-    
+
     display_info = screen_info->display_info;
     c2 = NULL;
     if ((c) && !(flags & FOCUS_IGNORE_MODAL))
@@ -518,7 +516,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
             TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request",
                 c->name, c->window);
             return;
-        }        
+        }
         if (!clientAcceptFocus (c))
         {
             TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
@@ -527,7 +525,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         if (FLAG_TEST (c->wm_flags, WM_FLAG_INPUT) || !(screen_info->params->focus_hint))
         {
             pending_focus = c;
-            /* 
+            /*
              * When shaded, the client window is unmapped, so it can not be focused.
              * Instead, we focus the frame that is still mapped.
              */
@@ -549,9 +547,9 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
     else
     {
         unsigned long data[2];
-        
+
         TRACE ("setting focus to none");
-        
+
         data[0] = data[1] = None;
         client_focus = NULL;
         if (c2)
@@ -565,6 +563,35 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
         clientUpdateOpacity (screen_info, c);
     }
+}
+
+void
+clientInitFocusFlag (Client * c)
+{
+    ScreenInfo *screen_info;
+    Client *c2;
+    GList *index;
+    int workspace;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientSetFocus");
+
+    if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
+    {
+       return;
+    }
+
+    screen_info = c->screen_info;
+    workspace = c->win_workspace;
+    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    {
+        c2 = (Client *) index->data;
+        if ((c2->win_workspace == workspace) && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_FOCUS))
+        {
+            FLAG_UNSET (c2->xfwm_flags, XFWM_FLAG_FOCUS);
+        }
+    }
+    FLAG_SET (c->xfwm_flags, XFWM_FLAG_FOCUS);
 }
 
 Client *
@@ -583,7 +610,7 @@ void
 clientGrabMouseButton (Client * c)
 {
     ScreenInfo *screen_info;
-    
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientGrabMouseButton");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
@@ -603,7 +630,7 @@ void
 clientUngrabMouseButton (Client * c)
 {
     ScreenInfo *screen_info;
-    
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUngrabMouseButton");
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
@@ -619,7 +646,7 @@ clientGrabMouseButtonForAll (ScreenInfo *screen_info)
 {
     Client *c;
     int i;
-    
+
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering clientGrabMouseButtonForAll");
 
@@ -635,7 +662,7 @@ clientUngrabMouseButtonForAll (ScreenInfo *screen_info)
 {
     Client *c;
     int i;
-    
+
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering clientUngrabMouseButtonForAll");
 

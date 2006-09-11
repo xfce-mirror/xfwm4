@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         Metacity - (c) 2003 Havoc Pennington
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -36,7 +36,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "display.h"
 #include "screen.h"
@@ -74,12 +74,12 @@ sn_update_feedback (ScreenInfo *screen_info)
 
     if (screen_info->startup_sequences != NULL)
     {
-        XDefineCursor (myScreenGetXDisplay (screen_info), screen_info->xroot, 
+        XDefineCursor (myScreenGetXDisplay (screen_info), screen_info->xroot,
                        myDisplayGetCursorBusy(screen_info->display_info));
     }
     else
     {
-        XDefineCursor (myScreenGetXDisplay (screen_info), screen_info->xroot, 
+        XDefineCursor (myScreenGetXDisplay (screen_info), screen_info->xroot,
                        myDisplayGetCursorRoot(screen_info->display_info));
     }
 }
@@ -187,7 +187,7 @@ sn_screen_event (SnMonitorEvent * event, void *user_data)
     const char *wmclass;
     ScreenInfo *screen_info;
     SnStartupSequence *sequence;
-    
+
     g_return_if_fail (event != NULL);
     sequence = sn_monitor_event_get_startup_sequence (event);
 
@@ -291,7 +291,7 @@ sn_client_startup_properties (Client * c)
             myDisplaySetLastUserTime (screen_info->display_info, c->user_time);
         }
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME);
-        
+
         /* Set initial workspace */
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET))
         {

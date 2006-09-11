@@ -1,22 +1,22 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 #include "keyboard.h"
 
 unsigned int AltMask;
@@ -145,16 +145,16 @@ grabKey (Display * dpy, MyKey * key, Window w)
         else
         {
             /* Here we grab all combinations of well known modifiers */
-            XGrabKey (dpy, key->keycode, 
+            XGrabKey (dpy, key->keycode,
                 key->modifier, w, FALSE,
                 GrabModeAsync, GrabModeSync);
-            XGrabKey (dpy, key->keycode, 
+            XGrabKey (dpy, key->keycode,
                 key->modifier | ScrollLockMask, w,
                 FALSE, GrabModeAsync, GrabModeSync);
-            XGrabKey (dpy, key->keycode, 
+            XGrabKey (dpy, key->keycode,
                 key->modifier | NumLockMask, w,
                 FALSE, GrabModeAsync, GrabModeSync);
-            XGrabKey (dpy, key->keycode, 
+            XGrabKey (dpy, key->keycode,
                 key->modifier | LockMask, w,
                 FALSE, GrabModeAsync, GrabModeSync);
             XGrabKey (dpy, key->keycode,
@@ -189,43 +189,43 @@ grabButton (Display * dpy, int button, int modifier, Window w)
     if (modifier == AnyModifier)
     {
         XGrabButton (dpy, button, AnyModifier, w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
     }
     else
     {
         /* Here we grab all combinations of well known modifiers */
-        XGrabButton (dpy, button, modifier, 
+        XGrabButton (dpy, button, modifier,
             w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
-        XGrabButton (dpy, button, modifier | ScrollLockMask, 
+        XGrabButton (dpy, button, modifier | ScrollLockMask,
             w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
-        XGrabButton (dpy, button, modifier | NumLockMask, 
+        XGrabButton (dpy, button, modifier | NumLockMask,
             w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
         XGrabButton (dpy, button, modifier | LockMask, w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
-        XGrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask, 
+        XGrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask,
             w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
-        XGrabButton (dpy, button, modifier | ScrollLockMask | LockMask, 
+        XGrabButton (dpy, button, modifier | ScrollLockMask | LockMask,
             w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
-        XGrabButton (dpy, button, modifier | LockMask | NumLockMask, 
+        XGrabButton (dpy, button, modifier | LockMask | NumLockMask,
             w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
-        XGrabButton (dpy, button, 
-            modifier | ScrollLockMask | LockMask | NumLockMask, 
+        XGrabButton (dpy, button,
+            modifier | ScrollLockMask | LockMask | NumLockMask,
             w, FALSE,
-            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync, 
+            ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
             None, None);
     }
 }
@@ -278,7 +278,7 @@ initModifiers (Display * dpy)
 
     XDisplayKeycodes (dpy, &min_keycode, &max_keycode);
     modmap = XGetModifierMapping (dpy);
-    keymap = XGetKeyboardMapping (dpy, min_keycode, max_keycode - min_keycode + 1, &keysyms_per_keycode);  
+    keymap = XGetKeyboardMapping (dpy, min_keycode, max_keycode - min_keycode + 1, &keysyms_per_keycode);
 
     for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
     {
@@ -305,7 +305,7 @@ initModifiers (Display * dpy)
                 else if ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R))
                 {
                     HyperMask |= (1 << ( i / modmap->max_keypermod));
-                }              
+                }       
                 else if ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R))
                 {
                     MetaMask |= (1 << ( i / modmap->max_keypermod));

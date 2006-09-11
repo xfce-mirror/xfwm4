@@ -1,21 +1,21 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifndef INC_DISPLAY_H
@@ -65,9 +65,9 @@
 #define WINDOW                                                  1
 #define FRAME                                                   2
 
-/* 
- * The following macro is taken straight from metacity, 
- * if that needs some explanation, please refer to metacity's 
+/*
+ * The following macro is taken straight from metacity,
+ * if that needs some explanation, please refer to metacity's
  * display.h source where it is explaned
  */
 #define TIMESTAMP_IS_BEFORE_REAL(time1, time2)  ((((time1) < (time2)) && ((time2) - (time1) < ((guint32)-1)/2 )) || \
@@ -76,7 +76,7 @@
                                                 (TIMESTAMP_IS_BEFORE_REAL(time1, time2) &&                          \
                                                 (time2) != 0))
 
-enum 
+enum
 {
     COMPOSITING_MANAGER = 0,
     GNOME_PANEL_DESKTOP_AREA,
@@ -183,7 +183,7 @@ typedef struct _XfwmParams        XfwmParams;
 typedef struct _ScreenInfo        ScreenInfo;
 typedef struct _Settings          Settings;
 
-struct _DisplayInfo 
+struct _DisplayInfo
 {
     GdkDisplay *gdisplay;
     Display *dpy;
@@ -196,7 +196,7 @@ struct _DisplayInfo
     Cursor move_cursor;
     Cursor root_cursor;
     Cursor resize_cursor[8];
-    
+
     Atom atoms[NB_ATOMS];
 
     eventFilterSetup *xfilter;
@@ -216,11 +216,11 @@ struct _DisplayInfo
     Time last_user_time;
 
     gboolean enable_compositor;
-#ifdef HAVE_RENDER 
+#ifdef HAVE_RENDER
     gint render_error_base;
     gint render_event_base;
 #endif
-#ifdef HAVE_RANDR 
+#ifdef HAVE_RANDR
     gint xrandr_error_base;
     gint xrandr_event_base;
 #endif
@@ -247,42 +247,42 @@ struct _DisplayInfo
 #endif /* HAVE_COMPOSITOR */
 };
 
-DisplayInfo * myDisplayInit                 (GdkDisplay *); 
+DisplayInfo * myDisplayInit                 (GdkDisplay *);
 DisplayInfo * myDisplayClose                (DisplayInfo *);
 gboolean      myDisplayHaveShape            (DisplayInfo *);
 gboolean      myDisplayHaveRender           (DisplayInfo *);
 Cursor        myDisplayGetCursorBusy        (DisplayInfo *);
 Cursor        myDisplayGetCursorMove        (DisplayInfo *);
 Cursor        myDisplayGetCursorRoot        (DisplayInfo *);
-Cursor        myDisplayGetCursorResize      (DisplayInfo *, 
+Cursor        myDisplayGetCursorResize      (DisplayInfo *,
                                              guint);
 void          myDisplayGrabServer           (DisplayInfo *);
 void          myDisplayUngrabServer         (DisplayInfo *);
 void          myDisplayAddClient            (DisplayInfo *,
                                              Client *);
-void          myDisplayRemoveClient         (DisplayInfo *, 
+void          myDisplayRemoveClient         (DisplayInfo *,
                                              Client *);
-Client *      myDisplayGetClientFromWindow  (DisplayInfo *, 
-                                             Window, 
+Client *      myDisplayGetClientFromWindow  (DisplayInfo *,
+                                             Window,
                                              int);
-void          myDisplayAddScreen            (DisplayInfo *, 
+void          myDisplayAddScreen            (DisplayInfo *,
                                              ScreenInfo *);
-void          myDisplayRemoveScreen         (DisplayInfo *, 
+void          myDisplayRemoveScreen         (DisplayInfo *,
                                              ScreenInfo *);
-ScreenInfo *  myDisplayGetScreenFromRoot    (DisplayInfo *, 
+ScreenInfo *  myDisplayGetScreenFromRoot    (DisplayInfo *,
                                              Window);
-ScreenInfo *  myDisplayGetScreenFromNum     (DisplayInfo *, 
+ScreenInfo *  myDisplayGetScreenFromNum     (DisplayInfo *,
                                              int);
-Window        myDisplayGetRootFromWindow    (DisplayInfo *, 
+Window        myDisplayGetRootFromWindow    (DisplayInfo *,
                                              Window w);
-ScreenInfo *  myDisplayGetScreenFromWindow  (DisplayInfo *, 
+ScreenInfo *  myDisplayGetScreenFromWindow  (DisplayInfo *,
                                              Window w);
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
-ScreenInfo *  myDisplayGetScreenFromSystray (DisplayInfo *, 
+ScreenInfo *  myDisplayGetScreenFromSystray (DisplayInfo *,
                                              Window);
 #endif
 ScreenInfo *  myDisplayGetDefaultScreen     (DisplayInfo *);
-Time          myDisplayUpdateCurrentTime     (DisplayInfo *, 
+Time          myDisplayUpdateCurrentTime     (DisplayInfo *,
                                              XEvent *);
 Time          myDisplayGetCurrentTime       (DisplayInfo *);
 Time          myDisplayGetLastUserTime      (DisplayInfo *);

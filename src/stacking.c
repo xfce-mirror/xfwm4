@@ -1,28 +1,28 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #include <glib.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "display.h"
 #include "screen.h"
@@ -155,12 +155,12 @@ clientIsTopMost (Client *c)
 {
     ScreenInfo *screen_info;
     GList *index;
-    
+
     g_return_val_if_fail (c != NULL, FALSE);
     TRACE ("entering clientIsTopMost");
-    
+
     screen_info = c->screen_info;
-    
+
     index = g_list_find (screen_info->windows_stack, (gconstpointer) c);
     if (index)
     {
@@ -255,7 +255,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
         if ((frameX (c2) < x) && (frameX (c2) + frameWidth (c2) > x)
             && (frameY (c2) < y) && (frameY (c2) + frameHeight (c2) > y))
         {
-            if (clientSelectMask (c2, 0, WINDOW_REGULAR_FOCUSABLE) 
+            if (clientSelectMask (c2, 0, WINDOW_REGULAR_FOCUSABLE)
                 && (c2 != exclude))
             {
                 c = c2;
@@ -295,11 +295,11 @@ clientRaise (Client * c, Window wsibling)
     }
     TRACE ("raising client \"%s\" (0x%lx) over (0x%lx)", c->name, c->window, wsibling);
 
-    /* 
+    /*
      * If the raised window is the one that has focus, fine, we can
      * release the grab we have on it since there is no use for it
      * anymore.
-     * 
+     *
      * However, if the raised window is not the focused one, then we
      * end up with some kind of indermination, so we need to regrab
      * the buttons for the user to be able to raise or focus the window
@@ -493,7 +493,7 @@ clientLower (Client * c, Window wsibling)
                 }
             }
         }
-        if ((!client_sibling) || 
+        if ((!client_sibling) ||
             (client_sibling && (client_sibling->win_layer < c->win_layer)))
         {
             client_sibling = clientGetBottomMost (screen_info, c->win_layer, c);

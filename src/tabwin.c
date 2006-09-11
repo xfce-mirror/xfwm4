@@ -1,21 +1,21 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 #ifdef HAVE_CONFIG_H
@@ -52,13 +52,13 @@ get_color (GtkWidget * win, GtkStateType state_type)
     style = gtk_rc_get_style (win);
     if (!style)
     {
-	style = gtk_widget_get_style (win);
+        style = gtk_widget_get_style (win);
     }
     if (!style)
     {
-	style = gtk_widget_get_default_style ();
+        style = gtk_widget_get_default_style ();
     }
-    
+
     return (&style->bg[state_type]);
 }
 
@@ -110,7 +110,7 @@ tabwinSetLabel (Tabwin * t, gchar * class, gchar * label, int workspace)
 
     gtk_label_set_markup (GTK_LABEL (t->class), markup);
     g_free (markup);
-    
+
     if (t->display_workspace)
     {
         message = g_strdup_printf ("[%i] - %s", workspace + 1, label);
@@ -186,13 +186,13 @@ createWindowlist (GdkScreen * scr, Client * current, Client * new, unsigned int 
     /* calculate the wrapping */
     screen_info = current->screen_info;
     n_clients = screen_info->client_count;
-    
+
     g_return_val_if_fail (n_clients > 0, NULL);
-    
+
     getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
     monitor = find_monitor_at_point (scr, msx, msy);
     gdk_screen_get_monitor_geometry (scr, monitor, &monitor_sz);
-    
+
     /* add the width of the border on each side */
     grid_cols = (monitor_sz.width / (WIN_ICON_SIZE + 2 * WIN_ICON_BORDER)) * 0.75;
     grid_rows = n_clients / grid_cols + 1;
@@ -238,7 +238,7 @@ tabwinCreate (GdkScreen * scr, Client * current, Client * new, unsigned int cycl
     tabwin = g_new0 (Tabwin, 1);
 
     tabwin->window = gtk_window_new (GTK_WINDOW_POPUP);
-    
+
     tabwin->display_workspace = display_workspace;
     gtk_window_set_screen (GTK_WINDOW (tabwin->window), scr);
     gtk_widget_set_name (GTK_WIDGET (tabwin->window), "xfwm4-tabwin");
@@ -351,7 +351,7 @@ Client *
 tabwinSelectNext (Tabwin * t)
 {
     GList *next;
-    
+
     g_return_val_if_fail (t != NULL, NULL);
 
     next = g_list_next(t->current);
@@ -359,7 +359,7 @@ tabwinSelectNext (Tabwin * t)
     {
         next = t->head;
         g_return_val_if_fail (next != NULL, NULL);
-    }    
+    }
 
     tabwinSetSelected (t, next->data);
     t->current = next;
@@ -372,7 +372,7 @@ Client *
 tabwinSelectPrev (Tabwin * t)
 {
     GList *prev;
-    
+
     g_return_val_if_fail (t != NULL, NULL);
 
     prev = g_list_previous (t->current);

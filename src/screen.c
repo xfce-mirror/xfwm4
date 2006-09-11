@@ -1,21 +1,21 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
 
 
@@ -30,7 +30,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #ifdef HAVE_RENDER
 #include <X11/extensions/Xrender.h>
@@ -58,14 +58,14 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     PangoLayout *layout;
     long desktop_visible;
     int i;
-    
+
     g_return_val_if_fail (display_info, NULL);
     g_return_val_if_fail (GDK_IS_SCREEN (gscr), NULL);
     TRACE ("entering myScreenInit");
 
     screen_info = g_new0 (ScreenInfo, 1);
     screen_info->params = g_new0 (XfwmParams, 1);
-    
+
     screen_info->display_info = display_info;
     screen_info->gscr = gscr;
     desktop_visible = 0;
@@ -130,22 +130,22 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->client_count = 0;
     screen_info->client_serial = 0L;
     screen_info->button_handler_id = 0L;
-    
+
     screen_info->key_grabs = 0;
     screen_info->pointer_grabs = 0;
 
     getHint (display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &desktop_visible);
     screen_info->show_desktop = (desktop_visible != 0);
-    
+
     /* Create the side windows to detect edge movement */
 
     /*left*/
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
-                    &screen_info->sidewalk[0], 
-                    0, 0, 
-                    1, screen_info->height, 
+                    &screen_info->sidewalk[0],
+                    0, 0,
+                    1, screen_info->height,
                     EnterWindowMask,
                     TRUE);
 
@@ -153,9 +153,9 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
-                    &screen_info->sidewalk[1], 
-                    screen_info->width - 1, 0, 
-                    1, screen_info->height, 
+                    &screen_info->sidewalk[1],
+                    screen_info->width - 1, 0,
+                    1, screen_info->height,
                     EnterWindowMask,
                     TRUE);
 
@@ -163,8 +163,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
-                    &screen_info->sidewalk[2], 
-                    0, 0, 
+                    &screen_info->sidewalk[2],
+                    0, 0,
                     screen_info->width, 1,
                     EnterWindowMask,
                     TRUE);
@@ -173,8 +173,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
-                    &screen_info->sidewalk[3], 
-                    0, screen_info->height - 1, 
+                    &screen_info->sidewalk[3],
+                    0, screen_info->height - 1,
                     screen_info->width, 1,
                     EnterWindowMask,
                     TRUE);
@@ -186,7 +186,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->net_system_tray_selection = XInternAtom (display_info->dpy, selection, FALSE);
     screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
 #endif
-    
+
     screen_info->box_gc = None;
     screen_info->black_gc = NULL;
     screen_info->white_gc = NULL;
@@ -231,12 +231,12 @@ ScreenInfo *
 myScreenClose (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
-    
+
     g_return_val_if_fail (screen_info, NULL);
     TRACE ("entering myScreenClose");
 
     display_info = screen_info->display_info;
-    
+
     clientUnframeAll (screen_info);
     compositorUnmanageScreen (screen_info);
     closeSettings (screen_info);
@@ -256,13 +256,13 @@ myScreenClose (ScreenInfo *screen_info)
 
     g_free (screen_info->params);
     screen_info->params = NULL;
-    
+
     gtk_widget_destroy (screen_info->gtk_win);
     screen_info->gtk_win = NULL;
 
     g_list_free (screen_info->windows_stack);
     screen_info->windows_stack = NULL;
-    
+
     g_list_free (screen_info->windows);
     screen_info->windows = NULL;
 
@@ -273,7 +273,7 @@ Display *
 myScreenGetXDisplay (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
-    
+
     g_return_val_if_fail (screen_info, NULL);
     g_return_val_if_fail (screen_info->display_info, NULL);
     TRACE ("entering myScreenGetXDisplay");
@@ -306,21 +306,21 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
     gboolean grab;
 
     g_return_val_if_fail (screen_info, FALSE);
-    
+
     TRACE ("entering myScreenGrabKeyboard");
 
     grab = TRUE;
     if (screen_info->key_grabs == 0)
     {
-        grab = (XGrabKeyboard (myScreenGetXDisplay (screen_info), 
+        grab = (XGrabKeyboard (myScreenGetXDisplay (screen_info),
                                screen_info->xfwm4_win,
-                               FALSE, 
-                               GrabModeAsync, GrabModeAsync, 
+                               FALSE,
+                               GrabModeAsync, GrabModeAsync,
                                time) == GrabSuccess);
     }
     screen_info->key_grabs++;
     TRACE ("global key grabs %i", screen_info->key_grabs);
-    
+
     return grab;
 }
 
@@ -335,17 +335,17 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
     grab = TRUE;
     if (screen_info->pointer_grabs == 0)
     {
-        grab = (XGrabPointer (myScreenGetXDisplay (screen_info), 
-                              screen_info->xfwm4_win, 
-                              FALSE, event_mask, 
-                              GrabModeAsync, GrabModeAsync, 
-                              screen_info->xroot, 
-                              cursor, 
+        grab = (XGrabPointer (myScreenGetXDisplay (screen_info),
+                              screen_info->xfwm4_win,
+                              FALSE, event_mask,
+                              GrabModeAsync, GrabModeAsync,
+                              screen_info->xroot,
+                              cursor,
                               time) == GrabSuccess);
     }
     screen_info->pointer_grabs++;
     TRACE ("global pointer grabs %i", screen_info->pointer_grabs);
-    
+
     return grab;
 }
 

@@ -1,24 +1,24 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         metacity - (c) 2001 Anders Carlsson, Havoc Pennington
         xfwm4    - (c) 2002-2006 Olivier Fourdan
- 
+
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -30,7 +30,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libxfce4util/libxfce4util.h> 
+#include <libxfce4util/libxfce4util.h>
 
 #include "screen.h"
 #include "client.h"
@@ -48,11 +48,11 @@ wireframeUpdate (Client *c, Window xwindow)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (xwindow != None);
-    
+
     TRACE ("entering wireframeUpdate 0x%lx", xwindow);
     screen_info = c->screen_info;
     XUnmapWindow (clientGetXDisplay (c), xwindow);
-    XMoveResizeWindow (clientGetXDisplay (c), xwindow, 
+    XMoveResizeWindow (clientGetXDisplay (c), xwindow,
                        frameX (c), frameY (c), frameWidth (c), frameHeight (c));
 
     if ((frameWidth (c) > OUTLINE_WIDTH * 2) && (frameHeight (c) > OUTLINE_WIDTH * 2))
@@ -73,27 +73,27 @@ wireframeUpdate (Client *c, Window xwindow)
         xrect.x += OUTLINE_WIDTH;
         xrect.y += OUTLINE_WIDTH;
         xrect.width -= OUTLINE_WIDTH * 2;
-        xrect.height -= OUTLINE_WIDTH * 2;  
+        xrect.height -= OUTLINE_WIDTH * 2;
 
         XUnionRectWithRegion (&xrect, inner_xregion, inner_xregion);
 
         XSubtractRegion (outer_xregion, inner_xregion, outer_xregion);
 
-        XShapeCombineRegion (clientGetXDisplay (c), xwindow, ShapeBounding, 
+        XShapeCombineRegion (clientGetXDisplay (c), xwindow, ShapeBounding,
                              0, 0, outer_xregion, ShapeSet);
 
         XDestroyRegion (outer_xregion);
         XDestroyRegion (inner_xregion);
         XMapWindow (clientGetXDisplay (c), xwindow);
 
-        XDrawRectangle (clientGetXDisplay (c), xwindow, 
+        XDrawRectangle (clientGetXDisplay (c), xwindow,
                         gdk_x11_gc_get_xgc (screen_info->white_gc),
                         0, 0, frameWidth (c) - 1, frameHeight (c) - 1);
 
-        XDrawRectangle (clientGetXDisplay (c), xwindow, 
+        XDrawRectangle (clientGetXDisplay (c), xwindow,
                         gdk_x11_gc_get_xgc (screen_info->white_gc),
-                        OUTLINE_WIDTH - 1, OUTLINE_WIDTH - 1, 
-                        frameWidth (c) - 2 * (OUTLINE_WIDTH - 1) - 1, 
+                        OUTLINE_WIDTH - 1, OUTLINE_WIDTH - 1,
+                        frameWidth (c) - 2 * (OUTLINE_WIDTH - 1) - 1,
                         frameHeight (c)- 2 * (OUTLINE_WIDTH - 1) - 1);
     }
     else
@@ -103,7 +103,7 @@ wireframeUpdate (Client *c, Window xwindow)
                            ShapeBounding, 0, 0, None, ShapeSet);
         XMapWindow (clientGetXDisplay (c), xwindow);
 
-        XDrawRectangle (clientGetXDisplay (c), xwindow, 
+        XDrawRectangle (clientGetXDisplay (c), xwindow,
                         gdk_x11_gc_get_xgc (screen_info->white_gc),
                         0, 0, frameWidth (c) - 1, frameHeight (c) - 1);
     }
@@ -118,7 +118,7 @@ wireframeCreate (Client *c)
     Window xwindow;
 
     g_return_val_if_fail (c != NULL, None);
-    
+
     TRACE ("entering wireframeCreate");
 
     screen_info = c->screen_info;
