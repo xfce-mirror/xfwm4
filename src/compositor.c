@@ -2428,6 +2428,25 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
     }
 }
 
+static void
+compositorSetCMSelection (ScreenInfo *screen_info, Window w)
+{
+    DisplayInfo *display_info;
+    gchar selection[32];
+    Atom a;
+
+    g_return_if_fail (screen_info != NULL);
+
+    display_info = screen_info->display_info;
+    /* Newer EWMH standard property "_NET_WM_CM_S<n>" */
+    g_snprintf (selection, sizeof (selection), "_NET_WM_CM_S%d", screen_info->screen);
+    a = XInternAtom (display_info->dpy, selection, FALSE);
+    setXAtomManagerOwner (display_info, a, screen_info->xroot, w);
+
+    /* Older property "COMPOSITING_MANAGER" */
+    setAtomIdManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, w);
+}
+
 #endif /* HAVE_COMPOSITOR */
 
 gboolean
@@ -2710,26 +2729,6 @@ compositorSetCompositeMode (DisplayInfo *display_info, gboolean use_manual_redir
     }
 #endif /* HAVE_COMPOSITOR */
 }
-
-static void
-compositorSetCMSelection (ScreenInfo *screen_info, Window w)
-{
-    DisplayInfo *display_info;
-    gchar selection[32];
-    Atom a;
-
-    g_return_if_fail (screen_info != NULL);
-
-    display_info = screen_info->display_info;
-    /* Newer EWMH standard property "_NET_WM_CM_S<n>" */
-    g_snprintf (selection, sizeof (selection), "_NET_WM_CM_S%d", screen_info->screen);
-    a = XInternAtom (display_info->dpy, selection, FALSE);
-    setXAtomManagerOwner (display_info, a, screen_info->xroot, w);
-
-    /* Older property "COMPOSITING_MANAGER" */
-    setAtomIdManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, w);
-}
-
 
 gboolean
 compositorManageScreen (ScreenInfo *screen_info)
