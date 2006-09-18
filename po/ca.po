@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-04 21:05+0200\n"
-"PO-Revision-Date: 2006-05-13 20:27+0100\n"
+"PO-Revision-Date: 2006-09-18 19:11+0200\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -72,17 +72,13 @@ msgstr "Cap"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Ajustaments avançats del gestor de finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
-#, fuzzy
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
-"Inclou les finestres que tinguin la propietat «omet paginador» o «omet barra "
-"de tasques» activada."
+msgstr "Omet les finestres que tenen activades les propietats «omet el paginador» o «omet la barra de tasques»"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
@@ -118,14 +114,13 @@ msgstr "Coŀloca en primer pla quan es pitgi qualsevol botó del ratolí"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Amaga el marc de la finestra en maximitzar"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
 msgstr "Restaura la mida original de les finestres maximitzades quan es mouen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Use edge resistance instead of windows snapping"
 msgstr ""
 "Empra resistència a les vores en lloc de l'alineació ràpida de finestres"
@@ -172,11 +167,12 @@ msgstr "Emplaçament"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
-msgstr ""
+msgstr "Habilita el composite"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
+#, fuzzy
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "Mostra la pantalla completa"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
@@ -203,9 +199,8 @@ msgid "Opaque"
 msgstr "Opacitat"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:597
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Opacitat de les finestres emergents"
+msgstr "Opacitat de les finestres inactives"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
 msgid "Opacity of windows during move"
@@ -220,17 +215,13 @@ msgid "Opacity of popup windows"
 msgstr "Opacitat de les finestres emergents"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:620
-#, fuzzy
 msgid "Compositor"
 msgstr "«Compositor»"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr ""
-"Gestor de finestres,\n"
-"ajustaments avançats"
+msgstr "Etiqueta del botó|Ajustaments avançants del gestor de finestres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
@@ -432,17 +423,14 @@ msgid "Raise on click"
 msgstr "Primer pla al pitjar"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1695
-#, fuzzy
 msgid "Windows snapping"
 msgstr "Alineació ràpida de finestres"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1700
-#, fuzzy
 msgid "Snap windows to screen border"
 msgstr "Alinea ràpidament les finestres a la vora de la pantalla"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1706
-#, fuzzy
 msgid "Snap windows to other windows"
 msgstr "Alinea ràpidament les finestres amb les altres finestres"
 
@@ -552,9 +540,8 @@ msgid "Stick window"
 msgstr "Finestra omnipresent"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Tanca la finestra"
+msgstr "Cicla les finestra"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window up"
@@ -589,9 +576,8 @@ msgid "Resize window right"
 msgstr "Redimensiona la finestra cap a la dreta"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "Tanca la finestra"
+msgstr "Cancela el moviment/la redimensió de la finestra"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Raise window"
@@ -830,7 +816,6 @@ msgid "Advanced Configuration"
 msgstr "Configuració avançada"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
 msgstr "Ajustaments avançats del gestor de finestres d'Xfce 4"
 
