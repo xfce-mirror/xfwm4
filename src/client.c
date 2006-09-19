@@ -635,7 +635,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
 }
 
 void
-clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags)
+clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
     XConfigureEvent ce;
     int px, py, pwidth, pheight;
@@ -2416,6 +2416,7 @@ clientShade (Client * c)
     XWindowChanges wc;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    unsigned long mask;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleShaded");
@@ -2441,7 +2442,14 @@ clientShade (Client * c)
     clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        clientConstrainPos (c, FALSE);
+        mask = (CWWidth | CWHeight);
+        if (clientConstrainPos (c, FALSE))
+        {
+            wc.x = c->x;
+            wc.y = c->y;
+            mask |= (CWX | CWY);
+        }
+        
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
             c->ignore_unmap++;
@@ -2459,7 +2467,7 @@ clientShade (Client * c)
 
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
+        clientConfigure (c, &wc, mask, CFG_FORCE_REDRAW);
     }
 }
 

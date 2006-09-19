@@ -284,7 +284,7 @@ void     clientUpdateWinState (Client *, XClientMessageEvent *);
 void     clientUpdateUrgency (Client *);
 void     clientCoordGravitate (Client *, int, int *, int *);
 void     clientGravitate (Client *, int);
-void     clientConfigure (Client *, XWindowChanges *, int, unsigned short);
+void     clientConfigure (Client *, XWindowChanges *, unsigned long, unsigned short);
 void     clientGetMWMHints (Client *, gboolean);
 void     clientGetWMNormalHints (Client *, gboolean);
 void     clientGetWMProtocols (Client *);
