@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-04 21:05+0200\n"
-"PO-Revision-Date: 2006-09-18 19:11+0200\n"
+"PO-Revision-Date: 2006-09-20 13:51+0200\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -170,9 +170,8 @@ msgid "Enable display compositing"
 msgstr "Habilita el composite"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
-#, fuzzy
 msgid "Display full screen overlay windows directly"
-msgstr "Mostra la pantalla completa"
+msgstr "Visualitza directament les finestres que cobreixen tota la pantalla"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
