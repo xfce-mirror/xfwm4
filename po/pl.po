@@ -110,7 +110,7 @@ msgstr "Podnieś okno gdy wciśnięto dowolny przycisk myszy"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Ukryj ramki okien gdy zmaksymalizowane"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
