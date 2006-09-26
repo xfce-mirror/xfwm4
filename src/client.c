@@ -1217,7 +1217,7 @@ clientApplyInitialState (Client * c)
             }
             /* Unset fullscreen mode so that clientToggleMaximized() really change the state */
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-            clientToggleMaximized (c, mode, TRUE);
+            clientToggleMaximized (c, mode, FALSE);
         }
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
