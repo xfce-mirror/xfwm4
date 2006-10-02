@@ -1518,18 +1518,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     clientGetWMNormalHints (c, FALSE);
 
-    c->old_x = c->x;
-    c->old_y = c->y;
-    c->old_width = c->width;
-    c->old_height = c->height;
     c->size->x = c->x;
     c->size->y = c->y;
     c->size->width = c->width;
     c->size->height = c->height;
-    c->fullscreen_old_x = c->x;
-    c->fullscreen_old_y = c->y;
-    c->fullscreen_old_width = c->width;
-    c->fullscreen_old_height = c->height;
     c->previous_width = -1;
     c->previous_height = -1;
     c->border_width = attr.border_width;
@@ -1657,6 +1649,20 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             clientInitPosition (c);
         }
     }
+
+    /* 
+       Initialize "old" fields once the position is ensured, to avoid
+       initially maximized or fullscreen windows being placed offscreen
+       once de-maximized
+     */
+    c->old_x = c->x;
+    c->old_y = c->y;
+    c->old_width = c->width;
+    c->old_height = c->height;
+    c->fullscreen_old_x = c->x;
+    c->fullscreen_old_y = c->y;
+    c->fullscreen_old_width = c->width;
+    c->fullscreen_old_height = c->height;
 
     /*
        We must call clientApplyInitialState() after having placed the
@@ -3370,7 +3376,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == KeyRelease)
     {
-        if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_CANCEL].keycode)
+        if (xevent->xkey.keycode == screen_info->params->keys[KEY_CANCEL].keycode)
         {
             moving = FALSE;
             passdata->released = passdata->use_keys;
@@ -3966,7 +3972,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     }
     else if (xevent->type == KeyRelease)
     {
-        if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_CANCEL].keycode)
+        if (xevent->xkey.keycode == screen_info->params->keys[KEY_CANCEL].keycode)
         {
             resizing = FALSE;
             passdata->released = passdata->use_keys;
@@ -4315,7 +4321,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     ClientCycleData *passdata;
     Client *c, *removed;
     eventFilterStatus status;
-    KeyCode keycode;
+    KeyCode cycle;
+    KeyCode cancel;
     int modifier;
     gboolean key_pressed, cycling, gone;
 
@@ -4332,9 +4339,11 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     c = passdata->c;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    keycode = screen_info->params->keys[KEY_CYCLE_WINDOWS].keycode;
+    cycle = screen_info->params->keys[KEY_CYCLE_WINDOWS].keycode;
+    cancel = screen_info->params->keys[KEY_CANCEL].keycode;
     modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
-    key_pressed = ((xevent->type == KeyPress) && (xevent->xkey.keycode == keycode));
+    key_pressed = ((xevent->type == KeyPress) && ((xevent->xkey.keycode == cycle) ||
+                                                  (xevent->xkey.keycode == cancel)));
     status = EVENT_FILTER_STOP;
     cycling = TRUE;
     gone = FALSE;
@@ -4365,8 +4374,13 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                 {
                     Client *c2 = NULL;
 
+                    if (xevent->xkey.keycode == cancel)
+                    {
+                        c2 = tabwinGetHead (passdata->tabwin);
+                        cycling = FALSE;
+                    }
                     /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
-                    if (!(modifier & ShiftMask) && (xevent->xkey.state & ShiftMask))
+                    else if (!(modifier & ShiftMask) && (xevent->xkey.state & ShiftMask))
                     {
                         TRACE ("Cycle: previous");
                         c2 = tabwinSelectPrev(passdata->tabwin);

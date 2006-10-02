@@ -1196,6 +1196,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     }
 
     parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], getValue ("add_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CANCEL], getValue ("cancel_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_CLOSE_WINDOW], getValue ("close_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], getValue ("cycle_windows_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], getValue ("del_workspace_key", rc));
@@ -1206,7 +1207,6 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], getValue ("maximize_horiz_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_VERT], getValue ("maximize_vert_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], getValue ("maximize_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_CANCEL], getValue ("move_resize_cancel_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN], getValue ("move_window_down_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getValue ("move_window_down_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT], getValue ("move_window_left_key", rc));
@@ -1354,6 +1354,7 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_workspaces", NULL, TRUE},
         /* Keys */
         {"add_workspace_key", NULL, TRUE},
+        {"cancel_key", NULL, TRUE},
         {"close_window_key", NULL, TRUE},
         {"cycle_windows_key", NULL, TRUE},
         {"del_workspace_key", NULL, TRUE},
@@ -1365,7 +1366,6 @@ loadSettings (ScreenInfo *screen_info)
         {"maximize_horiz_key", NULL, TRUE},
         {"maximize_vert_key", NULL, TRUE},
         {"maximize_window_key", NULL, TRUE},
-        {"move_resize_cancel_key", NULL, TRUE},
         {"move_window_down_key", NULL, TRUE},
         {"move_window_down_workspace_key", NULL, TRUE},
         {"move_window_left_key", NULL, TRUE},

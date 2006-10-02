@@ -734,7 +734,6 @@ static GdkPixbuf *
 xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
 {
     GdkPixbuf *alpha;
-    GError *error;
     gchar *filepng;
     gchar *filename;
     gint width, height;
@@ -749,7 +748,6 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
       NULL };
 
     i = 0;
-    error = NULL;
     alpha = NULL;
 
     while ((image_types[i]) && (!alpha))
@@ -760,12 +758,7 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
 
         if (g_file_test (filename, G_FILE_TEST_IS_REGULAR))
         {
-            alpha = gdk_pixbuf_new_from_file (filename, &error);
-            if (error)
-            {
-                g_warning ("%s", error->message);
-                g_error_free (error);
-            }
+            alpha = gdk_pixbuf_new_from_file (filename, NULL);
         }
         g_free (filename);
         ++i;

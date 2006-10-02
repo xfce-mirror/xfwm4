@@ -91,7 +91,7 @@ pretty_string (const gchar * s)
     }
     else
     {
-        canonical = g_strdup (_("Unknown application!"));
+        canonical = g_strdup ("...");
     }
 
     return canonical;
@@ -387,6 +387,21 @@ tabwinSelectPrev (Tabwin * t)
     gtk_widget_queue_draw (t->window);
 
     return tabwinGetSelected (t);
+}
+
+Client *
+tabwinGetHead (Tabwin * t)
+{
+    GList *next;
+
+    g_return_val_if_fail (t != NULL, NULL);
+
+    if ((t->head) && (t->head->data))
+    {
+        return (Client *) g_object_get_data (G_OBJECT (t->head->data), "client-ptr-val");
+    }
+
+    return NULL;
 }
 
 void
