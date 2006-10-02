@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-04 21:05+0200\n"
-"PO-Revision-Date: 2006-04-23 12:17+0600\n"
+"PO-Revision-Date: 2006-09-24 21:00+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -72,16 +72,15 @@ msgid "Window Manager Tweaks"
 msgstr "Оконный менеджер"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
-#, fuzzy
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"Включать окна, у которых установлено свойство \"не отображать в "
-"переключателе рабочих мест\" или \"не отображать на панели задач\""
+"Пропускать окна, у которых установлено свойство \"не показывать в "
+"переключателе рабочих мест\" или \"не показывать на панели задач\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
-msgstr "Включить скрытые (свернутые) окна"
+msgstr "Включить скрытые (свёрнутые) окна"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:412
 msgid "Cycle through windows from all workspaces"
@@ -113,7 +112,7 @@ msgstr "Поднимать окно при нажатии любой кнопк�
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Прятать рамку развернутого окна"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
@@ -164,7 +163,7 @@ msgstr "Размещение"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
-msgstr ""
+msgstr "Включить эффекты"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
@@ -172,11 +171,11 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
-msgstr "Отображать тени под обычными окнами"
+msgstr "Рисовать тени под обычными окнами"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:585
 msgid "Show shadows under popup windows"
-msgstr "Отображать тени под всплывающими окнами"
+msgstr "Рисовать тени под всплывающими окнами"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591
 msgid "Opacity of window decorations"
@@ -195,9 +194,8 @@ msgid "Opaque"
 msgstr "Непрозрачный"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:597
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Прозрачность всплывающих окон"
+msgstr "Прозрачность неактивных окон"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
 msgid "Opacity of windows during move"
@@ -532,9 +530,8 @@ msgid "Stick window"
 msgstr "Приклеить окно"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Закрыть окно"
+msgstr "Переключать окна"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Move window up"
@@ -569,9 +566,8 @@ msgid "Resize window right"
 msgstr "Изменить размер окна справа"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "Закрыть окно"
+msgstr "Отменить перемещение/изменение размера окна"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Raise window"
@@ -706,43 +702,43 @@ msgstr "%s: Нарушение сегментации"
 
 #: ../src/menu.c:40
 msgid "Ma_ximize"
-msgstr "Развернуть"
+msgstr "_Развернуть"
 
 #: ../src/menu.c:41
 msgid "Un_maximize"
-msgstr "Восстановить"
+msgstr "_Восстановить"
 
 #: ../src/menu.c:42
 msgid "_Hide"
-msgstr "_Скрыть"
+msgstr "С_крыть"
 
 #: ../src/menu.c:43
 msgid "Hide _all others"
-msgstr "Скрыть все остальные"
+msgstr "Скрыть все _остальные"
 
 #: ../src/menu.c:44
 msgid "S_how"
-msgstr "Показать"
+msgstr "_Показать"
 
 #: ../src/menu.c:45
 msgid "_Shade"
-msgstr "Свернуть в заголовок"
+msgstr "Свернуть в _заголовок"
 
 #: ../src/menu.c:46
 msgid "Un_shade"
-msgstr "Развернуть из заголовка"
+msgstr "Развернуть _из заголовка"
 
 #: ../src/menu.c:47
 msgid "S_tick"
-msgstr "Приклеить"
+msgstr "_Приклеить"
 
 #: ../src/menu.c:48
 msgid "Uns_tick"
-msgstr "Отклеить"
+msgstr "О_тклеить"
 
 #: ../src/menu.c:49
 msgid "Context _help"
-msgstr "Контекстная помощь"
+msgstr "Контекстная _справка"
 
 #: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
