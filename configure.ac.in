@@ -184,6 +184,7 @@ themes/default-4.0/Makefile
 themes/default-4.2/Makefile
 themes/katiola/Makefile
 themes/moheli/Makefile
+themes/sassandra/Makefile
 themes/stoneage/Makefile
 themes/therapy/Makefile
 themes/tyrex/Makefile
