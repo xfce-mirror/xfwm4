@@ -85,7 +85,7 @@
 #endif
 
 #ifndef MAX_RESIZES_PER_SECOND
-#define MAX_RESIZES_PER_SECOND  20.0
+#define MAX_RESIZES_PER_SECOND  50.0
 #endif
 
 #define OPACITY_SET_STEP        (guint) 0x16000000
@@ -2857,7 +2857,7 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     c->height = wc.height;
     c->width = wc.width;
 
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED) && (restore_position))
     {
         /*
            For some reason, the configure can generate EnterNotify events
@@ -4136,7 +4136,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         else
         {
-            if (clientCheckLastOpTime (c))
+            if (!(MAX_RESIZES_PER_SECOND > 0) || clientCheckLastOpTime (c))
             {
                 wc.x = c->x;
                 wc.y = c->y;
@@ -4403,13 +4403,16 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     }
                 }
 
-                if (c)
+                if (cycling)
                 {
-                    wireframeUpdate (c, passdata->wireframe);
-                }
-                else
-                {
-                    cycling = FALSE;
+                    if (c)
+                    {
+                        wireframeUpdate (c, passdata->wireframe);
+                    }
+                    else
+                    {
+                        cycling = FALSE;
+                    }
                 }
             }
             break;
