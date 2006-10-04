@@ -64,10 +64,11 @@
 #endif /* SHADOW_OFFSET_Y */
 
 /* Some convenient macros */
-#define WIN_HAS_FRAME(cw)               ((cw->c) && FLAG_TEST (cw->c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
+#define WIN_HAS_CLIENT(cw)              (cw->c)
+#define WIN_HAS_FRAME(cw)               (WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
                                          !FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN))
 #define WIN_NO_SHADOW(cw)               ((cw->c) &&  FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
-#define WIN_IS_OVERRIDE(cw)             (cw->c == NULL)
+#define WIN_IS_OVERRIDE(cw)             (cw->attr.override_redirect)
 #define WIN_IS_ARGB(cw)                 (cw->argb)
 #define WIN_IS_OPAQUE(cw)               (((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw)) || (cw->screen_info->overlays))
 #define WIN_IS_NATIVE_OPAQUE(cw)        ((cw->native_opacity) && !WIN_IS_ARGB(cw))
@@ -75,7 +76,7 @@
                                          (cw->attr.y <= 0) && \
                                          (cw->attr.width >= cw->screen_info->width) && \
                                          (cw->attr.height >= cw->screen_info->height))
-#define WIN_IS_SHAPED(cw)               ((!WIN_IS_OVERRIDE(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
+#define WIN_IS_SHAPED(cw)               ((WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
                                          (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
 #define WIN_IS_VIEWABLE(cw)             (cw->viewable)
 #define WIN_HAS_DAMAGE(cw)              (cw->damage)
@@ -1076,7 +1077,7 @@ unredirect_win (CWindow *cw)
         display_info = screen_info->display_info;
 
         free_win_data (cw, FALSE);
-        cw->ignore_unmaps++;
+        cw->ignore_unmaps = 0;
         cw->redirected = FALSE;
 
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
@@ -1751,6 +1752,7 @@ map_win (CWindow *cw)
     if (cw->ignore_unmaps)
     {
         cw->ignore_unmaps++;
+        TRACE ("Mapped window 0x%lx had unmaps pending, increased to %i", cw->id, cw->ignore_unmaps);
         return;
     }
 
@@ -1761,7 +1763,6 @@ map_win (CWindow *cw)
         TRACE ("Mapped window 0x%lx, overlays increased to %i", cw->id, screen_info->overlays);
         return;
     }
-
     if (!screen_info->params->unredirect_overlays)
     {
         TRACE ("Not unredirecting overlays");
@@ -1797,6 +1798,7 @@ unmap_win (CWindow *cw)
     if (cw->ignore_unmaps)
     {
         cw->ignore_unmaps--;
+        TRACE ("Unmapped window 0x%lx had unmaps pending, remains %i", cw->id, cw->ignore_unmaps);
         return;
     }
 
@@ -1804,7 +1806,7 @@ unmap_win (CWindow *cw)
     if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
     {
         screen_info->overlays--;
-        TRACE ("Unmapped window 0x%lx, overlays decreased to %i\n", cw->id, screen_info->overlays);
+        TRACE ("Unmapped window 0x%lx, overlays decreased to %i", cw->id, screen_info->overlays);
     }
 
     if (WIN_IS_VISIBLE(cw))
