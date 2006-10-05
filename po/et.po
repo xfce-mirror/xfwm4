@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-04-18 10:02+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -671,7 +671,7 @@ msgstr ""
 "Ei õnnestu kirjutada %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -679,15 +679,15 @@ msgstr ""
 "Kiirvalik on juba kasutuses !\n"
 "Kas sa kindlasti soovid seda kasutada?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Tekita kiirvalik : "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Tekita kiirvalik"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Kiirvalik puudub"
 
@@ -791,10 +791,6 @@ msgstr "%s: Ei suutnud tekitada värvi %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Ei suutnud parsida värvi %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Tundmatu rakendus!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -824,3 +820,6 @@ msgstr "Tööala ääred"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Tööala ääred"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Tundmatu rakendus!"

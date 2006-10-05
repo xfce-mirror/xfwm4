@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-06-12 21:21+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -675,7 +675,7 @@ msgstr ""
 "無法寫入 %s：\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -684,15 +684,15 @@ msgstr ""
 "您真的要用這個快速鍵嗎？"
 
 # FIXME The source is wrong!! untranslatable string!!
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "為下列動作設定快速鍵："
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "設定快速鍵"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "沒有快速鍵"
 
@@ -797,10 +797,6 @@ msgstr "%s: 無法分配顏色 %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 無法處理顏色 %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "不明的應用程式！"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "視窗管理程式設定"
@@ -824,3 +820,6 @@ msgstr "工作區設定"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 工作區設定"
+
+#~ msgid "Unknown application!"
+#~ msgstr "不明的應用程式！"

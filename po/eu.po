@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-09-09 23:16+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
@@ -23,7 +23,8 @@ msgid "Workspace Margins"
 msgstr "Idazmahai Marjinak"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak leihorik ipiniko ez diren pantailaren zatiak dira"
 
 #: ../mcs-plugin/margins.c:167
@@ -70,7 +71,8 @@ msgid "Window Manager Tweaks"
 msgstr "Leiho Kudeatzaile Gomendioak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
-msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid ""
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "\"paginatzailea utzi\" edo \"ataza-barra utzi\" propietateak ezarririk duten "
 "leihoa ezik"
@@ -128,7 +130,8 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Idazmahaia aldatu idazmahaiean sagu errubera erabiliaz"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
-msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla bitartez "
 "aldatzean"
@@ -665,7 +668,7 @@ msgstr ""
 "Ezin da %s-n idatzi : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -673,15 +676,15 @@ msgstr ""
 "Laster-tekla dagoeneko erabilia\n"
 "Ziur zaude berau erabili nahi duzula ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "honentzat laster-tekla sortu:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "laster-tekla sortu"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "laster-tekla gabe"
 
@@ -785,10 +788,6 @@ msgstr "%s: Ezin da %s kolorea esleitu\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Ezin da %s kolorea analizatu\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Aplikazio ezezaguna!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Leiho Kudeatzaile Ezarpenak"
@@ -813,3 +812,5 @@ msgstr "Idazmahai Ezarpenak"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
 
+#~ msgid "Unknown application!"
+#~ msgstr "Aplikazio ezezaguna!"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: Mantas Zapolskas <mantaz@users.sf.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -711,23 +711,23 @@ msgstr ""
 "Neįmanoma įrašyti į %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Klaviatūros nuoroda"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Klaviatūros nuoroda"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 #, fuzzy
 msgid "No shortcut"
 msgstr "Klaviatūros nuoroda"
@@ -832,10 +832,6 @@ msgstr "%s: Neįmanoma paskirti aktyvios spalvos %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Neįmanoma sužinoti aktyvios spalvos %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Nežinoma programa!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -865,3 +861,6 @@ msgstr "Darbo vietos paraštės"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Darbo vietos paraštės"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Nežinoma programa!"

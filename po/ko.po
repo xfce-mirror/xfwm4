@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -682,7 +682,7 @@ msgstr ""
 "%s에 기록할 수 없습니다 : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -690,15 +690,15 @@ msgstr ""
 "해당 단축키가 이미 사용 중이군요 !\n"
 "그래도 사용하실랍니까?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "단축키 구성 대상 : "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "단축키 구성"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "단축키 없음"
 
@@ -802,10 +802,6 @@ msgstr "%s: 활성 표시색 %s을 할당하지 못 했습니다.\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 활성 표시색 %s을 분석하지 못 했습니다.\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "무슨 프로그램이죠!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -835,3 +831,6 @@ msgstr "작업공간 여백"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "작업공간 여백"
+
+#~ msgid "Unknown application!"
+#~ msgstr "무슨 프로그램이죠!"

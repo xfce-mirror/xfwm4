@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-10-22 01:23+0900\n"
 "Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
@@ -691,7 +691,7 @@ msgstr ""
 "Non si puo' scrivere in %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -699,15 +699,15 @@ msgstr ""
 "Scorciatoia gia' in uso !\n"
 "Siete sicuri di volerla utilizzare ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Componi una scorciatoia da tastiera per:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Componi scorciatoia da tastiera"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Nessuna scorciatoia da tastiera"
 
@@ -811,10 +811,6 @@ msgstr "%s: Impossibile allocare il colore attivo %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Impossibile interpretare il colore attivo %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Applicazione sconosciuta!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -844,3 +840,6 @@ msgstr "Bordi dello spazio di lavoro"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Bordi dello spazio di lavoro"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Applicazione sconosciuta!"

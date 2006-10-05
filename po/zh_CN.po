@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-10-09 20:54+0900\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -680,7 +680,7 @@ msgstr ""
 "无法写入文件 %s：\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -688,15 +688,15 @@ msgstr ""
 "快捷键已被使用！\n"
 "您确定要使用它吗？"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "组合快捷键用于："
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "组合快捷键"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "无快捷键"
 
@@ -800,10 +800,6 @@ msgstr "%s: 无法分配所选颜色 %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 无法解释所选颜色 %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "未知的应用程序！"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -833,3 +829,6 @@ msgstr "工作区边缘"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "工作区边缘"
+
+#~ msgid "Unknown application!"
+#~ msgstr "未知的应用程序！"

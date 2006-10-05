@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -730,23 +730,23 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "कीबोर्ड शार्टकट"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "कीबोर्ड शार्टकट"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 #, fuzzy
 msgid "No shortcut"
 msgstr "कीबोर्ड शार्टकट"
@@ -851,10 +851,6 @@ msgstr "%s: सक्रिय रंग निर्धारित नही�
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s:  सक्रिय रंग पारसे नहीं कर सकता  %s\n"
-
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr ""
 
 # gnome-session/splash.c:71
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1

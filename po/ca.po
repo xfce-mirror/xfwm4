@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-09-20 13:51+0200\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
@@ -78,7 +78,9 @@ msgstr "Ajustaments avançats del gestor de finestres"
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr "Omet les finestres que tenen activades les propietats «omet el paginador» o «omet la barra de tasques»"
+msgstr ""
+"Omet les finestres que tenen activades les propietats «omet el paginador» o "
+"«omet la barra de tasques»"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
@@ -678,7 +680,7 @@ msgstr ""
 "No s'ha pogut escriure a %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -686,15 +688,15 @@ msgstr ""
 "La drecera ja s'està emprant.\n"
 "Esteu segur de voler emprar-la?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Creo una drecera per:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Crea una drecera"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Sense drecera"
 
@@ -798,10 +800,6 @@ msgstr "%s: no s'ha pogut situar el color %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: no s'ha pogut analitzar el color %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Aplicació desconeguda!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Paràmetres del gestor de finestres"
@@ -826,3 +824,6 @@ msgstr "Paràmetres dels espais de treball"
 msgid "Xfce 4 Workspaces Settings"
 msgstr ""
 "Paràmetres dels espais de treball d'Xfce 4Marges dels espais de treball"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Aplicació desconeguda!"

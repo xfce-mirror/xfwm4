@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2004-11-14 19:01+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -682,7 +682,7 @@ msgstr ""
 "Nu am reuşit să scriu în %s: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -690,15 +690,15 @@ msgstr ""
 "Combinaţia de taste este deja asignată!\n"
 "Sigur doriţi să o mai asociaţi o dată?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Compunere combinaţie de taste pentru:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Compunere combinaţie de taste"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Nici o combinaţie"
 
@@ -802,10 +802,6 @@ msgstr "%s: Nu am reuşit să aloc culoarea activă %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nu am reuşit să prelucrez culoarea activă %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Aplicaţie necunoscută!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -835,3 +831,6 @@ msgstr "Margini spaţii de lucru"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Margini spaţii de lucru"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Aplicaţie necunoscută!"

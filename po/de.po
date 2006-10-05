@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-08-15 20:12+0200\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -684,7 +684,7 @@ msgstr ""
 "Kann %s nicht schreiben:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -692,15 +692,15 @@ msgstr ""
 "Tastenkürzel schon in Benutzung!\n"
 "Sind Sie sicher, dass Sie es benutzen wollen?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Tastenkürzel erstellen für:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Tastenkürzel erstellen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Kein Tastenkürzel"
 
@@ -804,10 +804,6 @@ msgstr "%s: Kann Farbe %s nicht allozieren\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Kann Farbe %s nicht einlesen\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Unbekannte Anwendung!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Fenstermanagereinstellungen"
@@ -831,3 +827,6 @@ msgstr "Arbeitsflächeneinstellungen"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Arbeitsflächeneinstellungen"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Unbekannte Anwendung!"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-12 18:36+0300\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-09-12 18:37+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -781,10 +781,6 @@ msgstr "%s: Väriä %s ei voi varata\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Värimääritys %s ei kelpaa\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Tuntematon sovellus!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Ikkunamanagerin asetukset"
@@ -808,3 +804,6 @@ msgstr "Työtilojen asetukset"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Työtilojen asetukset"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Tuntematon sovellus!"

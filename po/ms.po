@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-10-09 20:49+0900\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -717,23 +717,23 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Pintasan Papankekunci"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Pintasan Papankekunci"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 #, fuzzy
 msgid "No shortcut"
 msgstr "Pintasan Papankekunci"
@@ -837,10 +837,6 @@ msgstr "%s: Tak boleh allocate warna aktif %s\n"
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Tak boleh parse warna tak aktif %s\n"
-
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr ""
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy

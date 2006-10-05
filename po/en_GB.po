@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2004-12-03 18:06+0200\n"
 "Last-Translator: Translate.org.za <info@translate.org.za>\n"
 "Language-Team: British English <en_gb@li.org>\n"
@@ -681,7 +681,7 @@ msgstr ""
 "Cannot write in %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -689,15 +689,15 @@ msgstr ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Compose shortcut for :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Compose shortcut"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "No shortcut"
 
@@ -801,10 +801,6 @@ msgstr "%s: Cannot allocate active colour %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Cannot parse active colour %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Unknown application!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -834,3 +830,6 @@ msgstr "Workspace Margins"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Workspace Margins"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Unknown application!"

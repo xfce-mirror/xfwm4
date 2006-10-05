@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-05-26 18:29+0100\n"
 "Last-Translator: Alexander Toresson <alexander.toresson@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -671,7 +671,7 @@ msgstr ""
 "Kunde inte skriva i %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -679,15 +679,15 @@ msgstr ""
 "Tangentkombinationen används redan!\n"
 "Vill du verkligen använda den?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Tangentkombination för:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Ställ in tangentkombination"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Ingen genväg"
 
@@ -791,10 +791,6 @@ msgstr "%s: Kunde inte allokera färgen %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Kunde inte tolka färgen %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Okänt program!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Inställningar för Fönsterhanteraren"
@@ -818,3 +814,6 @@ msgstr "Inställningar för Arbetsytorna"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Inställningar för Arbetsytorna"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Okänt program!"

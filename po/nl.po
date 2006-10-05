@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-08-19 21:17+0900\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -683,7 +683,7 @@ msgstr ""
 "Kan niet schrijven in %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -691,15 +691,15 @@ msgstr ""
 "Sneltoets reeds in gebruik!\n"
 "Weet u zeker dat u deze toetscombinatie wilt gebruiken?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Sneltoets maken voor:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Sneltoets samenstellen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Geen sneltoets"
 
@@ -803,10 +803,6 @@ msgstr "%s: Kan actieve kleur %s niet creëren\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Kan actieve kleur %s niet vertalen\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Onbekend programma!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -836,3 +832,6 @@ msgstr "Bureaublad Marges"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Bureaublad Marges"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Onbekend programma!"

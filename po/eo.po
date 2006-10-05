@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-03-11 18:40+0100\n"
 "Last-Translator: Sylvain Vedrenne <gnu_sylvain@xfce.org>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -685,7 +685,7 @@ msgstr ""
 "Malsukcesis skribi en %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -693,15 +693,15 @@ msgstr ""
 "Jam uzita rapidligilo !\n"
 "Ĉu vi vere volas uzi ĝin ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Komponu rapidligilon por :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Komponu rapidligilon"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Nenia rapidligilo"
 
@@ -805,10 +805,6 @@ msgstr "%s: Malsukcesis disponigi la koloron %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Malsukcesis legi la koloron %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Nekonata aplikaĵo!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -838,3 +834,6 @@ msgstr "Marĝenoj de la Laborspaco"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Marĝenoj de la Laborspaco"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Nekonata aplikaĵo!"

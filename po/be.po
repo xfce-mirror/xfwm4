@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-10-09 20:37+0900\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -692,7 +692,7 @@ msgstr ""
 "Немагчыма запісаць %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -700,15 +700,15 @@ msgstr ""
 "Камбінацыя ўжо выкарыстоўваецца!\n"
 "Вы насамрэч жадаеце выкарыстоўваць яе?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Прызначыць гарачыя клявішы для:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Прызначыць гарачыя клявішы"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 #, fuzzy
 msgid "No shortcut"
 msgstr "Прызначыць гарачыя клявішы"
@@ -813,10 +813,6 @@ msgstr "%s: немагчыма разьмеркаваць актыўны кол�
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: немагчыма разабраць актыўны колер %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Невядомае дастасаваньне!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -846,3 +842,6 @@ msgstr "Водступы працоўнае прасторы"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Водступы працоўнае прасторы"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Невядомае дастасаваньне!"

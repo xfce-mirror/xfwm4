@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-01-06 01:53+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.ua>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -675,7 +675,7 @@ msgstr ""
 "Помилка запису %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -683,15 +683,15 @@ msgstr ""
 "Комбінація клавіш вже використовується !\n"
 "Дійсно бажаєте призначити цю комбінацію клавіш ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Натисніть комбінацію клавіш:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Вибір комбінації клавіш"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Немає комбінації клавіш"
 
@@ -795,10 +795,6 @@ msgstr "%s: Неможливо зарезервувати колір %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Неможливо проаналізувати колір %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Невідома програма!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
 msgstr "Параметри менеджера вікон"
@@ -822,3 +818,6 @@ msgstr "Параметри робочих областей"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Параметри робочих областей Xfce 4"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Невідома програма!"

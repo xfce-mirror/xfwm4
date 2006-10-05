@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2006-08-24 23:50+0400\n"
 "Last-Translator: Dimitri Gogelia <delphi.knight@gmail.com>\n"
 "Language-Team: Georgian <delphi.knight@gmail.com>\n"
@@ -652,21 +652,21 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr ""
 
@@ -768,10 +768,6 @@ msgstr ""
 #: ../src/settings.c:908
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr ""
-
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
 msgstr ""
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1

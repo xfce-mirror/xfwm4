@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -680,7 +680,7 @@ msgstr ""
 "यात लिहू शकत नाही %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -688,15 +688,15 @@ msgstr ""
 "शॉर्टकट आगोदरच वापरलेला आहे! \n"
 "तुम्हाला नक्की हा वापरायचा आहे का?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "च्यासाठी शॉर्टकट निर्मिती :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "शॉर्टकट निर्मिती"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "शॉर्टकट नाही"
 
@@ -800,10 +800,6 @@ msgstr "%s: सक्रिय रंग निर्धारित करु �
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: सक्रिय रंगाचे परस्पर संबध स्पष्ट करु शकत नाही%s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "अपरिचित एप्लिकेशन!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -833,3 +829,6 @@ msgstr "कार्यक्षेत्राचे समास"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "कार्यक्षेत्राचे समास"
+
+#~ msgid "Unknown application!"
+#~ msgstr "अपरिचित एप्लिकेशन!"

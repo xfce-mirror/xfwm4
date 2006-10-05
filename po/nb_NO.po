@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-04 21:05+0200\n"
+"POT-Creation-Date: 2006-10-05 23:19+0200\n"
 "PO-Revision-Date: 2005-08-19 21:16+0900\n"
 "Last-Translator: Eskild Hustvedt <eskild@goldenfiles.com>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
@@ -692,7 +692,7 @@ msgstr ""
 "Kan ikke skrive i %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -700,15 +700,15 @@ msgstr ""
 "Snarvei allerede i bruk !\n"
 "Er du sikker på at du vil bruke den?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
 msgid "Compose shortcut for :"
 msgstr "Opprett snarvei for :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
 msgid "Compose shortcut"
 msgstr "Opprett snarvei"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:851
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
 msgid "No shortcut"
 msgstr "Ingen snarvei"
 
@@ -813,10 +813,6 @@ msgstr "%s: Kan ikke tildele aktiv farge %s\n"
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Kan ikke parse aktiv farge %s\n"
 
-#: ../src/tabwin.c:94
-msgid "Unknown application!"
-msgstr "Ukjent program!"
-
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 #, fuzzy
 msgid "Window Manager Settings"
@@ -846,3 +842,6 @@ msgstr "Skrivebord marginer"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Skrivebord marginer"
+
+#~ msgid "Unknown application!"
+#~ msgstr "Ukjent program!"
