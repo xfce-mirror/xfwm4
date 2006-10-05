@@ -1753,7 +1753,7 @@ map_win (CWindow *cw)
     if (!WIN_IS_REDIRECTED(cw))
     {
         screen_info->overlays++;
-        TRACE ("Mapped window 0x%lx, overlays increased to %i", cw->id, screen_info->overlays);
+        TRACE ("Mapping unredirected window 0x%lx, overlays increased to %i", cw->id, screen_info->overlays);
         return;
     }
     if (!screen_info->params->unredirect_overlays)
