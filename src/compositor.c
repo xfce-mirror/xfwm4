@@ -1077,7 +1077,7 @@ unredirect_win (CWindow *cw)
         display_info = screen_info->display_info;
 
         free_win_data (cw, FALSE);
-        cw->ignore_unmaps = 0;
+        cw->ignore_unmaps = 1;
         cw->redirected = FALSE;
 
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
@@ -1748,13 +1748,6 @@ map_win (CWindow *cw)
 
     cw->viewable = TRUE;
     cw->damaged = FALSE;
-
-    if (cw->ignore_unmaps)
-    {
-        cw->ignore_unmaps++;
-        TRACE ("Mapped window 0x%lx had unmaps pending, increased to %i", cw->id, cw->ignore_unmaps);
-        return;
-    }
 
     screen_info = cw->screen_info;
     if (!WIN_IS_REDIRECTED(cw))
