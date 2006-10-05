@@ -40,18 +40,8 @@
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.15;" />
+         style="stop-color:#ffffff;stop-opacity:0.20;" />
     </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient5847"
-       id="linearGradient6945"
-       gradientUnits="userSpaceOnUse"
-       x1="4"
-       y1="0.5"
-       x2="4"
-       y2="24"
-       gradientTransform="matrix(1.15,0,0,1,-0.5,0)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5873"
@@ -62,6 +52,16 @@
        y2="0.5"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-16,2)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5847"
+       id="linearGradient3667"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.15,0,0,1,-0.5,0)"
+       x1="4"
+       y1="0.5"
+       x2="4"
+       y2="24" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -70,11 +70,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="32"
-     inkscape:cx="12.5"
-     inkscape:cy="15.5"
+     inkscape:zoom="10"
+     inkscape:cx="10"
+     inkscape:cy="10"
      inkscape:document-units="px"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:grid-points="true"
@@ -82,7 +82,7 @@
      gridtolerance="0.5px"
      guidetolerance="1px"
      inkscape:window-width="1280"
-     inkscape:window-height="734"
+     inkscape:window-height="733"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:guide-bbox="true"
@@ -106,43 +106,45 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Grad"
-     style="display:inline">
-    <path
-       style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 8,1 L 6,1 C 6,1 1,1 1,6 C 1,11 1,24 1,24 L 8,24 L 8,1 z "
-       id="path6057" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="hilight">
-    <path
-       style="fill:url(#linearGradient6962);fill-opacity:0.75;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 8,1 L 5,1 C 5,1 0,1 0,2 C 0,7 1,2 1,2 L 8,2 L 8,1 z "
-       id="path6061"
-       sodipodi:nodetypes="ccsc" />
-  </g>
-  <g
      inkscape:label="Border"
      inkscape:groupmode="layer"
      id="layer1"
      style="display:inline">
     <path
-       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.75"
-       d="M 7.5,0.5 L 6,0.5 C 6,0.5 0.5,0 0.5,6 C 0.5,11 0.5,24 0.5,24"
-       id="path6059"
+       style="opacity:0.75;fill:black;fill-opacity:1;stroke:white;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75"
+       d="M 8,0 L 8,1 L 6,1 C 6,1 1,1 1,6 C 1,9 1,24 1,24 L 0,24 L 0,0 L 8,0 z "
+       id="rect2772" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Grad"
+     style="display:inline">
+    <path
+       style="fill:url(#linearGradient3667);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 8,1 L 6,1 C 6,1 1,1 1,6 C 1,9 1,24 1,24 L 8,24 L 8,1 L 8,1 z "
+       id="path6057"
+       sodipodi:nodetypes="ccscccc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="hilight"
+     style="display:inline">
+    <path
+       style="fill:url(#linearGradient6962);fill-opacity:0.75;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 8,1 L 6,1 C 6,1 5,1 5,2 C 5,2 6,2 6,2 L 8,2 L 8,1 z "
+       id="path6061"
        sodipodi:nodetypes="ccsc" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="Shadow">
+     inkscape:label="Shadow"
+     style="display:inline">
     <path
-       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.15"
-       d="M 8,23.5 L 1,23.5"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:black;stroke-width:0.99999994px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       d="M 7.5,23.5 L 1.5,23.5"
        id="path6989"
        sodipodi:nodetypes="ccsc" />
   </g>

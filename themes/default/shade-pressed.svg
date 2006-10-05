@@ -40,7 +40,7 @@
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.15;" />
+         style="stop-color:#ffffff;stop-opacity:0.20;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -82,11 +82,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.839192"
-     inkscape:cx="3.9234648"
-     inkscape:cy="6.5189125"
+     inkscape:zoom="10"
+     inkscape:cx="10"
+     inkscape:cy="10"
      inkscape:document-units="px"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:grid-points="true"

@@ -40,7 +40,7 @@
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.15;" />
+         style="stop-color:#ffffff;stop-opacity:0.20;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -51,7 +51,7 @@
        y1="0.5"
        x2="4"
        y2="24"
-       gradientTransform="matrix(1.15,0,0,1,-0.5,0)" />
+       gradientTransform="matrix(-1.15,0,0,1,8.5,0)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5873"
@@ -61,7 +61,7 @@
        x2="19.5"
        y2="0.5"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-16,2)" />
+       gradientTransform="matrix(-1,0,0,1,24,2)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -70,11 +70,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="32"
-     inkscape:cx="12.5"
-     inkscape:cy="6.8847468"
+     inkscape:zoom="10"
+     inkscape:cx="10"
+     inkscape:cy="10"
      inkscape:document-units="px"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:grid-points="true"
@@ -82,7 +82,7 @@
      gridtolerance="0.5px"
      guidetolerance="1px"
      inkscape:window-width="1280"
-     inkscape:window-height="734"
+     inkscape:window-height="733"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:guide-bbox="true"
@@ -106,43 +106,45 @@
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:label="Border"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       style="opacity:0.75;fill:black;fill-opacity:1;stroke:white;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.75"
+       d="M 0,0 L 0,1 L 2,1 C 2,1 7,1 7,6 C 7,9 7,24 7,24 L 8,24 L 8,0 L 0,0 z "
+       id="rect2772" />
+  </g>
+  <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Grad"
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,1 L 2,1 C 2,1 7,1 7,6 C 7,11 7,24 7,24 L 0,24 L 0,1 z "
-       id="path6057" />
+       d="M 0,1 L 2,1 C 2,1 7,1 7,6 C 7,9 7,24 7,24 L 0,24 L 0,1 L 0,1 z "
+       id="path6057"
+       sodipodi:nodetypes="ccscccc" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="hilight">
-    <path
-       style="fill:url(#linearGradient6962);fill-opacity:0.75;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 0,1 L 3,1 C 3,1 8,1 8,2 C 8,2 7,2 7,2 L 0,2 L 0,1 z "
-       id="path6061"
-       sodipodi:nodetypes="ccsc" />
-  </g>
-  <g
-     inkscape:label="Border"
-     inkscape:groupmode="layer"
-     id="layer1"
+     inkscape:label="hilight"
      style="display:inline">
     <path
-       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.75"
-       d="M 0.5,0.5 L 2,0.5 C 2,0.5 7.5,0 7.5,6 C 7.5,11 7.5,24 7.5,24"
-       id="path6059"
+       style="fill:url(#linearGradient6962);fill-opacity:0.75;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 0,1 L 2,1 C 2,1 3,1 3,2 C 3,2 2,2 2,2 L 0,2 L 0,1 z "
+       id="path6061"
        sodipodi:nodetypes="ccsc" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="Shadow">
+     inkscape:label="Shadow"
+     style="display:inline">
     <path
-       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.15"
-       d="M 0,23.5 L 8,23.5"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:black;stroke-width:0.99999994px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       d="M 0.5,23.5 L 6.5,23.5"
        id="path6989"
        sodipodi:nodetypes="ccsc" />
   </g>
