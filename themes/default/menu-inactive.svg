@@ -23,13 +23,13 @@
     <linearGradient
        id="linearGradient5847">
       <stop
-         style="stop-color:#000000;stop-opacity:0.05;"
+         style="stop-color:black;stop-opacity:0.05;"
          offset="0"
          id="stop5849" />
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.20;" />
+         style="stop-color:white;stop-opacity:0.20;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -44,7 +44,7 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="white"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"

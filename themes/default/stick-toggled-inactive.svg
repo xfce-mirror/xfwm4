@@ -23,13 +23,13 @@
     <linearGradient
        id="linearGradient5847">
       <stop
-         style="stop-color:#000000;stop-opacity:0.05;"
+         style="stop-color:black;stop-opacity:0.05;"
          offset="0"
          id="stop5849" />
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.20;" />
+         style="stop-color:white;stop-opacity:0.20;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -44,7 +44,7 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="white"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
@@ -98,9 +98,9 @@
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="Shadow">
+     inkscape:label="Button">
     <path
-       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.9999997px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
        d="M 0.5,19.5 L 17.5,19.5"
        id="path6989"
        sodipodi:nodetypes="ccsc" />
@@ -109,18 +109,18 @@
        id="g2383"
        transform="matrix(0.937501,0,0,0.937098,3.375,3.379021)">
       <path
+         id="path2287"
+         d="M 6,2 C 3.792,2 2,3.792 2,6 C 2,8.208 3.792,10 6,10 C 8.208,10 10,8.208 10,6 C 10,3.792 8.208,2 6,2 z M 6,4 C 7.104,4 8,4.896 8,6 C 8,7.104 7.104,8 6,8 C 4.896,8 4,7.104 4,6 C 4,4.896 4.896,4 6,4 z "
+         style="opacity:0.33;fill:black;fill-opacity:1;stroke:black;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
          d="M 7 6 A 1 1 0 1 1  5,6 A 1 1 0 1 1  7 6 z"
          sodipodi:ry="1"
          sodipodi:rx="1"
          sodipodi:cy="6"
          sodipodi:cx="6"
          id="path2202"
-         style="opacity:0.33000004;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.53344733;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+         style="opacity:0.33;fill:black;fill-opacity:1;stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
          sodipodi:type="arc" />
-      <path
-         id="path3050"
-         d="M 5.6875,2 C 3.6230536,2.1572433 2,3.8955 2,6 C 2,8.208 3.792,10 6,10 C 8.208,10 10,8.208 10,6 C 10,3.792 8.208,2 6,2 C 5.8965,2 5.7890302,1.9922667 5.6875,2 z M 5.6875,3 C 5.7883105,2.989752 5.8965,3 6,3 C 7.656,3 9,4.344 9,6 C 9,7.656 7.656,9 6,9 C 4.344,9 3,7.656 3,6 C 3,4.4475 4.1753418,3.1537207 5.6875,3 z "
-         style="opacity:0.33000004;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.53344733;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
   </g>
 </svg>

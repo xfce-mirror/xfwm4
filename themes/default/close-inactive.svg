@@ -23,13 +23,13 @@
     <linearGradient
        id="linearGradient5847">
       <stop
-         style="stop-color:#000000;stop-opacity:0.05;"
+         style="stop-color:black;stop-opacity:0.05;"
          offset="0"
          id="stop5849" />
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.20;" />
+         style="stop-color:white;stop-opacity:0.20;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -44,7 +44,7 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="white"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
@@ -98,15 +98,15 @@
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="Shadow">
+     inkscape:label="Button">
     <path
-       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.9999997px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.3"
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.3"
        d="M 0.5,19.5 L 17.5,19.5"
        id="path6989"
        sodipodi:nodetypes="ccsc" />
     <path
        id="path2221"
-       style="opacity:0.33000004;fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+       style="opacity:0.33;fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
        d="M 5.5,5.5 L 12.5,12.5 L 12.5,12.5 M 5.5,12.5 L 12.5,5.5" />
   </g>
 </svg>
