@@ -1793,11 +1793,20 @@ unmap_win (CWindow *cw)
         TRACE ("Unmapped window 0x%lx, overlays decreased to %i", cw->id, screen_info->overlays);
     }
 
-    if (WIN_IS_VISIBLE(cw))
+    if (!screen_info->overlays)
     {
-        damage_win (cw);
-    }
+        /* Repaint immediately if that was the last unredirected window */
 
+        if (!WIN_IS_REDIRECTED(cw))
+        {
+            damage_screen (screen_info);
+            repair_screen (screen_info);
+        }
+        else if (WIN_IS_VISIBLE(cw))
+        {
+            damage_win (cw);
+        }
+    }
     cw->viewable = FALSE;
     cw->damaged = FALSE;
     free_win_data (cw, FALSE);
