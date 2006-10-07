@@ -124,7 +124,6 @@ struct _CWindow
     gint shadow_height;
 
     guint opacity;
-    guint ignore_unmaps;
 };
 
 static CWindow*
@@ -1077,7 +1076,6 @@ unredirect_win (CWindow *cw)
         display_info = screen_info->display_info;
 
         free_win_data (cw, FALSE);
-        cw->ignore_unmaps = 1;
         cw->redirected = FALSE;
 
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
@@ -1788,13 +1786,6 @@ unmap_win (CWindow *cw)
     g_return_if_fail (cw != NULL);
     TRACE ("entering unmap_win 0x%lx", cw->id);
 
-    if (cw->ignore_unmaps)
-    {
-        cw->ignore_unmaps--;
-        TRACE ("Unmapped window 0x%lx had unmaps pending, remains %i", cw->id, cw->ignore_unmaps);
-        return;
-    }
-
     screen_info = cw->screen_info;
     if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
     {
@@ -1909,7 +1900,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->redirected = TRUE;
     new->shaped = is_shaped (display_info, id);
     new->viewable = (new->attr.map_state == IsViewable);
-    new->ignore_unmaps = 0;
 
     if ((new->attr.class != InputOnly) && (id != screen_info->xroot))
     {
