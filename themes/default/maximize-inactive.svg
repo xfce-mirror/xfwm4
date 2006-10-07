@@ -100,11 +100,6 @@
      id="layer5"
      inkscape:label="Button">
     <path
-       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
-       d="M 0.5,19.5 L 17.5,19.5"
-       id="path6989"
-       sodipodi:nodetypes="ccsc" />
-    <path
        style="opacity:0.33;fill:black;fill-opacity:1;stroke:black;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
        d="M 5,5 L 5,13 L 13,13 L 13,5 L 5,5 z M 6,7 L 12,7 L 12,12 L 6,12 L 6,7 z "
        id="rect2275" />
