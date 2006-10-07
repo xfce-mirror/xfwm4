@@ -76,6 +76,10 @@
 #define MAIN_EVENT_MASK BASE_EVENT_MASK
 #endif /* HAVE_COMPOSITOR */
 
+#define COMPOSITOR_MODE_OFF             0
+#define COMPOSITOR_MODE_AUTO            1
+#define COMPOSITOR_MODE_MANUAL          2
+
 #ifndef DEBUG
 /* For what, IEEE Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.*/
 static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISION " $";
@@ -401,7 +405,7 @@ initialize (int argc, char **argv, gint compositor_mode)
     display_info = myDisplayInit (gdk_display_get_default ());
 
 #ifdef HAVE_COMPOSITOR
-    if (compositor_mode < 0)
+    if (compositor_mode < COMPOSITOR_MODE_OFF)
     {
         compositor_mode = get_default_compositor (display_info);
     }
@@ -411,7 +415,7 @@ initialize (int argc, char **argv, gint compositor_mode)
     {
         display_info->enable_compositor = FALSE;
     }
-    compositorSetCompositeMode (display_info, (compositor_mode == 2));
+    compositorSetCompositeMode (display_info, (compositor_mode == COMPOSITOR_MODE_MANUAL));
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
@@ -448,9 +452,9 @@ initialize (int argc, char **argv, gint compositor_mode)
         if (compositor_mode)
         {
             gboolean xfwm4_compositor;
-    
-            xfwm4_compositor = (compositor_mode > 1);
-            if (screen_info->params->use_compositing)
+
+            xfwm4_compositor = FALSE;
+            if ((screen_info->params->use_compositing) || (compositor_mode == COMPOSITOR_MODE_AUTO))
             {
                 xfwm4_compositor = compositorManageScreen (screen_info);
             }
