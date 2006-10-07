@@ -100,13 +100,13 @@
      id="layer5"
      inkscape:label="Button">
     <path
-       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#7f7f7f;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
        d="M 0.5,19.5 L 17.5,19.5"
        id="path6989"
        sodipodi:nodetypes="ccsc" />
     <path
        id="path2620"
-       style="opacity:0.33;fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;display:inline"
+       style="opacity:0.50;fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#7f7f7f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;display:inline"
        d="M 6,9 L 9,12 L 12,9 M 9,6 L 9,11" />
   </g>
 </svg>

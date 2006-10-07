@@ -106,7 +106,7 @@
       <path
          id="path2287"
          d="M 6,2 C 3.792,2 2,3.792 2,6 C 2,8.208 3.792,10 6,10 C 8.208,10 10,8.208 10,6 C 10,3.792 8.208,2 6,2 z M 6,4 C 7.104,4 8,4.896 8,6 C 8,7.104 7.104,8 6,8 C 4.896,8 4,7.104 4,6 C 4,4.896 4.896,4 6,4 z "
-         style="opacity:0.33;fill:black;fill-opacity:1;stroke:black;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.50;fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
   </g>
 </svg>

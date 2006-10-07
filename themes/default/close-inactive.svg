@@ -101,7 +101,7 @@
      inkscape:label="Button">
     <path
        id="path2221"
-       style="opacity:0.33;fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+       style="opacity:0.50;fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#7f7f7f;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
        d="M 5.5,5.5 L 12.5,12.5 L 12.5,12.5 M 5.5,12.5 L 12.5,5.5" />
   </g>
 </svg>

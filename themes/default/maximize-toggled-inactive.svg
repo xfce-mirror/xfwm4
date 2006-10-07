@@ -106,11 +106,11 @@
       <path
          id="rect2331"
          d="M 4,1 L 4,3 L 5,3 L 9,3 L 10,3 L 10,7 L 9,7 L 9,8 L 11,8 L 11,1 L 4,1 z "
-         style="opacity:0.33;fill:black;fill-opacity:1;stroke:black;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.50;fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          id="rect2371"
          d="M 1,4 L 1,11 L 8,11 L 8,4 L 1,4 z M 2,6 L 7,6 L 7,10 L 2,10 L 2,6 z "
-         style="opacity:0.33;fill:black;fill-opacity:1;stroke:black;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.50;fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
   </g>
 </svg>
