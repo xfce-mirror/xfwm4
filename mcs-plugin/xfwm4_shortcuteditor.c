@@ -312,7 +312,8 @@ cb_popup_menu (GtkTreeView * treeview, GdkEventButton * event, gpointer data)
 void
 loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
 {
-    const gchar *shortcut_options_list[] = { "close_window_key",
+    const gchar *shortcut_options_list[] = { 
+        "close_window_key",
         "maximize_window_key",
         "maximize_vert_key",
         "maximize_horiz_key",
@@ -347,10 +348,13 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         "move_window_left_workspace_key",
         "move_window_right_workspace_key",
         "show_desktop_key",
+        "cancel_key",
+        "popup_menu_key",
         NULL
     };
 
-    const gchar *shortcut_name_list[] = { N_("Close window"),
+    const gchar *shortcut_name_list[] = { 
+        N_("Close window"),
         N_("Maximize window"),
         N_("Maximize window vertically"),
         N_("Maximize window horizontally"),
@@ -385,6 +389,8 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         N_("Move window to left workspace"),
         N_("Move window to right workspace"),
         N_("Show desktop"),
+        N_("Cancel window action"),
+        N_("Window operations menu"),
         NULL
     };
 

@@ -433,6 +433,7 @@ myScreenGrabKeys (ScreenInfo *screen_info)
     grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_11], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_12], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_POPUP_MENU], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_RESIZE_DOWN], screen_info->xroot);

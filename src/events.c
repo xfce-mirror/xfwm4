@@ -82,12 +82,26 @@ static xfwmWindow menu_event_window;
 static int edge_scroll_x = 0;
 static int edge_scroll_y = 0;
 
-static void handleEvent (DisplayInfo *display_info, XEvent * ev);
-static void menu_callback (Menu * menu, MenuOp op, Window xid,
-    gpointer menu_data, gpointer item_data);
-static gboolean show_popup_cb (GtkWidget * widget, GdkEventButton * ev,
-    gpointer data);
-static gboolean client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data);
+/* Forward decl. */
+
+static void handleEvent         (DisplayInfo *display_info,
+                                 XEvent * ev);
+static void menu_callback       (Menu * menu,
+                                 MenuOp op,
+                                 Window xid,
+                                 gpointer menu_data,
+                                 gpointer item_data);
+static void show_window_menu    (Client *c,
+                                 gint px,
+                                 gint py,
+                                 guint button,
+                                 guint32 time);
+static gboolean show_popup_cb   (GtkWidget * widget,
+                                 GdkEventButton * ev,
+                                 gpointer data);
+static gboolean client_event_cb (GtkWidget * widget,
+                                 GdkEventClient * ev,
+                                 gpointer data);
 
 typedef enum
 {
@@ -457,6 +471,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                     clientRaise (c, None);
                     workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c, TRUE);
                 }
+                break;
+            case KEY_POPUP_MENU:
+                show_window_menu (c, frameX(c), frameY(c), 1, GDK_CURRENT_TIME);
                 break;
             default:
                 break;
@@ -2348,132 +2365,128 @@ initMenuEventWin (void)
     xfwmWindowInit (&menu_event_window);
 }
 
-static gboolean
-show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
+static void
+show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     Menu *menu;
     MenuOp ops;
     MenuOp insensitive;
-    Client *c;
-    gint x;
-    gint y;
+    gint x, y;
 
-    TRACE ("entering show_popup_cb");
+    TRACE ("entering show_window_menu");
 
-    x = ev->x_root;
-    y = ev->y_root;
-    c = (Client *) data;
-    if ((c) && ((ev->button == 1) || (ev->button == 3)))
+    if (!c || ((button != Button1) && (button != Button3)))
     {
-        c->button_pressed[MENU_BUTTON] = TRUE;
-        frameDraw (c, FALSE);
-        y = c->y;
-        ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
-        insensitive = 0;
+        return;
+    }
 
-        if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
-        {
-            insensitive |= MENU_OP_DELETE;
-        }
+    x = px;
+    y = py;
 
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
-        {
-            ops |= MENU_OP_UNMAXIMIZE;
-            if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
-            {
-                insensitive |= MENU_OP_UNMAXIMIZE;
-            }
-        }
-        else
-        {
-            ops |= MENU_OP_MAXIMIZE;
-            if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
-            {
-                insensitive |= MENU_OP_MAXIMIZE;
-            }
-        }
+    c->button_pressed[MENU_BUTTON] = TRUE;
+    frameDraw (c, FALSE);
+    y = (gdouble) c->y;
+    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
+    insensitive = 0;
 
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
-        {
-            ops |= MENU_OP_UNMINIMIZE;
-            if (!CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                insensitive |= MENU_OP_UNMINIMIZE;
-            }
-        }
-        else
-        {
-            ops |= MENU_OP_MINIMIZE;
-            if (!CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                insensitive |= MENU_OP_MINIMIZE;
-            }
-        }
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
+    {
+        insensitive |= MENU_OP_DELETE;
+    }
 
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+    {
+        ops |= MENU_OP_UNMAXIMIZE;
+        if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
         {
-            ops |= MENU_OP_UNSHADE;
-        }
-        else
-        {
-            ops |= MENU_OP_SHADE;
-        }
-
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-        {
-            ops |= MENU_OP_UNSTICK;
-            if (!CLIENT_CAN_STICK_WINDOW(c))
-            {
-                insensitive |= MENU_OP_UNSTICK;
-            }
-        }
-        else
-        {
-            ops |= MENU_OP_STICK;
-            if (!CLIENT_CAN_STICK_WINDOW(c))
-            {
-                insensitive |= MENU_OP_STICK;
-            }
-        }
-
-        /* KDE extension */
-        clientGetWMProtocols(c);
-        if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
-        {
-            ops |= MENU_OP_CONTEXT_HELP;
-        }
-
-        if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE))
-        {
-            ops |= MENU_OP_NORMAL;
-            if (clientIsValidTransientOrModal (c) ||
-                FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
-            {
-                insensitive |= MENU_OP_NORMAL;
-            }
-        }
-        else
-        {
-            ops |= MENU_OP_ABOVE;
-            if (clientIsValidTransientOrModal (c) ||
-                FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
-            {
-                insensitive |= MENU_OP_ABOVE;
-            }
-        }
-
-        if (clientIsValidTransientOrModal (c)
-            || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
-            || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-        {
-            insensitive |= MENU_OP_WORKSPACES;
+            insensitive |= MENU_OP_UNMAXIMIZE;
         }
     }
     else
     {
-        return (TRUE);
+        ops |= MENU_OP_MAXIMIZE;
+        if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
+        {
+            insensitive |= MENU_OP_MAXIMIZE;
+        }
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+    {
+        ops |= MENU_OP_UNMINIMIZE;
+        if (!CLIENT_CAN_HIDE_WINDOW (c))
+        {
+            insensitive |= MENU_OP_UNMINIMIZE;
+        }
+    }
+    else
+    {
+        ops |= MENU_OP_MINIMIZE;
+        if (!CLIENT_CAN_HIDE_WINDOW (c))
+        {
+            insensitive |= MENU_OP_MINIMIZE;
+        }
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    {
+        ops |= MENU_OP_UNSHADE;
+    }
+    else
+    {
+        ops |= MENU_OP_SHADE;
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+    {
+        ops |= MENU_OP_UNSTICK;
+        if (!CLIENT_CAN_STICK_WINDOW(c))
+        {
+            insensitive |= MENU_OP_UNSTICK;
+        }
+    }
+    else
+    {
+        ops |= MENU_OP_STICK;
+        if (!CLIENT_CAN_STICK_WINDOW(c))
+        {
+            insensitive |= MENU_OP_STICK;
+        }
+    }
+
+    /* KDE extension */
+    clientGetWMProtocols(c);
+    if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
+    {
+        ops |= MENU_OP_CONTEXT_HELP;
+    }
+
+    if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE))
+    {
+        ops |= MENU_OP_NORMAL;
+        if (clientIsValidTransientOrModal (c) ||
+            FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
+        {
+            insensitive |= MENU_OP_NORMAL;
+        }
+    }
+    else
+    {
+        ops |= MENU_OP_ABOVE;
+        if (clientIsValidTransientOrModal (c) ||
+            FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
+        {
+            insensitive |= MENU_OP_ABOVE;
+        }
+    }
+
+    if (clientIsValidTransientOrModal (c)
+        || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
+        || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+    {
+        insensitive |= MENU_OP_WORKSPACES;
     }
 
     /* c is not null here */
@@ -2515,7 +2528,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
                          screen_info->workspace_names, screen_info->workspace_names_items,
                          display_info->xfilter, screen_info);
 
-    if (!menu_popup (menu, x, y, ev->button, ev->time))
+    if (!menu_popup (menu, x, y, button, time))
     {
         TRACE ("Cannot open menu");
         gdk_beep ();
@@ -2524,6 +2537,15 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
         xfwmWindowDelete (&menu_event_window);
         menu_free (menu);
     }
+}
+
+static gboolean
+show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
+{
+    TRACE ("entering show_popup_cb");
+
+    show_window_menu ((Client *) data, (gint) ev->x_root, (gint) ev->y_root, ev->button, ev->time);
+
     return (TRUE);
 }
 

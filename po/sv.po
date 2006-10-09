@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-05 23:19+0200\n"
+"POT-Creation-Date: 2006-10-09 20:49+0200\n"
 "PO-Revision-Date: 2006-05-26 18:29+0100\n"
 "Last-Translator: Alexander Toresson <alexander.toresson@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Byt namn"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:474
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:480
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %d"
@@ -275,15 +275,15 @@ msgstr "Maximera"
 msgid "Close"
 msgstr "Stäng"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Shade window"
 msgstr "Rulla upp fönster"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Hide window"
 msgstr "Göm fönster"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:354
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Maximize window"
 msgstr "Maximera fönster"
 
@@ -514,145 +514,154 @@ msgstr "Det finns redan ett schema med samma namn"
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Du måste skriva in ett namn för schemat"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:353
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
 msgid "Close window"
 msgstr "Stäng fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:355
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Maximize window vertically"
 msgstr "Maximera fönster vertikalt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:356
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window horizontally"
 msgstr "Maximera fönster horisontellt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Stick window"
 msgstr "Visa fönster på alla arbetsytor"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Cycle windows"
 msgstr "Växla mellan fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Move window up"
 msgstr "Flytta fönster uppåt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Move window down"
 msgstr "Flytta fönster nedåt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Move window left"
 msgstr "Flytta fönster åt vänster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Move window right"
 msgstr "Flytta fönster åt höger"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Resize window up"
 msgstr "Minska höjd på fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Resize window down"
 msgstr "Öka höjd på fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Resize window left"
 msgstr "Minska bredd på fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Resize window right"
 msgstr "Öka bredd på fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 #, fuzzy
 msgid "Cancel move/resize window"
 msgstr "Stäng fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Raise window"
 msgstr "Höj fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Lower window"
 msgstr "Sänk fönster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Toggle fullscreen"
 msgstr "Fullskärm av/på"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Upper workspace"
 msgstr "Växla till arbetsytan ovan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Bottom workspace"
 msgstr "Växla till arbetsytan nedan"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Left workspace"
 msgstr "Växla till arbetsytan till vänster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Right workspace"
 msgstr "Växla till arbetsytan till höger"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Next workspace"
 msgstr "Nästa arbetsyta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Previous workspace"
 msgstr "Föregående arbetsyta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Add workspace"
 msgstr "Lägg till arbetsyta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Delete workspace"
 msgstr "Ta bort arbetsyta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Move window to next workspace"
 msgstr "Flytta fönster till nästa arbetsyta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Move window to previous workspace"
 msgstr "Flytta fönster till föregående arbetsyta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Move window to upper workspace"
 msgstr "Flytta fönster till arbetsytan ovanför"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Move window to bottom workspace"
 msgstr "Flytta fönster till arbetsytan nedanför"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Move window to left workspace"
 msgstr "Flytta fönster till arbetsytan åt vänster"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Move window to right workspace"
 msgstr "Flytta fönster till arbetsytan åt höger"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Show desktop"
 msgstr "Visa skrivbordet"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:495
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#, fuzzy
+msgid "Cancel window action"
+msgstr "Genomskinlighet för fönsterdekorationer"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+msgid "Window operations menu"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Flytta fönster till arbetsyta %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:575
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Cannot open the theme directory !"
 msgstr "Kunde inte öppna schemamappen!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:594
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:600
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -661,8 +670,8 @@ msgstr ""
 "Kunde inte öppna %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:608
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:619
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:614
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:625
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -671,7 +680,7 @@ msgstr ""
 "Kunde inte skriva i %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:772
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -679,15 +688,15 @@ msgstr ""
 "Tangentkombinationen används redan!\n"
 "Vill du verkligen använda den?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:836
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
 msgid "Compose shortcut for :"
 msgstr "Tangentkombination för:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:840
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
 msgid "Compose shortcut"
 msgstr "Ställ in tangentkombination"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:843
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
 msgid "No shortcut"
 msgstr "Ingen genväg"
 
@@ -697,7 +706,7 @@ msgstr "Ingen genväg"
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/main.c:128
+#: ../src/main.c:132
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmenteringsfel"

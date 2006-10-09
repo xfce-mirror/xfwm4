@@ -1230,6 +1230,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_11], getValue ("move_window_workspace_11_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_12], getValue ("move_window_workspace_12_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], getValue ("next_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_POPUP_MENU], getValue ("popup_menu_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], getValue ("prev_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getValue ("raise_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE_DOWN], getValue ("resize_window_down_key", rc));
@@ -1372,6 +1373,7 @@ loadSettings (ScreenInfo *screen_info)
         {"move_window_left_workspace_key", NULL, TRUE},
         {"move_window_next_workspace_key", NULL, TRUE},
         {"move_window_prev_workspace_key", NULL, TRUE},
+        {"popup_menu_key", NULL, TRUE},
         {"move_window_right_key", NULL, TRUE},
         {"move_window_right_workspace_key", NULL, TRUE},
         {"move_window_up_key", NULL, TRUE},
