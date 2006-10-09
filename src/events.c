@@ -369,11 +369,13 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 {
     ScreenInfo *screen_info;
     Client *c;
+    gboolean allow_events;
     int key;
 
     TRACE ("entering handleKeyEvent");
 
     c = clientGetFocus ();
+    allow_events = FALSE;
     if (c)
     {
         screen_info = c->screen_info;
@@ -473,7 +475,15 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_POPUP_MENU:
+                /* 
+                   We need to release the events here prior to grabbing 
+                   the keyboard in gtk menu otherwise we end with a dead lock...
+                  */
+                XAllowEvents (display_info->dpy, AsyncKeyboard, CurrentTime);
                 show_window_menu (c, frameX(c), frameY(c), 1, GDK_CURRENT_TIME);
+                /* 'nuff for now */
+                return;
+
                 break;
             default:
                 break;
