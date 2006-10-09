@@ -392,8 +392,6 @@ tabwinSelectPrev (Tabwin * t)
 Client *
 tabwinGetHead (Tabwin * t)
 {
-    GList *next;
-
     g_return_val_if_fail (t != NULL, NULL);
 
     if ((t->head) && (t->head->data))

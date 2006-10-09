@@ -369,13 +369,11 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 {
     ScreenInfo *screen_info;
     Client *c;
-    gboolean allow_events;
     int key;
 
     TRACE ("entering handleKeyEvent");
 
     c = clientGetFocus ();
-    allow_events = FALSE;
     if (c)
     {
         screen_info = c->screen_info;
