@@ -478,7 +478,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                    the keyboard in gtk menu otherwise we end with a dead lock...
                   */
                 XAllowEvents (display_info->dpy, AsyncKeyboard, CurrentTime);
-                show_window_menu (c, frameX(c), frameY(c), 1, GDK_CURRENT_TIME);
+                show_window_menu (c, frameX (c) + frameLeft (c), 
+                                     frameY (c) + frameTop (c), 
+                                     Button1, GDK_CURRENT_TIME);
                 /* 'nuff for now */
                 return;
 
