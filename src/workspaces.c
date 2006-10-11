@@ -232,7 +232,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     DisplayInfo *display_info;
     Client *c, *new_focus;
     Client *previous;
-    GList *index, *index1, *index2;
+    GList *index;
     GList *list_hide;
     Window dr, window;
     int rx, ry, wx, wy;
@@ -281,15 +281,10 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     list_hide = NULL;
     previous = clientGetFocus ();
 
-    /* 
-       First pass: unfocus the current focused window, and build a list 
-       of windows to hide, but de not hide them, yet...
-     */
+    /* First pass */
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
-
-        FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_WORSKPACE_HIDE);
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE)
             && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
             && ((c->win_workspace != new_ws)))
@@ -301,73 +296,53 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
             }
             if (!clientIsValidTransientOrModal (c))
             {
-                FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORSKPACE_HIDE);
+                /* Just build of windows that will be hidden, so that
+                   we can record the previous focus even when on a
+                   transient (otherwise the transient vanishes along
+                   with its parent window which is placed below...
+                 */
+                list_hide = g_list_append (list_hide, c);
             }
         }
     }
 
-    /* 
-       Second pass: Show the windows from the new workspace, hide the ones from the previpous workspace
-       all this in one pass using two different indexes. This helps reducing
-       the expose events as the new windows are might cover the same areas as the 
-       previous ones 
-     */
-    for (index1 = g_list_last(screen_info->windows_stack), index2 = screen_info->windows_stack; 
-         index2; 
-         index1 = g_list_previous (index1), index2 = g_list_next (index2))
+    /* First pass and a half :) */
+    if (list_hide)
     {
-        c = (Client *) index1->data;
-        if (c->win_workspace == new_ws)
+        for (index = list_hide; index; index = g_list_next (index))
         {
-            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
-            {
-                if (!clientIsValidTransientOrModal (c))
-                {
-                    clientShow (c, FALSE);
-                }
-                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_FOCUS))
-                {
-                    new_focus = c;
-                }
-            }
-            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_FOCUS);
-        }
-
-        c = (Client *) index2->data;
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORSKPACE_HIDE))
-        {
+            c = (Client *) index->data;
             clientHide (c, new_ws, FALSE);
         }
+        g_list_free (list_hide);
     }
 
-    /* 
-       Third pass: Remaining windows (like sticky windows or transients for groups) may be still visible
-       and need to be updated.
-     */
+    /* Second pass */
     for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
-
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) || FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
+            || FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
-            if (c->win_workspace != new_ws)
+            clientSetWorkspace (c, new_ws, TRUE);
+            if (c == previous)
             {
-                clientSetWorkspace (c, new_ws, TRUE);
-                if (c == previous)
-                {
-                    new_focus = c;
-                }
+                new_focus = c;
             }
-            else
+            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_FOCUS);
+        }
+        else if ((c->win_workspace == new_ws)
+            && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+        {
+            if (!clientIsValidTransientOrModal (c))
             {
-                if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
-                {
-                   if (!new_focus)
-                   {
-                       new_focus = c;
-                   }
-                }
+                clientShow (c, FALSE);
             }
+            if ((!new_focus) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_FOCUS))
+            {
+                new_focus = c;
+            }
+            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_FOCUS);
         }
     }
 
