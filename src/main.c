@@ -453,7 +453,7 @@ initialize (int argc, char **argv, gint compositor_mode)
         {
             gboolean xfwm4_compositor;
 
-            xfwm4_compositor = FALSE;
+            xfwm4_compositor = (compositor_mode > COMPOSITOR_MODE_AUTO);
             if ((screen_info->params->use_compositing) || (compositor_mode == COMPOSITOR_MODE_AUTO))
             {
                 xfwm4_compositor = compositorManageScreen (screen_info);

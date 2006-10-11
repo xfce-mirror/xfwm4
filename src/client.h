@@ -104,6 +104,7 @@
 #define XFWM_FLAG_FIRST_MAP             (1L<<19)
 #define XFWM_FLAG_LEGACY_FULLSCREEN     (1L<<20)
 #define XFWM_FLAG_MOVING_RESIZING       (1L<<21)
+#define XFWM_FLAG_WORSKPACE_HIDE        (1L<<22)
 
 #define CLIENT_FLAG_HAS_STRUT           (1L<<0)
 #define CLIENT_FLAG_HAS_STRUT_PARTIAL   (1L<<1)
