@@ -2223,8 +2223,8 @@ clientHide (Client * c, int ws, gboolean change_state)
            workspace (transient for groups can be transients for multiple
            ancesors splitted across workspaces...)
          */
-        if (clientIsTransientOrModalForGroup (c2)
-            && clientTransientOrModalHasAncestor (c2, ws))
+        if (clientIsTransientOrModal (c2) &&
+            clientTransientOrModalHasAncestor (c2, ws))
         {
             /* Other ancestors for that transient are still on screen, so don't
                hide it...
