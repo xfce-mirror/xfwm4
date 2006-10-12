@@ -2738,11 +2738,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     display_info = screen_info->display_info;
     screen_info->compositor_active = FALSE;
 
-    if (!compositorIsUsable (display_info))
-    {
-        return FALSE;
-    }
-
     gdk_error_trap_push ();
     XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
     XSync (display_info->dpy, FALSE);
@@ -2756,6 +2751,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     if (display_info->composite_mode == CompositeRedirectAutomatic)
     {
         /* That's enough for automatic compositing */
+        TRACE ("Automatic compositing enabled");
         return TRUE;
     }
 
@@ -2791,6 +2787,7 @@ compositorManageScreen (ScreenInfo *screen_info)
 
     XClearArea (display_info->dpy, screen_info->xroot, 0, 0, 0, 0, TRUE);
     compositorSetCMSelection (screen_info, screen_info->xfwm4_win);
+    TRACE ("Manual compositing enabled");
 
     return TRUE;
 #else

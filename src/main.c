@@ -76,9 +76,11 @@
 #define MAIN_EVENT_MASK BASE_EVENT_MASK
 #endif /* HAVE_COMPOSITOR */
 
-#define COMPOSITOR_MODE_OFF             0
-#define COMPOSITOR_MODE_AUTO            1
-#define COMPOSITOR_MODE_MANUAL          2
+enum {
+    COMPOSITOR_MODE_OFF = 0,
+    COMPOSITOR_MODE_AUTO,
+    COMPOSITOR_MODE_MANUAL
+};
 
 #ifndef DEBUG
 /* For what, IEEE Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.*/
@@ -354,22 +356,22 @@ parse_compositor (const gchar *s)
     gchar *rvalue;
     gint retval;
 
-    retval = 2;
+    retval = COMPOSITOR_MODE_MANUAL;
     rvalue = strrchr (s, '=');
     if (rvalue)
     {
         rvalue++;
         if (!strcmp (rvalue, "off"))
         {
-            retval = 0;
+            retval = COMPOSITOR_MODE_OFF;
         }
         else if (!strcmp (rvalue, "auto"))
         {
-            retval = 1;
+            retval = COMPOSITOR_MODE_AUTO;
         }
         else if (!strcmp (rvalue, "on"))
         {
-            retval = 2;
+            retval = COMPOSITOR_MODE_MANUAL;
         }
         else
         {
@@ -449,16 +451,13 @@ initialize (int argc, char **argv, gint compositor_mode)
             return -2;
         }
 
-        if (compositor_mode)
+        if (compositor_mode == COMPOSITOR_MODE_AUTO)
         {
-            gboolean xfwm4_compositor;
-
-            xfwm4_compositor = (compositor_mode > COMPOSITOR_MODE_AUTO);
-            if ((screen_info->params->use_compositing) || (compositor_mode == COMPOSITOR_MODE_AUTO))
-            {
-                xfwm4_compositor = compositorManageScreen (screen_info);
-            }
-            if (xfwm4_compositor)
+            compositorManageScreen (screen_info);
+        }
+        else if ((compositor_mode == COMPOSITOR_MODE_MANUAL) && (screen_info->params->use_compositing))
+        {
+            if (compositorManageScreen (screen_info))
             {
                 /*
                    Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
@@ -466,7 +465,7 @@ initialize (int argc, char **argv, gint compositor_mode)
                    show the "compositor" tab.
                  */
                 setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
-                                     screen_info->xroot, screen_info->xfwm4_win);
+                                       screen_info->xroot, screen_info->xfwm4_win);
             }
         }
 
