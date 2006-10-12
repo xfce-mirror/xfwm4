@@ -242,7 +242,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     TRACE ("entering workspaceSwitch");
 
     display_info = screen_info->display_info;
-    new_focus = NULL;
     if ((new_ws == screen_info->current_ws) && (screen_info->params->toggle_workspaces))
     {
         new_ws = screen_info->previous_ws;
@@ -278,66 +277,71 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
         clientSetWorkspace (c2, new_ws, FALSE);
     }
 
+    new_focus = NULL;
     list_hide = NULL;
     previous = clientGetFocus ();
-
-    /* First pass */
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    if (c2 == previous)
     {
-        c = (Client *) index->data;
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE)
-            && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
-            && ((c->win_workspace != new_ws)))
-        {
-            if (c == previous)
-            {
-                FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
-                clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL);
-            }
-            if (!clientIsValidTransientOrModal (c))
-            {
-                /* Just build of windows that will be hidden, so that
-                   we can record the previous focus even when on a
-                   transient (otherwise the transient vanishes along
-                   with its parent window which is placed below...
-                 */
-                list_hide = g_list_append (list_hide, c);
-            }
-        }
+        new_focus = c2;
     }
 
-    /* First pass and a half :) */
-    if (list_hide)
-    {
-        for (index = list_hide; index; index = g_list_next (index))
-        {
-            c = (Client *) index->data;
-            clientHide (c, new_ws, FALSE);
-        }
-        g_list_free (list_hide);
-    }
-
-    /* Second pass */
+    /* First pass: Show, from top to bottom */
     for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
-            || FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             clientSetWorkspace (c, new_ws, TRUE);
-            if (c == previous)
+        }
+        else if (c->win_workspace == new_ws)
+        {
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+            {
+                if (!clientIsTransientOrModal (c))
+                {
+                    clientShow (c, FALSE);
+                }
+            }
+        }
+    }
+
+    /* Second pass: Hide from bottom to top */
+    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    {
+        c = (Client *) index->data;
+        
+        if (c->win_workspace != new_ws)
+        {
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+            {
+                if (c == previous)
+                {
+                    FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
+                    clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL);
+                }
+                if (!clientIsTransientOrModal (c))
+                {
+                    clientHide (c, new_ws, FALSE);
+                }
+            }
+        }
+    }
+
+    /* Third pass: Check for focus, from top to bottom */
+    for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
+    {
+        c = (Client *) index->data;
+        
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+        {
+            if ((!new_focus) && (c == previous))
             {
                 new_focus = c;
             }
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_FOCUS);
         }
-        else if ((c->win_workspace == new_ws)
-            && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+        else if (c->win_workspace == new_ws)
         {
-            if (!clientIsValidTransientOrModal (c))
-            {
-                clientShow (c, FALSE);
-            }
             if ((!new_focus) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_FOCUS))
             {
                 new_focus = c;
@@ -365,9 +369,16 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
 
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
-    if (new_focus && update_focus)
+    if (update_focus)
     {
-        clientSetFocus (new_focus->screen_info, new_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+        if (new_focus)
+        {
+            clientSetFocus (screen_info, new_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+        }
+        else
+        {
+            clientFocusTop (screen_info, WIN_LAYER_NORMAL);
+        }
     }
 }
 
