@@ -72,7 +72,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
             c->window, (int) c->win_layer);
 
-        if (!clientAcceptFocus (c) || (c->type & (WINDOW_SPLASHSCREEN | WINDOW_DOCK | WINDOW_DESKTOP)))
+        if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
         {
             continue;
         }
