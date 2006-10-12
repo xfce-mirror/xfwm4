@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2006-09-16 13:05+0100\n"
+"PO-Revision-Date: 2006-10-10 23:26+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -643,13 +643,12 @@ msgid "Show desktop"
 msgstr "Zobrazit pracovní plochu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Průhlednost dekorací oken"
+msgstr "Zrušit akci okna"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "Nabídka možností okna"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
