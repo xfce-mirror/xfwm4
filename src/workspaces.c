@@ -272,17 +272,27 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
 
     screen_info->previous_ws = screen_info->current_ws;
     screen_info->current_ws = new_ws;
+
+    new_focus = NULL;
+    list_hide = NULL;
+    previous  = NULL;
+    c = clientGetFocus ();
+
     if (c2)
     {
         clientSetWorkspace (c2, new_ws, FALSE);
     }
 
-    new_focus = NULL;
-    list_hide = NULL;
-    previous = clientGetFocus ();
-    if (c2 == previous)
+    if (c)
     {
-        new_focus = c2;
+        if (c->type & WINDOW_REGULAR_FOCUSABLE)
+        {
+            previous = c;
+        }
+        if (c2 == c)
+        {
+            new_focus = c2;
+        }
     }
 
     /* First pass: Show, from top to bottom */
@@ -312,13 +322,13 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
         
         if (c->win_workspace != new_ws)
         {
+            if (c == previous)
+            {
+                FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
+                clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL);
+            }
             if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
             {
-                if (c == previous)
-                {
-                    FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
-                    clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL);
-                }
                 if (!clientIsTransientOrModal (c))
                 {
                     clientHide (c, new_ws, FALSE);
@@ -334,7 +344,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
         
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
-            if ((!new_focus) && (c == previous))
+            if ((!new_focus) && (c == previous) && (c->type & WINDOW_REGULAR_FOCUSABLE))
             {
                 new_focus = c;
             }
