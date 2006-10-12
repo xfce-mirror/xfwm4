@@ -994,7 +994,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         else if (ev->window == c->window)
         {
             clientPassGrabMouseButton (c);
-            if ((screen_info->params->raise_with_any_button) || (ev->button == Button1))
+            if (((screen_info->params->raise_with_any_button) && (c->type & WINDOW_REGULAR_FOCUSABLE)) || (ev->button == Button1))
             {
                 if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
                 {
