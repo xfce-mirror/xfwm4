@@ -455,17 +455,19 @@ initialize (int argc, char **argv, gint compositor_mode)
         {
             compositorManageScreen (screen_info);
         }
-        else if ((compositor_mode == COMPOSITOR_MODE_MANUAL) && (screen_info->params->use_compositing))
+        else if (compositor_mode == COMPOSITOR_MODE_MANUAL)
         {
-            if (compositorManageScreen (screen_info))
+            /*
+               Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
+               compositing manager (used by WM tweaks to determine whether or not
+               show the "compositor" tab.
+             */
+            setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
+                                   screen_info->xroot, screen_info->xfwm4_win);
+            /* And enable compositor if "use compositing" is enabled */
+            if (screen_info->params->use_compositing)
             {
-                /*
-                   Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
-                   compositing manager (used by WM tweaks to determine whether or not
-                   show the "compositor" tab.
-                 */
-                setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
-                                       screen_info->xroot, screen_info->xfwm4_win);
+                compositorManageScreen (screen_info);
             }
         }
 
