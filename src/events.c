@@ -352,7 +352,7 @@ getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
     int key, state;
 
     state = ev->state & MODIFIER_MASK;
-    for (key = 0; key < KEY_COUNT; key++)
+    for (key = 0; key < KEY_LAST; key++)
     {
         if ((screen_info->params->keys[key].keycode == ev->keycode)
             && (screen_info->params->keys[key].modifier == state))
@@ -870,11 +870,11 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     /* Left or right side */
                     if (ev->x < c->width / 2)
                     {
-                        part = 4 + SIDE_LEFT;
+                        part = CORNER_COUNT + SIDE_LEFT;
                     }
                     else
                     {
-                        part = 4 + SIDE_RIGHT;
+                        part = CORNER_COUNT + SIDE_RIGHT;
                     }
                 }
                 else
@@ -882,11 +882,11 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     /* Top or bottom side */
                     if (ev->y < c->height / 2)
                     {
-                        part = 4 + SIDE_TOP;
+                        part = CORNER_COUNT + SIDE_TOP;
                     }
                     else
                     {
-                        part = 4 + SIDE_BOTTOM;
+                        part = CORNER_COUNT + SIDE_BOTTOM;
                     }
                 }
             }
@@ -979,17 +979,17 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]))
             && (state == 0))
         {
-            edgeButton (c, 4 + SIDE_BOTTOM, ev);
+            edgeButton (c, CORNER_COUNT + SIDE_BOTTOM, ev);
         }
         else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]))
             && (state == 0))
         {
-            edgeButton (c, 4 + SIDE_LEFT, ev);
+            edgeButton (c, CORNER_COUNT + SIDE_LEFT, ev);
         }
         else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]))
             && (state == 0))
         {
-            edgeButton (c, 4 + SIDE_RIGHT, ev);
+            edgeButton (c, CORNER_COUNT + SIDE_RIGHT, ev);
         }
         else if (ev->window == c->window)
         {

@@ -51,20 +51,6 @@
 
 #include "event_filter.h"
 
-#define CORNER_TOP_LEFT                                         0
-#define CORNER_TOP_RIGHT                                        1
-#define CORNER_BOTTOM_LEFT                                      2
-#define CORNER_BOTTOM_RIGHT                                     3
-
-#define SIDE_LEFT                                               0
-#define SIDE_RIGHT                                              1
-#define SIDE_BOTTOM                                             2
-#define SIDE_TOP                                                3
-
-#define ANY                                                     0
-#define WINDOW                                                  1
-#define FRAME                                                   2
-
 /*
  * The following macro is taken straight from metacity,
  * if that needs some explanation, please refer to metacity's
@@ -75,6 +61,31 @@
 #define TIMESTAMP_IS_BEFORE(time1, time2)       ((time1) == 0 ||                                                    \
                                                 (TIMESTAMP_IS_BEFORE_REAL(time1, time2) &&                          \
                                                 (time2) != 0))
+
+enum
+{
+    CORNER_TOP_LEFT = 0,
+    CORNER_TOP_RIGHT,
+    CORNER_BOTTOM_LEFT,
+    CORNER_BOTTOM_RIGHT,
+    CORNER_COUNT
+};
+
+enum
+{
+    SIDE_LEFT = 0,
+    SIDE_RIGHT,
+    SIDE_BOTTOM,
+    SIDE_TOP,
+    SIDE_COUNT
+};
+
+enum
+{
+   ANY,
+   WINDOW,
+   FRAME
+};
 
 enum
 {
@@ -172,7 +183,7 @@ enum
     XFWM4_COMPOSITING_MANAGER,
     XROOTPMAP,
     XSETROOT,
-    NB_ATOMS
+    ATOM_COUNT
 };
 
 typedef struct _Client            Client;
@@ -197,7 +208,7 @@ struct _DisplayInfo
     Cursor root_cursor;
     Cursor resize_cursor[8];
 
-    Atom atoms[NB_ATOMS];
+    Atom atoms[ATOM_COUNT];
 
     eventFilterSetup *xfilter;
     GSList *screens;

@@ -33,102 +33,125 @@
 #ifndef INC_SETTINGS_H
 #define INC_SETTINGS_H
 
-#define TITLE_1                         0
-#define TITLE_2                         1
-#define TITLE_3                         2
-#define TITLE_4                         3
-#define TITLE_5                         4
+enum
+{
+    TITLE_1,
+    TITLE_2,
+    TITLE_3,
+    TITLE_4,
+    TITLE_5
+};
 
-#define TITLE_SHADOW_NONE               0
-#define TITLE_SHADOW_UNDER              1
-#define TITLE_SHADOW_FRAME              2
+enum
+{
+    TITLE_SHADOW_NONE,
+    TITLE_SHADOW_UNDER,
+    TITLE_SHADOW_FRAME
+};
 
-#define MENU_BUTTON                     0
-#define STICK_BUTTON                    1
-#define SHADE_BUTTON                    2
-#define HIDE_BUTTON                     3
-#define MAXIMIZE_BUTTON                 4
-#define CLOSE_BUTTON                    5
-#define TITLE_SEPARATOR                 6
-#define BUTTON_COUNT                    6
+enum
+{
+    MENU_BUTTON,
+    STICK_BUTTON,
+    SHADE_BUTTON,
+    HIDE_BUTTON,
+    MAXIMIZE_BUTTON,
+    CLOSE_BUTTON,
+    TITLE_SEPARATOR,
+    BUTTON_COUNT
+};
+#define BUTTON_LAST (BUTTON_COUNT - 1)
 
-#define ACTIVE                          0
-#define INACTIVE                        1
-#define PRESSED                         2
-#define T_ACTIVE                        3
-#define T_INACTIVE                      4
-#define T_PRESSED                       5
+enum
+{
+    ACTIVE,
+    INACTIVE,
+    PRESSED,
+    T_ACTIVE,
+    T_INACTIVE,
+    T_PRESSED
+};
 
-#define KEY_ADD_WORKSPACE               0
-#define KEY_CANCEL                      1
-#define KEY_CLOSE_WINDOW                2
-#define KEY_CYCLE_WINDOWS               3
-#define KEY_DEL_WORKSPACE               4
-#define KEY_DOWN_WORKSPACE              5
-#define KEY_HIDE_WINDOW                 6
-#define KEY_LEFT_WORKSPACE              7
-#define KEY_LOWER_WINDOW                8
-#define KEY_MAXIMIZE_HORIZ              9
-#define KEY_MAXIMIZE_VERT               10
-#define KEY_MAXIMIZE_WINDOW             11
-#define KEY_MOVE_DOWN                   12
-#define KEY_MOVE_DOWN_WORKSPACE         13
-#define KEY_MOVE_LEFT                   14
-#define KEY_MOVE_LEFT_WORKSPACE         15
-#define KEY_MOVE_NEXT_WORKSPACE         16
-#define KEY_MOVE_PREV_WORKSPACE         17
-#define KEY_MOVE_RIGHT                  18
-#define KEY_MOVE_RIGHT_WORKSPACE        19
-#define KEY_MOVE_UP                     20
-#define KEY_MOVE_UP_WORKSPACE           21
-#define KEY_MOVE_WORKSPACE_1            22
-#define KEY_MOVE_WORKSPACE_2            23
-#define KEY_MOVE_WORKSPACE_3            24
-#define KEY_MOVE_WORKSPACE_4            25
-#define KEY_MOVE_WORKSPACE_5            26
-#define KEY_MOVE_WORKSPACE_6            27
-#define KEY_MOVE_WORKSPACE_7            28
-#define KEY_MOVE_WORKSPACE_8            29
-#define KEY_MOVE_WORKSPACE_9            30
-#define KEY_MOVE_WORKSPACE_10           31
-#define KEY_MOVE_WORKSPACE_11           32
-#define KEY_MOVE_WORKSPACE_12           33
-#define KEY_NEXT_WORKSPACE              34
-#define KEY_POPUP_MENU                  35
-#define KEY_PREV_WORKSPACE              36
-#define KEY_RAISE_WINDOW                37
-#define KEY_RESIZE_DOWN                 38
-#define KEY_RESIZE_LEFT                 39
-#define KEY_RESIZE_RIGHT                40
-#define KEY_RESIZE_UP                   41
-#define KEY_RIGHT_WORKSPACE             42
-#define KEY_SHADE_WINDOW                43
-#define KEY_SHOW_DESKTOP                44
-#define KEY_STICK_WINDOW                45
-#define KEY_TOGGLE_FULLSCREEN           58
-#define KEY_UP_WORKSPACE                59
-#define KEY_WORKSPACE_1                 60
-#define KEY_WORKSPACE_2                 61
-#define KEY_WORKSPACE_3                 62
-#define KEY_WORKSPACE_4                 63
-#define KEY_WORKSPACE_5                 64
-#define KEY_WORKSPACE_6                 65
-#define KEY_WORKSPACE_7                 66
-#define KEY_WORKSPACE_8                 67
-#define KEY_WORKSPACE_9                 68
-#define KEY_WORKSPACE_10                69
-#define KEY_WORKSPACE_11                70
-#define KEY_WORKSPACE_12                71
-#define KEY_COUNT                       72
+enum
+{
+    KEY_ADD_WORKSPACE,
+    KEY_CANCEL,
+    KEY_CLOSE_WINDOW,
+    KEY_CYCLE_WINDOWS,
+    KEY_DEL_WORKSPACE,
+    KEY_DOWN_WORKSPACE,
+    KEY_HIDE_WINDOW,
+    KEY_LEFT_WORKSPACE,
+    KEY_LOWER_WINDOW,
+    KEY_MAXIMIZE_HORIZ,
+    KEY_MAXIMIZE_VERT,
+    KEY_MAXIMIZE_WINDOW,
+    KEY_MOVE_DOWN,
+    KEY_MOVE_DOWN_WORKSPACE,
+    KEY_MOVE_LEFT,
+    KEY_MOVE_LEFT_WORKSPACE,
+    KEY_MOVE_NEXT_WORKSPACE,
+    KEY_MOVE_PREV_WORKSPACE,
+    KEY_MOVE_RIGHT,
+    KEY_MOVE_RIGHT_WORKSPACE,
+    KEY_MOVE_UP,
+    KEY_MOVE_UP_WORKSPACE,
+    KEY_MOVE_WORKSPACE_1,
+    KEY_MOVE_WORKSPACE_2,
+    KEY_MOVE_WORKSPACE_3,
+    KEY_MOVE_WORKSPACE_4,
+    KEY_MOVE_WORKSPACE_5,
+    KEY_MOVE_WORKSPACE_6,
+    KEY_MOVE_WORKSPACE_7,
+    KEY_MOVE_WORKSPACE_8,
+    KEY_MOVE_WORKSPACE_9,
+    KEY_MOVE_WORKSPACE_10,
+    KEY_MOVE_WORKSPACE_11,
+    KEY_MOVE_WORKSPACE_12,
+    KEY_NEXT_WORKSPACE,
+    KEY_POPUP_MENU,
+    KEY_PREV_WORKSPACE,
+    KEY_RAISE_WINDOW,
+    KEY_RESIZE_DOWN,
+    KEY_RESIZE_LEFT,
+    KEY_RESIZE_RIGHT,
+    KEY_RESIZE_UP,
+    KEY_RIGHT_WORKSPACE,
+    KEY_SHADE_WINDOW,
+    KEY_SHOW_DESKTOP,
+    KEY_STICK_WINDOW,
+    KEY_TOGGLE_FULLSCREEN,
+    KEY_UP_WORKSPACE,
+    KEY_WORKSPACE_1,
+    KEY_WORKSPACE_2,
+    KEY_WORKSPACE_3,
+    KEY_WORKSPACE_4,
+    KEY_WORKSPACE_5,
+    KEY_WORKSPACE_6,
+    KEY_WORKSPACE_7,
+    KEY_WORKSPACE_8,
+    KEY_WORKSPACE_9,
+    KEY_WORKSPACE_10,
+    KEY_WORKSPACE_11,
+    KEY_WORKSPACE_12,
+    KEY_COUNT
+};
+#define KEY_LAST (KEY_COUNT - 1)
 
-#define ALIGN_LEFT                      0
-#define ALIGN_RIGHT                     1
-#define ALIGN_CENTER                    2
+enum
+{
+    ALIGN_LEFT,
+    ALIGN_RIGHT,
+    ALIGN_CENTER
+};
 
-#define ACTION_NONE                     0
-#define ACTION_MAXIMIZE                 1
-#define ACTION_SHADE                    2
-#define ACTION_HIDE                     3
+enum
+{
+    ACTION_NONE,
+    ACTION_MAXIMIZE,
+    ACTION_SHADE,
+    ACTION_HIDE
+};
 
 struct _XfwmColor
 {
@@ -147,7 +170,7 @@ struct _Settings
 struct _XfwmParams
 {
     MyKey keys[KEY_COUNT];
-    gchar button_layout[8];
+    gchar button_layout[BUTTON_COUNT + 1];
     unsigned int xfwm_margins[4];
     int button_offset;
     int button_spacing;

@@ -108,7 +108,7 @@ sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, Time timestam
     DisplayInfo *display_info;
     XClientMessageEvent ev;
 
-    g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
+    g_return_if_fail ((atom_id > 0) && (atom_id < ATOM_COUNT));
     TRACE ("entering sendClientMessage");
 
     display_info = screen_info->display_info;
@@ -127,7 +127,7 @@ sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, Time timestam
     DisplayInfo *display_info;
     XClientMessageEvent ev;
 
-    g_return_if_fail ((atom_id > 0) && (atom_id < NB_ATOMS));
+    g_return_if_fail ((atom_id > 0) && (atom_id < ATOM_COUNT));
     TRACE ("entering sendClientMessage");
 
     display_info = screen_info->display_info;

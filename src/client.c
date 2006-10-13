@@ -570,7 +570,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
 
         if ((minx * h1 > miny * w1) &&
             (miny) &&
-            ((corner == 4 + SIDE_TOP) || (corner == 4 + SIDE_BOTTOM)))
+            ((corner == CORNER_COUNT + SIDE_TOP) || (corner == CORNER_COUNT + SIDE_BOTTOM)))
         {
             /* Change width to match */
             delta = MAKE_MULT (minx * h1 /  miny - w1, xinc);
@@ -600,7 +600,7 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
 
         if ((maxx * h1 < maxy * w1) &&
             (maxx) &&
-            ((corner == 4 + SIDE_LEFT) || (corner == 4 + SIDE_RIGHT)))
+            ((corner == CORNER_COUNT + SIDE_LEFT) || (corner == CORNER_COUNT + SIDE_RIGHT)))
         {
             delta = MAKE_MULT (w1 * maxy / maxx - h1, yinc);
             if (!(c->size->flags & PMaxSize) ||
@@ -1543,7 +1543,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
     }
 
-    for (i = 0; i < BUTTON_COUNT; i++)
+    for (i = 0; i < BUTTON_LAST; i++)
     {
         c->button_pressed[i] = FALSE;
     }
@@ -1718,13 +1718,13 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
         &c->sides[SIDE_LEFT],
-        myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_LEFT));
+        myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_LEFT));
     xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
         &c->sides[SIDE_RIGHT],
-        myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_RIGHT));
+        myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_RIGHT));
     xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
         &c->sides[SIDE_BOTTOM],
-        myDisplayGetCursorResize(screen_info->display_info, 4 + SIDE_BOTTOM));
+        myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_BOTTOM));
     xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
         &c->corners[CORNER_BOTTOM_LEFT],
         myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_LEFT));
@@ -1739,7 +1739,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_RIGHT));
     xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
         &c->title, None);
-    for (i = 0; i < BUTTON_COUNT; i++)
+    for (i = 0; i < BUTTON_LAST; i++)
     {
         xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
             &c->buttons[i], None);
@@ -1889,7 +1889,7 @@ clientUnframe (Client * c, gboolean remap)
     xfwmPixmapFree (&c->appmenu[INACTIVE]);
     xfwmPixmapFree (&c->appmenu[PRESSED]);
 
-    for (i = 0; i < BUTTON_COUNT; i++)
+    for (i = 0; i < BUTTON_LAST; i++)
     {
         xfwmWindowDelete (&c->buttons[i]);
     }
@@ -3671,7 +3671,6 @@ clientMove (Client * c, XEvent * ev)
     DisplayInfo *display_info;
     XWindowChanges wc;
     MoveResizeData passdata;
-    Cursor cursor;
     int changes;
     gboolean g1, g2;
 
@@ -3697,25 +3696,24 @@ clientMove (Client * c, XEvent * ev)
 
     if (ev->type == KeyPress)
     {
-        cursor = None;
         passdata.released = passdata.use_keys = TRUE;
         passdata.mx = ev->xkey.x_root;
         passdata.my = ev->xkey.y_root;
     }
     else if (ev->type == ButtonPress)
     {
-        cursor = None;
         passdata.mx = ev->xbutton.x_root;
         passdata.my = ev->xbutton.y_root;
     }
     else
     {
-        cursor = myDisplayGetCursorMove(display_info);
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
+
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask,
-                              cursor, myDisplayGetCurrentTime (display_info));
+                              myDisplayGetCursorMove (display_info), 
+                              myDisplayGetCurrentTime (display_info));
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientMove");
@@ -3844,19 +3842,19 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
 
     move_top = ((passdata->corner == CORNER_TOP_RIGHT)
             || (passdata->corner == CORNER_TOP_LEFT)
-            || (passdata->corner == 4 + SIDE_TOP)) ?
+            || (passdata->corner == CORNER_COUNT + SIDE_TOP)) ?
         1 : 0;
     move_bottom = ((passdata->corner == CORNER_BOTTOM_RIGHT)
             || (passdata->corner == CORNER_BOTTOM_LEFT)
-            || (passdata->corner == 4 + SIDE_BOTTOM)) ?
+            || (passdata->corner == CORNER_COUNT + SIDE_BOTTOM)) ?
         1 : 0;
     move_right = ((passdata->corner == CORNER_TOP_RIGHT)
             || (passdata->corner == CORNER_BOTTOM_RIGHT)
-            || (passdata->corner == 4 + SIDE_RIGHT)) ?
+            || (passdata->corner == CORNER_COUNT + SIDE_RIGHT)) ?
         1 : 0;
     move_left = ((passdata->corner == CORNER_TOP_LEFT)
             || (passdata->corner == CORNER_BOTTOM_LEFT)
-            || (passdata->corner == 4 + SIDE_LEFT)) ?
+            || (passdata->corner == CORNER_COUNT + SIDE_LEFT)) ?
         1 : 0;
 
     monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
@@ -3912,23 +3910,23 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 && (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_UP].keycode))
             {
                 c->height = c->height - key_height_inc;
-                corner = 4 + SIDE_BOTTOM;
+                corner = CORNER_COUNT + SIDE_BOTTOM;
             }
             else if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
                 && (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_DOWN].keycode))
             {
                 c->height = c->height + key_height_inc;
-                corner = 4 + SIDE_BOTTOM;
+                corner = CORNER_COUNT + SIDE_BOTTOM;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_LEFT].keycode)
             {
                 c->width = c->width - key_width_inc;
-                corner = 4 + SIDE_RIGHT;
+                corner = CORNER_COUNT + SIDE_RIGHT;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_RIGHT].keycode)
             {
                 c->width = c->width + key_width_inc;
-                corner = 4 + SIDE_RIGHT;
+                corner = CORNER_COUNT + SIDE_RIGHT;
             }
             if (corner >= 0)
             {
@@ -4618,7 +4616,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientButtonPress");
 
-    for (b = 0; b < BUTTON_COUNT; b++)
+    for (b = 0; b < BUTTON_LAST; b++)
     {
         if (MYWINDOW_XWINDOW (c->buttons[b]) == w)
         {

@@ -48,6 +48,14 @@
 #define MAX_HOSTNAME_LENGTH 32
 #endif /* MAX_HOSTNAME_LENGTH */
 
+#ifndef CURSOR_ROOT
+#define CURSOR_ROOT XC_left_ptr
+#endif
+
+#ifndef CURSOR_MOVE
+#define CURSOR_MOVE XC_fleur
+#endif
+
 static int
 handleXError (Display * dpy, XErrorEvent * err)
 {
@@ -162,10 +170,10 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_XSETROOT_ID"
     };
 
-    g_assert (NB_ATOMS == G_N_ELEMENTS (atom_names));
+    g_assert (ATOM_COUNT == G_N_ELEMENTS (atom_names));
     return (XInternAtoms (display_info->dpy,
                           (char **) atom_names,
-                          NB_ATOMS,
+                          ATOM_COUNT,
                           FALSE, display_info->atoms) != 0);
 }
 
@@ -243,9 +251,9 @@ myDisplayInit (GdkDisplay *gdisplay)
 #endif
 
     display->root_cursor =
-        XCreateFontCursor (display->dpy, XC_left_ptr);
+        XCreateFontCursor (display->dpy, CURSOR_ROOT);
     display->move_cursor =
-        XCreateFontCursor (display->dpy, XC_fleur);
+        XCreateFontCursor (display->dpy, CURSOR_MOVE);
     display->busy_cursor =
         cursorCreateSpinning (display->dpy);
     display->resize_cursor[CORNER_TOP_LEFT] =
@@ -256,13 +264,13 @@ myDisplayInit (GdkDisplay *gdisplay)
         XCreateFontCursor (display->dpy, XC_bottom_left_corner);
     display->resize_cursor[CORNER_BOTTOM_RIGHT] =
         XCreateFontCursor (display->dpy, XC_bottom_right_corner);
-    display->resize_cursor[4 + SIDE_LEFT] =
+    display->resize_cursor[CORNER_COUNT + SIDE_LEFT] =
         XCreateFontCursor (display->dpy, XC_left_side);
-    display->resize_cursor[4 + SIDE_RIGHT] =
+    display->resize_cursor[CORNER_COUNT + SIDE_RIGHT] =
         XCreateFontCursor (display->dpy, XC_right_side);
-    display->resize_cursor[4 + SIDE_TOP] =
+    display->resize_cursor[CORNER_COUNT + SIDE_TOP] =
         XCreateFontCursor (display->dpy, XC_top_side);
-    display->resize_cursor[4 + SIDE_BOTTOM] =
+    display->resize_cursor[CORNER_COUNT + SIDE_BOTTOM] =
         XCreateFontCursor (display->dpy, XC_bottom_side);
 
     display->xfilter = NULL;

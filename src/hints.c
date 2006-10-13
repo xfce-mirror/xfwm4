@@ -238,7 +238,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
     int real_format;
     gboolean success;
 
-    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("entering getHint");
 
     success = FALSE;
@@ -262,7 +262,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
 void
 setHint (DisplayInfo *display_info, Window w, int atom_id, long value)
 {
-    g_return_if_fail ((atom_id >= 0) && (atom_id < NB_ATOMS));
+    g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
     TRACE ("entering setHint");
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], XA_CARDINAL,
@@ -479,7 +479,7 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
     *atoms_p = NULL;
     *n_atoms_p = 0;
 
-    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("entering getAtomList()");
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
@@ -519,7 +519,7 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
 
-    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("entering getCardinalList()");
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
@@ -599,7 +599,7 @@ initNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int w
 void
 setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar *val)
 {
-    g_return_if_fail ((atom_id >= 0) && (atom_id < NB_ATOMS));
+    g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
     TRACE ("entering setUTF8StringHint");
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id],
@@ -695,7 +695,7 @@ getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str
     unsigned char *str;
     unsigned long n_items;
 
-    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("entering getUTF8StringData");
 
     *str_p = NULL;
@@ -728,7 +728,7 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, 
 {
     char *xstr;
 
-    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("entering getUTF8String");
 
     if (!getUTF8StringData (display_info, w, atom_id, &xstr, length))
@@ -769,7 +769,7 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***st
     guint i;
     int length;
 
-    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
 
     TRACE ("entering getUTF8StringList");
 
@@ -1154,7 +1154,7 @@ setXAtomManagerOwner (DisplayInfo *display_info, Atom atom, Window root, Window 
 gboolean
 setAtomIdManagerOwner (DisplayInfo *display_info, int atom_id, Window root, Window w)
 {
-    g_return_val_if_fail (((atom_id >= 0) && (atom_id < NB_ATOMS)), FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
 
     return setXAtomManagerOwner(display_info, display_info->atoms[atom_id], root, w);
 }

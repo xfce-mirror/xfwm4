@@ -666,7 +666,7 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
                                ShapeBounding, 0, 0, screen_info->corners[CORNER_TOP_RIGHT][state].mask, ShapeSet);
         }
 
-        for (i = 0; i < BUTTON_COUNT; i++)
+        for (i = 0; i < BUTTON_LAST; i++)
         {
             if (xfwmWindowVisible (&c->buttons[i]))
             {
@@ -783,7 +783,7 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
                                 0, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]), ShapeBounding, ShapeUnion);
         }
 
-        for (i = 0; i < BUTTON_COUNT; i++)
+        for (i = 0; i < BUTTON_LAST; i++)
         {
             if (xfwmWindowVisible (&c->buttons[i]))
             {
@@ -889,7 +889,7 @@ frameDraw (Client * c, gboolean clear_all)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         /* First, hide the buttons that we don't have... */
-        for (i = 0; i < BUTTON_COUNT; i++)
+        for (i = 0; i < BUTTON_LAST; i++)
         {
             char b = getLetterFromButton (i, c);
             if ((!b) || !strchr (screen_info->params->button_layout, b))
@@ -1114,7 +1114,7 @@ frameDraw (Client * c, gboolean clear_all)
                 xfwmWindowHide (&c->corners[i]);
             }
         }
-        for (i = 0; i < BUTTON_COUNT; i++)
+        for (i = 0; i < BUTTON_LAST; i++)
         {
             if (MYWINDOW_XWINDOW (c->buttons[i]) && xfwmWindowVisible (&c->buttons[i]))
             {

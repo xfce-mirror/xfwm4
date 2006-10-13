@@ -1561,7 +1561,7 @@ unloadTheme (ScreenInfo *screen_info)
         xfwmPixmapFree (&screen_info->corners[i][ACTIVE]);
         xfwmPixmapFree (&screen_info->corners[i][INACTIVE]);
     }
-    for (i = 0; i < BUTTON_COUNT; i++)
+    for (i = 0; i < BUTTON_LAST; i++)
     {
         xfwmPixmapFree (&screen_info->buttons[i][ACTIVE]);
         xfwmPixmapFree (&screen_info->buttons[i][INACTIVE]);
