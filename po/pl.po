@@ -638,13 +638,12 @@ msgid "Show desktop"
 msgstr "Pokaż pulpit"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Przeźroczystość dekoracji okien"
+msgstr "Anuluj akcję okna"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "Menu operacji okna"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
