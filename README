@@ -1,9 +1,10 @@
-xfwm4
+
+                                 -= xfwm4 =-
 
 This is the window manager for Xfce (http://www.xfce.org).
 
-Xfwm is complaint with the following specifications from the freedesktop.org
-standards:
+Xfwm is compliant with the following specifications from the freedesktop.org
+(http://www.freedesktop.org/) standards:
 
     NET_ACTIVE_WINDOW
     NET_CLIENT_LIST
@@ -67,7 +68,7 @@ standards:
     NET_WM_WINDOW_TYPE_UTILITY
     NET_WORKAREA
 
-The older GNOME 1.x specifications are supported:
+The following older GNOME 1.x specifications are supported:
 
     GNOME_PANEL_DESKTOP_AREA
     WIN_CLIENT_LIST
@@ -80,16 +81,16 @@ The older GNOME 1.x specifications are supported:
     WIN_WORKSPACE
     WIN_WORKSPACE_COUNT
 
-The KDE system tray protocol is optionally supported, 
-xfwm4 acting as a proxy for the standard Systray protocol.
+The KDE system tray protocol is optionally supported, xfwm4 acting as a proxy
+for the standard system tray protocol.
 
 Note that this protocol is now deprecated in KDE and support for it in xfwm4 is
-now disabled by default. You can enable by using --enable-kde-systray when 
+disabled by default. You can enable it by using "--enable-kde-systray" when
 running the configure script.
 
     KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR
 
-The KDE icon protocol is supported by xfwm4, 
+The KDE icon protocol is supported by xfwm4:
 
     KWM_WIN_ICON
 
