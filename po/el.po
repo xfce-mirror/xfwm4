@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2006-08-24 18:07+0200\n"
+"POT-Creation-Date: 2006-10-14 10:10+0300\n"
+"PO-Revision-Date: 2006-10-14 10:13+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,7 @@ msgstr "Ανύψωση παραθύρων όταν πατηθεί οποιοδή
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Απόκρυψη περιγραμμάτων των μεγιστοποιημένων παραθύρων"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
@@ -652,13 +652,12 @@ msgid "Show desktop"
 msgstr "Εμφάνιση επιφάνειας εργασίας"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Διαφάνεια περιγραμμάτων παραθύρων"
+msgstr "Ακύρωση ενέργειας παραθύρου"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "Λειτουργίες παραθύρων"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
@@ -714,7 +713,7 @@ msgstr "Καμία συντόμευση"
 msgid "%s (on %s)"
 msgstr "%s (στο %s)"
 
-#: ../src/main.c:132
+#: ../src/main.c:134
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Σφάλμα κατάτμησης"
