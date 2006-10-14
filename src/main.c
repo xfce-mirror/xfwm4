@@ -457,17 +457,28 @@ initialize (int argc, char **argv, gint compositor_mode)
         }
         else if (compositor_mode == COMPOSITOR_MODE_MANUAL)
         {
-            /*
-               Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
-               compositing manager (used by WM tweaks to determine whether or not
-               show the "compositor" tab.
-             */
-            setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
-                                   screen_info->xroot, screen_info->xfwm4_win);
-            /* And enable compositor if "use compositing" is enabled */
+            gboolean xfwm4_compositor;
+
+            xfwm4_compositor = TRUE;
             if (screen_info->params->use_compositing)
             {
-                compositorManageScreen (screen_info);
+                /* Enable compositor if "use compositing" is enabled */
+                xfwm4_compositor = compositorManageScreen (screen_info);
+            }
+            /* 
+               The user may want to use the manual compositing, but the installed
+               system may not support it, so we need to double check, to see if
+               initialization of the compositor was successful.
+             */
+            if (xfwm4_compositor)
+            {
+                /*
+                   Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
+                   compositing manager (used by WM tweaks to determine whether or not
+                   show the "compositor" tab.
+                 */
+                setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
+                                       screen_info->xroot, screen_info->xfwm4_win);
             }
         }
 
