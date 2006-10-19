@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2006-09-12 18:37+0300\n"
+"POT-Creation-Date: 2006-10-19 21:23+0300\n"
+"PO-Revision-Date: 2006-10-19 21:24+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -634,13 +634,12 @@ msgid "Show desktop"
 msgstr "Näytä työpöytä"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Ikkunoiden kehysten läpinäkyvyys"
+msgstr "Peru ikkunan toiminto"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "Ikkunan toimintovalikko"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
@@ -696,7 +695,7 @@ msgstr "Ei pikanäppäintä"
 msgid "%s (on %s)"
 msgstr "%s (isäntäkoneella %s)"
 
-#: ../src/main.c:132
+#: ../src/main.c:134
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Muistinosoitusvirhe"
