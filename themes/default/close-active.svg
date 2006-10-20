@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="18"
-   height="17"
+   height="25"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.44"
@@ -20,6 +20,17 @@
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient5873">
+      <stop
+         id="stop5875"
+         offset="0"
+         style="stop-color:white;stop-opacity:1;" />
+      <stop
+         style="stop-color:white;stop-opacity:0;"
+         offset="1"
+         id="stop5877" />
+    </linearGradient>
     <linearGradient
        id="linearGradient5847">
       <stop
@@ -39,8 +50,18 @@
        x1="4"
        y1="0.5"
        x2="4"
-       y2="24.5"
-       gradientTransform="matrix(2.5,0,0,1,-1,-4)" />
+       y2="25"
+       gradientTransform="matrix(1.15,0,0,1,-0.5,0)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5873"
+       id="linearGradient6962"
+       x1="19.5"
+       y1="-1"
+       x2="19.5"
+       y2="4"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.2,-16,1.2)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -91,17 +112,38 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,-3.5 L 18,-3.5 C 18,-3.5 18,20.5 18,20.5 L 0,20.5 L 0,-3.5 z "
+       d="M 0,0.5 L 18,0.5 C 18,0.5 18,25 18,25 L 0,25 L 0,0.5 z "
        id="path6057"
-       sodipodi:nodetypes="ccccc" />
+       sodipodi:nodetypes="ccsc" />
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer5"
+     id="layer3"
+     inkscape:label="hilight">
+    <path
+       style="fill:url(#linearGradient6962);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 0,1 L 18,1 C 18,1 18,2 18,2 L 0,2 L 0,1 z "
+       id="path6061"
+       sodipodi:nodetypes="ccsc" />
+  </g>
+  <g
+     inkscape:label="Border"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.50"
+       d="M 0.5,0.5 L 17.5,0.5"
+       id="path6059"
+       sodipodi:nodetypes="ccsc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="g20"
      inkscape:label="Button">
     <g
        id="g2327"
-       transform="translate(3,3)">
+       transform="translate(3,7)">
       <g
          transform="matrix(0.875,0,0,0.875,0.75,0.75)"
          style="opacity:0.33;stroke:black;stroke-width:4.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -126,5 +168,15 @@
          d="M 2.5,9.5 L 9.5,2.5"
          style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Shadow">
+    <path
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       d="M 0.5,24.5 L 17.5,24.5"
+       id="path6989"
+       sodipodi:nodetypes="ccsc" />
   </g>
 </svg>
