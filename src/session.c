@@ -280,6 +280,11 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
     for (c = screen_info->clients, client_idx = 0; client_idx < screen_info->client_count;
         c = c->next, client_idx++)
     {
+        if (c->type & (WINDOW_TYPE_DONT_PLACE))
+        {
+            continue;
+        }
+        
         if (c->client_leader != None)
         {
             getWindowRole (display_info, c->window, &window_role);
@@ -621,7 +626,7 @@ matchWin (Client * c, Match * m)
                         {
                             found = TRUE;
                         }
-                    }           /* if (wm_command_count ==... */
+                    }
                     /*
                      * We have to deal with a now-SM-aware client, it means that it won't probably
                      * restore its state in a proper manner.
