@@ -53,6 +53,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     gchar selection[32];
 #endif
+    XWindowAttributes attr;
     ScreenInfo *screen_info;
     GdkWindow *event_win;
     PangoLayout *layout;
@@ -102,10 +103,14 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->xroot = (Window) GDK_DRAWABLE_XID(gdk_screen_get_root_window (gscr));
     screen_info->screen = gdk_screen_get_number (gscr);
     screen_info->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (gscr));
-    screen_info->depth = DefaultDepth (display_info->dpy, screen_info->screen);
-    screen_info->width = WidthOfScreen (screen_info->xscreen);
-    screen_info->height = HeightOfScreen (screen_info->xscreen);
-    screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
+
+    /* Retrieve size, depth and visual attributes from root win of screen */
+    XGetWindowAttributes (display_info->dpy, screen_info->xroot, &attr);
+    screen_info->width = attr.width;
+    screen_info->height = attr.height;
+    screen_info->depth = attr.depth;
+    screen_info->visual = attr.visual;
+ 
     screen_info->current_ws = 0;
     screen_info->previous_ws = 0;
     screen_info->current_ws = 0;

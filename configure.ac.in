@@ -74,26 +74,34 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
 dnl
 dnl Render support
 dnl
+AC_ARG_ENABLE([render],
+AC_HELP_STRING([--enable-render], [try to use the render extension])
+AC_HELP_STRING([--disable-render], [don't try to use the render extension]),
+  [], [enable_render=yes])
 have_render="no"
-if $PKG_CONFIG --print-errors --exists xrender 2>&1; then
-  PKG_CHECK_MODULES(RENDER, xrender)
-  have_render="yes"
-  AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
-else
-  dnl fallback to check for libXrender 
-  AC_CHECK_LIB([Xrender], [XRenderCreatePicture],
-      [ have_render="yes"
-        RENDER_LIBS=" -lXrender"
-        AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
-      ],[])
+RENDER_LIBS=
+if test x"$enable_render" = x"yes"; then
+  if $PKG_CONFIG --print-errors --exists xrender 2>&1; then
+    PKG_CHECK_MODULES(RENDER, xrender)
+    have_render="yes"
+    AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
+  else
+    dnl fallback to check for libXrender 
+    AC_CHECK_LIB([Xrender], [XRenderCreatePicture],
+        [ have_render="yes"
+          RENDER_LIBS=" -lXrender"
+          AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
+        ],[])
+  fi
 fi
+AC_SUBST([RENDER_LIBS])
 
 dnl
 dnl RANDR extension
 dnl (please note that Xrandr requires Xrender - and no, it's not a typo ;)
 dnl
 AC_ARG_ENABLE([randr],
-AC_HELP_STRING([--enable-randr], [try to use the randr extension])
+AC_HELP_STRING([--enable-randr], [try to use the randr extension (requires render)])
 AC_HELP_STRING([--disable-randr], [don't try to use the randr extension]),
   [], [enable_randr=yes])
 RANDR_LIBS=
@@ -156,7 +164,10 @@ AC_SUBST(ENABLE_KDE_SYSTRAY)
 dnl Check for debugging support
 XDT_FEATURE_DEBUG
 
-REVISION=@REVISION@
+REVISION=unknown
+if test x"@REVISION@" != x""; then
+    REVISION=@REVISION@
+fi
 AC_DEFINE_UNQUOTED([REVISION], "$REVISION", [svn revision number])
 AC_SUBST([REVISION])
 

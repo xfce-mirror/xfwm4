@@ -1493,24 +1493,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
-
-
-#ifdef HAVE_RENDER
-    if (display_info->have_render)
-    {
-        c->visual = attr.visual;
-        c->depth  = attr.depth;
-    }
-    else
-    {
-        c->visual = screen_info->visual;
-        c->depth  = screen_info->depth;
-    }
-#else
-    /* We don't support multiple depth/visual w/out render */
-    c->visual = screen_info->visual;
-    c->depth  = screen_info->depth;
-#endif
+    c->visual = attr.visual;
+    c->depth  = attr.depth;
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
