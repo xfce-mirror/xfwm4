@@ -1493,8 +1493,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
-    c->visual = attr.visual;
-    c->depth  = attr.depth;
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
@@ -1655,11 +1653,24 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
      */
     clientApplyInitialState (c);
 
-    valuemask = CWEventMask|CWBitGravity|CWWinGravity|CWColormap;
+    valuemask = CWEventMask|CWBitGravity|CWWinGravity;
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     attributes.win_gravity = StaticGravity;
     attributes.bit_gravity = StaticGravity;
-    attributes.colormap = attr.colormap;
+
+#ifdef HAVE_RENDER
+    if (display_info->have_render)
+    {
+        c->visual = attr.visual;
+        c->depth  = attr.depth;
+        attributes.colormap = attr.colormap;
+        valuemask |= CWColormap;
+    }
+    else
+    {
+        c->visual = screen_info->visual;
+        c->depth  = screen_info->depth;
+    }
 
 #ifdef HAVE_COMPOSITOR
     if (c->depth == 32)
@@ -1669,7 +1680,13 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         attributes.background_pixel = 0;
         valuemask |= CWBackPixmap|CWBackPixel|CWBorderPixel;
     }
-#endif
+#endif /* HAVE_COMPOSITOR */
+
+#else  /* HAVE_RENDER */
+    /* We don't support multiple depth/visual w/out render */
+    c->visual = screen_info->visual;
+    c->depth  = screen_info->depth;
+#endif /* HAVE_RENDER */
 
     c->frame =
         XCreateWindow (display_info->dpy, screen_info->xroot, 0, 0, 1, 1, 0,
