@@ -909,8 +909,10 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
 
     width = MIN (gdk_pixbuf_get_width (pixbuf), pm->width);
     height = MIN (gdk_pixbuf_get_height (pixbuf), pm->height);
-    dest_x = (pm->width - width) / 2;
-    dest_y = (pm->height - height) / 2;
+
+    /* Add 1 for rounding */
+    dest_x = (pm->width - width + 1) / 2;
+    dest_y = (pm->height - height + 1) / 2;
 
     src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap,
                                         dest_x, dest_y, 0, 0, width, height);
