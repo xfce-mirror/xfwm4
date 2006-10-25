@@ -23,45 +23,45 @@
     <linearGradient
        id="linearGradient5873">
       <stop
-         style="stop-color:white;stop-opacity:0.75;"
+         id="stop5875"
          offset="0"
-         id="stop5875" />
+         style="stop-color:white;stop-opacity:1;" />
       <stop
-         id="stop5877"
+         style="stop-color:white;stop-opacity:0;"
          offset="1"
-         style="stop-color:white;stop-opacity:0;" />
+         id="stop5877" />
     </linearGradient>
     <linearGradient
        id="linearGradient5847">
       <stop
-         id="stop5849"
+         style="stop-color:black;stop-opacity:0.05;"
          offset="0"
-         style="stop-color:black;stop-opacity:0.05;" />
+         id="stop5849" />
       <stop
-         style="stop-color:white;stop-opacity:0.20;"
+         id="stop5851"
          offset="1"
-         id="stop5851" />
+         style="stop-color:white;stop-opacity:0.20;" />
     </linearGradient>
     <linearGradient
-       gradientTransform="matrix(-1.15,0,0,1,8.5,0)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient5847"
+       id="linearGradient6945"
+       gradientUnits="userSpaceOnUse"
        x1="4"
        y1="0.5"
        x2="4"
        y2="25"
-       gradientUnits="userSpaceOnUse"
-       id="linearGradient6945"
-       xlink:href="#linearGradient5847"
-       inkscape:collect="always" />
+       gradientTransform="matrix(1.15,0,0,1,-0.5,0)" />
     <linearGradient
-       gradientTransform="matrix(-0.75,0,0,1,20,2)"
-       gradientUnits="userSpaceOnUse"
-       y2="0.5"
-       x2="19.5"
-       y1="-1"
-       x1="19.5"
-       id="linearGradient6962"
+       inkscape:collect="always"
        xlink:href="#linearGradient5873"
-       inkscape:collect="always" />
+       id="linearGradient6962"
+       x1="19.5"
+       y1="-1"
+       x2="19.5"
+       y2="4"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.2,-16,1.2)" />
   </defs>
   <sodipodi:namedview
      id="base"

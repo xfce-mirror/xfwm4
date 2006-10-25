@@ -25,7 +25,7 @@
       <stop
          id="stop5875"
          offset="0"
-         style="stop-color:white;stop-opacity:0.75;" />
+         style="stop-color:white;stop-opacity:1;" />
       <stop
          style="stop-color:white;stop-opacity:0;"
          offset="1"
@@ -59,9 +59,9 @@
        x1="19.5"
        y1="-1"
        x2="19.5"
-       y2="0.5"
+       y2="4"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.75,0,0,1,-12,2)" />
+       gradientTransform="matrix(1,0,0,0.2,-16,1.2)" />
   </defs>
   <sodipodi:namedview
      id="base"
