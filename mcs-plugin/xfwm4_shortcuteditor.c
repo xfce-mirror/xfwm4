@@ -843,8 +843,11 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
 
     /* Create dialog */
     dialog =
-        gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL,
-        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
+        gtk_dialog_new_with_buttons (_("Compose shortcut"), NULL, GTK_DIALOG_MODAL, NULL);
+
+    button = xfce_create_mixed_button (GTK_STOCK_CANCEL, _("Cancel"));
+    gtk_widget_show (button);
+    gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
 
     button = xfce_create_mixed_button (GTK_STOCK_CLEAR, _("No shortcut"));
     gtk_widget_show (button);
