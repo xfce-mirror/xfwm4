@@ -264,7 +264,7 @@ check_button_time (XButtonEvent *ev)
     last_button_time = ev->time;
     return TRUE;
 }
- #endif
+#endif
 
 static void
 clear_timeout (void)
@@ -1040,7 +1040,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     }
     else
     {
-        XUngrabPointer (display_info->dpy, CurrentTime);
+        XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));
         XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
     }
 }
@@ -1639,8 +1639,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
     last_raised = NULL;
 
-    if (screen_info && (ev->window == screen_info->xroot) && (ev->mode == NotifyNormal) &&
-        ((ev->detail == NotifyDetailNone) || (ev->detail == NotifyInferior)))
+    if (screen_info && (ev->window == screen_info->xroot))
     {
         /* Handle focus transition to root (means that an unknown
            window has vanished and the focus is returned to the root
@@ -1648,7 +1647,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         c = clientGetFocus ();
         if (c)
         {
-            clientSetFocus (c->screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
+            clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
         }
         return;
     }
@@ -2025,7 +2024,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 clientShow (c, TRUE);
                 clientClearAllShowDesktop (screen_info);
                 clientRaise (c, None);
-                clientSetFocus (screen_info, c, CurrentTime, NO_FOCUS_FLAG);
+                clientSetFocus (screen_info, c, myDisplayGetCurrentTime (screen_info->display_info), NO_FOCUS_FLAG);
             }
         }
         else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])

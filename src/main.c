@@ -497,7 +497,8 @@ initialize (int argc, char **argv, gint compositor_mode)
                                    screen_info->width,
                                    screen_info->height);
         workspaceUpdateArea (screen_info);
-        XSetInputFocus (display_info->dpy, screen_info->xfwm4_win, RevertToPointerRoot, CurrentTime);
+        XSetInputFocus (display_info->dpy, screen_info->xfwm4_win, RevertToPointerRoot, 
+                        myDisplayGetCurrentTime (display_info));
 
         clientFrameAll (screen_info);
 

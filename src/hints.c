@@ -1198,7 +1198,7 @@ sendSystrayReqDock(DisplayInfo *display_info, Window window, Window systray)
     xev.window = systray;
     xev.message_type = display_info->atoms[NET_SYSTEM_TRAY_OPCODE];
     xev.format = 32;
-    xev.data.l[0] = CurrentTime;
+    xev.data.l[0] = myDisplayGetCurrentTime (screen_info);
     xev.data.l[1] = 0; /* SYSTEM_TRAY_REQUEST_DOCK */
     xev.data.l[2] = window;
     xev.data.l[3] = 0; /* Nada */

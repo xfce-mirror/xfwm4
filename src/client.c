@@ -157,6 +157,11 @@ clientCheckLastOpTime (Client * c)
 
     g_return_val_if_fail (c != NULL, FALSE);
 
+    if (!(MAX_RESIZES_PER_SECOND > 0.0))
+    {
+        return TRUE;
+    }
+    
     g_get_current_time (&current_time);
     /* use milliseconds, 1000 milliseconds/second */
     elapsed = (((double)current_time.tv_sec - c->last_op_time.tv_sec) * G_USEC_PER_SEC +
@@ -232,7 +237,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
     g_return_if_fail (screen_info != NULL);
 
     TRACE ("entering clientRedrawAllFrames");
-    myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
+    myScreenGrabPointer (screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (screen_info->display_info));
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
@@ -295,7 +300,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
 
     }
-    myScreenUngrabPointer (screen_info, CurrentTime);
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (screen_info->display_info));
 }
 
 void
@@ -1917,7 +1922,7 @@ clientFrameAll (ScreenInfo *screen_info)
     TRACE ("entering clientFrameAll");
 
     display_info = screen_info->display_info;
-    clientSetFocus (screen_info, NULL, CurrentTime, NO_FOCUS_FLAG);
+    clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     xfwmWindowTemp (screen_info,
                     NULL, 0,
                     screen_info->xroot,
@@ -1968,7 +1973,7 @@ clientUnframeAll (ScreenInfo *screen_info)
     TRACE ("entering clientUnframeAll");
 
     display_info = screen_info->display_info;
-    clientSetFocus (screen_info, NULL, CurrentTime, FOCUS_IGNORE_MODAL);
+    clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL);
     XSync (display_info->dpy, FALSE);
     myDisplayGrabServer (display_info);
     XQueryTree (display_info->dpy, screen_info->xroot, &w1, &w2, &wins, &count);
@@ -2819,6 +2824,9 @@ clientNewMaxSize (Client * c, XWindowChanges *wc)
 void
 clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 {
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+
     XWindowChanges wc;
 
     g_return_if_fail (c != NULL);
@@ -2829,6 +2837,9 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     {
         return;
     }
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     wc.x = c->x;
     wc.y = c->y;
@@ -2866,9 +2877,9 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
            grab focus in focus follow mouse mode. Grab the pointer to
            avoid these effects
          */
-        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, CurrentTime);
+        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
-        myScreenUngrabPointer (c->screen_info, CurrentTime);
+        myScreenUngrabPointer (c->screen_info, myDisplayGetCurrentTime (display_info));
     }
 }
 
@@ -3010,7 +3021,7 @@ clientScreenResize(ScreenInfo *screen_info)
         return;
     }
 
-    myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
+    myScreenGrabPointer (screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (screen_info->display_info));
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         unsigned long maximization_flags = 0L;
@@ -3047,7 +3058,7 @@ clientScreenResize(ScreenInfo *screen_info)
              clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST);
         }
     }
-    myScreenUngrabPointer (screen_info, CurrentTime);
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (screen_info->display_info));
 
     g_list_free (list_of_windows);
 }
@@ -3268,7 +3279,6 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, xevent);
-
 
     if (xevent->type == KeyPress)
     {
@@ -3783,7 +3793,7 @@ clientMove (Client * c, XEvent * ev)
     }
     clientConfigure (c, &wc, changes, NO_CFG_FLAG);
 
-    myScreenUngrabKeyboard (screen_info, CurrentTime);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     if (!passdata.released)
     {
         /* If this is a drag-move, wait for the button to be released.
@@ -3793,7 +3803,7 @@ clientMove (Client * c, XEvent * ev)
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
-    myScreenUngrabPointer (screen_info, CurrentTime);
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     if (passdata.grab && screen_info->params->box_move)
     {
         myDisplayUngrabServer (display_info);
@@ -3959,7 +3969,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 clientDrawOutline (c);
             }
-            else
+            else if (clientCheckLastOpTime (c))
             {
                 wc.x = c->x;
                 wc.y = c->y;
@@ -3996,7 +4006,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 clientDrawOutline (c);
             }
-            else
+            else if (clientCheckLastOpTime (c))
             {
                 wc.x = c->x;
                 wc.y = c->y;
@@ -4135,7 +4145,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         else
         {
-            if (!(MAX_RESIZES_PER_SECOND > 0) || clientCheckLastOpTime (c))
+            if (clientCheckLastOpTime (c))
             {
                 wc.x = c->x;
                 wc.y = c->y;
@@ -4295,7 +4305,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
 
-    myScreenUngrabKeyboard (screen_info, CurrentTime);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     if (!passdata.released)
     {
         /* If this is a drag-resize, wait for the button to be released.
@@ -4305,7 +4315,7 @@ clientResize (Client * c, int corner, XEvent * ev)
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
-    myScreenUngrabPointer (screen_info, CurrentTime);
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     if (passdata.grab && screen_info->params->box_resize)
     {
         myDisplayUngrabServer (display_info);
@@ -4517,8 +4527,8 @@ clientCycle (Client * c, XEvent * ev)
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
     }
-    myScreenUngrabKeyboard (screen_info, CurrentTime);
-    myScreenUngrabPointer (screen_info, CurrentTime);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
     if (passdata.c)
     {

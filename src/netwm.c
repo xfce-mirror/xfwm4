@@ -547,12 +547,17 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 void
 clientUpdateFullscreenState (Client * c)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XWindowChanges wc;
     int layer;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUpdateFullscreenState");
     TRACE ("Update fullscreen state for client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -595,9 +600,9 @@ clientUpdateFullscreenState (Client * c)
            grab focus in focus follow mouse mode. Grab the pointer to
            avoid these effects
          */
-        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, CurrentTime);
+        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
-        myScreenUngrabPointer (c->screen_info, CurrentTime);
+        myScreenUngrabPointer (c->screen_info, myDisplayGetCurrentTime (display_info));
     }
     else
     {
