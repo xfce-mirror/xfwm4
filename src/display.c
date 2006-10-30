@@ -683,20 +683,12 @@ myDisplaySetLastUserTime (DisplayInfo *display, Time timestamp)
     }
 }
 
-static gdouble
-get_time(void)
-{
-    struct timeval timev;
-
-    gettimeofday(&timev, NULL);
-    return (gdouble)timev.tv_sec + (((gdouble)timev.tv_usec) / 1000000);
-}
-
 gboolean
 myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
 {
 #ifdef HAVE_RENDER
-    gdouble t1, t2, dt;
+    GTimeVal t1, t2;
+    gdouble dt;
     Display *dpy;
     Picture picture1, picture2, picture3;
     XRenderPictFormat *format_src, *format_dst;
@@ -765,7 +757,7 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
                                 DefaultRootWindow(dpy),
                                 1, 1, 8);
 
-    t1 = get_time();
+    g_get_current_time (&t1);
 
     pa.repeat = TRUE;
     picture1 = XRenderCreatePicture (dpy,
@@ -805,8 +797,10 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
 
     XDestroyWindow (dpy, output);
 
-    t2 = get_time();
-    dt = t2 - t1;
+    g_get_current_time (&t2);
+
+    dt = (gdouble) (t2.tv_sec - t1.tv_sec) * G_USEC_PER_SEC +
+         (gdouble) (t2.tv_usec - t1.tv_usec) / 1000.0;
 
     if (dt < min_time)
     {

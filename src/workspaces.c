@@ -377,8 +377,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
         }
     }
 
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
-
     if (update_focus)
     {
         if (new_focus)
@@ -390,6 +388,8 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
             clientFocusTop (screen_info, WIN_LAYER_NORMAL);
         }
     }
+
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 }
 
 void

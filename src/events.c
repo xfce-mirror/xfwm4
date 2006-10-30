@@ -1442,6 +1442,8 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     Client *c;
     gboolean warp_pointer;
 
+    /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
+
     TRACE ("entering handleEnterNotify");
 
     if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab)
@@ -1603,6 +1605,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     ScreenInfo *screen_info;
     Client *c, *last_raised;
 
+    /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
     TRACE ("entering handleFocusIn");
     TRACE ("handleFocusIn (0x%lx) mode = %s",
@@ -1639,16 +1642,15 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
     last_raised = NULL;
 
-    if (screen_info && (ev->window == screen_info->xroot))
+    if (screen_info && (ev->window == screen_info->xroot)
+        && ((ev->detail == NotifyDetailNone) || ((ev->mode == NotifyNormal) && (ev->detail == NotifyInferior))))
     {
-        /* Handle focus transition to root (means that an unknown
-           window has vanished and the focus is returned to the root
+        /* 
+           Handle focus transition to root (means that an unknown
+           window has vanished and the focus is returned to the root).
          */
         c = clientGetFocus ();
-        if (c)
-        {
-            clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
-        }
+        clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
         return;
     }
 
@@ -1684,6 +1686,8 @@ static void
 handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
     Client *c;
+
+    /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
     TRACE ("entering handleFocusOut");
     TRACE ("handleFocusOut (0x%lx) mode = %s",

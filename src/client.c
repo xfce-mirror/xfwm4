@@ -153,7 +153,7 @@ static gboolean
 clientCheckLastOpTime (Client * c)
 {
     GTimeVal current_time;
-    double elapsed;
+    gdouble elapsed;
 
     g_return_val_if_fail (c != NULL, FALSE);
 
@@ -164,8 +164,9 @@ clientCheckLastOpTime (Client * c)
     
     g_get_current_time (&current_time);
     /* use milliseconds, 1000 milliseconds/second */
-    elapsed = (((double)current_time.tv_sec - c->last_op_time.tv_sec) * G_USEC_PER_SEC +
-                  (current_time.tv_usec - c->last_op_time.tv_usec)) / 1000.0;
+    elapsed = ((gdouble) (current_time.tv_sec - c->last_op_time.tv_sec)) * G_USEC_PER_SEC +
+              ((gdouble) (current_time.tv_usec - c->last_op_time.tv_usec)) / 1000.0;
+
     if (elapsed >= 0.0 && elapsed < (1000.0 / MAX_RESIZES_PER_SECOND))
     {
         return FALSE;
