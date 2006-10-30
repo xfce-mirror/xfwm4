@@ -85,7 +85,7 @@
 #endif
 
 #ifndef MAX_RESIZES_PER_SECOND
-#define MAX_RESIZES_PER_SECOND  50.0
+#define MAX_RESIZES_PER_SECOND  0.0
 #endif
 
 #define OPACITY_SET_STEP        (guint) 0x16000000
