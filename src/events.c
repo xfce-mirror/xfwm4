@@ -1640,17 +1640,27 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 "(unknown)");
 
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
+    if (!screen_info)
+    {
+        /* Not for us */
+        return;
+    }
+    
     last_raised = NULL;
 
-    if (screen_info && (ev->window == screen_info->xroot)
-        && ((ev->detail == NotifyDetailNone) || ((ev->mode == NotifyNormal) && (ev->detail == NotifyInferior))))
+    if ((ev->window == screen_info->xroot)
+        && ((ev->detail == NotifyDetailNone) 
+            || ((ev->mode == NotifyNormal) && (ev->detail == NotifyInferior))))
     {
         /* 
-           Handle focus transition to root (means that an unknown
+           Handle unexpected focus transition to root (means that an unknown
            window has vanished and the focus is returned to the root).
          */
         c = clientGetFocus ();
-        clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
+        if (c)
+        {
+            clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
+        }
         return;
     }
 
@@ -1679,6 +1689,13 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         {
             reset_timeout (screen_info);
         }
+        return;
+    }
+
+    if (ev->window == screen_info->xroot)
+    {
+        /* "Normal" focus transition to root, should not happen though */
+        clientPassFocus (screen_info, NULL, NULL);
     }
 }
 

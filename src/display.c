@@ -538,18 +538,13 @@ Window
 myDisplayGetRootFromWindow(DisplayInfo *display, Window w)
 {
     XWindowAttributes attributes;
-    gint test;
 
     g_return_val_if_fail (w != None, None);
     g_return_val_if_fail (display != NULL, None);
 
-    gdk_error_trap_push ();
-    XGetWindowAttributes(display->dpy, w, &attributes);
-    test = gdk_error_trap_pop ();
-
-    if (test)
+    if (!XGetWindowAttributes(display->dpy, w, &attributes))
     {
-        TRACE ("myDisplayGetRootFromWindow: no root found for 0x%lx, error code %i", w, test);
+        TRACE ("myDisplayGetRootFromWindow: no root found for 0x%lx", w);
         return None;
     }
     return attributes.root;
