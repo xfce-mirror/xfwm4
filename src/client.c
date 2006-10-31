@@ -3847,6 +3847,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     MoveResizeData *passdata;
     eventFilterStatus status;
     XWindowChanges wc;
+    unsigned long configure_flags;
     int prev_y, prev_x, prev_height, prev_width;
     int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
@@ -3864,6 +3865,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     display_info = screen_info->display_info;
     status = EVENT_FILTER_STOP;
     resizing = TRUE;
+    configure_flags = 0L;
 
     frame_x = frameX (c);
     frame_y = frameY (c);
@@ -3948,32 +3950,38 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 && (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_UP].keycode))
             {
                 c->height = c->height - key_height_inc;
+                configure_flags |= CWHeight;
                 corner = CORNER_COUNT + SIDE_BOTTOM;
             }
             else if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
                 && (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_DOWN].keycode))
             {
                 c->height = c->height + key_height_inc;
+                configure_flags |= CWHeight;
                 corner = CORNER_COUNT + SIDE_BOTTOM;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_LEFT].keycode)
             {
                 c->width = c->width - key_width_inc;
+                configure_flags |= CWWidth;
                 corner = CORNER_COUNT + SIDE_RIGHT;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_RIGHT].keycode)
             {
                 c->width = c->width + key_width_inc;
+                configure_flags |= CWWidth;
                 corner = CORNER_COUNT + SIDE_RIGHT;
             }
             if (corner >= 0)
             {
                 clientConstrainRatio (c, c->width, c->height, corner);
+                configure_flags |= CWWidth | CWHeight;
             }
             if (!clientCkeckTitle (c))
             {
                 c->height = prev_height;
                 c->width = prev_width;
+                configure_flags |= CWWidth | CWHeight;
             }
             else
             {
@@ -3981,11 +3989,13 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                     || (c->x + c->width < screen_info->margins [LEFT] + min_visible))
                 {
                     c->width = prev_width;
+                    configure_flags |= CWWidth;
                 }
                 if ((c->y + c->height < disp_y + min_visible)
                     || (c->y + c->height < screen_info->margins [TOP] + min_visible))
                 {
                     c->height = prev_height;
+                    configure_flags |= CWHeight;
                 }
             }
             if (passdata->poswin)
@@ -4002,7 +4012,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 wc.y = c->y;
                 wc.width = c->width;
                 wc.height = c->height;
-                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+                clientConfigure (c, &wc, configure_flags, NO_CFG_FLAG);
             }
         }
     }
@@ -4022,13 +4032,16 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             if (move_left)
             {
                 c->x += c->width - passdata->cancel_x;
+                configure_flags |= CWX;
             }
             if (move_top)
             {
                 c->y += c->height - passdata->cancel_y;
+                configure_flags |= CWY;
             }
             c->width = passdata->cancel_x;
             c->height = passdata->cancel_y;
+            configure_flags |= CWWidth | CWHeight;
             if (screen_info->params->box_resize)
             {
                 clientDrawOutline (c);
@@ -4039,7 +4052,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 wc.y = c->y;
                 wc.width = c->width;
                 wc.height = c->height;
-                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+                clientConfigure (c, &wc, configure_flags, NO_CFG_FLAG);
             }
         }
         else if (passdata->use_keys)
@@ -4084,20 +4097,24 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         if (move_left)
         {
             c->width = passdata->ox - (xevent->xmotion.x_root - passdata->mx);
+            configure_flags |= CWWidth;
         }
         else if (move_right)
         {
             c->width = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
+            configure_flags |= CWWidth;
         }
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             if (move_top)
             {
                 c->height = passdata->oy - (xevent->xmotion.y_root - passdata->my);
+                configure_flags |= CWHeight;
             }
             else if (move_bottom)
             {
                 c->height = passdata->oy + (xevent->xmotion.y_root - passdata->my);
+                configure_flags |= CWHeight;
             }
         }
         clientConstrainRatio (c, c->width, c->height, passdata->corner);
@@ -4106,11 +4123,13 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         if (move_left)
         {
             c->x = c->x - (c->width - passdata->oldw);
+            configure_flags |= CWX;
             frame_x = frameX (c);
         }
         if (move_top && !clientCkeckTitle (c))
         {
             c->x = prev_x;
+            configure_flags |= CWX;
             c->width = prev_width;
         }
 
@@ -4118,11 +4137,13 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
         {
             c->y = c->y - (c->height - passdata->oldh);
+            configure_flags |= CWY;
             frame_y = frameY (c);
         }
         if (move_top && !clientCkeckTitle (c))
         {
             c->y = prev_y;
+            configure_flags |= CWY;
             c->height = prev_height;
         }
         if (move_top)
@@ -4133,6 +4154,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 c->y = prev_y;
                 c->height = prev_height;
+                configure_flags |= CWY | CWHeight;
             }
         }
         else if (move_bottom)
@@ -4141,6 +4163,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 || (c->y + c->height < screen_info->margins [TOP] + min_visible))
             {
                 c->height = prev_height;
+                configure_flags |= CWHeight;
             }
         }
         if (move_left)
@@ -4151,6 +4174,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 c->x = prev_x;
                 c->width = prev_width;
+                configure_flags |= CWX | CWWidth;
             }
         }
         else if (move_right)
@@ -4159,6 +4183,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 || (c->x + c->width < screen_info->margins [LEFT] + min_visible))
             {
                 c->width = prev_width;
+                configure_flags |= CWWidth;
             }
         }
 
@@ -4178,7 +4203,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 wc.y = c->y;
                 wc.width = c->width;
                 wc.height = c->height;
-                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+                clientConfigure (c, &wc, configure_flags, NO_CFG_FLAG);
             }
         }
 
