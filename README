@@ -56,6 +56,8 @@ Xfwm is compliant with the following specifications from the freedesktop.org
     NET_WM_STATE_STICKY
     NET_WM_STRUT
     NET_WM_STRUT_PARTIAL
+    NET_WM_SYNC_REQUEST
+    NET_WM_SYNC_REQUEST_COUNTER
     NET_WM_USER_TIME
     NET_WM_WINDOW_TYPE
     NET_WM_WINDOW_TYPE_DESKTOP
