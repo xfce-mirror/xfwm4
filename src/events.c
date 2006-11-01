@@ -1825,7 +1825,25 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             if (clientCheckTransientWindow (c, w))
             {
                 c->transient_for = w;
+#if 0                
+                /*
+                  Java 1.6 updates the WM_TRANSIENT_FOR properties "on-the-fly"
+                  of its windows to maintain the z-order. 
+                  
+                  If we raise the transient then, we clearly have a race 
+                  condition between the WM and Java... And that breaks 
+                  the z-order. Bug #2483.
+                  
+                  I still think that raising here makes sense, to ensure
+                  that the newly promoted transient window is placed above
+                  its parent.
+                  
+                  Chances are that Java 1.6 won't change any time soon (heh,
+                  it's not even released yet), so let's adjust the WM to
+                  work with Java 1.6...
+                 */
                 clientRaise (c, w);
+#endif
             }
         }
         else if (ev->atom == display_info->atoms[WIN_HINTS])
