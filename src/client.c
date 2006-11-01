@@ -1083,7 +1083,6 @@ clientCreateXSyncAlarm (Client *c)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     XSyncAlarmAttributes values;
-    XSyncValue wait_value;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->xsync_counter != None);
@@ -1113,6 +1112,7 @@ clientCreateXSyncAlarm (Client *c)
                                        &values);
 }
 
+static void
 clientDestroyXSyncAlarm (Client *c)
 {
     ScreenInfo *screen_info;
@@ -3883,7 +3883,8 @@ clientMove (Client * c, XEvent * ev)
     }
 }
 
-static clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
+static void
+clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
 {
     XWindowChanges wc;
     unsigned long value_mask;
