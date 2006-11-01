@@ -426,6 +426,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_ICON];
     atoms[i++] = display_info->atoms[NET_WM_ICON_GEOMETRY];
     atoms[i++] = display_info->atoms[NET_WM_ICON_NAME];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE];
     atoms[i++] = display_info->atoms[NET_WM_NAME];
     atoms[i++] = display_info->atoms[NET_WM_STATE];
     atoms[i++] = display_info->atoms[NET_WM_STATE_ABOVE];

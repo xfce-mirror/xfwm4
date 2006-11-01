@@ -43,7 +43,7 @@
 #define Button7 7
 #endif
 
-void getMouseXY (ScreenInfo *, Window, int *, int *);
+unsigned int getMouseXY (ScreenInfo *, Window, int *, int *);
 Window getMouseWindow (ScreenInfo *, Window);
 GC createGC (ScreenInfo *, char *, int, XFontStruct *, int, gboolean);
 void sendClientMessage (ScreenInfo *, Window, int, Time);

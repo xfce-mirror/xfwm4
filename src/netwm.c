@@ -291,9 +291,9 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    action = ((XEvent *) ev)->xclient.data.l[0];
-    first  = ((XEvent *) ev)->xclient.data.l[1];
-    second = ((XEvent *) ev)->xclient.data.l[2];
+    action = ev->data.l[0];
+    first  = ev->data.l[1];
+    second = ev->data.l[2];
     mode = 0;
 
     if ((first  == display_info->atoms[NET_WM_STATE_SHADED]) ||
@@ -541,6 +541,135 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             clientSetNetState (c);
         }
         frameDraw (c, TRUE);
+    }
+}
+
+void
+clientNetMoveResize (Client * c, XClientMessageEvent * ev)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    unsigned int button_mask;
+    int x_root, y_root, dx, dy, action, button;
+    int corner;
+    gboolean resize; /* true == resize, false == move */
+    XEvent event;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientNetMoveResize");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    x_root = (int) ev->data.l[0];
+    y_root = (int) ev->data.l[1];
+    action = (int) ev->data.l[2];
+    button = (int) ev->data.l[3];
+
+    if (button == 0)
+    {
+        button_mask = getMouseXY (screen_info, c->window, &dx, &dy);
+        if (button_mask & Button1Mask)
+        {
+            button = Button1;
+        }
+        else if (button_mask & Button2Mask)
+        {
+            button = Button2;
+        }
+        else if (button_mask & Button3Mask)
+        {
+            button = Button3;
+        }
+        else
+        {
+            g_warning ("Could not determine the mouse button used");
+            return;
+        }
+    }
+
+    corner = CORNER_BOTTOM_RIGHT;
+    resize = TRUE;
+
+    event.xbutton.button = button;
+    event.xbutton.x_root = event.xkey.x_root = x_root;
+    event.xbutton.y_root = event.xkey.y_root = y_root;
+    event.xbutton.time = event.xkey.time = myDisplayGetCurrentTime (display_info);
+
+    switch (action)
+    {
+        /* Keyboard */
+        case NET_WM_MOVERESIZE_SIZE_KEYBOARD:
+            event.type = KeyPress;
+            corner = CORNER_BOTTOM_RIGHT;
+            resize = TRUE; /* Resize */
+            break;
+        case NET_WM_MOVERESIZE_MOVE_KEYBOARD:
+            event.type = KeyPress;
+            resize = FALSE; /* Move */
+            break;
+
+        /* Sides */
+        case NET_WM_MOVERESIZE_SIZE_TOP:
+            event.type = ButtonPress;
+            corner = CORNER_COUNT + SIDE_TOP;
+            resize = TRUE; /* Resize */
+            break;
+        case NET_WM_MOVERESIZE_SIZE_BOTTOM:
+            event.type = ButtonPress;
+            corner = CORNER_COUNT + SIDE_BOTTOM;
+            resize = TRUE; /* Resize */
+            break;
+        case NET_WM_MOVERESIZE_SIZE_RIGHT:
+            event.type = ButtonPress;
+            corner = CORNER_COUNT + SIDE_RIGHT;
+            resize = TRUE; /* Resize */
+            break;
+        case NET_WM_MOVERESIZE_SIZE_LEFT:
+            event.type = ButtonPress;
+            corner = CORNER_COUNT + SIDE_LEFT;
+            resize = TRUE; /* Resize */
+            break;
+
+        /* Corners */
+        case NET_WM_MOVERESIZE_SIZE_TOPLEFT:
+            event.type = ButtonPress;
+            corner = CORNER_TOP_LEFT;
+            resize = TRUE; /* Resize */
+            break;
+        case NET_WM_MOVERESIZE_SIZE_TOPRIGHT:
+            event.type = ButtonPress;
+            corner = CORNER_TOP_RIGHT;
+            resize = TRUE; /* Resize */
+            break;
+        case NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT:
+            event.type = ButtonPress;
+            corner = CORNER_BOTTOM_LEFT;
+            resize = TRUE; /* Resize */
+            break;
+        case NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT:
+            event.type = ButtonPress;
+            corner = CORNER_BOTTOM_RIGHT;
+            resize = TRUE; /* Resize */
+            break;
+        case NET_WM_MOVERESIZE_MOVE:
+        default:
+            event.type = ButtonPress;
+            resize = FALSE; /* Move */
+            break;
+    }
+    
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        if (resize && FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
+        {
+            clientResize (c, corner, &event);
+        }
+        else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+        {
+            clientMove (c, &event);
+        }
     }
 }
 

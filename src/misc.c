@@ -42,34 +42,35 @@
 #include "client.h"
 #include "misc.h"
 
-void
+unsigned int
 getMouseXY (ScreenInfo *screen_info, Window w, int *x2, int *y2)
 {
     Window w1, w2;
+    unsigned int mask;
     int x1, y1;
-    unsigned int m;
 
     TRACE ("entering getMouseXY");
 
-    XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, x2, y2, &m);
+    XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, x2, y2, &mask);
+    return mask;
 }
 
 Window
 getMouseWindow (ScreenInfo *screen_info, Window w)
 {
     Window w1, w2;
+    unsigned int mask;
     int x1, y1, x2, y2;
-    unsigned int m;
 
     TRACE ("entering getMouseWindow");
 
-    XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, &x2, &y2, &m);
+    XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, &x2, &y2, &mask);
     return w2;
 }
 
 GC
 createGC (ScreenInfo *screen_info, char *col, int func, XFontStruct * font,
-    int line_width, gboolean inc_sw)
+          int line_width, gboolean inc_sw)
 {
     XGCValues gv;
     XColor xc1, xc2;
