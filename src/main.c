@@ -285,6 +285,13 @@ print_version (void)
     g_print ("No\n");
 #endif
 
+    g_print ("\t- XSync support:                                ");
+#ifdef HAVE_XSYNC
+    g_print ("Yes\n");
+#else
+    g_print ("No\n");
+#endif
+
     g_print ("\t- Render support:                               ");
 #ifdef HAVE_RENDER
     g_print ("Yes\n");
@@ -305,6 +312,7 @@ print_version (void)
 #else
     g_print ("No\n");
 #endif
+
     g_print ("\t- KDE systray proxy (deprecated):               ");
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     g_print ("Yes\n");

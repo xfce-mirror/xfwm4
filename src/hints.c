@@ -442,6 +442,8 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_STATE_STICKY];
     atoms[i++] = display_info->atoms[NET_WM_STRUT];
     atoms[i++] = display_info->atoms[NET_WM_STRUT_PARTIAL];
+    atoms[i++] = display_info->atoms[NET_WM_SYNC_REQUEST];
+    atoms[i++] = display_info->atoms[NET_WM_SYNC_REQUEST_COUNTER];
     atoms[i++] = display_info->atoms[NET_WM_USER_TIME];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP];
@@ -456,7 +458,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     atoms[i++] = display_info->atoms[NET_STARTUP_ID];
 #endif
-
+    g_assert (i < 64);
     data[0] = check_win;
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_SUPPORTED],
                      XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
@@ -1255,3 +1257,44 @@ getWindowStartupId (DisplayInfo *display_info, Window w, gchar **startup_id)
     return FALSE;
 }
 #endif
+
+#ifdef HAVE_XSYNC
+gboolean
+getXSyncCounter (DisplayInfo *display_info, Window window, XSyncCounter *counter)
+{
+    long val;
+
+    g_return_val_if_fail (window != None, FALSE);
+    g_return_val_if_fail (counter != NULL, FALSE);
+    TRACE ("entering getXSyncCounter");
+
+    val = 0;
+    if (getHint (display_info, window, NET_WM_SYNC_REQUEST_COUNTER, &val))
+    {
+        *counter = (XSyncCounter) val;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void
+sendXSyncRequest (DisplayInfo *display_info, Window window, XSyncValue value)
+{
+    XClientMessageEvent xev;
+
+    g_return_if_fail (window != None);
+    TRACE ("entering getXSyncCounter");
+
+    xev.type = ClientMessage;
+    xev.window = window;
+    xev.message_type = display_info->atoms[WM_PROTOCOLS];
+    xev.format = 32;
+    xev.data.l[0] = display_info->atoms[NET_WM_SYNC_REQUEST];
+    xev.data.l[1] = CurrentTime;
+    xev.data.l[2] = XSyncValueLow32 (value);
+    xev.data.l[3] = XSyncValueHigh32 (value);
+    xev.data.l[4] = 0;
+    XSendEvent (display_info->dpy, window, FALSE, NoEventMask, (XEvent *) &xev);
+}
+#endif /* HAVE_XSYNC */

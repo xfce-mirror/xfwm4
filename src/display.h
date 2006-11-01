@@ -32,7 +32,11 @@
 
 #ifdef HAVE_RANDR
 #include <X11/extensions/Xrandr.h>
-#endif
+#endif /* HAVE_RANDR */
+
+#ifdef HAVE_XSYNC
+#include <X11/extensions/sync.h>
+#endif /* HAVE_XSYNC */
 
 #ifdef HAVE_COMPOSITOR
 #include <X11/extensions/Xcomposite.h>
@@ -145,6 +149,8 @@ enum
     NET_WM_STATE_STICKY,
     NET_WM_STRUT,
     NET_WM_STRUT_PARTIAL,
+    NET_WM_SYNC_REQUEST,
+    NET_WM_SYNC_REQUEST_COUNTER,
     NET_WM_USER_TIME,
     NET_WM_WINDOW_TYPE,
     NET_WM_WINDOW_TYPE_DESKTOP,
@@ -217,6 +223,7 @@ struct _DisplayInfo
     gboolean have_shape;
     gboolean have_render;
     gboolean have_xrandr;
+    gboolean have_xsync;
     gint shape_event_base;
     gint dbl_click_time;
     gint xgrabcount;
@@ -230,11 +237,15 @@ struct _DisplayInfo
 #ifdef HAVE_RENDER
     gint render_error_base;
     gint render_event_base;
-#endif
+#endif /* HAVE_RENDER */
 #ifdef HAVE_RANDR
     gint xrandr_error_base;
     gint xrandr_event_base;
-#endif
+#endif /* HAVE_RANDR */
+#ifdef HAVE_XSYNC
+    gint xsync_event_base;
+    gint xsync_error_base;
+#endif /* HAVE_XSYNC */
 #ifdef HAVE_COMPOSITOR
     gint composite_error_base;
     gint composite_event_base;
@@ -258,48 +269,52 @@ struct _DisplayInfo
 #endif /* HAVE_COMPOSITOR */
 };
 
-DisplayInfo * myDisplayInit                 (GdkDisplay *);
-DisplayInfo * myDisplayClose                (DisplayInfo *);
-gboolean      myDisplayHaveShape            (DisplayInfo *);
-gboolean      myDisplayHaveRender           (DisplayInfo *);
-Cursor        myDisplayGetCursorBusy        (DisplayInfo *);
-Cursor        myDisplayGetCursorMove        (DisplayInfo *);
-Cursor        myDisplayGetCursorRoot        (DisplayInfo *);
-Cursor        myDisplayGetCursorResize      (DisplayInfo *,
-                                             guint);
-void          myDisplayGrabServer           (DisplayInfo *);
-void          myDisplayUngrabServer         (DisplayInfo *);
-void          myDisplayAddClient            (DisplayInfo *,
-                                             Client *);
-void          myDisplayRemoveClient         (DisplayInfo *,
-                                             Client *);
-Client *      myDisplayGetClientFromWindow  (DisplayInfo *,
-                                             Window,
-                                             int);
-void          myDisplayAddScreen            (DisplayInfo *,
-                                             ScreenInfo *);
-void          myDisplayRemoveScreen         (DisplayInfo *,
-                                             ScreenInfo *);
-ScreenInfo *  myDisplayGetScreenFromRoot    (DisplayInfo *,
-                                             Window);
-ScreenInfo *  myDisplayGetScreenFromNum     (DisplayInfo *,
-                                             int);
-Window        myDisplayGetRootFromWindow    (DisplayInfo *,
-                                             Window w);
-ScreenInfo *  myDisplayGetScreenFromWindow  (DisplayInfo *,
-                                             Window w);
+DisplayInfo * myDisplayInit                       (GdkDisplay *);
+DisplayInfo * myDisplayClose                      (DisplayInfo *);
+gboolean      myDisplayHaveShape                  (DisplayInfo *);
+gboolean      myDisplayHaveRender                 (DisplayInfo *);
+Cursor        myDisplayGetCursorBusy              (DisplayInfo *);
+Cursor        myDisplayGetCursorMove              (DisplayInfo *);
+Cursor        myDisplayGetCursorRoot              (DisplayInfo *);
+Cursor        myDisplayGetCursorResize            (DisplayInfo *,
+                                                   guint);
+void          myDisplayGrabServer                 (DisplayInfo *);
+void          myDisplayUngrabServer               (DisplayInfo *);
+void          myDisplayAddClient                  (DisplayInfo *,
+                                                   Client *);
+void          myDisplayRemoveClient               (DisplayInfo *,
+                                                   Client *);
+Client *      myDisplayGetClientFromWindow        (DisplayInfo *,
+                                                   Window,
+                                                   int);
+void          myDisplayAddScreen                  (DisplayInfo *,
+                                                   ScreenInfo *);
+void          myDisplayRemoveScreen               (DisplayInfo *,
+                                                   ScreenInfo *);
+ScreenInfo *  myDisplayGetScreenFromRoot          (DisplayInfo *,
+                                                   Window);
+ScreenInfo *  myDisplayGetScreenFromNum           (DisplayInfo *,
+                                                   int);
+Window        myDisplayGetRootFromWindow          (DisplayInfo *,
+                                                   Window w);
+ScreenInfo *  myDisplayGetScreenFromWindow        (DisplayInfo *,
+                                                   Window w);
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
-ScreenInfo *  myDisplayGetScreenFromSystray (DisplayInfo *,
-                                             Window);
-#endif
-ScreenInfo *  myDisplayGetDefaultScreen     (DisplayInfo *);
-Time          myDisplayUpdateCurrentTime     (DisplayInfo *,
-                                             XEvent *);
-Time          myDisplayGetCurrentTime       (DisplayInfo *);
-Time          myDisplayGetLastUserTime      (DisplayInfo *);
-void          myDisplaySetLastUserTime      (DisplayInfo *,
-                                             Time);
-gboolean      myDisplayTestXrender          (DisplayInfo *,
-                                             gdouble);
+ScreenInfo *  myDisplayGetScreenFromSystray       (DisplayInfo *,
+                                                   Window);
+#endif /* ENABLE_KDE_SYSTRAY_PROXY */
+#ifdef HAVE_XSYNC
+Client *      myDisplayGetClientFromXSyncAlarm    (DisplayInfo *,
+                                                   XSyncAlarm);
+#endif /* HAVE_XSYNC */
+ScreenInfo *  myDisplayGetDefaultScreen           (DisplayInfo *);
+Time          myDisplayUpdateCurrentTime           (DisplayInfo *,
+                                                   XEvent *);
+Time          myDisplayGetCurrentTime             (DisplayInfo *);
+Time          myDisplayGetLastUserTime            (DisplayInfo *);
+void          myDisplaySetLastUserTime            (DisplayInfo *,
+                                                   Time);
+gboolean      myDisplayTestXrender                (DisplayInfo *,
+                                                   gdouble);
 
 #endif /* INC_DISPLAY_H */

@@ -272,6 +272,13 @@ struct _Client
     /* Startup notification */
     gchar *startup_id;
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+
+#ifdef HAVE_XSYNC
+    XSyncAlarm  xsync_alarm;
+    XSyncCounter xsync_counter;
+    XSyncValue xsync_value;
+    gboolean xsync_waiting;
+#endif /* HAVE_XSYNC */
 };
 
 extern Client *clients;
@@ -332,6 +339,8 @@ Client  *clientGetLeader (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char    *clientGetStartupId (Client *);
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
-
+#ifdef HAVE_XSYNC
+void     clientXSyncRequest (Client *);
+#endif /* HAVE_XSYNC */
 
 #endif /* INC_CLIENT_H */

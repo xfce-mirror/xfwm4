@@ -1063,6 +1063,92 @@ clientGetWMProtocols (Client * c)
         WM_FLAG_CONTEXT_HELP : 0);
 }
 
+#ifdef HAVE_XSYNC
+static void
+clientIncrementXSyncValue (Client *c)
+{
+    XSyncValue add;
+    int overflow;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->xsync_counter != None);
+
+    XSyncIntToValue (&add, 1);
+    XSyncValueAdd (&c->xsync_value, c->xsync_value, add, &overflow);
+}
+
+static void
+clientCreateXSyncAlarm (Client *c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    XSyncAlarmAttributes values;
+    XSyncValue wait_value;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->xsync_counter != None);
+
+    TRACE ("entering clientCreateXSyncAlarm");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    XSyncIntToValue (&c->xsync_value, 0);
+    XSyncSetCounter (display_info->dpy, c->xsync_counter, c->xsync_value);
+    XSyncIntToValue (&values.trigger.wait_value, 1);
+    XSyncIntToValue (&values.delta, 1);
+
+    values.trigger.counter = c->xsync_counter;
+    values.trigger.value_type = XSyncAbsolute;
+    values.trigger.test_type = XSyncPositiveComparison;
+    values.events = True;
+
+    c->xsync_alarm = XSyncCreateAlarm (display_info->dpy,
+                                       XSyncCACounter | 
+                                       XSyncCADelta | 
+                                       XSyncCAEvents | 
+                                       XSyncCATestType | 
+                                       XSyncCAValue | 
+                                       XSyncCAValueType,
+                                       &values);
+}
+
+clientDestroyXSyncAlarm (Client *c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->xsync_alarm != None);
+
+    TRACE ("entering clientClearXSyncAlarm");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    XSyncDestroyAlarm (display_info->dpy, c->xsync_alarm);
+    c->xsync_alarm = None;
+}
+
+void
+clientXSyncRequest (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    TRACE ("entering clientXSyncRequest");
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    clientIncrementXSyncValue (c);
+    sendXSyncRequest (display_info, c->window, c->xsync_value);
+    c->xsync_waiting = TRUE;
+}
+#endif /* HAVE_XSYNC */
+
 static void
 clientFree (Client * c)
 {
@@ -1091,6 +1177,12 @@ clientFree (Client * c)
     {
         g_free (c->name);
     }
+#ifdef HAVE_XSYNC
+    if (c->xsync_alarm != None)
+    {
+        clientDestroyXSyncAlarm (c);
+    }
+#endif /* HAVE_XSYNC */
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     if (c->startup_id)
     {
@@ -1428,7 +1520,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         }
         TRACE ("No systray found for this screen");
     }
-#endif
+#endif /* ENABLE_KDE_SYSTRAY_PROXY */
 
     if (attr.override_redirect)
     {
@@ -1468,7 +1560,18 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
-#endif
+#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+
+#ifdef HAVE_XSYNC
+    c->xsync_waiting = FALSE;
+    c->xsync_counter = None;
+    getXSyncCounter (display_info, c->window, &c->xsync_counter);
+    c->xsync_alarm = None;
+    if (c->xsync_counter)
+    {
+        clientCreateXSyncAlarm (c);
+    }
+#endif /* HAVE_XSYNC */
 
     clientGetWMNormalHints (c, FALSE);
 
@@ -3780,6 +3883,51 @@ clientMove (Client * c, XEvent * ev)
     }
 }
 
+static clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
+{
+    XWindowChanges wc;
+    unsigned long value_mask;
+
+    value_mask = 0L;
+    if (c->x != px)
+    {
+        value_mask |= CWX;
+    }
+    if (c->y != py)
+    {
+        value_mask |= CWY;
+    }
+    if (c->width != pw)
+    {
+        value_mask |= CWWidth;
+    }
+    if (c->height != ph)
+    {
+        value_mask |= CWHeight;
+    }
+    if (!value_mask)
+    {
+        return;
+    }
+
+#ifdef HAVE_XSYNC
+    if (!c->xsync_waiting)
+    {
+        if ((c->xsync_counter) && (value_mask & (CWWidth | CWHeight)))
+        {
+            clientXSyncRequest (c);
+        }
+#endif /* HAVE_XSYNC */
+        wc.x = c->x;
+        wc.y = c->y;
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure (c, &wc, value_mask, NO_CFG_FLAG);
+#ifdef HAVE_XSYNC
+    }
+#endif /* HAVE_XSYNC */
+}
+
 static eventFilterStatus
 clientResizeEventFilter (XEvent * xevent, gpointer data)
 {
@@ -3789,9 +3937,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     GdkRectangle rect;
     MoveResizeData *passdata;
     eventFilterStatus status;
-    XWindowChanges wc;
-    unsigned long configure_flags;
-    int prev_y, prev_x, prev_height, prev_width;
+    int prev_x, prev_y, prev_width, prev_height;
     int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
     int frame_top, frame_left, frame_right, frame_bottom;
@@ -3808,7 +3954,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     display_info = screen_info->display_info;
     status = EVENT_FILTER_STOP;
     resizing = TRUE;
-    configure_flags = 0L;
 
     frame_x = frameX (c);
     frame_y = frameY (c);
@@ -3848,6 +3993,12 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     disp_max_x = rect.x + rect.width;
     disp_max_y = rect.y + rect.height;
 
+    /* Store previous values in case the resize puts the window title off bounds */
+    prev_x = c->x;
+    prev_y = c->y;
+    prev_width = c->width;
+    prev_height = c->height;
+
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, xevent);
 
@@ -3885,46 +4036,37 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 clientDrawOutline (c);
             }
-            /* Store previous height in case the resize hides the window behind the curtain */
-            prev_width = c->width;
-            prev_height = c->height;
 
             if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
                 && (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_UP].keycode))
             {
                 c->height = c->height - key_height_inc;
-                configure_flags |= CWHeight;
                 corner = CORNER_COUNT + SIDE_BOTTOM;
             }
             else if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
                 && (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_DOWN].keycode))
             {
                 c->height = c->height + key_height_inc;
-                configure_flags |= CWHeight;
                 corner = CORNER_COUNT + SIDE_BOTTOM;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_LEFT].keycode)
             {
                 c->width = c->width - key_width_inc;
-                configure_flags |= CWWidth;
                 corner = CORNER_COUNT + SIDE_RIGHT;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_RIGHT].keycode)
             {
                 c->width = c->width + key_width_inc;
-                configure_flags |= CWWidth;
                 corner = CORNER_COUNT + SIDE_RIGHT;
             }
             if (corner >= 0)
             {
                 clientConstrainRatio (c, c->width, c->height, corner);
-                configure_flags |= CWWidth | CWHeight;
             }
             if (!clientCkeckTitle (c))
             {
                 c->height = prev_height;
                 c->width = prev_width;
-                configure_flags |= CWWidth | CWHeight;
             }
             else
             {
@@ -3932,13 +4074,11 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                     || (c->x + c->width < screen_info->margins [LEFT] + min_visible))
                 {
                     c->width = prev_width;
-                    configure_flags |= CWWidth;
                 }
                 if ((c->y + c->height < disp_y + min_visible)
                     || (c->y + c->height < screen_info->margins [TOP] + min_visible))
                 {
                     c->height = prev_height;
-                    configure_flags |= CWHeight;
                 }
             }
             if (passdata->poswin)
@@ -3951,11 +4091,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             }
             else
             {
-                wc.x = c->x;
-                wc.y = c->y;
-                wc.width = c->width;
-                wc.height = c->height;
-                clientConfigure (c, &wc, configure_flags, NO_CFG_FLAG);
+                clientResizeConfigure (c, prev_x, prev_y, prev_width, prev_height);
             }
         }
     }
@@ -3975,27 +4111,20 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             if (move_left)
             {
                 c->x += c->width - passdata->cancel_x;
-                configure_flags |= CWX;
             }
             if (move_top)
             {
                 c->y += c->height - passdata->cancel_y;
-                configure_flags |= CWY;
             }
             c->width = passdata->cancel_x;
             c->height = passdata->cancel_y;
-            configure_flags |= CWWidth | CWHeight;
             if (screen_info->params->box_resize)
             {
                 clientDrawOutline (c);
             }
             else
             {
-                wc.x = c->x;
-                wc.y = c->y;
-                wc.width = c->width;
-                wc.height = c->height;
-                clientConfigure (c, &wc, configure_flags, NO_CFG_FLAG);
+                clientResizeConfigure (c, prev_x, prev_y, prev_width, prev_height);
             }
         }
         else if (passdata->use_keys)
@@ -4030,33 +4159,24 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         passdata->oldw = c->width;
         passdata->oldh = c->height;
-        /* Store previous values in case the resize puts the window title off bounds */
-        prev_x = c->x;
-        prev_y = c->y;
-        prev_width = c->width;
-        prev_height = c->height;
 
         if (move_left)
         {
             c->width = passdata->ox - (xevent->xmotion.x_root - passdata->mx);
-            configure_flags |= CWWidth;
         }
         else if (move_right)
         {
             c->width = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
-            configure_flags |= CWWidth;
         }
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             if (move_top)
             {
                 c->height = passdata->oy - (xevent->xmotion.y_root - passdata->my);
-                configure_flags |= CWHeight;
             }
             else if (move_bottom)
             {
                 c->height = passdata->oy + (xevent->xmotion.y_root - passdata->my);
-                configure_flags |= CWHeight;
             }
         }
         clientConstrainRatio (c, c->width, c->height, passdata->corner);
@@ -4065,13 +4185,11 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         if (move_left)
         {
             c->x = c->x - (c->width - passdata->oldw);
-            configure_flags |= CWX;
             frame_x = frameX (c);
         }
         if (move_top && !clientCkeckTitle (c))
         {
             c->x = prev_x;
-            configure_flags |= CWX;
             c->width = prev_width;
         }
 
@@ -4079,13 +4197,11 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
         {
             c->y = c->y - (c->height - passdata->oldh);
-            configure_flags |= CWY;
             frame_y = frameY (c);
         }
         if (move_top && !clientCkeckTitle (c))
         {
             c->y = prev_y;
-            configure_flags |= CWY;
             c->height = prev_height;
         }
         if (move_top)
@@ -4096,7 +4212,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 c->y = prev_y;
                 c->height = prev_height;
-                configure_flags |= CWY | CWHeight;
             }
         }
         else if (move_bottom)
@@ -4105,7 +4220,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 || (c->y + c->height < screen_info->margins [TOP] + min_visible))
             {
                 c->height = prev_height;
-                configure_flags |= CWHeight;
             }
         }
         if (move_left)
@@ -4116,7 +4230,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 c->x = prev_x;
                 c->width = prev_width;
-                configure_flags |= CWX | CWWidth;
             }
         }
         else if (move_right)
@@ -4125,7 +4238,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 || (c->x + c->width < screen_info->margins [LEFT] + min_visible))
             {
                 c->width = prev_width;
-                configure_flags |= CWWidth;
             }
         }
 
@@ -4139,11 +4251,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         else
         {
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-            clientConfigure (c, &wc, configure_flags, NO_CFG_FLAG);
+            clientResizeConfigure (c, prev_x, prev_y, prev_width, prev_height);
         }
 
     }
@@ -4295,7 +4403,9 @@ clientResize (Client * c, int corner, XEvent * ev)
     wc.width = c->width;
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
-
+#ifdef HAVE_XSYNC
+    c->xsync_waiting = FALSE;
+#endif /* HAVE_XSYNC */
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     if (!passdata.released)
     {

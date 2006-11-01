@@ -191,4 +191,9 @@ Window getSystrayWindow (DisplayInfo *, Atom);
 gboolean getWindowStartupId (DisplayInfo *, Window, char **);
 #endif
 
+#ifdef HAVE_XSYNC
+gboolean getXSyncCounter (DisplayInfo *, Window, XSyncCounter *);
+void sendXSyncRequest (DisplayInfo *, Window, XSyncValue);
+#endif /* HAVE_XSYNC */
+
 #endif /* INC_HINTS_H */

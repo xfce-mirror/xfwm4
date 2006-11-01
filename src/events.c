@@ -1912,7 +1912,15 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             }
             getWindowStartupId (display_info, c->window, &c->startup_id);
         }
-#endif
+#endif /* HAVE_STARTUP_NOTIFICATION */
+#ifdef HAVE_XSYNC
+        else if (ev->atom == display_info->atoms[NET_WM_SYNC_REQUEST_COUNTER])
+        {
+            getXSyncCounter (display_info, c->window, &c->xsync_counter);
+            TRACE ("Window 0x%lx has NET_WM_SYNC_REQUEST_COUNTER set to 0x%lx", c->window, c->xsync_counter);
+        }
+#endif /* HAVE_XSYNC */
+
         return;
     }
 
@@ -2219,6 +2227,29 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
     }
 }
 
+#ifdef HAVE_XSYNC
+static void
+handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
+{
+    XWindowChanges wc;
+    Client *c;
+
+    TRACE ("entering handleXSyncAlarmNotify");
+
+    c = myDisplayGetClientFromXSyncAlarm (display_info, ev->alarm);
+    if (c)
+    {
+        c->xsync_waiting = FALSE;
+        c->xsync_value = ev->counter_value;
+        wc.x = c->x;
+        wc.y = c->y;
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+    }
+}
+#endif /* HAVE_XSYNC */
+
 static void
 handleEvent (DisplayInfo *display_info, XEvent * ev)
 {
@@ -2290,6 +2321,12 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             {
                 handleShape (display_info, (XShapeEvent *) ev);
             }
+#ifdef HAVE_XSYNC
+            if ((display_info->have_xsync) && (ev->type == (display_info->xsync_event_base + XSyncAlarmNotify)))
+            {
+                handleXSyncAlarmNotify (display_info, (XSyncAlarmNotifyEvent *) ev);
+            }
+#endif /* HAVE_XSYNC */
     }
     if (!gdk_events_pending () && !XPending (display_info->dpy))
     {

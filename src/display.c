@@ -130,6 +130,8 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_STATE_STICKY",
         "_NET_WM_STRUT",
         "_NET_WM_STRUT_PARTIAL",
+        "_NET_WM_SYNC_REQUEST",
+        "_NET_WM_SYNC_REQUEST_COUNTER",
         "_NET_WM_USER_TIME",
         "_NET_WM_WINDOW_TYPE",
         "_NET_WM_WINDOW_TYPE_DESKTOP",
@@ -181,6 +183,9 @@ DisplayInfo *
 myDisplayInit (GdkDisplay *gdisplay)
 {
     DisplayInfo *display;
+#ifdef HAVE_XSYNC
+    int xsync_major, xsync_minor;
+#endif /* HAVE_XSYNC */
     int dummy;
 
     display = g_new0 (DisplayInfo, 1);
@@ -214,6 +219,33 @@ myDisplayInit (GdkDisplay *gdisplay)
         display->shape_event_base = 0;
     }
 
+#ifdef HAVE_XSYNC
+    display->have_xsync = FALSE;
+    
+    display->xsync_error_base = 0;
+    display->xsync_event_base = 0;
+
+    xsync_major = SYNC_MAJOR_VERSION;
+    xsync_minor = SYNC_MINOR_VERSION;
+    
+    if (XSyncQueryExtension (display->dpy,
+                              &display->xsync_event_base,
+                              &display->xsync_error_base)
+         && XSyncInitialize (display->dpy, 
+                             &xsync_major, 
+                             &xsync_minor))
+    {
+        display->have_xsync = TRUE;
+    }
+    else
+    {
+        g_warning ("The display does not support the XSync extension.");
+        display->have_xsync = FALSE;
+        display->xsync_event_base = 0;
+        display->xsync_error_base = 0;
+    }
+#endif /* HAVE_XSYNC */
+
 #ifdef HAVE_RENDER
     if (XRenderQueryExtension (display->dpy,
                                &display->render_event_base,
@@ -228,9 +260,9 @@ myDisplayInit (GdkDisplay *gdisplay)
         display->render_event_base = 0;
         display->render_error_base = 0;
     }
-#else
+#else  /* HAVE_RENDER */
     display->have_render = FALSE;
-#endif
+#endif /* HAVE_RENDER */
 
 #ifdef HAVE_RANDR
     if (XRRQueryExtension (display->dpy,
@@ -246,9 +278,9 @@ myDisplayInit (GdkDisplay *gdisplay)
         display->xrandr_event_base = 0;
         display->xrandr_error_base = 0;
     }
-#else
+#else  /* HAVE_RANDR */
     display->have_xrandr = FALSE;
-#endif
+#endif /* HAVE_RANDR */
 
     display->root_cursor =
         XCreateFontCursor (display->dpy, CURSOR_ROOT);
@@ -589,7 +621,30 @@ myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
 
     return NULL;
 }
-#endif
+#endif /* ENABLE_KDE_SYSTRAY_PROXY */
+
+#ifdef HAVE_XSYNC
+Client *
+myDisplayGetClientFromXSyncAlarm (DisplayInfo *display, XSyncAlarm alarm)
+{
+    GSList *index;
+
+    g_return_val_if_fail (alarm != None, NULL);
+    g_return_val_if_fail (display != NULL, NULL);
+    
+    for (index = display->clients; index; index = g_slist_next (index))
+    {
+        Client *c = (Client *) index->data;
+        if (alarm == c->xsync_alarm)
+        {
+            return (c);
+        }
+    }
+    TRACE ("no client found");
+
+    return NULL;
+}
+#endif /* HAVE_XSYNC */
 
 ScreenInfo *
 myDisplayGetDefaultScreen (DisplayInfo *display)
