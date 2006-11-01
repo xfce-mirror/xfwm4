@@ -80,14 +80,6 @@
      (c->wmhints->initial_state == IconicState) && \
      !clientIsValidTransientOrModal (c))
 
-#ifndef EPSILON
-#define EPSILON                 (1e-6)
-#endif
-
-#ifndef MAX_RESIZES_PER_SECOND
-#define MAX_RESIZES_PER_SECOND  0.0
-#endif
-
 #define OPACITY_SET_STEP        (guint) 0x16000000
 #define OPACITY_SET_MIN         (guint) 0x40000000
 
@@ -132,53 +124,6 @@ clientGetXDisplay (Client * c)
     g_return_val_if_fail (c, NULL);
 
     return myScreenGetXDisplay (c->screen_info);
-}
-
-/*
- * The following two functions are to limit the number of updates
- * during resize operations.
- * It's taken from Metacity
- */
-void
-clientClearLastOpTime (Client * c)
-{
-    g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientClearLastOpTime");
-    c->last_op_time.tv_sec = 0;
-    c->last_op_time.tv_usec = 0;
-}
-
-static gboolean
-clientCheckLastOpTime (Client * c)
-{
-    GTimeVal current_time;
-    gdouble elapsed;
-
-    g_return_val_if_fail (c != NULL, FALSE);
-
-    if (!(MAX_RESIZES_PER_SECOND > 0.0))
-    {
-        return TRUE;
-    }
-    
-    g_get_current_time (&current_time);
-    /* use milliseconds, 1000 milliseconds/second */
-    elapsed = ((gdouble) (current_time.tv_sec - c->last_op_time.tv_sec)) * G_USEC_PER_SEC +
-              ((gdouble) (current_time.tv_usec - c->last_op_time.tv_usec)) / 1000.0;
-
-    if (elapsed >= 0.0 && elapsed < (1000.0 / MAX_RESIZES_PER_SECOND))
-    {
-        return FALSE;
-    }
-    else if (elapsed < (0.0 - EPSILON))
-    {
-        /* clock screw */
-        clientClearLastOpTime (c);
-    }
-    c->last_op_time = current_time;
-
-    return TRUE;
 }
 
 void
@@ -1785,8 +1730,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY | CFG_FORCE_REDRAW);
 
-    /* Clear time counter */
-    clientClearLastOpTime (c);
     /* net_wm_user_time standard */
     clientGetUserTime (c);
 
@@ -4006,7 +3949,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 clientDrawOutline (c);
             }
-            else if (clientCheckLastOpTime (c))
+            else
             {
                 wc.x = c->x;
                 wc.y = c->y;
@@ -4046,7 +3989,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 clientDrawOutline (c);
             }
-            else if (clientCheckLastOpTime (c))
+            else
             {
                 wc.x = c->x;
                 wc.y = c->y;
@@ -4074,7 +4017,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         if (xevent->type == ButtonRelease)
         {
             resizing = FALSE;
-            clientClearLastOpTime (c);
         }
         if (!passdata->grab && screen_info->params->box_resize)
         {
@@ -4197,14 +4139,11 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         else
         {
-            if (clientCheckLastOpTime (c))
-            {
-                wc.x = c->x;
-                wc.y = c->y;
-                wc.width = c->width;
-                wc.height = c->height;
-                clientConfigure (c, &wc, configure_flags, NO_CFG_FLAG);
-            }
+            wc.x = c->x;
+            wc.y = c->y;
+            wc.width = c->width;
+            wc.height = c->height;
+            clientConfigure (c, &wc, configure_flags, NO_CFG_FLAG);
         }
 
     }
