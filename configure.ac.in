@@ -72,6 +72,24 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
 
 
 dnl
+dnl XSync support
+dnl
+XSYNC_LIBS=
+AC_ARG_ENABLE([xsync],
+AC_HELP_STRING([--enable-xsync], [try to use the xsync extension])
+AC_HELP_STRING([--disable-xsync], [don't try to use the xsync extension]),
+  [], [enable_xsync=yes])
+have_xsync="no"
+if test x"$enable_xsync" = x"yes"; then
+  AC_CHECK_LIB([Xext], [XSyncQueryExtension],
+      [ have_xsync="yes"
+        XSYNC_LIBS=" -lXext"
+        AC_DEFINE([HAVE_XSYNC], [1], [Define to enable xsync])
+      ],[])
+fi
+AC_SUBST([XSYNC_LIBS])
+
+dnl
 dnl Render support
 dnl
 AC_ARG_ENABLE([render],
@@ -206,6 +224,7 @@ xfwm4.spec
 echo
 echo "Build Configuration for $PACKAGE version $VERSION revision $REVISION:"
 echo "  Startup notification support:                 $LIBSTARTUP_NOTIFICATION_FOUND"
+echo "  XSync support:                                $have_xsync"
 echo "  Render support:                               $have_render"
 echo "  Xrandr support:                               $have_xrandr"
 echo "  Embedded compositor:                          $compositor"
