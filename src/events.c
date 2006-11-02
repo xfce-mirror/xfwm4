@@ -2248,9 +2248,9 @@ handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
     if (c)
     {
         c->xsync_waiting = FALSE;
+        c->xsync_value = ev->counter_value;
         if (c->xsync_enabled)
         {
-            c->xsync_value = ev->counter_value;
             wc.x = c->x;
             wc.y = c->y;
             wc.width = c->width;

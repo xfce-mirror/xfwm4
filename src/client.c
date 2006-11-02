@@ -1160,7 +1160,7 @@ clientXSyncTimeout (gpointer data)
     c = (Client *) data;
     if (c)
     {
-        g_warning ("XSync timeout for client \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("XSync timeout for client \"%s\" (0x%lx)", c->name, c->window);
         clientXSyncClearTimeout (c);
         c->xsync_waiting = FALSE;
         c->xsync_enabled = FALSE;
@@ -1206,6 +1206,30 @@ clientXSyncRequest (Client * c)
     sendXSyncRequest (display_info, c->window, c->xsync_value);
     clientXSyncResetTimeout (c);
     c->xsync_waiting = TRUE;
+}
+
+static gboolean
+clientXSyncEnable (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientXSyncEnable");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    c->xsync_enabled = FALSE;
+    if (display_info->have_xsync)
+    {
+        if ((c->xsync_counter) && (c->xsync_alarm))
+        {
+            c->xsync_enabled = TRUE;
+        }
+    }
+    return (c->xsync_enabled);
 }
 #endif /* HAVE_XSYNC */
 
@@ -4439,6 +4463,10 @@ clientResize (Client * c, int corner, XEvent * ev)
         poswinShow (passdata.poswin);
     }
 
+#ifdef HAVE_XSYNC
+    clientXSyncEnable (c);
+#endif /* HAVE_XSYNC */
+
     /* Set window translucent while resizing, doesn't looks too nice  :( */
     if ((screen_info->params->resize_opacity < 100) && !(screen_info->params->box_resize) && !(c->opacity_locked))
     {
@@ -4480,6 +4508,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
 #ifdef HAVE_XSYNC
+    clientXSyncClearTimeout (c);
     c->xsync_waiting = FALSE;
 #endif /* HAVE_XSYNC */
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
