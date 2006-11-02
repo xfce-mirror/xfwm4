@@ -553,7 +553,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     int x_root, y_root, dx, dy, action, button;
     int corner;
     gboolean resize; /* true == resize, false == move */
-    XEvent event;
+    XEvent *event;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientNetMoveResize");
@@ -566,6 +566,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     y_root = (int) ev->data.l[1];
     action = (int) ev->data.l[2];
     button = (int) ev->data.l[3];
+    event  = (XEvent *) ev;
 
     if (button == 0)
     {
@@ -592,70 +593,70 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     corner = CORNER_BOTTOM_RIGHT;
     resize = TRUE;
 
-    event.xbutton.button = button;
-    event.xbutton.x_root = event.xkey.x_root = x_root;
-    event.xbutton.y_root = event.xkey.y_root = y_root;
-    event.xbutton.time = event.xkey.time = myDisplayGetCurrentTime (display_info);
+    event->xbutton.button = button;
+    event->xbutton.x_root = event->xkey.x_root = x_root;
+    event->xbutton.y_root = event->xkey.y_root = y_root;
+    event->xbutton.time = event->xkey.time = myDisplayGetCurrentTime (display_info);
 
     switch (action)
     {
         /* Keyboard */
         case NET_WM_MOVERESIZE_SIZE_KEYBOARD:
-            event.type = KeyPress;
+            event->type = KeyPress;
             corner = CORNER_BOTTOM_RIGHT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_MOVE_KEYBOARD:
-            event.type = KeyPress;
+            event->type = KeyPress;
             resize = FALSE; /* Move */
             break;
 
         /* Sides */
         case NET_WM_MOVERESIZE_SIZE_TOP:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             corner = CORNER_COUNT + SIDE_TOP;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_BOTTOM:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             corner = CORNER_COUNT + SIDE_BOTTOM;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_RIGHT:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             corner = CORNER_COUNT + SIDE_RIGHT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_LEFT:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             corner = CORNER_COUNT + SIDE_LEFT;
             resize = TRUE; /* Resize */
             break;
 
         /* Corners */
         case NET_WM_MOVERESIZE_SIZE_TOPLEFT:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             corner = CORNER_TOP_LEFT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_TOPRIGHT:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             corner = CORNER_TOP_RIGHT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             corner = CORNER_BOTTOM_LEFT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             corner = CORNER_BOTTOM_RIGHT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_MOVE:
         default:
-            event.type = ButtonPress;
+            event->type = ButtonPress;
             resize = FALSE; /* Move */
             break;
     }
@@ -664,11 +665,11 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     {
         if (resize && FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
         {
-            clientResize (c, corner, &event);
+            clientResize (c, corner, event);
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
         {
-            clientMove (c, &event);
+            clientMove (c, event);
         }
     }
 }
