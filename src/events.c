@@ -235,9 +235,10 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.ycurrent = passdata.y;
     passdata.clicks = 1;
     passdata.allow_double_click = allow_double_click;
-    passdata.timeout = g_timeout_add_full (0, display_info->dbl_click_time,
-                                              (GtkFunction) typeOfClick_break,
-                                              (gpointer) &passdata, NULL);
+    passdata.timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
+                                           display_info->dbl_click_time,
+                                           (GtkFunction) typeOfClick_break,
+                                           (gpointer) &passdata, NULL);
 
     TRACE ("entering typeOfClick loop");
     eventFilterPush (display_info->xfilter, typeOfClick_event_filter, &passdata);
@@ -300,7 +301,10 @@ reset_timeout (ScreenInfo *screen_info)
     {
         g_source_remove (raise_timeout);
     }
-    raise_timeout = g_timeout_add_full (0, screen_info->params->raise_delay, (GtkFunction) raise_cb, NULL, NULL);
+    raise_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
+                                        screen_info->params->raise_delay, 
+                                        (GtkFunction) raise_cb, 
+                                        NULL, NULL);
 }
 
 static void
@@ -2235,16 +2239,24 @@ handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
 
     TRACE ("entering handleXSyncAlarmNotify");
 
+    if (!display_info->have_xsync)
+    {
+        return;
+    }
+
     c = myDisplayGetClientFromXSyncAlarm (display_info, ev->alarm);
     if (c)
     {
         c->xsync_waiting = FALSE;
-        c->xsync_value = ev->counter_value;
-        wc.x = c->x;
-        wc.y = c->y;
-        wc.width = c->width;
-        wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+        if (c->xsync_enabled)
+        {
+            c->xsync_value = ev->counter_value;
+            wc.x = c->x;
+            wc.y = c->y;
+            wc.width = c->width;
+            wc.height = c->height;
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+        }
     }
 }
 #endif /* HAVE_XSYNC */

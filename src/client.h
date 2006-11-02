@@ -83,6 +83,14 @@
 #define CLIENT_MIN_VISIBLE              15
 #endif
 
+#ifndef CLIENT_XSYNC_TIMEOUT
+#define CLIENT_XSYNC_TIMEOUT            1000 /* ms */
+#endif
+
+#ifndef CLIENT_BLINK_TIMEOUT
+#define CLIENT_BLINK_TIMEOUT            500 /* ms */
+#endif
+
 #define XFWM_FLAG_HAS_BORDER            (1L<<0)
 #define XFWM_FLAG_HAS_MENU              (1L<<1)
 #define XFWM_FLAG_HAS_MAXIMIZE          (1L<<2)
@@ -277,7 +285,9 @@ struct _Client
     XSyncAlarm  xsync_alarm;
     XSyncCounter xsync_counter;
     XSyncValue xsync_value;
+    guint xsync_timeout_id;
     gboolean xsync_waiting;
+    gboolean xsync_enabled;
 #endif /* HAVE_XSYNC */
 };
 

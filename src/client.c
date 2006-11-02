@@ -313,8 +313,10 @@ clientUpdateUrgency (Client *c)
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
             c->blink_timeout_id =
-                g_timeout_add_full (0, 500, (GtkFunction) urgent_cb,
-                                            (gpointer) c, NULL);
+                g_timeout_add_full (G_PRIORITY_DEFAULT, 
+                                    CLIENT_BLINK_TIMEOUT, 
+                                    (GtkFunction) urgent_cb,
+                                    (gpointer) c, NULL);
         }
     }
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE)
@@ -1073,19 +1075,21 @@ clientIncrementXSyncValue (Client *c)
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->xsync_counter != None);
 
+    TRACE ("entering clientIncrementXSyncValue");
+
     XSyncIntToValue (&add, 1);
     XSyncValueAdd (&c->xsync_value, c->xsync_value, add, &overflow);
 }
 
-static void
+static gboolean
 clientCreateXSyncAlarm (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     XSyncAlarmAttributes values;
 
-    g_return_if_fail (c != NULL);
-    g_return_if_fail (c->xsync_counter != None);
+    g_return_val_if_fail (c != NULL, FALSE);
+    g_return_val_if_fail (c->xsync_counter != None, FALSE);
 
     TRACE ("entering clientCreateXSyncAlarm");
 
@@ -1110,6 +1114,7 @@ clientCreateXSyncAlarm (Client *c)
                                        XSyncCAValue | 
                                        XSyncCAValueType,
                                        &values);
+    return (c->xsync_alarm != None);
 }
 
 static void
@@ -1130,21 +1135,76 @@ clientDestroyXSyncAlarm (Client *c)
     c->xsync_alarm = None;
 }
 
+static void
+clientXSyncClearTimeout (Client * c)
+{
+    g_return_if_fail (c != NULL);
+
+    TRACE ("entering clientXSyncClearTimeout");
+
+    if (c->xsync_timeout_id)
+    {
+        g_source_remove (c->xsync_timeout_id);
+        c->xsync_timeout_id = 0;
+    }
+}
+
+static gboolean
+clientXSyncTimeout (gpointer data)
+{
+    Client *c;
+    XWindowChanges wc;
+
+    TRACE ("entering clientXSyncTimeout");
+
+    c = (Client *) data;
+    if (c)
+    {
+        g_warning ("XSync timeout for client \"%s\" (0x%lx)", c->name, c->window);
+        clientXSyncClearTimeout (c);
+        c->xsync_waiting = FALSE;
+        c->xsync_enabled = FALSE;
+
+        wc.x = c->x;
+        wc.y = c->y;
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+    }
+    return (TRUE);
+}
+
+static void
+clientXSyncResetTimeout (Client * c)
+{
+    g_return_if_fail (c != NULL);
+
+    TRACE ("entering clientXSyncResetTimeout");
+
+    clientXSyncClearTimeout (c);
+    c->xsync_timeout_id = g_timeout_add_full (G_PRIORITY_DEFAULT, 
+                                              CLIENT_XSYNC_TIMEOUT, 
+                                              (GtkFunction) clientXSyncTimeout, 
+                                              (gpointer) c, NULL);
+}
+
 void
 clientXSyncRequest (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
 
-    TRACE ("entering clientXSyncRequest");
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
+
+    TRACE ("entering clientXSyncRequest");
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
     clientIncrementXSyncValue (c);
     sendXSyncRequest (display_info, c->window, c->xsync_value);
+    clientXSyncResetTimeout (c);
     c->xsync_waiting = TRUE;
 }
 #endif /* HAVE_XSYNC */
@@ -1181,6 +1241,10 @@ clientFree (Client * c)
     if (c->xsync_alarm != None)
     {
         clientDestroyXSyncAlarm (c);
+    }
+    if (c->xsync_timeout_id)
+    {
+        g_source_remove (c->xsync_timeout_id);
     }
 #endif /* HAVE_XSYNC */
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
@@ -1564,12 +1628,17 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
 #ifdef HAVE_XSYNC
     c->xsync_waiting = FALSE;
+    c->xsync_enabled = FALSE;
     c->xsync_counter = None;
-    getXSyncCounter (display_info, c->window, &c->xsync_counter);
     c->xsync_alarm = None;
-    if (c->xsync_counter)
+    c->xsync_timeout_id = 0;
+    if (display_info->have_xsync)
     {
-        clientCreateXSyncAlarm (c);
+        getXSyncCounter (display_info, c->window, &c->xsync_counter);
+        if ((c->xsync_counter) && clientCreateXSyncAlarm (c))
+        {
+            c->xsync_enabled = TRUE;
+        }
     }
 #endif /* HAVE_XSYNC */
 
@@ -3886,8 +3955,13 @@ clientMove (Client * c, XEvent * ev)
 static void
 clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XWindowChanges wc;
     unsigned long value_mask;
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     value_mask = 0L;
     if (c->x != px)
@@ -3914,7 +3988,8 @@ clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
 #ifdef HAVE_XSYNC
     if (!c->xsync_waiting)
     {
-        if ((c->xsync_counter) && (value_mask & (CWWidth | CWHeight)))
+        if ((display_info->have_xsync) && (c->xsync_enabled) && (c->xsync_counter)
+            && (value_mask & (CWWidth | CWHeight)))
         {
             clientXSyncRequest (c);
         }
