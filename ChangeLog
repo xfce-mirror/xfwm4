@@ -1,3 +1,581 @@
+2006-11-02 21:48  olivier
+
+	* src/client.c, src/events.c: Re-enable XSync on apps that don't
+	  cooperate.
+
+2006-11-02 21:18  olivier
+
+	* src/client.c, src/client.h, src/events.c: Add timeout to avoid
+	  blocking on broken apps that claim XSync compliance but don't
+	  implement the protocol properly.
+
+2006-11-02 06:43  olivier
+
+	* src/netwm.c: Reuse same event.
+
+2006-11-01 21:24  olivier
+
+	* README: Update EWMH compliance.
+
+2006-11-01 21:14  olivier
+
+	* src/display.h, src/events.c, src/hints.c, src/misc.c,
+	  src/misc.h, src/netwm.c, src/netwm.h: Add support to
+	  NET_WM_MOVERESIZE
+
+2006-11-01 21:13  olivier
+
+	* src/client.c: Fix compilation warnings
+
+2006-11-01 18:06  olivier
+
+	* configure.ac.in: Add support for XSync protocol in configure
+	  script.
+
+2006-11-01 18:02  olivier
+
+	* src/client.c, src/client.h, src/display.c, src/display.h,
+	  src/events.c, src/hints.c, src/hints.h, src/main.c: Add support
+	  for XSync protocol.
+
+2006-11-01 12:28  olivier
+
+	* src/events.c: Do not raise on WM_TRANSIENT_FOR property change,
+	  fix bug #2483.
+
+2006-11-01 00:27  olivier
+
+	* src/client.c, src/client.h: Get rid of resize limit speed for
+	  good.
+
+2006-10-31 23:56  olivier
+
+	* src/client.c: Optimize configure flags for resize.
+
+2006-10-31 21:21  olivier
+
+	* src/display.c, src/events.c: Add a focus "parachute", remove a
+	  roundtrip.
+
+2006-10-30 23:05  olivier
+
+	* src/client.c: Disable resize limit by default
+
+2006-10-30 22:17  olivier
+
+	* src/client.c: Optimize move/resize
+
+2006-10-30 17:41  olivier
+
+	* src/client.c, src/display.c, src/events.c, src/workspaces.c:
+	  Improve yesterday patch on focus transition.
+
+2006-10-29 22:59  olivier
+
+	* src/client.c, src/display.c, src/events.c, src/focus.c,
+	  src/hints.c, src/main.c, src/netwm.c: This fixes several focus
+	  issues for me, but since focus is a sensitive beast, to say the
+	  least, so I dunno about others.
+
+2006-10-29 16:31  maximilian
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/fr.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/fr.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/fr.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/fr.po,
+	  po/ChangeLog, po/fr.po: Updated libexo and terminal's french
+	  translations, added translators credits to the thunar french
+	  translation, fixed a wrong accel. in xfdesktop (thx goes to Mike
+	  Massonnet) and fixed some typos in xfwm4's french translation.
+
+2006-10-29 14:51  pollux
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: allow the usage of 'Alt+C' in
+	  shortcuts (unfortunately it adds a string too)
+
+2006-10-28 13:04  paurullan
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/LINGUAS,
+	  libexo/trunk/po/dz.po, libxfce4util/trunk/po/ChangeLog,
+	  libxfce4util/trunk/po/LINGUAS, libxfce4util/trunk/po/dz.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/LINGUAS,
+	  libxfcegui4/trunk/po/dz.po, mousepad/trunk/po/ChangeLog,
+	  mousepad/trunk/po/LINGUAS, mousepad/trunk/po/dz.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/LINGUAS,
+	  terminal/trunk/po/dz.po, thunar/trunk/po/ChangeLog,
+	  thunar/trunk/po/LINGUAS, thunar/trunk/po/dz.po,
+	  xarchiver/trunk/po/ChangeLog, xarchiver/trunk/po/LINGUAS,
+	  xarchiver/trunk/po/dz.po, xfburn/trunk/po/ChangeLog,
+	  xfburn/trunk/po/LINGUAS, xfburn/trunk/po/dz.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/LINGUAS,
+	  xfcalendar/trunk/po/dz.po, xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/LINGUAS,
+	  xfce-mcs-manager/trunk/po/dz.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/LINGUAS,
+	  xfce-mcs-plugins/trunk/po/dz.po, xfce-utils/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/LINGUAS, xfce-utils/trunk/po/dz.po,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/LINGUAS,
+	  xfce4-appfinder/trunk/po/dz.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/LINGUAS,
+	  xfce4-icon-theme/trunk/po/dz.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/LINGUAS, xfce4-mixer/trunk/po/dz.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/LINGUAS,
+	  xfce4-panel/trunk/po/dz.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/LINGUAS, xfce4-session/trunk/po/dz.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/LINGUAS,
+	  xfce4-trigger-launcher/trunk/po/dz.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/LINGUAS,
+	  xfdesktop/trunk/po/dz.po, xfmedia/trunk/po/ChangeLog,
+	  xfmedia/trunk/po/LINGUAS, xfmedia/trunk/po/dz.po,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/LINGUAS,
+	  xfprint/trunk/po/dz.po, po/ChangeLog, po/LINGUAS, po/dz.po:
+	  added whole Dzongkha translation
+	  
+	  congratulations to the dz team.
+
+2006-10-26 16:51  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/close-active.png,
+	  themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm,
+	  themes/default/hide-active.png, themes/default/hide-active.svg,
+	  themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-pressed.png,
+	  themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-inactive.png,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png,
+	  themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm,
+	  themes/default/right-active.png,
+	  themes/default/right-inactive.png,
+	  themes/default/shade-active.png,
+	  themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png,
+	  themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/default/top-right-inactive.xpm: Use slightly larger
+	  height for title bar.
+
+2006-10-25 21:56  olivier
+
+	* themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg: Fix gradients on top
+	  corners.
+
+2006-10-25 19:33  olivier
+
+	* src/mypixmap.c, themes/default/menu-active.png,
+	  themes/default/menu-active.svg, themes/default/menu-active.xpm,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png,
+	  themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm: Enlarge the menu button so that
+	  it's the same size as other buttons.
+
+2006-10-24 20:45  olivier
+
+	* src/client.c, src/screen.c: Fix visual/depth/colormap with and
+	  without render.
+
+2006-10-24 19:25  olivier
+
+	* configure.ac.in, src/client.c, src/screen.c: Add a configure
+	  option to disable render at compile time, fix depth/visual
+	  mismatch with some applications when render is disabled (bug
+	  #1617).
+
+2006-10-23 20:05  olivier
+
+	* src/session.c: Do not match windows that we don't place, that
+	  avoids some misplacements.
+
+2006-10-22 17:53  adriano
+
+	* xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/pt_BR.po,
+	  po/ChangeLog, po/pt_BR.po: Updated brazilian portuguese
+	  translations.
+
+2006-10-22 13:18  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/close-active.png,
+	  themes/default/close-inactive.png,
+	  themes/default/close-pressed.png,
+	  themes/default/hide-active.png,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-pressed.png, themes/default/left-active.png,
+	  themes/default/left-inactive.png,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png,
+	  themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm,
+	  themes/default/right-active.png,
+	  themes/default/right-inactive.png,
+	  themes/default/shade-active.png,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/stick-active.png,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/themerc, themes/default/title-1-active.png,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-inactive.png,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-inactive.png: Use full title height for
+	  menu button too.
+
+2006-10-20 21:29  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/close-active.png,
+	  themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm,
+	  themes/default/hide-active.png, themes/default/hide-active.svg,
+	  themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-pressed.png,
+	  themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-inactive.png,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png,
+	  themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm,
+	  themes/default/right-active.png,
+	  themes/default/right-inactive.png,
+	  themes/default/shade-active.png,
+	  themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png,
+	  themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-inactive.png,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-inactive.png: Increase buttons height
+	  of the default theme, to improve usability with pointing devices
+	  such as touchscreens or tablet PC.
+
+2006-10-19 18:54  jari
+
+	* xarchiver/trunk/po/ChangeLog, xarchiver/trunk/po/fi.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/fi.po,
+	  po/ChangeLog, po/fi.po: Updated Finnish translations.
+
+2006-10-18 19:59  olivier
+
+	* themes/default/Makefile.am, themes/default/README,
+	  themes/default/bottom-active.png,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/close-active.png,
+	  themes/default/close-inactive.png,
+	  themes/default/close-pressed.png, themes/default/convert2png.sh,
+	  themes/default/hide-active.png,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-pressed.png, themes/default/left-active.png,
+	  themes/default/left-inactive.png,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/menu-active.png,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-pressed.png,
+	  themes/default/right-active.png,
+	  themes/default/right-inactive.png,
+	  themes/default/shade-active.png,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/stick-active.png,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-inactive.png,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-inactive.png: Build png out of svg
+	  files for the default theme, but do not install the later
+	  (Should speed up theme loading and improve rendering on display
+	  with higher DPI).
+
+2006-10-14 17:26  olivier
+
+	* README: Fix typos, as I've added the link from the fd.o wiki.
+
+2006-10-14 17:14  olivier
+
+	* README: Update the README file, add standard compliance list.
+
+2006-10-14 12:40  paurullan
+
+	* xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/pl.po,
+	  po/ChangeLog, po/pl.po: i18n polish update
+
+2006-10-14 07:28  olivier
+
+	* src/main.c: Yet, again, compositing initialization.
+
+2006-10-14 07:20  stavrosg
+
+	* po/ChangeLog, po/el.po: Xfwm4 Greek translation update.
+
+2006-10-13 20:48  olivier
+
+	* src/main.c: Fix compositing, again... Bug #2428.
+
+2006-10-13 19:40  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2006-10-13 17:35  olivier
 
 	* src/client.c, src/display.c, src/display.h, src/events.c,
