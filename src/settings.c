@@ -103,8 +103,8 @@ set_settings_margin (ScreenInfo *screen_info, int idx, int value)
 
     switch (idx)
     {
-        case LEFT:
-        case RIGHT:
+        case STRUTS_LEFT:
+        case STRUTS_RIGHT:
             if (value < 0)
             {
                 val = 0;
@@ -119,8 +119,8 @@ set_settings_margin (ScreenInfo *screen_info, int idx, int value)
             }
             screen_info->params->xfwm_margins[idx] = val;
             break;
-        case TOP:
-        case BOTTOM:
+        case STRUTS_TOP:
+        case STRUTS_BOTTOM:
             if (value < 0)
             {
                 val = 0;
@@ -277,19 +277,19 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                 {
                     if (!strcmp (name, "Xfwm/LeftMargin"))
                     {
-                        set_settings_margin (screen_info, LEFT, setting->data.v_int);
+                        set_settings_margin (screen_info, STRUTS_LEFT, setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/RightMargin"))
                     {
-                        set_settings_margin (screen_info, RIGHT, setting->data.v_int);
+                        set_settings_margin (screen_info, STRUTS_RIGHT, setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/BottomMargin"))
                     {
-                        set_settings_margin (screen_info, BOTTOM, setting->data.v_int);
+                        set_settings_margin (screen_info, STRUTS_BOTTOM, setting->data.v_int);
                     }
                     else if (!strcmp (name, "Xfwm/TopMargin"))
                     {
-                        set_settings_margin (screen_info, TOP, setting->data.v_int);
+                        set_settings_margin (screen_info, STRUTS_TOP, setting->data.v_int);
                     }
                 }
                 break;
@@ -1486,10 +1486,10 @@ loadSettings (ScreenInfo *screen_info)
     screen_info->params->snap_width =
         abs (TOINT (getValue ("snap_width", rc)));
 
-    set_settings_margin (screen_info, LEFT,   TOINT (getValue ("margin_left", rc)));
-    set_settings_margin (screen_info, RIGHT,  TOINT (getValue ("margin_right", rc)));
-    set_settings_margin (screen_info, BOTTOM, TOINT (getValue ("margin_bottom", rc)));
-    set_settings_margin (screen_info, TOP,    TOINT (getValue ("margin_top", rc)));
+    set_settings_margin (screen_info, STRUTS_LEFT,   TOINT (getValue ("margin_left", rc)));
+    set_settings_margin (screen_info, STRUTS_RIGHT,  TOINT (getValue ("margin_right", rc)));
+    set_settings_margin (screen_info, STRUTS_BOTTOM, TOINT (getValue ("margin_bottom", rc)));
+    set_settings_margin (screen_info, STRUTS_TOP,    TOINT (getValue ("margin_top", rc)));
 
     set_easy_click (screen_info, getValue ("easy_click", rc));
 

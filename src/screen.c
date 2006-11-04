@@ -111,10 +111,10 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->current_ws = 0;
     screen_info->previous_ws = 0;
 
-    screen_info->margins[TOP] = screen_info->gnome_margins[TOP] = 0;
-    screen_info->margins[LEFT] = screen_info->gnome_margins[LEFT] = 0;
-    screen_info->margins[RIGHT] = screen_info->gnome_margins[RIGHT] = 0;
-    screen_info->margins[BOTTOM] = screen_info->gnome_margins[BOTTOM] = 0;
+    screen_info->margins[STRUTS_TOP] = screen_info->gnome_margins[STRUTS_TOP] = 0;
+    screen_info->margins[STRUTS_LEFT] = screen_info->gnome_margins[STRUTS_LEFT] = 0;
+    screen_info->margins[STRUTS_RIGHT] = screen_info->gnome_margins[STRUTS_RIGHT] = 0;
+    screen_info->margins[STRUTS_BOTTOM] = screen_info->gnome_margins[STRUTS_BOTTOM] = 0;
 
     screen_info->workspace_count = -1;
     screen_info->workspace_names = NULL;

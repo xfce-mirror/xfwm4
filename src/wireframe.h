@@ -30,8 +30,10 @@
 #include "screen.h"
 #include "client.h"
 
-void wireframeUpdate (Client *c, Window xwindow);
-Window wireframeCreate (Client *c);
-void wireframeDelete (ScreenInfo *screen_info, Window xwindow);
+void                     wireframeUpdate                        (Client *c, 
+                                                                 Window);
+Window                   wireframeCreate                        (Client *c);
+void                     wireframeDelete                        (ScreenInfo *, 
+                                                                 Window);
 
 #endif /* INC_WIREFRAME_H */

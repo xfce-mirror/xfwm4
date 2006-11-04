@@ -2938,11 +2938,11 @@ clientNewMaxSize (Client * c, XWindowChanges *wc)
     monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
-    full_x = MAX (screen_info->params->xfwm_margins[LEFT], rect.x);
-    full_y = MAX (screen_info->params->xfwm_margins[TOP], rect.y);
-    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[RIGHT],
+    full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
+    full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);
+    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
                   rect.x + rect.width) - full_x;
-    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[BOTTOM],
+    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect.y + rect.height) - full_y;
 
     if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -4167,12 +4167,12 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             else
             {
                 if ((c->x + c->width < disp_x + min_visible)
-                    || (c->x + c->width < screen_info->margins [LEFT] + min_visible))
+                    || (c->x + c->width < screen_info->margins [STRUTS_LEFT] + min_visible))
                 {
                     c->width = prev_width;
                 }
                 if ((c->y + c->height < disp_y + min_visible)
-                    || (c->y + c->height < screen_info->margins [TOP] + min_visible))
+                    || (c->y + c->height < screen_info->margins [STRUTS_TOP] + min_visible))
                 {
                     c->height = prev_height;
                 }
@@ -4304,7 +4304,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         {
             if ((c->y > disp_max_y - min_visible)
                 || (c->y > screen_info->height
-                           - screen_info->margins [BOTTOM] - min_visible))
+                           - screen_info->margins [STRUTS_BOTTOM] - min_visible))
             {
                 c->y = prev_y;
                 c->height = prev_height;
@@ -4313,7 +4313,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         else if (move_bottom)
         {
             if ((c->y + c->height < disp_y + min_visible)
-                || (c->y + c->height < screen_info->margins [TOP] + min_visible))
+                || (c->y + c->height < screen_info->margins [STRUTS_TOP] + min_visible))
             {
                 c->height = prev_height;
             }
@@ -4322,7 +4322,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         {
             if ((c->x > disp_max_x - min_visible)
                 || (c->x > screen_info->width
-                           - screen_info->margins [RIGHT] - min_visible))
+                           - screen_info->margins [STRUTS_RIGHT] - min_visible))
             {
                 c->x = prev_x;
                 c->width = prev_width;
@@ -4331,7 +4331,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         else if (move_right)
         {
             if ((c->x + c->width < disp_x + min_visible)
-                || (c->x + c->width < screen_info->margins [LEFT] + min_visible))
+                || (c->x + c->width < screen_info->margins [STRUTS_LEFT] + min_visible))
             {
                 c->width = prev_width;
             }

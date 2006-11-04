@@ -37,18 +37,19 @@ struct _FramePixmap
 };
 typedef struct _FramePixmap FramePixmap;
 
-int frameDecorationLeft (ScreenInfo *);
-int frameDecorationRight (ScreenInfo *);
-int frameDecorationTop (ScreenInfo *);
-int frameDecorationBottom (ScreenInfo *);
-int frameLeft (Client *);
-int frameRight (Client *);
-int frameTop (Client *);
-int frameBottom (Client *);
-int frameX (Client *);
-int frameY (Client *);
-int frameWidth (Client *);
-int frameHeight (Client *);
-void frameDraw (Client *, gboolean);
+int                      frameDecorationLeft                    (ScreenInfo *);
+int                      frameDecorationRight                   (ScreenInfo *);
+int                      frameDecorationTop                     (ScreenInfo *);
+int                      frameDecorationBottom                  (ScreenInfo *);
+int                      frameLeft                              (Client *);
+int                      frameRight                             (Client *);
+int                      frameTop                               (Client *);
+int                      frameBottom                            (Client *);
+int                      frameX                                 (Client *);
+int                      frameY                                 (Client *);
+int                      frameWidth                             (Client *);
+int                      frameHeight                            (Client *);
+void                     frameDraw                              (Client *, 
+                                                                 gboolean);
 
 #endif /* INC_FRAME_H */

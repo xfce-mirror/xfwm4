@@ -27,6 +27,8 @@
 
 #include <glib.h>
 #include <sys/time.h>
+#include <time.h>
+
 #include "screen.h"
 #include "client.h"
 
@@ -35,26 +37,38 @@
 #define FOCUS_IGNORE_MODAL              (1<<1)
 #define FOCUS_FORCE                     (1<<2)
 
-void            clientFocusTop (ScreenInfo *, int);
-gboolean        clientFocusNew(Client *);
-gboolean        clientSelectMask (Client *, int, int);
-Client         *clientGetNext (Client *, int);
-Client         *clientGetPrevious (Client *, int);
-void            clientPassFocus (ScreenInfo *, Client *, Client *);
-gboolean        clientAcceptFocus (Client *);
-void            clientSortRing(Client *);
-void            clientUpdateFocus (ScreenInfo *, Client *, unsigned short);
-void            clientSetFocus (ScreenInfo *, Client *, Time, unsigned short);
-void            clientInitFocusFlag (Client *);
-void            clientClearFocus (void);
-Client         *clientGetFocus (void);
-void            clientGrabMouseButton (Client *);
-void            clientUngrabMouseButton (Client *);
-void            clientGrabMouseButtonForAll (ScreenInfo *);
-void            clientUngrabMouseButtonForAll (ScreenInfo *);
-void            clientPassGrabMouseButton (Client *);
-Client         *clientGetLastUngrab (void);
-void            clientClearLastUngrab (void);
+void                     clientFocusTop                         (ScreenInfo *, 
+                                                                 int);
+gboolean                 clientFocusNew                         (Client *);
+gboolean                 clientSelectMask                       (Client *, 
+                                                                 int, 
+                                                                 int);
+Client                  *clientGetNext                          (Client *, 
+                                                                 int);
+Client                  *clientGetPrevious                      (Client *, 
+                                                                 int);
+void                     clientPassFocus                        (ScreenInfo *, 
+                                                                 Client *, 
+                                                                 Client *);
+gboolean                 clientAcceptFocus                      (Client *);
+void                     clientSortRing                         (Client *);
+void                     clientUpdateFocus                      (ScreenInfo *, 
+                                                                 Client *, 
+                                                                 unsigned short);
+void                     clientSetFocus                         (ScreenInfo *, 
+                                                                 Client *, 
+                                                                 Time, 
+                                                                 unsigned short);
+void                     clientInitFocusFlag                    (Client *);
+void                     clientClearFocus                       (void);
+Client                  *clientGetFocus                         (void);
+void                     clientGrabMouseButton                  (Client *);
+void                     clientUngrabMouseButton                (Client *);
+void                     clientGrabMouseButtonForAll            (ScreenInfo *);
+void                     clientUngrabMouseButtonForAll          (ScreenInfo *);
+void                     clientPassGrabMouseButton              (Client *);
+Client                  *clientGetLastUngrab                    (void);
+void                     clientClearLastUngrab                  (void);
 
 
 #endif /* INC_FOCUS_H */

@@ -37,6 +37,7 @@
 #include <stdlib.h>
 #include <libxfce4util/libxfce4util.h>
 #include "display.h"
+#include "screen.h"
 #include "hints.h"
 
 static gboolean
@@ -557,10 +558,10 @@ setNetWorkarea (DisplayInfo *display_info, Window root, int nb_workspaces, int w
     ptr = data;
     for (i = 0; i < j; i++)
     {
-        *ptr++ = (unsigned long) m[LEFT];
-        *ptr++ = (unsigned long) m[TOP];
-        *ptr++ = (unsigned long) (width  - (m[LEFT] + m[RIGHT]));
-        *ptr++ = (unsigned long) (height - (m[TOP] + m[BOTTOM]));
+        *ptr++ = (unsigned long) m[STRUTS_LEFT];
+        *ptr++ = (unsigned long) m[STRUTS_TOP];
+        *ptr++ = (unsigned long) (width  - (m[STRUTS_LEFT] + m[STRUTS_RIGHT]));
+        *ptr++ = (unsigned long) (height - (m[STRUTS_TOP]  + m[STRUTS_BOTTOM]));
     }
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_WORKAREA],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, j * 4);
@@ -1160,6 +1161,55 @@ setAtomIdManagerOwner (DisplayInfo *display_info, int atom_id, Window root, Wind
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
 
     return setXAtomManagerOwner(display_info, display_info->atoms[atom_id], root, w);
+}
+
+
+static Bool
+checkPropEvent (Display *display, XEvent *xevent, XPointer arg)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+
+    display_info = (DisplayInfo *) arg;
+    g_return_val_if_fail (display_info, FALSE);
+
+    screen_info = myDisplayGetDefaultScreen (display_info);
+    g_return_val_if_fail (screen_info, FALSE);
+
+    if ((xevent->type == PropertyNotify) &&
+        (xevent->xproperty.window == screen_info->xfwm4_win) &&
+        (xevent->xproperty.atom == display_info->atoms[XFWM4_TIMESTAMP_PROP]))
+    {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+Time
+getXServerTime (DisplayInfo *display_info)
+{
+    ScreenInfo *screen_info;
+    XEvent xevent;
+    Time timestamp;
+    char c = '\0';
+
+    g_return_val_if_fail (display_info, (Time) CurrentTime);
+    timestamp = myDisplayGetCurrentTime (display_info);
+    if (timestamp == CurrentTime)
+    {
+        screen_info = myDisplayGetDefaultScreen (display_info);
+        g_return_val_if_fail (screen_info,  (Time) CurrentTime);
+
+        XChangeProperty (display_info->dpy, screen_info->xfwm4_win, 
+                         display_info->atoms[XFWM4_TIMESTAMP_PROP],
+                         display_info->atoms[XFWM4_TIMESTAMP_PROP],
+                         8, PropModeReplace, (unsigned char *) &c, 1);
+        XIfEvent (display_info->dpy, &xevent, checkPropEvent, (XPointer) display_info);
+
+        timestamp = (Time) xevent.xproperty.time;
+    }
+    return timestamp;
 }
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY

@@ -28,7 +28,7 @@
 
 #include <X11/keysym.h>
 
-typedef struct _MyKey             MyKey;
+typedef struct _MyKey MyKey;
 struct _MyKey
 {
     KeyCode keycode;
@@ -42,12 +42,23 @@ extern unsigned int ScrollLockMask;
 extern unsigned int SuperMask;
 extern unsigned int HyperMask;
 
-int  getModifierMap (char *);
-void parseKeyString (Display *, MyKey *, char *);
-void grabKey (Display *, MyKey *, Window);
-void ungrabKeys (Display *, Window);
-void grabButton (Display *, int, int, Window);
-void ungrabButton (Display *, int, int, Window);
-void initModifiers (Display *);
+int                      getModifierMap                         (char *);
+void                     parseKeyString                         (Display *, 
+                                                                 MyKey *, 
+                                                                 char *);
+void                     grabKey                                (Display *, 
+                                                                 MyKey *, 
+                                                                 Window);
+void                     ungrabKeys                             (Display *, 
+                                                                 Window);
+void                     grabButton                             (Display *, 
+                                                                 int, 
+                                                                 int, 
+                                                                 Window);
+void                     ungrabButton                           (Display *, 
+                                                                 int, 
+                                                                 int, 
+                                                                 Window);
+void                     initModifiers                          (Display *);
 
 #endif /* INC_KEYBOARD_H */

@@ -28,23 +28,29 @@
 #include <glib.h>
 #include "client.h"
 
-Client         *clientGetTransient (Client *);
-gboolean        clientIsTransient (Client *);
-gboolean        clientIsModal (Client *);
-gboolean        clientIsTransientOrModal (Client *);
-gboolean        clientIsValidTransientOrModal (Client *);
-gboolean        clientSameGroup (Client *, Client *);
-gboolean        clientIsTransientFor (Client *, Client *);
-gboolean        clientIsModalFor (Client *, Client *);
-gboolean        clientIsTransientOrModalFor (Client *, Client *);
-gboolean        clientIsTransientForGroup (Client *);
-gboolean        clientIsModalForGroup (Client *);
-gboolean        clientIsTransientOrModalForGroup (Client *);
-gboolean        clientTransientOrModalHasAncestor (Client *, int);
-Client         *clientGetModalFor (Client *);
-GList          *clientListTransient (Client *);
-GList          *clientListTransientOrModal (Client *);
-gboolean        clientCheckTransientWindow (Client *, Window);
+Client                  *clientGetTransient                     (Client *);
+gboolean                 clientIsTransient                      (Client *);
+gboolean                 clientIsModal                          (Client *);
+gboolean                 clientIsTransientOrModal               (Client *);
+gboolean                 clientIsValidTransientOrModal          (Client *);
+gboolean                 clientSameGroup                        (Client *, 
+                                                                 Client *);
+gboolean                 clientIsTransientFor                   (Client *, 
+                                                                 Client *);
+gboolean                 clientIsModalFor                       (Client *, 
+                                                                 Client *);
+gboolean                 clientIsTransientOrModalFor            (Client *, 
+                                                                 Client *);
+gboolean                 clientIsTransientForGroup              (Client *);
+gboolean                 clientIsModalForGroup                  (Client *);
+gboolean                 clientIsTransientOrModalForGroup       (Client *);
+gboolean                 clientTransientOrModalHasAncestor      (Client *, 
+                                                                 int);
+Client                  *clientGetModalFor                      (Client *);
+GList                   *clientListTransient                    (Client *);
+GList                   *clientListTransientOrModal             (Client *);
+gboolean                 clientCheckTransientWindow             (Client *, 
+                                                                 Window);
 
 
 #endif /* INC_TRANSIENTS_H */

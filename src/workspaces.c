@@ -463,10 +463,10 @@ workspaceUpdateArea (ScreenInfo *screen_info)
     TRACE ("entering workspaceUpdateArea");
 
     display_info = screen_info->display_info;
-    prev_top = screen_info->margins[TOP];
-    prev_left = screen_info->margins[LEFT];
-    prev_right = screen_info->margins[RIGHT];
-    prev_bottom = screen_info->margins[BOTTOM];
+    prev_top = screen_info->margins[STRUTS_TOP];
+    prev_left = screen_info->margins[STRUTS_LEFT];
+    prev_right = screen_info->margins[STRUTS_RIGHT];
+    prev_bottom = screen_info->margins[STRUTS_BOTTOM];
 
     for (i = 0; i < 4; i++)
     {
@@ -478,16 +478,16 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT)
             && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
-            screen_info->margins[TOP]    = MAX (screen_info->margins[TOP],    c->struts[TOP]);
-            screen_info->margins[LEFT]   = MAX (screen_info->margins[LEFT],   c->struts[LEFT]);
-            screen_info->margins[RIGHT]  = MAX (screen_info->margins[RIGHT],  c->struts[RIGHT]);
-            screen_info->margins[BOTTOM] = MAX (screen_info->margins[BOTTOM], c->struts[BOTTOM]);
+            screen_info->margins[STRUTS_TOP]    = MAX (screen_info->margins[STRUTS_TOP],    c->struts[STRUTS_TOP]);
+            screen_info->margins[STRUTS_LEFT]   = MAX (screen_info->margins[STRUTS_LEFT],   c->struts[STRUTS_LEFT]);
+            screen_info->margins[STRUTS_RIGHT]  = MAX (screen_info->margins[STRUTS_RIGHT],  c->struts[STRUTS_RIGHT]);
+            screen_info->margins[STRUTS_BOTTOM] = MAX (screen_info->margins[STRUTS_BOTTOM], c->struts[STRUTS_BOTTOM]);
         }
     }
 
-    if ((prev_top != screen_info->margins[TOP]) || (prev_left != screen_info->margins[LEFT])
-        || (prev_right != screen_info->margins[RIGHT])
-        || (prev_bottom != screen_info->margins[BOTTOM]))
+    if ((prev_top != screen_info->margins[STRUTS_TOP]) || (prev_left != screen_info->margins[STRUTS_LEFT])
+        || (prev_right != screen_info->margins[STRUTS_RIGHT])
+        || (prev_bottom != screen_info->margins[STRUTS_BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
         setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,

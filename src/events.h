@@ -36,8 +36,9 @@
 #include "screen.h"
 #include "event_filter.h"
 
-void initMenuEventWin (void);
-eventFilterStatus xfwm4_event_filter (XEvent * xevent, gpointer data);
-void initGtkCallbacks (ScreenInfo *);
+void                     initMenuEventWin                       (void);
+eventFilterStatus        xfwm4_event_filter                     (XEvent *, 
+                                                                 gpointer);
+void                     initGtkCallbacks                       (ScreenInfo *);
 
 #endif /* INC_EVENTS_H */

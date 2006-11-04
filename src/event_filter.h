@@ -48,13 +48,13 @@ typedef struct eventFilterSetup
 }
 eventFilterSetup;
 
-GdkWindow        * eventFilterAddWin (GdkScreen *gscr,
-                                      long event_mask);
-eventFilterStack * eventFilterPush   (eventFilterSetup *setup,
-                                      XfwmFilter filter,
-                                      gpointer data);
-eventFilterStack * eventFilterPop    (eventFilterSetup *setup);
-eventFilterSetup * eventFilterInit   (gpointer data);
-void               eventFilterClose  (eventFilterSetup *setup);
+GdkWindow               *eventFilterAddWin                      (GdkScreen *,
+                                                                 long);
+eventFilterStack        *eventFilterPush                        (eventFilterSetup *,
+                                                                 XfwmFilter,
+                                                                 gpointer );
+eventFilterStack        *eventFilterPop                         (eventFilterSetup *);
+eventFilterSetup        *eventFilterInit                        (gpointer);
+void                     eventFilterClose                       (eventFilterSetup *);
 
 #endif /* __EVENT_FILTER_H__ */

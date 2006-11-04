@@ -294,63 +294,100 @@ struct _Client
 extern Client *clients;
 extern unsigned int client_count;
 
-Display *clientGetXDisplay (Client *);
-void     clientClearLastOpTime (Client *);
-void     clientUpdateWinState (Client *, XClientMessageEvent *);
-void     clientUpdateUrgency (Client *);
-void     clientCoordGravitate (Client *, int, int *, int *);
-void     clientGravitate (Client *, int);
-void     clientConfigure (Client *, XWindowChanges *, unsigned long, unsigned short);
-void     clientGetMWMHints (Client *, gboolean);
-void     clientGetWMNormalHints (Client *, gboolean);
-void     clientGetWMProtocols (Client *);
-void     clientUpdateIcon (Client * c);
-Client  *clientFrame (DisplayInfo *, Window, gboolean);
-void     clientUnframe (Client *, gboolean);
-void     clientFrameAll (ScreenInfo *);
-void     clientUnframeAll (ScreenInfo *);
-void     clientInstallColormaps (Client *);
-void     clientUpdateColormaps (Client *);
-void     clientUpdateAllFrames (ScreenInfo *, gboolean);
-void     clientGrabButtons (Client *);
-void     clientUngrabButtons (Client *);
-Client  *clientGetFromWindow (ScreenInfo *, Window, int);
-void     clientShow (Client *, gboolean);
-void     clientHide (Client *, int, gboolean);
-void     clientHideAll (Client *, int);
-void     clientClearAllShowDesktop (ScreenInfo *);
-void     clientToggleShowDesktop (ScreenInfo *);
-void     clientClose (Client *);
-void     clientKill (Client *);
-void     clientEnterContextMenuState (Client *);
-void     clientSetLayer (Client *, int);
-void     clientSetWorkspace (Client *, int, gboolean);
-void     clientShade (Client *);
-void     clientUnshade (Client *);
-void     clientToggleShaded (Client *);
-void     clientStick (Client *, gboolean);
-void     clientUnstick (Client *, gboolean);
-void     clientToggleSticky (Client *, gboolean);
-void     clientToggleFullscreen (Client *);
-void     clientToggleAbove (Client *);
-void     clientToggleBelow (Client *);
-void     clientRemoveMaximizeFlag (Client *);
-void     clientToggleMaximized (Client *, int, gboolean);
-void     clientUpdateOpacity (ScreenInfo *, Client *);
-void     clientSetOpacity (Client *, guint opacity, guint clear, guint xor);
-void     clientIncOpacity (Client *);
-void     clientDecOpacity (Client *);
-void     clientScreenResize(ScreenInfo *);
-void     clientMove (Client *, XEvent *);
-void     clientResize (Client *, int, XEvent *);
-void     clientCycle (Client *, XEvent *);
-void     clientButtonPress (Client *, Window, XButtonEvent *);
-Client  *clientGetLeader (Client *);
+Display                 *clientGetXDisplay                      (Client *);
+void                     clientClearLastOpTime                  (Client *);
+void                     clientUpdateWinState                   (Client *, 
+                                                                 XClientMessageEvent *);
+void                     clientUpdateUrgency                    (Client *);
+void                     clientCoordGravitate                   (Client *, 
+                                                                 int, 
+                                                                 int *, 
+                                                                 int *);
+void                     clientGravitate                        (Client *, 
+                                                                 int);
+void                     clientConfigure                        (Client *, 
+                                                                 XWindowChanges *, 
+                                                                 unsigned long, 
+                                                                 unsigned short); 
+void                     clientGetMWMHints                      (Client *, 
+                                                                 gboolean);
+void                     clientGetWMNormalHints                 (Client *, 
+                                                                 gboolean);
+void                     clientGetWMProtocols                   (Client *);
+void                     clientUpdateIcon                       (Client * c);
+Client                  *clientFrame                            (DisplayInfo *, 
+                                                                 Window, 
+                                                                 gboolean);
+void                     clientUnframe                          (Client *, 
+                                                                 gboolean);
+void                     clientFrameAll                         (ScreenInfo *);
+void                     clientUnframeAll                       (ScreenInfo *);
+void                     clientInstallColormaps                 (Client *);
+void                     clientUpdateColormaps                  (Client *);
+void                     clientUpdateAllFrames                  (ScreenInfo *, 
+                                                                 gboolean);
+void                     clientGrabButtons                      (Client *);
+void                     clientUngrabButtons                    (Client *);
+Client                  *clientGetFromWindow                    (ScreenInfo *, 
+                                                                 Window, 
+                                                                 int);
+void                     clientShow                             (Client *, 
+                                                                 gboolean);
+void                     clientHide                             (Client *, 
+                                                                 int, 
+                                                                 gboolean);
+void                     clientHideAll                          (Client *, 
+                                                                 int);
+void                     clientClearAllShowDesktop              (ScreenInfo *);
+void                     clientToggleShowDesktop                (ScreenInfo *);
+void                     clientClose                            (Client *);
+void                     clientKill                             (Client *);
+void                     clientEnterContextMenuState            (Client *);
+void                     clientSetLayer                         (Client *, 
+                                                                 int);
+void                     clientSetWorkspace                     (Client *, 
+                                                                 int, 
+                                                                 gboolean);
+void                     clientShade                            (Client *);
+void                     clientUnshade                          (Client *);
+void                     clientToggleShaded                     (Client *);
+void                     clientStick                            (Client *, 
+                                                                 gboolean);
+void                     clientUnstick                          (Client *, 
+                                                                 gboolean);
+void                     clientToggleSticky                     (Client *, 
+                                                                 gboolean);
+void                     clientToggleFullscreen                 (Client *);
+void                     clientToggleAbove                      (Client *);
+void                     clientToggleBelow                      (Client *);
+void                     clientRemoveMaximizeFlag               (Client *);
+void                     clientToggleMaximized                  (Client *, 
+                                                                 int, 
+                                                                 gboolean);
+void                     clientUpdateOpacity                    (ScreenInfo *, 
+                                                                 Client *);
+void                     clientSetOpacity                       (Client *, 
+                                                                 guint, 
+                                                                 guint, guint);
+void                     clientIncOpacity                       (Client *);
+void                     clientDecOpacity                       (Client *);
+void                     clientScreenResize                     (ScreenInfo *);
+void                     clientMove                             (Client *, 
+                                                                 XEvent *);
+void                     clientResize                           (Client *, 
+                                                                 int, 
+                                                                 XEvent *);
+void                     clientCycle                            (Client *, 
+                                                                 XEvent *);
+void                     clientButtonPress                      (Client *, 
+                                                                 Window, 
+                                                                 XButtonEvent *);
+Client                  *clientGetLeader                        (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
-char    *clientGetStartupId (Client *);
+char                    *clientGetStartupId                     (Client *);
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 #ifdef HAVE_XSYNC
-void     clientXSyncRequest (Client *);
+void                     clientXSyncRequest                     (Client *);
 #endif /* HAVE_XSYNC */
 
 #endif /* INC_CLIENT_H */

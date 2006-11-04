@@ -24,6 +24,9 @@
 #endif
 
 #include <sys/types.h>
+#include <sys/time.h>
+#include <time.h>
+
 #include <X11/Xlib.h>
 #include <glib.h>
 #include "screen.h"
@@ -43,13 +46,32 @@
 #define Button7 7
 #endif
 
-unsigned int getMouseXY (ScreenInfo *, Window, int *, int *);
-Window getMouseWindow (ScreenInfo *, Window);
-GC createGC (ScreenInfo *, char *, int, XFontStruct *, int, gboolean);
-void sendClientMessage (ScreenInfo *, Window, int, Time);
-void sendRootMessage (ScreenInfo *, int, long, Time);
-gboolean checkWindowOnRoot (ScreenInfo *, Window);
-void placeSidewalks(ScreenInfo *, gboolean);
-gint find_monitor_at_point (GdkScreen *screen, gint x, gint y);
+unsigned int             getMouseXY                             (ScreenInfo *, 
+                                                                 Window, 
+                                                                 int *, 
+                                                                 int *);
+Window                   getMouseWindow                         (ScreenInfo *, 
+                                                                 Window);
+GC                       createGC                               (ScreenInfo *, 
+                                                                 char *, 
+                                                                 int, 
+                                                                 XFontStruct *, 
+                                                                 int, 
+                                                                 gboolean);
+void                     sendClientMessage                      (ScreenInfo *, 
+                                                                 Window, 
+                                                                 int, 
+                                                                 Time);
+void                     sendRootMessage                        (ScreenInfo *, 
+                                                                 int, 
+                                                                 long, 
+                                                                 Time);
+gboolean                 checkWindowOnRoot                      (ScreenInfo *, 
+                                                                 Window);
+void                     placeSidewalks                         (ScreenInfo *, 
+                                                                 gboolean);
+gint                     find_monitor_at_point                  (GdkScreen *, 
+                                                                 gint, 
+                                                                 gint);
 
 #endif /* INC_MISC_H */

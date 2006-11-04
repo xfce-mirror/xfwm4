@@ -31,18 +31,22 @@
 #include "screen.h"
 #include "client.h"
 
-void            clientSetNetState (Client *);
-void            clientGetNetState (Client *);
-void            clientUpdateNetState (Client *, XClientMessageEvent *);
-void            clientNetMoveResize (Client *, XClientMessageEvent *);
-void            clientUpdateFullscreenState (Client *);
-void            clientGetNetWmType (Client *);    
-void            clientGetInitialNetWmDesktop (Client *);
-void            clientSetNetClientList (ScreenInfo *, Atom, GList *);
-void            clientGetNetStruts (Client *);    
-void            clientSetNetActions (Client *);   
-void            clientWindowType (Client *);      
-void            clientUpdateAboveState (Client *);
-void            clientUpdateBelowState (Client *);
+void                     clientSetNetState                      (Client *);
+void                     clientGetNetState                      (Client *);
+void                     clientUpdateNetState                   (Client *, 
+                                                                 XClientMessageEvent *);
+void                     clientNetMoveResize                    (Client *, 
+                                                                 XClientMessageEvent *);
+void                     clientUpdateFullscreenState            (Client *);
+void                     clientGetNetWmType                     (Client *);
+void                     clientGetInitialNetWmDesktop           (Client *);
+void                     clientSetNetClientList                 (ScreenInfo *, 
+                                                                 Atom, 
+                                                                 GList *);
+void                     clientGetNetStruts                     (Client *);
+void                     clientSetNetActions                    (Client *);
+void                     clientWindowType                       (Client *);
+void                     clientUpdateAboveState                 (Client *);
+void                     clientUpdateBelowState                 (Client *);
 
 #endif /* INC_NETWM_H */

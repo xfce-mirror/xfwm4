@@ -29,22 +29,32 @@
 #include "screen.h"
 #include "client.h"
 
-void            clientApplyStackList (ScreenInfo *);
-Client         *clientGetLowestTransient (Client *);
-Client         *clientGetHighestTransientOrModalFor (Client *);
-gboolean        clientIsTopMost (Client *);
-Client         *clientGetTopMostForGroup (Client *);
-Client         *clientGetNextTopMost (ScreenInfo *, int, Client *);
-Client         *clientGetBottomMost (ScreenInfo *, int, Client *);
-Client         *clientAtPosition (ScreenInfo *, int, int, Client *);
-void            clientRaise (Client *, Window);
-void            clientLower (Client *, Window);
-gboolean        clientAdjustFullscreenLayer (Client *, gboolean);
-void            clientAddToList (Client *);
-void            clientRemoveFromList (Client *);
-GList          *clientGetStackList (ScreenInfo *);
-void            clientSetLastRaise (Client *);
-Client         *clientGetLastRaise (ScreenInfo *);
-void            clientClearLastRaise (ScreenInfo *);
+void                     clientApplyStackList                   (ScreenInfo *);
+Client                  *clientGetLowestTransient               (Client *);
+Client                  *clientGetHighestTransientOrModalFor    (Client *);
+gboolean                 clientIsTopMost                        (Client *);
+Client                  *clientGetTopMostForGroup               (Client *);
+Client                  *clientGetNextTopMost                   (ScreenInfo *, 
+                                                                 int, 
+                                                                 Client *);
+Client                  *clientGetBottomMost                    (ScreenInfo *, 
+                                                                 int, 
+                                                                 Client *);
+Client                  *clientAtPosition                       (ScreenInfo *, 
+                                                                 int, 
+                                                                 int, 
+                                                                 Client *);
+void                     clientRaise                            (Client *, 
+                                                                 Window);
+void                     clientLower                            (Client *, 
+                                                                 Window);
+gboolean                 clientAdjustFullscreenLayer            (Client *, 
+                                                                 gboolean);
+void                     clientAddToList                        (Client *);
+void                     clientRemoveFromList                   (Client *);
+GList                   *clientGetStackList                     (ScreenInfo *);
+void                     clientSetLastRaise                     (Client *);
+Client                  *clientGetLastRaise                     (ScreenInfo *);
+void                     clientClearLastRaise                   (ScreenInfo *);
 
 #endif /* INC_STACKING_H */

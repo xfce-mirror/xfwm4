@@ -33,10 +33,19 @@
 #include "screen.h"
 #include "client.h"
 
-gboolean workspaceMove (ScreenInfo *, int, int, Client *);
-void workspaceSwitch (ScreenInfo *, int, Client *, gboolean);
-void workspaceSetNames (ScreenInfo *, gchar **, int);
-void workspaceSetCount (ScreenInfo *, int);
-void workspaceUpdateArea (ScreenInfo *);
+gboolean                workspaceMove                           (ScreenInfo *, 
+                                                                 int, 
+                                                                 int, 
+                                                                 Client *);
+void                    workspaceSwitch                         (ScreenInfo *, 
+                                                                 int, 
+                                                                 Client *, 
+                                                                  gboolean);
+void                    workspaceSetNames                       (ScreenInfo *, 
+                                                                 gchar **, 
+                                                                 int);
+void                    workspaceSetCount                       (ScreenInfo *, 
+                                                                 int);
+void                    workspaceUpdateArea                     (ScreenInfo *);
 
 #endif /* INC_WORKSPACES_H */

@@ -89,27 +89,27 @@ struct _Menu
     gpointer data;
 };
 
-Menu *menu_default             (GdkScreen *,
-                                Window,
-                                MenuOp,
-                                MenuOp,
-                                MenuFunc,
-                                gint,
-                                gint,
-                                gchar **,
-                                gint,
-                                eventFilterSetup*,
-                                gpointer);
-Menu *menu_connect             (Menu * menu);
-GtkWidget *menu_item_connect   (GtkWidget *,
-                                MenuData *);
-gboolean menu_is_opened        (void);
-gboolean menu_check_and_close  (void);
-gboolean menu_popup            (Menu *,
-                                int,
-                                int,
-                                int,
-                                guint32);
-void menu_free                 (Menu *);
+Menu                    *menu_default                           (GdkScreen *,
+                                                                 Window,
+                                                                 MenuOp,
+                                                                 MenuOp,
+                                                                 MenuFunc,
+                                                                 gint,
+                                                                 gint,
+                                                                 gchar **,
+                                                                 gint,
+                                                                 eventFilterSetup*,
+                                                                 gpointer);
+Menu                    *menu_connect                           (Menu *);
+GtkWidget               *menu_item_connect                      (GtkWidget *,
+                                                                 MenuData *);
+gboolean                 menu_is_opened                         (void);
+gboolean                 menu_check_and_close                   (void);
+gboolean                 menu_popup                             (Menu *,
+                                                                 int,
+                                                                 int,
+                                                                 int,
+                                                                 guint32);
+void                     menu_free                              (Menu *);
 
 #endif /* INC_MENU_H */

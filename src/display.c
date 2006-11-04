@@ -22,9 +22,6 @@
 #  include "config.h"
 #endif
 
-#include <sys/time.h>
-#include <time.h>
-
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/cursorfont.h>
@@ -168,6 +165,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "WM_TRANSIENT_FOR",
         "WM_WINDOW_ROLE",
         "XFWM4_COMPOSITING_MANAGER",
+        "XFWM4_TIMESTAMP_PROP",
         "_XROOTPMAP_ID",
         "_XSETROOT_ID"
     };
@@ -711,9 +709,6 @@ myDisplayGetCurrentTime (DisplayInfo *display)
     return (Time) display->current_time;
 }
 
-Time          myDisplayGetLastUserTime      (DisplayInfo *);
-void          myDisplaySetLastUserTime      (DisplayInfo *,
-                                             Time);
 Time
 myDisplayGetLastUserTime (DisplayInfo *display)
 {

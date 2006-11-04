@@ -53,26 +53,26 @@ struct _xfwmPixmap
     gint width, height;
 };
 
-gboolean xfwmPixmapRenderGdkPixbuf (xfwmPixmap *,
-                                    GdkPixbuf *);
-gboolean xfwmPixmapLoad            (ScreenInfo *,
-                                    xfwmPixmap *,
-                                    gchar *,
-                                    gchar *,
-                                    xfwmColorSymbol *);
-void xfwmPixmapCreate              (ScreenInfo *,
-                                    xfwmPixmap *,
-                                    gint,
-                                    gint);
-void xfwmPixmapInit                (ScreenInfo *,
-                                    xfwmPixmap *);
-void xfwmPixmapFree                (xfwmPixmap *);
-void xfwmPixmapFill                (xfwmPixmap *,
-                                    xfwmPixmap *,
-                                    gint,
-                                    gint,
-                                    gint,
-                                    gint);
-void xfwmPixmapDuplicate           (xfwmPixmap *,
-                                    xfwmPixmap *);
+gboolean                 xfwmPixmapRenderGdkPixbuf              (xfwmPixmap *,
+                                                                 GdkPixbuf *);
+gboolean                 xfwmPixmapLoad                         (ScreenInfo *,
+                                                                 xfwmPixmap *,
+                                                                 gchar *,
+                                                                 gchar *,
+                                                                 xfwmColorSymbol *);
+void                     xfwmPixmapCreate                       (ScreenInfo *,
+                                                                 xfwmPixmap *,
+                                                                 gint,
+                                                                 gint);
+void                     xfwmPixmapInit                         (ScreenInfo *,
+                                                                 xfwmPixmap *);
+void                     xfwmPixmapFree                         (xfwmPixmap *);
+void                     xfwmPixmapFill                         (xfwmPixmap *,
+                                                                 xfwmPixmap *,
+                                                                 gint,
+                                                                 gint,
+                                                                 gint,
+                                                                 gint);
+void                     xfwmPixmapDuplicate                    (xfwmPixmap *,
+                                                                 xfwmPixmap *);
 #endif /* INC_MYPIXMAP_H */

@@ -1661,10 +1661,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
            window has vanished and the focus is returned to the root).
          */
         c = clientGetFocus ();
-        if (c)
-        {
-            clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
-        }
+        clientSetFocus (screen_info, c, getXServerTime (display_info), FOCUS_FORCE);
         return;
     }
 
@@ -1694,12 +1691,6 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
             reset_timeout (screen_info);
         }
         return;
-    }
-
-    if (ev->window == screen_info->xroot)
-    {
-        /* "Normal" focus transition to root, should not happen though */
-        clientPassFocus (screen_info, NULL, NULL);
     }
 }
 

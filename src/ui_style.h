@@ -25,13 +25,13 @@
 #include <gtk/gtk.h>
 #include <pango/pango-font.h>
 
-gchar                * getUIStyle            (GtkWidget * widget,
-                                              const gchar * name,
-                                              const gchar * state);
-GdkGC                * getUIStyle_gc         (GtkWidget * widget,
-                                              const gchar * state,
-                                              const gchar * style);
-PangoFontDescription * getUIPangoFontDesc    (GtkWidget * widget);
-PangoContext         * getUIPangoContext     (GtkWidget * widget);
+gchar                   *getUIStyle                             (GtkWidget *,
+                                                                 const gchar *,
+                                                                 const gchar *);
+GdkGC                   *getUIStyle_gc                          (GtkWidget *,
+                                                                 const gchar *,
+                                                                 const gchar *);
+PangoFontDescription    *getUIPangoFontDesc                     (GtkWidget *);
+PangoContext            *getUIPangoContext                      (GtkWidget *);
 
 #endif /* __UI_STYLE_H__ */

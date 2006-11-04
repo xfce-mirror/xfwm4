@@ -34,17 +34,17 @@
 #include "screen.h"
 #include "client.h"
 
-void sn_client_startup_properties (Client *);
-void sn_init_display              (ScreenInfo *);
-void sn_close_display             (void);
-void sn_process_event             (XEvent *);
+void                     sn_client_startup_properties           (Client *);
+void                     sn_init_display                        (ScreenInfo *);
+void                     sn_close_display                       (void);
+void                     sn_process_event                       (XEvent *);
 
 #else /* HAVE_LIBSTARTUP_NOTIFICATION */
 
-#define sn_client_startup_properties(c) ;
-#define sn_init_display(d) ;
-#define sn_close_display() ;
-#define sn_process_event(e) ;
+#define                  sn_client_startup_properties(c) ;
+#define                  sn_init_display(d) ;
+#define                  sn_close_display() ;
+#define                  sn_process_event(e) ;
 
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 #endif /* INC_STARTUP_NOTIFICATION_H */

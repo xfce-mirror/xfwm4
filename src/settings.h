@@ -226,10 +226,10 @@ struct _XfwmParams
     gboolean wrap_workspaces;
 };
 
-gboolean loadSettings   (ScreenInfo *);
-gboolean reloadSettings (DisplayInfo *,
-                         int);
-gboolean initSettings   (ScreenInfo *);
-void     closeSettings  (ScreenInfo *);
+gboolean                 loadSettings                           (ScreenInfo *);
+gboolean                 reloadSettings                         (DisplayInfo *,
+                                                                 int);
+gboolean                 initSettings                           (ScreenInfo *);
+void                     closeSettings                          (ScreenInfo *);
 
 #endif /* INC_SETTINGS_H */

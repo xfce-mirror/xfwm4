@@ -52,34 +52,35 @@ struct _xfwmWindow
     gboolean map;
 };
 
-void xfwmWindowInit        (xfwmWindow *);
-void xfwmWindowCreate      (ScreenInfo *,
-                            Visual *,
-                            gint,
-                            Window,
-                            xfwmWindow *,
-                            Cursor);
-void xfwmWindowTemp        (ScreenInfo *,
-                            Visual *,
-                            gint,
-                            Window,
-                            xfwmWindow *,
-                            int,
-                            int,
-                            int,
-                            int,
-                            long,
-                            gboolean);
-void xfwmWindowDelete      (xfwmWindow *);
-void xfwmWindowShow        (xfwmWindow *,
-                            int,
-                            int,
-                            int,
-                            int,
-                            gboolean);
-void xfwmWindowHide        (xfwmWindow *);
-gboolean xfwmWindowVisible (xfwmWindow *);
-gboolean xfwmWindowDeleted (xfwmWindow *);
-void xfwmWindowSetBG       (xfwmWindow *, xfwmPixmap *);
+void                     xfwmWindowInit                         (xfwmWindow *);
+void                     xfwmWindowCreate                       (ScreenInfo *,
+                                                                 Visual *,
+                                                                 gint,
+                                                                 Window,
+                                                                 xfwmWindow *,
+                                                                 Cursor);
+void                     xfwmWindowTemp                         (ScreenInfo *,
+                                                                 Visual *,
+                                                                 gint,
+                                                                 Window,
+                                                                 xfwmWindow *,
+                                                                 int,
+                                                                 int,
+                                                                 int,
+                                                                 int,
+                                                                 long,
+                                                                 gboolean);
+void                     xfwmWindowDelete                       (xfwmWindow *);
+void                     xfwmWindowShow                         (xfwmWindow *,
+                                                                 int,
+                                                                 int,
+                                                                 int,
+                                                                 int,
+                                                                 gboolean);
+void                     xfwmWindowHide                         (xfwmWindow *);
+gboolean                 xfwmWindowVisible                      (xfwmWindow *);
+gboolean                 xfwmWindowDeleted                      (xfwmWindow *);
+void                     xfwmWindowSetBG                        (xfwmWindow *, 
+                                                                 xfwmPixmap *);
 
 #endif /* INC_MYWINDOW_H */

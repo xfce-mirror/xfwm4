@@ -50,21 +50,21 @@ clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
         && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         sigma = overlap (x, y, x + w, y + h,
-                         0, c->struts[LEFT_START_Y],
-                         c->struts[LEFT],
-                         c->struts[LEFT_END_Y])
+                         0, c->struts[STRUTS_LEFT_START_Y],
+                         c->struts[STRUTS_LEFT],
+                         c->struts[STRUTS_LEFT_END_Y])
               + overlap (x, y, x + w, y + h,
-                         c->screen_info->width - c->struts[RIGHT],
-                         c->struts[RIGHT_START_Y],
-                         c->screen_info->width, c->struts[RIGHT_END_Y])
+                         c->screen_info->width - c->struts[STRUTS_RIGHT],
+                         c->struts[STRUTS_RIGHT_START_Y],
+                         c->screen_info->width, c->struts[STRUTS_RIGHT_END_Y])
               + overlap (x, y, x + w, y + h,
-                         c->struts[TOP_START_X], 0,
-                         c->struts[TOP_END_X],
-                         c->struts[TOP])
+                         c->struts[STRUTS_TOP_START_X], 0,
+                         c->struts[STRUTS_TOP_END_X],
+                         c->struts[STRUTS_TOP])
               + overlap (x, y, x + w, y + h,
-                         c->struts[BOTTOM_START_X],
-                         c->screen_info->height - c->struts[BOTTOM],
-                         c->struts[BOTTOM_END_X],
+                         c->struts[STRUTS_BOTTOM_START_X],
+                         c->screen_info->height - c->struts[STRUTS_BOTTOM],
+                         c->struts[STRUTS_BOTTOM_END_X],
                          c->screen_info->height);
     }
     return sigma;
@@ -140,37 +140,37 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 
             /* Left */
             if (overlap (*x, *y, *x + *w, *y + *h,
-                         0, c2->struts[LEFT_START_Y], c2->struts[LEFT], c2->struts[LEFT_END_Y]))
+                         0, c2->struts[STRUTS_LEFT_START_Y], c2->struts[STRUTS_LEFT], c2->struts[STRUTS_LEFT_END_Y]))
             {
-                delta = c2->struts[LEFT] - *x;
+                delta = c2->struts[STRUTS_LEFT] - *x;
                 *x = *x + delta;
                 *w = *w - delta;
             }
 
             /* Right */
             if (overlap (*x, *y, *x + *w, *y + *h,
-                         screen_width - c2->struts[RIGHT], c2->struts[RIGHT_START_Y],
-                         screen_width, c2->struts[RIGHT_END_Y]))
+                         screen_width - c2->struts[STRUTS_RIGHT], c2->struts[STRUTS_RIGHT_START_Y],
+                         screen_width, c2->struts[STRUTS_RIGHT_END_Y]))
             {
-                delta = (*x + *w) - screen_width + c2->struts[RIGHT];
+                delta = (*x + *w) - screen_width + c2->struts[STRUTS_RIGHT];
                 *w = *w - delta;
             }
 
             /* Top */
             if (overlap (*x, *y, *x + *w, *y + *h,
-                         c2->struts[TOP_START_X], 0, c2->struts[TOP_END_X], c2->struts[TOP]))
+                         c2->struts[STRUTS_TOP_START_X], 0, c2->struts[STRUTS_TOP_END_X], c2->struts[STRUTS_TOP]))
             {
-                delta = c2->struts[TOP] - *y;
+                delta = c2->struts[STRUTS_TOP] - *y;
                 *y = *y + delta;
                 *h = *h - delta;
             }
 
             /* Bottom */
             if (overlap (*x, *y, *x + *w, *y + *h,
-                         c2->struts[BOTTOM_START_X], screen_height - c2->struts[BOTTOM],
-                         c2->struts[BOTTOM_END_X], screen_height))
+                         c2->struts[STRUTS_BOTTOM_START_X], screen_height - c2->struts[STRUTS_BOTTOM],
+                         c2->struts[STRUTS_BOTTOM_END_X], screen_height))
             {
-                delta = (*y + *h) - screen_height + c2->struts[BOTTOM];
+                delta = (*y + *h) - screen_height + c2->struts[STRUTS_BOTTOM];
                 *h = *h - delta;
             }
         }
@@ -274,13 +274,13 @@ clientConstrainPos (Client * c, gboolean show_full)
             {
                 /* Right */
                 if (overlapY (frame_y, frame_y + frame_height,
-                              c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
+                              c2->struts[STRUTS_RIGHT_START_Y], c2->struts[STRUTS_RIGHT_END_Y]))
                 {
                     if (overlapX (frame_x, frame_x + frame_width,
-                                  screen_width - c2->struts[RIGHT],
+                                  screen_width - c2->struts[STRUTS_RIGHT],
                                   screen_width))
                     {
-                        c->x = screen_width - c2->struts[RIGHT] - frame_width + frame_left;
+                        c->x = screen_width - c2->struts[STRUTS_RIGHT] - frame_width + frame_left;
                         frame_x = frameX (c);
                         ret |= CLIENT_CONSTRAINED_RIGHT;
                     }
@@ -288,13 +288,13 @@ clientConstrainPos (Client * c, gboolean show_full)
 
                 /* Bottom */
                 if (overlapX (frame_x, frame_x + frame_width,
-                              c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
+                              c2->struts[STRUTS_BOTTOM_START_X], c2->struts[STRUTS_BOTTOM_END_X]))
                 {
                     if (overlapY (frame_y, frame_y + frame_height,
-                                  screen_height - c2->struts[BOTTOM],
+                                  screen_height - c2->struts[STRUTS_BOTTOM],
                                   screen_height))
                     {
-                        c->y = screen_height - c2->struts[BOTTOM] - frame_height + frame_top;
+                        c->y = screen_height - c2->struts[STRUTS_BOTTOM] - frame_height + frame_top;
                         frame_y = frameY (c);
                         ret |= CLIENT_CONSTRAINED_BOTTOM;
 
@@ -336,12 +336,12 @@ clientConstrainPos (Client * c, gboolean show_full)
             {
                 /* Left */
                 if (overlapY (frame_y, frame_y + frame_height,
-                              c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
+                              c2->struts[STRUTS_LEFT_START_Y], c2->struts[STRUTS_LEFT_END_Y]))
                 {
                     if (overlapX (frame_x, frame_x + frame_width,
-                                  0, c2->struts[LEFT]))
+                                  0, c2->struts[STRUTS_LEFT]))
                     {
-                        c->x = c2->struts[LEFT] + frame_left;
+                        c->x = c2->struts[STRUTS_LEFT] + frame_left;
                         frame_x = frameX (c);
                         ret |= CLIENT_CONSTRAINED_LEFT;
                     }
@@ -350,13 +350,13 @@ clientConstrainPos (Client * c, gboolean show_full)
                 /* Top */
                 if (overlapX (frame_x,
                               frame_x + frame_width,
-                              c2->struts[TOP_START_X],
-                              c2->struts[TOP_END_X]))
+                              c2->struts[STRUTS_TOP_START_X],
+                              c2->struts[STRUTS_TOP_END_X]))
                 {
                     if (overlapY (frame_y, frame_y + frame_height,
-                                  0, c2->struts[TOP]))
+                                  0, c2->struts[STRUTS_TOP]))
                     {
-                        c->y = c2->struts[TOP] + frame_top;
+                        c->y = c2->struts[STRUTS_TOP] + frame_top;
                         frame_y = frameY (c);
                         ret |= CLIENT_CONSTRAINED_TOP;
                     }
@@ -405,11 +405,11 @@ clientConstrainPos (Client * c, gboolean show_full)
             {
                 /* Right */
                 if (overlapY (frame_y, frame_y + frame_height,
-                              c2->struts[RIGHT_START_Y], c2->struts[RIGHT_END_Y]))
+                              c2->struts[STRUTS_RIGHT_START_Y], c2->struts[STRUTS_RIGHT_END_Y]))
                 {
-                    if (frame_x >= screen_width - c2->struts[RIGHT] - min_visible)
+                    if (frame_x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible)
                     {
-                        c->x = screen_width - c2->struts[RIGHT] - min_visible + frame_left;
+                        c->x = screen_width - c2->struts[STRUTS_RIGHT] - min_visible + frame_left;
                         frame_x = frameX (c);
                         ret |= CLIENT_CONSTRAINED_RIGHT;
                     }
@@ -417,11 +417,11 @@ clientConstrainPos (Client * c, gboolean show_full)
 
                 /* Left */
                 if (overlapY (frame_y, frame_y + frame_height,
-                              c2->struts[LEFT_START_Y], c2->struts[LEFT_END_Y]))
+                              c2->struts[STRUTS_LEFT_START_Y], c2->struts[STRUTS_LEFT_END_Y]))
                 {
-                    if (frame_x + frame_width <= c2->struts[LEFT] + min_visible)
+                    if (frame_x + frame_width <= c2->struts[STRUTS_LEFT] + min_visible)
                     {
-                        c->x = c2->struts[LEFT] + min_visible - frame_width + frame_left;
+                        c->x = c2->struts[STRUTS_LEFT] + min_visible - frame_width + frame_left;
                         frame_x = frameX (c);
                         ret |= CLIENT_CONSTRAINED_LEFT;
                     }
@@ -429,11 +429,11 @@ clientConstrainPos (Client * c, gboolean show_full)
 
                 /* Bottom */
                 if (overlapX (frame_x, frame_x + frame_width,
-                              c2->struts[BOTTOM_START_X], c2->struts[BOTTOM_END_X]))
+                              c2->struts[STRUTS_BOTTOM_START_X], c2->struts[STRUTS_BOTTOM_END_X]))
                 {
-                    if (frame_y >= screen_height - c2->struts[BOTTOM] - min_visible)
+                    if (frame_y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible)
                     {
-                        c->y = screen_height - c2->struts[BOTTOM] - min_visible + frame_top;
+                        c->y = screen_height - c2->struts[STRUTS_BOTTOM] - min_visible + frame_top;
                         frame_y = frameY (c);
                         ret |= CLIENT_CONSTRAINED_BOTTOM;
                     }
@@ -441,17 +441,17 @@ clientConstrainPos (Client * c, gboolean show_full)
 
                 /* Top */
                 if (overlapX (frame_x, frame_x + frame_width,
-                              c2->struts[TOP_START_X], c2->struts[TOP_END_X]))
+                              c2->struts[STRUTS_TOP_START_X], c2->struts[STRUTS_TOP_END_X]))
                 {
-                    if (overlapY (frame_y, frame_y + frame_visible, 0, c2->struts[TOP]))
+                    if (overlapY (frame_y, frame_y + frame_visible, 0, c2->struts[STRUTS_TOP]))
                     {
-                        c->y = c2->struts[TOP] + frame_top;
+                        c->y = c2->struts[STRUTS_TOP] + frame_top;
                         frame_y = frameY (c);
                         ret |= CLIENT_CONSTRAINED_TOP;
                     }
-                    if (frame_y + frame_height <= c2->struts[TOP] + min_visible)
+                    if (frame_y + frame_height <= c2->struts[STRUTS_TOP] + min_visible)
                     {
-                        c->y = c2->struts[TOP] + min_visible - frame_height + frame_top;
+                        c->y = c2->struts[STRUTS_TOP] + min_visible - frame_height + frame_top;
                         frame_y = frameY (c);
                         ret |= CLIENT_CONSTRAINED_TOP;
                     }
@@ -671,11 +671,11 @@ clientInitPosition (Client * c)
     monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
-    full_x = MAX (screen_info->params->xfwm_margins[LEFT], rect.x);
-    full_y = MAX (screen_info->params->xfwm_margins[TOP], rect.y);
-    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[RIGHT],
+    full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
+    full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);
+    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
                   rect.x + rect.width) - full_x;
-    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[BOTTOM],
+    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */
