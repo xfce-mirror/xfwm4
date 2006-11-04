@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2006-09-20 13:51+0200\n"
+"PO-Revision-Date: 2006-11-04 14:50+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -578,7 +578,7 @@ msgstr "Redimensiona la finestra cap a la dreta"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Cancel move/resize window"
-msgstr "Cancela el moviment/la redimensió de la finestra"
+msgstr "Canceŀla el moviment/la redimensió de la finestra"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Raise window"
@@ -653,13 +653,12 @@ msgid "Show desktop"
 msgstr "Mostrar l'escriptori"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Opacitat de la decoració de les finestres"
+msgstr "Canceŀla l’operació de finestra"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "Menú d’operacions de finestra"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
@@ -833,6 +832,3 @@ msgstr "Paràmetres dels espais de treball"
 msgid "Xfce 4 Workspaces Settings"
 msgstr ""
 "Paràmetres dels espais de treball d'Xfce 4Marges dels espais de treball"
-
-#~ msgid "Unknown application!"
-#~ msgstr "Aplicació desconeguda!"
