@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2005-10-09 20:48+0900\n"
-"Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
+"PO-Revision-Date: 2006-11-05 04:09+0900\n"
+"Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "여백은 스크린의 구석에 있는 영역으로,\n"
-" 윈도우가 위치할 수 없는 공간입니다."
+" 창이 위치할 수 없는 공간입니다."
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
@@ -45,7 +45,6 @@ msgstr "아래 :"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "작업공간 및 여백"
 
@@ -64,39 +63,38 @@ msgstr "여백"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:373
 msgid "None"
-msgstr ""
+msgstr "없음"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "창 관리자"
+msgstr "창 관리자 기능향상"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
+"\"페이저에 나타내지 않기\"나 \"태스크바에 나타내지 않기\" 속성이 설정된 창 제외"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "숨겨진(또는 아이콘화된) 창 포함"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:412
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "창을 왼쪽 작업 공간으로 이동"
+msgstr "모든 작업 공간의 창을 대상으로 순환합니다."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:417
 msgid "Cycling"
-msgstr ""
+msgstr "창 순환"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:429
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "창활성 강탈 금지 기능 활성화"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "표준 ICCCM 초점 힌트 수락"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
@@ -104,132 +102,123 @@ msgstr "창 활성 방법"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:452
 msgid "Key used to grab and move windows"
-msgstr ""
+msgstr "창을 잡고 움직이기 위한 키"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:458
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "아무 마우스 버튼이든 눌리면 창을 앞으로"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "최대화된 창은 창틀을 숨깁니다."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "창을 움직일 때 내용 보이기"
+msgstr "최대화된 창을 움직일 때 원래 크기로"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "창 움직임 대신 모서리 저항을 사용함"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Accessibility"
-msgstr ""
+msgstr "접근성"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:496
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "데스크탑에 대고 마우스 휠을 돌려서 작업공간 바꾸기"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
+"단축키로 바꿀 때 이전 작업 공간을 복원"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "실제 데스크탑의 모양에 따라 작업공간을 전환"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:517
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "마우스 포인터가 화면 모서리에 닿으면 작업공간 전환"
+msgstr "첫번째나 마지막 작업공간에 다다르면 작업공간 전환"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "똑똑한 배치를 적용할 창의 최소 크기"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
-#, fuzzy
 msgid "Size|Small"
 msgstr "좁게"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Size|Large"
-msgstr ""
+msgstr "크게"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:539
 msgid "Placement"
-msgstr ""
+msgstr "배치"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
-msgstr ""
+msgstr "표시 합성 활성화"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "직접 창을 도배해서 전체화면 표시"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "아래쪽 창에 그림자 보이기"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:585
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "위쪽 창에 그림자 보이기"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "창 크기를 변경할 때 내용을 보이기"
+msgstr "창 꾸미기"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
 #: ../mcs-plugin/wmtweaks_plugin.c:603 ../mcs-plugin/wmtweaks_plugin.c:609
 #: ../mcs-plugin/wmtweaks_plugin.c:615
 msgid "Transparent"
-msgstr ""
+msgstr "투명"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:592 ../mcs-plugin/wmtweaks_plugin.c:598
 #: ../mcs-plugin/wmtweaks_plugin.c:604 ../mcs-plugin/wmtweaks_plugin.c:610
 #: ../mcs-plugin/wmtweaks_plugin.c:616
 msgid "Opaque"
-msgstr ""
+msgstr "불투명"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:597
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "창을 움직일 때 내용 보이기"
+msgstr "비활성창"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "창을 움직일 때 내용 보이기"
+msgstr "창을 움직일 때"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:609
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "창 크기를 변경할 때 내용을 보이기"
+msgstr "창 크기를 변경할 때"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:615
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "창을 움직일 때 내용 보이기"
+msgstr "튀어나온 창"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:620
-#, fuzzy
 msgid "Compositor"
 msgstr "단축키 구성"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "창 관리자"
+msgstr "창 관리자 기능향상"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "현재의 창관리자(%s)에 대해서는 적용할 수 없는 기능입니다."
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -438,14 +427,12 @@ msgid "Distance :"
 msgstr "거리 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1724
-#, fuzzy
 msgid "Distance|Small"
-msgstr "거리 :"
+msgstr "짧게 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1731
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "거리 :"
+msgstr "넓게 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Wrap workspaces"
@@ -464,14 +451,12 @@ msgid "Edge Resistance :"
 msgstr "화면 모서리 저항 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1783
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "거리 :"
+msgstr "작게 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1790
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "거리 :"
+msgstr "크게 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1812
 msgid "Opaque move and resize"
@@ -499,7 +484,6 @@ msgstr "고급 설정"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1974
-#, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "창 관리자"
 
@@ -541,9 +525,8 @@ msgid "Stick window"
 msgstr "모든 작업 공간에 보이기"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:364
-#, fuzzy
 msgid "Cycle windows"
-msgstr "창 닫기"
+msgstr "창 순환"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Move window up"
@@ -578,9 +561,8 @@ msgid "Resize window right"
 msgstr "창 크기를 오른쪽 방향으로 변경"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "창 닫기"
+msgstr "창 이동/크기조절 취소"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Raise window"
@@ -655,13 +637,12 @@ msgid "Show desktop"
 msgstr "데스크탑 보이기"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "창 크기를 변경할 때 내용을 보이기"
+msgstr "창 동작 취소"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "창 조작 메뉴"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
@@ -715,7 +696,7 @@ msgstr "단축키 없음"
 #: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s(%s에서 동작중)"
 
 #: ../src/main.c:132
 #, c-format
@@ -802,44 +783,38 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu가 포인터를 얻지 못 했습니다.\n"
 
 #: ../src/settings.c:902
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: 활성 표시색 %s을 할당하지 못 했습니다.\n"
+msgstr "%s: 색 %s을(를) 할당하지 못 했습니다.\n"
 
 #: ../src/settings.c:908
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: 활성 표시색 %s을 분석하지 못 했습니다.\n"
+msgstr "%s: 색 %s을(를) 분석하지 못 했습니다.\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "창 관리자"
+msgstr "창 관리자 설정"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "창 관리자"
+msgstr "Xfce 4 창 관리자 설정"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "창관리자 설정"
+msgstr "고급 설정"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "창 관리자"
+msgstr "Xfce 4 창 관리자 기능향상"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "작업공간 여백"
+msgstr "작업공간 설정"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "작업공간 여백"
+msgstr "Xfce 4 작업공간 설정"
 
 #~ msgid "Unknown application!"
 #~ msgstr "무슨 프로그램이죠!"
