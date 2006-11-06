@@ -305,9 +305,9 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
         }
         else if (c->win_workspace == new_ws)
         {
-            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED) && !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
             {
-                if (!clientIsTransientOrModal (c))
+                if (!clientIsTransientOrModal (c) || !clientTransientOrModalHasAncestor (c, new_ws))
                 {
                     clientShow (c, FALSE);
                 }
@@ -329,7 +329,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
             }
             if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
             {
-                if (!clientIsTransientOrModal (c))
+                if (!clientIsTransientOrModal (c) || !clientTransientOrModalHasAncestor (c, new_ws))
                 {
                     clientHide (c, new_ws, FALSE);
                 }

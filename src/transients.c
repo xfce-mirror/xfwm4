@@ -61,7 +61,10 @@ clientIsModal (Client * c)
     g_return_val_if_fail (c != NULL, FALSE);
 
     TRACE ("entering clientIsModal");
-
+    /* 
+       If the WM_TRANSIENT_FOR hint is set to another toplevel window, the dialog is modal for that window; 
+       if WM_TRANSIENT_FOR is not set or set to the root window the dialog is modal for its window group. 
+     */
     return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
             (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) ||
              ((c->group_leader != None) && (c->group_leader != c->window))));
