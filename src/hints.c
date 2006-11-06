@@ -1140,11 +1140,11 @@ setXAtomManagerOwner (DisplayInfo *display_info, Atom atom, Window root, Window 
         ev.type = ClientMessage;
         ev.message_type = atom;
         ev.format = 32;
-        ev.data.l[0] = server_time;
-        ev.data.l[1] = atom;
-        ev.data.l[2] = w;
-        ev.data.l[3] = 0;
-        ev.data.l[4] = 0;
+        ev.data.l[0] = (long) server_time;
+        ev.data.l[1] = (long) atom;
+        ev.data.l[2] = (long) w;
+        ev.data.l[3] = (long) 0L;
+        ev.data.l[4] = (long) 0L;
         ev.window = root;
 
         XSendEvent (display_info->dpy, root, FALSE, StructureNotifyMask, (XEvent *) &ev);
@@ -1220,14 +1220,21 @@ checkKdeSystrayWindow(DisplayInfo *display_info, Window window)
     int actual_format;
     unsigned long nitems;
     unsigned long bytes_after;
+    unsigned char *data;
     Window trayIconForWindow;
 
-    TRACE ("entering GetWindowRole");
+    TRACE ("entering checkKdeSystrayWindow");
     g_return_val_if_fail (window != None, FALSE);
 
     XGetWindowProperty(display_info->dpy, window, display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR],
                        0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format,
-                       &nitems, &bytes_after, (unsigned char **) &trayIconForWindow);
+                       &nitems, &bytes_after, (unsigned char **) &data);
+
+    trayIconForWindow = *((Window *) data);
+    if (data)
+    {
+        XFree (data);
+    }
 
     if ((actual_format == None) ||
         (actual_type != XA_WINDOW) ||
@@ -1235,6 +1242,7 @@ checkKdeSystrayWindow(DisplayInfo *display_info, Window window)
     {
         return FALSE;
     }
+
     return TRUE;
 }
 
@@ -1251,11 +1259,11 @@ sendSystrayReqDock(DisplayInfo *display_info, Window window, Window systray)
     xev.window = systray;
     xev.message_type = display_info->atoms[NET_SYSTEM_TRAY_OPCODE];
     xev.format = 32;
-    xev.data.l[0] = myDisplayGetCurrentTime (screen_info);
-    xev.data.l[1] = 0; /* SYSTEM_TRAY_REQUEST_DOCK */
-    xev.data.l[2] = window;
-    xev.data.l[3] = 0; /* Nada */
-    xev.data.l[4] = 0; /* Niet */
+    xev.data.l[0] = (long) myDisplayGetCurrentTime (display_info);
+    xev.data.l[1] = (long) 0L; /* SYSTEM_TRAY_REQUEST_DOCK */
+    xev.data.l[2] = (long) window;
+    xev.data.l[3] = (long) 0L; /* Nada */
+    xev.data.l[4] = (long) 0L; /* Niet */
 
     XSendEvent (display_info->dpy, systray, FALSE, NoEventMask, (XEvent *) & xev);
 }
@@ -1341,11 +1349,11 @@ sendXSyncRequest (DisplayInfo *display_info, Window window, XSyncValue value)
     xev.window = window;
     xev.message_type = display_info->atoms[WM_PROTOCOLS];
     xev.format = 32;
-    xev.data.l[0] = display_info->atoms[NET_WM_SYNC_REQUEST];
-    xev.data.l[1] = CurrentTime;
-    xev.data.l[2] = XSyncValueLow32 (value);
-    xev.data.l[3] = XSyncValueHigh32 (value);
-    xev.data.l[4] = 0;
+    xev.data.l[0] = (long) display_info->atoms[NET_WM_SYNC_REQUEST];
+    xev.data.l[1] = (long) myDisplayGetCurrentTime (display_info);
+    xev.data.l[2] = (long) XSyncValueLow32 (value);
+    xev.data.l[3] = (long) XSyncValueHigh32 (value);
+    xev.data.l[4] = (long) 0L;
     XSendEvent (display_info->dpy, window, FALSE, NoEventMask, (XEvent *) &xev);
 }
 #endif /* HAVE_XSYNC */
