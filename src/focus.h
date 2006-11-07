@@ -60,8 +60,9 @@ void                     clientSetFocus                         (ScreenInfo *,
                                                                  Time, 
                                                                  unsigned short);
 void                     clientInitFocusFlag                    (Client *);
-void                     clientClearFocus                       (void);
 Client                  *clientGetFocus                         (void);
+Client                  *clientGetFocusOrPending                (void);
+void                     clientClearFocus                       (Client *);
 void                     clientGrabMouseButton                  (Client *);
 void                     clientUngrabMouseButton                (Client *);
 void                     clientGrabMouseButtonForAll            (ScreenInfo *);

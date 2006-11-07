@@ -410,8 +410,7 @@ initialize (int argc, char **argv, gint compositor_mode)
     ensure_basedir_spec ();
 
     initMenuEventWin ();
-    clientClearFocus ();
-
+    clientClearFocus (NULL);
     display_info = myDisplayInit (gdk_display_get_default ());
 
 #ifdef HAVE_COMPOSITOR

@@ -1237,10 +1237,7 @@ clientFree (Client * c)
     TRACE ("entering clientFree");
     TRACE ("freeing client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (clientGetFocus () == c)
-    {
-        clientClearFocus ();
-    }
+    clientClearFocus (c);
     if (clientGetLastRaise (c->screen_info) == c)
     {
         clientClearLastRaise (c->screen_info);

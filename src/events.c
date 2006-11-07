@@ -1660,7 +1660,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
            Handle unexpected focus transition to root (means that an unknown
            window has vanished and the focus is returned to the root).
          */
-        c = clientGetFocus ();
+        c = clientGetFocusOrPending ();
         clientSetFocus (screen_info, c, getXServerTime (display_info), FOCUS_FORCE);
         return;
     }

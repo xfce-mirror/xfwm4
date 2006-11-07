@@ -592,10 +592,27 @@ clientGetFocus (void)
     return (client_focus);
 }
 
-void
-clientClearFocus (void)
+Client *
+clientGetFocusOrPending (void)
 {
-    client_focus = NULL;
+    if (client_focus)
+    {
+        return (client_focus);
+    }
+    return (pending_focus);
+}
+
+void
+clientClearFocus (Client *c)
+{
+    if ((c == NULL) || (c == client_focus))
+    {
+        client_focus = NULL;
+    }
+    if ((c == NULL) || (c == pending_focus))
+    {
+        pending_focus = NULL;
+    }
 }
 
 void
