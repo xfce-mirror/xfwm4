@@ -1214,7 +1214,7 @@ getXServerTime (DisplayInfo *display_info)
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
 gboolean
-checkKdeSystrayWindow(DisplayInfo *display_info, Window window)
+checkKdeSystrayWindow (DisplayInfo *display_info, Window window)
 {
     Atom actual_type;
     int actual_format;
@@ -1230,9 +1230,10 @@ checkKdeSystrayWindow(DisplayInfo *display_info, Window window)
                        0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format,
                        &nitems, &bytes_after, (unsigned char **) &data);
 
-    trayIconForWindow = *((Window *) data);
+    trayIconForWindow = None;
     if (data)
     {
+        trayIconForWindow = *((Window *) data);
         XFree (data);
     }
 
