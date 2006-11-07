@@ -174,5 +174,9 @@ noinst_DATA =								\
 	$(SVG_FILES)							\
 	vaccumdefs.sh
 
-.svg.png:
-	rsvg -f png  $< $@
+update-png:
+	for svg_file in $(SVG_FILES); do \
+		image=$${svg_file%.svg}; \
+		echo "Converting "$$svg_file" to "$$image.png" ..."; \
+		rsvg -f png $$svg_file $$image.png; \
+	done
