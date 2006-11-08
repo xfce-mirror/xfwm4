@@ -102,4 +102,11 @@ Section "Device"
         Option      "RenderAccel" "true"
 EndSection
 
+4.2) EXA
+~~~~~~~~
 
+On some card, you may want to try the EXA acceleration by adding 
+
+        Option "AccelMethod" "exa"
+
+to the card's Device section in xorg.conf.
