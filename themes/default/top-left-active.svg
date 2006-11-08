@@ -25,7 +25,7 @@
       <stop
          id="stop5875"
          offset="0"
-         style="stop-color:white;stop-opacity:1;" />
+         style="stop-color:white;stop-opacity:0.75;" />
       <stop
          style="stop-color:white;stop-opacity:0;"
          offset="1"
@@ -57,7 +57,7 @@
        xlink:href="#linearGradient5873"
        id="linearGradient6962"
        x1="19.5"
-       y1="-1"
+       y1="1"
        x2="19.5"
        y2="4"
        gradientUnits="userSpaceOnUse"
@@ -122,7 +122,7 @@
     <path
        sodipodi:nodetypes="ccsc"
        id="path6061"
-       d="M 8,1 L 5.75,1 C 5.75,1 2,1 2,2 C 2,2 2.75,2 2.75,2 L 8,2 L 8,1 z "
+       d="M 8,1 L 5.75,1 C 5.75,1 2,1 2,4 C 2,4 2.75,4 2.75,4 L 8,4 L 8,3 z "
        style="fill:url(#linearGradient6962);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
   </g>
   <g

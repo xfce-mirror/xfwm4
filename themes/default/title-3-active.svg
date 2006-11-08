@@ -25,7 +25,7 @@
       <stop
          id="stop5875"
          offset="0"
-         style="stop-color:white;stop-opacity:1;" />
+         style="stop-color:white;stop-opacity:0.75;" />
       <stop
          style="stop-color:white;stop-opacity:0;"
          offset="1"
@@ -57,7 +57,7 @@
        xlink:href="#linearGradient5873"
        id="linearGradient6962"
        x1="19.5"
-       y1="-1"
+       y1="1"
        x2="19.5"
        y2="4"
        gradientUnits="userSpaceOnUse"
@@ -122,7 +122,7 @@
      inkscape:label="hilight">
     <path
        style="fill:url(#linearGradient6962);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 0,1 L 8,1 C 8,1 8,2 8,2 L 0,2 L 0,1 z "
+       d="M 0,1 L 8,1 C 8,1 8,1 8,4 L 0,4 L 0,3 z "
        id="path6061"
        sodipodi:nodetypes="ccsc" />
   </g>
