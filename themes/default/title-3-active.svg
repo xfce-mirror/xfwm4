@@ -16,8 +16,7 @@
    inkscape:version="0.44"
    version="1.0"
    sodipodi:docbase="/home/ofourdan/src/svn/xfwm4/trunk/themes/default"
-   sodipodi:docname="title-3-active.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   sodipodi:docname="title-3-active.svg">
   <defs
      id="defs4">
     <linearGradient
@@ -47,21 +46,21 @@
        xlink:href="#linearGradient5847"
        id="linearGradient6945"
        gradientUnits="userSpaceOnUse"
-       x1="4"
+       x1="0"
        y1="0.5"
-       x2="4"
+       x2="0"
        y2="25"
-       gradientTransform="matrix(1.15,0,0,1,-0.5,0)" />
+       gradientTransform="matrix(1.15,0,0,1,0,0)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5873"
        id="linearGradient6962"
-       x1="19.5"
+       x1="0"
        y1="1"
-       x2="19.5"
+       x2="0"
        y2="4"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.2,-16,1.2)" />
+       gradientTransform="matrix(1,0,0,0.2,0,1)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -71,18 +70,18 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="10"
-     inkscape:cx="10"
-     inkscape:cy="10"
+     inkscape:cx="0"
+     inkscape:cy="0"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:grid-points="true"
      gridoriginx="0px"
      gridtolerance="0.5px"
      guidetolerance="1px"
-     inkscape:window-width="1280"
-     inkscape:window-height="735"
+     inkscape:window-width="640"
+     inkscape:window-height="400"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:guide-bbox="true"
