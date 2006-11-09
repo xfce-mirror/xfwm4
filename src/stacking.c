@@ -255,7 +255,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
         if ((frameX (c2) < x) && (frameX (c2) + frameWidth (c2) > x)
             && (frameY (c2) < y) && (frameY (c2) + frameHeight (c2) > y))
         {
-            if (clientSelectMask (c2, 0, WINDOW_REGULAR_FOCUSABLE)
+            if (clientSelectMask (c2, INCLUDE_SKIP_PAGER | INCLUDE_SKIP_TASKBAR, WINDOW_REGULAR_FOCUSABLE)
                 && (c2 != exclude))
             {
                 c = c2;
