@@ -5,6 +5,12 @@ dnl
 
 m4_define([xfwm4_version], [4.3.99.2])
 
+m4_define([gtk_minimum_version], [2.6.0])
+m4_define([xfce_minimum_version], [4.3.99.2])
+m4_define([xcomposite_minimum_version], [0.2])
+m4_define([startup_notification_minimum_version], [0.5])
+m4_define([intltool_minimum_version], [0.31])
+
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2006
         The Xfce development team. All rights reserved.
@@ -27,7 +33,7 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 dnl check for basic programs
 AC_PROG_CC
 AC_PROG_INSTALL
-AC_PROG_INTLTOOL([0.31], [no-xml])
+AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 AC_PROG_LIBTOOL
 
 dnl Check C Compiler Characteristics
@@ -54,19 +60,19 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
     fi
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
-XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
-XDT_CHECK_PACKAGE(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, [4.3.99.2])
-XDT_CHECK_PACKAGE(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, [4.3.99.2])
-XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.3.99.2])
-XDT_CHECK_PACKAGE(LIBXFCEGUI4, libxfcegui4-1.0, [4.3.99.2])
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.99.2])
+XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [gtk_minimum_version])
+XDT_CHECK_PACKAGE(LIBXFCE4MCS_CLIENT, libxfce4mcs-client-1.0, [xfce_minimum_version])
+XDT_CHECK_PACKAGE(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, [xfce_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
+XDT_CHECK_PACKAGE(LIBXFCEGUI4, libxfcegui4-1.0, [xfce_minimum_version])
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [xfce_minimum_version])
 
 dnl
 dnl Startup notification support
 dnl
 LIBSTARTUP_NOTIFICATION_FOUND="no"
 XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
-                       [libstartup-notification-1.0], [0.5],
+                       [libstartup-notification-1.0], [startup_notification_minimum_version],
                        [startup-notification], 
                        [startup notification library], [yes])
 
@@ -154,7 +160,7 @@ AC_HELP_STRING([--disable-compositor], [disable compositor in xfwm4]),
 if test x"$enable_compositor" = x"yes"; then
   if test x"$have_render" = x"yes"; then
     if $PKG_CONFIG --print-errors --exists xcomposite xfixes xdamage xrender 2>&1; then
-      PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= 0.2 xfixes xdamage)
+      PKG_CHECK_MODULES(COMPOSITOR, xcomposite >= [xcomposite_minimum_version] xfixes xdamage)
       AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
       ENABLE_COMPOSITOR="--enable-compositor"
       compositor="yes"
