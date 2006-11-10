@@ -533,6 +533,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         }
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
+            pending_focus = c;
             sendClientMessage (c->screen_info, c->window, WM_TAKE_FOCUS, timestamp);
         }
     }
@@ -544,6 +545,8 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
 
         data[0] = data[1] = None;
         client_focus = NULL;
+        pending_focus = NULL;
+
         if (c2)
         {
             frameDraw (c2, FALSE);
