@@ -2461,8 +2461,8 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
         for (index = screen_info->windows_stack; index; index = g_list_next (index))
         {
             Client *c = (Client *) index->data;
-            if (CLIENT_CAN_HIDE_WINDOW (c)
-                && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+            if ((c->type & WINDOW_REGULAR_FOCUSABLE) 
+                && !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ICONIFIED | CLIENT_FLAG_SKIP_TASKBAR))
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
                 clientHide (c, c->win_workspace, TRUE);
