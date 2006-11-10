@@ -400,7 +400,7 @@ initialize (int argc, char **argv, gint compositor_mode)
 
     TRACE ("entering initialize");
 
-    xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     gtk_init (&argc, &argv);
 
@@ -439,13 +439,13 @@ initialize (int argc, char **argv, gint compositor_mode)
     sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
 
-    nscreens = gdk_display_get_n_screens(display_info->gdisplay);
+    nscreens = gdk_display_get_n_screens (display_info->gdisplay);
     for(i = 0; i < nscreens; i++)
     {
         ScreenInfo *screen_info;
         GdkScreen *gscr;
 
-        gscr = gdk_display_get_screen(display_info->gdisplay, i);
+        gscr = gdk_display_get_screen (display_info->gdisplay, i);
         screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK);
 
         if (!screen_info)
@@ -549,12 +549,12 @@ main (int argc, char **argv)
             compositor = parse_compositor (argv[i]);
         }
 #endif /* HAVE_COMPOSITOR */
-        else if (!strcmp(argv[i], "--version") || !strcmp(argv[i], "-V"))
+        else if (!strcmp (argv[i], "--version") || !strcmp (argv[i], "-V"))
         {
             print_version ();
             exit (0);
         }
-        else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-H"))
+        else if (!strcmp (argv[i], "--help") || !strcmp (argv[i], "-H"))
         {
             print_usage ();
             exit (0);
@@ -581,9 +581,9 @@ main (int argc, char **argv)
             if (daemon_mode)
             {
 #ifdef HAVE_DAEMON
-                if (daemon(TRUE, TRUE) < 0)
+                if (daemon (TRUE, TRUE) < 0)
                 {
-                        g_warning("Failed to enter daemon mode: %s", g_strerror(errno));
+                        g_warning ("Failed to enter daemon mode: %s", g_strerror(errno));
                         exit(EXIT_FAILURE);
                 }
 #else /* !HAVE_DAEMON */

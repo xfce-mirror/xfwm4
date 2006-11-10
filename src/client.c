@@ -2462,7 +2462,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
         {
             Client *c = (Client *) index->data;
             if ((c->type & WINDOW_REGULAR_FOCUSABLE) 
-                && !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ICONIFIED | CLIENT_FLAG_SKIP_TASKBAR))
+                && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED | CLIENT_FLAG_SKIP_TASKBAR))
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
                 clientHide (c, c->win_workspace, TRUE);
