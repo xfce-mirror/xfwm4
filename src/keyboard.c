@@ -44,7 +44,7 @@ getModifierMap (char *str)
     gchar *tmp;
     int map;
 
-    tmp = g_ascii_strdown ((gchar *) str, -1);
+    tmp = g_ascii_strdown ((gchar *) str, strlen (str));
     map = 0;
 
     if (strstr (tmp, "shift"))
