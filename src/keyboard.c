@@ -67,7 +67,7 @@ parseKeyString (Display * dpy, MyKey * key, char *str)
         /* There is a modifier */
         gchar *tmp;
 
-        tmp = g_ascii_strdown ((gchar *) str, -1);
+        tmp = g_ascii_strdown ((gchar *) str, strlen (str));
 
         key->keycode = XKeysymToKeycode (dpy, XStringToKeysym (++k));
         if (strstr (tmp, "shift"))
