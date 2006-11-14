@@ -695,9 +695,7 @@ myDisplayUpdateCurrentTime (DisplayInfo *display, XEvent *ev)
             display->current_time = (Time) ev->xselection.time;
             break;
         default:
-            /* Omit CurrentTime, keep last known good time stamp.
-               display->current_time = (Time) CurrentTime;
-             */
+            display->current_time = (Time) CurrentTime;
             break;
     }
     return display->current_time;
