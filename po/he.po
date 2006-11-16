@@ -8,24 +8,23 @@
 # Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.3.99.2\n"
+"Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2006-09-02 04:33+0300\n"
+"PO-Revision-Date: 2006-11-11 21:28+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
 msgstr "שולי סביבת העבודה"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
 #: ../mcs-plugin/margins.c:167
@@ -72,8 +71,7 @@ msgid "Window Manager Tweaks"
 msgstr "הגדרות נוספות של מנהל החלונות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "דלג על חלונות שהמאפיין \"דלג מחליף סביבות עבודה\"\n"
 "או \"דלג שרות משימות\" בהם מאפשר"
@@ -112,7 +110,7 @@ msgstr "הבא חלון לקדימה עבור כל לחיצת עכבר"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "הסתר את מסגרת החלון כאשר הוא בגודל מרבי"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
@@ -131,8 +129,7 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "החלף סביבות עבודה באמצעות גלגלת העכבר על שולחן העבודה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr "זכור והחזר את סביבת העבודה הקודמת כאשר מחליפים באמצעות קיצורי המקדלת."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
@@ -165,7 +162,7 @@ msgstr "אפשר compositing לתצוגה"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "הצג חלונות במצב מסך מלא ישירות"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
@@ -638,13 +635,12 @@ msgid "Show desktop"
 msgstr "הצג שולחן עבודה"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "אטימות של קישוטי חלונות"
+msgstr "בטל פעולת חלון"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "תפריט פעולות חלון"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
@@ -818,5 +814,3 @@ msgstr "הגדרות סביבות עבודה"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "הגדרות סביבות עבודה Xfce 4"
 
-#~ msgid "Unknown application!"
-#~ msgstr "יישום לא ידוע."
