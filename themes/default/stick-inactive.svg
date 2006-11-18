@@ -156,7 +156,7 @@
      id="layer5"
      inkscape:label="Shadow">
     <path
-       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.05"
        d="M 0.5,26.5 L 17.5,26.5"
        id="path6989"
        sodipodi:nodetypes="ccsc" />
