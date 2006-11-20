@@ -4156,23 +4156,15 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 clientConstrainRatio (c, c->width, c->height, corner);
             }
-            if (!clientCkeckTitle (c))
+            if ((c->x + c->width < disp_x + min_visible)
+                || (c->x + c->width < screen_info->margins [STRUTS_LEFT] + min_visible))
             {
-                c->height = prev_height;
                 c->width = prev_width;
             }
-            else
+            if ((c->y + c->height < disp_y + min_visible)
+                || (c->y + c->height < screen_info->margins [STRUTS_TOP] + min_visible))
             {
-                if ((c->x + c->width < disp_x + min_visible)
-                    || (c->x + c->width < screen_info->margins [STRUTS_LEFT] + min_visible))
-                {
-                    c->width = prev_width;
-                }
-                if ((c->y + c->height < disp_y + min_visible)
-                    || (c->y + c->height < screen_info->margins [STRUTS_TOP] + min_visible))
-                {
-                    c->height = prev_height;
-                }
+                c->height = prev_height;
             }
             if (passdata->poswin)
             {
