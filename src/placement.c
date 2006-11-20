@@ -390,7 +390,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             frame_y = frameY (c);
             ret |= CLIENT_CONSTRAINED_BOTTOM;
         }
-        if ((frame_y <= disp_y) && (frame_y >= disp_y - frame_top))
+        if ((frame_y < disp_y) && (frame_y >= disp_y - frame_top))
         {
             c->y = disp_y + frame_top;
             frame_y = frameY (c);
