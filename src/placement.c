@@ -41,35 +41,6 @@ static unsigned long overlapY (int y0, int y1, int ty0, int ty1);
 static unsigned long overlap (int x0, int y0, int x1, int y1,
                               int tx0, int ty0, int tx1, int ty1);
 
-static unsigned long
-clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
-{
-    unsigned long sigma = 0;
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT)
-        && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
-    {
-        sigma = overlap (x, y, x + w, y + h,
-                         0, c->struts[STRUTS_LEFT_START_Y],
-                         c->struts[STRUTS_LEFT],
-                         c->struts[STRUTS_LEFT_END_Y])
-              + overlap (x, y, x + w, y + h,
-                         c->screen_info->width - c->struts[STRUTS_RIGHT],
-                         c->struts[STRUTS_RIGHT_START_Y],
-                         c->screen_info->width, c->struts[STRUTS_RIGHT_END_Y])
-              + overlap (x, y, x + w, y + h,
-                         c->struts[STRUTS_TOP_START_X], 0,
-                         c->struts[STRUTS_TOP_END_X],
-                         c->struts[STRUTS_TOP])
-              + overlap (x, y, x + w, y + h,
-                         c->struts[STRUTS_BOTTOM_START_X],
-                         c->screen_info->height - c->struts[STRUTS_BOTTOM],
-                         c->struts[STRUTS_BOTTOM_END_X],
-                         c->screen_info->height);
-    }
-    return sigma;
-}
-
 /* Compute rectangle overlap area */
 
 static unsigned long
@@ -113,6 +84,35 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 {
     /* Compute overlapping box */
     return (overlapX (x0, x1, tx0, tx1) * overlapY (y0, y1, ty0, ty1));
+}
+
+static unsigned long
+clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
+{
+    unsigned long sigma = 0;
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT)
+        && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+    {
+        sigma = overlap (x, y, x + w, y + h,
+                         0, c->struts[STRUTS_LEFT_START_Y],
+                         c->struts[STRUTS_LEFT],
+                         c->struts[STRUTS_LEFT_END_Y])
+              + overlap (x, y, x + w, y + h,
+                         c->screen_info->width - c->struts[STRUTS_RIGHT],
+                         c->struts[STRUTS_RIGHT_START_Y],
+                         c->screen_info->width, c->struts[STRUTS_RIGHT_END_Y])
+              + overlap (x, y, x + w, y + h,
+                         c->struts[STRUTS_TOP_START_X], 0,
+                         c->struts[STRUTS_TOP_END_X],
+                         c->struts[STRUTS_TOP])
+              + overlap (x, y, x + w, y + h,
+                         c->struts[STRUTS_BOTTOM_START_X],
+                         c->screen_info->height - c->struts[STRUTS_BOTTOM],
+                         c->struts[STRUTS_BOTTOM_END_X],
+                         c->screen_info->height);
+    }
+    return sigma;
 }
 
 void
@@ -193,7 +193,7 @@ clientCkeckTitle (Client * c)
     screen_info = c->screen_info;
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
-        if ((c2 != c) && clientStrutAreaOverlap(frame_x, frame_y, frame_width, frame_top, c2))
+        if ((c2 != c) && clientStrutAreaOverlap (frame_x, frame_y, frame_width, frame_top, c2))
         {
             return FALSE;
         }

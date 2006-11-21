@@ -740,11 +740,11 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
         }
     }
 
-    clientConfigureWindows (c, wc, mask, flags);
     if (resized || (flags & CFG_FORCE_REDRAW))
     {
         frameDraw (c, (flags & CFG_FORCE_REDRAW));
     }
+    clientConfigureWindows (c, wc, mask, flags);
 
     if ((flags & CFG_NOTIFY) ||
         ((flags & CFG_REQUEST) && !(moved || resized)) ||
@@ -4272,31 +4272,26 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             c->x = c->x - (c->width - passdata->oldw);
             frame_x = frameX (c);
         }
-#if 0
-        if (move_top && !clientCkeckTitle (c))
+        if (move_top)
         {
-            c->x = prev_x;
-            c->width = prev_width;
+            if (!clientCkeckTitle (c) && (frame_y < screen_info->margins [STRUTS_TOP]))
+            {
+                c->x = prev_x;
+                c->width = prev_width;
+            }
         }
-#endif
+
         clientSetHeight (c, c->height);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
         {
             c->y = c->y - (c->height - passdata->oldh);
             frame_y = frameY (c);
         }
-#if 0
-        if (move_top && !clientCkeckTitle (c))
-        {
-            c->y = prev_y;
-            c->height = prev_height;
-        }
-#endif
         if (move_top)
         {
             if ((c->y > disp_max_y - min_visible)
-                || (c->y > screen_info->height
-                           - screen_info->margins [STRUTS_BOTTOM] - min_visible))
+                || (c->y > screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible)
+                || (!clientCkeckTitle (c) && (frame_y < screen_info->margins [STRUTS_TOP])))
             {
                 c->y = prev_y;
                 c->height = prev_height;
