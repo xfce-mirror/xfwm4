@@ -4035,6 +4035,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     int frame_x, frame_y, frame_height, frame_width;
     int frame_top, frame_left, frame_right, frame_bottom;
     int move_top, move_bottom, move_left, move_right;
+    int temp;
     gint monitor_nbr;
     gint min_visible;
     gboolean resizing;
@@ -4272,14 +4273,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             c->x = c->x - (c->width - passdata->oldw);
             frame_x = frameX (c);
         }
-        if (move_top)
-        {
-            if (!clientCkeckTitle (c) && (frame_y < screen_info->margins [STRUTS_TOP]))
-            {
-                c->x = prev_x;
-                c->width = prev_width;
-            }
-        }
 
         clientSetHeight (c, c->height);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
@@ -4287,40 +4280,50 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             c->y = c->y - (c->height - passdata->oldh);
             frame_y = frameY (c);
         }
+
         if (move_top)
         {
-            if ((c->y > disp_max_y - min_visible)
-                || (c->y > screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible)
+            if ((c->y > MAX (disp_max_y - min_visible, screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible))
                 || (!clientCkeckTitle (c) && (frame_y < screen_info->margins [STRUTS_TOP])))
             {
-                c->y = prev_y;
-                c->height = prev_height;
+                temp = c->y + c->height;
+                c->y = CLAMP (c->y, screen_info->margins [STRUTS_TOP] + frame_top, 
+                         MAX (disp_max_y - min_visible,  screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible));
+                clientSetHeight (c, temp - c->y);
+                c->y = temp - c->height;
+            }
+            else if (frame_y < 0)
+            {
+                temp = c->y + c->height;
+                c->y = frame_top;
+                clientSetHeight (c, temp - c->y);
+                c->y = temp - c->height;
             }
         }
         else if (move_bottom)
         {
-            if ((c->y + c->height < disp_y + min_visible)
-                || (c->y + c->height < screen_info->margins [STRUTS_TOP] + min_visible))
+            if (c->y + c->height < MAX (disp_y + min_visible, screen_info->margins [STRUTS_TOP] + min_visible))
             {
-                c->height = prev_height;
+                temp = MAX (disp_y + min_visible, screen_info->margins [STRUTS_TOP] + min_visible);
+                clientSetHeight (c, temp - c->y);
             }
         }
         if (move_left)
         {
-            if ((c->x > disp_max_x - min_visible)
-                || (c->x > screen_info->width
-                           - screen_info->margins [STRUTS_RIGHT] - min_visible))
+            if (c->x > MIN (disp_max_x - min_visible, screen_info->width - screen_info->margins [STRUTS_RIGHT] - min_visible))
             {
-                c->x = prev_x;
-                c->width = prev_width;
+                temp = c->x + c->width;
+                c->x = MIN (disp_max_x - min_visible, screen_info->width - screen_info->margins [STRUTS_RIGHT] - min_visible);
+                clientSetWidth (c, temp - c->x);
+                c->x = temp - c->width;
             }
         }
         else if (move_right)
         {
-            if ((c->x + c->width < disp_x + min_visible)
-                || (c->x + c->width < screen_info->margins [STRUTS_LEFT] + min_visible))
+            if (c->x + c->width < MAX (disp_x + min_visible, screen_info->margins [STRUTS_LEFT] + min_visible))
             {
-                c->width = prev_width;
+                temp = MAX (disp_x + min_visible, screen_info->margins [STRUTS_LEFT] + min_visible);
+                clientSetWidth (c, temp - c->x);
             }
         }
 
