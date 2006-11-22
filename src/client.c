@@ -406,94 +406,118 @@ clientGravitate (Client * c, int mode)
 }
 
 static void
-clientSetWidth (Client * c, int w1)
+clientComputeWidth (Client * c, int *w)
 {
     int w2;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetWidth");
-    TRACE ("setting width %i for client \"%s\" (0x%lx)", w1, c->name,
-        c->window);
+    g_return_if_fail (w != NULL);
+    TRACE ("entering clientComputeWidth");
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
         || (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
             && (c->screen_info->params->borderless_maximize)))
     {
         /* Bypass resize increment and max sizes for fullscreen */
-        c->width = w1;
+        c->width = *w;
         return;
     }
 
     if ((c->size->flags & PResizeInc) && (c->size->width_inc))
     {
-        w2 = (w1 - c->size->min_width) / c->size->width_inc;
-        w1 = c->size->min_width + (w2 * c->size->width_inc);
+        w2 = (*w - c->size->min_width) / c->size->width_inc;
+        *w = c->size->min_width + (w2 * c->size->width_inc);
     }
     if (c->size->flags & PMaxSize)
     {
-        if (w1 > c->size->max_width)
+        if (*w > c->size->max_width)
         {
-            w1 = c->size->max_width;
+            *w = c->size->max_width;
         }
     }
     if (c->size->flags & PMinSize)
     {
-        if (w1 < c->size->min_width)
+        if (*w < c->size->min_width)
         {
-            w1 = c->size->min_width;
+            *w = c->size->min_width;
         }
     }
-    if (w1 < 1)
+    if (*w < 1)
     {
-        w1 = 1;
+        *w = 1;
     }
-    c->width = w1;
 }
 
 static void
-clientSetHeight (Client * c, int h1)
+clientSetWidth (Client * c, int w)
+{
+    int temp;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientSetWidth");
+    TRACE ("setting width %i for client \"%s\" (0x%lx)", w, c->name, c->window);
+
+    temp = w;
+    clientComputeWidth (c, &temp);
+    c->width = temp;
+}
+
+static void
+clientComputeHeight (Client * c, int *h)
 {
     int h2;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetHeight");
-    TRACE ("setting height %i for client \"%s\" (0x%lx)", h1, c->name,
-        c->window);
+    TRACE ("entering clientComputeHeight");
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
         || (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
             && (c->screen_info->params->borderless_maximize)))
     {
         /* Bypass resize increment and max sizes for fullscreen */
-        c->height = h1;
+        c->height = *h;
         return;
     }
 
     if ((c->size->flags & PResizeInc) && (c->size->height_inc))
     {
-        h2 = (h1 - c->size->min_height) / c->size->height_inc;
-        h1 = c->size->min_height + (h2 * c->size->height_inc);
+        h2 = (*h - c->size->min_height) / c->size->height_inc;
+        *h = c->size->min_height + (h2 * c->size->height_inc);
     }
     if (c->size->flags & PMaxSize)
     {
-        if (h1 > c->size->max_height)
+        if (*h > c->size->max_height)
         {
-            h1 = c->size->max_height;
+            *h = c->size->max_height;
         }
     }
     if (c->size->flags & PMinSize)
     {
-        if (h1 < c->size->min_height)
+        if (*h < c->size->min_height)
         {
-            h1 = c->size->min_height;
+            *h = c->size->min_height;
         }
     }
-    if (h1 < 1)
+    if (*h < 1)
     {
-        h1 = 1;
+        *h = 1;
     }
-    c->height = h1;
 }
+
+static void
+clientSetHeight (Client * c, int h)
+{
+    int temp;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientSetHeight");
+    TRACE ("setting height %i for client \"%s\" (0x%lx)", h, c->name, c->window);
+
+    temp = h;
+    clientComputeHeight (c, &temp);
+    c->height = temp;
+}
+
 /* clientConstrainRatio - adjust the given width and height to account for
    the constraints imposed by size hints
 
@@ -502,13 +526,12 @@ clientSetHeight (Client * c, int h1)
 
 #define MAKE_MULT(a,b) ((b==1) ? (a) : (((int)((a)/(b))) * (b)) )
 static void
-clientConstrainRatio (Client * c, int w1, int h1, int corner)
+clientConstrainRatio (Client * c, int *w, int *h, int corner)
 {
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientConstrainRatio");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
 
     if (c->size->flags & PAspect)
     {
@@ -521,70 +544,63 @@ clientConstrainRatio (Client * c, int w1, int h1, int corner)
         maxx = c->size->max_aspect.x;
         maxy = c->size->max_aspect.y;
 
-        if ((minx * h1 > miny * w1) &&
-            (miny) &&
+        if ((minx * *h > miny * *w) && (miny) &&
             ((corner == CORNER_COUNT + SIDE_TOP) || (corner == CORNER_COUNT + SIDE_BOTTOM)))
         {
             /* Change width to match */
-            delta = MAKE_MULT (minx * h1 /  miny - w1, xinc);
+            delta = MAKE_MULT (minx * *h /  miny - *w, xinc);
             if (!(c->size->flags & PMaxSize) ||
-                (w1 + delta <= c->size->max_width))
+                (*w + delta <= c->size->max_width))
             {
-                w1 += delta;
+                *w += delta;
             }
         }
-        if ((minx * h1 > miny * w1) &&
-            (minx))
+        if ((minx * *h > miny * *w) && (minx))
         {
-            delta = MAKE_MULT (h1 - w1 * miny / minx, yinc);
+            delta = MAKE_MULT (*h - *w * miny / minx, yinc);
             if (!(c->size->flags & PMinSize) ||
-                (h1 - delta >= c->size->min_height))
+                (*h - delta >= c->size->min_height))
             {
-                h1 -= delta;
+                *h -= delta;
             }
             else
             {
-                delta = MAKE_MULT (minx * h1 / miny - w1, xinc);
+                delta = MAKE_MULT (minx * *h / miny - *w, xinc);
                 if (!(c->size->flags & PMaxSize) ||
-                    (w1 + delta <= c->size->max_width))
-                  w1 += delta;
+                    (*w + delta <= c->size->max_width))
+                  *w += delta;
             }
         }
 
-        if ((maxx * h1 < maxy * w1) &&
-            (maxx) &&
+        if ((maxx * *h < maxy * *w) && (maxx) &&
             ((corner == CORNER_COUNT + SIDE_LEFT) || (corner == CORNER_COUNT + SIDE_RIGHT)))
         {
-            delta = MAKE_MULT (w1 * maxy / maxx - h1, yinc);
+            delta = MAKE_MULT (*w * maxy / maxx - *h, yinc);
             if (!(c->size->flags & PMaxSize) ||
-                (h1 + delta <= c->size->max_height))
+                (*h + delta <= c->size->max_height))
             {
-                h1 += delta;
+                *h += delta;
             }
         }
-        if ((maxx * h1 < maxy * w1) &&
-             (maxy))
+        if ((maxx * *h < maxy * *w) && (maxy))
         {
-            delta = MAKE_MULT (w1 - maxx * h1 / maxy, xinc);
+            delta = MAKE_MULT (*w - maxx * *h / maxy, xinc);
             if (!(c->size->flags & PMinSize) ||
-                (w1 - delta >= c->size->min_width))
+                (*w - delta >= c->size->min_width))
             {
-                w1 -= delta;
+                *w -= delta;
             }
             else
             {
-                delta = MAKE_MULT (w1 * maxy / maxx - h1, yinc);
+                delta = MAKE_MULT (*w * maxy / maxx - *h, yinc);
                 if (!(c->size->flags & PMaxSize) ||
-                    (h1 + delta <= c->size->max_height))
+                    (*h + delta <= c->size->max_height))
                 {
-                    h1 += delta;
+                    *h += delta;
                 }
             }
         }
     }
-
-    c->height = h1;
-    c->width = w1;
 }
 
 static void
@@ -4155,7 +4171,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             }
             if (corner >= 0)
             {
-                clientConstrainRatio (c, c->width, c->height, corner);
+                clientConstrainRatio (c, &c->width, &c->height, corner);
             }
             if ((c->x + c->width < disp_x + min_visible)
                 || (c->x + c->width < screen_info->margins [STRUTS_LEFT] + min_visible))
@@ -4265,7 +4281,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 c->height = passdata->oy + (xevent->xmotion.y_root - passdata->my);
             }
         }
-        clientConstrainRatio (c, c->width, c->height, passdata->corner);
+        clientConstrainRatio (c, &c->width, &c->height, passdata->corner);
 
         clientSetWidth (c, c->width);
         if (move_left)
