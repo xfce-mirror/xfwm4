@@ -2133,7 +2133,18 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
     if ((cw) && WIN_IS_REDIRECTED(cw))
     {
         repair_win (cw);
-        add_repair (display_info);
+#ifdef USE_IDLE_REPAINT
+        /* If there are more damage to come, we'll schedule the repair later */
+        if (ev->more)
+        {
+            remove_timeouts (display_info);
+        }
+        else
+        {
+            add_repair (display_info);
+        }
+#endif /* USE_IDLE_REPAINT */
+
     }
 }
 
