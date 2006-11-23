@@ -2134,17 +2134,12 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
     {
         repair_win (cw);
 #ifdef USE_IDLE_REPAINT
-        /* If there are more damage to come, we'll schedule the repair later */
-        if (ev->more)
-        {
-            remove_timeouts (display_info);
-        }
-        else
+        /* If there are more damages to come, we'll schedule the repair later */
+        if (!ev->more)
         {
             add_repair (display_info);
         }
 #endif /* USE_IDLE_REPAINT */
-
     }
 }
 
