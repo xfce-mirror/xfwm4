@@ -1693,11 +1693,11 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         {
             clientRaise (c, None);
         }
+#endif
         if (screen_info->params->raise_on_focus)
         {
             reset_timeout (screen_info);
         }
-#endif
     }
 }
 
