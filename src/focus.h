@@ -25,9 +25,10 @@
 #  include "config.h"
 #endif
 
-#include <glib.h>
+#include <sys/types.h>
 #include <sys/time.h>
 #include <time.h>
+#include <glib.h>
 
 #include "screen.h"
 #include "client.h"

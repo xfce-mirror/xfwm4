@@ -23,10 +23,15 @@
 #include <config.h>
 #endif
 
+#include <string.h>
+#include <sys/time.h>
+#include <time.h>
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #include <X11/extensions/shape.h>
+
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
@@ -35,7 +40,6 @@
 #include <X11/extensions/Xrandr.h>
 #endif
 #include <libxfce4util/libxfce4util.h>
-#include <string.h>
 
 #include "misc.h"
 #include "workspaces.h"
@@ -1677,9 +1681,12 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     if (c)
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
+
         screen_info = c->screen_info;
         clientUpdateFocus (screen_info, c, FOCUS_SORT);
+#if 0
         last_raised = clientGetLastRaise (screen_info);
+
         if ((screen_info->params->click_to_focus) &&
             (screen_info->params->raise_on_click) &&
             (last_raised != NULL) && (c != last_raised))
@@ -1690,7 +1697,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         {
             reset_timeout (screen_info);
         }
-        return;
+#endif
     }
 }
 
@@ -2052,20 +2059,12 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 }
                 else
                 {
-                    clientSetWorkspace (c, screen_info->current_ws, TRUE);
-                    clientShow (c, TRUE);
-                    clientClearAllShowDesktop (screen_info);
-                    clientRaise (c, None);
-                    clientSetFocus (screen_info, c, (Time) ev_time, NO_FOCUS_FLAG);
+                    clientActivate (c, (Time) ev_time);
                 }
             }
             else
             {
-                clientSetWorkspace (c, screen_info->current_ws, TRUE);
-                clientShow (c, TRUE);
-                clientClearAllShowDesktop (screen_info);
-                clientRaise (c, None);
-                clientSetFocus (screen_info, c, myDisplayGetCurrentTime (screen_info->display_info), NO_FOCUS_FLAG);
+                clientActivate (c, myDisplayGetCurrentTime (screen_info->display_info));
             }
         }
         else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])

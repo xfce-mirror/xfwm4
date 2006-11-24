@@ -23,11 +23,15 @@
 #include <config.h>
 #endif
 
+#include <sys/types.h>
+#include <sys/time.h>
+#include <time.h>
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #include <X11/extensions/shape.h>
-#include <sys/time.h>
+
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>

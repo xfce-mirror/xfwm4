@@ -23,10 +23,15 @@
 #include <config.h>
 #endif
 
+#include <sys/types.h>
+#include <sys/time.h>
+#include <time.h>
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #include <X11/extensions/shape.h>
+
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
@@ -2499,6 +2504,22 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
         }
         clientFocusTop (screen_info, WIN_LAYER_NORMAL);
     }
+}
+
+void
+clientActivate (Client * c, Time timestamp)
+{
+    ScreenInfo *screen_info;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientActivate \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    clientSetWorkspace (c, screen_info->current_ws, TRUE);
+    clientShow (c, TRUE);
+    clientClearAllShowDesktop (screen_info);
+    clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
+    clientRaise (c, None);
 }
 
 void

@@ -29,6 +29,9 @@
 #include <signal.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/time.h>
+#include <time.h>
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
@@ -37,6 +40,9 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <sys/time.h>
+#include <time.h>
+
 #include "screen.h"
 #include "misc.h"
 #include "hints.h"
@@ -340,6 +346,8 @@ void                     clientHideAll                          (Client *,
                                                                  int);
 void                     clientClearAllShowDesktop              (ScreenInfo *);
 void                     clientToggleShowDesktop                (ScreenInfo *);
+void                     clientActivate                         (Client *,
+                                                                 Time);
 void                     clientClose                            (Client *);
 void                     clientKill                             (Client *);
 void                     clientEnterContextMenuState            (Client *);
