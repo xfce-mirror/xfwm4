@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="8"
-   height="27"
+   height="29"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.44"
@@ -112,7 +112,7 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,0.5 L 8,0.5 C 8,0.5 8,27 8,27 L 0,27 L 0,0.5 z "
+       d="M 0,0.5 L 8,0.5 C 8,0.5 8,29 8,29 L 0,29 L 0,0.5 z "
        id="path6057"
        sodipodi:nodetypes="ccsc" />
   </g>
@@ -143,7 +143,7 @@
      inkscape:label="Shadow">
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.05"
-       d="M 0.5,26.5 L 7.5,26.5"
+       d="M 0.5,28.5 L 7.5,28.5"
        id="path6989"
        sodipodi:nodetypes="ccsc" />
   </g>

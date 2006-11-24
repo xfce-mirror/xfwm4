@@ -15,7 +15,7 @@
    inkscape:version="0.44"
    sodipodi:version="0.32"
    id="svg2"
-   height="27"
+   height="29"
    width="8"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
@@ -112,7 +112,7 @@
      inkscape:groupmode="layer">
     <path
        id="path6057"
-       d="M 8,1 L 3,1 C 3,1 1,1 1,4 C 2,27 2,27 2,27 L 2,27 L 8,27 L 8,1 z "
+       d="M 8,1 L 3,1 C 3,1 1,1 1,4 C 2,29 2,29 2,29 L 2,29 L 8,29 L 8,1 z "
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1" />
   </g>
   <g
@@ -132,7 +132,7 @@
      inkscape:label="Border">
     <path
        id="rect1319"
-       d="M 8,0 L 8,1 L 3,1 C 3,1 1,1 1,4 C 1,27 1,27 1,27 L 0,27 L 0,0 L 8,0 z "
+       d="M 8,0 L 8,1 L 3,1 C 3,1 1,1 1,4 C 1,29 1,29 1,29 L 0,29 L 0,0 L 8,0 z "
        style="fill:black;fill-opacity:0.50" />
   </g>
   <g
@@ -141,7 +141,7 @@
      inkscape:groupmode="layer">
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.05"
-       d="M 2.5,26.5 L 7.5,26.5"
+       d="M 2.5,28.5 L 7.5,28.5"
        id="path6989"
        sodipodi:nodetypes="cc" />
   </g>
