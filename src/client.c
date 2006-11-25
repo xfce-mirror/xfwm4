@@ -608,6 +608,9 @@ clientConstrainRatio (Client * c, int *w, int *h, int corner)
     }
 }
 
+#define WIN_MOVED   (mask & (CWX | CWY))
+#define WIN_RESIZED (mask & (CWWidth | CWHeight))
+
 static void
 clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
@@ -628,6 +631,11 @@ clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, uns
         change_values.height = frameHeight (c);
         XConfigureWindow (clientGetXDisplay (c), c->frame, change_mask, &change_values);
 
+        if (WIN_RESIZED || (flags & CFG_FORCE_REDRAW))
+        {
+            frameDraw (c, (flags & CFG_FORCE_REDRAW));
+        }
+
         change_values.x = frameLeft (c);
         change_values.y = frameTop (c);
         change_values.width = c->width;
@@ -641,7 +649,6 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
 {
     XConfigureEvent ce;
     int px, py, pwidth, pheight;
-    gboolean moved, resized;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -650,11 +657,8 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
     TRACE ("configuring client \"%s\" (0x%lx) %s, type %u", c->name,
         c->window, flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->type);
 
-    moved = FALSE;
-    resized = FALSE;
     if (mask & CWX)
     {
-        moved = TRUE;
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
             c->x = wc->x;
@@ -662,7 +666,6 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
     }
     if (mask & CWY)
     {
-        moved = TRUE;
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
             c->y = wc->y;
@@ -670,12 +673,10 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
     }
     if (mask & CWWidth)
     {
-        resized = TRUE;
         clientSetWidth (c, wc->width);
     }
     if (mask & CWHeight)
     {
-        resized = TRUE;
         clientSetHeight (c, wc->height);
     }
     if (mask & CWBorderWidth)
@@ -741,35 +742,27 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
         if (c->x != px)
         {
             mask |= CWX;
-            moved = TRUE;
         }
         if (c->y != py)
         {
             mask |= CWY;
-            moved = TRUE;
         }
 
         if (c->width != pwidth)
         {
             mask |= CWWidth;
-            resized = TRUE;
         }
         if (c->height != pheight)
         {
             mask |= CWHeight;
-            resized = TRUE;
         }
     }
 
-    if (resized || (flags & CFG_FORCE_REDRAW))
-    {
-        frameDraw (c, (flags & CFG_FORCE_REDRAW));
-    }
     clientConfigureWindows (c, wc, mask, flags);
 
     if ((flags & CFG_NOTIFY) ||
-        ((flags & CFG_REQUEST) && !(moved || resized)) ||
-        (moved && !resized))
+        ((flags & CFG_REQUEST) && !(WIN_MOVED || WIN_RESIZED)) ||
+        (WIN_MOVED && !WIN_RESIZED))
     {
         DBG ("Sending ConfigureNotify");
         ce.type = ConfigureNotify;
@@ -786,6 +779,8 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
         XSendEvent (clientGetXDisplay (c), c->window, FALSE,
                     StructureNotifyMask, (XEvent *) & ce);
     }
+#undef WIN_MOVED
+#undef WIN_RESIZED
 }
 
 void
