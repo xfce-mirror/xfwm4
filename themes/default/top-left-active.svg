@@ -21,6 +21,17 @@
   <defs
      id="defs4">
     <linearGradient
+       id="linearGradient1886">
+      <stop
+         style="stop-color:white;stop-opacity:1;"
+         offset="0"
+         id="stop1888" />
+      <stop
+         style="stop-color:white;stop-opacity:0.125;"
+         offset="1"
+         id="stop1890" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient5873">
       <stop
          id="stop5875"
@@ -62,6 +73,16 @@
        y2="8"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.2,0,1)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1886"
+       id="linearGradient1892"
+       x1="0"
+       y1="1"
+       x2="0"
+       y2="13"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.75,0,0,1,0.75,0)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -122,8 +143,12 @@
     <path
        sodipodi:nodetypes="ccsc"
        id="path6061"
-       d="M 8,1 L 5.75,1 C 5.75,1 2,1 2,4 C 2,4 2.75,4 2.75,4 L 8,4 L 8,3 z "
+       d="M 8,1 L 5.75,1 C 5.75,1 2,1 2,4 C 2,4 2.75,4 2.75,4 L 8,4 L 8,4 z "
        style="fill:url(#linearGradient6962);fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 8,1 L 5.75,1 C 5.75,1 1,1 1,4 C 1,14 1.75,14 1.75,14 L 8,14 L 8,14 z "
+       id="path1884" />
   </g>
   <g
      style="display:inline"
