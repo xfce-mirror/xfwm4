@@ -35,7 +35,7 @@
       <stop
          id="stop5875"
          offset="0"
-         style="stop-color:white;stop-opacity:0.75;" />
+         style="stop-color:white;stop-opacity:1;" />
       <stop
          style="stop-color:white;stop-opacity:0;"
          offset="1"
@@ -146,7 +146,7 @@
        id="path6061"
        sodipodi:nodetypes="ccsc" />
     <rect
-       style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:0;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:0.75;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1884"
        width="8"
        height="14"
