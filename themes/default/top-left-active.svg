@@ -62,7 +62,7 @@
        y1="0.5"
        x2="0"
        y2="26.5"
-       gradientTransform="matrix(1.15,0,0,1,0,0)" />
+       gradientTransform="matrix(1,0,0,1,0,0)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5873"
@@ -80,7 +80,7 @@
        x1="0"
        y1="1"
        x2="0"
-       y2="13"
+       y2="14"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.75,0,0,1,0.75,0)" />
   </defs>
@@ -147,7 +147,7 @@
        style="fill:url(#linearGradient6962);fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
     <path
        style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 8,1 L 5.75,1 C 5.75,1 1,1 1,4 C 1,14 1.75,14 1.75,14 L 8,14 L 8,14 z "
+       d="M 8,1 L 3,1 C 3,1 1,1 1,4 C 1,14 1,14 1,14 L 1,14 L 8,14 L 8,1 z "
        id="path1884" />
   </g>
   <g

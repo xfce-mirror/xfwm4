@@ -61,7 +61,7 @@
        y1="0.5"
        x2="0"
        y2="26.5"
-       gradientTransform="matrix(1.15,0,0,1,0,0)" />
+       gradientTransform="matrix(1,0,0,1,0,0)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5873"
@@ -79,7 +79,7 @@
        x1="0"
        y1="1"
        x2="0"
-       y2="13"
+       y2="14"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.75,0,0,1,0.75,0)" />
   </defs>
