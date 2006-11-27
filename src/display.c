@@ -424,6 +424,8 @@ myDisplayGrabServer (DisplayInfo *display)
 void
 myDisplayUngrabServer (DisplayInfo *display)
 {
+    g_return_if_fail (display);
+
     DBG ("entering myDisplayUngrabServer");
     display->xgrabcount = display->xgrabcount - 1;
     if (display->xgrabcount < 0)       /* should never happen */
