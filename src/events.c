@@ -1418,21 +1418,24 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             }
             constrained = TRUE;
         }
-#if 0
-        /* Let's say that if the client performs a XRaiseWindow, we show the window if hidden */
-        if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above))
+        /* 
+           Let's say that if the client performs a XRaiseWindow, we show the window if focus 
+           stealing prevention is not activated, otherwise we just set the "demands attention"
+           flag...
+         */
+        if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (wc.sibling == None))
         {
-            if ((c->win_workspace == screen_info->current_ws) ||
-                (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)))
+            ev->value_mask &= ~CWStackMode;
+            if (screen_info->params->prevent_focus_stealing)
             {
-                if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
-                {
-                    clientShow (c, TRUE);
-                    clientClearAllShowDesktop (screen_info);
-                }
+                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                clientSetNetState (c);
+            }
+            else
+            {
+                clientActivate (c, myDisplayGetCurrentTime(display_info));
             }
         }
-#endif
         clientConfigure (c, &wc, ev->value_mask, (constrained ? CFG_CONSTRAINED : 0) | CFG_REQUEST);
     }
     else
