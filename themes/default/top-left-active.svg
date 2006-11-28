@@ -141,8 +141,8 @@
      inkscape:groupmode="layer">
     <path
        id="path6057"
-       d="M 8,1 L 3,1 C 3,1 1,1 1,4 C 2,29 2,29 2,29 L 2,29 L 8,29 L 8,1 z "
-       style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1" />
+       style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+       d="M 8,1 L 3,1 C 3,1 1,1 1,4 C 1,27 1,27 3,29 L 1,29 L 8,29 L 8,1 z " />
   </g>
   <g
      inkscape:label="hilight"

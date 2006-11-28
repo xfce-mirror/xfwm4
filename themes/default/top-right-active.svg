@@ -141,7 +141,7 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,1 L 5,1 C 5,1 7,1 7,4 C 6,29 6,29 6,29 L 6,29 L 0,29 L 0,1 z "
+       d="M 0,1 L 5,1 C 5,1 7,1 7,4 C 7,27 7,27 5,29 L 0,29 L 0,29 L 0,1 z "
        id="path6057" />
   </g>
   <g
