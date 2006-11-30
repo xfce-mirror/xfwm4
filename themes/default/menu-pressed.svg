@@ -39,6 +39,10 @@
          style="stop-color:white;stop-opacity:1;" />
       <stop
          id="stop5877"
+         offset="0.5"
+         style="stop-color:white;stop-opacity:0.90;" />
+      <stop
+         id="stop5879"
          offset="1"
          style="stop-color:white;stop-opacity:0;" />
     </linearGradient>
@@ -86,9 +90,9 @@
        xlink:href="#linearGradient5873"
        id="radialGradient3087"
        cx="9"
-       cy="12.5"
+       cy="9"
        fx="9"
-       fy="12.5"
+       fy="9"
        r="9"
        gradientTransform="matrix(1,0,0,1.0,0,0.5)"
        gradientUnits="userSpaceOnUse" />
