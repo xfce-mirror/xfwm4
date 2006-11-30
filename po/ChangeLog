@@ -33,7 +33,7 @@
 	* pl.po: Updated Polish translations by Piotr Malinski
 	<riklaunim@gmail.com>
 
-2006-10-14  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-10-14  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translations update.
 
@@ -90,7 +90,7 @@
 	* de.po: Updated German translations
 	* ka.po: Add Georgian translations
 
-2006-08-26  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-08-26  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Updated Greek translations
 	
@@ -147,7 +147,7 @@
 	* pl.po: Updated Polish translations by piotr maliński
 	<riklaunim@gmail.com>
 
-2006-07-09  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-07-09  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translation update.
 
@@ -185,7 +185,7 @@
 
 	* eu.po: Basque translation update.
 
-2006-05-21  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-05-21  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Updated Greek translations
 
@@ -248,7 +248,7 @@
 
 	* pt_BR.po: Updated Brazilian Portuguese translations.
 
-2006-05-06  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-05-06  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Updated Greek translation.
 
@@ -317,7 +317,7 @@
 
 	* uk.po: Updated Ukrainian translation.
 
-2006-04-23  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-04-23  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translation update.
 
@@ -344,7 +344,7 @@
 
 	* hu.po: hu trunk: some wm & orage updates
 
-2006-04-21  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-04-21  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translation update.
 
@@ -419,7 +419,7 @@
 	* ja.po: Fixed according to the context.
 	* ja.po: Updated Japanese translations.
 
-2006-04-02  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-04-02  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Really corrected now
 	* el.po: Greek fuzzy
@@ -433,7 +433,7 @@
 	  by Adriano Winter Bess <awbess@gmail.com> (Fix bug #1629)
 	  - Beware, it breaks existing translations :(
 
-2006-04-01  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-04-01  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translations update & polish by Stathis Kamperis
 	  <ekamperi@auth.gr>
@@ -453,7 +453,7 @@
 
 	* ja.po: Updated Japanese translations.
 
-2006-03-26  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-03-26  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translation update.
 
@@ -504,7 +504,7 @@
 	* fi.po: Updated Finnish translations by Jari Rahkonen
 	  <jari.rahkonen@pp2.inet.fi>.
 
-2006-02-22  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-02-22  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Updated Greek translations.
 
@@ -527,7 +527,7 @@
 	  <jari.rahkonen@pp2.inet.fi>.
 	* xfwm4.pot, *.po: Updated.
 
-2006-02-12  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-02-12  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Updated Greek translation.
 
@@ -577,7 +577,7 @@
 
 	* *.po: Updated.
 
-2005-12-11  Stavros Giannouris <stavrosg2002@freemail.gr>
+2005-12-11  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Updated Greek translations.
 
@@ -778,7 +778,7 @@
 
 	* zh_TW.po: Removed executable attribution.
 
-2005-08-13  Stavros Giannouris <stavrosg2002@freemail.gr>
+2005-08-13  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Added initial Greek translations in trunk for xfwm4
 
