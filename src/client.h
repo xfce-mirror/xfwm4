@@ -194,8 +194,7 @@
                                                                      XFWM_FLAG_HAS_RESIZE | \
                                                                      XFWM_FLAG_IS_RESIZABLE)
 #define CLIENT_CAN_STICK_WINDOW(c)      (!(c->transient_for) && \
-                                         FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK) && \
-                                         !FLAG_TEST(c->flags, CLIENT_FLAG_SKIP_TASKBAR))
+                                         FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
 
 #define HINTS_ACCEPT_INPUT(wmhints)     (!(wmhints) || \
                                          ((wmhints) && !(wmhints->flags & InputHint)) || \
