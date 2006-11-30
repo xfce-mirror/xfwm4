@@ -1505,6 +1505,7 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
         screen_info->allDamage = damage;
     }
 
+    /* The per-screen allDamage region is freed by repair_screen () */
     add_repair (screen_info->display_info);
 }
 
@@ -1555,7 +1556,7 @@ fix_region (CWindow *cw, XserverRegion region)
 }
 
 static void
-repair_win (CWindow *cw)
+repair_win (CWindow *cw, XRectangle *r)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -1576,6 +1577,7 @@ repair_win (CWindow *cw)
     if (cw->damaged)
     {
         parts = XFixesCreateRegion (display_info->dpy, NULL, 0);
+        /* Copy the damage region to parts, subtracting it from the window's damage */
         XDamageSubtract (display_info->dpy, cw->damage, None, parts);
         XFixesTranslateRegion (display_info->dpy, parts,
                                cw->attr.x + cw->attr.border_width,
@@ -1584,12 +1586,14 @@ repair_win (CWindow *cw)
     else
     {
         parts = win_extents (cw);
+        /* Subtract all damage from the window's damage */
         XDamageSubtract (display_info->dpy, cw->damage, None, None);
     }
 
     if (parts)
     {
         fix_region (cw, parts);
+        /* parts region will be destroyed by add_damage () */
         add_damage (cw->screen_info, parts);
         cw->damaged = TRUE;
     }
@@ -1608,7 +1612,7 @@ damage_screen (ScreenInfo *screen_info)
     r.width = screen_info->width;
     r.height = screen_info->height;
     region = XFixesCreateRegion (display_info->dpy, &r, 1);
-    /* Region will be freed by add_damage () */
+    /* region will be freed by add_damage () */
     add_damage (screen_info, region);
 }
 
@@ -1622,6 +1626,7 @@ damage_win (CWindow *cw)
 
     extents = win_extents (cw);
     fix_region (cw, extents);
+    /* extents region will be freed by add_damage () */
     add_damage (cw->screen_info, extents);
 }
 
@@ -1705,7 +1710,7 @@ expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
 
     display_info = screen_info->display_info;
     region = XFixesCreateRegion (display_info->dpy, rects, nrects);
-    /* damage region will be destroyed by add_damage () */
+    /* region will be destroyed by add_damage () */
     add_damage (screen_info, region);
 }
 
@@ -2129,13 +2134,21 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandleDamage for 0x%lx", ev->drawable);
 
+    /*
+      ev->drawable is the window ID of the damaged window
+      ev->geometry is the geometry of the damaged window
+      ev->area     is the bounding rect for the damaged area
+      ev->damage   is the damage handle returned by XDamageCreate()
+     */
+
     cw = find_cwindow_in_display (display_info, ev->drawable);
     if ((cw) && WIN_IS_REDIRECTED(cw))
     {
-        repair_win (cw);
+        repair_win (cw, &ev->area);
+        display_info->damages_pending = ev->more;
 #ifdef USE_IDLE_REPAINT
         /* If there are more damages to come, we'll schedule the repair later */
-        if (!ev->more)
+        if (!display_info->damages_pending)
         {
             add_repair (display_info);
         }
@@ -2619,7 +2632,10 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
         compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
 #ifndef USE_IDLE_REPAINT
-    repair_display (display_info);
+    if (!display_info->damages_pending)
+    {
+        repair_display (display_info);
+    }
 #endif /* USE_IDLE_REPAINT */
 
 #endif /* HAVE_COMPOSITOR */
@@ -2689,6 +2705,7 @@ compositorInitDisplay (DisplayInfo *display_info)
 
     display_info->compositor_idle_id = 0;
     display_info->compositor_timeout_id = 0;
+    display_info->damages_pending = FALSE;
 
     display_info->enable_compositor = ((display_info->have_render)
                                     && (display_info->have_composite)
