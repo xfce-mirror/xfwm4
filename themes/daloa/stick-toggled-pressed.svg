@@ -159,14 +159,29 @@
   </metadata>
   <g
      inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="pressed">
+    <g
+       id="g1789"
+       transform="translate(0,1)">
+      <rect
+         style="opacity:0.5;fill:url(#radialGradient3095);fill-opacity:1.0;stroke:url(#radialGradient3087);stroke-width:1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect3079"
+         width="24"
+         height="19"
+         x="0"
+         y="0" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Grad"
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 0,0.5 L 24,0.5 C 24,0.5 24,19 24,19 L 0,19 L 0,0.5 z "
-       id="path6057"
-       sodipodi:nodetypes="ccsc" />
+       id="path6057" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -175,8 +190,7 @@
     <path
        style="fill:url(#linearGradient6962);fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
        d="M 0,1 L 24,1 C 24,1 24,4 24,4 L 0,4 L 0,3 z "
-       id="path6061"
-       sodipodi:nodetypes="ccsc" />
+       id="path6061" />
     <rect
        style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:0.75;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1884"
@@ -201,8 +215,7 @@
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.50"
        d="M 0.5,0.5 L 23.5,0.5"
-       id="path6059"
-       sodipodi:nodetypes="ccsc" />
+       id="path6059" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -233,28 +246,11 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer4"
-     inkscape:label="pressed">
-    <g
-       id="g1789"
-       transform="translate(0,1)">
-      <rect
-         style="opacity:0.5;fill:url(#radialGradient3095);fill-opacity:1.0;stroke:url(#radialGradient3087);stroke-width:1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="rect3079"
-         width="24"
-         height="19"
-         x="0"
-         y="0" />
-    </g>
-  </g>
-  <g
-     inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="Shadow">
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.10"
        d="M 0.5,18.5 L 23.5,18.5"
-       id="path6989"
-       sodipodi:nodetypes="ccsc" />
+       id="path6989" />
   </g>
 </svg>

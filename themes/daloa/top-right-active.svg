@@ -152,8 +152,7 @@
     <path
        style="fill:url(#linearGradient6962);fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
        d="M 0,1 L 2.25,1 C 2.25,1 6,1 6,4 C 6,4 5.25,4 5.25,4 L 0,4 L 0,4 z "
-       id="path6061"
-       sodipodi:nodetypes="ccsc" />
+       id="path6061" />
     <path
        style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:0.75;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 0,1 L 5,1 C 5,1 7,1 7,4 C 7,8 7,8 5,10 L 0,10 L 0,10 L 0,1 z "
@@ -176,7 +175,6 @@
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.10"
        d="M 0.5,18.5 L 5.5,18.5"
-       id="path6989"
-       sodipodi:nodetypes="cc" />
+       id="path6989" />
   </g>
 </svg>
