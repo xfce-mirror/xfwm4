@@ -67,7 +67,7 @@
 #define WIN_HAS_CLIENT(cw)              (cw->c)
 #define WIN_HAS_FRAME(cw)               (WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
                                          !FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN))
-#define WIN_NO_SHADOW(cw)               ((cw->c) &&  FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
+#define WIN_NO_SHADOW(cw)               ((cw->c) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
 #define WIN_IS_OVERRIDE(cw)             (cw->attr.override_redirect)
 #define WIN_IS_ARGB(cw)                 (cw->argb)
 #define WIN_IS_OPAQUE(cw)               (((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw)) || (cw->screen_info->overlays))
@@ -724,22 +724,16 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->alphaBorderPict = None;
     }
 
-    if (cw->clientSize)
-    {
-        XFixesDestroyRegion (display_info->dpy, cw->clientSize);
-        cw->clientSize = None;
-    }
-
     if (cw->borderSize)
     {
         XFixesDestroyRegion (display_info->dpy, cw->borderSize);
         cw->borderSize = None;
     }
 
-    if (cw->extents)
+    if (cw->clientSize)
     {
-        XFixesDestroyRegion (display_info->dpy, cw->extents);
-        cw->extents = None;
+        XFixesDestroyRegion (display_info->dpy, cw->clientSize);
+        cw->clientSize = None;
     }
 
     if (cw->borderClip)
@@ -748,9 +742,15 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->borderClip = None;
     }
 
+    if (cw->extents)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->extents);
+        cw->extents = None;
+    }
+
     if (delete)
     {
-        if (cw->damage != None)
+        if (cw->damage)
         {
             XDamageDestroy (display_info->dpy, cw->damage);
             cw->damage = None;
@@ -2009,16 +2009,6 @@ restack_win (CWindow *cw, Window above)
 }
 
 static void
-set_size_attributes (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
-{
-    cw->attr.x = x;
-    cw->attr.y = y;
-    cw->attr.width = width;
-    cw->attr.height = height;
-    cw->attr.border_width = bw;
-}
-
-static void
 resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
 {
     DisplayInfo *display_info;
@@ -2031,11 +2021,19 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
+    damage = None;
 
-    damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
+    if (WIN_IS_VISIBLE(cw))
+    {
+        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
+        if (cw->extents)
+        {
+            XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+        }
+    }
+
     if (cw->extents)
     {
-        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
         XFixesDestroyRegion (display_info->dpy, cw->extents);
         cw->extents = None;
     }
@@ -2082,25 +2080,26 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         }
     }
 
-    set_size_attributes (cw, x, y, width, height, bw);
+    cw->attr.x = x;
+    cw->attr.y = y;
+    cw->attr.width = width;
+    cw->attr.height = height;
+    cw->attr.border_width = bw;
 
-    if (!WIN_IS_VISIBLE(cw))
+    if (damage)
     {
-        /* 'nuff for invisible windows... */
-        return;
+        cw->extents = win_extents (cw);
+        XFixesUnionRegion (display_info->dpy, damage, damage, cw->extents);
+        /* A shape notify will likely change the shadows too, so clear the extents */
+        if (shape_notify)
+        {
+            XFixesDestroyRegion (display_info->dpy, cw->extents);
+            cw->extents = None;
+        }
+        fix_region (cw, damage);
+        /* damage region will be destroyed by add_damage () */
+        add_damage (screen_info, damage);
     }
-
-    cw->extents = win_extents (cw);
-    XFixesUnionRegion (display_info->dpy, damage, damage, cw->extents);
-    /* A shape notify will likely change the shadows too, so clear the extents */
-    if (shape_notify)
-    {
-        XFixesDestroyRegion (display_info->dpy, cw->extents);
-        cw->extents = None;
-    }
-    fix_region (cw, damage);
-    /* damage region will be destroyed by add_damage () */
-    add_damage (screen_info, damage);
 }
 
 static void

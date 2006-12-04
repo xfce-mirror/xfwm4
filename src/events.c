@@ -2189,8 +2189,6 @@ handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
 static void
 handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
 {
-    GSList *screens;
-
     TRACE ("entering handleMappingNotify");
 
     /* Refreshes the stored modifier and keymap information */
@@ -2206,20 +2204,8 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
     /* Regrab all keys if the notify is for keyboard (ie not pointer) */
     if (ev->request != MappingPointer)
     {
-        TRACE ("handleMappingNotify: Regrab keys");
-        for (screens = display_info->screens; screens; screens = g_slist_next (screens))
-        {
-            ScreenInfo *screen_info = (ScreenInfo *) screens->data;
-
-            /* We need to reload all the settings to recompute the key bindings... */
-            loadSettings (screen_info);
-
-            /* ...then update all frames grabs... */
-            clientUpdateAllFrames (screen_info, UPDATE_BUTTON_GRABS);
-
-            /* ...and regrab the keys we have on the root win... */
-            myScreenGrabKeys (screen_info);
-        }
+        TRACE ("handleMappingNotify: Reload settings");
+        reloadSettings (display_info, UPDATE_BUTTON_GRABS);
     }
 }
 
