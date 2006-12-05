@@ -85,6 +85,8 @@
                                          UPDATE_MAXIMIZE | \
                                          UPDATE_CACHE)
 
+#define STRUTS_SIZE                     12
+
 #ifndef CLIENT_MIN_VISIBLE
 #define CLIENT_MIN_VISIBLE              15
 #endif
@@ -267,7 +269,7 @@ struct _Client
     int initial_layer;
     int ncmap;
     int button_pressed[BUTTON_COUNT];
-    int struts[12];
+    int struts[STRUTS_SIZE];
     gchar *name;
     Time user_time;
     unsigned long flags;

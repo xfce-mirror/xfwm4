@@ -419,27 +419,25 @@ clientComputeWidth (Client * c, int *w)
     g_return_if_fail (w != NULL);
     TRACE ("entering clientComputeWidth");
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        || (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-            && (c->screen_info->params->borderless_maximize)))
+    /* Bypass resize increment and max sizes for fullscreen */
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        && !(FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+             && (c->screen_info->params->borderless_maximize)))
     {
-        /* Bypass resize increment and max sizes for fullscreen */
-        c->width = *w;
-        return;
-    }
-
-    if ((c->size->flags & PResizeInc) && (c->size->width_inc))
-    {
-        w2 = (*w - c->size->min_width) / c->size->width_inc;
-        *w = c->size->min_width + (w2 * c->size->width_inc);
-    }
-    if (c->size->flags & PMaxSize)
-    {
-        if (*w > c->size->max_width)
+        if ((c->size->flags & PResizeInc) && (c->size->width_inc))
         {
-            *w = c->size->max_width;
+            w2 = (*w - c->size->min_width) / c->size->width_inc;
+            *w = c->size->min_width + (w2 * c->size->width_inc);
+        }
+        if (c->size->flags & PMaxSize)
+        {
+            if (*w > c->size->max_width)
+            {
+                *w = c->size->max_width;
+            }
         }
     }
+
     if (c->size->flags & PMinSize)
     {
         if (*w < c->size->min_width)
@@ -475,27 +473,25 @@ clientComputeHeight (Client * c, int *h)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientComputeHeight");
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        || (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-            && (c->screen_info->params->borderless_maximize)))
+    /* Bypass resize increment and max sizes for fullscreen */
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        && !(FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+             && (c->screen_info->params->borderless_maximize)))
     {
-        /* Bypass resize increment and max sizes for fullscreen */
-        c->height = *h;
-        return;
-    }
-
-    if ((c->size->flags & PResizeInc) && (c->size->height_inc))
-    {
-        h2 = (*h - c->size->min_height) / c->size->height_inc;
-        *h = c->size->min_height + (h2 * c->size->height_inc);
-    }
-    if (c->size->flags & PMaxSize)
-    {
-        if (*h > c->size->max_height)
+        if ((c->size->flags & PResizeInc) && (c->size->height_inc))
         {
-            *h = c->size->max_height;
+            h2 = (*h - c->size->min_height) / c->size->height_inc;
+            *h = c->size->min_height + (h2 * c->size->height_inc);
+        }
+        if (c->size->flags & PMaxSize)
+        {
+            if (*h > c->size->max_height)
+            {
+                *h = c->size->max_height;
+            }
         }
     }
+
     if (c->size->flags & PMinSize)
     {
         if (*h < c->size->min_height)
@@ -1782,6 +1778,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGetNetState (c);
     clientGetNetWmType (c);
     clientGetInitialNetWmDesktop (c);
+    /* workarea will be updated when shown, no need to worry here */
     clientGetNetStruts (c);
 
     /* Fullscreen for older legacy apps */
@@ -3205,6 +3202,16 @@ clientScreenResize(ScreenInfo *screen_info)
     if (!list_of_windows)
     {
         return;
+    }
+
+    /* Revalidate client struts */
+    for (index = list_of_windows; index; index = g_list_next (index))
+    {
+        c = (Client *) index->data;
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
+        {
+            clientValidateNetStrut (c);
+        }
     }
 
     myScreenGrabPointer (screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (screen_info->display_info));

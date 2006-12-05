@@ -43,7 +43,8 @@ void                     clientGetInitialNetWmDesktop           (Client *);
 void                     clientSetNetClientList                 (ScreenInfo *, 
                                                                  Atom, 
                                                                  GList *);
-void                     clientGetNetStruts                     (Client *);
+gboolean                 clientValidateNetStrut                 (Client *);
+gboolean                 clientGetNetStruts                     (Client *);
 void                     clientSetNetActions                    (Client *);
 void                     clientWindowType                       (Client *);
 void                     clientUpdateAboveState                 (Client *);

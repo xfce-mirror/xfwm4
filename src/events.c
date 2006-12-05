@@ -1866,7 +1866,10 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                  (ev->atom == display_info->atoms[NET_WM_STRUT_PARTIAL]))
         {
             TRACE ("client \"%s\" (0x%lx) has received a net_wm_strut notify", c->name, c->window);
-            clientGetNetStruts (c);
+            if (clientGetNetStruts (c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+            {
+                workspaceUpdateArea (c->screen_info);
+            }
         }
         else if (ev->atom == display_info->atoms[WM_COLORMAP_WINDOWS])
         {

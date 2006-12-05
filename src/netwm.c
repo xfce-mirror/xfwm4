@@ -922,24 +922,56 @@ clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
     }
 }
 
-void
+gboolean
+clientValidateNetStrut (Client * c)
+{
+    ScreenInfo *screen_info;
+    gboolean valid;
+    int max_value;
+    int i;
+
+    g_return_val_if_fail (c != NULL, TRUE);
+    TRACE ("entering clientValidateNetStrut for \"%s\" (0x%lx)", c->name, c->window);
+    screen_info = c->screen_info;
+    max_value = MIN (screen_info->width, screen_info->height) / 4;
+    valid = TRUE;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (c->struts[i] > max_value)
+        {
+           g_warning ("Strut value for application window 0x%lx changed from %d to %d", c->window, c->struts[i], max_value);
+           c->struts[i] = max_value;
+           valid = FALSE;
+        }
+    }
+
+    return valid;
+}
+
+gboolean
 clientGetNetStruts (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    unsigned long old_flags, new_flags;
+    int old_struts[STRUTS_SIZE];
     gulong *struts;
     int nitems;
     int i;
 
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, FALSE);
     TRACE ("entering clientGetNetStruts for \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     struts = NULL;
 
-    for (i = 0; i < 12; i++)
+    /* Save old values */
+    old_flags = c->flags & (CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_HAS_STRUT_PARTIAL);
+    for (i = 0; i < STRUTS_SIZE; i++)
     {
+        old_struts[i] = c->struts[i];
         c->struts[i] = 0;
     }
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT);
@@ -947,24 +979,32 @@ clientGetNetStruts (Client * c)
 
     if (getCardinalList (display_info, c->window, NET_WM_STRUT_PARTIAL, &struts, &nitems))
     {
-        if (nitems != 12)
+        if (nitems != STRUTS_SIZE)
         {
             if (struts)
             {
                 XFree (struts);
             }
-            return;
+            /* Restore old values */
+            if (old_flags)
+            {
+                FLAG_SET (c->flags, old_flags);
+                for (i = 0; i < STRUTS_SIZE; i++)
+                {
+                    c->struts[i] = old_struts[i];
+                }
+            }
+            return FALSE;
         }
 
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT);
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
-        for (i = 0; i < 12; i++)
+        for (i = 0; i < STRUTS_SIZE; i++)
         {
             c->struts[i] = (int) struts[i];
         }
 
         XFree (struts);
-        workspaceUpdateArea (c->screen_info);
     }
     else if (getCardinalList (display_info, c->window, NET_WM_STRUT, &struts, &nitems))
     {
@@ -974,7 +1014,16 @@ clientGetNetStruts (Client * c)
             {
                 XFree (struts);
             }
-            return;
+            /* Restore old values */
+            if (old_flags)
+            {
+                FLAG_SET (c->flags, old_flags);
+                for (i = 0; i < STRUTS_SIZE; i++)
+                {
+                    c->struts[i] = old_struts[i];
+                }
+            }
+            return FALSE;
         }
 
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT);
@@ -982,7 +1031,7 @@ clientGetNetStruts (Client * c)
         {
             c->struts[i] = (int) struts[i];
         }
-        for (i = 4; i < 12; i++)
+        for (i = 4; i < STRUTS_SIZE; i++)
         {
             c->struts[i] = 0;
         }
@@ -995,8 +1044,33 @@ clientGetNetStruts (Client * c)
             c->screen_info->height;
 
         XFree (struts);
-        workspaceUpdateArea (c->screen_info);
     }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
+    {
+        clientValidateNetStrut (c);
+    }
+
+    /* check for a change in struts flags */
+    new_flags = c->flags & (CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_HAS_STRUT_PARTIAL);
+    if (old_flags != new_flags)
+    {
+        return TRUE;
+    }
+
+    /* Flags haven't changed, check values */
+    if (new_flags)
+    {
+        for (i = 0; i < STRUTS_SIZE; i++)
+        {
+            if (old_struts[i] != c->struts[i])
+            {
+                return TRUE;
+            }
+        }
+    }
+
+    return FALSE;
 }
 
 void
