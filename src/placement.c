@@ -701,5 +701,8 @@ clientInitPosition (Client * c)
         }
     }
 
-    clientAutoMaximize (c, full_w, full_h);
+    if (c->type & WINDOW_REGULAR_FOCUSABLE)
+    {
+        clientAutoMaximize (c, full_w, full_h);
+    }
 }
