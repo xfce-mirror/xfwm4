@@ -58,6 +58,7 @@ struct _ClientPair
 
 static Client *client_focus  = NULL;
 static Client *pending_focus = NULL;
+static Client *user_focus    = NULL;
 static Client *last_ungrab   = NULL;
 
 static ClientPair
@@ -447,6 +448,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     client_focus = c;
     if (c)
     {
+        user_focus = c;
         clientInstallColormaps (c);
         if (flags & FOCUS_SORT)
         {
@@ -500,6 +502,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
     if ((c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
+        user_focus = c;
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
@@ -598,6 +601,12 @@ clientGetFocus (void)
 }
 
 Client *
+clientGetFocusPending (void)
+{
+    return (pending_focus);
+}
+
+Client *
 clientGetFocusOrPending (void)
 {
     if (client_focus)
@@ -605,6 +614,12 @@ clientGetFocusOrPending (void)
         return (client_focus);
     }
     return (pending_focus);
+}
+
+Client *
+clientGetUserFocus (void)
+{
+    return (user_focus);
 }
 
 void
@@ -617,6 +632,10 @@ clientClearFocus (Client *c)
     if ((c == NULL) || (c == pending_focus))
     {
         pending_focus = NULL;
+    }
+    if ((c == NULL) || (c == user_focus))
+    {
+        user_focus = NULL;
     }
 }
 

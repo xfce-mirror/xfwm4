@@ -1614,7 +1614,7 @@ static void
 handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
     ScreenInfo *screen_info;
-    Client *c, *last_raised;
+    Client *c, *user_focus;
 
     /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
@@ -1656,8 +1656,6 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         /* Not for us */
         return;
     }
-    
-    last_raised = NULL;
 
     if ((ev->window == screen_info->xroot)
         && ((ev->detail == NotifyDetailNone) 
@@ -1680,23 +1678,42 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     }
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
+    user_focus = clientGetUserFocus ();
+
     TRACE ("FocusIn on window (0x%lx)", ev->window);
     if (c)
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
 
         screen_info = c->screen_info;
-        clientUpdateFocus (screen_info, c, FOCUS_SORT);
-#if 0
-        last_raised = clientGetLastRaise (screen_info);
 
-        if ((screen_info->params->click_to_focus) &&
-            (screen_info->params->raise_on_click) &&
-            (last_raised != NULL) && (c != last_raised))
+        if ((user_focus != c) && (user_focus != NULL))
         {
-            clientRaise (c, None);
+            /* 
+               Focus stealing prevention:
+               Some apps tend to focus the window directly. 
+               - If focus stealing prevention is enabled, we revert the 
+                 user set focus to the window that we think has focus and 
+                 then set the demand attention flag.
+               - Otherwise, we update the focus as requested and we raise 
+                 the window so the user can see it.
+             */
+            if (screen_info->params->prevent_focus_stealing)
+            {
+                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                clientSetNetState (c);
+                clientSetFocus (user_focus->screen_info, user_focus, getXServerTime (display_info), NO_FOCUS_FLAG);
+            }
+            else
+            {
+                clientUpdateFocus (screen_info, c, FOCUS_SORT);
+                reset_timeout (screen_info);
+                clientRaise (c, None);
+            }
+            return;
         }
-#endif
+
+        clientUpdateFocus (screen_info, c, FOCUS_SORT);
         if (screen_info->params->raise_on_focus)
         {
             reset_timeout (screen_info);
