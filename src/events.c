@@ -1687,6 +1687,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 
         screen_info = c->screen_info;
 
+        clientUpdateFocus (screen_info, c, FOCUS_SORT);
         if ((user_focus != c) && (user_focus != NULL))
         {
             /* 
@@ -1706,14 +1707,10 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
             }
             else
             {
-                clientUpdateFocus (screen_info, c, FOCUS_SORT);
-                reset_timeout (screen_info);
                 clientRaise (c, None);
             }
-            return;
         }
 
-        clientUpdateFocus (screen_info, c, FOCUS_SORT);
         if (screen_info->params->raise_on_focus)
         {
             reset_timeout (screen_info);
