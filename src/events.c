@@ -1426,14 +1426,18 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (wc.sibling == None))
         {
             ev->value_mask &= ~CWStackMode;
-            if (screen_info->params->prevent_focus_stealing)
+            if (c != clientGetLastRaise (screen_info))
             {
-                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-                clientSetNetState (c);
-            }
-            else
-            {
-                clientActivate (c, myDisplayGetCurrentTime(display_info));
+                if (screen_info->params->prevent_focus_stealing)
+                {
+                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+                    FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                    clientSetNetState (c);
+                }
+                else
+                {
+                    clientActivate (c, myDisplayGetCurrentTime(display_info));
+                }
             }
         }
         clientConfigure (c, &wc, ev->value_mask, (constrained ? CFG_CONSTRAINED : 0) | CFG_REQUEST);
@@ -1614,7 +1618,7 @@ static void
 handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
     ScreenInfo *screen_info;
-    Client *c, *user_focus;
+    Client *c, *user_focus, *current_focus;
 
     /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
@@ -1679,9 +1683,10 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
     user_focus = clientGetUserFocus ();
+    current_focus = clientGetFocus ();
 
     TRACE ("FocusIn on window (0x%lx)", ev->window);
-    if (c)
+    if ((c) && (c != current_focus))
     {
         TRACE ("focus set to \"%s\" (0x%lx)", c->name, c->window);
 
@@ -1701,6 +1706,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
              */
             if (screen_info->params->prevent_focus_stealing)
             {
+                TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
                 FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                 clientSetNetState (c);
                 clientSetFocus (user_focus->screen_info, user_focus, getXServerTime (display_info), NO_FOCUS_FLAG);

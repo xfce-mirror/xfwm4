@@ -184,6 +184,7 @@ clientFocusNew(Client * c)
 
         if (prevented && c2 && (c2->win_layer == c->win_layer))
         {
+            TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
             FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             clientSortRing(c);
             clientLower (c, c2->frame);
@@ -505,6 +506,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         user_focus = c;
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
+            TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             clientSetNetState (c);
         }
