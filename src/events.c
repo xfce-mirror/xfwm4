@@ -2151,6 +2151,11 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                                 frameDecorationRight (screen_info),
                                 frameDecorationBottom (screen_info));
         }
+        else if (ev->message_type == display_info->atoms[MANAGER])
+        {
+            TRACE ("window (0x%lx) has received a manager event", ev->window);
+            display_info->quit = TRUE;
+        }
         else
         {
             TRACE ("unidentified client message for window 0x%lx", ev->window);
