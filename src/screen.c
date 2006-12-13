@@ -188,7 +188,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 
     g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
     wm_sn_atom = XInternAtom (display_info->dpy, selection, FALSE);
-    XSetSelectionOwner (display_info->dpy, wm_sn_atom, screen_info->xfwm4_win, myDisplayGetCurrentTime (display_info));
+    XSetSelectionOwner (display_info->dpy, wm_sn_atom, screen_info->xfwm4_win, CurrentTime);
 
     screen_info->box_gc = None;
     screen_info->black_gc = NULL;
@@ -325,6 +325,18 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
     TRACE ("global key grabs %i", screen_info->key_grabs);
 
     return grab;
+}
+
+gboolean
+myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
+{
+    gchar selection[32];
+    Atom wm_sn_atom;
+
+    g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
+    wm_sn_atom = XInternAtom (myScreenGetXDisplay (screen_info), selection, FALSE);
+
+    return (atom == wm_sn_atom);
 }
 
 gboolean

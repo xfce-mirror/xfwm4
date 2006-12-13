@@ -331,6 +331,8 @@ ScreenInfo              *myDisplayGetDefaultScreen              (DisplayInfo *);
 Time                     myDisplayUpdateCurrentTime             (DisplayInfo *,
                                                                  XEvent *);
 Time                     myDisplayGetCurrentTime                (DisplayInfo *);
+Time                     myDisplayGetTime                       (DisplayInfo *, 
+                                                                 Time);
 Time                     myDisplayGetLastUserTime               (DisplayInfo *);
 void                     myDisplaySetLastUserTime               (DisplayInfo *,
                                                                  Time);

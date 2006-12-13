@@ -39,8 +39,10 @@
 #define FOCUS_FORCE                     (1<<2)
 
 void                     clientFocusTop                         (ScreenInfo *, 
-                                                                 int);
-gboolean                 clientFocusNew                         (Client *);
+                                                                 int,
+                                                                 Time);
+gboolean                 clientFocusNew                         (Client *,
+                                                                 Time);
 gboolean                 clientSelectMask                       (Client *, 
                                                                  int, 
                                                                  int);
@@ -50,7 +52,8 @@ Client                  *clientGetPrevious                      (Client *,
                                                                  int);
 void                     clientPassFocus                        (ScreenInfo *, 
                                                                  Client *, 
-                                                                 Client *);
+                                                                 Client *,
+                                                                 Time);
 gboolean                 clientAcceptFocus                      (Client *);
 void                     clientSortRing                         (Client *);
 void                     clientUpdateFocus                      (ScreenInfo *, 

@@ -1952,7 +1952,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             }
             else
             {
-                clientFocusNew(c);
+                clientFocusNew(c, myDisplayGetCurrentTime (display_info));
                 grabbed = TRUE;
             }
         }
@@ -2123,7 +2123,7 @@ clientFrameAll (ScreenInfo *screen_info)
     {
         XFree (wins);
     }
-    clientFocusTop (screen_info, WIN_LAYER_NORMAL);
+    clientFocusTop (screen_info, WIN_LAYER_NORMAL, myDisplayGetCurrentTime (display_info));
     xfwmWindowDelete (&shield);
     myDisplayUngrabServer (display_info);
     XSync (display_info->dpy, FALSE);
@@ -2352,7 +2352,7 @@ clientHideSingle (Client * c, gboolean change_state)
     display_info = screen_info->display_info;
 
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
-    clientPassFocus(c->screen_info, c, c);
+    clientPassFocus(c->screen_info, c, c, myDisplayGetCurrentTime (display_info));
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
@@ -2481,7 +2481,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
                 clientHide (c, c->win_workspace, TRUE);
             }
         }
-        clientFocusTop (screen_info, WIN_LAYER_DESKTOP);
+        clientFocusTop (screen_info, WIN_LAYER_DESKTOP, myDisplayGetCurrentTime (screen_info->display_info));
     }
     else
     {
@@ -2494,7 +2494,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
             }
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
         }
-        clientFocusTop (screen_info, WIN_LAYER_NORMAL);
+        clientFocusTop (screen_info, WIN_LAYER_NORMAL, myDisplayGetCurrentTime (screen_info->display_info));
     }
 }
 
@@ -3534,14 +3534,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
                 if (edge & CLIENT_CONSTRAINED_TOP)
                 {
-                    if (workspaceMove (screen_info, -1, 0, c))
+                    if (workspaceMove (screen_info, -1, 0, c, xevent->xkey.time))
                     {
                         c->y = maxy + maxh;
                     }
                 }
                 else if (edge & CLIENT_CONSTRAINED_BOTTOM)
                 {
-                    if (workspaceMove (screen_info, 1, 0, c))
+                    if (workspaceMove (screen_info, 1, 0, c, xevent->xkey.time))
                     {
                         c->y = maxy + frameTop (c);
                     }
@@ -3549,14 +3549,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
                 if (edge & CLIENT_CONSTRAINED_LEFT)
                 {
-                    if (workspaceMove (screen_info, 0, -1, c))
+                    if (workspaceMove (screen_info, 0, -1, c, xevent->xkey.time))
                     {
                         c->x = maxx + maxw - frameWidth (c) + frameRight (c);
                     }
                 }
                 else if (edge & CLIENT_CONSTRAINED_RIGHT)
                 {
-                    if (workspaceMove (screen_info, 0, 1, c))
+                    if (workspaceMove (screen_info, 0, 1, c, xevent->xkey.time))
                     {
                         c->x = maxx + frameLeft (c);
                     }
@@ -3607,7 +3607,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             }
             if (screen_info->current_ws != passdata->cancel_workspace)
             {
-                workspaceSwitch (screen_info, passdata->cancel_workspace, c, FALSE);
+                workspaceSwitch (screen_info, passdata->cancel_workspace, c, FALSE, xevent->xkey.time);
             }
             if (toggled_maximize)
             {
@@ -3715,14 +3715,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                     {
                         if (msx == 0)
                         {
-                            if (workspaceMove (screen_info, 0, -1, c))
+                            if (workspaceMove (screen_info, 0, -1, c, xevent->xmotion.time))
                             {
                                 rx = 4 * maxx / 5;
                             }
                         }
                         else
                         {
-                            if (workspaceMove (screen_info, 0, 1, c))
+                            if (workspaceMove (screen_info, 0, 1, c, xevent->xmotion.time))
                             {
                                 rx = -4 * maxx / 5;
                             }
@@ -3738,14 +3738,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                     {
                         if (msy == 0)
                         {
-                            if (workspaceMove (screen_info, -1, 0, c))
+                            if (workspaceMove (screen_info, -1, 0, c, xevent->xmotion.time))
                             {
                                 ry = 4 * maxy / 5;
                             }
                         }
                         else
                         {
-                            if (workspaceMove (screen_info, 1, 0, c))
+                            if (workspaceMove (screen_info, 1, 0, c, xevent->xmotion.time))
                             {
                                 ry = -4 * maxy / 5;
                             }
@@ -4772,7 +4772,7 @@ clientCycle (Client * c, XEvent * ev)
 
         if (workspace != screen_info->current_ws)
         {
-            workspaceSwitch (screen_info, workspace, c, FALSE);
+            workspaceSwitch (screen_info, workspace, c, FALSE, myDisplayGetCurrentTime (display_info));
         }
 
         if ((focused) && (passdata.c != focused))

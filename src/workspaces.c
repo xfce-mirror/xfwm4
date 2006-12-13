@@ -23,9 +23,14 @@
 #include <config.h>
 #endif
 
+#include <sys/types.h>
+#include <sys/time.h>
+#include <time.h>
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
+
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
@@ -174,14 +179,14 @@ modify_with_wrap (int value, int by, int limit, gboolean wrap)
 
 /* returns TRUE if the workspace was changed, FALSE otherwise */
 gboolean
-workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c)
+workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, Time timestamp)
 {
     int row, col, newrow, newcol, previous_ws, n;
 
-    workspaceGetPosition(screen_info, screen_info->current_ws, &row, &col);
-    newrow = modify_with_wrap(row, rowmod, screen_info->desktop_layout.rows, screen_info->params->wrap_layout);
-    newcol = modify_with_wrap(col, colmod, screen_info->desktop_layout.cols, screen_info->params->wrap_layout);
-    n = workspaceGetNumber(screen_info, newrow, newcol);
+    workspaceGetPosition (screen_info, screen_info->current_ws, &row, &col);
+    newrow = modify_with_wrap (row, rowmod, screen_info->desktop_layout.rows, screen_info->params->wrap_layout);
+    newcol = modify_with_wrap (col, colmod, screen_info->desktop_layout.cols, screen_info->params->wrap_layout);
+    n = workspaceGetNumber (screen_info, newrow, newcol);
 
     if (n == screen_info->current_ws)
     {
@@ -191,7 +196,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c)
     previous_ws = screen_info->current_ws;
     if ((n >= 0) && (n < screen_info->workspace_count))
     {
-        workspaceSwitch(screen_info, n, c, TRUE);
+        workspaceSwitch (screen_info, n, c, TRUE, timestamp);
     }
     else if (screen_info->params->wrap_layout)
     {
@@ -218,16 +223,16 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c)
                 return FALSE;
             }
 
-            n = workspaceGetNumber(screen_info, newrow, newcol);
+            n = workspaceGetNumber (screen_info, newrow, newcol);
         }
-        workspaceSwitch(screen_info, n, c, TRUE);
+        workspaceSwitch (screen_info, n, c, TRUE, timestamp);
     }
 
     return (screen_info->current_ws != previous_ws);
 }
 
 void
-workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean update_focus)
+workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean update_focus, Time timestamp)
 {
     DisplayInfo *display_info;
     Client *c, *new_focus;
@@ -268,7 +273,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
         return;
     }
 
-    myScreenGrabPointer (screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
+    myScreenGrabPointer (screen_info, EnterWindowMask, None, timestamp);
 
     screen_info->previous_ws = screen_info->current_ws;
     screen_info->current_ws = new_ws;
@@ -325,7 +330,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
             if (c == previous)
             {
                 FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
-                clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL);
+                clientSetFocus (screen_info, NULL, timestamp, FOCUS_IGNORE_MODAL);
             }
             if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
             {
@@ -381,15 +386,15 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     {
         if (new_focus)
         {
-            clientSetFocus (screen_info, new_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+            clientSetFocus (screen_info, new_focus, timestamp, NO_FOCUS_FLAG);
         }
         else
         {
-            clientFocusTop (screen_info, WIN_LAYER_NORMAL);
+            clientFocusTop (screen_info, WIN_LAYER_NORMAL, timestamp);
         }
     }
 
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, timestamp);
 }
 
 void
@@ -436,12 +441,12 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
     }
     if (screen_info->current_ws > count - 1)
     {
-        workspaceSwitch (screen_info, count - 1, NULL, TRUE);
+        workspaceSwitch (screen_info, count - 1, NULL, TRUE, myDisplayGetCurrentTime (display_info));
     }
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                     screen_info->width, screen_info->height, screen_info->margins);
     /* Recompute the layout based on the (changed) number of desktops */
-    getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count,
+    getDesktopLayout (display_info, screen_info->xroot, screen_info->workspace_count,
                      &screen_info->desktop_layout);
 }
 

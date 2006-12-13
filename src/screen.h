@@ -160,6 +160,8 @@ Display                 *myScreenGetXDisplay                    (ScreenInfo *);
 GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GdkWindow               *myScreenGetGdkWindow                   (ScreenInfo *);
+gboolean                 myScreenCheckWMAtom                    (ScreenInfo *,
+                                                                 Atom atom);
 gboolean                 myScreenGrabKeyboard                   (ScreenInfo *,
                                                                  Time);
 gboolean                 myScreenGrabPointer                    (ScreenInfo *,

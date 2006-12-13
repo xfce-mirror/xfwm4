@@ -26,21 +26,28 @@
 #  include "config.h"
 #endif
 
+#include <sys/types.h>
+#include <sys/time.h>
+#include <time.h>
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
 #include <glib.h>
+
 #include "screen.h"
 #include "client.h"
 
 gboolean                workspaceMove                           (ScreenInfo *, 
                                                                  int, 
                                                                  int, 
-                                                                 Client *);
+                                                                 Client *,
+                                                                 Time);
 void                    workspaceSwitch                         (ScreenInfo *, 
                                                                  int, 
                                                                  Client *, 
-                                                                  gboolean);
+                                                                 gboolean,
+                                                                 Time);
 void                    workspaceSetNames                       (ScreenInfo *, 
                                                                  gchar **, 
                                                                  int);

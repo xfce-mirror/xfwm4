@@ -1196,19 +1196,22 @@ getXServerTime (DisplayInfo *display_info)
 
     g_return_val_if_fail (display_info, (Time) CurrentTime);
     timestamp = myDisplayGetCurrentTime (display_info);
-    if (timestamp == CurrentTime)
+    if (timestamp == (Time) CurrentTime)
     {
         screen_info = myDisplayGetDefaultScreen (display_info);
         g_return_val_if_fail (screen_info,  (Time) CurrentTime);
 
+        TRACE ("getXServerTime: Using X server roundtrip");
         XChangeProperty (display_info->dpy, screen_info->xfwm4_win, 
                          display_info->atoms[XFWM4_TIMESTAMP_PROP],
                          display_info->atoms[XFWM4_TIMESTAMP_PROP],
                          8, PropModeReplace, (unsigned char *) &c, 1);
         XIfEvent (display_info->dpy, &xevent, checkPropEvent, (XPointer) display_info);
 
-        timestamp = (Time) xevent.xproperty.time;
+        timestamp = (Time) myDisplayUpdateCurrentTime (display_info, &xevent);
     }
+
+    TRACE ("getXServerTime gives timestamp=%u", timestamp);
     return timestamp;
 }
 
