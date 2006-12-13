@@ -28,10 +28,8 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <sys/time.h>
-#include <time.h>
 
+#include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>

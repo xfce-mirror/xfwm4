@@ -24,9 +24,11 @@
 #include <config.h>
 #endif
 
+#include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
+
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
@@ -36,6 +38,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <libxfce4util/libxfce4util.h>
+
 #include "display.h"
 #include "screen.h"
 #include "hints.h"
@@ -1211,7 +1214,6 @@ getXServerTime (DisplayInfo *display_info)
         timestamp = (Time) myDisplayUpdateCurrentTime (display_info, &xevent);
     }
 
-    TRACE ("getXServerTime gives timestamp=%u", timestamp);
     return timestamp;
 }
 

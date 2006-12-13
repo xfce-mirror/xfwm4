@@ -23,10 +23,7 @@
 #include <config.h>
 #endif
 
-#include <sys/types.h>
-#include <sys/time.h>
-#include <time.h>
-
+#include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -508,7 +505,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
     c2 = ((client_focus != c) ? client_focus : NULL);
     if ((c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
-        TRACE ("setting focus to client \"%s\" (0x%lx) with timestamp %u", c->name, c->window, timestamp);
+        TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
         user_focus = c;
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {

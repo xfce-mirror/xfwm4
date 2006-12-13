@@ -22,6 +22,7 @@
 #  include "config.h"
 #endif
 
+#include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/cursorfont.h>
@@ -708,7 +709,6 @@ myDisplayGetCurrentTime (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
 
-    TRACE ("myDisplayGetCurrentTime gives timestamp=%u", display->current_time);
     return (Time) display->current_time;
 }
 
@@ -723,7 +723,6 @@ myDisplayGetTime (DisplayInfo * display, Time timestamp)
         time = getXServerTime (display);
     }
 
-    TRACE ("myDisplayGetTime gives timestamp=%u", time);
     return (time);
 }
 
@@ -732,7 +731,6 @@ myDisplayGetLastUserTime (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
 
-    TRACE ("myDisplayGetLastUserTime gives timestamp=%u", display->last_user_time);
     return (Time) display->last_user_time;
 }
 

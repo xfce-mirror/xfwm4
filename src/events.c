@@ -24,9 +24,8 @@
 #endif
 
 #include <string.h>
-#include <sys/time.h>
-#include <time.h>
 
+#include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -2082,16 +2081,19 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         }
         else if ((ev->message_type == display_info->atoms[NET_ACTIVE_WINDOW]) && (ev->format == 32))
         {
+            gboolean source_is_application;
+            Time ev_time;
+
+            ev_time = myDisplayGetTime (display_info, (Time) ev->data.l[1]);
+            source_is_application = (ev->data.l[0] == 1);
+
             TRACE ("client \"%s\" (0x%lx) has received a NET_ACTIVE_WINDOW event", c->name, c->window);
-            if (ev->data.l[0] != 0)
+            if (source_is_application)
             {
                 Time current = myDisplayGetLastUserTime (display_info);
-                Time ev_time = (Time) ev->data.l[1];
 
                 TRACE ("Time of event received is %u, current XServer time is %u", (unsigned int) ev_time, (unsigned int) current);
-                if ((screen_info->params->prevent_focus_stealing) &&
-                    (ev_time != (Time) CurrentTime) && 
-                    TIMESTAMP_IS_BEFORE(ev_time, current))
+                if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE(ev_time, current))
                 {
                     TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
@@ -2099,11 +2101,12 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 }
                 else
                 {
-                    clientActivate (c, (Time) ev_time);
+                    clientActivate (c, ev_time);
                 }
             }
             else
             {
+                /* The request is either from a pager or an older client, use the most accurate timestamp */
                 clientActivate (c, getXServerTime (display_info));
             }
         }
@@ -2129,12 +2132,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             if ((ev->data.l[0] >= 0) && (ev->data.l[0] < screen_info->workspace_count) && 
                 (ev->data.l[0] != screen_info->current_ws))
             {
-                Time ev_time = (Time) ev->data.l[1];
-                if (ev_time == (Time) CurrentTime)
-                {
-                    ev_time = getXServerTime (display_info);
-                }
-                workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE, ev_time);
+                workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE, 
+                                 myDisplayGetTime (display_info, (Time) ev->data.l[1]));
             }
         }
         else if (((ev->message_type == display_info->atoms[WIN_WORKSPACE_COUNT]) ||

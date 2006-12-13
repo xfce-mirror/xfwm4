@@ -25,9 +25,8 @@
 #  include "config.h"
 #endif
 
-#include <sys/types.h>
-#include <sys/time.h>
-#include <time.h>
+#include <X11/X.h>
+#include <X11/Xlib.h>
 #include <glib.h>
 
 #include "screen.h"

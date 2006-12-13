@@ -26,8 +26,7 @@
 #  include "config.h"
 #endif
 
-#include <sys/types.h>
-#include <sys/time.h>
+#include <X11/X.h>
 #include <X11/Xlib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
