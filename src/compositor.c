@@ -67,17 +67,19 @@
 #define WIN_HAS_CLIENT(cw)              (cw->c)
 #define WIN_HAS_FRAME(cw)               (WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
                                          !FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN))
-#define WIN_NO_SHADOW(cw)               ((cw->c) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
+#define WIN_NO_SHADOW(cw)               ((cw->c) && \
+                                           (FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW) || \
+                                              (cw->c->type & (WINDOW_DOCK | WINDOW_DESKTOP))))
 #define WIN_IS_OVERRIDE(cw)             (cw->attr.override_redirect)
 #define WIN_IS_ARGB(cw)                 (cw->argb)
 #define WIN_IS_OPAQUE(cw)               (((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw)) || (cw->screen_info->overlays))
 #define WIN_IS_NATIVE_OPAQUE(cw)        ((cw->native_opacity) && !WIN_IS_ARGB(cw))
 #define WIN_IS_FULLSCREEN(cw)           ((cw->attr.x <= 0) && \
-                                         (cw->attr.y <= 0) && \
-                                         (cw->attr.width >= cw->screen_info->width) && \
-                                         (cw->attr.height >= cw->screen_info->height))
+                                           (cw->attr.y <= 0) && \
+                                           (cw->attr.width >= cw->screen_info->width) && \
+                                           (cw->attr.height >= cw->screen_info->height))
 #define WIN_IS_SHAPED(cw)               ((WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
-                                         (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
+                                           (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
 #define WIN_IS_VIEWABLE(cw)             (cw->viewable)
 #define WIN_HAS_DAMAGE(cw)              (cw->damage)
 #define WIN_IS_VISIBLE(cw)              (WIN_IS_VIEWABLE(cw) && WIN_HAS_DAMAGE(cw))

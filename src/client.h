@@ -190,9 +190,11 @@
 #define CLIENT_CAN_HIDE_WINDOW(c)       (!(c->transient_for) && \
                                          FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_HIDE) && \
                                          !FLAG_TEST(c->flags, CLIENT_FLAG_SKIP_TASKBAR))
-#define CLIENT_CAN_MAXIMIZE_WINDOW(c)   FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | \
-                                                                     XFWM_FLAG_HAS_RESIZE | \
-                                                                     XFWM_FLAG_IS_RESIZABLE)
+#define CLIENT_CAN_MAXIMIZE_WINDOW(c)   (FLAG_TEST_AND_NOT(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | \
+                                                                          XFWM_FLAG_HAS_RESIZE | \
+                                                                          XFWM_FLAG_IS_RESIZABLE, \
+                                                                          XFWM_FLAG_LEGACY_FULLSCREEN) && \
+                                         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
 #define CLIENT_CAN_STICK_WINDOW(c)      (!(c->transient_for) && \
                                          FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
 
