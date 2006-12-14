@@ -1103,7 +1103,7 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     if (c)
     {
         TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
-        clientPassFocus (c->screen_info, c, c, myDisplayGetCurrentTime (display_info));
+        clientPassFocus (c->screen_info, c, c);
         clientUnframe (c, FALSE);
     }
 }
@@ -1141,7 +1141,7 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) ||
             (c->win_workspace == screen_info->current_ws))
         {
-            clientFocusNew(c, myDisplayGetCurrentTime (display_info));
+            clientFocusNew(c);
         }
     }
     else
@@ -1222,7 +1222,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         if ((ev->event == screen_info->xroot) && (ev->send_event))
         {
             TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
-            clientPassFocus (screen_info, c, c, myDisplayGetCurrentTime (display_info));
+            clientPassFocus (screen_info, c, c);
             clientUnframe (c, FALSE);
             return;
         }
@@ -1237,7 +1237,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         {
             TRACE ("unmapping \"%s\" as ignore_unmap is %i",
                  c->name, c->ignore_unmap);
-            clientPassFocus (screen_info, c, c, myDisplayGetCurrentTime (display_info));
+            clientPassFocus (screen_info, c, c);
             clientUnframe (c, FALSE);
         }
     }

@@ -709,6 +709,7 @@ myDisplayGetCurrentTime (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
 
+    TRACE ("myDisplayGetCurrentTime gives timestamp=%u", (unsigned int) display->current_time);
     return (Time) display->current_time;
 }
 
@@ -723,6 +724,7 @@ myDisplayGetTime (DisplayInfo * display, Time timestamp)
         time = getXServerTime (display);
     }
 
+    TRACE ("myDisplayGetTime gives timestamp=%u", (unsigned int) time);
     return (time);
 }
 
@@ -731,6 +733,7 @@ myDisplayGetLastUserTime (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, (Time) CurrentTime);
 
+    TRACE ("myDisplayGetLastUserTime gives timestamp=%u", (unsigned int) display->last_user_time);
     return (Time) display->last_user_time;
 }
 

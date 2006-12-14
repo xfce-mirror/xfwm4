@@ -956,7 +956,7 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
 
     TRACE ("entering getNetWMUserTime");
 
-    g_return_val_if_fail (window != None, None);
+    g_return_val_if_fail (window != None, FALSE);
 
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_USER_TIME],
                             0L, 1L, FALSE, XA_CARDINAL, &actual_type, &actual_format, &nitems,
@@ -970,7 +970,8 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
             return TRUE;
         }
     }
-    *time = 0L;
+    *time = (Time) 0;
+
     return FALSE;
 }
 
@@ -1214,6 +1215,7 @@ getXServerTime (DisplayInfo *display_info)
         timestamp = (Time) myDisplayUpdateCurrentTime (display_info, &xevent);
     }
 
+    TRACE ("getXServerTime gives timestamp=%u", (unsigned int) timestamp);
     return timestamp;
 }
 

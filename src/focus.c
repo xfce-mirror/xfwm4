@@ -122,7 +122,7 @@ clientFocusTop (ScreenInfo *screen_info, int layer, Time timestamp)
 }
 
 gboolean
-clientFocusNew(Client * c, Time timestamp)
+clientFocusNew(Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -145,7 +145,7 @@ clientFocusNew(Client * c, Time timestamp)
     }
     else if ((client_focus) && (prevent_focus_stealing))
     {
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME) && (c->user_time == (Time) 0))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME) && (c->user_time == (Time) CurrentTime))
         {
             TRACE ("Given startup time is 0, not focusing");
             give_focus = FALSE;
@@ -172,16 +172,16 @@ clientFocusNew(Client * c, Time timestamp)
         clientRaise (c, None);
         clientShow (c, TRUE);
         clientSetFocus (screen_info, c,
-                        timestamp,
+                        myDisplayGetCurrentTime (display_info),
                         FOCUS_IGNORE_MODAL);
     }
     else
     {
         Client *c2 = clientGetFocus();
 
-        if (prevented && c2 && (c2->win_layer == c->win_layer))
+        if ((prevented) && (c2 != NULL) && (c2->win_layer == c->win_layer))
         {
-            TRACE ("clientFocusNew: Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+            TRACE ("clientFocusNew: Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
             FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             clientSortRing(c);
             clientLower (c, c2->frame);
@@ -285,7 +285,7 @@ clientGetPrevious (Client * c, int mask)
 }
 
 void
-clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude, Time timestamp)
+clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
 {
     DisplayInfo *display_info;
     ClientPair top_most;
@@ -359,7 +359,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude, Time times
         new_focus = top_most.prefered ? top_most.prefered : top_most.highest;
     }
     clientSetFocus (screen_info, new_focus,
-                    timestamp,
+                    myDisplayGetCurrentTime (display_info),
                     FOCUS_IGNORE_MODAL | FOCUS_FORCE);
 }
 
@@ -505,7 +505,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
     c2 = ((client_focus != c) ? client_focus : NULL);
     if ((c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
-        TRACE ("setting focus to client \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("setting focus to client \"%s\" (0x%lx) with timestamp %u", c->name, c->window, (unsigned int) timestamp);
         user_focus = c;
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {

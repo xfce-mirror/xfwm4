@@ -1761,6 +1761,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
     c->fullscreen_old_layer = c->win_layer;
 
+    /* net_wm_user_time standard */
+    clientGetUserTime (c);
+
     /* Apply startup notification properties if available */
     sn_client_startup_properties (c);
 
@@ -1929,9 +1932,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY | CFG_FORCE_REDRAW);
 
-    /* net_wm_user_time standard */
-    clientGetUserTime (c);
-
     /* Notify the compositor about this new window */
     compositorAddWindow (display_info, c->frame, c);
 
@@ -1949,7 +1949,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             }
             else
             {
-                clientFocusNew(c, myDisplayGetCurrentTime (display_info));
+                clientFocusNew(c);
                 grabbed = TRUE;
             }
         }
@@ -2349,7 +2349,7 @@ clientHideSingle (Client * c, gboolean change_state)
     display_info = screen_info->display_info;
 
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
-    clientPassFocus(c->screen_info, c, c, myDisplayGetCurrentTime (display_info));
+    clientPassFocus(c->screen_info, c, c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_VISIBLE);

@@ -40,8 +40,7 @@
 void                     clientFocusTop                         (ScreenInfo *, 
                                                                  int,
                                                                  Time);
-gboolean                 clientFocusNew                         (Client *,
-                                                                 Time);
+gboolean                 clientFocusNew                         (Client *);
 gboolean                 clientSelectMask                       (Client *, 
                                                                  int, 
                                                                  int);
@@ -51,8 +50,7 @@ Client                  *clientGetPrevious                      (Client *,
                                                                  int);
 void                     clientPassFocus                        (ScreenInfo *, 
                                                                  Client *, 
-                                                                 Client *,
-                                                                 Time);
+                                                                 Client *);
 gboolean                 clientAcceptFocus                      (Client *);
 void                     clientSortRing                         (Client *);
 void                     clientUpdateFocus                      (ScreenInfo *, 
