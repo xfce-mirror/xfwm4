@@ -94,7 +94,7 @@ msgstr "Activeer focus diefstal preventie"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "Houden aan de standaard ICCCM focus hint"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
@@ -147,7 +147,7 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Minimum venster-grootte om slimme plaatsing te activeren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Size|Small"
@@ -211,7 +211,7 @@ msgstr "Ondoorzichtigheid van popup vensters"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:620
 msgid "Compositor"
-msgstr "Samensteller"
+msgstr "Compositor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
