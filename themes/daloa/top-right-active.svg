@@ -13,9 +13,9 @@
    height="19"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.44"
+   inkscape:version="0.44.1"
    version="1.0"
-   sodipodi:docbase="/home/ofourdan/src/svn/xfwm4/trunk/themes/default"
+   sodipodi:docbase="daloa"
    sodipodi:docname="top-right-active.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
@@ -83,15 +83,6 @@
        y2="9"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.75,0,0,1,0.75,0)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1886"
-       id="linearGradient2791"
-       x1="0"
-       y1="1"
-       x2="0"
-       y2="19"
-       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
