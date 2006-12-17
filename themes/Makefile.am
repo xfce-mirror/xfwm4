@@ -9,6 +9,7 @@ SUBDIRS =								\
 	default-4.2							\
 	katiola								\
 	moheli								\
+	mopti								\
 	sassandra							\
 	stoneage							\
 	therapy								\
