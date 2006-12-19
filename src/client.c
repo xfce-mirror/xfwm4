@@ -1566,7 +1566,10 @@ update_icon_idle_cb (gpointer data)
     g_return_val_if_fail (c, FALSE);
 
     clientUpdateIconPix (c);
-    frameDraw (c, FALSE);
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+    {
+        frameDraw (c, FALSE);
+    }
     c->icon_timeout_id = 0;
 
     return FALSE;
