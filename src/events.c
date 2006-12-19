@@ -1249,14 +1249,18 @@ update_screen_idle_cb (gpointer data)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
 
-    screen_info = (ScreenInfo *) data;
-    display_info = screen_info->display_info;
+    TRACE ("entering update_screen_idle_cb");
 
+    screen_info = (ScreenInfo *) data;
+    g_return_val_if_fail (screen_info, FALSE);
+
+    display_info = screen_info->display_info;
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                     screen_info->width, screen_info->height, screen_info->margins);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
     compositorUpdateScreenSize (screen_info);
+
     return FALSE;
 }
 
@@ -1833,7 +1837,6 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 if ((c->wmhints->flags & IconPixmapHint) && (screen_info->params->show_app_icon))
                 {
                     clientUpdateIcon (c);
-                    frameDraw (c, TRUE);
                 }
                 if (HINTS_ACCEPT_INPUT (c->wmhints))
                 {
@@ -1938,7 +1941,6 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                   (ev->atom == display_info->atoms[KWM_WIN_ICON])))
         {
             clientUpdateIcon (c);
-            frameDraw (c, TRUE);
         }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == display_info->atoms[NET_STARTUP_ID])

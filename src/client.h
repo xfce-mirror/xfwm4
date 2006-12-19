@@ -275,6 +275,8 @@ struct _Client
     unsigned long flags;
     unsigned long wm_flags;
     unsigned long xfwm_flags;
+    /* Timout for asynchronous icon update */
+    guint icon_timeout_id;
     /* Timout to manage blinking decorations for urgent windows */
     guint blink_timeout_id;
     /* Opacity for the compositor */

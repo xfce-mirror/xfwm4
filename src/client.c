@@ -1259,6 +1259,10 @@ clientFree (Client * c)
     {
         g_source_remove (c->blink_timeout_id);
     }
+    if (c->icon_timeout_id)
+    {
+        g_source_remove (c->icon_timeout_id);
+    }
     if (c->name)
     {
         g_free (c->name);
@@ -1503,8 +1507,8 @@ clientGetUserTime (Client * c)
     }
 }
 
-void
-clientUpdateIcon (Client * c)
+static void
+clientUpdateIconPix (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1513,6 +1517,8 @@ clientUpdateIcon (Client * c)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
+
+    TRACE ("entering clientUpdateIconPix for \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -1546,6 +1552,37 @@ clientUpdateIcon (Client * c)
         xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRESSED], icon);
 
         g_object_unref (icon);
+    }
+}
+
+static gboolean
+update_icon_idle_cb (gpointer data)
+{
+    Client *c;
+    
+    TRACE ("entering update_icon_idle_cb");
+
+    c = (Client *) data;
+    g_return_val_if_fail (c, FALSE);
+
+    clientUpdateIconPix (c);
+    frameDraw (c, TRUE);
+    c->icon_timeout_id = 0;
+
+    return FALSE;
+}
+
+void
+clientUpdateIcon (Client * c)
+{
+    g_return_if_fail (c);
+
+    TRACE ("entering clientUpdateIcon for \"%s\" (0x%lx)", c->name, c->window);
+
+    if (c->icon_timeout_id == 0)
+    {
+        c->icon_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, 
+                                              update_icon_idle_cb, c, NULL);
     }
 }
 
@@ -1713,6 +1750,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     c->opacity_locked = getOpacityLock (display_info, c->window);
 
+    /* Timout for asynchronous icon update */
+    c->icon_timeout_id = 0;
     /* Timeout for blinking on urgency */
     c->blink_timeout_id = 0;
 
