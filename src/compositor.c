@@ -2040,7 +2040,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
         cw->extents = None;
     }
 
-    if ((cw->attr.width != width) || (cw->attr.height != height))
+    if ((cw->attr.width != width) || (cw->attr.height != height) || shape_notify)
     {
 #if HAVE_NAME_WINDOW_PIXMAP
         if (cw->name_window_pixmap)
@@ -2049,10 +2049,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
             cw->name_window_pixmap = None;
         }
 #endif
-    }
-
-    if ((cw->attr.width != width) || (cw->attr.height != height) || shape_notify)
-    {
         if (cw->picture)
         {
             XRenderFreePicture (display_info->dpy, cw->picture);
