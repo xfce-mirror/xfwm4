@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="18"
-   height="27"
+   height="29"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.44.1"
@@ -50,7 +50,7 @@
        x1="0"
        y1="0.5"
        x2="0"
-       y2="26.5"
+       y2="28.5"
        gradientTransform="matrix(1,0,0,1,0,0)" />
     <linearGradient
        inkscape:collect="always"
@@ -112,7 +112,7 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,0.5 L 18,0.5 C 18,0.5 18,26 18,26 L 0,26 L 0,0.5 z "
+       d="M 0,0.5 L 18,0.5 C 18,0.5 18,28 18,28 L 0,28 L 0,0.5 z "
        id="path6057" />
   </g>
   <g
@@ -141,13 +141,13 @@
     <g
        style="display:inline"
        id="g1614"
-       transform="translate(3,8)">
+       transform="translate(3,9)">
       <path
          id="rect2266"
          d="M 1,1 L 1,11 L 11,11 L 11,1 L 1,1 z M 4,5 L 8,5 L 8,8 L 4,8 L 4,5 z "
          style="opacity:0.33;fill:black;fill-opacity:1;stroke:black;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
       <path
-         id="rect2275"
+         id="rect2285"
          d="M 2,2 L 2,10 L 10,10 L 10,2 L 2,2 z M 3,4 L 9,4 L 9,9 L 3,9 L 3,4 z "
          style="opacity:1;fill:white;fill-opacity:1;stroke:black;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
@@ -157,8 +157,8 @@
      id="layer5"
      inkscape:label="Shadow">
     <path
-       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
-       d="M 0.5,26.5 L 17.5,26.5"
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.05"
+       d="M 0.5,28.5 L 17.5,28.5"
        id="path6989" />
   </g>
 </svg>

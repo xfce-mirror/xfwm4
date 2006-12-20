@@ -15,7 +15,7 @@
    inkscape:version="0.44.1"
    sodipodi:version="0.32"
    id="svg2"
-   height="27"
+   height="29"
    width="8"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
@@ -50,7 +50,7 @@
        x1="0"
        y1="0.5"
        x2="0"
-       y2="26.5"
+       y2="28.5"
        gradientTransform="matrix(1,0,0,1,0,0)" />
     <linearGradient
        inkscape:collect="always"
@@ -113,7 +113,7 @@
     <path
        id="path6057"
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
-       d="M 8,1 L 3,1 C 3,1 1,1 1,4 L 1,23 C 1,23 1,26 6,26 L 8,26 L 8,26 L 8,1 z " />
+       d="M 8,1 L 3,1 C 3,1 1,1 1,4 L 1,23 C 1,23 1,28 6,28 L 8,28 L 8,28 L 8,1 z " />
   </g>
   <g
      inkscape:label="hilight"
@@ -131,7 +131,7 @@
      inkscape:label="Border">
     <path
        id="rect1319"
-       d="M 8,0 L 8,1 L 3,1 C 3,1 1,1 1,4 C 1,27 1,27 1,27 L 0,27 L 0,0 L 8,0 z "
+       d="M 8,0 L 8,1 L 3,1 C 3,1 1,1 1,4 C 1,29 1,29 1,29 L 0,29 L 0,0 L 8,0 z "
        style="fill:black;fill-opacity:0.50" />
   </g>
   <g
@@ -139,8 +139,8 @@
      id="layer5"
      inkscape:groupmode="layer">
     <path
-       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
-       d="M 2.5,26.5 L 7.5,26.5"
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.05"
+       d="M 2.5,28.5 L 7.5,28.5"
        id="path6989" />
   </g>
 </svg>
