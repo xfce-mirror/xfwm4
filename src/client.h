@@ -198,10 +198,6 @@
 #define CLIENT_CAN_STICK_WINDOW(c)      (!(c->transient_for) && \
                                          FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
 
-#define HINTS_ACCEPT_INPUT(wmhints)     (!(wmhints) || \
-                                         ((wmhints) && !(wmhints->flags & InputHint)) || \
-                                         ((wmhints) && (wmhints->flags & InputHint) && (wmhints->input)))
-
 typedef enum
 {
     UNSET = 0,

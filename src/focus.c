@@ -540,6 +540,12 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
             }
             clientUpdateOpacity (screen_info, c);
         }
+        else if (!client_focus)
+        {
+            /* Hack to prevent loosing focus when all remaining windows won't accept focus, see bug #1853 */
+            XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
+        }
+
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
         {
             pending_focus = c;
