@@ -334,23 +334,6 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
     }
 
-    if ((first  == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION]) ||
-        (second == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION]))
-    {
-        if (action == NET_WM_STATE_ADD)
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-        }
-        else if (action == NET_WM_STATE_REMOVE)
-        {
-            FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-        }
-        else if (action == NET_WM_STATE_TOGGLE)
-        {
-            FLAG_TOGGLE (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-        }
-    }
-
     if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
         (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
         (first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]) ||
@@ -541,6 +524,26 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             clientSetNetState (c);
         }
         frameDraw (c, TRUE);
+    }
+
+    if ((first  == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION]) ||
+        (second == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION]))
+    {
+        if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
+        {
+            FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+            clientSetNetState (c);
+        }
+        else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+            clientSetNetState (c);
+        }
+        else if (action == NET_WM_STATE_TOGGLE)
+        {
+            FLAG_TOGGLE (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+            clientSetNetState (c);
+        }
     }
 }
 
