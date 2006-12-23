@@ -1702,24 +1702,21 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         {
             /* 
                Focus stealing prevention:
-               Some apps tend to focus the window directly. 
-               - If focus stealing prevention is enabled, we revert the 
-                 user set focus to the window that we think has focus and 
-                 then set the demand attention flag.
-               - Otherwise, we update the focus as requested and we raise 
-                 the window so the user can see it.
+               Some apps tend to focus the window directly. If focus stealing prevention is enabled, 
+               we revert the user set focus to the window that we think has focus and then set the 
+               demand attention flag.
              */
             if (screen_info->params->prevent_focus_stealing)
             {
                 TRACE ("Setting focus back to \"%s\" (0x%lx)", user_focus->name, user_focus->window); 
                 clientSetFocus (user_focus->screen_info, user_focus, getXServerTime (display_info), NO_FOCUS_FLAG);
-            }
 
-            if (current_focus)
-            {
-                TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
-                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-                clientSetNetState (c);
+                if (current_focus)
+                {
+                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+                    FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                    clientSetNetState (c);
+                }
             }
         }
 
