@@ -35,6 +35,7 @@
 #include "compositor.h"
 #include "display.h"
 #include "frame.h"
+#include "focus.h"
 #include "hints.h"
 #include "misc.h"
 #include "netwm.h"
@@ -120,7 +121,9 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : hidden");
         data[i++] = display_info->atoms[NET_WM_STATE_HIDDEN];
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
+    /* Do not apply NET_WM_STATE_DEMANDS_ATTENTION if client is already focused */
+    if ((c != clientGetFocusOrPending ()) && 
+        FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
     {
         TRACE ("clientSetNetState : demands_attention");
         data[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
