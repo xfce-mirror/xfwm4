@@ -121,9 +121,7 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : hidden");
         data[i++] = display_info->atoms[NET_WM_STATE_HIDDEN];
     }
-    /* Do not apply NET_WM_STATE_DEMANDS_ATTENTION if client is already focused */
-    if ((c != clientGetFocusOrPending ()) && 
-        FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
     {
         TRACE ("clientSetNetState : demands_attention");
         data[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
@@ -534,8 +532,12 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     {
         if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
-            FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-            clientSetNetState (c);
+            /* Do not apply NET_WM_STATE_DEMANDS_ATTENTION if client is already focused */
+            if (c != clientGetFocusOrPending ())
+            {
+                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                clientSetNetState (c);
+            }
         }
         else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
@@ -544,8 +546,12 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         }
         else if (action == NET_WM_STATE_TOGGLE)
         {
-            FLAG_TOGGLE (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-            clientSetNetState (c);
+            /* Do not apply NET_WM_STATE_DEMANDS_ATTENTION if client is already focused */
+            if (c != clientGetFocusOrPending () || !FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
+            {
+                FLAG_TOGGLE (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                clientSetNetState (c);
+            }
         }
     }
 }
