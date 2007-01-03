@@ -1888,7 +1888,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         c->depth  = screen_info->depth;
     }
 
-#ifdef HAVE_COMPOSITOR
     if (c->depth == 32)
     {
         attributes.background_pixmap = None;
@@ -1896,8 +1895,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         attributes.background_pixel = 0;
         valuemask |= CWBackPixmap|CWBackPixel|CWBorderPixel;
     }
-#endif /* HAVE_COMPOSITOR */
-
 #else  /* HAVE_RENDER */
     /* We don't support multiple depth/visual w/out render */
     c->visual = screen_info->visual;
