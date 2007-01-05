@@ -2,14 +2,14 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Moritz Heiber <moe@xfce.org>, 2003.
-# Fabian Nowak <timystery@arcor.de>, 2006.
+# Fabian Nowak <timystery@arcor.de>, 2006, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2006-08-15 20:12+0200\n"
+"POT-Creation-Date: 2006-11-05 10:39+0100\n"
+"PO-Revision-Date: 2007-01-03 09:37+0100\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Rahmen bei maximierten Fenstern nicht anzeigen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
@@ -137,7 +137,7 @@ msgstr "Zugreifbarkeit"
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr ""
 "Arbeitsflächen wechseln durch Betätigung des\n"
-"Mausrads auf dem Desktop"
+"Mausrads auf der Arbeitsoberfläche"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
 msgid ""
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 "Arbeitsflächen in Abhängigkeit der derzeitigen\n"
-"Desktopanordnung umbrechen"
+"Anordnung umbrechen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Wrap workspaces when the first or last workspace is reached"
@@ -271,7 +271,7 @@ msgstr "Menü"
 
 #: ../mcs-plugin/xfwm4_plugin.c:69
 msgid "Stick"
-msgstr "Haften"
+msgstr "Anheften"
 
 #: ../mcs-plugin/xfwm4_plugin.c:70
 msgid "Shade"
@@ -630,45 +630,44 @@ msgstr "Arbeitsfläche löschen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Move window to next workspace"
-msgstr "Fenster zur nächsten Arbeitsfläche bewegen"
+msgstr "Fenster auf die nächste Arbeitsfläche verschieben"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Move window to previous workspace"
-msgstr "Fenster zur vorherigen Arbeitsfläche bewegen"
+msgstr "Fenster auf die vorige Arbeitsfläche verschieben"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Move window to upper workspace"
-msgstr "Fenster auf obere Arbeitsfläche bewegen"
+msgstr "Fenster auf die obere Arbeitsfläche verschieben"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Move window to bottom workspace"
-msgstr "Fenster auf untere Arbeitsfläche bewegen"
+msgstr "Fenster auf die untere Arbeitsfläche verschieben"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Move window to left workspace"
-msgstr "Fenster auf linke Arbeitsfläche bewegen"
+msgstr "Fenster auf die linke Arbeitsfläche verschieben"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Move window to right workspace"
-msgstr "Fenster auf rechte Arbeitsfläche bewegen"
+msgstr "Fenster auf die rechte Arbeitsfläche verschieben"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Show desktop"
-msgstr "Desktop zeigen"
+msgstr "Arbeitsoberfläche zeigen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Deckkraft der Fensterdekoration"
+msgstr "Fensteraktion abbrechen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "Menü für Fensteraktionen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
 msgid "Move window to workspace %d"
-msgstr "Fenster auf Arbeitsfläche %d bewegen"
+msgstr "Fenster auf Arbeitsfläche %d verschieben"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Cannot open the theme directory !"
@@ -709,17 +708,21 @@ msgstr "Tastenkürzel erstellen für:"
 msgid "Compose shortcut"
 msgstr "Tastenkürzel erstellen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
 msgid "No shortcut"
 msgstr "Kein Tastenkürzel"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:80
+#: ../src/hints.c:81
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (auf %s)"
 
-#: ../src/main.c:132
+#: ../src/main.c:134
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Speicherzugriffsfehler"
@@ -750,11 +753,11 @@ msgstr "_Einrollen"
 
 #: ../src/menu.c:46
 msgid "Un_shade"
-msgstr "Ent_rollen"
+msgstr "_Ausrollen"
 
 #: ../src/menu.c:47
 msgid "S_tick"
-msgstr "Fes_tkleben"
+msgstr "Anhe_ften"
 
 #: ../src/menu.c:48
 msgid "Uns_tick"
@@ -766,11 +769,11 @@ msgstr "_Hilfe"
 
 #: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
-msgstr "Immer obenauf"
+msgstr "Immer zuoberst"
 
 #: ../src/menu.c:52
 msgid "Send to..."
-msgstr "Wechseln zu ..."
+msgstr "Verschieben nach ..."
 
 #: ../src/menu.c:54
 msgid "_Close"
