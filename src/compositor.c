@@ -1124,7 +1124,12 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
                                          * screen_info->params->frame_opacity
                                          / (NET_WM_OPAQUE * 100.0);
 
-                cw->alphaBorderPict = solid_picture (screen_info, FALSE, frame_opacity, 0, 0, 0);
+                cw->alphaBorderPict = solid_picture (screen_info, 
+                                                     FALSE, 
+                                                     frame_opacity, 
+                                                     0.0, /* red   */ 
+                                                     0.0, /* green */ 
+                                                     0.0  /* blue  */);
             }
 
             /* Top Border (title bar) */
@@ -1350,7 +1355,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
             {
                 cw->alphaPict = solid_picture (screen_info, FALSE,
-                                               (double) cw->opacity / NET_WM_OPAQUE, 0, 0, 0);
+                                               (double) cw->opacity / NET_WM_OPAQUE,  
+                                               0.0, /* red   */ 
+                                               0.0, /* green */ 
+                                               0.0  /* blue  */);
             }
             XFixesIntersectRegion (dpy, cw->borderClip, cw->borderClip, cw->borderSize);
             XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, cw->borderClip);
@@ -2798,7 +2806,13 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->gaussianMap = make_gaussian_map(SHADOW_RADIUS);
     presum_gaussian (screen_info);
     screen_info->rootBuffer = None;
-    screen_info->blackPicture = solid_picture (screen_info, TRUE, 1, 0, 0, 0);
+    /* Change following argb values to play with shadow colors */
+    screen_info->blackPicture = solid_picture (screen_info, 
+                                               TRUE, 
+                                               1.0, /* alpha */ 
+                                               0.0, /* red   */ 
+                                               0.0, /* green */ 
+                                               0.0  /* blue  */);
     screen_info->rootTile = None;
     screen_info->allDamage = None;
     screen_info->cwindows = NULL;
