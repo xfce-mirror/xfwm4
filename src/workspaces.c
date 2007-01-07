@@ -391,7 +391,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
         }
     }
 
-    myScreenUngrabPointer (screen_info, timestamp);
+    myScreenUngrabPointer (screen_info);
 }
 
 void

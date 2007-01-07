@@ -168,10 +168,8 @@ gboolean                 myScreenGrabPointer                    (ScreenInfo *,
                                                                  unsigned int,
                                                                  Cursor,
                                                                  Time);
-unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *,
-                                                                 Time);
-unsigned int             myScreenUngrabPointer                  (ScreenInfo *,
-                                                                 Time);
+unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *);
+unsigned int             myScreenUngrabPointer                  (ScreenInfo *);
 void                     myScreenGrabKeys                       (ScreenInfo *);
 void                     myScreenUngrabKeys                     (ScreenInfo *);
 #endif /* INC_SCREEN_H */
