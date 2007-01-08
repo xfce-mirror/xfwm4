@@ -1705,8 +1705,15 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                Some apps tend to focus the window directly. If focus stealing prevention is enabled, 
                we revert the user set focus to the window that we think has focus and then set the 
                demand attention flag.
+
+               Note that focus stealing prevention is ignored between windows of the same group or
+               between windows that have a transient relationship, as some apps tend to play with
+               focus with their "own" windows.
              */
-            if (screen_info->params->prevent_focus_stealing)
+
+            if (screen_info->params->prevent_focus_stealing &&
+                !clientSameGroup (c, user_focus) &&
+                !clientIsTransientOrModalFor (c, user_focus))
             {
                 TRACE ("Setting focus back to \"%s\" (0x%lx)", user_focus->name, user_focus->window); 
                 clientSetFocus (user_focus->screen_info, user_focus, getXServerTime (display_info), NO_FOCUS_FLAG);
