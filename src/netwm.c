@@ -1162,7 +1162,7 @@ clientWindowType (Client * c)
             FLAG_UNSET (c->xfwm_flags,
                 XFWM_FLAG_HAS_BORDER |  XFWM_FLAG_HAS_MOVE |
                 XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
-                XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_STICK);
+                XFWM_FLAG_HAS_MENU);
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_TOOLBAR])
         {
@@ -1172,8 +1172,7 @@ clientWindowType (Client * c)
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
-                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
-                XFWM_FLAG_HAS_STICK);
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE);
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_MENU])
         {
@@ -1187,8 +1186,7 @@ clientWindowType (Client * c)
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
-                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
-                XFWM_FLAG_HAS_STICK);
+                XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE);
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG])
         {
@@ -1220,7 +1218,7 @@ clientWindowType (Client * c)
             FLAG_UNSET (c->xfwm_flags,
                 XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_HIDE |
                 XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_MOVE |
-                XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_HAS_STICK);
+                XFWM_FLAG_HAS_RESIZE);
         }
     }
     else
