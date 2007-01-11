@@ -622,6 +622,79 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
     }
 }
 
+static int 
+edgeGetPart (Client *c, XButtonEvent * ev)
+{
+    int part, x_corner_pixels, y_corner_pixels, x_distance, y_distance;
+
+    /* Corner is 1/3 of the side */
+    x_corner_pixels = MAX(c->width / 3, 50);
+    y_corner_pixels = MAX(c->height / 3, 50);
+
+    /* Distance from event to edge of client window */
+    x_distance = c->width / 2 - abs(c->width / 2 - ev->x);
+    y_distance = c->height / 2 - abs(c->height / 2 - ev->y);
+
+    /* Set a sensible default value */
+    part = CORNER_BOTTOM_RIGHT;
+
+    if (x_distance < x_corner_pixels && y_distance < y_corner_pixels)
+    {
+        /* In a corner */
+        if (ev->x < c->width / 2)
+        {
+            if (ev->y < c->height / 2)
+            {
+                part = CORNER_TOP_LEFT;
+            }
+            else
+            {
+                part = CORNER_BOTTOM_LEFT;
+            }
+        }
+        else
+        {
+            if (ev->y < c->height / 2)
+            {
+                part = CORNER_TOP_RIGHT;
+            }
+            else
+            {
+                part = CORNER_BOTTOM_RIGHT;
+            }
+        }
+    }
+    else
+    {
+        /* Not a corner - some side */
+        if (x_distance / x_corner_pixels < y_distance / y_corner_pixels)
+        {
+            /* Left or right side */
+            if (ev->x < c->width / 2)
+            {
+                part = CORNER_COUNT + SIDE_LEFT;
+            }
+            else
+            {
+                part = CORNER_COUNT + SIDE_RIGHT;
+            }
+        }
+        else
+        {
+            /* Top or bottom side */
+            if (ev->y < c->height / 2)
+            {
+                part = CORNER_COUNT + SIDE_TOP;
+            }
+            else
+            {
+                part = CORNER_COUNT + SIDE_BOTTOM;
+            }
+        }
+    }
+
+    return part;
+}
 static void
 button1Action (Client * c, XButtonEvent * ev)
 {
@@ -804,7 +877,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     ScreenInfo *screen_info;
     Client *c;
     Window win;
-    int state;
+    int state, part;
     gboolean replay;
 
     TRACE ("entering handleButtonPress");
@@ -836,71 +909,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         }
         else if ((ev->button == Button3) && (screen_info->params->easy_click) && (state == screen_info->params->easy_click))
         {
-            int part, x_corner_pixels, y_corner_pixels, x_distance, y_distance;
-
-            /* Corner is 1/3 of the side */
-            x_corner_pixels = MAX(c->width / 3, 50);
-            y_corner_pixels = MAX(c->height / 3, 50);
-
-            /* Distance from event to edge of client window */
-            x_distance = c->width / 2 - abs(c->width / 2 - ev->x);
-            y_distance = c->height / 2 - abs(c->height / 2 - ev->y);
-
-            if (x_distance < x_corner_pixels && y_distance < y_corner_pixels)
-            {
-                /* In a corner */
-                if (ev->x < c->width / 2)
-                {
-                    if (ev->y < c->height / 2)
-                    {
-                        part = CORNER_TOP_LEFT;
-                    }
-                    else
-                    {
-                        part = CORNER_BOTTOM_LEFT;
-                    }
-                }
-                else
-                {
-                    if (ev->y < c->height / 2)
-                    {
-                        part = CORNER_TOP_RIGHT;
-                    }
-                    else
-                    {
-                        part = CORNER_BOTTOM_RIGHT;
-                    }
-                }
-            }
-            else
-            {
-                /* Not a corner - some side */
-                if (x_distance / x_corner_pixels < y_distance / y_corner_pixels)
-                {
-                    /* Left or right side */
-                    if (ev->x < c->width / 2)
-                    {
-                        part = CORNER_COUNT + SIDE_LEFT;
-                    }
-                    else
-                    {
-                        part = CORNER_COUNT + SIDE_RIGHT;
-                    }
-                }
-                else
-                {
-                    /* Top or bottom side */
-                    if (ev->y < c->height / 2)
-                    {
-                        part = CORNER_COUNT + SIDE_TOP;
-                    }
-                    else
-                    {
-                        part = CORNER_COUNT + SIDE_BOTTOM;
-                    }
-                }
-            }
-
+            part = edgeGetPart (c, ev);
             edgeButton (c, part, ev);
         }
         else if (WIN_IS_BUTTON (win))
