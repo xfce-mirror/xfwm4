@@ -587,10 +587,15 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 static void
 edgeButton (Client * c, int part, XButtonEvent * ev)
 {
+    ScreenInfo *screen_info;
+    int state;
+
+    screen_info = c->screen_info;
+    state = ev->state & MODIFIER_MASK;
+
     if (ev->button == Button2)
     {
         XfwmButtonClickType tclick;
-        ScreenInfo *screen_info = c->screen_info;
 
         tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, FALSE);
         if (tclick == XFWM_BUTTON_CLICK)
@@ -602,20 +607,18 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
             moveRequest (c, (XEvent *) ev);
         }
     }
-    else
+    else if ((ev->button == Button1) || (ev->button == Button3))
     {
-        if (ev->button == Button1)
+        if ((ev->button == Button1) ||
+            ((screen_info->params->easy_click) && (state == screen_info->params->easy_click)))
         {
             if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
             {
-                clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
+                clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
             }
             clientRaise (c, None);
         }
-        if ((ev->button == Button1) || (ev->button == Button3))
-        {
-            resizeRequest (c, part, (XEvent *) ev);
-        }
+        resizeRequest (c, part, (XEvent *) ev);
     }
 }
 
