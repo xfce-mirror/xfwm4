@@ -375,10 +375,17 @@ static void
 handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 {
     ScreenInfo *screen_info;
+    ScreenInfo *ev_screen_info;
     Client *c;
     int key;
 
     TRACE ("entering handleKeyEvent");
+
+    ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
+    if (!ev_screen_info)
+    {
+        return;
+    }
 
     c = clientGetFocus ();
     if (c)
@@ -498,19 +505,13 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     }
     else
     {
-        screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
-        if (!screen_info)
-        {
-            return;
-        }
-
-        key = getKeyPressed (screen_info, ev);
+        key = getKeyPressed (ev_screen_info, ev);
         switch (key)
         {
             case KEY_CYCLE_WINDOWS:
-                if (screen_info->clients)
+                if (ev_screen_info->clients)
                 {
-                    clientCycle (screen_info->clients->prev, (XEvent *) ev);
+                    clientCycle (ev_screen_info->clients->prev, (XEvent *) ev);
                 }
                 break;
             case KEY_CLOSE_WINDOW:
@@ -523,35 +524,32 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 break;
         }
     }
-    /*
-       Here we know that "screen_info" is defined, otherwise, we would
-       already have returned...
-     */
+
     switch (key)
     {
         case KEY_NEXT_WORKSPACE:
-            workspaceSwitch (screen_info, screen_info->current_ws + 1, NULL, TRUE, ev->time);
+            workspaceSwitch (ev_screen_info, ev_screen_info->current_ws + 1, NULL, TRUE, ev->time);
             break;
         case KEY_PREV_WORKSPACE:
-            workspaceSwitch (screen_info, screen_info->current_ws - 1, NULL, TRUE, ev->time);
+            workspaceSwitch (ev_screen_info, ev_screen_info->current_ws - 1, NULL, TRUE, ev->time);
             break;
         case KEY_UP_WORKSPACE:
-            workspaceMove(screen_info, -1, 0, NULL, ev->time);
+            workspaceMove(ev_screen_info, -1, 0, NULL, ev->time);
             break;
         case KEY_DOWN_WORKSPACE:
-            workspaceMove(screen_info, 1, 0, NULL, ev->time);
+            workspaceMove(ev_screen_info, 1, 0, NULL, ev->time);
             break;
         case KEY_LEFT_WORKSPACE:
-            workspaceMove(screen_info, 0, -1, NULL, ev->time);
+            workspaceMove(ev_screen_info, 0, -1, NULL, ev->time);
             break;
         case KEY_RIGHT_WORKSPACE:
-            workspaceMove(screen_info, 0, 1, NULL, ev->time);
+            workspaceMove(ev_screen_info, 0, 1, NULL, ev->time);
             break;
         case KEY_ADD_WORKSPACE:
-            workspaceSetCount (screen_info, screen_info->workspace_count + 1);
+            workspaceSetCount (ev_screen_info, ev_screen_info->workspace_count + 1);
             break;
         case KEY_DEL_WORKSPACE:
-            workspaceSetCount (screen_info, screen_info->workspace_count - 1);
+            workspaceSetCount (ev_screen_info, ev_screen_info->workspace_count - 1);
             break;
         case KEY_WORKSPACE_1:
         case KEY_WORKSPACE_2:
@@ -565,13 +563,13 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         case KEY_WORKSPACE_10:
         case KEY_WORKSPACE_11:
         case KEY_WORKSPACE_12:
-            if (key - KEY_WORKSPACE_1 < screen_info->workspace_count)
+            if (key - KEY_WORKSPACE_1 < ev_screen_info->workspace_count)
             {
-                workspaceSwitch (screen_info, key - KEY_WORKSPACE_1, NULL, TRUE, ev->time);
+                workspaceSwitch (ev_screen_info, key - KEY_WORKSPACE_1, NULL, TRUE, ev->time);
             }
             break;
         case KEY_SHOW_DESKTOP:
-            toggle_show_desktop (screen_info);
+            toggle_show_desktop (ev_screen_info);
             break;
         default:
             break;
