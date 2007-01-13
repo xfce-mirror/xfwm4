@@ -1,3 +1,47 @@
+2006-12-04 20:32  olivier
+
+	* src/events.c: Backport a fix for a huge X resources leak in
+	  handleMappingNotify () (bug #2618)
+
+2006-11-13 07:46  aalam
+
+	* po/pa.po: update for Punjabi by amanpreetalam
+
+2006-11-12 09:27  olivier
+
+	* src/keyboard.c: Fix g_ascii_strup/strdown() with length -1 on
+	  FC6/x86_64 (Bug #2563)
+
+2006-11-01 21:36  olivier
+
+	* po/af.po, po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po,
+	  po/ca.po, po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/eo.po,
+	  po/es.po, po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po,
+	  po/fr.po, po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po,
+	  po/ja.po, po/ko.po, po/ku.po, po/lt.po, po/mr.po, po/ms.po,
+	  po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sl.po, po/sq.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po: Resync po
+
+2006-11-01 12:27  olivier
+
+	* src/events.c: Do not raise on WM_TRANSIENT_FOR property change,
+	  fix bug #2483.
+
+2006-08-26 21:20  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2006-08-26 21:02  olivier
+
+	* doc/C/xfwm4.html, doc/C/xfwm4.xml, doc/fr/xfwm4.html:
+	  Documentation fix (bug #1607)
+
+2006-08-26 21:02  olivier
+
+	* src/focus.c: Plug grab leak
+
 2006-07-04 17:42  olivier
 
 	* po/af.po, po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po,
@@ -21,15 +65,14 @@
 	  po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
 	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sl.po, po/sq.po,
 	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
-	  po/zh_CN.po, po/zh_TW.po, src/frame.c: Backport from trunk, fix
-	  a bug in shape computation, that showed when the frame was
-	  smaller than the corners pixmaps (this bug was there from the
-	  beginning!)
+	  po/zh_CN.po, po/zh_TW.po, src/frame.c: Backport from trunk, fix a
+	  bug in shape computation, that showed when the frame was smaller
+	  than the corners pixmaps (this bug was there from the beginning!)
 
 2006-06-22 19:49  olivier
 
-	* src/display.c: Woops, revert, gtk+ does that for us (I forgot
-	  gtk in the equation).
+	* src/display.c: Woops, revert, gtk+ does that for us (I forgot gtk
+	  in the equation).
 
 2006-06-22 19:42  olivier
 
@@ -158,8 +201,8 @@
 
 2006-05-20 19:54  olivier
 
-	* src/hints.c: Backport from trunk, as I suspect an issue with
-	  that code in the 4.2 branch in some cases.
+	* src/hints.c: Backport from trunk, as I suspect an issue with that
+	  code in the 4.2 branch in some cases.
 
 2006-05-16 19:04  olivier
 
@@ -808,47 +851,31 @@
 	  xfdesktop/branches/xfce_4_2/po/xfdesktop.pot,
 	  xfdesktop/branches/xfce_4_2/po/zh_CN.po,
 	  xfdesktop/branches/xfce_4_2/po/zh_TW.po,
-	  xffm/branches/xfce_4_2/po/af.po,
-	  xffm/branches/xfce_4_2/po/ar.po,
-	  xffm/branches/xfce_4_2/po/az.po,
-	  xffm/branches/xfce_4_2/po/bg.po,
+	  xffm/branches/xfce_4_2/po/af.po, xffm/branches/xfce_4_2/po/ar.po,
+	  xffm/branches/xfce_4_2/po/az.po, xffm/branches/xfce_4_2/po/bg.po,
 	  xffm/branches/xfce_4_2/po/bn_IN.po,
-	  xffm/branches/xfce_4_2/po/ca.po,
-	  xffm/branches/xfce_4_2/po/cs.po,
+	  xffm/branches/xfce_4_2/po/ca.po, xffm/branches/xfce_4_2/po/cs.po,
 	  xffm/branches/xfce_4_2/po/de.po,
 	  xffm/branches/xfce_4_2/po/en_GB.po,
 	  xffm/branches/xfce_4_2/po/es.po,
 	  xffm/branches/xfce_4_2/po/es_MX.po,
-	  xffm/branches/xfce_4_2/po/et.po,
-	  xffm/branches/xfce_4_2/po/eu.po,
-	  xffm/branches/xfce_4_2/po/fa.po,
-	  xffm/branches/xfce_4_2/po/fi.po,
-	  xffm/branches/xfce_4_2/po/fr.po,
-	  xffm/branches/xfce_4_2/po/gu.po,
-	  xffm/branches/xfce_4_2/po/he.po,
-	  xffm/branches/xfce_4_2/po/hi.po,
-	  xffm/branches/xfce_4_2/po/hu.po,
-	  xffm/branches/xfce_4_2/po/it.po,
-	  xffm/branches/xfce_4_2/po/ja.po,
-	  xffm/branches/xfce_4_2/po/ko.po,
-	  xffm/branches/xfce_4_2/po/ku.po,
-	  xffm/branches/xfce_4_2/po/lt.po,
-	  xffm/branches/xfce_4_2/po/mr.po,
-	  xffm/branches/xfce_4_2/po/ms.po,
+	  xffm/branches/xfce_4_2/po/et.po, xffm/branches/xfce_4_2/po/eu.po,
+	  xffm/branches/xfce_4_2/po/fa.po, xffm/branches/xfce_4_2/po/fi.po,
+	  xffm/branches/xfce_4_2/po/fr.po, xffm/branches/xfce_4_2/po/gu.po,
+	  xffm/branches/xfce_4_2/po/he.po, xffm/branches/xfce_4_2/po/hi.po,
+	  xffm/branches/xfce_4_2/po/hu.po, xffm/branches/xfce_4_2/po/it.po,
+	  xffm/branches/xfce_4_2/po/ja.po, xffm/branches/xfce_4_2/po/ko.po,
+	  xffm/branches/xfce_4_2/po/ku.po, xffm/branches/xfce_4_2/po/lt.po,
+	  xffm/branches/xfce_4_2/po/mr.po, xffm/branches/xfce_4_2/po/ms.po,
 	  xffm/branches/xfce_4_2/po/nb_NO.po,
-	  xffm/branches/xfce_4_2/po/nl.po,
-	  xffm/branches/xfce_4_2/po/pa.po,
+	  xffm/branches/xfce_4_2/po/nl.po, xffm/branches/xfce_4_2/po/pa.po,
 	  xffm/branches/xfce_4_2/po/pl.po,
 	  xffm/branches/xfce_4_2/po/pt_BR.po,
 	  xffm/branches/xfce_4_2/po/pt_PT.po,
-	  xffm/branches/xfce_4_2/po/sk.po,
-	  xffm/branches/xfce_4_2/po/sl.po,
-	  xffm/branches/xfce_4_2/po/sq.po,
-	  xffm/branches/xfce_4_2/po/sv.po,
-	  xffm/branches/xfce_4_2/po/ta.po,
-	  xffm/branches/xfce_4_2/po/tr.po,
-	  xffm/branches/xfce_4_2/po/uk.po,
-	  xffm/branches/xfce_4_2/po/vi.po,
+	  xffm/branches/xfce_4_2/po/sk.po, xffm/branches/xfce_4_2/po/sl.po,
+	  xffm/branches/xfce_4_2/po/sq.po, xffm/branches/xfce_4_2/po/sv.po,
+	  xffm/branches/xfce_4_2/po/ta.po, xffm/branches/xfce_4_2/po/tr.po,
+	  xffm/branches/xfce_4_2/po/uk.po, xffm/branches/xfce_4_2/po/vi.po,
 	  xffm/branches/xfce_4_2/po/xffm.pot,
 	  xffm/branches/xfce_4_2/po/zh_CN.po,
 	  xffm/branches/xfce_4_2/po/zh_TW.po,
@@ -900,14 +927,13 @@
 	  xfprint/branches/xfce_4_2/po/zh_CN.po,
 	  xfprint/branches/xfce_4_2/po/zh_TW.po, po/af.po, po/ar.po,
 	  po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po,
-	  po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
-	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
-	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
-	  po/ko.po, po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po,
-	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po,
-	  po/ro.po, po/ru.po, po/sk.po, po/sl.po, po/sq.po, po/sv.po,
-	  po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/zh_CN.po,
-	  po/zh_TW.po: Bump.
+	  po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sl.po, po/sq.po, po/sv.po, po/ta.po, po/tr.po,
+	  po/uk.po, po/vi.po, po/zh_CN.po, po/zh_TW.po: Bump.
 
 2006-04-03 20:48  olivier
 
@@ -1026,8 +1052,8 @@
 	  xffm/branches/xfce_4_2/configure.ac,
 	  xffm/branches/xfce_4_2/po/sq.po,
 	  xfprint/branches/xfce_4_2/configure.ac,
-	  xfprint/branches/xfce_4_2/po/sq.po, configure.ac, po/sq.po:
-	  Added Albanian translations by Besnik Bleta <besnik@spymac.com>.
+	  xfprint/branches/xfce_4_2/po/sq.po, configure.ac, po/sq.po: Added
+	  Albanian translations by Besnik Bleta <besnik@spymac.com>.
 
 2006-03-03 17:39  olivier
 
@@ -1041,9 +1067,9 @@
 2006-02-17 11:49  olivier
 
 	* src/poswin.c: Seems that the popup displaying window size and/or
-	  position is confusing the event management so that a button
-	  press followed immediatly by a button release misses the release
-	  event, so don't use a gtk_widget_show_now () (Fix bug #1467)
+	  position is confusing the event management so that a button press
+	  followed immediatly by a button release misses the release event,
+	  so don't use a gtk_widget_show_now () (Fix bug #1467)
 
 2006-02-13 16:33  olivier
 
@@ -1082,14 +1108,14 @@
 
 	* configure.ac, mcs-plugin/Makefile.am, po/af.po, po/ar.po,
 	  po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po,
-	  po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
-	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
-	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
-	  po/ko.po, po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po,
-	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po,
-	  po/ro.po, po/ru.po, po/sk.po, po/sl.po, po/sv.po, po/ta.po,
-	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
-	  po/zh_TW.po: Update version number.
+	  po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sl.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
+	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po: Update version
+	  number.
 
 2006-01-02 21:38  olivier
 
@@ -1107,136 +1133,101 @@
 	  libxfcegui4/trunk/po/gu.po, libxfcegui4/trunk/po/he.po,
 	  libxfcegui4/trunk/po/hy.po, libxfcegui4/trunk/po/it.po,
 	  libxfcegui4/trunk/po/ja.po, libxfcegui4/trunk/po/ko.po,
-	  libxfcegui4/trunk/po/libxfcegui4.pot,
-	  libxfcegui4/trunk/po/lt.po, libxfcegui4/trunk/po/mr.po,
-	  libxfcegui4/trunk/po/nl.po, libxfcegui4/trunk/po/pa.po,
-	  libxfcegui4/trunk/po/pl.po, libxfcegui4/trunk/po/pt_BR.po,
-	  libxfcegui4/trunk/po/ro.po, libxfcegui4/trunk/po/ru.po,
-	  libxfcegui4/trunk/po/sk.po, libxfcegui4/trunk/po/sv.po,
-	  libxfcegui4/trunk/po/ta.po, libxfcegui4/trunk/po/uk.po,
-	  libxfcegui4/trunk/po/zh_CN.po, libxfcegui4/trunk/po/zh_TW.po,
-	  terminal/trunk/po/Terminal.pot, terminal/trunk/po/de.po,
-	  terminal/trunk/po/en_GB.po, terminal/trunk/po/es.po,
-	  terminal/trunk/po/eu.po, terminal/trunk/po/fi.po,
-	  terminal/trunk/po/fr.po, terminal/trunk/po/he.po,
-	  terminal/trunk/po/hu.po, terminal/trunk/po/it.po,
-	  terminal/trunk/po/ja.po, terminal/trunk/po/ko.po,
-	  terminal/trunk/po/nl.po, terminal/trunk/po/pt_BR.po,
-	  terminal/trunk/po/ru.po, terminal/trunk/po/vi.po,
-	  terminal/trunk/po/zh_CN.po, terminal/trunk/po/zh_TW.po,
-	  thunar/trunk/po/ca.po, thunar/trunk/po/de.po,
-	  thunar/trunk/po/el.po, thunar/trunk/po/es.po,
-	  thunar/trunk/po/fr.po, thunar/trunk/po/hu.po,
-	  thunar/trunk/po/it.po, thunar/trunk/po/ja.po,
-	  thunar/trunk/po/pt_BR.po, xfcalendar/trunk/po/POTFILES.in,
-	  xfcalendar/trunk/po/ar.po, xfcalendar/trunk/po/az.po,
-	  xfcalendar/trunk/po/be.po, xfcalendar/trunk/po/bg.po,
-	  xfcalendar/trunk/po/bn_IN.po, xfcalendar/trunk/po/ca.po,
-	  xfcalendar/trunk/po/cs.po, xfcalendar/trunk/po/de.po,
-	  xfcalendar/trunk/po/el.po, xfcalendar/trunk/po/en_GB.po,
-	  xfcalendar/trunk/po/eo.po, xfcalendar/trunk/po/es.po,
-	  xfcalendar/trunk/po/et.po, xfcalendar/trunk/po/eu.po,
-	  xfcalendar/trunk/po/fa.po, xfcalendar/trunk/po/fi.po,
-	  xfcalendar/trunk/po/fr.po, xfcalendar/trunk/po/gu.po,
-	  xfcalendar/trunk/po/he.po, xfcalendar/trunk/po/hi.po,
-	  xfcalendar/trunk/po/hy.po, xfcalendar/trunk/po/it.po,
-	  xfcalendar/trunk/po/ja.po, xfcalendar/trunk/po/ko.po,
-	  xfcalendar/trunk/po/lt.po, xfcalendar/trunk/po/mr.po,
-	  xfcalendar/trunk/po/ms.po, xfcalendar/trunk/po/nb_NO.po,
-	  xfcalendar/trunk/po/nl.po, xfcalendar/trunk/po/orage.pot,
-	  xfcalendar/trunk/po/pa.po, xfcalendar/trunk/po/pl.po,
-	  xfcalendar/trunk/po/pt_BR.po, xfcalendar/trunk/po/pt_PT.po,
-	  xfcalendar/trunk/po/ro.po, xfcalendar/trunk/po/ru.po,
-	  xfcalendar/trunk/po/sk.po, xfcalendar/trunk/po/sv.po,
-	  xfcalendar/trunk/po/ta.po, xfcalendar/trunk/po/tr.po,
-	  xfcalendar/trunk/po/uk.po, xfcalendar/trunk/po/vi.po,
-	  xfcalendar/trunk/po/zh_CN.po, xfcalendar/trunk/po/zh_TW.po,
-	  xfce-mcs-manager/trunk/po/ar.po,
-	  xfce-mcs-manager/trunk/po/az.po,
-	  xfce-mcs-manager/trunk/po/be.po,
+	  libxfcegui4/trunk/po/libxfcegui4.pot, libxfcegui4/trunk/po/lt.po,
+	  libxfcegui4/trunk/po/mr.po, libxfcegui4/trunk/po/nl.po,
+	  libxfcegui4/trunk/po/pa.po, libxfcegui4/trunk/po/pl.po,
+	  libxfcegui4/trunk/po/pt_BR.po, libxfcegui4/trunk/po/ro.po,
+	  libxfcegui4/trunk/po/ru.po, libxfcegui4/trunk/po/sk.po,
+	  libxfcegui4/trunk/po/sv.po, libxfcegui4/trunk/po/ta.po,
+	  libxfcegui4/trunk/po/uk.po, libxfcegui4/trunk/po/zh_CN.po,
+	  libxfcegui4/trunk/po/zh_TW.po, terminal/trunk/po/Terminal.pot,
+	  terminal/trunk/po/de.po, terminal/trunk/po/en_GB.po,
+	  terminal/trunk/po/es.po, terminal/trunk/po/eu.po,
+	  terminal/trunk/po/fi.po, terminal/trunk/po/fr.po,
+	  terminal/trunk/po/he.po, terminal/trunk/po/hu.po,
+	  terminal/trunk/po/it.po, terminal/trunk/po/ja.po,
+	  terminal/trunk/po/ko.po, terminal/trunk/po/nl.po,
+	  terminal/trunk/po/pt_BR.po, terminal/trunk/po/ru.po,
+	  terminal/trunk/po/vi.po, terminal/trunk/po/zh_CN.po,
+	  terminal/trunk/po/zh_TW.po, thunar/trunk/po/ca.po,
+	  thunar/trunk/po/de.po, thunar/trunk/po/el.po,
+	  thunar/trunk/po/es.po, thunar/trunk/po/fr.po,
+	  thunar/trunk/po/hu.po, thunar/trunk/po/it.po,
+	  thunar/trunk/po/ja.po, thunar/trunk/po/pt_BR.po,
+	  xfcalendar/trunk/po/POTFILES.in, xfcalendar/trunk/po/ar.po,
+	  xfcalendar/trunk/po/az.po, xfcalendar/trunk/po/be.po,
+	  xfcalendar/trunk/po/bg.po, xfcalendar/trunk/po/bn_IN.po,
+	  xfcalendar/trunk/po/ca.po, xfcalendar/trunk/po/cs.po,
+	  xfcalendar/trunk/po/de.po, xfcalendar/trunk/po/el.po,
+	  xfcalendar/trunk/po/en_GB.po, xfcalendar/trunk/po/eo.po,
+	  xfcalendar/trunk/po/es.po, xfcalendar/trunk/po/et.po,
+	  xfcalendar/trunk/po/eu.po, xfcalendar/trunk/po/fa.po,
+	  xfcalendar/trunk/po/fi.po, xfcalendar/trunk/po/fr.po,
+	  xfcalendar/trunk/po/gu.po, xfcalendar/trunk/po/he.po,
+	  xfcalendar/trunk/po/hi.po, xfcalendar/trunk/po/hy.po,
+	  xfcalendar/trunk/po/it.po, xfcalendar/trunk/po/ja.po,
+	  xfcalendar/trunk/po/ko.po, xfcalendar/trunk/po/lt.po,
+	  xfcalendar/trunk/po/mr.po, xfcalendar/trunk/po/ms.po,
+	  xfcalendar/trunk/po/nb_NO.po, xfcalendar/trunk/po/nl.po,
+	  xfcalendar/trunk/po/orage.pot, xfcalendar/trunk/po/pa.po,
+	  xfcalendar/trunk/po/pl.po, xfcalendar/trunk/po/pt_BR.po,
+	  xfcalendar/trunk/po/pt_PT.po, xfcalendar/trunk/po/ro.po,
+	  xfcalendar/trunk/po/ru.po, xfcalendar/trunk/po/sk.po,
+	  xfcalendar/trunk/po/sv.po, xfcalendar/trunk/po/ta.po,
+	  xfcalendar/trunk/po/tr.po, xfcalendar/trunk/po/uk.po,
+	  xfcalendar/trunk/po/vi.po, xfcalendar/trunk/po/zh_CN.po,
+	  xfcalendar/trunk/po/zh_TW.po, xfce-mcs-manager/trunk/po/ar.po,
+	  xfce-mcs-manager/trunk/po/az.po, xfce-mcs-manager/trunk/po/be.po,
 	  xfce-mcs-manager/trunk/po/bg.po,
 	  xfce-mcs-manager/trunk/po/bn_IN.po,
-	  xfce-mcs-manager/trunk/po/ca.po,
-	  xfce-mcs-manager/trunk/po/cs.po,
-	  xfce-mcs-manager/trunk/po/de.po,
-	  xfce-mcs-manager/trunk/po/el.po,
+	  xfce-mcs-manager/trunk/po/ca.po, xfce-mcs-manager/trunk/po/cs.po,
+	  xfce-mcs-manager/trunk/po/de.po, xfce-mcs-manager/trunk/po/el.po,
 	  xfce-mcs-manager/trunk/po/en_GB.po,
-	  xfce-mcs-manager/trunk/po/eo.po,
-	  xfce-mcs-manager/trunk/po/es.po,
+	  xfce-mcs-manager/trunk/po/eo.po, xfce-mcs-manager/trunk/po/es.po,
 	  xfce-mcs-manager/trunk/po/es_MX.po,
-	  xfce-mcs-manager/trunk/po/et.po,
-	  xfce-mcs-manager/trunk/po/eu.po,
-	  xfce-mcs-manager/trunk/po/fa.po,
-	  xfce-mcs-manager/trunk/po/fi.po,
-	  xfce-mcs-manager/trunk/po/fr.po,
-	  xfce-mcs-manager/trunk/po/gu.po,
-	  xfce-mcs-manager/trunk/po/he.po,
-	  xfce-mcs-manager/trunk/po/hi.po,
-	  xfce-mcs-manager/trunk/po/hu.po,
-	  xfce-mcs-manager/trunk/po/it.po,
-	  xfce-mcs-manager/trunk/po/ja.po,
-	  xfce-mcs-manager/trunk/po/ko.po,
-	  xfce-mcs-manager/trunk/po/lt.po,
-	  xfce-mcs-manager/trunk/po/mr.po,
+	  xfce-mcs-manager/trunk/po/et.po, xfce-mcs-manager/trunk/po/eu.po,
+	  xfce-mcs-manager/trunk/po/fa.po, xfce-mcs-manager/trunk/po/fi.po,
+	  xfce-mcs-manager/trunk/po/fr.po, xfce-mcs-manager/trunk/po/gu.po,
+	  xfce-mcs-manager/trunk/po/he.po, xfce-mcs-manager/trunk/po/hi.po,
+	  xfce-mcs-manager/trunk/po/hu.po, xfce-mcs-manager/trunk/po/it.po,
+	  xfce-mcs-manager/trunk/po/ja.po, xfce-mcs-manager/trunk/po/ko.po,
+	  xfce-mcs-manager/trunk/po/lt.po, xfce-mcs-manager/trunk/po/mr.po,
 	  xfce-mcs-manager/trunk/po/ms.po,
 	  xfce-mcs-manager/trunk/po/nb_NO.po,
-	  xfce-mcs-manager/trunk/po/nl.po,
-	  xfce-mcs-manager/trunk/po/pa.po,
+	  xfce-mcs-manager/trunk/po/nl.po, xfce-mcs-manager/trunk/po/pa.po,
 	  xfce-mcs-manager/trunk/po/pl.po,
 	  xfce-mcs-manager/trunk/po/pt_BR.po,
 	  xfce-mcs-manager/trunk/po/pt_PT.po,
-	  xfce-mcs-manager/trunk/po/ro.po,
-	  xfce-mcs-manager/trunk/po/ru.po,
-	  xfce-mcs-manager/trunk/po/sk.po,
-	  xfce-mcs-manager/trunk/po/sv.po,
-	  xfce-mcs-manager/trunk/po/ta.po,
-	  xfce-mcs-manager/trunk/po/tr.po,
-	  xfce-mcs-manager/trunk/po/uk.po,
-	  xfce-mcs-manager/trunk/po/vi.po,
+	  xfce-mcs-manager/trunk/po/ro.po, xfce-mcs-manager/trunk/po/ru.po,
+	  xfce-mcs-manager/trunk/po/sk.po, xfce-mcs-manager/trunk/po/sv.po,
+	  xfce-mcs-manager/trunk/po/ta.po, xfce-mcs-manager/trunk/po/tr.po,
+	  xfce-mcs-manager/trunk/po/uk.po, xfce-mcs-manager/trunk/po/vi.po,
 	  xfce-mcs-manager/trunk/po/xfce-mcs-manager.pot,
 	  xfce-mcs-manager/trunk/po/zh_CN.po,
 	  xfce-mcs-manager/trunk/po/zh_TW.po,
-	  xfce-mcs-plugins/trunk/po/ar.po,
-	  xfce-mcs-plugins/trunk/po/az.po,
-	  xfce-mcs-plugins/trunk/po/be.po,
-	  xfce-mcs-plugins/trunk/po/bg.po,
+	  xfce-mcs-plugins/trunk/po/ar.po, xfce-mcs-plugins/trunk/po/az.po,
+	  xfce-mcs-plugins/trunk/po/be.po, xfce-mcs-plugins/trunk/po/bg.po,
 	  xfce-mcs-plugins/trunk/po/bn_IN.po,
-	  xfce-mcs-plugins/trunk/po/ca.po,
-	  xfce-mcs-plugins/trunk/po/cs.po,
-	  xfce-mcs-plugins/trunk/po/de.po,
-	  xfce-mcs-plugins/trunk/po/el.po,
+	  xfce-mcs-plugins/trunk/po/ca.po, xfce-mcs-plugins/trunk/po/cs.po,
+	  xfce-mcs-plugins/trunk/po/de.po, xfce-mcs-plugins/trunk/po/el.po,
 	  xfce-mcs-plugins/trunk/po/en_GB.po,
-	  xfce-mcs-plugins/trunk/po/eo.po,
-	  xfce-mcs-plugins/trunk/po/es.po,
+	  xfce-mcs-plugins/trunk/po/eo.po, xfce-mcs-plugins/trunk/po/es.po,
 	  xfce-mcs-plugins/trunk/po/es_MX.po,
-	  xfce-mcs-plugins/trunk/po/et.po,
-	  xfce-mcs-plugins/trunk/po/eu.po,
-	  xfce-mcs-plugins/trunk/po/fa.po,
-	  xfce-mcs-plugins/trunk/po/fi.po,
-	  xfce-mcs-plugins/trunk/po/fr.po,
-	  xfce-mcs-plugins/trunk/po/gu.po,
-	  xfce-mcs-plugins/trunk/po/he.po,
-	  xfce-mcs-plugins/trunk/po/hi.po,
-	  xfce-mcs-plugins/trunk/po/hu.po,
-	  xfce-mcs-plugins/trunk/po/it.po,
-	  xfce-mcs-plugins/trunk/po/ja.po,
-	  xfce-mcs-plugins/trunk/po/ko.po,
-	  xfce-mcs-plugins/trunk/po/lt.po,
-	  xfce-mcs-plugins/trunk/po/mr.po,
-	  xfce-mcs-plugins/trunk/po/ms.po,
-	  xfce-mcs-plugins/trunk/po/nl.po,
-	  xfce-mcs-plugins/trunk/po/pa.po,
-	  xfce-mcs-plugins/trunk/po/pl.po,
+	  xfce-mcs-plugins/trunk/po/et.po, xfce-mcs-plugins/trunk/po/eu.po,
+	  xfce-mcs-plugins/trunk/po/fa.po, xfce-mcs-plugins/trunk/po/fi.po,
+	  xfce-mcs-plugins/trunk/po/fr.po, xfce-mcs-plugins/trunk/po/gu.po,
+	  xfce-mcs-plugins/trunk/po/he.po, xfce-mcs-plugins/trunk/po/hi.po,
+	  xfce-mcs-plugins/trunk/po/hu.po, xfce-mcs-plugins/trunk/po/it.po,
+	  xfce-mcs-plugins/trunk/po/ja.po, xfce-mcs-plugins/trunk/po/ko.po,
+	  xfce-mcs-plugins/trunk/po/lt.po, xfce-mcs-plugins/trunk/po/mr.po,
+	  xfce-mcs-plugins/trunk/po/ms.po, xfce-mcs-plugins/trunk/po/nl.po,
+	  xfce-mcs-plugins/trunk/po/pa.po, xfce-mcs-plugins/trunk/po/pl.po,
 	  xfce-mcs-plugins/trunk/po/pt_BR.po,
 	  xfce-mcs-plugins/trunk/po/pt_PT.po,
-	  xfce-mcs-plugins/trunk/po/ro.po,
-	  xfce-mcs-plugins/trunk/po/ru.po,
-	  xfce-mcs-plugins/trunk/po/sk.po,
-	  xfce-mcs-plugins/trunk/po/sv.po,
-	  xfce-mcs-plugins/trunk/po/ta.po,
-	  xfce-mcs-plugins/trunk/po/tr.po,
-	  xfce-mcs-plugins/trunk/po/uk.po,
-	  xfce-mcs-plugins/trunk/po/vi.po,
+	  xfce-mcs-plugins/trunk/po/ro.po, xfce-mcs-plugins/trunk/po/ru.po,
+	  xfce-mcs-plugins/trunk/po/sk.po, xfce-mcs-plugins/trunk/po/sv.po,
+	  xfce-mcs-plugins/trunk/po/ta.po, xfce-mcs-plugins/trunk/po/tr.po,
+	  xfce-mcs-plugins/trunk/po/uk.po, xfce-mcs-plugins/trunk/po/vi.po,
 	  xfce-mcs-plugins/trunk/po/xfce-mcs-plugins.pot,
 	  xfce-mcs-plugins/trunk/po/zh_CN.po,
 	  xfce-mcs-plugins/trunk/po/zh_TW.po, xfce4-mixer/trunk/po/ar.po,
@@ -1260,8 +1251,7 @@
 	  xfce4-mixer/trunk/po/ru.po, xfce4-mixer/trunk/po/sk.po,
 	  xfce4-mixer/trunk/po/sv.po, xfce4-mixer/trunk/po/ta.po,
 	  xfce4-mixer/trunk/po/tr.po, xfce4-mixer/trunk/po/uk.po,
-	  xfce4-mixer/trunk/po/vi.po,
-	  xfce4-mixer/trunk/po/xfce4-mixer.pot,
+	  xfce4-mixer/trunk/po/vi.po, xfce4-mixer/trunk/po/xfce4-mixer.pot,
 	  xfce4-mixer/trunk/po/zh_CN.po, xfce4-mixer/trunk/po/zh_TW.po,
 	  xfce4-panel/trunk/po/ar.po, xfce4-panel/trunk/po/az.po,
 	  xfce4-panel/trunk/po/be.po, xfce4-panel/trunk/po/bg.po,
@@ -1284,8 +1274,7 @@
 	  xfce4-panel/trunk/po/ru.po, xfce4-panel/trunk/po/sk.po,
 	  xfce4-panel/trunk/po/sv.po, xfce4-panel/trunk/po/ta.po,
 	  xfce4-panel/trunk/po/tr.po, xfce4-panel/trunk/po/uk.po,
-	  xfce4-panel/trunk/po/vi.po,
-	  xfce4-panel/trunk/po/xfce4-panel.pot,
+	  xfce4-panel/trunk/po/vi.po, xfce4-panel/trunk/po/xfce4-panel.pot,
 	  xfce4-panel/trunk/po/zh_CN.po, xfce4-panel/trunk/po/zh_TW.po,
 	  xfce4-session/trunk/po/ar.po, xfce4-session/trunk/po/az.po,
 	  xfce4-session/trunk/po/be.po, xfce4-session/trunk/po/bn_IN.po,
@@ -1302,15 +1291,13 @@
 	  xfce4-session/trunk/po/mr.po, xfce4-session/trunk/po/ms.po,
 	  xfce4-session/trunk/po/nb_NO.po, xfce4-session/trunk/po/nl.po,
 	  xfce4-session/trunk/po/pa.po, xfce4-session/trunk/po/pl.po,
-	  xfce4-session/trunk/po/pt_BR.po,
-	  xfce4-session/trunk/po/pt_PT.po, xfce4-session/trunk/po/ro.po,
-	  xfce4-session/trunk/po/ru.po, xfce4-session/trunk/po/sk.po,
-	  xfce4-session/trunk/po/sv.po, xfce4-session/trunk/po/ta.po,
-	  xfce4-session/trunk/po/tr.po, xfce4-session/trunk/po/uk.po,
-	  xfce4-session/trunk/po/vi.po,
+	  xfce4-session/trunk/po/pt_BR.po, xfce4-session/trunk/po/pt_PT.po,
+	  xfce4-session/trunk/po/ro.po, xfce4-session/trunk/po/ru.po,
+	  xfce4-session/trunk/po/sk.po, xfce4-session/trunk/po/sv.po,
+	  xfce4-session/trunk/po/ta.po, xfce4-session/trunk/po/tr.po,
+	  xfce4-session/trunk/po/uk.po, xfce4-session/trunk/po/vi.po,
 	  xfce4-session/trunk/po/xfce4-session.pot,
-	  xfce4-session/trunk/po/zh_CN.po,
-	  xfce4-session/trunk/po/zh_TW.po,
+	  xfce4-session/trunk/po/zh_CN.po, xfce4-session/trunk/po/zh_TW.po,
 	  xfce4-trigger-launcher/trunk/po/POTFILES.in,
 	  xfce4-trigger-launcher/trunk/po/ar.po,
 	  xfce4-trigger-launcher/trunk/po/az.po,
@@ -1911,29 +1898,25 @@
 	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
 	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
 	  po/ko.po, po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po,
-	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po,
-	  po/ro.po, po/ru.po, po/sk.po, po/sl.po, po/sv.po, po/ta.po,
-	  po/tr.po, po/uk.po, po/vi.po, po/zh_CN.po, po/zh_TW.po,
-	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/bn_IN.po, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
+	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
+	  po/ru.po, po/sk.po, po/sl.po, po/sv.po, po/ta.po, po/tr.po,
+	  po/uk.po, po/vi.po, po/zh_CN.po, po/zh_TW.po,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po,
+	  xfwm4/trunk/po/bg.po, xfwm4/trunk/po/bn_IN.po,
+	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
 	  xfwm4/trunk/po/el.po, xfwm4/trunk/po/en_GB.po,
 	  xfwm4/trunk/po/eo.po, xfwm4/trunk/po/es.po,
 	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
+	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
+	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
+	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
 	  xfwm4/trunk/po/mr.po, xfwm4/trunk/po/ms.po,
 	  xfwm4/trunk/po/nb_NO.po, xfwm4/trunk/po/nl.po,
 	  xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
 	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ro.po, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.po, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/ro.po, xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po,
+	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
 	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
 	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
 	  xfwm4/trunk/po/zh_TW.po: Updated.
@@ -1950,17 +1933,17 @@
 2005-12-29 10:01  olivier
 
 	* configure.ac, po/af.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
-	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
-	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
-	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
-	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po, po/ku.po,
-	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
-	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
-	  po/sk.po, po/sl.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
-	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po, src/client.c,
-	  src/client.h, src/events.c, src/screen.c, src/screen.h,
-	  src/settings.c: Backport from trunk: Take changes in keyboard
-	  mapping into account
+	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po, po/en_GB.po,
+	  po/eo.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po, po/fa.po,
+	  po/fi.po, po/fr.po, po/gu.po, po/he.po, po/hi.po, po/hu.po,
+	  po/it.po, po/ja.po, po/ko.po, po/ku.po, po/lt.po, po/mr.po,
+	  po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sl.po, po/sv.po,
+	  po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po, src/client.c, src/client.h,
+	  src/events.c, src/screen.c, src/screen.h, src/settings.c:
+	  Backport from trunk: Take changes in keyboard mapping into
+	  account
 
 2005-12-28 21:39  olivier
 
@@ -2013,14 +1996,14 @@
 	  po/ja.po, po/ko.po, po/ku.po, po/lt.po, po/mr.po, po/ms.po,
 	  po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
 	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sl.po, po/sv.po,
-	  po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/zh_CN.po,
-	  po/zh_TW.po: Bumped version.
+	  po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/zh_CN.po, po/zh_TW.po:
+	  Bumped version.
 
 2005-11-14 21:05  olivier
 
 	* mcs-plugin/xfwm4_plugin.c: Bug #1069 was never backported to the
-	  xfce_4_2 branch. This is a fairly serious bug that prevent the
-	  WM settings to be saved, micro release 4.2.3.2 should follow
+	  xfce_4_2 branch. This is a fairly serious bug that prevent the WM
+	  settings to be saved, micro release 4.2.3.2 should follow
 	  shortly.
 
 2005-11-11 10:05  olivier
@@ -2046,8 +2029,7 @@
 	  themes/breeze/bottom-left-inactive.xpm,
 	  themes/breeze/bottom-right-active.xpm,
 	  themes/breeze/bottom-right-inactive.xpm,
-	  themes/breeze/close-active.xpm,
-	  themes/breeze/close-inactive.xpm,
+	  themes/breeze/close-active.xpm, themes/breeze/close-inactive.xpm,
 	  themes/breeze/close-pressed.xpm, themes/breeze/hide-active.xpm,
 	  themes/breeze/hide-inactive.xpm, themes/breeze/hide-pressed.xpm,
 	  themes/breeze/left-active.xpm, themes/breeze/left-inactive.xpm,
@@ -2059,15 +2041,13 @@
 	  themes/breeze/maximize-toggled-pressed.xpm,
 	  themes/breeze/menu-active.xpm, themes/breeze/menu-inactive.xpm,
 	  themes/breeze/menu-pressed.xpm, themes/breeze/right-active.xpm,
-	  themes/breeze/right-inactive.xpm,
-	  themes/breeze/shade-active.xpm,
+	  themes/breeze/right-inactive.xpm, themes/breeze/shade-active.xpm,
 	  themes/breeze/shade-inactive.xpm,
 	  themes/breeze/shade-pressed.xpm,
 	  themes/breeze/shade-toggled-active.xpm,
 	  themes/breeze/shade-toggled-inactive.xpm,
 	  themes/breeze/shade-toggled-pressed.xpm,
-	  themes/breeze/stick-active.xpm,
-	  themes/breeze/stick-inactive.xpm,
+	  themes/breeze/stick-active.xpm, themes/breeze/stick-inactive.xpm,
 	  themes/breeze/stick-pressed.xpm,
 	  themes/breeze/stick-toggled-active.xpm,
 	  themes/breeze/stick-toggled-inactive.xpm,
@@ -2154,12 +2134,10 @@
 	  themes/default/close-active.xpm,
 	  themes/default/close-inactive.xpm,
 	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.xpm,
-	  themes/default/hide-active.xpm,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
 	  themes/default/hide-inactive.xpm,
-	  themes/default/hide-pressed.png,
-	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
-	  themes/default/left-active.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
+	  themes/default/left-active.png, themes/default/left-active.xpm,
 	  themes/default/left-inactive.png,
 	  themes/default/left-inactive.xpm,
 	  themes/default/maximize-active.xpm,
@@ -2170,12 +2148,9 @@
 	  themes/default/maximize-toggled-inactive.xpm,
 	  themes/default/maximize-toggled-pressed.png,
 	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.xpm,
-	  themes/default/menu-inactive.xpm,
-	  themes/default/menu-pressed.png,
-	  themes/default/menu-pressed.xpm,
-	  themes/default/right-active.png,
-	  themes/default/right-active.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
+	  themes/default/right-active.png, themes/default/right-active.xpm,
 	  themes/default/right-inactive.png,
 	  themes/default/right-inactive.xpm,
 	  themes/default/shade-active.xpm,
@@ -2249,18 +2224,14 @@
 	  themes/opta/stick-toggled-active.xpm,
 	  themes/opta/stick-toggled-inactive.xpm,
 	  themes/opta/stick-toggled-pressed.xpm,
-	  themes/opta/title-1-active.xpm,
-	  themes/opta/title-1-inactive.xpm,
+	  themes/opta/title-1-active.xpm, themes/opta/title-1-inactive.xpm,
 	  themes/opta/title-2-active.png, themes/opta/title-2-active.xpm,
 	  themes/opta/title-2-inactive.png,
-	  themes/opta/title-2-inactive.xpm,
-	  themes/opta/title-3-active.png, themes/opta/title-3-active.xpm,
-	  themes/opta/title-3-inactive.png,
-	  themes/opta/title-3-inactive.xpm,
-	  themes/opta/title-4-active.png, themes/opta/title-4-active.xpm,
-	  themes/opta/title-4-inactive.png,
-	  themes/opta/title-4-inactive.xpm,
-	  themes/opta/title-5-active.xpm,
+	  themes/opta/title-2-inactive.xpm, themes/opta/title-3-active.png,
+	  themes/opta/title-3-active.xpm, themes/opta/title-3-inactive.png,
+	  themes/opta/title-3-inactive.xpm, themes/opta/title-4-active.png,
+	  themes/opta/title-4-active.xpm, themes/opta/title-4-inactive.png,
+	  themes/opta/title-4-inactive.xpm, themes/opta/title-5-active.xpm,
 	  themes/opta/title-5-inactive.xpm,
 	  themes/opta/top-left-active.xpm,
 	  themes/opta/top-left-inactive.xpm,
@@ -2284,8 +2255,7 @@
 	  themes/symphony/hide-active.xpm,
 	  themes/symphony/hide-inactive.xpm,
 	  themes/symphony/hide-pressed.xpm,
-	  themes/symphony/left-active.png,
-	  themes/symphony/left-active.xpm,
+	  themes/symphony/left-active.png, themes/symphony/left-active.xpm,
 	  themes/symphony/left-inactive.png,
 	  themes/symphony/left-inactive.xpm,
 	  themes/symphony/maximize-active.xpm,
@@ -2356,12 +2326,10 @@
 	  themes/therapy/close-active.xpm,
 	  themes/therapy/close-inactive.xpm,
 	  themes/therapy/close-pressed.png,
-	  themes/therapy/close-pressed.xpm,
-	  themes/therapy/hide-active.xpm,
+	  themes/therapy/close-pressed.xpm, themes/therapy/hide-active.xpm,
 	  themes/therapy/hide-inactive.xpm,
-	  themes/therapy/hide-pressed.png,
-	  themes/therapy/hide-pressed.xpm, themes/therapy/left-active.png,
-	  themes/therapy/left-active.xpm,
+	  themes/therapy/hide-pressed.png, themes/therapy/hide-pressed.xpm,
+	  themes/therapy/left-active.png, themes/therapy/left-active.xpm,
 	  themes/therapy/left-inactive.png,
 	  themes/therapy/left-inactive.xpm,
 	  themes/therapy/maximize-active.xpm,
@@ -2372,12 +2340,9 @@
 	  themes/therapy/maximize-toggled-inactive.xpm,
 	  themes/therapy/maximize-toggled-pressed.png,
 	  themes/therapy/maximize-toggled-pressed.xpm,
-	  themes/therapy/menu-active.xpm,
-	  themes/therapy/menu-inactive.xpm,
-	  themes/therapy/menu-pressed.png,
-	  themes/therapy/menu-pressed.xpm,
-	  themes/therapy/right-active.png,
-	  themes/therapy/right-active.xpm,
+	  themes/therapy/menu-active.xpm, themes/therapy/menu-inactive.xpm,
+	  themes/therapy/menu-pressed.png, themes/therapy/menu-pressed.xpm,
+	  themes/therapy/right-active.png, themes/therapy/right-active.xpm,
 	  themes/therapy/right-inactive.png,
 	  themes/therapy/right-inactive.xpm,
 	  themes/therapy/shade-active.xpm,
@@ -2459,24 +2424,19 @@
 	  themes/tyrex/stick-toggled-active.xpm,
 	  themes/tyrex/stick-toggled-inactive.xpm,
 	  themes/tyrex/stick-toggled-pressed.xpm,
-	  themes/tyrex/title-1-active.png,
-	  themes/tyrex/title-1-active.xpm,
+	  themes/tyrex/title-1-active.png, themes/tyrex/title-1-active.xpm,
 	  themes/tyrex/title-1-inactive.png,
 	  themes/tyrex/title-1-inactive.xpm,
-	  themes/tyrex/title-2-active.png,
-	  themes/tyrex/title-2-active.xpm,
+	  themes/tyrex/title-2-active.png, themes/tyrex/title-2-active.xpm,
 	  themes/tyrex/title-2-inactive.png,
 	  themes/tyrex/title-2-inactive.xpm,
-	  themes/tyrex/title-3-active.png,
-	  themes/tyrex/title-3-active.xpm,
+	  themes/tyrex/title-3-active.png, themes/tyrex/title-3-active.xpm,
 	  themes/tyrex/title-3-inactive.png,
 	  themes/tyrex/title-3-inactive.xpm,
-	  themes/tyrex/title-4-active.png,
-	  themes/tyrex/title-4-active.xpm,
+	  themes/tyrex/title-4-active.png, themes/tyrex/title-4-active.xpm,
 	  themes/tyrex/title-4-inactive.png,
 	  themes/tyrex/title-4-inactive.xpm,
-	  themes/tyrex/title-5-active.png,
-	  themes/tyrex/title-5-active.xpm,
+	  themes/tyrex/title-5-active.png, themes/tyrex/title-5-active.xpm,
 	  themes/tyrex/title-5-inactive.png,
 	  themes/tyrex/title-5-inactive.xpm,
 	  themes/tyrex/top-left-active.png,
@@ -2499,8 +2459,7 @@
 	  themes/waza/hide-inactive.png, themes/waza/hide-inactive.xpm,
 	  themes/waza/hide-pressed.png, themes/waza/hide-pressed.xpm,
 	  themes/waza/left-active.xpm, themes/waza/left-inactive.xpm,
-	  themes/waza/maximize-active.png,
-	  themes/waza/maximize-active.xpm,
+	  themes/waza/maximize-active.png, themes/waza/maximize-active.xpm,
 	  themes/waza/maximize-inactive.png,
 	  themes/waza/maximize-inactive.xpm,
 	  themes/waza/maximize-pressed.png,
@@ -2535,21 +2494,16 @@
 	  themes/waza/stick-toggled-pressed.xpm,
 	  themes/waza/title-1-active.png, themes/waza/title-1-active.xpm,
 	  themes/waza/title-1-inactive.png,
-	  themes/waza/title-1-inactive.xpm,
-	  themes/waza/title-2-active.png, themes/waza/title-2-active.xpm,
-	  themes/waza/title-2-inactive.png,
-	  themes/waza/title-2-inactive.xpm,
-	  themes/waza/title-3-active.png, themes/waza/title-3-active.xpm,
-	  themes/waza/title-3-inactive.png,
-	  themes/waza/title-3-inactive.xpm,
-	  themes/waza/title-4-active.png, themes/waza/title-4-active.xpm,
-	  themes/waza/title-4-inactive.png,
-	  themes/waza/title-4-inactive.xpm,
-	  themes/waza/title-5-active.png, themes/waza/title-5-active.xpm,
-	  themes/waza/title-5-inactive.png,
+	  themes/waza/title-1-inactive.xpm, themes/waza/title-2-active.png,
+	  themes/waza/title-2-active.xpm, themes/waza/title-2-inactive.png,
+	  themes/waza/title-2-inactive.xpm, themes/waza/title-3-active.png,
+	  themes/waza/title-3-active.xpm, themes/waza/title-3-inactive.png,
+	  themes/waza/title-3-inactive.xpm, themes/waza/title-4-active.png,
+	  themes/waza/title-4-active.xpm, themes/waza/title-4-inactive.png,
+	  themes/waza/title-4-inactive.xpm, themes/waza/title-5-active.png,
+	  themes/waza/title-5-active.xpm, themes/waza/title-5-inactive.png,
 	  themes/waza/title-5-inactive.xpm,
-	  themes/waza/top-left-active.png,
-	  themes/waza/top-left-active.xpm,
+	  themes/waza/top-left-active.png, themes/waza/top-left-active.xpm,
 	  themes/waza/top-left-inactive.png,
 	  themes/waza/top-left-inactive.xpm,
 	  themes/waza/top-right-active.png,
@@ -2574,8 +2528,7 @@
 	  themes/wildbush/hide-active.xpm,
 	  themes/wildbush/hide-inactive.xpm,
 	  themes/wildbush/hide-pressed.xpm,
-	  themes/wildbush/left-active.png,
-	  themes/wildbush/left-active.xpm,
+	  themes/wildbush/left-active.png, themes/wildbush/left-active.xpm,
 	  themes/wildbush/left-inactive.png,
 	  themes/wildbush/left-inactive.xpm,
 	  themes/wildbush/maximize-active.xpm,
@@ -2635,14 +2588,14 @@
 2005-11-07 19:10  olivier
 
 	* configure.ac, po/af.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
-	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
-	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
-	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
-	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po, po/ku.po,
-	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
-	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
-	  po/sk.po, po/sl.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
-	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po: Version 4.2.3.1
+	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po, po/en_GB.po,
+	  po/eo.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po, po/fa.po,
+	  po/fi.po, po/fr.po, po/gu.po, po/he.po, po/hi.po, po/hu.po,
+	  po/it.po, po/ja.po, po/ko.po, po/ku.po, po/lt.po, po/mr.po,
+	  po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sl.po, po/sv.po,
+	  po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po: Version 4.2.3.1
 
 2005-11-07 18:32  olivier
 
@@ -2710,8 +2663,8 @@
 	  xfce4-toys/branches/xfce_4_2/po/be.po,
 	  xfce4-trigger-launcher/branches/xfce_4_2/po/be.po,
 	  xfdesktop/branches/xfce_4_2/po/be.po,
-	  xfprint/branches/xfce_4_2/po/be.po, po/be.po: Updated
-	  Belorussian translations by Ales Nyakhaychyk <nab@mail.by>.
+	  xfprint/branches/xfce_4_2/po/be.po, po/be.po: Updated Belorussian
+	  translations by Ales Nyakhaychyk <nab@mail.by>.
 
 2005-10-28 09:21  jasper
 
@@ -2725,9 +2678,9 @@
 
 2005-10-21 12:22  alex
 
-	* xfcalendar/branches/xfce_4_2/po/it.po,
-	  xfcalendar/trunk/po/it.po, xfdesktop/branches/xfce_4_2/po/it.po,
-	  xfdesktop/trunk/po/it.po, xffm/branches/xfce_4_2/po/it.po,
+	* xfcalendar/branches/xfce_4_2/po/it.po, xfcalendar/trunk/po/it.po,
+	  xfdesktop/branches/xfce_4_2/po/it.po, xfdesktop/trunk/po/it.po,
+	  xffm/branches/xfce_4_2/po/it.po,
 	  xfprint/branches/xfce_4_2/po/it.po, xfprint/trunk/po/it.po,
 	  po/it.po, xfwm4/trunk/po/it.po: Update Italian translations and
 	  add missing accelerator keys.
@@ -2771,13 +2724,12 @@
 	  xfce4-trigger-launcher/branches/xfce_4_2/po/bg.po,
 	  xfce4-trigger-launcher/branches/xfce_4_2/po/hu.po,
 	  xfce4-trigger-launcher/branches/xfce_4_2/po/ku.po,
-	  xffm/branches/xfce_4_2/po/bg.po,
-	  xffm/branches/xfce_4_2/po/hu.po,
+	  xffm/branches/xfce_4_2/po/bg.po, xffm/branches/xfce_4_2/po/hu.po,
 	  xffm/branches/xfce_4_2/po/ku.po,
 	  xfprint/branches/xfce_4_2/po/bg.po,
 	  xfprint/branches/xfce_4_2/po/hu.po,
-	  xfprint/branches/xfce_4_2/po/ku.po, po/bg.po, po/hu.po,
-	  po/ku.po: Changed addresses.
+	  xfprint/branches/xfce_4_2/po/ku.po, po/bg.po, po/hu.po, po/ku.po:
+	  Changed addresses.
 
 2005-10-18 15:39  daichi
 
@@ -2798,8 +2750,8 @@
 	  xfce4-session/branches/xfce_4_2/po/ja.po,
 	  xfdesktop/branches/xfce_4_2/po/ja.po,
 	  xffm/branches/xfce_4_2/po/ja.po,
-	  xfprint/branches/xfce_4_2/po/ja.po, po/ja.po: Sync'd
-	  translations with trunk.
+	  xfprint/branches/xfce_4_2/po/ja.po, po/ja.po: Sync'd translations
+	  with trunk.
 
 2005-10-13 20:17  olivier
 
@@ -2812,21 +2764,18 @@
 
 2005-10-11 09:53  daichi
 
-	* xfcalendar/branches/xfce_4_2/po/et.po,
-	  xfcalendar/trunk/po/et.po,
+	* xfcalendar/branches/xfce_4_2/po/et.po, xfcalendar/trunk/po/et.po,
 	  xfce-mcs-manager/branches/xfce_4_2/po/et.po,
 	  xfce-mcs-manager/trunk/po/et.po,
 	  xfce-mcs-plugins/branches/xfce_4_2/po/et.po,
 	  xfce-mcs-plugins/trunk/po/et.po,
-	  xfce-utils/branches/xfce_4_2/po/et.po,
-	  xfce-utils/trunk/po/et.po,
+	  xfce-utils/branches/xfce_4_2/po/et.po, xfce-utils/trunk/po/et.po,
 	  xfce4-iconbox/branches/xfce_4_2/po/et.po,
 	  xfce4-mixer/branches/xfce_4_2/po/et.po,
 	  xfce4-mixer/trunk/po/et.po,
 	  xfce4-panel/branches/xfce_4_2/po/et.po,
 	  xfce4-panel/trunk/po/et.po,
-	  xfce4-toys/branches/xfce_4_2/po/et.po,
-	  xfce4-toys/trunk/po/et.po,
+	  xfce4-toys/branches/xfce_4_2/po/et.po, xfce4-toys/trunk/po/et.po,
 	  xfce4-trigger-launcher/branches/xfce_4_2/po/et.po,
 	  xfce4-trigger-launcher/trunk/po/et.po,
 	  xfdesktop/branches/xfce_4_2/po/et.po, xfdesktop/trunk/po/et.po,
@@ -2845,8 +2794,7 @@
 	  xfce4-mixer/trunk/po/fi.po,
 	  xfce4-session/branches/xfce_4_2/po/fi.po,
 	  xfce4-session/trunk/po/fi.po,
-	  xfce4-toys/branches/xfce_4_2/po/fi.po,
-	  xfce4-toys/trunk/po/fi.po,
+	  xfce4-toys/branches/xfce_4_2/po/fi.po, xfce4-toys/trunk/po/fi.po,
 	  xfce4-trigger-launcher/branches/xfce_4_2/po/fi.po,
 	  xfce4-trigger-launcher/trunk/po/fi.po,
 	  xffm/branches/xfce_4_2/po/fi.po,
@@ -2894,29 +2842,20 @@
 2005-10-09 09:13  daichi
 
 	* xfce-mcs-manager/branches/xfce_4_2/xfce-setting-show/xfce-settings-manager.desktop,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/display_plugin/xfce-display-settings.desktop,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/keyboard_plugin/xfce-keyboard-settings.desktop,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/mouse_plugin/xfce-mouse-settings.desktop,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/ui_plugin/xfce-ui-settings.desktop,
 	  xfce-utils/branches/xfce_4_2/gdm/xfce.desktop,
 	  xfce-utils/branches/xfce_4_2/xftaskbar/plugin/xfce-taskbar-settings.desktop,
 	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
 	  xfce4-iconbox/branches/xfce_4_2/settings/xfce-iconbox-settings.desktop,
-	  
 	  xfce4-mixer/branches/xfce_4_2/settings/xfce-mixer-settings.desktop,
-	  
 	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
-	  
 	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
-	  
 	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
 	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop,
-	  
 	  xffm/branches/xfce_4_2/plugin-mcs/xfce-filemanager-settings.desktop,
 	  xffm/branches/xfce_4_2/src/Xfbook.desktop,
 	  xffm/branches/xfce_4_2/src/Xfdiff.desktop,
@@ -2927,7 +2866,6 @@
 	  xffm/branches/xfce_4_2/src/Xfsamba.desktop,
 	  xffm/branches/xfce_4_2/src/Xftree.desktop,
 	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
-	  
 	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
 	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop,
 	  mcs-plugin/xfce-wm-settings.desktop,
@@ -2945,12 +2883,12 @@
 	  there're
 	  still errors:
 	  
-	  Xfmime_edit.desktop: warning: the fields "Name" and
+	  Xfmime_edit.desktop: warning: the fields "Name" and "Comment"
+	  have the same value
+	  xfce-settings-manager.desktop: warning: the fields "Name" and
 	  "Comment" have the same value
-	  xfce-settings-manager.desktop: warning: the fields "Name"
-	  and "Comment" have the same value
-	  xfce4-appfinder.desktop: warning: the fields "Name" and
-	  "Comment" have the same value
+	  xfce4-appfinder.desktop: warning: the fields "Name" and "Comment"
+	  have the same value
 	  
 	  xfce.desktop
 	  
@@ -2985,9 +2923,8 @@
 
 2005-10-08 19:39  olivier
 
-	* configure.ac: Check for version 0.2 instead of 1.0 for
-	  xcomposite extension as suggested by bcowan@gentoo.org in bug
-	  #1177
+	* configure.ac: Check for version 0.2 instead of 1.0 for xcomposite
+	  extension as suggested by bcowan@gentoo.org in bug #1177
 
 2005-10-08 08:20  daichi
 
@@ -3565,44 +3502,29 @@
 	  xfdesktop/branches/xfce_4_2/po/vi.po,
 	  xfdesktop/branches/xfce_4_2/po/zh_CN.po,
 	  xfdesktop/branches/xfce_4_2/po/zh_TW.po,
-	  xffm/branches/xfce_4_2/po/af.po,
-	  xffm/branches/xfce_4_2/po/ar.po,
-	  xffm/branches/xfce_4_2/po/az.po,
-	  xffm/branches/xfce_4_2/po/bg.po,
+	  xffm/branches/xfce_4_2/po/af.po, xffm/branches/xfce_4_2/po/ar.po,
+	  xffm/branches/xfce_4_2/po/az.po, xffm/branches/xfce_4_2/po/bg.po,
 	  xffm/branches/xfce_4_2/po/bn_IN.po,
-	  xffm/branches/xfce_4_2/po/ca.po,
-	  xffm/branches/xfce_4_2/po/cs.po,
+	  xffm/branches/xfce_4_2/po/ca.po, xffm/branches/xfce_4_2/po/cs.po,
 	  xffm/branches/xfce_4_2/po/de.po,
 	  xffm/branches/xfce_4_2/po/en_GB.po,
 	  xffm/branches/xfce_4_2/po/es.po,
 	  xffm/branches/xfce_4_2/po/es_MX.po,
-	  xffm/branches/xfce_4_2/po/et.po,
-	  xffm/branches/xfce_4_2/po/eu.po,
-	  xffm/branches/xfce_4_2/po/fa.po,
-	  xffm/branches/xfce_4_2/po/fi.po,
-	  xffm/branches/xfce_4_2/po/fr.po,
-	  xffm/branches/xfce_4_2/po/gu.po,
-	  xffm/branches/xfce_4_2/po/he.po,
-	  xffm/branches/xfce_4_2/po/hi.po,
-	  xffm/branches/xfce_4_2/po/hu.po,
-	  xffm/branches/xfce_4_2/po/it.po,
-	  xffm/branches/xfce_4_2/po/ja.po,
-	  xffm/branches/xfce_4_2/po/ko.po,
-	  xffm/branches/xfce_4_2/po/ku.po,
-	  xffm/branches/xfce_4_2/po/lt.po,
-	  xffm/branches/xfce_4_2/po/mr.po,
-	  xffm/branches/xfce_4_2/po/ms.po,
+	  xffm/branches/xfce_4_2/po/et.po, xffm/branches/xfce_4_2/po/eu.po,
+	  xffm/branches/xfce_4_2/po/fa.po, xffm/branches/xfce_4_2/po/fi.po,
+	  xffm/branches/xfce_4_2/po/fr.po, xffm/branches/xfce_4_2/po/gu.po,
+	  xffm/branches/xfce_4_2/po/he.po, xffm/branches/xfce_4_2/po/hi.po,
+	  xffm/branches/xfce_4_2/po/hu.po, xffm/branches/xfce_4_2/po/it.po,
+	  xffm/branches/xfce_4_2/po/ja.po, xffm/branches/xfce_4_2/po/ko.po,
+	  xffm/branches/xfce_4_2/po/ku.po, xffm/branches/xfce_4_2/po/lt.po,
+	  xffm/branches/xfce_4_2/po/mr.po, xffm/branches/xfce_4_2/po/ms.po,
 	  xffm/branches/xfce_4_2/po/nb_NO.po,
-	  xffm/branches/xfce_4_2/po/nl.po,
-	  xffm/branches/xfce_4_2/po/pa.po,
+	  xffm/branches/xfce_4_2/po/nl.po, xffm/branches/xfce_4_2/po/pa.po,
 	  xffm/branches/xfce_4_2/po/pt_BR.po,
 	  xffm/branches/xfce_4_2/po/pt_PT.po,
-	  xffm/branches/xfce_4_2/po/sk.po,
-	  xffm/branches/xfce_4_2/po/sv.po,
-	  xffm/branches/xfce_4_2/po/ta.po,
-	  xffm/branches/xfce_4_2/po/tr.po,
-	  xffm/branches/xfce_4_2/po/uk.po,
-	  xffm/branches/xfce_4_2/po/vi.po,
+	  xffm/branches/xfce_4_2/po/sk.po, xffm/branches/xfce_4_2/po/sv.po,
+	  xffm/branches/xfce_4_2/po/ta.po, xffm/branches/xfce_4_2/po/tr.po,
+	  xffm/branches/xfce_4_2/po/uk.po, xffm/branches/xfce_4_2/po/vi.po,
 	  xffm/branches/xfce_4_2/po/zh_CN.po,
 	  xffm/branches/xfce_4_2/po/zh_TW.po,
 	  xfprint/branches/xfce_4_2/po/af.po,
@@ -3649,14 +3571,13 @@
 	  xfprint/branches/xfce_4_2/po/zh_CN.po,
 	  xfprint/branches/xfce_4_2/po/zh_TW.po, po/af.po, po/ar.po,
 	  po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po,
-	  po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
-	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
-	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
-	  po/ko.po, po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po,
-	  po/nl.po, po/pa.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
-	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
-	  po/vi.po, po/zh_CN.po, po/zh_TW.po: Updated with the latest POT
-	  files.
+	  po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/zh_CN.po,
+	  po/zh_TW.po: Updated with the latest POT files.
 
 2005-10-07 21:20  daichi
 
@@ -3705,11 +3626,8 @@
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images,
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images/Makefile.am,
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images/settings_manager.png,
-	  
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images/smgr_from_root_menu.png,
-	  
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images/smgr_from_setup_button.png,
-	  
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/xfce-mcs-manager.html,
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/xfce-mcs-manager.xml,
 	  xfce-mcs-plugins/branches/xfce_4_2/configure.ac,
@@ -3719,15 +3637,10 @@
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images,
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/Makefile.am,
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/display_preferences.png,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/font_selection.png,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/keyboard_settings.png,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/mouse_settings.png,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/user_interface_settings.png,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/xfce-mcs-plugins.html,
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/xfce-mcs-plugins.xml,
 	  xfce-utils/branches/xfce_4_2/configure.ac,
@@ -3740,11 +3653,8 @@
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/Makefile.am,
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images,
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images/Makefile.am,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images/about-dialog.png,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images/run-dialog.png,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images/taskbar_settings.png,
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/xfce-utils.html,
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/xfce-utils.xml,
@@ -3757,27 +3667,17 @@
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/LGPL.html,
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/LGPL.xml,
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/Makefile.am,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/copyright.xml,
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/images,
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/images/Makefile.am,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/images/default-session.png,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/images/link_xfce.jpg,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-components.html,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-copyright.html,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-install.html,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-intro.html,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-use.html,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-user-guide.html,
-	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-user-guide.xml,
 	  xfce4-appfinder/branches/xfce_4_2/configure.ac,
 	  xfce4-appfinder/branches/xfce_4_2/doc/Makefile.am,
@@ -3786,9 +3686,7 @@
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images,
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images/Makefile.am,
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images/appfinder-handle-popup.png,
-	  
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images/appfinder-item-popup.png,
-	  
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images/default_appfinder.png,
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/xfce4-appfinder.html,
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/xfce4-appfinder.xml,
@@ -3804,13 +3702,9 @@
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/handle-popup.png,
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/item-popup.png,
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/launcher-properties.png,
-	  
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/mailcheck-properties.png,
-	  
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/menuitem-properties.png,
-	  
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/nooptions-properties.png,
-	  
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/pager-properties.png,
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/panel-settings.png,
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/systembuttons-properties.png,
@@ -3899,7 +3793,6 @@
 	  
 	  * Added fall back address at the "Language-Team: ", according to
 	  the
-	  
 	  http://www.iro.umontreal.ca/translation/registry.cgi?team=index
 	  
 	  * Modified initial comment strings using template by "msginit".
@@ -4482,45 +4375,30 @@
 	  xfdesktop/branches/xfce_4_2/po/vi.po,
 	  xfdesktop/branches/xfce_4_2/po/zh_CN.po,
 	  xfdesktop/branches/xfce_4_2/po/zh_TW.po,
-	  xffm/branches/xfce_4_2/po/af.po,
-	  xffm/branches/xfce_4_2/po/ar.po,
-	  xffm/branches/xfce_4_2/po/az.po,
-	  xffm/branches/xfce_4_2/po/bg.po,
+	  xffm/branches/xfce_4_2/po/af.po, xffm/branches/xfce_4_2/po/ar.po,
+	  xffm/branches/xfce_4_2/po/az.po, xffm/branches/xfce_4_2/po/bg.po,
 	  xffm/branches/xfce_4_2/po/bn_IN.po,
-	  xffm/branches/xfce_4_2/po/ca.po,
-	  xffm/branches/xfce_4_2/po/cs.po,
+	  xffm/branches/xfce_4_2/po/ca.po, xffm/branches/xfce_4_2/po/cs.po,
 	  xffm/branches/xfce_4_2/po/de.po,
 	  xffm/branches/xfce_4_2/po/en_GB.po,
 	  xffm/branches/xfce_4_2/po/es.po,
 	  xffm/branches/xfce_4_2/po/es_MX.po,
-	  xffm/branches/xfce_4_2/po/et.po,
-	  xffm/branches/xfce_4_2/po/eu.po,
-	  xffm/branches/xfce_4_2/po/fa.po,
-	  xffm/branches/xfce_4_2/po/fi.po,
-	  xffm/branches/xfce_4_2/po/fr.po,
-	  xffm/branches/xfce_4_2/po/gu.po,
-	  xffm/branches/xfce_4_2/po/he.po,
-	  xffm/branches/xfce_4_2/po/hi.po,
-	  xffm/branches/xfce_4_2/po/hu.po,
-	  xffm/branches/xfce_4_2/po/it.po,
-	  xffm/branches/xfce_4_2/po/ja.po,
-	  xffm/branches/xfce_4_2/po/ko.po,
-	  xffm/branches/xfce_4_2/po/ku.po,
-	  xffm/branches/xfce_4_2/po/lt.po,
-	  xffm/branches/xfce_4_2/po/mr.po,
-	  xffm/branches/xfce_4_2/po/ms.po,
+	  xffm/branches/xfce_4_2/po/et.po, xffm/branches/xfce_4_2/po/eu.po,
+	  xffm/branches/xfce_4_2/po/fa.po, xffm/branches/xfce_4_2/po/fi.po,
+	  xffm/branches/xfce_4_2/po/fr.po, xffm/branches/xfce_4_2/po/gu.po,
+	  xffm/branches/xfce_4_2/po/he.po, xffm/branches/xfce_4_2/po/hi.po,
+	  xffm/branches/xfce_4_2/po/hu.po, xffm/branches/xfce_4_2/po/it.po,
+	  xffm/branches/xfce_4_2/po/ja.po, xffm/branches/xfce_4_2/po/ko.po,
+	  xffm/branches/xfce_4_2/po/ku.po, xffm/branches/xfce_4_2/po/lt.po,
+	  xffm/branches/xfce_4_2/po/mr.po, xffm/branches/xfce_4_2/po/ms.po,
 	  xffm/branches/xfce_4_2/po/nb_NO.po,
-	  xffm/branches/xfce_4_2/po/nl.po,
-	  xffm/branches/xfce_4_2/po/pa.po,
+	  xffm/branches/xfce_4_2/po/nl.po, xffm/branches/xfce_4_2/po/pa.po,
 	  xffm/branches/xfce_4_2/po/pl.po,
 	  xffm/branches/xfce_4_2/po/pt_BR.po,
 	  xffm/branches/xfce_4_2/po/pt_PT.po,
-	  xffm/branches/xfce_4_2/po/sk.po,
-	  xffm/branches/xfce_4_2/po/sv.po,
-	  xffm/branches/xfce_4_2/po/ta.po,
-	  xffm/branches/xfce_4_2/po/tr.po,
-	  xffm/branches/xfce_4_2/po/uk.po,
-	  xffm/branches/xfce_4_2/po/vi.po,
+	  xffm/branches/xfce_4_2/po/sk.po, xffm/branches/xfce_4_2/po/sv.po,
+	  xffm/branches/xfce_4_2/po/ta.po, xffm/branches/xfce_4_2/po/tr.po,
+	  xffm/branches/xfce_4_2/po/uk.po, xffm/branches/xfce_4_2/po/vi.po,
 	  xffm/branches/xfce_4_2/po/zh_CN.po,
 	  xffm/branches/xfce_4_2/po/zh_TW.po,
 	  xfprint/branches/xfce_4_2/po/af.po,
@@ -4568,14 +4446,14 @@
 	  xfprint/branches/xfce_4_2/po/zh_CN.po,
 	  xfprint/branches/xfce_4_2/po/zh_TW.po, po/af.po, po/ar.po,
 	  po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po,
-	  po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
-	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
-	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
-	  po/ko.po, po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po,
-	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po,
-	  po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po,
-	  po/uk.po, po/vi.po, po/zh_CN.po, po/zh_TW.po: Sorry, I really
-	  hope this doesn't cause disaster.
+	  po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/ku.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/zh_CN.po, po/zh_TW.po: Sorry, I really hope this doesn't cause
+	  disaster.
 	  
 	  * Updated with the re-created POT files.
 	  * Discarded obsolete translations.
@@ -4626,7 +4504,6 @@
 	  
 	  Added fall back address at the 'Language-Team: ', according to
 	  the
-	  
 	  http://www.iro.umontreal.ca/translation/registry.cgi?team=index
 	  
 	  Bumped version at the 'Project-Id-Version: ' for the next
@@ -4705,27 +4582,19 @@
 2005-09-02 16:26  pollux
 
 	* xfce-mcs-manager/branches/xfce_4_2/xfce-setting-show/xfce-settings-manager.desktop,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/display_plugin/xfce-display-settings.desktop,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/keyboard_plugin/xfce-keyboard-settings.desktop,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/mouse_plugin/xfce-mouse-settings.desktop,
-	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/ui_plugin/xfce-ui-settings.desktop,
 	  xfce-utils/branches/xfce_4_2/gdm/xfce.desktop,
 	  xfce-utils/branches/xfce_4_2/xftaskbar/plugin/xfce-taskbar-settings.desktop,
 	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
 	  xfce4-mixer/branches/xfce_4_2/settings/xfce-mixer-settings.desktop,
-	  
 	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
-	  
 	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
-	  
 	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
 	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop,
-	  
 	  xffm/branches/xfce_4_2/plugin-mcs/xfce-filemanager-settings.desktop,
 	  xffm/branches/xfce_4_2/src/Xfbook.desktop,
 	  xffm/branches/xfce_4_2/src/Xfdiff.desktop,
@@ -4744,20 +4613,17 @@
 
 2005-08-29 21:48  daichi
 
-	* xfcalendar/branches/xfce_4_2/po/ja.po,
-	  xfcalendar/trunk/po/ja.po,
+	* xfcalendar/branches/xfce_4_2/po/ja.po, xfcalendar/trunk/po/ja.po,
 	  xfce-mcs-manager/branches/xfce_4_2/po/ja.po,
 	  xfce-mcs-manager/trunk/po/ja.po,
 	  xfce-mcs-plugins/branches/xfce_4_2/po/ja.po,
 	  xfce-mcs-plugins/trunk/po/ja.po,
-	  xfce-utils/branches/xfce_4_2/po/ja.po,
-	  xfce-utils/trunk/po/ja.po,
+	  xfce-utils/branches/xfce_4_2/po/ja.po, xfce-utils/trunk/po/ja.po,
 	  xfce4-panel/branches/xfce_4_2/po/ja.po,
 	  xfce4-panel/trunk/po/ja.po,
 	  xfce4-session/branches/xfce_4_2/po/ja.po,
 	  xfce4-session/trunk/po/ja.po,
-	  xfce4-toys/branches/xfce_4_2/po/ja.po,
-	  xfce4-toys/trunk/po/ja.po,
+	  xfce4-toys/branches/xfce_4_2/po/ja.po, xfce4-toys/trunk/po/ja.po,
 	  xfce4-trigger-launcher/branches/xfce_4_2/po/ja.po,
 	  xfce4-trigger-launcher/trunk/po/ja.po,
 	  xfdesktop/branches/xfce_4_2/po/ja.po, xfdesktop/trunk/po/ja.po,
@@ -4818,12 +4684,11 @@
 
 2005-08-20 08:55  daichi
 
-	* po/bg.po, po/es.po, po/es_MX.po, po/nb_NO.po, po/nl.po,
-	  po/sv.po, po/zh_CN.po: Fixed errors emitted by 'msgfmt -c'.
+	* po/bg.po, po/es.po, po/es_MX.po, po/nb_NO.po, po/nl.po, po/sv.po,
+	  po/zh_CN.po: Fixed errors emitted by 'msgfmt -c'.
 	  
 	  Added fall back address at the 'Language-Team: ', according to
 	  the
-	  
 	  http://www.iro.umontreal.ca/translation/registry.cgi?team=index
 	  
 	  Modified initial comment strings with template by 'msginit'.
@@ -4941,8 +4806,8 @@
 	  xfce4-mixer/branches/xfce_4_2/configure.ac,
 	  xfce4-mixer/branches/xfce_4_2/po/af.po,
 	  xfce4-session/branches/xfce_4_2/configure.ac,
-	  xfce4-session/branches/xfce_4_2/po/af.po, configure.ac,
-	  po/af.po: add some AF translations
+	  xfce4-session/branches/xfce_4_2/po/af.po, configure.ac, po/af.po:
+	  add some AF translations
 
 2005-07-26 12:23  pollux
 
@@ -5000,9 +4865,8 @@
 
 2005-06-25 11:21  benny
 
-	* mcs-plugin/xfwm4_plugin.c,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Initialize result
-	  properly.
+	* mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/mcs-plugin/xfwm4_plugin.c:
+	  Initialize result properly.
 
 2005-06-25 11:18  benny
 
@@ -5031,27 +4895,26 @@
 
 	* Makefile.am, configure.ac, po/ar.po, po/az.po, po/be.po,
 	  po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
-	  po/en_GB.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po,
-	  po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po, po/hi.po,
-	  po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po, po/mr.po,
-	  po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po,
-	  po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
-	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
-	  po/zh_CN.po, po/zh_TW.po: Add new "make snapshot" and "make
-	  snapshot-bz2" targets
+	  po/en_GB.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po, po/fa.po,
+	  po/fi.po, po/fr.po, po/gu.po, po/he.po, po/hi.po, po/hu.po,
+	  po/it.po, po/ja.po, po/ko.po, po/lt.po, po/mr.po, po/ms.po,
+	  po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po,
+	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
+	  po/zh_TW.po: Add new "make snapshot" and "make snapshot-bz2"
+	  targets
 
 2005-06-08 21:44  olivier
 
 	* configure.ac, po/ar.po, po/az.po, po/be.po, po/bg.po,
-	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
-	  po/en_GB.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po,
-	  po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po, po/hi.po,
-	  po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po, po/mr.po,
-	  po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po,
-	  po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
-	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
-	  po/zh_CN.po, po/zh_TW.po, src/main.c: Add subversion revision
-	  number to version infos
+	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po, po/en_GB.po,
+	  po/es.po, po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po,
+	  po/fr.po, po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po,
+	  po/ja.po, po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po,
+	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
+	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
+	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po, src/main.c: Add
+	  subversion revision number to version infos
 
 2005-06-08 21:08  olivier
 
@@ -5077,8 +4940,8 @@
 
 2005-06-02 20:22  olivier
 
-	* src/focus.c: Backport from trunk, fix button grab passing
-	  between windows.
+	* src/focus.c: Backport from trunk, fix button grab passing between
+	  windows.
 
 2005-05-14 19:26  olivier
 
@@ -5091,27 +4954,25 @@
 2005-05-13 22:10  olivier
 
 	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
-	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/es.po,
-	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
-	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
-	  po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
-	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
-	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
-	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po,
-	  themes/tyrex/Makefile.am, themes/tyrex/bottom-active.xpm,
-	  themes/tyrex/bottom-inactive.xpm,
+	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po, themes/tyrex/Makefile.am,
+	  themes/tyrex/bottom-active.xpm, themes/tyrex/bottom-inactive.xpm,
 	  themes/tyrex/bottom-left-active.xpm,
 	  themes/tyrex/bottom-left-inactive.xpm,
 	  themes/tyrex/bottom-right-active.xpm,
 	  themes/tyrex/bottom-right-inactive.xpm,
 	  themes/tyrex/close-active.png, themes/tyrex/close-active.xpm,
-	  themes/tyrex/close-inactive.png,
-	  themes/tyrex/close-inactive.xpm, themes/tyrex/close-pressed.png,
-	  themes/tyrex/close-pressed.xpm, themes/tyrex/hide-active.png,
-	  themes/tyrex/hide-active.xpm, themes/tyrex/hide-inactive.png,
-	  themes/tyrex/hide-inactive.xpm, themes/tyrex/hide-pressed.png,
-	  themes/tyrex/hide-pressed.xpm, themes/tyrex/left-active.xpm,
-	  themes/tyrex/left-inactive.xpm,
+	  themes/tyrex/close-inactive.png, themes/tyrex/close-inactive.xpm,
+	  themes/tyrex/close-pressed.png, themes/tyrex/close-pressed.xpm,
+	  themes/tyrex/hide-active.png, themes/tyrex/hide-active.xpm,
+	  themes/tyrex/hide-inactive.png, themes/tyrex/hide-inactive.xpm,
+	  themes/tyrex/hide-pressed.png, themes/tyrex/hide-pressed.xpm,
+	  themes/tyrex/left-active.xpm, themes/tyrex/left-inactive.xpm,
 	  themes/tyrex/maximize-active.png,
 	  themes/tyrex/maximize-active.xpm,
 	  themes/tyrex/maximize-inactive.png,
@@ -5129,9 +4990,8 @@
 	  themes/tyrex/menu-pressed.png, themes/tyrex/menu-pressed.xpm,
 	  themes/tyrex/right-active.xpm, themes/tyrex/right-inactive.xpm,
 	  themes/tyrex/shade-active.png, themes/tyrex/shade-active.xpm,
-	  themes/tyrex/shade-inactive.png,
-	  themes/tyrex/shade-inactive.xpm, themes/tyrex/shade-pressed.png,
-	  themes/tyrex/shade-pressed.xpm,
+	  themes/tyrex/shade-inactive.png, themes/tyrex/shade-inactive.xpm,
+	  themes/tyrex/shade-pressed.png, themes/tyrex/shade-pressed.xpm,
 	  themes/tyrex/shade-toggled-active.png,
 	  themes/tyrex/shade-toggled-active.xpm,
 	  themes/tyrex/shade-toggled-inactive.png,
@@ -5139,33 +4999,27 @@
 	  themes/tyrex/shade-toggled-pressed.png,
 	  themes/tyrex/shade-toggled-pressed.xpm,
 	  themes/tyrex/stick-active.png, themes/tyrex/stick-active.xpm,
-	  themes/tyrex/stick-inactive.png,
-	  themes/tyrex/stick-inactive.xpm, themes/tyrex/stick-pressed.png,
-	  themes/tyrex/stick-pressed.xpm,
+	  themes/tyrex/stick-inactive.png, themes/tyrex/stick-inactive.xpm,
+	  themes/tyrex/stick-pressed.png, themes/tyrex/stick-pressed.xpm,
 	  themes/tyrex/stick-toggled-active.png,
 	  themes/tyrex/stick-toggled-active.xpm,
 	  themes/tyrex/stick-toggled-inactive.png,
 	  themes/tyrex/stick-toggled-inactive.xpm,
 	  themes/tyrex/stick-toggled-pressed.png,
 	  themes/tyrex/stick-toggled-pressed.xpm, themes/tyrex/themerc,
-	  themes/tyrex/title-1-active.png,
-	  themes/tyrex/title-1-active.xpm,
+	  themes/tyrex/title-1-active.png, themes/tyrex/title-1-active.xpm,
 	  themes/tyrex/title-1-inactive.png,
 	  themes/tyrex/title-1-inactive.xpm,
-	  themes/tyrex/title-2-active.png,
-	  themes/tyrex/title-2-active.xpm,
+	  themes/tyrex/title-2-active.png, themes/tyrex/title-2-active.xpm,
 	  themes/tyrex/title-2-inactive.png,
 	  themes/tyrex/title-2-inactive.xpm,
-	  themes/tyrex/title-3-active.png,
-	  themes/tyrex/title-3-active.xpm,
+	  themes/tyrex/title-3-active.png, themes/tyrex/title-3-active.xpm,
 	  themes/tyrex/title-3-inactive.png,
 	  themes/tyrex/title-3-inactive.xpm,
-	  themes/tyrex/title-4-active.png,
-	  themes/tyrex/title-4-active.xpm,
+	  themes/tyrex/title-4-active.png, themes/tyrex/title-4-active.xpm,
 	  themes/tyrex/title-4-inactive.png,
 	  themes/tyrex/title-4-inactive.xpm,
-	  themes/tyrex/title-5-active.png,
-	  themes/tyrex/title-5-active.xpm,
+	  themes/tyrex/title-5-active.png, themes/tyrex/title-5-active.xpm,
 	  themes/tyrex/title-5-inactive.png,
 	  themes/tyrex/title-5-inactive.xpm,
 	  themes/tyrex/top-left-active.png,
@@ -5189,13 +5043,13 @@
 2005-05-13 21:18  olivier
 
 	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
-	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/es.po,
-	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
-	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
-	  po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
-	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
-	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
-	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po: Prepare 4.2.2
+	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po: Prepare 4.2.2
 
 2005-05-13 20:11  olivier
 
@@ -5213,13 +5067,10 @@
 	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
 	  xfce4-panel/branches/xfce_4_2/contents.xml.ro,
 	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
-	  
 	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
-	  
 	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
 	  xfdesktop/branches/xfce_4_2/po/ro.po,
 	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
-	  
 	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
 	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop,
 	  mcs-plugin/xfce-wm-settings.desktop, po/ro.po: update RO
@@ -5246,13 +5097,13 @@
 2005-05-10 20:34  olivier
 
 	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
-	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/es.po,
-	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
-	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
-	  po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
-	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
-	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
-	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po: Version update
+	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po: Version update
 
 2005-05-08 21:16  olivier
 
@@ -5282,10 +5133,10 @@
 	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
 	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
 	  po/ko.po, po/lt.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
-	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
-	  po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
-	  po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po, src/parserc.c,
-	  src/parserc.h, src/settings.c: Backport code cleanup from trunk
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po, src/parserc.c, src/parserc.h,
+	  src/settings.c: Backport code cleanup from trunk
 
 2005-04-26 21:36  olivier
 
@@ -5326,12 +5177,12 @@
 	  po/Makefile.in.in, po/ar.gmo, po/az.gmo, po/be.gmo, po/bg.gmo,
 	  po/ca.gmo, po/cs.gmo, po/de.gmo, po/el_GR.gmo, po/en_GB.gmo,
 	  po/es.gmo, po/es_MX.gmo, po/et.gmo, po/eu.gmo, po/fa.gmo,
-	  po/fi.gmo, po/fr.gmo, po/gu.gmo, po/he.gmo, po/hi.gmo,
-	  po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo, po/lt.gmo,
-	  po/ms.gmo, po/nb_NO.gmo, po/nl.gmo, po/pa.gmo, po/pl.gmo,
-	  po/pt_BR.gmo, po/pt_PT.gmo, po/ro.gmo, po/ru.gmo, po/sk.gmo,
-	  po/sv.gmo, po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo,
-	  po/zh_CN.gmo, po/zh_TW.gmo, src/Makefile.in, themes/Makefile.in,
+	  po/fi.gmo, po/fr.gmo, po/gu.gmo, po/he.gmo, po/hi.gmo, po/hu.gmo,
+	  po/it.gmo, po/ja.gmo, po/ko.gmo, po/lt.gmo, po/ms.gmo,
+	  po/nb_NO.gmo, po/nl.gmo, po/pa.gmo, po/pl.gmo, po/pt_BR.gmo,
+	  po/pt_PT.gmo, po/ro.gmo, po/ru.gmo, po/sk.gmo, po/sv.gmo,
+	  po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo, po/zh_CN.gmo,
+	  po/zh_TW.gmo, src/Makefile.in, themes/Makefile.in,
 	  themes/breeze/Makefile.in, themes/default-4.0/Makefile.in,
 	  themes/default.keys/Makefile.in, themes/default/Makefile.in,
 	  themes/opta/Makefile.in, themes/symphony/Makefile.in,
@@ -5352,15 +5203,15 @@
 
 2005-04-07 17:26  pollux
 
-	* po/ar.gmo, po/az.gmo, po/be.gmo, po/bg.gmo, po/ca.gmo,
-	  po/cs.gmo, po/cs.po, po/de.gmo, po/el_GR.gmo, po/en_GB.gmo,
-	  po/es.gmo, po/es_MX.gmo, po/et.gmo, po/eu.gmo, po/fa.gmo,
-	  po/fi.gmo, po/fr.gmo, po/gu.gmo, po/he.gmo, po/hi.gmo,
-	  po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo, po/lt.gmo,
-	  po/ms.gmo, po/nb_NO.gmo, po/nl.gmo, po/pa.gmo, po/pl.gmo,
-	  po/pt_BR.gmo, po/pt_PT.gmo, po/ro.gmo, po/ru.gmo, po/sk.gmo,
-	  po/sv.gmo, po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo,
-	  po/zh_CN.gmo, po/zh_TW.gmo: update CS translations
+	* po/ar.gmo, po/az.gmo, po/be.gmo, po/bg.gmo, po/ca.gmo, po/cs.gmo,
+	  po/cs.po, po/de.gmo, po/el_GR.gmo, po/en_GB.gmo, po/es.gmo,
+	  po/es_MX.gmo, po/et.gmo, po/eu.gmo, po/fa.gmo, po/fi.gmo,
+	  po/fr.gmo, po/gu.gmo, po/he.gmo, po/hi.gmo, po/hu.gmo, po/it.gmo,
+	  po/ja.gmo, po/ko.gmo, po/lt.gmo, po/ms.gmo, po/nb_NO.gmo,
+	  po/nl.gmo, po/pa.gmo, po/pl.gmo, po/pt_BR.gmo, po/pt_PT.gmo,
+	  po/ro.gmo, po/ru.gmo, po/sk.gmo, po/sv.gmo, po/ta.gmo, po/tr.gmo,
+	  po/uk.gmo, po/vi.gmo, po/zh_CN.gmo, po/zh_TW.gmo: update CS
+	  translations
 
 2005-04-06 11:53  jasper
 
@@ -5419,13 +5270,13 @@
 	  po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po,
 	  po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po,
 	  po/ms.gmo, po/ms.po, po/nb_NO.gmo, po/nb_NO.po, po/nl.gmo,
-	  po/nl.po, po/pa.gmo, po/pa.po, po/pl.gmo, po/pl.po,
-	  po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ro.gmo,
-	  po/ro.po, po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo,
-	  po/sv.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo,
-	  po/uk.po, po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo,
-	  po/zh_CN.po, po/zh_TW.gmo, po/zh_TW.po, src/events.c,
-	  src/screen.c: Fix another "grab freeze" case
+	  po/nl.po, po/pa.gmo, po/pa.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ro.gmo, po/ro.po,
+	  po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po,
+	  po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po,
+	  po/vi.gmo, po/vi.po, po/xfwm4.pot, po/zh_CN.gmo, po/zh_CN.po,
+	  po/zh_TW.gmo, po/zh_TW.po, src/events.c, src/screen.c: Fix
+	  another "grab freeze" case
 
 2005-03-20 21:52  pollux
 
@@ -5555,11 +5406,9 @@
 	* themes/default/close-active.xpm,
 	  themes/default/close-inactive.xpm,
 	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.xpm,
-	  themes/default/hide-active.xpm,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
 	  themes/default/hide-inactive.xpm,
-	  themes/default/hide-pressed.png,
-	  themes/default/hide-pressed.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
 	  themes/default/maximize-active.xpm,
 	  themes/default/maximize-inactive.xpm,
 	  themes/default/maximize-pressed.png,
@@ -5568,10 +5417,8 @@
 	  themes/default/maximize-toggled-inactive.xpm,
 	  themes/default/maximize-toggled-pressed.png,
 	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.xpm,
-	  themes/default/menu-inactive.xpm,
-	  themes/default/menu-pressed.png,
-	  themes/default/menu-pressed.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
 	  themes/default/shade-active.xpm,
 	  themes/default/shade-inactive.xpm,
 	  themes/default/shade-pressed.png,
@@ -5654,8 +5501,8 @@
 
 2005-02-10 22:09  olivier
 
-	* mcs-plugin/workspaces.c: Check for actual returned value to
-	  avoid critical warnings at startup.
+	* mcs-plugin/workspaces.c: Check for actual returned value to avoid
+	  critical warnings at startup.
 
 2005-02-10 20:40  olivier
 
@@ -5683,8 +5530,8 @@
 
 2005-02-08 22:16  olivier
 
-	* src/stacking.c: Don't get through excluded windows when
-	  searching windows ata given position.
+	* src/stacking.c: Don't get through excluded windows when searching
+	  windows ata given position.
 
 2005-02-04 21:25  olivier
 
@@ -5765,11 +5612,9 @@
 	  themes/default/close-active.xpm,
 	  themes/default/close-inactive.xpm,
 	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.xpm,
-	  themes/default/hide-active.xpm,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
 	  themes/default/hide-inactive.xpm,
-	  themes/default/hide-pressed.png,
-	  themes/default/hide-pressed.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
 	  themes/default/maximize-active.xpm,
 	  themes/default/maximize-inactive.xpm,
 	  themes/default/maximize-pressed.png,
@@ -5778,10 +5623,8 @@
 	  themes/default/maximize-toggled-inactive.xpm,
 	  themes/default/maximize-toggled-pressed.png,
 	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.xpm,
-	  themes/default/menu-inactive.xpm,
-	  themes/default/menu-pressed.png,
-	  themes/default/menu-pressed.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
 	  themes/default/shade-active.xpm,
 	  themes/default/shade-inactive.xpm,
 	  themes/default/shade-pressed.png,
@@ -5831,8 +5674,8 @@
 2005-01-23 16:48  pollux
 
 	* mcs-plugin/xfce-wm-settings.desktop,
-	  mcs-plugin/xfce-workspaces-settings.desktop, po/fi.gmo,
-	  po/fi.po: update FI translations
+	  mcs-plugin/xfce-workspaces-settings.desktop, po/fi.gmo, po/fi.po:
+	  update FI translations
 
 2005-01-22 08:57  pollux
 
@@ -5863,8 +5706,8 @@
 
 2005-01-18 18:35  olivier
 
-	* COMPOSITOR: Fix bug #611 (Documentation on command line option
-	  to enable/disable xfwm4 compositor)
+	* COMPOSITOR: Fix bug #611 (Documentation on command line option to
+	  enable/disable xfwm4 compositor)
 
 2005-01-17 20:58  olivier
 
@@ -5909,12 +5752,10 @@
 	  themes/default/close-active.xpm,
 	  themes/default/close-inactive.xpm,
 	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.xpm,
-	  themes/default/hide-active.xpm,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
 	  themes/default/hide-inactive.xpm,
-	  themes/default/hide-pressed.png,
-	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
-	  themes/default/left-active.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
+	  themes/default/left-active.png, themes/default/left-active.xpm,
 	  themes/default/left-inactive.png,
 	  themes/default/left-inactive.xpm,
 	  themes/default/maximize-active.xpm,
@@ -5925,12 +5766,9 @@
 	  themes/default/maximize-toggled-inactive.xpm,
 	  themes/default/maximize-toggled-pressed.png,
 	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.xpm,
-	  themes/default/menu-inactive.xpm,
-	  themes/default/menu-pressed.png,
-	  themes/default/menu-pressed.xpm,
-	  themes/default/right-active.png,
-	  themes/default/right-active.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
+	  themes/default/right-active.png, themes/default/right-active.xpm,
 	  themes/default/right-inactive.png,
 	  themes/default/right-inactive.xpm,
 	  themes/default/shade-active.xpm,
@@ -5948,8 +5786,8 @@
 	  themes/default/stick-toggled-active.xpm,
 	  themes/default/stick-toggled-inactive.xpm,
 	  themes/default/stick-toggled-pressed.png,
-	  themes/default/stick-toggled-pressed.xpm,
-	  themes/default/themerc, themes/default/title-1-active.png,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
 	  themes/default/title-1-active.xpm,
 	  themes/default/title-1-inactive.png,
 	  themes/default/title-1-inactive.xpm,
@@ -6045,8 +5883,8 @@
 2005-01-08 15:49  pollux
 
 	* mcs-plugin/xfce-wm-settings.desktop,
-	  mcs-plugin/xfce-workspaces-settings.desktop, po/ru.gmo,
-	  po/ru.po: update RU translations
+	  mcs-plugin/xfce-workspaces-settings.desktop, po/ru.gmo, po/ru.po:
+	  update RU translations
 
 2005-01-07 20:29  olivier
 
@@ -6102,8 +5940,7 @@
 	  themes/default/bottom-right-active.png,
 	  themes/default/bottom-right-inactive.png,
 	  themes/default/close-inactive.xpm,
-	  themes/default/hide-inactive.xpm,
-	  themes/default/left-active.png,
+	  themes/default/hide-inactive.xpm, themes/default/left-active.png,
 	  themes/default/left-inactive.png,
 	  themes/default/maximize-inactive.xpm,
 	  themes/default/maximize-toggled-inactive.xpm,
@@ -6410,8 +6247,8 @@
 
 	* xfwm4/trunk/ChangeLog, xfwm4/trunk/autogen.sh,
 	  xfwm4/trunk/mcs-plugin/Makefile.am,
-	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/cs.gmo:
-	  Update ChangeLog. Fix make distcheck.
+	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/cs.gmo: Update
+	  ChangeLog. Fix make distcheck.
 
 2004-12-21 23:50  olivier
 
@@ -6428,8 +6265,8 @@
 
 2004-12-21 22:44  olivier
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Fix theme row selection
-	  on gtk 2.6
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Fix theme row selection on
+	  gtk 2.6
 
 2004-12-21 09:04  kelnos
 
@@ -6442,8 +6279,8 @@
 
 2004-12-20 21:00  jasper
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/ltmain.sh: Update versions
-	  and ChangeLog
+	* xfwm4/trunk/ChangeLog, xfwm4/trunk/ltmain.sh: Update versions and
+	  ChangeLog
 
 2004-12-20 20:46  olivier
 
@@ -6466,8 +6303,8 @@
 	  xfwm4/trunk/themes/default/stick-pressed.png,
 	  xfwm4/trunk/themes/default/stick-pressed.xpm,
 	  xfwm4/trunk/themes/default/stick-toggled-pressed.png,
-	  xfwm4/trunk/themes/default/stick-toggled-pressed.xpm: Change
-	  look of pressed buttons.
+	  xfwm4/trunk/themes/default/stick-toggled-pressed.xpm: Change look
+	  of pressed buttons.
 
 2004-12-19 21:29  olivier
 
@@ -6733,8 +6570,8 @@
 	  xfwm4/trunk/themes/default/top-right-active.png,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
 	  xfwm4/trunk/themes/default/top-right-inactive.png,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme under hard pressure from the devs on irc.
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme under hard pressure from the devs on irc.
 
 2004-12-16 23:05  olivier
 
@@ -6809,8 +6646,8 @@
 
 	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/compositor.h:
 	  Monitor window creation in compositor to avoid stacking
-	  discrepancies (that should greatly improve thing for #552, if
-	  not fixing it for good)
+	  discrepancies (that should greatly improve thing for #552, if not
+	  fixing it for good)
 	  Add a warning if a stacking discrepancy is detected, so we can
 	  tell,
 	  Fix a mismatch between compositor header and implemented
@@ -6851,8 +6688,8 @@
 	  xfwm4/trunk/src/events.c: Improve stacking, event monitoring of
 	  unmanaged windows in compositor,
 	  Remove monitoring of pixmap on root window (to make the WM more
-	  solid and faster, it will make no difference in XFce since we
-	  use a "fake" root with xfdesktop)
+	  solid and faster, it will make no difference in XFce since we use
+	  a "fake" root with xfdesktop)
 
 2004-12-10 06:46  olivier
 
@@ -6963,8 +6800,8 @@
 
 2004-12-06 20:07  olivier
 
-	* xfwm4/trunk/src/compositor.c: Try to fix bug #573 by reducing
-	  the memory buffer usage during repaint.
+	* xfwm4/trunk/src/compositor.c: Try to fix bug #573 by reducing the
+	  memory buffer usage during repaint.
 
 2004-12-05 23:17  olivier
 
@@ -6980,8 +6817,8 @@
 	  xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/focus.h,
 	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/stacking.c,
-	  xfwm4/trunk/src/stacking.h: Implement a more solid imechanism
-	  for grabbing/ungrabbing mouse buttons.
+	  xfwm4/trunk/src/stacking.h: Implement a more solid imechanism for
+	  grabbing/ungrabbing mouse buttons.
 
 2004-12-05 21:38  pollux
 
@@ -7020,14 +6857,14 @@
 
 2004-12-02 21:50  olivier
 
-	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/settings.c: Fix
-	  bug #551 (wrap workspace not working when compositor is enabled)
+	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/settings.c: Fix bug
+	  #551 (wrap workspace not working when compositor is enabled)
 
 2004-12-02 20:24  olivier
 
-	* xfwm4/trunk/src/compositor.c: Update client opacity when
-	  transset chages the value on the frame (so that opacity gets
-	  properly restored after a moved/resize)
+	* xfwm4/trunk/src/compositor.c: Update client opacity when transset
+	  chages the value on the frame (so that opacity gets properly
+	  restored after a moved/resize)
 
 2004-11-30 23:26  olivier
 
@@ -7197,8 +7034,8 @@
 	  xfwm4/trunk/src/focus.c, xfwm4/trunk/src/hints.c,
 	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/misc.c,
 	  xfwm4/trunk/src/misc.h, xfwm4/trunk/src/netwm.c,
-	  xfwm4/trunk/src/screen.c, xfwm4/trunk/src/workspaces.c: Fix
-	  focus oddities (See bug #502)
+	  xfwm4/trunk/src/screen.c, xfwm4/trunk/src/workspaces.c: Fix focus
+	  oddities (See bug #502)
 
 2004-11-19 06:58  olivier
 
@@ -7235,17 +7072,17 @@
 
 	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
 	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.h,
-	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c: add a third
-	  hidden column to the treeview to get rid of strcmp(command,
-	  _("some command"))
+	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c: add a third hidden
+	  column to the treeview to get rid of strcmp(command, _("some
+	  command"))
 
 2004-11-16 07:12  jasper
 
 	* xfwm4/trunk/doc/C/images/titlebar.png,
 	  xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/fr/xfwm4.html,
 	  xfwm4/trunk/doc/it/xfwm4.html, xfwm4/trunk/doc/xfce-nochunk.xsl:
-	  Update some docs and update to new color scheme at the
-	  suggestion of Jeff Franks
+	  Update some docs and update to new color scheme at the suggestion
+	  of Jeff Franks
 
 2004-11-15 22:39  pollux
 
@@ -7329,8 +7166,8 @@
 2004-11-11 15:59  olivier
 
 	* xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/keyboard.c: Revert
-	  JF's patch and rather test for "Mod4" in xfwm4's keyboard.c
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/keyboard.c: Revert JF's
+	  patch and rather test for "Mod4" in xfwm4's keyboard.c
 
 2004-11-11 15:48  pollux
 
@@ -7446,8 +7283,8 @@
 	* xfwm4/trunk/src/events.c, xfwm4/trunk/src/hints.c,
 	  xfwm4/trunk/src/workspaces.c: Fix bug #463 (newly created
 	  workspaces are skipped when draging window),
-	  Add "default" case to the switch statements where missing as
-	  some (old) compilers require a "default" statement.
+	  Add "default" case to the switch statements where missing as some
+	  (old) compilers require a "default" statement.
 
 2004-11-04 21:17  olivier
 
@@ -7515,8 +7352,8 @@
 
 2004-10-30 12:00  olivier
 
-	* xfwm4/trunk/AUTHORS, xfwm4/trunk/COMPOSITOR: Update
-	  documentation for the compositing manager
+	* xfwm4/trunk/AUTHORS, xfwm4/trunk/COMPOSITOR: Update documentation
+	  for the compositing manager
 
 2004-10-28 19:44  olivier
 
@@ -7719,8 +7556,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Add some
-	  depth to the default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Add some depth
+	  to the default theme
 
 2004-10-26 23:14  olivier
 
@@ -7729,8 +7566,8 @@
 
 2004-10-26 21:02  olivier
 
-	* xfwm4/trunk/src/events.c: Fix stupid typo that broke focus
-	  follow mouse in the previous commit.
+	* xfwm4/trunk/src/events.c: Fix stupid typo that broke focus follow
+	  mouse in the previous commit.
 
 2004-10-26 20:42  olivier
 
@@ -7903,25 +7740,21 @@
 
 2004-10-23 17:47  benny
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po,
+	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po,
+	  xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po,
 	  xfwm4/trunk/po/de.po, xfwm4/trunk/po/es.po,
 	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po,
-	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.po, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po: Update-po for moe.
+	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po, xfwm4/trunk/po/fi.po,
+	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
+	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
+	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
+	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po,
+	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/pt_BR.po,
+	  xfwm4/trunk/po/pt_PT.po, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/sk.po, xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.po: Update-po for
+	  moe.
 
 2004-10-23 14:45  olivier
 
@@ -7964,8 +7797,8 @@
 
 2004-10-20 17:47  olivier
 
-	* xfwm4/trunk/src/placement.c: Fix initial placement issue
-	  reported on the ML by Brian
+	* xfwm4/trunk/src/placement.c: Fix initial placement issue reported
+	  on the ML by Brian
 
 2004-10-19 05:42  olivier
 
@@ -8057,8 +7890,8 @@
 2004-10-14 06:19  olivier
 
 	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/main.c: Fix double click time setting not
-	  working in xfwm4
+	  xfwm4/trunk/src/main.c: Fix double click time setting not working
+	  in xfwm4
 
 2004-10-13 22:52  olivier
 
@@ -8070,15 +7903,15 @@
 
 2004-10-13 22:47  olivier
 
-	* xfwm4/trunk/src/events.c, xfwm4/trunk/src/settings.c: Rewrite
-	  the "typeOfClick" fn so that there is no delay when using the
+	* xfwm4/trunk/src/events.c, xfwm4/trunk/src/settings.c: Rewrite the
+	  "typeOfClick" fn so that there is no delay when using the
 	  compositor
 
 2004-10-13 20:50  olivier
 
 	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/compositor.h,
-	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/screen.c: Change cmd
-	  line options to allow automatic compositor.
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/screen.c: Change cmd line
+	  options to allow automatic compositor.
 
 2004-10-13 20:12  pollux
 
@@ -8146,36 +7979,32 @@
 
 2004-10-11 16:30  benny
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po,
+	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/be.po,
+	  xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po,
 	  xfwm4/trunk/po/de.po, xfwm4/trunk/po/es.po,
 	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
-	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/gu.po,
-	  xfwm4/trunk/po/he.po, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po,
-	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.po, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sk.po, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
-	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/po/zh_TW.po: update-po for Moe.
+	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po, xfwm4/trunk/po/hi.po,
+	  xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
+	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sk.po, xfwm4/trunk/po/sv.po,
+	  xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po,
+	  xfwm4/trunk/po/vi.po, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.po: update-po for
+	  Moe.
 
 2004-10-10 22:03  olivier
 
-	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/compositor.h: Add
-	  a useless function that not used anywhere in the current code
-	  but might be useful some day, who knows...
+	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/compositor.h: Add a
+	  useless function that not used anywhere in the current code but
+	  might be useful some day, who knows...
 
 2004-10-10 21:27  olivier
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/compositor.c: Fix
-	  frame vanishing when using transparency
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/compositor.c: Fix frame
+	  vanishing when using transparency
 
 2004-10-10 11:52  pollux
 
@@ -8208,8 +8037,8 @@
 
 2004-10-09 16:15  olivier
 
-	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/events.c: ***
-	  empty log message ***
+	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/events.c: *** empty
+	  log message ***
 
 2004-10-09 14:20  pollux
 
@@ -8220,8 +8049,8 @@
 
 2004-10-09 13:48  pollux
 
-	* xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po: Punjabi
-	  translations update from jaswinderlinux@netscape.net
+	* xfwm4/trunk/po/pa.gmo, xfwm4/trunk/po/pa.po: Punjabi translations
+	  update from jaswinderlinux@netscape.net
 
 2004-10-09 13:13  olivier
 
@@ -8315,8 +8144,8 @@
 2004-10-06 21:56  olivier
 
 	* xfwm4/trunk/src/compositor.c, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/wireframe.c: Fix
-	  transet removing opacity property
+	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/wireframe.c: Fix transet
+	  removing opacity property
 	  expand sources;
 
 2004-10-05 21:37  olivier
@@ -8339,8 +8168,8 @@
 2004-10-05 14:11  jasper
 
 	* xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c,
-	  xfwm4/trunk/src/main.c: Benedikt tells me session files should
-	  be in ~/.cache/.
+	  xfwm4/trunk/src/main.c: Benedikt tells me session files should be
+	  in ~/.cache/.
 
 2004-10-05 11:33  olivier
 
@@ -8353,8 +8182,8 @@
 
 2004-10-05 06:55  olivier
 
-	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: ***
-	  empty log message ***
+	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/compositor.c: *** empty
+	  log message ***
 
 2004-10-05 06:49  olivier
 
@@ -8482,8 +8311,7 @@
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
 	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
-	  xfwm4/trunk/themes/breeze,
-	  xfwm4/trunk/themes/breeze/Makefile.am,
+	  xfwm4/trunk/themes/breeze, xfwm4/trunk/themes/breeze/Makefile.am,
 	  xfwm4/trunk/themes/breeze/Makefile.in,
 	  xfwm4/trunk/themes/breeze/README,
 	  xfwm4/trunk/themes/breeze/bottom-active.xpm,
@@ -8543,11 +8371,11 @@
 	  xfwm4/trunk/themes/default-4.0/Makefile.am,
 	  xfwm4/trunk/themes/default-4.0/Makefile.in,
 	  xfwm4/trunk/themes/opta/Makefile.am,
-	  xfwm4/trunk/themes/opta/Makefile.in: Jump to the next win
-	  instead of the previous if the current win vanishes during the
-	  alt-tab cycling,
-	  Adding (an old) theme "breeze" simply because it looks great
-	  with the compositor!
+	  xfwm4/trunk/themes/opta/Makefile.in: Jump to the next win instead
+	  of the previous if the current win vanishes during the alt-tab
+	  cycling,
+	  Adding (an old) theme "breeze" simply because it looks great with
+	  the compositor!
 
 2004-09-30 15:48  pollux
 
@@ -8683,9 +8511,8 @@
 
 2004-09-26 09:02  olivier
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Fix [Bug 336] New:
-	  Moving hidden buttons in settings changes button layout of all
-	  windows
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Fix [Bug 336] New: Moving
+	  hidden buttons in settings changes button layout of all windows
 
 2004-09-25 21:49  olivier
 
@@ -8717,8 +8544,8 @@
 
 2004-09-25 15:56  pollux
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c: deactivate the
-	  del entry in the popup menu when a not user_writable
+	* xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c: deactivate the del
+	  entry in the popup menu when a not user_writable
 	  entry is selected
 
 2004-09-25 15:32  pollux
@@ -8862,8 +8689,8 @@
 
 2004-09-21 20:13  jasper
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c: Prevent crash
-	  when keyval without name is pressed
+	* xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c: Prevent crash when
+	  keyval without name is pressed
 
 2004-09-21 19:27  olivier
 
@@ -8978,8 +8805,7 @@
 2004-09-18 18:43  dannym
 
 	* xfwm4/trunk/mcs-plugin/margins.c,
-	  xfwm4/trunk/mcs-plugin/plugin.c,
-	  xfwm4/trunk/mcs-plugin/plugin.h,
+	  xfwm4/trunk/mcs-plugin/plugin.c, xfwm4/trunk/mcs-plugin/plugin.h,
 	  xfwm4/trunk/mcs-plugin/workspaces.c: save_channel ->
 	  ws_save_channel
 
@@ -8997,8 +8823,7 @@
 2004-09-18 16:34  jasper
 
 	* xfwm4/trunk/mcs-plugin/margins.c,
-	  xfwm4/trunk/mcs-plugin/plugin.c,
-	  xfwm4/trunk/mcs-plugin/plugin.h,
+	  xfwm4/trunk/mcs-plugin/plugin.c, xfwm4/trunk/mcs-plugin/plugin.h,
 	  xfwm4/trunk/mcs-plugin/workspaces.c,
 	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: try to avoid some
 	  namespace clashes found by Danny
@@ -9093,8 +8918,8 @@
 	  xfwm4/trunk/themes/default/Makefile.in,
 	  xfwm4/trunk/themes/opta/Makefile.in,
 	  xfwm4/trunk/themes/symphony/Makefile.in,
-	  xfwm4/trunk/themes/waza/Makefile.in: Prepare compositor (not
-	  here yet though)
+	  xfwm4/trunk/themes/waza/Makefile.in: Prepare compositor (not here
+	  yet though)
 
 2004-09-09 18:51  pollux
 
@@ -9522,11 +9347,11 @@
 	  xfwm4/trunk/src/spinning_cursor.h, xfwm4/trunk/src/stacking.c,
 	  xfwm4/trunk/src/stacking.h,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/tabwin.h,
-	  xfwm4/trunk/src/transients.c, xfwm4/trunk/src/transients.h,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h: Add
-	  CVS Id, like Jasper does with the panel.
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/transients.c,
+	  xfwm4/trunk/src/transients.h, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/src/workspaces.h: Add CVS Id, like Jasper does with
+	  the panel.
 
 2004-08-22 22:14  olivier
 
@@ -9595,8 +9420,8 @@
 	  xfwm4/trunk/themes/default/top-right-active.png,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
 	  xfwm4/trunk/themes/default/top-right-inactive.png,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme again (sorry for any incovenience that might cause)
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme again (sorry for any incovenience that might cause)
 
 2004-08-19 11:18  olivier
 
@@ -9718,8 +9543,8 @@
 
 2004-08-16 20:31  olivier
 
-	* xfwm4/trunk/src/focus.c, xfwm4/trunk/src/stacking.c: Rework
-	  (read simplify) focus passing,
+	* xfwm4/trunk/src/focus.c, xfwm4/trunk/src/stacking.c: Rework (read
+	  simplify) focus passing,
 	  Update focus when lowering a window (as per user request)
 
 2004-08-16 20:09  olivier
@@ -9859,8 +9684,8 @@
 	* xfwm4/trunk/src/events.c, xfwm4/trunk/src/hints.c,
 	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/transients.c,
 	  xfwm4/trunk/src/transients.h: Add support for TRANSIENT_FOR
-	  update (with cautious checks for cyclic transient relationship)
-	  - That should fix the issue with gtranslator (bug #273)
+	  update (with cautious checks for cyclic transient relationship) -
+	  That should fix the issue with gtranslator (bug #273)
 
 2004-08-04 17:10  olivier
 
@@ -9982,8 +9807,8 @@
 	  xfwm4/trunk/themes/default/top-right-active.png,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
 	  xfwm4/trunk/themes/default/top-right-inactive.png,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme.
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme.
 
 2004-08-03 16:39  olivier
 
@@ -9997,15 +9822,14 @@
 
 	* xfwm4/trunk/mcs-plugin/margins.c,
 	  xfwm4/trunk/mcs-plugin/margins.h,
-	  xfwm4/trunk/mcs-plugin/plugin.c,
-	  xfwm4/trunk/mcs-plugin/plugin.h,
+	  xfwm4/trunk/mcs-plugin/plugin.c, xfwm4/trunk/mcs-plugin/plugin.h,
 	  xfwm4/trunk/mcs-plugin/workspaces.c,
 	  xfwm4/trunk/mcs-plugin/workspaces.h,
 	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
 	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.h,
 	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.c,
-	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.h: Write a new
-	  widget making heavy use of DnD for button layout,
+	  xfwm4/trunk/mcs-plugin/xfwm4_shortcuteditor.h: Write a new widget
+	  making heavy use of DnD for button layout,
 	  Update license preamble,
 	  Give credit where credit is due.
 
@@ -10030,9 +9854,8 @@
 	  xfwm4/trunk/icons/48x48/Makefile.in,
 	  xfwm4/trunk/icons/48x48/xfce4-keys.png,
 	  xfwm4/trunk/icons/48x48/xfce4-workspaces.png,
-	  xfwm4/trunk/icons/48x48/xfwm4.png,
-	  xfwm4/trunk/icons/Makefile.am, xfwm4/trunk/icons/Makefile.in,
-	  xfwm4/trunk/icons/scalable,
+	  xfwm4/trunk/icons/48x48/xfwm4.png, xfwm4/trunk/icons/Makefile.am,
+	  xfwm4/trunk/icons/Makefile.in, xfwm4/trunk/icons/scalable,
 	  xfwm4/trunk/icons/scalable/Makefile.am,
 	  xfwm4/trunk/icons/scalable/Makefile.in,
 	  xfwm4/trunk/icons/scalable/xfce4-workspaces.svg,
@@ -10045,8 +9868,8 @@
 
 2004-07-24 18:52  benny
 
-	* xfwm4/trunk/m4/depends.m4: Readded XFCE_MCS_PLUGIN() again,
-	  dunno how I manage to remove it everytime
+	* xfwm4/trunk/m4/depends.m4: Readded XFCE_MCS_PLUGIN() again, dunno
+	  how I manage to remove it everytime
 	  I edit depends.m4!
 
 2004-07-24 17:30  benny
@@ -10167,8 +9990,8 @@
 	  xfwm4/trunk/themes/default/top-right-active.png,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
 	  xfwm4/trunk/themes/default/top-right-inactive.png,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme again, adopt a simple, slick and colorfull theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme again, adopt a simple, slick and colorfull theme
 
 2004-07-20 21:21  olivier
 
@@ -10230,8 +10053,8 @@
 	  xfwm4/trunk/themes/default/top-right-active.png,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
 	  xfwm4/trunk/themes/default/top-right-inactive.png,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme
 
 2004-07-20 20:58  benny
 
@@ -10378,8 +10201,8 @@
 	  xfwm4/trunk/themes/waza/top-left-active.xpm,
 	  xfwm4/trunk/themes/waza/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/waza/top-right-active.xpm,
-	  xfwm4/trunk/themes/waza/top-right-inactive.xpm: Update the
-	  "Waza" theme
+	  xfwm4/trunk/themes/waza/top-right-inactive.xpm: Update the "Waza"
+	  theme
 
 2004-07-11 19:52  olivier
 
@@ -10505,8 +10328,8 @@
 
 2004-07-02 10:27  olivier
 
-	* xfwm4/trunk/themes/default/themerc: Title vertical offset for
-	  the default theme
+	* xfwm4/trunk/themes/default/themerc: Title vertical offset for the
+	  default theme
 
 2004-07-02 06:22  olivier
 
@@ -10529,8 +10352,8 @@
 2004-06-30 21:42  olivier
 
 	* xfwm4/trunk/src/focus.c, xfwm4/trunk/src/netwm.c,
-	  xfwm4/trunk/src/stacking.c, xfwm4/trunk/src/stacking.h: Fix
-	  frame update when an app changes its own state to modal
+	  xfwm4/trunk/src/stacking.c, xfwm4/trunk/src/stacking.h: Fix frame
+	  update when an app changes its own state to modal
 
 2004-06-30 16:51  olivier
 
@@ -10551,8 +10374,8 @@
 
 2004-06-29 19:47  olivier
 
-	* xfwm4/trunk/src/transients.c: Check for apps that set their
-	  group leader to themselves.
+	* xfwm4/trunk/src/transients.c: Check for apps that set their group
+	  leader to themselves.
 
 2004-06-28 20:24  olivier
 
@@ -10637,24 +10460,20 @@
 
 2004-06-26 21:20  olivier
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
+	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/bg.po,
+	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
 	  xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po,
 	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.po, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.po, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.po,
-	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/src/main.c: Sync
+	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po, xfwm4/trunk/po/hi.po,
+	  xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
+	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
+	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/Makefile.am,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/main.c: Sync
 
 2004-06-26 17:29  olivier
 
@@ -10721,8 +10540,8 @@
 	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/netwm.c, xfwm4/trunk/src/settings.c,
 	  xfwm4/trunk/src/settings.h,
-	  xfwm4/trunk/themes/default.keys/keythemerc: Add a key shortcut
-	  to toggle fullscreen; Default key is "Alt+F11"
+	  xfwm4/trunk/themes/default.keys/keythemerc: Add a key shortcut to
+	  toggle fullscreen; Default key is "Alt+F11"
 
 2004-06-23 19:20  olivier
 
@@ -10784,19 +10603,16 @@
 
 	* xfwm4/trunk/mcs-plugin/Makefile.am,
 	  xfwm4/trunk/mcs-plugin/Makefile.in, xfwm4/trunk/po/ar.po,
-	  xfwm4/trunk/po/az.po, xfwm4/trunk/po/bg.po,
-	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po,
-	  xfwm4/trunk/po/de.po, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/az.po, xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po, xfwm4/trunk/po/es.po,
 	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/eu.po,
 	  xfwm4/trunk/po/fa_IR.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/hi.po,
-	  xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po,
-	  xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po,
-	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.po,
-	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
-	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sv.po,
-	  xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po,
+	  xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po, xfwm4/trunk/po/ko.po,
+	  xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/pt_BR.po,
+	  xfwm4/trunk/po/pt_PT.po, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
 	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
 	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
 	  xfwm4/trunk/po/zh_TW.po, xfwm4/trunk/src/placement.c: Add
@@ -10821,8 +10637,8 @@
 
 2004-06-20 21:07  pollux
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Add icon from Fran�ois
-	  and change text formatting in the command shortcut key dialog
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Add icon from Fran�ois and
+	  change text formatting in the command shortcut key dialog
 
 2004-06-20 20:42  pollux
 
@@ -10830,8 +10646,8 @@
 	  xfwm4/trunk/mcs-plugin/Makefile.in,
 	  xfwm4/trunk/mcs-plugin/keys-icon.h,
 	  xfwm4/trunk/mcs-plugin/keys.png,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Add icon from Fran�ois
-	  and change text formatting in the shortcut key chooser dialog
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Add icon from Fran�ois and
+	  change text formatting in the shortcut key chooser dialog
 
 2004-06-20 10:12  olivier
 
@@ -10923,22 +10739,19 @@
 
 2004-06-18 05:42  olivier
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po,
-	  xfwm4/trunk/po/bg.po, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
+	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po, xfwm4/trunk/po/bg.po,
+	  xfwm4/trunk/po/ca.po, xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
 	  xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po,
 	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa_IR.po,
-	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po,
-	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po,
-	  xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/pt_BR.po,
-	  xfwm4/trunk/po/pt_PT.po, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
-	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po,
-	  xfwm4/trunk/po/vi.po, xfwm4/trunk/po/xfwm4.pot,
-	  xfwm4/trunk/po/zh_CN.po, xfwm4/trunk/po/zh_TW.po: Update-po
+	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po, xfwm4/trunk/po/hi.po,
+	  xfwm4/trunk/po/hu.po, xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
+	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/sv.po, xfwm4/trunk/po/ta.po,
+	  xfwm4/trunk/po/tr.po, xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
+	  xfwm4/trunk/po/zh_TW.po: Update-po
 
 2004-06-18 05:38  olivier
 
@@ -10958,8 +10771,8 @@
 
 2004-06-17 06:15  olivier
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Apply Jean-Francois
-	  Wauthy <pollux@xfce.org> patch for keyboard shortcut editing.
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Apply Jean-Francois Wauthy
+	  <pollux@xfce.org> patch for keyboard shortcut editing.
 
 2004-06-16 20:16  olivier
 
@@ -11077,10 +10890,9 @@
 	  xfwm4/trunk/src/spinning_cursor.h, xfwm4/trunk/src/stacking.c,
 	  xfwm4/trunk/src/stacking.h,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/transients.c,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h: Add
-	  multiscreen support.
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/transients.c, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/src/workspaces.h: Add multiscreen support.
 
 2004-06-13 21:18  pollux
 
@@ -11121,8 +10933,8 @@
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
 	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/screen.h: Forgot to
-	  add a new file, and fix a merge conflict.
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/screen.h: Forgot to add
+	  a new file, and fix a merge conflict.
 
 2004-06-04 22:08  olivier
 
@@ -11149,11 +10961,11 @@
 	  xfwm4/trunk/src/spinning_cursor.h, xfwm4/trunk/src/stacking.c,
 	  xfwm4/trunk/src/stacking.h,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/tabwin.h,
-	  xfwm4/trunk/src/transients.c, xfwm4/trunk/src/transients.h,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h:
-	  Change internals to prepare multi-screen (not quite there yet)
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/transients.c,
+	  xfwm4/trunk/src/transients.h, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/src/workspaces.h: Change internals to prepare
+	  multi-screen (not quite there yet)
 
 2004-06-04 14:11  olivier
 
@@ -11247,12 +11059,11 @@
 	  xfwm4/trunk/src/spinning_cursor.h, xfwm4/trunk/src/stacking.c,
 	  xfwm4/trunk/src/stacking.h,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/tabwin.h,
-	  xfwm4/trunk/src/transients.c, xfwm4/trunk/src/transients.h,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h: -
-	  Change gtktoxevent API to be GdkScreen and therefore multiscreen
-	  compliant
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/transients.c,
+	  xfwm4/trunk/src/transients.h, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/src/workspaces.h: - Change gtktoxevent API to be
+	  GdkScreen and therefore multiscreen compliant
 	  - Modify xfwm4 to be compatible with the gtktoxevent API change
 	  (make sure you update both libxfcegui4 *and* xfwm4 at the same
 	  time!)
@@ -11377,11 +11188,11 @@
 	  xfwm4/trunk/src/spinning_cursor.h, xfwm4/trunk/src/stacking.c,
 	  xfwm4/trunk/src/stacking.h,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/tabwin.h,
-	  xfwm4/trunk/src/transients.c, xfwm4/trunk/src/transients.h,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h,
-	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/transients.c,
+	  xfwm4/trunk/src/transients.h, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/src/workspaces.h, xfwm4/trunk/themes/Makefile.am,
+	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/default-4.0/Makefile.in,
 	  xfwm4/trunk/themes/default.keys/Makefile.in,
 	  xfwm4/trunk/themes/default/Makefile.in,
@@ -11483,11 +11294,11 @@
 	  xfwm4/trunk/themes/waza/top-right-active.xpm,
 	  xfwm4/trunk/themes/waza/top-right-inactive.png,
 	  xfwm4/trunk/themes/waza/top-right-inactive.xpm: Get rid of out
-	  own Xinerama impl. and use GdkScreen routines instead (that
-	  fixes at least two issues I can see ,the requirement to have
-	  Xienrama enabled in libxfcegui4 to get support for in in xfwm4,
-	  and as a side effect, xfwm4 is now compatible with SUN Xinerama
-	  which is slightly different from XFree Xinierama)
+	  own Xinerama impl. and use GdkScreen routines instead (that fixes
+	  at least two issues I can see ,the requirement to have Xienrama
+	  enabled in libxfcegui4 to get support for in in xfwm4, and as a
+	  side effect, xfwm4 is now compatible with SUN Xinerama which is
+	  slightly different from XFree Xinierama)
 	  Add a new theme, from my numerous attempts to deign a default
 	  xfwm4 theme for 4.2
 	  Remove the theme "synthetic" that sould be moved to xfwm4-themes
@@ -11583,9 +11394,9 @@
 	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/stacking.c,
 	  xfwm4/trunk/src/stacking.h, xfwm4/trunk/src/transients.c,
 	  xfwm4/trunk/src/transients.h, xfwm4/trunk/src/workspaces.c: Huge
-	  code reorg., add preliminary support for partial struts; it
-	  still needs work but it safer to commit to SCM now than loosing
-	  the code later, heh!
+	  code reorg., add preliminary support for partial struts; it still
+	  needs work but it safer to commit to SCM now than loosing the
+	  code later, heh!
 
 2004-05-05 17:53  olivier
 
@@ -11672,8 +11483,8 @@
 	  xfwm4/trunk/themes/opta/Makefile.am,
 	  xfwm4/trunk/themes/opta/Makefile.in,
 	  xfwm4/trunk/themes/synthetic/Makefile.am,
-	  xfwm4/trunk/themes/synthetic/Makefile.in: Got tired of the
-	  thread about pax on the ML, reverting.
+	  xfwm4/trunk/themes/synthetic/Makefile.in: Got tired of the thread
+	  about pax on the ML, reverting.
 
 2004-04-24 21:08  olivier
 
@@ -11726,8 +11537,8 @@
 	  xfwm4/trunk/themes/opta/Makefile.am,
 	  xfwm4/trunk/themes/opta/Makefile.in,
 	  xfwm4/trunk/themes/synthetic/Makefile.am,
-	  xfwm4/trunk/themes/synthetic/Makefile.in: Try to speed up
-	  install by using tar to copy the files
+	  xfwm4/trunk/themes/synthetic/Makefile.in: Try to speed up install
+	  by using tar to copy the files
 
 2004-04-23 20:05  olivier
 
@@ -11791,15 +11602,15 @@
 	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/Makefile.am,
 	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/src/poswin.c, xfwm4/trunk/src/poswin.h: Add window
-	  size/position during resize (based on a patch submitted by
-	  Joshua Blanton <jblanton@irg.cs.ohiou.edu>)
+	  size/position during resize (based on a patch submitted by Joshua
+	  Blanton <jblanton@irg.cs.ohiou.edu>)
 
 2004-04-16 16:57  olivier
 
 	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/themes/default/Makefile.am,
-	  xfwm4/trunk/themes/default/Makefile.in: Don't honor stack
-	  request when sibling is specified as we don't honor it,
+	  xfwm4/trunk/themes/default/Makefile.in: Don't honor stack request
+	  when sibling is specified as we don't honor it,
 	  Add inactive png image missing from install.
 
 2004-04-15 20:47  olivier
@@ -11821,8 +11632,8 @@
 
 2004-04-14 17:04  olivier
 
-	* xfwm4/trunk/src/client.c: Fix focus transition from fullscreen
-	  as reported by Jean-Francois Wauthy <pollux@xfce.org>
+	* xfwm4/trunk/src/client.c: Fix focus transition from fullscreen as
+	  reported by Jean-Francois Wauthy <pollux@xfce.org>
 
 2004-04-14 06:16  olivier
 
@@ -12191,13 +12002,13 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Small
-	  changes, make the title smaller, reduce button spacing.
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Small changes,
+	  make the title smaller, reduce button spacing.
 
 2004-03-29 20:12  olivier
 
-	* xfwm4/trunk/src/client.c: Use the same window selection
-	  algorithm in pass focus as in window cycling
+	* xfwm4/trunk/src/client.c: Use the same window selection algorithm
+	  in pass focus as in window cycling
 
 2004-03-28 20:56  olivier
 
@@ -12214,8 +12025,8 @@
 
 2004-03-25 21:59  olivier
 
-	* xfwm4/trunk/src/client.c: Bug fix and small usability
-	  improvement in focus transition
+	* xfwm4/trunk/src/client.c: Bug fix and small usability improvement
+	  in focus transition
 
 2004-03-24 21:09  olivier
 
@@ -12311,8 +12122,8 @@
 
 2004-03-17 18:05  olivier
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c: Still bug
-	  fix in new focus code
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c: Still bug fix
+	  in new focus code
 
 2004-03-16 21:15  olivier
 
@@ -12399,8 +12210,8 @@
 	  xfwm4/trunk/themes/default/title-4-active.xpm,
 	  xfwm4/trunk/themes/default/title-4-inactive.xpm,
 	  xfwm4/trunk/themes/default/title-5-active.xpm,
-	  xfwm4/trunk/themes/default/title-5-inactive.xpm: tweaking to
-	  save title space when using few buttons
+	  xfwm4/trunk/themes/default/title-5-inactive.xpm: tweaking to save
+	  title space when using few buttons
 
 2004-03-09 20:36  olivier
 
@@ -12686,9 +12497,9 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: increase
-	  title height by 1 pix, allows to set title and buttons with a
-	  slight offset (looks a bit nicer IMO)
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: increase title
+	  height by 1 pix, allows to set title and buttons with a slight
+	  offset (looks a bit nicer IMO)
 
 2004-03-04 23:13  olivier
 
@@ -12772,8 +12583,8 @@
 
 2004-03-01 21:09  benny
 
-	* xfwm4/trunk/m4/debug.m4: Added --enable-gcov to compile xfce
-	  with support for coverage tests. Very
+	* xfwm4/trunk/m4/debug.m4: Added --enable-gcov to compile xfce with
+	  support for coverage tests. Very
 	  useful.
 
 2004-02-28 14:56  olivier
@@ -12835,8 +12646,7 @@
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
 	  xfwm4/trunk/themes/default/top-right-inactive.xpm,
 	  xfwm4/trunk/themes/opta/Makefile.am,
-	  xfwm4/trunk/themes/opta/Makefile.in,
-	  xfwm4/trunk/themes/softwall,
+	  xfwm4/trunk/themes/opta/Makefile.in, xfwm4/trunk/themes/softwall,
 	  xfwm4/trunk/themes/synthetic/Makefile.am,
 	  xfwm4/trunk/themes/synthetic/Makefile.in: Use standard location
 	  for xfwm4 themes (breaking backward compat, older themes won't
@@ -13119,8 +12929,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Use odd
-	  height for title
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Use odd height
+	  for title
 
 2004-02-19 19:15  olivier
 
@@ -13188,8 +12998,8 @@
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
 	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Reduce title
-	  height, give more space to the top corners, use square corners
-	  at bottom.
+	  height, give more space to the top corners, use square corners at
+	  bottom.
 
 2004-02-18 06:59  olivier
 
@@ -13229,10 +13039,10 @@
 
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/main.h, xfwm4/trunk/src/workspaces.c: Resync
-	  with xfce_4_0 branch:
-	  Keep track of window creation timestamp for "transient for
-	  group" management,
+	  xfwm4/trunk/src/main.h, xfwm4/trunk/src/workspaces.c: Resync with
+	  xfce_4_0 branch:
+	  Keep track of window creation timestamp for "transient for group"
+	  management,
 	  Simplify code a bit, should be handled with care.
 
 2004-02-17 19:36  jasper
@@ -13293,8 +13103,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Drop the 2
-	  pix black frame
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Drop the 2 pix
+	  black frame
 
 2004-02-15 23:09  dannym
 
@@ -13550,8 +13360,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme (last change, promise:)
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme (last change, promise:)
 
 2004-02-04 21:06  olivier
 
@@ -13606,8 +13416,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme for xfwm4
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme for xfwm4
 
 2004-02-03 21:29  olivier
 
@@ -13796,8 +13606,8 @@
 
 2004-01-29 15:51  jasper
 
-	* xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po: Update
-	  Persian translations
+	* xfwm4/trunk/po/fa_IR.gmo, xfwm4/trunk/po/fa_IR.po: Update Persian
+	  translations
 
 2004-01-28 22:50  olivier
 
@@ -13806,8 +13616,8 @@
 	  based flag param for clientSetFocus instead of a bunch of
 	  gbooleans
 	  Add FOCUS_FORCE to clientSetFocus
-	  Handle FocusOut from Motif combo menu nicely and force focus
-	  back to dialog
+	  Handle FocusOut from Motif combo menu nicely and force focus back
+	  to dialog
 
 2004-01-27 20:15  olivier
 
@@ -14027,8 +13837,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme to something really different!
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme to something really different!
 
 2004-01-17 11:09  olivier
 
@@ -14083,8 +13893,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme
 
 2004-01-14 21:41  olivier
 
@@ -14195,14 +14005,14 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme
 
 2004-01-13 20:13  benny
 
 	* xfwm4/trunk/mcs-plugin/workspaces.c, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/misc.c: Various fixes
-	  to get the beast compiled with gcc 3.3.x and -Wall -Werror.
+	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/misc.c: Various fixes to
+	  get the beast compiled with gcc 3.3.x and -Wall -Werror.
 	  We have to take special care about new ISO C aliasing rules.
 
 2004-01-13 20:11  olivier
@@ -14499,8 +14309,8 @@
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/frame.c,
 	  xfwm4/trunk/src/session.c,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/workspaces.c: Change internals to allow more
-	  than 32 flags.
+	  xfwm4/trunk/src/workspaces.c: Change internals to allow more than
+	  32 flags.
 
 2003-12-30 23:25  olivier
 
@@ -14508,8 +14318,8 @@
 
 2003-12-29 10:56  jasper
 
-	* xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Update Norwegian
-	  and Turkish translations
+	* xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Update Norwegian and
+	  Turkish translations
 
 2003-12-28 21:17  olivier
 
@@ -14576,13 +14386,13 @@
 
 2003-12-23 22:04  moe
 
-	* xfwm4/trunk/po/de.po: Rather large update. Forgot about the
-	  moved margin/workspaces plugin.
+	* xfwm4/trunk/po/de.po: Rather large update. Forgot about the moved
+	  margin/workspaces plugin.
 
 2003-12-23 19:46  olivier
 
-	* xfwm4/trunk/src/client.c: Fix a mistake that was preventing
-	  Above and Below flag to work
+	* xfwm4/trunk/src/client.c: Fix a mistake that was preventing Above
+	  and Below flag to work
 
 2003-12-22 22:49  olivier
 
@@ -14650,8 +14460,8 @@
 	  xfwm4/trunk/themes/default/title-4-active.xpm,
 	  xfwm4/trunk/themes/default/title-4-inactive.xpm: Fix crash in
 	  workspace MCS plugin
-	  Include a patch from Patrick Bores <p@trickbores.com> that
-	  allows pop3 email checking from mailcheck panel plugin (use
+	  Include a patch from Patrick Bores <p@trickbores.com> that allows
+	  pop3 email checking from mailcheck panel plugin (use
 	  pop3://username:password@host for the mailbox)
 	  Small tweaks to default xfwm4 and gtk themes
 
@@ -14827,8 +14637,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: New design
-	  for the default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: New design for
+	  the default theme
 
 2003-12-10 20:55  olivier
 
@@ -14850,8 +14660,8 @@
 
 2003-12-07 10:55  olivier
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c: Change
-	  dialog placement
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c: Change dialog
+	  placement
 
 2003-12-07 00:26  olivier
 
@@ -14981,9 +14791,9 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Fix send
-	  event not being emited when maximize occured on a window with
-	  its size to the maximized size
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Fix send event
+	  not being emited when maximize occured on a window with its size
+	  to the maximized size
 	  Themes
 
 2003-11-25 20:03  olivier
@@ -15860,9 +15670,7 @@
 	  xfwm4/branches/xfce_4_0/themes/default/maximize-inactive.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/maximize-pressed.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-active.xpm,
-	  
 	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-inactive.xpm,
-	  
 	  xfwm4/branches/xfce_4_0/themes/default/maximize-toggled-pressed.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/menu-active.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/menu-inactive.xpm,
@@ -15874,14 +15682,12 @@
 	  xfwm4/branches/xfce_4_0/themes/default/shade-pressed.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-active.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-inactive.xpm,
-	  
 	  xfwm4/branches/xfce_4_0/themes/default/shade-toggled-pressed.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/stick-active.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/stick-inactive.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/stick-pressed.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-active.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-inactive.xpm,
-	  
 	  xfwm4/branches/xfce_4_0/themes/default/stick-toggled-pressed.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/title-1-active.xpm,
 	  xfwm4/branches/xfce_4_0/themes/default/title-1-inactive.xpm,
@@ -16334,8 +16140,7 @@
 	  xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/Makefile.am,
 	  xfwm4/trunk/doc/Makefile.in, xfwm4/trunk/doc/fr,
 	  xfwm4/trunk/doc/fr/Makefile.am, xfwm4/trunk/doc/fr/Makefile.in,
-	  xfwm4/trunk/doc/fr/images,
-	  xfwm4/trunk/doc/fr/images/Makefile.am,
+	  xfwm4/trunk/doc/fr/images, xfwm4/trunk/doc/fr/images/Makefile.am,
 	  xfwm4/trunk/doc/fr/images/Makefile.in,
 	  xfwm4/trunk/doc/fr/images/decoration_style.png,
 	  xfwm4/trunk/doc/fr/images/keyboard_and_focus.png,
@@ -16435,8 +16240,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change back
-	  to a previous test, seems I really can't make up my mind...
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change back to
+	  a previous test, seems I really can't make up my mind...
 
 2003-11-02 08:22  olivier
 
@@ -16880,8 +16685,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: This one
-	  looks okay.
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: This one looks
+	  okay.
 
 2003-10-20 18:51  olivier
 
@@ -17006,8 +16811,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme
 
 2003-10-18 23:16  olivier
 
@@ -17120,8 +16925,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme
 
 2003-10-18 10:34  olivier
 
@@ -17198,8 +17003,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme
 
 2003-10-17 16:38  olivier
 
@@ -17371,15 +17176,15 @@
 
 2003-10-14 22:33  olivier
 
-	* xfwm4/trunk/src/client.c: Prevent other shortcuts when
-	  performing Alt+move/resize
+	* xfwm4/trunk/src/client.c: Prevent other shortcuts when performing
+	  Alt+move/resize
 
 2003-10-14 22:19  olivier
 
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/misc.c,
-	  xfwm4/trunk/src/misc.h, xfwm4/trunk/themes/bbs/themerc: Make
-	  sure we use event time for grab/ungrab in resize/move/cycle,
+	  xfwm4/trunk/src/misc.h, xfwm4/trunk/themes/bbs/themerc: Make sure
+	  we use event time for grab/ungrab in resize/move/cycle,
 	  Grab keybd when moving/resizing even when using just the mouse,
 	  Use closest corner for resize using Alt+right click resizing.
 	  Wrong offset in bbs vertical title align
@@ -17426,8 +17231,7 @@
 	  xfwm4/trunk/mcs-plugin/margins.c,
 	  xfwm4/trunk/mcs-plugin/margins.h,
 	  xfwm4/trunk/mcs-plugin/margins_plugin.c,
-	  xfwm4/trunk/mcs-plugin/plugin.c,
-	  xfwm4/trunk/mcs-plugin/plugin.h,
+	  xfwm4/trunk/mcs-plugin/plugin.c, xfwm4/trunk/mcs-plugin/plugin.h,
 	  xfwm4/trunk/mcs-plugin/workspaces-icon.h,
 	  xfwm4/trunk/mcs-plugin/workspaces.c,
 	  xfwm4/trunk/mcs-plugin/workspaces.h,
@@ -17558,8 +17362,8 @@
 	  keypress--DONE
 	  compare dates between mime file and dbh file before updating
 	  applications -- DONE scroll by keyboard debugged and enhanced
-	  --DONE g_strchug() crash on openwith by menu... --FIXED on
-	  go_up do
+	  --DONE g_strchug() crash on openwith by menu... --FIXED on go_up
+	  do
 	  not place in history, nor back nor forward --DONE
 	  
 	  2003-10-11 00:05 edscott
@@ -17570,19 +17374,16 @@
 	  libs/menu.c,
 	  libs/menu_callbacks.c, libs/misc.c, libs/misc.h, libs/monitor.c,
 	  libs/new_win.c, libs/pasteboard.c, libs/print.c, libs/refresh.c,
-	  libs/reg.c, libs/remove.c, libs/rename.c, libs/run.c,
-	  libs/run.h,
+	  libs/reg.c, libs/remove.c, libs/rename.c, libs/run.c, libs/run.h,
 	  libs/scramble.c, libs/symlink.c, libs/terminal.c, libs/touch.c,
-	  libs/trash.c, libs/xfdiff.c, smb/smb_download.c,
-	  smb/smb_list.c: do
+	  libs/trash.c, libs/xfdiff.c, smb/smb_download.c, smb/smb_list.c:
+	  do
 	  second letter search if first letter is / -- DONE autohide
-	  diagnostics on click or keypress--DONE compare dates between
-	  mime
+	  diagnostics on click or keypress--DONE compare dates between mime
 	  file and dbh file before updating applications -- DONE scroll by
 	  keyboard debugged and enhanced --DONE g_strchug() crash on
 	  openwith
-	  by menu... --FIXED on go_up do not place in history, nor back
-	  nor
+	  by menu... --FIXED on go_up do not place in history, nor back nor
 	  forward --DONE
 	  
 	  2003-10-10 23:19 xfce
@@ -17594,8 +17395,7 @@
 	  
 	  * libxfcegui4/libxfcegui4/netk-pager.c, xfwm4/configure,
 	  xfwm4/configure.ac, xfwm4/themes/Makefile.am,
-	  xfwm4/themes/Makefile.in,
-	  xfwm4/themes/default/bottom-active.xpm,
+	  xfwm4/themes/Makefile.in, xfwm4/themes/default/bottom-active.xpm,
 	  xfwm4/themes/default/bottom-inactive.xpm,
 	  xfwm4/themes/default/bottom-left-active.xpm,
 	  xfwm4/themes/default/bottom-left-inactive.xpm,
@@ -17646,8 +17446,7 @@
 	  xfwm4/themes/default/top-left-active.xpm,
 	  xfwm4/themes/default/top-left-inactive.xpm,
 	  xfwm4/themes/default/top-right-active.xpm,
-	  xfwm4/themes/default/top-right-inactive.xpm: Revert xfwm4
-	  default
+	  xfwm4/themes/default/top-right-inactive.xpm: Revert xfwm4 default
 	  theme to the one found in pre-release as it looked better Fix a
 	  very small thing in netk-pager
 	  
@@ -17657,8 +17456,7 @@
 	  
 	  2003-10-09 23:41 huysmans
 	  
-	  * xfwm4/: mcs-plugin/workspaces.c, src/settings.c: Move
-	  workspace
+	  * xfwm4/: mcs-plugin/workspaces.c, src/settings.c: Move workspace
 	  names settings into settings plugin. Rename count to
 	  Xfwm/WorkspaceCount for consistency.
 	  
@@ -17710,8 +17508,7 @@
 	  libs/remove.c, libs/remove.h, libs/rename.c, libs/run.c,
 	  libs/run.h, libs/symlink.c, libs/touch.c, libs/trash.c,
 	  smb/smb_download.c, smb/smb_list.c, src/glade_main_gui.c,
-	  src/main.c, src/treeview.c, src/widgets.c: eliminate all
-	  warnings
+	  src/main.c, src/treeview.c, src/widgets.c: eliminate all warnings
 	  when compiling with --enable-debug
 	  
 	  2003-10-09 01:46 edscott
@@ -17741,8 +17538,7 @@
 	  src/glade_main_gui.h, src/glade_remove_callbacks.c,
 	  src/glade_remove_callbacks.h, src/glade_remove_gui.c,
 	  src/glade_remove_gui.h, src/main.c, src/mcs-manager.c,
-	  src/treeview.c, src/widgets.c: broke glade files into three
-	  parts
+	  src/treeview.c, src/widgets.c: broke glade files into three parts
 	  
 	  2003-10-08 23:43 xfce
 	  
@@ -17814,8 +17610,7 @@
 	  themes/default/bottom-left-inactive.xpm,
 	  themes/default/bottom-right-active.xpm,
 	  themes/default/bottom-right-inactive.xpm,
-	  themes/default/left-active.xpm,
-	  themes/default/left-inactive.xpm,
+	  themes/default/left-active.xpm, themes/default/left-inactive.xpm,
 	  themes/default/right-active.xpm,
 	  themes/default/right-inactive.xpm,
 	  themes/default/themerc, themes/default/title-1-active.xpm,
@@ -17993,8 +17788,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Reduce size
-	  of decorations for default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Reduce size of
+	  decorations for default theme
 
 2003-09-19 21:11  xfce
 
@@ -18045,8 +17840,8 @@
 
 2003-09-13 13:55  huysmans
 
-	* xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml:
-	  Update by francois
+	* xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml: Update
+	  by francois
 
 2003-09-12 23:54  xfce
 
@@ -18078,8 +17873,8 @@
 2003-09-11 21:52  xfce
 
 	* xfwm4/trunk/src/client.c: Don't test WM_PROTOCOLS_DELETE_WINDOW
-	  when closing client (as some client don't set this flag, they
-	  get killed while they do support "wm_delete_window" message.
+	  when closing client (as some client don't set this flag, they get
+	  killed while they do support "wm_delete_window" message.
 
 2003-09-10 07:54  huysmans
 
@@ -18112,8 +17907,8 @@
 
 2003-09-08 07:27  huysmans
 
-	* xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml:
-	  Update xfwm doc
+	* xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml: Update
+	  xfwm doc
 
 2003-09-08 06:25  huysmans
 
@@ -18143,8 +17938,8 @@
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/hints.c,
 	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/main.c,
 	  xfwm4/trunk/src/main.h, xfwm4/trunk/src/workspaces.c,
-	  xfwm4/trunk/src/workspaces.h: Use "int" where "int" is to be
-	  used instead of CARD32 (for portability)
+	  xfwm4/trunk/src/workspaces.h: Use "int" where "int" is to be used
+	  instead of CARD32 (for portability)
 
 2003-08-31 22:27  xfce
 
@@ -18182,9 +17977,9 @@
 2003-08-29 22:59  xfce
 
 	* xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h: Blender sets
-	  only 4 elements in MWM hints intead of 5 as defined, as we
-	  ignore the fifth element anyway, read only 4 elements and make
-	  blender happy...
+	  only 4 elements in MWM hints intead of 5 as defined, as we ignore
+	  the fifth element anyway, read only 4 elements and make blender
+	  happy...
 
 2003-08-26 07:38  huysmans
 
@@ -18220,8 +18015,8 @@
 	  xfwm4/trunk/themes/default/right-active.xpm,
 	  xfwm4/trunk/themes/default/right-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Smoothen
-	  frame shadow on default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Smoothen frame
+	  shadow on default theme
 
 2003-08-25 05:22  xfce
 
@@ -18311,8 +18106,8 @@
 
 2003-08-10 19:54  huysmans
 
-	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update
-	  chinese translations
+	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update chinese
+	  translations
 
 2003-08-08 05:57  xfce
 
@@ -18439,8 +18234,8 @@
 
 2003-07-29 15:04  huysmans
 
-	* xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml:
-	  Update documentation to latest versions
+	* xfwm4/trunk/doc/C/xfwm4.html, xfwm4/trunk/doc/C/xfwm4.xml: Update
+	  documentation to latest versions
 
 2003-07-29 12:24  huysmans
 
@@ -18448,8 +18243,8 @@
 	  xfwm4/trunk/doc/C/images/keyboard_and_focus.png,
 	  xfwm4/trunk/doc/C/images/misc_wm_prefs.png,
 	  xfwm4/trunk/doc/C/images/titlebar.png,
-	  xfwm4/trunk/doc/C/images/workspace_margins.png: Update all
-	  images to new defaults
+	  xfwm4/trunk/doc/C/images/workspace_margins.png: Update all images
+	  to new defaults
 
 2003-07-29 06:28  huysmans
 
@@ -18505,8 +18300,8 @@
 
 2003-07-25 21:33  xfce
 
-	* xfwm4/trunk/src/settings.c: Fall back to default keytheme if
-	  user specified keytheme is not found, rather than just exiting...
+	* xfwm4/trunk/src/settings.c: Fall back to default keytheme if user
+	  specified keytheme is not found, rather than just exiting...
 
 2003-07-25 05:48  xfce
 
@@ -18515,8 +18310,8 @@
 2003-07-24 22:50  xfce
 
 	* xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/hints.c: Change the
-	  getMotifHints() -It's the last thing that changed in xfwm4
-	  before rc2-
+	  getMotifHints() -It's the last thing that changed in xfwm4 before
+	  rc2-
 	  (New impl should be bullet proof :)
 
 2003-07-24 09:21  huysmans
@@ -18621,8 +18416,8 @@
 
 2003-07-14 13:11  xfce
 
-	* xfwm4/trunk/src/client.c: Add some comment to the code - just
-	  for the record
+	* xfwm4/trunk/src/client.c: Add some comment to the code - just for
+	  the record
 
 2003-07-14 12:46  xfce
 
@@ -18656,8 +18451,8 @@
 
 2003-07-11 06:55  huysmans
 
-	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update
-	  Chinese translations
+	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update Chinese
+	  translations
 
 2003-07-10 09:56  huysmans
 
@@ -18691,8 +18486,8 @@
 
 2003-07-08 20:53  xfce
 
-	* xfwm4/trunk/po/Makefile.in.in: Don't perform an update-po on
-	  make dist as it causes far too much trouble
+	* xfwm4/trunk/po/Makefile.in.in: Don't perform an update-po on make
+	  dist as it causes far too much trouble
 
 2003-07-07 22:40  xfce
 
@@ -18729,13 +18524,13 @@
 
 2003-07-03 19:59  xfce
 
-	* xfwm4/trunk/src/main.c: Store session in .xfce4/sessions/ and
-	  use session_id in saved session name
+	* xfwm4/trunk/src/main.c: Store session in .xfce4/sessions/ and use
+	  session_id in saved session name
 
 2003-07-03 18:16  edscott
 
-	* xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po: spanish
-	  tranlation updates for 4.0 release.
+	* xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po: spanish tranlation
+	  updates for 4.0 release.
 
 2003-07-01 20:57  xfce
 
@@ -18877,13 +18672,11 @@
 
 2003-06-21 12:15  xfce
 
-	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.po,
-	  xfwm4/trunk/po/de.po, xfwm4/trunk/po/es.po,
-	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/fi.po,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/ja.po,
-	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po,
-	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/ru.po,
-	  xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
+	* xfwm4/trunk/po/ar.po, xfwm4/trunk/po/ca.po, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/es.po, xfwm4/trunk/po/es_MX.po,
+	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ms.po, xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/ru.po, xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
 	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po: Update po
 
 2003-06-20 23:26  xfce
@@ -18908,9 +18701,9 @@
 
 2003-06-19 21:12  xfce
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/main.c: Fix a major
-	  bug introduced when adding the loop to flush the event queue
-	  (very bad idea).
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/main.c: Fix a major bug
+	  introduced when adding the loop to flush the event queue (very
+	  bad idea).
 
 2003-06-19 17:53  xfce
 
@@ -19121,8 +18914,8 @@
 2003-06-05 07:28  huysmans
 
 	* xfwm4/trunk/po/de.gmo, xfwm4/trunk/po/de.po,
-	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Updated
-	  translations and multiple file drop on backdrop list manager
+	  xfwm4/trunk/po/tr.gmo, xfwm4/trunk/po/tr.po: Updated translations
+	  and multiple file drop on backdrop list manager
 
 2003-06-04 16:58  xfce
 
@@ -19236,8 +19029,8 @@
 2003-05-27 21:35  xfce
 
 	* xfwm4/trunk/po/fi.gmo, xfwm4/trunk/po/fi.po: Update Finnish
-	  translation by Ilkka Ollakka (ilkka dot j dot ollakka at
-	  students dot oamk dot fi)
+	  translation by Ilkka Ollakka (ilkka dot j dot ollakka at students
+	  dot oamk dot fi)
 
 2003-05-27 21:30  xfce
 
@@ -19249,10 +19042,9 @@
 	  xfwm4/trunk/doc/C/images/Makefile.in,
 	  xfwm4/trunk/doc/Makefile.in, xfwm4/trunk/install-sh,
 	  xfwm4/trunk/mcs-plugin/Makefile.in,
-	  xfwm4/trunk/mcs-plugin/monitor-icon.h,
-	  xfwm4/trunk/mkinstalldirs, xfwm4/trunk/po/ja.gmo,
-	  xfwm4/trunk/po/ja.po, xfwm4/trunk/src/Makefile.in,
-	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/monitor-icon.h, xfwm4/trunk/mkinstalldirs,
+	  xfwm4/trunk/po/ja.gmo, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/bbs/Makefile.in,
 	  xfwm4/trunk/themes/curve/Makefile.in,
 	  xfwm4/trunk/themes/default.keys/Makefile.in,
@@ -19284,9 +19076,8 @@
 
 2003-05-25 21:35  xfce
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Set Xft.dpi to 96, and
-	  use "Sans 8" as default font and "Sans Bold 10" as window title
-	  font
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Set Xft.dpi to 96, and use
+	  "Sans 8" as default font and "Sans Bold 10" as window title font
 
 2003-05-24 19:17  xfce
 
@@ -19307,8 +19098,8 @@
 2003-05-23 21:37  xfce
 
 	* xfwm4/trunk/src/.indent.pro, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/menu.c, xfwm4/trunk/src/menu.h: Rework the
-	  window menu
+	  xfwm4/trunk/src/menu.c, xfwm4/trunk/src/menu.h: Rework the window
+	  menu
 	  Add send to... workspace # sub menu
 
 2003-05-22 22:31  xfce
@@ -19337,9 +19128,9 @@
 	  xfwm4/trunk/src/parserc.c, xfwm4/trunk/src/session.c,
 	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h,
 	  xfwm4/trunk/src/spinning_cursor.c,
-	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/workspaces.c:
-	  Disconnect wrap workspaces and wrap windows options
+	  xfwm4/trunk/src/startup_notification.c, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/workspaces.c: Disconnect wrap workspaces and wrap
+	  windows options
 	  Reorganize mcs-plugin a bit
 	  Rerun indent and fix some wrong indent behaviour toward _()
 	  Changs "Misc." label to "Advanced" in xfwm4 mcs-plugin
@@ -19352,8 +19143,8 @@
 
 2003-05-21 21:30  xfce
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Turn off wrap workspace
-	  by default
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Turn off wrap workspace by
+	  default
 
 2003-05-16 20:43  xfce
 
@@ -19385,10 +19176,10 @@
 	  xfwm4/trunk/src/spinning_cursor.c,
 	  xfwm4/trunk/src/spinning_cursor.h,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/tabwin.h,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h:
-	  Various small cleanups, rerun indent with new settings.
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/src/workspaces.h: Various small cleanups, rerun
+	  indent with new settings.
 
 2003-05-16 18:24  huysmans
 
@@ -19527,8 +19318,8 @@
 2003-05-10 22:43  xfce
 
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c: Try to
-	  improve things with mutiple screen w/out breaking existing
-	  proven code.
+	  improve things with mutiple screen w/out breaking existing proven
+	  code.
 
 2003-05-10 21:05  xfce
 
@@ -19738,8 +19529,8 @@
 
 2003-05-03 09:46  huysmans
 
-	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update
-	  chinese translations
+	* xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po: Update chinese
+	  translations
 
 2003-05-02 17:13  bmeurer
 
@@ -19940,8 +19731,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  default theme a bit, make it somehow "smoother"
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change default
+	  theme a bit, make it somehow "smoother"
 
 2003-04-27 21:08  xfce
 
@@ -20003,8 +19794,8 @@
 
 2003-04-25 09:53  bmeurer
 
-	* xfwm4/trunk/m4/depends.m4: Updated depends.m4 and added macro
-	  for use with panel plugins. Updated
+	* xfwm4/trunk/m4/depends.m4: Updated depends.m4 and added macro for
+	  use with panel plugins. Updated
 	  libxfce4util to install the common m4 files into
 	  $(datadir)/xfce4/m4.
 
@@ -20035,8 +19826,8 @@
 	  xfwm4/trunk/themes/default/top-left-active.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Bunch of
-	  small fixes and improved default theme
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Bunch of small
+	  fixes and improved default theme
 
 2003-04-23 22:06  xfce
 
@@ -20155,16 +19946,16 @@
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/workspaces.c,
 	  xfwm4/trunk/themes/curve/title-2-active.xpm,
 	  xfwm4/trunk/themes/curve/title-3-active.xpm,
-	  xfwm4/trunk/themes/curve/title-4-active.xpm: Various
-	  improvements in transient for group management.
+	  xfwm4/trunk/themes/curve/title-4-active.xpm: Various improvements
+	  in transient for group management.
 
 2003-04-16 22:58  xfce
 
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/hints.c,
 	  xfwm4/trunk/src/misc.c, xfwm4/trunk/src/settings.c,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h: Fix
-	  a bug with struts as seen on rox list
+	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h: Fix a
+	  bug with struts as seen on rox list
 	  Improve group transient management
 	  Don't focus on raise from a configureRequest
 
@@ -20224,18 +20015,18 @@
 	  xfwm4/trunk/xfwm4.spec.in: Implement a smarter "transient for
 	  group" management
 	  Rearrange general transients management
-	  Add a slightly enhanced version of "perl" theme from Tobias
-	  Henle <null@page23.de>
+	  Add a slightly enhanced version of "perl" theme from Tobias Henle
+	  <null@page23.de>
 
 2003-04-14 22:04  xfce
 
-	* xfwm4/trunk/src/client.c: Don't set windows transient for root
-	  on top
+	* xfwm4/trunk/src/client.c: Don't set windows transient for root on
+	  top
 
 2003-04-12 22:28  xfce
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/workspaces.c: Fix
-	  small and harmless focus bug.
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/workspaces.c: Fix small
+	  and harmless focus bug.
 
 2003-04-10 22:10  xfce
 
@@ -20441,8 +20232,8 @@
 	  xfwm4/trunk/themes/default/right-active.xpm,
 	  xfwm4/trunk/themes/default/right-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-right-active.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change
-	  shadows to get better 3D look
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Change shadows
+	  to get better 3D look
 
 2003-04-07 20:26  xfce
 
@@ -20536,8 +20327,8 @@
 	  xfwm4/trunk/themes/default/title-4-inactive.xpm,
 	  xfwm4/trunk/themes/default/title-5-inactive.xpm,
 	  xfwm4/trunk/themes/default/top-left-inactive.xpm,
-	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Default
-	  theme: use black frame arround inactive windows
+	  xfwm4/trunk/themes/default/top-right-inactive.xpm: Default theme:
+	  use black frame arround inactive windows
 
 2003-04-05 00:10  xfce
 
@@ -20604,13 +20395,12 @@
 	  xfwm4/trunk/src/misc.h, xfwm4/trunk/src/mypixmap.c,
 	  xfwm4/trunk/src/mywindow.c, xfwm4/trunk/src/parserc.c,
 	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/tabwin.c,
-	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/workspaces.c:
-	  Debugging stuff now provided by libxfce4util. As a result of
-	  this change
+	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/workspaces.c: Debugging
+	  stuff now provided by libxfce4util. As a result of this change
 	  libxfcegui4 now depends on libxfce4util.
 	  Some other updates.
-	  added a hint to the libxfcegui4 README for Xinerama problems
-	  with XFree86.
+	  added a hint to the libxfcegui4 README for Xinerama problems with
+	  XFree86.
 
 2003-04-02 17:33  bmeurer
 
@@ -20625,8 +20415,7 @@
 	  xfwm4/trunk/configure, xfwm4/trunk/configure.ac,
 	  xfwm4/trunk/ltcf-c.sh, xfwm4/trunk/ltconfig,
 	  xfwm4/trunk/ltmain.sh, xfwm4/trunk/m4/debug.m4,
-	  xfwm4/trunk/m4/rpath.m4,
-	  xfwm4/trunk/mcs-plugin/margins_plugin.c,
+	  xfwm4/trunk/m4/rpath.m4, xfwm4/trunk/mcs-plugin/margins_plugin.c,
 	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/src/client.c,
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/frame.c,
 	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/keyboard.c,
@@ -20635,9 +20424,9 @@
 	  xfwm4/trunk/src/mywindow.c, xfwm4/trunk/src/parserc.c,
 	  xfwm4/trunk/src/session.c, xfwm4/trunk/src/settings.c,
 	  xfwm4/trunk/src/spinning_cursor.c,
-	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/workspaces.c: Updated
-	  i18n stuff (libxfce4util now provides a i18n.h).
+	  xfwm4/trunk/src/startup_notification.c, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/workspaces.c: Updated i18n stuff (libxfce4util
+	  now provides a i18n.h).
 	  updated X11.m4
 	  updated xfwm4 to compile well with -Werror -Wall
 	  updated xfce-mcs-plugins and added a hint to the README for
@@ -20673,8 +20462,8 @@
 
 	* xfwm4/trunk/themes/default/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/default/bottom-left-inactive.xpm,
-	  xfwm4/trunk/themes/default/bottom-right-active.xpm: Smooth
-	  bottom corners
+	  xfwm4/trunk/themes/default/bottom-right-active.xpm: Smooth bottom
+	  corners
 
 2003-03-30 21:41  xfce
 
@@ -20695,8 +20484,8 @@
 
 2003-03-30 20:52  xfce
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c: Improve
-	  focus passing on unmap/destroy events
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c: Improve focus
+	  passing on unmap/destroy events
 
 2003-03-30 14:37  xfce
 
@@ -21192,22 +20981,21 @@
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/events.h,
 	  xfwm4/trunk/src/frame.c, xfwm4/trunk/src/frame.h,
 	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/hints.h,
-	  xfwm4/trunk/src/inline-tabwin-icon.h,
-	  xfwm4/trunk/src/keyboard.c, xfwm4/trunk/src/keyboard.h,
-	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/main.h,
-	  xfwm4/trunk/src/menu.c, xfwm4/trunk/src/menu.h,
-	  xfwm4/trunk/src/misc.c, xfwm4/trunk/src/misc.h,
-	  xfwm4/trunk/src/mywindow.c, xfwm4/trunk/src/mywindow.h,
-	  xfwm4/trunk/src/parserc.c, xfwm4/trunk/src/parserc.h,
-	  xfwm4/trunk/src/pixmap.c, xfwm4/trunk/src/pixmap.h,
-	  xfwm4/trunk/src/session.c, xfwm4/trunk/src/session.h,
-	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h,
-	  xfwm4/trunk/src/spinning_cursor.c,
+	  xfwm4/trunk/src/inline-tabwin-icon.h, xfwm4/trunk/src/keyboard.c,
+	  xfwm4/trunk/src/keyboard.h, xfwm4/trunk/src/main.c,
+	  xfwm4/trunk/src/main.h, xfwm4/trunk/src/menu.c,
+	  xfwm4/trunk/src/menu.h, xfwm4/trunk/src/misc.c,
+	  xfwm4/trunk/src/misc.h, xfwm4/trunk/src/mywindow.c,
+	  xfwm4/trunk/src/mywindow.h, xfwm4/trunk/src/parserc.c,
+	  xfwm4/trunk/src/parserc.h, xfwm4/trunk/src/pixmap.c,
+	  xfwm4/trunk/src/pixmap.h, xfwm4/trunk/src/session.c,
+	  xfwm4/trunk/src/session.h, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/src/settings.h, xfwm4/trunk/src/spinning_cursor.c,
 	  xfwm4/trunk/src/spinning_cursor.h,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/tabwin.h,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h,
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/src/workspaces.h,
 	  xfwm4/trunk/themes/microdeck/bottom-active.xpm,
 	  xfwm4/trunk/themes/microdeck/bottom-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck/bottom-left-active.xpm,
@@ -21246,8 +21034,8 @@
 	  xfwm4/trunk/themes/microdeck/title-3-active.xpm,
 	  xfwm4/trunk/themes/microdeck/title-3-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck/title-4-active.xpm,
-	  xfwm4/trunk/themes/microdeck/title-4-inactive.xpm: Redesign
-	  title bar of microdeck theme (default theme)
+	  xfwm4/trunk/themes/microdeck/title-4-inactive.xpm: Redesign title
+	  bar of microdeck theme (default theme)
 
 2003-03-16 09:16  xfce
 
@@ -21288,8 +21076,8 @@
 	  xfwm4/trunk/themes/microdeck/shade-active.xpm,
 	  xfwm4/trunk/themes/microdeck/shade-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck/stick-active.xpm,
-	  xfwm4/trunk/themes/microdeck/stick-inactive.xpm: Redesign
-	  default "microdeck" theme
+	  xfwm4/trunk/themes/microdeck/stick-inactive.xpm: Redesign default
+	  "microdeck" theme
 
 2003-03-11 20:29  xfce
 
@@ -21332,8 +21120,8 @@
 
 2003-03-09 16:37  xfce
 
-	* xfwm4/trunk/src/client.c: Some more optimizations based on
-	  latest changes
+	* xfwm4/trunk/src/client.c: Some more optimizations based on latest
+	  changes
 
 2003-03-09 14:47  xfce
 
@@ -21378,8 +21166,8 @@
 2003-03-05 19:43  xfce
 
 	* xfwm4/trunk/themes/microdeck/title-3-active.xpm,
-	  xfwm4/trunk/themes/microdeck/title-3-inactive.xpm: Add very
-	  light horiz stripes to title bar for microdeck theme.
+	  xfwm4/trunk/themes/microdeck/title-3-inactive.xpm: Add very light
+	  horiz stripes to title bar for microdeck theme.
 
 2003-03-04 21:01  xfce
 
@@ -21649,10 +21437,10 @@
 	  xfwm4/trunk/src/spinning_cursor.c,
 	  xfwm4/trunk/src/spinning_cursor.h,
 	  xfwm4/trunk/src/startup_notification.c,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.c, xfwm4/trunk/src/tabwin.h,
-	  xfwm4/trunk/src/workspaces.c, xfwm4/trunk/src/workspaces.h:
-	  Improve window move/resize and expand sources
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.c,
+	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/workspaces.c,
+	  xfwm4/trunk/src/workspaces.h: Improve window move/resize and
+	  expand sources
 
 2003-02-26 21:30  xfce
 
@@ -21662,8 +21450,8 @@
 2003-02-26 12:03  huysmans
 
 	* xfwm4/trunk/mcs-plugin/margins_plugin.c,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Unref icon after last
-	  use, not before
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Unref icon after last use,
+	  not before
 
 2003-02-26 07:18  xfce
 
@@ -21740,8 +21528,8 @@
 2003-02-25 22:46  xfce
 
 	* xfwm4/trunk/src/client.c: Remove an unecessary test in
-	  clientConstraintPos() that was preventing clientInitPosition()
-	  to do its job correctly.
+	  clientConstraintPos() that was preventing clientInitPosition() to
+	  do its job correctly.
 
 2003-02-25 22:16  huysmans
 
@@ -21763,8 +21551,8 @@
 	  xfwm4/trunk/po/nl.po, xfwm4/trunk/po/pl.gmo,
 	  xfwm4/trunk/po/pl.po, xfwm4/trunk/po/xfwm4.pot,
 	  xfwm4/trunk/po/zh_CN.gmo, xfwm4/trunk/po/zh_CN.po,
-	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/settings.c: Fix
-	  margins from mcs not being taken in account at startup
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/settings.c: Fix margins
+	  from mcs not being taken in account at startup
 	  Change margin plugin GUI
 	  Update xtions.
 
@@ -21944,10 +21732,10 @@
 	  xfwm4/trunk/src/mywindow.h, xfwm4/trunk/src/parserc.h,
 	  xfwm4/trunk/src/pixmap.h, xfwm4/trunk/src/session.h,
 	  xfwm4/trunk/src/settings.h, xfwm4/trunk/src/spinning_cursor.h,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/workspaces.h: Take the
-	  frame into account when receiving a XConfigureRequest for apps
-	  that try to manipulate the WM frame
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.h,
+	  xfwm4/trunk/src/workspaces.h: Take the frame into account when
+	  receiving a XConfigureRequest for apps that try to manipulate the
+	  WM frame
 	  Rearrange headers
 
 2003-02-20 23:27  xfce
@@ -21964,10 +21752,9 @@
 	  xfwm4/trunk/src/parserc.h, xfwm4/trunk/src/pixmap.h,
 	  xfwm4/trunk/src/session.h, xfwm4/trunk/src/settings.h,
 	  xfwm4/trunk/src/spinning_cursor.h,
-	  xfwm4/trunk/src/startup_notification.h,
-	  xfwm4/trunk/src/tabwin.h, xfwm4/trunk/src/workspaces.h: Avoid
-	  using "__" for defines in headers as it could be reserved for
-	  the compiler
+	  xfwm4/trunk/src/startup_notification.h, xfwm4/trunk/src/tabwin.h,
+	  xfwm4/trunk/src/workspaces.h: Avoid using "__" for defines in
+	  headers as it could be reserved for the compiler
 
 2003-02-19 21:06  xfce
 
@@ -22199,9 +21986,8 @@
 
 2003-02-08 16:12  xfce
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
-	  xfwm4/trunk/src/parserc.c: Reduce the buffer from 512 to 80
-	  bytes.
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/src/parserc.c:
+	  Reduce the buffer from 512 to 80 bytes.
 
 2003-02-08 16:06  xfce
 
@@ -22231,8 +22017,8 @@
 	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/hints.c,
 	  xfwm4/trunk/src/hints.h, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/session.c, xfwm4/trunk/src/session.h: Add
-	  missing bits for full session management
+	  xfwm4/trunk/src/session.c, xfwm4/trunk/src/session.h: Add missing
+	  bits for full session management
 
 2003-02-06 08:46  xfce
 
@@ -22376,8 +22162,8 @@
 2003-01-28 09:41  xfce
 
 	* xfwm4/trunk/themes/microdeck2/title-3-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty log
+	  message ***
 
 2003-01-27 21:05  xfce
 
@@ -22671,10 +22457,9 @@
 
 2003-01-23 10:58  xfce
 
-	* xfwm4/trunk/COPYING, xfwm4/trunk/INSTALL,
-	  xfwm4/trunk/autogen.sh, xfwm4/trunk/config.guess,
-	  xfwm4/trunk/config.sub, xfwm4/trunk/depcomp,
-	  xfwm4/trunk/install-sh, xfwm4/trunk/missing,
+	* xfwm4/trunk/COPYING, xfwm4/trunk/INSTALL, xfwm4/trunk/autogen.sh,
+	  xfwm4/trunk/config.guess, xfwm4/trunk/config.sub,
+	  xfwm4/trunk/depcomp, xfwm4/trunk/install-sh, xfwm4/trunk/missing,
 	  xfwm4/trunk/mkinstalldirs: Update auto* stuff
 
 2003-01-23 09:15  xfce
@@ -22705,14 +22490,13 @@
 	  xfwm4/trunk/defaults/Makefile.in,
 	  xfwm4/trunk/mcs-plugin/Makefile.am,
 	  xfwm4/trunk/mcs-plugin/Makefile.in,
-	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c,
-	  xfwm4/trunk/mkinstalldirs, xfwm4/trunk/po,
-	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/Makefile.in.in,
-	  xfwm4/trunk/po/POTFILES.in, xfwm4/trunk/po/fr.gmo,
-	  xfwm4/trunk/po/fr.po, xfwm4/trunk/po/po2tbl.sed.in,
-	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/src/Makefile.am,
-	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/mcs-plugin/xfwm4_plugin.c, xfwm4/trunk/mkinstalldirs,
+	  xfwm4/trunk/po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/Makefile.in.in, xfwm4/trunk/po/POTFILES.in,
+	  xfwm4/trunk/po/fr.gmo, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/po2tbl.sed.in, xfwm4/trunk/po/xfwm4.pot,
+	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/adept/Makefile.in,
 	  xfwm4/trunk/themes/agua/Makefile.in,
 	  xfwm4/trunk/themes/atlanta/Makefile.in,
@@ -22967,8 +22751,8 @@
 	  xfwm4/trunk/themes/atlanta2/top-left-active.xpm,
 	  xfwm4/trunk/themes/atlanta2/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/atlanta2/top-right-active.xpm,
-	  xfwm4/trunk/themes/atlanta2/top-right-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/atlanta2/top-right-inactive.xpm: *** empty log
+	  message ***
 
 2003-01-18 16:33  xfce
 
@@ -23088,8 +22872,8 @@
 	  xfwm4/trunk/themes/atlanta2/top-left-active.xpm,
 	  xfwm4/trunk/themes/atlanta2/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/atlanta2/top-right-active.xpm,
-	  xfwm4/trunk/themes/atlanta2/top-right-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/atlanta2/top-right-inactive.xpm: *** empty log
+	  message ***
 
 2003-01-16 17:47  xfce
 
@@ -23264,15 +23048,15 @@
 
 2003-01-10 14:21  xfce
 
-	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Center dialog on screen
-	  by default.
+	* xfwm4/trunk/mcs-plugin/xfwm4_plugin.c: Center dialog on screen by
+	  default.
 
 2003-01-10 10:55  xfce
 
-	* xfwm4/trunk/src/main.c: BEWARE: Changed the default mode to
-	  *not* fork at startup. Use "xfwm --daemon" to get the daemon
-	  mode (this is because usually, window managers aren't supposed
-	  to turn themselves into daemon and that cause problems to some)
+	* xfwm4/trunk/src/main.c: BEWARE: Changed the default mode to *not*
+	  fork at startup. Use "xfwm --daemon" to get the daemon mode (this
+	  is because usually, window managers aren't supposed to turn
+	  themselves into daemon and that cause problems to some)
 
 2003-01-10 09:28  xfce
 
@@ -23503,12 +23287,12 @@
 	* xfwm4/trunk/src/events.c: Apply Thomas Leonard patch :
 	  Changes are:
 	  
-	  - If raise_on_click is off, clicking the titlebar buttons
-	  doesn't raise
+	  - If raise_on_click is off, clicking the titlebar buttons doesn't
+	  raise
 	  the window.
 	  
-	  - Button-3 drag on the titlebar moves without raising
-	  (previously it did
+	  - Button-3 drag on the titlebar moves without raising (previously
+	  it did
 	  nothing)
 	  
 	  - Button-3 drag on the frame resizes without raising (previously
@@ -23539,8 +23323,8 @@
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
 	  xfwm4/trunk/src/frame.c, xfwm4/trunk/src/main.c,
 	  xfwm4/trunk/src/settings.c: A lot of huge and critical internal
-	  changes regarding windows stacking. Handle with care, but so
-	  far, the changes look good.
+	  changes regarding windows stacking. Handle with care, but so far,
+	  the changes look good.
 
 2002-12-27 15:30  xfce
 
@@ -23568,8 +23352,8 @@
 	  xfwm4/trunk/themes/microdeck2/title-3-active.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-4-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: Revert
-	  recent changes on microdeck2 theme
+	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: Revert recent
+	  changes on microdeck2 theme
 
 2002-12-21 22:27  xfce
 
@@ -23578,8 +23362,8 @@
 	  xfwm4/trunk/themes/microdeck2/title-3-active.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-4-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-20 22:07  xfce
 
@@ -23603,8 +23387,8 @@
 	  xfwm4/trunk/configure.in, xfwm4/trunk/defaults/defaults.in,
 	  xfwm4/trunk/src/frame.c, xfwm4/trunk/src/settings.c,
 	  xfwm4/trunk/src/settings.h, xfwm4/trunk/themes/Makefile.am,
-	  xfwm4/trunk/themes/Makefile.in,
-	  xfwm4/trunk/themes/curve/themerc, xfwm4/trunk/themes/koynacity,
+	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/curve/themerc,
+	  xfwm4/trunk/themes/koynacity,
 	  xfwm4/trunk/themes/koynacity/Makefile.am,
 	  xfwm4/trunk/themes/koynacity/Makefile.in,
 	  xfwm4/trunk/themes/koynacity/README,
@@ -23800,8 +23584,8 @@
 	* xfwm4/trunk/themes/microdeck2/title-3-active.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-4-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-09 13:41  xfce
 
@@ -23810,16 +23594,16 @@
 	  xfwm4/trunk/themes/microdeck2/title-3-active.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-4-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-07 13:52  xfce
 
 	* xfwm4/trunk/themes/microdeck2/bottom-left-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/bottom-right-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/themerc,
-	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-07 11:15  xfce
 
@@ -23828,8 +23612,8 @@
 
 2002-12-06 21:53  xfce
 
-	* xfwm4/trunk/src/main.c, xfwm4/trunk/themes/microdeck2/README:
-	  Add info about GTK version used at runtime.
+	* xfwm4/trunk/src/main.c, xfwm4/trunk/themes/microdeck2/README: Add
+	  info about GTK version used at runtime.
 
 2002-12-06 21:20  xfce
 
@@ -23861,8 +23645,8 @@
 	  xfwm4/trunk/themes/microdeck2/title-1-active.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-1-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-5-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-5-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-5-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-05 21:42  xfce
 
@@ -23900,8 +23684,8 @@
 	* xfwm4/trunk/themes/microdeck2/title-2-active.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-2-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/title-4-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-4-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-05 12:57  xfce
 
@@ -23953,26 +23737,26 @@
 2002-12-04 21:35  xfce
 
 	* xfwm4/trunk/themes/microdeck2/title-3-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-04 13:47  xfce
 
-	* xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty
-	  log message ***
+	* xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-04 13:41  xfce
 
 	* xfwm4/trunk/themes/microdeck2/title-3-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-04 13:39  xfce
 
 	* xfwm4/trunk/themes/microdeck2/themerc,
 	  xfwm4/trunk/themes/microdeck2/title-3-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck2/title-3-inactive.xpm: *** empty log
+	  message ***
 
 2002-12-04 10:05  xfce
 
@@ -24142,8 +23926,8 @@
 2002-12-02 09:14  xfce
 
 	* xfwm4/trunk/themes/microdeck/bottom-right-active.xpm,
-	  xfwm4/trunk/themes/microdeck/bottom-right-inactive.xpm: ***
-	  empty log message ***
+	  xfwm4/trunk/themes/microdeck/bottom-right-inactive.xpm: *** empty
+	  log message ***
 
 2002-12-01 21:43  xfce
 
@@ -24194,8 +23978,8 @@
 	  xfwm4/trunk/themes/microdeck2/top-left-active.xpm,
 	  xfwm4/trunk/themes/microdeck2/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck2/top-right-active.xpm,
-	  xfwm4/trunk/themes/microdeck2/top-right-inactive.xpm: Revert
-	  some changes in "microdeck" and "microdeck2"
+	  xfwm4/trunk/themes/microdeck2/top-right-inactive.xpm: Revert some
+	  changes in "microdeck" and "microdeck2"
 
 2002-12-01 14:43  xfce
 
@@ -24244,9 +24028,9 @@
 	  xfwm4/trunk/themes/redmondxp/top-left-active.xpm,
 	  xfwm4/trunk/themes/redmondxp/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/redmondxp/top-right-active.xpm,
-	  xfwm4/trunk/themes/redmondxp/top-right-inactive.xpm: Reduce
-	  title height for theme "redmondxp" (I always thought that
-	  Redmond XP has a way to bug title bar!)
+	  xfwm4/trunk/themes/redmondxp/top-right-inactive.xpm: Reduce title
+	  height for theme "redmondxp" (I always thought that Redmond XP
+	  has a way to bug title bar!)
 
 2002-11-29 21:55  xfce
 
@@ -24298,8 +24082,8 @@
 	  xfwm4/trunk/debian/rules,
 	  xfwm4/trunk/debian/xfwm4-themes.install,
 	  xfwm4/trunk/debian/xfwm4.postinst,
-	  xfwm4/trunk/debian/xfwm4.prerm: Update to debian/-subdir
-	  included in xfce4_20021127-1.
+	  xfwm4/trunk/debian/xfwm4.prerm: Update to debian/-subdir included
+	  in xfce4_20021127-1.
 
 2002-11-28 11:24  xfce
 
@@ -24510,8 +24294,8 @@
 	* xfwm4/trunk/themes/microdeck/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/microdeck/bottom-left-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck/bottom-right-active.xpm,
-	  xfwm4/trunk/themes/microdeck/bottom-right-inactive.xpm: ***
-	  empty log message ***
+	  xfwm4/trunk/themes/microdeck/bottom-right-inactive.xpm: *** empty
+	  log message ***
 
 2002-11-25 11:37  xfce
 
@@ -24592,8 +24376,8 @@
 	  xfwm4/trunk/themes/trench/Makefile.in,
 	  xfwm4/trunk/themes/tux/Makefile.in,
 	  xfwm4/trunk/themes/variation/Makefile.in,
-	  xfwm4/trunk/themes/xfce/Makefile.in: Remove xinerama code to
-	  move it to libxfcegui4 (xfwm4 now requires libxfcegui4 >= 0.0.8)
+	  xfwm4/trunk/themes/xfce/Makefile.in: Remove xinerama code to move
+	  it to libxfcegui4 (xfwm4 now requires libxfcegui4 >= 0.0.8)
 
 2002-11-22 09:17  xfce
 
@@ -24691,13 +24475,11 @@
 	  xfwm4/trunk/themes/linea/themerc,
 	  xfwm4/trunk/themes/microdeck/themerc,
 	  xfwm4/trunk/themes/microgui/themerc,
-	  xfwm4/trunk/themes/mofit/themerc,
-	  xfwm4/trunk/themes/ops/themerc,
+	  xfwm4/trunk/themes/mofit/themerc, xfwm4/trunk/themes/ops/themerc,
 	  xfwm4/trunk/themes/pills/themerc,
 	  xfwm4/trunk/themes/piranha/themerc,
 	  xfwm4/trunk/themes/quiet-purple/themerc,
-	  xfwm4/trunk/themes/quinx/themerc,
-	  xfwm4/trunk/themes/r9x/themerc,
+	  xfwm4/trunk/themes/quinx/themerc, xfwm4/trunk/themes/r9x/themerc,
 	  xfwm4/trunk/themes/redmond/themerc,
 	  xfwm4/trunk/themes/retro/themerc,
 	  xfwm4/trunk/themes/silverado/themerc,
@@ -24824,8 +24606,8 @@
 2002-11-13 15:00  xfce
 
 	* xfwm4/trunk/themes/microdeck/bottom-right-active.xpm,
-	  xfwm4/trunk/themes/microdeck/bottom-right-inactive.xpm: ***
-	  empty log message ***
+	  xfwm4/trunk/themes/microdeck/bottom-right-inactive.xpm: *** empty
+	  log message ***
 
 2002-11-13 14:40  xfce
 
@@ -24834,8 +24616,8 @@
 	  xfwm4/trunk/themes/microdeck/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/microdeck/bottom-left-inactive.xpm,
 	  xfwm4/trunk/themes/microdeck/bottom-right-active.xpm,
-	  xfwm4/trunk/themes/microdeck/bottom-right-inactive.xpm: ***
-	  empty log message ***
+	  xfwm4/trunk/themes/microdeck/bottom-right-inactive.xpm: *** empty
+	  log message ***
 
 2002-11-13 13:42  xfce
 
@@ -24860,14 +24642,14 @@
 	  xfwm4/trunk/themes/microdeck/menu-pressed.xpm,
 	  xfwm4/trunk/themes/microdeck/shade-active.xpm,
 	  xfwm4/trunk/themes/microdeck/shade-inactive.xpm,
-	  xfwm4/trunk/themes/microdeck/shade-pressed.xpm: anti aliasing
-	  for menu/shade buttons
+	  xfwm4/trunk/themes/microdeck/shade-pressed.xpm: anti aliasing for
+	  menu/shade buttons
 
 2002-11-12 09:35  xfce
 
 	* xfwm4/trunk/themes/microdeck/top-left-active.xpm,
-	  xfwm4/trunk/themes/microdeck/top-left-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/microdeck/top-left-inactive.xpm: *** empty log
+	  message ***
 
 2002-11-10 23:09  xfce
 
@@ -25347,8 +25129,8 @@
 	  xfwm4/trunk/themes/atlanta2/top-left-active.xpm,
 	  xfwm4/trunk/themes/atlanta2/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/atlanta2/top-right-active.xpm,
-	  xfwm4/trunk/themes/atlanta2/top-right-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/atlanta2/top-right-inactive.xpm: *** empty log
+	  message ***
 
 2002-11-06 20:35  xfce
 
@@ -25876,8 +25658,8 @@
 2002-11-01 19:51  huysmans
 
 	* xfwm4/trunk/themes/beastie/title-4-active.xpm,
-	  xfwm4/trunk/themes/beastie/title-4-inactive.xpm: Updated
-	  beastie. Give a bit more space to title
+	  xfwm4/trunk/themes/beastie/title-4-inactive.xpm: Updated beastie.
+	  Give a bit more space to title
 
 2002-11-01 19:33  huysmans
 
@@ -26019,8 +25801,7 @@
 	  xfwm4/trunk/themes/curve/Makefile.in,
 	  xfwm4/trunk/themes/default.keys/Makefile.in,
 	  xfwm4/trunk/themes/eazel-blue/Makefile.in,
-	  xfwm4/trunk/themes/elberg,
-	  xfwm4/trunk/themes/elberg/Makefile.am,
+	  xfwm4/trunk/themes/elberg, xfwm4/trunk/themes/elberg/Makefile.am,
 	  xfwm4/trunk/themes/elberg/Makefile.in,
 	  xfwm4/trunk/themes/elberg/README,
 	  xfwm4/trunk/themes/elberg/bottom-active.xpm,
@@ -26245,16 +26026,16 @@
 	  xfwm4/trunk/themes/variation/top-left-active.xpm,
 	  xfwm4/trunk/themes/variation/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/variation/top-right-active.xpm,
-	  xfwm4/trunk/themes/variation/top-right-inactive.xpm: Change
-	  theme variation a bit.
+	  xfwm4/trunk/themes/variation/top-right-inactive.xpm: Change theme
+	  variation a bit.
 
 2002-10-29 11:44  xfce
 
 	* xfwm4/trunk/themes/variation/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/variation/bottom-left-inactive.xpm,
 	  xfwm4/trunk/themes/variation/bottom-right-active.xpm,
-	  xfwm4/trunk/themes/variation/bottom-right-inactive.xpm: ***
-	  empty log message ***
+	  xfwm4/trunk/themes/variation/bottom-right-inactive.xpm: *** empty
+	  log message ***
 
 2002-10-28 22:04  xfce
 
@@ -26307,8 +26088,8 @@
 	  xfwm4/trunk/themes/variation/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/variation/top-right-active.xpm,
 	  xfwm4/trunk/themes/variation/top-right-inactive.xpm,
-	  xfwm4/trunk/xfwm4.spec.in: Add variation theme, a very
-	  simplistic theme with large borders and buttons.
+	  xfwm4/trunk/xfwm4.spec.in: Add variation theme, a very simplistic
+	  theme with large borders and buttons.
 
 2002-10-28 10:58  xfce
 
@@ -26332,8 +26113,8 @@
 
 	* xfwm4/trunk/themes/bbs/hide-active.xpm,
 	  xfwm4/trunk/themes/bbs/hide-inactive.xpm,
-	  xfwm4/trunk/themes/bbs/hide-pressed.xpm: Slightly change the
-	  hide button for bbs theme.
+	  xfwm4/trunk/themes/bbs/hide-pressed.xpm: Slightly change the hide
+	  button for bbs theme.
 
 2002-10-27 10:11  xfce
 
@@ -26435,8 +26216,8 @@
 	  xfwm4/trunk/themes/bbs/hide-pressed.xpm,
 	  xfwm4/trunk/themes/bbs/maximize-active.xpm,
 	  xfwm4/trunk/themes/bbs/maximize-inactive.xpm,
-	  xfwm4/trunk/themes/bbs/maximize-pressed.xpm: Change
-	  maximize/hide buttons
+	  xfwm4/trunk/themes/bbs/maximize-pressed.xpm: Change maximize/hide
+	  buttons
 
 2002-10-18 09:42  xfce
 
@@ -26588,9 +26369,8 @@
 	  xfwm4/trunk/themes/bbs/top-left-active.xpm,
 	  xfwm4/trunk/themes/bbs/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/bbs/top-right-active.xpm,
-	  xfwm4/trunk/themes/bbs/top-right-inactive.xpm: Remove
-	  transparent pixel on each border to avoid using XShape on
-	  default theme.
+	  xfwm4/trunk/themes/bbs/top-right-inactive.xpm: Remove transparent
+	  pixel on each border to avoid using XShape on default theme.
 
 2002-10-11 14:30  xfce
 
@@ -26739,8 +26519,8 @@
 	  xfwm4/trunk/themes/slick/menu-pressed.xpm,
 	  xfwm4/trunk/themes/slick/shade-active.xpm,
 	  xfwm4/trunk/themes/slick/shade-inactive.xpm,
-	  xfwm4/trunk/themes/slick/shade-pressed.xpm: *** empty log
-	  message ***
+	  xfwm4/trunk/themes/slick/shade-pressed.xpm: *** empty log message
+	  ***
 
 2002-10-03 19:49  xfce
 
@@ -26866,8 +26646,8 @@
 	  xfwm4/trunk/themes/slick/shade-active.xpm,
 	  xfwm4/trunk/themes/slick/shade-pressed.xpm,
 	  xfwm4/trunk/themes/slick/stick-active.xpm,
-	  xfwm4/trunk/themes/slick/stick-pressed.xpm: *** empty log
-	  message ***
+	  xfwm4/trunk/themes/slick/stick-pressed.xpm: *** empty log message
+	  ***
 
 2002-09-30 13:23  xfce
 
@@ -26888,8 +26668,8 @@
 	  xfwm4/trunk/themes/slick/shade-pressed.xpm,
 	  xfwm4/trunk/themes/slick/stick-active.xpm,
 	  xfwm4/trunk/themes/slick/stick-inactive.xpm,
-	  xfwm4/trunk/themes/slick/stick-pressed.xpm: *** empty log
-	  message ***
+	  xfwm4/trunk/themes/slick/stick-pressed.xpm: *** empty log message
+	  ***
 
 2002-09-29 17:14  xfce
 
@@ -27138,8 +26918,8 @@
 
 2002-09-22 09:50  xfce
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h: Change
-	  policy on hiding windows.
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h: Change policy
+	  on hiding windows.
 
 2002-09-20 21:33  xfce
 
@@ -27323,8 +27103,8 @@
 2002-09-17 10:36  xfce
 
 	* xfwm4/trunk/themes/bbs/bottom-active.xpm,
-	  xfwm4/trunk/themes/bbs/bottom-inactive.xpm: *** empty log
-	  message ***
+	  xfwm4/trunk/themes/bbs/bottom-inactive.xpm: *** empty log message
+	  ***
 
 2002-09-17 09:38  xfce
 
@@ -27398,16 +27178,16 @@
 2002-09-15 13:17  xfce
 
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/frame.c: A lot of code cleanup and small
-	  internal improvements.
+	  xfwm4/trunk/src/frame.c: A lot of code cleanup and small internal
+	  improvements.
 
 2002-09-14 21:35  xfce
 
 	* xfwm4/trunk/Makefile.in, xfwm4/trunk/aclocal.m4,
 	  xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/defaults/Makefile.in,
-	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
-	  xfwm4/trunk/themes/adept, xfwm4/trunk/themes/adept/Makefile.am,
+	  xfwm4/trunk/defaults/Makefile.in, xfwm4/trunk/themes/Makefile.am,
+	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/adept,
+	  xfwm4/trunk/themes/adept/Makefile.am,
 	  xfwm4/trunk/themes/adept/Makefile.in,
 	  xfwm4/trunk/themes/adept/README,
 	  xfwm4/trunk/themes/adept/bottom-active.xpm,
@@ -27551,8 +27331,8 @@
 	  xfwm4/trunk/themes/exocet/right-inactive.xpm,
 	  xfwm4/trunk/themes/exocet/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/exocet/top-right-active.xpm,
-	  xfwm4/trunk/themes/exocet/top-right-inactive.xpm: Change
-	  "exocet" border to be smoother, with an enhanced 3D look.
+	  xfwm4/trunk/themes/exocet/top-right-inactive.xpm: Change "exocet"
+	  border to be smoother, with an enhanced 3D look.
 
 2002-09-12 16:34  xfce
 
@@ -27745,10 +27525,10 @@
 2002-09-06 13:41  xfce
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/example.xfwm4rc.in, xfwm4/trunk/src/parserc.c,
-	  xfwm4/trunk/src/settings.c, xfwm4/trunk/themes/Makefile.am,
-	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/default.keys,
+	  xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc.in,
+	  xfwm4/trunk/src/parserc.c, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/themes/default.keys,
 	  xfwm4/trunk/themes/default.keys/Makefile.am,
 	  xfwm4/trunk/themes/default.keys/Makefile.in,
 	  xfwm4/trunk/themes/default.keys/keythemerc,
@@ -27779,12 +27559,11 @@
 
 2002-09-04 21:24  xfce
 
-	* xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/example.xfwm4rc.in, xfwm4/trunk/src/parserc.c,
-	  xfwm4/trunk/src/parserc.h, xfwm4/trunk/src/settings.c: cans dirs
-	  for theme so there is no need to specify full path anymore (but
-	  still work for backward compatibilty). E.g: you can use
-	  "theme=exocet" now.
+	* xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc.in,
+	  xfwm4/trunk/src/parserc.c, xfwm4/trunk/src/parserc.h,
+	  xfwm4/trunk/src/settings.c: cans dirs for theme so there is no
+	  need to specify full path anymore (but still work for backward
+	  compatibilty). E.g: you can use "theme=exocet" now.
 	  Also make sure the theme dir exists, fallback to default
 	  otherwise.
 
@@ -27795,8 +27574,8 @@
 
 2002-09-04 14:29  xfce
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h: *** empty
-	  log message ***
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h: *** empty log
+	  message ***
 
 2002-09-04 13:59  xfce
 
@@ -27860,8 +27639,8 @@
 	* xfwm4/trunk/themes/curve/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/curve/bottom-left-inactive.xpm,
 	  xfwm4/trunk/themes/curve/bottom-right-active.xpm,
-	  xfwm4/trunk/themes/curve/bottom-right-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/curve/bottom-right-inactive.xpm: *** empty log
+	  message ***
 
 2002-09-03 12:37  xfce
 
@@ -27877,8 +27656,8 @@
 	* xfwm4/trunk/themes/curve/bottom-left-active.xpm,
 	  xfwm4/trunk/themes/curve/bottom-left-inactive.xpm,
 	  xfwm4/trunk/themes/curve/bottom-right-active.xpm,
-	  xfwm4/trunk/themes/curve/bottom-right-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/curve/bottom-right-inactive.xpm: *** empty log
+	  message ***
 
 2002-09-03 09:05  xfce
 
@@ -27979,8 +27758,8 @@
 	* xfwm4/trunk/themes/exocet/top-left-active.xpm,
 	  xfwm4/trunk/themes/exocet/top-left-inactive.xpm,
 	  xfwm4/trunk/themes/exocet/top-right-active.xpm,
-	  xfwm4/trunk/themes/exocet/top-right-inactive.xpm: Improve
-	  shadows on top corners.
+	  xfwm4/trunk/themes/exocet/top-right-inactive.xpm: Improve shadows
+	  on top corners.
 
 2002-08-31 13:41  xfce
 
@@ -28116,14 +27895,14 @@
 2002-08-29 19:47  xfce
 
 	* xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/themes/Makefile.am, xfwm4/trunk/themes/Makefile.in,
-	  xfwm4/trunk/themes/bbs, xfwm4/trunk/themes/bbs/Makefile.am,
+	  xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/themes/Makefile.am,
+	  xfwm4/trunk/themes/Makefile.in, xfwm4/trunk/themes/bbs,
+	  xfwm4/trunk/themes/bbs/Makefile.am,
 	  xfwm4/trunk/themes/bbs/Makefile.in,
 	  xfwm4/trunk/themes/bbs/README, xfwm4/trunk/themes/bbs/themerc,
 	  xfwm4/trunk/xfwm4.spec.in: Add new theme "bbs", put "exocet" and
-	  "bbs" themes in xfwm4 spec file (ie not xfwm4-themes), use bbs
-	  as default theme instead of "kindaker".
+	  "bbs" themes in xfwm4 spec file (ie not xfwm4-themes), use bbs as
+	  default theme instead of "kindaker".
 
 2002-08-28 22:10  xfce
 
@@ -28395,11 +28174,11 @@
 
 2002-08-21 15:41  xfce
 
-	* xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/example.xfwm4rc.in, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: Add new
-	  option "focus_hint" (boolean) to specify whether or not app
-	  focus hint should be honored by xfwm4.
+	* xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc.in,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/settings.c,
+	  xfwm4/trunk/src/settings.h: Add new option "focus_hint" (boolean)
+	  to specify whether or not app focus hint should be honored by
+	  xfwm4.
 
 2002-08-21 10:09  xfce
 
@@ -28512,8 +28291,8 @@
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/xsettings-client.c,
 	  xfwm4/trunk/src/xsettings-client.h,
 	  xfwm4/trunk/src/xsettings-common.c,
-	  xfwm4/trunk/src/xsettings-common.h: Fix a slight overlapping
-	  area in clientInitPosition()
+	  xfwm4/trunk/src/xsettings-common.h: Fix a slight overlapping area
+	  in clientInitPosition()
 
 2002-08-10 21:15  xfce
 
@@ -28597,8 +28376,8 @@
 	  xfwm4/trunk/themes/iceg/title-3-active.xpm,
 	  xfwm4/trunk/themes/iceg/title-3-inactive.xpm,
 	  xfwm4/trunk/themes/iceg/title-4-active.xpm,
-	  xfwm4/trunk/themes/iceg/title-4-inactive.xpm: Change border
-	  color of the title frame.
+	  xfwm4/trunk/themes/iceg/title-4-inactive.xpm: Change border color
+	  of the title frame.
 
 2002-07-24 19:29  xfce
 
@@ -28706,8 +28485,8 @@
 2002-07-21 21:57  xfce
 
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c: Implement a
-	  much smarter way of detecting double clicks, and implement
-	  double click on menu button = close.
+	  much smarter way of detecting double clicks, and implement double
+	  click on menu button = close.
 
 2002-07-21 13:46  xfce
 
@@ -28747,8 +28526,8 @@
 2002-07-20 12:02  xfce
 
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
-	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/menu.c: Change event
-	  mask to avoid side effects on gtk menu.
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/menu.c: Change event mask
+	  to avoid side effects on gtk menu.
 
 2002-07-19 21:15  xfce
 
@@ -28776,8 +28555,8 @@
 
 2002-07-18 08:49  xfce
 
-	* xfwm4/trunk/src/settings.c: Use proper GTK color for active
-	  title text.
+	* xfwm4/trunk/src/settings.c: Use proper GTK color for active title
+	  text.
 
 2002-07-16 21:44  xfce
 
@@ -28815,8 +28594,8 @@
 
 2002-07-14 13:26  xfce
 
-	* xfwm4/trunk/src/client.c: Fix a bug in stacking when a window
-	  had more than one transient.
+	* xfwm4/trunk/src/client.c: Fix a bug in stacking when a window had
+	  more than one transient.
 
 2002-07-14 08:42  xfce
 
@@ -29193,8 +28972,8 @@
 
 2002-07-07 07:38  xfce
 
-	* xfwm4/trunk/src/frame.c, xfwm4/trunk/src/pixmap.c: Fix a bug
-	  when window title was < 0
+	* xfwm4/trunk/src/frame.c, xfwm4/trunk/src/pixmap.c: Fix a bug when
+	  window title was < 0
 
 2002-07-06 22:26  xfce
 
@@ -29264,8 +29043,8 @@
 
 2002-07-04 19:32  xfce
 
-	* xfwm4/trunk/ChangeLog, xfwm4/trunk/Makefile.in: Update
-	  ChangeLog, release 020704 preview.
+	* xfwm4/trunk/ChangeLog, xfwm4/trunk/Makefile.in: Update ChangeLog,
+	  release 020704 preview.
 
 2002-07-04 14:47  xfce
 
@@ -29351,9 +29130,9 @@
 2002-07-03 09:43  xfce
 
 	* xfwm4/trunk/Makefile.in, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/menu.c: Don't
-	  constrait position (including initial placement) on docks and
-	  desktop windows.
+	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/menu.c: Don't constrait
+	  position (including initial placement) on docks and desktop
+	  windows.
 
 2002-07-03 08:26  xfce
 
@@ -29364,8 +29143,8 @@
 
 	* xfwm4/trunk/Makefile.in, xfwm4/trunk/acconfig.h,
 	  xfwm4/trunk/config.h.in, xfwm4/trunk/configure,
-	  xfwm4/trunk/configure.in: Fix deprecated AC_DEFINE use and
-	  remove acconfig.h as it's deprecated with automake 2.5x
+	  xfwm4/trunk/configure.in: Fix deprecated AC_DEFINE use and remove
+	  acconfig.h as it's deprecated with automake 2.5x
 
 2002-07-02 20:26  xfce
 
@@ -29441,15 +29220,14 @@
 
 2002-06-30 21:03  xfce
 
-	* xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: ***
-	  empty log message ***
+	* xfwm4/trunk/src/settings.c, xfwm4/trunk/src/settings.h: *** empty
+	  log message ***
 
 2002-06-30 20:10  xfce
 
 	* xfwm4/trunk/config.h.in, xfwm4/trunk/configure,
-	  xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/example.xfwm4rc.in, xfwm4/trunk/src/events.c: ***
-	  empty log message ***
+	  xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc.in,
+	  xfwm4/trunk/src/events.c: *** empty log message ***
 
 2002-06-28 15:38  xfce
 
@@ -29523,9 +29301,9 @@
 
 2002-06-26 15:48  xfce
 
-	* xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/example.xfwm4rc.in: Change default title alignment
-	  fir default theme (kindaker) to left instead of right.
+	* xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc.in:
+	  Change default title alignment fir default theme (kindaker) to
+	  left instead of right.
 
 2002-06-26 10:28  xfce
 
@@ -29662,13 +29440,12 @@
 
 2002-06-18 15:37  xfce
 
-	* xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/example.xfwm4rc.in, xfwm4/trunk/src/client.c,
-	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/gtktoxevent.c,
-	  xfwm4/trunk/src/hints.c, xfwm4/trunk/src/keyboard.c,
-	  xfwm4/trunk/src/keyboard.h, xfwm4/trunk/src/main.c,
-	  xfwm4/trunk/src/menu.c: Change key modifiers' name, use Alt,
-	  Meta instead of Mod1 and Mod2
+	* xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc.in,
+	  xfwm4/trunk/src/client.c, xfwm4/trunk/src/events.c,
+	  xfwm4/trunk/src/gtktoxevent.c, xfwm4/trunk/src/hints.c,
+	  xfwm4/trunk/src/keyboard.c, xfwm4/trunk/src/keyboard.h,
+	  xfwm4/trunk/src/main.c, xfwm4/trunk/src/menu.c: Change key
+	  modifiers' name, use Alt, Meta instead of Mod1 and Mod2
 	  Other stuff (sorry, I can't remember right now :-( )
 
 2002-06-17 21:03  xfce
@@ -29927,8 +29704,8 @@
 2002-06-10 16:28  xfce
 
 	* xfwm4/trunk/themes/slick/bottom-right-active.xpm,
-	  xfwm4/trunk/themes/slick/bottom-right-inactive.xpm: *** empty
-	  log message ***
+	  xfwm4/trunk/themes/slick/bottom-right-inactive.xpm: *** empty log
+	  message ***
 
 2002-06-10 16:28  xfce
 
@@ -30049,9 +29826,8 @@
 
 2002-06-03 19:34  xfce
 
-	* xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/example.xfwm4rc.in, xfwm4/trunk/xfwm4.spec.in:
-	  Change default theme to "kindaker"
+	* xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc.in,
+	  xfwm4/trunk/xfwm4.spec.in: Change default theme to "kindaker"
 
 2002-06-03 15:42  xfce
 
@@ -30079,16 +29855,16 @@
 	  xfwm4/trunk/themes/eazel-blue/README,
 	  xfwm4/trunk/themes/gtk/README, xfwm4/trunk/themes/kde/README,
 	  xfwm4/trunk/themes/kindaker/README,
-	  xfwm4/trunk/themes/linea/README,
-	  xfwm4/trunk/themes/mofit/README, xfwm4/trunk/themes/next/README,
+	  xfwm4/trunk/themes/linea/README, xfwm4/trunk/themes/mofit/README,
+	  xfwm4/trunk/themes/next/README,
 	  xfwm4/trunk/themes/oroborus/README,
 	  xfwm4/trunk/themes/platinum/README,
 	  xfwm4/trunk/themes/redmond/README,
 	  xfwm4/trunk/themes/redmondxp/README,
 	  xfwm4/trunk/themes/slick/README,
 	  xfwm4/trunk/themes/slimline/README,
-	  xfwm4/trunk/themes/trench/README,
-	  xfwm4/trunk/themes/xfce/README: Add README files
+	  xfwm4/trunk/themes/trench/README, xfwm4/trunk/themes/xfce/README:
+	  Add README files
 
 2002-06-01 11:25  xfce
 
@@ -30397,9 +30173,9 @@
 	  xfwm4/trunk/configure, xfwm4/trunk/configure.in,
 	  xfwm4/trunk/defaults/Makefile.am,
 	  xfwm4/trunk/defaults/Makefile.in,
-	  xfwm4/trunk/defaults/defaults.in,
-	  xfwm4/trunk/example.xfwm4rc.in, xfwm4/trunk/src/Makefile.am,
-	  xfwm4/trunk/src/Makefile.in, xfwm4/trunk/themes/Makefile.in,
+	  xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc.in,
+	  xfwm4/trunk/src/Makefile.am, xfwm4/trunk/src/Makefile.in,
+	  xfwm4/trunk/themes/Makefile.in,
 	  xfwm4/trunk/themes/agua/Makefile.am,
 	  xfwm4/trunk/themes/agua/Makefile.in,
 	  xfwm4/trunk/themes/coldsteel/Makefile.am,
@@ -30544,13 +30320,13 @@
 2002-05-17 23:25  xfce
 
 	* xfwm4/trunk/src/events.c, xfwm4/trunk/src/gtk_style.c,
-	  xfwm4/trunk/src/gtk_style.h, xfwm4/trunk/src/menu.c: Make sure
-	  it compiles without warnings when adding -DGTK_DISABLE_DEPRECATED
+	  xfwm4/trunk/src/gtk_style.h, xfwm4/trunk/src/menu.c: Make sure it
+	  compiles without warnings when adding -DGTK_DISABLE_DEPRECATED
 
 2002-05-17 13:11  xfce
 
-	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h: Improve
-	  focus switching in case of unmap/destroy notify
+	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h: Improve focus
+	  switching in case of unmap/destroy notify
 
 2002-05-17 10:37  xfce
 
@@ -30593,8 +30369,8 @@
 
 	* xfwm4/trunk/src/client.c, xfwm4/trunk/src/client.h,
 	  xfwm4/trunk/src/events.c, xfwm4/trunk/src/menu.c,
-	  xfwm4/trunk/src/menu.h: Rearrange menu and add a new option
-	  "hide all others"
+	  xfwm4/trunk/src/menu.h: Rearrange menu and add a new option "hide
+	  all others"
 
 2002-05-14 20:36  xfce
 
@@ -30770,8 +30546,8 @@
 	  xfwm4/trunk/themes/kde/shade-pressed.xpm,
 	  xfwm4/trunk/themes/kde/stick-active.xpm,
 	  xfwm4/trunk/themes/kde/stick-inactive.xpm,
-	  xfwm4/trunk/themes/kde/stick-pressed.xpm: Improve some of the
-	  KDE theme buttons
+	  xfwm4/trunk/themes/kde/stick-pressed.xpm: Improve some of the KDE
+	  theme buttons
 
 2002-05-08 09:19  xfce
 
@@ -30792,8 +30568,7 @@
 	  xfwm4/trunk/themes/kde/shade-active.xpm,
 	  xfwm4/trunk/themes/kde/shade-inactive.xpm,
 	  xfwm4/trunk/themes/kde/shade-pressed.xpm,
-	  xfwm4/trunk/themes/kde/themerc,
-	  xfwm4/trunk/themes/linea/themerc,
+	  xfwm4/trunk/themes/kde/themerc, xfwm4/trunk/themes/linea/themerc,
 	  xfwm4/trunk/themes/next/themerc,
 	  xfwm4/trunk/themes/oroborus/themerc,
 	  xfwm4/trunk/themes/platinum/themerc,
@@ -31126,8 +30901,8 @@
 	  xfwm4/trunk/themes/xfce/title-4-inactive.xpm,
 	  xfwm4/trunk/themes/xfce/title-5-inactive.xpm,
 	  xfwm4/trunk/themes/xfce/top-left-inactive.xpm,
-	  xfwm4/trunk/themes/xfce/top-right-inactive.xpm: Add trench
-	  theme, fix a problem when switch workspaces and transients
+	  xfwm4/trunk/themes/xfce/top-right-inactive.xpm: Add trench theme,
+	  fix a problem when switch workspaces and transients
 
 2002-05-04 20:25  xfce
 
@@ -31184,10 +30959,10 @@
 	* xfwm4/trunk/AUTHORS, xfwm4/trunk/COPYING, xfwm4/trunk/ChangeLog,
 	  xfwm4/trunk/INSTALL, xfwm4/trunk/Makefile.am,
 	  xfwm4/trunk/Makefile.in, xfwm4/trunk/NEWS, xfwm4/trunk/README,
-	  xfwm4/trunk/TODO, xfwm4/trunk/acconfig.h,
-	  xfwm4/trunk/aclocal.m4, xfwm4/trunk/config.h.in,
-	  xfwm4/trunk/configure, xfwm4/trunk/configure.in,
-	  xfwm4/trunk/defaults, xfwm4/trunk/defaults/Makefile.am,
+	  xfwm4/trunk/TODO, xfwm4/trunk/acconfig.h, xfwm4/trunk/aclocal.m4,
+	  xfwm4/trunk/config.h.in, xfwm4/trunk/configure,
+	  xfwm4/trunk/configure.in, xfwm4/trunk/defaults,
+	  xfwm4/trunk/defaults/Makefile.am,
 	  xfwm4/trunk/defaults/Makefile.in,
 	  xfwm4/trunk/defaults/defaults.in, xfwm4/trunk/example.xfwm4rc,
 	  xfwm4/trunk/install-sh, xfwm4/trunk/missing,
