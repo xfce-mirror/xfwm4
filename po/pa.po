@@ -26,7 +26,8 @@ msgid "Workspace Margins"
 msgstr "ਅਖਾੜਾ ਹਾਸ਼ੀਆ"
 
 #: mcs-plugin/margins.c:137
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "ਮਾਰਜਨ ਪਰਦੇ ਦੇ ਕਿਨਾਰਿਆਂ ਤੇ ਅਜਿਹੇ ਖੇਤਰ ਹਨ ਜਿੱਥੇ ਕੋਈ ਝਰੋਖਾ ਸਥਾਪਤ ਨਹੀਂ ਹੋਵੇਗਾ"
 
 #: mcs-plugin/margins.c:168
@@ -651,4 +652,3 @@ msgstr "ਤੇ ਜਾਓ ..."
 #: src/tabwin.c:129
 msgid "Unknown application!"
 msgstr "ਅਣਪਛਾਤਾ ਕਾਰਜ!"
-
