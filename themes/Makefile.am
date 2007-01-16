@@ -8,8 +8,8 @@ SUBDIRS =								\
 	default-4.0							\
 	default-4.2							\
 	katiola								\
+	kokodi								\
 	moheli								\
-	mopti								\
 	sassandra							\
 	stoneage							\
 	therapy								\
