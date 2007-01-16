@@ -31,7 +31,7 @@
 
 #define DEFAULT_THEME "Default"
 #define DEFAULT_KEY_THEME "Default"
-#define DEFAULT_LAYOUT "O|HMC"
+#define DEFAULT_LAYOUT "OT|SHMC"
 #define DEFAULT_ACTION "maximize"
 #define DEFAULT_ALIGN "center"
 #define DEFAULT_FONT "Sans Bold 9"
