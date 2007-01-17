@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="8"
-   height="29"
+   height="27"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.44.1"
@@ -50,7 +50,7 @@
        x1="0"
        y1="0.5"
        x2="0"
-       y2="28.5"
+       y2="26.5"
        gradientTransform="matrix(1,0,0,1,0,0)" />
     <linearGradient
        inkscape:collect="always"
@@ -112,7 +112,7 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,1 L 5,1 C 5,1 7,1 7,4 L 7,23 C 7,23 7,28 2,28 L 0,28 L 0,28 L 0,1 z "
+       d="M 0,1 L 5,1 C 5,1 7,1 7,4 L 7,23 C 7,23 7,26 2,26 L 0,26 L 0,26 L 0,1 z "
        id="path6057" />
   </g>
   <g
@@ -140,7 +140,7 @@
      inkscape:label="Shadow">
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.05"
-       d="M 0.5,28.5 L 5.5,28.5"
+       d="M 0.5,26.5 L 5.5,26.5"
        id="path6989" />
   </g>
 </svg>
