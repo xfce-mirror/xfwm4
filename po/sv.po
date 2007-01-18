@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-09 20:49+0200\n"
+"POT-Creation-Date: 2006-11-05 10:39+0100\n"
 "PO-Revision-Date: 2006-05-26 18:29+0100\n"
 "Last-Translator: Alexander Toresson <alexander.toresson@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -72,12 +72,11 @@ msgid "Window Manager Tweaks"
 msgstr "Finjusteringar för Fönsterhanteraren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
-#, fuzzy
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"Inkludera fönster som är osynliga i aktivitetsfältet eller "
-"skrivbordsbläddraren."
+"Lyd program när de säger att de inte vill att något av deras fönster inte "
+"ska visas i aktivitetsfältet eller skrivbordsbläddraren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
@@ -113,7 +112,7 @@ msgstr "Höj fönster vid klick oavsett musknapp"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Dölj fönsterramar för maximerade fönster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
@@ -164,11 +163,11 @@ msgstr "Placering"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
-msgstr ""
+msgstr "Aktivera kompositeffekter"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "Visa överlagrade fönster i fullskärm direkt, utan komposit"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
@@ -195,9 +194,8 @@ msgid "Opaque"
 msgstr "Solid"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:597
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Genomskinlighet för popup-fönster"
+msgstr "Genomskinlighet för inaktiva fönster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
 msgid "Opacity of windows during move"
@@ -567,9 +565,8 @@ msgid "Resize window right"
 msgstr "Öka bredd på fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "Stäng fönster"
+msgstr "Avbryt flyttning eller storleksändring av fönster"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Raise window"
@@ -644,13 +641,12 @@ msgid "Show desktop"
 msgstr "Visa skrivbordet"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Genomskinlighet för fönsterdekorationer"
+msgstr "Avbryt fönsterhandling"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "Öppna fönstermeny"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
 #, c-format
@@ -696,17 +692,21 @@ msgstr "Tangentkombination för:"
 msgid "Compose shortcut"
 msgstr "Ställ in tangentkombination"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
 msgid "No shortcut"
 msgstr "Ingen genväg"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:80
+#: ../src/hints.c:81
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/main.c:132
+#: ../src/main.c:134
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmenteringsfel"
@@ -823,6 +823,3 @@ msgstr "Inställningar för Arbetsytorna"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Inställningar för Arbetsytorna"
-
-#~ msgid "Unknown application!"
-#~ msgstr "Okänt program!"
