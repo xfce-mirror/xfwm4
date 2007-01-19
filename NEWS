@@ -1,2 +1,160 @@
+4.4.0
+=====
 
+- Use screen from xevent instead of client for keypress (Bug #2749)
+- Raise/focus when using alt+left-click for resize for consistency with move
+- Be more permissive toward stick/unstick (bug #2735) 
+- Ignore focus stealing prevention between windows of the same group or 
+  between windows that have a transient relationship.
+- Rework grab release (bug #2694)
+- Fix display of ARGB32 windows with compositing enabled but without 
+  compositor active (bug #2710).
+- Apply NET_WM_STATE_DEMANDS_ATTENTION changes (otherwise it breaks xfwm4 
+  demand attention mechanism), but do not obey client state change requests 
+  for NET_WM_STATE_DEMANDS_ATTENTION if the client is already focused.
+- Apply patch from Mike Massonnet that fixes an error in Stonage decoration 
+  theme (Bug #2696)
+- Do not apply NET_WM_STATE_DEMANDS_ATTENTION if client is already focused, as
+  some apps seem to request NET_WM_STATE_DEMANDS_ATTENTION state even while
+  focused (See comment #14 in bug #2678)
+- Set the demands attention flag with focus prevention enabled only (Bug #2678)
+- Update the NET_WM_STATE when the client requests an update of
+  NET_WM_STATE_DEMANDS_ATTENTION (Bug #2678)
+- Focus the internal fallback window
+  when focus is transfered to a window that doesn't have InputHint set but 
+  still use WM_PROTOCOLS_TAKE_FOCUS (ie, there is no way for the window 
+  manager to tell whether or not the client will accept focus in the end 
+  since focus is set by the client alone through the 'take focus' mechanism)
+  (Fix bug #1853 without breaking bug #2410)
+- Fix redraw problem with compositor
+- Update application icon asynchronously to avoid queuing useless icon updates
+  (Ubuntu/Launchpad bug #61424)
+- Fix user focus timetamp being falsely reset to 0 causing some windows to be
+  started un-focused (Bug #2664), re-add some traces (which compile with 
+  -Werror this time), small code/api cleanup.
+- Remove shadow on dock-type windows (bug #2648)
+- Prevent fullscreen windows from beeing maximized (Bug #2663).
+- Use timestamp provided by NET_ACTIVE_WINDOW and NET_CURRENT_DESKTOP messages 
+  from EWMH version 1.3 and above, fix focus transition with 
+  NET_CURRENT_DESKTOP messages causing either flickering or wrong restacking 
+  on workspace switch (bug #2654),
+- Quit nicely when MANAGE client message is received, so that xfwm4 obeys to 
+  ICCCM2 standard (bug #2374)
+- Fix demands attention being activated when it shouldn't
+- Improve focus stealing prevention.
+- Auto-maximize regular windows only.
+- Be a lot more paranoid about what broken apps set as struts.
+- Plug a huge X resources leak in handleMappingNotify () (bug #2618)
+- Do not prevent stick when skip taskbar is set
+- Re-enable focus passing to previously focused window (req. on ML)
+- Focus windows that raise themselves if focus stealing prevention is 
+  disabled, and set demands attention flag otherwise, that should improve 
+  focus prevention.
+- Keep focus on sticky windows only for regular windows w/out skip 
+  taskbar/pager property (Bug 2603)
+- Improve resize (Bug #2597)
+- Be more permissive with resizes towards struts (Bug #2597, bis), optimize 
+  shape use.
+- Fix off-by-one causing windows to be moved wrongly via keyboard 
+  (patch from Darren Salt (bug #2594)
+- Enter key doesn't work for "Add keybinding theme" dialog (Bug #2560, patch 
+  by Brian Tarricone
+- Use focus pending with with apps that use WM_FLAG_TAKEFOCUS protocol too 
+  (Bug #2561)
+- Hide as more windows when showing desktop (Bug #2518)
+- Don't skip windows that have the skip pager/taskbar properties when 
+  searching for windows below the pointer (bug #2550)
+- Fix focus transitionning to root taking into account the pending focus too, 
+  so that focus doesn't return to the fallback internal window when it should 
+  return to some other client window (like when an application closes with a 
+  modal dialog opened).
+- Check for valid transient or modal when switching workspaces, to avoid 
+  missing windows to unmap (bug #2518).
+- Use X server time to restore focus when sent to the root window (bug #2472)
+
+
+3.99.2 (rc2)
+============
+
+- Add new option to enable/disable borderless maximization (Bug
+  #2257).
+- Rework keyboard shortcuts grabs, saving a lot of grabs and fixing
+  keyboard shortcuts not working on shaded windows (Bug #2291).
+- Fix compiler warning when build w/out compositor support (Bug
+  #2335).
+- Fix restore of original size/position of maximized windows
+  restored by session management, do not match windows that aren't
+  placed by the WM, that avoids some misplacements.).
+- Add cancel option when cycling (Bug #2373).
+- Add new window operations menu shortcut (Bug #2400).
+- Set focus on desktop with showing desktop (Bug #2410).
+- Improve workspace switch, reduce expose events (Bug #2409).
+- Improve focus transition (Bug #2408).
+- Rework error handling in pixbuf loading, fixes a crash.
+- Do not raise on WM_TRANSIENT_FOR property change, required for
+  Java 1.6 (Bug #2483).
+- Add support for XSync protocol.
+- Add support to NET_WM_MOVERESIZE.
+- New SVG based default theme (using PNG for speend and
+  compatibility although xfwm4 is able to use SVG theme), previous
+  theme renamed as "Sassandra".
+- Fix compositor unredirect with Xorg 7.1 (bug #64115 in Ubuntu
+  Launchpad).
+- Fix compositor availability check (Bug #2418
+  <http://bugzilla.xfce.org/show_bug.cgi?id=2418>, #2428
+  <http://bugzilla.xfce.org/show_bug.cgi?id=2428>).
+- Fix visual/depth/colormap with and without render (Bug #1617
+  <http://bugzilla.xfce.org/show_bug.cgi?id=1617>).
+- Rework focus management to fix some issues (Bug #2472
+  <http://bugzilla.xfce.org/show_bug.cgi?id=2472>).
+- Allow use of Alt+C in shortcuts.
+- Lot of optimizations and code cleanup.
+
+3.99.1 (rc1)
+============
+
+- Implement borderless full maximization (Bug #1750).
+- Rework maximization switches (Bug #2047).
+- Unmap the client window when shaded (Bug #2168).
+- Fix a crash in compositor when the client vanishes (Bug #2105).
+- Make sure the icon selected in the tabwin matches the selected window in all 
+  cases (Bug #2008).
+- Add <Xutil.h> include for building on Solaris.
+- Add new option to enable/disable unredirection of fullscreen override windows 
+  (overlays).
+- Prevent shaped windows to request a frame.
+- Fix meaning of the Xfwm/CycleMinimum option in the WM tweak plugin 
+  (Bug #2058).
+- Fix focus transition back to regular window when an override window grabbing 
+  keyboard is unmapped (Bug #2090).
+- Allow pkg-config to be more verbose (Bug #2178).
+- Add a fallback to the configure script to check for libXrender on Solaris 10 
+  (Bug #2165).
+- Plug a few memory leaks.
+- Reduce Xserver's memory usage my disabling frame caching.
+- Fix bogus high CPU usage on loading themes that miss the menu button.
+
+3.90.2 (beta2)
+==============
+
+- Get rid of libXpm dependency by implementing an XPM loader with color
+  symbol substitution.
+- Add support for svg, png, bmp, gif, jpg file formats for themes
+  components.
+- Embedded compositor can be enabled/disabled on the fly from the WM tweaks
+  plugin without restarting the WM.
+- Transparency of inactive windows configurable through the WM tweaks
+  plugin.
+- Automatically unredirect fullscreen override windows, fixing the
+  performance penalty of using unredirected rendering.
+- Add host name to window title when running apps from other hosts.
+- Rework default theme, add new themes (Moheli, Daloa).
+- Clean up modifer code in shortcut editor.
+- Lot of optimizations, including in the embedded compositor.
+- Lot of bug fixes.
+
+3.90.1 (beta1)
+==============
+
+- First public release
 
