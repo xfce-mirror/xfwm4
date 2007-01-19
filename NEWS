@@ -73,8 +73,8 @@
 - Use X server time to restore focus when sent to the root window (bug #2472)
 
 
-3.99.2 (rc2)
-============
+4.3.99.2 (rc2)
+==============
 
 - Add new option to enable/disable borderless maximization (Bug
   #2257).
@@ -110,8 +110,8 @@
 - Allow use of Alt+C in shortcuts.
 - Lot of optimizations and code cleanup.
 
-3.99.1 (rc1)
-============
+4.3.99.1 (rc1)
+==============
 
 - Implement borderless full maximization (Bug #1750).
 - Rework maximization switches (Bug #2047).
@@ -134,8 +134,8 @@
 - Reduce Xserver's memory usage my disabling frame caching.
 - Fix bogus high CPU usage on loading themes that miss the menu button.
 
-3.90.2 (beta2)
-==============
+4.3.90.2 (beta2)
+================
 
 - Get rid of libXpm dependency by implementing an XPM loader with color
   symbol substitution.
@@ -153,8 +153,8 @@
 - Lot of optimizations, including in the embedded compositor.
 - Lot of bug fixes.
 
-3.90.1 (beta1)
-==============
+4.3.90.1 (beta1)
+================
 
 - First public release
 
