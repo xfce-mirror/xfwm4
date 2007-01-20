@@ -12,7 +12,7 @@ m4_define([startup_notification_minimum_version], [0.5])
 m4_define([intltool_minimum_version], [0.31])
 
 dnl init autoconf
-AC_COPYRIGHT([Copyright (c) 2002-2006
+AC_COPYRIGHT([Copyright (c) 2002-2007
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
