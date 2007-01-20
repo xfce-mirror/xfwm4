@@ -1,7 +1,7 @@
 # Esperanto translations for the xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Sylvain Vedrenne <gnu_sylvain@xfce.org>, 2005.
+# Sylvain Vedrenne <gnu_sylvain@xfce.org>, 2005-2007.
 #
 msgid ""
 msgstr ""
@@ -21,11 +21,8 @@ msgid "Workspace Margins"
 msgstr "Marĝenoj de la Laborspaco"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"La marĝenoj estas la regionoj ĉe la bordoj de la ekrano kie nenia fenestro "
-"estos metita"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "La marĝenoj estas la regionoj ĉe la bordoj de la ekrano kie nenia fenestro estos metita"
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
@@ -45,7 +42,6 @@ msgstr "Malsupra :"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "Laborspacoj kaj marĝenoj"
 
@@ -53,7 +49,8 @@ msgstr "Laborspacoj kaj marĝenoj"
 msgid "Workspaces and Margins"
 msgstr "Laborspacoj kaj marĝenoj"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/workspaces_plugin.c:162
+#: ../mcs-plugin/wmtweaks_plugin.c:522
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Laborspacoj"
@@ -64,7 +61,7 @@ msgstr "Marĝenoj"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:373
 msgid "None"
-msgstr ""
+msgstr "Nenia"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -72,12 +69,8 @@ msgid "Window Manager Tweaks"
 msgstr "Rafina Agordo de la Administradilo de Fenestroj"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
-#, fuzzy
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
-"Inkluzivu la fenestrojn kies \"skip pager\" aŭ \"skip taskbar\" parametroj "
-"estas elektitaj"
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr "Ignoru la fenestrojn kiuj havas la parametrojn \"skip pager\" aŭ \"skip taskbar\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
@@ -89,7 +82,7 @@ msgstr "Cikleligu la fenestrojn de ĉiuj laborspacoj"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:417
 msgid "Cycling"
-msgstr ""
+msgstr "Cikleligo"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:429
 msgid "Activate focus stealing prevention"
@@ -99,22 +92,22 @@ msgstr "Malpermesu rabon de la fokuso"
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Uzu la normalan ICCCM-an fokusan indikon"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/wmtweaks_plugin.c:440
+#: ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
 msgstr "Fokuso"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:452
-#, fuzzy
 msgid "Key used to grab and move windows"
-msgstr "Uzu la ALT klavon por preni kaj movi fenestron"
+msgstr "Klavo uzata por preni kaj movi fenestrojn"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:458
 msgid "Raise windows when any mouse button is pressed"
-msgstr "Malfermu fenestron kiu estas alklakata per iu musbutono"
+msgstr "Malfermu fenestron kiam alklakata per musbutono"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Kasxu la bordon de grandigitaj fenestroj"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
@@ -133,10 +126,8 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Cikleŝanĝu de laborspaco per la musrulilo sur la ekranfono"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
-"Memoru kaj reiru la antaŭan laborspacon kiam ŝanĝante per klavara rapidligilo"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "Memoru kaj reiru la antaŭan laborspacon kiam ŝanĝante per klavara rapidligilo"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -151,19 +142,16 @@ msgid "Minimum size of windows to trigger smart placement"
 msgstr "Minimumaj dimensioj de fenestro por uzi la inteligentan posiciagon"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
-#, fuzzy
 msgid "Size|Small"
 msgstr "Eta"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
-#, fuzzy
 msgid "Size|Large"
 msgstr "Granda"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:539
-#, fuzzy
 msgid "Placement"
-msgstr "Inteligenta posiciago"
+msgstr "Posiciago"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
@@ -182,26 +170,28 @@ msgid "Show shadows under popup windows"
 msgstr "Montru ombrojn sub la ŝprucfenestroj"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591
-#, fuzzy
 msgid "Opacity of window decorations"
 msgstr "Videbla enhavo por fenestro kies dimensioj estas ŝanĝataj"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
-#: ../mcs-plugin/wmtweaks_plugin.c:603 ../mcs-plugin/wmtweaks_plugin.c:609
+#: ../mcs-plugin/wmtweaks_plugin.c:591
+#: ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:603
+#: ../mcs-plugin/wmtweaks_plugin.c:609
 #: ../mcs-plugin/wmtweaks_plugin.c:615
 msgid "Transparent"
 msgstr "Travidebla"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:592 ../mcs-plugin/wmtweaks_plugin.c:598
-#: ../mcs-plugin/wmtweaks_plugin.c:604 ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:592
+#: ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:604
+#: ../mcs-plugin/wmtweaks_plugin.c:610
 #: ../mcs-plugin/wmtweaks_plugin.c:616
 msgid "Opaque"
 msgstr "Opaka"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:597
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Videbla enhavo por ŝprucfenestroj"
+msgstr "Opakeco por neaktivaj fenestroj"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
 msgid "Opacity of windows during move"
@@ -221,20 +211,21 @@ msgstr "Komponilo"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Rafina Agordo de la Administradilo de Fenestroj"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
+#: ../mcs-plugin/wmtweaks_plugin.c:781
+#: ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Tiuj parametroj ne povas funkcii kun via nuna fenestradministilo (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
-msgstr "Modifiu la nomon"
+msgstr "Modifu la nomon"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:480
+#: ../mcs-plugin/workspaces.c:338
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:480
 #, c-format
 msgid "Workspace %d"
 msgstr "Laborspaco %d"
@@ -279,15 +270,18 @@ msgstr "Maksimumigu"
 msgid "Close"
 msgstr "Fermu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:78
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Shade window"
 msgstr "Volvu la fenestron"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Hide window"
 msgstr "Kaŝu la fenestron"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Maximize window"
 msgstr "Maksimumigu la fenestron"
 
@@ -437,14 +431,12 @@ msgid "Distance :"
 msgstr "Distanco :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1724
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Distanco :"
+msgstr "Eta"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1731
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Distanco :"
+msgstr "Granda"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Wrap workspaces"
@@ -452,29 +444,23 @@ msgstr "Interligitaj laborspacoj"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1758
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Aperigu la sekvantan laborspacon kiam la muskursoro transiras la bordon de "
-"la ekrano"
+msgstr "Aperigu la sekvantan laborspacon kiam la muskursoro transiras la bordon de la ekrano"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Aperigu la sekvantan laborspacon kiam fenestro estas trenita trans la bordo "
-"de la ekrano"
+msgstr "Aperigu la sekvantan laborspacon kiam fenestro estas trenita trans la bordo de la ekrano"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
 msgstr "Rezisto ĉe la bordoj :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1783
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Distanco :"
+msgstr "Eta"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1790
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Distanco :"
+msgstr "Granda"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1812
 msgid "Opaque move and resize"
@@ -502,7 +488,6 @@ msgstr "Evoluaĵoj"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1974
-#, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "Administradilo de Fenestroj"
 
@@ -544,9 +529,8 @@ msgid "Stick window"
 msgstr "Algluu la fenestron"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:364
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Fermu la fenestron"
+msgstr "Cikleligu la fenestrojn"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Move window up"
@@ -581,9 +565,8 @@ msgid "Resize window right"
 msgstr "Ŝanĝu la dimensiojn de la fenestro dekstren"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "Fermu la fenestron"
+msgstr "Nuligi la movon/oriĝinalaj dimensioj"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Raise window"
@@ -658,9 +641,8 @@ msgid "Show desktop"
 msgstr "Montru la labortablon"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Videbla enhavo por fenestro kies dimensioj estas ŝanĝataj"
+msgstr "Nuligu la agon de la fenestro"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
@@ -765,7 +747,8 @@ msgstr "De_gluu"
 msgid "Context _help"
 msgstr "Konteksta _helpo"
 
-#: ../src/menu.c:50 ../src/menu.c:51
+#: ../src/menu.c:50
+#: ../src/menu.c:51
 msgid "Always on top"
 msgstr "Ĉiam supre"
 
@@ -815,34 +798,28 @@ msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Malsukcesis legi la koloron %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "Rafina Agordo de la Administradilo de Fenestroj"
+msgstr "Parametroj de la Administrilo de Fenestroj"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Rafina Agordo de la Administradilo de Fenestroj"
+msgstr "Xfce 4 Administrilo de Fenestroj"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Evoluaj Parametroj de la Administradilo de Fenestroj"
+msgstr "Evoluaj Parametroj de la Administrilo de Fenestroj"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Rafina Agordo de la Administradilo de Fenestroj"
+msgstr "Rafina Agordo de la Administrilo de Fenestroj"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "Marĝenoj de la Laborspaco"
+msgstr "Parametroj de la Laborspaco"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Marĝenoj de la Laborspaco"
+msgstr "Xfce 4 Parametroj de la Laborspaco"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Nekonata aplikaĵo!"
