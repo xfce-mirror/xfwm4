@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-05 10:39+0100\n"
-"PO-Revision-Date: 2007-01-18 04:37+0300\n"
+"PO-Revision-Date: 2007-01-20 05:20+0200\n"
 "Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
 "Language-Team: Belarusian <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Ніжні:"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
 msgid "Button Label|Workspaces and Margins"
-msgstr "Працоўныя прасторы і водступы"
+msgstr "Працоўныя прасторы"
 
 #: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
@@ -212,7 +212,7 @@ msgstr "Складальнік"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Даводка Кіраўніка вокнаў"
+msgstr "Хітрыкі вокнаў"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781
 #: ../mcs-plugin/xfwm4_plugin.c:2342
