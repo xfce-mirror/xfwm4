@@ -1,20 +1,20 @@
 # Romanian translation of xfwm4.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Mişu Moldovan <dumol@gnome.ro>, 2004.
+# Mişu Moldovan <dumol@gnome.ro>, 2004-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2004-11-14 19:01+0200\n"
+"PO-Revision-Date: 2007-01-21 01:39+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=3;plural=(n==1?0:(n==0||((n%100)>0&&(n%100)<20))?1:2)\n"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
@@ -45,13 +45,12 @@ msgstr "Jos:"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
-msgstr "Spaţii de lucru şi Margini"
+msgstr "Spaţii şi Margini"
 
 #: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
-msgstr "Spaţii de lucru şi Margini"
+msgstr "Spaţii de lucru şi margini"
 
 #: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:522
 #: ../mcs-plugin/workspaces.c:516
@@ -64,39 +63,38 @@ msgstr "Margini"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:373
 msgid "None"
-msgstr ""
+msgstr "Niciuna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Administrator ferestre"
+msgstr "Preferinţe avansate ferestre"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
+"Nu include ferestrele cu proprietăţi de tip „skip pager” sau „skip taskbar”"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Include ferestrele ascunse (minimizate)"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:412
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Mutare fereastră în spaţiul din stânga"
+msgstr "Schimbă focusul între ferestrele din toate spaţiile de lucru"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:417
 msgid "Cycling"
-msgstr ""
+msgstr "Schimbare focus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:429
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "Protejează focusul ferestrei curente"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "Respectă standardul ICCCM"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
@@ -104,132 +102,123 @@ msgstr "Focus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:452
 msgid "Key used to grab and move windows"
-msgstr ""
+msgstr "Tastă pentru prinderea şi mutarea ferestrelor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:458
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Ridică ferestrele la apăsarea oricărui buton de maus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "Ascunde cadrul ferestrelor la maximizare"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Arată conţinutul ferestrelor la mutare"
+msgstr "Utilizează mărimea iniţială la mutarea ferestrelor maximizate"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Utilizează rezistenţa la margini în loc de potrivire"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Accessibility"
-msgstr ""
+msgstr "Accesibilitate"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:496
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "Comută spaţiile de lucru cu rotiţa de maus deasupra desktopului"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
+"Reţine spaţiul de lucru precedent la comutarea din tastatură şi revino la el"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "Comută între spaţiile de lucru în funcţie de dispunerea desktopului"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:517
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Schimbă spaţiul curent când cursorul ajunge la marginea ecranului"
+msgstr "Comută între primul şi ultimul spaţiu de lucru"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "Mărime minimă a ferestrelor ce vor fi plasate inteligent"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
-#, fuzzy
 msgid "Size|Small"
 msgstr "Mică"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Size|Large"
-msgstr ""
+msgstr "Mare"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:539
 msgid "Placement"
-msgstr ""
+msgstr "Plasare"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
-msgstr ""
+msgstr "Activează compozitorul ecranului"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "Randează direct ferestrele overlay pe tot ecranul"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "Desenează umbre sub ferestrele obişnuite"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:585
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "Desenează umbre sub ferestrele popup"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Arată conţinutul ferestrelor la redimensionare"
+msgstr "Opacitate decoraţii ferestre"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
 #: ../mcs-plugin/wmtweaks_plugin.c:603 ../mcs-plugin/wmtweaks_plugin.c:609
 #: ../mcs-plugin/wmtweaks_plugin.c:615
 msgid "Transparent"
-msgstr ""
+msgstr "Transparente"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:592 ../mcs-plugin/wmtweaks_plugin.c:598
 #: ../mcs-plugin/wmtweaks_plugin.c:604 ../mcs-plugin/wmtweaks_plugin.c:610
 #: ../mcs-plugin/wmtweaks_plugin.c:616
 msgid "Opaque"
-msgstr ""
+msgstr "Opace"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:597
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Arată conţinutul ferestrelor la mutare"
+msgstr "Opacitate ferestre inactive"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Arată conţinutul ferestrelor la mutare"
+msgstr "Opacitate la mutarea ferestrelor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:609
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Arată conţinutul ferestrelor la redimensionare"
+msgstr "Opacitate la redimensionarea ferestrelor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:615
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Arată conţinutul ferestrelor la mutare"
+msgstr "Opacitate ferestre popup"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:620
-#, fuzzy
 msgid "Compositor"
-msgstr "Compunere combinaţie de taste"
+msgstr "Compozitor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Administrator ferestre"
+msgstr "Preferinţe avansate ferestre"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "Aceste preferinţe nu sunt compatibile cu administratorul de ferestre curent (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -238,7 +227,7 @@ msgstr "Schimbare nume"
 #: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:480
 #, c-format
 msgid "Workspace %d"
-msgstr "Spaţiu de lucru %d"
+msgstr "Spaţiul de lucru %d"
 
 #: ../mcs-plugin/workspaces.c:348
 msgid "Name:"
@@ -310,7 +299,7 @@ msgstr "Dreapta"
 
 #: ../mcs-plugin/xfwm4_plugin.c:574
 msgid "Click and drag buttons to change the layout"
-msgstr "Aranjaţi aici butoanele ferestrelor cu mouse-ul"
+msgstr "Aranjaţi interactiv mai jos butoanele ferestrelor"
 
 #: ../mcs-plugin/xfwm4_plugin.c:579
 msgid "Active"
@@ -322,7 +311,7 @@ msgstr "Titlu"
 
 #: ../mcs-plugin/xfwm4_plugin.c:591
 msgid "The window title, it cannot be removed"
-msgstr "Titlul ferestrei, nu poate fi exclus"
+msgstr "Titlul ferestrei nu poate fi exclus"
 
 #: ../mcs-plugin/xfwm4_plugin.c:599
 msgid "Hidden"
@@ -334,7 +323,7 @@ msgstr "Dialog selectare font"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1424
 msgid "Window Manager"
-msgstr "Administrator ferestre"
+msgstr "Administrator de ferestre"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1464
 msgid "Title font"
@@ -351,7 +340,7 @@ msgstr "Aliniere text în interiorul barei de titlu:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1481
 msgid "Button layout"
-msgstr "Aranjament butoane:"
+msgstr "Aranjament butoane"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1486
 msgid "Style"
@@ -379,11 +368,11 @@ msgstr "Tip focus"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1590
 msgid "Click to focus"
-msgstr "Click pentru focus"
+msgstr "Clic pentru focus"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1600
 msgid "Focus follows mouse"
-msgstr "Focusul urmează cursorul de mouse"
+msgstr "Focusul urmează cursorul de maus"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1611
 msgid "Automatically give focus to newly created windows"
@@ -399,7 +388,7 @@ msgstr "Deasupra la focalizare"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1628
 msgid "Automatically raise windows when they receive focus"
-msgstr "Când primesc focus, ferestrele trec automat deasupra"
+msgstr "Ferestrele trec automat deasupra când primesc focus"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1638
 msgid "Delay before raising focused window :"
@@ -415,11 +404,11 @@ msgstr "Mare"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1673
 msgid "Raise window when clicking inside application window"
-msgstr "Ridică deasupra fereastra ce recepţionează un click"
+msgstr "Ridică deasupra fereastra ce recepţionează un clic"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1677
 msgid "Raise on click"
-msgstr "Deasupra la click"
+msgstr "Deasupra la clic"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Windows snapping"
@@ -438,38 +427,34 @@ msgid "Distance :"
 msgstr "Apropiere:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1724
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Apropiere:"
+msgstr "Mică"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1731
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Apropiere:"
+msgstr "Mare"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Wrap workspaces"
-msgstr "Schimbare spaţii de lucru"
+msgstr "Comutare spaţii de lucru adiacente"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1758
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Schimbă spaţiul curent când cursorul ajunge la marginea ecranului"
+msgstr "Treci în spaţiul adiacent când cursorul ajunge la marginea ecranului"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Schimbă spaţiul curent la tragerea unei ferestre înafara ecranului"
+msgstr "Treci în spaţiul adiacent la tragerea unei ferestre înafara ecranului"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1776
 msgid "Edge Resistance :"
 msgstr "Rezistenţă margine:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1783
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Apropiere:"
+msgstr "Mică"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1790
-#, fuzzy
 msgid "Resistance|Wide"
 msgstr "Apropiere:"
 
@@ -487,11 +472,11 @@ msgstr "Arată conţinutul ferestrelor la mutare"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1828
 msgid "Double click action"
-msgstr "Acţiune dublu-click"
+msgstr "Acţiune dublu-clic"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1830
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Acţiune de efectuat la un dublu-click pe bara de titlu:"
+msgstr "Acţiune de efectuat la un dublu-clic pe bara de titlu:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1835
 msgid "Advanced"
@@ -499,13 +484,12 @@ msgstr "Avansate"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1974
-#, fuzzy
 msgid "Button Label|Window Manager"
-msgstr "Administrator ferestre"
+msgstr "Administrator de ferestre"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Chiar doriţi să ştergeţi această temă de combinaţii de taste?"
+msgstr "Sigur doriţi să ştergeţi această temă de combinaţii de taste?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:139
@@ -541,9 +525,8 @@ msgid "Stick window"
 msgstr "Lipire fereastră"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:364
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Închidere fereastră"
+msgstr "Schimbare focus"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Move window up"
@@ -578,9 +561,8 @@ msgid "Resize window right"
 msgstr "Redimensionare fereastră în dreapta"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "Închidere fereastră"
+msgstr "Anulare mutare/redimensionare fereastră"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Raise window"
@@ -592,7 +574,7 @@ msgstr "Coborâre fereastră dedesubt"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Toggle fullscreen"
-msgstr "Comutare stare „pe toate ecranele”"
+msgstr "Comutare stare „pe tot ecranul”"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Upper workspace"
@@ -652,25 +634,24 @@ msgstr "Mutare fereastră în spaţiul din dreapta"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Show desktop"
-msgstr ""
+msgstr "Afişare desktop"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
 msgid "Cancel window action"
-msgstr "Arată conţinutul ferestrelor la redimensionare"
+msgstr "Anulare acţiune asupra ferestrei"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "Meniu acţiuni asupra ferestrei"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Mutare fereastră în spaţiul de lucru 1"
+msgstr "Mutare fereastră în spaţiul de lucru %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Cannot open the theme directory !"
-msgstr "Nu am reuşit să deschid directorul temei!"
+msgstr "Nu se poate deschide directorul temei!"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:600
 #, c-format
@@ -678,7 +659,7 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
-"Nu am reuşit să deschid %s: \n"
+"Nu se poate deschide %s: \n"
 "%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:614
@@ -688,7 +669,7 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
-"Nu am reuşit să scriu în %s: \n"
+"Nu se poate scrie în %s: \n"
 "%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:778
@@ -715,7 +696,7 @@ msgstr "Nici o combinaţie"
 #: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (pe %s)"
 
 #: ../src/main.c:132
 #, c-format
@@ -748,7 +729,7 @@ msgstr "_Strânge"
 
 #: ../src/menu.c:46
 msgid "Un_shade"
-msgstr "De_strânge"
+msgstr "De_sfă"
 
 #: ../src/menu.c:47
 msgid "S_tick"
@@ -789,57 +770,49 @@ msgstr "Reporneşte"
 #: ../src/menu.c:169
 #, c-format
 msgid "Workspace %i (%s)"
-msgstr "Spaţiu de lucru %i (%s)"
+msgstr "Spaţiul de lucru %i (%s)"
 
 #: ../src/menu.c:173
 #, c-format
 msgid "Workspace %i"
-msgstr "Spaţiu de lucru %i"
+msgstr "Spaţiul de lucru %i"
 
 #: ../src/menu.c:409
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu nu a reuşit să captureze cursorul\n"
+msgstr "%s: GtkMenu nu a putut captura cursorul\n"
 
 #: ../src/settings.c:902
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Nu am reuşit să aloc culoarea activă %s\n"
+msgstr "%s: Nu se poate aloca culoarea %s\n"
 
 #: ../src/settings.c:908
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Nu am reuşit să prelucrez culoarea activă %s\n"
+msgstr "%s: Nu se poate prelucra culoarea %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "Administrator ferestre"
+msgstr "Administrator de ferestre"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Administrator ferestre"
+msgstr "Preferinţe administrator de ferestre Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Administrator ferestre"
+msgstr "Preferinţe avansate"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Administrator ferestre"
+msgstr "Preferinţe avansate administrator de ferestre Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
 msgid "Workspaces Settings"
-msgstr "Margini spaţii de lucru"
+msgstr "Margini şi spaţii de lucru"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Margini spaţii de lucru"
+msgstr "Preferinţe margini şi spaţii de lucru Xfce 4"
 
-#~ msgid "Unknown application!"
-#~ msgstr "Aplicaţie necunoscută!"
