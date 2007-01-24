@@ -176,6 +176,35 @@ clientUpdateColormaps (Client * c)
 }
 
 void
+clientUpdateName (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gchar *name;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientUpdateName");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    getWindowName (display_info, c->window, &name);
+    if (name)
+    {
+        if (c->name)
+        {
+            if (strcmp (name, c->name))
+            {
+                g_free (c->name);
+                c->name = name;
+                FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
+                frameQueueDraw (c);
+            }
+        }
+    }
+}
+
+void
 clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 {
     Client *c;
@@ -1031,7 +1060,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
-            frameDraw (c, TRUE);
+            frameQueueDraw (c);
         }
     }
     else
@@ -1262,6 +1291,10 @@ clientFree (Client * c)
     if (c->icon_timeout_id)
     {
         g_source_remove (c->icon_timeout_id);
+    }
+    if (c->frame_timeout_id)
+    {
+        g_source_remove (c->frame_timeout_id);
     }
     if (c->name)
     {
@@ -1755,6 +1788,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     /* Timout for asynchronous icon update */
     c->icon_timeout_id = 0;
+    /* Timout for asynchronous frame update */
+    c->frame_timeout_id = 0;
     /* Timeout for blinking on urgency */
     c->blink_timeout_id = 0;
 

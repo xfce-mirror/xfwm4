@@ -51,5 +51,8 @@ int                      frameWidth                             (Client *);
 int                      frameHeight                            (Client *);
 void                     frameDraw                              (Client *, 
                                                                  gboolean);
+void                     frameClearQueueDraw                    (Client *);
+void                     frameQueueDraw                         (Client *);
+
 
 #endif /* INC_FRAME_H */

@@ -273,6 +273,8 @@ struct _Client
     unsigned long xfwm_flags;
     /* Timout for asynchronous icon update */
     guint icon_timeout_id;
+    /* Timout for asynchronous frame update */
+    guint frame_timeout_id;
     /* Timout to manage blinking decorations for urgent windows */
     guint blink_timeout_id;
     /* Opacity for the compositor */
@@ -329,6 +331,7 @@ void                     clientFrameAll                         (ScreenInfo *);
 void                     clientUnframeAll                       (ScreenInfo *);
 void                     clientInstallColormaps                 (Client *);
 void                     clientUpdateColormaps                  (Client *);
+void                     clientUpdateName                       (Client *);
 void                     clientUpdateAllFrames                  (ScreenInfo *, 
                                                                  gboolean);
 void                     clientGrabButtons                      (Client *);

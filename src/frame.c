@@ -876,6 +876,13 @@ frameDraw (Client * c, gboolean clear_all)
         width_changed = TRUE;
         height_changed = TRUE;
         requires_clearing = TRUE;
+        frameClearQueueDraw (c);
+        if (c->frame_timeout_id)
+        {
+            g_source_remove (c->frame_timeout_id);
+            c->frame_timeout_id = 0;
+        }
+
     }
     else
     {
@@ -1130,3 +1137,48 @@ frameDraw (Client * c, gboolean clear_all)
         frameSetShape (c, 0, NULL, 0);
     }
 }
+
+static gboolean
+update_frame_idle_cb (gpointer data)
+{
+    Client *c;
+    
+    TRACE ("entering update_frame_idle_cb");
+
+    c = (Client *) data;
+    g_return_val_if_fail (c, FALSE);
+
+    frameDraw (c, TRUE);
+    c->frame_timeout_id = 0;
+
+    return FALSE;
+}
+
+void
+frameClearQueueDraw (Client * c)
+{
+    g_return_if_fail (c);
+
+    TRACE ("entering frameClearQueueDraw for \"%s\" (0x%lx)", c->name, c->window);
+
+    if (c->frame_timeout_id)
+    {
+        g_source_remove (c->frame_timeout_id);
+        c->frame_timeout_id = 0;
+    }
+}
+
+void
+frameQueueDraw (Client * c)
+{
+    g_return_if_fail (c);
+
+    TRACE ("entering frameQueueDraw for \"%s\" (0x%lx)", c->name, c->window);
+
+    if (c->frame_timeout_id == 0)
+    {
+        c->frame_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, 
+                                              update_frame_idle_cb, c, NULL);
+    }
+}
+

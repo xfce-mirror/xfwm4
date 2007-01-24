@@ -1825,13 +1825,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                  (ev->atom == display_info->atoms[WM_CLIENT_MACHINE]))
         {
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_NAME/NET_WM_NAME/WM_CLIENT_MACHINE notify", c->name, c->window);
-            if (c->name)
-            {
-                g_free (c->name);
-            }
-            getWindowName (display_info, c->window, &c->name);
-            FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
-            frameDraw (c, TRUE);
+            clientUpdateName (c);
         }
         else if (ev->atom == display_info->atoms[MOTIF_WM_HINTS])
         {
@@ -1907,7 +1901,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_WINDOW_TYPE notify", c->name, c->window);
             clientGetNetWmType (c);
-            frameDraw (c, TRUE);
+            frameQueueDraw (c);
         }
         else if ((ev->atom == display_info->atoms[NET_WM_STRUT]) ||
                  (ev->atom == display_info->atoms[NET_WM_STRUT_PARTIAL]))

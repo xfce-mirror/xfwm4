@@ -1,3 +1,10 @@
+4.4.1
+=====
+
+- Use timeout for frame redraw, check actual WM name changes to work around 
+  apps that falsely update their WM name property (Bug #2810)."
+
+
 4.4.0
 =====
 
