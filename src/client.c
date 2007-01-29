@@ -120,6 +120,10 @@ struct _ButtonPressData
     Client *c;
 };
 
+/* Forward decl */
+static void 
+clientUpdateIconPix (Client * c);
+
 Display *
 clientGetXDisplay (Client * c)
 {
@@ -228,7 +232,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_CACHE)
         {
-            clientUpdateIcon (c);
+            clientUpdateIconPix (c);
         }
         if (mask & UPDATE_GRAVITY)
         {
@@ -1993,7 +1997,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
             &c->buttons[i], None);
     }
-    clientUpdateIcon (c);
+    clientUpdateIconPix (c);
 
     /* Put the window on top to avoid XShape, that speeds up hw accelerated
        GL apps dramatically */
