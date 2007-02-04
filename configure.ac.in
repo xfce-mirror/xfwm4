@@ -3,7 +3,7 @@ dnl
 dnl xfwm4 - window manager for the Xfce4 desktop environment
 dnl
 
-m4_define([xfwm4_version], [4.4.1])
+m4_define([xfwm4_version], [4.5.0])
 
 m4_define([gtk_minimum_version], [2.6.0])
 m4_define([xfce_minimum_version], [4.4.0])
@@ -218,8 +218,9 @@ themes/default.keys/Makefile
 themes/default-4.0/Makefile
 themes/default-4.2/Makefile
 themes/katiola/Makefile
-themes/kokodi/Makefile
+themes/largeprint/Makefile
 themes/moheli/Makefile
+themes/mopti/Makefile
 themes/sassandra/Makefile
 themes/stoneage/Makefile
 themes/therapy/Makefile
