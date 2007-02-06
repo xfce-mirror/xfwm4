@@ -1,4 +1,4 @@
-themedir = $(datadir)/themes/Largeprint/xfwm4
+themedir = $(datadir)/themes/LargePrint/xfwm4
 
 PNG_FILES = 								\
 	bottom-active.png						\
