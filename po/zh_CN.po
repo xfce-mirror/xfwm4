@@ -3,14 +3,14 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
-#
+# wuli <wurisky@gmail.com>,2007
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2005-10-09 20:54+0900\n"
-"Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
+"PO-Revision-Date: 2007-02-07 20:11+0800\n"
+"Last-Translator: wuli <wurisky@gmail.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +43,7 @@ msgstr "底部:"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
-#, fuzzy
+#, 
 msgid "Button Label|Workspaces and Margins"
 msgstr "工作区边缘"
 
@@ -62,39 +62,39 @@ msgstr "边缘"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:373
 msgid "None"
-msgstr ""
+msgstr "无"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#, fuzzy
+#, 
 msgid "Window Manager Tweaks"
-msgstr "窗口管理器"
+msgstr "窗口管理器调整"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "跳过有 \"skip pager\" 或者 \"skip taskbar\"属性设置的窗口"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:406
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "包含隐藏(如图标化)窗口"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:412
-#, fuzzy
+#, 
 msgid "Cycle through windows from all workspaces"
-msgstr "移动窗口至左边工作区"
+msgstr "在所有工作区的窗口间循环"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:417
 msgid "Cycling"
-msgstr ""
+msgstr "循环"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:429
 msgid "Activate focus stealing prevention"
-msgstr ""
+msgstr "激活预防偷窃焦点"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Honor the standard ICCCM focus hint"
-msgstr ""
+msgstr "启用 ICCCM 焦点提示标准"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
@@ -102,132 +102,132 @@ msgstr "焦点"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:452
 msgid "Key used to grab and move windows"
-msgstr ""
+msgstr "用来捕获和移动窗口的按键"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:458
 msgid "Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "按下任意鼠标键时提升窗口"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "最大化时隐藏窗口边框"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
-#, fuzzy
+#, 
 msgid "Restore original size of maximized windows when moving"
-msgstr "移动窗口时显示其内容"
+msgstr "移动窗口时恢复最大化窗口原始大小"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "使用边缘阻力取代窗口吸附"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Accessibility"
-msgstr ""
+msgstr "辅助性"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:496
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "在桌面使用鼠标滚轮切换工作区"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
+msgstr "由键盘快捷键切换时记住并恢复先前的工作区"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "以实际桌面版面决定工作区回绕"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:517
-#, fuzzy
+#, 
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "鼠标到达屏幕边缘时回绕工作区"
+msgstr "到达第一或最后一个工作区时回绕工作区"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Minimum size of windows to trigger smart placement"
-msgstr ""
+msgstr "触发智能定位最小窗口大小"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
-#, fuzzy
+#, 
 msgid "Size|Small"
-msgstr "小"
+msgstr "大小|小"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Size|Large"
-msgstr ""
+msgstr "大小|大"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:539
 msgid "Placement"
-msgstr ""
+msgstr "定位"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
-msgstr ""
+msgstr "允许混合显示"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "全屏显示直接覆盖的窗口"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
-msgstr ""
+msgstr "在常规窗口中显示阴影"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:585
 msgid "Show shadows under popup windows"
-msgstr ""
+msgstr "在弹出窗口中显示阴影"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591
-#, fuzzy
+#, 
 msgid "Opacity of window decorations"
-msgstr "改变窗口尺寸时显示其内容"
+msgstr "窗口装饰透明度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
 #: ../mcs-plugin/wmtweaks_plugin.c:603 ../mcs-plugin/wmtweaks_plugin.c:609
 #: ../mcs-plugin/wmtweaks_plugin.c:615
 msgid "Transparent"
-msgstr ""
+msgstr "透明"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:592 ../mcs-plugin/wmtweaks_plugin.c:598
 #: ../mcs-plugin/wmtweaks_plugin.c:604 ../mcs-plugin/wmtweaks_plugin.c:610
 #: ../mcs-plugin/wmtweaks_plugin.c:616
 msgid "Opaque"
-msgstr ""
+msgstr "不透明"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:597
-#, fuzzy
+#, 
 msgid "Opacity of inactive windows"
-msgstr "移动窗口时显示其内容"
+msgstr "非活动窗口透明度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
-#, fuzzy
+#, 
 msgid "Opacity of windows during move"
-msgstr "移动窗口时显示其内容"
+msgstr "移动窗口时的透明度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:609
-#, fuzzy
+#, 
 msgid "Opacity of windows during resize"
-msgstr "改变窗口尺寸时显示其内容"
+msgstr "改变窗口尺寸时的透明度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:615
-#, fuzzy
+#, 
 msgid "Opacity of popup windows"
-msgstr "移动窗口时显示其内容"
+msgstr "弹出窗口的透明度"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:620
-#, fuzzy
+#, 
 msgid "Compositor"
-msgstr "组合快捷键"
+msgstr "混合设置"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
-#, fuzzy
+#, 
 msgid "Button Label|Window Manager Tweaks"
-msgstr "窗口管理器"
+msgstr "窗口管理器调整"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "这些设置无法作用于当前窗口管理器 (%s)" 
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -236,7 +236,7 @@ msgstr "改变名称"
 #: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:480
 #, c-format
 msgid "Workspace %d"
-msgstr "工作区 %i"
+msgstr "工作区 %d"
 
 #: ../mcs-plugin/workspaces.c:348
 msgid "Name:"
@@ -421,29 +421,29 @@ msgstr "点击置顶"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1695
 msgid "Windows snapping"
-msgstr "窗口吸引"
+msgstr "窗口吸附"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1700
 msgid "Snap windows to screen border"
-msgstr "在屏幕边缘吸引窗口"
+msgstr "在屏幕边缘吸附窗口"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1706
 msgid "Snap windows to other windows"
-msgstr "将窗口吸引到其它窗口"
+msgstr "将窗口吸附到其它窗口"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1717
 msgid "Distance :"
 msgstr "距离 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1724
-#, fuzzy
+#, 
 msgid "Distance|Small"
-msgstr "距离 :"
+msgstr "距离|窄 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1731
-#, fuzzy
+#, 
 msgid "Distance|Wide"
-msgstr "距离 :"
+msgstr "距离|宽 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Wrap workspaces"
@@ -462,14 +462,14 @@ msgid "Edge Resistance :"
 msgstr "屏幕边缘阻力 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1783
-#, fuzzy
+#, 
 msgid "Resistance|Small"
-msgstr "距离 :"
+msgstr "阻力|弱 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1790
-#, fuzzy
+#, 
 msgid "Resistance|Wide"
-msgstr "距离 :"
+msgstr "阻力|强 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1812
 msgid "Opaque move and resize"
@@ -497,7 +497,7 @@ msgstr "高级"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1974
-#, fuzzy
+#, 
 msgid "Button Label|Window Manager"
 msgstr "窗口管理器"
 
@@ -539,9 +539,9 @@ msgid "Stick window"
 msgstr "粘附窗口"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:364
-#, fuzzy
+#, 
 msgid "Cycle windows"
-msgstr "关闭窗口"
+msgstr "循环窗口"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Move window up"
@@ -576,9 +576,9 @@ msgid "Resize window right"
 msgstr "向右改变窗口大小"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-#, fuzzy
+#, 
 msgid "Cancel move/resize window"
-msgstr "关闭窗口"
+msgstr "取消移动/缩放窗口"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Raise window"
@@ -650,21 +650,21 @@ msgstr "移动窗口至右边工作区"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Show desktop"
-msgstr ""
+msgstr "显示桌面"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#, fuzzy
+#, 
 msgid "Cancel window action"
-msgstr "改变窗口尺寸时显示其内容"
+msgstr "取消窗口动作"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Window operations menu"
-msgstr ""
+msgstr "窗口操作菜单"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:501
-#, fuzzy, c-format
+#, , c-format
 msgid "Move window to workspace %d"
-msgstr "移动窗口至工作区 1"
+msgstr "移动窗口至工作区 %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Cannot open the theme directory !"
@@ -713,7 +713,7 @@ msgstr "无快捷键"
 #: ../src/hints.c:80
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (于 %s)"
 
 #: ../src/main.c:132
 #, c-format
@@ -800,44 +800,44 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"
 
 #: ../src/settings.c:902
-#, fuzzy, c-format
+#, , c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: 无法分配所选颜色 %s\n"
+msgstr "%s： 无法分配所选颜色 %s\n"
 
 #: ../src/settings.c:908
-#, fuzzy, c-format
+#, , c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: 无法解释所选颜色 %s\n"
+msgstr "%s： 无法解释所选颜色 %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
+#, 
 msgid "Window Manager Settings"
-msgstr "窗口管理器"
+msgstr "窗口管理器设置"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
+#, 
 msgid "Xfce 4 Window Manager Settings"
-msgstr "窗口管理器"
+msgstr "xfce4 窗口管理器设置"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
+#, 
 msgid "Advanced Configuration"
-msgstr "窗口管理器"
+msgstr "高级选项设置"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-#, fuzzy
+#, 
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "窗口管理器"
+msgstr "xfce4 窗口管理器调整"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-#, fuzzy
+#, 
 msgid "Workspaces Settings"
-msgstr "工作区边缘"
+msgstr "工作区设置"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-#, fuzzy
+#, 
 msgid "Xfce 4 Workspaces Settings"
-msgstr "工作区边缘"
+msgstr "xfce4 工作区设置"
 
 #~ msgid "Unknown application!"
 #~ msgstr "未知的应用程序！"
