@@ -408,6 +408,11 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->placement_ratio = setting->data.v_int;
                     }
+                    else if (!strcmp (name, "Xfwm/ShowDockShadow"))
+                    {
+                        screen_info->params->show_dock_shadow = setting->data.v_int;
+                        reloadScreenSettings (screen_info, UPDATE_FRAME);
+                    }
                     else if (!strcmp (name, "Xfwm/ShowFrameShadow"))
                     {
                         screen_info->params->show_frame_shadow = setting->data.v_int;
@@ -793,6 +798,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt ("popup_opacity", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowDockShadow", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("show_dock_shadow", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowFrameShadow", CHANNEL5,
@@ -1330,6 +1341,7 @@ loadSettings (ScreenInfo *screen_info)
         {"shadow_delta_x", NULL, TRUE},
         {"shadow_delta_y", NULL, TRUE},
         {"show_app_icon", NULL, TRUE},
+        {"show_dock_shadow", NULL, TRUE},
         {"show_frame_shadow", NULL, TRUE},
         {"show_popup_shadow", NULL, TRUE},
         {"snap_resist", NULL, TRUE},
@@ -1473,6 +1485,8 @@ loadSettings (ScreenInfo *screen_info)
         abs (TOINT (getValue ("placement_ratio", rc)));
     screen_info->params->show_app_icon =
         !g_ascii_strcasecmp ("true", getValue ("show_app_icon", rc));
+    screen_info->params->show_dock_shadow =
+        !g_ascii_strcasecmp ("true", getValue ("show_dock_shadow", rc));
     screen_info->params->show_frame_shadow =
         !g_ascii_strcasecmp ("true", getValue ("show_frame_shadow", rc));
     screen_info->params->show_popup_shadow =

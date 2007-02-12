@@ -60,6 +60,7 @@ static gboolean cycle_minimum = TRUE;
 static gboolean cycle_hidden = TRUE;
 static gboolean cycle_workspaces = FALSE;
 static gboolean focus_hint = TRUE;
+static gboolean show_dock_shadow = FALSE;
 static gboolean show_frame_shadow = FALSE;
 static gboolean show_popup_shadow = FALSE;
 static gboolean prevent_focus_stealing = FALSE;
@@ -99,6 +100,7 @@ static char *easy_click = "Alt";
     "Xfwm/RestoreOnMove"
     "Xfwm/ScrollWorkspaces"
     "Xfwm/ScrollWorkspaces"
+    "Xfwm/ShowDockShadow"
     "Xfwm/ShowFrameShadow"
     "Xfwm/ShowPopupShadow"
     "Xfwm/SnapResist"
@@ -576,6 +578,12 @@ create_dialog (McsPlugin * mcs_plugin)
         gtk_widget_show (check_button);
 
         check_button =
+            create_gboolean_button (mcs_plugin, _("Show shadows under dock windows"),
+            "Xfwm/ShowDockShadow", &show_dock_shadow);
+        gtk_box_pack_start (GTK_BOX (compositor_options_vbox), check_button, FALSE, TRUE, 0);
+        gtk_widget_show (check_button);
+
+        check_button =
             create_gboolean_button (mcs_plugin, _("Show shadows under regular windows"),
             "Xfwm/ShowFrameShadow", &show_frame_shadow);
         gtk_box_pack_start (GTK_BOX (compositor_options_vbox), check_button, FALSE, TRUE, 0);
@@ -744,6 +752,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleHidden", &cycle_hidden);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleWorkspaces", &cycle_workspaces);
     init_gboolean_setting (mcs_plugin, "Xfwm/FocusHint", &focus_hint);
+    init_gboolean_setting (mcs_plugin, "Xfwm/ShowDockShadow", &show_dock_shadow);
     init_gboolean_setting (mcs_plugin, "Xfwm/ShowFrameShadow", &show_frame_shadow);
     init_gboolean_setting (mcs_plugin, "Xfwm/ShowPopupShadow", &show_popup_shadow);
     init_gboolean_setting (mcs_plugin, "Xfwm/PreventFocusStealing", &prevent_focus_stealing);

@@ -69,7 +69,8 @@
                                          !FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN))
 #define WIN_NO_SHADOW(cw)               ((cw->c) && \
                                            (FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW) || \
-                                              (cw->c->type & (WINDOW_DOCK | WINDOW_DESKTOP))))
+                                            (cw->c->type & WINDOW_DESKTOP)))
+#define WIN_IS_DOCK(cw)                 (WIN_HAS_CLIENT(cw) && (cw->c->type & WINDOW_DOCK))
 #define WIN_IS_OVERRIDE(cw)             (cw->attr.override_redirect)
 #define WIN_IS_ARGB(cw)                 (cw->argb)
 #define WIN_IS_OPAQUE(cw)               (((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw)) || (cw->screen_info->overlays))
@@ -933,7 +934,13 @@ win_extents (CWindow *cw)
           (screen_info->params->show_frame_shadow &&
               !WIN_IS_OVERRIDE(cw) &&
               !WIN_NO_SHADOW(cw) &&
-              (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))))))
+              !WIN_IS_DOCK(cw) &&
+              (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)))) ||
+          (screen_info->params->show_dock_shadow &&
+              WIN_IS_DOCK(cw) &&
+              !WIN_NO_SHADOW(cw) &&
+              !WIN_IS_OVERRIDE(cw) &&
+              (!(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))))))
     {
         XRectangle sr;
 
