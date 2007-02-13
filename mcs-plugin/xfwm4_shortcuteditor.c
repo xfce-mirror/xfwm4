@@ -757,6 +757,12 @@ cb_compose_shortcut (GtkWidget * widget, GdkEventKey * event, gpointer data)
     g_free (accelerator);
     g_strfreev (shortcuts);
 
+    /* Use keycode if unknown keysym */
+    if (!strlen (shortcut_string))
+    {
+        g_snprintf (shortcut_string, sizeof (shortcut_string), "0x%X", (guint) event->hardware_keycode);
+    }
+
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview3));
 
     /* Apply change */

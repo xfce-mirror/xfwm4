@@ -38,6 +38,29 @@ unsigned int ScrollLockMask;
 unsigned int SuperMask;
 unsigned int HyperMask;
 
+static gboolean
+getKeycode (Display *dpy, const char *str, KeyCode *keycode)
+{
+    unsigned int value;
+    KeySym keysym;
+
+    keysym = XStringToKeysym (str);
+    if (keysym == NoSymbol)
+    {
+        if (sscanf (str, "0x%X", (unsigned int *) &value) != 1)
+        {
+            *keycode = 0;
+            return FALSE;
+        }
+        *keycode = (KeyCode) value;
+    }
+    else
+    {
+        *keycode = XKeysymToKeycode (dpy, keysym);
+    }
+    return TRUE;
+}
+
 int
 getModifierMap (char *str)
 {
@@ -120,12 +143,12 @@ parseKeyString (Display * dpy, MyKey * key, char *str)
     if (k)
     {
         /* There is a modifier */
-        key->keycode = XKeysymToKeycode (dpy, XStringToKeysym (++k));
+        getKeycode (dpy, ++k, &key->keycode);
         key->modifier = getModifierMap (str);
     }
     else
     {
-        key->keycode = XKeysymToKeycode (dpy, XStringToKeysym (str));
+        getKeycode (dpy, str, &key->keycode);
         key->modifier = 0;
     }
 }
