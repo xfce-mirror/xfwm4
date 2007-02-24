@@ -13,36 +13,20 @@
    height="25"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.44.1"
+   inkscape:version="0.45"
    version="1.0"
-   sodipodi:docbase="default"
    sodipodi:docname="top-right-inactive.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4">
     <linearGradient
-       id="linearGradient1886">
-      <stop
-         style="stop-color:white;stop-opacity:1;"
-         offset="0"
-         id="stop1888" />
-      <stop
-         style="stop-color:white;stop-opacity:0.25;"
-         offset="1"
-         id="stop1890" />
-    </linearGradient>
-    <linearGradient
        id="linearGradient5873">
       <stop
          id="stop5875"
          offset="0"
-         style="stop-color:white;stop-opacity:1;" />
+         style="stop-color:white;stop-opacity:.75;" />
       <stop
          id="stop5877"
-         offset="0.5"
-         style="stop-color:white;stop-opacity:0.90;" />
-      <stop
-         id="stop5879"
          offset="1"
          style="stop-color:white;stop-opacity:0;" />
     </linearGradient>
@@ -51,11 +35,11 @@
       <stop
          id="stop5849"
          offset="0"
-         style="stop-color:white;stop-opacity:0.05;" />
+         style="stop-color:white;stop-opacity:0.16;" />
       <stop
-         id="stop2776"
+         id="stop5851"
          offset="1"
-         style="stop-color:black;stop-opacity:0.10;" />
+         style="stop-color:white;stop-opacity:0;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -72,21 +56,11 @@
        xlink:href="#linearGradient5873"
        id="linearGradient6962"
        x1="0"
-       y1="1"
+       y1="0"
        x2="0"
-       y2="8"
+       y2="9"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.2,0,1)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1886"
-       id="linearGradient1892"
-       x1="0"
-       y1="1"
-       x2="0"
-       y2="14"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.75,0,0,1,0.75,0)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -109,7 +83,7 @@
      inkscape:window-width="640"
      inkscape:window-height="733"
      inkscape:window-x="187"
-     inkscape:window-y="728"
+     inkscape:window-y="726"
      inkscape:guide-bbox="true"
      inkscape:guide-points="false"
      showguides="true" />
@@ -137,7 +111,7 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,1 L 5,1 C 5,1 7,1 7,4 L 7,20 C 7,20 7,25 2,25 L 0,25 L 0,25 L 0,1 z "
+       d="M 0,1 L 5,1 C 5,1 7,1 7,4 L 7,22 C 7,22 7,25 2,25 L 0,25 L 0,25 L 0,1 z "
        id="path6057" />
   </g>
   <g
@@ -145,13 +119,9 @@
      id="layer3"
      inkscape:label="hilight">
     <path
-       style="fill:url(#linearGradient6962);fill-opacity:0.20;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 0,1 L 2.25,1 C 2.25,1 6,1 6,4 C 6,4 5.25,4 5.25,4 L 0,4 L 0,3 z "
+       style="fill:url(#linearGradient6962);fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 0,1 L 2.25,1 C 2.25,1 6,1 6,2 C 6,2 5.25,2 5.25,2 L 0,2 L 0,1 z "
        id="path6061" />
-    <path
-       style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:0.30;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,1 L 5,1 C 5,1 7,1 7,4 L 7,8 C 7,8 7,13 2,13 L 0,13 L 0,13 L 0,1 z "
-       id="path1884" />
   </g>
   <g
      inkscape:label="Border"
