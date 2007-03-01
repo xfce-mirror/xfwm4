@@ -383,7 +383,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     {
         if (new_focus)
         {
-            clientSetFocus (screen_info, new_focus, timestamp, NO_FOCUS_FLAG);
+            clientSetFocus (screen_info, new_focus, timestamp, FOCUS_SORT);
         }
         else
         {

@@ -117,6 +117,7 @@ sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, Time timestam
     ev.window = w;
     ev.message_type = display_info->atoms[WM_PROTOCOLS];
     ev.format = 32;
+    ev.send_event = TRUE;
     ev.data.l[0] = display_info->atoms[atom_id];
     ev.data.l[1] = timestamp;
     XSendEvent (myScreenGetXDisplay (screen_info), w, FALSE, 0L, (XEvent *)&ev);
