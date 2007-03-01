@@ -1446,7 +1446,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             {
                 if (screen_info->params->prevent_focus_stealing)
                 {
-                    ev->value_mask &= ~CWStackMode;
+                    ev->value_mask &= ~(CWSibling | CWStackMode);
                     TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
