@@ -383,6 +383,13 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     {
         if (new_focus)
         {
+            if ((screen_info->params->click_to_focus) && (screen_info->params->raise_on_click))
+            {
+                if (!clientIsTopMost (new_focus))
+                {
+                    clientRaise (new_focus, None);
+                }
+            }
             clientSetFocus (screen_info, new_focus, timestamp, FOCUS_SORT);
         }
         else
