@@ -1444,7 +1444,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             last_raised = clientGetLastRaise (screen_info);
             if (last_raised && (c != last_raised))
             {
-                if (screen_info->params->prevent_focus_stealing)
+                if ((screen_info->params->prevent_focus_stealing) && !(screen_info->params->bring_on_activate))
                 {
                     ev->value_mask &= ~(CWSibling | CWStackMode);
                     TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 

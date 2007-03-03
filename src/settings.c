@@ -364,6 +364,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                         screen_info->params->borderless_maximize = setting->data.v_int;
                         reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
                     }
+                    else if (!strcmp (name, "Xfwm/BringOnActivate"))
+                    {
+                        screen_info->params->bring_on_activate = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/CycleMinimum"))
                     {
                         screen_info->params->cycle_minimum = setting->data.v_int;
@@ -729,6 +733,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("borderless_maximize", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/BringOnActivate", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setBooleanValueFromInt ("bring_on_activate", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleMinimum", CHANNEL5,
@@ -1304,6 +1314,7 @@ loadSettings (ScreenInfo *screen_info)
         {"borderless_maximize", NULL, TRUE},
         {"box_move", NULL, TRUE},
         {"box_resize", NULL, TRUE},
+        {"bring_on_activate", NULL, TRUE},
         {"button_layout", NULL, TRUE},
         {"button_offset", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
@@ -1447,6 +1458,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("box_resize", rc));
     screen_info->params->box_move =
         !g_ascii_strcasecmp ("true", getValue ("box_move", rc));
+    screen_info->params->bring_on_activate =
+        !g_ascii_strcasecmp ("true", getValue ("bring_on_activate", rc));
     screen_info->params->click_to_focus =
         !g_ascii_strcasecmp ("true", getValue ("click_to_focus", rc));
     screen_info->params->cycle_minimum =

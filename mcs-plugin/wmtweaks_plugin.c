@@ -56,6 +56,7 @@ static void run_dialog (McsPlugin * mcs_plugin);
 static gboolean is_running = FALSE;
 
 static gboolean borderless_maximize = TRUE;
+static gboolean bring_on_activate = TRUE;
 static gboolean cycle_minimum = TRUE;
 static gboolean cycle_hidden = TRUE;
 static gboolean cycle_workspaces = FALSE;
@@ -84,6 +85,7 @@ static int frame_opacity = 100;
 static char *easy_click = "Alt";
 /* 
     "Xfwm/BorderlessMaximize"
+    "Xfwm/BringOnActivate"
     "Xfwm/CycleHidden"
     "Xfwm/CycleMinimum"
     "Xfwm/CycleWorkspaces"
@@ -434,6 +436,12 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (check_button);
 
     check_button =
+        create_gboolean_button (mcs_plugin, _("Bring window back on current workspace when activated"),
+        "Xfwm/BringOnActivate", &bring_on_activate);
+    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
+    gtk_widget_show (check_button);
+
+    check_button =
         create_gboolean_button (mcs_plugin, _("Honor the standard ICCCM focus hint"),
         "Xfwm/FocusHint", &focus_hint);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
@@ -748,6 +756,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     g_free (rcfile);
 
     init_gboolean_setting (mcs_plugin, "Xfwm/BorderlessMaximize", &borderless_maximize);
+    init_gboolean_setting (mcs_plugin, "Xfwm/BringOnActivate", &bring_on_activate);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleMinimum", &cycle_minimum);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleHidden", &cycle_hidden);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleWorkspaces", &cycle_workspaces);
