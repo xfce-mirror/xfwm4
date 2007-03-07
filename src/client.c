@@ -785,10 +785,23 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
     }
 
     clientConfigureWindows (c, wc, mask, flags);
+    /*
 
-    if ((flags & CFG_NOTIFY) ||
-        ((flags & CFG_REQUEST) && !(WIN_MOVED || WIN_RESIZED)) ||
-        (WIN_MOVED && !WIN_RESIZED))
+      We reparent to client window. According to the ICCCM spec, the
+      WM must send a senthetic event when the window is moved and not resized.
+
+      But, since we reparent the window, we must also send a synthetic
+      configure event when the window is moved and resized.
+
+      See this thread for the rational:
+      http://www.mail-archive.com/wm-spec-list@gnome.org/msg00379.html
+
+      And specifically this post from Carsten Haitzler:
+      http://www.mail-archive.com/wm-spec-list@gnome.org/msg00382.html
+
+     */
+    if ((WIN_MOVED) || (flags & CFG_NOTIFY) ||
+        ((flags & CFG_REQUEST) && !(WIN_MOVED || WIN_RESIZED)))
     {
         DBG ("Sending ConfigureNotify");
         ce.type = ConfigureNotify;
@@ -4086,6 +4099,7 @@ clientMove (Client * c, XEvent * ev)
         eventFilterPop (display_info->xfilter);
     }
     myScreenUngrabPointer (screen_info);
+
     if (passdata.grab && screen_info->params->box_move)
     {
         myDisplayUngrabServer (display_info);
@@ -4615,11 +4629,12 @@ clientResize (Client * c, int corner, XEvent * ev)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
+    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, NO_CFG_FLAG);
 #ifdef HAVE_XSYNC
     clientXSyncClearTimeout (c);
     c->xsync_waiting = FALSE;
 #endif /* HAVE_XSYNC */
+
     myScreenUngrabKeyboard (screen_info);
     if (!passdata.released)
     {
@@ -4631,6 +4646,7 @@ clientResize (Client * c, int corner, XEvent * ev)
         eventFilterPop (display_info->xfilter);
     }
     myScreenUngrabPointer (screen_info);
+
     if (passdata.grab && screen_info->params->box_resize)
     {
         myDisplayUngrabServer (display_info);
