@@ -922,6 +922,14 @@ clientGetMWMHints (Client * c, gboolean update)
         wc.width = c->width;
         wc.height = c->height;
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
+
+        /* MWM hints can add or remove decorations, update NET_FRAME_EXTENTS accordingly */
+        setNetFrameExtents (display_info,
+                            c->window,
+                            frameTop (c),
+                            frameLeft (c),
+                            frameRight (c),
+                            frameBottom (c));
     }
 }
 
@@ -3139,6 +3147,14 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     c->y = wc.y;
     c->height = wc.height;
     c->width = wc.width;
+
+    /* Maximizing may remove decoration on the side, update NET_FRAME_EXTENTS accordingly */
+    setNetFrameExtents (display_info,
+                        c->window,
+                        frameTop (c),
+                        frameLeft (c),
+                        frameRight (c),
+                        frameBottom (c));
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED) && (restore_position))
     {

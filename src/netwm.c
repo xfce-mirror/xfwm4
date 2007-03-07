@@ -754,6 +754,15 @@ clientUpdateFullscreenState (Client * c)
         c->width = wc.width;
     }
     clientSetLayer (c, layer);
+
+    /* Fullscreen has no decoration at all, update NET_FRAME_EXTENTS accordingly */
+    setNetFrameExtents (display_info,
+                        c->window,
+                        frameTop (c),
+                        frameLeft (c),
+                        frameRight (c),
+                        frameBottom (c));
+
 }
 
 void
