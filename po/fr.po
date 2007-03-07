@@ -97,6 +97,10 @@ msgstr "Suivre le standard ICCCM pour la focalisation"
 msgid "Focus"
 msgstr "Focalisation"
 
+#: ../mcs-plugin/xfwm4_plugin.c:1690
+msgid "Delay before window receives focus"
+msgstr "Délai avant que la fenêtre reçoive le focus"
+
 #: ../mcs-plugin/wmtweaks_plugin.c:452
 msgid "Key used to grab and move windows"
 msgstr "Touche utilisée pour saisir et déplacer les fenêtres"

@@ -80,10 +80,18 @@
                                  HyperMask)
 
 static guint raise_timeout = 0;
+static guint focus_timeout = 0; // Focus time-out
 static GdkAtom atom_rcfiles = GDK_NONE;
 static xfwmWindow menu_event_window;
 static int edge_scroll_x = 0;
 static int edge_scroll_y = 0;
+
+static struct _focus_info
+{
+    ScreenInfo *screen_info;
+    Client *c;
+    Time timestamp;
+} focus_info;
 
 /* Forward decl. */
 
@@ -308,6 +316,30 @@ reset_timeout (ScreenInfo *screen_info)
                                         screen_info->params->raise_delay, 
                                         (GtkFunction) raise_cb, 
                                         NULL, NULL);
+}
+
+static void
+clear_focus_timeout (void)
+{
+    if(focus_timeout)
+    {
+        g_source_remove (focus_timeout);
+        focus_timeout = 0;
+    }
+}
+
+static gboolean
+focus_cb (gpointer data)
+{
+    Client *c;
+    
+    TRACE ("entering focus_cb");
+
+    clear_focus_timeout();
+    
+    clientSetFocus (focus_info.screen_info, focus_info.c, focus_info.timestamp, NO_FOCUS_FLAG);
+    
+    return (TRUE);
 }
 
 static void
@@ -1499,7 +1531,25 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             TRACE ("EnterNotify window is \"%s\"", c->name);
             if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
             {
-                clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
+                if(screen_info->params->focus_delay)
+                {
+                    clear_focus_timeout();
+                    focus_info.screen_info = c->screen_info;
+                    focus_info.c = c;
+                    focus_info.timestamp = ev->time;
+                    focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
+                                                        screen_info->params->focus_delay, 
+                                                        (GtkFunction) focus_cb, 
+                                                        NULL, NULL);
+                }
+                else
+                {
+                    clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
+                }
+            } 
+            else
+            {
+                clear_focus_timeout();
             }
         }
 

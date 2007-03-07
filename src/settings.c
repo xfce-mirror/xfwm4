@@ -202,6 +202,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->raise_delay = setting->data.v_int;
                     }
+		    else if (!strcmp (name, "Xfwm/FocusDelay"))
+                    {
+                        screen_info->params->focus_delay = setting->data.v_int;
+                    }
                     else if (!strcmp (name, "Xfwm/RaiseOnClick"))
                     {
                         screen_info->params->raise_on_click = setting->data.v_int;
@@ -598,6 +602,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt ("raise_delay", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusDelay", CHANNEL1,
+                &setting) == MCS_SUCCESS)
+        {
+            setIntValueFromInt ("focus_delay", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseOnClick", CHANNEL1,
@@ -1319,6 +1329,7 @@ loadSettings (ScreenInfo *screen_info)
         {"button_offset", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
         {"click_to_focus", NULL, TRUE},
+	{"focus_delay", NULL, TRUE},
         {"cycle_hidden", NULL, TRUE},
         {"cycle_minimum", NULL, TRUE},
         {"cycle_workspaces", NULL, TRUE},
@@ -1478,6 +1489,8 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("prevent_focus_stealing", rc));
     screen_info->params->raise_delay =
         abs (TOINT (getValue ("raise_delay", rc)));
+    screen_info->params->focus_delay =
+        abs (TOINT (getValue ("focus_delay", rc)));
     screen_info->params->raise_on_click =
         !g_ascii_strcasecmp ("true", getValue ("raise_on_click", rc));
     screen_info->params->raise_with_any_button =

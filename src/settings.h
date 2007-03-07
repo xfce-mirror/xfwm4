@@ -183,6 +183,7 @@ struct _XfwmParams
     int placement_ratio;
     int popup_opacity;
     int raise_delay;
+    int focus_delay;
     int resize_opacity;
     int restore_on_move;
     int shadow_delta_height;

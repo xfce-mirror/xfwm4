@@ -85,6 +85,7 @@ struct _Itf
     GtkWidget *frame_layout;
     GtkWidget *frame_align;
     GtkWidget *raise_delay_scale;
+    GtkWidget *focus_delay_scale;
     GtkWidget *raise_on_focus_check;
     GtkWidget *scrolledwindow1;
     GtkWidget *scrolledwindow2;
