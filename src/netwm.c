@@ -1212,7 +1212,7 @@ clientWindowType (Client * c)
         {
             TRACE ("atom net_wm_window_type_splash detected");
             c->type = WINDOW_SPLASHSCREEN;
-            c->initial_layer = WIN_LAYER_ABOVE_DOCK;
+            c->initial_layer = WIN_LAYER_NORMAL;
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
