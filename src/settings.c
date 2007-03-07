@@ -202,7 +202,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->raise_delay = setting->data.v_int;
                     }
-		    else if (!strcmp (name, "Xfwm/FocusDelay"))
+                    else if (!strcmp (name, "Xfwm/FocusDelay"))
                     {
                         screen_info->params->focus_delay = setting->data.v_int;
                     }
@@ -1329,7 +1329,7 @@ loadSettings (ScreenInfo *screen_info)
         {"button_offset", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
         {"click_to_focus", NULL, TRUE},
-	{"focus_delay", NULL, TRUE},
+        {"focus_delay", NULL, TRUE},
         {"cycle_hidden", NULL, TRUE},
         {"cycle_minimum", NULL, TRUE},
         {"cycle_workspaces", NULL, TRUE},
