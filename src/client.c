@@ -794,9 +794,21 @@ clientConfigure (Client * c, XWindowChanges * wc, int mask, unsigned short flags
         frameDraw (c, (flags & CFG_FORCE_REDRAW), TRUE);
     }
 
-    if ((flags & CFG_NOTIFY) ||
-        ((flags & CFG_REQUEST) && !(moved || resized)) ||
-        (moved && !resized))
+    /*
+      We reparent to client window. According to the ICCCM spec, the
+      WM must send a senthetic event when the window is moved and not resized.
+
+      But, since we reparent the window, we must also send a synthetic
+      configure event when the window is moved and resized.
+
+      See this thread for the rational:
+      http://www.mail-archive.com/wm-spec-list@gnome.org/msg00379.html
+
+      And specifically this post from Carsten Haitzler:
+      http://www.mail-archive.com/wm-spec-list@gnome.org/msg00382.html
+     */
+
+    if ((moved) || (flags & CFG_NOTIFY) || ((flags & CFG_REQUEST) && !(moved || resized)))
     {
         DBG ("Sending ConfigureNotify");
         ce.type = ConfigureNotify;
@@ -2654,7 +2666,7 @@ clientToggleMaximized (Client * c, int mode)
            avoid these effects
          */
         myScreenGrabPointer (screen_info, EnterWindowMask, None, CurrentTime);
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
         myScreenUngrabPointer (screen_info, CurrentTime);
     }
     else
@@ -3652,7 +3664,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY);
+    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, NO_CFG_FLAG);
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
