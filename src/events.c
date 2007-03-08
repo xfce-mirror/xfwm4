@@ -79,19 +79,10 @@
                                  SuperMask | \
                                  HyperMask)
 
-static guint raise_timeout = 0;
-static guint focus_timeout = 0; // Focus time-out
 static GdkAtom atom_rcfiles = GDK_NONE;
 static xfwmWindow menu_event_window;
 static int edge_scroll_x = 0;
 static int edge_scroll_y = 0;
-
-static struct _focus_info
-{
-    ScreenInfo *screen_info;
-    Client *c;
-    Time timestamp;
-} focus_info;
 
 /* Forward decl. */
 
@@ -248,7 +239,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.allow_double_click = allow_double_click;
     passdata.timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
                                            display_info->dbl_click_time,
-                                           (GtkFunction) typeOfClick_break,
+                                           (GSourceFunc) typeOfClick_break,
                                            (gpointer) &passdata, NULL);
 
     TRACE ("entering typeOfClick loop");
@@ -277,70 +268,6 @@ check_button_time (XButtonEvent *ev)
     return TRUE;
 }
 #endif
-
-static void
-clear_timeout (void)
-{
-    if (raise_timeout)
-    {
-        g_source_remove (raise_timeout);
-        raise_timeout = 0;
-    }
-}
-
-static gboolean
-raise_cb (gpointer data)
-{
-    Client *c;
-
-    TRACE ("entering raise_cb");
-
-    clear_timeout ();
-    c = clientGetFocus ();
-
-    if (c)
-    {
-        clientRaise (c, None);
-    }
-    return (TRUE);
-}
-
-static void
-reset_timeout (ScreenInfo *screen_info)
-{
-    if (raise_timeout)
-    {
-        g_source_remove (raise_timeout);
-    }
-    raise_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
-                                        screen_info->params->raise_delay, 
-                                        (GtkFunction) raise_cb, 
-                                        NULL, NULL);
-}
-
-static void
-clear_focus_timeout (void)
-{
-    if(focus_timeout)
-    {
-        g_source_remove (focus_timeout);
-        focus_timeout = 0;
-    }
-}
-
-static gboolean
-focus_cb (gpointer data)
-{
-    Client *c;
-    
-    TRACE ("entering focus_cb");
-
-    clear_focus_timeout();
-    
-    clientSetFocus (focus_info.screen_info, focus_info.c, focus_info.timestamp, NO_FOCUS_FLAG);
-    
-    return (TRUE);
-}
 
 static void
 moveRequest (Client * c, XEvent * ev)
@@ -952,8 +879,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 }
                 if (screen_info->params->raise_on_click)
                 {
-                    /* Clear timeout */
-                    clear_timeout ();
+                    clientClearDelayedRaise ();
                     clientRaise (c, None);
                 }
                 clientButtonPress (c, win, ev);
@@ -990,8 +916,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     }
                     if (screen_info->params->raise_on_click)
                     {
-                        /* Clear timeout */
-                        clear_timeout ();
+                        clientClearDelayedRaise ();
                         clientRaise (c, None);
                     }
                     ev->window = ev->root;
@@ -1052,8 +977,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 if ((screen_info->params->raise_on_click) ||
                     !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
                 {
-                    /* Clear timeout */
-                    clear_timeout ();
+                    clientClearDelayedRaise ();
                     clientRaise (c, None);
                 }
             }
@@ -1533,14 +1457,8 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             {
                 if(screen_info->params->focus_delay)
                 {
-                    clear_focus_timeout();
-                    focus_info.screen_info = c->screen_info;
-                    focus_info.c = c;
-                    focus_info.timestamp = ev->time;
-                    focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
-                                                        screen_info->params->focus_delay, 
-                                                        (GtkFunction) focus_cb, 
-                                                        NULL, NULL);
+                    clientClearDelayedFocus ();
+                    clientAddDelayedFocus (c, ev->time);
                 }
                 else
                 {
@@ -1549,7 +1467,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             } 
             else
             {
-                clear_focus_timeout();
+                clientClearDelayedFocus ();
             }
         }
 
@@ -1789,7 +1707,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 
         if (screen_info->params->raise_on_focus)
         {
-            reset_timeout (screen_info);
+            clientResetDelayedRaise (screen_info);
         }
     }
 }
@@ -1847,8 +1765,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
             clientPassGrabMouseButton (NULL);
             clientUpdateFocus (c->screen_info, NULL, NO_FOCUS_FLAG);
-            /* Clear timeout */
-            clear_timeout ();
+            clientClearDelayedRaise ();
         }
     }
 }

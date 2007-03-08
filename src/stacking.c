@@ -34,6 +34,8 @@
 #include "frame.h"
 #include "focus.h"
 
+static guint raise_timeout = 0;
+
 void
 clientApplyStackList (ScreenInfo *screen_info)
 {
@@ -681,3 +683,44 @@ clientClearLastRaise (ScreenInfo *screen_info)
     g_return_if_fail (screen_info);
     screen_info->last_raise = NULL;
 }
+
+static gboolean
+delayed_raise_cb (gpointer data)
+{
+    Client *c;
+
+    TRACE ("entering delayed_raise_cb");
+
+    clientClearDelayedRaise ();
+    c = clientGetFocus ();
+
+    if (c)
+    {
+        clientRaise (c, None);
+    }
+    return (TRUE);
+}
+
+void
+clientClearDelayedRaise (void)
+{
+    if (raise_timeout)
+    {
+        g_source_remove (raise_timeout);
+        raise_timeout = 0;
+    }
+}
+
+void
+clientResetDelayedRaise (ScreenInfo *screen_info)
+{
+    if (raise_timeout)
+    {
+        g_source_remove (raise_timeout);
+    }
+    raise_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
+                                        screen_info->params->raise_delay, 
+                                        (GSourceFunc) delayed_raise_cb, 
+                                        NULL, NULL);
+}
+

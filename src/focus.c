@@ -57,6 +57,7 @@ static Client *client_focus  = NULL;
 static Client *pending_focus = NULL;
 static Client *user_focus    = NULL;
 static Client *last_ungrab   = NULL;
+static guint focus_timeout   = 0;
 
 static ClientPair
 clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
@@ -479,12 +480,12 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     XChangeProperty (display_info->dpy, screen_info->xroot,
                      display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                      PropModeReplace, (unsigned char *) data, 2);
-
+    clientClearDelayedFocus ();
     clientUpdateOpacity (screen_info, c);
 }
 
 void
-clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned short flags)
+clientSetFocus (ScreenInfo *screen_info, Client *c, Time timestamp, unsigned short flags)
 {
     DisplayInfo *display_info;
     Client *c2;
@@ -571,6 +572,7 @@ clientSetFocus (ScreenInfo *screen_info, Client * c, Time timestamp, unsigned sh
         XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                          PropModeReplace, (unsigned char *) data, 2);
         XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
+        clientClearDelayedFocus ();
         clientUpdateOpacity (screen_info, c);
     }
 }
@@ -757,3 +759,51 @@ clientClearLastUngrab (void)
 {
     last_ungrab = NULL;
 }
+
+static gboolean
+delayed_focus_cb (gpointer data)
+{
+    ScreenInfo *screen_info;
+    Window dr, window;
+    unsigned int mask;
+    int rx, ry, wx, wy;
+    Client *c;
+
+    TRACE ("entering delayed_focus_cb");
+
+    screen_info = (ScreenInfo *) data;
+    if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
+    {
+        c = clientAtPosition (screen_info, rx, ry, NULL);
+        if (c)
+        {
+            clientSetFocus (screen_info, c, myDisplayGetCurrentTime (screen_info->display_info), NO_FOCUS_FLAG);
+        }
+    }
+    focus_timeout = 0;
+
+    return (FALSE);
+}
+
+void
+clientClearDelayedFocus (void)
+{
+    if(focus_timeout)
+    {
+        g_source_remove (focus_timeout);
+        focus_timeout = 0;
+    }
+}
+
+void
+clientAddDelayedFocus (Client *c, Time timestamp)
+{
+    ScreenInfo *screen_info;
+
+    screen_info = c->screen_info;
+    focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
+                                        screen_info->params->focus_delay, 
+                                        (GSourceFunc) delayed_focus_cb, 
+                                        screen_info, NULL);
+}
+

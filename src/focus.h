@@ -73,6 +73,10 @@ void                     clientUngrabMouseButtonForAll          (ScreenInfo *);
 void                     clientPassGrabMouseButton              (Client *);
 Client                  *clientGetLastUngrab                    (void);
 void                     clientClearLastUngrab                  (void);
+void                     clientClearDelayedFocus                (void);
+void                     clientAddDelayedFocus                  (Client *, 
+                                                                 Time);
+
 
 
 #endif /* INC_FOCUS_H */

@@ -56,5 +56,8 @@ GList                   *clientGetStackList                     (ScreenInfo *);
 void                     clientSetLastRaise                     (Client *);
 Client                  *clientGetLastRaise                     (ScreenInfo *);
 void                     clientClearLastRaise                   (ScreenInfo *);
+void                     clientClearDelayedRaise                (void);
+void                     clientResetDelayedRaise                (ScreenInfo *);
+
 
 #endif /* INC_STACKING_H */
