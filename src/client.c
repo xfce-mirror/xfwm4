@@ -1309,6 +1309,10 @@ clientFree (Client * c)
     {
         clientClearLastUngrab ();
     }
+    if (clientGetDelayedFocus () == c)
+    {
+        clientClearDelayedFocus ();
+    }
     if (c->blink_timeout_id)
     {
         g_source_remove (c->blink_timeout_id);

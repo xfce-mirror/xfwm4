@@ -57,6 +57,7 @@ static Client *client_focus  = NULL;
 static Client *pending_focus = NULL;
 static Client *user_focus    = NULL;
 static Client *last_ungrab   = NULL;
+static Client *delayed_focus = NULL;
 static guint focus_timeout   = 0;
 
 static ClientPair
@@ -764,23 +765,17 @@ static gboolean
 delayed_focus_cb (gpointer data)
 {
     ScreenInfo *screen_info;
-    Window dr, window;
-    unsigned int mask;
-    int rx, ry, wx, wy;
+    DisplayInfo *display_info;
     Client *c;
 
     TRACE ("entering delayed_focus_cb");
 
-    screen_info = (ScreenInfo *) data;
-    if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
-    {
-        c = clientAtPosition (screen_info, rx, ry, NULL);
-        if (c)
-        {
-            clientSetFocus (screen_info, c, myDisplayGetCurrentTime (screen_info->display_info), NO_FOCUS_FLAG);
-        }
-    }
+    c = (Client *) data;
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     focus_timeout = 0;
+    delayed_focus = NULL;
 
     return (FALSE);
 }
@@ -793,17 +788,24 @@ clientClearDelayedFocus (void)
         g_source_remove (focus_timeout);
         focus_timeout = 0;
     }
+    delayed_focus = NULL;
 }
 
 void
-clientAddDelayedFocus (Client *c, Time timestamp)
+clientAddDelayedFocus (Client *c)
 {
     ScreenInfo *screen_info;
 
     screen_info = c->screen_info;
+    delayed_focus = c;
     focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
                                         screen_info->params->focus_delay, 
                                         (GSourceFunc) delayed_focus_cb, 
-                                        screen_info, NULL);
+                                        delayed_focus, NULL);
 }
 
+Client *
+clientGetDelayedFocus (void)
+{
+    return delayed_focus;
+}
