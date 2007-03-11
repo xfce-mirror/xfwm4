@@ -766,14 +766,13 @@ delayed_focus_cb (gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    Client *c;
 
     TRACE ("entering delayed_focus_cb");
+    g_return_val_if_fail (delayed_focus != NULL, FALSE);
 
-    c = (Client *) data;
-    screen_info = c->screen_info;
+    screen_info = delayed_focus->screen_info;
     display_info = screen_info->display_info;
-    clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+    clientSetFocus (screen_info, delayed_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     focus_timeout = 0;
     delayed_focus = NULL;
 
@@ -801,7 +800,7 @@ clientAddDelayedFocus (Client *c)
     focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
                                         screen_info->params->focus_delay, 
                                         (GSourceFunc) delayed_focus_cb, 
-                                        delayed_focus, NULL);
+                                        NULL, NULL);
 }
 
 Client *
