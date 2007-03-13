@@ -773,6 +773,25 @@ maintainers, etc. Commented out by default.
 
 </sect1>
 
+<sect2 id="hidden_options">
+  <title>Hidden options</title>
+
+	<para>Some hidden options allow you to customize &app; behaviour. They have to be added by hand to your
+	HOME/.config/xfce4/xfwm4/xfwm4rc file. You may have to create this file.</para>
+
+<variablelist>
+	<varlistentry>
+		<term>bring_on_activate=false</term>
+			<listitem>
+			<para>Set this option to false if you don't want a window to be brought back
+			on the current workspace when the application tries to raise it.
+			</para>
+			</listitem>
+	</varlistentry>	
+</variablelist>
+
+</sect2>
+
   <!-- extra space -->
   <para>&nbsp;</para>
   

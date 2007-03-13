@@ -5,18 +5,20 @@
   apps that falsely update their WM name property (Bug #2810)."
 - Fix a misinterpretation of ICCCM about when to send a synthetic 
   configureNotify event (bug #2977).
+- Add new hidden option to instruct xfwm4 not to bring window back on 
+  current workspace when activated (bug #2961)
 - Place splash screen windows on the normal layer, so that dialogs that 
   get mapped during startup have a chance to be placed above the splash 
   screen.
-- Update Turkish translation
-- Update Ukrainian translation.
 - Raise focused window on workspace switch (bug #2960)
 - Sort Z-order on workspace change (bug #2960)
+- Fix the small lag before icon update at first map and when updating all 
+  frames at once.
+- Update Turkish translation
+- Update Ukrainian translation.
 - Updated the Chinese (simplified) translations by Wu Li and fixed some 
   accelerators in the French translations.
 - Added the Albanian translations by Besnik Bleta
-- Fix the small lag before icon update at first map and when updating all 
-  frames at once.
 
 
 4.4.0

@@ -197,6 +197,7 @@ struct _XfwmParams
     gboolean borderless_maximize;
     gboolean box_move;
     gboolean box_resize;
+    gboolean bring_on_activate;
     gboolean click_to_focus;
     gboolean cycle_hidden;
     gboolean cycle_minimum;

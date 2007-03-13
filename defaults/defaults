@@ -1,6 +1,7 @@
 borderless_maximize=true
 box_move=false
 box_resize=false
+bring_on_activate=true
 button_layout=OT|SHMC
 button_offset=0
 button_spacing=0

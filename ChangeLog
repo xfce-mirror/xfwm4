@@ -1,3 +1,98 @@
+2007-03-07 21:03  olivier
+
+	* src/client.c, src/netwm.c: Update frame extents when the window
+	  decoration extents change.
+
+2007-03-07 21:01  olivier
+
+	* src/client.c: Fix a misinterpretation of ICCCM about when to send
+	  a synthetic configureNotify event (bug #2977).
+
+2007-03-07 21:01  olivier
+
+	* src/netwm.c: Place splash screen windows on the normal layer, so
+	  that dialogs that get mapped during startup have a chance to be
+	  placed above the splash screen.
+
+2007-03-04 07:20  erenturkay
+
+	* po/tr.po: update Turkish translation
+
+2007-03-03 09:41  mvd
+
+	* po/uk.po: 2007-03-03 Maxim Dziumanenko <dziumanenko@gmail.com>
+	  
+	  * Update Ukrainian translation.
+
+2007-03-02 21:35  olivier
+
+	* src/workspaces.c: Raise focused window on workspace switch (bug
+	  #2960)
+
+2007-03-01 21:31  olivier
+
+	* src/events.c, src/misc.c, src/workspaces.c: Sort Z-order on
+	  workspace change (bug #2960)
+
+2007-02-07 14:24  maximilian
+
+	* xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/fr.po,
+	  xfcalendar/branches/xfce_4_4/po/zh_CN.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/zh_CN.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/fr.po,
+	  xfce4-panel/branches/xfce_4_4/po/zh_CN.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/zh_CN.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/fr.po,
+	  xfdesktop/branches/xfce_4_4/po/zh_CN.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/zh_CN.po, po/ChangeLog, po/zh_CN.po:
+	  Updated the Chinese (simplified) translations by Wu Li and fixed
+	  some accelerators in the French translations.
+
+2007-02-04 21:14  maximilian
+
+	* libxfce4util/branches/xfce_4_4/po/ChangeLog,
+	  libxfce4util/branches/xfce_4_4/po/sq.po,
+	  libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/sq.po,
+	  mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/sq.po,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/sq.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/sq.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/sq.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/sq.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/sq.po,
+	  xfce4-icon-theme/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-icon-theme/branches/xfce_4_4/po/sq.po,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/sq.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/sq.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/sq.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/sq.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/sq.po, po/ChangeLog, po/sq.po: Added
+	  the Albanian translations by Besnik Bleta
+
+2007-01-29 20:45  olivier
+
+	* ChangeLog, INSTALL, src/client.c: Fix the small lag before icon
+	  update at first map and when updating all frames at once, remove
+	  the INSTALL file from SVN as we ship the default file that gets
+	  updated by autogen.sh, update ChangeLog
+
 2007-01-24 22:57  kelnos
 
 	* .: branch for 4.4

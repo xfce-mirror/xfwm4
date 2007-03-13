@@ -2603,11 +2603,20 @@ clientActivate (Client * c, Time timestamp)
     TRACE ("entering clientActivate \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    clientSetWorkspace (c, screen_info->current_ws, TRUE);
-    clientShow (c, TRUE);
-    clientClearAllShowDesktop (screen_info);
-    clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
-    clientRaise (c, None);
+    if ((screen_info->current_ws == c->win_workspace) || (screen_info->params->bring_on_activate))
+    {
+        clientSetWorkspace (c, screen_info->current_ws, TRUE);
+        clientShow (c, TRUE);
+        clientClearAllShowDesktop (screen_info);
+        clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
+        clientRaise (c, None);
+    }
+    else
+    {
+        TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+        FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+        clientSetNetState (c);
+    }
 }
 
 void
