@@ -72,6 +72,7 @@ static const TitleButton title_button[] = {
     {"M", N_("Maximize"), "gtk-zoom-100"},
     {"C", N_("Close"), "gtk-close"}
 };
+#define BUTTON_COUNT 6
 
 
 static const MenuTmpl dbl_click_values[] = {
@@ -332,6 +333,14 @@ data_get (GtkWidget * widget, GdkDragContext * drag_context, GtkSelectionData * 
         0);
 }
 
+static void
+title_data_get (GtkWidget * widget, GdkDragContext * drag_context, GtkSelectionData * data, guint info,
+    guint time, gpointer user_data)
+{
+    gtk_selection_data_set (data, gdk_atom_intern ("_XFWM4_TITLE", FALSE), 8, (const guchar *) "",
+        0);
+}
+
 static gchar *
 layout_get_semantic (GtkWidget * container)
 {
@@ -340,7 +349,7 @@ layout_get_semantic (GtkWidget * container)
     gint p = 0;
 
     children = gtk_container_get_children (GTK_CONTAINER (container));
-    sem = g_new0 (gchar, 8);
+    sem = g_new0 (gchar, BUTTON_COUNT + 2);
     item = children;
     while (item)
     {
@@ -352,7 +361,7 @@ layout_get_semantic (GtkWidget * container)
         if (key)
         {
             sem[p++] = *key;
-            if (p >= 7)
+            if (p >= BUTTON_COUNT + 1)
             {
                 g_list_free (children);
                 return (sem);
@@ -559,13 +568,17 @@ create_layout_buttons (gchar * layout, gpointer user_data)
     GtkWidget *hidden_box;
     GtkWidget *title;
     GtkWidget *label;
-    GtkTargetEntry entry;
+    GtkTargetEntry entry[2];
     GtkTooltips *tooltips;
     gint i;
 
-    entry.target = "_XFWM4_BUTTON";
-    entry.flags = GTK_TARGET_SAME_APP;
-    entry.info = 2;
+    entry[0].target = "_XFWM4_BUTTON";
+    entry[0].flags = GTK_TARGET_SAME_APP;
+    entry[0].info = 2;
+
+    entry[1].target = "_XFWM4_TITLE";
+    entry[1].flags = GTK_TARGET_SAME_APP;
+    entry[1].info = 3;
 
     tooltips = gtk_tooltips_new ();
 
@@ -590,6 +603,10 @@ create_layout_buttons (gchar * layout, gpointer user_data)
     title = gtk_button_new_with_label (_("Title"));
     gtk_tooltips_set_tip (tooltips, title, _("The window title, it cannot be removed"), NULL);
     g_object_set_data (G_OBJECT (title), "key_char", "|");
+    gtk_drag_source_set (title, GDK_BUTTON1_MASK, &entry[1], 1, GDK_ACTION_MOVE);
+    g_signal_connect (title, "drag-data-get", G_CALLBACK (title_data_get), NULL);
+    g_signal_connect (title, "drag_begin", G_CALLBACK (button_drag_begin), NULL);
+    g_signal_connect (title, "drag_end", G_CALLBACK (button_drag_end), NULL);
     g_signal_connect (title, "button_press_event", G_CALLBACK (signal_blocker), NULL);
     g_signal_connect (title, "enter_notify_event", G_CALLBACK (signal_blocker), NULL);
     g_signal_connect (title, "focus", G_CALLBACK (signal_blocker), NULL);
@@ -606,7 +623,7 @@ create_layout_buttons (gchar * layout, gpointer user_data)
     g_object_set_data (G_OBJECT (hidden_box), "mcs", user_data);
     gtk_widget_show (hidden_box);
 
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < BUTTON_COUNT; i++)
     {
         GtkWidget *button;
         GtkWidget *image;
@@ -615,7 +632,7 @@ create_layout_buttons (gchar * layout, gpointer user_data)
         button = gtk_button_new ();
         gtk_container_add (GTK_CONTAINER (button), image);
         gtk_tooltips_set_tip (tooltips, button, _(title_button[i].desc), _(title_button[i].desc));
-        gtk_drag_source_set (button, GDK_BUTTON1_MASK, &entry, 1, GDK_ACTION_MOVE);
+        gtk_drag_source_set (button, GDK_BUTTON1_MASK, entry, 1, GDK_ACTION_MOVE);
         g_signal_connect (button, "drag-data-get", G_CALLBACK (data_get), NULL);
         g_signal_connect (button, "drag_begin", G_CALLBACK (button_drag_begin), NULL);
         g_signal_connect (button, "drag_end", G_CALLBACK (button_drag_end), NULL);
@@ -628,8 +645,8 @@ create_layout_buttons (gchar * layout, gpointer user_data)
     }
 
     layout_set_value (layout_box, hidden_box, layout);
-    gtk_drag_dest_set (hidden_frame, GTK_DEST_DEFAULT_ALL, &entry, 1, GDK_ACTION_MOVE);
-    gtk_drag_dest_set (layout_frame, GTK_DEST_DEFAULT_ALL, &entry, 1, GDK_ACTION_MOVE);
+    gtk_drag_dest_set (hidden_frame, GTK_DEST_DEFAULT_ALL, entry, 1, GDK_ACTION_MOVE);
+    gtk_drag_dest_set (layout_frame, GTK_DEST_DEFAULT_ALL, entry, 2, GDK_ACTION_MOVE);
 
     g_signal_connect (hidden_frame, "drag_data_received", G_CALLBACK (hidden_data_receive),
         hidden_box);

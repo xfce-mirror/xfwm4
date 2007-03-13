@@ -1465,7 +1465,7 @@ clientApplyInitialState (Client * c)
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
-        TRACE ("Applying client's initial state: sticky");
+        TRACE ("Applying client's initial state: shaded");
         clientShade (c);
     }
 }
