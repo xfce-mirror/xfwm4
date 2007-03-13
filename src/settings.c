@@ -1178,7 +1178,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     screen_info->params->title_shadow[ACTIVE] = getTitleShadow (rc, "title_shadow_active");
     screen_info->params->title_shadow[INACTIVE] = getTitleShadow (rc, "title_shadow_inactive");
 
-    strncpy (screen_info->params->button_layout, getValue ("button_layout", rc), 7);
+    strncpy (screen_info->params->button_layout, getValue ("button_layout", rc), BUTTON_COUNT + 1);
     screen_info->params->button_spacing = TOINT (getValue ("button_spacing", rc));
     screen_info->params->button_offset = TOINT (getValue ("button_offset", rc));
     screen_info->params->maximized_offset = TOINT (getValue ("maximized_offset", rc));
