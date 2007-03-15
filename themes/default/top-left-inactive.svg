@@ -35,7 +35,7 @@
       <stop
          id="stop5849"
          offset="0"
-         style="stop-color:black;stop-opacity:0.05;" />
+         style="stop-color:black;stop-opacity:0.18;" />
       <stop
          id="stop5851"
          offset="1"
@@ -121,7 +121,7 @@
     <path
        id="path6061"
        d="M 8,1 L 5.75,1 C 5.75,1 2,1 2,2 C 2,2 2.75,2 2.75,2 L 8,2 L 8,2 z "
-       style="fill:url(#linearGradient6962);fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+       style="fill:url(#linearGradient6962);fill-opacity:1.00;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
   </g>
   <g
      style="display:inline"

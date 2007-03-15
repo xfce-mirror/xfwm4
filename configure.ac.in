@@ -217,10 +217,11 @@ themes/default/Makefile
 themes/default.keys/Makefile
 themes/default-4.0/Makefile
 themes/default-4.2/Makefile
+themes/default-4.4/Makefile
 themes/katiola/Makefile
+themes/kokodi/Makefile
 themes/largeprint/Makefile
 themes/moheli/Makefile
-themes/mopti/Makefile
 themes/sassandra/Makefile
 themes/stoneage/Makefile
 themes/therapy/Makefile

@@ -1,4 +1,4 @@
-themedir = $(datadir)/themes/Mopti/xfwm4
+themedir = $(datadir)/themes/Default-4.4/xfwm4
 
 PNG_FILES = 								\
 	bottom-active.png						\
