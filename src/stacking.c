@@ -154,7 +154,8 @@ gboolean
 clientIsTopMost (Client *c)
 {
     ScreenInfo *screen_info;
-    GList *index;
+    GList *index, *index2;
+    Client *c2;
 
     g_return_val_if_fail (c != NULL, FALSE);
     TRACE ("entering clientIsTopMost");
@@ -164,18 +165,18 @@ clientIsTopMost (Client *c)
     index = g_list_find (screen_info->windows_stack, (gconstpointer) c);
     if (index)
     {
-        GList *index2 = g_list_next (index);
-        if (index2)
+        index2 = g_list_next (index);
+        while (index2)
         {
-            Client *c2 = (Client *) index2->data;
-            return (c2->win_layer > c->win_layer);
-        }
-        else
-        {
-            return TRUE;
+            c2 = (Client *) index2->data;
+            if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE) && (c2->win_layer == c->win_layer))
+            {
+                return FALSE;
+            }
+            index2 = g_list_next (index2);
         }
     }
-    return FALSE;
+    return TRUE;
 }
 
 Client *
