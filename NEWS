@@ -1,8 +1,7 @@
 4.4.1
 =====
 
-- Use timeout for frame redraw, check actual WM name changes to work around 
-  apps that falsely update their WM name property (Bug #2810)."
+- Make the title button in the xfwm4 settings manager dragable (bug #3000).
 - Fix a misinterpretation of ICCCM about when to send a synthetic 
   configureNotify event (bug #2977).
 - Add new hidden option to instruct xfwm4 not to bring window back on 
@@ -14,6 +13,8 @@
 - Sort Z-order on workspace change (bug #2960)
 - Fix the small lag before icon update at first map and when updating all 
   frames at once.
+- Use timeout for frame redraw, check actual WM name changes to work around 
+  apps that falsely update their WM name property (Bug #2810)."
 - Update Turkish translation
 - Update Ukrainian translation.
 - Updated the Chinese (simplified) translations by Wu Li and fixed some 
