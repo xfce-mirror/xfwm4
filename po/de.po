@@ -97,7 +97,7 @@ msgstr "Verhinderung des Fokusverlustes aktivieren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Honor the standard ICCCM focus hint"
-msgstr "Den normalen ICCCM Fokus-Hinweis beachten"
+msgstr "Den normalen ICCCM-Fokus-Hinweis beachten"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
 msgid "Focus"
@@ -143,8 +143,8 @@ msgstr ""
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
-"Vorige Arbeitsfläche merken und abrufen beim\n"
-"Wechseln mittels Tastenkürzeln"
+"Vorige Arbeitsfläche merken und beim\n"
+"Wechseln mittels Tastenkürzeln abrufen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -210,7 +210,7 @@ msgstr "Undurchsichtig"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:597
 msgid "Opacity of inactive windows"
-msgstr "Deckkraft von inaktiven Fenstern"
+msgstr "Deckkraft inaktiver Fenster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:603
 msgid "Opacity of windows during move"
@@ -496,7 +496,7 @@ msgstr "Aktion bei Doppelklick"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1830
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Aktion, die beim Doppeklicken auf die Titelleiste ausgeführt wird:"
+msgstr "Aktion, die beim Doppeklick auf die Titelleiste ausgeführt wird:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1835
 msgid "Advanced"
@@ -517,8 +517,9 @@ msgid "Add keybinding theme"
 msgstr "Tastenkürzel-Schema hinzufügen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:143
+# Duden: Sche|ma, das; -s, -s u. -ta --> Des Schema*s*
 msgid "Enter a name for the theme:"
-msgstr "Namen des Schema eingeben:"
+msgstr "Namen des Schemas eingeben:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:178
 msgid "A keybinding theme with the same name already exists"
@@ -822,7 +823,7 @@ msgstr "Fenstermanagereinstellungen"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 Fenstermanagereinstellungen"
+msgstr "Xfce-4-Fenstermanagereinstellungen"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
@@ -830,7 +831,7 @@ msgstr "Weitere Einstellungen"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Xfce 4 Fenstermanager-Tweaks"
+msgstr "Xfce-4-Fenstermanager-Tweaks"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
@@ -838,7 +839,7 @@ msgstr "Arbeitsflächeneinstellungen"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 Arbeitsflächeneinstellungen"
+msgstr "Xfce-4-Arbeitsflächeneinstellungen"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Unbekannte Anwendung!"
