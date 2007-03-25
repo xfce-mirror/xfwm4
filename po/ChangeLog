@@ -1,5 +1,6 @@
 2007-03-25  Daichi Kawahata <daichi@xfce.org>
 
+	* gl.po: Fixed header.
 	* mk.po: Removed executable attribute.
 
 2007-03-25  Maximilian Schleiss <maxschleiss@bluewin.ch>
