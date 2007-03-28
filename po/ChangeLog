@@ -1,3 +1,10 @@
+2007-03-28  Maximilian Schleiss <maxschleiss@bluewin.ch>
+
+	* de.po: Minor fixes to the German translation
+	by Nico Schümann <nico@prog.nico22.de>
+	* en_GB.po: Updated the British translation
+	by Jeff Bailes <thepizzaking@gmail.com>
+
 2007-03-25  Daichi Kawahata <daichi@xfce.org>
 
 	* mk.po: Removed executable attribute.
