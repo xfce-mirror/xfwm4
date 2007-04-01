@@ -50,13 +50,19 @@
 #define PLUGIN_NAME "wmtweaks"
 #define BORDER 5
 
+typedef struct _ValuePair ValuePair;
+struct _ValuePair
+{
+    gchar *label;
+    gchar *value;
+};
+
 static void xfwm4_create_channel (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
 static gboolean is_running = FALSE;
 
 static gboolean borderless_maximize = TRUE;
-static gboolean bring_on_activate = TRUE;
 static gboolean cycle_minimum = TRUE;
 static gboolean cycle_hidden = TRUE;
 static gboolean cycle_workspaces = FALSE;
@@ -83,9 +89,10 @@ static int popup_opacity = 100;
 static int frame_opacity = 100;
 
 static char *easy_click = "Alt";
+static char *activate_action = "bring";
 /* 
+    "Xfwm/ActivateAction"
     "Xfwm/BorderlessMaximize"
-    "Xfwm/BringOnActivate"
     "Xfwm/CycleHidden"
     "Xfwm/CycleMinimum"
     "Xfwm/CycleWorkspaces"
@@ -176,6 +183,24 @@ cb_gint_changed (GtkWidget * widget, gpointer user_data)
 }
 
 static void
+cb_string_changed (GtkWidget * widget, gpointer user_data)
+{
+    gchar *value = (gchar *) user_data;
+    gchar *setting_name = NULL;
+    McsPlugin *mcs_plugin = NULL;
+
+    setting_name = (gchar *) g_object_get_data (G_OBJECT (widget), "setting-name");
+    mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT (widget), "mcs-plugin");
+
+    g_assert (setting_name);
+    g_assert (mcs_plugin);
+
+    mcs_manager_set_string (mcs_plugin->manager, setting_name, CHANNEL, value);
+    mcs_manager_notify (mcs_plugin->manager, CHANNEL);
+    write_options (mcs_plugin);
+}
+
+static void
 cb_menuitem_changed (GtkWidget * widget, gpointer user_data)
 {
     const gchar **value = user_data;
@@ -200,7 +225,7 @@ cb_menuitem_changed (GtkWidget * widget, gpointer user_data)
 
 static GtkWidget *
 create_gboolean_button (McsPlugin * mcs_plugin, const gchar * label, gchar * setting_name,
-    gboolean * value)
+                        gboolean * value)
 {
     GtkWidget *check_button;
     GtkWidget *label_widget;
@@ -222,7 +247,7 @@ create_gboolean_button (McsPlugin * mcs_plugin, const gchar * label, gchar * set
 
 static GtkWidget *
 create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label, const gchar * max_label,
-    gchar * setting_name, gint min, gint max, gint step, int *value)
+                  gchar * setting_name, gint min, gint max, gint step, int *value)
 {
     GtkObject *adjustment;
     GtkWidget *scale;
@@ -275,7 +300,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label
 
 static GtkWidget *
 create_option_menu (McsPlugin * mcs_plugin, const gchar *const values[],
-    const gchar * label, gchar * setting_name, gchar ** value)
+                    const gchar * label, gchar * setting_name, gchar ** value)
 {
     GtkWidget *hbox;
     GtkWidget *label_widget;
@@ -296,13 +321,14 @@ create_option_menu (McsPlugin * mcs_plugin, const gchar *const values[],
     gtk_box_pack_start (GTK_BOX (hbox), omenu, FALSE, TRUE, 2);
     gtk_widget_show (omenu);
 
-    for (n = 0; n < 12; n++)
+    n = 0;
+    while (values[n])
     {
-        gtk_combo_box_append_text (GTK_COMBO_BOX (omenu),
-				   (n == 11) ? gettext (values[n]) : values[n]);
+        gtk_combo_box_append_text (GTK_COMBO_BOX (omenu), gettext (values[n]));
 
         if (!g_ascii_strcasecmp (*value, values[n]))
             gtk_combo_box_set_active (GTK_COMBO_BOX (omenu), n);
+        n++;
     }
 
     g_object_set_data (G_OBJECT (omenu), "mcs-plugin", mcs_plugin);
@@ -311,6 +337,62 @@ create_option_menu (McsPlugin * mcs_plugin, const gchar *const values[],
     g_signal_connect (G_OBJECT (omenu), "changed", G_CALLBACK (cb_menuitem_changed), value);
 
     return (hbox);
+}
+
+static GtkWidget *
+create_string_radio_button (McsPlugin * mcs_plugin, const ValuePair const values[], 
+                            const gchar * label, gchar * setting_name, gchar ** value)
+{
+    GtkWidget *vbox1, *vbox2;
+    GtkWidget *frame;
+    GtkWidget *radio_button;
+    GtkWidget *label_widget;
+    GSList *group;
+    guint n;
+
+    vbox1 = gtk_vbox_new (FALSE, 0);
+    gtk_widget_show (vbox1);
+
+    label_widget = gtk_label_new (label);
+    gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment (GTK_MISC (label_widget), 0, 0.5);
+    gtk_label_set_line_wrap (GTK_LABEL (label_widget), TRUE);
+    gtk_box_pack_start (GTK_BOX (vbox1), label_widget, FALSE, TRUE, 2);
+    gtk_widget_show (label_widget);
+
+    vbox2 = gtk_vbox_new (FALSE, 0);
+    gtk_widget_show (vbox2);
+
+    frame = xfce_create_framebox_with_content (NULL, vbox2);
+    gtk_box_pack_start (GTK_BOX (vbox1), frame, FALSE, TRUE, 0);
+    gtk_widget_show (frame);
+
+    group = NULL;
+    n = 0;
+    while (values[n].label)
+    {
+        label_widget = gtk_label_new_with_mnemonic (values[n].label);
+        gtk_label_set_line_wrap (GTK_LABEL (label_widget), TRUE);
+        gtk_widget_show (label_widget);
+
+        radio_button = gtk_radio_button_new (group);
+        gtk_widget_show (radio_button);
+        group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radio_button));
+        gtk_container_add (GTK_CONTAINER (radio_button), label_widget);
+
+        if (!g_ascii_strcasecmp (*value, values[n].value))
+            gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radio_button), TRUE);
+
+        gtk_box_pack_start (GTK_BOX (vbox2), radio_button, FALSE, TRUE, 0);
+
+        g_object_set_data (G_OBJECT (radio_button), "setting-name", setting_name);
+        g_object_set_data (G_OBJECT (radio_button), "mcs-plugin", mcs_plugin);
+        g_signal_connect (G_OBJECT (radio_button), "toggled", G_CALLBACK (cb_string_changed), values[n].value);
+
+        n++;
+    }
+
+    return (vbox1);
 }
 
 #ifdef HAVE_COMPOSITOR
@@ -356,6 +438,7 @@ create_dialog (McsPlugin * mcs_plugin)
     GtkWidget *label;
     GtkWidget *vbox;
     GtkWidget *check_button;
+    GtkWidget *radio_buttons;
     GtkWidget *option_menu;
     GtkWidget *range;
     GtkWidget *action_area;
@@ -374,7 +457,15 @@ create_dialog (McsPlugin * mcs_plugin)
         "Mod3",
         "Mod4",
         "Mod5",
-        N_("None")
+        N_("None"),
+        NULL
+    };
+
+    static const ValuePair activate_list[] = {
+        {N_("Bring window on current workspace"), "bring"},
+        {N_("Switch to window's workspace"), "switch"},
+        {N_("Do nothing"), "none"},
+        {NULL, NULL}
     };
 
     dialog = g_new (Itf, 1);
@@ -436,16 +527,16 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (check_button);
 
     check_button =
-        create_gboolean_button (mcs_plugin, _("Bring window back on current workspace when activated"),
-        "Xfwm/BringOnActivate", &bring_on_activate);
-    gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
-    gtk_widget_show (check_button);
-
-    check_button =
         create_gboolean_button (mcs_plugin, _("Honor the standard ICCCM focus hint"),
         "Xfwm/FocusHint", &focus_hint);
     gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
+
+    radio_buttons = 
+        create_string_radio_button (mcs_plugin, activate_list, _("When a window raises itself:"), 
+                                    "Xfwm/ActivateAction", &activate_action);
+    gtk_box_pack_start (GTK_BOX (vbox), radio_buttons, FALSE, TRUE, 0);
+    gtk_widget_show (radio_buttons);
 
     label = gtk_label_new (_("Focus"));
     gtk_widget_show (label);
@@ -756,7 +847,6 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     g_free (rcfile);
 
     init_gboolean_setting (mcs_plugin, "Xfwm/BorderlessMaximize", &borderless_maximize);
-    init_gboolean_setting (mcs_plugin, "Xfwm/BringOnActivate", &bring_on_activate);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleMinimum", &cycle_minimum);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleHidden", &cycle_hidden);
     init_gboolean_setting (mcs_plugin, "Xfwm/CycleWorkspaces", &cycle_workspaces);
@@ -782,6 +872,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_int_setting (mcs_plugin, "Xfwm/ResizeOpacity", &resize_opacity);
     init_int_setting (mcs_plugin, "Xfwm/PopupOpacity", &popup_opacity);
 
+    init_string_setting (mcs_plugin, "Xfwm/ActivateAction", &activate_action);
     init_string_setting (mcs_plugin, "Xfwm/EasyClick", &easy_click);
 }
 

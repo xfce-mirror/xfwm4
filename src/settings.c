@@ -157,6 +157,26 @@ set_easy_click (ScreenInfo *screen_info, char *modifier)
 }
 
 static void
+set_activate_action (ScreenInfo *screen_info, const char *value)
+{
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (value != NULL);
+
+    if (!g_ascii_strcasecmp ("bring", value))
+    {
+        screen_info->params->activate_action = ACTIVATE_ACTION_BRING;
+    }
+    else if (!g_ascii_strcasecmp ("switch", value))
+    {
+        screen_info->params->activate_action = ACTIVATE_ACTION_SWITCH;
+    }
+    else
+    {
+        screen_info->params->activate_action = ACTIVATE_ACTION_NONE;
+    }
+}
+
+static void
 notify_cb (const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
 {
     ScreenInfo *screen_info;
@@ -368,10 +388,6 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                         screen_info->params->borderless_maximize = setting->data.v_int;
                         reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
                     }
-                    else if (!strcmp (name, "Xfwm/BringOnActivate"))
-                    {
-                        screen_info->params->bring_on_activate = setting->data.v_int;
-                    }
                     else if (!strcmp (name, "Xfwm/CycleMinimum"))
                     {
                         screen_info->params->cycle_minimum = setting->data.v_int;
@@ -481,6 +497,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     if (!strcmp (name, "Xfwm/EasyClick"))
                     {
                         reloadScreenSettings (screen_info, UPDATE_BUTTON_GRABS);
+                    }
+                    else if (!strcmp (name, "Xfwm/ActivateAction"))
+                    {
+                        set_activate_action (screen_info, setting->data.v_string);
                     }
                 }
                 break;
@@ -739,16 +759,16 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
         }
 
         /* Tweaks channel */
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ActivateAction", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setValue ("activate_action", setting->data.v_string, rc);
+            mcs_setting_free (setting);
+        }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/BorderlessMaximize", CHANNEL5,
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("borderless_maximize", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/BringOnActivate", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("bring_on_activate", setting->data.v_int, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleMinimum", CHANNEL5,
@@ -1296,6 +1316,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
 gboolean
 loadSettings (ScreenInfo *screen_info)
 {
+    const gchar *value;
     Settings rc[] = {
         /* Do not change the order of the following parameters */
         {"active_text_color", NULL, FALSE},
@@ -1321,10 +1342,10 @@ loadSettings (ScreenInfo *screen_info)
         {"inactive_shadow_2", NULL, FALSE},
         {"inactive_mid_2", NULL, FALSE},
         /* You can change the order of the following parameters */
+        {"activate_action", NULL, TRUE},
         {"borderless_maximize", NULL, TRUE},
         {"box_move", NULL, TRUE},
         {"box_resize", NULL, TRUE},
-        {"bring_on_activate", NULL, TRUE},
         {"button_layout", NULL, TRUE},
         {"button_offset", NULL, TRUE},
         {"button_spacing", NULL, TRUE},
@@ -1469,8 +1490,6 @@ loadSettings (ScreenInfo *screen_info)
         !g_ascii_strcasecmp ("true", getValue ("box_resize", rc));
     screen_info->params->box_move =
         !g_ascii_strcasecmp ("true", getValue ("box_move", rc));
-    screen_info->params->bring_on_activate =
-        !g_ascii_strcasecmp ("true", getValue ("bring_on_activate", rc));
     screen_info->params->click_to_focus =
         !g_ascii_strcasecmp ("true", getValue ("click_to_focus", rc));
     screen_info->params->cycle_minimum =
@@ -1532,22 +1551,26 @@ loadSettings (ScreenInfo *screen_info)
     set_settings_margin (screen_info, STRUTS_TOP,    TOINT (getValue ("margin_top", rc)));
 
     set_easy_click (screen_info, getValue ("easy_click", rc));
+    
+    value = getValue ("activate_action", rc);
+    set_activate_action (screen_info, value);
 
-    if (!g_ascii_strcasecmp ("shade", getValue ("double_click_action", rc)))
+    value = getValue ("double_click_action", rc);
+    if (!g_ascii_strcasecmp ("shade", value))
     {
-        screen_info->params->double_click_action = ACTION_SHADE;
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_SHADE;
     }
-    else if (!g_ascii_strcasecmp ("hide", getValue ("double_click_action", rc)))
+    else if (!g_ascii_strcasecmp ("hide", value))
     {
-        screen_info->params->double_click_action = ACTION_HIDE;
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_HIDE;
     }
-    else if (!g_ascii_strcasecmp ("maximize", getValue ("double_click_action", rc)))
+    else if (!g_ascii_strcasecmp ("maximize", value))
     {
-        screen_info->params->double_click_action = ACTION_MAXIMIZE;
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_MAXIMIZE;
     }
     else
     {
-        screen_info->params->double_click_action = ACTION_NONE;
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_NONE;
     }
 
     if (screen_info->workspace_count < 0)
