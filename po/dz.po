@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-09 20:49+0200\n"
+"POT-Creation-Date: 2007-04-01 16:23+0200\n"
 "PO-Revision-Date: 2006-10-26 20:28+0530\n"
 "Last-Translator: sonam rinchen <somindruk@druknet.bt>\n"
 "Language-Team: dzongkha <pgeyleg@dit.gov.bt>\n"
@@ -53,7 +53,7 @@ msgstr "ཨེབ་རྟའི་ཁ་ཡིག་|ལཱ་གི་ས་�
 msgid "Workspaces and Margins"
 msgstr "ལཱ་གི་ས་སྒོ་ཚུ་དང་ས་སྟོང་ཚུ།"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:623
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "ལཱ་གི་ས་སྒོ་ཚུ།"
@@ -62,160 +62,184 @@ msgstr "ལཱ་གི་ས་སྒོ་ཚུ།"
 msgid "Margins"
 msgstr "ས་སྟོང་ཚུ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:373
+#: ../mcs-plugin/wmtweaks_plugin.c:460
 msgid "None"
 msgstr "ཅི་མེད།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:381
+#: ../mcs-plugin/wmtweaks_plugin.c:465
+#, fuzzy
+msgid "Bring window on current workspace"
+msgstr "ཤུལ་མམ་གྱི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:466
+#, fuzzy
+msgid "Switch to window's workspace"
+msgstr "ལཱ་གི་ས་སྒོ་ %d ལུ་སྒོ་སྒྲིག་བཤུད།"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:467
+#, fuzzy
+msgid "Do nothing"
+msgstr "ག་ནི་ཡང་མེདཔ།"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:476
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ་གཅུཝ་ཨིན།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:400
+#: ../mcs-plugin/wmtweaks_plugin.c:495
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr "\"skip pager\" ཡང་ན་ \"skip taskbar\" རྒཡུ་དངོས་ཚུའི་ཆ་ཚན་ཡོད་མི་ཝིན་ཌོསི་གོམ་འགྱོ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:406
+#: ../mcs-plugin/wmtweaks_plugin.c:501
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "གསང་བ་ (i.e. ངོས་དཔར་བཟོ་ཡོད་མི་) ཝིན་ཌོསི་གྲངས་སུ་བཙུགས།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:412
+#: ../mcs-plugin/wmtweaks_plugin.c:507
 msgid "Cycle through windows from all workspaces"
 msgstr "ལཱ་གི་ས་སྒོ་ཚུ་ཆ་མཉམ་ལས་སྒོ་སྒྲིག་ཚུ་བརྒྱུད་དེ་བསྐྱར་འཁོར།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:417
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Cycling"
 msgstr "བསྐྱར་འཁོར་འབད་དོ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:429
+#: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Activate focus stealing prevention"
 msgstr "ཆེད་དམིགས་ཨར་རྐུན་བཀག་ཐབས་ཤུགས་ལྡན་བཟོ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:435
+#: ../mcs-plugin/wmtweaks_plugin.c:530
 msgid "Honor the standard ICCCM focus hint"
 msgstr "ཚད་ལྡན་ཨའི་སི་སི་སི་ཨེམ་ཆེད་དམིགས་བརྡ་མཚོན་བརྩི་འཇོག་འབད།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/wmtweaks_plugin.c:536
+msgid "When a window raises itself:"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
 msgstr "ཆེད་དམིགས།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:452
+#: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "Key used to grab and move windows"
 msgstr "ཝིན་ཌོསི་འཛིན་ནི་དང་བཤུད་ནི་ལུ་ལག་ལེན་འཐབ་མི་ ལྡེ་མིག།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:458
+#: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Raise windows when any mouse button is pressed"
 msgstr "མཱའུསི་ཨེབ་རྟ་གང་རུང་ཅིག་ཨེབ་པའི་སྐབས་ཝིན་ཌོསི་ཆེར་བསྐྱེད་འབད།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:465
+#: ../mcs-plugin/wmtweaks_plugin.c:566
 msgid "Hide frame of windows when maximized"
 msgstr "སྦོམ་བཟོ་བའི་སྐབས་ཝིན་ཌོསི་གི་གཞི་ཁྲམ་སྦ་བཞག།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Restore original size of maximized windows when moving"
 msgstr "སྤོ་བཤུད་འབད་བའི་སྐབས་སྦོམ་བཟོ་ཡོད་མི་ཝིན་ཌོསི་གི་ཚད་ངོ་མ་སོར་ཆུད་འབད།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:478
+#: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Use edge resistance instead of windows snapping"
 msgstr "ཝིན་ཌོསི་པར་བཏབ་ནིའི་ཚབ་ལུ་བཀག་ནུས་ཀྱི་མཐའམ་ལག་ལེན་འཐབ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:483
+#: ../mcs-plugin/wmtweaks_plugin.c:584
 msgid "Accessibility"
 msgstr "འཛུལ་སྤྱོད།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:496
+#: ../mcs-plugin/wmtweaks_plugin.c:597
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "ཌེཀསི་ཊོཔ་གི་ལྟག་ལས་མཱའུསི་འཁོར་ལོ་ལག་ལེན་འཐབ་ཐོག་ལས་ལཱ་གི་ས་སྒོ་ཚུ་སོར་བསྒྱུར་འབད།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:503
+#: ../mcs-plugin/wmtweaks_plugin.c:604
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "ལྡེ་སྒྲོམ་མགྱོགས་ཐབས་ཚུ་བརྒྱུད་དེ་སོར་བསྒྱུར་འབད་བའི་སྐབས་ཧེ་མའི་ལཱ་གི་ས་སྒོ་སླར་དྲན་ཡང་ན་སེམས་ཁར་བཞག།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:510
+#: ../mcs-plugin/wmtweaks_plugin.c:611
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "ཌེཀསི་ཊོཔ་སྒྲིག་བཀོད་ངོ་མ་ལུ་བརྟེན་ཏེ་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:517
+#: ../mcs-plugin/wmtweaks_plugin.c:618
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "དང་པམ་ཡང་ན་མཇུག་གི་ལཱ་གི་ས་སྒོ་ཚུ་ལྷོད་པའི་སྐབས་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:534
+#: ../mcs-plugin/wmtweaks_plugin.c:635
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "སྤུར་བསྒྱིར་དྲགས་བཙུགས་བཞག་འབྱུང་སག་ས་འབད་ནི་ལུ་ཝིན་ཌོསི་གི་ཉུང་མཐའི་ཚད།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:636
 msgid "Size|Small"
 msgstr "ཚད་|ཆུང་ཀུ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:636
 msgid "Size|Large"
 msgstr "ཚད་|སྦོམ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:539
+#: ../mcs-plugin/wmtweaks_plugin.c:640
 msgid "Placement"
 msgstr "བཙུགས་བཞག།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:660
 msgid "Enable display compositing"
 msgstr "བཀྲམ་སྟོན་རྩོམ་བྲིས་འབད་ནི་ལྕོགས་ཅན་བཟོ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:573
+#: ../mcs-plugin/wmtweaks_plugin.c:674
 msgid "Display full screen overlay windows directly"
 msgstr "གསལ་གཞི་གངམ་སྤུར་ཁེབས་ཝིན་ཌོསི་ཐད་ཀར་དུ་བཀྲམ་སྟོན་འབད།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:579
+#: ../mcs-plugin/wmtweaks_plugin.c:680
+#, fuzzy
+msgid "Show shadows under dock windows"
+msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:686
 msgid "Show shadows under regular windows"
 msgstr "དུས་རྒཡུན་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:585
+#: ../mcs-plugin/wmtweaks_plugin.c:692
 msgid "Show shadows under popup windows"
 msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:591
+#: ../mcs-plugin/wmtweaks_plugin.c:698
 msgid "Opacity of window decorations"
 msgstr "སྒོ་སྒྲིག་མཛེས་བཀོད་ཚུ་གི་དྭངས་སྒྲིབ་"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
-#: ../mcs-plugin/wmtweaks_plugin.c:603 ../mcs-plugin/wmtweaks_plugin.c:609
-#: ../mcs-plugin/wmtweaks_plugin.c:615
+#: ../mcs-plugin/wmtweaks_plugin.c:698 ../mcs-plugin/wmtweaks_plugin.c:704
+#: ../mcs-plugin/wmtweaks_plugin.c:710 ../mcs-plugin/wmtweaks_plugin.c:716
+#: ../mcs-plugin/wmtweaks_plugin.c:722
 msgid "Transparent"
 msgstr "དྭངས་གསལ་ཅན།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:592 ../mcs-plugin/wmtweaks_plugin.c:598
-#: ../mcs-plugin/wmtweaks_plugin.c:604 ../mcs-plugin/wmtweaks_plugin.c:610
-#: ../mcs-plugin/wmtweaks_plugin.c:616
+#: ../mcs-plugin/wmtweaks_plugin.c:699 ../mcs-plugin/wmtweaks_plugin.c:705
+#: ../mcs-plugin/wmtweaks_plugin.c:711 ../mcs-plugin/wmtweaks_plugin.c:717
+#: ../mcs-plugin/wmtweaks_plugin.c:723
 msgid "Opaque"
 msgstr "དྭངས་སྒྲིབ་ཅན།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:704
 msgid "Opacity of inactive windows"
 msgstr "ཤུགས་མེད་ཝིན་ཌོསི་གི་དྭངས་སྒྲིབ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:603
+#: ../mcs-plugin/wmtweaks_plugin.c:710
 msgid "Opacity of windows during move"
 msgstr "ཝིན་ཌོསི་སྤོ་བཤུད་འབད་བའི་སྐབས་ཀྱི་དྭངས་སྒྲིབ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:609
+#: ../mcs-plugin/wmtweaks_plugin.c:716
 msgid "Opacity of windows during resize"
 msgstr "ཝིན་ཌོསི་ཚད་བསྐྱར་བཟོ་འབད་བའི་སྐབས་ཀྱི་དྭངས་སྒྲིབ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:615
+#: ../mcs-plugin/wmtweaks_plugin.c:722
 msgid "Opacity of popup windows"
 msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་དྭངས་སྒྲིབ།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:620
+#: ../mcs-plugin/wmtweaks_plugin.c:727
 msgid "Compositor"
 msgstr "རྩོམ་བྲིས་པ།"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:662
+#: ../mcs-plugin/wmtweaks_plugin.c:769
 msgid "Button Label|Window Manager Tweaks"
 msgstr "ཨེབ་རྟའི་ཁ་ཡིག་|སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ་གཅུཝ་ཨིན།"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
+#: ../mcs-plugin/wmtweaks_plugin.c:890 ../mcs-plugin/xfwm4_plugin.c:2425
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "སྒྲིག་སྟངས་འདི་ཚུ་ཁྱོད་ཀྱི་ད་ལྟོའི་སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ་ (%s)གཅིག་ཁར་ལཱ་འབད་མི་བཏུབ།"
@@ -224,7 +248,7 @@ msgstr "སྒྲིག་སྟངས་འདི་ཚུ་ཁྱོད་ཀ
 msgid "Change name"
 msgstr "མིང་བསྒྱུར་བཅོས་འབད།"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:480
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
 #, c-format
 msgid "Workspace %d"
 msgstr "ལཱ་གི་ས་སྒོ་ %d"
@@ -269,221 +293,226 @@ msgstr "སྦོམ་བཟོ་ནི།"
 msgid "Close"
 msgstr "ཁ་བསྡམས།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Shade window"
 msgstr "ནག་གྲིབ་སྒོ་སྒྲིག།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Hide window"
 msgstr "སྒོ་སྒྲིག་སྦ་བཞག།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window"
 msgstr "སྒོ་སྒྲིག་སྦོམ་བཟོ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_plugin.c:82
 msgid "Nothing"
 msgstr "ག་ནི་ཡང་མེདཔ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:86
+#: ../mcs-plugin/xfwm4_plugin.c:87
 msgid "Left"
 msgstr "གཡོན།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
+#: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Center"
 msgstr "དབུས།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Right"
 msgstr "གཡས།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:588
 msgid "Click and drag buttons to change the layout"
 msgstr "སྒྲིག་བཀོད་བསྒྱུར་བཅོས་འབད་ནི་ལུ་ཨེབ་གཏང་ཞིནམ་དང་ཨེབ་རྟ་ཚུ་འདྲུད།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:579
+#: ../mcs-plugin/xfwm4_plugin.c:593
 msgid "Active"
 msgstr "ཤུགས་ལྡན།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:590
+#: ../mcs-plugin/xfwm4_plugin.c:604
 msgid "Title"
 msgstr "མགོ་མིང་།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:591
+#: ../mcs-plugin/xfwm4_plugin.c:605
 msgid "The window title, it cannot be removed"
 msgstr "སྒོ་སྒྲིག་མགོ་མིང་ དེ་རྩ་བསྐྲད་གཏང་མི་ཚུགས།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:599
+#: ../mcs-plugin/xfwm4_plugin.c:617
 msgid "Hidden"
 msgstr "གསང་བ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1359
+#: ../mcs-plugin/xfwm4_plugin.c:1390
 msgid "Font Selection Dialog"
 msgstr "ཡིག་གཟུགས་སེལ་འཐུའི་ཌའི་ལོག།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1424
+#: ../mcs-plugin/xfwm4_plugin.c:1455
 msgid "Window Manager"
 msgstr "སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1464
+#: ../mcs-plugin/xfwm4_plugin.c:1495
 msgid "Title font"
 msgstr "མགོ་མིང་ཡིག་གཟུགས།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1473
+#: ../mcs-plugin/xfwm4_plugin.c:1504
 msgid "Title Alignment"
 msgstr "མགོ་མིང་ཕྲང་སྒྲིག།"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1475
+#: ../mcs-plugin/xfwm4_plugin.c:1506
 msgid "Text alignment inside title bar :"
 msgstr "མགོ་མིང་ཕྲ་རིང་ནང་ལུ་ཚིག་ཡིག་ཕརང་སྒྲིག་:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1481
+#: ../mcs-plugin/xfwm4_plugin.c:1512
 msgid "Button layout"
 msgstr "ཨེབ་རྟ་ཤཝསྒྲིག་བཀོད།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1486
+#: ../mcs-plugin/xfwm4_plugin.c:1517
 msgid "Style"
 msgstr "བཟོ་རྣམ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1534
+#: ../mcs-plugin/xfwm4_plugin.c:1565
 msgid "Window shortcuts"
 msgstr "སྒོ་སྒྲིག་མགྱོགས་ཐབས་ཚུ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1548
+#: ../mcs-plugin/xfwm4_plugin.c:1579
 msgid "Command"
 msgstr "བརྡ་བཀོད།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1554
+#: ../mcs-plugin/xfwm4_plugin.c:1585
 msgid "Shortcut"
 msgstr "མགྱོགས་ཐབས།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1571
+#: ../mcs-plugin/xfwm4_plugin.c:1602
 msgid "Keyboard"
 msgstr "ལྡེ་སྒྲོམ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1586
+#: ../mcs-plugin/xfwm4_plugin.c:1617
 msgid "Focus model"
 msgstr "ཆེད་དམིགས་ཀྱི་དཔེ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1590
+#: ../mcs-plugin/xfwm4_plugin.c:1621
 msgid "Click to focus"
 msgstr "ཆེད་དམིགས་ཚུ་ལུ་ཨེབ་གཏང་།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1600
+#: ../mcs-plugin/xfwm4_plugin.c:1631
 msgid "Focus follows mouse"
 msgstr "ཆེད་དམིགས་གིས་མཱའུསི་རྗེས་སུ་འབྲངམ་ཨིན།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1611
-msgid "Automatically give focus to newly created windows"
-msgstr "གསརཔ་སྦེ་གསར་བསྐྲུན་འབད་ཡོད་པའི་ཝིན་ཌོསི་ལུ་རང་བཞིན་གྱིས་ཆེད་དམིགས་བྱིན།"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1615
-msgid "New window focus"
-msgstr "སྒོ་སྒྲིག་ཆེད་དམིགས་གསརཔ་ཚུ།"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1622
-msgid "Raise on focus"
-msgstr "ཆེད་དམིགས་གུ་ཆེར་བསྐྱེད་འབད།"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1628
-msgid "Automatically raise windows when they receive focus"
-msgstr "ཝིན་ཌོསི་གིས་ཆེད་དམིགས་འཐོབ་པའི་སྐབས་རང་བཞིན་གྱིས་ཝིན་ཌོསི་ཆེད་དམིགས་འབད།"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1638
-msgid "Delay before raising focused window :"
+#: ../mcs-plugin/xfwm4_plugin.c:1644
+#, fuzzy
+msgid "Delay before window receives focus"
 msgstr "ཆེད་དམིགས་འབད་ཡོད་པའི་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་མ་འབད་བའི་ཧེ་མ་ཕྱིར་འགྱངས་འབད་:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1645
+#: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
 msgid "Slow"
 msgstr "ལྷོད་ཆ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1652
+#: ../mcs-plugin/xfwm4_plugin.c:1660 ../mcs-plugin/xfwm4_plugin.c:1722
 msgid "Fast"
 msgstr "མགྱོགས་དྲགས།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1673
+#: ../mcs-plugin/xfwm4_plugin.c:1681
+msgid "Automatically give focus to newly created windows"
+msgstr "གསརཔ་སྦེ་གསར་བསྐྲུན་འབད་ཡོད་པའི་ཝིན་ཌོསི་ལུ་རང་བཞིན་གྱིས་ཆེད་དམིགས་བྱིན།"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1685
+msgid "New window focus"
+msgstr "སྒོ་སྒྲིག་ཆེད་དམིགས་གསརཔ་ཚུ།"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1692
+msgid "Raise on focus"
+msgstr "ཆེད་དམིགས་གུ་ཆེར་བསྐྱེད་འབད།"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1698
+msgid "Automatically raise windows when they receive focus"
+msgstr "ཝིན་ཌོསི་གིས་ཆེད་དམིགས་འཐོབ་པའི་སྐབས་རང་བཞིན་གྱིས་ཝིན་ཌོསི་ཆེད་དམིགས་འབད།"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1708
+msgid "Delay before raising focused window :"
+msgstr "ཆེད་དམིགས་འབད་ཡོད་པའི་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་མ་འབད་བའི་ཧེ་མ་ཕྱིར་འགྱངས་འབད་:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1743
 msgid "Raise window when clicking inside application window"
 msgstr "གློག་རིམ་སྒོ་སྒྲིག་ནང་ལུ་ཨེབ་གཏང་པའི་སྐབས་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་འབད།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1677
+#: ../mcs-plugin/xfwm4_plugin.c:1747
 msgid "Raise on click"
 msgstr "ཨེབ་གཏང་གུ་ཆེར་བསྐྱེད་འབད།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/xfwm4_plugin.c:1765
 msgid "Windows snapping"
 msgstr "ཝིན་ཌོསི་པར་བཏབ་དོ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1700
+#: ../mcs-plugin/xfwm4_plugin.c:1770
 msgid "Snap windows to screen border"
 msgstr "གསལ་གཞིའི་མཐའ་མཚམས་ལུ་ཝིན་ཌོསི་པར་བཏབ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1706
+#: ../mcs-plugin/xfwm4_plugin.c:1776
 msgid "Snap windows to other windows"
 msgstr "གཞན་ཝིན་ཌོསི་ལུ་ཝིན་ཌོསི་པར་བཏབ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1717
+#: ../mcs-plugin/xfwm4_plugin.c:1787
 msgid "Distance :"
 msgstr "གྱང་ཚད་:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1724
+#: ../mcs-plugin/xfwm4_plugin.c:1794
 msgid "Distance|Small"
 msgstr "གྱང་ཚད་|ཆུང་ཀུ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1731
+#: ../mcs-plugin/xfwm4_plugin.c:1801
 msgid "Distance|Wide"
 msgstr "གྱང་ཚད་|རྒྱ་ཅན།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1752
+#: ../mcs-plugin/xfwm4_plugin.c:1822
 msgid "Wrap workspaces"
 msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་ལོག་མཚམས་བཟོ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1758
+#: ../mcs-plugin/xfwm4_plugin.c:1828
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "གསལ་གཞིའི་མཐའམ་ལུ་དཔག་བྱེད་ལྷོད་པའི་སྐབས་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1766
+#: ../mcs-plugin/xfwm4_plugin.c:1836
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "སྒོ་སྒྲིག་ཅིག་གསལ་གཞི་གི་ཕྱི་ཁར་འདྲུད་པའི་སྐབས་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1776
+#: ../mcs-plugin/xfwm4_plugin.c:1846
 msgid "Edge Resistance :"
 msgstr "བཀག་ནུས་ཀྱི་མཐའམ་:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1783
+#: ../mcs-plugin/xfwm4_plugin.c:1853
 msgid "Resistance|Small"
 msgstr "བཀག་ནུས་|ཆུང་ཀུ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1790
+#: ../mcs-plugin/xfwm4_plugin.c:1860
 msgid "Resistance|Wide"
 msgstr "བཀག་ནུས་|རྒྱ་ཅན།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1812
+#: ../mcs-plugin/xfwm4_plugin.c:1882
 msgid "Opaque move and resize"
 msgstr "དྭངས་སྒྲིབ་ཅན་སྤོ་བཤུད་དང་ཚད་བསྐྱར་བཟོ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1817
+#: ../mcs-plugin/xfwm4_plugin.c:1887
 msgid "Display content of windows when resizing"
 msgstr "ཚད་བསྐྱར་བཟོ་འབད་བའི་སྐབས་ཝིན་ཌོསི་གི་ནང་དོན་བཀྲམ་སྟོན་འབད།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1823
+#: ../mcs-plugin/xfwm4_plugin.c:1893
 msgid "Display content of windows when moving"
 msgstr "སྤོ་བཤུད་འབད་བའི་སྐབས་ཝིན་ཌོསི་གི་ནང་དོན་བཀྲམ་སྟོན་འབད།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1828
+#: ../mcs-plugin/xfwm4_plugin.c:1898
 msgid "Double click action"
 msgstr "ཐེངས་གཉིས་ཨེབ་གཏང་བྱ་བ།"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1830
+#: ../mcs-plugin/xfwm4_plugin.c:1900
 msgid "Action to perform when double clicking on title bar :"
 msgstr "མགོ་མིང་ཕྲ་རིང་གུ་ཨེབ་གཏང་པའི་སྐབས་ལཱ་འགན་གྲུབ་ནི་ལུ་བྱ་བ་:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1835
+#: ../mcs-plugin/xfwm4_plugin.c:1905
 msgid "Advanced"
 msgstr "མཐོ་རིམ།"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1974
+#: ../mcs-plugin/xfwm4_plugin.c:2046
 msgid "Button Label|Window Manager"
 msgstr "ཨེབ་རྟའི་ཁ་ཡིག་|སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ།"
 
@@ -492,168 +521,168 @@ msgid "Do you really want to remove this keybinding theme ?"
 msgstr "ཁྱོད་ཀྱིས་ཀི་བཱའིན་ཌིང་བརྗོད་དོན་འདི་ཐད་རི་འབའ་རི་རྩ་བསྐྲད་གཏང་ནི་ཨིན་ན?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:139
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Add keybinding theme"
 msgstr "ཀི་བཱའིན་ཌིང་བརྗོད་དོན་ཁ་སྐོང་རྐྱབས།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
 msgid "Enter a name for the theme:"
 msgstr "བརྗོད་དོན་གྱི་དོན་ལས་མིང་བཙུགས་:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:178
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
 msgid "A keybinding theme with the same name already exists"
 msgstr "མིང་གཅིག་པ་ཡོད་མི་ཀི་བཱའིན་ཌིང་བརྗོད་དོན་ཧེ་མ་ལས་ཡོད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:184
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
 msgid "You have to provide a name for the keybinding theme"
 msgstr "ཁྱོད་ཀྱིས་ཀི་བཱའིན་ཌིང་བརྗོད་དོན་གྱི་དོན་ལས་མིང་བྱིན་དགོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Close window"
 msgstr "སྒོ་སྒྲིག་ཁ་བསྡམས།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Maximize window vertically"
 msgstr "སྒོ་སྒྲིག་ཀེར་ཕྲང་སྦེ་སྦོམ་བཟོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Maximize window horizontally"
 msgstr "སྒོ་སྒྲིག་ཐད་སྙོམས་སྦེ་སྦོམ་བཟོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Stick window"
 msgstr "སྒོ་སྒྲིག་སྦྱཡ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Cycle windows"
 msgstr "བསྐྱར་འཁོར་ཝིན་ཌོསི།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Move window up"
 msgstr "སྒོ་སྒྲིག་ཡར་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Move window down"
 msgstr "སྒོ་སྒྲིག་མར་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Move window left"
 msgstr "སྒོ་སྒྲིག་གཡོན་ལུ་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Move window right"
 msgstr "སྒོ་སྒྲིག་གཡས་ལུ་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Resize window up"
 msgstr "སྒོ་སྒྲིག་ཡར་ཚད་བསྐྱར་བཟོ་འབད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Resize window down"
 msgstr "སྒོ་སྒྲིག་མར་ཚད་བསྐྱར་བཟོ་འབད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Resize window left"
 msgstr "སྒོ་སྒྲིག་གཡོན་ལུ་ཚད་བསྐྱར་བཟོ་འབད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Resize window right"
 msgstr "སྒོ་སྒྲིག་གཡས་ལུ་ཚད་བསྐྱར་བཟོ་འབད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Cancel move/resize window"
 msgstr "སྤོ་བཤུད་ཆ་མེད་གཏང་/སྒོ་སྒྲིག་ཚད་བསྐྱར་བཟོ་འབད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Raise window"
 msgstr "སྒོ་སྒྲིག་ཆེར་བསྐྱེད་འབད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Lower window"
 msgstr "འོག་གི་སྒོ་སྒྲིག།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Toggle fullscreen"
 msgstr "གསལ་གཞི་གངམ་སོར་སྟོན་འབད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Upper workspace"
 msgstr "ཡར་གྱི་ལཱ་གི་ས་སྒོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Bottom workspace"
 msgstr "གཤམ་གི་ལཱ་གི་ས་སྒོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Left workspace"
 msgstr "གཡོན་གྱི་ལཱ་གི་ས་སྒོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Right workspace"
 msgstr "གཡས་ཀྱི་ལཱ་གི་ས་སྒོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Next workspace"
 msgstr "ཤུལ་མམ་གྱི་ལཱ་གི་ས་སྒོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Previous workspace"
 msgstr "ཧེ་མའི་ལཱ་གི་ས་སྒོ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Add workspace"
 msgstr "ལཱ་གི་ས་སྒོ་ཁ་སྐོང་རྐྱབས།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Delete workspace"
 msgstr "ལཱ་གི་ས་སྒོ་བཏོན་གཏང་།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Move window to next workspace"
 msgstr "ཤུལ་མམ་གྱི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Move window to previous workspace"
 msgstr "ཧེ་མའི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Move window to upper workspace"
 msgstr "མགོ་གི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Move window to bottom workspace"
 msgstr "གཤམ་གྱི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Move window to left workspace"
 msgstr "གཡོན་གྱི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Move window to right workspace"
 msgstr "གཡས་ཀྱི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Show desktop"
 msgstr "ཌེཀསི་ཊོཔ་སྟོན།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 msgid "Cancel window action"
 msgstr "སྒོ་སྒྲིག་གི་བྱ་བ་ཆ་མེད་གཏང་།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
 msgid "Window operations menu"
 msgstr "སྒོ་སྒྲིག་བཀོལ་སྤྱོད་ཚུའི་དཀར་ཆག།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:501
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "ལཱ་གི་ས་སྒོ་ %d ལུ་སྒོ་སྒྲིག་བཤུད།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:581
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
 msgid "Cannot open the theme directory !"
 msgstr "བརྗོད་དོན་སྣོད་ཐོ་ཁ་ཕྱེ་མི་ཚུགས་!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:600
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -662,8 +691,8 @@ msgstr ""
 "%s ཁ་ཕྱེ་མི་ཚུགས་: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:614
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:625
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -672,7 +701,7 @@ msgstr ""
 "%s ནང་འབྲི་མི་ཚུགས་: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -680,25 +709,29 @@ msgstr ""
 "མགྱོགས་ཐབས་ཧེ་མ་ལས་ལག་ལེན་འཐབ་ཡོད་!\n"
 "ཁྱོད་ཀྱིས་དེ་ལག་ལེན་འཐབ་ནི་ལུ་ངེས་གཏན་ཨིན་ན ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
 msgid "Compose shortcut for :"
 msgstr "གི་དོན་ལས་མགྱོགས་ཐབས་བརྩམ་:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "Compose shortcut"
 msgstr "མགྱོགས་ཐབས་བརྩམ།"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
+msgid "Cancel"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:860
 msgid "No shortcut"
 msgstr "མགྱོགས་ཐབས་མེད།"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:80
+#: ../src/hints.c:84
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (གུ་ %s)"
 
-#: ../src/main.c:132
+#: ../src/main.c:135
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: ཆ་བགོས་ཀྱི་སྐྱོན།"
@@ -782,12 +815,12 @@ msgstr "ལཱ་གི་ས་སྒོ་ %i "
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: ཇི་ཊི་ཀེ་དཀར་ཆག་འདི་དཔག་བྱེད་འཛིན་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ།\n"
 
-#: ../src/settings.c:902
+#: ../src/settings.c:953
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: ཚོས་གཞི་ %s སྤྲོད་མི་ཚུགས།\n"
 
-#: ../src/settings.c:908
+#: ../src/settings.c:959
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: ཚོས་གཞི་ %s མིང་དཔྱད་འབད་མི་ཚུགས།\n"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-05 10:39+0100\n"
+"POT-Creation-Date: 2007-04-01 16:23+0200\n"
 "PO-Revision-Date: 2007-01-20 05:20+0200\n"
 "Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
 "Language-Team: Belarusian <xfce-i18n@xfce.org>\n"
@@ -21,8 +21,11 @@ msgid "Workspace Margins"
 msgstr "Водступы працоўнае прасторы"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Водступы - гэта адмысловыя плошы па краёх экрана, дзе нельга разьмяшчаць вокны"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Водступы - гэта адмысловыя плошы па краёх экрана, дзе нельга разьмяшчаць "
+"вокны"
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
@@ -49,8 +52,7 @@ msgstr "Працоўныя прасторы"
 msgid "Workspaces and Margins"
 msgstr "Працоўныя прасторы й водсуты"
 
-#: ../mcs-plugin/workspaces_plugin.c:162
-#: ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:623
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Працоўныя прасторы"
@@ -59,163 +61,187 @@ msgstr "Працоўныя прасторы"
 msgid "Margins"
 msgstr "Водступы"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:373
+#: ../mcs-plugin/wmtweaks_plugin.c:460
 msgid "None"
 msgstr "Няма"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:381
+#: ../mcs-plugin/wmtweaks_plugin.c:465
+#, fuzzy
+msgid "Bring window on current workspace"
+msgstr "Перамясьціць вакно на наступную прастору"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:466
+#, fuzzy
+msgid "Switch to window's workspace"
+msgstr "Перамясьціць вакно на прастору %d"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:467
+#, fuzzy
+msgid "Do nothing"
+msgstr "Нічога"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:476
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Наладкі Кіраўніка вокнаў"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:400
-msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr "Абмінаць вокны, якія маюць уласьцівасьці \"абмінаць панэль задач\" і \"абмінаць вакно прастораў\""
+#: ../mcs-plugin/wmtweaks_plugin.c:495
+msgid ""
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr ""
+"Абмінаць вокны, якія маюць уласьцівасьці \"абмінаць панэль задач\" і "
+"\"абмінаць вакно прастораў\""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:406
+#: ../mcs-plugin/wmtweaks_plugin.c:501
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Уключыць схаваныя (найменшаныя) вокны"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:412
+#: ../mcs-plugin/wmtweaks_plugin.c:507
 msgid "Cycle through windows from all workspaces"
 msgstr "Кругазварот усіх вокнаў з усіх працоўных прастораў"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:417
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Cycling"
 msgstr "Кругазварот"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:429
+#: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Activate focus stealing prevention"
 msgstr "Абарона ад скраданьня засяроджаньня"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:435
+#: ../mcs-plugin/wmtweaks_plugin.c:530
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Паважаць стандарт засяроджаньня ICCCM"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:440
-#: ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/wmtweaks_plugin.c:536
+msgid "When a window raises itself:"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
 msgstr "Засяроджаньне"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:452
+#: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "Key used to grab and move windows"
 msgstr "Клявіша для захопу і перамяшчэньня вокнаў"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:458
+#: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Уздымаць вокны, калі націснута любая кнопка мышы"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:465
+#: ../mcs-plugin/wmtweaks_plugin.c:566
 msgid "Hide frame of windows when maximized"
 msgstr "Хаваць мяжу вакна, калі яно найбольшана"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:472
+#: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Restore original size of maximized windows when moving"
 msgstr "Аднаўляць зыходны памер найбольшаных вокнаў у час перамяшчэньня"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:478
+#: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Выкарыстоўваць супраціў межаў, замест прыцягненьня да вокнаў"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:483
+#: ../mcs-plugin/wmtweaks_plugin.c:584
 msgid "Accessibility"
 msgstr "Даступнасьць"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:496
+#: ../mcs-plugin/wmtweaks_plugin.c:597
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Пераключаць прасторы з дапамогай павароту кола мышы над Стальцом"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:503
-msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr "Запамінаць і выклікаць папярэднюю прастору, калі пераключэньне ідзе праз камбінацыю клявішаў"
+#: ../mcs-plugin/wmtweaks_plugin.c:604
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr ""
+"Запамінаць і выклікаць папярэднюю прастору, калі пераключэньне ідзе праз "
+"камбінацыю клявішаў"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:510
+#: ../mcs-plugin/wmtweaks_plugin.c:611
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Загортваньне прастораў у залежнасьці ад актуальнага разьмеркаваньня"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:517
+#: ../mcs-plugin/wmtweaks_plugin.c:618
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Крочыць паміж прасторамі, калі дасягаецца першая альбо апошняя"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:534
+#: ../mcs-plugin/wmtweaks_plugin.c:635
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Найменшы памер вакна, для задзейнічаньня разумнага разьмяшчэньня"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:636
 msgid "Size|Small"
 msgstr "Маленькі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:535
+#: ../mcs-plugin/wmtweaks_plugin.c:636
 msgid "Size|Large"
 msgstr "Вялікі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:539
+#: ../mcs-plugin/wmtweaks_plugin.c:640
 msgid "Placement"
 msgstr "Разьмяшчаньне"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:660
 msgid "Enable display compositing"
 msgstr "Уключыць кампазыцыйныя вокны"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:573
+#: ../mcs-plugin/wmtweaks_plugin.c:674
 msgid "Display full screen overlay windows directly"
 msgstr "Адлюстроўваць наўпрост вокны, што перакрываюць увесь экран"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:579
+#: ../mcs-plugin/wmtweaks_plugin.c:680
+#, fuzzy
+msgid "Show shadows under dock windows"
+msgstr "Паказваць цені пад раптоўнымі вокнамі"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:686
 msgid "Show shadows under regular windows"
 msgstr "Паказваць цені пад звычайнымі вокнамі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:585
+#: ../mcs-plugin/wmtweaks_plugin.c:692
 msgid "Show shadows under popup windows"
 msgstr "Паказваць цені пад раптоўнымі вокнамі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:591
+#: ../mcs-plugin/wmtweaks_plugin.c:698
 msgid "Opacity of window decorations"
 msgstr "Непразрыстыя межы вокнаў"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:591
-#: ../mcs-plugin/wmtweaks_plugin.c:597
-#: ../mcs-plugin/wmtweaks_plugin.c:603
-#: ../mcs-plugin/wmtweaks_plugin.c:609
-#: ../mcs-plugin/wmtweaks_plugin.c:615
+#: ../mcs-plugin/wmtweaks_plugin.c:698 ../mcs-plugin/wmtweaks_plugin.c:704
+#: ../mcs-plugin/wmtweaks_plugin.c:710 ../mcs-plugin/wmtweaks_plugin.c:716
+#: ../mcs-plugin/wmtweaks_plugin.c:722
 msgid "Transparent"
 msgstr "Празрыстыя"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:592
-#: ../mcs-plugin/wmtweaks_plugin.c:598
-#: ../mcs-plugin/wmtweaks_plugin.c:604
-#: ../mcs-plugin/wmtweaks_plugin.c:610
-#: ../mcs-plugin/wmtweaks_plugin.c:616
+#: ../mcs-plugin/wmtweaks_plugin.c:699 ../mcs-plugin/wmtweaks_plugin.c:705
+#: ../mcs-plugin/wmtweaks_plugin.c:711 ../mcs-plugin/wmtweaks_plugin.c:717
+#: ../mcs-plugin/wmtweaks_plugin.c:723
 msgid "Opaque"
 msgstr "Непразрыстыя"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:704
 msgid "Opacity of inactive windows"
 msgstr "Непразрыстасьць неактыўнага вакна"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:603
+#: ../mcs-plugin/wmtweaks_plugin.c:710
 msgid "Opacity of windows during move"
 msgstr "Непразрыстя вокны ў час перамяшчэньня"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:609
+#: ../mcs-plugin/wmtweaks_plugin.c:716
 msgid "Opacity of windows during resize"
 msgstr "Непразрыстыя вокны ў час зьмены памераў"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:615
+#: ../mcs-plugin/wmtweaks_plugin.c:722
 msgid "Opacity of popup windows"
 msgstr "Раптоўныя вокны зьяўляюцца непразрыстымі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:620
+#: ../mcs-plugin/wmtweaks_plugin.c:727
 msgid "Compositor"
 msgstr "Складальнік"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:662
+#: ../mcs-plugin/wmtweaks_plugin.c:769
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Хітрыкі вокнаў"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:781
-#: ../mcs-plugin/xfwm4_plugin.c:2342
+#: ../mcs-plugin/wmtweaks_plugin.c:890 ../mcs-plugin/xfwm4_plugin.c:2425
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Гэтыя настаўленьні ня могуць працаваць з бягучым кіраўніом вокнаў (%s)"
@@ -224,8 +250,7 @@ msgstr "Гэтыя настаўленьні ня могуць працаваць
 msgid "Change name"
 msgstr "Зьмяніць назву"
 
-#: ../mcs-plugin/workspaces.c:338
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:480
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
 #, c-format
 msgid "Workspace %d"
 msgstr "Працоўная прастора %d"
@@ -270,224 +295,228 @@ msgstr "Найбольшыць"
 msgid "Close"
 msgstr "Зачыніць"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Shade window"
 msgstr "Згарнуць вакно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Hide window"
 msgstr "Схаваць вакно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window"
 msgstr "Найбольшыць вакно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_plugin.c:82
 msgid "Nothing"
 msgstr "Нічога"
 
-#: ../mcs-plugin/xfwm4_plugin.c:86
+#: ../mcs-plugin/xfwm4_plugin.c:87
 msgid "Left"
 msgstr "Па левым баку"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
+#: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Center"
 msgstr "Пасярэдзіне"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Right"
 msgstr "Па правым баку"
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:588
 msgid "Click and drag buttons to change the layout"
 msgstr "Перацягніце кнопкі, каб зьмяніць іх разьмеркаваньне"
 
-#: ../mcs-plugin/xfwm4_plugin.c:579
+#: ../mcs-plugin/xfwm4_plugin.c:593
 msgid "Active"
 msgstr "Задзейнічана"
 
-#: ../mcs-plugin/xfwm4_plugin.c:590
+#: ../mcs-plugin/xfwm4_plugin.c:604
 msgid "Title"
 msgstr "Загаловак"
 
-#: ../mcs-plugin/xfwm4_plugin.c:591
+#: ../mcs-plugin/xfwm4_plugin.c:605
 msgid "The window title, it cannot be removed"
 msgstr "Загаловак вакна ня можа быць выдалены"
 
-#: ../mcs-plugin/xfwm4_plugin.c:599
+#: ../mcs-plugin/xfwm4_plugin.c:617
 msgid "Hidden"
 msgstr "Схавана"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1359
+#: ../mcs-plugin/xfwm4_plugin.c:1390
 msgid "Font Selection Dialog"
 msgstr "Дыялёг вылучэньне шрыфта"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1424
+#: ../mcs-plugin/xfwm4_plugin.c:1455
 msgid "Window Manager"
 msgstr "Кіраўнік вокнаў"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1464
+#: ../mcs-plugin/xfwm4_plugin.c:1495
 msgid "Title font"
 msgstr "Шрыфт загалоўка"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1473
+#: ../mcs-plugin/xfwm4_plugin.c:1504
 msgid "Title Alignment"
 msgstr "Выроўніваньне загалоўка"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1475
+#: ../mcs-plugin/xfwm4_plugin.c:1506
 msgid "Text alignment inside title bar :"
 msgstr "Выроўніваньне тэкста загалоўка вакна:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1481
+#: ../mcs-plugin/xfwm4_plugin.c:1512
 msgid "Button layout"
 msgstr "Разьмеркаваньне кнопак"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1486
+#: ../mcs-plugin/xfwm4_plugin.c:1517
 msgid "Style"
 msgstr "Стыль"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1534
+#: ../mcs-plugin/xfwm4_plugin.c:1565
 msgid "Window shortcuts"
 msgstr "Гарачыя клявішы"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1548
+#: ../mcs-plugin/xfwm4_plugin.c:1579
 msgid "Command"
 msgstr "Загад"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1554
+#: ../mcs-plugin/xfwm4_plugin.c:1585
 msgid "Shortcut"
 msgstr "Зьвяз клявіш"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1571
+#: ../mcs-plugin/xfwm4_plugin.c:1602
 msgid "Keyboard"
 msgstr "Клявіятура"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1586
+#: ../mcs-plugin/xfwm4_plugin.c:1617
 msgid "Focus model"
 msgstr "Мадэль засяроджаньня"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1590
+#: ../mcs-plugin/xfwm4_plugin.c:1621
 msgid "Click to focus"
 msgstr "Пстрыкнуць для засяроджаньня"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1600
+#: ../mcs-plugin/xfwm4_plugin.c:1631
 msgid "Focus follows mouse"
 msgstr "Засяроджаньне крочыць за мышой"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1611
-msgid "Automatically give focus to newly created windows"
-msgstr "Аўтаматычна перадаваць засяроджаньне новым вокнам"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1615
-msgid "New window focus"
-msgstr "Засяроджаньне новага вакна"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1622
-msgid "Raise on focus"
-msgstr "Уздымаць пры атрыманьні засяроджаньня"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1628
-msgid "Automatically raise windows when they receive focus"
-msgstr "Аўтаматычна ўздымаць вокны, калі яны атрымліваюць засяроджаньне"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1638
-msgid "Delay before raising focused window :"
+#: ../mcs-plugin/xfwm4_plugin.c:1644
+#, fuzzy
+msgid "Delay before window receives focus"
 msgstr "Затрымка перад уздыманьнем засяроджанага вакна:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1645
+#: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
 msgid "Slow"
 msgstr "Павольна"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1652
+#: ../mcs-plugin/xfwm4_plugin.c:1660 ../mcs-plugin/xfwm4_plugin.c:1722
 msgid "Fast"
 msgstr "Хутка"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1673
+#: ../mcs-plugin/xfwm4_plugin.c:1681
+msgid "Automatically give focus to newly created windows"
+msgstr "Аўтаматычна перадаваць засяроджаньне новым вокнам"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1685
+msgid "New window focus"
+msgstr "Засяроджаньне новага вакна"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1692
+msgid "Raise on focus"
+msgstr "Уздымаць пры атрыманьні засяроджаньня"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1698
+msgid "Automatically raise windows when they receive focus"
+msgstr "Аўтаматычна ўздымаць вокны, калі яны атрымліваюць засяроджаньне"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1708
+msgid "Delay before raising focused window :"
+msgstr "Затрымка перад уздыманьнем засяроджанага вакна:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1743
 msgid "Raise window when clicking inside application window"
 msgstr "Уздымаць вокны, калі адбываецца пстрык мышой у межах вакна"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1677
+#: ../mcs-plugin/xfwm4_plugin.c:1747
 msgid "Raise on click"
 msgstr "Уздымаць па пстрычцы"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/xfwm4_plugin.c:1765
 msgid "Windows snapping"
 msgstr "Прыцягненьне вокнаў"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1700
+#: ../mcs-plugin/xfwm4_plugin.c:1770
 msgid "Snap windows to screen border"
 msgstr "Працягненьне вокнаў да межаў экрана"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1706
+#: ../mcs-plugin/xfwm4_plugin.c:1776
 msgid "Snap windows to other windows"
 msgstr "Прыцягненьне вокнаў да іншых вокнаў"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1717
+#: ../mcs-plugin/xfwm4_plugin.c:1787
 msgid "Distance :"
 msgstr "Прамежак:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1724
+#: ../mcs-plugin/xfwm4_plugin.c:1794
 msgid "Distance|Small"
 msgstr "Вузкі"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1731
+#: ../mcs-plugin/xfwm4_plugin.c:1801
 msgid "Distance|Wide"
 msgstr "Шырокі"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1752
+#: ../mcs-plugin/xfwm4_plugin.c:1822
 msgid "Wrap workspaces"
 msgstr "Загортваньне прастораў"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1758
+#: ../mcs-plugin/xfwm4_plugin.c:1828
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Крочыць паміж працоўнымі прасторамі, калі паказьнік сягае за межы экрана"
+msgstr ""
+"Крочыць паміж працоўнымі прасторамі, калі паказьнік сягае за межы экрана"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1766
+#: ../mcs-plugin/xfwm4_plugin.c:1836
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Крочыць паміж працоўнымі прасторамі, калі перацягваюцца вокны за межы экрана"
+msgstr ""
+"Крочыць паміж працоўнымі прасторамі, калі перацягваюцца вокны за межы экрана"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1776
+#: ../mcs-plugin/xfwm4_plugin.c:1846
 msgid "Edge Resistance :"
 msgstr "Супраціў межаў:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1783
+#: ../mcs-plugin/xfwm4_plugin.c:1853
 msgid "Resistance|Small"
 msgstr "Маленькі"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1790
+#: ../mcs-plugin/xfwm4_plugin.c:1860
 msgid "Resistance|Wide"
 msgstr "Вялікі"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1812
+#: ../mcs-plugin/xfwm4_plugin.c:1882
 msgid "Opaque move and resize"
 msgstr "Непразрыстае перамяшчэньне й зьмена памераў"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1817
+#: ../mcs-plugin/xfwm4_plugin.c:1887
 msgid "Display content of windows when resizing"
 msgstr "Адлюстроўваць зьмест вокнаў пад час зьмяненьня памераў"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1823
+#: ../mcs-plugin/xfwm4_plugin.c:1893
 msgid "Display content of windows when moving"
 msgstr "Адлюстроўваць зьмест вокнаў пад час перамяшчэньня"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1828
+#: ../mcs-plugin/xfwm4_plugin.c:1898
 msgid "Double click action"
 msgstr "Узьдзеяньне двайное пстрычкі"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1830
+#: ../mcs-plugin/xfwm4_plugin.c:1900
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Узьдзеяньне двайной пстрычкі па загалоўку вакна:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1835
+#: ../mcs-plugin/xfwm4_plugin.c:1905
 msgid "Advanced"
 msgstr "Дадатковыя"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1974
+#: ../mcs-plugin/xfwm4_plugin.c:2046
 msgid "Button Label|Window Manager"
 msgstr "Кіраўнік вокнаў"
 
@@ -496,168 +525,168 @@ msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Вы насамрэч жадаеце выдаліць гэтую тэму камбінацыяў?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:139
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Add keybinding theme"
 msgstr "Дадаць тэму камбінацыяў"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
 msgid "Enter a name for the theme:"
 msgstr "Увядзіце назву тэмы:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:178
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
 msgid "A keybinding theme with the same name already exists"
 msgstr "Тэма з гэткай назвай ужо існуе"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:184
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Вы мусіце задаць назву тэмы"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Close window"
 msgstr "Зачыніць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Maximize window vertically"
 msgstr "Вэртыкальна найбольшыць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Maximize window horizontally"
 msgstr "Гарызантальна найбольшыць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Stick window"
 msgstr "Прыляпіць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Cycle windows"
 msgstr "Цыкл вокнаў"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Move window up"
 msgstr "Перамясьціць вакно ўгору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Move window down"
 msgstr "Перамясьціць вакно да долу"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Move window left"
 msgstr "Перамясьціць вакно ўлева"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Move window right"
 msgstr "Перамясьціць вакно ўправа"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Resize window up"
 msgstr "Зьмяніць памер вакна ўгары"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Resize window down"
 msgstr "Зьмяніць памер вакна ля долу"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Resize window left"
 msgstr "Зьмяніць памер вакна зьлева"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Resize window right"
 msgstr "Зьмяніць памер вакна зправа"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Cancel move/resize window"
 msgstr "Скасаваць перамяшчэньне/зьмену памеру вакна"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Raise window"
 msgstr "Узьняць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Lower window"
 msgstr "Апусьціць вакно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Toggle fullscreen"
 msgstr "Пераключыць поўнаэкранны рэжым"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Upper workspace"
 msgstr "Вышэйшая прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Bottom workspace"
 msgstr "Ніжэйшая прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Left workspace"
 msgstr "Лявейшая прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Right workspace"
 msgstr "Правейшая прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Next workspace"
 msgstr "Наступная прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Previous workspace"
 msgstr "Папярэдняя прастора"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Add workspace"
 msgstr "Дадаць прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Delete workspace"
 msgstr "Выдаліць прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Move window to next workspace"
 msgstr "Перамясьціць вакно на наступную прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Move window to previous workspace"
 msgstr "Перамясьціць вакно на папярэднюю прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Move window to upper workspace"
 msgstr "Перамясьціць вакно на вышэйшую прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Move window to bottom workspace"
 msgstr "Перамясьціць вакно на ніжэйшую прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Move window to left workspace"
 msgstr "Перамясьціць вакно на лявейшую прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Move window to right workspace"
 msgstr "Перамясьціць вакно на правейшую прастору"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Show desktop"
 msgstr "Паказаць Сталец"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 msgid "Cancel window action"
 msgstr "Скасаваць дзеяньне над вакном"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
 msgid "Window operations menu"
 msgstr "Мэню дзеяньняў з вокнамі"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:501
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Перамясьціць вакно на прастору %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:581
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
 msgid "Cannot open the theme directory !"
 msgstr "Немагчыма адчыніць тэчку з тэмамі!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:600
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -666,8 +695,8 @@ msgstr ""
 "Немагчыма адчыніць %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:614
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:625
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -676,7 +705,7 @@ msgstr ""
 "Немагчыма запісаць %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -684,29 +713,29 @@ msgstr ""
 "Камбінацыя ўжо выкарыстоўваецца!\n"
 "Вы насамрэч жадаеце выкарыстоўваць яе?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
 msgid "Compose shortcut for :"
 msgstr "Прызначыць гарачыя клявішы для:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "Compose shortcut"
 msgstr "Прызначыць гарачыя клявішы"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
 msgid "Cancel"
 msgstr "Скасаваць"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:860
 msgid "No shortcut"
 msgstr "Камбінацыя адсутнічае"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:81
+#: ../src/hints.c:84
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на вузьле %s)"
 
-#: ../src/main.c:134
+#: ../src/main.c:135
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: збой сэгмэнтаваньня"
@@ -751,8 +780,7 @@ msgstr "Ад_ляпіць"
 msgid "Context _help"
 msgstr "Кантэкставая да_ведка"
 
-#: ../src/menu.c:50
-#: ../src/menu.c:51
+#: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
 msgstr "Заўсёды зьверху"
 
@@ -791,12 +819,12 @@ msgstr "Працоўная прастора %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu немагчыма захапіць паказьнік\n"
 
-#: ../src/settings.c:902
+#: ../src/settings.c:953
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: немагчыма разьмеркаваць колер %s\n"
 
-#: ../src/settings.c:908
+#: ../src/settings.c:959
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: немагчыма разабраць колер %s\n"
@@ -827,26 +855,36 @@ msgstr "Настаўленьні працоўных прастораў Xfce 4"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Невядомае дастасаваньне!"
+
 #~ msgid "Command shortcuts"
 #~ msgstr "Зьвяз клявіш"
+
 #~ msgid "Select command"
 #~ msgstr "Вылучыце загад"
+
 #~ msgid "Choose command"
 #~ msgstr "Абярыце загад"
+
 #~ msgid "Command :"
 #~ msgstr "Загад:"
+
 #~ msgid "The command doesn't exist or the file is not executable !"
 #~ msgstr "Загад не йснуе альбо файл ня мае правоў на выкананьне!"
+
 #~ msgid "Compose shortcut for command :"
 #~ msgstr "Прызначыць гарачыя клявішы для загада:"
+
 #~ msgid "%s: Cannot allocate active color %s\n"
 #~ msgstr "%s: немагчыма разьмеркаваць актыўны колер %s\n"
+
 #~ msgid "%s: Cannot parse active color %s\n"
 #~ msgstr "%s: немагчыма разабраць актыўны колер %s\n"
+
 #~ msgid "%s: Cannot allocate inactive color %s\n"
 #~ msgstr "%s: немагчыма разьмеркаваць неактыўны колер %s\n"
+
 #~ msgid "%s: Cannot parse inactive color %s\n"
 #~ msgstr "%s: немагчыма разабраць неактыўны колер %s\n"
+
 #~ msgid "Switch to ..."
 #~ msgstr "Пераключыць на ..."
-
