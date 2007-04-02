@@ -241,6 +241,7 @@ struct _DisplayInfo
     gboolean have_render;
     gboolean have_xrandr;
     gboolean have_xsync;
+    gint shape_version;
     gint shape_event_base;
     gint dbl_click_time;
     gint xgrabcount;

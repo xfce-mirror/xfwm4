@@ -182,9 +182,7 @@ DisplayInfo *
 myDisplayInit (GdkDisplay *gdisplay)
 {
     DisplayInfo *display;
-#ifdef HAVE_XSYNC
-    int xsync_major, xsync_minor;
-#endif /* HAVE_XSYNC */
+    int major, minor;
     int dummy;
 
     display = g_new0 (DisplayInfo, 1);
@@ -205,11 +203,18 @@ myDisplayInit (GdkDisplay *gdisplay)
     }
 
     /* Test XShape extension support */
+    major = 0;
+    minor = 0;
+    display->shape_version = 0;
     if (XShapeQueryExtension (display->dpy,
                               &display->shape_event_base,
                               &dummy))
     {
         display->have_shape = TRUE;
+        if (XShapeQueryVersion (display->dpy, &major, &minor))
+        {
+            display->shape_version = major * 1000 + minor;
+        }
     }
     else
     {
@@ -224,15 +229,15 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->xsync_error_base = 0;
     display->xsync_event_base = 0;
 
-    xsync_major = SYNC_MAJOR_VERSION;
-    xsync_minor = SYNC_MINOR_VERSION;
+    major = SYNC_MAJOR_VERSION;
+    minor = SYNC_MINOR_VERSION;
     
     if (XSyncQueryExtension (display->dpy,
                               &display->xsync_event_base,
                               &display->xsync_error_base)
          && XSyncInitialize (display->dpy, 
-                             &xsync_major, 
-                             &xsync_minor))
+                             &major, 
+                             &minor))
     {
         display->have_xsync = TRUE;
     }
