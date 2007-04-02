@@ -725,13 +725,13 @@ button1Action (Client * c, XButtonEvent * ev)
     {
         switch (screen_info->params->double_click_action)
         {
-            case ACTION_MAXIMIZE:
+            case DBL_CLICK_ACTION_MAXIMIZE:
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 break;
-            case ACTION_SHADE:
+            case DBL_CLICK_ACTION_SHADE:
                 clientToggleShaded (c);
                 break;
-            case ACTION_HIDE:
+            case DBL_CLICK_ACTION_HIDE:
                 if (CLIENT_CAN_HIDE_WINDOW (c))
                 {
                     clientHide (c, c->win_workspace, TRUE);
@@ -1444,7 +1444,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             last_raised = clientGetLastRaise (screen_info);
             if (last_raised && (c != last_raised))
             {
-                if ((screen_info->params->prevent_focus_stealing) && !(screen_info->params->bring_on_activate))
+                if ((screen_info->params->prevent_focus_stealing) && (screen_info->params->activate_action == ACTIVATE_ACTION_NONE))
                 {
                     ev->value_mask &= ~(CWSibling | CWStackMode);
                     TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 

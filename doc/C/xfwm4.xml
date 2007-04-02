@@ -781,10 +781,13 @@ maintainers, etc. Commented out by default.
 
 <variablelist>
 	<varlistentry>
-		<term>bring_on_activate=false</term>
+		<term>activate_action=bring|switch|none</term>
 			<listitem>
-			<para>Set this option to false if you don't want a window to be brought back
-			on the current workspace when the application tries to raise it.
+			<para>How the window manager must react when a window raises itself.
+			When set to "bring", the window manager to bring the window on the 
+			current workspace, "switch" will switch to the window's workspace, and
+			"none" will simply do nothing but set the "demand attention" flag on
+			the window.
 			</para>
 			</listitem>
 	</varlistentry>	

@@ -147,10 +147,17 @@ enum
 
 enum
 {
-    ACTION_NONE,
-    ACTION_MAXIMIZE,
-    ACTION_SHADE,
-    ACTION_HIDE
+    ACTIVATE_ACTION_NONE,
+    ACTIVATE_ACTION_BRING,
+    ACTIVATE_ACTION_SWITCH
+};
+
+enum
+{
+    DBL_CLICK_ACTION_NONE,
+    DBL_CLICK_ACTION_MAXIMIZE,
+    DBL_CLICK_ACTION_SHADE,
+    DBL_CLICK_ACTION_HIDE
 };
 
 struct _XfwmColor
@@ -172,6 +179,7 @@ struct _XfwmParams
     MyKey keys[KEY_COUNT];
     gchar button_layout[BUTTON_COUNT + 1];
     unsigned int xfwm_margins[4];
+    int activate_action;
     int button_offset;
     int button_spacing;
     int double_click_action;
@@ -197,7 +205,6 @@ struct _XfwmParams
     gboolean borderless_maximize;
     gboolean box_move;
     gboolean box_resize;
-    gboolean bring_on_activate;
     gboolean click_to_focus;
     gboolean cycle_hidden;
     gboolean cycle_minimum;

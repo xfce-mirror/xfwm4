@@ -2603,9 +2603,19 @@ clientActivate (Client * c, Time timestamp)
     TRACE ("entering clientActivate \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    if ((screen_info->current_ws == c->win_workspace) || (screen_info->params->bring_on_activate))
+    if ((screen_info->current_ws == c->win_workspace) || (screen_info->params->activate_action != ACTIVATE_ACTION_NONE))
     {
-        clientSetWorkspace (c, screen_info->current_ws, TRUE);
+        if (screen_info->current_ws != c->win_workspace)
+        {
+            if (screen_info->params->activate_action == ACTIVATE_ACTION_BRING)
+            {
+                clientSetWorkspace (c, screen_info->current_ws, TRUE);
+            }
+            else
+            {
+                workspaceSwitch (screen_info, c->win_workspace, NULL, FALSE, timestamp);
+            }
+        }
         clientShow (c, TRUE);
         clientClearAllShowDesktop (screen_info);
         clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
