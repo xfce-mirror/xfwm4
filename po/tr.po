@@ -9,12 +9,12 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-01 16:23+0200\n"
-"PO-Revision-Date: 2007-03-01 21:09+0200\n"
+"PO-Revision-Date: 2007-04-02 15:33+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
@@ -65,19 +65,16 @@ msgid "None"
 msgstr "Hiçbiri"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Pencereyi sonraki çalışma alanına taşı"
+msgstr "Şu anki çalışma alanından pencereyi al"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:466
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Pencereyi %d. çalışma alanına gönder"
+msgstr "Pencerenin çalışma alanına gönder"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:467
-#, fuzzy
 msgid "Do nothing"
-msgstr "Hiçbir şey"
+msgstr "Hiçbir şey yapma"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -113,7 +110,7 @@ msgstr "Standart ICCCM odaklama ipucunu kabul et"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Pencere kendisini büyülttüğünde:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
@@ -187,9 +184,8 @@ msgid "Display full screen overlay windows directly"
 msgstr "Direkt olarak tam ekran pencereleri göster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:680
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Açılan pencereler altında gölge göster"
+msgstr "Açılan pencereler altında gölgeleri göster"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:686
 msgid "Show shadows under regular windows"
@@ -400,9 +396,8 @@ msgid "Focus follows mouse"
 msgstr "Odak fareyi takip etsin"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1644
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Odaklanmış pencere yükselme gecikmesi :"
+msgstr "Pencere odaklanmadan önceki gecikme"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
 msgid "Slow"
@@ -430,7 +425,7 @@ msgstr "Pencereler odaklanma kazanınca otomatik olarak yükselt"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1708
 msgid "Delay before raising focused window :"
-msgstr "Odaklanmış pencere yükselme gecikmesi :"
+msgstr "Odaklanmış pencere büyültmesi öncesi gecikme :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1743
 msgid "Raise window when clicking inside application window"
@@ -720,7 +715,7 @@ msgstr "Kısayol düzenle"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:856
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:860
 msgid "No shortcut"
@@ -849,3 +844,4 @@ msgstr "Çalışma Alanı Ayarları"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Çalışma Alanı Ayarları"
+
