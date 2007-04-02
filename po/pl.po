@@ -69,7 +69,7 @@ msgstr "Brak"
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "Opcje Menadżera Okien"
+msgstr "Opcje Menedżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid ""
@@ -214,12 +214,12 @@ msgstr "Kompozytor"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Opcje Menadżera Okien"
+msgstr "Opcje Menedżera Okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Te ustawienia nie mogą działać z bieżącym menadżerem okien  (%s)"
+msgstr "Te ustawienia nie mogą działać z bieżącym menedżerem okien  (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -324,7 +324,7 @@ msgstr "Okno Wyboru Czcionki"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1424
 msgid "Window Manager"
-msgstr "Menadżer Okien"
+msgstr "Menedżer Okien"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1464
 msgid "Title font"
@@ -486,7 +486,7 @@ msgstr "Zaawansowane"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1974
 msgid "Button Label|Window Manager"
-msgstr "Menadżer Okien"
+msgstr "Menedżer Okien"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
@@ -795,11 +795,11 @@ msgstr "%s: Nie mogę zidentyfikować aktywnego koloru %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Ustawienia Menadżera Okien"
+msgstr "Ustawienia Menedżera Okien"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Ustawienia Menadżera Okien Xfce 4"
+msgstr "Ustawienia Menedżera Okien Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
@@ -807,7 +807,7 @@ msgstr "Zaawansowana Konfiguracja"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Opcje Menadżera Okien Xfce 4"
+msgstr "Opcje Menedżera Okien Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
