@@ -37,6 +37,10 @@
 #include "frame.h"
 #include "compositor.h"
 
+#ifndef ShapeInput
+#define ShapeInput 2;
+#endif
+
 int
 frameDecorationLeft (ScreenInfo *screen_info)
 {
@@ -757,6 +761,13 @@ frameSetShape (Client * c, int state, ClientPixmapCache * pm_cache, int button_x
     XShapeCombineRectangles (display_info->dpy, temp, ShapeBounding, 0, 0, &rect, 1, ShapeIntersect, 0);
     XShapeCombineShape (display_info->dpy, c->frame, ShapeBounding, 0, 0, temp, ShapeBounding, ShapeSet);
 
+    /* Set Input shape when using XShape extension 1.1 and later */
+    if (display_info->shape >= 1001)
+    {
+        XShapeCombineShape (display_info->dpy, temp, ShapeInput, frameLeft (c), frameTop (c), c->window, ShapeBounding, ShapeSubtract);
+        XShapeCombineShape (display_info->dpy, temp, ShapeInput, frameLeft (c), frameTop (c), c->window, ShapeInput, ShapeUnion);
+        XShapeCombineShape (display_info->dpy, c->frame, ShapeInput, 0, 0, temp, ShapeInput, ShapeSet);
+    }
     XDestroyWindow (display_info->dpy, temp);
 }
 

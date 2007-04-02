@@ -157,6 +157,7 @@ DisplayInfo *
 myDisplayInit (GdkDisplay *gdisplay)
 {
     DisplayInfo *display;
+    int major, minor;
     int dummy;
 
     display = g_new0 (DisplayInfo, 1);
@@ -173,9 +174,18 @@ myDisplayInit (GdkDisplay *gdisplay)
     }
 
     /* Test XShape extension support */
-    display->shape = 
-        XShapeQueryExtension (display->dpy, &display->shape_event, &dummy);
-    if (!display->shape)
+    major = 0;
+    minor = 0;
+    display->shape = 0;
+    
+    if (XShapeQueryExtension (display->dpy, &display->shape_event, &dummy))
+    {
+        if (XShapeQueryVersion (display->dpy, &major, &minor))
+        {
+            display->shape = major * 1000 + minor;
+        }
+    }
+    else
     {
         g_warning ("The display does not support the XShape extension.");
     }
