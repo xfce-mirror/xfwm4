@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Gabriele Modena <randall@email.it>, 2005.
 # Alex Dupre <ale@FreeBSD.org>, 2004, 2005.
+# Fabio Riga <usul@aruba.it>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2005-10-22 01:23+0900\n"
-"Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
-"Language-Team: GUFI <traduzioni@gufi.org>\n"
+"PO-Revision-Date: 2007-04-04 02:00+0200\n"
+"Last-Translator: Fabio Riga <usul@aruba.it>\n"
+"Language-Team: Italian <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -151,13 +152,12 @@ msgid "Minimum size of windows to trigger smart placement"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
-#, fuzzy
 msgid "Size|Small"
-msgstr "Piccolo"
+msgstr "Piccola"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:535
 msgid "Size|Large"
-msgstr ""
+msgstr "Grande"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:539
 msgid "Placement"
@@ -445,14 +445,12 @@ msgid "Distance :"
 msgstr "Distanza :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1724
-#, fuzzy
 msgid "Distance|Small"
-msgstr "Distanza :"
+msgstr "Breve"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1731
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "Distanza :"
+msgstr "Ampia"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Wrap workspaces"
@@ -473,14 +471,12 @@ msgid "Edge Resistance :"
 msgstr "Resistenza ai Bordi :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1783
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "Distanza :"
+msgstr "Scarsa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1790
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "Distanza :"
+msgstr "Forte"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1812
 msgid "Opaque move and resize"
@@ -769,7 +765,7 @@ msgstr "_Sblocca"
 
 #: ../src/menu.c:49
 msgid "Context _help"
-msgstr "Help contestuale"
+msgstr "A_iuto contestuale"
 
 #: ../src/menu.c:50 ../src/menu.c:51
 msgid "Always on top"
@@ -811,29 +807,26 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu non è riuscito a catturare il puntatore\n"
 
 #: ../src/settings.c:902
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Impossibile allocare il colore attivo %s\n"
+msgstr "%s: Impossibile allocare il colore %s\n"
 
 #: ../src/settings.c:908
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Impossibile interpretare il colore attivo %s\n"
+msgstr "%s: Impossibile analizzare il colore %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-#, fuzzy
 msgid "Window Manager Settings"
-msgstr "Gestore di Finestre"
+msgstr "Impostazioni del gestore di finestre"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-#, fuzzy
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Gestore di Finestre"
+msgstr "Impostazioni del gestore di finestre di Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Impostazioni del Gestore di Finestre"
+msgstr "Configurazione avanzata"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 #, fuzzy
