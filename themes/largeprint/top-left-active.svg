@@ -39,7 +39,7 @@
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:white;stop-opacity:0;" />
+         style="stop-color:black;stop-opacity:0.00;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -112,16 +112,7 @@
     <path
        id="path6057"
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
-       d="M 8,1 L 3,1 C 3,1 1,1 1,4 L 1,28 C 1,28 1,31 6,31 L 8,31 L 8,31 L 8,1 z " />
-  </g>
-  <g
-     inkscape:label="hilight"
-     id="layer3"
-     inkscape:groupmode="layer">
-    <path
-       id="path6061"
-       d="M 8,1 L 5.75,1 C 5.75,1 2,1 2,2 C 2,2 2.75,2 2.75,2 L 8,2 L 8,2 z "
-       style="fill:url(#linearGradient6962);fill-opacity:1.00;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+       d="M 8,2 L 5,2 C 5,2 3,2 3,5 L 3,28 C 3,28 3,31 7,31 L 8,31 L 8,31 L 8,2 z " />
   </g>
   <g
      style="display:inline"
