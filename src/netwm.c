@@ -1202,6 +1202,11 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_dialog detected");
             c->type = WINDOW_DIALOG;
             c->initial_layer = WIN_LAYER_NORMAL;
+            /* Treat DIALOG without transient_for set as transient for group */
+            if (c->transient_for == None)
+            {
+                c->transient_for = c->screen_info->xroot;
+            }
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL])
         {
@@ -1216,6 +1221,11 @@ clientWindowType (Client * c)
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
             c->type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
+            /* Treat UTILITY without transient_for set as transient for group */
+            if (c->transient_for == None)
+            {
+                c->transient_for = c->screen_info->xroot;
+            }
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_SPLASH])
         {

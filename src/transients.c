@@ -107,10 +107,9 @@ clientIsTransientFor (Client * c1, Client * c2)
     {
         if (c1->transient_for != c1->screen_info->xroot)
         {
-            if (c1->transient_for == c2->window)
             return (c1->transient_for == c2->window);
         }
-        else if (c1->serial >= c2->serial)
+        else if (c2->transient_for != c2->screen_info->xroot)
         {
             return (clientSameGroup (c1, c2));
         }
