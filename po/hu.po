@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2006-10-10 00:10+0100\n"
+"PO-Revision-Date: 2007-04-06 08:16+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,7 @@ msgstr "Ablakkeretek rejtése maximalizáláskor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:472
 msgid "Restore original size of maximized windows when moving"
-msgstr "A maximált ablakok eredeti mérete visszaállítása mozgatáskor"
+msgstr "A maximált ablakok eredetire méretezése mozgatáskor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Use edge resistance instead of windows snapping"
@@ -137,7 +137,7 @@ msgstr "Munkaterület váltás a jelen asztal elrendezés alapján"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:517
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Munkaterület váltás az 1. vagy utolsó munkaterület elérésekor"
+msgstr "Körözés az 1. vagy utolsó munkaterület elérte után"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:534
 msgid "Minimum size of windows to trigger smart placement"
@@ -173,7 +173,7 @@ msgstr "Árnyékok előugró ablakok alatt"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591
 msgid "Opacity of window decorations"
-msgstr "Ablakdíszek átlátszósága"
+msgstr "Ablak-díszek átlátszósága"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:591
 #: ../mcs-plugin/wmtweaks_plugin.c:597
@@ -470,19 +470,19 @@ msgstr "Áttetsző mozgatás és átméretezés"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1817
 msgid "Display content of windows when resizing"
-msgstr "Ablak tartalmának megjelenítése átméretezés közben"
+msgstr "Ablak tartalmának mutatása átméretezéskor"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Display content of windows when moving"
-msgstr "Ablak tartalmának megjelenítése mozgatás közben"
+msgstr "Ablak tartalmának mutatása mozgatáskor"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1828
 msgid "Double click action"
-msgstr "Kettős-kattintásra elvégzendő művelet"
+msgstr "Kettős kattintás művelete"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1830
 msgid "Action to perform when double clicking on title bar :"
-msgstr "A címsoron kettős kattintásra végezendő művelet"
+msgstr "A címsoron kettős kattintásra végzendő művelet:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1835
 msgid "Advanced"
@@ -657,7 +657,7 @@ msgstr "Ablak erre a munkaterületre: %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:581
 msgid "Cannot open the theme directory !"
-msgstr "Nem sikerült megnyitni a témakönyvtárat!"
+msgstr "Nem sikerült megnyitni a téma-könyvtárat!"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:600
 #, c-format
@@ -675,8 +675,8 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
-"%s nem írható : \n"
-":%s"
+"%s nem írható: \n"
+"%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:778
 msgid ""
