@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-01 16:23+0200\n"
 "PO-Revision-Date: 2006-11-3 12:41+0100\n"
-"Last-Translator: Stephan Arts <psybsd@gmail.com>\n"
+"Last-Translator: Stephan Arts <stephan@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -65,19 +65,16 @@ msgid "None"
 msgstr "Geen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Venster naar volgend werkblad verplaatsen"
+msgstr "Venster naar huidig werkblad verplaatsen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:466
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Wissel naar het venster's werkblad"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:467
-#, fuzzy
 msgid "Do nothing"
-msgstr "Niets"
+msgstr "Niets doen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -113,7 +110,7 @@ msgstr "Houden aan de standaard ICCCM focus hint"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Wanneer een venster zichzelf naar de voorgrond brengt:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
@@ -139,7 +136,7 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Gebruik rand weerstand in plaats van het klikken van vensters"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:584
 msgid "Accessibility"
@@ -154,16 +151,17 @@ msgstr ""
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
+"Vorige werkblad onthouden wanneer er wordt gewisseld met het sneltoetsen" 
+
 
 #: ../mcs-plugin/wmtweaks_plugin.c:611
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
+msgstr "Werkbladen wisselen afhankelijk van de bureaublad layout" 
+
 
 #: ../mcs-plugin/wmtweaks_plugin.c:618
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr ""
-"Wissel werkbladen wanneer de muisaanwijzer de rand van het scherm bereikt"
+msgstr "Wisselen tussen laatste en eerste werkblad toestaan" 
 
 #: ../mcs-plugin/wmtweaks_plugin.c:635
 msgid "Minimum size of windows to trigger smart placement"
@@ -192,7 +190,7 @@ msgstr "Geef volledig scherm getoonde vensters direct weer"
 #: ../mcs-plugin/wmtweaks_plugin.c:680
 #, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Schaduws weergeven onder popup vensters"
+msgstr "Schaduws weergeven onder dock vensters"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:686
 msgid "Show shadows under regular windows"
@@ -246,9 +244,8 @@ msgstr "Venster Beheer Bijstellen"
 #: ../mcs-plugin/wmtweaks_plugin.c:890 ../mcs-plugin/xfwm4_plugin.c:2425
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
-"Deze instellingen kunnen niet samenwerken met de huidige vensterbeheerder (%"
-"s)"
+msgstr "Deze instellingen kunnen niet samenwerken met de huidige venster"
+"beheerder (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -407,7 +404,7 @@ msgstr "Focus volgt muis"
 #: ../mcs-plugin/xfwm4_plugin.c:1644
 #, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Vertraging voor naar voren halen vensters :"
+msgstr "Vertraging voor naar voren halen vensters"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
 msgid "Slow"
@@ -727,7 +724,7 @@ msgstr "Sneltoets samenstellen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:856
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:860
 msgid "No shortcut"
