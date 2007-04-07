@@ -119,7 +119,7 @@ msgstr "Herstel de originele grootte bij het verplaatsen van "
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Use edge resistance instead of windows snapping"
-msgstr ""
+msgstr "Gebruik rand weerstand in plaats van het klikken van vensters"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Accessibility"
