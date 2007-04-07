@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-01 16:23+0200\n"
-"PO-Revision-Date: 2006-10-29 18:21+0100\n"
+"PO-Revision-Date: 2007-04-03 15:43+0100\n"
 "Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,8 @@ msgid "Workspace Margins"
 msgstr "Marges de l'espace de travail"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Les marges sont des zones sur les bords de l'écran où aucune fenêtre ne sera "
-"placée"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Les marges sont des zones sur les bords de l'écran où aucune fenêtre ne sera placée"
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
@@ -52,7 +49,8 @@ msgstr "Marges et espaces de travail"
 msgid "Workspaces and Margins"
 msgstr "Marges et espaces de travail"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:623
+#: ../mcs-plugin/workspaces_plugin.c:162
+#: ../mcs-plugin/wmtweaks_plugin.c:623
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Espaces de travail"
@@ -66,19 +64,16 @@ msgid "None"
 msgstr "Aucun"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Déplacer la fenêtre vers l'espace suivant"
+msgstr "Déplacer la fenêtre vers l'espace actuel"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:466
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Déplacer la fenêtre vers l'espace %d"
+msgstr "Changer vers l'espace de la fenêtre"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:467
-#, fuzzy
 msgid "Do nothing"
-msgstr "Aucun"
+msgstr "Ne rien faire"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -86,11 +81,8 @@ msgid "Window Manager Tweaks"
 msgstr "Peaufinage des fenêtres"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:495
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
-"Ignorer les fenêtres qui présentent les propriétés \"skip pager\" ou \"skip "
-"taskbar\""
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr "Ignorer les fenêtres qui présentent les propriétés \"skip pager\" ou \"skip taskbar\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:501
 msgid "Include hidden (i.e. iconified) windows"
@@ -114,9 +106,10 @@ msgstr "Suivre le standard ICCCM pour la focalisation"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Lorsque une fenêtre se met au premier plan :"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
+#: ../mcs-plugin/wmtweaks_plugin.c:541
+#: ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
 msgstr "Focalisation"
 
@@ -153,11 +146,8 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Basculer d'écran à l'aide de la molette de la souris sur le bureau"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:604
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
-"Mémoriser et revenir à l'espace précédent en changeant d'espace de travail à "
-"l'aide du clavier"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "Mémoriser et revenir à l'espace précédent en changeant d'espace de travail à l'aide du clavier"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:611
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -196,7 +186,7 @@ msgstr "Affichage direct des fenêtres plein-écran"
 #: ../mcs-plugin/wmtweaks_plugin.c:680
 #, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Afficher l'ombre sous les fenêtres contextuelles"
+msgstr "Afficher l'ombre sous les fenêtres dock"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:686
 msgid "Show shadows under regular windows"
@@ -210,14 +200,18 @@ msgstr "Afficher l'ombre sous les fenêtres contextuelles"
 msgid "Opacity of window decorations"
 msgstr "Opacité des décorations autour des fenêtres"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698 ../mcs-plugin/wmtweaks_plugin.c:704
-#: ../mcs-plugin/wmtweaks_plugin.c:710 ../mcs-plugin/wmtweaks_plugin.c:716
+#: ../mcs-plugin/wmtweaks_plugin.c:698
+#: ../mcs-plugin/wmtweaks_plugin.c:704
+#: ../mcs-plugin/wmtweaks_plugin.c:710
+#: ../mcs-plugin/wmtweaks_plugin.c:716
 #: ../mcs-plugin/wmtweaks_plugin.c:722
 msgid "Transparent"
 msgstr "Transparent"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:699 ../mcs-plugin/wmtweaks_plugin.c:705
-#: ../mcs-plugin/wmtweaks_plugin.c:711 ../mcs-plugin/wmtweaks_plugin.c:717
+#: ../mcs-plugin/wmtweaks_plugin.c:699
+#: ../mcs-plugin/wmtweaks_plugin.c:705
+#: ../mcs-plugin/wmtweaks_plugin.c:711
+#: ../mcs-plugin/wmtweaks_plugin.c:717
 #: ../mcs-plugin/wmtweaks_plugin.c:723
 msgid "Opaque"
 msgstr "Opaque"
@@ -247,17 +241,18 @@ msgstr "Compositeur"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Peaufinage des fenêtres"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:890 ../mcs-plugin/xfwm4_plugin.c:2425
+#: ../mcs-plugin/wmtweaks_plugin.c:890
+#: ../mcs-plugin/xfwm4_plugin.c:2425
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
-"Ces paramètres ne s'appliquent pas au gestionnaire de fenêtre courant (%s)"
+msgstr "Ces paramètres ne s'appliquent pas au gestionnaire de fenêtre courant (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
 msgstr "Modifier le nom"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
+#: ../mcs-plugin/workspaces.c:338
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:482
 #, c-format
 msgid "Workspace %d"
 msgstr "Espace de travail %d"
@@ -302,15 +297,18 @@ msgstr "Agrandir"
 msgid "Close"
 msgstr "Fermer"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Shade window"
 msgstr "Enrouler la fenêtre"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Hide window"
 msgstr "Iconifier la fenêtre"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window"
 msgstr "Agrandir la fenêtre"
 
@@ -413,11 +411,13 @@ msgstr "La focalisation suit la souris"
 msgid "Delay before window receives focus"
 msgstr "Délai avant que la fenêtre reçoive le focus"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
+#: ../mcs-plugin/xfwm4_plugin.c:1653
+#: ../mcs-plugin/xfwm4_plugin.c:1715
 msgid "Slow"
 msgstr "Lent"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1660 ../mcs-plugin/xfwm4_plugin.c:1722
+#: ../mcs-plugin/xfwm4_plugin.c:1660
+#: ../mcs-plugin/xfwm4_plugin.c:1722
 msgid "Fast"
 msgstr "Rapide"
 
@@ -731,7 +731,7 @@ msgstr "Composer le raccourci"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:856
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:860
 msgid "No shortcut"
@@ -788,7 +788,8 @@ msgstr "Dé_coller"
 msgid "Context _help"
 msgstr "A_ide contextuelle"
 
-#: ../src/menu.c:50 ../src/menu.c:51
+#: ../src/menu.c:50
+#: ../src/menu.c:51
 msgid "Always on top"
 msgstr "Placer au dessus"
 
@@ -863,3 +864,4 @@ msgstr "Paramètres des espaces de travail de Xfce 4"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Application inconnue!"
+
