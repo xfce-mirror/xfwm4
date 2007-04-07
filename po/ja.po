@@ -6,12 +6,18 @@
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
 # Daichi Kawahata <daichi@xfce.org>, 2005-2007.
 #
+# 対訳一覧:
+#
+# composite     合成
+# compositing   合成処理
+# compositor    コンポジター
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-26 01:43+0900\n"
-"PO-Revision-Date: 2007-03-26 01:38+0900\n"
+"PO-Revision-Date: 2007-04-07 14:37+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -161,13 +167,15 @@ msgstr "大きい"
 msgid "Placement"
 msgstr "配置"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:559
 msgid "Enable display compositing"
-msgstr ""
+msgstr "合成処理を有効にする"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "全画面オーバーレイ表示する"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:579
@@ -182,7 +190,7 @@ msgstr "ポップアップウィンドウに影を落とす"
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:591
 msgid "Opacity of window decorations"
-msgstr "ウィンドウの枠の透明度"
+msgstr "ウィンドウ枠の透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
@@ -711,7 +719,7 @@ msgstr "ショートカットを編集"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:850
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"
