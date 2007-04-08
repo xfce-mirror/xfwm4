@@ -27,8 +27,10 @@
 
 /* this formatting is needed by glib-mkenums */
 typedef enum {
-    EVENT_FILTER_STOP = TRUE,
-    EVENT_FILTER_CONTINUE = FALSE
+    EVENT_FILTER_STOP     = 0x0,
+    EVENT_FILTER_PASS     = 0x0,
+    EVENT_FILTER_REMOVE   = 0x1,
+    EVENT_FILTER_CONTINUE = 0x1,
 }
 eventFilterStatus;
 

@@ -86,24 +86,24 @@ static int edge_scroll_y = 0;
 
 /* Forward decl. */
 
-static void handleEvent         (DisplayInfo *display_info,
-                                 XEvent * ev);
-static void menu_callback       (Menu * menu,
-                                 MenuOp op,
-                                 Window xid,
-                                 gpointer menu_data,
-                                 gpointer item_data);
-static void show_window_menu    (Client *c,
-                                 gint px,
-                                 gint py,
-                                 guint button,
-                                 guint32 time);
-static gboolean show_popup_cb   (GtkWidget * widget,
-                                 GdkEventButton * ev,
-                                 gpointer data);
-static gboolean client_event_cb (GtkWidget * widget,
-                                 GdkEventClient * ev,
-                                 gpointer data);
+static eventFilterStatus handleEvent (DisplayInfo *display_info,
+                                      XEvent * ev);
+static void menu_callback            (Menu * menu,
+                                      MenuOp op,
+                                      Window xid,
+                                      gpointer menu_data,
+                                      gpointer item_data);
+static void show_window_menu         (Client *c,
+                                      gint px,
+                                      gint py,
+                                      guint button,
+                                      guint32 time);
+static gboolean show_popup_cb        (GtkWidget * widget,
+                                      GdkEventButton * ev,
+                                      gpointer data);
+static gboolean client_event_cb      (GtkWidget * widget,
+                                      GdkEventClient * ev,
+                                      gpointer data);
 
 typedef enum
 {
@@ -306,10 +306,11 @@ toggle_show_desktop (ScreenInfo *screen_info)
                      myDisplayGetCurrentTime (screen_info->display_info));
 }
 
-static void
+static eventFilterStatus
 handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
 {
     TRACE ("entering handleMotionNotify");
+    return EVENT_FILTER_REMOVE;
 }
 
 static int
@@ -330,9 +331,10 @@ getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
     return key;
 }
 
-static void
+static eventFilterStatus
 handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 {
+    eventFilterStatus status;
     ScreenInfo *screen_info;
     ScreenInfo *ev_screen_info;
     Client *c;
@@ -340,10 +342,11 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 
     TRACE ("entering handleKeyEvent");
 
+    status = EVENT_FILTER_PASS;
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!ev_screen_info)
     {
-        return;
+        return status;
     }
 
     c = clientGetFocus ();
@@ -351,6 +354,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     {
         screen_info = c->screen_info;
         key = getKeyPressed (screen_info, ev);
+	status = EVENT_FILTER_REMOVE;
 
         switch (key)
         {
@@ -454,9 +458,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 show_window_menu (c, frameX (c) + frameLeft (c), 
                                      frameY (c) + frameTop (c), 
                                      Button1, GDK_CURRENT_TIME);
-                /* 'nuff for now */
-                return;
 
+                /* 'nuff for now */
+                return EVENT_FILTER_REMOVE;
                 break;
             default:
                 break;
@@ -468,12 +472,14 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         switch (key)
         {
             case KEY_CYCLE_WINDOWS:
+                status = EVENT_FILTER_REMOVE;
                 if (ev_screen_info->clients)
                 {
                     clientCycle (ev_screen_info->clients->prev, (XEvent *) ev);
                 }
                 break;
             case KEY_CLOSE_WINDOW:
+                status = EVENT_FILTER_REMOVE;
                 if (display_info->session)
                 {
                     logout_session (display_info->session);
@@ -487,27 +493,35 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     switch (key)
     {
         case KEY_NEXT_WORKSPACE:
+            status = EVENT_FILTER_REMOVE;
             workspaceSwitch (ev_screen_info, ev_screen_info->current_ws + 1, NULL, TRUE, ev->time);
             break;
         case KEY_PREV_WORKSPACE:
+            status = EVENT_FILTER_REMOVE;
             workspaceSwitch (ev_screen_info, ev_screen_info->current_ws - 1, NULL, TRUE, ev->time);
             break;
         case KEY_UP_WORKSPACE:
+            status = EVENT_FILTER_REMOVE;
             workspaceMove(ev_screen_info, -1, 0, NULL, ev->time);
             break;
         case KEY_DOWN_WORKSPACE:
+            status = EVENT_FILTER_REMOVE;
             workspaceMove(ev_screen_info, 1, 0, NULL, ev->time);
             break;
         case KEY_LEFT_WORKSPACE:
+            status = EVENT_FILTER_REMOVE;
             workspaceMove(ev_screen_info, 0, -1, NULL, ev->time);
             break;
         case KEY_RIGHT_WORKSPACE:
+            status = EVENT_FILTER_REMOVE;
             workspaceMove(ev_screen_info, 0, 1, NULL, ev->time);
             break;
         case KEY_ADD_WORKSPACE:
+            status = EVENT_FILTER_REMOVE;
             workspaceSetCount (ev_screen_info, ev_screen_info->workspace_count + 1);
             break;
         case KEY_DEL_WORKSPACE:
+            status = EVENT_FILTER_REMOVE;
             workspaceSetCount (ev_screen_info, ev_screen_info->workspace_count - 1);
             break;
         case KEY_WORKSPACE_1:
@@ -522,18 +536,22 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         case KEY_WORKSPACE_10:
         case KEY_WORKSPACE_11:
         case KEY_WORKSPACE_12:
+            status = EVENT_FILTER_REMOVE;
             if (key - KEY_WORKSPACE_1 < ev_screen_info->workspace_count)
             {
                 workspaceSwitch (ev_screen_info, key - KEY_WORKSPACE_1, NULL, TRUE, ev->time);
             }
             break;
         case KEY_SHOW_DESKTOP:
+            status = EVENT_FILTER_REMOVE;
             toggle_show_desktop (ev_screen_info);
             break;
         default:
             break;
     }
     XAllowEvents (display_info->dpy, AsyncKeyboard, CurrentTime);
+
+    return status;
 }
 
 /* User has clicked on an edge or corner.
@@ -828,7 +846,7 @@ rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
 }
 
 
-static void
+static eventFilterStatus
 handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 {
     ScreenInfo *screen_info;
@@ -844,7 +862,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     if (!check_button_time (ev))
     {
         TRACE ("ignoring ButtonPress event because it has been already handled");
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 #endif
 
@@ -993,7 +1011,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
             XAllowEvents (display_info->dpy, SyncPointer, CurrentTime);
         }
 
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 
     /*
@@ -1003,7 +1021,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!screen_info)
     {
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 
     if ((ev->window == screen_info->xroot) && (screen_info->params->scroll_workspaces)
@@ -1016,9 +1034,11 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         XUngrabPointer (display_info->dpy, ev->time);
         XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
     }
+
+    return EVENT_FILTER_REMOVE;
 }
 
-static void
+static eventFilterStatus
 handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
 {
     ScreenInfo *screen_info;
@@ -1030,7 +1050,7 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
     if (!check_button_time (ev))
     {
         TRACE ("ignoring ButtonRelease event because it has been already handled");
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 #endif
 
@@ -1038,16 +1058,19 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!screen_info)
     {
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 
     XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
+
+    return EVENT_FILTER_REMOVE;
 }
 
-static void
+static eventFilterStatus
 handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
 {
     Client *c;
+    eventFilterStatus status;
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     ScreenInfo *screen_info;
 #endif
@@ -1055,13 +1078,14 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     TRACE ("entering handleDestroyNotify");
     TRACE ("DestroyNotify on window (0x%lx)", ev->window);
 
+    status = EVENT_FILTER_PASS;
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     screen_info = myDisplayGetScreenFromSystray (display_info, ev->window);
     if (screen_info)
     {
         /* systray window is gone */
         screen_info->systray = None;
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 #endif
 
@@ -1071,21 +1095,26 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
         TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
         clientPassFocus (c->screen_info, c, c);
         clientUnframe (c, FALSE);
+        status = EVENT_FILTER_REMOVE;
     }
+
+    return status;
 }
 
-static void
+static eventFilterStatus
 handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
 {
+    eventFilterStatus status;
     Client *c;
 
     TRACE ("entering handleMapRequest");
     TRACE ("MapRequest on window (0x%lx)", ev->window);
 
+    status = EVENT_FILTER_PASS;
     if (ev->window == None)
     {
         TRACE ("Mapping None ???");
-        return;
+        return status;
     }
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
@@ -1098,7 +1127,7 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
             TRACE ("Ignoring MapRequest on window (0x%lx)", ev->window);
-            return;
+            status = EVENT_FILTER_REMOVE;
         }
 
         clientShow (c, TRUE);
@@ -1109,15 +1138,19 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
         {
             clientFocusNew(c);
         }
+        status = EVENT_FILTER_REMOVE;
     }
     else
     {
         TRACE ("handleMapRequest: clientFrame");
         clientFrame (display_info, ev->window, FALSE);
+        status = EVENT_FILTER_REMOVE;
     }
+
+    return status;
 }
 
-static void
+static eventFilterStatus
 handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
 {
     Client *c;
@@ -1133,29 +1166,34 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
         {
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
         }
+        return EVENT_FILTER_REMOVE;
     }
+
+    return EVENT_FILTER_PASS;
 }
 
-static void
+static eventFilterStatus
 handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 {
+    eventFilterStatus status;
     ScreenInfo *screen_info;
     Client *c;
 
     TRACE ("entering handleUnmapNotify");
     TRACE ("UnmapNotify on window (0x%lx)", ev->window);
 
+    status = EVENT_FILTER_PASS;
     if (ev->from_configure)
     {
         TRACE ("Ignoring UnmapNotify caused by parent's resize");
-        return;
+        return status;
     }
 
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
     if (screen_info && (ev->event != ev->window) && (ev->event != screen_info->xroot || !ev->send_event))
     {
         TRACE ("handleUnmapNotify (): Event ignored");
-        return;
+        return status;
     }
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
@@ -1164,6 +1202,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         TRACE ("ignore_unmap for \"%s\" is %i", c->name, c->ignore_unmap);
 
+        status = EVENT_FILTER_REMOVE;
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
             /*
@@ -1172,7 +1211,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
              * to withdrawn state by mistake.
              */
             TRACE ("Client \"%s\" is not mapped, event ignored", c->name);
-            return;
+            return status;
         }
 
         screen_info = c->screen_info;
@@ -1190,7 +1229,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
             TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
             clientPassFocus (screen_info, c, c);
             clientUnframe (c, FALSE);
-            return;
+            return status;
         }
 
         if (c->ignore_unmap)
@@ -1207,6 +1246,8 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
             clientUnframe (c, FALSE);
         }
     }
+
+    return status;
 }
 
 static gboolean
@@ -1230,7 +1271,7 @@ update_screen_idle_cb (gpointer data)
     return FALSE;
 }
 
-static void
+static eventFilterStatus
 handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
 {
     ScreenInfo *screen_info;
@@ -1240,7 +1281,7 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
     if (!screen_info)
     {
-        return;
+        return EVENT_FILTER_PASS;
     }
 
     if (display_info->have_xrandr)
@@ -1266,9 +1307,11 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
        accurate values...
      */
     g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, update_screen_idle_cb, screen_info, NULL);
+
+    return EVENT_FILTER_PASS;
 }
 
-static void
+static eventFilterStatus
 handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
 {
     Client *c = NULL;
@@ -1324,7 +1367,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
-            return;
+            return EVENT_FILTER_REMOVE;
         }
         if (c->type == WINDOW_DESKTOP)
         {
@@ -1421,9 +1464,11 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
         TRACE ("unmanaged configure request for win 0x%lx", ev->window);
         XConfigureWindow (display_info->dpy, ev->window, ev->value_mask, &wc);
     }
+
+    return EVENT_FILTER_REMOVE;
 }
 
-static void
+static eventFilterStatus
 handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
     static Time lastresist = (Time) CurrentTime;
@@ -1439,7 +1484,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         || (ev->detail > NotifyNonlinearVirtual))
     {
         /* We're not interested in such notifications */
-        return;
+        return EVENT_FILTER_PASS;
     }
 
     TRACE ("EnterNotify on window (0x%lx)", ev->window);
@@ -1472,7 +1517,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         }
 
         /* No need to process the event any further */
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 
     /* The event was not for a client window */
@@ -1480,7 +1525,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     if (display_info->nb_screens > 1)
     {
         /* Wrap workspace/wrap windows is disabled with multiscreen */
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 
     /* Get the screen structure from the root of the event */
@@ -1488,7 +1533,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 
     if (!screen_info)
     {
-        return;
+        return EVENT_FILTER_PASS;
     }
 
     if (screen_info->workspace_count && screen_info->params->wrap_workspaces
@@ -1592,15 +1637,19 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             XFlush (display_info->dpy);
         }
     }
+
+    return EVENT_FILTER_REMOVE;
 }
 
-static void
+static eventFilterStatus
 handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
     TRACE ("entering handleLeaveNotify");
+
+    return EVENT_FILTER_PASS;
 }
 
-static void
+static eventFilterStatus
 handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
     ScreenInfo *screen_info;
@@ -1644,7 +1693,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     if (!screen_info)
     {
         /* Not for us */
-        return;
+        return EVENT_FILTER_PASS;
     }
 
     if ((ev->window == screen_info->xroot)
@@ -1657,12 +1706,12 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
          */
         c = clientGetFocusOrPending ();
         clientSetFocus (screen_info, c, getXServerTime (display_info), FOCUS_FORCE);
-        return;
+        return EVENT_FILTER_PASS;
     }
     if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab))
     {
         /* We're not interested in such notifications */
-        return;
+        return EVENT_FILTER_PASS;
     }
     c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
     user_focus = clientGetUserFocus ();
@@ -1710,9 +1759,11 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
             clientResetDelayedRaise (screen_info);
         }
     }
+
+    return EVENT_FILTER_REMOVE;
 }
 
-static void
+static eventFilterStatus
 handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
 {
     Client *c;
@@ -1751,7 +1802,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
         (ev->detail == NotifyInferior) || (ev->detail > NotifyNonlinearVirtual))
     {
         /* We're not interested in such notifications */
-        return;
+        return EVENT_FILTER_PASS;
     }
 
     if ((ev->mode == NotifyNormal)
@@ -1768,19 +1819,24 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
             clientClearDelayedRaise ();
         }
     }
+
+    return EVENT_FILTER_REMOVE;
 }
 
-static void
+static eventFilterStatus
 handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 {
+    eventFilterStatus status;
     ScreenInfo *screen_info;
     Client *c;
 
     TRACE ("entering handlePropertyNotify");
 
+    status = EVENT_FILTER_PASS;
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
     if (c)
     {
+        status = EVENT_FILTER_REMOVE;
         screen_info = c->screen_info;
         if (ev->atom == XA_WM_NORMAL_HINTS)
         {
@@ -1936,13 +1992,13 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
 #endif /* HAVE_XSYNC */
 
-        return;
+        return status;
     }
 
     screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
     if (!screen_info)
     {
-        return;
+        return status;
     }
 
     if (ev->atom == display_info->atoms[NET_DESKTOP_NAMES])
@@ -1968,20 +2024,25 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
         placeSidewalks(screen_info, screen_info->params->wrap_workspaces);
     }
+
+    return status;
 }
 
-static void
+static eventFilterStatus
 handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 {
+    eventFilterStatus status;
     ScreenInfo *screen_info;
     Client *c;
     gboolean is_transient;
 
     TRACE ("entering handleClientMessage");
 
+    status = EVENT_FILTER_PASS;
     c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
     if (c)
     {
+        status = EVENT_FILTER_REMOVE;
         screen_info = c->screen_info;
         is_transient = clientIsValidTransientOrModal (c);
 
@@ -2099,9 +2160,10 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
         if (!screen_info)
         {
-            return;
+            return status;
         }
 
+        status = EVENT_FILTER_REMOVE;
         if (((ev->message_type == display_info->atoms[WIN_WORKSPACE]) ||
              (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
         {
@@ -2166,9 +2228,11 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             TRACE ("unidentified client message for window 0x%lx", ev->window);
         }
     }
+
+    return status;
 }
 
-static void
+static eventFilterStatus
 handleShape (DisplayInfo *display_info, XShapeEvent * ev)
 {
     Client *c;
@@ -2200,9 +2264,11 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
             frameDraw (c, FALSE);
         }
     }
+
+    return EVENT_FILTER_REMOVE;
 }
 
-static void
+static eventFilterStatus
 handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
 {
     Client *c;
@@ -2216,10 +2282,13 @@ handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
         {
             clientInstallColormaps (c);
         }
+        return EVENT_FILTER_REMOVE;
     }
+
+    return EVENT_FILTER_PASS;
 }
 
-static void
+static eventFilterStatus
 handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
 {
     TRACE ("entering handleMappingNotify");
@@ -2240,10 +2309,12 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
         TRACE ("handleMappingNotify: Reload settings");
         reloadSettings (display_info, UPDATE_BUTTON_GRABS);
     }
+
+    return EVENT_FILTER_PASS;
 }
 
 #ifdef HAVE_XSYNC
-static void
+static eventFilterStatus
 handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
 {
     XWindowChanges wc;
@@ -2253,7 +2324,7 @@ handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
 
     if (!display_info->have_xsync)
     {
-        return;
+        return EVENT_FILTER_REMOVE;
     }
 
     c = myDisplayGetClientFromXSyncAlarm (display_info, ev->alarm);
@@ -2270,84 +2341,88 @@ handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
         }
     }
+
+    return EVENT_FILTER_REMOVE;
 }
 #endif /* HAVE_XSYNC */
 
-static void
+static eventFilterStatus
 handleEvent (DisplayInfo *display_info, XEvent * ev)
 {
+    eventFilterStatus status;
+    status = EVENT_FILTER_PASS;
+
     TRACE ("entering handleEvent");
 
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, ev);
-
     sn_process_event (ev);
     compositorHandleEvent (display_info, ev);
     switch (ev->type)
     {
         case MotionNotify:
-            handleMotionNotify (display_info, (XMotionEvent *) ev);
+            status = handleMotionNotify (display_info, (XMotionEvent *) ev);
             break;
         case KeyPress:
-            handleKeyPress (display_info, (XKeyEvent *) ev);
+            status = handleKeyPress (display_info, (XKeyEvent *) ev);
             break;
         case ButtonPress:
-            handleButtonPress (display_info, (XButtonEvent *) ev);
+            status = handleButtonPress (display_info, (XButtonEvent *) ev);
             break;
         case ButtonRelease:
-            handleButtonRelease (display_info, (XButtonEvent *) ev);
+            status = handleButtonRelease (display_info, (XButtonEvent *) ev);
             break;
         case DestroyNotify:
-            handleDestroyNotify (display_info, (XDestroyWindowEvent *) ev);
+            status = handleDestroyNotify (display_info, (XDestroyWindowEvent *) ev);
             break;
         case UnmapNotify:
-            handleUnmapNotify (display_info, (XUnmapEvent *) ev);
+            status = handleUnmapNotify (display_info, (XUnmapEvent *) ev);
             break;
         case MapRequest:
-            handleMapRequest (display_info, (XMapRequestEvent *) ev);
+            status = handleMapRequest (display_info, (XMapRequestEvent *) ev);
             break;
         case MapNotify:
-            handleMapNotify (display_info, (XMapEvent *) ev);
+            status = handleMapNotify (display_info, (XMapEvent *) ev);
             break;
         case ConfigureNotify:
-            handleConfigureNotify (display_info, (XConfigureEvent *) ev);
+            status = handleConfigureNotify (display_info, (XConfigureEvent *) ev);
             break;
         case ConfigureRequest:
-            handleConfigureRequest (display_info, (XConfigureRequestEvent *) ev);
+            status = handleConfigureRequest (display_info, (XConfigureRequestEvent *) ev);
             break;
         case EnterNotify:
-            handleEnterNotify (display_info, (XCrossingEvent *) ev);
+            status = handleEnterNotify (display_info, (XCrossingEvent *) ev);
             break;
         case LeaveNotify:
-            handleLeaveNotify (display_info, (XCrossingEvent *) ev);
+            status = handleLeaveNotify (display_info, (XCrossingEvent *) ev);
             break;
         case FocusIn:
-            handleFocusIn (display_info, (XFocusChangeEvent *) ev);
+            status = handleFocusIn (display_info, (XFocusChangeEvent *) ev);
             break;
         case FocusOut:
-            handleFocusOut (display_info, (XFocusChangeEvent *) ev);
+            status = handleFocusOut (display_info, (XFocusChangeEvent *) ev);
             break;
         case PropertyNotify:
-            handlePropertyNotify (display_info, (XPropertyEvent *) ev);
+            status = handlePropertyNotify (display_info, (XPropertyEvent *) ev);
             break;
         case ClientMessage:
-            handleClientMessage (display_info, (XClientMessageEvent *) ev);
+            status = handleClientMessage (display_info, (XClientMessageEvent *) ev);
             break;
         case ColormapNotify:
             handleColormapNotify (display_info, (XColormapEvent *) ev);
             break;
         case MappingNotify:
-            handleMappingNotify (display_info, (XMappingEvent *) ev);
+            status = handleMappingNotify (display_info, (XMappingEvent *) ev);
             break;
         default:
             if ((display_info->have_shape) && (ev->type == display_info->shape_event_base))
             {
-                handleShape (display_info, (XShapeEvent *) ev);
+                status = handleShape (display_info, (XShapeEvent *) ev);
             }
 #ifdef HAVE_XSYNC
             if ((display_info->have_xsync) && (ev->type == (display_info->xsync_event_base + XSyncAlarmNotify)))
             {
-                handleXSyncAlarmNotify (display_info, (XSyncAlarmNotifyEvent *) ev);
+                status = handleXSyncAlarmNotify (display_info, (XSyncAlarmNotifyEvent *) ev);
             }
 #endif /* HAVE_XSYNC */
     }
@@ -2363,19 +2438,22 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             gtk_main_quit ();
         }
     }
+
+    return status;
 }
 
 eventFilterStatus
 xfwm4_event_filter (XEvent * xevent, gpointer data)
 {
+    eventFilterStatus status;
     DisplayInfo *display_info;
 
     display_info = (DisplayInfo *) data;
 
     TRACE ("entering xfwm4_event_filter");
-    handleEvent (display_info, xevent);
+    status = handleEvent (display_info, xevent);
     TRACE ("leaving xfwm4_event_filter");
-    return EVENT_FILTER_STOP;
+    return EVENT_FILTER_STOP | status;
 }
 
 /* GTK specific stuff */

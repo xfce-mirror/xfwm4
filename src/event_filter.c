@@ -159,7 +159,7 @@ eventXfwmFilter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
         loop = (*filterelt->filter) (xevent, filterelt->data);
         filterelt = filterelt_next;
     }
-    return GDK_FILTER_CONTINUE;
+    return (loop & EVENT_FILTER_REMOVE) ? GDK_FILTER_REMOVE : GDK_FILTER_CONTINUE;
 }
 
 eventFilterStack *
