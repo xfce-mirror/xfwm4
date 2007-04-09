@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-09 20:49+0200\n"
+"POT-Creation-Date: 2007-04-09 14:29+0200\n"
 "PO-Revision-Date: 2005-04-07 12:14+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1698
 msgid "Focus"
 msgstr "উজ্জ্বল"
 
@@ -224,7 +224,7 @@ msgstr "শর্টকাট নির্মাণ করুন"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "উইন্ডো পরিচালন ব্যবস্থা"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2342
+#: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2359
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Change name"
 msgstr "নাম পরিবর্তন করুন"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:480
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
 #, c-format
 msgid "Workspace %d"
 msgstr "কর্মক্ষেত্র %d"
@@ -278,225 +278,225 @@ msgstr "বড় করুন"
 msgid "Close"
 msgstr "বন্ধ করুন"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78 ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Shade window"
 msgstr "উইন্ডোর উপর ছায়া"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Hide window"
 msgstr "উইন্ডো লুকিয়ে ফেলুন"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window"
 msgstr "উইন্ডো বড় করুন"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_plugin.c:82
 msgid "Nothing"
 msgstr "কিছু নেই"
 
-#: ../mcs-plugin/xfwm4_plugin.c:86
+#: ../mcs-plugin/xfwm4_plugin.c:87
 msgid "Left"
 msgstr "বাঁদিক"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
+#: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Center"
 msgstr "কেন্দ্রস্থিত"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Right"
 msgstr "ডানদিক"
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:587
 msgid "Click and drag buttons to change the layout"
 msgstr "বিন্যাশ পরিবর্তনের জন্য বাটন ক্লিক করে টেনে আনুন"
 
-#: ../mcs-plugin/xfwm4_plugin.c:579
+#: ../mcs-plugin/xfwm4_plugin.c:592
 msgid "Active"
 msgstr "সক্রিয়"
 
-#: ../mcs-plugin/xfwm4_plugin.c:590
+#: ../mcs-plugin/xfwm4_plugin.c:603
 msgid "Title"
 msgstr "শিরোনাম"
 
-#: ../mcs-plugin/xfwm4_plugin.c:591
+#: ../mcs-plugin/xfwm4_plugin.c:604
 msgid "The window title, it cannot be removed"
 msgstr "উইন্ডোর শিরোনাম, মুছে ফেলা সম্ভব নয়"
 
-#: ../mcs-plugin/xfwm4_plugin.c:599
+#: ../mcs-plugin/xfwm4_plugin.c:616
 msgid "Hidden"
 msgstr "লুকোনো"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1359
+#: ../mcs-plugin/xfwm4_plugin.c:1376
 msgid "Font Selection Dialog"
 msgstr "ফন্ট নির্বাচনের ডায়লগ বক্স"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1424
+#: ../mcs-plugin/xfwm4_plugin.c:1441
 msgid "Window Manager"
 msgstr "উইন্ডো পরিচালন ব্যবস্থা"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1464
+#: ../mcs-plugin/xfwm4_plugin.c:1481
 msgid "Title font"
 msgstr "শিরোনামে ব্যবহৃত ফন্ট"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1473
+#: ../mcs-plugin/xfwm4_plugin.c:1490
 msgid "Title Alignment"
 msgstr "শিরোনামের দিশা"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1475
+#: ../mcs-plugin/xfwm4_plugin.c:1492
 msgid "Text alignment inside title bar :"
 msgstr "শিরোনাম বারের মধ্যে হরফের দিশা:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1481
+#: ../mcs-plugin/xfwm4_plugin.c:1498
 msgid "Button layout"
 msgstr "বাটনের বিন্যাশ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1486
+#: ../mcs-plugin/xfwm4_plugin.c:1503
 msgid "Style"
 msgstr "বিন্যাশ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1534
+#: ../mcs-plugin/xfwm4_plugin.c:1551
 msgid "Window shortcuts"
 msgstr "উইন্ডোর শর্টকাট"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1548
+#: ../mcs-plugin/xfwm4_plugin.c:1565
 msgid "Command"
 msgstr "কমান্ড"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1554
+#: ../mcs-plugin/xfwm4_plugin.c:1571
 msgid "Shortcut"
 msgstr "শর্টকাট"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1571
+#: ../mcs-plugin/xfwm4_plugin.c:1588
 msgid "Keyboard"
 msgstr "কী-বোর্ড"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1586
+#: ../mcs-plugin/xfwm4_plugin.c:1603
 msgid "Focus model"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1590
+#: ../mcs-plugin/xfwm4_plugin.c:1607
 msgid "Click to focus"
 msgstr "উজ্জ্বল করার জন্য ক্লিক করুন"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1600
+#: ../mcs-plugin/xfwm4_plugin.c:1617
 msgid "Focus follows mouse"
 msgstr "মাউস অনুসরণ করে উজ্জ্বল করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1611
+#: ../mcs-plugin/xfwm4_plugin.c:1628
 msgid "Automatically give focus to newly created windows"
 msgstr "নতুন উইন্ডোগুলিকে স্বয়ংক্রিয়ভাবে উজ্জ্বল করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1615
+#: ../mcs-plugin/xfwm4_plugin.c:1632
 msgid "New window focus"
 msgstr "নতুন উইন্ডো উজ্জ্বল করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1622
+#: ../mcs-plugin/xfwm4_plugin.c:1639
 msgid "Raise on focus"
 msgstr "উজ্জ্বল করা হলে বড় করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1628
+#: ../mcs-plugin/xfwm4_plugin.c:1645
 msgid "Automatically raise windows when they receive focus"
 msgstr "উজ্জ্বল করা হলে স্বয়ংক্রিয়ভাবে উইন্ডো বড় করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1638
+#: ../mcs-plugin/xfwm4_plugin.c:1655
 msgid "Delay before raising focused window :"
 msgstr "উজ্জ্বল করা উইন্ডো বড় করার পূর্ববর্তী বিরামকাল :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1645
+#: ../mcs-plugin/xfwm4_plugin.c:1662
 msgid "Slow"
 msgstr "ধীরগতি"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1652
+#: ../mcs-plugin/xfwm4_plugin.c:1669
 msgid "Fast"
 msgstr "দ্রুতগতি"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1673
+#: ../mcs-plugin/xfwm4_plugin.c:1690
 msgid "Raise window when clicking inside application window"
 msgstr "অ্যাপ্লিকেশন উইন্ডোর মধ্যে ক্লিক করা হলে উইন্ডো বড় করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1677
+#: ../mcs-plugin/xfwm4_plugin.c:1694
 msgid "Raise on click"
 msgstr "ক্লিক করা হলে বড় করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/xfwm4_plugin.c:1712
 msgid "Windows snapping"
 msgstr "উইন্ডো আটক করা"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1700
+#: ../mcs-plugin/xfwm4_plugin.c:1717
 msgid "Snap windows to screen border"
 msgstr "পর্দার প্রান্তের সাথে উইন্ডো আটক করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1706
+#: ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Snap windows to other windows"
 msgstr "অন্যান্য উইন্ডোর সাথে উইন্ডো আটক করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1717
+#: ../mcs-plugin/xfwm4_plugin.c:1734
 msgid "Distance :"
 msgstr "দূরত্ব :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1724
+#: ../mcs-plugin/xfwm4_plugin.c:1741
 #, fuzzy
 msgid "Distance|Small"
 msgstr "দূরত্ব :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1731
+#: ../mcs-plugin/xfwm4_plugin.c:1748
 #, fuzzy
 msgid "Distance|Wide"
 msgstr "দূরত্ব :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1752
+#: ../mcs-plugin/xfwm4_plugin.c:1769
 msgid "Wrap workspaces"
 msgstr "কর্মক্ষেত্র গুটিয়ে ফেলা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1758
+#: ../mcs-plugin/xfwm4_plugin.c:1775
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "পর্দার প্রান্তে পয়েন্টার পৌছে গেলে কর্মক্ষেত্র গুটিয়ে ফেলা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1766
+#: ../mcs-plugin/xfwm4_plugin.c:1783
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "পর্দার থেকে উইন্ডো টেনে সরিয়ে ফেলার সময় কর্মক্ষেত্র গুটিয়ে ফেলা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1776
+#: ../mcs-plugin/xfwm4_plugin.c:1793
 msgid "Edge Resistance :"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1783
+#: ../mcs-plugin/xfwm4_plugin.c:1800
 #, fuzzy
 msgid "Resistance|Small"
 msgstr "দূরত্ব :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1790
+#: ../mcs-plugin/xfwm4_plugin.c:1807
 #, fuzzy
 msgid "Resistance|Wide"
 msgstr "দূরত্ব :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1812
+#: ../mcs-plugin/xfwm4_plugin.c:1829
 msgid "Opaque move and resize"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1817
+#: ../mcs-plugin/xfwm4_plugin.c:1834
 msgid "Display content of windows when resizing"
 msgstr "উইন্ডোর মাপ পরিবর্তনের সময় তার মধ্যেকার বিষয়বস্তু প্রদর্শন করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1823
+#: ../mcs-plugin/xfwm4_plugin.c:1840
 msgid "Display content of windows when moving"
 msgstr "উইন্ডো সরানোর সময় তার মধ্যেকার বিষয়বস্তু প্রদর্শন করা হবে"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1828
+#: ../mcs-plugin/xfwm4_plugin.c:1845
 msgid "Double click action"
 msgstr "দুবার ক্লিক করার কর্ম"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1830
+#: ../mcs-plugin/xfwm4_plugin.c:1847
 msgid "Action to perform when double clicking on title bar :"
 msgstr "টাইটল বারের উপর দুবার ক্লিক করা হলে যে কর্ম সঞ্চালিত হবে :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1835
+#: ../mcs-plugin/xfwm4_plugin.c:1852
 msgid "Advanced"
 msgstr "উন্নত"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1974
+#: ../mcs-plugin/xfwm4_plugin.c:1991
 #, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "উইন্ডো পরিচালন ব্যবস্থা"
@@ -506,171 +506,171 @@ msgid "Do you really want to remove this keybinding theme ?"
 msgstr "আপনি কি নিশ্চিতরূপে এই কীবাইন্ডিং থীমটি মুছে ফেলতে ইচ্ছুক ?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:139
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Add keybinding theme"
 msgstr "কীবাইন্ডিং থীম যোগ করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
 msgid "Enter a name for the theme:"
 msgstr "থীমের জন্য নাম লিখুন:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:178
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
 msgid "A keybinding theme with the same name already exists"
 msgstr "এই নামের একটি কীবাইন্ডিং থীম বর্তমানে উপস্থিত রয়েছে"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:184
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
 msgid "You have to provide a name for the keybinding theme"
 msgstr "কীবাইন্ডিং থীমের জন্য একটি নাম উল্লেখ করা আবশ্যক"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Close window"
 msgstr "উইন্ডো বন্ধ করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Maximize window vertically"
 msgstr "উলম্ব দিশায় উইন্ডো বড় করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Maximize window horizontally"
 msgstr "অনুভমিক দিশায় উইন্ডো বড় করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Stick window"
 msgstr "উইন্ডো আটক করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 #, fuzzy
 msgid "Cycle windows"
 msgstr "উইন্ডো বন্ধ করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Move window up"
 msgstr "উইন্ডো উপরে স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Move window down"
 msgstr "উইন্ডো নীচে স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Move window left"
 msgstr "উইন্ডো বাঁদিকে স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Move window right"
 msgstr "উইন্ডো ডানদিকে স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Resize window up"
 msgstr "উইন্ডোর মাপ উফরে পরীবর্তন করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Resize window down"
 msgstr "উইন্ডোর মাপ নীচে পরীবর্তন করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Resize window left"
 msgstr "উইন্ডোর মাপ বাঁদিকে পরিবর্তন করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Resize window right"
 msgstr "উইন্ডোর মাপ ডানদিকে পরিবর্তন করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 #, fuzzy
 msgid "Cancel move/resize window"
 msgstr "উইন্ডো বন্ধ করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Raise window"
 msgstr "উইন্ডো বড় করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Lower window"
 msgstr "উইন্ডো ছোট করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Toggle fullscreen"
 msgstr "সম্পূর্ণ পর্দা জুড়ে প্রদর্শন বন্ধ/চালু করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Upper workspace"
 msgstr "উপরের কর্মক্ষেত্র"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Bottom workspace"
 msgstr "নীচের কর্মক্ষেত্র"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Left workspace"
 msgstr "বাঁদিকের কর্মক্ষেত্র"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Right workspace"
 msgstr "ডানদিকের কর্মক্ষেত্র"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Next workspace"
 msgstr "পরবর্তী কর্মক্ষেত্র"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Previous workspace"
 msgstr "পূর্ববর্তী কর্মক্ষেত্র"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Add workspace"
 msgstr "কর্মক্ষেত্র যোগ করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Delete workspace"
 msgstr "কর্মক্ষেত্র মুছে ফেলুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Move window to next workspace"
 msgstr "পরবর্তী কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Move window to previous workspace"
 msgstr "পূর্ববর্তী কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Move window to upper workspace"
 msgstr "উপরের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Move window to bottom workspace"
 msgstr "নীচের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Move window to left workspace"
 msgstr "বাঁদিকের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Move window to right workspace"
 msgstr "ডানদিকের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Show desktop"
 msgstr "ডেস্কটপ প্রদর্শন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 #, fuzzy
 msgid "Cancel window action"
 msgstr "উইন্ডোর মাপ পরিবর্তনের সময় তার মধ্যেকার বিষয়বস্তু প্রদর্শন করা হবে"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
 msgid "Window operations menu"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:501
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "কর্মক্ষেত্র ১-র মধ্যে উইন্ডো স্থানান্তর করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:581
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
 msgid "Cannot open the theme directory !"
 msgstr "থীম ডিরেক্টরি খোলা যায়নি !"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:600
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -679,8 +679,8 @@ msgstr ""
 "%s খোলা যায়নি : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:614
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:625
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -689,7 +689,7 @@ msgstr ""
 "%s-র মধ্যে লেখা যায়নি: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -697,25 +697,29 @@ msgstr ""
 "শর্টকাট বর্তমানে ব্যবহৃত হচ্ছে !\n"
 "আপনি কি নিশ্চিতরূপে এটি ব্যবহার করতে ইচ্ছুক ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
 msgid "Compose shortcut for :"
 msgstr "উল্লিখিত বস্তুর শর্টকাট নির্মাণ করুন :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
 msgid "Compose shortcut"
 msgstr "শর্টকাট নির্মাণ করুন"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:849
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
+msgid "Cancel"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"
 msgstr "কোনো শর্টকাট উপস্থিত নেই"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:80
+#: ../src/hints.c:84
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:132
+#: ../src/main.c:135
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: সেগমেনটেশন সংক্রান্ত সমস্যা"
@@ -799,12 +803,12 @@ msgstr "কর্মক্ষেত্র %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu পয়েন্টার আটক করতে সক্ষম হয়নি\n"
 
-#: ../src/settings.c:902
+#: ../src/settings.c:932
 #, fuzzy, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: সক্রিয় রং আরক্ষণ করা যায়নি %s\n"
 
-#: ../src/settings.c:908
+#: ../src/settings.c:938
 #, fuzzy, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: সক্রিয় রং পার্স করা যায়নি %s\n"
