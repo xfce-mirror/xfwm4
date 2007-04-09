@@ -1,6 +1,8 @@
 4.4.1
 =====
 
+- Treat dialogs and utility windows as transients for group (bug #3102)
+- Add support for shape input with XShape extension 1.1 (Bug #3092)
 - Make the title button in the xfwm4 settings manager dragable (bug #3000).
 - Fix a misinterpretation of ICCCM about when to send a synthetic 
   configureNotify event (bug #2977).
@@ -14,13 +16,20 @@
 - Fix the small lag before icon update at first map and when updating all 
   frames at once.
 - Use timeout for frame redraw, check actual WM name changes to work around 
-  apps that falsely update their WM name property (Bug #2810)."
+  apps that falsely update their WM name property (Bug #2810).
+- Uodate Hungarian translation
+- Update Catalan translation
+- Update Italian translation
+- Update Polish translation
+- Update German translation
+- Update Japanese translation
 - Update Turkish translation
-- Update Ukrainian translation.
-- Updated the Chinese (simplified) translations by Wu Li and fixed some 
+- Update Ukrainian translation
+- Update Dutch translation
+- Update Chinese (simplified) translations by Wu Li and fixed some 
   accelerators in the French translations.
-- Added the Albanian translations by Besnik Bleta
-
+- New Albanian translations by Besnik Bleta
+- New British English translations by Jeff Bailes
 
 4.4.0
 =====
