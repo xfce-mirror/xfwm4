@@ -1,3 +1,473 @@
+2007-04-09 13:50  maximilian
+
+	* xfce-mcs-manager/branches/xfce_4_4/po/fr.po,
+	  xfce-utils/branches/xfce_4_4/xfce4-about/AUTHORS,
+	  xfce-utils/trunk/xfce4-about/AUTHORS,
+	  xfce4-icon-theme/branches/xfce_4_4/po/fr.po,
+	  xfce4-mixer/branches/xfce_4_4/po/fr.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/ar.po,
+	  xfdesktop/branches/xfce_4_4/po/az.po,
+	  xfdesktop/branches/xfce_4_4/po/be.po,
+	  xfdesktop/branches/xfce_4_4/po/bg.po,
+	  xfdesktop/branches/xfce_4_4/po/bn_IN.po,
+	  xfdesktop/branches/xfce_4_4/po/ca.po,
+	  xfdesktop/branches/xfce_4_4/po/cs.po,
+	  xfdesktop/branches/xfce_4_4/po/de.po,
+	  xfdesktop/branches/xfce_4_4/po/dz.po,
+	  xfdesktop/branches/xfce_4_4/po/el.po,
+	  xfdesktop/branches/xfce_4_4/po/en_GB.po,
+	  xfdesktop/branches/xfce_4_4/po/eo.po,
+	  xfdesktop/branches/xfce_4_4/po/es.po,
+	  xfdesktop/branches/xfce_4_4/po/es_MX.po,
+	  xfdesktop/branches/xfce_4_4/po/et.po,
+	  xfdesktop/branches/xfce_4_4/po/eu.po,
+	  xfdesktop/branches/xfce_4_4/po/fa.po,
+	  xfdesktop/branches/xfce_4_4/po/fi.po,
+	  xfdesktop/branches/xfce_4_4/po/fr.po,
+	  xfdesktop/branches/xfce_4_4/po/gl.po,
+	  xfdesktop/branches/xfce_4_4/po/gu.po,
+	  xfdesktop/branches/xfce_4_4/po/he.po,
+	  xfdesktop/branches/xfce_4_4/po/hi.po,
+	  xfdesktop/branches/xfce_4_4/po/hu.po,
+	  xfdesktop/branches/xfce_4_4/po/hy.po,
+	  xfdesktop/branches/xfce_4_4/po/it.po,
+	  xfdesktop/branches/xfce_4_4/po/ja.po,
+	  xfdesktop/branches/xfce_4_4/po/ka.po,
+	  xfdesktop/branches/xfce_4_4/po/ko.po,
+	  xfdesktop/branches/xfce_4_4/po/lt.po,
+	  xfdesktop/branches/xfce_4_4/po/mk.po,
+	  xfdesktop/branches/xfce_4_4/po/mr.po,
+	  xfdesktop/branches/xfce_4_4/po/ms.po,
+	  xfdesktop/branches/xfce_4_4/po/nb_NO.po,
+	  xfdesktop/branches/xfce_4_4/po/nl.po,
+	  xfdesktop/branches/xfce_4_4/po/pa.po,
+	  xfdesktop/branches/xfce_4_4/po/pl.po,
+	  xfdesktop/branches/xfce_4_4/po/pt_BR.po,
+	  xfdesktop/branches/xfce_4_4/po/pt_PT.po,
+	  xfdesktop/branches/xfce_4_4/po/ro.po,
+	  xfdesktop/branches/xfce_4_4/po/ru.po,
+	  xfdesktop/branches/xfce_4_4/po/sk.po,
+	  xfdesktop/branches/xfce_4_4/po/sv.po,
+	  xfdesktop/branches/xfce_4_4/po/ta.po,
+	  xfdesktop/branches/xfce_4_4/po/tr.po,
+	  xfdesktop/branches/xfce_4_4/po/uk.po,
+	  xfdesktop/branches/xfce_4_4/po/vi.po,
+	  xfdesktop/branches/xfce_4_4/po/xfdesktop.pot,
+	  xfdesktop/branches/xfce_4_4/po/zh_CN.po,
+	  xfdesktop/branches/xfce_4_4/po/zh_TW.po,
+	  xfprint/branches/xfce_4_4/po/fr.po, xfprint/trunk/po/fr.po,
+	  po/ChangeLog, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/dz.po, po/el.po,
+	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po,
+	  po/fa.po, po/fi.po, po/fr.po, po/gl.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/lt.po, po/mk.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/fr.po: * *.po: Updated .pot and .po files for
+	  Xfdesktop and Xfwm4
+	  * de.po: Updated xfwm4's German file in trunk
+	  * fr.po: Fixed headers in 4.4 branch
+	  * Updated xfce-utils AUTHORS file for trunk and 4.4 branch
+
+2007-04-09 10:05  maximilian
+
+	* libexo/trunk/po-doc/fr.po, libexo/trunk/po/fr.po,
+	  libxfce4util/branches/xfce_4_4/po/fr.po,
+	  libxfce4util/trunk/po/fr.po,
+	  libxfcegui4/branches/xfce_4_4/po/fr.po,
+	  libxfcegui4/trunk/po/fr.po, mousepad/branches/xfce_4_4/po/fr.po,
+	  mousepad/trunk/po/fr.po, squeeze/trunk/po/fr.po,
+	  terminal/trunk/po-doc/ChangeLog, terminal/trunk/po-doc/fr.po,
+	  terminal/trunk/po/fr.po, thunar/trunk/po-doc/fr.po,
+	  thunar/trunk/po/fr.po, xarchiver/trunk/po/fr.po,
+	  xfburn/trunk/po/fr.po, xfcalendar/branches/xfce_4_4/po/fr.po,
+	  xfcalendar/trunk/po/fr.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/fr.po,
+	  xfce-mcs-manager/trunk/po/fr.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/fr.po,
+	  xfce-mcs-plugins/trunk/po/fr.po,
+	  xfce-utils/branches/xfce_4_4/po/fr.po, xfce-utils/trunk/po/fr.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/fr.po,
+	  xfce4-icon-theme/branches/xfce_4_4/po/fr.po,
+	  xfce4-icon-theme/trunk/po/fr.po,
+	  xfce4-panel/branches/xfce_4_4/po/fr.po,
+	  xfce4-panel/trunk/po/fr.po,
+	  xfce4-session/branches/xfce_4_4/po/fr.po,
+	  xfce4-session/trunk/po/fr.po,
+	  xfce4-trigger-launcher/trunk/po/fr.po,
+	  xfdesktop/branches/xfce_4_4/po-doc/fr.po,
+	  xfdesktop/branches/xfce_4_4/po/fr.po,
+	  xfdesktop/trunk/po-doc/fr.po, xfdesktop/trunk/po/fr.po,
+	  xfmedia/trunk/po/fr.po, xfprint/branches/xfce_4_4/po/fr.po,
+	  xfprint/trunk/po/fr.po, po/fr.po, xfwm4/trunk/po/fr.po: * fr.po:
+	  Fixed typos and style in the French translation of Terminal's
+	  manual
+	  * Changed my email address in all the fr.po files in trunk and
+	  4.4
+
+2007-04-07 16:06  stephan
+
+	* xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/nl.po,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/nl.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/nl.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/nl.po, po/ChangeLog, po/nl.po:
+	  Updated Dutch translations
+
+2007-04-07 09:33  daichi
+
+	* xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/ja.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/ja.po, po/ChangeLog, po/ja.po:
+	  Updated Japanese translations etc.
+
+2007-04-06 19:34  olivier
+
+	* src/netwm.c, src/transients.c: Treat dialogs and utility windows
+	  as transient for group
+
+2007-04-06 06:30  sas
+
+	* libxfcegui4/branches/xfce_4_4/po/hu.po,
+	  mousepad/branches/xfce_4_4/po/hu.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/hu.po,
+	  xfce4-mixer/branches/xfce_4_4/po/hu.po,
+	  xfce4-panel/branches/xfce_4_4/po/hu.po, po/hu.po,
+	  xfwm4/trunk/po/hu.po: Hungarian 4.4 fixes
+
+2007-04-05 11:05  paurullan
+
+	* libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/ca.po,
+	  mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/ca.po,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/ca.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/ca.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/ca.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/ca.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/ca.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/ca.po, po/ChangeLog, po/ca.po:
+	  i18n catalan update
+
+2007-04-04 15:58  maximilian
+
+	* mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/it.po,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/it.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/it.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/it.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/it.po,
+	  xfdesktop/branches/xfce_4_4/Makefile.am,
+	  xfdesktop/branches/xfce_4_4/menu.xml.it,
+	  xfdesktop/branches/xfce_4_4/modules/menu/Makefile.am,
+	  xfdesktop/branches/xfce_4_4/modules/menu/xfce-registered-categories.xml.it,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/it.po, po/ChangeLog, po/it.po: *
+	  it.po: Updated most of the Xfce 4.4 Italian translations
+	  and added xfdesktop's translated menu files.
+
+2007-04-02 19:48  olivier
+
+	* defaults/defaults, doc/C/xfwm4.html, doc/C/xfwm4.xml,
+	  doc/fr/xfwm4.html, doc/it/xfwm4.html, src/client.c, src/events.c,
+	  src/settings.c, src/settings.h: Implement a better (usability)
+	  fix for windows that raise themselves (Bug #2961)
+
+2007-04-02 19:32  olivier
+
+	* src/display.c, src/display.h, src/frame.c: Add support for shape
+	  input with XShape extension 1.1 (Bug #3092)
+
+2007-04-02 15:29  maximilian
+
+	* libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/pl.po,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/pl.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/pl.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/pl.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/pl.po, po/ChangeLog, po/pl.po:
+	  Updated the Polish translations for Xfce 4.4.
+
+2007-03-28 20:50  maximilian
+
+	* libxfce4util/branches/xfce_4_4/po/LINGUAS,
+	  mousepad/branches/xfce_4_4/po/LINGUAS,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/de.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/de.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/de.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/de.po,
+	  xfce4-icon-theme/branches/xfce_4_4/po/LINGUAS,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/de.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/de.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/de.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/de.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/de.po, po/ChangeLog, po/de.po: *
+	  de.po: Nico Schümann minor fixes to the Xfce 4.4 German
+	  translations
+
+2007-03-25 18:37  daichi
+
+	* libxfce4util/branches/xfce_4_4/po/ChangeLog,
+	  libxfce4util/branches/xfce_4_4/po/ja.po,
+	  libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/ja.po,
+	  mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/ja.po,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/ja.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ja.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ja.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/ja.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/ja.po,
+	  xfce4-icon-theme/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-icon-theme/branches/xfce_4_4/po/ja.po,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/ja.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/ja.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/ja.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/ja.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/ja.po, po/ChangeLog, po/ja.po:
+	  Updated Japanese translations.
+
+2007-03-25 12:28  daichi
+
+	* libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/gl.po,
+	  mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/gl.po,
+	  mousepad/branches/xfce_4_4/po/tr.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/gl.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/sq.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/gl.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/gl.po,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/gl.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/gl.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/gl.po,
+	  xfce4-session/branches/xfce_4_4/po/tr.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/gl.po,
+	  xfdesktop/branches/xfce_4_4/po/tr.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/gl.po, po/ChangeLog, po/gl.po:
+	  Fixed.
+
+2007-03-25 11:51  daichi
+
+	* libxfce4util/branches/xfce_4_4/po/ChangeLog,
+	  libxfce4util/branches/xfce_4_4/po/mk.po,
+	  libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/mk.po,
+	  mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/mk.po,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/mk.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/mk.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/mk.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/mk.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/mk.po,
+	  xfce4-icon-theme/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-icon-theme/branches/xfce_4_4/po/mk.po,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/mk.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/mk.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/mk.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/mk.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/mk.po, po/ChangeLog, po/mk.po:
+	  Removed executable attribute.
+
+2007-03-25 10:40  maximilian
+
+	* libxfce4util/branches/xfce_4_4/po/ChangeLog,
+	  libxfce4util/branches/xfce_4_4/po/en_GB.po,
+	  libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/en_GB.po,
+	  mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/en_GB.po,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/de.po,
+	  xfcalendar/branches/xfce_4_4/po/en_GB.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/en_GB.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/de.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/en_GB.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/en_GB.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/en_GB.po,
+	  xfce4-icon-theme/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-icon-theme/branches/xfce_4_4/po/en_GB.po,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/en_GB.po,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/en_GB.po,
+	  xfce4-panel/branches/xfce_4_4/po/nl.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/en_GB.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/en_GB.po,
+	  xfdesktop/branches/xfce_4_4/po/fr.po,
+	  xfdesktop/branches/xfce_4_4/po/nl.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/en_GB.po, po/ChangeLog, po/en_GB.po:
+	  Fixed minor issues in some German, Dutch and French translations.
+	  
+	  * en_GB: Added new and updated British English translations
+	  by Jeff Bailes <thepizzaking@gmail.com>
+
+2007-03-24 17:10  maximilian
+
+	* mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/de.po,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/de.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/de.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/de.po,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/de.po,
+	  xfce4-icon-theme/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-icon-theme/branches/xfce_4_4/po/de.po,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/de.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/de.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/de.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/de.po, po/ChangeLog, po/de.po: Fixed
+	  some spelling mistakes in the German translations, by Nico
+	  Schümann.
+
+2007-03-21 07:49  stephan
+
+	* mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/nl.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/nl.po,
+	  xfce4-panel/branches/xfce_4_4/po/nl.po,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/nl.po,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/nl.po,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/nl.po, po/ChangeLog, po/nl.po:
+	  Updated Dutch translations
+
+2007-03-18 10:38  erenturkay
+
+	* libxfce4util/branches/xfce_4_4/po/ChangeLog,
+	  libxfce4util/trunk/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/trunk/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/trunk/po/ChangeLog, terminal/trunk/po/ChangeLog,
+	  thunar/trunk/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/trunk/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/trunk/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-icon-theme/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/trunk/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/trunk/po/ChangeLog, po/ChangeLog,
+	  xfwm4/trunk/po/ChangeLog: update ChangeLog
+
+2007-03-17 09:26  olivier
+
+	* NEWS, mcs-plugin/wmtweaks_plugin.c: Do not set toggle workspace
+	  by default as it seems it confuse newcomers.
+
+2007-03-15 22:29  olivier
+
+	* src/stacking.c, src/workspaces.c: Check only visible windows to
+	  see if client is on top of stack (bug #2960)
+
+2007-03-13 21:44  olivier
+
+	* mcs-plugin/xfwm4_plugin.c, src/client.c, src/settings.c: Make the
+	  title button in the xfwm4 settings manager dragable, patch from
+	  Peter de Ridder <cavalier38@gmail.com>, bug #3000)
+
+2007-03-13 21:13  olivier
+
+	* ChangeLog, NEWS, defaults/defaults, doc/C/xfwm4.html,
+	  doc/C/xfwm4.xml, src/client.c, src/events.c, src/settings.c,
+	  src/settings.h: Add new hidden option to instruct xfwm4 not to
+	  bring window back on current workspace when activated (bug #2961)
+
+2007-03-13 06:47  olivier
+
+	* NEWS: Update NEWS file
+
 2007-03-07 21:03  olivier
 
 	* src/client.c, src/netwm.c: Update frame extents when the window
