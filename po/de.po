@@ -67,19 +67,16 @@ msgid "None"
 msgstr "Keine"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Fenster auf die nächste Arbeitsfläche verschieben"
+msgstr "Fenster auf die aktuelle Arbeitsfläche verschieben"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:466
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Fenster auf Arbeitsfläche %d verschieben"
+msgstr "Zur Arbeitsfläche des Fensters wechseln"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:467
-#, fuzzy
 msgid "Do nothing"
-msgstr "Keine Änderung"
+msgstr "Nichts unternehmen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -117,7 +114,7 @@ msgstr "Den normalen ICCCM Fokus-Hinweis beachten"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Wenn sich ein Fenster hervorhebt:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
@@ -205,9 +202,8 @@ msgid "Display full screen overlay windows directly"
 msgstr "Vollbildfenster mit Overlay direkt anzeigen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:680
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Schatten unter Popup-Fenstern anzeigen"
+msgstr "Schatten unter angedockten Fenstern anzeigen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:686
 msgid "Show shadows under regular windows"
@@ -420,9 +416,8 @@ msgid "Focus follows mouse"
 msgstr "Fokus folgt Mauszeiger"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1644
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Dauer, bis ein Fenster in den Vordergrund gebracht wird:"
+msgstr "Dauer, bis ein Fenster den Fokus erhält:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
 msgid "Slow"
