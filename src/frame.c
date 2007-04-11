@@ -38,7 +38,7 @@
 #include "compositor.h"
 
 #ifndef ShapeInput
-#define ShapeInput 2;
+#define ShapeInput 2
 #endif
 
 int
