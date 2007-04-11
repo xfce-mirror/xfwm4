@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-01 16:23+0200\n"
-"PO-Revision-Date: 2007-03-25 12:23+1000\n"
+"PO-Revision-Date: 2007-04-11 08:15+1000\n"
 "Last-Translator: Jeff Bailes <thepizzaking@gmail.com>\n"
 "Language-Team: English/GB\n"
 "MIME-Version: 1.0\n"
@@ -67,19 +67,16 @@ msgid "None"
 msgstr "None"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Move window to next workspace"
+msgstr "Bring window on current workspace"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:466
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Move window to workspace 1"
+msgstr "Switch to window's workspace"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:467
-#, fuzzy
 msgid "Do nothing"
-msgstr "Nothing"
+msgstr "Do nothing"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -114,7 +111,7 @@ msgstr "Honor the standard ICCCM focus hint"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:536
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "When a window raises itself:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
@@ -188,7 +185,7 @@ msgstr "Display full screen overlay windows directly"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:680
 msgid "Show shadows under dock windows"
-msgstr ""
+msgstr "Show shadows under dock windows"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:686
 msgid "Show shadows under regular windows"
@@ -399,9 +396,8 @@ msgid "Focus follows mouse"
 msgstr "Focus follows mouse"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1644
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Delay before raising focused window :"
+msgstr "Delay before window receives focus"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
 msgid "Slow"
@@ -719,7 +715,7 @@ msgstr "Compose shortcut"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:856
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:860
 msgid "No shortcut"
