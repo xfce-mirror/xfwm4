@@ -1,3 +1,8 @@
+4.4.2
+=====
+
+- Fix typo breaking compilation on systems without XShape 1.1 support
+
 4.4.1
 =====
 
