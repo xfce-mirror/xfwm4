@@ -105,7 +105,7 @@ static char *placement_mode = "center";
     "Xfwm/InactiveOpacity"
     "Xfwm/MoveOpacity"
     "Xfwm/PlacementRatio"
-    "Xfwm/Placementmode"
+    "Xfwm/PlacementMode"
     "Xfwm/PopupOpacity"
     "Xfwm/PreventFocusStealing"
     "Xfwm/RaiseWithAnyButton"
@@ -648,7 +648,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (range);
 
     radio_buttons = 
-        create_string_radio_button (mcs_plugin, placement_list, _("Default positionning of  windows without smart placement:"), 
+        create_string_radio_button (mcs_plugin, placement_list, _("Default positionning of windows without smart placement:"), 
                                     "Xfwm/PlacementMode", &placement_mode);
     gtk_box_pack_start (GTK_BOX (vbox), radio_buttons, FALSE, TRUE, 0);
     gtk_widget_show (radio_buttons);
