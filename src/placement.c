@@ -617,6 +617,16 @@ centerPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     c->y = MAX (full_y + frameTop(c) + (full_h - frameHeight(c)) / 2, full_y + frameTop(c));
 }
 
+static void
+mousePlacement (Client * c, int full_x, int full_y, int full_w, int full_h, int mx, int my)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering centerPlacement");
+
+    c->x = CLAMP (mx + frameLeft(c) - frameWidth(c) / 2, full_x + frameLeft(c), full_w - frameWidth(c) + frameLeft(c));
+    c->y = CLAMP (my + frameTop(c) - frameHeight(c) / 2, full_y + frameTop(c), full_h - frameHeight(c) + frameTop(c));
+}
+
 void
 clientInitPosition (Client * c)
 {
@@ -693,7 +703,14 @@ clientInitPosition (Client * c)
             ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h)) ||
             (100 * frameWidth(c) * frameHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
         {
-            centerPlacement (c, full_x, full_y, full_w, full_h);
+            if (screen_info->params->placement_mode == PLACE_MOUSE)
+            {
+                mousePlacement (c, full_x, full_y, full_w, full_h, msx, msy);
+            }
+            else
+            {
+                centerPlacement (c, full_x, full_y, full_w, full_h);
+            }
         }
         else
         {

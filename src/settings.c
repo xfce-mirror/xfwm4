@@ -177,6 +177,22 @@ set_activate_action (ScreenInfo *screen_info, const char *value)
 }
 
 static void
+set_placement_mode (ScreenInfo *screen_info, const char *value)
+{
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (value != NULL);
+
+    if (!g_ascii_strcasecmp ("mouse", value))
+    {
+        screen_info->params->placement_mode = PLACE_MOUSE;
+    }
+    else
+    {
+        screen_info->params->placement_mode = PLACE_CENTER;
+    }
+}
+
+static void
 notify_cb (const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
 {
     ScreenInfo *screen_info;
@@ -502,6 +518,10 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         set_activate_action (screen_info, setting->data.v_string);
                     }
+                    else if (!strcmp (name, "Xfwm/PlacementMode"))
+                    {
+                        set_placement_mode (screen_info, setting->data.v_string);
+                    }
                 }
                 break;
             case MCS_ACTION_DELETED:
@@ -808,6 +828,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setIntValueFromInt ("frame_opacity", setting->data.v_int, rc);
+            mcs_setting_free (setting);
+        }
+        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PlacementMode", CHANNEL5,
+                &setting) == MCS_SUCCESS)
+        {
+            setValue ("placement_mode", setting->data.v_string, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PlacementRatio", CHANNEL5,
@@ -1370,6 +1396,7 @@ loadSettings (ScreenInfo *screen_info)
         {"maximized_offset", NULL, TRUE},
         {"move_opacity", NULL, TRUE},
         {"placement_ratio", NULL, TRUE},
+        {"placement_mode", NULL, TRUE},
         {"popup_opacity", NULL, TRUE},
         {"prevent_focus_stealing", NULL, TRUE},
         {"raise_delay", NULL, TRUE},
@@ -1552,6 +1579,9 @@ loadSettings (ScreenInfo *screen_info)
 
     set_easy_click (screen_info, getValue ("easy_click", rc));
     
+    value = getValue ("placement_mode", rc);
+    set_placement_mode (screen_info, value);
+
     value = getValue ("activate_action", rc);
     set_activate_action (screen_info, value);
 

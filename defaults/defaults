@@ -22,6 +22,7 @@ keytheme=Default
 maximized_offset=0
 move_opacity=100
 placement_ratio=20
+placement_mode=center
 popup_opacity=100
 prevent_focus_stealing=false
 raise_delay=250

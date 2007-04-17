@@ -90,6 +90,9 @@ static int frame_opacity = 100;
 
 static char *easy_click = "Alt";
 static char *activate_action = "bring";
+static char *placement_mode = "center";
+
+
 /* 
     "Xfwm/ActivateAction"
     "Xfwm/BorderlessMaximize"
@@ -102,6 +105,7 @@ static char *activate_action = "bring";
     "Xfwm/InactiveOpacity"
     "Xfwm/MoveOpacity"
     "Xfwm/PlacementRatio"
+    "Xfwm/Placementmode"
     "Xfwm/PopupOpacity"
     "Xfwm/PreventFocusStealing"
     "Xfwm/RaiseWithAnyButton"
@@ -468,6 +472,12 @@ create_dialog (McsPlugin * mcs_plugin)
         {NULL, NULL}
     };
 
+    static const ValuePair placement_list[] = {
+        {N_("Place window under the mouse"), "mouse"},
+        {N_("Place window in the center"), "center"},
+        {NULL, NULL}
+    };
+
     dialog = g_new (Itf, 1);
 
     dialog->mcs_plugin = mcs_plugin;
@@ -636,6 +646,12 @@ create_dialog (McsPlugin * mcs_plugin)
         Q_("Size|Small"), Q_("Size|Large"), "Xfwm/PlacementRatio", 0, 100, 5, &placement_ratio);
     gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
     gtk_widget_show (range);
+
+    radio_buttons = 
+        create_string_radio_button (mcs_plugin, placement_list, _("Default positionning of  windows without smart placement:"), 
+                                    "Xfwm/PlacementMode", &placement_mode);
+    gtk_box_pack_start (GTK_BOX (vbox), radio_buttons, FALSE, TRUE, 0);
+    gtk_widget_show (radio_buttons);
 
     label = gtk_label_new (_("Placement"));
     gtk_widget_show (label);
@@ -873,6 +889,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
     init_int_setting (mcs_plugin, "Xfwm/PopupOpacity", &popup_opacity);
 
     init_string_setting (mcs_plugin, "Xfwm/ActivateAction", &activate_action);
+    init_string_setting (mcs_plugin, "Xfwm/PlacementMode", &placement_mode);
     init_string_setting (mcs_plugin, "Xfwm/EasyClick", &easy_click);
 }
 

@@ -160,6 +160,12 @@ enum
     DBL_CLICK_ACTION_HIDE
 };
 
+enum
+{
+    PLACE_MOUSE,
+    PLACE_CENTER
+};
+
 struct _XfwmColor
 {
     GdkColor col;
@@ -189,6 +195,7 @@ struct _XfwmParams
     int maximized_offset;
     int move_opacity;
     int placement_ratio;
+    int placement_mode;
     int popup_opacity;
     int raise_delay;
     int focus_delay;
