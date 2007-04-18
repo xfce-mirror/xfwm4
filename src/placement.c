@@ -635,6 +635,7 @@ clientInitPosition (Client * c)
     GdkRectangle rect;
     int full_x, full_y, full_w, full_h, msx, msy;
     gint monitor_nbr;
+    gint n_monitors;
     gboolean place = TRUE;
 
     g_return_if_fail (c != NULL);
@@ -643,6 +644,7 @@ clientInitPosition (Client * c)
     clientGravitate (c, APPLY);
 
     screen_info = c->screen_info;
+    n_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
     msx = 0;
     msy = 0;
 
@@ -674,7 +676,10 @@ clientInitPosition (Client * c)
     }
     else
     {
-        getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
+        if ((n_monitors > 1) || (screen_info->params->placement_mode == PLACE_MOUSE))
+        {
+            getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
+        }
         place = TRUE;
     }
 
@@ -699,8 +704,7 @@ clientInitPosition (Client * c)
      */
     if (place)
     {
-        if ((screen_info->params->placement_ratio > 100) ||
-            ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h)) ||
+        if ((screen_info->params->placement_ratio >= 100) ||
             (100 * frameWidth(c) * frameHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
         {
             if (screen_info->params->placement_mode == PLACE_MOUSE)
@@ -711,6 +715,10 @@ clientInitPosition (Client * c)
             {
                 centerPlacement (c, full_x, full_y, full_w, full_h);
             }
+        }
+        else if ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h))
+        {
+            centerPlacement (c, full_x, full_y, full_w, full_h);
         }
         else
         {

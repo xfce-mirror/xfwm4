@@ -193,6 +193,9 @@ cb_string_changed (GtkWidget * widget, gpointer user_data)
     gchar *setting_name = NULL;
     McsPlugin *mcs_plugin = NULL;
 
+    if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
+        return;
+
     setting_name = (gchar *) g_object_get_data (G_OBJECT (widget), "setting-name");
     mcs_plugin = (McsPlugin *) g_object_get_data (G_OBJECT (widget), "mcs-plugin");
 
@@ -253,24 +256,30 @@ static GtkWidget *
 create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label, const gchar * max_label,
                   gchar * setting_name, gint min, gint max, gint step, int *value)
 {
+    GtkWidget *vbox;
     GtkObject *adjustment;
     GtkWidget *scale;
     GtkWidget *table;
     GtkWidget *label_widget;
 
-    table = gtk_table_new (2, 3, FALSE);
-    gtk_container_set_border_width (GTK_CONTAINER (table), BORDER);
+    vbox = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
+    gtk_widget_show (vbox);
 
     label_widget = gtk_label_new (label);
-    gtk_table_attach (GTK_TABLE (table), label_widget, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL),
-        (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label_widget), 0, 0.5);
     gtk_label_set_line_wrap (GTK_LABEL (label_widget), TRUE);
+    gtk_box_pack_start (GTK_BOX (vbox), label_widget, FALSE, TRUE, 0);
     gtk_widget_show (label_widget);
 
+    table = gtk_table_new (1, 3, FALSE);
+    gtk_container_set_border_width (GTK_CONTAINER (table), BORDER);
+    gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, TRUE, 0);
+    gtk_widget_show (table);
+
     label_widget = xfce_create_small_label (min_label);
-    gtk_table_attach (GTK_TABLE (table), label_widget, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL),
+    gtk_table_attach (GTK_TABLE (table), label_widget, 0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL),
         (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label_widget), 1, 0.5);
@@ -278,7 +287,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label
     gtk_widget_show (label_widget);
 
     label_widget = xfce_create_small_label (max_label);
-    gtk_table_attach (GTK_TABLE (table), label_widget, 2, 3, 1, 2, (GtkAttachOptions) (GTK_FILL),
+    gtk_table_attach (GTK_TABLE (table), label_widget, 2, 3, 0, 1, (GtkAttachOptions) (GTK_FILL),
         (GtkAttachOptions) (0), 0, 0);
     gtk_label_set_justify (GTK_LABEL (label_widget), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (label_widget), 0.0, 0.5);
@@ -287,7 +296,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label
     adjustment = gtk_adjustment_new ((gdouble) * value, (gdouble) min, (gdouble) max,
         (gdouble) step, (gdouble) 10 * step, 0);
     scale = gtk_hscale_new (GTK_ADJUSTMENT (adjustment));
-    gtk_table_attach (GTK_TABLE (table), scale, 1, 2, 1, 2,
+    gtk_table_attach (GTK_TABLE (table), scale, 1, 2, 0, 1,
         (GtkAttachOptions) (GTK_EXPAND | GTK_SHRINK | GTK_FILL),
         (GtkAttachOptions) (GTK_FILL), 0, 0);
     gtk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
@@ -299,7 +308,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label
     g_object_set_data (G_OBJECT (scale), "mcs-plugin", mcs_plugin);
     g_signal_connect (G_OBJECT (scale), "value_changed", G_CALLBACK (cb_gint_changed), value);
 
-    return table;
+    return vbox;
 }
 
 static GtkWidget *
@@ -344,17 +353,17 @@ create_option_menu (McsPlugin * mcs_plugin, const gchar *const values[],
 }
 
 static GtkWidget *
-create_string_radio_button (McsPlugin * mcs_plugin, const ValuePair const values[], 
+create_string_radio_button (McsPlugin * mcs_plugin, const ValuePair values[], 
                             const gchar * label, gchar * setting_name, gchar ** value)
 {
     GtkWidget *vbox1, *vbox2;
-    GtkWidget *frame;
     GtkWidget *radio_button;
     GtkWidget *label_widget;
     GSList *group;
     guint n;
 
-    vbox1 = gtk_vbox_new (FALSE, 0);
+    vbox1 = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox1), BORDER);
     gtk_widget_show (vbox1);
 
     label_widget = gtk_label_new (label);
@@ -364,12 +373,10 @@ create_string_radio_button (McsPlugin * mcs_plugin, const ValuePair const values
     gtk_box_pack_start (GTK_BOX (vbox1), label_widget, FALSE, TRUE, 2);
     gtk_widget_show (label_widget);
 
-    vbox2 = gtk_vbox_new (FALSE, 0);
+    vbox2 = gtk_vbox_new (FALSE, BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox2), BORDER);
+    gtk_box_pack_start (GTK_BOX (vbox1), vbox2, FALSE, TRUE, 0);
     gtk_widget_show (vbox2);
-
-    frame = xfce_create_framebox_with_content (NULL, vbox2);
-    gtk_box_pack_start (GTK_BOX (vbox1), frame, FALSE, TRUE, 0);
-    gtk_widget_show (frame);
 
     group = NULL;
     n = 0;
@@ -678,8 +685,8 @@ create_dialog (McsPlugin * mcs_plugin)
         gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
         gtk_widget_show (check_button);
 
-        compositor_options_vbox = gtk_vbox_new (FALSE, 0);
-        gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
+        compositor_options_vbox = gtk_vbox_new (FALSE, BORDER);
+        gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);
         gtk_container_add (GTK_CONTAINER (vbox), compositor_options_vbox);
         gtk_widget_show (compositor_options_vbox);
 
