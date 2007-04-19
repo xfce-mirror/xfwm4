@@ -623,8 +623,14 @@ mousePlacement (Client * c, int full_x, int full_y, int full_w, int full_h, int 
     g_return_if_fail (c != NULL);
     TRACE ("entering centerPlacement");
 
-    c->x = CLAMP (mx + frameLeft(c) - frameWidth(c) / 2, full_x + frameLeft(c), full_w - frameWidth(c) + frameLeft(c));
-    c->y = CLAMP (my + frameTop(c) - frameHeight(c) / 2, full_y + frameTop(c), full_h - frameHeight(c) + frameTop(c));
+    c->x = mx + frameLeft(c) - frameWidth(c) / 2;
+    c->y = my + frameTop(c) - frameHeight(c) / 2;
+
+    c->x = MIN (c->x, full_x + full_w - frameWidth(c) + frameLeft(c));
+    c->y = MIN (c->y, full_y + full_h - frameHeight(c) + frameTop(c));
+
+    c->x = MAX (c->x, full_x + frameLeft(c));
+    c->y = MAX (c->y, full_y + frameTop(c));
 }
 
 void
