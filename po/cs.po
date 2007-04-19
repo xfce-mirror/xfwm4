@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-01 16:23+0200\n"
+"POT-Creation-Date: 2007-04-19 22:42+0200\n"
 "PO-Revision-Date: 2006-10-10 23:26+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -54,7 +54,7 @@ msgstr "Pracovní plochy a okraje"
 msgid "Workspaces and Margins"
 msgstr "Pracovní plochy a okraje"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:623
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Pracovní plochy"
@@ -63,189 +63,202 @@ msgstr "Pracovní plochy"
 msgid "Margins"
 msgstr "Okraje"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:460
+#: ../mcs-plugin/wmtweaks_plugin.c:471
 msgid "None"
 msgstr "Nic"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:465
+#: ../mcs-plugin/wmtweaks_plugin.c:476
 #, fuzzy
 msgid "Bring window on current workspace"
 msgstr "Přesunout okno na další pracovní plochu"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:477
 #, fuzzy
 msgid "Switch to window's workspace"
 msgstr "Přesunout okno na pracovní plochu %d"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:478
 #, fuzzy
 msgid "Do nothing"
 msgstr "Nic"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:476
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Place window under the mouse"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:484
+msgid "Place window in the center"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Pokročilá nastavení správce oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:495
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Přeskočit okna s nastavenou vlastností \"vynechat v přepínači ploch\" nebo "
 "\"vynechat v panelu úloh\""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:501
+#: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Zahrnout skrytá (minimalizovaná) okna"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:507
+#: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Cycle through windows from all workspaces"
 msgstr "Procházet okna ze všech pracovních ploch"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:512
+#: ../mcs-plugin/wmtweaks_plugin.c:529
 msgid "Cycling"
 msgstr "Procházení"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:524
+#: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Activate focus stealing prevention"
 msgstr "Předejít ztrátě zaměření okna"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:530
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Dodržovat standardní ICCCM focus hint"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:536
+#: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
 msgstr "Zaměření"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Key used to grab and move windows"
 msgstr "Klávesa pro uchopení a přesun oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:576
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Přenést okno do popředí po stisknutí libovolného tlačítka myši"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:583
 msgid "Hide frame of windows when maximized"
 msgstr "Při maximalizaci skrýt okraje okna"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:573
+#: ../mcs-plugin/wmtweaks_plugin.c:590
 msgid "Restore original size of maximized windows when moving"
 msgstr "Při přesunu obnovit původní velikost u maximalizovaných oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:579
+#: ../mcs-plugin/wmtweaks_plugin.c:596
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Použít odolnost okrajů namísto přichytávání oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:584
+#: ../mcs-plugin/wmtweaks_plugin.c:601
 msgid "Accessibility"
 msgstr "Přístupnost"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:614
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Přepínat plochy pomocí kolečka myši nad plochou"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:604
+#: ../mcs-plugin/wmtweaks_plugin.c:621
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Zapamatovat si a znovu vyvolat předchozí plochu při přepínání zkratkovými "
 "klávesami"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:611
+#: ../mcs-plugin/wmtweaks_plugin.c:628
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Přecházet na plochy podle jejich aktuálního rozmístění"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:618
+#: ../mcs-plugin/wmtweaks_plugin.c:635
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Přecházet při dosažení první nebo poslední pracovní plochy"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:635
+#: ../mcs-plugin/wmtweaks_plugin.c:652
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Nejmenší velikost oken pro použití chytrého umístění"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:636
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Small"
 msgstr "Malá"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:636
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Large"
 msgstr "Velká"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/wmtweaks_plugin.c:658
+#, fuzzy
+msgid "Default positionning of windows without smart placement:"
+msgstr "Nejmenší velikost oken pro použití chytrého umístění"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
 msgstr "Umisťování"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:660
+#: ../mcs-plugin/wmtweaks_plugin.c:683
 msgid "Enable display compositing"
 msgstr "Používat kompozitor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:674
+#: ../mcs-plugin/wmtweaks_plugin.c:697
 msgid "Display full screen overlay windows directly"
 msgstr "Použít přímé zobrazování pro okna v režimu celá obrazovka"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:680
+#: ../mcs-plugin/wmtweaks_plugin.c:703
 #, fuzzy
 msgid "Show shadows under dock windows"
 msgstr "Zobrazovat stíny pod vyskakovacími okny"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:686
+#: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
 msgstr "Zobrazovat stíny pod běžnými okny"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:692
+#: ../mcs-plugin/wmtweaks_plugin.c:715
 msgid "Show shadows under popup windows"
 msgstr "Zobrazovat stíny pod vyskakovacími okny"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698
+#: ../mcs-plugin/wmtweaks_plugin.c:721
 msgid "Opacity of window decorations"
 msgstr "Průhlednost dekorací oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698 ../mcs-plugin/wmtweaks_plugin.c:704
-#: ../mcs-plugin/wmtweaks_plugin.c:710 ../mcs-plugin/wmtweaks_plugin.c:716
-#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Transparent"
 msgstr "Průhledné"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:699 ../mcs-plugin/wmtweaks_plugin.c:705
-#: ../mcs-plugin/wmtweaks_plugin.c:711 ../mcs-plugin/wmtweaks_plugin.c:717
-#: ../mcs-plugin/wmtweaks_plugin.c:723
+#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:746
 msgid "Opaque"
 msgstr "Neprůhledné"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:704
+#: ../mcs-plugin/wmtweaks_plugin.c:727
 msgid "Opacity of inactive windows"
 msgstr "Průhlednost neaktivních oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:710
+#: ../mcs-plugin/wmtweaks_plugin.c:733
 msgid "Opacity of windows during move"
 msgstr "Průhlednost oken při přesunu"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:716
+#: ../mcs-plugin/wmtweaks_plugin.c:739
 msgid "Opacity of windows during resize"
 msgstr "Průhlednost oken při změně velikosti"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Opacity of popup windows"
 msgstr "Průhlednost vyskakovacích oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:750
 msgid "Compositor"
 msgstr "Kompozitor"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:769
+#: ../mcs-plugin/wmtweaks_plugin.c:792
 msgid "Button Label|Window Manager Tweaks"
 msgstr ""
 "Pokročilá nastavení\n"
 "správce oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:890 ../mcs-plugin/xfwm4_plugin.c:2425
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2425
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Tato nastavení nebudou pracovat se současným správcem oken (%s)"
@@ -821,12 +834,12 @@ msgstr "Pracovní plocha %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponentě GtkMenu se nepodařilo uchopit ukazatel\n"
 
-#: ../src/settings.c:953
+#: ../src/settings.c:979
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nelze přidělit barvu %s\n"
 
-#: ../src/settings.c:959
+#: ../src/settings.c:985
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nelze zpracovat barvu %s\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-01 16:23+0200\n"
+"POT-Creation-Date: 2007-04-19 22:42+0200\n"
 "PO-Revision-Date: 2007-04-07 23:23+0300\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -16,14 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
 msgstr "Поля робочої області"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Поля - це області на краях екрану, у яких не розташовуватимуться вікна"
 
 #: ../mcs-plugin/margins.c:167
@@ -51,7 +53,7 @@ msgstr "Робочі області та поля"
 msgid "Workspaces and Margins"
 msgstr "Робочі області та поля"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:623
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Робочі області"
@@ -60,188 +62,207 @@ msgstr "Робочі області"
 msgid "Margins"
 msgstr "Поля"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:460
+#: ../mcs-plugin/wmtweaks_plugin.c:471
 msgid "None"
 msgstr "Немає"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:465
+#: ../mcs-plugin/wmtweaks_plugin.c:476
 msgid "Bring window on current workspace"
 msgstr "Перемістити вікно на поточну робочу область"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:477
 msgid "Switch to window's workspace"
 msgstr "Перемкнути вікна робочої області"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Do nothing"
 msgstr "Нічого не робити"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:476
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Place window under the mouse"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:484
+msgid "Place window in the center"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Менеджер вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:495
-msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#: ../mcs-plugin/wmtweaks_plugin.c:512
+msgid ""
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Пропускати вікна, у яких встановлено властивість \"не відображати в "
 "перемикачі робочих областей\" або \"не відображати на панелі задач\""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:501
+#: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Включити приховані (згорнуті) вінка"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:507
+#: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Cycle through windows from all workspaces"
 msgstr "Перемикатися між вікнами, що розташовані на усіх робочих областях"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:512
+#: ../mcs-plugin/wmtweaks_plugin.c:529
 msgid "Cycling"
 msgstr "Перемикання вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:524
+#: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Activate focus stealing prevention"
 msgstr "Активувати запобігання викраденню фокусу вікна"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:530
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Враховувати стандартні підказки фокусу ICCCM"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:536
+#: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
 msgstr "Коли вікно піднімається:"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
 msgstr "Фокус вікна"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Key used to grab and move windows"
 msgstr "Ключ, що використовується для захоплення та переміщення вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:576
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Піднімати вікна при натисканні будь-якої кнопки миші"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:583
 msgid "Hide frame of windows when maximized"
 msgstr "Ховати рамку розгорнутого вікна"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:573
+#: ../mcs-plugin/wmtweaks_plugin.c:590
 msgid "Restore original size of maximized windows when moving"
 msgstr "Відновлювати початковий розмір розгорнутого вікна при переміщенні"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:579
+#: ../mcs-plugin/wmtweaks_plugin.c:596
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Використовувати опір меж вікна замість прилипання"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:584
+#: ../mcs-plugin/wmtweaks_plugin.c:601
 msgid "Accessibility"
 msgstr "Доступність"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:614
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr "Перемикати робочі області використовуючи колесо миші над робочим столом"
+msgstr ""
+"Перемикати робочі області використовуючи колесо миші над робочим столом"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:604
-msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#: ../mcs-plugin/wmtweaks_plugin.c:621
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Запам'ятовувати та повертатись до попереднього робочого місця при "
 "перемиканні комбінаціями клавіш"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:611
+#: ../mcs-plugin/wmtweaks_plugin.c:628
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr ""
 "Переходити на іншу робочу область в залежності від дійсного розташування "
 "стільниць"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:618
+#: ../mcs-plugin/wmtweaks_plugin.c:635
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr ""
 "Переходити на іншу робочу область при досягненні першої чи останньої робочої "
 "області"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:635
+#: ../mcs-plugin/wmtweaks_plugin.c:652
 msgid "Minimum size of windows to trigger smart placement"
-msgstr "Мінімальний розмір вікон, при якому буде увімкнено розумне розташування"
+msgstr ""
+"Мінімальний розмір вікон, при якому буде увімкнено розумне розташування"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:636
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Small"
 msgstr "Маленький"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:636
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Large"
 msgstr "Великий"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/wmtweaks_plugin.c:658
+#, fuzzy
+msgid "Default positionning of windows without smart placement:"
+msgstr ""
+"Мінімальний розмір вікон, при якому буде увімкнено розумне розташування"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
 msgstr "Розташування"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:660
+#: ../mcs-plugin/wmtweaks_plugin.c:683
 msgid "Enable display compositing"
 msgstr "Увімкнути ефекти дисплею"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:674
+#: ../mcs-plugin/wmtweaks_plugin.c:697
 msgid "Display full screen overlay windows directly"
 msgstr "Напряму відображати розгорнуті вікна, що перекриваються"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:680
+#: ../mcs-plugin/wmtweaks_plugin.c:703
 msgid "Show shadows under dock windows"
 msgstr "Відображати тіні під контекстними вікнами"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:686
+#: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
 msgstr "Відображати тіні під звичайними вікнами"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:692
+#: ../mcs-plugin/wmtweaks_plugin.c:715
 msgid "Show shadows under popup windows"
 msgstr "Відображати тіні під спливаючими вікнами"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698
+#: ../mcs-plugin/wmtweaks_plugin.c:721
 msgid "Opacity of window decorations"
 msgstr "Прозорість оформлення вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698 ../mcs-plugin/wmtweaks_plugin.c:704
-#: ../mcs-plugin/wmtweaks_plugin.c:710 ../mcs-plugin/wmtweaks_plugin.c:716
-#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Transparent"
 msgstr "Прозорі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:699 ../mcs-plugin/wmtweaks_plugin.c:705
-#: ../mcs-plugin/wmtweaks_plugin.c:711 ../mcs-plugin/wmtweaks_plugin.c:717
-#: ../mcs-plugin/wmtweaks_plugin.c:723
+#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:746
 msgid "Opaque"
 msgstr "Непрозорі"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:704
+#: ../mcs-plugin/wmtweaks_plugin.c:727
 msgid "Opacity of inactive windows"
 msgstr "Прозорість неактивних вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:710
+#: ../mcs-plugin/wmtweaks_plugin.c:733
 msgid "Opacity of windows during move"
 msgstr "Прозорість вікна при переміщенні"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:716
+#: ../mcs-plugin/wmtweaks_plugin.c:739
 msgid "Opacity of windows during resize"
 msgstr "Прозорість вікон при зміні розміру"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Opacity of popup windows"
 msgstr "Прозорість спливаючих вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:750
 msgid "Compositor"
 msgstr "Укладач"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:769
+#: ../mcs-plugin/wmtweaks_plugin.c:792
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Менеджер вікон"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:890 ../mcs-plugin/xfwm4_plugin.c:2425
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2425
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Ці параметри не можуть працювати з вашим поточним менеджером вікон (%s)"
+msgstr ""
+"Ці параметри не можуть працювати з вашим поточним менеджером вікон (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -471,7 +492,8 @@ msgstr "Переходити на іншу робочу область при д
 
 #: ../mcs-plugin/xfwm4_plugin.c:1836
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Переходити на іншу робочу область при перетягуванні вікна за межі екрану"
+msgstr ""
+"Переходити на іншу робочу область при перетягуванні вікна за межі екрану"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1846
 msgid "Edge Resistance :"
@@ -813,12 +835,12 @@ msgstr "Робочу область %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
 
-#: ../src/settings.c:953
+#: ../src/settings.c:979
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Неможливо розподілити колір %s\n"
 
-#: ../src/settings.c:959
+#: ../src/settings.c:985
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Неможливо проаналізувати колір %s\n"
@@ -846,4 +868,3 @@ msgstr "Параметри робочих областей"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Параметри робочих областей Xfce 4"
-

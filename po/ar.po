@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-01 16:23+0200\n"
+"POT-Creation-Date: 2007-04-19 22:42+0200\n"
 "PO-Revision-Date: 2007-01-30 15:22+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -62,7 +62,7 @@ msgid "Workspaces and Margins"
 msgstr "مساحات العمل و الهوامش"
 
 # 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:623
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "مساحات العمل"
@@ -71,184 +71,197 @@ msgstr "مساحات العمل"
 msgid "Margins"
 msgstr "الهوامش"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:460
+#: ../mcs-plugin/wmtweaks_plugin.c:471
 msgid "None"
 msgstr "لا شيء"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:465
+#: ../mcs-plugin/wmtweaks_plugin.c:476
 #, fuzzy
 msgid "Bring window on current workspace"
 msgstr "انقل النافذة لمساحة العمل التالية"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:477
 #, fuzzy
 msgid "Switch to window's workspace"
 msgstr "انقل النافذة لمساحة العمل %d"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:478
 #, fuzzy
 msgid "Do nothing"
 msgstr "ﻻ شيء"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:476
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Place window under the mouse"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:484
+msgid "Place window in the center"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "تضبيطات لمدير النوافذ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:495
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr "تخطّى النوافذ ذات الخصائص \"skip pager\" أو \"skip taskbar\""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:501
+#: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "تضمّن النوافذ المخفيّة ( أي المصغرة إلى قياس أيقونات)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:507
+#: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Cycle through windows from all workspaces"
 msgstr "دُر على كلّ النوافذ من كلّ مساحات العمل"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:512
+#: ../mcs-plugin/wmtweaks_plugin.c:529
 msgid "Cycling"
 msgstr "دوران"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:524
+#: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Activate focus stealing prevention"
 msgstr "نشِّط منع سرقة البؤرة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:530
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Honor the standard ICCCM focus hint"
 msgstr "احترم تلميح بؤرة ICCCM القياسي"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:536
+#: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
 msgstr "بُؤرة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Key used to grab and move windows"
 msgstr "المفتاح المستخدم لالتقاط ونقل النوافذ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:576
 msgid "Raise windows when any mouse button is pressed"
 msgstr "ارفع النوافذ عند ضغط على أي زرّ للفأرة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:583
 msgid "Hide frame of windows when maximized"
 msgstr "إخفي إطار النافذة عند تكبير النوافذ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:573
+#: ../mcs-plugin/wmtweaks_plugin.c:590
 msgid "Restore original size of maximized windows when moving"
 msgstr "عند تحريك النوافذ ، إستعد قياسها الأصلي"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:579
+#: ../mcs-plugin/wmtweaks_plugin.c:596
 msgid "Use edge resistance instead of windows snapping"
 msgstr "استخدم مقاومة الحواف بدلا من جذب النوافذ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:584
+#: ../mcs-plugin/wmtweaks_plugin.c:601
 msgid "Accessibility"
 msgstr "إتاحة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:614
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "بدّل مساحات العمل مستعملاً عجلة الفأرة فوق سطح المكتب"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:604
+#: ../mcs-plugin/wmtweaks_plugin.c:621
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "تذكّر و استدعي مساحة العمل السابقة عند التبديل بواسطة إختصارات لوحة المفاتيح"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:611
+#: ../mcs-plugin/wmtweaks_plugin.c:628
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "لف مساحات العمل طبقا لهيئة سطح المكتب الفعليّة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:618
+#: ../mcs-plugin/wmtweaks_plugin.c:635
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "لف حول مساحات العمل عند الوصول للأولى أو الأخيرة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:635
+#: ../mcs-plugin/wmtweaks_plugin.c:652
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "قياس النوافذ الأدنى لإطلاق الموضع الذكي"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:636
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Small"
 msgstr "Size|صغير"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:636
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Large"
 msgstr "Size|كبير"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/wmtweaks_plugin.c:658
+#, fuzzy
+msgid "Default positionning of windows without smart placement:"
+msgstr "قياس النوافذ الأدنى لإطلاق الموضع الذكي"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
 msgstr "وضع"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:660
+#: ../mcs-plugin/wmtweaks_plugin.c:683
 msgid "Enable display compositing"
 msgstr "فعِّل مزج العرض"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:674
+#: ../mcs-plugin/wmtweaks_plugin.c:697
 msgid "Display full screen overlay windows directly"
 msgstr "اعرض نوافذ تغطية ملء الشاشة مباشرة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:680
+#: ../mcs-plugin/wmtweaks_plugin.c:703
 #, fuzzy
 msgid "Show shadows under dock windows"
 msgstr "أظهر ظل تحت النوافذ المنبثقة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:686
+#: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
 msgstr "أظهر ظل تحت النوافذ العاديّة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:692
+#: ../mcs-plugin/wmtweaks_plugin.c:715
 msgid "Show shadows under popup windows"
 msgstr "أظهر ظل تحت النوافذ المنبثقة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698
+#: ../mcs-plugin/wmtweaks_plugin.c:721
 msgid "Opacity of window decorations"
 msgstr "عتامة زينة النافذة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698 ../mcs-plugin/wmtweaks_plugin.c:704
-#: ../mcs-plugin/wmtweaks_plugin.c:710 ../mcs-plugin/wmtweaks_plugin.c:716
-#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Transparent"
 msgstr "شفّاف"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:699 ../mcs-plugin/wmtweaks_plugin.c:705
-#: ../mcs-plugin/wmtweaks_plugin.c:711 ../mcs-plugin/wmtweaks_plugin.c:717
-#: ../mcs-plugin/wmtweaks_plugin.c:723
+#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:746
 msgid "Opaque"
 msgstr "معتّم"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:704
+#: ../mcs-plugin/wmtweaks_plugin.c:727
 msgid "Opacity of inactive windows"
 msgstr "عتامة النوافذ غير النشطة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:710
+#: ../mcs-plugin/wmtweaks_plugin.c:733
 msgid "Opacity of windows during move"
 msgstr "عتامة النوافذ خلال التحريك"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:716
+#: ../mcs-plugin/wmtweaks_plugin.c:739
 msgid "Opacity of windows during resize"
 msgstr "عتامة النوافذ خلال تغيير القياس"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Opacity of popup windows"
 msgstr "عتامة النوافذ المنبثقة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:750
 msgid "Compositor"
 msgstr "المازج"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:769
+#: ../mcs-plugin/wmtweaks_plugin.c:792
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Button Label|تضبيطات مدير النوافذ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:890 ../mcs-plugin/xfwm4_plugin.c:2425
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2425
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "لا يمكن لهذه الإعدادات أن تعمل مع مدير نوافذك الحالي (%s)"
@@ -830,12 +843,12 @@ msgstr "مساحة العمل %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
 
-#: ../src/settings.c:953
+#: ../src/settings.c:979
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: تعذّر تخصيص اللون %s\n"
 
-#: ../src/settings.c:959
+#: ../src/settings.c:985
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: تعذّر تحليل اللون %s\n"

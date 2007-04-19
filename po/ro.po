@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-01 16:23+0200\n"
+"POT-Creation-Date: 2007-04-19 22:42+0200\n"
 "PO-Revision-Date: 2007-01-21 01:39+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -53,7 +53,7 @@ msgstr "Spaţii şi Margini"
 msgid "Workspaces and Margins"
 msgstr "Spaţii de lucru şi margini"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:623
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Spaţii de lucru"
@@ -62,185 +62,198 @@ msgstr "Spaţii de lucru"
 msgid "Margins"
 msgstr "Margini"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:460
+#: ../mcs-plugin/wmtweaks_plugin.c:471
 msgid "None"
 msgstr "Niciuna"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:465
+#: ../mcs-plugin/wmtweaks_plugin.c:476
 #, fuzzy
 msgid "Bring window on current workspace"
 msgstr "Mutare fereastră în spaţiul următor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:466
+#: ../mcs-plugin/wmtweaks_plugin.c:477
 #, fuzzy
 msgid "Switch to window's workspace"
 msgstr "Mutare fereastră în spaţiul de lucru %d"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:467
+#: ../mcs-plugin/wmtweaks_plugin.c:478
 #, fuzzy
 msgid "Do nothing"
 msgstr "Nimic"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:476
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Place window under the mouse"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:484
+msgid "Place window in the center"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
 msgstr "Preferinţe avansate ferestre"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:495
+#: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "Nu include ferestrele cu proprietăţi de tip „skip pager” sau „skip taskbar”"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:501
+#: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
 msgstr "Include ferestrele ascunse (minimizate)"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:507
+#: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Cycle through windows from all workspaces"
 msgstr "Schimbă focusul între ferestrele din toate spaţiile de lucru"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:512
+#: ../mcs-plugin/wmtweaks_plugin.c:529
 msgid "Cycling"
 msgstr "Schimbare focus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:524
+#: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Activate focus stealing prevention"
 msgstr "Protejează focusul ferestrei curente"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:530
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Respectă standardul ICCCM"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:536
+#: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:541 ../mcs-plugin/xfwm4_plugin.c:1751
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1751
 msgid "Focus"
 msgstr "Focus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../mcs-plugin/wmtweaks_plugin.c:570
 msgid "Key used to grab and move windows"
 msgstr "Tastă pentru prinderea şi mutarea ferestrelor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:559
+#: ../mcs-plugin/wmtweaks_plugin.c:576
 msgid "Raise windows when any mouse button is pressed"
 msgstr "Ridică ferestrele la apăsarea oricărui buton de maus"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:566
+#: ../mcs-plugin/wmtweaks_plugin.c:583
 msgid "Hide frame of windows when maximized"
 msgstr "Ascunde cadrul ferestrelor la maximizare"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:573
+#: ../mcs-plugin/wmtweaks_plugin.c:590
 msgid "Restore original size of maximized windows when moving"
 msgstr "Utilizează mărimea iniţială la mutarea ferestrelor maximizate"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:579
+#: ../mcs-plugin/wmtweaks_plugin.c:596
 msgid "Use edge resistance instead of windows snapping"
 msgstr "Utilizează rezistenţa la margini în loc de potrivire"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:584
+#: ../mcs-plugin/wmtweaks_plugin.c:601
 msgid "Accessibility"
 msgstr "Accesibilitate"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:614
 msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Comută spaţiile de lucru cu rotiţa de maus deasupra desktopului"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:604
+#: ../mcs-plugin/wmtweaks_plugin.c:621
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Reţine spaţiul de lucru precedent la comutarea din tastatură şi revino la el"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:611
+#: ../mcs-plugin/wmtweaks_plugin.c:628
 msgid "Wrap workspaces depending on the actual desktop layout"
 msgstr "Comută între spaţiile de lucru în funcţie de dispunerea desktopului"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:618
+#: ../mcs-plugin/wmtweaks_plugin.c:635
 msgid "Wrap workspaces when the first or last workspace is reached"
 msgstr "Comută între primul şi ultimul spaţiu de lucru"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:635
+#: ../mcs-plugin/wmtweaks_plugin.c:652
 msgid "Minimum size of windows to trigger smart placement"
 msgstr "Mărime minimă a ferestrelor ce vor fi plasate inteligent"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:636
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Small"
 msgstr "Mică"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:636
+#: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Large"
 msgstr "Mare"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/wmtweaks_plugin.c:658
+#, fuzzy
+msgid "Default positionning of windows without smart placement:"
+msgstr "Mărime minimă a ferestrelor ce vor fi plasate inteligent"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
 msgstr "Plasare"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:660
+#: ../mcs-plugin/wmtweaks_plugin.c:683
 msgid "Enable display compositing"
 msgstr "Activează compozitorul ecranului"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:674
+#: ../mcs-plugin/wmtweaks_plugin.c:697
 msgid "Display full screen overlay windows directly"
 msgstr "Randează direct ferestrele overlay pe tot ecranul"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:680
+#: ../mcs-plugin/wmtweaks_plugin.c:703
 #, fuzzy
 msgid "Show shadows under dock windows"
 msgstr "Desenează umbre sub ferestrele popup"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:686
+#: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
 msgstr "Desenează umbre sub ferestrele obişnuite"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:692
+#: ../mcs-plugin/wmtweaks_plugin.c:715
 msgid "Show shadows under popup windows"
 msgstr "Desenează umbre sub ferestrele popup"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698
+#: ../mcs-plugin/wmtweaks_plugin.c:721
 msgid "Opacity of window decorations"
 msgstr "Opacitate decoraţii ferestre"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:698 ../mcs-plugin/wmtweaks_plugin.c:704
-#: ../mcs-plugin/wmtweaks_plugin.c:710 ../mcs-plugin/wmtweaks_plugin.c:716
-#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Transparent"
 msgstr "Transparente"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:699 ../mcs-plugin/wmtweaks_plugin.c:705
-#: ../mcs-plugin/wmtweaks_plugin.c:711 ../mcs-plugin/wmtweaks_plugin.c:717
-#: ../mcs-plugin/wmtweaks_plugin.c:723
+#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:746
 msgid "Opaque"
 msgstr "Opace"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:704
+#: ../mcs-plugin/wmtweaks_plugin.c:727
 msgid "Opacity of inactive windows"
 msgstr "Opacitate ferestre inactive"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:710
+#: ../mcs-plugin/wmtweaks_plugin.c:733
 msgid "Opacity of windows during move"
 msgstr "Opacitate la mutarea ferestrelor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:716
+#: ../mcs-plugin/wmtweaks_plugin.c:739
 msgid "Opacity of windows during resize"
 msgstr "Opacitate la redimensionarea ferestrelor"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Opacity of popup windows"
 msgstr "Opacitate ferestre popup"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:750
 msgid "Compositor"
 msgstr "Compozitor"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:769
+#: ../mcs-plugin/wmtweaks_plugin.c:792
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Preferinţe avansate ferestre"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:890 ../mcs-plugin/xfwm4_plugin.c:2425
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2425
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -818,12 +831,12 @@ msgstr "Spaţiul de lucru %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nu a putut captura cursorul\n"
 
-#: ../src/settings.c:953
+#: ../src/settings.c:979
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nu se poate aloca culoarea %s\n"
 
-#: ../src/settings.c:959
+#: ../src/settings.c:985
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nu se poate prelucra culoarea %s\n"
