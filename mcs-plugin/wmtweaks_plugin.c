@@ -274,7 +274,7 @@ create_int_range (McsPlugin * mcs_plugin, gchar * label, const gchar * min_label
     gtk_widget_show (label_widget);
 
     table = gtk_table_new (1, 3, FALSE);
-    gtk_container_set_border_width (GTK_CONTAINER (table), BORDER);
+    gtk_container_set_border_width (GTK_CONTAINER (table), 0);
     gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, TRUE, 0);
     gtk_widget_show (table);
 
@@ -373,8 +373,8 @@ create_string_radio_button (McsPlugin * mcs_plugin, const ValuePair values[],
     gtk_box_pack_start (GTK_BOX (vbox1), label_widget, FALSE, TRUE, 2);
     gtk_widget_show (label_widget);
 
-    vbox2 = gtk_vbox_new (FALSE, BORDER);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox2), BORDER);
+    vbox2 = gtk_vbox_new (FALSE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (vbox2), 0);
     gtk_box_pack_start (GTK_BOX (vbox1), vbox2, FALSE, TRUE, 0);
     gtk_widget_show (vbox2);
 
