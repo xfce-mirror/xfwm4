@@ -109,7 +109,12 @@ clientIsTransientFor (Client * c1, Client * c2)
         {
             return (c1->transient_for == c2->window);
         }
-        else if (c2->transient_for != c2->screen_info->xroot)
+        /*
+         * Transients for group shouldn't apply to other transients, or 
+         * it breaks stacking for some apps, noticeably mozilla "save as" 
+         * dialog...
+         */
+        else if (c2->transient_for == None)
         {
             return (clientSameGroup (c1, c2));
         }
