@@ -5,6 +5,7 @@ EXTRA_DIST =								\
 	intltool-extract.in						\
 	intltool-merge.in						\
 	intltool-update.in						\
+	xfwm4.spec							\
 	COMPOSITOR
 
 DISTCLEANFILES =							\
