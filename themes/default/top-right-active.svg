@@ -27,7 +27,7 @@
          offset="0"
          id="stop1888" />
       <stop
-         style="stop-color:white;stop-opacity:0.25;"
+         style="stop-color:white;stop-opacity:0.05;"
          offset="1"
          id="stop1890" />
     </linearGradient>
@@ -55,7 +55,7 @@
       <stop
          id="stop2776"
          offset="1"
-         style="stop-color:black;stop-opacity:0.10;" />
+         style="stop-color:black;stop-opacity:0.05;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -65,7 +65,7 @@
        x1="0"
        y1="0.5"
        x2="0"
-       y2="24.5"
+       y2="12"
        gradientTransform="matrix(1,0,0,1,0,0)" />
     <linearGradient
        inkscape:collect="always"
@@ -145,12 +145,12 @@
      id="layer3"
      inkscape:label="hilight">
     <path
-       style="fill:url(#linearGradient6962);fill-opacity:0.30;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:url(#linearGradient6962);fill-opacity:0.40;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
        d="M 0,1 L 2.25,1 C 2.25,1 6,1 6,4 C 6,4 5.25,4 5.25,4 L 0,4 L 0,3 z "
        id="path6061" />
     <path
-       style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:0.50;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,1 L 5,1 C 5,1 7,1 7,4 L 7,8 C 7,8 7,13 2,13 L 0,13 L 0,13 L 0,1 z "
+       style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:0.75;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 0,1 L 5,1 C 5,1 7,1 7,4 L 7,10 C 7,10 7,15 2,15 L 0,15 L 0,15 L 0,1 z "
        id="path1884" />
   </g>
   <g
