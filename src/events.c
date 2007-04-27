@@ -359,7 +359,7 @@ getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
     int key, state;
 
     state = ev->state & MODIFIER_MASK;
-    for (key = 0; key < KEY_LAST; key++)
+    for (key = 0; key < KEY_COUNT; key++)
     {
         if ((screen_info->params->keys[key].keycode == ev->keycode)
             && (screen_info->params->keys[key].modifier == state))

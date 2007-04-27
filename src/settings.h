@@ -136,7 +136,6 @@ enum
     KEY_WORKSPACE_12,
     KEY_COUNT
 };
-#define KEY_LAST (KEY_COUNT - 1)
 
 enum
 {
