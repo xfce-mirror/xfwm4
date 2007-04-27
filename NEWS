@@ -1,6 +1,9 @@
 4.4.2
 =====
 
+- Fix wrong count of key shortcut causing switch to last workspace
+  on modifier key press if no window is focused (Bug #3191)
+- Fix spec file missing from the tar ball causing 'make dist' to fail
 - Fix strick bound checking causing wrong window to be focused in focus 
   follow mouse (Bug #2781)
 - Transients for group shouldn't apply to other transients, or it breaks 
