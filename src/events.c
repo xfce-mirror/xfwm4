@@ -354,7 +354,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     {
         screen_info = c->screen_info;
         key = getKeyPressed (screen_info, ev);
-	status = EVENT_FILTER_REMOVE;
+        status = EVENT_FILTER_REMOVE;
 
         switch (key)
         {

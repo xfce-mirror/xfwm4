@@ -46,12 +46,12 @@ int                      getModifierMap                         (char *);
 void                     parseKeyString                         (Display *, 
                                                                  MyKey *, 
                                                                  char *);
-void                     grabKey                                (Display *, 
+gboolean                 grabKey                                (Display *, 
                                                                  MyKey *, 
                                                                  Window);
 void                     ungrabKeys                             (Display *, 
                                                                  Window);
-void                     grabButton                             (Display *, 
+gboolean                 grabButton                             (Display *, 
                                                                  int, 
                                                                  int, 
                                                                  Window);
