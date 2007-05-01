@@ -316,7 +316,6 @@ initModifiers (Display * dpy)
     MetaMask = 0;
     NumLockMask = 0;
     ScrollLockMask = 0;
-    CapsLockMask = 0;
     SuperMask = 0;
     HyperMask = 0;
 
@@ -353,7 +352,6 @@ initModifiers (Display * dpy)
         {
             hyperKeyCode = XKeysymToKeycode (dpy, XK_Hyper_R);
         }
-
 
         for (m = 0; m < 8; m++)
         {
