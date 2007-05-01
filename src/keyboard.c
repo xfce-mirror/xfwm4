@@ -258,63 +258,111 @@ ungrabButton (Display * dpy, int button, int modifier, Window w)
 void
 initModifiers (Display * dpy)
 {
-    XModifierKeymap *modmap;
-    KeySym *keymap;
-    unsigned int keycode;
-    int keysyms_per_keycode;
-    int min_keycode;
-    int max_keycode;
-    int i;
+    XModifierKeymap *xmk = XGetModifierMapping (dpy);
+    int m, k;
 
-    AltMask = 0;
-    MetaMask = 0;
-    NumLockMask = 0;
-    ScrollLockMask = 0;
-    SuperMask = 0;
-    HyperMask = 0;
-    keysyms_per_keycode = 0;
-    min_keycode = 0;
-    max_keycode = 0;
-
-    XDisplayKeycodes (dpy, &min_keycode, &max_keycode);
-    modmap = XGetModifierMapping (dpy);
-    keymap = XGetKeyboardMapping (dpy, min_keycode, max_keycode - min_keycode + 1, &keysyms_per_keycode);
-
-    for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
+    AltMask = MetaMask = NumLockMask = ScrollLockMask =
+        SuperMask = HyperMask = 0;
+    if (xmk)
     {
-        keycode = modmap->modifiermap[i];
-        if ((keycode >= min_keycode) && (keycode <= max_keycode))
-        {
-            int j;
-            KeySym *syms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
+        KeyCode *c = xmk->modifiermap;
+        KeyCode numLockKeyCode;
+        KeyCode scrollLockKeyCode;
+        KeyCode capsLockKeyCode;
+        KeyCode altKeyCode;
+        KeyCode metaKeyCode;
+        KeyCode superKeyCode;
+        KeyCode hyperKeyCode;
 
-            for (j = 0; j < keysyms_per_keycode; j++)
+        numLockKeyCode = XKeysymToKeycode (dpy, XK_Num_Lock);
+        scrollLockKeyCode = XKeysymToKeycode (dpy, XK_Scroll_Lock);
+        capsLockKeyCode = XKeysymToKeycode (dpy, XK_Caps_Lock);
+        altKeyCode = XKeysymToKeycode (dpy, XK_Alt_L);
+        metaKeyCode = XKeysymToKeycode (dpy, XK_Meta_L);
+        superKeyCode = XKeysymToKeycode (dpy, XK_Super_L);
+        hyperKeyCode = XKeysymToKeycode (dpy, XK_Hyper_L);
+
+        if (!altKeyCode)
+        {
+            altKeyCode = XKeysymToKeycode (dpy, XK_Alt_R);
+        }
+        if (!metaKeyCode)
+        {
+            metaKeyCode = XKeysymToKeycode (dpy, XK_Meta_R);
+        }
+        if (!superKeyCode)
+        {
+            superKeyCode = XKeysymToKeycode (dpy, XK_Super_R);
+        }
+        if (!hyperKeyCode)
+        {
+            hyperKeyCode = XKeysymToKeycode (dpy, XK_Hyper_R);
+        }
+
+
+        for (m = 0; m < 8; m++)
+        {
+            for (k = 0; k < xmk->max_keypermod; k++, c++)
             {
-                if (syms[j] == XK_Num_Lock)
+                if (*c == NoSymbol)
                 {
-                    NumLockMask |= (1 << ( i / modmap->max_keypermod));
+                    continue;
                 }
-                else if (syms[j] == XK_Scroll_Lock)
+                if (*c == numLockKeyCode)
                 {
-                    ScrollLockMask |= (1 << ( i / modmap->max_keypermod));
+                    NumLockMask = (1 << m);
                 }
-                else if ((syms[j] == XK_Super_L) || (syms[j] == XK_Super_R))
+                if (*c == scrollLockKeyCode)
                 {
-                    SuperMask |= (1 << ( i / modmap->max_keypermod));
+                    ScrollLockMask = (1 << m);
                 }
-                else if ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R))
+                if (*c == altKeyCode)
                 {
-                    HyperMask |= (1 << ( i / modmap->max_keypermod));
-                }       
-                else if ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R))
-                {
-                    MetaMask |= (1 << ( i / modmap->max_keypermod));
+                    AltMask = (1 << m);
                 }
-                else if ((syms[j] == XK_Alt_L) || (syms[j] == XK_Alt_R))
+                if (*c == metaKeyCode)
                 {
-                    AltMask |= (1 << ( i / modmap->max_keypermod));
+                    MetaMask = (1 << m);
+                }
+                if (*c == superKeyCode)
+                {
+                    SuperMask = (1 << m);
+                }
+                if (*c == hyperKeyCode)
+                {
+                    HyperMask = (1 << m);
                 }
             }
         }
+        XFreeModifiermap (xmk);
+    }
+
+    if (MetaMask == AltMask)
+    {
+        MetaMask = 0;
+    }
+
+    if ((AltMask != 0) && (MetaMask == Mod1Mask))
+    {
+        MetaMask = AltMask;
+        AltMask = Mod1Mask;
+    }
+
+    if ((AltMask == 0) && (MetaMask != 0))
+    {
+        if (MetaMask != Mod1Mask)
+        {
+            AltMask = Mod1Mask;
+        }
+        else
+        {
+            AltMask = MetaMask;
+            MetaMask = 0;
+        }
+    }
+
+    if (AltMask == 0)
+    {
+        AltMask = Mod1Mask;
     }
 }
