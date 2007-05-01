@@ -312,14 +312,19 @@ initModifiers (Display * dpy)
     XModifierKeymap *xmk = XGetModifierMapping (dpy);
     int m, k;
 
-    AltMask = MetaMask = NumLockMask = ScrollLockMask =
-        SuperMask = HyperMask = 0;
+    AltMask = 0;
+    MetaMask = 0;
+    NumLockMask = 0;
+    ScrollLockMask = 0;
+    CapsLockMask = 0;
+    SuperMask = 0;
+    HyperMask = 0;
+
     if (xmk)
     {
         KeyCode *c = xmk->modifiermap;
         KeyCode numLockKeyCode;
         KeyCode scrollLockKeyCode;
-        KeyCode capsLockKeyCode;
         KeyCode altKeyCode;
         KeyCode metaKeyCode;
         KeyCode superKeyCode;
@@ -327,7 +332,6 @@ initModifiers (Display * dpy)
 
         numLockKeyCode = XKeysymToKeycode (dpy, XK_Num_Lock);
         scrollLockKeyCode = XKeysymToKeycode (dpy, XK_Scroll_Lock);
-        capsLockKeyCode = XKeysymToKeycode (dpy, XK_Caps_Lock);
         altKeyCode = XKeysymToKeycode (dpy, XK_Alt_L);
         metaKeyCode = XKeysymToKeycode (dpy, XK_Meta_L);
         superKeyCode = XKeysymToKeycode (dpy, XK_Super_L);
