@@ -31,9 +31,6 @@
 #include <libxfce4util/libxfce4util.h> 
 #include "keyboard.h"
 
-unsigned int KeyMask;
-unsigned int ButtonMask;
-unsigned int ButtonKeyMask;
 unsigned int AltMask;
 unsigned int MetaMask;
 unsigned int NumLockMask;
@@ -271,54 +268,54 @@ initModifiers (Display * dpy)
 
     if (modmap && keymap)
     {    
-		for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
-		{
-			keycode = modmap->modifiermap[i];
-			if ((keycode >= min_keycode) && (keycode <= max_keycode))
-			{
-				int j;
-				KeySym *syms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
+        for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
+        {
+            keycode = modmap->modifiermap[i];
+            if ((keycode >= min_keycode) && (keycode <= max_keycode))
+            {
+                int j;
+                KeySym *syms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
 
-				for (j = 0; j < keysyms_per_keycode; j++)
-				{
-					if (!NumLockMask && (syms[j] == XK_Num_Lock))
-					{
-						NumLockMask = (1 << (i / modmap->max_keypermod));
-					}
-					else if (!ScrollLockMask && (syms[j] == XK_Scroll_Lock))
-					{
-						ScrollLockMask = (1 << (i / modmap->max_keypermod));
-					}
-					else if (!AltMask && ((syms[j] == XK_Alt_L) || (syms[j] == XK_Alt_R)))
-					{
-						AltMask = (1 << (i / modmap->max_keypermod));
-					}
-					else if (!SuperMask && ((syms[j] == XK_Super_L) || (syms[j] == XK_Super_R)))
-					{
-						SuperMask = (1 << (i / modmap->max_keypermod));
-					}
-					else if (!HyperMask && ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R)))
-					{
-						HyperMask = (1 << (i / modmap->max_keypermod));
-					}       
-					else if (!MetaMask && ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R)))
-					{
-						MetaMask = (1 << (i / modmap->max_keypermod));
-					}
-				}
-			}
-		}
+                for (j = 0; j < keysyms_per_keycode; j++)
+                {
+                    if (!NumLockMask && (syms[j] == XK_Num_Lock))
+                    {
+                        NumLockMask = (1 << (i / modmap->max_keypermod));
+                    }
+                    else if (!ScrollLockMask && (syms[j] == XK_Scroll_Lock))
+                    {
+                        ScrollLockMask = (1 << (i / modmap->max_keypermod));
+                    }
+                    else if (!AltMask && ((syms[j] == XK_Alt_L) || (syms[j] == XK_Alt_R)))
+                    {
+                        AltMask = (1 << (i / modmap->max_keypermod));
+                    }
+                    else if (!SuperMask && ((syms[j] == XK_Super_L) || (syms[j] == XK_Super_R)))
+                    {
+                        SuperMask = (1 << (i / modmap->max_keypermod));
+                    }
+                    else if (!HyperMask && ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R)))
+                    {
+                        HyperMask = (1 << (i / modmap->max_keypermod));
+                    }       
+                    else if (!MetaMask && ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R)))
+                    {
+                        MetaMask = (1 << (i / modmap->max_keypermod));
+                    }
+                }
+            }
+        }
     }
 
     /* Cleanup memory */
     if (modmap)
     {
-    	XFreeModifiermap (modmap);
+        XFreeModifiermap (modmap);
     }
 
     if (keymap)
     {
-    	XFree (keymap);
+        XFree (keymap);
     }
 
     /* In case we didn't find AltMask, use Mod1Mask */
