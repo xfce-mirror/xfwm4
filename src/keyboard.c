@@ -306,7 +306,6 @@ ungrabButton (Display * dpy, int button, int modifier, Window w)
     }
 }
 
-#define set_mask(m_mask, mask_cnt) if (!m_mask) m_mask = (1 << mask_cnt);	
 void
 initModifiers (Display * dpy)
 {
@@ -332,7 +331,7 @@ initModifiers (Display * dpy)
     modmap = XGetModifierMapping (dpy);
     keymap = XGetKeyboardMapping (dpy, min_keycode, max_keycode - min_keycode + 1, &keysyms_per_keycode);
 
-    if (modmap)
+    if (modmap && keymap)
     {    
 		for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
 		{
@@ -344,60 +343,47 @@ initModifiers (Display * dpy)
 
 				for (j = 0; j < keysyms_per_keycode; j++)
 				{
-					if (syms[j] == XK_Num_Lock)
+					if (!NumLockMask && (syms[j] == XK_Num_Lock))
 					{
-						set_mask(NumLockMask, (i / modmap->max_keypermod));
+						NumLockMask = (1 << (i / modmap->max_keypermod));
 					}
-					else if (syms[j] == XK_Scroll_Lock)
+					else if (!ScrollLockMask && (syms[j] == XK_Scroll_Lock))
 					{
-						set_mask(ScrollLockMask, (i / modmap->max_keypermod));
+						ScrollLockMask = (1 << (i / modmap->max_keypermod));
 					}
-					else if ((syms[j] == XK_Alt_L) || (syms[j] == XK_Alt_R))
+					else if (!AltMask && ((syms[j] == XK_Alt_L) || (syms[j] == XK_Alt_R)))
 					{
-						set_mask(AltMask, (i / modmap->max_keypermod));
+						AltMask = (1 << (i / modmap->max_keypermod));
 					}
-					else if ((syms[j] == XK_Super_L) || (syms[j] == XK_Super_R))
+					else if (!SuperMask && ((syms[j] == XK_Super_L) || (syms[j] == XK_Super_R)))
 					{
-						set_mask(SuperMask, (i / modmap->max_keypermod));
+						SuperMask = (1 << (i / modmap->max_keypermod));
 					}
-					else if ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R))
+					else if (!HyperMask && ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R)))
 					{
-						set_mask(HyperMask, (i / modmap->max_keypermod));
+						HyperMask = (1 << (i / modmap->max_keypermod));
 					}       
-					else if ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R))
+					else if (!MetaMask && ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R)))
 					{
-						set_mask(MetaMask, (i / modmap->max_keypermod));
+						MetaMask = (1 << (i / modmap->max_keypermod));
 					}
 				}
 			}
 		}
-        XFreeModifiermap (modmap);
     }
 
-    if (MetaMask == AltMask)
+    /* Cleanup memory */
+    if (modmap)
     {
-        MetaMask = 0;
+    	XFreeModifiermap (modmap);
     }
 
-    if ((AltMask != 0) && (MetaMask == Mod1Mask))
+    if (keymap)
     {
-        MetaMask = AltMask;
-        AltMask = Mod1Mask;
+    	XFree (keymap);
     }
 
-    if ((AltMask == 0) && (MetaMask != 0))
-    {
-        if (MetaMask != Mod1Mask)
-        {
-            AltMask = Mod1Mask;
-        }
-        else
-        {
-            AltMask = MetaMask;
-            MetaMask = 0;
-        }
-    }
-
+    /* In case we didn't find AltMask, use Mod1Mask */
     if (AltMask == 0)
     {
         AltMask = Mod1Mask;
