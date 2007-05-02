@@ -167,43 +167,43 @@ grabKey (Display * dpy, MyKey * key, Window w)
         {
             status |= 
                 XGrabKey (dpy, key->keycode, AnyModifier, w, FALSE,
-					GrabModeAsync, GrabModeSync);
+                                        GrabModeAsync, GrabModeSync);
         }
         else
         {
             /* Here we grab all combinations of well known modifiers */
             status |= 
                 XGrabKey (dpy, key->keycode,
-					key->modifier, w, FALSE,
-					GrabModeAsync, GrabModeSync);
+                                        key->modifier, w, FALSE,
+                                        GrabModeAsync, GrabModeSync);
             status |= 
                 XGrabKey (dpy, key->keycode,
-					key->modifier | ScrollLockMask, w,
-					FALSE, GrabModeAsync, GrabModeSync);
+                                        key->modifier | ScrollLockMask, w,
+                                        FALSE, GrabModeAsync, GrabModeSync);
             status |= 
                 XGrabKey (dpy, key->keycode,
-					key->modifier | NumLockMask, w,
-					FALSE, GrabModeAsync, GrabModeSync);
+                                        key->modifier | NumLockMask, w,
+                                        FALSE, GrabModeAsync, GrabModeSync);
             status |= 
                 XGrabKey (dpy, key->keycode,
-					key->modifier | LockMask, w,
-					FALSE, GrabModeAsync, GrabModeSync);
+                                        key->modifier | LockMask, w,
+                                        FALSE, GrabModeAsync, GrabModeSync);
             status |= 
                 XGrabKey (dpy, key->keycode,
-					key->modifier | ScrollLockMask | NumLockMask, w, FALSE,
-					GrabModeAsync, GrabModeSync);
+                                        key->modifier | ScrollLockMask | NumLockMask, w, FALSE,
+                                        GrabModeAsync, GrabModeSync);
             status |= 
                 XGrabKey (dpy, key->keycode,
-					key->modifier | ScrollLockMask | LockMask, w, FALSE,
-					GrabModeAsync, GrabModeSync);
+                                        key->modifier | ScrollLockMask | LockMask, w, FALSE,
+                                        GrabModeAsync, GrabModeSync);
             status |= 
                 XGrabKey (dpy, key->keycode,
-					key->modifier | LockMask | NumLockMask, w, FALSE,
-					GrabModeAsync, GrabModeSync);
+                                        key->modifier | LockMask | NumLockMask, w, FALSE,
+                                        GrabModeAsync, GrabModeSync);
             status |= 
                 XGrabKey (dpy, key->keycode,
-					key->modifier | ScrollLockMask | LockMask | NumLockMask,
-					w, FALSE, GrabModeAsync, GrabModeSync);
+                                        key->modifier | ScrollLockMask | LockMask | NumLockMask,
+                                        w, FALSE, GrabModeAsync, GrabModeSync);
         }
     }
 
@@ -230,52 +230,52 @@ grabButton (Display * dpy, int button, int modifier, Window w)
     {
         status |= 
             XGrabButton (dpy, button, AnyModifier, w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
     }
     else
     {
         /* Here we grab all combinations of well known modifiers */
         status |= 
             XGrabButton (dpy, button, modifier,
-				w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                w, FALSE,
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
         status |= 
             XGrabButton (dpy, button, modifier | ScrollLockMask,
-				w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                w, FALSE,
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
         status |= 
             XGrabButton (dpy, button, modifier | NumLockMask,
-				w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                w, FALSE,
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
         status |= 
             XGrabButton (dpy, button, modifier | LockMask, w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
         status |= 
             XGrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask,
-				w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                w, FALSE,
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
         status |= 
             XGrabButton (dpy, button, modifier | ScrollLockMask | LockMask,
-				w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                w, FALSE,
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
         status |= 
             XGrabButton (dpy, button, modifier | LockMask | NumLockMask,
-				w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                w, FALSE,
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
         status |= 
             XGrabButton (dpy, button,
-				modifier | ScrollLockMask | LockMask | NumLockMask,
-				w, FALSE,
-				ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
-				None, None);
+                                modifier | ScrollLockMask | LockMask | NumLockMask,
+                                w, FALSE,
+                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                None, None);
     }
 
     return (status == GrabSuccess);
@@ -333,54 +333,54 @@ initModifiers (Display * dpy)
 
     if (modmap && keymap)
     {    
-		for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
-		{
-			keycode = modmap->modifiermap[i];
-			if ((keycode >= min_keycode) && (keycode <= max_keycode))
-			{
-				int j;
-				KeySym *syms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
+        for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
+        {
+            keycode = modmap->modifiermap[i];
+            if ((keycode >= min_keycode) && (keycode <= max_keycode))
+            {
+                int j;
+                KeySym *syms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
 
-				for (j = 0; j < keysyms_per_keycode; j++)
-				{
-					if (!NumLockMask && (syms[j] == XK_Num_Lock))
-					{
-						NumLockMask = (1 << (i / modmap->max_keypermod));
-					}
-					else if (!ScrollLockMask && (syms[j] == XK_Scroll_Lock))
-					{
-						ScrollLockMask = (1 << (i / modmap->max_keypermod));
-					}
-					else if (!AltMask && ((syms[j] == XK_Alt_L) || (syms[j] == XK_Alt_R)))
-					{
-						AltMask = (1 << (i / modmap->max_keypermod));
-					}
-					else if (!SuperMask && ((syms[j] == XK_Super_L) || (syms[j] == XK_Super_R)))
-					{
-						SuperMask = (1 << (i / modmap->max_keypermod));
-					}
-					else if (!HyperMask && ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R)))
-					{
-						HyperMask = (1 << (i / modmap->max_keypermod));
-					}       
-					else if (!MetaMask && ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R)))
-					{
-						MetaMask = (1 << (i / modmap->max_keypermod));
-					}
-				}
-			}
-		}
+                for (j = 0; j < keysyms_per_keycode; j++)
+                {
+                    if (!NumLockMask && (syms[j] == XK_Num_Lock))
+                    {
+                        NumLockMask = (1 << (i / modmap->max_keypermod));
+                    }
+                    else if (!ScrollLockMask && (syms[j] == XK_Scroll_Lock))
+                    {
+                        ScrollLockMask = (1 << (i / modmap->max_keypermod));
+                    }
+                    else if (!AltMask && ((syms[j] == XK_Alt_L) || (syms[j] == XK_Alt_R)))
+                    {
+                        AltMask = (1 << (i / modmap->max_keypermod));
+                    }
+                    else if (!SuperMask && ((syms[j] == XK_Super_L) || (syms[j] == XK_Super_R)))
+                    {
+                        SuperMask = (1 << (i / modmap->max_keypermod));
+                    }
+                    else if (!HyperMask && ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R)))
+                    {
+                        HyperMask = (1 << (i / modmap->max_keypermod));
+                    }       
+                    else if (!MetaMask && ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R)))
+                    {
+                        MetaMask = (1 << (i / modmap->max_keypermod));
+                    }
+                }
+            }
+        }
     }
 
     /* Cleanup memory */
     if (modmap)
     {
-    	XFreeModifiermap (modmap);
+        XFreeModifiermap (modmap);
     }
 
     if (keymap)
     {
-    	XFree (keymap);
+        XFree (keymap);
     }
 
     /* In case we didn't find AltMask, use Mod1Mask */
