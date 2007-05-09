@@ -459,6 +459,7 @@ myScreenGrabKeys (ScreenInfo *screen_info)
     grabKey (dpy, &screen_info->params->keys[KEY_SHADE_WINDOW], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_STICK_WINDOW], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_TOGGLE_ABOVE], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], screen_info->xroot);

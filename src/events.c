@@ -71,7 +71,7 @@
                                  PointerMotionMask | \
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
-                  
+
 #define MODIFIER_MASK           (ShiftMask | \
                                  ControlMask | \
                                  AltMask | \
@@ -237,7 +237,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.ycurrent = passdata.y;
     passdata.clicks = 1;
     passdata.allow_double_click = allow_double_click;
-    passdata.timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
+    passdata.timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
                                            display_info->dbl_click_time,
                                            (GSourceFunc) typeOfClick_break,
                                            (gpointer) &passdata, NULL);
@@ -410,6 +410,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_LOWER_WINDOW:
                 clientLower (c, None);
                 break;
+            case KEY_TOGGLE_ABOVE:
+                clientToggleAbove (c);
+                break;
             case KEY_TOGGLE_FULLSCREEN:
                 clientToggleFullscreen (c);
                 break;
@@ -450,13 +453,13 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_POPUP_MENU:
-                /* 
-                   We need to release the events here prior to grabbing 
+                /*
+                   We need to release the events here prior to grabbing
                    the keyboard in gtk menu otherwise we end with a dead lock...
                   */
                 XAllowEvents (display_info->dpy, AsyncKeyboard, CurrentTime);
-                show_window_menu (c, frameX (c) + frameLeft (c), 
-                                     frameY (c) + frameTop (c), 
+                show_window_menu (c, frameX (c) + frameLeft (c),
+                                     frameY (c) + frameTop (c),
                                      Button1, GDK_CURRENT_TIME);
 
                 /* 'nuff for now */
@@ -597,7 +600,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
     }
 }
 
-static int 
+static int
 edgeGetPart (Client *c, XButtonEvent * ev)
 {
     int part, x_corner_pixels, y_corner_pixels, x_distance, y_distance;
@@ -1431,22 +1434,22 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             constrained = TRUE;
         }
 
-        /* 
-           Let's say that if the client performs a XRaiseWindow, we show the window if focus 
+        /*
+           Let's say that if the client performs a XRaiseWindow, we show the window if focus
            stealing prevention is not activated, otherwise we just set the "demands attention"
            flag...
          */
         if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (wc.sibling == None))
         {
             Client *last_raised;
-            
+
             last_raised = clientGetLastRaise (screen_info);
             if (last_raised && (c != last_raised))
             {
                 if ((screen_info->params->prevent_focus_stealing) && (screen_info->params->activate_action == ACTIVATE_ACTION_NONE))
                 {
                     ev->value_mask &= ~(CWSibling | CWStackMode);
-                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
                 }
@@ -1509,7 +1512,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
                 {
                     clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
                 }
-            } 
+            }
             else
             {
                 clientClearDelayedFocus ();
@@ -1697,10 +1700,10 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     }
 
     if ((ev->window == screen_info->xroot)
-        && ((ev->detail == NotifyDetailNone) 
+        && ((ev->detail == NotifyDetailNone)
             || ((ev->mode == NotifyNormal) && (ev->detail == NotifyInferior))))
     {
-        /* 
+        /*
            Handle unexpected focus transition to root (means that an unknown
            window has vanished and the focus is returned to the root).
          */
@@ -1727,10 +1730,10 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         clientUpdateFocus (screen_info, c, FOCUS_SORT);
         if ((user_focus != c) && (user_focus != NULL))
         {
-            /* 
+            /*
                Focus stealing prevention:
-               Some apps tend to focus the window directly. If focus stealing prevention is enabled, 
-               we revert the user set focus to the window that we think has focus and then set the 
+               Some apps tend to focus the window directly. If focus stealing prevention is enabled,
+               we revert the user set focus to the window that we think has focus and then set the
                demand attention flag.
 
                Note that focus stealing prevention is ignored between windows of the same group or
@@ -1742,12 +1745,12 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 !clientSameGroup (c, user_focus) &&
                 !clientIsTransientOrModalFor (c, user_focus))
             {
-                TRACE ("Setting focus back to \"%s\" (0x%lx)", user_focus->name, user_focus->window); 
+                TRACE ("Setting focus back to \"%s\" (0x%lx)", user_focus->name, user_focus->window);
                 clientSetFocus (user_focus->screen_info, user_focus, getXServerTime (display_info), NO_FOCUS_FLAG);
 
                 if (current_focus)
                 {
-                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
                 }
@@ -1798,7 +1801,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 "NotifyDetailNone" :
                 "(unknown)");
 
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) || 
+    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab) ||
         (ev->detail == NotifyInferior) || (ev->detail > NotifyNonlinearVirtual))
     {
         /* We're not interested in such notifications */
@@ -1894,19 +1897,19 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             if (clientCheckTransientWindow (c, w))
             {
                 c->transient_for = w;
-#if 0                
+#if 0
                 /*
                   Java 1.6 updates the WM_TRANSIENT_FOR properties "on-the-fly"
-                  of its windows to maintain the z-order. 
-                  
-                  If we raise the transient then, we clearly have a race 
-                  condition between the WM and Java... And that breaks 
+                  of its windows to maintain the z-order.
+
+                  If we raise the transient then, we clearly have a race
+                  condition between the WM and Java... And that breaks
                   the z-order. Bug #2483.
-                  
+
                   I still think that raising here makes sense, to ensure
                   that the newly promoted transient window is placed above
                   its parent.
-                  
+
                   Chances are that Java 1.6 won't change any time soon (heh,
                   it's not even released yet), so let's adjust the WM to
                   work with Java 1.6...
@@ -2133,7 +2136,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 TRACE ("Time of event received is %u, current XServer time is %u", (unsigned int) ev_time, (unsigned int) current);
                 if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE(ev_time, current))
                 {
-                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
                 }
@@ -2168,10 +2171,10 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
              (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace or a NET_CURRENT_DESKTOP event %li", ev->data.l[0]);
-            if ((ev->data.l[0] >= 0) && (ev->data.l[0] < screen_info->workspace_count) && 
+            if ((ev->data.l[0] >= 0) && (ev->data.l[0] < screen_info->workspace_count) &&
                 (ev->data.l[0] != screen_info->current_ws))
             {
-                workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE, 
+                workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE,
                                  myDisplayGetTime (display_info, (Time) ev->data.l[1]));
             }
         }
@@ -2205,10 +2208,10 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[MANAGER]) && (ev->format == 32))
         {
             Atom selection;
-            
+
             TRACE ("window (0x%lx) has received a MANAGER event", ev->window);
             selection = (Atom) ev->data.l[1];
-            
+
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
             if (selection == screen_info->net_system_tray_selection)
             {

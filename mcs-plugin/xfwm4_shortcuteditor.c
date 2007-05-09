@@ -1,20 +1,20 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
- 
+
+
         shortcut editor - Copyright (C) 2004 Jean-Francois Wauthy
  */
 
@@ -165,7 +165,7 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
     {
         theme_file = g_build_filename (DATADIR, "themes", "Default", KEY_SUFFIX, KEYTHEMERC, NULL);
     }
-    
+
     while (TRUE)
     {
         gint response = GTK_RESPONSE_CANCEL;
@@ -314,7 +314,7 @@ cb_popup_menu (GtkTreeView * treeview, GdkEventButton * event, gpointer data)
 void
 loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
 {
-    const gchar *shortcut_options_list[] = { 
+    const gchar *shortcut_options_list[] = {
         "close_window_key",
         "maximize_window_key",
         "maximize_vert_key",
@@ -334,6 +334,7 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         "move_resize_cancel_key",
         "raise_window_key",
         "lower_window_key",
+        "above_key",
         "fullscreen_key",
         "up_workspace_key",
         "down_workspace_key",
@@ -355,7 +356,7 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         NULL
     };
 
-    const gchar *shortcut_name_list[] = { 
+    const gchar *shortcut_name_list[] = {
         N_("Close window"),
         N_("Maximize window"),
         N_("Maximize window vertically"),
@@ -375,6 +376,7 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         N_("Cancel move/resize window"),
         N_("Raise window"),
         N_("Lower window"),
+        N_("Toggle above"),
         N_("Toggle fullscreen"),
         N_("Upper workspace"),
         N_("Bottom workspace"),
@@ -933,7 +935,7 @@ cb_activate_treeview3 (GtkWidget * treeview, GtkTreePath * path, GtkTreeViewColu
     /* Release keyboard if not yet done */
     gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
-    /* 
+    /*
        Tell it to the mcs manager, set the channel to raw mode
        so that the client gets notified even if the key theme
        name has not changed

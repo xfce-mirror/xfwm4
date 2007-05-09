@@ -1318,6 +1318,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHADE_WINDOW], getValue ("shade_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], getValue("show_desktop_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_STICK_WINDOW], getValue ("stick_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_ABOVE], getValue ("above_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getValue ("fullscreen_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], getValue ("up_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], getValue ("workspace_1_key", rc));
@@ -1436,6 +1437,7 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_windows", NULL, TRUE},
         {"wrap_workspaces", NULL, TRUE},
         /* Keys */
+        {"above_key", NULL, TRUE},
         {"add_workspace_key", NULL, TRUE},
         {"cancel_key", NULL, TRUE},
         {"close_window_key", NULL, TRUE},
@@ -1578,7 +1580,7 @@ loadSettings (ScreenInfo *screen_info)
     set_settings_margin (screen_info, STRUTS_TOP,    TOINT (getValue ("margin_top", rc)));
 
     set_easy_click (screen_info, getValue ("easy_click", rc));
-    
+
     value = getValue ("placement_mode", rc);
     set_placement_mode (screen_info, value);
 
