@@ -14,7 +14,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.45.1"
    version="1.0"
-   sodipodi:docbase="/home/ofourdan/src/svn/xfwm4/trunk/themes/largeprint"
+   sodipodi:docbase="largeprint"
    sodipodi:docname="bottom-right-active.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
@@ -78,7 +78,7 @@
      id="layer1">
     <path
        style="fill:black;fill-opacity:0.50"
-       d="M 16,0 L 16,16 L 0,16 L 0,15 C 0,15 0,15 13,15 C 15,15 15,13 15,13 L 15,0 L 16,0 z "
+       d="M 16,0 L 16,16 L 0,16 L 0,15 C 0,15 0,15 13,15 C 15,15 15,15 15,15 L 15,0 L 16,0 z "
        id="rect1870" />
   </g>
 </svg>
