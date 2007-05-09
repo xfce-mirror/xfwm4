@@ -22,7 +22,7 @@
 #define INC_STACKING_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <glib.h>
@@ -34,21 +34,21 @@ Client                  *clientGetLowestTransient               (Client *);
 Client                  *clientGetHighestTransientOrModalFor    (Client *);
 gboolean                 clientIsTopMost                        (Client *);
 Client                  *clientGetTopMostForGroup               (Client *);
-Client                  *clientGetNextTopMost                   (ScreenInfo *, 
-                                                                 int, 
+Client                  *clientGetNextTopMost                   (ScreenInfo *,
+                                                                 int,
                                                                  Client *);
-Client                  *clientGetBottomMost                    (ScreenInfo *, 
-                                                                 int, 
+Client                  *clientGetBottomMost                    (ScreenInfo *,
+                                                                 int,
                                                                  Client *);
-Client                  *clientAtPosition                       (ScreenInfo *, 
-                                                                 int, 
-                                                                 int, 
+Client                  *clientAtPosition                       (ScreenInfo *,
+                                                                 int,
+                                                                 int,
                                                                  Client *);
-void                     clientRaise                            (Client *, 
+void                     clientRaise                            (Client *,
                                                                  Window);
-void                     clientLower                            (Client *, 
+void                     clientLower                            (Client *,
                                                                  Window);
-gboolean                 clientAdjustFullscreenLayer            (Client *, 
+gboolean                 clientAdjustFullscreenLayer            (Client *,
                                                                  gboolean);
 void                     clientAddToList                        (Client *);
 void                     clientRemoveFromList                   (Client *);
@@ -58,6 +58,5 @@ Client                  *clientGetLastRaise                     (ScreenInfo *);
 void                     clientClearLastRaise                   (ScreenInfo *);
 void                     clientClearDelayedRaise                (void);
 void                     clientResetDelayedRaise                (ScreenInfo *);
-
 
 #endif /* INC_STACKING_H */

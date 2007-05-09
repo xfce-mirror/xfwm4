@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <glib.h>
@@ -1153,7 +1153,7 @@ static gboolean
 update_frame_idle_cb (gpointer data)
 {
     Client *c;
-    
+
     TRACE ("entering update_frame_idle_cb");
 
     c = (Client *) data;
@@ -1188,7 +1188,7 @@ frameQueueDraw (Client * c)
 
     if (c->frame_timeout_id == 0)
     {
-        c->frame_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, 
+        c->frame_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
                                               update_frame_idle_cb, c, NULL);
     }
 }

@@ -23,7 +23,7 @@
 #define INC_MYWINDOW_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/Xlib.h>
@@ -80,7 +80,7 @@ void                     xfwmWindowShow                         (xfwmWindow *,
 void                     xfwmWindowHide                         (xfwmWindow *);
 gboolean                 xfwmWindowVisible                      (xfwmWindow *);
 gboolean                 xfwmWindowDeleted                      (xfwmWindow *);
-void                     xfwmWindowSetBG                        (xfwmWindow *, 
+void                     xfwmWindowSetBG                        (xfwmWindow *,
                                                                  xfwmPixmap *);
 
 #endif /* INC_MYWINDOW_H */

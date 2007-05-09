@@ -1,24 +1,24 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfce4 mcs plugin   - (c) 2005-2006 Olivier Fourdan
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <string.h>
@@ -93,7 +93,7 @@ static char *activate_action = "bring";
 static char *placement_mode = "center";
 
 
-/* 
+/*
     "Xfwm/ActivateAction"
     "Xfwm/BorderlessMaximize"
     "Xfwm/CycleHidden"
@@ -353,7 +353,7 @@ create_option_menu (McsPlugin * mcs_plugin, const gchar *const values[],
 }
 
 static GtkWidget *
-create_string_radio_button (McsPlugin * mcs_plugin, const ValuePair values[], 
+create_string_radio_button (McsPlugin * mcs_plugin, const ValuePair values[],
                             const gchar * label, gchar * setting_name, gchar ** value)
 {
     GtkWidget *vbox1, *vbox2;
@@ -456,7 +456,7 @@ create_dialog (McsPlugin * mcs_plugin)
     GtkWidget *button;
     guint nth = 0;
 
-    static const gchar *const modifier_list[] = { 
+    static const gchar *const modifier_list[] = {
         "Alt",
         "Control",
         "Hyper",
@@ -549,8 +549,8 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox), check_button, FALSE, TRUE, 0);
     gtk_widget_show (check_button);
 
-    radio_buttons = 
-        create_string_radio_button (mcs_plugin, activate_list, _("When a window raises itself:"), 
+    radio_buttons =
+        create_string_radio_button (mcs_plugin, activate_list, _("When a window raises itself:"),
                                     "Xfwm/ActivateAction", &activate_action);
     gtk_box_pack_start (GTK_BOX (vbox), radio_buttons, FALSE, TRUE, 0);
     gtk_widget_show (radio_buttons);
@@ -654,8 +654,8 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (vbox), range, FALSE, TRUE, 0);
     gtk_widget_show (range);
 
-    radio_buttons = 
-        create_string_radio_button (mcs_plugin, placement_list, _("Default positionning of windows without smart placement:"), 
+    radio_buttons =
+        create_string_radio_button (mcs_plugin, placement_list, _("Default positionning of windows without smart placement:"),
                                     "Xfwm/PlacementMode", &placement_mode);
     gtk_box_pack_start (GTK_BOX (vbox), radio_buttons, FALSE, TRUE, 0);
     gtk_widget_show (radio_buttons);

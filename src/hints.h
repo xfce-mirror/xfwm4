@@ -24,7 +24,7 @@
 #define INC_HINTS_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -149,150 +149,150 @@ typedef struct
 }
 PropMwmHints;
 
-unsigned long            getWMState                             (DisplayInfo *, 
+unsigned long            getWMState                             (DisplayInfo *,
                                                                  Window);
-void                     setWMState                             (DisplayInfo *, 
-                                                                 Window, 
+void                     setWMState                             (DisplayInfo *,
+                                                                 Window,
                                                                  unsigned long);
-PropMwmHints            *getMotifHints                          (DisplayInfo *, 
+PropMwmHints            *getMotifHints                          (DisplayInfo *,
                                                                  Window);
-unsigned int             getWMProtocols                         (DisplayInfo *, 
+unsigned int             getWMProtocols                         (DisplayInfo *,
                                                                  Window);
-gboolean                 getHint                                (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
+gboolean                 getHint                                (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
                                                                  long *);
-void                     setHint                                (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
+void                     setHint                                (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
                                                                  long);
-void                     getDesktopLayout                       (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
+void                     getDesktopLayout                       (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
                                                                  NetWmDesktopLayout *);
-void                     getGnomeDesktopMargins                 (DisplayInfo *, 
-                                                                 Window, 
+void                     getGnomeDesktopMargins                 (DisplayInfo *,
+                                                                 Window,
                                                                  int *);
-void                     setGnomeProtocols                      (DisplayInfo *, 
-                                                                 Window, 
+void                     setGnomeProtocols                      (DisplayInfo *,
+                                                                 Window,
                                                                  Window);
-void                     setNetSupportedHint                    (DisplayInfo *, 
-                                                                 Window, 
+void                     setNetSupportedHint                    (DisplayInfo *,
+                                                                 Window,
                                                                  Window);
-gboolean                 getAtomList                            (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
-                                                                 Atom **, 
+gboolean                 getAtomList                            (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 Atom **,
                                                                  int *);
-gboolean                 getCardinalList                        (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
-                                                                 unsigned long **, 
+gboolean                 getCardinalList                        (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 unsigned long **,
                                                                  int *);
-void                     setNetWorkarea                         (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
-                                                                 int, 
-                                                                 int, 
+void                     setNetWorkarea                         (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 int,
+                                                                 int,
                                                                  int *);
-void                     setNetFrameExtents                     (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
-                                                                 int, 
-                                                                 int, 
+void                     setNetFrameExtents                     (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 int,
+                                                                 int,
                                                                  int);
-void                     initNetDesktopInfo                     (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
-                                                                 int, 
+void                     initNetDesktopInfo                     (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 int,
                                                                  int);
-void                     setUTF8StringHint                      (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
+void                     setUTF8StringHint                      (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
                                                                  const gchar *);
-void                     getTransientFor                        (DisplayInfo *, 
-                                                                 Window, 
-                                                                 Window, 
+void                     getTransientFor                        (DisplayInfo *,
+                                                                 Window,
+                                                                 Window,
                                                                  Window *);
-gboolean                 getWindowName                          (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getWindowName                          (DisplayInfo *,
+                                                                 Window,
                                                                  gchar **);
-gboolean                 getUTF8String                          (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
-                                                                 gchar **, 
+gboolean                 getUTF8String                          (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 gchar **,
                                                                  int *);
-gboolean                 getUTF8StringList                      (DisplayInfo *, 
-                                                                 Window, 
-                                                                 int, 
-                                                                 gchar ***, 
+gboolean                 getUTF8StringList                      (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 gchar ***,
                                                                  int *);
-gboolean                 getClientMachine                       (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getClientMachine                       (DisplayInfo *,
+                                                                 Window,
                                                                  gchar **);
-gboolean                 getClientMachine                       (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getClientMachine                       (DisplayInfo *,
+                                                                 Window,
                                                                  gchar **);
-gboolean                 getWindowRole                          (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getWindowRole                          (DisplayInfo *,
+                                                                 Window,
                                                                  gchar **);
-Window                   getClientLeader                        (DisplayInfo *, 
+Window                   getClientLeader                        (DisplayInfo *,
                                                                  Window);
-gboolean                 getNetWMUserTime                       (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getNetWMUserTime                       (DisplayInfo *,
+                                                                 Window,
                                                                  Time *);
-gboolean                 getClientID                            (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getClientID                            (DisplayInfo *,
+                                                                 Window,
                                                                  gchar **);
-gboolean                 getWindowCommand                       (DisplayInfo *, 
-                                                                 Window, 
-                                                                 char ***, 
+gboolean                 getWindowCommand                       (DisplayInfo *,
+                                                                 Window,
+                                                                 char ***,
                                                                  int *);
-gboolean                 getKDEIcon                             (DisplayInfo *, 
-                                                                 Window, 
-                                                                 Pixmap *, 
+gboolean                 getKDEIcon                             (DisplayInfo *,
+                                                                 Window,
+                                                                 Pixmap *,
                                                                  Pixmap *);
-gboolean                 getRGBIconData                         (DisplayInfo *, 
-                                                                 Window, 
-                                                                 unsigned long **, 
+gboolean                 getRGBIconData                         (DisplayInfo *,
+                                                                 Window,
+                                                                 unsigned long **,
                                                                  unsigned long *);
-gboolean                 getOpacity                             (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getOpacity                             (DisplayInfo *,
+                                                                 Window,
                                                                  guint *);
-gboolean                 getOpacityLock                         (DisplayInfo *, 
+gboolean                 getOpacityLock                         (DisplayInfo *,
                                                                  Window);
-gboolean                 setXAtomManagerOwner                   (DisplayInfo *, 
-                                                                 Atom, 
-                                                                 Window, 
+gboolean                 setXAtomManagerOwner                   (DisplayInfo *,
+                                                                 Atom,
+                                                                 Window,
                                                                  Window);
-gboolean                 setAtomIdManagerOwner                  (DisplayInfo *, 
-                                                                 int, 
-                                                                 Window , 
+gboolean                 setAtomIdManagerOwner                  (DisplayInfo *,
+                                                                 int,
+                                                                 Window ,
                                                                  Window);
 Time                     getXServerTime                         (DisplayInfo *);
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
-gboolean                 checkKdeSystrayWindow                  (DisplayInfo *, 
+gboolean                 checkKdeSystrayWindow                  (DisplayInfo *,
                                                                  Window);
-void                     sendSystrayReqDock                     (DisplayInfo *, 
-                                                                 Window, 
+void                     sendSystrayReqDock                     (DisplayInfo *,
+                                                                 Window,
                                                                  Window);
-Window                   getSystrayWindow                       (DisplayInfo *, 
+Window                   getSystrayWindow                       (DisplayInfo *,
                                                                  Atom);
 #endif
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
-gboolean                 getWindowStartupId                     (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getWindowStartupId                     (DisplayInfo *,
+                                                                 Window,
                                                                  char **);
 #endif
 
 #ifdef HAVE_XSYNC
-gboolean                 getXSyncCounter                        (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getXSyncCounter                        (DisplayInfo *,
+                                                                 Window,
                                                                  XSyncCounter *);
-void                     sendXSyncRequest                       (DisplayInfo *, 
-                                                                 Window, 
+void                     sendXSyncRequest                       (DisplayInfo *,
+                                                                 Window,
                                                                  XSyncValue);
 #endif /* HAVE_XSYNC */
 

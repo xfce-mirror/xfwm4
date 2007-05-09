@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -321,7 +321,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
         c = (Client *) index->data;
-        
+
         if (c->win_workspace != new_ws)
         {
             if (c == previous)
@@ -343,7 +343,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
     {
         c = (Client *) index->data;
-        
+
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             if ((!new_focus) && (c == previous) && clientSelectMask (c, 0, WINDOW_REGULAR_FOCUSABLE))

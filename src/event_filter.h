@@ -18,8 +18,12 @@
 
  */
 
-#ifndef __EVENT_FILTER_H__
-#define __EVENT_FILTER_H__
+#ifndef INC_EVENT_FILTER_H
+#define INC_EVENT_FILTER_H
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
@@ -59,4 +63,4 @@ eventFilterStack        *eventFilterPop                         (eventFilterSetu
 eventFilterSetup        *eventFilterInit                        (gpointer);
 void                     eventFilterClose                       (eventFilterSetup *);
 
-#endif /* __EVENT_FILTER_H__ */
+#endif /* INC_EVENT_FILTER_H */

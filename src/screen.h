@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/Xlib.h>
@@ -172,4 +172,5 @@ unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *);
 unsigned int             myScreenUngrabPointer                  (ScreenInfo *);
 void                     myScreenGrabKeys                       (ScreenInfo *);
 void                     myScreenUngrabKeys                     (ScreenInfo *);
+
 #endif /* INC_SCREEN_H */

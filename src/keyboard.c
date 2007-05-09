@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/Xlib.h>
@@ -165,42 +165,42 @@ grabKey (Display * dpy, MyKey * key, Window w)
     {
         if (key->modifier == 0)
         {
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode, AnyModifier, w, FALSE,
                                         GrabModeAsync, GrabModeSync);
         }
         else
         {
             /* Here we grab all combinations of well known modifiers */
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier, w, FALSE,
                                         GrabModeAsync, GrabModeSync);
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | ScrollLockMask, w,
                                         FALSE, GrabModeAsync, GrabModeSync);
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | NumLockMask, w,
                                         FALSE, GrabModeAsync, GrabModeSync);
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | LockMask, w,
                                         FALSE, GrabModeAsync, GrabModeSync);
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | ScrollLockMask | NumLockMask, w, FALSE,
                                         GrabModeAsync, GrabModeSync);
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | ScrollLockMask | LockMask, w, FALSE,
                                         GrabModeAsync, GrabModeSync);
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | LockMask | NumLockMask, w, FALSE,
                                         GrabModeAsync, GrabModeSync);
-            status |= 
+            status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | ScrollLockMask | LockMask | NumLockMask,
                                         w, FALSE, GrabModeAsync, GrabModeSync);
@@ -228,7 +228,7 @@ grabButton (Display * dpy, int button, int modifier, Window w)
     status=GrabSuccess;
     if (modifier == AnyModifier)
     {
-        status |= 
+        status |=
             XGrabButton (dpy, button, AnyModifier, w, FALSE,
                                 ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
                                 None, None);
@@ -236,41 +236,41 @@ grabButton (Display * dpy, int button, int modifier, Window w)
     else
     {
         /* Here we grab all combinations of well known modifiers */
-        status |= 
+        status |=
             XGrabButton (dpy, button, modifier,
                                 w, FALSE,
                                 ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
                                 None, None);
-        status |= 
+        status |=
             XGrabButton (dpy, button, modifier | ScrollLockMask,
                                 w, FALSE,
                                 ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
                                 None, None);
-        status |= 
+        status |=
             XGrabButton (dpy, button, modifier | NumLockMask,
                                 w, FALSE,
                                 ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
                                 None, None);
-        status |= 
+        status |=
             XGrabButton (dpy, button, modifier | LockMask, w, FALSE,
                                 ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
                                 None, None);
-        status |= 
+        status |=
             XGrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask,
                                 w, FALSE,
                                 ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
                                 None, None);
-        status |= 
+        status |=
             XGrabButton (dpy, button, modifier | ScrollLockMask | LockMask,
                                 w, FALSE,
                                 ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
                                 None, None);
-        status |= 
+        status |=
             XGrabButton (dpy, button, modifier | LockMask | NumLockMask,
                                 w, FALSE,
                                 ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
                                 None, None);
-        status |= 
+        status |=
             XGrabButton (dpy, button,
                                 modifier | ScrollLockMask | LockMask | NumLockMask,
                                 w, FALSE,
@@ -332,7 +332,7 @@ initModifiers (Display * dpy)
     keymap = XGetKeyboardMapping (dpy, min_keycode, max_keycode - min_keycode + 1, &keysyms_per_keycode);
 
     if (modmap && keymap)
-    {    
+    {
         for (i = 3 * modmap->max_keypermod; i < 8 * modmap->max_keypermod; i++)
         {
             keycode = modmap->modifiermap[i];
@@ -362,7 +362,7 @@ initModifiers (Display * dpy)
                     else if (!HyperMask && ((syms[j] == XK_Hyper_L) || (syms[j] == XK_Hyper_R)))
                     {
                         HyperMask = (1 << (i / modmap->max_keypermod));
-                    }       
+                    }
                     else if (!MetaMask && ((syms[j] == XK_Meta_L) || (syms[j] == XK_Meta_R)))
                     {
                         MetaMask = (1 << (i / modmap->max_keypermod));

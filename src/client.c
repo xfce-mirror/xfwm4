@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -121,7 +121,7 @@ struct _ButtonPressData
 };
 
 /* Forward decl */
-static void 
+static void
 clientUpdateIconPix (Client * c);
 
 Display *
@@ -348,8 +348,8 @@ clientUpdateUrgency (Client *c)
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
             c->blink_timeout_id =
-                g_timeout_add_full (G_PRIORITY_DEFAULT, 
-                                    CLIENT_BLINK_TIMEOUT, 
+                g_timeout_add_full (G_PRIORITY_DEFAULT,
+                                    CLIENT_BLINK_TIMEOUT,
                                     (GtkFunction) urgent_cb,
                                     (gpointer) c, NULL);
         }
@@ -1166,11 +1166,11 @@ clientCreateXSyncAlarm (Client *c)
     values.events = True;
 
     c->xsync_alarm = XSyncCreateAlarm (display_info->dpy,
-                                       XSyncCACounter | 
-                                       XSyncCADelta | 
-                                       XSyncCAEvents | 
-                                       XSyncCATestType | 
-                                       XSyncCAValue | 
+                                       XSyncCACounter |
+                                       XSyncCADelta |
+                                       XSyncCAEvents |
+                                       XSyncCATestType |
+                                       XSyncCAValue |
                                        XSyncCAValueType,
                                        &values);
     return (c->xsync_alarm != None);
@@ -1241,9 +1241,9 @@ clientXSyncResetTimeout (Client * c)
     TRACE ("entering clientXSyncResetTimeout");
 
     clientXSyncClearTimeout (c);
-    c->xsync_timeout_id = g_timeout_add_full (G_PRIORITY_DEFAULT, 
-                                              CLIENT_XSYNC_TIMEOUT, 
-                                              (GtkFunction) clientXSyncTimeout, 
+    c->xsync_timeout_id = g_timeout_add_full (G_PRIORITY_DEFAULT,
+                                              CLIENT_XSYNC_TIMEOUT,
+                                              (GtkFunction) clientXSyncTimeout,
                                               (gpointer) c, NULL);
 }
 
@@ -1621,7 +1621,7 @@ static gboolean
 update_icon_idle_cb (gpointer data)
 {
     Client *c;
-    
+
     TRACE ("entering update_icon_idle_cb");
 
     c = (Client *) data;
@@ -1646,7 +1646,7 @@ clientUpdateIcon (Client * c)
 
     if (c->icon_timeout_id == 0)
     {
-        c->icon_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, 
+        c->icon_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
                                               update_icon_idle_cb, c, NULL);
     }
 }
@@ -1912,7 +1912,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         }
     }
 
-    /* 
+    /*
        Initialize "old" fields once the position is ensured, to avoid
        initially maximized or fullscreen windows being placed offscreen
        once de-maximized
@@ -2574,7 +2574,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
         for (index = screen_info->windows_stack; index; index = g_list_next (index))
         {
             Client *c = (Client *) index->data;
-            if ((c->type & WINDOW_REGULAR_FOCUSABLE) 
+            if ((c->type & WINDOW_REGULAR_FOCUSABLE)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED | CLIENT_FLAG_SKIP_TASKBAR))
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
@@ -2627,7 +2627,7 @@ clientActivate (Client * c, Time timestamp)
     }
     else
     {
-        TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+        TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         clientSetNetState (c);
     }
@@ -2763,7 +2763,7 @@ clientShade (Client * c)
             wc.y = c->y;
             mask |= (CWX | CWY);
         }
-        
+
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
             c->ignore_unmap++;
@@ -2977,7 +2977,8 @@ void clientToggleAbove (Client * c)
     TRACE ("entering clientToggleAbove");
     TRACE ("toggle above client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+    if (!clientIsValidTransientOrModal (c) &&
+        !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
         clientUpdateAboveState (c);
@@ -4048,7 +4049,7 @@ clientMove (Client * c, XEvent * ev)
 
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask,
-                              myDisplayGetCursorMove (display_info), 
+                              myDisplayGetCursorMove (display_info),
                               myDisplayGetCurrentTime (display_info));
     if (!g1 || !g2)
     {
@@ -4454,7 +4455,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 || (!clientCkeckTitle (c) && (frame_y < screen_info->margins [STRUTS_TOP])))
             {
                 temp = c->y + c->height;
-                c->y = CLAMP (c->y, screen_info->margins [STRUTS_TOP] + frame_top, 
+                c->y = CLAMP (c->y, screen_info->margins [STRUTS_TOP] + frame_top,
                          MAX (disp_max_y - min_visible,  screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible));
                 clientSetHeight (c, temp - c->y);
                 c->y = temp - c->height;

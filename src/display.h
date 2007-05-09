@@ -22,7 +22,7 @@
 #define INC_DISPLAY_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -330,7 +330,7 @@ ScreenInfo              *myDisplayGetDefaultScreen              (DisplayInfo *);
 Time                     myDisplayUpdateCurrentTime             (DisplayInfo *,
                                                                  XEvent *);
 Time                     myDisplayGetCurrentTime                (DisplayInfo *);
-Time                     myDisplayGetTime                       (DisplayInfo *, 
+Time                     myDisplayGetTime                       (DisplayInfo *,
                                                                  Time);
 Time                     myDisplayGetLastUserTime               (DisplayInfo *);
 void                     myDisplaySetLastUserTime               (DisplayInfo *,

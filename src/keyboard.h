@@ -23,7 +23,7 @@
 #define INC_KEYBOARD_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/keysym.h>
@@ -43,21 +43,21 @@ extern unsigned int SuperMask;
 extern unsigned int HyperMask;
 
 int                      getModifierMap                         (char *);
-void                     parseKeyString                         (Display *, 
-                                                                 MyKey *, 
+void                     parseKeyString                         (Display *,
+                                                                 MyKey *,
                                                                  char *);
-gboolean                 grabKey                                (Display *, 
-                                                                 MyKey *, 
+gboolean                 grabKey                                (Display *,
+                                                                 MyKey *,
                                                                  Window);
-void                     ungrabKeys                             (Display *, 
+void                     ungrabKeys                             (Display *,
                                                                  Window);
-gboolean                 grabButton                             (Display *, 
-                                                                 int, 
-                                                                 int, 
+gboolean                 grabButton                             (Display *,
+                                                                 int,
+                                                                 int,
                                                                  Window);
-void                     ungrabButton                           (Display *, 
-                                                                 int, 
-                                                                 int, 
+void                     ungrabButton                           (Display *,
+                                                                 int,
+                                                                 int,
                                                                  Window);
 void                     initModifiers                          (Display *);
 

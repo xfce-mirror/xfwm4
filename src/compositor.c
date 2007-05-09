@@ -21,7 +21,7 @@
 */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/Xlib.h>
@@ -1131,11 +1131,11 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
                                          * screen_info->params->frame_opacity
                                          / (NET_WM_OPAQUE * 100.0);
 
-                cw->alphaBorderPict = solid_picture (screen_info, 
-                                                     FALSE, 
-                                                     frame_opacity, 
-                                                     0.0, /* red   */ 
-                                                     0.0, /* green */ 
+                cw->alphaBorderPict = solid_picture (screen_info,
+                                                     FALSE,
+                                                     frame_opacity,
+                                                     0.0, /* red   */
+                                                     0.0, /* green */
                                                      0.0  /* blue  */);
             }
 
@@ -1362,9 +1362,9 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
             if ((cw->opacity != NET_WM_OPAQUE) && !(cw->alphaPict))
             {
                 cw->alphaPict = solid_picture (screen_info, FALSE,
-                                               (double) cw->opacity / NET_WM_OPAQUE,  
-                                               0.0, /* red   */ 
-                                               0.0, /* green */ 
+                                               (double) cw->opacity / NET_WM_OPAQUE,
+                                               0.0, /* red   */
+                                               0.0, /* green */
                                                0.0  /* blue  */);
             }
             XFixesIntersectRegion (dpy, cw->borderClip, cw->borderClip, cw->borderSize);
@@ -2814,11 +2814,11 @@ compositorManageScreen (ScreenInfo *screen_info)
     presum_gaussian (screen_info);
     screen_info->rootBuffer = None;
     /* Change following argb values to play with shadow colors */
-    screen_info->blackPicture = solid_picture (screen_info, 
-                                               TRUE, 
-                                               1.0, /* alpha */ 
-                                               0.0, /* red   */ 
-                                               0.0, /* green */ 
+    screen_info->blackPicture = solid_picture (screen_info,
+                                               TRUE,
+                                               1.0, /* alpha */
+                                               0.0, /* red   */
+                                               0.0, /* green */
                                                0.0  /* blue  */);
     screen_info->rootTile = None;
     screen_info->allDamage = None;

@@ -19,12 +19,12 @@
         xfwm4    - (c) 2002-2006 Olivier Fourdan
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #ifndef INC_ICONS_H
 #define INC_ICONS_H
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>

@@ -21,7 +21,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -1206,7 +1206,7 @@ getXServerTime (DisplayInfo *display_info)
         g_return_val_if_fail (screen_info,  (Time) CurrentTime);
 
         TRACE ("getXServerTime: Using X server roundtrip");
-        XChangeProperty (display_info->dpy, screen_info->xfwm4_win, 
+        XChangeProperty (display_info->dpy, screen_info->xfwm4_win,
                          display_info->atoms[XFWM4_TIMESTAMP_PROP],
                          display_info->atoms[XFWM4_TIMESTAMP_PROP],
                          8, PropModeReplace, (unsigned char *) &c, 1);

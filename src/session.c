@@ -20,7 +20,7 @@
 /* Initially inspired by xfwm, fvwm2, enlightment and twm implementations */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/Xatom.h>
@@ -284,7 +284,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
         {
             continue;
         }
-        
+
         if (c->client_leader != None)
         {
             getWindowRole (display_info, c->window, &window_role);

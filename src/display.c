@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -61,7 +61,7 @@ handleXError (Display * dpy, XErrorEvent * err)
     char buf[64];
 
     XGetErrorText (dpy, err->error_code, buf, 63);
-    g_print ("XError: %s\n", buf);                                    
+    g_print ("XError: %s\n", buf);
     g_print ("==>  XID 0x%lx, Request %d, Error %d <==\n",
               err->resourceid, err->request_code, err->error_code);
 #endif
@@ -225,18 +225,18 @@ myDisplayInit (GdkDisplay *gdisplay)
 
 #ifdef HAVE_XSYNC
     display->have_xsync = FALSE;
-    
+
     display->xsync_error_base = 0;
     display->xsync_event_base = 0;
 
     major = SYNC_MAJOR_VERSION;
     minor = SYNC_MINOR_VERSION;
-    
+
     if (XSyncQueryExtension (display->dpy,
                               &display->xsync_event_base,
                               &display->xsync_error_base)
-         && XSyncInitialize (display->dpy, 
-                             &major, 
+         && XSyncInitialize (display->dpy,
+                             &major,
                              &minor))
     {
         display->have_xsync = TRUE;
@@ -637,7 +637,7 @@ myDisplayGetClientFromXSyncAlarm (DisplayInfo *display, XSyncAlarm alarm)
 
     g_return_val_if_fail (alarm != None, NULL);
     g_return_val_if_fail (display != NULL, NULL);
-    
+
     for (index = display->clients; index; index = g_slist_next (index))
     {
         Client *c = (Client *) index->data;

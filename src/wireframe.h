@@ -19,21 +19,21 @@
 
  */
 
+#ifndef INC_WIREFRAME_H
+#define INC_WIREFRAME_H
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
-
-#ifndef INC_WIREFRAME_H
-#define INC_WIREFRAME_H
 
 #include <X11/Xlib.h>
 #include "screen.h"
 #include "client.h"
 
-void                     wireframeUpdate                        (Client *c, 
+void                     wireframeUpdate                        (Client *c,
                                                                  Window);
 Window                   wireframeCreate                        (Client *c);
-void                     wireframeDelete                        (ScreenInfo *, 
+void                     wireframeDelete                        (ScreenInfo *,
                                                                  Window);
 
 #endif /* INC_WIREFRAME_H */

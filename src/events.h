@@ -23,7 +23,7 @@
 #define INC_EVENTS_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -36,7 +36,7 @@
 #include "event_filter.h"
 
 void                     initMenuEventWin                       (void);
-eventFilterStatus        xfwm4_event_filter                     (XEvent *, 
+eventFilterStatus        xfwm4_event_filter                     (XEvent *,
                                                                  gpointer);
 void                     initGtkCallbacks                       (ScreenInfo *);
 

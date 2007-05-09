@@ -1,25 +1,29 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-  
+
         xfce4 mcs plugin   - (c) 2005-2006 Olivier Fourdan
- 
+
  */
 
-#ifndef __XFWM4_PLUGIN_H
-#define __XFWM4_PLUGIN_H
+#ifndef INC_XFWM4_PLUGIN_H
+#define INC_XFWM4_PLUGIN_H
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #define RCDIR    "mcs_settings"
 #define OLDRCDIR "settings"
@@ -137,4 +141,5 @@ gboolean xfwm4_plugin_write_options (McsPlugin *);
 void xfwm4_plugin_theme_info_free (ThemeInfo *);
 ThemeInfo *xfwm4_plugin_find_theme_info_by_name (const gchar *, GList *);
 GList *xfwm4_plugin_read_themes (GList *, GtkWidget *, GtkWidget *, ThemeType, gchar *);
-#endif
+
+#endif /* INC_XFWM4_PLUGIN_H */

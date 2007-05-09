@@ -1,25 +1,25 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         xfce4 mcs plugin   - (c) 2002-2006 Olivier Fourdan
         Buttons DnD inspired by Michael Terry's implementation for xpad
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <string.h>
@@ -415,14 +415,14 @@ layout_set_value (GtkWidget * layout, GtkWidget * hidden, gchar * semantic)
     GtkWidget *title;
     gchar *sem;
 
-    /* 
-     * 1) Block redraw on boxes 
+    /*
+     * 1) Block redraw on boxes
      */
     gtk_widget_set_app_paintable (layout, FALSE);
     gtk_widget_set_app_paintable (hidden, FALSE);
 
-    /* 
-     * 2) Send all buttons but the title back to the hidden frame 
+    /*
+     * 2) Send all buttons but the title back to the hidden frame
      */
     children = gtk_container_get_children (GTK_CONTAINER (layout));
     title = NULL;
@@ -449,7 +449,7 @@ layout_set_value (GtkWidget * layout, GtkWidget * hidden, gchar * semantic)
     }
     g_list_free (children);
 
-    /* 
+    /*
      * 3) Move choosen buttons to the layout box in correct order
      */
     children = gtk_container_get_children (GTK_CONTAINER (hidden));
@@ -488,8 +488,8 @@ layout_set_value (GtkWidget * layout, GtkWidget * hidden, gchar * semantic)
     }
     g_list_free (children);
 
-    /* 
-     * 4) Unblock redraw on boxes 
+    /*
+     * 4) Unblock redraw on boxes
      */
     gtk_widget_set_app_paintable (layout, TRUE);
     gtk_widget_set_app_paintable (hidden, TRUE);
@@ -1144,7 +1144,7 @@ cb_click_to_focus_changed (GtkWidget * dialog, gpointer user_data)
 
     click_to_focus = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (itf->click_focus_radio));
     gtk_widget_set_sensitive (itf->focus_delay_scale, !click_to_focus);
-    
+
     mcs_manager_set_int (mcs_plugin->manager, "Xfwm/ClickToFocus", CHANNEL1,
         click_to_focus ? 1 : 0);
     mcs_manager_notify (mcs_plugin->manager, CHANNEL1);
@@ -1637,19 +1637,19 @@ create_dialog (McsPlugin * mcs_plugin)
         gtk_radio_button_get_group (GTK_RADIO_BUTTON (dialog->focus_follow_mouse_radio));
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->focus_follow_mouse_radio),
         !click_to_focus);
-    
+
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_widget_show (vbox);
-    
+
     frame = xfce_create_framebox_with_content (_("Delay before window receives focus"), vbox);
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox_page), frame, TRUE, TRUE, 0);
-    
+
     table = gtk_table_new (1, 3, FALSE);
     gtk_widget_show (table);
     gtk_box_pack_start (GTK_BOX (vbox), table, TRUE, TRUE, 0);
     gtk_container_set_border_width (GTK_CONTAINER (table), BORDER);
-    
+
     label = xfce_create_small_label (_("Slow"));
     gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL),
@@ -1676,7 +1676,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_range_set_update_policy (GTK_RANGE (dialog->focus_delay_scale), GTK_UPDATE_DISCONTINUOUS);
     gtk_range_set_inverted (GTK_RANGE (dialog->focus_delay_scale), TRUE);
     gtk_widget_set_sensitive (dialog->focus_delay_scale, !click_to_focus);
-    
+
     dialog->focus_new_check =
         create_check_button_with_mnemonic (_("Automatically give focus to newly created windows"));
     gtk_widget_show (dialog->focus_new_check);
@@ -2212,7 +2212,7 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
         focus_delay = 0;
         mcs_manager_set_int (mcs_plugin->manager, "Xfwm/FocusDelay", CHANNEL1, raise_delay);
     }
-    
+
     setting = mcs_manager_setting_lookup (mcs_plugin->manager, "Xfwm/RaiseOnClick", CHANNEL1);
     if (setting)
     {
@@ -2338,8 +2338,8 @@ xfwm4_create_channel (McsPlugin * mcs_plugin)
             dbl_click_action);
     }
 
-    /* 
-     * Second separate channel for keytheme (used as a raw channel from the client) 
+    /*
+     * Second separate channel for keytheme (used as a raw channel from the client)
      */
 
     path = g_build_filename ("xfce4", RCDIR, RCFILE2, NULL);

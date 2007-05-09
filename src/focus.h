@@ -22,7 +22,7 @@
 #define INC_FOCUS_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -37,28 +37,28 @@
 #define FOCUS_IGNORE_MODAL              (1<<1)
 #define FOCUS_FORCE                     (1<<2)
 
-void                     clientFocusTop                         (ScreenInfo *, 
+void                     clientFocusTop                         (ScreenInfo *,
                                                                  int,
                                                                  Time);
 gboolean                 clientFocusNew                         (Client *);
-gboolean                 clientSelectMask                       (Client *, 
-                                                                 int, 
+gboolean                 clientSelectMask                       (Client *,
+                                                                 int,
                                                                  int);
-Client                  *clientGetNext                          (Client *, 
+Client                  *clientGetNext                          (Client *,
                                                                  int);
-Client                  *clientGetPrevious                      (Client *, 
+Client                  *clientGetPrevious                      (Client *,
                                                                  int);
-void                     clientPassFocus                        (ScreenInfo *, 
-                                                                 Client *, 
+void                     clientPassFocus                        (ScreenInfo *,
+                                                                 Client *,
                                                                  Client *);
 gboolean                 clientAcceptFocus                      (Client *);
 void                     clientSortRing                         (Client *);
-void                     clientUpdateFocus                      (ScreenInfo *, 
-                                                                 Client *, 
+void                     clientUpdateFocus                      (ScreenInfo *,
+                                                                 Client *,
                                                                  unsigned short);
-void                     clientSetFocus                         (ScreenInfo *, 
-                                                                 Client *, 
-                                                                 Time, 
+void                     clientSetFocus                         (ScreenInfo *,
+                                                                 Client *,
+                                                                 Time,
                                                                  unsigned short);
 void                     clientInitFocusFlag                    (Client *);
 Client                  *clientGetFocus                         (void);
@@ -76,7 +76,5 @@ void                     clientClearLastUngrab                  (void);
 void                     clientClearDelayedFocus                (void);
 void                     clientAddDelayedFocus                  (Client *);
 Client                  *clientGetDelayedFocus                  (void);
-
-
 
 #endif /* INC_FOCUS_H */

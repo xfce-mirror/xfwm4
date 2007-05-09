@@ -18,12 +18,11 @@
 
  */
 
-
 #ifndef INC_PLACEMENT_H
 #define INC_PLACEMENT_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <glib.h>
@@ -34,13 +33,13 @@
 #define CLIENT_CONSTRAINED_LEFT    1<<2
 #define CLIENT_CONSTRAINED_RIGHT   1<<3
 
-void                     clientMaxSpace                         (ScreenInfo *, 
-                                                                 int *, 
-                                                                 int *, 
-                                                                 int *, 
+void                     clientMaxSpace                         (ScreenInfo *,
+                                                                 int *,
+                                                                 int *,
+                                                                 int *,
                                                                  int *);
 gboolean                 clientCkeckTitle                       (Client *);
-unsigned int             clientConstrainPos                     (Client *, 
+unsigned int             clientConstrainPos                     (Client *,
                                                                  gboolean);
 void                     clientKeepVisible                      (Client *);
 void                     clientInitPosition                     (Client *);

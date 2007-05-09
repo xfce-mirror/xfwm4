@@ -23,7 +23,7 @@
 #define INC_FRAME_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include "screen.h"
@@ -49,10 +49,9 @@ int                      frameX                                 (Client *);
 int                      frameY                                 (Client *);
 int                      frameWidth                             (Client *);
 int                      frameHeight                            (Client *);
-void                     frameDraw                              (Client *, 
+void                     frameDraw                              (Client *,
                                                                  gboolean);
 void                     frameClearQueueDraw                    (Client *);
 void                     frameQueueDraw                         (Client *);
-
 
 #endif /* INC_FRAME_H */

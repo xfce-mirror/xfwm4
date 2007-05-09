@@ -19,8 +19,11 @@
 
  */
 
+#ifndef INC_MISC_H
+#define INC_MISC_H
+
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -28,13 +31,11 @@
 #include <glib.h>
 #include "screen.h"
 
-#ifndef INC_MISC_H
-#define INC_MISC_H
-
 /*
    Just for completion, being a bit pedantic, X seems to be missing
    those so far, so create them for now.
  */
+
 #ifndef Button6
 #define Button6 6
 #endif
@@ -43,32 +44,32 @@
 #define Button7 7
 #endif
 
-unsigned int             getMouseXY                             (ScreenInfo *, 
-                                                                 Window, 
-                                                                 int *, 
+unsigned int             getMouseXY                             (ScreenInfo *,
+                                                                 Window,
+                                                                 int *,
                                                                  int *);
-Window                   getMouseWindow                         (ScreenInfo *, 
+Window                   getMouseWindow                         (ScreenInfo *,
                                                                  Window);
-GC                       createGC                               (ScreenInfo *, 
-                                                                 char *, 
-                                                                 int, 
-                                                                 XFontStruct *, 
-                                                                 int, 
+GC                       createGC                               (ScreenInfo *,
+                                                                 char *,
+                                                                 int,
+                                                                 XFontStruct *,
+                                                                 int,
                                                                  gboolean);
-void                     sendClientMessage                      (ScreenInfo *, 
-                                                                 Window, 
-                                                                 int, 
+void                     sendClientMessage                      (ScreenInfo *,
+                                                                 Window,
+                                                                 int,
                                                                  Time);
-void                     sendRootMessage                        (ScreenInfo *, 
-                                                                 int, 
-                                                                 long, 
+void                     sendRootMessage                        (ScreenInfo *,
+                                                                 int,
+                                                                 long,
                                                                  Time);
-gboolean                 checkWindowOnRoot                      (ScreenInfo *, 
+gboolean                 checkWindowOnRoot                      (ScreenInfo *,
                                                                  Window);
-void                     placeSidewalks                         (ScreenInfo *, 
+void                     placeSidewalks                         (ScreenInfo *,
                                                                  gboolean);
-gint                     find_monitor_at_point                  (GdkScreen *, 
-                                                                 gint, 
+gint                     find_monitor_at_point                  (GdkScreen *,
+                                                                 gint,
                                                                  gint);
 
 #endif /* INC_MISC_H */

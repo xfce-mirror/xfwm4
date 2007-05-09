@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/Xlib.h>
@@ -199,7 +199,7 @@ xfwmWindowVisible (xfwmWindow *win)
     g_return_val_if_fail (win, FALSE);
 
     return win->map;
-} 
+}
 
 gboolean
 xfwmWindowDeleted (xfwmWindow *win)
@@ -207,7 +207,7 @@ xfwmWindowDeleted (xfwmWindow *win)
     g_return_val_if_fail (win, TRUE);
 
     return (win->window == None);
-} 
+}
 
 void
 xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,

@@ -22,7 +22,7 @@
 #define INC_NETWM_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/Xlib.h>
@@ -33,15 +33,15 @@
 
 void                     clientSetNetState                      (Client *);
 void                     clientGetNetState                      (Client *);
-void                     clientUpdateNetState                   (Client *, 
+void                     clientUpdateNetState                   (Client *,
                                                                  XClientMessageEvent *);
-void                     clientNetMoveResize                    (Client *, 
+void                     clientNetMoveResize                    (Client *,
                                                                  XClientMessageEvent *);
 void                     clientUpdateFullscreenState            (Client *);
 void                     clientGetNetWmType                     (Client *);
 void                     clientGetInitialNetWmDesktop           (Client *);
-void                     clientSetNetClientList                 (ScreenInfo *, 
-                                                                 Atom, 
+void                     clientSetNetClientList                 (ScreenInfo *,
+                                                                 Atom,
                                                                  GList *);
 gboolean                 clientValidateNetStrut                 (Client *);
 gboolean                 clientGetNetStruts                     (Client *);

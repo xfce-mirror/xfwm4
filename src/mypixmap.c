@@ -31,7 +31,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/Xlib.h>
@@ -375,7 +375,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
         {
             if (color[0] == '\0')  /* incomplete colormap entry */
             {
-                return NULL;               
+                return NULL;
             }
             else  /* end of entry, still store the last color */
             {

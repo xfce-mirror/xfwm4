@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/Xlib.h>
@@ -672,7 +672,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
             resize = FALSE; /* Move */
             break;
     }
-    
+
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         if (resize && FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))

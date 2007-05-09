@@ -18,8 +18,12 @@
 
  */
 
-#ifndef __UI_STYLE_H__
-#define __UI_STYLE_H__
+#ifndef INC_UI_STYLE_H
+#define INC_UI_STYLE_H
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -34,4 +38,4 @@ GdkGC                   *getUIStyle_gc                          (GtkWidget *,
 PangoFontDescription    *getUIPangoFontDesc                     (GtkWidget *);
 PangoContext            *getUIPangoContext                      (GtkWidget *);
 
-#endif /* __UI_STYLE_H__ */
+#endif /* INC_UI_STYLE_H */

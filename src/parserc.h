@@ -23,29 +23,29 @@
 #define INC_PARSERC_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <glib.h>
 #include "settings.h"
 
-gboolean                 parseRc                                (const gchar *, 
-                                                                 const gchar *, 
+gboolean                 parseRc                                (const gchar *,
+                                                                 const gchar *,
                                                                  Settings *);
 gboolean                 checkRc                                (Settings *);
-gchar                   *getValue                               (const gchar *, 
+gchar                   *getValue                               (const gchar *,
                                                                  Settings *);
-gboolean                 setValue                               (const gchar *, 
-                                                                 const gchar *, 
+gboolean                 setValue                               (const gchar *,
+                                                                 const gchar *,
                                                                  Settings *);
-gboolean                 setBooleanValueFromInt                 (const gchar *, 
-                                                                 int, 
+gboolean                 setBooleanValueFromInt                 (const gchar *,
+                                                                 int,
                                                                  Settings *);
-gboolean                 setIntValueFromInt                     (const gchar *, 
-                                                                 int, 
+gboolean                 setIntValueFromInt                     (const gchar *,
+                                                                 int,
                                                                  Settings *);
 gchar                   *getSystemThemeDir                      (void);
-gchar                   *getThemeDir                            (const gchar *, 
+gchar                   *getThemeDir                            (const gchar *,
                                                                  const gchar *);
 void                     freeRc                                 (Settings *);
 

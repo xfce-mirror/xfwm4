@@ -23,7 +23,7 @@
 #define INC_STARTUP_NOTIFICATION_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
@@ -47,4 +47,5 @@ void                     sn_process_event                       (XEvent *);
 #define                  sn_process_event(e) ;
 
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+
 #endif /* INC_STARTUP_NOTIFICATION_H */

@@ -19,12 +19,12 @@
 
  */
 
-#ifdef HAVE_CONFIG_H
-#  include "config.h"
-#endif
-
 #ifndef INC_SPINNING_CURSOR_H
 #define INC_SPINNING_CURSOR_H
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #include <X11/Xlib.h>
 

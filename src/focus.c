@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -456,7 +456,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         }
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
-            TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+            TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             clientSetNetState (c);
         }
@@ -511,7 +511,7 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, Time timestamp, unsigned sho
         user_focus = c;
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
-            TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window); 
+            TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             clientSetNetState (c);
         }
@@ -797,9 +797,9 @@ clientAddDelayedFocus (Client *c)
 
     screen_info = c->screen_info;
     delayed_focus = c;
-    focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
-                                        screen_info->params->focus_delay, 
-                                        (GSourceFunc) delayed_focus_cb, 
+    focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
+                                        screen_info->params->focus_delay,
+                                        (GSourceFunc) delayed_focus_cb,
                                         NULL, NULL);
 }
 

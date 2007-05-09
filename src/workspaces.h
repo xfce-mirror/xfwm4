@@ -23,7 +23,7 @@
 #define INC_WORKSPACES_H
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -35,20 +35,20 @@
 #include "screen.h"
 #include "client.h"
 
-gboolean                workspaceMove                           (ScreenInfo *, 
-                                                                 int, 
-                                                                 int, 
+gboolean                workspaceMove                           (ScreenInfo *,
+                                                                 int,
+                                                                 int,
                                                                  Client *,
                                                                  Time);
-void                    workspaceSwitch                         (ScreenInfo *, 
-                                                                 int, 
-                                                                 Client *, 
+void                    workspaceSwitch                         (ScreenInfo *,
+                                                                 int,
+                                                                 Client *,
                                                                  gboolean,
                                                                  Time);
-void                    workspaceSetNames                       (ScreenInfo *, 
-                                                                 gchar **, 
+void                    workspaceSetNames                       (ScreenInfo *,
+                                                                 gchar **,
                                                                  int);
-void                    workspaceSetCount                       (ScreenInfo *, 
+void                    workspaceSetCount                       (ScreenInfo *,
                                                                  int);
 void                    workspaceUpdateArea                     (ScreenInfo *);
 

@@ -18,6 +18,10 @@
 
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -719,9 +723,9 @@ clientResetDelayedRaise (ScreenInfo *screen_info)
     {
         g_source_remove (raise_timeout);
     }
-    raise_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT, 
-                                        screen_info->params->raise_delay, 
-                                        (GSourceFunc) delayed_raise_cb, 
+    raise_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
+                                        screen_info->params->raise_delay,
+                                        (GSourceFunc) delayed_raise_cb,
                                         NULL, NULL);
 }
 

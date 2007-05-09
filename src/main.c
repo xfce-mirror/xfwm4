@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <X11/X.h>
@@ -189,7 +189,7 @@ ensure_basedir_spec (void)
         if (w && r)
         {
             int c;
-    
+
             while ((c = getc (r)) != EOF)
             {
                 putc (c, w);
@@ -238,7 +238,7 @@ ensure_basedir_spec (void)
             if (w && r)
             {
                 int c;
-        
+
                 while ((c = getc (r)) != EOF)
                     putc (c, w);
             }
@@ -473,7 +473,7 @@ initialize (int argc, char **argv, gint compositor_mode)
                 /* Enable compositor if "use compositing" is enabled */
                 xfwm4_compositor = compositorManageScreen (screen_info);
             }
-            /* 
+            /*
                The user may want to use the manual compositing, but the installed
                system may not support it, so we need to double check, to see if
                initialization of the compositor was successful.

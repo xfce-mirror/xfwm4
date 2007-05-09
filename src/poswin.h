@@ -18,12 +18,12 @@
           based on a patch from Joshua Blanton <jblanton@irg.cs.ohiou.edu>
  */
 
-#ifdef HAVE_CONFIG_H
-#  include "config.h"
-#endif
-
 #ifndef INC_POSWIN_H
 #define INC_POSWIN_H
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #include <glib.h>
 #include <gdk/gdk.h>
@@ -39,7 +39,7 @@ struct _Poswin
 };
 
 Poswin                  *poswinCreate                           (GdkScreen *);
-void                     poswinSetPosition                      (Poswin *, 
+void                     poswinSetPosition                      (Poswin *,
                                                                  Client *);
 void                     poswinDestroy                          (Poswin *);
 void                     poswinShow                             (Poswin *);
