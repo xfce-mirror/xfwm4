@@ -1,14 +1,14 @@
 # Translation of xfwm4 package into Finnish.
-# Copyright (C) 2002-2006 The Xfce Development Team.
+# Copyright (C) 2002-2007 The Xfce Development Team.
 # This file is distributed under the same license as the xfwm4 package.
-# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2006.
+# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-09 14:29+0200\n"
-"PO-Revision-Date: 2006-10-19 21:24+0300\n"
+"POT-Creation-Date: 2007-05-15 21:23+0300\n"
+"PO-Revision-Date: 2007-05-15 21:25+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -687,7 +687,7 @@ msgstr "Määritä pikanäppäin"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:850
 msgid "Cancel"
-msgstr ""
+msgstr "Peru"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"
