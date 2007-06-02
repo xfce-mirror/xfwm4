@@ -1,6 +1,7 @@
 4.5.x
 =====
 
+- Add resize from top of window
 - Rework the event filter to avoid passing all events top gtk+
 - Treat dialogs and utility windows as transients for group (bug #3102)
 - Add support for shape input with XShape extension 1.1 (Bug #3092)

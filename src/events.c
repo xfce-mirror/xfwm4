@@ -976,6 +976,11 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         {
             edgeButton (c, CORNER_COUNT + SIDE_BOTTOM, ev);
         }
+        else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_TOP]))
+            && (state == 0))
+        {
+            edgeButton (c, CORNER_COUNT + SIDE_TOP, ev);
+        }
         else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]))
             && (state == 0))
         {

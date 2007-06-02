@@ -347,7 +347,7 @@ myDisplayClose (DisplayInfo *display)
         display->hostname = NULL;
     }
 
-    for (i = 0; i < 7; i++)
+    for (i = 0; i < SIDE_COUNT + CORNER_COUNT; i++)
     {
         XFreeCursor (display->dpy, display->resize_cursor[i]);
         display->resize_cursor[i] = None;

@@ -35,41 +35,9 @@
 
 enum
 {
-    TITLE_1,
-    TITLE_2,
-    TITLE_3,
-    TITLE_4,
-    TITLE_5
-};
-
-enum
-{
     TITLE_SHADOW_NONE,
     TITLE_SHADOW_UNDER,
     TITLE_SHADOW_FRAME
-};
-
-enum
-{
-    MENU_BUTTON,
-    STICK_BUTTON,
-    SHADE_BUTTON,
-    HIDE_BUTTON,
-    MAXIMIZE_BUTTON,
-    CLOSE_BUTTON,
-    TITLE_SEPARATOR,
-    BUTTON_COUNT
-};
-#define BUTTON_LAST (BUTTON_COUNT - 1)
-
-enum
-{
-    ACTIVE,
-    INACTIVE,
-    PRESSED,
-    T_ACTIVE,
-    T_INACTIVE,
-    T_PRESSED
 };
 
 enum

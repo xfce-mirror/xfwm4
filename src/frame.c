@@ -249,7 +249,31 @@ frameButtonOffset (Client *c)
 }
 
 static void
-frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap * pm)
+frameFillTitlePixmap (Client * c, int state, int part, int x, int w, int h, xfwmPixmap * title_pm, xfwmPixmap * top_pm)
+{
+    ScreenInfo *screen_info;
+
+    TRACE ("entering frameFillTitlePixmap");
+
+    g_return_if_fail (c);
+    g_return_if_fail (title_pm);
+    g_return_if_fail (top_pm);
+
+    screen_info = c->screen_info;
+
+    if (screen_info->top[part][state].pixmap)
+    {
+        xfwmPixmapFill (&screen_info->top[part][state], top_pm, x, 0, w, h);
+    }
+    else
+    {
+        xfwmPixmapFill (&screen_info->title[part][state], top_pm, x, 0, w, h);
+    }
+    xfwmPixmapFill (&screen_info->title[part][state], title_pm, x, -h, w, frameTop (c) + h);
+}
+
+static void
+frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap * title_pm, xfwmPixmap * top_pm)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -260,11 +284,13 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     PangoRectangle logical_rect;
     int width, x, hoffset, w1, w2, w3, w4, w5, temp;
     int voffset, title_x, title_y;
+    int top_height;
 
     TRACE ("entering frameCreateTitlePixmap");
 
     g_return_if_fail (c);
-    g_return_if_fail (pm);
+    g_return_if_fail (title_pm);
+    g_return_if_fail (top_pm);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -279,12 +305,21 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     width = frameWidth (c) - frameTopLeftWidth (c, state) - frameTopRightWidth (c, state);
     if (width < 1)
     {
-        pm->pixmap = None;
-        pm->mask = None;
-        pm->width = 0;
-        pm->height = 0;
+        title_pm->pixmap = None;
+        title_pm->mask = None;
+        title_pm->width = 0;
+        title_pm->height = 0;
+
+        top_pm->pixmap = None;
+        top_pm->mask = None;
+        top_pm->width = 0;
+        top_pm->height = 0;
+
         return;
     }
+
+    layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), c->name);
+    pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
     if (left < frameTopLeftWidth (c, state))
     {
@@ -304,14 +339,38 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
 
     x = 0;
     hoffset = 0;
-    voffset = 0;
+
+    if (state == ACTIVE)
+    {
+        voffset = screen_info->params->title_vertical_offset_active;
+    }
+    else
+    {
+        voffset = screen_info->params->title_vertical_offset_inactive;
+    }
+
+    title_y = voffset + (frameTop (c) - logical_rect.height) / 2;
+    if (title_y + logical_rect.height > frameTop (c))
+    {
+        title_y = MAX (0, frameTop (c) - logical_rect.height);
+    }
+
+    if (screen_info->top[3][ACTIVE].pixmap)
+    {
+        top_height = screen_info->top[3][ACTIVE].height;
+    }
+    else
+    {
+        top_height = frameTop (c) / 10 + 1;
+        if (top_height > title_y - 1)
+        {
+             top_height = MAX (title_y - 1, 0);
+        }
+    }
 
     w1 = 0;
     w2 = screen_info->title[TITLE_2][state].width;
     w4 = screen_info->title[TITLE_4][state].width;
-
-    layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), c->name);
-    pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
     if (screen_info->params->full_width_title)
     {
@@ -369,37 +428,25 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         }
     }
 
-    xfwmPixmapCreate (screen_info, pm, width, frameTop (c));
-    gpixmap = gdk_pixmap_foreign_new (pm->pixmap);
+    xfwmPixmapCreate (screen_info, top_pm, width, top_height);
+    xfwmPixmapCreate (screen_info, title_pm, width, frameTop (c));
+    gpixmap = gdk_pixmap_foreign_new (title_pm->pixmap);
     gdk_drawable_set_colormap (gpixmap, gdk_screen_get_rgb_colormap (screen_info->gscr));
     gc = gdk_gc_new (gpixmap);
 
     if (w1 > 0)
     {
-        xfwmPixmapFill (&screen_info->title[TITLE_1][state], pm, 0, 0, w1, frameTop (c));
+        frameFillTitlePixmap (c, state, TITLE_1, x, w1, top_height, title_pm, top_pm);
         x = x + w1;
     }
 
-    xfwmPixmapFill (&screen_info->title[TITLE_2][state], pm, x, 0, w2, frameTop (c));
+    frameFillTitlePixmap (c, state, TITLE_2, x, w2, top_height, title_pm, top_pm);
     x = x + w2;
 
     if (w3 > 0)
     {
-        if (state == ACTIVE)
-        {
-            voffset = screen_info->params->title_vertical_offset_active;
-        }
-        else
-        {
-            voffset = screen_info->params->title_vertical_offset_inactive;
-        }
-        xfwmPixmapFill (&screen_info->title[TITLE_3][state], pm, x, 0, w3, frameTop (c));
+        frameFillTitlePixmap (c, state, TITLE_3, x, w3, top_height, title_pm, top_pm);
         title_x = hoffset + x;
-        title_y = voffset + (frameTop (c) - logical_rect.height) / 2;
-        if (title_y + logical_rect.height > frameTop (c))
-        {
-            title_y = MAX (0, frameTop (c) - logical_rect.height);
-        }
         if (screen_info->params->title_shadow[state])
         {
             gdk_gc_get_values (screen_info->title_shadow_colors[state].gc, &values);
@@ -426,12 +473,12 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     {
         x = right - w4;
     }
-    xfwmPixmapFill (&screen_info->title[TITLE_4][state], pm, x, 0, w4, frameTop (c));
+    frameFillTitlePixmap (c, state, TITLE_4, x, w4, top_height, title_pm, top_pm);
     x = x + w4;
 
     if (w5 > 0)
     {
-        xfwmPixmapFill (&screen_info->title[TITLE_5][state], pm, x, 0, w5, frameTop (c));
+        frameFillTitlePixmap (c, state, TITLE_5, x, w5, top_height, title_pm, top_pm);
     }
     g_object_unref (G_OBJECT (gc));
     g_object_unref (G_OBJECT (gpixmap));
@@ -653,6 +700,12 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
                                ShapeBounding, 0, 0, frame_pix->pm_sides[SIDE_BOTTOM].mask, ShapeSet);
         }
 
+        if (xfwmWindowVisible (&c->sides[SIDE_TOP]))
+        {
+            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->sides[SIDE_TOP]),
+                               ShapeBounding, 0, 0, frame_pix->pm_sides[SIDE_TOP].mask, ShapeSet);
+        }
+
         if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_LEFT]))
         {
             XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
@@ -770,6 +823,14 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
                                 screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
                                 frameHeight (c) - frameBottom (c),
                                 MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]), ShapeBounding, ShapeUnion);
+        }
+
+        if (xfwmWindowVisible (&c->sides[SIDE_TOP]))
+        {
+            XShapeCombineShape (display_info->dpy, shape_win, ShapeBounding,
+                                screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
+                                frameTop (c) - frameBottom (c),
+                                MYWINDOW_XWINDOW (c->sides[SIDE_TOP]), ShapeBounding, ShapeUnion);
         }
 
         if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_LEFT]))
@@ -1010,9 +1071,10 @@ frameDraw (Client * c, gboolean clear_all)
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_LEFT]);
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_RIGHT]);
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_BOTTOM]);
+        xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_TOP]);
 
         /* The title is always visible */
-        frameCreateTitlePixmap (c, state, left, right, &frame_pix.pm_title);
+        frameCreateTitlePixmap (c, state, left, right, &frame_pix.pm_title, &frame_pix.pm_sides[SIDE_TOP]);
         xfwmWindowSetBG (&c->title, &frame_pix.pm_title);
         xfwmWindowShow (&c->title,
             frameTopLeftWidth (c, state), 0, top_width,
@@ -1037,6 +1099,7 @@ frameDraw (Client * c, gboolean clear_all)
             xfwmWindowHide (&c->sides[SIDE_LEFT]);
             xfwmWindowHide (&c->sides[SIDE_RIGHT]);
             xfwmWindowHide (&c->sides[SIDE_BOTTOM]);
+            xfwmWindowHide (&c->sides[SIDE_TOP]);
             xfwmWindowHide (&c->corners[CORNER_TOP_LEFT]);
             xfwmWindowHide (&c->corners[CORNER_TOP_RIGHT]);
             xfwmWindowHide (&c->corners[CORNER_BOTTOM_LEFT]);
@@ -1085,6 +1148,19 @@ frameDraw (Client * c, gboolean clear_all)
                 frameHeight (c) - frameBottom (c), bottom_width, frameBottom (c),
                 (requires_clearing | width_changed));
 
+            if (frame_pix.pm_sides[SIDE_TOP].pixmap)
+            {
+                xfwmWindowSetBG (&c->sides[SIDE_TOP], &frame_pix.pm_sides[SIDE_TOP]);
+                xfwmWindowShow (&c->sides[SIDE_TOP],
+                    screen_info->corners[CORNER_TOP_LEFT][state].width,
+                    0, top_width, frameTop (c),
+                    (requires_clearing | width_changed));
+            }
+            else
+            {
+                xfwmWindowHide (&c->sides[SIDE_TOP]);
+            }
+
             xfwmWindowShow (&c->corners[CORNER_TOP_LEFT], 0, 0,
                 frameTopLeftWidth (c, state),
                 screen_info->corners[CORNER_TOP_LEFT][state].height,
@@ -1117,6 +1193,7 @@ frameDraw (Client * c, gboolean clear_all)
         xfwmPixmapFree (&frame_pix.pm_sides[SIDE_BOTTOM]);
         xfwmPixmapFree (&frame_pix.pm_sides[SIDE_LEFT]);
         xfwmPixmapFree (&frame_pix.pm_sides[SIDE_RIGHT]);
+        xfwmPixmapFree (&frame_pix.pm_sides[SIDE_TOP]);
     }
     else
     {
@@ -1124,7 +1201,7 @@ frameDraw (Client * c, gboolean clear_all)
         {
             xfwmWindowHide (&c->title);
         }
-        for (i = 0; i < 3; i++)
+        for (i = 0; i < 4; i++)
         {
             if (MYWINDOW_XWINDOW (c->sides[i]) && xfwmWindowVisible (&c->sides[i]))
             {

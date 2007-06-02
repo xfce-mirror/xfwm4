@@ -1006,6 +1006,7 @@ getTitleShadow (Settings *rc, const gchar * name)
 static void
 loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
+    gchar imagename[30];
     GValue tmp_val = { 0, };
     DisplayInfo *display_info;
     xfwmColorSymbol colsym[ XPM_COLOR_SYMBOL_SIZE + 1 ];
@@ -1183,26 +1184,21 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "maximize-toggled-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_PRESSED], theme,
         "maximize-toggled-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_1][ACTIVE], theme,
-        "title-1-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_1][INACTIVE], theme,
-        "title-1-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_2][ACTIVE], theme,
-        "title-2-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_2][INACTIVE], theme,
-        "title-2-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_3][ACTIVE], theme,
-        "title-3-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_3][INACTIVE], theme,
-        "title-3-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_4][ACTIVE], theme,
-        "title-4-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_4][INACTIVE], theme,
-        "title-4-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_5][ACTIVE], theme,
-        "title-5-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->title[TITLE_5][INACTIVE], theme,
-        "title-5-inactive", colsym);
+
+    for (i = 0; i < TITLE_COUNT; i++)
+    {
+        g_snprintf(imagename, sizeof (imagename), "title-%d-active", i+1);
+        xfwmPixmapLoad (screen_info, &screen_info->title[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "title-%d-inactive", i+1);
+        xfwmPixmapLoad (screen_info, &screen_info->title[i][INACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "top-%d-active", i+1);
+        xfwmPixmapLoad (screen_info, &screen_info->top[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "top-%d-inactive", i+1);
+        xfwmPixmapLoad (screen_info, &screen_info->top[i][INACTIVE], theme, imagename, colsym);
+    }
 
     screen_info->box_gc = createGC (screen_info, "#FFFFFF", GXxor, NULL, 2, TRUE);
 
@@ -1646,17 +1642,17 @@ unloadTheme (ScreenInfo *screen_info)
 
     TRACE ("entering unloadTheme");
 
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         xfwmPixmapFree (&screen_info->sides[i][ACTIVE]);
         xfwmPixmapFree (&screen_info->sides[i][INACTIVE]);
     }
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < CORNER_COUNT; i++)
     {
         xfwmPixmapFree (&screen_info->corners[i][ACTIVE]);
         xfwmPixmapFree (&screen_info->corners[i][INACTIVE]);
     }
-    for (i = 0; i < BUTTON_LAST; i++)
+    for (i = 0; i < BUTTON_COUNT; i++)
     {
         xfwmPixmapFree (&screen_info->buttons[i][ACTIVE]);
         xfwmPixmapFree (&screen_info->buttons[i][INACTIVE]);
@@ -1665,7 +1661,7 @@ unloadTheme (ScreenInfo *screen_info)
         xfwmPixmapFree (&screen_info->buttons[i][T_INACTIVE]);
         xfwmPixmapFree (&screen_info->buttons[i][T_PRESSED]);
     }
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < TITLE_COUNT; i++)
     {
         xfwmPixmapFree (&screen_info->title[i][ACTIVE]);
         xfwmPixmapFree (&screen_info->title[i][INACTIVE]);

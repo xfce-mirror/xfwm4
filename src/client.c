@@ -2017,6 +2017,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_RIGHT));
     xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
         &c->title, None);
+    /* create the top side window AFTER the title window since they overlap
+       and the top side window should be on top */
+    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
+	&c->sides[SIDE_TOP],
+	myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_TOP));
     for (i = 0; i < BUTTON_LAST; i++)
     {
         xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
@@ -2153,10 +2158,11 @@ clientUnframe (Client * c, gboolean remap)
     xfwmWindowDelete (&c->sides[SIDE_LEFT]);
     xfwmWindowDelete (&c->sides[SIDE_RIGHT]);
     xfwmWindowDelete (&c->sides[SIDE_BOTTOM]);
-    xfwmWindowDelete (&c->sides[CORNER_BOTTOM_LEFT]);
-    xfwmWindowDelete (&c->sides[CORNER_BOTTOM_RIGHT]);
-    xfwmWindowDelete (&c->sides[CORNER_TOP_LEFT]);
-    xfwmWindowDelete (&c->sides[CORNER_TOP_RIGHT]);
+    xfwmWindowDelete (&c->sides[SIDE_TOP]);
+    xfwmWindowDelete (&c->corners[CORNER_BOTTOM_LEFT]);
+    xfwmWindowDelete (&c->corners[CORNER_BOTTOM_RIGHT]);
+    xfwmWindowDelete (&c->corners[CORNER_TOP_LEFT]);
+    xfwmWindowDelete (&c->corners[CORNER_TOP_RIGHT]);
 
     xfwmPixmapFree (&c->appmenu[ACTIVE]);
     xfwmPixmapFree (&c->appmenu[INACTIVE]);

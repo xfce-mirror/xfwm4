@@ -69,6 +69,16 @@
 
 enum
 {
+    TITLE_1 = 0,
+    TITLE_2,
+    TITLE_3,
+    TITLE_4,
+    TITLE_5,
+    TITLE_COUNT
+};
+
+enum
+{
     CORNER_TOP_LEFT = 0,
     CORNER_TOP_RIGHT,
     CORNER_BOTTOM_LEFT,
@@ -83,6 +93,30 @@ enum
     SIDE_BOTTOM,
     SIDE_TOP,
     SIDE_COUNT
+};
+
+enum
+{
+    MENU_BUTTON = 0,
+    STICK_BUTTON,
+    SHADE_BUTTON,
+    HIDE_BUTTON,
+    MAXIMIZE_BUTTON,
+    CLOSE_BUTTON,
+    TITLE_SEPARATOR,
+    BUTTON_COUNT
+};
+#define BUTTON_LAST (BUTTON_COUNT - 1)
+
+enum
+{
+    ACTIVE = 0,
+    INACTIVE,
+    PRESSED,
+    T_ACTIVE,
+    T_INACTIVE,
+    T_PRESSED,
+    STATE_COUNT
 };
 
 enum
@@ -229,7 +263,7 @@ struct _DisplayInfo
     Cursor busy_cursor;
     Cursor move_cursor;
     Cursor root_cursor;
-    Cursor resize_cursor[8];
+    Cursor resize_cursor[SIDE_COUNT + CORNER_COUNT];
 
     Atom atoms[ATOM_COUNT];
 

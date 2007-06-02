@@ -70,10 +70,11 @@ struct _ScreenInfo
     /* Theme pixmaps and other params, per screen */
     XfwmColor title_colors[2];
     XfwmColor title_shadow_colors[2];
-    xfwmPixmap buttons[BUTTON_COUNT][6];
-    xfwmPixmap corners[4][2];
-    xfwmPixmap sides[3][2];
-    xfwmPixmap title[5][2];
+    xfwmPixmap buttons[BUTTON_COUNT][STATE_COUNT];
+    xfwmPixmap corners[CORNER_COUNT][2];
+    xfwmPixmap sides[SIDE_COUNT][2];
+    xfwmPixmap title[TITLE_COUNT][2];
+    xfwmPixmap top[TITLE_COUNT][2];
 
     /* Per screen graphic contexts */
     GC box_gc;

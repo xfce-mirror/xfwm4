@@ -223,8 +223,8 @@ struct _Client
     Window transient_for;
     Window *cmap_windows;
     xfwmWindow title;
-    xfwmWindow sides[3];
-    xfwmWindow corners[4];
+    xfwmWindow sides[SIDE_COUNT];
+    xfwmWindow corners[CORNER_COUNT];
     xfwmWindow buttons[BUTTON_COUNT];
     Window client_leader;
     Window group_leader;

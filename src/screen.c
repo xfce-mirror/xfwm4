@@ -210,17 +210,17 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
         xfwmPixmapInit (screen_info, &screen_info->buttons[i][T_INACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->buttons[i][T_PRESSED]);
     }
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < CORNER_COUNT; i++)
     {
         xfwmPixmapInit (screen_info, &screen_info->corners[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->corners[i][INACTIVE]);
     }
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         xfwmPixmapInit (screen_info, &screen_info->sides[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->sides[i][INACTIVE]);
     }
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < TITLE_COUNT; i++)
     {
         xfwmPixmapInit (screen_info, &screen_info->title[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->title[i][INACTIVE]);
