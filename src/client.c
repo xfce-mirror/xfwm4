@@ -1821,10 +1821,10 @@ clientUnframe (Client * c, gboolean remap)
     xfwmWindowDelete (&c->sides[SIDE_LEFT]);
     xfwmWindowDelete (&c->sides[SIDE_RIGHT]);
     xfwmWindowDelete (&c->sides[SIDE_BOTTOM]);
-    xfwmWindowDelete (&c->sides[CORNER_BOTTOM_LEFT]);
-    xfwmWindowDelete (&c->sides[CORNER_BOTTOM_RIGHT]);
-    xfwmWindowDelete (&c->sides[CORNER_TOP_LEFT]);
-    xfwmWindowDelete (&c->sides[CORNER_TOP_RIGHT]);
+    xfwmWindowDelete (&c->corners[CORNER_BOTTOM_LEFT]);
+    xfwmWindowDelete (&c->corners[CORNER_BOTTOM_RIGHT]);
+    xfwmWindowDelete (&c->corners[CORNER_TOP_LEFT]);
+    xfwmWindowDelete (&c->corners[CORNER_TOP_RIGHT]);
     clientClearPixmapCache (c);
     for (i = 0; i < BUTTON_COUNT; i++)
     {
