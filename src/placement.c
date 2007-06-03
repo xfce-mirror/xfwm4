@@ -653,7 +653,7 @@ clientInitPosition (Client * c)
                 msx = frameX (c) + (frameWidth (c) / 2);
                 msy = frameY (c) + (frameHeight (c) / 2);
                 monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
-        	gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+                gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
             }
         }
         if (CONSTRAINED_WINDOW (c))
@@ -666,7 +666,6 @@ clientInitPosition (Client * c)
     {
         place = TRUE;
     }
-
 
     full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
     full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);
