@@ -467,8 +467,8 @@ clientConstrainPos (Client * c, gboolean show_full)
    translation in Xinerama to center window on physical screen
    Not to be confused with clientConstrainPos()
  */
-void
-clientKeepVisible (Client * c)
+static void
+clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
 {
     int cx, cy;
     int diff_x, diff_y;
@@ -485,23 +485,15 @@ clientKeepVisible (Client * c)
     diff_x = abs (c->size->x - ((c->screen_info->width - c->width) / 2));
     diff_y = abs (c->size->y - ((c->screen_info->height - c->height) / 2));
 
-    if (((gdk_screen_get_n_monitors (c->screen_info->gscr) > 1) && (diff_x < 25) && (diff_y < 25)) ||
-        ((frameX (c) == 0) && (frameY (c) == 0) && (c->type & (WINDOW_TYPE_DIALOG)) && !clientIsTransient (c)))
+    if (((n_monitors > 1) && (diff_x < 25) && (diff_y < 25)) ||
+        ((frameX (c) == 0) && (frameY (c) == 0) && (c->type & (WINDOW_TYPE_DIALOG))))
     {
-        GdkRectangle rect;
-        gint monitor_nbr;
-
         /* We consider that the windows is centered on screen,
          * Thus, will move it so its center on the current
          * physical screen
          */
-        getMouseXY (c->screen_info, c->screen_info->xroot, &cx, &cy);
-
-        monitor_nbr = find_monitor_at_point (c->screen_info->gscr, cx, cy);
-        gdk_screen_get_monitor_geometry (c->screen_info->gscr, monitor_nbr, &rect);
-
-        c->x = rect.x + (rect.width - c->width) / 2;
-        c->y = rect.y + (rect.height - c->height) / 2;
+        c->x = monitor_rect->x + (monitor_rect->width - c->width) / 2;
+        c->y = monitor_rect->y + (monitor_rect->height - c->height) / 2;
     }
     clientConstrainPos (c, TRUE);
 }
@@ -642,7 +634,8 @@ clientInitPosition (Client * c)
     int full_x, full_y, full_w, full_h, msx, msy;
     gint monitor_nbr;
     gint n_monitors;
-    gboolean place = TRUE;
+    gboolean place;
+    gboolean position;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientInitPosition");
@@ -650,47 +643,45 @@ clientInitPosition (Client * c)
     clientGravitate (c, APPLY);
 
     screen_info = c->screen_info;
-    n_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
     msx = 0;
     msy = 0;
+    position = (c->size->flags & (PPosition | USPosition));
 
-    if ((c->size->flags & (PPosition | USPosition)) ||
-        (c->type & (WINDOW_TYPE_DONT_PLACE)) ||
-        ((c->type & (WINDOW_TYPE_DIALOG)) && !clientIsTransient (c)))
+    n_monitors = gdk_screen_get_n_monitors (c->screen_info->gscr);
+    monitor_nbr = 0;
+    if ((n_monitors > 1) || (screen_info->params->placement_mode == PLACE_MOUSE))
     {
-        if (CONSTRAINED_WINDOW (c))
-        {
-            clientKeepVisible (c);
-        }
-        msx = frameX (c) + (frameWidth (c) / 2);
-        msy = frameY (c) + (frameHeight (c) / 2);
-        place = FALSE;
+        getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
+        monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
     }
-    else if (clientIsTransient (c) && (c2 = clientGetTransient (c)))
-    {
+    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
-        /* Center transient relative to their parent window */
-        c->x = c2->x + (c2->width - c->width) / 2;
-        c->y = c2->y + (c2->height - c->height) / 2;
+    if (position || (c->type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)) || clientIsTransient (c))
+    {
+        if (!position && clientIsTransient (c) && (c2 = clientGetTransient (c)))
+        {
+            /* Center transient relative to their parent window */
+            c->x = c2->x + (c2->width - c->width) / 2;
+            c->y = c2->y + (c2->height - c->height) / 2;
+
+            if (n_monitors > 1)
+            {
+                msx = frameX (c) + (frameWidth (c) / 2);
+                msy = frameY (c) + (frameHeight (c) / 2);
+                monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
+                gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+            }
+        }
         if (CONSTRAINED_WINDOW (c))
         {
-            clientKeepVisible (c);
+            clientKeepVisible (c, n_monitors, &rect);
         }
-        msx = frameX (c) + (frameWidth (c) / 2);
-        msy = frameY (c) + (frameHeight (c) / 2);
         place = FALSE;
     }
     else
     {
-        if ((n_monitors > 1) || (screen_info->params->placement_mode == PLACE_MOUSE))
-        {
-            getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
-        }
         place = TRUE;
     }
-
-    monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
     full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
     full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);
