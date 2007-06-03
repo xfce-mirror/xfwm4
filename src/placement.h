@@ -42,7 +42,6 @@ void                     clientMaxSpace                         (ScreenInfo *,
 gboolean                 clientCkeckTitle                       (Client *);
 unsigned int             clientConstrainPos                     (Client *, 
                                                                  gboolean);
-void                     clientKeepVisible                      (Client *);
 void                     clientInitPosition                     (Client *);
 
 #endif /* INC_PLACEMENT_H */
