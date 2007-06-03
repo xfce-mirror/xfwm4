@@ -269,7 +269,7 @@ frameFillTitlePixmap (Client * c, int state, int part, int x, int w, int h, xfwm
     {
         xfwmPixmapFill (&screen_info->title[part][state], top_pm, x, 0, w, h);
     }
-    xfwmPixmapFill (&screen_info->title[part][state], title_pm, x, -h, w, frameTop (c) + h);
+    xfwmPixmapFill (&screen_info->title[part][state], title_pm, x, 0, w, frameTop (c));
 }
 
 static void
