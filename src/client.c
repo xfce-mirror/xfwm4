@@ -1797,7 +1797,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
     }
 
-    for (i = 0; i < BUTTON_LAST; i++)
+    for (i = 0; i < BUTTON_COUNT; i++)
     {
         c->button_pressed[i] = FALSE;
     }
@@ -2022,7 +2022,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
 	&c->sides[SIDE_TOP],
 	myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_TOP));
-    for (i = 0; i < BUTTON_LAST; i++)
+    for (i = 0; i < BUTTON_COUNT; i++)
     {
         xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
             &c->buttons[i], None);
@@ -2168,7 +2168,7 @@ clientUnframe (Client * c, gboolean remap)
     xfwmPixmapFree (&c->appmenu[INACTIVE]);
     xfwmPixmapFree (&c->appmenu[PRESSED]);
 
-    for (i = 0; i < BUTTON_LAST; i++)
+    for (i = 0; i < BUTTON_COUNT; i++)
     {
         xfwmWindowDelete (&c->buttons[i]);
     }
@@ -4996,7 +4996,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientButtonPress");
 
-    for (b = 0; b < BUTTON_LAST; b++)
+    for (b = 0; b < BUTTON_COUNT; b++)
     {
         if (MYWINDOW_XWINDOW (c->buttons[b]) == w)
         {

@@ -201,7 +201,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->title_shadow_colors[INACTIVE].gc = NULL;
     screen_info->title_shadow_colors[INACTIVE].allocated = FALSE;
 
-    for (i = 0; i < BUTTON_LAST; i++)
+    for (i = 0; i < BUTTON_COUNT; i++)
     {
         xfwmPixmapInit (screen_info, &screen_info->buttons[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->buttons[i][INACTIVE]);

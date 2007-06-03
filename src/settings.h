@@ -151,7 +151,7 @@ struct _Settings
 struct _XfwmParams
 {
     MyKey keys[KEY_COUNT];
-    gchar button_layout[BUTTON_COUNT + 1];
+    gchar button_layout[BUTTON_STRING_COUNT + 1];
     unsigned int xfwm_margins[4];
     int activate_action;
     int button_offset;
