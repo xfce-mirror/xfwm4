@@ -1,13 +1,18 @@
+2007-06-11  Maximilian Schleiss <maximilian@xfce.org>
+
+	* nb_NO.po: Added the Norwegian Bokmal translation
+	  by Terje Uriansrud <ter@operamail.com>
+
 2007-05-15  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
 
 	* fi.po: Updated Finnish translation.
 
-2007-05-13  Maximilian Schleiss <maxschleiss@solnet.ch>
+2007-05-13  Maximilian Schleiss <maximilian@xfce.org>
 
 	* nb_NO.po: Updated the Norwegian Bokmal translation
 	by Terje Uriansrud <ter@operamail.com>
 
-2007-05-07  Maximilian Schleiss <maxschleiss@solnet.ch>
+2007-05-07  Maximilian Schleiss <maximilian@xfce.org>
 
 	* it.po: Updated the Italian translation
 	by Fabio Riga <usul@aruba.it>
@@ -16,7 +21,7 @@
 
         * eu.po: Updated Basque translation.
 
-2007-04-09  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-04-09  Maximilian Schleiss <maximilian@xfce.org>
 
 	* xfdesktop.pot, *.po: Updated.
 
@@ -32,17 +37,17 @@
 
 	* ca.po: Update Catalan translations
 
-2007-04-04  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-04-04  Maximilian Schleiss <maximilian@xfce.org>
 
 	* it.po: Updated the Italian translation
 	by Fabio Riga <usul@aruba.it>
 
-2007-04-01  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-04-01  Maximilian Schleiss <maximilian@xfce.org>
 
 	* pl.po: Small fixes to the Polish translation
 	by Piotr Maliński <riklaunim@gmail.com>
 
-2007-03-28  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-03-28  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: Minor fixes to the German translation
 	by Nico Schümann <nico@prog.nico22.de>
@@ -53,12 +58,12 @@
 	* gl.po: Fixed header.
 	* mk.po: Removed executable attribute.
 
-2007-03-25  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-03-25  Maximilian Schleiss <maximilian@xfce.org>
 
 	* en_GB.po: Updated the British English translation
 	by Jeff Bailes <thepizzaking@gmail.com>
 
-2007-03-24  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-03-24  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: Fixed some spelling mistakes in the German translation
 	by Nico Schümann <nico@prog.nico22.de>
@@ -71,17 +76,17 @@
 
 	* tr.po: Updated the Turkish translation.
 
-2007-02-07  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-02-07  Maximilian Schleiss <maximilian@xfce.org>
 
 	* zh_CN.po: Updated the Chinese (Simplified) translation by
 	Wu Li <wurisky@gmail.com>
 
-2007-01-24  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-24  Maximilian Schleiss <maximilian@xfce.org>
 
 	* sq.po: Added the Albanian translation by
 	Besnik Bleta <besnik@programeshqip.org>
 
-2007-01-21  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-21  Maximilian Schleiss <maximilian@xfce.org>
 
 	* ro.po: Updated the Romanian translation by
 	Mişu Moldovan <dumol@gnome.ro>
@@ -102,17 +107,17 @@
 
 	* sv.po: Updated Swedish translation.
 
-2007-01-05  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-05  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: Updated the German translation by
 	Fabian Nowak <timystery@arcor.de>
 
-2007-01-02  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-02  Maximilian Schleiss <maximilian@xfce.org>
 
 	* be.po: Updated the Belarusian translation by
 	Ales Nyakhaychyk <nab@mail.by>
 
-2006-12-25  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2006-12-25  Maximilian Schleiss <maximilian@xfce.org>
 
 	* mk.po: Added the Macedonian translation by
 	Jovan Naumovski <jovan@lugola.net>
@@ -130,7 +135,7 @@
 
 	* ca.po: Updated Catalan translation
 
-2006-10-16  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2006-10-16  Maximilian Schleiss <maximilian@xfce.org>
 
 	* fr.po: Fixed some typos in the French translation.
 
