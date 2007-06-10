@@ -7,7 +7,7 @@
 	* en_GB.po: updated Britisch translation
 	by Jeff Bailes <thepizzaking@gmail.com>
 
-2007-04-10  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-04-10  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: Updated the German translation
 	by Nico Schümann <nico@prog.nico22.de>
@@ -16,7 +16,7 @@
 
 	* nl.po: Updated the Dutch translation
 
-2007-04-07  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-04-07  Maximilian Schleiss <maximilian@xfce.org>
 
 	* fr.po: Updated the French translation
 
@@ -28,7 +28,7 @@
 
 	* tr.po: Updated the Turkish translation.
 
-2007-03-28  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-03-28  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: Minor fixes to the German translation
 	by Nico Schümann <nico@prog.nico22.de>
@@ -43,7 +43,7 @@
 
 	* tr.po: Updated the Turkish translation.
 
-2007-02-10  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-02-10  Maximilian Schleiss <maximilian@xfce.org>
 
 	* Modified LINGUAS files to include Albanian language,
 	verified all the LINGUAS files.
@@ -53,17 +53,17 @@
 	* ar.po: initial commit.
 	* LINGUAS: adding ar language code
 
-2007-02-07  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-02-07  Maximilian Schleiss <maximilian@xfce.org>
 
 	* zh_CN.po: Updated the Chinese (Simplified) translation by
 	Wu Li <wurisky@gmail.com>
 
-2007-01-24  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-24  Maximilian Schleiss <maximilian@xfce.org>
 
 	* sq.po: Added the Albanian translation by
 	Besnik Bleta <besnik@programeshqip.org>
 
-2007-01-21  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-21  Maximilian Schleiss <maximilian@xfce.org>
 
 	* ro.po: Updated the Romanian translation by
 	Mişu Moldovan <dumol@gnome.ro>
@@ -84,17 +84,17 @@
 
 	* sv.po: Updated Swedish translation.
 
-2007-01-05  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-05  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: Updated the German translation by
 	Fabian Nowak <timystery@arcor.de>
 
-2007-01-02  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-02  Maximilian Schleiss <maximilian@xfce.org>
 
 	* be.po: Updated the Belarusian translation by
 	Ales Nyakhaychyk <nab@mail.by>
 
-2006-12-25  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2006-12-25  Maximilian Schleiss <maximilian@xfce.org>
 
 	* mk.po: Added the Macedonian translation by
 	Jovan Naumovski <jovan@lugola.net>
@@ -112,7 +112,7 @@
 
 	* ca.po: Updated Catalan translation
 
-2006-10-16  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2006-10-16  Maximilian Schleiss <maximilian@xfce.org>
 
 	* fr.po: Fixed some typos in the French translation.
 
