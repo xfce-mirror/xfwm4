@@ -870,7 +870,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 #endif
 
     replay = FALSE;
-    c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_WINDOW);
     if (c)
     {
         state = ev->state & MODIFIER_MASK;
@@ -1097,7 +1097,7 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     }
 #endif
 
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
         TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
@@ -1125,7 +1125,7 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
         return status;
     }
 
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
         ScreenInfo *screen_info = c->screen_info;
@@ -1166,7 +1166,7 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
     TRACE ("entering handleMapNotify");
     TRACE ("MapNotify on window (0x%lx)", ev->window);
 
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
         TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
@@ -1204,7 +1204,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         return status;
     }
 
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
@@ -1336,11 +1336,11 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     wc.stack_mode = ev->detail;
     wc.border_width = ev->border_width;
 
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (!c)
     {
         /* Some app tend or try to manipulate the wm frame to achieve fullscreen mode */
-        c = myDisplayGetClientFromWindow (display_info, ev->window, FRAME);
+        c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME);
         if (c)
         {
             TRACE ("client %s (0x%lx) is attempting to manipulate its frame!", c->name, c->window);
@@ -1482,7 +1482,8 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     static Time lastresist = (Time) CurrentTime;
     ScreenInfo *screen_info;
     Client *c;
-    gboolean warp_pointer;
+    int b;
+    gboolean warp_pointer, button;
 
     /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
@@ -1498,11 +1499,10 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     TRACE ("EnterNotify on window (0x%lx)", ev->window);
 
     warp_pointer = FALSE;
-    c = myDisplayGetClientFromWindow (display_info, ev->window, FRAME);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_BUTTON);
     if (c)
     {
         screen_info = c->screen_info;
-
         if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
         {
             TRACE ("EnterNotify window is \"%s\"", c->name);
@@ -1523,7 +1523,26 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
                 clientClearDelayedFocus ();
             }
         }
-
+        if (c == clientGetFocus ())
+        {
+            button = FALSE;
+            for (b = 0; b < BUTTON_COUNT; b++)
+            {
+                if (MYWINDOW_XWINDOW(c->buttons[b]) == ev->window)
+                {
+                    c->button_status[b] = BUTTON_STATE_PRELIGHT;
+                    button = TRUE;
+                }
+                else
+                {
+                    c->button_status[b] = BUTTON_STATE_NORMAL;
+                }
+            }
+            if (button)
+            {
+                frameDraw (c, FALSE);
+            }
+        }
         /* No need to process the event any further */
         return EVENT_FILTER_REMOVE;
     }
@@ -1652,7 +1671,36 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 static eventFilterStatus
 handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
+    Client *c;
+    int b;
+    gboolean warp_pointer, button;
+
     TRACE ("entering handleLeaveNotify");
+
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_BUTTON);
+    if (c)
+    {
+        button = FALSE;
+        for (b = 0; b < BUTTON_COUNT; b++)
+        {
+            if (c->button_status[b] != BUTTON_STATE_PRESSED)
+            {
+                if (MYWINDOW_XWINDOW(c->buttons[b]) == ev->window)
+                {
+                    c->button_status[b] = BUTTON_STATE_NORMAL;
+                    button = TRUE;
+                }
+            }
+        }
+        if (button)
+        {
+            frameDraw (c, FALSE);
+        }
+
+        /* No need to process the event any further */
+        return EVENT_FILTER_REMOVE;
+    }
+
 
     return EVENT_FILTER_PASS;
 }
@@ -1721,7 +1769,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         /* We're not interested in such notifications */
         return EVENT_FILTER_PASS;
     }
-    c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_WINDOW);
     user_focus = clientGetUserFocus ();
     current_focus = clientGetFocus ();
 
@@ -1817,7 +1865,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
         && ((ev->detail == NotifyNonlinear)
             || (ev->detail == NotifyNonlinearVirtual)))
     {
-        c = myDisplayGetClientFromWindow (display_info, ev->window, ANY);
+        c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_WINDOW);
         TRACE ("FocusOut on window (0x%lx)", ev->window);
         if ((c) && (c == clientGetFocus ()))
         {
@@ -1841,7 +1889,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
     TRACE ("entering handlePropertyNotify");
 
     status = EVENT_FILTER_PASS;
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
         status = EVENT_FILTER_REMOVE;
@@ -2047,7 +2095,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
     TRACE ("entering handleClientMessage");
 
     status = EVENT_FILTER_PASS;
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
         status = EVENT_FILTER_REMOVE;
@@ -2248,7 +2296,7 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
 
     TRACE ("entering handleShape");
 
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
         update = FALSE;
@@ -2283,7 +2331,7 @@ handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
 
     TRACE ("entering handleColormapNotify");
 
-    c = myDisplayGetClientFromWindow (display_info, ev->window, WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if ((c) && (ev->window == c->window) && (ev->new))
     {
         if (c == clientGetFocus ())
@@ -2482,12 +2530,12 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
     if ((menu_data != NULL) && (xid != None))
     {
         ScreenInfo *screen_info = (ScreenInfo *) menu_data;
-        c = clientGetFromWindow (screen_info, xid, WINDOW);
+        c = myScreenGetClientFromWindow (screen_info, xid, SEARCH_WINDOW);
     }
 
     if (c)
     {
-        c->button_pressed[MENU_BUTTON] = FALSE;
+        c->button_status[MENU_BUTTON] = BUTTON_STATE_NORMAL;
 
         switch (op)
         {
@@ -2579,7 +2627,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
     x = px;
     y = py;
 
-    c->button_pressed[MENU_BUTTON] = TRUE;
+    c->button_status[MENU_BUTTON] = BUTTON_STATE_PRESSED;
     frameDraw (c, FALSE);
     y = (gdouble) c->y;
     ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
@@ -2702,7 +2750,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
        Since all button press/release events are catched by the windows frames, there is some
        side effect with GTK menu. When a menu is opened, any click on the window frame is not
        detected as a click outside the menu, and the menu doesn't close.
-       To avoid this (painless but annoying) behaviour, we just setup a no event window that
+       To avoid this (painless but annoying) behavior, we just setup a no event window that
        "hides" the events to regular windows.
        That might look tricky, but it's very efficient and save plenty of lines of complicated
        code.
@@ -2726,7 +2774,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
     {
         TRACE ("Cannot open menu");
         gdk_beep ();
-        c->button_pressed[MENU_BUTTON] = FALSE;
+        c->button_status[MENU_BUTTON] = BUTTON_STATE_NORMAL;
         frameDraw (c, FALSE);
         xfwmWindowDelete (&menu_event_window);
         menu_free (menu);

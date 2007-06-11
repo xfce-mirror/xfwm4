@@ -487,3 +487,24 @@ myScreenUngrabKeys (ScreenInfo *screen_info)
     ungrabKeys (dpy, screen_info->xroot);
 }
 
+Client *
+myScreenGetClientFromWindow (ScreenInfo *screen_info, Window w, unsigned short mode)
+{
+    Client *c;
+    int i, j;
+
+    g_return_val_if_fail (w != None, NULL);
+    TRACE ("entering myScreenGetClientFromWindow");
+    TRACE ("looking for (0x%lx)", w);
+
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    {
+        if (clientGetFromWindow (c, w, mode))
+        {
+            return (c);
+        }
+    }
+    TRACE ("no client found");
+
+    return NULL;
+}

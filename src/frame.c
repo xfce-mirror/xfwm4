@@ -586,6 +586,31 @@ getLetterFromButton (int i, Client * c)
     return chr;
 }
 
+static int
+frameGetButtonState (Client *c, int button, int state)
+{
+    ScreenInfo *screen_info;
+
+    if (state == INACTIVE)
+    {
+        return (state);
+    }
+    screen_info = c->screen_info;
+    if ((c->button_status[button] == BUTTON_STATE_PRESSED) &&
+        (screen_info->buttons[button][PRESSED].pixmap))
+    {
+        return (PRESSED);
+    }
+
+    if ((c->button_status[button] == BUTTON_STATE_PRELIGHT) && 
+        (screen_info->buttons[button][PRELIGHT].pixmap))
+    {
+        return (PRELIGHT);
+    }
+
+    return (ACTIVE);
+}
+
 static xfwmPixmap *
 frameGetPixmap (Client * c, int button, int state)
 {
@@ -602,25 +627,25 @@ frameGetPixmap (Client * c, int button, int state)
             break;
         case SHADE_BUTTON:
             if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
-                && screen_info->buttons[SHADE_BUTTON][state + 3].pixmap)
+                && screen_info->buttons[SHADE_BUTTON][state + 4].pixmap)
             {
-                return &screen_info->buttons[SHADE_BUTTON][state + 3];
+                return &screen_info->buttons[SHADE_BUTTON][state + 4];
             }
             return &screen_info->buttons[SHADE_BUTTON][state];
             break;
         case STICK_BUTTON:
             if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
-                && screen_info->buttons[STICK_BUTTON][state + 3].pixmap)
+                && screen_info->buttons[STICK_BUTTON][state + 4].pixmap)
             {
-                return &screen_info->buttons[STICK_BUTTON][state + 3];
+                return &screen_info->buttons[STICK_BUTTON][state + 4];
             }
             return &screen_info->buttons[STICK_BUTTON][state];
             break;
         case MAXIMIZE_BUTTON:
             if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED)
-                && screen_info->buttons[MAXIMIZE_BUTTON][state + 3].pixmap)
+                && screen_info->buttons[MAXIMIZE_BUTTON][state + 4].pixmap)
             {
-                return &screen_info->buttons[MAXIMIZE_BUTTON][state + 3];
+                return &screen_info->buttons[MAXIMIZE_BUTTON][state + 4];
             }
             return &screen_info->buttons[MAXIMIZE_BUTTON][state];
             break;
@@ -734,7 +759,7 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         {
             if (xfwmWindowVisible (&c->buttons[i]))
             {
-                my_pixmap = frameGetPixmap (c, i, c->button_pressed[i] ? PRESSED : state);
+                my_pixmap = frameGetPixmap (c, i, frameGetButtonState (c, i, state));
                 XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->buttons[i]),
                                    ShapeBounding, 0, 0, my_pixmap->mask, ShapeSet);
             }
@@ -1001,7 +1026,7 @@ frameDraw (Client * c, gboolean clear_all)
             {
                 if (x + screen_info->buttons[button][state].width + screen_info->params->button_spacing < right)
                 {
-                    my_pixmap = frameGetPixmap (c, button, c->button_pressed[button] ? PRESSED : state);
+                    my_pixmap = frameGetPixmap (c, button, frameGetButtonState (c, button, state));
                     if (my_pixmap->pixmap)
                     {
                         xfwmWindowSetBG (&c->buttons[button], my_pixmap);
@@ -1036,7 +1061,7 @@ frameDraw (Client * c, gboolean clear_all)
             {
                 if (x - screen_info->buttons[button][state].width - screen_info->params->button_spacing > left)
                 {
-                    my_pixmap = frameGetPixmap (c, button, c->button_pressed[button] ? PRESSED : state);
+                    my_pixmap = frameGetPixmap (c, button, frameGetButtonState (c, button, state));
                     if (my_pixmap->pixmap)
                     {
                         xfwmWindowSetBG (&c->buttons[button], my_pixmap);

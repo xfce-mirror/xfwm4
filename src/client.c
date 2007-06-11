@@ -76,6 +76,10 @@
     FocusChangeMask|\
     PropertyChangeMask
 
+#define BUTTON_EVENT_MASK \
+    EnterWindowMask|\
+    LeaveWindowMask
+
 /* Useful macros */
 #define START_ICONIC(c) \
     ((c->wmhints) && \
@@ -1588,6 +1592,7 @@ clientUpdateIconPix (Client * c)
     xfwmPixmapFree (&c->appmenu[ACTIVE]);
     xfwmPixmapFree (&c->appmenu[INACTIVE]);
     xfwmPixmapFree (&c->appmenu[PRESSED]);
+    xfwmPixmapFree (&c->appmenu[PRELIGHT]);
 
     if (screen_info->buttons[MENU_BUTTON][ACTIVE].pixmap == None)
     {
@@ -1601,6 +1606,8 @@ clientUpdateIconPix (Client * c)
                          &c->appmenu[INACTIVE]);
     xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][PRESSED],
                          &c->appmenu[PRESSED]);
+    xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][PRELIGHT],
+                         &c->appmenu[PRELIGHT]);
 
     size = MIN (screen_info->buttons[MENU_BUTTON][ACTIVE].width,
                 screen_info->buttons[MENU_BUTTON][ACTIVE].height);
@@ -1612,6 +1619,7 @@ clientUpdateIconPix (Client * c)
         xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], icon);
         xfwmPixmapRenderGdkPixbuf (&c->appmenu[INACTIVE], icon);
         xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRESSED], icon);
+        xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRELIGHT], icon);
 
         g_object_unref (icon);
     }
@@ -1799,7 +1807,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     for (i = 0; i < BUTTON_COUNT; i++)
     {
-        c->button_pressed[i] = FALSE;
+        c->button_status[i] = BUTTON_STATE_NORMAL;
     }
 
     if (!XGetWMColormapWindows (display_info->dpy, c->window, &c->cmap_windows, &c->ncmap))
@@ -1993,39 +2001,48 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     xfwmPixmapInit (screen_info, &c->appmenu[ACTIVE]);
     xfwmPixmapInit (screen_info, &c->appmenu[INACTIVE]);
     xfwmPixmapInit (screen_info, &c->appmenu[PRESSED]);
+    xfwmPixmapInit (screen_info, &c->appmenu[PRELIGHT]);
 
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->sides[SIDE_LEFT],
-        myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_LEFT));
-    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-        &c->sides[SIDE_RIGHT],
-        myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_RIGHT));
-    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-        &c->sides[SIDE_BOTTOM],
-        myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_BOTTOM));
-    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-        &c->corners[CORNER_BOTTOM_LEFT],
-        myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_LEFT));
-    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-        &c->corners[CORNER_BOTTOM_RIGHT],
-        myDisplayGetCursorResize(screen_info->display_info, CORNER_BOTTOM_RIGHT));
-    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-        &c->corners[CORNER_TOP_LEFT],
-        myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_LEFT));
-    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-        &c->corners[CORNER_TOP_RIGHT],
-        myDisplayGetCursorResize(screen_info->display_info, CORNER_TOP_RIGHT));
-    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-        &c->title, None);
+        &c->sides[SIDE_LEFT], NoEventMask,
+        myDisplayGetCursorResize(screen_info->display_info, 
+        CORNER_COUNT + SIDE_LEFT));
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+        &c->sides[SIDE_RIGHT], NoEventMask, 
+        myDisplayGetCursorResize(screen_info->display_info, 
+        CORNER_COUNT + SIDE_RIGHT));
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+        &c->sides[SIDE_BOTTOM], NoEventMask, 
+        myDisplayGetCursorResize(screen_info->display_info, 
+        CORNER_COUNT + SIDE_BOTTOM));
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+        &c->corners[CORNER_BOTTOM_LEFT], NoEventMask, 
+        myDisplayGetCursorResize(screen_info->display_info, 
+        CORNER_BOTTOM_LEFT));
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+        &c->corners[CORNER_BOTTOM_RIGHT], NoEventMask, 
+        myDisplayGetCursorResize(screen_info->display_info, 
+        CORNER_BOTTOM_RIGHT));
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+        &c->corners[CORNER_TOP_LEFT], NoEventMask, 
+        myDisplayGetCursorResize(screen_info->display_info, 
+        CORNER_TOP_LEFT));
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+        &c->corners[CORNER_TOP_RIGHT], NoEventMask, 
+        myDisplayGetCursorResize(screen_info->display_info, 
+        CORNER_TOP_RIGHT));
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+        &c->title, NoEventMask, None);
     /* create the top side window AFTER the title window since they overlap
        and the top side window should be on top */
-    xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-	&c->sides[SIDE_TOP],
-	myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_TOP));
+    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+        &c->sides[SIDE_TOP], NoEventMask, 
+        myDisplayGetCursorResize(screen_info->display_info, 
+        CORNER_COUNT + SIDE_TOP));
     for (i = 0; i < BUTTON_COUNT; i++)
     {
-        xfwmWindowCreate (screen_info,  c->visual, c->depth, c->frame,
-            &c->buttons[i], None);
+        xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+            &c->buttons[i], BUTTON_EVENT_MASK, None);
     }
     clientUpdateIconPix (c);
 
@@ -2167,6 +2184,7 @@ clientUnframe (Client * c, gboolean remap)
     xfwmPixmapFree (&c->appmenu[ACTIVE]);
     xfwmPixmapFree (&c->appmenu[INACTIVE]);
     xfwmPixmapFree (&c->appmenu[PRESSED]);
+    xfwmPixmapFree (&c->appmenu[PRELIGHT]);
 
     for (i = 0; i < BUTTON_COUNT; i++)
     {
@@ -2252,7 +2270,7 @@ clientUnframeAll (ScreenInfo *screen_info)
     XQueryTree (display_info->dpy, screen_info->xroot, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
-        c = clientGetFromWindow (screen_info, wins[i], FRAME);
+        c = myScreenGetClientFromWindow (screen_info, wins[i], SEARCH_FRAME);
         if (c)
         {
             clientUnframe (c, TRUE);
@@ -2267,43 +2285,44 @@ clientUnframeAll (ScreenInfo *screen_info)
 }
 
 Client *
-clientGetFromWindow (ScreenInfo *screen_info, Window w, int mode)
+clientGetFromWindow (Client *c, Window w, unsigned short mode)
 {
-    Client *c;
-    int i;
+    int b;
 
     g_return_val_if_fail (w != None, NULL);
+    g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetFromWindow");
-    TRACE ("looking for (0x%lx)", w);
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    if (mode & SEARCH_WINDOW)
     {
-        switch (mode)
+        if (c->window == w)
         {
-            case WINDOW:
-                if (c->window == w)
-                {
-                    TRACE ("found \"%s\" (mode WINDOW)", c->name);
-                    return (c);
-                }
-                break;
-            case FRAME:
-                if (c->frame == w)
-                {
-                    TRACE ("found \"%s\" (mode FRAME)", c->name);
-                    return (c);
-                }
-                break;
-            case ANY:
-            default:
-                if ((c->frame == w) || (c->window == w))
-                {
-                    TRACE ("found \"%s\" (mode ANY)", c->name);
-                    return (c);
-                }
-                break;
+            TRACE ("found \"%s\" (mode WINDOW)", c->name);
+            return (c);
         }
     }
+
+    if (mode & SEARCH_FRAME)
+    {
+        if (c->frame == w)
+        {
+            TRACE ("found \"%s\" (mode FRAME)", c->name);
+            return (c);
+        }
+    }
+
+    if (mode & SEARCH_BUTTON)
+    {
+        for (b = 0; b < BUTTON_COUNT; b++)
+        {
+            if (MYWINDOW_XWINDOW(c->buttons[b]) == w)
+            {
+                TRACE ("found \"%s\" (mode BUTTON)", c->name);
+                return (c);
+            }
+        }
+    }
+
     TRACE ("no client found");
 
     return NULL;
@@ -4731,14 +4750,14 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     switch (xevent->type)
     {
         case DestroyNotify:
-            removed = clientGetFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, WINDOW);
+            removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, SEARCH_WINDOW);
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
             passdata->c = c;
             status = EVENT_FILTER_CONTINUE;
             /* Walk through */
         case UnmapNotify:
-            removed = clientGetFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, WINDOW);
+            removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, SEARCH_WINDOW);
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
             passdata->c = c;
@@ -4951,12 +4970,12 @@ clientButtonPressEventFilter (XEvent * xevent, gpointer data)
 
     if (xevent->type == EnterNotify)
     {
-        c->button_pressed[b] = TRUE;
+        c->button_status[b] = BUTTON_STATE_PRESSED;
         frameDraw (c, FALSE);
     }
     else if (xevent->type == LeaveNotify)
     {
-        c->button_pressed[b] = FALSE;
+        c->button_status[b] = BUTTON_STATE_NORMAL;
         frameDraw (c, FALSE);
     }
     else if (xevent->type == ButtonRelease)
@@ -4966,7 +4985,7 @@ clientButtonPressEventFilter (XEvent * xevent, gpointer data)
     else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
     {
         pressed = FALSE;
-        c->button_pressed[b] = FALSE;
+        c->button_status[b] = BUTTON_STATE_NORMAL;
     }
     else if ((xevent->type == KeyPress) || (xevent->type == KeyRelease))
     {
@@ -5027,7 +5046,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     passdata.c = c;
     passdata.b = b;
 
-    c->button_pressed[b] = TRUE;
+    c->button_status[b] = BUTTON_STATE_PRESSED;
     frameDraw (c, FALSE);
 
     TRACE ("entering button press loop");
@@ -5038,9 +5057,9 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 
     XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));
 
-    if (c->button_pressed[b])
+    if (c->button_status[b] == BUTTON_STATE_PRESSED)
     {
-        c->button_pressed[b] = FALSE;
+        c->button_status[b] = BUTTON_STATE_NORMAL;
         switch (b)
         {
             case HIDE_BUTTON:
@@ -5090,11 +5109,11 @@ clientGetLeader (Client * c)
 
     if (c->group_leader != None)
     {
-        return clientGetFromWindow (c->screen_info, c->group_leader, WINDOW);
+        return myScreenGetClientFromWindow (c->screen_info, c->group_leader, SEARCH_WINDOW);
     }
     else if (c->client_leader != None)
     {
-        return clientGetFromWindow (c->screen_info, c->client_leader, WINDOW);
+        return myScreenGetClientFromWindow (c->screen_info, c->client_leader, SEARCH_WINDOW);
     }
     return NULL;
 }

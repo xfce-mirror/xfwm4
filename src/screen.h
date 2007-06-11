@@ -173,5 +173,8 @@ unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *);
 unsigned int             myScreenUngrabPointer                  (ScreenInfo *);
 void                     myScreenGrabKeys                       (ScreenInfo *);
 void                     myScreenUngrabKeys                     (ScreenInfo *);
+Client                  *myScreenGetClientFromWindow            (ScreenInfo *,
+                                                                 Window,
+                                                                 unsigned short);
 
 #endif /* INC_SCREEN_H */

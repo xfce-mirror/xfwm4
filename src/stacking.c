@@ -334,7 +334,7 @@ clientRaise (Client * c, Window wsibling)
         /* Search for the window that will be just on top of the raised window  */
         if (wsibling)
         {
-            c2 = myDisplayGetClientFromWindow (display_info, wsibling, ANY);
+            c2 = myDisplayGetClientFromWindow (display_info, wsibling, SEARCH_FRAME | SEARCH_WINDOW);
             if (c2)
             {
                 sibling = g_list_find (screen_info->windows_stack, (gconstpointer) c2);
@@ -481,7 +481,7 @@ clientLower (Client * c, Window wsibling)
         }
         else if (wsibling)
         {
-            c2 = myDisplayGetClientFromWindow (display_info, wsibling, ANY);
+            c2 = myDisplayGetClientFromWindow (display_info, wsibling, SEARCH_FRAME | SEARCH_WINDOW);
             if (c2)
             {
                 sibling = g_list_find (screen_info->windows_stack, (gconstpointer) c2);

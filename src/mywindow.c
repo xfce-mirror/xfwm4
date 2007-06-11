@@ -77,14 +77,27 @@ xfwmWindowInit (xfwmWindow * win)
 
 void
 xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window parent,
-                  xfwmWindow * win, Cursor cursor)
+                  xfwmWindow * win, long eventmask, Cursor cursor)
 {
+    XSetWindowAttributes attributes;
+    unsigned long valuemask;
+
     TRACE ("entering xfwmWindowCreate");
 
     g_return_if_fail (screen_info != NULL);
 
-    win->window = XCreateSimpleWindow (myScreenGetXDisplay (screen_info),
-                                       parent, 0, 0, 1, 1, 0, 0, 0);
+    attributes.event_mask = eventmask;
+    valuemask = 0L;
+    if (eventmask != NoEventMask)
+    {
+        valuemask |= CWEventMask;
+    }
+
+    win->window = XCreateWindow (myScreenGetXDisplay (screen_info),
+                                 parent, 0, 0, 1, 1, 0, 0,
+                                 InputOutput, CopyFromParent,
+                                 valuemask, &attributes);
+
     TRACE ("Created XID 0x%lx", win->window);
     if (cursor != None)
     {
@@ -226,7 +239,6 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
                                  InputOnly, CopyFromParent,
                                  CWEventMask | CWOverrideRedirect,
                                  &attributes);
-    XMapWindow (myScreenGetXDisplay (screen_info), win->window);
     if (bottom)
     {
         XLowerWindow (myScreenGetXDisplay (screen_info), win->window);
@@ -235,6 +247,7 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
     {
         XRaiseWindow (myScreenGetXDisplay (screen_info), win->window);
     }
+    XMapWindow (myScreenGetXDisplay (screen_info), win->window);
     XFlush (myScreenGetXDisplay (screen_info));
 
     win->map = TRUE;

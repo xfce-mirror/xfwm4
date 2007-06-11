@@ -2934,7 +2934,7 @@ compositorAddAllWindows (ScreenInfo *screen_info)
     {
         Client *c;
 
-        c = clientGetFromWindow (screen_info, wins[i], FRAME);
+        c = myScreenGetClientFromWindow (screen_info, wins[i], SEARCH_FRAME);
         compositorAddWindow (display_info, wins[i], c);
     }
     if (wins)

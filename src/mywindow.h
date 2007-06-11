@@ -58,6 +58,7 @@ void                     xfwmWindowCreate                       (ScreenInfo *,
                                                                  gint,
                                                                  Window,
                                                                  xfwmWindow *,
+                                                                 long,
                                                                  Cursor);
 void                     xfwmWindowTemp                         (ScreenInfo *,
                                                                  Visual *,

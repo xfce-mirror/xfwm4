@@ -466,7 +466,7 @@ myDisplayRemoveClient (DisplayInfo *display, Client *c)
 }
 
 Client *
-myDisplayGetClientFromWindow (DisplayInfo *display, Window w, int mode)
+myDisplayGetClientFromWindow (DisplayInfo *display, Window w, unsigned short mode)
 {
     GSList *index;
 
@@ -476,30 +476,9 @@ myDisplayGetClientFromWindow (DisplayInfo *display, Window w, int mode)
     for (index = display->clients; index; index = g_slist_next (index))
     {
         Client *c = (Client *) index->data;
-        switch (mode)
+        if (clientGetFromWindow (c, w, mode))
         {
-            case WINDOW:
-                if (c->window == w)
-                {
-                    TRACE ("found \"%s\" (mode WINDOW)", c->name);
-                    return (c);
-                }
-                break;
-            case FRAME:
-                if (c->frame == w)
-                {
-                    TRACE ("found \"%s\" (mode FRAME)", c->name);
-                    return (c);
-                }
-                break;
-            case ANY:
-            default:
-                if ((c->frame == w) || (c->window == w))
-                {
-                    TRACE ("found \"%s\" (mode ANY)", c->name);
-                    return (c);
-                }
-                break;
+            return (c);
         }
     }
     TRACE ("no client found");

@@ -69,6 +69,14 @@
 
 enum
 {
+    SEARCH_WINDOW  = (1 << 0),
+    SEARCH_FRAME   = (1 << 1),
+    SEARCH_BUTTON  = (1 << 2)
+};
+#define SEARCH_ANY (SEARCH_WINDOW | SEARCH_FRAME | SEARCH_BUTTON)
+
+enum
+{
     TITLE_1 = 0,
     TITLE_2,
     TITLE_3,
@@ -110,20 +118,30 @@ enum
 
 enum
 {
+    BUTTON_NORMAL = 0,
+    BUTTON_PRELIGHT,
+    BUTTON_PRESSED
+};
+
+enum
+{
     ACTIVE = 0,
     INACTIVE,
+    PRELIGHT,
     PRESSED,
     T_ACTIVE,
     T_INACTIVE,
+    T_PRELIGHT,
     T_PRESSED,
     STATE_COUNT
 };
 
 enum
 {
-   ANY,
-   WINDOW,
-   FRAME
+    BUTTON_STATE_NORMAL = 0,
+    BUTTON_STATE_PRELIGHT,
+    BUTTON_STATE_PRESSED,
+    BUTTON_STATE_COUNT
 };
 
 enum
@@ -339,7 +357,7 @@ void                     myDisplayRemoveClient                  (DisplayInfo *,
                                                                  Client *);
 Client                  *myDisplayGetClientFromWindow           (DisplayInfo *,
                                                                  Window,
-                                                                 int);
+                                                                 unsigned short);
 void                     myDisplayAddScreen                     (DisplayInfo *,
                                                                  ScreenInfo *);
 void                     myDisplayRemoveScreen                  (DisplayInfo *,

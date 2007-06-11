@@ -1136,54 +1136,72 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "hide-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][PRESSED], theme,
         "hide-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][PRELIGHT], theme,
+        "hide-prelight", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][ACTIVE], theme,
         "close-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][INACTIVE], theme,
         "close-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][PRESSED], theme,
         "close-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][PRELIGHT], theme,
+        "close-prelight", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][ACTIVE], theme,
         "maximize-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][INACTIVE], theme,
         "maximize-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][PRESSED], theme,
         "maximize-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][PRELIGHT], theme,
+        "maximize-prelight", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][ACTIVE], theme,
         "shade-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][INACTIVE], theme,
         "shade-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][PRESSED], theme,
         "shade-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][PRELIGHT], theme,
+        "shade-prelight", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][ACTIVE], theme,
         "stick-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][INACTIVE], theme,
         "stick-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][PRESSED], theme,
         "stick-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][PRELIGHT], theme,
+        "stick-prelight", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][ACTIVE], theme,
         "menu-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][INACTIVE], theme,
         "menu-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][PRESSED], theme,
         "menu-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][PRELIGHT], theme,
+        "menu-prelight", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_ACTIVE], theme,
         "shade-toggled-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_INACTIVE], theme,
         "shade-toggled-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_PRESSED], theme,
         "shade-toggled-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_PRELIGHT], theme,
+        "shade-toggled-prelight", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_ACTIVE], theme,
         "stick-toggled-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_INACTIVE], theme,
         "stick-toggled-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_PRESSED], theme,
         "stick-toggled-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_PRELIGHT], theme,
+        "stick-toggled-prelight", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme,
         "maximize-toggled-active", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme,
         "maximize-toggled-inactive", colsym);
     xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_PRESSED], theme,
         "maximize-toggled-pressed", colsym);
+    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_PRELIGHT], theme,
+        "maximize-toggled-prelight", colsym);
 
     for (i = 0; i < TITLE_COUNT; i++)
     {

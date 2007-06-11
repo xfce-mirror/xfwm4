@@ -228,7 +228,7 @@ struct _Client
     xfwmWindow buttons[BUTTON_COUNT];
     Window client_leader;
     Window group_leader;
-    xfwmPixmap appmenu[3];
+    xfwmPixmap appmenu[STATE_COUNT];
     Colormap cmap;
     unsigned long win_hints;
     unsigned long win_state;
@@ -264,7 +264,7 @@ struct _Client
     int previous_height;
     int initial_layer;
     int ncmap;
-    int button_pressed[BUTTON_COUNT];
+    int button_status[BUTTON_COUNT];
     int struts[STRUTS_SIZE];
     gchar *name;
     Time user_time;
@@ -336,9 +336,9 @@ void                     clientUpdateAllFrames                  (ScreenInfo *,
                                                                  gboolean);
 void                     clientGrabButtons                      (Client *);
 void                     clientUngrabButtons                    (Client *);
-Client                  *clientGetFromWindow                    (ScreenInfo *,
+Client                  *clientGetFromWindow                    (Client *,
                                                                  Window,
-                                                                 int);
+                                                                 unsigned short);
 void                     clientShow                             (Client *,
                                                                  gboolean);
 void                     clientHide                             (Client *,
