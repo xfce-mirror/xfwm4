@@ -1,6 +1,7 @@
 4.5.x
 =====
 
+- Add button prelight in window frames (Bug #3219)
 - Add resize from top of window
 - Rework the event filter to avoid passing all events top gtk+
 - Treat dialogs and utility windows as transients for group (bug #3102)
