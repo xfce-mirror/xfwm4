@@ -80,11 +80,11 @@ msgstr "Nichts unternehmen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "Fenster unter der Maus platzieren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "Fenster in der Mitte platzieren"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -198,11 +198,10 @@ msgid "Size|Large"
 msgstr "Groß"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
 msgstr ""
-"Minimale Größe, unterhalb derer Fenster\n"
-"intelligent platziert werden"
+"Standardpositionierung von Fenstern, die\n"
+"nicht intelligent platziert werden"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
