@@ -5059,7 +5059,11 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 
     if (c->button_status[b] == BUTTON_STATE_PRESSED)
     {
-        c->button_status[b] = BUTTON_STATE_NORMAL;
+        /* 
+         * Button was pressed at the time, means the pointer was still within 
+         * the button, so return to prelight.
+         */
+        c->button_status[b] = BUTTON_STATE_PRELIGHT;
         switch (b)
         {
             case HIDE_BUTTON:
