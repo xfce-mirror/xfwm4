@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2006 Olivier Fourdan
+        xfwm4    - (c) 2002-2007 Olivier Fourdan
 
  */
 
@@ -67,6 +67,7 @@ void                     xfwmPixmapCreate                       (ScreenInfo *,
 void                     xfwmPixmapInit                         (ScreenInfo *,
                                                                  xfwmPixmap *);
 void                     xfwmPixmapFree                         (xfwmPixmap *);
+gboolean                 xfwmPixmapNone                         (xfwmPixmap *);
 void                     xfwmPixmapFill                         (xfwmPixmap *,
                                                                  xfwmPixmap *,
                                                                  gint,

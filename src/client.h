@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2006 Olivier Fourdan
+        xfwm4    - (c) 2002-2007 Olivier Fourdan
 
  */
 
@@ -392,6 +392,12 @@ void                     clientCycle                            (Client *,
 void                     clientButtonPress                      (Client *,
                                                                  Window,
                                                                  XButtonEvent *);
+xfwmPixmap *             clientGetButtonPixmap                  (Client *,
+                                                                 int,
+                                                                 int);
+int                      clientGetButtonState                   (Client *,
+                                                                 int,
+                                                                 int);
 Client                  *clientGetLeader                        (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char                    *clientGetStartupId                     (Client *);

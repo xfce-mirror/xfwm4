@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2006 Olivier Fourdan
+        xfwm4    - (c) 2002-2007 Olivier Fourdan
 
  */
 
@@ -1483,7 +1483,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     ScreenInfo *screen_info;
     Client *c;
     int b;
-    gboolean warp_pointer, button;
+    gboolean warp_pointer, need_redraw;
 
     /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
@@ -1499,6 +1499,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     TRACE ("EnterNotify on window (0x%lx)", ev->window);
 
     warp_pointer = FALSE;
+    need_redraw = FALSE;
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_BUTTON);
     if (c)
     {
@@ -1525,20 +1526,18 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         }
         if (c == clientGetFocus ())
         {
-            button = FALSE;
             for (b = 0; b < BUTTON_COUNT; b++)
             {
                 if (MYWINDOW_XWINDOW(c->buttons[b]) == ev->window)
                 {
-                    c->button_status[b] = BUTTON_STATE_PRELIGHT;
-                    button = TRUE;
-                }
-                else
-                {
-                    c->button_status[b] = BUTTON_STATE_NORMAL;
+                    if (!xfwmPixmapNone(clientGetButtonPixmap(c, b, PRELIGHT)))
+                    {
+                        c->button_status[b] = BUTTON_STATE_PRELIGHT;
+                        need_redraw = TRUE;
+                    }
                 }
             }
-            if (button)
+            if (need_redraw)
             {
                 frameDraw (c, FALSE);
             }
@@ -1673,26 +1672,26 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
     Client *c;
     int b;
-    gboolean warp_pointer, button;
+    gboolean warp_pointer, need_redraw;
 
     TRACE ("entering handleLeaveNotify");
 
+    need_redraw = FALSE;
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_BUTTON);
     if (c)
     {
-        button = FALSE;
         for (b = 0; b < BUTTON_COUNT; b++)
         {
-            if (c->button_status[b] != BUTTON_STATE_PRESSED)
+            if (c->button_status[b] == BUTTON_STATE_PRELIGHT)
             {
                 if (MYWINDOW_XWINDOW(c->buttons[b]) == ev->window)
                 {
                     c->button_status[b] = BUTTON_STATE_NORMAL;
-                    button = TRUE;
+                    need_redraw = TRUE;
                 }
             }
         }
-        if (button)
+        if (need_redraw)
         {
             frameDraw (c, FALSE);
         }

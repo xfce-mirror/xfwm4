@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2006 Olivier Fourdan
+        xfwm4    - (c) 2002-2007 Olivier Fourdan
 
  */
 
@@ -1580,6 +1580,7 @@ clientUpdateIconPix (Client * c)
     DisplayInfo *display_info;
     gint size;
     GdkPixbuf *icon;
+    int i;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1589,26 +1590,24 @@ clientUpdateIconPix (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    xfwmPixmapFree (&c->appmenu[ACTIVE]);
-    xfwmPixmapFree (&c->appmenu[INACTIVE]);
-    xfwmPixmapFree (&c->appmenu[PRESSED]);
-    xfwmPixmapFree (&c->appmenu[PRELIGHT]);
+    for (i = 0; i < STATE_TOGGLED; i++)
+    {
+        xfwmPixmapFree (&c->appmenu[i]);
+    }
 
-    if (screen_info->buttons[MENU_BUTTON][ACTIVE].pixmap == None)
+    if (xfwmPixmapNone(&screen_info->buttons[MENU_BUTTON][ACTIVE]))
     {
         /* The current theme has no menu button */
         return;
     }
 
-    xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][ACTIVE],
-                         &c->appmenu[ACTIVE]);
-    xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][INACTIVE],
-                         &c->appmenu[INACTIVE]);
-    xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][PRESSED],
-                         &c->appmenu[PRESSED]);
-    xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][PRELIGHT],
-                         &c->appmenu[PRELIGHT]);
-
+    for (i = 0; i < STATE_TOGGLED; i++)
+    {
+        if (!xfwmPixmapNone(&screen_info->buttons[MENU_BUTTON][i]))
+        {
+            xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][i], &c->appmenu[i]);
+        }
+    }
     size = MIN (screen_info->buttons[MENU_BUTTON][ACTIVE].width,
                 screen_info->buttons[MENU_BUTTON][ACTIVE].height);
 
@@ -1616,11 +1615,13 @@ clientUpdateIconPix (Client * c)
     {
         icon = getAppIcon (display_info, c->window, size, size);
 
-        xfwmPixmapRenderGdkPixbuf (&c->appmenu[ACTIVE], icon);
-        xfwmPixmapRenderGdkPixbuf (&c->appmenu[INACTIVE], icon);
-        xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRESSED], icon);
-        xfwmPixmapRenderGdkPixbuf (&c->appmenu[PRELIGHT], icon);
-
+        for (i = 0; i < STATE_TOGGLED; i++)
+        {
+            if (!xfwmPixmapNone(&c->appmenu[i]))
+            {
+                xfwmPixmapRenderGdkPixbuf (&c->appmenu[i], icon);
+            }
+        }
         g_object_unref (icon);
     }
 }
@@ -2005,39 +2006,39 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
         &c->sides[SIDE_LEFT], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info, 
+        myDisplayGetCursorResize(screen_info->display_info,
         CORNER_COUNT + SIDE_LEFT));
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->sides[SIDE_RIGHT], NoEventMask, 
-        myDisplayGetCursorResize(screen_info->display_info, 
+        &c->sides[SIDE_RIGHT], NoEventMask,
+        myDisplayGetCursorResize(screen_info->display_info,
         CORNER_COUNT + SIDE_RIGHT));
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->sides[SIDE_BOTTOM], NoEventMask, 
-        myDisplayGetCursorResize(screen_info->display_info, 
+        &c->sides[SIDE_BOTTOM], NoEventMask,
+        myDisplayGetCursorResize(screen_info->display_info,
         CORNER_COUNT + SIDE_BOTTOM));
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->corners[CORNER_BOTTOM_LEFT], NoEventMask, 
-        myDisplayGetCursorResize(screen_info->display_info, 
+        &c->corners[CORNER_BOTTOM_LEFT], NoEventMask,
+        myDisplayGetCursorResize(screen_info->display_info,
         CORNER_BOTTOM_LEFT));
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->corners[CORNER_BOTTOM_RIGHT], NoEventMask, 
-        myDisplayGetCursorResize(screen_info->display_info, 
+        &c->corners[CORNER_BOTTOM_RIGHT], NoEventMask,
+        myDisplayGetCursorResize(screen_info->display_info,
         CORNER_BOTTOM_RIGHT));
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->corners[CORNER_TOP_LEFT], NoEventMask, 
-        myDisplayGetCursorResize(screen_info->display_info, 
+        &c->corners[CORNER_TOP_LEFT], NoEventMask,
+        myDisplayGetCursorResize(screen_info->display_info,
         CORNER_TOP_LEFT));
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->corners[CORNER_TOP_RIGHT], NoEventMask, 
-        myDisplayGetCursorResize(screen_info->display_info, 
+        &c->corners[CORNER_TOP_RIGHT], NoEventMask,
+        myDisplayGetCursorResize(screen_info->display_info,
         CORNER_TOP_RIGHT));
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
         &c->title, NoEventMask, None);
     /* create the top side window AFTER the title window since they overlap
        and the top side window should be on top */
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->sides[SIDE_TOP], NoEventMask, 
-        myDisplayGetCursorResize(screen_info->display_info, 
+        &c->sides[SIDE_TOP], NoEventMask,
+        myDisplayGetCursorResize(screen_info->display_info,
         CORNER_COUNT + SIDE_TOP));
     for (i = 0; i < BUTTON_COUNT; i++)
     {
@@ -5059,11 +5060,19 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 
     if (c->button_status[b] == BUTTON_STATE_PRESSED)
     {
-        /* 
-         * Button was pressed at the time, means the pointer was still within 
-         * the button, so return to prelight.
+        /*
+         * Button was pressed at the time, means the pointer was still within
+         * the button, so return to prelight if available, normal otherwise.
          */
-        c->button_status[b] = BUTTON_STATE_PRELIGHT;
+        if (!xfwmPixmapNone(clientGetButtonPixmap(c, b, PRELIGHT)))
+        {
+            c->button_status[b] = BUTTON_STATE_PRELIGHT;
+        }
+        else
+        {
+            c->button_status[b] = BUTTON_STATE_NORMAL;
+        }
+
         switch (b)
         {
             case HIDE_BUTTON:
@@ -5104,6 +5113,79 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
         frameDraw (c, FALSE);
     }
 }
+
+xfwmPixmap *
+clientGetButtonPixmap (Client * c, int button, int state)
+{
+    ScreenInfo *screen_info;
+
+    screen_info = c->screen_info;
+    switch (button)
+    {
+        case MENU_BUTTON:
+            if ((screen_info->params->show_app_icon)
+                && (!xfwmPixmapNone(&c->appmenu[state])))
+            {
+                return &c->appmenu[state];
+            }
+            break;
+        case SHADE_BUTTON:
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
+                && (!xfwmPixmapNone(&screen_info->buttons[SHADE_BUTTON][state + STATE_TOGGLED])))
+            {
+                return &screen_info->buttons[SHADE_BUTTON][state + STATE_TOGGLED];
+            }
+            return &screen_info->buttons[SHADE_BUTTON][state];
+            break;
+        case STICK_BUTTON:
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
+                && (!xfwmPixmapNone(&screen_info->buttons[STICK_BUTTON][state + STATE_TOGGLED])))
+            {
+                return &screen_info->buttons[STICK_BUTTON][state + STATE_TOGGLED];
+            }
+            return &screen_info->buttons[STICK_BUTTON][state];
+            break;
+        case MAXIMIZE_BUTTON:
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED)
+                && (!xfwmPixmapNone(&screen_info->buttons[MAXIMIZE_BUTTON][state + STATE_TOGGLED])))
+            {
+                return &screen_info->buttons[MAXIMIZE_BUTTON][state + STATE_TOGGLED];
+            }
+            return &screen_info->buttons[MAXIMIZE_BUTTON][state];
+            break;
+        default:
+            break;
+    }
+    return &screen_info->buttons[button][state];
+}
+
+int
+clientGetButtonState (Client *c, int button, int state)
+{
+    ScreenInfo *screen_info;
+
+    screen_info = c->screen_info;
+
+    if (state == INACTIVE)
+    {
+        return (state);
+    }
+
+    if ((c->button_status[button] == BUTTON_STATE_PRESSED) &&
+        clientGetButtonPixmap (c, button, PRESSED))
+    {
+        return (PRESSED);
+    }
+
+    if ((c->button_status[button] == BUTTON_STATE_PRELIGHT) &&
+        clientGetButtonPixmap (c, button, PRELIGHT))
+    {
+        return (PRELIGHT);
+    }
+
+    return (ACTIVE);
+}
+
 
 Client *
 clientGetLeader (Client * c)

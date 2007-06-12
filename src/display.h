@@ -14,7 +14,7 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-        xfwm4    - (c) 2002-2006 Olivier Fourdan
+        xfwm4    - (c) 2002-2007 Olivier Fourdan
 
  */
 
@@ -118,13 +118,6 @@ enum
 
 enum
 {
-    BUTTON_NORMAL = 0,
-    BUTTON_PRELIGHT,
-    BUTTON_PRESSED
-};
-
-enum
-{
     ACTIVE = 0,
     INACTIVE,
     PRELIGHT,
@@ -135,6 +128,7 @@ enum
     T_PRESSED,
     STATE_COUNT
 };
+#define STATE_TOGGLED (STATE_COUNT >> 1)
 
 enum
 {
