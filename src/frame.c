@@ -1108,7 +1108,7 @@ frameDraw (Client * c, gboolean clear_all)
                 xfwmWindowSetBG (&c->sides[SIDE_TOP], &frame_pix.pm_sides[SIDE_TOP]);
                 xfwmWindowShow (&c->sides[SIDE_TOP],
                     screen_info->corners[CORNER_TOP_LEFT][state].width,
-                    0, top_width, frameTop (c),
+                    0, top_width, frame_pix.pm_sides[SIDE_TOP].height,
                     (requires_clearing | width_changed));
             }
             else

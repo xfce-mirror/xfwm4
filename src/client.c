@@ -1999,47 +1999,37 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGrabButtons(c);
 
     /* Initialize per client menu button pixmap */
-    xfwmPixmapInit (screen_info, &c->appmenu[ACTIVE]);
-    xfwmPixmapInit (screen_info, &c->appmenu[INACTIVE]);
-    xfwmPixmapInit (screen_info, &c->appmenu[PRESSED]);
-    xfwmPixmapInit (screen_info, &c->appmenu[PRELIGHT]);
+
+    for (i = 0; i < STATE_TOGGLED; i++)
+    {
+	xfwmPixmapInit (screen_info, &c->appmenu[i]);
+    }
+
+    for (i = 0; i < SIDE_TOP; i++) /* Keep SIDE_TOP for later */
+    {
+        xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+            &c->sides[i], NoEventMask,
+            myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + i));
+    }
+
+    for (i = 0; i < CORNER_COUNT; i++)
+    {
+        xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
+            &c->corners[i], NoEventMask,
+            myDisplayGetCursorResize(screen_info->display_info, i));
+    }
 
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->sides[SIDE_LEFT], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info,
-        CORNER_COUNT + SIDE_LEFT));
-    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->sides[SIDE_RIGHT], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info,
-        CORNER_COUNT + SIDE_RIGHT));
-    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->sides[SIDE_BOTTOM], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info,
-        CORNER_COUNT + SIDE_BOTTOM));
-    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->corners[CORNER_BOTTOM_LEFT], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info,
-        CORNER_BOTTOM_LEFT));
-    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->corners[CORNER_BOTTOM_RIGHT], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info,
-        CORNER_BOTTOM_RIGHT));
-    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->corners[CORNER_TOP_LEFT], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info,
-        CORNER_TOP_LEFT));
-    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
-        &c->corners[CORNER_TOP_RIGHT], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info,
-        CORNER_TOP_RIGHT));
-    xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
         &c->title, NoEventMask, None);
+
     /* create the top side window AFTER the title window since they overlap
        and the top side window should be on top */
+
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
         &c->sides[SIDE_TOP], NoEventMask,
         myDisplayGetCursorResize(screen_info->display_info,
         CORNER_COUNT + SIDE_TOP));
+
     for (i = 0; i < BUTTON_COUNT; i++)
     {
         xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
@@ -2173,29 +2163,28 @@ clientUnframe (Client * c, gboolean remap)
     }
 
     xfwmWindowDelete (&c->title);
-    xfwmWindowDelete (&c->sides[SIDE_LEFT]);
-    xfwmWindowDelete (&c->sides[SIDE_RIGHT]);
-    xfwmWindowDelete (&c->sides[SIDE_BOTTOM]);
-    xfwmWindowDelete (&c->sides[SIDE_TOP]);
-    xfwmWindowDelete (&c->corners[CORNER_BOTTOM_LEFT]);
-    xfwmWindowDelete (&c->corners[CORNER_BOTTOM_RIGHT]);
-    xfwmWindowDelete (&c->corners[CORNER_TOP_LEFT]);
-    xfwmWindowDelete (&c->corners[CORNER_TOP_RIGHT]);
 
-    xfwmPixmapFree (&c->appmenu[ACTIVE]);
-    xfwmPixmapFree (&c->appmenu[INACTIVE]);
-    xfwmPixmapFree (&c->appmenu[PRESSED]);
-    xfwmPixmapFree (&c->appmenu[PRELIGHT]);
-
+    for (i = 0; i < SIDE_COUNT; i++)
+    {
+        xfwmWindowDelete (&c->sides[i]);
+    }
+    for (i = 0; i < CORNER_COUNT; i++)
+    {
+        xfwmWindowDelete (&c->corners[i]);
+    }
+    for (i = 0; i < STATE_TOGGLED; i++)
+    {
+        xfwmPixmapFree (&c->appmenu[i]);
+    }
     for (i = 0; i < BUTTON_COUNT; i++)
     {
         xfwmWindowDelete (&c->buttons[i]);
     }
-    XDestroyWindow (display_info->dpy, c->frame);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
     {
         workspaceUpdateArea (c->screen_info);
     }
+    XDestroyWindow (display_info->dpy, c->frame);
 
     myDisplayUngrabServer (display_info);
     gdk_error_trap_pop ();

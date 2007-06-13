@@ -228,7 +228,7 @@ struct _Client
     xfwmWindow buttons[BUTTON_COUNT];
     Window client_leader;
     Window group_leader;
-    xfwmPixmap appmenu[STATE_COUNT];
+    xfwmPixmap appmenu[STATE_TOGGLED];
     Colormap cmap;
     unsigned long win_hints;
     unsigned long win_state;

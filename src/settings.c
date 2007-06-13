@@ -1205,16 +1205,16 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
     for (i = 0; i < TITLE_COUNT; i++)
     {
-        g_snprintf(imagename, sizeof (imagename), "title-%d-active", i+1);
+        g_snprintf(imagename, sizeof (imagename), "title-%d-active", i + 1);
         xfwmPixmapLoad (screen_info, &screen_info->title[i][ACTIVE], theme, imagename, colsym);
 
-        g_snprintf(imagename, sizeof (imagename), "title-%d-inactive", i+1);
+        g_snprintf(imagename, sizeof (imagename), "title-%d-inactive", i + 1);
         xfwmPixmapLoad (screen_info, &screen_info->title[i][INACTIVE], theme, imagename, colsym);
 
-        g_snprintf(imagename, sizeof (imagename), "top-%d-active", i+1);
+        g_snprintf(imagename, sizeof (imagename), "top-%d-active", i + 1);
         xfwmPixmapLoad (screen_info, &screen_info->top[i][ACTIVE], theme, imagename, colsym);
 
-        g_snprintf(imagename, sizeof (imagename), "top-%d-inactive", i+1);
+        g_snprintf(imagename, sizeof (imagename), "top-%d-inactive", i + 1);
         xfwmPixmapLoad (screen_info, &screen_info->top[i][INACTIVE], theme, imagename, colsym);
     }
 
