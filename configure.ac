@@ -32,7 +32,7 @@ AC_HEADER_STDC
 
 dnl Check for i18n support
 BM_I18N([xfwm4], [ar az bg ca cs de es es_MX et eu fa_IR fi fr he hi hu it ja
-		  ko lt ms nl no pl pt_BR pt_PT ru sv ta tr uk vi zh_CN zh_TW])
+		  ka ko lt ms nl no pl pt_BR pt_PT ru sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 window system
 BM_LIBX11_REQUIRE
