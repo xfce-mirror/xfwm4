@@ -1,0 +1,851 @@
+# Amharic translation to xfwm4.
+# Copyright (C) 2002-2007 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Tegegne Tefera <tefera@mekuria.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 4.4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-06-16 02:22+0900\n"
+"PO-Revision-Date: 2007-06-05 12:30+0100\n"
+"Last-Translator: Tegegne Tefera <tefera@mekuria.com>\n"
+"Language-Team: Amharic <l10n-am@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../mcs-plugin/margins.c:130
+msgid "Workspace Margins"
+msgstr ""
+
+#: ../mcs-plugin/margins.c:136
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+
+#: ../mcs-plugin/margins.c:167
+msgid "Left :"
+msgstr "ግራ፦"
+
+#: ../mcs-plugin/margins.c:187
+msgid "Right :"
+msgstr "ቀኝ፦"
+
+#: ../mcs-plugin/margins.c:207
+msgid "Top :"
+msgstr "ላይ፦"
+
+#: ../mcs-plugin/margins.c:227
+msgid "Bottom :"
+msgstr "ታች፦"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/workspaces_plugin.c:110
+msgid "Button Label|Workspaces and Margins"
+msgstr ""
+
+#: ../mcs-plugin/workspaces_plugin.c:144
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "ተጠቃሚዎችንና ማለፊያ-ቃሎችን በመሰየም ላይ... "
+
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/workspaces.c:516
+msgid "Workspaces"
+msgstr ""
+
+#: ../mcs-plugin/workspaces_plugin.c:171
+msgid "Margins"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:373
+#, fuzzy
+msgid "None"
+msgstr "<ምንም>"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:381
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
+#, fuzzy
+msgid "Window Manager Tweaks"
+msgstr "የጥቅል አስተዳዳሪውን አዘጋጅ"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:400
+msgid ""
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:406
+msgid "Include hidden (i.e. iconified) windows"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:412
+msgid "Cycle through windows from all workspaces"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:417
+msgid "Cycling"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:429
+msgid "Activate focus stealing prevention"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:435
+msgid "Honor the standard ICCCM focus hint"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1698
+msgid "Focus"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:452
+msgid "Key used to grab and move windows"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:458
+msgid "Raise windows when any mouse button is pressed"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:465
+msgid "Hide frame of windows when maximized"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:472
+msgid "Restore original size of maximized windows when moving"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:478
+msgid "Use edge resistance instead of windows snapping"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Accessibility"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:496
+msgid "Switch workspaces using the mouse wheel over the desktop"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:503
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:510
+msgid "Wrap workspaces depending on the actual desktop layout"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:517
+msgid "Wrap workspaces when the first or last workspace is reached"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:534
+msgid "Minimum size of windows to trigger smart placement"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:535
+#, fuzzy
+msgid "Size|Small"
+msgstr "ከመጠን ያነሰ መጠን"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:535
+#, fuzzy
+msgid "Size|Large"
+msgstr "ከመጠን የበለጠ መጠን"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:539
+msgid "Placement"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:559
+#, fuzzy
+msgid "Enable display compositing"
+msgstr "የቅንብር ዝርዝሩን ተመልከት"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:573
+msgid "Display full screen overlay windows directly"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:579
+msgid "Show shadows under regular windows"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:585
+msgid "Show shadows under popup windows"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:591
+msgid "Opacity of window decorations"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:603 ../mcs-plugin/wmtweaks_plugin.c:609
+#: ../mcs-plugin/wmtweaks_plugin.c:615
+msgid "Transparent"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:592 ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:604 ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:616
+msgid "Opaque"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:597
+msgid "Opacity of inactive windows"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:603
+msgid "Opacity of windows during move"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:609
+msgid "Opacity of windows during resize"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:615
+msgid "Opacity of popup windows"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:620
+msgid "Compositor"
+msgstr ""
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:662
+msgid "Button Label|Window Manager Tweaks"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2359
+#, c-format
+msgid "These settings cannot work with your current window manager (%s)"
+msgstr ""
+
+#: ../mcs-plugin/workspaces.c:329
+#, fuzzy
+msgid "Change name"
+msgstr "የዶሜን ስም፦"
+
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
+#, c-format
+msgid "Workspace %d"
+msgstr ""
+
+#: ../mcs-plugin/workspaces.c:348
+msgid "Name:"
+msgstr "ስም፦"
+
+#: ../mcs-plugin/workspaces.c:427
+msgid "Click on a workspace name to edit it"
+msgstr ""
+
+#: ../mcs-plugin/workspaces.c:493
+msgid "Number of workspaces:"
+msgstr ""
+
+#: ../mcs-plugin/workspaces.c:527
+msgid "Workspace names"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:68
+msgid "Menu"
+msgstr "ምናሌ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:69
+msgid "Stick"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:70
+msgid "Shade"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:71
+msgid "Hide"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:72
+msgid "Maximize"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:73
+msgid "Close"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+msgid "Shade window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
+msgid "Hide window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
+msgid "Maximize window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:82
+msgid "Nothing"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:87
+msgid "Left"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:88
+msgid "Center"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:89
+msgid "Right"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:587
+msgid "Click and drag buttons to change the layout"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:592
+#, fuzzy
+msgid "Active"
+msgstr "አልተነሳም"
+
+#: ../mcs-plugin/xfwm4_plugin.c:603
+msgid "Title"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:604
+msgid "The window title, it cannot be removed"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:616
+msgid "Hidden"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1376
+msgid "Font Selection Dialog"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1441
+#, fuzzy
+msgid "Window Manager"
+msgstr "የጥቅል አስተዳዳሪውን አዘጋጅ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1481
+msgid "Title font"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1490
+msgid "Title Alignment"
+msgstr ""
+
+#. XXX
+#: ../mcs-plugin/xfwm4_plugin.c:1492
+msgid "Text alignment inside title bar :"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1498
+#, fuzzy
+msgid "Button layout"
+msgstr "የፊደል ገበታ አጣጣልን ምረጥ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1503
+msgid "Style"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1551
+msgid "Window shortcuts"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1565
+msgid "Command"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1571
+msgid "Shortcut"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1588
+#, fuzzy
+msgid "Keyboard"
+msgstr "የፊደል ገበታ አይነት"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1603
+msgid "Focus model"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1607
+#, fuzzy
+msgid "Click to focus"
+msgstr "የሚጫኑ ክፍሎች፦"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1617
+msgid "Focus follows mouse"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1628
+msgid "Automatically give focus to newly created windows"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1632
+#, fuzzy
+msgid "New window focus"
+msgstr "አዲሱን ክፋይ በማስላት ላይ..."
+
+#: ../mcs-plugin/xfwm4_plugin.c:1639
+#, fuzzy
+msgid "Raise on focus"
+msgstr "የመክፈል መመሪያ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1645
+msgid "Automatically raise windows when they receive focus"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1655
+msgid "Delay before raising focused window :"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1662
+msgid "Slow"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1669
+msgid "Fast"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1690
+msgid "Raise window when clicking inside application window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1694
+#, fuzzy
+msgid "Raise on click"
+msgstr "የመክፈል መመሪያ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1712
+msgid "Windows snapping"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1717
+msgid "Snap windows to screen border"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1723
+#, fuzzy
+msgid "Snap windows to other windows"
+msgstr "ሌላ የሚደገፉ የቋንቋ አካባቢዎችን ምረጥ፦"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1734
+msgid "Distance :"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1741
+#, fuzzy
+msgid "Distance|Small"
+msgstr "ከመጠን ያነሰ መጠን"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1748
+msgid "Distance|Wide"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1769
+msgid "Wrap workspaces"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1775
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1783
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1793
+msgid "Edge Resistance :"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1800
+#, fuzzy
+msgid "Resistance|Small"
+msgstr "ከመጠን ያነሰ መጠን"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1807
+msgid "Resistance|Wide"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1829
+msgid "Opaque move and resize"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1834
+msgid "Display content of windows when resizing"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1840
+msgid "Display content of windows when moving"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1845
+#, fuzzy
+msgid "Double click action"
+msgstr "የLVM ግሩፖች ማስተካከል፦"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1847
+msgid "Action to perform when double clicking on title bar :"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1852
+#, fuzzy
+msgid "Advanced"
+msgstr "ሌሎች ምርጫዎች (በጥልቀት)"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:1991
+msgid "Button Label|Window Manager"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
+msgid "Do you really want to remove this keybinding theme ?"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+#, fuzzy
+msgid "Add keybinding theme"
+msgstr "የይዘት ግሩፕ ውስጥ የሚገባ አካል፦"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
+#, fuzzy
+msgid "Enter a name for the theme:"
+msgstr "የአዲሱ ተጠቃሚ ሙሉ ስም፦"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
+msgid "A keybinding theme with the same name already exists"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
+msgid "You have to provide a name for the keybinding theme"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+msgid "Close window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+msgid "Maximize window vertically"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+msgid "Maximize window horizontally"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+msgid "Stick window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+msgid "Cycle windows"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#, fuzzy
+msgid "Move window up"
+msgstr "ከፋይ ስልትን በማስነሳት ላይ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+msgid "Move window down"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#, fuzzy
+msgid "Move window left"
+msgstr "በግምት የቀረ ጊዜ፦ ${MINUTES} ደቂቃ(ዎች)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+msgid "Move window right"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#, fuzzy
+msgid "Resize window up"
+msgstr "ከፋይ ስልትን በማስነሳት ላይ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#, fuzzy
+msgid "Resize window down"
+msgstr "የ መጥን-ቀይር ስራ አልተሳካም"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#, fuzzy
+msgid "Resize window left"
+msgstr "የ መጥን-ቀይር ስራ አልተሳካም"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#, fuzzy
+msgid "Resize window right"
+msgstr "የ መጥን-ቀይር ስራ አልተሳካም"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+msgid "Cancel move/resize window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+msgid "Raise window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+msgid "Lower window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+msgid "Upper workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+msgid "Bottom workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+msgid "Left workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+msgid "Right workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+msgid "Next workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+msgid "Previous workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Add workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#, fuzzy
+msgid "Delete workspace"
+msgstr "ክፋዩ አጥፋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+msgid "Move window to next workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+msgid "Move window to previous workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+msgid "Move window to upper workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+msgid "Move window to bottom workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+msgid "Move window to left workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+msgid "Move window to right workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+msgid "Show desktop"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
+#, fuzzy
+msgid "Cancel window action"
+msgstr "የLVM ግሩፖች ማስተካከል፦"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+#, fuzzy
+msgid "Window operations menu"
+msgstr "ይህንን ምናሌ አጥፋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
+#, c-format
+msgid "Move window to workspace %d"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
+msgid "Cannot open the theme directory !"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
+#, fuzzy, c-format
+msgid ""
+"Cannot open %s : \n"
+"%s"
+msgstr "ከርነል መትከል አልተቻለም"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
+#, fuzzy, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr "IPv6-በ-IPv4 (ኢፕ_ዝ6-በ-ኢፕ_ዝ4)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+msgid ""
+"Shortcut already in use !\n"
+"Are you sure you want to use it ?"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+#, fuzzy
+msgid "Compose shortcut for :"
+msgstr "ለመክፈል የተመረጠ፦"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+msgid "Compose shortcut"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
+#, fuzzy
+msgid "Cancel"
+msgstr "ተወው"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
+#, fuzzy
+msgid "No shortcut"
+msgstr "ኤተርኔት ካርድ አልተገኘም"
+
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:84
+#, fuzzy, c-format
+msgid "%s (on %s)"
+msgstr "አብራ"
+
+#: ../src/main.c:135
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr ""
+
+#: ../src/menu.c:40
+msgid "Ma_ximize"
+msgstr ""
+
+#: ../src/menu.c:41
+msgid "Un_maximize"
+msgstr ""
+
+#: ../src/menu.c:42
+msgid "_Hide"
+msgstr ""
+
+#: ../src/menu.c:43
+msgid "Hide _all others"
+msgstr ""
+
+#: ../src/menu.c:44
+msgid "S_how"
+msgstr ""
+
+#: ../src/menu.c:45
+msgid "_Shade"
+msgstr ""
+
+#: ../src/menu.c:46
+msgid "Un_shade"
+msgstr ""
+
+#: ../src/menu.c:47
+msgid "S_tick"
+msgstr ""
+
+#: ../src/menu.c:48
+msgid "Uns_tick"
+msgstr ""
+
+#: ../src/menu.c:49
+#, fuzzy
+msgid "Context _help"
+msgstr "የመክፈል መመሪያ"
+
+#: ../src/menu.c:50 ../src/menu.c:51
+#, fuzzy
+msgid "Always on top"
+msgstr "የመክፈል መመሪያ"
+
+#: ../src/menu.c:52
+#, fuzzy
+msgid "Send to..."
+msgstr "ከቦይ-ቦይ"
+
+#: ../src/menu.c:54
+msgid "_Close"
+msgstr ""
+
+#: ../src/menu.c:57
+msgid "Destroy"
+msgstr ""
+
+#: ../src/menu.c:60
+msgid "_Quit"
+msgstr ""
+
+#: ../src/menu.c:61
+msgid "Restart"
+msgstr ""
+
+#: ../src/menu.c:169
+#, c-format
+msgid "Workspace %i (%s)"
+msgstr ""
+
+#: ../src/menu.c:173
+#, c-format
+msgid "Workspace %i"
+msgstr ""
+
+#: ../src/menu.c:409
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr ""
+
+#: ../src/settings.c:932
+#, fuzzy, c-format
+msgid "%s: Cannot allocate color %s\n"
+msgstr "ከርነል መትከል አልተቻለም"
+
+#: ../src/settings.c:938
+#, fuzzy, c-format
+msgid "%s: Cannot parse color %s\n"
+msgstr "ከርነል መትከል አልተቻለም"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
+#, fuzzy
+msgid "Window Manager Settings"
+msgstr "የአውታር ምርጫዎችን በማስቀመጥ ላይ"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr ""
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
+#, fuzzy
+msgid "Advanced Configuration"
+msgstr "የሽቦ አልባ አውታር ማስተካከል"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr ""
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+#, fuzzy
+msgid "Workspaces Settings"
+msgstr "ክፋይ ስየማዎች፦"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+#, fuzzy
+msgid "Xfce 4 Workspaces Settings"
+msgstr "የአውታር ምርጫዎችን በማስቀመጥ ላይ"
