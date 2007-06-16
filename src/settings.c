@@ -54,7 +54,7 @@
 
 /* Forward static decls. */
 
-static void              check_for_grabs      (ScreenInfo *);
+static void              update_grabs      (ScreenInfo *);
 static void              set_settings_margin  (ScreenInfo *,
                                                int ,
                                                int);
@@ -84,15 +84,12 @@ static gboolean          reloadScreenSettings (ScreenInfo *,
                                                int);
 
 static void
-check_for_grabs (ScreenInfo *screen_info)
+update_grabs (ScreenInfo *screen_info)
 {
+    clientUngrabMouseButtonForAll (screen_info);
     if ((screen_info->params->raise_on_click) || (screen_info->params->click_to_focus))
     {
         clientGrabMouseButtonForAll (screen_info);
-    }
-    else if (!(screen_info->params->raise_on_click) && !(screen_info->params->click_to_focus))
-    {
-        clientUngrabMouseButtonForAll (screen_info);
     }
 }
 
@@ -208,7 +205,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/ClickToFocus"))
                     {
                         screen_info->params->click_to_focus = setting->data.v_int;
-                        check_for_grabs (screen_info);
+                        update_grabs (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/FocusNewWindow"))
                     {
@@ -225,7 +222,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/RaiseOnClick"))
                     {
                         screen_info->params->raise_on_click = setting->data.v_int;
-                        check_for_grabs (screen_info);
+                        update_grabs (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/SnapToBorder"))
                     {
@@ -449,12 +446,11 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     else if (!strcmp (name, "Xfwm/RaiseWithAnyButton"))
                     {
                         screen_info->params->raise_with_any_button = setting->data.v_int;
-                        check_for_grabs (screen_info);
+                        update_grabs (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/RestoreOnMove"))
                     {
                         screen_info->params->restore_on_move = setting->data.v_int;
-                        check_for_grabs (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/ScrollWorkspaces"))
                     {
@@ -594,7 +590,6 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("click_to_focus", setting->data.v_int, rc);
-            check_for_grabs (screen_info);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusNewWindow", CHANNEL1,
@@ -619,7 +614,6 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("raise_on_click", setting->data.v_int, rc);
-            check_for_grabs (screen_info);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapToBorder", CHANNEL1,
@@ -777,10 +771,7 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/EasyClick", CHANNEL5,
                 &setting) == MCS_SUCCESS)
         {
-            if (setting->type == MCS_TYPE_STRING)
-            {
-                setValue ("easy_click", setting->data.v_string, rc);
-            }
+            setValue ("easy_click", setting->data.v_string, rc);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusHint", CHANNEL5,
@@ -853,14 +844,12 @@ loadMcsData (ScreenInfo *screen_info, Settings *rc)
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("raise_with_any_button", setting->data.v_int, rc);
-            check_for_grabs (screen_info);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RestoreOnMove", CHANNEL5,
                 &setting) == MCS_SUCCESS)
         {
             setBooleanValueFromInt ("restore_on_move", setting->data.v_int, rc);
-            check_for_grabs (screen_info);
             mcs_setting_free (setting);
         }
         if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ScrollWorkspaces", CHANNEL5,
@@ -1454,6 +1443,7 @@ loadSettings (ScreenInfo *screen_info)
     loadRcData (screen_info, rc);
     loadMcsData (screen_info, rc);
     loadTheme (screen_info, rc);
+    update_grabs (screen_info);
 
     if (!loadKeyBindings (screen_info, rc))
     {

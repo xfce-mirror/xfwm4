@@ -12,6 +12,7 @@
 - Transients for group shouldn't apply to other transients, or it breaks 
   stacking for some apps, noticeably mozilla "save as" dialog...
 - Fix typo breaking compilation on systems without XShape 1.1 support
+- Plug a leak in mouse button grab when changing theme
 
 4.4.1
 =====
