@@ -30,14 +30,6 @@
 #include "mypixmap.h"
 #include "client.h"
 
-struct _FramePixmap
-{
-    xfwmPixmap pm_title;
-    xfwmPixmap pm_sides[SIDE_COUNT];
-};
-
-typedef struct _FramePixmap FramePixmap;
-
 int                      frameDecorationLeft                    (ScreenInfo *);
 int                      frameDecorationRight                   (ScreenInfo *);
 int                      frameDecorationTop                     (ScreenInfo *);

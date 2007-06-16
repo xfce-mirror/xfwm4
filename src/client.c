@@ -258,26 +258,26 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
             /* Recompute size and position of maximized windows */
             if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
             {
-                 maximization_flags |= FLAG_TEST (c->flags,
-                     CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
-                 maximization_flags |= FLAG_TEST (c->flags,
-                     CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
+                maximization_flags |= FLAG_TEST (c->flags,
+                    CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
+                maximization_flags |= FLAG_TEST (c->flags,
+                    CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
 
-                 /* Force an update by clearing the internal flags */
-                 FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
-                 clientToggleMaximized (c, maximization_flags, FALSE);
+                /* Force an update by clearing the internal flags */
+                FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
+                clientToggleMaximized (c, maximization_flags, FALSE);
 
-                 configure_flags |= CFG_FORCE_REDRAW;
-                 mask &= ~UPDATE_FRAME;
+                configure_flags |= CFG_FORCE_REDRAW;
+                mask &= ~UPDATE_FRAME;
             }
         }
         if (configure_flags != 0L)
         {
-             wc.x = c->x;
-             wc.y = c->y;
-             wc.width = c->width;
-             wc.height = c->height;
-             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, configure_flags);
+            wc.x = c->x;
+            wc.y = c->y;
+            wc.width = c->width;
+            wc.height = c->height;
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, configure_flags);
         }
         if (mask & UPDATE_FRAME)
         {

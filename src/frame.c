@@ -41,6 +41,13 @@
 #define ShapeInput 2
 #endif
 
+typedef struct
+{
+    xfwmPixmap pm_title;
+    xfwmPixmap pm_sides[SIDE_COUNT];
+} FramePixmap;
+
+
 int
 frameDecorationLeft (ScreenInfo *screen_info)
 {
@@ -1144,6 +1151,7 @@ frameDraw (Client * c, gboolean clear_all)
                 requires_clearing);
         }
         frameSetShape (c, state, &frame_pix, button_x);
+
         xfwmPixmapFree (&frame_pix.pm_title);
         xfwmPixmapFree (&frame_pix.pm_sides[SIDE_BOTTOM]);
         xfwmPixmapFree (&frame_pix.pm_sides[SIDE_LEFT]);
