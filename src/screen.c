@@ -55,7 +55,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     PangoLayout *layout;
     Atom wm_sn_atom;
     long desktop_visible;
-    int i;
+    int i, j;
 
     g_return_val_if_fail (display_info, NULL);
     g_return_val_if_fail (GDK_IS_SCREEN (gscr), NULL);
@@ -201,29 +201,29 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->title_shadow_colors[INACTIVE].gc = NULL;
     screen_info->title_shadow_colors[INACTIVE].allocated = FALSE;
 
-    for (i = 0; i < BUTTON_COUNT; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
-        xfwmPixmapInit (screen_info, &screen_info->buttons[i][ACTIVE]);
-        xfwmPixmapInit (screen_info, &screen_info->buttons[i][INACTIVE]);
-        xfwmPixmapInit (screen_info, &screen_info->buttons[i][PRESSED]);
-        xfwmPixmapInit (screen_info, &screen_info->buttons[i][T_ACTIVE]);
-        xfwmPixmapInit (screen_info, &screen_info->buttons[i][T_INACTIVE]);
-        xfwmPixmapInit (screen_info, &screen_info->buttons[i][T_PRESSED]);
+        xfwmPixmapInit (screen_info, &screen_info->sides[i][ACTIVE]);
+        xfwmPixmapInit (screen_info, &screen_info->sides[i][INACTIVE]);
     }
     for (i = 0; i < CORNER_COUNT; i++)
     {
         xfwmPixmapInit (screen_info, &screen_info->corners[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->corners[i][INACTIVE]);
     }
-    for (i = 0; i < SIDE_COUNT; i++)
+    for (i = 0; i < BUTTON_COUNT; i++)
     {
-        xfwmPixmapInit (screen_info, &screen_info->sides[i][ACTIVE]);
-        xfwmPixmapInit (screen_info, &screen_info->sides[i][INACTIVE]);
+        for (j = 0; j < STATE_COUNT; j++)
+        {
+            xfwmPixmapInit (screen_info, &screen_info->buttons[i][j]);
+        }
     }
     for (i = 0; i < TITLE_COUNT; i++)
     {
         xfwmPixmapInit (screen_info, &screen_info->title[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->title[i][INACTIVE]);
+        xfwmPixmapInit (screen_info, &screen_info->top[i][ACTIVE]);
+        xfwmPixmapInit (screen_info, &screen_info->top[i][INACTIVE]);
     }
 
     return (screen_info);
