@@ -272,6 +272,7 @@ struct _DisplayInfo
     gboolean quit;
     gboolean reload;
 
+    Window timestamp_win;
     Cursor busy_cursor;
     Cursor move_cursor;
     Cursor root_cursor;

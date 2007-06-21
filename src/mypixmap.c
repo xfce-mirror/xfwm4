@@ -941,12 +941,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * 
     g_return_val_if_fail (dir != NULL, FALSE);
     g_return_val_if_fail (file != NULL, FALSE);
 
-    pm->screen_info = screen_info;
-    pm->pixmap = None;
-    pm->mask = None;
-    pm->width = 1;
-    pm->height = 1;
-
+    xfwmPixmapInit (screen_info, pm);
     /*
      * Always try to load the XPM first, using our own routine
      * that supports XPM color symbol susbstitution (used to
