@@ -1,6 +1,7 @@
 4.4.2
 =====
 
+- Fix xfwm4 hanging with gtk+-2.11.x (Bug #3346)
 - Fix dialogs and modals without parents not being automatically 
   centered like before (#Bug #3278)
 - Fix modifier mask not working with all keynaps (Bug #3194)

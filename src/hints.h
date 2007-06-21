@@ -269,6 +269,7 @@ gboolean                 setAtomIdManagerOwner                  (DisplayInfo *,
                                                                  int, 
                                                                  Window , 
                                                                  Window);
+void                     updateXserverTime                      (DisplayInfo *);
 Time                     getXServerTime                         (DisplayInfo *);
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
