@@ -9,12 +9,12 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-04-02 15:33+0300\n"
+"PO-Revision-Date: 2007-06-23 22:13+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
@@ -78,11 +78,11 @@ msgstr "Hiçbir şey yapma"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "Pencereyi farenin altına konumlandır"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "Pencereyi ortaya konumlandır"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -180,9 +180,8 @@ msgid "Size|Large"
 msgstr "Büyük"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "Akıllı konumlandırmayı tetiklemek için pencerelerin en az büyüklüğü"
+msgstr "Akıllı konumlandırma dışında öntanımlı pencere pozisyonu:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
@@ -316,9 +315,8 @@ msgid "Maximize window"
 msgstr "Pencereyi büyüt"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "Pencereyi sakla"
+msgstr "Pencereyi büyült"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -564,12 +562,10 @@ msgid "Maximize window horizontally"
 msgstr "Pencereyi yatay olarak büyült"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
 msgstr "Pencereyi yatay olarak büyült"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
 msgstr "Pencereyi dikey olarak büyült"
 
@@ -702,7 +698,7 @@ msgid "Window operations menu"
 msgstr "Pencere işlem menüsü"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Pencereyi %d. çalışma alanına gönder"
 
