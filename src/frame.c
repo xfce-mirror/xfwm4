@@ -312,16 +312,6 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     width = frameWidth (c) - frameTopLeftWidth (c, state) - frameTopRightWidth (c, state);
     if (width < 1)
     {
-        title_pm->pixmap = None;
-        title_pm->mask = None;
-        title_pm->width = 0;
-        title_pm->height = 0;
-
-        top_pm->pixmap = None;
-        top_pm->mask = None;
-        top_pm->width = 0;
-        top_pm->height = 0;
-
         return;
     }
 
@@ -964,7 +954,7 @@ frameDraw (Client * c, gboolean clear_all)
                 if (x + screen_info->buttons[button][state].width + screen_info->params->button_spacing < right)
                 {
                     my_pixmap = clientGetButtonPixmap (c, button, clientGetButtonState (c, button, state));
-                    if (my_pixmap->pixmap)
+                    if (!xfwmPixmapNone(my_pixmap))
                     {
                         xfwmWindowSetBG (&c->buttons[button], my_pixmap);
                     }
@@ -999,7 +989,7 @@ frameDraw (Client * c, gboolean clear_all)
                 if (x - screen_info->buttons[button][state].width - screen_info->params->button_spacing > left)
                 {
                     my_pixmap = clientGetButtonPixmap (c, button, clientGetButtonState (c, button, state));
-                    if (my_pixmap->pixmap)
+                    if (!xfwmPixmapNone(my_pixmap))
                     {
                         xfwmWindowSetBG (&c->buttons[button], my_pixmap);
                     }
@@ -1029,11 +1019,11 @@ frameDraw (Client * c, gboolean clear_all)
         right_height = frameHeight (c) - frameTop (c) -
             screen_info->corners[CORNER_BOTTOM_RIGHT][state].height;
 
-//        xfwmPixmapInit (screen_info, &frame_pix.pm_title);
+        xfwmPixmapInit (screen_info, &frame_pix.pm_title);
+        xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_TOP]);
+        xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_BOTTOM]);
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_LEFT]);
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_RIGHT]);
-        xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_BOTTOM]);
-//        xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_TOP]);
 
         /* The title is always visible */
         frameCreateTitlePixmap (c, state, left, right, &frame_pix.pm_title, &frame_pix.pm_sides[SIDE_TOP]);
@@ -1153,10 +1143,10 @@ frameDraw (Client * c, gboolean clear_all)
         frameSetShape (c, state, &frame_pix, button_x);
 
         xfwmPixmapFree (&frame_pix.pm_title);
+        xfwmPixmapFree (&frame_pix.pm_sides[SIDE_TOP]);
         xfwmPixmapFree (&frame_pix.pm_sides[SIDE_BOTTOM]);
         xfwmPixmapFree (&frame_pix.pm_sides[SIDE_LEFT]);
         xfwmPixmapFree (&frame_pix.pm_sides[SIDE_RIGHT]);
-        xfwmPixmapFree (&frame_pix.pm_sides[SIDE_TOP]);
     }
     else
     {
