@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-19 22:42+0200\n"
+"POT-Creation-Date: 2007-06-23 19:57+0100\n"
 "PO-Revision-Date: 2006-12-24 03:21+0100\n"
 "Last-Translator: Jovan Naumovski <jovan@lugola.net>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -124,7 +124,7 @@ msgstr "Користи го стандардниот ICCCM фокус"
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1751
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
 msgstr "Фокус"
 
@@ -262,7 +262,7 @@ msgstr "Композитор"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Прилагодувања на менаџерот на прозорци"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2425
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -272,7 +272,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Промени го името"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:490
 #, c-format
 msgid "Workspace %d"
 msgstr "Работен простор %d"
@@ -317,229 +317,234 @@ msgstr "Максимизирај"
 msgid "Close"
 msgstr "Затвори"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Shade window"
 msgstr "Засени ги прозорците"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Hide window"
 msgstr "Скриј прозорец"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Maximize window"
 msgstr "Максимизирај го прозорецот"
 
-#: ../mcs-plugin/xfwm4_plugin.c:82
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#, fuzzy
+msgid "Fill window"
+msgstr "Скриј прозорец"
+
+#: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
 msgstr "Ништо"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
+#: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Left"
 msgstr "Лево"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Center"
 msgstr "Центар"
 
-#: ../mcs-plugin/xfwm4_plugin.c:89
+#: ../mcs-plugin/xfwm4_plugin.c:90
 msgid "Right"
 msgstr "Десно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:588
+#: ../mcs-plugin/xfwm4_plugin.c:589
 msgid "Click and drag buttons to change the layout"
 msgstr "Кликнете и влечете ги копчињата за да го промените изгледот"
 
-#: ../mcs-plugin/xfwm4_plugin.c:593
+#: ../mcs-plugin/xfwm4_plugin.c:594
 msgid "Active"
 msgstr "Активно"
 
-#: ../mcs-plugin/xfwm4_plugin.c:604
+#: ../mcs-plugin/xfwm4_plugin.c:605
 msgid "Title"
 msgstr "Наслов"
 
-#: ../mcs-plugin/xfwm4_plugin.c:605
+#: ../mcs-plugin/xfwm4_plugin.c:606
 msgid "The window title, it cannot be removed"
 msgstr "Насловот на прозорецот, не може да се отстрани"
 
-#: ../mcs-plugin/xfwm4_plugin.c:617
+#: ../mcs-plugin/xfwm4_plugin.c:618
 msgid "Hidden"
 msgstr "Скриен"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1390
+#: ../mcs-plugin/xfwm4_plugin.c:1391
 msgid "Font Selection Dialog"
 msgstr "Дијалог прозорец за избор на фонт"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1455
+#: ../mcs-plugin/xfwm4_plugin.c:1456
 msgid "Window Manager"
 msgstr "Менаџер за прозорци"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1495
+#: ../mcs-plugin/xfwm4_plugin.c:1496
 msgid "Title font"
 msgstr "Фонт за наслов "
 
-#: ../mcs-plugin/xfwm4_plugin.c:1504
+#: ../mcs-plugin/xfwm4_plugin.c:1505
 msgid "Title Alignment"
 msgstr "Поставување на насловот"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1506
+#: ../mcs-plugin/xfwm4_plugin.c:1507
 msgid "Text alignment inside title bar :"
 msgstr "Поставување на текстот во полето за наслов :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1512
+#: ../mcs-plugin/xfwm4_plugin.c:1513
 msgid "Button layout"
 msgstr "Изглед на копчињата"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1517
+#: ../mcs-plugin/xfwm4_plugin.c:1518
 msgid "Style"
 msgstr "Стил"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1565
+#: ../mcs-plugin/xfwm4_plugin.c:1566
 msgid "Window shortcuts"
 msgstr "Кратенки на прозорец"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1579
+#: ../mcs-plugin/xfwm4_plugin.c:1580
 msgid "Command"
 msgstr "Команда"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1585
+#: ../mcs-plugin/xfwm4_plugin.c:1586
 msgid "Shortcut"
 msgstr "Кратенка"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1602
+#: ../mcs-plugin/xfwm4_plugin.c:1603
 msgid "Keyboard"
 msgstr "Тастатура"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1617
+#: ../mcs-plugin/xfwm4_plugin.c:1618
 msgid "Focus model"
 msgstr "Модел на фокус"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1621
+#: ../mcs-plugin/xfwm4_plugin.c:1622
 msgid "Click to focus"
 msgstr "Кликнете за фокус"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1631
+#: ../mcs-plugin/xfwm4_plugin.c:1632
 msgid "Focus follows mouse"
 msgstr "Фокусот го следи глувчето"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1644
+#: ../mcs-plugin/xfwm4_plugin.c:1645
 #, fuzzy
 msgid "Delay before window receives focus"
 msgstr "Задоцнување пред подигнување на фокусираниот прозорец :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
+#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
 msgstr "Бавно "
 
-#: ../mcs-plugin/xfwm4_plugin.c:1660 ../mcs-plugin/xfwm4_plugin.c:1722
+#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Fast"
 msgstr "Брзо"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/xfwm4_plugin.c:1682
 msgid "Automatically give focus to newly created windows"
 msgstr "Автоматски додели фокус на новокреираните прозорци"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1685
+#: ../mcs-plugin/xfwm4_plugin.c:1686
 msgid "New window focus"
 msgstr "Фокус на новите прозорци"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1692
+#: ../mcs-plugin/xfwm4_plugin.c:1693
 msgid "Raise on focus"
 msgstr "Подигни при фокус"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
+#: ../mcs-plugin/xfwm4_plugin.c:1699
 msgid "Automatically raise windows when they receive focus"
 msgstr "Автоматски подигнувај ги прозорците кога добиваат фокус"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1708
+#: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Delay before raising focused window :"
 msgstr "Задоцнување пред подигнување на фокусираниот прозорец :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1743
+#: ../mcs-plugin/xfwm4_plugin.c:1744
 msgid "Raise window when clicking inside application window"
 msgstr "Подигни ги прозорците при кликнување во прозорецот ан апликацијата"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1747
+#: ../mcs-plugin/xfwm4_plugin.c:1748
 msgid "Raise on click"
 msgstr "Подигни при клик"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1765
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Windows snapping"
 msgstr "Лепење на прозорците"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1770
+#: ../mcs-plugin/xfwm4_plugin.c:1771
 msgid "Snap windows to screen border"
 msgstr "Прилепувај ги прозорците на работ на екранот"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1776
+#: ../mcs-plugin/xfwm4_plugin.c:1777
 msgid "Snap windows to other windows"
 msgstr "Прилепувај ги прозорците на другите прозорци"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1787
+#: ../mcs-plugin/xfwm4_plugin.c:1788
 msgid "Distance :"
 msgstr "Растојание :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1794
+#: ../mcs-plugin/xfwm4_plugin.c:1795
 msgid "Distance|Small"
 msgstr "Мало"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1801
+#: ../mcs-plugin/xfwm4_plugin.c:1802
 msgid "Distance|Wide"
 msgstr "Широко"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1822
+#: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Wrap workspaces"
 msgstr "Преминувај преку работните површини"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1828
+#: ../mcs-plugin/xfwm4_plugin.c:1829
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 "Преминувај преку работните површини кога стрелката го достигнува работ на "
 "екранот"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1836
+#: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 "Преминувај преку работните површини при влечење на прозорец преку екранот"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1846
+#: ../mcs-plugin/xfwm4_plugin.c:1847
 msgid "Edge Resistance :"
 msgstr "Отпор на ќошевите :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1853
+#: ../mcs-plugin/xfwm4_plugin.c:1854
 msgid "Resistance|Small"
 msgstr "Мал"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1860
+#: ../mcs-plugin/xfwm4_plugin.c:1861
 msgid "Resistance|Wide"
 msgstr "Широк"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1882
+#: ../mcs-plugin/xfwm4_plugin.c:1883
 msgid "Opaque move and resize"
 msgstr "Провидност при движење и промена на големина"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1887
+#: ../mcs-plugin/xfwm4_plugin.c:1888
 msgid "Display content of windows when resizing"
 msgstr "Прикажи ја содржината на прозорецот при промена на големината"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1893
+#: ../mcs-plugin/xfwm4_plugin.c:1894
 msgid "Display content of windows when moving"
 msgstr "Прикажи ја содржината на прозорецот при поместување"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1898
+#: ../mcs-plugin/xfwm4_plugin.c:1899
 msgid "Double click action"
 msgstr "Дејство при двоен клик"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1900
+#: ../mcs-plugin/xfwm4_plugin.c:1901
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Дејство за извршување при двоен клик на полето со наслов :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1905
+#: ../mcs-plugin/xfwm4_plugin.c:1906
 msgid "Advanced"
 msgstr "Напредно"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:2046
+#: ../mcs-plugin/xfwm4_plugin.c:2051
 msgid "Button Label|Window Manager"
 msgstr "Менаџер на прозорци"
 
@@ -565,152 +570,166 @@ msgstr "Тема за поврзување на копчиња со истото
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Мора да внесете име за темата за поврзување на копчиња"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Close window"
 msgstr "Затвори го прозорецот"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Maximize window vertically"
 msgstr "Максимизирај ги прозорците вертикално"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Maximize window horizontally"
 msgstr "Максимизирај го прозоревот хоризонтално"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "Максимизирај го прозоревот хоризонтално"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "Максимизирај ги прозорците вертикално"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
 msgstr "Прилепи го прозорецот"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Cycle windows"
 msgstr "Кружи помеѓу прозорците"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Move window up"
 msgstr "Помести го прозорецот нагоре"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Move window down"
 msgstr "Помести го прозорецот нагоре"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Move window left"
 msgstr "Помести го прозорецот налево"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Move window right"
 msgstr "Помести го прозорецот надесно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Resize window up"
 msgstr "Промени ја големината на прозорецот кон горе"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Resize window down"
 msgstr "Промени ја големината на прозорецот кон долу"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Resize window left"
 msgstr "Промени ја големината на прозорецот кон лево"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Resize window right"
 msgstr "Промени ја големината на прозорецот кон десно"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Cancel move/resize window"
 msgstr "Прекини го поместувањето/промената на големината на прозорецот"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Raise window"
 msgstr "Подигни го прозорецот"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Lower window"
 msgstr "Спушти го прозорецот"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Toggle above"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
 msgstr "Пушти/исклучи режим на цел екран"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Upper workspace"
 msgstr "Погорна работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Bottom workspace"
 msgstr "Долна работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Left workspace"
 msgstr "Лева работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Right workspace"
 msgstr "Десна работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Next workspace"
 msgstr "Следна работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Previous workspace"
 msgstr "Претходна работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Add workspace"
 msgstr "Додај работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 msgid "Delete workspace"
 msgstr "Избриши работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
 msgid "Move window to next workspace"
 msgstr "Помести го прозорецот во следната работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
 msgid "Move window to previous workspace"
 msgstr "Помести го прозорецот во претходната работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
 msgid "Move window to upper workspace"
 msgstr "Помести го прозорецот во погорната работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
 msgid "Move window to bottom workspace"
 msgstr "Помести го прозорецот во долната работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
 msgid "Move window to left workspace"
 msgstr "Помести го прозорецот во левата работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
 msgid "Move window to right workspace"
 msgstr "Помести го прозорецот во десната работна површина"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
 msgid "Show desktop"
 msgstr "Прикажи ја работната површината"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
 msgid "Cancel window action"
 msgstr "Прекини го дејството на прозорецот"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
 msgid "Window operations menu"
 msgstr "Мени на операциите на прозорецот"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
-#, c-format
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
 msgid "Cannot open the theme directory !"
 msgstr "Не можам да го отворам директориумот на темата !"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -719,8 +738,8 @@ msgstr ""
 "Не можам да отворам %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -729,7 +748,7 @@ msgstr ""
 "Не можам да запишам во %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -737,19 +756,19 @@ msgstr ""
 "Кратенката веќе е во употреба !\n"
 "Дали сте сигурни дека сакате да го користите ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
 msgid "Compose shortcut for :"
 msgstr "Композит кратенка за :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
 msgid "Compose shortcut"
 msgstr "Композит кратенка"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Cancel"
 msgstr "Откажи"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:860
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "No shortcut"
 msgstr "Нема кратенка"
 
@@ -843,12 +862,12 @@ msgstr "Работен простор %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не успеа да го фати покажувачот\n"
 
-#: ../src/settings.c:979
+#: ../src/settings.c:968
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Не можам да ја алоцирам бојата %s\n"
 
-#: ../src/settings.c:985
+#: ../src/settings.c:974
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Не можам да ја парсирам бојата %s\n"
@@ -876,3 +895,7 @@ msgstr "Поставувања за работните површини"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Поставувања за работните површини на Xfce 4"
+
+#, fuzzy
+#~ msgid "Workspace %02d"
+#~ msgstr "Работен простор %d"

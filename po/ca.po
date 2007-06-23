@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-19 22:42+0200\n"
+"POT-Creation-Date: 2007-06-23 19:57+0100\n"
 "PO-Revision-Date: 2007-04-05 15:24+0200\n"
 "Last-Translator: Pau Ruŀlan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
@@ -128,7 +128,7 @@ msgstr "Fes cas de la senyal ICCCM d'enfocament"
 msgid "When a window raises itself:"
 msgstr "Quan una finestra s’alça:"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1751
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
 msgstr "Enfocament"
 
@@ -261,7 +261,7 @@ msgstr ""
 "Ajustaments avançats \n"
 "del gestor de finestres"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2425
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -271,7 +271,7 @@ msgstr ""
 msgid "Change name"
 msgstr "Canvia el nom"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:490
 #, c-format
 msgid "Workspace %d"
 msgstr "Espai de treball %d"
@@ -316,231 +316,236 @@ msgstr "Maximitza"
 msgid "Close"
 msgstr "Tanca"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Shade window"
 msgstr "Enrotlla la finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Hide window"
 msgstr "Amaga la finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Maximize window"
 msgstr "Maximitza la finestra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:82
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#, fuzzy
+msgid "Fill window"
+msgstr "Amaga la finestra"
+
+#: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
 msgstr "Res"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
+#: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Left"
 msgstr "Esquerra"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Center"
 msgstr "Centrat"
 
-#: ../mcs-plugin/xfwm4_plugin.c:89
+#: ../mcs-plugin/xfwm4_plugin.c:90
 msgid "Right"
 msgstr "Dreta"
 
-#: ../mcs-plugin/xfwm4_plugin.c:588
+#: ../mcs-plugin/xfwm4_plugin.c:589
 msgid "Click and drag buttons to change the layout"
 msgstr "Pitjeu i arrossegueu el botons per canviar el disseny"
 
-#: ../mcs-plugin/xfwm4_plugin.c:593
+#: ../mcs-plugin/xfwm4_plugin.c:594
 msgid "Active"
 msgstr "Actiu"
 
-#: ../mcs-plugin/xfwm4_plugin.c:604
+#: ../mcs-plugin/xfwm4_plugin.c:605
 msgid "Title"
 msgstr "Títol"
 
-#: ../mcs-plugin/xfwm4_plugin.c:605
+#: ../mcs-plugin/xfwm4_plugin.c:606
 msgid "The window title, it cannot be removed"
 msgstr "El títol de la finestra no es pot treure"
 
-#: ../mcs-plugin/xfwm4_plugin.c:617
+#: ../mcs-plugin/xfwm4_plugin.c:618
 msgid "Hidden"
 msgstr "Ocult"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1390
+#: ../mcs-plugin/xfwm4_plugin.c:1391
 msgid "Font Selection Dialog"
 msgstr "Diàleg de selecció de fonts"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1455
+#: ../mcs-plugin/xfwm4_plugin.c:1456
 msgid "Window Manager"
 msgstr "Gestor de finestres"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1495
+#: ../mcs-plugin/xfwm4_plugin.c:1496
 msgid "Title font"
 msgstr "Font del títol"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1504
+#: ../mcs-plugin/xfwm4_plugin.c:1505
 msgid "Title Alignment"
 msgstr "Alineació del títol"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1506
+#: ../mcs-plugin/xfwm4_plugin.c:1507
 msgid "Text alignment inside title bar :"
 msgstr "Alineació del text dins de la barra de títol:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1512
+#: ../mcs-plugin/xfwm4_plugin.c:1513
 msgid "Button layout"
 msgstr "Disseny dels botons"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1517
+#: ../mcs-plugin/xfwm4_plugin.c:1518
 msgid "Style"
 msgstr "Estil"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1565
+#: ../mcs-plugin/xfwm4_plugin.c:1566
 msgid "Window shortcuts"
 msgstr "Dreceres de finestres"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1579
+#: ../mcs-plugin/xfwm4_plugin.c:1580
 msgid "Command"
 msgstr "Ordre"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1585
+#: ../mcs-plugin/xfwm4_plugin.c:1586
 msgid "Shortcut"
 msgstr "Drecera"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1602
+#: ../mcs-plugin/xfwm4_plugin.c:1603
 msgid "Keyboard"
 msgstr "Teclat"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1617
+#: ../mcs-plugin/xfwm4_plugin.c:1618
 msgid "Focus model"
 msgstr "Tipus d'enfocament"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1621
+#: ../mcs-plugin/xfwm4_plugin.c:1622
 msgid "Click to focus"
 msgstr "S'enfoca al pitjar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1631
+#: ../mcs-plugin/xfwm4_plugin.c:1632
 msgid "Focus follows mouse"
 msgstr "L'enfocament segueix el ratolí"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1644
+#: ../mcs-plugin/xfwm4_plugin.c:1645
 msgid "Delay before window receives focus"
 msgstr "Retard abans que la finestra guanyi el focus"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
+#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
 msgstr "Lent"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1660 ../mcs-plugin/xfwm4_plugin.c:1722
+#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Fast"
 msgstr "Ràpid"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/xfwm4_plugin.c:1682
 msgid "Automatically give focus to newly created windows"
 msgstr "Automàticament enfoca les finestres noves"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1685
+#: ../mcs-plugin/xfwm4_plugin.c:1686
 msgid "New window focus"
 msgstr "Enfocament de les noves finestres"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1692
+#: ../mcs-plugin/xfwm4_plugin.c:1693
 msgid "Raise on focus"
 msgstr "Primer pla al enfocar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
+#: ../mcs-plugin/xfwm4_plugin.c:1699
 msgid "Automatically raise windows when they receive focus"
 msgstr ""
 "Automàticament coŀloca en primer pla les finestres quan rebin l'enfocament"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1708
+#: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Delay before raising focused window :"
 msgstr "Retard abans de coŀlocar en primer pla la finestra:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1743
+#: ../mcs-plugin/xfwm4_plugin.c:1744
 msgid "Raise window when clicking inside application window"
 msgstr ""
 "Coŀloca en primer pla la finestra quan es pitgi dins la finestra de "
 "l’aplicació"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1747
+#: ../mcs-plugin/xfwm4_plugin.c:1748
 msgid "Raise on click"
 msgstr "Primer pla al pitjar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1765
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Windows snapping"
 msgstr "Alineació ràpida de finestres"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1770
+#: ../mcs-plugin/xfwm4_plugin.c:1771
 msgid "Snap windows to screen border"
 msgstr "Alinea ràpidament les finestres a la vora de la pantalla"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1776
+#: ../mcs-plugin/xfwm4_plugin.c:1777
 msgid "Snap windows to other windows"
 msgstr "Alinea ràpidament les finestres amb les altres finestres"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1787
+#: ../mcs-plugin/xfwm4_plugin.c:1788
 msgid "Distance :"
 msgstr "Distància:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1794
+#: ../mcs-plugin/xfwm4_plugin.c:1795
 msgid "Distance|Small"
 msgstr "Petita"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1801
+#: ../mcs-plugin/xfwm4_plugin.c:1802
 msgid "Distance|Wide"
 msgstr "Gran"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1822
+#: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Wrap workspaces"
 msgstr "Moviment entre els espais de treball"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1828
+#: ../mcs-plugin/xfwm4_plugin.c:1829
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 "Canvia d'espai de treball quan el punter arribi a un dels laterals de la "
 "pantalla"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1836
+#: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 "Canvia d'espai de treball quan s'arrossegui una finestra fora de la pantalla"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1846
+#: ../mcs-plugin/xfwm4_plugin.c:1847
 msgid "Edge Resistance :"
 msgstr "Resistència de les vores:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1853
+#: ../mcs-plugin/xfwm4_plugin.c:1854
 msgid "Resistance|Small"
 msgstr "Petita"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1860
+#: ../mcs-plugin/xfwm4_plugin.c:1861
 msgid "Resistance|Wide"
 msgstr "Gran"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1882
+#: ../mcs-plugin/xfwm4_plugin.c:1883
 msgid "Opaque move and resize"
 msgstr "Opacitat al moure i redimensionar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1887
+#: ../mcs-plugin/xfwm4_plugin.c:1888
 msgid "Display content of windows when resizing"
 msgstr "Mostra el contingut de les finestres quan es redimensionen"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1893
+#: ../mcs-plugin/xfwm4_plugin.c:1894
 msgid "Display content of windows when moving"
 msgstr "Mostra el contingut de les finestres quan es mouen"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1898
+#: ../mcs-plugin/xfwm4_plugin.c:1899
 msgid "Double click action"
 msgstr "Acció del doble clic"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1900
+#: ../mcs-plugin/xfwm4_plugin.c:1901
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Acció a realitzar quan es fa doble clic a la barra de títol:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1905
+#: ../mcs-plugin/xfwm4_plugin.c:1906
 msgid "Advanced"
 msgstr "Avançat"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:2046
+#: ../mcs-plugin/xfwm4_plugin.c:2051
 msgid "Button Label|Window Manager"
 msgstr "Gestor de finestres"
 
@@ -565,152 +570,166 @@ msgstr "Ja hi ha un altre esquema d'assignació de tecles amb aquest nom"
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Introduïu un nom per l'esquema d'assignació de tecles"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Close window"
 msgstr "Tanca la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Maximize window vertically"
 msgstr "Maximitza la finestra verticalment"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Maximize window horizontally"
 msgstr "Maximitza la finestra horitzontalment"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "Maximitza la finestra horitzontalment"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "Maximitza la finestra verticalment"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
 msgstr "Finestra omnipresent"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Cycle windows"
 msgstr "Cicla les finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Move window up"
 msgstr "Mou la finestra amunt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Move window down"
 msgstr "Mou la finestra avall"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Move window left"
 msgstr "Mou la finestra cap a l'esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Move window right"
 msgstr "Mou la finestra cap a la dreta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Resize window up"
 msgstr "Redimensiona la finestra cap amunt"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Resize window down"
 msgstr "Redimensiona la finestra cap avall"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Resize window left"
 msgstr "Redimensiona la finestra cap a l'esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Resize window right"
 msgstr "Redimensiona la finestra cap a la dreta"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Cancel move/resize window"
 msgstr "Canceŀla el moviment/la redimensió de la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Raise window"
 msgstr "Eleva la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Lower window"
 msgstr "Abaixa la finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Toggle above"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
 msgstr "Commuta a pantalla completa"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Upper workspace"
 msgstr "Espai de treball superior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Bottom workspace"
 msgstr "Espai de treball inferior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Left workspace"
 msgstr "Espai de treball esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Right workspace"
 msgstr "Espai de treball dret"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Next workspace"
 msgstr "Espai de treball següent"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Previous workspace"
 msgstr "Espai de treball anterior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Add workspace"
 msgstr "Afegeix espai de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 msgid "Delete workspace"
 msgstr "Esborra l'espai de treball"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
 msgid "Move window to next workspace"
 msgstr "Mou la finestra a l'espai de treball següent"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
 msgid "Move window to previous workspace"
 msgstr "Mou la finestra a l'espai de treball anterior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
 msgid "Move window to upper workspace"
 msgstr "Mou la finestra a l'espai de treball superior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
 msgid "Move window to bottom workspace"
 msgstr "Mou la finestra a l'espai de treball esquerra inferior"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
 msgid "Move window to left workspace"
 msgstr "Mou la finestra a l'espai de treball esquerra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
 msgid "Move window to right workspace"
 msgstr "Mou la finestra a l'espai de treball dret"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
 msgid "Show desktop"
 msgstr "Mostrar l'escriptori"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
 msgid "Cancel window action"
 msgstr "Canceŀla l’operació de finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
 msgid "Window operations menu"
 msgstr "Menú d’operacions de finestra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
-#, c-format
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Mou la finestra a l'àrea de treball %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
 msgid "Cannot open the theme directory !"
 msgstr "No s'ha pogut obrir el directori de l'esquema"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -719,8 +738,8 @@ msgstr ""
 "No s'ha pogut obrir %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -729,7 +748,7 @@ msgstr ""
 "No s'ha pogut escriure a %s:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -737,19 +756,19 @@ msgstr ""
 "La drecera ja s'està emprant.\n"
 "Esteu segur de voler emprar-la?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
 msgid "Compose shortcut for :"
 msgstr "Creo una drecera per:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
 msgid "Compose shortcut"
 msgstr "Crea una drecera"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Cancel"
 msgstr "Canceŀla"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:860
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "No shortcut"
 msgstr "Sense drecera"
 
@@ -843,12 +862,12 @@ msgstr "Àrea de treball %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut captura el punter\n"
 
-#: ../src/settings.c:979
+#: ../src/settings.c:968
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: no s'ha pogut situar el color %s\n"
 
-#: ../src/settings.c:985
+#: ../src/settings.c:974
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: no s'ha pogut analitzar el color %s\n"
@@ -877,3 +896,7 @@ msgstr "Paràmetres dels espais de treball"
 msgid "Xfce 4 Workspaces Settings"
 msgstr ""
 "Paràmetres dels espais de treball d'Xfce 4Marges dels espais de treball"
+
+#, fuzzy
+#~ msgid "Workspace %02d"
+#~ msgstr "Espai de treball %d"

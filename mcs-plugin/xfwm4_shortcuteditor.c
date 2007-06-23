@@ -487,7 +487,7 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
             {
                 gchar *text;
 
-                text = g_strdup_printf (_("Workspace %02d"), i + 1);
+                text = g_strdup_printf (_("Workspace %d"), i + 1);
                 gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
                 gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text,
                     COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
@@ -508,7 +508,7 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
             {
                 gchar *text;
 
-                text = g_strdup_printf (_("Move window to workspace %02d"), i + 1);
+                text = g_strdup_printf (_("Move window to workspace %d"), i + 1);
                 gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
                 gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text,
                     COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);

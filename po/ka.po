@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-19 22:42+0200\n"
+"POT-Creation-Date: 2007-06-23 19:57+0100\n"
 "PO-Revision-Date: 2006-08-24 23:50+0400\n"
 "Last-Translator: Dimitri Gogelia <delphi.knight@gmail.com>\n"
 "Language-Team: Georgian <delphi.knight@gmail.com>\n"
@@ -113,7 +113,7 @@ msgstr ""
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1751
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
 msgstr ""
 
@@ -239,7 +239,7 @@ msgstr ""
 msgid "Button Label|Window Manager Tweaks"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2425
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
@@ -248,7 +248,7 @@ msgstr ""
 msgid "Change name"
 msgstr ""
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:490
 #, c-format
 msgid "Workspace %d"
 msgstr ""
@@ -293,225 +293,229 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Shade window"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Hide window"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Maximize window"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:82
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+msgid "Fill window"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
+#: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Left"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Center"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:89
+#: ../mcs-plugin/xfwm4_plugin.c:90
 msgid "Right"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:588
+#: ../mcs-plugin/xfwm4_plugin.c:589
 msgid "Click and drag buttons to change the layout"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:593
+#: ../mcs-plugin/xfwm4_plugin.c:594
 msgid "Active"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:604
+#: ../mcs-plugin/xfwm4_plugin.c:605
 msgid "Title"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:605
+#: ../mcs-plugin/xfwm4_plugin.c:606
 msgid "The window title, it cannot be removed"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:617
+#: ../mcs-plugin/xfwm4_plugin.c:618
 msgid "Hidden"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1390
+#: ../mcs-plugin/xfwm4_plugin.c:1391
 msgid "Font Selection Dialog"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1455
+#: ../mcs-plugin/xfwm4_plugin.c:1456
 msgid "Window Manager"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1495
+#: ../mcs-plugin/xfwm4_plugin.c:1496
 msgid "Title font"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1504
+#: ../mcs-plugin/xfwm4_plugin.c:1505
 msgid "Title Alignment"
 msgstr ""
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1506
+#: ../mcs-plugin/xfwm4_plugin.c:1507
 msgid "Text alignment inside title bar :"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1512
+#: ../mcs-plugin/xfwm4_plugin.c:1513
 msgid "Button layout"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1517
+#: ../mcs-plugin/xfwm4_plugin.c:1518
 msgid "Style"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1565
+#: ../mcs-plugin/xfwm4_plugin.c:1566
 msgid "Window shortcuts"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1579
+#: ../mcs-plugin/xfwm4_plugin.c:1580
 msgid "Command"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1585
+#: ../mcs-plugin/xfwm4_plugin.c:1586
 msgid "Shortcut"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1602
+#: ../mcs-plugin/xfwm4_plugin.c:1603
 msgid "Keyboard"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1617
+#: ../mcs-plugin/xfwm4_plugin.c:1618
 msgid "Focus model"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1621
+#: ../mcs-plugin/xfwm4_plugin.c:1622
 msgid "Click to focus"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1631
+#: ../mcs-plugin/xfwm4_plugin.c:1632
 msgid "Focus follows mouse"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1644
+#: ../mcs-plugin/xfwm4_plugin.c:1645
 msgid "Delay before window receives focus"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1653 ../mcs-plugin/xfwm4_plugin.c:1715
+#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1660 ../mcs-plugin/xfwm4_plugin.c:1722
+#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Fast"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/xfwm4_plugin.c:1682
 msgid "Automatically give focus to newly created windows"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1685
+#: ../mcs-plugin/xfwm4_plugin.c:1686
 msgid "New window focus"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1692
+#: ../mcs-plugin/xfwm4_plugin.c:1693
 msgid "Raise on focus"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1698
+#: ../mcs-plugin/xfwm4_plugin.c:1699
 msgid "Automatically raise windows when they receive focus"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1708
+#: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Delay before raising focused window :"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1743
+#: ../mcs-plugin/xfwm4_plugin.c:1744
 msgid "Raise window when clicking inside application window"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1747
+#: ../mcs-plugin/xfwm4_plugin.c:1748
 msgid "Raise on click"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1765
+#: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Windows snapping"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1770
+#: ../mcs-plugin/xfwm4_plugin.c:1771
 msgid "Snap windows to screen border"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1776
+#: ../mcs-plugin/xfwm4_plugin.c:1777
 msgid "Snap windows to other windows"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1787
+#: ../mcs-plugin/xfwm4_plugin.c:1788
 msgid "Distance :"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1794
+#: ../mcs-plugin/xfwm4_plugin.c:1795
 msgid "Distance|Small"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1801
+#: ../mcs-plugin/xfwm4_plugin.c:1802
 msgid "Distance|Wide"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1822
+#: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Wrap workspaces"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1828
+#: ../mcs-plugin/xfwm4_plugin.c:1829
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1836
+#: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1846
+#: ../mcs-plugin/xfwm4_plugin.c:1847
 msgid "Edge Resistance :"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1853
+#: ../mcs-plugin/xfwm4_plugin.c:1854
 msgid "Resistance|Small"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1860
+#: ../mcs-plugin/xfwm4_plugin.c:1861
 msgid "Resistance|Wide"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1882
+#: ../mcs-plugin/xfwm4_plugin.c:1883
 msgid "Opaque move and resize"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1887
+#: ../mcs-plugin/xfwm4_plugin.c:1888
 msgid "Display content of windows when resizing"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1893
+#: ../mcs-plugin/xfwm4_plugin.c:1894
 msgid "Display content of windows when moving"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1898
+#: ../mcs-plugin/xfwm4_plugin.c:1899
 msgid "Double click action"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1900
+#: ../mcs-plugin/xfwm4_plugin.c:1901
 msgid "Action to perform when double clicking on title bar :"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1905
+#: ../mcs-plugin/xfwm4_plugin.c:1906
 msgid "Advanced"
 msgstr ""
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:2046
+#: ../mcs-plugin/xfwm4_plugin.c:2051
 msgid "Button Label|Window Manager"
 msgstr ""
 
@@ -536,185 +540,197 @@ msgstr ""
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Close window"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Maximize window vertically"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Maximize window horizontally"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
-msgid "Stick window"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
-msgid "Cycle windows"
-msgstr ""
-
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-msgid "Move window up"
+msgid "Fill window horizontally"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-msgid "Move window down"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
-msgid "Move window left"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
-msgid "Move window right"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
-msgid "Resize window up"
+msgid "Fill window vertically"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
-msgid "Resize window down"
+msgid "Stick window"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-msgid "Resize window left"
+msgid "Cycle windows"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
-msgid "Resize window right"
+msgid "Move window up"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:375
-msgid "Cancel move/resize window"
+msgid "Move window down"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:376
-msgid "Raise window"
+msgid "Move window left"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:377
-msgid "Lower window"
+msgid "Move window right"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:378
-msgid "Toggle fullscreen"
+msgid "Resize window up"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:379
-msgid "Upper workspace"
+msgid "Resize window down"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:380
-msgid "Bottom workspace"
+msgid "Resize window left"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:381
-msgid "Left workspace"
+msgid "Resize window right"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:382
-msgid "Right workspace"
+msgid "Cancel move/resize window"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:383
-msgid "Next workspace"
+msgid "Raise window"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:384
-msgid "Previous workspace"
+msgid "Lower window"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
-msgid "Add workspace"
+msgid "Toggle above"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
-msgid "Delete workspace"
+msgid "Toggle fullscreen"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:387
-msgid "Move window to next workspace"
+msgid "Upper workspace"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:388
-msgid "Move window to previous workspace"
+msgid "Bottom workspace"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:389
-msgid "Move window to upper workspace"
+msgid "Left workspace"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:390
-msgid "Move window to bottom workspace"
+msgid "Right workspace"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:391
-msgid "Move window to left workspace"
+msgid "Next workspace"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-msgid "Move window to right workspace"
+msgid "Previous workspace"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
-msgid "Show desktop"
+msgid "Add workspace"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:394
-msgid "Cancel window action"
+msgid "Delete workspace"
 msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+msgid "Move window to next workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
+msgid "Move window to previous workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
+msgid "Move window to upper workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
+msgid "Move window to bottom workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
+msgid "Move window to left workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
+msgid "Move window to right workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
+msgid "Show desktop"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
+msgid "Cancel window action"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
 msgid "Window operations menu"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
 #, c-format
 msgid "Move window to workspace %d"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:786
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
 msgid "Compose shortcut for :"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
 msgid "Compose shortcut"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Cancel"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:860
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "No shortcut"
 msgstr ""
 
@@ -808,12 +824,12 @@ msgstr ""
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: ../src/settings.c:979
+#: ../src/settings.c:968
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr ""
 
-#: ../src/settings.c:985
+#: ../src/settings.c:974
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr ""
