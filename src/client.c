@@ -3250,16 +3250,16 @@ clientFill (Client * c, int fill_type)
                  * check if the neigbour client (c2) is located
                  * east or west of our client.
                  */
-                if (!(((c->y + c->height) < (c2->y - frameTop(c2))) || ((c2->y + c2->height) < (c->y - frameTop(c)))))
+                if (!(((frameY(c) + frameHeight(c)) < (frameY(c2) - frameTop(c2))) || ((frameY(c2) + frameHeight(c2)) < (frameY(c) - frameTop(c)))))
                 {
-                    if ((c2->x + c2->width) < c->x)
+                    if ((frameX(c2) + frameWidth(c2)) < frameX(c))
                     {
                         if (east_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the east neighbour already found
                              */
-                            if ((east_neighbour->x + east_neighbour->width) < (c2->x + c2->width))
+                            if ((frameX(east_neighbour) + frameWidth(east_neighbour)) < (frameX(c2) + frameWidth(c2)))
                             {
                                 east_neighbour = c2;
                             }
@@ -3269,14 +3269,14 @@ clientFill (Client * c, int fill_type)
                             east_neighbour = c2;
                         }
                     }
-                    if ((c->x + c->width) < c2->x)
+                    if ((frameX(c) + frameWidth(c)) < frameX(c2))
                     {
                         /* Check if c2 is closer to the client
                          * then the west neighbour already found
                          */
                         if (west_neighbour)
                         {
-                            if (c2->x < west_neighbour->x)
+                            if (frameX(c2) < frameX(west_neighbour))
                             {
                                 west_neighbour = c2;
                             }
@@ -3297,16 +3297,16 @@ clientFill (Client * c, int fill_type)
                 /* check if the neigbour client (c2) is located
                  * north or south of our client.
                  */
-                if (!(((c->x + c->width) < c2->x) || ((c2->x + c2->width) < c->x)))
+                if (!(((frameX(c) + frameWidth(c)) < frameX(c2)) || ((frameX(c2) + frameWidth(c2)) < frameX(c))))
                 {
-                    if ((c2->y + c2->height) < c->y)
+                    if ((frameY(c2) + frameHeight(c2)) < frameY(c))
                     {
                         if (north_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the north neighbour already found
                              */
-                            if ((north_neighbour->y + north_neighbour->height) < (c2->y + c2->height))
+                            if ((frameY(north_neighbour) + frameHeight(north_neighbour)) < (frameY(c2) + frameHeight(c2)))
                             {
                                 north_neighbour = c2;
                             }
@@ -3316,14 +3316,14 @@ clientFill (Client * c, int fill_type)
                             north_neighbour = c2;
                         }
                     }
-                    if ((c->y + c->height) < c2->y)
+                    if ((frameY(c) + frameHeight(c)) < frameY(c2))
                     {
                         if (south_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the south neighbour already found
                              */
-                            if (c2->y < south_neighbour->y)
+                            if (frameY(c2) < frameY(south_neighbour))
                             {
                                 south_neighbour = c2;
                             }
@@ -3338,7 +3338,7 @@ clientFill (Client * c, int fill_type)
         }
     }
 
-    wc.x = c->x;
+    wc.x = frameX(c);
 
     /* If there are neighbours, resize to their borders.
      * If not, resize to the screen-border
@@ -3346,7 +3346,7 @@ clientFill (Client * c, int fill_type)
 
     if (east_neighbour)
     {
-        wc.x = east_neighbour->x + east_neighbour->width +
+        wc.x = frameX(east_neighbour) + frameWidth(east_neighbour) +
             (frameLeft(c) + frameRight(east_neighbour));
     }
     else
@@ -3356,7 +3356,7 @@ clientFill (Client * c, int fill_type)
 
     if (west_neighbour)
     {
-        wc.width = west_neighbour->x - wc.x -
+        wc.width = frameX(west_neighbour) - wc.x -
             (frameRight(c) + frameLeft(west_neighbour));
     }
     else
@@ -3367,7 +3367,7 @@ clientFill (Client * c, int fill_type)
 
     if (north_neighbour)
     {
-        wc.y = north_neighbour->y + north_neighbour->height +
+        wc.y = frameY(north_neighbour) + frameHeight(north_neighbour) +
             (frameTop(c) + frameBottom(north_neighbour));
     }
     else
@@ -3377,7 +3377,7 @@ clientFill (Client * c, int fill_type)
 
     if (south_neighbour)
     {
-        wc.height = south_neighbour->y - wc.y -
+        wc.height = frameY(south_neighbour) - wc.y -
             (frameTop(south_neighbour) + frameBottom(c));
     }
     else
