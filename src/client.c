@@ -3214,15 +3214,14 @@ clientFill (Client * c, int fill_type)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    GList *window_list;
     Client *east_neighbour = NULL;
     Client *west_neighbour = NULL;
     Client *north_neighbour = NULL;
     Client *south_neighbour = NULL;
-    Client *c_n;
+    Client *c2;
     XWindowChanges wc;
     int mask = 0;
-    int key = fill_type;
+    int i;
 
     g_return_if_fail (c != NULL);
 
@@ -3234,18 +3233,13 @@ clientFill (Client * c, int fill_type)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    window_list = screen_info->windows;
-
-    while (window_list)
+    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
-        /* Retrieve all windows */
-        c_n = (Client *)window_list->data;
 
-        /* Filter out all windows which are not present on the same
-         * workspace as the client window, aswell as the client window
-         * itself
+        /* Filter out all windows which are not visible, or not on the same layer
+         * as well as the client window itself
          */
-        if ((c->win_workspace == c_n->win_workspace) && (c != window_list->data))
+        if ((c != c2) && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE) && (c2->win_layer == c->win_layer))
         {
             /* Fill horizontally */
             if (fill_type & CLIENT_FILL_HORIZ)
@@ -3253,43 +3247,43 @@ clientFill (Client * c, int fill_type)
                 mask |= CWX | CWWidth;
 
                 /*
-                 * check if the neigbour client (c_n) is located
+                 * check if the neigbour client (c2) is located
                  * east or west of our client.
                  */
-                if (!(((c->y + c->height) < (c_n->y - frameTop(c_n))) || ((c_n->y + c_n->height) < (c->y - frameTop(c)))))
+                if (!(((c->y + c->height) < (c2->y - frameTop(c2))) || ((c2->y + c2->height) < (c->y - frameTop(c)))))
                 {
-                    if ((c_n->x + c_n->width) < c->x)
+                    if ((c2->x + c2->width) < c->x)
                     {
                         if (east_neighbour)
                         {
-                            /* Check if c_n is closer to the client
+                            /* Check if c2 is closer to the client
                              * then the east neighbour already found
                              */
-                            if ((east_neighbour->x + east_neighbour->width) < (c_n->x + c_n->width))
+                            if ((east_neighbour->x + east_neighbour->width) < (c2->x + c2->width))
                             {
-                                east_neighbour = c_n;
+                                east_neighbour = c2;
                             }
                         }
                         else
                         {
-                            east_neighbour = c_n;
+                            east_neighbour = c2;
                         }
                     }
-                    if ((c->x + c->width) < c_n->x)
+                    if ((c->x + c->width) < c2->x)
                     {
-                        /* Check if c_n is closer to the client
+                        /* Check if c2 is closer to the client
                          * then the west neighbour already found
                          */
                         if (west_neighbour)
                         {
-                            if (c_n->x < west_neighbour->x)
+                            if (c2->x < west_neighbour->x)
                             {
-                                west_neighbour = c_n;
+                                west_neighbour = c2;
                             }
                         }
                         else
                         {
-                            west_neighbour = c_n;
+                            west_neighbour = c2;
                         }
                     }
                 }
@@ -3300,50 +3294,48 @@ clientFill (Client * c, int fill_type)
             {
                 mask |= CWY | CWHeight;
 
-                /* check if the neigbour client (c_n) is located
+                /* check if the neigbour client (c2) is located
                  * north or south of our client.
                  */
-                if (!(((c->x + c->width) < c_n->x) || ((c_n->x + c_n->width) < c->x)))
+                if (!(((c->x + c->width) < c2->x) || ((c2->x + c2->width) < c->x)))
                 {
-                    if ((c_n->y + c_n->height) < c->y)
+                    if ((c2->y + c2->height) < c->y)
                     {
                         if (north_neighbour)
                         {
-                            /* Check if c_n is closer to the client
+                            /* Check if c2 is closer to the client
                              * then the north neighbour already found
                              */
-                            if ((north_neighbour->y + north_neighbour->height) < (c_n->y + c_n->height))
+                            if ((north_neighbour->y + north_neighbour->height) < (c2->y + c2->height))
                             {
-                                north_neighbour = c_n;
+                                north_neighbour = c2;
                             }
                         }
                         else
                         {
-                            north_neighbour = c_n;
+                            north_neighbour = c2;
                         }
                     }
-                    if ((c->y + c->height) < c_n->y)
+                    if ((c->y + c->height) < c2->y)
                     {
                         if (south_neighbour)
                         {
-                            /* Check if c_n is closer to the client
+                            /* Check if c2 is closer to the client
                              * then the south neighbour already found
                              */
-                            if (c_n->y < south_neighbour->y)
+                            if (c2->y < south_neighbour->y)
                             {
-                                south_neighbour = c_n;
+                                south_neighbour = c2;
                             }
                         }
                         else
                         {
-                            south_neighbour = c_n;
+                            south_neighbour = c2;
                         }
                     }
                 }
             }
         }
-
-        window_list = g_list_next(window_list);
     }
 
     wc.x = c->x;
