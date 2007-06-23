@@ -3214,14 +3214,17 @@ clientFill (Client * c, int fill_type)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    Client *east_neighbour = NULL;
-    Client *west_neighbour = NULL;
-    Client *north_neighbour = NULL;
-    Client *south_neighbour = NULL;
+    Client *east_neighbour;
+    Client *west_neighbour;
+    Client *north_neighbour;
+    Client *south_neighbour;
     Client *c2;
+    GdkRectangle rect;
     XWindowChanges wc;
-    int mask = 0;
-    int i;
+    unsigned short mask;
+    int i, cx, cy, full_x, full_y, full_w, full_h;
+    int tmp_x, tmp_y, tmp_w, tmp_h;
+    gint monitor_nbr;
 
     g_return_if_fail (c != NULL);
 
@@ -3232,6 +3235,11 @@ clientFill (Client * c, int fill_type)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    mask = 0;
+    east_neighbour = NULL;
+    west_neighbour = NULL;
+    north_neighbour = NULL;
+    south_neighbour = NULL;
 
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
@@ -3338,10 +3346,43 @@ clientFill (Client * c, int fill_type)
         }
     }
 
-    wc.x = frameX(c);
+    /* Compute the largest size available, based on struts, margins and Xinerama layout */
+    tmp_x = frameX (c);
+    tmp_y = frameY (c);
+    tmp_h = frameHeight (c);
+    tmp_w = frameWidth (c);
+
+    cx = tmp_x + (tmp_w / 2);
+    cy = tmp_y + (tmp_h / 2);
+
+    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+
+    full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
+    full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);
+    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
+                  rect.x + rect.width) - full_x;
+    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
+                  rect.y + rect.height) - full_y;
+
+    if ((fill_type & CLIENT_FILL) == CLIENT_FILL)
+    {
+        /* Adjust size to the largest size available, not covering struts */
+        clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
+    }
+    else if (fill_type & CLIENT_FILL_VERT)
+    {
+        /* Adjust size to the tallest size available, for the current horizontal position/width */
+        clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
+    }
+    else if (fill_type & CLIENT_FILL_HORIZ)
+    {
+        /* Adjust size to the widest size available, for the current vertical position/height */
+        clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
+    }
 
     /* If there are neighbours, resize to their borders.
-     * If not, resize to the screen-border
+     * If not, resize to the largest size available taht you just have computed.
      */
 
     if (east_neighbour)
@@ -3350,7 +3391,7 @@ clientFill (Client * c, int fill_type)
     }
     else
     {
-        wc.x = frameLeft(c);
+        wc.x = full_x + frameLeft(c);
     }
 
     if (west_neighbour)
@@ -3359,7 +3400,7 @@ clientFill (Client * c, int fill_type)
     }
     else
     {
-        wc.width = screen_info->width - frameRight(c) - wc.x;
+        wc.width = full_w - frameRight(c) - wc.x;
     }
 
     if (north_neighbour)
@@ -3368,7 +3409,7 @@ clientFill (Client * c, int fill_type)
     }
     else
     {
-        wc.y = frameTop(c);
+        wc.y = full_y + frameTop(c);
     }
 
     if (south_neighbour)
@@ -3377,7 +3418,7 @@ clientFill (Client * c, int fill_type)
     }
     else
     {
-        wc.height = screen_info->height - frameBottom(c) - wc.y;
+        wc.height = full_h - frameBottom(c) - wc.y;
     }
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
