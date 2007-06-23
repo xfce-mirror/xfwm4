@@ -494,7 +494,7 @@ Client *
 myScreenGetClientFromWindow (ScreenInfo *screen_info, Window w, unsigned short mode)
 {
     Client *c;
-    int i, j;
+    int i;
 
     g_return_val_if_fail (w != None, NULL);
     TRACE ("entering myScreenGetClientFromWindow");

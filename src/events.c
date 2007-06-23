@@ -1684,7 +1684,7 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
     Client *c;
     int b;
-    gboolean warp_pointer, need_redraw;
+    gboolean need_redraw;
 
     TRACE ("entering handleLeaveNotify");
 
