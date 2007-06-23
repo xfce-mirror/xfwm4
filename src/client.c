@@ -3346,8 +3346,7 @@ clientFill (Client * c, int fill_type)
 
     if (east_neighbour)
     {
-        wc.x = frameX(east_neighbour) + frameWidth(east_neighbour) +
-            (frameLeft(c) + frameRight(east_neighbour));
+        wc.x = frameX(east_neighbour) + frameWidth(east_neighbour) + frameLeft(c);
     }
     else
     {
@@ -3356,19 +3355,16 @@ clientFill (Client * c, int fill_type)
 
     if (west_neighbour)
     {
-        wc.width = frameX(west_neighbour) - wc.x -
-            (frameRight(c) + frameLeft(west_neighbour));
+        wc.width = frameX(west_neighbour) - frameRight(c) - wc.x;
     }
     else
     {
-        wc.width = screen_info->width - wc.x -
-            (frameRight(c));
+        wc.width = screen_info->width - frameRight(c) - wc.x;
     }
 
     if (north_neighbour)
     {
-        wc.y = frameY(north_neighbour) + frameHeight(north_neighbour) +
-            (frameTop(c) + frameBottom(north_neighbour));
+        wc.y = frameY(north_neighbour) + frameHeight(north_neighbour) + frameTop(c);
     }
     else
     {
@@ -3377,12 +3373,11 @@ clientFill (Client * c, int fill_type)
 
     if (south_neighbour)
     {
-        wc.height = frameY(south_neighbour) - wc.y -
-            (frameTop(south_neighbour) + frameBottom(c));
+        wc.height = frameY(south_neighbour) - frameBottom(c) - wc.y;
     }
     else
     {
-        wc.height = screen_info->height - wc.y;
+        wc.height = screen_info->height - frameBottom(c) - wc.y;
     }
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
