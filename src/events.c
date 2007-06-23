@@ -465,6 +465,15 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 /* 'nuff for now */
                 return EVENT_FILTER_REMOVE;
                 break;
+            case KEY_FILL_WINDOW:
+                clientFill (c, CLIENT_FILL);
+                break;
+            case KEY_FILL_VERT:
+                clientFill (c, CLIENT_FILL_VERT);
+                break;
+            case KEY_FILL_HORIZ:
+                clientFill (c, CLIENT_FILL_HORIZ);
+                break;
             default:
                 break;
         }
@@ -710,6 +719,9 @@ button1Action (Client * c, XButtonEvent * ev)
                 break;
             case DBL_CLICK_ACTION_SHADE:
                 clientToggleShaded (c);
+                break;
+            case DBL_CLICK_ACTION_FILL:
+                clientFill(c, CLIENT_FILL);
                 break;
             case DBL_CLICK_ACTION_HIDE:
                 if (CLIENT_CAN_HIDE_WINDOW (c))

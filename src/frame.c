@@ -1029,11 +1029,11 @@ frameDraw (Client * c, gboolean clear_all)
         right_height = frameHeight (c) - frameTop (c) -
             screen_info->corners[CORNER_BOTTOM_RIGHT][state].height;
 
-        xfwmPixmapInit (screen_info, &frame_pix.pm_title);
+//        xfwmPixmapInit (screen_info, &frame_pix.pm_title);
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_LEFT]);
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_RIGHT]);
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_BOTTOM]);
-        xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_TOP]);
+//        xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_TOP]);
 
         /* The title is always visible */
         frameCreateTitlePixmap (c, state, left, right, &frame_pix.pm_title, &frame_pix.pm_sides[SIDE_TOP]);

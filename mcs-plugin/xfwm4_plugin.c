@@ -79,6 +79,7 @@ static const MenuTmpl dbl_click_values[] = {
     {N_("Shade window"), "shade"},
     {N_("Hide window"), "hide"},
     {N_("Maximize window"), "maximize"},
+    {N_("Fill window"), "fill"},
     {N_("Nothing"), "none"},
     {NULL, NULL}
 };
@@ -1566,7 +1567,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_widget_show (frame);
     gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
 
-    model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    model = gtk_list_store_new (KEY_SHORTCUT_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
     dialog->treeview3 = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
     gtk_widget_show (dialog->treeview3);
     gtk_container_add (GTK_CONTAINER (dialog->scrolledwindow3), dialog->treeview3);
@@ -1896,7 +1897,7 @@ create_dialog (McsPlugin * mcs_plugin)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->box_move_check), !box_move);
 
     frame = xfce_create_framebox_with_content (_("Double click action"),
-        create_option_menu_box (dbl_click_values, 4,
+        create_option_menu_box (dbl_click_values, 5,
             _("Action to perform when double clicking on title bar :"), dbl_click_action,
             G_CALLBACK (cb_dblclick_action_value_changed), mcs_plugin));
     gtk_widget_show (frame);
@@ -1932,7 +1933,7 @@ create_dialog (McsPlugin * mcs_plugin)
 static void
 setup_dialog (Itf * itf)
 {
-    GtkTreeModel *model1, *model2;
+    GtkTreeModel *model1, *model2, *model3;
     GtkTreeSelection *selection;
     ThemeInfo *ti;
 
@@ -1941,15 +1942,19 @@ setup_dialog (Itf * itf)
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (itf->treeview2), -1, NULL,
         gtk_cell_renderer_text_new (), "text", THEME_NAME_COLUMN, NULL);
 
-    model1 = (GtkTreeModel *) gtk_list_store_new (N_COLUMNS, G_TYPE_STRING);
+    model1 = (GtkTreeModel *) gtk_list_store_new (THEME_NAME_COLUMNS, G_TYPE_STRING);
     gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (model1), 0, sort_func, NULL, NULL);
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model1), 0, GTK_SORT_ASCENDING);
     gtk_tree_view_set_model (GTK_TREE_VIEW (itf->treeview1), model1);
 
-    model2 = (GtkTreeModel *) gtk_list_store_new (N_COLUMNS, G_TYPE_STRING);
+    model2 = (GtkTreeModel *) gtk_list_store_new (THEME_NAME_COLUMNS, G_TYPE_STRING);
     gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (model2), 0, sort_func, NULL, NULL);
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model2), 0, GTK_SORT_ASCENDING);
     gtk_tree_view_set_model (GTK_TREE_VIEW (itf->treeview2), model2);
+
+    model3 = gtk_tree_view_get_model (GTK_TREE_VIEW (itf->treeview3));
+    gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (model3), 0, sort_func, NULL, NULL);
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model3), 0, GTK_SORT_ASCENDING);
 
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (itf->treeview1));
     gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);

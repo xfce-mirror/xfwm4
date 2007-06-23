@@ -64,7 +64,7 @@ enum
 {
     NUMBER_COLUMN,
     NAME_COLUMN,
-    N_COLUMNS
+    THEME_NAME_COLUMNS
 };
 
 static void save_workspaces_channel (McsManager * manager);
@@ -440,7 +440,7 @@ add_names_treeview (GtkWidget * vbox, McsManager * manager)
     gtk_box_pack_start (GTK_BOX (vbox), treeview_scroll, TRUE, TRUE, 0);
     gtk_widget_set_size_request (treeview_scroll, -1, 120);
 
-    store = gtk_list_store_new (N_COLUMNS, G_TYPE_INT, G_TYPE_STRING);
+    store = gtk_list_store_new (THEME_NAME_COLUMNS, G_TYPE_INT, G_TYPE_STRING);
     treeview = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
     g_object_unref (G_OBJECT (store));
     gtk_widget_show (treeview);

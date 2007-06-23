@@ -83,6 +83,12 @@
                                          UPDATE_MAXIMIZE | \
                                          UPDATE_CACHE)
 
+#define CLIENT_FILL_VERT                (1L<<0)
+#define CLIENT_FILL_HORIZ               (1L<<1)
+#define CLIENT_FILL                     (CLIENT_FILL_VERT | \
+                                         CLIENT_FILL_HORIZ)
+
+
 #define STRUTS_SIZE                     12
 
 #ifndef CLIENT_MIN_VISIBLE
@@ -195,6 +201,11 @@
                                                                           XFWM_FLAG_IS_RESIZABLE, \
                                                                           XFWM_FLAG_LEGACY_FULLSCREEN) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+#define CLIENT_CAN_FILL_WINDOW(c)       (FLAG_TEST_AND_NOT(c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | \
+                                                                          XFWM_FLAG_IS_RESIZABLE, \
+                                                                          XFWM_FLAG_LEGACY_FULLSCREEN) && \
+                                         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_MAXIMIZED))
+
 #define CLIENT_CAN_STICK_WINDOW(c)      (!(c->transient_for) && \
                                          FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
 
@@ -374,6 +385,8 @@ void                     clientRemoveMaximizeFlag               (Client *);
 void                     clientToggleMaximized                  (Client *,
                                                                  int,
                                                                  gboolean);
+void                     clientFill                             (Client *,
+                                                                 int);
 void                     clientUpdateOpacity                    (ScreenInfo *,
                                                                  Client *);
 void                     clientSetOpacity                       (Client *,

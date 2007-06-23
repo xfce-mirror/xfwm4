@@ -1336,6 +1336,9 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_10], getValue ("workspace_10_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_11], getValue ("workspace_11_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_12], getValue ("workspace_12_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_HORIZ], getValue ("fill_horiz_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_VERT], getValue ("fill_vert_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_WINDOW], getValue ("fill_window_key", rc));
 
     myScreenUngrabKeys (screen_info);
     myScreenGrabKeys (screen_info);
@@ -1501,6 +1504,9 @@ loadSettings (ScreenInfo *screen_info)
         {"workspace_10_key", NULL, TRUE},
         {"workspace_11_key", NULL, TRUE},
         {"workspace_12_key", NULL, TRUE},
+        {"fill_horiz_key", NULL, TRUE},
+        {"fill_vert_key", NULL, TRUE},
+        {"fill_window_key", NULL, TRUE},
         {NULL, NULL, FALSE}
     };
 
@@ -1603,6 +1609,10 @@ loadSettings (ScreenInfo *screen_info)
     else if (!g_ascii_strcasecmp ("maximize", value))
     {
         screen_info->params->double_click_action = DBL_CLICK_ACTION_MAXIMIZE;
+    }
+    else if (!g_ascii_strcasecmp ("fill", value))
+    {
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_FILL;
     }
     else
     {

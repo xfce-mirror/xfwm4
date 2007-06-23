@@ -2002,7 +2002,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     for (i = 0; i < STATE_TOGGLED; i++)
     {
-	xfwmPixmapInit (screen_info, &c->appmenu[i]);
+    xfwmPixmapInit (screen_info, &c->appmenu[i]);
     }
 
     for (i = 0; i < SIDE_TOP; i++) /* Keep SIDE_TOP for later */
@@ -3205,6 +3205,204 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
          */
         myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
+        myScreenUngrabPointer (c->screen_info);
+    }
+}
+
+void
+clientFill (Client * c, int fill_type)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    GList *window_list;
+    Client *east_neighbour = NULL;
+    Client *west_neighbour = NULL;
+    Client *north_neighbour = NULL;
+    Client *south_neighbour = NULL;
+    Client *c_n;
+    XWindowChanges wc;
+    int mask = 0;
+    int key = fill_type;
+
+    g_return_if_fail (c != NULL);
+
+    if (!CLIENT_CAN_FILL_WINDOW (c))
+    {
+        return;
+    }
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    window_list = screen_info->windows;
+
+    while (window_list)
+    {
+        /* Retrieve all windows */
+        c_n = (Client *)window_list->data;
+
+        /* Filter out all windows which are not present on the same
+         * workspace as the client window, aswell as the client window
+         * itself
+         */
+        if ((c->win_workspace == c_n->win_workspace) && (c != window_list->data))
+        {
+            /* Fill horizontally */
+            if (fill_type & CLIENT_FILL_HORIZ)
+            {
+                mask |= CWX | CWWidth;
+
+                /*
+                 * check if the neigbour client (c_n) is located
+                 * east or west of our client.
+                 */
+                if (!(((c->y + c->height) < (c_n->y - frameTop(c_n))) || ((c_n->y + c_n->height) < (c->y - frameTop(c)))))
+                {
+                    if ((c_n->x + c_n->width) < c->x)
+                    {
+                        if (east_neighbour)
+                        {
+                            /* Check if c_n is closer to the client
+                             * then the east neighbour already found
+                             */
+                            if ((east_neighbour->x + east_neighbour->width) < (c_n->x + c_n->width))
+                            {
+                                east_neighbour = c_n;
+                            }
+                        }
+                        else
+                        {
+                            east_neighbour = c_n;
+                        }
+                    }
+                    if ((c->x + c->width) < c_n->x)
+                    {
+                        /* Check if c_n is closer to the client
+                         * then the west neighbour already found
+                         */
+                        if (west_neighbour)
+                        {
+                            if (c_n->x < west_neighbour->x)
+                            {
+                                west_neighbour = c_n;
+                            }
+                        }
+                        else
+                        {
+                            west_neighbour = c_n;
+                        }
+                    }
+                }
+            }
+
+            /* Fill vertically */
+            if (fill_type & CLIENT_FILL_VERT)
+            {
+                mask |= CWY | CWHeight;
+
+                /* check if the neigbour client (c_n) is located
+                 * north or south of our client.
+                 */
+                if (!(((c->x + c->width) < c_n->x) || ((c_n->x + c_n->width) < c->x)))
+                {
+                    if ((c_n->y + c_n->height) < c->y)
+                    {
+                        if (north_neighbour)
+                        {
+                            /* Check if c_n is closer to the client
+                             * then the north neighbour already found
+                             */
+                            if ((north_neighbour->y + north_neighbour->height) < (c_n->y + c_n->height))
+                            {
+                                north_neighbour = c_n;
+                            }
+                        }
+                        else
+                        {
+                            north_neighbour = c_n;
+                        }
+                    }
+                    if ((c->y + c->height) < c_n->y)
+                    {
+                        if (south_neighbour)
+                        {
+                            /* Check if c_n is closer to the client
+                             * then the south neighbour already found
+                             */
+                            if (c_n->y < south_neighbour->y)
+                            {
+                                south_neighbour = c_n;
+                            }
+                        }
+                        else
+                        {
+                            south_neighbour = c_n;
+                        }
+                    }
+                }
+            }
+        }
+
+        window_list = g_list_next(window_list);
+    }
+
+    wc.x = c->x;
+
+    /* If there are neighbours, resize to their borders.
+     * If not, resize to the screen-border
+     */
+
+    if (east_neighbour)
+    {
+        wc.x = east_neighbour->x + east_neighbour->width +
+            (frameLeft(c) + frameRight(east_neighbour));
+    }
+    else
+    {
+        wc.x = frameLeft(c);
+    }
+
+    if (west_neighbour)
+    {
+        wc.width = west_neighbour->x - wc.x -
+            (frameRight(c) + frameLeft(west_neighbour));
+    }
+    else
+    {
+        wc.width = screen_info->width - wc.x -
+            (frameRight(c));
+    }
+
+    if (north_neighbour)
+    {
+        wc.y = north_neighbour->y + north_neighbour->height +
+            (frameTop(c) + frameBottom(north_neighbour));
+    }
+    else
+    {
+        wc.y = frameTop(c);
+    }
+
+    if (south_neighbour)
+    {
+        wc.height = south_neighbour->y - wc.y -
+            (frameTop(south_neighbour) + frameBottom(c));
+    }
+    else
+    {
+        wc.height = screen_info->height - wc.y;
+    }
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
+    {
+        /*
+           For some reason, the configure can generate EnterNotify events
+           on lower windows, causing a nasty race cond with apps trying to
+           grab focus in focus follow mouse mode. Grab the pointer to
+           avoid these effects
+         */
+        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
+        clientConfigure(c, &wc, mask, NO_CFG_FLAG);
         myScreenUngrabPointer (c->screen_info);
     }
 }

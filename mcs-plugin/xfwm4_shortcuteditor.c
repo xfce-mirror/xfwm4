@@ -319,6 +319,9 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         "maximize_window_key",
         "maximize_vert_key",
         "maximize_horiz_key",
+        "fill_horiz_key",
+        "fill_vert_key",
+        "fill_window_key",
         "hide_window_key",
         "shade_window_key",
         "stick_window_key",
@@ -361,6 +364,9 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         N_("Maximize window"),
         N_("Maximize window vertically"),
         N_("Maximize window horizontally"),
+        N_("Fill window horizontally"),
+        N_("Fill window vertically"),
+        N_("Fill window"),
         N_("Hide window"),
         N_("Shade window"),
         N_("Stick window"),
@@ -472,16 +478,16 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         }
 
 
-        for (i = 0; !found && i <= 12; i++)
+        for (i = 0; !found && i < 12; i++)
         {
             gchar *option;
 
-            option = g_strdup_printf ("workspace_%d_key", i);
+            option = g_strdup_printf ("workspace_%d_key", i + 1);
             if (g_ascii_strcasecmp (*shortcut, option) == 0)
             {
                 gchar *text;
 
-                text = g_strdup_printf (_("Workspace %d"), i);
+                text = g_strdup_printf (_("Workspace %02d"), i + 1);
                 gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
                 gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text,
                     COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);
@@ -493,16 +499,16 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
             g_free (option);
         }
 
-        for (i = 0; !found && i <= 12; i++)
+        for (i = 0; !found && i < 12; i++)
         {
             gchar *option;
 
-            option = g_strdup_printf ("move_window_workspace_%d_key", i);
+            option = g_strdup_printf ("move_window_workspace_%d_key", i + 1);
             if (g_ascii_strcasecmp (*shortcut, option) == 0)
             {
                 gchar *text;
 
-                text = g_strdup_printf (_("Move window to workspace %d"), i);
+                text = g_strdup_printf (_("Move window to workspace %02d"), i + 1);
                 gtk_list_store_append (GTK_LIST_STORE (model3), &iter);
                 gtk_list_store_set (GTK_LIST_STORE (model3), &iter, COLUMN_COMMAND, text,
                     COLUMN_SHORTCUT, entry_value, COLUMN_NAME, *shortcut, -1);

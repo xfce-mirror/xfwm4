@@ -473,6 +473,9 @@ myScreenGrabKeys (ScreenInfo *screen_info)
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_10], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_11], screen_info->xroot);
     grabKey (dpy, &screen_info->params->keys[KEY_WORKSPACE_12], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_FILL_HORIZ], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_FILL_VERT], screen_info->xroot);
+    grabKey (dpy, &screen_info->params->keys[KEY_FILL_WINDOW], screen_info->xroot);
 }
 
 void

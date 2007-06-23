@@ -116,7 +116,7 @@ struct _Itf
 enum
 {
     THEME_NAME_COLUMN,
-    N_COLUMNS
+    THEME_NAME_COLUMNS
 };
 
 enum
@@ -124,7 +124,7 @@ enum
     COLUMN_COMMAND,
     COLUMN_SHORTCUT,
     COLUMN_NAME,
-    NUM_COLUMNS
+    KEY_SHORTCUT_COLUMNS
 };
 
 typedef enum
