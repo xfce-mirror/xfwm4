@@ -1281,6 +1281,9 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], getValue ("cycle_windows_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], getValue ("del_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], getValue ("down_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_HORIZ], getValue ("fill_horiz_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_VERT], getValue ("fill_vert_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_WINDOW], getValue ("fill_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_HIDE_WINDOW], getValue ("hide_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], getValue ("left_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getValue ("lower_window_key", rc));
@@ -1336,9 +1339,6 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_10], getValue ("workspace_10_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_11], getValue ("workspace_11_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_12], getValue ("workspace_12_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_HORIZ], getValue ("fill_horiz_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_VERT], getValue ("fill_vert_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_WINDOW], getValue ("fill_window_key", rc));
 
     myScreenUngrabKeys (screen_info);
     myScreenGrabKeys (screen_info);
