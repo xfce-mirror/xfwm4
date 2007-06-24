@@ -3252,8 +3252,6 @@ clientFill (Client * c, int fill_type)
             /* Fill horizontally */
             if (fill_type & CLIENT_FILL_HORIZ)
             {
-                mask |= CWX | CWWidth;
-
                 /*
                  * check if the neigbour client (c2) is located
                  * east or west of our client.
@@ -3300,8 +3298,6 @@ clientFill (Client * c, int fill_type)
             /* Fill vertically */
             if (fill_type & CLIENT_FILL_VERT)
             {
-                mask |= CWY | CWHeight;
-
                 /* check if the neigbour client (c2) is located
                  * north or south of our client.
                  */
@@ -3367,16 +3363,19 @@ clientFill (Client * c, int fill_type)
 
     if ((fill_type & CLIENT_FILL) == CLIENT_FILL)
     {
+        mask = CWX | CWY | CWHeight | CWWidth;
         /* Adjust size to the largest size available, not covering struts */
         clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
     }
     else if (fill_type & CLIENT_FILL_VERT)
     {
+        mask = CWY | CWHeight;
         /* Adjust size to the tallest size available, for the current horizontal position/width */
         clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
     }
     else if (fill_type & CLIENT_FILL_HORIZ)
     {
+        mask = CWX | CWWidth;
         /* Adjust size to the widest size available, for the current vertical position/height */
         clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
     }
@@ -3396,11 +3395,11 @@ clientFill (Client * c, int fill_type)
 
     if (west_neighbour)
     {
-        wc.width = frameX(west_neighbour) - frameRight(c) - wc.x;
+        wc.width = full_x + frameX(west_neighbour) - frameRight(c) - wc.x;
     }
     else
     {
-        wc.width = full_w - frameRight(c) - wc.x;
+        wc.width = full_x + full_w - frameRight(c) - wc.x;
     }
 
     if (north_neighbour)
@@ -3414,13 +3413,14 @@ clientFill (Client * c, int fill_type)
 
     if (south_neighbour)
     {
-        wc.height = frameY(south_neighbour) - frameBottom(c) - wc.y;
+        wc.height = full_y + frameY(south_neighbour) - frameBottom(c) - wc.y;
     }
     else
     {
-        wc.height = full_h - frameBottom(c) - wc.y;
+        wc.height = full_y + full_h - frameBottom(c) - wc.y;
     }
 
+    TRACE ("Fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         /*
