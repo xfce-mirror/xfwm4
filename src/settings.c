@@ -995,6 +995,39 @@ getTitleShadow (Settings *rc, const gchar * name)
 static void
 loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
+    static const char *side_names[] = {
+        "left",
+        "right",
+        "bottom"
+    };
+
+    static const char *corner_names[] = {
+        "bottom-left",
+        "bottom-right",
+        "top-left",
+        "top-right"
+    };
+
+    static const char *button_names[] = {
+        "menu",
+        "stick",
+        "shade",
+        "hide",
+        "maximize",
+        "close"
+    };
+
+    static const char *button_state_names[] = {
+        "active",
+        "inactive",
+        "prelight",
+        "pressed",
+        "toggled-active",
+        "toggled-inactive",
+        "toggled-prelight",
+        "toggled-pressed"
+    };
+
     gchar imagename[30];
     GValue tmp_val = { 0, };
     DisplayInfo *display_info;
@@ -1003,7 +1036,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     gchar *theme;
     gchar *font;
     PangoFontDescription *desc;
-    guint i;
+    guint i, j;
 
     widget = myScreenGetGtkWidget (screen_info);
     display_info = screen_info->display_info;
@@ -1091,107 +1124,30 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     screen_info->white_gc = widget->style->white_gc;
     g_object_ref (G_OBJECT (widget->style->white_gc));
 
-    xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_LEFT][ACTIVE], theme,
-        "left-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_LEFT][INACTIVE], theme,
-        "left-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_RIGHT][ACTIVE], theme,
-        "right-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_RIGHT][INACTIVE], theme,
-        "right-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_BOTTOM][ACTIVE], theme,
-        "bottom-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->sides[SIDE_BOTTOM][INACTIVE], theme,
-        "bottom-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_LEFT][ACTIVE], theme,
-        "top-left-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_LEFT][INACTIVE], theme,
-        "top-left-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_RIGHT][ACTIVE], theme,
-        "top-right-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_TOP_RIGHT][INACTIVE], theme,
-        "top-right-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_LEFT][ACTIVE], theme,
-        "bottom-left-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_LEFT][INACTIVE], theme,
-        "bottom-left-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_RIGHT][ACTIVE], theme,
-        "bottom-right-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->corners[CORNER_BOTTOM_RIGHT][INACTIVE], theme,
-        "bottom-right-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][ACTIVE], theme,
-        "hide-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][INACTIVE], theme,
-        "hide-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][PRESSED], theme,
-        "hide-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[HIDE_BUTTON][PRELIGHT], theme,
-        "hide-prelight", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][ACTIVE], theme,
-        "close-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][INACTIVE], theme,
-        "close-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][PRESSED], theme,
-        "close-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[CLOSE_BUTTON][PRELIGHT], theme,
-        "close-prelight", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][ACTIVE], theme,
-        "maximize-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][INACTIVE], theme,
-        "maximize-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][PRESSED], theme,
-        "maximize-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][PRELIGHT], theme,
-        "maximize-prelight", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][ACTIVE], theme,
-        "shade-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][INACTIVE], theme,
-        "shade-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][PRESSED], theme,
-        "shade-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][PRELIGHT], theme,
-        "shade-prelight", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][ACTIVE], theme,
-        "stick-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][INACTIVE], theme,
-        "stick-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][PRESSED], theme,
-        "stick-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][PRELIGHT], theme,
-        "stick-prelight", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][ACTIVE], theme,
-        "menu-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][INACTIVE], theme,
-        "menu-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][PRESSED], theme,
-        "menu-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MENU_BUTTON][PRELIGHT], theme,
-        "menu-prelight", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_ACTIVE], theme,
-        "shade-toggled-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_INACTIVE], theme,
-        "shade-toggled-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_PRESSED], theme,
-        "shade-toggled-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[SHADE_BUTTON][T_PRELIGHT], theme,
-        "shade-toggled-prelight", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_ACTIVE], theme,
-        "stick-toggled-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_INACTIVE], theme,
-        "stick-toggled-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_PRESSED], theme,
-        "stick-toggled-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[STICK_BUTTON][T_PRELIGHT], theme,
-        "stick-toggled-prelight", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_ACTIVE], theme,
-        "maximize-toggled-active", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_INACTIVE], theme,
-        "maximize-toggled-inactive", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_PRESSED], theme,
-        "maximize-toggled-pressed", colsym);
-    xfwmPixmapLoad (screen_info, &screen_info->buttons[MAXIMIZE_BUTTON][T_PRELIGHT], theme,
-        "maximize-toggled-prelight", colsym);
+    for (i = 0; i < SIDE_TOP; i++) /* Keep SIDE_TOP for later */
+    {
+        g_snprintf(imagename, sizeof (imagename), "%s-active", side_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->sides[i][ACTIVE], theme, imagename, colsym);
 
+        g_snprintf(imagename, sizeof (imagename), "%s-inactive", side_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->sides[i][INACTIVE], theme, imagename, colsym);
+    }
+    for (i = 0; i < CORNER_COUNT; i++)
+    {
+        g_snprintf(imagename, sizeof (imagename), "%s-active", corner_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->corners[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "%s-inactive", corner_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->corners[i][INACTIVE], theme, imagename, colsym);
+    }
+    for (i = 0; i < BUTTON_COUNT; i++)
+    {
+        for (j = 0; j < STATE_COUNT; j++)
+        {
+            g_snprintf(imagename, sizeof (imagename), "%s-%s", button_names[i], button_state_names[j]);
+            xfwmPixmapLoad (screen_info, &screen_info->buttons[i][j], theme, imagename, colsym);
+        }
+    }
     for (i = 0; i < TITLE_COUNT; i++)
     {
         g_snprintf(imagename, sizeof (imagename), "title-%d-active", i + 1);
@@ -1244,9 +1200,11 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 static gboolean
 loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
 {
+    gchar keyname[30];
     Display *dpy;
     gchar *keytheme;
     gchar *keythemevalue;
+    guint i;
 
     dpy = myScreenGetXDisplay (screen_info);
     /*
@@ -1300,18 +1258,6 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getValue ("move_window_right_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP], getValue ("move_window_up_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], getValue ("move_window_up_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_1], getValue ("move_window_workspace_1_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_2], getValue ("move_window_workspace_2_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_3], getValue ("move_window_workspace_3_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_4], getValue ("move_window_workspace_4_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_5], getValue ("move_window_workspace_5_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_6], getValue ("move_window_workspace_6_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_7], getValue ("move_window_workspace_7_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_8], getValue ("move_window_workspace_8_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_9], getValue ("move_window_workspace_9_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_10], getValue ("move_window_workspace_10_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_11], getValue ("move_window_workspace_11_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_12], getValue ("move_window_workspace_12_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], getValue ("next_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_POPUP_MENU], getValue ("popup_menu_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], getValue ("prev_workspace_key", rc));
@@ -1327,18 +1273,15 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_ABOVE], getValue ("above_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getValue ("fullscreen_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], getValue ("up_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_1], getValue ("workspace_1_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_2], getValue ("workspace_2_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_3], getValue ("workspace_3_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_4], getValue ("workspace_4_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_5], getValue ("workspace_5_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_6], getValue ("workspace_6_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_7], getValue ("workspace_7_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_8], getValue ("workspace_8_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_9], getValue ("workspace_9_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_10], getValue ("workspace_10_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_11], getValue ("workspace_11_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_12], getValue ("workspace_12_key", rc));
+
+    for (i = 0; i < 12; i++)
+    {
+        g_snprintf(keyname, sizeof (keyname), "move_window_workspace_%d_key", i + 1);
+        parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_1 + i], getValue (keyname, rc));
+
+        g_snprintf(keyname, sizeof (keyname), "workspace_%d_key", i + 1);
+        parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_1 + i], getValue (keyname, rc));
+    }
 
     myScreenUngrabKeys (screen_info);
     myScreenGrabKeys (screen_info);

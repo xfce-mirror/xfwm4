@@ -2002,7 +2002,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     for (i = 0; i < STATE_TOGGLED; i++)
     {
-    xfwmPixmapInit (screen_info, &c->appmenu[i]);
+        xfwmPixmapInit (screen_info, &c->appmenu[i]);
     }
 
     for (i = 0; i < SIDE_TOP; i++) /* Keep SIDE_TOP for later */
