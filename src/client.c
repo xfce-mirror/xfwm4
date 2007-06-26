@@ -2395,7 +2395,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
 }
 
 static void
-clientShowSingle (Client * c, gboolean change_state)
+clientShowSingle (Client * c, gboolean deiconify)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2417,7 +2417,7 @@ clientShowSingle (Client * c, gboolean change_state)
         /* Adjust to urgency state as the window is visible */
         clientUpdateUrgency (c);
     }
-    if (change_state)
+    if (deiconify)
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info, c->window, NormalState);
@@ -2426,16 +2426,14 @@ clientShowSingle (Client * c, gboolean change_state)
 }
 
 void
-clientShow (Client * c, gboolean change_state)
+clientShow (Client * c, gboolean deiconify)
 {
     Client *c2;
     GList *list_of_windows;
     GList *index;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientShow \"%s\" (0x%lx) [with %s]",
-           c->name, c->window,
-           change_state ? "state change" : "no state change");
+    TRACE ("entering clientShow \"%s\" (0x%lx)", c->name, c->window);
 
     list_of_windows = clientListTransientOrModal (c);
     for (index = g_list_last (list_of_windows); index; index = g_list_previous (index))
@@ -2447,7 +2445,7 @@ clientShow (Client * c, gboolean change_state)
         {
             continue;
         }
-        clientShowSingle (c2, change_state);
+        clientShowSingle (c2, deiconify);
     }
     g_list_free (list_of_windows);
 
@@ -2456,7 +2454,7 @@ clientShow (Client * c, gboolean change_state)
 }
 
 static void
-clientHideSingle (Client * c, gboolean change_state)
+clientHideSingle (Client * c, gboolean iconify)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2477,7 +2475,7 @@ clientHideSingle (Client * c, gboolean change_state)
     }
     XUnmapWindow (display_info->dpy, c->window);
     XUnmapWindow (display_info->dpy, c->frame);
-    if (change_state)
+    if (iconify)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info, c->window, IconicState);
@@ -2486,14 +2484,14 @@ clientHideSingle (Client * c, gboolean change_state)
 }
 
 void
-clientHide (Client * c, int ws, gboolean change_state)
+clientHide (Client * c, int ws, gboolean iconify)
 {
     Client *c2;
     GList *list_of_windows;
     GList *index;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientHide");
+    TRACE ("entering clientHide \"%s\" (0x%lx)", c->name, c->window);
 
     list_of_windows = clientListTransientOrModal (c);
     for (index = list_of_windows; index; index = g_list_next (index))
@@ -2519,7 +2517,12 @@ clientHide (Client * c, int ws, gboolean change_state)
              */
             continue;
         }
-        clientHideSingle (c2, change_state);
+
+        if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY) && !iconify)
+        {
+            continue;
+        }
+        clientHideSingle (c2, iconify);
     }
     g_list_free (list_of_windows);
 
