@@ -1,6 +1,8 @@
 4.4.2
 =====
 
+- Be more relax with transients, allow transients to be sticky independently 
+  of their parent window (Bug #3296)
 - Fix xfwm4 hanging with gtk+-2.11.x (Bug #3346)
 - Plug a leak in mouse button grab when changing theme
 - Fix dialogs and modals without parents not being automatically 

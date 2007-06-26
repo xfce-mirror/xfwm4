@@ -844,53 +844,56 @@ clientGetInitialNetWmDesktop (Client * c)
     display_info = screen_info->display_info;
     val = 0;
 
-    /* This is to make sure that transient are shown with their "ancestor" window */
-    c2 = clientGetTransient (c);
-    if (c2)
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED)
+        &&  !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET))
     {
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
-        c->win_workspace = c2->win_workspace;
-        if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
-            c->win_state |= WIN_STATE_STICKY;
-        }
+        c->win_workspace = c->screen_info->current_ws;
     }
-    else
+    if (getHint (display_info, c->window, NET_WM_DESKTOP, &val))
     {
-        if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED)
-            &&  !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET))
+        TRACE ("atom net_wm_desktop detected");
+        if (val == (int) ALL_WORKSPACES)
         {
-            FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+            {
+                TRACE ("atom net_wm_desktop specifies window \"%s\" is sticky", c->name);
+                FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
+                c->win_state |= WIN_STATE_STICKY;
+            }
             c->win_workspace = c->screen_info->current_ws;
         }
-        if (getHint (display_info, c->window, NET_WM_DESKTOP, &val))
+        else
         {
-            TRACE ("atom net_wm_desktop detected");
-            if (val == (int) ALL_WORKSPACES)
+            TRACE ("atom net_wm_desktop specifies window \"%s\" is on desk %i", c->name, (int) val);
+            c->win_workspace = (int) val;
+        }
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
+    }
+    else if (getHint (display_info, c->window, WIN_WORKSPACE, &val))
+    {
+        TRACE ("atom win_workspace specifies window \"%s\" is on desk %i", c->name, (int) val);
+        c->win_workspace = (int) val;
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
+    }
+
+    /* This is to make sure that transient are shown with their "ancestor" window */
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+    {
+        c2 = clientGetTransient (c);
+        if (c2)
+        {
+            FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
+            c->win_workspace = c2->win_workspace;
+            if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
             {
-                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-                {
-                    TRACE ("atom net_wm_desktop specifies window \"%s\" is sticky", c->name);
-                    FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
-                    c->win_state |= WIN_STATE_STICKY;
-                }
+                FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
+                c->win_state |= WIN_STATE_STICKY;
                 c->win_workspace = c->screen_info->current_ws;
             }
-            else
-            {
-                TRACE ("atom net_wm_desktop specifies window \"%s\" is on desk %i", c->name, (int) val);
-                c->win_workspace = (int) val;
-            }
-            FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
-        }
-        else if (getHint (display_info, c->window, WIN_WORKSPACE, &val))
-        {
-            TRACE ("atom win_workspace specifies window \"%s\" is on desk %i", c->name, (int) val);
-            c->win_workspace = (int) val;
-            FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
         }
     }
+
     TRACE ("initial desktop for window \"%s\" is %i", c->name, c->win_workspace);
     if (c->win_workspace > c->screen_info->workspace_count - 1)
     {
@@ -1259,8 +1262,7 @@ clientWindowType (Client * c)
             c->initial_layer = c2->win_layer;
             TRACE ("Applied layer is %i", c->initial_layer);
         }
-        FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_STICK);
-        FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
+        FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
     }
     if ((old_type != c->type) || (c->initial_layer != c->win_layer))
     {
