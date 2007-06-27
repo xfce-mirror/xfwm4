@@ -414,7 +414,17 @@ myScreenGrabKeys (ScreenInfo *screen_info)
 
     dpy = myScreenGetXDisplay (screen_info);
 
-    for (i = 0; i < KEY_COUNT; i++)
+    /*
+       Ugly hack: KEY_CANCEL is used just for cancelling window ops
+       it should not be grabbed all the time (especially when you
+       realize that it's mapped to Esc by default, damn, I can't
+       switch back to command mode in vi anymore, I'm stuck in 
+       edition mode ;)
+
+       That's why we start at FIRST_KEY which is defined after 
+       KEY_CANCEL...
+     */
+    for (i = FIRST_KEY; i < KEY_COUNT; i++)
     {
         grabKey (dpy, &screen_info->params->keys[i], screen_info->xroot);
     }
