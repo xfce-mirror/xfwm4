@@ -1,6 +1,6 @@
 active_text_color=#ffffff
-button_offset=0
-button_spacing=0
+button_offset=2
+button_spacing=-1
 full_width_title=false
 maximized_offset=0
 shadow_delta_height=-2

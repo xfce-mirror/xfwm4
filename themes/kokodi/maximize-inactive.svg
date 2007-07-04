@@ -9,13 +9,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="18"
+   width="24"
    height="29"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.44.1"
+   inkscape:version="0.45.1"
    version="1.0"
-   sodipodi:docbase="default"
+   sodipodi:docbase="/home/ofourdan/src/svn/xfwm4/trunk/themes/kokodi"
    sodipodi:docname="maximize-inactive.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
@@ -145,7 +145,7 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,0.5 L 18,0.5 C 18,0.5 18,28 18,28 L 0,28 L 0,0.5 z "
+       d="M 0,0.5 L 24,0.5 C 24,0.5 24,28 24,28 L 0,28 L 0,0.5 z "
        id="path6057" />
   </g>
   <g
@@ -154,15 +154,19 @@
      inkscape:label="hilight">
     <path
        style="fill:url(#linearGradient6962);fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 0,1 L 18,1 C 18,1 18,4 18,4 L 0,4 L 0,3 z "
+       d="M 0,1 L 24,1 C 24,1 24,4 24,4 L 0,4 L 0,3 z "
        id="path6061" />
     <rect
        style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1884"
-       width="18"
+       width="24"
        height="14"
        x="0"
        y="1" />
+    <path
+       style="fill:none;stroke:#7f7f7f;stroke-width:1px;stroke-opacity:0.25"
+       d="M 0.5,1 L 0.5,16.5 C 0.5,16.5 0.5,18.5 2.5,18.5 C 4,18.5 21.5,18.5 21.5,18.5 C 21.5,18.5 23.5,18.5 23.5,16.5 C 23.5,14.5 23.5,1 23.5,1 L 23.5,1 L 23.5,1"
+       id="path2187" />
   </g>
   <g
      inkscape:label="Border"
@@ -171,7 +175,7 @@
      style="display:inline">
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.50"
-       d="M 0.5,0.5 L 17.5,0.5"
+       d="M 0.5,0.5 L 23.5,0.5"
        id="path6059" />
   </g>
   <g
@@ -181,7 +185,7 @@
     <g
        style="display:inline"
        id="g1626"
-       transform="translate(3,9)">
+       transform="translate(6,4)">
       <path
          style="opacity:0.50;fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:0;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
          d="M 2,2 L 2,10 L 10,10 L 10,2 L 2,2 z M 3,4 L 9,4 L 9,9 L 3,9 L 3,4 z "
@@ -194,7 +198,7 @@
      inkscape:label="Shadow">
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.05"
-       d="M 0.5,28.5 L 17.5,28.5"
+       d="M 0.5,28.5 L 23.5,28.5"
        id="path6989" />
   </g>
 </svg>
