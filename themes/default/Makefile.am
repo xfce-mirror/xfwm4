@@ -1,4 +1,4 @@
-themedir = $(datadir)/themes/Deault/xfwm4
+themedir = $(datadir)/themes/Default/xfwm4
 
 PNG_FILES = 								\
 	bottom-active.png						\
