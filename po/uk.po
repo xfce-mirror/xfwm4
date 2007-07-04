@@ -1,4 +1,4 @@
-# Ukrainian translation of xfwm4.
+# Ukrainian translation of xfwm4
 # Copyright (C) 2002-2006 The Xfce development team
 # This file is distributed under the same license as the xfwm4 package.
 #
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-04-07 23:23+0300\n"
+"POT-Creation-Date: 2007-07-03 18:50+0300\n"
+"PO-Revision-Date: 2007-06-19 16:13+0300\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Справа:"
 
 #: ../mcs-plugin/margins.c:207
 msgid "Top :"
-msgstr "Згори:"
+msgstr "Згори :"
 
 #: ../mcs-plugin/margins.c:227
 msgid "Bottom :"
@@ -80,11 +80,11 @@ msgstr "Нічого не робити"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "Помістити вікно під курсор миші"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "Помістити вікно в центр"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -100,7 +100,7 @@ msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
-msgstr "Включити приховані (згорнуті) вінка"
+msgstr "Включаючи приховані (згорнуті в значок) вінка"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Cycle through windows from all workspaces"
@@ -188,10 +188,8 @@ msgid "Size|Large"
 msgstr "Великий"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr ""
-"Мінімальний розмір вікон, при якому буде увімкнено розумне розташування"
+msgstr "Типове позиціонування вікон без кмітливого розташування:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
@@ -326,9 +324,8 @@ msgid "Maximize window"
 msgstr "Розгорнути вікно"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "Приховати вікно"
+msgstr "Заповнити вікно"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -502,7 +499,7 @@ msgstr ""
 
 #: ../mcs-plugin/xfwm4_plugin.c:1847
 msgid "Edge Resistance :"
-msgstr "Відстань від краю:"
+msgstr "Відстань від краю :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1854
 msgid "Resistance|Small"
@@ -575,14 +572,12 @@ msgid "Maximize window horizontally"
 msgstr "Розгорнути вікно по горизонталі"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Розгорнути вікно по горизонталі"
+msgstr "Заповнити вікно по горизонталі"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Розгорнути вікно по вертикалі"
+msgstr "Заповнити вікно по вертикалі"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -638,7 +633,7 @@ msgstr "Опустити вікно"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "Вікно згори"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -650,7 +645,7 @@ msgstr "Верхня робоча область"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Bottom workspace"
-msgstr "Нижня  робоча область"
+msgstr "Нижня робоча область"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Left workspace"
@@ -713,7 +708,7 @@ msgid "Window operations menu"
 msgstr "Меню операцій з вікнами"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Перемістити вікно на робочу область %d"
 
@@ -801,7 +796,7 @@ msgstr "З_горнути"
 
 #: ../src/menu.c:46
 msgid "Un_shade"
-msgstr "Роз_горнути"
+msgstr "_Розгорнути"
 
 #: ../src/menu.c:47
 msgid "S_tick"
@@ -809,7 +804,7 @@ msgstr "При_ліпити"
 
 #: ../src/menu.c:48
 msgid "Uns_tick"
-msgstr "Від_ліпити"
+msgstr "В_ідліпити"
 
 #: ../src/menu.c:49
 msgid "Context _help"
@@ -857,7 +852,7 @@ msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
 #: ../src/settings.c:968
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Неможливо розподілити колір %s\n"
+msgstr "%s: Неможливо визначити колір %s\n"
 
 #: ../src/settings.c:974
 #, c-format
@@ -887,7 +882,3 @@ msgstr "Параметри робочих областей"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Параметри робочих областей Xfce 4"
-
-#, fuzzy
-#~ msgid "Workspace %02d"
-#~ msgstr "Робоча область %d"
