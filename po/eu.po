@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-06-20 23:59+0200\n"
+"PO-Revision-Date: 2007-07-13 13:26+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <Librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,8 +23,7 @@ msgid "Workspace Margins"
 msgstr "Idazmahai Marjinak"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak leihorik ipiniko ez diren pantailaren zatiak dira"
 
 #: ../mcs-plugin/margins.c:167
@@ -91,8 +90,7 @@ msgid "Window Manager Tweaks"
 msgstr "Leiho Kudeatzaile Gomendioak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "\"paginatzailea utzi\" edo \"ataza-barra utzi\" propietateak ezarririk duten "
 "leihoa ezik"
@@ -154,8 +152,7 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Idazmahaia aldatu idazmahaiean sagu errubera erabiliaz"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:621
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
 msgstr ""
 "Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla bitartez "
 "aldatzean"
@@ -318,9 +315,8 @@ msgid "Maximize window"
 msgstr "Handitu leihoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "Ezkutatu leihoa"
+msgstr "Bete leihoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -566,14 +562,12 @@ msgid "Maximize window horizontally"
 msgstr "Handitu leihoa alboetaraka"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Handitu leihoa alboetaraka"
+msgstr "Bete leihoa horizontalean"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Handitu leihoa goraka"
+msgstr "Bete leihoa bertikalean"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -629,7 +623,7 @@ msgstr "Txikitu leihoa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "Txandakatu gainean"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -704,7 +698,7 @@ msgid "Window operations menu"
 msgstr "Leiho ekintza menua"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Mugitu leihoa %d idazmahaiera"
 
@@ -879,6 +873,3 @@ msgstr "Idazmahai Ezarpenak"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
 
-#, fuzzy
-#~ msgid "Workspace %02d"
-#~ msgstr "%d Idazmahaia"
