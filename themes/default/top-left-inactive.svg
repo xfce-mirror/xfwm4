@@ -10,12 +10,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="top-left-inactive.svg"
-   sodipodi:docbase="/home/ofourdan/src/svn/xfwm4/trunk/themes/kokodi"
+   sodipodi:docbase="/home/ofourdan/src/svn/xfwm4/trunk/themes/default"
    version="1.0"
    inkscape:version="0.45.1"
    sodipodi:version="0.32"
    id="svg2"
-   height="29"
+   height="27"
    width="8"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
@@ -73,7 +73,7 @@
        x1="0"
        y1="0.5"
        x2="0"
-       y2="28.5"
+       y2="26.5"
        gradientTransform="matrix(1,0,0,1,0,0)" />
     <linearGradient
        inkscape:collect="always"
@@ -146,7 +146,7 @@
     <path
        id="path6057"
        style="fill:url(#linearGradient6945);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
-       d="M 8,1 L 3,1 C 3,1 1,1 1,4 L 1,23 C 1,23 1,28 6,28 L 8,28 L 8,28 L 8,1 z " />
+       d="M 8,1 L 3,1 C 3,1 1,1 1,4 L 1,21 C 1,21 1,26 6,26 L 8,26 L 8,26 L 8,1 z " />
   </g>
   <g
      inkscape:label="hilight"
@@ -177,7 +177,7 @@
      inkscape:groupmode="layer">
     <path
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.05"
-       d="M 2.5,28.5 L 7.5,28.5"
+       d="M 2.5,26.5 L 7.5,26.5"
        id="path6989" />
   </g>
 </svg>
