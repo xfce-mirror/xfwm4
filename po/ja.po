@@ -1,17 +1,23 @@
 # $Id$
 #
 # Japanese translations for xfwm4 package.
-# Copyright (C) 2002-2006 The Xfce development team.
+# Copyright (C) 2002-2007 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
-# Daichi Kawahata <daichi@xfce.org>, 2005-2006.
+# Daichi Kawahata <daichi@xfce.org>, 2005-2007.
+#
+# 対訳一覧:
+#
+# composite     合成
+# compositing   合成処理
+# compositor    コンポジター
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: xfwm4 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2006-05-21 13:14+0900\n"
+"PO-Revision-Date: 2007-07-10 20:50+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -66,41 +72,37 @@ msgid "None"
 msgstr "無し"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "ウィンドウを次のワークスペースに移す"
+msgstr "ウィンドウを現在のワークスペースに移す"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "ウィンドウをワークスペース %d に移す"
+msgstr "ウィンドウのワークスペースを切り換える"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Do nothing"
-msgstr "無し"
+msgstr "何もしない"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "ウィンドウをマウスの下に配置する"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "ウィンドウを中央に配置する"
 
 # FIXME: Q_()
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "WMの調整"
+msgstr "ウィンドウマネージャー (詳細)"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
-#, fuzzy
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "「ページャーを飛ばす」または「タスクバーを飛ばす」というプロパティが設定され"
-"ているウィンドウを含める"
+"ているウィンドウを飛ばす"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
@@ -124,7 +126,7 @@ msgstr "ICCCM 標準フォーカスヒントに則る"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "ウィンドウ自身を前面に出す場合:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
@@ -140,7 +142,7 @@ msgstr "いずれかのマウスボタンが押されている時にウィンド
 
 #: ../mcs-plugin/wmtweaks_plugin.c:583
 msgid "Hide frame of windows when maximized"
-msgstr ""
+msgstr "最大化する時はウィンドウの枠を隠す"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:590
 msgid "Restore original size of maximized windows when moving"
@@ -186,27 +188,27 @@ msgid "Size|Large"
 msgstr "大きい"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ"
+msgstr "スマート配置を行わない場合のウィンドウの既定位置:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
 msgstr "配置"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:683
 msgid "Enable display compositing"
-msgstr ""
+msgstr "合成処理を有効にする"
 
+# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:697
 msgid "Display full screen overlay windows directly"
-msgstr ""
+msgstr "全画面オーバーレイ表示する"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "ポップアップウィンドウに影を落とす"
+msgstr "ドックウィンドウの下に影を落とす"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:709
@@ -221,7 +223,7 @@ msgstr "ポップアップウィンドウに影を落とす"
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:721
 msgid "Opacity of window decorations"
-msgstr "ウィンドウの枠の透明度"
+msgstr "ウィンドウ枠の透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
@@ -239,9 +241,8 @@ msgstr "不透明"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:727
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "ポップアップウィンドウの透明度"
+msgstr "非アクティブ・ウィンドウの透明度"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/wmtweaks_plugin.c:733
@@ -266,7 +267,7 @@ msgstr "コンポジット"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:792
 msgid "Button Label|Window Manager Tweaks"
-msgstr "WMの調整"
+msgstr "ウィンドウマネージャー (詳細)"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
@@ -322,27 +323,22 @@ msgstr "隠す"
 msgid "Maximize"
 msgstr "最大化"
 
-# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:73
 msgid "Close"
 msgstr "閉じる"
 
-# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Shade window"
 msgstr "ウィンドウを折り畳む"
 
-# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Hide window"
 msgstr "ウィンドウを隠す"
 
-# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Maximize window"
 msgstr "ウィンドウの最大化"
 
-# FIXME:
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
 #, fuzzy
 msgid "Fill window"
@@ -442,9 +438,8 @@ msgid "Focus follows mouse"
 msgstr "マウスに従ってフォーカス"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "フォーカス取得後、前面に出すまでの遅延時間 :"
+msgstr "ウィンドウがフォーカスされるまでの遅延時間"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
@@ -643,9 +638,8 @@ msgid "Resize window right"
 msgstr "ウィンドウを横に伸ばす"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:382
-#, fuzzy
 msgid "Cancel move/resize window"
-msgstr "ウィンドウを閉じる"
+msgstr "ウィンドウの移動/リサイズをキャンセル"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Raise window"
@@ -723,18 +717,16 @@ msgstr "ウィンドウを右のワークスペースに移す"
 msgid "Show desktop"
 msgstr "デスクトップを表示する"
 
-# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:402
-#, fuzzy
 msgid "Cancel window action"
-msgstr "ウィンドウの枠の透明度"
+msgstr "ウィンドウアクションのキャンセル"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:403
 msgid "Window operations menu"
-msgstr ""
+msgstr "ウィンドウ操作メニュー"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "ウィンドウをワークスペース %d に移す"
 
@@ -779,7 +771,7 @@ msgstr "ショートカットを編集"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "No shortcut"
@@ -910,10 +902,3 @@ msgstr "ワークスペース"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 ワークスペースの設定"
-
-#, fuzzy
-#~ msgid "Workspace %02d"
-#~ msgstr "ワークスペース %d へ移る"
-
-#~ msgid "Unknown application!"
-#~ msgstr "不明なアプリケーションです！"
