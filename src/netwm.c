@@ -782,6 +782,7 @@ clientGetNetWmType (Client * c)
     display_info = screen_info->display_info;
     n_atoms = 0;
     atoms = NULL;
+    c->type_atom = None;
 
     if (!getAtomList (display_info, c->window, NET_WM_WINDOW_TYPE, &atoms, &n_atoms))
     {
@@ -797,7 +798,14 @@ clientGetNetWmType (Client * c)
                 c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL];
                 break;
             default:
-                c->type_atom = None;
+                if (c->transient_for != None)
+                {
+                    c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG];
+                }
+                else
+                {
+                    c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL];
+                }
                 break;
         }
     }
