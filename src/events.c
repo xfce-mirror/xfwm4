@@ -342,13 +342,15 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 
     TRACE ("entering handleKeyEvent");
 
+    /* Release queued events at the time of the event */
+    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
+
     status = EVENT_FILTER_PASS;
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!ev_screen_info)
     {
         return status;
     }
-    XAllowEvents (display_info->dpy, AsyncKeyboard, CurrentTime);
 
     c = clientGetFocus ();
     if (c)
@@ -860,20 +862,12 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     Client *c;
     Window win;
     int state, part;
-    gboolean replay;
 
     TRACE ("entering handleButtonPress");
 
-#if CHECK_BUTTON_TIME
-    /* Avoid treating the same event twice */
-    if (!check_button_time (ev))
-    {
-        TRACE ("ignoring ButtonPress event because it has been already handled");
-        return EVENT_FILTER_REMOVE;
-    }
-#endif
+    /* Release queued events at the time of the event */
+    XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
 
-    replay = FALSE;
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_WINDOW);
     if (c)
     {
@@ -1011,16 +1005,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     clientRaise (c, None);
                 }
             }
-            replay = TRUE;
-        }
-
-        if (replay)
-        {
-            XAllowEvents (display_info->dpy, ReplayPointer, CurrentTime);
-        }
-        else
-        {
-            XAllowEvents (display_info->dpy, SyncPointer, CurrentTime);
         }
 
         return EVENT_FILTER_REMOVE;
