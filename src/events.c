@@ -865,9 +865,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
 
     TRACE ("entering handleButtonPress");
 
-    /* Release queued events at the time of the event */
-    XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
-
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_WINDOW);
     if (c)
     {
@@ -1005,6 +1002,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     clientRaise (c, None);
                 }
             }
+            XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
         }
 
         return EVENT_FILTER_REMOVE;
