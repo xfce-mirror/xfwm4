@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2006-10-19 21:24+0300\n"
+"POT-Creation-Date: 2007-07-23 15:08+0300\n"
+"PO-Revision-Date: 2007-07-23 15:22+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -64,27 +64,24 @@ msgid "None"
 msgstr "Ei mitään"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Siirrä ikkuna seuraavaan työtilaan"
+msgstr "Siirrä ikkuna nykyiseen työtilaan"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Siirrä ikkuna työtilaan %d"
+msgstr "Siirry ikkunan työtilaan"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Do nothing"
-msgstr "Ei mitään"
+msgstr "Älä tee mitään"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "Sijoita ikkuna osoittimen alle"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "Aseta ikkuna keskelle"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -119,7 +116,7 @@ msgstr "Kunnioita standardia ICCCM -kohdistusvihjettä"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Kun ikkuna hyppää esiin:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
@@ -179,7 +176,6 @@ msgid "Size|Large"
 msgstr "Suuri"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
 msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
 
@@ -196,9 +192,8 @@ msgid "Display full screen overlay windows directly"
 msgstr "Näytä kokoruudun peittokuvaikkunat suoraan"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Näytä varjot ponnahdusikkunoiden alla"
+msgstr "Näytä varjot telakkaikkunoiden alla"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
@@ -316,9 +311,8 @@ msgid "Maximize window"
 msgstr "Suurenna ikkuna"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "Piilota ikkuna"
+msgstr "Sovita ikkuna"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -414,9 +408,8 @@ msgid "Focus follows mouse"
 msgstr "Kohdistus seuraa hiirtä"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Viive ennen kohdistetun ikkunan nostoa:"
+msgstr "Viive ennen ikkunan kohdistamista:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
@@ -565,14 +558,12 @@ msgid "Maximize window horizontally"
 msgstr "Suurenna ikkuna vaakasuunnassa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Suurenna ikkuna vaakasuunnassa"
+msgstr "Sovita ikkuna vaakasuunnassa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Suurenna ikkuna pystysuunnassa"
+msgstr "Sovita ikkuna pystysuunnassa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -628,7 +619,7 @@ msgstr "Laske ikkunaa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "Vaihda päällimmäiseksi"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -703,7 +694,7 @@ msgid "Window operations menu"
 msgstr "Ikkunan toimintovalikko"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Siirrä ikkuna työtilaan %d"
 
@@ -748,7 +739,7 @@ msgstr "Määritä pikanäppäin"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Cancel"
-msgstr ""
+msgstr "Peru"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "No shortcut"
@@ -877,10 +868,3 @@ msgstr "Työtilojen asetukset"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Työtilojen asetukset"
-
-#, fuzzy
-#~ msgid "Workspace %02d"
-#~ msgstr "Työtila %d"
-
-#~ msgid "Unknown application!"
-#~ msgstr "Tuntematon sovellus!"
