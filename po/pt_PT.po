@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2007-06-28 15:43+0100\n"
+"PO-Revision-Date: 2007-08-24 11:59+0100\n"
 "Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -489,7 +489,7 @@ msgstr "Distância|Grande"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Wrap workspaces"
-msgstr "Mudança de Areas de Trabalho"
+msgstr "Mudança de Áreas de Trabalho"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1829
 msgid "Wrap workspaces when the pointer reaches a screen edge"
