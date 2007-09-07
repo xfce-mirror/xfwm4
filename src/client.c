@@ -4295,12 +4295,21 @@ clientMove (Client * c, XEvent * ev)
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask,
                               myDisplayGetCursorMove (display_info),
                               myDisplayGetCurrentTime (display_info));
-    if (!g1 || !g2)
+    if (passdata.use_keys && !g1)
     {
-        TRACE ("grab failed in clientMove");
+        TRACE ("keyboard grab failed in clientMove");
 
         gdk_beep ();
         myScreenUngrabKeyboard (screen_info);
+
+        return;
+    }
+
+    if (!g2)
+    {
+        TRACE ("button grab failed in clientMove");
+
+        gdk_beep ();
         myScreenUngrabPointer (screen_info);
 
         return;
@@ -4363,7 +4372,10 @@ clientMove (Client * c, XEvent * ev)
     }
     clientConfigure (c, &wc, changes, NO_CFG_FLAG);
 
-    myScreenUngrabKeyboard (screen_info);
+    if (g1)
+    {
+        myScreenUngrabKeyboard (screen_info);
+    }
     if (!passdata.released)
     {
         /* If this is a drag-move, wait for the button to be released.
@@ -4840,12 +4852,21 @@ clientResize (Client * c, int corner, XEvent * ev)
                               myDisplayGetCursorResize(display_info, passdata.corner),
                               myDisplayGetCurrentTime (display_info));
 
-    if (!g1 || !g2)
+    if (passdata.use_keys && !g1)
     {
-        TRACE ("grab failed in clientResize");
+        TRACE ("keyboard grab failed in clientResize");
 
         gdk_beep ();
         myScreenUngrabKeyboard (screen_info);
+
+        return;
+    }
+
+    if (!g2)
+    {
+        TRACE ("button grab failed in clientResize");
+
+        gdk_beep ();
         myScreenUngrabPointer (screen_info);
 
         return;
@@ -4910,7 +4931,10 @@ clientResize (Client * c, int corner, XEvent * ev)
     c->xsync_waiting = FALSE;
 #endif /* HAVE_XSYNC */
 
-    myScreenUngrabKeyboard (screen_info);
+    if (g1)
+    {
+        myScreenUngrabKeyboard (screen_info);
+    }
     if (!passdata.released)
     {
         /* If this is a drag-resize, wait for the button to be released.

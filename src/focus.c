@@ -305,12 +305,12 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     new_focus = NULL;
     current_focus = client_focus;
     c2 = NULL;
-
+#if 0
     if (pending_focus)
     {
         current_focus = pending_focus;
     }
-
+#endif
     if ((c || current_focus) && (c != current_focus))
     {
         return;

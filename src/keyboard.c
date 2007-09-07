@@ -160,50 +160,50 @@ grabKey (Display * dpy, MyKey * key, Window w)
 
     TRACE ("entering grabKey");
 
-    status=GrabSuccess;
+    status = GrabSuccess;
     if (key->keycode)
     {
         if (key->modifier == 0)
         {
             status |=
-                XGrabKey (dpy, key->keycode, AnyModifier, w, FALSE,
-                                        GrabModeAsync, GrabModeSync);
+                XGrabKey (dpy, key->keycode, AnyModifier, w,
+                                        TRUE, GrabModeAsync, GrabModeSync);
         }
         else
         {
             /* Here we grab all combinations of well known modifiers */
             status |=
                 XGrabKey (dpy, key->keycode,
-                                        key->modifier, w, FALSE,
-                                        GrabModeAsync, GrabModeSync);
+                                        key->modifier, w,
+                                        TRUE, GrabModeAsync, GrabModeSync);
             status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | ScrollLockMask, w,
-                                        FALSE, GrabModeAsync, GrabModeSync);
+                                        TRUE, GrabModeAsync, GrabModeSync);
             status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | NumLockMask, w,
-                                        FALSE, GrabModeAsync, GrabModeSync);
+                                        TRUE, GrabModeAsync, GrabModeSync);
             status |=
                 XGrabKey (dpy, key->keycode,
                                         key->modifier | LockMask, w,
-                                        FALSE, GrabModeAsync, GrabModeSync);
+                                        TRUE, GrabModeAsync, GrabModeSync);
             status |=
                 XGrabKey (dpy, key->keycode,
-                                        key->modifier | ScrollLockMask | NumLockMask, w, FALSE,
-                                        GrabModeAsync, GrabModeSync);
+                                        key->modifier | ScrollLockMask | NumLockMask, w,
+                                        TRUE, GrabModeAsync, GrabModeSync);
             status |=
                 XGrabKey (dpy, key->keycode,
-                                        key->modifier | ScrollLockMask | LockMask, w, FALSE,
-                                        GrabModeAsync, GrabModeSync);
+                                        key->modifier | ScrollLockMask | LockMask, w,
+                                        TRUE, GrabModeAsync, GrabModeSync);
             status |=
                 XGrabKey (dpy, key->keycode,
-                                        key->modifier | LockMask | NumLockMask, w, FALSE,
-                                        GrabModeAsync, GrabModeSync);
+                                        key->modifier | LockMask | NumLockMask, w,
+                                        TRUE, GrabModeAsync, GrabModeSync);
             status |=
                 XGrabKey (dpy, key->keycode,
-                                        key->modifier | ScrollLockMask | LockMask | NumLockMask,
-                                        w, FALSE, GrabModeAsync, GrabModeSync);
+                                        key->modifier | ScrollLockMask | LockMask | NumLockMask, w,
+                                        TRUE, GrabModeAsync, GrabModeSync);
         }
     }
 
@@ -225,7 +225,7 @@ grabButton (Display * dpy, int button, int modifier, Window w)
 
     TRACE ("entering grabButton");
 
-    status=GrabSuccess;
+    status = GrabSuccess;
     if (modifier == AnyModifier)
     {
         status |=
