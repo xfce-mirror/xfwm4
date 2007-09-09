@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-01-20 05:20+0200\n"
+"PO-Revision-Date: 2007-09-10 00:08+0300\n"
 "Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
 "Language-Team: Belarusian <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -66,27 +66,24 @@ msgid "None"
 msgstr "Няма"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Перамясьціць вакно на наступную прастору"
+msgstr "Перамясьціць вакно на бягучую прастору"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Перамясьціць вакно на прастору %d"
+msgstr "Пераключыцца на прастору вакна"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Do nothing"
 msgstr "Нічога"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "Зьмясьціць вакно пад мышой"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "Зьмясьціць вакно ў цэнтры"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -122,7 +119,7 @@ msgstr "Паважаць стандарт засяроджаньня ICCCM"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Калі вакноў узьнімае сябе:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
@@ -184,9 +181,8 @@ msgid "Size|Large"
 msgstr "Вялікі"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "Найменшы памер вакна, для задзейнічаньня разумнага разьмяшчэньня"
+msgstr "Прадвызначанае разьмяшчэньне вокнаў без разумнага разьмяшчэньня:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
@@ -201,9 +197,8 @@ msgid "Display full screen overlay windows directly"
 msgstr "Адлюстроўваць наўпрост вокны, што перакрываюць увесь экран"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Паказваць цені пад раптоўнымі вокнамі"
+msgstr "Паказваць цені пад dock-вокнамі"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
@@ -321,9 +316,8 @@ msgid "Maximize window"
 msgstr "Найбольшыць вакно"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "Схаваць вакно"
+msgstr "Напоўніць вакно"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -419,9 +413,8 @@ msgid "Focus follows mouse"
 msgstr "Засяроджаньне крочыць за мышой"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Затрымка перад уздыманьнем засяроджанага вакна:"
+msgstr "Затрымка перад тым, як вакно атрымае фокус"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
@@ -572,14 +565,12 @@ msgid "Maximize window horizontally"
 msgstr "Гарызантальна найбольшыць вакно"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Гарызантальна найбольшыць вакно"
+msgstr "Запоўніць вакно гарызантальна"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Вэртыкальна найбольшыць вакно"
+msgstr "Запоўніць вакно вэртыкальна"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -635,7 +626,7 @@ msgstr "Апусьціць вакно"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "Пераключыць вышэй"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -710,7 +701,7 @@ msgid "Window operations menu"
 msgstr "Мэню дзеяньняў з вокнамі"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Перамясьціць вакно на прастору %d"
 
