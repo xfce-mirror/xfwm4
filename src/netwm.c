@@ -1110,7 +1110,7 @@ clientSetNetActions (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    Atom atoms[6];
+    Atom atoms[12];
     int i;
 
     g_return_if_fail (c != NULL);
@@ -1121,10 +1121,15 @@ clientSetNetActions (Client * c)
     i = 0;
 
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CLOSE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_FULLSCREEN];
     if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
     {
         atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_HORZ];
         atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_VERT];
+    }
+    if (CLIENT_CAN_HIDE_WINDOW (c))
+    {
+        atoms[i++] = display_info->atoms[NET_WM_ACTION_MINIMIZE];
     }
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
