@@ -1430,7 +1430,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
            stealing prevention is not activated, otherwise we just set the "demands attention"
            flag...
          */
-        if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (wc.sibling == None))
+        if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (wc.sibling == None) && !(c->type & WINDOW_TYPE_DONT_FOCUS))
         {
             Client *last_raised;
 
