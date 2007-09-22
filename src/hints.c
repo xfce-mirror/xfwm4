@@ -810,6 +810,7 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***st
         if (g_utf8_validate (ptr, -1, NULL))
         {
             retval[i] = internal_utf8_strndup (ptr, MAX_STR_LENGTH);
+            xfce_utf8_remove_controls((gchar *) retval[i], -1, NULL);
         }
         else
         {
@@ -873,6 +874,7 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **title)
     {
         name = internal_utf8_strndup (str, MAX_STR_LENGTH);
         *title = create_name_with_host (display_info, name, machine);
+        xfce_utf8_remove_controls(*title, -1, NULL);
         g_free (name);
         XFree (str);
         status = TRUE;
