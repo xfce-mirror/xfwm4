@@ -2,7 +2,7 @@
 # Arabic translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# 
+#
 # Saleh Alhathal <hathalsal@hotmail.com>, 2004.
 # Mohamed Magdy <alnokta@yahoo.com>, 2006.
 # Mohamed SAAD محمد سعد <metehyi@free.fr>, 2007.
@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-01-30 15:22+0200\n"
-"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
+"PO-Revision-Date: 2007-09-22 05:36+0200\n"
+"Last-Translator: Mohamed Magdy <mohamed.m.k@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,19 +21,17 @@ msgstr ""
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && "
-"n<=10 ? 2 : 3\n"
+"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
 msgstr "هوامش مساحة العمل"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "الهوامش هي مناطق على حواف الشاشة لا توضع عليها أي نوافذ"
 
-# 
+#
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
 msgstr "يسار :"
@@ -50,19 +48,20 @@ msgstr "أعلى :"
 msgid "Bottom :"
 msgstr "أسفل :"
 
-# 
+#
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
 msgid "Button Label|Workspaces and Margins"
 msgstr "Button Label||مساحات العمل و الهوامش"
 
-# 
+#
 #: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
 msgstr "مساحات العمل و الهوامش"
 
-# 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
+#
+#: ../mcs-plugin/workspaces_plugin.c:162
+#: ../mcs-plugin/wmtweaks_plugin.c:640
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "مساحات العمل"
@@ -86,9 +85,8 @@ msgid "Switch to window's workspace"
 msgstr "انقل النافذة لمساحة العمل %d"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Do nothing"
-msgstr "ﻻ شيء"
+msgstr "لا تفعل شيء"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
@@ -104,8 +102,7 @@ msgid "Window Manager Tweaks"
 msgstr "تضبيطات لمدير النوافذ"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr "تخطّى النوافذ ذات الخصائص \"skip pager\" أو \"skip taskbar\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
@@ -132,7 +129,8 @@ msgstr "احترم تلميح بؤرة ICCCM القياسي"
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
+#: ../mcs-plugin/wmtweaks_plugin.c:558
+#: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
 msgstr "بُؤرة"
 
@@ -165,10 +163,8 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "بدّل مساحات العمل مستعملاً عجلة الفأرة فوق سطح المكتب"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:621
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
-"تذكّر و استدعي مساحة العمل السابقة عند التبديل بواسطة إختصارات لوحة المفاتيح"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "تذكّر و استدعي مساحة العمل السابقة عند التبديل بواسطة إختصارات لوحة المفاتيح"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:628
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -224,14 +220,18 @@ msgstr "أظهر ظل تحت النوافذ المنبثقة"
 msgid "Opacity of window decorations"
 msgstr "عتامة زينة النافذة"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
-#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:721
+#: ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733
+#: ../mcs-plugin/wmtweaks_plugin.c:739
 #: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Transparent"
 msgstr "شفّاف"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
-#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734
+#: ../mcs-plugin/wmtweaks_plugin.c:740
 #: ../mcs-plugin/wmtweaks_plugin.c:746
 msgid "Opaque"
 msgstr "معتّم"
@@ -261,7 +261,8 @@ msgstr "المازج"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Button Label|تضبيطات مدير النوافذ"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
+#: ../mcs-plugin/wmtweaks_plugin.c:914
+#: ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "لا يمكن لهذه الإعدادات أن تعمل مع مدير نوافذك الحالي (%s)"
@@ -270,7 +271,8 @@ msgstr "لا يمكن لهذه الإعدادات أن تعمل مع مدير ن
 msgid "Change name"
 msgstr "غيّر الإسم"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:490
+#: ../mcs-plugin/workspaces.c:338
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:490
 #, c-format
 msgid "Workspace %d"
 msgstr "مساحة العمل %d"
@@ -315,22 +317,25 @@ msgstr "كبّر"
 msgid "Close"
 msgstr "اغلق"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Shade window"
 msgstr "ظلّل النافذة"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Hide window"
 msgstr "اخفي النافذة"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Maximize window"
 msgstr "كبّر النافذة"
 
-#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
+#: ../mcs-plugin/xfwm4_plugin.c:82
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Fill window"
-msgstr "اخفي النافذة"
+msgstr "املأ النافذة"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -430,11 +435,13 @@ msgstr "البؤرة يتبع الفأرة"
 msgid "Delay before window receives focus"
 msgstr "التأخير قبل رفع النافذة ذات البؤرة :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
+#: ../mcs-plugin/xfwm4_plugin.c:1654
+#: ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
 msgstr "بطئ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
+#: ../mcs-plugin/xfwm4_plugin.c:1661
+#: ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Fast"
 msgstr "سريع"
 
@@ -466,7 +473,7 @@ msgstr "ارفع النافذة عند التقر داخل نافذة التطب
 msgid "Raise on click"
 msgstr "ارفع عند النقر"
 
-# 
+#
 #: ../mcs-plugin/xfwm4_plugin.c:1766
 msgid "Windows snapping"
 msgstr "جذب النوافذ"
@@ -475,7 +482,7 @@ msgstr "جذب النوافذ"
 msgid "Snap windows to screen border"
 msgstr "اجذب النوافذ  الى حدود الشاشة"
 
-# 
+#
 #: ../mcs-plugin/xfwm4_plugin.c:1777
 msgid "Snap windows to other windows"
 msgstr "اجذب النوافذ  الى النوافذ الأخرى"
@@ -496,17 +503,17 @@ msgstr "Distance|عريضة"
 msgid "Wrap workspaces"
 msgstr "صفِّف بيئات العمل"
 
-# 
+#
 #: ../mcs-plugin/xfwm4_plugin.c:1829
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "صفِّف بيئات العمل عند سحب نافذة خارج حدود الشاشة"
 
-# 
+#
 #: ../mcs-plugin/xfwm4_plugin.c:1837
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "صفِّف بيئات العمل عند سحب نافذة خارج حدود الشاشة"
 
-# 
+#
 #: ../mcs-plugin/xfwm4_plugin.c:1847
 msgid "Edge Resistance :"
 msgstr "مقاومة الحافة :"
@@ -582,14 +589,12 @@ msgid "Maximize window horizontally"
 msgstr "كبّر النافذة أفقيا"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "كبّر النافذة أفقيا"
+msgstr "املأ النافذة أفقيا"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "كبّر النافذة عموديا"
+msgstr "املأ النافذة عموديا"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -822,11 +827,12 @@ msgstr "ا_لغي التثبيت"
 msgid "Context _help"
 msgstr "_مساعدة السياق"
 
-#: ../src/menu.c:50 ../src/menu.c:51
+#: ../src/menu.c:50
+#: ../src/menu.c:51
 msgid "Always on top"
 msgstr "دوما أعلى"
 
-# 
+#
 #: ../src/menu.c:52
 msgid "Send to..."
 msgstr "أرسل الى..."
@@ -895,3 +901,4 @@ msgstr "إعدادات مساحات العمل"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "إعدادات مساحات عمل Xfce 4"
+
