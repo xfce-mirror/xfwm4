@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2006-11-05 04:09+0900\n"
+"PO-Revision-Date: 2007-09-24 11:54+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
@@ -66,27 +66,24 @@ msgid "None"
 msgstr "없음"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "창을 다음 작업 공간으로 이동"
+msgstr "창을 현재 작업 공간으로 이동"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "창을 작업 공간 %d(으)로 이동"
+msgstr "창의 작업 공간으로 이동"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Do nothing"
 msgstr "아무 짓도 안함"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "마우스 아래에 창 놓기"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "한 가운데 창 놓기"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -122,7 +119,7 @@ msgstr "표준 ICCCM 초점 힌트 수락"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "창이 위로 올라 올 때:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
@@ -182,9 +179,8 @@ msgid "Size|Large"
 msgstr "크게"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "똑똑한 배치를 적용할 창의 최소 크기"
+msgstr "똑똑한 배치를 이용하지 않고 창을 배치"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
@@ -199,9 +195,8 @@ msgid "Display full screen overlay windows directly"
 msgstr "직접 창을 도배해서 전체화면 표시"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "위쪽 창에 그림자 보이기"
+msgstr "붙이기 창에 그림자 보이기"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
@@ -319,9 +314,8 @@ msgid "Maximize window"
 msgstr "창 최대화"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "창 숨기기"
+msgstr "창 채우기"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -417,9 +411,8 @@ msgid "Focus follows mouse"
 msgstr "마우스를 따라가기"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "지연 시간"
+msgstr "창 활성화 지연 시간"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
@@ -568,14 +561,12 @@ msgid "Maximize window horizontally"
 msgstr "창을 가로로 최대화"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "창을 가로로 최대화"
+msgstr "창을 가로로 채움"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "창을 세로로 최대화"
+msgstr "창을 세로로 채움"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -631,7 +622,7 @@ msgstr "창을 뒤로 내리기"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "전환"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -706,7 +697,6 @@ msgid "Window operations menu"
 msgstr "창 조작 메뉴"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "창을 작업 공간 %d(으)로 이동"
 
@@ -751,7 +741,7 @@ msgstr "단축키 구성"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "No shortcut"
