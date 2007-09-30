@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-04-05 15:24+0200\n"
+"PO-Revision-Date: 2007-09-30 09:59+0200\n"
 "Last-Translator: Pau Ruŀlan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,11 +86,11 @@ msgstr "Res"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "Situa la finestra sota el ratolí"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "Situa la finestra al centre"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -190,9 +190,8 @@ msgid "Size|Large"
 msgstr "Gran"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "Mida mínima de les finestres per emplaçar-les «inteŀligentment»"
+msgstr "Posició predeterminada per les finestres sense emplaçament inteŀligent:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
@@ -329,9 +328,8 @@ msgid "Maximize window"
 msgstr "Maximitza la finestra"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "Amaga la finestra"
+msgstr "Emplena la finestra"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -583,14 +581,12 @@ msgid "Maximize window horizontally"
 msgstr "Maximitza la finestra horitzontalment"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Maximitza la finestra horitzontalment"
+msgstr "Emplena la finestra horitzontalment"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Maximitza la finestra verticalment"
+msgstr "Emplena la finestra verticalment"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -646,7 +642,7 @@ msgstr "Abaixa la finestra"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "Commuta amunt"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -721,7 +717,7 @@ msgid "Window operations menu"
 msgstr "Menú d’operacions de finestra"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Mou la finestra a l'àrea de treball %d"
 
@@ -894,9 +890,4 @@ msgstr "Paràmetres dels espais de treball"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
-msgstr ""
-"Paràmetres dels espais de treball d'Xfce 4Marges dels espais de treball"
-
-#, fuzzy
-#~ msgid "Workspace %02d"
-#~ msgstr "Espai de treball %d"
+msgstr "Paràmetres dels espais de treball d'Xfce 4"
