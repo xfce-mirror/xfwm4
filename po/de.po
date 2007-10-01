@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-01-03 09:37+0100\n"
+"PO-Revision-Date: 2007-10-01 15:43+0100\n"
 "Last-Translator: Nico Schümann <nico@prog.nico22.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -337,9 +337,8 @@ msgid "Maximize window"
 msgstr "Fenster maximieren"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "Fenster verstecken"
+msgstr "Fenster füllen"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -585,14 +584,12 @@ msgid "Maximize window horizontally"
 msgstr "Fenster horizontal maximieren"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Fenster horizontal maximieren"
+msgstr "Fenster horizontal füllen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Fenster vertikal maximieren"
+msgstr "Fenster vertikal füllen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -723,7 +720,7 @@ msgid "Window operations menu"
 msgstr "Menü für Fensteraktionen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Fenster auf Arbeitsfläche %d verschieben"
 
