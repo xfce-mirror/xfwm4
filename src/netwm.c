@@ -317,7 +317,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first  == display_info->atoms[NET_WM_STATE_STICKY]) ||
         (second == display_info->atoms[NET_WM_STATE_STICKY]))
     {
-        if (!clientIsValidTransientOrModal (c) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
         {
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
             {
@@ -1169,8 +1169,9 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_dock detected");
             c->type = WINDOW_DOCK;
             c->initial_layer = WIN_LAYER_DOCK;
-            FLAG_SET (c->flags,
-                CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
+             FLAG_SET (c->flags,
+                CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
+                CLIENT_FLAG_SKIP_TASKBAR);
             FLAG_UNSET (c->xfwm_flags,
                 XFWM_FLAG_HAS_BORDER |  XFWM_FLAG_HAS_MOVE |
                 XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
