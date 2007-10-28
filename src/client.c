@@ -2637,11 +2637,13 @@ void
 clientActivate (Client * c, Time timestamp)
 {
     ScreenInfo *screen_info;
+    Client *sibling;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientActivate \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
+    sibling = clientGetTransientFor(c);
     if ((screen_info->current_ws == c->win_workspace) || (screen_info->params->activate_action != ACTIVATE_ACTION_NONE))
     {
         if (screen_info->current_ws != c->win_workspace)
@@ -2655,10 +2657,10 @@ clientActivate (Client * c, Time timestamp)
                 workspaceSwitch (screen_info, c->win_workspace, NULL, FALSE, timestamp);
             }
         }
-        clientShow (c, TRUE);
+        clientRaise (sibling, None);
+        clientShow (sibling, TRUE);
         clientClearAllShowDesktop (screen_info);
         clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
-        clientRaise (c, None);
     }
     else
     {

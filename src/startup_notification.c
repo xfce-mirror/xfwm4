@@ -288,7 +288,10 @@ sn_client_startup_properties (Client * c)
         if ((c->user_time == (Time) 0) || TIMESTAMP_IS_BEFORE(c->user_time, timestamp))
         {
             c->user_time = timestamp;
-            myDisplaySetLastUserTime (screen_info->display_info, c->user_time);
+            if (c->user_time != (Time) 0)
+            {
+                myDisplaySetLastUserTime (screen_info->display_info, c->user_time);
+            }
         }
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME);
 

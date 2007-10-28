@@ -293,6 +293,38 @@ clientGetModalFor (Client * c)
     return latest_modal;
 }
 
+Client *
+clientGetTransientFor (Client * c)
+{
+    ScreenInfo *screen_info;
+    Client *latest_transient;
+    Client *c2;
+    GList *index;
+
+    g_return_val_if_fail (c != NULL, NULL);
+    TRACE ("entering clientGetTransientFor");
+
+    latest_transient = c;
+    screen_info = c->screen_info;
+    for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
+    {
+        if (!clientIsTransient (latest_transient))
+        {
+            break;
+        }
+        c2 = (Client *) index->data;
+        if (c2)
+        {
+            if (clientIsTransientFor (latest_transient, c2))
+            {
+                latest_transient = c2;
+            }
+        }
+    }
+
+    return latest_transient;
+}
+
 /* Build a GList of clients that have a transient relationship */
 GList *
 clientListTransient (Client * c)
