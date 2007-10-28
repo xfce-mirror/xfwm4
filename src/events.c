@@ -1988,7 +1988,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[NET_WM_USER_TIME])
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_USER_TIME notify", c->name, c->window);
-            if (getNetWMUserTime (display_info, c->window, &c->user_time))
+            if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
             {
                 myDisplaySetLastUserTime (display_info, c->user_time);
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);

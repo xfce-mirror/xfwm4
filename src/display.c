@@ -746,7 +746,7 @@ myDisplaySetLastUserTime (DisplayInfo *display, Time timestamp)
     g_return_if_fail (display != NULL);
     g_return_if_fail (timestamp != (Time) 0);
 
-    if (!TIMESTAMP_IS_BEFORE(display->last_user_time, timestamp))
+    if (TIMESTAMP_IS_BEFORE(timestamp, display->last_user_time))
     {
         g_warning ("Last user time set back to %u (was %u)", (unsigned int) timestamp, (unsigned int) display->last_user_time);
     }

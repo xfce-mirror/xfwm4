@@ -1583,7 +1583,7 @@ clientGetUserTime (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (getNetWMUserTime (display_info, c->window, &c->user_time))
+    if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
         myDisplaySetLastUserTime (display_info, c->user_time);
