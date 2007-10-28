@@ -187,7 +187,7 @@ myDisplayCreateTimestampWin (DisplayInfo *display_info)
 
     attributes.event_mask = PropertyChangeMask;
     attributes.override_redirect = TRUE;
-    display_info->timestamp_win = 
+    display_info->timestamp_win =
         XCreateWindow (display_info->dpy, DefaultRootWindow (display_info->dpy),
                        -100, -100, 10, 10, 0, 0, CopyFromParent, CopyFromParent,
                        CWEventMask | CWOverrideRedirect, &attributes);
@@ -744,11 +744,13 @@ void
 myDisplaySetLastUserTime (DisplayInfo *display, Time timestamp)
 {
     g_return_if_fail (display != NULL);
+    g_return_if_fail (timestamp != (Time) 0);
 
-    if (TIMESTAMP_IS_BEFORE(display->last_user_time, timestamp))
+    if (!TIMESTAMP_IS_BEFORE(display->last_user_time, timestamp))
     {
-        display->last_user_time = timestamp;
+        g_warning ("Last user time set back to %u (was %u)", (unsigned int) timestamp, (unsigned int) display->last_user_time);
     }
+    display->last_user_time = timestamp;
 }
 
 gboolean
