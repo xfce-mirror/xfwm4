@@ -132,8 +132,7 @@ msgstr "Bytt arbeidsflate ved hjelp av musehjulet over skrivebordet"
 #: ../mcs-plugin/wmtweaks_plugin.c:503
 msgid ""
 "Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
-"Lagre og gjenopprett forrige skrivebord ved bytting med hurtigtast."
+msgstr "Lagre og gjenopprett forrige skrivebord ved bytting med hurtigtast."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -219,8 +218,8 @@ msgstr "Vindushåndterer Tilpasninger"
 #: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2359
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Disse innstillingene virker ikke med din nåværende "
-"vindushåndterer (%s)"
+msgstr ""
+"Disse innstillingene virker ikke med din nåværende vindushåndterer (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -647,6 +646,7 @@ msgid "Window operations menu"
 msgstr "Vindu handlingsmeny"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:503
+#, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Flytt vindu til skrivebord 1"
 
@@ -655,6 +655,7 @@ msgid "Cannot open the theme directory !"
 msgstr "Kan ikke åpne temamappe!"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:602
+#, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
@@ -664,6 +665,7 @@ msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:616
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:627
+#, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
@@ -786,10 +788,12 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke fange opp pekeren\n"
 
 #: ../src/settings.c:932
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Kan ikke tildele farge %s\n"
 
 #: ../src/settings.c:938
+#, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Kan ikke parse farge %s\n"
 
