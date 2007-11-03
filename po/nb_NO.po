@@ -68,7 +68,7 @@ msgstr "Ingen"
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "Vindushåndterer Tilpasninger"
+msgstr "Innstillinger for Vindushåndterer Ekstra"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid ""
@@ -213,7 +213,7 @@ msgstr "Sammensetter"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Vindushåndterer Tilpasninger"
+msgstr "Vindushåndterer Detaljer"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2359
 #, c-format
@@ -417,7 +417,7 @@ msgstr "Vindussnapping"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1717
 msgid "Snap windows to screen border"
-msgstr "SNapp vinduer til skjermkanten"
+msgstr "Snapp vinduer til skjermkanten"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Snap windows to other windows"
@@ -646,9 +646,9 @@ msgid "Window operations menu"
 msgstr "Vindu handlingsmeny"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:503
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Flytt vindu til skrivebord 1"
+msgstr "Flytt vindu til skrivebord %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:583
 msgid "Cannot open the theme directory !"
@@ -799,7 +799,7 @@ msgstr "%s: Kan ikke parse farge %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Vindushåndterer"
+msgstr "Innstillinger for Vindushåndterer"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
@@ -811,11 +811,11 @@ msgstr "Avansert konfigurasjon"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Xfce 4 Vindushåndterer Tilpasninger"
+msgstr "Xfce 4 Vindushåndterer Detaljer"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
-msgstr "Skrivebord og Marginer"
+msgstr "Innstillinger for Skrivebord og Marginer"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
