@@ -24,7 +24,7 @@ msgstr "Çalışma Alanı Sınırları"
 
 #: ../mcs-plugin/margins.c:136
 msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Kenarlar, ekranın kenarında bulunan herhangi bir pencerenin yerleştirilemeyeği alanlardır."
+msgstr "Sınırlar, ekranın kenarlarında pencere yerleştirilmeyecek bölgelerdir."
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
