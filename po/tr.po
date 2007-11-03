@@ -1,15 +1,15 @@
 # Turkish translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Erçin EKER <erc.caldera@gmx.net>, 2003.
-# Eren Türkay <turkay.eren@gmail.com>, 2007
 #
+# Erçin EKER <erc.caldera@gmx.net>, 2003.
+# Eren Türkay <turkay.eren@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-09 14:29+0200\n"
-"PO-Revision-Date: 2007-04-14 11:46+0300\n"
+"PO-Revision-Date: 2007-11-03 07:14+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
@@ -21,10 +21,8 @@ msgid "Workspace Margins"
 msgstr "Çalışma Alanı Sınırları"
 
 #: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Sınırlar ekranın kenarlarında pencere yerleştirilmeyecek bölgeleri belirler"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Sınırlar, ekranın kenarlarında pencere yerleştirilmeyecek bölgelerdir."
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
@@ -70,8 +68,7 @@ msgid "Window Manager Tweaks"
 msgstr "Pencere Yöneticisi İnce Ayarları"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
 "\"sayfalayıcıyı atla\" veya \"görev çubuğunu atla\" seçenekleri ayarlanmış "
 "olan pencereleri atla"
@@ -126,14 +123,11 @@ msgstr "Erişilebilirlik"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:496
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
-"Masaüstü üzerinde fare topunu kullanarak çalışma alanları arasında geçiş yap"
+msgstr "Masaüstü üzerinde fare topunu kullanarak çalışma alanları arasında geçiş yap"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:503
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
-"Klavye kısayolları ile geçiş yaparken önceki çalışma alanını hatırla ve çağır"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "Klavye kısayolları ile geçiş yaparken önceki çalışma alanını hatırla ve çağır"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:510
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -820,3 +814,4 @@ msgstr "Çalışma Alanı Ayarları"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Çalışma Alanı Ayarları"
+
