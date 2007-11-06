@@ -753,6 +753,18 @@ myDisplaySetLastUserTime (DisplayInfo *display, Time timestamp)
     display->last_user_time = timestamp;
 }
 
+void
+myDisplayUpdateLastUserTime (DisplayInfo *display, Time timestamp)
+{
+    g_return_if_fail (display != NULL);
+    g_return_if_fail (timestamp != (Time) 0);
+
+    if (TIMESTAMP_IS_BEFORE(display->last_user_time, timestamp))
+    {
+	display->last_user_time = timestamp;
+    }
+}
+
 gboolean
 myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
 {

@@ -384,6 +384,8 @@ Time                     myDisplayGetTime                       (DisplayInfo *,
 Time                     myDisplayGetLastUserTime               (DisplayInfo *);
 void                     myDisplaySetLastUserTime               (DisplayInfo *,
                                                                  Time);
+void                     myDisplayUpdateLastUserTime            (DisplayInfo *, 
+                                                                 Time);
 gboolean                 myDisplayTestXrender                   (DisplayInfo *,
                                                                  gdouble);
 
