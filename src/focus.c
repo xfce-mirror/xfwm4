@@ -327,12 +327,13 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     {
         if (c)
         {
-            if (clientIsModal (c))
+            if (clientIsTransientOrModal (c))
             {
-                /* If the window is a modal, send focus back to its parent window.
-                   Modals are transients, and we aren't interested in modal
-                   for group, so it safe to use clientGetTransient because
-                   it's really what we want...
+                /* If the window is a transient or modal, send focus back to
+                 * its parent window.
+                 * Modals are transients, and we aren't interested in modal
+                 * for group, so it safe to use clientGetTransient because
+                 * it's really what we want...
                  */
                 c2 = clientGetTransient (c);
                 if (c2 && FLAG_TEST(c2->xfwm_flags, XFWM_FLAG_VISIBLE))

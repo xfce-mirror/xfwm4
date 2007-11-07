@@ -4990,8 +4990,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     if (passdata->c == NULL)
     {
         return EVENT_FILTER_CONTINUE;
-        /*  will never be executed */
-        /* gtk_main_quit (); */
     }
 
     c = passdata->c;
@@ -5178,6 +5176,7 @@ clientCycle (Client * c, XEvent * ev)
     if (passdata.c)
     {
         Client *focused;
+        Client *sibling;
         int workspace;
 
         c = passdata.c;
@@ -5195,9 +5194,10 @@ clientCycle (Client * c, XEvent * ev)
             clientAdjustFullscreenLayer (focused, FALSE);
         }
 
-        clientShow (c, TRUE);
+        sibling = clientGetTransientFor(c);
+        clientRaise (sibling, None);
+        clientShow (sibling, TRUE);
         clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
-        clientRaise (c, None);
     }
 
     myScreenUngrabKeyboard (screen_info);
