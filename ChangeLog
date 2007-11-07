@@ -1,3 +1,1992 @@
+2007-11-06 22:53  olivier
+
+	* src/events.c: Revert to current time for releasing queued input
+	  events (simpler, safer)
+
+2007-11-06 22:52  olivier
+
+	* src/client.c, src/display.c, src/display.h: Get highest user time
+	  at initial client capture
+
+2007-11-03 05:17  erenturkay
+
+	* po/tr.po: * wops, wrong translation :)
+
+2007-11-03 05:13  erenturkay
+
+	* po/ChangeLog, po/tr.po: * update translation
+
+2007-10-28 22:18  olivier
+
+	* src/client.c, src/display.c, src/events.c: Remove warnings
+
+2007-10-28 19:29  olivier
+
+	* src/client.c, src/startup_notification.c, src/transients.c,
+	  src/transients.h: Improve compatibily with libwnck tasklist
+
+2007-10-28 17:14  olivier
+
+	* src/display.c: Work around time going back (like broken clients
+	  or clock change)
+
+2007-10-25 21:47  olivier
+
+	* src/client.c: Apply a patch from Andreas Lampersperger
+	  <lampersperger.andreas@heidenhain.de> to improve ICCCM compliance
+	  regarding synthetic ConfigureNotify event (Bug #3610)
+
+2007-10-24 22:26  kelnos
+
+	* configure.ac.in: remove trailing parens on AC_INIT version info
+	  to work around bug
+	  in intltool 0.35.x and 0.36.x
+
+2007-10-20 18:30  olivier
+
+	* src/netwm.c: Set all dock type windows sticky by default, a few
+	  other window managers implement this behaviour and some apps rely
+	  on this (bug #3609)
+
+2007-10-06 17:00  mmassonnet
+
+	* po/ChangeLog, po/LINGUAS, po/lv.po: * libexo, libxfce4util,
+	  xfcalendar, xfce4-panel, xfce4-session, xfce-mcs-plugins,
+	  xfdesktop, xfprint, xfwm4: Add Latvian translation.
+
+2007-10-01 18:19  mmassonnet
+
+	* po/ChangeLog, po/de.po: * libxfcegui4, xfce4-panel, xfwm4,
+	  xarchiver, xfcalendar: Update german
+	  translation.
+
+2007-09-30 08:54  paurullan
+
+	* po/ChangeLog, po/ca.po: Some catalan updates
+
+2007-09-25 17:40  mmassonnet
+
+	* po/ChangeLog, po/ko.po: * xfce4-session, libxfcegui4, xfwm4,
+	  xfcalendar, xfdesktop, terminal:
+	  Update Korean translation by ByungHyun Choi
+
+2007-09-22 22:08  olivier
+
+	* src/hints.c: Some broken apps include control characters in their
+	  window title name
+
+2007-09-22 02:55  alnokta
+
+	* po/ar.po: Updating Arabic translations
+
+2007-09-20 21:24  mmassonnet
+
+	* po/ChangeLog, po/nb_NO.po: * xfce4-session, xfce4-mixer, xfwm4:
+	  Update nb_NO translations
+
+2007-09-09 22:14  olivier
+
+	* src/events.c: Do not focus dock windows that raise themselves
+	  (why oh why would they do that anyway, heh?) to fix bug #3439
+	  with Avant Window Navigator.
+
+2007-09-09 21:09  nab
+
+	* po/ChangeLog, po/be.po: 2007-09-10 Alexander Nyakhaychyk
+	  <nyakhaychyk@gmail.com>
+	  
+	  * be.po: Updated Belarusian translation
+
+2007-09-09 20:50  olivier
+
+	* src/display.c, src/display.h, src/netwm.c: Add support for
+	  NET_WM_ACTION_FULLSCREEN and NET_WM_ACTION_MINIMIZE
+
+2007-09-07 22:18  olivier
+
+	* src/client.c, src/focus.c, src/keyboard.c: Fix wrong focus
+	  fallback if pending focus window disappears. Allow move/resize
+	  using the mouse even if the keyboard grab fails (bug #3535).
+
+2007-09-06 18:16  maximilian
+
+	* po/ChangeLog, po/LINGUAS, po/am.po: Added a long waiting Amharic
+	  translation for trunk.
+
+2007-08-24 23:20  mmassonnet
+
+	* po/ChangeLog, po/pt_PT.po: * po/pt_PT.po: European Portuguese
+	  update
+
+2007-08-11 18:49  majkl
+
+	* po/cs.po: Updated Czech translations
+
+2007-07-23 12:28  jari
+
+	* po/ChangeLog, po/fi.po: Updated Finnish translation
+
+2007-07-18 18:29  olivier
+
+	* src/events.c: Do ReplayPointer on client window only, this is
+	  actually a lot simpler
+
+2007-07-17 18:10  olivier
+
+	* src/events.c: Use event's timestamp when releasing queued events
+
+2007-07-16 21:25  olivier
+
+	* src/events.c: Release key events early
+
+2007-07-16 21:25  olivier
+
+	* src/netwm.c: Be compliant with EWMH standard that states: "If
+	  _NET_WM_WINDOW_TYPE is not set, then windows with
+	  WM_TRANSIENT_FOR set MUST be taken as NET_WM_WINDOW_TYPE_DIALOG".
+	  It shouldn't make much difference in xfwm4 though.
+
+2007-07-14 22:51  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/left-active.png, themes/default/left-active.svg,
+	  themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-prelight.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm, themes/default/right-active.png,
+	  themes/default/right-active.svg,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg: Update theme
+
+2007-07-14 03:04  daichi
+
+	* po/ChangeLog, po/ja.po: Added/Updated Japanese translations.
+
+2007-07-13 21:58  olivier
+
+	* themes/default/README, themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-prelight.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-prelight.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.svg, themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-prelight.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-prelight.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/right-active.png, themes/default/right-active.svg,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-prelight.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-prelight.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-prelight.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-prelight.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/default/top-right-inactive.xpm: Update theme
+
+2007-07-13 11:30  piarres
+
+	* po/ChangeLog, po/eu.po: squezze & xfwm4 basque translation
+	  updates
+
+2007-07-05 21:03  olivier
+
+	* themes/default/themerc: Larger shadow
+
+2007-07-04 18:12  olivier
+
+	* themes/default/Makefile.am: Typo
+
+2007-07-04 17:54  olivier
+
+	* defaults/defaults, mcs-plugin/xfwm4_plugin.h: Adjust defaults
+
+2007-07-04 17:51  olivier
+
+	* themes/default, themes/default/Makefile.am,
+	  themes/default/README, themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-prelight.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-prelight.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.svg, themes/default/left-active.xpm,
+	  themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-prelight.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-prelight.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-prelight.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm, themes/default/right-active.png,
+	  themes/default/right-active.svg, themes/default/right-active.xpm,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-prelight.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-prelight.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-prelight.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-prelight.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/default/top-right-inactive.xpm, themes/kokodi: Promote
+	  modified version of Kokodi theme as default theme
+
+2007-07-04 17:49  olivier
+
+	* configure.ac.in, themes/Makefile.am, themes/daloa/themerc,
+	  themes/default, themes/katiola, themes/kokodi/Makefile.am,
+	  themes/kokodi/README, themes/kokodi/bottom-active.png,
+	  themes/kokodi/bottom-active.svg,
+	  themes/kokodi/bottom-inactive.png,
+	  themes/kokodi/bottom-inactive.svg,
+	  themes/kokodi/bottom-left-active.png,
+	  themes/kokodi/bottom-left-active.svg,
+	  themes/kokodi/bottom-left-inactive.png,
+	  themes/kokodi/bottom-left-inactive.svg,
+	  themes/kokodi/bottom-right-active.png,
+	  themes/kokodi/bottom-right-active.svg,
+	  themes/kokodi/bottom-right-inactive.png,
+	  themes/kokodi/bottom-right-inactive.svg,
+	  themes/kokodi/close-active.png, themes/kokodi/close-active.svg,
+	  themes/kokodi/close-active.xpm, themes/kokodi/close-inactive.png,
+	  themes/kokodi/close-inactive.svg,
+	  themes/kokodi/close-inactive.xpm,
+	  themes/kokodi/close-prelight.png,
+	  themes/kokodi/close-prelight.svg,
+	  themes/kokodi/close-prelight.xpm,
+	  themes/kokodi/close-pressed.png, themes/kokodi/close-pressed.svg,
+	  themes/kokodi/close-pressed.xpm, themes/kokodi/hide-active.png,
+	  themes/kokodi/hide-active.svg, themes/kokodi/hide-active.xpm,
+	  themes/kokodi/hide-inactive.png, themes/kokodi/hide-inactive.svg,
+	  themes/kokodi/hide-inactive.xpm, themes/kokodi/hide-prelight.png,
+	  themes/kokodi/hide-prelight.svg, themes/kokodi/hide-prelight.xpm,
+	  themes/kokodi/hide-pressed.png, themes/kokodi/hide-pressed.svg,
+	  themes/kokodi/hide-pressed.xpm, themes/kokodi/left-active.png,
+	  themes/kokodi/left-active.svg, themes/kokodi/left-inactive.png,
+	  themes/kokodi/left-inactive.svg,
+	  themes/kokodi/maximize-active.png,
+	  themes/kokodi/maximize-active.svg,
+	  themes/kokodi/maximize-active.xpm,
+	  themes/kokodi/maximize-inactive.png,
+	  themes/kokodi/maximize-inactive.svg,
+	  themes/kokodi/maximize-inactive.xpm,
+	  themes/kokodi/maximize-prelight.png,
+	  themes/kokodi/maximize-prelight.svg,
+	  themes/kokodi/maximize-prelight.xpm,
+	  themes/kokodi/maximize-pressed.png,
+	  themes/kokodi/maximize-pressed.svg,
+	  themes/kokodi/maximize-pressed.xpm,
+	  themes/kokodi/maximize-toggled-active.png,
+	  themes/kokodi/maximize-toggled-active.svg,
+	  themes/kokodi/maximize-toggled-active.xpm,
+	  themes/kokodi/maximize-toggled-inactive.png,
+	  themes/kokodi/maximize-toggled-inactive.svg,
+	  themes/kokodi/maximize-toggled-inactive.xpm,
+	  themes/kokodi/maximize-toggled-prelight.png,
+	  themes/kokodi/maximize-toggled-prelight.svg,
+	  themes/kokodi/maximize-toggled-prelight.xpm,
+	  themes/kokodi/maximize-toggled-pressed.png,
+	  themes/kokodi/maximize-toggled-pressed.svg,
+	  themes/kokodi/maximize-toggled-pressed.xpm,
+	  themes/kokodi/menu-active.png, themes/kokodi/menu-active.svg,
+	  themes/kokodi/menu-active.xpm, themes/kokodi/menu-inactive.png,
+	  themes/kokodi/menu-inactive.svg, themes/kokodi/menu-inactive.xpm,
+	  themes/kokodi/menu-prelight.png, themes/kokodi/menu-prelight.svg,
+	  themes/kokodi/menu-prelight.xpm, themes/kokodi/menu-pressed.png,
+	  themes/kokodi/menu-pressed.svg, themes/kokodi/menu-pressed.xpm,
+	  themes/kokodi/right-active.png, themes/kokodi/right-active.svg,
+	  themes/kokodi/right-inactive.png,
+	  themes/kokodi/right-inactive.svg, themes/kokodi/shade-active.png,
+	  themes/kokodi/shade-active.svg, themes/kokodi/shade-active.xpm,
+	  themes/kokodi/shade-inactive.png,
+	  themes/kokodi/shade-inactive.svg,
+	  themes/kokodi/shade-inactive.xpm,
+	  themes/kokodi/shade-prelight.png,
+	  themes/kokodi/shade-prelight.svg,
+	  themes/kokodi/shade-prelight.xpm,
+	  themes/kokodi/shade-pressed.png, themes/kokodi/shade-pressed.svg,
+	  themes/kokodi/shade-pressed.xpm,
+	  themes/kokodi/shade-toggled-active.png,
+	  themes/kokodi/shade-toggled-active.svg,
+	  themes/kokodi/shade-toggled-active.xpm,
+	  themes/kokodi/shade-toggled-inactive.png,
+	  themes/kokodi/shade-toggled-inactive.svg,
+	  themes/kokodi/shade-toggled-inactive.xpm,
+	  themes/kokodi/shade-toggled-prelight.png,
+	  themes/kokodi/shade-toggled-prelight.svg,
+	  themes/kokodi/shade-toggled-prelight.xpm,
+	  themes/kokodi/shade-toggled-pressed.png,
+	  themes/kokodi/shade-toggled-pressed.svg,
+	  themes/kokodi/shade-toggled-pressed.xpm,
+	  themes/kokodi/stick-active.png, themes/kokodi/stick-active.svg,
+	  themes/kokodi/stick-active.xpm, themes/kokodi/stick-inactive.png,
+	  themes/kokodi/stick-inactive.svg,
+	  themes/kokodi/stick-inactive.xpm,
+	  themes/kokodi/stick-prelight.png,
+	  themes/kokodi/stick-prelight.svg,
+	  themes/kokodi/stick-prelight.xpm,
+	  themes/kokodi/stick-pressed.png, themes/kokodi/stick-pressed.svg,
+	  themes/kokodi/stick-pressed.xpm,
+	  themes/kokodi/stick-toggled-active.png,
+	  themes/kokodi/stick-toggled-active.svg,
+	  themes/kokodi/stick-toggled-active.xpm,
+	  themes/kokodi/stick-toggled-inactive.png,
+	  themes/kokodi/stick-toggled-inactive.svg,
+	  themes/kokodi/stick-toggled-inactive.xpm,
+	  themes/kokodi/stick-toggled-prelight.png,
+	  themes/kokodi/stick-toggled-prelight.svg,
+	  themes/kokodi/stick-toggled-prelight.xpm,
+	  themes/kokodi/stick-toggled-pressed.png,
+	  themes/kokodi/stick-toggled-pressed.svg,
+	  themes/kokodi/stick-toggled-pressed.xpm, themes/kokodi/themerc,
+	  themes/kokodi/title-1-active.png,
+	  themes/kokodi/title-1-active.svg,
+	  themes/kokodi/title-1-inactive.png,
+	  themes/kokodi/title-1-inactive.svg,
+	  themes/kokodi/title-2-active.png,
+	  themes/kokodi/title-2-active.svg,
+	  themes/kokodi/title-2-inactive.png,
+	  themes/kokodi/title-2-inactive.svg,
+	  themes/kokodi/title-3-active.png,
+	  themes/kokodi/title-3-active.svg,
+	  themes/kokodi/title-3-inactive.png,
+	  themes/kokodi/title-3-inactive.svg,
+	  themes/kokodi/title-4-active.png,
+	  themes/kokodi/title-4-active.svg,
+	  themes/kokodi/title-4-inactive.png,
+	  themes/kokodi/title-4-inactive.svg,
+	  themes/kokodi/title-5-active.png,
+	  themes/kokodi/title-5-active.svg,
+	  themes/kokodi/title-5-inactive.png,
+	  themes/kokodi/title-5-inactive.svg,
+	  themes/kokodi/top-left-active.png,
+	  themes/kokodi/top-left-active.svg,
+	  themes/kokodi/top-left-inactive.png,
+	  themes/kokodi/top-left-inactive.svg,
+	  themes/kokodi/top-right-active.png,
+	  themes/kokodi/top-right-active.svg,
+	  themes/kokodi/top-right-inactive.png,
+	  themes/kokodi/top-right-inactive.svg, themes/largeprint: Theme
+	  cleanup
+
+2007-07-04 06:29  mvd
+
+	* po/uk.po: Maxim Dziumanenko <dziumanenko@gmail.com>
+	  
+	  * Update Ukrainian translation by Dmitry Nikitin
+
+2007-07-03 23:24  maximilian
+
+	* po/ChangeLog, po/pt_BR.po: * Updated the Brazilian Portuguese
+	  translation for Xfwm4 trunk and added the one for Squeeze.
+	  * Added new European Portuguese translations for trunk.
+
+2007-06-29 20:17  maximilian
+
+	* po/ChangeLog, po/pt_PT.po: European Portuguese translations
+	  update (trunk)
+
+2007-06-27 22:02  olivier
+
+	* src/screen.c, src/settings.h: Do not grab the Escape key by
+	  default
+
+2007-06-26 21:07  olivier
+
+	* src/client.c, src/netwm.c: Be more relax with transients, allow
+	  transients to be sticky independently of their parent window (Bug
+	  #3296)
+
+2007-06-24 17:54  olivier
+
+	* src/client.c: Fix filling function being a no-op if not other
+	  windows is visible, fix wrong computation size with struts on top
+	  or right sides
+
+2007-06-24 12:10  olivier
+
+	* themes/daloa/themerc, themes/default/themerc,
+	  themes/largeprint/themerc: Play with shadows
+
+2007-06-24 09:33  olivier
+
+	* src/client.c, src/screen.c, src/settings.c: Cleanup
+
+2007-06-24 06:50  sas
+
+	* po/hu.po: hu trunk: wm updates
+
+2007-06-23 22:44  olivier
+
+	* src/frame.c: A bit more of small cleanup
+
+2007-06-23 22:28  olivier
+
+	* src/settings.h: Typo
+
+2007-06-23 19:28  erenturkay
+
+	* po/ChangeLog, po/tr.po: update
+
+2007-06-23 19:01  olivier
+
+	* mcs-plugin/xfwm4_shortcuteditor.c, po/ar.po, po/az.po, po/be.po,
+	  po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/dz.po,
+	  po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gl.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po, po/ka.po,
+	  po/ko.po, po/lt.po, po/mk.po, po/mr.po, po/ms.po, po/nb_NO.po,
+	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
+	  po/ru.po, po/sk.po, po/sq.po, po/sv.po, po/ta.po, po/tr.po,
+	  po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po:
+	  Revert the name for shortcuts and update i18n
+
+2007-06-23 18:47  olivier
+
+	* src/settings.c, src/settings.h: Reorder to ease readability
+
+2007-06-23 18:03  olivier
+
+	* src/events.c, src/hints.c, src/screen.c: Cleanup
+
+2007-06-23 17:59  olivier
+
+	* src/client.c: Add support for Xinerama, struts, margins
+
+2007-06-23 17:44  olivier
+
+	* src/client.c: Computes the right size when filling
+
+2007-06-23 17:30  olivier
+
+	* src/client.c: Use proper frame*() functions
+
+2007-06-23 17:14  olivier
+
+	* src/client.c: Some fixes to previous patch, needs more (Xinerama
+	  support, struts, use proper frame* function instead of using
+	  Client fields)
+
+2007-06-23 16:50  olivier
+
+	* mcs-plugin/workspaces.c, mcs-plugin/xfwm4_plugin.c,
+	  mcs-plugin/xfwm4_plugin.h, mcs-plugin/xfwm4_shortcuteditor.c,
+	  src/client.c, src/client.h, src/events.c, src/frame.c,
+	  src/screen.c, src/settings.c, src/settings.h,
+	  themes/default.keys/keythemerc: Add window fill function (Bug
+	  #2319), patch from Stephan Arts (psybsd@gmail.com) applied with
+	  changes
+
+2007-06-21 22:21  olivier
+
+	* src/client.c, src/display.c, src/display.h, src/hints.c,
+	  src/hints.h, src/mypixmap.c: Fix xfwm4 hanging with gtk+-2.11.x
+	  (Bug #3346) - Patch based on a similar fix for Metacity, see
+	  gnome bug #354213
+
+2007-06-20 22:00  piarres
+
+	* po/ChangeLog, po/eu.po: xfwm4 basque translation update
+
+2007-06-20 20:33  maximilian
+
+	* po/ChangeLog, po/en_GB.po: * en_GB.po: British English
+	  translations updated for trunk
+	  * ka.po: Georgian translation update for Xfce 4.4
+	  * nl.po: Updated xfcalendar's Dutch translation for Xfce 4.4
+
+2007-06-17 07:28  olivier
+
+	* src/screen.c: Add missing pixmap inits
+
+2007-06-16 23:15  olivier
+
+	* src/client.c, src/display.h, src/frame.c, src/frame.h,
+	  src/settings.c: Plug a pixmap leak in the new button prelight
+	  code, and a grab that was leaking since 4.2.
+
+2007-06-13 22:20  olivier
+
+	* src/client.c, src/client.h, src/frame.c, src/settings.c: A bit
+	  more cleanup and stuff
+
+2007-06-12 23:03  olivier
+
+	* src/client.c, src/client.h, src/compositor.c, src/compositor.h,
+	  src/display.c, src/display.h, src/event_filter.c,
+	  src/event_filter.h, src/events.c, src/events.h, src/focus.c,
+	  src/focus.h, src/frame.c, src/frame.h, src/hints.c, src/hints.h,
+	  src/icons.c, src/icons.h, src/keyboard.c, src/keyboard.h,
+	  src/main.c, src/menu.c, src/menu.h, src/misc.c, src/misc.h,
+	  src/mypixmap.c, src/mypixmap.h, src/mywindow.c, src/mywindow.h,
+	  src/netwm.c, src/netwm.h, src/parserc.c, src/parserc.h,
+	  src/placement.c, src/placement.h, src/poswin.c, src/poswin.h,
+	  src/screen.c, src/screen.h, src/session.c, src/session.h,
+	  src/settings.c, src/settings.h, src/spinning_cursor.c,
+	  src/spinning_cursor.h, src/stacking.c, src/stacking.h,
+	  src/startup_notification.c, src/startup_notification.h,
+	  src/tabwin.c, src/tabwin.h, src/transients.c, src/transients.h,
+	  src/ui_style.c, src/ui_style.h, src/wireframe.c, src/wireframe.h,
+	  src/workspaces.c, src/workspaces.h: Rework a bit the code for
+	  hilight and frame drawing
+
+2007-06-12 19:14  olivier
+
+	* src/client.c: Keep button hilighted after a press if relevant
+
+2007-06-11 22:04  olivier
+
+	* themes/daloa/close-prelight.png, themes/daloa/close-prelight.svg,
+	  themes/daloa/close-prelight.xpm, themes/daloa/hide-prelight.png,
+	  themes/daloa/hide-prelight.svg, themes/daloa/hide-prelight.xpm,
+	  themes/daloa/maximize-prelight.png,
+	  themes/daloa/maximize-prelight.svg,
+	  themes/daloa/maximize-prelight.xpm,
+	  themes/daloa/maximize-toggled-prelight.png,
+	  themes/daloa/maximize-toggled-prelight.svg,
+	  themes/daloa/maximize-toggled-prelight.xpm,
+	  themes/daloa/menu-prelight.png, themes/daloa/menu-prelight.svg,
+	  themes/daloa/menu-prelight.xpm, themes/daloa/shade-prelight.png,
+	  themes/daloa/shade-prelight.svg, themes/daloa/shade-prelight.xpm,
+	  themes/daloa/shade-toggled-prelight.png,
+	  themes/daloa/shade-toggled-prelight.svg,
+	  themes/daloa/shade-toggled-prelight.xpm,
+	  themes/daloa/stick-prelight.png, themes/daloa/stick-prelight.svg,
+	  themes/daloa/stick-prelight.xpm,
+	  themes/daloa/stick-toggled-prelight.png,
+	  themes/daloa/stick-toggled-prelight.svg,
+	  themes/daloa/stick-toggled-prelight.xpm,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-prelight.xpm,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-prelight.xpm,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-prelight.xpm,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-prelight.xpm,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-prelight.xpm,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-prelight.xpm,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-prelight.xpm,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-prelight.xpm,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-prelight.xpm,
+	  themes/largeprint/close-prelight.png,
+	  themes/largeprint/close-prelight.svg,
+	  themes/largeprint/close-prelight.xpm,
+	  themes/largeprint/hide-prelight.png,
+	  themes/largeprint/hide-prelight.svg,
+	  themes/largeprint/hide-prelight.xpm,
+	  themes/largeprint/maximize-prelight.png,
+	  themes/largeprint/maximize-prelight.svg,
+	  themes/largeprint/maximize-prelight.xpm,
+	  themes/largeprint/maximize-toggled-prelight.png,
+	  themes/largeprint/maximize-toggled-prelight.svg,
+	  themes/largeprint/maximize-toggled-prelight.xpm,
+	  themes/largeprint/menu-prelight.png,
+	  themes/largeprint/menu-prelight.svg,
+	  themes/largeprint/menu-prelight.xpm,
+	  themes/largeprint/shade-prelight.png,
+	  themes/largeprint/shade-prelight.svg,
+	  themes/largeprint/shade-prelight.xpm,
+	  themes/largeprint/shade-toggled-prelight.png,
+	  themes/largeprint/shade-toggled-prelight.svg,
+	  themes/largeprint/shade-toggled-prelight.xpm,
+	  themes/largeprint/stick-prelight.png,
+	  themes/largeprint/stick-prelight.svg,
+	  themes/largeprint/stick-prelight.xpm,
+	  themes/largeprint/stick-toggled-prelight.png,
+	  themes/largeprint/stick-toggled-prelight.svg,
+	  themes/largeprint/stick-toggled-prelight.xpm: Add missing files
+	  to svn
+
+2007-06-11 22:00  olivier
+
+	* NEWS: Update NEWS
+
+2007-06-11 21:54  olivier
+
+	* themes/daloa/Makefile.am, themes/daloa/bottom-active.png,
+	  themes/daloa/bottom-active.svg, themes/daloa/bottom-inactive.png,
+	  themes/daloa/bottom-inactive.svg,
+	  themes/daloa/bottom-left-active.png,
+	  themes/daloa/bottom-left-active.svg,
+	  themes/daloa/bottom-left-inactive.png,
+	  themes/daloa/bottom-left-inactive.svg,
+	  themes/daloa/bottom-right-active.png,
+	  themes/daloa/bottom-right-active.svg,
+	  themes/daloa/bottom-right-inactive.png,
+	  themes/daloa/bottom-right-inactive.svg,
+	  themes/daloa/close-active.png, themes/daloa/close-active.svg,
+	  themes/daloa/close-inactive.png, themes/daloa/close-inactive.svg,
+	  themes/daloa/close-pressed.png, themes/daloa/close-pressed.svg,
+	  themes/daloa/hide-active.png, themes/daloa/hide-active.svg,
+	  themes/daloa/hide-inactive.png, themes/daloa/hide-inactive.svg,
+	  themes/daloa/hide-pressed.png, themes/daloa/hide-pressed.svg,
+	  themes/daloa/left-active.png, themes/daloa/left-active.svg,
+	  themes/daloa/left-inactive.png, themes/daloa/left-inactive.svg,
+	  themes/daloa/maximize-active.png,
+	  themes/daloa/maximize-active.svg,
+	  themes/daloa/maximize-inactive.png,
+	  themes/daloa/maximize-inactive.svg,
+	  themes/daloa/maximize-pressed.png,
+	  themes/daloa/maximize-pressed.svg,
+	  themes/daloa/maximize-toggled-active.png,
+	  themes/daloa/maximize-toggled-active.svg,
+	  themes/daloa/maximize-toggled-inactive.png,
+	  themes/daloa/maximize-toggled-inactive.svg,
+	  themes/daloa/maximize-toggled-pressed.png,
+	  themes/daloa/maximize-toggled-pressed.svg,
+	  themes/daloa/menu-active.png, themes/daloa/menu-active.svg,
+	  themes/daloa/menu-inactive.png, themes/daloa/menu-inactive.svg,
+	  themes/daloa/menu-pressed.png, themes/daloa/menu-pressed.svg,
+	  themes/daloa/right-active.png, themes/daloa/right-active.svg,
+	  themes/daloa/right-inactive.png, themes/daloa/right-inactive.svg,
+	  themes/daloa/shade-active.png, themes/daloa/shade-active.svg,
+	  themes/daloa/shade-inactive.png, themes/daloa/shade-inactive.svg,
+	  themes/daloa/shade-pressed.png, themes/daloa/shade-pressed.svg,
+	  themes/daloa/shade-toggled-active.png,
+	  themes/daloa/shade-toggled-active.svg,
+	  themes/daloa/shade-toggled-inactive.png,
+	  themes/daloa/shade-toggled-inactive.svg,
+	  themes/daloa/shade-toggled-pressed.png,
+	  themes/daloa/shade-toggled-pressed.svg,
+	  themes/daloa/stick-active.png, themes/daloa/stick-active.svg,
+	  themes/daloa/stick-inactive.png, themes/daloa/stick-inactive.svg,
+	  themes/daloa/stick-pressed.png, themes/daloa/stick-pressed.svg,
+	  themes/daloa/stick-toggled-active.png,
+	  themes/daloa/stick-toggled-active.svg,
+	  themes/daloa/stick-toggled-inactive.png,
+	  themes/daloa/stick-toggled-inactive.svg,
+	  themes/daloa/stick-toggled-pressed.png,
+	  themes/daloa/stick-toggled-pressed.svg,
+	  themes/daloa/title-1-active.png, themes/daloa/title-1-active.svg,
+	  themes/daloa/title-1-inactive.png,
+	  themes/daloa/title-1-inactive.svg,
+	  themes/daloa/title-2-active.png, themes/daloa/title-2-active.svg,
+	  themes/daloa/title-2-inactive.png,
+	  themes/daloa/title-2-inactive.svg,
+	  themes/daloa/title-3-active.png, themes/daloa/title-3-active.svg,
+	  themes/daloa/title-3-inactive.png,
+	  themes/daloa/title-3-inactive.svg,
+	  themes/daloa/title-4-active.png, themes/daloa/title-4-active.svg,
+	  themes/daloa/title-4-inactive.png,
+	  themes/daloa/title-4-inactive.svg,
+	  themes/daloa/title-5-active.png, themes/daloa/title-5-active.svg,
+	  themes/daloa/title-5-inactive.png,
+	  themes/daloa/title-5-inactive.svg,
+	  themes/daloa/top-left-active.png,
+	  themes/daloa/top-left-active.svg,
+	  themes/daloa/top-left-inactive.png,
+	  themes/daloa/top-left-inactive.svg,
+	  themes/daloa/top-right-active.png,
+	  themes/daloa/top-right-active.svg,
+	  themes/daloa/top-right-inactive.png,
+	  themes/daloa/top-right-inactive.svg, themes/default/Makefile.am,
+	  themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/left-active.png, themes/default/left-active.svg,
+	  themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/right-active.png, themes/default/right-active.svg,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/largeprint/Makefile.am,
+	  themes/largeprint/bottom-active.png,
+	  themes/largeprint/bottom-active.svg,
+	  themes/largeprint/bottom-inactive.png,
+	  themes/largeprint/bottom-inactive.svg,
+	  themes/largeprint/bottom-left-active.png,
+	  themes/largeprint/bottom-left-active.svg,
+	  themes/largeprint/bottom-left-inactive.png,
+	  themes/largeprint/bottom-left-inactive.svg,
+	  themes/largeprint/bottom-right-active.png,
+	  themes/largeprint/bottom-right-active.svg,
+	  themes/largeprint/bottom-right-inactive.png,
+	  themes/largeprint/bottom-right-inactive.svg,
+	  themes/largeprint/close-active.png,
+	  themes/largeprint/close-active.svg,
+	  themes/largeprint/close-inactive.png,
+	  themes/largeprint/close-inactive.svg,
+	  themes/largeprint/close-pressed.png,
+	  themes/largeprint/close-pressed.svg,
+	  themes/largeprint/hide-active.png,
+	  themes/largeprint/hide-active.svg,
+	  themes/largeprint/hide-inactive.png,
+	  themes/largeprint/hide-inactive.svg,
+	  themes/largeprint/hide-pressed.png,
+	  themes/largeprint/hide-pressed.svg,
+	  themes/largeprint/left-active.png,
+	  themes/largeprint/left-active.svg,
+	  themes/largeprint/left-inactive.png,
+	  themes/largeprint/left-inactive.svg,
+	  themes/largeprint/maximize-active.png,
+	  themes/largeprint/maximize-active.svg,
+	  themes/largeprint/maximize-inactive.png,
+	  themes/largeprint/maximize-inactive.svg,
+	  themes/largeprint/maximize-pressed.png,
+	  themes/largeprint/maximize-pressed.svg,
+	  themes/largeprint/maximize-toggled-active.png,
+	  themes/largeprint/maximize-toggled-active.svg,
+	  themes/largeprint/maximize-toggled-inactive.png,
+	  themes/largeprint/maximize-toggled-inactive.svg,
+	  themes/largeprint/maximize-toggled-pressed.png,
+	  themes/largeprint/maximize-toggled-pressed.svg,
+	  themes/largeprint/menu-active.png,
+	  themes/largeprint/menu-active.svg,
+	  themes/largeprint/menu-inactive.png,
+	  themes/largeprint/menu-inactive.svg,
+	  themes/largeprint/menu-pressed.png,
+	  themes/largeprint/menu-pressed.svg,
+	  themes/largeprint/right-active.png,
+	  themes/largeprint/right-active.svg,
+	  themes/largeprint/right-inactive.png,
+	  themes/largeprint/right-inactive.svg,
+	  themes/largeprint/shade-active.png,
+	  themes/largeprint/shade-active.svg,
+	  themes/largeprint/shade-inactive.png,
+	  themes/largeprint/shade-inactive.svg,
+	  themes/largeprint/shade-pressed.png,
+	  themes/largeprint/shade-pressed.svg,
+	  themes/largeprint/shade-toggled-active.png,
+	  themes/largeprint/shade-toggled-active.svg,
+	  themes/largeprint/shade-toggled-inactive.png,
+	  themes/largeprint/shade-toggled-inactive.svg,
+	  themes/largeprint/shade-toggled-pressed.png,
+	  themes/largeprint/shade-toggled-pressed.svg,
+	  themes/largeprint/stick-active.png,
+	  themes/largeprint/stick-active.svg,
+	  themes/largeprint/stick-inactive.png,
+	  themes/largeprint/stick-inactive.svg,
+	  themes/largeprint/stick-pressed.png,
+	  themes/largeprint/stick-pressed.svg,
+	  themes/largeprint/stick-toggled-active.png,
+	  themes/largeprint/stick-toggled-active.svg,
+	  themes/largeprint/stick-toggled-inactive.png,
+	  themes/largeprint/stick-toggled-inactive.svg,
+	  themes/largeprint/stick-toggled-pressed.png,
+	  themes/largeprint/stick-toggled-pressed.svg,
+	  themes/largeprint/title-1-active.png,
+	  themes/largeprint/title-1-active.svg,
+	  themes/largeprint/title-1-inactive.png,
+	  themes/largeprint/title-1-inactive.svg,
+	  themes/largeprint/title-2-active.png,
+	  themes/largeprint/title-2-active.svg,
+	  themes/largeprint/title-2-inactive.png,
+	  themes/largeprint/title-2-inactive.svg,
+	  themes/largeprint/title-3-active.png,
+	  themes/largeprint/title-3-active.svg,
+	  themes/largeprint/title-3-inactive.png,
+	  themes/largeprint/title-3-inactive.svg,
+	  themes/largeprint/title-4-active.png,
+	  themes/largeprint/title-4-active.svg,
+	  themes/largeprint/title-4-inactive.png,
+	  themes/largeprint/title-4-inactive.svg,
+	  themes/largeprint/title-5-active.png,
+	  themes/largeprint/title-5-active.svg,
+	  themes/largeprint/title-5-inactive.png,
+	  themes/largeprint/title-5-inactive.svg,
+	  themes/largeprint/top-left-active.png,
+	  themes/largeprint/top-left-active.svg,
+	  themes/largeprint/top-left-inactive.png,
+	  themes/largeprint/top-left-inactive.svg,
+	  themes/largeprint/top-right-active.png,
+	  themes/largeprint/top-right-active.svg,
+	  themes/largeprint/top-right-inactive.png,
+	  themes/largeprint/top-right-inactive.svg: ...and update some
+	  themes to use it.
+
+2007-06-11 21:53  olivier
+
+	* src/client.c, src/client.h, src/compositor.c, src/display.c,
+	  src/display.h, src/events.c, src/frame.c, src/mywindow.c,
+	  src/mywindow.h, src/screen.c, src/screen.h, src/settings.c,
+	  src/stacking.c, src/transients.c: Add support for button prelight
+	  in windows frame
+
+2007-06-11 21:10  maximilian
+
+	* po/ChangeLog, po/de.po: * de.po: Small fix in the xfce4-session
+	  package and updated the xfcalendar and xfwm4 translations
+
+2007-06-10 23:25  maximilian
+
+	* po/ChangeLog, po/fr.po: * nb_NO: Updated some Norwegian
+	  translations and added one for Xfmedia
+	  * pt_PT: Added European Portuguese translations
+	  * Changed my email address
+
+2007-06-03 16:14  olivier
+
+	* src/frame.c: Use full height for regular title pixmap
+
+2007-06-03 15:35  olivier
+
+	* src/placement.c, src/placement.h: Fix dialogs and modals without
+	  parents not being automatically centered like before (#Bug #3278)
+
+2007-06-03 09:44  olivier
+
+	* src/client.c, src/display.h, src/frame.c, src/screen.c,
+	  src/settings.c, src/settings.h: Try to make things less confusing
+
+2007-06-02 23:52  olivier
+
+	* AUTHORS, NEWS, src/client.c, src/client.h, src/display.c,
+	  src/display.h, src/events.c, src/frame.c, src/frame.h,
+	  src/screen.c, src/screen.h, src/settings.c, src/settings.h: Add
+	  resize from top of window, based on a patch by Phil Vandry
+	  <vandry@tzone.org>, reworked to allow compatibility with
+	  unchanged themes, bug fixes, and various improvements
+
+2007-05-09 20:55  olivier
+
+	* mcs-plugin/margins.c, mcs-plugin/margins.h,
+	  mcs-plugin/wmtweaks_plugin.c, mcs-plugin/workspaces.c,
+	  mcs-plugin/workspaces.h, mcs-plugin/workspaces_plugin.c,
+	  mcs-plugin/workspaces_plugin.h, mcs-plugin/xfwm4_plugin.c,
+	  mcs-plugin/xfwm4_plugin.h, mcs-plugin/xfwm4_shortcuteditor.c,
+	  mcs-plugin/xfwm4_shortcuteditor.h, src/client.c, src/client.h,
+	  src/compositor.c, src/compositor.h, src/display.c, src/display.h,
+	  src/event_filter.c, src/event_filter.h, src/events.c,
+	  src/events.h, src/focus.c, src/focus.h, src/frame.c, src/frame.h,
+	  src/hints.c, src/hints.h, src/icons.c, src/icons.h,
+	  src/keyboard.c, src/keyboard.h, src/main.c, src/menu.c,
+	  src/menu.h, src/misc.c, src/misc.h, src/mypixmap.c,
+	  src/mypixmap.h, src/mywindow.c, src/mywindow.h, src/netwm.c,
+	  src/netwm.h, src/parserc.c, src/parserc.h, src/placement.c,
+	  src/placement.h, src/poswin.c, src/poswin.h, src/screen.c,
+	  src/screen.h, src/session.c, src/session.h, src/settings.c,
+	  src/settings.h, src/spinning_cursor.c, src/spinning_cursor.h,
+	  src/stacking.c, src/stacking.h, src/startup_notification.c,
+	  src/startup_notification.h, src/tabwin.c, src/tabwin.h,
+	  src/transients.c, src/transients.h, src/ui_style.c,
+	  src/ui_style.h, src/wireframe.c, src/wireframe.h,
+	  src/workspaces.c, src/workspaces.h: Cleanup
+
+2007-05-09 19:54  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.svg, themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm, themes/default/right-active.png,
+	  themes/default/right-active.svg,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/default/top-right-inactive.xpm,
+	  themes/largeprint/bottom-active.png,
+	  themes/largeprint/bottom-active.svg,
+	  themes/largeprint/bottom-active.xpm,
+	  themes/largeprint/bottom-inactive.png,
+	  themes/largeprint/bottom-inactive.svg,
+	  themes/largeprint/bottom-inactive.xpm,
+	  themes/largeprint/bottom-left-active.png,
+	  themes/largeprint/bottom-left-active.svg,
+	  themes/largeprint/bottom-left-active.xpm,
+	  themes/largeprint/bottom-left-inactive.png,
+	  themes/largeprint/bottom-left-inactive.svg,
+	  themes/largeprint/bottom-left-inactive.xpm,
+	  themes/largeprint/bottom-right-active.png,
+	  themes/largeprint/bottom-right-active.svg,
+	  themes/largeprint/bottom-right-active.xpm,
+	  themes/largeprint/bottom-right-inactive.png,
+	  themes/largeprint/bottom-right-inactive.svg,
+	  themes/largeprint/bottom-right-inactive.xpm,
+	  themes/largeprint/close-active.png,
+	  themes/largeprint/close-active.svg,
+	  themes/largeprint/close-active.xpm,
+	  themes/largeprint/close-inactive.png,
+	  themes/largeprint/close-inactive.svg,
+	  themes/largeprint/close-inactive.xpm,
+	  themes/largeprint/close-pressed.png,
+	  themes/largeprint/close-pressed.svg,
+	  themes/largeprint/close-pressed.xpm,
+	  themes/largeprint/hide-active.png,
+	  themes/largeprint/hide-active.svg,
+	  themes/largeprint/hide-active.xpm,
+	  themes/largeprint/hide-inactive.png,
+	  themes/largeprint/hide-inactive.svg,
+	  themes/largeprint/hide-inactive.xpm,
+	  themes/largeprint/hide-pressed.png,
+	  themes/largeprint/hide-pressed.svg,
+	  themes/largeprint/hide-pressed.xpm,
+	  themes/largeprint/left-active.png,
+	  themes/largeprint/left-active.svg,
+	  themes/largeprint/left-active.xpm,
+	  themes/largeprint/left-inactive.png,
+	  themes/largeprint/left-inactive.svg,
+	  themes/largeprint/left-inactive.xpm,
+	  themes/largeprint/maximize-active.png,
+	  themes/largeprint/maximize-active.svg,
+	  themes/largeprint/maximize-active.xpm,
+	  themes/largeprint/maximize-inactive.png,
+	  themes/largeprint/maximize-inactive.svg,
+	  themes/largeprint/maximize-inactive.xpm,
+	  themes/largeprint/maximize-pressed.png,
+	  themes/largeprint/maximize-pressed.svg,
+	  themes/largeprint/maximize-pressed.xpm,
+	  themes/largeprint/maximize-toggled-active.png,
+	  themes/largeprint/maximize-toggled-active.svg,
+	  themes/largeprint/maximize-toggled-active.xpm,
+	  themes/largeprint/maximize-toggled-inactive.png,
+	  themes/largeprint/maximize-toggled-inactive.svg,
+	  themes/largeprint/maximize-toggled-inactive.xpm,
+	  themes/largeprint/maximize-toggled-pressed.png,
+	  themes/largeprint/maximize-toggled-pressed.svg,
+	  themes/largeprint/maximize-toggled-pressed.xpm,
+	  themes/largeprint/menu-active.png,
+	  themes/largeprint/menu-active.svg,
+	  themes/largeprint/menu-active.xpm,
+	  themes/largeprint/menu-inactive.png,
+	  themes/largeprint/menu-inactive.svg,
+	  themes/largeprint/menu-inactive.xpm,
+	  themes/largeprint/menu-pressed.png,
+	  themes/largeprint/menu-pressed.svg,
+	  themes/largeprint/menu-pressed.xpm,
+	  themes/largeprint/right-active.png,
+	  themes/largeprint/right-active.svg,
+	  themes/largeprint/right-active.xpm,
+	  themes/largeprint/right-inactive.png,
+	  themes/largeprint/right-inactive.svg,
+	  themes/largeprint/right-inactive.xpm,
+	  themes/largeprint/shade-active.png,
+	  themes/largeprint/shade-active.svg,
+	  themes/largeprint/shade-active.xpm,
+	  themes/largeprint/shade-inactive.png,
+	  themes/largeprint/shade-inactive.svg,
+	  themes/largeprint/shade-inactive.xpm,
+	  themes/largeprint/shade-pressed.png,
+	  themes/largeprint/shade-pressed.svg,
+	  themes/largeprint/shade-pressed.xpm,
+	  themes/largeprint/shade-toggled-active.png,
+	  themes/largeprint/shade-toggled-active.svg,
+	  themes/largeprint/shade-toggled-active.xpm,
+	  themes/largeprint/shade-toggled-inactive.png,
+	  themes/largeprint/shade-toggled-inactive.svg,
+	  themes/largeprint/shade-toggled-inactive.xpm,
+	  themes/largeprint/shade-toggled-pressed.png,
+	  themes/largeprint/shade-toggled-pressed.svg,
+	  themes/largeprint/shade-toggled-pressed.xpm,
+	  themes/largeprint/stick-active.png,
+	  themes/largeprint/stick-active.svg,
+	  themes/largeprint/stick-active.xpm,
+	  themes/largeprint/stick-inactive.png,
+	  themes/largeprint/stick-inactive.svg,
+	  themes/largeprint/stick-inactive.xpm,
+	  themes/largeprint/stick-pressed.png,
+	  themes/largeprint/stick-pressed.svg,
+	  themes/largeprint/stick-pressed.xpm,
+	  themes/largeprint/stick-toggled-active.png,
+	  themes/largeprint/stick-toggled-active.svg,
+	  themes/largeprint/stick-toggled-active.xpm,
+	  themes/largeprint/stick-toggled-inactive.png,
+	  themes/largeprint/stick-toggled-inactive.svg,
+	  themes/largeprint/stick-toggled-inactive.xpm,
+	  themes/largeprint/stick-toggled-pressed.png,
+	  themes/largeprint/stick-toggled-pressed.svg,
+	  themes/largeprint/stick-toggled-pressed.xpm,
+	  themes/largeprint/themerc, themes/largeprint/title-1-active.png,
+	  themes/largeprint/title-1-active.svg,
+	  themes/largeprint/title-1-active.xpm,
+	  themes/largeprint/title-1-inactive.png,
+	  themes/largeprint/title-1-inactive.svg,
+	  themes/largeprint/title-1-inactive.xpm,
+	  themes/largeprint/title-2-active.png,
+	  themes/largeprint/title-2-active.svg,
+	  themes/largeprint/title-2-active.xpm,
+	  themes/largeprint/title-2-inactive.png,
+	  themes/largeprint/title-2-inactive.svg,
+	  themes/largeprint/title-2-inactive.xpm,
+	  themes/largeprint/title-3-active.png,
+	  themes/largeprint/title-3-active.svg,
+	  themes/largeprint/title-3-active.xpm,
+	  themes/largeprint/title-3-inactive.png,
+	  themes/largeprint/title-3-inactive.svg,
+	  themes/largeprint/title-3-inactive.xpm,
+	  themes/largeprint/title-4-active.png,
+	  themes/largeprint/title-4-active.svg,
+	  themes/largeprint/title-4-active.xpm,
+	  themes/largeprint/title-4-inactive.png,
+	  themes/largeprint/title-4-inactive.svg,
+	  themes/largeprint/title-4-inactive.xpm,
+	  themes/largeprint/title-5-active.png,
+	  themes/largeprint/title-5-active.svg,
+	  themes/largeprint/title-5-active.xpm,
+	  themes/largeprint/title-5-inactive.png,
+	  themes/largeprint/title-5-inactive.svg,
+	  themes/largeprint/title-5-inactive.xpm,
+	  themes/largeprint/top-left-active.png,
+	  themes/largeprint/top-left-active.svg,
+	  themes/largeprint/top-left-active.xpm,
+	  themes/largeprint/top-left-inactive.png,
+	  themes/largeprint/top-left-inactive.svg,
+	  themes/largeprint/top-left-inactive.xpm,
+	  themes/largeprint/top-right-active.png,
+	  themes/largeprint/top-right-active.svg,
+	  themes/largeprint/top-right-active.xpm,
+	  themes/largeprint/top-right-inactive.png,
+	  themes/largeprint/top-right-inactive.svg,
+	  themes/largeprint/top-right-inactive.xpm: New default and
+	  largeprint themes
+
+2007-05-09 19:51  olivier
+
+	* mcs-plugin/xfwm4_shortcuteditor.c, src/events.c, src/screen.c,
+	  src/settings.c, src/settings.h, themes/default.keys/keythemerc:
+	  Add shortcut for above state (Bug #629)
+
+2007-05-02 21:08  olivier
+
+	* src/keyboard.c: Code cleanup
+
+2007-05-02 05:40  olivier
+
+	* src/keyboard.c: Fix memleak in modifier mapping
+
+2007-05-01 22:22  olivier
+
+	* src/keyboard.c: Change modifier mapping (Bug #3194)
+
+2007-05-01 15:24  olivier
+
+	* src/keyboard.c: Small cleanup
+
+2007-05-01 15:08  olivier
+
+	* src/keyboard.c: Small cleanup
+
+2007-05-01 14:32  olivier
+
+	* src/events.c, src/keyboard.c, src/keyboard.h: Revert to modifier
+	  mapping from xfwm4 version 4.0 (Bug #3194)
+
+2007-04-27 21:33  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/left-active.png, themes/default/left-inactive.png,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/right-active.png,
+	  themes/default/right-inactive.png,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/largeprint/bottom-active.png,
+	  themes/largeprint/bottom-inactive.png,
+	  themes/largeprint/bottom-left-active.png,
+	  themes/largeprint/bottom-left-inactive.png,
+	  themes/largeprint/bottom-right-active.png,
+	  themes/largeprint/bottom-right-inactive.png,
+	  themes/largeprint/close-active.png,
+	  themes/largeprint/close-active.svg,
+	  themes/largeprint/close-inactive.png,
+	  themes/largeprint/close-inactive.svg,
+	  themes/largeprint/close-pressed.png,
+	  themes/largeprint/close-pressed.svg,
+	  themes/largeprint/hide-active.png,
+	  themes/largeprint/hide-active.svg,
+	  themes/largeprint/hide-inactive.png,
+	  themes/largeprint/hide-inactive.svg,
+	  themes/largeprint/hide-pressed.png,
+	  themes/largeprint/hide-pressed.svg,
+	  themes/largeprint/left-active.png,
+	  themes/largeprint/left-inactive.png,
+	  themes/largeprint/maximize-active.png,
+	  themes/largeprint/maximize-active.svg,
+	  themes/largeprint/maximize-inactive.png,
+	  themes/largeprint/maximize-inactive.svg,
+	  themes/largeprint/maximize-pressed.png,
+	  themes/largeprint/maximize-pressed.svg,
+	  themes/largeprint/maximize-toggled-active.png,
+	  themes/largeprint/maximize-toggled-active.svg,
+	  themes/largeprint/maximize-toggled-inactive.png,
+	  themes/largeprint/maximize-toggled-inactive.svg,
+	  themes/largeprint/maximize-toggled-pressed.png,
+	  themes/largeprint/maximize-toggled-pressed.svg,
+	  themes/largeprint/menu-active.png,
+	  themes/largeprint/menu-active.svg,
+	  themes/largeprint/menu-inactive.png,
+	  themes/largeprint/menu-inactive.svg,
+	  themes/largeprint/menu-pressed.png,
+	  themes/largeprint/menu-pressed.svg,
+	  themes/largeprint/right-active.png,
+	  themes/largeprint/right-inactive.png,
+	  themes/largeprint/shade-active.png,
+	  themes/largeprint/shade-active.svg,
+	  themes/largeprint/shade-inactive.png,
+	  themes/largeprint/shade-inactive.svg,
+	  themes/largeprint/shade-pressed.png,
+	  themes/largeprint/shade-pressed.svg,
+	  themes/largeprint/shade-toggled-active.png,
+	  themes/largeprint/shade-toggled-active.svg,
+	  themes/largeprint/shade-toggled-inactive.png,
+	  themes/largeprint/shade-toggled-inactive.svg,
+	  themes/largeprint/shade-toggled-pressed.png,
+	  themes/largeprint/shade-toggled-pressed.svg,
+	  themes/largeprint/stick-active.png,
+	  themes/largeprint/stick-active.svg,
+	  themes/largeprint/stick-inactive.png,
+	  themes/largeprint/stick-inactive.svg,
+	  themes/largeprint/stick-pressed.png,
+	  themes/largeprint/stick-pressed.svg,
+	  themes/largeprint/stick-toggled-active.png,
+	  themes/largeprint/stick-toggled-active.svg,
+	  themes/largeprint/stick-toggled-inactive.png,
+	  themes/largeprint/stick-toggled-inactive.svg,
+	  themes/largeprint/stick-toggled-pressed.png,
+	  themes/largeprint/stick-toggled-pressed.svg,
+	  themes/largeprint/title-1-active.png,
+	  themes/largeprint/title-1-active.svg,
+	  themes/largeprint/title-1-inactive.png,
+	  themes/largeprint/title-1-inactive.svg,
+	  themes/largeprint/title-2-active.png,
+	  themes/largeprint/title-2-active.svg,
+	  themes/largeprint/title-2-inactive.png,
+	  themes/largeprint/title-2-inactive.svg,
+	  themes/largeprint/title-3-active.png,
+	  themes/largeprint/title-3-active.svg,
+	  themes/largeprint/title-3-inactive.png,
+	  themes/largeprint/title-3-inactive.svg,
+	  themes/largeprint/title-4-active.png,
+	  themes/largeprint/title-4-active.svg,
+	  themes/largeprint/title-4-inactive.png,
+	  themes/largeprint/title-4-inactive.svg,
+	  themes/largeprint/title-5-active.png,
+	  themes/largeprint/title-5-active.svg,
+	  themes/largeprint/title-5-inactive.png,
+	  themes/largeprint/title-5-inactive.svg,
+	  themes/largeprint/top-left-active.png,
+	  themes/largeprint/top-left-active.svg,
+	  themes/largeprint/top-left-inactive.png,
+	  themes/largeprint/top-left-inactive.svg,
+	  themes/largeprint/top-right-active.png,
+	  themes/largeprint/top-right-active.svg,
+	  themes/largeprint/top-right-inactive.png,
+	  themes/largeprint/top-right-inactive.svg: Theme stuff
+
+2007-04-27 20:01  olivier
+
+	* src/events.c, src/settings.h: Fix wrong count of key shortcut
+	  causing switch to last workspace on modifier key press if no
+	  window is focused (Bug #3191)
+
+2007-04-27 07:13  sas
+
+	* po/hu.po: hu trunk: wm @ squeeze updated
+
+2007-04-26 20:00  olivier
+
+	* themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.xpm,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.xpm,
+	  themes/default/menu-pressed.xpm, themes/default/right-active.xpm,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-pressed.xpm,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.xpm,
+	  themes/largeprint/bottom-active.xpm,
+	  themes/largeprint/bottom-inactive.xpm,
+	  themes/largeprint/bottom-left-active.xpm,
+	  themes/largeprint/bottom-left-inactive.xpm,
+	  themes/largeprint/bottom-right-active.xpm,
+	  themes/largeprint/bottom-right-inactive.xpm,
+	  themes/largeprint/close-active.xpm,
+	  themes/largeprint/close-inactive.xpm,
+	  themes/largeprint/close-pressed.xpm,
+	  themes/largeprint/hide-active.xpm,
+	  themes/largeprint/hide-inactive.xpm,
+	  themes/largeprint/hide-pressed.xpm,
+	  themes/largeprint/left-active.xpm,
+	  themes/largeprint/left-inactive.xpm,
+	  themes/largeprint/maximize-active.xpm,
+	  themes/largeprint/maximize-inactive.xpm,
+	  themes/largeprint/maximize-pressed.xpm,
+	  themes/largeprint/maximize-toggled-active.xpm,
+	  themes/largeprint/maximize-toggled-inactive.xpm,
+	  themes/largeprint/maximize-toggled-pressed.xpm,
+	  themes/largeprint/menu-active.xpm,
+	  themes/largeprint/menu-inactive.xpm,
+	  themes/largeprint/menu-pressed.xpm,
+	  themes/largeprint/right-active.xpm,
+	  themes/largeprint/right-inactive.xpm,
+	  themes/largeprint/shade-active.xpm,
+	  themes/largeprint/shade-inactive.xpm,
+	  themes/largeprint/shade-pressed.xpm,
+	  themes/largeprint/shade-toggled-active.xpm,
+	  themes/largeprint/shade-toggled-inactive.xpm,
+	  themes/largeprint/shade-toggled-pressed.xpm,
+	  themes/largeprint/stick-active.xpm,
+	  themes/largeprint/stick-inactive.xpm,
+	  themes/largeprint/stick-pressed.xpm,
+	  themes/largeprint/stick-toggled-active.xpm,
+	  themes/largeprint/stick-toggled-inactive.xpm,
+	  themes/largeprint/stick-toggled-pressed.xpm,
+	  themes/largeprint/title-1-active.xpm,
+	  themes/largeprint/title-1-inactive.xpm,
+	  themes/largeprint/title-2-active.xpm,
+	  themes/largeprint/title-2-inactive.xpm,
+	  themes/largeprint/title-3-active.xpm,
+	  themes/largeprint/title-3-inactive.xpm,
+	  themes/largeprint/title-4-active.xpm,
+	  themes/largeprint/title-4-inactive.xpm,
+	  themes/largeprint/title-5-active.xpm,
+	  themes/largeprint/title-5-inactive.xpm,
+	  themes/largeprint/top-left-active.xpm,
+	  themes/largeprint/top-left-inactive.xpm,
+	  themes/largeprint/top-right-active.xpm,
+	  themes/largeprint/top-right-inactive.xpm: Add lighter frame
+	  around window
+
+2007-04-26 19:58  olivier
+
+	* Makefile.am: For some reason, the spec file was removed from
+	  'extra dist' and therefore 'make rpm' fails.
+
+2007-04-22 21:02  olivier
+
+	* src/stacking.c: Fix strick bound checking causing wrong window to
+	  be focused in focus follow mouse (Bug #2781)
+
+2007-04-20 21:28  olivier
+
+	* src/transients.c: Transients for group shouldn't apply to other
+	  transients, or it breaks stacking for some apps, noticeably
+	  mozilla "save as" dialog...
+
+2007-04-19 20:45  olivier
+
+	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
+	  po/cs.po, po/de.po, po/dz.po, po/el.po, po/en_GB.po, po/eo.po,
+	  po/es.po, po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po,
+	  po/fr.po, po/gl.po, po/gu.po, po/he.po, po/hi.po, po/hu.po,
+	  po/it.po, po/ja.po, po/ka.po, po/ko.po, po/lt.po, po/mk.po,
+	  po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po,
+	  po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sq.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po: Update po
+
+2007-04-19 20:28  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2007-04-19 20:21  olivier
 
 	* mcs-plugin/wmtweaks_plugin.c: Fix spacing between items in the
