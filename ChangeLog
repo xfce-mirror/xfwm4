@@ -1,3 +1,172 @@
+2007-09-03 17:30  mmassonnet
+
+	* po/ChangeLog, po/pt_PT.po: * Update Portuguese translations by
+	  Nuno Miguel.
+
+2007-08-28 22:44  omaciel
+
+	* po/ChangeLog, po/pt_BR.po: Updated translations for Brazilian
+	  Portuguese by Fabio Nogueira.
+
+2007-08-23 22:24  pollux
+
+	* po/ChangeLog, po/sk.po: Updated Slovak translations
+
+2007-07-01 07:08  maximilian
+
+	* po/ChangeLog, po/pt_BR.po: Updated the Brazilian Portuguese
+	  translations for the xfwm4 and mousepad packages. Updated a
+	  mysteriously forgotten European Portuguese translation for the
+	  xfdesktop package.
+
+2007-06-26 21:10  olivier
+
+	* NEWS, src/client.c, src/netwm.c: Be more relax with transients,
+	  allow transients to be sticky independently of their parent
+	  window (Bug #3296)
+
+2007-06-21 22:47  olivier
+
+	* NEWS: Typo in NEWS file
+
+2007-06-21 22:28  olivier
+
+	* NEWS, src/client.c, src/display.c, src/display.h, src/hints.c,
+	  src/hints.h: Fix xfwm4 hanging with gtk+-2.11.x (Bug #3346) -
+	  Patch based on a similar fix for Metacity, see gnome bug #354213
+
+2007-06-16 23:17  olivier
+
+	* NEWS, src/client.c, src/settings.c: Plug a leak in mouse button
+	  grab when changing theme
+
+2007-06-16 19:15  maximilian
+
+	* po/ChangeLog, po/nl.po: * nl.po: Updated some Xfce 4.4
+	  translations
+
+2007-06-15 18:01  daichi
+
+	* po/ChangeLog, po/LINGUAS, po/am.po: Added Amharic translations by
+	  Tegegne Tefera <tefera@mekuria.com>.
+
+2007-06-14 20:58  maximilian
+
+	* po/ChangeLog, po/pt_PT.po: * nl.po: Updated Thunar's translation
+	  * ka.po: Updated Xfce 4.0 translations
+	  * pt_PT.po: Updated and added new files to the Xfce 4.4
+	  translations
+
+2007-06-10 23:25  maximilian
+
+	* po/ChangeLog, po/fr.po, po/nb_NO.po: * nb_NO: Updated some
+	  Norwegian translations and added one for Xfmedia
+	  * pt_PT: Added European Portuguese translations
+	  * Changed my email address
+
+2007-06-03 15:33  olivier
+
+	* src/placement.c: Small indentation issue
+
+2007-06-03 15:21  olivier
+
+	* NEWS, src/placement.c, src/placement.h: Fix dialogs and modals
+	  without parents not being automatically centered like before
+	  (#Bug #3278)
+
+2007-06-03 08:21  olivier
+
+	* src/settings.c: Woops, those BUTTON_COUNT/BUTTON_LAST are really
+	  confusing, I should fix that.
+
+2007-06-03 00:00  olivier
+
+	* src/client.c, src/settings.c: Leak fix (backported from a patch
+	  by Phil Vandry <vandry@tzone.org>)
+
+2007-05-24 19:39  olivier
+
+	* doc/C/xfwm4.html, doc/fr/xfwm4.html, doc/it/xfwm4.html: Update
+	  doc
+
+2007-05-15 18:28  jari
+
+	* po/ChangeLog, po/fi.po: Updated Finnish translation.
+
+2007-05-13 08:40  maximilian
+
+	* po/ChangeLog: Updated the Changelogs...
+
+2007-05-13 08:28  maximilian
+
+	* po/nb_NO.po: Updated and added Norwegian Bokmal translations to
+	  the 4.4 branch.
+
+2007-05-07 18:27  maximilian
+
+	* po/ChangeLog, po/it.po: Updated the Italian translations in
+	  branch and updated the AUTHORS files.
+
+2007-05-02 21:08  olivier
+
+	* src/keyboard.c: Code cleanup
+
+2007-05-02 05:47  olivier
+
+	* NEWS, src/keyboard.c: Fix modifier mask not working with all
+	  keynaps (Bug #3194)
+
+2007-05-01 15:03  olivier
+
+	* src/keyboard.c: Small cleanup
+
+2007-05-01 14:38  olivier
+
+	* src/keyboard.c: Revert to modifier mapping from xfwm4 version 4.0
+	  (Bug #3194)
+
+2007-04-27 20:01  olivier
+
+	* NEWS: Update NEWS file
+
+2007-04-27 20:01  olivier
+
+	* Makefile.am, src/events.c, src/settings.h: Fix wrong count of key
+	  shortcut causing switch to last workspace on modifier key press
+	  if no window is focused (Bug #3191), fix spec file missing from
+	  the tar ball causing 'make dist' to fail
+
+2007-04-22 21:04  olivier
+
+	* NEWS, src/stacking.c: Fix strick bound checking causing wrong
+	  window to be focused in focus follow mouse (Bug #2781)
+
+2007-04-20 21:30  olivier
+
+	* NEWS, src/transients.c: Transients for group shouldn't apply to
+	  other transients, or it breaks stacking for some apps, noticeably
+	  mozilla "save as" dialog...
+
+2007-04-16 10:10  piarres
+
+	* po/ChangeLog, po/eu.po: xfwm4 basque translationupdate (4.4)
+
+2007-04-15 11:06  olivier
+
+	* configure.ac.in: Update version
+
+2007-04-14 12:14  olivier
+
+	* ChangeLog, NEWS: Update news and change log
+
+2007-04-14 08:48  erenturkay
+
+	* po/tr.po: ops, forgot to translate
+
+2007-04-11 22:39  olivier
+
+	* src/frame.c: Fix stupid typo
+
 2007-04-09 20:58  olivier
 
 	* NEWS: Forgot to commit

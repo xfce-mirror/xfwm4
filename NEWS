@@ -1,6 +1,8 @@
 4.4.2
 =====
 
+- Improve ICCCM compliance regarding synthetic ConfigureNotify 
+  event (Bug #3610)
 - Be more relax with transients, allow transients to be sticky independently 
   of their parent window (Bug #3296)
 - Fix xfwm4 hanging with gtk+-2.11.x (Bug #3346)
@@ -22,7 +24,7 @@
 
 - Treat dialogs and utility windows as transients for group (bug #3102)
 - Add support for shape input with XShape extension 1.1 (Bug #3092)
-- Make the title button in the xfwm4 settings manager dragable (bug #3000).
+- Make the title button in the xfwm4 settings manager dragable (bug #3000)
 - Fix a misinterpretation of ICCCM about when to send a synthetic 
   configureNotify event (bug #2977).
 - Add new hidden option to instruct xfwm4 not to bring window back on 
@@ -35,7 +37,7 @@
 - Fix the small lag before icon update at first map and when updating all 
   frames at once.
 - Use timeout for frame redraw, check actual WM name changes to work around 
-  apps that falsely update their WM name property (Bug #2810).
+  apps that falsely update their WM name property (Bug #2810)
 - Uodate Hungarian translation
 - Update Catalan translation
 - Update Italian translation
