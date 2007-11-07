@@ -683,6 +683,11 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
     TRACE ("configuring client \"%s\" (0x%lx) %s, type %u", c->name,
         c->window, flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->type);
 
+    px = c->x;
+    py = c->y;
+    pwidth = c->width;
+    pheight = c->height;
+
     if (mask & CWX)
     {
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
@@ -757,11 +762,6 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
          && CONSTRAINED_WINDOW (c)
          && !((c->gravity == StaticGravity) && (c->x == 0) && (c->y == 0)))
     {
-        px = c->x;
-        py = c->y;
-        pwidth = c->width;
-        pheight = c->height;
-
         /* Keep fully visible only on resize */
         clientConstrainPos (c, (mask & (CWWidth | CWHeight)));
 
@@ -769,25 +769,42 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
         {
             mask |= CWX;
         }
+        else
+        {
+            mask &= ~CWX;
+        }
+
         if (c->y != py)
         {
             mask |= CWY;
+        }
+        else
+        {
+            mask &= ~CWY;
         }
 
         if (c->width != pwidth)
         {
             mask |= CWWidth;
         }
+        else
+        {
+            mask &= ~CWWidth;
+        }
         if (c->height != pheight)
         {
             mask |= CWHeight;
+        }
+        else
+        {
+            mask &= ~CWHeight;
         }
     }
 
     clientConfigureWindows (c, wc, mask, flags);
     /*
 
-      We reparent to client window. According to the ICCCM spec, the
+      We reparent the client window. According to the ICCCM spec, the
       WM must send a senthetic event when the window is moved and not resized.
 
       But, since we reparent the window, we must also send a synthetic
