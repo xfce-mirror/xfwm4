@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-10-06 16:58+0300\n"
+"PO-Revision-Date: 2007-10-28 17:24+0300\n"
 "Last-Translator: Rihards Priedītis <rprieditis@inbox.lv>\n"
 "Language-Team: Latvian <rprieditis@inbox.lv>\n"
 "MIME-Version: 1.0\n"
@@ -25,19 +25,19 @@ msgstr "Apmales, ir ekrāna daļa, kur logi netiks novietoti"
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
-msgstr "Kreisā :"
+msgstr "No Kreisās :"
 
 #: ../mcs-plugin/margins.c:187
 msgid "Right :"
-msgstr "Labā :"
+msgstr "No Labās :"
 
 #: ../mcs-plugin/margins.c:207
 msgid "Top :"
-msgstr "Augša :"
+msgstr "No Augšas："
 
 #: ../mcs-plugin/margins.c:227
 msgid "Bottom :"
-msgstr "Apakša :"
+msgstr "No Apakšas :"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
@@ -52,7 +52,7 @@ msgstr "Darbavietas un Apmales"
 #: ../mcs-plugin/wmtweaks_plugin.c:640
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
-msgstr "Darbavieta"
+msgstr "Darbavietas"
 
 #: ../mcs-plugin/workspaces_plugin.c:171
 msgid "Margins"
@@ -72,7 +72,7 @@ msgstr "Pārslēgties uz loga darbavietu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Do nothing"
-msgstr "Nedarīt"
+msgstr "Neko nedarīt"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
@@ -97,7 +97,7 @@ msgstr "Iekļaut slēptos logus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Cycle through windows from all workspaces"
-msgstr "Iet cauri visiem logiem no visām darbavietām"
+msgstr "Ciklēt cauri visiem logiem no visām darbavietām"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:529
 msgid "Cycling"
@@ -109,7 +109,7 @@ msgstr "Aktivizēt fokusa zagšanas novēršanu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Honor the standard ICCCM focus hint"
-msgstr "Godināt ICCM standarta fokusa ieteikumu"
+msgstr "Ievērot ICCM standarta fokusa ieteikumu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
@@ -190,7 +190,7 @@ msgstr "Rādīt tieši pilna ekrāna pārklājuma logus"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
 msgid "Show shadows under dock windows"
-msgstr "Rādīt ēnas zem zem loga doka"
+msgstr "Rādīt ēnas zem loga doka"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
@@ -327,15 +327,15 @@ msgstr "Nekas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Left"
-msgstr "Kreisais"
+msgstr "Pa kreisi"
 
 #: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Center"
-msgstr "Centrs"
+msgstr "Centrēti"
 
 #: ../mcs-plugin/xfwm4_plugin.c:90
 msgid "Right"
-msgstr "Labais"
+msgstr "Pa labi"
 
 #: ../mcs-plugin/xfwm4_plugin.c:589
 msgid "Click and drag buttons to change the layout"
@@ -392,11 +392,11 @@ msgstr "Loga īsceļi"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1580
 msgid "Command"
-msgstr "Kommanda"
+msgstr "Komanda"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1586
 msgid "Shortcut"
-msgstr "Īsceļš"
+msgstr "Īssceļš"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1603
 msgid "Keyboard"
@@ -421,12 +421,12 @@ msgstr "Aizkavēt, pirms logs saņem fokusu"
 #: ../mcs-plugin/xfwm4_plugin.c:1654
 #: ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
-msgstr "Lēni"
+msgstr "Lēns"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1661
 #: ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Fast"
-msgstr "Ātri"
+msgstr "Ātrs"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1682
 msgid "Automatically give focus to newly created windows"
@@ -446,7 +446,7 @@ msgstr "Automātiski pacelt logus, kad tie saņem fokusu"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1709
 msgid "Delay before raising focused window :"
-msgstr "Aizkavēt, pirms celt fokusētos logus :"
+msgstr "Aizkave, pirms celt fokusētos logus :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1744
 msgid "Raise window when clicking inside application window"
@@ -498,11 +498,11 @@ msgstr "Malu pretestība :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1854
 msgid "Resistance|Small"
-msgstr "Maza"
+msgstr "Mazs"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1861
 msgid "Resistance|Wide"
-msgstr "Liela"
+msgstr "Liels"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1883
 msgid "Opaque move and resize"
@@ -636,11 +636,11 @@ msgstr "Pārslēgt uz pilnekrānu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Upper workspace"
-msgstr "Augšas darbavieta"
+msgstr "Augšējā darbavieta"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Bottom workspace"
-msgstr "Apakšas darbavieta"
+msgstr "Apakšējā darbavieta"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Left workspace"
@@ -676,11 +676,11 @@ msgstr "Pārvietot logu uz iepriekšējo darbavietu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:397
 msgid "Move window to upper workspace"
-msgstr "Pārvietot logu uz augšas darbavietu"
+msgstr "Pārvietot logu uz augšējo darbavietu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:398
 msgid "Move window to bottom workspace"
-msgstr "Pārvietot logu uz apakšas darbavietu"
+msgstr "Pārvietot logu uz apakšējo darbavietu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:399
 msgid "Move window to left workspace"
@@ -735,16 +735,16 @@ msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
-"Īsceļu jau lieto !\n"
-"Esat drošs, ka vēlaties izmantot ?"
+"Īssceļu jau lieto !\n"
+"Esat drošs, ka vēlaties to izmantot ?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:858
 msgid "Compose shortcut for :"
-msgstr "Veidot īsceļu priekš:"
+msgstr "Veidot īssceļu priekš:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:862
 msgid "Compose shortcut"
-msgstr "Veidot īsceļu"
+msgstr "Veidot īssceļu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Cancel"
@@ -752,7 +752,7 @@ msgstr "Atcelt"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "No shortcut"
-msgstr "Nav īsceļu"
+msgstr "Nav īssceļu"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/hints.c:84
@@ -803,7 +803,7 @@ msgstr "Atlipi_nāt"
 
 #: ../src/menu.c:49
 msgid "Context _help"
-msgstr "Kontekstuālā _palīdziba"
+msgstr "Kontekstuālā _palīdzība"
 
 #: ../src/menu.c:50
 #: ../src/menu.c:51
