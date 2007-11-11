@@ -1,0 +1,826 @@
+# Latvian translations for xfwm4 package.
+# Copyright (C) 2002-2007 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Rihards Prieditis <rprieditis@inbox.lv>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 4.4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-06-23 19:57+0100\n"
+"PO-Revision-Date: 2007-11-10 14:26+0300\n"
+"Last-Translator: Rihards Priedītis <rprieditis@inbox.lv>\n"
+"Language-Team: Latvian <rprieditis@inbox.lv>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../mcs-plugin/margins.c:130
+msgid "Workspace Margins"
+msgstr "Darbavietas Apmales"
+
+#: ../mcs-plugin/margins.c:136
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Apmales, ir ekrāna daļa, kur logi netiks novietoti"
+
+#: ../mcs-plugin/margins.c:167
+msgid "Left :"
+msgstr "No Kreisās :"
+
+#: ../mcs-plugin/margins.c:187
+msgid "Right :"
+msgstr "No Labās :"
+
+#: ../mcs-plugin/margins.c:207
+msgid "Top :"
+msgstr "No Augšas："
+
+#: ../mcs-plugin/margins.c:227
+msgid "Bottom :"
+msgstr "No Apakšas :"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/workspaces_plugin.c:110
+msgid "Button Label|Workspaces and Margins"
+msgstr "Darbavietas un Apmales"
+
+#: ../mcs-plugin/workspaces_plugin.c:144
+msgid "Workspaces and Margins"
+msgstr "Darbavietas un Apmales"
+
+#: ../mcs-plugin/workspaces_plugin.c:162
+#: ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/workspaces.c:516
+msgid "Workspaces"
+msgstr "Darbavietas"
+
+#: ../mcs-plugin/workspaces_plugin.c:171
+msgid "Margins"
+msgstr "Apmales"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:373
+msgid "None"
+msgstr "Nekas"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:381
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
+msgid "Window Manager Tweaks"
+msgstr "Logu Pārvaldnieka Piedares"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:400
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr "Izlaist logus, kuriem ir uzstādītas īpašības \"izlaist peidžeri\" vai \"izlaist uzdevumjoslu\""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:406
+msgid "Include hidden (i.e. iconified) windows"
+msgstr "Iekļaut slēptos logus"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:412
+msgid "Cycle through windows from all workspaces"
+msgstr "Ciklēt cauri visiem logiem no visām darbavietām"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:417
+msgid "Cycling"
+msgstr "Ciklošana"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:429
+msgid "Activate focus stealing prevention"
+msgstr "Aktivizēt fokusa zagšanas novēršanu"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:435
+msgid "Honor the standard ICCCM focus hint"
+msgstr "Ievērot ICCM standarta fokusa ieteikumu"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:440
+#: ../mcs-plugin/xfwm4_plugin.c:1698
+msgid "Focus"
+msgstr "Fokuss"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:452
+msgid "Key used to grab and move windows"
+msgstr "Taustiņš, ar kuru paķert un pārvietot logu"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:458
+msgid "Raise windows when any mouse button is pressed"
+msgstr "Pacelt logu, kad nospiest jebkurš peles taustiņš"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:465
+msgid "Hide frame of windows when maximized"
+msgstr "Kad maksimizēts, slēpt loga rāmi"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:472
+msgid "Restore original size of maximized windows when moving"
+msgstr "Atgriezt sākotnējo izmēru, kad logs tiek pārvietots"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:478
+msgid "Use edge resistance instead of windows snapping"
+msgstr "Izmantot malu pretestību, nevis logu piesaisti"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Accessibility"
+msgstr "Pieejamība"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:496
+msgid "Switch workspaces using the mouse wheel over the desktop"
+msgstr "Pārslēgt darbavietas izmantojot peli virs darbavirsmas"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:503
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "Atcerēties un atsaukt iepriekšējo darbavietu, kad pārslēdzas ar klaviatūras īsinājumtaustiņiem"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:510
+msgid "Wrap workspaces depending on the actual desktop layout"
+msgstr "Apliekt darbavietas balstoties uz esošo darbavirsmas izkārtojumu"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:517
+msgid "Wrap workspaces when the first or last workspace is reached"
+msgstr "Apliekt darbavietu, kad pirmā vai pēdējā darbavieta ir sasniegta"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:534
+msgid "Minimum size of windows to trigger smart placement"
+msgstr "Minimālais loga izmērs, lai palaistu gudro novietošanu"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:535
+msgid "Size|Small"
+msgstr "Mazs"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:535
+msgid "Size|Large"
+msgstr "Liels"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:539
+msgid "Placement"
+msgstr "Novietojums:"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:559
+msgid "Enable display compositing"
+msgstr "Iespējot attēlošanas kompozīciju"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:573
+msgid "Display full screen overlay windows directly"
+msgstr "Rādīt tieši pilna ekrāna pārklājuma logus"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:579
+msgid "Show shadows under regular windows"
+msgstr "Rādīt ēnas zem parastiem logiem"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:585
+msgid "Show shadows under popup windows"
+msgstr "Rādīt ēnas zem izlecošajiem logiem"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:591
+msgid "Opacity of window decorations"
+msgstr "Loga dekorāciju necaurspīdība"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:591
+#: ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:603
+#: ../mcs-plugin/wmtweaks_plugin.c:609
+#: ../mcs-plugin/wmtweaks_plugin.c:615
+msgid "Transparent"
+msgstr "Caurspīdīgs"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:592
+#: ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:604
+#: ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:616
+msgid "Opaque"
+msgstr "Necaurspīdīgs"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:597
+msgid "Opacity of inactive windows"
+msgstr "Necaurspīdība neaktīvam logam"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:603
+msgid "Opacity of windows during move"
+msgstr "Necaurspīdība loga pārvietošanas brīdī"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:609
+msgid "Opacity of windows during resize"
+msgstr "Necaurspīdība loga izmēru maiņas brīdī"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:615
+msgid "Opacity of popup windows"
+msgstr "Izlecošo logu necaurspīdība"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:620
+msgid "Compositor"
+msgstr "Komponists"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:662
+msgid "Button Label|Window Manager Tweaks"
+msgstr "Loga Pārvaldnieka Piedares"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:781
+#: ../mcs-plugin/xfwm4_plugin.c:2359
+#, c-format
+msgid "These settings cannot work with your current window manager (%s)"
+msgstr "Šie uzstādījumi, nav derīgi pie Jūsu pašreizējā logu pārvaldnieka (%s)"
+
+#: ../mcs-plugin/workspaces.c:329
+msgid "Change name"
+msgstr "Mainīt nosaukumu"
+
+#: ../mcs-plugin/workspaces.c:338
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:482
+#, c-format
+msgid "Workspace %d"
+msgstr "Darbavieta %d"
+
+#: ../mcs-plugin/workspaces.c:348
+msgid "Name:"
+msgstr "Nosaukums:"
+
+#: ../mcs-plugin/workspaces.c:427
+msgid "Click on a workspace name to edit it"
+msgstr "Uzklikšķiniet uz darbavietas, lai rediģētu nosaukumu"
+
+#: ../mcs-plugin/workspaces.c:493
+msgid "Number of workspaces:"
+msgstr "Darbavietu skaits:"
+
+#: ../mcs-plugin/workspaces.c:527
+msgid "Workspace names"
+msgstr "Darbavietas nosaukumi"
+
+#: ../mcs-plugin/xfwm4_plugin.c:68
+msgid "Menu"
+msgstr "Izvēlne"
+
+#: ../mcs-plugin/xfwm4_plugin.c:69
+msgid "Stick"
+msgstr "Pielipināt"
+
+#: ../mcs-plugin/xfwm4_plugin.c:70
+msgid "Shade"
+msgstr "Saritināt"
+
+#: ../mcs-plugin/xfwm4_plugin.c:71
+msgid "Hide"
+msgstr "Slēpt"
+
+#: ../mcs-plugin/xfwm4_plugin.c:72
+msgid "Maximize"
+msgstr "Maksimizēt"
+
+#: ../mcs-plugin/xfwm4_plugin.c:73
+msgid "Close"
+msgstr "Aizvērt"
+
+#: ../mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+msgid "Shade window"
+msgstr "Saritināt logu"
+
+#: ../mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+msgid "Hide window"
+msgstr "Slēpt logu"
+
+#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+msgid "Maximize window"
+msgstr "Maksimizēt logu"
+
+#: ../mcs-plugin/xfwm4_plugin.c:82
+msgid "Nothing"
+msgstr "Nekas"
+
+#: ../mcs-plugin/xfwm4_plugin.c:87
+msgid "Left"
+msgstr "Pa kreisi"
+
+#: ../mcs-plugin/xfwm4_plugin.c:88
+msgid "Center"
+msgstr "Centrēti"
+
+#: ../mcs-plugin/xfwm4_plugin.c:89
+msgid "Right"
+msgstr "Pa labi"
+
+#: ../mcs-plugin/xfwm4_plugin.c:587
+msgid "Click and drag buttons to change the layout"
+msgstr "Uzklikšķiniet un velciet pogas, lai mainītu izkārtojumu"
+
+#: ../mcs-plugin/xfwm4_plugin.c:592
+msgid "Active"
+msgstr "Aktīvs"
+
+#: ../mcs-plugin/xfwm4_plugin.c:603
+msgid "Title"
+msgstr "Virsraksts"
+
+#: ../mcs-plugin/xfwm4_plugin.c:604
+msgid "The window title, it cannot be removed"
+msgstr "Loga virsraksts nav noņemams"
+
+#: ../mcs-plugin/xfwm4_plugin.c:616
+msgid "Hidden"
+msgstr "Slēpts"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1376
+msgid "Font Selection Dialog"
+msgstr "Fonta Izvēles Dialogs"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1441
+msgid "Window Manager"
+msgstr "Logu Pārvaldnieks"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1481
+msgid "Title font"
+msgstr "Virsraksta fonts"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1490
+msgid "Title Alignment"
+msgstr "Virsraksta novietojums"
+
+#. XXX
+#: ../mcs-plugin/xfwm4_plugin.c:1492
+msgid "Text alignment inside title bar :"
+msgstr "Teksta novietojums iekš virsraksta joslas :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1498
+msgid "Button layout"
+msgstr "Pogu izkārtojums"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1503
+msgid "Style"
+msgstr "Stils"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1551
+msgid "Window shortcuts"
+msgstr "Loga īsceļi"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1565
+msgid "Command"
+msgstr "Komanda"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1571
+msgid "Shortcut"
+msgstr "Īssceļš"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1588
+msgid "Keyboard"
+msgstr "Klaviatūra"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1603
+msgid "Focus model"
+msgstr "Fokusa modelis"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1607
+msgid "Click to focus"
+msgstr "Klikšķis fokusē"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1617
+msgid "Focus follows mouse"
+msgstr "Fokus seko pelei"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1628
+msgid "Automatically give focus to newly created windows"
+msgstr "Automātiski sniegt fokusu jaunizveidotam logam"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1632
+msgid "New window focus"
+msgstr "Jauna loga fokuss"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1639
+msgid "Raise on focus"
+msgstr "Pacelt pie fokusa"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1645
+msgid "Automatically raise windows when they receive focus"
+msgstr "Automātiski pacelt logus, kad tie saņem fokusu"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1655
+msgid "Delay before raising focused window :"
+msgstr "Aizkave, pirms celt fokusētos logus :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1662
+msgid "Slow"
+msgstr "Lēns"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1669
+msgid "Fast"
+msgstr "Ātrs"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1690
+msgid "Raise window when clicking inside application window"
+msgstr "Pacelt logu, kad lietotnes logā ir ieklikšķināts "
+
+#: ../mcs-plugin/xfwm4_plugin.c:1694
+msgid "Raise on click"
+msgstr "Celt uz klikšķi"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1712
+msgid "Windows snapping"
+msgstr "Logu piesaiste"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1717
+msgid "Snap windows to screen border"
+msgstr "Piesaistīt logus ekrāna malām"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1723
+msgid "Snap windows to other windows"
+msgstr "Piesaistīt logus citiem logiem"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1734
+msgid "Distance :"
+msgstr "Attālums :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1741
+msgid "Distance|Small"
+msgstr "Mazs"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1748
+msgid "Distance|Wide"
+msgstr "Liels"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1769
+msgid "Wrap workspaces"
+msgstr "Apliekt darbavietu"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1775
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Apliekt darbavietu, kad kursors sasniedz ekrāna malu"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1783
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Apliekt darbavietu, kad velk logu nost no ekrāna"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1793
+msgid "Edge Resistance :"
+msgstr "Malu pretestība :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1800
+msgid "Resistance|Small"
+msgstr "Mazs"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1807
+msgid "Resistance|Wide"
+msgstr "Liels"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1829
+msgid "Opaque move and resize"
+msgstr "Necaurspīdīga pārvietošana un izmēru maiņa"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1834
+msgid "Display content of windows when resizing"
+msgstr "Rādīt loga saturu pie izmēru maiņas"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1840
+msgid "Display content of windows when moving"
+msgstr "Rādīt loga saturu pie pārvietošanas"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1845
+msgid "Double click action"
+msgstr "Dubultklikšķa darbība"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1847
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Veicamā darbība pēc dubultklikšķa uz virsrakstu joslas:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1852
+msgid "Advanced"
+msgstr "Paplašināti"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:1991
+msgid "Button Label|Window Manager"
+msgstr "Logu Pārvaldnieks"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
+msgid "Do you really want to remove this keybinding theme ?"
+msgstr "Vai patiesi vēlaties dzēst taustiņu sasaistes tēmu ?"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+msgid "Add keybinding theme"
+msgstr "Pievienot taustiņu sasaistes tēmu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
+msgid "Enter a name for the theme:"
+msgstr "Ievadiet tēmas nosaukumu:"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
+msgid "A keybinding theme with the same name already exists"
+msgstr "Taustiņu sasaistes tēma ar tadu nosaukumu jau eksistē"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
+msgid "You have to provide a name for the keybinding theme"
+msgstr "Jums jānorāda vārds taustiņu sasaistes tēmai"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+msgid "Close window"
+msgstr "Aizvērt logu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+msgid "Maximize window vertically"
+msgstr "Maksimizēt logu vertikāli"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+msgid "Maximize window horizontally"
+msgstr "Maksimizēt logu horizontāli"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+msgid "Stick window"
+msgstr "Pielipināt logu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+msgid "Cycle windows"
+msgstr "Ciklot starp logiem"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+msgid "Move window up"
+msgstr "Pārvietot logu uz augšu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+msgid "Move window down"
+msgstr "Pārvietot logu uz leju"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+msgid "Move window left"
+msgstr "Pārvietot logu pa kreisi"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+msgid "Move window right"
+msgstr "Pārvietot logu pa labi"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+msgid "Resize window up"
+msgstr "Mainīt izmēru uz augšu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+msgid "Resize window down"
+msgstr "Mainīt izmēru uz leju"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+msgid "Resize window left"
+msgstr "Mainīt izmēru pa kreisi"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+msgid "Resize window right"
+msgstr "Mainīt izmēru pa labi"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+msgid "Cancel move/resize window"
+msgstr "Atcelt pārvietošanu/izmēru maiņu logam"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+msgid "Raise window"
+msgstr "Pacelt logu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+msgid "Lower window"
+msgstr "Nocelt logu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+msgid "Toggle fullscreen"
+msgstr "Pārslēgt uz pilnekrānu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+msgid "Upper workspace"
+msgstr "Augšējā darbavieta"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+msgid "Bottom workspace"
+msgstr "Apakšējā darbavieta"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+msgid "Left workspace"
+msgstr "Kreisā darbavieta"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+msgid "Right workspace"
+msgstr "Labā darbavieta"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+msgid "Next workspace"
+msgstr "Nākamā darbavieta"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+msgid "Previous workspace"
+msgstr "Iepriekšējā darbavieta"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Add workspace"
+msgstr "Pievienot darbavietu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+msgid "Delete workspace"
+msgstr "Dzēst darbavietu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+msgid "Move window to next workspace"
+msgstr "Pārvietot logu uz nākamo darbavietu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+msgid "Move window to previous workspace"
+msgstr "Pārvietot logu uz iepriekšējo darbavietu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+msgid "Move window to upper workspace"
+msgstr "Pārvietot logu uz augšējo darbavietu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+msgid "Move window to bottom workspace"
+msgstr "Pārvietot logu uz apakšējo darbavietu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+msgid "Move window to left workspace"
+msgstr "Pārvietot logu uz kreiso darbavietu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+msgid "Move window to right workspace"
+msgstr "Pārvietot logu uz labo darbavietu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+msgid "Show desktop"
+msgstr "Rādīt darbavirsmu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
+msgid "Cancel window action"
+msgstr "Atcelt loga darbības"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+msgid "Window operations menu"
+msgstr "Loga operāciju izvēlne"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
+#, c-format
+msgid "Move window to workspace %d"
+msgstr "Pārvietot logu uz darbavietu %d"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
+msgid "Cannot open the theme directory !"
+msgstr "Nevar atvērt tēmas direktoriju !"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
+#, c-format
+msgid ""
+"Cannot open %s : \n"
+"%s"
+msgstr ""
+"Nevar atvērt %s : \n"
+"%s"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"Nevar rakstīt iekš %s : \n"
+"%s"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
+msgid ""
+"Shortcut already in use !\n"
+"Are you sure you want to use it ?"
+msgstr ""
+"Īssceļu jau lieto !\n"
+"Esat drošs, ka vēlaties to izmantot ?"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
+msgid "Compose shortcut for :"
+msgstr "Veidot īssceļu priekš:"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+msgid "Compose shortcut"
+msgstr "Veidot īssceļu"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
+msgid "No shortcut"
+msgstr "Nav īssceļu"
+
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:84
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (uz %s)"
+
+#: ../src/main.c:135
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Segmentācijas vaina"
+
+#: ../src/menu.c:40
+msgid "Ma_ximize"
+msgstr "_Maksimizēt"
+
+#: ../src/menu.c:41
+msgid "Un_maximize"
+msgstr "_Atjaunot"
+
+#: ../src/menu.c:42
+msgid "_Hide"
+msgstr "S_lēpt"
+
+#: ../src/menu.c:43
+msgid "Hide _all others"
+msgstr "Slēpt _pārējos"
+
+#: ../src/menu.c:44
+msgid "S_how"
+msgstr "Rā_dīt"
+
+#: ../src/menu.c:45
+msgid "_Shade"
+msgstr "Sar_itināt"
+
+#: ../src/menu.c:46
+msgid "Un_shade"
+msgstr "A_tritināt"
+
+#: ../src/menu.c:47
+msgid "S_tick"
+msgstr "Pie_lipināt"
+
+#: ../src/menu.c:48
+msgid "Uns_tick"
+msgstr "Atlipi_nāt"
+
+#: ../src/menu.c:49
+msgid "Context _help"
+msgstr "Kontekstuālā _palīdzība"
+
+#: ../src/menu.c:50
+#: ../src/menu.c:51
+msgid "Always on top"
+msgstr "Vienmēr priekšā"
+
+#: ../src/menu.c:52
+msgid "Send to..."
+msgstr "Nosūtīt uz..."
+
+#: ../src/menu.c:54
+msgid "_Close"
+msgstr "_Aizvērt"
+
+#: ../src/menu.c:57
+msgid "Destroy"
+msgstr "Iznīcināt"
+
+#: ../src/menu.c:60
+msgid "_Quit"
+msgstr "_Iziet"
+
+#: ../src/menu.c:61
+msgid "Restart"
+msgstr "Restartēt"
+
+#: ../src/menu.c:169
+#, c-format
+msgid "Workspace %i (%s)"
+msgstr "Darbavieta %i (%s)"
+
+#: ../src/menu.c:173
+#, c-format
+msgid "Workspace %i"
+msgstr "Darbavieta %i"
+
+#: ../src/menu.c:409
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: norādi uz GtkMenu neizdevās saķert\n"
+
+#: ../src/settings.c:932
+#, c-format
+msgid "%s: Cannot allocate color %s\n"
+msgstr "%s: Nevar iedalīt krāsu %s\n"
+
+#: ../src/settings.c:938
+#, c-format
+msgid "%s: Cannot parse color %s\n"
+msgstr "%s: Nevar nolasīt krāsu %s\n"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "Loga Pārvaldnieka Uzstādījumi"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 Logu Pārvaldnieka Uzstādījumi"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
+msgid "Advanced Configuration"
+msgstr "Paplašinātā Konfigurācija"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr "Xfce 4 Logu Pārvaldnieka Piedares"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "Darbavietu Uzstādījumi"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 Darbavietu Uzstādījumi"
+
