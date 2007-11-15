@@ -1,0 +1,885 @@
+# translation of xfwm4.po to urdu
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Muhammad Ali Makki <makki.ma@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-06-23 19:57+0100\n"
+"PO-Revision-Date: 2007-10-28 19:52+0200\n"
+"Last-Translator: Muhammad Ali Makki <makki.ma@gmai.com>\n"
+"Language-Team: urdu <makki.ma@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Urdu\n"
+"X-Poedit-Country: PAKISTAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../mcs-plugin/margins.c:130
+msgid "Workspace Margins"
+msgstr "مقام کار مارجن"
+
+#: ../mcs-plugin/margins.c:136
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "مارجن سکرین کے کناروں کا علاقہ ہے جہاں کوئی ونڈو نہیں رکھی جاسکتی"
+
+#: ../mcs-plugin/margins.c:167
+msgid "Left :"
+msgstr "بائیں:"
+
+#: ../mcs-plugin/margins.c:187
+msgid "Right :"
+msgstr "دائیں:"
+
+#: ../mcs-plugin/margins.c:207
+msgid "Top :"
+msgstr "اوپر:"
+
+#: ../mcs-plugin/margins.c:227
+msgid "Bottom :"
+msgstr "نیچے:"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/workspaces_plugin.c:110
+msgid "Button Label|Workspaces and Margins"
+msgstr "مقام کار اور مارجن"
+
+#: ../mcs-plugin/workspaces_plugin.c:144
+msgid "Workspaces and Margins"
+msgstr "مقام کار اور مارجن"
+
+#: ../mcs-plugin/workspaces_plugin.c:162
+#: ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/workspaces.c:516
+msgid "Workspaces"
+msgstr "مقام کار"
+
+#: ../mcs-plugin/workspaces_plugin.c:171
+msgid "Margins"
+msgstr "مارجن"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:471
+msgid "None"
+msgstr "کچھ نہیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:476
+msgid "Bring window on current workspace"
+msgstr "ونڈو حالیہ ڈیسک ٹاپ پر لائیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:477
+msgid "Switch to window's workspace"
+msgstr "ونڈوز مقام کار پر منتقل ہوں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:478
+msgid "Do nothing"
+msgstr "کچھ نہ کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Place window under the mouse"
+msgstr "ونڈو ماؤس کے نیچے رکھیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:484
+msgid "Place window in the center"
+msgstr "ونڈو درمیان میں رکھیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
+msgid "Window Manager Tweaks"
+msgstr "ونڈو منیجر کار کردگی"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:512
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr "وہ ونڈوز نظر انداز کریں جو \"skip pager\" یا \"skip taskbar\" خصوصیات سیٹ رکھتی ہیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:518
+msgid "Include hidden (i.e. iconified) windows"
+msgstr "بشمول خفیہ (مثلاً iconified) ونڈوز"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:524
+msgid "Cycle through windows from all workspaces"
+msgstr "ونڈوز سے Cycle کریں تمام مقام کار سے"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:529
+msgid "Cycling"
+msgstr "سائکلنگ"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:541
+msgid "Activate focus stealing prevention"
+msgstr "فوکس چوری ممانعت فعال کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:547
+msgid "Honor the standard ICCCM focus hint"
+msgstr "Honor the standard ICCCM focus hint"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:553
+msgid "When a window raises itself:"
+msgstr "جب ونڈو خود کو raises کرے:"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:558
+#: ../mcs-plugin/xfwm4_plugin.c:1752
+msgid "Focus"
+msgstr "فوکس"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:570
+msgid "Key used to grab and move windows"
+msgstr "ونڈوز کو پکڑنے اور منتقل کرنے کا بٹن"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:576
+msgid "Raise windows when any mouse button is pressed"
+msgstr "جب ماؤس کا کوئی بھی بٹن دبایا جائے ونڈوز Raise کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:583
+msgid "Hide frame of windows when maximized"
+msgstr "جب بڑی کی جائے ونڈوز کے فریم چھپائیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:590
+msgid "Restore original size of maximized windows when moving"
+msgstr "ونڈوز منتقل کرتے وقت ان کا اصل حجم برقرار رکھیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:596
+msgid "Use edge resistance instead of windows snapping"
+msgstr "ونڈوز snapping کی بجائے کنارہ مدافعت استعمال کرین"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:601
+msgid "Accessibility"
+msgstr "قابلیتِ رسائی"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:614
+msgid "Switch workspaces using the mouse wheel over the desktop"
+msgstr "ڈیسک ٹاپ پر ماؤس کما ویل گھمانے پر مقام کار تبدیل کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:621
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "کی بورڈ شارٹ کٹ سے تبدیلی پر سابقہ ونڈو یاد رکھیں اور اسی کو واپس لائیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:628
+msgid "Wrap workspaces depending on the actual desktop layout"
+msgstr "اصل ڈیسک ٹاپ خاکہ کے مطابق مقام کار سمیٹیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:635
+msgid "Wrap workspaces when the first or last workspace is reached"
+msgstr "جب پہلی یا آخری مقام کار تمام ہو مقام کار سمیٹیں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:652
+msgid "Minimum size of windows to trigger smart placement"
+msgstr "Minimum size of windows to trigger smart placement"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:653
+msgid "Size|Small"
+msgstr "حجم|چھوٹا"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:653
+msgid "Size|Large"
+msgstr "حجم|بڑا"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:658
+msgid "Default positionning of windows without smart placement:"
+msgstr "Default positionning of windows without smart placement:"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:663
+msgid "Placement"
+msgstr "پلیسمنٹ"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:683
+msgid "Enable display compositing"
+msgstr "ڈسپلے کمپوزیٹنگ فعال کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:697
+msgid "Display full screen overlay windows directly"
+msgstr "براہ راست فل سکرین overlay ونڈو ظاہر کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:703
+msgid "Show shadows under dock windows"
+msgstr "dock ونڈوز کے ذیل میں سایہ ظاہر کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:709
+msgid "Show shadows under regular windows"
+msgstr "سادہ ونڈوز کے ذیل میں سایہ ظاہر کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:715
+msgid "Show shadows under popup windows"
+msgstr "پوپ اپ ونڈوز کے ذیل میں سایہ ظاہر کریں"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:721
+msgid "Opacity of window decorations"
+msgstr "ونڈوز کی ڈیکوریشن کی کثافت"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:721
+#: ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733
+#: ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:745
+msgid "Transparent"
+msgstr "شفاف"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734
+#: ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:746
+msgid "Opaque"
+msgstr "معتم"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:727
+msgid "Opacity of inactive windows"
+msgstr "غیر فعال ونڈوز کی کثافت"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:733
+msgid "Opacity of windows during move"
+msgstr "منتقل کرتے وقت ونڈوز کی کثافت"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:739
+msgid "Opacity of windows during resize"
+msgstr "حجم تبدیل کرتے وقت ونڈوز کی کثافت"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:745
+msgid "Opacity of popup windows"
+msgstr "پوپ اپ ونڈوز کی کثافت"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:750
+msgid "Compositor"
+msgstr "کمپوزیٹر"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:792
+msgid "Button Label|Window Manager Tweaks"
+msgstr "ونڈو منیجر کار کردگی"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:914
+#: ../mcs-plugin/xfwm4_plugin.c:2430
+#, c-format
+msgid "These settings cannot work with your current window manager (%s)"
+msgstr "یہ ترتیبات حالیہ ونڈو منیجر کے ساتھ کام نہیں کرسکتیں (%s)"
+
+#: ../mcs-plugin/workspaces.c:329
+msgid "Change name"
+msgstr "نام تبدیل کریں"
+
+#: ../mcs-plugin/workspaces.c:338
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:490
+#, c-format
+msgid "Workspace %d"
+msgstr "مقام کار %d"
+
+#: ../mcs-plugin/workspaces.c:348
+msgid "Name:"
+msgstr "نام:"
+
+#: ../mcs-plugin/workspaces.c:427
+msgid "Click on a workspace name to edit it"
+msgstr "تدوین کے لیے مقام کار کے نام پر کلک کریں"
+
+#: ../mcs-plugin/workspaces.c:493
+msgid "Number of workspaces:"
+msgstr "مقام کار کی تعداد:"
+
+#: ../mcs-plugin/workspaces.c:527
+msgid "Workspace names"
+msgstr "مقام کار کا نام"
+
+#: ../mcs-plugin/xfwm4_plugin.c:68
+msgid "Menu"
+msgstr "مینیو"
+
+#: ../mcs-plugin/xfwm4_plugin.c:69
+msgid "Stick"
+msgstr "چسپاں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:70
+msgid "Shade"
+msgstr "شیڈ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:71
+msgid "Hide"
+msgstr "چھپائیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:72
+msgid "Maximize"
+msgstr "بڑا کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:73
+msgid "Close"
+msgstr "بند کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+msgid "Shade window"
+msgstr "ونڈو شیڈ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+msgid "Hide window"
+msgstr "ونڈو چھپائیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+msgid "Maximize window"
+msgstr "ونڈو بڑی کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:82
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+msgid "Fill window"
+msgstr "ونڈو بھریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:83
+msgid "Nothing"
+msgstr "کچھ نہیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:88
+msgid "Left"
+msgstr "بائیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:89
+msgid "Center"
+msgstr "درمیان"
+
+#: ../mcs-plugin/xfwm4_plugin.c:90
+msgid "Right"
+msgstr "دائیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:589
+msgid "Click and drag buttons to change the layout"
+msgstr "خاکہ تبدیل کرنے کے لیے بٹن پر کلک کرکے گھسیٹیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:594
+msgid "Active"
+msgstr "فعال"
+
+#: ../mcs-plugin/xfwm4_plugin.c:605
+msgid "Title"
+msgstr "عنوان"
+
+#: ../mcs-plugin/xfwm4_plugin.c:606
+msgid "The window title, it cannot be removed"
+msgstr "ونڈو کا عنوان، اسے حذف نہیں کیا جاسکتا"
+
+#: ../mcs-plugin/xfwm4_plugin.c:618
+msgid "Hidden"
+msgstr "خفیہ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1391
+msgid "Font Selection Dialog"
+msgstr "فونٹ انتخاب ڈائیلاگ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1456
+msgid "Window Manager"
+msgstr "ونڈو منیجر"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1496
+msgid "Title font"
+msgstr "عنوان کا فونٹ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1505
+msgid "Title Alignment"
+msgstr "عنوان کی ہمواری"
+
+#. XXX
+#: ../mcs-plugin/xfwm4_plugin.c:1507
+msgid "Text alignment inside title bar :"
+msgstr "عنوان کی پٹی میں متن کی ہمواری:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1513
+msgid "Button layout"
+msgstr "بٹن کا خاکہ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1518
+msgid "Style"
+msgstr "انداز"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1566
+msgid "Window shortcuts"
+msgstr "ونڈو شارٹ کٹ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1580
+msgid "Command"
+msgstr "کمانڈ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1586
+msgid "Shortcut"
+msgstr "شارٹ کٹ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1603
+msgid "Keyboard"
+msgstr "کی بورڈ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1618
+msgid "Focus model"
+msgstr "ماڈل فوکس"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1622
+msgid "Click to focus"
+msgstr "فوکس کے لیے کلک کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1632
+msgid "Focus follows mouse"
+msgstr "فوکس ماؤس کے پیچھے"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1645
+msgid "Delay before window receives focus"
+msgstr "ونڈو کا فوکس لینے سے پہلے وقفہ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1654
+#: ../mcs-plugin/xfwm4_plugin.c:1716
+msgid "Slow"
+msgstr "آہستہ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1661
+#: ../mcs-plugin/xfwm4_plugin.c:1723
+msgid "Fast"
+msgstr "تیز"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1682
+msgid "Automatically give focus to newly created windows"
+msgstr "نئی بننے والی ونڈوز کو خودکار فوکس دیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1686
+msgid "New window focus"
+msgstr "نئی ونڈو فوکس"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1693
+msgid "Raise on focus"
+msgstr "فوکس پر Raise کرین"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1699
+msgid "Automatically raise windows when they receive focus"
+msgstr "جب ونڈوز کو فوکس وصول ہو انہیں خودکار Raise کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1709
+msgid "Delay before raising focused window :"
+msgstr "فوکس شدہ ونڈو کی raising سے پہلے وقفہ:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1744
+msgid "Raise window when clicking inside application window"
+msgstr "اطلاقیہ ونڈو کے اندر کلک کرنے پر ونڈو Raise کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1748
+msgid "Raise on click"
+msgstr "کلک پر بڑا کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1766
+msgid "Windows snapping"
+msgstr "ونڈوز سنیپنگ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1771
+msgid "Snap windows to screen border"
+msgstr "ونڈوز سکرین بارڈر کی طرف Snap کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1777
+msgid "Snap windows to other windows"
+msgstr "ونڈوز دیگر ونڈوز کی طرف Snap کریں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1788
+msgid "Distance :"
+msgstr "فاصلہ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1795
+msgid "Distance|Small"
+msgstr "فاصلہ|کم"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1802
+msgid "Distance|Wide"
+msgstr "فاصلہ|زیادہ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1823
+msgid "Wrap workspaces"
+msgstr "مقام کار کا سمیٹنا"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1829
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "جب پؤائنٹر سکرین کے کناروں تک پہنچے مقام کار کو سمیٹیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1837
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "سکرین کی ونڈو گھسیٹنے پر مقام کار سمیٹیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1847
+msgid "Edge Resistance :"
+msgstr "کناروں کی مدافعت:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1854
+msgid "Resistance|Small"
+msgstr "مدافعت|کم"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1861
+msgid "Resistance|Wide"
+msgstr "مدافعت|زیادہ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1883
+msgid "Opaque move and resize"
+msgstr "معتم منتقلی اور ری سائز"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1888
+msgid "Display content of windows when resizing"
+msgstr "ونڈو کی resizing پر اس کا مواد دکھائیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1894
+msgid "Display content of windows when moving"
+msgstr "ونڈو کی منتقلی پر اس کا مواد دکھائیں"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1899
+msgid "Double click action"
+msgstr "دہرا کلک حرکت"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1901
+msgid "Action to perform when double clicking on title bar :"
+msgstr "عنوان پٹی پر دہرا کلک کرنے پر ادا ہونے والی حرکت:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1906
+msgid "Advanced"
+msgstr "اعلی"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:2051
+msgid "Button Label|Window Manager"
+msgstr "ونڈو منیجر"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
+msgid "Do you really want to remove this keybinding theme ?"
+msgstr "کیا آپ واقعی یہ keybinding تھیم حذف کرنا چاہتے ہیں؟"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+msgid "Add keybinding theme"
+msgstr "keybinding تھیم شامل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
+msgid "Enter a name for the theme:"
+msgstr "تھیم کا نام لکھیں:"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
+msgid "A keybinding theme with the same name already exists"
+msgstr "اس نام کی ایک keybinding تھیم پہلے ہی موجود ہے"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
+msgid "You have to provide a name for the keybinding theme"
+msgstr "لازم ہے کہ keybinding تھیم کا نام فراہم کیا جائے"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+msgid "Close window"
+msgstr "ونڈو بند کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+msgid "Maximize window vertically"
+msgstr "ونڈو عمودی طور پر بڑی کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+msgid "Maximize window horizontally"
+msgstr "ونڈو افقی طور پر بڑی کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+msgid "Fill window horizontally"
+msgstr "ونڈو افقی طور پر بھریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+msgid "Fill window vertically"
+msgstr "ونڈو عمودی طور پر بھریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+msgid "Stick window"
+msgstr "ونڈو چسپاں کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+msgid "Cycle windows"
+msgstr "ونڈوز سائکل"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+msgid "Move window up"
+msgstr "ونڈو اوپر منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+msgid "Move window down"
+msgstr "ونڈو نیچے منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+msgid "Move window left"
+msgstr "ونڈو بائیں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+msgid "Move window right"
+msgstr "ونڈو دائیں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+msgid "Resize window up"
+msgstr "ونڈو اوپر ری سائز کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+msgid "Resize window down"
+msgstr "ونڈو نیچے ری سائز کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+msgid "Resize window left"
+msgstr "ونڈو بائیں ری سائز کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+msgid "Resize window right"
+msgstr "ونڈو دائیں ری سائز کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+msgid "Cancel move/resize window"
+msgstr "ونڈو منتقل/ری سائز مسترد کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+msgid "Raise window"
+msgstr "بڑی ونڈو"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+msgid "Lower window"
+msgstr "چھوٹی ونڈو"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Toggle above"
+msgstr "اوپر منعکس کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+msgid "Toggle fullscreen"
+msgstr "فل سکرین منعکس کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+msgid "Upper workspace"
+msgstr "اوپری مقام کار"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+msgid "Bottom workspace"
+msgstr "نچلا مقام کار"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+msgid "Left workspace"
+msgstr "بائیں مقام کار"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+msgid "Right workspace"
+msgstr "دائیں مقام کار"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+msgid "Next workspace"
+msgstr "اگلا مقام کار"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+msgid "Previous workspace"
+msgstr "سابقہ مقام کار"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+msgid "Add workspace"
+msgstr "مقام کار شامل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
+msgid "Delete workspace"
+msgstr "مقام کار حذف کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+msgid "Move window to next workspace"
+msgstr "ونڈو اگلے مقام کار میں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
+msgid "Move window to previous workspace"
+msgstr "ونڈو سابقہ مقام کار میں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
+msgid "Move window to upper workspace"
+msgstr "ونڈو اوپری مقام کار میں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
+msgid "Move window to bottom workspace"
+msgstr "ونڈو نچلے مقام کار میں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
+msgid "Move window to left workspace"
+msgstr "ونڈو بائیں مقام کار میں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
+msgid "Move window to right workspace"
+msgstr "ونڈو دائیں مقام کار میں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
+msgid "Show desktop"
+msgstr "ڈیسک ٹاپ ظاہر کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
+msgid "Cancel window action"
+msgstr "ونڈو حرکت مسترد کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
+msgid "Window operations menu"
+msgstr "ونڈو آپریشن مینیو"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#, c-format
+msgid "Move window to workspace %d"
+msgstr "ونڈو مقام کار %d میں منتقل کریں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
+msgid "Cannot open the theme directory !"
+msgstr "تھیم ڈائریکٹری نہیں کھولی جاسکتی !"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
+#, c-format
+msgid ""
+"Cannot open %s : \n"
+"%s"
+msgstr ""
+"نہیں کھولا جاسکتا %s : \n"
+"%s"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"%s میں نہیں لکھا جاسکتا : \n"
+"%s"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
+msgid ""
+"Shortcut already in use !\n"
+"Are you sure you want to use it ?"
+msgstr ""
+"شارٹ کٹ پہلے ہی استعمال میں ہے !\n"
+"کیا آپ واقعی اسے استعمال کرنا چاہتے ہیں؟"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+msgid "Compose shortcut for :"
+msgstr "شارٹ کٹ بنائیں برائے:"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
+msgid "Compose shortcut"
+msgstr "شارٹ کٹ بنائیں"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
+msgid "Cancel"
+msgstr "مسترد"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
+msgid "No shortcut"
+msgstr "بغیر شارٹ کٹ"
+
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:84
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (پر %s)"
+
+#: ../src/main.c:135
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: تقسیم نقص"
+
+#: ../src/menu.c:40
+msgid "Ma_ximize"
+msgstr "ب_ڑا کریں"
+
+#: ../src/menu.c:41
+msgid "Un_maximize"
+msgstr "_چھوٹا کریں"
+
+#: ../src/menu.c:42
+msgid "_Hide"
+msgstr "چ_ھپائیں"
+
+#: ../src/menu.c:43
+msgid "Hide _all others"
+msgstr "دیگر _تمام چھپائیں"
+
+#: ../src/menu.c:44
+msgid "S_how"
+msgstr "_ظاہر کریں"
+
+#: ../src/menu.c:45
+msgid "_Shade"
+msgstr "_سمیٹیں"
+
+#: ../src/menu.c:46
+msgid "Un_shade"
+msgstr "_پھیلائیں"
+
+#: ../src/menu.c:47
+msgid "S_tick"
+msgstr "چس_پاں"
+
+#: ../src/menu.c:48
+msgid "Uns_tick"
+msgstr "_غیر چسپاں"
+
+#: ../src/menu.c:49
+msgid "Context _help"
+msgstr "کونٹیکسٹ _ہدایات"
+
+#: ../src/menu.c:50
+#: ../src/menu.c:51
+msgid "Always on top"
+msgstr "ہمیشہ آگے"
+
+#: ../src/menu.c:52
+msgid "Send to..."
+msgstr "بھیجیں تا..."
+
+#: ../src/menu.c:54
+msgid "_Close"
+msgstr "_بند کریں"
+
+#: ../src/menu.c:57
+msgid "Destroy"
+msgstr "تباہ کریں"
+
+#: ../src/menu.c:60
+msgid "_Quit"
+msgstr "_برخاست"
+
+#: ../src/menu.c:61
+msgid "Restart"
+msgstr "ری سٹارٹ"
+
+#: ../src/menu.c:169
+#, c-format
+msgid "Workspace %i (%s)"
+msgstr "مقام کار %i (%s)"
+
+#: ../src/menu.c:173
+#, c-format
+msgid "Workspace %i"
+msgstr "مقام کار %i"
+
+#: ../src/menu.c:409
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu پوائنٹر پکڑنے میں ناکام ہوگیا\n"
+
+#: ../src/settings.c:968
+#, c-format
+msgid "%s: Cannot allocate color %s\n"
+msgstr "%s: رنگ مختص نہیں کیا جاسکتا %s\n"
+
+#: ../src/settings.c:974
+#, c-format
+msgid "%s: Cannot parse color %s\n"
+msgstr "%s: رنگ کا تجزیہ نہیں ہوسکا %s\n"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "ونڈو منیجر ترتیبات"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "ایکسفس 4 ونڈو منیجر ترتیبات"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
+msgid "Advanced Configuration"
+msgstr "اعلی تشکیل"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr "ایکسفس 4 ونڈو منیجر ٹویک"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "مقام کار ترتیبات"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "ایکسفس 4 مقام کار ترتیبات"
+
