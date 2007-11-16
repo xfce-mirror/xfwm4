@@ -18,6 +18,7 @@
 - Transients for group shouldn't apply to other transients, or it breaks 
   stacking for some apps, noticeably mozilla "save as" dialog...
 - Fix typo breaking compilation on systems without XShape 1.1 support
+- Updated translations: Mişu Moldovan (ro).
 
 4.4.1
 =====
