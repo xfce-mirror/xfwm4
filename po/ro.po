@@ -1,14 +1,14 @@
 # Romanian translation of xfwm4.
-# Copyright (C) 2002-2006 The Xfce development team.
+# Copyright (C) 2002-2007 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Mişu Moldovan <dumol@gnome.ro>, 2004-2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: xfwm4 4.4.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-09 14:29+0200\n"
-"PO-Revision-Date: 2007-01-21 01:39+0200\n"
+"PO-Revision-Date: 2007-11-16 21:44+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -165,7 +165,7 @@ msgstr "Activează compozitorul ecranului"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
 msgid "Display full screen overlay windows directly"
-msgstr "Randează direct ferestrele overlay pe tot ecranul"
+msgstr "Randează direct ferestrele pe tot ecranul de tip overlay"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
@@ -302,7 +302,7 @@ msgstr "Dreapta"
 
 #: ../mcs-plugin/xfwm4_plugin.c:587
 msgid "Click and drag buttons to change the layout"
-msgstr "Aranjaţi interactiv mai jos butoanele ferestrelor"
+msgstr "Aranjaţi mai jos interactiv butoanele ferestrelor"
 
 #: ../mcs-plugin/xfwm4_plugin.c:592
 msgid "Active"
@@ -680,7 +680,7 @@ msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
-"Combinaţia de taste este deja asignată!\n"
+"Combinaţia de taste este deja utilizată!\n"
 "Sigur doriţi să o mai asociaţi o dată?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:844
@@ -693,7 +693,7 @@ msgstr "Compunere combinaţie de taste"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:850
 msgid "Cancel"
-msgstr ""
+msgstr "Renunţă"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"
@@ -801,7 +801,7 @@ msgstr "%s: Nu se poate prelucra culoarea %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Administrator de ferestre"
+msgstr "Preferinţe administrator de ferestre"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
@@ -817,8 +817,9 @@ msgstr "Preferinţe avansate administrator de ferestre Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
-msgstr "Margini şi spaţii de lucru"
+msgstr "Preferinţe margini şi spaţii de lucru"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Preferinţe margini şi spaţii de lucru Xfce 4"
+
