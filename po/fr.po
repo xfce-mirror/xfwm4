@@ -867,7 +867,7 @@ msgstr "Paramétrage des fenêtres"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Paramètres du gestionnaire de fenêtres de Xfce 4"
+msgstr "Xfce 4 Gestionnaire de fenêtres"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
@@ -875,7 +875,7 @@ msgstr "Configuration avancée"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Peaufinages des fenêtres"
+msgstr "Xfce 4 Peaufinages des fenêtres"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
@@ -883,7 +883,7 @@ msgstr "Paramétrage des espaces de travail"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Paramètres des espaces de travail de Xfce 4"
+msgstr "Xfce 4 Paramètres des espaces de travail"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Application inconnue!"
