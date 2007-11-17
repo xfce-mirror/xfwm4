@@ -1,3 +1,66 @@
+2007-11-16 21:07  pollux
+
+	* NEWS: Updated NEWS
+
+2007-11-16 20:59  pollux
+
+	* po/ChangeLog, po/ro.po: Updated Romanian translations by Mişu
+	  Moldovan <dumol@gnome.ro>
+
+2007-11-15 09:35  mmassonnet
+
+	* po/ChangeLog, po/pt_PT.po: Update pt_PT
+
+2007-11-11 03:27  mmassonnet
+
+	* po/ChangeLog, po/LINGUAS, po/lv.po: Add latvian translation to
+	  4.4 branch
+
+2007-11-10 20:29  olivier
+
+	* themes/default-4.2/title-1-inactive.xpm: Missing quote
+
+2007-11-07 22:01  olivier
+
+	* ChangeLog, NEWS: Update ChangeLog
+
+2007-11-07 21:52  olivier
+
+	* src/client.c: Apply a patch from Andreas Lampersperger
+	  <lampersperger.andreas@heidenhain.de> to improve ICCCM compliance
+	  regarding synthetic ConfigureNotify event (Bug #3610)
+
+2007-11-07 20:22  majkl
+
+	* po/cs.po: Updated Czech translations
+
+2007-11-03 10:25  maximilian
+
+	* po/ChangeLog, po/nb_NO.po: French, Italian, Norwegian Bokmal
+	  Updates in some branch 4.4 modules and French translation updates
+	  in some trunk modules.
+
+2007-11-03 05:16  erenturkay
+
+	* po/tr.po: * update translation
+
+2007-11-01 22:26  kelnos
+
+	* po/am.po, po/fi.po, po/it.po, po/nb_NO.po, po/nl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/sk.po, po/tr.po: run update-po for 4.4 branch
+
+2007-10-24 22:26  kelnos
+
+	* configure.ac.in: remove trailing parens on AC_INIT version info
+	  to work around bug
+	  in intltool 0.35.x and 0.36.x
+
+2007-10-20 19:29  olivier
+
+	* src/netwm.c: Set all dock type windows sticky by default, a few
+	  other window managers implement this behaviour and some apps rely
+	  on this (bug #3609)
+
 2007-09-03 17:30  mmassonnet
 
 	* po/ChangeLog, po/pt_PT.po: * Update Portuguese translations by
