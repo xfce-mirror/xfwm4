@@ -4956,7 +4956,7 @@ clientButtonPressEventFilter (XEvent * xevent, gpointer data)
     status = EVENT_FILTER_STOP;
     pressed = TRUE;
 
-   switch (xevent->type)
+    switch (xevent->type)
     {
         case EnterNotify:
             if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
