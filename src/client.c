@@ -1,24 +1,24 @@
 /*      $Id$
- 
+
         This program is free software; you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation; either version 2, or (at your option)
         any later version.
- 
+
         This program is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
- 
+
         You should have received a copy of the GNU General Public License
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- 
+
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2004 Olivier Fourdan
- 
+
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -262,12 +262,12 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
             wc.width = c->width;
             wc.height = c->height;
             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
-            setNetFrameExtents (screen_info->display_info, 
-                                c->window, 
+            setNetFrameExtents (screen_info->display_info,
+                                c->window,
                                 frameTop (c),
                                 frameLeft (c),
                                 frameRight (c),
-                                frameBottom (c)); 
+                                frameBottom (c));
         }
         if (mask & UPDATE_FRAME)
         {
@@ -1510,7 +1510,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
 #endif
- 
+
     shaped = clientCheckShape(c);
     if (shaped)
     {
@@ -1640,10 +1640,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     attributes.event_mask = (FRAME_EVENT_MASK | POINTER_EVENT_MASK);
     attributes.win_gravity = StaticGravity;
     attributes.bit_gravity = StaticGravity;
-    
+
     c->frame =
-        XCreateWindow (display_info->dpy, screen_info->xroot, 
-        frameX (c), frameY (c), frameWidth (c), frameHeight (c), 0, 
+        XCreateWindow (display_info->dpy, screen_info->xroot,
+        frameX (c), frameY (c), frameWidth (c), frameHeight (c), 0,
         screen_info->depth, InputOutput, screen_info->visual,
         valuemask, &attributes);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);
@@ -1694,10 +1694,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         xfwmWindowCreate (display_info->dpy, c->frame, &c->buttons[i], None);
     }
 
-    /* Put the window on top to avoid XShape, that speeds up hw accelerated 
+    /* Put the window on top to avoid XShape, that speeds up hw accelerated
        GL apps dramatically */
     XRaiseWindow (display_info->dpy, c->window);
-    
+
     TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name, c->window);
     wc.x = c->x;
     wc.y = c->y;
@@ -1737,14 +1737,14 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         setWMState (display_info, c->window, IconicState);
         clientSetNetState (c);
     }
-    
+
     if (!grabbed)
     {
         clientGrabMouseButton (c);
     }
     setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
-                                                 frameRight (c), frameBottom (c)); 
-    
+                                                 frameRight (c), frameBottom (c));
+
     /* Window is reparented now, so we can safely release the grab
      * on the server
      */
@@ -1753,7 +1753,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
     DBG ("client_count=%d", screen_info->client_count);
-    
+
     return c;
 }
 
@@ -1803,17 +1803,17 @@ clientUnframe (Client * c, gboolean remap)
 
     if (!remap)
     {
-        XDeleteProperty (display_info->dpy, c->window, 
+        XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[NET_WM_STATE]);
-        XDeleteProperty (display_info->dpy, c->window, 
+        XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[WIN_STATE]);
-        XDeleteProperty (display_info->dpy, c->window, 
+        XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[NET_WM_DESKTOP]);
-        XDeleteProperty (display_info->dpy, c->window, 
+        XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[WIN_WORKSPACE]);
-        XDeleteProperty (display_info->dpy, c->window, 
+        XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[WIN_LAYER]);
-        XDeleteProperty (display_info->dpy, c->window, 
+        XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[NET_WM_ALLOWED_ACTIONS]);
     }
 
@@ -2189,7 +2189,7 @@ clientHideAll (Client * c, int ws)
         if (CLIENT_CAN_HIDE_WINDOW (c2)
             && !clientIsValidTransientOrModal (c2) && (c2 != c))
         {
-            if (((!c) && (c2->win_workspace == ws)) 
+            if (((!c) && (c2->win_workspace == ws))
                  || ((c) && !clientIsTransientOrModalFor (c, c2)
                          && (c2->win_workspace == c->win_workspace)))
             {
@@ -2206,8 +2206,8 @@ clientToggleShowDesktop (ScreenInfo *screen_info, gboolean show_desktop)
 
     TRACE ("entering clientToggleShowDesktop");
 
-    clientSetFocus (screen_info, NULL, 
-                    myDisplayGetCurrentTime (screen_info->display_info), 
+    clientSetFocus (screen_info, NULL,
+                    myDisplayGetCurrentTime (screen_info->display_info),
                     FOCUS_IGNORE_MODAL);
     if (show_desktop)
     {
@@ -2254,7 +2254,7 @@ clientClose (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, 
+        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW,
                            myDisplayGetCurrentTime (display_info));
     }
     else
@@ -2289,7 +2289,7 @@ clientEnterContextMenuState (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
     {
-        sendClientMessage (c->screen_info, c->window, NET_WM_CONTEXT_HELP, 
+        sendClientMessage (c->screen_info, c->window, NET_WM_CONTEXT_HELP,
                            myDisplayGetCurrentTime (display_info));
     }
 }
@@ -3136,7 +3136,7 @@ clientMove (Client * c, XEvent * ev)
         getMouseXY (screen_info, screen_info->xroot, &passdata.mx, &passdata.my);
     }
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
+    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask,
                               cursor, myDisplayGetCurrentTime (display_info));
     if (!g1 || !g2)
     {
@@ -3158,11 +3158,11 @@ clientMove (Client * c, XEvent * ev)
     /* Set window translucent while moving, looks nice */
     if ((screen_info->params->move_opacity < 100) && !(screen_info->params->box_move))
     {
-        compositorWindowSetOpacity (display_info, c->frame, 
+        compositorWindowSetOpacity (display_info, c->frame,
             (guint) (c->opacity * (double) (screen_info->params->move_opacity / 100.0)));
         restore_opacity = TRUE;
     }
-    
+
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
     xfce_push_event_filter (display_info->xfilter, clientMove_event_filter, &passdata);
@@ -3590,8 +3590,8 @@ clientResize (Client * c, int corner, XEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask, 
-                              myDisplayGetCursorResize(display_info, passdata.corner), 
+    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask,
+                              myDisplayGetCursorResize(display_info, passdata.corner),
                               myDisplayGetCurrentTime (display_info));
 
     if (!g1 || !g2)
@@ -3623,11 +3623,11 @@ clientResize (Client * c, int corner, XEvent * ev)
     /* Set window translucent while resizing, doesn't looks too nice  :( */
     if ((screen_info->params->resize_opacity < 100) && !(screen_info->params->box_resize))
     {
-        compositorWindowSetOpacity (display_info, c->frame, 
+        compositorWindowSetOpacity (display_info, c->frame,
             (guint) (c->opacity * (double) (screen_info->params->resize_opacity / 100.0)));
         restore_opacity = TRUE;
     }
-    
+
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     xfce_push_event_filter (display_info->xfilter, clientResize_event_filter, &passdata);
@@ -3654,7 +3654,7 @@ clientResize (Client * c, int corner, XEvent * ev)
         compositorWindowSetOpacity (display_info, c->frame, c->opacity);
     }
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) && 
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) &&
         ((w_orig != c->width) || (h_orig != c->height)))
     {
         clientRemoveMaximizeFlag (c);
@@ -3755,7 +3755,7 @@ clientCycle_event_filter (XEvent * xevent, gpointer data)
                  * release.
                  */
                 if (IsModifierKey (keysym) &&
-                    ((screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask) || 
+                    ((screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier & ShiftMask) ||
                      ((keysym != XK_Shift_L) && (keysym != XK_Shift_R))))
                 {
                     cycling = FALSE;
@@ -3797,7 +3797,7 @@ clientCycle (Client * c, XEvent * ev)
     display_info = screen_info->display_info;
 
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, 
+    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None,
                               myDisplayGetCurrentTime (display_info));
 
     if (!g1 || !g2)
@@ -3826,7 +3826,7 @@ clientCycle (Client * c, XEvent * ev)
     passdata.c = clientGetNext (c, passdata.cycle_range);
 
     /* If there is one single client, and if it's eligible for focus, use it */
-    if ((passdata.c == NULL) && (c != clientGetFocus()) && 
+    if ((passdata.c == NULL) && (c != clientGetFocus()) &&
         clientSelectMask (c, passdata.cycle_range, WINDOW_REGULAR_FOCUSABLE))
     {
         passdata.c = c;
@@ -3880,31 +3880,38 @@ clientButtonPress_event_filter (XEvent * xevent, gpointer data)
     /* Update the display time */
     myDisplayUpdateCurentTime (display_info, xevent);
 
-    if (xevent->type == EnterNotify)
+    switch (xevent->type)
     {
-        c->button_pressed[b] = TRUE;
-        frameDraw (c, FALSE, FALSE);
-    }
-    else if (xevent->type == LeaveNotify)
-    {
-        c->button_pressed[b] = FALSE;
-        frameDraw (c, FALSE, FALSE);
-    }
-    else if (xevent->type == ButtonRelease)
-    {
-        pressed = FALSE;
-    }
-    else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
-    {
-        pressed = FALSE;
-        c->button_pressed[b] = FALSE;
-    }
-    else if ((xevent->type == KeyPress) || (xevent->type == KeyRelease))
-    {
-    }
-    else
-    {
-        status = XEV_FILTER_CONTINUE;
+        case EnterNotify:
+            if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
+            {
+                c->button_pressed[b] = TRUE;
+                frameDraw (c, FALSE);
+            }
+            break;
+        case LeaveNotify:
+            if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
+            {
+                c->button_pressed[b] = FALSE;
+                frameDraw (c, FALSE);
+            }
+            break;
+        case ButtonRelease:
+            pressed = FALSE;
+            break;
+        case UnmapNotify:
+            if (xevent->xunmap.window == c->window)
+            {
+                pressed = FALSE;
+                c->button_pressed[b] = FALSE;
+            }
+            break;
+        case KeyPress:
+        case KeyRelease:
+            break;
+        default:
+            status = EVENT_FILTER_CONTINUE;
+            break;
     }
 
     if (!pressed)
@@ -3939,9 +3946,9 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     display_info = screen_info->display_info;
 
     g1 = XGrabPointer (display_info->dpy, w, FALSE,
-                       ButtonReleaseMask | EnterWindowMask | LeaveWindowMask, 
-                       GrabModeAsync, GrabModeAsync, 
-                       screen_info->xroot, None, 
+                       ButtonReleaseMask | EnterWindowMask | LeaveWindowMask,
+                       GrabModeAsync, GrabModeAsync,
+                       screen_info->xroot, None,
                        myDisplayGetCurrentTime (display_info));
 
     if (g1 != GrabSuccess)
@@ -4044,20 +4051,20 @@ clientGetStartupId (Client * c)
     ScreenInfo *screen_info = NULL;
     DisplayInfo *display_info = NULL;
     gboolean got_startup_id = FALSE;
-    
+
     g_return_val_if_fail (c != NULL, NULL);
     g_return_val_if_fail (c->window != None, NULL);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    
+
     if (c->startup_id)
     {
         return (c->startup_id);
     }
 
     got_startup_id = getWindowStartupId (display_info, c->window, &c->startup_id);
-    
+
     if (!got_startup_id && (c->client_leader))
     {
         got_startup_id = getWindowStartupId (display_info, c->client_leader, &c->startup_id);
@@ -4067,7 +4074,7 @@ clientGetStartupId (Client * c)
     {
         got_startup_id = getWindowStartupId (display_info, c->group_leader, &c->startup_id);
     }
-    
+
     return (c->startup_id);
 }
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
