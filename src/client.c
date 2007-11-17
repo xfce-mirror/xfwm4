@@ -5228,31 +5228,38 @@ clientButtonPressEventFilter (XEvent * xevent, gpointer data)
     status = EVENT_FILTER_STOP;
     pressed = TRUE;
 
-    if (xevent->type == EnterNotify)
+    switch (xevent->type)
     {
-        c->button_status[b] = BUTTON_STATE_PRESSED;
-        frameDraw (c, FALSE);
-    }
-    else if (xevent->type == LeaveNotify)
-    {
-        c->button_status[b] = BUTTON_STATE_NORMAL;
-        frameDraw (c, FALSE);
-    }
-    else if (xevent->type == ButtonRelease)
-    {
-        pressed = FALSE;
-    }
-    else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
-    {
-        pressed = FALSE;
-        c->button_status[b] = BUTTON_STATE_NORMAL;
-    }
-    else if ((xevent->type == KeyPress) || (xevent->type == KeyRelease))
-    {
-    }
-    else
-    {
-        status = EVENT_FILTER_CONTINUE;
+        case EnterNotify:
+            if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
+            {
+                c->button_status[b] = BUTTON_STATE_PRESSED;
+                frameDraw (c, FALSE);
+            }
+            break;
+        case LeaveNotify:
+            if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
+            {
+                c->button_status[b] = BUTTON_STATE_NORMAL;
+                frameDraw (c, FALSE);
+            }
+            break;
+        case ButtonRelease:
+            pressed = FALSE;
+            break;
+        case UnmapNotify:
+            if (xevent->xunmap.window == c->window)
+            {
+                pressed = FALSE;
+                c->button_status[b] = BUTTON_STATE_NORMAL;
+            }
+            break;
+        case KeyPress:
+        case KeyRelease:
+            break;
+        default:
+            status = EVENT_FILTER_CONTINUE;
+            break;
     }
 
     if (!pressed)
@@ -5378,6 +5385,7 @@ clientGetButtonPixmap (Client * c, int button, int state)
 {
     ScreenInfo *screen_info;
 
+    TRACE ("entering clientGetButtonPixmap button=%i, state=%i", button,state);
     screen_info = c->screen_info;
     switch (button)
     {
