@@ -4,7 +4,7 @@
 # Paweł Pastuła <pastulap@poczta.onet.pl>, 2003.
 # Daniel Mróz <beorn@alpha.pl>, 2003.
 # Robert Kurowski <koorek@o2.pl>, 2005.
-# Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
+# Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006-2007.
 #
 msgid ""
 msgstr ""
@@ -691,7 +691,7 @@ msgstr "Stwórz aktywator"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:850
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"
