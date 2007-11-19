@@ -634,8 +634,9 @@ msgid "Lower window"
 msgstr "Venster naar de achtergrond brengen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#, fuzzy
 msgid "Toggle above"
-msgstr ""
+msgstr "Naar boven/onder brengen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
