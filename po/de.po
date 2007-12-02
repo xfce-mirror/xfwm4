@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-10-01 15:43+0100\n"
-"Last-Translator: Nico Schümann <nico@prog.nico22.de>\n"
+"POT-Creation-Date: 2007-11-06 21:22+0100\n"
+"PO-Revision-Date: 2007-11-06 21:13+0000\n"
+"Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,18 +95,17 @@ msgstr "Fenstermanager-Tweaks"
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"Fenster, die \"skip pager\" oder \"skip taskbar\"\n"
-"gesetzt haben, übergehen."
+"Fenster, die nicht im Pager oder nicht in der Taskleiste erscheinen "
+"sollen, \n"
+"auch wirklich übergehen."
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
-msgstr ""
-"Versteckte (z.B. ikonifizierte) Fenster\n"
-"miteinbeziehen"
+msgstr "Versteckte (z.B. ikonifizierte) Fenster miteinbeziehen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Cycle through windows from all workspaces"
-msgstr "Durch Fenster aller Arbeitsflächen bewegen"
+msgstr "Fenster aller Arbeitsflächen miteinbeziehen"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:529
 msgid "Cycling"
@@ -114,7 +113,7 @@ msgstr "Fensterwechsel"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:541
 msgid "Activate focus stealing prevention"
-msgstr "Verhinderung des Fokusverlustes aktivieren"
+msgstr "Fokusverlust verhindern"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:547
 msgid "Honor the standard ICCCM focus hint"
@@ -298,7 +297,7 @@ msgstr "Anzahl der Arbeitsflächen:"
 
 #: ../mcs-plugin/workspaces.c:527
 msgid "Workspace names"
-msgstr "Arbeitsflächennamen"
+msgstr "Namen für die Arbeitsflächen"
 
 #: ../mcs-plugin/xfwm4_plugin.c:68
 msgid "Menu"
@@ -358,7 +357,7 @@ msgstr "Rechts"
 
 #: ../mcs-plugin/xfwm4_plugin.c:589
 msgid "Click and drag buttons to change the layout"
-msgstr "Ziehen Sie die Buttons nach unten, um die Anordnung zu verändern"
+msgstr "Ziehen Sie die Knöpfe nach unten, um die Anordnung zu verändern"
 
 #: ../mcs-plugin/xfwm4_plugin.c:594
 msgid "Active"
@@ -561,7 +560,7 @@ msgstr "Tastenkürzel-Schema hinzufügen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:144
 msgid "Enter a name for the theme:"
-msgstr "Namen des Schema eingeben:"
+msgstr "Namen des Schemas eingeben:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:180
 msgid "A keybinding theme with the same name already exists"
@@ -645,7 +644,7 @@ msgstr "Fenster herabsetzen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "Nach vorne bringen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -734,7 +733,7 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
-"Kann %s nicht öffnen:\n"
+"Kann »%s« nicht öffnen:\n"
 "%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:624
@@ -744,7 +743,7 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
-"Kann %s nicht schreiben:\n"
+"Kann »%s« nicht schreiben:\n"
 "%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:794
@@ -864,12 +863,12 @@ msgstr "%s: GtkMenu konnte die Position des Mauszeigers nicht feststellen\n"
 #: ../src/settings.c:968
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Kann Farbe %s nicht allozieren\n"
+msgstr "%s: Kann Farbe »%s« nicht allozieren\n"
 
 #: ../src/settings.c:974
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Kann Farbe %s nicht einlesen\n"
+msgstr "%s: Kann Farbe »%s« nicht einlesen\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
