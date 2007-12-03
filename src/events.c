@@ -343,7 +343,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     TRACE ("entering handleKeyEvent");
 
     /* Release queued events */
-    XAllowEvents (display_info->dpy, AsyncKeyboard, CurrentTime);
+    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
 
     status = EVENT_FILTER_PASS;
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
@@ -1002,7 +1002,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     clientRaise (c, None);
                 }
             }
-            XAllowEvents (display_info->dpy, ReplayPointer, CurrentTime);
+            XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
         }
 
         return EVENT_FILTER_REMOVE;
