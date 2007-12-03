@@ -611,7 +611,7 @@ setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id],
                      display_info->atoms[UTF8_STRING], 8, PropModeReplace,
-                     (unsigned char *) val, strlen (val) + 1);
+                     (unsigned char *) val, strlen (val));
 }
 
 void
