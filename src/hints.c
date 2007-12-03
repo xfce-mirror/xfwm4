@@ -661,7 +661,7 @@ set_utf8_string_hint (Display * dpy, Window w, Atom atom, const char *val)
     TRACE ("entering set_utf8_string_hint");
 
     XChangeProperty (dpy, w, atom, utf8_string, 8, PropModeReplace,
-        (unsigned char *) val, strlen (val) + 1);
+        (unsigned char *) val, strlen (val));
 }
 
 void
