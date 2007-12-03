@@ -305,7 +305,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     new_focus = NULL;
     current_focus = client_focus;
     c2 = NULL;
-#if 0
+#if 1
     if (pending_focus)
     {
         current_focus = pending_focus;
@@ -323,14 +323,15 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
 
     display_info = screen_info->display_info;
     top_most = clientGetTopMostFocusable (screen_info, look_in_layer, exclude);
+#if 0
     if (screen_info->params->click_to_focus)
     {
         if (c)
         {
-            if (clientIsTransientOrModal (c))
+            if (clientIsModal (c))
             {
-                /* If the window is a transient or modal, send focus back to
-                 * its parent window.
+                /* If the window is a modal, send focus back to its parent
+                 * window.
                  * Modals are transients, and we aren't interested in modal
                  * for group, so it safe to use clientGetTransient because
                  * it's really what we want...
@@ -353,7 +354,10 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
             }
         }
     }
-    else if (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
+    else
+#endif
+    if (!(screen_info->params->click_to_focus) &&
+        XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
     {
         new_focus = clientAtPosition (screen_info, rx, ry, exclude);
     }
