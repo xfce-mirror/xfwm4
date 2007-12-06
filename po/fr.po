@@ -875,7 +875,7 @@ msgstr "Configuration avancée"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Xfce 4 Peaufinages des fenêtres"
+msgstr "Xfce 4 Peaufinage des fenêtres"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
