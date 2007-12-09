@@ -31,6 +31,10 @@
 #include <X11/cursorfont.h>
 #include <X11/extensions/shape.h>
 
+#ifndef ShapeInput
+#define ShapeInput 2
+#endif
+
 #ifdef HAVE_RANDR
 #include <X11/extensions/Xrandr.h>
 #endif /* HAVE_RANDR */
@@ -48,6 +52,11 @@
 #define HAVE_NAME_WINDOW_PIXMAP 1
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
 #endif /* COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 2 */
+#if COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 3
+#ifndef HAVE_OVERLAYS
+#define HAVE_OVERLAYS 1
+#endif /* HAVE_OVERLAYS */
+#endif /* COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 3 */
 #endif /* HAVE_COMPOSITOR */
 
 #include <gtk/gtk.h>
@@ -334,6 +343,10 @@ struct _DisplayInfo
     gboolean have_name_window_pixmap;
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
 
+#if HAVE_OVERLAYS
+    gboolean have_overlays;
+#endif /* HAVE_OVERLAYS */
+
 #endif /* HAVE_COMPOSITOR */
 };
 
@@ -384,7 +397,7 @@ Time                     myDisplayGetTime                       (DisplayInfo *,
 Time                     myDisplayGetLastUserTime               (DisplayInfo *);
 void                     myDisplaySetLastUserTime               (DisplayInfo *,
                                                                  Time);
-void                     myDisplayUpdateLastUserTime            (DisplayInfo *, 
+void                     myDisplayUpdateLastUserTime            (DisplayInfo *,
                                                                  Time);
 gboolean                 myDisplayTestXrender                   (DisplayInfo *,
                                                                  gdouble);

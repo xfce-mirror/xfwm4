@@ -134,7 +134,14 @@ struct _ScreenInfo
 #endif
 
 #ifdef HAVE_COMPOSITOR
+#if HAVE_OVERLAYS
+    Window overlay;
+#if USE_CHILD_OVERLAY
+    Window root_overlay;
+#endif /* USE_CHILD_OVERLAY */
+#endif
     GList *cwindows;
+    Window output;
 
     gaussian_conv *gaussianMap;
     gint gaussianSize;

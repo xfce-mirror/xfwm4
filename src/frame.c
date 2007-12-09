@@ -37,10 +37,6 @@
 #include "frame.h"
 #include "compositor.h"
 
-#ifndef ShapeInput
-#define ShapeInput 2
-#endif
-
 typedef struct
 {
     xfwmPixmap pm_title;

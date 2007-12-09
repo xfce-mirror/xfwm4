@@ -73,7 +73,7 @@
 #define WIN_IS_DOCK(cw)                 (WIN_HAS_CLIENT(cw) && (cw->c->type & WINDOW_DOCK))
 #define WIN_IS_OVERRIDE(cw)             (cw->attr.override_redirect)
 #define WIN_IS_ARGB(cw)                 (cw->argb)
-#define WIN_IS_OPAQUE(cw)               (((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw)) || (cw->screen_info->overlays))
+#define WIN_IS_OPAQUE(cw)               ((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw))
 #define WIN_IS_NATIVE_OPAQUE(cw)        ((cw->native_opacity) && !WIN_IS_ARGB(cw))
 #define WIN_IS_FULLSCREEN(cw)           ((cw->attr.x <= 0) && \
                                            (cw->attr.y <= 0) && \
@@ -550,7 +550,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
         return (None);
     }
 
-    shadowPixmap = XCreatePixmap (display_info->dpy, screen_info->xroot,
+    shadowPixmap = XCreatePixmap (display_info->dpy, screen_info->output,
                                 shadowImage->width, shadowImage->height, 8);
     if (shadowPixmap == None)
     {
@@ -603,7 +603,7 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
     g_return_val_if_fail (render_format != NULL , None);
 
     pixmap = XCreatePixmap (display_info->dpy,
-                            screen_info->xroot, 1, 1, argb ? 32 : 8);
+                            screen_info->output, 1, 1, argb ? 32 : 8);
     g_return_val_if_fail (pixmap != None, None);
 
     pa.repeat = TRUE;
@@ -815,7 +815,7 @@ root_tile (ScreenInfo *screen_info)
 #endif
     if (!pixmap)
     {
-        pixmap = XCreatePixmap (dpy, screen_info->xroot, 1, 1,
+        pixmap = XCreatePixmap (dpy, screen_info->output, 1, 1,
                                 DefaultDepth (dpy, screen_info->screen));
         g_return_val_if_fail (pixmap != None, None);
         fill = TRUE;
@@ -867,7 +867,7 @@ create_root_buffer (ScreenInfo *screen_info)
     g_return_val_if_fail (format != NULL, None);
 
     rootPixmap = XCreatePixmap (display_info->dpy,
-                                screen_info->xroot,
+                                screen_info->output,
                                 screen_width, screen_height, depth);
     g_return_val_if_fail (rootPixmap != None, None);
 
@@ -920,15 +920,13 @@ win_extents (CWindow *cw)
 
     /*
        We apply a shadow to the window if:
-       - There is no overlay (ie unredirected windows)
        - It's a window with a frame and the user asked for shadows under regular
          windows,
        - it's an override redirect window that is not shaped, not an argb and
          the user asked for shadows on so called "popup" windows.
      */
 
-    if (!(screen_info->overlays) &&
-         ((screen_info->params->show_popup_shadow &&
+    if ((screen_info->params->show_popup_shadow &&
               WIN_IS_OVERRIDE(cw) &&
               !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) ||
           (screen_info->params->show_frame_shadow &&
@@ -940,7 +938,7 @@ win_extents (CWindow *cw)
               WIN_IS_DOCK(cw) &&
               !WIN_NO_SHADOW(cw) &&
               !WIN_IS_OVERRIDE(cw) &&
-              (!(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))))))
+              (!(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)))))
     {
         XRectangle sr;
 
@@ -1233,7 +1231,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     gint screen_width;
     gint screen_height;
     gint screen_number;
-    Window xroot;
     CWindow *cw;
 
     TRACE ("entering paint_all");
@@ -1244,7 +1241,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     screen_width = screen_info->width;
     screen_height = screen_info->height;
     screen_number = screen_info->screen;
-    xroot = screen_info->xroot;
 
     /* Create root buffer if not done yet */
     if (screen_info->rootBuffer == None)
@@ -1762,6 +1758,7 @@ static void
 map_win (CWindow *cw)
 {
     ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering map_win 0x%lx", cw->id);
@@ -1770,9 +1767,17 @@ map_win (CWindow *cw)
     cw->damaged = FALSE;
 
     screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
     if (!WIN_IS_REDIRECTED(cw))
     {
         screen_info->overlays++;
+#if HAVE_OVERLAYS
+        if ((screen_info->overlays == 1) && (display_info->have_overlays))
+        {
+            XUnmapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
+        }
+#endif /* HAVE_OVERLAYS */
         TRACE ("Mapping unredirected window 0x%lx, overlays increased to %i", cw->id, screen_info->overlays);
         return;
     }
@@ -1804,15 +1809,24 @@ static void
 unmap_win (CWindow *cw)
 {
     ScreenInfo *screen_info;
+    DisplayInfo *display_info;
 
     g_return_if_fail (cw != NULL);
     TRACE ("entering unmap_win 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
     if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
     {
         screen_info->overlays--;
         TRACE ("Unmapped window 0x%lx, overlays decreased to %i", cw->id, screen_info->overlays);
+#if HAVE_OVERLAYS
+        if ((screen_info->overlays == 0) && (display_info->have_overlays))
+        {
+            XMapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
+        }
+#endif /* HAVE_OVERLAYS */
     }
 
     if (!screen_info->overlays)
@@ -2191,7 +2205,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->rootTile))
             {
-                XClearArea (display_info->dpy, screen_info->xroot, 0, 0, 0, 0, TRUE);
+                XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (display_info->dpy, screen_info->rootTile);
                 screen_info->rootTile = None;
                 add_repair (display_info);
@@ -2657,9 +2671,10 @@ void
 compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
-#if HAVE_NAME_WINDOW_PIXMAP
     int composite_major, composite_minor;
-#endif
+
+    composite_major = 0;
+    composite_minor = 0;
 
     if (!XCompositeQueryExtension (display_info->dpy,
                                 &display_info->composite_event_base,
@@ -2673,9 +2688,11 @@ compositorInitDisplay (DisplayInfo *display_info)
     else
     {
         display_info->have_composite = TRUE;
+        XCompositeQueryVersion (display_info->dpy, &composite_major, &composite_minor);
 #if DEBUG
         g_print ("composite event base: %i\n", display_info->composite_event_base);
         g_print ("composite error base: %i\n", display_info->composite_error_base);
+        g_print ("composite version: %i.%i\n", composite_major, composite_minor);
 #endif
     }
 
@@ -2712,7 +2729,7 @@ compositorInitDisplay (DisplayInfo *display_info)
 #if DEBUG
         g_print ("fixes event base: %i\n", display_info->fixes_event_base);
         g_print ("fixes error base: %i\n", display_info->fixes_error_base);
-#endif
+#endif /* DEBUG */
     }
 
     display_info->compositor_idle_id = 0;
@@ -2730,11 +2747,16 @@ compositorInitDisplay (DisplayInfo *display_info)
 
     display_info->composite_mode = 0;
 #if HAVE_NAME_WINDOW_PIXMAP
-    XCompositeQueryVersion (display_info->dpy, &composite_major, &composite_minor);
     display_info->have_name_window_pixmap = ((composite_major > 0) || (composite_minor >= 2));
-#else
+#else  /* HAVE_NAME_WINDOW_PIXMAP */
     display_info->have_name_window_pixmap = FALSE;
-#endif
+#endif /* HAVE_NAME_WINDOW_PIXMAP */
+
+#if HAVE_OVERLAYS
+    display_info->have_overlays = ((composite_major > 0) || (composite_minor >= 3));
+#else  /* HAVE_OVERLAYS */
+    display_info->have_overlays = FALSE;
+#endif /* HAVE_OVERLAYS */
 
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
@@ -2799,8 +2821,43 @@ compositorManageScreen (ScreenInfo *screen_info)
         return FALSE;
     }
 
+    screen_info->output = screen_info->xroot;
+#if HAVE_OVERLAYS
+    if (display_info->have_overlays)
+    {
+        screen_info->overlay = XCompositeGetOverlayWindow (display_info->dpy, screen_info->xroot);
+        if (screen_info->overlay != None)
+        {
+#if USE_CHILD_OVERLAY
+            XSetWindowAttributes attributes;
+
+            attributes.override_redirect = TRUE;
+            screen_info->root_overlay = XCreateWindow (display_info->dpy, screen_info->overlay,
+                                                       0, 0, screen_info->width, screen_info->height, 0, 0,
+                                                       InputOutput, CopyFromParent, CWOverrideRedirect, &attributes);
+            XMapWindow (display_info->dpy, screen_info->root_overlay);
+            XRaiseWindow (display_info->dpy, screen_info->overlay);
+            XShapeCombineRectangles (display_info->dpy, screen_info->root_overlay,
+                                     ShapeInput, 0, 0, NULL, 0, ShapeSet, Unsorted);
+            screen_info->output = screen_info->root_overlay;
+#else
+            screen_info->output = screen_info->overlay;
+#endif /* USE_CHILD_OVERLAY */
+            XShapeCombineRectangles (display_info->dpy, screen_info->overlay,
+                                     ShapeInput, 0, 0, NULL, 0, ShapeSet, Unsorted);
+            TRACE ("Overlay enabled");
+        }
+        else
+        {
+            /* Something is wrong with overlay support */
+            TRACE ("Cannot get root window overlay, overlay support disabled");
+            display_info->have_overlays = FALSE;
+        }
+    }
+#endif /* HAVE_OVERLAYS */
+
     pa.subwindow_mode = IncludeInferiors;
-    screen_info->rootPicture = XRenderCreatePicture (display_info->dpy, screen_info->xroot,
+    screen_info->rootPicture = XRenderCreatePicture (display_info->dpy, screen_info->output,
                                                      visual_format, CPSubwindowMode, &pa);
 
     if (screen_info->rootPicture == None)
@@ -2826,7 +2883,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->compositor_active = TRUE;
     screen_info->overlays = 0;
 
-    XClearArea (display_info->dpy, screen_info->xroot, 0, 0, 0, 0, TRUE);
+    XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     compositorSetCMSelection (screen_info, screen_info->xfwm4_win);
     TRACE ("Manual compositing enabled");
 
@@ -2870,6 +2927,18 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     g_list_free (screen_info->cwindows);
     screen_info->cwindows = NULL;
     TRACE ("Compositor: removed %i window(s) remaining", i);
+
+#if HAVE_OVERLAYS
+    if (display_info->have_overlays)
+    {
+#if USE_CHILD_OVERLAY
+        XDestroyWindow (display_info->dpy, screen_info->root_overlay);
+        screen_info->root_overlay = None;
+#endif /* USE_CHILD_OVERLAY */
+        XCompositeReleaseOverlayWindow (display_info->dpy, screen_info->overlay);
+        screen_info->overlay = None;
+    }
+#endif /* HAVE_OVERLAYS */
 
     if (screen_info->rootPicture)
     {
