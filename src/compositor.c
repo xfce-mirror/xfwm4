@@ -928,6 +928,7 @@ win_extents (CWindow *cw)
 
     if ((screen_info->params->show_popup_shadow &&
               WIN_IS_OVERRIDE(cw) &&
+              !WIN_IS_FULLSCREEN(cw) &&
               !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) ||
           (screen_info->params->show_frame_shadow &&
               !WIN_IS_OVERRIDE(cw) &&
@@ -2754,8 +2755,6 @@ compositorInitDisplay (DisplayInfo *display_info)
 
 #if HAVE_OVERLAYS
     display_info->have_overlays = ((composite_major > 0) || (composite_minor >= 3));
-#else  /* HAVE_OVERLAYS */
-    display_info->have_overlays = FALSE;
 #endif /* HAVE_OVERLAYS */
 
 #else /* HAVE_COMPOSITOR */
@@ -2828,23 +2827,18 @@ compositorManageScreen (ScreenInfo *screen_info)
         screen_info->overlay = XCompositeGetOverlayWindow (display_info->dpy, screen_info->xroot);
         if (screen_info->overlay != None)
         {
-#if USE_CHILD_OVERLAY
             XSetWindowAttributes attributes;
 
-            attributes.override_redirect = TRUE;
             screen_info->root_overlay = XCreateWindow (display_info->dpy, screen_info->overlay,
-                                                       0, 0, screen_info->width, screen_info->height, 0, 0,
-                                                       InputOutput, CopyFromParent, CWOverrideRedirect, &attributes);
+                                                       0, 0, screen_info->width, screen_info->height, 0, screen_info->depth,
+                                                       InputOutput, screen_info->visual, 0, &attributes);
             XMapWindow (display_info->dpy, screen_info->root_overlay);
             XRaiseWindow (display_info->dpy, screen_info->overlay);
+            XShapeCombineRectangles (display_info->dpy, screen_info->overlay,
+                                     ShapeInput, 0, 0, NULL, 0, ShapeSet, Unsorted);
             XShapeCombineRectangles (display_info->dpy, screen_info->root_overlay,
                                      ShapeInput, 0, 0, NULL, 0, ShapeSet, Unsorted);
             screen_info->output = screen_info->root_overlay;
-#else
-            screen_info->output = screen_info->overlay;
-#endif /* USE_CHILD_OVERLAY */
-            XShapeCombineRectangles (display_info->dpy, screen_info->overlay,
-                                     ShapeInput, 0, 0, NULL, 0, ShapeSet, Unsorted);
             TRACE ("Overlay enabled");
         }
         else
@@ -2931,10 +2925,9 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #if HAVE_OVERLAYS
     if (display_info->have_overlays)
     {
-#if USE_CHILD_OVERLAY
         XDestroyWindow (display_info->dpy, screen_info->root_overlay);
         screen_info->root_overlay = None;
-#endif /* USE_CHILD_OVERLAY */
+
         XCompositeReleaseOverlayWindow (display_info->dpy, screen_info->overlay);
         screen_info->overlay = None;
     }
