@@ -1947,7 +1947,11 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->shaped = is_shaped (display_info, id);
     new->viewable = (new->attr.map_state == IsViewable);
 
-    if ((new->attr.class != InputOnly) && (id != screen_info->xroot))
+    if ((new->attr.class != InputOnly)
+#if HAVE_OVERLAYS
+         && ((!display_info->have_overlays) || (id != screen_info->overlay))
+#endif
+         && (id != screen_info->output))
     {
         new->damage = XDamageCreate (display_info->dpy, id, XDamageReportNonEmpty);
     }
