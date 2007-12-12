@@ -152,7 +152,7 @@ struct _ScreenInfo
     Picture rootTile;
     XserverRegion allDamage;
 
-    guint overlays;
+    guint wins_unredirected;
     gboolean compositor_active;
     gboolean clipChanged;
 #endif /* HAVE_COMPOSITOR */

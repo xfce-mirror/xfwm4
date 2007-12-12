@@ -1089,7 +1089,7 @@ unredirect_win (CWindow *cw)
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
         XSync (display_info->dpy, FALSE);
 
-        TRACE ("Window 0x%lx unredirected, overlays is %i", cw->id, screen_info->overlays);
+        TRACE ("Window 0x%lx unredirected, wins_unredirected is %i", cw->id, screen_info->wins_unredirected);
     }
 }
 
@@ -1772,24 +1772,28 @@ map_win (CWindow *cw)
 
     if (!WIN_IS_REDIRECTED(cw))
     {
-        screen_info->overlays++;
+        /* To be safe, we count only the fullscreen overlays */
+        if (WIN_IS_FULLSCREEN(cw))
+        {
+            screen_info->wins_unredirected++;
+        }
 #if HAVE_OVERLAYS
-        if ((screen_info->overlays == 1) && (display_info->have_overlays))
+        if ((screen_info->wins_unredirected == 1) && (display_info->have_overlays))
         {
             XUnmapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
         }
 #endif /* HAVE_OVERLAYS */
-        TRACE ("Mapping unredirected window 0x%lx, overlays increased to %i", cw->id, screen_info->overlays);
+        TRACE ("Mapping unredirected window 0x%lx, wins_unredirected increased to %i", cw->id, screen_info->wins_unredirected);
         return;
     }
     if (!screen_info->params->unredirect_overlays)
     {
-        TRACE ("Not unredirecting overlays");
+        TRACE ("Not unredirecting wins_unredirected");
         return;
     }
 
     /* Check for new windows to un-redirect. */
-    if (WIN_IS_FULLSCREEN(cw) && WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) &&
+    if ((WIN_IS_FULLSCREEN(cw) || (screen_info->wins_unredirected > 0)) && WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) &&
         WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw))
     {
         CWindow *top;
@@ -1818,32 +1822,28 @@ unmap_win (CWindow *cw)
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
-    if (!WIN_IS_REDIRECTED(cw) && (screen_info->overlays > 0))
+    if (!WIN_IS_REDIRECTED(cw) && WIN_IS_FULLSCREEN(cw) && (screen_info->wins_unredirected > 0))
     {
-        screen_info->overlays--;
-        TRACE ("Unmapped window 0x%lx, overlays decreased to %i", cw->id, screen_info->overlays);
+        screen_info->wins_unredirected--;
+        TRACE ("Unmapped window 0x%lx, wins_unredirected decreased to %i", cw->id, screen_info->wins_unredirected);
+        if (!screen_info->wins_unredirected)
+        {
+            /* Restore the overlay if that was the last unredirected window */
 #if HAVE_OVERLAYS
-        if ((screen_info->overlays == 0) && (display_info->have_overlays))
-        {
-            XMapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
-        }
+            if (display_info->have_overlays)
+            {
+                XMapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
+            }
 #endif /* HAVE_OVERLAYS */
-    }
-
-    if (!screen_info->overlays)
-    {
-        /* Repaint immediately if that was the last unredirected window */
-
-        if (!WIN_IS_REDIRECTED(cw))
-        {
             damage_screen (screen_info);
             repair_screen (screen_info);
-        }
-        else if (WIN_IS_VISIBLE(cw))
-        {
-            damage_win (cw);
-        }
+       }
     }
+    else if (WIN_IS_VISIBLE(cw))
+    {
+        damage_win (cw);
+    }
+
     cw->viewable = FALSE;
     cw->damaged = FALSE;
     free_win_data (cw, FALSE);
@@ -2879,7 +2879,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->allDamage = None;
     screen_info->cwindows = NULL;
     screen_info->compositor_active = TRUE;
-    screen_info->overlays = 0;
+    screen_info->wins_unredirected = 0;
 
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     compositorSetCMSelection (screen_info, screen_info->xfwm4_win);
@@ -2967,7 +2967,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
 
     screen_info->gaussianSize = -1;
-    screen_info->overlays = 0;
+    screen_info->wins_unredirected = 0;
 
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot,
                                     display_info->composite_mode);
