@@ -116,8 +116,6 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
     GtkWidget *hbox;
     GtkWidget *label;
     GtkWidget *entry;
-    GtkWidget *header_image;
-    GtkWidget *header;
     GtkTreeSelection *selection;
     GtkTreeModel *model;
     GtkTreeIter iter;
@@ -131,14 +129,11 @@ cb_popup_add_menu (GtkWidget * widget, gpointer data)
     FILE *new_theme;
     FILE *default_theme;
 
-    dialog = gtk_dialog_new_with_buttons (_("Add keybinding theme"), GTK_WINDOW (itf->xfwm4_dialog),
+    dialog = xfce_titled_dialog_new_with_buttons (_("Add keybinding theme"), GTK_WINDOW (itf->xfwm4_dialog),
         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-
-    header_image = gtk_image_new_from_stock (GTK_STOCK_ADD, GTK_ICON_SIZE_LARGE_TOOLBAR);
-    header = xfce_create_header_with_image (header_image, _("Add keybinding theme"));
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), header, FALSE, FALSE, 0);
+    gtk_window_set_icon_name (GTK_WINDOW (dialog), GTK_STOCK_ADD);
 
     hbox = gtk_hbox_new (FALSE, BORDER);
     label = gtk_label_new (_("Enter a name for the theme:"));

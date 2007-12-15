@@ -60,6 +60,8 @@ static char **ws_names = NULL;
 static GtkWidget *treeview;
 static int treerows;
 
+static GtkDialog *parent_dialog;
+
 enum
 {
     NUMBER_COLUMN,
@@ -321,24 +323,22 @@ static void
 edit_name_dialog (GtkTreeModel * model, GtkTreeIter * iter,
     int number, const char *name, McsManager * manager)
 {
-    GtkWidget *dialog, *mainvbox, *header, *hbox, *label, *entry;
+    GtkWidget *dialog, *mainvbox, *hbox, *label, *entry;
     char title[512];
     int response;
     const char *tmp;
 
-    dialog = gtk_dialog_new_with_buttons (_("Change name"), NULL,
+    dialog = xfce_titled_dialog_new_with_buttons (_("Change name"), GTK_WINDOW (parent_dialog),
         GTK_DIALOG_NO_SEPARATOR,
         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_APPLY, GTK_RESPONSE_OK, NULL);
-
+    gtk_window_set_icon_name (GTK_WINDOW (dialog), GTK_STOCK_EDIT);
     gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_MOUSE);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
     mainvbox = GTK_DIALOG (dialog)->vbox;
 
     sprintf (title, _("Workspace %d"), number);
-    header = xfce_create_header (NULL, title);
-    gtk_widget_show (header);
-    gtk_box_pack_start (GTK_BOX (mainvbox), header, TRUE, FALSE, 0);
+    xfce_titled_dialog_set_subtitle (XFCE_TITLED_DIALOG (dialog), title);
 
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (hbox), BORDER);
@@ -504,10 +504,12 @@ add_count_spinbox (GtkWidget * vbox, McsManager * manager)
 }
 
 void
-add_workspaces_page (GtkBox * box)
+add_workspaces_page (GtkDialog * dialog, GtkBox * box)
 {
     GtkWidget *frame, *vbox;
 
+    parent_dialog = dialog;
+    
     /* Number of workspaces */
     vbox = gtk_vbox_new (FALSE, BORDER);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), BORDER);

@@ -26,7 +26,7 @@
 
 void create_workspaces_channel (McsPlugin * mcs_plugin);
 
-void add_workspaces_page (GtkBox *box);
+void add_workspaces_page (GtkDialog *dialog, GtkBox *box);
 
 #endif  /* INC_WORKSPACES_H */
 
