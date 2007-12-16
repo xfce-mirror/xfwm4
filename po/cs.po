@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-08-11 20:48+0100\n"
+"PO-Revision-Date: 2007-12-16 18:12+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -632,7 +632,6 @@ msgid "Lower window"
 msgstr "Přenést okno do pozadí"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
-#, fuzzy
 msgid "Toggle above"
 msgstr "Přepnout nahoru"
 
