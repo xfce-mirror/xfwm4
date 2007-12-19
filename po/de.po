@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-06 21:22+0100\n"
+"POT-Creation-Date: 2007-12-17 23:24+0100\n"
 "PO-Revision-Date: 2007-11-06 21:13+0000\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -54,7 +54,7 @@ msgid "Workspaces and Margins"
 msgstr "Arbeitsflächen und Seitenränder"
 
 #: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
-#: ../mcs-plugin/workspaces.c:516
+#: ../mcs-plugin/workspaces.c:518
 msgid "Workspaces"
 msgstr "Arbeitsflächen"
 
@@ -274,11 +274,11 @@ msgstr ""
 "Diese Einstellungen können mit dem derzeitigen Fenstermanager nicht arbeiten "
 "(%s)"
 
-#: ../mcs-plugin/workspaces.c:329
+#: ../mcs-plugin/workspaces.c:331
 msgid "Change name"
 msgstr "Namen ändern"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:490
+#: ../mcs-plugin/workspaces.c:340 ../mcs-plugin/xfwm4_shortcuteditor.c:485
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeitsfläche %i"
@@ -295,7 +295,7 @@ msgstr "Klicken Sie einen Namen an, um ihn zu ändern"
 msgid "Number of workspaces:"
 msgstr "Anzahl der Arbeitsflächen:"
 
-#: ../mcs-plugin/workspaces.c:527
+#: ../mcs-plugin/workspaces.c:529
 msgid "Workspace names"
 msgstr "Namen für die Arbeitsflächen"
 
@@ -323,19 +323,19 @@ msgstr "Maximieren"
 msgid "Close"
 msgstr "Schließen"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Shade window"
 msgstr "Fenster einrollen"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Hide window"
 msgstr "Fenster verstecken"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Maximize window"
 msgstr "Fenster maximieren"
 
-#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Fill window"
 msgstr "Fenster füllen"
 
@@ -553,181 +553,180 @@ msgstr "Fenstermanager"
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Wollen Sie dieses Tastenkürzel-Schema wirklich entfernen?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:132
 msgid "Add keybinding theme"
 msgstr "Tastenkürzel-Schema hinzufügen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:139
 msgid "Enter a name for the theme:"
 msgstr "Namen des Schemas eingeben:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:175
 msgid "A keybinding theme with the same name already exists"
 msgstr "Es gibt bereits ein Schema mit diesem Namen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:181
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Sie müssen einen Namen für dieses Schema eingeben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 msgid "Close window"
 msgstr "Fenster schließen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window vertically"
 msgstr "Fenster vertikal maximieren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Maximize window horizontally"
 msgstr "Fenster horizontal maximieren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Fill window horizontally"
 msgstr "Fenster horizontal füllen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Fill window vertically"
 msgstr "Fenster vertikal füllen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Stick window"
 msgstr "Fenster anheften"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Cycle windows"
 msgstr "Fenster durchwechseln"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Move window up"
 msgstr "Fenster hochschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Move window down"
 msgstr "Fenster runterschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Move window left"
 msgstr "Fenster nach links schieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Move window right"
 msgstr "Fenster nach rechts schieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Resize window up"
 msgstr "Fenster nach oben vergrößern"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Resize window down"
 msgstr "Fenster nach unten vergrößern"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Resize window left"
 msgstr "Fenster nach links vergrößern"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Resize window right"
 msgstr "Fenster nach rechts vergrößern"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Cancel move/resize window"
 msgstr "Verschieben/Größenänderung eines Fensters abbrechen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Raise window"
 msgstr "Fenster hervorheben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Lower window"
 msgstr "Fenster herabsetzen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Toggle above"
 msgstr "Nach vorne bringen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Toggle fullscreen"
 msgstr "Vollbildmodus"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Upper workspace"
 msgstr "Arbeitsfläche darüber"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Bottom workspace"
 msgstr "Arbeitsfläche darunter"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Left workspace"
 msgstr "Linke Arbeitsfläche"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Right workspace"
 msgstr "Rechte Arbeitsfläche"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Next workspace"
 msgstr "Nächste Arbeitsfläche"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Previous workspace"
 msgstr "Vorherige Arbeitsfläche"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Add workspace"
 msgstr "Arbeitsfläche hinzufügen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Delete workspace"
 msgstr "Arbeitsfläche löschen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Move window to next workspace"
 msgstr "Fenster auf die nächste Arbeitsfläche verschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Move window to previous workspace"
 msgstr "Fenster auf die vorige Arbeitsfläche verschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Move window to upper workspace"
 msgstr "Fenster auf die obere Arbeitsfläche verschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Move window to bottom workspace"
 msgstr "Fenster auf die untere Arbeitsfläche verschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 msgid "Move window to left workspace"
 msgstr "Fenster auf die linke Arbeitsfläche verschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
 msgid "Move window to right workspace"
 msgstr "Fenster auf die rechte Arbeitsfläche verschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
 msgid "Show desktop"
 msgstr "Arbeitsoberfläche zeigen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
 msgid "Cancel window action"
 msgstr "Fensteraktion abbrechen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
 msgid "Window operations menu"
 msgstr "Menü für Fensteraktionen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:506
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Fenster auf Arbeitsfläche %d verschieben"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:586
 msgid "Cannot open the theme directory !"
 msgstr "Kann Themaverzeichnis nicht öffnen!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:605
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -736,8 +735,8 @@ msgstr ""
 "Kann »%s« nicht öffnen:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:619
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:630
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -746,7 +745,7 @@ msgstr ""
 "Kann »%s« nicht schreiben:\n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:789
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -754,19 +753,19 @@ msgstr ""
 "Tastenkürzel schon in Benutzung!\n"
 "Sind Sie sicher, dass Sie es benutzen wollen?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:853
 msgid "Compose shortcut for :"
 msgstr "Tastenkürzel erstellen für:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:857
 msgid "Compose shortcut"
 msgstr "Tastenkürzel erstellen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:859
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:863
 msgid "No shortcut"
 msgstr "Kein Tastenkürzel"
 
