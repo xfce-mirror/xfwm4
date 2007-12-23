@@ -7,13 +7,12 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-11-13 19:16+0100\n"
-"PO-Revision-Date: 2007-01-22 17:24+0200\n"
+"PO-Revision-Date: 2007-12-19 20:40+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
@@ -84,16 +83,15 @@ msgid "Cycling"
 msgstr "Ciklim"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:429
-#, fuzzy
 msgid "Activate focus stealing prevention"
-msgstr "Aktivizo"
+msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:435
 msgid "Honor the standard ICCCM focus hint"
 msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:440
-#: ../mcs-plugin/xfwm4_plugin.c:1681
+#: ../mcs-plugin/xfwm4_plugin.c:1698
 msgid "Focus"
 msgstr "Fokus"
 
@@ -114,9 +112,8 @@ msgid "Restore original size of maximized windows when moving"
 msgstr "Kur lëvizen, rikthe madhësinë origjinale të dritareve të zmadhuara në maksimum"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Use edge resistance instead of windows snapping"
-msgstr "Përdor më mirë le"
+msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Accessibility"
@@ -159,9 +156,8 @@ msgid "Enable display compositing"
 msgstr "Aktivizo hartim ekrani"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:573
-#, fuzzy
 msgid "Display full screen overlay windows directly"
-msgstr "Shfaq"
+msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:579
 msgid "Show shadows under regular windows"
@@ -217,7 +213,7 @@ msgid "Button Label|Window Manager Tweaks"
 msgstr "Etiketë Butoni|Rregullime të Imta për Përgjegjës Dritaresh"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781
-#: ../mcs-plugin/xfwm4_plugin.c:2342
+#: ../mcs-plugin/xfwm4_plugin.c:2359
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Këto rregullime nuk mund të punojnë me përgjegjësin e tanishëm të dritareve (%s)"
@@ -227,7 +223,7 @@ msgid "Change name"
 msgstr "Ndrysho emër"
 
 #: ../mcs-plugin/workspaces.c:338
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:480
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:482
 #, c-format
 msgid "Workspace %d"
 msgstr "Hapësirë pune %d"
@@ -272,224 +268,224 @@ msgstr "Maksimizo"
 msgid "Close"
 msgstr "Mbyll"
 
-#: ../mcs-plugin/xfwm4_plugin.c:78
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Shade window"
 msgstr "Hijezo dritare"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Hide window"
 msgstr "Fshih dritare"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window"
 msgstr "Maksimizo dritare"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_plugin.c:82
 msgid "Nothing"
 msgstr "Asgjë"
 
-#: ../mcs-plugin/xfwm4_plugin.c:86
+#: ../mcs-plugin/xfwm4_plugin.c:87
 msgid "Left"
 msgstr "Majtas"
 
-#: ../mcs-plugin/xfwm4_plugin.c:87
+#: ../mcs-plugin/xfwm4_plugin.c:88
 msgid "Center"
 msgstr "Qendër"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:89
 msgid "Right"
 msgstr "Djathtas"
 
-#: ../mcs-plugin/xfwm4_plugin.c:574
+#: ../mcs-plugin/xfwm4_plugin.c:587
 msgid "Click and drag buttons to change the layout"
 msgstr "Për të ndryshuar skemën klikoni dhe tërhiqni zvarrë butona "
 
-#: ../mcs-plugin/xfwm4_plugin.c:579
+#: ../mcs-plugin/xfwm4_plugin.c:592
 msgid "Active"
 msgstr "Veprues"
 
-#: ../mcs-plugin/xfwm4_plugin.c:590
+#: ../mcs-plugin/xfwm4_plugin.c:603
 msgid "Title"
 msgstr "Titull"
 
-#: ../mcs-plugin/xfwm4_plugin.c:591
+#: ../mcs-plugin/xfwm4_plugin.c:604
 msgid "The window title, it cannot be removed"
 msgstr "Titulli i dritares, nuk mund të hiqet"
 
-#: ../mcs-plugin/xfwm4_plugin.c:599
+#: ../mcs-plugin/xfwm4_plugin.c:616
 msgid "Hidden"
 msgstr "Padukshëm"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1359
+#: ../mcs-plugin/xfwm4_plugin.c:1376
 msgid "Font Selection Dialog"
 msgstr "Dialog Përzgjedhjeje Gërmash"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1424
+#: ../mcs-plugin/xfwm4_plugin.c:1441
 msgid "Window Manager"
 msgstr "Përgjegjës Dritaresh"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1464
+#: ../mcs-plugin/xfwm4_plugin.c:1481
 msgid "Title font"
 msgstr "Gërma titulli"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1473
+#: ../mcs-plugin/xfwm4_plugin.c:1490
 msgid "Title Alignment"
 msgstr "Drejtim Titulli"
 
 #. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1475
+#: ../mcs-plugin/xfwm4_plugin.c:1492
 msgid "Text alignment inside title bar :"
 msgstr "Drejtim teksti brenda shtyllës së titullit :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1481
+#: ../mcs-plugin/xfwm4_plugin.c:1498
 msgid "Button layout"
 msgstr "Skemë butonash"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1486
+#: ../mcs-plugin/xfwm4_plugin.c:1503
 msgid "Style"
 msgstr "Stil"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1534
+#: ../mcs-plugin/xfwm4_plugin.c:1551
 msgid "Window shortcuts"
 msgstr "Shkurtore dritareje"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1548
+#: ../mcs-plugin/xfwm4_plugin.c:1565
 msgid "Command"
 msgstr "Urdhër"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1554
+#: ../mcs-plugin/xfwm4_plugin.c:1571
 msgid "Shortcut"
 msgstr "Shkurtore"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1571
+#: ../mcs-plugin/xfwm4_plugin.c:1588
 msgid "Keyboard"
 msgstr "Tastierë"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1586
+#: ../mcs-plugin/xfwm4_plugin.c:1603
 msgid "Focus model"
 msgstr "Model fokusi"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1590
+#: ../mcs-plugin/xfwm4_plugin.c:1607
 msgid "Click to focus"
 msgstr "Klikoni për fokusim"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1600
+#: ../mcs-plugin/xfwm4_plugin.c:1617
 msgid "Focus follows mouse"
 msgstr "Fokusimi ndjek miun"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1611
+#: ../mcs-plugin/xfwm4_plugin.c:1628
 msgid "Automatically give focus to newly created windows"
 msgstr "Jepu fokus vetvetiu dritareve të sapokrijuara"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1615
+#: ../mcs-plugin/xfwm4_plugin.c:1632
 msgid "New window focus"
 msgstr "Fokus mbi dritare të reja"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1622
+#: ../mcs-plugin/xfwm4_plugin.c:1639
 msgid "Raise on focus"
 msgstr "Lartësoji përgjatë fokusit"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1628
+#: ../mcs-plugin/xfwm4_plugin.c:1645
 msgid "Automatically raise windows when they receive focus"
 msgstr "Lartësoji dritaret vetvetiu kur këto marrin fokus"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1638
+#: ../mcs-plugin/xfwm4_plugin.c:1655
 msgid "Delay before raising focused window :"
 msgstr "Vonesë para se të ngrihet dritarja e fokusuar :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1645
+#: ../mcs-plugin/xfwm4_plugin.c:1662
 msgid "Slow"
 msgstr "Ngadalë"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1652
+#: ../mcs-plugin/xfwm4_plugin.c:1669
 msgid "Fast"
 msgstr "Shpejt"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1673
+#: ../mcs-plugin/xfwm4_plugin.c:1690
 msgid "Raise window when clicking inside application window"
 msgstr "Lartëso dritaren kur klikohet brenda dritares së një zbatimi"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1677
+#: ../mcs-plugin/xfwm4_plugin.c:1694
 msgid "Raise on click"
 msgstr "_Lartëso me klikimin"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1695
+#: ../mcs-plugin/xfwm4_plugin.c:1712
 msgid "Windows snapping"
 msgstr "Përlarje dritaresh"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1700
+#: ../mcs-plugin/xfwm4_plugin.c:1717
 msgid "Snap windows to screen border"
 msgstr "Përla dritare afër caqeve të ekranit"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1706
+#: ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Snap windows to other windows"
 msgstr "Përla dritare afër dritaresh të tjera"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1717
+#: ../mcs-plugin/xfwm4_plugin.c:1734
 msgid "Distance :"
 msgstr "Largësi:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1724
+#: ../mcs-plugin/xfwm4_plugin.c:1741
 msgid "Distance|Small"
 msgstr "Largësi|E vogël"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1731
+#: ../mcs-plugin/xfwm4_plugin.c:1748
 msgid "Distance|Wide"
 msgstr "Largësi|E madhe"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1752
+#: ../mcs-plugin/xfwm4_plugin.c:1769
 msgid "Wrap workspaces"
 msgstr "Mbështill hapësira pune"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1758
+#: ../mcs-plugin/xfwm4_plugin.c:1775
 msgid "Wrap workspaces when the pointer reaches a screen edge"
 msgstr "Mbështill hapësira pune kur treguesi arrin në një skaj ekrani"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1766
+#: ../mcs-plugin/xfwm4_plugin.c:1783
 msgid "Wrap workspaces when dragging a window off the screen"
 msgstr "Mbështill hapësira pune kur një dritare tërhiqet përtej ekranit"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1776
+#: ../mcs-plugin/xfwm4_plugin.c:1793
 msgid "Edge Resistance :"
 msgstr "Qëndresë Skajesh :"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1783
+#: ../mcs-plugin/xfwm4_plugin.c:1800
 msgid "Resistance|Small"
 msgstr "Rezistencë|E vogël"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1790
+#: ../mcs-plugin/xfwm4_plugin.c:1807
 msgid "Resistance|Wide"
 msgstr "Rezistencë|E madhe"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1812
+#: ../mcs-plugin/xfwm4_plugin.c:1829
 msgid "Opaque move and resize"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_plugin.c:1817
+#: ../mcs-plugin/xfwm4_plugin.c:1834
 msgid "Display content of windows when resizing"
 msgstr "Shfaq përmbajtje dritareje kur  ripërmasohet"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1823
+#: ../mcs-plugin/xfwm4_plugin.c:1840
 msgid "Display content of windows when moving"
 msgstr "Shfaq përmbajtje dritareje kur lëvizet"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1828
+#: ../mcs-plugin/xfwm4_plugin.c:1845
 msgid "Double click action"
 msgstr "Veprim dyklikimi"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1830
+#: ../mcs-plugin/xfwm4_plugin.c:1847
 msgid "Action to perform when double clicking on title bar :"
 msgstr "Veprim që do bërë kur dyklikohet te shtyllë titulli:"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1835
+#: ../mcs-plugin/xfwm4_plugin.c:1852
 msgid "Advanced"
 msgstr "Të mëtejshme"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:1974
+#: ../mcs-plugin/xfwm4_plugin.c:1991
 msgid "Button Label|Window Manager"
 msgstr "Etiketë Butoni|Përgjegjës Dritaresh"
 
@@ -498,168 +494,168 @@ msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Doni vërtet ta hiqni këtë temë caktimi tastesh?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:139
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Add keybinding theme"
 msgstr "Shto temë caktimi tastesh"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:143
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
 msgid "Enter a name for the theme:"
 msgstr "Jepni një emër për temën:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:178
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
 msgid "A keybinding theme with the same name already exists"
 msgstr "Ka tashmë një temë caktimi tastesh me të njëjtin emër"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:184
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Duhet të jepni një emër për temën e caktimit të tasteve"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:357
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Close window"
 msgstr "Mbyll dritare"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Maximize window vertically"
 msgstr "Maksimizo dritare vertikalisht"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Maximize window horizontally"
 msgstr "Maksimizo dritare horizontalisht"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 msgid "Stick window"
 msgstr "Ngec dritare"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Cycle windows"
 msgstr "Ciklo dritare"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 msgid "Move window up"
 msgstr "Ngri dritare"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Move window down"
 msgstr "Ul dritare"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Move window left"
 msgstr "Lëvize dritaren majtas"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 msgid "Move window right"
 msgstr "Lëvize dritaren djathtas"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 msgid "Resize window up"
 msgstr "Rpërmaso dritaren sipër"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Resize window down"
 msgstr "Ripërmaso dritaren poshtë"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Resize window left"
 msgstr "Ripërmaso dritaren majtas"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 msgid "Resize window right"
 msgstr "Ripërmaso dritaren djathtas"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Cancel move/resize window"
 msgstr "Anulo lëvizje/ripërmasim dritareje"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Raise window"
 msgstr "Ngrije dritaren "
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 msgid "Lower window"
 msgstr "Ule dritaren"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Toggle fullscreen"
 msgstr "Këmbe gjendjen Tërë Ekrani"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Upper workspace"
 msgstr "Hapësirë pune më sipër"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Bottom workspace"
 msgstr "Hapësirë pune më poshtëPosht�"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
 msgid "Left workspace"
 msgstr "Hapësirë pune majtas"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
 msgid "Right workspace"
 msgstr "Hapësirë pune djathtas"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Next workspace"
 msgstr "Hapësirë pune pasuese"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
 msgid "Previous workspace"
 msgstr "Hapësirë pune e mëparshme"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Add workspace"
 msgstr "Shto hapësirë pune"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Delete workspace"
 msgstr "Fshi hapësirë pune"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
 msgid "Move window to next workspace"
 msgstr "Kaloje dritaren te hapësira pasuese e punës"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Move window to previous workspace"
 msgstr "Kaloje dritaren te hapësira e mëparshme e punës"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Move window to upper workspace"
 msgstr "Kaloje dritaren te hapësira e punës më sipër"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Move window to bottom workspace"
 msgstr "Kaloje dritaren te hapësira e punës më poshtë"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Move window to left workspace"
 msgstr "Kaloje dritaren te hapësira e punës majtas"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Move window to right workspace"
 msgstr "Kaloje dritaren te hapësira e punës djathtas"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 msgid "Show desktop"
 msgstr "Shfaq desktop"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 msgid "Cancel window action"
 msgstr "Anulo veprim dritareje"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
 msgid "Window operations menu"
 msgstr "Menu veprimesh dritareje"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:501
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:503
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Kaloje dritaren te hapësira e punës %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:581
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:583
 msgid "Cannot open the theme directory !"
 msgstr "Nuk hap dot drejtorinë e temave !"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:600
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:602
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -668,8 +664,8 @@ msgstr ""
 "S'hap dot %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:614
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:625
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:616
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:627
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -678,7 +674,7 @@ msgstr ""
 "Nuk shkruaj dot te %s : \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:778
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:780
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -686,29 +682,29 @@ msgstr ""
 "Shkurtore tashmë në përdorim!\n"
 "Jeni i sigurt se doni të përdoret?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:842
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:844
 msgid "Compose shortcut for :"
 msgstr "Harto shkurtore për :"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:846
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
 msgid "Compose shortcut"
 msgstr "Harto shkurtore"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:848
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:850
 msgid "Cancel"
 msgstr "Anulo"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"
 msgstr "Pa shkurtore"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:81
+#: ../src/hints.c:84
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (në %s)"
 
-#: ../src/main.c:134
+#: ../src/main.c:135
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Gabim copëzimi"
@@ -793,12 +789,12 @@ msgstr "Hapësirë %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu-ja nuk ja doli të përlajë treguesin\n"
 
-#: ../src/settings.c:902
+#: ../src/settings.c:932
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nuk siguroj dot ngjyrë %s\n"
 
-#: ../src/settings.c:908
+#: ../src/settings.c:938
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nuk përtyp dot ngjyrë %s\n"
