@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-09 20:49+0200\n"
-"PO-Revision-Date: 2007-08-24 11:59+0100\n"
+"POT-Creation-Date: 2007-06-23 19:57+0100\n"
+"PO-Revision-Date: 2007-12-18 21:32+0100\n"
 "Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language-Team: \n"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
@@ -169,11 +169,11 @@ msgstr "Tamanho mínimo das janelas para correcto posicionamento"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Small"
-msgstr "Tamanho|Pequeno"
+msgstr "Pequeno"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Large"
-msgstr "Tamanho|Largo"
+msgstr "Largo"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
 msgid "Default positionning of windows without smart placement:"
@@ -477,15 +477,15 @@ msgstr "Atrair janelas para outras janelas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1788
 msgid "Distance :"
-msgstr "Distância :"
+msgstr "Distância:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1795
 msgid "Distance|Small"
-msgstr "Distância|Pequena"
+msgstr "Pequena"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1802
 msgid "Distance|Wide"
-msgstr "Distância|Grande"
+msgstr "Grande"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Wrap workspaces"
@@ -501,15 +501,15 @@ msgstr "Mudar de Area de Trabalho quando se arrasta uma janela para fora do ecr�
 
 #: ../mcs-plugin/xfwm4_plugin.c:1847
 msgid "Edge Resistance :"
-msgstr "Resistência da borda :"
+msgstr "Resistência da borda:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1854
 msgid "Resistance|Small"
-msgstr "Resistência|Pequena"
+msgstr "Pequena"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1861
 msgid "Resistance|Wide"
-msgstr "Resistência|Grande"
+msgstr "Grande"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1883
 msgid "Opaque move and resize"
@@ -542,7 +542,7 @@ msgstr "Gestor de Janela"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Deseja remover este tema?"
+msgstr "Tem a certeza que deseja remover este tema ?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:134
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:140
@@ -551,15 +551,15 @@ msgstr "Adicionar tema de teclado"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:144
 msgid "Enter a name for the theme:"
-msgstr "Nome para o tema:"
+msgstr "Introduza o nome para o tema:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:180
 msgid "A keybinding theme with the same name already exists"
-msgstr "Já existe um tema com esse nome"
+msgstr "Já existe um tema de teclado com esse nome"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:186
 msgid "You have to provide a name for the keybinding theme"
-msgstr "Dê um nome para o tema do teclado"
+msgstr "Tem de dar um nome para o tema do teclado"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Close window"
@@ -747,7 +747,7 @@ msgstr ""
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:858
 msgid "Compose shortcut for :"
-msgstr "Definir atalho para :"
+msgstr "Definir atalho para:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:862
 msgid "Compose shortcut"
@@ -802,11 +802,11 @@ msgstr "_Desenrolar"
 
 #: ../src/menu.c:47
 msgid "S_tick"
-msgstr "_Omnipresente"
+msgstr "_Prender"
 
 #: ../src/menu.c:48
 msgid "Uns_tick"
-msgstr "Remo_ver Omnipresença"
+msgstr "Des_prender"
 
 #: ../src/menu.c:49
 msgid "Context _help"
