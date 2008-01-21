@@ -761,7 +761,7 @@ myDisplayUpdateLastUserTime (DisplayInfo *display, Time timestamp)
 
     if (TIMESTAMP_IS_BEFORE(display->last_user_time, timestamp))
     {
-	display->last_user_time = timestamp;
+        display->last_user_time = timestamp;
     }
 }
 

@@ -332,6 +332,7 @@ myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
     gchar selection[32];
     Atom wm_sn_atom;
 
+    TRACE ("entering myScreenCheckWMAtom");
     g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
     wm_sn_atom = XInternAtom (myScreenGetXDisplay (screen_info), selection, FALSE);
 
@@ -418,10 +419,10 @@ myScreenGrabKeys (ScreenInfo *screen_info)
        Ugly hack: KEY_CANCEL is used just for cancelling window ops
        it should not be grabbed all the time (especially when you
        realize that it's mapped to Esc by default, damn, I can't
-       switch back to command mode in vi anymore, I'm stuck in 
+       switch back to command mode in vi anymore, I'm stuck in
        edition mode ;)
 
-       That's why we start at FIRST_KEY which is defined after 
+       That's why we start at FIRST_KEY which is defined after
        KEY_CANCEL...
      */
     for (i = FIRST_KEY; i < KEY_COUNT; i++)

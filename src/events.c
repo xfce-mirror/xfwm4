@@ -2274,6 +2274,31 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 }
 
 static eventFilterStatus
+handleSelectionClear (DisplayInfo *display_info, XSelectionClearEvent * ev)
+{
+    eventFilterStatus status;
+    ScreenInfo *screen_info;
+    Client *c;
+    gboolean is_transient;
+
+    TRACE ("entering handleSelectionClear");
+
+    status = EVENT_FILTER_PASS;
+    screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
+    if (screen_info)
+    {
+        if (myScreenCheckWMAtom (screen_info, ev->selection))
+        {
+            TRACE ("root has received a WM_Sn selection event");
+            display_info->quit = TRUE;
+            status = EVENT_FILTER_REMOVE;
+        }
+    }
+
+    return status;
+}
+
+static eventFilterStatus
 handleShape (DisplayInfo *display_info, XShapeEvent * ev)
 {
     Client *c;
@@ -2448,6 +2473,9 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             break;
         case ClientMessage:
             status = handleClientMessage (display_info, (XClientMessageEvent *) ev);
+            break;
+        case SelectionClear:
+            status = handleSelectionClear (display_info, (XSelectionClearEvent *) ev);
             break;
         case ColormapNotify:
             handleColormapNotify (display_info, (XColormapEvent *) ev);
