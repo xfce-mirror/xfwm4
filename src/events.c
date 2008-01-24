@@ -2278,8 +2278,6 @@ handleSelectionClear (DisplayInfo *display_info, XSelectionClearEvent * ev)
 {
     eventFilterStatus status;
     ScreenInfo *screen_info;
-    Client *c;
-    gboolean is_transient;
 
     TRACE ("entering handleSelectionClear");
 
