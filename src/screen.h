@@ -158,16 +158,17 @@ struct _ScreenInfo
 #endif /* HAVE_COMPOSITOR */
 };
 
+gboolean                 myScreenCheckWMAtom                    (ScreenInfo *,
+                                                                 Atom atom);
 ScreenInfo              *myScreenInit                           (DisplayInfo *,
                                                                  GdkScreen *,
-                                                                 unsigned long);
+                                                                 unsigned long,
+                                                                 gboolean);
 ScreenInfo              *myScreenClose                          (ScreenInfo *);
 Display                 *myScreenGetXDisplay                    (ScreenInfo *);
 GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GdkWindow               *myScreenGetGdkWindow                   (ScreenInfo *);
-gboolean                 myScreenCheckWMAtom                    (ScreenInfo *,
-                                                                 Atom atom);
 gboolean                 myScreenGrabKeyboard                   (ScreenInfo *,
                                                                  Time);
 gboolean                 myScreenGrabPointer                    (ScreenInfo *,

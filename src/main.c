@@ -263,7 +263,7 @@ print_usage (void)
 #ifdef HAVE_COMPOSITOR
              "[--compositor=off|on|auto] "
 #endif
-             "[--daemon] [--version|-V] [--help|-H]\n", PACKAGE);
+             "[--daemon] [--replace] [--version|-V] [--help|-H]\n", PACKAGE);
 }
 
 static void
@@ -393,7 +393,7 @@ parse_compositor (const gchar *s)
 #endif /* HAVE_COMPOSITOR */
 
 static int
-initialize (int argc, char **argv, gint compositor_mode)
+initialize (int argc, char **argv, gint compositor_mode, gboolean replace_wm)
 {
     struct sigaction act;
     long ws;
@@ -447,7 +447,7 @@ initialize (int argc, char **argv, gint compositor_mode)
         GdkScreen *gscr;
 
         gscr = gdk_display_get_screen (display_info->gdisplay, i);
-        screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK);
+        screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK, replace_wm);
 
         if (!screen_info)
         {
@@ -529,6 +529,7 @@ int
 main (int argc, char **argv)
 {
     gboolean daemon_mode;
+    gboolean replace_wm;
     gint compositor;
     int status;
     int i;
@@ -536,6 +537,7 @@ main (int argc, char **argv)
     DBG ("xfwm4 starting");
 
     daemon_mode = FALSE;
+    replace_wm = FALSE;
     compositor = -1;
     for (i = 1; i < argc; i++)
     {
@@ -549,6 +551,10 @@ main (int argc, char **argv)
             compositor = parse_compositor (argv[i]);
         }
 #endif /* HAVE_COMPOSITOR */
+        else if (!strcmp (argv[i], "--replace"))
+        {
+            replace_wm = TRUE;
+        }
         else if (!strcmp (argv[i], "--version") || !strcmp (argv[i], "-V"))
         {
             print_version ();
@@ -561,7 +567,7 @@ main (int argc, char **argv)
         }
     }
 
-    status = initialize (argc, argv, compositor);
+    status = initialize (argc, argv, compositor, replace_wm);
     /*
        status  < 0   =>   Error, cancel execution
        status == 0   =>   Run w/out session manager
