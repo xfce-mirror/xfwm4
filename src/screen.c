@@ -14,7 +14,7 @@
         along with this program; if not, write to the Free Software
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-        xfwm4    - (c) 2002-2007 Olivier Fourdan
+        xfwm4    - (c) 2002-2008 Olivier Fourdan
 
  */
 
@@ -84,7 +84,7 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
     {
         if (!replace_wm)
         {
-            g_message (_("To replace the window manager, try with \"--replace\"\n"));
+            g_message ("To replace the current window manager, try \"--replace\"");
             return FALSE;
         }
         gdk_error_trap_push ();
@@ -98,7 +98,7 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
 
     if (!setXAtomManagerOwner (display_info, wm_sn_atom, screen_info->xroot, screen_info->xfwm4_win))
     {
-        g_warning (_("Cannot acquire window manager selection on screen %d\n"), screen_info->screen);
+        g_warning ("Cannot acquire window manager selection on screen %d", screen_info->screen);
         return FALSE;
     }
 
@@ -119,7 +119,7 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
 
         if (wait >= timeout)
         {
-            g_warning(_("Previous window manager on screen %d is not exiting"), screen_info->screen);
+            g_warning("Previous window manager on screen %d is not exiting", screen_info->screen);
             return FALSE;
         }
     }
