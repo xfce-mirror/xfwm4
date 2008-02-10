@@ -16,7 +16,7 @@
 
         xcompmgr - (c) 2003 Keith Packard
         metacity - (c) 2003, 2004 Red Hat, Inc.
-        xfwm4    - (c) 2005-2007 Olivier Fourdan
+        xfwm4    - (c) 2005-2008 Olivier Fourdan
 
 */
 
@@ -1762,10 +1762,7 @@ map_win (CWindow *cw)
     DisplayInfo *display_info;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering map_win 0x%lx", cw->id);
-
-    cw->viewable = TRUE;
-    cw->damaged = FALSE;
+    TRACE ("entering map_win 0x%lx\n", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -1773,19 +1770,24 @@ map_win (CWindow *cw)
     if (!WIN_IS_REDIRECTED(cw))
     {
         /* To be safe, we count only the fullscreen overlays */
-        if (WIN_IS_FULLSCREEN(cw))
+        if (WIN_IS_FULLSCREEN(cw) && WIN_IS_VIEWABLE (cw))
         {
             screen_info->wins_unredirected++;
         }
 #if HAVE_OVERLAYS
         if ((screen_info->wins_unredirected == 1) && (display_info->have_overlays))
         {
+            TRACE ("Unmapping overlay window");
             XUnmapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
         }
 #endif /* HAVE_OVERLAYS */
         TRACE ("Mapping unredirected window 0x%lx, wins_unredirected increased to %i", cw->id, screen_info->wins_unredirected);
         return;
     }
+
+    cw->viewable = TRUE;
+    cw->damaged = FALSE;
+
     if (!screen_info->params->unredirect_overlays)
     {
         TRACE ("Not unredirecting wins_unredirected");
@@ -1832,6 +1834,7 @@ unmap_win (CWindow *cw)
 #if HAVE_OVERLAYS
             if (display_info->have_overlays)
             {
+                TRACE ("Remapping overlay window");
                 XMapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
             }
 #endif /* HAVE_OVERLAYS */
@@ -2148,7 +2151,10 @@ destroy_win (DisplayInfo *display_info, Window id)
     {
         ScreenInfo *screen_info;
 
-        unmap_win (cw);
+        if (WIN_IS_VIEWABLE (cw))
+        {
+            unmap_win (cw);
+        }
         screen_info = cw->screen_info;
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
 
@@ -2439,7 +2445,10 @@ compositorHandleUnmapNotify (DisplayInfo *display_info, XUnmapEvent *ev)
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
     {
-        unmap_win (cw);
+        if (WIN_IS_VIEWABLE (cw))
+        {
+            unmap_win (cw);
+        }
     }
 }
 
