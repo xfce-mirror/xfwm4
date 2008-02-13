@@ -1,31 +1,35 @@
-2007-12-23	Jean-François Wauthy <pollux@xfce.org>
+2008-02-13  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
+
+	* fi_FI.po: Fixed typo reported by Jarno Liimatainen
+
+2007-12-23  Jean-François Wauthy <pollux@xfce.org>
 
 	* pt_PT.po: Updated Portuguese translations by Nuno Miguel
 	<nunis@netcabo.pt>
 
-2007-12-19	Maximilian Schleiss <maximilian@xfce.org>
+2007-12-19  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: German translation update
 	by Fabian Nowak <timystery@arcor.de>
 
-2007-12-06	Mike Massonnet <mmassonnet@xfce.org>
+2007-12-06  Mike Massonnet <mmassonnet@xfce.org>
 
 	* fr.po: Fix typo (Peaufinage sans pluriel)
 
-2007-12-02	Maximilian Schleiss <maximilian@xfce.org>
+2007-12-02  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: German translation update
 	by Fabian Nowak <timstery@arcor.de>
 
-2007-11-17	Stephan Arts <stephan@xfce.org>
+2007-11-17  Stephan Arts <stephan@xfce.org>
 
 	* nl.po: Update dutch translation
 
-2007-11-17	Mike Massonnet <mmassonnet@xfce.org>
+2007-11-17  Mike Massonnet <mmassonnet@xfce.org>
 
 	* fr.po: Rename the name in the desktop entry files with consistency
 
-2007-11-15	Mike Massonnet <mmassonnet@xfce.org>
+2007-11-15  Mike Massonnet <mmassonnet@xfce.org>
 
 	* ur.po, LINGUAS: Add Urdu translation by ﻢﺤﻣﺩ ﻊﻠﻳ ﺎﻠﻤﻜﻳ
 	makki.ma@gmail.com
