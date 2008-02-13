@@ -176,6 +176,7 @@ clientFocusNew(Client * c)
         clientSetFocus (screen_info, c,
                         myDisplayGetCurrentTime (display_info),
                         FOCUS_IGNORE_MODAL);
+        clientPassGrabMouseButton (c);
     }
     else
     {
@@ -739,17 +740,16 @@ clientPassGrabMouseButton (Client * c)
         return;
     }
 
-    TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
     if (last_ungrab == c)
     {
         return;
     }
 
+    TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
     if (last_ungrab)
     {
         clientGrabMouseButton (last_ungrab);
     }
-
     clientUngrabMouseButton (c);
     last_ungrab = c;
 }
