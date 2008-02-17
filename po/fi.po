@@ -1,14 +1,14 @@
 # Translation of xfwm4 package into Finnish.
-# Copyright (C) 2002-2007 The Xfce Development Team.
+# Copyright (C) 2002-2008 The Xfce Development Team.
 # This file is distributed under the same license as the xfwm4 package.
-# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2007.
+# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-09 14:29+0200\n"
-"PO-Revision-Date: 2007-05-15 21:25+0300\n"
+"POT-Creation-Date: 2008-02-17 13:03+0200\n"
+"PO-Revision-Date: 2008-02-17 13:04+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -104,7 +104,7 @@ msgstr "Ikkunoiden liikutteluun käytettävä näppäin"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:458
 msgid "Raise windows when any mouse button is pressed"
-msgstr "Nosta ikkuna napsautettaessa millä tahansa hiiren painikeella"
+msgstr "Nosta ikkuna napsautettaessa millä tahansa hiiren painikkeella"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:465
 msgid "Hide frame of windows when maximized"
@@ -783,12 +783,12 @@ msgstr "Työtila %i"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
 
-#: ../src/settings.c:932
+#: ../src/settings.c:921
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Väriä %s ei voi varata\n"
 
-#: ../src/settings.c:938
+#: ../src/settings.c:927
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Värimääritys %s ei kelpaa\n"
