@@ -1,16 +1,17 @@
 # French translation of the xfwm4 package.
-# Copyright (C) 2002-2006 The Xfce development team.
+# Copyright (C) 2002-2008 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Olivier Fourdan <fourdan@xfce.org>, 2002-2006.
 # Maximilian Schleiss <maximilian@xfce.org>, 2006.
+# Mike Massonnet <mmassonnet@xfce.org>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-04-03 15:43+0100\n"
-"Last-Translator: Maximilian Schleiss <maximilian@xfce.org>\n"
+"PO-Revision-Date: 2008-02-18 02:20+0100\n"
+"Last-Translator: Mike Massonnet <mmassonnet@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -67,11 +68,11 @@ msgstr "Aucun"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
 msgid "Bring window on current workspace"
-msgstr "Déplacer la fenêtre vers l'espace actuel"
+msgstr "Placer la fenêtre dans l'espace de travail actif"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
 msgid "Switch to window's workspace"
-msgstr "Changer vers l'espace de la fenêtre"
+msgstr "Se déplacer vers l'espace de travail de la fenêtre"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Do nothing"
@@ -94,8 +95,7 @@ msgstr "Peaufinage des fenêtres"
 msgid ""
 "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 msgstr ""
-"Ignorer les fenêtres qui présentent les propriétés \"skip pager\" ou \"skip "
-"taskbar\""
+"Ignorer les fenêtres qui ne se présentent pas dans le « pager » ou la « barre des tâches »"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
@@ -119,7 +119,7 @@ msgstr "Suivre le standard ICCCM pour la focalisation"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
-msgstr "Lorsque une fenêtre se met au premier plan :"
+msgstr "Lorsqu'une fenêtre se met au premier plan :"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
@@ -276,7 +276,7 @@ msgstr "Nom :"
 
 #: ../mcs-plugin/workspaces.c:427
 msgid "Click on a workspace name to edit it"
-msgstr "Cliquer sur le nom d'un espace de travail pour l'éditer"
+msgstr "Cliquez sur le nom d'un espace de travail pour l'éditer"
 
 #: ../mcs-plugin/workspaces.c:493
 msgid "Number of workspaces:"
@@ -345,7 +345,7 @@ msgstr "Droit"
 #: ../mcs-plugin/xfwm4_plugin.c:589
 msgid "Click and drag buttons to change the layout"
 msgstr ""
-"Cliquer et faire glisser les boutons pour\n"
+"Cliquez et faites glisser les boutons pour\n"
 "modifier l'agencement"
 
 #: ../mcs-plugin/xfwm4_plugin.c:594
