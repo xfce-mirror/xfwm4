@@ -3,13 +3,13 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
-# wuli <wurisky@gmail.com>,2007
+# wuli <wurisky@gmail.com>,2007,2008
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-02-07 20:11+0800\n"
+"PO-Revision-Date: 2008-02-12 10:37+0800\n"
 "Last-Translator: wuli <wurisky@gmail.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -64,27 +64,27 @@ msgid "None"
 msgstr "无"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
+#, 
 msgid "Bring window on current workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至当前工作区"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
+#, 
 msgid "Switch to window's workspace"
-msgstr "移动窗口至工作区 %d"
+msgstr "切换至窗口的工作区"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
+#, 
 msgid "Do nothing"
-msgstr "无"
+msgstr "不做任何动作"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "放置窗口至鼠标下"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "放置窗口至中间"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -118,7 +118,7 @@ msgstr "启用 ICCCM 焦点提示标准"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "当某个窗口自动置顶："
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
@@ -171,16 +171,16 @@ msgstr "触发智能定位最小窗口大小"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Small"
-msgstr "大小|小"
+msgstr "小"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:653
 msgid "Size|Large"
-msgstr "大小|大"
+msgstr "大"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
+#, 
 msgid "Default positionning of windows without smart placement:"
-msgstr "触发智能定位最小窗口大小"
+msgstr "默认窗口大小："
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
@@ -195,7 +195,7 @@ msgid "Display full screen overlay windows directly"
 msgstr "全屏显示直接覆盖的窗口"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
+#, 
 msgid "Show shadows under dock windows"
 msgstr "在弹出窗口中显示阴影"
 
@@ -315,9 +315,9 @@ msgid "Maximize window"
 msgstr "最大化窗口"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
+#, 
 msgid "Fill window"
-msgstr "隐藏窗口"
+msgstr "填充窗口"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -413,9 +413,9 @@ msgid "Focus follows mouse"
 msgstr "焦点跟随鼠标"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
+#, 
 msgid "Delay before window receives focus"
-msgstr "置顶焦点所在窗口前的延时 :"
+msgstr "当窗口接受焦点前延时"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
@@ -471,11 +471,11 @@ msgstr "距离 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1795
 msgid "Distance|Small"
-msgstr "距离|窄 :"
+msgstr "窄"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1802
 msgid "Distance|Wide"
-msgstr "距离|宽 :"
+msgstr "宽"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1823
 msgid "Wrap workspaces"
@@ -495,11 +495,11 @@ msgstr "屏幕边缘阻力 :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1854
 msgid "Resistance|Small"
-msgstr "阻力|弱 :"
+msgstr "弱"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1861
 msgid "Resistance|Wide"
-msgstr "阻力|强 :"
+msgstr "强"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1883
 msgid "Opaque move and resize"
@@ -564,14 +564,14 @@ msgid "Maximize window horizontally"
 msgstr "水平最大化窗口"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
+#, 
 msgid "Fill window horizontally"
-msgstr "水平最大化窗口"
+msgstr "水平填充窗口"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
+#, 
 msgid "Fill window vertically"
-msgstr "垂直最大化窗口"
+msgstr "垂直填充窗口"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Stick window"
@@ -627,7 +627,7 @@ msgstr "降低窗口"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "折叠以上"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -702,7 +702,7 @@ msgid "Window operations menu"
 msgstr "窗口操作菜单"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, , c-format
 msgid "Move window to workspace %d"
 msgstr "移动窗口至工作区 %d"
 
@@ -747,7 +747,7 @@ msgstr "组合快捷键"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:864
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:868
 msgid "No shortcut"
@@ -877,9 +877,9 @@ msgstr "工作区设置"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "xfce4 工作区设置"
 
-#, fuzzy
+#, 
 #~ msgid "Workspace %02d"
-#~ msgstr "工作区 %d"
+#~ msgstr "工作区 %02d"
 
 #~ msgid "Unknown application!"
-#~ msgstr "未知的应用程序！"
+#~ msgstr "未知应用程序！"
