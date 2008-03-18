@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-12-18 21:32+0100\n"
+"PO-Revision-Date: 2008-01-23 21:44+0100\n"
 "Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "Colocar janela no centro"
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "Tweaks do Gestor de Janelas"
+msgstr "Ajustes do Gestor de Janelas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
