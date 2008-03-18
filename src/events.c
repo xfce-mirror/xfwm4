@@ -342,13 +342,13 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 
     TRACE ("entering handleKeyEvent");
 
-    /* Release queued events */
-    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
-
     status = EVENT_FILTER_PASS;
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!ev_screen_info)
     {
+        /* Release queued events */
+        XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
+
         return status;
     }
 
@@ -556,6 +556,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         default:
             break;
     }
+
+    /* Release queued events */
+    XAllowEvents (display_info->dpy, AsyncKeyboard, myDisplayGetCurrentTime (display_info));
 
     return status;
 }
