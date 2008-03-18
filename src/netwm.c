@@ -968,14 +968,31 @@ clientValidateNetStrut (Client * c)
     max_value = MIN (screen_info->width, screen_info->height) / 4;
     valid = TRUE;
 
-    for (i = 0; i < 4; i++)
+    if (c->struts[STRUTS_TOP] > screen_info->height - screen_info->margins[STRUTS_BOTTOM])
     {
-        if (c->struts[i] > max_value)
-        {
-           g_warning ("Strut value for application window 0x%lx changed from %d to %d", c->window, c->struts[i], max_value);
-           c->struts[i] = max_value;
-           valid = FALSE;
-        }
+       c->struts[STRUTS_TOP] = screen_info->height - screen_info->margins[STRUTS_BOTTOM];
+       g_warning ("Top strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_TOP]);
+       valid = FALSE;
+    }
+
+    if (c->struts[STRUTS_BOTTOM] > screen_info->height - screen_info->margins[STRUTS_TOP])
+    {
+       c->struts[STRUTS_BOTTOM] = screen_info->height - screen_info->margins[STRUTS_TOP];
+       g_warning ("Bottom strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_BOTTOM]);
+       valid = FALSE;
+    }
+
+    if (c->struts[STRUTS_LEFT] > screen_info->width - screen_info->margins[STRUTS_RIGHT])
+    {
+       c->struts[STRUTS_LEFT] = screen_info->height - screen_info->margins[STRUTS_RIGHT];
+       g_warning ("Left strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_LEFT]);
+       valid = FALSE;
+    }
+    if (c->struts[STRUTS_RIGHT] > screen_info->width - screen_info->margins[STRUTS_LEFT])
+    {
+       c->struts[STRUTS_RIGHT] = screen_info->height - screen_info->margins[STRUTS_LEFT];
+       g_warning ("Right strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_RIGHT]);
+       valid = FALSE;
     }
 
     return valid;
