@@ -133,7 +133,13 @@ struct _ScreenInfo
 #endif
 
 #ifdef HAVE_COMPOSITOR
+#if HAVE_OVERLAYS
+    Window overlay;
+    Window root_overlay;
+#endif
     GList *cwindows;
+    Window output;
+
 
     gaussian_conv *gaussianMap;
     gint gaussianSize;
@@ -146,7 +152,7 @@ struct _ScreenInfo
     Picture rootTile;
     XserverRegion allDamage;
 
-    guint overlays;
+    guint wins_unredirected;
     gboolean compositor_active;
     gboolean clipChanged;
 #endif /* HAVE_COMPOSITOR */

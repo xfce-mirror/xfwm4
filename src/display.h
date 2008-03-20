@@ -48,6 +48,11 @@
 #define HAVE_NAME_WINDOW_PIXMAP 1
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
 #endif /* COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 2 */
+#if COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 3
+#ifndef HAVE_OVERLAYS
+#define HAVE_OVERLAYS 1
+#endif /* HAVE_OVERLAYS */
+#endif /* COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 3 */
 #endif /* HAVE_COMPOSITOR */
 
 #include <gtk/gtk.h>
@@ -286,6 +291,10 @@ struct _DisplayInfo
     gboolean have_name_window_pixmap;
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
 
+#if HAVE_OVERLAYS
+    gboolean have_overlays;
+#endif /* HAVE_OVERLAYS */
+
 #endif /* HAVE_COMPOSITOR */
 };
 
@@ -331,7 +340,7 @@ ScreenInfo              *myDisplayGetDefaultScreen              (DisplayInfo *);
 Time                     myDisplayUpdateCurrentTime             (DisplayInfo *,
                                                                  XEvent *);
 Time                     myDisplayGetCurrentTime                (DisplayInfo *);
-Time                     myDisplayGetTime                       (DisplayInfo *, 
+Time                     myDisplayGetTime                       (DisplayInfo *,
                                                                  Time);
 Time                     myDisplayGetLastUserTime               (DisplayInfo *);
 void                     myDisplaySetLastUserTime               (DisplayInfo *,
