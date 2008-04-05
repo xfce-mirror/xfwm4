@@ -1869,7 +1869,7 @@ init_opacity (CWindow *cw)
     cw->native_opacity = FALSE;
     if (c)
     {
-        cw->opacity_locked = c->opacity_locked;
+        cw->opacity_locked = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED);
         cw->opacity = c->opacity_applied;
         cw->native_opacity = WIN_IS_OPAQUE(cw);
     }
@@ -2269,7 +2269,14 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             cw->opacity_locked = getOpacityLock (display_info, cw->id);
             if (cw->c)
             {
-                cw->c->opacity_locked = cw->opacity_locked;
+                if (cw->opacity_locked)
+                {
+                    FLAG_SET (cw->c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED);
+                }
+                else
+                {
+                    FLAG_UNSET (cw->c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED);
+                }
             }
         }
     }

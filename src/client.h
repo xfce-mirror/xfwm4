@@ -124,6 +124,8 @@
 #define XFWM_FLAG_FIRST_MAP             (1L<<19)
 #define XFWM_FLAG_LEGACY_FULLSCREEN     (1L<<20)
 #define XFWM_FLAG_MOVING_RESIZING       (1L<<21)
+#define XFWM_FLAG_NEEDS_REDRAW          (1L<<22)
+#define XFWM_FLAG_OPACITY_LOCKED        (1L<<23)
 
 #define CLIENT_FLAG_HAS_STRUT           (1L<<0)
 #define CLIENT_FLAG_HAS_STRUT_PARTIAL   (1L<<1)
@@ -152,7 +154,7 @@
 #define WM_FLAG_CONTEXT_HELP            (1L<<3)
 #define WM_FLAG_URGENT                  (1L<<4)
 
-#define CLIENT_FLAG_INITIAL_VALUES      XFWM_FLAG_HAS_BORDER | \
+#define XFWM_FLAG_INITIAL_VALUES        XFWM_FLAG_HAS_BORDER | \
                                         XFWM_FLAG_HAS_MENU | \
                                         XFWM_FLAG_HAS_MAXIMIZE | \
                                         XFWM_FLAG_HAS_STICK | \
@@ -160,7 +162,8 @@
                                         XFWM_FLAG_HAS_CLOSE | \
                                         XFWM_FLAG_HAS_MOVE | \
                                         XFWM_FLAG_HAS_RESIZE | \
-                                        XFWM_FLAG_FIRST_MAP
+                                        XFWM_FLAG_FIRST_MAP | \
+                                        XFWM_FLAG_NEEDS_REDRAW
 
 #define ALL_WORKSPACES                  (int) 0xFFFFFFFF
 
@@ -292,7 +295,6 @@ struct _Client
     guint opacity;
     guint opacity_applied;
     guint opacity_flags;
-    gboolean opacity_locked;
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     /* Startup notification */

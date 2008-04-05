@@ -206,7 +206,7 @@ clientUpdateName (Client * c)
                 g_free (c->name);
                 c->name = name;
                 FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
-                frameQueueDraw (c);
+                frameQueueDraw (c, TRUE);
             }
         }
     }
@@ -281,7 +281,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_FRAME)
         {
-            frameDraw (c, TRUE);
+            frameQueueDraw (c, TRUE);
         }
 
     }
@@ -325,7 +325,7 @@ urgent_cb (gpointer data)
     if (c != clientGetFocus ())
     {
         FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
-        frameDraw (c, FALSE);
+        frameQueueDraw (c, FALSE);
     }
     return (TRUE);
 }
@@ -341,7 +341,7 @@ clientUpdateUrgency (Client *c)
     if (c->blink_timeout_id)
     {
         g_source_remove (c->blink_timeout_id);
-        frameDraw (c, FALSE);
+        frameQueueDraw (c, FALSE);
     }
     FLAG_UNSET (c->wm_flags, WM_FLAG_URGENT);
 
@@ -363,7 +363,7 @@ clientUpdateUrgency (Client *c)
         && (c != clientGetFocus ()))
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
-        frameDraw (c, FALSE);
+        frameQueueDraw (c, FALSE);
     }
 }
 
@@ -663,7 +663,7 @@ clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, uns
 
         if (WIN_RESIZED || (flags & CFG_FORCE_REDRAW))
         {
-            frameDraw (c, (flags & CFG_FORCE_REDRAW));
+            frameQueueDraw (c, (flags & CFG_FORCE_REDRAW));
         }
 
         change_values.x = frameLeft (c);
@@ -1106,7 +1106,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
-            frameQueueDraw (c);
+            frameQueueDraw (c, FALSE);
         }
     }
     else
@@ -1536,7 +1536,7 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
             {
                 clientUnstick (c, TRUE);
             }
-            frameDraw (c, FALSE);
+            frameQueueDraw (c, FALSE);
         }
     }
     else if ((action & WIN_STATE_MAXIMIZED)
@@ -1656,7 +1656,7 @@ update_icon_idle_cb (gpointer data)
     clientUpdateIconPix (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
-        frameDraw (c, FALSE);
+        frameQueueDraw (c, FALSE);
     }
     c->icon_timeout_id = 0;
 
@@ -1770,7 +1770,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->size = NULL;
     c->flags = 0L;
     c->wm_flags = 0L;
-    c->xfwm_flags = CLIENT_FLAG_INITIAL_VALUES;
+    c->xfwm_flags = XFWM_FLAG_INITIAL_VALUES;
     c->x = attr.x;
     c->y = attr.y;
     c->width = attr.width;
@@ -1839,7 +1839,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->opacity_applied = c->opacity;
     c->opacity_flags = 0;
 
-    c->opacity_locked = getOpacityLock (display_info, c->window);
+    if (getOpacityLock (display_info, c->window))
+    {
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED);
+    }
 
     /* Timout for asynchronous icon update */
     c->icon_timeout_id = 0;
@@ -3045,7 +3048,7 @@ clientRemoveMaximizeFlag (Client * c)
 
     c->win_state &= ~WIN_STATE_MAXIMIZED;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    frameDraw (c, FALSE);
+    frameQueueDraw (c, FALSE);
     clientSetNetState (c);
 }
 
@@ -3498,7 +3501,7 @@ clientSetOpacity (Client *c, guint opacity, guint clear, guint xor)
 
     c->opacity_flags = (c->opacity_flags & ~clear) ^ xor;
 
-    if (c->opacity_locked)
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED))
     {
         applied = c->opacity;
     }
@@ -3548,7 +3551,7 @@ clientDecOpacity (Client * c)
         return;
     }
 
-    if ((c->opacity > OPACITY_SET_MIN) && !(c->opacity_locked ))
+    if ((c->opacity > OPACITY_SET_MIN) && !(FLAG_TEST (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED)))
     {
          clientSetOpacity (c, c->opacity - OPACITY_SET_STEP, 0, 0);
     }
@@ -3568,7 +3571,7 @@ clientIncOpacity (Client * c)
         return;
     }
 
-    if ((c->opacity < NET_WM_OPAQUE) && !(c->opacity_locked ))
+    if ((c->opacity < NET_WM_OPAQUE) && !(FLAG_TEST (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED)))
     {
          guint opacity = c->opacity + OPACITY_SET_STEP;
 
@@ -4342,7 +4345,9 @@ clientMove (Client * c, XEvent * ev)
 #endif /* SHOW_POSITION */
 
     /* Set window translucent while moving, looks nice */
-    if ((screen_info->params->move_opacity < 100) && !(screen_info->params->box_move) && !(c->opacity_locked))
+    if ((screen_info->params->move_opacity < 100) &&
+        !(screen_info->params->box_move) &&
+        !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED))
     {
         clientSetOpacity (c, c->opacity, OPACITY_MOVE, OPACITY_MOVE);
     }
@@ -4906,7 +4911,9 @@ clientResize (Client * c, int corner, XEvent * ev)
 #endif /* HAVE_XSYNC */
 
     /* Set window translucent while resizing, doesn't looks too nice  :( */
-    if ((screen_info->params->resize_opacity < 100) && !(screen_info->params->box_resize) && !(c->opacity_locked))
+    if ((screen_info->params->resize_opacity < 100) &&
+        !(screen_info->params->box_resize) &&
+        !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED))
     {
         clientSetOpacity (c, c->opacity, OPACITY_RESIZE, OPACITY_RESIZE);
     }
@@ -5234,14 +5241,14 @@ clientButtonPressEventFilter (XEvent * xevent, gpointer data)
             if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
             {
                 c->button_status[b] = BUTTON_STATE_PRESSED;
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
             }
             break;
         case LeaveNotify:
             if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
             {
                 c->button_status[b] = BUTTON_STATE_NORMAL;
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
             }
             break;
         case ButtonRelease:
@@ -5314,7 +5321,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
     passdata.b = b;
 
     c->button_status[b] = BUTTON_STATE_PRESSED;
-    frameDraw (c, FALSE);
+    frameQueueDraw (c, FALSE);
 
     TRACE ("entering button press loop");
     eventFilterPush (display_info->xfilter, clientButtonPressEventFilter, &passdata);
@@ -5376,7 +5383,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
             default:
                 break;
         }
-        frameDraw (c, FALSE);
+        frameQueueDraw (c, FALSE);
     }
 }
 

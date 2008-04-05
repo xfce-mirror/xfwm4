@@ -331,7 +331,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             {
                 clientToggleSticky (c, TRUE);
             }
-            frameDraw (c, FALSE);
+            frameQueueDraw (c, FALSE);
         }
     }
 
@@ -411,7 +411,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             clientSetNetState (c);
             clientWindowType (c);
         }
-        frameDraw (c, TRUE);
+        frameQueueDraw (c, TRUE);
     }
 
     if ((first  == display_info->atoms[NET_WM_STATE_FULLSCREEN]) ||
@@ -524,7 +524,7 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             FLAG_TOGGLE (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             clientSetNetState (c);
         }
-        frameDraw (c, TRUE);
+        frameQueueDraw (c, TRUE);
     }
 
     if ((first  == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION]) ||

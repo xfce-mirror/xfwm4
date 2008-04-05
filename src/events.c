@@ -404,7 +404,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 if (CLIENT_CAN_STICK_WINDOW(c))
                 {
                     clientToggleSticky (c, TRUE);
-                    frameDraw (c, FALSE);
+                    frameQueueDraw (c, FALSE);
                 }
                 break;
             case KEY_RAISE_WINDOW:
@@ -1528,7 +1528,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             }
             if (need_redraw)
             {
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
             }
         }
         /* No need to process the event any further */
@@ -1682,7 +1682,7 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         }
         if (need_redraw)
         {
-            frameDraw (c, FALSE);
+            frameQueueDraw (c, FALSE);
         }
 
         /* No need to process the event any further */
@@ -1968,7 +1968,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_WINDOW_TYPE notify", c->name, c->window);
             clientGetNetWmType (c);
-            frameQueueDraw (c);
+            frameQueueDraw (c, TRUE);
         }
         else if ((ev->atom == display_info->atoms[NET_WM_STRUT]) ||
                  (ev->atom == display_info->atoms[NET_WM_STRUT_PARTIAL]))
@@ -2009,7 +2009,14 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY_LOCKED])
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_OPACITY_LOCKED notify", c->name, c->window);
-            c->opacity_locked = getOpacityLock (display_info, c->window);
+            if (getOpacityLock (display_info, c->window))
+            {
+                FLAG_SET (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED);
+            }
+            else
+            {
+                FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED);
+            }
         }
         else if ((screen_info->params->show_app_icon) &&
                  ((ev->atom == display_info->atoms[NET_WM_ICON]) ||
@@ -2129,7 +2136,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                     {
                         clientStick (c, TRUE);
-                        frameDraw (c, FALSE);
+                        frameQueueDraw (c, FALSE);
                     }
                 }
                 else
@@ -2137,7 +2144,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                     {
                         clientUnstick (c, TRUE);
-                        frameDraw (c, FALSE);
+                        frameQueueDraw (c, FALSE);
                     }
                     if (ev->data.l[0] != c->win_workspace)
                     {
@@ -2328,7 +2335,7 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
         }
         if (!update)
         {
-            frameDraw (c, FALSE);
+            frameQueueDraw (c, FALSE);
         }
     }
 
@@ -2568,11 +2575,11 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 {
                     clientHide (c, c->win_workspace, TRUE);
                 }
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_MINIMIZE_ALL:
                 clientHideAll (c, c->win_workspace);
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_UNMINIMIZE:
                 clientShow (c, TRUE);
@@ -2585,26 +2592,26 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_STICK:
             case MENU_OP_UNSTICK:
                 clientToggleSticky (c, TRUE);
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_WORKSPACES:
                 clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_DELETE:
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
                 clientClose (c);
                 break;
             case MENU_OP_CONTEXT_HELP:
                 clientEnterContextMenuState (c);
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_ABOVE:
             case MENU_OP_NORMAL:
                 clientToggleAbove (c);
                 /* Fall thru */
             default:
-                frameDraw (c, FALSE);
+                frameQueueDraw (c, FALSE);
                 break;
         }
     }
@@ -2642,7 +2649,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
     y = py;
 
     c->button_status[MENU_BUTTON] = BUTTON_STATE_PRESSED;
-    frameDraw (c, FALSE);
+    frameQueueDraw (c, FALSE);
     y = (gdouble) c->y;
     ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
     insensitive = 0;
@@ -2789,7 +2796,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         TRACE ("Cannot open menu");
         gdk_beep ();
         c->button_status[MENU_BUTTON] = BUTTON_STATE_NORMAL;
-        frameDraw (c, FALSE);
+        frameQueueDraw (c, FALSE);
         xfwmWindowDelete (&menu_event_window);
         menu_free (menu);
     }

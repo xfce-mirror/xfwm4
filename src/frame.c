@@ -831,7 +831,7 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
 }
 
 void
-frameDraw (Client * c, gboolean clear_all)
+frameDraw (Client * c)
 {
     ScreenInfo *screen_info;
     FramePixmap frame_pix;
@@ -891,18 +891,12 @@ frameDraw (Client * c, gboolean clear_all)
     FLAG_UNSET (c->xfwm_flags,  XFWM_FLAG_FIRST_MAP);
 
     /* Cache mgmt */
-    if (clear_all)
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_NEEDS_REDRAW))
     {
         width_changed = TRUE;
         height_changed = TRUE;
         requires_clearing = TRUE;
         frameClearQueueDraw (c);
-        if (c->frame_timeout_id)
-        {
-            g_source_remove (c->frame_timeout_id);
-            c->frame_timeout_id = 0;
-        }
-
     }
     else
     {
@@ -917,6 +911,7 @@ frameDraw (Client * c, gboolean clear_all)
             c->previous_height = c->height;
         }
     }
+    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_NEEDS_REDRAW);
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
@@ -1185,7 +1180,7 @@ update_frame_idle_cb (gpointer data)
     c = (Client *) data;
     g_return_val_if_fail (c, FALSE);
 
-    frameDraw (c, TRUE);
+    frameDraw (c);
     c->frame_timeout_id = 0;
 
     return FALSE;
@@ -1206,12 +1201,22 @@ frameClearQueueDraw (Client * c)
 }
 
 void
-frameQueueDraw (Client * c)
+frameQueueDraw (Client * c, gboolean clear_all)
 {
     g_return_if_fail (c);
 
     TRACE ("entering frameQueueDraw for \"%s\" (0x%lx)", c->name, c->window);
 
+    /* Reschedule update */
+    if (c->frame_timeout_id)
+    {
+        frameClearQueueDraw (c);
+    }
+    if (clear_all)
+    {
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_NEEDS_REDRAW);
+    }
+    /* Otherwise leave previous schedule */
     if (c->frame_timeout_id == 0)
     {
         c->frame_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
