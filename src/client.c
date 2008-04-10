@@ -661,9 +661,13 @@ clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, uns
         change_values.height = frameHeight (c);
         XConfigureWindow (clientGetXDisplay (c), c->frame, change_mask, &change_values);
 
-        if (WIN_RESIZED || (flags & CFG_FORCE_REDRAW))
+        if (WIN_RESIZED)
         {
-            frameQueueDraw (c, (flags & CFG_FORCE_REDRAW));
+            frameDraw (c, FALSE);
+        }
+        else if (flags & CFG_FORCE_REDRAW)
+        {
+            frameQueueDraw (c, TRUE);
         }
 
         change_values.x = frameLeft (c);

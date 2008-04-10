@@ -393,7 +393,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     }
     else
     {
-        w3 = logical_rect.width;
+        w3 = logical_rect.width + screen_info->params->title_shadow[state];
         w5 = width;
         if (w3 > width - w2 - w4)
         {
@@ -830,8 +830,8 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
     XDestroyWindow (display_info->dpy, shape_win);
 }
 
-void
-frameDraw (Client * c)
+static void
+frameDrawAll (Client * c)
 {
     ScreenInfo *screen_info;
     FramePixmap frame_pix;
@@ -1180,7 +1180,7 @@ update_frame_idle_cb (gpointer data)
     c = (Client *) data;
     g_return_val_if_fail (c, FALSE);
 
-    frameDraw (c);
+    frameDrawAll (c);
     c->frame_timeout_id = 0;
 
     return FALSE;
@@ -1198,6 +1198,20 @@ frameClearQueueDraw (Client * c)
         g_source_remove (c->frame_timeout_id);
         c->frame_timeout_id = 0;
     }
+}
+
+void
+frameDraw (Client * c, gboolean clear_all)
+{
+    g_return_if_fail (c);
+
+    TRACE ("entering frameDraw for \"%s\" (0x%lx)", c->name, c->window);
+
+    if (clear_all)
+    {
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_NEEDS_REDRAW);
+    }
+    frameDrawAll (c);
 }
 
 void

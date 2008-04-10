@@ -467,19 +467,16 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         {
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
-                compositorDamageWindow (display_info, c->frame);
                 FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
                 clientUpdateBelowState (c);
             }
             else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
-                compositorDamageWindow (display_info, c->frame);
                 FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
                 clientUpdateBelowState (c);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
-                compositorDamageWindow (display_info, c->frame);
                 FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
                 clientUpdateBelowState (c);
             }

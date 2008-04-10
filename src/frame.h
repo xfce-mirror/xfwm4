@@ -42,9 +42,10 @@ int                      frameX                                 (Client *);
 int                      frameY                                 (Client *);
 int                      frameWidth                             (Client *);
 int                      frameHeight                            (Client *);
-void                     frameDraw                              (Client *);
 void                     frameClearQueueDraw                    (Client *);
 void                     frameQueueDraw                         (Client *,
+                                                                 gboolean);
+void                     frameDraw                              (Client *,
                                                                  gboolean);
 
 #endif /* INC_FRAME_H */
