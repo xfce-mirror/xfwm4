@@ -1,23 +1,27 @@
+# translation of lv.po to Latvian
 # Latvian translations for xfwm4 package.
 # Copyright (C) 2002-2007 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Rihards Prieditis <rprieditis@inbox.lv>, 2007.
 #
+# Rihards Prieditis <rprieditis@inbox.lv>, 2007.
+# Rihards Prieditis <RPrieditis@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-11-10 14:26+0300\n"
-"Last-Translator: Rihards Priedītis <rprieditis@inbox.lv>\n"
-"Language-Team: Latvian <rprieditis@inbox.lv>\n"
+"PO-Revision-Date: 2008-04-06 22:21+0300\n"
+"Last-Translator: Rihards Prieditis <RPrieditis@inbox.lv>\n"
+"Language-Team: Latvian <RPrieditis@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
-msgstr "Darbavietas Apmales"
+msgstr "Darbavietas apmales"
 
 #: ../mcs-plugin/margins.c:136
 msgid "Margins are areas on the edges of the screen where no window will be placed"
@@ -25,28 +29,28 @@ msgstr "Apmales, ir ekrāna daļa, kur logi netiks novietoti"
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
-msgstr "No Kreisās :"
+msgstr "No kreisās :"
 
 #: ../mcs-plugin/margins.c:187
 msgid "Right :"
-msgstr "No Labās :"
+msgstr "No labās :"
 
 #: ../mcs-plugin/margins.c:207
 msgid "Top :"
-msgstr "No Augšas："
+msgstr "No augšas："
 
 #: ../mcs-plugin/margins.c:227
 msgid "Bottom :"
-msgstr "No Apakšas :"
+msgstr "No apakšas :"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
 msgid "Button Label|Workspaces and Margins"
-msgstr "Darbavietas un Apmales"
+msgstr "Darbavietas un apmales"
 
 #: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
-msgstr "Darbavietas un Apmales"
+msgstr "Darbavietas un apmales"
 
 #: ../mcs-plugin/workspaces_plugin.c:162
 #: ../mcs-plugin/wmtweaks_plugin.c:522
@@ -65,7 +69,7 @@ msgstr "Nekas"
 #: ../mcs-plugin/wmtweaks_plugin.c:381
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "Logu Pārvaldnieka Piedares"
+msgstr "Logu pārvaldnieka piedares"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:400
 msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
@@ -211,13 +215,13 @@ msgstr "Komponists"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:662
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Loga Pārvaldnieka Piedares"
+msgstr "Loga pārvaldnieka piedares"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:781
 #: ../mcs-plugin/xfwm4_plugin.c:2359
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Šie uzstādījumi, nav derīgi pie Jūsu pašreizējā logu pārvaldnieka (%s)"
+msgstr "Šie uzstādījumi, nav derīgi pie pašreizējā logu pārvaldnieka (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -272,7 +276,7 @@ msgstr "Aizvērt"
 #: ../mcs-plugin/xfwm4_plugin.c:79
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Shade window"
-msgstr "Saritināt logu"
+msgstr "Ēnot logu"
 
 #: ../mcs-plugin/xfwm4_plugin.c:80
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:363
@@ -322,11 +326,11 @@ msgstr "Slēpts"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1376
 msgid "Font Selection Dialog"
-msgstr "Fonta Izvēles Dialogs"
+msgstr "Fonta izvēles dialogs"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1441
 msgid "Window Manager"
-msgstr "Logu Pārvaldnieks"
+msgstr "Logu pārvaldnieks"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1481
 msgid "Title font"
@@ -351,7 +355,7 @@ msgstr "Stils"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1551
 msgid "Window shortcuts"
-msgstr "Loga īsceļi"
+msgstr "Loga īssceļi"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1565
 msgid "Command"
@@ -488,7 +492,7 @@ msgstr "Paplašināti"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:1991
 msgid "Button Label|Window Manager"
-msgstr "Logu Pārvaldnieks"
+msgstr "Logu pārvaldnieks"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
@@ -505,7 +509,7 @@ msgstr "Ievadiet tēmas nosaukumu:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:180
 msgid "A keybinding theme with the same name already exists"
-msgstr "Taustiņu sasaistes tēma ar tadu nosaukumu jau eksistē"
+msgstr "Taustiņu sasaistes tēma ar tādu nosaukumu jau eksistē"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:186
 msgid "You have to provide a name for the keybinding theme"
@@ -577,7 +581,7 @@ msgstr "Nocelt logu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 msgid "Toggle fullscreen"
-msgstr "Pārslēgt uz pilnekrānu"
+msgstr "Pārslēgt uz pilnekrānu režīmu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Upper workspace"
@@ -732,11 +736,11 @@ msgstr "Rā_dīt"
 
 #: ../src/menu.c:45
 msgid "_Shade"
-msgstr "Sar_itināt"
+msgstr "Ē_not"
 
 #: ../src/menu.c:46
 msgid "Un_shade"
-msgstr "A_tritināt"
+msgstr "Atēno_t"
 
 #: ../src/menu.c:47
 msgid "S_tick"
@@ -802,25 +806,25 @@ msgstr "%s: Nevar nolasīt krāsu %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Loga Pārvaldnieka Uzstādījumi"
+msgstr "Loga pārvaldnieka uzstādījumi"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 Logu Pārvaldnieka Uzstādījumi"
+msgstr "Xfce 4 logu pārvaldnieka uzstādījumi"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
-msgstr "Paplašinātā Konfigurācija"
+msgstr "Paplašinātā konfigurācija"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Xfce 4 Logu Pārvaldnieka Piedares"
+msgstr "Xfce 4 logu pārvaldnieka piedares"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
-msgstr "Darbavietu Uzstādījumi"
+msgstr "Darbavietu uzstādījumi"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 Darbavietu Uzstādījumi"
+msgstr "Xfce 4 darbavietu uzstādījumi"
 
