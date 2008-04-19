@@ -831,7 +831,7 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
 }
 
 static void
-frameDrawAll (Client * c)
+frameDrawWin (Client * c)
 {
     ScreenInfo *screen_info;
     FramePixmap frame_pix;
@@ -847,6 +847,8 @@ frameDrawAll (Client * c)
     TRACE ("drawing frame for \"%s\" (0x%lx)", c->name, c->window);
 
     g_return_if_fail (c != NULL);
+
+    frameClearQueueDraw (c);
 
     screen_info = c->screen_info;
     requires_clearing = FALSE;
@@ -893,10 +895,10 @@ frameDrawAll (Client * c)
     /* Cache mgmt */
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_NEEDS_REDRAW))
     {
+        FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_NEEDS_REDRAW);
         width_changed = TRUE;
         height_changed = TRUE;
         requires_clearing = TRUE;
-        frameClearQueueDraw (c);
     }
     else
     {
@@ -911,7 +913,6 @@ frameDrawAll (Client * c)
             c->previous_height = c->height;
         }
     }
-    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_NEEDS_REDRAW);
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
@@ -1180,7 +1181,7 @@ update_frame_idle_cb (gpointer data)
     c = (Client *) data;
     g_return_val_if_fail (c, FALSE);
 
-    frameDrawAll (c);
+    frameDrawWin (c);
     c->frame_timeout_id = 0;
 
     return FALSE;
@@ -1211,7 +1212,7 @@ frameDraw (Client * c, gboolean clear_all)
     {
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_NEEDS_REDRAW);
     }
-    frameDrawAll (c);
+    frameDrawWin (c);
 }
 
 void
