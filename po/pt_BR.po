@@ -2,15 +2,16 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Rodrigo Coacci <rcoacci@gmail.com>, 2004.
-# Adriano Winter Bess <awbess@gmail.com>, 2006
+# Adriano Winter Bess <awbess@gmail.com>, 2006.
+# Og Maciel <ogmaciel@gnome.org>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2007-06-30 17:31-0300\n"
-"Last-Translator: William Koch <wkromani@gmail.com>\n"
+"PO-Revision-Date: 2008-04-21 22:06-0500\n"
+"Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,9 +44,7 @@ msgstr "Abaixo:"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:110
 msgid "Button Label|Workspaces and Margins"
-msgstr ""
-"Áreas de Trabalho\n"
-"e Margens"
+msgstr "Áreas de Trabalho e Margens"
 
 #: ../mcs-plugin/workspaces_plugin.c:144
 msgid "Workspaces and Margins"
@@ -66,14 +65,12 @@ msgid "None"
 msgstr "Nenhuma"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Mover a janela para a próxima área de trabalho"
+msgstr "Mover a janela para a área de trabalho atual"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Mover a janela para a área de trabalho %d"
+msgstr "Trocar para a área de trabalho da janela"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
 msgid "Do nothing"
@@ -90,15 +87,15 @@ msgstr "Posicionar a janela no centro"
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "Ajustes Especiais do Gerenciador de Janelas"
+msgstr "Ajustes do Gerente de Janelas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr "Ignorar as janelas que possuem as propriedades \"ignorar paginador\" ou \"ignorar barra de tarefas\" ajustadas"
+msgstr "Ignorar as janelas que possuem as propriedades \"ignorar paginador\" ou \"ignorar barra de tarefas\" definidas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
-msgstr "Incluir janelas escondidas (iconificadas)"
+msgstr "Incluir janelas ocultas (iconificadas)"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:524
 msgid "Cycle through windows from all workspaces"
@@ -118,7 +115,7 @@ msgstr "Honrar o padrão ICCCM para dica de foco"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Quando uma janela for levantada:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558
 #: ../mcs-plugin/xfwm4_plugin.c:1752
@@ -178,9 +175,8 @@ msgid "Size|Large"
 msgstr "Grande"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "Tamanho mínimo das janelas para ativar o posicionamento inteligente"
+msgstr "Posicionamento padrão de janelas sem posicionamento inteligente"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
@@ -195,9 +191,8 @@ msgid "Display full screen overlay windows directly"
 msgstr "Exibe as janelas sobrepostas em tela cheia diretamente"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Mostrar sombras sob janelas flutuantes"
+msgstr "Mostrar sombras sob janelas de doca"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:709
 msgid "Show shadows under regular windows"
@@ -205,7 +200,7 @@ msgstr "Mostrar sombras sob janelas normais"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:715
 msgid "Show shadows under popup windows"
-msgstr "Mostrar sombras sob janelas flutuantes"
+msgstr "Mostrar sombras sob janelas de contexto"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:721
 msgid "Opacity of window decorations"
@@ -229,7 +224,7 @@ msgstr "Opaco"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:727
 msgid "Opacity of inactive windows"
-msgstr "Opacidade das janelas flutuantes"
+msgstr "Opacidade das janelas inativas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:733
 msgid "Opacity of windows during move"
@@ -241,7 +236,7 @@ msgstr "Opacidade das janelas ao redimensionar"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Opacity of popup windows"
-msgstr "Opacidade das janelas flutuantes"
+msgstr "Opacidade das janelas de contexto"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:750
 msgid "Compositor"
@@ -250,15 +245,13 @@ msgstr "Compositor"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:792
 msgid "Button Label|Window Manager Tweaks"
-msgstr ""
-"Ajustes Especiais do\n"
-"Gerenciador de Janelas"
+msgstr "Ajustes do Gerente de Janelas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:914
 #: ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Essas configurações não podem funcionar com seu gerenciador de janelas atual (%s)"
+msgstr "Estas configurações não podem funcionar com seu gerente de janelas atual (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -300,7 +293,7 @@ msgstr "Sombrear"
 
 #: ../mcs-plugin/xfwm4_plugin.c:71
 msgid "Hide"
-msgstr "Esconder"
+msgstr "ocultar"
 
 #: ../mcs-plugin/xfwm4_plugin.c:72
 msgid "Maximize"
@@ -327,9 +320,8 @@ msgstr "Maximizar janela"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#, fuzzy
 msgid "Fill window"
-msgstr "Esconder janela"
+msgstr "Maximizar janela"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -373,7 +365,7 @@ msgstr "Diálogo de Seleção de Fontes"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1456
 msgid "Window Manager"
-msgstr "Gerenciador de Janelas"
+msgstr "Gerente de Janelas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1496
 msgid "Title font"
@@ -425,9 +417,8 @@ msgid "Focus follows mouse"
 msgstr "Foco segue o mouse"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Atraso antes de trazer para frente a janela com foco:"
+msgstr "Atraso antes de focalizar a janela"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1654
 #: ../mcs-plugin/xfwm4_plugin.c:1716
@@ -542,7 +533,7 @@ msgstr "Avançado"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:2051
 msgid "Button Label|Window Manager"
-msgstr "Gerenciador de Janelas"
+msgstr "Gerente de Janelas"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
@@ -578,12 +569,10 @@ msgid "Maximize window horizontally"
 msgstr "Maximizar janela horizontalmente"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#, fuzzy
 msgid "Fill window horizontally"
 msgstr "Maximizar janela horizontalmente"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#, fuzzy
 msgid "Fill window vertically"
 msgstr "Maximizar janela verticalmente"
 
@@ -641,7 +630,7 @@ msgstr "Enviar janela para trás"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
-msgstr ""
+msgstr "Alternar acima"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:386
 msgid "Toggle fullscreen"
@@ -716,7 +705,7 @@ msgid "Window operations menu"
 msgstr "Menu de operações da janela"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Mover a janela para a área de trabalho %d"
 
@@ -870,11 +859,11 @@ msgstr "%s: Não é possível interpretar cor %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Configurações do Gerenciador de janelas"
+msgstr "Configurações do Gerente de janelas"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Configurações do Gerenciador de Janelas do Xfce 4"
+msgstr "Configurações do Gerente de Janelas do Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
@@ -882,7 +871,7 @@ msgstr "Configurações Avançadas"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Ajustes Especiais do Gerenciador de Janelas do Xfce 4"
+msgstr "Ajustes do Gerente de Janelas do Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
