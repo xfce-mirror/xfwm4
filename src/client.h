@@ -403,7 +403,7 @@ void                     clientResize                           (Client *,
                                                                  int,
                                                                  XEvent *);
 void                     clientCycle                            (Client *,
-                                                                 XEvent *);
+                                                                 XKeyEvent *);
 void                     clientButtonPress                      (Client *,
                                                                  Window,
                                                                  XButtonEvent *);

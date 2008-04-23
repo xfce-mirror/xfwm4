@@ -377,7 +377,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_CYCLE_WINDOWS:
-                clientCycle (c, (XEvent *) ev);
+                clientCycle (c, ev);
                 break;
             case KEY_CLOSE_WINDOW:
                 clientClose (c);

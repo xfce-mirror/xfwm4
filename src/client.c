@@ -5111,7 +5111,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
 }
 
 void
-clientCycle (Client * c, XEvent * ev)
+clientCycle (Client * c, XKeyEvent * ev)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -5124,8 +5124,8 @@ clientCycle (Client * c, XEvent * ev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, myDisplayGetCurrentTime (display_info));
+    g1 = myScreenGrabKeyboard (screen_info, ev->time);
+    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, ev->time);
 
     if (!g1 || !g2)
     {
