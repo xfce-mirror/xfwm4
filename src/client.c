@@ -4317,21 +4317,12 @@ clientMove (Client * c, XEvent * ev)
     g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask,
                               myDisplayGetCursorMove (display_info),
                               myDisplayGetCurrentTime (display_info));
-    if (passdata.use_keys && !g1)
+    if ((passdata.use_keys && !g1) || (!g2))
     {
-        TRACE ("keyboard grab failed in clientMove");
+        TRACE ("grab failed in clientMove");
 
         gdk_beep ();
         myScreenUngrabKeyboard (screen_info);
-
-        return;
-    }
-
-    if (!g2)
-    {
-        TRACE ("button grab failed in clientMove");
-
-        gdk_beep ();
         myScreenUngrabPointer (screen_info);
 
         return;
@@ -4396,10 +4387,6 @@ clientMove (Client * c, XEvent * ev)
     }
     clientConfigure (c, &wc, changes, NO_CFG_FLAG);
 
-    if (g1)
-    {
-        myScreenUngrabKeyboard (screen_info);
-    }
     if (!passdata.released)
     {
         /* If this is a drag-move, wait for the button to be released.
@@ -4409,6 +4396,7 @@ clientMove (Client * c, XEvent * ev)
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
+    myScreenUngrabKeyboard (screen_info);
     myScreenUngrabPointer (screen_info);
 
     if (passdata.grab && screen_info->params->box_move)
@@ -4876,21 +4864,12 @@ clientResize (Client * c, int corner, XEvent * ev)
                               myDisplayGetCursorResize(display_info, passdata.corner),
                               myDisplayGetCurrentTime (display_info));
 
-    if (passdata.use_keys && !g1)
+    if ((passdata.use_keys && !g1) || (!g2))
     {
-        TRACE ("keyboard grab failed in clientResize");
+        TRACE ("grab failed in clientResize");
 
         gdk_beep ();
         myScreenUngrabKeyboard (screen_info);
-
-        return;
-    }
-
-    if (!g2)
-    {
-        TRACE ("button grab failed in clientResize");
-
-        gdk_beep ();
         myScreenUngrabPointer (screen_info);
 
         return;
@@ -4957,10 +4936,6 @@ clientResize (Client * c, int corner, XEvent * ev)
     c->xsync_waiting = FALSE;
 #endif /* HAVE_XSYNC */
 
-    if (g1)
-    {
-        myScreenUngrabKeyboard (screen_info);
-    }
     if (!passdata.released)
     {
         /* If this is a drag-resize, wait for the button to be released.
@@ -4970,6 +4945,7 @@ clientResize (Client * c, int corner, XEvent * ev)
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
+    myScreenUngrabKeyboard (screen_info);
     myScreenUngrabPointer (screen_info);
 
     if (passdata.grab && screen_info->params->box_resize)

@@ -482,7 +482,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 status = EVENT_FILTER_REMOVE;
                 if (ev_screen_info->clients)
                 {
-                    clientCycle (ev_screen_info->clients->prev, (XEvent *) ev);
+                    clientCycle (ev_screen_info->clients->prev, ev);
                 }
                 break;
             case KEY_CLOSE_WINDOW:
