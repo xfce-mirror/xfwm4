@@ -52,4 +52,10 @@ void                    workspaceSetCount                       (ScreenInfo *,
                                                                  int);
 void                    workspaceUpdateArea                     (ScreenInfo *);
 
+void                    workspaceInsert                         (ScreenInfo *,
+                                                                 int);
+
+void                    workspaceDelete                         (ScreenInfo *,
+                                                                 int);
+
 #endif /* INC_WORKSPACES_H */

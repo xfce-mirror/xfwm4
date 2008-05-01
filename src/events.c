@@ -531,6 +531,12 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             status = EVENT_FILTER_REMOVE;
             workspaceSetCount (ev_screen_info, ev_screen_info->workspace_count - 1);
             break;
+        case KEY_ADD_ADJACENT_WORKSPACE:
+            workspaceInsert (ev_screen_info, ev_screen_info->current_ws + 1);
+            break;
+        case KEY_DEL_ACTIVE_WORKSPACE:
+            workspaceDelete (ev_screen_info, ev_screen_info->current_ws);
+            break;
         case KEY_WORKSPACE_1:
         case KEY_WORKSPACE_2:
         case KEY_WORKSPACE_3:

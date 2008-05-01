@@ -180,6 +180,10 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, Time
 {
     int row, col, newrow, newcol, previous_ws, n;
 
+    g_return_if_fail (screen_info != NULL);
+
+    TRACE ("entering workspaceMove");
+
     workspaceGetPosition (screen_info, screen_info->current_ws, &row, &col);
     newrow = modify_with_wrap (row, rowmod, screen_info->desktop_layout.rows, screen_info->params->wrap_layout);
     newcol = modify_with_wrap (col, colmod, screen_info->desktop_layout.cols, screen_info->params->wrap_layout);
@@ -240,6 +244,8 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     int rx, ry, wx, wy;
     unsigned int mask;
     unsigned long data[1];
+
+    g_return_if_fail (screen_info != NULL);
 
     TRACE ("entering workspaceSwitch");
 
@@ -404,6 +410,11 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
 void
 workspaceSetNames (ScreenInfo * screen_info, gchar **names, int items)
 {
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (names != NULL);
+
+    TRACE ("entering workspaceSetNames");
+
     if (screen_info->workspace_names)
     {
         g_strfreev (screen_info->workspace_names);
@@ -419,6 +430,8 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
     DisplayInfo *display_info;
     Client *c;
     int i;
+
+    g_return_if_fail (screen_info != NULL);
 
     TRACE ("entering workspaceSetCount");
 
@@ -452,6 +465,62 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
     /* Recompute the layout based on the (changed) number of desktops */
     getDesktopLayout (display_info, screen_info->xroot, screen_info->workspace_count,
                      &screen_info->desktop_layout);
+}
+
+void
+workspaceInsert (ScreenInfo * screen_info, int index)
+{
+    DisplayInfo *display_info;
+    Client *c;
+    int i, count;
+
+    g_return_if_fail (screen_info != NULL);
+
+    TRACE ("entering workspaceInsert");
+
+    count = screen_info->workspace_count;
+    workspaceSetCount(screen_info, count + 1);
+
+    if ((index < 0) || (index > count))
+    {
+        return;
+    }
+
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    {
+        if (c->win_workspace >= index)
+        {
+            clientSetWorkspace (c, c->win_workspace + 1, TRUE);
+        }
+    }
+}
+
+void
+workspaceDelete (ScreenInfo * screen_info, int index)
+{
+    DisplayInfo *display_info;
+    Client *c;
+    int i, count;
+
+    g_return_if_fail (screen_info != NULL);
+
+    TRACE ("entering workspaceDelete");
+
+    count = screen_info->workspace_count;
+    if ((index < 0) || (index > count))
+    {
+        return;
+    }
+
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    {
+        if (c->win_workspace > index)
+        {
+            clientSetWorkspace (c, c->win_workspace - 1, TRUE);
+        }
+    }
+
+    workspaceSetCount(screen_info, count - 1);
 }
 
 void
