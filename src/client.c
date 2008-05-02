@@ -4244,9 +4244,9 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     {
         moving = FALSE;
     }
-    else if ((xevent->type == EnterNotify) || (xevent->type == LeaveNotify))
+    else if (xevent->type == EnterNotify)
     {
-        /* Ignore enter/leave events */
+        /* Ignore enter events */
     }
     else
     {
@@ -4314,7 +4314,7 @@ clientMove (Client * c, XEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask,
+    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask | LeaveWindowMask,
                               myDisplayGetCursorMove (display_info),
                               myDisplayGetCurrentTime (display_info));
     if ((passdata.use_keys && !g1) || (!g2))
@@ -4789,9 +4789,9 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     {
         resizing = FALSE;
     }
-    else if ((xevent->type == EnterNotify) || (xevent->type == LeaveNotify))
+    else if (xevent->type == EnterNotify)
     {
-        /* Ignore enter/leave events */
+        /* Ignore enter events */
     }
     else
     {
@@ -4860,7 +4860,7 @@ clientResize (Client * c, int corner, XEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask,
+    g2 = myScreenGrabPointer (screen_info, ButtonMotionMask | ButtonReleaseMask | LeaveWindowMask,
                               myDisplayGetCursorResize(display_info, passdata.corner),
                               myDisplayGetCurrentTime (display_info));
 
@@ -5069,7 +5069,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
         case ButtonPress:
         case ButtonRelease:
         case EnterNotify:
-        case LeaveNotify:
         case MotionNotify:
             break;
         default:
@@ -5101,7 +5100,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     display_info = screen_info->display_info;
 
     g1 = myScreenGrabKeyboard (screen_info, ev->time);
-    g2 = myScreenGrabPointer (screen_info, NoEventMask,  None, ev->time);
+    g2 = myScreenGrabPointer (screen_info, LeaveWindowMask,  None, ev->time);
 
     if (!g1 || !g2)
     {

@@ -1677,7 +1677,7 @@ handleLeaveNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     {
         for (b = 0; b < BUTTON_COUNT; b++)
         {
-            if (c->button_status[b] == BUTTON_STATE_PRELIGHT)
+            if ((c->button_status[b] == BUTTON_STATE_PRELIGHT) || (c->button_status[b] == BUTTON_STATE_PRESSED))
             {
                 if (MYWINDOW_XWINDOW(c->buttons[b]) == ev->window)
                 {
