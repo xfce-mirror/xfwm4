@@ -1,9 +1,11 @@
 above_key=Alt+F12
 add_workspace_key=Alt+Insert
+add_adjacent_workspace_key=None
 cancel_key=Escape
 close_window_key=Alt+F4
 cycle_windows_key=Alt+Tab
 del_workspace_key=Alt+Delete
+del_active_workspace_key=None
 down_workspace_key=Control+Alt+Down
 fill_horiz_key=None
 fill_vert_key=None
