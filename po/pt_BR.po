@@ -88,7 +88,7 @@ msgstr "Posicionar a janela no centro"
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Window Manager Tweaks"
-msgstr "Ajustes do Gerente de Janelas"
+msgstr "Ajustes do Gerenciador de Janelas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
 msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
@@ -246,13 +246,13 @@ msgstr "Compositor"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:792
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Ajustes do Gerente de Janelas"
+msgstr "Ajustes do Gerenciador de Janelas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:914
 #: ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Estas configurações não podem funcionar com seu gerente de janelas atual (%s)"
+msgstr "Estas configurações não podem funcionar com seu gerenciador de janelas atual (%s)"
 
 #: ../mcs-plugin/workspaces.c:329
 msgid "Change name"
@@ -366,7 +366,7 @@ msgstr "Diálogo de Seleção de Fontes"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1456
 msgid "Window Manager"
-msgstr "Gerente de Janelas"
+msgstr "Gerenciador de Janelas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1496
 msgid "Title font"
@@ -534,7 +534,7 @@ msgstr "Avançado"
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:2051
 msgid "Button Label|Window Manager"
-msgstr "Gerente de Janelas"
+msgstr "Gerenciador de Janelas"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:53
 msgid "Do you really want to remove this keybinding theme ?"
@@ -860,11 +860,11 @@ msgstr "%s: Não é possível interpretar cor %s\n"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
-msgstr "Configurações do Gerente de janelas"
+msgstr "Configurações do Gerenciador de janelas"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Configurações do Gerente de Janelas do Xfce 4"
+msgstr "Configurações do Gerenciador de Janelas do Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
@@ -872,7 +872,7 @@ msgstr "Configurações Avançadas"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Ajustes do Gerente de Janelas do Xfce 4"
+msgstr "Ajustes do Gerenciador de Janelas do Xfce 4"
 
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
 msgid "Workspaces Settings"
