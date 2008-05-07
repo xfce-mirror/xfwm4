@@ -342,16 +342,16 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 
     TRACE ("entering handleKeyEvent");
 
-    status = EVENT_FILTER_PASS;
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!ev_screen_info)
     {
         /* Release queued events */
-        XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
+        XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
 
-        return status;
+        return EVENT_FILTER_PASS;
     }
 
+    status = EVENT_FILTER_PASS;
     c = clientGetFocus ();
     if (c)
     {
@@ -564,7 +564,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     }
 
     /* Release queued events */
-    XAllowEvents (display_info->dpy, AsyncKeyboard, myDisplayGetCurrentTime (display_info));
+    XAllowEvents (display_info->dpy, SyncKeyboard, myDisplayGetCurrentTime (display_info));
 
     return status;
 }
@@ -1378,6 +1378,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             ev->value_mask &= ~(CWSibling | CWStackMode);
         }
         clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
+
         if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             GdkRectangle rect;

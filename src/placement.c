@@ -640,8 +640,6 @@ clientInitPosition (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientInitPosition");
 
-    clientGravitate (c, APPLY);
-
     screen_info = c->screen_info;
     msx = 0;
     msy = 0;

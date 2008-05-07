@@ -240,8 +240,8 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_GRAVITY)
         {
-            clientGravitate (c, REMOVE);
-            clientGravitate (c, APPLY);
+            clientCoordGravitate (c, REMOVE, &c->x, &c->y);
+            clientCoordGravitate (c, APPLY, &c->x, &c->y);
             setNetFrameExtents (screen_info->display_info,
                                 c->window,
                                 frameTop (c),
@@ -427,21 +427,6 @@ clientCoordGravitate (Client * c, int mode, int *x, int *y)
     }
     *x = *x + (dx * mode);
     *y = *y + (dy * mode);
-}
-
-void
-clientGravitate (Client * c, int mode)
-{
-    int x, y;
-
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientGravitate");
-
-    x = c->x;
-    y = c->y;
-    clientCoordGravitate (c, mode, &x, &y);
-    c->x = x;
-    c->y = y;
 }
 
 static void
@@ -1931,11 +1916,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* Once we know the type of window, we can initialize window position */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED))
     {
-        if ((attr.map_state != IsUnmapped))
-        {
-            clientGravitate (c, APPLY);
-        }
-        else
+        clientCoordGravitate (c, APPLY, &c->x, &c->y);
+        if ((attr.map_state == IsUnmapped))
         {
             clientInitPosition (c);
         }
@@ -2146,7 +2128,7 @@ clientUnframe (Client * c, gboolean remap)
     gdk_error_trap_push ();
     clientUngrabButtons (c);
     XUnmapWindow (display_info->dpy, c->frame);
-    clientGravitate (c, REMOVE);
+    clientCoordGravitate (c, REMOVE, &c->x, &c->y);
     XSelectInput (display_info->dpy, c->window, NoEventMask);
     reparented = XCheckTypedWindowEvent (display_info->dpy, c->window, ReparentNotify, &ev);
 
