@@ -346,7 +346,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     if (!ev_screen_info)
     {
         /* Release queued events */
-        XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
+        XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
 
         return EVENT_FILTER_PASS;
     }
@@ -564,7 +564,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     }
 
     /* Release queued events */
-    XAllowEvents (display_info->dpy, SyncKeyboard, myDisplayGetCurrentTime (display_info));
+    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
 
     return status;
 }
