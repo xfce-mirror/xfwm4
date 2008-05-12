@@ -175,8 +175,10 @@ gboolean                 myScreenGrabPointer                    (ScreenInfo *,
                                                                  unsigned int,
                                                                  Cursor,
                                                                  Time);
-unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *);
-unsigned int             myScreenUngrabPointer                  (ScreenInfo *);
+unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *,
+                                                                 Time);
+unsigned int             myScreenUngrabPointer                  (ScreenInfo *,
+                                                                 Time);
 void                     myScreenGrabKeys                       (ScreenInfo *);
 void                     myScreenUngrabKeys                     (ScreenInfo *);
 Client                  *myScreenGetClientFromWindow            (ScreenInfo *,

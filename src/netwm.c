@@ -741,7 +741,7 @@ clientUpdateFullscreenState (Client * c)
          */
         myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
-        myScreenUngrabPointer (c->screen_info);
+        myScreenUngrabPointer (c->screen_info, myDisplayGetCurrentTime (display_info));
     }
     else
     {

@@ -224,7 +224,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     {
         TRACE ("grab failed in typeOfClick");
         gdk_beep ();
-        myScreenUngrabPointer (screen_info);
+        myScreenUngrabPointer (screen_info, ev->xbutton.time);
         return XFWM_BUTTON_UNDEFINED;
     }
 
@@ -248,7 +248,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving typeOfClick loop");
 
-    myScreenUngrabPointer (screen_info);
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     XFlush (display_info->dpy);
     return (XfwmButtonClickType) passdata.clicks;
 }
@@ -346,7 +346,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     if (!ev_screen_info)
     {
         /* Release queued events */
-        XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
+        XAllowEvents (display_info->dpy, SyncKeyboard, myDisplayGetCurrentTime (display_info));
 
         return EVENT_FILTER_PASS;
     }
@@ -564,7 +564,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     }
 
     /* Release queued events */
-    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
+    XAllowEvents (display_info->dpy, SyncKeyboard, myDisplayGetCurrentTime (display_info));
 
     return status;
 }

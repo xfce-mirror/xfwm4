@@ -435,7 +435,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
 }
 
 unsigned int
-myScreenUngrabKeyboard (ScreenInfo *screen_info)
+myScreenUngrabKeyboard (ScreenInfo *screen_info, Time time)
 {
     g_return_val_if_fail (screen_info, 0);
     TRACE ("entering myScreenUngrabKeyboard");
@@ -447,7 +447,7 @@ myScreenUngrabKeyboard (ScreenInfo *screen_info)
     }
     if (screen_info->key_grabs == 0)
     {
-        XUngrabKeyboard (myScreenGetXDisplay (screen_info), CurrentTime);
+        XUngrabKeyboard (myScreenGetXDisplay (screen_info), time);
     }
     TRACE ("global key grabs %i", screen_info->key_grabs);
 
@@ -455,7 +455,7 @@ myScreenUngrabKeyboard (ScreenInfo *screen_info)
 }
 
 unsigned int
-myScreenUngrabPointer (ScreenInfo *screen_info)
+myScreenUngrabPointer (ScreenInfo *screen_info, Time time)
 {
     g_return_val_if_fail (screen_info, 0);
     TRACE ("entering myScreenUngrabPointer");
@@ -467,7 +467,7 @@ myScreenUngrabPointer (ScreenInfo *screen_info)
     }
     if (screen_info->pointer_grabs == 0)
     {
-        XUngrabPointer (myScreenGetXDisplay (screen_info), CurrentTime);
+        XUngrabPointer (myScreenGetXDisplay (screen_info), time);
     }
     TRACE ("global pointer grabs %i", screen_info->pointer_grabs);
 

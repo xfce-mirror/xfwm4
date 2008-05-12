@@ -285,7 +285,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
 
     }
-    myScreenUngrabPointer (screen_info);
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (screen_info->display_info));
 }
 
 void
@@ -3212,7 +3212,7 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
          */
         myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
-        myScreenUngrabPointer (c->screen_info);
+        myScreenUngrabPointer (c->screen_info, myDisplayGetCurrentTime (display_info));
     }
 }
 
@@ -3438,7 +3438,7 @@ clientFill (Client * c, int fill_type)
          */
         myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure(c, &wc, mask, NO_CFG_FLAG);
-        myScreenUngrabPointer (c->screen_info);
+        myScreenUngrabPointer (c->screen_info, myDisplayGetCurrentTime (display_info));
     }
 }
 
@@ -3627,7 +3627,7 @@ clientScreenResize(ScreenInfo *screen_info)
              clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST);
         }
     }
-    myScreenUngrabPointer (screen_info);
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (screen_info->display_info));
 
     g_list_free (list_of_windows);
 }
@@ -4304,8 +4304,8 @@ clientMove (Client * c, XEvent * ev)
         TRACE ("grab failed in clientMove");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info);
-        myScreenUngrabPointer (screen_info);
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
     }
@@ -4378,8 +4378,8 @@ clientMove (Client * c, XEvent * ev)
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
-    myScreenUngrabKeyboard (screen_info);
-    myScreenUngrabPointer (screen_info);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
     if (passdata.grab && screen_info->params->box_move)
     {
@@ -4851,8 +4851,8 @@ clientResize (Client * c, int corner, XEvent * ev)
         TRACE ("grab failed in clientResize");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info);
-        myScreenUngrabPointer (screen_info);
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
     }
@@ -4927,8 +4927,8 @@ clientResize (Client * c, int corner, XEvent * ev)
         gtk_main ();
         eventFilterPop (display_info->xfilter);
     }
-    myScreenUngrabKeyboard (screen_info);
-    myScreenUngrabPointer (screen_info);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
     if (passdata.grab && screen_info->params->box_resize)
     {
@@ -5089,8 +5089,8 @@ clientCycle (Client * c, XKeyEvent * ev)
         TRACE ("grab failed in clientCycle");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info);
-        myScreenUngrabPointer (screen_info);
+        myScreenUngrabKeyboard (screen_info, ev->time);
+        myScreenUngrabPointer (screen_info, ev->time);
 
         return;
     }
@@ -5164,8 +5164,8 @@ clientCycle (Client * c, XKeyEvent * ev)
         clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     }
 
-    myScreenUngrabKeyboard (screen_info);
-    myScreenUngrabPointer (screen_info);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 }
 
 static eventFilterStatus
