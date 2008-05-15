@@ -997,6 +997,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         }
         else if (ev->window == c->window)
         {
+            XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
             clientPassGrabMouseButton (c);
             if (((screen_info->params->raise_with_any_button) && (c->type & WINDOW_REGULAR_FOCUSABLE)) || (ev->button == Button1))
             {
@@ -1011,32 +1012,32 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     clientRaise (c, None);
                 }
             }
-            XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
         }
-
-        return EVENT_FILTER_REMOVE;
-    }
-
-    /*
-       The event did not occur in one of our known good client...
-       Get the screen structure from the root of the event.
-     */
-    screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
-    if (!screen_info)
-    {
-        return EVENT_FILTER_REMOVE;
-    }
-
-    if ((ev->window == screen_info->xroot) && (screen_info->params->scroll_workspaces)
-            && ((ev->button == Button4) || (ev->button == Button5)))
-    {
-        rootScrollButton (display_info, ev);
     }
     else
     {
-        XUngrabPointer (display_info->dpy, ev->time);
-        XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
+        /*
+           The event did not occur in one of our known good clients...
+           Get the screen structure from the root of the event.
+         */
+        screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
+        if (screen_info)
+        {
+            if ((ev->window == screen_info->xroot) && (screen_info->params->scroll_workspaces)
+                    && ((ev->button == Button4) || (ev->button == Button5)))
+            {
+                rootScrollButton (display_info, ev);
+            }
+            else
+            {
+                XUngrabPointer (display_info->dpy, ev->time);
+                XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
+            }
+        }
     }
+
+    /* Release queued events */
+    XAllowEvents (display_info->dpy, SyncPointer, myDisplayGetCurrentTime (display_info));
 
     return EVENT_FILTER_REMOVE;
 }
