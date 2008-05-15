@@ -871,9 +871,11 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     Client *c;
     Window win;
     int state, part;
+    gboolean replay;
 
     TRACE ("entering handleButtonPress");
 
+    replay = FALSE;
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_WINDOW);
     if (c)
     {
@@ -997,7 +999,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         }
         else if (ev->window == c->window)
         {
-            XAllowEvents (display_info->dpy, ReplayPointer, ev->time);
+            replay = TRUE;
             clientPassGrabMouseButton (c);
             if (((screen_info->params->raise_with_any_button) && (c->type & WINDOW_REGULAR_FOCUSABLE)) || (ev->button == Button1))
             {
@@ -1036,8 +1038,8 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         }
     }
 
-    /* Release queued events */
-    XAllowEvents (display_info->dpy, SyncPointer, myDisplayGetCurrentTime (display_info));
+    /* Release pending events */
+    XAllowEvents (display_info->dpy, replay ? ReplayPointer : SyncPointer, myDisplayGetCurrentTime (display_info));
 
     return EVENT_FILTER_REMOVE;
 }
