@@ -564,7 +564,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     }
 
     /* Release queued events */
-    XAllowEvents (display_info->dpy, SyncKeyboard, myDisplayGetCurrentTime (display_info));
+    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
 
     return status;
 }
@@ -1039,7 +1039,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     }
 
     /* Release pending events */
-    XAllowEvents (display_info->dpy, replay ? ReplayPointer : SyncPointer, myDisplayGetCurrentTime (display_info));
+    XAllowEvents (display_info->dpy, replay ? ReplayPointer : SyncPointer, CurrentTime);
 
     return EVENT_FILTER_REMOVE;
 }
