@@ -3863,6 +3863,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         {
             int key_move = 16;
             unsigned int edge;
+            int direction = 0;
 
             if ((screen_info->params->snap_to_border) || (screen_info->params->snap_to_windows))
             {
@@ -3881,18 +3882,22 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             }
             if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_LEFT].keycode)
             {
+                direction = KEY_MOVE_LEFT;
                 c->x = c->x - key_move;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_RIGHT].keycode)
             {
+                direction = KEY_MOVE_RIGHT;
                 c->x = c->x + key_move;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_UP].keycode)
             {
+                direction = KEY_MOVE_UP;
                 c->y = c->y - key_move;
             }
             else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_DOWN].keycode)
             {
+                direction = KEY_MOVE_DOWN;
                 c->y = c->y + key_move;
             }
 
@@ -3908,14 +3913,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 maxh = screen_info->height;
                 clientMaxSpace (screen_info, &maxx, &maxy, &maxw, &maxh);
 
-                if (edge & CLIENT_CONSTRAINED_TOP)
+                if ((edge & CLIENT_CONSTRAINED_TOP) && (direction == KEY_MOVE_UP))
                 {
                     if (workspaceMove (screen_info, -1, 0, c, xevent->xkey.time))
                     {
                         c->y = maxy + maxh;
                     }
                 }
-                else if (edge & CLIENT_CONSTRAINED_BOTTOM)
+                else if ((edge & CLIENT_CONSTRAINED_BOTTOM) && (direction == KEY_MOVE_DOWN))
                 {
                     if (workspaceMove (screen_info, 1, 0, c, xevent->xkey.time))
                     {
@@ -3923,14 +3928,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                     }
                 }
 
-                if (edge & CLIENT_CONSTRAINED_LEFT)
+                if ((edge & CLIENT_CONSTRAINED_LEFT) && (direction == KEY_MOVE_LEFT))
                 {
                     if (workspaceMove (screen_info, 0, -1, c, xevent->xkey.time))
                     {
                         c->x = maxx + maxw - frameWidth (c) + frameRight (c);
                     }
                 }
-                else if (edge & CLIENT_CONSTRAINED_RIGHT)
+                else if ((edge & CLIENT_CONSTRAINED_RIGHT) && (direction == KEY_MOVE_RIGHT))
                 {
                     if (workspaceMove (screen_info, 0, 1, c, xevent->xkey.time))
                     {
