@@ -429,6 +429,83 @@ clientCoordGravitate (Client * c, int mode, int *x, int *y)
     *y = *y + (dy * mode);
 }
 
+void
+clientAdjustCoordGravity (Client * c, unsigned long *mask, XWindowChanges *wc)
+{
+    int tx, ty, dw, dh;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientCoordGravitate");
+
+    tx = wc->x;
+    ty = wc->y;
+    clientCoordGravitate (c, APPLY, &tx, &ty);
+
+    switch (c->gravity)
+    {
+        case CenterGravity:
+            dw = (c->width  - wc->width)  / 2;
+            dh = (c->height - wc->height) / 2;
+            break;
+        case NorthGravity:
+            dw = (c->width - wc->width) / 2;
+            dh = 0;
+            break;
+        case SouthGravity:
+            dw = (c->width  - wc->width) / 2;
+            dh = (c->height - wc->height);
+            break;
+        case EastGravity:
+            dw = (c->width  - wc->width);
+            dh = (c->height - wc->height) / 2;
+            break;
+        case WestGravity:
+            dw = 0;
+            dh = (c->height - wc->height) / 2;
+            break;
+        case NorthWestGravity:
+            dw = 0;
+            dh = 0;
+            break;
+        case NorthEastGravity:
+            dw = (c->width - wc->width);
+            dh = 0;
+            break;
+        case SouthWestGravity:
+            dw = 0;
+            dh = (c->height - wc->height);
+            break;
+        case SouthEastGravity:
+            dw = (c->width  - wc->width);
+            dh = (c->height - wc->height);
+            break;
+        default:
+            dw = 0;
+            dh = 0;
+            break;
+    }
+
+    if (*mask & CWX)
+    {
+        wc->x = tx;
+    }
+    else if (*mask & CWWidth)
+    {
+        wc->x = c->x + dw;
+        *mask |= CWX;
+    }
+
+    if (*mask & CWY)
+    {
+        wc->y = ty;
+    }
+    else if (*mask & CWHeight)
+    {
+        wc->y = c->y + dh;
+        *mask |= CWY;
+    }
+}
+
 static void
 clientComputeWidth (Client * c, int *w)
 {

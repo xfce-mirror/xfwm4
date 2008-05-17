@@ -1380,7 +1380,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             /* Ignore stacking request for DESKTOP windows */
             ev->value_mask &= ~(CWSibling | CWStackMode);
         }
-        clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
+        clientAdjustCoordGravity (c, &ev->value_mask, &wc);
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
         {
