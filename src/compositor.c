@@ -3075,7 +3075,13 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
     {
         return;
     }
-
+#if HAVE_OVERLAYS
+    if (display_info->have_overlays)
+    {
+        XResizeWindow (display_info->dpy, screen_info->overlay, screen_info->width, screen_info->height);
+        XResizeWindow (display_info->dpy, screen_info->root_overlay, screen_info->width, screen_info->height);
+    }
+#endif
     if (screen_info->rootBuffer)
     {
         XRenderFreePicture (display_info->dpy, screen_info->rootBuffer);
