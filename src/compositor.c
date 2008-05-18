@@ -1757,18 +1757,15 @@ map_win (CWindow *cw)
     DisplayInfo *display_info;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering map_win 0x%lx\n", cw->id);
+    TRACE ("entering map_win 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
     if (!WIN_IS_REDIRECTED(cw))
     {
-        /* To be safe, we count only the fullscreen overlays */
-        if (WIN_IS_FULLSCREEN(cw) && WIN_IS_VIEWABLE (cw))
-        {
-            screen_info->wins_unredirected++;
-        }
+        screen_info->wins_unredirected++;
+        TRACE ("Mapping unredirected window 0x%lx, wins_unredirected increased to %i", cw->id, screen_info->wins_unredirected);
 #if HAVE_OVERLAYS
         if ((screen_info->wins_unredirected == 1) && (display_info->have_overlays))
         {
@@ -1819,7 +1816,7 @@ unmap_win (CWindow *cw)
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
-    if (!WIN_IS_REDIRECTED(cw) && WIN_IS_FULLSCREEN(cw) && (screen_info->wins_unredirected > 0))
+    if (!WIN_IS_REDIRECTED(cw) && (screen_info->wins_unredirected > 0))
     {
         screen_info->wins_unredirected--;
         TRACE ("Unmapped window 0x%lx, wins_unredirected decreased to %i", cw->id, screen_info->wins_unredirected);
@@ -1844,6 +1841,8 @@ unmap_win (CWindow *cw)
 
     cw->viewable = FALSE;
     cw->damaged = FALSE;
+    cw->redirected = TRUE;
+
     free_win_data (cw, FALSE);
 }
 
