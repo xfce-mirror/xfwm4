@@ -2,6 +2,12 @@
 =====
 
 - Fix automaximize on move
+- Remove trailing \0 in UTF-8 strings, that causes libwnck to rightfully 
+  complain that NET_WM_NAME contains invalid UTF-8
+- Exit on SelectionClear event so that xfwm4 exits even with WM who do
+  not send a ClientMEssage event such as Openbox (bug #2374)
+- Backport overlay and compositor support from trunk (Bug #3849)
+- Filter out grab/ungrab events so we don't end up redrawing the frame twice
 
 4.4.2
 =====

@@ -1,3 +1,60 @@
+2008-04-12 09:56  mmassonnet
+
+	* po/ChangeLog, po/lv.po: Update Latvian translation
+
+2008-03-20 22:38  olivier
+
+	* src/compositor.c, src/display.h, src/screen.h: Backport overlay
+	  and compositor support from trunk (Bug #3849)
+
+2008-02-23 19:28  mmassonnet
+
+	* po/ChangeLog, po/LINGUAS, po/ur.po: Merge Urdu translation from
+	  trunk (r26296)
+
+2008-02-17 11:06  jari
+
+	* po/ChangeLog, po/fi.po: Fixed a typo in the Finnish translation.
+
+2008-01-21 22:39  olivier
+
+	* src/events.c: Exit on SelectionClear event so that xfwm4 exits
+	  even with WM who do not send a ClientMEssage event such as
+	  Openbox (bug #2374)
+
+2007-12-23 16:50  pollux
+
+	* po/ChangeLog, po/sq.po: Updated Albanian translations by Besnik
+	  Bleta <bbleta@otenet.gr>
+
+2007-12-03 21:50  olivier
+
+	* src/hints.c: Remove trailing \0 in UTF-8 strings, that causes
+	  libwnck to rightfully complain that NET_WM_NAME contains invalid
+	  UTF-8
+
+2007-12-02 16:49  maximilian
+
+	* po/ChangeLog, po/es.po: Spanish translations branch updates and
+	  German translations trunk updates
+
+2007-11-18 20:03  maximilian
+
+	* po/ChangeLog, po/pl.po: Polish translation update in Branch 4.4
+
+2007-11-17 20:37  olivier
+
+	* src/client.c: Minor indentation fix
+
+2007-11-17 20:33  olivier
+
+	* src/client.c: Filter out grab/ungrab events so we don't end up
+	  redrawing the frame twice
+
+2007-11-17 18:42  kelnos
+
+	* ChangeLog: update changelogs; ready to tag 4.4.2
+
 2007-11-16 21:07  pollux
 
 	* NEWS: Updated NEWS

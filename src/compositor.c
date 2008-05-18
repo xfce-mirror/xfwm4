@@ -1773,7 +1773,6 @@ map_win (CWindow *cw)
             XUnmapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
         }
 #endif /* HAVE_OVERLAYS */
-        TRACE ("Mapping unredirected window 0x%lx, wins_unredirected increased to %i", cw->id, screen_info->wins_unredirected);
         return;
     }
 
