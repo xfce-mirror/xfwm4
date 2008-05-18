@@ -70,11 +70,11 @@
  * if that needs some explanation, please refer to metacity's
  * display.h source where it is explaned
  */
-#define TIMESTAMP_IS_BEFORE_REAL(time1, time2)  ((((time1) < (time2)) && ((time2) - (time1) < ((guint32)-1)/2 )) || \
-                                                 (((time1) > (time2)) && ((time1) - (time2) > ((guint32)-1)/2 )))
-#define TIMESTAMP_IS_BEFORE(time1, time2)       ((time1) == 0 ||                                                    \
+#define TIMESTAMP_IS_BEFORE_REAL(time1, time2)  (((time1 < time2) && (time2 - time1 < (G_MAXUINT32 >> 1))) || \
+                                                 ((time1 > time2) && (time1 - time2 > (G_MAXUINT32 >> 1))))
+#define TIMESTAMP_IS_BEFORE(time1, time2)       ((time1 == 0) ||                                                    \
                                                 (TIMESTAMP_IS_BEFORE_REAL(time1, time2) &&                          \
-                                                (time2) != 0))
+                                                (time2 != 0)))
 
 enum
 {

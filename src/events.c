@@ -346,7 +346,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     if (!ev_screen_info)
     {
         /* Release queued events */
-        XAllowEvents (display_info->dpy, SyncKeyboard, myDisplayGetCurrentTime (display_info));
+        XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
 
         return EVENT_FILTER_PASS;
     }
@@ -567,6 +567,17 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
 
     return status;
+}
+
+static eventFilterStatus
+handleKeyRelease (DisplayInfo *display_info, XKeyEvent * ev)
+{
+    TRACE ("entering handleKeyRelease");
+
+    /* Release queued events */
+    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
+
+    return EVENT_FILTER_PASS;
 }
 
 /* User has clicked on an edge or corner.
@@ -1051,23 +1062,15 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
 
     TRACE ("entering handleButtonRelease");
 
-#if CHECK_BUTTON_TIME
-    /* Avoid treating the same event twice */
-    if (!check_button_time (ev))
-    {
-        TRACE ("ignoring ButtonRelease event because it has been already handled");
-        return EVENT_FILTER_REMOVE;
-    }
-#endif
-
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
-    if (!screen_info)
+    if (screen_info)
     {
-        return EVENT_FILTER_REMOVE;
+        XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
     }
 
-    XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, (XEvent *) ev);
+    /* Release pending events */
+    XAllowEvents (display_info->dpy, SyncPointer, CurrentTime);
 
     return EVENT_FILTER_REMOVE;
 }
@@ -2449,6 +2452,9 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             break;
         case KeyPress:
             status = handleKeyPress (display_info, (XKeyEvent *) ev);
+            break;
+        case KeyRelease:
+            status = handleKeyRelease (display_info, (XKeyEvent *) ev);
             break;
         case ButtonPress:
             status = handleButtonPress (display_info, (XButtonEvent *) ev);
