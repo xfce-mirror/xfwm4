@@ -77,8 +77,8 @@
 #define WIN_IS_NATIVE_OPAQUE(cw)        ((cw->native_opacity) && !WIN_IS_ARGB(cw))
 #define WIN_IS_FULLSCREEN(cw)           ((cw->attr.x <= 0) && \
                                            (cw->attr.y <= 0) && \
-                                           (cw->attr.width >= cw->screen_info->width) && \
-                                           (cw->attr.height >= cw->screen_info->height))
+                                           (cw->attr.width + 2 * cw->attr.border_width >= cw->screen_info->width) && \
+                                           (cw->attr.height + 2 * cw->attr.border_width >= cw->screen_info->height))
 #define WIN_IS_SHAPED(cw)               ((WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
                                            (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
 #define WIN_IS_VIEWABLE(cw)             (cw->viewable)
@@ -101,6 +101,7 @@ struct _CWindow
     gboolean viewable;
     gboolean shaped;
     gboolean redirected;
+    gboolean fulloverlay;
     gboolean argb;
     gboolean skipped;
     gboolean native_opacity;
@@ -1769,8 +1770,19 @@ map_win (CWindow *cw)
 
     if (!WIN_IS_REDIRECTED(cw))
     {
-        screen_info->wins_unredirected++;
-        TRACE ("Mapping unredirected window 0x%lx, wins_unredirected increased to %i", cw->id, screen_info->wins_unredirected);
+        cw->fulloverlay = WIN_IS_FULLSCREEN(cw);
+        if (cw->fulloverlay)
+        {
+            /*
+             * To be safe, we only count the fullscreen un-redirected windows.
+             * We do not want a smaller override redirect such as a tooltip
+             * for example to prevent the overlay to be remapped and leave
+             * a black screen until the tooltip is unmapped...
+             */
+            screen_info->wins_unredirected++;
+            TRACE ("Mapping fullscreen window 0x%lx, wins_unredirected increased to %i", cw->id, screen_info->wins_unredirected);
+        }
+        TRACE ("Mapping unredirected window 0x%lx, wins_unredirected is now %i", cw->id, screen_info->wins_unredirected);
 #if HAVE_OVERLAYS
         if ((screen_info->wins_unredirected == 1) && (display_info->have_overlays))
         {
@@ -1802,7 +1814,7 @@ map_win (CWindow *cw)
 
         if (cw == top)
         {
-            TRACE ("Toplevel window 0x%lx is fullscreen, unredirecting", cw->id);
+            TRACE ("Unredirecting toplevel window 0x%lx", cw->id);
             unredirect_win (cw);
         }
     }
@@ -1822,8 +1834,12 @@ unmap_win (CWindow *cw)
 
     if (!WIN_IS_REDIRECTED(cw) && (screen_info->wins_unredirected > 0))
     {
-        screen_info->wins_unredirected--;
-        TRACE ("Unmapped window 0x%lx, wins_unredirected decreased to %i", cw->id, screen_info->wins_unredirected);
+        if (cw->fulloverlay)
+        {
+            screen_info->wins_unredirected--;
+            TRACE ("Unmapping fullscreen window 0x%lx, wins_unredirected decreased to %i", cw->id, screen_info->wins_unredirected);
+        }
+        TRACE ("Unmapped window 0x%lx, wins_unredirected is now %i", cw->id, screen_info->wins_unredirected);
         if (!screen_info->wins_unredirected)
         {
             /* Restore the overlay if that was the last unredirected window */
@@ -1846,6 +1862,7 @@ unmap_win (CWindow *cw)
     cw->viewable = FALSE;
     cw->damaged = FALSE;
     cw->redirected = TRUE;
+    cw->fulloverlay = FALSE;
 
     free_win_data (cw, FALSE);
 }
@@ -1945,6 +1962,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->id = id;
     new->damaged = FALSE;
     new->redirected = TRUE;
+    new->fulloverlay = FALSE;
     new->shaped = is_shaped (display_info, id);
     new->viewable = (new->attr.map_state == IsViewable);
 
