@@ -957,7 +957,6 @@ clientValidateNetStrut (Client * c)
     ScreenInfo *screen_info;
     gboolean valid;
     int max_value;
-    int i;
 
     g_return_val_if_fail (c != NULL, TRUE);
     TRACE ("entering clientValidateNetStrut for \"%s\" (0x%lx)", c->name, c->window);

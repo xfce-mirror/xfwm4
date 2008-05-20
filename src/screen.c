@@ -129,11 +129,12 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
 ScreenInfo *
 myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask, gboolean replace_wm)
 {
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
     gchar selection[32];
+#endif
     ScreenInfo *screen_info;
     GdkWindow *event_win;
     PangoLayout *layout;
-    Atom wm_sn_atom;
     long desktop_visible;
     int i, j;
 

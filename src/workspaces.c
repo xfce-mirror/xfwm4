@@ -180,7 +180,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, Time
 {
     int row, col, newrow, newcol, previous_ws, n;
 
-    g_return_if_fail (screen_info != NULL);
+    g_return_val_if_fail (screen_info != NULL, FALSE);
 
     TRACE ("entering workspaceMove");
 
@@ -470,7 +470,6 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
 void
 workspaceInsert (ScreenInfo * screen_info, int index)
 {
-    DisplayInfo *display_info;
     Client *c;
     int i, count;
 
@@ -498,7 +497,6 @@ workspaceInsert (ScreenInfo * screen_info, int index)
 void
 workspaceDelete (ScreenInfo * screen_info, int index)
 {
-    DisplayInfo *display_info;
     Client *c;
     int i, count;
 
