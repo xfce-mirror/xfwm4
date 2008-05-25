@@ -743,6 +743,8 @@ button1Action (Client * c, XButtonEvent * ev)
                     clientHide (c, c->win_workspace, TRUE);
                 }
                 break;
+            default:
+                break;
         }
     }
 }
@@ -911,6 +913,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         {
             if (ev->button <= Button3)
             {
+#ifdef WIN_BUTTON_RAISE
                 if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
                 {
                     clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
@@ -920,6 +923,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     clientClearDelayedRaise ();
                     clientRaise (c, None);
                 }
+#endif /* WIN_BUTTON_RAISE */
                 clientButtonPress (c, win, ev);
             }
         }
@@ -948,6 +952,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                 }
                 else if (tclick != XFWM_BUTTON_UNDEFINED)
                 {
+#ifdef WIN_BUTTON_RAISE
                     if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
                     {
                         clientSetFocus (screen_info, c, ev->time, NO_FOCUS_FLAG);
@@ -957,6 +962,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                         clientClearDelayedRaise ();
                         clientRaise (c, None);
                     }
+#endif /* WIN_BUTTON_RAISE */
                     ev->window = ev->root;
                     if (screen_info->button_handler_id)
                     {
@@ -1526,8 +1532,10 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
                 clientClearDelayedFocus ();
             }
         }
+#ifdef WIN_BUTTON_RAISE
         if (c == clientGetFocus ())
         {
+#endif /* WIN_BUTTON_RAISE */
             for (b = 0; b < BUTTON_COUNT; b++)
             {
                 if (MYWINDOW_XWINDOW(c->buttons[b]) == ev->window)
@@ -1543,7 +1551,9 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             {
                 frameQueueDraw (c, FALSE);
             }
+#ifdef WIN_BUTTON_RAISE
         }
+#endif /* WIN_BUTTON_RAISE */
         /* No need to process the event any further */
         return EVENT_FILTER_REMOVE;
     }

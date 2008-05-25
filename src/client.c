@@ -5431,7 +5431,7 @@ clientGetButtonPixmap (Client * c, int button, int state)
 {
     ScreenInfo *screen_info;
 
-    TRACE ("entering clientGetButtonPixmap button=%i, state=%i", button,state);
+    TRACE ("entering clientGetButtonPixmap button=%i, state=%i", button, state);
     screen_info = c->screen_info;
     switch (button)
     {
@@ -5479,10 +5479,12 @@ clientGetButtonState (Client *c, int button, int state)
 
     screen_info = c->screen_info;
 
+#ifdef WIN_BUTTON_RAISE
     if (state == INACTIVE)
     {
         return (state);
     }
+#endif /* WIN_BUTTON_RAISE */
 
     if ((c->button_status[button] == BUTTON_STATE_PRESSED) &&
         clientGetButtonPixmap (c, button, PRESSED))
@@ -5496,7 +5498,7 @@ clientGetButtonState (Client *c, int button, int state)
         return (PRELIGHT);
     }
 
-    return (ACTIVE);
+    return (state);
 }
 
 
