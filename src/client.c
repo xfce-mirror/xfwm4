@@ -5479,12 +5479,10 @@ clientGetButtonState (Client *c, int button, int state)
 
     screen_info = c->screen_info;
 
-#ifdef WIN_BUTTON_RAISE
     if (state == INACTIVE)
     {
         return (state);
     }
-#endif /* WIN_BUTTON_RAISE */
 
     if ((c->button_status[button] == BUTTON_STATE_PRESSED) &&
         clientGetButtonPixmap (c, button, PRESSED))
@@ -5498,7 +5496,7 @@ clientGetButtonState (Client *c, int button, int state)
         return (PRELIGHT);
     }
 
-    return (state);
+    return (ACTIVE);
 }
 
 
