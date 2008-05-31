@@ -289,7 +289,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     PangoRectangle logical_rect;
     int width, x, hoffset, w1, w2, w3, w4, w5, temp;
     int voffset, title_x, title_y;
-    int top_height;
+    int title_height, top_height;
 
     TRACE ("entering frameCreateTitlePixmap");
 
@@ -344,10 +344,18 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         voffset = screen_info->params->title_vertical_offset_inactive;
     }
 
-    title_y = voffset + (frameTop (c) - logical_rect.height) / 2;
-    if (title_y + logical_rect.height > frameTop (c))
+    title_height = screen_info->font_height;
+    if (!title_height)
     {
-        title_y = MAX (0, frameTop (c) - logical_rect.height);
+        /* If for some reason the font height is not known,
+         * use the actual pango layout height.
+         */
+        title_height = logical_rect.height;
+    }
+    title_y = voffset + (frameTop (c) - title_height) / 2;
+    if (title_y + title_height > frameTop (c))
+    {
+        title_y = MAX (0, frameTop (c) - title_height);
     }
 
     if (!xfwmPixmapNone(&screen_info->top[3][ACTIVE]))

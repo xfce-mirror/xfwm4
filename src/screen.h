@@ -83,6 +83,9 @@ struct _ScreenInfo
     GdkGC *black_gc;
     GdkGC *white_gc;
 
+    /* Title font height */
+    int font_height;
+
     /* Screen data */
     Colormap cmap;
     GdkScreen *gscr;

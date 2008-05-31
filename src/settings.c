@@ -994,6 +994,26 @@ getTitleShadow (Settings *rc, const gchar * name)
     return TITLE_SHADOW_NONE;
 }
 
+static int
+getFontHeight (const PangoFontDescription *desc, PangoContext *context)
+{
+    PangoFontMetrics *metrics;
+    PangoLanguage *language;
+    int height;
+
+    g_return_val_if_fail (desc, 0);
+    g_return_val_if_fail (context, 0);
+
+    language = pango_context_get_language (context);
+    metrics = pango_context_get_metrics (context, desc, language);
+    height = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
+                           pango_font_metrics_get_descent (metrics));
+    pango_font_metrics_unref (metrics);
+
+    return height;
+}
+
+
 static void
 loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
@@ -1038,12 +1058,14 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     gchar *theme;
     gchar *font;
     PangoFontDescription *desc;
+    PangoContext *context;
     guint i, j;
 
     widget = myScreenGetGtkWidget (screen_info);
     display_info = screen_info->display_info;
 
     desc = NULL;
+    context = NULL;
 
     rc[0].value  = getUIStyle (widget, "fg",    "selected");
     rc[1].value  = getUIStyle (widget, "fg",    "insensitive");
@@ -1096,13 +1118,16 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         display_info->dbl_click_time = abs (g_value_get_int (&tmp_val));
     }
 
+    screen_info->font_height = 0;
     font = getValue ("title_font", rc);
     if (font && strlen (font))
     {
         desc = pango_font_description_from_string (font);
+        context = getUIPangoContext (widget);
         if (desc)
         {
             gtk_widget_modify_font (widget, desc);
+            screen_info->font_height = getFontHeight (desc, context);
             pango_font_description_free (desc);
         }
     }

@@ -524,4 +524,3 @@ getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
 
     return xfce_inline_icon_at_size (default_icon_data, width, height);
 }
-

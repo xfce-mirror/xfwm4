@@ -144,15 +144,27 @@ static GtkWidget *
 createWindowIcon (Client * c)
 {
     GdkPixbuf *icon_pixbuf;
+    GdkPixbuf *icon_pixbuf_stated;
     GtkWidget *icon;
 
     icon_pixbuf = getAppIcon (c->screen_info->display_info, c->window, WIN_ICON_SIZE, WIN_ICON_SIZE);
+    icon_pixbuf_stated = NULL;
     icon = gtk_image_new ();
     g_object_set_data (G_OBJECT (icon), "client-ptr-val", c);
 
     if (icon_pixbuf)
     {
-        gtk_image_set_from_pixbuf (GTK_IMAGE (icon), icon_pixbuf);
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+        {
+            icon_pixbuf_stated = gdk_pixbuf_copy (icon_pixbuf);
+            gdk_pixbuf_saturate_and_pixelate (icon_pixbuf, icon_pixbuf_stated, 0.5, TRUE);
+            gtk_image_set_from_pixbuf (GTK_IMAGE (icon), icon_pixbuf_stated);
+            g_object_unref(icon_pixbuf_stated);
+        }
+        else
+        {
+            gtk_image_set_from_pixbuf (GTK_IMAGE (icon), icon_pixbuf);
+        }
         g_object_unref(icon_pixbuf);
     }
     else
