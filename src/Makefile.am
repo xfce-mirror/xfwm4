@@ -5,6 +5,8 @@ xfwm4_SOURCES =								\
 	client.h							\
 	compositor.c							\
 	compositor.h							\
+	cycle.c								\
+	cycle.h								\
 	display.c							\
 	display.h							\
 	inline-default-icon.h						\
@@ -28,6 +30,8 @@ xfwm4_SOURCES =								\
 	menu.h								\
 	misc.c								\
 	misc.h								\
+	moveresize.c							\
+	moveresize.h							\
 	mypixmap.c							\
 	mypixmap.h							\
 	mywindow.c							\
@@ -62,6 +66,8 @@ xfwm4_SOURCES =								\
 	workspaces.h							\
 	wireframe.c							\
 	wireframe.h							\
+	xsync.c								\
+	xsync.h								\
 	xpm-color-table.h
 
 xfwm4_CFLAGS =								\

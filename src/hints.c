@@ -16,7 +16,7 @@
 
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2007 Olivier Fourdan
+        xfwm4    - (c) 2002-2008 Olivier Fourdan
 
  */
 
@@ -1311,44 +1311,3 @@ getWindowStartupId (DisplayInfo *display_info, Window w, gchar **startup_id)
     return FALSE;
 }
 #endif
-
-#ifdef HAVE_XSYNC
-gboolean
-getXSyncCounter (DisplayInfo *display_info, Window window, XSyncCounter *counter)
-{
-    long val;
-
-    g_return_val_if_fail (window != None, FALSE);
-    g_return_val_if_fail (counter != NULL, FALSE);
-    TRACE ("entering getXSyncCounter");
-
-    val = 0;
-    if (getHint (display_info, window, NET_WM_SYNC_REQUEST_COUNTER, &val))
-    {
-        *counter = (XSyncCounter) val;
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
-void
-sendXSyncRequest (DisplayInfo *display_info, Window window, XSyncValue value)
-{
-    XClientMessageEvent xev;
-
-    g_return_if_fail (window != None);
-    TRACE ("entering getXSyncCounter");
-
-    xev.type = ClientMessage;
-    xev.window = window;
-    xev.message_type = display_info->atoms[WM_PROTOCOLS];
-    xev.format = 32;
-    xev.data.l[0] = (long) display_info->atoms[NET_WM_SYNC_REQUEST];
-    xev.data.l[1] = (long) myDisplayGetCurrentTime (display_info);
-    xev.data.l[2] = (long) XSyncValueLow32 (value);
-    xev.data.l[3] = (long) XSyncValueHigh32 (value);
-    xev.data.l[4] = (long) 0L;
-    XSendEvent (display_info->dpy, window, FALSE, NoEventMask, (XEvent *) &xev);
-}
-#endif /* HAVE_XSYNC */

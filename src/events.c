@@ -15,7 +15,7 @@
         Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2007 Olivier Fourdan
+        xfwm4    - (c) 2002-2008 Olivier Fourdan
 
  */
 
@@ -46,6 +46,8 @@
 #include "mywindow.h"
 #include "frame.h"
 #include "client.h"
+#include "moveresize.h"
+#include "cycle.h"
 #include "stacking.h"
 #include "transients.h"
 #include "focus.h"

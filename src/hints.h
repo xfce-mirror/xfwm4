@@ -16,7 +16,7 @@
 
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2007 Olivier Fourdan
+        xfwm4    - (c) 2002-2008 Olivier Fourdan
 
  */
 
@@ -287,14 +287,5 @@ gboolean                 getWindowStartupId                     (DisplayInfo *,
                                                                  Window,
                                                                  char **);
 #endif
-
-#ifdef HAVE_XSYNC
-gboolean                 getXSyncCounter                        (DisplayInfo *,
-                                                                 Window,
-                                                                 XSyncCounter *);
-void                     sendXSyncRequest                       (DisplayInfo *,
-                                                                 Window,
-                                                                 XSyncValue);
-#endif /* HAVE_XSYNC */
 
 #endif /* INC_HINTS_H */
