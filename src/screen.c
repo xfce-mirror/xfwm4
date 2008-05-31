@@ -275,6 +275,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
 #endif
 
+    screen_info->font_height = 0;
     screen_info->box_gc = None;
     screen_info->black_gc = NULL;
     screen_info->white_gc = NULL;
