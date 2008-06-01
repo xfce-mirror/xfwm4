@@ -86,10 +86,9 @@ pretty_string (const gchar * s)
 
     if (s)
     {
-        canonical = g_strdup (s);
-        g_strcanon (canonical, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", ' ');
+        canonical = g_ascii_strup (s, -1);
+        g_strcanon (canonical, "[]()0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", ' ');
         g_strstrip (canonical);
-        *canonical = g_ascii_toupper (*canonical);
     }
     else
     {
@@ -129,6 +128,7 @@ static void
 tabwinSetSelected (Tabwin * t, GtkWidget * w)
 {
     Client *c;
+    gchar *classname;
 
     if (t->selected_callback)
     {
@@ -137,7 +137,16 @@ tabwinSetSelected (Tabwin * t, GtkWidget * w)
     t->selected_callback = g_signal_connect (G_OBJECT (w), "expose-event", G_CALLBACK (paint_selected), NULL);
     c = g_object_get_data (G_OBJECT (w), "client-ptr-val");
 
-    tabwinSetLabel (t, c->class.res_class, c->name, c->win_workspace);
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+    {
+        classname = g_strdup_printf ("[ %s ]", c->class.res_class);
+    }
+    else
+    {
+        classname = g_strdup(c->class.res_class);
+    }
+    tabwinSetLabel (t, classname, c->name, c->win_workspace);
+    g_free (classname);
 }
 
 static GtkWidget *
@@ -157,7 +166,7 @@ createWindowIcon (Client * c)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
         {
             icon_pixbuf_stated = gdk_pixbuf_copy (icon_pixbuf);
-            gdk_pixbuf_saturate_and_pixelate (icon_pixbuf, icon_pixbuf_stated, 0.5, TRUE);
+            gdk_pixbuf_saturate_and_pixelate (icon_pixbuf, icon_pixbuf_stated, 0.25, TRUE);
             gtk_image_set_from_pixbuf (GTK_IMAGE (icon), icon_pixbuf_stated);
             g_object_unref(icon_pixbuf_stated);
         }
