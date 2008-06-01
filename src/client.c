@@ -44,6 +44,7 @@
 #include "hints.h"
 #include "icons.h"
 #include "misc.h"
+#include "moveresize.h"
 #include "mypixmap.h"
 #include "mywindow.h"
 #include "netwm.h"
