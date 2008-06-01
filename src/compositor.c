@@ -1090,8 +1090,6 @@ unredirect_win (CWindow *cw)
         cw->redirected = FALSE;
 
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
-        XSync (display_info->dpy, FALSE);
-
         TRACE ("Window 0x%lx unredirected, wins_unredirected is %i", cw->id, screen_info->wins_unredirected);
     }
 }
@@ -3026,7 +3024,6 @@ compositorAddAllWindows (ScreenInfo *screen_info)
         return;
     }
 
-    XSync (display_info->dpy, FALSE);
     myDisplayGrabServer (display_info);
     XQueryTree (display_info->dpy, screen_info->xroot, &w1, &w2, &wins, &count);
 
@@ -3042,7 +3039,6 @@ compositorAddAllWindows (ScreenInfo *screen_info)
         XFree (wins);
     }
     myDisplayUngrabServer (display_info);
-    XSync (display_info->dpy, FALSE);
 #endif /* HAVE_COMPOSITOR */
 }
 
