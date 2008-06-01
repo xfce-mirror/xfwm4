@@ -180,6 +180,10 @@ gboolean                 myScreenGrabPointer                    (ScreenInfo *,
                                                                  unsigned int,
                                                                  Cursor,
                                                                  Time);
+gboolean                 myScreenChangeGrabPointer              (ScreenInfo *,
+                                                                 unsigned int,
+                                                                 Cursor,
+                                                                 Time);
 unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *,
                                                                  Time);
 unsigned int             myScreenUngrabPointer                  (ScreenInfo *,

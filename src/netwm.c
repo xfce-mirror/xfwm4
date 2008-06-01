@@ -597,8 +597,8 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
         }
         else
         {
-            g_warning ("Could not determine the mouse button used");
-            return;
+            /* Fallback */
+            button = Button1;
         }
     }
 
@@ -1126,7 +1126,7 @@ clientSetNetActions (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    Atom atoms[12];
+    Atom atoms[16];
     int i;
 
     g_return_if_fail (c != NULL);
@@ -1137,11 +1137,29 @@ clientSetNetActions (Client * c)
     i = 0;
 
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CLOSE];
-    atoms[i++] = display_info->atoms[NET_WM_ACTION_FULLSCREEN];
-    if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_ABOVE];
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
-        atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_HORZ];
-        atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_VERT];
+        atoms[i++] = display_info->atoms[NET_WM_ACTION_FULLSCREEN];
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+        {
+            atoms[i++] = display_info->atoms[NET_WM_ACTION_MOVE];
+        }
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE) &&
+            !((FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+               && (screen_info->params->borderless_maximize))))
+        {
+            atoms[i++] = display_info->atoms[NET_WM_ACTION_RESIZE];
+        }
+        if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
+        {
+            atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_HORZ];
+            atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_VERT];
+        }
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
+        {
+            atoms[i++] = display_info->atoms[NET_WM_ACTION_SHADE];
+        }
     }
     if (CLIENT_CAN_HIDE_WINDOW (c))
     {
@@ -1151,10 +1169,6 @@ clientSetNetActions (Client * c)
     {
         atoms[i++] = display_info->atoms[NET_WM_ACTION_CHANGE_DESKTOP];
         atoms[i++] = display_info->atoms[NET_WM_ACTION_STICK];
-    }
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
-    {
-        atoms[i++] = display_info->atoms[NET_WM_ACTION_SHADE];
     }
     XChangeProperty (clientGetXDisplay (c), c->window, display_info->atoms[NET_WM_ALLOWED_ACTIONS],
                      XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);

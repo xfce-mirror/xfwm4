@@ -97,6 +97,8 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_SUPPORTED",
         "_NET_SUPPORTING_WM_CHECK",
         "_NET_SYSTEM_TRAY_OPCODE",
+        "_NET_WM_ACTION_ABOVE",
+        "_NET_WM_ACTION_BELOW",
         "_NET_WM_ACTION_CHANGE_DESKTOP",
         "_NET_WM_ACTION_CLOSE",
         "_NET_WM_ACTION_FULLSCREEN",

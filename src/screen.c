@@ -438,6 +438,24 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
     return grab;
 }
 
+gboolean
+myScreenChangeGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, Time time)
+{
+    gboolean grab;
+
+    g_return_val_if_fail (screen_info, FALSE);
+    TRACE ("entering myScreenGrabPointer");
+
+    grab = FALSE;
+    if (screen_info->pointer_grabs > 0)
+    {
+        grab = (XChangeActivePointerGrab (myScreenGetXDisplay (screen_info),
+                                          event_mask, cursor, time) == GrabSuccess);
+    }
+
+    return grab;
+}
+
 unsigned int
 myScreenUngrabKeyboard (ScreenInfo *screen_info, Time time)
 {

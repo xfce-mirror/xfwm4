@@ -2599,6 +2599,12 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 }
                 frameQueueDraw (c, FALSE);
                 break;
+            case MENU_OP_MOVE:
+                clientMove (c, NULL);
+                break;
+            case MENU_OP_RESIZE:
+                clientResize (c, CORNER_BOTTOM_RIGHT, NULL);
+                break;
             case MENU_OP_MINIMIZE_ALL:
                 clientHideAll (c, c->win_workspace);
                 frameQueueDraw (c, FALSE);
@@ -2667,13 +2673,16 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         return;
     }
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     x = px;
     y = py;
 
     c->button_status[MENU_BUTTON] = BUTTON_STATE_PRESSED;
     frameQueueDraw (c, FALSE);
     y = (gdouble) c->y;
-    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES;
+    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MOVE | MENU_OP_RESIZE;
     insensitive = 0;
 
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
@@ -2696,6 +2705,18 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         {
             insensitive |= MENU_OP_MAXIMIZE;
         }
+    }
+
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+    {
+        insensitive |= MENU_OP_MOVE;
+    }
+
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE) ||
+        ((FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+          && (screen_info->params->borderless_maximize))))
+    {
+        insensitive |= MENU_OP_RESIZE;
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
@@ -2773,10 +2794,6 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
     {
         insensitive |= MENU_OP_WORKSPACES;
     }
-
-    /* c is not null here */
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (screen_info->button_handler_id)
     {

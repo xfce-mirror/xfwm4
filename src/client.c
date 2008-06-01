@@ -68,6 +68,8 @@
 #define FRAME_EVENT_MASK \
     SubstructureNotifyMask|\
     SubstructureRedirectMask|\
+    PointerMotionMask|\
+    ButtonMotionMask|\
     FocusChangeMask|\
     EnterWindowMask|\
     PropertyChangeMask
@@ -1685,7 +1687,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
 
     clientAddToList (c);
-    clientSetNetActions (c);
     clientGrabButtons(c);
 
     /* Initialize per client menu button pixmap */
@@ -1763,6 +1764,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         {
             clientRaise (c, None);
             clientInitFocusFlag (c);
+            clientSetNetState (c);
+            clientSetNetActions (c);
         }
     }
     else
@@ -1770,6 +1773,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         clientRaise (c, None);
         setWMState (display_info, c->window, IconicState);
         clientSetNetState (c);
+        clientSetNetActions (c);
     }
 
     if (!grabbed)
@@ -2113,6 +2117,7 @@ clientShowSingle (Client * c, gboolean deiconify)
         setWMState (display_info, c->window, NormalState);
     }
     clientSetNetState (c);
+    clientSetNetActions (c);
 }
 
 void
@@ -2171,6 +2176,7 @@ clientHideSingle (Client * c, gboolean iconify)
         setWMState (display_info, c->window, IconicState);
     }
     clientSetNetState (c);
+    clientSetNetActions (c);
 }
 
 void
@@ -2720,6 +2726,7 @@ clientRemoveMaximizeFlag (Client * c)
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
     frameQueueDraw (c, FALSE);
     clientSetNetState (c);
+    clientSetNetActions (c);
 }
 
 static void
@@ -2889,6 +2896,9 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
                         frameLeft (c),
                         frameRight (c),
                         frameBottom (c));
+
+    /* Maximized windows w/out border cannot be resized, update allowed actions */
+    clientSetNetActions (c);
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED) && (restore_position))
     {
