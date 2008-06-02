@@ -9,45 +9,45 @@ PNG_FILES = 								\
 	bottom-right-inactive.png					\
 	close-active.png						\
 	close-inactive.png						\
-	close-pressed.png						\
 	close-prelight.png						\
+	close-pressed.png						\
 	hide-active.png							\
 	hide-inactive.png						\
-	hide-pressed.png						\
-	hide-pressed.png						\
 	hide-prelight.png						\
+	hide-pressed.png						\
+	hide-pressed.png						\
 	left-active.png							\
 	left-inactive.png						\
 	maximize-active.png						\
 	maximize-inactive.png						\
-	maximize-pressed.png						\
 	maximize-prelight.png						\
+	maximize-pressed.png						\
 	maximize-toggled-active.png					\
 	maximize-toggled-inactive.png					\
-	maximize-toggled-pressed.png					\
 	maximize-toggled-prelight.png					\
+	maximize-toggled-pressed.png					\
 	menu-active.png							\
 	menu-inactive.png						\
-	menu-pressed.png						\
 	menu-prelight.png						\
+	menu-pressed.png						\
 	right-active.png						\
 	right-inactive.png						\
 	shade-active.png						\
 	shade-inactive.png						\
-	shade-pressed.png						\
 	shade-prelight.png						\
+	shade-pressed.png						\
 	shade-toggled-active.png					\
 	shade-toggled-inactive.png					\
-	shade-toggled-pressed.png					\
 	shade-toggled-prelight.png					\
+	shade-toggled-pressed.png					\
 	stick-active.png						\
 	stick-inactive.png						\
-	stick-pressed.png						\
 	stick-prelight.png						\
+	stick-pressed.png						\
 	stick-toggled-active.png					\
 	stick-toggled-inactive.png					\
-	stick-toggled-pressed.png					\
 	stick-toggled-prelight.png					\
+	stick-toggled-pressed.png					\
 	title-1-active.png						\
 	title-1-inactive.png						\
 	title-2-active.png						\
@@ -72,44 +72,44 @@ SVG_FILES = 								\
 	bottom-right-inactive.svg					\
 	close-active.svg						\
 	close-inactive.svg						\
-	close-pressed.svg						\
 	close-prelight.svg						\
+	close-pressed.svg						\
 	hide-active.svg							\
 	hide-inactive.svg						\
-	hide-pressed.svg						\
 	hide-prelight.svg						\
+	hide-pressed.svg						\
 	left-active.svg							\
 	left-inactive.svg						\
 	maximize-active.svg						\
 	maximize-inactive.svg						\
-	maximize-pressed.svg						\
 	maximize-prelight.svg						\
+	maximize-pressed.svg						\
 	maximize-toggled-active.svg					\
 	maximize-toggled-inactive.svg					\
-	maximize-toggled-pressed.svg					\
 	maximize-toggled-prelight.svg					\
+	maximize-toggled-pressed.svg					\
 	menu-active.svg							\
 	menu-inactive.svg						\
-	menu-pressed.svg						\
 	menu-prelight.svg						\
+	menu-pressed.svg						\
 	right-active.svg						\
 	right-inactive.svg						\
 	shade-active.svg						\
 	shade-inactive.svg						\
-	shade-pressed.svg						\
 	shade-prelight.svg						\
+	shade-pressed.svg						\
 	shade-toggled-active.svg					\
 	shade-toggled-inactive.svg					\
-	shade-toggled-pressed.svg					\
 	shade-toggled-prelight.svg					\
+	shade-toggled-pressed.svg					\
 	stick-active.svg						\
 	stick-inactive.svg						\
-	stick-pressed.svg						\
 	stick-prelight.svg						\
+	stick-pressed.svg						\
 	stick-toggled-active.svg					\
 	stick-toggled-inactive.svg					\
-	stick-toggled-pressed.svg					\
 	stick-toggled-prelight.svg					\
+	stick-toggled-pressed.svg					\
 	title-1-active.svg						\
 	title-1-inactive.svg						\
 	title-2-active.svg						\
@@ -134,44 +134,44 @@ XPM_FILES = 								\
 	bottom-right-inactive.xpm					\
 	close-active.xpm						\
 	close-inactive.xpm						\
-	close-pressed.xpm						\
 	close-prelight.xpm						\
+	close-pressed.xpm						\
 	hide-active.xpm							\
 	hide-inactive.xpm						\
-	hide-pressed.xpm						\
 	hide-prelight.xpm						\
+	hide-pressed.xpm						\
 	left-active.xpm							\
 	left-inactive.xpm						\
 	maximize-active.xpm						\
 	maximize-inactive.xpm						\
-	maximize-pressed.xpm						\
 	maximize-prelight.xpm						\
+	maximize-pressed.xpm						\
 	maximize-toggled-active.xpm					\
 	maximize-toggled-inactive.xpm					\
-	maximize-toggled-pressed.xpm					\
 	maximize-toggled-prelight.xpm					\
+	maximize-toggled-pressed.xpm					\
 	menu-active.xpm							\
 	menu-inactive.xpm						\
-	menu-pressed.xpm						\
 	menu-prelight.xpm						\
+	menu-pressed.xpm						\
 	right-active.xpm						\
 	right-inactive.xpm						\
 	shade-active.xpm						\
 	shade-inactive.xpm						\
-	shade-pressed.xpm						\
 	shade-prelight.xpm						\
+	shade-pressed.xpm						\
 	shade-toggled-active.xpm					\
 	shade-toggled-inactive.xpm					\
-	shade-toggled-pressed.xpm					\
 	shade-toggled-prelight.xpm					\
+	shade-toggled-pressed.xpm					\
 	stick-active.xpm						\
 	stick-inactive.xpm						\
-	stick-pressed.xpm						\
 	stick-prelight.xpm						\
+	stick-pressed.xpm						\
 	stick-toggled-active.xpm					\
 	stick-toggled-inactive.xpm					\
-	stick-toggled-pressed.xpm					\
 	stick-toggled-prelight.xpm					\
+	stick-toggled-pressed.xpm					\
 	title-1-active.xpm						\
 	title-1-inactive.xpm						\
 	title-2-active.xpm						\

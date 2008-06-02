@@ -62,6 +62,7 @@
        y2="9"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1,0,0,0.2,0,1)" />
+    </linearGradient>
   </defs>
   <sodipodi:namedview
      id="base"

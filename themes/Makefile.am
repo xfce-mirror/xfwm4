@@ -8,6 +8,7 @@ SUBDIRS =								\
 	default-4.0							\
 	default-4.2							\
 	default-4.4							\
+	kokodi								\
 	moheli								\
 	sassandra							\
 	stoneage							\
