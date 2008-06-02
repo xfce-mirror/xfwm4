@@ -38,6 +38,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <libwnck/libwnck.h>
 #include <libxfce4mcs/mcs-manager.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 
@@ -50,7 +51,7 @@
 #define WS_SEP_S ";"
 
 static McsManager *mcs_manager;
-static NetkScreen *netk_screen = NULL;
+static WnckScreen *wnck_screen = NULL;
 static gulong ws_created_id = 0;
 static gulong ws_destroyed_id = 0;
 
@@ -105,11 +106,11 @@ update_names (McsManager * manager, int n, gboolean save)
         else
         {
             const char *name = NULL;
-            NetkWorkspace *ws = netk_screen_get_workspace (netk_screen, i);
+            WnckWorkspace *ws = wnck_screen_get_workspace (wnck_screen, i);
 
             if (ws)
             {
-                name = netk_workspace_get_name (ws);
+                name = wnck_workspace_get_name (ws);
             }
             if (name && strlen (name))
             {
@@ -140,8 +141,8 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
 
     mcs_manager = mcs_plugin->manager;
 
-    netk_screen = netk_screen_get_default ();
-    netk_screen_force_update (netk_screen);
+    wnck_screen = wnck_screen_get_default ();
+    wnck_screen_force_update (wnck_screen);
 
     ws_create_channel (mcs_manager, CHANNEL1, RCFILE1);
 
@@ -154,7 +155,7 @@ create_workspaces_channel (McsPlugin * mcs_plugin)
     }
 
     /* ws count */
-    ws_count = netk_screen_get_workspace_count (netk_screen);
+    ws_count = wnck_screen_get_workspace_count (wnck_screen);
 
     setting = mcs_manager_setting_lookup (mcs_manager, "Xfwm/WorkspaceCount", CHANNEL1);
 
@@ -535,9 +536,9 @@ add_workspaces_page (GtkDialog * dialog, GtkBox * box)
 
 /* watch for changes by other programs */
 static void
-update_channel (NetkScreen * screen, NetkWorkspace * ws, McsManager * manager)
+update_channel (WnckScreen * screen, WnckWorkspace * ws, McsManager * manager)
 {
-    ws_count = netk_screen_get_workspace_count (screen);
+    ws_count = wnck_screen_get_workspace_count (screen);
 
     set_workspace_count (manager, ws_count, TRUE);
 }
@@ -545,10 +546,10 @@ update_channel (NetkScreen * screen, NetkWorkspace * ws, McsManager * manager)
 static void
 watch_workspaces_hint (McsManager * manager)
 {
-    ws_created_id = g_signal_connect (netk_screen, "workspace-created",
+    ws_created_id = g_signal_connect (wnck_screen, "workspace-created",
         G_CALLBACK (update_channel), manager);
 
-    ws_destroyed_id = g_signal_connect (netk_screen, "workspace-destroyed",
+    ws_destroyed_id = g_signal_connect (wnck_screen, "workspace-destroyed",
         G_CALLBACK (update_channel), manager);
 }
 
@@ -557,8 +558,8 @@ g_module_unload (GModule * module)
 {
     DBG ("Disconecting workspace signal handlers");
 
-    g_signal_handler_disconnect (netk_screen, ws_created_id);
-    g_signal_handler_disconnect (netk_screen, ws_destroyed_id);
+    g_signal_handler_disconnect (wnck_screen, ws_created_id);
+    g_signal_handler_disconnect (wnck_screen, ws_destroyed_id);
 
-    g_object_unref (netk_screen);
+    g_object_unref (wnck_screen);
 }

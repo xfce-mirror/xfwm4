@@ -70,6 +70,8 @@ workspaces_plugin_la_CFLAGS =						\
 	$(LIBXFCE4MCS_MANAGER_CFLAGS)					\
 	$(LIBXFCEGUI4_CFLAGS)						\
 	$(XFCE_MCS_MANAGER_CFLAGS)					\
+	$(LIBWNCK_CFLAGS)						\
+	-DWNCK_I_KNOW_THIS_IS_UNSTABLE					\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"				\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
@@ -78,6 +80,7 @@ workspaces_plugin_la_CFLAGS =						\
 workspaces_plugin_la_LIBADD =						\
 	$(LIBXFCEGUI4_LIBS)						\
 	$(LIBXFCE4MCS_MANAGER_LIBS)					\
+	$(LIBWNCK_LIBS)							\
 	$(LIBS)
 
 if HAVE_CYGWIN

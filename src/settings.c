@@ -1260,9 +1260,13 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
         }
     }
 
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CANCEL], getValue ("cancel_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN], getValue ("down_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT], getValue ("left_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT], getValue ("right_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_UP], getValue ("up_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], getValue ("add_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_ADJACENT_WORKSPACE], getValue ("add_adjacent_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_CANCEL], getValue ("cancel_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_CLOSE_WINDOW], getValue ("close_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], getValue ("cycle_windows_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], getValue ("del_workspace_key", rc));
@@ -1274,27 +1278,21 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseKeyString (dpy, &screen_info->params->keys[KEY_HIDE_WINDOW], getValue ("hide_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], getValue ("left_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getValue ("lower_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE], getValue ("move_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], getValue ("maximize_horiz_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_VERT], getValue ("maximize_vert_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], getValue ("maximize_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN], getValue ("move_window_down_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getValue ("move_window_down_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT], getValue ("move_window_left_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], getValue ("move_window_left_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_NEXT_WORKSPACE], getValue ("move_window_next_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_PREV_WORKSPACE], getValue ("move_window_prev_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT], getValue ("move_window_right_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getValue ("move_window_right_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP], getValue ("move_window_up_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], getValue ("move_window_up_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], getValue ("next_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_POPUP_MENU], getValue ("popup_menu_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], getValue ("prev_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getValue ("raise_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE_DOWN], getValue ("resize_window_down_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE_LEFT], getValue ("resize_window_left_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE_RIGHT], getValue ("resize_window_right_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE_UP], getValue ("resize_window_up_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE], getValue ("resize_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], getValue ("right_workspace_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHADE_WINDOW], getValue ("shade_window_key", rc));
     parseKeyString (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], getValue("show_desktop_key", rc));
@@ -1416,31 +1414,32 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_workspaces", NULL, TRUE},
         /* Keys */
         {"above_key", NULL, TRUE},
-        {"add_workspace_key", NULL, TRUE},
         {"add_adjacent_workspace_key", NULL, TRUE},
+        {"add_workspace_key", NULL, TRUE},
         {"cancel_key", NULL, TRUE},
         {"close_window_key", NULL, TRUE},
         {"cycle_windows_key", NULL, TRUE},
-        {"del_workspace_key", NULL, TRUE},
         {"del_active_workspace_key", NULL, TRUE},
+        {"del_workspace_key", NULL, TRUE},
+        {"down_key", NULL, TRUE},
         {"down_workspace_key", NULL, TRUE},
+        {"fill_horiz_key", NULL, TRUE},
+        {"fill_vert_key", NULL, TRUE},
+        {"fill_window_key", NULL, TRUE},
         {"fullscreen_key", NULL, TRUE},
         {"hide_window_key", NULL, TRUE},
+        {"left_key", NULL, TRUE},
         {"left_workspace_key", NULL, TRUE},
         {"lower_window_key", NULL, TRUE},
         {"maximize_horiz_key", NULL, TRUE},
         {"maximize_vert_key", NULL, TRUE},
         {"maximize_window_key", NULL, TRUE},
-        {"move_window_down_key", NULL, TRUE},
         {"move_window_down_workspace_key", NULL, TRUE},
-        {"move_window_left_key", NULL, TRUE},
         {"move_window_left_workspace_key", NULL, TRUE},
         {"move_window_next_workspace_key", NULL, TRUE},
+        {"move_window_key", NULL, TRUE},
         {"move_window_prev_workspace_key", NULL, TRUE},
-        {"popup_menu_key", NULL, TRUE},
-        {"move_window_right_key", NULL, TRUE},
         {"move_window_right_workspace_key", NULL, TRUE},
-        {"move_window_up_key", NULL, TRUE},
         {"move_window_up_workspace_key", NULL, TRUE},
         {"move_window_workspace_1_key", NULL, TRUE},
         {"move_window_workspace_2_key", NULL, TRUE},
@@ -1455,16 +1454,16 @@ loadSettings (ScreenInfo *screen_info)
         {"move_window_workspace_11_key", NULL, TRUE},
         {"move_window_workspace_12_key", NULL, TRUE},
         {"next_workspace_key", NULL, TRUE},
+        {"popup_menu_key", NULL, TRUE},
         {"prev_workspace_key", NULL, TRUE},
         {"raise_window_key", NULL, TRUE},
-        {"resize_window_down_key", NULL, TRUE},
-        {"resize_window_left_key", NULL, TRUE},
-        {"resize_window_right_key", NULL, TRUE},
-        {"resize_window_up_key", NULL, TRUE},
+        {"resize_window_key", NULL, TRUE},
+        {"right_key", NULL, TRUE},
         {"right_workspace_key", NULL, TRUE},
         {"shade_window_key", NULL, TRUE},
         {"show_desktop_key", NULL, FALSE},
         {"stick_window_key", NULL, TRUE},
+        {"up_key", NULL, TRUE},
         {"up_workspace_key", NULL, TRUE},
         {"workspace_1_key", NULL, TRUE},
         {"workspace_2_key", NULL, TRUE},
@@ -1478,9 +1477,6 @@ loadSettings (ScreenInfo *screen_info)
         {"workspace_10_key", NULL, TRUE},
         {"workspace_11_key", NULL, TRUE},
         {"workspace_12_key", NULL, TRUE},
-        {"fill_horiz_key", NULL, TRUE},
-        {"fill_vert_key", NULL, TRUE},
-        {"fill_window_key", NULL, TRUE},
         {NULL, NULL, FALSE}
     };
 

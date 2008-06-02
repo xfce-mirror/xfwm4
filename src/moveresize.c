@@ -574,19 +574,19 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         {
             key_move = MAX (key_move, screen_info->params->snap_width + 1);
         }
-        if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_LEFT].keycode)
+        if (xevent->xkey.keycode == screen_info->params->keys[KEY_LEFT].keycode)
         {
             clientMovePointer (display_info, -1, 0, key_move);
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_RIGHT].keycode)
+        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_RIGHT].keycode)
         {
             clientMovePointer (display_info, 1, 0, key_move);
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_UP].keycode)
+        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_UP].keycode)
         {
             clientMovePointer (display_info, 0, -1, key_move);
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_DOWN].keycode)
+        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_DOWN].keycode)
         {
             clientMovePointer (display_info, 0, 1, key_move);
         }
@@ -1182,7 +1182,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             key_height_inc = ((int) (10 / key_height_inc)) * key_height_inc;
         }
 
-        if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_UP].keycode)
+        if (xevent->xkey.keycode == screen_info->params->keys[KEY_UP].keycode)
         {
             if ((passdata->handle == CORNER_COUNT + SIDE_BOTTOM) ||
                 (passdata->handle == CORNER_COUNT + SIDE_TOP))
@@ -1194,7 +1194,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 clientChangeHandle (passdata, CORNER_COUNT + SIDE_TOP);
             }
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_DOWN].keycode)
+        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_DOWN].keycode)
         {
             if ((passdata->handle == CORNER_COUNT + SIDE_BOTTOM) ||
                 (passdata->handle == CORNER_COUNT + SIDE_TOP))
@@ -1206,7 +1206,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 clientChangeHandle (passdata, CORNER_COUNT + SIDE_BOTTOM);
             }
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_LEFT].keycode)
+        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_LEFT].keycode)
         {
             if ((passdata->handle == CORNER_COUNT + SIDE_LEFT) ||
                 (passdata->handle == CORNER_COUNT + SIDE_RIGHT))
@@ -1218,7 +1218,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 clientChangeHandle (passdata, CORNER_COUNT + SIDE_LEFT);
             }
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_MOVE_RIGHT].keycode)
+        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_RIGHT].keycode)
         {
             if ((passdata->handle == CORNER_COUNT + SIDE_LEFT) ||
                 (passdata->handle == CORNER_COUNT + SIDE_RIGHT))

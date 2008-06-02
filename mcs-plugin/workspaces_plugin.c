@@ -35,6 +35,7 @@
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <xfce-mcs-manager/manager-plugin.h>

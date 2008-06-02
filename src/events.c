@@ -365,16 +365,10 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 
         switch (key)
         {
-            case KEY_MOVE_UP:
-            case KEY_MOVE_DOWN:
-            case KEY_MOVE_LEFT:
-            case KEY_MOVE_RIGHT:
+            case KEY_MOVE:
                 moveRequest (c, (XEvent *) ev);
                 break;
-            case KEY_RESIZE_UP:
-            case KEY_RESIZE_DOWN:
-            case KEY_RESIZE_LEFT:
-            case KEY_RESIZE_RIGHT:
+            case KEY_RESIZE:
                 if (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
                 {
                     clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
