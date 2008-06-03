@@ -16,8 +16,7 @@
    version="1.0"
    sodipodi:docbase="/themes/default"
    sodipodi:docname="left-active.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   sodipodi:docbase="/home/ofourdan/src/svn/xfwm4/trunk/themes/default">
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -84,9 +83,9 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="border">
+     id="layer1">
     <path
-       style="fill:none;stroke:black;stroke-width:1px;stroke-opacity:0.20"
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.50"
        d="M 0.5,0 L 0.5,24"
        id="path1340" />
   </g>
