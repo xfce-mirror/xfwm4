@@ -889,6 +889,16 @@ clientMove (Client * c, XEvent * ev)
     TRACE ("entering clientDoMove");
     TRACE ("moving client \"%s\" (0x%lx)", c->name, c->window);
 
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        return;
+    }
+
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+    {
+        return;
+    }
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
@@ -1426,9 +1436,23 @@ clientResize (Client * c, int handle, XEvent * ev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        return;
+    }
+
     if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
         && (screen_info->params->borderless_maximize))
     {
+        return;
+    }
+
+    if (!FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
+    {
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+        {
+            clientMove (c, ev);
+        }
         return;
     }
 

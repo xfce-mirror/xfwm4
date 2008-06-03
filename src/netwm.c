@@ -1136,8 +1136,12 @@ clientSetNetActions (Client * c)
     display_info = screen_info->display_info;
     i = 0;
 
+    /* Actions available for all */
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CLOSE];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_ABOVE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_BELOW];
+
+    /* Actions depending on the window type and current status */
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         atoms[i++] = display_info->atoms[NET_WM_ACTION_FULLSCREEN];
@@ -1145,9 +1149,8 @@ clientSetNetActions (Client * c)
         {
             atoms[i++] = display_info->atoms[NET_WM_ACTION_MOVE];
         }
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE) &&
-            !((FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-               && (screen_info->params->borderless_maximize))))
+            if (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE) &&
+                !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             atoms[i++] = display_info->atoms[NET_WM_ACTION_RESIZE];
         }

@@ -274,33 +274,6 @@ check_button_time (XButtonEvent *ev)
 #endif
 
 static void
-moveRequest (Client * c, XEvent * ev)
-{
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-    {
-        clientMove (c, ev);
-    }
-}
-
-static void
-resizeRequest (Client * c, int corner, XEvent * ev)
-{
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-    {
-        if (FLAG_TEST_ALL (c->xfwm_flags,
-                XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
-        {
-            clientResize (c, corner, ev);
-        }
-        else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
-        {
-            clientMove (c, ev);
-        }
-    }
-}
-
-static void
 toggle_show_desktop (ScreenInfo *screen_info)
 {
     screen_info->show_desktop = !screen_info->show_desktop;
@@ -366,13 +339,10 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         switch (key)
         {
             case KEY_MOVE:
-                moveRequest (c, (XEvent *) ev);
+                clientMove (c, (XEvent *) ev);
                 break;
             case KEY_RESIZE:
-                if (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
-                {
-                    clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
-                }
+                clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
                 break;
             case KEY_CYCLE_WINDOWS:
                 clientCycle (c, ev);
@@ -603,7 +573,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         }
         else if (tclick != XFWM_BUTTON_UNDEFINED)
         {
-            moveRequest (c, (XEvent *) ev);
+            clientMove (c, (XEvent *) ev);
         }
     }
     else if ((ev->button == Button1) || (ev->button == Button3))
@@ -617,7 +587,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
             }
             clientRaise (c, None);
         }
-        resizeRequest (c, part, (XEvent *) ev);
+        clientResize (c, part, (XEvent *) ev);
     }
 }
 
@@ -720,7 +690,7 @@ button1Action (Client * c, XButtonEvent * ev)
     if ((tclick == XFWM_BUTTON_DRAG)
         || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
     {
-        moveRequest (c, (XEvent *) ev);
+        clientMove (c, (XEvent *) ev);
     }
     else if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
     {
@@ -783,7 +753,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
 
         if (tclick == XFWM_BUTTON_DRAG)
         {
-            moveRequest (c, (XEvent *) ev);
+            clientMove (c, (XEvent *) ev);
         }
         else if (tclick != XFWM_BUTTON_UNDEFINED)
         {
@@ -2706,9 +2676,8 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         insensitive |= MENU_OP_MOVE;
     }
 
-    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE) ||
-        ((FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-          && (screen_info->params->borderless_maximize))))
+    if (!FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE) ||
+        FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         insensitive |= MENU_OP_RESIZE;
     }
