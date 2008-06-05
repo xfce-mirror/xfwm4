@@ -62,8 +62,23 @@ static Client *last_ungrab   = NULL;
 static Client *delayed_focus = NULL;
 static guint focus_timeout   = 0;
 
+#if 0
+static void
+clientDumpList (ScreenInfo *screen_info)
+{
+    int i;
+    Client *c;
+
+    g_print ("Dumping client list\n");
+    for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
+    {
+        g_print ("    [%i] 0x%lx - %s\n", i, c->window, c->name);
+    }
+}
+#endif
+
 static ClientPair
-clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
+clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, GList * exclude_list)
 {
     ClientPair top_client;
     Client *c;
@@ -83,19 +98,19 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, Client * exclude)
             continue;
         }
 
-        if (!exclude || (c != exclude))
+        if (!g_list_find (exclude_list, (gconstpointer) c))
         {
-            if ((c->win_layer <= layer) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+            if (c->win_layer > layer)
+            {
+                break;
+            }
+            else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
             {
                 if (clientSelectMask (c, 0, WINDOW_REGULAR_FOCUSABLE))
                 {
                     top_client.prefered = c;
                 }
                 top_client.highest = c;
-            }
-            else if (c->win_layer > layer)
-            {
-                break;
             }
         }
     }
@@ -290,7 +305,7 @@ clientGetPrevious (Client * c, int mask)
 }
 
 void
-clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
+clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
 {
     DisplayInfo *display_info;
     ClientPair top_most;
@@ -325,7 +340,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     }
 
     display_info = screen_info->display_info;
-    top_most = clientGetTopMostFocusable (screen_info, look_in_layer, exclude);
+    top_most = clientGetTopMostFocusable (screen_info, look_in_layer, exclude_list);
 #if 0
     if (screen_info->params->click_to_focus)
     {
@@ -362,7 +377,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, Client *exclude)
     if (!(screen_info->params->click_to_focus) &&
         XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
     {
-        new_focus = clientAtPosition (screen_info, rx, ry, exclude);
+        new_focus = clientAtPosition (screen_info, rx, ry, exclude_list);
     }
     if (!new_focus)
     {
@@ -404,7 +419,7 @@ clientSortRing(Client *c)
     ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("Sorting...");
+    TRACE ("entering clientSortRing");
 
     screen_info = c->screen_info;
     if ((screen_info->client_count > 2) && (c != screen_info->clients))
@@ -414,10 +429,40 @@ clientSortRing(Client *c)
 
         c->prev = screen_info->clients->prev;
         c->next = screen_info->clients;
+
         screen_info->clients->prev->next = c;
         screen_info->clients->prev = c;
     }
     screen_info->clients = c;
+}
+
+void
+clientSetLast(Client *c)
+{
+    ScreenInfo *screen_info;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientSetLast");
+
+    screen_info = c->screen_info;
+    if (screen_info->client_count > 2)
+    {
+        if (screen_info->clients == c)
+        {
+            screen_info->clients = screen_info->clients->next;
+        }
+        else
+        {
+            c->prev->next = c->next;
+            c->next->prev = c->prev;
+
+            c->prev = screen_info->clients->prev;
+            c->next = screen_info->clients;
+
+            screen_info->clients->prev->next = c;
+            screen_info->clients->prev = c;
+        }
+    }
 }
 
 void

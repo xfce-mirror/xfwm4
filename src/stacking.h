@@ -45,7 +45,7 @@ Client                  *clientGetBottomMost                    (ScreenInfo *,
 Client                  *clientAtPosition                       (ScreenInfo *,
                                                                  int,
                                                                  int,
-                                                                 Client *);
+                                                                 GList *);
 void                     clientRaise                            (Client *,
                                                                  Window);
 void                     clientLower                            (Client *,

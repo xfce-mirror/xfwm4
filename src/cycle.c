@@ -44,6 +44,8 @@
 #include "stacking.h"
 #include "tabwin.h"
 #include "transients.h"
+#include "wireframe.h"
+#include "workspaces.h"
 #include "event_filter.h"
 
 typedef struct _ClientCycleData ClientCycleData;

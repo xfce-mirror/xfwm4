@@ -43,7 +43,9 @@
 #include "poswin.h"
 #include "screen.h"
 #include "settings.h"
+#include "transients.h"
 #include "event_filter.h"
+#include "workspaces.h"
 #include "xsync.h"
 
 #define MOVERESIZE_EVENT_MASK \

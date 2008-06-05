@@ -250,7 +250,7 @@ clientGetBottomMost (ScreenInfo *screen_info, int layer, Client * exclude)
  * conditions caused by querying the X server
  */
 Client *
-clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
+clientAtPosition (ScreenInfo *screen_info, int x, int y, GList * exclude_list)
 {
     GList *index;
     Client *c, *c2;
@@ -265,7 +265,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, Client * exclude)
             && (frameY (c2) <= y) && (frameY (c2) + frameHeight (c2) >= y))
         {
             if (clientSelectMask (c2, INCLUDE_SKIP_PAGER | INCLUDE_SKIP_TASKBAR, WINDOW_REGULAR_FOCUSABLE)
-                && (c2 != exclude))
+                && !g_list_find (exclude_list, (gconstpointer) c2))
             {
                 c = c2;
                 break;

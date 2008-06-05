@@ -60,6 +60,7 @@
 #include "compositor.h"
 #include "events.h"
 #include "event_filter.h"
+#include "xsync.h"
 
 #ifndef CHECK_BUTTON_TIME
 #define CHECK_BUTTON_TIME 0
@@ -1048,8 +1049,10 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
 static eventFilterStatus
 handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
 {
-    Client *c;
     eventFilterStatus status;
+    GList *list_of_windows;
+    Client *c;
+
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     ScreenInfo *screen_info;
 #endif
@@ -1072,8 +1075,10 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     if (c)
     {
         TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
-        clientPassFocus (c->screen_info, c, c);
+        list_of_windows = clientListTransientOrModal (c);
+        clientPassFocus (c->screen_info, c, list_of_windows);
         clientUnframe (c, FALSE);
+        g_list_free (list_of_windows);
         status = EVENT_FILTER_REMOVE;
     }
 
@@ -1156,6 +1161,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 {
     eventFilterStatus status;
     ScreenInfo *screen_info;
+    GList *list_of_windows;
     Client *c;
 
     TRACE ("entering handleUnmapNotify");
@@ -1206,8 +1212,11 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         if ((ev->event == screen_info->xroot) && (ev->send_event))
         {
             TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
-            clientPassFocus (screen_info, c, c);
+            list_of_windows = clientListTransientOrModal (c);
+            clientPassFocus (screen_info, c, list_of_windows);
             clientUnframe (c, FALSE);
+            g_list_free (list_of_windows);
+
             return status;
         }
 
@@ -1219,10 +1228,11 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         }
         else
         {
-            TRACE ("unmapping \"%s\" as ignore_unmap is %i",
-                 c->name, c->ignore_unmap);
-            clientPassFocus (screen_info, c, c);
+            TRACE ("unmapping \"%s\" as ignore_unmap is %i", c->name, c->ignore_unmap);
+            list_of_windows = clientListTransientOrModal (c);
+            clientPassFocus (screen_info, c, list_of_windows);
             clientUnframe (c, FALSE);
+            g_list_free (list_of_windows);
         }
     }
 
@@ -1745,7 +1755,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     current_focus = clientGetFocus ();
 
     TRACE ("FocusIn on window (0x%lx)", ev->window);
-    if ((c) && (c != current_focus))
+    if ((c) && (c != current_focus) && (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE)))
     {
         TRACE ("Focus transfered to \"%s\" (0x%lx)", c->name, c->window);
 

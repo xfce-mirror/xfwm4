@@ -52,9 +52,10 @@ Client                  *clientGetPrevious                      (Client *,
                                                                  int);
 void                     clientPassFocus                        (ScreenInfo *,
                                                                  Client *,
-                                                                 Client *);
+                                                                 GList *);
 gboolean                 clientAcceptFocus                      (Client *);
 void                     clientSortRing                         (Client *);
+void                     clientSetLast                          (Client *);
 void                     clientUpdateFocus                      (ScreenInfo *,
                                                                  Client *,
                                                                  unsigned short);

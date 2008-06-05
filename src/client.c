@@ -55,8 +55,8 @@
 #include "stacking.h"
 #include "startup_notification.h"
 #include "transients.h"
-#include "wireframe.h"
 #include "workspaces.h"
+#include "xsync.h"
 #include "event_filter.h"
 
 /* Event mask definition */
@@ -2149,7 +2149,7 @@ clientShow (Client * c, gboolean deiconify)
 }
 
 static void
-clientHideSingle (Client * c, gboolean iconify)
+clientHideSingle (Client * c, GList *exclude_list, gboolean iconify)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2160,7 +2160,7 @@ clientHideSingle (Client * c, gboolean iconify)
     display_info = screen_info->display_info;
 
     TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
-    clientPassFocus(c->screen_info, c, c);
+    clientPassFocus(c->screen_info, c, exclude_list);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
@@ -2173,6 +2173,7 @@ clientHideSingle (Client * c, gboolean iconify)
     if (iconify)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
+        clientSetLast (c);
         setWMState (display_info, c->window, IconicState);
     }
     clientSetNetState (c);
@@ -2218,7 +2219,7 @@ clientHide (Client * c, int ws, gboolean iconify)
         {
             continue;
         }
-        clientHideSingle (c2, iconify);
+        clientHideSingle (c2, list_of_windows, iconify);
     }
     g_list_free (list_of_windows);
 
