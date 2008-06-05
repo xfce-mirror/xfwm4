@@ -36,15 +36,15 @@
       <stop
          id="stop5875"
          offset="0"
-         style="stop-color:white;stop-opacity:1;" />
+         style="stop-color:#ffffff;stop-opacity:1;" />
       <stop
          id="stop5877"
          offset="0.5"
-         style="stop-color:white;stop-opacity:0.90;" />
+         style="stop-color:#ffffff;stop-opacity:0.95;" />
       <stop
          id="stop5879"
          offset="1"
-         style="stop-color:white;stop-opacity:0;" />
+         style="stop-color:#ffffff;stop-opacity:0;" />
     </linearGradient>
     <linearGradient
        id="linearGradient5847">
@@ -187,7 +187,7 @@
      id="layer3"
      inkscape:label="hilight">
     <path
-       style="fill:url(#linearGradient6962);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:url(#linearGradient6962);fill-opacity:0.75;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linejoin:miter;stroke-opacity:1"
        d="M 0,1 L 18,1 C 18,1 18,4 18,4 L 0,4 L 0,3 z "
        id="path6061" />
     <rect
