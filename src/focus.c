@@ -595,9 +595,15 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, Time timestamp, unsigned sho
             }
             clientUpdateOpacity (screen_info, c);
         }
-        else if (!client_focus)
+        else
         {
-            /* Hack to prevent loosing focus when all remaining windows won't accept focus, see bug #1853 */
+            /*
+             * If we are relying only on the client application to take focus, we need to set the focus
+             * explicitely on our own fallback window otherwise there is a race condition between the
+             * application and the window manager. If the application does not take focus before the
+             * the previously focused window is unmapped (when iconifying or closing for example), the focus
+             * will be reverted to the root window and focus transition will fail.
+             */
             XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
         }
 
