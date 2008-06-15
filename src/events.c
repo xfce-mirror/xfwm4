@@ -1239,64 +1239,10 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
     return status;
 }
 
-static gboolean
-update_screen_idle_cb (gpointer data)
-{
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
-
-    TRACE ("entering update_screen_idle_cb");
-
-    screen_info = (ScreenInfo *) data;
-    g_return_val_if_fail (screen_info, FALSE);
-
-    display_info = screen_info->display_info;
-    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
-                    screen_info->width, screen_info->height, screen_info->margins);
-    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
-    clientScreenResize (screen_info);
-    compositorUpdateScreenSize (screen_info);
-
-    return FALSE;
-}
-
 static eventFilterStatus
 handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
 {
-    ScreenInfo *screen_info;
-
     TRACE ("entering handleConfigureNotify");
-
-    screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
-    if (!screen_info)
-    {
-        return EVENT_FILTER_PASS;
-    }
-
-    if (display_info->have_xrandr)
-    {
-#ifdef HAVE_RANDR
-        XRRUpdateConfiguration ((XEvent *) ev);
-#endif
-    }
-    else
-    {
-        TRACE ("ConfigureNotify on the screen_info->xroot win (0x%lx)", ev->window);
-        screen_info->xscreen->width  = ev->width;
-        screen_info->xscreen->height = ev->height;
-    }
-
-    screen_info->width = WidthOfScreen (screen_info->xscreen);
-    screen_info->height = HeightOfScreen (screen_info->xscreen);
-
-    /*
-       We need to use an idle function to update our screen layout to give gdk the
-       time to update its internal structures for Xinerama and monitor size,
-       otherwise the functions gdk_screen_get_monitor_geometry () don't return
-       accurate values...
-     */
-    g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, update_screen_idle_cb, screen_info, NULL);
-
     return EVENT_FILTER_PASS;
 }
 
@@ -2872,6 +2818,40 @@ client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data)
     return (FALSE);
 }
 
+static void
+size_changed_cb(GdkScreen *gscreen, gpointer data)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    TRACE ("entering size_changed_cb");
+
+    screen_info = (ScreenInfo *) data;
+    g_return_if_fail (screen_info);
+
+    display_info = screen_info->display_info;
+    screen_info->width = WidthOfScreen (screen_info->xscreen);
+    screen_info->height = HeightOfScreen (screen_info->xscreen);
+    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
+                    screen_info->width, screen_info->height, screen_info->margins);
+    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
+    clientScreenResize (screen_info);
+    compositorUpdateScreenSize (screen_info);
+}
+
+static void
+monitors_changed_cb(GdkScreen *gscreen, gpointer data)
+{
+    TRACE ("entering monitors_changed_cb");
+
+    /*
+     * From the window manager point of view,
+     * a XRand 1.2 monitor change is similar to
+     * a screen size change.
+     */
+    size_changed_cb(gscreen, data);
+}
+
 void
 initGtkCallbacks (ScreenInfo *screen_info)
 {
@@ -2882,6 +2862,17 @@ initGtkCallbacks (ScreenInfo *screen_info)
                           "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
     g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
                       GTK_SIGNAL_FUNC (client_event_cb), (gpointer) (screen_info->display_info));
+    g_signal_connect(G_OBJECT(screen_info->gscr), "size-changed",
+                     G_CALLBACK(size_changed_cb),
+                     (gpointer) (screen_info));
+    if(gtk_major_version > 2 || (gtk_major_version == 2 && gtk_minor_version >= 13))
+    {
+        TRACE ("connect \"monitors-changed\" cb");
+        g_signal_connect(G_OBJECT(screen_info->gscr), "monitors-changed",
+                         G_CALLBACK(monitors_changed_cb),
+                         (gpointer) (screen_info));
+    }
+
     settings = gtk_settings_get_default ();
     if (settings)
     {
@@ -2893,3 +2884,4 @@ initGtkCallbacks (ScreenInfo *screen_info)
             G_CALLBACK (dbl_click_time_cb), (gpointer) (screen_info->display_info));
     }
 }
+
