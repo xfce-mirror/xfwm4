@@ -736,15 +736,7 @@ clientUpdateFullscreenState (Client * c)
     clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        /*
-           For some reason, the configure can generate EnterNotify events
-           on lower windows, causing a nasty race cond with apps trying to
-           grab focus in focus follow mouse mode. Grab the pointer to
-           avoid these effects
-         */
-        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
-        myScreenUngrabPointer (c->screen_info, myDisplayGetCurrentTime (display_info));
     }
     else
     {

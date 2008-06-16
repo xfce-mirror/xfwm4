@@ -278,8 +278,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
         return;
     }
 
-    myScreenGrabPointer (screen_info, EnterWindowMask, None, timestamp);
-
     screen_info->previous_ws = screen_info->current_ws;
     screen_info->current_ws = new_ws;
 
@@ -405,8 +403,6 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
             clientFocusTop (screen_info, WIN_LAYER_NORMAL, timestamp);
         }
     }
-
-    myScreenUngrabPointer (screen_info, timestamp);
 }
 
 void

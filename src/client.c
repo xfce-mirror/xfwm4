@@ -197,8 +197,6 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
     g_return_if_fail (screen_info != NULL);
 
     TRACE ("entering clientRedrawAllFrames");
-    myScreenGrabPointer (screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (screen_info->display_info));
-
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
         unsigned long configure_flags = 0L;
@@ -260,7 +258,6 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
 
     }
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (screen_info->display_info));
 }
 
 void
@@ -2903,15 +2900,7 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED) && (restore_position))
     {
-        /*
-           For some reason, the configure can generate EnterNotify events
-           on lower windows, causing a nasty race cond with apps trying to
-           grab focus in focus follow mouse mode. Grab the pointer to
-           avoid these effects
-         */
-        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
-        myScreenUngrabPointer (c->screen_info, myDisplayGetCurrentTime (display_info));
     }
 }
 
@@ -3129,15 +3118,7 @@ clientFill (Client * c, int fill_type)
     TRACE ("Fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        /*
-           For some reason, the configure can generate EnterNotify events
-           on lower windows, causing a nasty race cond with apps trying to
-           grab focus in focus follow mouse mode. Grab the pointer to
-           avoid these effects
-         */
-        myScreenGrabPointer (c->screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (display_info));
         clientConfigure(c, &wc, mask, NO_CFG_FLAG);
-        myScreenUngrabPointer (c->screen_info, myDisplayGetCurrentTime (display_info));
     }
 }
 
@@ -3289,7 +3270,6 @@ clientScreenResize(ScreenInfo *screen_info)
         }
     }
 
-    myScreenGrabPointer (screen_info, EnterWindowMask, None, myDisplayGetCurrentTime (screen_info->display_info));
     for (index = list_of_windows; index; index = g_list_next (index))
     {
         unsigned long maximization_flags = 0L;
@@ -3326,7 +3306,6 @@ clientScreenResize(ScreenInfo *screen_info)
              clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST);
         }
     }
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (screen_info->display_info));
 
     g_list_free (list_of_windows);
 }
