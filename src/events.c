@@ -1432,26 +1432,8 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
     if (c)
     {
         screen_info = c->screen_info;
-        if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
-        {
-            TRACE ("EnterNotify window is \"%s\"", c->name);
-            if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
-            {
-                if(screen_info->params->focus_delay)
-                {
-                    clientClearDelayedFocus ();
-                    clientAddDelayedFocus (c);
-                }
-                else
-                {
-                    clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
-                }
-            }
-            else
-            {
-                clientClearDelayedFocus ();
-            }
-        }
+
+        TRACE ("EnterNotify window is \"%s\"", c->name);
         if (c == clientGetFocus ())
         {
             for (b = 0; b < BUTTON_COUNT; b++)
@@ -1470,6 +1452,26 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
                 frameQueueDraw (c, FALSE);
             }
         }
+        else if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
+        {
+            if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
+            {
+                if(screen_info->params->focus_delay)
+                {
+                    clientClearDelayedFocus ();
+                    clientAddDelayedFocus (c);
+                }
+                else
+                {
+                    clientSetFocus (c->screen_info, c, ev->time, NO_FOCUS_FLAG);
+                }
+            }
+            else
+            {
+                clientClearDelayedFocus ();
+            }
+        }
+
         /* No need to process the event any further */
         return EVENT_FILTER_REMOVE;
     }
