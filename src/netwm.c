@@ -1353,3 +1353,23 @@ clientUpdateBelowState (Client * c)
     clientSetLayer (c, layer);
 }
 
+void
+clientSetNetActiveWindow (ScreenInfo *screen_info, Client *c, Time timestamp)
+{
+    DisplayInfo *display_info;
+    unsigned long data[2];
+
+    g_return_if_fail (screen_info != NULL);
+    TRACE ("entering clientSetNetActiveWindow");
+
+    display_info = screen_info->display_info;
+    data[0] = (unsigned long) None;
+    data[1] = (unsigned long) timestamp;
+    if (c)
+    {
+        data[0] = (unsigned long) c->window;
+    }
+    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
+                     PropModeReplace, (unsigned char *) data, 2);
+}
+

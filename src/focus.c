@@ -465,12 +465,30 @@ clientSetLast(Client *c)
     }
 }
 
+static void
+clientFocusNone (ScreenInfo *screen_info, Client *previous, Time timestamp)
+{
+    TRACE ("setting focus to none");
+
+    pending_focus = NULL;
+
+    if (previous)
+    {
+        frameQueueDraw (previous, FALSE);
+        if (previous->screen_info != screen_info)
+        {
+            clientSetNetActiveWindow (previous->screen_info, NULL, timestamp);
+        }
+    }
+    clientSetNetActiveWindow (screen_info, NULL, timestamp);
+    XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
+}
+
 void
 clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 {
     DisplayInfo *display_info;
     Client *c2;
-    unsigned long data[2];
 
     TRACE ("entering clientUpdateFocus");
 
@@ -513,29 +531,19 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             clientSetNetState (c);
         }
-        data[0] = c->window;
         clientAdjustFullscreenLayer (c, TRUE);
         frameQueueDraw (c, FALSE);
-    }
-    else
-    {
-        data[0] = None;
     }
     if (c2)
     {
         if (c)
         {
             clientAdjustFullscreenLayer (c2, FALSE);
-            /* clientRaise (c, None); */
         }
         frameQueueDraw (c2, FALSE);
     }
-    data[1] = None;
-    XChangeProperty (display_info->dpy, screen_info->xroot,
-                     display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
-                     PropModeReplace, (unsigned char *) data, 2);
+    clientSetNetActiveWindow (screen_info, c, 0);
     clientClearDelayedFocus ();
-    clientUpdateOpacity (screen_info, c);
 }
 
 void
@@ -604,7 +612,7 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, Time timestamp, unsigned sho
              * the previously focused window is unmapped (when iconifying or closing for example), the focus
              * will be reverted to the root window and focus transition will fail.
              */
-            XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
+            clientFocusNone (screen_info, c2, timestamp);
         }
 
         if (FLAG_TEST(c->wm_flags, WM_FLAG_TAKEFOCUS))
@@ -615,23 +623,10 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, Time timestamp, unsigned sho
     }
     else
     {
-        unsigned long data[2];
-
         TRACE ("setting focus to none");
 
-        data[0] = data[1] = None;
         client_focus = NULL;
-        pending_focus = NULL;
-
-        if (c2)
-        {
-            frameQueueDraw (c2, FALSE);
-            XChangeProperty (clientGetXDisplay (c2), c2->screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
-                             PropModeReplace, (unsigned char *) data, 2);
-        }
-        XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
-                         PropModeReplace, (unsigned char *) data, 2);
-        XSetInputFocus (myScreenGetXDisplay (screen_info), screen_info->xfwm4_win, RevertToPointerRoot, timestamp);
+        clientFocusNone (screen_info, c2, timestamp);
         clientClearDelayedFocus ();
         clientUpdateOpacity (screen_info, c);
     }

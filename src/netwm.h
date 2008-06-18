@@ -51,5 +51,8 @@ void                     clientSetNetActions                    (Client *);
 void                     clientWindowType                       (Client *);
 void                     clientUpdateAboveState                 (Client *);
 void                     clientUpdateBelowState                 (Client *);
+void                     clientSetNetActiveWindow               (ScreenInfo *,
+                                                                 Client *,
+                                                                 Time);
 
 #endif /* INC_NETWM_H */

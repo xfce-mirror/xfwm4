@@ -1434,25 +1434,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         screen_info = c->screen_info;
 
         TRACE ("EnterNotify window is \"%s\"", c->name);
-        if (c == clientGetFocus ())
-        {
-            for (b = 0; b < BUTTON_COUNT; b++)
-            {
-                if (MYWINDOW_XWINDOW(c->buttons[b]) == ev->window)
-                {
-                    if (!xfwmPixmapNone(clientGetButtonPixmap(c, b, PRELIGHT)))
-                    {
-                        c->button_status[b] = BUTTON_STATE_PRELIGHT;
-                        need_redraw = TRUE;
-                    }
-                }
-            }
-            if (need_redraw)
-            {
-                frameQueueDraw (c, FALSE);
-            }
-        }
-        else if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
+        if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
         {
             if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
             {
@@ -1469,6 +1451,24 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
             else
             {
                 clientClearDelayedFocus ();
+            }
+        }
+        if (c == clientGetFocus ())
+        {
+            for (b = 0; b < BUTTON_COUNT; b++)
+            {
+                if (MYWINDOW_XWINDOW(c->buttons[b]) == ev->window)
+                {
+                    if (!xfwmPixmapNone(clientGetButtonPixmap(c, b, PRELIGHT)))
+                    {
+                        c->button_status[b] = BUTTON_STATE_PRELIGHT;
+                        need_redraw = TRUE;
+                    }
+                }
+            }
+            if (need_redraw)
+            {
+                frameQueueDraw (c, FALSE);
             }
         }
 
