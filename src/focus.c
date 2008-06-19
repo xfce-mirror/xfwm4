@@ -533,6 +533,8 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         }
         clientAdjustFullscreenLayer (c, TRUE);
         frameQueueDraw (c, FALSE);
+        clientUpdateOpacity (c);
+
     }
     if (c2)
     {
@@ -541,6 +543,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
             clientAdjustFullscreenLayer (c2, FALSE);
         }
         frameQueueDraw (c2, FALSE);
+        clientUpdateOpacity (c2);
     }
     clientSetNetActiveWindow (screen_info, c, 0);
     clientClearDelayedFocus ();
@@ -601,7 +604,6 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, Time timestamp, unsigned sho
             {
                 XSetInputFocus (myScreenGetXDisplay (screen_info), c->window, RevertToPointerRoot, timestamp);
             }
-            clientUpdateOpacity (screen_info, c);
         }
         else
         {
@@ -628,7 +630,6 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, Time timestamp, unsigned sho
         client_focus = NULL;
         clientFocusNone (screen_info, c2, timestamp);
         clientClearDelayedFocus ();
-        clientUpdateOpacity (screen_info, c);
     }
 }
 

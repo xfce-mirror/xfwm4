@@ -428,7 +428,7 @@ notify_cb (const char *name, const char *channel_name, McsAction action, McsSett
                     {
                         screen_info->params->inactive_opacity = setting->data.v_int;
                         reloadScreenSettings (screen_info, UPDATE_FRAME);
-                        clientUpdateOpacity (screen_info, clientGetFocus ());
+                        clientUpdateAllOpacity (screen_info);
                     }
                     else if (!strcmp (name, "Xfwm/MoveOpacity"))
                     {

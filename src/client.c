@@ -3123,11 +3123,37 @@ clientFill (Client * c, int fill_type)
 }
 
 void
-clientUpdateOpacity (ScreenInfo *screen_info, Client *focus)
+clientUpdateOpacity (Client *c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *focused;
+    gboolean opaque;
+
+    g_return_if_fail (c != NULL);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
+    focused = clientGetFocus ();
+    opaque = (FLAG_TEST(c->type, WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DONT_FOCUS)
+              || (focused == c));
+
+    clientSetOpacity (c, c->opacity, OPACITY_INACTIVE, opaque ? 0 : OPACITY_INACTIVE);
+}
+
+void
+clientUpdateAllOpacity (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     Client *c;
     int i;
+
+    g_return_if_fail (screen_info != NULL);
 
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
@@ -3137,12 +3163,7 @@ clientUpdateOpacity (ScreenInfo *screen_info, Client *focus)
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, ++i)
     {
-        gboolean o = FLAG_TEST(c->type, WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DONT_FOCUS)
-                     || (focus == c)
-                     || (focus && ((focus->transient_for == c->window) || (focus->window == c->transient_for)))
-                     || (focus && (clientIsModalFor (c, focus) || clientIsModalFor (focus, c)));
-
-        clientSetOpacity (c, c->opacity, OPACITY_INACTIVE, o ? 0 : OPACITY_INACTIVE);
+        clientUpdateOpacity (c);
     }
 }
 

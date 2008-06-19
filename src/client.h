@@ -392,8 +392,8 @@ void                     clientToggleMaximized                  (Client *,
                                                                  gboolean);
 void                     clientFill                             (Client *,
                                                                  int);
-void                     clientUpdateOpacity                    (ScreenInfo *,
-                                                                 Client *);
+void                     clientUpdateOpacity                    (Client *);
+void                     clientUpdateAllOpacity                 (ScreenInfo *);
 void                     clientSetOpacity                       (Client *,
                                                                  guint,
                                                                  guint, guint);
