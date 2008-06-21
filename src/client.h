@@ -384,8 +384,9 @@ void                     clientUnstick                          (Client *,
 void                     clientToggleSticky                     (Client *,
                                                                  gboolean);
 void                     clientToggleFullscreen                 (Client *);
-void                     clientToggleAbove                      (Client *);
-void                     clientToggleBelow                      (Client *);
+void                     clientToggleLayerAbove                 (Client *);
+void                     clientToggleLayerBelow                 (Client *);
+void                     clientSetLayerNormal                   (Client *);
 void                     clientRemoveMaximizeFlag               (Client *);
 void                     clientToggleMaximized                  (Client *,
                                                                  int,

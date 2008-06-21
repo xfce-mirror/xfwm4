@@ -49,8 +49,7 @@ gboolean                 clientValidateNetStrut                 (Client *);
 gboolean                 clientGetNetStruts                     (Client *);
 void                     clientSetNetActions                    (Client *);
 void                     clientWindowType                       (Client *);
-void                     clientUpdateAboveState                 (Client *);
-void                     clientUpdateBelowState                 (Client *);
+void                     clientUpdateLayerState                 (Client *);
 void                     clientSetNetActiveWindow               (ScreenInfo *,
                                                                  Client *,
                                                                  Time);

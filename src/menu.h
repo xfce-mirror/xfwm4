@@ -54,9 +54,12 @@ typedef enum
     MENU_OP_QUIT         = 1 << 14,
     MENU_OP_RESTART      = 1 << 15,
     MENU_OP_ABOVE        = 1 << 16,
-    MENU_OP_NORMAL       = 1 << 17,
-    MENU_OP_CONTEXT_HELP = 1 << 18,
-    MENU_OP_OTHER        = 1 << 19
+    MENU_OP_BELOW        = 1 << 17,
+    MENU_OP_NORMAL       = 1 << 18,
+    MENU_OP_FULLSCREEN   = 1 << 19,
+    MENU_OP_UNFULLSCREEN = 1 << 20,
+    MENU_OP_CONTEXT_HELP = 1 << 21,
+    MENU_OP_OTHER        = 1 << 22
 }
 MenuOp;
 

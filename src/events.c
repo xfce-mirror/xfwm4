@@ -383,7 +383,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 clientLower (c, None);
                 break;
             case KEY_TOGGLE_ABOVE:
-                clientToggleAbove (c);
+                clientToggleLayerAbove (c);
                 break;
             case KEY_TOGGLE_FULLSCREEN:
                 clientToggleFullscreen (c);
@@ -2519,7 +2519,6 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 {
                     clientHide (c, c->win_workspace, TRUE);
                 }
-                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_MOVE:
                 clientMove (c, NULL);
@@ -2529,7 +2528,6 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 break;
             case MENU_OP_MINIMIZE_ALL:
                 clientHideAll (c, c->win_workspace);
-                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_UNMINIMIZE:
                 clientShow (c, TRUE);
@@ -2546,20 +2544,26 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 break;
             case MENU_OP_WORKSPACES:
                 clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
-                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_DELETE:
-                frameQueueDraw (c, FALSE);
                 clientClose (c);
                 break;
             case MENU_OP_CONTEXT_HELP:
                 clientEnterContextMenuState (c);
-                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_ABOVE:
+                clientToggleLayerAbove (c);
+                break;
             case MENU_OP_NORMAL:
-                clientToggleAbove (c);
-                /* Fall thru */
+                clientSetLayerNormal (c);
+                break;
+            case MENU_OP_BELOW:
+                clientToggleLayerBelow (c);
+                break;
+            case MENU_OP_FULLSCREEN:
+            case MENU_OP_UNFULLSCREEN:
+                clientToggleFullscreen (c);
+                break;
             default:
                 frameQueueDraw (c, FALSE);
                 break;
@@ -2590,7 +2594,12 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
 
     TRACE ("entering show_window_menu");
 
-    if (!c || ((button != Button1) && (button != Button3)))
+    if ((button != Button1) && (button != Button3))
+    {
+        return;
+    }
+
+    if (!c || !FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_VISIBLE))
     {
         return;
     }
@@ -2607,26 +2616,13 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
     ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MOVE | MENU_OP_RESIZE;
     insensitive = 0;
 
-    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
-    {
-        insensitive |= MENU_OP_DELETE;
-    }
-
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         ops |= MENU_OP_UNMAXIMIZE;
-        if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
-        {
-            insensitive |= MENU_OP_UNMAXIMIZE;
-        }
     }
     else
     {
         ops |= MENU_OP_MAXIMIZE;
-        if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
-        {
-            insensitive |= MENU_OP_MAXIMIZE;
-        }
     }
 
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
@@ -2634,27 +2630,13 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         insensitive |= MENU_OP_MOVE;
     }
 
-    if (!FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE) ||
-        FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
-    {
-        insensitive |= MENU_OP_RESIZE;
-    }
-
     if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
         ops |= MENU_OP_UNMINIMIZE;
-        if (!CLIENT_CAN_HIDE_WINDOW (c))
-        {
-            insensitive |= MENU_OP_UNMINIMIZE;
-        }
     }
     else
     {
         ops |= MENU_OP_MINIMIZE;
-        if (!CLIENT_CAN_HIDE_WINDOW (c))
-        {
-            insensitive |= MENU_OP_MINIMIZE;
-        }
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
@@ -2669,18 +2651,79 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         ops |= MENU_OP_UNSTICK;
-        if (!CLIENT_CAN_STICK_WINDOW(c))
-        {
-            insensitive |= MENU_OP_UNSTICK;
-        }
     }
     else
     {
         ops |= MENU_OP_STICK;
-        if (!CLIENT_CAN_STICK_WINDOW(c))
-        {
-            insensitive |= MENU_OP_STICK;
-        }
+    }
+
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
+    {
+        insensitive |= MENU_OP_DELETE;
+    }
+
+    if (!CLIENT_CAN_STICK_WINDOW(c))
+    {
+        insensitive |= MENU_OP_STICK | MENU_OP_UNSTICK;
+    }
+
+    if (!CLIENT_CAN_HIDE_WINDOW (c))
+    {
+        insensitive |= MENU_OP_MINIMIZE;
+    }
+
+    if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
+    {
+        insensitive |= MENU_OP_MAXIMIZE;
+    }
+
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+    {
+        insensitive |= MENU_OP_MOVE;
+    }
+
+    if (!FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE) ||
+        FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    {
+        insensitive |= MENU_OP_RESIZE;
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        insensitive |= MENU_OP_SHADE | MENU_OP_MOVE | MENU_OP_RESIZE | MENU_OP_MAXIMIZE | MENU_OP_UNMAXIMIZE;
+    }
+
+    if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        ops |= MENU_OP_UNFULLSCREEN;
+    }
+    else
+    {
+        ops |= MENU_OP_FULLSCREEN;
+    }
+
+    if (clientIsTransientOrModal (c) || (c->type != WINDOW_NORMAL))
+    {
+        insensitive |= MENU_OP_FULLSCREEN | MENU_OP_UNFULLSCREEN;
+    }
+
+    if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE))
+    {
+        ops |= MENU_OP_NORMAL | MENU_OP_BELOW;
+    }
+    else if (FLAG_TEST(c->flags, CLIENT_FLAG_BELOW))
+    {
+        ops |= MENU_OP_NORMAL | MENU_OP_ABOVE;
+    }
+    else
+    {
+        ops |= MENU_OP_ABOVE | MENU_OP_BELOW;
+    }
+
+    if (clientIsValidTransientOrModal (c) ||
+        FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        insensitive |= MENU_OP_NORMAL | MENU_OP_ABOVE | MENU_OP_BELOW;
     }
 
     /* KDE extension */
@@ -2688,25 +2731,6 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
     if (FLAG_TEST (c->wm_flags, WM_FLAG_CONTEXT_HELP))
     {
         ops |= MENU_OP_CONTEXT_HELP;
-    }
-
-    if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE))
-    {
-        ops |= MENU_OP_NORMAL;
-        if (clientIsValidTransientOrModal (c) ||
-            FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
-        {
-            insensitive |= MENU_OP_NORMAL;
-        }
-    }
-    else
-    {
-        ops |= MENU_OP_ABOVE;
-        if (clientIsValidTransientOrModal (c) ||
-            FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
-        {
-            insensitive |= MENU_OP_ABOVE;
-        }
     }
 
     if (clientIsValidTransientOrModal (c)

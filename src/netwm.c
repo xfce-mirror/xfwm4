@@ -448,17 +448,17 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
-                clientUpdateAboveState (c);
+                clientUpdateLayerState (c);
             }
             else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);
-                clientUpdateAboveState (c);
+                clientUpdateLayerState (c);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
                 FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
-                clientUpdateAboveState (c);
+                clientUpdateLayerState (c);
             }
         }
     }
@@ -471,17 +471,17 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
-                clientUpdateBelowState (c);
+                clientUpdateLayerState (c);
             }
             else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
-                clientUpdateBelowState (c);
+                clientUpdateLayerState (c);
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
                 FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
-                clientUpdateBelowState (c);
+                clientUpdateLayerState (c);
             }
         }
     }
@@ -1312,36 +1312,19 @@ clientWindowType (Client * c)
 }
 
 void
-clientUpdateAboveState (Client * c)
+clientUpdateLayerState (Client * c)
 {
     int layer;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateAboveState");
-    TRACE ("Update above state for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("entering clientUpdateLayerState");
+    TRACE ("Update layer state for client \"%s\" (0x%lx)", c->name, c->window);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
         layer = WIN_LAYER_ABOVE_DOCK;
     }
-    else
-    {
-        layer = c->initial_layer;
-    }
-    clientSetNetState (c);
-    clientSetLayer (c, layer);
-}
-
-void
-clientUpdateBelowState (Client * c)
-{
-    int layer;
-
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateBelowState");
-    TRACE ("Update below state for client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
         layer = WIN_LAYER_BELOW;
     }

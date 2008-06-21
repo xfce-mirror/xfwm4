@@ -1144,12 +1144,12 @@ clientApplyInitialState (Client * c)
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
     {
         TRACE ("Applying client's initial state: above");
-        clientUpdateAboveState (c);
+        clientUpdateLayerState (c);
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_BELOW, CLIENT_FLAG_ABOVE))
     {
         TRACE ("Applying client's initial state: below");
-        clientUpdateBelowState (c);
+        clientUpdateLayerState (c);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) &&
         FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
@@ -2678,37 +2678,50 @@ void clientToggleFullscreen (Client * c)
         }
     }
 
-    if (!clientIsValidTransientOrModal (c) && (c->type == WINDOW_NORMAL))
+    if (!clientIsTransientOrModal (c) && (c->type == WINDOW_NORMAL))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
         clientUpdateFullscreenState (c);
     }
 }
 
-void clientToggleAbove (Client * c)
+void clientToggleLayerAbove (Client * c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleAbove");
-    TRACE ("toggle above client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientIsValidTransientOrModal (c) &&
-        !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_FULLSCREEN))
+    if (!clientIsTransientOrModal (c) &&
+        !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
+        FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
-        clientUpdateAboveState (c);
+        clientUpdateLayerState (c);
     }
 }
 
-void clientToggleBelow (Client * c)
+void clientToggleLayerBelow (Client * c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleBelow");
-    TRACE ("toggle below client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+    if (!clientIsTransientOrModal (c) &&
+        !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
+        FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
-        clientUpdateAboveState (c);
+        clientUpdateLayerState (c);
+    }
+}
+
+void clientSetLayerNormal (Client * c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientSetLayerNormal");
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW);
+        clientUpdateLayerState (c);
     }
 }
 
