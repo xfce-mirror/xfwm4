@@ -348,7 +348,9 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         "prev_workspace_key",
         "next_workspace_key",
         "add_workspace_key",
+        "add_adjacent_workspace_key",
         "del_workspace_key",
+        "del_active_workspace_key",
         NULL
     };
 
@@ -390,7 +392,9 @@ loadtheme_in_treeview (ThemeInfo * ti, gpointer data)
         N_("Previous workspace"),
         N_("Next workspace"),
         N_("Add workspace"),
-        N_("Delete workspace"),
+        N_("Add adjacent workspace"),
+        N_("Delete last workspace"),
+        N_("Delete active workspace"),
         NULL
     };
 
