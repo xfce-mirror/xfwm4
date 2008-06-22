@@ -1,0 +1,875 @@
+# Indonesian translation of the xfwm4 package.
+# Copyright (C) 2002-2006 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Andhika Padmawan <andhika.padmawan@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 4.4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-06-23 19:57+0100\n"
+"PO-Revision-Date: 2008-06-01 20:40+0700\n"
+"Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
+"Language-Team: Indonesian <id@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../mcs-plugin/margins.c:130
+msgid "Workspace Margins"
+msgstr "Margin Ruang Kerja"
+
+#: ../mcs-plugin/margins.c:136
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Margin adalah area di pinggir layar dimana tak ada jendela akan ditempatkan"
+
+#: ../mcs-plugin/margins.c:167
+msgid "Left :"
+msgstr "Kiri :"
+
+#: ../mcs-plugin/margins.c:187
+msgid "Right :"
+msgstr "Kanan :"
+
+#: ../mcs-plugin/margins.c:207
+msgid "Top :"
+msgstr "Atas :"
+
+#: ../mcs-plugin/margins.c:227
+msgid "Bottom :"
+msgstr "Bawah :"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/workspaces_plugin.c:110
+msgid "Button Label|Workspaces and Margins"
+msgstr "Ruang Kerja dan Margin"
+
+#: ../mcs-plugin/workspaces_plugin.c:144
+msgid "Workspaces and Margins"
+msgstr "Ruang Kerja dan Margin"
+
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/workspaces.c:516
+msgid "Workspaces"
+msgstr "Ruang Kerja"
+
+#: ../mcs-plugin/workspaces_plugin.c:171
+msgid "Margins"
+msgstr "Margin"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:471
+msgid "None"
+msgstr "Tak ada"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:476
+msgid "Bring window on current workspace"
+msgstr "Bawa jendela ke ruang kerja saat ini"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:477
+msgid "Switch to window's workspace"
+msgstr "Pindah ke jendela ruang kerja"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:478
+msgid "Do nothing"
+msgstr "Tak lakukan apa-apa"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Place window under the mouse"
+msgstr "Tempatkan jendela di bawah tetikus"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:484
+msgid "Place window in the center"
+msgstr "Tempatkan jendela di tengah"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
+msgid "Window Manager Tweaks"
+msgstr "Tweak Manajer Jendela"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:512
+msgid ""
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr ""
+"Lewati jendela yang punya pengaturan properti \"skip pager\" atau \"skip "
+"taskbar\""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:518
+msgid "Include hidden (i.e. iconified) windows"
+msgstr "Termasuk jendela (misalnya dalam bentuk ikon) tersembunyi"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:524
+msgid "Cycle through windows from all workspaces"
+msgstr "Daur seluruh jendela dari semua ruang kerja"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:529
+msgid "Cycling"
+msgstr "Daur"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:541
+msgid "Activate focus stealing prevention"
+msgstr "Aktifkan pencegahan pencurian fokus"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:547
+msgid "Honor the standard ICCCM focus hint"
+msgstr "Hormati standar petujuk fokus ICCCM"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:553
+msgid "When a window raises itself:"
+msgstr "Ketika jendela menaikkan dirinya sendiri:"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
+msgid "Focus"
+msgstr "Fokus"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:570
+msgid "Key used to grab and move windows"
+msgstr "Tombol yang digunakan untuk menangkap dan memindahkan jendela"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:576
+msgid "Raise windows when any mouse button is pressed"
+msgstr "Naikkan jendela ketika ada tombol tetikus yang ditekan"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:583
+msgid "Hide frame of windows when maximized"
+msgstr "Sembunyikan bingkai jendela ketika dimaksimalkan"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:590
+msgid "Restore original size of maximized windows when moving"
+msgstr ""
+"Kembalikan ukuran asli dari jendela yang dimaksimalkan ketika memindahkan"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:596
+msgid "Use edge resistance instead of windows snapping"
+msgstr "Gunakan ketahanan jendela ketimbang mangetitasi jendela"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:601
+msgid "Accessibility"
+msgstr "Aksesibilitas"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:614
+msgid "Switch workspaces using the mouse wheel over the desktop"
+msgstr "Pindah ruang kerja menggunakan roda tetikus antar destop"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:621
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr ""
+"Ingat dan panggil ulang ruang kerja sebelumnya ketika pindah via jalan "
+"pintas papan ketik"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:628
+msgid "Wrap workspaces depending on the actual desktop layout"
+msgstr "Gulung ruang kerja berdasarkan tata letak destop sebenarnya"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:635
+msgid "Wrap workspaces when the first or last workspace is reached"
+msgstr "Gulung ruang kerja jika ruang kerja pertama atau terakhir tercapai"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:652
+msgid "Minimum size of windows to trigger smart placement"
+msgstr "Ukuran minimum jendela untuk menyulut penempatan cerdas"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:653
+msgid "Size|Small"
+msgstr "Kecil"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:653
+msgid "Size|Large"
+msgstr "Besar"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:658
+msgid "Default positionning of windows without smart placement:"
+msgstr "Penempatan standar jendela tanpa penempatan cerdas:"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:663
+msgid "Placement"
+msgstr "Penempatan"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:683
+msgid "Enable display compositing"
+msgstr "Aktifkan komposisi tampilan"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:697
+msgid "Display full screen overlay windows directly"
+msgstr "Tampilkan langsung jendela layar penuh"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:703
+msgid "Show shadows under dock windows"
+msgstr "Tampilkan bayangan di bawah dok jendela"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:709
+msgid "Show shadows under regular windows"
+msgstr "Tampilkan bayangan di bawah jendela reguler"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:715
+msgid "Show shadows under popup windows"
+msgstr "Tampilkan bayangan di bawah jendela yang muncul"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:721
+msgid "Opacity of window decorations"
+msgstr "Opasitas dekorasi jendela"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:745
+msgid "Transparent"
+msgstr "Transparan"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:746
+msgid "Opaque"
+msgstr "Opasitas"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:727
+msgid "Opacity of inactive windows"
+msgstr "Opasitas jendela tidak aktif"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:733
+msgid "Opacity of windows during move"
+msgstr "Opasitas jendela ketika pindah"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:739
+msgid "Opacity of windows during resize"
+msgstr "Opasitas jendela ketika ubah ukuran"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:745
+msgid "Opacity of popup windows"
+msgstr "Opasitas jendela yang muncul"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:750
+msgid "Compositor"
+msgstr "Kompositor"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:792
+msgid "Button Label|Window Manager Tweaks"
+msgstr "Tweak Manajer Jendela"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
+#, c-format
+msgid "These settings cannot work with your current window manager (%s)"
+msgstr ""
+"Pengaturan ini tak dapat bekerja dengan manajer jendela anda saat ini (%s)"
+
+#: ../mcs-plugin/workspaces.c:329
+msgid "Change name"
+msgstr "Ubah nama"
+
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:490
+#, c-format
+msgid "Workspace %d"
+msgstr "Ruang kerja %d"
+
+#: ../mcs-plugin/workspaces.c:348
+msgid "Name:"
+msgstr "Nama:"
+
+#: ../mcs-plugin/workspaces.c:427
+msgid "Click on a workspace name to edit it"
+msgstr "Klik pada nama ruang kerja untuk mengubahnya"
+
+#: ../mcs-plugin/workspaces.c:493
+msgid "Number of workspaces:"
+msgstr "Jumlah ruang kerja:"
+
+#: ../mcs-plugin/workspaces.c:527
+msgid "Workspace names"
+msgstr "Nama ruang kerja"
+
+#: ../mcs-plugin/xfwm4_plugin.c:68
+msgid "Menu"
+msgstr "Menu"
+
+#: ../mcs-plugin/xfwm4_plugin.c:69
+msgid "Stick"
+msgstr "Lekat"
+
+#: ../mcs-plugin/xfwm4_plugin.c:70
+msgid "Shade"
+msgstr "Bayang"
+
+#: ../mcs-plugin/xfwm4_plugin.c:71
+msgid "Hide"
+msgstr "Sembunyi"
+
+#: ../mcs-plugin/xfwm4_plugin.c:72
+msgid "Maximize"
+msgstr "Maksimalkan"
+
+#: ../mcs-plugin/xfwm4_plugin.c:73
+msgid "Close"
+msgstr "Tutup"
+
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
+msgid "Shade window"
+msgstr "Bayang jendela"
+
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
+msgid "Hide window"
+msgstr "Sembunyikan jendela"
+
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+msgid "Maximize window"
+msgstr "Maksimalkan Jendela"
+
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+msgid "Fill window"
+msgstr "Isi jendela"
+
+#: ../mcs-plugin/xfwm4_plugin.c:83
+msgid "Nothing"
+msgstr "Tak ada"
+
+#: ../mcs-plugin/xfwm4_plugin.c:88
+msgid "Left"
+msgstr "Kiri"
+
+#: ../mcs-plugin/xfwm4_plugin.c:89
+msgid "Center"
+msgstr "Tengah"
+
+#: ../mcs-plugin/xfwm4_plugin.c:90
+msgid "Right"
+msgstr "Kanan"
+
+#: ../mcs-plugin/xfwm4_plugin.c:589
+msgid "Click and drag buttons to change the layout"
+msgstr "Klik dan tarik tombol untuk mengganti tata letak"
+
+#: ../mcs-plugin/xfwm4_plugin.c:594
+msgid "Active"
+msgstr "Aktif"
+
+#: ../mcs-plugin/xfwm4_plugin.c:605
+msgid "Title"
+msgstr "Judul"
+
+#: ../mcs-plugin/xfwm4_plugin.c:606
+msgid "The window title, it cannot be removed"
+msgstr "Judul jendela, judul tak dapat dihapus"
+
+#: ../mcs-plugin/xfwm4_plugin.c:618
+msgid "Hidden"
+msgstr "Tersembunyi"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1391
+msgid "Font Selection Dialog"
+msgstr "Dialog Seleksi Fonta"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1456
+msgid "Window Manager"
+msgstr "Manajer Jendela"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1496
+msgid "Title font"
+msgstr "Fonta judul"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1505
+msgid "Title Alignment"
+msgstr "Perataan Judul"
+
+#. XXX
+#: ../mcs-plugin/xfwm4_plugin.c:1507
+msgid "Text alignment inside title bar :"
+msgstr "Perataan teks di dalam batang judul :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1513
+msgid "Button layout"
+msgstr "Tata letak tombol"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1518
+msgid "Style"
+msgstr "Gaya"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1566
+msgid "Window shortcuts"
+msgstr "Jalan pintas jendela"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1580
+msgid "Command"
+msgstr "Perintah"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1586
+msgid "Shortcut"
+msgstr "Jalan pintas"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1603
+msgid "Keyboard"
+msgstr "Papan ketik"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1618
+msgid "Focus model"
+msgstr "Model fokus"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1622
+msgid "Click to focus"
+msgstr "Klik untuk fokus"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1632
+msgid "Focus follows mouse"
+msgstr "Fokus mengikuti tetikus"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1645
+msgid "Delay before window receives focus"
+msgstr "Tunda sebelum jendela menerima fokus"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
+msgid "Slow"
+msgstr "Pelan"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
+msgid "Fast"
+msgstr "Cepat"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1682
+msgid "Automatically give focus to newly created windows"
+msgstr "Otomatis memfokuskan pada jendela yang baru dibuat"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1686
+msgid "New window focus"
+msgstr "Fokus jendela baru"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1693
+msgid "Raise on focus"
+msgstr "Naikkan pada fokus"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1699
+msgid "Automatically raise windows when they receive focus"
+msgstr "Otomatis menaikkan jendela ketika jendela menerima fokus"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1709
+msgid "Delay before raising focused window :"
+msgstr "Tunda sebelum menaikkan jendela yang difokuskan :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1744
+msgid "Raise window when clicking inside application window"
+msgstr "Naikkan jendela ketika klik di dalam jendela aplikasi"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1748
+msgid "Raise on click"
+msgstr "Naikkan pada klik"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1766
+msgid "Windows snapping"
+msgstr "Magnetisasi jendela"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1771
+msgid "Snap windows to screen border"
+msgstr "Lekatkan jendela ke batas layar"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1777
+msgid "Snap windows to other windows"
+msgstr "Lekatkan jendela ke jendela lain"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1788
+msgid "Distance :"
+msgstr "Jarak :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1795
+msgid "Distance|Small"
+msgstr "Kecil"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1802
+msgid "Distance|Wide"
+msgstr "Lebar"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1823
+msgid "Wrap workspaces"
+msgstr "Gulung ruang kerja"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1829
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "Gulung ruang kerja ketika penunjuk mencapai tepi layar"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1837
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "Gulung ruang kerja ketika menarik jendela keluar layar"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1847
+msgid "Edge Resistance :"
+msgstr "Tepi Ketahanan :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1854
+msgid "Resistance|Small"
+msgstr "Kecil"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1861
+msgid "Resistance|Wide"
+msgstr "Lebar"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1883
+msgid "Opaque move and resize"
+msgstr "Pindah opaque dan ubah ukuran"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1888
+msgid "Display content of windows when resizing"
+msgstr "Tampilkan isi jendela ketika mengubah ukuran"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1894
+msgid "Display content of windows when moving"
+msgstr "Tampilkan isi jendela ketika memindahkan"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1899
+msgid "Double click action"
+msgstr "Aksi klik ganda"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1901
+msgid "Action to perform when double clicking on title bar :"
+msgstr "Aksi yang dilakukan ketika klik ganda pada batang judul :"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1906
+msgid "Advanced"
+msgstr "Tingkat lanjut"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:2051
+msgid "Button Label|Window Manager"
+msgstr "Manajer Jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
+msgid "Do you really want to remove this keybinding theme ?"
+msgstr "Anda yakin ingin menghapus tema ikat kunci ini ?"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+msgid "Add keybinding theme"
+msgstr "Tambah tema ikat kunci"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
+msgid "Enter a name for the theme:"
+msgstr "Masukkan nama untuk tema:"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
+msgid "A keybinding theme with the same name already exists"
+msgstr "Tema ikat kunci dengan nama sama telah ada"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
+msgid "You have to provide a name for the keybinding theme"
+msgstr "Anda harus memasukkan nama untuk tema ikat kunci"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+msgid "Close window"
+msgstr "Tutup jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+msgid "Maximize window vertically"
+msgstr "Maksimalkan jendela secara vertikal"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+msgid "Maximize window horizontally"
+msgstr "Maksimalkan jendela secara horisontal"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+msgid "Fill window horizontally"
+msgstr "Isi jendela secara horisontal"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+msgid "Fill window vertically"
+msgstr "Isi jendela secara vertikal"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+msgid "Stick window"
+msgstr "Lekatkan jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+msgid "Cycle windows"
+msgstr "Daur jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+msgid "Move window up"
+msgstr "Pindah jendela ke atas"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+msgid "Move window down"
+msgstr "Pindah jendela ke bawah"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
+msgid "Move window left"
+msgstr "Pindah jendela ke kiri"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+msgid "Move window right"
+msgstr "Pindah jendela ke kanan"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+msgid "Resize window up"
+msgstr "Ubah ukuran jendela ke atas"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+msgid "Resize window down"
+msgstr "Ubah ukuran jendela ke bawah"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+msgid "Resize window left"
+msgstr "Ubah ukuran jendela ke kiri"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+msgid "Resize window right"
+msgstr "Ubah ukuran jendela ke kanan"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+msgid "Cancel move/resize window"
+msgstr "Batalkan pindah/ubah ukuran jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+msgid "Raise window"
+msgstr "Naikkan jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+msgid "Lower window"
+msgstr "Turunkan jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Toggle above"
+msgstr "Ubah atas"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+msgid "Toggle fullscreen"
+msgstr "Ubah layar penuh"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+msgid "Upper workspace"
+msgstr "Bagian atas ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+msgid "Bottom workspace"
+msgstr "Bagian dasar ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+msgid "Left workspace"
+msgstr "Bagian kiri ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+msgid "Right workspace"
+msgstr "Bagian kanan ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+msgid "Next workspace"
+msgstr "Ruang kerja selanjutnya"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+msgid "Previous workspace"
+msgstr "Ruang kerja sebelumnya"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+msgid "Add workspace"
+msgstr "Tambah ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
+msgid "Delete workspace"
+msgstr "Hapus ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+msgid "Move window to next workspace"
+msgstr "Pindah jendela ke ruang kerja selanjutnya"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
+msgid "Move window to previous workspace"
+msgstr "Pindah jendela ke ruang kerja sebelumnya"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
+msgid "Move window to upper workspace"
+msgstr "Pindah jendela ke bagian atas ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
+msgid "Move window to bottom workspace"
+msgstr "Pindah jendela ke bagian bawah ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
+msgid "Move window to left workspace"
+msgstr "Pindah jendela ke bagian kiri ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
+msgid "Move window to right workspace"
+msgstr "Pindah jendela ke bagian kanan ruang kerja"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
+msgid "Show desktop"
+msgstr "Tampilkan destop"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
+msgid "Cancel window action"
+msgstr "Batalkan aksi jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
+msgid "Window operations menu"
+msgstr "Menu operasi jendela"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#, c-format
+msgid "Move window to workspace %d"
+msgstr "Pindah jendela ke ruang kerja %d"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
+msgid "Cannot open the theme directory !"
+msgstr "Tak dapat membuka direktori tema !"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
+#, c-format
+msgid ""
+"Cannot open %s : \n"
+"%s"
+msgstr ""
+"Tak dapat membuka %s : \n"
+"%s"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"Tak dapat menulis di %s : \n"
+"%s"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
+msgid ""
+"Shortcut already in use !\n"
+"Are you sure you want to use it ?"
+msgstr ""
+"Jalan pintah telah digunakan !\n"
+"Anda yakin ingin menggunakannya?"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+msgid "Compose shortcut for :"
+msgstr "Tulis jalan pintas untuk :"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
+msgid "Compose shortcut"
+msgstr "Tulis jalan pintas"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
+msgid "Cancel"
+msgstr "Batal"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
+msgid "No shortcut"
+msgstr "Tak ada jalan pintas"
+
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:84
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (di %s)"
+
+#: ../src/main.c:135
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: Galat segmentasi"
+
+#: ../src/menu.c:40
+msgid "Ma_ximize"
+msgstr "Maksimalkan (_x)"
+
+#: ../src/menu.c:41
+msgid "Un_maximize"
+msgstr "Tak _maksimalkan"
+
+#: ../src/menu.c:42
+msgid "_Hide"
+msgstr "Sembunyikan (_H)"
+
+#: ../src/menu.c:43
+msgid "Hide _all others"
+msgstr "Sembunyikan semu_a yang lain"
+
+#: ../src/menu.c:44
+msgid "S_how"
+msgstr "Tampilkan (_h)"
+
+#: ../src/menu.c:45
+msgid "_Shade"
+msgstr "Bayang (_S)"
+
+#: ../src/menu.c:46
+msgid "Un_shade"
+msgstr "Tak bayang (_s)"
+
+#: ../src/menu.c:47
+msgid "S_tick"
+msgstr "Leka_t"
+
+#: ../src/menu.c:48
+msgid "Uns_tick"
+msgstr "Tak leka_t"
+
+#: ../src/menu.c:49
+msgid "Context _help"
+msgstr "Isi bantuan (_h)"
+
+#: ../src/menu.c:50 ../src/menu.c:51
+msgid "Always on top"
+msgstr "Selalu di atas"
+
+#: ../src/menu.c:52
+msgid "Send to..."
+msgstr "Kirim ke..."
+
+#: ../src/menu.c:54
+msgid "_Close"
+msgstr "Tutup (_C)"
+
+#: ../src/menu.c:57
+msgid "Destroy"
+msgstr "Hancurkan"
+
+#: ../src/menu.c:60
+msgid "_Quit"
+msgstr "Keluar (_Q)"
+
+#: ../src/menu.c:61
+msgid "Restart"
+msgstr "Start ulang"
+
+#: ../src/menu.c:169
+#, c-format
+msgid "Workspace %i (%s)"
+msgstr "Ruang kerja %i (%s)"
+
+#: ../src/menu.c:173
+#, c-format
+msgid "Workspace %i"
+msgstr "Ruang kerja %i"
+
+#: ../src/menu.c:409
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu gagal mengambil penunjuk\n"
+
+#: ../src/settings.c:968
+#, c-format
+msgid "%s: Cannot allocate color %s\n"
+msgstr "%s: Tak dapat mengalokasi warna %s\n"
+
+#: ../src/settings.c:974
+#, c-format
+msgid "%s: Cannot parse color %s\n"
+msgstr "%s: Tak dapat membaca warna %s\n"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "Pengaturan Manajer Jendela"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Pengaturan Manajer Jendela Xfce 4"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
+msgid "Advanced Configuration"
+msgstr "Konfigurasi Tingkat Lanjut"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr "Tweak Manajer Jendela Xfce 4"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "Pengaturan Ruang Kerja"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Pengaturan Ruang Kerja Xfce 4"
