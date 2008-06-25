@@ -425,6 +425,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_POPUP_MENU:
+                XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
                 show_window_menu (c, frameX (c) + frameLeft (c),
                                      frameY (c) + frameTop (c),
                                      Button1, GDK_CURRENT_TIME);
