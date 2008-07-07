@@ -88,6 +88,8 @@ popup_position_func (GtkMenu * menu, gint * x, gint * y, gboolean * push_in,
 {
     GtkRequisition req;
     GdkPoint *pos;
+    gint monitor;
+    GdkScreen *screen;
 
     pos = user_data;
 
@@ -111,6 +113,11 @@ popup_position_func (GtkMenu * menu, gint * x, gint * y, gboolean * push_in,
     {
         *y = (gdk_screen_height () - req.height) / 2;
     }
+
+    screen = gtk_widget_get_screen (GTK_WIDGET(menu));
+    monitor = find_monitor_at_point (screen, *x, *y);
+    gtk_menu_set_monitor (GTK_MENU (menu), monitor);
+
     g_free (user_data);
 }
 
