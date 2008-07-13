@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-23 19:57+0100\n"
+"POT-Creation-Date: 2008-07-13 14:53+0200\n"
 "PO-Revision-Date: 2007-01-05 23:06+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -48,20 +48,20 @@ msgid "Bottom :"
 msgstr "ਹੇਠਾਂ:"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/workspaces_plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:111
 msgid "Button Label|Workspaces and Margins"
 msgstr "ਵਰਕਸਪੇਸ ਅਤੇ ਮਾਰਜਨ"
 
-#: ../mcs-plugin/workspaces_plugin.c:144
+#: ../mcs-plugin/workspaces_plugin.c:145
 msgid "Workspaces and Margins"
 msgstr "ਵਰਕਸਪੇਸ ਤੇ ਮਾਰਜਨ"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
-#: ../mcs-plugin/workspaces.c:516
+#: ../mcs-plugin/workspaces_plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/workspaces.c:519
 msgid "Workspaces"
 msgstr "ਵਰਕਸਪੇਸ"
 
-#: ../mcs-plugin/workspaces_plugin.c:171
+#: ../mcs-plugin/workspaces_plugin.c:172
 msgid "Margins"
 msgstr "ਮਾਰਜਨ"
 
@@ -260,28 +260,28 @@ msgstr "ਵਿੰਡੋ ਮੈਨੇਜਰ ਟਵਿਕ"
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "ਇਹ ਸੈਟਿੰਗ ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਵਿੰਡੋ ਮੈਨੇਜਰ (%s) ਨਾਲ ਕੰਠ ਨਹੀਂ ਕਰੇਗੀ"
 
-#: ../mcs-plugin/workspaces.c:329
+#: ../mcs-plugin/workspaces.c:332
 msgid "Change name"
 msgstr "ਨਾਂ-ਤਬਦੀਲ"
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:490
+#: ../mcs-plugin/workspaces.c:341 ../mcs-plugin/xfwm4_shortcuteditor.c:484
 #, c-format
 msgid "Workspace %d"
 msgstr "ਵਰਕਸਪੇਸ %d"
 
-#: ../mcs-plugin/workspaces.c:348
+#: ../mcs-plugin/workspaces.c:349
 msgid "Name:"
 msgstr "ਨਾਂ:"
 
-#: ../mcs-plugin/workspaces.c:427
+#: ../mcs-plugin/workspaces.c:428
 msgid "Click on a workspace name to edit it"
 msgstr "ਇਸ ਨੂੰ ਸੋਧਣ ਲਈ ਵਰਕਸਪੇਸ ਨਾਂ ਤੇ ਕਲਿੱਕ ਕਰੋ"
 
-#: ../mcs-plugin/workspaces.c:493
+#: ../mcs-plugin/workspaces.c:494
 msgid "Number of workspaces:"
 msgstr "ਅਖਾੜਿਆਂ ਦੀ ਗਿਣਤੀ:"
 
-#: ../mcs-plugin/workspaces.c:527
+#: ../mcs-plugin/workspaces.c:530
 msgid "Workspace names"
 msgstr "ਵਰਕਸਪੇਸ ਨਾਂ"
 
@@ -309,19 +309,19 @@ msgstr "ਅਧਿਕਤਮ"
 msgid "Close"
 msgstr "ਬੰਦ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Shade window"
 msgstr "ਵਿੰਡੋ ਛਾਂ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Hide window"
 msgstr "ਵਿੰਡੋ ਓਹਲੇ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Maximize window"
 msgstr "ਵਿੰਡੋ ਅਧਿਕਤਮ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:376
 #, fuzzy
 msgid "Fill window"
 msgstr "ਵਿੰਡੋ ਓਹਲੇ"
@@ -330,7 +330,7 @@ msgstr "ਵਿੰਡੋ ਓਹਲੇ"
 msgid "Nothing"
 msgstr "ਕੁਝ ਨਹੀਂ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Left"
 msgstr "ਖੱਬਾ"
 
@@ -338,7 +338,7 @@ msgstr "ਖੱਬਾ"
 msgid "Center"
 msgstr "ਕੇਂਦਰੀ"
 
-#: ../mcs-plugin/xfwm4_plugin.c:90
+#: ../mcs-plugin/xfwm4_plugin.c:90 ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Right"
 msgstr "ਸੱਜਾ"
 
@@ -537,187 +537,180 @@ msgstr "ਤਕਨੀਕੀ"
 msgid "Button Label|Window Manager"
 msgstr "ਵਿੰਡੋ ਮੈਨੇਜਰ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:54
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "ਕੀ ਤੁਸੀਂ ਇਹ ਕੀ-ਬਾਇਡਿੰਗ ਹਟਾਉਣੀ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:133
 msgid "Add keybinding theme"
 msgstr "ਕੀ-ਬਾਇਡਿੰਗ ਥੀਮ ਸ਼ਾਮਿਲ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Enter a name for the theme:"
 msgstr "ਥੀਮ ਲਈ ਇੱਕ ਨਾਂ ਦਿਓ:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:176
 msgid "A keybinding theme with the same name already exists"
 msgstr "ਇਸ ਨਾਂ ਨਾਲ ਇੱਕ ਕੀ-ਬਾਇਡਿੰਗ ਥੀਮ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
 msgid "You have to provide a name for the keybinding theme"
 msgstr "ਤੁਹਾਨੂੰ ਕੀ-ਬਾਇਡਿੰਗ ਥੀਮ ਲਈ ਇੱਕ ਨਾਂ ਦੇਣਾ ਪਵੇਗਾ"
 
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+msgid "Window operations menu"
+msgstr "ਵਿੰਡੋ ਓਪਰੇਸ਼ਨ ਮੇਨੂ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+msgid "Up"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+msgid "Down"
+msgstr ""
+
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:363
-msgid "Close window"
-msgstr "ਵਿੰਡੋ ਬੰਦ"
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+msgid "Cancel"
+msgstr "ਰੱਦ ਕਰੋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+msgid "Cycle windows"
+msgstr "ਵਿੰਡੋ ਸਾਇਕਲ"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
-msgid "Maximize window vertically"
-msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
+msgid "Close window"
+msgstr "ਵਿੰਡੋ ਬੰਦ"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Maximize window horizontally"
 msgstr "ਵਿੰਡੋ ਖਤਿਜੀ ਅਧਿਕਤਮ"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+msgid "Maximize window vertically"
+msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#, fuzzy
+msgid "Move window"
+msgstr "ਵਿੰਡੋ ਉੱਪਰ ਹਿਲਾਓ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#, fuzzy
+msgid "Resize window"
+msgstr "ਵਿੰਡੋ ਉੱਪਰ ਮੁੜ ਆਕਾਰ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+msgid "Stick window"
+msgstr "ਉੱਭਰਿਆ ਵਿੰਡੋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+msgid "Raise window"
+msgstr "ਵਿੰਡੋ ਪੇਸ਼ਗੀ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+msgid "Lower window"
+msgstr "ਹੇਠਲਾ ਵਿੰਡੋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
 #, fuzzy
 msgid "Fill window horizontally"
 msgstr "ਵਿੰਡੋ ਖਤਿਜੀ ਅਧਿਕਤਮ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
 #, fuzzy
 msgid "Fill window vertically"
 msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
-msgid "Stick window"
-msgstr "ਉੱਭਰਿਆ ਵਿੰਡੋ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-msgid "Cycle windows"
-msgstr "ਵਿੰਡੋ ਸਾਇਕਲ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
-msgid "Move window up"
-msgstr "ਵਿੰਡੋ ਉੱਪਰ ਹਿਲਾਓ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
-msgid "Move window down"
-msgstr "ਵਿੰਡੋ ਹੇਠਾਂ ਹਿਲਾਓ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
-msgid "Move window left"
-msgstr "ਵਿੰਡੋ ਖੱਬੇ ਹਿਲਾਓ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
-msgid "Move window right"
-msgstr "ਵਿੰਡੋ ਸੱਜੇ ਹਿਲਾਓ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
-msgid "Resize window up"
-msgstr "ਵਿੰਡੋ ਉੱਪਰ ਮੁੜ ਆਕਾਰ"
-
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:379
-msgid "Resize window down"
-msgstr "ਵਿੰਡੋ ਹੇਠਾਂ ਮੁੜ ਆਕਾਰ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
-msgid "Resize window left"
-msgstr "ਵਿੰਡੋ ਖੱਬੇ ਮੁੜ ਆਕਾਰ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
-msgid "Resize window right"
-msgstr "ਵਿੰਡੋ ਸੱਜੇ ਮੁੜ ਆਕਾਰ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
-msgid "Cancel move/resize window"
-msgstr "ਵਿੰਡੋ ਭੇਜਣਾ/ਰੀ-ਸਾਇਜ਼ ਰੱਦ ਕਰੋ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
-msgid "Raise window"
-msgstr "ਵਿੰਡੋ ਪੇਸ਼ਗੀ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
-msgid "Lower window"
-msgstr "ਹੇਠਲਾ ਵਿੰਡੋ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
 msgid "Toggle above"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Toggle fullscreen"
 msgstr "ਪੂਰਾ-ਪਰਦਾ ਲਿਆਓ"
 
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+msgid "Move window to upper workspace"
+msgstr "ਵਿੰਡੋ ਉੱਪਰਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+msgid "Move window to bottom workspace"
+msgstr "ਵਿੰਡੋ ਹੇਠਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+msgid "Move window to left workspace"
+msgstr "ਵਿੰਡੋ ਖੱਬੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+msgid "Move window to right workspace"
+msgstr "ਵਿੰਡੋ ਸੱਜੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Move window to previous workspace"
+msgstr "ਵਿੰਡੋ ਪਿਛਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+msgid "Move window to next workspace"
+msgstr "ਵਿੰਡੋ ਅਗਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
+
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+msgid "Show desktop"
+msgstr "ਡਿਸਕਟਾਪ ਵੇਖਾਓ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Upper workspace"
 msgstr "ਅੱਪਰ ਵਰਕਸਪੇਸ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Bottom workspace"
 msgstr "ਬਾਟਮ ਵਰਕਸਪੇਸ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Left workspace"
 msgstr "ਖੱਬਾ ਵਰਕਸਪੇਸ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Right workspace"
 msgstr "ਸੱਜੇ ਵਰਕਸਪੇਸ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
-msgid "Next workspace"
-msgstr "ਅਗਲਾ ਵਰਕਸਪੇਸ"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Previous workspace"
 msgstr "ਪਿਛਲਾ ਵਰਕਸਪੇਸ"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+msgid "Next workspace"
+msgstr "ਅਗਲਾ ਵਰਕਸਪੇਸ"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 msgid "Add workspace"
 msgstr "ਵਰਕਸਪੇਸ ਸ਼ਾਮਿਲ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
-msgid "Delete workspace"
-msgstr "ਵਰਕਸਪੇਸ ਹਟਾਓ"
-
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:395
-msgid "Move window to next workspace"
-msgstr "ਵਿੰਡੋ ਅਗਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
+#, fuzzy
+msgid "Add adjacent workspace"
+msgstr "ਵਰਕਸਪੇਸ ਸ਼ਾਮਿਲ"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:396
-msgid "Move window to previous workspace"
-msgstr "ਵਿੰਡੋ ਪਿਛਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
+#, fuzzy
+msgid "Delete last workspace"
+msgstr "ਵਰਕਸਪੇਸ ਹਟਾਓ"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:397
-msgid "Move window to upper workspace"
-msgstr "ਵਿੰਡੋ ਉੱਪਰਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
+#, fuzzy
+msgid "Delete active workspace"
+msgstr "ਵਰਕਸਪੇਸ ਹਟਾਓ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
-msgid "Move window to bottom workspace"
-msgstr "ਵਿੰਡੋ ਹੇਠਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
-msgid "Move window to left workspace"
-msgstr "ਵਿੰਡੋ ਖੱਬੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
-msgid "Move window to right workspace"
-msgstr "ਵਿੰਡੋ ਸੱਜੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
-msgid "Show desktop"
-msgstr "ਡਿਸਕਟਾਪ ਵੇਖਾਓ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
-msgid "Cancel window action"
-msgstr "ਵਿੰਡੋ ਐਕਸ਼ਨ ਰੱਦ ਕਰੋ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
-msgid "Window operations menu"
-msgstr "ਵਿੰਡੋ ਓਪਰੇਸ਼ਨ ਮੇਨੂ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:505
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "ਵਿੰਡੋ ਵਰਕਸਪੇਸ %d 'ਚ ਭੇਜੋ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
 msgid "Cannot open the theme directory !"
 msgstr "ਸਰੂਪ ਡਾਇਰੈਕਟਰੀ ਖੋਲ ਨਹੀਂ ਸਕਿਆ !"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:604
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -726,8 +719,8 @@ msgstr ""
 "%s ਖੋਲ ਨਹੀਂ ਸਕਿਆ ਃ \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:618
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:629
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -736,7 +729,7 @@ msgstr ""
 "%s ਵਿੱਚ ਲਿਖ ਨਹੀਂ ਸਕਿਆ ਃ \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -744,118 +737,144 @@ msgstr ""
 "ਸ਼ਾਰਟਕੱਟ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਹੈ !\n"
 " ਕੀ ਤੁਸੀ ਯਕੀਨਨ ਇਸ ਨੂੰ ਵਰਤਣਾ ਚਾਹੁੰਦੇ ਹੋ ?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
 msgid "Compose shortcut for :"
 msgstr "ਲਈ ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ ਃ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
 msgid "Compose shortcut"
 msgstr "ਸ਼ਾਰਟਕੱਟ ਭੇਜੋ"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
-msgid "Cancel"
-msgstr "ਰੱਦ ਕਰੋ"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
 msgid "No shortcut"
 msgstr "ਕੋਈ ਸ਼ਾਰਟਕੱਟ ਨਹੀਂ"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:84
+#: ../src/hints.c:86
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (%s ਉੱਤੇ)"
 
-#: ../src/main.c:135
+#: ../src/main.c:137
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: ਵਿਭਾਜਨ ਨੁਕਸ"
 
-#: ../src/menu.c:40
+#: ../src/menu.c:42
 msgid "Ma_ximize"
 msgstr "_ਅਧਿਕਤਮ"
 
-#: ../src/menu.c:41
-msgid "Un_maximize"
-msgstr "_ਨਾ-ਅਧਿਕਤਮ"
-
-#: ../src/menu.c:42
-msgid "_Hide"
-msgstr "_ਢਕੋ"
-
 #: ../src/menu.c:43
+#, fuzzy
+msgid "(Un)Ma_ximize"
+msgstr "_ਅਧਿਕਤਮ"
+
+#: ../src/menu.c:44
+#, fuzzy
+msgid "Mi_nimize"
+msgstr "_ਅਧਿਕਤਮ"
+
+#: ../src/menu.c:45
 msgid "Hide _all others"
 msgstr "_ਹੋਰ ਸਾਰੇ ਢਕੋ"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:46
 msgid "S_how"
 msgstr "_ਵਿਖਾਓ"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:47
+msgid "_Move"
+msgstr ""
+
+#: ../src/menu.c:48
+msgid "_Resize"
+msgstr ""
+
+#: ../src/menu.c:50
 msgid "_Shade"
 msgstr "ਛਾਂ"
 
-#: ../src/menu.c:46
-msgid "Un_shade"
+#: ../src/menu.c:51
+#, fuzzy
+msgid "(Un)_Shade"
 msgstr "ਨਾ-ਛਾਂ"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:52
 msgid "S_tick"
 msgstr "ਉੱਭਰਿਆ"
 
-#: ../src/menu.c:48
-msgid "Uns_tick"
+#: ../src/menu.c:53
+#, fuzzy
+msgid "(Un)S_tick"
 msgstr "ਨਾ-ਉੱਭਰਿਆ"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:54
 msgid "Context _help"
 msgstr "ਪ੍ਰਸੰਗ _ਸਹਾਇਤਾ"
 
-#: ../src/menu.c:50 ../src/menu.c:51
-msgid "Always on top"
-msgstr "ਹਮੇਸ਼ਾ ਸਿਖਰ ਤੇ"
+#: ../src/menu.c:56
+msgid "Above"
+msgstr ""
 
-#: ../src/menu.c:52
+#: ../src/menu.c:57
+msgid "Normal"
+msgstr ""
+
+#: ../src/menu.c:58
+#, fuzzy
+msgid "Below"
+msgstr "ਹੌਲੀ"
+
+#: ../src/menu.c:59
+#, fuzzy
+msgid "_Fullscreen"
+msgstr "ਪੂਰਾ-ਪਰਦਾ ਲਿਆਓ"
+
+#: ../src/menu.c:60
+msgid "(Un)_Fullscreen"
+msgstr ""
+
+#: ../src/menu.c:61
 msgid "Send to..."
 msgstr "ਨੂੰ ਭੇਜੋ..."
 
-#: ../src/menu.c:54
+#: ../src/menu.c:63
 msgid "_Close"
 msgstr "_ਬੰਦ"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:66
 msgid "Destroy"
 msgstr "ਡਾਇਰੈਕਟਰੀ"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:69
 msgid "_Quit"
 msgstr "_ਬਾਹਰ"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:70
 msgid "Restart"
 msgstr "ਮੁੜ ਚਾਲੂ ਕਰੋ"
 
-#: ../src/menu.c:169
+#: ../src/menu.c:185
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "ਵਰਕਸਪੇਸ %i (%s)"
 
-#: ../src/menu.c:173
+#: ../src/menu.c:189
 #, c-format
 msgid "Workspace %i"
 msgstr "ਵਰਕਸਪੇਸ %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Gtk-ਮੇਨੂੰ ਸੰਕੇਤਕ ਖੋਹਣ ਵਿੱਚ ਅਸਫਲ\n"
 
-#: ../src/settings.c:968
+#: ../src/settings.c:970
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: ਰੰਗ %s ਐਲੋਕੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ\n"
 
-#: ../src/settings.c:974
+#: ../src/settings.c:976
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: ਰੰਗ %s ਪਾਰਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ\n"
@@ -883,6 +902,39 @@ msgstr "ਵਰਕਸਪੇਸ ਸੈਟਿੰਗ"
 #: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 ਵਰਕਸਪੇਸ ਸੈਟਿੰਗ"
+
+#~ msgid "Move window down"
+#~ msgstr "ਵਿੰਡੋ ਹੇਠਾਂ ਹਿਲਾਓ"
+
+#~ msgid "Move window left"
+#~ msgstr "ਵਿੰਡੋ ਖੱਬੇ ਹਿਲਾਓ"
+
+#~ msgid "Move window right"
+#~ msgstr "ਵਿੰਡੋ ਸੱਜੇ ਹਿਲਾਓ"
+
+#~ msgid "Resize window down"
+#~ msgstr "ਵਿੰਡੋ ਹੇਠਾਂ ਮੁੜ ਆਕਾਰ"
+
+#~ msgid "Resize window left"
+#~ msgstr "ਵਿੰਡੋ ਖੱਬੇ ਮੁੜ ਆਕਾਰ"
+
+#~ msgid "Resize window right"
+#~ msgstr "ਵਿੰਡੋ ਸੱਜੇ ਮੁੜ ਆਕਾਰ"
+
+#~ msgid "Cancel move/resize window"
+#~ msgstr "ਵਿੰਡੋ ਭੇਜਣਾ/ਰੀ-ਸਾਇਜ਼ ਰੱਦ ਕਰੋ"
+
+#~ msgid "Cancel window action"
+#~ msgstr "ਵਿੰਡੋ ਐਕਸ਼ਨ ਰੱਦ ਕਰੋ"
+
+#~ msgid "Un_maximize"
+#~ msgstr "_ਨਾ-ਅਧਿਕਤਮ"
+
+#~ msgid "_Hide"
+#~ msgstr "_ਢਕੋ"
+
+#~ msgid "Always on top"
+#~ msgstr "ਹਮੇਸ਼ਾ ਸਿਖਰ ਤੇ"
 
 #, fuzzy
 #~ msgid "Workspace %02d"

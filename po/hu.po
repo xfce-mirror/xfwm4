@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-23 19:57+0100\n"
+"POT-Creation-Date: 2008-07-13 14:53+0200\n"
 "PO-Revision-Date: 2007-06-24 08:49+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -23,7 +23,8 @@ msgid "Workspace Margins"
 msgstr "Munkaterület margók"
 
 #: ../mcs-plugin/margins.c:136
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "A margók olyan területek a képernyő szélén, amelyekre nem kerül ablak."
 
 #: ../mcs-plugin/margins.c:167
@@ -43,21 +44,20 @@ msgid "Bottom :"
 msgstr "Alsó:"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/workspaces_plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:111
 msgid "Button Label|Workspaces and Margins"
 msgstr "Munkaterületek és margók"
 
-#: ../mcs-plugin/workspaces_plugin.c:144
+#: ../mcs-plugin/workspaces_plugin.c:145
 msgid "Workspaces and Margins"
 msgstr "Munkaterületek és Margók"
 
-#: ../mcs-plugin/workspaces_plugin.c:162
-#: ../mcs-plugin/wmtweaks_plugin.c:640
-#: ../mcs-plugin/workspaces.c:516
+#: ../mcs-plugin/workspaces_plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/workspaces.c:519
 msgid "Workspaces"
 msgstr "Munkaterületek"
 
-#: ../mcs-plugin/workspaces_plugin.c:171
+#: ../mcs-plugin/workspaces_plugin.c:172
 msgid "Margins"
 msgstr "Margók"
 
@@ -91,8 +91,10 @@ msgid "Window Manager Tweaks"
 msgstr "Ablakkezelő trükkök"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
-msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr "A \"lapozóba nem\" vagy \"feladatsávba nem\" tulajdonságú ablakok kihagyása"
+msgid ""
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr ""
+"A \"lapozóba nem\" vagy \"feladatsávba nem\" tulajdonságú ablakok kihagyása"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
 msgid "Include hidden (i.e. iconified) windows"
@@ -118,8 +120,7 @@ msgstr "Szabvány ICCCM fókusz tippek fogadása"
 msgid "When a window raises itself:"
 msgstr "Előugró ablaknál:"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558
-#: ../mcs-plugin/xfwm4_plugin.c:1752
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
 msgstr "Fókusz"
 
@@ -152,8 +153,11 @@ msgid "Switch workspaces using the mouse wheel over the desktop"
 msgstr "Munkaterületek váltása az asztalon való görgetésre"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:621
-msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr "Előző munkaterület megjegyzése és visszahívása gyorsbillentyűkkel való váltáskor"
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr ""
+"Előző munkaterület megjegyzése és visszahívása gyorsbillentyűkkel való "
+"váltáskor"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:628
 msgid "Wrap workspaces depending on the actual desktop layout"
@@ -207,18 +211,14 @@ msgstr "Árnyékok előugró ablakok alatt"
 msgid "Opacity of window decorations"
 msgstr "Ablakdíszek átlátszósága"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:721
-#: ../mcs-plugin/wmtweaks_plugin.c:727
-#: ../mcs-plugin/wmtweaks_plugin.c:733
-#: ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
 #: ../mcs-plugin/wmtweaks_plugin.c:745
 msgid "Transparent"
 msgstr "Átlátszó"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:722
-#: ../mcs-plugin/wmtweaks_plugin.c:728
-#: ../mcs-plugin/wmtweaks_plugin.c:734
-#: ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
 #: ../mcs-plugin/wmtweaks_plugin.c:746
 msgid "Opaque"
 msgstr "Átlátszatlan"
@@ -248,35 +248,33 @@ msgstr "Kompozítor"
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Ablakkezelő trükkök"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:914
-#: ../mcs-plugin/xfwm4_plugin.c:2430
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "E beállítások nem működnek a jelenlegi (%s) ablakkezelőddel"
 
-#: ../mcs-plugin/workspaces.c:329
+#: ../mcs-plugin/workspaces.c:332
 msgid "Change name"
 msgstr "Új név"
 
-#: ../mcs-plugin/workspaces.c:338
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:490
+#: ../mcs-plugin/workspaces.c:341 ../mcs-plugin/xfwm4_shortcuteditor.c:484
 #, c-format
 msgid "Workspace %d"
 msgstr "%d. munkaterület"
 
-#: ../mcs-plugin/workspaces.c:348
+#: ../mcs-plugin/workspaces.c:349
 msgid "Name:"
 msgstr "Név:"
 
-#: ../mcs-plugin/workspaces.c:427
+#: ../mcs-plugin/workspaces.c:428
 msgid "Click on a workspace name to edit it"
 msgstr "Kattints egy munkaterület nevén a szerkesztéséhez"
 
-#: ../mcs-plugin/workspaces.c:493
+#: ../mcs-plugin/workspaces.c:494
 msgid "Number of workspaces:"
 msgstr "Munkaterületek száma"
 
-#: ../mcs-plugin/workspaces.c:527
+#: ../mcs-plugin/workspaces.c:530
 msgid "Workspace names"
 msgstr "Munkaterület nevek"
 
@@ -304,23 +302,19 @@ msgstr "Maximálás"
 msgid "Close"
 msgstr "Bezárás"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Shade window"
 msgstr "Ablak felgördítése"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Hide window"
 msgstr "Ablak rejtése"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Maximize window"
 msgstr "Ablak maximálása"
 
-#: ../mcs-plugin/xfwm4_plugin.c:82
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:376
 msgid "Fill window"
 msgstr "Ablak kitöltése"
 
@@ -328,7 +322,7 @@ msgstr "Ablak kitöltése"
 msgid "Nothing"
 msgstr "Semmi"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Left"
 msgstr "Balra"
 
@@ -336,7 +330,7 @@ msgstr "Balra"
 msgid "Center"
 msgstr "Középre"
 
-#: ../mcs-plugin/xfwm4_plugin.c:90
+#: ../mcs-plugin/xfwm4_plugin.c:90 ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Right"
 msgstr "Jobbra"
 
@@ -421,13 +415,11 @@ msgstr "A fókusz az egeret követi"
 msgid "Delay before window receives focus"
 msgstr "Ablak fókuszának késleltetése"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1654
-#: ../mcs-plugin/xfwm4_plugin.c:1716
+#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
 msgstr "Hosszú"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1661
-#: ../mcs-plugin/xfwm4_plugin.c:1723
+#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Fast"
 msgstr "Rövid"
 
@@ -536,185 +528,178 @@ msgstr "Haladó"
 msgid "Button Label|Window Manager"
 msgstr "Ablakkezelő"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:54
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Valóban törölni akarod ezt a billentyű-témát?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:133
 msgid "Add keybinding theme"
 msgstr "Billentyű-téma hozzáadása"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Enter a name for the theme:"
 msgstr "Adj nevet e témának:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:176
 msgid "A keybinding theme with the same name already exists"
 msgstr "Már van ilyen nevű billentyű-téma"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
 msgid "You have to provide a name for the keybinding theme"
 msgstr "Nevet kell adnod a billentyű-témának"
 
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+msgid "Window operations menu"
+msgstr "Ablak művelet menü"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+msgid "Up"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+msgid "Down"
+msgstr ""
+
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:363
-msgid "Close window"
-msgstr "Ablak bezárása"
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+msgid "Cycle windows"
+msgstr "Ablakok körözése"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
-msgid "Maximize window vertically"
-msgstr "Teljes méret függőlegesen"
+msgid "Close window"
+msgstr "Ablak bezárása"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 msgid "Maximize window horizontally"
 msgstr "Teljes méret vízszintesen"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-msgid "Fill window horizontally"
-msgstr "Ablak kitöltése vízszintesen"
+msgid "Maximize window vertically"
+msgstr "Teljes méret függőlegesen"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
-msgid "Fill window vertically"
-msgstr "Ablak kitöltése függőlegesen"
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#, fuzzy
+msgid "Move window"
+msgstr "Ablak mozgatása felfelé"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#, fuzzy
+msgid "Resize window"
+msgstr "Ablak átméretezése fent"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Stick window"
 msgstr "Ablak rögzítése"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-msgid "Cycle windows"
-msgstr "Ablakok körözése"
-
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
-msgid "Move window up"
-msgstr "Ablak mozgatása felfelé"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
-msgid "Move window down"
-msgstr "Ablak mozgatása lefelé"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
-msgid "Move window left"
-msgstr "Ablak mozgatása balra"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
-msgid "Move window right"
-msgstr "Ablak mozgatása jobbra"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
-msgid "Resize window up"
-msgstr "Ablak átméretezése fent"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
-msgid "Resize window down"
-msgstr "Ablak átméretezése lent"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
-msgid "Resize window left"
-msgstr "Ablak átméretezése bal oldalon"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
-msgid "Resize window right"
-msgstr "Ablak átméretezés jobb oldalon"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
-msgid "Cancel move/resize window"
-msgstr "Ablak mozgatás/átméretezés törlése"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
 msgid "Raise window"
 msgstr "Ablak előre"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 msgid "Lower window"
 msgstr "Ablak hátra"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+msgid "Fill window horizontally"
+msgstr "Ablak kitöltése vízszintesen"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+msgid "Fill window vertically"
+msgstr "Ablak kitöltése függőlegesen"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Toggle above"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Toggle fullscreen"
 msgstr "Teljes képernyő"
 
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+msgid "Move window to upper workspace"
+msgstr "Ablak egy munkaterülettel feljebb"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+msgid "Move window to bottom workspace"
+msgstr "Ablak egy munkaterülettel lejjebb"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+msgid "Move window to left workspace"
+msgstr "Ablak egy munkaterülettel balra"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+msgid "Move window to right workspace"
+msgstr "Ablak egy munkaterülettel jobbra"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+msgid "Move window to previous workspace"
+msgstr "Ablak az előző munkaterületre"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+msgid "Move window to next workspace"
+msgstr "Ablak a következő munkaterületre"
+
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+msgid "Show desktop"
+msgstr "Asztal mutatása"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 msgid "Upper workspace"
 msgstr "Felső munkaterület"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 msgid "Bottom workspace"
 msgstr "Alsó munkaterület"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 msgid "Left workspace"
 msgstr "Bal munkaterület"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 msgid "Right workspace"
 msgstr "Jobb munkaterület"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
-msgid "Next workspace"
-msgstr "Következő munkaterület"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
 msgid "Previous workspace"
 msgstr "Előző munkaterület"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+msgid "Next workspace"
+msgstr "Következő munkaterület"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 msgid "Add workspace"
 msgstr "Új munkaterület"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
-msgid "Delete workspace"
-msgstr "Munkaterület törlése"
-
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:395
-msgid "Move window to next workspace"
-msgstr "Ablak a következő munkaterületre"
+#, fuzzy
+msgid "Add adjacent workspace"
+msgstr "Új munkaterület"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:396
-msgid "Move window to previous workspace"
-msgstr "Ablak az előző munkaterületre"
+#, fuzzy
+msgid "Delete last workspace"
+msgstr "Munkaterület törlése"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:397
-msgid "Move window to upper workspace"
-msgstr "Ablak egy munkaterülettel feljebb"
+#, fuzzy
+msgid "Delete active workspace"
+msgstr "Munkaterület törlése"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
-msgid "Move window to bottom workspace"
-msgstr "Ablak egy munkaterülettel lejjebb"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
-msgid "Move window to left workspace"
-msgstr "Ablak egy munkaterülettel balra"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
-msgid "Move window to right workspace"
-msgstr "Ablak egy munkaterülettel jobbra"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
-msgid "Show desktop"
-msgstr "Asztal mutatása"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
-msgid "Cancel window action"
-msgstr "Ablak művelet törlése"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
-msgid "Window operations menu"
-msgstr "Ablak művelet menü"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:505
 #, c-format
 msgid "Move window to workspace %d"
 msgstr "Ablak erre a munkaterületre: %d"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
 msgid "Cannot open the theme directory !"
 msgstr "Nem sikerült megnyitni a témakönyvtárat!"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:604
 #, c-format
 msgid ""
 "Cannot open %s : \n"
@@ -723,8 +708,8 @@ msgstr ""
 "%s nem nyitható meg: \n"
 "%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:618
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:629
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -733,7 +718,7 @@ msgstr ""
 "%s nem írható : \n"
 ":%s"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
@@ -741,119 +726,144 @@ msgstr ""
 "E gyorsbillentyű már létezik!\n"
 "Biztos ezt akarod használni?"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
 msgid "Compose shortcut for :"
 msgstr "Gyorsbillentyű készítése ehhez:"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
 msgid "Compose shortcut"
 msgstr "Gyorsbillentyű készítése"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
-msgid "Cancel"
-msgstr "Mégsem"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
 msgid "No shortcut"
 msgstr "Nincs gyorsbillentyű"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:84
+#: ../src/hints.c:86
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (itt: %s)"
 
-#: ../src/main.c:135
+#: ../src/main.c:137
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Szegmentálási hiba"
 
-#: ../src/menu.c:40
+#: ../src/menu.c:42
 msgid "Ma_ximize"
 msgstr "Ma_ximálás"
 
-#: ../src/menu.c:41
-msgid "Un_maximize"
-msgstr "_Visszaállítás"
-
-#: ../src/menu.c:42
-msgid "_Hide"
-msgstr "El_rejtés"
-
 #: ../src/menu.c:43
+#, fuzzy
+msgid "(Un)Ma_ximize"
+msgstr "Ma_ximálás"
+
+#: ../src/menu.c:44
+#, fuzzy
+msgid "Mi_nimize"
+msgstr "Ma_ximálás"
+
+#: ../src/menu.c:45
 msgid "Hide _all others"
 msgstr "Összes _többi elrejtése"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:46
 msgid "S_how"
 msgstr "_Megjelenítés"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:47
+msgid "_Move"
+msgstr ""
+
+#: ../src/menu.c:48
+msgid "_Resize"
+msgstr ""
+
+#: ../src/menu.c:50
 msgid "_Shade"
 msgstr "Fel_gördítés"
 
-#: ../src/menu.c:46
-msgid "Un_shade"
+#: ../src/menu.c:51
+#, fuzzy
+msgid "(Un)_Shade"
 msgstr "Le_gördítés"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:52
 msgid "S_tick"
 msgstr "_Kitűzés"
 
-#: ../src/menu.c:48
-msgid "Uns_tick"
+#: ../src/menu.c:53
+#, fuzzy
+msgid "(Un)S_tick"
 msgstr "_Leválasztás"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:54
 msgid "Context _help"
 msgstr "Helyi _súgó"
 
-#: ../src/menu.c:50
-#: ../src/menu.c:51
-msgid "Always on top"
-msgstr "Mindig felül"
+#: ../src/menu.c:56
+msgid "Above"
+msgstr ""
 
-#: ../src/menu.c:52
+#: ../src/menu.c:57
+msgid "Normal"
+msgstr ""
+
+#: ../src/menu.c:58
+#, fuzzy
+msgid "Below"
+msgstr "Hosszú"
+
+#: ../src/menu.c:59
+#, fuzzy
+msgid "_Fullscreen"
+msgstr "Teljes képernyő"
+
+#: ../src/menu.c:60
+msgid "(Un)_Fullscreen"
+msgstr ""
+
+#: ../src/menu.c:61
 msgid "Send to..."
 msgstr "Küldés ide:"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:63
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:66
 msgid "Destroy"
 msgstr "Megölés"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:69
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:70
 msgid "Restart"
 msgstr "Újraindítás"
 
-#: ../src/menu.c:169
+#: ../src/menu.c:185
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "%i. munkaterület (%s)"
 
-#: ../src/menu.c:173
+#: ../src/menu.c:189
 #, c-format
 msgid "Workspace %i"
 msgstr "%i. munkaterület"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: a GtkMenu nem tudta elkapni a mutatót\n"
 
-#: ../src/settings.c:968
+#: ../src/settings.c:970
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nem lehet lefoglalni a színt: %s\n"
 
-#: ../src/settings.c:974
+#: ../src/settings.c:976
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nem lehet értelmezni a színt: %s\n"
@@ -882,9 +892,42 @@ msgstr "Munkaterület beállítások"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 munkaterület beállítások"
 
+#~ msgid "Move window down"
+#~ msgstr "Ablak mozgatása lefelé"
+
+#~ msgid "Move window left"
+#~ msgstr "Ablak mozgatása balra"
+
+#~ msgid "Move window right"
+#~ msgstr "Ablak mozgatása jobbra"
+
+#~ msgid "Resize window down"
+#~ msgstr "Ablak átméretezése lent"
+
+#~ msgid "Resize window left"
+#~ msgstr "Ablak átméretezése bal oldalon"
+
+#~ msgid "Resize window right"
+#~ msgstr "Ablak átméretezés jobb oldalon"
+
+#~ msgid "Cancel move/resize window"
+#~ msgstr "Ablak mozgatás/átméretezés törlése"
+
+#~ msgid "Cancel window action"
+#~ msgstr "Ablak művelet törlése"
+
+#~ msgid "Un_maximize"
+#~ msgstr "_Visszaállítás"
+
+#~ msgid "_Hide"
+#~ msgstr "El_rejtés"
+
+#~ msgid "Always on top"
+#~ msgstr "Mindig felül"
+
 #, fuzzy
 #~ msgid "Workspace %02d"
 #~ msgstr "%d. munkaterület"
+
 #~ msgid "Unknown application!"
 #~ msgstr "Ismeretlen alkalmazás!"
-

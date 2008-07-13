@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-23 19:57+0100\n"
+"POT-Creation-Date: 2008-07-13 14:53+0200\n"
 "PO-Revision-Date: 2005-08-19 21:11+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -43,23 +43,23 @@ msgid "Bottom :"
 msgstr "Долу :"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/workspaces_plugin.c:110
+#: ../mcs-plugin/workspaces_plugin.c:111
 #, fuzzy
 msgid "Button Label|Workspaces and Margins"
 msgstr "Граница на работно място"
 
-#: ../mcs-plugin/workspaces_plugin.c:144
+#: ../mcs-plugin/workspaces_plugin.c:145
 #, fuzzy
 msgid "Workspaces and Margins"
 msgstr "Граница на работно място"
 
-#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:640
-#: ../mcs-plugin/workspaces.c:516
+#: ../mcs-plugin/workspaces_plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/workspaces.c:519
 #, fuzzy
 msgid "Workspaces"
 msgstr "Работно място %i"
 
-#: ../mcs-plugin/workspaces_plugin.c:171
+#: ../mcs-plugin/workspaces_plugin.c:172
 msgid "Margins"
 msgstr ""
 
@@ -268,29 +268,29 @@ msgstr "Мениджър на прозорци"
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr ""
 
-#: ../mcs-plugin/workspaces.c:329
+#: ../mcs-plugin/workspaces.c:332
 msgid "Change name"
 msgstr ""
 
-#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:490
+#: ../mcs-plugin/workspaces.c:341 ../mcs-plugin/xfwm4_shortcuteditor.c:484
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "Работно място %i"
 
-#: ../mcs-plugin/workspaces.c:348
+#: ../mcs-plugin/workspaces.c:349
 msgid "Name:"
 msgstr ""
 
-#: ../mcs-plugin/workspaces.c:427
+#: ../mcs-plugin/workspaces.c:428
 msgid "Click on a workspace name to edit it"
 msgstr ""
 
-#: ../mcs-plugin/workspaces.c:493
+#: ../mcs-plugin/workspaces.c:494
 #, fuzzy
 msgid "Number of workspaces:"
 msgstr "Превключване на работните места"
 
-#: ../mcs-plugin/workspaces.c:527
+#: ../mcs-plugin/workspaces.c:530
 #, fuzzy
 msgid "Workspace names"
 msgstr "Граница на работно място"
@@ -319,19 +319,19 @@ msgstr "Максимизира"
 msgid "Close"
 msgstr "Затваряне"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:372
 msgid "Shade window"
 msgstr "Засенчва прозореца"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:369
 msgid "Hide window"
 msgstr "Скрива прозореца"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:368
 msgid "Maximize window"
 msgstr "Максимизира прозореца"
 
-#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:376
 #, fuzzy
 msgid "Fill window"
 msgstr "Скрива прозореца"
@@ -340,7 +340,7 @@ msgstr "Скрива прозореца"
 msgid "Nothing"
 msgstr "Нищо"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:361
 msgid "Left"
 msgstr "Ляво"
 
@@ -348,7 +348,7 @@ msgstr "Ляво"
 msgid "Center"
 msgstr "Център"
 
-#: ../mcs-plugin/xfwm4_plugin.c:90
+#: ../mcs-plugin/xfwm4_plugin.c:90 ../mcs-plugin/xfwm4_shortcuteditor.c:362
 msgid "Right"
 msgstr "Дясно"
 
@@ -565,36 +565,52 @@ msgstr "Допълнителни"
 msgid "Button Label|Window Manager"
 msgstr "Мениджър на прозорци"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:53
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:54
 msgid "Do you really want to remove this keybinding theme ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:134
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:133
 msgid "Add keybinding theme"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:144
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Enter a name for the theme:"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:180
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:176
 msgid "A keybinding theme with the same name already exists"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:186
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
 msgid "You have to provide a name for the keybinding theme"
 msgstr ""
 
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+msgid "Window operations menu"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+msgid "Up"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+msgid "Down"
+msgstr ""
+
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+msgid "Cancel"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 #, fuzzy
-msgid "Close window"
+msgid "Cycle windows"
 msgstr "Скрива прозореца"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 #, fuzzy
-msgid "Maximize window vertically"
-msgstr "Максимизира прозореца"
+msgid "Close window"
+msgstr "Скрива прозореца"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:366
 #, fuzzy
@@ -603,110 +619,104 @@ msgstr "Максимизира прозореца"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:367
 #, fuzzy
-msgid "Fill window horizontally"
+msgid "Maximize window vertically"
 msgstr "Максимизира прозореца"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 #, fuzzy
-msgid "Fill window vertically"
-msgstr "Максимизира прозореца"
+msgid "Move window"
+msgstr "Новите прозорци се фокусират"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 #, fuzzy
-msgid "Stick window"
+msgid "Resize window"
 msgstr "Скрива прозореца"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 #, fuzzy
-msgid "Cycle windows"
+msgid "Stick window"
 msgstr "Скрива прозореца"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:374
 #, fuzzy
-msgid "Move window up"
-msgstr "Новите прозорци се фокусират"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
-#, fuzzy
-msgid "Move window down"
-msgstr "Новите прозорци се фокусират"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
-#, fuzzy
-msgid "Move window left"
-msgstr "Новите прозорци се фокусират"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
-#, fuzzy
-msgid "Move window right"
-msgstr "Новите прозорци се фокусират"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
-#, fuzzy
-msgid "Resize window up"
-msgstr "Скрива прозореца"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
-#, fuzzy
-msgid "Resize window down"
-msgstr "Скрива прозореца"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
-#, fuzzy
-msgid "Resize window left"
-msgstr "Скрива прозореца"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
-#, fuzzy
-msgid "Resize window right"
-msgstr "Скрива прозореца"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
-#, fuzzy
-msgid "Cancel move/resize window"
-msgstr "Скрива прозореца"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
-#, fuzzy
 msgid "Raise window"
 msgstr "Скрива прозореца"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
 #, fuzzy
 msgid "Lower window"
 msgstr "Скрива прозореца"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "Максимизира прозореца"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "Максимизира прозореца"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
 msgid "Toggle above"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
 msgid "Toggle fullscreen"
 msgstr ""
 
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#, fuzzy
+msgid "Move window to upper workspace"
+msgstr "Новите прозорци се фокусират"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#, fuzzy
+msgid "Move window to bottom workspace"
+msgstr "Новите прозорци се фокусират"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#, fuzzy
+msgid "Move window to left workspace"
+msgstr "Новите прозорци се фокусират"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#, fuzzy
+msgid "Move window to right workspace"
+msgstr "Новите прозорци се фокусират"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#, fuzzy
+msgid "Move window to previous workspace"
+msgstr "Превключване на работните места"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#, fuzzy
+msgid "Move window to next workspace"
+msgstr "Новите прозорци се фокусират"
+
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+msgid "Show desktop"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
 #, fuzzy
 msgid "Upper workspace"
 msgstr "Превключване на работните места"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "Превключване на работните места"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
 #, fuzzy
 msgid "Left workspace"
 msgstr "Превключване на работните места"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
-#, fuzzy
-msgid "Right workspace"
-msgstr "Превключване на работните места"
-
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:391
 #, fuzzy
-msgid "Next workspace"
+msgid "Right workspace"
 msgstr "Превключване на работните места"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:392
@@ -716,202 +726,199 @@ msgstr "Превключване на работните места"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:393
 #, fuzzy
-msgid "Add workspace"
+msgid "Next workspace"
 msgstr "Превключване на работните места"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:394
 #, fuzzy
-msgid "Delete workspace"
+msgid "Add workspace"
 msgstr "Превключване на работните места"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:395
 #, fuzzy
-msgid "Move window to next workspace"
-msgstr "Новите прозорци се фокусират"
+msgid "Add adjacent workspace"
+msgstr "Превключване на работните места"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:396
 #, fuzzy
-msgid "Move window to previous workspace"
+msgid "Delete last workspace"
 msgstr "Превключване на работните места"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:397
 #, fuzzy
-msgid "Move window to upper workspace"
-msgstr "Новите прозорци се фокусират"
+msgid "Delete active workspace"
+msgstr "Превключване на работните места"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:398
-#, fuzzy
-msgid "Move window to bottom workspace"
-msgstr "Новите прозорци се фокусират"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:399
-#, fuzzy
-msgid "Move window to left workspace"
-msgstr "Новите прозорци се фокусират"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:400
-#, fuzzy
-msgid "Move window to right workspace"
-msgstr "Новите прозорци се фокусират"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:401
-msgid "Show desktop"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:402
-#, fuzzy
-msgid "Cancel window action"
-msgstr "Показва съдържанието на прозорците при промяна на размера"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:403
-msgid "Window operations menu"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:505
 #, fuzzy, c-format
 msgid "Move window to workspace %d"
 msgstr "Новите прозорци се фокусират"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:591
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
 msgid "Cannot open the theme directory !"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:610
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:604
 #, c-format
 msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:624
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:635
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:618
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:629
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:794
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
 #, fuzzy
 msgid "Compose shortcut for :"
 msgstr "Клавишни комбинации"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
 #, fuzzy
 msgid "Compose shortcut"
 msgstr "Клавишни комбинации"
 
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:864
-msgid "Cancel"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:868
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
 #, fuzzy
 msgid "No shortcut"
 msgstr "Клавишни комбинации"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:84
+#: ../src/hints.c:86
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:135
+#: ../src/main.c:137
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
 
-#: ../src/menu.c:40
+#: ../src/menu.c:42
 msgid "Ma_ximize"
 msgstr "Максимизира"
 
-#: ../src/menu.c:41
-msgid "Un_maximize"
-msgstr "Смалява"
-
-#: ../src/menu.c:42
-msgid "_Hide"
-msgstr "Скрива"
-
 #: ../src/menu.c:43
+#, fuzzy
+msgid "(Un)Ma_ximize"
+msgstr "Максимизира"
+
+#: ../src/menu.c:44
+#, fuzzy
+msgid "Mi_nimize"
+msgstr "Максимизира"
+
+#: ../src/menu.c:45
 msgid "Hide _all others"
 msgstr "Скрива всички останали"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:46
 msgid "S_how"
 msgstr "Показва"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:47
+msgid "_Move"
+msgstr ""
+
+#: ../src/menu.c:48
+msgid "_Resize"
+msgstr ""
+
+#: ../src/menu.c:50
 msgid "_Shade"
 msgstr "Сгъване"
 
-#: ../src/menu.c:46
-msgid "Un_shade"
+#: ../src/menu.c:51
+#, fuzzy
+msgid "(Un)_Shade"
 msgstr "Разгъва"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:52
 msgid "S_tick"
 msgstr "Забожда"
 
-#: ../src/menu.c:48
-msgid "Uns_tick"
+#: ../src/menu.c:53
+#, fuzzy
+msgid "(Un)S_tick"
 msgstr "Отбожда"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:54
 msgid "Context _help"
 msgstr ""
 
-#: ../src/menu.c:50 ../src/menu.c:51
-msgid "Always on top"
+#: ../src/menu.c:56
+msgid "Above"
 msgstr ""
 
-#: ../src/menu.c:52
+#: ../src/menu.c:57
+msgid "Normal"
+msgstr ""
+
+#: ../src/menu.c:58
+#, fuzzy
+msgid "Below"
+msgstr "Бавно"
+
+#: ../src/menu.c:59
+msgid "_Fullscreen"
+msgstr ""
+
+#: ../src/menu.c:60
+msgid "(Un)_Fullscreen"
+msgstr ""
+
+#: ../src/menu.c:61
 msgid "Send to..."
 msgstr "Изпраща на..."
 
-#: ../src/menu.c:54
+#: ../src/menu.c:63
 msgid "_Close"
 msgstr "Затваря"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:66
 msgid "Destroy"
 msgstr "Унищожава"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:69
 msgid "_Quit"
 msgstr "Край"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:70
 msgid "Restart"
 msgstr "Рестартиране"
 
-#: ../src/menu.c:169
+#: ../src/menu.c:185
 #, fuzzy, c-format
 msgid "Workspace %i (%s)"
 msgstr "Работно място %i"
 
-#: ../src/menu.c:173
+#: ../src/menu.c:189
 #, c-format
 msgid "Workspace %i"
 msgstr "Работно място %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:425
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: ../src/settings.c:968
+#: ../src/settings.c:970
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr ""
 
-#: ../src/settings.c:974
+#: ../src/settings.c:976
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr ""
@@ -945,6 +952,44 @@ msgstr "Граница на работно място"
 #, fuzzy
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Граница на работно място"
+
+#, fuzzy
+#~ msgid "Move window down"
+#~ msgstr "Новите прозорци се фокусират"
+
+#, fuzzy
+#~ msgid "Move window left"
+#~ msgstr "Новите прозорци се фокусират"
+
+#, fuzzy
+#~ msgid "Move window right"
+#~ msgstr "Новите прозорци се фокусират"
+
+#, fuzzy
+#~ msgid "Resize window down"
+#~ msgstr "Скрива прозореца"
+
+#, fuzzy
+#~ msgid "Resize window left"
+#~ msgstr "Скрива прозореца"
+
+#, fuzzy
+#~ msgid "Resize window right"
+#~ msgstr "Скрива прозореца"
+
+#, fuzzy
+#~ msgid "Cancel move/resize window"
+#~ msgstr "Скрива прозореца"
+
+#, fuzzy
+#~ msgid "Cancel window action"
+#~ msgstr "Показва съдържанието на прозорците при промяна на размера"
+
+#~ msgid "Un_maximize"
+#~ msgstr "Смалява"
+
+#~ msgid "_Hide"
+#~ msgstr "Скрива"
 
 #, fuzzy
 #~ msgid "Workspace %02d"
