@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-13 14:53+0200\n"
+"POT-Creation-Date: 2008-07-14 10:09+0000\n"
 "PO-Revision-Date: 2007-06-19 16:13+0300\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -564,11 +564,11 @@ msgstr "Меню операцій з вікнами"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Up"
-msgstr ""
+msgstr "Вгору"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Down"
-msgstr ""
+msgstr "Вниз"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:858
@@ -592,14 +592,12 @@ msgid "Maximize window vertically"
 msgstr "Розгорнути вікно по вертикалі"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
-#, fuzzy
 msgid "Move window"
-msgstr "Перемістити вікно вгору"
+msgstr "Перемістити вікно"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:371
-#, fuzzy
 msgid "Resize window"
-msgstr "Змінити розмір вікна згори"
+msgstr "Змінити розмір вікна"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Stick window"
@@ -686,19 +684,16 @@ msgid "Add workspace"
 msgstr "Додати робочу область"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:395
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "Додати робочу область"
+msgstr "Додати суміжну робочу область"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:396
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Видалити робочу область"
+msgstr "Видалити останню робочу область"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:397
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Видалити робочу область"
+msgstr "Видалити активну робочу область"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:505
 #, c-format
@@ -764,14 +759,12 @@ msgid "Ma_ximize"
 msgstr "М_аксимізувати"
 
 #: ../src/menu.c:43
-#, fuzzy
 msgid "(Un)Ma_ximize"
-msgstr "М_аксимізувати"
+msgstr "(Де)М_аксимізувати"
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "М_аксимізувати"
+msgstr "М_інімізувати"
 
 #: ../src/menu.c:45
 msgid "Hide _all others"
@@ -783,29 +776,27 @@ msgstr "_Показати"
 
 #: ../src/menu.c:47
 msgid "_Move"
-msgstr ""
+msgstr "Пере_містити"
 
 #: ../src/menu.c:48
 msgid "_Resize"
-msgstr ""
+msgstr "Змінити р_озмір"
 
 #: ../src/menu.c:50
 msgid "_Shade"
 msgstr "З_горнути"
 
 #: ../src/menu.c:51
-#, fuzzy
 msgid "(Un)_Shade"
-msgstr "_Розгорнути"
+msgstr "(Де)_Розгорнути"
 
 #: ../src/menu.c:52
 msgid "S_tick"
 msgstr "При_ліпити"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "(Un)S_tick"
-msgstr "В_ідліпити"
+msgstr "(Де)В_ідліпити"
 
 #: ../src/menu.c:54
 msgid "Context _help"
@@ -813,25 +804,23 @@ msgstr "Контекстна _довідка"
 
 #: ../src/menu.c:56
 msgid "Above"
-msgstr ""
+msgstr "Вище"
 
 #: ../src/menu.c:57
 msgid "Normal"
-msgstr ""
+msgstr "Звичайно"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Below"
-msgstr "Повільно"
+msgstr "Нижче"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Повноекранний режим"
+msgstr "_На весь екран"
 
 #: ../src/menu.c:60
 msgid "(Un)_Fullscreen"
-msgstr ""
+msgstr "_Не на весь екран"
 
 #: ../src/menu.c:61
 msgid "Send to..."
