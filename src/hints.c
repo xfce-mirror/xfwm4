@@ -452,6 +452,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_SYNC_REQUEST];
     atoms[i++] = display_info->atoms[NET_WM_SYNC_REQUEST_COUNTER];
     atoms[i++] = display_info->atoms[NET_WM_USER_TIME];
+    atoms[i++] = display_info->atoms[NET_WM_USER_TIME_WINDOW];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG];
@@ -828,6 +829,39 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***st
 }
 
 gboolean
+getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
+{
+    Atom type;
+    int format;
+    unsigned long nitems;
+    unsigned long bytes_after;
+    unsigned char *prop;
+
+    TRACE ("entering getWindowProp");
+
+    g_return_val_if_fail (window != None, None);
+
+    *w = None;
+    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[atom_id],
+                            0L, 1L, FALSE, XA_WINDOW, &type, &format, &nitems,
+                            &bytes_after, (unsigned char **) &prop) == Success)
+    {
+        *w = *((Window *) prop);
+        if (prop)
+        {
+            XFree (prop);
+        }
+        if (!check_type_and_format (32, XA_WINDOW, -1, format, type))
+        {
+            *w = None;
+            return FALSE;
+        }
+    }
+
+    return TRUE;
+}
+
+gboolean
 getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
 {
     char *str;
@@ -921,31 +955,12 @@ Window
 getClientLeader (DisplayInfo *display_info, Window window)
 {
     Window client_leader;
-    Atom actual_type;
-    int actual_format;
-    unsigned long nitems;
-    unsigned long bytes_after;
-    unsigned char *prop;
-
     TRACE ("entering getClientLeader");
 
     g_return_val_if_fail (window != None, None);
 
     client_leader = None;
-    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[WM_CLIENT_LEADER],
-                            0L, 1L, FALSE, AnyPropertyType, &actual_type, &actual_format, &nitems,
-                            &bytes_after, (unsigned char **) &prop) == Success)
-    {
-        if ((prop) && (actual_type == XA_WINDOW) && (actual_format == 32)
-            && (nitems == 1) && (bytes_after == 0))
-        {
-            client_leader = *((Window *) prop);
-        }
-        if (prop)
-        {
-            XFree (prop);
-        }
-    }
+    getWindowProp (display_info, window, WM_CLIENT_LEADER, &client_leader);
     return client_leader;
 }
 
@@ -979,6 +994,22 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
     return FALSE;
 }
 
+Window
+getNetWMUserTimeWindow (DisplayInfo *display_info, Window window)
+{
+    Window user_time_win;
+    TRACE ("entering getNetWMUserTimeWindow");
+
+    g_return_val_if_fail (window != None, None);
+
+    user_time_win = None;
+    if (getWindowProp (display_info, window, NET_WM_USER_TIME_WINDOW, &user_time_win) && (user_time_win != None))
+    {
+        return user_time_win;
+    }
+    return window;
+}
+
 gboolean
 getClientID (DisplayInfo *display_info, Window window, gchar **client_id)
 {
@@ -991,7 +1022,7 @@ getClientID (DisplayInfo *display_info, Window window, gchar **client_id)
     *client_id = NULL;
     g_return_val_if_fail (window != None, FALSE);
 
-    if ((id = getClientLeader (display_info, window)))
+    if (getWindowProp (display_info, window, WM_CLIENT_LEADER, &id) && (id != None))
     {
         if (XGetTextProperty (display_info->dpy, id, &tp, display_info->atoms[SM_CLIENT_ID]))
         {
@@ -1019,7 +1050,7 @@ getWindowCommand (DisplayInfo *display_info, Window window, char ***argv, int *a
     {
         return TRUE;
     }
-    if ((id = getClientLeader (display_info, window)))
+    if (getWindowProp (display_info, window, WM_CLIENT_LEADER, &id) && (id != None))
     {
         if (XGetCommand (display_info->dpy, id, argv, argc) && (*argc > 0))
         {

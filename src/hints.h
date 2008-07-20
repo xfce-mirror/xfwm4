@@ -90,6 +90,7 @@
 #define WIN_LAYER_ONTOP                         6
 #define WIN_LAYER_DOCK                          8
 #define WIN_LAYER_ABOVE_DOCK                    10
+#define WIN_LAYER_FULLSCREEN                    12
 
 #define NET_WM_MOVERESIZE_SIZE_TOPLEFT          0
 #define NET_WM_MOVERESIZE_SIZE_TOP              1
@@ -229,9 +230,10 @@ gboolean                 getUTF8StringList                      (DisplayInfo *,
                                                                  int,
                                                                  gchar ***,
                                                                  int *);
-gboolean                 getClientMachine                       (DisplayInfo *,
+gboolean                 getWindowProp                          (DisplayInfo *,
                                                                  Window,
-                                                                 gchar **);
+                                                                 int,
+                                                                 Window *);
 gboolean                 getClientMachine                       (DisplayInfo *,
                                                                  Window,
                                                                  gchar **);
@@ -243,6 +245,8 @@ Window                   getClientLeader                        (DisplayInfo *,
 gboolean                 getNetWMUserTime                       (DisplayInfo *,
                                                                  Window,
                                                                  Time *);
+Window                   getNetWMUserTimeWindow                 (DisplayInfo *,
+                                                                 Window);
 gboolean                 getClientID                            (DisplayInfo *,
                                                                  Window,
                                                                  gchar **);

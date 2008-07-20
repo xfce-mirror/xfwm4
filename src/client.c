@@ -1262,6 +1262,42 @@ clientGetUserTime (Client * c)
     }
 }
 
+void
+clientAddUserTimeWin (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if ((c->user_time_win != None) && (c->user_time_win != c->window))
+    {
+        XSelectInput (display_info->dpy, c->user_time_win, PropertyChangeMask);
+    }
+}
+
+void
+clientRemoveUserTimeWin (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if ((c->user_time_win != None) && (c->user_time_win != c->window))
+    {
+        XSelectInput (display_info->dpy, c->user_time_win, NoEventMask);
+    }
+}
+
 static void
 clientUpdateIconPix (Client * c)
 {
@@ -1569,6 +1605,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->fullscreen_old_layer = c->win_layer;
 
     /* net_wm_user_time standard */
+    c->user_time_win = getNetWMUserTimeWindow(display_info, c->window);
+    clientAddUserTimeWin (c);
     clientGetUserTime (c);
 
     /* Apply startup notification properties if available */
@@ -1815,6 +1853,7 @@ clientUnframe (Client * c, gboolean remap)
 
     myDisplayGrabServer (display_info);
     gdk_error_trap_push ();
+    clientRemoveUserTimeWin (c);
     clientUngrabButtons (c);
     XUnmapWindow (display_info->dpy, c->frame);
     clientCoordGravitate (c, REMOVE, &c->x, &c->y);
@@ -1988,6 +2027,15 @@ clientGetFromWindow (Client *c, Window w, unsigned short mode)
         if (c->frame == w)
         {
             TRACE ("found \"%s\" (mode FRAME)", c->name);
+            return (c);
+        }
+    }
+
+    if (mode & SEARCH_WIN_USER_TIME)
+    {
+        if (c->user_time_win == w)
+        {
+            TRACE ("found \"%s\" (mode WIN_USER_TIME)", c->name);
             return (c);
         }
     }

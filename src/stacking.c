@@ -549,11 +549,11 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
         if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN)
             || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
-            clientSetLayer (c, WIN_LAYER_ABOVE_DOCK);
+            clientSetLayer (c, WIN_LAYER_FULLSCREEN);
             return TRUE;
         }
     }
-    else if (c->win_layer == WIN_LAYER_ABOVE_DOCK)
+    else if (c->win_layer == WIN_LAYER_FULLSCREEN)
     {
         if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN)
             || FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))

@@ -237,6 +237,7 @@ struct _Client
     Window window;
     Window frame;
     Window transient_for;
+    Window user_time_win;
     Window *cmap_windows;
     xfwmWindow title;
     xfwmWindow sides[SIDE_COUNT];
@@ -320,6 +321,8 @@ Display                 *clientGetXDisplay                      (Client *);
 void                     clientClearLastOpTime                  (Client *);
 void                     clientUpdateWinState                   (Client *,
                                                                  XClientMessageEvent *);
+void                     clientAddUserTimeWin                   (Client *);
+void                     clientRemoveUserTimeWin                (Client *);
 void                     clientUpdateUrgency                    (Client *);
 void                     clientCoordGravitate                   (Client *,
                                                                  int,

@@ -723,7 +723,7 @@ clientUpdateFullscreenState (Client * c)
         wc.y = rect.y;
         wc.width = rect.width;
         wc.height = rect.height;
-        layer = WIN_LAYER_ABOVE_DOCK;
+        layer = WIN_LAYER_FULLSCREEN;
     }
     else
     {

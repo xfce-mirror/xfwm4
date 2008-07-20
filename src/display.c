@@ -137,6 +137,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_SYNC_REQUEST",
         "_NET_WM_SYNC_REQUEST_COUNTER",
         "_NET_WM_USER_TIME",
+        "_NET_WM_USER_TIME_WINDOW",
         "_NET_WM_WINDOW_TYPE",
         "_NET_WM_WINDOW_TYPE_DESKTOP",
         "_NET_WM_WINDOW_TYPE_DIALOG",

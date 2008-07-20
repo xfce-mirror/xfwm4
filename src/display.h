@@ -80,11 +80,11 @@
 
 enum
 {
-    SEARCH_WINDOW  = (1 << 0),
-    SEARCH_FRAME   = (1 << 1),
-    SEARCH_BUTTON  = (1 << 2)
+    SEARCH_WINDOW         = (1 << 0),
+    SEARCH_FRAME          = (1 << 1),
+    SEARCH_BUTTON         = (1 << 2),
+    SEARCH_WIN_USER_TIME  = (1 << 3)
 };
-#define SEARCH_ANY (SEARCH_WINDOW | SEARCH_FRAME | SEARCH_BUTTON)
 
 enum
 {
@@ -231,6 +231,7 @@ enum
     NET_WM_SYNC_REQUEST,
     NET_WM_SYNC_REQUEST_COUNTER,
     NET_WM_USER_TIME,
+    NET_WM_USER_TIME_WINDOW,
     NET_WM_WINDOW_TYPE,
     NET_WM_WINDOW_TYPE_DESKTOP,
     NET_WM_WINDOW_TYPE_DIALOG,

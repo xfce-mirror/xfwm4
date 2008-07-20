@@ -1819,7 +1819,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
     TRACE ("entering handlePropertyNotify");
 
     status = EVENT_FILTER_PASS;
-    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
+    c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW | SEARCH_WIN_USER_TIME);
     if (c)
     {
         status = EVENT_FILTER_REMOVE;
@@ -1880,25 +1880,6 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             if (clientCheckTransientWindow (c, w))
             {
                 c->transient_for = w;
-#if 0
-                /*
-                  Java 1.6 updates the WM_TRANSIENT_FOR properties "on-the-fly"
-                  of its windows to maintain the z-order.
-
-                  If we raise the transient then, we clearly have a race
-                  condition between the WM and Java... And that breaks
-                  the z-order. Bug #2483.
-
-                  I still think that raising here makes sense, to ensure
-                  that the newly promoted transient window is placed above
-                  its parent.
-
-                  Chances are that Java 1.6 won't change any time soon (heh,
-                  it's not even released yet), so let's adjust the WM to
-                  work with Java 1.6...
-                 */
-                clientRaise (c, w);
-#endif
             }
         }
         else if (ev->atom == display_info->atoms[WIN_HINTS])
@@ -1938,6 +1919,13 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 myDisplaySetLastUserTime (display_info, c->user_time);
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
             }
+        }
+        else if (ev->atom == display_info->atoms[NET_WM_USER_TIME_WINDOW])
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_USER_TIME_WINDOW notify", c->name, c->window);
+            clientRemoveUserTimeWin (c);
+            c->user_time_win = getNetWMUserTimeWindow(display_info, c->window);
+            clientAddUserTimeWin (c);
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
         {
