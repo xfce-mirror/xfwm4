@@ -8,7 +8,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="6"
+   width="4"
    height="24"
    id="svg2"
    sodipodi:version="0.32"
@@ -59,7 +59,7 @@
      inkscape:groupmode="layer"
      id="border">
     <path
-       style="fill:none;stroke:black;stroke-width:1px;stroke-opacity:0.20"
+       style="fill:none;stroke:black;stroke-width:1px;stroke-opacity:0.15"
        d="M 0.5,0 L 0.5,24"
        id="path1340" />
   </g>
