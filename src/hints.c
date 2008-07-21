@@ -706,6 +706,7 @@ getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str
     unsigned long n_items;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
+
     TRACE ("entering getUTF8StringData");
 
     *str_p = NULL;
@@ -739,6 +740,7 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, 
     char *xstr;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
+
     TRACE ("entering getUTF8String");
 
     if (!getUTF8StringData (display_info, w, atom_id, &xstr, length))
@@ -839,19 +841,20 @@ getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
 
     TRACE ("entering getWindowProp");
 
-    g_return_val_if_fail (window != None, None);
+    g_return_val_if_fail (window != None, FALSE);
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
 
     *w = None;
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[atom_id],
                             0L, 1L, FALSE, XA_WINDOW, &type, &format, &nitems,
                             &bytes_after, (unsigned char **) &prop) == Success)
     {
-        *w = *((Window *) prop);
         if (prop)
         {
+            *w = *((Window *) prop);
             XFree (prop);
         }
-        if (!check_type_and_format (32, XA_WINDOW, -1, format, type))
+        if (!prop || !check_type_and_format (32, XA_WINDOW, -1, format, type))
         {
             *w = None;
             return FALSE;
@@ -872,6 +875,7 @@ getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
     g_return_val_if_fail (machine != NULL, FALSE);
     *machine = NULL;
     g_return_val_if_fail (w != None, FALSE);
+    g_return_val_if_fail (display_info != NULL, FALSE);
 
     status = FALSE;
     str = get_text_property (display_info, w, display_info->atoms[WM_CLIENT_MACHINE]);
@@ -1003,7 +1007,7 @@ getNetWMUserTimeWindow (DisplayInfo *display_info, Window window)
     g_return_val_if_fail (window != None, None);
 
     user_time_win = None;
-    if (getWindowProp (display_info, window, NET_WM_USER_TIME_WINDOW, &user_time_win) && (user_time_win != None))
+    if (getWindowProp (display_info, window, NET_WM_USER_TIME_WINDOW, &user_time_win))
     {
         return user_time_win;
     }
