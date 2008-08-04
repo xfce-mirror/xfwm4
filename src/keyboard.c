@@ -64,7 +64,7 @@ getKeycode (Display *dpy, const char *str, KeyCode *keycode)
 }
 
 int
-getModifierMap (char *str)
+getModifierMap (const char *str)
 {
     gchar *tmp;
     int map;
@@ -122,7 +122,7 @@ getModifierMap (char *str)
 }
 
 void
-parseKeyString (Display * dpy, MyKey * key, char *str)
+parseKeyString (Display * dpy, MyKey * key, const char *str)
 {
     char *k;
 

@@ -114,6 +114,7 @@ cleanUp (void)
     myDisplayClose (display_info);
     g_free (display_info);
     display_info = NULL;
+    xfconf_shutdown();
 }
 
 static void

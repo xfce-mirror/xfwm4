@@ -40,7 +40,7 @@
 typedef struct
 {
     gchar *name;
-    gchar *value;
+    const gchar *value;
 }
 xfwmColorSymbol;
 
@@ -59,8 +59,8 @@ gboolean                 xfwmPixmapRenderGdkPixbuf              (xfwmPixmap *,
                                                                  GdkPixbuf *);
 gboolean                 xfwmPixmapLoad                         (ScreenInfo *,
                                                                  xfwmPixmap *,
-                                                                 gchar *,
-                                                                 gchar *,
+                                                                 const gchar *,
+                                                                 const gchar *,
                                                                  xfwmColorSymbol *);
 void                     xfwmPixmapCreate                       (ScreenInfo *,
                                                                  xfwmPixmap *,

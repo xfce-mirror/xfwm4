@@ -44,10 +44,10 @@ extern unsigned int ScrollLockMask;
 extern unsigned int SuperMask;
 extern unsigned int HyperMask;
 
-int                      getModifierMap                         (char *);
+int                      getModifierMap                         (const char *);
 void                     parseKeyString                         (Display *,
                                                                  MyKey *,
-                                                                 char *);
+                                                                 const char *);
 gboolean                 grabKey                                (Display *,
                                                                  MyKey *,
                                                                  Window);

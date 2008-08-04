@@ -36,6 +36,7 @@
 
 #include "event_filter.h"
 #include "menu.h"
+#include "misc.h"
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {

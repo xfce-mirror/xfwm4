@@ -35,11 +35,26 @@ gboolean                 parseRc                                (const gchar *,
                                                                  const gchar *,
                                                                  Settings *);
 gboolean                 checkRc                                (Settings *);
-gchar                   *getValue                               (const gchar *,
+GValue                  *getGValue                              (const gchar *,
+                                                                 Settings *);
+const gchar             *getStringValue                         (const gchar *,
+                                                                 Settings *);
+gint                     getIntValue                            (const gchar *,
+                                                                 Settings *);
+gboolean                 getBoolValue                           (const gchar *,
                                                                  Settings *);
 gboolean                 setValue                               (const gchar *,
                                                                  const gchar *,
                                                                  Settings *);
+gboolean                 setStringValue                         (const gchar *,
+                                                                 const gchar *,
+                                                                 Settings *);
+gboolean                 setIntValue                            (const gchar *,
+                                                                 gint,
+                                                                 Settings *rc);
+gboolean                 setBooleanValue                        (const gchar *,
+                                                                 gboolean,
+                                                                 Settings *rc);
 gboolean                 setBooleanValueFromInt                 (const gchar *,
                                                                  int,
                                                                  Settings *);

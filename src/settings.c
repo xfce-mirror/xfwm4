@@ -30,7 +30,7 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4mcs/mcs-client.h>
+#include <xfconf/xfconf.h>
 
 #include "screen.h"
 #include "hints.h"
@@ -42,17 +42,14 @@
 #include "ui_style.h"
 
 #define CHANNEL1                "xfwm4"
-#define CHANNEL2                "margins"
-#define CHANNEL3                "workspaces"
-#define CHANNEL4                "xfwm4_keys"
-#define CHANNEL5                "wmtweaks"
+#define CHANNEL2                "xfwm4_keys"
 
 #define DEFAULT_KEYTHEME        "Default"
 #define KEYTHEMERC              "keythemerc"
 #define THEMERC                 "themerc"
 
-#define TOINT(x)                (x ? atoi(x) : 0)
 #define XPM_COLOR_SYMBOL_SIZE   22
+#define XFWM4_SETTINGS_COUNT    66
 
 /* Forward static decls. */
 
@@ -60,21 +57,7 @@ static void              update_grabs      (ScreenInfo *);
 static void              set_settings_margin  (ScreenInfo *,
                                                int ,
                                                int);
-static void              notify_cb            (const char *,
-                                               const char *,
-                                               McsAction,
-                                               McsSetting *,
-                                               void *);
-static GdkFilterReturn   client_event_filter  (GdkXEvent *,
-                                               GdkEvent *,
-                                               gpointer);
-static void              watch_cb             (Window,
-                                               Bool,
-                                               long,
-                                               void *);
 static void              loadRcData           (ScreenInfo *,
-                                               Settings *);
-static void              loadMcsData          (ScreenInfo *,
                                                Settings *);
 static void              loadTheme            (ScreenInfo *,
                                                Settings *);
@@ -84,6 +67,10 @@ static void              unloadTheme          (ScreenInfo *);
 static void              unloadSettings       (ScreenInfo *);
 static gboolean          reloadScreenSettings (ScreenInfo *,
                                                int);
+static void              cb_xfwm4_channel_property_changed (XfconfChannel *,
+                                                           const gchar *,
+                                                           const GValue *,
+                                                           ScreenInfo *);
 
 static void
 update_grabs (ScreenInfo *screen_info)
@@ -140,7 +127,7 @@ set_settings_margin (ScreenInfo *screen_info, int idx, int value)
 }
 
 static void
-set_easy_click (ScreenInfo *screen_info, char *modifier)
+set_easy_click (ScreenInfo *screen_info, const char *modifier)
 {
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (modifier != NULL);
@@ -192,393 +179,10 @@ set_placement_mode (ScreenInfo *screen_info, const char *value)
 }
 
 static void
-notify_cb (const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
-{
-    ScreenInfo *screen_info;
-
-    screen_info = (ScreenInfo *) data;
-    g_return_if_fail (screen_info != NULL);
-
-    if (!g_ascii_strcasecmp (CHANNEL1, channel_name))
-    {
-        switch (action)
-        {
-            case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and reload */
-                if (!screen_info->mcs_initted)
-                {
-                    return;
-                }
-            case MCS_ACTION_CHANGED:
-                if (setting->type == MCS_TYPE_INT)
-                {
-                    if (!strcmp (name, "Xfwm/BoxMove"))
-                    {
-                        screen_info->params->box_move = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/BoxResize"))
-                    {
-                        screen_info->params->box_resize = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/ClickToFocus"))
-                    {
-                        screen_info->params->click_to_focus = setting->data.v_int;
-                        update_grabs (screen_info);
-                    }
-                    else if (!strcmp (name, "Xfwm/FocusNewWindow"))
-                    {
-                        screen_info->params->focus_new = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/FocusRaise"))
-                    {
-                        screen_info->params->raise_on_focus = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/RaiseDelay"))
-                    {
-                        screen_info->params->raise_delay = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/FocusDelay"))
-                    {
-                        screen_info->params->focus_delay = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/RaiseOnClick"))
-                    {
-                        screen_info->params->raise_on_click = setting->data.v_int;
-                        update_grabs (screen_info);
-                    }
-                    else if (!strcmp (name, "Xfwm/SnapToBorder"))
-                    {
-                        screen_info->params->snap_to_border = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/SnapToWindows"))
-                    {
-                        screen_info->params->snap_to_windows = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/SnapWidth"))
-                    {
-                        screen_info->params->snap_width = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/WrapWorkspaces"))
-                    {
-                        screen_info->params->wrap_workspaces = setting->data.v_int;
-                        placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
-                    }
-                    else if (!strcmp (name, "Xfwm/WrapWindows"))
-                    {
-                        screen_info->params->wrap_windows = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/WrapResistance"))
-                    {
-                        screen_info->params->wrap_resistance = setting->data.v_int;
-                    }
-                }
-                else if (setting->type == MCS_TYPE_STRING)
-                {
-                    if (!strcmp (name, "Xfwm/DblClickAction"))
-                    {
-                        reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
-                    }
-                    else if (!strcmp (name, "Xfwm/ThemeName"))
-                    {
-                        reloadScreenSettings (screen_info, UPDATE_MAXIMIZE | UPDATE_GRAVITY | UPDATE_CACHE);
-                    }
-                    else if (!strcmp (name, "Xfwm/ButtonLayout"))
-                    {
-                        reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
-                    }
-                    if (!strcmp (name, "Xfwm/TitleAlign"))
-                    {
-                        reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
-                    }
-                    if (!strcmp (name, "Xfwm/TitleFont"))
-                    {
-                        reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
-                    }
-                }
-                break;
-            case MCS_ACTION_DELETED:
-            default:
-                break;
-        }
-    }
-    else if (!g_ascii_strcasecmp (CHANNEL2, channel_name))
-    {
-        switch (action)
-        {
-            case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and reloads */
-                if (!screen_info->mcs_initted)
-                {
-                    return;
-                }
-            case MCS_ACTION_CHANGED:
-                if (setting->type == MCS_TYPE_INT)
-                {
-                    if (!strcmp (name, "Xfwm/LeftMargin"))
-                    {
-                        set_settings_margin (screen_info, STRUTS_LEFT, setting->data.v_int);
-                    }
-                    else if (!strcmp (name, "Xfwm/RightMargin"))
-                    {
-                        set_settings_margin (screen_info, STRUTS_RIGHT, setting->data.v_int);
-                    }
-                    else if (!strcmp (name, "Xfwm/BottomMargin"))
-                    {
-                        set_settings_margin (screen_info, STRUTS_BOTTOM, setting->data.v_int);
-                    }
-                    else if (!strcmp (name, "Xfwm/TopMargin"))
-                    {
-                        set_settings_margin (screen_info, STRUTS_TOP, setting->data.v_int);
-                    }
-                }
-                break;
-            case MCS_ACTION_DELETED:
-            default:
-                break;
-        }
-    }
-    else if (!g_ascii_strcasecmp (CHANNEL3, channel_name))
-    {
-        switch (action)
-        {
-            case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and reloads */
-                if (!screen_info->mcs_initted)
-                {
-                    return;
-                }
-            case MCS_ACTION_CHANGED:
-                if (setting->type == MCS_TYPE_INT)
-                {
-                    if (!strcmp (name, "Xfwm/WorkspaceCount"))
-                    {
-                        workspaceSetCount(screen_info, setting->data.v_int);
-                    }
-                }
-                break;
-            case MCS_ACTION_DELETED:
-            default:
-                break;
-        }
-    }
-    else if (!g_ascii_strcasecmp (CHANNEL4, channel_name))
-    {
-        switch (action)
-        {
-            case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and reloads */
-                if (!screen_info->mcs_initted)
-                {
-                    return;
-                }
-            case MCS_ACTION_CHANGED:
-                if (setting->type == MCS_TYPE_STRING)
-                {
-                    if (!strcmp (name, "Xfwm/KeyThemeName"))
-                    {
-                        reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
-                    }
-                }
-                break;
-            case MCS_ACTION_DELETED:
-            default:
-                break;
-        }
-    }
-    else if (!g_ascii_strcasecmp (CHANNEL5, channel_name))
-    {
-        switch (action)
-        {
-            case MCS_ACTION_NEW:
-                /* The following is to reduce initial startup time and reloads */
-                if (!screen_info->mcs_initted)
-                {
-                    return;
-                }
-            case MCS_ACTION_CHANGED:
-                if (setting->type == MCS_TYPE_INT)
-                {
-                    if (!strcmp (name, "Xfwm/BorderlessMaximize"))
-                    {
-                        screen_info->params->borderless_maximize = setting->data.v_int;
-                        reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
-                    }
-                    else if (!strcmp (name, "Xfwm/CycleMinimum"))
-                    {
-                        screen_info->params->cycle_minimum = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/CycleHidden"))
-                    {
-                        screen_info->params->cycle_hidden = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/CycleWorkspaces"))
-                    {
-                        screen_info->params->cycle_workspaces = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/FocusHint"))
-                    {
-                        screen_info->params->focus_hint = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/FrameOpacity"))
-                    {
-                        screen_info->params->frame_opacity = setting->data.v_int;
-                        reloadScreenSettings (screen_info, UPDATE_FRAME);
-                    }
-                    else if (!strcmp (name, "Xfwm/InactiveOpacity"))
-                    {
-                        screen_info->params->inactive_opacity = setting->data.v_int;
-                        reloadScreenSettings (screen_info, UPDATE_FRAME);
-                        clientUpdateAllOpacity (screen_info);
-                    }
-                    else if (!strcmp (name, "Xfwm/MoveOpacity"))
-                    {
-                        screen_info->params->move_opacity = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/ResizeOpacity"))
-                    {
-                        screen_info->params->resize_opacity = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/PopupOpacity"))
-                    {
-                        screen_info->params->popup_opacity = setting->data.v_int;
-                        reloadScreenSettings (screen_info, UPDATE_FRAME);
-                    }
-                    else if (!strcmp (name, "Xfwm/PlacementRatio"))
-                    {
-                        screen_info->params->placement_ratio = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/ShowDockShadow"))
-                    {
-                        screen_info->params->show_dock_shadow = setting->data.v_int;
-                        reloadScreenSettings (screen_info, UPDATE_FRAME);
-                    }
-                    else if (!strcmp (name, "Xfwm/ShowFrameShadow"))
-                    {
-                        screen_info->params->show_frame_shadow = setting->data.v_int;
-                        reloadScreenSettings (screen_info, UPDATE_FRAME);
-                    }
-                    else if (!strcmp (name, "Xfwm/ShowPopupShadow"))
-                    {
-                        screen_info->params->show_popup_shadow = setting->data.v_int;
-                        reloadScreenSettings (screen_info, UPDATE_FRAME);
-                    }
-                    else if (!strcmp (name, "Xfwm/SnapResist"))
-                    {
-                        screen_info->params->snap_resist = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/PreventFocusStealing"))
-                    {
-                        screen_info->params->prevent_focus_stealing = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/RaiseWithAnyButton"))
-                    {
-                        screen_info->params->raise_with_any_button = setting->data.v_int;
-                        update_grabs (screen_info);
-                    }
-                    else if (!strcmp (name, "Xfwm/RestoreOnMove"))
-                    {
-                        screen_info->params->restore_on_move = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/ScrollWorkspaces"))
-                    {
-                        screen_info->params->scroll_workspaces = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/ToggleWorkspaces"))
-                    {
-                        screen_info->params->toggle_workspaces = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/UnredirectOverlays"))
-                    {
-                        screen_info->params->unredirect_overlays = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/UseCompositing"))
-                    {
-                        screen_info->params->use_compositing = setting->data.v_int;
-                        compositorActivateScreen (screen_info,
-                                                  screen_info->params->use_compositing);
-                    }
-                    else if (!strcmp (name, "Xfwm/WrapLayout"))
-                    {
-                        screen_info->params->wrap_layout = setting->data.v_int;
-                    }
-                    else if (!strcmp (name, "Xfwm/WrapCycle"))
-                    {
-                        screen_info->params->wrap_cycle = setting->data.v_int;
-                    }
-                }
-                else if (setting->type == MCS_TYPE_STRING)
-                {
-                    if (!strcmp (name, "Xfwm/EasyClick"))
-                    {
-                        reloadScreenSettings (screen_info, UPDATE_BUTTON_GRABS);
-                    }
-                    else if (!strcmp (name, "Xfwm/ActivateAction"))
-                    {
-                        set_activate_action (screen_info, setting->data.v_string);
-                    }
-                    else if (!strcmp (name, "Xfwm/PlacementMode"))
-                    {
-                        set_placement_mode (screen_info, setting->data.v_string);
-                    }
-                }
-                break;
-            case MCS_ACTION_DELETED:
-            default:
-                break;
-        }
-    }
-}
-
-static GdkFilterReturn
-client_event_filter (GdkXEvent * xevent, GdkEvent * event, gpointer data)
-{
-    ScreenInfo *screen_info;
-
-    screen_info = (ScreenInfo *) data;
-    g_return_val_if_fail (screen_info != NULL, GDK_FILTER_CONTINUE);
-
-    if (mcs_client_process_event (screen_info->mcs_client, (XEvent *) xevent))
-    {
-        return GDK_FILTER_REMOVE;
-    }
-    else
-    {
-        return GDK_FILTER_CONTINUE;
-    }
-}
-
-static void
-watch_cb (Window window, Bool is_start, long mask, void *cb_data)
-{
-    GdkWindow *gdkwin;
-
-    gdkwin = gdk_window_lookup (window);
-
-    if (is_start)
-    {
-        if (!gdkwin)
-        {
-            gdkwin = gdk_window_foreign_new (window);
-        }
-        else
-        {
-            g_object_ref (gdkwin);
-        }
-        gdk_window_add_filter (gdkwin, client_event_filter, cb_data);
-    }
-    else
-    {
-        g_assert (gdkwin);
-        gdk_window_remove_filter (gdkwin, client_event_filter, cb_data);
-        g_object_unref (gdkwin);
-    }
-}
-
-static void
 loadRcData (ScreenInfo *screen_info, Settings *rc)
 {
     gchar *homedir;
-    gchar *keythemevalue;
+    const gchar *keythemevalue;
     gchar *keytheme;
     gchar *system_keytheme;
 
@@ -587,7 +191,7 @@ loadRcData (ScreenInfo *screen_info, Settings *rc)
         g_warning ("Missing defaults file");
         exit (1);
     }
-    keythemevalue = getValue ("keytheme", rc);
+    keythemevalue = getStringValue ("keytheme", rc);
     if (keythemevalue)
     {
         system_keytheme = getSystemThemeDir ();
@@ -610,334 +214,34 @@ loadRcData (ScreenInfo *screen_info, Settings *rc)
 }
 
 static void
-loadMcsData (ScreenInfo *screen_info, Settings *rc)
+loadXfconfData (ScreenInfo *screen_info, Settings *rc)
 {
-    McsSetting *setting;
-
-    if (screen_info->mcs_client)
+    gint i = XPM_COLOR_SYMBOL_SIZE;
+    for (; i < (XPM_COLOR_SYMBOL_SIZE + XFWM4_SETTINGS_COUNT); ++i)
     {
-        /* "Regular" channel */
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ClickToFocus", CHANNEL1,
-                &setting) == MCS_SUCCESS)
+        gchar *property_name = g_strconcat("/general/", rc[i].option, NULL);
+        if(xfconf_channel_has_property(screen_info->xfwm4_channel, property_name))
         {
-            setBooleanValueFromInt ("click_to_focus", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusNewWindow", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("focus_new", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusRaise", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("raise_on_focus", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseDelay", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("raise_delay", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusDelay", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("focus_delay", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseOnClick", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("raise_on_click", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapToBorder", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("snap_to_border", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapToWindows", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("snap_to_windows", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapWidth", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("snap_width", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapWorkspaces", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("wrap_workspaces", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapWindows", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("wrap_windows", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapResistance", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("wrap_resistance", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/BoxMove", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("box_move", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/BoxResize", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("box_resize", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/DblClickAction", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("double_click_action", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ThemeName", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("theme", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ButtonLayout", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("button_layout", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/TitleAlign", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("title_alignment", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/TitleFont", CHANNEL1,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("title_font", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
+            if(rc[i].value)
+            {
+                g_value_unset(rc[i].value);
+                g_free(rc[i].value);
+            }
+            rc[i].value = g_new0(GValue, 1);
 
-        /* Margins channel */
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/LeftMargin", CHANNEL2,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("margin_left", setting->data.v_int, rc);
-            mcs_setting_free (setting);
+            if(!xfconf_channel_get_property(screen_info->xfwm4_channel, property_name, rc[i].value))
+            {
+               /* g_debug("get prop failed"); */
+            }
         }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RightMargin", CHANNEL2,
-                &setting) == MCS_SUCCESS)
+        else
         {
-            setIntValueFromInt ("margin_right", setting->data.v_int, rc);
-            mcs_setting_free (setting);
+            if (rc[i].value)
+                xfconf_channel_set_property(screen_info->xfwm4_channel, property_name, rc[i].value);
         }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/BottomMargin", CHANNEL2,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("margin_bottom", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/TopMargin", CHANNEL2,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("margin_top", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-
-        /* Workspaces channel */
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WorkspaceCount", CHANNEL3,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("workspace_count", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-
-        /* Keyboard theme channel */
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/KeyThemeName", CHANNEL4,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("keytheme", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
-
-        /* Tweaks channel */
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ActivateAction", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("activate_action", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/BorderlessMaximize", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("borderless_maximize", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleMinimum", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("cycle_minimum", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleHidden", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("cycle_hidden", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/CycleWorkspaces", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("cycle_workspaces", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/EasyClick", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("easy_click", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FocusHint", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("focus_hint", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/FrameOpacity", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("frame_opacity", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PlacementMode", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setValue ("placement_mode", setting->data.v_string, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PlacementRatio", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("placement_ratio", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/InactiveOpacity", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("inactive_opacity", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/MoveOpacity", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("move_opacity", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ResizeOpacity", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("resize_opacity", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PopupOpacity", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setIntValueFromInt ("popup_opacity", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowDockShadow", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("show_dock_shadow", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowFrameShadow", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("show_frame_shadow", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ShowPopupShadow", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("show_popup_shadow", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/SnapResist", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("snap_resist", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/PreventFocusStealing", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("prevent_focus_stealing", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RaiseWithAnyButton", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("raise_with_any_button", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/RestoreOnMove", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("restore_on_move", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ScrollWorkspaces", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("scroll_workspaces", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/ToggleWorkspaces", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("toggle_workspaces", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/UnredirectOverlays", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("unredirect_overlays", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/UseCompositing", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("use_compositing", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapLayout", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("wrap_layout", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
-        if (mcs_client_get_setting (screen_info->mcs_client, "Xfwm/WrapCycle", CHANNEL5,
-                &setting) == MCS_SUCCESS)
-        {
-            setBooleanValueFromInt ("wrap_cycle", setting->data.v_int, rc);
-            mcs_setting_free (setting);
-        }
+        g_free(property_name);
     }
+
 }
 
 /* Simple helper function to avoid copy/paste of code */
@@ -950,7 +254,8 @@ setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, c
         color->allocated = FALSE;
     }
 
-    if (gdk_color_parse (rc[id].value, &color->col))
+    /** do a direct value_get_string */
+    if (gdk_color_parse (g_value_get_string(rc[id].value), &color->col))
     {
         if (gdk_colormap_alloc_color (gdk_screen_get_rgb_colormap (screen_info->gscr),
                                       &color->col, FALSE, FALSE))
@@ -967,13 +272,19 @@ setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, c
         else
         {
             gdk_beep ();
-            g_message (_("%s: Cannot allocate color %s\n"), g_get_prgname (), rc[id].value);
+            if (G_VALUE_TYPE(rc[id].value) == G_TYPE_STRING)
+                g_message (_("%s: Cannot allocate color %s\n"), g_get_prgname (), g_value_get_string(rc[id].value));
+            else
+                g_critical (_("%s: Cannot allocate color: GValue for color is not of type STRING"), g_get_prgname ());
         }
     }
     else
     {
         gdk_beep ();
-        g_message (_("%s: Cannot parse color %s\n"), g_get_prgname (), rc[id].value);
+        if (G_VALUE_TYPE(rc[id].value) == G_TYPE_STRING)
+            g_message (_("%s: Cannot parse color %s\n"), g_get_prgname (), g_value_get_string(rc[id].value));
+        else
+            g_critical (_("%s: Cannot parse color: GValue for color is not of type STRING"), g_get_prgname ());
     }
 }
 
@@ -982,7 +293,7 @@ getTitleShadow (Settings *rc, const gchar * name)
 {
     const gchar *val;
 
-    val = getValue (name, rc);
+    val = getStringValue (name, rc);
     if (!g_ascii_strcasecmp ("true", val) || !g_ascii_strcasecmp ("under", val))
     {
         return TITLE_SHADOW_UNDER;
@@ -1056,7 +367,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     xfwmColorSymbol colsym[ XPM_COLOR_SYMBOL_SIZE + 1 ];
     GtkWidget *widget;
     gchar *theme;
-    gchar *font;
+    const gchar *font;
     PangoFontDescription *desc;
     PangoContext *context;
     guint i, j;
@@ -1067,51 +378,51 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     desc = NULL;
     context = NULL;
 
-    rc[0].value  = getUIStyle (widget, "fg",    "selected");
-    rc[1].value  = getUIStyle (widget, "fg",    "insensitive");
-    rc[2].value  = getUIStyle (widget, "dark",  "selected");
-    rc[3].value  = getUIStyle (widget, "dark",  "insensitive");
-    rc[4].value  = getUIStyle (widget, "fg",    "normal");
-    rc[5].value  = getUIStyle (widget, "fg",    "normal");
-    rc[6].value  = getUIStyle (widget, "bg",    "selected");
-    rc[7].value  = getUIStyle (widget, "light", "selected");
-    rc[8].value  = getUIStyle (widget, "dark",  "selected");
-    rc[9].value  = getUIStyle (widget, "mid",   "selected");
-    rc[10].value = getUIStyle (widget, "bg",    "normal");
-    rc[11].value = getUIStyle (widget, "light", "normal");
-    rc[12].value = getUIStyle (widget, "dark",  "normal");
-    rc[13].value = getUIStyle (widget, "mid",   "normal");
-    rc[14].value = getUIStyle (widget, "bg",    "insensitive");
-    rc[15].value = getUIStyle (widget, "light", "insensitive");
-    rc[16].value = getUIStyle (widget, "dark",  "insensitive");
-    rc[17].value = getUIStyle (widget, "mid",   "insensitive");
-    rc[18].value = getUIStyle (widget, "bg",    "normal");
-    rc[19].value = getUIStyle (widget, "light", "normal");
-    rc[20].value = getUIStyle (widget, "dark",  "normal");
-    rc[21].value = getUIStyle (widget, "mid",   "normal");
+    setStringValue (rc[0].option, getUIStyle (widget, "fg",    "selected"), rc);
+    setStringValue (rc[1].option, getUIStyle (widget, "fg",    "insensitive"), rc);
+    setStringValue (rc[2].option, getUIStyle (widget, "dark",  "selected"), rc);
+    setStringValue (rc[3].option, getUIStyle (widget, "dark",  "insensitive"), rc);
+    setStringValue (rc[4].option, getUIStyle (widget, "fg",    "normal"), rc);
+    setStringValue (rc[5].option, getUIStyle (widget, "fg",    "normal"), rc);
+    setStringValue (rc[6].option, getUIStyle (widget, "bg",    "selected"), rc);
+    setStringValue (rc[7].option, getUIStyle (widget, "light", "selected"), rc);
+    setStringValue (rc[8].option, getUIStyle (widget, "dark",  "selected"), rc);
+    setStringValue (rc[9].option, getUIStyle (widget, "mid",   "selected"), rc);
+    setStringValue (rc[10].option, getUIStyle (widget, "bg",    "normal"), rc);
+    setStringValue (rc[11].option, getUIStyle (widget, "light", "normal"), rc);
+    setStringValue (rc[12].option, getUIStyle (widget, "dark",  "normal"), rc);
+    setStringValue (rc[13].option, getUIStyle (widget, "mid",   "normal"), rc);
+    setStringValue (rc[14].option, getUIStyle (widget, "bg",    "insensitive"), rc);
+    setStringValue (rc[15].option, getUIStyle (widget, "light", "insensitive"), rc);
+    setStringValue (rc[16].option, getUIStyle (widget, "dark",  "insensitive"), rc);
+    setStringValue (rc[17].option, getUIStyle (widget, "mid",   "insensitive"), rc);
+    setStringValue (rc[18].option, getUIStyle (widget, "bg",    "normal"), rc);
+    setStringValue (rc[19].option, getUIStyle (widget, "light", "normal"), rc);
+    setStringValue (rc[20].option, getUIStyle (widget, "dark",  "normal"), rc);
+    setStringValue (rc[21].option, getUIStyle (widget, "mid",   "normal"), rc);
 
 
-    theme = getThemeDir (getValue ("theme", rc), THEMERC);
+    theme = getThemeDir (getStringValue ("theme", rc), THEMERC);
     parseRc (THEMERC, theme, rc);
 
     screen_info->params->shadow_delta_x =
-        - (TOINT (getValue ("shadow_delta_x", rc)));
+        - getIntValue ("shadow_delta_x", rc);
     screen_info->params->shadow_delta_y =
-        - (TOINT (getValue ("shadow_delta_y", rc)));
+        - getIntValue ("shadow_delta_y", rc);
     screen_info->params->shadow_delta_width =
-        - (TOINT (getValue ("shadow_delta_width", rc)));
+        - getIntValue ("shadow_delta_width", rc);
     screen_info->params->shadow_delta_height =
-        - (TOINT (getValue ("shadow_delta_height", rc)));
+        - getIntValue ("shadow_delta_height", rc);
 
     for (i = 0; i < XPM_COLOR_SYMBOL_SIZE; i++)
     {
         colsym[i].name = rc[i].option;
-        colsym[i].value = rc[i].value;
+        colsym[i].value = g_value_get_string(rc[i].value);
     }
     colsym[XPM_COLOR_SYMBOL_SIZE].name = NULL;
     colsym[XPM_COLOR_SYMBOL_SIZE].value = NULL;
 
-    display_info->dbl_click_time = abs (TOINT (getValue ("dbl_click_time", rc)));
+    display_info->dbl_click_time = abs (getIntValue ("dbl_click_time", rc));
     g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
     {
@@ -1119,7 +430,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     }
 
     screen_info->font_height = 0;
-    font = getValue ("title_font", rc);
+    font = getStringValue ("title_font", rc);
     if (font && strlen (font))
     {
         desc = pango_font_description_from_string (font);
@@ -1192,11 +503,11 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
     screen_info->box_gc = createGC (screen_info, "#FFFFFF", GXxor, NULL, 2, TRUE);
 
-    if (!g_ascii_strcasecmp ("left", getValue ("title_alignment", rc)))
+    if (!g_ascii_strcasecmp ("left", getStringValue ("title_alignment", rc)))
     {
         screen_info->params->title_alignment = ALIGN_LEFT;
     }
-    else if (!g_ascii_strcasecmp ("right", getValue ("title_alignment", rc)))
+    else if (!g_ascii_strcasecmp ("right", getStringValue ("title_alignment", rc)))
     {
         screen_info->params->title_alignment = ALIGN_RIGHT;
     }
@@ -1206,20 +517,20 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     }
 
     screen_info->params->full_width_title =
-        !g_ascii_strcasecmp ("true", getValue ("full_width_title", rc));
+        getBoolValue ("full_width_title", rc);
     screen_info->params->title_shadow[ACTIVE] = getTitleShadow (rc, "title_shadow_active");
     screen_info->params->title_shadow[INACTIVE] = getTitleShadow (rc, "title_shadow_inactive");
 
-    strncpy (screen_info->params->button_layout, getValue ("button_layout", rc), BUTTON_STRING_COUNT);
-    screen_info->params->button_spacing = TOINT (getValue ("button_spacing", rc));
-    screen_info->params->button_offset = TOINT (getValue ("button_offset", rc));
-    screen_info->params->maximized_offset = TOINT (getValue ("maximized_offset", rc));
+    strncpy (screen_info->params->button_layout, getStringValue ("button_layout", rc), BUTTON_STRING_COUNT);
+    screen_info->params->button_spacing = getIntValue ("button_spacing", rc);
+    screen_info->params->button_offset = getIntValue ("button_offset", rc);
+    screen_info->params->maximized_offset = getIntValue ("maximized_offset", rc);
     screen_info->params->title_vertical_offset_active =
-        TOINT (getValue ("title_vertical_offset_active", rc));
+        getIntValue ("title_vertical_offset_active", rc);
     screen_info->params->title_vertical_offset_inactive =
-        TOINT (getValue ("title_vertical_offset_inactive", rc));
+        getIntValue ("title_vertical_offset_inactive", rc);
     screen_info->params->title_horizontal_offset =
-        TOINT (getValue ("title_horizontal_offset", rc));
+        getIntValue ("title_horizontal_offset", rc);
 
     g_free (theme);
 }
@@ -1230,7 +541,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     gchar keyname[30];
     Display *dpy;
     gchar *keytheme;
-    gchar *keythemevalue;
+    const gchar *keythemevalue;
     guint i;
 
     dpy = myScreenGetXDisplay (screen_info);
@@ -1243,7 +554,7 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
     parseRc (KEYTHEMERC, keytheme, rc);
     g_free (keytheme);
 
-    keythemevalue = getValue ("keytheme", rc);
+    keythemevalue = getStringValue ("keytheme", rc);
     if (keythemevalue)
     {
         keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
@@ -1260,54 +571,54 @@ loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
         }
     }
 
-    parseKeyString (dpy, &screen_info->params->keys[KEY_CANCEL], getValue ("cancel_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN], getValue ("down_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT], getValue ("left_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT], getValue ("right_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_UP], getValue ("up_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], getValue ("add_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_ADJACENT_WORKSPACE], getValue ("add_adjacent_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_CLOSE_WINDOW], getValue ("close_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], getValue ("cycle_windows_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], getValue ("del_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_ACTIVE_WORKSPACE], getValue ("del_active_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], getValue ("down_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_HORIZ], getValue ("fill_horiz_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_VERT], getValue ("fill_vert_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_WINDOW], getValue ("fill_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_HIDE_WINDOW], getValue ("hide_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], getValue ("left_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getValue ("lower_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE], getValue ("move_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], getValue ("maximize_horiz_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_VERT], getValue ("maximize_vert_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], getValue ("maximize_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getValue ("move_window_down_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], getValue ("move_window_left_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_NEXT_WORKSPACE], getValue ("move_window_next_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_PREV_WORKSPACE], getValue ("move_window_prev_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getValue ("move_window_right_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], getValue ("move_window_up_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], getValue ("next_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_POPUP_MENU], getValue ("popup_menu_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], getValue ("prev_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getValue ("raise_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE], getValue ("resize_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], getValue ("right_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHADE_WINDOW], getValue ("shade_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], getValue("show_desktop_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_STICK_WINDOW], getValue ("stick_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_ABOVE], getValue ("above_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getValue ("fullscreen_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], getValue ("up_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CANCEL], getStringValue ("cancel_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN], getStringValue ("down_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT], getStringValue ("left_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT], getStringValue ("right_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_UP], getStringValue ("up_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], getStringValue ("add_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_ADJACENT_WORKSPACE], getStringValue ("add_adjacent_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CLOSE_WINDOW], getStringValue ("close_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], getStringValue ("cycle_windows_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], getStringValue ("del_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_ACTIVE_WORKSPACE], getStringValue ("del_active_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], getStringValue ("down_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_HORIZ], getStringValue ("fill_horiz_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_VERT], getStringValue ("fill_vert_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_WINDOW], getStringValue ("fill_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_HIDE_WINDOW], getStringValue ("hide_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], getStringValue ("left_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getStringValue ("lower_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE], getStringValue ("move_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], getStringValue ("maximize_horiz_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_VERT], getStringValue ("maximize_vert_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], getStringValue ("maximize_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getStringValue ("move_window_down_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], getStringValue ("move_window_left_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_NEXT_WORKSPACE], getStringValue ("move_window_next_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_PREV_WORKSPACE], getStringValue ("move_window_prev_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getStringValue ("move_window_right_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], getStringValue ("move_window_up_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], getStringValue ("next_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_POPUP_MENU], getStringValue ("popup_menu_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], getStringValue ("prev_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getStringValue ("raise_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE], getStringValue ("resize_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], getStringValue ("right_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_SHADE_WINDOW], getStringValue ("shade_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], getStringValue("show_desktop_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_STICK_WINDOW], getStringValue ("stick_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_ABOVE], getStringValue ("above_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getStringValue ("fullscreen_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], getStringValue ("up_workspace_key", rc));
 
     for (i = 0; i < 12; i++)
     {
         g_snprintf(keyname, sizeof (keyname), "move_window_workspace_%d_key", i + 1);
-        parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_1 + i], getValue (keyname, rc));
+        parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_1 + i], getStringValue (keyname, rc));
 
         g_snprintf(keyname, sizeof (keyname), "workspace_%d_key", i + 1);
-        parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_1 + i], getValue (keyname, rc));
+        parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_1 + i], getStringValue (keyname, rc));
     }
 
     myScreenUngrabKeys (screen_info);
@@ -1322,168 +633,169 @@ loadSettings (ScreenInfo *screen_info)
     const gchar *value;
     Settings rc[] = {
         /* Do not change the order of the following parameters */
-        {"active_text_color", NULL, FALSE},
-        {"inactive_text_color", NULL, FALSE},
-        {"active_text_shadow_color", NULL, FALSE},
-        {"inactive_text_shadow_color", NULL, FALSE},
-        {"active_border_color", NULL, FALSE},
-        {"inactive_border_color", NULL, FALSE},
-        {"active_color_1", NULL, FALSE},
-        {"active_hilight_1", NULL, FALSE},
-        {"active_shadow_1", NULL, FALSE},
-        {"active_mid_1", NULL, FALSE},
-        {"active_color_2", NULL, FALSE},
-        {"active_hilight_2", NULL, FALSE},
-        {"active_shadow_2", NULL, FALSE},
-        {"active_mid_2", NULL, FALSE},
-        {"inactive_color_1", NULL, FALSE},
-        {"inactive_hilight_1", NULL, FALSE},
-        {"inactive_shadow_1", NULL, FALSE},
-        {"inactive_mid_1", NULL, FALSE},
-        {"inactive_color_2", NULL, FALSE},
-        {"inactive_hilight_2", NULL, FALSE},
-        {"inactive_shadow_2", NULL, FALSE},
-        {"inactive_mid_2", NULL, FALSE},
+        {"active_text_color", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_text_color", NULL, G_TYPE_STRING, FALSE},
+        {"active_text_shadow_color", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_text_shadow_color", NULL, G_TYPE_STRING, FALSE},
+        {"active_border_color", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_border_color", NULL, G_TYPE_STRING, FALSE},
+        {"active_color_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_hilight_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_shadow_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_mid_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_color_2", NULL, G_TYPE_STRING, FALSE},
+        {"active_hilight_2", NULL, G_TYPE_STRING, FALSE},
+        {"active_shadow_2", NULL, G_TYPE_STRING, FALSE},
+        {"active_mid_2", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_color_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_hilight_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_shadow_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_mid_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_color_2", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_hilight_2", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_shadow_2", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_mid_2", NULL, G_TYPE_STRING, FALSE},
         /* You can change the order of the following parameters */
-        {"activate_action", NULL, TRUE},
-        {"borderless_maximize", NULL, TRUE},
-        {"box_move", NULL, TRUE},
-        {"box_resize", NULL, TRUE},
-        {"button_layout", NULL, TRUE},
-        {"button_offset", NULL, TRUE},
-        {"button_spacing", NULL, TRUE},
-        {"click_to_focus", NULL, TRUE},
-        {"focus_delay", NULL, TRUE},
-        {"cycle_hidden", NULL, TRUE},
-        {"cycle_minimum", NULL, TRUE},
-        {"cycle_workspaces", NULL, TRUE},
-        {"dbl_click_time", NULL, TRUE},
-        {"double_click_action", NULL, TRUE},
-        {"easy_click", NULL, TRUE},
-        {"focus_hint", NULL, TRUE},
-        {"focus_new", NULL, TRUE},
-        {"frame_opacity", NULL, TRUE},
-        {"full_width_title", NULL, TRUE},
-        {"inactive_opacity", NULL, TRUE},
-        {"keytheme", NULL, TRUE},
-        {"margin_bottom", NULL, FALSE},
-        {"margin_left", NULL, FALSE},
-        {"margin_right", NULL, FALSE},
-        {"margin_top", NULL, FALSE},
-        {"maximized_offset", NULL, TRUE},
-        {"move_opacity", NULL, TRUE},
-        {"placement_ratio", NULL, TRUE},
-        {"placement_mode", NULL, TRUE},
-        {"popup_opacity", NULL, TRUE},
-        {"prevent_focus_stealing", NULL, TRUE},
-        {"raise_delay", NULL, TRUE},
-        {"raise_on_click", NULL, TRUE},
-        {"raise_on_focus", NULL, TRUE},
-        {"raise_with_any_button", NULL, TRUE},
-        {"resize_opacity", NULL, TRUE},
-        {"restore_on_move", NULL, TRUE},
-        {"scroll_workspaces", NULL, TRUE},
-        {"shadow_delta_height", NULL, TRUE},
-        {"shadow_delta_width", NULL, TRUE},
-        {"shadow_delta_x", NULL, TRUE},
-        {"shadow_delta_y", NULL, TRUE},
-        {"show_app_icon", NULL, TRUE},
-        {"show_dock_shadow", NULL, TRUE},
-        {"show_frame_shadow", NULL, TRUE},
-        {"show_popup_shadow", NULL, TRUE},
-        {"snap_resist", NULL, TRUE},
-        {"snap_to_border", NULL, TRUE},
-        {"snap_to_windows", NULL, TRUE},
-        {"snap_width", NULL, TRUE},
-        {"theme", NULL, TRUE},
-        {"title_alignment", NULL, TRUE},
-        {"title_font", NULL, FALSE},
-        {"title_horizontal_offset", NULL, TRUE},
-        {"title_shadow_active", NULL, TRUE},
-        {"title_shadow_inactive", NULL, TRUE},
-        {"title_vertical_offset_active", NULL, TRUE},
-        {"title_vertical_offset_inactive", NULL, TRUE},
-        {"toggle_workspaces", NULL, TRUE},
-        {"unredirect_overlays", NULL, TRUE},
-        {"use_compositing", NULL, TRUE},
-        {"workspace_count", NULL, TRUE},
-        {"wrap_cycle", NULL, TRUE},
-        {"wrap_layout", NULL, TRUE},
-        {"wrap_resistance", NULL, TRUE},
-        {"wrap_windows", NULL, TRUE},
-        {"wrap_workspaces", NULL, TRUE},
+        {"activate_action", NULL, G_TYPE_STRING, TRUE},
+        {"borderless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"box_move", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"box_resize", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"button_layout", NULL, G_TYPE_STRING, TRUE},
+        {"button_offset", NULL, G_TYPE_INT, TRUE},
+        {"button_spacing", NULL, G_TYPE_INT, TRUE},
+        {"click_to_focus", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"focus_delay", NULL, G_TYPE_INT, TRUE},
+        {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"dbl_click_time", NULL, G_TYPE_INT, TRUE},
+        {"double_click_action", NULL, G_TYPE_STRING, TRUE},
+        {"easy_click", NULL, G_TYPE_STRING, TRUE},
+        {"focus_hint", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"focus_new", NULL, G_TYPE_BOOLEAN,TRUE},
+        {"frame_opacity", NULL, G_TYPE_INT, TRUE},
+        {"full_width_title", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"inactive_opacity", NULL, G_TYPE_INT, TRUE},
+        {"keytheme", NULL, G_TYPE_STRING, TRUE},
+        {"margin_bottom", NULL, G_TYPE_INT, FALSE},
+        {"margin_left", NULL, G_TYPE_INT, FALSE},
+        {"margin_right", NULL, G_TYPE_INT, FALSE},
+        {"margin_top", NULL, G_TYPE_INT, FALSE},
+        {"maximized_offset", NULL, G_TYPE_INT, TRUE},
+        {"move_opacity", NULL, G_TYPE_INT, TRUE},
+        {"placement_ratio", NULL, G_TYPE_INT, TRUE},
+        {"placement_mode", NULL, G_TYPE_STRING, TRUE},
+        {"popup_opacity", NULL, G_TYPE_INT, TRUE},
+        {"prevent_focus_stealing", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"raise_delay", NULL, G_TYPE_INT, TRUE},
+        {"raise_on_click", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"raise_on_focus", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"raise_with_any_button", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"resize_opacity", NULL, G_TYPE_INT, TRUE},
+        {"restore_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"scroll_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"shadow_delta_height", NULL, G_TYPE_INT, TRUE},
+        {"shadow_delta_width", NULL, G_TYPE_INT, TRUE},
+        {"shadow_delta_x", NULL, G_TYPE_INT, TRUE},
+        {"shadow_delta_y", NULL, G_TYPE_INT, TRUE},
+        {"show_app_icon", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"show_dock_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"show_frame_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"show_popup_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_resist", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_to_border", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_to_windows", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_width", NULL, G_TYPE_INT, TRUE},
+        {"theme", NULL, G_TYPE_STRING, TRUE},
+        {"title_alignment", NULL, G_TYPE_STRING, TRUE},
+        {"title_font", NULL, G_TYPE_STRING, FALSE},
+        {"title_horizontal_offset", NULL, G_TYPE_INT, TRUE},
+        {"title_shadow_active", NULL, G_TYPE_STRING, TRUE},
+        {"title_shadow_inactive", NULL, G_TYPE_STRING, TRUE},
+        {"title_vertical_offset_active", NULL, G_TYPE_INT, TRUE},
+        {"title_vertical_offset_inactive", NULL, G_TYPE_INT, TRUE},
+        {"toggle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"unredirect_overlays", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"use_compositing", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"workspace_count", NULL, G_TYPE_INT, TRUE},
+        {"wrap_cycle", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"wrap_layout", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"wrap_resistance", NULL, G_TYPE_INT, TRUE},
+        {"wrap_windows", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"wrap_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
         /* Keys */
-        {"above_key", NULL, TRUE},
-        {"add_adjacent_workspace_key", NULL, TRUE},
-        {"add_workspace_key", NULL, TRUE},
-        {"cancel_key", NULL, TRUE},
-        {"close_window_key", NULL, TRUE},
-        {"cycle_windows_key", NULL, TRUE},
-        {"del_active_workspace_key", NULL, TRUE},
-        {"del_workspace_key", NULL, TRUE},
-        {"down_key", NULL, TRUE},
-        {"down_workspace_key", NULL, TRUE},
-        {"fill_horiz_key", NULL, TRUE},
-        {"fill_vert_key", NULL, TRUE},
-        {"fill_window_key", NULL, TRUE},
-        {"fullscreen_key", NULL, TRUE},
-        {"hide_window_key", NULL, TRUE},
-        {"left_key", NULL, TRUE},
-        {"left_workspace_key", NULL, TRUE},
-        {"lower_window_key", NULL, TRUE},
-        {"maximize_horiz_key", NULL, TRUE},
-        {"maximize_vert_key", NULL, TRUE},
-        {"maximize_window_key", NULL, TRUE},
-        {"move_window_down_workspace_key", NULL, TRUE},
-        {"move_window_left_workspace_key", NULL, TRUE},
-        {"move_window_next_workspace_key", NULL, TRUE},
-        {"move_window_key", NULL, TRUE},
-        {"move_window_prev_workspace_key", NULL, TRUE},
-        {"move_window_right_workspace_key", NULL, TRUE},
-        {"move_window_up_workspace_key", NULL, TRUE},
-        {"move_window_workspace_1_key", NULL, TRUE},
-        {"move_window_workspace_2_key", NULL, TRUE},
-        {"move_window_workspace_3_key", NULL, TRUE},
-        {"move_window_workspace_4_key", NULL, TRUE},
-        {"move_window_workspace_5_key", NULL, TRUE},
-        {"move_window_workspace_6_key", NULL, TRUE},
-        {"move_window_workspace_7_key", NULL, TRUE},
-        {"move_window_workspace_8_key", NULL, TRUE},
-        {"move_window_workspace_9_key", NULL, TRUE},
-        {"move_window_workspace_10_key", NULL, TRUE},
-        {"move_window_workspace_11_key", NULL, TRUE},
-        {"move_window_workspace_12_key", NULL, TRUE},
-        {"next_workspace_key", NULL, TRUE},
-        {"popup_menu_key", NULL, TRUE},
-        {"prev_workspace_key", NULL, TRUE},
-        {"raise_window_key", NULL, TRUE},
-        {"resize_window_key", NULL, TRUE},
-        {"right_key", NULL, TRUE},
-        {"right_workspace_key", NULL, TRUE},
-        {"shade_window_key", NULL, TRUE},
-        {"show_desktop_key", NULL, FALSE},
-        {"stick_window_key", NULL, TRUE},
-        {"up_key", NULL, TRUE},
-        {"up_workspace_key", NULL, TRUE},
-        {"workspace_1_key", NULL, TRUE},
-        {"workspace_2_key", NULL, TRUE},
-        {"workspace_3_key", NULL, TRUE},
-        {"workspace_4_key", NULL, TRUE},
-        {"workspace_5_key", NULL, TRUE},
-        {"workspace_6_key", NULL, TRUE},
-        {"workspace_7_key", NULL, TRUE},
-        {"workspace_8_key", NULL, TRUE},
-        {"workspace_9_key", NULL, TRUE},
-        {"workspace_10_key", NULL, TRUE},
-        {"workspace_11_key", NULL, TRUE},
-        {"workspace_12_key", NULL, TRUE},
-        {NULL, NULL, FALSE}
+        {"above_key", NULL, G_TYPE_STRING, TRUE},
+        {"add_adjacent_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"add_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"cancel_key", NULL, G_TYPE_STRING, TRUE},
+        {"close_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"cycle_windows_key", NULL, G_TYPE_STRING, TRUE},
+        {"del_active_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"del_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"down_key", NULL, G_TYPE_STRING, TRUE},
+        {"down_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"fill_horiz_key", NULL, G_TYPE_STRING, TRUE},
+        {"fill_vert_key", NULL, G_TYPE_STRING, TRUE},
+        {"fill_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"fullscreen_key", NULL, G_TYPE_STRING, TRUE},
+        {"hide_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"left_key", NULL, G_TYPE_STRING, TRUE},
+        {"left_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"lower_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"maximize_horiz_key", NULL, G_TYPE_STRING, TRUE},
+        {"maximize_vert_key", NULL, G_TYPE_STRING, TRUE},
+        {"maximize_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_down_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_left_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_next_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_prev_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_right_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_up_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_1_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_2_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_3_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_4_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_5_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_6_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_7_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_8_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_9_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_10_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_11_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_12_key", NULL, G_TYPE_STRING, TRUE},
+        {"next_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"popup_menu_key", NULL, G_TYPE_STRING, TRUE},
+        {"prev_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"raise_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"resize_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"right_key", NULL, G_TYPE_STRING, TRUE},
+        {"right_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"shade_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"show_desktop_key", NULL, G_TYPE_STRING, FALSE},
+        {"stick_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"up_key", NULL, G_TYPE_STRING, TRUE},
+        {"up_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_1_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_2_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_3_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_4_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_5_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_6_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_7_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_8_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_9_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_10_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_11_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_12_key", NULL, G_TYPE_STRING, TRUE},
+        {NULL, NULL, G_TYPE_INVALID, FALSE}
     };
 
     TRACE ("entering loadSettings");
 
     loadRcData (screen_info, rc);
-    loadMcsData (screen_info, rc);
+    loadRcData (screen_info, rc);
+    loadXfconfData (screen_info, rc);
     loadTheme (screen_info, rc);
     update_grabs (screen_info);
 
@@ -1494,80 +806,80 @@ loadSettings (ScreenInfo *screen_info)
     }
 
     screen_info->params->borderless_maximize =
-        !g_ascii_strcasecmp ("true", getValue ("borderless_maximize", rc));
+        getBoolValue ("borderless_maximize", rc);
     screen_info->params->box_resize =
-        !g_ascii_strcasecmp ("true", getValue ("box_resize", rc));
+        getBoolValue ("box_resize", rc);
     screen_info->params->box_move =
-        !g_ascii_strcasecmp ("true", getValue ("box_move", rc));
+        getBoolValue ("box_move", rc);
     screen_info->params->click_to_focus =
-        !g_ascii_strcasecmp ("true", getValue ("click_to_focus", rc));
+        getBoolValue ("click_to_focus", rc);
     screen_info->params->cycle_minimum =
-        !g_ascii_strcasecmp ("true", getValue ("cycle_minimum", rc));
+        getBoolValue ("cycle_minimum", rc);
     screen_info->params->cycle_hidden =
-        !g_ascii_strcasecmp ("true", getValue ("cycle_hidden", rc));
+        getBoolValue ("cycle_hidden", rc);
     screen_info->params->cycle_workspaces =
-        !g_ascii_strcasecmp ("true", getValue ("cycle_workspaces", rc));
+        getBoolValue ("cycle_workspaces", rc);
     screen_info->params->focus_hint =
-        !g_ascii_strcasecmp ("true", getValue ("focus_hint", rc));
+        getBoolValue ("focus_hint", rc);
     screen_info->params->focus_new =
-        !g_ascii_strcasecmp ("true", getValue ("focus_new", rc));
+        getBoolValue ("focus_new", rc);
     screen_info->params->raise_on_focus =
-        !g_ascii_strcasecmp ("true", getValue ("raise_on_focus", rc));
+        getBoolValue ("raise_on_focus", rc);
     screen_info->params->prevent_focus_stealing =
-        !g_ascii_strcasecmp ("true", getValue ("prevent_focus_stealing", rc));
+        getBoolValue ("prevent_focus_stealing", rc);
     screen_info->params->raise_delay =
-        abs (TOINT (getValue ("raise_delay", rc)));
+        getIntValue ("raise_delay", rc);
     screen_info->params->focus_delay =
-        abs (TOINT (getValue ("focus_delay", rc)));
+        getIntValue ("focus_delay", rc);
     screen_info->params->raise_on_click =
-        !g_ascii_strcasecmp ("true", getValue ("raise_on_click", rc));
+        getBoolValue ("raise_on_click", rc);
     screen_info->params->raise_with_any_button =
-        !g_ascii_strcasecmp ("true", getValue ("raise_with_any_button", rc));
+        getBoolValue ("raise_with_any_button", rc);
     screen_info->params->restore_on_move =
-        !g_ascii_strcasecmp ("true", getValue ("restore_on_move", rc));
+        getBoolValue ("restore_on_move", rc);
     screen_info->params->frame_opacity =
-        abs (TOINT (getValue ("frame_opacity", rc)));
+        getIntValue ("frame_opacity", rc);
     screen_info->params->inactive_opacity =
-        abs (TOINT (getValue ("inactive_opacity", rc)));
+        getIntValue ("inactive_opacity", rc);
     screen_info->params->move_opacity =
-        abs (TOINT (getValue ("move_opacity", rc)));
+        getIntValue ("move_opacity", rc);
     screen_info->params->resize_opacity =
-        abs (TOINT (getValue ("resize_opacity", rc)));
+        getIntValue ("resize_opacity", rc);
     screen_info->params->popup_opacity =
-        abs (TOINT (getValue ("popup_opacity", rc)));
+        getIntValue ("popup_opacity", rc);
     screen_info->params->placement_ratio =
-        abs (TOINT (getValue ("placement_ratio", rc)));
+        getIntValue ("placement_ratio", rc);
     screen_info->params->show_app_icon =
-        !g_ascii_strcasecmp ("true", getValue ("show_app_icon", rc));
+        getBoolValue ("show_app_icon", rc);
     screen_info->params->show_dock_shadow =
-        !g_ascii_strcasecmp ("true", getValue ("show_dock_shadow", rc));
+        getBoolValue ("show_dock_shadow", rc);
     screen_info->params->show_frame_shadow =
-        !g_ascii_strcasecmp ("true", getValue ("show_frame_shadow", rc));
+        getBoolValue ("show_frame_shadow", rc);
     screen_info->params->show_popup_shadow =
-        !g_ascii_strcasecmp ("true", getValue ("show_popup_shadow", rc));
+        getBoolValue ("show_popup_shadow", rc);
     screen_info->params->snap_to_border =
-        !g_ascii_strcasecmp ("true", getValue ("snap_to_border", rc));
+        getBoolValue ("snap_to_border", rc);
     screen_info->params->snap_to_windows =
-        !g_ascii_strcasecmp ("true", getValue ("snap_to_windows", rc));
+        getBoolValue ("snap_to_windows", rc);
     screen_info->params->snap_resist =
-        !g_ascii_strcasecmp ("true", getValue ("snap_resist", rc));
+        getBoolValue ("snap_resist", rc);
     screen_info->params->snap_width =
-        abs (TOINT (getValue ("snap_width", rc)));
+        getIntValue ("snap_width", rc);
 
-    set_settings_margin (screen_info, STRUTS_LEFT,   TOINT (getValue ("margin_left", rc)));
-    set_settings_margin (screen_info, STRUTS_RIGHT,  TOINT (getValue ("margin_right", rc)));
-    set_settings_margin (screen_info, STRUTS_BOTTOM, TOINT (getValue ("margin_bottom", rc)));
-    set_settings_margin (screen_info, STRUTS_TOP,    TOINT (getValue ("margin_top", rc)));
+    set_settings_margin (screen_info, STRUTS_LEFT,   getIntValue ("margin_left", rc));
+    set_settings_margin (screen_info, STRUTS_RIGHT,  getIntValue ("margin_right", rc));
+    set_settings_margin (screen_info, STRUTS_BOTTOM, getIntValue ("margin_bottom", rc));
+    set_settings_margin (screen_info, STRUTS_TOP,    getIntValue ("margin_top", rc));
 
-    set_easy_click (screen_info, getValue ("easy_click", rc));
+    set_easy_click (screen_info, getStringValue ("easy_click", rc));
 
-    value = getValue ("placement_mode", rc);
+    value = getStringValue ("placement_mode", rc);
     set_placement_mode (screen_info, value);
 
-    value = getValue ("activate_action", rc);
+    value = getStringValue ("activate_action", rc);
     set_activate_action (screen_info, value);
 
-    value = getValue ("double_click_action", rc);
+    value = getStringValue ("double_click_action", rc);
     if (!g_ascii_strcasecmp ("shade", value))
     {
         screen_info->params->double_click_action = DBL_CLICK_ACTION_SHADE;
@@ -1592,7 +904,7 @@ loadSettings (ScreenInfo *screen_info)
     if (screen_info->workspace_count < 0)
     {
         gint workspace_count;
-        workspace_count = abs (TOINT (getValue ("workspace_count", rc)));
+        workspace_count = getIntValue ("workspace_count", rc);
         if (workspace_count < 0)
         {
             workspace_count = 0;
@@ -1601,23 +913,23 @@ loadSettings (ScreenInfo *screen_info)
     }
 
     screen_info->params->toggle_workspaces =
-        !g_ascii_strcasecmp ("true", getValue ("toggle_workspaces", rc));
+        getBoolValue ("toggle_workspaces", rc);
     screen_info->params->unredirect_overlays =
-        !g_ascii_strcasecmp ("true", getValue ("unredirect_overlays", rc));
+        getBoolValue ("unredirect_overlays", rc);
     screen_info->params->use_compositing =
-        !g_ascii_strcasecmp ("true", getValue ("use_compositing", rc));
+        getBoolValue ("use_compositing", rc);
     screen_info->params->wrap_workspaces =
-        !g_ascii_strcasecmp ("true", getValue ("wrap_workspaces", rc));
+        getBoolValue ("wrap_workspaces", rc);
     screen_info->params->wrap_layout =
-        !g_ascii_strcasecmp ("true", getValue ("wrap_layout", rc));
+        getBoolValue ("wrap_layout", rc);
     screen_info->params->wrap_windows =
-        !g_ascii_strcasecmp ("true", getValue ("wrap_windows", rc));
+        getBoolValue ("wrap_windows", rc);
     screen_info->params->wrap_cycle =
-        !g_ascii_strcasecmp ("true", getValue ("wrap_cycle", rc));
+        getBoolValue ("wrap_cycle", rc);
     screen_info->params->scroll_workspaces =
-        !g_ascii_strcasecmp ("true", getValue ("scroll_workspaces", rc));
+        getBoolValue ("scroll_workspaces", rc);
     screen_info->params->wrap_resistance =
-        abs (TOINT (getValue ("wrap_resistance", rc)));
+        getIntValue ("wrap_resistance", rc);
 
     freeRc (rc);
     return TRUE;
@@ -1727,32 +1039,23 @@ initSettings (ScreenInfo *screen_info)
 
     TRACE ("entering initSettings");
 
+    if (!xfconf_init (NULL))
+    {
+        g_critical ("Xfconf could not be initialized");
+        return FALSE;
+    }
+
+
     display_info = screen_info->display_info;
     names = NULL;
     val = 0;
     i = 0;
 
-    if (!mcs_client_check_manager (myScreenGetXDisplay (screen_info), screen_info->screen, "xfce-mcs-manager"))
-    {
-        g_warning ("MCS manager not running, startup delayed for 5 seconds");
-        sleep (5);
-    }
+    screen_info->xfwm4_channel = xfconf_channel_new(CHANNEL1);
+    screen_info->keys_channel = xfconf_channel_new(CHANNEL2);
 
-    screen_info->mcs_client = mcs_client_new (myScreenGetXDisplay (screen_info), screen_info->screen, notify_cb, watch_cb, (gpointer) screen_info);
-    if (screen_info->mcs_client)
-    {
-        mcs_client_add_channel (screen_info->mcs_client, CHANNEL1);
-        mcs_client_add_channel (screen_info->mcs_client, CHANNEL2);
-        mcs_client_add_channel (screen_info->mcs_client, CHANNEL3);
-        mcs_client_add_channel (screen_info->mcs_client, CHANNEL4);
-        mcs_client_add_channel (screen_info->mcs_client, CHANNEL5);
-        mcs_client_set_raw_channel (screen_info->mcs_client, CHANNEL4, TRUE);
-    }
-    else
-    {
-        g_warning ("Cannot create MCS client channel");
-    }
-    screen_info->mcs_initted = TRUE;
+    g_signal_connect (G_OBJECT(screen_info->xfwm4_channel), "property-changed", (GCallback)cb_xfwm4_channel_property_changed, screen_info);
+
 
     if (!loadSettings (screen_info))
     {
@@ -1788,10 +1091,260 @@ closeSettings (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info);
 
-    if (screen_info->mcs_client)
-    {
-        mcs_client_destroy (screen_info->mcs_client);
-        screen_info->mcs_client = NULL;
-    }
     unloadSettings (screen_info);
+}
+
+static void
+cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_name, const GValue *value, ScreenInfo *screen_info)
+{
+    if (g_str_has_prefix(property_name, "/general/") == TRUE)
+    {
+        const gchar *name = &property_name[9];
+        switch (G_VALUE_TYPE(value))
+        {
+            case G_TYPE_STRING:
+                if (!strcmp (name, "double_click_action"))
+                {
+                    reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
+                }
+                else if (!strcmp (name, "theme"))
+                {
+                    reloadScreenSettings(screen_info, UPDATE_MAXIMIZE | UPDATE_GRAVITY | UPDATE_CACHE);
+                }
+                else if (!strcmp (name, "button_layout"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
+                }
+                else if (!strcmp (name, "title_alignment"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
+                }
+                else if (!strcmp (name, "title_font"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
+                }
+                else if (!strcmp (name, "keytheme"))
+                {
+                    reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
+                }
+                else if (!strcmp (name, "easy_click"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_BUTTON_GRABS);
+                }
+                else if (!strcmp (name, "activate_action"))
+                {
+                    set_activate_action (screen_info, g_value_get_string (value));
+                }
+                else if (!strcmp (name, "placement_mode"))
+                {
+                    set_placement_mode (screen_info, g_value_get_string (value));
+                }
+                else
+                {
+                    g_warning("The property '%s' is not supported", property_name);
+                }
+                break;
+            case G_TYPE_INT:
+                if (!strcmp (name, "raise_delay"))
+                {
+                    screen_info->params->raise_delay = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "focus_delay"))
+                {
+                    screen_info->params->focus_delay = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "snap_width"))
+                {
+                    screen_info->params->snap_width = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "wrap_resistance"))
+                {
+                    screen_info->params->wrap_resistance = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "margin_left"))
+                {
+                    set_settings_margin (screen_info, STRUTS_LEFT, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "margin_right"))
+                {
+                    set_settings_margin (screen_info, STRUTS_RIGHT, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "margin_bottom"))
+                {
+                    set_settings_margin (screen_info, STRUTS_BOTTOM, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "margin_top"))
+                {
+                    set_settings_margin (screen_info, STRUTS_TOP, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "workspace_count"))
+                {
+                    workspaceSetCount(screen_info, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "frame_opacity"))
+                {
+                    screen_info->params->frame_opacity = g_value_get_int(value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "inactive_opacity"))
+                {
+                    screen_info->params->inactive_opacity = g_value_get_int(value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                    clientUpdateAllOpacity (screen_info);
+                }
+                else if (!strcmp (name, "move_opacity"))
+                {
+                    screen_info->params->move_opacity = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "resize_opacity"))
+                {
+                    screen_info->params->resize_opacity = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "popup_opacity"))
+                {
+                    screen_info->params->popup_opacity = g_value_get_int (value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "placement_ratio"))
+                {
+                    screen_info->params->placement_ratio = g_value_get_int (value);
+                }
+                else
+                {
+                    g_warning("The property '%s' is not supported", property_name);
+                }
+                break;
+            case G_TYPE_BOOLEAN:
+                if (!strcmp (name, "box_move"))
+                {
+                    screen_info->params->box_move = g_value_get_boolean (value);
+
+                }
+                else if (!strcmp (name, "box_resize"))
+                {
+                    screen_info->params->box_resize = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "click_to_focus"))
+                {
+                    screen_info->params->click_to_focus = g_value_get_boolean (value);
+                    update_grabs (screen_info);
+                }
+                else if (!strcmp (name, "focus_new"))
+                {
+                    screen_info->params->focus_new = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "raise_on_focus"))
+                {
+                    screen_info->params->raise_on_focus = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "raise_on_click"))
+                {
+                    screen_info->params->raise_on_click = g_value_get_boolean (value);
+                    update_grabs (screen_info);
+                }
+                else if (!strcmp (name, "snap_to_border"))
+                {
+                    screen_info->params->snap_to_border = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "snap_to_windows"))
+                {
+                    screen_info->params->snap_to_windows = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "wrap_workspaces"))
+                {
+                    screen_info->params->wrap_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "wrap_windows"))
+                {
+                    screen_info->params->wrap_windows = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "borderless_maximize"))
+                {
+                    screen_info->params->borderless_maximize = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
+                }
+                else if (!strcmp (name, "cycle_minimum"))
+                {
+                    screen_info->params->cycle_minimum = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_hidden"))
+                {
+                    screen_info->params->cycle_hidden = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_workspaces"))
+                {
+                    screen_info->params->cycle_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "focus_hint"))
+                {
+                    screen_info->params->focus_hint = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "show_dock_shadow"))
+                {
+                    screen_info->params->show_dock_shadow = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "show_frame_shadow"))
+                {
+                    screen_info->params->show_frame_shadow = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "show_popup_shadow"))
+                {
+                    screen_info->params->show_popup_shadow = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "snap_resist"))
+                {
+                    screen_info->params->snap_resist = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "prevent_focus_stealing"))
+                {
+                    screen_info->params->prevent_focus_stealing = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "raise_with_any_button"))
+                {
+                    screen_info->params->raise_with_any_button = g_value_get_boolean (value);
+                    update_grabs (screen_info);
+                }
+                else if (!strcmp (name, "restore_on_move"))
+                {
+                    screen_info->params->restore_on_move = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "scroll_workspaces"))
+                {
+                    screen_info->params->scroll_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "toggle_workspaces"))
+                {
+                    screen_info->params->toggle_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "unredirect_overlays"))
+                {
+                    screen_info->params->unredirect_overlays = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "use_compositing"))
+                {
+                    screen_info->params->use_compositing = g_value_get_boolean (value);
+                    compositorActivateScreen (screen_info,
+                                              screen_info->params->use_compositing);
+                }
+                else if (!strcmp (name, "wrap_layout"))
+                {
+                    screen_info->params->wrap_layout = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "wrap_cycle"))
+                {
+                    screen_info->params->wrap_cycle = g_value_get_boolean (value);
+                }
+                else
+                {
+                    g_warning("The property '%s' is not supported", property_name);
+                }
+                break;
+            default:
+                g_warning("The type of property '%s' is not supported", property_name);
+                break;
+        }
+    }
 }

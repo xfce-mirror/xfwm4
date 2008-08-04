@@ -72,7 +72,7 @@ xfwm4_SOURCES =								\
 
 xfwm4_CFLAGS =								\
 	$(LIBX11_CFLAGS)						\
-	$(LIBXFCE4MCS_CLIENT_CFLAGS)					\
+	$(LIBXFCONF_CFLAGS)					\
 	$(LIBXFCEGUI4_CFLAGS)						\
 	$(RENDER_CFLAGS)						\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
@@ -85,7 +85,7 @@ xfwm4_CFLAGS =								\
 xfwm4_LDADD =								\
 	$(LIBX11_LIBS)							\
 	$(LIBX11_LDFLAGS)						\
-	$(LIBXFCE4MCS_CLIENT_LIBS)					\
+	$(LIBXFCONF_LIBS)					\
 	$(LIBXFCEGUI4_LIBS)						\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
 	$(RENDER_LIBS)							\

@@ -320,7 +320,7 @@ out:
     return ret;
 }
 
-static gchar *
+static const gchar *
 search_color_symbol (gchar *symbol, xfwmColorSymbol *color_sym)
 {
     xfwmColorSymbol *i;
@@ -432,7 +432,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
         }
         else if (key == 5)
         {
-            gchar *new_color = NULL;
+            const gchar *new_color = NULL;
             new_color = search_color_symbol (color, color_sym);
             if (new_color)
             {
@@ -733,7 +733,7 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
 }
 
 static GdkPixbuf *
-xfwmPixmapCompose (GdkPixbuf *pixbuf, gchar * dir, gchar * file)
+xfwmPixmapCompose (GdkPixbuf *pixbuf, const gchar * dir, const gchar * file)
 {
     GdkPixbuf *alpha;
     gchar *filepng;
@@ -931,7 +931,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
 }
 
 gboolean
-xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, gchar * dir, gchar * file, xfwmColorSymbol * cs)
+xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, const gchar * dir, const gchar * file, xfwmColorSymbol * cs)
 {
     gchar *filename;
     gchar *filexpm;

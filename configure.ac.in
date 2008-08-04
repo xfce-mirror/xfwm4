@@ -62,12 +62,11 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [gtk_minimum_version])
-XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT], [libxfce4mcs-client-1.0], [xfce_minimum_version])
-XDT_CHECK_PACKAGE([LIBXFCE4MCS_MANAGER], [libxfce4mcs-manager-1.0], [xfce_minimum_version])
+XDT_CHECK_PACKAGE([GLADE], [libglade-2.0], [2.0.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [xfce_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCEGUI4], libxfcegui4-1.0, [xfce_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCONF], libxfconf-0, [0.0.0])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [xfce_minimum_version])
 
 dnl
 dnl Startup notification support
@@ -210,8 +209,8 @@ defaults/Makefile
 icons/Makefile
 icons/48x48/Makefile
 icons/scalable/Makefile
-mcs-plugin/Makefile
 po/Makefile.in 
+settings-dialogs/Makefile
 src/Makefile
 themes/Makefile
 themes/daloa/Makefile

@@ -39,6 +39,8 @@
 #define DEFAULT_THEME "Default"
 #endif
 
+#define TOINT(x)                (x ? atoi(x) : 0)
+
 gboolean
 parseRc (const gchar * file, const gchar * dir, Settings *rc)
 {
@@ -99,8 +101,8 @@ checkRc (Settings *rc)
     return rval;
 }
 
-gchar *
-getValue (const gchar * option, Settings *rc)
+GValue *
+getGValue (const gchar * option, Settings *rc)
 {
     gint i;
 
@@ -119,7 +121,43 @@ getValue (const gchar * option, Settings *rc)
 }
 
 gboolean
-setValue (const gchar * lvalue, const gchar * rvalue, Settings *rc)
+setValue (const gchar * lvalue, const gchar *rvalue, Settings *rc)
+{
+    gint i;
+
+    TRACE ("entering setValue");
+
+    g_return_val_if_fail (lvalue != NULL, FALSE);
+    g_return_val_if_fail (rvalue != NULL, FALSE);
+
+    for (i = 0; rc[i].option; i++)
+    {
+        if (!g_ascii_strcasecmp (lvalue, rc[i].option))
+        {
+            if (rvalue)
+            {
+                switch (rc[i].type)
+                {
+                    case G_TYPE_STRING:
+                        setStringValue (lvalue, rvalue, rc);
+                        break;
+                    case G_TYPE_INT:
+                        setIntValue (lvalue, TOINT(rvalue), rc);
+                        break;
+                    case G_TYPE_BOOLEAN:
+                        setBooleanValue (lvalue, !g_ascii_strcasecmp ("true", rvalue), rc);
+                        break;
+                }
+                //TRACE ("%s=%s", rc[i].option, rc[i].value);
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+gboolean
+setGValue (const gchar * lvalue, const GValue *rvalue, Settings *rc)
 {
     gint i;
 
@@ -136,10 +174,17 @@ setValue (const gchar * lvalue, const gchar * rvalue, Settings *rc)
             {
                 if (rc[i].value)
                 {
-                    g_free (rc[i].value);
+                    g_value_unset (rc[i].value);
+                    g_value_init (rc[i].value, G_VALUE_TYPE(rvalue));
                 }
-                rc[i].value = g_strdup (rvalue);
-                TRACE ("%s=%s", rc[i].option, rc[i].value);
+                else
+                {
+                    rc[i].value = g_new0(GValue, 1);
+                    g_value_init (rc[i].value, G_VALUE_TYPE(rvalue));
+                }
+
+                g_value_copy (rvalue, rc[i].value);
+                //TRACE ("%s=%s", rc[i].option, rc[i].value);
                 return TRUE;
             }
         }
@@ -148,26 +193,34 @@ setValue (const gchar * lvalue, const gchar * rvalue, Settings *rc)
 }
 
 gboolean
-setBooleanValueFromInt (const gchar * lvalue, int value, Settings *rc)
+setBooleanValue (const gchar * lvalue, gboolean value, Settings *rc)
 {
-    return setValue (lvalue, value ? "true" : "false", rc);
+    GValue tmp_val = {0, };
+    g_value_init(&tmp_val, G_TYPE_BOOLEAN);
+    g_value_set_boolean(&tmp_val, value);
+
+    return setGValue (lvalue, &tmp_val, rc);
 }
 
 gboolean
-setIntValueFromInt (const gchar * lvalue, int value, Settings *rc)
+setIntValue (const gchar * lvalue, gint value, Settings *rc)
 {
-    gchar *s;
-    gboolean result;
+    GValue tmp_val = {0, };
+    g_value_init(&tmp_val, G_TYPE_INT);
+    g_value_set_int(&tmp_val, value);
+    return setGValue (lvalue, &tmp_val, rc);
+}
 
-    s = g_strdup_printf ("%i", value);
-    result = setValue (lvalue, s, rc);
-    g_free (s);
-
-    return result;
+gboolean
+setStringValue (const gchar * lvalue, const gchar *value, Settings *rc)
+{
+    GValue tmp_val = {0, };
+    g_value_init(&tmp_val, G_TYPE_STRING);
+    g_value_set_string(&tmp_val, value);
+    return setGValue (lvalue, &tmp_val, rc);
 }
 
 gchar *
-
 getSystemThemeDir (void)
 {
     return g_build_filename (DATADIR, "themes", DEFAULT_THEME, "xfwm4", NULL);
@@ -228,8 +281,84 @@ freeRc (Settings *rc)
     {
         if (rc[i].value)
         {
+            g_value_unset(rc[i].value);
             g_free (rc[i].value);
             rc[i].value = NULL;
         }
     }
+}
+
+const gchar *
+getStringValue (const gchar *option, Settings *rc)
+{
+    gint i;
+
+    TRACE ("entering getStringValue");
+
+    g_return_val_if_fail (option != NULL, NULL);
+
+    for (i = 0; rc[i].option; i++)
+    {
+        if (!g_ascii_strcasecmp (option, rc[i].option))
+        {
+            if (rc[i].value == NULL)
+                return NULL;
+            if (G_VALUE_TYPE(rc[i].value) != G_TYPE_STRING)
+            {
+                g_print("%s", rc[i].option);
+                return NULL;
+            }
+            return g_value_get_string(rc[i].value);
+        }
+    }
+    return NULL;
+}
+
+gint
+getIntValue (const gchar *option, Settings *rc)
+{
+    gint i;
+
+    TRACE ("entering getIntValue");
+
+    g_return_val_if_fail (option != NULL, 0);
+
+    for (i = 0; rc[i].option; i++)
+    {
+        if (!g_ascii_strcasecmp (option, rc[i].option))
+        {
+            if (rc[i].value == NULL)
+                return 0;
+            g_return_val_if_fail(G_VALUE_TYPE(rc[i].value) == G_TYPE_INT, 0);
+            return g_value_get_int(rc[i].value);
+        }
+    }
+    return 0;
+}
+
+gboolean 
+getBoolValue (const gchar *option, Settings *rc)
+{
+    gint i;
+
+    TRACE ("entering getBoolValue");
+
+    g_return_val_if_fail (option != NULL, FALSE);
+
+    for (i = 0; rc[i].option; i++)
+    {
+        if (!g_ascii_strcasecmp (option, rc[i].option))
+        {
+            if (rc[i].value == NULL)
+                return FALSE;
+            if (G_VALUE_TYPE(rc[i].value) != G_TYPE_BOOLEAN)
+            {
+                g_print("%s", rc[i].option);
+                return FALSE;
+            }
+            g_return_val_if_fail(G_VALUE_TYPE(rc[i].value) == G_TYPE_BOOLEAN, FALSE);
+            return g_value_get_boolean(rc[i].value);
+        }
+    }
+    return FALSE;
 }

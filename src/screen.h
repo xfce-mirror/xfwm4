@@ -29,7 +29,7 @@
 #include <X11/cursorfont.h>
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <libxfce4mcs/mcs-client.h>
+#include <xfconf/xfconf.h>
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #define SN_API_NOT_YET_FROZEN
@@ -116,8 +116,8 @@ struct _ScreenInfo
     gulong button_handler_id;
 
     /* MCS stuff */
-    McsClient *mcs_client;
-    gboolean mcs_initted;
+    XfconfChannel *xfwm4_channel;
+    XfconfChannel *keys_channel;
 
     /* Per screen parameters */
     XfwmParams *params;

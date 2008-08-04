@@ -152,8 +152,9 @@ struct _XfwmColor
 
 struct _Settings
 {
-    gchar *option;
-    gchar *value;
+    gchar  *option;
+    GValue *value;
+    GType   type;
     gboolean required;
 };
 

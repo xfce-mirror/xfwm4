@@ -210,9 +210,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->workspace_names = NULL;
     screen_info->workspace_names_items = 0;
 
-    screen_info->mcs_client = NULL;
-    screen_info->mcs_initted = FALSE;
-
     screen_info->windows_stack = NULL;
     screen_info->last_raise = NULL;
     screen_info->windows = NULL;
