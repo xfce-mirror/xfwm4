@@ -92,10 +92,10 @@
 #define USE_TIMEOUT_REPAINT
 /*
  * Adaptative timeout, worst case senario, the timeout will be:
- * 20 + 16 + 12 + 8 + 4 = 60 ms
+ * 30 + 20 + 10 = 60 ms
  */
-#define TIMEOUT_REPAINT       20
-#define TIMEOUT_DECREASE_RATE 4
+#define TIMEOUT_REPAINT       30
+#define TIMEOUT_DECREASE_RATE 10
 
 typedef struct _CWindow CWindow;
 struct _CWindow
