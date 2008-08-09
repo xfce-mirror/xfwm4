@@ -341,10 +341,6 @@ struct _DisplayInfo
     gboolean have_composite;
     gboolean have_damage;
     gboolean have_fixes;
-    gboolean damages_pending;
-
-    guint compositor_idle_id;
-    guint compositor_timeout_id;
 
 #if HAVE_NAME_WINDOW_PIXMAP
     gboolean have_name_window_pixmap;

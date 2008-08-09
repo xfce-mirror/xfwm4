@@ -160,6 +160,10 @@ struct _ScreenInfo
     guint wins_unredirected;
     gboolean compositor_active;
     gboolean clipChanged;
+    gboolean damages_pending;
+
+    guint compositor_timeout_id;
+
 #endif /* HAVE_COMPOSITOR */
 };
 

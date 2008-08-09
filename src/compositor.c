@@ -89,7 +89,9 @@
 #define WIN_IS_DAMAGED(cw)              (cw->damaged)
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
-#define USE_IDLE_REPAINT
+#define USE_TIMEOUT_REPAINT
+#define REPAINT_FREQ 50 /* Hz.*/
+#define TIMEOUT_REPAINT (1000 /* ms.*/ / REPAINT_FREQ)
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -1390,6 +1392,18 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     XFixesDestroyRegion (dpy, paint_region);
 }
 
+#ifdef USE_TIMEOUT_REPAINT
+static void
+remove_timeouts (ScreenInfo *screen_info)
+{
+    if (screen_info->compositor_timeout_id != 0)
+    {
+        g_source_remove (screen_info->compositor_timeout_id);
+        screen_info->compositor_timeout_id = 0;
+    }
+}
+#endif /* USE_TIMEOUT_REPAINT */
+
 static void
 repair_screen (ScreenInfo *screen_info)
 {
@@ -1403,6 +1417,10 @@ repair_screen (ScreenInfo *screen_info)
         return;
     }
 
+#ifdef USE_TIMEOUT_REPAINT
+    remove_timeouts (screen_info);
+#endif /* USE_TIMEOUT_REPAINT */
+
     display_info = screen_info->display_info;
     if (screen_info->allDamage != None)
     {
@@ -1412,24 +1430,6 @@ repair_screen (ScreenInfo *screen_info)
     }
 }
 
-#ifdef USE_IDLE_REPAINT
-static void
-remove_timeouts (DisplayInfo *display_info)
-{
-    if (display_info->compositor_idle_id != 0)
-    {
-        g_source_remove (display_info->compositor_idle_id);
-        display_info->compositor_idle_id = 0;
-    }
-
-    if (display_info->compositor_timeout_id != 0)
-    {
-        g_source_remove (display_info->compositor_timeout_id);
-        display_info->compositor_timeout_id = 0;
-    }
-}
-#endif /* USE_IDLE_REPAINT */
-
 static void
 repair_display (DisplayInfo *display_info)
 {
@@ -1438,60 +1438,38 @@ repair_display (DisplayInfo *display_info)
     g_return_if_fail (display_info);
     TRACE ("entering repair_display");
 
-#ifdef USE_IDLE_REPAINT
-    remove_timeouts (display_info);
-#endif /* USE_IDLE_REPAINT */
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
         repair_screen ((ScreenInfo *) screens->data);
     }
 }
 
-#ifdef USE_IDLE_REPAINT
-static gboolean
-compositor_idle_cb (gpointer data)
-{
-    DisplayInfo *display_info = (DisplayInfo *) data;
-
-    display_info->compositor_idle_id = 0;
-    repair_display (display_info);
-
-    return FALSE;
-}
-
+#ifdef USE_TIMEOUT_REPAINT
 static gboolean
 compositor_timeout_cb (gpointer data)
 {
-    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
 
-    display_info = (DisplayInfo *) data;
-    display_info->compositor_timeout_id = 0;
-    repair_display (display_info);
+    screen_info = (ScreenInfo *) data;
+    screen_info->compositor_timeout_id = 0;
+    repair_screen (screen_info);
 
     return FALSE;
 }
-#endif /* USE_IDLE_REPAINT */
+#endif /* USE_TIMEOUT_REPAINT */
 
 static void
-add_repair (DisplayInfo *display_info)
+add_repair (ScreenInfo *screen_info)
 {
-#ifdef USE_IDLE_REPAINT
-    if (display_info->compositor_idle_id != 0)
+#ifdef USE_TIMEOUT_REPAINT
+    if (screen_info->compositor_timeout_id != 0)
     {
         return;
     }
-    display_info->compositor_idle_id =
-        g_idle_add_full (G_PRIORITY_HIGH_IDLE,
-                         compositor_idle_cb, display_info, NULL);
-    if (display_info->compositor_timeout_id != 0)
-    {
-        return;
-    }
-
-    display_info->compositor_timeout_id =
-        g_timeout_add (50 /* ms */,
-                       compositor_timeout_cb, display_info);
-#endif /* USE_IDLE_REPAINT */
+    screen_info->compositor_timeout_id =
+        g_timeout_add (TIMEOUT_REPAINT,
+                       compositor_timeout_cb, screen_info);
+#endif /* USE_TIMEOUT_REPAINT */
 }
 
 static void
@@ -1521,7 +1499,7 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
     }
 
     /* The per-screen allDamage region is freed by repair_screen () */
-    add_repair (screen_info->display_info);
+    add_repair (screen_info);
 }
 
 static void
@@ -1752,7 +1730,7 @@ set_win_opacity (CWindow *cw, guint opacity)
             XFixesDestroyRegion (display_info->dpy, cw->extents);
         }
         cw->extents = win_extents (cw);
-        add_repair (display_info);
+        add_repair (screen_info);
     }
 }
 
@@ -1851,7 +1829,6 @@ unmap_win (CWindow *cw)
             }
 #endif /* HAVE_OVERLAYS */
             damage_screen (screen_info);
-            repair_screen (screen_info);
        }
     }
     else if (WIN_IS_VISIBLE(cw))
@@ -2181,6 +2158,7 @@ destroy_win (DisplayInfo *display_info, Window id)
 static void
 compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
 {
+    ScreenInfo *screen_info;
     CWindow *cw;
 
     g_return_if_fail (display_info != NULL);
@@ -2197,15 +2175,16 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
     cw = find_cwindow_in_display (display_info, ev->drawable);
     if ((cw) && WIN_IS_REDIRECTED(cw))
     {
+        screen_info = cw->screen_info;
         repair_win (cw, &ev->area);
-        display_info->damages_pending = ev->more;
-#ifdef USE_IDLE_REPAINT
+        screen_info->damages_pending = ev->more;
+#ifdef USE_TIMEOUT_REPAINT
         /* If there are more damages to come, we'll schedule the repair later */
-        if (!display_info->damages_pending)
+        if (!screen_info->damages_pending)
         {
-            add_repair (display_info);
+            add_repair (screen_info);
         }
-#endif /* USE_IDLE_REPAINT */
+#endif /* USE_TIMEOUT_REPAINT */
     }
 }
 
@@ -2235,7 +2214,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
                 XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (display_info->dpy, screen_info->rootTile);
                 screen_info->rootTile = None;
-                add_repair (display_info);
+                add_repair (screen_info);
 
                 return;
             }
@@ -2383,7 +2362,7 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
         above = None;
     }
     restack_win (cw, above);
-    add_repair (display_info);
+    add_repair (cw->screen_info);
 }
 
 static void
@@ -2694,12 +2673,9 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
-#ifndef USE_IDLE_REPAINT
-    if (!display_info->damages_pending)
-    {
-        repair_display (display_info);
-    }
-#endif /* USE_IDLE_REPAINT */
+#ifndef USE_TIMEOUT_REPAINT
+    repair_display (display_info);
+#endif /* USE_TIMEOUT_REPAINT */
 
 #endif /* HAVE_COMPOSITOR */
 }
@@ -2768,10 +2744,6 @@ compositorInitDisplay (DisplayInfo *display_info)
         g_print ("fixes error base: %i\n", display_info->fixes_error_base);
 #endif /* DEBUG */
     }
-
-    display_info->compositor_idle_id = 0;
-    display_info->compositor_timeout_id = 0;
-    display_info->damages_pending = FALSE;
 
     display_info->enable_compositor = ((display_info->have_render)
                                     && (display_info->have_composite)
@@ -2912,6 +2884,8 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->cwindows = NULL;
     screen_info->compositor_active = TRUE;
     screen_info->wins_unredirected = 0;
+    screen_info->compositor_timeout_id = 0;
+    screen_info->damages_pending = FALSE;
 
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     compositorSetCMSelection (screen_info, screen_info->xfwm4_win);
@@ -2946,6 +2920,10 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         return;
     }
     screen_info->compositor_active = FALSE;
+
+#ifdef USE_TIMEOUT_REPAINT
+    remove_timeouts (screen_info);
+#endif /* USE_TIMEOUT_REPAINT */
 
     i = 0;
     for (index = screen_info->cwindows; index; index = g_list_next (index))
