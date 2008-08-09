@@ -163,6 +163,7 @@ struct _ScreenInfo
     gboolean damages_pending;
 
     guint compositor_timeout_id;
+    gint compositor_timeout;
 
 #endif /* HAVE_COMPOSITOR */
 };

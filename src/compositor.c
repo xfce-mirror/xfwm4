@@ -90,8 +90,12 @@
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
 #define USE_TIMEOUT_REPAINT
-#define REPAINT_FREQ 50 /* Hz.*/
-#define TIMEOUT_REPAINT (1000 /* ms.*/ / REPAINT_FREQ)
+/*
+ * Adaptative timeout, worst case senario, the timeout will be:
+ * 20 + 16 + 12 + 8 + 4 = 60 ms
+ */
+#define TIMEOUT_REPAINT       20
+#define TIMEOUT_DECREASE_RATE 4
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -1419,6 +1423,8 @@ repair_screen (ScreenInfo *screen_info)
 
 #ifdef USE_TIMEOUT_REPAINT
     remove_timeouts (screen_info);
+    /* We've done a repaint, set timeout to its initial higher value for next round */
+    screen_info->compositor_timeout = TIMEOUT_REPAINT;
 #endif /* USE_TIMEOUT_REPAINT */
 
     display_info = screen_info->display_info;
@@ -1427,20 +1433,6 @@ repair_screen (ScreenInfo *screen_info)
         paint_all (screen_info, screen_info->allDamage);
         XFixesDestroyRegion (display_info->dpy, screen_info->allDamage);
         screen_info->allDamage = None;
-    }
-}
-
-static void
-repair_display (DisplayInfo *display_info)
-{
-    GSList *screens;
-
-    g_return_if_fail (display_info);
-    TRACE ("entering repair_display");
-
-    for (screens = display_info->screens; screens; screens = g_slist_next (screens))
-    {
-        repair_screen ((ScreenInfo *) screens->data);
     }
 }
 
@@ -1462,14 +1454,44 @@ static void
 add_repair (ScreenInfo *screen_info)
 {
 #ifdef USE_TIMEOUT_REPAINT
+    /*
+     * Implement some sort of an adaptative timeout mechanism.
+     * The logic is to set an initial vlaue for timeout,
+     * but if many requests come in, we reduce the timeout
+     * until we either can't wait anymore, or a repaint occurs
+     * and we reset the tiemout to our original value.
+     */
     if (screen_info->compositor_timeout_id != 0)
     {
-        return;
+        if (screen_info->compositor_timeout > 0)
+        {
+            remove_timeouts (screen_info);
+        }
+        else
+        {
+            return;
+        }
     }
     screen_info->compositor_timeout_id =
-        g_timeout_add (TIMEOUT_REPAINT,
+        g_timeout_add (screen_info->compositor_timeout,
                        compositor_timeout_cb, screen_info);
+    /* Decrease timeout for next round, unless the last timout was enough */
+    screen_info->compositor_timeout -= TIMEOUT_DECREASE_RATE;
 #endif /* USE_TIMEOUT_REPAINT */
+}
+
+static void
+repair_display (DisplayInfo *display_info)
+{
+    GSList *screens;
+
+    g_return_if_fail (display_info);
+    TRACE ("entering repair_display");
+
+    for (screens = display_info->screens; screens; screens = g_slist_next (screens))
+    {
+        add_repair ((ScreenInfo *) screens->data);
+    }
 }
 
 static void
@@ -2885,6 +2907,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->compositor_active = TRUE;
     screen_info->wins_unredirected = 0;
     screen_info->compositor_timeout_id = 0;
+    screen_info->compositor_timeout = TIMEOUT_REPAINT;
     screen_info->damages_pending = FALSE;
 
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
