@@ -553,11 +553,11 @@ msgstr "창 조작 메뉴"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Up"
-msgstr ""
+msgstr "위로"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Down"
-msgstr ""
+msgstr "아래로"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:858
@@ -581,14 +581,12 @@ msgid "Maximize window vertically"
 msgstr "창을 세로로 최대화"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
-#, fuzzy
 msgid "Move window"
-msgstr "창을 위로 이동한다."
+msgstr "창을 이동"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:371
-#, fuzzy
 msgid "Resize window"
-msgstr "창 크기를 위 방향으로 변경"
+msgstr "창 크기 변경"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Stick window"
@@ -675,19 +673,16 @@ msgid "Add workspace"
 msgstr "작업 공간 추가"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:395
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "작업 공간 추가"
+msgstr "이웃하는 작업 공간 추가"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:396
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "작업 공간 제거"
+msgstr "마지막 작업 공간 제거"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:397
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "작업 공간 제거"
+msgstr "사용 중인 작업 공간 제거"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:505
 #, c-format
@@ -753,14 +748,12 @@ msgid "Ma_ximize"
 msgstr "최대화(_x)"
 
 #: ../src/menu.c:43
-#, fuzzy
 msgid "(Un)Ma_ximize"
-msgstr "최대화(_x)"
+msgstr "최대화(취소)(_x)"
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "최대화(_x)"
+msgstr "최소화(_x)"
 
 #: ../src/menu.c:45
 msgid "Hide _all others"
@@ -772,29 +765,27 @@ msgstr "보이기(_h)"
 
 #: ../src/menu.c:47
 msgid "_Move"
-msgstr ""
+msgstr "이동(_M)"
 
 #: ../src/menu.c:48
 msgid "_Resize"
-msgstr ""
+msgstr "크기변경(_R)"
 
 #: ../src/menu.c:50
 msgid "_Shade"
 msgstr "말아 올리기(_S)"
 
 #: ../src/menu.c:51
-#, fuzzy
 msgid "(Un)_Shade"
-msgstr "말린 창 내리기(_s)"
+msgstr "창 말기(취소)(_s)"
 
 #: ../src/menu.c:52
 msgid "S_tick"
 msgstr "모든 작업공간에 보이기(_t)"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "(Un)S_tick"
-msgstr "현재 작업공간에 보이기(_t)"
+msgstr "모든 작업공간에 보이기(취소)(_t)"
 
 #: ../src/menu.c:54
 msgid "Context _help"
@@ -802,25 +793,23 @@ msgstr "도움말(_h)"
 
 #: ../src/menu.c:56
 msgid "Above"
-msgstr ""
+msgstr "위"
 
 #: ../src/menu.c:57
 msgid "Normal"
-msgstr ""
+msgstr "표준"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Below"
-msgstr "느림"
+msgstr "아래"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "전체화면 전환"
+msgstr "전체화면(_F)"
 
 #: ../src/menu.c:60
 msgid "(Un)_Fullscreen"
-msgstr ""
+msgstr "전체화면(취소)(_F)"
 
 #: ../src/menu.c:61
 msgid "Send to..."

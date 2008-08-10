@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-13 14:53+0200\n"
-"PO-Revision-Date: 2008-06-01 20:40+0700\n"
+"PO-Revision-Date: 2008-07-20 20:04+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -555,11 +555,11 @@ msgstr "Menu operasi jendela"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:359
 msgid "Up"
-msgstr ""
+msgstr "Atas"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Down"
-msgstr ""
+msgstr "Bawah"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:363
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:858
@@ -583,14 +583,12 @@ msgid "Maximize window vertically"
 msgstr "Maksimalkan jendela secara vertikal"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
-#, fuzzy
 msgid "Move window"
-msgstr "Pindah jendela ke atas"
+msgstr "Pindahkan jendela"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:371
-#, fuzzy
 msgid "Resize window"
-msgstr "Ubah ukuran jendela ke atas"
+msgstr "Ubah ukuran jendela"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Stick window"
@@ -677,19 +675,16 @@ msgid "Add workspace"
 msgstr "Tambah ruang kerja"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:395
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "Tambah ruang kerja"
+msgstr "Tambah ruang kerja berdampingan"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:396
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Hapus ruang kerja"
+msgstr "Hapus ruang kerja terakhir"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:397
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Hapus ruang kerja"
+msgstr "Hapus ruang kerja aktif"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:505
 #, c-format
@@ -755,14 +750,12 @@ msgid "Ma_ximize"
 msgstr "Maksimalkan (_x)"
 
 #: ../src/menu.c:43
-#, fuzzy
 msgid "(Un)Ma_ximize"
-msgstr "Maksimalkan (_x)"
+msgstr "Tak Maksimalkan (_x)"
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "Maksimalkan (_x)"
+msgstr "Mi_nimalkan"
 
 #: ../src/menu.c:45
 msgid "Hide _all others"
@@ -774,29 +767,27 @@ msgstr "Tampilkan (_h)"
 
 #: ../src/menu.c:47
 msgid "_Move"
-msgstr ""
+msgstr "_Pindah"
 
 #: ../src/menu.c:48
 msgid "_Resize"
-msgstr ""
+msgstr "_Ubah Ukuran"
 
 #: ../src/menu.c:50
 msgid "_Shade"
 msgstr "Bayang (_S)"
 
 #: ../src/menu.c:51
-#, fuzzy
 msgid "(Un)_Shade"
-msgstr "Tak bayang (_s)"
+msgstr "Tak Bayang (_s)"
 
 #: ../src/menu.c:52
 msgid "S_tick"
 msgstr "Leka_t"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "(Un)S_tick"
-msgstr "Tak leka_t"
+msgstr "Tak Leka_t"
 
 #: ../src/menu.c:54
 msgid "Context _help"
@@ -804,25 +795,23 @@ msgstr "Isi bantuan (_h)"
 
 #: ../src/menu.c:56
 msgid "Above"
-msgstr ""
+msgstr "Di Atas"
 
 #: ../src/menu.c:57
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Below"
-msgstr "Pelan"
+msgstr "Di Bawah"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Ubah layar penuh"
+msgstr "_Layar Penuh"
 
 #: ../src/menu.c:60
 msgid "(Un)_Fullscreen"
-msgstr ""
+msgstr "Tak _Layar Penuh"
 
 #: ../src/menu.c:61
 msgid "Send to..."

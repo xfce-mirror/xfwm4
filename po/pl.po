@@ -67,19 +67,16 @@ msgid "None"
 msgstr "Brak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "Przesuń okno na następny obszar roboczy"
+msgstr "Przesuń okno na bierzący obszar roboczy"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Przesuń okno na %d obszar roboczy"
+msgstr "Przejdź na obszar roboczny okna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Do nothing"
-msgstr "Nic"
+msgstr "Nic nie rób"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
@@ -183,9 +180,8 @@ msgid "Size|Large"
 msgstr "Duży"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "Minimalny rozmiar okna włączający mądre rozmieszczanie"
+msgstr ""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
 msgid "Placement"
@@ -200,7 +196,6 @@ msgid "Display full screen overlay windows directly"
 msgstr "Bezpośrednio wyświetlaj obramowania zmaksymalizowanych okien"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
 msgid "Show shadows under dock windows"
 msgstr "Pokazuj cienie pod popupami"
 
@@ -320,9 +315,8 @@ msgid "Maximize window"
 msgstr "Maksymalizuj okno"
 
 #: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:376
-#, fuzzy
 msgid "Fill window"
-msgstr "Schowaj okno"
+msgstr "Wypełnij okno"
 
 #: ../mcs-plugin/xfwm4_plugin.c:83
 msgid "Nothing"
@@ -418,9 +412,8 @@ msgid "Focus follows mouse"
 msgstr "Aktywacja podąża za myszką"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Opóźnienie przeniesienia na wierzch aktywowanego okna :"
+msgstr ""
 
 #: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
@@ -589,14 +582,12 @@ msgid "Maximize window vertically"
 msgstr "Maksymalizuj okno w pionie"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:370
-#, fuzzy
 msgid "Move window"
-msgstr "Przesuń okno wyżej"
+msgstr "Przesuń okno"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:371
-#, fuzzy
 msgid "Resize window"
-msgstr "Rozszerz okno w górę"
+msgstr "Skaluj okno"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:373
 msgid "Stick window"
@@ -611,12 +602,10 @@ msgid "Lower window"
 msgstr "Przesuń okno niżej"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:377
-#, fuzzy
 msgid "Fill window horizontally"
 msgstr "Maksymalizuj okno w poziomie"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:378
-#, fuzzy
 msgid "Fill window vertically"
 msgstr "Maksymalizuj okno w pionie"
 
@@ -685,22 +674,19 @@ msgid "Add workspace"
 msgstr "Dodaj obszar roboczy"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:395
-#, fuzzy
 msgid "Add adjacent workspace"
 msgstr "Dodaj obszar roboczy"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:396
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Usuń obszar roboczy"
+msgstr "Usuń ostatni obszar roboczy"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:397
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Usuń obszar roboczy"
+msgstr "Usuń aktywny obszar roboczy"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:505
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
 msgstr "Przesuń okno na %d obszar roboczy"
 
@@ -763,14 +749,12 @@ msgid "Ma_ximize"
 msgstr "_Maksymalizuj"
 
 #: ../src/menu.c:43
-#, fuzzy
 msgid "(Un)Ma_ximize"
-msgstr "_Maksymalizuj"
+msgstr ""
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_Maksymalizuj"
+msgstr "_Minimalizuj"
 
 #: ../src/menu.c:45
 msgid "Hide _all others"
@@ -793,7 +777,6 @@ msgid "_Shade"
 msgstr "Zw_iń"
 
 #: ../src/menu.c:51
-#, fuzzy
 msgid "(Un)_Shade"
 msgstr "Rozw_iń"
 
@@ -802,7 +785,6 @@ msgid "S_tick"
 msgstr "Przyp_nij"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "(Un)S_tick"
 msgstr "Odep_nij"
 
@@ -819,14 +801,12 @@ msgid "Normal"
 msgstr ""
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Below"
-msgstr "Wolno"
+msgstr "Poniżej"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Włącz/wyłącz pełny ekran"
+msgstr "_Pełny ekran"
 
 #: ../src/menu.c:60
 msgid "(Un)_Fullscreen"
