@@ -115,7 +115,7 @@ struct _ScreenInfo
     /* Button handler for GTK */
     gulong button_handler_id;
 
-    /* MCS stuff */
+    /* xfconf */
     XfconfChannel *xfwm4_channel;
     XfconfChannel *keys_channel;
 
@@ -160,11 +160,10 @@ struct _ScreenInfo
     guint wins_unredirected;
     gboolean compositor_active;
     gboolean clipChanged;
+
     gboolean damages_pending;
 
     guint compositor_timeout_id;
-    gint compositor_timeout;
-
 #endif /* HAVE_COMPOSITOR */
 };
 

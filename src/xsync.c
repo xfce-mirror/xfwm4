@@ -52,7 +52,7 @@ sendXSyncRequest (DisplayInfo *display_info, Window window, XSyncValue value)
     XClientMessageEvent xev;
 
     g_return_if_fail (window != None);
-    TRACE ("entering getXSyncCounter");
+    TRACE ("entering sendXSyncRequest");
 
     xev.type = ClientMessage;
     xev.window = window;
@@ -126,7 +126,7 @@ clientDestroyXSyncAlarm (Client *c)
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->xsync_alarm != None);
 
-    TRACE ("entering clientClearXSyncAlarm");
+    TRACE ("entering clientDestroyXSyncAlarm");
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;

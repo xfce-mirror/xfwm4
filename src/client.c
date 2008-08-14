@@ -484,33 +484,36 @@ clientAdjustCoordGravity (Client * c, unsigned long *mask, XWindowChanges *wc)
 static void
 clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
-    unsigned long change_mask;
+    unsigned long change_mask_frame, change_mask_client;
     XWindowChanges change_values;
 
-    change_mask = (mask & (CWX | CWY | CWWidth | CWHeight));
+    change_mask_frame = mask & (CWX | CWY | CWWidth | CWHeight);
+    change_mask_client = mask & (CWWidth | CWHeight);
+
     if (flags & CFG_FORCE_REDRAW)
     {
-        change_mask |= (CWX | CWY);
+        change_mask_client |= (CWX | CWY);
+        change_mask_frame  |= (CWX | CWY);
     }
 
-    if (change_mask & (CWX | CWY | CWWidth | CWHeight))
+    if (change_mask_frame & (CWX | CWY | CWWidth | CWHeight))
     {
         change_values.x = frameX (c);
         change_values.y = frameY (c);
         change_values.width = frameWidth (c);
         change_values.height = frameHeight (c);
-        XConfigureWindow (clientGetXDisplay (c), c->frame, change_mask, &change_values);
-
-        if ((WIN_RESIZED) || (flags & CFG_FORCE_REDRAW))
-        {
-            frameDraw (c, (flags & CFG_FORCE_REDRAW));
-        }
+        XConfigureWindow (clientGetXDisplay (c), c->frame, change_mask_frame, &change_values);
 
         change_values.x = frameLeft (c);
         change_values.y = frameTop (c);
         change_values.width = c->width;
         change_values.height = c->height;
-        XConfigureWindow (clientGetXDisplay (c), c->window, change_mask, &change_values);
+        XConfigureWindow (clientGetXDisplay (c), c->window, change_mask_client, &change_values);
+    }
+
+    if ((WIN_RESIZED) || (flags & CFG_FORCE_REDRAW))
+    {
+        frameDraw (c, (flags & CFG_FORCE_REDRAW));
     }
 }
 

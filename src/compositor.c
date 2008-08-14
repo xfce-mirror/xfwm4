@@ -89,13 +89,8 @@
 #define WIN_IS_DAMAGED(cw)              (cw->damaged)
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
-#define USE_TIMEOUT_REPAINT
-/*
- * Adaptative timeout, worst case senario, the timeout will be:
- * 30 + 20 + 10 = 60 ms
- */
-#define TIMEOUT_REPAINT       30
-#define TIMEOUT_DECREASE_RATE 10
+/* Set TIMEOUT_REPAINT to 0 to disable timeout repaint */
+#define TIMEOUT_REPAINT       20 /* (1/50 sec.) */
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -1396,7 +1391,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     XFixesDestroyRegion (dpy, paint_region);
 }
 
-#ifdef USE_TIMEOUT_REPAINT
+#if TIMEOUT_REPAINT
 static void
 remove_timeouts (ScreenInfo *screen_info)
 {
@@ -1406,7 +1401,7 @@ remove_timeouts (ScreenInfo *screen_info)
         screen_info->compositor_timeout_id = 0;
     }
 }
-#endif /* USE_TIMEOUT_REPAINT */
+#endif /* TIMEOUT_REPAINT */
 
 static void
 repair_screen (ScreenInfo *screen_info)
@@ -1421,11 +1416,9 @@ repair_screen (ScreenInfo *screen_info)
         return;
     }
 
-#ifdef USE_TIMEOUT_REPAINT
+#if TIMEOUT_REPAINT
     remove_timeouts (screen_info);
-    /* We've done a repaint, set timeout to its initial higher value for next round */
-    screen_info->compositor_timeout = TIMEOUT_REPAINT;
-#endif /* USE_TIMEOUT_REPAINT */
+#endif /* TIMEOUT_REPAINT */
 
     display_info = screen_info->display_info;
     if (screen_info->allDamage != None)
@@ -1436,7 +1429,7 @@ repair_screen (ScreenInfo *screen_info)
     }
 }
 
-#ifdef USE_TIMEOUT_REPAINT
+#if TIMEOUT_REPAINT
 static gboolean
 compositor_timeout_cb (gpointer data)
 {
@@ -1448,36 +1441,20 @@ compositor_timeout_cb (gpointer data)
 
     return FALSE;
 }
-#endif /* USE_TIMEOUT_REPAINT */
+#endif /* TIMEOUT_REPAINT */
 
 static void
 add_repair (ScreenInfo *screen_info)
 {
-#ifdef USE_TIMEOUT_REPAINT
-    /*
-     * Implement some sort of an adaptative timeout mechanism.
-     * The logic is to set an initial vlaue for timeout,
-     * but if many requests come in, we reduce the timeout
-     * until we either can't wait anymore, or a repaint occurs
-     * and we reset the tiemout to our original value.
-     */
+#if TIMEOUT_REPAINT
     if (screen_info->compositor_timeout_id != 0)
     {
-        if (screen_info->compositor_timeout > 0)
-        {
-            remove_timeouts (screen_info);
-        }
-        else
-        {
-            return;
-        }
+        return;
     }
     screen_info->compositor_timeout_id =
-        g_timeout_add (screen_info->compositor_timeout,
+        g_timeout_add (TIMEOUT_REPAINT,
                        compositor_timeout_cb, screen_info);
-    /* Decrease timeout for next round, unless the last timout was enough */
-    screen_info->compositor_timeout -= TIMEOUT_DECREASE_RATE;
-#endif /* USE_TIMEOUT_REPAINT */
+#endif /* TIMEOUT_REPAINT */
 }
 
 static void
@@ -1555,7 +1532,7 @@ fix_region (CWindow *cw, XserverRegion region)
             {
                 cw2->clientSize = client_size (cw2);
             }
-            /* ...before substracting them from the damaged zone. */
+            /* ...before subtracting them from the damaged zone. */
             if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
             {
                 XFixesSubtractRegion (display_info->dpy, region,
@@ -1670,7 +1647,7 @@ update_extents (CWindow *cw)
 }
 
 static void
-determine_mode(CWindow *cw)
+determine_mode (CWindow *cw)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -2063,7 +2040,7 @@ restack_win (CWindow *cw, Window above)
 }
 
 static void
-resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gboolean shape_notify)
+resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -2077,22 +2054,16 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     display_info = screen_info->display_info;
     damage = None;
 
-    if (WIN_IS_VISIBLE(cw))
-    {
-        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
-        if (cw->extents)
-        {
-            XFixesCopyRegion (display_info->dpy, damage, cw->extents);
-        }
-    }
-
     if (cw->extents)
     {
+        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
+        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+
         XFixesDestroyRegion (display_info->dpy, cw->extents);
         cw->extents = None;
     }
 
-    if ((cw->attr.width != width) || (cw->attr.height != height) || shape_notify)
+    if ((cw->attr.width != width) || (cw->attr.height != height))
     {
 #if HAVE_NAME_WINDOW_PIXMAP
         if (cw->name_window_pixmap)
@@ -2115,7 +2086,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     }
 
     if ((cw->attr.width != width) || (cw->attr.height != height) ||
-        (cw->attr.x != x) || (cw->attr.y != y) || shape_notify)
+        (cw->attr.x != x) || (cw->attr.y != y))
     {
         if (cw->borderSize)
         {
@@ -2136,20 +2107,76 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw, gbool
     cw->attr.height = height;
     cw->attr.border_width = bw;
 
+    cw->extents = win_extents (cw);
     if (damage)
     {
-        cw->extents = win_extents (cw);
         XFixesUnionRegion (display_info->dpy, damage, damage, cw->extents);
-        /* A shape notify will likely change the shadows too, so clear the extents */
-        if (shape_notify)
-        {
-            XFixesDestroyRegion (display_info->dpy, cw->extents);
-            cw->extents = None;
-        }
-        fix_region (cw, damage);
-        /* damage region will be destroyed by add_damage () */
-        add_damage (screen_info, damage);
     }
+    else
+    {
+        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
+        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+    }
+    fix_region (cw, damage);
+    /* damage region will be destroyed by add_damage () */
+    add_damage (screen_info, damage);
+}
+
+static void
+reshape_win (CWindow *cw)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    XserverRegion damage;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("entering reshape_win");
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
+    damage = None;
+
+    if (cw->extents)
+    {
+        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
+        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+
+        XFixesDestroyRegion (display_info->dpy, cw->extents);
+        cw->extents = None;
+    }
+
+    if (cw->shadow)
+    {
+        XRenderFreePicture (display_info->dpy, cw->shadow);
+        cw->shadow = None;
+    }
+
+    if (cw->borderSize)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->borderSize);
+        cw->borderSize = None;
+    }
+
+    if (cw->clientSize)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->clientSize);
+        cw->clientSize = None;
+    }
+
+    cw->extents = win_extents (cw);
+    if (damage)
+    {
+        XFixesUnionRegion (display_info->dpy, damage, damage, cw->extents);
+    }
+    else
+    {
+        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
+        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+    }
+    fix_region (cw, damage);
+    /* damage region will be destroyed by add_damage () */
+    add_damage (screen_info, damage);
 }
 
 static void
@@ -2200,13 +2227,6 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
         screen_info = cw->screen_info;
         repair_win (cw, &ev->area);
         screen_info->damages_pending = ev->more;
-#ifdef USE_TIMEOUT_REPAINT
-        /* If there are more damages to come, we'll schedule the repair later */
-        if (!screen_info->damages_pending)
-        {
-            add_repair (screen_info);
-        }
-#endif /* USE_TIMEOUT_REPAINT */
     }
 }
 
@@ -2350,7 +2370,7 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     if (cw)
     {
         restack_win (cw, ev->above);
-        resize_win (cw, ev->x, ev->y, ev->width, ev->height, ev->border_width, FALSE);
+        resize_win (cw, ev->x, ev->y, ev->width, ev->height, ev->border_width);
     }
 }
 
@@ -2384,7 +2404,6 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
         above = None;
     }
     restack_win (cw, above);
-    add_repair (cw->screen_info);
 }
 
 static void
@@ -2494,9 +2513,7 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
             {
                 cw->shaped = FALSE;
             }
-            resize_win (cw, cw->attr.x, cw->attr.y,
-                            ev->width + ev->x, ev->height + ev->y,
-                            cw->attr.border_width, TRUE);
+            reshape_win  (cw);
             if ((ev->shaped) && !(cw->shaped))
             {
                 cw->shaped = TRUE;
@@ -2695,9 +2712,9 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
-#ifndef USE_TIMEOUT_REPAINT
+#if TIMEOUT_REPAINT == 0
     repair_display (display_info);
-#endif /* USE_TIMEOUT_REPAINT */
+#endif /* TIMEOUT_REPAINT */
 
 #endif /* HAVE_COMPOSITOR */
 }
@@ -2907,7 +2924,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->compositor_active = TRUE;
     screen_info->wins_unredirected = 0;
     screen_info->compositor_timeout_id = 0;
-    screen_info->compositor_timeout = TIMEOUT_REPAINT;
     screen_info->damages_pending = FALSE;
 
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
@@ -2944,9 +2960,9 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
     screen_info->compositor_active = FALSE;
 
-#ifdef USE_TIMEOUT_REPAINT
+#if TIMEOUT_REPAINT
     remove_timeouts (screen_info);
-#endif /* USE_TIMEOUT_REPAINT */
+#endif /* TIMEOUT_REPAINT */
 
     i = 0;
     for (index = screen_info->cwindows; index; index = g_list_next (index))

@@ -1056,30 +1056,14 @@ clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    value_mask = 0L;
-    if (c->x != px)
-    {
-        value_mask |= CWX;
-    }
-    if (c->y != py)
-    {
-        value_mask |= CWY;
-    }
-    if (c->width != pw)
-    {
-        value_mask |= CWWidth;
-    }
-    if (c->height != ph)
-    {
-        value_mask |= CWHeight;
-    }
-    if (!value_mask)
+    value_mask = CWX | CWY | CWWidth | CWHeight;
+
+#ifdef HAVE_XSYNC
+    if (c->xsync_waiting)
     {
         return;
     }
-
-#ifdef HAVE_XSYNC
-    if (!c->xsync_waiting)
+    else
     {
         if ((display_info->have_xsync) && (c->xsync_enabled) && (c->xsync_counter)
             && (value_mask & (CWWidth | CWHeight)))
@@ -1389,7 +1373,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         {
             clientResizeConfigure (c, prev_x, prev_y, prev_width, prev_height);
         }
-
     }
     else if (xevent->type == ButtonRelease)
     {
