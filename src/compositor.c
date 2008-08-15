@@ -1550,7 +1550,7 @@ fix_region (CWindow *cw, XserverRegion region)
             {
                 cw2->clientSize = client_size (cw2);
             }
-            /* ...before substracting them from the damaged zone. */
+            /* ...before subtracting them from the damaged zone. */
             if ((cw2->clientSize) && (screen_info->params->frame_opacity < 100))
             {
                 XFixesSubtractRegion (display_info->dpy, region,
@@ -1665,7 +1665,7 @@ update_extents (CWindow *cw)
 }
 
 static void
-determine_mode(CWindow *cw)
+determine_mode (CWindow *cw)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -2622,6 +2622,29 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
     {
         /* that will also damage the window */
         update_extents (cw);
+    }
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
+compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int width, int height)
+{
+#ifdef HAVE_COMPOSITOR
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorDamageWindow: 0x%lx", id);
+
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        resize_win (cw, x, y, width, height, 0, FALSE);
     }
 #endif /* HAVE_COMPOSITOR */
 }

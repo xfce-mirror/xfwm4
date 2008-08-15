@@ -2312,14 +2312,7 @@ handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
     {
         c->xsync_waiting = FALSE;
         c->xsync_value = ev->counter_value;
-        if (c->xsync_enabled)
-        {
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
-        }
+        clientXSyncClearTimeout (c);
     }
 }
 #endif /* HAVE_XSYNC */

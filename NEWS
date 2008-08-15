@@ -9,6 +9,7 @@
 - Backport overlay and compositor support from trunk (Bug #3849)
 - Filter out grab/ungrab events so we don't end up redrawing the frame twice
 - Set monitor when positionning menu (Bug #4162)
+- Reduce flickering during resize (Bug #4283)
 
 4.4.2
 =====

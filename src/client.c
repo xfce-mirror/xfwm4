@@ -640,34 +640,45 @@ clientConstrainRatio (Client * c, int *w, int *h, int corner)
 static void
 clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
-    unsigned long change_mask;
+    unsigned long change_mask_frame, change_mask_client;
     XWindowChanges change_values;
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
 
-    change_mask = (mask & (CWX | CWY | CWWidth | CWHeight));
-    if (flags & CFG_FORCE_REDRAW)
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    change_mask_frame = mask & (CWX | CWY | CWWidth | CWHeight);
+    change_mask_client = mask & (CWWidth | CWHeight);
+
+    if ((WIN_RESIZED) || (flags & CFG_FORCE_REDRAW))
     {
-        change_mask |= (CWX | CWY);
+        frameDraw (c, (flags & CFG_FORCE_REDRAW));
     }
 
-    if (change_mask & (CWX | CWY | CWWidth | CWHeight))
+    if (flags & CFG_FORCE_REDRAW)
+    {
+        change_mask_client |= (CWX | CWY);
+    }
+
+    if (change_mask_frame & (CWX | CWY | CWWidth | CWHeight))
     {
         change_values.x = frameX (c);
         change_values.y = frameY (c);
         change_values.width = frameWidth (c);
         change_values.height = frameHeight (c);
-        XConfigureWindow (clientGetXDisplay (c), c->frame, change_mask, &change_values);
+        XConfigureWindow (display_info->dpy, c->frame, change_mask_frame, &change_values);
+    }
 
-        if (WIN_RESIZED || (flags & CFG_FORCE_REDRAW))
-        {
-            frameDraw (c, (flags & CFG_FORCE_REDRAW));
-        }
-
+    if (change_mask_client & (CWX | CWY | CWWidth | CWHeight))
+    {
         change_values.x = frameLeft (c);
         change_values.y = frameTop (c);
         change_values.width = c->width;
         change_values.height = c->height;
-        XConfigureWindow (clientGetXDisplay (c), c->window, change_mask, &change_values);
+        XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
+    compositorResizeWindow (display_info, c->frame, frameX (c), frameY (c), frameWidth (c), frameHeight (c));
 }
 
 void
@@ -1211,20 +1222,6 @@ clientDestroyXSyncAlarm (Client *c)
     c->xsync_alarm = None;
 }
 
-static void
-clientXSyncClearTimeout (Client * c)
-{
-    g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientXSyncClearTimeout");
-
-    if (c->xsync_timeout_id)
-    {
-        g_source_remove (c->xsync_timeout_id);
-        c->xsync_timeout_id = 0;
-    }
-}
-
 static gboolean
 clientXSyncTimeout (gpointer data)
 {
@@ -1262,6 +1259,20 @@ clientXSyncResetTimeout (Client * c)
                                               CLIENT_XSYNC_TIMEOUT,
                                               (GtkFunction) clientXSyncTimeout,
                                               (gpointer) c, NULL);
+}
+
+void
+clientXSyncClearTimeout (Client * c)
+{
+    g_return_if_fail (c != NULL);
+
+    TRACE ("entering clientXSyncClearTimeout");
+
+    if (c->xsync_timeout_id)
+    {
+        g_source_remove (c->xsync_timeout_id);
+        c->xsync_timeout_id = 0;
+    }
 }
 
 void
@@ -4163,38 +4174,18 @@ clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     XWindowChanges wc;
-    unsigned long value_mask;
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    value_mask = 0L;
-    if (c->x != px)
-    {
-        value_mask |= CWX;
-    }
-    if (c->y != py)
-    {
-        value_mask |= CWY;
-    }
-    if (c->width != pw)
-    {
-        value_mask |= CWWidth;
-    }
-    if (c->height != ph)
-    {
-        value_mask |= CWHeight;
-    }
-    if (!value_mask)
+#ifdef HAVE_XSYNC
+    if (c->xsync_waiting)
     {
         return;
     }
-
-#ifdef HAVE_XSYNC
-    if (!c->xsync_waiting)
+    else
     {
-        if ((display_info->have_xsync) && (c->xsync_enabled) && (c->xsync_counter)
-            && (value_mask & (CWWidth | CWHeight)))
+        if ((display_info->have_xsync) && (c->xsync_enabled) && (c->xsync_counter))
         {
             clientXSyncRequest (c);
         }
@@ -4203,7 +4194,7 @@ clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
         wc.y = c->y;
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, value_mask, NO_CFG_FLAG);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
 #ifdef HAVE_XSYNC
     }
 #endif /* HAVE_XSYNC */
