@@ -2657,6 +2657,29 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
 }
 
 void
+compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int width, int height)
+{
+#ifdef HAVE_COMPOSITOR
+    CWindow *cw;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (id != None);
+    TRACE ("entering compositorDamageWindow: 0x%lx", id);
+
+    if (!compositorIsUsable (display_info))
+    {
+        return;
+    }
+
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        resize_win (cw, x, y, width, height, 0);
+    }
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
 compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
 {
 #ifdef HAVE_COMPOSITOR

@@ -2354,7 +2354,6 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, ev);
     sn_process_event (ev);
-    compositorHandleEvent (display_info, ev);
     switch (ev->type)
     {
         case MotionNotify:
@@ -2441,6 +2440,8 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             gtk_main_quit ();
         }
     }
+
+    compositorHandleEvent (display_info, ev);
 
     return status;
 }

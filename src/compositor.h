@@ -45,6 +45,12 @@ void                     compositorRemoveWindow                 (DisplayInfo *,
                                                                  Window);
 void                     compositorDamageWindow                 (DisplayInfo *,
                                                                  Window);
+void                     compositorResizeWindow                 (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 int,
+                                                                 int,
+                                                                 int);
 void                     compositorHandleEvent                  (DisplayInfo *,
                                                                  XEvent *);
 void                     compositorInitDisplay                  (DisplayInfo *);

@@ -486,14 +486,23 @@ clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, uns
 {
     unsigned long change_mask_frame, change_mask_client;
     XWindowChanges change_values;
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
 
     change_mask_frame = mask & (CWX | CWY | CWWidth | CWHeight);
     change_mask_client = mask & (CWWidth | CWHeight);
 
+    if ((WIN_RESIZED) || (flags & CFG_FORCE_REDRAW))
+    {
+        frameDraw (c, (flags & CFG_FORCE_REDRAW));
+    }
+
     if (flags & CFG_FORCE_REDRAW)
     {
         change_mask_client |= (CWX | CWY);
-        change_mask_frame  |= (CWX | CWY);
     }
 
     if (change_mask_frame & (CWX | CWY | CWWidth | CWHeight))
@@ -502,19 +511,18 @@ clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, uns
         change_values.y = frameY (c);
         change_values.width = frameWidth (c);
         change_values.height = frameHeight (c);
-        XConfigureWindow (clientGetXDisplay (c), c->frame, change_mask_frame, &change_values);
+        XConfigureWindow (display_info->dpy, c->frame, change_mask_frame, &change_values);
+    }
 
+    if (change_mask_client & (CWX | CWY | CWWidth | CWHeight))
+    {
         change_values.x = frameLeft (c);
         change_values.y = frameTop (c);
         change_values.width = c->width;
         change_values.height = c->height;
-        XConfigureWindow (clientGetXDisplay (c), c->window, change_mask_client, &change_values);
+        XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
-
-    if ((WIN_RESIZED) || (flags & CFG_FORCE_REDRAW))
-    {
-        frameDraw (c, (flags & CFG_FORCE_REDRAW));
-    }
+    compositorResizeWindow (display_info, c->frame, frameX (c), frameY (c), frameWidth (c), frameHeight (c));
 }
 
 void
