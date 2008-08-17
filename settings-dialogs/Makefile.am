@@ -110,3 +110,8 @@ EXTRA_DIST = \
 	xfwm4-workspace-dialog.glade				\
 	xfwm4-tweaks-dialog.glade					\
 	xfwm4-dialog.glade
+
+DISTCLEANFILES = \
+	xfwm4-settings.desktop \
+	xfwm4-workspace-settings.desktop \
+	xfwm4-tweaks-settings.desktop

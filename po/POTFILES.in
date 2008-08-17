@@ -1,11 +1,5 @@
 # List of source files containing translatable strings.
 
-mcs-plugin/margins.c
-mcs-plugin/workspaces_plugin.c
-mcs-plugin/wmtweaks_plugin.c
-mcs-plugin/workspaces.c
-mcs-plugin/xfwm4_plugin.c
-mcs-plugin/xfwm4_shortcuteditor.c
 src/client.c
 src/compositor.c
 src/display.c
@@ -36,8 +30,15 @@ src/transients.c
 src/ui_style.c
 src/wireframe.c
 src/workspaces.c
-
-# files added by intltool-prepare.
-mcs-plugin/xfce-wm-settings.desktop.in
-mcs-plugin/xfce-wmtweaks-settings.desktop.in
-mcs-plugin/xfce-workspaces-settings.desktop.in
+settings-dialogs/xfwm4-settings.desktop.in
+settings-dialogs/xfwm4-settings.c
+settings-dialogs/xfwm4-tweaks-dialog.glade
+settings-dialogs/xfwm4-workspace-dialog.glade
+settings-dialogs/xfwm4-tweaks-settings.desktop.in
+settings-dialogs/xfwm4-workspace-settings.desktop.in
+settings-dialogs/tweaks-settings.c
+settings-dialogs/workspace-settings.c
+settings-dialogs/xfwm4-dialog.glade
+settings-dialogs/xfwm4-dialog_glade.h
+settings-dialogs/xfwm4-tweaks-dialog_glade.h
+settings-dialogs/xfwm4-workspace-dialog_glade.h

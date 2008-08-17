@@ -1457,6 +1457,7 @@ add_repair (ScreenInfo *screen_info)
 #endif /* TIMEOUT_REPAINT */
 }
 
+#if TIMEOUT_REPAINT == 0
 static void
 repair_display (DisplayInfo *display_info)
 {
@@ -1470,6 +1471,7 @@ repair_display (DisplayInfo *display_info)
         add_repair ((ScreenInfo *) screens->data);
     }
 }
+#endif
 
 static void
 add_damage (ScreenInfo *screen_info, XserverRegion damage)

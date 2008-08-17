@@ -2321,7 +2321,6 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
 static eventFilterStatus
 handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
 {
-    XWindowChanges wc;
     Client *c;
 
     TRACE ("entering handleXSyncAlarmNotify");
