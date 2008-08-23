@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-_Name=Xfce 4 Windowmanager Settings
-_GenericName=Windowmanager Settings
+_Name=Xfce 4 Window Manager Settings
+_GenericName=Window Manager Settings
 _Comment= 
 Exec=xfwm4-settings
 Icon=xfwm4
