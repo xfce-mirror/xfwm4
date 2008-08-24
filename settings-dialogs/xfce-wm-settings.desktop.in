@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
-_Name=Xfce 4 Workspace Settings
-_GenericName=Workspace Settings
-_Comment=
-Exec=xfwm4-workspace-settings
-Icon=xfce4-workspaces
+_Name=Xfce 4 Window Manager Settings
+_GenericName=Window Manager Settings
+_Comment=Configure window behavior
+Exec=xfwm4-settings
+Icon=xfwm4
 Terminal=false
 Type=Application
 Categories=X-XFCE;Settings;DesktopSettings;

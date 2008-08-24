@@ -95,9 +95,9 @@ endif
 
 desktopdir = $(datadir)/applications
 desktop_in_files = \
-	xfwm4-settings.desktop.in \
-	xfwm4-tweaks-settings.desktop.in \
-	xfwm4-workspace-settings.desktop.in
+	xfce-wm-settings.desktop.in \
+	xfce-wmtweaks-settings.desktop.in \
+	xfce-workspaces-settings.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 settingsdir = $(datadir)/xfce4/settings-dialogs
@@ -112,6 +112,4 @@ EXTRA_DIST = \
 	xfwm4-dialog.glade
 
 DISTCLEANFILES = \
-	xfwm4-settings.desktop \
-	xfwm4-workspace-settings.desktop \
-	xfwm4-tweaks-settings.desktop
+	$(desktop_DATA)
