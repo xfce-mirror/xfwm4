@@ -1051,12 +1051,9 @@ clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     XWindowChanges wc;
-    unsigned long value_mask;
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-
-    value_mask = CWX | CWY | CWWidth | CWHeight;
 
 #ifdef HAVE_XSYNC
     if (c->xsync_waiting)
@@ -1065,8 +1062,7 @@ clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
     }
     else
     {
-        if ((display_info->have_xsync) && (c->xsync_enabled) && (c->xsync_counter)
-            && (value_mask & (CWWidth | CWHeight)))
+        if ((display_info->have_xsync) && (c->xsync_enabled) && (c->xsync_counter))
         {
             clientXSyncRequest (c);
         }
@@ -1075,7 +1071,7 @@ clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
         wc.y = c->y;
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, value_mask, NO_CFG_FLAG);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
 #ifdef HAVE_XSYNC
     }
 #endif /* HAVE_XSYNC */

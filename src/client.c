@@ -522,7 +522,10 @@ clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, uns
         change_values.height = c->height;
         XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
-    compositorResizeWindow (display_info, c->frame, frameX (c), frameY (c), frameWidth (c), frameHeight (c));
+    if (WIN_RESIZED)
+    {
+        compositorResizeWindow (display_info, c->frame, frameX (c), frameY (c), frameWidth (c), frameHeight (c));
+    }
 }
 
 void
