@@ -561,7 +561,7 @@ xfwm4_dialog_new_from_xml (GladeXML *gxml)
 
     renderer = gtk_cell_renderer_text_new();
     gtk_tree_view_set_model (GTK_TREE_VIEW (theme_name_treeview), GTK_TREE_MODEL (list_store));
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (theme_name_treeview), 0, "", renderer, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (theme_name_treeview), 0, _("Theme"), renderer, "text", 0, NULL);
 
     theme_selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (theme_name_treeview));
     gtk_tree_selection_set_mode (theme_selection, GTK_SELECTION_SINGLE);
@@ -573,7 +573,7 @@ xfwm4_dialog_new_from_xml (GladeXML *gxml)
 
     renderer = gtk_cell_renderer_text_new();
     gtk_tree_view_set_model (GTK_TREE_VIEW (keytheme_name_treeview), GTK_TREE_MODEL (list_store));
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (keytheme_name_treeview), 0, "", renderer, "text", 0, NULL);
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (keytheme_name_treeview), 0, _("Keytheme"), renderer, "text", 0, NULL);
 
     keytheme_selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (keytheme_name_treeview));
     gtk_tree_selection_set_mode (keytheme_selection, GTK_SELECTION_SINGLE);
