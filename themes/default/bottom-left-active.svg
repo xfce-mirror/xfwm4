@@ -56,6 +56,15 @@
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="hilight">
+    <path
+       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
+       d="M 1.5,0 L 1.5,12.5 C 1.5,12.5 1.5,14.5 3.5,14.5 C 5.5,14.5 16,14.5 16,14.5"
+       id="path6061" />
+  </g>
+  <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
