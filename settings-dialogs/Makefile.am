@@ -100,9 +100,6 @@ desktop_in_files = \
 	xfce-workspaces-settings.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
-settingsdir = $(datadir)/xfce4/settings-dialogs
-settings_DATA = $(desktop_DATA)
-
 @INTLTOOL_DESKTOP_RULE@
 
 EXTRA_DIST = \

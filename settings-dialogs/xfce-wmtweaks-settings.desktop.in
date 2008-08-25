@@ -7,6 +7,6 @@ Exec=xfwm4-tweaks-settings
 Icon=wmtweaks
 Terminal=false
 Type=Application
-Categories=X-XFCE;Settings;DesktopSettings;
+Categories=X-XFCE;Settings;DesktopSettings;X-XfceSettingsDialog;
 StartupNotify=true
 OnlyShowIn=XFCE;
