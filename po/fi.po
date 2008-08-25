@@ -7,727 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-12 13:44+0300\n"
+"POT-Creation-Date: 2008-08-24 23:24-0700\n"
 "PO-Revision-Date: 2008-08-12 13:55+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: ../mcs-plugin/margins.c:130
-msgid "Workspace Margins"
-msgstr "Työtilan reunukset"
-
-#: ../mcs-plugin/margins.c:136
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Reunukset ovat näytön reunoilla olevat alueet, joille ikkunoita ei aseteta"
-
-#: ../mcs-plugin/margins.c:167
-msgid "Left :"
-msgstr "Vasen:"
-
-#: ../mcs-plugin/margins.c:187
-msgid "Right :"
-msgstr "Oikea:"
-
-#: ../mcs-plugin/margins.c:207
-msgid "Top :"
-msgstr "Yläreuna:"
-
-#: ../mcs-plugin/margins.c:227
-msgid "Bottom :"
-msgstr "Alareuna:"
-
-#. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/workspaces_plugin.c:111
-msgid "Button Label|Workspaces and Margins"
-msgstr "Työtilat ja reunukset"
-
-#: ../mcs-plugin/workspaces_plugin.c:145
-msgid "Workspaces and Margins"
-msgstr "Työtilat ja reunukset"
-
-#: ../mcs-plugin/workspaces_plugin.c:163 ../mcs-plugin/wmtweaks_plugin.c:640
-#: ../mcs-plugin/workspaces.c:519
-msgid "Workspaces"
-msgstr "Työtilat"
-
-#: ../mcs-plugin/workspaces_plugin.c:172
-msgid "Margins"
-msgstr "Reunukset"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:471
-msgid "None"
-msgstr "Ei mitään"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:476
-msgid "Bring window on current workspace"
-msgstr "Siirrä ikkuna nykyiseen työtilaan"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:477
-msgid "Switch to window's workspace"
-msgstr "Siirry ikkunan työtilaan"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:478
-msgid "Do nothing"
-msgstr "Älä tee mitään"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:483
-msgid "Place window under the mouse"
-msgstr "Sijoita ikkuna osoittimen alle"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:484
-msgid "Place window in the center"
-msgstr "Aseta ikkuna keskelle"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:493
-#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Window Manager Tweaks"
-msgstr "Ikkunamanagerin viritys"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:512
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
-"Ohita ikkunat, jotka eivät näy työtilan vaihtajassa tai tehtäväpalkissa"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:518
-msgid "Include hidden (i.e. iconified) windows"
-msgstr "Sisällytä piilotetut (eli pienennetyt) ikkunat"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:524
-msgid "Cycle through windows from all workspaces"
-msgstr "Selaa kaikkien työtilojen ikkunoita"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:529
-msgid "Cycling"
-msgstr "Selaaminen"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:541
-msgid "Activate focus stealing prevention"
-msgstr "Käytä kohdistuksen ryöstön estoa"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:547
-msgid "Honor the standard ICCCM focus hint"
-msgstr "Kunnioita standardia ICCCM -kohdistusvihjettä"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:553
-msgid "When a window raises itself:"
-msgstr "Kun ikkuna hyppää esiin:"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
-msgid "Focus"
-msgstr "Kohdistus"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:570
-msgid "Key used to grab and move windows"
-msgstr "Ikkunoiden liikutteluun käytettävä näppäin"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:576
-msgid "Raise windows when any mouse button is pressed"
-msgstr "Nosta ikkuna napsautettaessa millä tahansa hiiren painikkeella"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:583
-msgid "Hide frame of windows when maximized"
-msgstr "Piilota ikkunan kehys suurennettaessa"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:590
-msgid "Restore original size of maximized windows when moving"
-msgstr "Palauta suurennettujen ikkunoiden koko siirrettäessä"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:596
-msgid "Use edge resistance instead of windows snapping"
-msgstr "Käytä reunavastusta ikkunoiden loksahtamisen sijaan"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:601
-msgid "Accessibility"
-msgstr "Esteettömyys"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:614
-msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr "Vaihda työtilaa hiiren vierityspainikkeella työpöydän yllä"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:621
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr "Muista edellinen työtila pikanäppäimillä vaihdettaessa"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:628
-msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr "Kierrätä työtiloja työpöytäasettelun mukaisesti"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:635
-msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Kierrätä työtiloja, kun ohitetaan ensimmäinen tai viimeinen tila"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:652
-msgid "Minimum size of windows to trigger smart placement"
-msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:653
-msgid "Size|Small"
-msgstr "Pieni"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:653
-msgid "Size|Large"
-msgstr "Suuri"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:658
-msgid "Default positionning of windows without smart placement:"
-msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:663
-msgid "Placement"
-msgstr "Sijoittelu"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:683
-msgid "Enable display compositing"
-msgstr "Käytä näytön komposointia"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:697
-msgid "Display full screen overlay windows directly"
-msgstr "Näytä kokoruudun peittokuvaikkunat suoraan"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:703
-msgid "Show shadows under dock windows"
-msgstr "Näytä varjot telakkaikkunoiden alla"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:709
-msgid "Show shadows under regular windows"
-msgstr "Näytä varjot tavallisten ikkunoiden alla"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:715
-msgid "Show shadows under popup windows"
-msgstr "Näytä varjot ponnahdusikkunoiden alla"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:721
-msgid "Opacity of window decorations"
-msgstr "Ikkunoiden kehysten läpinäkyvyys"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
-#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
-#: ../mcs-plugin/wmtweaks_plugin.c:745
-msgid "Transparent"
-msgstr "Läpinäkyvä"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
-#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
-#: ../mcs-plugin/wmtweaks_plugin.c:746
-msgid "Opaque"
-msgstr "Läpinäkymätön"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:727
-msgid "Opacity of inactive windows"
-msgstr "Epäaktiivisten ikkunoiden läpinäkyvyys"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:733
-msgid "Opacity of windows during move"
-msgstr "Ikkunoiden läpinäkyvyys siirrettäessä"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:739
-msgid "Opacity of windows during resize"
-msgstr "Ikkunoiden läpinäkyvyys kokoa muutettaessa"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:745
-msgid "Opacity of popup windows"
-msgstr "Ponnahdusikkunoiden läpinäkyvyys"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:750
-msgid "Compositor"
-msgstr "Komposoija"
-
-#. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:792
-msgid "Button Label|Window Manager Tweaks"
-msgstr "Ikkunamanagerin viritys"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
-#, c-format
-msgid "These settings cannot work with your current window manager (%s)"
-msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
-
-#: ../mcs-plugin/workspaces.c:332
-msgid "Change name"
-msgstr "Nimeä uudelleen"
-
-#: ../mcs-plugin/workspaces.c:341 ../mcs-plugin/xfwm4_shortcuteditor.c:484
-#, c-format
-msgid "Workspace %d"
-msgstr "Työtila %d"
-
-#: ../mcs-plugin/workspaces.c:349
-msgid "Name:"
-msgstr "Nimi:"
-
-#: ../mcs-plugin/workspaces.c:428
-msgid "Click on a workspace name to edit it"
-msgstr "Napsauta työtilan nimeä muokataksesi sitä"
-
-#: ../mcs-plugin/workspaces.c:494
-msgid "Number of workspaces:"
-msgstr "Työtilojen lukumäärä:"
-
-#: ../mcs-plugin/workspaces.c:530
-msgid "Workspace names"
-msgstr "Työtilojen nimet"
-
-#: ../mcs-plugin/xfwm4_plugin.c:68
-msgid "Menu"
-msgstr "Valikko"
-
-#: ../mcs-plugin/xfwm4_plugin.c:69
-msgid "Stick"
-msgstr "Kiinnitä"
-
-#: ../mcs-plugin/xfwm4_plugin.c:70
-msgid "Shade"
-msgstr "Varjosta"
-
-#: ../mcs-plugin/xfwm4_plugin.c:71
-msgid "Hide"
-msgstr "Piilota"
-
-#: ../mcs-plugin/xfwm4_plugin.c:72
-msgid "Maximize"
-msgstr "Suurenna"
-
-#: ../mcs-plugin/xfwm4_plugin.c:73
-msgid "Close"
-msgstr "Sulje"
-
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:372
-msgid "Shade window"
-msgstr "Varjosta ikkuna"
-
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-msgid "Hide window"
-msgstr "Piilota ikkuna"
-
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:368
-msgid "Maximize window"
-msgstr "Suurenna ikkuna"
-
-#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:376
-msgid "Fill window"
-msgstr "Sovita ikkuna"
-
-#: ../mcs-plugin/xfwm4_plugin.c:83
-msgid "Nothing"
-msgstr "Ei mitään"
-
-#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:361
-msgid "Left"
-msgstr "Vasemmalle"
-
-#: ../mcs-plugin/xfwm4_plugin.c:89
-msgid "Center"
-msgstr "Keskelle"
-
-#: ../mcs-plugin/xfwm4_plugin.c:90 ../mcs-plugin/xfwm4_shortcuteditor.c:362
-msgid "Right"
-msgstr "Oikealle"
-
-#: ../mcs-plugin/xfwm4_plugin.c:589
-msgid "Click and drag buttons to change the layout"
-msgstr "Napsauta ja raahaa painikkeita muuttaaksesi asettelua"
-
-#: ../mcs-plugin/xfwm4_plugin.c:594
-msgid "Active"
-msgstr "Esillä"
-
-#: ../mcs-plugin/xfwm4_plugin.c:605
-msgid "Title"
-msgstr "Otsake"
-
-#: ../mcs-plugin/xfwm4_plugin.c:606
-msgid "The window title, it cannot be removed"
-msgstr "Ikkunan otsaketta ei voi poistaa"
-
-#: ../mcs-plugin/xfwm4_plugin.c:618
-msgid "Hidden"
-msgstr "Piilotettu"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1391
-msgid "Font Selection Dialog"
-msgstr "Kirjasimenvalintadialogi"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1456
-msgid "Window Manager"
-msgstr "Ikkunamanageri"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1496
-msgid "Title font"
-msgstr "Otsakkeen kirjasin"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1505
-msgid "Title Alignment"
-msgstr "Otsakkeen tasaus"
-
-#. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1507
-msgid "Text alignment inside title bar :"
-msgstr "Tekstin tasaus otsakepalkissa:"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1513
-msgid "Button layout"
-msgstr "Painikkeiden sijoittelu"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1518
-msgid "Style"
-msgstr "Tyyli"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1566
-msgid "Window shortcuts"
-msgstr "Ikkunoiden pikanäppäimet"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1580
-msgid "Command"
-msgstr "Komento"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1586
-msgid "Shortcut"
-msgstr "Pikanäppäimet"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1603
-msgid "Keyboard"
-msgstr "Näppäimistö"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1618
-msgid "Focus model"
-msgstr "Kohdistustapa"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1622
-msgid "Click to focus"
-msgstr "Kohdistus napsautettaessa"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1632
-msgid "Focus follows mouse"
-msgstr "Kohdistus seuraa hiirtä"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1645
-msgid "Delay before window receives focus"
-msgstr "Viive ennen ikkunan kohdistamista:"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
-msgid "Slow"
-msgstr "Hidas"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
-msgid "Fast"
-msgstr "Nopea"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1682
-msgid "Automatically give focus to newly created windows"
-msgstr "Kohdista automaattisesti juuri luotuihin ikkunoihin"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1686
-msgid "New window focus"
-msgstr "Uuden ikkunan kohdistus"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1693
-msgid "Raise on focus"
-msgstr "Nosta kohdistettaessa"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1699
-msgid "Automatically raise windows when they receive focus"
-msgstr "Nosta ikkunat automaattisesti, kun niihin kohdistetaan"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1709
-msgid "Delay before raising focused window :"
-msgstr "Viive ennen kohdistetun ikkunan nostoa:"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1744
-msgid "Raise window when clicking inside application window"
-msgstr "Nosta sovellusikkuna, kun sen sisällä napsautetaan"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1748
-msgid "Raise on click"
-msgstr "Nosta napsautettaessa"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1766
-msgid "Windows snapping"
-msgstr "Ikkunoiden loksahtaminen"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1771
-msgid "Snap windows to screen border"
-msgstr "Loksauta ikkunat näytön reunaan"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1777
-msgid "Snap windows to other windows"
-msgstr "Loksauta ikkunat toisiinsa"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1788
-msgid "Distance :"
-msgstr "Etäisyys:"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1795
-msgid "Distance|Small"
-msgstr "Pieni"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1802
-msgid "Distance|Wide"
-msgstr "Suuri"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1823
-msgid "Wrap workspaces"
-msgstr "Kierrätä työtiloja"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1829
-msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Vaihda työtilaa osoittimen saavuttaessa näytön reunan"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1837
-msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Vaihda työtilaa, kun ikkuna raahataan ulos näytöltä"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1847
-msgid "Edge Resistance :"
-msgstr "Reunan vastus:"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1854
-msgid "Resistance|Small"
-msgstr "Heikko"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1861
-msgid "Resistance|Wide"
-msgstr "Voimakas"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1883
-msgid "Opaque move and resize"
-msgstr "Läpinäkymätön siirtäminen ja koon muuttaminen"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1888
-msgid "Display content of windows when resizing"
-msgstr "Näytä ikkunan sisältö kokoa muutettaessa"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1894
-msgid "Display content of windows when moving"
-msgstr "Näytä ikkunan sisältö siirrettäessä"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1899
-msgid "Double click action"
-msgstr "Kaksoisnapsautustoiminto"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1901
-msgid "Action to perform when double clicking on title bar :"
-msgstr "Toiminto, joka suoritetaan kaksoisnapsautettaessa otsikkopalkkia:"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1906
-msgid "Advanced"
-msgstr "Lisäasetukset"
-
-#. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:2051
-msgid "Button Label|Window Manager"
-msgstr "Ikkunamanageri"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:54
-msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Haluatko todella poistaa tämän pikanäppäinteeman?"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:133
-msgid "Add keybinding theme"
-msgstr "Lisää pikanäppäinteema"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
-msgid "Enter a name for the theme:"
-msgstr "Anna nimi teemalle:"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:176
-msgid "A keybinding theme with the same name already exists"
-msgstr "Tällä nimellä on jo olemassa pikanäppäinteema"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
-msgid "You have to provide a name for the keybinding theme"
-msgstr "Pikanäppäinteemalle täytyy antaa nimi"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
-msgid "Window operations menu"
-msgstr "Ikkunan toimintovalikko"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
-msgid "Up"
-msgstr "Ylös"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
-msgid "Down"
-msgstr "Alas"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
-msgid "Cancel"
-msgstr "Peru"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
-msgid "Cycle windows"
-msgstr "Selaa ikkunoita"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
-msgid "Close window"
-msgstr "Sulje ikkuna"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
-msgid "Maximize window horizontally"
-msgstr "Suurenna ikkuna vaakasuunnassa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-msgid "Maximize window vertically"
-msgstr "Suurenna ikkuna pystysuunnassa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
-msgid "Move window"
-msgstr "Siirrä ikkunaa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
-msgid "Resize window"
-msgstr "Muuta ikkunan kokoa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-msgid "Stick window"
-msgstr "Kiinnitä ikkuna"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
-msgid "Raise window"
-msgstr "Nosta ikkunaa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
-msgid "Lower window"
-msgstr "Laske ikkunaa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
-msgid "Fill window horizontally"
-msgstr "Sovita ikkuna vaakasuunnassa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
-msgid "Fill window vertically"
-msgstr "Sovita ikkuna pystysuunnassa"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
-msgid "Toggle above"
-msgstr "Vaihda päällimmäiseksi"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
-msgid "Toggle fullscreen"
-msgstr "Vaihda täysruututilaan"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
-msgid "Move window to upper workspace"
-msgstr "Siirrä ikkuna ylempään työtilaan"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
-msgid "Move window to bottom workspace"
-msgstr "Siirrä ikkuna alempaan työtilaan"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
-msgid "Move window to left workspace"
-msgstr "Siirrä ikkuna vasemmanpuoleiseen työtilaan"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
-msgid "Move window to right workspace"
-msgstr "Siirrä ikkuna oikeanpuoleiseen työtilaan"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
-msgid "Move window to previous workspace"
-msgstr "Siirrä ikkuna edelliseen työtilaan"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
-msgid "Move window to next workspace"
-msgstr "Siirrä ikkuna seuraavaan työtilaan"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
-msgid "Show desktop"
-msgstr "Näytä työpöytä"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
-msgid "Upper workspace"
-msgstr "Ylempi työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
-msgid "Bottom workspace"
-msgstr "Alempi työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
-msgid "Left workspace"
-msgstr "Vasen työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
-msgid "Right workspace"
-msgstr "Oikea työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-msgid "Previous workspace"
-msgstr "Edellinen työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
-msgid "Next workspace"
-msgstr "Seuraava työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
-msgid "Add workspace"
-msgstr "Lisää työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
-msgid "Add adjacent workspace"
-msgstr "Lisää työtila vierelle"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
-msgid "Delete last workspace"
-msgstr "Poista viimeinen työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
-msgid "Delete active workspace"
-msgstr "Poista aktiivinen työtila"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:505
-#, c-format
-msgid "Move window to workspace %d"
-msgstr "Siirrä ikkuna työtilaan %d"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
-msgid "Cannot open the theme directory !"
-msgstr "Teemahakemistoa ei voi avata!"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:604
-#, c-format
-msgid ""
-"Cannot open %s : \n"
-"%s"
-msgstr ""
-"Kohdetta %s ei voi avata: \n"
-"%s"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:618
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:629
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-"Tiedostoon %s ei voi kirjoittaa:\n"
-"%s"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
-msgid ""
-"Shortcut already in use !\n"
-"Are you sure you want to use it ?"
-msgstr ""
-"Pikanäppäin on jo käytössä!\n"
-"Haluatko todella käyttää sitä?"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
-msgid "Compose shortcut for :"
-msgstr "Määritä pikanäppäin:"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
-msgid "Compose shortcut"
-msgstr "Määritä pikanäppäin"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
-msgid "No shortcut"
-msgstr "Ei pikanäppäintä"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/hints.c:86
@@ -863,29 +149,898 @@ msgstr "%s: Värimääritys %s ei kelpaa\n"
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Väriä ei voi jäsentää: Värin GValue ei ole tyyppiä STRING"
 
-#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#, fuzzy
+msgid "Configure window behavior"
+msgstr "Peru ikkunan toiminto"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "Window Manager"
+msgstr "Ikkunamanageri"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
 msgid "Window Manager Settings"
 msgstr "Ikkunamanagerin asetukset"
 
-#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:4
 msgid "Xfce 4 Window Manager Settings"
 msgstr "Xfce 4 Ikkunamanagerin asetukset"
 
-#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-msgid "Advanced Configuration"
-msgstr "Lisäasetukset"
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+#, fuzzy
+msgid "Advanced window manager settings"
+msgstr "Xfce 4 Ikkunamanagerin asetukset"
 
-#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+msgid "Window Manager Tweaks"
+msgstr "Ikkunamanagerin viritys"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
 msgstr "Xfce 4 Ikkunamanagerin viritys"
 
-#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#, fuzzy
+msgid "Set number and names of workspaces"
+msgstr "Työtilojen lukumäärä:"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Workspaces"
+msgstr "Työtilat"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
 msgid "Workspaces Settings"
 msgstr "Työtilojen asetukset"
 
-#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:4
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Työtilojen asetukset"
+
+#: ../settings-dialogs/xfwm4-settings.c:61
+#: ../settings-dialogs/xfwm4-settings.c:91
+msgid "Shade window"
+msgstr "Varjosta ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:62
+#: ../settings-dialogs/xfwm4-settings.c:88
+msgid "Hide window"
+msgstr "Piilota ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:63
+#: ../settings-dialogs/xfwm4-settings.c:87
+msgid "Maximize window"
+msgstr "Suurenna ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:64
+#: ../settings-dialogs/xfwm4-settings.c:95
+msgid "Fill window"
+msgstr "Sovita ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:65
+msgid "Nothing"
+msgstr "Ei mitään"
+
+#: ../settings-dialogs/xfwm4-settings.c:70
+#: ../settings-dialogs/xfwm4-settings.c:80
+msgid "Left"
+msgstr "Vasemmalle"
+
+#: ../settings-dialogs/xfwm4-settings.c:71
+msgid "Center"
+msgstr "Keskelle"
+
+#: ../settings-dialogs/xfwm4-settings.c:72
+#: ../settings-dialogs/xfwm4-settings.c:81
+msgid "Right"
+msgstr "Oikealle"
+
+#: ../settings-dialogs/xfwm4-settings.c:77
+msgid "Window operations menu"
+msgstr "Ikkunan toimintovalikko"
+
+#: ../settings-dialogs/xfwm4-settings.c:78
+msgid "Up"
+msgstr "Ylös"
+
+#: ../settings-dialogs/xfwm4-settings.c:79
+msgid "Down"
+msgstr "Alas"
+
+#: ../settings-dialogs/xfwm4-settings.c:82
+msgid "Cancel"
+msgstr "Peru"
+
+#: ../settings-dialogs/xfwm4-settings.c:83
+msgid "Cycle windows"
+msgstr "Selaa ikkunoita"
+
+#: ../settings-dialogs/xfwm4-settings.c:84
+msgid "Close window"
+msgstr "Sulje ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:85
+msgid "Maximize window horizontally"
+msgstr "Suurenna ikkuna vaakasuunnassa"
+
+#: ../settings-dialogs/xfwm4-settings.c:86
+msgid "Maximize window vertically"
+msgstr "Suurenna ikkuna pystysuunnassa"
+
+#: ../settings-dialogs/xfwm4-settings.c:89
+msgid "Move window"
+msgstr "Siirrä ikkunaa"
+
+#: ../settings-dialogs/xfwm4-settings.c:90
+msgid "Resize window"
+msgstr "Muuta ikkunan kokoa"
+
+#: ../settings-dialogs/xfwm4-settings.c:92
+msgid "Stick window"
+msgstr "Kiinnitä ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:93
+msgid "Raise window"
+msgstr "Nosta ikkunaa"
+
+#: ../settings-dialogs/xfwm4-settings.c:94
+msgid "Lower window"
+msgstr "Laske ikkunaa"
+
+#: ../settings-dialogs/xfwm4-settings.c:96
+msgid "Fill window horizontally"
+msgstr "Sovita ikkuna vaakasuunnassa"
+
+#: ../settings-dialogs/xfwm4-settings.c:97
+msgid "Fill window vertically"
+msgstr "Sovita ikkuna pystysuunnassa"
+
+#: ../settings-dialogs/xfwm4-settings.c:98
+msgid "Toggle above"
+msgstr "Vaihda päällimmäiseksi"
+
+#: ../settings-dialogs/xfwm4-settings.c:99
+msgid "Toggle fullscreen"
+msgstr "Vaihda täysruututilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:100
+msgid "Move window to upper workspace"
+msgstr "Siirrä ikkuna ylempään työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:101
+msgid "Move window to bottom workspace"
+msgstr "Siirrä ikkuna alempaan työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:102
+msgid "Move window to left workspace"
+msgstr "Siirrä ikkuna vasemmanpuoleiseen työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:103
+msgid "Move window to right workspace"
+msgstr "Siirrä ikkuna oikeanpuoleiseen työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:104
+msgid "Move window to previous workspace"
+msgstr "Siirrä ikkuna edelliseen työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:105
+msgid "Move window to next workspace"
+msgstr "Siirrä ikkuna seuraavaan työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:106
+msgid "Show desktop"
+msgstr "Näytä työpöytä"
+
+#: ../settings-dialogs/xfwm4-settings.c:107
+msgid "Upper workspace"
+msgstr "Ylempi työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:108
+msgid "Bottom workspace"
+msgstr "Alempi työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:109
+msgid "Left workspace"
+msgstr "Vasen työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:110
+msgid "Right workspace"
+msgstr "Oikea työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:111
+msgid "Previous workspace"
+msgstr "Edellinen työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:112
+msgid "Next workspace"
+msgstr "Seuraava työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:113
+msgid "Add workspace"
+msgstr "Lisää työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:114
+msgid "Add adjacent workspace"
+msgstr "Lisää työtila vierelle"
+
+#: ../settings-dialogs/xfwm4-settings.c:115
+msgid "Delete last workspace"
+msgstr "Poista viimeinen työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:116
+msgid "Delete active workspace"
+msgstr "Poista aktiivinen työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:564
+msgid "Theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:576
+msgid "Keytheme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:589
+#, fuzzy
+msgid "Action"
+msgstr "Esillä"
+
+#: ../settings-dialogs/xfwm4-settings.c:591
+#, fuzzy
+msgid "Button"
+msgstr "Painikkeiden sijoittelu"
+
+#: ../settings-dialogs/xfwm4-settings.c:690
+#: ../settings-dialogs/tweaks-settings.c:338
+#: ../settings-dialogs/workspace-settings.c:67
+msgid "Version information"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:710
+#: ../settings-dialogs/tweaks-settings.c:357
+#: ../settings-dialogs/workspace-settings.c:87
+msgid "."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:714
+#: ../settings-dialogs/tweaks-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:91
+#, c-format
+msgid ""
+"%s: %s\n"
+"Try %s --help to see a full list of available command line options.\n"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1268
+msgid "A keybinding theme with the same name already exists"
+msgstr "Tällä nimellä on jo olemassa pikanäppäinteema"
+
+#: ../settings-dialogs/xfwm4-settings.c:1274
+msgid "You have to provide a name for the keybinding theme"
+msgstr "Pikanäppäinteemalle täytyy antaa nimi"
+
+#: ../settings-dialogs/xfwm4-settings.c:1317
+msgid "Do you really want to remove this keybinding theme ?"
+msgstr "Haluatko todella poistaa tämän pikanäppäinteeman?"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "<i>Large</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#, fuzzy
+msgid "<i>Opaque</i>"
+msgstr "Läpinäkymätön"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "<i>Small</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+#, fuzzy
+msgid "<i>Transparent</i>"
+msgstr "Läpinäkyvä"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#, fuzzy
+msgid "Activate _focus stealing prevention"
+msgstr "Käytä kohdistuksen ryöstön estoa"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+#, fuzzy
+msgid "C_ompositor"
+msgstr "Komposoija"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+#, fuzzy
+msgid "C_ycling"
+msgstr "Selaaminen"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#, fuzzy
+msgid "Cycle _through windows on all workspaces"
+msgstr "Selaa kaikkien työtilojen ikkunoita"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#, fuzzy
+msgid "Display _fullscreen overlay windows directly"
+msgstr "Näytä kokoruudun peittokuvaikkunat suoraan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#, fuzzy
+msgid "Do _nothing"
+msgstr "Älä tee mitään"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#, fuzzy
+msgid "Hide _frame of windows when maximized"
+msgstr "Piilota ikkunan kehys suurennettaessa"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#, fuzzy
+msgid "Honor _standard ICCCM focus hint"
+msgstr "Kunnioita standardia ICCCM -kohdistusvihjettä"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#, fuzzy
+msgid "Key used to _grab and move windows:"
+msgstr "Ikkunoiden liikutteluun käytettävä näppäin"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#, fuzzy
+msgid "Opaci_ty of window decorations:"
+msgstr "Ikkunoiden kehysten läpinäkyvyys"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#, fuzzy
+msgid "Opacity of _inactive windows:"
+msgstr "Epäaktiivisten ikkunoiden läpinäkyvyys"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#, fuzzy
+msgid "Opacity of popup window_s:"
+msgstr "Ponnahdusikkunoiden läpinäkyvyys"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#, fuzzy
+msgid "Opacity of windows during _move:"
+msgstr "Ikkunoiden läpinäkyvyys siirrettäessä"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#, fuzzy
+msgid "Opacity of windows during resi_ze:"
+msgstr "Ikkunoiden läpinäkyvyys kokoa muutettaessa"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Restore original _size of maximized windows when moving"
+msgstr "Palauta suurennettujen ikkunoiden koko siirrettäessä"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#, fuzzy
+msgid "Show shadows under _dock windows"
+msgstr "Näytä varjot telakkaikkunoiden alla"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#, fuzzy
+msgid "Show shadows under _regular windows"
+msgstr "Näytä varjot tavallisten ikkunoiden alla"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#, fuzzy
+msgid "Show shadows under pop_up windows"
+msgstr "Näytä varjot ponnahdusikkunoiden alla"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#, fuzzy
+msgid "Switch to win_dow's workspace"
+msgstr "Siirry ikkunan työtilaan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#, fuzzy
+msgid "Use _edge resistance instead of window snapping"
+msgstr "Käytä reunavastusta ikkunoiden loksahtamisen sijaan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+msgid "When a window raises itself:"
+msgstr "Kun ikkuna hyppää esiin:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#, fuzzy
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "Kierrätä työtiloja työpöytäasettelun mukaisesti"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#, fuzzy
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "Kierrätä työtiloja, kun ohitetaan ensimmäinen tai viimeinen tila"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#, fuzzy
+msgid "_Accessibility"
+msgstr "Esteettömyys"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "_Bring window on current workspace"
+msgstr "Siirrä ikkuna nykyiseen työtilaan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#, fuzzy
+msgid "_Enable display compositing"
+msgstr "Käytä näytön komposointia"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#, fuzzy
+msgid "_Focus"
+msgstr "Kohdistus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#, fuzzy
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "Sisällytä piilotetut (eli pienennetyt) ikkunat"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#, fuzzy
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "_Mouse wheel over desktop switches workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#, fuzzy
+msgid "_Placement"
+msgstr "Sijoittelu"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#, fuzzy
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "Nosta ikkuna napsautettaessa millä tahansa hiiren painikkeella"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#, fuzzy
+msgid ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
+msgstr "Muista edellinen työtila pikanäppäimillä vaihdettaessa"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#, fuzzy
+msgid ""
+"_Skip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr ""
+"Ohita ikkunat, jotka eivät näy työtilan vaihtajassa tai tehtäväpalkissa"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#, fuzzy
+msgid "_Workspaces"
+msgstr "Työtilat"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+msgid "gtk-close"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+msgid "gtk-help"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#, fuzzy
+msgid "_Number of workspaces:"
+msgstr "Työtilojen lukumäärä:"
+
+#: ../settings-dialogs/tweaks-settings.c:156
+msgid "Alt"
+msgstr ""
+
+#: ../settings-dialogs/tweaks-settings.c:158
+#, fuzzy
+msgid "Ctrl"
+msgstr "Keskelle"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
+msgid "\t"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+#, fuzzy
+msgid "<b>Box move and resize</b>"
+msgstr "Läpinäkymätön siirtäminen ja koon muuttaminen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#, fuzzy
+msgid "<b>Button layout</b>"
+msgstr "Painikkeiden sijoittelu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#, fuzzy
+msgid "<b>Double click _action</b>"
+msgstr "Kaksoisnapsautustoiminto"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#, fuzzy
+msgid "<b>Focus model</b>"
+msgstr "Kohdistustapa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#, fuzzy
+msgid "<b>New window focus</b>"
+msgstr "Uuden ikkunan kohdistus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+#, fuzzy
+msgid "<b>Raise on click</b>"
+msgstr "Nosta napsautettaessa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+#, fuzzy
+msgid "<b>Raise on focus</b>"
+msgstr "Nosta kohdistettaessa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#, fuzzy
+msgid "<b>Title _alignment</b>"
+msgstr "Otsakkeen tasaus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#, fuzzy
+msgid "<b>Title fon_t</b>"
+msgstr "Otsakkeen kirjasin"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#, fuzzy
+msgid "<b>Window _shortcuts</b>"
+msgstr "Ikkunoiden pikanäppäimet"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#, fuzzy
+msgid "<b>Windows snapping</b>"
+msgstr "Ikkunoiden loksahtaminen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+#, fuzzy
+msgid "<b>Wrap workspaces</b>"
+msgstr "Kierrätä työtiloja"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "<i>Long</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "<i>Short</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<i>Wide</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "Active"
+msgstr "Esillä"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Lisäasetukset"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#, fuzzy
+msgid "Add Shortcut Theme"
+msgstr "Pikanäppäimet"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "Add a new window-manager shortcut theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#, fuzzy
+msgid "Automatically _raise windows when they receive focus"
+msgstr "Nosta ikkunat automaattisesti, kun niihin kohdistetaan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#, fuzzy
+msgid "Automatically give focus to _newly created windows"
+msgstr "Kohdista automaattisesti juuri luotuihin ikkunoihin"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#, fuzzy
+msgid "Clic_k to focus"
+msgstr "Kohdistus napsautettaessa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#, fuzzy
+msgid "Click and drag the buttons to change the layout"
+msgstr "Napsauta ja raahaa painikkeita muuttaaksesi asettelua"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+msgid "Close"
+msgstr "Sulje"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#, fuzzy
+msgid "Delay _before raising focused window:"
+msgstr "Viive ennen kohdistetun ikkunan nostoa:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#, fuzzy
+msgid "Dis_tance:"
+msgstr "Etäisyys:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#, fuzzy
+msgid "Focus follows _mouse"
+msgstr "Kohdistus seuraa hiirtä"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "Hidden"
+msgstr "Piilotettu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Hide"
+msgstr "Piilota"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#, fuzzy
+msgid "Hide content of windows when _moving"
+msgstr "Näytä ikkunan sisältö siirrettäessä"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#, fuzzy
+msgid "Hide content of windows when _resizing"
+msgstr "Näytä ikkunan sisältö kokoa muutettaessa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#, fuzzy
+msgid "Ke_yboard"
+msgstr "Näppäimistö"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "Maximize"
+msgstr "Suurenna"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+msgid "Menu"
+msgstr "Valikko"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#, fuzzy
+msgid "Raise window when clicking _inside application window"
+msgstr "Nosta sovellusikkuna, kun sen sisällä napsautetaan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Shade"
+msgstr "Varjosta"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#, fuzzy
+msgid "Snap windows to other _windows"
+msgstr "Loksauta ikkunat toisiinsa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#, fuzzy
+msgid "Snap windows to screen _border"
+msgstr "Loksauta ikkunat näytön reunaan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+msgid "Stick"
+msgstr "Kiinnitä"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#, fuzzy
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Toiminto, joka suoritetaan kaksoisnapsautettaessa otsikkopalkkia:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "The window title, it cannot be removed"
+msgstr "Ikkunan otsaketta ei voi poistaa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "Title"
+msgstr "Otsake"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#, fuzzy
+msgid "Type the name for the new shortcut theme:"
+msgstr "Anna nimi teemalle:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#, fuzzy
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "Vaihda työtilaa, kun ikkuna raahataan ulos näytöltä"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#, fuzzy
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "Vaihda työtilaa osoittimen saavuttaessa näytön reunan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#, fuzzy
+msgid "_Delay before window receives focus:"
+msgstr "Viive ennen ikkunan kohdistamista:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#, fuzzy
+msgid "_Edge resistance:"
+msgstr "Reunan vastus:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#, fuzzy
+msgid "_Style"
+msgstr "Tyyli"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+msgid "gtk-add"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#, fuzzy
+msgid "gtk-cancel"
+msgstr "Peru"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:58
+msgid "gtk-ok"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:59
+msgid "gtk-remove"
+msgstr ""
+
+#~ msgid "Workspace Margins"
+#~ msgstr "Työtilan reunukset"
+
+#~ msgid ""
+#~ "Margins are areas on the edges of the screen where no window will be "
+#~ "placed"
+#~ msgstr ""
+#~ "Reunukset ovat näytön reunoilla olevat alueet, joille ikkunoita ei aseteta"
+
+#~ msgid "Left :"
+#~ msgstr "Vasen:"
+
+#~ msgid "Right :"
+#~ msgstr "Oikea:"
+
+#~ msgid "Top :"
+#~ msgstr "Yläreuna:"
+
+#~ msgid "Bottom :"
+#~ msgstr "Alareuna:"
+
+#~ msgid "Button Label|Workspaces and Margins"
+#~ msgstr "Työtilat ja reunukset"
+
+#~ msgid "Workspaces and Margins"
+#~ msgstr "Työtilat ja reunukset"
+
+#~ msgid "Margins"
+#~ msgstr "Reunukset"
+
+#~ msgid "None"
+#~ msgstr "Ei mitään"
+
+#~ msgid "Place window under the mouse"
+#~ msgstr "Sijoita ikkuna osoittimen alle"
+
+#~ msgid "Place window in the center"
+#~ msgstr "Aseta ikkuna keskelle"
+
+#~ msgid "Switch workspaces using the mouse wheel over the desktop"
+#~ msgstr "Vaihda työtilaa hiiren vierityspainikkeella työpöydän yllä"
+
+#~ msgid "Size|Small"
+#~ msgstr "Pieni"
+
+#~ msgid "Size|Large"
+#~ msgstr "Suuri"
+
+#~ msgid "Default positionning of windows without smart placement:"
+#~ msgstr "Älykkäästi sijoitettavan ikkunan minimikoko"
+
+#~ msgid "Button Label|Window Manager Tweaks"
+#~ msgstr "Ikkunamanagerin viritys"
+
+#~ msgid "These settings cannot work with your current window manager (%s)"
+#~ msgstr "Nämä asetukset eivät toimi nykyisen ikkunamanagerisi kanssa (%s)"
+
+#~ msgid "Change name"
+#~ msgstr "Nimeä uudelleen"
+
+#~ msgid "Workspace %d"
+#~ msgstr "Työtila %d"
+
+#~ msgid "Name:"
+#~ msgstr "Nimi:"
+
+#~ msgid "Click on a workspace name to edit it"
+#~ msgstr "Napsauta työtilan nimeä muokataksesi sitä"
+
+#~ msgid "Workspace names"
+#~ msgstr "Työtilojen nimet"
+
+#~ msgid "Font Selection Dialog"
+#~ msgstr "Kirjasimenvalintadialogi"
+
+#~ msgid "Text alignment inside title bar :"
+#~ msgstr "Tekstin tasaus otsakepalkissa:"
+
+#~ msgid "Command"
+#~ msgstr "Komento"
+
+#~ msgid "Slow"
+#~ msgstr "Hidas"
+
+#~ msgid "Fast"
+#~ msgstr "Nopea"
+
+#~ msgid "Distance|Small"
+#~ msgstr "Pieni"
+
+#~ msgid "Distance|Wide"
+#~ msgstr "Suuri"
+
+#~ msgid "Resistance|Small"
+#~ msgstr "Heikko"
+
+#~ msgid "Resistance|Wide"
+#~ msgstr "Voimakas"
+
+#~ msgid "Button Label|Window Manager"
+#~ msgstr "Ikkunamanageri"
+
+#~ msgid "Add keybinding theme"
+#~ msgstr "Lisää pikanäppäinteema"
+
+#~ msgid "Move window to workspace %d"
+#~ msgstr "Siirrä ikkuna työtilaan %d"
+
+#~ msgid "Cannot open the theme directory !"
+#~ msgstr "Teemahakemistoa ei voi avata!"
+
+#~ msgid ""
+#~ "Cannot open %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Kohdetta %s ei voi avata: \n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Cannot write in %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Tiedostoon %s ei voi kirjoittaa:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Shortcut already in use !\n"
+#~ "Are you sure you want to use it ?"
+#~ msgstr ""
+#~ "Pikanäppäin on jo käytössä!\n"
+#~ "Haluatko todella käyttää sitä?"
+
+#~ msgid "Compose shortcut for :"
+#~ msgstr "Määritä pikanäppäin:"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "Määritä pikanäppäin"
+
+#~ msgid "No shortcut"
+#~ msgstr "Ei pikanäppäintä"
+
+#~ msgid "Advanced Configuration"
+#~ msgstr "Lisäasetukset"
 
 #~ msgid "Move window down"
 #~ msgstr "Siirrä ikkunaa alaspäin"
@@ -907,9 +1062,6 @@ msgstr "Xfce 4 Työtilojen asetukset"
 
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Peruuta siirto tai koon muutos"
-
-#~ msgid "Cancel window action"
-#~ msgstr "Peru ikkunan toiminto"
 
 #~ msgid "Un_maximize"
 #~ msgstr "Pala_uta"
