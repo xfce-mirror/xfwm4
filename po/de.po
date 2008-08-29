@@ -2,7 +2,7 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Moritz Heiber <moe@xfce.org>, 2003.
-# Fabian Nowak <timystery@arcor.de>, 2006, 2007.
+# Fabian Nowak <timystery@arcor.de>, 2006, 2007, 2008.
 # Nico Schümann <nico@prog.nico22.de>, 2007.
 #
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-24 23:24-0700\n"
-"PO-Revision-Date: 2007-11-06 21:13+0000\n"
+"PO-Revision-Date: 2008-08-12 21:27+0200\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,14 +33,12 @@ msgid "Ma_ximize"
 msgstr "Ma_ximieren"
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "(Un)Ma_ximize"
-msgstr "Ma_ximieren"
+msgstr "Ma_ximieren/Maximierung aufheben"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "Ma_ximieren"
+msgstr "Mi_nimieren"
 
 #: ../src/menu.c:46
 msgid "Hide _all others"
@@ -52,29 +50,27 @@ msgstr "Z_eigen"
 
 #: ../src/menu.c:48
 msgid "_Move"
-msgstr ""
+msgstr "_Verschieben"
 
 #: ../src/menu.c:49
 msgid "_Resize"
-msgstr ""
+msgstr "_Größe ändern"
 
 #: ../src/menu.c:51
 msgid "_Shade"
 msgstr "_Einrollen"
 
 #: ../src/menu.c:52
-#, fuzzy
 msgid "(Un)_Shade"
-msgstr "_Ausrollen"
+msgstr "_Aus-/Einrollen"
 
 #: ../src/menu.c:53
 msgid "S_tick"
 msgstr "Anhe_ften"
 
 #: ../src/menu.c:54
-#, fuzzy
 msgid "(Un)S_tick"
-msgstr "_Lösen"
+msgstr "_Lösen/Festkleben"
 
 #: ../src/menu.c:55
 msgid "Context _help"
@@ -82,25 +78,23 @@ msgstr "_Hilfe"
 
 #: ../src/menu.c:57
 msgid "Above"
-msgstr ""
+msgstr "Darüber"
 
 #: ../src/menu.c:58
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Below"
-msgstr "Lang"
+msgstr "Darunter"
 
 #: ../src/menu.c:60
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Vollbildmodus"
+msgstr "_Vollbildmodus"
 
 #: ../src/menu.c:61
 msgid "(Un)_Fullscreen"
-msgstr ""
+msgstr "_Vollbildmodus an/aus"
 
 #: ../src/menu.c:62
 msgid "Send to..."
@@ -146,6 +140,8 @@ msgstr "%s: Kann Farbe »%s« nicht allozieren\n"
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr ""
+"%s: Kann die Farbe nicht allokieren: GValue für die Farbe ist nicht vom Typ "
+"String"
 
 #: ../src/settings.c:285
 #, c-format
@@ -156,6 +152,7 @@ msgstr "%s: Kann Farbe »%s« nicht einlesen\n"
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr ""
+"%s: Kann Farbe nicht einlesen: GValue der Farbe ist nicht vom Typ String"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
@@ -254,11 +251,11 @@ msgstr "Menü für Fensteraktionen"
 
 #: ../settings-dialogs/xfwm4-settings.c:78
 msgid "Up"
-msgstr ""
+msgstr "Hoch"
 
 #: ../settings-dialogs/xfwm4-settings.c:79
 msgid "Down"
-msgstr ""
+msgstr "Hinunter"
 
 #: ../settings-dialogs/xfwm4-settings.c:82
 msgid "Cancel"
@@ -281,14 +278,12 @@ msgid "Maximize window vertically"
 msgstr "Fenster vertikal maximieren"
 
 #: ../settings-dialogs/xfwm4-settings.c:89
-#, fuzzy
 msgid "Move window"
-msgstr "Fenster hochschieben"
+msgstr "Fenster verschieben"
 
 #: ../settings-dialogs/xfwm4-settings.c:90
-#, fuzzy
 msgid "Resize window"
-msgstr "Fenster nach oben vergrößern"
+msgstr "Fenstergröße ändern"
 
 #: ../settings-dialogs/xfwm4-settings.c:92
 msgid "Stick window"
@@ -375,19 +370,16 @@ msgid "Add workspace"
 msgstr "Arbeitsfläche hinzufügen"
 
 #: ../settings-dialogs/xfwm4-settings.c:114
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "Arbeitsfläche hinzufügen"
+msgstr "Passende Arbeitsfläche hinzufügen"
 
 #: ../settings-dialogs/xfwm4-settings.c:115
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Arbeitsfläche löschen"
+msgstr "Letzte Arbeitsfläche löschen"
 
 #: ../settings-dialogs/xfwm4-settings.c:116
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Arbeitsfläche löschen"
+msgstr "Aktive Arbeitsfläche löschen"
 
 #: ../settings-dialogs/xfwm4-settings.c:564
 msgid "Theme"
@@ -398,26 +390,24 @@ msgid "Keytheme"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:589
-#, fuzzy
 msgid "Action"
-msgstr "Aktiv"
+msgstr "Aktion"
 
 #: ../settings-dialogs/xfwm4-settings.c:591
-#, fuzzy
 msgid "Button"
-msgstr "Anordnung der Knöpfe"
+msgstr "Knopf"
 
 #: ../settings-dialogs/xfwm4-settings.c:690
 #: ../settings-dialogs/tweaks-settings.c:338
 #: ../settings-dialogs/workspace-settings.c:67
 msgid "Version information"
-msgstr ""
+msgstr "Versionsinformation"
 
 #: ../settings-dialogs/xfwm4-settings.c:710
 #: ../settings-dialogs/tweaks-settings.c:357
 #: ../settings-dialogs/workspace-settings.c:87
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ../settings-dialogs/xfwm4-settings.c:714
 #: ../settings-dialogs/tweaks-settings.c:361
@@ -427,6 +417,9 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"Versuchen Sie %s -- help, um eine vollständige Liste verfügbarer "
+"Befehlszeilenoptionen zu sehen.\n"
 
 #: ../settings-dialogs/xfwm4-settings.c:1268
 msgid "A keybinding theme with the same name already exists"
@@ -441,23 +434,22 @@ msgid "Do you really want to remove this keybinding theme ?"
 msgstr "Wollen Sie dieses Tastenkürzel-Schema wirklich entfernen?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+#, fuzzy
 msgid "<i>Large</i>"
-msgstr ""
+msgstr "<i>Lang</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Opaque</i>"
-msgstr "Undurchsichtig"
+msgstr "<i>Undurchsichtig</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "<i>Small</i>"
-msgstr ""
+msgstr "<i>Schmal</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
-#, fuzzy
 msgid "<i>Transparent</i>"
-msgstr "Durchsichtig"
+msgstr "<i>Durchsichtig</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 #, fuzzy
@@ -482,7 +474,7 @@ msgstr "Fenster aller Arbeitsflächen miteinbeziehen"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 #, fuzzy
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Vollbildfenster mit Overlay direkt anzeigen"
+msgstr "Vollbildfenster mit Overlay sofort anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 #, fuzzy
@@ -497,7 +489,7 @@ msgstr "Rahmen bei maximierten Fenstern nicht anzeigen"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 #, fuzzy
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Den normalen ICCCM Fokus-Hinweis beachten"
+msgstr "Den normalen ICCCM-Fokus-Hinweis berücksichtigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 #, fuzzy
@@ -636,7 +628,7 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"Vorige Arbeitsfläche merken und abrufen beim\n"
+"Vorige Arbeitsfläche merken und wieder verwenden beim\n"
 "Wechseln mittels Tastenkürzeln"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
@@ -645,9 +637,8 @@ msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"Fenster, die nicht im Pager oder nicht in der Taskleiste erscheinen "
-"sollen, \n"
-"auch wirklich übergehen."
+"Fenster, die nicht im Pager oder nicht in der Taskleiste \n"
+"erscheinen sollen, auch wirklich übergehen."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 #, fuzzy
@@ -658,13 +649,13 @@ msgstr "Arbeitsflächen"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "gtk-close"
-msgstr ""
+msgstr "gtk-close"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "gtk-help"
-msgstr ""
+msgstr "gtk-help"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 #, fuzzy
@@ -673,88 +664,79 @@ msgstr "Anzahl der Arbeitsflächen:"
 
 #: ../settings-dialogs/tweaks-settings.c:156
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings-dialogs/tweaks-settings.c:158
-#, fuzzy
 msgid "Ctrl"
-msgstr "Mitte"
+msgstr "Steuerung"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "\t"
-msgstr ""
+msgstr "\t"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "Sichtbarer Fensterinhalt"
+msgstr "<b>Kastenförmig bewgen und vergrößern</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "Anordnung der Knöpfe"
+msgstr "<b>Anordnung der Knöpfe</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 #, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "Aktion bei Doppelklick"
+msgstr "<b>Aktion bei Doppelklick</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "Fokuseinstellungen"
+msgstr "<b>Fokuseinstellungen</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "Fokus bei neuen Fenstern"
+msgstr "<b>Fokus bei neuen Fenstern</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "Hervorheben durch Klicken"
+msgstr "<b>Hervorheben durch Klicken</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "Hervorheben bei Fokus"
+msgstr "<b>Hervorheben bei Fokus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 #, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "Titelleistenausrichtung"
+msgstr "<b>Titelausrichtung</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 #, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "Titelleistenschrift"
+msgstr "<b>Schrift im Titel</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 #, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "Tastenkürzel für Fenster"
+msgstr "<b>Tastenkürzel für Fenster</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "Einrasten von Fenstern"
+msgstr "<b>Einrasten der Fenster</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "Arbeitsflächen wechseln"
+msgstr "<b>Arbeitsflächen wechseln</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "<i>Long</i>"
-msgstr ""
+msgstr "<i>Lang</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "<i>Short</i>"
-msgstr ""
+msgstr "<i>Kurz</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "<i>Wide</i>"
-msgstr ""
+msgstr "<i>Breit</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Active"
@@ -771,8 +753,9 @@ msgid "Add Shortcut Theme"
 msgstr "Tastenkürzel"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#, fuzzy
 msgid "Add a new window-manager shortcut theme"
-msgstr ""
+msgstr "Ein neues Tastenkürzelschema für die Fensterhandhabung hinzufügen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 #, fuzzy
@@ -790,7 +773,6 @@ msgid "Clic_k to focus"
 msgstr "Fokus durch Mausklick"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "Ziehen Sie die Knöpfe nach unten, um die Anordnung zu verändern"
 
@@ -824,12 +806,12 @@ msgstr "Verstecken"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "Inhalt beim Verschieben anzeigen"
+msgstr "Inhalt beim Verschieben verbergen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 #, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "Inhalt bei Größenänderung anzeigen"
+msgstr "Inhalt bei Größenänderung verbergen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 #, fuzzy
@@ -868,9 +850,8 @@ msgid "Stick"
 msgstr "Anheften"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Aktion, die beim Doppeklicken auf die Titelleiste ausgeführt wird:"
+msgstr "Aktion, die beim Doppeklicken auf die Titelleiste ausgeführt wird"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The window title, it cannot be removed"
@@ -881,29 +862,30 @@ msgid "Title"
 msgstr "Titelleiste"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#, fuzzy
 msgid "Type the name for the new shortcut theme:"
-msgstr "Namen des Schemas eingeben:"
+msgstr "Namen für das neue Tastenkürzelschema eingeben:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "...wenn ein Fenster aus dem Sichtfeld gezogen wird"
+msgstr ""
+"Arbeitsfläche wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "...wenn der Mauszeiger den Bildschirmrand erreicht"
+msgstr ""
+"Arbeitsfläche wechseln, wenn der Mauszeiger den Bildschirmrand erreicht"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "Dauer, bis ein Fenster den Fokus erhält:"
+msgstr "<b>Dauer, bis ein Fenster den Fokus erhält</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
 msgid "_Edge resistance:"
-msgstr "Widerstand am Rand:"
+msgstr "Widerstand an den Kanten:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #, fuzzy
@@ -912,20 +894,19 @@ msgstr "Stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "gtk-add"
-msgstr ""
+msgstr "gtk-add"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#, fuzzy
 msgid "gtk-cancel"
-msgstr "Abbrechen"
+msgstr "gtk-cancel"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:58
 msgid "gtk-ok"
-msgstr ""
+msgstr "gtk-ok"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:59
 msgid "gtk-remove"
-msgstr ""
+msgstr "gtk-remove"
 
 #~ msgid "Workspace Margins"
 #~ msgstr "Seitenränder"
@@ -967,14 +948,17 @@ msgstr ""
 #~ msgid "Place window in the center"
 #~ msgstr "Fenster in der Mitte platzieren"
 
+#, fuzzy
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr ""
 #~ "Arbeitsflächen wechseln durch Betätigung des\n"
 #~ "Mausrads auf der Arbeitsoberfläche"
 
+#, fuzzy
 #~ msgid "Size|Small"
 #~ msgstr "Klein"
 
+#, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Groß"
 
@@ -1108,9 +1092,23 @@ msgstr ""
 #~ msgid "Always on top"
 #~ msgstr "Immer zuoberst"
 
-#, fuzzy
 #~ msgid "Workspace %02d"
 #~ msgstr "Arbeitsfläche %i"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Unbekannte Anwendung!"
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "Windowmanager Settings"
+#~ msgstr "Fenstermanagereinstellungen"
+
+#~ msgid "Workspace Settings"
+#~ msgstr "Arbeitsflächeneinstellungen"
+
+#~ msgid "Xfce 4 WM Tweaks"
+#~ msgstr "Xfce4-Fenstermanager-Tweaks"
+
+#~ msgid "Xfce 4 Workspace Settings"
+#~ msgstr "Xfce4-Arbeitsflächeneinstellungen"
