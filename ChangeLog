@@ -1,3 +1,7 @@
+2008-09-04 19:24  jannis
+
+	* autogen.sh: Add git svn revision versioning support.
+
 2007-11-06 22:53  olivier
 
 	* src/events.c: Revert to current time for releasing queued input
