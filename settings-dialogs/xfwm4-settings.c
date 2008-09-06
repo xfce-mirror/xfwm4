@@ -325,6 +325,8 @@ xfwm4_dialog_new_from_xml (GladeXML *gxml)
    */
   GtkWidget *box_move_check = glade_xml_get_widget (gxml, "box_move_check");
   GtkWidget *box_resize_check = glade_xml_get_widget (gxml, "box_resize_check");
+  GtkWidget *wrap_workspaces_check = glade_xml_get_widget (gxml, "wrap_workspaces_check");
+  GtkWidget *wrap_windows_check = glade_xml_get_widget (gxml, "wrap_windows_check");
   GtkWidget *snap_to_border_check = glade_xml_get_widget (gxml, "snap_to_border_check");
   GtkWidget *snap_to_window_check = glade_xml_get_widget (gxml, "snap_to_window_check");
   GtkWidget *double_click_action_combo = glade_xml_get_widget (gxml, "double_click_action_combo");
@@ -526,6 +528,8 @@ xfwm4_dialog_new_from_xml (GladeXML *gxml)
   xfconf_g_property_bind (xfwm4_channel, "/general/wrap_resistance", G_TYPE_INT, (GObject *) wrap_resistance_scale, "value");
   xfconf_g_property_bind (xfwm4_channel, "/general/box_move", G_TYPE_BOOLEAN, (GObject *) box_move_check, "active");
   xfconf_g_property_bind (xfwm4_channel, "/general/box_resize", G_TYPE_BOOLEAN, (GObject *) box_resize_check, "active");
+  xfconf_g_property_bind (xfwm4_channel, "/general/wrap_workspaces", G_TYPE_BOOLEAN, (GObject *) wrap_workspaces_check, "active");
+  xfconf_g_property_bind (xfwm4_channel, "/general/wrap_windows", G_TYPE_BOOLEAN, (GObject *) wrap_windows_check, "active");
   xfconf_g_property_bind (xfwm4_channel, "/general/snap_to_border", G_TYPE_BOOLEAN, (GObject *) snap_to_border_check, "active");
   xfconf_g_property_bind (xfwm4_channel, "/general/snap_to_windows", G_TYPE_BOOLEAN, (GObject *) snap_to_window_check, "active");
   g_signal_connect (G_OBJECT (xfwm4_channel), "property-changed::/general/double_click_action", G_CALLBACK (cb_xfwm4_channel_double_click_action_changed), double_click_action_combo);
