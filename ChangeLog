@@ -1,3 +1,8 @@
+2008-09-06 20:21	jannis
+
+	* configure.ac.in: Add dependencies on dbus-1 and dbus-glib-1.
+	* settings-dialogs/xfwm4-settings.c: Add <dbus/dbus-glib.h> include.
+
 2008-09-06 16:39	jannis
 
 	* settings-dialogs/Makefile.am,

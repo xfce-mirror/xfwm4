@@ -68,6 +68,8 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCEGUI4], libxfcegui4-1.0, [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCONF], libxfconf-0, [0.0.0])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
+XDT_CHECK_PACKAGE([DBUS], [dbus-1], [1.0.0])
+XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [0.72])
 
 dnl
 dnl Startup notification support

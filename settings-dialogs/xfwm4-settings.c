@@ -39,6 +39,8 @@
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
+#include <dbus/dbus-glib.h>
+
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfconf/xfconf.h>
 
