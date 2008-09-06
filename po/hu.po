@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-24 23:24-0700\n"
+"POT-Creation-Date: 2008-09-06 16:44+0200\n"
 "PO-Revision-Date: 2008-09-01 03:20+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -156,12 +156,12 @@ msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Hibás szín: A GValue a színhez nem STRING típusú"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Configure window behavior"
 msgstr "Ablak viselkedés beállítása"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Window Manager"
 msgstr "Ablakkezelő"
 
@@ -205,209 +205,206 @@ msgstr "Munkaterület beállítások"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 munkaterület beállítások"
 
-#: ../settings-dialogs/xfwm4-settings.c:61
-#: ../settings-dialogs/xfwm4-settings.c:91
+#: ../settings-dialogs/xfwm4-settings.c:83
+#: ../settings-dialogs/xfwm4-settings.c:113
 msgid "Shade window"
 msgstr "Ablak felgördítése"
 
-#: ../settings-dialogs/xfwm4-settings.c:62
-#: ../settings-dialogs/xfwm4-settings.c:88
+#: ../settings-dialogs/xfwm4-settings.c:84
+#: ../settings-dialogs/xfwm4-settings.c:110
 msgid "Hide window"
 msgstr "Ablak rejtése"
 
-#: ../settings-dialogs/xfwm4-settings.c:63
-#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:85
+#: ../settings-dialogs/xfwm4-settings.c:109
 msgid "Maximize window"
 msgstr "Ablak maximálása"
 
-#: ../settings-dialogs/xfwm4-settings.c:64
-#: ../settings-dialogs/xfwm4-settings.c:95
+#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:117
 msgid "Fill window"
 msgstr "Ablak kitöltése"
 
-#: ../settings-dialogs/xfwm4-settings.c:65
+#: ../settings-dialogs/xfwm4-settings.c:87
 msgid "Nothing"
 msgstr "Semmi"
 
-#: ../settings-dialogs/xfwm4-settings.c:70
-#: ../settings-dialogs/xfwm4-settings.c:80
+#: ../settings-dialogs/xfwm4-settings.c:92
+#: ../settings-dialogs/xfwm4-settings.c:102
 msgid "Left"
 msgstr "Balra"
 
-#: ../settings-dialogs/xfwm4-settings.c:71
+#: ../settings-dialogs/xfwm4-settings.c:93
 msgid "Center"
 msgstr "Középre"
 
-#: ../settings-dialogs/xfwm4-settings.c:72
-#: ../settings-dialogs/xfwm4-settings.c:81
+#: ../settings-dialogs/xfwm4-settings.c:94
+#: ../settings-dialogs/xfwm4-settings.c:103
 msgid "Right"
 msgstr "Jobbra"
 
-#: ../settings-dialogs/xfwm4-settings.c:77
+#: ../settings-dialogs/xfwm4-settings.c:99
 msgid "Window operations menu"
 msgstr "Ablak művelet menü"
 
-#: ../settings-dialogs/xfwm4-settings.c:78
+#: ../settings-dialogs/xfwm4-settings.c:100
 msgid "Up"
 msgstr "Fel"
 
-#: ../settings-dialogs/xfwm4-settings.c:79
+#: ../settings-dialogs/xfwm4-settings.c:101
 msgid "Down"
 msgstr "Le"
 
-#: ../settings-dialogs/xfwm4-settings.c:82
+#: ../settings-dialogs/xfwm4-settings.c:104
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: ../settings-dialogs/xfwm4-settings.c:83
+#: ../settings-dialogs/xfwm4-settings.c:105
 msgid "Cycle windows"
 msgstr "Ablakok körözése"
 
-#: ../settings-dialogs/xfwm4-settings.c:84
+#: ../settings-dialogs/xfwm4-settings.c:106
 msgid "Close window"
 msgstr "Ablak bezárása"
 
-#: ../settings-dialogs/xfwm4-settings.c:85
+#: ../settings-dialogs/xfwm4-settings.c:107
 msgid "Maximize window horizontally"
 msgstr "Teljes méret vízszintesen"
 
-#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:108
 msgid "Maximize window vertically"
 msgstr "Teljes méret függőlegesen"
 
-#: ../settings-dialogs/xfwm4-settings.c:89
+#: ../settings-dialogs/xfwm4-settings.c:111
 msgid "Move window"
 msgstr "Ablak mozgatása"
 
-#: ../settings-dialogs/xfwm4-settings.c:90
+#: ../settings-dialogs/xfwm4-settings.c:112
 msgid "Resize window"
 msgstr "Ablak átméretezése"
 
-#: ../settings-dialogs/xfwm4-settings.c:92
+#: ../settings-dialogs/xfwm4-settings.c:114
 msgid "Stick window"
 msgstr "Ablak rögzítése"
 
-#: ../settings-dialogs/xfwm4-settings.c:93
+#: ../settings-dialogs/xfwm4-settings.c:115
 msgid "Raise window"
 msgstr "Ablak előre"
 
-#: ../settings-dialogs/xfwm4-settings.c:94
+#: ../settings-dialogs/xfwm4-settings.c:116
 msgid "Lower window"
 msgstr "Ablak hátra"
 
-#: ../settings-dialogs/xfwm4-settings.c:96
+#: ../settings-dialogs/xfwm4-settings.c:118
 msgid "Fill window horizontally"
 msgstr "Ablak kitöltése vízszintesen"
 
-#: ../settings-dialogs/xfwm4-settings.c:97
+#: ../settings-dialogs/xfwm4-settings.c:119
 msgid "Fill window vertically"
 msgstr "Ablak kitöltése függőlegesen"
 
-#: ../settings-dialogs/xfwm4-settings.c:98
+#: ../settings-dialogs/xfwm4-settings.c:120
 msgid "Toggle above"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:99
+#: ../settings-dialogs/xfwm4-settings.c:121
 msgid "Toggle fullscreen"
 msgstr "Teljes képernyő"
 
-#: ../settings-dialogs/xfwm4-settings.c:100
+#: ../settings-dialogs/xfwm4-settings.c:122
 msgid "Move window to upper workspace"
 msgstr "Ablak egy munkaterülettel feljebb"
 
-#: ../settings-dialogs/xfwm4-settings.c:101
+#: ../settings-dialogs/xfwm4-settings.c:123
 msgid "Move window to bottom workspace"
 msgstr "Ablak egy munkaterülettel lejjebb"
 
-#: ../settings-dialogs/xfwm4-settings.c:102
+#: ../settings-dialogs/xfwm4-settings.c:124
 msgid "Move window to left workspace"
 msgstr "Ablak egy munkaterülettel balra"
 
-#: ../settings-dialogs/xfwm4-settings.c:103
+#: ../settings-dialogs/xfwm4-settings.c:125
 msgid "Move window to right workspace"
 msgstr "Ablak egy munkaterülettel jobbra"
 
-#: ../settings-dialogs/xfwm4-settings.c:104
+#: ../settings-dialogs/xfwm4-settings.c:126
 msgid "Move window to previous workspace"
 msgstr "Ablak az előző munkaterületre"
 
-#: ../settings-dialogs/xfwm4-settings.c:105
+#: ../settings-dialogs/xfwm4-settings.c:127
 msgid "Move window to next workspace"
 msgstr "Ablak a következő munkaterületre"
 
-#: ../settings-dialogs/xfwm4-settings.c:106
+#: ../settings-dialogs/xfwm4-settings.c:128
 msgid "Show desktop"
 msgstr "Asztal mutatása"
 
-#: ../settings-dialogs/xfwm4-settings.c:107
+#: ../settings-dialogs/xfwm4-settings.c:129
 msgid "Upper workspace"
 msgstr "Felső munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:108
+#: ../settings-dialogs/xfwm4-settings.c:130
 msgid "Bottom workspace"
 msgstr "Alsó munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:109
+#: ../settings-dialogs/xfwm4-settings.c:131
 msgid "Left workspace"
 msgstr "Bal munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:110
+#: ../settings-dialogs/xfwm4-settings.c:132
 msgid "Right workspace"
 msgstr "Jobb munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:111
+#: ../settings-dialogs/xfwm4-settings.c:133
 msgid "Previous workspace"
 msgstr "Előző munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:112
+#: ../settings-dialogs/xfwm4-settings.c:134
 msgid "Next workspace"
 msgstr "Következő munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:113
+#: ../settings-dialogs/xfwm4-settings.c:135
 msgid "Add workspace"
 msgstr "Új munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:114
+#: ../settings-dialogs/xfwm4-settings.c:136
 msgid "Add adjacent workspace"
 msgstr "Szomszédos munkaterület hozzáadása"
 
-#: ../settings-dialogs/xfwm4-settings.c:115
+#: ../settings-dialogs/xfwm4-settings.c:137
 msgid "Delete last workspace"
 msgstr "Utolsó munkaterület törlése"
 
-#: ../settings-dialogs/xfwm4-settings.c:116
+#: ../settings-dialogs/xfwm4-settings.c:138
 msgid "Delete active workspace"
 msgstr "Aktív munkaterület törlése"
 
-#: ../settings-dialogs/xfwm4-settings.c:564
+#: ../settings-dialogs/xfwm4-settings.c:470
 msgid "Theme"
 msgstr "Téma"
 
-#: ../settings-dialogs/xfwm4-settings.c:576
-msgid "Keytheme"
-msgstr "Billentyűtéma"
-
-#: ../settings-dialogs/xfwm4-settings.c:589
+#: ../settings-dialogs/xfwm4-settings.c:484
 msgid "Action"
 msgstr "Művelet"
 
-#: ../settings-dialogs/xfwm4-settings.c:591
-msgid "Button"
-msgstr "Gomb"
+#: ../settings-dialogs/xfwm4-settings.c:486
+#, fuzzy
+msgid "Shortcut"
+msgstr "Nincs gyorsbillentyű"
 
-#: ../settings-dialogs/xfwm4-settings.c:690
+#: ../settings-dialogs/xfwm4-settings.c:544
 #: ../settings-dialogs/tweaks-settings.c:338
 #: ../settings-dialogs/workspace-settings.c:67
 msgid "Version information"
 msgstr "Verzió adatok"
 
-#: ../settings-dialogs/xfwm4-settings.c:710
+#: ../settings-dialogs/xfwm4-settings.c:563
 #: ../settings-dialogs/tweaks-settings.c:357
 #: ../settings-dialogs/workspace-settings.c:87
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/xfwm4-settings.c:714
+#: ../settings-dialogs/xfwm4-settings.c:567
 #: ../settings-dialogs/tweaks-settings.c:361
 #: ../settings-dialogs/workspace-settings.c:91
 #, c-format
@@ -418,17 +415,50 @@ msgstr ""
 "%s: %s\n"
 "Próbáld ezt: %s --help az elérhető parancssori lehetőségekért.\n"
 
-#: ../settings-dialogs/xfwm4-settings.c:1268
-msgid "A keybinding theme with the same name already exists"
-msgstr "Már van ilyen nevű billentyű-téma"
+#: ../settings-dialogs/xfwm4-settings.c:1119
+#, c-format
+msgid "%s shortcut conflict"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1274
-msgid "You have to provide a name for the keybinding theme"
-msgstr "Nevet kell adnod a billentyű-témának"
+#: ../settings-dialogs/xfwm4-settings.c:1126
+#, c-format
+msgid ""
+"This shortcut is already being used by the window manager action <b>%s</b>. "
+"Which action do you want to use?"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1317
-msgid "Do you really want to remove this keybinding theme ?"
-msgstr "Valóban törölni akarod ezt a billentyű-témát?"
+#: ../settings-dialogs/xfwm4-settings.c:1133
+#, fuzzy, c-format
+msgid ""
+"The shortcut is already being used for the command <b>%s</b>. Which action "
+"do you want to use?"
+msgstr ""
+"E gyorsbillentyű már létezik!\n"
+"Biztos ezt akarod használni?"
+
+#: ../settings-dialogs/xfwm4-settings.c:1138
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1139
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#. Ask the user what to do
+#: ../settings-dialogs/xfwm4-settings.c:1142
+msgid "Shortcut conflict"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1161
+#, c-format
+msgid "The shortcut '%s' is already being used for something else."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1208
+msgid "This action"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Large</i>"
@@ -552,7 +582,7 @@ msgid "_Enable display compositing"
 msgstr "Kijelző kompozíció bekapcsolása"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "_Focus"
 msgstr "_Fókusz"
 
@@ -598,13 +628,13 @@ msgstr "Munkaterületek"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "gtk-close"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "gtk-help"
 msgstr ""
 
@@ -693,271 +723,316 @@ msgid "Ad_vanced"
 msgstr "Haladó"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
-msgid "Add Shortcut Theme"
-msgstr "Gyorsbillentyű téma hozzáadása"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Add a new window-manager shortcut theme"
-msgstr "Új ablakkezelő gyorsbillentyű téma hozzáadása"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Automatically _raise windows when they receive focus"
 msgstr "A fókuszt kapó ablakok automatikus előhívása"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Automatically give focus to _newly created windows"
 msgstr "Automatikus fókusz az új ablakokra"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Clic_k to focus"
 msgstr "_Kattintás a fókuszhoz"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Click and drag the buttons to change the layout"
 msgstr "Kattints és húzd a gombokat elhelyezésük módosításához"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Close"
 msgstr "Bezárás"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Delay _before raising focused window:"
 msgstr "A fókuszt nyert ablak előhozásának késleltetése:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Dis_tance:"
 msgstr "_Távolság:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Focus follows _mouse"
 msgstr "A fókusz az egeret követi"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Hidden"
 msgstr "Rejtve"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hide"
 msgstr "Elrejtés"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hide content of windows when _moving"
 msgstr "Ablak tartalmának megjelenítése _mozgatás közben"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide content of windows when _resizing"
 msgstr "Ablak tartalmának el_rejtése átméretezés közben"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Ke_yboard"
 msgstr "Billent_yűzet"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Maximize"
 msgstr "Maximálás"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "Menü"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Raise window when clicking _inside application window"
 msgstr "Ablak előhozása az alkalmazás ablakába kattintáskor"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Shade"
 msgstr "Felgördítés"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Snap windows to other _windows"
 msgstr "Ablakok egymáshoz illesztése"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Snap windows to screen _border"
 msgstr "Ablakok illesztése a képernyő széléhez"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Stick"
 msgstr "Kitűzés"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "A címsoron kettős kattintásra végezendő művelet"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "The window title, it cannot be removed"
 msgstr "Az ablak címe; ez nem távolítható el"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Title"
 msgstr "Cím"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "Type the name for the new shortcut theme:"
-msgstr "Adj nevet az új gyorsbillentyű témának:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "Munkaterület-váltás, egy ablak lehúzásánál a képernyőről"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Munkaterület-váltás, amikor a mutató a képernyő széléhez ér"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "_Delay before window receives focus:"
 msgstr "Ablak fókuszának késleltetése:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
 msgstr "Szélek _ellenállása:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "_Reset to defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Style"
 msgstr "_Stílus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "gtk-add"
-msgstr ""
+#~ msgid "Keytheme"
+#~ msgstr "Billentyűtéma"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#~ msgid "Button"
+#~ msgstr "Gomb"
+
+#~ msgid "A keybinding theme with the same name already exists"
+#~ msgstr "Már van ilyen nevű billentyű-téma"
+
+#~ msgid "You have to provide a name for the keybinding theme"
+#~ msgstr "Nevet kell adnod a billentyű-témának"
+
+#~ msgid "Do you really want to remove this keybinding theme ?"
+#~ msgstr "Valóban törölni akarod ezt a billentyű-témát?"
+
+#~ msgid "Add Shortcut Theme"
+#~ msgstr "Gyorsbillentyű téma hozzáadása"
+
+#~ msgid "Add a new window-manager shortcut theme"
+#~ msgstr "Új ablakkezelő gyorsbillentyű téma hozzáadása"
+
+#~ msgid "Type the name for the new shortcut theme:"
+#~ msgstr "Adj nevet az új gyorsbillentyű témának:"
+
 #, fuzzy
-msgid "gtk-cancel"
-msgstr "Mégsem"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:58
-msgid "gtk-ok"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:59
-msgid "gtk-remove"
-msgstr ""
+#~ msgid "gtk-cancel"
+#~ msgstr "Mégsem"
 
 #~ msgid "Workspace Margins"
 #~ msgstr "Munkaterület margók"
+
 #~ msgid ""
 #~ "Margins are areas on the edges of the screen where no window will be "
 #~ "placed"
 #~ msgstr ""
 #~ "A margók olyan területek a képernyő szélén, amelyekre nem kerül ablak."
+
 #~ msgid "Left :"
 #~ msgstr "Bal:"
+
 #~ msgid "Right :"
 #~ msgstr "Jobb:"
+
 #~ msgid "Top :"
 #~ msgstr "Felső:"
+
 #~ msgid "Bottom :"
 #~ msgstr "Alsó:"
+
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Munkaterületek és margók"
+
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Munkaterületek és Margók"
+
 #~ msgid "Margins"
 #~ msgstr "Margók"
+
 #~ msgid "None"
 #~ msgstr "Nincs"
+
 #~ msgid "Place window under the mouse"
 #~ msgstr "Ablak elhelyezése az egér alá"
+
 #~ msgid "Place window in the center"
 #~ msgstr "Ablak elhelyezése középre"
+
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Munkaterületek váltása az asztalon való görgetésre"
+
 #~ msgid "Size|Small"
 #~ msgstr "Kicsi"
+
 #~ msgid "Size|Large"
 #~ msgstr "Nagy"
+
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Ablakok alap helyzete okos elhelyezés nélkül:"
+
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Ablakkezelő trükkök"
+
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "E beállítások nem működnek a jelenlegi (%s) ablakkezelőddel"
+
 #~ msgid "Change name"
 #~ msgstr "Új név"
+
 #~ msgid "Workspace %d"
 #~ msgstr "%d. munkaterület"
+
 #~ msgid "Name:"
 #~ msgstr "Név:"
+
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Kattints egy munkaterület nevén a szerkesztéséhez"
+
 #~ msgid "Workspace names"
 #~ msgstr "Munkaterület nevek"
+
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Betűkészlet-kijelölés párbeszéd"
+
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Szöveg igazítása a címsorban:"
+
 #~ msgid "Command"
 #~ msgstr "Parancs"
+
 #~ msgid "Slow"
 #~ msgstr "Hosszú"
+
 #~ msgid "Fast"
 #~ msgstr "Rövid"
+
 #~ msgid "Distance|Small"
 #~ msgstr "Kicsi"
+
 #~ msgid "Distance|Wide"
 #~ msgstr "Széles"
+
 #~ msgid "Resistance|Small"
 #~ msgstr "Kicsi"
+
 #~ msgid "Resistance|Wide"
 #~ msgstr "Széles"
+
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Ablakkezelő"
+
 #~ msgid "Add keybinding theme"
 #~ msgstr "Billentyű-téma hozzáadása"
+
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Ablak erre a munkaterületre: %d"
+
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Nem sikerült megnyitni a témakönyvtárat!"
+
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "%s nem nyitható meg: \n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "%s nem írható : \n"
 #~ ":%s"
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "E gyorsbillentyű már létezik!\n"
-#~ "Biztos ezt akarod használni?"
+
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Gyorsbillentyű készítése ehhez:"
+
 #~ msgid "Compose shortcut"
 #~ msgstr "Gyorsbillentyű készítése"
-#~ msgid "No shortcut"
-#~ msgstr "Nincs gyorsbillentyű"
+
 #~ msgid "Advanced Configuration"
 #~ msgstr "Haladó beállítás"
+
 #~ msgid "Move window down"
 #~ msgstr "Ablak mozgatása lefelé"
+
 #~ msgid "Move window left"
 #~ msgstr "Ablak mozgatása balra"
+
 #~ msgid "Move window right"
 #~ msgstr "Ablak mozgatása jobbra"
+
 #~ msgid "Resize window down"
 #~ msgstr "Ablak átméretezése lent"
+
 #~ msgid "Resize window left"
 #~ msgstr "Ablak átméretezése bal oldalon"
+
 #~ msgid "Resize window right"
 #~ msgstr "Ablak átméretezés jobb oldalon"
+
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Ablak mozgatás/átméretezés törlése"
+
 #~ msgid "Un_maximize"
 #~ msgstr "_Visszaállítás"
+
 #~ msgid "_Hide"
 #~ msgstr "El_rejtés"
+
 #~ msgid "Always on top"
 #~ msgstr "Mindig felül"
 
 #, fuzzy
 #~ msgid "Workspace %02d"
 #~ msgstr "%d. munkaterület"
+
 #~ msgid "Unknown application!"
 #~ msgstr "Ismeretlen alkalmazás!"
-

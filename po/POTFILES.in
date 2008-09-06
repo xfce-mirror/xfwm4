@@ -33,6 +33,7 @@ src/workspaces.c
 settings-dialogs/xfce-wm-settings.desktop.in
 settings-dialogs/xfce-wmtweaks-settings.desktop.in
 settings-dialogs/xfce-workspaces-settings.desktop.in
+settings-dialogs/shortcut-dialog.c
 settings-dialogs/xfwm4-settings.c
 settings-dialogs/xfwm4-tweaks-dialog.glade
 settings-dialogs/xfwm4-workspace-dialog.glade

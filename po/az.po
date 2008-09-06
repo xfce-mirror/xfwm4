@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-24 23:24-0700\n"
+"POT-Creation-Date: 2008-09-06 16:44+0200\n"
 "PO-Revision-Date: 2004-08-23 18:04+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
@@ -157,13 +157,13 @@ msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 #, fuzzy
 msgid "Configure window behavior"
 msgstr "Ölçüləndirirkən pəncərələrin məzmununu göstər"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Window Manager"
 msgstr "Pəncərə İdarəçisi"
 
@@ -215,228 +215,224 @@ msgstr "İş Sahəsi Kənarları"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "İş Sahəsi Kənarları"
 
-#: ../settings-dialogs/xfwm4-settings.c:61
-#: ../settings-dialogs/xfwm4-settings.c:91
+#: ../settings-dialogs/xfwm4-settings.c:83
+#: ../settings-dialogs/xfwm4-settings.c:113
 msgid "Shade window"
 msgstr "Pəncərəni bur"
 
-#: ../settings-dialogs/xfwm4-settings.c:62
-#: ../settings-dialogs/xfwm4-settings.c:88
+#: ../settings-dialogs/xfwm4-settings.c:84
+#: ../settings-dialogs/xfwm4-settings.c:110
 msgid "Hide window"
 msgstr "Pəncərəni gizlət"
 
-#: ../settings-dialogs/xfwm4-settings.c:63
-#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:85
+#: ../settings-dialogs/xfwm4-settings.c:109
 msgid "Maximize window"
 msgstr "Pəncərəni böyüt"
 
-#: ../settings-dialogs/xfwm4-settings.c:64
-#: ../settings-dialogs/xfwm4-settings.c:95
+#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:117
 #, fuzzy
 msgid "Fill window"
 msgstr "Pəncərəni gizlət"
 
-#: ../settings-dialogs/xfwm4-settings.c:65
+#: ../settings-dialogs/xfwm4-settings.c:87
 msgid "Nothing"
 msgstr "Heçnə"
 
-#: ../settings-dialogs/xfwm4-settings.c:70
-#: ../settings-dialogs/xfwm4-settings.c:80
+#: ../settings-dialogs/xfwm4-settings.c:92
+#: ../settings-dialogs/xfwm4-settings.c:102
 msgid "Left"
 msgstr "Sol"
 
-#: ../settings-dialogs/xfwm4-settings.c:71
+#: ../settings-dialogs/xfwm4-settings.c:93
 msgid "Center"
 msgstr "Orta"
 
-#: ../settings-dialogs/xfwm4-settings.c:72
-#: ../settings-dialogs/xfwm4-settings.c:81
+#: ../settings-dialogs/xfwm4-settings.c:94
+#: ../settings-dialogs/xfwm4-settings.c:103
 msgid "Right"
 msgstr "Sağ"
 
-#: ../settings-dialogs/xfwm4-settings.c:77
+#: ../settings-dialogs/xfwm4-settings.c:99
 msgid "Window operations menu"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:78
+#: ../settings-dialogs/xfwm4-settings.c:100
 msgid "Up"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:79
+#: ../settings-dialogs/xfwm4-settings.c:101
 msgid "Down"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:82
+#: ../settings-dialogs/xfwm4-settings.c:104
 msgid "Cancel"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:83
+#: ../settings-dialogs/xfwm4-settings.c:105
 #, fuzzy
 msgid "Cycle windows"
 msgstr "Pəncərəni bağla"
 
-#: ../settings-dialogs/xfwm4-settings.c:84
+#: ../settings-dialogs/xfwm4-settings.c:106
 msgid "Close window"
 msgstr "Pəncərəni bağla"
 
-#: ../settings-dialogs/xfwm4-settings.c:85
+#: ../settings-dialogs/xfwm4-settings.c:107
 msgid "Maximize window horizontally"
 msgstr "Pəncərəni üfüqi olaraq böyüt"
 
-#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:108
 msgid "Maximize window vertically"
 msgstr "Pəncərəni şaquli olaraq böyüt"
 
-#: ../settings-dialogs/xfwm4-settings.c:89
+#: ../settings-dialogs/xfwm4-settings.c:111
 #, fuzzy
 msgid "Move window"
 msgstr "Pəncərəni yuxarı daşı"
 
-#: ../settings-dialogs/xfwm4-settings.c:90
+#: ../settings-dialogs/xfwm4-settings.c:112
 #, fuzzy
 msgid "Resize window"
 msgstr "Pəncərəni yuxarı ölçüləndir"
 
-#: ../settings-dialogs/xfwm4-settings.c:92
+#: ../settings-dialogs/xfwm4-settings.c:114
 msgid "Stick window"
 msgstr "Pəncərəni sabitlə"
 
-#: ../settings-dialogs/xfwm4-settings.c:93
+#: ../settings-dialogs/xfwm4-settings.c:115
 msgid "Raise window"
 msgstr "Pəncərəni qabağa gətir"
 
-#: ../settings-dialogs/xfwm4-settings.c:94
+#: ../settings-dialogs/xfwm4-settings.c:116
 msgid "Lower window"
 msgstr "Pəncərəni arxaya qoy"
 
-#: ../settings-dialogs/xfwm4-settings.c:96
+#: ../settings-dialogs/xfwm4-settings.c:118
 #, fuzzy
 msgid "Fill window horizontally"
 msgstr "Pəncərəni üfüqi olaraq böyüt"
 
-#: ../settings-dialogs/xfwm4-settings.c:97
+#: ../settings-dialogs/xfwm4-settings.c:119
 #, fuzzy
 msgid "Fill window vertically"
 msgstr "Pəncərəni şaquli olaraq böyüt"
 
-#: ../settings-dialogs/xfwm4-settings.c:98
+#: ../settings-dialogs/xfwm4-settings.c:120
 msgid "Toggle above"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:99
+#: ../settings-dialogs/xfwm4-settings.c:121
 msgid "Toggle fullscreen"
 msgstr "Tam ekran modunu aç"
 
-#: ../settings-dialogs/xfwm4-settings.c:100
+#: ../settings-dialogs/xfwm4-settings.c:122
 #, fuzzy
 msgid "Move window to upper workspace"
 msgstr "Pəncərəni növbəti iş sahəsinə daşı"
 
-#: ../settings-dialogs/xfwm4-settings.c:101
+#: ../settings-dialogs/xfwm4-settings.c:123
 #, fuzzy
 msgid "Move window to bottom workspace"
 msgstr "Pəncərəni növbəti iş sahəsinə daşı"
 
-#: ../settings-dialogs/xfwm4-settings.c:102
+#: ../settings-dialogs/xfwm4-settings.c:124
 #, fuzzy
 msgid "Move window to left workspace"
 msgstr "Pəncərəni növbəti iş sahəsinə daşı"
 
-#: ../settings-dialogs/xfwm4-settings.c:103
+#: ../settings-dialogs/xfwm4-settings.c:125
 #, fuzzy
 msgid "Move window to right workspace"
 msgstr "Pəncərəni növbəti iş sahəsinə daşı"
 
-#: ../settings-dialogs/xfwm4-settings.c:104
+#: ../settings-dialogs/xfwm4-settings.c:126
 msgid "Move window to previous workspace"
 msgstr "Pəncərəni əvvəlki iş sahəsinə daşı"
 
-#: ../settings-dialogs/xfwm4-settings.c:105
+#: ../settings-dialogs/xfwm4-settings.c:127
 msgid "Move window to next workspace"
 msgstr "Pəncərəni növbəti iş sahəsinə daşı"
 
-#: ../settings-dialogs/xfwm4-settings.c:106
+#: ../settings-dialogs/xfwm4-settings.c:128
 msgid "Show desktop"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:107
+#: ../settings-dialogs/xfwm4-settings.c:129
 #, fuzzy
 msgid "Upper workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:108
+#: ../settings-dialogs/xfwm4-settings.c:130
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:109
+#: ../settings-dialogs/xfwm4-settings.c:131
 #, fuzzy
 msgid "Left workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:110
+#: ../settings-dialogs/xfwm4-settings.c:132
 #, fuzzy
 msgid "Right workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:111
+#: ../settings-dialogs/xfwm4-settings.c:133
 msgid "Previous workspace"
 msgstr "Əvvəlki iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:112
+#: ../settings-dialogs/xfwm4-settings.c:134
 msgid "Next workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:113
+#: ../settings-dialogs/xfwm4-settings.c:135
 msgid "Add workspace"
 msgstr "İş sahəsi əlavə et"
 
-#: ../settings-dialogs/xfwm4-settings.c:114
+#: ../settings-dialogs/xfwm4-settings.c:136
 #, fuzzy
 msgid "Add adjacent workspace"
 msgstr "İş sahəsi əlavə et"
 
-#: ../settings-dialogs/xfwm4-settings.c:115
+#: ../settings-dialogs/xfwm4-settings.c:137
 #, fuzzy
 msgid "Delete last workspace"
 msgstr "İş sahəsini sil"
 
-#: ../settings-dialogs/xfwm4-settings.c:116
+#: ../settings-dialogs/xfwm4-settings.c:138
 #, fuzzy
 msgid "Delete active workspace"
 msgstr "İş sahəsini sil"
 
-#: ../settings-dialogs/xfwm4-settings.c:564
+#: ../settings-dialogs/xfwm4-settings.c:470
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:576
-msgid "Keytheme"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:589
+#: ../settings-dialogs/xfwm4-settings.c:484
 #, fuzzy
 msgid "Action"
 msgstr "Fəal"
 
-#: ../settings-dialogs/xfwm4-settings.c:591
+#: ../settings-dialogs/xfwm4-settings.c:486
 #, fuzzy
-msgid "Button"
-msgstr "Düymə düzülüşü"
+msgid "Shortcut"
+msgstr "Qısa yol yarat"
 
-#: ../settings-dialogs/xfwm4-settings.c:690
+#: ../settings-dialogs/xfwm4-settings.c:544
 #: ../settings-dialogs/tweaks-settings.c:338
 #: ../settings-dialogs/workspace-settings.c:67
 msgid "Version information"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:710
+#: ../settings-dialogs/xfwm4-settings.c:563
 #: ../settings-dialogs/tweaks-settings.c:357
 #: ../settings-dialogs/workspace-settings.c:87
 msgid "."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:714
+#: ../settings-dialogs/xfwm4-settings.c:567
 #: ../settings-dialogs/tweaks-settings.c:361
 #: ../settings-dialogs/workspace-settings.c:91
 #, c-format
@@ -445,16 +441,49 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1268
-msgid "A keybinding theme with the same name already exists"
+#: ../settings-dialogs/xfwm4-settings.c:1119
+#, c-format
+msgid "%s shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1274
-msgid "You have to provide a name for the keybinding theme"
+#: ../settings-dialogs/xfwm4-settings.c:1126
+#, c-format
+msgid ""
+"This shortcut is already being used by the window manager action <b>%s</b>. "
+"Which action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1317
-msgid "Do you really want to remove this keybinding theme ?"
+#: ../settings-dialogs/xfwm4-settings.c:1133
+#, fuzzy, c-format
+msgid ""
+"The shortcut is already being used for the command <b>%s</b>. Which action "
+"do you want to use?"
+msgstr ""
+"Qısa yol onsuzda istifadədədir !\n"
+"Həqiqətən də onu işlətmək istəyirsinizmi ?"
+
+#: ../settings-dialogs/xfwm4-settings.c:1138
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1139
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#. Ask the user what to do
+#: ../settings-dialogs/xfwm4-settings.c:1142
+msgid "Shortcut conflict"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1161
+#, c-format
+msgid "The shortcut '%s' is already being used for something else."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1208
+msgid "This action"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -591,7 +620,7 @@ msgid "_Enable display compositing"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "_Focus"
 msgstr "Fokus"
@@ -635,13 +664,13 @@ msgstr "İş Sahələri"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "gtk-close"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "gtk-help"
 msgstr ""
 
@@ -746,163 +775,146 @@ msgstr "Təfərruatlar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 #, fuzzy
-msgid "Add Shortcut Theme"
-msgstr "Qısa Yol"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Add a new window-manager shortcut theme"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Pəncərələrə fokus veriləndə onları avtomatik olaraq qabağa gətir"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr "Yeni yaradılmış pəncərələri avtomatik olaraq fokusa al"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "Fokus üçün tıqlansın"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "Düzülüşü dəyişdirmək üçün düymələri tıqlayın və daşıyın"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Close"
 msgstr "Bağla"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "Fokuslu pəncərənin qabağa gəlmə gecikməsi :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 #, fuzzy
 msgid "Dis_tance:"
 msgstr "Məsafə :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
 msgid "Focus follows _mouse"
 msgstr "Fokus siçanı izləsin"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Hidden"
 msgstr "Gizli"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hide"
 msgstr "Gizlət"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 #, fuzzy
 msgid "Hide content of windows when _moving"
 msgstr "Daşındığında pəncərələrin məzmununu göstər"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 #, fuzzy
 msgid "Hide content of windows when _resizing"
 msgstr "Ölçüləndirirkən pəncərələrin məzmununu göstər"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Ke_yboard"
 msgstr "Klaviatura"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Maximize"
 msgstr "Böyüt"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "Menyu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 #, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr "Proqram pəncərəsinin içinə tıqlandığında pəncərəni qabağa gətir"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Shade"
 msgstr "Bur"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "Pəncərələri birbirinə yapışdır"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "Pəncərələri ekran kənarlarına yapışdır"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Stick"
 msgstr "Sabitlə"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Başlıq çubuğuna cüt tıqlandığında həyata keçiriləcək gedişat :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "The window title, it cannot be removed"
 msgstr "Pəncərə etiketi, silinə bilməz"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Title"
 msgstr "Başlıq"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "Type the name for the new shortcut theme:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "Pəncərə·ekran·kənarına·daşındığında iş·sahələrini·dəyişdir"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Siçan ekran kənarına gəldiyində iş sahələrini dəyişdir"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "Fokuslu pəncərənin qabağa gəlmə gecikməsi :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "Kənar Müqaviməti :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "_Reset to defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
 msgid "_Style"
 msgstr "Tərz"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "gtk-add"
-msgstr ""
+#, fuzzy
+#~ msgid "Button"
+#~ msgstr "Düymə düzülüşü"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "gtk-cancel"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:58
-msgid "gtk-ok"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:59
-msgid "gtk-remove"
-msgstr ""
+#, fuzzy
+#~ msgid "Add Shortcut Theme"
+#~ msgstr "Qısa Yol"
 
 #~ msgid "Workspace Margins"
 #~ msgstr "İş Sahəsi Kənarları"
@@ -1013,21 +1025,10 @@ msgstr ""
 #~ "%s faylına yazıla bilmir: \n"
 #~ "%s"
 
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "Qısa yol onsuzda istifadədədir !\n"
-#~ "Həqiqətən də onu işlətmək istəyirsinizmi ?"
-
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Bunun üçün qısa yol yarat :"
 
 #~ msgid "Compose shortcut"
-#~ msgstr "Qısa yol yarat"
-
-#, fuzzy
-#~ msgid "No shortcut"
 #~ msgstr "Qısa yol yarat"
 
 #, fuzzy

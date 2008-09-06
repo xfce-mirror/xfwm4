@@ -1,3 +1,8 @@
+2008-09-06	Jannis Pohlmann <jannis@xfce.org>
+
+	* POTFILES.in: Add shortcut-dialog.c.
+	* *.po, xfwm4.pot: Merge new strings.
+
 2008-08-29  Maximilian Schleiss <maximilian@xfce.org>
 
 	* de.po: German translation updated (Fabian Nowak)

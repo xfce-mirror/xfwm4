@@ -1,3 +1,15 @@
+2008-09-06 16:39	jannis
+
+	* settings-dialogs/Makefile.am,
+	  settings-dialogs/shortcut-dialog.{c,h}: Add (almost) the same dialog for
+	  entering shortcuts as we have in xfce4-settings. 
+	* settings-dialogs/xfwm4-settings.c: Implement the first part of the xfwm4
+	  keyboard shortcuts: Disable themes support, make shortcuts editable,
+	  implement the "reset to defaults" feature, handle 'property-changed'
+	  signal emitted by xfconf and allow for interactive resolving of 
+	  conflicts. Still missing: hard-coded default shorcuts and the actual X
+	  event monitor for all shortcuts.
+
 2008-09-04 19:24  jannis
 
 	* autogen.sh: Add git svn revision versioning support.
