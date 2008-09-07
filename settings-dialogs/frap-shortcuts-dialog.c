@@ -312,7 +312,8 @@ frap_shortcuts_dialog_key_pressed (FrapShortcutsDialog *dialog,
                                    GdkEventKey         *event)
 {
   /* Determine and remember the current shortcut */
-  dialog->shortcut = frap_shortcuts_get_gdk_accelerator_name (event->keyval, event->state);
+  g_free (dialog->shortcut);
+  dialog->shortcut = frap_shortcuts_get_accelerator_name (event->keyval, event->state);
 
   return FALSE;
 }

@@ -1,3 +1,9 @@
+2008-09-07 23:19	jannis
+
+	* settings-dialogs/frap-shortcuts.{c,h},
+	  settings-dialogs/frap-shortcuts-dialog.c: Update to latest libfrap
+	  version.
+
 2008-09-07 18:50	jannis
 
 	* settings-dialogs/Makefile.am, settings-dialogs/frap-shortcuts.{c,h},

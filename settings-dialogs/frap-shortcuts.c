@@ -64,6 +64,7 @@ static guint           frap_shortcuts_x11_get_ignore_mask            (void);
 static guint           frap_shortcuts_x11_get_use_mask               (void);
 static guint           frap_shortcuts_gdk_remove_duplicate_modifiers (guint      modifiers);
 static guint           frap_shortcuts_x11_add_gdk_modifiers          (guint      modifiers);
+static guint           frap_shortcuts_gdk_add_x11_modifiers          (guint      modifiers);
 #if 0
 static void            frap_shortcuts_print_gdk_modifiers            (guint      modifiers);
 #endif
@@ -238,7 +239,7 @@ frap_shortcuts_conflict_dialog (XfconfChannel    *channel,
 
   if (xfconf_channel_get_property (channel, property, &value) && frap_shortcuts_parse_value (&value, &other_type, &other_action))
     {
-      if ((type != other_type || g_utf8_collate (action, other_action) != 0) && !(type == other_type && ignore_same_type))
+      if ((type != other_type || action == NULL || g_utf8_collate (action, other_action) != 0) && !(type == other_type && ignore_same_type))
         {
           for (i = 0; conflict_messages[i].message != NULL; ++i)
             if (conflict_messages[i].owner_type == type && conflict_messages[i].other_type == other_type)
@@ -334,45 +335,24 @@ frap_shortcuts_remove_shortcut (XfconfChannel *channel,
 
 
 
-void
-frap_shortcuts_get_gdk_accelerator (const gchar *name,
-                                    guint       *keyval,
-                                    guint       *modifiers)
-{
-  gtk_accelerator_parse (name, keyval, modifiers);
-}
-
-
-
 gchar *
-frap_shortcuts_get_gdk_accelerator_name (guint keyval,
-                                         guint modifiers)
-{
-  modifiers = frap_shortcuts_gdk_remove_duplicate_modifiers (modifiers);
-
-  return gtk_accelerator_name (keyval, modifiers);
-}
-
-
-
-void
-frap_shortcuts_get_x11_accelerator (const gchar *name,
-                                    guint       *keyval,
-                                    guint       *modifiers)
-{
-  gtk_accelerator_parse (name, keyval, modifiers);
-}
-
-
-
-gchar *
-frap_shortcuts_get_x11_accelerator_name (guint keyval,
-                                         guint modifiers)
+frap_shortcuts_get_accelerator_name (guint keyval,
+                                     guint modifiers)
 {
   modifiers = frap_shortcuts_x11_add_gdk_modifiers (modifiers);
   modifiers = frap_shortcuts_gdk_remove_duplicate_modifiers (modifiers);
 
   return gtk_accelerator_name (keyval, modifiers);
+}
+
+
+
+void
+frap_shortcuts_parse_accelerator (const gchar *name,
+                                  guint       *keyval,
+                                  guint       *modifiers)
+{
+  gtk_accelerator_parse (name, keyval, modifiers);
 }
 
 
@@ -437,13 +417,16 @@ frap_shortcuts_grab_shortcut (const gchar *shortcut,
   screens = gdk_display_get_n_screens (display);
 
   /* Parse the shortcut */
-  frap_shortcuts_get_x11_accelerator (shortcut, &keyval, &modifiers);
+  frap_shortcuts_parse_accelerator (shortcut, &keyval, &modifiers);
+
+  g_debug ("grab_shortcut: shortcut = %s, keyval = 0x%x, modifiers = 0x%x, ungrab = %i", shortcut, keyval, modifiers, ungrab);
 
   /* Determine mask containing ignored modifier bits */
   ignore_mask = frap_shortcuts_x11_get_ignore_mask ();
   use_mask = frap_shortcuts_x11_get_use_mask ();
 
   /* Mask used modifiers */
+  modifiers = frap_shortcuts_gdk_add_x11_modifiers (modifiers);
   modifiers &= use_mask;
 
   /* Determine keycode */
@@ -743,6 +726,93 @@ frap_shortcuts_x11_add_gdk_modifiers (guint modifiers)
 
 
 
+static guint
+frap_shortcuts_gdk_add_x11_modifiers (guint modifiers)
+{
+  XModifierKeymap *modmap;
+  const KeySym    *keysyms;
+  Display         *display;
+  KeyCode          keycode;
+  KeySym          *keymap;
+  guint            modifiers_result = modifiers;
+  gint             keysyms_per_keycode = 0;
+  gint             min_keycode = 0;
+  gint             max_keycode = 0;
+  gint             mask;
+  gint             i;
+  gint             j;
+
+  display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+
+  gdk_error_trap_push ();
+
+  XDisplayKeycodes (display, &min_keycode, &max_keycode);
+
+  keymap = XGetKeyboardMapping (display, min_keycode, max_keycode - min_keycode + 1, &keysyms_per_keycode);
+
+  if (keymap == NULL)
+    return modifiers_result;
+
+  modmap = XGetModifierMapping (display);
+
+  if (modmap == NULL)
+    {
+      XFree (keymap);
+      return modifiers_result;
+    }
+
+  for (i = 0; i < 8 * modmap->max_keypermod; ++i)
+    {
+      keycode = modmap->modifiermap[i];
+
+      if (keycode == 0 || keycode < min_keycode || keycode > max_keycode)
+        continue;
+
+      keysyms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
+
+      mask = 1 << (i / modmap->max_keypermod);
+
+      for (j = 0; j < keysyms_per_keycode; ++j)
+        {
+          switch (keysyms[j])
+            {
+            case GDK_Super_L:
+            case GDK_Super_R:
+              if ((modifiers & GDK_SUPER_MASK) == GDK_SUPER_MASK)
+                modifiers_result |= mask;
+              break;
+
+#if 0
+            case GDK_Hyper_L:
+            case GDK_Hyper_R:
+              if ((modifiers & GDK_HYPER_MASK) == GDK_HYPER_MASK)
+                modifiers_result |= mask;
+              break;
+#endif
+
+            case GDK_Meta_L:
+            case GDK_Meta_R:
+              if ((modifiers & GDK_META_MASK) == GDK_META_MASK)
+                modifiers_result |= mask;
+              break;
+
+            default:
+              break;
+            }
+        }
+    }
+
+  XFreeModifiermap (modmap);
+  XFree (keymap);
+
+  gdk_flush ();
+  gdk_error_trap_pop ();
+
+  return modifiers_result;
+}
+
+
+
 #if 0
 static void
 frap_shortcuts_print_gdk_modifiers (guint modifiers)
@@ -834,7 +904,7 @@ frap_shortcuts_handle_key_press (XKeyEvent *xevent)
    * callback for each of them */
   keysym = XKeycodeToKeysym (GDK_DISPLAY_XDISPLAY (display), xevent->keycode, 0);
 
-  shortcut = frap_shortcuts_get_x11_accelerator_name (keysym, xevent->state);
+  shortcut = frap_shortcuts_get_accelerator_name (keysym, xevent->state);
   
   if (frap_shortcuts_callback_context.callback != NULL)
     frap_shortcuts_callback_context.callback (shortcut, frap_shortcuts_callback_context.user_data);
