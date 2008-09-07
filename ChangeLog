@@ -1,3 +1,9 @@
+2008-09-07 23:58	jannis
+
+	* settings-dialogs/frap-shortcuts-dialog.c: Update the dialog. It
+	  now uses XfceTitledDialog as a parent and also displays the partial
+	  shortcut while being entered - cool.
+
 2008-09-07 23:19	jannis
 
 	* settings-dialogs/frap-shortcuts.{c,h},
