@@ -1,3 +1,7 @@
+2008-09-07 11:34	jannis
+
+	* settings-dialogs/Xfwm4-settings.c: Remove unused function declaration.
+
 2008-09-06 20:21	jannis
 
 	* configure.ac.in: Add dependencies on dbus-1 and dbus-glib-1.

@@ -173,8 +173,6 @@ static void cb_xfwm4_shortcuts_property_changed (XfconfChannel *channel, const g
 static void cb_xfwm4_shortcuts_row_activated (GtkWidget *treeview, GtkTreePath *path, GtkTreeViewColumn *column, XfconfChannel *channel);
 static void cb_xfwm4_shortcuts_reset (GtkWidget *button, GtkListStore *store);
 
-static void load_key_theme (const gchar *user_theme_name);
-
 static GdkPixbuf *xfwm4_create_icon_from_widget (GtkWidget *widget);
 
 static void xfwm4_create_indicator (GtkWidget *box, gint x, gint y, gint width, gint height);
