@@ -2,10 +2,10 @@
 
 	* settings-dialogs/Makefile.am, settings-dialogs/frap-shortcuts.{c,h},
 	  settings-dialogs/frap-shortcuts-dialog.{c,h},
-		settings-dialogs/xfwm4-settings.c: Import utility functions and the
-		shortcut dialog from libfrap. Refactor the xfwm4 settings dialog so that
-		it makes use of them. The code should now work better and be easier to
-		read.
+	  settings-dialogs/xfwm4-settings.c: Import utility functions and the
+	  shortcut dialog from libfrap. Refactor the xfwm4 settings dialog so that
+	  it makes use of them. The code should now work better and be easier to
+	  read.
 
 2008-09-07 11:50	jannis
 

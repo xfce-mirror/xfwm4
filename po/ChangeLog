@@ -1,3 +1,8 @@
+2008-09-07	Jannis Pohlmann <jannis@xfce.org>
+
+	* POTFILES.in: Add frap-shortcuts.c and frap-shortcuts-dialog.c.
+	* *.po, xfwm4.pot: Merge new strings.
+
 2008-09-06	Jannis Pohlmann <jannis@xfce.org>
 
 	* POTFILES.in: Add shortcut-dialog.c.
