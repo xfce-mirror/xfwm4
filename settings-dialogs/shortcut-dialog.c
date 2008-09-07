@@ -306,7 +306,6 @@ static gboolean
 shortcut_dialog_key_released (ShortcutDialog *dialog,
                               GdkEventKey    *event)
 {
-  Display *display;
   gboolean event_handled = FALSE;
   gboolean shortcut_accepted = FALSE;
   gchar   *shortcut;
