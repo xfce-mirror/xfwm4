@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-06 16:44+0200\n"
+"POT-Creation-Date: 2008-09-07 18:52+0200\n"
 "PO-Revision-Date: 2008-09-01 03:20+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -205,206 +205,301 @@ msgstr "Munkaterület beállítások"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 munkaterület beállítások"
 
-#: ../settings-dialogs/xfwm4-settings.c:83
-#: ../settings-dialogs/xfwm4-settings.c:113
+#: ../settings-dialogs/frap-shortcuts.c:83
+#, c-format
+msgid ""
+"This shortcut is already being used by the window manager action <b>%s</b>. "
+"Which action do you want to use?"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:86
+#: ../settings-dialogs/frap-shortcuts.c:89
+#, fuzzy, c-format
+msgid ""
+"The shortcut is already being used for the command <b>%s</b>. Which action "
+"do you want to use?"
+msgstr ""
+"E gyorsbillentyű már létezik!\n"
+"Biztos ezt akarod használni?"
+
+#: ../settings-dialogs/frap-shortcuts.c:92
+#, fuzzy
+msgid ""
+"The shortcut is already being used by a <b>window manager action</b>. Which "
+"action do you want to use?"
+msgstr ""
+"E gyorsbillentyű már létezik!\n"
+"Biztos ezt akarod használni?"
+
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, fuzzy
+msgid "Keep window manager action"
+msgstr "Haladó ablakkezelő beállítások"
+
+#: ../settings-dialogs/frap-shortcuts.c:248
+#, c-format
+msgid "%s shortcut conflict"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:256
+msgid "Use this action"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:259
+msgid "Shortcut conflict"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:280
+#, c-format
+msgid "The shortcut '%s' is already being used for something else."
+msgstr ""
+
+#. Set dialog title
+#: ../settings-dialogs/frap-shortcuts-dialog.c:233
+#, fuzzy
+msgid "Set shortcut"
+msgstr "Nincs gyorsbillentyű"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:253
+#, c-format
+msgid ""
+"Set shortcut for action\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:255
+#, c-format
+msgid ""
+"Set shortcut for command\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:257
+#, c-format
+msgid ""
+"Set shortcut for\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:302
+msgid "Could not grab the keyboard."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:116
 msgid "Shade window"
 msgstr "Ablak felgördítése"
 
-#: ../settings-dialogs/xfwm4-settings.c:84
-#: ../settings-dialogs/xfwm4-settings.c:110
+#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:113
 msgid "Hide window"
 msgstr "Ablak rejtése"
 
-#: ../settings-dialogs/xfwm4-settings.c:85
-#: ../settings-dialogs/xfwm4-settings.c:109
+#: ../settings-dialogs/xfwm4-settings.c:88
+#: ../settings-dialogs/xfwm4-settings.c:112
 msgid "Maximize window"
 msgstr "Ablak maximálása"
 
-#: ../settings-dialogs/xfwm4-settings.c:86
-#: ../settings-dialogs/xfwm4-settings.c:117
+#: ../settings-dialogs/xfwm4-settings.c:89
+#: ../settings-dialogs/xfwm4-settings.c:120
 msgid "Fill window"
 msgstr "Ablak kitöltése"
 
-#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:90
 msgid "Nothing"
 msgstr "Semmi"
 
-#: ../settings-dialogs/xfwm4-settings.c:92
-#: ../settings-dialogs/xfwm4-settings.c:102
+#: ../settings-dialogs/xfwm4-settings.c:95
+#: ../settings-dialogs/xfwm4-settings.c:105
 msgid "Left"
 msgstr "Balra"
 
-#: ../settings-dialogs/xfwm4-settings.c:93
+#: ../settings-dialogs/xfwm4-settings.c:96
 msgid "Center"
 msgstr "Középre"
 
-#: ../settings-dialogs/xfwm4-settings.c:94
-#: ../settings-dialogs/xfwm4-settings.c:103
+#: ../settings-dialogs/xfwm4-settings.c:97
+#: ../settings-dialogs/xfwm4-settings.c:106
 msgid "Right"
 msgstr "Jobbra"
 
-#: ../settings-dialogs/xfwm4-settings.c:99
+#: ../settings-dialogs/xfwm4-settings.c:102
 msgid "Window operations menu"
 msgstr "Ablak művelet menü"
 
-#: ../settings-dialogs/xfwm4-settings.c:100
+#: ../settings-dialogs/xfwm4-settings.c:103
 msgid "Up"
 msgstr "Fel"
 
-#: ../settings-dialogs/xfwm4-settings.c:101
+#: ../settings-dialogs/xfwm4-settings.c:104
 msgid "Down"
 msgstr "Le"
 
-#: ../settings-dialogs/xfwm4-settings.c:104
+#: ../settings-dialogs/xfwm4-settings.c:107
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: ../settings-dialogs/xfwm4-settings.c:105
+#: ../settings-dialogs/xfwm4-settings.c:108
 msgid "Cycle windows"
 msgstr "Ablakok körözése"
 
-#: ../settings-dialogs/xfwm4-settings.c:106
+#: ../settings-dialogs/xfwm4-settings.c:109
 msgid "Close window"
 msgstr "Ablak bezárása"
 
-#: ../settings-dialogs/xfwm4-settings.c:107
+#: ../settings-dialogs/xfwm4-settings.c:110
 msgid "Maximize window horizontally"
 msgstr "Teljes méret vízszintesen"
 
-#: ../settings-dialogs/xfwm4-settings.c:108
+#: ../settings-dialogs/xfwm4-settings.c:111
 msgid "Maximize window vertically"
 msgstr "Teljes méret függőlegesen"
 
-#: ../settings-dialogs/xfwm4-settings.c:111
+#: ../settings-dialogs/xfwm4-settings.c:114
 msgid "Move window"
 msgstr "Ablak mozgatása"
 
-#: ../settings-dialogs/xfwm4-settings.c:112
+#: ../settings-dialogs/xfwm4-settings.c:115
 msgid "Resize window"
 msgstr "Ablak átméretezése"
 
-#: ../settings-dialogs/xfwm4-settings.c:114
+#: ../settings-dialogs/xfwm4-settings.c:117
 msgid "Stick window"
 msgstr "Ablak rögzítése"
 
-#: ../settings-dialogs/xfwm4-settings.c:115
+#: ../settings-dialogs/xfwm4-settings.c:118
 msgid "Raise window"
 msgstr "Ablak előre"
 
-#: ../settings-dialogs/xfwm4-settings.c:116
+#: ../settings-dialogs/xfwm4-settings.c:119
 msgid "Lower window"
 msgstr "Ablak hátra"
 
-#: ../settings-dialogs/xfwm4-settings.c:118
+#: ../settings-dialogs/xfwm4-settings.c:121
 msgid "Fill window horizontally"
 msgstr "Ablak kitöltése vízszintesen"
 
-#: ../settings-dialogs/xfwm4-settings.c:119
+#: ../settings-dialogs/xfwm4-settings.c:122
 msgid "Fill window vertically"
 msgstr "Ablak kitöltése függőlegesen"
 
-#: ../settings-dialogs/xfwm4-settings.c:120
+#: ../settings-dialogs/xfwm4-settings.c:123
 msgid "Toggle above"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:121
+#: ../settings-dialogs/xfwm4-settings.c:124
 msgid "Toggle fullscreen"
 msgstr "Teljes képernyő"
 
-#: ../settings-dialogs/xfwm4-settings.c:122
+#: ../settings-dialogs/xfwm4-settings.c:125
 msgid "Move window to upper workspace"
 msgstr "Ablak egy munkaterülettel feljebb"
 
-#: ../settings-dialogs/xfwm4-settings.c:123
+#: ../settings-dialogs/xfwm4-settings.c:126
 msgid "Move window to bottom workspace"
 msgstr "Ablak egy munkaterülettel lejjebb"
 
-#: ../settings-dialogs/xfwm4-settings.c:124
+#: ../settings-dialogs/xfwm4-settings.c:127
 msgid "Move window to left workspace"
 msgstr "Ablak egy munkaterülettel balra"
 
-#: ../settings-dialogs/xfwm4-settings.c:125
+#: ../settings-dialogs/xfwm4-settings.c:128
 msgid "Move window to right workspace"
 msgstr "Ablak egy munkaterülettel jobbra"
 
-#: ../settings-dialogs/xfwm4-settings.c:126
+#: ../settings-dialogs/xfwm4-settings.c:129
 msgid "Move window to previous workspace"
 msgstr "Ablak az előző munkaterületre"
 
-#: ../settings-dialogs/xfwm4-settings.c:127
+#: ../settings-dialogs/xfwm4-settings.c:130
 msgid "Move window to next workspace"
 msgstr "Ablak a következő munkaterületre"
 
-#: ../settings-dialogs/xfwm4-settings.c:128
+#: ../settings-dialogs/xfwm4-settings.c:131
 msgid "Show desktop"
 msgstr "Asztal mutatása"
 
-#: ../settings-dialogs/xfwm4-settings.c:129
+#: ../settings-dialogs/xfwm4-settings.c:132
 msgid "Upper workspace"
 msgstr "Felső munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:130
+#: ../settings-dialogs/xfwm4-settings.c:133
 msgid "Bottom workspace"
 msgstr "Alsó munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:131
+#: ../settings-dialogs/xfwm4-settings.c:134
 msgid "Left workspace"
 msgstr "Bal munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:132
+#: ../settings-dialogs/xfwm4-settings.c:135
 msgid "Right workspace"
 msgstr "Jobb munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:133
+#: ../settings-dialogs/xfwm4-settings.c:136
 msgid "Previous workspace"
 msgstr "Előző munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:134
+#: ../settings-dialogs/xfwm4-settings.c:137
 msgid "Next workspace"
 msgstr "Következő munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:135
+#: ../settings-dialogs/xfwm4-settings.c:138
 msgid "Add workspace"
 msgstr "Új munkaterület"
 
-#: ../settings-dialogs/xfwm4-settings.c:136
+#: ../settings-dialogs/xfwm4-settings.c:139
 msgid "Add adjacent workspace"
 msgstr "Szomszédos munkaterület hozzáadása"
 
-#: ../settings-dialogs/xfwm4-settings.c:137
+#: ../settings-dialogs/xfwm4-settings.c:140
 msgid "Delete last workspace"
 msgstr "Utolsó munkaterület törlése"
 
-#: ../settings-dialogs/xfwm4-settings.c:138
+#: ../settings-dialogs/xfwm4-settings.c:141
 msgid "Delete active workspace"
 msgstr "Aktív munkaterület törlése"
 
-#: ../settings-dialogs/xfwm4-settings.c:470
+#: ../settings-dialogs/xfwm4-settings.c:475
 msgid "Theme"
 msgstr "Téma"
 
-#: ../settings-dialogs/xfwm4-settings.c:484
+#: ../settings-dialogs/xfwm4-settings.c:489
 msgid "Action"
 msgstr "Művelet"
 
-#: ../settings-dialogs/xfwm4-settings.c:486
+#: ../settings-dialogs/xfwm4-settings.c:491
 #, fuzzy
 msgid "Shortcut"
 msgstr "Nincs gyorsbillentyű"
 
-#: ../settings-dialogs/xfwm4-settings.c:544
+#: ../settings-dialogs/xfwm4-settings.c:551
 #: ../settings-dialogs/tweaks-settings.c:338
 #: ../settings-dialogs/workspace-settings.c:67
 msgid "Version information"
 msgstr "Verzió adatok"
 
-#: ../settings-dialogs/xfwm4-settings.c:563
+#: ../settings-dialogs/xfwm4-settings.c:570
 #: ../settings-dialogs/tweaks-settings.c:357
 #: ../settings-dialogs/workspace-settings.c:87
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/xfwm4-settings.c:567
+#: ../settings-dialogs/xfwm4-settings.c:574
 #: ../settings-dialogs/tweaks-settings.c:361
 #: ../settings-dialogs/workspace-settings.c:91
 #, c-format
@@ -414,51 +509,6 @@ msgid ""
 msgstr ""
 "%s: %s\n"
 "Próbáld ezt: %s --help az elérhető parancssori lehetőségekért.\n"
-
-#: ../settings-dialogs/xfwm4-settings.c:1119
-#, c-format
-msgid "%s shortcut conflict"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1126
-#, c-format
-msgid ""
-"This shortcut is already being used by the window manager action <b>%s</b>. "
-"Which action do you want to use?"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1133
-#, fuzzy, c-format
-msgid ""
-"The shortcut is already being used for the command <b>%s</b>. Which action "
-"do you want to use?"
-msgstr ""
-"E gyorsbillentyű már létezik!\n"
-"Biztos ezt akarod használni?"
-
-#: ../settings-dialogs/xfwm4-settings.c:1138
-#, c-format
-msgid "Use %s"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1139
-#, c-format
-msgid "Keep %s"
-msgstr ""
-
-#. Ask the user what to do
-#: ../settings-dialogs/xfwm4-settings.c:1142
-msgid "Shortcut conflict"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1161
-#, c-format
-msgid "The shortcut '%s' is already being used for something else."
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1208
-msgid "This action"
-msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Large</i>"

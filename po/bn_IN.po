@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-06 16:44+0200\n"
+"POT-Creation-Date: 2008-09-07 18:52+0200\n"
 "PO-Revision-Date: 2005-04-07 12:14+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -215,237 +215,30 @@ msgstr "কর্মক্ষেত্রের প্রান্তরেখ�
 msgid "Xfce 4 Workspaces Settings"
 msgstr "কর্মক্ষেত্রের প্রান্তরেখা"
 
-#: ../settings-dialogs/xfwm4-settings.c:83
-#: ../settings-dialogs/xfwm4-settings.c:113
-msgid "Shade window"
-msgstr "উইন্ডোর উপর ছায়া"
-
-#: ../settings-dialogs/xfwm4-settings.c:84
-#: ../settings-dialogs/xfwm4-settings.c:110
-msgid "Hide window"
-msgstr "উইন্ডো লুকিয়ে ফেলুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:85
-#: ../settings-dialogs/xfwm4-settings.c:109
-msgid "Maximize window"
-msgstr "উইন্ডো বড় করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:86
-#: ../settings-dialogs/xfwm4-settings.c:117
-#, fuzzy
-msgid "Fill window"
-msgstr "উইন্ডো লুকিয়ে ফেলুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:87
-msgid "Nothing"
-msgstr "কিছু নেই"
-
-#: ../settings-dialogs/xfwm4-settings.c:92
-#: ../settings-dialogs/xfwm4-settings.c:102
-msgid "Left"
-msgstr "বাঁদিক"
-
-#: ../settings-dialogs/xfwm4-settings.c:93
-msgid "Center"
-msgstr "কেন্দ্রস্থিত"
-
-#: ../settings-dialogs/xfwm4-settings.c:94
-#: ../settings-dialogs/xfwm4-settings.c:103
-msgid "Right"
-msgstr "ডানদিক"
-
-#: ../settings-dialogs/xfwm4-settings.c:99
-msgid "Window operations menu"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:100
-msgid "Up"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:101
-msgid "Down"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:104
-msgid "Cancel"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:105
-#, fuzzy
-msgid "Cycle windows"
-msgstr "উইন্ডো বন্ধ করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:106
-msgid "Close window"
-msgstr "উইন্ডো বন্ধ করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:107
-msgid "Maximize window horizontally"
-msgstr "অনুভমিক দিশায় উইন্ডো বড় করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:108
-msgid "Maximize window vertically"
-msgstr "উলম্ব দিশায় উইন্ডো বড় করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:111
-#, fuzzy
-msgid "Move window"
-msgstr "উইন্ডো উপরে স্থানান্তর করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:112
-#, fuzzy
-msgid "Resize window"
-msgstr "উইন্ডোর মাপ উফরে পরীবর্তন করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:114
-msgid "Stick window"
-msgstr "উইন্ডো আটক করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:115
-msgid "Raise window"
-msgstr "উইন্ডো বড় করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:116
-msgid "Lower window"
-msgstr "উইন্ডো ছোট করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:118
-#, fuzzy
-msgid "Fill window horizontally"
-msgstr "অনুভমিক দিশায় উইন্ডো বড় করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:119
-#, fuzzy
-msgid "Fill window vertically"
-msgstr "উলম্ব দিশায় উইন্ডো বড় করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:120
-msgid "Toggle above"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:121
-msgid "Toggle fullscreen"
-msgstr "সম্পূর্ণ পর্দা জুড়ে প্রদর্শন বন্ধ/চালু করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:122
-msgid "Move window to upper workspace"
-msgstr "উপরের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:123
-msgid "Move window to bottom workspace"
-msgstr "নীচের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:124
-msgid "Move window to left workspace"
-msgstr "বাঁদিকের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:125
-msgid "Move window to right workspace"
-msgstr "ডানদিকের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:126
-msgid "Move window to previous workspace"
-msgstr "পূর্ববর্তী কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:127
-msgid "Move window to next workspace"
-msgstr "পরবর্তী কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:128
-msgid "Show desktop"
-msgstr "ডেস্কটপ প্রদর্শন"
-
-#: ../settings-dialogs/xfwm4-settings.c:129
-msgid "Upper workspace"
-msgstr "উপরের কর্মক্ষেত্র"
-
-#: ../settings-dialogs/xfwm4-settings.c:130
-msgid "Bottom workspace"
-msgstr "নীচের কর্মক্ষেত্র"
-
-#: ../settings-dialogs/xfwm4-settings.c:131
-msgid "Left workspace"
-msgstr "বাঁদিকের কর্মক্ষেত্র"
-
-#: ../settings-dialogs/xfwm4-settings.c:132
-msgid "Right workspace"
-msgstr "ডানদিকের কর্মক্ষেত্র"
-
-#: ../settings-dialogs/xfwm4-settings.c:133
-msgid "Previous workspace"
-msgstr "পূর্ববর্তী কর্মক্ষেত্র"
-
-#: ../settings-dialogs/xfwm4-settings.c:134
-msgid "Next workspace"
-msgstr "পরবর্তী কর্মক্ষেত্র"
-
-#: ../settings-dialogs/xfwm4-settings.c:135
-msgid "Add workspace"
-msgstr "কর্মক্ষেত্র যোগ করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:136
-#, fuzzy
-msgid "Add adjacent workspace"
-msgstr "কর্মক্ষেত্র যোগ করুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:137
-#, fuzzy
-msgid "Delete last workspace"
-msgstr "কর্মক্ষেত্র মুছে ফেলুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:138
-#, fuzzy
-msgid "Delete active workspace"
-msgstr "কর্মক্ষেত্র মুছে ফেলুন"
-
-#: ../settings-dialogs/xfwm4-settings.c:470
-msgid "Theme"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:484
-#, fuzzy
-msgid "Action"
-msgstr "সক্রিয়"
-
-#: ../settings-dialogs/xfwm4-settings.c:486
-#, fuzzy
-msgid "Shortcut"
-msgstr "কোনো শর্টকাট উপস্থিত নেই"
-
-#: ../settings-dialogs/xfwm4-settings.c:544
-#: ../settings-dialogs/tweaks-settings.c:338
-#: ../settings-dialogs/workspace-settings.c:67
-msgid "Version information"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:563
-#: ../settings-dialogs/tweaks-settings.c:357
-#: ../settings-dialogs/workspace-settings.c:87
-msgid "."
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:567
-#: ../settings-dialogs/tweaks-settings.c:361
-#: ../settings-dialogs/workspace-settings.c:91
-#, c-format
-msgid ""
-"%s: %s\n"
-"Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1119
-#, c-format
-msgid "%s shortcut conflict"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1126
+#: ../settings-dialogs/frap-shortcuts.c:83
 #, c-format
 msgid ""
 "This shortcut is already being used by the window manager action <b>%s</b>. "
 "Which action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1133
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:86
+#: ../settings-dialogs/frap-shortcuts.c:89
 #, fuzzy, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
@@ -454,28 +247,285 @@ msgstr ""
 "শর্টকাট বর্তমানে ব্যবহৃত হচ্ছে !\n"
 "আপনি কি নিশ্চিতরূপে এটি ব্যবহার করতে ইচ্ছুক ?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1138
+#: ../settings-dialogs/frap-shortcuts.c:92
+#, fuzzy
+msgid ""
+"The shortcut is already being used by a <b>window manager action</b>. Which "
+"action do you want to use?"
+msgstr ""
+"শর্টকাট বর্তমানে ব্যবহৃত হচ্ছে !\n"
+"আপনি কি নিশ্চিতরূপে এটি ব্যবহার করতে ইচ্ছুক ?"
+
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, fuzzy
+msgid "Keep window manager action"
+msgstr "উইন্ডো পরিচালন ব্যবস্থা"
+
+#: ../settings-dialogs/frap-shortcuts.c:248
 #, c-format
-msgid "Use %s"
+msgid "%s shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1139
-#, c-format
-msgid "Keep %s"
+#: ../settings-dialogs/frap-shortcuts.c:256
+msgid "Use this action"
 msgstr ""
 
-#. Ask the user what to do
-#: ../settings-dialogs/xfwm4-settings.c:1142
+#: ../settings-dialogs/frap-shortcuts.c:259
 msgid "Shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1161
+#: ../settings-dialogs/frap-shortcuts.c:280
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1208
-msgid "This action"
+#. Set dialog title
+#: ../settings-dialogs/frap-shortcuts-dialog.c:233
+#, fuzzy
+msgid "Set shortcut"
+msgstr "কোনো শর্টকাট উপস্থিত নেই"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:253
+#, c-format
+msgid ""
+"Set shortcut for action\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:255
+#, c-format
+msgid ""
+"Set shortcut for command\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:257
+#, c-format
+msgid ""
+"Set shortcut for\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:302
+msgid "Could not grab the keyboard."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:116
+msgid "Shade window"
+msgstr "উইন্ডোর উপর ছায়া"
+
+#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:113
+msgid "Hide window"
+msgstr "উইন্ডো লুকিয়ে ফেলুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:88
+#: ../settings-dialogs/xfwm4-settings.c:112
+msgid "Maximize window"
+msgstr "উইন্ডো বড় করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:89
+#: ../settings-dialogs/xfwm4-settings.c:120
+#, fuzzy
+msgid "Fill window"
+msgstr "উইন্ডো লুকিয়ে ফেলুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:90
+msgid "Nothing"
+msgstr "কিছু নেই"
+
+#: ../settings-dialogs/xfwm4-settings.c:95
+#: ../settings-dialogs/xfwm4-settings.c:105
+msgid "Left"
+msgstr "বাঁদিক"
+
+#: ../settings-dialogs/xfwm4-settings.c:96
+msgid "Center"
+msgstr "কেন্দ্রস্থিত"
+
+#: ../settings-dialogs/xfwm4-settings.c:97
+#: ../settings-dialogs/xfwm4-settings.c:106
+msgid "Right"
+msgstr "ডানদিক"
+
+#: ../settings-dialogs/xfwm4-settings.c:102
+msgid "Window operations menu"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:103
+msgid "Up"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:104
+msgid "Down"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:107
+msgid "Cancel"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:108
+#, fuzzy
+msgid "Cycle windows"
+msgstr "উইন্ডো বন্ধ করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:109
+msgid "Close window"
+msgstr "উইন্ডো বন্ধ করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:110
+msgid "Maximize window horizontally"
+msgstr "অনুভমিক দিশায় উইন্ডো বড় করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:111
+msgid "Maximize window vertically"
+msgstr "উলম্ব দিশায় উইন্ডো বড় করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:114
+#, fuzzy
+msgid "Move window"
+msgstr "উইন্ডো উপরে স্থানান্তর করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:115
+#, fuzzy
+msgid "Resize window"
+msgstr "উইন্ডোর মাপ উফরে পরীবর্তন করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:117
+msgid "Stick window"
+msgstr "উইন্ডো আটক করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:118
+msgid "Raise window"
+msgstr "উইন্ডো বড় করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:119
+msgid "Lower window"
+msgstr "উইন্ডো ছোট করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:121
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "অনুভমিক দিশায় উইন্ডো বড় করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:122
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "উলম্ব দিশায় উইন্ডো বড় করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:123
+msgid "Toggle above"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:124
+msgid "Toggle fullscreen"
+msgstr "সম্পূর্ণ পর্দা জুড়ে প্রদর্শন বন্ধ/চালু করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:125
+msgid "Move window to upper workspace"
+msgstr "উপরের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:126
+msgid "Move window to bottom workspace"
+msgstr "নীচের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:127
+msgid "Move window to left workspace"
+msgstr "বাঁদিকের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:128
+msgid "Move window to right workspace"
+msgstr "ডানদিকের কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:129
+msgid "Move window to previous workspace"
+msgstr "পূর্ববর্তী কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:130
+msgid "Move window to next workspace"
+msgstr "পরবর্তী কর্মক্ষেত্রে উইন্ডো স্থানান্তর করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:131
+msgid "Show desktop"
+msgstr "ডেস্কটপ প্রদর্শন"
+
+#: ../settings-dialogs/xfwm4-settings.c:132
+msgid "Upper workspace"
+msgstr "উপরের কর্মক্ষেত্র"
+
+#: ../settings-dialogs/xfwm4-settings.c:133
+msgid "Bottom workspace"
+msgstr "নীচের কর্মক্ষেত্র"
+
+#: ../settings-dialogs/xfwm4-settings.c:134
+msgid "Left workspace"
+msgstr "বাঁদিকের কর্মক্ষেত্র"
+
+#: ../settings-dialogs/xfwm4-settings.c:135
+msgid "Right workspace"
+msgstr "ডানদিকের কর্মক্ষেত্র"
+
+#: ../settings-dialogs/xfwm4-settings.c:136
+msgid "Previous workspace"
+msgstr "পূর্ববর্তী কর্মক্ষেত্র"
+
+#: ../settings-dialogs/xfwm4-settings.c:137
+msgid "Next workspace"
+msgstr "পরবর্তী কর্মক্ষেত্র"
+
+#: ../settings-dialogs/xfwm4-settings.c:138
+msgid "Add workspace"
+msgstr "কর্মক্ষেত্র যোগ করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:139
+#, fuzzy
+msgid "Add adjacent workspace"
+msgstr "কর্মক্ষেত্র যোগ করুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:140
+#, fuzzy
+msgid "Delete last workspace"
+msgstr "কর্মক্ষেত্র মুছে ফেলুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:141
+#, fuzzy
+msgid "Delete active workspace"
+msgstr "কর্মক্ষেত্র মুছে ফেলুন"
+
+#: ../settings-dialogs/xfwm4-settings.c:475
+msgid "Theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:489
+#, fuzzy
+msgid "Action"
+msgstr "সক্রিয়"
+
+#: ../settings-dialogs/xfwm4-settings.c:491
+#, fuzzy
+msgid "Shortcut"
+msgstr "কোনো শর্টকাট উপস্থিত নেই"
+
+#: ../settings-dialogs/xfwm4-settings.c:551
+#: ../settings-dialogs/tweaks-settings.c:338
+#: ../settings-dialogs/workspace-settings.c:67
+msgid "Version information"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:570
+#: ../settings-dialogs/tweaks-settings.c:357
+#: ../settings-dialogs/workspace-settings.c:87
+msgid "."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:574
+#: ../settings-dialogs/tweaks-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:91
+#, c-format
+msgid ""
+"%s: %s\n"
+"Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-06 16:44+0200\n"
+"POT-Creation-Date: 2008-09-07 18:52+0200\n"
 "PO-Revision-Date: 2006-11-3 12:41+0100\n"
 "Last-Translator: Stephan Arts <stephan@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -208,237 +208,30 @@ msgstr "Werkblad Instellingen"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Werkblad Instellingen"
 
-#: ../settings-dialogs/xfwm4-settings.c:83
-#: ../settings-dialogs/xfwm4-settings.c:113
-msgid "Shade window"
-msgstr "Venster oprollen"
-
-#: ../settings-dialogs/xfwm4-settings.c:84
-#: ../settings-dialogs/xfwm4-settings.c:110
-msgid "Hide window"
-msgstr "Venster verbergen"
-
-#: ../settings-dialogs/xfwm4-settings.c:85
-#: ../settings-dialogs/xfwm4-settings.c:109
-msgid "Maximize window"
-msgstr "Venster maximaliseren"
-
-#: ../settings-dialogs/xfwm4-settings.c:86
-#: ../settings-dialogs/xfwm4-settings.c:117
-#, fuzzy
-msgid "Fill window"
-msgstr "Venster verbergen"
-
-#: ../settings-dialogs/xfwm4-settings.c:87
-msgid "Nothing"
-msgstr "Niets"
-
-#: ../settings-dialogs/xfwm4-settings.c:92
-#: ../settings-dialogs/xfwm4-settings.c:102
-msgid "Left"
-msgstr "Links"
-
-#: ../settings-dialogs/xfwm4-settings.c:93
-msgid "Center"
-msgstr "Midden"
-
-#: ../settings-dialogs/xfwm4-settings.c:94
-#: ../settings-dialogs/xfwm4-settings.c:103
-msgid "Right"
-msgstr "Rechts"
-
-#: ../settings-dialogs/xfwm4-settings.c:99
-msgid "Window operations menu"
-msgstr "Venster acties menu"
-
-#: ../settings-dialogs/xfwm4-settings.c:100
-msgid "Up"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:101
-msgid "Down"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:104
-msgid "Cancel"
-msgstr "Annuleren"
-
-#: ../settings-dialogs/xfwm4-settings.c:105
-msgid "Cycle windows"
-msgstr "Venster Wisselen"
-
-#: ../settings-dialogs/xfwm4-settings.c:106
-msgid "Close window"
-msgstr "Venster sluiten"
-
-#: ../settings-dialogs/xfwm4-settings.c:107
-msgid "Maximize window horizontally"
-msgstr "Venster horizontaal maximaliseren"
-
-#: ../settings-dialogs/xfwm4-settings.c:108
-msgid "Maximize window vertically"
-msgstr "Venster verticaal maximaliseren"
-
-#: ../settings-dialogs/xfwm4-settings.c:111
-#, fuzzy
-msgid "Move window"
-msgstr "Venster omhoog verplaatsen"
-
-#: ../settings-dialogs/xfwm4-settings.c:112
-#, fuzzy
-msgid "Resize window"
-msgstr "Venster verticaal verkleinen"
-
-#: ../settings-dialogs/xfwm4-settings.c:114
-msgid "Stick window"
-msgstr "Venster zichtbaar op alle bureaubladen"
-
-#: ../settings-dialogs/xfwm4-settings.c:115
-msgid "Raise window"
-msgstr "Venster naar de voorgrond halen"
-
-#: ../settings-dialogs/xfwm4-settings.c:116
-msgid "Lower window"
-msgstr "Venster naar de achtergrond brengen"
-
-#: ../settings-dialogs/xfwm4-settings.c:118
-#, fuzzy
-msgid "Fill window horizontally"
-msgstr "Venster horizontaal maximaliseren"
-
-#: ../settings-dialogs/xfwm4-settings.c:119
-#, fuzzy
-msgid "Fill window vertically"
-msgstr "Venster verticaal maximaliseren"
-
-#: ../settings-dialogs/xfwm4-settings.c:120
-#, fuzzy
-msgid "Toggle above"
-msgstr "Naar boven/onder brengen"
-
-#: ../settings-dialogs/xfwm4-settings.c:121
-msgid "Toggle fullscreen"
-msgstr "Wissel volledig scherm"
-
-#: ../settings-dialogs/xfwm4-settings.c:122
-msgid "Move window to upper workspace"
-msgstr "Venster naar bovenliggend werkblad verplaatsen"
-
-#: ../settings-dialogs/xfwm4-settings.c:123
-msgid "Move window to bottom workspace"
-msgstr "Venster naar onderliggend werkblad verplaatsen"
-
-#: ../settings-dialogs/xfwm4-settings.c:124
-msgid "Move window to left workspace"
-msgstr "Venster naar linker-werkblad verplaatsen"
-
-#: ../settings-dialogs/xfwm4-settings.c:125
-msgid "Move window to right workspace"
-msgstr "Venster naar rechter-werkblad verplaatsen"
-
-#: ../settings-dialogs/xfwm4-settings.c:126
-msgid "Move window to previous workspace"
-msgstr "Venster naar vorig werkblad verplaatsen"
-
-#: ../settings-dialogs/xfwm4-settings.c:127
-msgid "Move window to next workspace"
-msgstr "Venster naar volgend werkblad verplaatsen"
-
-#: ../settings-dialogs/xfwm4-settings.c:128
-msgid "Show desktop"
-msgstr "Bureaublad tonen"
-
-#: ../settings-dialogs/xfwm4-settings.c:129
-msgid "Upper workspace"
-msgstr "Werkblad naar boven"
-
-#: ../settings-dialogs/xfwm4-settings.c:130
-msgid "Bottom workspace"
-msgstr "Werkblad naar beneden"
-
-#: ../settings-dialogs/xfwm4-settings.c:131
-msgid "Left workspace"
-msgstr "Werkblad naar links"
-
-#: ../settings-dialogs/xfwm4-settings.c:132
-msgid "Right workspace"
-msgstr "Werkblad naar rechts"
-
-#: ../settings-dialogs/xfwm4-settings.c:133
-msgid "Previous workspace"
-msgstr "Vorig werkblad"
-
-#: ../settings-dialogs/xfwm4-settings.c:134
-msgid "Next workspace"
-msgstr "Volgend werkblad"
-
-#: ../settings-dialogs/xfwm4-settings.c:135
-msgid "Add workspace"
-msgstr "Werkblad toevoegen"
-
-#: ../settings-dialogs/xfwm4-settings.c:136
-#, fuzzy
-msgid "Add adjacent workspace"
-msgstr "Werkblad toevoegen"
-
-#: ../settings-dialogs/xfwm4-settings.c:137
-#, fuzzy
-msgid "Delete last workspace"
-msgstr "Werkblad verwijderen"
-
-#: ../settings-dialogs/xfwm4-settings.c:138
-#, fuzzy
-msgid "Delete active workspace"
-msgstr "Werkblad verwijderen"
-
-#: ../settings-dialogs/xfwm4-settings.c:470
-msgid "Theme"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:484
-#, fuzzy
-msgid "Action"
-msgstr "Actief"
-
-#: ../settings-dialogs/xfwm4-settings.c:486
-#, fuzzy
-msgid "Shortcut"
-msgstr "Geen sneltoets"
-
-#: ../settings-dialogs/xfwm4-settings.c:544
-#: ../settings-dialogs/tweaks-settings.c:338
-#: ../settings-dialogs/workspace-settings.c:67
-msgid "Version information"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:563
-#: ../settings-dialogs/tweaks-settings.c:357
-#: ../settings-dialogs/workspace-settings.c:87
-msgid "."
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:567
-#: ../settings-dialogs/tweaks-settings.c:361
-#: ../settings-dialogs/workspace-settings.c:91
-#, c-format
-msgid ""
-"%s: %s\n"
-"Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1119
-#, c-format
-msgid "%s shortcut conflict"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1126
+#: ../settings-dialogs/frap-shortcuts.c:83
 #, c-format
 msgid ""
 "This shortcut is already being used by the window manager action <b>%s</b>. "
 "Which action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1133
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:86
+#: ../settings-dialogs/frap-shortcuts.c:89
 #, fuzzy, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
@@ -447,28 +240,285 @@ msgstr ""
 "Sneltoets reeds in gebruik!\n"
 "Weet u zeker dat u deze toetscombinatie wilt gebruiken?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1138
+#: ../settings-dialogs/frap-shortcuts.c:92
+#, fuzzy
+msgid ""
+"The shortcut is already being used by a <b>window manager action</b>. Which "
+"action do you want to use?"
+msgstr ""
+"Sneltoets reeds in gebruik!\n"
+"Weet u zeker dat u deze toetscombinatie wilt gebruiken?"
+
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, fuzzy
+msgid "Keep window manager action"
+msgstr "Xfce 4 Venster Beheer Instellingen "
+
+#: ../settings-dialogs/frap-shortcuts.c:248
 #, c-format
-msgid "Use %s"
+msgid "%s shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1139
-#, c-format
-msgid "Keep %s"
+#: ../settings-dialogs/frap-shortcuts.c:256
+msgid "Use this action"
 msgstr ""
 
-#. Ask the user what to do
-#: ../settings-dialogs/xfwm4-settings.c:1142
+#: ../settings-dialogs/frap-shortcuts.c:259
 msgid "Shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1161
+#: ../settings-dialogs/frap-shortcuts.c:280
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1208
-msgid "This action"
+#. Set dialog title
+#: ../settings-dialogs/frap-shortcuts-dialog.c:233
+#, fuzzy
+msgid "Set shortcut"
+msgstr "Geen sneltoets"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:253
+#, c-format
+msgid ""
+"Set shortcut for action\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:255
+#, c-format
+msgid ""
+"Set shortcut for command\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:257
+#, c-format
+msgid ""
+"Set shortcut for\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:302
+msgid "Could not grab the keyboard."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:116
+msgid "Shade window"
+msgstr "Venster oprollen"
+
+#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:113
+msgid "Hide window"
+msgstr "Venster verbergen"
+
+#: ../settings-dialogs/xfwm4-settings.c:88
+#: ../settings-dialogs/xfwm4-settings.c:112
+msgid "Maximize window"
+msgstr "Venster maximaliseren"
+
+#: ../settings-dialogs/xfwm4-settings.c:89
+#: ../settings-dialogs/xfwm4-settings.c:120
+#, fuzzy
+msgid "Fill window"
+msgstr "Venster verbergen"
+
+#: ../settings-dialogs/xfwm4-settings.c:90
+msgid "Nothing"
+msgstr "Niets"
+
+#: ../settings-dialogs/xfwm4-settings.c:95
+#: ../settings-dialogs/xfwm4-settings.c:105
+msgid "Left"
+msgstr "Links"
+
+#: ../settings-dialogs/xfwm4-settings.c:96
+msgid "Center"
+msgstr "Midden"
+
+#: ../settings-dialogs/xfwm4-settings.c:97
+#: ../settings-dialogs/xfwm4-settings.c:106
+msgid "Right"
+msgstr "Rechts"
+
+#: ../settings-dialogs/xfwm4-settings.c:102
+msgid "Window operations menu"
+msgstr "Venster acties menu"
+
+#: ../settings-dialogs/xfwm4-settings.c:103
+msgid "Up"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:104
+msgid "Down"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:107
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ../settings-dialogs/xfwm4-settings.c:108
+msgid "Cycle windows"
+msgstr "Venster Wisselen"
+
+#: ../settings-dialogs/xfwm4-settings.c:109
+msgid "Close window"
+msgstr "Venster sluiten"
+
+#: ../settings-dialogs/xfwm4-settings.c:110
+msgid "Maximize window horizontally"
+msgstr "Venster horizontaal maximaliseren"
+
+#: ../settings-dialogs/xfwm4-settings.c:111
+msgid "Maximize window vertically"
+msgstr "Venster verticaal maximaliseren"
+
+#: ../settings-dialogs/xfwm4-settings.c:114
+#, fuzzy
+msgid "Move window"
+msgstr "Venster omhoog verplaatsen"
+
+#: ../settings-dialogs/xfwm4-settings.c:115
+#, fuzzy
+msgid "Resize window"
+msgstr "Venster verticaal verkleinen"
+
+#: ../settings-dialogs/xfwm4-settings.c:117
+msgid "Stick window"
+msgstr "Venster zichtbaar op alle bureaubladen"
+
+#: ../settings-dialogs/xfwm4-settings.c:118
+msgid "Raise window"
+msgstr "Venster naar de voorgrond halen"
+
+#: ../settings-dialogs/xfwm4-settings.c:119
+msgid "Lower window"
+msgstr "Venster naar de achtergrond brengen"
+
+#: ../settings-dialogs/xfwm4-settings.c:121
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "Venster horizontaal maximaliseren"
+
+#: ../settings-dialogs/xfwm4-settings.c:122
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "Venster verticaal maximaliseren"
+
+#: ../settings-dialogs/xfwm4-settings.c:123
+#, fuzzy
+msgid "Toggle above"
+msgstr "Naar boven/onder brengen"
+
+#: ../settings-dialogs/xfwm4-settings.c:124
+msgid "Toggle fullscreen"
+msgstr "Wissel volledig scherm"
+
+#: ../settings-dialogs/xfwm4-settings.c:125
+msgid "Move window to upper workspace"
+msgstr "Venster naar bovenliggend werkblad verplaatsen"
+
+#: ../settings-dialogs/xfwm4-settings.c:126
+msgid "Move window to bottom workspace"
+msgstr "Venster naar onderliggend werkblad verplaatsen"
+
+#: ../settings-dialogs/xfwm4-settings.c:127
+msgid "Move window to left workspace"
+msgstr "Venster naar linker-werkblad verplaatsen"
+
+#: ../settings-dialogs/xfwm4-settings.c:128
+msgid "Move window to right workspace"
+msgstr "Venster naar rechter-werkblad verplaatsen"
+
+#: ../settings-dialogs/xfwm4-settings.c:129
+msgid "Move window to previous workspace"
+msgstr "Venster naar vorig werkblad verplaatsen"
+
+#: ../settings-dialogs/xfwm4-settings.c:130
+msgid "Move window to next workspace"
+msgstr "Venster naar volgend werkblad verplaatsen"
+
+#: ../settings-dialogs/xfwm4-settings.c:131
+msgid "Show desktop"
+msgstr "Bureaublad tonen"
+
+#: ../settings-dialogs/xfwm4-settings.c:132
+msgid "Upper workspace"
+msgstr "Werkblad naar boven"
+
+#: ../settings-dialogs/xfwm4-settings.c:133
+msgid "Bottom workspace"
+msgstr "Werkblad naar beneden"
+
+#: ../settings-dialogs/xfwm4-settings.c:134
+msgid "Left workspace"
+msgstr "Werkblad naar links"
+
+#: ../settings-dialogs/xfwm4-settings.c:135
+msgid "Right workspace"
+msgstr "Werkblad naar rechts"
+
+#: ../settings-dialogs/xfwm4-settings.c:136
+msgid "Previous workspace"
+msgstr "Vorig werkblad"
+
+#: ../settings-dialogs/xfwm4-settings.c:137
+msgid "Next workspace"
+msgstr "Volgend werkblad"
+
+#: ../settings-dialogs/xfwm4-settings.c:138
+msgid "Add workspace"
+msgstr "Werkblad toevoegen"
+
+#: ../settings-dialogs/xfwm4-settings.c:139
+#, fuzzy
+msgid "Add adjacent workspace"
+msgstr "Werkblad toevoegen"
+
+#: ../settings-dialogs/xfwm4-settings.c:140
+#, fuzzy
+msgid "Delete last workspace"
+msgstr "Werkblad verwijderen"
+
+#: ../settings-dialogs/xfwm4-settings.c:141
+#, fuzzy
+msgid "Delete active workspace"
+msgstr "Werkblad verwijderen"
+
+#: ../settings-dialogs/xfwm4-settings.c:475
+msgid "Theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:489
+#, fuzzy
+msgid "Action"
+msgstr "Actief"
+
+#: ../settings-dialogs/xfwm4-settings.c:491
+#, fuzzy
+msgid "Shortcut"
+msgstr "Geen sneltoets"
+
+#: ../settings-dialogs/xfwm4-settings.c:551
+#: ../settings-dialogs/tweaks-settings.c:338
+#: ../settings-dialogs/workspace-settings.c:67
+msgid "Version information"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:570
+#: ../settings-dialogs/tweaks-settings.c:357
+#: ../settings-dialogs/workspace-settings.c:87
+msgid "."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:574
+#: ../settings-dialogs/tweaks-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:91
+#, c-format
+msgid ""
+"%s: %s\n"
+"Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-06 16:44+0200\n"
+"POT-Creation-Date: 2008-09-07 18:52+0200\n"
 "PO-Revision-Date: 2008-08-12 13:55+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -202,228 +202,30 @@ msgstr "Työtilojen asetukset"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Työtilojen asetukset"
 
-#: ../settings-dialogs/xfwm4-settings.c:83
-#: ../settings-dialogs/xfwm4-settings.c:113
-msgid "Shade window"
-msgstr "Varjosta ikkuna"
-
-#: ../settings-dialogs/xfwm4-settings.c:84
-#: ../settings-dialogs/xfwm4-settings.c:110
-msgid "Hide window"
-msgstr "Piilota ikkuna"
-
-#: ../settings-dialogs/xfwm4-settings.c:85
-#: ../settings-dialogs/xfwm4-settings.c:109
-msgid "Maximize window"
-msgstr "Suurenna ikkuna"
-
-#: ../settings-dialogs/xfwm4-settings.c:86
-#: ../settings-dialogs/xfwm4-settings.c:117
-msgid "Fill window"
-msgstr "Sovita ikkuna"
-
-#: ../settings-dialogs/xfwm4-settings.c:87
-msgid "Nothing"
-msgstr "Ei mitään"
-
-#: ../settings-dialogs/xfwm4-settings.c:92
-#: ../settings-dialogs/xfwm4-settings.c:102
-msgid "Left"
-msgstr "Vasemmalle"
-
-#: ../settings-dialogs/xfwm4-settings.c:93
-msgid "Center"
-msgstr "Keskelle"
-
-#: ../settings-dialogs/xfwm4-settings.c:94
-#: ../settings-dialogs/xfwm4-settings.c:103
-msgid "Right"
-msgstr "Oikealle"
-
-#: ../settings-dialogs/xfwm4-settings.c:99
-msgid "Window operations menu"
-msgstr "Ikkunan toimintovalikko"
-
-#: ../settings-dialogs/xfwm4-settings.c:100
-msgid "Up"
-msgstr "Ylös"
-
-#: ../settings-dialogs/xfwm4-settings.c:101
-msgid "Down"
-msgstr "Alas"
-
-#: ../settings-dialogs/xfwm4-settings.c:104
-msgid "Cancel"
-msgstr "Peru"
-
-#: ../settings-dialogs/xfwm4-settings.c:105
-msgid "Cycle windows"
-msgstr "Selaa ikkunoita"
-
-#: ../settings-dialogs/xfwm4-settings.c:106
-msgid "Close window"
-msgstr "Sulje ikkuna"
-
-#: ../settings-dialogs/xfwm4-settings.c:107
-msgid "Maximize window horizontally"
-msgstr "Suurenna ikkuna vaakasuunnassa"
-
-#: ../settings-dialogs/xfwm4-settings.c:108
-msgid "Maximize window vertically"
-msgstr "Suurenna ikkuna pystysuunnassa"
-
-#: ../settings-dialogs/xfwm4-settings.c:111
-msgid "Move window"
-msgstr "Siirrä ikkunaa"
-
-#: ../settings-dialogs/xfwm4-settings.c:112
-msgid "Resize window"
-msgstr "Muuta ikkunan kokoa"
-
-#: ../settings-dialogs/xfwm4-settings.c:114
-msgid "Stick window"
-msgstr "Kiinnitä ikkuna"
-
-#: ../settings-dialogs/xfwm4-settings.c:115
-msgid "Raise window"
-msgstr "Nosta ikkunaa"
-
-#: ../settings-dialogs/xfwm4-settings.c:116
-msgid "Lower window"
-msgstr "Laske ikkunaa"
-
-#: ../settings-dialogs/xfwm4-settings.c:118
-msgid "Fill window horizontally"
-msgstr "Sovita ikkuna vaakasuunnassa"
-
-#: ../settings-dialogs/xfwm4-settings.c:119
-msgid "Fill window vertically"
-msgstr "Sovita ikkuna pystysuunnassa"
-
-#: ../settings-dialogs/xfwm4-settings.c:120
-msgid "Toggle above"
-msgstr "Vaihda päällimmäiseksi"
-
-#: ../settings-dialogs/xfwm4-settings.c:121
-msgid "Toggle fullscreen"
-msgstr "Vaihda täysruututilaan"
-
-#: ../settings-dialogs/xfwm4-settings.c:122
-msgid "Move window to upper workspace"
-msgstr "Siirrä ikkuna ylempään työtilaan"
-
-#: ../settings-dialogs/xfwm4-settings.c:123
-msgid "Move window to bottom workspace"
-msgstr "Siirrä ikkuna alempaan työtilaan"
-
-#: ../settings-dialogs/xfwm4-settings.c:124
-msgid "Move window to left workspace"
-msgstr "Siirrä ikkuna vasemmanpuoleiseen työtilaan"
-
-#: ../settings-dialogs/xfwm4-settings.c:125
-msgid "Move window to right workspace"
-msgstr "Siirrä ikkuna oikeanpuoleiseen työtilaan"
-
-#: ../settings-dialogs/xfwm4-settings.c:126
-msgid "Move window to previous workspace"
-msgstr "Siirrä ikkuna edelliseen työtilaan"
-
-#: ../settings-dialogs/xfwm4-settings.c:127
-msgid "Move window to next workspace"
-msgstr "Siirrä ikkuna seuraavaan työtilaan"
-
-#: ../settings-dialogs/xfwm4-settings.c:128
-msgid "Show desktop"
-msgstr "Näytä työpöytä"
-
-#: ../settings-dialogs/xfwm4-settings.c:129
-msgid "Upper workspace"
-msgstr "Ylempi työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:130
-msgid "Bottom workspace"
-msgstr "Alempi työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:131
-msgid "Left workspace"
-msgstr "Vasen työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:132
-msgid "Right workspace"
-msgstr "Oikea työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:133
-msgid "Previous workspace"
-msgstr "Edellinen työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:134
-msgid "Next workspace"
-msgstr "Seuraava työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:135
-msgid "Add workspace"
-msgstr "Lisää työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:136
-msgid "Add adjacent workspace"
-msgstr "Lisää työtila vierelle"
-
-#: ../settings-dialogs/xfwm4-settings.c:137
-msgid "Delete last workspace"
-msgstr "Poista viimeinen työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:138
-msgid "Delete active workspace"
-msgstr "Poista aktiivinen työtila"
-
-#: ../settings-dialogs/xfwm4-settings.c:470
-msgid "Theme"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:484
-#, fuzzy
-msgid "Action"
-msgstr "Esillä"
-
-#: ../settings-dialogs/xfwm4-settings.c:486
-#, fuzzy
-msgid "Shortcut"
-msgstr "Ei pikanäppäintä"
-
-#: ../settings-dialogs/xfwm4-settings.c:544
-#: ../settings-dialogs/tweaks-settings.c:338
-#: ../settings-dialogs/workspace-settings.c:67
-msgid "Version information"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:563
-#: ../settings-dialogs/tweaks-settings.c:357
-#: ../settings-dialogs/workspace-settings.c:87
-msgid "."
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:567
-#: ../settings-dialogs/tweaks-settings.c:361
-#: ../settings-dialogs/workspace-settings.c:91
-#, c-format
-msgid ""
-"%s: %s\n"
-"Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1119
-#, c-format
-msgid "%s shortcut conflict"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1126
+#: ../settings-dialogs/frap-shortcuts.c:83
 #, c-format
 msgid ""
 "This shortcut is already being used by the window manager action <b>%s</b>. "
 "Which action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1133
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:86
+#: ../settings-dialogs/frap-shortcuts.c:89
 #, fuzzy, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
@@ -432,28 +234,276 @@ msgstr ""
 "Pikanäppäin on jo käytössä!\n"
 "Haluatko todella käyttää sitä?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1138
+#: ../settings-dialogs/frap-shortcuts.c:92
+#, fuzzy
+msgid ""
+"The shortcut is already being used by a <b>window manager action</b>. Which "
+"action do you want to use?"
+msgstr ""
+"Pikanäppäin on jo käytössä!\n"
+"Haluatko todella käyttää sitä?"
+
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, fuzzy
+msgid "Keep window manager action"
+msgstr "Xfce 4 Ikkunamanagerin asetukset"
+
+#: ../settings-dialogs/frap-shortcuts.c:248
 #, c-format
-msgid "Use %s"
+msgid "%s shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1139
-#, c-format
-msgid "Keep %s"
+#: ../settings-dialogs/frap-shortcuts.c:256
+msgid "Use this action"
 msgstr ""
 
-#. Ask the user what to do
-#: ../settings-dialogs/xfwm4-settings.c:1142
+#: ../settings-dialogs/frap-shortcuts.c:259
 msgid "Shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1161
+#: ../settings-dialogs/frap-shortcuts.c:280
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1208
-msgid "This action"
+#. Set dialog title
+#: ../settings-dialogs/frap-shortcuts-dialog.c:233
+#, fuzzy
+msgid "Set shortcut"
+msgstr "Ei pikanäppäintä"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:253
+#, c-format
+msgid ""
+"Set shortcut for action\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:255
+#, c-format
+msgid ""
+"Set shortcut for command\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:257
+#, c-format
+msgid ""
+"Set shortcut for\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:302
+msgid "Could not grab the keyboard."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:116
+msgid "Shade window"
+msgstr "Varjosta ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:113
+msgid "Hide window"
+msgstr "Piilota ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:88
+#: ../settings-dialogs/xfwm4-settings.c:112
+msgid "Maximize window"
+msgstr "Suurenna ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:89
+#: ../settings-dialogs/xfwm4-settings.c:120
+msgid "Fill window"
+msgstr "Sovita ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:90
+msgid "Nothing"
+msgstr "Ei mitään"
+
+#: ../settings-dialogs/xfwm4-settings.c:95
+#: ../settings-dialogs/xfwm4-settings.c:105
+msgid "Left"
+msgstr "Vasemmalle"
+
+#: ../settings-dialogs/xfwm4-settings.c:96
+msgid "Center"
+msgstr "Keskelle"
+
+#: ../settings-dialogs/xfwm4-settings.c:97
+#: ../settings-dialogs/xfwm4-settings.c:106
+msgid "Right"
+msgstr "Oikealle"
+
+#: ../settings-dialogs/xfwm4-settings.c:102
+msgid "Window operations menu"
+msgstr "Ikkunan toimintovalikko"
+
+#: ../settings-dialogs/xfwm4-settings.c:103
+msgid "Up"
+msgstr "Ylös"
+
+#: ../settings-dialogs/xfwm4-settings.c:104
+msgid "Down"
+msgstr "Alas"
+
+#: ../settings-dialogs/xfwm4-settings.c:107
+msgid "Cancel"
+msgstr "Peru"
+
+#: ../settings-dialogs/xfwm4-settings.c:108
+msgid "Cycle windows"
+msgstr "Selaa ikkunoita"
+
+#: ../settings-dialogs/xfwm4-settings.c:109
+msgid "Close window"
+msgstr "Sulje ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:110
+msgid "Maximize window horizontally"
+msgstr "Suurenna ikkuna vaakasuunnassa"
+
+#: ../settings-dialogs/xfwm4-settings.c:111
+msgid "Maximize window vertically"
+msgstr "Suurenna ikkuna pystysuunnassa"
+
+#: ../settings-dialogs/xfwm4-settings.c:114
+msgid "Move window"
+msgstr "Siirrä ikkunaa"
+
+#: ../settings-dialogs/xfwm4-settings.c:115
+msgid "Resize window"
+msgstr "Muuta ikkunan kokoa"
+
+#: ../settings-dialogs/xfwm4-settings.c:117
+msgid "Stick window"
+msgstr "Kiinnitä ikkuna"
+
+#: ../settings-dialogs/xfwm4-settings.c:118
+msgid "Raise window"
+msgstr "Nosta ikkunaa"
+
+#: ../settings-dialogs/xfwm4-settings.c:119
+msgid "Lower window"
+msgstr "Laske ikkunaa"
+
+#: ../settings-dialogs/xfwm4-settings.c:121
+msgid "Fill window horizontally"
+msgstr "Sovita ikkuna vaakasuunnassa"
+
+#: ../settings-dialogs/xfwm4-settings.c:122
+msgid "Fill window vertically"
+msgstr "Sovita ikkuna pystysuunnassa"
+
+#: ../settings-dialogs/xfwm4-settings.c:123
+msgid "Toggle above"
+msgstr "Vaihda päällimmäiseksi"
+
+#: ../settings-dialogs/xfwm4-settings.c:124
+msgid "Toggle fullscreen"
+msgstr "Vaihda täysruututilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:125
+msgid "Move window to upper workspace"
+msgstr "Siirrä ikkuna ylempään työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:126
+msgid "Move window to bottom workspace"
+msgstr "Siirrä ikkuna alempaan työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:127
+msgid "Move window to left workspace"
+msgstr "Siirrä ikkuna vasemmanpuoleiseen työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:128
+msgid "Move window to right workspace"
+msgstr "Siirrä ikkuna oikeanpuoleiseen työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:129
+msgid "Move window to previous workspace"
+msgstr "Siirrä ikkuna edelliseen työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:130
+msgid "Move window to next workspace"
+msgstr "Siirrä ikkuna seuraavaan työtilaan"
+
+#: ../settings-dialogs/xfwm4-settings.c:131
+msgid "Show desktop"
+msgstr "Näytä työpöytä"
+
+#: ../settings-dialogs/xfwm4-settings.c:132
+msgid "Upper workspace"
+msgstr "Ylempi työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:133
+msgid "Bottom workspace"
+msgstr "Alempi työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:134
+msgid "Left workspace"
+msgstr "Vasen työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:135
+msgid "Right workspace"
+msgstr "Oikea työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:136
+msgid "Previous workspace"
+msgstr "Edellinen työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:137
+msgid "Next workspace"
+msgstr "Seuraava työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:138
+msgid "Add workspace"
+msgstr "Lisää työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:139
+msgid "Add adjacent workspace"
+msgstr "Lisää työtila vierelle"
+
+#: ../settings-dialogs/xfwm4-settings.c:140
+msgid "Delete last workspace"
+msgstr "Poista viimeinen työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:141
+msgid "Delete active workspace"
+msgstr "Poista aktiivinen työtila"
+
+#: ../settings-dialogs/xfwm4-settings.c:475
+msgid "Theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:489
+#, fuzzy
+msgid "Action"
+msgstr "Esillä"
+
+#: ../settings-dialogs/xfwm4-settings.c:491
+#, fuzzy
+msgid "Shortcut"
+msgstr "Ei pikanäppäintä"
+
+#: ../settings-dialogs/xfwm4-settings.c:551
+#: ../settings-dialogs/tweaks-settings.c:338
+#: ../settings-dialogs/workspace-settings.c:67
+msgid "Version information"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:570
+#: ../settings-dialogs/tweaks-settings.c:357
+#: ../settings-dialogs/workspace-settings.c:87
+msgid "."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:574
+#: ../settings-dialogs/tweaks-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:91
+#, c-format
+msgid ""
+"%s: %s\n"
+"Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1

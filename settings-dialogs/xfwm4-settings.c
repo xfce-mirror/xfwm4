@@ -45,7 +45,8 @@
 #include <xfconf/xfconf.h>
 
 #include "xfwm4-dialog_glade.h"
-#include "shortcut-dialog.h"
+#include "frap-shortcuts.h"
+#include "frap-shortcuts-dialog.h"
 
 
 
@@ -98,8 +99,8 @@ static const MenuTmpl title_align_values[] = {
 };
 
 static ShortcutTmpl shortcuts_defaults[] = {
-  {N_("Window operations menu"), "popup_menu_key", "<Mod4>m"},
-  {N_("Up"), "up_key", "<Mod4>o"},
+  {N_("Window operations menu"), "popup_menu_key", NULL},
+  {N_("Up"), "up_key", NULL},
   {N_("Down"), "down_key", NULL},
   {N_("Left"), "left_key", NULL},
   {N_("Right"), "right_key", NULL},
@@ -178,10 +179,12 @@ static GdkPixbuf *xfwm4_create_icon_from_widget (GtkWidget *widget);
 static void xfwm4_create_indicator (GtkWidget *box, gint x, gint y, gint width, gint height);
 static void xfwm4_delete_indicator (GtkWidget *box);
 
+#if 0
 static const gchar *get_shortcut_name (const gchar *internal_name);
-static gboolean read_shortcut_property (const GValue *value, const gchar **type, const gchar **action);
+#endif
 static void load_shortcuts (GtkListStore *store, XfconfChannel *channel);
 static void load_shortcut_property (const gchar *property, const GValue *value, ShortcutContext *context);
+static gboolean remove_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, XfconfChannel *channel);
 
 
 
@@ -1092,87 +1095,7 @@ xfwm4_delete_indicator (GtkWidget *widget)
 
 
 static gboolean
-request_shortcut_confirmation (XfconfChannel *channel, const gchar *property, const gchar *internal_name, gboolean ignore_internal_conflicts)
-{
-  GValue value = { 0 };
-  const gchar *type;
-  const gchar *action;
-  const gchar *name;
-  gboolean shortcut_accepted = TRUE;
-  gchar *escaped_shortcut;
-  gchar *primary_text;
-  gchar *secondary_text;
-  gchar *other_name;
-  gchar *option_accept;
-  gchar *option_reject;
-  gint response;
-
-  if (G_LIKELY (xfconf_channel_get_property (channel, property, &value) && read_shortcut_property (&value, &type, &action)))
-    {
-      if (G_LIKELY (g_utf8_collate (type, "xfwm4") != 0 || !ignore_internal_conflicts))
-        {
-          if (G_LIKELY (g_utf8_collate (type, "xfwm4") != 0 || g_utf8_collate (action, internal_name) != 0))
-            {
-              /* TODO: Maybe add another parameter (via context) to this function to switch between resolving
-               * and ignoring xfwm4-only conflicts (for the use of "Reset to defaults") */
-
-              name = get_shortcut_name (internal_name);
-          
-              /* Build primary error message and insert the shortcut */
-              escaped_shortcut = g_markup_escape_text (property+1, -1);
-              primary_text = g_strdup_printf (_("%s shortcut conflict"), escaped_shortcut);
-              g_free (escaped_shortcut);
-          
-              /* Generate error description based on the type of the confilcting shortcut */
-              if (g_utf8_collate (type, "xfwm4") == 0)
-                {
-                  other_name = g_strdup (get_shortcut_name (action));
-                  secondary_text = g_strdup_printf (_("This shortcut is already being used by the window manager action <b>%s</b>. "
-                                                      "Which action do you want to use?"),
-                                                      other_name);
-                }
-              else
-                {
-                  other_name = g_markup_escape_text (action, -1);
-                  secondary_text = g_strdup_printf (_("The shortcut is already being used for the command <b>%s</b>. "
-                                                      "Which action do you want to use?"), 
-                                                    other_name);
-                }
-
-              option_accept = g_markup_printf_escaped (_("Use %s"), name);
-              option_reject = g_markup_printf_escaped (_("Keep %s"), other_name);
-          
-              /* Ask the user what to do */
-              response = xfce_message_dialog (NULL, _("Shortcut conflict"), GTK_STOCK_DIALOG_ERROR,
-                                              primary_text, secondary_text,
-                                              XFCE_CUSTOM_BUTTON, option_accept, GTK_RESPONSE_ACCEPT,
-                                              XFCE_CUSTOM_BUTTON, option_reject, GTK_RESPONSE_REJECT,
-                                              NULL);
-
-              shortcut_accepted = (response == GTK_RESPONSE_ACCEPT);
-
-              /* Free strings */
-              g_free (option_accept);
-              g_free (option_reject);
-              g_free (primary_text);
-              g_free (secondary_text);
-              g_free (other_name);
-            }
-        }
-    }
-  else
-    {
-      xfce_err (_("The shortcut '%s' is already being used for something else."), property+1);
-      shortcut_accepted = FALSE;
-    }
-
-  return shortcut_accepted;
-}
-
-
-
-static gboolean
-validate_shortcut (ShortcutDialog *dialog, const gchar *shortcut, ShortcutContext *context)
+validate_shortcut (FrapShortcutsDialog *dialog, const gchar *shortcut, ShortcutContext *context)
 {
   gboolean shortcut_accepted = TRUE;
   gchar *current_shortcut;
@@ -1199,7 +1122,8 @@ validate_shortcut (ShortcutDialog *dialog, const gchar *shortcut, ShortcutContex
 
       /* Let the user handle conflicts if there are any */
       if (G_UNLIKELY (xfconf_channel_has_property (context->channel, property)))
-        shortcut_accepted = request_shortcut_confirmation (context->channel, property, internal_name, FALSE);
+        shortcut_accepted = frap_shortcuts_conflict_dialog (context->channel, property, internal_name, 
+                                                            FRAP_SHORTCUTS_XFWM4, FALSE) == GTK_RESPONSE_ACCEPT;
 
       /* Free strings */
       g_free (internal_name);
@@ -1209,7 +1133,8 @@ validate_shortcut (ShortcutDialog *dialog, const gchar *shortcut, ShortcutContex
     {
       /* Let the user handle conflicts if there are any */
       if (G_UNLIKELY (xfconf_channel_has_property (context->channel, property)))
-        shortcut_accepted = request_shortcut_confirmation (context->channel, property, _("This action"), FALSE);
+        shortcut_accepted = frap_shortcuts_conflict_dialog (context->channel, property, NULL, 
+                                                            FRAP_SHORTCUTS_XFWM4, FALSE) == GTK_RESPONSE_ACCEPT;
     }
 
   /* Free strings */
@@ -1223,9 +1148,8 @@ validate_shortcut (ShortcutDialog *dialog, const gchar *shortcut, ShortcutContex
 static gboolean
 update_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, ShortcutContext *context)
 {
-  const gchar *type;
-  const gchar *action;
-  gboolean exit_loop = FALSE;
+  FrapShortcutsType type;
+  gchar *action;
   gchar *internal_name;
   gchar *shortcut;
 
@@ -1237,31 +1161,30 @@ update_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, Shor
         {
           if (G_LIKELY (context->value != NULL))
             {
-              if (G_LIKELY (read_shortcut_property (context->value, &type, &action)))
+              if (G_LIKELY (frap_shortcuts_parse_value (context->value, &type, &action)))
                 {
-                  if (G_UNLIKELY (g_utf8_collate (type, "xfwm4") == 0 && g_utf8_collate (action, internal_name) == 0))
+                  if (G_UNLIKELY (type == FRAP_SHORTCUTS_XFWM4 && g_utf8_collate (action, internal_name) == 0))
                     gtk_list_store_set (GTK_LIST_STORE (model), iter, SHORTCUTS_SHORTCUT_COLUMN, context->shortcut, -1);
                   else
                     gtk_list_store_set (GTK_LIST_STORE (model), iter, SHORTCUTS_SHORTCUT_COLUMN, NULL, -1);
+
+                  g_free (action);
                 }
             }
           else
             gtk_list_store_set (GTK_LIST_STORE (model), iter, SHORTCUTS_SHORTCUT_COLUMN, NULL, -1);
-    
-          exit_loop = TRUE;
         }
     }
   else
     {
       if (G_LIKELY (context->value != NULL))
         {
-          if (G_LIKELY (read_shortcut_property (context->value, &type, &action)))
+          if (G_LIKELY (frap_shortcuts_parse_value (context->value, &type, &action)))
             {
-              if (G_UNLIKELY (g_utf8_collate (type, "xfwm4") == 0 && g_utf8_collate (action, internal_name) == 0))
-                {
-                  gtk_list_store_set (GTK_LIST_STORE (model), iter, SHORTCUTS_SHORTCUT_COLUMN, context->shortcut, -1);
-                  exit_loop = TRUE;
-                }
+              if (G_UNLIKELY (type == FRAP_SHORTCUTS_XFWM4 && g_utf8_collate (action, internal_name) == 0))
+                gtk_list_store_set (GTK_LIST_STORE (model), iter, SHORTCUTS_SHORTCUT_COLUMN, context->shortcut, -1);
+
+              g_free (action);
             }
         }
     }
@@ -1270,7 +1193,7 @@ update_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, Shor
   g_free (shortcut);
   g_free (internal_name);
 
-  return exit_loop;
+  return FALSE;
 }
 
 
@@ -1299,8 +1222,6 @@ cb_xfwm4_shortcuts_row_activated (GtkWidget *treeview, GtkTreePath *path, GtkTre
   gchar *name;
   gchar *current_shortcut;
   gchar *internal_name;
-  gchar *old_property;
-  gchar *new_property;
   gint response;
 
   /* Get tree view model */
@@ -1322,30 +1243,23 @@ cb_xfwm4_shortcuts_row_activated (GtkWidget *treeview, GtkTreePath *path, GtkTre
       context.ignore_internal_conflicts = FALSE;
       
       /* Request a new shortcut from the user */
-      dialog = shortcut_dialog_new (name);
+      dialog = frap_shortcuts_dialog_new (FRAP_SHORTCUTS_XFWM4, name);
       g_signal_connect (dialog, "validate-shortcut", G_CALLBACK (validate_shortcut), &context);
-      response = shortcut_dialog_run (SHORTCUT_DIALOG (dialog), treeview);
+      response = frap_shortcuts_dialog_run (FRAP_SHORTCUTS_DIALOG (dialog));
 
       if (G_LIKELY (response == GTK_RESPONSE_OK))
         {
-          /* Build property name */
-          old_property = g_strdup_printf ("/%s", current_shortcut);
-
-          /* Remove old property shortcut from the settings */
-          xfconf_channel_remove_property (channel, old_property);
+          if (current_shortcut != NULL)
+            {
+              /* Remove old property shortcut from the settings */
+              frap_shortcuts_remove_shortcut (channel, current_shortcut);
+            }
 
           /* Get the shortcut entered by the user */
-          new_shortcut = shortcut_dialog_get_shortcut (SHORTCUT_DIALOG (dialog));
-
-          /* Build property name */
-          new_property = g_strdup_printf ("/%s", new_shortcut);
+          new_shortcut = frap_shortcuts_dialog_get_shortcut (FRAP_SHORTCUTS_DIALOG (dialog));
 
           /* Save the new shortcut */
-          xfconf_channel_set_array (channel, new_property, G_TYPE_STRING, "xfwm4", G_TYPE_STRING, internal_name, G_TYPE_INVALID);
-
-          /* Free strings */
-          g_free (new_property);
-          g_free (old_property);
+          frap_shortcuts_set_shortcut (channel, new_shortcut, internal_name, FRAP_SHORTCUTS_XFWM4);
         }
 
       /* Destroy shortcut dialog */
@@ -1356,41 +1270,6 @@ cb_xfwm4_shortcuts_row_activated (GtkWidget *treeview, GtkTreePath *path, GtkTre
       g_free (current_shortcut);
       g_free (internal_name);
     }
-}
-
-
-
-static gboolean 
-read_shortcut_property (const GValue *value, const gchar **type, const gchar **action)
-{
-  const GPtrArray *array;
-  const GValue *type_value;
-  const GValue *action_value;
-
-  /* Make sure we only load shortcuts from string arrays */
-  if (G_UNLIKELY (G_VALUE_TYPE (value) != dbus_g_type_get_collection ("GPtrArray", G_TYPE_VALUE)))
-    return FALSE;
-
-  /* Get the pointer array */
-  array = g_value_get_boxed (value);
-
-  /* Make sure the array has exactly two members */
-  if (G_UNLIKELY (array->len != 2))
-    return FALSE;
-
-  /* Get the array member values */
-  type_value = g_ptr_array_index (array, 0);
-  action_value = g_ptr_array_index (array, 1);
-
-  /* Make sure both are string values */
-  if (G_UNLIKELY (G_VALUE_TYPE (type_value) != G_TYPE_STRING || G_VALUE_TYPE (action_value) != G_TYPE_STRING))
-    return FALSE;
-
-  /* Read shortcut type and action */
-  *type = g_value_get_string (type_value);
-  *action = g_value_get_string (action_value);
-
-  return TRUE;
 }
 
 
@@ -1448,16 +1327,16 @@ load_shortcuts (GtkListStore *store, XfconfChannel *channel)
 static void 
 load_shortcut_property (const gchar *property, const GValue *value, ShortcutContext *context)
 {
+  FrapShortcutsType type;
   GtkTreeIter iter;
-  const gchar *type;
-  const gchar *action;
   const gchar *iter_str;
+  gchar *action;
 
   /* Read shortcut type and action */
-  if (G_LIKELY (read_shortcut_property (value, &type, &action)))
+  if (G_LIKELY (frap_shortcuts_parse_value (value, &type, &action)))
     {
       /* Only load shortcuts with type 'xfwm4' */
-      if (g_utf8_collate (type, "xfwm4") == 0)
+      if (type == FRAP_SHORTCUTS_XFWM4)
         {
           /* Search for the correct tree iter in the internal name to iter mapping */
           iter_str = g_hash_table_lookup (context->table, action);
@@ -1469,11 +1348,14 @@ load_shortcut_property (const gchar *property, const GValue *value, ShortcutCont
               gtk_list_store_set (context->store, &iter, SHORTCUTS_SHORTCUT_COLUMN, property+1, -1);
             }
         }
+
+      g_free (action);
     }
 }
 
 
 
+#if 0
 static const gchar *
 get_shortcut_name (const gchar *internal_name)
 {
@@ -1485,40 +1367,38 @@ get_shortcut_name (const gchar *internal_name)
 
   return NULL;
 }
+#endif
 
 
 
 static gboolean
 remove_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, XfconfChannel *channel)
 {
-  GValue value = { 0 };
-  const gchar *type;
-  const gchar *action;
+  FrapShortcutsType type;
+  gchar *action;
   gchar *shortcut;
   gchar *internal_name;
-  gchar *property;
 
   /* Get shortcut string from the list store */
   gtk_tree_model_get (model, iter,
                       SHORTCUTS_SHORTCUT_COLUMN, &shortcut, 
                       SHORTCUTS_INTERNAL_NAME_COLUMN, &internal_name, -1);
 
-  /* Build property name */
-  property = g_strdup_printf ("/%s", shortcut);
+  if (shortcut == NULL || g_utf8_strlen (shortcut, -1) == 0)
+    return FALSE;
 
   /* Remove property if it exists and the shortcut is really being used for the current feature */
-  if (G_LIKELY (xfconf_channel_get_property (channel, property, &value) && read_shortcut_property (&value, &type, &action)))
-    if (G_LIKELY (g_utf8_collate (type, "xfwm4") == 0 && g_utf8_collate (action, internal_name) == 0))
-      xfconf_channel_remove_property (channel, property);
+  if (G_LIKELY (frap_shortcuts_parse_shortcut (channel, shortcut, &type, &action)))
+    {
+      if (G_LIKELY (type == FRAP_SHORTCUTS_XFWM4 && g_utf8_collate (action, internal_name) == 0))
+        frap_shortcuts_remove_shortcut (channel, shortcut);
 
-  /* Free property value data */
-  if (G_IS_VALUE (&value))
-    g_value_unset (&value);
+      g_free (action);
+    }
 
   /* Free strings */
   g_free (internal_name);
   g_free (shortcut);
-  g_free (property);
 
   return FALSE;
 }
@@ -1539,26 +1419,33 @@ reset_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, Short
                       SHORTCUTS_INTERNAL_NAME_COLUMN, &internal_name, 
                       SHORTCUTS_DEFAULT_SHORTCUT_COLUMN, &default_shortcut, -1);
 
-  /* Build property name */
-  property = g_strdup_printf ("/%s", default_shortcut);
+  if (default_shortcut == NULL)
+    {
+      remove_shortcut (model, path, iter, context->channel);
+      return FALSE;
+    }
 
   /* Check whether the shortcut is already being used */
-  if (G_LIKELY (!xfconf_channel_has_property (context->channel, property)))
+  if (G_LIKELY (!frap_shortcuts_has_shortcut (context->channel, default_shortcut)))
     {
       /* Remove the current shortcut for this feature and replace it with the default */
       remove_shortcut (model, path, iter, context->channel);
-      xfconf_channel_set_array (context->channel, property, G_TYPE_STRING, "xfwm4", G_TYPE_STRING, internal_name, G_TYPE_INVALID);
+      frap_shortcuts_set_shortcut (context->channel, default_shortcut, internal_name, FRAP_SHORTCUTS_XFWM4);
     }
   else
     {
+      property = g_strdup_printf ("/%s", default_shortcut);
+
       /* Only reset the shortcut if its not used by something else or if the user wants to replace the existing binding */
-      if (request_shortcut_confirmation (context->channel, property, internal_name, context->ignore_internal_conflicts))
-        xfconf_channel_set_array (context->channel, property, G_TYPE_STRING, "xfwm4", G_TYPE_STRING, internal_name, G_TYPE_INVALID);
+      if (frap_shortcuts_conflict_dialog (context->channel, property, internal_name, FRAP_SHORTCUTS_XFWM4, 
+                                          context->ignore_internal_conflicts) == GTK_RESPONSE_ACCEPT)
+        frap_shortcuts_set_shortcut (context->channel, default_shortcut, internal_name, FRAP_SHORTCUTS_XFWM4);
+
+      g_free (property);
     }
 
   /* Free strings */
   g_free (name);
-  g_free (property);
 
   return FALSE;
 }
