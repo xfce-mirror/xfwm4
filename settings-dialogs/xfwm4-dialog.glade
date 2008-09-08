@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sat Sep  6 04:09:43 2008 -->
+<!--Generated with glade3 3.4.5 on Mon Sep  8 22:12:57 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="main-dialog">
@@ -385,6 +385,7 @@
             <child>
               <widget class="GtkFrame" id="frame9">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="border_width">12</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">GTK_SHADOW_NONE</property>
@@ -461,6 +462,7 @@
             <child>
               <widget class="GtkLabel" id="label2">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="label" translatable="yes">Ke_yboard</property>
                 <property name="use_underline">True</property>
               </widget>

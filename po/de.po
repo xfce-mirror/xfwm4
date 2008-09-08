@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-07 18:52+0200\n"
+"POT-Creation-Date: 2008-09-08 22:22+0200\n"
 "PO-Revision-Date: 2008-09-07 19:00+0200\n"
 "Last-Translator: Jannis Pohlmann <jannis@xfce.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -205,39 +205,39 @@ msgstr "Arbeitsflächeneinstellungen"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce4-Arbeitsflächeneinstellungen"
 
-#: ../settings-dialogs/frap-shortcuts.c:83
+#: ../settings-dialogs/frap-shortcuts.c:84
 #, c-format
 msgid ""
 "This shortcut is already being used by the window manager action <b>%s</b>. "
 "Which action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:84
-#: ../settings-dialogs/frap-shortcuts.c:87
-#: ../settings-dialogs/frap-shortcuts.c:90
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
+#: ../settings-dialogs/frap-shortcuts.c:94
 #, c-format
 msgid "Use %s"
 msgstr "Benutze %s"
 
-#: ../settings-dialogs/frap-shortcuts.c:84
-#: ../settings-dialogs/frap-shortcuts.c:87
-#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
 #, c-format
 msgid "Keep %s"
 msgstr "Behalte %s"
 
-#: ../settings-dialogs/frap-shortcuts.c:86
-#: ../settings-dialogs/frap-shortcuts.c:89
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
 #, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
 "do you want to use?"
 msgstr ""
-"Dieses Tastenkürzel wird bereits für den Befehl <b>%s</b> verwendet. "
-"Welche Aktion soll mit ihm zukünftig ausgeführt werden?"
+"Dieses Tastenkürzel wird bereits für den Befehl <b>%s</b> verwendet. Welche "
+"Aktion soll mit ihm zukünftig ausgeführt werden?"
 
-#: ../settings-dialogs/frap-shortcuts.c:92
+#: ../settings-dialogs/frap-shortcuts.c:93
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
 "action do you want to use?"
@@ -245,63 +245,66 @@ msgstr ""
 "Dieses Tastenkürzel wird bereits für eine <b>Fenstermanageraktion</b> "
 "verwendet. Welche Aktion soll mit ihm zukünftig ausgeführt werden?"
 
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:94
 msgid "Keep window manager action"
 msgstr "Behalte die Fenstermanageraktion"
 
-#: ../settings-dialogs/frap-shortcuts.c:248
+#: ../settings-dialogs/frap-shortcuts.c:249
 #, c-format
 msgid "%s shortcut conflict"
 msgstr "%s Tastenkürzelkonflikt"
 
-#: ../settings-dialogs/frap-shortcuts.c:256
+#: ../settings-dialogs/frap-shortcuts.c:257
 msgid "Use this action"
 msgstr "Benutze die aktuelle Aktion"
 
-#: ../settings-dialogs/frap-shortcuts.c:259
+#: ../settings-dialogs/frap-shortcuts.c:260
 msgid "Shortcut conflict"
 msgstr "Tastenkürzelkonflikt"
 
-#: ../settings-dialogs/frap-shortcuts.c:280
+#: ../settings-dialogs/frap-shortcuts.c:281
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
 msgstr "Das Tastenkürzel '%s' wird bereits für etwas anderes verwendet."
 
-#. Set dialog title
-#: ../settings-dialogs/frap-shortcuts-dialog.c:233
-msgid "Set shortcut"
+#: ../settings-dialogs/frap-shortcuts-dialog.c:236
+#, fuzzy
+msgid "Enter window manager action shortcut"
+msgstr "Behalte die Fenstermanageraktion"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:237
+#: ../settings-dialogs/frap-shortcuts-dialog.c:247
+#, fuzzy, c-format
+msgid "Action: %s"
+msgstr "Aktion"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:241
+msgid "Enter command shortcut"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:242
+#, fuzzy, c-format
+msgid "Command: %s"
+msgstr "Befehl"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:246
+#, fuzzy
+msgid "Enter shortcut"
 msgstr "Tastenkürzel definieren"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:253
-#, c-format
-msgid ""
-"Set shortcut for action\n"
-"<b>%s</b>"
-msgstr ""
-"Definiere Tastenkürzel für die Aktion\n"
-"<b>%s</b>"
+#: ../settings-dialogs/frap-shortcuts-dialog.c:277
+#, fuzzy
+msgid "Shortcut:"
+msgstr "Tastenkürzel"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:255
-#, c-format
-msgid ""
-"Set shortcut for command\n"
-"<b>%s</b>"
-msgstr ""
-"Definiere Tastenkürzel für den Befehl\n"
-"<b>%s</b>"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:257
-#, c-format
-msgid ""
-"Set shortcut for\n"
-"<b>%s</b>"
-msgstr ""
-"Definiere Tastenkürzel für\n"
-"<b>%s</b>"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:302
+#: ../settings-dialogs/frap-shortcuts-dialog.c:321
 msgid "Could not grab the keyboard."
 msgstr "Konnte die Tastatur nicht verwenden."
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:342
+#, c-format
+msgid "<span size='large'><b>%s</b></span>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:86
 #: ../settings-dialogs/xfwm4-settings.c:116
@@ -962,6 +965,27 @@ msgstr "Alle zu_rücksetzen"
 msgid "_Style"
 msgstr "Stil"
 
+#~ msgid ""
+#~ "Set shortcut for action\n"
+#~ "<b>%s</b>"
+#~ msgstr ""
+#~ "Definiere Tastenkürzel für die Aktion\n"
+#~ "<b>%s</b>"
+
+#~ msgid ""
+#~ "Set shortcut for command\n"
+#~ "<b>%s</b>"
+#~ msgstr ""
+#~ "Definiere Tastenkürzel für den Befehl\n"
+#~ "<b>%s</b>"
+
+#~ msgid ""
+#~ "Set shortcut for\n"
+#~ "<b>%s</b>"
+#~ msgstr ""
+#~ "Definiere Tastenkürzel für\n"
+#~ "<b>%s</b>"
+
 #~ msgid "Button"
 #~ msgstr "Knopf"
 
@@ -1084,9 +1108,6 @@ msgstr "Stil"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Textausrichtung in der Titelleiste:"
-
-#~ msgid "Command"
-#~ msgstr "Befehl"
 
 #~ msgid "Slow"
 #~ msgstr "Lang"

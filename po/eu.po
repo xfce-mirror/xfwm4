@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-07 18:52+0200\n"
+"POT-Creation-Date: 2008-09-08 22:22+0200\n"
 "PO-Revision-Date: 2008-08-28 12:35+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <debian-l10n-basque@lists.debian.org>\n"
@@ -204,94 +204,102 @@ msgstr "Idazmahai ezarpenak"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 idazmahai ezarpenak"
 
-#: ../settings-dialogs/frap-shortcuts.c:83
+#: ../settings-dialogs/frap-shortcuts.c:84
 #, c-format
 msgid ""
 "This shortcut is already being used by the window manager action <b>%s</b>. "
 "Which action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:84
-#: ../settings-dialogs/frap-shortcuts.c:87
-#: ../settings-dialogs/frap-shortcuts.c:90
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
+#: ../settings-dialogs/frap-shortcuts.c:94
 #, c-format
 msgid "Use %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:84
-#: ../settings-dialogs/frap-shortcuts.c:87
-#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
 #, c-format
 msgid "Keep %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:86
-#: ../settings-dialogs/frap-shortcuts.c:89
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
 #, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
 "do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:92
+#: ../settings-dialogs/frap-shortcuts.c:93
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
 "action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:94
 #, fuzzy
 msgid "Keep window manager action"
 msgstr "Leiho kudeatzaile ezarpen aurreratuak"
 
-#: ../settings-dialogs/frap-shortcuts.c:248
+#: ../settings-dialogs/frap-shortcuts.c:249
 #, c-format
 msgid "%s shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:256
+#: ../settings-dialogs/frap-shortcuts.c:257
 msgid "Use this action"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:259
+#: ../settings-dialogs/frap-shortcuts.c:260
 msgid "Shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:280
+#: ../settings-dialogs/frap-shortcuts.c:281
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
 msgstr ""
 
-#. Set dialog title
-#: ../settings-dialogs/frap-shortcuts-dialog.c:233
+#: ../settings-dialogs/frap-shortcuts-dialog.c:236
 #, fuzzy
-msgid "Set shortcut"
+msgid "Enter window manager action shortcut"
+msgstr "Leiho kudeatzaile ezarpen aurreratuak"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:237
+#: ../settings-dialogs/frap-shortcuts-dialog.c:247
+#, fuzzy, c-format
+msgid "Action: %s"
+msgstr "Ekintza"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:241
+msgid "Enter command shortcut"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:242
+#, c-format
+msgid "Command: %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:246
+#, fuzzy
+msgid "Enter shortcut"
 msgstr "Gehitu laster-tekla gaia"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:253
-#, c-format
-msgid ""
-"Set shortcut for action\n"
-"<b>%s</b>"
-msgstr ""
+#: ../settings-dialogs/frap-shortcuts-dialog.c:277
+#, fuzzy
+msgid "Shortcut:"
+msgstr "Gehitu laster-tekla gaia"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:255
-#, c-format
-msgid ""
-"Set shortcut for command\n"
-"<b>%s</b>"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:257
-#, c-format
-msgid ""
-"Set shortcut for\n"
-"<b>%s</b>"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:302
+#: ../settings-dialogs/frap-shortcuts-dialog.c:321
 msgid "Could not grab the keyboard."
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:342
+#, c-format
+msgid "<span size='large'><b>%s</b></span>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:86

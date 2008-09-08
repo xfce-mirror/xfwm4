@@ -226,64 +226,61 @@ frap_shortcuts_dialog_create_contents (FrapShortcutsDialog *dialog,
                                        const gchar         *action)
 {
   GtkWidget   *button;
-  GtkWidget   *table;
+  GtkWidget   *hbox;
   GtkWidget   *label;
   const gchar *title;
-  const gchar *label_text;
+  gchar       *subtitle;
 
   if (type == FRAP_SHORTCUTS_XFWM4)
     {
       title = _("Enter window manager action shortcut");
-      label_text = _("Action:");
+      subtitle = g_strdup_printf (_("Action: %s"), action);
     }
   else if (type == FRAP_SHORTCUTS_EXECUTE)
     {
       title = _("Enter command shortcut");
-      label_text = _("Command:");
+      subtitle = g_strdup_printf (_("Command: %s"), action);
     }
   else
     {
       title = _("Enter shortcut");
-      label_text = _("Action:");
+      subtitle = g_strdup_printf (_("Action: %s"), action);
     }
 
   /* Set dialog title */
   gtk_window_set_title (GTK_WINDOW (dialog), title);
   gtk_window_set_icon_name (GTK_WINDOW (dialog), "input-keyboard");
+  xfce_titled_dialog_set_subtitle (XFCE_TITLED_DIALOG (dialog), subtitle);
+  g_free (subtitle);
 
   /* Configure dialog */
   gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+
+  /* Create clear button for xfwm4 */
+  if (type == FRAP_SHORTCUTS_XFWM4)
+    {
+      button = gtk_button_new_from_stock (GTK_STOCK_CLEAR);
+      gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_REJECT);
+      gtk_widget_show (button);
+    }
 
   /* Create cancel button */
   button = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
   gtk_widget_show (button);
 
-  table = gtk_table_new (2, 2, FALSE);
-  gtk_container_set_border_width (GTK_CONTAINER (table), 6);
-  gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-  gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-  gtk_container_add (GTK_CONTAINER (GTK_DIALOG (dialog)->vbox), table);
-  gtk_widget_show (table);
-
-  label = gtk_label_new (label_text);
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (label);
-
-  label = gtk_label_new (action);
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 1, 2, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (label);
+  hbox = gtk_hbox_new (FALSE, 12);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 12);
+  gtk_container_add (GTK_CONTAINER (GTK_DIALOG (dialog)->vbox), hbox);
+  gtk_widget_show (hbox);
 
   label = gtk_label_new (_("Shortcut:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
   gtk_widget_show (label);
 
   dialog->shortcut_label = gtk_label_new (NULL);
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), dialog->shortcut_label, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (dialog->shortcut_label), 0.0, 0.5);
+  gtk_box_pack_start (GTK_BOX (hbox), dialog->shortcut_label, TRUE, TRUE, 0);
   gtk_widget_show (dialog->shortcut_label);
 
   /* Connect to key release signal for determining the new shortcut */
@@ -336,12 +333,13 @@ frap_shortcuts_dialog_key_pressed (FrapShortcutsDialog *dialog,
   gchar *text;
   gchar *shortcut;
 
-  /* Determine and remember the current shortcut */
   g_free (dialog->shortcut);
+
+  /* Determine and remember the current shortcut */
   dialog->shortcut = frap_shortcuts_get_accelerator_name (event->keyval, event->state);
 
   shortcut = g_markup_escape_text (dialog->shortcut, -1);
-  text = g_strdup_printf (_("<b>%s</b>"), shortcut);
+  text = g_strdup_printf (_("<span size='large'><b>%s</b></span>"), shortcut);
 
   gtk_label_set_markup (GTK_LABEL (dialog->shortcut_label), text);
 

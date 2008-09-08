@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-07 18:52+0200\n"
+"POT-Creation-Date: 2008-09-08 22:22+0200\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -215,30 +215,30 @@ msgstr "कार्यक्षेत्राचे समास"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "कार्यक्षेत्राचे समास"
 
-#: ../settings-dialogs/frap-shortcuts.c:83
+#: ../settings-dialogs/frap-shortcuts.c:84
 #, c-format
 msgid ""
 "This shortcut is already being used by the window manager action <b>%s</b>. "
 "Which action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:84
-#: ../settings-dialogs/frap-shortcuts.c:87
-#: ../settings-dialogs/frap-shortcuts.c:90
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
+#: ../settings-dialogs/frap-shortcuts.c:94
 #, c-format
 msgid "Use %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:84
-#: ../settings-dialogs/frap-shortcuts.c:87
-#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
 #, c-format
 msgid "Keep %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:86
-#: ../settings-dialogs/frap-shortcuts.c:89
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
 #, fuzzy, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
@@ -247,7 +247,7 @@ msgstr ""
 "शॉर्टकट आगोदरच वापरलेला आहे! \n"
 "तुम्हाला नक्की हा वापरायचा आहे का?"
 
-#: ../settings-dialogs/frap-shortcuts.c:92
+#: ../settings-dialogs/frap-shortcuts.c:93
 #, fuzzy
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
@@ -256,58 +256,66 @@ msgstr ""
 "शॉर्टकट आगोदरच वापरलेला आहे! \n"
 "तुम्हाला नक्की हा वापरायचा आहे का?"
 
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:94
 #, fuzzy
 msgid "Keep window manager action"
 msgstr "विण्डो व्यवस्थापक"
 
-#: ../settings-dialogs/frap-shortcuts.c:248
+#: ../settings-dialogs/frap-shortcuts.c:249
 #, c-format
 msgid "%s shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:256
+#: ../settings-dialogs/frap-shortcuts.c:257
 msgid "Use this action"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:259
+#: ../settings-dialogs/frap-shortcuts.c:260
 msgid "Shortcut conflict"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:280
+#: ../settings-dialogs/frap-shortcuts.c:281
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
 msgstr ""
 
-#. Set dialog title
-#: ../settings-dialogs/frap-shortcuts-dialog.c:233
+#: ../settings-dialogs/frap-shortcuts-dialog.c:236
 #, fuzzy
-msgid "Set shortcut"
+msgid "Enter window manager action shortcut"
+msgstr "विण्डो व्यवस्थापक"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:237
+#: ../settings-dialogs/frap-shortcuts-dialog.c:247
+#, fuzzy, c-format
+msgid "Action: %s"
+msgstr "क्रियाशील"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:241
+msgid "Enter command shortcut"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:242
+#, fuzzy, c-format
+msgid "Command: %s"
+msgstr "आज्ञा"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:246
+#, fuzzy
+msgid "Enter shortcut"
 msgstr "शॉर्टकट नाही"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:253
-#, c-format
-msgid ""
-"Set shortcut for action\n"
-"<b>%s</b>"
-msgstr ""
+#: ../settings-dialogs/frap-shortcuts-dialog.c:277
+#, fuzzy
+msgid "Shortcut:"
+msgstr "शॉर्टकट नाही"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:255
-#, c-format
-msgid ""
-"Set shortcut for command\n"
-"<b>%s</b>"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:257
-#, c-format
-msgid ""
-"Set shortcut for\n"
-"<b>%s</b>"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:302
+#: ../settings-dialogs/frap-shortcuts-dialog.c:321
 msgid "Could not grab the keyboard."
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:342
+#, c-format
+msgid "<span size='large'><b>%s</b></span>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:86
@@ -1029,9 +1037,6 @@ msgstr "शैली"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "शीर्षक दांडयामध्ये पाठ्य मांडणी:"
-
-#~ msgid "Command"
-#~ msgstr "आज्ञा"
 
 #~ msgid "Slow"
 #~ msgstr "हळू"
