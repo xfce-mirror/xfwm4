@@ -1,0 +1,1160 @@
+# Ukrainian translation of xfwm4
+# Copyright (C) 2002-2006 The Xfce development team
+# This file is distributed under the same license as the xfwm4 package.
+#
+# Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006.
+# Dmitry Nikitin <luckas_fb@mail.ru>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-09-08 22:22+0200\n"
+"PO-Revision-Date: 2007-06-19 16:13+0300\n"
+"Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
+"Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:86
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (на %s)"
+
+#: ../src/main.c:138
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: помилка сегментації"
+
+#: ../src/menu.c:43
+msgid "Ma_ximize"
+msgstr "М_аксимізувати"
+
+#: ../src/menu.c:44
+msgid "(Un)Ma_ximize"
+msgstr "(Де)М_аксимізувати"
+
+#: ../src/menu.c:45
+msgid "Mi_nimize"
+msgstr "М_інімізувати"
+
+#: ../src/menu.c:46
+msgid "Hide _all others"
+msgstr "Приховати _всі інші"
+
+#: ../src/menu.c:47
+msgid "S_how"
+msgstr "_Показати"
+
+#: ../src/menu.c:48
+msgid "_Move"
+msgstr "Пере_містити"
+
+#: ../src/menu.c:49
+msgid "_Resize"
+msgstr "Змінити р_озмір"
+
+#: ../src/menu.c:51
+msgid "_Shade"
+msgstr "З_горнути"
+
+#: ../src/menu.c:52
+msgid "(Un)_Shade"
+msgstr "(Де)_Розгорнути"
+
+#: ../src/menu.c:53
+msgid "S_tick"
+msgstr "При_ліпити"
+
+#: ../src/menu.c:54
+msgid "(Un)S_tick"
+msgstr "(Де)В_ідліпити"
+
+#: ../src/menu.c:55
+msgid "Context _help"
+msgstr "Контекстна _довідка"
+
+#: ../src/menu.c:57
+msgid "Above"
+msgstr "Вище"
+
+#: ../src/menu.c:58
+msgid "Normal"
+msgstr "Звичайно"
+
+#: ../src/menu.c:59
+msgid "Below"
+msgstr "Нижче"
+
+#: ../src/menu.c:60
+msgid "_Fullscreen"
+msgstr "_На весь екран"
+
+#: ../src/menu.c:61
+msgid "(Un)_Fullscreen"
+msgstr "_Не на весь екран"
+
+#: ../src/menu.c:62
+msgid "Send to..."
+msgstr "Перемістити на..."
+
+#: ../src/menu.c:64
+msgid "_Close"
+msgstr "_Закрити"
+
+#: ../src/menu.c:67
+msgid "Destroy"
+msgstr "Знищити"
+
+#: ../src/menu.c:70
+msgid "_Quit"
+msgstr "Ви_йти"
+
+#: ../src/menu.c:71
+msgid "Restart"
+msgstr "Перезапустити"
+
+#: ../src/menu.c:186
+#, c-format
+msgid "Workspace %i (%s)"
+msgstr "Робочу область %i (%s)"
+
+#: ../src/menu.c:190
+#, c-format
+msgid "Workspace %i"
+msgstr "Робочу область %i"
+
+#: ../src/menu.c:426
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
+
+#: ../src/settings.c:276
+#, c-format
+msgid "%s: Cannot allocate color %s\n"
+msgstr "%s: Неможливо визначити колір %s\n"
+
+#: ../src/settings.c:278
+#, c-format
+msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
+msgstr ""
+
+#: ../src/settings.c:285
+#, c-format
+msgid "%s: Cannot parse color %s\n"
+msgstr "%s: Неможливо проаналізувати колір %s\n"
+
+#: ../src/settings.c:287
+#, c-format
+msgid "%s: Cannot parse color: GValue for color is not of type STRING"
+msgstr ""
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#, fuzzy
+msgid "Configure window behavior"
+msgstr "Прозорість оформлення вікон"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "Window Manager"
+msgstr "Менеджер вікон"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid "Window Manager Settings"
+msgstr "Параметри менеджера вікон"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:4
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Параметри менеджера вікон Xfce 4"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+#, fuzzy
+msgid "Advanced window manager settings"
+msgstr "Параметри менеджера вікон Xfce 4"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+msgid "Window Manager Tweaks"
+msgstr "Менеджер вікон"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr "Менеджер вікон Xfce 4"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#, fuzzy
+msgid "Set number and names of workspaces"
+msgstr "Кількість робочих областей:"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Workspaces"
+msgstr "Робочі області"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid "Workspaces Settings"
+msgstr "Параметри робочих областей"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:4
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Параметри робочих областей Xfce 4"
+
+#: ../settings-dialogs/frap-shortcuts.c:84
+#, c-format
+msgid ""
+"This shortcut is already being used by the window manager action <b>%s</b>. "
+"Which action do you want to use?"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
+#: ../settings-dialogs/frap-shortcuts.c:94
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#, fuzzy, c-format
+msgid ""
+"The shortcut is already being used for the command <b>%s</b>. Which action "
+"do you want to use?"
+msgstr ""
+"Комбінація клавіш вже використовується !\n"
+"Дійсно бажаєте призначити цю комбінацію клавіш ?"
+
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, fuzzy
+msgid ""
+"The shortcut is already being used by a <b>window manager action</b>. Which "
+"action do you want to use?"
+msgstr ""
+"Комбінація клавіш вже використовується !\n"
+"Дійсно бажаєте призначити цю комбінацію клавіш ?"
+
+#: ../settings-dialogs/frap-shortcuts.c:94
+#, fuzzy
+msgid "Keep window manager action"
+msgstr "Параметри менеджера вікон Xfce 4"
+
+#: ../settings-dialogs/frap-shortcuts.c:249
+#, c-format
+msgid "%s shortcut conflict"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:257
+msgid "Use this action"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:260
+msgid "Shortcut conflict"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:281
+#, c-format
+msgid "The shortcut '%s' is already being used for something else."
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:236
+#, fuzzy
+msgid "Enter window manager action shortcut"
+msgstr "Параметри менеджера вікон Xfce 4"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:237
+#: ../settings-dialogs/frap-shortcuts-dialog.c:247
+#, fuzzy, c-format
+msgid "Action: %s"
+msgstr "Активне вікно"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:241
+msgid "Enter command shortcut"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:242
+#, fuzzy, c-format
+msgid "Command: %s"
+msgstr "Команда"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:246
+#, fuzzy
+msgid "Enter shortcut"
+msgstr "Немає комбінації клавіш"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:277
+#, fuzzy
+msgid "Shortcut:"
+msgstr "Немає комбінації клавіш"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:321
+msgid "Could not grab the keyboard."
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:342
+#, c-format
+msgid "<span size='large'><b>%s</b></span>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:116
+msgid "Shade window"
+msgstr "Згорнути вікно у заголовок"
+
+#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:113
+msgid "Hide window"
+msgstr "Приховати вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:88
+#: ../settings-dialogs/xfwm4-settings.c:112
+msgid "Maximize window"
+msgstr "Розгорнути вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:89
+#: ../settings-dialogs/xfwm4-settings.c:120
+msgid "Fill window"
+msgstr "Заповнити вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:90
+msgid "Nothing"
+msgstr "Нічого не робити"
+
+#: ../settings-dialogs/xfwm4-settings.c:95
+#: ../settings-dialogs/xfwm4-settings.c:105
+msgid "Left"
+msgstr "Зліва"
+
+#: ../settings-dialogs/xfwm4-settings.c:96
+msgid "Center"
+msgstr "По центру"
+
+#: ../settings-dialogs/xfwm4-settings.c:97
+#: ../settings-dialogs/xfwm4-settings.c:106
+msgid "Right"
+msgstr "Справа"
+
+#: ../settings-dialogs/xfwm4-settings.c:102
+msgid "Window operations menu"
+msgstr "Меню операцій з вікнами"
+
+#: ../settings-dialogs/xfwm4-settings.c:103
+msgid "Up"
+msgstr "Вгору"
+
+#: ../settings-dialogs/xfwm4-settings.c:104
+msgid "Down"
+msgstr "Вниз"
+
+#: ../settings-dialogs/xfwm4-settings.c:107
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: ../settings-dialogs/xfwm4-settings.c:108
+msgid "Cycle windows"
+msgstr "Перемикати вікна"
+
+#: ../settings-dialogs/xfwm4-settings.c:109
+msgid "Close window"
+msgstr "Закрити вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:110
+msgid "Maximize window horizontally"
+msgstr "Розгорнути вікно по горизонталі"
+
+#: ../settings-dialogs/xfwm4-settings.c:111
+msgid "Maximize window vertically"
+msgstr "Розгорнути вікно по вертикалі"
+
+#: ../settings-dialogs/xfwm4-settings.c:114
+msgid "Move window"
+msgstr "Перемістити вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:115
+msgid "Resize window"
+msgstr "Змінити розмір вікна"
+
+#: ../settings-dialogs/xfwm4-settings.c:117
+msgid "Stick window"
+msgstr "Приліпити вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:118
+msgid "Raise window"
+msgstr "Підняти вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:119
+msgid "Lower window"
+msgstr "Опустити вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:121
+msgid "Fill window horizontally"
+msgstr "Заповнити вікно по горизонталі"
+
+#: ../settings-dialogs/xfwm4-settings.c:122
+msgid "Fill window vertically"
+msgstr "Заповнити вікно по вертикалі"
+
+#: ../settings-dialogs/xfwm4-settings.c:123
+msgid "Toggle above"
+msgstr "Вікно згори"
+
+#: ../settings-dialogs/xfwm4-settings.c:124
+msgid "Toggle fullscreen"
+msgstr "Повноекранний режим"
+
+#: ../settings-dialogs/xfwm4-settings.c:125
+msgid "Move window to upper workspace"
+msgstr "Перемістити вікно на верхню робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:126
+msgid "Move window to bottom workspace"
+msgstr "Перемістити вікно на нижню робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:127
+msgid "Move window to left workspace"
+msgstr "Перемістити вікно на ліву робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:128
+msgid "Move window to right workspace"
+msgstr "Перемістити вікно на праву робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:129
+msgid "Move window to previous workspace"
+msgstr "Перемістити вікно на попередню робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:130
+msgid "Move window to next workspace"
+msgstr "Перемістити вікно на наступну робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:131
+msgid "Show desktop"
+msgstr "Показати стільницю"
+
+#: ../settings-dialogs/xfwm4-settings.c:132
+msgid "Upper workspace"
+msgstr "Верхня робоча область"
+
+#: ../settings-dialogs/xfwm4-settings.c:133
+msgid "Bottom workspace"
+msgstr "Нижня робоча область"
+
+#: ../settings-dialogs/xfwm4-settings.c:134
+msgid "Left workspace"
+msgstr "Ліва робоча область"
+
+#: ../settings-dialogs/xfwm4-settings.c:135
+msgid "Right workspace"
+msgstr "Права робоча область"
+
+#: ../settings-dialogs/xfwm4-settings.c:136
+msgid "Previous workspace"
+msgstr "Попередня робоча область"
+
+#: ../settings-dialogs/xfwm4-settings.c:137
+msgid "Next workspace"
+msgstr "Наступна робоча область"
+
+#: ../settings-dialogs/xfwm4-settings.c:138
+msgid "Add workspace"
+msgstr "Додати робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:139
+msgid "Add adjacent workspace"
+msgstr "Додати суміжну робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:140
+msgid "Delete last workspace"
+msgstr "Видалити останню робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:141
+msgid "Delete active workspace"
+msgstr "Видалити активну робочу область"
+
+#: ../settings-dialogs/xfwm4-settings.c:475
+msgid "Theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:489
+#, fuzzy
+msgid "Action"
+msgstr "Активне вікно"
+
+#: ../settings-dialogs/xfwm4-settings.c:491
+#, fuzzy
+msgid "Shortcut"
+msgstr "Немає комбінації клавіш"
+
+#: ../settings-dialogs/xfwm4-settings.c:551
+#: ../settings-dialogs/tweaks-settings.c:338
+#: ../settings-dialogs/workspace-settings.c:67
+msgid "Version information"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:570
+#: ../settings-dialogs/tweaks-settings.c:357
+#: ../settings-dialogs/workspace-settings.c:87
+msgid "."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:574
+#: ../settings-dialogs/tweaks-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:91
+#, c-format
+msgid ""
+"%s: %s\n"
+"Try %s --help to see a full list of available command line options.\n"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "<i>Large</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#, fuzzy
+msgid "<i>Opaque</i>"
+msgstr "Непрозорі"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "<i>Small</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+#, fuzzy
+msgid "<i>Transparent</i>"
+msgstr "Прозорі"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#, fuzzy
+msgid "Activate _focus stealing prevention"
+msgstr "Активувати запобігання викраденню фокусу вікна"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+#, fuzzy
+msgid "C_ompositor"
+msgstr "Укладач"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+#, fuzzy
+msgid "C_ycling"
+msgstr "Перемикання вікон"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#, fuzzy
+msgid "Cycle _through windows on all workspaces"
+msgstr "Перемикатися між вікнами, що розташовані на усіх робочих областях"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#, fuzzy
+msgid "Display _fullscreen overlay windows directly"
+msgstr "Напряму відображати розгорнуті вікна, що перекриваються"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#, fuzzy
+msgid "Do _nothing"
+msgstr "Нічого не робити"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#, fuzzy
+msgid "Hide _frame of windows when maximized"
+msgstr "Ховати рамку розгорнутого вікна"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#, fuzzy
+msgid "Honor _standard ICCCM focus hint"
+msgstr "Враховувати стандартні підказки фокусу ICCCM"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#, fuzzy
+msgid "Key used to _grab and move windows:"
+msgstr "Ключ, що використовується для захоплення та переміщення вікон"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#, fuzzy
+msgid "Opaci_ty of window decorations:"
+msgstr "Прозорість оформлення вікон"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#, fuzzy
+msgid "Opacity of _inactive windows:"
+msgstr "Прозорість неактивних вікон"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#, fuzzy
+msgid "Opacity of popup window_s:"
+msgstr "Прозорість спливаючих вікон"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#, fuzzy
+msgid "Opacity of windows during _move:"
+msgstr "Прозорість вікна при переміщенні"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#, fuzzy
+msgid "Opacity of windows during resi_ze:"
+msgstr "Прозорість вікон при зміні розміру"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Restore original _size of maximized windows when moving"
+msgstr "Відновлювати початковий розмір розгорнутого вікна при переміщенні"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#, fuzzy
+msgid "Show shadows under _dock windows"
+msgstr "Відображати тіні під контекстними вікнами"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#, fuzzy
+msgid "Show shadows under _regular windows"
+msgstr "Відображати тіні під звичайними вікнами"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#, fuzzy
+msgid "Show shadows under pop_up windows"
+msgstr "Відображати тіні під спливаючими вікнами"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#, fuzzy
+msgid "Switch to win_dow's workspace"
+msgstr "Перемкнути вікна робочої області"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#, fuzzy
+msgid "Use _edge resistance instead of window snapping"
+msgstr "Використовувати опір меж вікна замість прилипання"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+msgid "When a window raises itself:"
+msgstr "Коли вікно піднімається:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#, fuzzy
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr ""
+"Переходити на іншу робочу область в залежності від дійсного розташування "
+"стільниць"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#, fuzzy
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr ""
+"Переходити на іншу робочу область при досягненні першої чи останньої робочої "
+"області"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#, fuzzy
+msgid "_Accessibility"
+msgstr "Доступність"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "_Bring window on current workspace"
+msgstr "Перемістити вікно на поточну робочу область"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#, fuzzy
+msgid "_Enable display compositing"
+msgstr "Увімкнути ефекти дисплею"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#, fuzzy
+msgid "_Focus"
+msgstr "Фокус вікна"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#, fuzzy
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "Включаючи приховані (згорнуті в значок) вінка"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#, fuzzy
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr ""
+"Мінімальний розмір вікон, при якому буде увімкнено розумне розташування"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "_Mouse wheel over desktop switches workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#, fuzzy
+msgid "_Placement"
+msgstr "Розташування"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#, fuzzy
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "Піднімати вікна при натисканні будь-якої кнопки миші"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#, fuzzy
+msgid ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
+msgstr ""
+"Запам'ятовувати та повертатись до попереднього робочого місця при "
+"перемиканні комбінаціями клавіш"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#, fuzzy
+msgid ""
+"_Skip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr ""
+"Пропускати вікна, у яких встановлено властивість \"не відображати в "
+"перемикачі робочих областей\" або \"не відображати на панелі задач\""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#, fuzzy
+msgid "_Workspaces"
+msgstr "Робочі області"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+msgid "gtk-close"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "gtk-help"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#, fuzzy
+msgid "_Number of workspaces:"
+msgstr "Кількість робочих областей:"
+
+#: ../settings-dialogs/tweaks-settings.c:156
+msgid "Alt"
+msgstr ""
+
+#: ../settings-dialogs/tweaks-settings.c:158
+#, fuzzy
+msgid "Ctrl"
+msgstr "По центру"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
+msgid "\t"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+#, fuzzy
+msgid "<b>Box move and resize</b>"
+msgstr "Прозорість при переміщення та зміні розмірів"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#, fuzzy
+msgid "<b>Button layout</b>"
+msgstr "Розташування кнопок"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#, fuzzy
+msgid "<b>Double click _action</b>"
+msgstr "Дія при подвійному клацанні"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#, fuzzy
+msgid "<b>Focus model</b>"
+msgstr "Одержання фокусу"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#, fuzzy
+msgid "<b>New window focus</b>"
+msgstr "Активувати нові вікна"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+#, fuzzy
+msgid "<b>Raise on click</b>"
+msgstr "Підняти вікно при клацанні мишею"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+#, fuzzy
+msgid "<b>Raise on focus</b>"
+msgstr "Піднімання вікна при наведенні курсору"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#, fuzzy
+msgid "<b>Title _alignment</b>"
+msgstr "Вирівнювання тексту заголовку"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#, fuzzy
+msgid "<b>Title fon_t</b>"
+msgstr "Шрифт заголовка"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#, fuzzy
+msgid "<b>Window _shortcuts</b>"
+msgstr "Комбінації клавіш"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#, fuzzy
+msgid "<b>Windows snapping</b>"
+msgstr "Прилипання вікон"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+#, fuzzy
+msgid "<b>Wrap workspaces</b>"
+msgstr "Перемикання робочих областей"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "<i>Long</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "<i>Short</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<i>Wide</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "Active"
+msgstr "Активне вікно"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Додатково"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#, fuzzy
+msgid "Automatically _raise windows when they receive focus"
+msgstr "Автоматично піднімати вікна при одержанні фокусу"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#, fuzzy
+msgid "Automatically give focus to _newly created windows"
+msgstr "Автоматичне одержання фокусу новоствореними вікнами"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#, fuzzy
+msgid "Clic_k to focus"
+msgstr "Активація при клацанні"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#, fuzzy
+msgid "Click and drag the buttons to change the layout"
+msgstr "Клацніть та перетягніть кнопки, щоб змінити їх розташування"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "Close"
+msgstr "Закрити"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#, fuzzy
+msgid "Delay _before raising focused window:"
+msgstr "Затримка перед підніманням вікна з фокусом:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#, fuzzy
+msgid "Dis_tance:"
+msgstr "Відстань:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#, fuzzy
+msgid "Focus follows _mouse"
+msgstr "Активація при наведенні курсору"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "Hidden"
+msgstr "Прихована"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Hide"
+msgstr "Приховати"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#, fuzzy
+msgid "Hide content of windows when _moving"
+msgstr "Відображати вміст вікон при переміщенні"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#, fuzzy
+msgid "Hide content of windows when _resizing"
+msgstr "Відображати вміст вікон при зміні розміру"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#, fuzzy
+msgid "Ke_yboard"
+msgstr "Клавіатура"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "Maximize"
+msgstr "Розгорнути"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Menu"
+msgstr "Меню"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#, fuzzy
+msgid "Raise window when clicking _inside application window"
+msgstr "Піднімати вікно при клацанні всередині вікна програми"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+msgid "Shade"
+msgstr "Згорнути у заголовок"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#, fuzzy
+msgid "Snap windows to other _windows"
+msgstr "Прилипання вікна до інших вікон"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#, fuzzy
+msgid "Snap windows to screen _border"
+msgstr "Прилипання вікна до меж екрана"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Stick"
+msgstr "Приліпити"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#, fuzzy
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Дія, що виконується при подвійному клацанні на заголовку вікна:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+msgid "The window title, it cannot be removed"
+msgstr "Заголовок вікна неможливо видалити"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "Title"
+msgstr "Заголовок"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#, fuzzy
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr ""
+"Переходити на іншу робочу область при перетягуванні вікна за межі екрану"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#, fuzzy
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "Переходити на іншу робочу область при досягненні курсором межі екрану"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#, fuzzy
+msgid "_Delay before window receives focus:"
+msgstr "Затримка перед одержанням фокусу вікна"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#, fuzzy
+msgid "_Edge resistance:"
+msgstr "Відстань від краю :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "_Reset to defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#, fuzzy
+msgid "_Style"
+msgstr "Стиль"
+
+#, fuzzy
+#~ msgid "Button"
+#~ msgstr "Розташування кнопок"
+
+#~ msgid "A keybinding theme with the same name already exists"
+#~ msgstr "Схема комбінацій клавіш з такою назвою вже існує"
+
+#~ msgid "You have to provide a name for the keybinding theme"
+#~ msgstr "Необхідно вказати назву схеми комбінацій клавіш"
+
+#~ msgid "Do you really want to remove this keybinding theme ?"
+#~ msgstr "Ви дійсно бажаєте видалити цю схему комбінацій клавіш ?"
+
+#, fuzzy
+#~ msgid "Add Shortcut Theme"
+#~ msgstr "Комбінація клавіш"
+
+#, fuzzy
+#~ msgid "Type the name for the new shortcut theme:"
+#~ msgstr "Введіть назву теми:"
+
+#, fuzzy
+#~ msgid "gtk-cancel"
+#~ msgstr "Скасувати"
+
+#~ msgid "Workspace Margins"
+#~ msgstr "Поля робочої області"
+
+#~ msgid ""
+#~ "Margins are areas on the edges of the screen where no window will be "
+#~ "placed"
+#~ msgstr ""
+#~ "Поля - це області на краях екрану, у яких не розташовуватимуться вікна"
+
+#~ msgid "Left :"
+#~ msgstr "Зліва:"
+
+#~ msgid "Right :"
+#~ msgstr "Справа:"
+
+#~ msgid "Top :"
+#~ msgstr "Згори :"
+
+#~ msgid "Bottom :"
+#~ msgstr "Знизу:"
+
+#~ msgid "Button Label|Workspaces and Margins"
+#~ msgstr "Робочі області та поля"
+
+#~ msgid "Workspaces and Margins"
+#~ msgstr "Робочі області та поля"
+
+#~ msgid "Margins"
+#~ msgstr "Поля"
+
+#~ msgid "None"
+#~ msgstr "Немає"
+
+#~ msgid "Place window under the mouse"
+#~ msgstr "Помістити вікно під курсор миші"
+
+#~ msgid "Place window in the center"
+#~ msgstr "Помістити вікно в центр"
+
+#~ msgid "Switch workspaces using the mouse wheel over the desktop"
+#~ msgstr ""
+#~ "Перемикати робочі області використовуючи колесо миші над робочим столом"
+
+#~ msgid "Size|Small"
+#~ msgstr "Маленький"
+
+#~ msgid "Size|Large"
+#~ msgstr "Великий"
+
+#~ msgid "Default positionning of windows without smart placement:"
+#~ msgstr "Типове позиціонування вікон без кмітливого розташування:"
+
+#~ msgid "Button Label|Window Manager Tweaks"
+#~ msgstr "Менеджер вікон"
+
+#~ msgid "These settings cannot work with your current window manager (%s)"
+#~ msgstr ""
+#~ "Ці параметри не можуть працювати з вашим поточним менеджером вікон (%s)"
+
+#~ msgid "Change name"
+#~ msgstr "Змінити назву"
+
+#~ msgid "Workspace %d"
+#~ msgstr "Робоча область %d"
+
+#~ msgid "Name:"
+#~ msgstr "Назва:"
+
+#~ msgid "Click on a workspace name to edit it"
+#~ msgstr "Клацніть на назві робочої області, щоб редагувати її"
+
+#~ msgid "Workspace names"
+#~ msgstr "Назви робочих областей"
+
+#~ msgid "Font Selection Dialog"
+#~ msgstr "Діалог вибору шрифта"
+
+#~ msgid "Text alignment inside title bar :"
+#~ msgstr "Вирівнювання тексту всередині панелі заголовка:"
+
+#~ msgid "Slow"
+#~ msgstr "Повільно"
+
+#~ msgid "Fast"
+#~ msgstr "Швидко"
+
+#~ msgid "Distance|Small"
+#~ msgstr "Маленька"
+
+#~ msgid "Distance|Wide"
+#~ msgstr "Велика"
+
+#~ msgid "Resistance|Small"
+#~ msgstr "Мала"
+
+#~ msgid "Resistance|Wide"
+#~ msgstr "Велика"
+
+#~ msgid "Button Label|Window Manager"
+#~ msgstr "Менеджер вікон"
+
+#~ msgid "Add keybinding theme"
+#~ msgstr "Додати схему комбінацій клавіш"
+
+#~ msgid "Move window to workspace %d"
+#~ msgstr "Перемістити вікно на робочу область %d"
+
+#~ msgid "Cannot open the theme directory !"
+#~ msgstr "Не вдається відкрити теку з темою !"
+
+#~ msgid ""
+#~ "Cannot open %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Не вдається відкрити %s : \n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Cannot write in %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Помилка запису в %s : \n"
+#~ "%s"
+
+#~ msgid "Compose shortcut for :"
+#~ msgstr "Створення комбінації клавіш для :"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "Створити комбінацію клавіш"
+
+#~ msgid "Advanced Configuration"
+#~ msgstr "Додаткові параметри"
+
+#~ msgid "Move window down"
+#~ msgstr "Перемістити вікно вниз"
+
+#~ msgid "Move window left"
+#~ msgstr "Перемістити вікно ліворуч"
+
+#~ msgid "Move window right"
+#~ msgstr "Перемістити вікно праворуч"
+
+#~ msgid "Resize window down"
+#~ msgstr "Змінити розмір вікна знизу"
+
+#~ msgid "Resize window left"
+#~ msgstr "Змінити розмір вікна зліва"
+
+#~ msgid "Resize window right"
+#~ msgstr "Змінити розмір вікна справа"
+
+#~ msgid "Cancel move/resize window"
+#~ msgstr "Скасувати переміщення/зміну розміру вікна"
+
+#~ msgid "Un_maximize"
+#~ msgstr "М_інімізувати"
+
+#~ msgid "_Hide"
+#~ msgstr "При_ховати"
+
+#~ msgid "Always on top"
+#~ msgstr "Завжди зверху"

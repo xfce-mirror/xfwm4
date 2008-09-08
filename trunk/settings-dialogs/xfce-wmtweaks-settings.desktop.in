@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+_Name=Xfce 4 Window Manager Tweaks
+_GenericName=Window Manager Tweaks
+_Comment=Advanced window manager settings
+Exec=xfwm4-tweaks-settings
+Icon=wmtweaks
+Terminal=false
+Type=Application
+Categories=X-XFCE;Settings;DesktopSettings;X-XfceSettingsDialog;
+StartupNotify=true
+OnlyShowIn=XFCE;

@@ -1,0 +1,1350 @@
+/*      $Id$
+
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2, or (at your option)
+        any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, write to the Free Software
+        Foundation, Inc., Inc., 51 Franklin Street, Fifth Floor, Boston,
+        MA 02110-1301, USA.
+
+
+        oroborus - (c) 2001 Ken Lynch
+        xfwm4    - (c) 2002-2008 Olivier Fourdan
+ */
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
+#include <glib.h>
+#include <pango/pango.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
+#include <libxfce4util/libxfce4util.h>
+#include <xfconf/xfconf.h>
+
+#include "screen.h"
+#include "hints.h"
+#include "parserc.h"
+#include "client.h"
+#include "focus.h"
+#include "workspaces.h"
+#include "compositor.h"
+#include "ui_style.h"
+
+#define CHANNEL1                "xfwm4"
+#define CHANNEL2                "xfwm4_keys"
+
+#define DEFAULT_KEYTHEME        "Default"
+#define KEYTHEMERC              "keythemerc"
+#define THEMERC                 "themerc"
+
+#define XPM_COLOR_SYMBOL_SIZE   22
+#define XFWM4_SETTINGS_COUNT    66
+
+/* Forward static decls. */
+
+static void              update_grabs      (ScreenInfo *);
+static void              set_settings_margin  (ScreenInfo *,
+                                               int ,
+                                               int);
+static void              loadRcData           (ScreenInfo *,
+                                               Settings *);
+static void              loadTheme            (ScreenInfo *,
+                                               Settings *);
+static gboolean          loadKeyBindings      (ScreenInfo *,
+                                               Settings *);
+static void              unloadTheme          (ScreenInfo *);
+static void              unloadSettings       (ScreenInfo *);
+static gboolean          reloadScreenSettings (ScreenInfo *,
+                                               int);
+static void              cb_xfwm4_channel_property_changed (XfconfChannel *,
+                                                           const gchar *,
+                                                           const GValue *,
+                                                           ScreenInfo *);
+
+static void
+update_grabs (ScreenInfo *screen_info)
+{
+    clientUngrabMouseButtonForAll (screen_info);
+    if ((screen_info->params->raise_on_click) || (screen_info->params->click_to_focus))
+    {
+        clientGrabMouseButtonForAll (screen_info);
+    }
+}
+
+static void
+set_settings_margin (ScreenInfo *screen_info, int idx, int value)
+{
+    int val;
+
+    switch (idx)
+    {
+        case STRUTS_LEFT:
+        case STRUTS_RIGHT:
+            if (value < 0)
+            {
+                val = 0;
+            }
+            else if (value > screen_info->width / 4)
+            {
+                val = screen_info->width / 4;
+            }
+            else
+            {
+                val = value;
+            }
+            screen_info->params->xfwm_margins[idx] = val;
+            break;
+        case STRUTS_TOP:
+        case STRUTS_BOTTOM:
+            if (value < 0)
+            {
+                val = 0;
+            }
+            else if (value > screen_info->height / 4)
+            {
+                val = screen_info->height / 4;
+            }
+            else
+            {
+                val = value;
+            }
+            screen_info->params->xfwm_margins[idx] = val;
+            break;
+        default:
+            break;
+    }
+}
+
+static void
+set_easy_click (ScreenInfo *screen_info, const char *modifier)
+{
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (modifier != NULL);
+
+    if (!g_ascii_strcasecmp (modifier, "true"))
+    {
+        screen_info->params->easy_click = AltMask;
+    }
+    else
+    {
+        screen_info->params->easy_click = getModifierMap (modifier);
+    }
+}
+
+static void
+set_activate_action (ScreenInfo *screen_info, const char *value)
+{
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (value != NULL);
+
+    if (!g_ascii_strcasecmp ("bring", value))
+    {
+        screen_info->params->activate_action = ACTIVATE_ACTION_BRING;
+    }
+    else if (!g_ascii_strcasecmp ("switch", value))
+    {
+        screen_info->params->activate_action = ACTIVATE_ACTION_SWITCH;
+    }
+    else
+    {
+        screen_info->params->activate_action = ACTIVATE_ACTION_NONE;
+    }
+}
+
+static void
+set_placement_mode (ScreenInfo *screen_info, const char *value)
+{
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (value != NULL);
+
+    if (!g_ascii_strcasecmp ("mouse", value))
+    {
+        screen_info->params->placement_mode = PLACE_MOUSE;
+    }
+    else
+    {
+        screen_info->params->placement_mode = PLACE_CENTER;
+    }
+}
+
+static void
+loadRcData (ScreenInfo *screen_info, Settings *rc)
+{
+    gchar *homedir;
+    const gchar *keythemevalue;
+    gchar *keytheme;
+    gchar *system_keytheme;
+
+    if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
+    {
+        g_warning ("Missing defaults file");
+        exit (1);
+    }
+    keythemevalue = getStringValue ("keytheme", rc);
+    if (keythemevalue)
+    {
+        system_keytheme = getSystemThemeDir ();
+        parseRc (KEYTHEMERC, system_keytheme, rc);
+
+        keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
+        if (keytheme)
+        {
+            /* If there is a custom key theme, merge it with system defaults */
+            parseRc (KEYTHEMERC, keytheme, rc);
+            g_free (keytheme);
+        }
+        g_free (system_keytheme);
+    }
+    homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG,
+                                           "xfce4" G_DIR_SEPARATOR_S "xfwm4",
+                                           FALSE);
+    parseRc ("xfwm4rc", homedir, rc);
+    g_free (homedir);
+}
+
+static void
+loadXfconfData (ScreenInfo *screen_info, Settings *rc)
+{
+    gint i = XPM_COLOR_SYMBOL_SIZE;
+    for (; i < (XPM_COLOR_SYMBOL_SIZE + XFWM4_SETTINGS_COUNT); ++i)
+    {
+        gchar *property_name = g_strconcat("/general/", rc[i].option, NULL);
+        if(xfconf_channel_has_property(screen_info->xfwm4_channel, property_name))
+        {
+            if(rc[i].value)
+            {
+                g_value_unset(rc[i].value);
+                g_free(rc[i].value);
+            }
+            rc[i].value = g_new0(GValue, 1);
+
+            if(!xfconf_channel_get_property(screen_info->xfwm4_channel, property_name, rc[i].value))
+            {
+               /* g_debug("get prop failed"); */
+            }
+        }
+        else
+        {
+            if (rc[i].value)
+                xfconf_channel_set_property(screen_info->xfwm4_channel, property_name, rc[i].value);
+        }
+        g_free(property_name);
+    }
+
+}
+
+/* Simple helper function to avoid copy/paste of code */
+static void
+setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, const gchar * name, const gchar * state)
+{
+    if (color->allocated)
+    {
+        gdk_colormap_free_colors (gdk_screen_get_rgb_colormap (screen_info->gscr), &color->col, 1);
+        color->allocated = FALSE;
+    }
+
+    /** do a direct value_get_string */
+    if (gdk_color_parse (g_value_get_string(rc[id].value), &color->col))
+    {
+        if (gdk_colormap_alloc_color (gdk_screen_get_rgb_colormap (screen_info->gscr),
+                                      &color->col, FALSE, FALSE))
+        {
+            color->allocated = TRUE;
+            if (color->gc)
+            {
+                g_object_unref (G_OBJECT (color->gc));
+            }
+            color->gc = gdk_gc_new (myScreenGetGdkWindow (screen_info));
+            gdk_gc_copy (color->gc, getUIStyle_gc (myScreenGetGtkWidget (screen_info), name, state));
+            gdk_gc_set_foreground (color->gc, &color->col);
+        }
+        else
+        {
+            gdk_beep ();
+            if (G_VALUE_TYPE(rc[id].value) == G_TYPE_STRING)
+                g_message (_("%s: Cannot allocate color %s\n"), g_get_prgname (), g_value_get_string(rc[id].value));
+            else
+                g_critical (_("%s: Cannot allocate color: GValue for color is not of type STRING"), g_get_prgname ());
+        }
+    }
+    else
+    {
+        gdk_beep ();
+        if (G_VALUE_TYPE(rc[id].value) == G_TYPE_STRING)
+            g_message (_("%s: Cannot parse color %s\n"), g_get_prgname (), g_value_get_string(rc[id].value));
+        else
+            g_critical (_("%s: Cannot parse color: GValue for color is not of type STRING"), g_get_prgname ());
+    }
+}
+
+static int
+getTitleShadow (Settings *rc, const gchar * name)
+{
+    const gchar *val;
+
+    val = getStringValue (name, rc);
+    if (!g_ascii_strcasecmp ("true", val) || !g_ascii_strcasecmp ("under", val))
+    {
+        return TITLE_SHADOW_UNDER;
+    }
+    else if (!g_ascii_strcasecmp ("frame", val))
+    {
+        return TITLE_SHADOW_FRAME;
+    }
+    return TITLE_SHADOW_NONE;
+}
+
+static int
+getFontHeight (const PangoFontDescription *desc, PangoContext *context)
+{
+    PangoFontMetrics *metrics;
+    PangoLanguage *language;
+    int height;
+
+    g_return_val_if_fail (desc, 0);
+    g_return_val_if_fail (context, 0);
+
+    language = pango_context_get_language (context);
+    metrics = pango_context_get_metrics (context, desc, language);
+    height = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
+                           pango_font_metrics_get_descent (metrics));
+    pango_font_metrics_unref (metrics);
+
+    return height;
+}
+
+
+static void
+loadTheme (ScreenInfo *screen_info, Settings *rc)
+{
+    static const char *side_names[] = {
+        "left",
+        "right",
+        "bottom"
+    };
+
+    static const char *corner_names[] = {
+        "bottom-left",
+        "bottom-right",
+        "top-left",
+        "top-right"
+    };
+
+    static const char *button_names[] = {
+        "menu",
+        "stick",
+        "shade",
+        "hide",
+        "maximize",
+        "close"
+    };
+
+    static const char *button_state_names[] = {
+        "active",
+        "inactive",
+        "prelight",
+        "pressed",
+        "toggled-active",
+        "toggled-inactive",
+        "toggled-prelight",
+        "toggled-pressed"
+    };
+
+    gchar imagename[30];
+    GValue tmp_val = { 0, };
+    DisplayInfo *display_info;
+    xfwmColorSymbol colsym[ XPM_COLOR_SYMBOL_SIZE + 1 ];
+    GtkWidget *widget;
+    gchar *theme;
+    const gchar *font;
+    PangoFontDescription *desc;
+    PangoContext *context;
+    guint i, j;
+
+    widget = myScreenGetGtkWidget (screen_info);
+    display_info = screen_info->display_info;
+
+    desc = NULL;
+    context = NULL;
+
+    setStringValue (rc[0].option, getUIStyle (widget, "fg",    "selected"), rc);
+    setStringValue (rc[1].option, getUIStyle (widget, "fg",    "insensitive"), rc);
+    setStringValue (rc[2].option, getUIStyle (widget, "dark",  "selected"), rc);
+    setStringValue (rc[3].option, getUIStyle (widget, "dark",  "insensitive"), rc);
+    setStringValue (rc[4].option, getUIStyle (widget, "fg",    "normal"), rc);
+    setStringValue (rc[5].option, getUIStyle (widget, "fg",    "normal"), rc);
+    setStringValue (rc[6].option, getUIStyle (widget, "bg",    "selected"), rc);
+    setStringValue (rc[7].option, getUIStyle (widget, "light", "selected"), rc);
+    setStringValue (rc[8].option, getUIStyle (widget, "dark",  "selected"), rc);
+    setStringValue (rc[9].option, getUIStyle (widget, "mid",   "selected"), rc);
+    setStringValue (rc[10].option, getUIStyle (widget, "bg",    "normal"), rc);
+    setStringValue (rc[11].option, getUIStyle (widget, "light", "normal"), rc);
+    setStringValue (rc[12].option, getUIStyle (widget, "dark",  "normal"), rc);
+    setStringValue (rc[13].option, getUIStyle (widget, "mid",   "normal"), rc);
+    setStringValue (rc[14].option, getUIStyle (widget, "bg",    "insensitive"), rc);
+    setStringValue (rc[15].option, getUIStyle (widget, "light", "insensitive"), rc);
+    setStringValue (rc[16].option, getUIStyle (widget, "dark",  "insensitive"), rc);
+    setStringValue (rc[17].option, getUIStyle (widget, "mid",   "insensitive"), rc);
+    setStringValue (rc[18].option, getUIStyle (widget, "bg",    "normal"), rc);
+    setStringValue (rc[19].option, getUIStyle (widget, "light", "normal"), rc);
+    setStringValue (rc[20].option, getUIStyle (widget, "dark",  "normal"), rc);
+    setStringValue (rc[21].option, getUIStyle (widget, "mid",   "normal"), rc);
+
+
+    theme = getThemeDir (getStringValue ("theme", rc), THEMERC);
+    parseRc (THEMERC, theme, rc);
+
+    screen_info->params->shadow_delta_x =
+        - getIntValue ("shadow_delta_x", rc);
+    screen_info->params->shadow_delta_y =
+        - getIntValue ("shadow_delta_y", rc);
+    screen_info->params->shadow_delta_width =
+        - getIntValue ("shadow_delta_width", rc);
+    screen_info->params->shadow_delta_height =
+        - getIntValue ("shadow_delta_height", rc);
+
+    for (i = 0; i < XPM_COLOR_SYMBOL_SIZE; i++)
+    {
+        colsym[i].name = rc[i].option;
+        colsym[i].value = g_value_get_string(rc[i].value);
+    }
+    colsym[XPM_COLOR_SYMBOL_SIZE].name = NULL;
+    colsym[XPM_COLOR_SYMBOL_SIZE].value = NULL;
+
+    display_info->dbl_click_time = abs (getIntValue ("dbl_click_time", rc));
+    g_value_init (&tmp_val, G_TYPE_INT);
+    if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
+    {
+        display_info->dbl_click_time = abs (g_value_get_int (&tmp_val));
+    }
+
+    screen_info->font_height = 0;
+    font = getStringValue ("title_font", rc);
+    if (font && strlen (font))
+    {
+        desc = pango_font_description_from_string (font);
+        context = getUIPangoContext (widget);
+        if (desc)
+        {
+            gtk_widget_modify_font (widget, desc);
+            screen_info->font_height = getFontHeight (desc, context);
+            pango_font_description_free (desc);
+        }
+    }
+
+    setXfwmColor (screen_info, &screen_info->title_colors[ACTIVE], rc, 0, "fg", "selected");
+    setXfwmColor (screen_info, &screen_info->title_colors[INACTIVE], rc, 1, "fg", "insensitive");
+    setXfwmColor (screen_info, &screen_info->title_shadow_colors[ACTIVE], rc, 2, "dark", "selected");
+    setXfwmColor (screen_info, &screen_info->title_shadow_colors[INACTIVE], rc, 3, "dark", "insensitive");
+
+    if (screen_info->black_gc)
+    {
+        g_object_unref (G_OBJECT (screen_info->black_gc));
+    }
+    screen_info->black_gc = widget->style->black_gc;
+    g_object_ref (G_OBJECT (widget->style->black_gc));
+
+    if (screen_info->white_gc)
+    {
+        g_object_unref (G_OBJECT (screen_info->white_gc));
+    }
+    screen_info->white_gc = widget->style->white_gc;
+    g_object_ref (G_OBJECT (widget->style->white_gc));
+
+    for (i = 0; i < SIDE_TOP; i++) /* Keep SIDE_TOP for later */
+    {
+        g_snprintf(imagename, sizeof (imagename), "%s-active", side_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->sides[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "%s-inactive", side_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->sides[i][INACTIVE], theme, imagename, colsym);
+    }
+    for (i = 0; i < CORNER_COUNT; i++)
+    {
+        g_snprintf(imagename, sizeof (imagename), "%s-active", corner_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->corners[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "%s-inactive", corner_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->corners[i][INACTIVE], theme, imagename, colsym);
+    }
+    for (i = 0; i < BUTTON_COUNT; i++)
+    {
+        for (j = 0; j < STATE_COUNT; j++)
+        {
+            g_snprintf(imagename, sizeof (imagename), "%s-%s", button_names[i], button_state_names[j]);
+            xfwmPixmapLoad (screen_info, &screen_info->buttons[i][j], theme, imagename, colsym);
+        }
+    }
+    for (i = 0; i < TITLE_COUNT; i++)
+    {
+        g_snprintf(imagename, sizeof (imagename), "title-%d-active", i + 1);
+        xfwmPixmapLoad (screen_info, &screen_info->title[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "title-%d-inactive", i + 1);
+        xfwmPixmapLoad (screen_info, &screen_info->title[i][INACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "top-%d-active", i + 1);
+        xfwmPixmapLoad (screen_info, &screen_info->top[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "top-%d-inactive", i + 1);
+        xfwmPixmapLoad (screen_info, &screen_info->top[i][INACTIVE], theme, imagename, colsym);
+    }
+
+    screen_info->box_gc = createGC (screen_info, "#FFFFFF", GXxor, NULL, 2, TRUE);
+
+    if (!g_ascii_strcasecmp ("left", getStringValue ("title_alignment", rc)))
+    {
+        screen_info->params->title_alignment = ALIGN_LEFT;
+    }
+    else if (!g_ascii_strcasecmp ("right", getStringValue ("title_alignment", rc)))
+    {
+        screen_info->params->title_alignment = ALIGN_RIGHT;
+    }
+    else
+    {
+        screen_info->params->title_alignment = ALIGN_CENTER;
+    }
+
+    screen_info->params->full_width_title =
+        getBoolValue ("full_width_title", rc);
+    screen_info->params->title_shadow[ACTIVE] = getTitleShadow (rc, "title_shadow_active");
+    screen_info->params->title_shadow[INACTIVE] = getTitleShadow (rc, "title_shadow_inactive");
+
+    strncpy (screen_info->params->button_layout, getStringValue ("button_layout", rc), BUTTON_STRING_COUNT);
+    screen_info->params->button_spacing = getIntValue ("button_spacing", rc);
+    screen_info->params->button_offset = getIntValue ("button_offset", rc);
+    screen_info->params->maximized_offset = getIntValue ("maximized_offset", rc);
+    screen_info->params->title_vertical_offset_active =
+        getIntValue ("title_vertical_offset_active", rc);
+    screen_info->params->title_vertical_offset_inactive =
+        getIntValue ("title_vertical_offset_inactive", rc);
+    screen_info->params->title_horizontal_offset =
+        getIntValue ("title_horizontal_offset", rc);
+
+    g_free (theme);
+}
+
+static gboolean
+loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
+{
+    gchar keyname[30];
+    Display *dpy;
+    gchar *keytheme;
+    const gchar *keythemevalue;
+    guint i;
+
+    dpy = myScreenGetXDisplay (screen_info);
+    /*
+       Load defaults keytheme so that even if there are
+       missing shortcuts in an older user defined key theme
+       the missing keys will be taken from the default
+     */
+    keytheme = getThemeDir (DEFAULT_KEYTHEME, KEYTHEMERC);
+    parseRc (KEYTHEMERC, keytheme, rc);
+    g_free (keytheme);
+
+    keythemevalue = getStringValue ("keytheme", rc);
+    if (keythemevalue)
+    {
+        keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
+        if (!parseRc (KEYTHEMERC, keytheme, rc))
+        {
+            g_warning ("Specified key theme \"%s\" missing, using default", keythemevalue);
+        }
+        g_free (keytheme);
+
+        if (!checkRc (rc))
+        {
+            g_warning ("Missing values in defaults file");
+            return FALSE;
+        }
+    }
+
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CANCEL], getStringValue ("cancel_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN], getStringValue ("down_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT], getStringValue ("left_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT], getStringValue ("right_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_UP], getStringValue ("up_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], getStringValue ("add_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_ADJACENT_WORKSPACE], getStringValue ("add_adjacent_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CLOSE_WINDOW], getStringValue ("close_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], getStringValue ("cycle_windows_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], getStringValue ("del_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_ACTIVE_WORKSPACE], getStringValue ("del_active_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], getStringValue ("down_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_HORIZ], getStringValue ("fill_horiz_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_VERT], getStringValue ("fill_vert_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_WINDOW], getStringValue ("fill_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_HIDE_WINDOW], getStringValue ("hide_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], getStringValue ("left_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getStringValue ("lower_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE], getStringValue ("move_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], getStringValue ("maximize_horiz_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_VERT], getStringValue ("maximize_vert_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], getStringValue ("maximize_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getStringValue ("move_window_down_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], getStringValue ("move_window_left_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_NEXT_WORKSPACE], getStringValue ("move_window_next_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_PREV_WORKSPACE], getStringValue ("move_window_prev_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getStringValue ("move_window_right_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], getStringValue ("move_window_up_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], getStringValue ("next_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_POPUP_MENU], getStringValue ("popup_menu_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], getStringValue ("prev_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getStringValue ("raise_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE], getStringValue ("resize_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], getStringValue ("right_workspace_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_SHADE_WINDOW], getStringValue ("shade_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], getStringValue("show_desktop_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_STICK_WINDOW], getStringValue ("stick_window_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_ABOVE], getStringValue ("above_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getStringValue ("fullscreen_key", rc));
+    parseKeyString (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], getStringValue ("up_workspace_key", rc));
+
+    for (i = 0; i < 12; i++)
+    {
+        g_snprintf(keyname, sizeof (keyname), "move_window_workspace_%d_key", i + 1);
+        parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_1 + i], getStringValue (keyname, rc));
+
+        g_snprintf(keyname, sizeof (keyname), "workspace_%d_key", i + 1);
+        parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_1 + i], getStringValue (keyname, rc));
+    }
+
+    myScreenUngrabKeys (screen_info);
+    myScreenGrabKeys (screen_info);
+
+    return TRUE;
+}
+
+gboolean
+loadSettings (ScreenInfo *screen_info)
+{
+    const gchar *value;
+    Settings rc[] = {
+        /* Do not change the order of the following parameters */
+        {"active_text_color", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_text_color", NULL, G_TYPE_STRING, FALSE},
+        {"active_text_shadow_color", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_text_shadow_color", NULL, G_TYPE_STRING, FALSE},
+        {"active_border_color", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_border_color", NULL, G_TYPE_STRING, FALSE},
+        {"active_color_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_hilight_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_shadow_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_mid_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_color_2", NULL, G_TYPE_STRING, FALSE},
+        {"active_hilight_2", NULL, G_TYPE_STRING, FALSE},
+        {"active_shadow_2", NULL, G_TYPE_STRING, FALSE},
+        {"active_mid_2", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_color_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_hilight_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_shadow_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_mid_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_color_2", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_hilight_2", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_shadow_2", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_mid_2", NULL, G_TYPE_STRING, FALSE},
+        /* You can change the order of the following parameters */
+        {"activate_action", NULL, G_TYPE_STRING, TRUE},
+        {"borderless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"box_move", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"box_resize", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"button_layout", NULL, G_TYPE_STRING, TRUE},
+        {"button_offset", NULL, G_TYPE_INT, TRUE},
+        {"button_spacing", NULL, G_TYPE_INT, TRUE},
+        {"click_to_focus", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"focus_delay", NULL, G_TYPE_INT, TRUE},
+        {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"dbl_click_time", NULL, G_TYPE_INT, TRUE},
+        {"double_click_action", NULL, G_TYPE_STRING, TRUE},
+        {"easy_click", NULL, G_TYPE_STRING, TRUE},
+        {"focus_hint", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"focus_new", NULL, G_TYPE_BOOLEAN,TRUE},
+        {"frame_opacity", NULL, G_TYPE_INT, TRUE},
+        {"full_width_title", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"inactive_opacity", NULL, G_TYPE_INT, TRUE},
+        {"keytheme", NULL, G_TYPE_STRING, TRUE},
+        {"margin_bottom", NULL, G_TYPE_INT, FALSE},
+        {"margin_left", NULL, G_TYPE_INT, FALSE},
+        {"margin_right", NULL, G_TYPE_INT, FALSE},
+        {"margin_top", NULL, G_TYPE_INT, FALSE},
+        {"maximized_offset", NULL, G_TYPE_INT, TRUE},
+        {"move_opacity", NULL, G_TYPE_INT, TRUE},
+        {"placement_ratio", NULL, G_TYPE_INT, TRUE},
+        {"placement_mode", NULL, G_TYPE_STRING, TRUE},
+        {"popup_opacity", NULL, G_TYPE_INT, TRUE},
+        {"prevent_focus_stealing", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"raise_delay", NULL, G_TYPE_INT, TRUE},
+        {"raise_on_click", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"raise_on_focus", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"raise_with_any_button", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"resize_opacity", NULL, G_TYPE_INT, TRUE},
+        {"restore_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"scroll_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"shadow_delta_height", NULL, G_TYPE_INT, TRUE},
+        {"shadow_delta_width", NULL, G_TYPE_INT, TRUE},
+        {"shadow_delta_x", NULL, G_TYPE_INT, TRUE},
+        {"shadow_delta_y", NULL, G_TYPE_INT, TRUE},
+        {"show_app_icon", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"show_dock_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"show_frame_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"show_popup_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_resist", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_to_border", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_to_windows", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_width", NULL, G_TYPE_INT, TRUE},
+        {"theme", NULL, G_TYPE_STRING, TRUE},
+        {"title_alignment", NULL, G_TYPE_STRING, TRUE},
+        {"title_font", NULL, G_TYPE_STRING, FALSE},
+        {"title_horizontal_offset", NULL, G_TYPE_INT, TRUE},
+        {"title_shadow_active", NULL, G_TYPE_STRING, TRUE},
+        {"title_shadow_inactive", NULL, G_TYPE_STRING, TRUE},
+        {"title_vertical_offset_active", NULL, G_TYPE_INT, TRUE},
+        {"title_vertical_offset_inactive", NULL, G_TYPE_INT, TRUE},
+        {"toggle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"unredirect_overlays", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"use_compositing", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"workspace_count", NULL, G_TYPE_INT, TRUE},
+        {"wrap_cycle", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"wrap_layout", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"wrap_resistance", NULL, G_TYPE_INT, TRUE},
+        {"wrap_windows", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"wrap_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        /* Keys */
+        {"above_key", NULL, G_TYPE_STRING, TRUE},
+        {"add_adjacent_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"add_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"cancel_key", NULL, G_TYPE_STRING, TRUE},
+        {"close_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"cycle_windows_key", NULL, G_TYPE_STRING, TRUE},
+        {"del_active_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"del_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"down_key", NULL, G_TYPE_STRING, TRUE},
+        {"down_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"fill_horiz_key", NULL, G_TYPE_STRING, TRUE},
+        {"fill_vert_key", NULL, G_TYPE_STRING, TRUE},
+        {"fill_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"fullscreen_key", NULL, G_TYPE_STRING, TRUE},
+        {"hide_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"left_key", NULL, G_TYPE_STRING, TRUE},
+        {"left_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"lower_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"maximize_horiz_key", NULL, G_TYPE_STRING, TRUE},
+        {"maximize_vert_key", NULL, G_TYPE_STRING, TRUE},
+        {"maximize_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_down_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_left_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_next_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_prev_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_right_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_up_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_1_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_2_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_3_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_4_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_5_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_6_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_7_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_8_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_9_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_10_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_11_key", NULL, G_TYPE_STRING, TRUE},
+        {"move_window_workspace_12_key", NULL, G_TYPE_STRING, TRUE},
+        {"next_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"popup_menu_key", NULL, G_TYPE_STRING, TRUE},
+        {"prev_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"raise_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"resize_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"right_key", NULL, G_TYPE_STRING, TRUE},
+        {"right_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"shade_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"show_desktop_key", NULL, G_TYPE_STRING, FALSE},
+        {"stick_window_key", NULL, G_TYPE_STRING, TRUE},
+        {"up_key", NULL, G_TYPE_STRING, TRUE},
+        {"up_workspace_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_1_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_2_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_3_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_4_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_5_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_6_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_7_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_8_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_9_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_10_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_11_key", NULL, G_TYPE_STRING, TRUE},
+        {"workspace_12_key", NULL, G_TYPE_STRING, TRUE},
+        {NULL, NULL, G_TYPE_INVALID, FALSE}
+    };
+
+    TRACE ("entering loadSettings");
+
+    loadRcData (screen_info, rc);
+    loadRcData (screen_info, rc);
+    loadXfconfData (screen_info, rc);
+    loadTheme (screen_info, rc);
+    update_grabs (screen_info);
+
+    if (!loadKeyBindings (screen_info, rc))
+    {
+        freeRc (rc);
+        return FALSE;
+    }
+
+    screen_info->params->borderless_maximize =
+        getBoolValue ("borderless_maximize", rc);
+    screen_info->params->box_resize =
+        getBoolValue ("box_resize", rc);
+    screen_info->params->box_move =
+        getBoolValue ("box_move", rc);
+    screen_info->params->click_to_focus =
+        getBoolValue ("click_to_focus", rc);
+    screen_info->params->cycle_minimum =
+        getBoolValue ("cycle_minimum", rc);
+    screen_info->params->cycle_hidden =
+        getBoolValue ("cycle_hidden", rc);
+    screen_info->params->cycle_workspaces =
+        getBoolValue ("cycle_workspaces", rc);
+    screen_info->params->focus_hint =
+        getBoolValue ("focus_hint", rc);
+    screen_info->params->focus_new =
+        getBoolValue ("focus_new", rc);
+    screen_info->params->raise_on_focus =
+        getBoolValue ("raise_on_focus", rc);
+    screen_info->params->prevent_focus_stealing =
+        getBoolValue ("prevent_focus_stealing", rc);
+    screen_info->params->raise_delay =
+        getIntValue ("raise_delay", rc);
+    screen_info->params->focus_delay =
+        getIntValue ("focus_delay", rc);
+    screen_info->params->raise_on_click =
+        getBoolValue ("raise_on_click", rc);
+    screen_info->params->raise_with_any_button =
+        getBoolValue ("raise_with_any_button", rc);
+    screen_info->params->restore_on_move =
+        getBoolValue ("restore_on_move", rc);
+    screen_info->params->frame_opacity =
+        getIntValue ("frame_opacity", rc);
+    screen_info->params->inactive_opacity =
+        getIntValue ("inactive_opacity", rc);
+    screen_info->params->move_opacity =
+        getIntValue ("move_opacity", rc);
+    screen_info->params->resize_opacity =
+        getIntValue ("resize_opacity", rc);
+    screen_info->params->popup_opacity =
+        getIntValue ("popup_opacity", rc);
+    screen_info->params->placement_ratio =
+        getIntValue ("placement_ratio", rc);
+    screen_info->params->show_app_icon =
+        getBoolValue ("show_app_icon", rc);
+    screen_info->params->show_dock_shadow =
+        getBoolValue ("show_dock_shadow", rc);
+    screen_info->params->show_frame_shadow =
+        getBoolValue ("show_frame_shadow", rc);
+    screen_info->params->show_popup_shadow =
+        getBoolValue ("show_popup_shadow", rc);
+    screen_info->params->snap_to_border =
+        getBoolValue ("snap_to_border", rc);
+    screen_info->params->snap_to_windows =
+        getBoolValue ("snap_to_windows", rc);
+    screen_info->params->snap_resist =
+        getBoolValue ("snap_resist", rc);
+    screen_info->params->snap_width =
+        getIntValue ("snap_width", rc);
+
+    set_settings_margin (screen_info, STRUTS_LEFT,   getIntValue ("margin_left", rc));
+    set_settings_margin (screen_info, STRUTS_RIGHT,  getIntValue ("margin_right", rc));
+    set_settings_margin (screen_info, STRUTS_BOTTOM, getIntValue ("margin_bottom", rc));
+    set_settings_margin (screen_info, STRUTS_TOP,    getIntValue ("margin_top", rc));
+
+    set_easy_click (screen_info, getStringValue ("easy_click", rc));
+
+    value = getStringValue ("placement_mode", rc);
+    set_placement_mode (screen_info, value);
+
+    value = getStringValue ("activate_action", rc);
+    set_activate_action (screen_info, value);
+
+    value = getStringValue ("double_click_action", rc);
+    if (!g_ascii_strcasecmp ("shade", value))
+    {
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_SHADE;
+    }
+    else if (!g_ascii_strcasecmp ("hide", value))
+    {
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_HIDE;
+    }
+    else if (!g_ascii_strcasecmp ("maximize", value))
+    {
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_MAXIMIZE;
+    }
+    else if (!g_ascii_strcasecmp ("fill", value))
+    {
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_FILL;
+    }
+    else
+    {
+        screen_info->params->double_click_action = DBL_CLICK_ACTION_NONE;
+    }
+
+    if (screen_info->workspace_count < 0)
+    {
+        gint workspace_count;
+        workspace_count = getIntValue ("workspace_count", rc);
+        if (workspace_count < 0)
+        {
+            workspace_count = 0;
+        }
+        workspaceSetCount (screen_info, workspace_count);
+    }
+
+    screen_info->params->toggle_workspaces =
+        getBoolValue ("toggle_workspaces", rc);
+    screen_info->params->unredirect_overlays =
+        getBoolValue ("unredirect_overlays", rc);
+    screen_info->params->use_compositing =
+        getBoolValue ("use_compositing", rc);
+    screen_info->params->wrap_workspaces =
+        getBoolValue ("wrap_workspaces", rc);
+    screen_info->params->wrap_layout =
+        getBoolValue ("wrap_layout", rc);
+    screen_info->params->wrap_windows =
+        getBoolValue ("wrap_windows", rc);
+    screen_info->params->wrap_cycle =
+        getBoolValue ("wrap_cycle", rc);
+    screen_info->params->scroll_workspaces =
+        getBoolValue ("scroll_workspaces", rc);
+    screen_info->params->wrap_resistance =
+        getIntValue ("wrap_resistance", rc);
+
+    freeRc (rc);
+    return TRUE;
+}
+
+static void
+unloadTheme (ScreenInfo *screen_info)
+{
+    int i, j;
+
+    TRACE ("entering unloadTheme");
+
+    for (i = 0; i < SIDE_COUNT; i++)
+    {
+        xfwmPixmapFree (&screen_info->sides[i][ACTIVE]);
+        xfwmPixmapFree (&screen_info->sides[i][INACTIVE]);
+    }
+    for (i = 0; i < CORNER_COUNT; i++)
+    {
+        xfwmPixmapFree (&screen_info->corners[i][ACTIVE]);
+        xfwmPixmapFree (&screen_info->corners[i][INACTIVE]);
+    }
+    for (i = 0; i < BUTTON_COUNT; i++)
+    {
+        for (j = 0; j < STATE_COUNT; j++)
+        {
+            xfwmPixmapFree (&screen_info->buttons[i][j]);
+        }
+    }
+    for (i = 0; i < TITLE_COUNT; i++)
+    {
+        xfwmPixmapFree (&screen_info->title[i][ACTIVE]);
+        xfwmPixmapFree (&screen_info->title[i][INACTIVE]);
+        xfwmPixmapFree (&screen_info->top[i][ACTIVE]);
+        xfwmPixmapFree (&screen_info->top[i][INACTIVE]);
+    }
+    if (screen_info->box_gc != None)
+    {
+        XFreeGC (myScreenGetXDisplay (screen_info), screen_info->box_gc);
+        screen_info->box_gc = None;
+    }
+}
+
+static void
+unloadSettings (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info);
+
+    TRACE ("entering unloadSettings");
+
+    unloadTheme (screen_info);
+}
+
+static gboolean
+reloadScreenSettings (ScreenInfo *screen_info, int mask)
+{
+    g_return_val_if_fail (screen_info, FALSE);
+
+    unloadTheme (screen_info);
+    if (!loadSettings (screen_info))
+    {
+        return FALSE;
+    }
+    if (mask)
+    {
+        clientUpdateAllFrames (screen_info, mask);
+        if (mask & UPDATE_FRAME)
+        {
+            compositorRebuildScreen (screen_info);
+        }
+    }
+
+    return TRUE;
+}
+
+gboolean
+reloadSettings (DisplayInfo *display_info, int mask)
+{
+    GSList *screens;
+
+    g_return_val_if_fail (display_info, FALSE);
+
+    TRACE ("entering reloadSettings");
+
+    /* Refresh all screens, not just one */
+    for (screens = display_info->screens; screens; screens = g_slist_next (screens))
+    {
+        ScreenInfo *screen_info = (ScreenInfo *) screens->data;
+        if (!reloadScreenSettings (screen_info, mask))
+        {
+             return FALSE;
+        }
+    }
+
+    return TRUE;
+}
+
+gboolean
+initSettings (ScreenInfo *screen_info)
+{
+    DisplayInfo *display_info;
+    char **names;
+    long val;
+    int i;
+
+    g_return_val_if_fail (screen_info, FALSE);
+
+    TRACE ("entering initSettings");
+
+    if (!xfconf_init (NULL))
+    {
+        g_critical ("Xfconf could not be initialized");
+        return FALSE;
+    }
+
+
+    display_info = screen_info->display_info;
+    names = NULL;
+    val = 0;
+    i = 0;
+
+    screen_info->xfwm4_channel = xfconf_channel_new(CHANNEL1);
+    screen_info->keys_channel = xfconf_channel_new(CHANNEL2);
+
+    g_signal_connect (G_OBJECT(screen_info->xfwm4_channel), "property-changed", (GCallback)cb_xfwm4_channel_property_changed, screen_info);
+
+
+    if (!loadSettings (screen_info))
+    {
+        return FALSE;
+    }
+    if (getHint (display_info, screen_info->xroot, NET_NUMBER_OF_DESKTOPS, &val))
+    {
+        workspaceSetCount (screen_info, val);
+    }
+    else if (getHint (display_info, screen_info->xroot, WIN_WORKSPACE_COUNT, &val))
+    {
+        workspaceSetCount (screen_info, val);
+    }
+
+    if (getUTF8StringList (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &i))
+    {
+        workspaceSetNames (screen_info, names, i);
+    }
+    else
+    {
+        screen_info->workspace_names = NULL;
+        screen_info->workspace_names_items = 0;
+    }
+
+    getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
+    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
+
+    return TRUE;
+}
+
+void
+closeSettings (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info);
+
+    unloadSettings (screen_info);
+}
+
+static void
+cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_name, const GValue *value, ScreenInfo *screen_info)
+{
+    if (g_str_has_prefix(property_name, "/general/") == TRUE)
+    {
+        const gchar *name = &property_name[9];
+        switch (G_VALUE_TYPE(value))
+        {
+            case G_TYPE_STRING:
+                if (!strcmp (name, "double_click_action"))
+                {
+                    reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
+                }
+                else if (!strcmp (name, "theme"))
+                {
+                    reloadScreenSettings(screen_info, UPDATE_MAXIMIZE | UPDATE_GRAVITY | UPDATE_CACHE);
+                }
+                else if (!strcmp (name, "button_layout"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
+                }
+                else if (!strcmp (name, "title_alignment"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
+                }
+                else if (!strcmp (name, "title_font"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
+                }
+                else if (!strcmp (name, "keytheme"))
+                {
+                    reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
+                }
+                else if (!strcmp (name, "easy_click"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_BUTTON_GRABS);
+                }
+                else if (!strcmp (name, "activate_action"))
+                {
+                    set_activate_action (screen_info, g_value_get_string (value));
+                }
+                else if (!strcmp (name, "placement_mode"))
+                {
+                    set_placement_mode (screen_info, g_value_get_string (value));
+                }
+                else
+                {
+                    g_warning("The property '%s' is not supported", property_name);
+                }
+                break;
+            case G_TYPE_INT:
+                if (!strcmp (name, "raise_delay"))
+                {
+                    screen_info->params->raise_delay = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "focus_delay"))
+                {
+                    screen_info->params->focus_delay = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "snap_width"))
+                {
+                    screen_info->params->snap_width = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "wrap_resistance"))
+                {
+                    screen_info->params->wrap_resistance = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "margin_left"))
+                {
+                    set_settings_margin (screen_info, STRUTS_LEFT, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "margin_right"))
+                {
+                    set_settings_margin (screen_info, STRUTS_RIGHT, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "margin_bottom"))
+                {
+                    set_settings_margin (screen_info, STRUTS_BOTTOM, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "margin_top"))
+                {
+                    set_settings_margin (screen_info, STRUTS_TOP, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "workspace_count"))
+                {
+                    workspaceSetCount(screen_info, g_value_get_int (value));
+                }
+                else if (!strcmp (name, "frame_opacity"))
+                {
+                    screen_info->params->frame_opacity = g_value_get_int(value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "inactive_opacity"))
+                {
+                    screen_info->params->inactive_opacity = g_value_get_int(value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                    clientUpdateAllOpacity (screen_info);
+                }
+                else if (!strcmp (name, "move_opacity"))
+                {
+                    screen_info->params->move_opacity = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "resize_opacity"))
+                {
+                    screen_info->params->resize_opacity = g_value_get_int (value);
+                }
+                else if (!strcmp (name, "popup_opacity"))
+                {
+                    screen_info->params->popup_opacity = g_value_get_int (value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "placement_ratio"))
+                {
+                    screen_info->params->placement_ratio = g_value_get_int (value);
+                }
+                else
+                {
+                    g_warning("The property '%s' is not supported", property_name);
+                }
+                break;
+            case G_TYPE_BOOLEAN:
+                if (!strcmp (name, "box_move"))
+                {
+                    screen_info->params->box_move = g_value_get_boolean (value);
+
+                }
+                else if (!strcmp (name, "box_resize"))
+                {
+                    screen_info->params->box_resize = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "click_to_focus"))
+                {
+                    screen_info->params->click_to_focus = g_value_get_boolean (value);
+                    update_grabs (screen_info);
+                }
+                else if (!strcmp (name, "focus_new"))
+                {
+                    screen_info->params->focus_new = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "raise_on_focus"))
+                {
+                    screen_info->params->raise_on_focus = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "raise_on_click"))
+                {
+                    screen_info->params->raise_on_click = g_value_get_boolean (value);
+                    update_grabs (screen_info);
+                }
+                else if (!strcmp (name, "snap_to_border"))
+                {
+                    screen_info->params->snap_to_border = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "snap_to_windows"))
+                {
+                    screen_info->params->snap_to_windows = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "wrap_workspaces"))
+                {
+                    screen_info->params->wrap_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "wrap_windows"))
+                {
+                    screen_info->params->wrap_windows = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "borderless_maximize"))
+                {
+                    screen_info->params->borderless_maximize = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
+                }
+                else if (!strcmp (name, "cycle_minimum"))
+                {
+                    screen_info->params->cycle_minimum = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_hidden"))
+                {
+                    screen_info->params->cycle_hidden = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_workspaces"))
+                {
+                    screen_info->params->cycle_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "focus_hint"))
+                {
+                    screen_info->params->focus_hint = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "show_dock_shadow"))
+                {
+                    screen_info->params->show_dock_shadow = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "show_frame_shadow"))
+                {
+                    screen_info->params->show_frame_shadow = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "show_popup_shadow"))
+                {
+                    screen_info->params->show_popup_shadow = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_FRAME);
+                }
+                else if (!strcmp (name, "snap_resist"))
+                {
+                    screen_info->params->snap_resist = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "prevent_focus_stealing"))
+                {
+                    screen_info->params->prevent_focus_stealing = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "raise_with_any_button"))
+                {
+                    screen_info->params->raise_with_any_button = g_value_get_boolean (value);
+                    update_grabs (screen_info);
+                }
+                else if (!strcmp (name, "restore_on_move"))
+                {
+                    screen_info->params->restore_on_move = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "scroll_workspaces"))
+                {
+                    screen_info->params->scroll_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "toggle_workspaces"))
+                {
+                    screen_info->params->toggle_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "unredirect_overlays"))
+                {
+                    screen_info->params->unredirect_overlays = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "use_compositing"))
+                {
+                    screen_info->params->use_compositing = g_value_get_boolean (value);
+                    compositorActivateScreen (screen_info,
+                                              screen_info->params->use_compositing);
+                }
+                else if (!strcmp (name, "wrap_layout"))
+                {
+                    screen_info->params->wrap_layout = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "wrap_cycle"))
+                {
+                    screen_info->params->wrap_cycle = g_value_get_boolean (value);
+                }
+                else
+                {
+                    g_warning("The property '%s' is not supported", property_name);
+                }
+                break;
+            default:
+                g_warning("The type of property '%s' is not supported", property_name);
+                break;
+        }
+    }
+}

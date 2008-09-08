@@ -1,0 +1,12 @@
+# active_text_color=#ffffff
+# title_shadow_active=false
+button_offset=2
+button_spacing=1
+full_width_title=true
+maximized_offset=3
+show_app_icon=true
+title_horizontal_offset=2
+title_shadow_active=under
+title_shadow_inactive=false
+title_vertical_offset_active=1
+title_vertical_offset_inactive=1

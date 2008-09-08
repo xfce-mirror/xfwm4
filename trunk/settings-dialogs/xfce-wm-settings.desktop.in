@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+_Name=Xfce 4 Window Manager Settings
+_GenericName=Window Manager Settings
+_X-XfceSettingsName=Window Manager
+_Comment=Configure window behavior
+Exec=xfwm4-settings
+Icon=xfwm4
+Terminal=false
+Type=Application
+Categories=X-XFCE;Settings;DesktopSettings;X-XfceSettingsDialog;
+StartupNotify=true
+OnlyShowIn=XFCE;

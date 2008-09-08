@@ -1,0 +1,1114 @@
+# Tamil translation of xfwm4.
+# Copyright (C) 2002-2006 The Xfce development team.
+# This file is distributed under the same license as the xfwm4 package.
+# Dinesh Nadarajah <n_dinesh@yahoo.com>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 4.4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-09-08 22:22+0200\n"
+"PO-Revision-Date: 2005-10-09 20:53+0900\n"
+"Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
+"Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
+#: ../src/hints.c:86
+#, c-format
+msgid "%s (on %s)"
+msgstr ""
+
+#: ../src/main.c:138
+#, c-format
+msgid "%s: Segmentation fault"
+msgstr "%s: பகுதியாக்கல் பழுது"
+
+#: ../src/menu.c:43
+msgid "Ma_ximize"
+msgstr "பெருதாக்குக"
+
+#: ../src/menu.c:44
+#, fuzzy
+msgid "(Un)Ma_ximize"
+msgstr "பெருதாக்குக"
+
+#: ../src/menu.c:45
+#, fuzzy
+msgid "Mi_nimize"
+msgstr "பெருதாக்குக"
+
+#: ../src/menu.c:46
+msgid "Hide _all others"
+msgstr "மற்றவை அனைத்தையும் மறை"
+
+#: ../src/menu.c:47
+msgid "S_how"
+msgstr "காண்பிக்கவும்"
+
+#: ../src/menu.c:48
+msgid "_Move"
+msgstr ""
+
+#: ../src/menu.c:49
+msgid "_Resize"
+msgstr ""
+
+#: ../src/menu.c:51
+msgid "_Shade"
+msgstr "நிழல்"
+
+#: ../src/menu.c:52
+#, fuzzy
+msgid "(Un)_Shade"
+msgstr "நிழல் நீக்கு"
+
+#: ../src/menu.c:53
+msgid "S_tick"
+msgstr "ஒட்_டு"
+
+#: ../src/menu.c:54
+#, fuzzy
+msgid "(Un)S_tick"
+msgstr "ஒட்டா_தே"
+
+#: ../src/menu.c:55
+msgid "Context _help"
+msgstr ""
+
+#: ../src/menu.c:57
+msgid "Above"
+msgstr ""
+
+#: ../src/menu.c:58
+msgid "Normal"
+msgstr ""
+
+#: ../src/menu.c:59
+#, fuzzy
+msgid "Below"
+msgstr "மெதுவாக"
+
+#: ../src/menu.c:60
+msgid "_Fullscreen"
+msgstr ""
+
+#: ../src/menu.c:61
+msgid "(Un)_Fullscreen"
+msgstr ""
+
+#: ../src/menu.c:62
+msgid "Send to..."
+msgstr "இவ்வேலை இடத்தில் போடுக ..."
+
+#: ../src/menu.c:64
+msgid "_Close"
+msgstr "_மூடு"
+
+#: ../src/menu.c:67
+msgid "Destroy"
+msgstr "அழி"
+
+#: ../src/menu.c:70
+msgid "_Quit"
+msgstr "_வெளிச்செல்"
+
+#: ../src/menu.c:71
+msgid "Restart"
+msgstr "மறுபடியும் தொடங்கு"
+
+#: ../src/menu.c:186
+#, fuzzy, c-format
+msgid "Workspace %i (%s)"
+msgstr "வேலை þடம் %i"
+
+#: ../src/menu.c:190
+#, c-format
+msgid "Workspace %i"
+msgstr "வேலை þடம் %i"
+
+#: ../src/menu.c:426
+#, c-format
+msgid "%s: GtkMenu failed to grab the pointer\n"
+msgstr "%s: GtkMenuக்கு சுட்டியை பெற முடியவில்லை\n"
+
+#: ../src/settings.c:276
+#, fuzzy, c-format
+msgid "%s: Cannot allocate color %s\n"
+msgstr "%s: நடப்பு வண்ணம் ஒதுக்கீ வைக்க முடியவில்லை %s\n"
+
+#: ../src/settings.c:278
+#, c-format
+msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
+msgstr ""
+
+#: ../src/settings.c:285
+#, fuzzy, c-format
+msgid "%s: Cannot parse color %s\n"
+msgstr "%s: நடப்பு வண்ணம் அலகிட முடியவில்லை %s\n"
+
+#: ../src/settings.c:287
+#, c-format
+msgid "%s: Cannot parse color: GValue for color is not of type STRING"
+msgstr ""
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#, fuzzy
+msgid "Configure window behavior"
+msgstr "சாளரத்தின் அளவு மாற்றும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "Window Manager"
+msgstr "சாளரமேலாளர்"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+#, fuzzy
+msgid "Window Manager Settings"
+msgstr "சாளரமேலாளர்"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:4
+#, fuzzy
+msgid "Xfce 4 Window Manager Settings"
+msgstr "சாளரமேலாளர்"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+#, fuzzy
+msgid "Advanced window manager settings"
+msgstr "சாளரமேலாளர்"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#, fuzzy
+msgid "Window Manager Tweaks"
+msgstr "சாளரமேலாளர்"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+#, fuzzy
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr "சாளரமேலாளர்"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#, fuzzy
+msgid "Set number and names of workspaces"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#, fuzzy
+msgid "Workspaces"
+msgstr "வேலை þடம் %i"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+#, fuzzy
+msgid "Workspaces Settings"
+msgstr "வேலையிட எல்லைகள்"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:4
+#, fuzzy
+msgid "Xfce 4 Workspaces Settings"
+msgstr "வேலையிட எல்லைகள்"
+
+#: ../settings-dialogs/frap-shortcuts.c:84
+#, c-format
+msgid ""
+"This shortcut is already being used by the window manager action <b>%s</b>. "
+"Which action do you want to use?"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
+#: ../settings-dialogs/frap-shortcuts.c:94
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:85
+#: ../settings-dialogs/frap-shortcuts.c:88
+#: ../settings-dialogs/frap-shortcuts.c:91
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#, c-format
+msgid ""
+"The shortcut is already being used for the command <b>%s</b>. Which action "
+"do you want to use?"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:93
+msgid ""
+"The shortcut is already being used by a <b>window manager action</b>. Which "
+"action do you want to use?"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:94
+#, fuzzy
+msgid "Keep window manager action"
+msgstr "சாளரமேலாளர்"
+
+#: ../settings-dialogs/frap-shortcuts.c:249
+#, c-format
+msgid "%s shortcut conflict"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:257
+msgid "Use this action"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:260
+msgid "Shortcut conflict"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:281
+#, c-format
+msgid "The shortcut '%s' is already being used for something else."
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:236
+#, fuzzy
+msgid "Enter window manager action shortcut"
+msgstr "சாளரமேலாளர்"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:237
+#: ../settings-dialogs/frap-shortcuts-dialog.c:247
+#, c-format
+msgid "Action: %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:241
+msgid "Enter command shortcut"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:242
+#, c-format
+msgid "Command: %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:246
+#, fuzzy
+msgid "Enter shortcut"
+msgstr "விசைப்பலகை குறுக்கு வழி"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:277
+#, fuzzy
+msgid "Shortcut:"
+msgstr "விசைப்பலகை குறுக்கு வழி"
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:321
+msgid "Could not grab the keyboard."
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts-dialog.c:342
+#, c-format
+msgid "<span size='large'><b>%s</b></span>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:86
+#: ../settings-dialogs/xfwm4-settings.c:116
+msgid "Shade window"
+msgstr "வண்ண-சாளரம்"
+
+#: ../settings-dialogs/xfwm4-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:113
+msgid "Hide window"
+msgstr "சாளரம் மறை"
+
+#: ../settings-dialogs/xfwm4-settings.c:88
+#: ../settings-dialogs/xfwm4-settings.c:112
+msgid "Maximize window"
+msgstr "சாளரம் பெருதாக்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:89
+#: ../settings-dialogs/xfwm4-settings.c:120
+#, fuzzy
+msgid "Fill window"
+msgstr "சாளரம் மறை"
+
+#: ../settings-dialogs/xfwm4-settings.c:90
+msgid "Nothing"
+msgstr "ஏதும் þல்லை"
+
+#: ../settings-dialogs/xfwm4-settings.c:95
+#: ../settings-dialogs/xfwm4-settings.c:105
+msgid "Left"
+msgstr "இடது"
+
+#: ../settings-dialogs/xfwm4-settings.c:96
+msgid "Center"
+msgstr "நடுவில்"
+
+#: ../settings-dialogs/xfwm4-settings.c:97
+#: ../settings-dialogs/xfwm4-settings.c:106
+msgid "Right"
+msgstr "வலது"
+
+#: ../settings-dialogs/xfwm4-settings.c:102
+msgid "Window operations menu"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:103
+msgid "Up"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:104
+msgid "Down"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:107
+msgid "Cancel"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:108
+#, fuzzy
+msgid "Cycle windows"
+msgstr "சாளரம் மறை"
+
+#: ../settings-dialogs/xfwm4-settings.c:109
+#, fuzzy
+msgid "Close window"
+msgstr "சாளரம் மறை"
+
+#: ../settings-dialogs/xfwm4-settings.c:110
+#, fuzzy
+msgid "Maximize window horizontally"
+msgstr "சாளரம் பெருதாக்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:111
+#, fuzzy
+msgid "Maximize window vertically"
+msgstr "சாளரம் பெருதாக்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:114
+#, fuzzy
+msgid "Move window"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:115
+#, fuzzy
+msgid "Resize window"
+msgstr "சாளரம் மறை"
+
+#: ../settings-dialogs/xfwm4-settings.c:117
+#, fuzzy
+msgid "Stick window"
+msgstr "சாளரம் மறை"
+
+#: ../settings-dialogs/xfwm4-settings.c:118
+#, fuzzy
+msgid "Raise window"
+msgstr "சாளரம் மறை"
+
+#: ../settings-dialogs/xfwm4-settings.c:119
+#, fuzzy
+msgid "Lower window"
+msgstr "சாளரம் மறை"
+
+#: ../settings-dialogs/xfwm4-settings.c:121
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "சாளரம் பெருதாக்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:122
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "சாளரம் பெருதாக்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:123
+msgid "Toggle above"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:124
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:125
+#, fuzzy
+msgid "Move window to upper workspace"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:126
+#, fuzzy
+msgid "Move window to bottom workspace"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:127
+#, fuzzy
+msgid "Move window to left workspace"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:128
+#, fuzzy
+msgid "Move window to right workspace"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:129
+#, fuzzy
+msgid "Move window to previous workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:130
+#, fuzzy
+msgid "Move window to next workspace"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-settings.c:131
+msgid "Show desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:132
+#, fuzzy
+msgid "Upper workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:133
+#, fuzzy
+msgid "Bottom workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:134
+#, fuzzy
+msgid "Left workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:135
+#, fuzzy
+msgid "Right workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:136
+#, fuzzy
+msgid "Previous workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:137
+#, fuzzy
+msgid "Next workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:138
+#, fuzzy
+msgid "Add workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:139
+#, fuzzy
+msgid "Add adjacent workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:140
+#, fuzzy
+msgid "Delete last workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:141
+#, fuzzy
+msgid "Delete active workspace"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-settings.c:475
+msgid "Theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:489
+msgid "Action"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:491
+#, fuzzy
+msgid "Shortcut"
+msgstr "விசைப்பலகை குறுக்கு வழி"
+
+#: ../settings-dialogs/xfwm4-settings.c:551
+#: ../settings-dialogs/tweaks-settings.c:338
+#: ../settings-dialogs/workspace-settings.c:67
+msgid "Version information"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:570
+#: ../settings-dialogs/tweaks-settings.c:357
+#: ../settings-dialogs/workspace-settings.c:87
+msgid "."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:574
+#: ../settings-dialogs/tweaks-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:91
+#, c-format
+msgid ""
+"%s: %s\n"
+"Try %s --help to see a full list of available command line options.\n"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "<i>Large</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+msgid "<i>Opaque</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "<i>Small</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+msgid "<i>Transparent</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "Activate _focus stealing prevention"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+#, fuzzy
+msgid "C_ompositor"
+msgstr "விசைப்பலகை குறுக்கு வழி"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#, fuzzy
+msgid "Cycle _through windows on all workspaces"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "Display _fullscreen overlay windows directly"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#, fuzzy
+msgid "Do _nothing"
+msgstr "ஏதும் þல்லை"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "Hide _frame of windows when maximized"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Honor _standard ICCCM focus hint"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Key used to _grab and move windows:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#, fuzzy
+msgid "Opaci_ty of window decorations:"
+msgstr "சாளரத்தின் அளவு மாற்றும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#, fuzzy
+msgid "Opacity of _inactive windows:"
+msgstr "சாளரத்தை நகர்த்தும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#, fuzzy
+msgid "Opacity of popup window_s:"
+msgstr "சாளரத்தை நகர்த்தும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#, fuzzy
+msgid "Opacity of windows during _move:"
+msgstr "சாளரத்தை நகர்த்தும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#, fuzzy
+msgid "Opacity of windows during resi_ze:"
+msgstr "சாளரத்தின் அளவு மாற்றும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Restore original _size of maximized windows when moving"
+msgstr "சாளரத்தை நகர்த்தும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Show shadows under _dock windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Show shadows under _regular windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "Show shadows under pop_up windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#, fuzzy
+msgid "Switch to win_dow's workspace"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Use _edge resistance instead of window snapping"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+msgid "When a window raises itself:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#, fuzzy
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "சுட்டி அம்பு திரை எல்லையை அடைந்தவுடன் வேலைஃþடத்தைஃமடிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+msgid "_Accessibility"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "_Bring window on current workspace"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+msgid "_Enable display compositing"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#, fuzzy
+msgid "_Focus"
+msgstr "சாளரம் பெறும் முறைமை"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "_Mouse wheel over desktop switches workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "_Placement"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "_Raise windows when any mouse button is pressed"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid ""
+"_Skip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#, fuzzy
+msgid "_Workspaces"
+msgstr "வேலை þடம் %i"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+msgid "gtk-close"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "gtk-help"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#, fuzzy
+msgid "_Number of workspaces:"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/tweaks-settings.c:156
+msgid "Alt"
+msgstr ""
+
+#: ../settings-dialogs/tweaks-settings.c:158
+#, fuzzy
+msgid "Ctrl"
+msgstr "நடுவில்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
+msgid "\t"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+#, fuzzy
+msgid "<b>Box move and resize</b>"
+msgstr "ஒளி பாயாத அளவு மாற்றமும் நகர்த்துதலும்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#, fuzzy
+msgid "<b>Button layout</b>"
+msgstr "பொத்தான் அமைப்பு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#, fuzzy
+msgid "<b>Double click _action</b>"
+msgstr "þரட்டை அமுத்தல் செயல்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#, fuzzy
+msgid "<b>Focus model</b>"
+msgstr "சாளரம் பெறும் முறைமை"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#, fuzzy
+msgid "<b>New window focus</b>"
+msgstr "புதிய சாளரத்திற்கு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+#, fuzzy
+msgid "<b>Raise on click</b>"
+msgstr "அமுத்தும் போது உயர்த்து"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+#, fuzzy
+msgid "<b>Raise on focus</b>"
+msgstr "கைப்பிடிப்பு/உயர்த்தல்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#, fuzzy
+msgid "<b>Title _alignment</b>"
+msgstr "தலைப்பு þடம் அமைப்பு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#, fuzzy
+msgid "<b>Title fon_t</b>"
+msgstr "தலைப்பு எழுத்துரு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#, fuzzy
+msgid "<b>Window _shortcuts</b>"
+msgstr "சாளரம் பாணி"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#, fuzzy
+msgid "<b>Windows snapping</b>"
+msgstr "சாளரங்கள் போடுதல்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+#, fuzzy
+msgid "<b>Wrap workspaces</b>"
+msgstr "வேலை þடங்கள் மடிப்பு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "<i>Long</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "<i>Short</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<i>Wide</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "Active"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "உயர்நிலை"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#, fuzzy
+msgid "Automatically _raise windows when they receive focus"
+msgstr ""
+"சாளரங்களுக்கு கைப்பிடி கிடைக்கும்போது \n"
+"அவைகளை தானாக மேல் உயர்த்தவும்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#, fuzzy
+msgid "Automatically give focus to _newly created windows"
+msgstr ""
+"புதிதாக படைக்கப்பட்ட சாளரங்களுக்கு \n"
+"தானாக சுட்டி கைப்பிடி கொடுக்கவும்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#, fuzzy
+msgid "Clic_k to focus"
+msgstr "அமுக்கவேண்டும்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Click and drag the buttons to change the layout"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "Close"
+msgstr "மூடு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#, fuzzy
+msgid "Delay _before raising focused window:"
+msgstr "சாளரத்தை உயர்த்தும் தாமதம் :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#, fuzzy
+msgid "Dis_tance:"
+msgstr "தூரம் :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#, fuzzy
+msgid "Focus follows _mouse"
+msgstr "சுட்டி þருக்குமிடத்தில்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "Hidden"
+msgstr "மறைந்தது"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Hide"
+msgstr "மறை"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#, fuzzy
+msgid "Hide content of windows when _moving"
+msgstr "சாளரத்தை நகர்த்தும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#, fuzzy
+msgid "Hide content of windows when _resizing"
+msgstr "சாளரத்தின் அளவு மாற்றும் போது உள்ளடக்கங்களை காண்பிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#, fuzzy
+msgid "Ke_yboard"
+msgstr "விசைப்பலகை குறுக்கு வழி"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "Maximize"
+msgstr "பெருதாக்கு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Menu"
+msgstr "பட்டி"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#, fuzzy
+msgid "Raise window when clicking _inside application window"
+msgstr ""
+"நிரல் சாளரத்திற்குள் அமுத்தும்போது\n"
+"சாளரத்தை உயர்த்து"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+msgid "Shade"
+msgstr "நிழல் தரம்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#, fuzzy
+msgid "Snap windows to other _windows"
+msgstr "சாளரங்களை மற்ற சாளரங்களுடன் போடுக"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#, fuzzy
+msgid "Snap windows to screen _border"
+msgstr "சாளரங்களை திறை எல்லையுடன் போடுக"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Stick"
+msgstr "ஒட்டு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#, fuzzy
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "தலைப்புப் பட்டையில் þரட்டை அமுத்தல் செயல் :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+msgid "The window title, it cannot be removed"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "Title"
+msgstr "தலைப்பு"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#, fuzzy
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "ஓர் சாளரத்தை திரை எல்லைக்கு வெளியே þழுக்கும் போது வேலை þடத்தை மடி"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#, fuzzy
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "சுட்டி அம்பு திரை எல்லையை அடைந்தவுடன் வேலைஃþடத்தைஃமடிக்கவும்"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#, fuzzy
+msgid "_Delay before window receives focus:"
+msgstr "சாளரத்தை உயர்த்தும் தாமதம் :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#, fuzzy
+msgid "_Edge resistance:"
+msgstr "விளிம்பு மறிப்பு :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "_Reset to defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#, fuzzy
+msgid "_Style"
+msgstr "தலைப்பு"
+
+#, fuzzy
+#~ msgid "Button"
+#~ msgstr "பொத்தான் அமைப்பு"
+
+#, fuzzy
+#~ msgid "Add Shortcut Theme"
+#~ msgstr "விசைப்பலகை குறுக்கு வழி"
+
+#~ msgid "Workspace Margins"
+#~ msgstr "வேலையிட எல்லைகள்"
+
+#~ msgid ""
+#~ "Margins are areas on the edges of the screen where no window will be "
+#~ "placed"
+#~ msgstr "சாளரங்கள் எவையும் திரை எல்லைகளில் போடப்படாது"
+
+#~ msgid "Left :"
+#~ msgstr "இடது :"
+
+#~ msgid "Right :"
+#~ msgstr "வலது :"
+
+#~ msgid "Top :"
+#~ msgstr "மேல் :"
+
+#~ msgid "Bottom :"
+#~ msgstr "கீழ் :"
+
+#, fuzzy
+#~ msgid "Button Label|Workspaces and Margins"
+#~ msgstr "வேலையிட எல்லைகள்"
+
+#, fuzzy
+#~ msgid "Workspaces and Margins"
+#~ msgstr "வேலையிட எல்லைகள்"
+
+#, fuzzy
+#~ msgid "Size|Small"
+#~ msgstr "அருகில்"
+
+#, fuzzy
+#~ msgid "Button Label|Window Manager Tweaks"
+#~ msgstr "சாளரமேலாளர்"
+
+#, fuzzy
+#~ msgid "Workspace %d"
+#~ msgstr "வேலை þடம் %i"
+
+#, fuzzy
+#~ msgid "Workspace names"
+#~ msgstr "வேலையிட எல்லைகள்"
+
+#~ msgid "Font Selection Dialog"
+#~ msgstr "ஏழுத்துரு தேர்ந்தெடுக்கும் உரையாடல்"
+
+#~ msgid "Text alignment inside title bar :"
+#~ msgstr "சாளரத்தின் தலைப்புப் பட்டையில் அரை பொருத்தம் :"
+
+#~ msgid "Slow"
+#~ msgstr "மெதுவாக"
+
+#~ msgid "Fast"
+#~ msgstr "வேகமாக"
+
+#, fuzzy
+#~ msgid "Distance|Small"
+#~ msgstr "தூரம் :"
+
+#, fuzzy
+#~ msgid "Distance|Wide"
+#~ msgstr "தூரம் :"
+
+#, fuzzy
+#~ msgid "Resistance|Small"
+#~ msgstr "தூரம் :"
+
+#, fuzzy
+#~ msgid "Resistance|Wide"
+#~ msgstr "தூரம் :"
+
+#, fuzzy
+#~ msgid "Button Label|Window Manager"
+#~ msgstr "சாளரமேலாளர்"
+
+#, fuzzy
+#~ msgid "Move window to workspace %d"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Compose shortcut for :"
+#~ msgstr "விசைப்பலகை குறுக்கு வழி"
+
+#, fuzzy
+#~ msgid "Compose shortcut"
+#~ msgstr "விசைப்பலகை குறுக்கு வழி"
+
+#, fuzzy
+#~ msgid "Advanced Configuration"
+#~ msgstr "சாளரமேலாளர்"
+
+#, fuzzy
+#~ msgid "Move window down"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window left"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Move window right"
+#~ msgstr "புதிய சாளரத்திற்கு"
+
+#, fuzzy
+#~ msgid "Resize window down"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Resize window left"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Resize window right"
+#~ msgstr "சாளரம் மறை"
+
+#, fuzzy
+#~ msgid "Cancel move/resize window"
+#~ msgstr "சாளரம் மறை"
+
+#~ msgid "Un_maximize"
+#~ msgstr "பெருதாக்குதல் நீக்கு"
+
+#~ msgid "_Hide"
+#~ msgstr "_மறை"
+
+#, fuzzy
+#~ msgid "Workspace %02d"
+#~ msgstr "வேலை þடம் %i"
