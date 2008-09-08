@@ -5,7 +5,7 @@
 	  changes. 
 	* settings-dialogs/xfwm4-settings.c: Make keyboard tab insensitive.
 	  Shortcuts based on xfconf have been postponed to the first beta release
-		and won't be available in the alpha.
+	  and won't be available in the alpha.
 
 2008-09-07 23:58	jannis
 
