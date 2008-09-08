@@ -6,7 +6,7 @@ dnl
 m4_define([xfwm4_version], [4.5.90])
 
 m4_define([gtk_minimum_version], [2.6.0])
-m4_define([xfce_minimum_version], [4.4.0])
+m4_define([xfce_minimum_version], [4.5.90])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.12])
 m4_define([startup_notification_minimum_version], [0.5])
