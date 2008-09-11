@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-08 22:22+0200\n"
-"PO-Revision-Date: 2008-08-28 12:35+0200\n"
+"POT-Creation-Date: 2008-09-07 18:52+0200\n"
+"PO-Revision-Date: 2008-09-11 19:20+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
-"Language-Team: Euskara <debian-l10n-basque@lists.debian.org>\n"
+"Language-Team: Euskara <librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -140,8 +140,7 @@ msgstr "%s: Ezin da %s kolorea esleitu\n"
 #: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
+msgstr "%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
 
 #: ../src/settings.c:285
 #, c-format
@@ -151,8 +150,7 @@ msgstr "%s: Ezin da %s kolorea analizatu\n"
 #: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
+msgstr "%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
@@ -204,103 +202,105 @@ msgstr "Idazmahai ezarpenak"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 idazmahai ezarpenak"
 
-#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:83
 #, c-format
 msgid ""
 "This shortcut is already being used by the window manager action <b>%s</b>. "
 "Which action do you want to use?"
 msgstr ""
+"Laster-tekla dagoneko leiho kudeatzailearen <b>%s</b> ekintzakerabiltzen du. "
+"Zein ekintza erabiltzea nahi duzu?"
 
-#: ../settings-dialogs/frap-shortcuts.c:85
-#: ../settings-dialogs/frap-shortcuts.c:88
-#: ../settings-dialogs/frap-shortcuts.c:91
-#: ../settings-dialogs/frap-shortcuts.c:94
-#, c-format
-msgid "Use %s"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts.c:85
-#: ../settings-dialogs/frap-shortcuts.c:88
-#: ../settings-dialogs/frap-shortcuts.c:91
-#, c-format
-msgid "Keep %s"
-msgstr ""
-
+#: ../settings-dialogs/frap-shortcuts.c:84
 #: ../settings-dialogs/frap-shortcuts.c:87
 #: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:93
+#, c-format
+msgid "Use %s"
+msgstr "%s erabili"
+
+#: ../settings-dialogs/frap-shortcuts.c:84
+#: ../settings-dialogs/frap-shortcuts.c:87
+#: ../settings-dialogs/frap-shortcuts.c:90
+#, c-format
+msgid "Keep %s"
+msgstr "%s mantendu"
+
+#: ../settings-dialogs/frap-shortcuts.c:86
+#: ../settings-dialogs/frap-shortcuts.c:89
 #, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
 "do you want to use?"
 msgstr ""
+"Laster-tekla dagoneko <b>%s</b> komandoak erabiltzen du. "
+"Zein komando erabiltzea nahi duzu?"
 
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:92
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
 "action do you want to use?"
 msgstr ""
+"'%s' laster-tekla dagoneko <b>leiho kudeatzaile ekintza</b> batek erabiltzen du. "
+"Zein ekintza erabiltzea nahi duzu?"
 
-#: ../settings-dialogs/frap-shortcuts.c:94
-#, fuzzy
+#: ../settings-dialogs/frap-shortcuts.c:93
 msgid "Keep window manager action"
-msgstr "Leiho kudeatzaile ezarpen aurreratuak"
+msgstr "Mantendu leiho kudeatzaile ekintza"
 
-#: ../settings-dialogs/frap-shortcuts.c:249
+#: ../settings-dialogs/frap-shortcuts.c:248
 #, c-format
 msgid "%s shortcut conflict"
-msgstr ""
+msgstr "%s laster-tekla elkarlotze"
 
-#: ../settings-dialogs/frap-shortcuts.c:257
+#: ../settings-dialogs/frap-shortcuts.c:256
 msgid "Use this action"
-msgstr ""
+msgstr "Ekintza hau erabili"
 
-#: ../settings-dialogs/frap-shortcuts.c:260
+#: ../settings-dialogs/frap-shortcuts.c:259
 msgid "Shortcut conflict"
-msgstr ""
+msgstr "Laster-tekla elkarlotzea"
 
-#: ../settings-dialogs/frap-shortcuts.c:281
+#: ../settings-dialogs/frap-shortcuts.c:280
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
-msgstr ""
+msgstr "'%s' laster-tekla beste zerbaitek erabiltzen du."
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:236
-#, fuzzy
-msgid "Enter window manager action shortcut"
-msgstr "Leiho kudeatzaile ezarpen aurreratuak"
+#. Set dialog title
+#: ../settings-dialogs/frap-shortcuts-dialog.c:233
+msgid "Set shortcut"
+msgstr "Ezarri laster-tekla"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:237
-#: ../settings-dialogs/frap-shortcuts-dialog.c:247
-#, fuzzy, c-format
-msgid "Action: %s"
-msgstr "Ekintza"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:241
-msgid "Enter command shortcut"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:242
+#: ../settings-dialogs/frap-shortcuts-dialog.c:253
 #, c-format
-msgid "Command: %s"
+msgid ""
+"Set shortcut for action\n"
+"<b>%s</b>"
 msgstr ""
+"Ezarri laster-tekla\n"
+"<b>%s</b> ekintzari"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:246
-#, fuzzy
-msgid "Enter shortcut"
-msgstr "Gehitu laster-tekla gaia"
+#: ../settings-dialogs/frap-shortcuts-dialog.c:255
+#, c-format
+msgid ""
+"Set shortcut for command\n"
+"<b>%s</b>"
+msgstr ""
+"Ezarri laster-tekla\n"
+"<b>%s</b> komandoari"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:277
-#, fuzzy
-msgid "Shortcut:"
-msgstr "Gehitu laster-tekla gaia"
+#: ../settings-dialogs/frap-shortcuts-dialog.c:257
+#, c-format
+msgid ""
+"Set shortcut for\n"
+"<b>%s</b>"
+msgstr ""
+"Ezarri laster-tekla\n"
+"<b>%s</b>-ri"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:321
+#: ../settings-dialogs/frap-shortcuts-dialog.c:302
 msgid "Could not grab the keyboard."
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:342
-#, c-format
-msgid "<span size='large'><b>%s</b></span>"
-msgstr ""
+msgstr "Ezin da teklatua kapturatu"
 
 #: ../settings-dialogs/xfwm4-settings.c:86
 #: ../settings-dialogs/xfwm4-settings.c:116
@@ -485,9 +485,8 @@ msgid "Action"
 msgstr "Ekintza"
 
 #: ../settings-dialogs/xfwm4-settings.c:491
-#, fuzzy
 msgid "Shortcut"
-msgstr "Gehitu laster-tekla gaia"
+msgstr "Laster-tekla"
 
 #: ../settings-dialogs/xfwm4-settings.c:551
 #: ../settings-dialogs/tweaks-settings.c:338
@@ -616,8 +615,7 @@ msgstr "Leiho batek bere burua nabarmentzean:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
+msgstr "Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -734,7 +732,7 @@ msgstr "<b>Bistaratu klikatzerakoan</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Goratu fokoaz</b>"
+msgstr "<b>Goratu fokuaz</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title _alignment</b>"
@@ -778,15 +776,15 @@ msgstr "Au_rreratua"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Automatikoki _goratu leihoak fokoa dutenean"
+msgstr "Automatikoki _goratu leihoak fokua dutenean"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Automatically give focus to _newly created windows"
-msgstr "Automatikoki ezarri fokoa leiho _berrietan"
+msgstr "Automatikoki ezarri fokua leiho _berrietan"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Clic_k to focus"
-msgstr "Egin _klik fokoa ezartzeko"
+msgstr "Egin _klik fokua ezartzeko"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Click and drag the buttons to change the layout"
@@ -798,7 +796,7 @@ msgstr "Itxi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Delay _before raising focused window:"
-msgstr "Fokoa duen leihoa bistaratu arte _itxarongo den denbora :"
+msgstr "Fokua duen leihoa bistaratu arte _itxarongo den denbora :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Dis_tance:"
@@ -806,7 +804,7 @@ msgstr "_Tartea :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Focus follows _mouse"
-msgstr "Fokoak _sagua jarraitzen du"
+msgstr "Fokuak _sagua jarraitzen du"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Hidden"
@@ -878,7 +876,7 @@ msgstr "Joan hurrengo idazmahaiera sagua _pantaila ertzera ailatzerakoan"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "_Delay before window receives focus:"
-msgstr "Fokoa duen leihoa bistaratu arteko _denbora"
+msgstr "Fokua duen leihoa bistaratu arteko _denbora"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -886,41 +884,9 @@ msgstr "_Ertzaren erresistentzia :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Reset to defaults"
-msgstr ""
+msgstr "Be_rrezarri lehenespenetara"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Style"
 msgstr "E_stiloa"
 
-#~ msgid "Keytheme"
-#~ msgstr "Tekla-gaia"
-
-#~ msgid "Button"
-#~ msgstr "Botoia"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Izen horretako laster-tekla gai bat badago dagoeneko"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Laster-tekla gaiarentzat izen bat eman behar duzu"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Benetan laster-tekla gai hau ezabatu nahi duzu ?"
-
-#~ msgid "Add a new window-manager shortcut theme"
-#~ msgstr "Gehitu leiho-kudeatzaile laster-tekla gai berria"
-
-#~ msgid "Type the name for the new shortcut theme:"
-#~ msgstr "Idatzi izen bat laster-tekla gai berriarentzat:"
-
-#~ msgid "gtk-add"
-#~ msgstr "gtk-gehitu"
-
-#~ msgid "gtk-cancel"
-#~ msgstr "gtk-utzi"
-
-#~ msgid "gtk-ok"
-#~ msgstr "gtk-ados"
-
-#~ msgid "gtk-remove"
-#~ msgstr "gtk-kendu"
