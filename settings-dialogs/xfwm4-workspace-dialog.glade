@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Mon Jun 23 19:48:28 2008 -->
+<!--Generated with glade3 3.4.5 on Sun Aug 24 22:43:54 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
-  <widget class="GtkDialog" id="main-dialog">
-    <property name="border_width">5</property>
+  <widget class="XfceTitledDialog" id="main-dialog">
+    <property name="title" translatable="yes">Workspaces</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
+    <property name="icon_name">xfce4-workspaces</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
     <property name="has_separator">False</property>
+    <property name="subtitle" translatable="yes">Set number and names of workspaces</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="main-vbox">
         <property name="visible">True</property>
         <property name="spacing">2</property>
         <child>
-          <widget class="XfceHeading" id="xfce-heading1">
-            <property name="visible">True</property>
-            <property name="icon_name">xfce4-workspaces</property>
-            <property name="title" translatable="yes">Workspace Settings</property>
-          </widget>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
           <widget class="GtkVBox" id="vbox1">
             <property name="visible">True</property>
-            <property name="spacing">5</property>
+            <property name="border_width">6</property>
+            <property name="spacing">6</property>
             <child>
               <widget class="GtkHBox" id="hbox2">
                 <property name="visible">True</property>
-                <property name="spacing">4</property>
+                <property name="spacing">12</property>
                 <child>
                   <widget class="GtkLabel" id="label1">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">Number of workspaces:</property>
+                    <property name="label" translatable="yes">_Number of workspaces:</property>
+                    <property name="use_underline">True</property>
+                    <property name="mnemonic_widget">workspace_count_spinbutton</property>
                   </widget>
                   <packing>
                     <property name="expand">False</property>
@@ -73,7 +66,7 @@
             </child>
           </widget>
           <packing>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child internal-child="action_area">

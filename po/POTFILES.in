@@ -30,12 +30,14 @@ src/transients.c
 src/ui_style.c
 src/wireframe.c
 src/workspaces.c
-settings-dialogs/xfwm4-settings.desktop.in
+settings-dialogs/xfce-wm-settings.desktop.in
+settings-dialogs/xfce-wmtweaks-settings.desktop.in
+settings-dialogs/xfce-workspaces-settings.desktop.in
+settings-dialogs/frap-shortcuts.c
+settings-dialogs/frap-shortcuts-dialog.c
 settings-dialogs/xfwm4-settings.c
 settings-dialogs/xfwm4-tweaks-dialog.glade
 settings-dialogs/xfwm4-workspace-dialog.glade
-settings-dialogs/xfwm4-tweaks-settings.desktop.in
-settings-dialogs/xfwm4-workspace-settings.desktop.in
 settings-dialogs/tweaks-settings.c
 settings-dialogs/workspace-settings.c
 settings-dialogs/xfwm4-dialog.glade

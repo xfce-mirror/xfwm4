@@ -197,5 +197,9 @@
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linejoin:miter;stroke-opacity:0"
        d="M 0,21.5 L 8,21.5"
        id="path6989" />
+    <path
+       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       d="M 0,1.5 L 8,1.5"
+       id="path28" />
   </g>
 </svg>

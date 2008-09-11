@@ -1,3 +1,62 @@
+2008-09-08 22:20	jannis
+
+	* settings-dialogs/frap-shortcuts.c,
+	  settings-dialog/frap-shortcuts-dialog.c: Synchronize latest libfrap
+	  changes. 
+	* settings-dialogs/xfwm4-settings.c: Make keyboard tab insensitive.
+	  Shortcuts based on xfconf have been postponed to the first beta release
+	  and won't be available in the alpha.
+
+2008-09-07 23:58	jannis
+
+	* settings-dialogs/frap-shortcuts-dialog.c: Update the dialog. It
+	  now uses XfceTitledDialog as a parent and also displays the partial
+	  shortcut while being entered - cool.
+
+2008-09-07 23:19	jannis
+
+	* settings-dialogs/frap-shortcuts.{c,h},
+	  settings-dialogs/frap-shortcuts-dialog.c: Update to latest libfrap
+	  version.
+
+2008-09-07 18:50	jannis
+
+	* settings-dialogs/Makefile.am, settings-dialogs/frap-shortcuts.{c,h},
+	  settings-dialogs/frap-shortcuts-dialog.{c,h},
+	  settings-dialogs/xfwm4-settings.c: Import utility functions and the
+	  shortcut dialog from libfrap. Refactor the xfwm4 settings dialog so that
+	  it makes use of them. The code should now work better and be easier to
+	  read.
+
+2008-09-07 11:50	jannis
+
+	* settings-dialogs/shortcut-dialog.c: Remove unused Display variable.
+
+2008-09-07 11:34	jannis
+
+	* settings-dialogs/Xfwm4-settings.c: Remove unused function declaration.
+
+2008-09-06 20:21	jannis
+
+	* configure.ac.in: Add dependencies on dbus-1 and dbus-glib-1.
+	* settings-dialogs/xfwm4-settings.c: Add <dbus/dbus-glib.h> include.
+
+2008-09-06 16:39	jannis
+
+	* settings-dialogs/Makefile.am,
+	  settings-dialogs/shortcut-dialog.{c,h}: Add (almost) the same dialog for
+	  entering shortcuts as we have in xfce4-settings. 
+	* settings-dialogs/xfwm4-settings.c: Implement the first part of the xfwm4
+	  keyboard shortcuts: Disable themes support, make shortcuts editable,
+	  implement the "reset to defaults" feature, handle 'property-changed'
+	  signal emitted by xfconf and allow for interactive resolving of 
+	  conflicts. Still missing: hard-coded default shorcuts and the actual X
+	  event monitor for all shortcuts.
+
+2008-09-04 19:24  jannis
+
+	* autogen.sh: Add git svn revision versioning support.
+
 2007-11-06 22:53  olivier
 
 	* src/events.c: Revert to current time for releasing queued input

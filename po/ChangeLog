@@ -1,3 +1,31 @@
+2008-09-09  Maximilian Schleiss <maximilian@xfce.org>
+
+	* id.po: Indonesian translation update (Andhika Padmawan)
+	* fr.po: French translation update
+
+2008-09-08	Jannis Pohlmann <jannis@xfce.org>
+
+	* *.po, xfwm4.pot: Merge strings.
+
+2008-09-07	Jannis Pohlmann <jannis@xfce.org>
+
+	* POTFILES.in: Add frap-shortcuts.c and frap-shortcuts-dialog.c.
+	* *.po, xfwm4.pot: Merge new strings.
+
+2008-09-06	Jannis Pohlmann <jannis@xfce.org>
+
+	* POTFILES.in: Add shortcut-dialog.c.
+	* *.po, xfwm4.pot: Merge new strings.
+
+2008-08-29  Maximilian Schleiss <maximilian@xfce.org>
+
+	* de.po: German translation updated (Fabian Nowak)
+	* ko.po: Korean translation updated (ByungHyun Choi)
+
+2008-08-28	Piarres Beobide <pi@beobide.net>
+
+        * eu.po: Updated Basque translation.
+
 2008-08-12  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
 
 	* fi.po: Updated Finnish translation

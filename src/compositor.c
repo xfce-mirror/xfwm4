@@ -2056,11 +2056,17 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
     display_info = screen_info->display_info;
     damage = None;
 
-    if (cw->extents)
+    if (WIN_IS_VISIBLE(cw))
     {
         damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
-        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+        if (cw->extents)
+        {
+            XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+        }
+    }
 
+    if (cw->extents)
+    {
         XFixesDestroyRegion (display_info->dpy, cw->extents);
         cw->extents = None;
     }
@@ -2109,19 +2115,15 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
     cw->attr.height = height;
     cw->attr.border_width = bw;
 
-    cw->extents = win_extents (cw);
     if (damage)
     {
+        cw->extents = win_extents (cw);
         XFixesUnionRegion (display_info->dpy, damage, damage, cw->extents);
+
+        fix_region (cw, damage);
+        /* damage region will be destroyed by add_damage () */
+        add_damage (screen_info, damage);
     }
-    else
-    {
-        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
-        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
-    }
-    fix_region (cw, damage);
-    /* damage region will be destroyed by add_damage () */
-    add_damage (screen_info, damage);
 }
 
 static void
@@ -2139,11 +2141,17 @@ reshape_win (CWindow *cw)
 
     damage = None;
 
-    if (cw->extents)
+    if (WIN_IS_VISIBLE(cw))
     {
         damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
-        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+        if (cw->extents)
+        {
+            XFixesCopyRegion (display_info->dpy, damage, cw->extents);
+        }
+    }
 
+    if (cw->extents)
+    {
         XFixesDestroyRegion (display_info->dpy, cw->extents);
         cw->extents = None;
     }
@@ -2166,19 +2174,19 @@ reshape_win (CWindow *cw)
         cw->clientSize = None;
     }
 
-    cw->extents = win_extents (cw);
     if (damage)
     {
+        cw->extents = win_extents (cw);
         XFixesUnionRegion (display_info->dpy, damage, damage, cw->extents);
+
+        /* A shape notify will likely change the shadows too, so clear the extents */
+        XFixesDestroyRegion (display_info->dpy, cw->extents);
+        cw->extents = None;
+
+        fix_region (cw, damage);
+        /* damage region will be destroyed by add_damage () */
+        add_damage (screen_info, damage);
     }
-    else
-    {
-        damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
-        XFixesCopyRegion (display_info->dpy, damage, cw->extents);
-    }
-    fix_region (cw, damage);
-    /* damage region will be destroyed by add_damage () */
-    add_damage (screen_info, damage);
 }
 
 static void

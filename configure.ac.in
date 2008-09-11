@@ -3,10 +3,10 @@ dnl
 dnl xfwm4 - window manager for the Xfce4 desktop environment
 dnl
 
-m4_define([xfwm4_version], [4.5.80])
+m4_define([xfwm4_version], [4.5.90])
 
 m4_define([gtk_minimum_version], [2.6.0])
-m4_define([xfce_minimum_version], [4.4.0])
+m4_define([xfce_minimum_version], [4.5.90])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.12])
 m4_define([startup_notification_minimum_version], [0.5])
@@ -33,6 +33,7 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl check for basic programs
 AC_PROG_CC
+AM_PROG_CC_C_O
 AC_PROG_INSTALL
 AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 AC_PROG_LIBTOOL
@@ -67,6 +68,8 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCEGUI4], libxfcegui4-1.0, [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCONF], libxfconf-0, [0.0.0])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
+XDT_CHECK_PACKAGE([DBUS], [dbus-1], [1.0.0])
+XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [0.72])
 
 dnl
 dnl Startup notification support
