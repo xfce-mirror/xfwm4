@@ -2232,8 +2232,11 @@ clientHideSingle (Client * c, GList *exclude_list, gboolean iconify)
     if (iconify)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
-        clientSetLast (c);
         setWMState (display_info, c->window, IconicState);
+        if (!screen_info->show_desktop)
+        {
+            clientSetLast (c);
+        }
     }
     clientSetNetState (c);
     clientSetNetActions (c);
