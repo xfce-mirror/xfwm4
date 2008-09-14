@@ -1,3 +1,8 @@
+2008-09-08 22:14	jannis
+
+	* settings-dialogs/*.{c,glade}: Add embedding support to all xfwm4 settings
+	  dialogs.
+
 2008-09-08 22:20	jannis
 
 	* settings-dialogs/frap-shortcuts.c,
