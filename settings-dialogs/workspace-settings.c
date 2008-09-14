@@ -22,22 +22,17 @@
 
 #include <glib.h>
 
-#if defined(GETTEXT_PACKAGE)
-#include <glib/gi18n-lib.h>
-#else
-#include <glib/gi18n.h>
-#endif
-
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfconf/xfconf.h>
 #include "xfwm4-workspace-dialog_glade.h"
 
 static gboolean version = FALSE;
 
-GtkWidget *
+static GtkWidget *
 workspace_dialog_new_from_xml (GladeXML *gxml)
 {
     GtkWidget *dialog;
@@ -63,7 +58,7 @@ workspace_dialog_new_from_xml (GladeXML *gxml)
 
 static GOptionEntry entries[] =
 {
-    {    "version", 'v', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version,
+    {    "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version,
         N_("Version information"),
         NULL
     },
@@ -78,11 +73,7 @@ main(int argc, gchar **argv)
     GtkWidget *dialog;
     GError *cli_error = NULL;
 
-    #ifdef ENABLE_NLS
-    bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-    #endif
+    xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     if(!gtk_init_with_args(&argc, &argv, _("."), entries, PACKAGE, &cli_error))
     {
@@ -100,7 +91,11 @@ main(int argc, gchar **argv)
         return 0;
     }
 
-    xfconf_init(NULL);
+    if(!xfconf_init (&cli_error)) {
+        g_critical ("Failed to contact xfconfd: %s", cli_error->message);
+        g_error_free (cli_error);
+        return 1;
+    }
 
     gxml = glade_xml_new_from_buffer (workspace_dialog_glade,
                                       workspace_dialog_glade_length,
