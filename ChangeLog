@@ -1,4 +1,8 @@
-2008-09-08 22:14	jannis
+2008-09-14 22:18	jannis
+
+	* settings-dialogs/tweaks-settings.c: Add copyright nothint.
+
+2008-09-14 22:14	jannis
 
 	* settings-dialogs/*.{c,glade}: Add embedding support to all xfwm4 settings
 	  dialogs.
