@@ -11,3 +11,4 @@ Type=Application
 Categories=X-XFCE;Settings;DesktopSettings;X-XfceSettingsDialog;
 StartupNotify=true
 OnlyShowIn=XFCE;
+X-XfcePluggable=true
