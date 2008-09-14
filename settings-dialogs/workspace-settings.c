@@ -1,6 +1,7 @@
 /*
  *  Copyright (c) 2008 Brian Tarricone <bjt23@cornell.edu>
  *  Copyright (c) 2008 Stephan Arts <stephan@xfce.org>
+ *  Copyright (c) 2008 Jannis Pohlmann <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -36,7 +37,8 @@
 
 #define WORKSPACE_NAMES_PROP       "/general/workspace_names"
 
-static gboolean version = FALSE;
+static GdkNativeWindow opt_socket_id = 0;
+static gboolean opt_version = FALSE;
 
 
 enum
@@ -299,11 +301,10 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
                      G_CALLBACK(xfconf_workspace_names_changed), treeview);
 }
 
-static GtkWidget *
-workspace_dialog_new_from_xml (GladeXML *gxml,
-                               XfconfChannel *channel)
+static void
+workspace_dialog_configure_widgets (GladeXML *gxml,
+                                    XfconfChannel *channel)
 {
-    GtkWidget *dialog;
     GtkWidget *vbox;
 
     GtkWidget *workspace_count_spinbutton = glade_xml_get_widget (gxml, "workspace_count_spinbutton");
@@ -317,20 +318,15 @@ workspace_dialog_new_from_xml (GladeXML *gxml,
     workspace_dialog_setup_names_treeview(gxml, channel);
 
     vbox = glade_xml_get_widget (gxml, "main-vbox");
-    dialog = glade_xml_get_widget (gxml, "main-dialog");
 
     gtk_widget_show_all(vbox);
-
-    return dialog;
 }
 
 
 static GOptionEntry entries[] =
 {
-    {    "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version,
-        N_("Version information"),
-        NULL
-    },
+    { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_("Settings manager socket"), N_("SOCKET ID") },
+    { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Version information"), NULL },
     { NULL }
 };
 
@@ -340,6 +336,8 @@ main(int argc, gchar **argv)
 {
     GladeXML *gxml;
     GtkWidget *dialog;
+    GtkWidget *plug;
+    GtkWidget *plug_child;
     XfconfChannel *channel;
     GError *cli_error = NULL;
 
@@ -355,7 +353,7 @@ main(int argc, gchar **argv)
         }
     }
 
-    if(version)
+    if(opt_version)
     {
         g_print("%s\n", PACKAGE_STRING);
         return 0;
@@ -367,16 +365,36 @@ main(int argc, gchar **argv)
         return 1;
     }
 
+    channel = xfconf_channel_new(WORKSPACES_CHANNEL);
+
     gxml = glade_xml_new_from_buffer (workspace_dialog_glade,
                                       workspace_dialog_glade_length,
                                       NULL, NULL);
 
-    channel = xfconf_channel_new(WORKSPACES_CHANNEL);
+    if(gxml) {
+        workspace_dialog_configure_widgets (gxml, channel);
 
-    dialog = workspace_dialog_new_from_xml (gxml, channel);
+        if(opt_socket_id == 0) {
+            dialog = glade_xml_get_widget (gxml, "main-dialog");
+            
+            while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
+                /* FIXME: launch help */
+            }
 
-    while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
-        /* FIXME: launch help */
+            gtk_widget_destroy(dialog);
+        } else {
+            /* Create plug widget */
+            plug = gtk_plug_new (opt_socket_id);
+            gtk_widget_show (plug);
+
+            /* Get plug child widget */
+            plug_child = glade_xml_get_widget (gxml, "plug-child");
+            gtk_widget_reparent (plug_child, plug);
+            gtk_widget_show (plug_child);
+
+            /* Enter main loop */
+            gtk_main ();
+        }
     }
 
     g_object_unref(G_OBJECT(channel));

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Mon Sep  8 22:12:57 2008 -->
+<!--Generated with glade3 3.4.5 on Sun Sep 14 21:35:09 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="main-dialog">
@@ -14,7 +14,7 @@
       <widget class="GtkVBox" id="main-vbox">
         <property name="visible">True</property>
         <child>
-          <widget class="GtkNotebook" id="notebook1">
+          <widget class="GtkNotebook" id="plug-child">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="border_width">6</property>

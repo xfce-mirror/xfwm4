@@ -3,8 +3,8 @@
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ *  the Free Software Foundation; either opt_version 2 of the License, or
+ *  (at your option) any later opt_version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -21,7 +21,7 @@
 
 #include <glib.h>
 
-#if defined(GETTEXT_PACKAGE)
+#if defined (GETTEXT_PACKAGE)
 #include <glib/gi18n-lib.h>
 #else
 #include <glib/gi18n.h>
@@ -34,12 +34,13 @@
 #include <xfconf/xfconf.h>
 #include "xfwm4-tweaks-dialog_glade.h"
 
-static gboolean version = FALSE;
+static GdkNativeWindow opt_socket_id = 0;
+static gboolean opt_version = FALSE;
 
 void
 cb_easy_click_combo_box_changed (GtkComboBox *combo, XfconfChannel *channel)
 {
-    switch (gtk_combo_box_get_active(combo))
+    switch (gtk_combo_box_get_active (combo))
     {
         case 0:
             xfconf_channel_set_string (channel, "/general/easy_click", "Alt");
@@ -56,13 +57,13 @@ cb_easy_click_combo_box_changed (GtkComboBox *combo, XfconfChannel *channel)
 void
 cb_use_compositing_check_button_toggled (GtkToggleButton *toggle, GtkWidget *box)
 {
-    gtk_widget_set_sensitive (box, gtk_toggle_button_get_active(toggle));
+    gtk_widget_set_sensitive (box, gtk_toggle_button_get_active (toggle));
 }
 
 void
 cb_prevent_focus_stealing_check_button_toggled (GtkToggleButton *toggle, GtkWidget *box)
 {
-    gtk_widget_set_sensitive (box, gtk_toggle_button_get_active(toggle));
+    gtk_widget_set_sensitive (box, gtk_toggle_button_get_active (toggle));
 }
 
 void
@@ -92,14 +93,14 @@ cb_activate_action_none_radio_toggled (GtkToggleButton *toggle, XfconfChannel *c
     }
 }
 
-GtkWidget *
-wm_tweaks_dialog_new_from_xml (GladeXML *gxml)
+static void
+wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 {
-    GtkWidget *dialog, *vbox;
+    GtkWidget *vbox;
     GtkTreeIter iter;
     GtkListStore *list_store;
     GtkCellRenderer *renderer;
-    XfconfChannel *xfwm4_channel = xfconf_channel_new("xfwm4");
+    XfconfChannel *xfwm4_channel = xfconf_channel_new ("xfwm4");
     gchar *easy_click = NULL;
     gchar *activate_action = NULL;
     
@@ -132,7 +133,7 @@ wm_tweaks_dialog_new_from_xml (GladeXML *gxml)
 
 
     /* Placement tab */
-    GtkWidget *placement_ratio_scale = (GtkWidget *)gtk_range_get_adjustment(GTK_RANGE(glade_xml_get_widget (gxml, "placement_ratio_scale")));
+    GtkWidget *placement_ratio_scale = (GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "placement_ratio_scale")));
 
     /* Compositing tab */
     GtkWidget *use_compositing_check = glade_xml_get_widget (gxml, "use_compositing_check");
@@ -143,41 +144,41 @@ wm_tweaks_dialog_new_from_xml (GladeXML *gxml)
     GtkWidget *show_popup_shadow_check = glade_xml_get_widget (gxml, "show_popup_shadow_check");
     GtkWidget *show_dock_shadow_check = glade_xml_get_widget (gxml, "show_dock_shadow_check");
 
-    GtkWidget *frame_opacity_scale =(GtkWidget *)gtk_range_get_adjustment(GTK_RANGE(glade_xml_get_widget (gxml, "frame_opacity_scale")));
-    GtkWidget *inactive_opacity_scale =(GtkWidget *)gtk_range_get_adjustment(GTK_RANGE(glade_xml_get_widget (gxml, "inactive_opacity_scale")));
-    GtkWidget *move_opacity_scale =(GtkWidget *)gtk_range_get_adjustment(GTK_RANGE(glade_xml_get_widget (gxml, "move_opacity_scale")));
-    GtkWidget *popup_opacity_scale =(GtkWidget *)gtk_range_get_adjustment(GTK_RANGE(glade_xml_get_widget (gxml, "popup_opacity_scale")));
-    GtkWidget *resize_opacity_scale =(GtkWidget *)gtk_range_get_adjustment(GTK_RANGE(glade_xml_get_widget (gxml, "resize_opacity_scale")));
+    GtkWidget *frame_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "frame_opacity_scale")));
+    GtkWidget *inactive_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "inactive_opacity_scale")));
+    GtkWidget *move_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "move_opacity_scale")));
+    GtkWidget *popup_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "popup_opacity_scale")));
+    GtkWidget *resize_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "resize_opacity_scale")));
 
 
     /* Hinting Combo */
-    list_store = gtk_list_store_new(1, G_TYPE_STRING);
-    gtk_list_store_append(list_store, &iter);
-    gtk_list_store_set(list_store, &iter, 0, N_("Alt"), -1);
-    gtk_list_store_append(list_store, &iter);
-    gtk_list_store_set(list_store, &iter, 0, N_("Ctrl"), -1);
+    list_store = gtk_list_store_new (1, G_TYPE_STRING);
+    gtk_list_store_append (list_store, &iter);
+    gtk_list_store_set (list_store, &iter, 0, N_ ("Alt"), -1);
+    gtk_list_store_append (list_store, &iter);
+    gtk_list_store_set (list_store, &iter, 0, N_ ("Ctrl"), -1);
 
     /* Fill combo-box */
     gtk_cell_layout_clear (GTK_CELL_LAYOUT (easy_click_combo_box));
-    renderer = gtk_cell_renderer_text_new();
+    renderer = gtk_cell_renderer_text_new ();
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (easy_click_combo_box), renderer, TRUE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (easy_click_combo_box), renderer, "text", 0);
 
-    gtk_combo_box_set_model (GTK_COMBO_BOX (easy_click_combo_box), GTK_TREE_MODEL(list_store));
+    gtk_combo_box_set_model (GTK_COMBO_BOX (easy_click_combo_box), GTK_TREE_MODEL (list_store));
 
     easy_click = xfconf_channel_get_string (xfwm4_channel, "/general/easy_click", "Alt");
-    gtk_combo_box_set_active (GTK_COMBO_BOX(easy_click_combo_box), 0);
-    if (!strcmp(easy_click, "Ctrl"))
-        gtk_combo_box_set_active (GTK_COMBO_BOX(easy_click_combo_box), 1);
+    gtk_combo_box_set_active (GTK_COMBO_BOX (easy_click_combo_box), 0);
+    if (!strcmp (easy_click, "Ctrl"))
+        gtk_combo_box_set_active (GTK_COMBO_BOX (easy_click_combo_box), 1);
 
     activate_action = xfconf_channel_get_string (xfwm4_channel, "/general/activate_action", "bring");
     if (!strcmp (activate_action, "switch"))
     {
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(activate_action_bring_option), FALSE);
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(activate_action_switch_option), TRUE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (activate_action_bring_option), FALSE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (activate_action_switch_option), TRUE);
     }
     if (!strcmp (activate_action, "none"))
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(activate_action_none_option), TRUE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (activate_action_none_option), TRUE);
 
 
     /* not so easy properties */
@@ -320,67 +321,83 @@ wm_tweaks_dialog_new_from_xml (GladeXML *gxml)
                             (GObject *)popup_opacity_scale, "value");
 
     vbox = glade_xml_get_widget (gxml, "main-vbox");
-    dialog = glade_xml_get_widget (gxml, "main-dialog");
+    gtk_widget_show_all (vbox);
 
-    gtk_widget_show_all(vbox);
-
-    if (easy_click)
-        g_free (easy_click);
-    if (activate_action)
-        g_free (activate_action);
-
-    return dialog;
+    g_free (easy_click);
+    g_free (activate_action);
 }
 
 static GOptionEntry entries[] =
 {
-    {    "version", 'v', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version,
-        N_("Version information"),
-        NULL
-    },
+    { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_ ("Session manager socket"), N_ ("SOCKET ID") }, 
+    { "version", 'v', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_ ("Version information"), NULL },
     { NULL }
 };
 
 int 
-main(int argc, gchar **argv)
+main (int argc, gchar **argv)
 {
-    GladeXML *gxml;
     GtkWidget *dialog;
+    GtkWidget *plug;
+    GtkWidget *plug_child;
+    GladeXML *gxml;
     GError *cli_error = NULL;
 
-    #ifdef ENABLE_NLS
-    bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
-    #endif
+#ifdef ENABLE_NLS
+    xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+#endif
 
-    if(!gtk_init_with_args(&argc, &argv, _("."), entries, PACKAGE, &cli_error))
+    if (!gtk_init_with_args (&argc, &argv, _ ("."), entries, PACKAGE, &cli_error))
     {
         if (cli_error != NULL)
         {
-            g_print (_("%s: %s\nTry %s --help to see a full list of available command line options.\n"), PACKAGE, cli_error->message, PACKAGE_NAME);
+            g_print (_ ("%s: %s\nTry %s --help to see a full list of available command line options.\n"), PACKAGE, cli_error->message, PACKAGE_NAME);
             g_error_free (cli_error);
             return 1;
         }
     }
 
-    if(version)
+    if (opt_version)
     {
-        g_print("%s\n", PACKAGE_STRING);
+        g_print ("%s\n", PACKAGE_STRING);
         return 0;
     }
 
-    xfconf_init(NULL);
+    xfconf_init (NULL);
 
     gxml = glade_xml_new_from_buffer (tweaks_dialog_glade,
                                       tweaks_dialog_glade_length,
                                       NULL, NULL);
 
-    dialog = wm_tweaks_dialog_new_from_xml (gxml);
+    if (gxml)
+    {
+        wm_tweaks_dialog_configure_widgets (gxml);
 
-    gtk_dialog_run(GTK_DIALOG(dialog));
+        if (opt_socket_id == 0)
+        {
+            dialog = glade_xml_get_widget (gxml, "main-dialog");
+            gtk_dialog_run (GTK_DIALOG (dialog));
+            gtk_widget_destroy (dialog);
+        }
+        else
+        {
+            /* Create plug widget */
+            plug = gtk_plug_new (opt_socket_id);
+            gtk_widget_show (plug);
 
-    xfconf_shutdown();
+            /* Get plug child widget */
+            plug_child = glade_xml_get_widget (gxml, "plug-child");
+            gtk_widget_reparent (plug_child, plug);
+            gtk_widget_show (plug_child);
+
+            /* Enter main loop */
+            gtk_main ();
+        }
+
+        g_object_unref (gxml);
+    }
+
+    xfconf_shutdown ();
 
     return 0;
 }

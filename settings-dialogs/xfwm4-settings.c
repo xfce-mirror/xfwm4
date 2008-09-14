@@ -4,8 +4,8 @@
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
+ * the Free Software Foundation; either opt_version 2 of the License, or
+ * (at your option) any later opt_version.
  * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -149,7 +149,8 @@ static ShortcutTmpl shortcuts_defaults[] = {
 
 
 
-static gboolean version = FALSE;
+static GdkNativeWindow opt_socket_id = 0;
+static gboolean opt_version = FALSE;
 static gchar *xfwm4_themerc_filename = NULL;
 
 
@@ -300,8 +301,8 @@ sort_func (GtkTreeModel * model, GtkTreeIter * a, GtkTreeIter * b, gpointer user
     return g_utf8_collate (a_str, b_str);
 }
 
-GtkWidget *
-xfwm4_dialog_new_from_xml (GladeXML *gxml)
+static void
+xfwm4_dialog_configure_widgets (GladeXML *gxml)
 {
   GtkWidget *dialog;
   GtkWidget *vbox;
@@ -569,43 +570,40 @@ xfwm4_dialog_new_from_xml (GladeXML *gxml)
   dialog = glade_xml_get_widget (gxml, "main-dialog");
 
   gtk_widget_show_all (vbox);
-
-  return dialog;
 }
 
 
 static GOptionEntry entries[] = {
-  {"version", 'v', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &version,
-   N_("Version information"),
-   NULL},
-  {NULL}
+  { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_("Settings manager socket"), N_("SOCKET ID") },
+  { "version", 'v', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Version information"), NULL },
+  { NULL }
 };
 
 
 int
 main (int argc, gchar **argv)
 {
-  GladeXML *gxml;
   GtkWidget *dialog;
+  GtkWidget *plug;
+  GtkWidget *plug_child;
+  GladeXML *gxml;
   GError *cli_error = NULL;
 
 #ifdef ENABLE_NLS
-  bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-  textdomain (GETTEXT_PACKAGE);
+  xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 #endif
 
   if (!gtk_init_with_args (&argc, &argv, _("."), entries, PACKAGE, &cli_error))
     {
       if (cli_error != NULL)
-	{
-	  g_print (_("%s: %s\nTry %s --help to see a full list of available command line options.\n"), PACKAGE, cli_error->message, PACKAGE_NAME);
-	  g_error_free (cli_error);
-	  return 1;
-	}
+        {
+          g_print (_("%s: %s\nTry %s --help to see a full list of available command line options.\n"), PACKAGE, cli_error->message, PACKAGE_NAME);
+          g_error_free (cli_error);
+          return 1;
+        }
     }
 
-  if (version)
+  if (opt_version)
     {
       g_print ("%s\n", PACKAGE_STRING);
       return 0;
@@ -615,9 +613,33 @@ main (int argc, gchar **argv)
 
   gxml = glade_xml_new_from_buffer (xfwm4_dialog_glade, xfwm4_dialog_glade_length, NULL, NULL);
 
-  dialog = xfwm4_dialog_new_from_xml (gxml);
+  if (G_LIKELY (gxml != NULL))
+    {
+      xfwm4_dialog_configure_widgets (gxml);
 
-  gtk_dialog_run (GTK_DIALOG (dialog));
+      if (G_UNLIKELY (opt_socket_id == 0))
+        {
+          dialog = glade_xml_get_widget (gxml, "main-dialog");
+          gtk_dialog_run (GTK_DIALOG (dialog));
+          gtk_widget_destroy (dialog);
+        }
+      else
+        {
+          /* Create plug widget */
+          plug = gtk_plug_new (opt_socket_id);
+          gtk_widget_show (plug);
+
+          /* Get plug child widget */
+          plug_child = glade_xml_get_widget (gxml, "plug-child");
+          gtk_widget_reparent (plug_child, plug);
+          gtk_widget_show (plug_child);
+
+          /* Enter main loop */
+          gtk_main ();
+        }
+
+      g_object_unref (gxml);
+    }
 
   xfconf_shutdown ();
 
