@@ -49,6 +49,7 @@
 #include "frap-shortcuts-dialog.h"
 
 
+#define DEFAULT_THEME "Default"
 
 enum
 {
@@ -277,6 +278,28 @@ check_xfwm4_themes (GtkListStore *list_store, GtkTreeView *tree_view, XfconfChan
     }
 }
 
+static gint
+sort_func (GtkTreeModel * model, GtkTreeIter * a, GtkTreeIter * b, gpointer user_data)
+{
+    gchar *a_str = NULL;
+    gchar *b_str = NULL;
+
+    gtk_tree_model_get (model, a, 0, &a_str, -1);
+    gtk_tree_model_get (model, b, 0, &b_str, -1);
+
+    if (a_str == NULL)
+        a_str = g_strdup ("");
+    if (b_str == NULL)
+        b_str = g_strdup ("");
+
+    if (!strcmp (a_str, DEFAULT_THEME))
+        return -1;
+    if (!strcmp (b_str, DEFAULT_THEME))
+        return 1;
+
+    return g_utf8_collate (a_str, b_str);
+}
+
 GtkWidget *
 xfwm4_dialog_new_from_xml (GladeXML *gxml)
 {
@@ -286,6 +309,7 @@ xfwm4_dialog_new_from_xml (GladeXML *gxml)
   GtkListStore *list_store;
   GtkCellRenderer *renderer;
   const MenuTmpl *tmpl_iter;
+  GtkTreeModel *tree_model;
   GtkTreeSelection *theme_selection;
   GtkTreeSelection *shortcuts_selection;
   GtkTargetEntry target_entry[2];
@@ -473,6 +497,10 @@ xfwm4_dialog_new_from_xml (GladeXML *gxml)
   renderer = gtk_cell_renderer_text_new ();
   gtk_tree_view_set_model (GTK_TREE_VIEW (theme_name_treeview), GTK_TREE_MODEL (list_store));
   gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (theme_name_treeview), 0, _("Theme"), renderer, "text", 0, NULL);
+
+  tree_model = gtk_tree_view_get_model (GTK_TREE_VIEW (theme_name_treeview));
+  gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (tree_model), 0, sort_func, NULL, NULL);
+  gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (tree_model), 0, GTK_SORT_ASCENDING);
 
   theme_selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (theme_name_treeview));
   gtk_tree_selection_set_mode (theme_selection, GTK_SELECTION_SINGLE);
