@@ -15,9 +15,11 @@ xfwm4_workspace_settings_CFLAGS = \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
+	$(LIBWNCK_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
 	-DSRCDIR=\"$(top_srcdir)\" \
-	-DLOCALEDIR=\"$(localedir)\"
+	-DLOCALEDIR=\"$(localedir)\" \
+	-DWNCK_I_KNOW_THIS_IS_UNSTABLE
 
 xfwm4_workspace_settings_LDADD = \
 	$(GTK_LIBS) \
@@ -26,7 +28,8 @@ xfwm4_workspace_settings_LDADD = \
 	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
 	$(LIBXFCEGUI4_LIBS) \
-	$(LIBXFCONF_LIBS)
+	$(LIBXFCONF_LIBS) \
+	$(LIBWNCK_LIBS)
 
 xfwm4_settings_SOURCES = \
 	xfwm4-settings.c \
