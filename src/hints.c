@@ -399,7 +399,7 @@ setGnomeProtocols (DisplayInfo *display_info, Window root, Window w)
 void
 setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 {
-    Atom atoms[64];
+    Atom atoms[ATOM_COUNT];
     unsigned long data[1];
     int i;
 
@@ -419,20 +419,36 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_SHOWING_DESKTOP];
     atoms[i++] = display_info->atoms[NET_SUPPORTED];
     atoms[i++] = display_info->atoms[NET_SUPPORTING_WM_CHECK];
+    atoms[i++] = display_info->atoms[NET_SYSTEM_TRAY_OPCODE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_ABOVE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_BELOW];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CHANGE_DESKTOP];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CLOSE];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_FULLSCREEN];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_HORZ];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_MAXIMIZE_VERT];
+    atoms[i++] = display_info->atoms[NET_WM_ACTION_MINIMIZE];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_MOVE];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_RESIZE];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_SHADE];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_STICK];
     atoms[i++] = display_info->atoms[NET_WM_ALLOWED_ACTIONS];
+    atoms[i++] = display_info->atoms[NET_WM_CONTEXT_HELP];
     atoms[i++] = display_info->atoms[NET_WM_DESKTOP];
     atoms[i++] = display_info->atoms[NET_WM_ICON];
     atoms[i++] = display_info->atoms[NET_WM_ICON_GEOMETRY];
     atoms[i++] = display_info->atoms[NET_WM_ICON_NAME];
     atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_MOVE];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_BOTTOM];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_KEYBOARD];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_LEFT];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_RIGHT];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOP];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOPLEFT];
+    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOPRIGHT];
     atoms[i++] = display_info->atoms[NET_WM_NAME];
     atoms[i++] = display_info->atoms[NET_WM_STATE];
     atoms[i++] = display_info->atoms[NET_WM_STATE_ABOVE];
@@ -453,6 +469,8 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_SYNC_REQUEST_COUNTER];
     atoms[i++] = display_info->atoms[NET_WM_USER_TIME];
     atoms[i++] = display_info->atoms[NET_WM_USER_TIME_WINDOW];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_OPACITY];
+    atoms[i++] = display_info->atoms[NET_WM_WINDOW_OPACITY_LOCKED];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG];
@@ -466,7 +484,10 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     atoms[i++] = display_info->atoms[NET_STARTUP_ID];
 #endif
-    g_assert (i < 64);
+#ifdef ENABLE_KDE_SYSTRAY_PROXY
+    atoms[i++] = display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR];
+#endif
+    g_assert (i < ATOM_COUNT);
     data[0] = check_win;
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_SUPPORTED],
                      XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
