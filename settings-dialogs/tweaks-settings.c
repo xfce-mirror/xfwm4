@@ -38,20 +38,35 @@
 static GdkNativeWindow opt_socket_id = 0;
 static gboolean opt_version = FALSE;
 
+static const gchar *const modifier_list[] = {
+    "Alt",
+    "Control",
+    "Hyper",
+    "Meta",
+    "Shift",
+    "Super",
+    "Mod1",
+    "Mod2",
+    "Mod3",
+    "Mod4",
+    "Mod5",
+    N_("None"),
+    NULL
+};
+
 void
 cb_easy_click_combo_box_changed (GtkComboBox *combo, XfconfChannel *channel)
 {
-    switch (gtk_combo_box_get_active (combo))
+    guint n;
+    
+    n = 0;
+    while (modifier_list[n])
     {
-        case 0:
-            xfconf_channel_set_string (channel, "/general/easy_click", "Alt");
-            break;
-        case 1:
-            xfconf_channel_set_string (channel, "/general/easy_click", "Control");
-            break;
-        default:
-            xfconf_channel_set_string (channel, "/general/easy_click", "Alt");
-            break;
+        if (gtk_combo_box_get_active (combo) == n)
+        {
+            xfconf_channel_set_string (channel, "/general/easy_click", modifier_list[n]);
+        }
+        n++;
     }
 }
 
@@ -104,6 +119,7 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     XfconfChannel *xfwm4_channel = xfconf_channel_new ("xfwm4");
     gchar *easy_click = NULL;
     gchar *activate_action = NULL;
+    guint n;
     
     /* Cycling tab */
     GtkWidget *cycle_workspaces_check = glade_xml_get_widget (gxml, "cycle_workspaces_check");
@@ -154,10 +170,12 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 
     /* Hinting Combo */
     list_store = gtk_list_store_new (1, G_TYPE_STRING);
-    gtk_list_store_append (list_store, &iter);
-    gtk_list_store_set (list_store, &iter, 0, N_ ("Alt"), -1);
-    gtk_list_store_append (list_store, &iter);
-    gtk_list_store_set (list_store, &iter, 0, N_ ("Ctrl"), -1);
+    n = 0;
+    while (modifier_list[n])
+    {
+        gtk_list_store_append (list_store, &iter);
+        gtk_list_store_set (list_store, &iter, 0, N_(modifier_list[n++]), -1);
+    }
 
     /* Fill combo-box */
     gtk_cell_layout_clear (GTK_CELL_LAYOUT (easy_click_combo_box));
