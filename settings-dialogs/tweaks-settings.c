@@ -168,27 +168,22 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     GtkWidget *resize_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "resize_opacity_scale")));
 
 
-    /* Hinting Combo */
-    list_store = gtk_list_store_new (1, G_TYPE_STRING);
-    n = 0;
-    while (modifier_list[n])
-    {
-        gtk_list_store_append (list_store, &iter);
-        gtk_list_store_set (list_store, &iter, 0, N_(modifier_list[n++]), -1);
-    }
-
     /* Fill combo-box */
+    list_store = gtk_list_store_new (1, G_TYPE_STRING);
+
+    easy_click = xfconf_channel_get_string (xfwm4_channel, "/general/easy_click", "Alt");
     gtk_cell_layout_clear (GTK_CELL_LAYOUT (easy_click_combo_box));
     renderer = gtk_cell_renderer_text_new ();
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (easy_click_combo_box), renderer, TRUE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (easy_click_combo_box), renderer, "text", 0);
-
     gtk_combo_box_set_model (GTK_COMBO_BOX (easy_click_combo_box), GTK_TREE_MODEL (list_store));
-
-    easy_click = xfconf_channel_get_string (xfwm4_channel, "/general/easy_click", "Alt");
-    gtk_combo_box_set_active (GTK_COMBO_BOX (easy_click_combo_box), 0);
-    if (!strcmp (easy_click, "Ctrl"))
-        gtk_combo_box_set_active (GTK_COMBO_BOX (easy_click_combo_box), 1);
+    for (n = 0; modifier_list[n]; n++)
+    {
+        gtk_list_store_append (list_store, &iter);
+        gtk_list_store_set (list_store, &iter, 0, N_(modifier_list[n]), -1);
+        if (!strcmp (easy_click, modifier_list[n]))
+            gtk_combo_box_set_active (GTK_COMBO_BOX (easy_click_combo_box), n);
+    }
 
     activate_action = xfconf_channel_get_string (xfwm4_channel, "/general/activate_action", "bring");
     if (!strcmp (activate_action, "switch"))
