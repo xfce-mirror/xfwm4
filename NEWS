@@ -1,21 +1,36 @@
 4.5.x
 =====
 
-- Add button prelight in window frames (Bug #3219)
-- Add resize from top of window
-- Rework the event filter to avoid passing all events top gtk+
-- Treat dialogs and utility windows as transients for group (bug #3102)
-- Add support for shape input with XShape extension 1.1 (Bug #3092)
+- Add button prelight in window frames (Bug #3219).
+- Add resize from top of window.
+- Rewritten move/resize operations with keyboard.
+- Add hooks in the compositor to reduce flickering during resize (bug #4283, 
+  #4268).
+- Support for EWMH 1.4 NET_WM_USER_TIME_WINDOW.
+- Window menu includes more operations (fullscreen, above, below, move, resize).
+- Support for xrandr 1.2 (requires gtk+ 2.14).
+- Iconified windows are sent to the end of the focus ring.
+- Add a --replace option to replace ICCCM2 compliant window managers 
+  (Bug #3731). 
+- Compositor supports overlays from Composite extension version 0.3 if 
+  available.
+- Reworked transient/parent relationship to improve compatibility with libwnck 
+  tasklist.
+- Add "fill" operation to make a window as large as available space.
+- Various optimizations to reduce the frame redraws.
+- Rework the event filter to avoid passing all events to gtk+.
+- Treat dialogs and utility windows as transients for group (bug #3102).
+- Add support for shape input with XShape extension 1.1 (Bug #3092).
 - Make the title button in the xfwm4 settings manager dragable (bug #3000).
 - Fix a misinterpretation of ICCCM about when to send a synthetic 
   configureNotify event (bug #2977).
-- Add new hidden option to instruct xfwm4 not to bring window back on 
-  current workspace when activated (bug #2961)
+- Add option to instruct xfwm4 not to bring window back on 
+  current workspace when activated (bug #2961).
 - Place splash screen windows on the normal layer, so that dialogs that 
   get mapped during startup have a chance to be placed above the splash 
   screen.
-- Raise focused window on workspace switch (bug #2960)
-- Sort Z-order on workspace change (bug #2960)
+- Raise focused window on workspace switch (bug #2960).
+- Sort Z-order on workspace change (bug #2960).
 - Fix the small lag before icon update at first map and when updating all 
   frames at once.
 - Use timeout for frame redraw, check actual WM name changes to work around 
@@ -33,7 +48,6 @@
   accelerators in the French translations.
 - New Albanian translations by Besnik Bleta
 - New British English translations by Jeff Bailes
-
 
 4.4.0
 =====

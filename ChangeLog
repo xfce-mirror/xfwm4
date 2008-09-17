@@ -1,75 +1,2484 @@
-2008-09-14 23:13	jannis
+2008-09-14 21:15  jannis
 
-	* settings-dialogs/*.desktop.in: Add X-XfcePluggable=true to desktop
+	* ChangeLog, settings-dialogs/xfce-wm-settings.desktop.in,
+	  settings-dialogs/xfce-wmtweaks-settings.desktop.in,
+	  settings-dialogs/xfce-workspaces-settings.desktop.in: *
+	  settings-dialogs/*.desktop.in: Add X-XfcePluggable=true to
+	  desktop
 	  files of the settings dialogs.
 
-2008-09-14 22:18	jannis
+2008-09-14 20:25  jannis
 
-	* settings-dialogs/tweaks-settings.c: Add copyright hint.
+	* ChangeLog: Doh.
 
-2008-09-14 22:14	jannis
+2008-09-14 20:19  jannis
 
-	* settings-dialogs/*.{c,glade}: Add embedding support to all xfwm4 settings
+	* ChangeLog, settings-dialogs/tweaks-settings.c: *
+	  settings-dialogs/tweaks-settings.c: Add copyright nothint.
+
+2008-09-14 20:14  jannis
+
+	* ChangeLog: * settings-dialogs/*.{c,glade}: Add embedding support
+	  to all xfwm4 settings
 	  dialogs.
 
-2008-09-08 22:20	jannis
+2008-09-14 20:14  jannis
 
-	* settings-dialogs/frap-shortcuts.c,
-	  settings-dialog/frap-shortcuts-dialog.c: Synchronize latest libfrap
-	  changes. 
-	* settings-dialogs/xfwm4-settings.c: Make keyboard tab insensitive.
-	  Shortcuts based on xfconf have been postponed to the first beta release
-	  and won't be available in the alpha.
+	* settings-dialogs/tweaks-settings.c,
+	  settings-dialogs/workspace-settings.c,
+	  settings-dialogs/xfwm4-dialog.glade,
+	  settings-dialogs/xfwm4-settings.c,
+	  settings-dialogs/xfwm4-tweaks-dialog.glade,
+	  settings-dialogs/xfwm4-workspace-dialog.glade: Add embedding
+	  support to all xfwm4 settings dialogs.
 
-2008-09-07 23:58	jannis
+2008-09-14 14:53  olivier
 
-	* settings-dialogs/frap-shortcuts-dialog.c: Update the dialog. It
-	  now uses XfceTitledDialog as a parent and also displays the partial
-	  shortcut while being entered - cool.
+	* settings-dialogs/xfwm4-settings.c: Sort theme alphabetically (Fix
+	  bug #4318)
 
-2008-09-07 23:19	jannis
-
-	* settings-dialogs/frap-shortcuts.{c,h},
-	  settings-dialogs/frap-shortcuts-dialog.c: Update to latest libfrap
-	  version.
-
-2008-09-07 18:50	jannis
-
-	* settings-dialogs/Makefile.am, settings-dialogs/frap-shortcuts.{c,h},
-	  settings-dialogs/frap-shortcuts-dialog.{c,h},
-	  settings-dialogs/xfwm4-settings.c: Import utility functions and the
-	  shortcut dialog from libfrap. Refactor the xfwm4 settings dialog so that
-	  it makes use of them. The code should now work better and be easier to
-	  read.
-
-2008-09-07 11:50	jannis
-
-	* settings-dialogs/shortcut-dialog.c: Remove unused Display variable.
-
-2008-09-07 11:34	jannis
-
-	* settings-dialogs/Xfwm4-settings.c: Remove unused function declaration.
-
-2008-09-06 20:21	jannis
-
-	* configure.ac.in: Add dependencies on dbus-1 and dbus-glib-1.
-	* settings-dialogs/xfwm4-settings.c: Add <dbus/dbus-glib.h> include.
-
-2008-09-06 16:39	jannis
+2008-09-14 10:20  kelnos
 
 	* settings-dialogs/Makefile.am,
-	  settings-dialogs/shortcut-dialog.{c,h}: Add (almost) the same dialog for
-	  entering shortcuts as we have in xfce4-settings. 
-	* settings-dialogs/xfwm4-settings.c: Implement the first part of the xfwm4
-	  keyboard shortcuts: Disable themes support, make shortcuts editable,
-	  implement the "reset to defaults" feature, handle 'property-changed'
-	  signal emitted by xfconf and allow for interactive resolving of 
-	  conflicts. Still missing: hard-coded default shorcuts and the actual X
-	  event monitor for all shortcuts.
+	  settings-dialogs/workspace-settings.c,
+	  settings-dialogs/xfwm4-workspace-dialog.glade: implement
+	  workspace name changing
 
-2008-09-04 19:24  jannis
+2008-09-14 10:19  kelnos
 
-	* autogen.sh: Add git svn revision versioning support.
+	* settings-dialogs/Makefile.am,
+	  settings-dialogs/workspace-settings.c: fix some minor nits
+
+2008-09-12 08:48  olivier
+
+	* src/client.c: Do not change windows list order when showing
+	  desktop
+
+2008-09-11 17:22  piarres
+
+	* po/ChangeLog, po/eu.po: xfwmn basque translation update
+
+2008-09-11 06:17  olivier
+
+	* src/placement.c: Add warnings when auto-maximizing a window
+
+2008-09-10 16:07  olivier
+
+	* src/compositor.c: Revert to the previous behaviour, do not
+	  allocate extents if the window is not visible (Bug #4363)
+
+2008-09-09 19:30  lars
+
+	* po/LINGUAS:
+
+2008-09-09 19:29  lars
+
+	* po/da.po:
+
+2008-09-09 19:28  lars
+
+	* po/LINGUAS:
+
+2008-09-09 19:27  lars
+
+	* po/LINGUAS:
+
+2008-09-09 08:44  olivier
+
+	* themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg: Sharpen bottom corners
+	  on the default theme
+
+2008-09-09 07:38  maximilian
+
+	* po/ChangeLog, po/fr.po, po/id.po: Translations updates and new
+	  ones for trunk in es,fr,id
+
+2008-09-08 21:06  stephan
+
+	* configure.ac.in: Update xfce library version requirements
+
+2008-09-08 20:31  jannis
+
+	* ChangeLog: Fix ChangeLog indentation.
+
+2008-09-08 20:24  jannis
+
+	* ChangeLog, po/ChangeLog, po/am.po, po/ar.po, po/az.po, po/be.po,
+	  po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/dz.po,
+	  po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gl.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/id.po, po/it.po, po/ja.po,
+	  po/ka.po, po/ko.po, po/lt.po, po/lv.po, po/mk.po, po/mr.po,
+	  po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sq.po, po/sv.po,
+	  po/ta.po, po/tr.po, po/uk.po, po/ur.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po,
+	  settings-dialogs/frap-shortcuts-dialog.c,
+	  settings-dialogs/frap-shortcuts.c,
+	  settings-dialogs/xfwm4-dialog.glade: *
+	  settings-dialogs/frap-shortcuts.c,
+	  settings-dialog/frap-shortcuts-dialog.c: Synchronize latest
+	  libfrap
+	  changes.
+	  * settings-dialogs/xfwm4-settings.c: Make keyboard tab
+	  insensitive.
+	  Shortcuts based on xfconf have been postponed to the first beta
+	  release
+	  and won't be available in the alpha.
+	  * *.po, xfwm4.pot: Merge strings.
+
+2008-09-07 21:59  jannis
+
+	* ChangeLog, settings-dialogs/frap-shortcuts-dialog.c: *
+	  settings-dialogs/frap-shortcuts-dialog.c: Update the dialog. It
+	  now uses XfceTitledDialog as a parent and also displays the
+	  partial
+	  shortcut while being entered - cool.
+
+2008-09-07 21:20  jannis
+
+	* ChangeLog, settings-dialogs/frap-shortcuts-dialog.c,
+	  settings-dialogs/frap-shortcuts.c,
+	  settings-dialogs/frap-shortcuts.h: *
+	  settings-dialogs/frap-shortcuts.{c,h},
+	  settings-dialogs/frap-shortcuts-dialog.c: Update to latest
+	  libfrap
+	  version.
+
+2008-09-07 17:04  jannis
+
+	* ChangeLog, po/ChangeLog: settings-dialogs/xfwm4-settings.c:
+	  Import utility functions and the
+	  shortcut dialog from libfrap. Refactor the xfwm4 settings dialog
+	  so that
+	  it makes use of them. The code should now work better and be
+	  easier to
+	  read.
+	  * POTFILES.in: Add frap-shortcuts.c and frap-shortcuts-dialog.c.
+	  * *.po, xfwm4.pot: Merge new strings.
+
+2008-09-07 17:02  jannis
+
+	* ChangeLog, po/POTFILES.in, po/am.po, po/ar.po, po/az.po,
+	  po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po,
+	  po/dz.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gl.po,
+	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/id.po, po/it.po,
+	  po/ja.po, po/ka.po, po/ko.po, po/lt.po, po/lv.po, po/mk.po,
+	  po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po,
+	  po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sq.po,
+	  po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/ur.po, po/vi.po,
+	  po/xfwm4.pot[CPY], po/zh_CN.po, po/zh_TW.po,
+	  settings-dialogs/Makefile.am,
+	  settings-dialogs/frap-shortcuts-dialog.c,
+	  settings-dialogs/frap-shortcuts-dialog.h,
+	  settings-dialogs/frap-shortcuts.c,
+	  settings-dialogs/frap-shortcuts.h,
+	  settings-dialogs/shortcut-dialog.c[DEL],
+	  settings-dialogs/shortcut-dialog.h[DEL],
+	  settings-dialogs/xfwm4-settings.c: *
+	  settings-dialogs/Makefile.am,
+	  settings-dialogs/frap-shortcuts.{c,h},
+	  settings-dialogs/frap-shortcuts-dialog.{c,h},
+	  settings-dialogs/xfwm4-settings.c: Import utility functions and
+	  the
+	  shortcut dialog from libfrap. Refactor the xfwm4 settings dialog
+	  so that
+	  it makes use of them. The code should now work better and be
+	  easier to
+	  read.
+
+2008-09-07 09:50  jannis
+
+	* ChangeLog, settings-dialogs/shortcut-dialog.c: *
+	  settings-dialogs/shortcut-dialog.c: Remove unused Display
+	  variable.
+
+2008-09-07 09:35  jannis
+
+	* ChangeLog, settings-dialogs/xfwm4-settings.c: *
+	  settings-dialogs/Xfwm4-settings.c: Remove unused function
+	  declaration.
+
+2008-09-06 21:01  kelnos
+
+	* settings-dialogs/xfwm4-settings.c: hook up missing
+	  wrap_workspaces and wrap_windows properties
+
+2008-09-06 18:22  jannis
+
+	* ChangeLog, configure.ac.in, po/xfwm4.pot[DEL],
+	  settings-dialogs/xfwm4-settings.c: * configure.ac.in: Add
+	  dependencies on dbus-1 and dbus-glib-1.
+	  * settings-dialogs/xfwm4-settings.c: Add <dbus/dbus-glib.h>
+	  include. \n
+
+2008-09-06 14:47  jannis
+
+	* ChangeLog, po/ChangeLog, po/POTFILES.in, po/am.po, po/ar.po,
+	  po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po,
+	  po/de.po, po/dz.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
+	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/gl.po, po/gu.po, po/he.po, po/hi.po, po/hu.po, po/id.po,
+	  po/it.po, po/ja.po, po/ka.po, po/ko.po, po/lt.po, po/lv.po,
+	  po/mk.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po,
+	  po/sq.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/ur.po,
+	  po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po,
+	  settings-dialogs/Makefile.am, settings-dialogs/shortcut-dialog.c,
+	  settings-dialogs/shortcut-dialog.h,
+	  settings-dialogs/xfwm4-dialog.glade,
+	  settings-dialogs/xfwm4-settings.c: *
+	  settings-dialogs/Makefile.am,
+	  settings-dialogs/shortcut-dialog.{c,h}: Add (almost) the same
+	  dialog for
+	  entering shortcuts as we have in xfce4-settings.
+	  * settings-dialogs/xfwm4-settings.c: Implement the first part of
+	  the xfwm4
+	  keyboard shortcuts: Disable themes support, make shortcuts
+	  editable,
+	  implement the "reset to defaults" feature, handle
+	  'property-changed'
+	  signal emitted by xfconf and allow for interactive resolving of
+	  conflicts. Still missing: hard-coded default shorcuts and the
+	  actual X
+	  event monitor for all shortcuts. \n * POTFILES.in: Add
+	  shortcut-dialog.c.
+	  * *.po, xfwm4.pot: Merge new strings.
+
+2008-09-04 17:25  jannis
+
+	* ChangeLog, autogen.sh: * autogen.sh: Add git svn revision
+	  versioning support.
+
+2008-09-01 02:01  sas
+
+	* po/hu.po: [intl:hu] xarchiver xfwm update, please dont use
+	  (Un)... format
+
+2008-08-29 22:12  maximilian
+
+	* po/ChangeLog, po/de.po, po/ko.po: Updated various pending
+	  translations (German,Korean and Slovene)
+
+2008-08-28 10:59  piarres
+
+	* po/ChangeLog, po/eu.po: Basque translation uypdate
+
+2008-08-25 06:27  kelnos
+
+	* po/POTFILES.in, po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/dz.po, po/el.po,
+	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po,
+	  po/fa.po, po/fi.po, po/fr.po, po/gl.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/id.po, po/it.po, po/ja.po, po/ka.po,
+	  po/ko.po, po/lt.po, po/lv.po, po/mk.po, po/mr.po, po/ms.po,
+	  po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sq.po, po/sv.po,
+	  po/ta.po, po/tr.po, po/uk.po, po/ur.po, po/vi.po, po/xfwm4.pot,
+	  po/zh_CN.po, po/zh_TW.po: fix POTFILES.in, update-po
+
+2008-08-25 06:20  kelnos
+
+	* configure.ac.in, settings-dialogs/Makefile.am,
+	  settings-dialogs/xfce-wm-settings.desktop.in,
+	  settings-dialogs/xfce-wmtweaks-settings.desktop.in,
+	  settings-dialogs/xfce-workspaces-settings.desktop.in,
+	  settings-dialogs/xfwm4-dialog.glade,
+	  settings-dialogs/xfwm4-tweaks-dialog.glade,
+	  settings-dialogs/xfwm4-workspace-dialog.glade: consistent-ify the
+	  settings dialogs with those from xfce4-settings
+
+2008-08-24 16:03  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/close-active.png,
+	  themes/default/close-inactive.png,
+	  themes/default/close-prelight.png,
+	  themes/default/close-pressed.png, themes/default/hide-active.png,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-pressed.png, themes/default/left-active.png,
+	  themes/default/left-active.svg, themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/right-active.png, themes/default/right-active.svg,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/shade-active.png,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/stick-active.png,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg: Add a small light frame to
+	  enhance window limits.
+
+2008-08-24 16:00  olivier
+
+	* src/client.c, src/moveresize.c, src/placement.c: Various small
+	  changes for win resize, do not automaximize undecorated windows
+
+2008-08-24 02:32  kelnos
+
+	* settings-dialogs/xfwm4-tweaks-dialog.glade,
+	  settings-dialogs/xfwm4-workspace-dialog.glade: tweak wmtweaks and
+	  workspaces settings dialogs quite a bit
+	  
+	  make padding and spacing consistent with xfdesktop, use
+	  XfceTitledDialog
+	  rather than XfceHeading, set header subtitle, set window title
+	  correctly,
+	  set window icon correctly, add keyboard accels to all controls,
+	  don't
+	  set window width (instead force no horiz scrollbar)
+
+2008-08-24 01:52  kelnos
+
+	* settings-dialogs/xfwm4-dialog.glade,
+	  settings-dialogs/xfwm4-settings.c: tweak main xfwm4 settings
+	  dialog quite a bit
+	  
+	  make padding and spacing consistent with xfdesktop, use
+	  XfceTitledDialog
+	  rather than XfceHeading, set header subtitle, set window title
+	  correctly,
+	  set window icon correctly, add keyboard accels to all controls
+
+2008-08-24 01:02  kelnos
+
+	* settings-dialogs/Makefile.am,
+	  settings-dialogs/xfce-wm-settings.desktop.in[CPY],
+	  settings-dialogs/xfce-wmtweaks-settings.desktop.in[CPY],
+	  settings-dialogs/xfce-workspaces-settings.desktop.in[CPY],
+	  settings-dialogs/xfwm4-settings.desktop.in[DEL],
+	  settings-dialogs/xfwm4-tweaks-settings.desktop.in[DEL],
+	  settings-dialogs/xfwm4-workspace-settings.desktop.in[DEL]: rename
+	  the .desktop files to their old names; fix missing fields
+
+2008-08-23 18:57  pollux
+
+	* settings-dialogs/xfwm4-settings.desktop.in: use the same casing
+	  and spelling as the tweaking dialog
+
+2008-08-17 20:16  stephan
+
+	* configure.ac.in: Bump version number
+
+2008-08-17 20:15  stephan
+
+	* configure.ac.in: Bump version number
+
+2008-08-17 20:05  stephan
+
+	* po/POTFILES.in, settings-dialogs/Makefile.am, src/compositor.c,
+	  src/events.c: Fix make distcheck
+
+2008-08-15 20:56  olivier
+
+	* src/client.c, src/compositor.c, src/compositor.h, src/events.c:
+	  Rework the resize of windows to avoid hidden portions to become
+	  visible, add a hook to update the compositor as relying on
+	  configure notify introduces lags and flickers (Bug #4283)
+
+2008-08-14 22:36  olivier
+
+	* src/client.c, src/compositor.c, src/events.c, src/moveresize.c,
+	  src/screen.h, src/xsync.c: Fix XSync (apparently broken since the
+	  beginning), rework window resize, rework shape notification in
+	  the compositor, trash the decremental repaint timeout
+
+2008-08-12 11:00  jari
+
+	* po/ChangeLog, po/fi.po: Updated Finnish translations.
+
+2008-08-10 21:42  maximilian
+
+	* po/ChangeLog, po/id.po, po/ko.po, po/pl.po: Translations updated
+	  and added in Indonesian, Korean and Polish.
+
+2008-08-09 22:54  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-prelight.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-prelight.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-inactive.png,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-prelight.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-prelight.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-prelight.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm, themes/default/right-active.png,
+	  themes/default/right-inactive.png,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-prelight.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-prelight.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-prelight.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-prelight.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/default/top-right-inactive.xpm: Reduce title height of the
+	  default theme.
+
+2008-08-09 22:52  olivier
+
+	* src/compositor.c: Adjust values of adaptative timeout
+
+2008-08-09 22:32  olivier
+
+	* src/compositor.c, src/screen.h: Compositor: Implement some sort
+	  of an adaptative timeout mechanism.
+
+2008-08-09 15:43  olivier
+
+	* src/compositor.c, src/display.h, src/screen.h: Compositor: remove
+	  idle repaint, use only the timeout repaint (should help iwith
+	  flickers induced by X window resize, bug #4268),
+	  Manage timeout repaints per screen (instead of display).
+
+2008-08-04 20:44  olivier
+
+	* settings-dialogs/Makefile.in[DEL],
+	  settings-dialogs/xfwm4-dialog_glade.h[DEL],
+	  settings-dialogs/xfwm4-settings.desktop[DEL],
+	  settings-dialogs/xfwm4-tweaks-dialog_glade.h[DEL],
+	  settings-dialogs/xfwm4-tweaks-settings.desktop[DEL],
+	  settings-dialogs/xfwm4-workspace-dialog_glade.h[DEL],
+	  settings-dialogs/xfwm4-workspace-settings.desktop[DEL]: Remove
+	  generated files from source control
+
+2008-08-04 20:28  olivier
+
+	* Makefile.am, configure.ac.in, settings-dialogs,
+	  settings-dialogs/Makefile.am, settings-dialogs/Makefile.in,
+	  settings-dialogs/tweaks-settings.c,
+	  settings-dialogs/workspace-settings.c,
+	  settings-dialogs/xfwm4-dialog.glade,
+	  settings-dialogs/xfwm4-dialog_glade.h,
+	  settings-dialogs/xfwm4-settings.c,
+	  settings-dialogs/xfwm4-settings.desktop,
+	  settings-dialogs/xfwm4-settings.desktop.in,
+	  settings-dialogs/xfwm4-tweaks-dialog.glade,
+	  settings-dialogs/xfwm4-tweaks-dialog_glade.h,
+	  settings-dialogs/xfwm4-tweaks-settings.desktop,
+	  settings-dialogs/xfwm4-tweaks-settings.desktop.in,
+	  settings-dialogs/xfwm4-workspace-dialog.glade,
+	  settings-dialogs/xfwm4-workspace-dialog_glade.h,
+	  settings-dialogs/xfwm4-workspace-settings.desktop,
+	  settings-dialogs/xfwm4-workspace-settings.desktop.in,
+	  src/Makefile.am, src/keyboard.c, src/keyboard.h, src/main.c,
+	  src/menu.c, src/mypixmap.c, src/mypixmap.h, src/parserc.c,
+	  src/parserc.h, src/screen.c, src/screen.h, src/settings.c,
+	  src/settings.h: Merge work from Stephan Arts <stephan@xfce.org>
+	  (Bug #4065)
+
+2008-07-22 15:42  olivier
+
+	* themes/default/themerc: Increase buttons offset
+
+2008-07-21 09:14  olivier
+
+	* src/hints.c: Fix segfault introduced with latest commit
+
+2008-07-20 21:22  olivier
+
+	* src/client.c, src/client.h, src/display.c, src/display.h,
+	  src/events.c, src/hints.c, src/hints.h, src/netwm.c,
+	  src/stacking.c: Add support for EWMH 1.4 NET_WM_USER_TIME_WINDOW
+	  property,
+	  use a separate layer for fullscreen windows (Bug #3526).
+
+2008-07-20 14:50  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/left-active.png, themes/default/left-active.svg,
+	  themes/default/left-active.xpm, themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/right-active.png, themes/default/right-active.svg,
+	  themes/default/right-active.xpm,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg: Update themes
+
+2008-07-18 19:19  alnokta
+
+	* po/ar.po: Update Arabic translations
+
+2008-07-15 23:12  omaciel
+
+	* po/pt_BR.po: Updated Brazilian Portuguese translation.
+
+2008-07-15 15:12  omaciel
+
+	* po/ChangeLog, po/pt_BR.po: Updated Brazilian Portuguese
+	  translation.
+
+2008-07-14 07:12  mvd
+
+	* po/uk.po: Update Ukrainian translation
+
+2008-07-13 12:11  majkl
+
+	* po/am.po, po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po,
+	  po/ca.po, po/cs.po, po/de.po, po/dz.po, po/el.po, po/en_GB.po,
+	  po/eo.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po, po/fa.po,
+	  po/fi.po, po/fr.po, po/gl.po, po/gu.po, po/he.po, po/hi.po,
+	  po/hu.po, po/id.po, po/it.po, po/ja.po, po/ka.po, po/ko.po,
+	  po/lt.po, po/lv.po, po/mk.po, po/mr.po, po/ms.po, po/nb_NO.po,
+	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
+	  po/ru.po, po/sk.po, po/sq.po, po/sv.po, po/ta.po, po/tr.po,
+	  po/uk.po, po/ur.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
+	  po/zh_TW.po: Updated POT and PO files: New strings were added.
+	  Czech translation file updated.
+
+2008-07-07 08:09  olivier
+
+	* src/menu.c: Set monitor when positionning menu (Bug #4162)
+
+2008-06-26 22:09  maximilian
+
+	* po/ChangeLog, po/gl.po: Translations added and updated for most
+	  trunk packages (gl)
+
+2008-06-25 11:57  olivier
+
+	* src/events.c: Release events prior to opening the gtk menu to
+	  avoid a deadlock
+
+2008-06-22 10:57  mmassonnet
+
+	* po/ChangeLog, po/LINGUAS, po/id.po: update-po
+
+2008-06-22 08:54  maximilian
+
+	* po/ChangeLog, po/sk.po: xfwm4 Slovak translation update
+
+2008-06-21 22:15  olivier
+
+	* mcs-plugin/xfwm4_shortcuteditor.c: Add missing bits of patch from
+	  bug #3595
+
+2008-06-21 15:17  olivier
+
+	* src/client.c, src/client.h, src/events.c, src/menu.c, src/menu.h,
+	  src/netwm.c, src/netwm.h: Rework the window menu, add more
+	  actions (above/normal/below, fullscreen/un-fullscreen)
+
+2008-06-19 07:18  olivier
+
+	* src/client.c, src/client.h, src/focus.c, src/settings.c: Make
+	  focused opacity more efficient (although much simpler, but I
+	  don't really like this feture anyway)
+
+2008-06-18 20:43  olivier
+
+	* src/events.c, src/focus.c, src/netwm.c, src/netwm.h: Rework focus
+	  transitioning
+
+2008-06-17 21:39  olivier
+
+	* src/events.c: Small code reorg
+
+2008-06-16 21:46  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-prelight.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-prelight.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.svg, themes/default/left-active.xpm,
+	  themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-prelight.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-prelight.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-prelight.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm, themes/default/right-active.png,
+	  themes/default/right-active.svg, themes/default/right-active.xpm,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-prelight.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-prelight.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-prelight.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-prelight.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg, themes/kokodi/README,
+	  themes/kokodi/bottom-active.png, themes/kokodi/bottom-active.svg,
+	  themes/kokodi/bottom-active.xpm,
+	  themes/kokodi/bottom-inactive.png,
+	  themes/kokodi/bottom-inactive.svg,
+	  themes/kokodi/bottom-inactive.xpm,
+	  themes/kokodi/bottom-left-active.png,
+	  themes/kokodi/bottom-left-active.svg,
+	  themes/kokodi/bottom-left-active.xpm,
+	  themes/kokodi/bottom-left-inactive.png,
+	  themes/kokodi/bottom-left-inactive.svg,
+	  themes/kokodi/bottom-left-inactive.xpm,
+	  themes/kokodi/bottom-right-active.png,
+	  themes/kokodi/bottom-right-active.svg,
+	  themes/kokodi/bottom-right-active.xpm,
+	  themes/kokodi/bottom-right-inactive.png,
+	  themes/kokodi/bottom-right-inactive.svg,
+	  themes/kokodi/bottom-right-inactive.xpm,
+	  themes/kokodi/close-active.png, themes/kokodi/close-active.svg,
+	  themes/kokodi/close-active.xpm, themes/kokodi/close-inactive.png,
+	  themes/kokodi/close-inactive.svg,
+	  themes/kokodi/close-inactive.xpm,
+	  themes/kokodi/close-prelight.png,
+	  themes/kokodi/close-prelight.svg,
+	  themes/kokodi/close-prelight.xpm,
+	  themes/kokodi/close-pressed.png, themes/kokodi/close-pressed.svg,
+	  themes/kokodi/close-pressed.xpm, themes/kokodi/hide-active.png,
+	  themes/kokodi/hide-active.svg, themes/kokodi/hide-active.xpm,
+	  themes/kokodi/hide-inactive.png, themes/kokodi/hide-inactive.svg,
+	  themes/kokodi/hide-inactive.xpm, themes/kokodi/hide-prelight.png,
+	  themes/kokodi/hide-prelight.svg, themes/kokodi/hide-prelight.xpm,
+	  themes/kokodi/hide-pressed.png, themes/kokodi/hide-pressed.svg,
+	  themes/kokodi/hide-pressed.xpm, themes/kokodi/left-active.png,
+	  themes/kokodi/left-active.svg, themes/kokodi/left-active.xpm,
+	  themes/kokodi/left-inactive.png, themes/kokodi/left-inactive.svg,
+	  themes/kokodi/left-inactive.xpm,
+	  themes/kokodi/maximize-active.png,
+	  themes/kokodi/maximize-active.svg,
+	  themes/kokodi/maximize-active.xpm,
+	  themes/kokodi/maximize-inactive.png,
+	  themes/kokodi/maximize-inactive.svg,
+	  themes/kokodi/maximize-inactive.xpm,
+	  themes/kokodi/maximize-prelight.png,
+	  themes/kokodi/maximize-prelight.svg,
+	  themes/kokodi/maximize-prelight.xpm,
+	  themes/kokodi/maximize-pressed.png,
+	  themes/kokodi/maximize-pressed.svg,
+	  themes/kokodi/maximize-pressed.xpm,
+	  themes/kokodi/maximize-toggled-active.png,
+	  themes/kokodi/maximize-toggled-active.svg,
+	  themes/kokodi/maximize-toggled-active.xpm,
+	  themes/kokodi/maximize-toggled-inactive.png,
+	  themes/kokodi/maximize-toggled-inactive.svg,
+	  themes/kokodi/maximize-toggled-inactive.xpm,
+	  themes/kokodi/maximize-toggled-prelight.png,
+	  themes/kokodi/maximize-toggled-prelight.svg,
+	  themes/kokodi/maximize-toggled-prelight.xpm,
+	  themes/kokodi/maximize-toggled-pressed.png,
+	  themes/kokodi/maximize-toggled-pressed.svg,
+	  themes/kokodi/maximize-toggled-pressed.xpm,
+	  themes/kokodi/menu-active.png, themes/kokodi/menu-active.svg,
+	  themes/kokodi/menu-active.xpm, themes/kokodi/menu-inactive.png,
+	  themes/kokodi/menu-inactive.svg, themes/kokodi/menu-inactive.xpm,
+	  themes/kokodi/menu-prelight.png, themes/kokodi/menu-prelight.svg,
+	  themes/kokodi/menu-prelight.xpm, themes/kokodi/menu-pressed.png,
+	  themes/kokodi/menu-pressed.svg, themes/kokodi/menu-pressed.xpm,
+	  themes/kokodi/right-active.png, themes/kokodi/right-active.svg,
+	  themes/kokodi/right-active.xpm, themes/kokodi/right-inactive.png,
+	  themes/kokodi/right-inactive.svg,
+	  themes/kokodi/right-inactive.xpm, themes/kokodi/shade-active.png,
+	  themes/kokodi/shade-active.svg, themes/kokodi/shade-active.xpm,
+	  themes/kokodi/shade-inactive.png,
+	  themes/kokodi/shade-inactive.svg,
+	  themes/kokodi/shade-inactive.xpm,
+	  themes/kokodi/shade-prelight.png,
+	  themes/kokodi/shade-prelight.svg,
+	  themes/kokodi/shade-prelight.xpm,
+	  themes/kokodi/shade-pressed.png, themes/kokodi/shade-pressed.svg,
+	  themes/kokodi/shade-pressed.xpm,
+	  themes/kokodi/shade-toggled-active.png,
+	  themes/kokodi/shade-toggled-active.svg,
+	  themes/kokodi/shade-toggled-active.xpm,
+	  themes/kokodi/shade-toggled-inactive.png,
+	  themes/kokodi/shade-toggled-inactive.svg,
+	  themes/kokodi/shade-toggled-inactive.xpm,
+	  themes/kokodi/shade-toggled-prelight.png,
+	  themes/kokodi/shade-toggled-prelight.svg,
+	  themes/kokodi/shade-toggled-prelight.xpm,
+	  themes/kokodi/shade-toggled-pressed.png,
+	  themes/kokodi/shade-toggled-pressed.svg,
+	  themes/kokodi/shade-toggled-pressed.xpm,
+	  themes/kokodi/stick-active.png, themes/kokodi/stick-active.svg,
+	  themes/kokodi/stick-active.xpm, themes/kokodi/stick-inactive.png,
+	  themes/kokodi/stick-inactive.svg,
+	  themes/kokodi/stick-inactive.xpm,
+	  themes/kokodi/stick-prelight.png,
+	  themes/kokodi/stick-prelight.svg,
+	  themes/kokodi/stick-prelight.xpm,
+	  themes/kokodi/stick-pressed.png, themes/kokodi/stick-pressed.svg,
+	  themes/kokodi/stick-pressed.xpm,
+	  themes/kokodi/stick-toggled-active.png,
+	  themes/kokodi/stick-toggled-active.svg,
+	  themes/kokodi/stick-toggled-active.xpm,
+	  themes/kokodi/stick-toggled-inactive.png,
+	  themes/kokodi/stick-toggled-inactive.svg,
+	  themes/kokodi/stick-toggled-inactive.xpm,
+	  themes/kokodi/stick-toggled-prelight.png,
+	  themes/kokodi/stick-toggled-prelight.svg,
+	  themes/kokodi/stick-toggled-prelight.xpm,
+	  themes/kokodi/stick-toggled-pressed.png,
+	  themes/kokodi/stick-toggled-pressed.svg,
+	  themes/kokodi/stick-toggled-pressed.xpm, themes/kokodi/themerc,
+	  themes/kokodi/title-1-active.png,
+	  themes/kokodi/title-1-active.svg,
+	  themes/kokodi/title-1-active.xpm,
+	  themes/kokodi/title-1-inactive.png,
+	  themes/kokodi/title-1-inactive.svg,
+	  themes/kokodi/title-1-inactive.xpm,
+	  themes/kokodi/title-2-active.png,
+	  themes/kokodi/title-2-active.svg,
+	  themes/kokodi/title-2-active.xpm,
+	  themes/kokodi/title-2-inactive.png,
+	  themes/kokodi/title-2-inactive.svg,
+	  themes/kokodi/title-2-inactive.xpm,
+	  themes/kokodi/title-3-active.png,
+	  themes/kokodi/title-3-active.svg,
+	  themes/kokodi/title-3-active.xpm,
+	  themes/kokodi/title-3-inactive.png,
+	  themes/kokodi/title-3-inactive.svg,
+	  themes/kokodi/title-3-inactive.xpm,
+	  themes/kokodi/title-4-active.png,
+	  themes/kokodi/title-4-active.svg,
+	  themes/kokodi/title-4-active.xpm,
+	  themes/kokodi/title-4-inactive.png,
+	  themes/kokodi/title-4-inactive.svg,
+	  themes/kokodi/title-4-inactive.xpm,
+	  themes/kokodi/title-5-active.png,
+	  themes/kokodi/title-5-active.svg,
+	  themes/kokodi/title-5-active.xpm,
+	  themes/kokodi/title-5-inactive.png,
+	  themes/kokodi/title-5-inactive.svg,
+	  themes/kokodi/title-5-inactive.xpm,
+	  themes/kokodi/top-left-active.png,
+	  themes/kokodi/top-left-active.svg,
+	  themes/kokodi/top-left-active.xpm,
+	  themes/kokodi/top-left-inactive.png,
+	  themes/kokodi/top-left-inactive.svg,
+	  themes/kokodi/top-left-inactive.xpm,
+	  themes/kokodi/top-right-active.png,
+	  themes/kokodi/top-right-active.svg,
+	  themes/kokodi/top-right-active.xpm,
+	  themes/kokodi/top-right-inactive.png,
+	  themes/kokodi/top-right-inactive.svg,
+	  themes/kokodi/top-right-inactive.xpm: Update themes
+
+2008-06-16 21:17  olivier
+
+	* src/client.c, src/netwm.c, src/workspaces.c: Remove workarounds
+	  for older bugs, fixes side effects with Tk apps stealing focus on
+	  pointer ungrab (Bug #4154)
+
+2008-06-15 21:18  olivier
+
+	* src/events.c: Use gdk/gtk+ callback mechanism to be notified of
+	  screen/monitor changes, add support for XRandr 1.2
+
+2008-06-15 11:30  olivier
+
+	* src/focus.c: Set focus to the fallback window when relying only
+	  on TakeFocus to avoid a race condition with the client
+	  application
+
+2008-06-05 21:30  olivier
+
+	* themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/left-active.png, themes/default/left-active.svg,
+	  themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/right-active.png, themes/default/right-active.svg,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg: Small theme fix
+
+2008-06-05 21:29  olivier
+
+	* src/client.c, src/cycle.c, src/events.c, src/focus.c,
+	  src/focus.h, src/moveresize.c, src/stacking.c, src/stacking.h:
+	  Move iconified windows to the end of the focus ring, improve
+	  focus management
+
+2008-06-03 21:26  olivier
+
+	* src/events.c, src/moveresize.c, src/netwm.c: Cleanup
+
+2008-06-03 20:43  olivier
+
+	* themes/default/README, themes/kokodi/README: Update themes README
+
+2008-06-03 20:39  olivier
+
+	* themes/default/Makefile.am, themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-prelight.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-prelight.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.svg, themes/default/left-active.xpm,
+	  themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-prelight.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-prelight.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-prelight.png,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-prelight.xpm,
+	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
+	  themes/default/menu-pressed.xpm, themes/default/right-active.png,
+	  themes/default/right-active.svg, themes/default/right-active.xpm,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-prelight.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-prelight.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-prelight.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-prelight.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/default/top-right-inactive.xpm: Huh, the wrong stuff was
+	  commited yesterday...
+
+2008-06-02 21:40  olivier
+
+	* themes/kokodi/menu-prelight.png, themes/kokodi/menu-pressed.png:
+	  Add missing bits
+
+2008-06-02 21:40  olivier
+
+	* themes/kokodi/bottom-active.png, themes/kokodi/bottom-active.svg,
+	  themes/kokodi/bottom-inactive.png,
+	  themes/kokodi/bottom-inactive.svg,
+	  themes/kokodi/bottom-left-active.png,
+	  themes/kokodi/bottom-left-active.svg,
+	  themes/kokodi/bottom-left-inactive.png,
+	  themes/kokodi/bottom-left-inactive.svg,
+	  themes/kokodi/bottom-right-active.png,
+	  themes/kokodi/bottom-right-active.svg,
+	  themes/kokodi/bottom-right-inactive.png,
+	  themes/kokodi/bottom-right-inactive.svg,
+	  themes/kokodi/close-active.png, themes/kokodi/close-inactive.png,
+	  themes/kokodi/close-prelight.png,
+	  themes/kokodi/close-pressed.png, themes/kokodi/hide-active.png,
+	  themes/kokodi/hide-inactive.png, themes/kokodi/hide-prelight.png,
+	  themes/kokodi/hide-pressed.png, themes/kokodi/left-active.png,
+	  themes/kokodi/left-active.svg, themes/kokodi/left-inactive.png,
+	  themes/kokodi/left-inactive.svg,
+	  themes/kokodi/maximize-active.png,
+	  themes/kokodi/maximize-inactive.png,
+	  themes/kokodi/maximize-prelight.png,
+	  themes/kokodi/maximize-pressed.png,
+	  themes/kokodi/maximize-toggled-active.png,
+	  themes/kokodi/maximize-toggled-inactive.png,
+	  themes/kokodi/maximize-toggled-prelight.png,
+	  themes/kokodi/maximize-toggled-pressed.png,
+	  themes/kokodi/menu-active.png, themes/kokodi/menu-inactive.png,
+	  themes/kokodi/right-active.png, themes/kokodi/right-active.svg,
+	  themes/kokodi/right-inactive.png,
+	  themes/kokodi/right-inactive.svg, themes/kokodi/shade-active.png,
+	  themes/kokodi/shade-inactive.png,
+	  themes/kokodi/shade-prelight.png,
+	  themes/kokodi/shade-pressed.png,
+	  themes/kokodi/shade-toggled-active.png,
+	  themes/kokodi/shade-toggled-inactive.png,
+	  themes/kokodi/shade-toggled-prelight.png,
+	  themes/kokodi/shade-toggled-pressed.png,
+	  themes/kokodi/stick-active.png, themes/kokodi/stick-inactive.png,
+	  themes/kokodi/stick-prelight.png,
+	  themes/kokodi/stick-pressed.png,
+	  themes/kokodi/stick-toggled-active.png,
+	  themes/kokodi/stick-toggled-inactive.png,
+	  themes/kokodi/stick-toggled-prelight.png,
+	  themes/kokodi/stick-toggled-pressed.png,
+	  themes/kokodi/title-1-active.png,
+	  themes/kokodi/title-1-inactive.png,
+	  themes/kokodi/title-2-active.png,
+	  themes/kokodi/title-2-inactive.png,
+	  themes/kokodi/title-3-active.png,
+	  themes/kokodi/title-3-inactive.png,
+	  themes/kokodi/title-4-active.png,
+	  themes/kokodi/title-4-inactive.png,
+	  themes/kokodi/title-5-active.png,
+	  themes/kokodi/title-5-inactive.png,
+	  themes/kokodi/top-left-active.png,
+	  themes/kokodi/top-left-inactive.png,
+	  themes/kokodi/top-right-active.png,
+	  themes/kokodi/top-right-inactive.png: Fix svg
+
+2008-06-02 21:07  olivier
+
+	* themes/default/menu-pressed.png: Add missing bits
+
+2008-06-02 21:07  olivier
+
+	* themes/default/menu-prelight.png: Add missing bits
+
+2008-06-02 21:00  olivier
+
+	* themes/kokodi, themes/kokodi/Makefile.am, themes/kokodi/README,
+	  themes/kokodi/bottom-active.png, themes/kokodi/bottom-active.svg,
+	  themes/kokodi/bottom-active.xpm,
+	  themes/kokodi/bottom-inactive.png,
+	  themes/kokodi/bottom-inactive.svg,
+	  themes/kokodi/bottom-inactive.xpm,
+	  themes/kokodi/bottom-left-active.png,
+	  themes/kokodi/bottom-left-active.svg,
+	  themes/kokodi/bottom-left-active.xpm,
+	  themes/kokodi/bottom-left-inactive.png,
+	  themes/kokodi/bottom-left-inactive.svg,
+	  themes/kokodi/bottom-left-inactive.xpm,
+	  themes/kokodi/bottom-right-active.png,
+	  themes/kokodi/bottom-right-active.svg,
+	  themes/kokodi/bottom-right-active.xpm,
+	  themes/kokodi/bottom-right-inactive.png,
+	  themes/kokodi/bottom-right-inactive.svg,
+	  themes/kokodi/bottom-right-inactive.xpm,
+	  themes/kokodi/close-active.png, themes/kokodi/close-active.svg,
+	  themes/kokodi/close-active.xpm, themes/kokodi/close-inactive.png,
+	  themes/kokodi/close-inactive.svg,
+	  themes/kokodi/close-inactive.xpm,
+	  themes/kokodi/close-prelight.png,
+	  themes/kokodi/close-prelight.svg,
+	  themes/kokodi/close-prelight.xpm,
+	  themes/kokodi/close-pressed.png, themes/kokodi/close-pressed.svg,
+	  themes/kokodi/close-pressed.xpm, themes/kokodi/hide-active.png,
+	  themes/kokodi/hide-active.svg, themes/kokodi/hide-active.xpm,
+	  themes/kokodi/hide-inactive.png, themes/kokodi/hide-inactive.svg,
+	  themes/kokodi/hide-inactive.xpm, themes/kokodi/hide-prelight.png,
+	  themes/kokodi/hide-prelight.svg, themes/kokodi/hide-prelight.xpm,
+	  themes/kokodi/hide-pressed.png, themes/kokodi/hide-pressed.svg,
+	  themes/kokodi/hide-pressed.xpm, themes/kokodi/left-active.png,
+	  themes/kokodi/left-active.svg, themes/kokodi/left-active.xpm,
+	  themes/kokodi/left-inactive.png, themes/kokodi/left-inactive.svg,
+	  themes/kokodi/left-inactive.xpm,
+	  themes/kokodi/maximize-active.png,
+	  themes/kokodi/maximize-active.svg,
+	  themes/kokodi/maximize-active.xpm,
+	  themes/kokodi/maximize-inactive.png,
+	  themes/kokodi/maximize-inactive.svg,
+	  themes/kokodi/maximize-inactive.xpm,
+	  themes/kokodi/maximize-prelight.png,
+	  themes/kokodi/maximize-prelight.svg,
+	  themes/kokodi/maximize-prelight.xpm,
+	  themes/kokodi/maximize-pressed.png,
+	  themes/kokodi/maximize-pressed.svg,
+	  themes/kokodi/maximize-pressed.xpm,
+	  themes/kokodi/maximize-toggled-active.png,
+	  themes/kokodi/maximize-toggled-active.svg,
+	  themes/kokodi/maximize-toggled-active.xpm,
+	  themes/kokodi/maximize-toggled-inactive.png,
+	  themes/kokodi/maximize-toggled-inactive.svg,
+	  themes/kokodi/maximize-toggled-inactive.xpm,
+	  themes/kokodi/maximize-toggled-prelight.png,
+	  themes/kokodi/maximize-toggled-prelight.svg,
+	  themes/kokodi/maximize-toggled-prelight.xpm,
+	  themes/kokodi/maximize-toggled-pressed.png,
+	  themes/kokodi/maximize-toggled-pressed.svg,
+	  themes/kokodi/maximize-toggled-pressed.xpm,
+	  themes/kokodi/menu-active.png, themes/kokodi/menu-active.svg,
+	  themes/kokodi/menu-active.xpm, themes/kokodi/menu-inactive.png,
+	  themes/kokodi/menu-inactive.svg, themes/kokodi/menu-inactive.xpm,
+	  themes/kokodi/menu-prelight.svg, themes/kokodi/menu-prelight.xpm,
+	  themes/kokodi/menu-pressed.svg, themes/kokodi/menu-pressed.xpm,
+	  themes/kokodi/right-active.png, themes/kokodi/right-active.svg,
+	  themes/kokodi/right-active.xpm, themes/kokodi/right-inactive.png,
+	  themes/kokodi/right-inactive.svg,
+	  themes/kokodi/right-inactive.xpm, themes/kokodi/shade-active.png,
+	  themes/kokodi/shade-active.svg, themes/kokodi/shade-active.xpm,
+	  themes/kokodi/shade-inactive.png,
+	  themes/kokodi/shade-inactive.svg,
+	  themes/kokodi/shade-inactive.xpm,
+	  themes/kokodi/shade-prelight.png,
+	  themes/kokodi/shade-prelight.svg,
+	  themes/kokodi/shade-prelight.xpm,
+	  themes/kokodi/shade-pressed.png, themes/kokodi/shade-pressed.svg,
+	  themes/kokodi/shade-pressed.xpm,
+	  themes/kokodi/shade-toggled-active.png,
+	  themes/kokodi/shade-toggled-active.svg,
+	  themes/kokodi/shade-toggled-active.xpm,
+	  themes/kokodi/shade-toggled-inactive.png,
+	  themes/kokodi/shade-toggled-inactive.svg,
+	  themes/kokodi/shade-toggled-inactive.xpm,
+	  themes/kokodi/shade-toggled-prelight.png,
+	  themes/kokodi/shade-toggled-prelight.svg,
+	  themes/kokodi/shade-toggled-prelight.xpm,
+	  themes/kokodi/shade-toggled-pressed.png,
+	  themes/kokodi/shade-toggled-pressed.svg,
+	  themes/kokodi/shade-toggled-pressed.xpm,
+	  themes/kokodi/stick-active.png, themes/kokodi/stick-active.svg,
+	  themes/kokodi/stick-active.xpm, themes/kokodi/stick-inactive.png,
+	  themes/kokodi/stick-inactive.svg,
+	  themes/kokodi/stick-inactive.xpm,
+	  themes/kokodi/stick-prelight.png,
+	  themes/kokodi/stick-prelight.svg,
+	  themes/kokodi/stick-prelight.xpm,
+	  themes/kokodi/stick-pressed.png, themes/kokodi/stick-pressed.svg,
+	  themes/kokodi/stick-pressed.xpm,
+	  themes/kokodi/stick-toggled-active.png,
+	  themes/kokodi/stick-toggled-active.svg,
+	  themes/kokodi/stick-toggled-active.xpm,
+	  themes/kokodi/stick-toggled-inactive.png,
+	  themes/kokodi/stick-toggled-inactive.svg,
+	  themes/kokodi/stick-toggled-inactive.xpm,
+	  themes/kokodi/stick-toggled-prelight.png,
+	  themes/kokodi/stick-toggled-prelight.svg,
+	  themes/kokodi/stick-toggled-prelight.xpm,
+	  themes/kokodi/stick-toggled-pressed.png,
+	  themes/kokodi/stick-toggled-pressed.svg,
+	  themes/kokodi/stick-toggled-pressed.xpm, themes/kokodi/themerc,
+	  themes/kokodi/title-1-active.png,
+	  themes/kokodi/title-1-active.svg,
+	  themes/kokodi/title-1-active.xpm,
+	  themes/kokodi/title-1-inactive.png,
+	  themes/kokodi/title-1-inactive.svg,
+	  themes/kokodi/title-1-inactive.xpm,
+	  themes/kokodi/title-2-active.png,
+	  themes/kokodi/title-2-active.svg,
+	  themes/kokodi/title-2-active.xpm,
+	  themes/kokodi/title-2-inactive.png,
+	  themes/kokodi/title-2-inactive.svg,
+	  themes/kokodi/title-2-inactive.xpm,
+	  themes/kokodi/title-3-active.png,
+	  themes/kokodi/title-3-active.svg,
+	  themes/kokodi/title-3-active.xpm,
+	  themes/kokodi/title-3-inactive.png,
+	  themes/kokodi/title-3-inactive.svg,
+	  themes/kokodi/title-3-inactive.xpm,
+	  themes/kokodi/title-4-active.png,
+	  themes/kokodi/title-4-active.svg,
+	  themes/kokodi/title-4-active.xpm,
+	  themes/kokodi/title-4-inactive.png,
+	  themes/kokodi/title-4-inactive.svg,
+	  themes/kokodi/title-4-inactive.xpm,
+	  themes/kokodi/title-5-active.png,
+	  themes/kokodi/title-5-active.svg,
+	  themes/kokodi/title-5-active.xpm,
+	  themes/kokodi/title-5-inactive.png,
+	  themes/kokodi/title-5-inactive.svg,
+	  themes/kokodi/title-5-inactive.xpm,
+	  themes/kokodi/top-left-active.png,
+	  themes/kokodi/top-left-active.svg,
+	  themes/kokodi/top-left-active.xpm,
+	  themes/kokodi/top-left-inactive.png,
+	  themes/kokodi/top-left-inactive.svg,
+	  themes/kokodi/top-left-inactive.xpm,
+	  themes/kokodi/top-right-active.png,
+	  themes/kokodi/top-right-active.svg,
+	  themes/kokodi/top-right-active.xpm,
+	  themes/kokodi/top-right-inactive.png,
+	  themes/kokodi/top-right-inactive.svg,
+	  themes/kokodi/top-right-inactive.xpm: Re-add theme
+
+2008-06-02 20:49  olivier
+
+	* themes/default/Makefile.am, themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-prelight.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-prelight.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.svg, themes/default/left-active.xpm,
+	  themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-prelight.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-prelight.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-prelight.svg,
+	  themes/default/menu-prelight.xpm,
+	  themes/default/menu-pressed.svg, themes/default/menu-pressed.xpm,
+	  themes/default/right-active.png, themes/default/right-active.svg,
+	  themes/default/right-active.xpm,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-prelight.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-prelight.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-prelight.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-prelight.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/default/top-right-inactive.xpm: Clean up the mess with
+	  themes and svn
+
+2008-06-02 20:28  olivier
+
+	* configure.ac.in: Switch to libwnck (patch from Nick Schermer
+	  nick@xfce.org, bug #3487)
+
+2008-06-02 20:26  olivier
+
+	* themes/Makefile.am, themes/default-4.4/top-right-inactive.svg,
+	  themes/default/Makefile.am, themes/default/bottom-active.png,
+	  themes/default/bottom-active.svg,
+	  themes/default/bottom-active.xpm,
+	  themes/default/bottom-inactive.png,
+	  themes/default/bottom-inactive.svg,
+	  themes/default/bottom-inactive.xpm,
+	  themes/default/bottom-left-active.png,
+	  themes/default/bottom-left-active.svg,
+	  themes/default/bottom-left-active.xpm,
+	  themes/default/bottom-left-inactive.png,
+	  themes/default/bottom-left-inactive.svg,
+	  themes/default/bottom-left-inactive.xpm,
+	  themes/default/bottom-right-active.png,
+	  themes/default/bottom-right-active.svg,
+	  themes/default/bottom-right-active.xpm,
+	  themes/default/bottom-right-inactive.png,
+	  themes/default/bottom-right-inactive.svg,
+	  themes/default/bottom-right-inactive.xpm,
+	  themes/default/close-active.png, themes/default/close-active.svg,
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png,
+	  themes/default/close-inactive.svg,
+	  themes/default/close-inactive.xpm,
+	  themes/default/close-prelight.png,
+	  themes/default/close-prelight.svg,
+	  themes/default/close-prelight.xpm,
+	  themes/default/close-pressed.png,
+	  themes/default/close-pressed.svg,
+	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
+	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png,
+	  themes/default/hide-inactive.svg,
+	  themes/default/hide-inactive.xpm,
+	  themes/default/hide-prelight.png,
+	  themes/default/hide-prelight.svg,
+	  themes/default/hide-prelight.xpm,
+	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
+	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
+	  themes/default/left-active.svg, themes/default/left-active.xpm,
+	  themes/default/left-inactive.png,
+	  themes/default/left-inactive.svg,
+	  themes/default/left-inactive.xpm,
+	  themes/default/maximize-active.png,
+	  themes/default/maximize-active.svg,
+	  themes/default/maximize-active.xpm,
+	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.svg,
+	  themes/default/maximize-inactive.xpm,
+	  themes/default/maximize-prelight.png,
+	  themes/default/maximize-prelight.svg,
+	  themes/default/maximize-prelight.xpm,
+	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.svg,
+	  themes/default/maximize-pressed.xpm,
+	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.svg,
+	  themes/default/maximize-toggled-active.xpm,
+	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.svg,
+	  themes/default/maximize-toggled-inactive.xpm,
+	  themes/default/maximize-toggled-prelight.png,
+	  themes/default/maximize-toggled-prelight.svg,
+	  themes/default/maximize-toggled-prelight.xpm,
+	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.svg,
+	  themes/default/maximize-toggled-pressed.xpm,
+	  themes/default/menu-active.png, themes/default/menu-active.svg,
+	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
+	  themes/default/menu-inactive.svg,
+	  themes/default/menu-inactive.xpm,
+	  themes/default/menu-prelight.png[DEL],
+	  themes/default/menu-prelight.svg[CPY],
+	  themes/default/menu-prelight.xpm[CPY],
+	  themes/default/menu-pressed.png[DEL],
+	  themes/default/menu-pressed.svg[CPY],
+	  themes/default/menu-pressed.xpm[CPY],
+	  themes/default/right-active.png, themes/default/right-active.svg,
+	  themes/default/right-active.xpm,
+	  themes/default/right-inactive.png,
+	  themes/default/right-inactive.svg,
+	  themes/default/right-inactive.xpm,
+	  themes/default/shade-active.png, themes/default/shade-active.svg,
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png,
+	  themes/default/shade-inactive.svg,
+	  themes/default/shade-inactive.xpm,
+	  themes/default/shade-prelight.png,
+	  themes/default/shade-prelight.svg,
+	  themes/default/shade-prelight.xpm,
+	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.svg,
+	  themes/default/shade-pressed.xpm,
+	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.svg,
+	  themes/default/shade-toggled-active.xpm,
+	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.svg,
+	  themes/default/shade-toggled-inactive.xpm,
+	  themes/default/shade-toggled-prelight.png,
+	  themes/default/shade-toggled-prelight.svg,
+	  themes/default/shade-toggled-prelight.xpm,
+	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.svg,
+	  themes/default/shade-toggled-pressed.xpm,
+	  themes/default/stick-active.png, themes/default/stick-active.svg,
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png,
+	  themes/default/stick-inactive.svg,
+	  themes/default/stick-inactive.xpm,
+	  themes/default/stick-prelight.png,
+	  themes/default/stick-prelight.svg,
+	  themes/default/stick-prelight.xpm,
+	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.svg,
+	  themes/default/stick-pressed.xpm,
+	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.svg,
+	  themes/default/stick-toggled-active.xpm,
+	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.svg,
+	  themes/default/stick-toggled-inactive.xpm,
+	  themes/default/stick-toggled-prelight.png,
+	  themes/default/stick-toggled-prelight.svg,
+	  themes/default/stick-toggled-prelight.xpm,
+	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.svg,
+	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
+	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.svg,
+	  themes/default/title-1-active.xpm,
+	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.svg,
+	  themes/default/title-1-inactive.xpm,
+	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.svg,
+	  themes/default/title-2-active.xpm,
+	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.svg,
+	  themes/default/title-2-inactive.xpm,
+	  themes/default/title-3-active.png,
+	  themes/default/title-3-active.svg,
+	  themes/default/title-3-active.xpm,
+	  themes/default/title-3-inactive.png,
+	  themes/default/title-3-inactive.svg,
+	  themes/default/title-3-inactive.xpm,
+	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.svg,
+	  themes/default/title-4-active.xpm,
+	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.svg,
+	  themes/default/title-4-inactive.xpm,
+	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.svg,
+	  themes/default/title-5-active.xpm,
+	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.svg,
+	  themes/default/title-5-inactive.xpm,
+	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.svg,
+	  themes/default/top-left-active.xpm,
+	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.svg,
+	  themes/default/top-left-inactive.xpm,
+	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.svg,
+	  themes/default/top-right-active.xpm,
+	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.svg,
+	  themes/default/top-right-inactive.xpm: Change theme
+
+2008-06-02 20:23  olivier
+
+	* themes/default.keys/keythemerc: Update default keytheme
+	  accordingly
+
+2008-06-02 20:22  olivier
+
+	* mcs-plugin/Makefile.am, mcs-plugin/workspaces.c,
+	  mcs-plugin/workspaces_plugin.c, mcs-plugin/xfwm4_plugin.h,
+	  mcs-plugin/xfwm4_shortcuteditor.c, src/events.c,
+	  src/moveresize.c, src/screen.c, src/settings.c, src/settings.h:
+	  Change shortcuts to use the new move/resize system
+
+2008-06-01 21:24  olivier
+
+	* src/client.c, src/display.c, src/display.h, src/events.c,
+	  src/menu.c, src/menu.h, src/moveresize.c, src/netwm.c,
+	  src/screen.c, src/screen.h: Rework move/resize, better keyboard
+	  operations, allow move/resize from menu and from taskbar - TODO:
+	  Change keyboard shortcuts accordingly
+
+2008-06-01 10:45  olivier
+
+	* src/compositor.c: No need for xsync there
+
+2008-06-01 10:25  olivier
+
+	* src/tabwin.c: Capitalize class name, use brackets to show hidden
+	  windows, decrease saturation for icons of hidden windows.
+
+2008-06-01 09:24  olivier
+
+	* src/client.c: Missing header
+
+2008-05-31 23:45  olivier
+
+	* src/screen.c: Make sure title height is initialized
+
+2008-05-31 23:41  olivier
+
+	* src/frame.c, src/icons.c, src/screen.h, src/settings.c,
+	  src/tabwin.c: Use actual font metrics to compute font height as
+	  it gives better results than layout extents, lighten icons of
+	  iconified windows in tabwin selector.
+
+2008-05-31 14:35  olivier
+
+	* src/client.c, src/client.h, src/compositor.c, src/compositor.h,
+	  src/cycle.c, src/cycle.h, src/display.c, src/display.h,
+	  src/event_filter.c, src/event_filter.h, src/events.c,
+	  src/events.h, src/focus.c, src/focus.h, src/frame.c, src/frame.h,
+	  src/hints.c, src/hints.h, src/icons.c, src/icons.h,
+	  src/keyboard.c, src/keyboard.h, src/main.c, src/menu.c,
+	  src/menu.h, src/misc.c, src/misc.h, src/moveresize.c,
+	  src/moveresize.h, src/mypixmap.c, src/mypixmap.h, src/mywindow.c,
+	  src/mywindow.h, src/netwm.c, src/netwm.h, src/parserc.c,
+	  src/parserc.h, src/placement.c, src/placement.h, src/poswin.c,
+	  src/poswin.h, src/screen.c, src/screen.h, src/session.c,
+	  src/session.h, src/settings.c, src/settings.h,
+	  src/spinning_cursor.c, src/spinning_cursor.h, src/stacking.c,
+	  src/stacking.h, src/startup_notification.c,
+	  src/startup_notification.h, src/tabwin.c, src/tabwin.h,
+	  src/transients.c, src/transients.h, src/ui_style.c,
+	  src/ui_style.h, src/wireframe.c, src/wireframe.h,
+	  src/workspaces.c, src/workspaces.h, src/xsync.c, src/xsync.h:
+	  Update FSF address
+
+2008-05-31 14:29  olivier
+
+	* src/Makefile.am, src/client.c, src/cycle.c[CPY],
+	  src/cycle.h[CPY], src/events.c, src/hints.c, src/hints.h,
+	  src/misc.c, src/misc.h, src/moveresize.c[CPY],
+	  src/moveresize.h[CPY], src/netwm.c, src/xsync.c[CPY],
+	  src/xsync.h[CPY]: Split code to prepare further changes
+
+2008-05-27 16:58  olivier
+
+	* src/client.c, src/events.c: Revert previous change, not much of a
+	  good idea, usability wise
+
+2008-05-27 00:25  mmassonnet
+
+	* po/ChangeLog, po/ja.po: update-po
+
+2008-05-25 16:31  olivier
+
+	* src/client.c, src/events.c: Do not raise/focus when window
+	  buttons are pressed
+
+2008-05-20 21:51  olivier
+
+	* src/netwm.c, src/screen.c, src/workspaces.c: Fix gcc warnings
+	  (bug #4095, Gauvain Pocentek <gauvainpocentek@gmail.com>
+
+2008-05-19 18:24  olivier
+
+	* src/compositor.c: Make sure to count only the fullscreen overlays
+	  to be extra safe
+
+2008-05-18 22:02  olivier
+
+	* src/display.h, src/events.c, src/startup_notification.c: Make
+	  sure to release keyboard events even when a modifier is released
+	  before the regular key (bug #4072)
+
+2008-05-18 16:14  olivier
+
+	* src/compositor.c: Fix a bug in overlays counting causing
+	  xscreensaver window to remain invisible (cont. bug #3849)
+
+2008-05-17 16:41  olivier
+
+	* src/compositor.c: Resize overlays on XRandr notification (bug
+	  #3763)
+
+2008-05-17 16:02  olivier
+
+	* src/client.c, src/client.h, src/events.c: Take gravity bit into
+	  account in configure resize only requests to comply with standard
+	  (bug #3634)
+
+2008-05-16 17:27  olivier
+
+	* src/events.c: Actually, I believe it is safer to use CurrentTime
+	  when releasing the event queue
+
+2008-05-16 16:59  olivier
+
+	* src/client.c: Take the direction into account before wrapping
+	  workspaces (fixes bug #4090)
+
+2008-05-15 21:51  olivier
+
+	* src/events.c: Simpler
+
+2008-05-15 21:22  olivier
+
+	* src/events.c: Release pointer events as the pointer is grabbed in
+	  synchronous mode.
+
+2008-05-13 09:23  mmassonnet
+
+	* po/ChangeLog, po/en_GB.po: update en_GB translations
+
+2008-05-12 19:19  olivier
+
+	* src/client.c, src/events.c, src/netwm.c, src/screen.c,
+	  src/screen.h, src/workspaces.c: Trying to get rid of CurrentTime
+
+2008-05-09 09:22  olivier
+
+	* src/events.c: Make sure keyboard events are released, otherwise
+	  processing may stay stuck now that we do sync grab on the
+	  keyboard
+
+2008-05-07 21:56  olivier
+
+	* src/client.c, src/client.h, src/events.c, src/keyboard.c,
+	  src/placement.c: Switch to synchronous key grab
+
+2008-05-04 13:27  omaciel
+
+	* po/ChangeLog, po/pt_BR.po: Updated Brazilian Portuguese
+	  translation.
+
+2008-05-04 01:50  omaciel
+
+	* po/ChangeLog, po/pt_BR.po: Updated Brazilian Portuguese
+	  translation
+
+2008-05-02 08:13  olivier
+
+	* src/placement.c: Restore maximize on move has been broken for a
+	  while and nobody complains, too bad, it's a neat feature, let's
+	  try to get it fixed.
+
+2008-05-02 08:00  olivier
+
+	* themes/default.keys/keythemerc: Missign bit from commit
+
+2008-05-02 07:09  olivier
+
+	* src/client.c, src/events.c: Do not filter out leave notify events
+	  otherwize the frame buttons may remain in prelight state
+
+2008-05-01 16:36  olivier
+
+	* src/events.c, src/settings.c, src/settings.h, src/workspaces.c,
+	  src/workspaces.h: Add adjacent workscape/delete active workspace
+	  - Patch from xsdg <xsdg+xfcedev@mit.edu> (Bug #3595)
+
+2008-04-30 20:52  olivier
+
+	* src/client.c, src/events.c, src/screen.c: Fix grab count not
+	  being decreased when pointer already grabbed by the client
+	  application
+
+2008-04-23 21:24  olivier
+
+	* src/client.c, src/client.h, src/events.c, src/screen.c: Let see
+	  if changing the grab improves things
+
+2008-04-22 02:18  omaciel
+
+	* po/ChangeLog, po/pt_BR.po: Updated Brazilian Portuguese
+	  translation
+
+2008-04-19 11:10  olivier
+
+	* src/client.c, src/frame.c: Resync redraw when needed, avoid
+	  display refresh issues with compositor
+
+2008-04-12 09:54  mmassonnet
+
+	* po/ChangeLog, po/lv.po: Update Latvian translation
+
+2008-04-10 21:28  olivier
+
+	* src/client.c, src/frame.c, src/frame.h, src/netwm.c,
+	  src/settings.h: Redraw frame immediately in case of resize to
+	  avoid confusing the compositor
+
+2008-04-05 09:56  olivier
+
+	* src/client.c, src/client.h, src/compositor.c, src/events.c,
+	  src/focus.c, src/frame.c, src/frame.h, src/netwm.c: Implements
+	  asynchronous frames update
+
+2008-03-18 20:57  olivier
+
+	* src/events.c: Rework keyboard grabs
+
+2008-03-18 18:42  olivier
+
+	* src/netwm.c: Do not confine struts values to 1/4 of the screen
+	  size
+
+2008-03-18 13:18  mmassonnet
+
+	* po/ChangeLog, po/pt_PT.po: Update Portuguese translation
+
+2008-03-05 04:11  mmassonnet
+
+	* po/ChangeLog, po/zh_CN.po: Update Chinese translation
+
+2008-02-18 01:37  mmassonnet
+
+	* po/ChangeLog, po/fr.po: Update French translation + patch from
+	  Gérald Barré
+
+2008-02-13 22:33  olivier
+
+	* src/focus.c: Pass mouse button grab at initial mapping to avoid
+	  loosing the last ungrab
+
+2008-02-13 13:53  jari
+
+	* po/ChangeLog, po/fi.po: Fixed typo reported by Jarno Liimatainen.
+
+2008-02-10 22:31  olivier
+
+	* src/compositor.c: Bug fix with fullscreen overlays
+
+2008-02-07 08:04  olivier
+
+	* src/screen.c: Warning and errors should not ne localized
+
+2008-02-06 22:51  olivier
+
+	* src/main.c, src/screen.c, src/screen.h: Add a --replace option to
+	  replace ICCCM2 compliant window managers (Bug #3731)
+
+2008-01-24 22:39  olivier
+
+	* src/events.c: Small cleanup
+
+2008-01-21 22:33  olivier
+
+	* src/display.c, src/events.c, src/screen.c: Exit on SelectionClear
+	  event so that xfwm4 exits even with WM who do not send a
+	  ClientMEssage event such as Openbox (bug #2374)
+
+2007-12-23 16:01  pollux
+
+	* po/ChangeLog, po/pt_PT.po: Updated Portuguese translations by
+	  Nuno Miguel <nunis@netcabo.pt>
+
+2007-12-19 22:48  maximilian
+
+	* po/ChangeLog, po/de.po: German translation updates in trunk
+
+2007-12-16 17:12  majkl
+
+	* po/cs.po: Czech translations updated
+
+2007-12-15 17:37  pollux
+
+	* mcs-plugin/workspaces.c, mcs-plugin/workspaces.h,
+	  mcs-plugin/workspaces_plugin.c,
+	  mcs-plugin/xfwm4_shortcuteditor.c: * use XfceTitledDialog instead
+	  of xfce_create_header
+	  * fix a multiscreen bug by giving a parent to the edit workspace
+	  name dialog
+
+2007-12-12 22:33  olivier
+
+	* src/compositor.c, src/screen.h: Rework the windows unredirection
+	  to take advantage of the new overlay support
+
+2007-12-11 22:14  olivier
+
+	* src/compositor.c: Avoid infinite loop when damaging the overlay
+	  window
+
+2007-12-10 22:27  olivier
+
+	* src/compositor.c, src/screen.h: Set depth/visual in overlay
+	  output window
+
+2007-12-09 11:22  olivier
+
+	* defaults/defaults, mcs-plugin/wmtweaks_plugin.c,
+	  src/compositor.c, src/display.h, src/frame.c, src/screen.h: Add
+	  support for overlays from Composite extension version 0.3
+
+2007-12-06 19:19  mmassonnet
+
+	* po/ChangeLog, po/fr.po: fr.po: Fix typo (Peaufinage sans pluriel)
+
+2007-12-03 21:44  olivier
+
+	* src/events.c, src/keyboard.c: Rework key grabbing and release
+	  events queued
+
+2007-12-03 21:43  olivier
+
+	* src/focus.c: Rework focus transition since now parents get raised
+	  along with the transients - That makes things more predictible.
+
+2007-12-03 21:41  olivier
+
+	* src/hints.c: Remove trailing \0 in UTF-8 strings, that cause
+	  libwnck to rightfully complain that NET_WM_NAME contains invalid
+	  UTF-8
+
+2007-12-02 16:49  maximilian
+
+	* po/ChangeLog, po/de.po: Spanish translations branch updates and
+	  German translations trunk updates
+
+2007-11-19 00:33  stephan
+
+	* po/nl.po: Update dutch translation
+
+2007-11-19 00:24  stephan
+
+	* po/ChangeLog, po/nl.po: Update dutch translation
+
+2007-11-17 20:23  olivier
+
+	* src/client.c: Filter out grab/ungrab events so we don't end up
+	  redrawing the frame twice
+
+2007-11-17 14:31  mmassonnet
+
+	* po/ChangeLog, po/fr.po: fr.po: Rename name in .desktop files with
+	  consistency
+
+2007-11-15 09:14  mmassonnet
+
+	* po/ChangeLog, po/LINGUAS, po/ur.po: Add Urdu translations to
+	  trunk (hope this is right *sigh*)
+
+2007-11-11 03:25  mmassonnet
+
+	* po/ChangeLog, po/lv.po: Update latvian
+
+2007-11-10 20:28  olivier
+
+	* themes/default-4.2/title-1-inactive.xpm: Missing quote
+
+2007-11-07 22:33  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2007-11-07 22:26  olivier
+
+	* src/client.c, src/focus.c: Keep transients and parent together
 
 2007-11-06 22:53  olivier
 
@@ -516,182 +2925,197 @@
 
 2007-07-04 17:51  olivier
 
-	* themes/default, themes/default/Makefile.am,
-	  themes/default/README, themes/default/bottom-active.png,
-	  themes/default/bottom-active.svg,
-	  themes/default/bottom-active.xpm,
-	  themes/default/bottom-inactive.png,
-	  themes/default/bottom-inactive.svg,
-	  themes/default/bottom-inactive.xpm,
-	  themes/default/bottom-left-active.png,
-	  themes/default/bottom-left-active.svg,
-	  themes/default/bottom-left-active.xpm,
-	  themes/default/bottom-left-inactive.png,
-	  themes/default/bottom-left-inactive.svg,
-	  themes/default/bottom-left-inactive.xpm,
-	  themes/default/bottom-right-active.png,
-	  themes/default/bottom-right-active.svg,
-	  themes/default/bottom-right-active.xpm,
-	  themes/default/bottom-right-inactive.png,
-	  themes/default/bottom-right-inactive.svg,
-	  themes/default/bottom-right-inactive.xpm,
-	  themes/default/close-active.png, themes/default/close-active.svg,
-	  themes/default/close-active.xpm,
-	  themes/default/close-inactive.png,
-	  themes/default/close-inactive.svg,
-	  themes/default/close-inactive.xpm,
-	  themes/default/close-prelight.png,
-	  themes/default/close-prelight.svg,
-	  themes/default/close-prelight.xpm,
-	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.svg,
-	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
-	  themes/default/hide-active.svg, themes/default/hide-active.xpm,
-	  themes/default/hide-inactive.png,
-	  themes/default/hide-inactive.svg,
-	  themes/default/hide-inactive.xpm,
-	  themes/default/hide-prelight.png,
-	  themes/default/hide-prelight.svg,
-	  themes/default/hide-prelight.xpm,
-	  themes/default/hide-pressed.png, themes/default/hide-pressed.svg,
-	  themes/default/hide-pressed.xpm, themes/default/left-active.png,
-	  themes/default/left-active.svg, themes/default/left-active.xpm,
-	  themes/default/left-inactive.png,
-	  themes/default/left-inactive.svg,
-	  themes/default/left-inactive.xpm,
-	  themes/default/maximize-active.png,
-	  themes/default/maximize-active.svg,
-	  themes/default/maximize-active.xpm,
-	  themes/default/maximize-inactive.png,
-	  themes/default/maximize-inactive.svg,
-	  themes/default/maximize-inactive.xpm,
-	  themes/default/maximize-prelight.png,
-	  themes/default/maximize-prelight.svg,
-	  themes/default/maximize-prelight.xpm,
-	  themes/default/maximize-pressed.png,
-	  themes/default/maximize-pressed.svg,
-	  themes/default/maximize-pressed.xpm,
-	  themes/default/maximize-toggled-active.png,
-	  themes/default/maximize-toggled-active.svg,
-	  themes/default/maximize-toggled-active.xpm,
-	  themes/default/maximize-toggled-inactive.png,
-	  themes/default/maximize-toggled-inactive.svg,
-	  themes/default/maximize-toggled-inactive.xpm,
-	  themes/default/maximize-toggled-prelight.png,
-	  themes/default/maximize-toggled-prelight.svg,
-	  themes/default/maximize-toggled-prelight.xpm,
-	  themes/default/maximize-toggled-pressed.png,
-	  themes/default/maximize-toggled-pressed.svg,
-	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.png, themes/default/menu-active.svg,
-	  themes/default/menu-active.xpm, themes/default/menu-inactive.png,
-	  themes/default/menu-inactive.svg,
-	  themes/default/menu-inactive.xpm,
-	  themes/default/menu-prelight.png,
-	  themes/default/menu-prelight.svg,
-	  themes/default/menu-prelight.xpm,
-	  themes/default/menu-pressed.png, themes/default/menu-pressed.svg,
-	  themes/default/menu-pressed.xpm, themes/default/right-active.png,
-	  themes/default/right-active.svg, themes/default/right-active.xpm,
-	  themes/default/right-inactive.png,
-	  themes/default/right-inactive.svg,
-	  themes/default/right-inactive.xpm,
-	  themes/default/shade-active.png, themes/default/shade-active.svg,
-	  themes/default/shade-active.xpm,
-	  themes/default/shade-inactive.png,
-	  themes/default/shade-inactive.svg,
-	  themes/default/shade-inactive.xpm,
-	  themes/default/shade-prelight.png,
-	  themes/default/shade-prelight.svg,
-	  themes/default/shade-prelight.xpm,
-	  themes/default/shade-pressed.png,
-	  themes/default/shade-pressed.svg,
-	  themes/default/shade-pressed.xpm,
-	  themes/default/shade-toggled-active.png,
-	  themes/default/shade-toggled-active.svg,
-	  themes/default/shade-toggled-active.xpm,
-	  themes/default/shade-toggled-inactive.png,
-	  themes/default/shade-toggled-inactive.svg,
-	  themes/default/shade-toggled-inactive.xpm,
-	  themes/default/shade-toggled-prelight.png,
-	  themes/default/shade-toggled-prelight.svg,
-	  themes/default/shade-toggled-prelight.xpm,
-	  themes/default/shade-toggled-pressed.png,
-	  themes/default/shade-toggled-pressed.svg,
-	  themes/default/shade-toggled-pressed.xpm,
-	  themes/default/stick-active.png, themes/default/stick-active.svg,
-	  themes/default/stick-active.xpm,
-	  themes/default/stick-inactive.png,
-	  themes/default/stick-inactive.svg,
-	  themes/default/stick-inactive.xpm,
-	  themes/default/stick-prelight.png,
-	  themes/default/stick-prelight.svg,
-	  themes/default/stick-prelight.xpm,
-	  themes/default/stick-pressed.png,
-	  themes/default/stick-pressed.svg,
-	  themes/default/stick-pressed.xpm,
-	  themes/default/stick-toggled-active.png,
-	  themes/default/stick-toggled-active.svg,
-	  themes/default/stick-toggled-active.xpm,
-	  themes/default/stick-toggled-inactive.png,
-	  themes/default/stick-toggled-inactive.svg,
-	  themes/default/stick-toggled-inactive.xpm,
-	  themes/default/stick-toggled-prelight.png,
-	  themes/default/stick-toggled-prelight.svg,
-	  themes/default/stick-toggled-prelight.xpm,
-	  themes/default/stick-toggled-pressed.png,
-	  themes/default/stick-toggled-pressed.svg,
-	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
-	  themes/default/title-1-active.png,
-	  themes/default/title-1-active.svg,
-	  themes/default/title-1-active.xpm,
-	  themes/default/title-1-inactive.png,
-	  themes/default/title-1-inactive.svg,
-	  themes/default/title-1-inactive.xpm,
-	  themes/default/title-2-active.png,
-	  themes/default/title-2-active.svg,
-	  themes/default/title-2-active.xpm,
-	  themes/default/title-2-inactive.png,
-	  themes/default/title-2-inactive.svg,
-	  themes/default/title-2-inactive.xpm,
-	  themes/default/title-3-active.png,
-	  themes/default/title-3-active.svg,
-	  themes/default/title-3-active.xpm,
-	  themes/default/title-3-inactive.png,
-	  themes/default/title-3-inactive.svg,
-	  themes/default/title-3-inactive.xpm,
-	  themes/default/title-4-active.png,
-	  themes/default/title-4-active.svg,
-	  themes/default/title-4-active.xpm,
-	  themes/default/title-4-inactive.png,
-	  themes/default/title-4-inactive.svg,
-	  themes/default/title-4-inactive.xpm,
-	  themes/default/title-5-active.png,
-	  themes/default/title-5-active.svg,
-	  themes/default/title-5-active.xpm,
-	  themes/default/title-5-inactive.png,
-	  themes/default/title-5-inactive.svg,
-	  themes/default/title-5-inactive.xpm,
-	  themes/default/top-left-active.png,
-	  themes/default/top-left-active.svg,
-	  themes/default/top-left-active.xpm,
-	  themes/default/top-left-inactive.png,
-	  themes/default/top-left-inactive.svg,
-	  themes/default/top-left-inactive.xpm,
-	  themes/default/top-right-active.png,
-	  themes/default/top-right-active.svg,
-	  themes/default/top-right-active.xpm,
-	  themes/default/top-right-inactive.png,
-	  themes/default/top-right-inactive.svg,
-	  themes/default/top-right-inactive.xpm, themes/kokodi: Promote
-	  modified version of Kokodi theme as default theme
+	* themes/default[CPY], themes/default/Makefile.am[CPY],
+	  themes/default/README[CPY],
+	  themes/default/bottom-active.png[CPY],
+	  themes/default/bottom-active.svg[CPY],
+	  themes/default/bottom-active.xpm[CPY],
+	  themes/default/bottom-inactive.png[CPY],
+	  themes/default/bottom-inactive.svg[CPY],
+	  themes/default/bottom-inactive.xpm[CPY],
+	  themes/default/bottom-left-active.png[CPY],
+	  themes/default/bottom-left-active.svg[CPY],
+	  themes/default/bottom-left-active.xpm[CPY],
+	  themes/default/bottom-left-inactive.png[CPY],
+	  themes/default/bottom-left-inactive.svg[CPY],
+	  themes/default/bottom-left-inactive.xpm[CPY],
+	  themes/default/bottom-right-active.png[CPY],
+	  themes/default/bottom-right-active.svg[CPY],
+	  themes/default/bottom-right-active.xpm[CPY],
+	  themes/default/bottom-right-inactive.png[CPY],
+	  themes/default/bottom-right-inactive.svg[CPY],
+	  themes/default/bottom-right-inactive.xpm[CPY],
+	  themes/default/close-active.png[CPY],
+	  themes/default/close-active.svg[CPY],
+	  themes/default/close-active.xpm[CPY],
+	  themes/default/close-inactive.png[CPY],
+	  themes/default/close-inactive.svg[CPY],
+	  themes/default/close-inactive.xpm[CPY],
+	  themes/default/close-prelight.png[CPY],
+	  themes/default/close-prelight.svg[CPY],
+	  themes/default/close-prelight.xpm[CPY],
+	  themes/default/close-pressed.png[CPY],
+	  themes/default/close-pressed.svg[CPY],
+	  themes/default/close-pressed.xpm[CPY],
+	  themes/default/hide-active.png[CPY],
+	  themes/default/hide-active.svg[CPY],
+	  themes/default/hide-active.xpm[CPY],
+	  themes/default/hide-inactive.png[CPY],
+	  themes/default/hide-inactive.svg[CPY],
+	  themes/default/hide-inactive.xpm[CPY],
+	  themes/default/hide-prelight.png[CPY],
+	  themes/default/hide-prelight.svg[CPY],
+	  themes/default/hide-prelight.xpm[CPY],
+	  themes/default/hide-pressed.png[CPY],
+	  themes/default/hide-pressed.svg[CPY],
+	  themes/default/hide-pressed.xpm[CPY],
+	  themes/default/left-active.png[CPY],
+	  themes/default/left-active.svg[CPY],
+	  themes/default/left-active.xpm[CPY],
+	  themes/default/left-inactive.png[CPY],
+	  themes/default/left-inactive.svg[CPY],
+	  themes/default/left-inactive.xpm[CPY],
+	  themes/default/maximize-active.png[CPY],
+	  themes/default/maximize-active.svg[CPY],
+	  themes/default/maximize-active.xpm[CPY],
+	  themes/default/maximize-inactive.png[CPY],
+	  themes/default/maximize-inactive.svg[CPY],
+	  themes/default/maximize-inactive.xpm[CPY],
+	  themes/default/maximize-prelight.png[CPY],
+	  themes/default/maximize-prelight.svg[CPY],
+	  themes/default/maximize-prelight.xpm[CPY],
+	  themes/default/maximize-pressed.png[CPY],
+	  themes/default/maximize-pressed.svg[CPY],
+	  themes/default/maximize-pressed.xpm[CPY],
+	  themes/default/maximize-toggled-active.png[CPY],
+	  themes/default/maximize-toggled-active.svg[CPY],
+	  themes/default/maximize-toggled-active.xpm[CPY],
+	  themes/default/maximize-toggled-inactive.png[CPY],
+	  themes/default/maximize-toggled-inactive.svg[CPY],
+	  themes/default/maximize-toggled-inactive.xpm[CPY],
+	  themes/default/maximize-toggled-prelight.png[CPY],
+	  themes/default/maximize-toggled-prelight.svg[CPY],
+	  themes/default/maximize-toggled-prelight.xpm[CPY],
+	  themes/default/maximize-toggled-pressed.png[CPY],
+	  themes/default/maximize-toggled-pressed.svg[CPY],
+	  themes/default/maximize-toggled-pressed.xpm[CPY],
+	  themes/default/menu-active.png[CPY],
+	  themes/default/menu-active.svg[CPY],
+	  themes/default/menu-active.xpm[CPY],
+	  themes/default/menu-inactive.png[CPY],
+	  themes/default/menu-inactive.svg[CPY],
+	  themes/default/menu-inactive.xpm[CPY],
+	  themes/default/menu-prelight.png[CPY],
+	  themes/default/menu-prelight.svg[CPY],
+	  themes/default/menu-prelight.xpm[CPY],
+	  themes/default/menu-pressed.png[CPY],
+	  themes/default/menu-pressed.svg[CPY],
+	  themes/default/menu-pressed.xpm[CPY],
+	  themes/default/right-active.png[CPY],
+	  themes/default/right-active.svg[CPY],
+	  themes/default/right-active.xpm[CPY],
+	  themes/default/right-inactive.png[CPY],
+	  themes/default/right-inactive.svg[CPY],
+	  themes/default/right-inactive.xpm[CPY],
+	  themes/default/shade-active.png[CPY],
+	  themes/default/shade-active.svg[CPY],
+	  themes/default/shade-active.xpm[CPY],
+	  themes/default/shade-inactive.png[CPY],
+	  themes/default/shade-inactive.svg[CPY],
+	  themes/default/shade-inactive.xpm[CPY],
+	  themes/default/shade-prelight.png[CPY],
+	  themes/default/shade-prelight.svg[CPY],
+	  themes/default/shade-prelight.xpm[CPY],
+	  themes/default/shade-pressed.png[CPY],
+	  themes/default/shade-pressed.svg[CPY],
+	  themes/default/shade-pressed.xpm[CPY],
+	  themes/default/shade-toggled-active.png[CPY],
+	  themes/default/shade-toggled-active.svg[CPY],
+	  themes/default/shade-toggled-active.xpm[CPY],
+	  themes/default/shade-toggled-inactive.png[CPY],
+	  themes/default/shade-toggled-inactive.svg[CPY],
+	  themes/default/shade-toggled-inactive.xpm[CPY],
+	  themes/default/shade-toggled-prelight.png[CPY],
+	  themes/default/shade-toggled-prelight.svg[CPY],
+	  themes/default/shade-toggled-prelight.xpm[CPY],
+	  themes/default/shade-toggled-pressed.png[CPY],
+	  themes/default/shade-toggled-pressed.svg[CPY],
+	  themes/default/shade-toggled-pressed.xpm[CPY],
+	  themes/default/stick-active.png[CPY],
+	  themes/default/stick-active.svg[CPY],
+	  themes/default/stick-active.xpm[CPY],
+	  themes/default/stick-inactive.png[CPY],
+	  themes/default/stick-inactive.svg[CPY],
+	  themes/default/stick-inactive.xpm[CPY],
+	  themes/default/stick-prelight.png[CPY],
+	  themes/default/stick-prelight.svg[CPY],
+	  themes/default/stick-prelight.xpm[CPY],
+	  themes/default/stick-pressed.png[CPY],
+	  themes/default/stick-pressed.svg[CPY],
+	  themes/default/stick-pressed.xpm[CPY],
+	  themes/default/stick-toggled-active.png[CPY],
+	  themes/default/stick-toggled-active.svg[CPY],
+	  themes/default/stick-toggled-active.xpm[CPY],
+	  themes/default/stick-toggled-inactive.png[CPY],
+	  themes/default/stick-toggled-inactive.svg[CPY],
+	  themes/default/stick-toggled-inactive.xpm[CPY],
+	  themes/default/stick-toggled-prelight.png[CPY],
+	  themes/default/stick-toggled-prelight.svg[CPY],
+	  themes/default/stick-toggled-prelight.xpm[CPY],
+	  themes/default/stick-toggled-pressed.png[CPY],
+	  themes/default/stick-toggled-pressed.svg[CPY],
+	  themes/default/stick-toggled-pressed.xpm[CPY],
+	  themes/default/themerc[CPY],
+	  themes/default/title-1-active.png[CPY],
+	  themes/default/title-1-active.svg[CPY],
+	  themes/default/title-1-active.xpm[CPY],
+	  themes/default/title-1-inactive.png[CPY],
+	  themes/default/title-1-inactive.svg[CPY],
+	  themes/default/title-1-inactive.xpm[CPY],
+	  themes/default/title-2-active.png[CPY],
+	  themes/default/title-2-active.svg[CPY],
+	  themes/default/title-2-active.xpm[CPY],
+	  themes/default/title-2-inactive.png[CPY],
+	  themes/default/title-2-inactive.svg[CPY],
+	  themes/default/title-2-inactive.xpm[CPY],
+	  themes/default/title-3-active.png[CPY],
+	  themes/default/title-3-active.svg[CPY],
+	  themes/default/title-3-active.xpm[CPY],
+	  themes/default/title-3-inactive.png[CPY],
+	  themes/default/title-3-inactive.svg[CPY],
+	  themes/default/title-3-inactive.xpm[CPY],
+	  themes/default/title-4-active.png[CPY],
+	  themes/default/title-4-active.svg[CPY],
+	  themes/default/title-4-active.xpm[CPY],
+	  themes/default/title-4-inactive.png[CPY],
+	  themes/default/title-4-inactive.svg[CPY],
+	  themes/default/title-4-inactive.xpm[CPY],
+	  themes/default/title-5-active.png[CPY],
+	  themes/default/title-5-active.svg[CPY],
+	  themes/default/title-5-active.xpm[CPY],
+	  themes/default/title-5-inactive.png[CPY],
+	  themes/default/title-5-inactive.svg[CPY],
+	  themes/default/title-5-inactive.xpm[CPY],
+	  themes/default/top-left-active.png[CPY],
+	  themes/default/top-left-active.svg[CPY],
+	  themes/default/top-left-active.xpm[CPY],
+	  themes/default/top-left-inactive.png[CPY],
+	  themes/default/top-left-inactive.svg[CPY],
+	  themes/default/top-left-inactive.xpm[CPY],
+	  themes/default/top-right-active.png[CPY],
+	  themes/default/top-right-active.svg[CPY],
+	  themes/default/top-right-active.xpm[CPY],
+	  themes/default/top-right-inactive.png[CPY],
+	  themes/default/top-right-inactive.svg[CPY],
+	  themes/default/top-right-inactive.xpm[CPY], themes/kokodi[DEL]:
+	  Promote modified version of Kokodi theme as default theme
 
 2007-07-04 17:49  olivier
 
 	* configure.ac.in, themes/Makefile.am, themes/daloa/themerc,
-	  themes/default, themes/katiola, themes/kokodi/Makefile.am,
-	  themes/kokodi/README, themes/kokodi/bottom-active.png,
-	  themes/kokodi/bottom-active.svg,
+	  themes/default[DEL], themes/katiola[DEL],
+	  themes/kokodi/Makefile.am, themes/kokodi/README,
+	  themes/kokodi/bottom-active.png, themes/kokodi/bottom-active.svg,
 	  themes/kokodi/bottom-inactive.png,
 	  themes/kokodi/bottom-inactive.svg,
 	  themes/kokodi/bottom-left-active.png,
@@ -821,8 +3245,8 @@
 	  themes/kokodi/top-right-active.png,
 	  themes/kokodi/top-right-active.svg,
 	  themes/kokodi/top-right-inactive.png,
-	  themes/kokodi/top-right-inactive.svg, themes/largeprint: Theme
-	  cleanup
+	  themes/kokodi/top-right-inactive.svg, themes/largeprint[DEL]:
+	  Theme cleanup
 
 2007-07-04 06:29  mvd
 
@@ -3154,11 +5578,11 @@
 
 2007-03-15 21:09  olivier
 
-	* themes/default-4.4, themes/mopti: Rename 4.4 theme
+	* themes/default-4.4[CPY], themes/mopti[DEL]: Rename 4.4 theme
 
 2007-03-15 21:07  olivier
 
-	* themes/kokodi: Restore Kokodi theme
+	* themes/kokodi[CPY]: Restore Kokodi theme
 
 2007-03-13 21:47  olivier
 
@@ -4457,7 +6881,7 @@
 
 2007-02-04 21:19  olivier
 
-	* themes/kokodi: Reorg themes for trunk
+	* themes/kokodi[DEL]: Reorg themes for trunk
 
 2007-02-04 21:18  olivier
 
@@ -4855,8 +7279,8 @@
 
 2007-01-29 20:46  olivier
 
-	* INSTALL: Remove the INSTALL file from SVN as we ship the default
-	  file that gets updated by autogen.sh
+	* INSTALL[DEL]: Remove the INSTALL file from SVN as we ship the
+	  default file that gets updated by autogen.sh
 
 2007-01-29 20:33  olivier
 
@@ -5089,16 +7513,16 @@
 
 2007-01-16 22:19  olivier
 
-	* themes/default, themes/mopti: Mess up with svn
+	* themes/default[CPY], themes/mopti[DEL]: Mess up with svn
 
 2007-01-16 22:19  olivier
 
-	* themes/default, themes/kokodi: Mess up with svn
+	* themes/default[DEL], themes/kokodi[CPY]: Mess up with svn
 
 2007-01-16 22:05  olivier
 
-	* themes/daloa/Makefile.in, themes/mopti/Makefile.in: Remove
-	  generated files
+	* themes/daloa/Makefile.in[DEL], themes/mopti/Makefile.in[DEL]:
+	  Remove generated files
 
 2007-01-16 21:59  olivier
 
@@ -8250,7 +10674,7 @@
 	  themes/default/top-right-active.svg,
 	  themes/default/top-right-inactive.png,
 	  themes/default/top-right-inactive.svg,
-	  themes/default/vaccumdefs.sh: Remove vaccumdefs.sh, add new
+	  themes/default/vaccumdefs.sh[DEL]: Remove vaccumdefs.sh, add new
 	  target "make vacuum-defs".
 
 2006-11-07 21:18  olivier
@@ -8827,7 +11251,8 @@
 	  themes/default/bottom-right-inactive.png,
 	  themes/default/close-active.png,
 	  themes/default/close-inactive.png,
-	  themes/default/close-pressed.png, themes/default/convert2png.sh,
+	  themes/default/close-pressed.png,
+	  themes/default/convert2png.sh[DEL],
 	  themes/default/hide-active.png, themes/default/hide-inactive.png,
 	  themes/default/hide-pressed.png, themes/default/left-active.png,
 	  themes/default/left-inactive.png,
@@ -9774,7 +12199,7 @@
 	  themes/default/top-right-active.xpm,
 	  themes/default/top-right-inactive.png,
 	  themes/default/top-right-inactive.svg,
-	  themes/default/top-right-inactive.xpm, themes/sassandra,
+	  themes/default/top-right-inactive.xpm, themes/sassandra[CPY],
 	  themes/sassandra/Makefile.am, themes/sassandra/README: Change
 	  default theme for the new SVG based theme, previous theme renamed
 	  as Sassandra
@@ -11295,13 +13720,15 @@
 2006-05-07 15:06  olivier
 
 	* mcs-plugin/Makefile.am, mcs-plugin/margins.c,
-	  mcs-plugin/plugin.h, mcs-plugin/workspaces.c,
-	  mcs-plugin/workspaces_plugin.c, mcs-plugin/workspaces_plugin.h:
-	  Fix workspace name activation (fix #1778), fix window resize.
+	  mcs-plugin/plugin.h[DEL], mcs-plugin/workspaces.c,
+	  mcs-plugin/workspaces_plugin.c,
+	  mcs-plugin/workspaces_plugin.h[CPY]: Fix workspace name
+	  activation (fix #1778), fix window resize.
 
 2006-05-07 14:46  olivier
 
-	* mcs-plugin/plugin.c, mcs-plugin/workspaces_plugin.c: plugin.h
+	* mcs-plugin/plugin.c[DEL], mcs-plugin/workspaces_plugin.c[CPY]:
+	  plugin.h
 
 2006-05-07 14:46  olivier
 
@@ -11574,12 +14001,12 @@
 	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po,
 	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
 	  po/zh_TW.po, src/Makefile.am, src/client.c, src/display.h,
-	  src/event_filter.c, src/event_filter.h, src/events.c,
-	  src/events.h, src/gtk_style.c, src/gtk_style.h,
-	  src/gtktoxevent.c, src/gtktoxevent.h, src/main.c, src/menu.c,
-	  src/menu.h, src/settings.c, src/ui_style.c, src/ui_style.h,
-	  themes/Makefile.am, themes/default/close-active.png,
-	  themes/default/close-active.xpm,
+	  src/event_filter.c[CPY], src/event_filter.h[CPY], src/events.c,
+	  src/events.h, src/gtk_style.c[DEL], src/gtk_style.h[DEL],
+	  src/gtktoxevent.c[DEL], src/gtktoxevent.h[DEL], src/main.c,
+	  src/menu.c, src/menu.h, src/settings.c, src/ui_style.c[CPY],
+	  src/ui_style.h[CPY], themes/Makefile.am,
+	  themes/default/close-active.png, themes/default/close-active.xpm,
 	  themes/default/close-inactive.png,
 	  themes/default/close-inactive.xpm,
 	  themes/default/close-pressed.png,
@@ -11642,19 +14069,19 @@
 
 2006-05-03 21:15  olivier
 
-	* src/gtk_style.h: Copy gtk style routines from libxfcegui4.
+	* src/gtk_style.h[CPY]: Copy gtk style routines from libxfcegui4.
 
 2006-05-03 21:15  olivier
 
-	* src/gtk_style.c: Copy gtk style routines from libxfcegui4.
+	* src/gtk_style.c[CPY]: Copy gtk style routines from libxfcegui4.
 
 2006-05-03 21:13  olivier
 
-	* src/gtktoxevent.h: Copy event filter from libxfcegui4.
+	* src/gtktoxevent.h[CPY]: Copy event filter from libxfcegui4.
 
 2006-05-03 21:13  olivier
 
-	* src/gtktoxevent.c: Copy event filter from libxfcegui4.
+	* src/gtktoxevent.c[CPY]: Copy event filter from libxfcegui4.
 
 2006-05-02 19:07  olivier
 
@@ -12494,7 +14921,8 @@
 	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po,
 	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
 	  po/zh_TW.po, themes/Makefile.am, themes/katiola,
-	  themes/katiola/Makefile.am: Add new theme 'Katiola' (as in RCI).
+	  themes/katiola/Makefile.am[CPY]: Add new theme 'Katiola' (as in
+	  RCI).
 
 2006-04-13 21:25  olivier
 
@@ -12880,7 +15308,7 @@
 
 2006-03-10 21:41  olivier
 
-	* icons/48x48/Makefile.am, icons/48x48/xfce4-keys.png: Remove
+	* icons/48x48/Makefile.am, icons/48x48/xfce4-keys.png[DEL]: Remove
 	  xfce4-keys.png, fix bug #1426.
 
 2006-03-10 14:42  olivier
@@ -12957,7 +15385,7 @@
 
 2006-03-08 21:35  olivier
 
-	* themes/wallis: Moving back wallis to xfwm4.
+	* themes/wallis[CPY]: Moving back wallis to xfwm4.
 
 2006-03-08 21:17  olivier
 
@@ -13333,10 +15761,10 @@
 
 2006-02-02 20:36  olivier
 
-	* icons/48x48/Makefile.am, icons/48x48/wmtweak.png,
-	  icons/48x48/wmtweaks.png, icons/scalable/Makefile.am,
-	  icons/scalable/wmtweak.svg, icons/scalable/wmtweaks.svg: Icon
-	  name
+	* icons/48x48/Makefile.am, icons/48x48/wmtweak.png[DEL],
+	  icons/48x48/wmtweaks.png[CPY], icons/scalable/Makefile.am,
+	  icons/scalable/wmtweak.svg[DEL],
+	  icons/scalable/wmtweaks.svg[CPY]: Icon name
 
 2006-02-02 20:33  olivier
 
@@ -13352,8 +15780,9 @@
 
 2006-02-02 20:21  olivier
 
-	* mcs-plugin/wmtweak_plugin.c, mcs-plugin/wmtweaks_plugin.c: Stay
-	  conherent in WM tweaks plugin naming
+	* mcs-plugin/wmtweak_plugin.c[DEL],
+	  mcs-plugin/wmtweaks_plugin.c[CPY]: Stay conherent in WM tweaks
+	  plugin naming
 
 2006-02-02 20:20  olivier
 
@@ -13755,8 +16184,8 @@
 
 2005-11-11 17:15  olivier
 
-	* Makefile.am, configure.ac, configure.ac.in: Take example of what
-	  Benny did for Thunar to include svn revision.
+	* Makefile.am, configure.ac[DEL], configure.ac.in: Take example of
+	  what Benny did for Thunar to include svn revision.
 
 2005-11-11 16:50  olivier
 
@@ -14496,23 +16925,23 @@
 
 2005-10-30 22:19  olivier
 
-	* themes/symphony: Move "symphony" to separate theme package.
+	* themes/symphony[DEL]: Move "symphony" to separate theme package.
 
 2005-10-30 22:17  olivier
 
-	* themes/waza: Move "waza" to separate theme package.
+	* themes/waza[DEL]: Move "waza" to separate theme package.
 
 2005-10-30 22:17  olivier
 
-	* themes/opta: Move "opta" to separate theme package.
+	* themes/opta[DEL]: Move "opta" to separate theme package.
 
 2005-10-30 22:16  olivier
 
-	* themes/wallis: Move wallis to separate theme package.
+	* themes/wallis[DEL]: Move wallis to separate theme package.
 
 2005-10-30 22:12  olivier
 
-	* themes/wildbush: Move wildbush to separate theme package.
+	* themes/wildbush[DEL]: Move wildbush to separate theme package.
 
 2005-10-30 15:42  olivier
 
@@ -14793,10 +17222,10 @@
 	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
 	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/it.po, po/ja.po,
 	  po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
-	  po/pa.po, po/pl.po, po/po2tbl.sed.in, po/pt_BR.po, po/pt_PT.po,
-	  po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po,
-	  po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po, po/zh_TW.po:
-	  po/xfwm4.pot
+	  po/pa.po, po/pl.po, po/po2tbl.sed.in[DEL], po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po,
+	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
+	  po/zh_TW.po: po/xfwm4.pot
 	  
 	  * Updated.
 	  
@@ -16612,7 +19041,7 @@
 	  themes/default/top-right-active.png,
 	  themes/default/top-right-active.xpm,
 	  themes/default/top-right-inactive.png,
-	  themes/default/top-right-inactive.xpm, themes/wallis,
+	  themes/default/top-right-inactive.xpm, themes/wallis[CPY],
 	  themes/wallis/Makefile.am: Change default theme (previous renamed
 	  as Wallis)
 
@@ -16772,18 +19201,21 @@
 
 2005-04-06 07:33  perldude
 
-	* .cvsignore, defaults/.cvsignore, doc/.cvsignore,
-	  doc/C/.cvsignore, doc/C/images/.cvsignore, doc/fr/.cvsignore,
-	  doc/fr/images/.cvsignore, doc/it/.cvsignore,
-	  doc/it/images/.cvsignore, icons/.cvsignore,
-	  icons/48x48/.cvsignore, icons/scalable/.cvsignore, m4/.cvsignore,
-	  mcs-plugin/.cvsignore, po/.cvsignore, src/.cvsignore,
-	  themes/.cvsignore, themes/default-4.0/.cvsignore,
-	  themes/default-4.2/.cvsignore, themes/default.keys/.cvsignore,
-	  themes/default/.cvsignore, themes/opta/.cvsignore,
-	  themes/symphony/.cvsignore, themes/therapy/.cvsignore,
-	  themes/tyrex/.cvsignore, themes/waza/.cvsignore,
-	  themes/wildbush/.cvsignore: remove .cvsignore cruft
+	* .cvsignore[DEL], defaults/.cvsignore[DEL], doc/.cvsignore[DEL],
+	  doc/C/.cvsignore[DEL], doc/C/images/.cvsignore[DEL],
+	  doc/fr/.cvsignore[DEL], doc/fr/images/.cvsignore[DEL],
+	  doc/it/.cvsignore[DEL], doc/it/images/.cvsignore[DEL],
+	  icons/.cvsignore[DEL], icons/48x48/.cvsignore[DEL],
+	  icons/scalable/.cvsignore[DEL], m4/.cvsignore[DEL],
+	  mcs-plugin/.cvsignore[DEL], po/.cvsignore[DEL],
+	  src/.cvsignore[DEL], themes/.cvsignore[DEL],
+	  themes/default-4.0/.cvsignore[DEL],
+	  themes/default-4.2/.cvsignore[DEL],
+	  themes/default.keys/.cvsignore[DEL],
+	  themes/default/.cvsignore[DEL], themes/opta/.cvsignore[DEL],
+	  themes/symphony/.cvsignore[DEL], themes/therapy/.cvsignore[DEL],
+	  themes/tyrex/.cvsignore[DEL], themes/waza/.cvsignore[DEL],
+	  themes/wildbush/.cvsignore[DEL]: remove .cvsignore cruft
 
 2005-04-03 19:41  olivier
 
@@ -17361,12 +19793,12 @@
 
 2005-03-09 11:50  benny
 
-	* Makefile.am, configure.ac, m4/X11.m4, m4/debug.m4, m4/depends.m4,
-	  m4/glib-gettext.m4, m4/i18n.m4, m4/pkg.m4, mcs-plugin,
-	  mcs-plugin/.cvsignore, mcs-plugin/Makefile.am,
-	  mcs-plugin/xfce-wm-settings.desktop,
+	* Makefile.am, configure.ac, m4/X11.m4[DEL], m4/debug.m4[DEL],
+	  m4/depends.m4[DEL], m4/glib-gettext.m4[DEL], m4/i18n.m4[DEL],
+	  m4/pkg.m4[DEL], mcs-plugin, mcs-plugin/.cvsignore,
+	  mcs-plugin/Makefile.am, mcs-plugin/xfce-wm-settings.desktop[DEL],
 	  mcs-plugin/xfce-wm-settings.desktop.in,
-	  mcs-plugin/xfce-workspaces-settings.desktop,
+	  mcs-plugin/xfce-workspaces-settings.desktop[DEL],
 	  mcs-plugin/xfce-workspaces-settings.desktop.in, po/POTFILES.in,
 	  po/et.po, po/fi.po, po/fr.po, po/he.po, po/ko.po, po/nl.po,
 	  po/ru.po, po/xfwm4.pot, po/zh_TW.po: Intltool'ized xfwm4.
@@ -17469,7 +19901,7 @@
 	  themes/default/top-right-active.png,
 	  themes/default/top-right-active.xpm,
 	  themes/default/top-right-inactive.png,
-	  themes/default/top-right-inactive.xpm, themes/therapy: Use
+	  themes/default/top-right-inactive.xpm, themes/therapy[DEL]: Use
 	  "Just4fun" title buttons with "therapy" decoration as default,
 	  and remove "therapy" as it's the default now.
 
@@ -17817,7 +20249,7 @@
 	  po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
 	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po,
 	  po/tr.po, po/uk.po, po/vi.po, po/xfwm4.pot, po/zh_CN.po,
-	  po/zh_TW.po, themes/Makefile.am, themes/breeze,
+	  po/zh_TW.po, themes/Makefile.am, themes/breeze[DEL],
 	  themes/default-4.2, themes/default-4.2/.cvsignore,
 	  themes/default-4.2/Makefile.am, themes/default-4.2/README,
 	  themes/default-4.2/bottom-active.png,
@@ -18254,34 +20686,42 @@
 
 2005-01-28 05:53  olivier
 
-	* configure.ac, themes/Makefile.am, themes/breeze: Remove theme as
-	  in 4.2
+	* configure.ac, themes/Makefile.am, themes/breeze[DEL]: Remove
+	  theme as in 4.2
 
 2005-01-28 05:50  olivier
 
-	* ., .cvsignore, Makefile.in, aclocal.m4, autoclean.sh, autogen.sh,
-	  compile, config.guess, config.h.in, config.sub, configure,
-	  defaults/Makefile.in, depcomp, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, doc/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, icons/48x48/Makefile.in,
-	  icons/Makefile.in, icons/scalable/Makefile.in, install-sh,
-	  ltmain.sh, mcs-plugin/Makefile.in, missing, mkinstalldirs, po,
-	  po/.cvsignore, po/Makefile.in.in, po/ar.gmo, po/az.gmo,
-	  po/be.gmo, po/bg.gmo, po/ca.gmo, po/cs.gmo, po/de.gmo,
-	  po/en_GB.gmo, po/es.gmo, po/es_MX.gmo, po/et.gmo, po/eu.gmo,
-	  po/fa.gmo, po/fi.gmo, po/fr.gmo, po/gu.gmo, po/he.gmo, po/hi.gmo,
-	  po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo, po/lt.gmo, po/ms.gmo,
-	  po/nb_NO.gmo, po/nl.gmo, po/pa.gmo, po/pl.gmo, po/pt_BR.gmo,
-	  po/pt_PT.gmo, po/ro.gmo, po/ru.gmo, po/sk.gmo, po/sv.gmo,
-	  po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo, po/zh_CN.gmo,
-	  po/zh_TW.gmo, src/Makefile.in, stamp-h.in, themes/Makefile.in,
-	  themes/breeze/Makefile.in, themes/default-4.0/Makefile.in,
-	  themes/default.keys/Makefile.in, themes/default/Makefile.in,
-	  themes/opta/Makefile.in, themes/symphony/Makefile.in,
-	  themes/therapy/Makefile.in, themes/tyrex/Makefile.in,
-	  themes/waza/Makefile.in, themes/wildbush/Makefile.in: Remove
-	  autogenerated files from CVS.
+	* ., .cvsignore, Makefile.in[DEL], aclocal.m4[DEL], autoclean.sh,
+	  autogen.sh, compile[DEL], config.guess[DEL], config.h.in[DEL],
+	  config.sub[DEL], configure[DEL], defaults/Makefile.in[DEL],
+	  depcomp[DEL], doc/C/Makefile.in[DEL],
+	  doc/C/images/Makefile.in[DEL], doc/Makefile.in[DEL],
+	  doc/fr/Makefile.in[DEL], doc/fr/images/Makefile.in[DEL],
+	  doc/it/Makefile.in[DEL], doc/it/images/Makefile.in[DEL],
+	  icons/48x48/Makefile.in[DEL], icons/Makefile.in[DEL],
+	  icons/scalable/Makefile.in[DEL], install-sh[DEL], ltmain.sh[DEL],
+	  mcs-plugin/Makefile.in[DEL], missing[DEL], mkinstalldirs[DEL],
+	  po, po/.cvsignore, po/Makefile.in.in[DEL], po/ar.gmo[DEL],
+	  po/az.gmo[DEL], po/be.gmo[DEL], po/bg.gmo[DEL], po/ca.gmo[DEL],
+	  po/cs.gmo[DEL], po/de.gmo[DEL], po/en_GB.gmo[DEL],
+	  po/es.gmo[DEL], po/es_MX.gmo[DEL], po/et.gmo[DEL],
+	  po/eu.gmo[DEL], po/fa.gmo[DEL], po/fi.gmo[DEL], po/fr.gmo[DEL],
+	  po/gu.gmo[DEL], po/he.gmo[DEL], po/hi.gmo[DEL], po/hu.gmo[DEL],
+	  po/it.gmo[DEL], po/ja.gmo[DEL], po/ko.gmo[DEL], po/lt.gmo[DEL],
+	  po/ms.gmo[DEL], po/nb_NO.gmo[DEL], po/nl.gmo[DEL],
+	  po/pa.gmo[DEL], po/pl.gmo[DEL], po/pt_BR.gmo[DEL],
+	  po/pt_PT.gmo[DEL], po/ro.gmo[DEL], po/ru.gmo[DEL],
+	  po/sk.gmo[DEL], po/sv.gmo[DEL], po/ta.gmo[DEL], po/tr.gmo[DEL],
+	  po/uk.gmo[DEL], po/vi.gmo[DEL], po/zh_CN.gmo[DEL],
+	  po/zh_TW.gmo[DEL], src/Makefile.in[DEL], stamp-h.in[DEL],
+	  themes/Makefile.in[DEL], themes/breeze/Makefile.in[DEL],
+	  themes/default-4.0/Makefile.in[DEL],
+	  themes/default.keys/Makefile.in[DEL],
+	  themes/default/Makefile.in[DEL], themes/opta/Makefile.in[DEL],
+	  themes/symphony/Makefile.in[DEL],
+	  themes/therapy/Makefile.in[DEL], themes/tyrex/Makefile.in[DEL],
+	  themes/waza/Makefile.in[DEL], themes/wildbush/Makefile.in[DEL]:
+	  Remove autogenerated files from CVS.
 
 2005-01-27 23:00  olivier
 
@@ -19398,8 +21838,8 @@
 
 2004-11-27 23:14  olivier
 
-	* .cdtproject, .project, src/events.c, src/focus.c, src/keyboard.c:
-	  Fix focus timing on revert,
+	* .cdtproject[DEL], .project[DEL], src/events.c, src/focus.c,
+	  src/keyboard.c: Fix focus timing on revert,
 	  Fix modifiers mismatch.
 
 2004-11-27 20:44  pollux
@@ -19595,7 +22035,7 @@
 	* doc/C/images/Makefile.am, doc/C/images/Makefile.in,
 	  doc/C/images/compose_shortcut.png,
 	  doc/C/images/decoration_style.png, doc/C/images/focus.png,
-	  doc/C/images/keyboard_and_focus.png,
+	  doc/C/images/keyboard_and_focus.png[DEL],
 	  doc/C/images/keyboard_shortcuts.png,
 	  doc/C/images/misc_wm_prefs.png, doc/C/images/titlebar.png,
 	  doc/C/images/workspace_margins.png,
@@ -20259,8 +22699,8 @@
 
 2004-10-09 14:20  pollux
 
-	* configure, configure.ac, po/fa.gmo, po/fa.po, po/fa_IR.gmo,
-	  po/fa_IR.po: update FA translations
+	* configure, configure.ac, po/fa.gmo, po/fa.po, po/fa_IR.gmo[DEL],
+	  po/fa_IR.po[DEL]: update FA translations
 
 2004-10-09 13:48  pollux
 
@@ -20864,12 +23304,12 @@
 	  doc/it/images/Makefile.in, icons/48x48/Makefile.in,
 	  icons/Makefile.in, icons/scalable/Makefile.in, ltmain.sh,
 	  mcs-plugin/Makefile.in, src/Makefile.am, src/Makefile.in,
-	  src/client.h, src/compositor.c, src/compositor.h, src/display.c,
-	  src/display.h, src/main.c, src/screen.h, themes/Makefile.in,
-	  themes/default-4.0/Makefile.in, themes/default.keys/Makefile.in,
-	  themes/default/Makefile.in, themes/opta/Makefile.in,
-	  themes/symphony/Makefile.in, themes/waza/Makefile.in: Remove
-	  compositor for now.
+	  src/client.h, src/compositor.c[DEL], src/compositor.h[DEL],
+	  src/display.c, src/display.h, src/main.c, src/screen.h,
+	  themes/Makefile.in, themes/default-4.0/Makefile.in,
+	  themes/default.keys/Makefile.in, themes/default/Makefile.in,
+	  themes/opta/Makefile.in, themes/symphony/Makefile.in,
+	  themes/waza/Makefile.in: Remove compositor for now.
 
 2004-09-19 19:58  olivier
 
@@ -21008,7 +23448,7 @@
 
 2004-09-07 22:12  olivier
 
-	* Makefile.am, Makefile.in, TODO, example.xfwm4rc.in,
+	* Makefile.am, Makefile.in, TODO, example.xfwm4rc.in[DEL],
 	  xfwm4.spec.in: Remove outdated example.xfwm4rc
 
 2004-09-07 21:52  olivier
@@ -21752,8 +24192,9 @@
 	  icons/scalable/Makefile.am, icons/scalable/Makefile.in,
 	  icons/scalable/xfce4-workspaces.svg, icons/scalable/xfwm4.svg,
 	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
-	  mcs-plugin/xfce4-keys.png, mcs-plugin/xfce4-workspaces.png,
-	  mcs-plugin/xfwm4.png: Added icons from Francois.
+	  mcs-plugin/xfce4-keys.png[DEL],
+	  mcs-plugin/xfce4-workspaces.png[DEL], mcs-plugin/xfwm4.png[DEL]:
+	  Added icons from Francois.
 
 2004-07-24 18:52  benny
 
@@ -21774,17 +24215,17 @@
 2004-07-24 12:57  benny
 
 	* aclocal.m4, configure, ltmain.sh, mcs-plugin/Makefile.am,
-	  mcs-plugin/Makefile.in, mcs-plugin/keys-icon.h,
-	  mcs-plugin/keys.png, mcs-plugin/margins-icon.h,
-	  mcs-plugin/margins-icon.png, mcs-plugin/plugin.c,
-	  mcs-plugin/workspaces-icon.h, mcs-plugin/workspaces.c,
-	  mcs-plugin/workspaces.png, mcs-plugin/xfce-wm-settings.desktop,
-	  mcs-plugin/xfce4-keys.png, mcs-plugin/xfce4-workspaces.png,
-	  mcs-plugin/xfwm4-icon.h, mcs-plugin/xfwm4-icon.png,
-	  mcs-plugin/xfwm4.png, mcs-plugin/xfwm4_plugin.c,
-	  mcs-plugin/xfwm4_plugin.h, mcs-plugin/xfwm4_shortcuteditor.c,
-	  src/events.c: Made icons themable. Fix compile error in events.c
-	  with --enable-debug=full.
+	  mcs-plugin/Makefile.in, mcs-plugin/keys-icon.h[DEL],
+	  mcs-plugin/keys.png[DEL], mcs-plugin/margins-icon.h[DEL],
+	  mcs-plugin/margins-icon.png[DEL], mcs-plugin/plugin.c,
+	  mcs-plugin/workspaces-icon.h[DEL], mcs-plugin/workspaces.c,
+	  mcs-plugin/workspaces.png[DEL],
+	  mcs-plugin/xfce-wm-settings.desktop, mcs-plugin/xfce4-keys.png,
+	  mcs-plugin/xfce4-workspaces.png, mcs-plugin/xfwm4-icon.h[DEL],
+	  mcs-plugin/xfwm4-icon.png[DEL], mcs-plugin/xfwm4.png,
+	  mcs-plugin/xfwm4_plugin.c, mcs-plugin/xfwm4_plugin.h,
+	  mcs-plugin/xfwm4_shortcuteditor.c, src/events.c: Made icons
+	  themable. Fix compile error in events.c with --enable-debug=full.
 
 2004-07-24 12:43  benny
 
@@ -22096,8 +24537,8 @@
 2004-07-07 19:18  olivier
 
 	* defaults/Makefile.am, defaults/Makefile.in, defaults/defaults,
-	  defaults/defaults.in, po/xfwm4.pot: Remove useless generation of
-	  default file.
+	  defaults/defaults.in[DEL], po/xfwm4.pot: Remove useless
+	  generation of default file.
 
 2004-07-06 22:22  olivier
 
@@ -22600,7 +25041,7 @@
 	  src/events.c, src/events.h, src/focus.c, src/focus.h,
 	  src/frame.c, src/frame.h, src/hints.c, src/hints.h, src/icons.c,
 	  src/icons.h, src/keyboard.c, src/keyboard.h, src/main.c,
-	  src/main.h, src/menu.c, src/menu.h, src/misc.c, src/misc.h,
+	  src/main.h[DEL], src/menu.c, src/menu.h, src/misc.c, src/misc.h,
 	  src/mypixmap.c, src/mypixmap.h, src/mywindow.c, src/mywindow.h,
 	  src/netwm.c, src/netwm.h, src/parserc.c, src/parserc.h,
 	  src/placement.c, src/placement.h, src/poswin.c, src/poswin.h,
@@ -22769,7 +25210,7 @@
 	  src/workspaces.h, themes/Makefile.am, themes/Makefile.in,
 	  themes/default-4.0/Makefile.in, themes/default.keys/Makefile.in,
 	  themes/default/Makefile.in, themes/opta/Makefile.in,
-	  themes/synthetic, themes/waza, themes/waza/Makefile.am,
+	  themes/synthetic[DEL], themes/waza, themes/waza/Makefile.am,
 	  themes/waza/Makefile.in, themes/waza/README,
 	  themes/waza/bottom-active.xpm, themes/waza/bottom-inactive.xpm,
 	  themes/waza/bottom-left-active.xpm,
@@ -23121,79 +25562,87 @@
 	  themes/default/bottom-left-inactive.xpm,
 	  themes/default/bottom-right-active.xpm,
 	  themes/default/bottom-right-inactive.xpm,
-	  themes/default/close-active.png, themes/default/close-active.xpm,
-	  themes/default/close-inactive.png,
+	  themes/default/close-active.png[DEL],
+	  themes/default/close-active.xpm,
+	  themes/default/close-inactive.png[DEL],
 	  themes/default/close-inactive.xpm,
-	  themes/default/close-pressed.png,
-	  themes/default/close-pressed.xpm, themes/default/hide-active.png,
-	  themes/default/hide-active.xpm, themes/default/hide-inactive.png,
+	  themes/default/close-pressed.png[DEL],
+	  themes/default/close-pressed.xpm,
+	  themes/default/hide-active.png[DEL],
+	  themes/default/hide-active.xpm,
+	  themes/default/hide-inactive.png[DEL],
 	  themes/default/hide-inactive.xpm,
-	  themes/default/hide-pressed.png, themes/default/hide-pressed.xpm,
-	  themes/default/maximize-active.png,
+	  themes/default/hide-pressed.png[DEL],
+	  themes/default/hide-pressed.xpm,
+	  themes/default/maximize-active.png[DEL],
 	  themes/default/maximize-active.xpm,
-	  themes/default/maximize-inactive.png,
+	  themes/default/maximize-inactive.png[DEL],
 	  themes/default/maximize-inactive.xpm,
-	  themes/default/maximize-pressed.png,
+	  themes/default/maximize-pressed.png[DEL],
 	  themes/default/maximize-pressed.xpm,
-	  themes/default/maximize-toggled-active.png,
+	  themes/default/maximize-toggled-active.png[DEL],
 	  themes/default/maximize-toggled-active.xpm,
-	  themes/default/maximize-toggled-inactive.png,
+	  themes/default/maximize-toggled-inactive.png[DEL],
 	  themes/default/maximize-toggled-inactive.xpm,
-	  themes/default/maximize-toggled-pressed.png,
+	  themes/default/maximize-toggled-pressed.png[DEL],
 	  themes/default/maximize-toggled-pressed.xpm,
-	  themes/default/menu-active.png, themes/default/menu-active.xpm,
-	  themes/default/menu-inactive.png,
+	  themes/default/menu-active.png[DEL],
+	  themes/default/menu-active.xpm,
+	  themes/default/menu-inactive.png[DEL],
 	  themes/default/menu-inactive.xpm,
-	  themes/default/menu-pressed.png, themes/default/menu-pressed.xpm,
-	  themes/default/shade-active.png, themes/default/shade-active.xpm,
-	  themes/default/shade-inactive.png,
+	  themes/default/menu-pressed.png[DEL],
+	  themes/default/menu-pressed.xpm,
+	  themes/default/shade-active.png[DEL],
+	  themes/default/shade-active.xpm,
+	  themes/default/shade-inactive.png[DEL],
 	  themes/default/shade-inactive.xpm,
-	  themes/default/shade-pressed.png,
+	  themes/default/shade-pressed.png[DEL],
 	  themes/default/shade-pressed.xpm,
-	  themes/default/shade-toggled-active.png,
+	  themes/default/shade-toggled-active.png[DEL],
 	  themes/default/shade-toggled-active.xpm,
-	  themes/default/shade-toggled-inactive.png,
+	  themes/default/shade-toggled-inactive.png[DEL],
 	  themes/default/shade-toggled-inactive.xpm,
-	  themes/default/shade-toggled-pressed.png,
+	  themes/default/shade-toggled-pressed.png[DEL],
 	  themes/default/shade-toggled-pressed.xpm,
-	  themes/default/stick-active.png, themes/default/stick-active.xpm,
-	  themes/default/stick-inactive.png,
+	  themes/default/stick-active.png[DEL],
+	  themes/default/stick-active.xpm,
+	  themes/default/stick-inactive.png[DEL],
 	  themes/default/stick-inactive.xpm,
-	  themes/default/stick-pressed.png,
+	  themes/default/stick-pressed.png[DEL],
 	  themes/default/stick-pressed.xpm,
-	  themes/default/stick-toggled-active.png,
+	  themes/default/stick-toggled-active.png[DEL],
 	  themes/default/stick-toggled-active.xpm,
-	  themes/default/stick-toggled-inactive.png,
+	  themes/default/stick-toggled-inactive.png[DEL],
 	  themes/default/stick-toggled-inactive.xpm,
-	  themes/default/stick-toggled-pressed.png,
+	  themes/default/stick-toggled-pressed.png[DEL],
 	  themes/default/stick-toggled-pressed.xpm, themes/default/themerc,
-	  themes/default/title-1-active.png,
+	  themes/default/title-1-active.png[DEL],
 	  themes/default/title-1-active.xpm,
-	  themes/default/title-1-inactive.png,
+	  themes/default/title-1-inactive.png[DEL],
 	  themes/default/title-1-inactive.xpm,
-	  themes/default/title-2-active.png,
+	  themes/default/title-2-active.png[DEL],
 	  themes/default/title-2-active.xpm,
-	  themes/default/title-2-inactive.png,
+	  themes/default/title-2-inactive.png[DEL],
 	  themes/default/title-2-inactive.xpm,
 	  themes/default/title-3-active.png,
 	  themes/default/title-3-active.xpm,
 	  themes/default/title-3-inactive.png,
 	  themes/default/title-3-inactive.xpm,
-	  themes/default/title-4-active.png,
+	  themes/default/title-4-active.png[DEL],
 	  themes/default/title-4-active.xpm,
-	  themes/default/title-4-inactive.png,
+	  themes/default/title-4-inactive.png[DEL],
 	  themes/default/title-4-inactive.xpm,
-	  themes/default/title-5-active.png,
+	  themes/default/title-5-active.png[DEL],
 	  themes/default/title-5-active.xpm,
-	  themes/default/title-5-inactive.png,
+	  themes/default/title-5-inactive.png[DEL],
 	  themes/default/title-5-inactive.xpm,
-	  themes/default/top-left-active.png,
+	  themes/default/top-left-active.png[DEL],
 	  themes/default/top-left-active.xpm,
-	  themes/default/top-left-inactive.png,
+	  themes/default/top-left-inactive.png[DEL],
 	  themes/default/top-left-inactive.xpm,
-	  themes/default/top-right-active.png,
+	  themes/default/top-right-active.png[DEL],
 	  themes/default/top-right-active.xpm,
-	  themes/default/top-right-inactive.png,
+	  themes/default/top-right-inactive.png[DEL],
 	  themes/default/top-right-inactive.xpm: Change theme
 
 2004-04-12 13:47  dannym
@@ -23989,7 +26438,7 @@
 	  themes/default/top-left-inactive.xpm,
 	  themes/default/top-right-active.xpm,
 	  themes/default/top-right-inactive.xpm, themes/opta/Makefile.am,
-	  themes/opta/Makefile.in, themes/softwall,
+	  themes/opta/Makefile.in, themes/softwall[DEL],
 	  themes/synthetic/Makefile.am, themes/synthetic/Makefile.in: Use
 	  standard location for xfwm4 themes (breaking backward compat,
 	  older themes won't show anymore)
@@ -23997,8 +26446,8 @@
 2004-02-25 23:36  olivier
 
 	* .cdtproject, .project, configure, configure.ac, ltmain.sh,
-	  themes/Makefile.am, themes/Makefile.in, themes/bbs, themes/curve,
-	  themes/default/bottom-active.xpm,
+	  themes/Makefile.am, themes/Makefile.in, themes/bbs[DEL],
+	  themes/curve[DEL], themes/default/bottom-active.xpm,
 	  themes/default/bottom-inactive.xpm,
 	  themes/default/bottom-left-active.xpm,
 	  themes/default/bottom-left-inactive.xpm,
@@ -24044,12 +26493,12 @@
 	  themes/default/top-left-active.xpm,
 	  themes/default/top-left-inactive.xpm,
 	  themes/default/top-right-active.xpm,
-	  themes/default/top-right-inactive.xpm, themes/exocet,
-	  themes/meenee, themes/microcurve, themes/microdeck,
-	  themes/microdeck2, themes/microdeck3, themes/prune,
-	  themes/softwall, themes/softwall/Makefile.am,
-	  themes/softwall/Makefile.in, themes/softwall/README,
-	  themes/softwall/bottom-active.xpm,
+	  themes/default/top-right-inactive.xpm, themes/exocet[DEL],
+	  themes/meenee[DEL], themes/microcurve[DEL],
+	  themes/microdeck[DEL], themes/microdeck2[DEL],
+	  themes/microdeck3[DEL], themes/prune[DEL], themes/softwall,
+	  themes/softwall/Makefile.am, themes/softwall/Makefile.in,
+	  themes/softwall/README, themes/softwall/bottom-active.xpm,
 	  themes/softwall/bottom-inactive.xpm,
 	  themes/softwall/bottom-left-active.xpm,
 	  themes/softwall/bottom-left-inactive.xpm,
@@ -24099,9 +26548,9 @@
 	  themes/softwall/top-left-active.xpm,
 	  themes/softwall/top-left-inactive.xpm,
 	  themes/softwall/top-right-active.xpm,
-	  themes/softwall/top-right-inactive.xpm, themes/tgc,
-	  themes/tgc-large, themes/tubular: Reorg xfwm4 theme by moving
-	  most theme from xfwm4 base package to xfwm4-themes
+	  themes/softwall/top-right-inactive.xpm, themes/tgc[DEL],
+	  themes/tgc-large[DEL], themes/tubular[DEL]: Reorg xfwm4 theme by
+	  moving most theme from xfwm4 base package to xfwm4-themes
 
 2004-02-25 19:03  olivier
 
@@ -28036,7 +30485,7 @@
 	  doc/C/images/Makefile.in, doc/C/images/xfwm_workspaces.png,
 	  doc/C/xfwm4.html, doc/C/xfwm4.xml, mcs-plugin/Makefile.am,
 	  mcs-plugin/Makefile.in, mcs-plugin/margins.c,
-	  mcs-plugin/margins.h, mcs-plugin/margins_plugin.c,
+	  mcs-plugin/margins.h, mcs-plugin/margins_plugin.c[DEL],
 	  mcs-plugin/plugin.c, mcs-plugin/plugin.h,
 	  mcs-plugin/workspaces-icon.h, mcs-plugin/workspaces.c,
 	  mcs-plugin/workspaces.h, mcs-plugin/workspaces.png, src/client.c,
@@ -28708,9 +31157,9 @@
 
 2003-08-30 12:49  huysmans
 
-	* aclocal.m4, configure, configure.ac, po/zh_TW.Big5.gmo,
-	  po/zh_TW.Big5.po, po/zh_TW.gmo, po/zh_TW.po: Rename zh_TW.Big5 ->
-	  zh_TW
+	* aclocal.m4, configure, configure.ac, po/zh_TW.Big5.gmo[DEL],
+	  po/zh_TW.Big5.po[DEL], po/zh_TW.gmo, po/zh_TW.po: Rename
+	  zh_TW.Big5 -> zh_TW
 
 2003-08-30 08:58  huysmans
 
@@ -29013,7 +31462,7 @@
 
 2003-07-24 09:21  huysmans
 
-	* debian: Remove debian dirs on Martin's request
+	* debian[DEL]: Remove debian dirs on Martin's request
 
 2003-07-24 06:27  huysmans
 
@@ -29159,12 +31608,13 @@
 
 2003-07-05 12:31  xfce
 
-	* Makefile.in, ltconfig: Remove ltconfig script as it is generated
+	* Makefile.in, ltconfig[DEL]: Remove ltconfig script as it is
+	  generated
 
 2003-07-04 23:37  xfce
 
-	* Makefile.in, ltcf-c.sh, po/es.gmo, po/es_MX.gmo: libttol update
-	  and all
+	* Makefile.in, ltcf-c.sh[DEL], po/es.gmo, po/es_MX.gmo: libttol
+	  update and all
 
 2003-07-03 21:26  xfce
 
@@ -29832,20 +32282,24 @@
 
 2003-05-04 21:38  xfce
 
-	* themes/adept, themes/agua, themes/atlanta, themes/atlanta2,
-	  themes/b5, themes/b6, themes/beastie, themes/biz,
-	  themes/coldsteel, themes/coolclean, themes/crux, themes/cruxish,
-	  themes/eazel-blue, themes/elberg, themes/fbx, themes/g2,
-	  themes/gaudy, themes/gnububble, themes/gorilla, themes/gtk,
-	  themes/iceg, themes/kde, themes/keramik, themes/kindaker,
-	  themes/koynacity, themes/linea, themes/metabox, themes/microgui,
-	  themes/mofit, themes/next, themes/ops, themes/oroborus,
-	  themes/perl, themes/pills, themes/piranha, themes/platinum,
-	  themes/quiet-purple, themes/quinx, themes/r9x, themes/redmond,
-	  themes/redmondxp, themes/retro, themes/silverado, themes/slick,
-	  themes/slimline, themes/tabs, themes/totem, themes/trench,
-	  themes/triviality, themes/tux, themes/variation, themes/xfce:
-	  Move most themes to xfce4-extras/xfwm4-themes/
+	* themes/adept[DEL], themes/agua[DEL], themes/atlanta[DEL],
+	  themes/atlanta2[DEL], themes/b5[DEL], themes/b6[DEL],
+	  themes/beastie[DEL], themes/biz[DEL], themes/coldsteel[DEL],
+	  themes/coolclean[DEL], themes/crux[DEL], themes/cruxish[DEL],
+	  themes/eazel-blue[DEL], themes/elberg[DEL], themes/fbx[DEL],
+	  themes/g2[DEL], themes/gaudy[DEL], themes/gnububble[DEL],
+	  themes/gorilla[DEL], themes/gtk[DEL], themes/iceg[DEL],
+	  themes/kde[DEL], themes/keramik[DEL], themes/kindaker[DEL],
+	  themes/koynacity[DEL], themes/linea[DEL], themes/metabox[DEL],
+	  themes/microgui[DEL], themes/mofit[DEL], themes/next[DEL],
+	  themes/ops[DEL], themes/oroborus[DEL], themes/perl[DEL],
+	  themes/pills[DEL], themes/piranha[DEL], themes/platinum[DEL],
+	  themes/quiet-purple[DEL], themes/quinx[DEL], themes/r9x[DEL],
+	  themes/redmond[DEL], themes/redmondxp[DEL], themes/retro[DEL],
+	  themes/silverado[DEL], themes/slick[DEL], themes/slimline[DEL],
+	  themes/tabs[DEL], themes/totem[DEL], themes/trench[DEL],
+	  themes/triviality[DEL], themes/tux[DEL], themes/variation[DEL],
+	  themes/xfce[DEL]: Move most themes to xfce4-extras/xfwm4-themes/
 
 2003-05-04 18:21  huysmans
 
@@ -30172,8 +32626,8 @@
 2003-04-21 17:47  bmeurer
 
 	* Makefile.in, aclocal.m4, configure, ltcf-c.sh, ltconfig,
-	  ltmain.sh, m4/X11.m4, m4/rpath.m4: Remove rpath stuff (up to the
-	  package maintainer to take care of this).
+	  ltmain.sh, m4/X11.m4, m4/rpath.m4[DEL]: Remove rpath stuff (up to
+	  the package maintainer to take care of this).
 
 2003-04-21 09:56  xfce
 
@@ -30585,7 +33039,7 @@
 
 	* aclocal.m4, config.h.in, configure, m4/debug.m4,
 	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, src/Makefile.am,
-	  src/Makefile.in, src/client.c, src/debug.h, src/events.c,
+	  src/Makefile.in, src/client.c, src/debug.h[DEL], src/events.c,
 	  src/frame.c, src/hints.c, src/keyboard.c, src/main.c, src/menu.c,
 	  src/misc.c, src/misc.h, src/mypixmap.c, src/mywindow.c,
 	  src/parserc.c, src/settings.c, src/tabwin.c, src/tabwin.h,
@@ -30603,7 +33057,7 @@
 
 2003-04-02 16:03  bmeurer
 
-	* Makefile.am, Makefile.in, aclocal.m4, common, configure,
+	* Makefile.am, Makefile.in, aclocal.m4, common[DEL], configure,
 	  configure.ac, ltcf-c.sh, ltconfig, ltmain.sh, m4/debug.m4,
 	  m4/rpath.m4, mcs-plugin/margins_plugin.c,
 	  mcs-plugin/xfwm4_plugin.c, src/client.c, src/events.c,
@@ -30681,8 +33135,9 @@
 
 	* src/Makefile.am, src/Makefile.in, src/client.c, src/client.h,
 	  src/events.c, src/frame.c, src/main.h, src/mypixmap.c,
-	  src/mypixmap.h, src/pixmap.c, src/pixmap.h, src/settings.c,
-	  src/settings.h, src/workspaces.c: Small code reorganization
+	  src/mypixmap.h, src/pixmap.c[DEL], src/pixmap.h[DEL],
+	  src/settings.c, src/settings.h, src/workspaces.c: Small code
+	  reorganization
 
 2003-03-29 22:06  xfce
 
@@ -30999,7 +33454,7 @@
 
 	* Makefile.am, Makefile.in, aclocal.m4, autogen.sh,
 	  common/Makefile.in, config.h.in, configure, configure.ac,
-	  configure.in, defaults/Makefile.in, ltcf-c.sh, ltconfig,
+	  configure.in[DEL], defaults/Makefile.in, ltcf-c.sh, ltconfig,
 	  ltmain.sh, m4, m4/X11.m4, m4/debug.m4, m4/depends.m4, m4/i18n.m4,
 	  m4/rpath.m4, mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
 	  mcs-plugin/margins_plugin.c, mcs-plugin/xfwm4_plugin.c,
@@ -31535,7 +33990,7 @@
 2003-02-24 22:23  xfce
 
 	* mcs-plugin/Makefile.am, mcs-plugin/Makefile.in,
-	  mcs-plugin/icon.png, mcs-plugin/inline-icon.h,
+	  mcs-plugin/icon.png[DEL], mcs-plugin/inline-icon.h[DEL],
 	  mcs-plugin/margins-icon.h, mcs-plugin/margins-icon.png,
 	  mcs-plugin/margins_plugin.c, mcs-plugin/monitor-icon.h,
 	  mcs-plugin/monitor-icon.png, mcs-plugin/xfwm4-icon.h,
@@ -32139,8 +34594,9 @@
 
 2003-01-24 10:07  xfce
 
-	* configure, configure.in, po/zh_CN.GB2312.gmo, po/zh_CN.GB2312.po,
-	  po/zh_CN.gmo, po/zh_CN.po: Rename po/zh_CN.GB2312.* to po/zh_CN.*
+	* configure, configure.in, po/zh_CN.GB2312.gmo[DEL],
+	  po/zh_CN.GB2312.po[DEL], po/zh_CN.gmo, po/zh_CN.po: Rename
+	  po/zh_CN.GB2312.* to po/zh_CN.*
 
 2003-01-24 09:00  xfce
 
@@ -32233,7 +34689,7 @@
 
 	* Makefile.am, Makefile.in, common, common/Makefile.am,
 	  common/Makefile.in, common/my_intl.h, configure, configure.in,
-	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, my_intl.h,
+	  mcs-plugin/Makefile.am, mcs-plugin/Makefile.in, my_intl.h[DEL],
 	  src/Makefile.am, src/Makefile.in, src/tabwin.c: *** empty log
 	  message ***
 
@@ -33703,36 +36159,36 @@
 	* Makefile.in, config.h.in, configure, configure.in,
 	  defaults/Makefile.in, src/Makefile.am, src/Makefile.in,
 	  src/client.c, src/client.h, src/events.h, src/main.c, src/main.h,
-	  src/menu.c, src/settings.c, src/xinerama.c, src/xinerama.h,
-	  themes/Makefile.in, themes/adept/Makefile.in,
-	  themes/agua/Makefile.in, themes/atlanta/Makefile.in,
-	  themes/atlanta2/Makefile.in, themes/b5/Makefile.in,
-	  themes/b6/Makefile.in, themes/bbs/Makefile.in,
-	  themes/beastie/Makefile.in, themes/biz/Makefile.in,
-	  themes/coldsteel/Makefile.in, themes/coolclean/Makefile.in,
-	  themes/crux/Makefile.in, themes/cruxish/Makefile.in,
-	  themes/curve/Makefile.in, themes/default.keys/Makefile.in,
-	  themes/eazel-blue/Makefile.in, themes/elberg/Makefile.in,
-	  themes/exocet/Makefile.in, themes/fbx/Makefile.in,
-	  themes/g2/Makefile.in, themes/gnububble/Makefile.in,
-	  themes/gorilla/Makefile.in, themes/gtk/Makefile.in,
-	  themes/iceg/Makefile.in, themes/kde/Makefile.in,
-	  themes/keramik/Makefile.in, themes/kindaker/Makefile.in,
-	  themes/linea/Makefile.in, themes/metabox/Makefile.in,
-	  themes/microdeck/Makefile.in, themes/microgui/Makefile.in,
-	  themes/mofit/Makefile.in, themes/next/Makefile.in,
-	  themes/ops/Makefile.in, themes/oroborus/Makefile.in,
-	  themes/pills/Makefile.in, themes/piranha/Makefile.in,
-	  themes/platinum/Makefile.in, themes/quiet-purple/Makefile.in,
-	  themes/quinx/Makefile.in, themes/r9x/Makefile.in,
-	  themes/redmond/Makefile.in, themes/redmondxp/Makefile.in,
-	  themes/retro/Makefile.in, themes/silverado/Makefile.in,
-	  themes/slick/Makefile.in, themes/slimline/Makefile.in,
-	  themes/tabs/Makefile.in, themes/tgc/Makefile.in,
-	  themes/trench/Makefile.in, themes/tux/Makefile.in,
-	  themes/variation/Makefile.in, themes/xfce/Makefile.in: Remove
-	  xinerama code to move it to libxfcegui4 (xfwm4 now requires
-	  libxfcegui4 >= 0.0.8)
+	  src/menu.c, src/settings.c, src/xinerama.c[DEL],
+	  src/xinerama.h[DEL], themes/Makefile.in,
+	  themes/adept/Makefile.in, themes/agua/Makefile.in,
+	  themes/atlanta/Makefile.in, themes/atlanta2/Makefile.in,
+	  themes/b5/Makefile.in, themes/b6/Makefile.in,
+	  themes/bbs/Makefile.in, themes/beastie/Makefile.in,
+	  themes/biz/Makefile.in, themes/coldsteel/Makefile.in,
+	  themes/coolclean/Makefile.in, themes/crux/Makefile.in,
+	  themes/cruxish/Makefile.in, themes/curve/Makefile.in,
+	  themes/default.keys/Makefile.in, themes/eazel-blue/Makefile.in,
+	  themes/elberg/Makefile.in, themes/exocet/Makefile.in,
+	  themes/fbx/Makefile.in, themes/g2/Makefile.in,
+	  themes/gnububble/Makefile.in, themes/gorilla/Makefile.in,
+	  themes/gtk/Makefile.in, themes/iceg/Makefile.in,
+	  themes/kde/Makefile.in, themes/keramik/Makefile.in,
+	  themes/kindaker/Makefile.in, themes/linea/Makefile.in,
+	  themes/metabox/Makefile.in, themes/microdeck/Makefile.in,
+	  themes/microgui/Makefile.in, themes/mofit/Makefile.in,
+	  themes/next/Makefile.in, themes/ops/Makefile.in,
+	  themes/oroborus/Makefile.in, themes/pills/Makefile.in,
+	  themes/piranha/Makefile.in, themes/platinum/Makefile.in,
+	  themes/quiet-purple/Makefile.in, themes/quinx/Makefile.in,
+	  themes/r9x/Makefile.in, themes/redmond/Makefile.in,
+	  themes/redmondxp/Makefile.in, themes/retro/Makefile.in,
+	  themes/silverado/Makefile.in, themes/slick/Makefile.in,
+	  themes/slimline/Makefile.in, themes/tabs/Makefile.in,
+	  themes/tgc/Makefile.in, themes/trench/Makefile.in,
+	  themes/tux/Makefile.in, themes/variation/Makefile.in,
+	  themes/xfce/Makefile.in: Remove xinerama code to move it to
+	  libxfcegui4 (xfwm4 now requires libxfcegui4 >= 0.0.8)
 
 2002-11-22 09:17  xfce
 
@@ -34652,10 +37108,11 @@
 2002-11-02 16:55  xfce
 
 	* Makefile.in, configure, configure.in, themes/Makefile.am,
-	  themes/Makefile.in, themes/bbs/README, themes/beastie/Makefile,
-	  themes/beastie/Makefile.in, themes/tgc, themes/tgc/Makefile.am,
-	  themes/tgc/Makefile.in, themes/tgc/README,
-	  themes/tgc/bottom-active.xpm, themes/tgc/bottom-inactive.xpm,
+	  themes/Makefile.in, themes/bbs/README,
+	  themes/beastie/Makefile[DEL], themes/beastie/Makefile.in,
+	  themes/tgc, themes/tgc/Makefile.am, themes/tgc/Makefile.in,
+	  themes/tgc/README, themes/tgc/bottom-active.xpm,
+	  themes/tgc/bottom-inactive.xpm,
 	  themes/tgc/bottom-left-active.xpm,
 	  themes/tgc/bottom-left-inactive.xpm,
 	  themes/tgc/bottom-right-active.xpm,
@@ -34679,7 +37136,7 @@
 	  themes/tgc/title-5-inactive.xpm, themes/tgc/top-left-active.xpm,
 	  themes/tgc/top-left-inactive.xpm,
 	  themes/tgc/top-right-active.xpm,
-	  themes/tgc/top-right-inactive.xpm, themes/tux/Makefile,
+	  themes/tgc/top-right-inactive.xpm, themes/tux/Makefile[DEL],
 	  themes/tux/Makefile.in, xfwm4.spec.in: Add theme tgc and remove
 	  Makefiles added by mistake for themes beastie and tux
 
@@ -35182,10 +37639,10 @@
 
 	* configure, configure.in, src/Makefile.am, src/Makefile.in,
 	  src/client.c, src/client.h, src/events.c, src/events.h,
-	  src/gtk_style.c, src/gtk_style.h, src/gtktoxevent.c,
-	  src/gtktoxevent.h, src/main.c, src/main.h, src/menu.c,
-	  src/settings.c: Move some routines out of xfwm4 to libxfwmgui4,
-	  make xfwm4 depend on libxfcegui4
+	  src/gtk_style.c[DEL], src/gtk_style.h[DEL],
+	  src/gtktoxevent.c[DEL], src/gtktoxevent.h[DEL], src/main.c,
+	  src/main.h, src/menu.c, src/settings.c: Move some routines out of
+	  xfwm4 to libxfwmgui4, make xfwm4 depend on libxfcegui4
 
 2002-10-17 20:17  xfce
 
@@ -36425,7 +38882,7 @@
 
 2002-08-31 13:41  xfce
 
-	* themes/bbs/stickactive.xpm: Remove mispelled file.
+	* themes/bbs/stickactive.xpm[DEL]: Remove mispelled file.
 
 2002-08-31 13:35  xfce
 
@@ -36475,9 +38932,10 @@
 2002-08-30 12:50  xfce
 
 	* src/Makefile.am, src/Makefile.in, src/settings.c,
-	  src/xsettings-client.c, src/xsettings-client.h,
-	  src/xsettings-common.c, src/xsettings-common.h: Remove xsettings
-	  sample implementation (as we'll use gtk mechanism anyway)
+	  src/xsettings-client.c[DEL], src/xsettings-client.h[DEL],
+	  src/xsettings-common.c[DEL], src/xsettings-common.h[DEL]: Remove
+	  xsettings sample implementation (as we'll use gtk mechanism
+	  anyway)
 
 2002-08-30 12:45  xfce
 
@@ -37092,11 +39550,11 @@
 
 	* themes/b5/Makefile.am, themes/b5/Makefile.in,
 	  themes/b5/close-active.xpm, themes/b5/close-inactive.xpm,
-	  themes/b5/close-pressed.xpm, themes/b5/menu-active.xpm,
-	  themes/b5/menu-inactive.xpm, themes/b5/menu-pressed.xpm,
-	  themes/b5/themerc: Change action of top left button in "b5" theme
-	  to "close" instead of "menu" to keep as close as possible to the
-	  original system.
+	  themes/b5/close-pressed.xpm, themes/b5/menu-active.xpm[DEL],
+	  themes/b5/menu-inactive.xpm[DEL],
+	  themes/b5/menu-pressed.xpm[DEL], themes/b5/themerc: Change action
+	  of top left button in "b5" theme to "close" instead of "menu" to
+	  keep as close as possible to the original system.
 
 2002-07-13 16:50  xfce
 
@@ -37496,9 +39954,9 @@
 
 2002-07-03 08:22  xfce
 
-	* Makefile.in, acconfig.h, config.h.in, configure, configure.in:
-	  Fix deprecated AC_DEFINE use and remove acconfig.h as it's
-	  deprecated with automake 2.5x
+	* Makefile.in, acconfig.h[DEL], config.h.in, configure,
+	  configure.in: Fix deprecated AC_DEFINE use and remove acconfig.h
+	  as it's deprecated with automake 2.5x
 
 2002-07-02 20:26  xfce
 
@@ -38354,8 +40812,8 @@
 	  themes/redmondxp/Makefile.in, themes/slimline/Makefile.am,
 	  themes/slimline/Makefile.in, themes/trench/Makefile.am,
 	  themes/trench/Makefile.in, themes/xfce/Makefile.am,
-	  themes/xfce/Makefile.in, xfwm4.spec, xfwm4.spec.in: Improve build
-	  process, add automatic xfwm4.spec generation
+	  themes/xfce/Makefile.in, xfwm4.spec[DEL], xfwm4.spec.in: Improve
+	  build process, add automatic xfwm4.spec generation
 
 2002-05-23 17:10  xfce
 
@@ -38371,7 +40829,7 @@
 
 	* Makefile.am, Makefile.in, acconfig.h, config.h.in, configure,
 	  configure.in, defaults/Makefile.am, defaults/Makefile.in,
-	  defaults/defaults.in, example.xfwm4rc, example.xfwm4rc.in,
+	  defaults/defaults.in, example.xfwm4rc[DEL], example.xfwm4rc.in,
 	  src/Makefile.in, themes/Makefile.in, themes/agua/Makefile.am,
 	  themes/agua/Makefile.in, themes/coldsteel/Makefile.am,
 	  themes/coldsteel/Makefile.in, themes/crux/Makefile.am,
@@ -38677,7 +41135,7 @@
 
 2002-05-07 08:24  xfce
 
-	* themes/windows: Remove previous "windows" theme
+	* themes/windows[DEL]: Remove previous "windows" theme
 
 2002-05-07 08:20  xfce
 
