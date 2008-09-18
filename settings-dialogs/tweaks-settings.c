@@ -75,13 +75,13 @@ cb_use_compositing_check_button_toggled (GtkToggleButton *toggle, GtkWidget *box
 {
     gtk_widget_set_sensitive (box, gtk_toggle_button_get_active (toggle));
 }
-
+#if 0
 void
 cb_prevent_focus_stealing_check_button_toggled (GtkToggleButton *toggle, GtkWidget *box)
 {
     gtk_widget_set_sensitive (box, gtk_toggle_button_get_active (toggle));
 }
-
+#endif
 void
 cb_activate_action_bring_radio_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
 {
@@ -208,11 +208,12 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                       "toggled",
                       G_CALLBACK (cb_activate_action_none_radio_toggled),
                       xfwm4_channel);
-
+#if 0
     g_signal_connect (G_OBJECT (prevent_focus_stealing_check),
                       "toggled",
                       G_CALLBACK (cb_prevent_focus_stealing_check_button_toggled),
                       prevent_focus_stealing_box);
+#endif
     g_signal_connect (G_OBJECT (use_compositing_check),
                       "toggled",
                       G_CALLBACK (cb_use_compositing_check_button_toggled),
