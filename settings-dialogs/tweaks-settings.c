@@ -209,6 +209,7 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                       G_CALLBACK (cb_activate_action_none_radio_toggled),
                       xfwm4_channel);
 #if 0
+    /* OF: Actually, this is not related, so this callback is not needed */
     g_signal_connect (G_OBJECT (prevent_focus_stealing_check),
                       "toggled",
                       G_CALLBACK (cb_prevent_focus_stealing_check_button_toggled),
