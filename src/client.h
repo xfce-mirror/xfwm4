@@ -285,9 +285,11 @@ struct _Client
     int struts[STRUTS_SIZE];
     gchar *name;
     Time user_time;
+    GPid pid;
     unsigned long flags;
     unsigned long wm_flags;
     unsigned long xfwm_flags;
+
     /* Timout for asynchronous icon update */
     guint icon_timeout_id;
     /* Timout for asynchronous frame update */

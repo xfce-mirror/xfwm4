@@ -450,6 +450,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOPLEFT];
     atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOPRIGHT];
     atoms[i++] = display_info->atoms[NET_WM_NAME];
+    atoms[i++] = display_info->atoms[NET_WM_PID];
     atoms[i++] = display_info->atoms[NET_WM_STATE];
     atoms[i++] = display_info->atoms[NET_WM_STATE_ABOVE];
     atoms[i++] = display_info->atoms[NET_WM_STATE_BELOW];
@@ -987,36 +988,6 @@ getClientLeader (DisplayInfo *display_info, Window window)
     client_leader = None;
     getWindowProp (display_info, window, WM_CLIENT_LEADER, &client_leader);
     return client_leader;
-}
-
-gboolean
-getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
-{
-    Atom actual_type;
-    int actual_format;
-    unsigned long nitems;
-    unsigned long bytes_after;
-    unsigned char *data = NULL;
-
-    TRACE ("entering getNetWMUserTime");
-
-    g_return_val_if_fail (window != None, FALSE);
-
-    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_USER_TIME],
-                            0L, 1L, FALSE, XA_CARDINAL, &actual_type, &actual_format, &nitems,
-                            &bytes_after, (unsigned char **) &data) == Success)
-    {
-        if ((data) && (actual_type == XA_CARDINAL)
-            && (nitems == 1) && (bytes_after == 0))
-        {
-            *time = *((long *) data);
-            XFree (data);
-            return TRUE;
-        }
-    }
-    *time = (Time) 0;
-
-    return FALSE;
 }
 
 Window

@@ -1269,7 +1269,7 @@ clientGetUserTime (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
+    if (getHint (display_info, c->window, NET_WM_USER_TIME, (long *) &c->user_time) && (c->user_time != 0))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
         myDisplayUpdateLastUserTime (display_info, c->user_time);
@@ -1622,6 +1622,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->user_time_win = getNetWMUserTimeWindow(display_info, c->window);
     clientAddUserTimeWin (c);
     clientGetUserTime (c);
+
+    /* Client PID */
+    getHint (display_info, c->window, NET_WM_PID, (long *) &c->pid);
+    TRACE ("Client \"%s\" (0x%lx) PID = %i", c->name, c->window, c->pid);
 
     /* Apply startup notification properties if available */
     sn_client_startup_properties (c);

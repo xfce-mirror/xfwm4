@@ -242,9 +242,6 @@ gboolean                 getWindowRole                          (DisplayInfo *,
                                                                  gchar **);
 Window                   getClientLeader                        (DisplayInfo *,
                                                                  Window);
-gboolean                 getNetWMUserTime                       (DisplayInfo *,
-                                                                 Window,
-                                                                 Time *);
 Window                   getNetWMUserTimeWindow                 (DisplayInfo *,
                                                                  Window);
 gboolean                 getClientID                            (DisplayInfo *,

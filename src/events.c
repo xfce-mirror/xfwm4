@@ -779,9 +779,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     }
     else if (ev->button == Button4)
     {
-
         /* Mouse wheel scroll up */
-
         if (state == AltMask)
         {
             clientIncOpacity(c);
@@ -794,7 +792,6 @@ titleButton (Client * c, int state, XButtonEvent * ev)
     else if (ev->button == Button5)
     {
         /* Mouse wheel scroll down */
-
         if (state == AltMask)
         {
             clientDecOpacity(c);
@@ -1914,7 +1911,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[NET_WM_USER_TIME])
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_USER_TIME notify", c->name, c->window);
-            if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
+            if (getHint (display_info, c->window, NET_WM_USER_TIME, (long *) &c->user_time) && (c->user_time != 0))
             {
                 myDisplaySetLastUserTime (display_info, c->user_time);
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
@@ -1926,6 +1923,12 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             clientRemoveUserTimeWin (c);
             c->user_time_win = getNetWMUserTimeWindow(display_info, c->window);
             clientAddUserTimeWin (c);
+        }
+        else if (ev->atom == display_info->atoms[NET_WM_PID])
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_PID notify", c->name, c->window);
+            getHint (display_info, c->window, NET_WM_PID, (long *) &c->pid);
+            TRACE ("Client \"%s\" (0x%lx) updated PID = %i", c->name, c->window, c->pid);
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
         {
