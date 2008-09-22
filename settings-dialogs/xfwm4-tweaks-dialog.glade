@@ -201,6 +201,7 @@ or "skip taskbar" properties set</property>
             <child>
               <widget class="GtkLabel" id="label2">
                 <property name="visible">True</property>
+                <property name="visible">True</property>
                 <property name="label" translatable="yes">_Focus</property>
                 <property name="use_underline">True</property>
               </widget>
@@ -449,7 +450,7 @@ when switching via keyboard shortcuts</property>
                           <widget class="GtkHScale" id="placement_ratio_scale">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="adjustment">88 0 100 1 10 10</property>
+                            <property name="adjustment">75 0 100 1 10 0</property>
                             <property name="restrict_to_fill_level">False</property>
                             <property name="draw_value">False</property>
                           </widget>
@@ -468,13 +469,75 @@ when switching via keyboard shortcuts</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
-                      </widget>
+                     </widget>
                     </child>
                   </widget>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkVBox" id="default_placement_box">
+                    <property name="visible">True</property>
+                    <property name="sensitive">True</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <widget class="GtkLabel" id="label27">
+                        <property name="visible">True</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">By default, place windows:</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkAlignment" id="alignment10">
+                        <property name="visible">True</property>
+                        <property name="bottom_padding">6</property>
+                        <property name="left_padding">12</property>
+                        <child>
+                          <widget class="GtkVBox" id="vbox18">
+                            <property name="visible">True</property>
+                            <property name="border_width">6</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <widget class="GtkRadioButton" id="placement_center_option">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="label" translatable="yes">At the _center of the screen</property>
+                                <property name="use_underline">True</property>
+                                <property name="response_id">0</property>
+                                <property name="active">False</property>
+                                <property name="draw_indicator">True</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkRadioButton" id="placement_mouse_option">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="label" translatable="yes">Under the mouse _pointer</property>
+                                <property name="use_underline">True</property>
+                                <property name="response_id">1</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">placement_center_option</property>
+                              </widget>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </widget>

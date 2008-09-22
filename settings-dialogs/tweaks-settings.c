@@ -39,6 +39,7 @@ static GdkNativeWindow opt_socket_id = 0;
 static gboolean opt_version = FALSE;
 
 static const gchar *const modifier_list[] = {
+    N_("None"),
     "Alt",
     "Control",
     "Hyper",
@@ -50,7 +51,6 @@ static const gchar *const modifier_list[] = {
     "Mod3",
     "Mod4",
     "Mod5",
-    N_("None"),
     NULL
 };
 
@@ -109,6 +109,24 @@ cb_activate_action_none_radio_toggled (GtkToggleButton *toggle, XfconfChannel *c
     }
 }
 
+void
+cb_activate_placement_center_radio_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
+{
+    if (gtk_toggle_button_get_active (toggle))
+    {
+        xfconf_channel_set_string (channel, "/general/placement_mode", "center");
+    }
+}
+
+void
+cb_activate_placement_mouse_radio_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
+{
+    if (gtk_toggle_button_get_active (toggle))
+    {
+        xfconf_channel_set_string (channel, "/general/placement_mode", "mouse");
+    }
+}
+
 static void
 wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 {
@@ -119,6 +137,8 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     XfconfChannel *xfwm4_channel = xfconf_channel_new ("xfwm4");
     gchar *easy_click = NULL;
     gchar *activate_action = NULL;
+    gchar *default_placement = NULL;
+    gboolean modifier_set = FALSE;
     guint n;
     
     /* Cycling tab */
@@ -151,6 +171,8 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 
     /* Placement tab */
     GtkWidget *placement_ratio_scale = (GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "placement_ratio_scale")));
+    GtkWidget *placement_center_option = glade_xml_get_widget (gxml, "placement_center_option");
+    GtkWidget *placement_mouse_option = glade_xml_get_widget (gxml, "placement_mouse_option");
 
     /* Compositing tab */
     GtkWidget *use_compositing_check = glade_xml_get_widget (gxml, "use_compositing_check");
@@ -181,9 +203,15 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     {
         gtk_list_store_append (list_store, &iter);
         gtk_list_store_set (list_store, &iter, 0, N_(modifier_list[n]), -1);
-        if (!strcmp (easy_click, modifier_list[n]))
+        if (!modifier_set && !strcmp (easy_click, modifier_list[n]))
+        {
             gtk_combo_box_set_active (GTK_COMBO_BOX (easy_click_combo_box), n);
+            modifier_set = TRUE;
+        }
     }
+    /* If not specified, set to "None" */
+    if (!modifier_set)
+        gtk_combo_box_set_active (GTK_COMBO_BOX (easy_click_combo_box), 0);
 
     activate_action = xfconf_channel_get_string (xfwm4_channel, "/general/activate_action", "bring");
     if (!strcmp (activate_action, "switch"))
@@ -194,6 +222,12 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     if (!strcmp (activate_action, "none"))
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (activate_action_none_option), TRUE);
 
+    default_placement = xfconf_channel_get_string (xfwm4_channel, "/general/placement_mode", "center");
+    if (!strcmp (default_placement, "mouse"))
+    {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (placement_center_option), FALSE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (placement_mouse_option), TRUE);
+    }
 
     /* not so easy properties */
     g_signal_connect (G_OBJECT (activate_action_bring_option),
@@ -215,6 +249,14 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                       G_CALLBACK (cb_prevent_focus_stealing_check_button_toggled),
                       prevent_focus_stealing_box);
 #endif
+    g_signal_connect (G_OBJECT (placement_center_option),
+                      "toggled",
+                      G_CALLBACK (cb_activate_placement_center_radio_toggled),
+                      xfwm4_channel);
+    g_signal_connect (G_OBJECT (placement_mouse_option),
+                      "toggled",
+                      G_CALLBACK (cb_activate_placement_mouse_radio_toggled),
+                      xfwm4_channel);
     g_signal_connect (G_OBJECT (use_compositing_check),
                       "toggled",
                       G_CALLBACK (cb_use_compositing_check_button_toggled),
@@ -223,8 +265,6 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                       "changed",
                       G_CALLBACK (cb_easy_click_combo_box_changed),
                       xfwm4_channel);
-
-
 
     /* Bind easy properties */
     /* Cycling tab */
