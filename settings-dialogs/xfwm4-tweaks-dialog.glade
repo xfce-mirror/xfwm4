@@ -823,7 +823,7 @@ when switching via keyboard shortcuts</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
-                                            <property name="adjustment">100 0 100 1 10 0</property>
+                                            <property name="adjustment">90 0 100 1 10 0</property>
                                             <property name="restrict_to_fill_level">False</property>
                                             <property name="draw_value">False</property>
                                           </widget>

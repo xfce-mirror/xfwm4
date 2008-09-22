@@ -562,7 +562,7 @@
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
-                                        <property name="adjustment">100 100 2000 1 10 10</property>
+                                        <property name="adjustment">100 100 2000 1 10 0</property>
                                         <property name="draw_value">False</property>
                                       </widget>
                                       <packing>
@@ -714,7 +714,7 @@
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
-                                            <property name="adjustment">100 100 2000 1 10 10</property>
+                                            <property name="adjustment">100 100 2000 1 10 0</property>
                                             <property name="draw_value">False</property>
                                           </widget>
                                           <packing>
@@ -909,7 +909,7 @@
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
-                                            <property name="adjustment">20.332225913621262 0 100 1 10 10</property>
+                                            <property name="adjustment">20 0 100 1 10 0</property>
                                             <property name="restrict_to_fill_level">False</property>
                                             <property name="draw_value">False</property>
                                           </widget>
@@ -1040,7 +1040,7 @@
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
-                                            <property name="adjustment">20.332225913621262 0 100 1 10 10</property>
+                                            <property name="adjustment">20 0 100 1 10 0</property>
                                             <property name="restrict_to_fill_level">False</property>
                                             <property name="draw_value">False</property>
                                           </widget>
@@ -1170,7 +1170,7 @@
                           <widget class="GtkComboBox" id="double_click_action_combo">
                             <property name="visible">True</property>
                             <property name="tooltip" translatable="yes">The action to perform when the title-bar is double-clicked</property>
-                            <property name="items" translatable="yes">	</property>
+                            <property name="items" translatable="yes">  </property>
                           </widget>
                         </child>
                       </widget>
