@@ -53,5 +53,8 @@ void                     clientUpdateLayerState                 (Client *);
 void                     clientSetNetActiveWindow               (ScreenInfo *,
                                                                  Client *,
                                                                  Time);
+void                    clientRemoveNetWMPing                   (Client *);
+gboolean                clientSendNetWMPing                     (Client *,
+                                                                 Time);
 
 #endif /* INC_NETWM_H */

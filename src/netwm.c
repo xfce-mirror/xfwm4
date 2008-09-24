@@ -1356,3 +1356,59 @@ clientSetNetActiveWindow (ScreenInfo *screen_info, Client *c, Time timestamp)
                      PropModeReplace, (unsigned char *) data, 2);
 }
 
+static gboolean
+ping_timeout_cb (gpointer data)
+{
+    Client *c;
+
+    TRACE ("entering ping_timeout_cb");
+
+    c = (Client *) data;
+    if (c)
+    {
+        c->ping_timeout_id = 0;
+        g_warning ("Ping timeout on client \"%s\"", c->name);
+        /* TBD:
+         * Implement the dialog mechanism to notify the user
+         * Actually kill the client
+         */
+    }
+    return (FALSE);
+}
+
+void
+clientRemoveNetWMPing (Client *c)
+{
+    g_return_if_fail (c != NULL);
+
+    TRACE ("entering clientSendNetWMPing");
+
+    if (c->ping_timeout_id)
+    {
+        g_source_remove (c->ping_timeout_id);
+    }
+    c->ping_timeout_id = 0;
+}
+
+gboolean
+clientSendNetWMPing (Client *c, Time timestamp)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientSendNetWMPing");
+
+    if (!FLAG_TEST (c->wm_flags, WM_FLAG_PING))
+    {
+        return (FALSE);
+    }
+
+    clientRemoveNetWMPing (c);
+
+    sendClientMessage (c->screen_info, c->window, NET_WM_PING, timestamp);
+    c->ping_timeout_id =
+        g_timeout_add_full (G_PRIORITY_DEFAULT,
+                            CLIENT_PING_TIMEOUT,
+                            (GtkFunction) ping_timeout_cb,
+                            (gpointer) c, NULL);
+    return (TRUE);
+}

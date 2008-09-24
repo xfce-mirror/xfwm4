@@ -2138,6 +2138,15 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
                                                          frameRight (c), frameBottom (c));
         }
+        else if (ev->message_type == display_info->atoms[WM_PROTOCOLS])
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a WM_PROTOCOLS event", c->name, c->window);
+            if (ev->data.l[0] == display_info->atoms[NET_WM_PING])
+            {
+                TRACE ("Pong received for client \"%s\"", c->name);
+                clientRemoveNetWMPing (c);
+            }
+        }
     }
     else
     {

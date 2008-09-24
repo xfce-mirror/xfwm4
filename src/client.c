@@ -997,6 +997,10 @@ clientGetWMProtocols (Client * c)
     FLAG_SET (c->wm_flags,
         (wm_protocols_flags & WM_PROTOCOLS_CONTEXT_HELP) ?
         WM_FLAG_CONTEXT_HELP : 0);
+    /* Ping */
+    FLAG_SET (c->wm_flags,
+        (wm_protocols_flags & WM_PROTOCOLS_PING) ?
+        WM_FLAG_PING : 0);
 }
 
 static void
@@ -1031,6 +1035,10 @@ clientFree (Client * c)
     if (c->frame_timeout_id)
     {
         g_source_remove (c->frame_timeout_id);
+    }
+    if (c->ping_timeout_id)
+    {
+        clientRemoveNetWMPing (c);
     }
     if (c->name)
     {
@@ -1572,6 +1580,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->frame_timeout_id = 0;
     /* Timeout for blinking on urgency */
     c->blink_timeout_id = 0;
+    /* Ping timeout  */
+    c->ping_timeout_id = 0;
 
     c->class.res_name = NULL;
     c->class.res_class = NULL;
@@ -2421,6 +2431,7 @@ clientClose (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    Time timestamp;
 
     g_return_if_fail (c != NULL);
 
@@ -2432,8 +2443,12 @@ clientClose (Client * c)
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW,
-                           myDisplayGetCurrentTime (display_info));
+        timestamp = myDisplayGetCurrentTime (display_info);
+        if (FLAG_TEST (c->wm_flags, WM_FLAG_PING))
+        {
+            clientSendNetWMPing (c, timestamp);
+        }
+        sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, timestamp);
     }
     else
     {

@@ -83,6 +83,7 @@
 #define WM_PROTOCOLS_TAKE_FOCUS                 (1L<<0)
 #define WM_PROTOCOLS_DELETE_WINDOW              (1L<<1)
 #define WM_PROTOCOLS_CONTEXT_HELP               (1L<<2)
+#define WM_PROTOCOLS_PING                       (1L<<3)
 
 #define WIN_LAYER_DESKTOP                       0
 #define WIN_LAYER_BELOW                         2

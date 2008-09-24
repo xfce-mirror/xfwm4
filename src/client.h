@@ -105,6 +105,10 @@
 #define CLIENT_BLINK_TIMEOUT            500 /* ms */
 #endif
 
+#ifndef CLIENT_PING_TIMEOUT
+#define CLIENT_PING_TIMEOUT             3000 /* ms */
+#endif
+
 #define XFWM_FLAG_HAS_BORDER            (1L<<0)
 #define XFWM_FLAG_HAS_MENU              (1L<<1)
 #define XFWM_FLAG_HAS_MAXIMIZE          (1L<<2)
@@ -155,6 +159,7 @@
 #define WM_FLAG_TAKEFOCUS               (1L<<2)
 #define WM_FLAG_CONTEXT_HELP            (1L<<3)
 #define WM_FLAG_URGENT                  (1L<<4)
+#define WM_FLAG_PING                    (1L<<5)
 
 #define XFWM_FLAG_INITIAL_VALUES        XFWM_FLAG_HAS_BORDER | \
                                         XFWM_FLAG_HAS_MENU | \
@@ -296,6 +301,8 @@ struct _Client
     guint frame_timeout_id;
     /* Timout to manage blinking decorations for urgent windows */
     guint blink_timeout_id;
+    /* Timout for asynchronous icon update */
+    guint ping_timeout_id;
     /* Opacity for the compositor */
     guint opacity;
     guint opacity_applied;

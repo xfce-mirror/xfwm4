@@ -196,6 +196,11 @@ getWMProtocols (DisplayInfo *display_info, Window w)
             {
                 result |= WM_PROTOCOLS_CONTEXT_HELP;
             }
+            /* Ping */
+            if (*ap == display_info->atoms[NET_WM_PING])
+            {
+                result |= WM_PROTOCOLS_PING;
+            }
         }
         if (protocols)
         {
@@ -451,6 +456,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOPRIGHT];
     atoms[i++] = display_info->atoms[NET_WM_NAME];
     atoms[i++] = display_info->atoms[NET_WM_PID];
+    atoms[i++] = display_info->atoms[NET_WM_PING];
     atoms[i++] = display_info->atoms[NET_WM_STATE];
     atoms[i++] = display_info->atoms[NET_WM_STATE_ABOVE];
     atoms[i++] = display_info->atoms[NET_WM_STATE_BELOW];
