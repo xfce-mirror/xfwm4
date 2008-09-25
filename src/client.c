@@ -169,7 +169,7 @@ clientCreateTitleName (Client * c)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     gchar *title;
-    
+
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCreateTitleName");
 
@@ -208,7 +208,7 @@ clientUpdateName (Client * c)
     getWindowName (display_info, c->window, &wm_name);
     getWindowHostname (display_info, c->window, &hostname);
     refresh = FALSE;
-    
+
     if (wm_name)
     {
         name = clientCreateTitleName (c);
@@ -1641,6 +1641,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->blink_timeout_id = 0;
     /* Ping timeout  */
     c->ping_timeout_id = 0;
+    /* Ping timeout  */
+    c->ping_time = 0;
 
     c->class.res_name = NULL;
     c->class.res_class = NULL;
@@ -2549,7 +2551,7 @@ clientTerminate (Client * c)
             }
         }
     }
-  
+
     clientKill (c);
 }
 

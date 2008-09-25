@@ -56,5 +56,7 @@ void                     clientSetNetActiveWindow               (ScreenInfo *,
 void                    clientRemoveNetWMPing                   (Client *);
 gboolean                clientSendNetWMPing                     (Client *,
                                                                  Time);
+void                    clientReceiveNetWMPong                  (ScreenInfo *,
+                                                                 Time);
 
 #endif /* INC_NETWM_H */

@@ -1371,7 +1371,7 @@ ping_timeout_cb (gpointer data)
         /* TODO:
          * Implement the dialog mechanism to notify the user
          */
-        if (0) /* If you are brave, set 1 here :) */
+        if (1) /* If you are brave, set 1 here :) */
         {
             clientTerminate (c);
         }
@@ -1391,12 +1391,34 @@ clientRemoveNetWMPing (Client *c)
         g_source_remove (c->ping_timeout_id);
     }
     c->ping_timeout_id = 0;
+    c->ping_time = 0;
+}
+
+void
+clientReceiveNetWMPong (ScreenInfo *screen_info, Time timestamp)
+{
+    Client *c;
+    int i;
+
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (timestamp != CurrentTime);
+
+    TRACE ("entering clientReceiveNetWMPong, timestamp %u", (unsigned int) timestamp);
+
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    {
+        if (c->ping_time == timestamp)
+        {
+            clientRemoveNetWMPing (c);
+        }
+    }
 }
 
 gboolean
 clientSendNetWMPing (Client *c, Time timestamp)
 {
     g_return_val_if_fail (c != NULL, FALSE);
+    g_return_val_if_fail (timestamp != CurrentTime, FALSE);
 
     TRACE ("entering clientSendNetWMPing");
 
@@ -1407,6 +1429,7 @@ clientSendNetWMPing (Client *c, Time timestamp)
 
     clientRemoveNetWMPing (c);
 
+    c->ping_time = timestamp;
     sendClientMessage (c->screen_info, c->window, NET_WM_PING, timestamp);
     c->ping_timeout_id =
         g_timeout_add_full (G_PRIORITY_DEFAULT,

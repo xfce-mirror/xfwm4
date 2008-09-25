@@ -292,6 +292,7 @@ struct _Client
     gchar *name;
     Time user_time;
     GPid pid;
+    Time ping_time;
     unsigned long flags;
     unsigned long wm_flags;
     unsigned long xfwm_flags;
