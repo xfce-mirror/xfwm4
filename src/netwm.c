@@ -1368,10 +1368,13 @@ ping_timeout_cb (gpointer data)
     {
         c->ping_timeout_id = 0;
         g_warning ("Ping timeout on client \"%s\"", c->name);
-        /* TBD:
+        /* TODO:
          * Implement the dialog mechanism to notify the user
-         * Actually kill the client
          */
+        if (0) /* If you are brave, set 1 here :) */
+        {
+            clientTerminate (c);
+        }
     }
     return (FALSE);
 }

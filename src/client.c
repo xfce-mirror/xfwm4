@@ -25,6 +25,11 @@
 #include "config.h"
 #endif
 
+#include <sys/types.h>
+#include <signal.h>
+#include <unistd.h>
+#include <errno.h>
+
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -158,12 +163,41 @@ clientUpdateColormaps (Client * c)
     }
 }
 
+static gchar*
+clientCreateTitleName (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gchar *title;
+    
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientCreateTitleName");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (strlen (c->hostname) && (display_info->hostname) && (g_strcasecmp (display_info->hostname, c->hostname)))
+    {
+        /* TRANSLATORS: "(on %s)" is like "running on" the name of the other host */
+        title = g_strdup_printf (_("%s (on %s)"), c->name, c->hostname);
+    }
+    else
+    {
+        title = g_strdup (c->name);
+    }
+
+    return title;
+}
+
 void
 clientUpdateName (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    gchar *hostname;
+    gchar *wm_name;
     gchar *name;
+    gboolean refresh;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUpdateName");
@@ -171,20 +205,41 @@ clientUpdateName (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    getWindowName (display_info, c->window, &name);
-    if (name)
+    getWindowName (display_info, c->window, &wm_name);
+    getWindowHostname (display_info, c->window, &hostname);
+    refresh = FALSE;
+    
+    if (wm_name)
     {
+        name = clientCreateTitleName (c);
+        g_free (wm_name);
         if (c->name)
         {
             if (strcmp (name, c->name))
             {
-                g_free (c->name);
-                c->name = name;
+                refresh = TRUE;
                 FLAG_SET (c->flags, CLIENT_FLAG_NAME_CHANGED);
-                frameQueueDraw (c, TRUE);
             }
+            g_free (c->name);
         }
+        c->name = name;
     }
+
+    /* Update hostname too, as it's used when terminating a client */
+    if (hostname)
+    {
+        if (c->hostname)
+        {
+            g_free (c->hostname);
+        }
+        c->hostname = hostname;
+    }
+
+    if (refresh)
+    {
+        frameQueueDraw (c, TRUE);
+    }
+
 }
 
 void
@@ -1044,6 +1099,10 @@ clientFree (Client * c)
     {
         g_free (c->name);
     }
+    if (c->hostname)
+    {
+        g_free (c->hostname);
+    }
 #ifdef HAVE_XSYNC
     if (c->xsync_alarm != None)
     {
@@ -1493,7 +1552,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->serial = screen_info->client_serial++;
 
     getWindowName (display_info, c->window, &c->name);
-    TRACE ("name \"%s\"", c->name);
+    getWindowHostname (display_info, c->window, &c->hostname);
     getTransientFor (display_info, screen_info->xroot, c->window, &c->transient_for);
 
     /* Initialize structure */
@@ -2440,19 +2499,19 @@ clientClose (Client * c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    timestamp = myDisplayGetCurrentTime (display_info);
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
-        timestamp = myDisplayGetCurrentTime (display_info);
-        if (FLAG_TEST (c->wm_flags, WM_FLAG_PING))
-        {
-            clientSendNetWMPing (c, timestamp);
-        }
         sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, timestamp);
     }
     else
     {
         clientKill (c);
+    }
+    if (FLAG_TEST (c->wm_flags, WM_FLAG_PING))
+    {
+        clientSendNetWMPing (c, timestamp);
     }
 }
 
@@ -2464,6 +2523,34 @@ clientKill (Client * c)
     TRACE ("killing client \"%s\" (0x%lx)", c->name, c->window);
 
     XKillClient (clientGetXDisplay (c), c->window);
+}
+
+void
+clientTerminate (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientTerminate");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if ((c->hostname) && (c->pid > 0))
+    {
+        if (!strcmp (display_info->hostname, c->hostname))
+        {
+            TRACE ("Sending client %s (pid %i) signal SIGKILL\n", c->name);
+
+            if (kill (c->pid, SIGKILL) < 0)
+            {
+                g_warning ("Failed to kill client id %d: %s", c->pid, strerror (errno));
+            }
+        }
+    }
+  
+    clientKill (c);
 }
 
 void

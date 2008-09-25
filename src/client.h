@@ -288,6 +288,7 @@ struct _Client
     int ncmap;
     int button_status[BUTTON_COUNT];
     int struts[STRUTS_SIZE];
+    gchar *hostname;
     gchar *name;
     Time user_time;
     GPid pid;
@@ -380,6 +381,7 @@ void                     clientActivate                         (Client *,
                                                                  Time);
 void                     clientClose                            (Client *);
 void                     clientKill                             (Client *);
+void                     clientTerminate                        (Client *);
 void                     clientEnterContextMenuState            (Client *);
 void                     clientSetLayer                         (Client *,
                                                                  int);

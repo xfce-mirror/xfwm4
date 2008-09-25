@@ -75,24 +75,6 @@ internal_utf8_strndup (const gchar *src, gssize max_len)
     return g_strndup (src, s - src);
 }
 
-static gchar*
-create_name_with_host (DisplayInfo *display_info, const gchar *name, const gchar *hostname)
-{
-    gchar *title;
-
-    if (strlen (hostname) && (display_info->hostname) && (g_strcasecmp (display_info->hostname, hostname)))
-    {
-        /* TRANSLATORS: "(on %s)" is like "running on" the name of the other host */
-        title = g_strdup_printf (_("%s (on %s)"), name, hostname);
-    }
-    else
-    {
-        title = g_strdup (name);
-    }
-
-    return title;
-}
-
 unsigned long
 getWMState (DisplayInfo *display_info, Window w)
 {
@@ -893,12 +875,12 @@ getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
 }
 
 gboolean
-getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
+getWindowHostname (DisplayInfo *display_info, Window w, gchar **machine)
 {
     char *str;
     gboolean status;
 
-    TRACE ("entering getClientMachine");
+    TRACE ("entering getWindowHostname");
 
     g_return_val_if_fail (machine != NULL, FALSE);
     *machine = NULL;
@@ -921,37 +903,31 @@ getClientMachine (DisplayInfo *display_info, Window w, gchar **machine)
 }
 
 gboolean
-getWindowName (DisplayInfo *display_info, Window w, gchar **title)
+getWindowName (DisplayInfo *display_info, Window w, gchar **name)
 {
     char *str;
     int len;
-    gchar *machine;
-    gchar *name;
     gboolean status;
 
     TRACE ("entering getWindowName");
 
-    g_return_val_if_fail (title != NULL, FALSE);
-    *title = NULL;
+    g_return_val_if_fail (name != NULL, FALSE);
+    *name = NULL;
     g_return_val_if_fail (w != None, FALSE);
 
     status = FALSE;
-    getClientMachine (display_info, w, &machine);
     if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len) ||
         (str = get_text_property (display_info, w, XA_WM_NAME)))
     {
-        name = internal_utf8_strndup (str, MAX_STR_LENGTH);
-        *title = create_name_with_host (display_info, name, machine);
-        xfce_utf8_remove_controls(*title, -1, NULL);
-        g_free (name);
+        *name = internal_utf8_strndup (str, MAX_STR_LENGTH);
+        xfce_utf8_remove_controls(*name, -1, NULL);
         XFree (str);
         status = TRUE;
     }
     else
     {
-        *title = g_strdup ("");
+        *name = g_strdup ("");
     }
-    g_free (machine);
     return status;
 }
 
