@@ -164,7 +164,7 @@ clientUpdateColormaps (Client * c)
 }
 
 static gchar*
-clientCreateTitleName (Client * c)
+clientCreateTitleName (Client * c, gchar *name, gchar *hostname)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -176,14 +176,14 @@ clientCreateTitleName (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (strlen (c->hostname) && (display_info->hostname) && (g_strcasecmp (display_info->hostname, c->hostname)))
+    if (strlen (hostname) && (display_info->hostname) && (g_strcasecmp (display_info->hostname, hostname)))
     {
         /* TRANSLATORS: "(on %s)" is like "running on" the name of the other host */
-        title = g_strdup_printf (_("%s (on %s)"), c->name, c->hostname);
+        title = g_strdup_printf (_("%s (on %s)"), name, hostname);
     }
     else
     {
-        title = g_strdup (c->name);
+        title = g_strdup (name);
     }
 
     return title;
@@ -209,9 +209,19 @@ clientUpdateName (Client * c)
     getWindowHostname (display_info, c->window, &hostname);
     refresh = FALSE;
 
+    /* Update hostname too, as it's used when terminating a client */
+    if (hostname)
+    {
+        if (c->hostname)
+        {
+            g_free (c->hostname);
+        }
+        c->hostname = hostname;
+    }
+
     if (wm_name)
     {
-        name = clientCreateTitleName (c);
+        name = clientCreateTitleName (c, wm_name, hostname);
         g_free (wm_name);
         if (c->name)
         {
@@ -225,21 +235,10 @@ clientUpdateName (Client * c)
         c->name = name;
     }
 
-    /* Update hostname too, as it's used when terminating a client */
-    if (hostname)
-    {
-        if (c->hostname)
-        {
-            g_free (c->hostname);
-        }
-        c->hostname = hostname;
-    }
-
     if (refresh)
     {
         frameQueueDraw (c, TRUE);
     }
-
 }
 
 void
