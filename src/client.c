@@ -1887,7 +1887,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         {
             clientRaise (c, None);
             clientInitFocusFlag (c);
-            clientSetNetState (c);
             clientSetNetActions (c);
         }
     }
@@ -1895,7 +1894,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         clientRaise (c, None);
         setWMState (display_info, c->window, IconicState);
-        clientSetNetState (c);
         clientSetNetActions (c);
     }
 
@@ -1905,6 +1903,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
     setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
                                                  frameRight (c), frameBottom (c));
+    clientSetNetState (c);
 
     /* Window is reparented now, so we can safely release the grab
      * on the server
@@ -2249,8 +2248,8 @@ clientShowSingle (Client * c, gboolean deiconify)
         FLAG_UNSET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info, c->window, NormalState);
     }
-    clientSetNetState (c);
     clientSetNetActions (c);
+    clientSetNetState (c);
 }
 
 void
@@ -2312,8 +2311,8 @@ clientHideSingle (Client * c, GList *exclude_list, gboolean iconify)
             clientSetLast (c);
         }
     }
-    clientSetNetState (c);
     clientSetNetActions (c);
+    clientSetNetState (c);
 }
 
 void
@@ -2639,7 +2638,6 @@ clientShade (Client * c)
 
     c->win_state |= WIN_STATE_SHADED;
     FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
-    clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         mask = (CWWidth | CWHeight);
@@ -2669,6 +2667,7 @@ clientShade (Client * c)
         wc.height = c->height;
         clientConfigure (c, &wc, mask, CFG_FORCE_REDRAW);
     }
+    clientSetNetState (c);
 }
 
 void
@@ -2693,7 +2692,6 @@ clientUnshade (Client * c)
 
     c->win_state &= ~WIN_STATE_SHADED;
     FLAG_UNSET (c->flags, CLIENT_FLAG_SHADED);
-    clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
@@ -2712,6 +2710,7 @@ clientUnshade (Client * c)
         wc.height = c->height;
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
+    clientSetNetState (c);
 }
 
 void
@@ -2763,9 +2762,9 @@ clientStick (Client * c, gboolean include_transients)
         c->win_state |= WIN_STATE_STICKY;
         FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
-        clientSetNetState (c);
         clientSetWorkspace (c, screen_info->current_ws, TRUE);
     }
+    clientSetNetState (c);
 }
 
 void
@@ -2803,9 +2802,9 @@ clientUnstick (Client * c, gboolean include_transients)
         c->win_state &= ~WIN_STATE_STICKY;
         FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
-        clientSetNetState (c);
         clientSetWorkspace (c, screen_info->current_ws, TRUE);
     }
+    clientSetNetState (c);
 }
 
 void
@@ -2908,8 +2907,8 @@ clientRemoveMaximizeFlag (Client * c)
     c->win_state &= ~WIN_STATE_MAXIMIZED;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
     frameQueueDraw (c, FALSE);
-    clientSetNetState (c);
     clientSetNetActions (c);
+    clientSetNetState (c);
 }
 
 static void
@@ -3063,10 +3062,7 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     /* 2) Compute the new size, based on the state */
     clientNewMaxSize (c, &wc);
 
-    /* 3) Update window state fields */
-    clientSetNetState (c);
-
-    /* 4) Update size and position fields */
+    /* 3) Update size and position fields */
     c->x = wc.x;
     c->y = wc.y;
     c->height = wc.height;
@@ -3082,11 +3078,11 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 
     /* Maximized windows w/out border cannot be resized, update allowed actions */
     clientSetNetActions (c);
-
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED) && (restore_position))
     {
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
     }
+    clientSetNetState (c);
 }
 
 void

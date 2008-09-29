@@ -399,20 +399,20 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
         {
             FLAG_SET (c->flags, CLIENT_FLAG_STATE_MODAL);
-            clientSetNetState (c);
             clientWindowType (c);
+            clientSetNetState (c);
         }
         else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_STATE_MODAL);
-            clientSetNetState (c);
             clientWindowType (c);
+            clientSetNetState (c);
         }
         else if (action == NET_WM_STATE_TOGGLE)
         {
             FLAG_TOGGLE (c->flags, CLIENT_FLAG_STATE_MODAL);
-            clientSetNetState (c);
             clientWindowType (c);
+            clientSetNetState (c);
         }
         frameQueueDraw (c, TRUE);
     }
@@ -733,7 +733,6 @@ clientUpdateFullscreenState (Client * c)
         wc.height = c->fullscreen_old_height;
         layer = c->fullscreen_old_layer;
     }
-    clientSetNetState (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
@@ -754,7 +753,7 @@ clientUpdateFullscreenState (Client * c)
                         frameLeft (c),
                         frameRight (c),
                         frameBottom (c));
-
+    clientSetNetState (c);
 }
 
 void
@@ -1306,8 +1305,8 @@ clientWindowType (Client * c)
     if ((old_type != c->type) || (c->initial_layer != c->win_layer))
     {
         TRACE ("setting layer %i", c->initial_layer);
-        clientSetNetState (c);
         clientSetLayer (c, c->initial_layer);
+        clientSetNetState (c);
     }
 }
 
@@ -1332,8 +1331,8 @@ clientUpdateLayerState (Client * c)
     {
         layer = c->initial_layer;
     }
-    clientSetNetState (c);
     clientSetLayer (c, layer);
+    clientSetNetState (c);
 }
 
 void

@@ -215,8 +215,8 @@ clientFocusNew(Client * c)
         }
 
         clientShow (c, TRUE);
-        clientSetNetState (c);
         clientGrabMouseButton (c);
+        clientSetNetState (c);
     }
 
     return (give_focus);
@@ -529,12 +529,11 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         {
             TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-            clientSetNetState (c);
         }
         clientAdjustFullscreenLayer (c, TRUE);
         frameQueueDraw (c, FALSE);
         clientUpdateOpacity (c);
-
+        clientSetNetState (c);
     }
     if (c2)
     {
