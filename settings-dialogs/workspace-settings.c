@@ -127,6 +127,7 @@ treeview_ws_names_row_activated(GtkTreeView *treeview,
 
     gtk_tree_model_get(model, &iter,
                        COL_NUMBER, &ws_num,
+                       COL_NAME, &old_name,
                        -1);
 
     subtitle = g_strdup_printf(_("Change the name of workspace %d"), ws_num);
@@ -134,9 +135,6 @@ treeview_ws_names_row_activated(GtkTreeView *treeview,
     g_free(subtitle);
 
     entry = g_object_get_data(G_OBJECT(dialog), "name-entry");
-    gtk_tree_model_get(model, &iter,
-                       COL_NAME, &old_name,
-                       -1);
     gtk_entry_set_text(GTK_ENTRY(entry), old_name);
     gtk_editable_select_region(GTK_EDITABLE(entry), 0, -1);
 
@@ -152,7 +150,7 @@ treeview_ws_names_row_activated(GtkTreeView *treeview,
         /* only update it if the name's actually different */
         if(strcmp(old_name, new_name)) {
             gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-                               COL_NAME, &new_name,
+                               COL_NAME, new_name,
                                -1);
             workspace_names_update_xfconf(ws_num - 1, new_name);
         }
