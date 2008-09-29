@@ -1138,6 +1138,14 @@ clientFree (Client * c)
     {
         XFree (c->class.res_class);
     }
+    if (c->dialog_pid)
+    {
+        kill (c->dialog_pid, SIGKILL);
+    }
+    if (c->dialog_fd >= 0)
+    {
+        close (c->dialog_fd);
+    }
 
     g_free (c);
 }
@@ -1549,6 +1557,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->window = w;
     c->screen_info = screen_info;
     c->serial = screen_info->client_serial++;
+
+    /* Termination dialog */
+    c->dialog_pid = 0;
+    c->dialog_fd = -1;
 
     getWindowName (display_info, c->window, &c->name);
     getWindowHostname (display_info, c->window, &c->hostname);

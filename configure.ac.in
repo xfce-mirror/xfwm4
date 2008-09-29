@@ -209,6 +209,7 @@ doc/fr/images/Makefile
 doc/it/Makefile
 doc/it/images/Makefile
 defaults/Makefile
+helper-dialog/Makefile
 icons/Makefile
 icons/48x48/Makefile
 icons/scalable/Makefile

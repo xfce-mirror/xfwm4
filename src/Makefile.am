@@ -9,7 +9,6 @@ xfwm4_SOURCES =								\
 	cycle.h								\
 	display.c							\
 	display.h							\
-	inline-default-icon.h						\
 	event_filter.c							\
 	event_filter.h							\
 	events.c							\
@@ -20,9 +19,10 @@ xfwm4_SOURCES =								\
 	frame.h								\
 	hints.c								\
 	hints.h								\
-	inline-tabwin-icon.h						\
 	icons.c								\
 	icons.h								\
+	inline-default-icon.h						\
+	inline-tabwin-icon.h						\
 	keyboard.c							\
 	keyboard.h							\
 	main.c								\
@@ -44,8 +44,8 @@ xfwm4_SOURCES =								\
 	placement.h							\
 	poswin.c							\
 	poswin.h							\
-	screen.h							\
 	screen.c							\
+	screen.h							\
 	session.c							\
 	session.h							\
 	settings.c							\
@@ -58,21 +58,25 @@ xfwm4_SOURCES =								\
 	startup_notification.h						\
 	tabwin.c							\
 	tabwin.h							\
-	ui_style.c							\
-	ui_style.h							\
+	terminate.c							\
+	terminate.h							\
 	transients.c							\
 	transients.h							\
-	workspaces.c							\
-	workspaces.h							\
+	ui_style.c							\
+	ui_style.h							\
 	wireframe.c							\
 	wireframe.h							\
+	workspaces.c							\
+	workspaces.h							\
 	xsync.c								\
 	xsync.h								\
 	xpm-color-table.h
 
 xfwm4_CFLAGS =								\
+	$(GTK_CFLAGS) 							\
+	$(GLIB_CFLAGS) 							\
 	$(LIBX11_CFLAGS)						\
-	$(LIBXFCONF_CFLAGS)					\
+	$(LIBXFCONF_CFLAGS)						\
 	$(LIBXFCEGUI4_CFLAGS)						\
 	$(RENDER_CFLAGS)						\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
@@ -80,12 +84,15 @@ xfwm4_CFLAGS =								\
 	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
+	-DLIBEXECDIR=\"$(libexecdir)\"					\
 	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD =								\
+	$(GTK_LIBS) 							\
+	$(GLIB_LIBS) 							\
 	$(LIBX11_LIBS)							\
 	$(LIBX11_LDFLAGS)						\
-	$(LIBXFCONF_LIBS)					\
+	$(LIBXFCONF_LIBS)						\
 	$(LIBXFCEGUI4_LIBS)						\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
 	$(RENDER_LIBS)							\

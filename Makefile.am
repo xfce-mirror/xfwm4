@@ -14,7 +14,15 @@ DISTCLEANFILES =							\
 	intltool-update							\
 	xfwm4.spec
 
-SUBDIRS = po doc icons src defaults themes settings-dialogs
+SUBDIRS = 								\
+	defaults 							\
+	doc 								\
+	helper-dialog 							\
+	icons 								\
+	po 								\
+	settings-dialogs						\
+	src 								\
+	themes
 
 distclean-local:
 	rm -rf *.cache

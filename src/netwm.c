@@ -44,6 +44,7 @@
 #include "netwm.h"
 #include "screen.h"
 #include "stacking.h"
+#include "terminate.h"
 #include "transients.h"
 #include "workspaces.h"
 
@@ -1366,14 +1367,8 @@ ping_timeout_cb (gpointer data)
     if (c)
     {
         c->ping_timeout_id = 0;
-        g_warning ("Ping timeout on client \"%s\"", c->name);
-        /* TODO:
-         * Implement the dialog mechanism to notify the user
-         */
-        if (1) /* If you are brave, set 1 here :) */
-        {
-            clientTerminate (c);
-        }
+        TRACE ("Ping timeout on client \"%s\"", c->name);
+        terminateShowDialog (c);
     }
     return (FALSE);
 }

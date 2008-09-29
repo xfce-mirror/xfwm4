@@ -297,6 +297,9 @@ struct _Client
     unsigned long wm_flags;
     unsigned long xfwm_flags;
 
+    /* Termination dialog */
+    int dialog_pid;
+    int dialog_fd;
     /* Timout for asynchronous icon update */
     guint icon_timeout_id;
     /* Timout for asynchronous frame update */
