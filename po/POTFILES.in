@@ -1,5 +1,6 @@
 # List of source files containing translatable strings.
 
+helper-dialog/helper-dialog.c
 src/client.c
 src/compositor.c
 src/display.c

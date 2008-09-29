@@ -19,8 +19,26 @@
 #include <config.h>
 #endif
 
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <glib.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <libxfce4util/libxfce4util.h>
 #include <stdlib.h>
+
+static void
+on_realize (GtkWidget *dialog,
+            gpointer  data)
+{
+    Window xid;
+
+    xid = (Window) GPOINTER_TO_INT (data);
+    gdk_error_trap_push ();
+    XSetTransientForHint (gdk_display, GDK_WINDOW_XID (dialog->window), xid);
+    gdk_error_trap_pop ();
+}
 
 int
 main (int argc, char **argv)
@@ -29,6 +47,8 @@ main (int argc, char **argv)
     gint i;
     gulong xid;
     gchar *title, *newstr;
+
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     gtk_init (&argc, &argv);
 
@@ -56,14 +76,16 @@ main (int argc, char **argv)
     dialog = gtk_message_dialog_new (NULL, 0,
                                      GTK_MESSAGE_WARNING,
                                      GTK_BUTTONS_YES_NO,
-                                     "This window might be busy and is not responding.\n"
-                                     "Do you want to terminate the application?",
+                                     _("This window might be busy and is not responding.\n"
+                                       "Do you want to terminate the application?"),
                                      NULL);
 
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_YES);
     gtk_widget_set (GTK_WIDGET (dialog), "secondary-text", title, NULL);
     gtk_window_set_title (GTK_WINDOW (dialog), title);
-    gtk_window_set_keep_above (GTK_WINDOW (dialog), TRUE);
+    g_signal_connect (G_OBJECT (dialog), "realize",
+                      G_CALLBACK (on_realize), (gpointer) GINT_TO_POINTER (xid));
+    gtk_widget_realize (dialog);
 
     if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {

@@ -77,6 +77,7 @@ xfwm4_CFLAGS =								\
 	$(GLIB_CFLAGS) 							\
 	$(LIBX11_CFLAGS)						\
 	$(LIBXFCONF_CFLAGS)						\
+	$(LIBXFCE4UTIL_CFLAGS)						\
 	$(LIBXFCEGUI4_CFLAGS)						\
 	$(RENDER_CFLAGS)						\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
@@ -93,6 +94,7 @@ xfwm4_LDADD =								\
 	$(LIBX11_LIBS)							\
 	$(LIBX11_LDFLAGS)						\
 	$(LIBXFCONF_LIBS)						\
+	$(LIBXFCE4UTIL_LIBS)						\
 	$(LIBXFCEGUI4_LIBS)						\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
 	$(RENDER_LIBS)							\
