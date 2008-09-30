@@ -89,7 +89,7 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : skip_taskbar");
         data[i++] = display_info->atoms[NET_WM_STATE_SKIP_TASKBAR];
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         TRACE ("clientSetNetState : maximize vert + horiz");
         data[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ];
