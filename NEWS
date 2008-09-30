@@ -10,6 +10,8 @@
 - Filter out grab/ungrab events so we don't end up redrawing the frame twice
 - Set monitor when positionning menu (Bug #4162)
 - Reduce flickering during resize (Bug #4283)
+- Fix NET_WM_STATE claiming maximization vertical and horizontal even if
+  only horizontal of vertical is actually set (Should fix bug #3969)
 
 4.4.2
 =====

@@ -85,7 +85,7 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : skip_taskbar");
         data[i++] = display_info->atoms[NET_WM_STATE_SKIP_TASKBAR];
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         TRACE ("clientSetNetState : maximize vert + horiz");
         data[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ];
@@ -672,7 +672,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
             resize = FALSE; /* Move */
             break;
     }
-    
+
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         if (resize && FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
