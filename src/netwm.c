@@ -1411,8 +1411,10 @@ clientReceiveNetWMPong (ScreenInfo *screen_info, Time timestamp)
 gboolean
 clientSendNetWMPing (Client *c, Time timestamp)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
     g_return_val_if_fail (c != NULL, FALSE);
-    g_return_val_if_fail (timestamp != CurrentTime, FALSE);
 
     TRACE ("entering clientSendNetWMPing");
 
@@ -1423,8 +1425,14 @@ clientSendNetWMPing (Client *c, Time timestamp)
 
     clientRemoveNetWMPing (c);
 
-    c->ping_time = timestamp;
-    sendClientMessage (c->screen_info, c->window, NET_WM_PING, timestamp);
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    /* Makes sure the tiemstamp is meaningfull */
+    c->ping_time = myDisplayGetTime (display_info, timestamp);
+    g_return_val_if_fail (timestamp != CurrentTime, FALSE);
+
+    sendClientMessage (screen_info, c->window, NET_WM_PING, timestamp);
     c->ping_timeout_id =
         g_timeout_add_full (G_PRIORITY_DEFAULT,
                             CLIENT_PING_TIMEOUT,
