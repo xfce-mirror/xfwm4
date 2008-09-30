@@ -80,20 +80,20 @@ main (int argc, char **argv)
                                        "Do you want to terminate the application?"),
                                      NULL);
 
-    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_YES);
+    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_NO);
     gtk_widget_set (GTK_WIDGET (dialog), "secondary-text", title, NULL);
-    gtk_window_set_title (GTK_WINDOW (dialog), title);
+    gtk_window_set_title (GTK_WINDOW (dialog), _("Warning"));
     g_signal_connect (G_OBJECT (dialog), "realize",
                       G_CALLBACK (on_realize), (gpointer) GINT_TO_POINTER (xid));
     gtk_widget_realize (dialog);
 
     if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
-        g_print ("YES");
+        g_print ("YES=0x%lx\n", xid);
     }
     else
     {
-        g_print ("NO");
+        g_print ("NO=0x%lx\n", xid);
     }
     return 0;
 }
