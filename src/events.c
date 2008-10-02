@@ -2021,7 +2021,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         if ((ev->message_type == display_info->atoms[WM_CHANGE_STATE]) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
             TRACE ("client \"%s\" (0x%lx) has received a WM_CHANGE_STATE event", c->name, c->window);
-            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED) && CLIENT_CAN_HIDE_WINDOW (c))
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
             {
                 clientHide (c, c->win_workspace, TRUE);
             }
