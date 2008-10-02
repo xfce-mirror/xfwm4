@@ -2,6 +2,7 @@
  *  Copyright (c) 2008 Brian Tarricone <bjt23@cornell.edu>
  *  Copyright (c) 2008 Stephan Arts <stephan@xfce.org>
  *  Copyright (c) 2008 Jannis Pohlmann <jannis@xfce.org>
+ *  Copyright (c) 2008 Mike Massonnet <mmassonnet@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -32,6 +33,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfconf/xfconf.h>
 #include "xfwm4-workspace-dialog_glade.h"
+#include "monitor-icon.h"
 
 #define WORKSPACES_CHANNEL         "xfwm4"
 
@@ -305,13 +307,55 @@ workspace_dialog_configure_widgets (GladeXML *gxml,
 {
     GtkWidget *vbox;
 
+    GdkPixbuf *monitor;
+    GtkWidget *image;
+
+    gint wmax, hmax;
+
     GtkWidget *workspace_count_spinbutton = glade_xml_get_widget (gxml, "workspace_count_spinbutton");
+
+    GtkWidget *margin_top_spinbutton = glade_xml_get_widget (gxml, "margin_top_spinbutton");
+    GtkWidget *margin_right_spinbutton = glade_xml_get_widget (gxml, "margin_right_spinbutton");
+    GtkWidget *margin_bottom_spinbutton = glade_xml_get_widget (gxml, "margin_bottom_spinbutton");
+    GtkWidget *margin_left_spinbutton = glade_xml_get_widget (gxml, "margin_left_spinbutton");
+
+    /* Set monitor icon */
+    monitor = xfce_inline_icon_at_size (monitor_icon_data, -1, -1);
+    image = glade_xml_get_widget (gxml, "monitor_icon");
+    gtk_image_set_from_pixbuf (GTK_IMAGE (image), monitor);
+    g_object_unref (monitor);
+
+    /* Set max margins range */
+    wmax = gdk_screen_width () / 4;
+    hmax = gdk_screen_height () / 4;
+
+    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_top_spinbutton), 0, wmax);
+    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_right_spinbutton), 0, hmax);
+    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_bottom_spinbutton), 0, wmax);
+    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_left_spinbutton), 0, hmax);
 
     /* Bind easy properties */
     xfconf_g_property_bind (channel, 
                             "/general/workspace_count",
                             G_TYPE_INT,
                             (GObject *)workspace_count_spinbutton, "value");
+
+    xfconf_g_property_bind (channel,
+                            "/general/margin_top",
+                            G_TYPE_INT,
+                            (GObject *)margin_top_spinbutton, "value");
+    xfconf_g_property_bind (channel,
+                            "/general/margin_right",
+                            G_TYPE_INT,
+                            (GObject *)margin_right_spinbutton, "value");
+    xfconf_g_property_bind (channel,
+                            "/general/margin_bottom",
+                            G_TYPE_INT,
+                            (GObject *)margin_bottom_spinbutton, "value");
+    xfconf_g_property_bind (channel,
+                            "/general/margin_left",
+                            G_TYPE_INT,
+                            (GObject *)margin_left_spinbutton, "value");
 
     workspace_dialog_setup_names_treeview(gxml, channel);
 

@@ -3,6 +3,10 @@ xfwm4-settings  \
 xfwm4-tweaks-settings  \
 xfwm4-workspace-settings 
 
+noinst_DATA = \
+monitor-icon.h  \
+monitor-icon.png
+
 xfwm4_workspace_settings_SOURCES = \
 	workspace-settings.c \
 	xfwm4-workspace-dialog_glade.h
@@ -100,6 +104,10 @@ xfwm4-dialog_glade.h: xfwm4-dialog.glade
 xfwm4-tweaks-dialog_glade.h: xfwm4-tweaks-dialog.glade
 	exo-csource --static --name=tweaks_dialog_glade $< >$@
 
+monitor-icon.h: $(srcdir)/monitor-icon.png
+	gdk-pixbuf-csource --raw --build-list \
+	monitor_icon_data $(srcdir)/monitor-icon.png > monitor-icon.h
+
 endif
 
 desktopdir = $(datadir)/applications
@@ -112,10 +120,11 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
 EXTRA_DIST = \
-	$(desktop_in_files)							\
-	xfwm4-workspace-dialog.glade				\
-	xfwm4-tweaks-dialog.glade					\
+	$(desktop_in_files)  \
+	xfwm4-workspace-dialog.glade  \
+	xfwm4-tweaks-dialog.glade  \
 	xfwm4-dialog.glade
 
 DISTCLEANFILES = \
-	$(desktop_DATA)
+	$(desktop_DATA)  \
+	monitor-icon.h
