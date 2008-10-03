@@ -665,6 +665,7 @@ loadSettings (ScreenInfo *screen_info)
         {"button_spacing", NULL, G_TYPE_INT, TRUE},
         {"click_to_focus", NULL, G_TYPE_BOOLEAN, TRUE},
         {"focus_delay", NULL, G_TYPE_INT, TRUE},
+        {"cycle_draw_frame", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -815,6 +816,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("click_to_focus", rc);
     screen_info->params->cycle_minimum =
         getBoolValue ("cycle_minimum", rc);
+    screen_info->params->cycle_draw_frame =
+        getBoolValue ("cycle_draw_frame", rc);
     screen_info->params->cycle_hidden =
         getBoolValue ("cycle_hidden", rc);
     screen_info->params->cycle_workspaces =
@@ -1266,6 +1269,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "cycle_minimum"))
                 {
                     screen_info->params->cycle_minimum = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_draw_frame"))
+                {
+                    screen_info->params->cycle_draw_frame = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "cycle_hidden"))
                 {

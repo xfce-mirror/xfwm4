@@ -22,6 +22,7 @@
 - Treat dialogs and utility windows as transients for group (bug #3102).
 - Add support for shape input with XShape extension 1.1 (Bug #3092).
 - Make the title button in the xfwm4 settings manager dragable (bug #3000).
+- Make wireframe while cycling user configurable (Bug #4443)
 - Fix a misinterpretation of ICCCM about when to send a synthetic 
   configureNotify event (bug #2977).
 - Add option to instruct xfwm4 not to bring window back on 

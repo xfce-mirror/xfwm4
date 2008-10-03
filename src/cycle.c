@@ -149,7 +149,10 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                 {
                     if (c)
                     {
-                        wireframeUpdate (c, passdata->wireframe);
+                        if (passdata->wireframe)
+                        {
+                            wireframeUpdate (c, passdata->wireframe);
+                        }
                     }
                     else
                     {
@@ -233,6 +236,7 @@ clientCycle (Client * c, XKeyEvent * ev)
         passdata.cycle_range |= INCLUDE_ALL_WORKSPACES;
     }
     passdata.c = clientGetNext (c, passdata.cycle_range);
+    passdata.wireframe = NULL;
 
     /* If there is one single client, and if it's eligible for focus, use it */
     if ((passdata.c == NULL) && (c != clientGetFocus()) &&
@@ -244,7 +248,10 @@ clientCycle (Client * c, XKeyEvent * ev)
     if (passdata.c)
     {
         TRACE ("entering cycle loop");
-        passdata.wireframe = wireframeCreate (passdata.c);
+        if (screen_info->params->cycle_draw_frame)
+        {
+            passdata.wireframe = wireframeCreate (passdata.c);
+        }
         passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, c,
                                         passdata.c, passdata.cycle_range,
                                         screen_info->params->cycle_workspaces);
@@ -254,7 +261,10 @@ clientCycle (Client * c, XKeyEvent * ev)
         TRACE ("leaving cycle loop");
         tabwinDestroy (passdata.tabwin);
         g_free (passdata.tabwin);
-        wireframeDelete (screen_info, passdata.wireframe);
+        if (passdata.wireframe)
+        {
+            wireframeDelete (screen_info, passdata.wireframe);
+        }
         updateXserverTime (display_info);
     }
 

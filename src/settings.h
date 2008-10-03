@@ -168,15 +168,15 @@ struct _XfwmParams
     int button_spacing;
     int double_click_action;
     int easy_click;
+    int focus_delay;
     int frame_opacity;
     int inactive_opacity;
     int maximized_offset;
     int move_opacity;
-    int placement_ratio;
     int placement_mode;
+    int placement_ratio;
     int popup_opacity;
     int raise_delay;
-    int focus_delay;
     int resize_opacity;
     int restore_on_move;
     int shadow_delta_height;
@@ -192,6 +192,7 @@ struct _XfwmParams
     gboolean box_move;
     gboolean box_resize;
     gboolean click_to_focus;
+    gboolean cycle_draw_frame;
     gboolean cycle_hidden;
     gboolean cycle_minimum;
     gboolean cycle_workspaces;
@@ -207,9 +208,9 @@ struct _XfwmParams
     gboolean show_dock_shadow;
     gboolean show_frame_shadow;
     gboolean show_popup_shadow;
+    gboolean snap_resist;
     gboolean snap_to_border;
     gboolean snap_to_windows;
-    gboolean snap_resist;
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;
     gboolean toggle_workspaces;

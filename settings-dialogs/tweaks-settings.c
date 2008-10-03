@@ -58,7 +58,7 @@ void
 cb_easy_click_combo_box_changed (GtkComboBox *combo, XfconfChannel *channel)
 {
     guint n;
-    
+
     n = 0;
     while (modifier_list[n])
     {
@@ -140,11 +140,12 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     gchar *default_placement = NULL;
     gboolean modifier_set = FALSE;
     guint n;
-    
+
     /* Cycling tab */
     GtkWidget *cycle_workspaces_check = glade_xml_get_widget (gxml, "cycle_workspaces_check");
     GtkWidget *cycle_hidden_check = glade_xml_get_widget (gxml, "cycle_hidden_check");
     GtkWidget *cycle_minimum_check = glade_xml_get_widget (gxml, "cycle_minimum_check");
+    GtkWidget *cycle_draw_frame = glade_xml_get_widget (gxml, "cycle_draw_frame");
 
     /* Focus tab */
     GtkWidget *prevent_focus_stealing_check = glade_xml_get_widget (gxml, "prevent_focus_stealing_check");
@@ -268,110 +269,114 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 
     /* Bind easy properties */
     /* Cycling tab */
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/cycle_minimum",
                             G_TYPE_BOOLEAN,
                             (GObject *)cycle_minimum_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/cycle_hidden",
                             G_TYPE_BOOLEAN,
                             (GObject *)cycle_hidden_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/cycle_workspaces",
                             G_TYPE_BOOLEAN,
                             (GObject *)cycle_workspaces_check, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/cycle_draw_frame",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)cycle_draw_frame, "active");
 
     /* Focus tab */
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/prevent_focus_stealing",
                             G_TYPE_BOOLEAN,
                             (GObject *)prevent_focus_stealing_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/focus_hint",
                             G_TYPE_BOOLEAN,
                             (GObject *)focus_hint_check, "active");
-    
+
     /* Accessibility tab */
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/raise_on_click",
                             G_TYPE_BOOLEAN,
                             (GObject *)raise_on_click_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/borderless_maximize",
                             G_TYPE_BOOLEAN,
                             (GObject *)borderless_maximize_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/restore_on_move",
                             G_TYPE_BOOLEAN,
                             (GObject *)restore_on_move_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/snap_resist",
                             G_TYPE_BOOLEAN,
                             (GObject *)snap_resist_check, "active");
 
     /* Workspaces tab */
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/toggle_workspaces",
                             G_TYPE_BOOLEAN,
                             (GObject *)toggle_workspaces_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/scroll_workspaces",
                             G_TYPE_BOOLEAN,
                             (GObject *)scroll_workspaces_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/wrap_layout",
                             G_TYPE_BOOLEAN,
                             (GObject *)wrap_layout_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/wrap_cycle",
                             G_TYPE_BOOLEAN,
                             (GObject *)wrap_cycle_check, "active");
 
     /* Placement tab */
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/placement_ratio",
                             G_TYPE_INT,
                             (GObject *)placement_ratio_scale, "value");
 
     /* Compositing tab */
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/use_compositing",
                             G_TYPE_BOOLEAN,
                             (GObject *)use_compositing_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/unredirect_overlays",
                             G_TYPE_BOOLEAN,
                             (GObject *)unredirect_overlays_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/show_frame_shadow",
                             G_TYPE_BOOLEAN,
                             (GObject *)show_frame_shadow_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/show_popup_shadow",
                             G_TYPE_BOOLEAN,
                             (GObject *)show_popup_shadow_check, "active");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/show_dock_shadow",
                             G_TYPE_BOOLEAN,
                             (GObject *)show_dock_shadow_check, "active");
 
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/frame_opacity",
                             G_TYPE_INT,
                             (GObject *)frame_opacity_scale, "value");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/resize_opacity",
                             G_TYPE_INT,
                             (GObject *)resize_opacity_scale, "value");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/move_opacity",
                             G_TYPE_INT,
                             (GObject *)move_opacity_scale, "value");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/inactive_opacity",
                             G_TYPE_INT,
                             (GObject *)inactive_opacity_scale, "value");
-    xfconf_g_property_bind (xfwm4_channel, 
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/popup_opacity",
                             G_TYPE_INT,
                             (GObject *)popup_opacity_scale, "value");
@@ -385,12 +390,12 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 
 static GOptionEntry entries[] =
 {
-    { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_ ("Session manager socket"), N_ ("SOCKET ID") }, 
+    { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_ ("Session manager socket"), N_ ("SOCKET ID") },
     { "version", 'v', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_ ("Version information"), NULL },
     { NULL }
 };
 
-int 
+int
 main (int argc, gchar **argv)
 {
     GtkWidget *dialog;
