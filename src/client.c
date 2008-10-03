@@ -345,13 +345,25 @@ urgent_cb (gpointer data)
 {
     Client *c;
 
-    TRACE ("entering urgent_cb");
+    TRACE ("entering urgent_cb, iteration %i", c->blink_iterations);
 
     c = (Client *) data;
     if (c != clientGetFocus ())
     {
-        FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
-        frameQueueDraw (c, FALSE);
+        c->blink_iterations++;
+        if (c->blink_iterations < (2 * MAX_BLINK_ITERATIONS + 1))
+        {
+            FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
+            frameQueueDraw (c, FALSE);
+        }
+        else if (c->blink_iterations > (8 * MAX_BLINK_ITERATIONS))
+        {
+            c->blink_iterations = 0;
+        }        
+    }
+    else if (c->blink_iterations)
+    {
+        c->blink_iterations = 0;
     }
     return (TRUE);
 }
@@ -372,6 +384,7 @@ clientUpdateUrgency (Client *c)
     FLAG_UNSET (c->wm_flags, WM_FLAG_URGENT);
 
     c->blink_timeout_id = 0;
+    c->blink_iterations = 0;
     if ((c->wmhints) && (c->wmhints->flags & XUrgencyHint))
     {
         FLAG_SET (c->wm_flags, WM_FLAG_URGENT);
@@ -1638,6 +1651,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     getOpacity (display_info, c->window, &c->opacity);
     c->opacity_applied = c->opacity;
     c->opacity_flags = 0;
+
+    /* Keep count of blinking iterations */
+    c->blink_iterations = 0;
 
     if (getOpacityLock (display_info, c->window))
     {

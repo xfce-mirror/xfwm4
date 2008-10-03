@@ -102,11 +102,15 @@
 #endif
 
 #ifndef CLIENT_BLINK_TIMEOUT
-#define CLIENT_BLINK_TIMEOUT            500 /* ms */
+#define CLIENT_BLINK_TIMEOUT            200  /* ms */
 #endif
 
 #ifndef CLIENT_PING_TIMEOUT
 #define CLIENT_PING_TIMEOUT             3000 /* ms */
+#endif
+
+#ifndef MAX_BLINK_ITERATIONS
+#define MAX_BLINK_ITERATIONS            5
 #endif
 
 #define XFWM_FLAG_HAS_BORDER            (1L<<0)
@@ -286,6 +290,7 @@ struct _Client
     int previous_height;
     int initial_layer;
     int ncmap;
+    int blink_iterations;
     int button_status[BUTTON_COUNT];
     int struts[STRUTS_SIZE];
     gchar *hostname;
