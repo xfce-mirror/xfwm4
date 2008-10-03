@@ -236,7 +236,7 @@ clientCycle (Client * c, XKeyEvent * ev)
         passdata.cycle_range |= INCLUDE_ALL_WORKSPACES;
     }
     passdata.c = clientGetNext (c, passdata.cycle_range);
-    passdata.wireframe = NULL;
+    passdata.wireframe = None;
 
     /* If there is one single client, and if it's eligible for focus, use it */
     if ((passdata.c == NULL) && (c != clientGetFocus()) &&

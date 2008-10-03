@@ -106,7 +106,7 @@ workspace_names_update_xfconf(gint workspace,
     }
 
     if(do_update_xfconf)
-        xfconf_channel_set_string_list(channel, WORKSPACE_NAMES_PROP, names);
+        xfconf_channel_set_string_list(channel, WORKSPACE_NAMES_PROP, (const gchar **)names);
 
     g_strfreev(names);
     g_object_unref(G_OBJECT(channel));

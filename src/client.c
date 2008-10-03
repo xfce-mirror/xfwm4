@@ -170,7 +170,7 @@ clientCreateTitleName (Client * c, gchar *name, gchar *hostname)
     DisplayInfo *display_info;
     gchar *title;
 
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientCreateTitleName");
 
     screen_info = c->screen_info;
@@ -2553,7 +2553,7 @@ clientTerminate (Client * c)
     {
         if (!strcmp (display_info->hostname, c->hostname))
         {
-            TRACE ("Sending client %s (pid %i) signal SIGKILL\n", c->name);
+            TRACE ("Sending client %s (pid %i) signal SIGKILL\n", c->name, c->pid);
 
             if (kill (c->pid, SIGKILL) < 0)
             {

@@ -82,8 +82,7 @@ main (int argc, char **argv)
                                      GTK_MESSAGE_WARNING,
                                      GTK_BUTTONS_YES_NO,
                                      _("This window might be busy and is not responding.\n"
-                                       "Do you want to terminate the application?"),
-                                     NULL);
+                                       "Do you want to terminate the application?"));
 
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_NO);
     gtk_widget_set (GTK_WIDGET (dialog), "secondary-text", title, NULL);

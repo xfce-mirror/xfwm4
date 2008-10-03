@@ -54,8 +54,6 @@ terminateProcessIO (GIOChannel   *channel,
                     gpointer      data)
 {
     Client *c;
-    int pid;
-    Window xwindow;
     char *str;
     gsize len;
     GError *err;
@@ -105,7 +103,7 @@ terminateShowDialog (Client *c)
 
     if (c->dialog_pid > 0)
     {
-        return;
+        return FALSE;
     }
 
     screen_info = c->screen_info;

@@ -91,18 +91,19 @@ INCLUDES = \
 if MAINTAINER_MODE
 
 BUILT_SOURCES = \
+monitor-icon.h \
 xfwm4-dialog_glade.h \
 xfwm4-tweaks-dialog_glade.h \
 xfwm4-workspace-dialog_glade.h
 
 xfwm4-workspace-dialog_glade.h: xfwm4-workspace-dialog.glade
-	exo-csource --static --name=workspace_dialog_glade $< >$@
+	exo-csource --static --strip-comments --strip-content --name=workspace_dialog_glade $< >$@
 
 xfwm4-dialog_glade.h: xfwm4-dialog.glade
-	exo-csource --static --name=xfwm4_dialog_glade $< >$@
+	exo-csource --static --strip-comments --strip-content --name=xfwm4_dialog_glade $< >$@
 
 xfwm4-tweaks-dialog_glade.h: xfwm4-tweaks-dialog.glade
-	exo-csource --static --name=tweaks_dialog_glade $< >$@
+	exo-csource --static --strip-comments --strip-content --name=tweaks_dialog_glade $< >$@
 
 monitor-icon.h: $(srcdir)/monitor-icon.png
 	gdk-pixbuf-csource --raw --build-list \

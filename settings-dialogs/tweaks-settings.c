@@ -149,7 +149,6 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 
     /* Focus tab */
     GtkWidget *prevent_focus_stealing_check = glade_xml_get_widget (gxml, "prevent_focus_stealing_check");
-    GtkWidget *prevent_focus_stealing_box = glade_xml_get_widget (gxml, "prevent_focus_stealing_box");
     GtkWidget *focus_hint_check = glade_xml_get_widget (gxml, "focus_hint_check");
 
     GtkWidget *activate_action_bring_option = glade_xml_get_widget (gxml, "activate_action_bring_option");
