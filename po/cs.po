@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-08 22:22+0200\n"
-"PO-Revision-Date: 2008-10-05 15:53+0100\n"
+"PO-Revision-Date: 2008-10-05 16:27+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -723,7 +723,7 @@ msgstr "<b>Přenést do popředí při zaměření</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title _alignment</b>"
-msgstr "<b>_Zarovnání titulku</b>"
+msgstr "<b>Za_rovnání titulku</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Title fon_t</b>"
@@ -731,7 +731,7 @@ msgstr "<b>Písmo _titulku</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Window _shortcuts</b>"
-msgstr "<b>Klávesové _zkratky správce oken</b>"
+msgstr "<b>Klá_vesové zkratky správce oken</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Windows snapping</b>"
@@ -743,15 +743,15 @@ msgstr "<b>Přecházení mezi plochami</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "<i>Long</i>"
-msgstr "<i>Dlouhý</i>"
+msgstr "<i>Dlouhé</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "<i>Short</i>"
-msgstr "<i>Krátký</i>"
+msgstr "<i>Krátké</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "<i>Wide</i>"
-msgstr "<i>Široký</i>"
+msgstr "<i>Široká</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Active"
@@ -759,7 +759,7 @@ msgstr "Aktivní"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Ad_vanced"
-msgstr "Po_kročilé"
+msgstr "_Pokročilé"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Automatically _raise windows when they receive focus"
@@ -767,15 +767,15 @@ msgstr "Po zaměření _automaticky přenést okno do popředí"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Automatically give focus to _newly created windows"
-msgstr "Automaticky zaměřovat _nově vytvořená okna"
+msgstr "Au_tomaticky zaměřovat nově vytvořená okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Clic_k to focus"
-msgstr "_Kliknout pro zaměření"
+msgstr "K_liknout pro zaměření"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Click and drag the buttons to change the layout"
-msgstr "Pro změnu _rozvržení přemístěte tlačítka přetažením myší."
+msgstr "Pro změnu rozvržení přemístěte tlačítka přetažením myší."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Close"
@@ -783,7 +783,7 @@ msgstr "Zavřít"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Delay _before raising focused window:"
-msgstr "Zpoždění před přesunutím _zaměřeného okna do popředí"
+msgstr "Zp_oždění před přesunutím zaměřeného okna do popředí"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Dis_tance:"
@@ -795,7 +795,7 @@ msgstr "Zaměřit _umístěním kurzoru myši nad okno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Hidden"
-msgstr "Skrytý"
+msgstr "Skrytá"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hide"
@@ -803,11 +803,11 @@ msgstr "Skrýt"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hide content of windows when _moving"
-msgstr "Nezobrazovat _obsah okna při přesunu"
+msgstr "Nezo_brazovat obsah okna při přesunu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide content of windows when _resizing"
-msgstr "_Nezobrazovat obsah okna při změně velikosti"
+msgstr "N_ezobrazovat obsah okna při změně velikosti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Ke_yboard"
@@ -863,7 +863,7 @@ msgstr "Přejít na vedlejší plochu při _ukázání kurzorem myši k okraji p
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "_Delay before window receives focus:"
-msgstr "_Zpoždění před přesunutím okna do popředí"
+msgstr "Zpoždění př_ed přesunutím okna do popředí"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
