@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-08 22:22+0200\n"
-"PO-Revision-Date: 2008-09-08 17:49+0100\n"
+"PO-Revision-Date: 2008-09-10 22:57+0700\n"
 "Last-Translator: Maximilian Schleiss <maximilian@xfce.org>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -205,6 +205,8 @@ msgid ""
 "This shortcut is already being used by the window manager action <b>%s</b>. "
 "Which action do you want to use?"
 msgstr ""
+"Jalan pintas ini telah digunakan oleh aksi manajer jendela <b>%s</b>. "
+"Aksi mana yang ingin anda gunakan?"
 
 #: ../settings-dialogs/frap-shortcuts.c:85
 #: ../settings-dialogs/frap-shortcuts.c:88
@@ -212,92 +214,90 @@ msgstr ""
 #: ../settings-dialogs/frap-shortcuts.c:94
 #, c-format
 msgid "Use %s"
-msgstr ""
+msgstr "Gunakan %s"
 
 #: ../settings-dialogs/frap-shortcuts.c:85
 #: ../settings-dialogs/frap-shortcuts.c:88
 #: ../settings-dialogs/frap-shortcuts.c:91
 #, c-format
 msgid "Keep %s"
-msgstr ""
+msgstr "Jaga %s"
 
 #: ../settings-dialogs/frap-shortcuts.c:87
 #: ../settings-dialogs/frap-shortcuts.c:90
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
 "do you want to use?"
 msgstr ""
-"Jalan pintah telah digunakan !\n"
-"Anda yakin ingin menggunakannya?"
+"Jalan pintas telah digunakan untuk perintah <b>%s</b>. Aksi mana yang ingin "
+"ingin anda gunakan?"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
 "action do you want to use?"
 msgstr ""
+"Jalan pintas telah digunakan oleh <b>aksi manajer jendela</b>. Aksi mana "
+"yang ingin anda gunakan?"
 
 #: ../settings-dialogs/frap-shortcuts.c:94
-#, fuzzy
 msgid "Keep window manager action"
-msgstr "Pengaturan manajer jendela mahir"
+msgstr "Jaga aksi manajer jendela"
 
 #: ../settings-dialogs/frap-shortcuts.c:249
 #, c-format
 msgid "%s shortcut conflict"
-msgstr ""
+msgstr "%s jalan pintas konflik"
 
 #: ../settings-dialogs/frap-shortcuts.c:257
 msgid "Use this action"
-msgstr ""
+msgstr "Gunakan aksi ini"
 
 #: ../settings-dialogs/frap-shortcuts.c:260
 msgid "Shortcut conflict"
-msgstr ""
+msgstr "Jalan pintas konflik"
 
 #: ../settings-dialogs/frap-shortcuts.c:281
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
-msgstr ""
+msgstr "Jalan pintas '%s' telah digunakan untuk yang lain."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:236
-#, fuzzy
 msgid "Enter window manager action shortcut"
-msgstr "Pengaturan manajer jendela mahir"
+msgstr "Masukkan jalan pintas aksi manajer jendela"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:237
 #: ../settings-dialogs/frap-shortcuts-dialog.c:247
-#, fuzzy, c-format
+#, c-format
 msgid "Action: %s"
-msgstr "Aksi"
+msgstr "Aksi: %s"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:241
 msgid "Enter command shortcut"
-msgstr ""
+msgstr "Masukkan perintah jalan pintas"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:242
-#, fuzzy, c-format
+#, c-format
 msgid "Command: %s"
-msgstr "Perintah"
+msgstr "Perintah: %s"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:246
-#, fuzzy
 msgid "Enter shortcut"
-msgstr "Tak ada jalan pintas"
+msgstr "Masukkan jalan pintas"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:277
-#, fuzzy
 msgid "Shortcut:"
-msgstr "Tak ada jalan pintas"
+msgstr "Jalan pintas:"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:321
 msgid "Could not grab the keyboard."
-msgstr ""
+msgstr "Tak dapat meraih papan ketik."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:342
 #, c-format
 msgid "<span size='large'><b>%s</b></span>"
-msgstr ""
+msgstr "<span size='large'><b>%s</b></span>"
 
 #: ../settings-dialogs/xfwm4-settings.c:86
 #: ../settings-dialogs/xfwm4-settings.c:116
@@ -482,9 +482,8 @@ msgid "Action"
 msgstr "Aksi"
 
 #: ../settings-dialogs/xfwm4-settings.c:491
-#, fuzzy
 msgid "Shortcut"
-msgstr "Tak ada jalan pintas"
+msgstr "Jalan pintas"
 
 #: ../settings-dialogs/xfwm4-settings.c:551
 #: ../settings-dialogs/tweaks-settings.c:338
@@ -883,7 +882,7 @@ msgstr "_Ketahanan tepi:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Reset to defaults"
-msgstr ""
+msgstr "K_embalikan ke standar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Style"

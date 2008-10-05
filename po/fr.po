@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-08 22:22+0200\n"
-"PO-Revision-Date: 2008-09-09 07:15+0100\n"
+"PO-Revision-Date: 2008-09-09 12:34+0100\n"
 "Last-Translator: Maximilian Schleiss <maximilian@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -254,44 +254,40 @@ msgid "The shortcut '%s' is already being used for something else."
 msgstr "Le raccourci '%s' est déjà attribué."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:236
-#, fuzzy
 msgid "Enter window manager action shortcut"
-msgstr "Garder l'action du gestionnaire de fenêtres"
+msgstr "Définir le raccourci de l'action du gestionnaire de fenêtres"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:237
 #: ../settings-dialogs/frap-shortcuts-dialog.c:247
-#, fuzzy, c-format
+#, c-format
 msgid "Action: %s"
-msgstr "Action"
+msgstr "Action : %s"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:241
-#, fuzzy
 msgid "Enter command shortcut"
-msgstr "Sélectionnez la commande pour ce raccourci :"
+msgstr "Définir la commande du raccourci"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:242
-#, fuzzy, c-format
+#, c-format
 msgid "Command: %s"
-msgstr "Commande :"
+msgstr "Commande : %s"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:246
-#, fuzzy
 msgid "Enter shortcut"
 msgstr "Définir le raccourci"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:277
-#, fuzzy
 msgid "Shortcut:"
-msgstr "Raccourci"
+msgstr "Raccourci :"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:321
 msgid "Could not grab the keyboard."
 msgstr "Le clavier n'a pas pu être saisi."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:342
-#, fuzzy, c-format
+#, c-format
 msgid "<span size='large'><b>%s</b></span>"
-msgstr "Taille de l'icône dynamique"
+msgstr "<span size='large'><b>%s</b></span>"
 
 #: ../settings-dialogs/xfwm4-settings.c:86
 #: ../settings-dialogs/xfwm4-settings.c:116
