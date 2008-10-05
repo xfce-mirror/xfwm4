@@ -2236,7 +2236,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
             {
                 if (previous_ws == c2->screen_info->current_ws)
                 {
-                    clientHide (c2, c2->screen_info->current_ws, FALSE);
+                    clientWithdraw (c2, c2->screen_info->current_ws, FALSE);
                 }
                 if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY) || (ws == c2->screen_info->current_ws))
                 {
@@ -2309,7 +2309,7 @@ clientShow (Client * c, gboolean deiconify)
 }
 
 static void
-clientHideSingle (Client * c, GList *exclude_list, gboolean iconify)
+clientWithdrawSingle (Client * c, GList *exclude_list, gboolean iconify)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2344,14 +2344,14 @@ clientHideSingle (Client * c, GList *exclude_list, gboolean iconify)
 }
 
 void
-clientHide (Client * c, int ws, gboolean iconify)
+clientWithdraw (Client * c, int ws, gboolean iconify)
 {
     Client *c2;
     GList *list_of_windows;
     GList *index;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientHide \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("entering clientWithdraw \"%s\" (0x%lx)", c->name, c->window);
 
     list_of_windows = clientListTransientOrModal (c);
     for (index = list_of_windows; index; index = g_list_next (index))
@@ -2382,7 +2382,7 @@ clientHide (Client * c, int ws, gboolean iconify)
         {
             continue;
         }
-        clientHideSingle (c2, list_of_windows, iconify);
+        clientWithdrawSingle (c2, list_of_windows, iconify);
     }
     g_list_free (list_of_windows);
 
@@ -2391,7 +2391,7 @@ clientHide (Client * c, int ws, gboolean iconify)
 }
 
 void
-clientHideAll (Client * c, int ws)
+clientWithdrawAll (Client * c, int ws)
 {
     ScreenInfo *screen_info;
     Client *c2;
@@ -2399,7 +2399,7 @@ clientHideAll (Client * c, int ws)
 
     g_return_if_fail (c != NULL);
 
-    TRACE ("entering clientHideAll");
+    TRACE ("entering clientWithdrawAll");
 
     screen_info = c->screen_info;
     for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count); c2 = c2->next, i++)
@@ -2411,7 +2411,7 @@ clientHideAll (Client * c, int ws)
                  || ((c) && !clientIsTransientOrModalFor (c, c2)
                          && (c2->win_workspace == c->win_workspace)))
             {
-                clientHide (c2, ws, TRUE);
+                clientWithdraw (c2, ws, TRUE);
             }
         }
     }
@@ -2456,7 +2456,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED | CLIENT_FLAG_SKIP_TASKBAR))
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
-                clientHide (c, c->win_workspace, TRUE);
+                clientWithdraw (c, c->win_workspace, TRUE);
             }
         }
         clientFocusTop (screen_info, WIN_LAYER_DESKTOP, myDisplayGetCurrentTime (screen_info->display_info));
@@ -3680,7 +3680,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
             case HIDE_BUTTON:
                 if (CLIENT_CAN_HIDE_WINDOW (c))
                 {
-                    clientHide (c, c->win_workspace, TRUE);
+                    clientWithdraw (c, c->win_workspace, TRUE);
                 }
                 break;
             case CLOSE_BUTTON:

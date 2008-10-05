@@ -339,7 +339,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
             {
                 if (!clientIsTransientOrModal (c) || !clientTransientOrModalHasAncestor (c, new_ws))
                 {
-                    clientHide (c, new_ws, FALSE);
+                    clientWithdraw (c, new_ws, FALSE);
                 }
             }
         }

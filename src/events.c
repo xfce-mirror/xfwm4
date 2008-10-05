@@ -354,7 +354,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_HIDE_WINDOW:
                 if (CLIENT_CAN_HIDE_WINDOW (c))
                 {
-                    clientHide (c, c->win_workspace, TRUE);
+                    clientWithdraw (c, c->win_workspace, TRUE);
                 }
                 break;
             case KEY_MAXIMIZE_WINDOW:
@@ -710,7 +710,7 @@ button1Action (Client * c, XButtonEvent * ev)
             case DBL_CLICK_ACTION_HIDE:
                 if (CLIENT_CAN_HIDE_WINDOW (c))
                 {
-                    clientHide (c, c->win_workspace, TRUE);
+                    clientWithdraw (c, c->win_workspace, TRUE);
                 }
                 break;
             default:
@@ -2035,7 +2035,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a WM_CHANGE_STATE event", c->name, c->window);
             if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
             {
-                clientHide (c, c->win_workspace, TRUE);
+                clientWithdraw (c, c->win_workspace, TRUE);
             }
         }
         else if ((ev->message_type == display_info->atoms[WIN_STATE]) && (ev->format == 32))
@@ -2510,7 +2510,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_MINIMIZE:
                 if (CLIENT_CAN_HIDE_WINDOW (c))
                 {
-                    clientHide (c, c->win_workspace, TRUE);
+                    clientWithdraw (c, c->win_workspace, TRUE);
                 }
                 break;
             case MENU_OP_MOVE:
@@ -2520,7 +2520,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 clientResize (c, CORNER_BOTTOM_RIGHT, NULL);
                 break;
             case MENU_OP_MINIMIZE_ALL:
-                clientHideAll (c, c->win_workspace);
+                clientWithdrawAll (c, c->win_workspace);
                 break;
             case MENU_OP_UNMINIMIZE:
                 clientShow (c, TRUE);

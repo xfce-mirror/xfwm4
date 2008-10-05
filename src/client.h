@@ -379,10 +379,10 @@ Client                  *clientGetFromWindow                    (Client *,
                                                                  unsigned short);
 void                     clientShow                             (Client *,
                                                                  gboolean);
-void                     clientHide                             (Client *,
+void                     clientWithdraw                         (Client *,
                                                                  int,
                                                                  gboolean);
-void                     clientHideAll                          (Client *,
+void                     clientWithdrawAll                      (Client *,
                                                                  int);
 void                     clientClearAllShowDesktop              (ScreenInfo *);
 void                     clientToggleShowDesktop                (ScreenInfo *);
