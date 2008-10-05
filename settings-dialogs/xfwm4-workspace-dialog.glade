@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Thu Oct  2 21:33:29 2008 -->
+<!--Generated with glade3 3.4.5 on Sun Oct  5 14:15:07 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="main-dialog">
@@ -138,6 +138,8 @@
                             <child>
                               <widget class="GtkAlignment" id="alignment3">
                                 <property name="visible">True</property>
+                                <property name="xscale">0</property>
+                                <property name="yscale">0</property>
                                 <property name="top_padding">6</property>
                                 <property name="bottom_padding">6</property>
                                 <property name="left_padding">6</property>
@@ -148,24 +150,53 @@
                                     <property name="n_rows">3</property>
                                     <property name="n_columns">3</property>
                                     <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <widget class="GtkSpinButton" id="margin_left_spinbutton">
+                                      <widget class="GtkSpinButton" id="margin_top_spinbutton">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="adjustment">0 0 100 1 10 10</property>
                                       </widget>
                                       <packing>
+                                        <property name="left_attach">1</property>
+                                        <property name="right_attach">2</property>
+                                        <property name="x_options"></property>
+                                        <property name="y_options"></property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkImage" id="monitor_icon">
+                                        <property name="visible">True</property>
+                                        <property name="xpad">6</property>
+                                        <property name="ypad">6</property>
+                                        <property name="stock">gtk-missing-image</property>
+                                      </widget>
+                                      <packing>
+                                        <property name="left_attach">1</property>
+                                        <property name="right_attach">2</property>
+                                        <property name="top_attach">1</property>
+                                        <property name="bottom_attach">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkSpinButton" id="margin_right_spinbutton">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="adjustment">0 0 100 1 10 10</property>
+                                      </widget>
+                                      <packing>
+                                        <property name="left_attach">2</property>
+                                        <property name="right_attach">3</property>
                                         <property name="top_attach">1</property>
                                         <property name="bottom_attach">2</property>
                                         <property name="x_options"></property>
@@ -188,43 +219,16 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <widget class="GtkSpinButton" id="margin_right_spinbutton">
+                                      <widget class="GtkSpinButton" id="margin_left_spinbutton">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="adjustment">0 0 100 1 10 10</property>
                                       </widget>
                                       <packing>
-                                        <property name="left_attach">2</property>
-                                        <property name="right_attach">3</property>
                                         <property name="top_attach">1</property>
                                         <property name="bottom_attach">2</property>
                                         <property name="x_options"></property>
                                         <property name="y_options"></property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <widget class="GtkSpinButton" id="margin_top_spinbutton">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="adjustment">0 0 100 1 10 10</property>
-                                      </widget>
-                                      <packing>
-                                        <property name="left_attach">1</property>
-                                        <property name="right_attach">2</property>
-                                        <property name="x_options"></property>
-                                        <property name="y_options"></property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <widget class="GtkImage" id="monitor_icon">
-                                        <property name="visible">True</property>
-                                        <property name="stock">gtk-missing-image</property>
-                                      </widget>
-                                      <packing>
-                                        <property name="left_attach">1</property>
-                                        <property name="right_attach">2</property>
-                                        <property name="top_attach">1</property>
-                                        <property name="bottom_attach">2</property>
                                       </packing>
                                     </child>
                                   </widget>

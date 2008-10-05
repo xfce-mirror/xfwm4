@@ -59,7 +59,7 @@ workspace_names_update_xfconf(gint workspace,
     gchar **names;
     gboolean do_update_xfconf = TRUE;
 
-    channel = xfconf_channel_new(WORKSPACES_CHANNEL);
+    channel = xfconf_channel_get(WORKSPACES_CHANNEL);
     names = xfconf_channel_get_string_list(channel, WORKSPACE_NAMES_PROP);
 
     if(!names) {
@@ -109,7 +109,6 @@ workspace_names_update_xfconf(gint workspace,
         xfconf_channel_set_string_list(channel, WORKSPACE_NAMES_PROP, (const gchar **)names);
 
     g_strfreev(names);
-    g_object_unref(G_OBJECT(channel));
 }
 
 static void
@@ -407,7 +406,7 @@ main(int argc, gchar **argv)
         return 1;
     }
 
-    channel = xfconf_channel_new(WORKSPACES_CHANNEL);
+    channel = xfconf_channel_get(WORKSPACES_CHANNEL);
 
     gxml = glade_xml_new_from_buffer (workspace_dialog_glade,
                                       workspace_dialog_glade_length,
@@ -427,6 +426,7 @@ main(int argc, gchar **argv)
         } else {
             /* Create plug widget */
             plug = gtk_plug_new (opt_socket_id);
+            g_signal_connect (plug, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
             gtk_widget_show (plug);
 
             /* Get plug child widget */
@@ -439,7 +439,6 @@ main(int argc, gchar **argv)
         }
     }
 
-    g_object_unref(G_OBJECT(channel));
     xfconf_shutdown();
 
     return 0;
