@@ -36,6 +36,7 @@
   frames at once.
 - Use timeout for frame redraw, check actual WM name changes to work around 
   apps that falsely update their WM name property (Bug #2810).
+- Make shadow opacity configurable (bug #4447).
 - Uodate Hungarian translation
 - Update Catalan translation
 - Update Italian translation

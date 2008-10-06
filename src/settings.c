@@ -699,6 +699,7 @@ loadSettings (ScreenInfo *screen_info)
         {"shadow_delta_width", NULL, G_TYPE_INT, TRUE},
         {"shadow_delta_x", NULL, G_TYPE_INT, TRUE},
         {"shadow_delta_y", NULL, G_TYPE_INT, TRUE},
+        {"shadow_opacity", NULL, G_TYPE_INT, TRUE},
         {"show_app_icon", NULL, G_TYPE_BOOLEAN, TRUE},
         {"show_dock_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
         {"show_frame_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -841,17 +842,19 @@ loadSettings (ScreenInfo *screen_info)
     screen_info->params->restore_on_move =
         getBoolValue ("restore_on_move", rc);
     screen_info->params->frame_opacity =
-        getIntValue ("frame_opacity", rc);
+        CLAMP (getIntValue ("frame_opacity", rc), 0, 100);
     screen_info->params->inactive_opacity =
-        getIntValue ("inactive_opacity", rc);
+        CLAMP (getIntValue ("inactive_opacity", rc), 0, 100);
     screen_info->params->move_opacity =
-        getIntValue ("move_opacity", rc);
+        CLAMP (getIntValue ("move_opacity", rc), 0, 100);
     screen_info->params->resize_opacity =
-        getIntValue ("resize_opacity", rc);
+        CLAMP (getIntValue ("resize_opacity", rc), 0, 100);
     screen_info->params->popup_opacity =
-        getIntValue ("popup_opacity", rc);
+        CLAMP (getIntValue ("popup_opacity", rc), 0, 100);
     screen_info->params->placement_ratio =
-        getIntValue ("placement_ratio", rc);
+        CLAMP (getIntValue ("placement_ratio", rc), 0, 100);
+    screen_info->params->shadow_opacity =
+        CLAMP (getIntValue ("shadow_opacity", rc), 0, 100);
     screen_info->params->show_app_icon =
         getBoolValue ("show_app_icon", rc);
     screen_info->params->show_dock_shadow =
@@ -907,11 +910,7 @@ loadSettings (ScreenInfo *screen_info)
     if (screen_info->workspace_count < 0)
     {
         gint workspace_count;
-        workspace_count = getIntValue ("workspace_count", rc);
-        if (workspace_count < 0)
-        {
-            workspace_count = 0;
-        }
+        workspace_count = MAX (getIntValue ("workspace_count", rc), 0);
         workspaceSetCount (screen_info, workspace_count);
     }
 

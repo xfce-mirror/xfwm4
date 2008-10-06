@@ -53,10 +53,6 @@
 #define SHADOW_RADIUS   6
 #endif /* SHADOW_RADIUS */
 
-#ifndef SHADOW_OPACITY
-#define SHADOW_OPACITY  0.66
-#endif /* SHADOW_OPACITY */
-
 #ifndef SHADOW_OFFSET_X
 #define SHADOW_OFFSET_X (SHADOW_RADIUS * -3 /2)
 #endif /* SHADOW_OFFSET_X */
@@ -955,9 +951,9 @@ win_extents (CWindow *cw)
         {
             double shadow_opacity;
             shadow_opacity = (double) screen_info->params->frame_opacity
-                                      * SHADOW_OPACITY
-                                      * cw->opacity
-                                      / (NET_WM_OPAQUE * 100.0);
+                           * (screen_info->params->shadow_opacity / 100.0)
+                           * cw->opacity
+                           / (NET_WM_OPAQUE * 100.0);
 
             cw->shadow = shadow_picture (screen_info, shadow_opacity,
                                          cw->attr.width + 2 * cw->attr.border_width,

@@ -183,6 +183,7 @@ struct _XfwmParams
     int shadow_delta_width;
     int shadow_delta_x;
     int shadow_delta_y;
+    int shadow_opacity;
     int snap_width;
     int title_alignment;
     int title_horizontal_offset;
