@@ -150,6 +150,7 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     /* Focus tab */
     GtkWidget *prevent_focus_stealing_check = glade_xml_get_widget (gxml, "prevent_focus_stealing_check");
     GtkWidget *focus_hint_check = glade_xml_get_widget (gxml, "focus_hint_check");
+    GtkWidget *repeat_urgent_blink = glade_xml_get_widget (gxml, "repeat_urgent_blink");
 
     GtkWidget *activate_action_bring_option = glade_xml_get_widget (gxml, "activate_action_bring_option");
     GtkWidget *activate_action_switch_option = glade_xml_get_widget (gxml, "activate_action_switch_option");
@@ -167,7 +168,6 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     GtkWidget *toggle_workspaces_check = glade_xml_get_widget (gxml, "toggle_workspaces_check");
     GtkWidget *wrap_layout_check = glade_xml_get_widget (gxml, "wrap_layout_check");
     GtkWidget *wrap_cycle_check = glade_xml_get_widget (gxml, "wrap_cycle_check");
-
 
     /* Placement tab */
     GtkWidget *placement_ratio_scale = (GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "placement_ratio_scale")));
@@ -294,6 +294,10 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                             "/general/focus_hint",
                             G_TYPE_BOOLEAN,
                             (GObject *)focus_hint_check, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/repeat_urgent_blink",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)repeat_urgent_blink, "active");
 
     /* Accessibility tab */
     xfconf_g_property_bind (xfwm4_channel,

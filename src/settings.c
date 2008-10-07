@@ -692,6 +692,7 @@ loadSettings (ScreenInfo *screen_info)
         {"raise_on_click", NULL, G_TYPE_BOOLEAN, TRUE},
         {"raise_on_focus", NULL, G_TYPE_BOOLEAN, TRUE},
         {"raise_with_any_button", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"repeat_urgent_blink", NULL, G_TYPE_BOOLEAN, TRUE},
         {"resize_opacity", NULL, G_TYPE_INT, TRUE},
         {"restore_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"scroll_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -839,6 +840,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("raise_on_click", rc);
     screen_info->params->raise_with_any_button =
         getBoolValue ("raise_with_any_button", rc);
+    screen_info->params->repeat_urgent_blink =
+        getBoolValue ("repeat_urgent_blink", rc);
     screen_info->params->restore_on_move =
         getBoolValue ("restore_on_move", rc);
     screen_info->params->frame_opacity =
@@ -1220,7 +1223,6 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 if (!strcmp (name, "box_move"))
                 {
                     screen_info->params->box_move = g_value_get_boolean (value);
-
                 }
                 else if (!strcmp (name, "box_resize"))
                 {
@@ -1243,6 +1245,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     screen_info->params->raise_on_click = g_value_get_boolean (value);
                     update_grabs (screen_info);
+                }
+                else if (!strcmp (name, "repeat_urgent_blink"))
+                {
+                    screen_info->params->repeat_urgent_blink = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "snap_to_border"))
                 {

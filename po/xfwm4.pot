@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-29 23:05+0100\n"
+"POT-Creation-Date: 2008-10-07 20:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../helper-dialog/helper-dialog.c:79
+#: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
+msgstr ""
+
+#: ../helper-dialog/helper-dialog.c:89
+msgid "Warning"
 msgstr ""
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
@@ -180,7 +184,7 @@ msgid "Advanced window manager settings"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Window Manager Tweaks"
 msgstr ""
 
@@ -189,12 +193,12 @@ msgid "Xfce 4 Window Manager Tweaks"
 msgstr ""
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Set number and names of workspaces"
 msgstr ""
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "Workspaces"
 msgstr ""
 
@@ -487,31 +491,31 @@ msgid "Shortcut"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:577
-#: ../settings-dialogs/workspace-settings.c:326
+#: ../settings-dialogs/workspace-settings.c:369
 msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:577
-#: ../settings-dialogs/tweaks-settings.c:388
-#: ../settings-dialogs/workspace-settings.c:326
+#: ../settings-dialogs/tweaks-settings.c:396
+#: ../settings-dialogs/workspace-settings.c:369
 msgid "SOCKET ID"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:578
-#: ../settings-dialogs/tweaks-settings.c:389
-#: ../settings-dialogs/workspace-settings.c:327
+#: ../settings-dialogs/tweaks-settings.c:397
+#: ../settings-dialogs/workspace-settings.c:370
 msgid "Version information"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:596
-#: ../settings-dialogs/tweaks-settings.c:406
-#: ../settings-dialogs/workspace-settings.c:344
+#: ../settings-dialogs/tweaks-settings.c:414
+#: ../settings-dialogs/workspace-settings.c:387
 msgid "."
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:600
-#: ../settings-dialogs/tweaks-settings.c:410
-#: ../settings-dialogs/workspace-settings.c:348
+#: ../settings-dialogs/tweaks-settings.c:418
+#: ../settings-dialogs/workspace-settings.c:391
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -576,151 +580,172 @@ msgid "Honor _standard ICCCM focus hint"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Key used to _grab and move windows:"
+msgid "Keep urgent windows blinking"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Opaci_ty of window decorations:"
+msgid "Key used to _grab and move windows:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Opacity of _inactive windows:"
+msgid "Opaci_ty of window decorations:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Opacity of popup window_s:"
+msgid "Opacity of _inactive windows:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Opacity of windows during _move:"
+msgid "Opacity of popup window_s:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Opacity of windows during resi_ze:"
+msgid "Opacity of windows during _move:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Restore original _size of maximized windows when moving"
+msgid "Opacity of windows during resi_ze:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Show shadows under _dock windows"
+msgid "Restore original _size of maximized windows when moving"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Show shadows under _regular windows"
+msgid "Show shadows under _dock windows"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Show shadows under pop_up windows"
+msgid "Show shadows under _regular windows"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Switch to win_dow's workspace"
+msgid "Show shadows under pop_up windows"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Under the mouse _pointer"
+msgid "Switch to win_dow's workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid "Use _edge resistance instead of window snapping"
+msgid "Under the mouse _pointer"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+msgid "Use _edge resistance instead of window snapping"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Accessibility"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Bring window on current workspace"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "_Draw frame around selected windows while cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Enable display compositing"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "_Focus"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Mouse wheel over desktop switches workspaces"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "_Workspaces"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "gtk-close"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "gtk-help"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "<b>Margins</b>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "<b>Workspaces</b>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "Change Workspace Name"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
 msgid "gtk-cancel"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
 msgid "gtk-save"
 msgstr ""
 
@@ -728,23 +753,23 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:388
+#: ../settings-dialogs/tweaks-settings.c:396
 msgid "Session manager socket"
 msgstr ""
 
-#: ../settings-dialogs/workspace-settings.c:70
-#: ../settings-dialogs/workspace-settings.c:85
-#: ../settings-dialogs/workspace-settings.c:147
+#: ../settings-dialogs/workspace-settings.c:72
+#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:148
 #, c-format
 msgid "Workspace %d"
 msgstr ""
 
-#: ../settings-dialogs/workspace-settings.c:133
+#: ../settings-dialogs/workspace-settings.c:134
 #, c-format
 msgid "Change the name of workspace %d"
 msgstr ""
 
-#: ../settings-dialogs/workspace-settings.c:274
+#: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
 msgstr ""
 

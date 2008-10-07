@@ -30,6 +30,7 @@ raise_delay=250
 raise_on_click=true
 raise_on_focus=false
 raise_with_any_button=true
+repeat_urgent_blink=true
 resize_opacity=100
 restore_on_move=true
 scroll_workspaces=true

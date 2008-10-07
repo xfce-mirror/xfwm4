@@ -344,10 +344,14 @@ static gboolean
 urgent_cb (gpointer data)
 {
     Client *c;
+    ScreenInfo *screen_info;
 
     TRACE ("entering urgent_cb, iteration %i", c->blink_iterations);
 
     c = (Client *) data;
+    g_return_val_if_fail (c != NULL, FALSE);
+    screen_info = c->screen_info;
+
     if (c != clientGetFocus ())
     {
         c->blink_iterations++;
@@ -358,8 +362,24 @@ urgent_cb (gpointer data)
         }
         else if (c->blink_iterations > (8 * MAX_BLINK_ITERATIONS))
         {
-            c->blink_iterations = 0;
-        }        
+            /*
+             * A bit of hack. Instead of removing the callback
+             * if "repeat_urgent_blink" is unset, we simply reset
+             * the number of iterations at a higher value so that
+             * it does not blink.
+             * This way, if the user changes the setting later on,
+             * we don't have to go through all windows to reinstall
+             * the callbacks...
+             */
+            if (!screen_info->params->repeat_urgent_blink)
+            {
+                c->blink_iterations = 2 * MAX_BLINK_ITERATIONS;
+            }
+            else
+            {
+                c->blink_iterations = 0;
+            }
+        }
     }
     else if (c->blink_iterations)
     {
