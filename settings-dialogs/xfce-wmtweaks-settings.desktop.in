@@ -11,3 +11,4 @@ Categories=X-XFCE;Settings;DesktopSettings;X-XfceSettingsDialog;
 StartupNotify=true
 OnlyShowIn=XFCE;
 X-XfcePluggable=true
+X-XfceHelpFile=xfwm4.html
