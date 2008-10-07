@@ -14,6 +14,7 @@
   only horizontal of vertical is actually set (Should fix bug #3969)
 - Loosen the rule that prevents an application from iconifying itself when 
   skip_taskbar is set (Bug #4434)
+- Rework visual depth selection of the frame window (Bug #4452)
 
 4.4.2
 =====
