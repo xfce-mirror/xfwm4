@@ -1811,25 +1811,23 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     attributes.bit_gravity = StaticGravity;
 
 #ifdef HAVE_RENDER
-    if (display_info->have_render)
+    if ((attr.depth == 32) && (display_info->have_render))
     {
         c->visual = attr.visual;
         c->depth  = attr.depth;
-        attributes.colormap = attr.colormap;
-        valuemask |= CWColormap;
-    }
-    else
-    {
-        c->visual = screen_info->visual;
-        c->depth  = screen_info->depth;
-    }
 
-    if (c->depth == 32)
-    {
+        attributes.colormap = attr.colormap;
         attributes.background_pixmap = None;
         attributes.border_pixel = 0;
         attributes.background_pixel = 0;
-        valuemask |= CWBackPixmap|CWBackPixel|CWBorderPixel;
+
+        valuemask |= CWColormap|CWBackPixmap|CWBackPixel|CWBorderPixel;
+    }
+    else
+    {
+        /* Default depth/visual */
+        c->visual = screen_info->visual;
+        c->depth  = screen_info->depth;
     }
 #else  /* HAVE_RENDER */
     /* We don't support multiple depth/visual w/out render */
