@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-08 22:22+0200\n"
-"PO-Revision-Date: 2008-09-01 03:20+0100\n"
+"PO-Revision-Date: 2008-10-08 21:48+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -207,10 +207,8 @@ msgstr "Xfce 4 munkaterület beállítások"
 
 #: ../settings-dialogs/frap-shortcuts.c:84
 #, c-format
-msgid ""
-"This shortcut is already being used by the window manager action <b>%s</b>. "
-"Which action do you want to use?"
-msgstr ""
+msgid "This shortcut is already being used by the window manager action <b>%s</b>. Which action do you want to use?"
+msgstr "E gyorsbillentyűt már használja ezen ablakkezelő művelet: <b>%s</b>. Mely műveletet használnád?"
 
 #: ../settings-dialogs/frap-shortcuts.c:85
 #: ../settings-dialogs/frap-shortcuts.c:88
@@ -218,86 +216,73 @@ msgstr ""
 #: ../settings-dialogs/frap-shortcuts.c:94
 #, c-format
 msgid "Use %s"
-msgstr ""
+msgstr "%s használata"
 
 #: ../settings-dialogs/frap-shortcuts.c:85
 #: ../settings-dialogs/frap-shortcuts.c:88
 #: ../settings-dialogs/frap-shortcuts.c:91
 #, c-format
 msgid "Keep %s"
-msgstr ""
+msgstr "%s megtartása"
 
 #: ../settings-dialogs/frap-shortcuts.c:87
 #: ../settings-dialogs/frap-shortcuts.c:90
-#, fuzzy, c-format
-msgid ""
-"The shortcut is already being used for the command <b>%s</b>. Which action "
-"do you want to use?"
-msgstr ""
-"E gyorsbillentyű már létezik!\n"
-"Biztos ezt akarod használni?"
+#, c-format
+msgid "The shortcut is already being used for the command <b>%s</b>. Which action do you want to use?"
+msgstr "E gyorsbillentyűt már használja e parancs: <b>%s</b>. Mely műveletet használnád?"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
-#, fuzzy
-msgid ""
-"The shortcut is already being used by a <b>window manager action</b>. Which "
-"action do you want to use?"
-msgstr ""
-"E gyorsbillentyű már létezik!\n"
-"Biztos ezt akarod használni?"
+msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
+msgstr "E gyorsbillentyűt már használja egy <b>ablakkezelő művelet</b>. Mely műveletet használnád?"
 
 #: ../settings-dialogs/frap-shortcuts.c:94
-#, fuzzy
 msgid "Keep window manager action"
-msgstr "Haladó ablakkezelő beállítások"
+msgstr "Ablakkezelő művelet megtartása"
 
 #: ../settings-dialogs/frap-shortcuts.c:249
 #, c-format
 msgid "%s shortcut conflict"
-msgstr ""
+msgstr "%s gyorsbillentyű ütközés"
 
 #: ../settings-dialogs/frap-shortcuts.c:257
 msgid "Use this action"
-msgstr ""
+msgstr "Használd e műveletet"
 
 #: ../settings-dialogs/frap-shortcuts.c:260
 msgid "Shortcut conflict"
-msgstr ""
+msgstr "Gyorsbillentyű ütközés"
 
 #: ../settings-dialogs/frap-shortcuts.c:281
 #, c-format
 msgid "The shortcut '%s' is already being used for something else."
-msgstr ""
+msgstr "'%s' gyorsbillentyűt már másra használjuk."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:236
-#, fuzzy
 msgid "Enter window manager action shortcut"
-msgstr "Haladó ablakkezelő beállítások"
+msgstr "Adj meg ablakkezelő művelet gyorsbillentyűt"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:237
 #: ../settings-dialogs/frap-shortcuts-dialog.c:247
-#, fuzzy, c-format
+#, c-format
 msgid "Action: %s"
-msgstr "Művelet"
+msgstr "Művelet: %s"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:241
 msgid "Enter command shortcut"
-msgstr ""
+msgstr "Adj meg parancs gyorsbillentyűt"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:242
-#, fuzzy, c-format
+#, c-format
 msgid "Command: %s"
-msgstr "Parancs"
+msgstr "Parancs: %s"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:246
-#, fuzzy
 msgid "Enter shortcut"
-msgstr "Nincs gyorsbillentyű"
+msgstr "Adj gyorsbillentyűt"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:277
-#, fuzzy
 msgid "Shortcut:"
-msgstr "Nincs gyorsbillentyű"
+msgstr "Gyorsbillentyű:"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:321
 msgid "Could not grab the keyboard."
@@ -306,7 +291,7 @@ msgstr ""
 #: ../settings-dialogs/frap-shortcuts-dialog.c:342
 #, c-format
 msgid "<span size='large'><b>%s</b></span>"
-msgstr ""
+msgstr "<span size='large'><b>%s</b></span>"
 
 #: ../settings-dialogs/xfwm4-settings.c:86
 #: ../settings-dialogs/xfwm4-settings.c:116
@@ -491,9 +476,8 @@ msgid "Action"
 msgstr "Művelet"
 
 #: ../settings-dialogs/xfwm4-settings.c:491
-#, fuzzy
 msgid "Shortcut"
-msgstr "Nincs gyorsbillentyű"
+msgstr "Gyorsbillentyű"
 
 #: ../settings-dialogs/xfwm4-settings.c:551
 #: ../settings-dialogs/tweaks-settings.c:338
@@ -688,13 +672,13 @@ msgstr "Munkaterületek"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "gtk-close"
-msgstr ""
+msgstr "gtk-close"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "gtk-help"
-msgstr ""
+msgstr "gtk-help"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
@@ -890,7 +874,7 @@ msgstr "Szélek _ellenállása:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Reset to defaults"
-msgstr ""
+msgstr "Alapértelmezés visszaállítása"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Style"
@@ -898,196 +882,139 @@ msgstr "_Stílus"
 
 #~ msgid "Keytheme"
 #~ msgstr "Billentyűtéma"
-
 #~ msgid "Button"
 #~ msgstr "Gomb"
-
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Már van ilyen nevű billentyű-téma"
-
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Nevet kell adnod a billentyű-témának"
-
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "Valóban törölni akarod ezt a billentyű-témát?"
-
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Gyorsbillentyű téma hozzáadása"
-
 #~ msgid "Add a new window-manager shortcut theme"
 #~ msgstr "Új ablakkezelő gyorsbillentyű téma hozzáadása"
-
 #~ msgid "Type the name for the new shortcut theme:"
 #~ msgstr "Adj nevet az új gyorsbillentyű témának:"
 
 #, fuzzy
 #~ msgid "gtk-cancel"
 #~ msgstr "Mégsem"
-
 #~ msgid "Workspace Margins"
 #~ msgstr "Munkaterület margók"
-
 #~ msgid ""
 #~ "Margins are areas on the edges of the screen where no window will be "
 #~ "placed"
 #~ msgstr ""
 #~ "A margók olyan területek a képernyő szélén, amelyekre nem kerül ablak."
-
 #~ msgid "Left :"
 #~ msgstr "Bal:"
-
 #~ msgid "Right :"
 #~ msgstr "Jobb:"
-
 #~ msgid "Top :"
 #~ msgstr "Felső:"
-
 #~ msgid "Bottom :"
 #~ msgstr "Alsó:"
-
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Munkaterületek és margók"
-
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Munkaterületek és Margók"
-
 #~ msgid "Margins"
 #~ msgstr "Margók"
-
 #~ msgid "None"
 #~ msgstr "Nincs"
-
 #~ msgid "Place window under the mouse"
 #~ msgstr "Ablak elhelyezése az egér alá"
-
 #~ msgid "Place window in the center"
 #~ msgstr "Ablak elhelyezése középre"
-
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Munkaterületek váltása az asztalon való görgetésre"
-
 #~ msgid "Size|Small"
 #~ msgstr "Kicsi"
-
 #~ msgid "Size|Large"
 #~ msgstr "Nagy"
-
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Ablakok alap helyzete okos elhelyezés nélkül:"
-
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Ablakkezelő trükkök"
-
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "E beállítások nem működnek a jelenlegi (%s) ablakkezelőddel"
-
 #~ msgid "Change name"
 #~ msgstr "Új név"
-
 #~ msgid "Workspace %d"
 #~ msgstr "%d. munkaterület"
-
 #~ msgid "Name:"
 #~ msgstr "Név:"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Kattints egy munkaterület nevén a szerkesztéséhez"
-
 #~ msgid "Workspace names"
 #~ msgstr "Munkaterület nevek"
-
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Betűkészlet-kijelölés párbeszéd"
-
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Szöveg igazítása a címsorban:"
-
 #~ msgid "Slow"
 #~ msgstr "Hosszú"
-
 #~ msgid "Fast"
 #~ msgstr "Rövid"
-
 #~ msgid "Distance|Small"
 #~ msgstr "Kicsi"
-
 #~ msgid "Distance|Wide"
 #~ msgstr "Széles"
-
 #~ msgid "Resistance|Small"
 #~ msgstr "Kicsi"
-
 #~ msgid "Resistance|Wide"
 #~ msgstr "Széles"
-
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Ablakkezelő"
-
 #~ msgid "Add keybinding theme"
 #~ msgstr "Billentyű-téma hozzáadása"
-
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Ablak erre a munkaterületre: %d"
-
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Nem sikerült megnyitni a témakönyvtárat!"
-
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "%s nem nyitható meg: \n"
 #~ "%s"
-
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "%s nem írható : \n"
 #~ ":%s"
-
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Gyorsbillentyű készítése ehhez:"
-
 #~ msgid "Compose shortcut"
 #~ msgstr "Gyorsbillentyű készítése"
-
 #~ msgid "Advanced Configuration"
 #~ msgstr "Haladó beállítás"
-
 #~ msgid "Move window down"
 #~ msgstr "Ablak mozgatása lefelé"
-
 #~ msgid "Move window left"
 #~ msgstr "Ablak mozgatása balra"
-
 #~ msgid "Move window right"
 #~ msgstr "Ablak mozgatása jobbra"
-
 #~ msgid "Resize window down"
 #~ msgstr "Ablak átméretezése lent"
-
 #~ msgid "Resize window left"
 #~ msgstr "Ablak átméretezése bal oldalon"
-
 #~ msgid "Resize window right"
 #~ msgstr "Ablak átméretezés jobb oldalon"
-
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Ablak mozgatás/átméretezés törlése"
-
 #~ msgid "Un_maximize"
 #~ msgstr "_Visszaállítás"
-
 #~ msgid "_Hide"
 #~ msgstr "El_rejtés"
-
 #~ msgid "Always on top"
 #~ msgstr "Mindig felül"
 
 #, fuzzy
 #~ msgid "Workspace %02d"
 #~ msgstr "%d. munkaterület"
-
 #~ msgid "Unknown application!"
 #~ msgstr "Ismeretlen alkalmazás!"
+
