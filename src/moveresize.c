@@ -901,6 +901,13 @@ clientMove (Client * c, XEvent * ev)
         return;
     }
 
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) &&
+        !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    {
+        /* Partial maximization, clear it up */
+        clientRemoveMaximizeFlag (c);
+    }
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
