@@ -1,3 +1,8 @@
+2008-10-11  olivier
+
+	* settings-dialogs/xfwm4-settings.c, 
+          settings-dialogs/tweaks-settings.c: Staticalisation
+
 2008-10-09 16:38  olivier
 
 	* src/moveresize.c: Clear partial maximization upon move

@@ -1,21 +1,21 @@
 /*
  * Copyright (c) 2008 Stephan Arts <stephan@xfce.org>
  * Copyright (c) 2008 Jannis Pohlmann <jannis@xfce.org>
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either opt_version 2 of the License, or
  * (at your option) any later opt_version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Library General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- * 
+ *
  * Based on the mcs-plugin written by Olivier Fourdan.
  */
 
@@ -210,70 +210,70 @@ check_xfwm4_themes (GtkListStore *list_store, GtkTreeView *tree_view, XfconfChan
   xfce_resource_pop_path (XFCE_RESOURCE_THEMES);
 
   /*
-   * Iterate over all base directories 
+   * Iterate over all base directories
    */
   for (i = 0; xfwm4_theme_dirs[i] != NULL; ++i)
     {
       /*
-       * Open directory handle 
+       * Open directory handle
        */
       dir = g_dir_open (xfwm4_theme_dirs[i], 0, NULL);
 
       /*
-       * Try next base directory if this one cannot be read 
+       * Try next base directory if this one cannot be read
        */
       if (G_UNLIKELY (dir == NULL))
-	continue;
+    continue;
 
       /*
-       * Iterate over filenames in the directory 
+       * Iterate over filenames in the directory
        */
       while ((file = g_dir_read_name (dir)) != NULL)
-	{
-	  /*
-	   * Build the theme style filename 
-	   */
-	  xfwm4rc_filename = g_build_filename (xfwm4_theme_dirs[i], file, "xfwm4", "themerc", NULL);
-
-	  /*
-	   * Check if the gtkrc file exists and the theme is not already 
-	   * in the list 
-	   */
-	  if (g_file_test (xfwm4rc_filename, G_FILE_TEST_EXISTS) && g_slist_find_custom (check_list, file, (GCompareFunc) g_utf8_collate) == NULL)
-	    {
-
-	      /*
-	       * Insert the theme in the check list 
-	       */
-	      check_list = g_slist_prepend (check_list, g_strdup (file));
-
-	      /*
-	       * Append ui theme to the list store 
-	       */
-	      gtk_list_store_append (list_store, &iter);
-	      gtk_list_store_set (list_store, &iter, 0, file, -1);
-
-	      /*
-	       * Check if this is the active theme, if so, select it 
-	       */
-	      if (G_UNLIKELY (g_utf8_collate (file, active_theme_name) == 0))
-		{
-		  if (xfwm4_themerc_filename)
-		    g_free (xfwm4_themerc_filename);
-		  xfwm4_themerc_filename = g_strdup (xfwm4rc_filename);
-
-		  tree_path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_store), &iter);
-		  gtk_tree_selection_select_path (gtk_tree_view_get_selection (tree_view), tree_path);
-		  gtk_tree_path_free (tree_path);
-		}
-	    }
-	  /*
-	   * Free xfwm4rc filename 
-	   */
-	  g_free (xfwm4rc_filename);
-	}
+    {
       /*
-       * Close directory handle 
+       * Build the theme style filename
+       */
+      xfwm4rc_filename = g_build_filename (xfwm4_theme_dirs[i], file, "xfwm4", "themerc", NULL);
+
+      /*
+       * Check if the gtkrc file exists and the theme is not already
+       * in the list
+       */
+      if (g_file_test (xfwm4rc_filename, G_FILE_TEST_EXISTS) && g_slist_find_custom (check_list, file, (GCompareFunc) g_utf8_collate) == NULL)
+        {
+
+          /*
+           * Insert the theme in the check list
+           */
+          check_list = g_slist_prepend (check_list, g_strdup (file));
+
+          /*
+           * Append ui theme to the list store
+           */
+          gtk_list_store_append (list_store, &iter);
+          gtk_list_store_set (list_store, &iter, 0, file, -1);
+
+          /*
+           * Check if this is the active theme, if so, select it
+           */
+          if (G_UNLIKELY (g_utf8_collate (file, active_theme_name) == 0))
+        {
+          if (xfwm4_themerc_filename)
+            g_free (xfwm4_themerc_filename);
+          xfwm4_themerc_filename = g_strdup (xfwm4rc_filename);
+
+          tree_path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_store), &iter);
+          gtk_tree_selection_select_path (gtk_tree_view_get_selection (tree_view), tree_path);
+          gtk_tree_path_free (tree_path);
+        }
+        }
+      /*
+       * Free xfwm4rc filename
+       */
+      g_free (xfwm4rc_filename);
+    }
+      /*
+       * Close directory handle
        */
       g_dir_close (dir);
     }
@@ -321,7 +321,7 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
   XfconfChannel *shortcuts_channel = xfconf_channel_new ("xfce4-keyboard-shortcuts");
 
   /*
-   * Style tab 
+   * Style tab
    */
   GtkWidget *theme_name_treeview = glade_xml_get_widget (gxml, "theme_name_treeview");
   GtkWidget *title_font_button = glade_xml_get_widget (gxml, "title_font_button");
@@ -332,13 +332,13 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
   GtkWidget *hidden_box = glade_xml_get_widget (gxml, "hidden-box");
 
   /*
-   * Keyboard tab 
+   * Keyboard tab
    */
   GtkWidget *shortcuts_treeview = glade_xml_get_widget (gxml, "shortcuts_treeview");
   GtkWidget *shortcuts_reset_button = glade_xml_get_widget (gxml, "shortcuts_reset_button");
 
   /*
-   * Focus tab 
+   * Focus tab
    */
   GtkWidget *focus_delay_scale = (GtkWidget *) gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "focus_delay_scale")));
   GtkWidget *focus_new_check = glade_xml_get_widget (gxml, "focus_new_check");
@@ -347,7 +347,7 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
   GtkWidget *click_to_focus_mode = glade_xml_get_widget (gxml, "click_to_focus_mode");
 
   /*
-   * Advanced tab 
+   * Advanced tab
    */
   GtkWidget *box_move_check = glade_xml_get_widget (gxml, "box_move_check");
   GtkWidget *box_resize_check = glade_xml_get_widget (gxml, "box_resize_check");
@@ -360,7 +360,7 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
   GtkWidget *wrap_resistance_scale = (GtkWidget *) gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "wrap_resistance_scale")));
 
   /*
-   * Double click action 
+   * Double click action
    */
   list_store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
   tmpl_iter = dbl_click_values;
@@ -385,7 +385,7 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
   g_signal_connect (G_OBJECT (double_click_action_combo), "changed", G_CALLBACK (cb_xfwm4_dbl_click_changed), xfwm4_channel);
 
   /*
-   * Title alignment 
+   * Title alignment
    */
   list_store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
   tmpl_iter = title_align_values;
@@ -410,7 +410,7 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
   g_signal_connect (G_OBJECT (title_align_combo), "changed", G_CALLBACK (cb_xfwm4_title_align_changed), xfwm4_channel);
 
   /*
-   * Button layout 
+   * Button layout
    */
   target_entry[0].target = "_xfwm4_button_layout";
   target_entry[0].flags = GTK_TARGET_SAME_APP;
@@ -442,10 +442,10 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
       name = gtk_widget_get_name (button);
 
       if (name[strlen (name) - 1] == '|')
-	{
-	  g_signal_connect (G_OBJECT (title_align_combo), "changed", G_CALLBACK (cb_xfwm4_title_button_alignment_changed), button);
-	  cb_xfwm4_title_button_alignment_changed (GTK_COMBO_BOX (title_align_combo), GTK_BUTTON (button));
-	}
+    {
+      g_signal_connect (G_OBJECT (title_align_combo), "changed", G_CALLBACK (cb_xfwm4_title_button_alignment_changed), button);
+      cb_xfwm4_title_button_alignment_changed (GTK_COMBO_BOX (title_align_combo), GTK_BUTTON (button));
+    }
 
       g_object_set_data (G_OBJECT (button), "key_char", (gpointer) & name[strlen (name) - 1]);
       gtk_drag_source_set (button, GDK_BUTTON1_MASK, &target_entry[1], 1, GDK_ACTION_MOVE);
@@ -491,7 +491,7 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
 
 
   /*
-   * theme name 
+   * theme name
    */
   list_store = gtk_list_store_new (1, G_TYPE_STRING);
 
@@ -509,7 +509,7 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
   check_xfwm4_themes (list_store, GTK_TREE_VIEW (theme_name_treeview), xfwm4_channel);
 
   /*
-   * shortcut contents 
+   * shortcut contents
    */
   list_store = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
@@ -527,16 +527,16 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
 
 
   /*
-   * Bind easy properties 
+   * Bind easy properties
    */
   /*
-   * Style tab 
+   * Style tab
    */
   xfconf_g_property_bind (xfwm4_channel, "/general/title_font", G_TYPE_STRING, (GObject *) title_font_button, "font-name");
   g_signal_connect (G_OBJECT (xfwm4_channel), "property-changed::/general/title_alignment", G_CALLBACK (cb_xfwm4_channel_title_alignment_changed), title_align_combo);
   g_signal_connect (G_OBJECT (xfwm4_channel), "property-changed::/general/button_layout", G_CALLBACK (cb_xfwm4_channel_button_layout_changed), hidden_box);
   /*
-   * Focus tab 
+   * Focus tab
    */
   xfconf_g_property_bind (xfwm4_channel, "/general/focus_delay", G_TYPE_INT, (GObject *) focus_delay_scale, "value");
   xfconf_g_property_bind (xfwm4_channel, "/general/click_to_focus", G_TYPE_BOOLEAN, (GObject *) click_to_focus_mode, "active");
@@ -545,14 +545,14 @@ xfwm4_dialog_configure_widgets (GladeXML *gxml)
   xfconf_g_property_bind (xfwm4_channel, "/general/focus_new", G_TYPE_BOOLEAN, (GObject *) focus_new_check, "active");
 
   /*
-   * Keyboard tab 
+   * Keyboard tab
    */
   g_signal_connect (G_OBJECT (shortcuts_channel), "property-changed", G_CALLBACK (cb_xfwm4_shortcuts_property_changed), list_store);
   g_signal_connect (G_OBJECT (shortcuts_treeview), "row-activated", G_CALLBACK (cb_xfwm4_shortcuts_row_activated), shortcuts_channel);
   g_signal_connect (G_OBJECT (shortcuts_reset_button), "clicked", G_CALLBACK (cb_xfwm4_shortcuts_reset), list_store);
 
   /*
-   * Advanced tab 
+   * Advanced tab
    */
   xfconf_g_property_bind (xfwm4_channel, "/general/snap_width", G_TYPE_INT, (GObject *) snap_width_scale, "value");
   xfconf_g_property_bind (xfwm4_channel, "/general/wrap_resistance", G_TYPE_INT, (GObject *) wrap_resistance_scale, "value");
@@ -655,13 +655,13 @@ cb_xfwm4_theme_treeselection_changed (GtkTreeSelection *selection, XfconfChannel
   GValue value = { 0, };
 
   /*
-   * valid failure 
+   * valid failure
    */
   if (g_list_length (list) == 0)
     return;
 
   /*
-   * everything else is invalid 
+   * everything else is invalid
    */
   g_return_if_fail (g_list_length (list) == 1);
 
@@ -761,13 +761,13 @@ cb_xfwm4_channel_double_click_action_changed (XfconfChannel *channel, const gcha
     {
       gtk_tree_model_get_value (model, &iter, 1, &value2);
       if (strcmp (g_value_get_string (&value2), str_value) == 0)
-	{
-	  g_value_unset (&value2);
-	  g_signal_handlers_block_by_func (combo, G_CALLBACK (cb_xfwm4_dbl_click_changed), channel);
-	  gtk_combo_box_set_active_iter (combo, &iter);
-	  g_signal_handlers_unblock_by_func (combo, G_CALLBACK (cb_xfwm4_dbl_click_changed), channel);
-	  break;
-	}
+    {
+      g_value_unset (&value2);
+      g_signal_handlers_block_by_func (combo, G_CALLBACK (cb_xfwm4_dbl_click_changed), channel);
+      gtk_combo_box_set_active_iter (combo, &iter);
+      g_signal_handlers_unblock_by_func (combo, G_CALLBACK (cb_xfwm4_dbl_click_changed), channel);
+      break;
+    }
       g_value_unset (&value2);
     }
   while (gtk_tree_model_iter_next (model, &iter));
@@ -790,13 +790,13 @@ cb_xfwm4_channel_title_alignment_changed (XfconfChannel *channel, const gchar *p
     {
       gtk_tree_model_get_value (model, &iter, 1, &value2);
       if (strcmp (g_value_get_string (&value2), str_value) == 0)
-	{
-	  g_value_unset (&value2);
-	  g_signal_handlers_block_by_func (combo, G_CALLBACK (cb_xfwm4_title_align_changed), channel);
-	  gtk_combo_box_set_active_iter (combo, &iter);
-	  g_signal_handlers_unblock_by_func (combo, G_CALLBACK (cb_xfwm4_title_align_changed), channel);
-	  break;
-	}
+    {
+      g_value_unset (&value2);
+      g_signal_handlers_block_by_func (combo, G_CALLBACK (cb_xfwm4_title_align_changed), channel);
+      gtk_combo_box_set_active_iter (combo, &iter);
+      g_signal_handlers_unblock_by_func (combo, G_CALLBACK (cb_xfwm4_title_align_changed), channel);
+      break;
+    }
       g_value_unset (&value2);
     }
   while (gtk_tree_model_iter_next (model, &iter));
@@ -840,7 +840,7 @@ str_starts_with (const gchar *str, const gchar *start)
   while (*start)
     {
       if (*str++ != *start++)
-	return FALSE;
+    return FALSE;
     }
 
   return TRUE;
@@ -862,7 +862,7 @@ cb_xfwm4_channel_button_layout_changed (XfconfChannel *channel, const gchar *pro
   gtk_widget_set_app_paintable (GTK_WIDGET (hidden_box), FALSE);
 
   /*
-   * move all the buttons to the hidden list, except the title 
+   * move all the buttons to the hidden list, except the title
    */
   children = list_iter = gtk_container_get_children (active_box);
 
@@ -876,10 +876,10 @@ cb_xfwm4_channel_button_layout_changed (XfconfChannel *channel, const gchar *pro
       key_char = (const gchar *) g_object_get_data (G_OBJECT (button), "key_char");
 
       if (key_char[0] != '|')
-	{
-	  gtk_container_remove (active_box, button);
-	  gtk_box_pack_start (GTK_BOX (hidden_box), button, FALSE, FALSE, 0);
-	}
+    {
+      gtk_container_remove (active_box, button);
+      gtk_box_pack_start (GTK_BOX (hidden_box), button, FALSE, FALSE, 0);
+    }
 
       list_iter = g_list_next (list_iter);
     }
@@ -887,7 +887,7 @@ cb_xfwm4_channel_button_layout_changed (XfconfChannel *channel, const gchar *pro
   g_list_free (children);
 
   /*
-   * move the buttons to the active list, in the correct order 
+   * move the buttons to the active list, in the correct order
    */
   children = g_list_concat (gtk_container_get_children (active_box), gtk_container_get_children (hidden_box));
 
@@ -895,23 +895,23 @@ cb_xfwm4_channel_button_layout_changed (XfconfChannel *channel, const gchar *pro
     {
       list_iter = children;
       while (list_iter)
-	{
-	  GtkWidget *button;
-	  const gchar *key_char;
+    {
+      GtkWidget *button;
+      const gchar *key_char;
 
-	  button = GTK_WIDGET (list_iter->data);
+      button = GTK_WIDGET (list_iter->data);
 
-	  key_char = (const gchar *) g_object_get_data (G_OBJECT (button), "key_char");
+      key_char = (const gchar *) g_object_get_data (G_OBJECT (button), "key_char");
 
-	  if (str_starts_with (str_value, key_char))
-	    {
-	      gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (button)), button);
-	      gtk_box_pack_start (GTK_BOX (active_box), button, key_char[0] == '|', key_char[0] == '|', 0);
-	      break;
-	    }
+      if (str_starts_with (str_value, key_char))
+        {
+          gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (button)), button);
+          gtk_box_pack_start (GTK_BOX (active_box), button, key_char[0] == '|', key_char[0] == '|', 0);
+          break;
+        }
 
-	  list_iter = g_list_next (list_iter);
-	}
+      list_iter = g_list_next (list_iter);
+    }
 
       str_value++;
     }
@@ -947,13 +947,13 @@ cb_xfwm4_active_frame_drag_data (GtkWidget *widget, GdkDragContext *drag_context
       item = GTK_WIDGET (iter->data);
 
       if (GTK_WIDGET_VISIBLE (item))
-	{
-	  button++;
-	  if (x < (item->allocation.width / 2 + item->allocation.x - xoffset))
-	    {
-	      break;
-	    }
-	}
+    {
+      button++;
+      if (x < (item->allocation.width / 2 + item->allocation.x - xoffset))
+        {
+          break;
+        }
+    }
       i++;
       iter = g_list_next (iter);
     }
@@ -985,15 +985,15 @@ cb_xfwm4_active_frame_drag_motion (GtkWidget *widget, GdkDragContext *drag_conte
       item = GTK_WIDGET (iter->data);
 
       if (GTK_WIDGET_VISIBLE (item))
-	{
-	  button++;
-	  if (x < (item->allocation.width / 2 + item->allocation.x - xoffset))
-	    {
-	      ix = item->allocation.x;
-	      break;
-	    }
-	  ix = item->allocation.x + item->allocation.width;
-	}
+    {
+      button++;
+      if (x < (item->allocation.width / 2 + item->allocation.x - xoffset))
+        {
+          ix = item->allocation.x;
+          break;
+        }
+      ix = item->allocation.x + item->allocation.width;
+    }
       iter = g_list_next (iter);
     }
 
@@ -1028,7 +1028,7 @@ cb_xfwm4_hidden_frame_drag_data (GtkWidget *widget, GdkDragContext *drag_context
   GtkWidget *parent = gtk_widget_get_parent (source);
 
   /*
-   * if the item was dragged back to the location it already was 
+   * if the item was dragged back to the location it already was
    */
   if (parent == hidden_box)
     {
@@ -1097,7 +1097,7 @@ xfwm4_create_indicator (GtkWidget *widget, gint x, gint y, gint width, gint heig
   };
 
   GdkWindow *indicator = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes,
-					 attr_mask);
+                     attr_mask);
 
   gdk_window_set_user_data (indicator, widget);
   g_object_set_data (G_OBJECT (widget), "indicator_window", indicator);
@@ -1172,7 +1172,7 @@ validate_shortcut (FrapShortcutsDialog *dialog, const gchar *shortcut, ShortcutC
 
       /* Let the user handle conflicts if there are any */
       if (G_UNLIKELY (xfconf_channel_has_property (context->channel, property)))
-        shortcut_accepted = frap_shortcuts_conflict_dialog (context->channel, property, internal_name, 
+        shortcut_accepted = frap_shortcuts_conflict_dialog (context->channel, property, internal_name,
                                                             FRAP_SHORTCUTS_XFWM4, FALSE) == GTK_RESPONSE_ACCEPT;
 
       /* Free strings */
@@ -1183,7 +1183,7 @@ validate_shortcut (FrapShortcutsDialog *dialog, const gchar *shortcut, ShortcutC
     {
       /* Let the user handle conflicts if there are any */
       if (G_UNLIKELY (xfconf_channel_has_property (context->channel, property)))
-        shortcut_accepted = frap_shortcuts_conflict_dialog (context->channel, property, NULL, 
+        shortcut_accepted = frap_shortcuts_conflict_dialog (context->channel, property, NULL,
                                                             FRAP_SHORTCUTS_XFWM4, FALSE) == GTK_RESPONSE_ACCEPT;
     }
 
@@ -1248,7 +1248,7 @@ update_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, Shor
 
 
 
-static void 
+static void
 cb_xfwm4_shortcuts_property_changed (XfconfChannel *channel, const gchar *property, const GValue *value, GtkListStore *store)
 {
   ShortcutContext context;
@@ -1261,7 +1261,7 @@ cb_xfwm4_shortcuts_property_changed (XfconfChannel *channel, const gchar *proper
 
 
 
-static void 
+static void
 cb_xfwm4_shortcuts_row_activated (GtkWidget *treeview, GtkTreePath *path, GtkTreeViewColumn *column, XfconfChannel *channel)
 {
   ShortcutContext context;
@@ -1281,9 +1281,9 @@ cb_xfwm4_shortcuts_row_activated (GtkWidget *treeview, GtkTreePath *path, GtkTre
   if (G_LIKELY (gtk_tree_model_get_iter (model, &iter, path)))
     {
       /* Read current shortcut from the activated row */
-      gtk_tree_model_get (model, &iter, 
+      gtk_tree_model_get (model, &iter,
                           SHORTCUTS_NAME_COLUMN, &name,
-                          SHORTCUTS_SHORTCUT_COLUMN, &current_shortcut, 
+                          SHORTCUTS_SHORTCUT_COLUMN, &current_shortcut,
                           SHORTCUTS_INTERNAL_NAME_COLUMN, &internal_name, -1);
 
       /* Prepare callback context */
@@ -1291,7 +1291,7 @@ cb_xfwm4_shortcuts_row_activated (GtkWidget *treeview, GtkTreePath *path, GtkTre
       context.iter = &iter;
       context.store = GTK_LIST_STORE (model);
       context.ignore_internal_conflicts = FALSE;
-      
+
       /* Request a new shortcut from the user */
       dialog = frap_shortcuts_dialog_new (FRAP_SHORTCUTS_XFWM4, name);
       g_signal_connect (dialog, "validate-shortcut", G_CALLBACK (validate_shortcut), &context);
@@ -1342,7 +1342,7 @@ load_shortcuts (GtkListStore *store, XfconfChannel *channel)
     {
       /* Create a new row for the current feature */
       gtk_list_store_append (store, &iter);
-      
+
       /* Get string representation of the iter */
       iter_str = gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (store), &iter);
 
@@ -1350,7 +1350,7 @@ load_shortcuts (GtkListStore *store, XfconfChannel *channel)
       g_hash_table_insert (table, g_strdup (shortcuts_defaults[i].internal_name), iter_str);
 
       /* Store feature information in the list store */
-      gtk_list_store_set (store, &iter, 
+      gtk_list_store_set (store, &iter,
                           SHORTCUTS_NAME_COLUMN, shortcuts_defaults[i].name,
                           SHORTCUTS_INTERNAL_NAME_COLUMN, shortcuts_defaults[i].internal_name,
                           SHORTCUTS_DEFAULT_SHORTCUT_COLUMN, shortcuts_defaults[i].shortcut, -1);
@@ -1374,7 +1374,7 @@ load_shortcuts (GtkListStore *store, XfconfChannel *channel)
 
 
 
-static void 
+static void
 load_shortcut_property (const gchar *property, const GValue *value, ShortcutContext *context)
 {
   FrapShortcutsType type;
@@ -1431,7 +1431,7 @@ remove_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, Xfco
 
   /* Get shortcut string from the list store */
   gtk_tree_model_get (model, iter,
-                      SHORTCUTS_SHORTCUT_COLUMN, &shortcut, 
+                      SHORTCUTS_SHORTCUT_COLUMN, &shortcut,
                       SHORTCUTS_INTERNAL_NAME_COLUMN, &internal_name, -1);
 
   if (shortcut == NULL || g_utf8_strlen (shortcut, -1) == 0)
@@ -1464,9 +1464,9 @@ reset_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, Short
   gchar *property;
 
   /* Get default shortcut for this feature */
-  gtk_tree_model_get (model, iter, 
+  gtk_tree_model_get (model, iter,
                       SHORTCUTS_NAME_COLUMN, &name,
-                      SHORTCUTS_INTERNAL_NAME_COLUMN, &internal_name, 
+                      SHORTCUTS_INTERNAL_NAME_COLUMN, &internal_name,
                       SHORTCUTS_DEFAULT_SHORTCUT_COLUMN, &default_shortcut, -1);
 
   if (default_shortcut == NULL)
@@ -1487,7 +1487,7 @@ reset_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, Short
       property = g_strdup_printf ("/%s", default_shortcut);
 
       /* Only reset the shortcut if its not used by something else or if the user wants to replace the existing binding */
-      if (frap_shortcuts_conflict_dialog (context->channel, property, internal_name, FRAP_SHORTCUTS_XFWM4, 
+      if (frap_shortcuts_conflict_dialog (context->channel, property, internal_name, FRAP_SHORTCUTS_XFWM4,
                                           context->ignore_internal_conflicts) == GTK_RESPONSE_ACCEPT)
         frap_shortcuts_set_shortcut (context->channel, default_shortcut, internal_name, FRAP_SHORTCUTS_XFWM4);
 
@@ -1502,7 +1502,7 @@ reset_shortcut (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, Short
 
 
 
-static void 
+static void
 cb_xfwm4_shortcuts_reset (GtkWidget *button, GtkListStore *store)
 {
   ShortcutContext context;

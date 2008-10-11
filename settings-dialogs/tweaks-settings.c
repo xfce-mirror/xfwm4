@@ -54,7 +54,7 @@ static const gchar *const modifier_list[] = {
     NULL
 };
 
-void
+static void
 cb_easy_click_combo_box_changed (GtkComboBox *combo, XfconfChannel *channel)
 {
     guint n;
@@ -70,19 +70,19 @@ cb_easy_click_combo_box_changed (GtkComboBox *combo, XfconfChannel *channel)
     }
 }
 
-void
+static void
 cb_use_compositing_check_button_toggled (GtkToggleButton *toggle, GtkWidget *box)
 {
     gtk_widget_set_sensitive (box, gtk_toggle_button_get_active (toggle));
 }
 #if 0
-void
+static void
 cb_prevent_focus_stealing_check_button_toggled (GtkToggleButton *toggle, GtkWidget *box)
 {
     gtk_widget_set_sensitive (box, gtk_toggle_button_get_active (toggle));
 }
 #endif
-void
+static void
 cb_activate_action_bring_radio_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
 {
     if (gtk_toggle_button_get_active (toggle))
@@ -91,7 +91,7 @@ cb_activate_action_bring_radio_toggled (GtkToggleButton *toggle, XfconfChannel *
     }
 }
 
-void
+static void
 cb_activate_action_switch_radio_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
 {
     if (gtk_toggle_button_get_active (toggle))
@@ -100,7 +100,7 @@ cb_activate_action_switch_radio_toggled (GtkToggleButton *toggle, XfconfChannel 
     }
 }
 
-void
+static void
 cb_activate_action_none_radio_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
 {
     if (gtk_toggle_button_get_active (toggle))
@@ -109,7 +109,7 @@ cb_activate_action_none_radio_toggled (GtkToggleButton *toggle, XfconfChannel *c
     }
 }
 
-void
+static void
 cb_activate_placement_center_radio_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
 {
     if (gtk_toggle_button_get_active (toggle))
@@ -118,7 +118,7 @@ cb_activate_placement_center_radio_toggled (GtkToggleButton *toggle, XfconfChann
     }
 }
 
-void
+static void
 cb_activate_placement_mouse_radio_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
 {
     if (gtk_toggle_button_get_active (toggle))
