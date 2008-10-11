@@ -1,5 +1,34 @@
-4.5.x
-=====
+4.5.91 (Xfce 4.6beta1)
+======================
+
+- Add support for NET_WM_PING protocol.
+- Add support for NET_WM_PID to be able to kill apps (when not responding to 
+  NET_WM_PING).
+- Make shadow opacity configurable (bug #4447).
+- Make wireframe while cycling user configurable (Bug #4443).
+- Rework visual depth selection of the frame window (Bug #4452).
+- Add new user option to set/unset repeat blinking of urgent windows (Bug #4440).
+- Add margins configuration in workspace settings (Bug #4438).
+- Loosen the rule that prevents an application from iconifying itself when 
+  skip_taskbar is set (Bug #4434).
+- Fix NET_WM_STATE claiming maximization vertical and horizontal even if only 
+  horizontal of vertical is actually set (Bug #3969).
+- Add an option to set default window placement w/out smart placement missing from 
+  the wmtweaks GUI.
+- Allow any modifier to be used for easy move, including disabling the functionality 
+  entirely.
+- Add embedding support to all xfwm4 settings dialogs.
+- Sort theme alphabetically (Bug #4318).
+- Implement workspace name changing.
+- Do not allocate window extents if the window is not visible (Bug #4363).
+- Lot of settings dialogs fixes and enhancements
+- Update Basque translation
+- Update German translation
+- Update Korean translation
+- Update Slovene translation
+
+4.5.90 (Xfce 4.6alpha)
+======================
 
 - Add button prelight in window frames (Bug #3219).
 - Add resize from top of window.
@@ -22,7 +51,6 @@
 - Treat dialogs and utility windows as transients for group (bug #3102).
 - Add support for shape input with XShape extension 1.1 (Bug #3092).
 - Make the title button in the xfwm4 settings manager dragable (bug #3000).
-- Make wireframe while cycling user configurable (Bug #4443)
 - Fix a misinterpretation of ICCCM about when to send a synthetic 
   configureNotify event (bug #2977).
 - Add option to instruct xfwm4 not to bring window back on 
@@ -36,7 +64,6 @@
   frames at once.
 - Use timeout for frame redraw, check actual WM name changes to work around 
   apps that falsely update their WM name property (Bug #2810).
-- Make shadow opacity configurable (bug #4447).
 - Uodate Hungarian translation
 - Update Catalan translation
 - Update Italian translation
