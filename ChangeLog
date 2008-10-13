@@ -1,3 +1,7 @@
+2008-10-13  olivier
+
+	* src/placement.c: Improve centering of windows with Xinerama.
+
 2008-10-11  olivier
 
 	* settings-dialogs/xfwm4-settings.c, 

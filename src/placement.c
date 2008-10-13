@@ -472,8 +472,12 @@ clientConstrainPos (Client * c, gboolean show_full)
 static void
 clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
 {
+    ScreenInfo *screen_info;
+    GdkRectangle rect;
+    gboolean centered;
     int cx, cy;
     int diff_x, diff_y;
+    int monitor_nbr;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientKeepVisible");
@@ -481,14 +485,32 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
 
     cx = frameX (c) + (frameWidth (c) / 2);
     cy = frameY (c) + (frameHeight (c) / 2);
+    screen_info = c->screen_info;
 
-    /* Translate coodinates to center on physical screen */
+    if ((c->size->x == 0) && (c->size->y == 0) && (c->type & (WINDOW_TYPE_DIALOG)))
+    {
+        /* Dialogs that place temselves in (0,0) will be centered */
+        centered = TRUE;
+    }
+    else if (n_monitors > 1)
+    {
+        /* First, check if the window is centered on the whole screen */
+        diff_x = abs (c->size->x - ((c->screen_info->width - c->size->width) / 2));
+        diff_y = abs (c->size->y - ((c->screen_info->height - c->size->height) / 2));
 
-    diff_x = abs (c->size->x - ((c->screen_info->width - c->width) / 2));
-    diff_y = abs (c->size->y - ((c->screen_info->height - c->height) / 2));
+        monitor_nbr = 0;
+        centered = ((diff_x < 25) && (diff_y < 25));
 
-    if (((n_monitors > 1) && (diff_x < 25) && (diff_y < 25)) ||
-        ((frameX (c) == 0) && (frameY (c) == 0) && (c->type & (WINDOW_TYPE_DIALOG))))
+        while ((!centered) && (monitor_nbr < n_monitors))
+        {
+            gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+            diff_x = abs (c->size->x - ((rect.width - c->size->width) / 2));
+            diff_y = abs (c->size->y - ((rect.height - c->size->height) / 2));
+            centered = ((diff_x < 25) && (diff_y < 25));
+            monitor_nbr++;
+        }
+    }
+    if (centered)
     {
         /* We consider that the windows is centered on screen,
          * Thus, will move it so its center on the current
