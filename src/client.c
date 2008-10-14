@@ -346,10 +346,9 @@ urgent_cb (gpointer data)
     Client *c;
     ScreenInfo *screen_info;
 
-    TRACE ("entering urgent_cb, iteration %i", c->blink_iterations);
-
     c = (Client *) data;
     g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("entering urgent_cb, iteration %i", c->blink_iterations);
     screen_info = c->screen_info;
 
     if (c != clientGetFocus ())
@@ -1517,6 +1516,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     gboolean shaped;
     gboolean grabbed;
     unsigned long valuemask;
+    long pid;
     int i;
 
     g_return_val_if_fail (w != None, NULL);
@@ -1742,7 +1742,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGetUserTime (c);
 
     /* Client PID */
-    getHint (display_info, c->window, NET_WM_PID, (long *) &c->pid);
+    getHint (display_info, c->window, NET_WM_PID, (long *) &pid);
+    c->pid = (GPid) pid;
     TRACE ("Client \"%s\" (0x%lx) PID = %i", c->name, c->window, c->pid);
 
     /* Apply startup notification properties if available */

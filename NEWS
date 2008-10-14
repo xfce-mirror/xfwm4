@@ -21,6 +21,7 @@
 - Sort theme alphabetically (Bug #4318).
 - Implement workspace name changing.
 - Do not allocate window extents if the window is not visible (Bug #4363).
+- Improve centering of windows with Xinerama.
 - Lot of settings dialogs fixes and enhancements
 - Update Basque translation
 - Update German translation

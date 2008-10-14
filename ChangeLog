@@ -1,11 +1,20 @@
+2008-10-14  olivier
+
+	* settings-dialogs/Makefile.am: Include monitor-icon.h, 
+	  (corsac@debian.org), src/events.c: Fix compiler warning,
+	  src/placement.c: Likewise, src/client.c: Likewise, fix 
+	  uninitialized access in full debug build (corsac@debian.org),
+	  po/POTFILES.in: Add new source to the list of files to translate 
+	  (corsac@debian.org)
+
 2008-10-13  olivier
 
 	* src/placement.c: Improve centering of windows with Xinerama.
 
 2008-10-11  olivier
 
-	* settings-dialogs/xfwm4-settings.c, 
-          settings-dialogs/tweaks-settings.c: Staticalisation
+	* settings-dialogs/xfwm4-settings.c,
+	  settings-dialogs/tweaks-settings.c: Staticalisation
 
 2008-10-09 16:38  olivier
 

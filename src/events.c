@@ -1926,8 +1926,10 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == display_info->atoms[NET_WM_PID])
         {
+            long pid;
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_PID notify", c->name, c->window);
-            getHint (display_info, c->window, NET_WM_PID, (long *) &c->pid);
+            getHint (display_info, c->window, NET_WM_PID, (long *) &pid);
+            c->pid = (GPid) pid;
             TRACE ("Client \"%s\" (0x%lx) updated PID = %i", c->name, c->window, c->pid);
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])

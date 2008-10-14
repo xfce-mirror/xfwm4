@@ -27,6 +27,7 @@ src/spinning_cursor.c
 src/stacking.c
 src/startup_notification.c
 src/tabwin.c
+src/terminate.c
 src/transients.c
 src/ui_style.c
 src/wireframe.c

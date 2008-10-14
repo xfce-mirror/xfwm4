@@ -487,6 +487,7 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
     cy = frameY (c) + (frameHeight (c) / 2);
     screen_info = c->screen_info;
 
+    centered = FALSE;
     if ((c->size->x == 0) && (c->size->y == 0) && (c->type & (WINDOW_TYPE_DIALOG)))
     {
         /* Dialogs that place temselves in (0,0) will be centered */
