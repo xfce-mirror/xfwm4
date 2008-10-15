@@ -42,6 +42,8 @@ xfwm4_settings_SOURCES = \
 	xfwm4-dialog_glade.h \
 	frap-shortcuts.h \
 	frap-shortcuts.c \
+	frap-shortcuts-provider.h \
+	frap-shortcuts-provider.c \
 	frap-shortcuts-dialog.h \
 	frap-shortcuts-dialog.c
 

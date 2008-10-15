@@ -39,10 +39,11 @@ typedef struct _FrapShortcutsDialog      FrapShortcutsDialog;
 
 GType        frap_shortcuts_dialog_get_type     (void) G_GNUC_CONST;
 
-GtkWidget   *frap_shortcuts_dialog_new          (FrapShortcutsType    type,
+GtkWidget   *frap_shortcuts_dialog_new          (const gchar         *provider,
                                                  const gchar         *action);
 gint         frap_shortcuts_dialog_run          (FrapShortcutsDialog *dialog);
 const gchar *frap_shortcuts_dialog_get_shortcut (FrapShortcutsDialog *dialog);
+const gchar *frap_shortcuts_dialog_get_action   (FrapShortcutsDialog *action);
 
 G_END_DECLS;
 

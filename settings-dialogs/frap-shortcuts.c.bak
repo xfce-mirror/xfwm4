@@ -43,8 +43,20 @@
 
 
 
-typedef struct _FrapShortcutsCallbackContext FrapShortcutsCallbackContext;
+typedef struct
+{
+  FrapShortcutsFunc callback;
+  gpointer          user_data;
+} FrapShortcutsCallbackContext;
 
+typedef struct
+{
+  FrapShortcutsType owner_type;
+  FrapShortcutsType other_type;
+  const gchar      *message;
+  const gchar      *owner_button_text;
+  const gchar      *other_button_text;
+} FrapShortcutsConflictMessage;
 
 
 
@@ -63,119 +75,262 @@ static void            frap_shortcuts_handle_key_press               (XKeyEvent 
 
 
 
-struct _FrapShortcutsCallbackContext
-{
-  FrapShortcutsCallback callback;
-  gpointer              user_data;
-};
-
-typedef struct
-{
-  const gchar      *owner_name;
-  const gchar      *other_name;
-  const gchar      *message;
-  const gchar      *owner_button_text;
-  const gchar      *other_button_text;
-} FrapShortcutsConflictMessage;
-
-
-
-
-
-
 static FrapShortcutsCallbackContext frap_shortcuts_callback_context = { 0 };
 
 
 
 static FrapShortcutsConflictMessage conflict_messages[] = {
-  { "xfwm4", "xfwm4", 
-    N_("This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"), 
-    N_("Use this action"), N_("Keep the other one") },
-  { "xfwm4", "commands",
+  { FRAP_SHORTCUTS_XFWM4, FRAP_SHORTCUTS_XFWM4, 
+    N_("This shortcut is already being used by the window manager action <b>%s</b>. Which action do you want to use?"), 
+    N_("Use %s"), N_("Keep %s") },
+  { FRAP_SHORTCUTS_XFWM4, FRAP_SHORTCUTS_EXECUTE,
     N_("The shortcut is already being used for the command <b>%s</b>. Which action do you want to use?"), 
-    N_("Use this action"), N_("Keep %s") },
-  { "commands","commands",
+    N_("Use %s"), N_("Keep %s") },
+  { FRAP_SHORTCUTS_EXECUTE, FRAP_SHORTCUTS_EXECUTE,
     N_("The shortcut is already being used for the command <b>%s</b>. Which action do you want to use?"),
     N_("Use %s"), N_("Keep %s") },
-  { "commands", "xfwm4",
+  { FRAP_SHORTCUTS_EXECUTE, FRAP_SHORTCUTS_XFWM4,
     N_("The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"),
-    N_("Use %s"), N_("Keep the window manager action") },
+    N_("Use %s"), N_("Keep window manager action") },
   { 0, 0, NULL, NULL, NULL },
 };
 
 
 
-gint
-frap_shortcuts_conflict_dialog (const gchar *owner,
-                                const gchar *other,
-                                const gchar *shortcut,
-                                const gchar *owner_action,
-                                const gchar *other_action,
-                                gboolean     ignore_same_provider)
+XfconfChannel *
+frap_shortcuts_get_channel (void)
 {
-  gchar   *title;
-  gchar   *primary_text;
-  gchar   *secondary_text;
-  gchar   *owner_action_name;
-  gchar   *other_action_name;
-  gchar   *owner_button_text;
-  gchar   *other_button_text;
-  gchar   *escaped_shortcut;
-  gboolean handled = FALSE;
-  gint     response = GTK_RESPONSE_ACCEPT;
-  gint     i;
+  return xfconf_channel_new ("xfce4-keyboard-shortcuts");
+}
 
-  if (g_utf8_collate (owner, other) == 0 && ignore_same_provider)
-    return GTK_RESPONSE_ACCEPT;
 
-  if (g_utf8_collate (owner, other) == 0 && g_utf8_collate (owner_action, other_action) == 0)
-    return GTK_RESPONSE_ACCEPT;
 
-  title = g_strdup_printf (_("Conflicting actions for %s"), shortcut);
+gchar *
+frap_shortcuts_get_property_name (const gchar *shortcut)
+{
+  return g_strdup_printf ("/%s", shortcut);
+}
 
-  for (i = 0; conflict_messages[i].message != NULL; ++i)
-    if (g_utf8_collate (conflict_messages[i].owner_name, owner) == 0 &&
-        g_utf8_collate (conflict_messages[i].other_name, other) == 0)
-      {
-        escaped_shortcut = g_markup_escape_text (shortcut, -1);
-        primary_text = g_strdup_printf (_("Conflicting actions for %s"), escaped_shortcut);
-        g_free (escaped_shortcut);
 
-        owner_action_name = owner_action == NULL ? NULL : g_markup_escape_text (owner_action, -1);
-        other_action_name = other_action == NULL ? NULL : g_markup_escape_text (other_action, -1);
 
-        secondary_text = g_strdup_printf (conflict_messages[i].message, other_action_name);
+const gchar *
+frap_shortcuts_get_type_name (FrapShortcutsType type)
+{
+  return type == FRAP_SHORTCUTS_XFWM4 ? "xfwm4" : "execute";
+}
 
-        owner_button_text = g_markup_printf_escaped (conflict_messages[i].owner_button_text, owner_action_name);
-        other_button_text = g_markup_printf_escaped (conflict_messages[i].other_button_text, other_action_name);
 
-        response = xfce_message_dialog (NULL, title, GTK_STOCK_DIALOG_QUESTION,
-                                        primary_text, secondary_text,
-                                        XFCE_CUSTOM_BUTTON, owner_button_text, GTK_RESPONSE_ACCEPT,
-                                        XFCE_CUSTOM_BUTTON, other_button_text, GTK_RESPONSE_REJECT,
-                                        NULL);
 
-        g_free (other_button_text);
-        g_free (owner_button_text);
-        g_free (secondary_text);
-        g_free (other_action_name);
-        g_free (owner_action_name);
-        g_free (primary_text);
-        g_free (title);
+gboolean
+frap_shortcuts_parse_value (const GValue      *value, 
+                            FrapShortcutsType *type,
+                            gchar            **action)
+{
+  const GPtrArray *array;
+  const GValue    *type_value;
+  const GValue    *action_value;
 
-        handled = TRUE;
-        break;
-      }
+  g_return_val_if_fail (value != NULL, FALSE);
 
-  if (G_UNLIKELY (!handled))
+  if (G_VALUE_TYPE (value) != dbus_g_type_get_collection ("GPtrArray", G_TYPE_VALUE))
+    return FALSE;
+
+  array = g_value_get_boxed (value);
+
+  if (array->len != 2)
+    return FALSE;
+
+  type_value = g_ptr_array_index (array, 0);
+  action_value = g_ptr_array_index (array, 1);
+
+  if (G_VALUE_TYPE (type_value) != G_TYPE_STRING || G_VALUE_TYPE (action_value) != G_TYPE_STRING)
+    return FALSE;
+
+  if (type != NULL)
     {
-      xfce_message_dialog (NULL, title, GTK_STOCK_DIALOG_ERROR,
-                           primary_text, _("The shortcut is already being used for something else."),
-                           GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+      if (g_utf8_collate (g_value_get_string (type_value), "execute") == 0)
+        *type = FRAP_SHORTCUTS_EXECUTE;
+      else if (g_utf8_collate (g_value_get_string (type_value), "xfwm4") == 0)
+        *type = FRAP_SHORTCUTS_XFWM4;
+      else
+        *type = FRAP_SHORTCUTS_INVALID;
+    }
+
+  if (action != NULL)
+    *action = g_strdup (g_value_get_string (action_value));
+
+  return TRUE;
+}
+
+
+
+gboolean
+frap_shortcuts_has_shortcut (XfconfChannel *channel,
+                             const gchar   *shortcut)
+{
+  gboolean exists = FALSE;
+  gchar   *property;
+
+  g_return_val_if_fail (XFCONF_IS_CHANNEL (channel), FALSE);
+  g_return_val_if_fail (shortcut != NULL, FALSE);
+
+  if (g_utf8_strlen (shortcut, -1) <= 0)
+    return FALSE;
+
+  property = frap_shortcuts_get_property_name (shortcut);
+  exists = xfconf_channel_has_property (channel, property);
+  g_free (property);
+
+  return exists;
+}
+
+
+
+gboolean
+frap_shortcuts_parse_shortcut (XfconfChannel     *channel,
+                               const gchar       *shortcut,
+                               FrapShortcutsType *type,
+                               gchar            **action)
+{
+  GValue   value = { 0 };
+  gboolean success = FALSE;
+  gchar   *property;
+
+  g_return_val_if_fail (XFCONF_IS_CHANNEL (channel), FALSE);
+  g_return_val_if_fail (shortcut != NULL, FALSE);
+  
+  property = frap_shortcuts_get_property_name (shortcut);
+
+  if (xfconf_channel_has_property (channel, property) && xfconf_channel_get_property (channel, property, &value))
+    {
+      if (frap_shortcuts_parse_value (&value, type, action))
+        success = TRUE;
+
+      if (G_IS_VALUE (&value))
+        g_value_unset (&value);
+    }
+
+  g_free (property);
+
+  return success;
+}
+
+
+
+gint
+frap_shortcuts_conflict_dialog (XfconfChannel    *channel,
+                                const gchar      *property,
+                                const gchar      *action,
+                                FrapShortcutsType type,
+                                gboolean          ignore_same_type)
+{
+  FrapShortcutsType other_type;
+  GValue            value = { 0 };
+  gchar            *primary_text;
+  gchar            *secondary_text;
+  gchar            *owner_name;
+  gchar            *other_name;
+  gchar            *owner_button_text;
+  gchar            *other_button_text;
+  gchar            *other_action;
+  gchar            *escaped_shortcut;
+  gint              response = GTK_RESPONSE_ACCEPT;
+  gint              i;
+
+  if (xfconf_channel_get_property (channel, property, &value) && frap_shortcuts_parse_value (&value, &other_type, &other_action))
+    {
+      if ((type != other_type || action == NULL || g_utf8_collate (action, other_action) != 0) && !(type == other_type && ignore_same_type))
+        {
+          for (i = 0; conflict_messages[i].message != NULL; ++i)
+            if (conflict_messages[i].owner_type == type && conflict_messages[i].other_type == other_type)
+              {
+                /* Build primary error message */
+                escaped_shortcut = g_markup_escape_text (property + 1, -1);
+                primary_text = g_strdup_printf (_("%s shortcut conflict"), escaped_shortcut);
+                g_free (escaped_shortcut);
+
+                owner_name = action == NULL ? NULL : g_markup_escape_text (action, -1);
+                other_name = g_markup_escape_text (other_action, -1);
+
+                secondary_text = g_strdup_printf (conflict_messages[i].message, other_name);
+
+                owner_button_text = owner_name == NULL ? _("Use this action") : g_markup_printf_escaped (conflict_messages[i].owner_button_text, owner_name); 
+                other_button_text = g_markup_printf_escaped (conflict_messages[i].other_button_text, other_name);
+
+                response = xfce_message_dialog (NULL, _("Shortcut conflict"), GTK_STOCK_DIALOG_ERROR,
+                                                primary_text, secondary_text,
+                                                XFCE_CUSTOM_BUTTON, owner_button_text, GTK_RESPONSE_ACCEPT,
+                                                XFCE_CUSTOM_BUTTON, other_button_text, GTK_RESPONSE_REJECT, 
+                                                NULL);
+
+                g_free (owner_button_text);
+                g_free (other_button_text);
+                g_free (secondary_text);
+                g_free (primary_text);
+                g_free (owner_name);
+                g_free (other_name);
+
+                break;
+              }
+        }
+
+      g_free (other_action);
+    }
+  else
+    {
+      xfce_err (_("The shortcut '%s' is already being used for something else."), property + 1);
       response = GTK_RESPONSE_REJECT;
     }
 
   return response;
+}
+
+
+
+void
+frap_shortcuts_set_shortcut (XfconfChannel    *channel,
+                             const gchar      *shortcut,
+                             const gchar      *action,
+                             FrapShortcutsType type)
+{
+  const gchar *typename;
+  gchar       *property;
+
+  g_return_if_fail (XFCONF_IS_CHANNEL (channel));
+  g_return_if_fail (shortcut != NULL);
+  g_return_if_fail (action != NULL);
+
+  if (g_utf8_strlen (shortcut, -1) <= 0 || g_utf8_strlen (action, -1) <= 0)
+    return;
+
+  property = frap_shortcuts_get_property_name (shortcut);
+  typename = frap_shortcuts_get_type_name (type);
+
+  xfconf_channel_set_array (channel, property, G_TYPE_STRING, typename, G_TYPE_STRING, action, G_TYPE_INVALID);
+
+  g_free (property);
+}
+
+
+
+void
+frap_shortcuts_remove_shortcut (XfconfChannel *channel,
+                                const gchar   *shortcut)
+{
+  gchar *property;
+
+  g_return_if_fail (XFCONF_IS_CHANNEL (channel));
+  g_return_if_fail (shortcut != NULL);
+
+  if (g_utf8_strlen (shortcut, -1) <= 0)
+    return;
+
+  property = frap_shortcuts_get_property_name (shortcut);
+
+  if (xfconf_channel_has_property (channel, property))
+    xfconf_channel_remove_property (channel, property);
+
+  g_free (property);
 }
 
 
@@ -206,8 +361,8 @@ frap_shortcuts_parse_accelerator (const gchar *name,
 
 
 void
-frap_shortcuts_set_shortcut_callback (FrapShortcutsCallback callback,
-                                      gpointer              user_data)
+frap_shortcuts_set_shortcut_callback (FrapShortcutsFunc callback,
+                                      gpointer          user_data)
 {
   frap_shortcuts_callback_context.callback = callback;
   frap_shortcuts_callback_context.user_data = user_data;

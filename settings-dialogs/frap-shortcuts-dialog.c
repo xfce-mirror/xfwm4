@@ -39,7 +39,7 @@ static void     frap_shortcuts_dialog_init             (FrapShortcutsDialog     
 static void     frap_shortcuts_dialog_dispose          (GObject                  *object);
 static void     frap_shortcuts_dialog_finalize         (GObject                  *object);
 static void     frap_shortcuts_dialog_create_contents  (FrapShortcutsDialog      *dialog,
-                                                        FrapShortcutsType         type,
+                                                        const gchar              *provider,
                                                         const gchar              *action);
 static gboolean frap_shortcuts_dialog_key_pressed      (FrapShortcutsDialog      *dialog,
                                                         GdkEventKey              *event);
@@ -65,6 +65,7 @@ struct _FrapShortcutsDialog
 
   GtkWidget *shortcut_label;
 
+  gchar     *action;
   gchar     *shortcut;
 };
 
@@ -198,6 +199,7 @@ frap_shortcuts_dialog_finalize (GObject *object)
 {
   FrapShortcutsDialog *dialog = FRAP_SHORTCUTS_DIALOG (object);
 
+  g_free (dialog->action);
   g_free (dialog->shortcut);
 
   (*G_OBJECT_CLASS (frap_shortcuts_dialog_parent_class)->finalize) (object);
@@ -206,14 +208,15 @@ frap_shortcuts_dialog_finalize (GObject *object)
 
 
 GtkWidget*
-frap_shortcuts_dialog_new (FrapShortcutsType type,
-                           const gchar      *action)
+frap_shortcuts_dialog_new (const gchar *provider,
+                           const gchar *action)
 {
   FrapShortcutsDialog *dialog;
   
-  dialog = FRAP_SHORTCUTS_DIALOG (g_object_new (FRAP_TYPE_SHORTCUTS_DIALOG, NULL));
+  dialog = g_object_new (FRAP_TYPE_SHORTCUTS_DIALOG, NULL);
+  dialog->action = g_strdup (action);
 
-  frap_shortcuts_dialog_create_contents (dialog, type, action);
+  frap_shortcuts_dialog_create_contents (dialog, provider, action);
 
   return GTK_WIDGET (dialog);
 }
@@ -222,7 +225,7 @@ frap_shortcuts_dialog_new (FrapShortcutsType type,
 
 static void
 frap_shortcuts_dialog_create_contents (FrapShortcutsDialog *dialog,
-                                       FrapShortcutsType    type,
+                                       const gchar         *provider,
                                        const gchar         *action)
 {
   GtkWidget   *button;
@@ -231,12 +234,12 @@ frap_shortcuts_dialog_create_contents (FrapShortcutsDialog *dialog,
   const gchar *title;
   gchar       *subtitle;
 
-  if (type == FRAP_SHORTCUTS_XFWM4)
+  if (g_utf8_collate (provider, "xfwm4") == 0)
     {
       title = _("Enter window manager action shortcut");
       subtitle = g_strdup_printf (_("Action: %s"), action);
     }
-  else if (type == FRAP_SHORTCUTS_EXECUTE)
+  else if (g_utf8_collate (provider, "commands") == 0)
     {
       title = _("Enter command shortcut");
       subtitle = g_strdup_printf (_("Command: %s"), action);
@@ -257,7 +260,7 @@ frap_shortcuts_dialog_create_contents (FrapShortcutsDialog *dialog,
   gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
   /* Create clear button for xfwm4 */
-  if (type == FRAP_SHORTCUTS_XFWM4)
+  if (g_utf8_collate (provider, "xfwm4") == 0)
     {
       button = gtk_button_new_from_stock (GTK_STOCK_CLEAR);
       gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_REJECT);
@@ -380,4 +383,13 @@ frap_shortcuts_dialog_get_shortcut (FrapShortcutsDialog *dialog)
 {
   g_return_val_if_fail (FRAP_IS_SHORTCUTS_DIALOG (dialog), NULL);
   return dialog->shortcut;
+}
+
+
+
+const gchar *
+frap_shortcuts_dialog_get_action (FrapShortcutsDialog *dialog)
+{
+  g_return_val_if_fail (FRAP_IS_SHORTCUTS_DIALOG (dialog), NULL);
+  return dialog->action;
 }

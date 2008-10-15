@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sun Sep 14 21:35:09 2008 -->
+<!--Generated with glade3 3.4.5 on Mon Oct 13 16:46:30 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="main-dialog">
@@ -194,6 +194,7 @@
                                 </child>
                                 <child>
                                   <widget class="GtkFrame" id="hidden-frame">
+                                    <property name="visible">True</property>
                                     <property name="label_xalign">0</property>
                                     <property name="shadow_type">GTK_SHADOW_IN</property>
                                     <child>
@@ -385,7 +386,6 @@
             <child>
               <widget class="GtkFrame" id="frame9">
                 <property name="visible">True</property>
-                <property name="sensitive">False</property>
                 <property name="border_width">12</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">GTK_SHADOW_NONE</property>
@@ -415,27 +415,52 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkHBox" id="hbox5">
+                          <widget class="GtkHButtonBox" id="hbuttonbox1">
                             <property name="visible">True</property>
+                            <property name="spacing">12</property>
+                            <property name="layout_style">GTK_BUTTONBOX_CENTER</property>
+                            <child>
+                              <widget class="GtkButton" id="shortcuts_select_button">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="label" translatable="yes">gtk-select-all</property>
+                                <property name="use_stock">True</property>
+                                <property name="response_id">0</property>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkButton" id="shortcuts_clear_button">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="label" translatable="yes">gtk-clear</property>
+                                <property name="use_stock">True</property>
+                                <property name="response_id">0</property>
+                              </widget>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
                             <child>
                               <widget class="GtkButton" id="shortcuts_reset_button">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
-                                <property name="label" translatable="yes">_Reset to defaults</property>
-                                <property name="use_underline">True</property>
+                                <property name="label" translatable="yes">gtk-revert-to-saved</property>
+                                <property name="use_stock">True</property>
                                 <property name="response_id">0</property>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
                                 <property name="pack_type">GTK_PACK_END</property>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
                             <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -462,7 +487,6 @@
             <child>
               <widget class="GtkLabel" id="label2">
                 <property name="visible">True</property>
-                <property name="sensitive">False</property>
                 <property name="label" translatable="yes">Ke_yboard</property>
                 <property name="use_underline">True</property>
               </widget>
