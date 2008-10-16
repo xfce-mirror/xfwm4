@@ -1,3 +1,38 @@
+2008-10-16  olivier
+
+	* settings-dialogs/xfwm4-settings.c: Fix compilation with glib-2.10,
+	  there is no g_hash_table_get_keys() nor constructed method for 
+	  GObjects in glib-2.10.
+
+2008-10-16  jannis
+
+	* settings-dialogs/xfwm4-settings.h: Add missing header file for
+	  the main settings dialog.
+
+2008-10-15  jannis
+
+	* settings-dialogs/frap-shortcuts.c.bak: Remove backup file.
+
+2008-10-15  jannis
+
+	* settings-dialogs/Makefile.am,
+	  settings-dialogs/frap-shortcuts-dialog.c,
+	  settings-dialogs/frap-shortcuts-dialog.h,
+	  settings-dialogs/frap-shortcuts-provider.c,
+	  settings-dialogs/frap-shortcuts-provider.h,
+	  settings-dialogs/frap-shortcuts.c,
+	  settings-dialogs/frap-shortcuts.c.bak,
+	  settings-dialogs/frap-shortcuts.h,
+	  settings-dialogs/xfwm4-dialog.glade,
+	  settings-dialogs/xfwm4-settings.c: GObject-ify the main settings
+	  dialog. Update frap shortcuts files.
+	  Tweak the settings dialog UI a bit. Next task will be support for
+	  shortcuts.
+
+2008-10-14  stephan
+
+	* configure.ac.in: Bump version number and dependency requirements
+
 2008-10-14  olivier
 
 	* settings-dialogs/Makefile.am: Include monitor-icon.h, 

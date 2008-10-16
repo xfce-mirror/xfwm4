@@ -233,6 +233,25 @@ xfwm_settings_get_type (void)
 }
 
 
+/*
+ * Xfce 4.6 depends on glib 2.12,
+ * Glib 2.14 comes with g_hash_table_get_keys(),
+ * until then... use the following function with
+ * g_hash_table_foreach()
+ */
+#if !GLIB_CHECK_VERSION (2,14,0)
+static void
+xfwm4_settings_get_list_keys_foreach (gpointer key,
+                                      gpointer value,
+                                      gpointer user_data)
+{
+  GList **keys = user_data;
+  *keys = g_list_prepend (*keys, key);
+}
+#endif
+
+
+
 
 static void
 xfwm_settings_class_init (XfwmSettingsClass *klass)
@@ -245,7 +264,9 @@ xfwm_settings_class_init (XfwmSettingsClass *klass)
   xfwm_settings_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->constructed = xfwm_settings_constructed; 
+#if GLIB_CHECK_VERSION (2,14,0)
+  gobject_class->constructed = xfwm_settings_constructed;
+#endif
   gobject_class->finalize = xfwm_settings_finalize; 
   gobject_class->get_property = xfwm_settings_get_property;
   gobject_class->set_property = xfwm_settings_set_property;
@@ -615,6 +636,9 @@ xfwm_settings_new (void)
 
   if (G_LIKELY (glade_xml != NULL))
     settings = g_object_new (XFWM_TYPE_SETTINGS, "glade-xml", glade_xml, NULL);
+#if !GLIB_CHECK_VERSION (2,14,0)
+  xfwm_settings_constructed (G_OBJECT(settings));
+#endif
 
   return settings;
 }
@@ -696,7 +720,12 @@ xfwm_settings_load_themes (XfwmSettings *settings)
 
   active_theme_name = xfconf_channel_get_string (settings->priv->wm_channel, "/general/theme", DEFAULT_THEME);
 
+  keys = NULL;
+#if !GLIB_CHECK_VERSION (2,14,0)
+  g_hash_table_foreach (themes, xfwm4_settings_get_list_keys_foreach, &keys);
+#else
   keys = g_hash_table_get_keys (themes);
+#endif
 
   for (key = keys; key != NULL; key = g_list_next (key))
     {
