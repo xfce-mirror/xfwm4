@@ -2449,6 +2449,11 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
         }
         else if (display_info->quit)
         {
+            /* 
+             * Qutting on purpose, update session manager so 
+             * it does not restart the program immediately 
+             */
+            client_session_set_restart_style(display_info->session, SESSION_RESTART_IF_RUNNING);
             gtk_main_quit ();
         }
     }

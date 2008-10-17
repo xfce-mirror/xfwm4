@@ -768,6 +768,7 @@ sessionDie (gpointer data)
     DisplayInfo *display_info;
 
     display_info = (DisplayInfo *) data;
+    client_session_set_restart_style(display_info->session, SESSION_RESTART_IF_RUNNING);    
     display_info->quit = TRUE;
     gtk_main_quit ();
 }
@@ -778,7 +779,7 @@ sessionStart (int argc, char **argv, DisplayInfo *display_info)
     SessionClient *session;
 
     display_info->session = client_session_new (argc, argv, (gpointer) display_info,
-                                                SESSION_RESTART_IF_RUNNING, 20);
+                                                SESSION_RESTART_IMMEDIATELY, 20);
     session = display_info->session;
     session->data = (gpointer) display_info;
     session->save_phase_2 = sessionSavePhase2;

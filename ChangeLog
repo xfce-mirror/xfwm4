@@ -1,5 +1,11 @@
 2008-10-16  olivier
 
+	* src/events.c, src/session.c: Add support for restart style 
+	  SmRestartImmediately now that xfce4-session supports it (requires
+	  libxfcegui4 from r28280 or later).
+
+2008-10-16  olivier
+
 	* settings-dialogs/xfwm4-settings.c: Fix compilation with glib-2.10,
 	  there is no g_hash_table_get_keys() nor constructed method for 
 	  GObjects in glib-2.10.
