@@ -1530,7 +1530,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     if (!XGetWindowAttributes (display_info->dpy, w, &attr))
     {
-        TRACE ("Cannot get window attributes");
+        g_warning ("Cannot get window attributes for window (0x%lx)", w);
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return NULL;
@@ -1539,7 +1539,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     screen_info = myDisplayGetScreenFromRoot (display_info, attr.root);
     if (!screen_info)
     {
-        TRACE ("Cannot determine screen info from windows");
+        g_warning ("Cannot determine screen info from window (0x%lx)", w);
         myDisplayUngrabServer (display_info);
         gdk_error_trap_pop ();
         return NULL;
@@ -1598,6 +1598,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     getWindowName (display_info, c->window, &c->name);
     getWindowHostname (display_info, c->window, &c->hostname);
     getTransientFor (display_info, screen_info->xroot, c->window, &c->transient_for);
+    XChangeSaveSet(display_info->dpy, c->window, SetModeInsert);
 
     /* Initialize structure */
     c->size = NULL;
@@ -1992,6 +1993,8 @@ clientUnframe (Client * c, gboolean remap)
     XUnmapWindow (display_info->dpy, c->frame);
     clientCoordGravitate (c, REMOVE, &c->x, &c->y);
     XSelectInput (display_info->dpy, c->window, NoEventMask);
+    XChangeSaveSet(display_info->dpy, c->window, SetModeDelete);
+
     reparented = XCheckTypedWindowEvent (display_info->dpy, c->window, ReparentNotify, &ev);
 
     if (remap || !reparented)

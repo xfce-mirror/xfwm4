@@ -426,16 +426,6 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_ICON_GEOMETRY];
     atoms[i++] = display_info->atoms[NET_WM_ICON_NAME];
     atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_MOVE];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_BOTTOM];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_KEYBOARD];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_LEFT];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_RIGHT];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOP];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOPLEFT];
-    atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE_SIZE_TOPRIGHT];
     atoms[i++] = display_info->atoms[NET_WM_NAME];
     atoms[i++] = display_info->atoms[NET_WM_PID];
     atoms[i++] = display_info->atoms[NET_WM_PING];

@@ -295,3 +295,33 @@ find_monitor_at_point (GdkScreen *screen, gint x, gint y)
     cache_monitor = nearest_monitor;
     return (nearest_monitor);
 }
+
+gchar*
+get_atom_name (DisplayInfo *display_info, Atom atom)
+{
+    gchar *value;
+    gchar *xname;
+
+    if (atom)
+    {
+        char *xname;
+
+        xname = (gchar *) XGetAtomName (display_info->dpy, atom);
+        if (xname)
+        {
+            value = g_strdup (xname);
+            XFree ((char *) xname);
+        }
+        else
+        {
+            value = g_strdup ("Unknown");
+        }
+    }
+    else
+    {
+        value = g_strdup ("None");
+    }
+
+    return value;
+}
+

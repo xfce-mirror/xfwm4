@@ -268,7 +268,10 @@ clientGetNetState (Client * c)
             }
             else
             {
-                g_warning ("Unmanaged net_wm_state (window 0x%lx)", c->window);
+                gchar *atom_name;
+                atom_name = get_atom_name (display_info, atoms[i]);
+                g_warning ("Unmanaged net_wm_state (window 0x%lx, atom \"%s\")", c->window, atom_name);
+                g_free (atom_name);
             }
 
             ++i;

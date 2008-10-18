@@ -1247,7 +1247,7 @@ handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
 static eventFilterStatus
 handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
 {
-    Client *c = NULL;
+    Client *c;
     XWindowChanges wc;
 
     TRACE ("entering handleConfigureRequest");
@@ -2330,6 +2330,13 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
     return EVENT_FILTER_PASS;
 }
 
+static eventFilterStatus
+handleReparentNotify (DisplayInfo *display_info, XReparentEvent * ev)
+{
+    TRACE ("entering handleReparentNotify, 0x%lx reparented in 0x%lx", ev->window, ev->parent);
+    return EVENT_FILTER_PASS;
+}
+
 #ifdef HAVE_XSYNC
 static eventFilterStatus
 handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
@@ -2428,6 +2435,9 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
         case MappingNotify:
             status = handleMappingNotify (display_info, (XMappingEvent *) ev);
             break;
+        case ReparentNotify:
+            status = handleReparentNotify (display_info, (XReparentEvent *) ev);
+            break;
         default:
             if ((display_info->have_shape) && (ev->type == display_info->shape_event_base))
             {
@@ -2449,9 +2459,9 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
         }
         else if (display_info->quit)
         {
-            /* 
-             * Qutting on purpose, update session manager so 
-             * it does not restart the program immediately 
+            /*
+             * Qutting on purpose, update session manager so
+             * it does not restart the program immediately
              */
             client_session_set_restart_style(display_info->session, SESSION_RESTART_IF_RUNNING);
             gtk_main_quit ();

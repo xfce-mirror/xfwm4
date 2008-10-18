@@ -73,5 +73,7 @@ void                     placeSidewalks                         (ScreenInfo *,
 gint                     find_monitor_at_point                  (GdkScreen *,
                                                                  gint,
                                                                  gint);
+gchar*                   get_atom_name                          (DisplayInfo *,
+                                                                 Atom);
 
 #endif /* INC_MISC_H */
