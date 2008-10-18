@@ -573,7 +573,7 @@
                                     <child>
                                       <widget class="GtkLabel" id="label30">
                                         <property name="visible">True</property>
-                                        <property name="label" translatable="yes">&lt;i&gt;Short&lt;/i&gt;</property>
+                                        <property name="label" translatable="yes" context="yes">Delay|&lt;i&gt;Short&lt;/i&gt;</property>
                                         <property name="use_markup">True</property>
                                       </widget>
                                       <packing>
@@ -596,7 +596,7 @@
                                     <child>
                                       <widget class="GtkLabel" id="label31">
                                         <property name="visible">True</property>
-                                        <property name="label" translatable="yes">&lt;i&gt;Long&lt;/i&gt;</property>
+                                        <property name="label" translatable="yes" context="yes">Delay|&lt;i&gt;Long&lt;/i&gt;</property>
                                         <property name="use_markup">True</property>
                                       </widget>
                                       <packing>
@@ -725,7 +725,7 @@
                                         <child>
                                           <widget class="GtkLabel" id="label20">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Short&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">Delay|&lt;i&gt;Short&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -748,7 +748,7 @@
                                         <child>
                                           <widget class="GtkLabel" id="label21">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Long&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">Delay|&lt;i&gt;Long&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -920,7 +920,7 @@
                                         <child>
                                           <widget class="GtkLabel" id="label11">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Small&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">Distance|&lt;i&gt;Small&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -944,7 +944,7 @@
                                         <child>
                                           <widget class="GtkLabel" id="label12">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Wide&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">Distance|&lt;i&gt;Wide&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -1051,7 +1051,7 @@
                                         <child>
                                           <widget class="GtkLabel" id="label13">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Small&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">Resistance|&lt;i&gt;Small&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -1075,7 +1075,7 @@
                                         <child>
                                           <widget class="GtkLabel" id="label14">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Wide&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">Resistance|&lt;i&gt;Wide&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>

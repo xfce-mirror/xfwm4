@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-08 22:22+0200\n"
+"POT-Creation-Date: 2008-10-18 22:05+0100\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: Mantas Zapolskas <mantaz@users.sf.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -15,8 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: ../helper-dialog/helper-dialog.c:84
+msgid ""
+"This window might be busy and is not responding.\n"
+"Do you want to terminate the application?"
+msgstr ""
+
+#: ../helper-dialog/helper-dialog.c:89
+msgid "Warning"
+msgstr ""
+
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:86
+#: ../src/client.c:182
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
@@ -155,14 +165,24 @@ msgstr "%s: Neįmanoma sužinoti aktyvios spalvos %s\n"
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr ""
 
+#: ../src/terminate.c:74
+#, c-format
+msgid "Error reading data from child process: %s\n"
+msgstr ""
+
+#: ../src/terminate.c:122
+#, c-format
+msgid "Cannot spawn helper-dialog: %s\n"
+msgstr ""
+
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 #, fuzzy
 msgid "Configure window behavior"
 msgstr "Keičiant lango dydį rodyti jo turinį"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Window Manager"
 msgstr "Langų tvarkyklė"
 
@@ -177,13 +197,13 @@ msgid "Xfce 4 Window Manager Settings"
 msgstr "Langų tvarkyklė"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 #, fuzzy
 msgid "Advanced window manager settings"
 msgstr "Langų tvarkyklė"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Langų tvarkyklė"
@@ -194,13 +214,13 @@ msgid "Xfce 4 Window Manager Tweaks"
 msgstr "Langų tvarkyklė"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 #, fuzzy
 msgid "Set number and names of workspaces"
 msgstr "Darbo vietų skaičius:"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "Workspaces"
 msgstr "Darbo laukai"
 
@@ -214,355 +234,197 @@ msgstr "Darbo vietos paraštės"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Darbo vietos paraštės"
 
-#: ../settings-dialogs/frap-shortcuts.c:84
-#, c-format
+#: ../settings-dialogs/frap-shortcuts.c:92
 msgid ""
-"This shortcut is already being used by the window manager action <b>%s</b>. "
+"This shortcut is already being used by <b>another window manager action</b>. "
 "Which action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:85
-#: ../settings-dialogs/frap-shortcuts.c:88
-#: ../settings-dialogs/frap-shortcuts.c:91
-#: ../settings-dialogs/frap-shortcuts.c:94
-#, c-format
-msgid "Use %s"
+#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:96
+msgid "Use this action"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:85
-#: ../settings-dialogs/frap-shortcuts.c:88
-#: ../settings-dialogs/frap-shortcuts.c:91
-#, c-format
-msgid "Keep %s"
+#: ../settings-dialogs/frap-shortcuts.c:93
+msgid "Keep the other one"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:87
-#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:95
+#: ../settings-dialogs/frap-shortcuts.c:98
 #, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
 "do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:96
+#: ../settings-dialogs/frap-shortcuts.c:99
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:99
+#: ../settings-dialogs/frap-shortcuts.c:102
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:101
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
 "action do you want to use?"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:94
+#: ../settings-dialogs/frap-shortcuts.c:102
 #, fuzzy
-msgid "Keep window manager action"
+msgid "Keep the window manager action"
 msgstr "Langų tvarkyklė"
 
-#: ../settings-dialogs/frap-shortcuts.c:249
+#: ../settings-dialogs/frap-shortcuts.c:134
+#: ../settings-dialogs/frap-shortcuts.c:141
 #, c-format
-msgid "%s shortcut conflict"
+msgid "Conflicting actions for %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:257
-msgid "Use this action"
+#: ../settings-dialogs/frap-shortcuts.c:173
+msgid "The shortcut is already being used for something else."
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:260
-msgid "Shortcut conflict"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts.c:281
-#, c-format
-msgid "The shortcut '%s' is already being used for something else."
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:236
+#: ../settings-dialogs/frap-shortcuts-dialog.c:239
 #, fuzzy
 msgid "Enter window manager action shortcut"
 msgstr "Langų tvarkyklė"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:237
-#: ../settings-dialogs/frap-shortcuts-dialog.c:247
+#: ../settings-dialogs/frap-shortcuts-dialog.c:240
+#: ../settings-dialogs/frap-shortcuts-dialog.c:250
 #, fuzzy, c-format
 msgid "Action: %s"
 msgstr "Aktyvus"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:241
+#: ../settings-dialogs/frap-shortcuts-dialog.c:244
 msgid "Enter command shortcut"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:242
+#: ../settings-dialogs/frap-shortcuts-dialog.c:245
 #, fuzzy, c-format
 msgid "Command: %s"
 msgstr "Komanda"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:246
+#: ../settings-dialogs/frap-shortcuts-dialog.c:249
 #, fuzzy
 msgid "Enter shortcut"
 msgstr "Klaviatūros nuoroda"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:277
+#: ../settings-dialogs/frap-shortcuts-dialog.c:280
 #, fuzzy
 msgid "Shortcut:"
 msgstr "Klaviatūros nuoroda"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:321
+#: ../settings-dialogs/frap-shortcuts-dialog.c:324
 msgid "Could not grab the keyboard."
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:342
+#: ../settings-dialogs/frap-shortcuts-dialog.c:345
 #, c-format
 msgid "<span size='large'><b>%s</b></span>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:86
-#: ../settings-dialogs/xfwm4-settings.c:116
+#: ../settings-dialogs/xfwm4-settings.c:182
 msgid "Shade window"
 msgstr "Uždengti langą"
 
-#: ../settings-dialogs/xfwm4-settings.c:87
-#: ../settings-dialogs/xfwm4-settings.c:113
+#: ../settings-dialogs/xfwm4-settings.c:183
 msgid "Hide window"
 msgstr "Paslėpti langą"
 
-#: ../settings-dialogs/xfwm4-settings.c:88
-#: ../settings-dialogs/xfwm4-settings.c:112
+#: ../settings-dialogs/xfwm4-settings.c:184
 msgid "Maximize window"
 msgstr "išskleisti langą"
 
-#: ../settings-dialogs/xfwm4-settings.c:89
-#: ../settings-dialogs/xfwm4-settings.c:120
+#: ../settings-dialogs/xfwm4-settings.c:185
 #, fuzzy
 msgid "Fill window"
 msgstr "Paslėpti langą"
 
-#: ../settings-dialogs/xfwm4-settings.c:90
+#: ../settings-dialogs/xfwm4-settings.c:186
 msgid "Nothing"
 msgstr "Nieko"
 
-#: ../settings-dialogs/xfwm4-settings.c:95
-#: ../settings-dialogs/xfwm4-settings.c:105
+#: ../settings-dialogs/xfwm4-settings.c:191
 msgid "Left"
 msgstr "Kairė"
 
-#: ../settings-dialogs/xfwm4-settings.c:96
+#: ../settings-dialogs/xfwm4-settings.c:192
 msgid "Center"
 msgstr "Centras"
 
-#: ../settings-dialogs/xfwm4-settings.c:97
-#: ../settings-dialogs/xfwm4-settings.c:106
+#: ../settings-dialogs/xfwm4-settings.c:193
 msgid "Right"
 msgstr "Dešinė"
 
-#: ../settings-dialogs/xfwm4-settings.c:102
-msgid "Window operations menu"
+#: ../settings-dialogs/xfwm4-settings.c:201
+#: ../settings-dialogs/workspace-settings.c:369
+msgid "Settings manager socket"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:103
-msgid "Up"
+#: ../settings-dialogs/xfwm4-settings.c:201
+#: ../settings-dialogs/tweaks-settings.c:396
+#: ../settings-dialogs/workspace-settings.c:369
+msgid "SOCKET ID"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:104
-msgid "Down"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:107
-msgid "Cancel"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:108
-#, fuzzy
-msgid "Cycle windows"
-msgstr "Paslėpti langą"
-
-#: ../settings-dialogs/xfwm4-settings.c:109
-msgid "Close window"
-msgstr "Paslėpti langą"
-
-#: ../settings-dialogs/xfwm4-settings.c:110
-msgid "Maximize window horizontally"
-msgstr "Išskleisti langą horizontaliai"
-
-#: ../settings-dialogs/xfwm4-settings.c:111
-msgid "Maximize window vertically"
-msgstr "Išskleisti langą vertikaliai"
-
-#: ../settings-dialogs/xfwm4-settings.c:114
-#, fuzzy
-msgid "Move window"
-msgstr "Naujas langas dėmesio centre"
-
-#: ../settings-dialogs/xfwm4-settings.c:115
-#, fuzzy
-msgid "Resize window"
-msgstr "Paslėpti langą"
-
-#: ../settings-dialogs/xfwm4-settings.c:117
-msgid "Stick window"
-msgstr "Priklijuoti langą"
-
-#: ../settings-dialogs/xfwm4-settings.c:118
-msgid "Raise window"
-msgstr "Iškelti langą"
-
-#: ../settings-dialogs/xfwm4-settings.c:119
-#, fuzzy
-msgid "Lower window"
-msgstr "Paslėpti langą"
-
-#: ../settings-dialogs/xfwm4-settings.c:121
-#, fuzzy
-msgid "Fill window horizontally"
-msgstr "Išskleisti langą horizontaliai"
-
-#: ../settings-dialogs/xfwm4-settings.c:122
-#, fuzzy
-msgid "Fill window vertically"
-msgstr "Išskleisti langą vertikaliai"
-
-#: ../settings-dialogs/xfwm4-settings.c:123
-msgid "Toggle above"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:124
-#, fuzzy
-msgid "Toggle fullscreen"
-msgstr "Neįmanoma gauti pagrindinio ekrano"
-
-#: ../settings-dialogs/xfwm4-settings.c:125
-#, fuzzy
-msgid "Move window to upper workspace"
-msgstr "Naujas langas dėmesio centre"
-
-#: ../settings-dialogs/xfwm4-settings.c:126
-#, fuzzy
-msgid "Move window to bottom workspace"
-msgstr "Naujas langas dėmesio centre"
-
-#: ../settings-dialogs/xfwm4-settings.c:127
-#, fuzzy
-msgid "Move window to left workspace"
-msgstr "Naujas langas dėmesio centre"
-
-#: ../settings-dialogs/xfwm4-settings.c:128
-#, fuzzy
-msgid "Move window to right workspace"
-msgstr "Naujas langas dėmesio centre"
-
-#: ../settings-dialogs/xfwm4-settings.c:129
-#, fuzzy
-msgid "Move window to previous workspace"
-msgstr "Laužyti darbo vietas"
-
-#: ../settings-dialogs/xfwm4-settings.c:130
-#, fuzzy
-msgid "Move window to next workspace"
-msgstr "Naujas langas dėmesio centre"
-
-#: ../settings-dialogs/xfwm4-settings.c:131
-msgid "Show desktop"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:132
-#, fuzzy
-msgid "Upper workspace"
-msgstr "Laužyti darbo vietas"
-
-#: ../settings-dialogs/xfwm4-settings.c:133
-#, fuzzy
-msgid "Bottom workspace"
-msgstr "Laužyti darbo vietas"
-
-#: ../settings-dialogs/xfwm4-settings.c:134
-#, fuzzy
-msgid "Left workspace"
-msgstr "Laužyti darbo vietas"
-
-#: ../settings-dialogs/xfwm4-settings.c:135
-#, fuzzy
-msgid "Right workspace"
-msgstr "Laužyti darbo vietas"
-
-#: ../settings-dialogs/xfwm4-settings.c:136
-#, fuzzy
-msgid "Previous workspace"
-msgstr "Laužyti darbo vietas"
-
-#: ../settings-dialogs/xfwm4-settings.c:137
-#, fuzzy
-msgid "Next workspace"
-msgstr "Laužyti darbo vietas"
-
-#: ../settings-dialogs/xfwm4-settings.c:138
-msgid "Add workspace"
-msgstr "Pridėti darbo lauką"
-
-#: ../settings-dialogs/xfwm4-settings.c:139
-#, fuzzy
-msgid "Add adjacent workspace"
-msgstr "Pridėti darbo lauką"
-
-#: ../settings-dialogs/xfwm4-settings.c:140
-#, fuzzy
-msgid "Delete last workspace"
-msgstr "Panaikinti Darbo lauką"
-
-#: ../settings-dialogs/xfwm4-settings.c:141
-#, fuzzy
-msgid "Delete active workspace"
-msgstr "Panaikinti Darbo lauką"
-
-#: ../settings-dialogs/xfwm4-settings.c:475
-msgid "Theme"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:489
-#, fuzzy
-msgid "Action"
-msgstr "Aktyvus"
-
-#: ../settings-dialogs/xfwm4-settings.c:491
-#, fuzzy
-msgid "Shortcut"
-msgstr "Klaviatūros nuoroda"
-
-#: ../settings-dialogs/xfwm4-settings.c:551
-#: ../settings-dialogs/tweaks-settings.c:338
-#: ../settings-dialogs/workspace-settings.c:67
+#: ../settings-dialogs/xfwm4-settings.c:203
+#: ../settings-dialogs/tweaks-settings.c:397
+#: ../settings-dialogs/workspace-settings.c:370
 msgid "Version information"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:570
-#: ../settings-dialogs/tweaks-settings.c:357
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:355
+msgid "Theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:791
+#: ../settings-dialogs/tweaks-settings.c:414
+#: ../settings-dialogs/workspace-settings.c:387
 msgid "."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:574
-#: ../settings-dialogs/tweaks-settings.c:361
-#: ../settings-dialogs/workspace-settings.c:91
+#: ../settings-dialogs/xfwm4-settings.c:795
+#: ../settings-dialogs/tweaks-settings.c:418
+#: ../settings-dialogs/workspace-settings.c:391
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "<i>Large</i>"
+#: ../settings-dialogs/xfwm4-settings.c:813
+#, c-format
+msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-settings.c:824
+msgid "Could not create the settings dialog."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
-msgid "<i>Small</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "<i>Transparent</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "Activate _focus stealing prevention"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "At the _center of the screen"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "By default, place windows:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
@@ -597,157 +459,227 @@ msgid "Honor _standard ICCCM focus hint"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Key used to _grab and move windows:"
+msgid "Keep urgent windows blinking"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "Key used to _grab and move windows:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 #, fuzzy
 msgid "Opaci_ty of window decorations:"
 msgstr "Keičiant lango dydį rodyti jo turinį"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 #, fuzzy
 msgid "Opacity of _inactive windows:"
 msgstr "Perkeliant langą rodyti jo turinį"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 #, fuzzy
 msgid "Opacity of popup window_s:"
 msgstr "Perkeliant langą rodyti jo turinį"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 #, fuzzy
 msgid "Opacity of windows during _move:"
 msgstr "Perkeliant langą rodyti jo turinį"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
 msgid "Opacity of windows during resi_ze:"
 msgstr "Keičiant lango dydį rodyti jo turinį"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 #, fuzzy
 msgid "Restore original _size of maximized windows when moving"
 msgstr "Perkeliant langą rodyti jo turinį"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Show shadows under _dock windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Show shadows under _regular windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Show shadows under pop_up windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Size|<i>Large</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#, fuzzy
+msgid "Size|<i>Small</i>"
+msgstr "Mažas"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 #, fuzzy
 msgid "Switch to win_dow's workspace"
 msgstr "Perkelti langą į darbo lauką 1"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Use _edge resistance instead of window snapping"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "When a window raises itself:"
-msgstr ""
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid "Wrap workspaces depending on the actual desktop _layout"
+msgid "Under the mouse _pointer"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+msgid "Use _edge resistance instead of window snapping"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+msgid "When a window raises itself:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 #, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Accessibility"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 #, fuzzy
 msgid "_Bring window on current workspace"
 msgstr "Naujas langas dėmesio centre"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "_Draw frame around selected windows while cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Enable display compositing"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
 msgid "_Focus"
 msgstr "Fokusavimas"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Mouse wheel over desktop switches workspaces"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 #, fuzzy
 msgid "_Workspaces"
 msgstr "Darbo laukai"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "gtk-close"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "gtk-help"
 msgstr ""
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#, fuzzy
+msgid "<b>Margins</b>"
+msgstr "Paraštės"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#, fuzzy
+msgid "<b>Workspaces</b>"
+msgstr "Laužyti darbo vietas"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#, fuzzy
+msgid "Change Workspace Name"
+msgstr "Darbo vietos pavadinimai"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Paraštės yra ekrano kraštų vietos, kuriose langai negali būti padėti"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
+#, fuzzy
+msgid "_Name:"
+msgstr "Pavadinimas:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 #, fuzzy
 msgid "_Number of workspaces:"
 msgstr "Darbo vietų skaičius:"
 
-#: ../settings-dialogs/tweaks-settings.c:156
-msgid "Alt"
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
+msgid "gtk-cancel"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:158
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
+msgid "gtk-save"
+msgstr ""
+
+#: ../settings-dialogs/tweaks-settings.c:42
+msgid "None"
+msgstr ""
+
+#: ../settings-dialogs/tweaks-settings.c:396
+msgid "Session manager socket"
+msgstr ""
+
+#: ../settings-dialogs/workspace-settings.c:72
+#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:148
+#, c-format
+msgid "Workspace %d"
+msgstr "Darbo laukas %i"
+
+#: ../settings-dialogs/workspace-settings.c:134
+#, fuzzy, c-format
+msgid "Change the name of workspace %d"
+msgstr "Darbo vietų skaičius:"
+
+#: ../settings-dialogs/workspace-settings.c:275
 #, fuzzy
-msgid "Ctrl"
-msgstr "Centras"
+msgid "Workspace Name"
+msgstr "Darbo vietos pavadinimai"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "\t"
+msgid "  "
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
@@ -811,62 +743,68 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "Laužyti darbo vietas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-msgid "<i>Long</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "<i>Short</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-msgid "<i>Wide</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Active"
 msgstr "Aktyvus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
 #, fuzzy
 msgid "Ad_vanced"
 msgstr "Išplėstas"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 #, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr ""
 "Automatiškai iškelti langus\n"
 "kai jie dėmesio centre"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr ""
 "Atomatiškai sutelkti dėmesį \n"
 "į naujai sukurtus langus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "Spauskite norėdami fokusuoti"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "Paskauskite ir tempkite norėdami pakeisti išdėstymą"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Close"
 msgstr "Uždaryti"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Delay|<i>Long</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "Delay|<i>Short</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 #, fuzzy
 msgid "Dis_tance:"
+msgstr "Atstumas :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#, fuzzy
+msgid "Distance|<i>Small</i>"
+msgstr "Atstumas :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#, fuzzy
+msgid "Distance|<i>Wide</i>"
 msgstr "Atstumas :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
@@ -913,64 +851,200 @@ msgstr ""
 "programos lango"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#, fuzzy
+msgid "Resistance|<i>Small</i>"
+msgstr "Atstumas :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#, fuzzy
+msgid "Resistance|<i>Wide</i>"
+msgstr "Atstumas :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Shade"
 msgstr "Šešėlis"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "Pritraukti langus prie kitų langų"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "Užsklęsti langą į ekrano sieną"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Stick"
 msgstr "Prisegti"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The window title, it cannot be removed"
 msgstr "Lango antraštė, ji negali būti pašalinta"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "Laužyti darbo vietas kai tempiamas langas yra už ekrano"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "Kraštų atsparumas :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "_Reset to defaults"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #, fuzzy
 msgid "_Style"
 msgstr "Stilius"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "gtk-clear"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+msgid "gtk-revert-to-saved"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+msgid "gtk-select-all"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Cycle windows"
+#~ msgstr "Paslėpti langą"
+
+#~ msgid "Close window"
+#~ msgstr "Paslėpti langą"
+
+#~ msgid "Maximize window horizontally"
+#~ msgstr "Išskleisti langą horizontaliai"
+
+#~ msgid "Maximize window vertically"
+#~ msgstr "Išskleisti langą vertikaliai"
+
+#, fuzzy
+#~ msgid "Move window"
+#~ msgstr "Naujas langas dėmesio centre"
+
+#, fuzzy
+#~ msgid "Resize window"
+#~ msgstr "Paslėpti langą"
+
+#~ msgid "Stick window"
+#~ msgstr "Priklijuoti langą"
+
+#~ msgid "Raise window"
+#~ msgstr "Iškelti langą"
+
+#, fuzzy
+#~ msgid "Lower window"
+#~ msgstr "Paslėpti langą"
+
+#, fuzzy
+#~ msgid "Fill window horizontally"
+#~ msgstr "Išskleisti langą horizontaliai"
+
+#, fuzzy
+#~ msgid "Fill window vertically"
+#~ msgstr "Išskleisti langą vertikaliai"
+
+#, fuzzy
+#~ msgid "Toggle fullscreen"
+#~ msgstr "Neįmanoma gauti pagrindinio ekrano"
+
+#, fuzzy
+#~ msgid "Move window to upper workspace"
+#~ msgstr "Naujas langas dėmesio centre"
+
+#, fuzzy
+#~ msgid "Move window to bottom workspace"
+#~ msgstr "Naujas langas dėmesio centre"
+
+#, fuzzy
+#~ msgid "Move window to left workspace"
+#~ msgstr "Naujas langas dėmesio centre"
+
+#, fuzzy
+#~ msgid "Move window to right workspace"
+#~ msgstr "Naujas langas dėmesio centre"
+
+#, fuzzy
+#~ msgid "Move window to previous workspace"
+#~ msgstr "Laužyti darbo vietas"
+
+#, fuzzy
+#~ msgid "Move window to next workspace"
+#~ msgstr "Naujas langas dėmesio centre"
+
+#, fuzzy
+#~ msgid "Upper workspace"
+#~ msgstr "Laužyti darbo vietas"
+
+#, fuzzy
+#~ msgid "Bottom workspace"
+#~ msgstr "Laužyti darbo vietas"
+
+#, fuzzy
+#~ msgid "Left workspace"
+#~ msgstr "Laužyti darbo vietas"
+
+#, fuzzy
+#~ msgid "Right workspace"
+#~ msgstr "Laužyti darbo vietas"
+
+#, fuzzy
+#~ msgid "Previous workspace"
+#~ msgstr "Laužyti darbo vietas"
+
+#, fuzzy
+#~ msgid "Next workspace"
+#~ msgstr "Laužyti darbo vietas"
+
+#~ msgid "Add workspace"
+#~ msgstr "Pridėti darbo lauką"
+
+#, fuzzy
+#~ msgid "Add adjacent workspace"
+#~ msgstr "Pridėti darbo lauką"
+
+#, fuzzy
+#~ msgid "Delete last workspace"
+#~ msgstr "Panaikinti Darbo lauką"
+
+#, fuzzy
+#~ msgid "Delete active workspace"
+#~ msgstr "Panaikinti Darbo lauką"
+
+#, fuzzy
+#~ msgid "Action"
+#~ msgstr "Aktyvus"
+
+#, fuzzy
+#~ msgid "Shortcut"
+#~ msgstr "Klaviatūros nuoroda"
+
+#, fuzzy
+#~ msgid "Ctrl"
+#~ msgstr "Centras"
 
 #, fuzzy
 #~ msgid "Button"
@@ -996,12 +1070,6 @@ msgstr "Stilius"
 #~ msgid "Workspace Margins"
 #~ msgstr "Darbo vietos paraštės"
 
-#~ msgid ""
-#~ "Margins are areas on the edges of the screen where no window will be "
-#~ "placed"
-#~ msgstr ""
-#~ "Paraštės yra ekrano kraštų vietos, kuriose langai negali būti padėti"
-
 #~ msgid "Left :"
 #~ msgstr "Kairė"
 
@@ -1021,13 +1089,6 @@ msgstr "Stilius"
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Darbo vietos ir paraštės"
 
-#~ msgid "Margins"
-#~ msgstr "Paraštės"
-
-#, fuzzy
-#~ msgid "Size|Small"
-#~ msgstr "Mažas"
-
 #, fuzzy
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Langų tvarkyklė"
@@ -1035,17 +1096,8 @@ msgstr "Stilius"
 #~ msgid "Change name"
 #~ msgstr "Pakeisti pavadinimą"
 
-#~ msgid "Workspace %d"
-#~ msgstr "Darbo laukas %i"
-
-#~ msgid "Name:"
-#~ msgstr "Pavadinimas:"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Spauskite ant darbalaukio norėdami pakeisti pavadinimą"
-
-#~ msgid "Workspace names"
-#~ msgstr "Darbo vietos pavadinimai"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Šrifto pasirinkimo dialogas"
@@ -1058,22 +1110,6 @@ msgstr "Stilius"
 
 #~ msgid "Fast"
 #~ msgstr "Greitai"
-
-#, fuzzy
-#~ msgid "Distance|Small"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Distance|Wide"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Resistance|Small"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Resistance|Wide"
-#~ msgstr "Atstumas :"
 
 #, fuzzy
 #~ msgid "Button Label|Window Manager"

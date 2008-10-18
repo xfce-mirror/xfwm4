@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-08 22:22+0200\n"
+"POT-Creation-Date: 2008-10-18 22:05+0100\n"
 "PO-Revision-Date: 2007-01-05 23:06+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -22,8 +22,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "\n"
 
+#: ../helper-dialog/helper-dialog.c:84
+msgid ""
+"This window might be busy and is not responding.\n"
+"Do you want to terminate the application?"
+msgstr ""
+
+#: ../helper-dialog/helper-dialog.c:89
+msgid "Warning"
+msgstr ""
+
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/hints.c:86
+#: ../src/client.c:182
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (%s ਉੱਤੇ)"
@@ -162,14 +172,24 @@ msgstr "%s: ਰੰਗ %s ਪਾਰਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦ
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr ""
 
+#: ../src/terminate.c:74
+#, c-format
+msgid "Error reading data from child process: %s\n"
+msgstr ""
+
+#: ../src/terminate.c:122
+#, c-format
+msgid "Cannot spawn helper-dialog: %s\n"
+msgstr ""
+
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 #, fuzzy
 msgid "Configure window behavior"
 msgstr "ਵਿੰਡੋ ਐਕਸ਼ਨ ਰੱਦ ਕਰੋ"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Window Manager"
 msgstr "ਵਿੰਡੋ ਪ੍ਰਬੰਧਕ"
 
@@ -182,13 +202,13 @@ msgid "Xfce 4 Window Manager Settings"
 msgstr "Xfce 4 ਵਿੰਡੋ ਮੈਨੇਜਰ ਸੈਟਿੰਗ"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 #, fuzzy
 msgid "Advanced window manager settings"
 msgstr "Xfce 4 ਵਿੰਡੋ ਮੈਨੇਜਰ ਸੈਟਿੰਗ"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Window Manager Tweaks"
 msgstr "ਵਿੰਡੋ ਮੈਨੇਜਰ ਟਵੀਕ"
 
@@ -197,13 +217,13 @@ msgid "Xfce 4 Window Manager Tweaks"
 msgstr "Xfce 4 ਵਿੰਡੋ ਮੈਨੇਜਰ ਟਵੀਕ"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 #, fuzzy
 msgid "Set number and names of workspaces"
 msgstr "ਅਖਾੜਿਆਂ ਦੀ ਗਿਣਤੀ:"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "Workspaces"
 msgstr "ਵਰਕਸਪੇਸ"
 
@@ -215,30 +235,26 @@ msgstr "ਵਰਕਸਪੇਸ ਸੈਟਿੰਗ"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 ਵਰਕਸਪੇਸ ਸੈਟਿੰਗ"
 
-#: ../settings-dialogs/frap-shortcuts.c:84
-#, c-format
+#: ../settings-dialogs/frap-shortcuts.c:92
+#, fuzzy
 msgid ""
-"This shortcut is already being used by the window manager action <b>%s</b>. "
+"This shortcut is already being used by <b>another window manager action</b>. "
 "Which action do you want to use?"
 msgstr ""
+"ਸ਼ਾਰਟਕੱਟ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਹੈ !\n"
+" ਕੀ ਤੁਸੀ ਯਕੀਨਨ ਇਸ ਨੂੰ ਵਰਤਣਾ ਚਾਹੁੰਦੇ ਹੋ ?"
 
-#: ../settings-dialogs/frap-shortcuts.c:85
-#: ../settings-dialogs/frap-shortcuts.c:88
-#: ../settings-dialogs/frap-shortcuts.c:91
-#: ../settings-dialogs/frap-shortcuts.c:94
-#, c-format
-msgid "Use %s"
+#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:96
+msgid "Use this action"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:85
-#: ../settings-dialogs/frap-shortcuts.c:88
-#: ../settings-dialogs/frap-shortcuts.c:91
-#, c-format
-msgid "Keep %s"
+#: ../settings-dialogs/frap-shortcuts.c:93
+msgid "Keep the other one"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:87
-#: ../settings-dialogs/frap-shortcuts.c:90
+#: ../settings-dialogs/frap-shortcuts.c:95
+#: ../settings-dialogs/frap-shortcuts.c:98
 #, fuzzy, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
@@ -247,7 +263,19 @@ msgstr ""
 "ਸ਼ਾਰਟਕੱਟ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਹੈ !\n"
 " ਕੀ ਤੁਸੀ ਯਕੀਨਨ ਇਸ ਨੂੰ ਵਰਤਣਾ ਚਾਹੁੰਦੇ ਹੋ ?"
 
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:96
+#: ../settings-dialogs/frap-shortcuts.c:99
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:99
+#: ../settings-dialogs/frap-shortcuts.c:102
+#, c-format
+msgid "Use %s"
+msgstr ""
+
+#: ../settings-dialogs/frap-shortcuts.c:101
 #, fuzzy
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
@@ -256,308 +284,163 @@ msgstr ""
 "ਸ਼ਾਰਟਕੱਟ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਹੈ !\n"
 " ਕੀ ਤੁਸੀ ਯਕੀਨਨ ਇਸ ਨੂੰ ਵਰਤਣਾ ਚਾਹੁੰਦੇ ਹੋ ?"
 
-#: ../settings-dialogs/frap-shortcuts.c:94
+#: ../settings-dialogs/frap-shortcuts.c:102
 #, fuzzy
-msgid "Keep window manager action"
+msgid "Keep the window manager action"
 msgstr "Xfce 4 ਵਿੰਡੋ ਮੈਨੇਜਰ ਸੈਟਿੰਗ"
 
-#: ../settings-dialogs/frap-shortcuts.c:249
+#: ../settings-dialogs/frap-shortcuts.c:134
+#: ../settings-dialogs/frap-shortcuts.c:141
 #, c-format
-msgid "%s shortcut conflict"
+msgid "Conflicting actions for %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:257
-msgid "Use this action"
+#: ../settings-dialogs/frap-shortcuts.c:173
+#, fuzzy
+msgid "The shortcut is already being used for something else."
 msgstr ""
+"ਸ਼ਾਰਟਕੱਟ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਹੈ !\n"
+" ਕੀ ਤੁਸੀ ਯਕੀਨਨ ਇਸ ਨੂੰ ਵਰਤਣਾ ਚਾਹੁੰਦੇ ਹੋ ?"
 
-#: ../settings-dialogs/frap-shortcuts.c:260
-msgid "Shortcut conflict"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts.c:281
-#, c-format
-msgid "The shortcut '%s' is already being used for something else."
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:236
+#: ../settings-dialogs/frap-shortcuts-dialog.c:239
 #, fuzzy
 msgid "Enter window manager action shortcut"
 msgstr "Xfce 4 ਵਿੰਡੋ ਮੈਨੇਜਰ ਸੈਟਿੰਗ"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:237
-#: ../settings-dialogs/frap-shortcuts-dialog.c:247
+#: ../settings-dialogs/frap-shortcuts-dialog.c:240
+#: ../settings-dialogs/frap-shortcuts-dialog.c:250
 #, fuzzy, c-format
 msgid "Action: %s"
 msgstr "ਸਰਗਰਮ"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:241
+#: ../settings-dialogs/frap-shortcuts-dialog.c:244
 msgid "Enter command shortcut"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:242
+#: ../settings-dialogs/frap-shortcuts-dialog.c:245
 #, fuzzy, c-format
 msgid "Command: %s"
 msgstr "ਕਮਾਂਡ"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:246
+#: ../settings-dialogs/frap-shortcuts-dialog.c:249
 #, fuzzy
 msgid "Enter shortcut"
 msgstr "ਕੋਈ ਸ਼ਾਰਟਕੱਟ ਨਹੀਂ"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:277
+#: ../settings-dialogs/frap-shortcuts-dialog.c:280
 #, fuzzy
 msgid "Shortcut:"
 msgstr "ਕੋਈ ਸ਼ਾਰਟਕੱਟ ਨਹੀਂ"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:321
+#: ../settings-dialogs/frap-shortcuts-dialog.c:324
 msgid "Could not grab the keyboard."
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:342
+#: ../settings-dialogs/frap-shortcuts-dialog.c:345
 #, c-format
 msgid "<span size='large'><b>%s</b></span>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:86
-#: ../settings-dialogs/xfwm4-settings.c:116
+#: ../settings-dialogs/xfwm4-settings.c:182
 msgid "Shade window"
 msgstr "ਵਿੰਡੋ ਛਾਂ"
 
-#: ../settings-dialogs/xfwm4-settings.c:87
-#: ../settings-dialogs/xfwm4-settings.c:113
+#: ../settings-dialogs/xfwm4-settings.c:183
 msgid "Hide window"
 msgstr "ਵਿੰਡੋ ਓਹਲੇ"
 
-#: ../settings-dialogs/xfwm4-settings.c:88
-#: ../settings-dialogs/xfwm4-settings.c:112
+#: ../settings-dialogs/xfwm4-settings.c:184
 msgid "Maximize window"
 msgstr "ਵਿੰਡੋ ਅਧਿਕਤਮ"
 
-#: ../settings-dialogs/xfwm4-settings.c:89
-#: ../settings-dialogs/xfwm4-settings.c:120
+#: ../settings-dialogs/xfwm4-settings.c:185
 #, fuzzy
 msgid "Fill window"
 msgstr "ਵਿੰਡੋ ਓਹਲੇ"
 
-#: ../settings-dialogs/xfwm4-settings.c:90
+#: ../settings-dialogs/xfwm4-settings.c:186
 msgid "Nothing"
 msgstr "ਕੁਝ ਨਹੀਂ"
 
-#: ../settings-dialogs/xfwm4-settings.c:95
-#: ../settings-dialogs/xfwm4-settings.c:105
+#: ../settings-dialogs/xfwm4-settings.c:191
 msgid "Left"
 msgstr "ਖੱਬਾ"
 
-#: ../settings-dialogs/xfwm4-settings.c:96
+#: ../settings-dialogs/xfwm4-settings.c:192
 msgid "Center"
 msgstr "ਕੇਂਦਰੀ"
 
-#: ../settings-dialogs/xfwm4-settings.c:97
-#: ../settings-dialogs/xfwm4-settings.c:106
+#: ../settings-dialogs/xfwm4-settings.c:193
 msgid "Right"
 msgstr "ਸੱਜਾ"
 
-#: ../settings-dialogs/xfwm4-settings.c:102
-msgid "Window operations menu"
-msgstr "ਵਿੰਡੋ ਓਪਰੇਸ਼ਨ ਮੇਨੂ"
-
-#: ../settings-dialogs/xfwm4-settings.c:103
-msgid "Up"
+#: ../settings-dialogs/xfwm4-settings.c:201
+#: ../settings-dialogs/workspace-settings.c:369
+msgid "Settings manager socket"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:104
-msgid "Down"
+#: ../settings-dialogs/xfwm4-settings.c:201
+#: ../settings-dialogs/tweaks-settings.c:396
+#: ../settings-dialogs/workspace-settings.c:369
+msgid "SOCKET ID"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:107
-msgid "Cancel"
-msgstr "ਰੱਦ ਕਰੋ"
-
-#: ../settings-dialogs/xfwm4-settings.c:108
-msgid "Cycle windows"
-msgstr "ਵਿੰਡੋ ਸਾਇਕਲ"
-
-#: ../settings-dialogs/xfwm4-settings.c:109
-msgid "Close window"
-msgstr "ਵਿੰਡੋ ਬੰਦ"
-
-#: ../settings-dialogs/xfwm4-settings.c:110
-msgid "Maximize window horizontally"
-msgstr "ਵਿੰਡੋ ਖਤਿਜੀ ਅਧਿਕਤਮ"
-
-#: ../settings-dialogs/xfwm4-settings.c:111
-msgid "Maximize window vertically"
-msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
-
-#: ../settings-dialogs/xfwm4-settings.c:114
-#, fuzzy
-msgid "Move window"
-msgstr "ਵਿੰਡੋ ਉੱਪਰ ਹਿਲਾਓ"
-
-#: ../settings-dialogs/xfwm4-settings.c:115
-#, fuzzy
-msgid "Resize window"
-msgstr "ਵਿੰਡੋ ਉੱਪਰ ਮੁੜ ਆਕਾਰ"
-
-#: ../settings-dialogs/xfwm4-settings.c:117
-msgid "Stick window"
-msgstr "ਉੱਭਰਿਆ ਵਿੰਡੋ"
-
-#: ../settings-dialogs/xfwm4-settings.c:118
-msgid "Raise window"
-msgstr "ਵਿੰਡੋ ਪੇਸ਼ਗੀ"
-
-#: ../settings-dialogs/xfwm4-settings.c:119
-msgid "Lower window"
-msgstr "ਹੇਠਲਾ ਵਿੰਡੋ"
-
-#: ../settings-dialogs/xfwm4-settings.c:121
-#, fuzzy
-msgid "Fill window horizontally"
-msgstr "ਵਿੰਡੋ ਖਤਿਜੀ ਅਧਿਕਤਮ"
-
-#: ../settings-dialogs/xfwm4-settings.c:122
-#, fuzzy
-msgid "Fill window vertically"
-msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
-
-#: ../settings-dialogs/xfwm4-settings.c:123
-msgid "Toggle above"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:124
-msgid "Toggle fullscreen"
-msgstr "ਪੂਰਾ-ਪਰਦਾ ਲਿਆਓ"
-
-#: ../settings-dialogs/xfwm4-settings.c:125
-msgid "Move window to upper workspace"
-msgstr "ਵਿੰਡੋ ਉੱਪਰਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
-
-#: ../settings-dialogs/xfwm4-settings.c:126
-msgid "Move window to bottom workspace"
-msgstr "ਵਿੰਡੋ ਹੇਠਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
-
-#: ../settings-dialogs/xfwm4-settings.c:127
-msgid "Move window to left workspace"
-msgstr "ਵਿੰਡੋ ਖੱਬੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
-
-#: ../settings-dialogs/xfwm4-settings.c:128
-msgid "Move window to right workspace"
-msgstr "ਵਿੰਡੋ ਸੱਜੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
-
-#: ../settings-dialogs/xfwm4-settings.c:129
-msgid "Move window to previous workspace"
-msgstr "ਵਿੰਡੋ ਪਿਛਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
-
-#: ../settings-dialogs/xfwm4-settings.c:130
-msgid "Move window to next workspace"
-msgstr "ਵਿੰਡੋ ਅਗਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
-
-#: ../settings-dialogs/xfwm4-settings.c:131
-msgid "Show desktop"
-msgstr "ਡਿਸਕਟਾਪ ਵੇਖਾਓ"
-
-#: ../settings-dialogs/xfwm4-settings.c:132
-msgid "Upper workspace"
-msgstr "ਅੱਪਰ ਵਰਕਸਪੇਸ"
-
-#: ../settings-dialogs/xfwm4-settings.c:133
-msgid "Bottom workspace"
-msgstr "ਬਾਟਮ ਵਰਕਸਪੇਸ"
-
-#: ../settings-dialogs/xfwm4-settings.c:134
-msgid "Left workspace"
-msgstr "ਖੱਬਾ ਵਰਕਸਪੇਸ"
-
-#: ../settings-dialogs/xfwm4-settings.c:135
-msgid "Right workspace"
-msgstr "ਸੱਜੇ ਵਰਕਸਪੇਸ"
-
-#: ../settings-dialogs/xfwm4-settings.c:136
-msgid "Previous workspace"
-msgstr "ਪਿਛਲਾ ਵਰਕਸਪੇਸ"
-
-#: ../settings-dialogs/xfwm4-settings.c:137
-msgid "Next workspace"
-msgstr "ਅਗਲਾ ਵਰਕਸਪੇਸ"
-
-#: ../settings-dialogs/xfwm4-settings.c:138
-msgid "Add workspace"
-msgstr "ਵਰਕਸਪੇਸ ਸ਼ਾਮਿਲ"
-
-#: ../settings-dialogs/xfwm4-settings.c:139
-#, fuzzy
-msgid "Add adjacent workspace"
-msgstr "ਵਰਕਸਪੇਸ ਸ਼ਾਮਿਲ"
-
-#: ../settings-dialogs/xfwm4-settings.c:140
-#, fuzzy
-msgid "Delete last workspace"
-msgstr "ਵਰਕਸਪੇਸ ਹਟਾਓ"
-
-#: ../settings-dialogs/xfwm4-settings.c:141
-#, fuzzy
-msgid "Delete active workspace"
-msgstr "ਵਰਕਸਪੇਸ ਹਟਾਓ"
-
-#: ../settings-dialogs/xfwm4-settings.c:475
-msgid "Theme"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:489
-#, fuzzy
-msgid "Action"
-msgstr "ਸਰਗਰਮ"
-
-#: ../settings-dialogs/xfwm4-settings.c:491
-#, fuzzy
-msgid "Shortcut"
-msgstr "ਕੋਈ ਸ਼ਾਰਟਕੱਟ ਨਹੀਂ"
-
-#: ../settings-dialogs/xfwm4-settings.c:551
-#: ../settings-dialogs/tweaks-settings.c:338
-#: ../settings-dialogs/workspace-settings.c:67
+#: ../settings-dialogs/xfwm4-settings.c:203
+#: ../settings-dialogs/tweaks-settings.c:397
+#: ../settings-dialogs/workspace-settings.c:370
 msgid "Version information"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:570
-#: ../settings-dialogs/tweaks-settings.c:357
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/xfwm4-settings.c:355
+msgid "Theme"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:791
+#: ../settings-dialogs/tweaks-settings.c:414
+#: ../settings-dialogs/workspace-settings.c:387
 msgid "."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:574
-#: ../settings-dialogs/tweaks-settings.c:361
-#: ../settings-dialogs/workspace-settings.c:91
+#: ../settings-dialogs/xfwm4-settings.c:795
+#: ../settings-dialogs/tweaks-settings.c:418
+#: ../settings-dialogs/workspace-settings.c:391
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "<i>Large</i>"
+#: ../settings-dialogs/xfwm4-settings.c:813
+#, c-format
+msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-settings.c:824
+msgid "Could not create the settings dialog."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 #, fuzzy
 msgid "<i>Opaque</i>"
 msgstr "ਧੁੰਦਲਾਪਨ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
-msgid "<i>Small</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 #, fuzzy
 msgid "<i>Transparent</i>"
 msgstr "ਟਰਾਂਸਪੇਰਟ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 #, fuzzy
 msgid "Activate _focus stealing prevention"
 msgstr "ਫੋਕਸ ਸਟੀਲਿੰਗ ਬਚਾਅ ਸਰਗਰਮ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "At the _center of the screen"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "By default, place windows:"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 #, fuzzy
@@ -595,125 +478,147 @@ msgid "Honor _standard ICCCM focus hint"
 msgstr "ਸਟੈਂਡਰਡ ICCCM ਫੋਕਸ ਹਿੰਟ ਦਾ ਹਾਨਰ ਕਰੋ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Keep urgent windows blinking"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 #, fuzzy
 msgid "Key used to _grab and move windows:"
 msgstr "ਵਿੰਡੋ ਗਰਬ ਅਤੇ ਭੇਜਣ ਲਈ ਵਰਤ ਵਾਸਤੇ ਸਵਿੱਚ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 #, fuzzy
 msgid "Opaci_ty of window decorations:"
 msgstr "ਵਿੰਡੋ ਸਜਾਵਟ ਦਾ ਧੁੰਦਲਾਪਨ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 #, fuzzy
 msgid "Opacity of _inactive windows:"
 msgstr "ਨਾ-ਸਰਗਰਮ ਵਿੰਡੋ ਦੀ ਧੁੰਦਲਾਪਨ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 #, fuzzy
 msgid "Opacity of popup window_s:"
 msgstr "ਪੋਪ-ਅੱਪ ਵਿੰਡੋ ਦਾ ਧੁੰਦਲਾਪਨ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 #, fuzzy
 msgid "Opacity of windows during _move:"
 msgstr "ਹਿਲਾਉਣ ਦੌਰਾਨ ਵਿੰਡੋ ਦੀ ਧੁੰਦਲਾਪਨ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
 msgid "Opacity of windows during resi_ze:"
 msgstr "ਮੁੜ-ਆਕਾਰ ਕਰਨ ਦੌਰਾਨ ਵਿੰਡੋ ਦਾ ਧੁੰਦਲਾਪਨ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 #, fuzzy
 msgid "Restore original _size of maximized windows when moving"
 msgstr "ਭੇਜਣ ਦੌਰਾਨ ਵੱਧ ਤੋਂ ਵੱਧ ਵਿੰਡੋ ਦਾ ਅਸਲੀ ਆਕਾਰ ਰੀ-ਸਟੋਰ ਕਰੋ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 #, fuzzy
 msgid "Show shadows under _dock windows"
 msgstr "ਪੋਪ-ਅੱਪ ਵਿੰਡੋ ਹੇਠ ਛਾਂ ਵੇਖਾਓ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 #, fuzzy
 msgid "Show shadows under _regular windows"
 msgstr "ਨਿਯਮਤ ਵਿੰਡੋ ਹੇਠ ਛਾਂ ਵੇਖਾਓ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 #, fuzzy
 msgid "Show shadows under pop_up windows"
 msgstr "ਪੋਪ-ਅੱਪ ਵਿੰਡੋ ਹੇਠ ਛਾਂ ਵੇਖਾਓ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#, fuzzy
+msgid "Size|<i>Large</i>"
+msgstr "ਵੱਡਾ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#, fuzzy
+msgid "Size|<i>Small</i>"
+msgstr "ਛੋਟਾ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 #, fuzzy
 msgid "Switch to win_dow's workspace"
 msgstr "ਵਿੰਡੋ ਵਰਕਸਪੇਸ %d 'ਚ ਭੇਜੋ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Under the mouse _pointer"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 #, fuzzy
 msgid "Use _edge resistance instead of window snapping"
 msgstr "ਵਿੰਡੋ ਸਨੈਪਿੰਗ ਦੀ ਬਜਾਏ ਕੋਨਾ ਰੈਜ਼ੀਡੈਨਸ ਵਰਤੋਂ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 #, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "ਅਸਲ ਡਿਸਕਟਾਪ ਲੇ-ਆਉਟ ਮੁਤਾਬਕ ਵਰਕਸਪੇਸ ਸਮੇਟੋ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 #, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "ਜਦੋਂ ਪਹਿਲਾਂ ਜਾਂ ਆਖਰੀ ਵਰਕਸਪੇਸ ਆ ਜਾਵੇ ਤਾਂ ਵਰਕਸਪੇਸ ਸਮੇਟੋ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 #, fuzzy
 msgid "_Accessibility"
 msgstr "ਅਸੈੱਸਬਲਟੀ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 #, fuzzy
 msgid "_Bring window on current workspace"
 msgstr "ਵਿੰਡੋ ਅਗਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-#, fuzzy
-msgid "_Enable display compositing"
-msgstr "ਡਿਸਪਲੇਅ ਕੰਪੋਜ਼ੀਸ਼ਨ ਯੋਗ"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
-msgid "_Focus"
-msgstr "ਕੇਂਦਰਿਤ"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-#, fuzzy
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "ਲੁਕਵੇਂ (ਆਈਕਾਨ ਬਣਾਇਆ ਸਮੇ) ਵਿੰਡੋ ਸਮੇਤ"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-#, fuzzy
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "ਸੌਖੀ ਪਲੇਸਮਿੰਟ ਬਦਲਣ ਲਈ ਵਿੰਡੋ ਦਾ ਘੱਟੋ-ਘੱਟ ਆਕਾਰ"
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "_Mouse wheel over desktop switches workspaces"
+msgid "_Draw frame around selected windows while cycling"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 #, fuzzy
+msgid "_Enable display compositing"
+msgstr "ਡਿਸਪਲੇਅ ਕੰਪੋਜ਼ੀਸ਼ਨ ਯੋਗ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#, fuzzy
+msgid "_Focus"
+msgstr "ਕੇਂਦਰਿਤ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#, fuzzy
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "ਲੁਕਵੇਂ (ਆਈਕਾਨ ਬਣਾਇਆ ਸਮੇ) ਵਿੰਡੋ ਸਮੇਤ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#, fuzzy
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "ਸੌਖੀ ਪਲੇਸਮਿੰਟ ਬਦਲਣ ਲਈ ਵਿੰਡੋ ਦਾ ਘੱਟੋ-ਘੱਟ ਆਕਾਰ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "_Mouse wheel over desktop switches workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#, fuzzy
 msgid "_Placement"
 msgstr "ਪਲੇਸਮਿੰਟ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 #, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "ਜਦੋਂ ਮਾਊਸ ਬਟਨ ਦਬਾਇਆ ਜਾਵੇ ਤਾਂ ਵਿੰਡੋ ਉਭਾਰੋ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 #, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
@@ -721,46 +626,97 @@ msgid ""
 msgstr ""
 "ਜਦੋਂ ਕੀ-ਬੋਰਡ ਸ਼ਾਰਟਕੱਟ ਰਾਹੀਂ ਵਰਕਸਪੇਸ ਬਦਲਿਆ ਜਾਵੇ ਤਾਂ ਪਿਛਲਾ ਵਰਕਸਪੇਸ ਯਾਦ ਰੱਖੋ ਅਤੇ ਰੀ-ਕਾਲ ਕਰੋ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 #, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr "ਵਿੰਡੋ, ਜਿਨ੍ਹਾਂ ਲਈ \"ਪੇਜ਼ਰ ਛੱਡੋ\" ਜਾਂ \"ਟਾਸਕ-ਬਾਰ ਛੱਡੋ\" ਪ੍ਰਾਪਰਟੀ ਸੈੱਟ ਹੋਵੇ, ਛੱਡੋ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 #, fuzzy
 msgid "_Workspaces"
 msgstr "ਵਰਕਸਪੇਸ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "gtk-close"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "gtk-help"
 msgstr ""
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#, fuzzy
+msgid "<b>Margins</b>"
+msgstr "ਮਾਰਜਨ"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#, fuzzy
+msgid "<b>Workspaces</b>"
+msgstr "ਵਰਕਸਪੇਸ ਲਪੇਟੋ"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#, fuzzy
+msgid "Change Workspace Name"
+msgstr "ਵਰਕਸਪੇਸ ਨਾਂ"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "ਮਾਰਜਨ ਪਰਦੇ ਦੇ ਕਿਨਾਰਿਆਂ ਤੇ ਅਜਿਹੇ ਖੇਤਰ ਹਨ ਜਿੱਥੇ ਕੋਈ ਵਿੰਡੋ ਸਥਾਪਤ ਨਹੀਂ ਹੋਵੇਗਾ"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
+#, fuzzy
+msgid "_Name:"
+msgstr "ਨਾਂ:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 #, fuzzy
 msgid "_Number of workspaces:"
 msgstr "ਅਖਾੜਿਆਂ ਦੀ ਗਿਣਤੀ:"
 
-#: ../settings-dialogs/tweaks-settings.c:156
-msgid "Alt"
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
+#, fuzzy
+msgid "gtk-cancel"
+msgstr "ਰੱਦ ਕਰੋ"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
+#, fuzzy
+msgid "gtk-save"
+msgstr "ਰੱਦ ਕਰੋ"
+
+#: ../settings-dialogs/tweaks-settings.c:42
+msgid "None"
+msgstr "ਕੋਈ ਨਹੀਂ"
+
+#: ../settings-dialogs/tweaks-settings.c:396
+msgid "Session manager socket"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:158
+#: ../settings-dialogs/workspace-settings.c:72
+#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:148
+#, c-format
+msgid "Workspace %d"
+msgstr "ਵਰਕਸਪੇਸ %d"
+
+#: ../settings-dialogs/workspace-settings.c:134
+#, fuzzy, c-format
+msgid "Change the name of workspace %d"
+msgstr "ਅਖਾੜਿਆਂ ਦੀ ਗਿਣਤੀ:"
+
+#: ../settings-dialogs/workspace-settings.c:275
 #, fuzzy
-msgid "Ctrl"
-msgstr "ਕੇਂਦਰੀ"
+msgid "Workspace Name"
+msgstr "ਵਰਕਸਪੇਸ ਨਾਂ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "\t"
+msgid "  "
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
@@ -824,59 +780,65 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "ਵਰਕਸਪੇਸ ਲਪੇਟੋ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-msgid "<i>Long</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "<i>Short</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-msgid "<i>Wide</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Active"
 msgstr "ਸਰਗਰਮ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
 #, fuzzy
 msgid "Ad_vanced"
 msgstr "ਤਕਨੀਕੀ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 #, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr "ਕੇਂਦ੍ਰਿਤ ਹੋਣ ਉਪਰੰਤ ਵਿੰਡੋ ਸਵੈ-ਪੇਸ਼ ਕਰੋ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr "ਨਵੇਂ ਝਰੋਖੇ ਉੱਪਰ ਸਵੈ ਕੇਂਦ੍ਰਿਤ ਕਰੋ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "ਕੇਂਦਰਿਤ ਕਰਨ ਲਈ ਦਬਾਓ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "ਖਾਕਾ ਤਬਦੀਲ ਕਰਨ ਲਈ ਖਿੱਚੋ ਬਟਨ ਤੇ ਕਲਿੱਕ ਕਰੋ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Close"
 msgstr "ਬੰਦ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "ਕੇਂਦ੍ਰਿਤ ਵਿੰਡੋ ਪੇਸ਼ਗੀ ਤੋਂ ਪਹਿਲਾਂ ਅੰਤਰਾਲ ਃ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Delay|<i>Long</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "Delay|<i>Short</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 #, fuzzy
 msgid "Dis_tance:"
 msgstr "ਅੰਤਰ:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#, fuzzy
+msgid "Distance|<i>Small</i>"
+msgstr "ਛੋਟਾ"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#, fuzzy
+msgid "Distance|<i>Wide</i>"
+msgstr "ਚੌੜਾ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
@@ -920,64 +882,195 @@ msgid "Raise window when clicking _inside application window"
 msgstr "ਕਾਰਜ ਝਰੋਖੇ ਵਿੱਚ ਕਲਿੱਕ ਕਰਨ ਉਪਰੰਤ ਵਿੰਡੋ ਪੇਸ਼ ਕਰੋ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#, fuzzy
+msgid "Resistance|<i>Small</i>"
+msgstr "ਛੋਟਾ"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#, fuzzy
+msgid "Resistance|<i>Wide</i>"
+msgstr "ਚੌੜਾ"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Shade"
 msgstr "ਛਾਂ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "ਹੋਰ ਝਰੋਖਿਆਂ ਵਿੱਚ ਵਿੰਡੋ ਤਸਵੀਰ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "ਪਰਦੇ ਦੇ ਹਾਸ਼ੀਏ ਵਿੱਚ ਵਿੰਡੋ ਤਸਵਿਰ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Stick"
 msgstr "ਚਿਪਕਿਆ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "ਸਿਰਲੇਖ ਪੱਟੀ ਉੱਪਰ ਡਬਲ ਕਲਿੱਕ ਕਰਨ ਤੇ ਵਾਪਰਨ ਵਾਲੀ ਕਿਰਿਆ ਃ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The window title, it cannot be removed"
 msgstr "ਵਿੰਡੋ ਸਿਰਲੇਖ, ਇਹ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "Title"
 msgstr "ਸਿਰਲੇਖ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "ਪਰਦਾ ਖਿੱਚਣ ਨਾਲ ਪਰਦਾ ਬੰਦ ਹੋਣ ਉਪਰੰਤ ਵਰਕਸਪੇਸ ਲਪੇਟੋ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "ਸੰਕੇਤਕ ਪਰਦੇ ਦੇ ਕਿਨਾਰੇ ਤੇ ਪਹੁੰਚਣ ਉਪਰੰਤ ਵਰਕਸਪੇਸ ਲਪੇਟੋ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "ਕੇਂਦ੍ਰਿਤ ਵਿੰਡੋ ਪੇਸ਼ਗੀ ਤੋਂ ਪਹਿਲਾਂ ਅੰਤਰਾਲ ਃ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "ਕਿਨਾਰਾ ਵਿਰੋਧਤਾ ਃ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "_Reset to defaults"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #, fuzzy
 msgid "_Style"
 msgstr "ਸ਼ੈਲੀ"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#, fuzzy
+msgid "gtk-clear"
+msgstr "ਰੱਦ ਕਰੋ"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+msgid "gtk-revert-to-saved"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+msgid "gtk-select-all"
+msgstr ""
+
+#~ msgid "Window operations menu"
+#~ msgstr "ਵਿੰਡੋ ਓਪਰੇਸ਼ਨ ਮੇਨੂ"
+
+#~ msgid "Cancel"
+#~ msgstr "ਰੱਦ ਕਰੋ"
+
+#~ msgid "Cycle windows"
+#~ msgstr "ਵਿੰਡੋ ਸਾਇਕਲ"
+
+#~ msgid "Close window"
+#~ msgstr "ਵਿੰਡੋ ਬੰਦ"
+
+#~ msgid "Maximize window horizontally"
+#~ msgstr "ਵਿੰਡੋ ਖਤਿਜੀ ਅਧਿਕਤਮ"
+
+#~ msgid "Maximize window vertically"
+#~ msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
+
+#, fuzzy
+#~ msgid "Move window"
+#~ msgstr "ਵਿੰਡੋ ਉੱਪਰ ਹਿਲਾਓ"
+
+#, fuzzy
+#~ msgid "Resize window"
+#~ msgstr "ਵਿੰਡੋ ਉੱਪਰ ਮੁੜ ਆਕਾਰ"
+
+#~ msgid "Stick window"
+#~ msgstr "ਉੱਭਰਿਆ ਵਿੰਡੋ"
+
+#~ msgid "Raise window"
+#~ msgstr "ਵਿੰਡੋ ਪੇਸ਼ਗੀ"
+
+#~ msgid "Lower window"
+#~ msgstr "ਹੇਠਲਾ ਵਿੰਡੋ"
+
+#, fuzzy
+#~ msgid "Fill window horizontally"
+#~ msgstr "ਵਿੰਡੋ ਖਤਿਜੀ ਅਧਿਕਤਮ"
+
+#, fuzzy
+#~ msgid "Fill window vertically"
+#~ msgstr "ਵਿੰਡੋ ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
+
+#~ msgid "Toggle fullscreen"
+#~ msgstr "ਪੂਰਾ-ਪਰਦਾ ਲਿਆਓ"
+
+#~ msgid "Move window to upper workspace"
+#~ msgstr "ਵਿੰਡੋ ਉੱਪਰਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
+
+#~ msgid "Move window to bottom workspace"
+#~ msgstr "ਵਿੰਡੋ ਹੇਠਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
+
+#~ msgid "Move window to left workspace"
+#~ msgstr "ਵਿੰਡੋ ਖੱਬੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
+
+#~ msgid "Move window to right workspace"
+#~ msgstr "ਵਿੰਡੋ ਸੱਜੇ ਵਰਕਸਪੇਸ 'ਚ ਭੇਜੋ"
+
+#~ msgid "Move window to previous workspace"
+#~ msgstr "ਵਿੰਡੋ ਪਿਛਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
+
+#~ msgid "Move window to next workspace"
+#~ msgstr "ਵਿੰਡੋ ਅਗਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਆਓ"
+
+#~ msgid "Show desktop"
+#~ msgstr "ਡਿਸਕਟਾਪ ਵੇਖਾਓ"
+
+#~ msgid "Upper workspace"
+#~ msgstr "ਅੱਪਰ ਵਰਕਸਪੇਸ"
+
+#~ msgid "Bottom workspace"
+#~ msgstr "ਬਾਟਮ ਵਰਕਸਪੇਸ"
+
+#~ msgid "Left workspace"
+#~ msgstr "ਖੱਬਾ ਵਰਕਸਪੇਸ"
+
+#~ msgid "Right workspace"
+#~ msgstr "ਸੱਜੇ ਵਰਕਸਪੇਸ"
+
+#~ msgid "Previous workspace"
+#~ msgstr "ਪਿਛਲਾ ਵਰਕਸਪੇਸ"
+
+#~ msgid "Next workspace"
+#~ msgstr "ਅਗਲਾ ਵਰਕਸਪੇਸ"
+
+#~ msgid "Add workspace"
+#~ msgstr "ਵਰਕਸਪੇਸ ਸ਼ਾਮਿਲ"
+
+#, fuzzy
+#~ msgid "Add adjacent workspace"
+#~ msgstr "ਵਰਕਸਪੇਸ ਸ਼ਾਮਿਲ"
+
+#, fuzzy
+#~ msgid "Delete last workspace"
+#~ msgstr "ਵਰਕਸਪੇਸ ਹਟਾਓ"
+
+#, fuzzy
+#~ msgid "Delete active workspace"
+#~ msgstr "ਵਰਕਸਪੇਸ ਹਟਾਓ"
+
+#, fuzzy
+#~ msgid "Action"
+#~ msgstr "ਸਰਗਰਮ"
+
+#, fuzzy
+#~ msgid "Shortcut"
+#~ msgstr "ਕੋਈ ਸ਼ਾਰਟਕੱਟ ਨਹੀਂ"
+
+#, fuzzy
+#~ msgid "Ctrl"
+#~ msgstr "ਕੇਂਦਰੀ"
 
 #, fuzzy
 #~ msgid "Button"
@@ -1000,17 +1093,8 @@ msgstr "ਸ਼ੈਲੀ"
 #~ msgid "Type the name for the new shortcut theme:"
 #~ msgstr "ਥੀਮ ਲਈ ਇੱਕ ਨਾਂ ਦਿਓ:"
 
-#, fuzzy
-#~ msgid "gtk-cancel"
-#~ msgstr "ਰੱਦ ਕਰੋ"
-
 #~ msgid "Workspace Margins"
 #~ msgstr "ਵਰਕਸਪੇਸ ਮਾਰਜਨ"
-
-#~ msgid ""
-#~ "Margins are areas on the edges of the screen where no window will be "
-#~ "placed"
-#~ msgstr "ਮਾਰਜਨ ਪਰਦੇ ਦੇ ਕਿਨਾਰਿਆਂ ਤੇ ਅਜਿਹੇ ਖੇਤਰ ਹਨ ਜਿੱਥੇ ਕੋਈ ਵਿੰਡੋ ਸਥਾਪਤ ਨਹੀਂ ਹੋਵੇਗਾ"
 
 #~ msgid "Left :"
 #~ msgstr "ਖੱਬੇ:"
@@ -1030,20 +1114,8 @@ msgstr "ਸ਼ੈਲੀ"
 #~ msgid "Workspaces and Margins"
 #~ msgstr "ਵਰਕਸਪੇਸ ਤੇ ਮਾਰਜਨ"
 
-#~ msgid "Margins"
-#~ msgstr "ਮਾਰਜਨ"
-
-#~ msgid "None"
-#~ msgstr "ਕੋਈ ਨਹੀਂ"
-
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "ਜਦੋਂ ਡਿਸਕਟਾਪ ਉੱਤੇ ਹੋਵੇ ਤਾਂ ਮਾਊਂਸ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਵਰਕਸਪੇਸ ਬਦਲੋ"
-
-#~ msgid "Size|Small"
-#~ msgstr "ਛੋਟਾ"
-
-#~ msgid "Size|Large"
-#~ msgstr "ਵੱਡਾ"
 
 #, fuzzy
 #~ msgid "Default positionning of windows without smart placement:"
@@ -1058,17 +1130,8 @@ msgstr "ਸ਼ੈਲੀ"
 #~ msgid "Change name"
 #~ msgstr "ਨਾਂ-ਤਬਦੀਲ"
 
-#~ msgid "Workspace %d"
-#~ msgstr "ਵਰਕਸਪੇਸ %d"
-
-#~ msgid "Name:"
-#~ msgstr "ਨਾਂ:"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "ਇਸ ਨੂੰ ਸੋਧਣ ਲਈ ਵਰਕਸਪੇਸ ਨਾਂ ਤੇ ਕਲਿੱਕ ਕਰੋ"
-
-#~ msgid "Workspace names"
-#~ msgstr "ਵਰਕਸਪੇਸ ਨਾਂ"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "ਫੋਂਟ ਚੋਣ ਬਕਸਾ"
@@ -1081,18 +1144,6 @@ msgstr "ਸ਼ੈਲੀ"
 
 #~ msgid "Fast"
 #~ msgstr "ਤੇਜ਼"
-
-#~ msgid "Distance|Small"
-#~ msgstr "ਛੋਟਾ"
-
-#~ msgid "Distance|Wide"
-#~ msgstr "ਚੌੜਾ"
-
-#~ msgid "Resistance|Small"
-#~ msgstr "ਛੋਟਾ"
-
-#~ msgid "Resistance|Wide"
-#~ msgstr "ਚੌੜਾ"
 
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "ਵਿੰਡੋ ਮੈਨੇਜਰ"

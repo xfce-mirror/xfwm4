@@ -5,6 +5,11 @@
 	* fr.po: French translation update
 	* id.po: Indonesian translation update (Andhika Padmawan)
 
+2008-10-08  Olivier Fourdan <olivier@xfce.org>
+
+	* *.po: Add disambiguations to settings dialogs (Bug #4484, patch 
+	  from alexander.toresson@gmail.com).
+
 2008-10-08  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
 
 	* fi.po: Update Finnish translation.

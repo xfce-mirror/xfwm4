@@ -1,5 +1,11 @@
 2008-10-18  olivier
 
+	* settings-dialogs/xfwm4-tweaks-dialog.glade,
+	  settings-dialogs/xfwm4-dialog.glade: Add disambiguations to settings
+	  dialogs (Bug #4484, patch from alexander.toresson@gmail.com).
+
+2008-10-18  olivier
+
 	* src/misc.h, src/misc.c: Add routine to get the name of a given atom,
 	  src/client.c: Add client windows to save set to avoid loosing all
 	  windows in case of crash,
