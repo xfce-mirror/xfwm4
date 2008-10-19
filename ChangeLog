@@ -1,3 +1,8 @@
+2008-10-19  olivier
+
+	* src/netwm.h, src/display.c, src/display.h, src/events.c, src/hints.c, 
+	  src/netwm.c: Add support for NET_MOVERESIZE_WINDOW
+
 2008-10-18  olivier
 
 	* settings-dialogs/xfwm4-tweaks-dialog.glade,

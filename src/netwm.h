@@ -39,6 +39,8 @@ void                     clientUpdateNetState                   (Client *,
                                                                  XClientMessageEvent *);
 void                     clientNetMoveResize                    (Client *,
                                                                  XClientMessageEvent *);
+void                     clientNetMoveResizeWindow              (Client *,
+                                                                 XClientMessageEvent *);
 void                     clientUpdateFullscreenState            (Client *);
 void                     clientGetNetWmType                     (Client *);
 void                     clientGetInitialNetWmDesktop           (Client *);

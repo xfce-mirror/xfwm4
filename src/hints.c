@@ -401,6 +401,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_DESKTOP_NAMES];
     atoms[i++] = display_info->atoms[NET_DESKTOP_VIEWPORT];
     atoms[i++] = display_info->atoms[NET_FRAME_EXTENTS];
+    atoms[i++] = display_info->atoms[NET_MOVERESIZE_WINDOW];
     atoms[i++] = display_info->atoms[NET_NUMBER_OF_DESKTOPS];
     atoms[i++] = display_info->atoms[NET_REQUEST_FRAME_EXTENTS];
     atoms[i++] = display_info->atoms[NET_SHOWING_DESKTOP];

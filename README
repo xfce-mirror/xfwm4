@@ -16,6 +16,7 @@ Xfwm is compliant with the following specifications from the freedesktop.org
     NET_DESKTOP_NAMES
     NET_DESKTOP_VIEWPORT
     NET_FRAME_EXTENTS
+    NET_MOVERESIZE_WINDOW
     NET_NUMBER_OF_DESKTOPS
     NET_REQUEST_FRAME_EXTENTS
     NET_SHOWING_DESKTOP

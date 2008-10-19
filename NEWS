@@ -2,6 +2,7 @@
 ======================
 
 - Add support for restart style SmRestartImmediately.
+- Add support for NET_MOVERESIZE_WINDOW
 
 4.5.91 (Xfce 4.6beta1)
 ======================
