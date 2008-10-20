@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-18 22:05+0100\n"
-"PO-Revision-Date: 2008-10-08 16:42+0300\n"
+"POT-Creation-Date: 2008-10-20 15:28+0300\n"
+"PO-Revision-Date: 2008-10-20 15:37+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -164,12 +164,12 @@ msgstr "%s: Väriä ei voi jäsentää: Värin GValue ei ole tyyppiä STRING"
 #: ../src/terminate.c:74
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Virhe luettaessa lapsiprosessin tietoa: %s\n"
 
 #: ../src/terminate.c:122
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Apudialogia ei voi avata: %s\n"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
@@ -222,13 +222,12 @@ msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Työtilojen asetukset"
 
 #: ../settings-dialogs/frap-shortcuts.c:92
-#, fuzzy
 msgid ""
 "This shortcut is already being used by <b>another window manager action</b>. "
 "Which action do you want to use?"
 msgstr ""
-"Pikanäppäin on jo yhdistetty ikkunamanagerin toimintoon <b>%s</b>. Kumpaa "
-"toimintoa haluat käyttää?"
+"Pikanäppäin on jo yhdistetty <b>toiseen ikkunamanagerin toimintoon</b>. "
+"Kumpaa toimintoa haluat käyttää?"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 #: ../settings-dialogs/frap-shortcuts.c:96
@@ -237,7 +236,7 @@ msgstr "Käytä tätä toimintoa"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 msgid "Keep the other one"
-msgstr ""
+msgstr "Säilytä toinen"
 
 #: ../settings-dialogs/frap-shortcuts.c:95
 #: ../settings-dialogs/frap-shortcuts.c:98
@@ -270,7 +269,6 @@ msgstr ""
 "toimintoa haluat käyttää?"
 
 #: ../settings-dialogs/frap-shortcuts.c:102
-#, fuzzy
 msgid "Keep the window manager action"
 msgstr "Säilytä ikkunamanagerin toiminto"
 
@@ -278,12 +276,11 @@ msgstr "Säilytä ikkunamanagerin toiminto"
 #: ../settings-dialogs/frap-shortcuts.c:141
 #, c-format
 msgid "Conflicting actions for %s"
-msgstr ""
+msgstr "Toimintoristiriita: %s"
 
 #: ../settings-dialogs/frap-shortcuts.c:173
-#, fuzzy
 msgid "The shortcut is already being used for something else."
-msgstr "Pikanäppäin \"%s\" on jo muussa käytössä."
+msgstr "Pikanäppäin on jo muussa käytössä."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:239
 msgid "Enter window manager action shortcut"
@@ -394,12 +391,11 @@ msgstr ""
 #: ../settings-dialogs/xfwm4-settings.c:813
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Virhe alustaessa xfconfia: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:824
-#, fuzzy
 msgid "Could not create the settings dialog."
-msgstr "Näppäimistöä ei voi kaapata."
+msgstr "Asetusdialogin luominen epäonnistui."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -494,12 +490,10 @@ msgid "Show shadows under pop_up windows"
 msgstr "Näytä varjot ponnahd_usikkunoiden alla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Size|<i>Large</i>"
 msgstr "<i>Suuri</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Size|<i>Small</i>"
 msgstr "<i>Pieni</i>"
 
@@ -739,12 +733,10 @@ msgid "Delay _before raising focused window:"
 msgstr "_Viive ennen kohdistetun ikkunan nostoa:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Delay|<i>Long</i>"
 msgstr "<i>Pitkä</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
 msgid "Delay|<i>Short</i>"
 msgstr "<i>Lyhyt</i>"
 
@@ -753,14 +745,12 @@ msgid "Dis_tance:"
 msgstr "_Etäisyys:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "<i>Pieni</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Distance|<i>Wide</i>"
-msgstr "<i>Leveä</i>"
+msgstr "<i>Suuri</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Focus follows _mouse"
@@ -799,14 +789,12 @@ msgid "Raise window when clicking _inside application window"
 msgstr "Nosta sovellusikkuna, kun sen s_isällä napsautetaan"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "<i>Pieni</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Resistance|<i>Wide</i>"
-msgstr "<i>Leveä</i>"
+msgstr "<i>Suuri</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Shade"
@@ -867,120 +855,3 @@ msgstr ""
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "gtk-select-all"
 msgstr ""
-
-#~ msgid "%s shortcut conflict"
-#~ msgstr "%s pikanäppäinristiriita"
-
-#~ msgid "Shortcut conflict"
-#~ msgstr "Pikanäppäinristiriita"
-
-#~ msgid "Window operations menu"
-#~ msgstr "Ikkunan toimintovalikko"
-
-#~ msgid "Up"
-#~ msgstr "Ylös"
-
-#~ msgid "Down"
-#~ msgstr "Alas"
-
-#~ msgid "Cancel"
-#~ msgstr "Peru"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Selaa ikkunoita"
-
-#~ msgid "Close window"
-#~ msgstr "Sulje ikkuna"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Suurenna ikkuna vaakasuunnassa"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Suurenna ikkuna pystysuunnassa"
-
-#~ msgid "Move window"
-#~ msgstr "Siirrä ikkunaa"
-
-#~ msgid "Resize window"
-#~ msgstr "Muuta ikkunan kokoa"
-
-#~ msgid "Stick window"
-#~ msgstr "Kiinnitä ikkuna"
-
-#~ msgid "Raise window"
-#~ msgstr "Nosta ikkunaa"
-
-#~ msgid "Lower window"
-#~ msgstr "Laske ikkunaa"
-
-#~ msgid "Fill window horizontally"
-#~ msgstr "Sovita ikkuna vaakasuunnassa"
-
-#~ msgid "Fill window vertically"
-#~ msgstr "Sovita ikkuna pystysuunnassa"
-
-#~ msgid "Toggle above"
-#~ msgstr "Vaihda päällimmäiseksi"
-
-#~ msgid "Toggle fullscreen"
-#~ msgstr "Vaihda täysruututilaan"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Siirrä ikkuna ylempään työtilaan"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Siirrä ikkuna alempaan työtilaan"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Siirrä ikkuna vasemmanpuoleiseen työtilaan"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Siirrä ikkuna oikeanpuoleiseen työtilaan"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Siirrä ikkuna edelliseen työtilaan"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Siirrä ikkuna seuraavaan työtilaan"
-
-#~ msgid "Show desktop"
-#~ msgstr "Näytä työpöytä"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Ylempi työtila"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Alempi työtila"
-
-#~ msgid "Left workspace"
-#~ msgstr "Vasen työtila"
-
-#~ msgid "Right workspace"
-#~ msgstr "Oikea työtila"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Edellinen työtila"
-
-#~ msgid "Next workspace"
-#~ msgstr "Seuraava työtila"
-
-#~ msgid "Add workspace"
-#~ msgstr "Lisää työtila"
-
-#~ msgid "Add adjacent workspace"
-#~ msgstr "Lisää työtila vierelle"
-
-#~ msgid "Delete last workspace"
-#~ msgstr "Poista viimeinen työtila"
-
-#~ msgid "Delete active workspace"
-#~ msgstr "Poista aktiivinen työtila"
-
-#~ msgid "Action"
-#~ msgstr "Toiminto"
-
-#~ msgid "Shortcut"
-#~ msgstr "Pikanäppäin"
-
-#~ msgid "_Reset to defaults"
-#~ msgstr "_Palauta oletukset"
