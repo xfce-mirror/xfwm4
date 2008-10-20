@@ -304,8 +304,6 @@ get_atom_name (DisplayInfo *display_info, Atom atom)
 
     if (atom)
     {
-        char *xname;
-
         xname = (gchar *) XGetAtomName (display_info->dpy, atom);
         if (xname)
         {

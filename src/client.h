@@ -345,15 +345,20 @@ void                     clientRemoveUserTimeWin                (Client *);
 void                     clientUpdateUrgency                    (Client *);
 void                     clientCoordGravitate                   (Client *,
                                                                  int,
+                                                                 int,
                                                                  int *,
                                                                  int *);
 void                     clientAdjustCoordGravity               (Client *,
+                                                                 int,
                                                                  unsigned long *,
                                                                  XWindowChanges *);
 void                     clientConfigure                        (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long,
                                                                  unsigned short);
+void                     clientMoveResizeWindow                 (Client *,
+                                                                 XWindowChanges *,
+                                                                 unsigned long);
 void                     clientGetMWMHints                      (Client *,
                                                                  gboolean);
 void                     clientGetWMNormalHints                 (Client *,

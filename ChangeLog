@@ -1,3 +1,10 @@
+2008-10-20  olivier
+
+	* src/events.c, src/client.c, src/client.h, src/netwm.c: Improve 
+	  support for NET_MOVERESIZE_WINDOW by reusing most of the code
+	  from configureRequest handler.
+	  src/misc.c: Remove duplicate declaration in the code.
+
 2008-10-19  olivier
 
 	* src/netwm.h, src/display.c, src/display.h, src/events.c, src/hints.c, 

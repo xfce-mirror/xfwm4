@@ -695,13 +695,18 @@ clientNetMoveResizeWindow (Client * c, XClientMessageEvent * ev)
 {
     XWindowChanges wc;
     unsigned long mask;
-    int gravity, client_gravity;
+    int gravity;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientNetMoveResizeWindow");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    client_gravity = c->gravity;
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
+    {
+        /* not allowed */
+        return;
+    }
+
     gravity = (ev->data.l[0] & 0xff);
     if (!gravity)
     {
@@ -714,9 +719,8 @@ clientNetMoveResizeWindow (Client * c, XClientMessageEvent * ev)
     wc.height = ev->data.l[4];
     mask = (ev->data.l[0] & 0xf00) >> 8;
 
-    clientAdjustCoordGravity (c, &mask, &wc);
-    clientConfigure (c, &wc, mask, CFG_REQUEST);
-    c->gravity = client_gravity;
+    clientAdjustCoordGravity (c, gravity, &mask, &wc);
+    clientMoveResizeWindow (c, &wc, mask);
 }
 
 void
