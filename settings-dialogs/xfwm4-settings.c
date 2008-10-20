@@ -563,6 +563,11 @@ xfwm_settings_constructed (GObject *object)
   shortcuts_reset_button = glade_xml_get_widget (settings->priv->glade_xml, 
                                                  "shortcuts_reset_button");
 
+  /* Set reset button icon */
+  gtk_button_set_image (GTK_BUTTON (shortcuts_reset_button),
+                        gtk_image_new_from_stock (GTK_STOCK_REVERT_TO_SAVED, 
+                                                  GTK_ICON_SIZE_BUTTON));
+
   /* Keyboard tab: Shortcuts tree view */
   {
     gtk_tree_selection_set_mode (gtk_tree_view_get_selection (GTK_TREE_VIEW (shortcuts_treeview)),
