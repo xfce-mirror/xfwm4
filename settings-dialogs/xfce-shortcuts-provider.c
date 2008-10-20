@@ -32,11 +32,11 @@
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 
-#include "frap-shortcuts-provider.h"
+#include "xfce-shortcuts-provider.h"
 
 
 
-#define FRAP_SHORTCUTS_PROVIDER_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), FRAP_TYPE_SHORTCUTS_PROVIDER, FrapShortcutsProviderPrivate))
+#define XFCE_SHORTCUTS_PROVIDER_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), XFCE_TYPE_SHORTCUTS_PROVIDER, XfceShortcutsProviderPrivate))
 
 
 
@@ -49,31 +49,31 @@ enum
 
 
 
-typedef struct _FrapShortcutsProviderContext FrapShortcutsProviderContext;
+typedef struct _XfceShortcutsProviderContext XfceShortcutsProviderContext;
 
 
 
-static void frap_shortcuts_provider_class_init       (FrapShortcutsProviderClass *klass);
-static void frap_shortcuts_provider_init             (FrapShortcutsProvider      *provider);
-static void frap_shortcuts_provider_constructed      (GObject                    *object);
-static void frap_shortcuts_provider_finalize         (GObject                    *object);
-static void frap_shortcuts_provider_get_property     (GObject                    *object,
+static void xfce_shortcuts_provider_class_init       (XfceShortcutsProviderClass *klass);
+static void xfce_shortcuts_provider_init             (XfceShortcutsProvider      *provider);
+static void xfce_shortcuts_provider_constructed      (GObject                    *object);
+static void xfce_shortcuts_provider_finalize         (GObject                    *object);
+static void xfce_shortcuts_provider_get_property     (GObject                    *object,
                                                       guint                       prop_id,
                                                       GValue                     *value,
                                                       GParamSpec                 *pspec);
-static void frap_shortcuts_provider_set_property     (GObject                    *object,
+static void xfce_shortcuts_provider_set_property     (GObject                    *object,
                                                       guint                       prop_id,
                                                       const GValue               *value,
                                                       GParamSpec                 *pspec);
-static void frap_shortcuts_provider_register         (FrapShortcutsProvider      *provider);
-static void frap_shortcuts_provider_property_changed (XfconfChannel              *channel,
+static void xfce_shortcuts_provider_register         (XfceShortcutsProvider      *provider);
+static void xfce_shortcuts_provider_property_changed (XfconfChannel              *channel,
                                                       gchar                      *property,
                                                       GValue                     *value,
-                                                      FrapShortcutsProvider      *provider);
+                                                      XfceShortcutsProvider      *provider);
 
 
 
-struct _FrapShortcutsProviderPrivate
+struct _XfceShortcutsProviderPrivate
 {
   XfconfChannel *channel;
   gchar         *name;
@@ -81,21 +81,21 @@ struct _FrapShortcutsProviderPrivate
   gchar         *custom_base_property;
 };
 
-struct _FrapShortcutsProviderContext
+struct _XfceShortcutsProviderContext
 {
-  FrapShortcutsProvider *provider;
+  XfceShortcutsProvider *provider;
   GList                 *list;
   const gchar           *base_property;
 };
 
 
 
-static GObjectClass *frap_shortcuts_provider_parent_class = NULL;
+static GObjectClass *xfce_shortcuts_provider_parent_class = NULL;
 
 
 
 GType
-frap_shortcuts_provider_get_type (void)
+xfce_shortcuts_provider_get_type (void)
 {
   static GType type = G_TYPE_INVALID;
 
@@ -103,19 +103,19 @@ frap_shortcuts_provider_get_type (void)
     {
       static const GTypeInfo info =
       {
-        sizeof (FrapShortcutsProviderClass),
+        sizeof (XfceShortcutsProviderClass),
         NULL,
         NULL,
-        (GClassInitFunc) frap_shortcuts_provider_class_init,
+        (GClassInitFunc) xfce_shortcuts_provider_class_init,
         NULL,
         NULL,
-        sizeof (FrapShortcutsProvider),
+        sizeof (XfceShortcutsProvider),
         0,
-        (GInstanceInitFunc) frap_shortcuts_provider_init,
+        (GInstanceInitFunc) xfce_shortcuts_provider_init,
         NULL,
       };
 
-      type = g_type_register_static (G_TYPE_OBJECT, "FrapShortcutsProvider", &info, 0);
+      type = g_type_register_static (G_TYPE_OBJECT, "XfceShortcutsProvider", &info, 0);
     }
 
   return type;
@@ -124,22 +124,22 @@ frap_shortcuts_provider_get_type (void)
 
 
 static void
-frap_shortcuts_provider_class_init (FrapShortcutsProviderClass *klass)
+xfce_shortcuts_provider_class_init (XfceShortcutsProviderClass *klass)
 {
   GObjectClass *gobject_class;
 
-  g_type_class_add_private (klass, sizeof (FrapShortcutsProviderPrivate));
+  g_type_class_add_private (klass, sizeof (XfceShortcutsProviderPrivate));
 
   /* Determine the parent type class */
-  frap_shortcuts_provider_parent_class = g_type_class_peek_parent (klass);
+  xfce_shortcuts_provider_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
 #if GLIB_CHECK_VERSION (2,14,0)
-  gobject_class->constructed = frap_shortcuts_provider_constructed;
+  gobject_class->constructed = xfce_shortcuts_provider_constructed;
 #endif
-  gobject_class->finalize = frap_shortcuts_provider_finalize; 
-  gobject_class->get_property = frap_shortcuts_provider_get_property;
-  gobject_class->set_property = frap_shortcuts_provider_set_property;
+  gobject_class->finalize = xfce_shortcuts_provider_finalize; 
+  gobject_class->get_property = xfce_shortcuts_provider_get_property;
+  gobject_class->set_property = xfce_shortcuts_provider_set_property;
 
   g_object_class_install_property (gobject_class, 
                                    PROP_NAME,
@@ -151,7 +151,7 @@ frap_shortcuts_provider_class_init (FrapShortcutsProviderClass *klass)
                                                         G_PARAM_CONSTRUCT_ONLY));
 
   g_signal_new ("shortcut-removed", 
-                FRAP_TYPE_SHORTCUTS_PROVIDER,
+                XFCE_TYPE_SHORTCUTS_PROVIDER,
                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                 0,
                 NULL,
@@ -162,7 +162,7 @@ frap_shortcuts_provider_class_init (FrapShortcutsProviderClass *klass)
                 G_TYPE_STRING);
 
   g_signal_new ("shortcut-added", 
-                FRAP_TYPE_SHORTCUTS_PROVIDER,
+                XFCE_TYPE_SHORTCUTS_PROVIDER,
                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                 0,
                 NULL,
@@ -176,38 +176,38 @@ frap_shortcuts_provider_class_init (FrapShortcutsProviderClass *klass)
 
 
 static void
-frap_shortcuts_provider_init (FrapShortcutsProvider *provider)
+xfce_shortcuts_provider_init (XfceShortcutsProvider *provider)
 {
-  provider->priv = FRAP_SHORTCUTS_PROVIDER_GET_PRIVATE (provider);
+  provider->priv = XFCE_SHORTCUTS_PROVIDER_GET_PRIVATE (provider);
 
   provider->priv->channel = xfconf_channel_new ("xfce4-keyboard-shortcuts");
 
   g_signal_connect (provider->priv->channel, "property-changed", 
-                    G_CALLBACK (frap_shortcuts_provider_property_changed), provider);
+                    G_CALLBACK (xfce_shortcuts_provider_property_changed), provider);
 }
 
 
 
 static void
-frap_shortcuts_provider_constructed (GObject *object)
+xfce_shortcuts_provider_constructed (GObject *object)
 {
-  FrapShortcutsProvider *provider = FRAP_SHORTCUTS_PROVIDER (object);
+  XfceShortcutsProvider *provider = XFCE_SHORTCUTS_PROVIDER (object);
 
-  frap_shortcuts_provider_register (provider);
+  xfce_shortcuts_provider_register (provider);
 
   provider->priv->default_base_property = g_strdup_printf ("/%s/default", provider->priv->name);
   provider->priv->custom_base_property = g_strdup_printf ("/%s/custom", provider->priv->name);
 
-  if (!frap_shortcuts_provider_is_custom (provider))
-    frap_shortcuts_provider_reset_to_defaults (provider);
+  if (!xfce_shortcuts_provider_is_custom (provider))
+    xfce_shortcuts_provider_reset_to_defaults (provider);
 }
 
 
 
 static void
-frap_shortcuts_provider_finalize (GObject *object)
+xfce_shortcuts_provider_finalize (GObject *object)
 {
-  FrapShortcutsProvider *provider = FRAP_SHORTCUTS_PROVIDER (object);
+  XfceShortcutsProvider *provider = XFCE_SHORTCUTS_PROVIDER (object);
 
   g_free (provider->priv->name);
   g_free (provider->priv->custom_base_property);
@@ -215,18 +215,18 @@ frap_shortcuts_provider_finalize (GObject *object)
 
   g_object_unref (provider->priv->channel);
 
-  (*G_OBJECT_CLASS (frap_shortcuts_provider_parent_class)->finalize) (object);
+  (*G_OBJECT_CLASS (xfce_shortcuts_provider_parent_class)->finalize) (object);
 }
 
 
 
 static void
-frap_shortcuts_provider_get_property (GObject    *object,
+xfce_shortcuts_provider_get_property (GObject    *object,
                                       guint       prop_id,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {
-  FrapShortcutsProvider *provider = FRAP_SHORTCUTS_PROVIDER (object);
+  XfceShortcutsProvider *provider = XFCE_SHORTCUTS_PROVIDER (object);
 
   switch (prop_id)
     {
@@ -242,12 +242,12 @@ frap_shortcuts_provider_get_property (GObject    *object,
 
 
 static void
-frap_shortcuts_provider_set_property (GObject      *object,
+xfce_shortcuts_provider_set_property (GObject      *object,
                                       guint         prop_id,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 {
-  FrapShortcutsProvider *provider = FRAP_SHORTCUTS_PROVIDER (object);
+  XfceShortcutsProvider *provider = XFCE_SHORTCUTS_PROVIDER (object);
 
   switch (prop_id)
     {
@@ -265,7 +265,7 @@ frap_shortcuts_provider_set_property (GObject      *object,
 
 
 static void
-frap_shortcuts_provider_register (FrapShortcutsProvider *provider)
+xfce_shortcuts_provider_register (XfceShortcutsProvider *provider)
 {
   gchar       **provider_names;
   const gchar **names;
@@ -273,12 +273,12 @@ frap_shortcuts_provider_register (FrapShortcutsProvider *provider)
   gint          length;
   gint          i;
 
-  g_return_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider));
 
   provider_names = xfconf_channel_get_string_list (provider->priv->channel, "/providers");
 
   for (i = 0; provider_names != NULL && provider_names[i] != NULL; ++i)
-    if (G_UNLIKELY (g_str_equal (provider_names[i], frap_shortcuts_provider_get_name (provider))))
+    if (G_UNLIKELY (g_str_equal (provider_names[i], xfce_shortcuts_provider_get_name (provider))))
       {
         already_registered = TRUE;
         break;
@@ -291,7 +291,7 @@ frap_shortcuts_provider_register (FrapShortcutsProvider *provider)
       names = g_new0 (const gchar *, length + 1);
       for (i = 0; provider_names != NULL && provider_names[i] != NULL; ++i)
         names[i] = provider_names[i];
-      names[i++] = frap_shortcuts_provider_get_name (provider);
+      names[i++] = xfce_shortcuts_provider_get_name (provider);
       names[i] = NULL;
 
       xfconf_channel_set_string_list (provider->priv->channel, "/providers", names);
@@ -305,15 +305,15 @@ frap_shortcuts_provider_register (FrapShortcutsProvider *provider)
 
 
 static void 
-frap_shortcuts_provider_property_changed (XfconfChannel         *channel,
+xfce_shortcuts_provider_property_changed (XfconfChannel         *channel,
                                           gchar                 *property,
                                           GValue                *value,
-                                          FrapShortcutsProvider *provider)
+                                          XfceShortcutsProvider *provider)
 {
   const gchar *shortcut;
   gchar       *override_property;
 
-  g_return_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider));
 
   DBG ("property = %s", property);
 
@@ -339,22 +339,22 @@ frap_shortcuts_provider_property_changed (XfconfChannel         *channel,
 
 
 
-FrapShortcutsProvider *
-frap_shortcuts_provider_new (const gchar *name)
+XfceShortcutsProvider *
+xfce_shortcuts_provider_new (const gchar *name)
 {
-  GObject *object = g_object_new (FRAP_TYPE_SHORTCUTS_PROVIDER, "name", name, NULL);
+  GObject *object = g_object_new (XFCE_TYPE_SHORTCUTS_PROVIDER, "name", name, NULL);
 
 #if !GLIB_CHECK_VERSION (2,14,0)
-  frap_shortcuts_provider_constructed (object);
+  xfce_shortcuts_provider_constructed (object);  
 #endif
 
-  return FRAP_SHORTCUTS_PROVIDER (object);
+  return XFCE_SHORTCUTS_PROVIDER (object);
 }
 
 
 
 GList *
-frap_shortcuts_provider_get_providers (void)
+xfce_shortcuts_provider_get_providers (void)
 {
   GList         *providers = NULL;
   XfconfChannel *channel;
@@ -367,7 +367,7 @@ frap_shortcuts_provider_get_providers (void)
   if (G_LIKELY (names != NULL))
     {
       for (i = 0; names[i] != NULL; ++i)
-        providers = g_list_append (providers, frap_shortcuts_provider_new (names[i]));
+        providers = g_list_append (providers, xfce_shortcuts_provider_new (names[i]));
       g_strfreev (names);
     }
     
@@ -377,7 +377,7 @@ frap_shortcuts_provider_get_providers (void)
 
 
 void
-frap_shortcuts_provider_free_providers (GList *providers)
+xfce_shortcuts_provider_free_providers (GList *providers)
 {
   GList *iter;
 
@@ -390,21 +390,21 @@ frap_shortcuts_provider_free_providers (GList *providers)
 
 
 const gchar *
-frap_shortcuts_provider_get_name (FrapShortcutsProvider *provider)
+xfce_shortcuts_provider_get_name (XfceShortcutsProvider *provider)
 {
-  g_return_val_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider), NULL);
+  g_return_val_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider), NULL);
   return provider->priv->name;
 }
 
 
 
 gboolean
-frap_shortcuts_provider_is_custom (FrapShortcutsProvider *provider)
+xfce_shortcuts_provider_is_custom (XfceShortcutsProvider *provider)
 {
   gchar   *property;
   gboolean override;
 
-  g_return_val_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider), FALSE);
+  g_return_val_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider), FALSE);
   g_return_val_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel), FALSE);
 
   property = g_strconcat (provider->priv->custom_base_property, "/override", NULL);
@@ -417,29 +417,29 @@ frap_shortcuts_provider_is_custom (FrapShortcutsProvider *provider)
 
 
 void
-frap_shortcuts_provider_reset_to_defaults (FrapShortcutsProvider *provider)
+xfce_shortcuts_provider_reset_to_defaults (XfceShortcutsProvider *provider)
 {
-  g_return_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider));
   g_return_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel));
 
   DBG ("property = %s", provider->priv->custom_base_property);
 
   xfconf_channel_reset_property (provider->priv->channel, provider->priv->custom_base_property, TRUE);
-  frap_shortcuts_provider_clone_defaults (provider);
+  xfce_shortcuts_provider_clone_defaults (provider);
 }
 
 
 
 static gboolean
-_frap_shortcuts_provider_clone_default (const gchar           *property,
+_xfce_shortcuts_provider_clone_default (const gchar           *property,
                                         const GValue          *value,
-                                        FrapShortcutsProvider *provider)
+                                        XfceShortcutsProvider *provider)
 {
   const gchar *shortcut;
   const gchar *command;
   gchar       *custom_property;
 
-  g_return_val_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider), TRUE);
+  g_return_val_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider), TRUE);
   g_return_val_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel), TRUE);
 
   if (G_UNLIKELY (!G_IS_VALUE (value) || G_VALUE_TYPE (value) != G_TYPE_STRING))
@@ -460,12 +460,12 @@ _frap_shortcuts_provider_clone_default (const gchar           *property,
 
 
 void
-frap_shortcuts_provider_clone_defaults (FrapShortcutsProvider *provider)
+xfce_shortcuts_provider_clone_defaults (XfceShortcutsProvider *provider)
 {
   GHashTable *properties;
   gchar      *property;
 
-  g_return_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider));
   g_return_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel));
 
   /* Get default command shortcuts */
@@ -474,7 +474,7 @@ frap_shortcuts_provider_clone_defaults (FrapShortcutsProvider *provider)
   if (G_LIKELY (properties != NULL))
     {
       /* Copy from /commands/default to /commands/custom property by property */
-      g_hash_table_foreach (properties, (GHFunc) _frap_shortcuts_provider_clone_default, provider);
+      g_hash_table_foreach (properties, (GHFunc) _xfce_shortcuts_provider_clone_default, provider);
 
       g_hash_table_destroy (properties);
     }
@@ -490,16 +490,16 @@ frap_shortcuts_provider_clone_defaults (FrapShortcutsProvider *provider)
 
 
 static gboolean
-_frap_shortcuts_provider_get_shortcut (const gchar                  *property,
+_xfce_shortcuts_provider_get_shortcut (const gchar                  *property,
                                        const GValue                 *value,
-                                       FrapShortcutsProviderContext *context)
+                                       XfceShortcutsProviderContext *context)
 {
-  FrapShortcut *sc;
+  XfceShortcut *sc;
   const gchar  *shortcut;
   const gchar  *command;
 
   g_return_val_if_fail (context != NULL, TRUE);
-  g_return_val_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (context->provider), TRUE);
+  g_return_val_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (context->provider), TRUE);
 
   if (G_VALUE_TYPE (value) != G_TYPE_STRING)
     return FALSE;
@@ -512,7 +512,7 @@ _frap_shortcuts_provider_get_shortcut (const gchar                  *property,
 
   if (G_LIKELY (shortcut != NULL && command != NULL && g_utf8_strlen (shortcut, -1) > 0 && g_utf8_strlen (command, -1) > 0))
     {
-      sc = g_new0 (FrapShortcut, 1);
+      sc = g_new0 (XfceShortcut, 1);
 
       sc->property_name = g_strdup (property);
       sc->shortcut = g_strdup (shortcut);
@@ -527,12 +527,12 @@ _frap_shortcuts_provider_get_shortcut (const gchar                  *property,
 
 
 GList *
-frap_shortcuts_provider_get_shortcuts (FrapShortcutsProvider *provider)
+xfce_shortcuts_provider_get_shortcuts (XfceShortcutsProvider *provider)
 {
-  FrapShortcutsProviderContext context;
+  XfceShortcutsProviderContext context;
   GHashTable                  *properties;
 
-  g_return_val_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider), NULL);
+  g_return_val_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider), NULL);
   g_return_val_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel), NULL);
 
   properties = xfconf_channel_get_properties (provider->priv->channel, provider->priv->custom_base_property);
@@ -541,26 +541,26 @@ frap_shortcuts_provider_get_shortcuts (FrapShortcutsProvider *provider)
   context.list = NULL;
 
   if (G_LIKELY (properties != NULL))
-    g_hash_table_foreach (properties, (GHFunc) _frap_shortcuts_provider_get_shortcut, &context);
+    g_hash_table_foreach (properties, (GHFunc) _xfce_shortcuts_provider_get_shortcut, &context);
 
   return context.list;
 }
 
 
 
-FrapShortcut *
-frap_shortcuts_provider_get_shortcut (FrapShortcutsProvider *provider,
+XfceShortcut *
+xfce_shortcuts_provider_get_shortcut (XfceShortcutsProvider *provider,
                                       const gchar           *shortcut)
 {
-  FrapShortcut *sc = NULL;
+  XfceShortcut *sc = NULL;
   gchar        *base_property;
   gchar        *property;
   gchar        *command;
 
-  g_return_val_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider), NULL);
+  g_return_val_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider), NULL);
   g_return_val_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel), NULL);
 
-  if (G_LIKELY (frap_shortcuts_provider_is_custom (provider)))
+  if (G_LIKELY (xfce_shortcuts_provider_is_custom (provider)))
     base_property = provider->priv->custom_base_property;
   else
     base_property = provider->priv->default_base_property;
@@ -570,7 +570,7 @@ frap_shortcuts_provider_get_shortcut (FrapShortcutsProvider *provider,
 
   if (G_LIKELY (command != NULL))
     {
-      sc = g_new0 (FrapShortcut, 1);
+      sc = g_new0 (XfceShortcut, 1);
       sc->command = command;
       sc->property_name = g_strdup (property);
       sc->shortcut = g_strdup (shortcut);
@@ -584,17 +584,17 @@ frap_shortcuts_provider_get_shortcut (FrapShortcutsProvider *provider,
 
 
 gboolean
-frap_shortcuts_provider_has_shortcut (FrapShortcutsProvider *provider,
+xfce_shortcuts_provider_has_shortcut (XfceShortcutsProvider *provider,
                                       const gchar           *shortcut)
 {
   gchar   *base_property;
   gchar   *property;
   gboolean has_property;
 
-  g_return_val_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider), FALSE);
+  g_return_val_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider), FALSE);
   g_return_val_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel), FALSE);
   
-  if (G_LIKELY (frap_shortcuts_provider_is_custom (provider)))
+  if (G_LIKELY (xfce_shortcuts_provider_is_custom (provider)))
     base_property = provider->priv->custom_base_property;
   else
     base_property = provider->priv->default_base_property;
@@ -609,18 +609,18 @@ frap_shortcuts_provider_has_shortcut (FrapShortcutsProvider *provider,
 
 
 void
-frap_shortcuts_provider_set_shortcut (FrapShortcutsProvider *provider,
+xfce_shortcuts_provider_set_shortcut (XfceShortcutsProvider *provider,
                                       const gchar           *shortcut,
                                       const gchar           *command)
 {
   gchar *property;
 
-  g_return_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider));
   g_return_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel));
   g_return_if_fail (shortcut != NULL && command != NULL);
 
   /* Only allow custom shortcuts to be changed */
-  if (G_UNLIKELY (!frap_shortcuts_provider_is_custom (provider)))
+  if (G_UNLIKELY (!xfce_shortcuts_provider_is_custom (provider)))
     return;
     
   property = g_strconcat (provider->priv->custom_base_property, "/", shortcut, NULL);
@@ -636,12 +636,12 @@ frap_shortcuts_provider_set_shortcut (FrapShortcutsProvider *provider,
 
 
 void
-frap_shortcuts_provider_reset_shortcut (FrapShortcutsProvider *provider,
+xfce_shortcuts_provider_reset_shortcut (XfceShortcutsProvider *provider,
                                         const gchar           *shortcut)
 {
   gchar *property;
 
-  g_return_if_fail (FRAP_IS_SHORTCUTS_PROVIDER (provider));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider));
   g_return_if_fail (XFCONF_IS_CHANNEL (provider->priv->channel));
   g_return_if_fail (shortcut != NULL);
 
@@ -656,15 +656,15 @@ frap_shortcuts_provider_reset_shortcut (FrapShortcutsProvider *provider,
 
 
 void
-frap_shortcuts_free_shortcuts (GList *shortcuts)
+xfce_shortcuts_free (GList *shortcuts)
 {
-  g_list_foreach (shortcuts, (GFunc) frap_shortcuts_free_shortcut, NULL);
+  g_list_foreach (shortcuts, (GFunc) xfce_shortcut_free, NULL);
 }
 
 
 
 void
-frap_shortcuts_free_shortcut (FrapShortcut *shortcut)
+xfce_shortcut_free (XfceShortcut *shortcut)
 {
   if (G_UNLIKELY (shortcut == NULL))
     return;

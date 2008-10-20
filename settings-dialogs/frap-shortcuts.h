@@ -24,38 +24,11 @@
 #include <X11/Xlib.h>
 #include <xfconf/xfconf.h>
 
-
-
-typedef void (*FrapShortcutsCallback) (const gchar *shortcut,
-                                       gpointer     user_data);
-
-
-
-gboolean       frap_shortcuts_conflict_dialog       (const gchar           *owner,
-                                                     const gchar           *other,
-                                                     const gchar           *shortcut,
-                                                     const gchar           *owner_action,
-                                                     const gchar           *other_action,
-                                                     gboolean               ignore_same_provider);
+gboolean frap_shortcuts_conflict_dialog (const gchar *owner,
+                                         const gchar *other,
+                                         const gchar *shortcut,
+                                         const gchar *owner_action,
+                                         const gchar *other_action,
+                                         gboolean     ignore_same_provider);
                                                      
-gchar         *frap_shortcuts_get_accelerator_name  (guint                  keyval,
-                                                     guint                  modifiers);
-void           frap_shortcuts_parse_accelerator     (const gchar           *name,
-                                                     guint                 *keyval,
-                                                     guint                 *modifiers);
-
-void           frap_shortcuts_set_shortcut_callback (FrapShortcutsCallback  callback,
-                                                     gpointer               user_data);
-void           frap_shortcuts_add_filter            (GdkFilterFunc          callback,
-                                                     gpointer               user_data);
-gboolean       frap_shortcuts_grab_shortcut         (const gchar           *shortcut,
-                                                     gboolean               ungrab);
-gboolean       frap_shortcuts_grab_shortcut_real    (Display               *display,
-                                                     Window                 window,
-                                                     KeyCode                keycode,
-                                                     guint                  modifiers,
-                                                     gboolean               ungrab);
-
-
-
 #endif /* !__FRAP_SHORTCUTS_H__ */

@@ -40,10 +40,10 @@ xfwm4_workspace_settings_LDADD = \
 xfwm4_settings_SOURCES = \
 	xfwm4-settings.c \
 	xfwm4-dialog_glade.h \
+	xfce-shortcuts-provider.h \
+	xfce-shortcuts-provider.c \
 	frap-shortcuts.h \
 	frap-shortcuts.c \
-	frap-shortcuts-provider.h \
-	frap-shortcuts-provider.c \
 	frap-shortcuts-dialog.h \
 	frap-shortcuts-dialog.c
 

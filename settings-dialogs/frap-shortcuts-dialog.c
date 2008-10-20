@@ -40,11 +40,15 @@ static void     frap_shortcuts_dialog_dispose          (GObject                 
 static void     frap_shortcuts_dialog_finalize         (GObject                  *object);
 static void     frap_shortcuts_dialog_create_contents  (FrapShortcutsDialog      *dialog,
                                                         const gchar              *provider,
+                                                        const gchar              *action_name,
                                                         const gchar              *action);
 static gboolean frap_shortcuts_dialog_key_pressed      (FrapShortcutsDialog      *dialog,
                                                         GdkEventKey              *event);
 static gboolean frap_shortcuts_dialog_key_released     (FrapShortcutsDialog      *dialog,
                                                         GdkEventKey              *event);
+static gchar   *frap_shortcuts_dialog_shortcut_name    (FrapShortcutsDialog      *dialog,
+                                                        guint                     keyval,
+                                                        guint                     modifiers);
 
 
 
@@ -65,6 +69,7 @@ struct _FrapShortcutsDialog
 
   GtkWidget *shortcut_label;
 
+  gchar     *action_name;
   gchar     *action;
   gchar     *shortcut;
 };
@@ -199,6 +204,7 @@ frap_shortcuts_dialog_finalize (GObject *object)
 {
   FrapShortcutsDialog *dialog = FRAP_SHORTCUTS_DIALOG (object);
 
+  g_free (dialog->action_name);
   g_free (dialog->action);
   g_free (dialog->shortcut);
 
@@ -209,14 +215,16 @@ frap_shortcuts_dialog_finalize (GObject *object)
 
 GtkWidget*
 frap_shortcuts_dialog_new (const gchar *provider,
+                           const gchar *action_name,
                            const gchar *action)
 {
   FrapShortcutsDialog *dialog;
   
   dialog = g_object_new (FRAP_TYPE_SHORTCUTS_DIALOG, NULL);
+  dialog->action_name = g_strdup (action_name);
   dialog->action = g_strdup (action);
 
-  frap_shortcuts_dialog_create_contents (dialog, provider, action);
+  frap_shortcuts_dialog_create_contents (dialog, provider, action_name, action);
 
   return GTK_WIDGET (dialog);
 }
@@ -226,6 +234,7 @@ frap_shortcuts_dialog_new (const gchar *provider,
 static void
 frap_shortcuts_dialog_create_contents (FrapShortcutsDialog *dialog,
                                        const gchar         *provider,
+                                       const gchar         *action_name,
                                        const gchar         *action)
 {
   GtkWidget   *button;
@@ -237,17 +246,17 @@ frap_shortcuts_dialog_create_contents (FrapShortcutsDialog *dialog,
   if (g_utf8_collate (provider, "xfwm4") == 0)
     {
       title = _("Enter window manager action shortcut");
-      subtitle = g_strdup_printf (_("Action: %s"), action);
+      subtitle = g_strdup_printf (_("Action: %s"), action_name);
     }
   else if (g_utf8_collate (provider, "commands") == 0)
     {
       title = _("Enter command shortcut");
-      subtitle = g_strdup_printf (_("Command: %s"), action);
+      subtitle = g_strdup_printf (_("Command: %s"), action_name);
     }
   else
     {
       title = _("Enter shortcut");
-      subtitle = g_strdup_printf (_("Action: %s"), action);
+      subtitle = g_strdup_printf (_("Action: %s"), action_name);
     }
 
   /* Set dialog title */
@@ -339,7 +348,7 @@ frap_shortcuts_dialog_key_pressed (FrapShortcutsDialog *dialog,
   g_free (dialog->shortcut);
 
   /* Determine and remember the current shortcut */
-  dialog->shortcut = frap_shortcuts_get_accelerator_name (event->keyval, event->state);
+  dialog->shortcut = frap_shortcuts_dialog_shortcut_name (dialog, event->keyval, event->state);
 
   shortcut = g_markup_escape_text (dialog->shortcut, -1);
   text = g_strdup_printf (_("<span size='large'><b>%s</b></span>"), shortcut);
@@ -372,8 +381,94 @@ frap_shortcuts_dialog_key_released (FrapShortcutsDialog *dialog,
       /* Exit dialog with positive response */
       gtk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
     }
+  else
+    {
+      /* Clear label */
+      gtk_label_set_markup (GTK_LABEL (dialog->shortcut_label), "");
+    }
 
   return FALSE;
+}
+
+
+
+static gchar *
+frap_shortcuts_dialog_shortcut_name (FrapShortcutsDialog *dialog,
+                                     guint                keyval,
+                                     guint                modifiers)
+{
+  XModifierKeymap *modmap;
+  Display         *display;
+  const KeySym    *keysyms;
+  KeyCode          keycode;
+  KeySym          *keymap;
+  gint             keysyms_per_keycode = 0;
+  gint             min_keycode = 0;
+  gint             max_keycode = 0;
+  gint             mask;
+  gint             i;
+  gint             j;
+
+  g_return_val_if_fail (FRAP_IS_SHORTCUTS_DIALOG (dialog), NULL);
+
+  display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+
+  gdk_error_trap_push ();
+
+  XDisplayKeycodes (display, &min_keycode, &max_keycode);
+
+  keymap = XGetKeyboardMapping (display, min_keycode, max_keycode - min_keycode + 1, &keysyms_per_keycode);
+
+  if (G_LIKELY (keymap != NULL))
+    {
+      modmap = XGetModifierMapping (display);
+
+      if (G_LIKELY (modmap != NULL))
+        {
+          for (i = 0; i < 8 * modmap->max_keypermod; ++i)
+            {
+              keycode = modmap->modifiermap[i];
+
+              if (keycode == 0 || keycode < min_keycode || keycode > max_keycode)
+                continue;
+
+              keysyms = keymap + (keycode - min_keycode) * keysyms_per_keycode;
+              mask = 1 << (i / modmap->max_keypermod);
+
+              for (j = 0; j < keysyms_per_keycode; ++j)
+                {
+                  if (keysyms[j] == GDK_Super_L || keysyms[j] == GDK_Super_R)
+                    modifiers &= ~mask;
+
+#if 0
+                  if (keysyms[j] == GDK_Meta_L || keysyms[j] == GDK_Meta_R)
+                    modifiers &= ~mask;
+#endif
+
+                  if (keysyms[j] == GDK_Hyper_L || keysyms[j] == GDK_Hyper_R)
+                    modifiers &= ~mask;
+
+                  if (keysyms[j] == GDK_Scroll_Lock)
+                    modifiers &= ~mask;
+
+                  if (keysyms[j] == GDK_Num_Lock)
+                    modifiers &= ~mask;
+
+                  if (keysyms[j] == GDK_Caps_Lock)
+                    modifiers &= ~mask;
+                }
+            }
+
+          XFreeModifiermap (modmap);
+        }
+
+      XFree (keymap);
+    }
+
+  gdk_flush ();
+  gdk_error_trap_pop ();
+
+  return gtk_accelerator_name (keyval, modifiers);
 }
 
 
@@ -392,4 +487,13 @@ frap_shortcuts_dialog_get_action (FrapShortcutsDialog *dialog)
 {
   g_return_val_if_fail (FRAP_IS_SHORTCUTS_DIALOG (dialog), NULL);
   return dialog->action;
+}
+
+
+
+const gchar *
+frap_shortcuts_dialog_get_action_name (FrapShortcutsDialog *dialog)
+{
+  g_return_val_if_fail (FRAP_IS_SHORTCUTS_DIALOG (dialog), NULL);
+  return dialog->action_name;
 }

@@ -44,13 +44,18 @@
 #include "xfwm4-dialog_glade.h"
 #include "xfwm4-settings.h"
 
-#include "frap-shortcuts-provider.h"
+#include "frap-shortcuts-dialog.h"
+#include "xfce-shortcuts-provider.h"
 
 
 
-#define DEFAULT_THEME  "Default"
+#define DEFAULT_THEME             "Default"
 
-#define INDICATOR_SIZE 9
+#define INDICATOR_SIZE            9
+
+#define SHORTCUTS_NAME_COLUMN     0
+#define SHORTCUTS_FEATURE_COLUMN  1
+#define SHORTCUTS_SHORTCUT_COLUMN 2
 
 
 
@@ -60,7 +65,8 @@
 
 
 
-typedef struct _MenuTemplate MenuTemplate;
+typedef struct _MenuTemplate     MenuTemplate;
+typedef struct _ShortcutTemplate ShortcutTemplate;
 
 
 
@@ -73,98 +79,114 @@ enum
 
 
 
-static void       xfwm_settings_class_init                           (XfwmSettingsClass *klass);
-static void       xfwm_settings_init                                 (XfwmSettings      *settings);
-static void       xfwm_settings_constructed                          (GObject           *object);
-static void       xfwm_settings_finalize                             (GObject           *object);
-static void       xfwm_settings_get_property                         (GObject           *object,
-                                                                      guint              prop_id,
-                                                                      GValue            *value,
-                                                                      GParamSpec        *pspec);
-static void       xfwm_settings_set_property                         (GObject           *object,
-                                                                      guint              prop_id,
-                                                                      const GValue      *value,
-                                                                      GParamSpec        *pspec);
-static gint       xfwm_settings_theme_sort_func                      (GtkTreeModel      *model,
-                                                                      GtkTreeIter       *iter1,
-                                                                      GtkTreeIter       *iter2);
-static void       xfwm_settings_load_themes                          (XfwmSettings      *settings);
-static void       xfwm_settings_theme_selection_changed              (GtkTreeSelection  *selection,
-                                                                      XfwmSettings      *settings);
-static void       xfwm_settings_title_alignment_changed              (GtkComboBox       *combo,
-                                                                      XfwmSettings      *settings);
-static void       xfwm_settings_active_frame_drag_data               (GtkWidget         *widget,
-                                                                      GdkDragContext    *drag_context,
-                                                                      gint               x,
-                                                                      gint               y,
-                                                                      GtkSelectionData  *data,
-                                                                      guint              info,
-                                                                      guint              time,
-                                                                      XfwmSettings      *settings);
-static gboolean   xfwm_settings_active_frame_drag_motion             (GtkWidget         *widget, 
-                                                                      GdkDragContext    *drag_context, 
-                                                                      gint               x,
-                                                                      gint               y, 
-                                                                      guint              time,
-                                                                      XfwmSettings      *settings);
-static void       xfwm_settings_active_frame_drag_leave              (GtkWidget         *widget,
-                                                                      GdkDragContext    *drag_context,
-                                                                      guint              time,
-                                                                      XfwmSettings      *settings);
-static void       xfwm_settings_hidden_frame_drag_data               (GtkWidget         *widget,
-                                                                      GdkDragContext    *drag_context,
-                                                                      gint               x,
-                                                                      gint               y,
-                                                                      GtkSelectionData  *data,
-                                                                      guint              info,
-                                                                      guint              time,
-                                                                      XfwmSettings      *settings);
-static void       xfwm_settings_delete_indicator                     (GtkWidget         *widget);
-static void       xfwm_settings_create_indicator                     (GtkWidget         *widget,
-                                                                      gint               x,
-                                                                      gint               y,
-                                                                      gint               width,
-                                                                      gint               height);
-static void       xfwm_settings_title_button_drag_data               (GtkWidget        *widget,
-                                                                      GdkDragContext   *drag_context,
-                                                                      GtkSelectionData *data,
-                                                                      guint             info,
-                                                                      guint             time,
-                                                                      const gchar      *atom_name,
-                                                                      XfwmSettings     *settings);
-static void       xfwm_settings_title_button_drag_begin              (GtkWidget        *widget,
-                                                                      GdkDragContext   *drag_context);
-static void       xfwm_settings_title_button_drag_end                (GtkWidget        *widget,
-                                                                      GdkDragContext   *drag_context);
-static gboolean   xfwm_settings_signal_blocker                       (GtkWidget        *widget);
-static GdkPixbuf *xfwm_settings_create_icon_from_widget              (GtkWidget        *widget);
+static void       xfwm_settings_class_init                           (XfwmSettingsClass    *klass);
+static void       xfwm_settings_init                                 (XfwmSettings         *settings);
+static void       xfwm_settings_constructed                          (GObject              *object);
+static void       xfwm_settings_finalize                             (GObject              *object);
+static void       xfwm_settings_get_property                         (GObject              *object,
+                                                                      guint                 prop_id,
+                                                                      GValue               *value,
+                                                                      GParamSpec           *pspec);
+static void       xfwm_settings_set_property                         (GObject              *object,
+                                                                      guint                 prop_id,
+                                                                      const GValue         *value,
+                                                                      GParamSpec           *pspec);
+static gint       xfwm_settings_theme_sort_func                      (GtkTreeModel         *model,
+                                                                      GtkTreeIter          *iter1,
+                                                                      GtkTreeIter          *iter2);
+static void       xfwm_settings_load_themes                          (XfwmSettings         *settings);
+static void       xfwm_settings_theme_selection_changed              (GtkTreeSelection     *selection,
+                                                                      XfwmSettings         *settings);
+static void       xfwm_settings_title_alignment_changed              (GtkComboBox          *combo,
+                                                                      XfwmSettings         *settings);
+static void       xfwm_settings_active_frame_drag_data               (GtkWidget            *widget,
+                                                                      GdkDragContext       *drag_context,
+                                                                      gint                  x,
+                                                                      gint                  y,
+                                                                      GtkSelectionData     *data,
+                                                                      guint                 info,
+                                                                      guint                 time,
+                                                                      XfwmSettings         *settings);
+static gboolean   xfwm_settings_active_frame_drag_motion             (GtkWidget            *widget, 
+                                                                      GdkDragContext       *drag_context, 
+                                                                      gint                  x,
+                                                                      gint                  y, 
+                                                                      guint                 time,
+                                                                      XfwmSettings         *settings);
+static void       xfwm_settings_active_frame_drag_leave              (GtkWidget            *widget,
+                                                                      GdkDragContext       *drag_context,
+                                                                      guint                 time,
+                                                                      XfwmSettings         *settings);
+static void       xfwm_settings_hidden_frame_drag_data               (GtkWidget            *widget,
+                                                                      GdkDragContext       *drag_context,
+                                                                      gint                  x,
+                                                                      gint                  y,
+                                                                      GtkSelectionData     *data,
+                                                                      guint                 info,
+                                                                      guint                 time,
+                                                                      XfwmSettings         *settings);
+static void       xfwm_settings_delete_indicator                     (GtkWidget            *widget);
+static void       xfwm_settings_create_indicator                     (GtkWidget            *widget,
+                                                                      gint                  x,
+                                                                      gint                  y,
+                                                                      gint                  width,
+                                                                      gint                  height);
+static void       xfwm_settings_title_button_drag_data               (GtkWidget            *widget,
+                                                                      GdkDragContext       *drag_context,
+                                                                      GtkSelectionData     *data,
+                                                                      guint                 info,
+                                                                      guint                 time,
+                                                                      const gchar          *atom_name,
+                                                                      XfwmSettings         *settings);
+static void       xfwm_settings_title_button_drag_begin              (GtkWidget            *widget,
+                                                                      GdkDragContext       *drag_context);
+static void       xfwm_settings_title_button_drag_end                (GtkWidget            *widget,
+                                                                      GdkDragContext       *drag_context);
+static gboolean   xfwm_settings_signal_blocker                       (GtkWidget            *widget);
+static GdkPixbuf *xfwm_settings_create_icon_from_widget              (GtkWidget            *widget);
 
-static void       xfwm_settings_save_button_layout                   (XfwmSettings      *settings,
-                                                                      GtkContainer      *container);
-static void       xfwm_settings_double_click_action_changed          (GtkComboBox       *combo,
-                                                                      XfwmSettings      *settings);
-static void       xfwm_settings_title_button_alignment_changed       (GtkComboBox       *combo,
-                                                                      GtkWidget         *button);
+static void       xfwm_settings_save_button_layout                   (XfwmSettings          *settings,
+                                                                      GtkContainer          *container);
+static void       xfwm_settings_double_click_action_changed          (GtkComboBox           *combo,
+                                                                      XfwmSettings          *settings);
+static void       xfwm_settings_title_button_alignment_changed       (GtkComboBox           *combo,
+                                                                      GtkWidget             *button);
 
-static void       xfwm_settings_button_layout_property_changed       (XfconfChannel     *channel,
-                                                                      const gchar       *property,
-                                                                      const GValue      *value,
-                                                                      XfwmSettings      *settings);
-static void       xfwm_settings_title_alignment_property_changed     (XfconfChannel     *channel,
-                                                                      const gchar       *property,
-                                                                      const GValue      *value,
-                                                                      XfwmSettings      *settings);
-static void       xfwm_settings_double_click_action_property_changed (XfconfChannel     *channel,
-                                                                      const gchar       *property,
-                                                                      const GValue      *value,
-                                                                      XfwmSettings      *settings);
+static void       xfwm_settings_button_layout_property_changed       (XfconfChannel         *channel,
+                                                                      const gchar           *property,
+                                                                      const GValue          *value,
+                                                                      XfwmSettings          *settings);
+static void       xfwm_settings_title_alignment_property_changed     (XfconfChannel         *channel,
+                                                                      const gchar           *property,
+                                                                      const GValue          *value,
+                                                                      XfwmSettings          *settings);
+static void       xfwm_settings_double_click_action_property_changed (XfconfChannel         *channel,
+                                                                      const gchar           *property,
+                                                                      const GValue          *value,
+                                                                      XfwmSettings          *settings);
+static void       xfwm_settings_initialize_shortcuts                 (XfwmSettings          *settings);
+static void       xfwm_settings_reload_shortcuts                     (XfwmSettings          *settings);
+static void       xfwm_settings_shortcut_added                       (XfceShortcutsProvider *provider,
+                                                                      const gchar           *shortcut,
+                                                                      XfwmSettings          *settings);
+static void       xfwm_settings_shortcut_removed                     (XfceShortcutsProvider *provider,
+                                                                      const gchar           *shortcut,
+                                                                      XfwmSettings          *settings);
+static void       xfwm_settings_shortcut_clear_clicked               (GtkButton             *button,
+                                                                      XfwmSettings          *settings);
+static void       xfwm_settings_shortcut_reset_clicked               (GtkButton             *button,
+                                                                      XfwmSettings          *settings);
+static void       xfwm_settings_shortcut_row_activated               (GtkTreeView           *tree_view,
+                                                                      GtkTreePath           *path,
+                                                                      GtkTreeViewColumn     *column,
+                                                                      XfwmSettings          *settings);
 
 
 
 struct _XfwmSettingsPrivate
 {
   GladeXML              *glade_xml;
-  FrapShortcutsProvider *provider;
+  XfceShortcutsProvider *provider;
   XfconfChannel         *wm_channel;
 };
 
@@ -172,6 +194,13 @@ struct _MenuTemplate
 {
   const gchar *name;
   const gchar *value;
+};
+
+struct _ShortcutTemplate
+{
+  const gchar *name;
+  const gchar *feature;
+  const gchar *shortcut;
 };
 
 
@@ -192,6 +221,50 @@ static const MenuTemplate title_align_values[] = {
   { N_("Center"), "center" },
   { N_("Right"), "right" },
   { NULL, NULL },
+};
+
+static const ShortcutTemplate shortcut_values[] = {
+  { N_("Window operations menu"), "popup_menu_key", NULL },
+  { N_("Up"), "up_key", NULL },
+  { N_("Down"), "down_key", NULL },
+  { N_("Left"), "left_key", NULL },
+  { N_("Right"), "right_key", NULL },
+  { N_("Cancel"), "cancel_key", NULL },
+  { N_("Cycle windows"), "cycle_windows_key", NULL },
+  { N_("Close window"), "close_window_key", NULL },
+  { N_("Maximize window horizontally"), "maximize_horiz_key", NULL },
+  { N_("Maximize window vertically"), "maximize_vert_key", NULL },
+  { N_("Maximize window"), "maximize_window_key", NULL },
+  { N_("Hide window"), "hide_window_key", NULL },
+  { N_("Move window"), "move_window_key", NULL },
+  { N_("Resize window"), "resize_window_key", NULL },
+  { N_("Shade window"), "shade_window_key", NULL },
+  { N_("Stick window"), "stick_window_key", NULL },
+  { N_("Raise window"), "raise_window_key", NULL },
+  { N_("Lower window"), "lower_window_key", NULL },
+  { N_("Fill window"), "fill_window_key", NULL },
+  { N_("Fill window horizontally"), "fill_horiz_key", NULL },
+  { N_("Fill window vertically"), "fill_vert_key", NULL },
+  { N_("Toggle above"), "above_key", NULL },
+  { N_("Toggle fullscreen"), "fullscreen_key", NULL },
+  { N_("Move window to upper workspace"), "move_window_up_workspace_key", NULL },
+  { N_("Move window to bottom workspace"), "move_window_down_workspace_key", NULL },
+  { N_("Move window to left workspace"), "move_window_left_workspace_key", NULL },
+  { N_("Move window to right workspace"), "move_window_right_workspace_key", NULL },
+  { N_("Move window to previous workspace"), "move_window_prev_workspace_key", NULL },
+  { N_("Move window to next workspace"), "move_window_next_workspace_key", NULL },
+  { N_("Show desktop"), "show_desktop_key", NULL },
+  { N_("Upper workspace"), "up_workspace_key", NULL },
+  { N_("Bottom workspace"), "down_workspace_key", NULL },
+  { N_("Left workspace"), "left_workspace_key", NULL },
+  { N_("Right workspace"), "right_workspace_key", NULL },
+  { N_("Previous workspace"), "prev_workspace_key", NULL },
+  { N_("Next workspace"), "next_workspace_key", NULL },
+  { N_("Add workspace"), "add_workspace_key", NULL },
+  { N_("Add adjacent workspace"), "add_adjacent_workspace_key", NULL },
+  { N_("Delete last workspace"), "del_workspace_key", NULL },
+  { N_("Delete active workspace"), "del_active_workspace_key", NULL },
+  { NULL, NULL, NULL }
 };
 
 static gboolean           opt_version = FALSE;
@@ -289,7 +362,7 @@ xfwm_settings_init (XfwmSettings *settings)
   settings->priv = XFWM_SETTINGS_GET_PRIVATE (settings);
 
   settings->priv->glade_xml = NULL;
-  settings->priv->provider = frap_shortcuts_provider_new ("xfwm4");
+  settings->priv->provider = xfce_shortcuts_provider_new ("xfwm4");
   settings->priv->wm_channel = xfconf_channel_new ("xfwm4");
 }
 
@@ -312,6 +385,9 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *active_box;
   GtkWidget          *hidden_frame;
   GtkWidget          *hidden_box;
+  GtkWidget          *shortcuts_treeview;
+  GtkWidget          *shortcuts_clear_button;
+  GtkWidget          *shortcuts_reset_button;
   GtkWidget          *focus_delay_scale;
   GtkWidget          *click_to_focus_mode;
   GtkWidget          *raise_on_click_check;
@@ -480,6 +556,41 @@ xfwm_settings_constructed (GObject *object)
                                                 "/general/button_layout", &value, settings);
   g_value_unset (&value);
 
+  /* Keyboard tab widgets */
+  shortcuts_treeview = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  shortcuts_clear_button = glade_xml_get_widget (settings->priv->glade_xml, 
+                                                 "shortcuts_clear_button");
+  shortcuts_reset_button = glade_xml_get_widget (settings->priv->glade_xml, 
+                                                 "shortcuts_reset_button");
+
+  /* Keyboard tab: Shortcuts tree view */
+  {
+    gtk_tree_selection_set_mode (gtk_tree_view_get_selection (GTK_TREE_VIEW (shortcuts_treeview)),
+                                 GTK_SELECTION_MULTIPLE);
+
+    list_store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    gtk_tree_view_set_model (GTK_TREE_VIEW (shortcuts_treeview), GTK_TREE_MODEL (list_store));
+
+    renderer = gtk_cell_renderer_text_new ();
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (shortcuts_treeview), 
+                                                 0, _("Action"), renderer, 
+                                                 "text", SHORTCUTS_NAME_COLUMN, NULL);
+
+    renderer = gtk_cell_renderer_text_new ();
+    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (shortcuts_treeview),
+                                                 1, _("Shortcut"), renderer, 
+                                                 "text", SHORTCUTS_SHORTCUT_COLUMN, NULL);
+
+    g_signal_connect (shortcuts_treeview, "row-activated", 
+                      G_CALLBACK (xfwm_settings_shortcut_row_activated), settings);
+  }
+
+  /* Connect to shortcut buttons */
+  g_signal_connect (shortcuts_clear_button, "clicked", 
+                    G_CALLBACK (xfwm_settings_shortcut_clear_clicked), settings);
+  g_signal_connect (shortcuts_reset_button, "clicked", 
+                    G_CALLBACK (xfwm_settings_shortcut_reset_clicked), settings);
+
   /* Focus tab widgets */
   focus_delay_scale = glade_xml_get_widget (settings->priv->glade_xml, "focus_delay_scale");
   focus_new_check = glade_xml_get_widget (settings->priv->glade_xml, "focus_new_check");
@@ -563,6 +674,16 @@ xfwm_settings_constructed (GObject *object)
                           snap_to_border_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/snap_to_windows", G_TYPE_BOOLEAN, 
                           snap_to_window_check, "active");
+
+  /* Load shortcuts */
+  xfwm_settings_initialize_shortcuts (settings);
+  xfwm_settings_reload_shortcuts (settings);
+
+  /* Connect to shortcuts provider */
+  g_signal_connect (settings->priv->provider, "shortcut-added", 
+                    G_CALLBACK (xfwm_settings_shortcut_added), settings);
+  g_signal_connect (settings->priv->provider, "shortcut-removed",
+                    G_CALLBACK (xfwm_settings_shortcut_removed), settings);
 }
 
 
@@ -636,6 +757,7 @@ xfwm_settings_new (void)
 
   if (G_LIKELY (glade_xml != NULL))
     settings = g_object_new (XFWM_TYPE_SETTINGS, "glade-xml", glade_xml, NULL);
+
 #if !GLIB_CHECK_VERSION (2,14,0)
   xfwm_settings_constructed (G_OBJECT(settings));
 #endif
@@ -1414,5 +1536,368 @@ xfwm_settings_double_click_action_property_changed (XfconfChannel *channel,
           g_free (current_value);
         }
       while (gtk_tree_model_iter_next (model, &iter));
+    }
+}
+
+
+
+static void
+xfwm_settings_initialize_shortcuts (XfwmSettings *settings)
+{
+  GtkTreeModel *model;
+  GtkTreeIter   iter;
+  GtkWidget    *view;
+  gint          i;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+
+  view = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
+
+  gtk_list_store_clear (GTK_LIST_STORE (model));
+
+  for (i = 0; shortcut_values[i].name != NULL; ++i)
+    {
+      gtk_list_store_append (GTK_LIST_STORE (model), &iter);
+      gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+                          SHORTCUTS_NAME_COLUMN, shortcut_values[i].name,
+                          SHORTCUTS_FEATURE_COLUMN, shortcut_values[i].feature,
+                          -1);
+    }
+}
+
+
+
+static void
+xfwm_settings_clear_shortcuts_view (XfwmSettings *settings)
+{
+  GtkTreeModel *model;
+  GtkTreeIter   iter;
+  GtkWidget    *view;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+
+  view = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
+
+  if (G_LIKELY (gtk_tree_model_get_iter_first (model, &iter)))
+    {
+      do
+        {
+          gtk_list_store_set (GTK_LIST_STORE (model), &iter, 
+                              SHORTCUTS_SHORTCUT_COLUMN, NULL, -1);
+        }
+      while (gtk_tree_model_iter_next (model, &iter));
+    }
+}
+
+
+
+static void
+xfwm_settings_reload_shortcut (XfceShortcut *shortcut,
+                               GtkTreeModel *model)
+{
+  GtkTreeIter iter;
+  gchar      *feature;
+
+  g_return_if_fail (GTK_IS_TREE_MODEL (model));
+  g_return_if_fail (shortcut != NULL);
+
+  if (G_LIKELY (gtk_tree_model_get_iter_first (model, &iter)))
+    {
+      do 
+        {
+          gtk_tree_model_get (model, &iter, SHORTCUTS_FEATURE_COLUMN, &feature, -1);
+
+          if (G_UNLIKELY (g_str_equal (feature, shortcut->command)))
+            {
+              gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+                                  SHORTCUTS_SHORTCUT_COLUMN, shortcut->shortcut, -1);
+            }
+
+          g_free (feature);
+        }
+      while (gtk_tree_model_iter_next (model, &iter));
+    }
+}
+
+
+
+static void
+xfwm_settings_reload_shortcuts (XfwmSettings *settings)
+{
+  GtkTreeModel *model;
+  GtkWidget    *view;
+  GList        *shortcuts;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
+
+  view = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
+
+  xfwm_settings_clear_shortcuts_view (settings);
+
+  shortcuts = xfce_shortcuts_provider_get_shortcuts (settings->priv->provider);
+  g_list_foreach (shortcuts, (GFunc) xfwm_settings_reload_shortcut, model);
+  xfce_shortcuts_free (shortcuts);
+}
+
+
+
+static void
+xfwm_settings_shortcut_added (XfceShortcutsProvider *provider,
+                              const gchar           *shortcut,
+                              XfwmSettings          *settings)
+{
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  xfwm_settings_reload_shortcuts (settings);
+}
+
+
+
+static void
+xfwm_settings_shortcut_removed (XfceShortcutsProvider *provider,
+                                const gchar           *shortcut,
+                                XfwmSettings          *settings)
+{
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  xfwm_settings_reload_shortcuts (settings);
+}
+
+
+
+static void
+xfwm_settings_shortcut_clear_clicked (GtkButton    *button,
+                                      XfwmSettings *settings)
+{
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model;
+  GtkTreePath      *path;
+  GtkTreeIter       tree_iter;
+  GtkWidget        *view;
+  GList            *rows;
+  GList            *iter;
+  GList            *row_references = NULL;
+  gchar            *shortcut;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
+
+  view = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  rows = gtk_tree_selection_get_selected_rows (selection, &model);
+
+  for (iter = g_list_first (rows); iter != NULL; iter = g_list_next (iter))
+    {
+      row_references = g_list_append (row_references, 
+                                      gtk_tree_row_reference_new (model, iter->data));
+    }
+
+  for (iter = g_list_first (row_references); iter != NULL; iter = g_list_next (iter))
+    {
+      path = gtk_tree_row_reference_get_path (iter->data);
+
+      /* Convert tree path to tree iter */
+      if (G_LIKELY (gtk_tree_model_get_iter (model, &tree_iter, path)))
+        {
+          /* Read shortcut */
+          gtk_tree_model_get (model, &tree_iter, SHORTCUTS_SHORTCUT_COLUMN, &shortcut, -1);
+
+          if (G_LIKELY (shortcut != NULL))
+            {
+              DBG ("clear shortcut %s", shortcut);
+
+              /* Remove keyboard shortcut via xfconf */
+              xfce_shortcuts_provider_reset_shortcut (settings->priv->provider, shortcut);
+
+              /* Free shortcut string */
+              g_free (shortcut);
+            }
+        }
+
+      gtk_tree_path_free (path);
+    }
+
+  /* Free row reference list */
+  g_list_foreach (row_references, (GFunc) gtk_tree_row_reference_free, NULL);
+  g_list_free (row_references);
+
+  /* Free row list */
+  g_list_foreach (rows, (GFunc) gtk_tree_path_free, NULL);
+  g_list_free (rows);
+}
+
+
+
+static void
+xfwm_settings_shortcut_reset_clicked (GtkButton    *button,
+                                      XfwmSettings *settings)
+{
+  gint response;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
+
+  response = xfce_message_dialog (NULL, _("Reset to Defaults"), GTK_STOCK_DIALOG_QUESTION,
+                                  _("Reset to Defaults"),
+                                  _("This will reset <b>all</b> shortcuts to their default "
+                                    "values. Do you really want to do this?"),
+                                  GTK_STOCK_NO, GTK_RESPONSE_NO,
+                                  GTK_STOCK_YES, GTK_RESPONSE_YES,
+                                  NULL);
+
+  if (G_LIKELY (response == GTK_RESPONSE_YES))
+    xfce_shortcuts_provider_reset_to_defaults (settings->priv->provider);
+}
+
+
+
+static const gchar *
+xfwm_settings_shortcut_feature_name (const gchar *feature)
+{
+  const gchar *result = feature;
+  gint         i;
+
+  for (i = 0; shortcut_values[i].name != NULL; ++i)
+    if (G_UNLIKELY (g_str_equal (shortcut_values[i].feature, feature)))
+      {
+        result = shortcut_values[i].name;
+        break;
+      }
+
+  return result;
+}
+
+
+
+static gboolean
+xfwm_settings_validate_shortcut (FrapShortcutsDialog *dialog,
+                                 const gchar         *shortcut,
+                                 XfwmSettings        *settings)
+{
+  XfceShortcutsProvider *other_provider = NULL;
+  XfceShortcut          *other_shortcut = NULL;
+  GList                 *providers;
+  GList                 *iter;
+  gchar                 *property;
+  gboolean               accepted = TRUE;
+  gint                   response;
+
+  g_return_val_if_fail (FRAP_IS_SHORTCUTS_DIALOG (dialog), FALSE);
+  g_return_val_if_fail (XFWM_IS_SETTINGS (settings), FALSE);
+  g_return_val_if_fail (shortcut != NULL, FALSE);
+
+  /* Ignore empty shortcuts */
+  if (G_UNLIKELY (g_utf8_strlen (shortcut, -1) == 0))
+    return FALSE;
+
+  /* Ignore raw 'Return' and 'space' since that may have been used to activate the shortcut row */
+  if (G_UNLIKELY (g_utf8_collate (shortcut, "Return") == 0 || 
+                  g_utf8_collate (shortcut, "space") == 0))
+    {
+      return FALSE;
+    }
+
+  providers = xfce_shortcuts_provider_get_providers ();
+
+  if (G_UNLIKELY (providers == NULL))
+    return TRUE;
+
+  for (iter = providers; iter != NULL && other_shortcut == NULL; iter = g_list_next (iter))
+    {
+      if (G_UNLIKELY (xfce_shortcuts_provider_has_shortcut (iter->data, shortcut)))
+        {
+          other_provider = g_object_ref (iter->data);
+          other_shortcut = xfce_shortcuts_provider_get_shortcut (iter->data, shortcut);
+        }
+    }
+
+  xfce_shortcuts_provider_free_providers (providers);
+
+  if (G_UNLIKELY (other_shortcut != NULL))
+    {
+      response = frap_shortcuts_conflict_dialog (xfce_shortcuts_provider_get_name (settings->priv->provider),
+                                                 xfce_shortcuts_provider_get_name (other_provider),
+                                                 shortcut,
+                                                 frap_shortcuts_dialog_get_action_name (dialog),
+                                                 xfwm_settings_shortcut_feature_name (other_shortcut->command),
+                                                 FALSE);
+
+      accepted = response == GTK_RESPONSE_ACCEPT;
+
+      xfce_shortcut_free (other_shortcut);
+      g_object_unref (other_provider);
+    }
+
+  return accepted;
+}
+
+
+
+static void
+xfwm_settings_shortcut_row_activated (GtkTreeView       *tree_view,
+                                      GtkTreePath       *path,
+                                      GtkTreeViewColumn *column,
+                                      XfwmSettings      *settings)
+{
+  GtkTreeModel *model;
+  GtkTreeIter   iter;
+  GtkWidget    *dialog;
+  const gchar  *new_shortcut;
+  gchar        *shortcut;
+  gchar        *feature;
+  gchar        *name;
+  gint          response;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
+
+  model = gtk_tree_view_get_model (tree_view);
+
+  if (G_LIKELY (gtk_tree_model_get_iter (model, &iter, path)))
+    {
+      /* Read shortcut from the activated row */
+      gtk_tree_model_get (model, &iter, 
+                          SHORTCUTS_NAME_COLUMN, &name, 
+                          SHORTCUTS_FEATURE_COLUMN, &feature, 
+                          SHORTCUTS_SHORTCUT_COLUMN, &shortcut, -1);
+  
+      /* Request a new shortcut from the user */
+      dialog = frap_shortcuts_dialog_new ("xfwm4", name, feature);
+      g_signal_connect (dialog, "validate-shortcut", 
+                        G_CALLBACK (xfwm_settings_validate_shortcut), settings);
+      response = frap_shortcuts_dialog_run (FRAP_SHORTCUTS_DIALOG (dialog));
+
+      if (G_LIKELY (response == GTK_RESPONSE_OK))
+        {
+          /* Remove old shortcut from the settings */
+          if (G_LIKELY (shortcut != NULL))
+            xfce_shortcuts_provider_reset_shortcut (settings->priv->provider, shortcut);
+
+          /* Get new shortcut entered by the user */
+          new_shortcut = frap_shortcuts_dialog_get_shortcut (FRAP_SHORTCUTS_DIALOG (dialog));
+
+          /* Save new shortcut */
+          xfce_shortcuts_provider_set_shortcut (settings->priv->provider, new_shortcut, feature);
+        }
+      else if (G_UNLIKELY (response == GTK_RESPONSE_REJECT))
+        {
+          /* Remove old shortcut from the settings */
+          if (G_LIKELY (shortcut != NULL))
+            xfce_shortcuts_provider_reset_shortcut (settings->priv->provider, shortcut);
+        }
+
+      /* Destroy the shortcut dialog */
+      gtk_widget_destroy (dialog);
+
+      /* Free strings */
+      g_free (feature);
+      g_free (name);
+      g_free (shortcut);
     }
 }

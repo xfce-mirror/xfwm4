@@ -37,13 +37,15 @@ typedef struct _FrapShortcutsDialog      FrapShortcutsDialog;
 #define FRAP_IS_SHORTCUTS_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), FRAP_TYPE_SHORTCUTS_DIALOG))
 #define FRAP_SHORTCUTS_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), FRAP_TYPE_SHORTCUTS_DIALOG, FrapShortcutsDialogClass))
 
-GType        frap_shortcuts_dialog_get_type     (void) G_GNUC_CONST;
+GType        frap_shortcuts_dialog_get_type        (void) G_GNUC_CONST;
 
-GtkWidget   *frap_shortcuts_dialog_new          (const gchar         *provider,
-                                                 const gchar         *action);
-gint         frap_shortcuts_dialog_run          (FrapShortcutsDialog *dialog);
-const gchar *frap_shortcuts_dialog_get_shortcut (FrapShortcutsDialog *dialog);
-const gchar *frap_shortcuts_dialog_get_action   (FrapShortcutsDialog *action);
+GtkWidget   *frap_shortcuts_dialog_new             (const gchar         *provider,
+                                                    const gchar         *action_name,
+                                                    const gchar         *action);
+gint         frap_shortcuts_dialog_run             (FrapShortcutsDialog *dialog);
+const gchar *frap_shortcuts_dialog_get_shortcut    (FrapShortcutsDialog *dialog);
+const gchar *frap_shortcuts_dialog_get_action      (FrapShortcutsDialog *action);
+const gchar *frap_shortcuts_dialog_get_action_name (FrapShortcutsDialog *action);
 
 G_END_DECLS;
 
