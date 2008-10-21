@@ -1171,7 +1171,6 @@ setAtomIdManagerOwner (DisplayInfo *display_info, int atom_id, Window root, Wind
 void
 updateXserverTime (DisplayInfo *display_info)
 {
-    ScreenInfo *screen_info;
     char c = '\0';
 
     g_return_if_fail (display_info);

@@ -1361,10 +1361,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     }
     if (c)
     {
-        gboolean constrained = FALSE;
-        ScreenInfo *screen_info = c->screen_info;
-
-        TRACE ("handleConfigureRequest managed window \"%s\" (0x%lx)", c->name, c->window);
+         TRACE ("handleConfigureRequest managed window \"%s\" (0x%lx)", c->name, c->window);
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
@@ -2215,7 +2212,6 @@ handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
 static void
 handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
 {
-    XWindowChanges wc;
     Client *c;
 
     TRACE ("entering handleXSyncAlarmNotify");

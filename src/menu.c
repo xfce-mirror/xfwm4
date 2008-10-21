@@ -33,6 +33,7 @@
 #include <libxfce4util/libxfce4util.h>
 
 #include "event_filter.h"
+#include "misc.h"
 #include "menu.h"
 
 static GtkWidget *menu_open = NULL;
