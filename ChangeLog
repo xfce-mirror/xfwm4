@@ -1,4 +1,9 @@
-2008-10-22  olivier
+2008-10-21  olivier
+
+	* src/client.c: Trivial, advertise the correct function name in debug 
+	  message.
+
+2008-10-21  olivier
 
 	* src/client.c: Fix gravity broken by previous commit.
 

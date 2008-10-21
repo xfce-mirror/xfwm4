@@ -492,7 +492,7 @@ clientAdjustCoordGravity (Client * c, int gravity, unsigned long *mask, XWindowC
     int tx, ty, dw, dh;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientCoordGravitate");
+    TRACE ("entering clientAdjustCoordGravity");
 
     tx = wc->x;
     ty = wc->y;
