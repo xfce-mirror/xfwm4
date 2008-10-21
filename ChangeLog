@@ -1,3 +1,7 @@
+2008-10-21  olivier
+
+	* src/events.c: Restore a line removed by mistake in last commit.
+
 2008-10-20  olivier
 
 	* src/events.c, src/client.c, src/client.h, src/netwm.c: Improve 

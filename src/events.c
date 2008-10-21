@@ -1299,6 +1299,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             /* Sorry, but it's not the right time for configure request */
             return EVENT_FILTER_REMOVE;
         }
+        clientAdjustCoordGravity (c, c->gravity, &ev->value_mask, &wc);
         clientMoveResizeWindow (c, &wc, ev->value_mask);
     }
     else
