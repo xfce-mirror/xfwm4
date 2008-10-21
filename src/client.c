@@ -433,7 +433,6 @@ clientCoordGravitate (Client * c, int gravity, int mode, int *x, int *y)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCoordGravitate");
 
-    c->gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
     switch (gravity)
     {
         case CenterGravity:
@@ -1000,6 +999,9 @@ clientGetWMNormalHints (Client * c, gboolean update)
     {
         c->size->flags = 0;
     }
+
+    /* Set/update gravity */
+    c->gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
 
     previous_value = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);

@@ -1,3 +1,7 @@
+2008-10-22  olivier
+
+	* src/client.c: Fix gravity broken by previous commit.
+
 2008-10-21  olivier
 
 	* src/events.c: Restore a line removed by mistake in last commit.
