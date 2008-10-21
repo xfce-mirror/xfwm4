@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-18 22:05+0100\n"
-"PO-Revision-Date: 2008-10-19 10:44+0100\n"
+"PO-Revision-Date: 2008-10-21 19:34+0100\n"
 "Last-Translator: Maximilian Schleiss <maximilian@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -480,14 +480,12 @@ msgid "Show shadows under pop_up windows"
 msgstr "Afficher l'ombre sous les fenêtres context_uelles"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Size|<i>Large</i>"
-msgstr "Grande"
+msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Size|<i>Small</i>"
-msgstr "Petite"
+msgstr "<i>Petite</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Switch to win_dow's workspace"
@@ -728,11 +726,11 @@ msgstr "Délai _avant la mise au premier plan :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Delay|<i>Long</i>"
-msgstr "Delay|<i>Long</i>"
+msgstr "<i>Long</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Short</i>"
-msgstr "Delay|<i>Court</i>"
+msgstr "<i>Court</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Dis_tance:"
@@ -740,11 +738,11 @@ msgstr "Dis_tance :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Distance|<i>Small</i>"
-msgstr "Distance|<i>Faible</i>"
+msgstr "<i>Faible</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Distance|<i>Wide</i>"
-msgstr "Distance|<i>Grande</i>"
+msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Focus follows _mouse"
@@ -784,11 +782,11 @@ msgstr "Mettre au premier plan en cl_iquant dans la fenêtre"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Resistance|<i>Small</i>"
-msgstr "Distance|<i>Faible</i>"
+msgstr "<i>Faible</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Resistance|<i>Wide</i>"
-msgstr "Distance|<i>Forte</i>"
+msgstr "<i>Forte</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Shade"
