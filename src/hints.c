@@ -397,7 +397,7 @@ setGnomeProtocols (DisplayInfo *display_info, Window root, Window w)
 void
 setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 {
-    Atom atoms[64];
+    Atom atoms[ATOM_COUNT];
     unsigned long data[1];
     int i;
 
@@ -412,6 +412,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_DESKTOP_NAMES];
     atoms[i++] = display_info->atoms[NET_DESKTOP_VIEWPORT];
     atoms[i++] = display_info->atoms[NET_FRAME_EXTENTS];
+    atoms[i++] = display_info->atoms[NET_MOVERESIZE_WINDOW];
     atoms[i++] = display_info->atoms[NET_NUMBER_OF_DESKTOPS];
     atoms[i++] = display_info->atoms[NET_REQUEST_FRAME_EXTENTS];
     atoms[i++] = display_info->atoms[NET_SHOWING_DESKTOP];
@@ -463,7 +464,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     atoms[i++] = display_info->atoms[NET_STARTUP_ID];
 #endif
-    g_assert (i < 64);
+    g_assert (i < ATOM_COUNT);
     data[0] = check_win;
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_SUPPORTED],
                      XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);

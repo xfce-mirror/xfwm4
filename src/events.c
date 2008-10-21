@@ -1370,95 +1370,8 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             /* Sorry, but it's not the right time for configure request */
             return;
         }
-        if (c->type == WINDOW_DESKTOP)
-        {
-            /* Ignore stacking request for DESKTOP windows */
-            ev->value_mask &= ~(CWSibling | CWStackMode);
-        }
-        clientCoordGravitate (c, APPLY, &wc.x, &wc.y);
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-        {
-            GdkRectangle rect;
-            gint monitor_nbr;
-            int cx, cy;
-
-            /* size request from fullscreen windows get fullscreen */
-
-            cx = frameX (c) + (frameWidth (c) / 2);
-            cy = frameY (c) + (frameHeight (c) / 2);
-
-            monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
-            gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
-
-            wc.x = rect.x;
-            wc.y = rect.y;
-            wc.width = rect.width;
-            wc.height = rect.height;
-
-            ev->value_mask |= (CWX | CWY | CWWidth | CWHeight);
-        }
-        else if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-                 && (screen_info->params->borderless_maximize))
-        {
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-        }
-        /* Clean up buggy requests that set all flags */
-        if ((ev->value_mask & CWX) && (wc.x == c->x))
-        {
-            ev->value_mask &= ~CWX;
-        }
-        if ((ev->value_mask & CWY) && (wc.y == c->y))
-        {
-            ev->value_mask &= ~CWY;
-        }
-        if ((ev->value_mask & CWWidth) && (wc.width == c->width))
-        {
-            ev->value_mask &= ~CWWidth;
-        }
-        if ((ev->value_mask & CWHeight) && (wc.height == c->height))
-        {
-            ev->value_mask &= ~CWHeight;
-        }
-        /* Still a move/resize after cleanup? */
-        if (ev->value_mask & (CWX | CWY | CWWidth | CWHeight))
-        {
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
-            {
-                clientRemoveMaximizeFlag (c);
-            }
-            constrained = TRUE;
-        }
-
-        /*
-           Let's say that if the client performs a XRaiseWindow, we show the window if focus
-           stealing prevention is not activated, otherwise we just set the "demands attention"
-           flag...
-         */
-        if ((ev->value_mask & CWStackMode) && (wc.stack_mode == Above) && (wc.sibling == None))
-        {
-            Client *last_raised;
-
-            last_raised = clientGetLastRaise (screen_info);
-            if (last_raised && (c != last_raised))
-            {
-                if ((screen_info->params->prevent_focus_stealing) && (screen_info->params->activate_action == ACTIVATE_ACTION_NONE))
-                {
-                    ev->value_mask &= ~(CWSibling | CWStackMode);
-                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
-                    FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-                    clientSetNetState (c);
-                }
-                else
-                {
-                    clientActivate (c, getXServerTime (display_info));
-                }
-            }
-        }
-
-        clientConfigure (c, &wc, ev->value_mask, (constrained ? CFG_CONSTRAINED : 0) | CFG_REQUEST);
+        clientAdjustCoordGravity (c, c->gravity, &ev->value_mask, &wc);
+        clientMoveResizeWindow (c, &wc, ev->value_mask);
     }
     else
     {
@@ -2088,6 +2001,11 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_MOVERESIZE event", c->name, c->window);
             clientNetMoveResize (c, ev);
+        }
+        else if ((ev->message_type == display_info->atoms[NET_MOVERESIZE_WINDOW]) && (ev->format == 32))
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a NET_MOVERESIZE_WINDOW event", c->name, c->window);
+            clientNetMoveResizeWindow (c, ev);
         }
         else if ((ev->message_type == display_info->atoms[NET_ACTIVE_WINDOW]) && (ev->format == 32))
         {

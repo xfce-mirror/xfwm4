@@ -236,8 +236,8 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_GRAVITY)
         {
-            clientGravitate (c, REMOVE);
-            clientGravitate (c, APPLY);
+            clientCoordGravitate (c, c->gravity, REMOVE, &c->x, &c->y);
+            clientCoordGravitate (c, c->gravity, APPLY, &c->x, &c->y);
             setNetFrameExtents (screen_info->display_info,
                                 c->window,
                                 frameTop (c),
@@ -364,15 +364,14 @@ clientUpdateUrgency (Client *c)
 }
 
 void
-clientCoordGravitate (Client * c, int mode, int *x, int *y)
+clientCoordGravitate (Client * c, int gravity, int mode, int *x, int *y)
 {
     int dx, dy;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCoordGravitate");
 
-    c->gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
-    switch (c->gravity)
+    switch (gravity)
     {
         case CenterGravity:
             dx = (c->border_width * 2) - ((frameLeft (c) +
@@ -426,6 +425,83 @@ clientCoordGravitate (Client * c, int mode, int *x, int *y)
 }
 
 void
+clientAdjustCoordGravity (Client * c, int gravity, unsigned long *mask, XWindowChanges *wc)
+{
+    int tx, ty, dw, dh;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientAdjustCoordGravity");
+
+    tx = wc->x;
+    ty = wc->y;
+    clientCoordGravitate (c, gravity, APPLY, &tx, &ty);
+
+    switch (gravity)
+    {
+        case CenterGravity:
+            dw = (c->width  - wc->width)  / 2;
+            dh = (c->height - wc->height) / 2;
+            break;
+        case NorthGravity:
+            dw = (c->width - wc->width) / 2;
+            dh = 0;
+            break;
+        case SouthGravity:
+            dw = (c->width  - wc->width) / 2;
+            dh = (c->height - wc->height);
+            break;
+        case EastGravity:
+            dw = (c->width  - wc->width);
+            dh = (c->height - wc->height) / 2;
+            break;
+        case WestGravity:
+            dw = 0;
+            dh = (c->height - wc->height) / 2;
+            break;
+        case NorthWestGravity:
+            dw = 0;
+            dh = 0;
+            break;
+        case NorthEastGravity:
+            dw = (c->width - wc->width);
+            dh = 0;
+            break;
+        case SouthWestGravity:
+            dw = 0;
+            dh = (c->height - wc->height);
+            break;
+        case SouthEastGravity:
+            dw = (c->width  - wc->width);
+            dh = (c->height - wc->height);
+            break;
+        default:
+            dw = 0;
+            dh = 0;
+            break;
+    }
+
+    if (*mask & CWX)
+    {
+        wc->x = tx;
+    }
+    else if (*mask & CWWidth)
+    {
+        wc->x = c->x + dw;
+        *mask |= CWX;
+    }
+
+    if (*mask & CWY)
+    {
+        wc->y = ty;
+    }
+    else if (*mask & CWHeight)
+    {
+        wc->y = c->y + dh;
+        *mask |= CWY;
+    }
+}
+
+void
 clientGravitate (Client * c, int mode)
 {
     int x, y;
@@ -435,7 +511,7 @@ clientGravitate (Client * c, int mode)
 
     x = c->x;
     y = c->y;
-    clientCoordGravitate (c, mode, &x, &y);
+    clientCoordGravitate (c, c->gravity, mode, &x, &y);
     c->x = x;
     c->y = y;
 }
@@ -851,6 +927,110 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
 }
 
 void
+clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gboolean constrained;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientMoveResizeWindow");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    if (c->type == WINDOW_DESKTOP)
+    {
+        /* Ignore stacking request for DESKTOP windows */
+        mask &= ~(CWSibling | CWStackMode);
+    }
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        GdkRectangle rect;
+        gint monitor_nbr;
+        int cx, cy;
+
+        /* size request from fullscreen windows get fullscreen */
+
+        cx = frameX (c) + (frameWidth (c) / 2);
+        cy = frameY (c) + (frameHeight (c) / 2);
+
+        monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+        gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+
+        wc->x = rect.x;
+        wc->y = rect.y;
+        wc->width = rect.width;
+        wc->height = rect.height;
+
+        mask |= (CWX | CWY | CWWidth | CWHeight);
+    }
+    else if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+             && (screen_info->params->borderless_maximize))
+    {
+        wc->x = c->x;
+        wc->y = c->y;
+        wc->width = c->width;
+        wc->height = c->height;
+    }
+    /* Clean up buggy requests that set all flags */
+    if ((mask & CWX) && (wc->x == c->x))
+    {
+        mask &= ~CWX;
+    }
+    if ((mask & CWY) && (wc->y == c->y))
+    {
+        mask &= ~CWY;
+    }
+    if ((mask & CWWidth) && (wc->width == c->width))
+    {
+        mask &= ~CWWidth;
+    }
+    if ((mask & CWHeight) && (wc->height == c->height))
+    {
+        mask &= ~CWHeight;
+    }
+
+    /* Still a move/resize after cleanup? */
+    constrained = FALSE;
+    if (mask & (CWX | CWY | CWWidth | CWHeight))
+    {
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        {
+            clientRemoveMaximizeFlag (c);
+        }
+        constrained = TRUE;
+    }
+    /*
+       Let's say that if the client performs a XRaiseWindow, we show the window if focus
+       stealing prevention is not activated, otherwise we just set the "demands attention"
+       flag...
+     */
+    if ((mask & CWStackMode) && (wc->stack_mode == Above) && (wc->sibling == None) && !(c->type & WINDOW_TYPE_DONT_FOCUS))
+    {
+        Client *last_raised;
+
+        last_raised = clientGetLastRaise (screen_info);
+        if (last_raised && (c != last_raised))
+        {
+            if ((screen_info->params->prevent_focus_stealing) && (screen_info->params->activate_action == ACTIVATE_ACTION_NONE))
+            {
+                mask &= ~(CWSibling | CWStackMode);
+                TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                clientSetNetState (c);
+            }
+            else
+            {
+                clientActivate (c, getXServerTime (display_info));
+            }
+        }
+    }
+    /* And finally, configure the window */
+    clientConfigure (c, wc, mask, (constrained ? CFG_CONSTRAINED : 0) | CFG_REQUEST);
+}
+
+void
 clientGetMWMHints (Client * c, gboolean update)
 {
     ScreenInfo *screen_info;
@@ -985,6 +1165,9 @@ clientGetWMNormalHints (Client * c, gboolean update)
     {
         c->size->flags = 0;
     }
+
+    /* Set/update gravity */
+    c->gravity = c->size->flags & PWinGravity ? c->size->win_gravity : NorthWestGravity;
 
     previous_value = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);

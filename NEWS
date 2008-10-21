@@ -15,6 +15,9 @@
 - Loosen the rule that prevents an application from iconifying itself when 
   skip_taskbar is set (Bug #4434)
 - Rework visual depth selection of the frame window (Bug #4452)
+- Add support for NET_MOVERESIZE_WINDOW
+- Take gravity bit into account in configure resize only requests to comply 
+  with standard (bug #3634)
 
 4.4.2
 =====

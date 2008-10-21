@@ -88,6 +88,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_DESKTOP_NAMES",
         "_NET_DESKTOP_VIEWPORT",
         "_NET_FRAME_EXTENTS",
+        "_NET_MOVERESIZE_WINDOW",
         "_NET_NUMBER_OF_DESKTOPS",
         "_NET_REQUEST_FRAME_EXTENTS",
         "_NET_SHOWING_DESKTOP",
