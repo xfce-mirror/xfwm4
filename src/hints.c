@@ -947,7 +947,7 @@ getClientLeader (DisplayInfo *display_info, Window window)
 }
 
 gboolean
-getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
+getNetWMUserTime (DisplayInfo *display_info, Window window, guint32 *time)
 {
     Atom actual_type;
     int actual_format;
@@ -966,12 +966,12 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, Time *time)
         if ((data) && (actual_type == XA_CARDINAL)
             && (nitems == 1) && (bytes_after == 0))
         {
-            *time = *((long *) data);
+            *time = *((guint32 *) data);
             XFree (data);
             return TRUE;
         }
     }
-    *time = (Time) 0;
+    *time = 0;
 
     return FALSE;
 }
@@ -1127,7 +1127,7 @@ gboolean
 setXAtomManagerOwner (DisplayInfo *display_info, Atom atom, Window root, Window w)
 {
     XClientMessageEvent ev;
-    Time server_time;
+    guint32 server_time;
     int status;
 
     g_return_val_if_fail (root != None, FALSE);
@@ -1181,27 +1181,27 @@ updateXserverTime (DisplayInfo *display_info)
                      8, PropModeReplace, (unsigned char *) &c, 1);
 }
 
-Time
+guint32
 getXServerTime (DisplayInfo *display_info)
 {
     ScreenInfo *screen_info;
     XEvent xevent;
-    Time timestamp;
+    guint32 timestamp;
 
-    g_return_val_if_fail (display_info, (Time) CurrentTime);
+    g_return_val_if_fail (display_info, CurrentTime);
     timestamp = myDisplayGetCurrentTime (display_info);
-    if (timestamp == (Time) CurrentTime)
+    if (timestamp == CurrentTime)
     {
         screen_info = myDisplayGetDefaultScreen (display_info);
-        g_return_val_if_fail (screen_info,  (Time) CurrentTime);
+        g_return_val_if_fail (screen_info,  CurrentTime);
 
         TRACE ("getXServerTime: Using X server roundtrip");
         updateXserverTime (display_info);
         XWindowEvent (display_info->dpy, display_info->timestamp_win, PropertyChangeMask, &xevent);
-        timestamp = (Time) myDisplayUpdateCurrentTime (display_info, &xevent);
+        timestamp = myDisplayUpdateCurrentTime (display_info, &xevent);
     }
 
-    TRACE ("getXServerTime gives timestamp=%u", (unsigned int) timestamp);
+    TRACE ("getXServerTime gives timestamp=%u", timestamp);
     return timestamp;
 }
 

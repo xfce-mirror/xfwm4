@@ -176,7 +176,7 @@ modify_with_wrap (int value, int by, int limit, gboolean wrap)
 
 /* returns TRUE if the workspace was changed, FALSE otherwise */
 gboolean
-workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, Time timestamp)
+workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, guint32 timestamp)
 {
     int row, col, newrow, newcol, previous_ws, n;
 
@@ -229,7 +229,7 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, Time
 }
 
 void
-workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean update_focus, Time timestamp)
+workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean update_focus, guint32 timestamp)
 {
     DisplayInfo *display_info;
     Client *c, *new_focus;

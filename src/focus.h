@@ -39,7 +39,7 @@
 
 void                     clientFocusTop                         (ScreenInfo *, 
                                                                  int,
-                                                                 Time);
+                                                                 guint32);
 gboolean                 clientFocusNew                         (Client *);
 gboolean                 clientSelectMask                       (Client *, 
                                                                  int, 
@@ -58,7 +58,7 @@ void                     clientUpdateFocus                      (ScreenInfo *,
                                                                  unsigned short);
 void                     clientSetFocus                         (ScreenInfo *, 
                                                                  Client *, 
-                                                                 Time, 
+                                                                 guint32, 
                                                                  unsigned short);
 void                     clientInitFocusFlag                    (Client *);
 Client                  *clientGetFocus                         (void);

@@ -280,12 +280,12 @@ sn_client_startup_properties (Client * c)
     if (sequence != NULL)
     {
         int workspace;
-        Time timestamp;
+        guint32 timestamp;
 
         /* Set initial time */
         timestamp = sn_startup_sequence_get_timestamp (sequence);
         TRACE ("Given startup time: %u", (unsigned int) timestamp);
-        if ((c->user_time == (Time) 0) || TIMESTAMP_IS_BEFORE(c->user_time, timestamp))
+        if ((c->user_time == 0) || TIMESTAMP_IS_BEFORE(c->user_time, timestamp))
         {
             c->user_time = timestamp;
             myDisplaySetLastUserTime (screen_info->display_info, c->user_time);

@@ -169,11 +169,11 @@ GdkWindow               *myScreenGetGdkWindow                   (ScreenInfo *);
 gboolean                 myScreenCheckWMAtom                    (ScreenInfo *,
                                                                  Atom atom);
 gboolean                 myScreenGrabKeyboard                   (ScreenInfo *,
-                                                                 Time);
+                                                                 guint32);
 gboolean                 myScreenGrabPointer                    (ScreenInfo *,
                                                                  unsigned int,
                                                                  Cursor,
-                                                                 Time);
+                                                                 guint32);
 unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *);
 unsigned int             myScreenUngrabPointer                  (ScreenInfo *);
 void                     myScreenGrabKeys                       (ScreenInfo *);

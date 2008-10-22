@@ -1769,7 +1769,7 @@ clientGetUserTime (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (getNetWMUserTime (display_info, c->window, &c->user_time))
+    if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
         myDisplaySetLastUserTime (display_info, c->user_time);
@@ -2076,6 +2076,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->fullscreen_old_layer = c->win_layer;
 
     /* net_wm_user_time standard */
+    c->user_time = 0;
     clientGetUserTime (c);
 
     /* Apply startup notification properties if available */
@@ -2810,7 +2811,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
 }
 
 void
-clientActivate (Client * c, Time timestamp)
+clientActivate (Client * c, guint32 timestamp)
 {
     ScreenInfo *screen_info;
 
@@ -3789,7 +3790,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     static int edge_scroll_x = 0;
     static int edge_scroll_y = 0;
     static gboolean toggled_maximize = FALSE;
-    static Time lastresist = (Time) 0;
+    static guint32 lastresist = 0;
     unsigned long configure_flags;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -4072,7 +4073,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                         }
                         warp_pointer = TRUE;
                     }
-                    lastresist = (Time) 0;
+                    lastresist = 0;
                 }
                 if (edge_scroll_y > screen_info->params->wrap_resistance)
                 {
@@ -4095,7 +4096,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                         }
                         warp_pointer = TRUE;
                     }
-                    lastresist = (Time) 0;
+                    lastresist = 0;
                 }
 
                 if (warp_pointer)

@@ -267,7 +267,7 @@ struct _Client
     int button_pressed[BUTTON_COUNT];
     int struts[STRUTS_SIZE];
     gchar *name;
-    Time user_time;
+    guint32 user_time;
     unsigned long flags;
     unsigned long wm_flags;
     unsigned long xfwm_flags;
@@ -357,7 +357,7 @@ void                     clientHideAll                          (Client *,
 void                     clientClearAllShowDesktop              (ScreenInfo *);
 void                     clientToggleShowDesktop                (ScreenInfo *);
 void                     clientActivate                         (Client *,
-                                                                 Time);
+                                                                 guint32);
 void                     clientClose                            (Client *);
 void                     clientKill                             (Client *);
 void                     clientEnterContextMenuState            (Client *);

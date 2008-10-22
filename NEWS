@@ -19,6 +19,7 @@
 - Take gravity bit into account in configure resize only requests to comply 
   with standard (bug #3634)
 - Add client windows to save set to avoid loosing all windows in case of crash
+- Use guint32 instead of Time internally to avoid potential issues in 64bits
 
 4.4.2
 =====

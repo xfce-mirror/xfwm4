@@ -608,7 +608,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     event->xbutton.button = button;
     event->xbutton.x_root = event->xkey.x_root = x_root;
     event->xbutton.y_root = event->xkey.y_root = y_root;
-    event->xbutton.time = event->xkey.time = myDisplayGetCurrentTime (display_info);
+    event->xbutton.time = event->xkey.time = (Time) myDisplayGetCurrentTime (display_info);
 
     switch (action)
     {

@@ -258,7 +258,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
 static gboolean
 check_button_time (XButtonEvent *ev)
 {
-    static Time last_button_time = (Time) CurrentTime;
+    static guint32 last_button_time = CurrentTime;
 
     if (last_button_time > ev->time)
     {
@@ -841,7 +841,7 @@ titleButton (Client * c, int state, XButtonEvent * ev)
 static void
 rootScrollButton (DisplayInfo *display_info, XButtonEvent * ev)
 {
-    static Time lastscroll = (Time) CurrentTime;
+    static guint32 lastscroll = CurrentTime;
     ScreenInfo *screen_info;
 
     if ((ev->time - lastscroll) < 25)  /* ms */
@@ -1380,7 +1380,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
 static void
 handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
-    static Time lastresist = (Time) CurrentTime;
+    static guint32 lastresist = CurrentTime;
     ScreenInfo *screen_info;
     Client *c;
     gboolean warp_pointer;
@@ -1834,7 +1834,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[NET_WM_USER_TIME])
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_USER_TIME notify", c->name, c->window);
-            if (getNetWMUserTime (display_info, c->window, &c->user_time))
+            if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
             {
                 myDisplaySetLastUserTime (display_info, c->user_time);
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
@@ -2007,17 +2007,17 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[NET_ACTIVE_WINDOW]) && (ev->format == 32))
         {
             gboolean source_is_application;
-            Time ev_time;
+            guint32 ev_time;
 
-            ev_time = myDisplayGetTime (display_info, (Time) ev->data.l[1]);
+            ev_time = myDisplayGetTime (display_info, (guint32) ev->data.l[1]);
             source_is_application = (ev->data.l[0] == 1);
 
             TRACE ("client \"%s\" (0x%lx) has received a NET_ACTIVE_WINDOW event", c->name, c->window);
             if (source_is_application)
             {
-                Time current = myDisplayGetLastUserTime (display_info);
+                guint32 current = myDisplayGetLastUserTime (display_info);
 
-                TRACE ("Time of event received is %u, current XServer time is %u", (unsigned int) ev_time, (unsigned int) current);
+                TRACE ("Time of event received is %u, current XServer time is %u", (guint32) ev_time, (guint32) current);
                 if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE(ev_time, current))
                 {
                     TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
@@ -2058,7 +2058,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 (ev->data.l[0] != screen_info->current_ws))
             {
                 workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE,
-                                 myDisplayGetTime (display_info, (Time) ev->data.l[1]));
+                                 myDisplayGetTime (display_info, (guint32) ev->data.l[1]));
             }
         }
         else if (((ev->message_type == display_info->atoms[WIN_WORKSPACE_COUNT]) ||

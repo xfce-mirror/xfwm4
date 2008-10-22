@@ -39,12 +39,12 @@ gboolean                workspaceMove                           (ScreenInfo *,
                                                                  int, 
                                                                  int, 
                                                                  Client *,
-                                                                 Time);
+                                                                 guint32);
 void                    workspaceSwitch                         (ScreenInfo *, 
                                                                  int, 
                                                                  Client *, 
                                                                  gboolean,
-                                                                 Time);
+                                                                 guint32);
 void                    workspaceSetNames                       (ScreenInfo *, 
                                                                  gchar **, 
                                                                  int);

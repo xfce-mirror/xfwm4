@@ -304,7 +304,7 @@ myScreenGetGdkWindow (ScreenInfo *screen_info)
 }
 
 gboolean
-myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
+myScreenGrabKeyboard (ScreenInfo *screen_info, guint32 time)
 {
     gboolean grab;
 
@@ -319,7 +319,7 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
                                screen_info->xfwm4_win,
                                FALSE,
                                GrabModeAsync, GrabModeAsync,
-                               time) == GrabSuccess);
+                               (Time) time) == GrabSuccess);
     }
     screen_info->key_grabs++;
     TRACE ("global key grabs %i", screen_info->key_grabs);
@@ -340,7 +340,7 @@ myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
 }
 
 gboolean
-myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, Time time)
+myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, guint32 time)
 {
     gboolean grab;
 
@@ -356,7 +356,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
                               GrabModeAsync, GrabModeAsync,
                               screen_info->xroot,
                               cursor,
-                              time) == GrabSuccess);
+                              (Time) time) == GrabSuccess);
     }
     screen_info->pointer_grabs++;
     TRACE ("global pointer grabs %i", screen_info->pointer_grabs);

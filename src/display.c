@@ -686,82 +686,82 @@ myDisplayGetDefaultScreen (DisplayInfo *display)
     return NULL;
 }
 
-Time
+guint32
 myDisplayUpdateCurrentTime (DisplayInfo *display, XEvent *ev)
 {
-    g_return_val_if_fail (display != NULL, (Time) CurrentTime);
+    g_return_val_if_fail (display != NULL, CurrentTime);
 
     switch (ev->type)
     {
         case KeyPress:
         case KeyRelease:
-            display->current_time = (Time) ev->xkey.time;
+            display->current_time = (guint32) ev->xkey.time;
             break;
         case ButtonPress:
         case ButtonRelease:
-            display->current_time = (Time) ev->xbutton.time;
+            display->current_time = (guint32) ev->xbutton.time;
             break;
         case MotionNotify:
-            display->current_time = (Time) ev->xmotion.time;
+            display->current_time = (guint32) ev->xmotion.time;
             break;
         case EnterNotify:
         case LeaveNotify:
-            display->current_time = (Time) ev->xcrossing.time;
+            display->current_time = (guint32) ev->xcrossing.time;
             break;
         case PropertyNotify:
-            display->current_time = (Time) ev->xproperty.time;
+            display->current_time = (guint32) ev->xproperty.time;
             break;
         case SelectionClear:
-            display->current_time = (Time) ev->xselectionclear.time;
+            display->current_time = (guint32) ev->xselectionclear.time;
             break;
         case SelectionRequest:
-            display->current_time = (Time) ev->xselectionrequest.time;
+            display->current_time = (guint32) ev->xselectionrequest.time;
             break;
         case SelectionNotify:
-            display->current_time = (Time) ev->xselection.time;
+            display->current_time = (guint32) ev->xselection.time;
             break;
         default:
-            display->current_time = (Time) CurrentTime;
+            display->current_time = (guint32) CurrentTime;
             break;
     }
     return display->current_time;
 }
 
-Time
+guint32
 myDisplayGetCurrentTime (DisplayInfo *display)
 {
-    g_return_val_if_fail (display != NULL, (Time) CurrentTime);
+    g_return_val_if_fail (display != NULL, CurrentTime);
 
-    TRACE ("myDisplayGetCurrentTime gives timestamp=%u", (unsigned int) display->current_time);
-    return (Time) display->current_time;
+    TRACE ("myDisplayGetCurrentTime gives timestamp=%u", (guint32) display->current_time);
+    return display->current_time;
 }
 
-Time
-myDisplayGetTime (DisplayInfo * display, Time timestamp)
+guint32
+myDisplayGetTime (DisplayInfo * display, guint32 timestamp)
 {
-    Time time;
+    guint32 time;
 
     time = timestamp;
-    if (time == (Time) CurrentTime)
+    if (time == CurrentTime)
     {
         time = getXServerTime (display);
     }
 
-    TRACE ("myDisplayGetTime gives timestamp=%u", (unsigned int) time);
-    return (time);
+    TRACE ("myDisplayGetTime gives timestamp=%u", (guint32) time);
+    return time;
 }
 
-Time
+guint32
 myDisplayGetLastUserTime (DisplayInfo *display)
 {
-    g_return_val_if_fail (display != NULL, (Time) CurrentTime);
+    g_return_val_if_fail (display != NULL, CurrentTime);
 
-    TRACE ("myDisplayGetLastUserTime gives timestamp=%u", (unsigned int) display->last_user_time);
-    return (Time) display->last_user_time;
+    TRACE ("myDisplayGetLastUserTime gives timestamp=%u", (guint32) display->last_user_time);
+    return display->last_user_time;
 }
 
 void
-myDisplaySetLastUserTime (DisplayInfo *display, Time timestamp)
+myDisplaySetLastUserTime (DisplayInfo *display, guint32 timestamp)
 {
     g_return_if_fail (display != NULL);
 
