@@ -243,6 +243,9 @@ gboolean                 getWindowRole                          (DisplayInfo *,
                                                                  gchar **);
 Window                   getClientLeader                        (DisplayInfo *,
                                                                  Window);
+gboolean                 getNetWMUserTime                       (DisplayInfo *, 
+                                                                 Window, 
+                                                                 guint32 *);
 Window                   getNetWMUserTimeWindow                 (DisplayInfo *,
                                                                  Window);
 gboolean                 getClientID                            (DisplayInfo *,
@@ -274,7 +277,7 @@ gboolean                 setAtomIdManagerOwner                  (DisplayInfo *,
                                                                  Window ,
                                                                  Window);
 void                     updateXserverTime                      (DisplayInfo *);
-Time                     getXServerTime                         (DisplayInfo *);
+guint32                  getXServerTime                         (DisplayInfo *);
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
 gboolean                 checkKdeSystrayWindow                  (DisplayInfo *,

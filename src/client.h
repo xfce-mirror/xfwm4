@@ -295,9 +295,9 @@ struct _Client
     int struts[STRUTS_SIZE];
     gchar *hostname;
     gchar *name;
-    Time user_time;
+    guint32 user_time;
     GPid pid;
-    Time ping_time;
+    guint32 ping_time;
     unsigned long flags;
     unsigned long wm_flags;
     unsigned long xfwm_flags;
@@ -392,7 +392,7 @@ void                     clientWithdrawAll                      (Client *,
 void                     clientClearAllShowDesktop              (ScreenInfo *);
 void                     clientToggleShowDesktop                (ScreenInfo *);
 void                     clientActivate                         (Client *,
-                                                                 Time);
+                                                                 guint32);
 void                     clientClose                            (Client *);
 void                     clientKill                             (Client *);
 void                     clientTerminate                        (Client *);

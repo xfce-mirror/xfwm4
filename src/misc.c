@@ -106,7 +106,7 @@ createGC (ScreenInfo *screen_info, char *col, int func, XFontStruct * font,
 }
 
 void
-sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, Time timestamp)
+sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, guint32 timestamp)
 {
     DisplayInfo *display_info;
     XClientMessageEvent ev;
@@ -126,7 +126,7 @@ sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, Time timestam
 }
 
 void
-sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, Time timestamp)
+sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, guint32 timestamp)
 {
     DisplayInfo *display_info;
     XClientMessageEvent ev;

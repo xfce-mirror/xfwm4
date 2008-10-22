@@ -61,11 +61,11 @@ GC                       createGC                               (ScreenInfo *,
 void                     sendClientMessage                      (ScreenInfo *,
                                                                  Window,
                                                                  int,
-                                                                 Time);
+                                                                 guint32);
 void                     sendRootMessage                        (ScreenInfo *,
                                                                  int,
                                                                  long,
-                                                                 Time);
+                                                                 guint32);
 gboolean                 checkWindowOnRoot                      (ScreenInfo *,
                                                                  Window);
 void                     placeSidewalks                         (ScreenInfo *,

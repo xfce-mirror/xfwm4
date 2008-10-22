@@ -179,19 +179,19 @@ GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GdkWindow               *myScreenGetGdkWindow                   (ScreenInfo *);
 gboolean                 myScreenGrabKeyboard                   (ScreenInfo *,
-                                                                 Time);
+                                                                 guint32);
 gboolean                 myScreenGrabPointer                    (ScreenInfo *,
                                                                  unsigned int,
                                                                  Cursor,
-                                                                 Time);
+                                                                 guint32);
 gboolean                 myScreenChangeGrabPointer              (ScreenInfo *,
                                                                  unsigned int,
                                                                  Cursor,
-                                                                 Time);
+                                                                 guint32);
 unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *,
-                                                                 Time);
+                                                                 guint32);
 unsigned int             myScreenUngrabPointer                  (ScreenInfo *,
-                                                                 Time);
+                                                                 guint32);
 void                     myScreenGrabKeys                       (ScreenInfo *);
 void                     myScreenUngrabKeys                     (ScreenInfo *);
 Client                  *myScreenGetClientFromWindow            (ScreenInfo *,

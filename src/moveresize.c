@@ -537,7 +537,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     static int edge_scroll_x = 0;
     static int edge_scroll_y = 0;
     static gboolean toggled_maximize = FALSE;
-    static Time lastresist = (Time) 0;
+    static guint32 lastresist = 0;
     unsigned long configure_flags;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -733,7 +733,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                         }
                         warp_pointer = TRUE;
                     }
-                    lastresist = (Time) 0;
+                    lastresist = 0;
                 }
                 if (edge_scroll_y > screen_info->params->wrap_resistance)
                 {
@@ -756,7 +756,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                         }
                         warp_pointer = TRUE;
                     }
-                    lastresist = (Time) 0;
+                    lastresist = 0;
                 }
 
                 if (warp_pointer)

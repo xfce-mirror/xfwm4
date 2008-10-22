@@ -119,7 +119,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, GList * exclude_l
 }
 
 void
-clientFocusTop (ScreenInfo *screen_info, int layer, Time timestamp)
+clientFocusTop (ScreenInfo *screen_info, int layer, guint32 timestamp)
 {
     ClientPair top_client;
     DisplayInfo *display_info;
@@ -164,7 +164,7 @@ clientFocusNew(Client * c)
     }
     else if ((client_focus) && (prevent_focus_stealing))
     {
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME) && (c->user_time == (Time) CurrentTime))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME) && (c->user_time == CurrentTime))
         {
             TRACE ("Given startup time is 0, not focusing");
             give_focus = FALSE;
@@ -466,7 +466,7 @@ clientSetLast(Client *c)
 }
 
 static void
-clientFocusNone (ScreenInfo *screen_info, Client *previous, Time timestamp)
+clientFocusNone (ScreenInfo *screen_info, Client *previous, guint32 timestamp)
 {
     TRACE ("setting focus to none");
 
@@ -549,7 +549,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 }
 
 void
-clientSetFocus (ScreenInfo *screen_info, Client *c, Time timestamp, unsigned short flags)
+clientSetFocus (ScreenInfo *screen_info, Client *c, guint32 timestamp, unsigned short flags)
 {
     DisplayInfo *display_info;
     Client *c2;

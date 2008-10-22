@@ -1452,14 +1452,14 @@ clientGetUserTime (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-
+    
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (getHint (display_info, c->window, NET_WM_USER_TIME, (long *) &c->user_time) && (c->user_time != 0))
+    if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
         myDisplayUpdateLastUserTime (display_info, c->user_time);
@@ -1822,6 +1822,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->fullscreen_old_layer = c->win_layer;
 
     /* net_wm_user_time standard */
+    c->user_time = 0;
     c->user_time_win = getNetWMUserTimeWindow(display_info, c->window);
     clientAddUserTimeWin (c);
     clientGetUserTime (c);
@@ -2583,7 +2584,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
 }
 
 void
-clientActivate (Client * c, Time timestamp)
+clientActivate (Client * c, guint32 timestamp)
 {
     ScreenInfo *screen_info;
     Client *sibling;
@@ -2624,7 +2625,7 @@ clientClose (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    Time timestamp;
+    guint32 timestamp;
 
     g_return_if_fail (c != NULL);
 

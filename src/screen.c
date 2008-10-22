@@ -387,7 +387,7 @@ myScreenGetGdkWindow (ScreenInfo *screen_info)
 }
 
 gboolean
-myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
+myScreenGrabKeyboard (ScreenInfo *screen_info, guint32 time)
 {
     gboolean grab;
 
@@ -402,7 +402,7 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
                                screen_info->xfwm4_win,
                                FALSE,
                                GrabModeAsync, GrabModeAsync,
-                               time) == GrabSuccess);
+                               (Time) time) == GrabSuccess);
     }
     screen_info->key_grabs++;
     TRACE ("global key grabs %i", screen_info->key_grabs);
@@ -411,7 +411,7 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, Time time)
 }
 
 gboolean
-myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, Time time)
+myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, guint32 time)
 {
     gboolean grab;
 
@@ -427,7 +427,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
                               GrabModeAsync, GrabModeAsync,
                               screen_info->xroot,
                               cursor,
-                              time) == GrabSuccess);
+                              (Time) time) == GrabSuccess);
     }
     screen_info->pointer_grabs++;
     TRACE ("global pointer grabs %i", screen_info->pointer_grabs);
@@ -436,7 +436,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
 }
 
 gboolean
-myScreenChangeGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, Time time)
+myScreenChangeGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, guint32 time)
 {
     gboolean grab;
 
@@ -447,14 +447,14 @@ myScreenChangeGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cur
     if (screen_info->pointer_grabs > 0)
     {
         grab = (XChangeActivePointerGrab (myScreenGetXDisplay (screen_info),
-                                          event_mask, cursor, time) == GrabSuccess);
+                                          event_mask, cursor, (Time) time) == GrabSuccess);
     }
 
     return grab;
 }
 
 unsigned int
-myScreenUngrabKeyboard (ScreenInfo *screen_info, Time time)
+myScreenUngrabKeyboard (ScreenInfo *screen_info, guint32 time)
 {
     g_return_val_if_fail (screen_info, 0);
     TRACE ("entering myScreenUngrabKeyboard");
@@ -466,7 +466,7 @@ myScreenUngrabKeyboard (ScreenInfo *screen_info, Time time)
     }
     if (screen_info->key_grabs == 0)
     {
-        XUngrabKeyboard (myScreenGetXDisplay (screen_info), time);
+        XUngrabKeyboard (myScreenGetXDisplay (screen_info), (Time) time);
     }
     TRACE ("global key grabs %i", screen_info->key_grabs);
 
@@ -474,7 +474,7 @@ myScreenUngrabKeyboard (ScreenInfo *screen_info, Time time)
 }
 
 unsigned int
-myScreenUngrabPointer (ScreenInfo *screen_info, Time time)
+myScreenUngrabPointer (ScreenInfo *screen_info, guint32 time)
 {
     g_return_val_if_fail (screen_info, 0);
     TRACE ("entering myScreenUngrabPointer");
@@ -486,7 +486,7 @@ myScreenUngrabPointer (ScreenInfo *screen_info, Time time)
     }
     if (screen_info->pointer_grabs == 0)
     {
-        XUngrabPointer (myScreenGetXDisplay (screen_info), time);
+        XUngrabPointer (myScreenGetXDisplay (screen_info), (Time) time);
     }
     TRACE ("global pointer grabs %i", screen_info->pointer_grabs);
 

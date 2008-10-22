@@ -612,7 +612,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     event->xbutton.button = button;
     event->xbutton.x_root = event->xkey.x_root = x_root;
     event->xbutton.y_root = event->xkey.y_root = y_root;
-    event->xbutton.time = event->xkey.time = myDisplayGetCurrentTime (display_info);
+    event->xbutton.time = event->xkey.time = (Time) myDisplayGetCurrentTime (display_info);
 
     switch (action)
     {
@@ -1373,7 +1373,7 @@ clientUpdateLayerState (Client * c)
 }
 
 void
-clientSetNetActiveWindow (ScreenInfo *screen_info, Client *c, Time timestamp)
+clientSetNetActiveWindow (ScreenInfo *screen_info, Client *c, guint32 timestamp)
 {
     DisplayInfo *display_info;
     unsigned long data[2];
@@ -1425,7 +1425,7 @@ clientRemoveNetWMPing (Client *c)
 }
 
 void
-clientReceiveNetWMPong (ScreenInfo *screen_info, Time timestamp)
+clientReceiveNetWMPong (ScreenInfo *screen_info, guint32 timestamp)
 {
     Client *c;
     int i;
@@ -1445,7 +1445,7 @@ clientReceiveNetWMPong (ScreenInfo *screen_info, Time timestamp)
 }
 
 gboolean
-clientSendNetWMPing (Client *c, Time timestamp)
+clientSendNetWMPing (Client *c, guint32 timestamp)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;

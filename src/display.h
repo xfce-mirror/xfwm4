@@ -316,8 +316,8 @@ struct _DisplayInfo
     gint nb_screens;
     gchar* hostname;
 
-    Time current_time;
-    Time last_user_time;
+    guint32 current_time;
+    guint32 last_user_time;
 
     gboolean enable_compositor;
 #ifdef HAVE_RENDER
@@ -395,16 +395,16 @@ Client                  *myDisplayGetClientFromXSyncAlarm       (DisplayInfo *,
                                                                  XSyncAlarm);
 #endif /* HAVE_XSYNC */
 ScreenInfo              *myDisplayGetDefaultScreen              (DisplayInfo *);
-Time                     myDisplayUpdateCurrentTime             (DisplayInfo *,
+guint32                  myDisplayUpdateCurrentTime             (DisplayInfo *,
                                                                  XEvent *);
-Time                     myDisplayGetCurrentTime                (DisplayInfo *);
-Time                     myDisplayGetTime                       (DisplayInfo *,
-                                                                 Time);
-Time                     myDisplayGetLastUserTime               (DisplayInfo *);
+guint32                  myDisplayGetCurrentTime                (DisplayInfo *);
+guint32                  myDisplayGetTime                       (DisplayInfo *,
+                                                                 guint32);
+guint32                  myDisplayGetLastUserTime               (DisplayInfo *);
 void                     myDisplaySetLastUserTime               (DisplayInfo *,
-                                                                 Time);
+                                                                 guint32);
 void                     myDisplayUpdateLastUserTime            (DisplayInfo *,
-                                                                 Time);
+                                                                 guint32);
 gboolean                 myDisplayTestXrender                   (DisplayInfo *,
                                                                  gdouble);
 
