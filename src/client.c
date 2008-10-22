@@ -1946,6 +1946,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     getWindowName (display_info, c->window, &c->name);
     TRACE ("name \"%s\"", c->name);
     getTransientFor (display_info, screen_info->xroot, c->window, &c->transient_for);
+    XChangeSaveSet(display_info->dpy, c->window, SetModeInsert);
 
     /* Initialize structure */
     c->size = NULL;
@@ -2320,6 +2321,8 @@ clientUnframe (Client * c, gboolean remap)
     XUnmapWindow (display_info->dpy, c->frame);
     clientGravitate (c, REMOVE);
     XSelectInput (display_info->dpy, c->window, NoEventMask);
+    XChangeSaveSet(display_info->dpy, c->window, SetModeDelete);
+
     reparented = XCheckTypedWindowEvent (display_info->dpy, c->window, ReparentNotify, &ev);
 
     if (remap || !reparented)

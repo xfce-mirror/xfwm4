@@ -18,6 +18,7 @@
 - Add support for NET_MOVERESIZE_WINDOW
 - Take gravity bit into account in configure resize only requests to comply 
   with standard (bug #3634)
+- Add client windows to save set to avoid loosing all windows in case of crash
 
 4.4.2
 =====
