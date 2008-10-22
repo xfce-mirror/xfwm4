@@ -1,3 +1,55 @@
+2008-10-21 20:28  olivier
+
+	* NEWS, src/client.c, src/client.h, src/display.c, src/display.h,
+	  src/events.c, src/hints.c, src/netwm.c, src/netwm.h: Backport
+	  fron trunk, Add support for NET_MOVERESIZE_WINDOW, take gravity
+	  bit into account in configure resize only requests to comply with
+	  standard (bug #3634)
+
+2008-10-20 20:44  lars
+
+	* po/da.po: Added danish translation
+
+2008-10-20 20:44  lars
+
+	* po/ChangeLog, po/LINGUAS: * da.po,LINGUAS: Added Danish
+	  translation
+	  
+
+2008-10-09 13:06  olivier
+
+	* configure.ac.in: use a dot instead of a dash otherwise make rpm
+	  fails ('-' is not allowed in version)
+
+2008-10-09 12:58  olivier
+
+	* configure.ac.in: Adopt the same versioning scheme as other xfce
+	  packages
+
+2008-10-07 19:42  olivier
+
+	* NEWS: Update NEWS file
+
+2008-10-07 19:40  olivier
+
+	* src/client.c: Rework visual depth selection of the frame window
+	  (Bug #4452)
+
+2008-10-02 11:09  olivier
+
+	* ChangeLog, NEWS: Update NEWS and ChangeLog
+
+2008-10-02 11:03  olivier
+
+	* src/events.c: Loosen the rule that prevents an application from
+	  iconifying itself when skip_taskbar is set (Bug #4434)
+
+2008-09-30 16:39  olivier
+
+	* NEWS, src/netwm.c: Fix NET_WM_STATE claiming maximization
+	  vertical and horizontal even if only horizontal of vertical is
+	  actually set (Should fix bug #3969)
+
 2008-08-15 21:45  olivier
 
 	* NEWS, src/client.c, src/client.h, src/compositor.c,
@@ -8385,57 +8437,7 @@
 	  
 	  * libxfcegui4/libxfcegui4/netk-pager.c, xfwm4/configure,
 	  xfwm4/configure.ac, xfwm4/themes/Makefile.am,
-	  xfwm4/themes/Makefile.in, xfwm4/themes/default/bottom-active.xpm,
-	  xfwm4/themes/default/bottom-inactive.xpm,
-	  xfwm4/themes/default/bottom-left-active.xpm,
-	  xfwm4/themes/default/bottom-left-inactive.xpm,
-	  xfwm4/themes/default/bottom-right-active.xpm,
-	  xfwm4/themes/default/bottom-right-inactive.xpm,
-	  xfwm4/themes/default/close-active.xpm,
-	  xfwm4/themes/default/close-inactive.xpm,
-	  xfwm4/themes/default/close-pressed.xpm,
-	  xfwm4/themes/default/hide-active.xpm,
-	  xfwm4/themes/default/hide-inactive.xpm,
-	  xfwm4/themes/default/hide-pressed.xpm,
-	  xfwm4/themes/default/left-active.xpm,
-	  xfwm4/themes/default/left-inactive.xpm,
-	  xfwm4/themes/default/maximize-active.xpm,
-	  xfwm4/themes/default/maximize-inactive.xpm,
-	  xfwm4/themes/default/maximize-pressed.xpm,
-	  xfwm4/themes/default/maximize-toggled-active.xpm,
-	  xfwm4/themes/default/maximize-toggled-inactive.xpm,
-	  xfwm4/themes/default/maximize-toggled-pressed.xpm,
-	  xfwm4/themes/default/menu-active.xpm,
-	  xfwm4/themes/default/menu-inactive.xpm,
-	  xfwm4/themes/default/menu-pressed.xpm,
-	  xfwm4/themes/default/right-active.xpm,
-	  xfwm4/themes/default/right-inactive.xpm,
-	  xfwm4/themes/default/shade-active.xpm,
-	  xfwm4/themes/default/shade-inactive.xpm,
-	  xfwm4/themes/default/shade-pressed.xpm,
-	  xfwm4/themes/default/shade-toggled-active.xpm,
-	  xfwm4/themes/default/shade-toggled-inactive.xpm,
-	  xfwm4/themes/default/shade-toggled-pressed.xpm,
-	  xfwm4/themes/default/stick-active.xpm,
-	  xfwm4/themes/default/stick-inactive.xpm,
-	  xfwm4/themes/default/stick-pressed.xpm,
-	  xfwm4/themes/default/stick-toggled-active.xpm,
-	  xfwm4/themes/default/stick-toggled-inactive.xpm,
-	  xfwm4/themes/default/stick-toggled-pressed.xpm,
-	  xfwm4/themes/default/themerc,
-	  xfwm4/themes/default/title-1-active.xpm,
-	  xfwm4/themes/default/title-1-inactive.xpm,
-	  xfwm4/themes/default/title-2-active.xpm,
-	  xfwm4/themes/default/title-2-inactive.xpm,
-	  xfwm4/themes/default/title-3-active.xpm,
-	  xfwm4/themes/default/title-3-inactive.xpm,
-	  xfwm4/themes/default/title-4-active.xpm,
-	  xfwm4/themes/default/title-4-inactive.xpm,
-	  xfwm4/themes/default/title-5-active.xpm,
-	  xfwm4/themes/default/title-5-inactive.xpm,
-	  xfwm4/themes/default/top-left-active.xpm,
-	  xfwm4/themes/default/top-left-inactive.xpm,
-	  xfwm4/themes/default/top-right-active.xpm,
+	  ...,
 	  xfwm4/themes/default/top-right-inactive.xpm: Revert xfwm4 default
 	  theme to the one found in pre-release as it looked better Fix a
 	  very small thing in netk-pager
@@ -8572,7 +8574,7 @@
 	  xfwm4/mcs-plugin/plugin.h, xfwm4/mcs-plugin/workspaces-icon.h,
 	  xfwm4/mcs-plugin/workspaces.c, xfwm4/mcs-plugin/workspaces.h,
 	  xfwm4/mcs-plugin/workspaces.png, xfwm4/src/settings.c,
-	  xfwm4/themes/Makefile.am, xfwm4/themes/Makefile.in: Largish
+	  ..., xfwm4/themes/Makefile.in: Largish
 	  update:
 	  merge workspaces dialog from xfdesktop with workspace margins
 	  dialog from xfwm4. The new dialog is part of xfwm4.
