@@ -43,18 +43,96 @@
 
 #include "display.h"
 #include "screen.h"
-#include "mywindow.h"
+#include "misc.h"
 #include "mywindow.h"
 #include "compositor.h"
 
-ScreenInfo *
-myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask)
+gboolean
+myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
 {
     gchar selection[32];
+    Atom wm_sn_atom;
+
+    TRACE ("entering myScreenCheckWMAtom");
+    g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
+    wm_sn_atom = XInternAtom (myScreenGetXDisplay (screen_info), selection, FALSE);
+
+    return (atom == wm_sn_atom);
+}
+
+static gboolean
+myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
+{
+    gchar selection[32];
+    gulong wait, timeout;
+    DisplayInfo *display_info;
+    XSetWindowAttributes attrs;
+    Window current_wm;
+    XEvent event;
+    Atom wm_sn_atom;
+
+    g_return_val_if_fail (screen_info, FALSE);
+    g_return_val_if_fail (screen_info->display_info, FALSE);
+
+    TRACE ("entering myScreenReplaceWM");
+
+    display_info = screen_info->display_info;
+    g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
+    wm_sn_atom = XInternAtom (display_info->dpy, selection, FALSE);
+
+    current_wm = XGetSelectionOwner (display_info->dpy, wm_sn_atom);
+    if (current_wm)
+    {
+        if (!replace_wm)
+        {
+            g_message (_("To replace the window manager, try with \"--replace\"\n"));
+            return FALSE;
+        }
+        gdk_error_trap_push ();
+        attrs.event_mask = StructureNotifyMask;
+        XChangeWindowAttributes (display_info->dpy, current_wm, CWEventMask, &attrs);
+        if (gdk_error_trap_pop ())
+        {
+            current_wm = None;
+        }
+    }
+
+    if (!setXAtomManagerOwner (display_info, wm_sn_atom, screen_info->xroot, screen_info->xfwm4_win))
+    {
+        g_warning (_("Cannot acquire window manager selection on screen %d\n"), screen_info->screen);
+        return FALSE;
+    }
+
+    /* Waiting for previous window manager to exit */
+    if (current_wm)
+    {
+        wait = 0;
+        timeout = 10 * G_USEC_PER_SEC;
+        while (wait < timeout)
+        {
+            if (XCheckWindowEvent (display_info->dpy, current_wm, StructureNotifyMask, &event) && (event.type == DestroyNotify))
+            {
+                break;
+            }
+            g_usleep(G_USEC_PER_SEC / 10);
+            wait += G_USEC_PER_SEC / 10;
+        }
+
+        if (wait >= timeout)
+        {
+            g_warning(_("Previous window manager on screen %d is not exiting"), screen_info->screen);
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+ScreenInfo *
+myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask, gboolean replace_wm)
+{
     ScreenInfo *screen_info;
     GdkWindow *event_win;
     PangoLayout *layout;
-    Atom wm_sn_atom;
     long desktop_visible;
     int i;
 
@@ -88,6 +166,23 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     pango_layout_get_pixel_extents (layout, NULL, NULL);
     g_object_unref (G_OBJECT (layout));
 
+    screen_info->xscreen = gdk_x11_screen_get_xscreen (gscr);
+    screen_info->xroot = (Window) GDK_DRAWABLE_XID(gdk_screen_get_root_window (gscr));
+    screen_info->screen = gdk_screen_get_number (gscr);
+    screen_info->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (gscr));
+    screen_info->depth = DefaultDepth (display_info->dpy, screen_info->screen);
+    screen_info->width = WidthOfScreen (screen_info->xscreen);
+    screen_info->height = HeightOfScreen (screen_info->xscreen);
+    screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
+
+    screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
+    if (!myScreenSetWMAtom (screen_info, replace_wm))
+    {
+        gtk_widget_destroy (screen_info->gtk_win);
+        g_free (screen_info);
+        return NULL;
+    }
+
     event_win = eventFilterAddWin (gscr, event_mask);
     if (!event_win)
     {
@@ -97,14 +192,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     }
     gdk_window_set_user_data (event_win, screen_info->gtk_win);
 
-    screen_info->xscreen = gdk_x11_screen_get_xscreen (gscr);
-    screen_info->xroot = (Window) GDK_DRAWABLE_XID(gdk_screen_get_root_window (gscr));
-    screen_info->screen = gdk_screen_get_number (gscr);
-    screen_info->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (gscr));
-    screen_info->depth = DefaultDepth (display_info->dpy, screen_info->screen);
-    screen_info->width = WidthOfScreen (screen_info->xscreen);
-    screen_info->height = HeightOfScreen (screen_info->xscreen);
-    screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
     screen_info->current_ws = 0;
     screen_info->previous_ws = 0;
     screen_info->current_ws = 0;
@@ -178,17 +265,11 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     EnterWindowMask,
                     TRUE);
 
-    screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
-
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     g_snprintf (selection, sizeof (selection), "_NET_SYSTEM_TRAY_S%d", screen_info->screen);
     screen_info->net_system_tray_selection = XInternAtom (display_info->dpy, selection, FALSE);
     screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
 #endif
-
-    g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
-    wm_sn_atom = XInternAtom (display_info->dpy, selection, FALSE);
-    XSetSelectionOwner (display_info->dpy, wm_sn_atom, screen_info->xfwm4_win, CurrentTime);
 
     screen_info->box_gc = None;
     screen_info->black_gc = NULL;
@@ -325,18 +406,6 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, guint32 time)
     TRACE ("global key grabs %i", screen_info->key_grabs);
 
     return grab;
-}
-
-gboolean
-myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
-{
-    gchar selection[32];
-    Atom wm_sn_atom;
-
-    g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
-    wm_sn_atom = XInternAtom (myScreenGetXDisplay (screen_info), selection, FALSE);
-
-    return (atom == wm_sn_atom);
 }
 
 gboolean

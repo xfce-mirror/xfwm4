@@ -20,6 +20,8 @@
   with standard (bug #3634)
 - Add client windows to save set to avoid loosing all windows in case of crash
 - Use guint32 instead of Time internally to avoid potential issues in 64bits
+- Add a "--replace" command line option to replace ICCCM2 compliant window 
+  managers (Bug #3731)
 
 4.4.2
 =====
