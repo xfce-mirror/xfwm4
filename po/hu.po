@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-18 22:05+0100\n"
-"PO-Revision-Date: 2008-10-08 21:48+0100\n"
+"PO-Revision-Date: 2008-10-23 21:01+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -23,10 +23,12 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"Az ablak nem válaszol.\n"
+"Bezárod az alkalmazást?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "Figyelem"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -227,12 +229,8 @@ msgstr "Xfce 4 munkaterület beállítások"
 
 #: ../settings-dialogs/frap-shortcuts.c:92
 #, fuzzy
-msgid ""
-"This shortcut is already being used by <b>another window manager action</b>. "
-"Which action do you want to use?"
-msgstr ""
-"E gyorsbillentyűt már használja ezen ablakkezelő művelet: <b>%s</b>. Mely "
-"műveletet használnád?"
+msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
+msgstr "E gyorsbillentyűt már használja ezen ablakkezelő művelet: <b>%s</b>. Mely műveletet használnád?"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 #: ../settings-dialogs/frap-shortcuts.c:96
@@ -246,12 +244,8 @@ msgstr ""
 #: ../settings-dialogs/frap-shortcuts.c:95
 #: ../settings-dialogs/frap-shortcuts.c:98
 #, c-format
-msgid ""
-"The shortcut is already being used for the command <b>%s</b>. Which action "
-"do you want to use?"
-msgstr ""
-"E gyorsbillentyűt már használja e parancs: <b>%s</b>. Mely műveletet "
-"használnád?"
+msgid "The shortcut is already being used for the command <b>%s</b>. Which action do you want to use?"
+msgstr "E gyorsbillentyűt már használja e parancs: <b>%s</b>. Mely műveletet használnád?"
 
 #: ../settings-dialogs/frap-shortcuts.c:96
 #: ../settings-dialogs/frap-shortcuts.c:99
@@ -266,12 +260,8 @@ msgid "Use %s"
 msgstr "%s használata"
 
 #: ../settings-dialogs/frap-shortcuts.c:101
-msgid ""
-"The shortcut is already being used by a <b>window manager action</b>. Which "
-"action do you want to use?"
-msgstr ""
-"E gyorsbillentyűt már használja egy <b>ablakkezelő művelet</b>. Mely "
-"műveletet használnád?"
+msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
+msgstr "E gyorsbillentyűt már használja egy <b>ablakkezelő művelet</b>. Mely műveletet használnád?"
 
 #: ../settings-dialogs/frap-shortcuts.c:102
 #, fuzzy
@@ -595,13 +585,13 @@ msgstr "Munkaterületek"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "gtk-close"
-msgstr "gtk-close"
+msgstr "Bezár"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "gtk-help"
-msgstr "gtk-help"
+msgstr "Súgó"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 #, fuzzy
@@ -619,8 +609,7 @@ msgid "Change Workspace Name"
 msgstr "Munkaterület nevek"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "A margók olyan területek a képernyő szélén, amelyekre nem kerül ablak."
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -669,7 +658,7 @@ msgstr "Munkaterület nevek"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "  "
-msgstr ""
+msgstr "  "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Box move and resize</b>"
@@ -870,9 +859,8 @@ msgid "_Style"
 msgstr "_Stílus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#, fuzzy
 msgid "gtk-clear"
-msgstr "gtk-close"
+msgstr "Töröl"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "gtk-revert-to-saved"
@@ -884,282 +872,194 @@ msgstr ""
 
 #~ msgid "%s shortcut conflict"
 #~ msgstr "%s gyorsbillentyű ütközés"
-
 #~ msgid "Shortcut conflict"
 #~ msgstr "Gyorsbillentyű ütközés"
-
 #~ msgid "Window operations menu"
 #~ msgstr "Ablak művelet menü"
-
 #~ msgid "Up"
 #~ msgstr "Fel"
-
 #~ msgid "Down"
 #~ msgstr "Le"
-
 #~ msgid "Cancel"
 #~ msgstr "Mégsem"
-
 #~ msgid "Cycle windows"
 #~ msgstr "Ablakok körözése"
-
 #~ msgid "Close window"
 #~ msgstr "Ablak bezárása"
-
 #~ msgid "Maximize window horizontally"
 #~ msgstr "Teljes méret vízszintesen"
-
 #~ msgid "Maximize window vertically"
 #~ msgstr "Teljes méret függőlegesen"
-
 #~ msgid "Move window"
 #~ msgstr "Ablak mozgatása"
-
 #~ msgid "Resize window"
 #~ msgstr "Ablak átméretezése"
-
 #~ msgid "Stick window"
 #~ msgstr "Ablak rögzítése"
-
 #~ msgid "Raise window"
 #~ msgstr "Ablak előre"
-
 #~ msgid "Lower window"
 #~ msgstr "Ablak hátra"
-
 #~ msgid "Fill window horizontally"
 #~ msgstr "Ablak kitöltése vízszintesen"
-
 #~ msgid "Fill window vertically"
 #~ msgstr "Ablak kitöltése függőlegesen"
-
 #~ msgid "Toggle fullscreen"
 #~ msgstr "Teljes képernyő"
-
 #~ msgid "Move window to upper workspace"
 #~ msgstr "Ablak egy munkaterülettel feljebb"
-
 #~ msgid "Move window to bottom workspace"
 #~ msgstr "Ablak egy munkaterülettel lejjebb"
-
 #~ msgid "Move window to left workspace"
 #~ msgstr "Ablak egy munkaterülettel balra"
-
 #~ msgid "Move window to right workspace"
 #~ msgstr "Ablak egy munkaterülettel jobbra"
-
 #~ msgid "Move window to previous workspace"
 #~ msgstr "Ablak az előző munkaterületre"
-
 #~ msgid "Move window to next workspace"
 #~ msgstr "Ablak a következő munkaterületre"
-
 #~ msgid "Show desktop"
 #~ msgstr "Asztal mutatása"
-
 #~ msgid "Upper workspace"
 #~ msgstr "Felső munkaterület"
-
 #~ msgid "Bottom workspace"
 #~ msgstr "Alsó munkaterület"
-
 #~ msgid "Left workspace"
 #~ msgstr "Bal munkaterület"
-
 #~ msgid "Right workspace"
 #~ msgstr "Jobb munkaterület"
-
 #~ msgid "Previous workspace"
 #~ msgstr "Előző munkaterület"
-
 #~ msgid "Next workspace"
 #~ msgstr "Következő munkaterület"
-
 #~ msgid "Add workspace"
 #~ msgstr "Új munkaterület"
-
 #~ msgid "Add adjacent workspace"
 #~ msgstr "Szomszédos munkaterület hozzáadása"
-
 #~ msgid "Delete last workspace"
 #~ msgstr "Utolsó munkaterület törlése"
-
 #~ msgid "Delete active workspace"
 #~ msgstr "Aktív munkaterület törlése"
-
 #~ msgid "Action"
 #~ msgstr "Művelet"
-
 #~ msgid "Shortcut"
 #~ msgstr "Gyorsbillentyű"
-
 #~ msgid "Ctrl"
 #~ msgstr "Ctrl"
-
 #~ msgid "\t"
 #~ msgstr "\t"
-
 #~ msgid "<i>Wide</i>"
 #~ msgstr "<i>Széles</i>"
-
 #~ msgid "_Reset to defaults"
 #~ msgstr "Alapértelmezés visszaállítása"
-
 #~ msgid "Keytheme"
 #~ msgstr "Billentyűtéma"
-
 #~ msgid "Button"
 #~ msgstr "Gomb"
-
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Már van ilyen nevű billentyű-téma"
-
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Nevet kell adnod a billentyű-témának"
-
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "Valóban törölni akarod ezt a billentyű-témát?"
-
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Gyorsbillentyű téma hozzáadása"
-
 #~ msgid "Add a new window-manager shortcut theme"
 #~ msgstr "Új ablakkezelő gyorsbillentyű téma hozzáadása"
-
 #~ msgid "Type the name for the new shortcut theme:"
 #~ msgstr "Adj nevet az új gyorsbillentyű témának:"
-
 #~ msgid "Workspace Margins"
 #~ msgstr "Munkaterület margók"
-
 #~ msgid "Left :"
 #~ msgstr "Bal:"
-
 #~ msgid "Right :"
 #~ msgstr "Jobb:"
-
 #~ msgid "Top :"
 #~ msgstr "Felső:"
-
 #~ msgid "Bottom :"
 #~ msgstr "Alsó:"
-
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Munkaterületek és margók"
-
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Munkaterületek és Margók"
-
 #~ msgid "Place window under the mouse"
 #~ msgstr "Ablak elhelyezése az egér alá"
-
 #~ msgid "Place window in the center"
 #~ msgstr "Ablak elhelyezése középre"
-
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Munkaterületek váltása az asztalon való görgetésre"
-
 #~ msgid "Size|Small"
 #~ msgstr "Kicsi"
-
 #~ msgid "Size|Large"
 #~ msgstr "Nagy"
-
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Ablakok alap helyzete okos elhelyezés nélkül:"
-
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Ablakkezelő trükkök"
-
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "E beállítások nem működnek a jelenlegi (%s) ablakkezelőddel"
-
 #~ msgid "Change name"
 #~ msgstr "Új név"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Kattints egy munkaterület nevén a szerkesztéséhez"
-
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Betűkészlet-kijelölés párbeszéd"
-
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Szöveg igazítása a címsorban:"
-
 #~ msgid "Slow"
 #~ msgstr "Hosszú"
-
 #~ msgid "Fast"
 #~ msgstr "Rövid"
-
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Ablakkezelő"
-
 #~ msgid "Add keybinding theme"
 #~ msgstr "Billentyű-téma hozzáadása"
-
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Ablak erre a munkaterületre: %d"
-
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Nem sikerült megnyitni a témakönyvtárat!"
-
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "%s nem nyitható meg: \n"
 #~ "%s"
-
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "%s nem írható : \n"
 #~ ":%s"
-
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Gyorsbillentyű készítése ehhez:"
-
 #~ msgid "Compose shortcut"
 #~ msgstr "Gyorsbillentyű készítése"
-
 #~ msgid "Advanced Configuration"
 #~ msgstr "Haladó beállítás"
-
 #~ msgid "Move window down"
 #~ msgstr "Ablak mozgatása lefelé"
-
 #~ msgid "Move window left"
 #~ msgstr "Ablak mozgatása balra"
-
 #~ msgid "Move window right"
 #~ msgstr "Ablak mozgatása jobbra"
-
 #~ msgid "Resize window down"
 #~ msgstr "Ablak átméretezése lent"
-
 #~ msgid "Resize window left"
 #~ msgstr "Ablak átméretezése bal oldalon"
-
 #~ msgid "Resize window right"
 #~ msgstr "Ablak átméretezés jobb oldalon"
-
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Ablak mozgatás/átméretezés törlése"
-
 #~ msgid "Un_maximize"
 #~ msgstr "_Visszaállítás"
-
 #~ msgid "_Hide"
 #~ msgstr "El_rejtés"
-
 #~ msgid "Always on top"
 #~ msgstr "Mindig felül"
 
 #, fuzzy
 #~ msgid "Workspace %02d"
 #~ msgstr "%d. munkaterület"
-
 #~ msgid "Unknown application!"
 #~ msgstr "Ismeretlen alkalmazás!"
+
