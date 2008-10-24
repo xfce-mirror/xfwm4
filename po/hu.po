@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-18 22:05+0100\n"
-"PO-Revision-Date: 2008-10-23 21:01+0100\n"
+"PO-Revision-Date: 2008-10-23 21:22+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -228,9 +228,8 @@ msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 munkaterület beállítások"
 
 #: ../settings-dialogs/frap-shortcuts.c:92
-#, fuzzy
 msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
-msgstr "E gyorsbillentyűt már használja ezen ablakkezelő művelet: <b>%s</b>. Mely műveletet használnád?"
+msgstr "E gyorsbillentyűt már <b>más ablakkezelő művelet</b> használja. Mely műveletet használnád?"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 #: ../settings-dialogs/frap-shortcuts.c:96
@@ -264,7 +263,6 @@ msgid "The shortcut is already being used by a <b>window manager action</b>. Whi
 msgstr "E gyorsbillentyűt már használja egy <b>ablakkezelő művelet</b>. Mely műveletet használnád?"
 
 #: ../settings-dialogs/frap-shortcuts.c:102
-#, fuzzy
 msgid "Keep the window manager action"
 msgstr "Ablakkezelő művelet megtartása"
 
@@ -275,9 +273,8 @@ msgid "Conflicting actions for %s"
 msgstr ""
 
 #: ../settings-dialogs/frap-shortcuts.c:173
-#, fuzzy
 msgid "The shortcut is already being used for something else."
-msgstr "'%s' gyorsbillentyűt már másra használjuk."
+msgstr "E gyorsbillentyűt már másra használjuk."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:239
 msgid "Enter window manager action shortcut"
@@ -487,12 +484,10 @@ msgid "Show shadows under pop_up windows"
 msgstr "Árnyékok elő_ugró ablakok alatt"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Size|<i>Large</i>"
 msgstr "<i>Nagy</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Size|<i>Small</i>"
 msgstr "<i>Kis</i>"
 
@@ -594,42 +589,36 @@ msgid "gtk-help"
 msgstr "Súgó"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "Margók"
+msgstr "<b>Margók</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "<b>Munkaterületváltás</b>"
+msgstr "<b>Munkaterületek</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change Workspace Name"
-msgstr "Munkaterület nevek"
+msgstr "Munkaterület nevének cseréje"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "A margók olyan területek a képernyő szélén, amelyekre nem kerül ablak."
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "Név:"
+msgstr "_Név:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
 msgstr "Munkaterületek száma:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-#, fuzzy
 msgid "gtk-cancel"
 msgstr "Mégsem"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-#, fuzzy
 msgid "gtk-save"
-msgstr "gtk-close"
+msgstr "Mentés"
 
 #: ../settings-dialogs/tweaks-settings.c:42
 msgid "None"
@@ -647,14 +636,13 @@ msgid "Workspace %d"
 msgstr "%d. munkaterület"
 
 #: ../settings-dialogs/workspace-settings.c:134
-#, fuzzy, c-format
+#, c-format
 msgid "Change the name of workspace %d"
-msgstr "Munkaterületek neve és száma beállítása"
+msgstr "%d. munkaterület nevének cseréje"
 
 #: ../settings-dialogs/workspace-settings.c:275
-#, fuzzy
 msgid "Workspace Name"
-msgstr "Munkaterület nevek"
+msgstr "Munkaterület név"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "  "
@@ -741,12 +729,10 @@ msgid "Delay _before raising focused window:"
 msgstr "A fókuszt nyert ablak előhozásának késleltetése:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Delay|<i>Long</i>"
 msgstr "<i>Hosszú</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
 msgid "Delay|<i>Short</i>"
 msgstr "<i>Rövid</i>"
 
@@ -755,12 +741,10 @@ msgid "Dis_tance:"
 msgstr "_Távolság:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "Kicsi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Distance|<i>Wide</i>"
 msgstr "Széles"
 
@@ -801,12 +785,10 @@ msgid "Raise window when clicking _inside application window"
 msgstr "Ablak előhozása az alkalmazás ablakába kattintáskor"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "Kicsi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Resistance|<i>Wide</i>"
 msgstr "Széles"
 
@@ -868,7 +850,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "gtk-select-all"
-msgstr ""
+msgstr "Mind kijelöli"
 
 #~ msgid "%s shortcut conflict"
 #~ msgstr "%s gyorsbillentyű ütközés"
