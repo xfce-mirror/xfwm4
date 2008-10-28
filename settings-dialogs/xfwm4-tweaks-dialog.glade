@@ -281,7 +281,7 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkCheckButton" id="raise_on_click_check">
+                  <widget class="GtkCheckButton" id="raise_with_any_button_check">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">_Raise windows when any mouse button is pressed</property>

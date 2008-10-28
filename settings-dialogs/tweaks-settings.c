@@ -158,7 +158,7 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 
     /* Accessibility tab */
     GtkWidget *easy_click_combo_box = glade_xml_get_widget (gxml, "easy_click_combo_box");
-    GtkWidget *raise_on_click_check = glade_xml_get_widget (gxml, "raise_on_click_check");
+    GtkWidget *raise_with_any_button_check = glade_xml_get_widget (gxml, "raise_with_any_button_check");
     GtkWidget *borderless_maximize_check = glade_xml_get_widget (gxml, "borderless_maximize_check");
     GtkWidget *restore_on_move_check = glade_xml_get_widget (gxml, "restore_on_move_check");
     GtkWidget *snap_resist_check = glade_xml_get_widget (gxml, "snap_resist_check");
@@ -301,9 +301,9 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 
     /* Accessibility tab */
     xfconf_g_property_bind (xfwm4_channel,
-                            "/general/raise_on_click",
+                            "/general/raise_with_any_button",
                             G_TYPE_BOOLEAN,
-                            (GObject *)raise_on_click_check, "active");
+                            (GObject *)raise_with_any_button_check, "active");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/borderless_maximize",
                             G_TYPE_BOOLEAN,
