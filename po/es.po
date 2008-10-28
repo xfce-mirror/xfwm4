@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-18 22:05+0100\n"
-"PO-Revision-Date: 2008-10-16 19:39+0100\n"
+"PO-Revision-Date: 2008-10-20 20:05+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish, http://i18n.xfce.org/wiki/team_es\n"
 "MIME-Version: 1.0\n"
@@ -21,10 +21,12 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"Esta ventana parece estar ocupada y no responde.\n"
+"¿Desea finalizar la aplicación?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "Advertencia"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -148,9 +150,7 @@ msgstr "%s: No se puede reservar el color %s\n"
 #: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: No se puede reserver espacio para color: GValue para color no es de tipo "
-"STRING"
+msgstr "%s: No se puede reserver espacio para color: GValue para color no es de tipo STRING"
 
 #: ../src/settings.c:285
 #, c-format
@@ -165,12 +165,12 @@ msgstr "%s: No se puede procesar color: GValue para color no es de tipo STRING"
 #: ../src/terminate.c:74
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Error al leer datos del proceso hijo: %s\n"
 
 #: ../src/terminate.c:122
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "No se puede desplegar el diálogo de ayuda: %s\n"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
@@ -223,13 +223,8 @@ msgid "Xfce 4 Workspaces Settings"
 msgstr "Configuración de áreas de trabajo de Xfce 4"
 
 #: ../settings-dialogs/frap-shortcuts.c:92
-#, fuzzy
-msgid ""
-"This shortcut is already being used by <b>another window manager action</b>. "
-"Which action do you want to use?"
-msgstr ""
-"Este atajo está siendo utilizado por la acción del gestor de ventanas <b>%s</"
-"b>. ¿Qué acción desea usar?"
+msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
+msgstr "Este atajo está siendo utilizado por la acción del gestor de ventanas <b>otra acción del gestor de ventanas</b>. ¿Qué acción desea usar?"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 #: ../settings-dialogs/frap-shortcuts.c:96
@@ -238,17 +233,13 @@ msgstr "Usar esta acción"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 msgid "Keep the other one"
-msgstr ""
+msgstr "Mantener la otra"
 
 #: ../settings-dialogs/frap-shortcuts.c:95
 #: ../settings-dialogs/frap-shortcuts.c:98
 #, c-format
-msgid ""
-"The shortcut is already being used for the command <b>%s</b>. Which action "
-"do you want to use?"
-msgstr ""
-"El atajo ya está siendo usado por el comando <b>%s</b>. ¿Qué acción desea "
-"usar?"
+msgid "The shortcut is already being used for the command <b>%s</b>. Which action do you want to use?"
+msgstr "El atajo ya está siendo usado por el comando <b>%s</b>. ¿Qué acción desea usar?"
 
 #: ../settings-dialogs/frap-shortcuts.c:96
 #: ../settings-dialogs/frap-shortcuts.c:99
@@ -263,15 +254,10 @@ msgid "Use %s"
 msgstr "Usar %s"
 
 #: ../settings-dialogs/frap-shortcuts.c:101
-msgid ""
-"The shortcut is already being used by a <b>window manager action</b>. Which "
-"action do you want to use?"
-msgstr ""
-"El atajo ya está siendo usado por una <b>acción del gestor de ventanas</b>. "
-"¿Qué acción desea usar?"
+msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
+msgstr "El atajo ya está siendo usado por una <b>acción del gestor de ventanas</b>. ¿Qué acción desea usar?"
 
 #: ../settings-dialogs/frap-shortcuts.c:102
-#, fuzzy
 msgid "Keep the window manager action"
 msgstr "Mantener acción del gestor de ventanas"
 
@@ -279,12 +265,11 @@ msgstr "Mantener acción del gestor de ventanas"
 #: ../settings-dialogs/frap-shortcuts.c:141
 #, c-format
 msgid "Conflicting actions for %s"
-msgstr ""
+msgstr "Acciones en conflicto para %s"
 
 #: ../settings-dialogs/frap-shortcuts.c:173
-#, fuzzy
 msgid "The shortcut is already being used for something else."
-msgstr "El atajo '%s' ya está siendo usado por algo."
+msgstr "El atajo ya está siendo usado por algo."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:239
 msgid "Enter window manager action shortcut"
@@ -357,13 +342,13 @@ msgstr "Derecha"
 #: ../settings-dialogs/xfwm4-settings.c:201
 #: ../settings-dialogs/workspace-settings.c:369
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Socket del gestor de configuración"
 
 #: ../settings-dialogs/xfwm4-settings.c:201
 #: ../settings-dialogs/tweaks-settings.c:396
 #: ../settings-dialogs/workspace-settings.c:369
 msgid "SOCKET ID"
-msgstr ""
+msgstr "ID de SOCKET"
 
 #: ../settings-dialogs/xfwm4-settings.c:203
 #: ../settings-dialogs/tweaks-settings.c:397
@@ -390,18 +375,16 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Pruebe %s --help para ver una lista completa de opciones de línea de comando "
-"disponibles.\n"
+"Pruebe %s --help para ver una lista completa de opciones de línea de comando disponibles.\n"
 
 #: ../settings-dialogs/xfwm4-settings.c:813
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Fallo al inicializar xfconf. Motivo: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:824
-#, fuzzy
 msgid "Could not create the settings dialog."
-msgstr "No se pudo capturar el teclado"
+msgstr "No se pudo crear el diálogo de configuración."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -417,11 +400,11 @@ msgstr "Activar la prevención de pérdida de _foco"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "En el _centro de la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Por defecto, colocar ventanas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "C_ompositor"
@@ -453,7 +436,7 @@ msgstr "Respetar e_stándar ICCCM de obtención de foco"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Keep urgent windows blinking"
-msgstr ""
+msgstr "Hacer que las ventanas urgentes parpadeen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
@@ -481,8 +464,7 @@ msgstr "Opacidad de ventanas durante _redimensionado:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"Restaurar el _tamaño original de ventanas maximizadas al ser desplazadas"
+msgstr "Restaurar el _tamaño original de ventanas maximizadas al ser desplazadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Show shadows under _dock windows"
@@ -497,12 +479,10 @@ msgid "Show shadows under pop_up windows"
 msgstr "Mostar sombras bajo ventanas _emergentes"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Size|<i>Large</i>"
 msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Size|<i>Small</i>"
 msgstr "<i>Pequeño</i>"
 
@@ -512,7 +492,7 @@ msgstr "Cambiar al área de trabajo de la _ventana"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "Bajo el _puntero del ratón"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Use _edge resistance instead of window snapping"
@@ -524,8 +504,7 @@ msgstr "Cuando una ventana aparece por sí misma:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Cambiar de área de trabajo dependiendo de la _disposición real de escritorio"
+msgstr "Cambiar de área de trabajo dependiendo de la _disposición real de escritorio"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -541,7 +520,7 @@ msgstr "_Traer ventana al área de trabajo actual"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "_Dibujar marco alrededor de las ventanas seleccionadas durante la selección"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Enable display compositing"
@@ -562,8 +541,7 @@ msgstr "Tamaño _mínimo de ventana para activar posicionamiento inteligente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Mouse wheel over desktop switches workspaces"
-msgstr ""
-"Accionar la _rueda del ratón sobre el escritorio cambia de área de trabajo"
+msgstr "Accionar la _rueda del ratón sobre el escritorio cambia de área de trabajo"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
@@ -606,74 +584,64 @@ msgid "gtk-help"
 msgstr "gtk-help"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "Márgenes"
+msgstr "<b>Márgenes</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "<b>Desplazamiento cíclico entre áreas de trabajo</b>"
+msgstr "<b>Áreas de trabajo</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change Workspace Name"
-msgstr "Nombres de escritorio"
+msgstr "Cambiar nombre del área de trabajo"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Los bordes son áreas a los lados de la pantalla donde no se colocará ninguna "
-"ventana"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Los bordes son áreas a los lados de la pantalla donde no se colocará ninguna ventana"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "Nombre :"
+msgstr "_Nombre:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
 msgstr "_Número de áreas de trabajo:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-#, fuzzy
 msgid "gtk-cancel"
-msgstr "gtk-help"
+msgstr "gtk-cancel"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-#, fuzzy
 msgid "gtk-save"
-msgstr "gtk-close"
+msgstr "gtk-save"
 
 #: ../settings-dialogs/tweaks-settings.c:42
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #: ../settings-dialogs/tweaks-settings.c:396
 msgid "Session manager socket"
-msgstr ""
+msgstr "Socket del gestor de sesión"
 
 #: ../settings-dialogs/workspace-settings.c:72
 #: ../settings-dialogs/workspace-settings.c:87
 #: ../settings-dialogs/workspace-settings.c:148
 #, c-format
 msgid "Workspace %d"
-msgstr "Escritorio %d"
+msgstr "Área de trabajo %d"
 
 #: ../settings-dialogs/workspace-settings.c:134
-#, fuzzy, c-format
+#, c-format
 msgid "Change the name of workspace %d"
-msgstr "Establecer número y nombres de las áreas de trabajo"
+msgstr "Cambiar el nombre del área de trabajo %d"
 
 #: ../settings-dialogs/workspace-settings.c:275
-#, fuzzy
 msgid "Workspace Name"
-msgstr "Nombres de escritorio"
+msgstr "Nombre del área de trabajo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "  "
-msgstr ""
+msgstr "  "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Box move and resize</b>"
@@ -756,12 +724,10 @@ msgid "Delay _before raising focused window:"
 msgstr "Tiempo de espera _antes de traer al frente la ventana con el foco:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Delay|<i>Long</i>"
 msgstr "<i>Largo</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
 msgid "Delay|<i>Short</i>"
 msgstr "<i>Corto</i>"
 
@@ -770,14 +736,12 @@ msgid "Dis_tance:"
 msgstr "Dis_tancia:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Distance|<i>Small</i>"
-msgstr "Distancia :"
+msgstr "<i>Pequeña</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Distance|<i>Wide</i>"
-msgstr "Distancia :"
+msgstr "<i>Ancho</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Focus follows _mouse"
@@ -816,14 +780,12 @@ msgid "Raise window when clicking _inside application window"
 msgstr "Traer al frente la ventana cuando se haga clic _dentro de ella"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
 msgid "Resistance|<i>Small</i>"
-msgstr "Distancia :"
+msgstr "<i>Pequeña</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Resistance|<i>Wide</i>"
-msgstr "Distancia :"
+msgstr "<i>Ancho</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Shade"
@@ -855,15 +817,11 @@ msgstr "Título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
-"Saltar a la siguiente área de trabajo al a_rrastrar una ventana fuera del "
-"área de trabajo actual"
+msgstr "Saltar a la siguiente área de trabajo al a_rrastrar una ventana fuera del área de trabajo actual"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
-"Saltar a la siguiente área de trabajo cuando el _puntero llegue al borde de "
-"la pantalla"
+msgstr "Saltar a la siguiente área de trabajo cuando el _puntero llegue al borde de la pantalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "_Delay before window receives focus:"
@@ -878,144 +836,101 @@ msgid "_Style"
 msgstr "E_stilo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#, fuzzy
 msgid "gtk-clear"
-msgstr "gtk-close"
+msgstr "gtk-clear"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "gtk-revert-to-saved"
-msgstr ""
+msgstr "gtk-revert-to-saved"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "gtk-select-all"
-msgstr ""
+msgstr "gtk-select-all"
 
 #~ msgid "%s shortcut conflict"
 #~ msgstr "Conflicto de atajo para %s"
-
 #~ msgid "Shortcut conflict"
 #~ msgstr "Conflicto de atajo"
-
 #~ msgid "Window operations menu"
 #~ msgstr "Menú de operaciones de ventana"
-
 #~ msgid "Up"
 #~ msgstr "Arriba"
-
 #~ msgid "Down"
 #~ msgstr "Abajo"
-
 #~ msgid "Cancel"
 #~ msgstr "Cancelar"
-
 #~ msgid "Cycle windows"
 #~ msgstr "Selección cíclica de ventanas"
-
 #~ msgid "Close window"
 #~ msgstr "Cerrar ventana"
-
 #~ msgid "Maximize window horizontally"
 #~ msgstr "Maximizar ventana horizontalmente"
-
 #~ msgid "Maximize window vertically"
 #~ msgstr "Maximizar ventana verticalmente"
-
 #~ msgid "Move window"
 #~ msgstr "Mover ventana"
-
 #~ msgid "Resize window"
 #~ msgstr "Redimensionar ventana"
-
 #~ msgid "Stick window"
 #~ msgstr "Pegar ventana a todos los escritorios"
-
 #~ msgid "Raise window"
 #~ msgstr "Subir ventana"
-
 #~ msgid "Lower window"
 #~ msgstr "Bajar ventana"
-
 #~ msgid "Fill window horizontally"
 #~ msgstr "Completar ventana horizontalmente"
-
 #~ msgid "Fill window vertically"
 #~ msgstr "Completar ventana verticalmente"
-
 #~ msgid "Toggle above"
 #~ msgstr "Mostrar encima"
-
 #~ msgid "Toggle fullscreen"
 #~ msgstr "Pantalla completa"
-
 #~ msgid "Move window to upper workspace"
 #~ msgstr "Mover ventana al área de trabajo superior"
-
 #~ msgid "Move window to bottom workspace"
 #~ msgstr "Mover ventana al área de trabajo inferior"
-
 #~ msgid "Move window to left workspace"
 #~ msgstr "Mover ventana al área de trabajo izquierda"
-
 #~ msgid "Move window to right workspace"
 #~ msgstr "Mover ventana al área de trabajo derecha"
-
 #~ msgid "Move window to previous workspace"
 #~ msgstr "Mover ventana al área de trabajo anterior"
-
 #~ msgid "Move window to next workspace"
 #~ msgstr "Mover ventana al área de trabajo siguiente"
-
 #~ msgid "Show desktop"
 #~ msgstr "Mostrar escritorio"
-
 #~ msgid "Upper workspace"
 #~ msgstr "Área de trabajo superior"
-
 #~ msgid "Bottom workspace"
 #~ msgstr "Área de trabajo inferior"
-
 #~ msgid "Left workspace"
 #~ msgstr "Área de trabajo izquierda"
-
 #~ msgid "Right workspace"
 #~ msgstr "Área de trabajo derecha"
-
 #~ msgid "Previous workspace"
 #~ msgstr "Área de trabajo anterior"
-
 #~ msgid "Next workspace"
 #~ msgstr "Área de trabajo siguiente"
-
 #~ msgid "Add workspace"
 #~ msgstr "Añadir área de trabajo"
-
 #~ msgid "Add adjacent workspace"
 #~ msgstr "Añadir área de trabajo adyacente"
-
 #~ msgid "Delete last workspace"
 #~ msgstr "Borrar última área de trabajo"
-
 #~ msgid "Delete active workspace"
 #~ msgstr "Borrar área de trabajo activa"
-
 #~ msgid "Action"
 #~ msgstr "Acción"
-
 #~ msgid "Shortcut"
 #~ msgstr "Atajo"
-
 #~ msgid "Alt"
 #~ msgstr "Alt"
-
 #~ msgid "Ctrl"
 #~ msgstr "Ctrl"
-
 #~ msgid "\t"
 #~ msgstr "\t"
-
 #~ msgid "<i>Wide</i>"
 #~ msgstr "<i>Ancho</i>"
-
 #~ msgid "_Reset to defaults"
 #~ msgstr "_Restablecer valores por defecto"
 
@@ -1026,26 +941,20 @@ msgstr ""
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Atajo"
-
 #~ msgid "Workspace Margins"
 #~ msgstr "Márgenes del Escritorio"
-
 #~ msgid "Left :"
 #~ msgstr "Izquierda :"
-
 #~ msgid "Right :"
 #~ msgstr "Derecha :"
-
 #~ msgid "Top :"
 #~ msgstr "Arriba :"
-
 #~ msgid "Bottom :"
 #~ msgstr "Abajo :"
 
 #, fuzzy
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Escritorios y Márgenes"
-
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Escritorios y Márgenes"
 
@@ -1056,22 +965,16 @@ msgstr ""
 #, fuzzy
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Gestor de Ventanas"
-
 #~ msgid "Change name"
 #~ msgstr "Cambiar nombre"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Pinche en el nombre de escritorio para editarlo"
-
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Diálogo de Selección de Fuente"
-
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Alineado del texto dentro de la barra de título :"
-
 #~ msgid "Slow"
 #~ msgstr "Lento"
-
 #~ msgid "Fast"
 #~ msgstr "Rápido"
 
@@ -1082,68 +985,54 @@ msgstr ""
 #, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Mover ventana al escritorio 1"
-
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "No se puede abrir directorio de temas."
-
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "No se puede abrir %s : \n"
 #~ "%s"
-
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "No se puede escribir %s : \n"
 #~ "%s"
-
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Generar atajo para :"
-
 #~ msgid "Compose shortcut"
 #~ msgstr "Generar atajo"
 
 #, fuzzy
 #~ msgid "Advanced Configuration"
 #~ msgstr "Gestor de Ventanas"
-
 #~ msgid "Move window down"
 #~ msgstr "Mover ventana hacia abajo"
-
 #~ msgid "Move window left"
 #~ msgstr "Mover ventana hacia la izquierda"
-
 #~ msgid "Move window right"
 #~ msgstr "Mover ventana hacia la derecha"
-
 #~ msgid "Resize window down"
 #~ msgstr "Redimensionar ventana hacia abajo"
-
 #~ msgid "Resize window left"
 #~ msgstr "Redimensionar ventana hacia la izquierda"
-
 #~ msgid "Resize window right"
 #~ msgstr "Redimensionar ventana hacia la derecha"
 
 #, fuzzy
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Cerrar ventana"
-
 #~ msgid "Un_maximize"
 #~ msgstr "Des_maximizar"
-
 #~ msgid "_Hide"
 #~ msgstr "_Ocultar"
-
 #~ msgid "Always on top"
 #~ msgstr "Siempre encima"
 
 #, fuzzy
 #~ msgid "Workspace %02d"
 #~ msgstr "Escritorio %d"
-
 #~ msgid "Unknown application!"
 #~ msgstr "Aplicacion desconocida."
+

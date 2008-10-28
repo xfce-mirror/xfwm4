@@ -1,17 +1,12 @@
-# Albanian translation of xfwm4 package.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-# Besnik Bleta <besnik@programeshqip.org>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-18 22:05+0100\n"
-"PO-Revision-Date: 2007-01-22 17:24+0200\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2008-10-28 09:23+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -19,39 +14,39 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"Kjo dritare mund t jet e zn dhe nuk po prgjigjet.\n"
+"Doni ta prfundoni zbatimin?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "Sinjalizim"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
 #, c-format
 msgid "%s (on %s)"
-msgstr "%s (në %s)"
+msgstr "%s (n %s)"
 
 #: ../src/main.c:138
 #, c-format
 msgid "%s: Segmentation fault"
-msgstr "%s: Gabim copëzimi"
+msgstr "%s: Gabim copzimi"
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr "Ma_ksimizo"
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "(Un)Ma_ximize"
-msgstr "Ma_ksimizo"
+msgstr ""
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "Ma_ksimizo"
+msgstr "_Minimizo"
 
 #: ../src/menu.c:46
 msgid "Hide _all others"
-msgstr "Fshih _tërë të tjerët"
+msgstr "Fshih _tr t tjert"
 
 #: ../src/menu.c:47
 msgid "S_how"
@@ -59,59 +54,82 @@ msgstr "S_hfaq"
 
 #: ../src/menu.c:48
 msgid "_Move"
-msgstr ""
+msgstr "_Lvize"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:476
+msgid "Bring window on current workspace"
+msgstr "Kaloje dritaren te hapsira e tanishme e puns"
 
 #: ../src/menu.c:49
 msgid "_Resize"
-msgstr ""
+msgstr "_Riprmasoje"
 
 #: ../src/menu.c:51
 msgid "_Shade"
 msgstr "_Hijezo"
 
 #: ../src/menu.c:52
-#, fuzzy
+msgid "Switch to window's workspace"
+msgstr "Kaloje te hapsira e puns e dritares"
+
 msgid "(Un)_Shade"
-msgstr "Çhi_jëzo"
+msgstr "hi_jzo"
 
 #: ../src/menu.c:53
 msgid "S_tick"
 msgstr "Ngece"
 
 #: ../src/menu.c:54
-#, fuzzy
+msgid "Do nothing"
+msgstr "Mos bj gj"
+
 msgid "(Un)S_tick"
 msgstr "Sh_qit"
 
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Place window under the mouse"
+msgstr "Vre dritaren nn mi"
+
 #: ../src/menu.c:55
 msgid "Context _help"
-msgstr "Përmbajtje e ndihmës"
+msgstr "Prmbajtje e ndihms"
 
 #: ../src/menu.c:57
 msgid "Above"
-msgstr ""
+msgstr "Vre dritaren n qendr"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:512
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr "Anashkalo dritare q kan t caktuar vetin \"anashkalo faques\" ose \"anashkalo shtyll veprimesh\""
 
 #: ../src/menu.c:58
 msgid "Normal"
-msgstr ""
+msgstr "Normale"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Below"
-msgstr "Ngadalë"
+msgstr "Posht"
 
 #: ../src/menu.c:60
-#, fuzzy
-msgid "_Fullscreen"
-msgstr "Këmbe gjendjen Tërë Ekrani"
+msgid "Activate focus stealing prevention"
+msgstr "Aktivizo parandalim vjedhjeje fokusi"
 
+msgid "_Fullscreen"
+msgstr "Kmbe gjendjen Tr Ekrani"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:547
 #: ../src/menu.c:61
 msgid "(Un)_Fullscreen"
 msgstr ""
 
 #: ../src/menu.c:62
 msgid "Send to..."
-msgstr "Dërgo te..."
+msgstr "Drgo te..."
+
+#: ../mcs-plugin/wmtweaks_plugin.c:558
+#: ../mcs-plugin/xfwm4_plugin.c:1752
+msgid "Focus"
+msgstr "Fokus"
 
 #: ../src/menu.c:64
 msgid "_Close"
@@ -119,7 +137,7 @@ msgstr "_Mbyll"
 
 #: ../src/menu.c:67
 msgid "Destroy"
-msgstr "Shkatërroje"
+msgstr "Shkatrroje"
 
 #: ../src/menu.c:70
 msgid "_Quit"
@@ -129,45 +147,57 @@ msgstr "_Dil"
 msgid "Restart"
 msgstr "Rinis"
 
+#: ../mcs-plugin/wmtweaks_plugin.c:590
+msgid "Restore original size of maximized windows when moving"
+msgstr "Kur lvizen, rikthe madhsin origjinale t dritareve t zmadhuara n maksimum"
+
 #: ../src/menu.c:186
 #, c-format
 msgid "Workspace %i (%s)"
-msgstr "Hapësirë pune %i (%s)"
+msgstr "Hapsir pune %i (%s)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:596
+msgid "Use edge resistance instead of windows snapping"
+msgstr "Prdor rezistenc skajesh n vend t prlarje dritaresh"
 
 #: ../src/menu.c:190
 #, c-format
 msgid "Workspace %i"
-msgstr "Hapësirë %i"
+msgstr "Hapsir %i"
 
 #: ../src/menu.c:426
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu-ja nuk ja doli të përlajë treguesin\n"
+msgstr "%s: GtkMenu-ja nuk ja doli t prlaj treguesin\n"
 
 #: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Nuk siguroj dot ngjyrë %s\n"
+msgstr "%s: Nuk siguroj dot ngjyr %s\n"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:621
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "Mbaj mend hapsira t mparshme pune kur kmbehen prmes shkurtoresh tastiere"
 
 #: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Nuk siguroj dot ngjyr: GValue pr ngjyrn nuk sht e llojit STRING"
 
 #: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Nuk përtyp dot ngjyrë %s\n"
+msgstr "%s: Nuk prtyp dot ngjyrn %s\n"
 
 #: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Nuk prtyp dot ngjyr: GValue pr ngjyrn nuk sht e llojit STRING"
 
 #: ../src/terminate.c:74
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Gabim gjat leximit t t dhnave prej procesi bij: %s\n"
 
 #: ../src/terminate.c:122
 #, c-format
@@ -176,153 +206,155 @@ msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
+msgid "Default positionning of windows without smart placement:"
+msgstr "Vendosje parazgjedhje e dritareve pa vendosje t menur:"
+
 msgid "Configure window behavior"
 msgstr "Anulo veprim dritareje"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Window Manager"
-msgstr "Përgjegjës Dritaresh"
+msgstr "Prgjegjs Dritaresh"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
 msgid "Window Manager Settings"
-msgstr "Rregullime Përgjegjësi Dritaresh"
+msgstr "Rregullime Prgjegjsi Dritaresh"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:697
+msgid "Display full screen overlay windows directly"
+msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:4
 msgid "Xfce 4 Window Manager Settings"
-msgstr "Rregullime për Përgjegjës Dritaresh Xfce 4"
+msgstr "Rregullime pr Prgjegjs Dritaresh Xfce 4"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
-#, fuzzy
+msgid "Show shadows under dock windows"
+msgstr "Shfaq hije nn dritare paneli"
+
 msgid "Advanced window manager settings"
-msgstr "Rregullime për Përgjegjës Dritaresh Xfce 4"
+msgstr "Rregullime pr Prgjegjs Dritaresh Xfce 4"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Window Manager Tweaks"
-msgstr "Rregullime të Imta për Përgjegjës Dritaresh"
+msgstr "Rregullime t Imta pr Prgjegjs Dritaresh"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Rregullime të Imta për Përgjegjës Dritaresh Xfce 4"
+msgstr "Rregullime t Imta pr Prgjegjs Dritaresh Xfce 4"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Set number and names of workspaces"
-msgstr "Numri i hapësirave të punës:"
+msgstr "Caktoni numrat dhe emrat e hapsirave t puns"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:721
+#: ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733
+#: ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:745
+msgid "Transparent"
+msgstr "I tejdukshm"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "Workspaces"
-msgstr "Hapësira pune"
+msgstr "Hapsira pune"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "<i>Opaque</i>"
+msgstr "<i>I marrt</i>"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
 msgid "Workspaces Settings"
-msgstr "Rregullime Hapësirash Pune "
+msgstr "Rregullime Hapsirash Pune "
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:4
 msgid "Xfce 4 Workspaces Settings"
-msgstr "Rregullime Hapësirash Pune  Xfce 4"
+msgstr "Rregullime Hapsirash Pune  Xfce 4"
 
 #: ../settings-dialogs/frap-shortcuts.c:92
-#, fuzzy
-msgid ""
-"This shortcut is already being used by <b>another window manager action</b>. "
-"Which action do you want to use?"
-msgstr ""
-"Shkurtore tashmë në përdorim!\n"
-"Jeni i sigurt se doni të përdoret?"
+msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
+msgstr "Kjo shkurtore sht tashm n prdorim nga <b>nj tjetr veprim prgjegjsi dritaresh</b>. Cilin veprim doni t prdoret?"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 #: ../settings-dialogs/frap-shortcuts.c:96
 msgid "Use this action"
-msgstr ""
+msgstr "Prdor kt veprim"
 
 #: ../settings-dialogs/frap-shortcuts.c:93
 msgid "Keep the other one"
-msgstr ""
+msgstr "Mbaj tjetrn"
 
 #: ../settings-dialogs/frap-shortcuts.c:95
 #: ../settings-dialogs/frap-shortcuts.c:98
-#, fuzzy, c-format
-msgid ""
-"The shortcut is already being used for the command <b>%s</b>. Which action "
-"do you want to use?"
-msgstr ""
-"Shkurtore tashmë në përdorim!\n"
-"Jeni i sigurt se doni të përdoret?"
+#, c-format
+msgid "The shortcut is already being used for the command <b>%s</b>. Which action do you want to use?"
+msgstr "Shkurtorja sht tashm duke u prdorur pr urdhrin <b>%s</b>. Cilin veprim doni t prdoret?"
 
 #: ../settings-dialogs/frap-shortcuts.c:96
 #: ../settings-dialogs/frap-shortcuts.c:99
 #, c-format
 msgid "Keep %s"
-msgstr ""
+msgstr "Mbaj  %s"
 
+#: ../mcs-plugin/wmtweaks_plugin.c:914
+#: ../mcs-plugin/xfwm4_plugin.c:2430
 #: ../settings-dialogs/frap-shortcuts.c:99
 #: ../settings-dialogs/frap-shortcuts.c:102
 #, c-format
 msgid "Use %s"
-msgstr ""
+msgstr "Kto rregullime nuk mund t punojn me prgjegjsin e tanishm t dritareve (%s)"
 
 #: ../settings-dialogs/frap-shortcuts.c:101
-#, fuzzy
-msgid ""
-"The shortcut is already being used by a <b>window manager action</b>. Which "
-"action do you want to use?"
-msgstr ""
-"Shkurtore tashmë në përdorim!\n"
-"Jeni i sigurt se doni të përdoret?"
+msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
+msgstr "Shkurtorja sht duke u prdorur tashm nga <b>nj veprim prgjegjsi dritaresh</b>. Cilin veprim doni t prdoret?"
 
+#: ../mcs-plugin/workspaces.c:338
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:490
 #: ../settings-dialogs/frap-shortcuts.c:102
-#, fuzzy
 msgid "Keep the window manager action"
-msgstr "Rregullime për Përgjegjës Dritaresh Xfce 4"
+msgstr "Mbaj veprimin pr prgjegjsin e dritareve"
 
 #: ../settings-dialogs/frap-shortcuts.c:134
 #: ../settings-dialogs/frap-shortcuts.c:141
 #, c-format
 msgid "Conflicting actions for %s"
-msgstr ""
+msgstr "Veprime prplasse pr %s"
 
 #: ../settings-dialogs/frap-shortcuts.c:173
-#, fuzzy
 msgid "The shortcut is already being used for something else."
-msgstr ""
-"Shkurtore tashmë në përdorim!\n"
-"Jeni i sigurt se doni të përdoret?"
+msgstr "Shkurtorja sht duke u prdorur tashm pr dika tjetr."
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:239
-#, fuzzy
 msgid "Enter window manager action shortcut"
-msgstr "Rregullime për Përgjegjës Dritaresh Xfce 4"
+msgstr "Jepni shkurtore veprimi prgjegjsi dritaresh"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:240
 #: ../settings-dialogs/frap-shortcuts-dialog.c:250
-#, fuzzy, c-format
+#, c-format
 msgid "Action: %s"
-msgstr "Veprues"
+msgstr "Veprim: %s"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:244
 msgid "Enter command shortcut"
-msgstr ""
+msgstr "Jepni shkurtore urdhri"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:245
-#, fuzzy, c-format
+#, c-format
 msgid "Command: %s"
-msgstr "Urdhër"
+msgstr "Urdhr: %s"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:249
-#, fuzzy
 msgid "Enter shortcut"
-msgstr "Pa shkurtore"
+msgstr "Jepni shkurtore"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:280
-#, fuzzy
 msgid "Shortcut:"
-msgstr "Pa shkurtore"
+msgstr "Shkurtore:"
 
 #: ../settings-dialogs/frap-shortcuts-dialog.c:324
 msgid "Could not grab the keyboard."
@@ -331,28 +363,35 @@ msgstr ""
 #: ../settings-dialogs/frap-shortcuts-dialog.c:345
 #, c-format
 msgid "<span size='large'><b>%s</b></span>"
-msgstr ""
+msgstr "<span size='large'><b>%s</b></span>"
 
+#: ../mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
 #: ../settings-dialogs/xfwm4-settings.c:182
 msgid "Shade window"
 msgstr "Hijezo dritare"
 
+#: ../mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
 #: ../settings-dialogs/xfwm4-settings.c:183
 msgid "Hide window"
 msgstr "Fshih dritare"
 
+#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 #: ../settings-dialogs/xfwm4-settings.c:184
 msgid "Maximize window"
 msgstr "Maksimizo dritare"
 
+#: ../mcs-plugin/xfwm4_plugin.c:82
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 #: ../settings-dialogs/xfwm4-settings.c:185
-#, fuzzy
 msgid "Fill window"
-msgstr "Fshih dritare"
+msgstr "Mbushe dritaren"
 
 #: ../settings-dialogs/xfwm4-settings.c:186
 msgid "Nothing"
-msgstr "Asgjë"
+msgstr "Asgj"
 
 #: ../settings-dialogs/xfwm4-settings.c:191
 msgid "Left"
@@ -360,7 +399,7 @@ msgstr "Majtas"
 
 #: ../settings-dialogs/xfwm4-settings.c:192
 msgid "Center"
-msgstr "Qendër"
+msgstr "Qendr"
 
 #: ../settings-dialogs/xfwm4-settings.c:193
 msgid "Right"
@@ -369,29 +408,29 @@ msgstr "Djathtas"
 #: ../settings-dialogs/xfwm4-settings.c:201
 #: ../settings-dialogs/workspace-settings.c:369
 msgid "Settings manager socket"
-msgstr ""
+msgstr "\"Socket\" prgjegjsi rregullimesh"
 
 #: ../settings-dialogs/xfwm4-settings.c:201
 #: ../settings-dialogs/tweaks-settings.c:396
 #: ../settings-dialogs/workspace-settings.c:369
 msgid "SOCKET ID"
-msgstr ""
+msgstr "ID \"SOCKET\"-i"
 
 #: ../settings-dialogs/xfwm4-settings.c:203
 #: ../settings-dialogs/tweaks-settings.c:397
 #: ../settings-dialogs/workspace-settings.c:370
 msgid "Version information"
-msgstr ""
+msgstr "T dhna versioni"
 
 #: ../settings-dialogs/xfwm4-settings.c:355
 msgid "Theme"
-msgstr ""
+msgstr "Tem"
 
 #: ../settings-dialogs/xfwm4-settings.c:791
 #: ../settings-dialogs/tweaks-settings.c:414
 #: ../settings-dialogs/workspace-settings.c:387
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ../settings-dialogs/xfwm4-settings.c:795
 #: ../settings-dialogs/tweaks-settings.c:418
@@ -401,468 +440,407 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"Provoni %s --help pr t par nj list t plot t mundsive t passhme pr rresht urdhrash.\n"
 
 #: ../settings-dialogs/xfwm4-settings.c:813
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Dshtova n gatitjen e xfconf-it. Arsye: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:824
 msgid "Could not create the settings dialog."
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-#, fuzzy
-msgid "<i>Opaque</i>"
-msgstr "I marrtë"
+msgstr "Nuk krijoi dot dialog rregullimesh."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Transparent</i>"
-msgstr "I tejdukshëm"
+msgstr "<i>I tejdukshm</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#, fuzzy
 msgid "Activate _focus stealing prevention"
-msgstr "Aktivizo"
+msgstr "Aktivizo parandalim vjedhjeje _fokusi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "N _qendr t ekranit"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Dritaret, si parazgjedhje, vendosi:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
 msgid "C_ompositor"
-msgstr "Hartues"
+msgstr "_Hartues"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
 msgid "C_ycling"
-msgstr "Ciklim"
+msgstr "_Ciklim"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "Ciklo nëpër dritare prej tërë hapësirave të punës"
+msgstr "Ciklo _npr dritare prej tr hapsirave t puns"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Shfaq"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Do _nothing"
-msgstr "Asgjë"
+msgstr "_Mos bj gj"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
 msgid "Hide _frame of windows when maximized"
-msgstr "Fshih kornizë dritaresh kur zmadhohen në maksimum"
+msgstr "Fshih _korniz dritaresh kur zmadhohen n maksimum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "Respekto ndihmza fokusi _standarde ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Keep urgent windows blinking"
-msgstr ""
+msgstr "Dritaret urgjente mbaji xixlluese"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
+msgid "Delay before window receives focus"
+msgstr "Vones para se dritarja t vihet n vmendje"
+
 msgid "Key used to _grab and move windows:"
-msgstr "Tast i përdorur për kapje dhe zhvendosje dritaresh"
+msgstr "Tast i prdorur pr kapje dhe zhvendosje dritaresh"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1654
+#: ../mcs-plugin/xfwm4_plugin.c:1716
+msgid "Slow"
+msgstr "Ngadal"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "Patejdukshmëri zbukurimesh dritareje"
+msgstr "_Patejdukshmri e zbukurimeve t dritareve:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1661
+#: ../mcs-plugin/xfwm4_plugin.c:1723
+msgid "Fast"
+msgstr "Shpejt"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "Patejdukshmëri dritareje jovepruese"
+msgstr "Patejdukshmri dritaresh _jovepruese:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "Patejdukshmëri dritaresh flluckë"
+msgstr "Patejdukshmri _dritaresh flluck:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "Patejdukshmëri dritaresh gjatë lëvizjesh"
+msgstr "Patejdukshmri dritaresh gjat _lvizjesh:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "Patejdukshmëri dritaresh gjatë ripërmasimesh"
+msgstr "Patejdukshmri dritaresh gjat _riprmasimesh:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"Kur lëvizen, rikthe madhësinë origjinale të dritareve të zmadhuara në "
-"maksimum"
+msgstr "Kur lvizen, rikthe _madhsin origjinale t dritareve t zmadhuara n maksimum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
 msgid "Show shadows under _dock windows"
-msgstr "Shfaq hije nën dritare flluckë"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
 msgid "Show shadows under _regular windows"
-msgstr "Shfaq hije nën dritare të rregullta"
+msgstr "Shfaq hije nn dritare t _rregullta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "Show shadows under pop_up windows"
-msgstr "Shfaq hije nën dritare flluckë"
+msgstr "Shfaq hije nn dritare _flluck"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Size|<i>Large</i>"
-msgstr "Madhësi|E madhe"
+msgstr "Madhsi|<i>E madhe</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Size|<i>Small</i>"
-msgstr "Madhësi|E vogël"
+msgstr "Madhsi|<i>E vogl</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
 msgid "Switch to win_dow's workspace"
-msgstr "Kaloje dritaren te hapësira e punës %d"
+msgstr "Kalo te hapsira e puns e _dritares"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "Nn _treguesin e miut"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-#, fuzzy
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Përdor më mirë le"
+msgstr "Prdor m mir qndres _skajesh se sa prlarje dritaresh"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Kur nj dritare ngre veten:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Mbështill hapësira pune në varësi të skemës aktuale për desktopin"
+msgstr "Mbshtill hapsira pune n varsi t _skems aktuale pr desktopin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
-"Mbështill hapësira pune kur mbërrihet te hapësira e parë apo e fundit e punës"
+msgstr "Mbshtill hapsira pune kur mbrrihet te hapsira e _par apo e fundit e puns"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-#, fuzzy
 msgid "_Accessibility"
-msgstr "Hyrshmëri"
+msgstr "_Hyrshmri"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "Kaloje dritaren te hapësira pasuese e punës"
+msgstr "_Bjere dritaren te hapsira e puns e tanishme"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "_Vizato korniz prreth dritareve t przgjedhura kur cikolhet"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
 msgid "_Enable display compositing"
-msgstr "Aktivizo hartim ekrani"
+msgstr "_Aktivizo hartim ekrani"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "_Focus"
-msgstr "Fokus"
+msgstr "_Fokus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "Përfshi dritare të fshehura (d.m.th. të ikonizuara)"
+msgstr "_Prfshi dritare t fshehura (d.m.th. t ikonizuara)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-#, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Madhësia më e vogël që nxit vendosje të mençur"
+msgstr "Madhsia m e _vogl q nxit vendosje t menur:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Mouse wheel over desktop switches workspaces"
-msgstr ""
+msgstr "Kmbe hapsira pune duke prdorur n desktop rrotzn e _miut"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
 msgid "_Placement"
-msgstr "Vendosje"
+msgstr "_Vendosje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Ngri dritare kur shtypet çfarëdo butoni miu"
+msgstr "_Ngri dritare kur shtypet fardo butoni miu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"Mbaj mend hapësira të mëparshme pune kur këmbehen përmes shkurtoresh tastiere"
+"_Mbaj mend hapsira t mparshme pune\n"
+"kur kmbehen prmes shkurtoresh tastiere"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-#, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"Anashkalo dritare që kanë të caktuar vetinë \"anashkalo faques\" ose "
-"\"anashkalo shtyllë veprimesh\""
+"_Anashkalo dritare q kan t caktuar vetin\n"
+"\"anashkalo faques\" ose \"anashkalo shtyll veprimesh\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-#, fuzzy
 msgid "_Workspaces"
-msgstr "Hapësira pune"
+msgstr "_Hapsira pune"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "gtk-close"
-msgstr ""
+msgstr "gtk-close"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "gtk-help"
-msgstr ""
+msgstr "gtk-help"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "Mënjana"
+msgstr "<b>Mnjana</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "Mbështill hapësira pune"
+msgstr "<b>Hapsira pune</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change Workspace Name"
-msgstr "Emra hapësirash pune"
+msgstr "Ndryshoni Emrin e Hapsirs s Puns"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Mënjanat janë zona në skajet e ekranit në të cilat nuk do të vendoset dritare"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Mnjanat jan zona n skajet e ekranit n t cilat nuk do t vendoset dritare"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "Emër:"
+msgstr "_Emr:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "Numri i hapësirave të punës:"
+msgstr "_Numri i hapsirave t puns:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-#, fuzzy
 msgid "gtk-cancel"
-msgstr "Anulo"
+msgstr "gtk-cancel"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-#, fuzzy
 msgid "gtk-save"
-msgstr "Anulo"
+msgstr "gtk-save"
 
 #: ../settings-dialogs/tweaks-settings.c:42
 msgid "None"
-msgstr "Asnjë"
+msgstr "Asnj"
 
 #: ../settings-dialogs/tweaks-settings.c:396
 msgid "Session manager socket"
-msgstr ""
+msgstr "\"Socket\" prgjegjsi sesioni"
 
 #: ../settings-dialogs/workspace-settings.c:72
 #: ../settings-dialogs/workspace-settings.c:87
 #: ../settings-dialogs/workspace-settings.c:148
 #, c-format
 msgid "Workspace %d"
-msgstr "Hapësirë pune %d"
+msgstr "Hapsir pune %d"
 
 #: ../settings-dialogs/workspace-settings.c:134
-#, fuzzy, c-format
+#, c-format
 msgid "Change the name of workspace %d"
-msgstr "Numri i hapësirave të punës:"
+msgstr "Ndryshoni emrin e hapsirs s puns %d"
 
 #: ../settings-dialogs/workspace-settings.c:275
-#, fuzzy
 msgid "Workspace Name"
-msgstr "Emra hapësirash pune"
+msgstr "Emr Hapsire Pune:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "  "
-msgstr ""
+msgstr "  "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Box move and resize</b>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "Skemë butonash"
+msgstr "<b>Skem butonash</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "Veprim dyklikimi"
+msgstr "<b>_Veprim dyklikimi</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "Model fokusi"
+msgstr "<b>Model fokusi</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "Fokus mbi dritare të reja"
+msgstr "<b>Fokus mbi dritare t reja</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "_Lartëso me klikimin"
+msgstr "<b>Lartsoje kur klikohet</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "Lartësoji përgjatë fokusit"
+msgstr "<b>Lartsoje kur fokusohet</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "Drejtim Titulli"
+msgstr "<b>_Drejtim titulli</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "Gërma titulli"
+msgstr "<b>_Grma titulli</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "Shkurtore dritareje"
+msgstr "<b>_Shkurtore dritareje</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "Përlarje dritaresh"
+msgstr "<b>Prlarje dritaresh</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "Mbështill hapësira pune"
+msgstr "<b>Mbshtill hapsira pune</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Active"
 msgstr "Veprues"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "Të mëtejshme"
+msgstr "T _mtejshme"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Lartësoji dritaret vetvetiu kur këto marrin fokus"
+msgstr "_Lartsoji dritaret vetvetiu kur kto marrin fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
-msgstr "Jepu fokus vetvetiu dritareve të sapokrijuara"
+msgstr "Jepu fokus vetvetiu dritareve t krijuara _rishtazi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "Klikoni për fokusim"
+msgstr "_Klikoni pr fokusim"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
-msgstr "Për të ndryshuar skemën klikoni dhe tërhiqni zvarrë butona "
+msgstr "Pr t ndryshuar skemn, klikoni dhe trhiqni zvarr butona "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Close"
 msgstr "Mbyll"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "Vonesë para se të ngrihet dritarja e fokusuar :"
+msgstr "Vones _prpara se t ngrihet dritarja e fokusuar :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Delay|<i>Long</i>"
-msgstr ""
+msgstr "Vones|<i>E gjat</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Short</i>"
-msgstr ""
+msgstr "Vones|<i>E shkurtr</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "Largësi:"
+msgstr "_Largsi:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Distance|<i>Small</i>"
-msgstr "Largësi|E vogël"
+msgstr "Largsi|<i>E vogl</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Distance|<i>Wide</i>"
-msgstr "Largësi|E madhe"
+msgstr "Largsi|<i>E madhe</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "Fokusimi ndjek miun"
+msgstr "Fokusimi ndjek _miun"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Hidden"
-msgstr "Padukshëm"
+msgstr "Padukshm"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hide"
 msgstr "Fshih"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "Shfaq përmbajtje dritareje kur lëvizet"
+msgstr "Fshihe prmbajtjen e dritares kur _lvizet"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "Shfaq përmbajtje dritareje kur  ripërmasohet"
+msgstr "Fshihe prmbajtjen e dritares kur _riprmasohet"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "Tastierë"
+msgstr "_Tastier"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Maximize"
@@ -873,342 +851,90 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr "Lartëso dritaren kur klikohet brenda dritares së një zbatimi"
+msgstr "Lartsoje dritaren kur klikohet _brenda dritares s nj zbatimi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
 msgid "Resistance|<i>Small</i>"
-msgstr "Rezistencë|E vogël"
+msgstr "Qndres|<i>E vogl</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Resistance|<i>Wide</i>"
-msgstr "Rezistencë|E madhe"
+msgstr "Qndres|<i>E madhe</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Shade"
 msgstr "Hije"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
 msgid "Snap windows to other _windows"
-msgstr "Përla dritare afër dritaresh të tjera"
+msgstr "Prla dritare afr _dritaresh t tjera"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
-#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr "Përla dritare afër caqeve të ekranit"
+msgstr "Prla dritare afr _caqeve t ekranit"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Stick"
 msgstr "Ngec"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Veprim që do bërë kur dyklikohet te shtyllë titulli:"
+msgstr "Veprim pr t'u br kur dyklikohet te shtyll titulli"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The window title, it cannot be removed"
-msgstr "Titulli i dritares, nuk mund të hiqet"
+msgstr "Titulli i dritares, nuk mund t hiqet"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "Title"
 msgstr "Titull"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Mbështill hapësira pune kur një dritare tërhiqet përtej ekranit"
+msgstr "Mbshtill hapsira pune kur nj dritare _trhiqet prtej ekranit"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Mbështill hapësira pune kur treguesi arrin në një skaj ekrani"
+msgstr "Mbshtill hapsira pune kur _treguesi arrin n nj skaj ekrani"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "Vonesë para se të ngrihet dritarja e fokusuar :"
+msgstr "_Vones para se dritarja t marr fokus:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "Qëndresë Skajesh :"
+msgstr "Qndres _skajesh :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
 msgid "_Style"
-msgstr "Stil"
+msgstr "_Stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#, fuzzy
 msgid "gtk-clear"
-msgstr "Anulo"
+msgstr "gtk-clear"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "gtk-revert-to-saved"
-msgstr ""
+msgstr "gtk-revert-to-saved"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "gtk-select-all"
-msgstr ""
+msgstr "gtk-select-all"
 
-#~ msgid "Window operations menu"
-#~ msgstr "Menu veprimesh dritareje"
+msgid "Fill window horizontally"
+msgstr "Mbushe dritaren horizontalisht"
 
-#~ msgid "Cancel"
-#~ msgstr "Anulo"
+msgid "Fill window vertically"
+msgstr "Mbushe dritaren vertikalisht"
 
-#~ msgid "Cycle windows"
-#~ msgstr "Ciklo dritare"
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:511
+#, c-format
+msgid "Move window to workspace %d"
+msgstr "Kaloje dritaren te hapsira e puns %d"
 
-#~ msgid "Close window"
-#~ msgstr "Mbyll dritare"
+#: ../src/menu.c:50
+#: ../src/menu.c:51
+msgid "Always on top"
+msgstr "Prher n krye"
 
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Maksimizo dritare horizontalisht"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Maksimizo dritare vertikalisht"
-
-#, fuzzy
-#~ msgid "Move window"
-#~ msgstr "Ngri dritare"
-
-#, fuzzy
-#~ msgid "Resize window"
-#~ msgstr "Rpërmaso dritaren sipër"
-
-#~ msgid "Stick window"
-#~ msgstr "Ngec dritare"
-
-#~ msgid "Raise window"
-#~ msgstr "Ngrije dritaren "
-
-#~ msgid "Lower window"
-#~ msgstr "Ule dritaren"
-
-#, fuzzy
-#~ msgid "Fill window horizontally"
-#~ msgstr "Maksimizo dritare horizontalisht"
-
-#, fuzzy
-#~ msgid "Fill window vertically"
-#~ msgstr "Maksimizo dritare vertikalisht"
-
-#~ msgid "Toggle fullscreen"
-#~ msgstr "Këmbe gjendjen Tërë Ekrani"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Kaloje dritaren te hapësira e punës më sipër"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Kaloje dritaren te hapësira e punës më poshtë"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Kaloje dritaren te hapësira e punës majtas"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Kaloje dritaren te hapësira e punës djathtas"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Kaloje dritaren te hapësira e mëparshme e punës"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Kaloje dritaren te hapësira pasuese e punës"
-
-#~ msgid "Show desktop"
-#~ msgstr "Shfaq desktop"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Hapësirë pune më sipër"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Hapësirë pune më poshtëPosht�"
-
-#~ msgid "Left workspace"
-#~ msgstr "Hapësirë pune majtas"
-
-#~ msgid "Right workspace"
-#~ msgstr "Hapësirë pune djathtas"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Hapësirë pune e mëparshme"
-
-#~ msgid "Next workspace"
-#~ msgstr "Hapësirë pune pasuese"
-
-#~ msgid "Add workspace"
-#~ msgstr "Shto hapësirë pune"
-
-#, fuzzy
-#~ msgid "Add adjacent workspace"
-#~ msgstr "Shto hapësirë pune"
-
-#, fuzzy
-#~ msgid "Delete last workspace"
-#~ msgstr "Fshi hapësirë pune"
-
-#, fuzzy
-#~ msgid "Delete active workspace"
-#~ msgstr "Fshi hapësirë pune"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Veprues"
-
-#, fuzzy
-#~ msgid "Shortcut"
-#~ msgstr "Pa shkurtore"
-
-#, fuzzy
-#~ msgid "Ctrl"
-#~ msgstr "Qendër"
-
-#, fuzzy
-#~ msgid "Button"
-#~ msgstr "Skemë butonash"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Ka tashmë një temë caktimi tastesh me të njëjtin emër"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Duhet të jepni një emër për temën e caktimit të tasteve"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Doni vërtet ta hiqni këtë temë caktimi tastesh?"
-
-#, fuzzy
-#~ msgid "Add Shortcut Theme"
-#~ msgstr "Shkurtore"
-
-#, fuzzy
-#~ msgid "Type the name for the new shortcut theme:"
-#~ msgstr "Jepni një emër për temën:"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "Mënjana Hapësire pune"
-
-#~ msgid "Left :"
-#~ msgstr "Majtas :"
-
-#~ msgid "Right :"
-#~ msgstr "Djathtas :"
-
-#~ msgid "Top :"
-#~ msgstr "Sipër :"
-
-#~ msgid "Bottom :"
-#~ msgstr "Poshtë :"
-
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Etiketë Butoni|Hapësira Pune dhe Mënjana"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "Hapësira pune dhe Mënjana"
-
-#~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr "Këmbe hapësira pune duke përdorur në desktop rrotëzën e miut"
-
-#, fuzzy
-#~ msgid "Default positionning of windows without smart placement:"
-#~ msgstr "Madhësia më e vogël që nxit vendosje të mençur"
-
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "Etiketë Butoni|Rregullime të Imta për Përgjegjës Dritaresh"
-
-#~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr ""
-#~ "Këto rregullime nuk mund të punojnë me përgjegjësin e tanishëm të "
-#~ "dritareve (%s)"
-
-#~ msgid "Change name"
-#~ msgstr "Ndrysho emër"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Klikoni mbi emrin e një hapësire pune për ta përpunuar"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "Dialog Përzgjedhjeje Gërmash"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "Drejtim teksti brenda shtyllës së titullit :"
-
-#~ msgid "Slow"
-#~ msgstr "Ngadalë"
-
-#~ msgid "Fast"
-#~ msgstr "Shpejt"
-
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "Etiketë Butoni|Përgjegjës Dritaresh"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "Shto temë caktimi tastesh"
-
-#, fuzzy
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Kaloje dritaren te hapësira e punës %d"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "Nuk hap dot drejtorinë e temave !"
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "S'hap dot %s : \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nuk shkruaj dot te %s : \n"
-#~ "%s"
-
-#~ msgid "Compose shortcut for :"
-#~ msgstr "Harto shkurtore për :"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "Harto shkurtore"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Formësim i Mëtejshëm"
-
-#~ msgid "Move window down"
-#~ msgstr "Ul dritare"
-
-#~ msgid "Move window left"
-#~ msgstr "Lëvize dritaren majtas"
-
-#~ msgid "Move window right"
-#~ msgstr "Lëvize dritaren djathtas"
-
-#~ msgid "Resize window down"
-#~ msgstr "Ripërmaso dritaren poshtë"
-
-#~ msgid "Resize window left"
-#~ msgstr "Ripërmaso dritaren majtas"
-
-#~ msgid "Resize window right"
-#~ msgstr "Ripërmaso dritaren djathtas"
-
-#~ msgid "Cancel move/resize window"
-#~ msgstr "Anulo lëvizje/ripërmasim dritareje"
-
-#~ msgid "Un_maximize"
-#~ msgstr "Çma_ksimizo"
-
-#~ msgid "_Hide"
-#~ msgstr "_Fshih"
-
-#~ msgid "Always on top"
-#~ msgstr "Përherë në krye"
-
-#, fuzzy
-#~ msgid "Workspace %02d"
-#~ msgstr "Hapësirë pune %d"
