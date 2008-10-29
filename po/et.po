@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-18 22:05+0100\n"
+"POT-Creation-Date: 2008-10-29 23:07+0000\n"
 "PO-Revision-Date: 2006-04-18 10:02+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -32,116 +32,115 @@ msgstr ""
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:138
+#: ../src/main.c:145
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: segmendi viga"
 
-#: ../src/menu.c:43
-msgid "Ma_ximize"
-msgstr "_Suurenda"
-
 #: ../src/menu.c:44
-#, fuzzy
-msgid "(Un)Ma_ximize"
+msgid "Ma_ximize"
 msgstr "_Suurenda"
 
 #: ../src/menu.c:45
 #, fuzzy
+msgid "Unma_ximize"
+msgstr "_Taassuurenda"
+
+#: ../src/menu.c:46
+#, fuzzy
 msgid "Mi_nimize"
 msgstr "_Suurenda"
 
-#: ../src/menu.c:46
-msgid "Hide _all others"
-msgstr "Peida _kõik teised"
-
 #: ../src/menu.c:47
+msgid "Minimize _All Other Windows"
+msgstr ""
+
+#: ../src/menu.c:48
 msgid "S_how"
 msgstr "_Näita"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:49
 msgid "_Move"
 msgstr ""
 
-#: ../src/menu.c:49
+#: ../src/menu.c:50
 msgid "_Resize"
 msgstr ""
 
-#: ../src/menu.c:51
-msgid "_Shade"
-msgstr "_Varja"
-
+#. --------------------------------------------------------
 #: ../src/menu.c:52
 #, fuzzy
-msgid "(Un)_Shade"
-msgstr "Taasta _aken"
+msgid "Always on Top"
+msgstr "Alati kõige peal"
 
 #: ../src/menu.c:53
-msgid "S_tick"
-msgstr "N_aeluta"
+#, fuzzy
+msgid "Same as Other Windows"
+msgstr "Haagi aknaid teiste akende külge"
 
 #: ../src/menu.c:54
-#, fuzzy
-msgid "(Un)S_tick"
-msgstr "_Eemalda nael"
+msgid "Always Below Other Windows"
+msgstr ""
 
 #: ../src/menu.c:55
-msgid "Context _help"
-msgstr "Konteksti _abi"
+#, fuzzy
+msgid "Roll Window Up"
+msgstr "Peida aken"
+
+#: ../src/menu.c:56
+#, fuzzy
+msgid "Roll Window Down"
+msgstr "Liiguta akent alla"
 
 #: ../src/menu.c:57
-msgid "Above"
-msgstr ""
-
-#: ../src/menu.c:58
-msgid "Normal"
-msgstr ""
-
-#: ../src/menu.c:59
-#, fuzzy
-msgid "Below"
-msgstr "Väike"
-
-#: ../src/menu.c:60
 #, fuzzy
 msgid "_Fullscreen"
 msgstr "Lülita täisekraani"
 
+#: ../src/menu.c:58
+#, fuzzy
+msgid "Leave _Fullscreen"
+msgstr "Lülita täisekraani"
+
+#: ../src/menu.c:59
+#, fuzzy
+msgid "Context _Help"
+msgstr "Konteksti _abi"
+
+#. --------------------------------------------------------
 #: ../src/menu.c:61
-msgid "(Un)_Fullscreen"
-msgstr ""
+#, fuzzy
+msgid "Always on Visible Workspace"
+msgstr "Alati kõige peal"
 
 #: ../src/menu.c:62
-msgid "Send to..."
-msgstr "Saada ..."
+msgid "Only on This Workspace"
+msgstr ""
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
+#, fuzzy
+msgid "Move to Another Workspace"
+msgstr "Saada aken järgmisesse tööruumi"
+
+#. --------------------------------------------------------
+#: ../src/menu.c:65
 msgid "_Close"
 msgstr "_Sulge"
 
-#: ../src/menu.c:67
+#. --------------------------------------------------------
+#: ../src/menu.c:68
 msgid "Destroy"
 msgstr "Hävita"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:71
 msgid "_Quit"
 msgstr "Vä_lja"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:72
 msgid "Restart"
 msgstr "Taaskäivita"
 
-#: ../src/menu.c:186
-#, c-format
-msgid "Workspace %i (%s)"
-msgstr "Töölaud %i (%s)"
-
-#: ../src/menu.c:190
-#, c-format
-msgid "Workspace %i"
-msgstr "Töölaud %i"
-
-#: ../src/menu.c:426
+#: ../src/menu.c:423
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: 'GtkMenu'-l ebaõnnestus kursori haaramine\n"
@@ -177,13 +176,13 @@ msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 #, fuzzy
 msgid "Configure window behavior"
 msgstr "Akna kaunistuste läbipaistmatus"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
 msgstr "Aknahaldur"
 
@@ -234,7 +233,7 @@ msgstr "Tööala ääred"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Tööala ääred"
 
-#: ../settings-dialogs/frap-shortcuts.c:92
+#: ../settings-dialogs/frap-shortcuts.c:53
 #, fuzzy
 msgid ""
 "This shortcut is already being used by <b>another window manager action</b>. "
@@ -243,17 +242,20 @@ msgstr ""
 "Kiirvalik on juba kasutuses !\n"
 "Kas sa kindlasti soovid seda kasutada?"
 
-#: ../settings-dialogs/frap-shortcuts.c:93
-#: ../settings-dialogs/frap-shortcuts.c:96
-msgid "Use this action"
+#: ../settings-dialogs/frap-shortcuts.c:54
+#: ../settings-dialogs/frap-shortcuts.c:57
+#: ../settings-dialogs/frap-shortcuts.c:60
+#: ../settings-dialogs/frap-shortcuts.c:63
+#, c-format
+msgid "Use %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:54
 msgid "Keep the other one"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:95
-#: ../settings-dialogs/frap-shortcuts.c:98
+#: ../settings-dialogs/frap-shortcuts.c:56
+#: ../settings-dialogs/frap-shortcuts.c:59
 #, fuzzy, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
@@ -262,19 +264,13 @@ msgstr ""
 "Kiirvalik on juba kasutuses !\n"
 "Kas sa kindlasti soovid seda kasutada?"
 
-#: ../settings-dialogs/frap-shortcuts.c:96
-#: ../settings-dialogs/frap-shortcuts.c:99
+#: ../settings-dialogs/frap-shortcuts.c:57
+#: ../settings-dialogs/frap-shortcuts.c:60
 #, c-format
 msgid "Keep %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:99
-#: ../settings-dialogs/frap-shortcuts.c:102
-#, c-format
-msgid "Use %s"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts.c:101
+#: ../settings-dialogs/frap-shortcuts.c:62
 #, fuzzy
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
@@ -283,124 +279,404 @@ msgstr ""
 "Kiirvalik on juba kasutuses !\n"
 "Kas sa kindlasti soovid seda kasutada?"
 
-#: ../settings-dialogs/frap-shortcuts.c:102
+#: ../settings-dialogs/frap-shortcuts.c:63
 #, fuzzy
 msgid "Keep the window manager action"
 msgstr "Aknahalduri ülehäälestamine"
 
-#: ../settings-dialogs/frap-shortcuts.c:134
-#: ../settings-dialogs/frap-shortcuts.c:141
+#: ../settings-dialogs/frap-shortcuts.c:95
+#: ../settings-dialogs/frap-shortcuts.c:102
 #, c-format
 msgid "Conflicting actions for %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:173
+#: ../settings-dialogs/frap-shortcuts.c:134
 #, fuzzy
 msgid "The shortcut is already being used for something else."
 msgstr ""
 "Kiirvalik on juba kasutuses !\n"
 "Kas sa kindlasti soovid seda kasutada?"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:239
+#: ../settings-dialogs/frap-shortcuts-dialog.c:248
 #, fuzzy
 msgid "Enter window manager action shortcut"
 msgstr "Aknahalduri ülehäälestamine"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:240
-#: ../settings-dialogs/frap-shortcuts-dialog.c:250
+#: ../settings-dialogs/frap-shortcuts-dialog.c:249
+#: ../settings-dialogs/frap-shortcuts-dialog.c:259
 #, fuzzy, c-format
 msgid "Action: %s"
 msgstr "Aktiivne"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:244
+#: ../settings-dialogs/frap-shortcuts-dialog.c:253
 msgid "Enter command shortcut"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:245
+#: ../settings-dialogs/frap-shortcuts-dialog.c:254
 #, fuzzy, c-format
 msgid "Command: %s"
 msgstr "Käsk"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:249
+#: ../settings-dialogs/frap-shortcuts-dialog.c:258
 #, fuzzy
 msgid "Enter shortcut"
 msgstr "Kiirvalik puudub"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:280
+#: ../settings-dialogs/frap-shortcuts-dialog.c:289
 #, fuzzy
 msgid "Shortcut:"
 msgstr "Kiirvalik puudub"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:324
+#: ../settings-dialogs/frap-shortcuts-dialog.c:333
 msgid "Could not grab the keyboard."
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:345
+#: ../settings-dialogs/frap-shortcuts-dialog.c:354
 #, c-format
 msgid "<span size='large'><b>%s</b></span>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:182
+#: ../settings-dialogs/xfwm4-settings.c:211
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Shade window"
 msgstr "Varja aken"
 
-#: ../settings-dialogs/xfwm4-settings.c:183
+#: ../settings-dialogs/xfwm4-settings.c:212
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Hide window"
 msgstr "Peida aken"
 
-#: ../settings-dialogs/xfwm4-settings.c:184
+#: ../settings-dialogs/xfwm4-settings.c:213
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Maximize window"
 msgstr "Suurenda aken"
 
-#: ../settings-dialogs/xfwm4-settings.c:185
+#: ../settings-dialogs/xfwm4-settings.c:214
+#: ../settings-dialogs/xfwm4-settings.c:245
 #, fuzzy
 msgid "Fill window"
 msgstr "Peida aken"
 
-#: ../settings-dialogs/xfwm4-settings.c:186
+#: ../settings-dialogs/xfwm4-settings.c:215
 msgid "Nothing"
 msgstr "Ei midagi"
 
-#: ../settings-dialogs/xfwm4-settings.c:191
+#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Left"
 msgstr "Vasak"
 
-#: ../settings-dialogs/xfwm4-settings.c:192
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Center"
 msgstr "Keskel"
 
-#: ../settings-dialogs/xfwm4-settings.c:193
+#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Right"
 msgstr "Parem"
 
-#: ../settings-dialogs/xfwm4-settings.c:201
+#: ../settings-dialogs/xfwm4-settings.c:227
+msgid "Window operations menu"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:228
+msgid "Up"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:229
+msgid "Down"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:232
+msgid "Cancel"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:233
+#, fuzzy
+msgid "Cycle windows"
+msgstr "Sulge aken"
+
+#: ../settings-dialogs/xfwm4-settings.c:234
+msgid "Close window"
+msgstr "Sulge aken"
+
+#: ../settings-dialogs/xfwm4-settings.c:235
+msgid "Maximize window horizontally"
+msgstr "Suurenda akent horisontaalselt"
+
+#: ../settings-dialogs/xfwm4-settings.c:236
+msgid "Maximize window vertically"
+msgstr "Suurenda akent vertikaalselt"
+
+#: ../settings-dialogs/xfwm4-settings.c:239
+#, fuzzy
+msgid "Move window"
+msgstr "Liiguta akent üles"
+
+#: ../settings-dialogs/xfwm4-settings.c:240
+#, fuzzy
+msgid "Resize window"
+msgstr "Suurenda akent üles"
+
+#: ../settings-dialogs/xfwm4-settings.c:242
+msgid "Stick window"
+msgstr "Kleebi aken"
+
+#: ../settings-dialogs/xfwm4-settings.c:243
+msgid "Raise window"
+msgstr "Tõsta aken"
+
+#: ../settings-dialogs/xfwm4-settings.c:244
+msgid "Lower window"
+msgstr "Langeta aken"
+
+#: ../settings-dialogs/xfwm4-settings.c:246
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "Suurenda akent horisontaalselt"
+
+#: ../settings-dialogs/xfwm4-settings.c:247
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "Suurenda akent vertikaalselt"
+
+#: ../settings-dialogs/xfwm4-settings.c:248
+msgid "Toggle above"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:249
+msgid "Toggle fullscreen"
+msgstr "Lülita täisekraani"
+
+#: ../settings-dialogs/xfwm4-settings.c:250
+msgid "Move window to upper workspace"
+msgstr "Saada aken ülemisse tööruumi"
+
+#: ../settings-dialogs/xfwm4-settings.c:251
+msgid "Move window to bottom workspace"
+msgstr "Saada aken alumisse tööruumi"
+
+#: ../settings-dialogs/xfwm4-settings.c:252
+msgid "Move window to left workspace"
+msgstr "Saada aken vasakpoolsesse tööruumi"
+
+#: ../settings-dialogs/xfwm4-settings.c:253
+msgid "Move window to right workspace"
+msgstr "Saada aken parempoolsesse tööruumi"
+
+#: ../settings-dialogs/xfwm4-settings.c:254
+msgid "Move window to previous workspace"
+msgstr "Saada aken eelmisesse tööruumi"
+
+#: ../settings-dialogs/xfwm4-settings.c:255
+msgid "Move window to next workspace"
+msgstr "Saada aken järgmisesse tööruumi"
+
+#: ../settings-dialogs/xfwm4-settings.c:256
+#, fuzzy
+msgid "Move window to workspace 1"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:257
+#, fuzzy
+msgid "Move window to workspace 2"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:258
+#, fuzzy
+msgid "Move window to workspace 3"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:259
+#, fuzzy
+msgid "Move window to workspace 4"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:260
+#, fuzzy
+msgid "Move window to workspace 5"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:261
+#, fuzzy
+msgid "Move window to workspace 6"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:262
+#, fuzzy
+msgid "Move window to workspace 7"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:263
+#, fuzzy
+msgid "Move window to workspace 8"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:264
+#, fuzzy
+msgid "Move window to workspace 9"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:265
+#, fuzzy
+msgid "Move window to workspace 10"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:266
+#, fuzzy
+msgid "Move window to workspace 11"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:267
+#, fuzzy
+msgid "Move window to workspace 12"
+msgstr "Saada aken tööruumi %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:268
+msgid "Show desktop"
+msgstr "Näita töölauda"
+
+#: ../settings-dialogs/xfwm4-settings.c:269
+msgid "Upper workspace"
+msgstr "Ülemine töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:270
+msgid "Bottom workspace"
+msgstr "Alumine töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:271
+msgid "Left workspace"
+msgstr "Vasak töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:272
+msgid "Right workspace"
+msgstr "Parem töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:273
+msgid "Previous workspace"
+msgstr "Eelmine töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:274
+msgid "Next workspace"
+msgstr "Järgmine töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:275
+#, fuzzy
+msgid "Workspace 1"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:276
+#, fuzzy
+msgid "Workspace 2"
+msgstr "Tööruum %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:277
+#, fuzzy
+msgid "Workspace 3"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:278
+#, fuzzy
+msgid "Workspace 4"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:279
+#, fuzzy
+msgid "Workspace 5"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:280
+#, fuzzy
+msgid "Workspace 6"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:281
+#, fuzzy
+msgid "Workspace 7"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:282
+#, fuzzy
+msgid "Workspace 8"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:283
+#, fuzzy
+msgid "Workspace 9"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:284
+#, fuzzy
+msgid "Workspace 10"
+msgstr "Tööruum %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:285
+#, fuzzy
+msgid "Workspace 11"
+msgstr "Töölaud %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:286
+#, fuzzy
+msgid "Workspace 12"
+msgstr "Tööruum %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:287
+msgid "Add workspace"
+msgstr "Lisa töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:288
+#, fuzzy
+msgid "Add adjacent workspace"
+msgstr "Lisa töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:289
+#, fuzzy
+msgid "Delete last workspace"
+msgstr "Kustuta töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:290
+#, fuzzy
+msgid "Delete active workspace"
+msgstr "Kustuta töölaud"
+
+#: ../settings-dialogs/xfwm4-settings.c:298
 #: ../settings-dialogs/workspace-settings.c:369
 msgid "Settings manager socket"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:201
+#: ../settings-dialogs/xfwm4-settings.c:298
 #: ../settings-dialogs/tweaks-settings.c:396
 #: ../settings-dialogs/workspace-settings.c:369
 msgid "SOCKET ID"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:203
+#: ../settings-dialogs/xfwm4-settings.c:300
 #: ../settings-dialogs/tweaks-settings.c:397
 #: ../settings-dialogs/workspace-settings.c:370
 msgid "Version information"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:355
+#: ../settings-dialogs/xfwm4-settings.c:455
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:791
+#: ../settings-dialogs/xfwm4-settings.c:605
+#, fuzzy
+msgid "Action"
+msgstr "Aktiivne"
+
+#: ../settings-dialogs/xfwm4-settings.c:610
+#, fuzzy
+msgid "Shortcut"
+msgstr "Kiirvalik puudub"
+
+#: ../settings-dialogs/xfwm4-settings.c:942
 #: ../settings-dialogs/tweaks-settings.c:414
 #: ../settings-dialogs/workspace-settings.c:387
 msgid "."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:795
+#: ../settings-dialogs/xfwm4-settings.c:946
 #: ../settings-dialogs/tweaks-settings.c:418
 #: ../settings-dialogs/workspace-settings.c:391
 #, c-format
@@ -409,13 +685,24 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:813
+#: ../settings-dialogs/xfwm4-settings.c:964
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:824
+#: ../settings-dialogs/xfwm4-settings.c:975
 msgid "Could not create the settings dialog."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1775
+#: ../settings-dialogs/xfwm4-settings.c:1776
+msgid "Reset to Defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1777
+msgid ""
+"This will reset <b>all</b> shortcuts to their default values. Do you really "
+"want to do this?"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -585,7 +872,7 @@ msgid "_Enable display compositing"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #, fuzzy
 msgid "_Focus"
 msgstr "Fookus"
@@ -639,13 +926,13 @@ msgstr "Tööruumid"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "gtk-close"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "gtk-help"
 msgstr ""
 
@@ -777,287 +1064,216 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "Töölaua vahetus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
+#, fuzzy
+msgid "<b>_Theme</b>"
+msgstr "Pealkirja paigutus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
 msgstr "Aktiivne"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 #, fuzzy
 msgid "Ad_vanced"
 msgstr "Edasijõudnud"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 #, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Tõsta aknaid automaatselt, kui nad saavad fookuse"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr "Anna fookus automaatselt uutele akendele"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "Klõpsa fokuseerimiseks"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "Paigutuse muutmiseks klõpsi ja tiri nuppe"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
 msgstr "Sulge"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "Viivitus enne fokuseeritud akna tõstmist :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 #, fuzzy
 msgid "Dis_tance:"
 msgstr "Kaugus :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 #, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "Kaugus|Väike"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
 msgid "Distance|<i>Wide</i>"
 msgstr "Kaugus|Lai"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 #, fuzzy
 msgid "Focus follows _mouse"
 msgstr "Fookus järgib hiirt"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
 msgstr "Varjatud"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hide"
 msgstr "Peida"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 #, fuzzy
 msgid "Hide content of windows when _moving"
 msgstr "Näita akna sisu selle liigutamise ajal"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Hide content of windows when _resizing"
 msgstr "Näita akna sisu selle suuruse muutmise ajal"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 #, fuzzy
 msgid "Ke_yboard"
 msgstr "Klaviatuur"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
 msgstr "Suurenda"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
 msgstr "Menüü"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr "Tõsta aken, kui akna sees klõpsatakse"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 #, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "Vastuhakk|Väike"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
 msgid "Resistance|<i>Wide</i>"
 msgstr "Vastuhakk|Lai"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Varja"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "Haagi aknaid teiste akende külge"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "Haagi aknaid ekraani äärtel"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "Nael"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Mida teha kui topeltklõpsatakse pealkirja ribal"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title, it cannot be removed"
 msgstr "Akna pealkirja ei saa eemaldada."
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
 msgstr "Pealkiri"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "Vaheta töölauda, kui akent kantakse üle ekraani ääre"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Vaheta töölauda, kui kursor jõuab akna äärde"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "Viivitus enne fokuseeritud akna tõstmist :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "Ääre vastupanu :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "_Reset to Defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 #, fuzzy
 msgid "_Style"
 msgstr "Stiil"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "gtk-clear"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-msgid "gtk-revert-to-saved"
-msgstr ""
+#, fuzzy
+#~ msgid "(Un)Ma_ximize"
+#~ msgstr "_Suurenda"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
-msgid "gtk-select-all"
-msgstr ""
+#~ msgid "Hide _all others"
+#~ msgstr "Peida _kõik teised"
+
+#~ msgid "_Shade"
+#~ msgstr "_Varja"
 
 #, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "Sulge aken"
+#~ msgid "(Un)_Shade"
+#~ msgstr "Taasta _aken"
 
-#~ msgid "Close window"
-#~ msgstr "Sulge aken"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Suurenda akent horisontaalselt"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Suurenda akent vertikaalselt"
+#~ msgid "S_tick"
+#~ msgstr "N_aeluta"
 
 #, fuzzy
-#~ msgid "Move window"
-#~ msgstr "Liiguta akent üles"
+#~ msgid "(Un)S_tick"
+#~ msgstr "_Eemalda nael"
 
 #, fuzzy
-#~ msgid "Resize window"
-#~ msgstr "Suurenda akent üles"
+#~ msgid "Below"
+#~ msgstr "Väike"
 
-#~ msgid "Stick window"
-#~ msgstr "Kleebi aken"
+#~ msgid "Send to..."
+#~ msgstr "Saada ..."
 
-#~ msgid "Raise window"
-#~ msgstr "Tõsta aken"
-
-#~ msgid "Lower window"
-#~ msgstr "Langeta aken"
-
-#, fuzzy
-#~ msgid "Fill window horizontally"
-#~ msgstr "Suurenda akent horisontaalselt"
-
-#, fuzzy
-#~ msgid "Fill window vertically"
-#~ msgstr "Suurenda akent vertikaalselt"
-
-#~ msgid "Toggle fullscreen"
-#~ msgstr "Lülita täisekraani"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Saada aken ülemisse tööruumi"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Saada aken alumisse tööruumi"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Saada aken vasakpoolsesse tööruumi"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Saada aken parempoolsesse tööruumi"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Saada aken eelmisesse tööruumi"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Saada aken järgmisesse tööruumi"
-
-#~ msgid "Show desktop"
-#~ msgstr "Näita töölauda"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Ülemine töölaud"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Alumine töölaud"
-
-#~ msgid "Left workspace"
-#~ msgstr "Vasak töölaud"
-
-#~ msgid "Right workspace"
-#~ msgstr "Parem töölaud"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Eelmine töölaud"
-
-#~ msgid "Next workspace"
-#~ msgstr "Järgmine töölaud"
-
-#~ msgid "Add workspace"
-#~ msgstr "Lisa töölaud"
-
-#, fuzzy
-#~ msgid "Add adjacent workspace"
-#~ msgstr "Lisa töölaud"
-
-#, fuzzy
-#~ msgid "Delete last workspace"
-#~ msgstr "Kustuta töölaud"
-
-#, fuzzy
-#~ msgid "Delete active workspace"
-#~ msgstr "Kustuta töölaud"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Aktiivne"
-
-#, fuzzy
-#~ msgid "Shortcut"
-#~ msgstr "Kiirvalik puudub"
+#~ msgid "Workspace %i (%s)"
+#~ msgstr "Töölaud %i (%s)"
 
 #, fuzzy
 #~ msgid "Ctrl"
@@ -1145,10 +1361,6 @@ msgstr ""
 #~ msgid "Add keybinding theme"
 #~ msgstr "Lisa kiirklahvide teema"
 
-#, fuzzy
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Saada aken tööruumi %d"
-
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Teema kataloogi ei õnnestu avada!"
 
@@ -1176,9 +1388,6 @@ msgstr ""
 #~ msgid "Advanced Configuration"
 #~ msgstr "Aknahalduri edendatud seaded"
 
-#~ msgid "Move window down"
-#~ msgstr "Liiguta akent alla"
-
 #~ msgid "Move window left"
 #~ msgstr "Liiguta akent vasakule"
 
@@ -1198,18 +1407,8 @@ msgstr ""
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Sulge aken"
 
-#~ msgid "Un_maximize"
-#~ msgstr "_Taassuurenda"
-
 #~ msgid "_Hide"
 #~ msgstr "_Peida"
-
-#~ msgid "Always on top"
-#~ msgstr "Alati kõige peal"
-
-#, fuzzy
-#~ msgid "Workspace %02d"
-#~ msgstr "Tööruum %d"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Tundmatu rakendus!"

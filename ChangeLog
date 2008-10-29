@@ -1,3 +1,12 @@
+2008-10-29  olivier
+
+	* src/inline-stock-rolldown.h, src/inline-stock-maximize.h,
+	  src/inline-stock-unmaximize.h, src/menu.c,  src/stock_icons.c,
+	  src/stock_icons.h, src/inline-stock-minimize.h, 
+	  src/inline-default-icon.h, src/inline-stock-rollup.h,
+	  src/main.c, src/Makefile.am: Rework the window menu to improve
+	  consistency with libwnck menu (Bug #4531)
+
 2008-10-28  olivier
 
 	* settings-dialogs/tweaks-settings.c, 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-18 22:05+0100\n"
+"POT-Creation-Date: 2008-10-29 23:07+0000\n"
 "PO-Revision-Date: 2005-08-19 21:16+0900\n"
 "Last-Translator: Terje Uriansrud <ter@operamail.com>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
@@ -32,116 +32,115 @@ msgstr ""
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:145
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Minnepekerfeil (Segmentation fault)"
 
-#: ../src/menu.c:43
-msgid "Ma_ximize"
-msgstr "Ma_ksimer"
-
 #: ../src/menu.c:44
-#, fuzzy
-msgid "(Un)Ma_ximize"
+msgid "Ma_ximize"
 msgstr "Ma_ksimer"
 
 #: ../src/menu.c:45
 #, fuzzy
+msgid "Unma_ximize"
+msgstr "_Umaksimer"
+
+#: ../src/menu.c:46
+#, fuzzy
 msgid "Mi_nimize"
 msgstr "Ma_ksimer"
 
-#: ../src/menu.c:46
-msgid "Hide _all others"
-msgstr "Skjul _alle andre"
-
 #: ../src/menu.c:47
+msgid "Minimize _All Other Windows"
+msgstr ""
+
+#: ../src/menu.c:48
 msgid "S_how"
 msgstr "_Vis"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:49
 msgid "_Move"
 msgstr ""
 
-#: ../src/menu.c:49
+#: ../src/menu.c:50
 msgid "_Resize"
 msgstr ""
 
-#: ../src/menu.c:51
-msgid "_Shade"
-msgstr "_Rull opp"
-
+#. --------------------------------------------------------
 #: ../src/menu.c:52
 #, fuzzy
-msgid "(Un)_Shade"
-msgstr "_Rull ned"
+msgid "Always on Top"
+msgstr "Alltid øverst"
 
 #: ../src/menu.c:53
-msgid "S_tick"
-msgstr "_Fast"
+#, fuzzy
+msgid "Same as Other Windows"
+msgstr "Snapp vinduer til andre vinduer"
 
 #: ../src/menu.c:54
-#, fuzzy
-msgid "(Un)S_tick"
-msgstr "U_fast"
+msgid "Always Below Other Windows"
+msgstr ""
 
 #: ../src/menu.c:55
-msgid "Context _help"
-msgstr "Kontekst _hjelp"
+#, fuzzy
+msgid "Roll Window Up"
+msgstr "Fyll vindu"
+
+#: ../src/menu.c:56
+#, fuzzy
+msgid "Roll Window Down"
+msgstr "Flytt vindu ned"
 
 #: ../src/menu.c:57
-msgid "Above"
-msgstr ""
-
-#: ../src/menu.c:58
-msgid "Normal"
-msgstr ""
-
-#: ../src/menu.c:59
-#, fuzzy
-msgid "Below"
-msgstr "Sakte"
-
-#: ../src/menu.c:60
 #, fuzzy
 msgid "_Fullscreen"
 msgstr "Slå fullskjerm på/av"
 
+#: ../src/menu.c:58
+#, fuzzy
+msgid "Leave _Fullscreen"
+msgstr "Slå fullskjerm på/av"
+
+#: ../src/menu.c:59
+#, fuzzy
+msgid "Context _Help"
+msgstr "Kontekst _hjelp"
+
+#. --------------------------------------------------------
 #: ../src/menu.c:61
-msgid "(Un)_Fullscreen"
-msgstr ""
+#, fuzzy
+msgid "Always on Visible Workspace"
+msgstr "Alltid øverst"
 
 #: ../src/menu.c:62
-msgid "Send to..."
-msgstr "Send til..."
+msgid "Only on This Workspace"
+msgstr ""
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
+#, fuzzy
+msgid "Move to Another Workspace"
+msgstr "Flytt vindu til neste skrivebord"
+
+#. --------------------------------------------------------
+#: ../src/menu.c:65
 msgid "_Close"
 msgstr "_Lukk"
 
-#: ../src/menu.c:67
+#. --------------------------------------------------------
+#: ../src/menu.c:68
 msgid "Destroy"
 msgstr "Ødelegg"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:71
 msgid "_Quit"
 msgstr "_Avslutt"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:72
 msgid "Restart"
 msgstr "Omstart"
 
-#: ../src/menu.c:186
-#, c-format
-msgid "Workspace %i (%s)"
-msgstr "Skrivebord %i (%s)"
-
-#: ../src/menu.c:190
-#, c-format
-msgid "Workspace %i"
-msgstr "Skrivebord %i"
-
-#: ../src/menu.c:426
+#: ../src/menu.c:423
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke fange opp pekeren\n"
@@ -177,13 +176,13 @@ msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 #, fuzzy
 msgid "Configure window behavior"
 msgstr "Avbryt vindushandling"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
 msgstr "Vindushåndterer"
 
@@ -229,7 +228,7 @@ msgstr "Innstillinger for Skrivebord"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Xfce 4 Skrivebord Innstillinger"
 
-#: ../settings-dialogs/frap-shortcuts.c:92
+#: ../settings-dialogs/frap-shortcuts.c:53
 #, fuzzy
 msgid ""
 "This shortcut is already being used by <b>another window manager action</b>. "
@@ -238,17 +237,20 @@ msgstr ""
 "Snarvei allerede i bruk !\n"
 "Er du sikker på at du vil bruke den?"
 
-#: ../settings-dialogs/frap-shortcuts.c:93
-#: ../settings-dialogs/frap-shortcuts.c:96
-msgid "Use this action"
+#: ../settings-dialogs/frap-shortcuts.c:54
+#: ../settings-dialogs/frap-shortcuts.c:57
+#: ../settings-dialogs/frap-shortcuts.c:60
+#: ../settings-dialogs/frap-shortcuts.c:63
+#, c-format
+msgid "Use %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:93
+#: ../settings-dialogs/frap-shortcuts.c:54
 msgid "Keep the other one"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:95
-#: ../settings-dialogs/frap-shortcuts.c:98
+#: ../settings-dialogs/frap-shortcuts.c:56
+#: ../settings-dialogs/frap-shortcuts.c:59
 #, fuzzy, c-format
 msgid ""
 "The shortcut is already being used for the command <b>%s</b>. Which action "
@@ -257,19 +259,13 @@ msgstr ""
 "Snarvei allerede i bruk !\n"
 "Er du sikker på at du vil bruke den?"
 
-#: ../settings-dialogs/frap-shortcuts.c:96
-#: ../settings-dialogs/frap-shortcuts.c:99
+#: ../settings-dialogs/frap-shortcuts.c:57
+#: ../settings-dialogs/frap-shortcuts.c:60
 #, c-format
 msgid "Keep %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:99
-#: ../settings-dialogs/frap-shortcuts.c:102
-#, c-format
-msgid "Use %s"
-msgstr ""
-
-#: ../settings-dialogs/frap-shortcuts.c:101
+#: ../settings-dialogs/frap-shortcuts.c:62
 #, fuzzy
 msgid ""
 "The shortcut is already being used by a <b>window manager action</b>. Which "
@@ -278,123 +274,400 @@ msgstr ""
 "Snarvei allerede i bruk !\n"
 "Er du sikker på at du vil bruke den?"
 
-#: ../settings-dialogs/frap-shortcuts.c:102
+#: ../settings-dialogs/frap-shortcuts.c:63
 #, fuzzy
 msgid "Keep the window manager action"
 msgstr "Xfce 4 Vindushåndterer"
 
-#: ../settings-dialogs/frap-shortcuts.c:134
-#: ../settings-dialogs/frap-shortcuts.c:141
+#: ../settings-dialogs/frap-shortcuts.c:95
+#: ../settings-dialogs/frap-shortcuts.c:102
 #, c-format
 msgid "Conflicting actions for %s"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts.c:173
+#: ../settings-dialogs/frap-shortcuts.c:134
 #, fuzzy
 msgid "The shortcut is already being used for something else."
 msgstr ""
 "Snarvei allerede i bruk !\n"
 "Er du sikker på at du vil bruke den?"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:239
+#: ../settings-dialogs/frap-shortcuts-dialog.c:248
 #, fuzzy
 msgid "Enter window manager action shortcut"
 msgstr "Xfce 4 Vindushåndterer"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:240
-#: ../settings-dialogs/frap-shortcuts-dialog.c:250
+#: ../settings-dialogs/frap-shortcuts-dialog.c:249
+#: ../settings-dialogs/frap-shortcuts-dialog.c:259
 #, fuzzy, c-format
 msgid "Action: %s"
 msgstr "Aktiv"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:244
+#: ../settings-dialogs/frap-shortcuts-dialog.c:253
 msgid "Enter command shortcut"
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:245
+#: ../settings-dialogs/frap-shortcuts-dialog.c:254
 #, fuzzy, c-format
 msgid "Command: %s"
 msgstr "Kommando"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:249
+#: ../settings-dialogs/frap-shortcuts-dialog.c:258
 #, fuzzy
 msgid "Enter shortcut"
 msgstr "Ingen snarvei"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:280
+#: ../settings-dialogs/frap-shortcuts-dialog.c:289
 #, fuzzy
 msgid "Shortcut:"
 msgstr "Ingen snarvei"
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:324
+#: ../settings-dialogs/frap-shortcuts-dialog.c:333
 msgid "Could not grab the keyboard."
 msgstr ""
 
-#: ../settings-dialogs/frap-shortcuts-dialog.c:345
+#: ../settings-dialogs/frap-shortcuts-dialog.c:354
 #, c-format
 msgid "<span size='large'><b>%s</b></span>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:182
+#: ../settings-dialogs/xfwm4-settings.c:211
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Shade window"
 msgstr "Rull opp vindu"
 
-#: ../settings-dialogs/xfwm4-settings.c:183
+#: ../settings-dialogs/xfwm4-settings.c:212
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Hide window"
 msgstr "Skjul vindu"
 
-#: ../settings-dialogs/xfwm4-settings.c:184
+#: ../settings-dialogs/xfwm4-settings.c:213
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Maximize window"
 msgstr "Maksimer vindu"
 
-#: ../settings-dialogs/xfwm4-settings.c:185
+#: ../settings-dialogs/xfwm4-settings.c:214
+#: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Fill window"
 msgstr "Fyll vindu"
 
-#: ../settings-dialogs/xfwm4-settings.c:186
+#: ../settings-dialogs/xfwm4-settings.c:215
 msgid "Nothing"
 msgstr "Ingenting"
 
-#: ../settings-dialogs/xfwm4-settings.c:191
+#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Left"
 msgstr "Venstre"
 
-#: ../settings-dialogs/xfwm4-settings.c:192
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Center"
 msgstr "Midtstill"
 
-#: ../settings-dialogs/xfwm4-settings.c:193
+#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Right"
 msgstr "Høyre"
 
-#: ../settings-dialogs/xfwm4-settings.c:201
+#: ../settings-dialogs/xfwm4-settings.c:227
+msgid "Window operations menu"
+msgstr "Vindu handlingsmeny"
+
+#: ../settings-dialogs/xfwm4-settings.c:228
+msgid "Up"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:229
+msgid "Down"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:232
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../settings-dialogs/xfwm4-settings.c:233
+msgid "Cycle windows"
+msgstr "Roter vinduer"
+
+#: ../settings-dialogs/xfwm4-settings.c:234
+msgid "Close window"
+msgstr "Lukk vindu"
+
+#: ../settings-dialogs/xfwm4-settings.c:235
+msgid "Maximize window horizontally"
+msgstr "Maksimer vindu vannrett"
+
+#: ../settings-dialogs/xfwm4-settings.c:236
+msgid "Maximize window vertically"
+msgstr "Maksimer vindu loddrett"
+
+#: ../settings-dialogs/xfwm4-settings.c:239
+#, fuzzy
+msgid "Move window"
+msgstr "Flytt vindu opp"
+
+#: ../settings-dialogs/xfwm4-settings.c:240
+#, fuzzy
+msgid "Resize window"
+msgstr "Endre størrelsen på vinduet opp"
+
+#: ../settings-dialogs/xfwm4-settings.c:242
+msgid "Stick window"
+msgstr "Fest vindu"
+
+#: ../settings-dialogs/xfwm4-settings.c:243
+msgid "Raise window"
+msgstr "Hev vindu"
+
+#: ../settings-dialogs/xfwm4-settings.c:244
+msgid "Lower window"
+msgstr "Senk vindu"
+
+#: ../settings-dialogs/xfwm4-settings.c:246
+msgid "Fill window horizontally"
+msgstr "Fyll vindu vannrett"
+
+#: ../settings-dialogs/xfwm4-settings.c:247
+msgid "Fill window vertically"
+msgstr "Fyll vindu loddrett"
+
+#: ../settings-dialogs/xfwm4-settings.c:248
+msgid "Toggle above"
+msgstr "Slå heving på/av"
+
+#: ../settings-dialogs/xfwm4-settings.c:249
+msgid "Toggle fullscreen"
+msgstr "Slå fullskjerm på/av"
+
+#: ../settings-dialogs/xfwm4-settings.c:250
+msgid "Move window to upper workspace"
+msgstr "Flytt vindu til øvre skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:251
+msgid "Move window to bottom workspace"
+msgstr "Flytt vindu til nedre skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:252
+msgid "Move window to left workspace"
+msgstr "Flytt vindu til venstre skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:253
+msgid "Move window to right workspace"
+msgstr "Flytt vindu til høyre skrivebrord"
+
+#: ../settings-dialogs/xfwm4-settings.c:254
+msgid "Move window to previous workspace"
+msgstr "Flytt vindu til forrige skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:255
+msgid "Move window to next workspace"
+msgstr "Flytt vindu til neste skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:256
+#, fuzzy
+msgid "Move window to workspace 1"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:257
+#, fuzzy
+msgid "Move window to workspace 2"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:258
+#, fuzzy
+msgid "Move window to workspace 3"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:259
+#, fuzzy
+msgid "Move window to workspace 4"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:260
+#, fuzzy
+msgid "Move window to workspace 5"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:261
+#, fuzzy
+msgid "Move window to workspace 6"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:262
+#, fuzzy
+msgid "Move window to workspace 7"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:263
+#, fuzzy
+msgid "Move window to workspace 8"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:264
+#, fuzzy
+msgid "Move window to workspace 9"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:265
+#, fuzzy
+msgid "Move window to workspace 10"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:266
+#, fuzzy
+msgid "Move window to workspace 11"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:267
+#, fuzzy
+msgid "Move window to workspace 12"
+msgstr "Flytt vindu til skrivebord 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:268
+msgid "Show desktop"
+msgstr "Vis skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:269
+msgid "Upper workspace"
+msgstr "Øvre skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:270
+msgid "Bottom workspace"
+msgstr "Nedre skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:271
+msgid "Left workspace"
+msgstr "Venstre skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:272
+msgid "Right workspace"
+msgstr "Høyre skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:273
+msgid "Previous workspace"
+msgstr "Forrige skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:274
+msgid "Next workspace"
+msgstr "Neste skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:275
+#, fuzzy
+msgid "Workspace 1"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:276
+#, fuzzy
+msgid "Workspace 2"
+msgstr "Skrivebord %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:277
+#, fuzzy
+msgid "Workspace 3"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:278
+#, fuzzy
+msgid "Workspace 4"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:279
+#, fuzzy
+msgid "Workspace 5"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:280
+#, fuzzy
+msgid "Workspace 6"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:281
+#, fuzzy
+msgid "Workspace 7"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:282
+#, fuzzy
+msgid "Workspace 8"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:283
+#, fuzzy
+msgid "Workspace 9"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:284
+#, fuzzy
+msgid "Workspace 10"
+msgstr "Skrivebord %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:285
+#, fuzzy
+msgid "Workspace 11"
+msgstr "Skrivebord %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:286
+#, fuzzy
+msgid "Workspace 12"
+msgstr "Skrivebord %d"
+
+#: ../settings-dialogs/xfwm4-settings.c:287
+msgid "Add workspace"
+msgstr "Legg til et skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:288
+#, fuzzy
+msgid "Add adjacent workspace"
+msgstr "Legg til et skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:289
+#, fuzzy
+msgid "Delete last workspace"
+msgstr "Slett skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:290
+#, fuzzy
+msgid "Delete active workspace"
+msgstr "Slett skrivebord"
+
+#: ../settings-dialogs/xfwm4-settings.c:298
 #: ../settings-dialogs/workspace-settings.c:369
 msgid "Settings manager socket"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:201
+#: ../settings-dialogs/xfwm4-settings.c:298
 #: ../settings-dialogs/tweaks-settings.c:396
 #: ../settings-dialogs/workspace-settings.c:369
 msgid "SOCKET ID"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:203
+#: ../settings-dialogs/xfwm4-settings.c:300
 #: ../settings-dialogs/tweaks-settings.c:397
 #: ../settings-dialogs/workspace-settings.c:370
 msgid "Version information"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:355
+#: ../settings-dialogs/xfwm4-settings.c:455
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:791
+#: ../settings-dialogs/xfwm4-settings.c:605
+#, fuzzy
+msgid "Action"
+msgstr "Aktiv"
+
+#: ../settings-dialogs/xfwm4-settings.c:610
+#, fuzzy
+msgid "Shortcut"
+msgstr "Ingen snarvei"
+
+#: ../settings-dialogs/xfwm4-settings.c:942
 #: ../settings-dialogs/tweaks-settings.c:414
 #: ../settings-dialogs/workspace-settings.c:387
 msgid "."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:795
+#: ../settings-dialogs/xfwm4-settings.c:946
 #: ../settings-dialogs/tweaks-settings.c:418
 #: ../settings-dialogs/workspace-settings.c:391
 #, c-format
@@ -403,13 +676,24 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:813
+#: ../settings-dialogs/xfwm4-settings.c:964
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:824
+#: ../settings-dialogs/xfwm4-settings.c:975
 msgid "Could not create the settings dialog."
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1775
+#: ../settings-dialogs/xfwm4-settings.c:1776
+msgid "Reset to Defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1777
+msgid ""
+"This will reset <b>all</b> shortcuts to their default values. Do you really "
+"want to do this?"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -582,7 +866,7 @@ msgid "_Enable display compositing"
 msgstr "Bruk kompositteffekter (skjermeffekter)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #, fuzzy
 msgid "_Focus"
 msgstr "Fokus"
@@ -634,13 +918,13 @@ msgstr "Skrivebord"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "gtk-close"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "gtk-help"
 msgstr ""
 
@@ -776,294 +1060,217 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "Roter arbeidsområdene"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
+#, fuzzy
+msgid "<b>_Theme</b>"
+msgstr "Titteljustering"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
 msgstr "Aktiv"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 #, fuzzy
 msgid "Ad_vanced"
 msgstr "Avansert"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 #, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Automatisk hev vinduer når de mottar fokus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr "Gi nye vinduer fokus automatisk"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "Klikk for å fokusere"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "Klikk og dra knappene for å endre utseende"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
 msgstr "Lukk"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "Forsikelse før heving av fokusert vindu:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 #, fuzzy
 msgid "Dis_tance:"
 msgstr "Avstand:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 #, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "Liten:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
 msgid "Distance|<i>Wide</i>"
 msgstr "Stor"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 #, fuzzy
 msgid "Focus follows _mouse"
 msgstr "Fokus følger musen"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
 msgstr "Skjult"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hide"
 msgstr "Skjul"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 #, fuzzy
 msgid "Hide content of windows when _moving"
 msgstr "Vis innhold i vinduer mens de flyttes"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Hide content of windows when _resizing"
 msgstr "Vis innhold i vinduer mens størrelsen endres"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 #, fuzzy
 msgid "Ke_yboard"
 msgstr "Tastatur"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
 msgstr "Maksimer"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
 msgstr "Meny"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr "Hev vindu ved klikk innenfor programvinduet"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 #, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "Liten"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
 msgid "Resistance|<i>Wide</i>"
 msgstr "Stor"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Rull opp"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "Snapp vinduer til andre vinduer"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "Snapp vinduer til skjermkanten"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "Fast"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Handling å utføre når det dobbelklikkes på tittellinjen :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title, it cannot be removed"
 msgstr "Vinduets tittel, det kan ikke fjernes"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
 msgstr "Tittel"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "Roter arbeidsområder ved å dra vindu av skjermen"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Roter arbeidsområdene når musepekeren når kanten av skjermen"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "Forsinkelse før vindu mottar fokus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "Kantmotstand:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "_Reset to Defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 #, fuzzy
 msgid "_Style"
 msgstr "Stil"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 #, fuzzy
 msgid "gtk-clear"
 msgstr "Avbryt"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-msgid "gtk-revert-to-saved"
-msgstr ""
+#, fuzzy
+#~ msgid "(Un)Ma_ximize"
+#~ msgstr "Ma_ksimer"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
-msgid "gtk-select-all"
-msgstr ""
+#~ msgid "Hide _all others"
+#~ msgstr "Skjul _alle andre"
 
-#~ msgid "Window operations menu"
-#~ msgstr "Vindu handlingsmeny"
-
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Roter vinduer"
-
-#~ msgid "Close window"
-#~ msgstr "Lukk vindu"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Maksimer vindu vannrett"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Maksimer vindu loddrett"
+#~ msgid "_Shade"
+#~ msgstr "_Rull opp"
 
 #, fuzzy
-#~ msgid "Move window"
-#~ msgstr "Flytt vindu opp"
+#~ msgid "(Un)_Shade"
+#~ msgstr "_Rull ned"
+
+#~ msgid "S_tick"
+#~ msgstr "_Fast"
 
 #, fuzzy
-#~ msgid "Resize window"
-#~ msgstr "Endre størrelsen på vinduet opp"
-
-#~ msgid "Stick window"
-#~ msgstr "Fest vindu"
-
-#~ msgid "Raise window"
-#~ msgstr "Hev vindu"
-
-#~ msgid "Lower window"
-#~ msgstr "Senk vindu"
-
-#~ msgid "Fill window horizontally"
-#~ msgstr "Fyll vindu vannrett"
-
-#~ msgid "Fill window vertically"
-#~ msgstr "Fyll vindu loddrett"
-
-#~ msgid "Toggle above"
-#~ msgstr "Slå heving på/av"
-
-#~ msgid "Toggle fullscreen"
-#~ msgstr "Slå fullskjerm på/av"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Flytt vindu til øvre skrivebord"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Flytt vindu til nedre skrivebord"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Flytt vindu til venstre skrivebord"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Flytt vindu til høyre skrivebrord"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Flytt vindu til forrige skrivebord"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Flytt vindu til neste skrivebord"
-
-#~ msgid "Show desktop"
-#~ msgstr "Vis skrivebord"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Øvre skrivebord"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Nedre skrivebord"
-
-#~ msgid "Left workspace"
-#~ msgstr "Venstre skrivebord"
-
-#~ msgid "Right workspace"
-#~ msgstr "Høyre skrivebord"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Forrige skrivebord"
-
-#~ msgid "Next workspace"
-#~ msgstr "Neste skrivebord"
-
-#~ msgid "Add workspace"
-#~ msgstr "Legg til et skrivebord"
+#~ msgid "(Un)S_tick"
+#~ msgstr "U_fast"
 
 #, fuzzy
-#~ msgid "Add adjacent workspace"
-#~ msgstr "Legg til et skrivebord"
+#~ msgid "Below"
+#~ msgstr "Sakte"
 
-#, fuzzy
-#~ msgid "Delete last workspace"
-#~ msgstr "Slett skrivebord"
+#~ msgid "Send to..."
+#~ msgstr "Send til..."
 
-#, fuzzy
-#~ msgid "Delete active workspace"
-#~ msgstr "Slett skrivebord"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Aktiv"
-
-#, fuzzy
-#~ msgid "Shortcut"
-#~ msgstr "Ingen snarvei"
+#~ msgid "Workspace %i (%s)"
+#~ msgstr "Skrivebord %i (%s)"
 
 #, fuzzy
 #~ msgid "Ctrl"
@@ -1154,10 +1361,6 @@ msgstr ""
 #~ msgid "Add keybinding theme"
 #~ msgstr "Legg til hurtigtasttema"
 
-#, fuzzy
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Flytt vindu til skrivebord 1"
-
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Kan ikke åpne temamappe !"
 
@@ -1184,9 +1387,6 @@ msgstr ""
 #~ msgid "Advanced Configuration"
 #~ msgstr "Avansert konfigurasjon"
 
-#~ msgid "Move window down"
-#~ msgstr "Flytt vindu ned"
-
 #~ msgid "Move window left"
 #~ msgstr "Flytt vindu til venstre"
 
@@ -1205,17 +1405,8 @@ msgstr ""
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Avbryt flytt/endre størrelse på vindu"
 
-#~ msgid "Un_maximize"
-#~ msgstr "_Umaksimer"
-
 #~ msgid "_Hide"
 #~ msgstr "_Skjul"
-
-#~ msgid "Always on top"
-#~ msgstr "Alltid øverst"
-
-#~ msgid "Workspace %02d"
-#~ msgstr "Skrivebord %d"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Ukjent program!"

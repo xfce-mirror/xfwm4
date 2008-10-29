@@ -63,6 +63,13 @@
 #include "compositor.h"
 #include "spinning_cursor.h"
 
+/* icons */
+#include "inline-stock-maximize.h"
+#include "inline-stock-unmaximize.h"
+#include "inline-stock-rollup.h"
+#include "inline-stock-rolldown.h"
+#include "inline-stock-minimize.h"
+
 #define BASE_EVENT_MASK \
     SubstructureNotifyMask|\
     StructureNotifyMask|\
@@ -432,6 +439,7 @@ initialize (int argc, char **argv, gint compositor_mode, gboolean replace_wm)
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
+    initWMStopIcons ();
 
     initModifiers (display_info->dpy);
 

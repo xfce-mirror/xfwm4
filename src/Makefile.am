@@ -56,6 +56,8 @@ xfwm4_SOURCES =								\
 	stacking.h							\
 	startup_notification.c						\
 	startup_notification.h						\
+	stock_icons.c							\
+	stock_icons.h							\
 	tabwin.c							\
 	tabwin.h							\
 	terminate.c							\
@@ -101,11 +103,22 @@ xfwm4_LDADD =								\
 	$(COMPOSITOR_LIBS)						\
 	$(RANDR_LIBS)
 
-EXTRA_DIST = inline-tabwin-icon.h tabwin-icon.png                       \
-	inline-default-icon.h default_icon.png				\
+EXTRA_DIST = 								\
+	inline-tabwin-icon.h tabwin-icon.png				\
+	inline-stock-maximize.h stock_maximize.png			\
+	inline-stock-unmaximize.h stock_unmaximize.png			\
+	inline-stock-minimize.h stock_minimize.png			\
+	inline-stock-rollup.h stock_rollup.png				\
+	inline-stock-rolldown.h stock_rollup.png			\
 	gen-color-table.pl
 
-noinst_DATA = inline-tabwin-icon.h tabwin-icon.png
+noinst_DATA = 								\
+	inline-tabwin-icon.h tabwin-icon.png				\
+	inline-stock-maximize.h stock_maximize.png			\
+	inline-stock-unmaximize.h stock_unmaximize.png			\
+	inline-stock-minimize.h stock_minimize.png			\
+	inline-stock-rollup.h stock_rollup.png				\
+	inline-stock-rolldown.h stock_rollup.png
 
 build.h:
 	echo "#define BUILD_ID \""`date +%H%M-%y%m%d`"\"" > build.h
@@ -117,4 +130,24 @@ inline-tabwin-icon.h: $(srcdir)/tabwin-icon.png
 inline-default-icon.h: $(srcdir)/default_icon.png
 	gdk-pixbuf-csource --raw --build-list 				\
 	default_icon_data $(srcdir)/default_icon.png > inline-default-icon.h
+
+inline-stock-maximize.h: $(srcdir)/stock_maximize.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	stock_maximize_data $(srcdir)/stock_maximize.png > inline-stock-maximize.h
+
+inline-stock-unmaximize.h: $(srcdir)/stock_unmaximize.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	stock_unmaximize_data $(srcdir)/stock_unmaximize.png > inline-stock-unmaximize.h
+
+inline-stock-minimize.h: $(srcdir)/stock_minimize.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	stock_minimize_data $(srcdir)/stock_minimize.png > inline-stock-minimize.h
+
+inline-stock-rollup.h: $(srcdir)/stock_rollup.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	stock_rollup_data $(srcdir)/stock_rollup.png > inline-stock-rollup.h
+
+inline-stock-rolldown.h: $(srcdir)/stock_rolldown.png
+	gdk-pixbuf-csource --raw --build-list 				\
+	stock_rolldown_data $(srcdir)/stock_rolldown.png > inline-stock-rolldown.h
 

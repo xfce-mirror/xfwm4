@@ -37,38 +37,39 @@
 #include "event_filter.h"
 #include "menu.h"
 #include "misc.h"
+#include "stock_icons.h"
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    {MENU_OP_MAXIMIZE, "gtk-zoom-100", N_("Ma_ximize")},
-    {MENU_OP_UNMAXIMIZE, "gtk-zoom-out", N_("(Un)Ma_ximize")},
-    {MENU_OP_MINIMIZE, "gtk-undo", N_("Mi_nimize")},
-    {MENU_OP_MINIMIZE_ALL, "gtk-clear", N_("Hide _all others")},
-    {MENU_OP_UNMINIMIZE, "gtk-add", N_("S_how")},
-    {MENU_OP_MOVE, NULL, N_("_Move")},
-    {MENU_OP_RESIZE, NULL, N_("_Resize")},
-    {0, NULL, NULL},
-    {MENU_OP_SHADE, "gtk-goto-top", N_("_Shade")},
-    {MENU_OP_UNSHADE, "gtk-goto-bottom", N_("(Un)_Shade")},
-    {MENU_OP_STICK, "gtk-add", N_("S_tick")},
-    {MENU_OP_UNSTICK, "gtk-remove", N_("(Un)S_tick")},
-    {MENU_OP_CONTEXT_HELP, "gtk-help", N_("Context _help")},
-    {0, NULL, NULL},
-    {MENU_OP_ABOVE, "gtk-go-up", N_("Above")},
-    {MENU_OP_NORMAL, "gtk-go-forward", N_("Normal")},
-    {MENU_OP_BELOW, "gtk-go-down", N_("Below")},
-    {MENU_OP_FULLSCREEN, "gtk-fullscreen", N_("_Fullscreen")},
-    {MENU_OP_UNFULLSCREEN, "gtk-fullscreen", N_("(Un)_Fullscreen")},
-    {MENU_OP_WORKSPACES, NULL, N_("Send to...")},
-    {0, NULL, NULL},
-    {MENU_OP_DELETE, "gtk-close", N_("_Close")},
+    {MENU_OP_MAXIMIZE,     WM_STOCK_MAXIMIZE,   N_("Ma_ximize")},
+    {MENU_OP_UNMAXIMIZE,   WM_STOCK_UNMAXIMIZE, N_("Unma_ximize")},
+    {MENU_OP_MINIMIZE,     WM_STOCK_MINIMIZE,   N_("Mi_nimize")},
+    {MENU_OP_MINIMIZE_ALL, NULL,                N_("Minimize _All Other Windows")},
+    {MENU_OP_UNMINIMIZE,   NULL,                N_("S_how")},
+    {MENU_OP_MOVE,         NULL,                N_("_Move")},
+    {MENU_OP_RESIZE,       NULL,                N_("_Resize")},
+    {0, NULL, NULL}, /* -------------------------------------------------------- */
+    {MENU_OP_ABOVE,        NULL,                N_("Always on Top")},
+    {MENU_OP_NORMAL,       NULL,                N_("Same as Other Windows")},
+    {MENU_OP_BELOW,        NULL,                N_("Always Below Other Windows")},
+    {MENU_OP_SHADE,        WM_STOCK_ROLLUP,     N_("Roll Window Up")},
+    {MENU_OP_UNSHADE,      WM_STOCK_ROLLDOWN,   N_("Roll Window Down")},
+    {MENU_OP_FULLSCREEN,   "gtk-fullscreen",    N_("_Fullscreen")},
+    {MENU_OP_UNFULLSCREEN, "gtk-fullscreen",    N_("Leave _Fullscreen")},
+    {MENU_OP_CONTEXT_HELP, "gtk-help",          N_("Context _Help")},
+    {0, NULL, NULL}, /* -------------------------------------------------------- */
+    {MENU_OP_STICK,        NULL,                N_("Always on Visible Workspace")},
+    {MENU_OP_UNSTICK,      NULL,                N_("Only on This Workspace")},
+    {MENU_OP_WORKSPACES,   NULL,                N_("Move to Another Workspace")},
+    {0, NULL, NULL}, /* -------------------------------------------------------- */
+    {MENU_OP_DELETE,       "gtk-close",         N_("_Close")},
 #if 0
-    {0,, NULL NULL},
-    {MENU_OP_DESTROY, "gtk-delete", N_("Destroy")},
-    {0, NULL, NULL},
+    {0, NULL, NULL}, /* -------------------------------------------------------- */
+    {MENU_OP_DESTROY,      "gtk-delete",        N_("Destroy")},
+    {0, NULL, NULL}, /* -------------------------------------------------------- */
 #endif
-    {MENU_OP_QUIT, "gtk-quit", N_("_Quit")},
-    {MENU_OP_RESTART, "gtk-refresh", N_("Restart")},
+    {MENU_OP_QUIT, "gtk-quit",                  N_("_Quit")},
+    {MENU_OP_RESTART, "gtk-refresh",            N_("Restart")},
 };
 
 static eventFilterStatus
@@ -183,20 +184,16 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
     {
         if ((i < wsn_items) && wsn[i])
         {
-            name = g_strdup_printf (_("Workspace %i (%s)"), i+ 1, wsn[i]);
+            name = g_strdup_printf ("%i (%s)", i+ 1, wsn[i]);
         }
         else
         {
-            name = g_strdup_printf (_("Workspace %i"), i + 1);
+            name = g_strdup_printf ("%i", i + 1);
         }
-        menuitem = gtk_check_menu_item_new_with_label (name);
-        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), (i == ws));
-        gtk_widget_show (menuitem);
-        if (insensitive & MENU_OP_WORKSPACES)
-        {
-            gtk_widget_set_sensitive (menuitem, FALSE);
-        }
+        menuitem = gtk_menu_item_new_with_label (name);
         g_free (name);
+        gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_WORKSPACES) && (i != ws));
+        gtk_widget_show (menuitem);
 
         menudata = g_new (MenuData, 1);
         menudata->menu = menu;

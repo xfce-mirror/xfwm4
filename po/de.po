@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-27 23:28+0100\n"
+"POT-Creation-Date: 2008-10-29 23:07+0000\n"
 "PO-Revision-Date: 2008-10-19 12:54+0200\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -36,110 +36,113 @@ msgstr "Warnung"
 msgid "%s (on %s)"
 msgstr "%s (auf %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:145
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Speicherzugriffsfehler"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:44
 msgid "Ma_ximize"
 msgstr "Ma_ximieren"
 
-#: ../src/menu.c:44
-msgid "(Un)Ma_ximize"
-msgstr "Ma_ximieren/Maximierung aufheben"
-
 #: ../src/menu.c:45
+#, fuzzy
+msgid "Unma_ximize"
+msgstr "_Maximierung aufheben"
+
+#: ../src/menu.c:46
 msgid "Mi_nimize"
 msgstr "Mi_nimieren"
 
-#: ../src/menu.c:46
-msgid "Hide _all others"
-msgstr "_Andere verstecken"
-
 #: ../src/menu.c:47
+msgid "Minimize _All Other Windows"
+msgstr ""
+
+#: ../src/menu.c:48
 msgid "S_how"
 msgstr "Z_eigen"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:49
 msgid "_Move"
 msgstr "_Verschieben"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:50
 msgid "_Resize"
 msgstr "_Größe ändern"
 
-#: ../src/menu.c:51
-msgid "_Shade"
-msgstr "_Einrollen"
-
+#. --------------------------------------------------------
 #: ../src/menu.c:52
-msgid "(Un)_Shade"
-msgstr "_Aus-/Einrollen"
+#, fuzzy
+msgid "Always on Top"
+msgstr "Immer zuoberst"
 
 #: ../src/menu.c:53
-msgid "S_tick"
-msgstr "Anhe_ften"
+#, fuzzy
+msgid "Same as Other Windows"
+msgstr "Fe_nster an anderen Fenstern einrasten lassen"
 
 #: ../src/menu.c:54
-msgid "(Un)S_tick"
-msgstr "_Lösen/Festkleben"
+msgid "Always Below Other Windows"
+msgstr ""
 
 #: ../src/menu.c:55
-msgid "Context _help"
-msgstr "_Hilfe"
+#, fuzzy
+msgid "Roll Window Up"
+msgstr "Fenster füllen"
+
+#: ../src/menu.c:56
+#, fuzzy
+msgid "Roll Window Down"
+msgstr "Fenster runterschieben"
 
 #: ../src/menu.c:57
-msgid "Above"
-msgstr "Darüber"
-
-#: ../src/menu.c:58
-msgid "Normal"
-msgstr "Normal"
-
-#: ../src/menu.c:59
-msgid "Below"
-msgstr "Darunter"
-
-#: ../src/menu.c:60
 msgid "_Fullscreen"
 msgstr "_Vollbildmodus"
 
+#: ../src/menu.c:58
+#, fuzzy
+msgid "Leave _Fullscreen"
+msgstr "_Vollbildmodus"
+
+#: ../src/menu.c:59
+#, fuzzy
+msgid "Context _Help"
+msgstr "_Hilfe"
+
+#. --------------------------------------------------------
 #: ../src/menu.c:61
-msgid "(Un)_Fullscreen"
-msgstr "_Vollbildmodus an/aus"
+#, fuzzy
+msgid "Always on Visible Workspace"
+msgstr "Immer zuoberst"
 
 #: ../src/menu.c:62
-msgid "Send to..."
-msgstr "Verschieben nach ..."
+msgid "Only on This Workspace"
+msgstr ""
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
+#, fuzzy
+msgid "Move to Another Workspace"
+msgstr "Fenster auf die nächste Arbeitsfläche verschieben"
+
+#. --------------------------------------------------------
+#: ../src/menu.c:65
 msgid "_Close"
 msgstr "S_chließen"
 
-#: ../src/menu.c:67
+#. --------------------------------------------------------
+#: ../src/menu.c:68
 msgid "Destroy"
 msgstr "Zerstören"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:71
 msgid "_Quit"
 msgstr "_Beenden"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:72
 msgid "Restart"
 msgstr "Neu starten"
 
-#: ../src/menu.c:186
-#, c-format
-msgid "Workspace %i (%s)"
-msgstr "Arbeitsfläche %i (%s)"
-
-#: ../src/menu.c:190
-#, c-format
-msgid "Workspace %i"
-msgstr "Arbeitsfläche %i"
-
-#: ../src/menu.c:426
+#: ../src/menu.c:423
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu konnte die Position des Mauszeigers nicht feststellen\n"
@@ -1133,6 +1136,45 @@ msgstr "_Stil"
 msgid "gtk-clear"
 msgstr "gtk-clear"
 
+#~ msgid "(Un)Ma_ximize"
+#~ msgstr "Ma_ximieren/Maximierung aufheben"
+
+#~ msgid "Hide _all others"
+#~ msgstr "_Andere verstecken"
+
+#~ msgid "_Shade"
+#~ msgstr "_Einrollen"
+
+#~ msgid "(Un)_Shade"
+#~ msgstr "_Aus-/Einrollen"
+
+#~ msgid "S_tick"
+#~ msgstr "Anhe_ften"
+
+#~ msgid "(Un)S_tick"
+#~ msgstr "_Lösen/Festkleben"
+
+#~ msgid "Above"
+#~ msgstr "Darüber"
+
+#~ msgid "Normal"
+#~ msgstr "Normal"
+
+#~ msgid "Below"
+#~ msgstr "Darunter"
+
+#~ msgid "(Un)_Fullscreen"
+#~ msgstr "_Vollbildmodus an/aus"
+
+#~ msgid "Send to..."
+#~ msgstr "Verschieben nach ..."
+
+#~ msgid "Workspace %i (%s)"
+#~ msgstr "Arbeitsfläche %i (%s)"
+
+#~ msgid "Workspace %i"
+#~ msgstr "Arbeitsfläche %i"
+
 #~ msgid "Use this action"
 #~ msgstr "Die eingestellte Aktion beibehalten"
 
@@ -1309,9 +1351,6 @@ msgstr "gtk-clear"
 #~ msgid "Advanced Configuration"
 #~ msgstr "Weitere Einstellungen"
 
-#~ msgid "Move window down"
-#~ msgstr "Fenster runterschieben"
-
 #~ msgid "Move window left"
 #~ msgstr "Fenster nach links schieben"
 
@@ -1330,14 +1369,8 @@ msgstr "gtk-clear"
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Verschieben/Größenänderung eines Fensters abbrechen"
 
-#~ msgid "Un_maximize"
-#~ msgstr "_Maximierung aufheben"
-
 #~ msgid "_Hide"
 #~ msgstr "_Verstecken"
-
-#~ msgid "Always on top"
-#~ msgstr "Immer zuoberst"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Unbekannte Anwendung!"
