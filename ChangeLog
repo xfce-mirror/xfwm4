@@ -1,5 +1,10 @@
 2008-10-30  olivier
 
+	* src/default_icon.svg, src/default_icon.svg,
+	  src/inline-default-icon.h: Change default icon.
+
+2008-10-30  olivier
+
 	* src/client.c: Fix minimize all other windows,
 	  src/main.c: Fix compilation warning.
 
