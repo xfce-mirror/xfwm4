@@ -370,7 +370,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 clientToggleShaded (c);
                 break;
             case KEY_STICK_WINDOW:
-                if (CLIENT_CAN_STICK_WINDOW(c))
+                if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
                 {
                     clientToggleSticky (c, TRUE);
                     frameQueueDraw (c, FALSE);
@@ -1929,7 +1929,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
     eventFilterStatus status;
     ScreenInfo *screen_info;
     Client *c;
-    gboolean is_transient;
 
     TRACE ("entering handleClientMessage");
 
@@ -1939,7 +1938,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
     {
         status = EVENT_FILTER_REMOVE;
         screen_info = c->screen_info;
-        is_transient = clientIsValidTransientOrModal (c);
 
         if ((ev->message_type == display_info->atoms[WM_CHANGE_STATE]) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
@@ -1957,7 +1955,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[WIN_LAYER]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a WIN_LAYER event", c->name, c->window);
-            if ((ev->data.l[0] != c->win_layer) && !is_transient)
+            if (ev->data.l[0] != c->win_layer)
             {
                 clientSetLayer (c, ev->data.l[0]);
             }
@@ -1965,7 +1963,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[WIN_WORKSPACE]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a WIN_WORKSPACE event", c->name, c->window);
-            if ((ev->data.l[0] != c->win_workspace) && !is_transient)
+            if (ev->data.l[0] != c->win_workspace)
             {
                 clientSetWorkspace (c, ev->data.l[0], TRUE);
             }
@@ -1973,27 +1971,24 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[NET_WM_DESKTOP]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_DESKTOP event", c->name, c->window);
-            if (!is_transient)
+            if (ev->data.l[0] == ALL_WORKSPACES)
             {
-                if (ev->data.l[0] == ALL_WORKSPACES)
+                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                 {
-                    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-                    {
-                        clientStick (c, TRUE);
-                        frameQueueDraw (c, FALSE);
-                    }
+                    clientStick (c, TRUE);
+                    frameQueueDraw (c, FALSE);
                 }
-                else
+            }
+            else
+            {
+                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
                 {
-                    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-                    {
-                        clientUnstick (c, TRUE);
-                        frameQueueDraw (c, FALSE);
-                    }
-                    if (ev->data.l[0] != c->win_workspace)
-                    {
-                        clientSetWorkspace (c, ev->data.l[0], TRUE);
-                    }
+                    clientUnstick (c, TRUE);
+                    frameQueueDraw (c, FALSE);
+                }
+                if (ev->data.l[0] != c->win_workspace)
+                {
+                    clientSetWorkspace (c, ev->data.l[0], TRUE);
                 }
             }
         }
@@ -2514,6 +2509,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
     Menu *menu;
     MenuOp ops;
     MenuOp insensitive;
+    gboolean is_transient;
     gint x, y;
 
     TRACE ("entering show_window_menu");
@@ -2530,6 +2526,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    is_transient = clientIsValidTransientOrModal (c);
 
     x = px;
     y = py;
@@ -2586,7 +2583,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         insensitive |= MENU_OP_DELETE;
     }
 
-    if (!CLIENT_CAN_STICK_WINDOW(c))
+    if (is_transient || !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
         insensitive |= MENU_OP_STICK | MENU_OP_UNSTICK;
     }
@@ -2626,7 +2623,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         ops |= MENU_OP_FULLSCREEN;
     }
 
-    if (clientIsTransientOrModal (c) || (c->type != WINDOW_NORMAL))
+    if (is_transient || (c->type != WINDOW_NORMAL))
     {
         insensitive |= MENU_OP_FULLSCREEN | MENU_OP_UNFULLSCREEN;
     }
@@ -2644,8 +2641,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         ops |= MENU_OP_ABOVE | MENU_OP_BELOW;
     }
 
-    if (clientIsValidTransientOrModal (c) ||
-        FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    if (is_transient || FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         insensitive |= MENU_OP_NORMAL | MENU_OP_ABOVE | MENU_OP_BELOW;
     }
@@ -2657,7 +2653,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
         ops |= MENU_OP_CONTEXT_HELP;
     }
 
-    if (clientIsValidTransientOrModal (c)
+    if (is_transient
         || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK)
         || FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {

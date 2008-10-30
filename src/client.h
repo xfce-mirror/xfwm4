@@ -220,9 +220,6 @@
                                                                           XFWM_FLAG_LEGACY_FULLSCREEN) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_MAXIMIZED))
 
-#define CLIENT_CAN_STICK_WINDOW(c)      (!(c->transient_for) && \
-                                         FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
-
 typedef enum
 {
     UNSET = 0,

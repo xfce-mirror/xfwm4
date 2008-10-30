@@ -92,7 +92,7 @@
 #define START_ICONIC(c) \
     ((c->wmhints) && \
      (c->wmhints->initial_state == IconicState) && \
-     !clientIsValidTransientOrModal (c))
+     !clientIsTransientOrModal (c))
 
 #define OPACITY_SET_STEP        (guint) 0x16000000
 #define OPACITY_SET_MIN         (guint) 0x40000000
@@ -1275,10 +1275,7 @@ clientGetWinState (Client * c)
 
     if (c->win_state & WIN_STATE_STICKY)
     {
-        if (!clientIsValidTransientOrModal (c))
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
-        }
+        FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
     }
     if (c->win_state & WIN_STATE_SHADED)
     {
@@ -1310,6 +1307,8 @@ clientGetWinState (Client * c)
 static void
 clientApplyInitialState (Client * c)
 {
+    gboolean validTransient;
+
     g_return_if_fail (c != NULL);
 
     TRACE ("entering clientApplyInitialState");
@@ -1339,11 +1338,8 @@ clientApplyInitialState (Client * c)
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        if (!clientIsValidTransientOrModal (c))
-        {
-            TRACE ("Applying client's initial state: fullscreen");
-            clientUpdateFullscreenState (c);
-        }
+        TRACE ("Applying client's initial state: fullscreen");
+        clientUpdateFullscreenState (c);
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
     {
@@ -1358,11 +1354,8 @@ clientApplyInitialState (Client * c)
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) &&
         FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
-        if (!clientIsValidTransientOrModal (c))
-        {
-            TRACE ("Applying client's initial state: sticky");
-            clientStick (c, TRUE);
-        }
+        TRACE ("Applying client's initial state: sticky");
+        clientStick (c, TRUE);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
@@ -1401,19 +1394,16 @@ clientUpdateWinState (Client * c, XClientMessageEvent * ev)
              && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
         TRACE ("client \"%s\" (0x%lx) has received a win_state/stick event",
-            c->name, c->window);
-        if (!clientIsValidTransientOrModal (c))
+        c->name, c->window);
+        if (add_remove == WIN_STATE_STICKY)
         {
-            if (add_remove == WIN_STATE_STICKY)
-            {
-                clientStick (c, TRUE);
-            }
-            else
-            {
-                clientUnstick (c, TRUE);
-            }
-            frameQueueDraw (c, FALSE);
+            clientStick (c, TRUE);
         }
+        else
+        {
+            clientUnstick (c, TRUE);
+        }
+        frameQueueDraw (c, FALSE);
     }
     else if ((action & WIN_STATE_MAXIMIZED)
              && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
@@ -2339,7 +2329,7 @@ clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
             previous_ws = c2->win_workspace;
             clientSetWorkspaceSingle (c2, ws);
 
-            if (manage_mapping && !clientIsValidTransientOrModal (c2) && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED))
+            if (manage_mapping && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED))
             {
                 if (previous_ws == c2->screen_info->current_ws)
                 {
@@ -2515,7 +2505,7 @@ clientWithdrawAll (Client * c, int ws)
 
         if ((c2 != c)
             && CLIENT_CAN_HIDE_WINDOW (c2)
-            && !clientIsValidTransientOrModal (c2))
+            && !clientIsTransientOrModal (c2))
         {
             if (((!c) && (c2->win_workspace == ws))
                  || ((c) && !clientIsTransientOrModalFor (c, c2)
@@ -2890,6 +2880,7 @@ clientStick (Client * c, gboolean include_transients)
             FLAG_SET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
             clientSetNetState (c2);
+            frameQueueDraw (c2, FALSE);
         }
         clientSetWorkspace (c, screen_info->current_ws, TRUE);
         g_list_free (list_of_windows);
@@ -2931,6 +2922,7 @@ clientUnstick (Client * c, gboolean include_transients)
             FLAG_UNSET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
             clientSetNetState (c2);
+            frameQueueDraw (c2, FALSE);
         }
         clientSetWorkspace (c, screen_info->current_ws, TRUE);
         g_list_free (list_of_windows);

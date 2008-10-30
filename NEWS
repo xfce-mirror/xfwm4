@@ -5,25 +5,26 @@
 - Add support for NET_MOVERESIZE_WINDOW.
 - Add client windows to save set to avoid loosing all windows in case of crash.
 - Rework the window menu to improve consistency with libwnck menu (Bug #4531).
+- Simplify management of transients
 
 4.5.91 (Xfce 4.6beta1)
 ======================
 
 - Add support for NET_WM_PING protocol.
-- Add support for NET_WM_PID to be able to kill apps (when not responding to 
+- Add support for NET_WM_PID to be able to kill apps (when not responding to
   NET_WM_PING).
 - Make shadow opacity configurable (bug #4447).
 - Make wireframe while cycling user configurable (Bug #4443).
 - Rework visual depth selection of the frame window (Bug #4452).
 - Add new user option to set/unset repeat blinking of urgent windows (Bug #4440).
 - Add margins configuration in workspace settings (Bug #4438).
-- Loosen the rule that prevents an application from iconifying itself when 
+- Loosen the rule that prevents an application from iconifying itself when
   skip_taskbar is set (Bug #4434).
-- Fix NET_WM_STATE claiming maximization vertical and horizontal even if only 
+- Fix NET_WM_STATE claiming maximization vertical and horizontal even if only
   horizontal of vertical is actually set (Bug #3969).
-- Add an option to set default window placement w/out smart placement missing from 
+- Add an option to set default window placement w/out smart placement missing from
   the wmtweaks GUI.
-- Allow any modifier to be used for easy move, including disabling the functionality 
+- Allow any modifier to be used for easy move, including disabling the functionality
   entirely.
 - Add embedding support to all xfwm4 settings dialogs.
 - Sort theme alphabetically (Bug #4318).
@@ -42,17 +43,17 @@
 - Add button prelight in window frames (Bug #3219).
 - Add resize from top of window.
 - Rewritten move/resize operations with keyboard.
-- Add hooks in the compositor to reduce flickering during resize (bug #4283, 
+- Add hooks in the compositor to reduce flickering during resize (bug #4283,
   #4268).
 - Support for EWMH 1.4 NET_WM_USER_TIME_WINDOW.
 - Window menu includes more operations (fullscreen, above, below, move, resize).
 - Support for xrandr 1.2 (requires gtk+ 2.14).
 - Iconified windows are sent to the end of the focus ring.
-- Add a --replace option to replace ICCCM2 compliant window managers 
-  (Bug #3731). 
-- Compositor supports overlays from Composite extension version 0.3 if 
+- Add a --replace option to replace ICCCM2 compliant window managers
+  (Bug #3731).
+- Compositor supports overlays from Composite extension version 0.3 if
   available.
-- Reworked transient/parent relationship to improve compatibility with libwnck 
+- Reworked transient/parent relationship to improve compatibility with libwnck
   tasklist.
 - Add "fill" operation to make a window as large as available space.
 - Various optimizations to reduce the frame redraws.
@@ -60,18 +61,18 @@
 - Treat dialogs and utility windows as transients for group (bug #3102).
 - Add support for shape input with XShape extension 1.1 (Bug #3092).
 - Make the title button in the xfwm4 settings manager dragable (bug #3000).
-- Fix a misinterpretation of ICCCM about when to send a synthetic 
+- Fix a misinterpretation of ICCCM about when to send a synthetic
   configureNotify event (bug #2977).
-- Add option to instruct xfwm4 not to bring window back on 
+- Add option to instruct xfwm4 not to bring window back on
   current workspace when activated (bug #2961).
-- Place splash screen windows on the normal layer, so that dialogs that 
-  get mapped during startup have a chance to be placed above the splash 
+- Place splash screen windows on the normal layer, so that dialogs that
+  get mapped during startup have a chance to be placed above the splash
   screen.
 - Raise focused window on workspace switch (bug #2960).
 - Sort Z-order on workspace change (bug #2960).
-- Fix the small lag before icon update at first map and when updating all 
+- Fix the small lag before icon update at first map and when updating all
   frames at once.
-- Use timeout for frame redraw, check actual WM name changes to work around 
+- Use timeout for frame redraw, check actual WM name changes to work around
   apps that falsely update their WM name property (Bug #2810).
 - Uodate Hungarian translation
 - Update Catalan translation
@@ -82,7 +83,7 @@
 - Update Turkish translation
 - Update Ukrainian translation
 - Update Dutch translation
-- Update Chinese (simplified) translations by Wu Li and fixed some 
+- Update Chinese (simplified) translations by Wu Li and fixed some
   accelerators in the French translations.
 - New Albanian translations by Besnik Bleta
 - New British English translations by Jeff Bailes
@@ -92,16 +93,16 @@
 
 - Use screen from xevent instead of client for keypress (Bug #2749)
 - Raise/focus when using alt+left-click for resize for consistency with move
-- Be more permissive toward stick/unstick (bug #2735) 
-- Ignore focus stealing prevention between windows of the same group or 
+- Be more permissive toward stick/unstick (bug #2735)
+- Ignore focus stealing prevention between windows of the same group or
   between windows that have a transient relationship.
 - Rework grab release (bug #2694)
-- Fix display of ARGB32 windows with compositing enabled but without 
+- Fix display of ARGB32 windows with compositing enabled but without
   compositor active (bug #2710).
-- Apply NET_WM_STATE_DEMANDS_ATTENTION changes (otherwise it breaks xfwm4 
-  demand attention mechanism), but do not obey client state change requests 
+- Apply NET_WM_STATE_DEMANDS_ATTENTION changes (otherwise it breaks xfwm4
+  demand attention mechanism), but do not obey client state change requests
   for NET_WM_STATE_DEMANDS_ATTENTION if the client is already focused.
-- Apply patch from Mike Massonnet that fixes an error in Stonage decoration 
+- Apply patch from Mike Massonnet that fixes an error in Stonage decoration
   theme (Bug #2696)
 - Do not apply NET_WM_STATE_DEMANDS_ATTENTION if client is already focused, as
   some apps seem to request NET_WM_STATE_DEMANDS_ATTENTION state even while
@@ -110,24 +111,24 @@
 - Update the NET_WM_STATE when the client requests an update of
   NET_WM_STATE_DEMANDS_ATTENTION (Bug #2678)
 - Focus the internal fallback window
-  when focus is transfered to a window that doesn't have InputHint set but 
-  still use WM_PROTOCOLS_TAKE_FOCUS (ie, there is no way for the window 
-  manager to tell whether or not the client will accept focus in the end 
+  when focus is transfered to a window that doesn't have InputHint set but
+  still use WM_PROTOCOLS_TAKE_FOCUS (ie, there is no way for the window
+  manager to tell whether or not the client will accept focus in the end
   since focus is set by the client alone through the 'take focus' mechanism)
   (Fix bug #1853 without breaking bug #2410)
 - Fix redraw problem with compositor
 - Update application icon asynchronously to avoid queuing useless icon updates
   (Ubuntu/Launchpad bug #61424)
 - Fix user focus timetamp being falsely reset to 0 causing some windows to be
-  started un-focused (Bug #2664), re-add some traces (which compile with 
+  started un-focused (Bug #2664), re-add some traces (which compile with
   -Werror this time), small code/api cleanup.
 - Remove shadow on dock-type windows (bug #2648)
 - Prevent fullscreen windows from beeing maximized (Bug #2663).
-- Use timestamp provided by NET_ACTIVE_WINDOW and NET_CURRENT_DESKTOP messages 
-  from EWMH version 1.3 and above, fix focus transition with 
-  NET_CURRENT_DESKTOP messages causing either flickering or wrong restacking 
+- Use timestamp provided by NET_ACTIVE_WINDOW and NET_CURRENT_DESKTOP messages
+  from EWMH version 1.3 and above, fix focus transition with
+  NET_CURRENT_DESKTOP messages causing either flickering or wrong restacking
   on workspace switch (bug #2654),
-- Quit nicely when MANAGE client message is received, so that xfwm4 obeys to 
+- Quit nicely when MANAGE client message is received, so that xfwm4 obeys to
   ICCCM2 standard (bug #2374)
 - Fix demands attention being activated when it shouldn't
 - Improve focus stealing prevention.
@@ -136,28 +137,28 @@
 - Plug a huge X resources leak in handleMappingNotify () (bug #2618)
 - Do not prevent stick when skip taskbar is set
 - Re-enable focus passing to previously focused window (req. on ML)
-- Focus windows that raise themselves if focus stealing prevention is 
-  disabled, and set demands attention flag otherwise, that should improve 
+- Focus windows that raise themselves if focus stealing prevention is
+  disabled, and set demands attention flag otherwise, that should improve
   focus prevention.
-- Keep focus on sticky windows only for regular windows w/out skip 
+- Keep focus on sticky windows only for regular windows w/out skip
   taskbar/pager property (Bug 2603)
 - Improve resize (Bug #2597)
-- Be more permissive with resizes towards struts (Bug #2597, bis), optimize 
+- Be more permissive with resizes towards struts (Bug #2597, bis), optimize
   shape use.
-- Fix off-by-one causing windows to be moved wrongly via keyboard 
+- Fix off-by-one causing windows to be moved wrongly via keyboard
   (patch from Darren Salt (bug #2594)
-- Enter key doesn't work for "Add keybinding theme" dialog (Bug #2560, patch 
+- Enter key doesn't work for "Add keybinding theme" dialog (Bug #2560, patch
   by Brian Tarricone
-- Use focus pending with with apps that use WM_FLAG_TAKEFOCUS protocol too 
+- Use focus pending with with apps that use WM_FLAG_TAKEFOCUS protocol too
   (Bug #2561)
 - Hide as more windows when showing desktop (Bug #2518)
-- Don't skip windows that have the skip pager/taskbar properties when 
+- Don't skip windows that have the skip pager/taskbar properties when
   searching for windows below the pointer (bug #2550)
-- Fix focus transitionning to root taking into account the pending focus too, 
-  so that focus doesn't return to the fallback internal window when it should 
-  return to some other client window (like when an application closes with a 
+- Fix focus transitionning to root taking into account the pending focus too,
+  so that focus doesn't return to the fallback internal window when it should
+  return to some other client window (like when an application closes with a
   modal dialog opened).
-- Check for valid transient or modal when switching workspaces, to avoid 
+- Check for valid transient or modal when switching workspaces, to avoid
   missing windows to unmap (bug #2518).
 - Use X server time to restore focus when sent to the root window (bug #2472)
 
@@ -206,18 +207,18 @@
 - Rework maximization switches (Bug #2047).
 - Unmap the client window when shaded (Bug #2168).
 - Fix a crash in compositor when the client vanishes (Bug #2105).
-- Make sure the icon selected in the tabwin matches the selected window in all 
+- Make sure the icon selected in the tabwin matches the selected window in all
   cases (Bug #2008).
 - Add <Xutil.h> include for building on Solaris.
-- Add new option to enable/disable unredirection of fullscreen override windows 
+- Add new option to enable/disable unredirection of fullscreen override windows
   (overlays).
 - Prevent shaped windows to request a frame.
-- Fix meaning of the Xfwm/CycleMinimum option in the WM tweak plugin 
+- Fix meaning of the Xfwm/CycleMinimum option in the WM tweak plugin
   (Bug #2058).
-- Fix focus transition back to regular window when an override window grabbing 
+- Fix focus transition back to regular window when an override window grabbing
   keyboard is unmapped (Bug #2090).
 - Allow pkg-config to be more verbose (Bug #2178).
-- Add a fallback to the configure script to check for libXrender on Solaris 10 
+- Add a fallback to the configure script to check for libXrender on Solaris 10
   (Bug #2165).
 - Plug a few memory leaks.
 - Reduce Xserver's memory usage my disabling frame caching.

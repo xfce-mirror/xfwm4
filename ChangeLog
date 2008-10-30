@@ -1,5 +1,10 @@
 2008-10-30  olivier
 
+	* src/events.c, src/client.c, src/client.h,
+	  themes/default.keys/keythemerc: Simplify management of transients
+
+2008-10-30  olivier
+
 	* src/default_icon.svg, src/default_icon.svg,
 	  src/inline-default-icon.h: Change default icon.
 
