@@ -1,5 +1,10 @@
 2008-10-30  olivier
 
+	* settings-dialogs/xfwm4-settings.c, src/client.c: Fix compiler 
+	  warnings
+
+2008-10-30  olivier
+
 	* src/events.c, src/client.c, src/client.h,
 	  themes/default.keys/keythemerc: Simplify management of transients
 

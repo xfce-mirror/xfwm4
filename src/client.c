@@ -1307,8 +1307,6 @@ clientGetWinState (Client * c)
 static void
 clientApplyInitialState (Client * c)
 {
-    gboolean validTransient;
-
     g_return_if_fail (c != NULL);
 
     TRACE ("entering clientApplyInitialState");
