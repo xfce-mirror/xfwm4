@@ -62,13 +62,7 @@
 #include "startup_notification.h"
 #include "compositor.h"
 #include "spinning_cursor.h"
-
-/* icons */
-#include "inline-stock-maximize.h"
-#include "inline-stock-unmaximize.h"
-#include "inline-stock-rollup.h"
-#include "inline-stock-rolldown.h"
-#include "inline-stock-minimize.h"
+#include "stock_icons.h"
 
 #define BASE_EVENT_MASK \
     SubstructureNotifyMask|\

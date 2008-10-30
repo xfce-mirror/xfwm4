@@ -1452,7 +1452,7 @@ clientGetUserTime (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    
+
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
@@ -2500,19 +2500,22 @@ clientWithdraw (Client * c, int ws, gboolean iconify)
 void
 clientWithdrawAll (Client * c, int ws)
 {
-    ScreenInfo *screen_info;
+    GList *index;
     Client *c2;
-    int i;
+    ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
 
     TRACE ("entering clientWithdrawAll");
 
     screen_info = c->screen_info;
-    for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count); c2 = c2->next, i++)
+    for (index = screen_info->windows_stack; index; index = g_list_next (index))
     {
-        if (CLIENT_CAN_HIDE_WINDOW (c2)
-            && !clientIsValidTransientOrModal (c2) && (c2 != c))
+        c2 = (Client *) index->data;
+
+        if ((c2 != c)
+            && CLIENT_CAN_HIDE_WINDOW (c2)
+            && !clientIsValidTransientOrModal (c2))
         {
             if (((!c) && (c2->win_workspace == ws))
                  || ((c) && !clientIsTransientOrModalFor (c, c2)
@@ -2527,12 +2530,12 @@ clientWithdrawAll (Client * c, int ws)
 void
 clientClearAllShowDesktop (ScreenInfo *screen_info)
 {
+    GList *index;
+
     TRACE ("entering clientClearShowDesktop");
 
     if (screen_info->show_desktop)
     {
-        GList *index = NULL;
-
         for (index = screen_info->windows_stack; index; index = g_list_next (index))
         {
             Client *c = (Client *) index->data;

@@ -1,3 +1,8 @@
+2008-10-30  olivier
+
+	* src/client.c: Fix minimize all other windows,
+	  src/main.c: Fix compilation warning.
+
 2008-10-29  olivier
 
 	* src/inline-stock-rolldown.h, src/inline-stock-maximize.h,
