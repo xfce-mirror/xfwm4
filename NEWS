@@ -2,8 +2,9 @@
 ======================
 
 - Add support for restart style SmRestartImmediately.
-- Add support for NET_MOVERESIZE_WINDOW
-- Add client windows to save set to avoid loosing all windows in case of crash
+- Add support for NET_MOVERESIZE_WINDOW.
+- Add client windows to save set to avoid loosing all windows in case of crash.
+- Rework the window menu to improve consistency with libwnck menu (Bug #4531).
 
 4.5.91 (Xfce 4.6beta1)
 ======================
