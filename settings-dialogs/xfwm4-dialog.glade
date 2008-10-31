@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Mon Oct 20 19:12:52 2008 -->
+<!--Generated with glade3 3.4.5 on Fri Oct 31 11:06:00 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="main-dialog">
@@ -9,7 +9,7 @@
     <property name="icon_name">xfwm4</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
     <property name="has_separator">False</property>
-    <property name="subtitle" translatable="yes">Configure window behavior</property>
+    <property name="subtitle" translatable="yes">Configure window behavior and shortcuts</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="main-vbox">
         <property name="visible">True</property>

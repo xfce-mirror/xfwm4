@@ -1,9 +1,7 @@
 [Desktop Entry]
 Version=1.0
-_Name=Xfce 4 Window Manager Settings
-_GenericName=Window Manager Settings
-_X-XfceSettingsName=Window Manager
-_Comment=Configure window behavior
+_Name=Window Manager
+_Comment=Configure window behavior and shortcuts
 Exec=xfwm4-settings
 Icon=xfwm4
 Terminal=false

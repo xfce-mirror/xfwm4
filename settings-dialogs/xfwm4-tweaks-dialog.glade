@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sun Sep 14 22:03:03 2008 -->
+<!--Generated with glade3 3.4.5 on Fri Oct 31 11:02:59 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="main-dialog">
@@ -10,7 +10,7 @@
     <property name="icon_name">wmtweaks</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
     <property name="has_separator">False</property>
-    <property name="subtitle" translatable="yes">Advanced window manager settings</property>
+    <property name="subtitle" translatable="yes">Fine-tune window behaviour and effects</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="main-vbox">
         <property name="visible">True</property>
@@ -149,7 +149,6 @@ or "skip taskbar" properties set</property>
                 <child>
                   <widget class="GtkVBox" id="prevent_focus_stealing_box">
                     <property name="visible">True</property>
-                    <property name="sensitive">True</property>
                     <property name="spacing">6</property>
                     <child>
                       <widget class="GtkLabel" id="label11">
@@ -230,7 +229,6 @@ or "skip taskbar" properties set</property>
             </child>
             <child>
               <widget class="GtkLabel" id="label2">
-                <property name="visible">True</property>
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">_Focus</property>
                 <property name="use_underline">True</property>
@@ -499,7 +497,7 @@ when switching via keyboard shortcuts</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
-                     </widget>
+                      </widget>
                     </child>
                   </widget>
                   <packing>
@@ -511,13 +509,12 @@ when switching via keyboard shortcuts</property>
                 <child>
                   <widget class="GtkVBox" id="default_placement_box">
                     <property name="visible">True</property>
-                    <property name="sensitive">True</property>
                     <property name="spacing">6</property>
                     <child>
                       <widget class="GtkLabel" id="label27">
                         <property name="visible">True</property>
                         <property name="xalign">0</property>
-                        <property name="label" translatable="yes">By default, place windows:</property>
+                        <property name="label" translatable="yes" context="yes">By default, place windows:</property>
                       </widget>
                     </child>
                     <child>
@@ -534,10 +531,9 @@ when switching via keyboard shortcuts</property>
                               <widget class="GtkRadioButton" id="placement_center_option">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="label" translatable="yes">At the _center of the screen</property>
+                                <property name="label" translatable="yes" context="yes">At the _center of the screen</property>
                                 <property name="use_underline">True</property>
                                 <property name="response_id">0</property>
-                                <property name="active">False</property>
                                 <property name="draw_indicator">True</property>
                               </widget>
                             </child>
@@ -545,7 +541,7 @@ when switching via keyboard shortcuts</property>
                               <widget class="GtkRadioButton" id="placement_mouse_option">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="label" translatable="yes">Under the mouse _pointer</property>
+                                <property name="label" translatable="yes" context="yes">Under the mouse _pointer</property>
                                 <property name="use_underline">True</property>
                                 <property name="response_id">1</property>
                                 <property name="active">True</property>
@@ -578,7 +574,7 @@ when switching via keyboard shortcuts</property>
             <child>
               <widget class="GtkLabel" id="label5">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_Placement</property>
+                <property name="label" translatable="yes" context="yes">_Placement</property>
                 <property name="use_underline">True</property>
               </widget>
               <packing>
@@ -596,7 +592,7 @@ when switching via keyboard shortcuts</property>
                   <widget class="GtkCheckButton" id="use_compositing_check">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="label" translatable="yes">_Enable display compositing</property>
+                    <property name="label" translatable="yes" context="yes">_Enable display compositing</property>
                     <property name="use_underline">True</property>
                     <property name="response_id">0</property>
                     <property name="draw_indicator">True</property>
@@ -631,7 +627,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkCheckButton" id="unredirect_overlays_check">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
-                                    <property name="label" translatable="yes">Display _fullscreen overlay windows directly</property>
+                                    <property name="label" translatable="yes" context="yes">Display _fullscreen overlay windows directly</property>
                                     <property name="use_underline">True</property>
                                     <property name="response_id">0</property>
                                     <property name="draw_indicator">True</property>
@@ -644,7 +640,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkCheckButton" id="show_frame_shadow_check">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
-                                    <property name="label" translatable="yes">Show shadows under _regular windows</property>
+                                    <property name="label" translatable="yes" context="yes">Show shadows under _regular windows</property>
                                     <property name="use_underline">True</property>
                                     <property name="response_id">0</property>
                                     <property name="draw_indicator">True</property>
@@ -658,7 +654,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkCheckButton" id="show_popup_shadow_check">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
-                                    <property name="label" translatable="yes">Show shadows under pop_up windows</property>
+                                    <property name="label" translatable="yes" context="yes">Show shadows under pop_up windows</property>
                                     <property name="use_underline">True</property>
                                     <property name="response_id">0</property>
                                     <property name="draw_indicator">True</property>
@@ -672,7 +668,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkCheckButton" id="show_dock_shadow_check">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
-                                    <property name="label" translatable="yes">Show shadows under _dock windows</property>
+                                    <property name="label" translatable="yes" context="yes">Show shadows under _dock windows</property>
                                     <property name="use_underline">True</property>
                                     <property name="response_id">0</property>
                                     <property name="draw_indicator">True</property>
@@ -686,7 +682,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkLabel" id="label12">
                                     <property name="visible">True</property>
                                     <property name="xalign">0</property>
-                                    <property name="label" translatable="yes">Opaci_ty of window decorations:</property>
+                                    <property name="label" translatable="yes" context="yes">Opaci_ty of window decorations:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">frame_opacity_scale</property>
                                   </widget>
@@ -706,7 +702,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label17">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -730,7 +726,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label18">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -752,7 +748,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkLabel" id="label13">
                                     <property name="visible">True</property>
                                     <property name="xalign">0</property>
-                                    <property name="label" translatable="yes">Opacity of _inactive windows:</property>
+                                    <property name="label" translatable="yes" context="yes">Opacity of _inactive windows:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">inactive_opacity_scale</property>
                                   </widget>
@@ -773,7 +769,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label19">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -797,7 +793,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label20">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -819,7 +815,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkLabel" id="label14">
                                     <property name="visible">True</property>
                                     <property name="xalign">0</property>
-                                    <property name="label" translatable="yes">Opacity of windows during _move:</property>
+                                    <property name="label" translatable="yes" context="yes">Opacity of windows during _move:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">move_opacity_scale</property>
                                   </widget>
@@ -840,7 +836,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label21">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -864,7 +860,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label22">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -886,7 +882,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkLabel" id="label15">
                                     <property name="visible">True</property>
                                     <property name="xalign">0</property>
-                                    <property name="label" translatable="yes">Opacity of windows during resi_ze:</property>
+                                    <property name="label" translatable="yes" context="yes">Opacity of windows during resi_ze:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">resize_opacity_scale</property>
                                   </widget>
@@ -907,7 +903,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label23">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -931,7 +927,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label24">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -953,7 +949,7 @@ when switching via keyboard shortcuts</property>
                                   <widget class="GtkLabel" id="label16">
                                     <property name="visible">True</property>
                                     <property name="xalign">0</property>
-                                    <property name="label" translatable="yes">Opacity of popup window_s:</property>
+                                    <property name="label" translatable="yes" context="yes">Opacity of popup window_s:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">popup_opacity_scale</property>
                                   </widget>
@@ -974,7 +970,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label25">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Transparent&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -998,7 +994,7 @@ when switching via keyboard shortcuts</property>
                                         <child>
                                           <widget class="GtkLabel" id="label26">
                                             <property name="visible">True</property>
-                                            <property name="label" translatable="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
+                                            <property name="label" translatable="yes" context="yes">&lt;i&gt;Opaque&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
                                           </widget>
                                           <packing>
@@ -1035,7 +1031,7 @@ when switching via keyboard shortcuts</property>
             <child>
               <widget class="GtkLabel" id="label6">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">C_ompositor</property>
+                <property name="label" translatable="yes" context="yes">C_ompositor</property>
                 <property name="use_underline">True</property>
               </widget>
               <packing>
@@ -1058,7 +1054,7 @@ when switching via keyboard shortcuts</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-help</property>
+                <property name="label" translatable="yes" context="yes">gtk-help</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">0</property>
               </widget>
@@ -1068,7 +1064,7 @@ when switching via keyboard shortcuts</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-close</property>
+                <property name="label" translatable="yes" context="yes">gtk-close</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">0</property>
               </widget>

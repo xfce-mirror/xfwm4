@@ -1,8 +1,7 @@
 [Desktop Entry]
 Version=1.0
-_Name=Xfce 4 Window Manager Tweaks
-_GenericName=Window Manager Tweaks
-_Comment=Advanced window manager settings
+_Name=Window Manager Tweaks
+_Comment=Fine-tune window behaviour and effects
 Exec=xfwm4-tweaks-settings
 Icon=wmtweaks
 Terminal=false

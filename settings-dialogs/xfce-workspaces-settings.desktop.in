@@ -1,8 +1,6 @@
 [Desktop Entry]
 Version=1.0
-_Name=Xfce 4 Workspaces Settings
-_GenericName=Workspaces Settings
-_X-XfceSettingsName=Workspaces
+_Name=Workspaces
 _Comment=Set number and names of workspaces
 Exec=xfwm4-workspace-settings
 Icon=xfce4-workspaces
