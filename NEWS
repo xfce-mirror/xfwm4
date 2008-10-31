@@ -5,7 +5,8 @@
 - Add support for NET_MOVERESIZE_WINDOW.
 - Add client windows to save set to avoid loosing all windows in case of crash.
 - Rework the window menu to improve consistency with libwnck menu (Bug #4531).
-- Simplify management of transients
+- Simplify management of transients.
+- Add support for keyboard shortcuts (Bug #4492).
 
 4.5.91 (Xfce 4.6beta1)
 ======================

@@ -1,5 +1,32 @@
 2008-10-30  olivier
 
+	* settings-dialogs/xfwm4-settings.c: Fix compiler warnings
+
+2008-10-30  jannis
+
+	  xfwm4/trunk/settings-dialogs/Makefile.am
+	  xfwm4/trunk/settings-dialogs/tweaks-settings.c
+	  xfwm4/trunk/settings-dialogs/workspace-settings.c
+	  xfwm4/trunk/settings-dialogs/xfwm4-settings.c
+	  xfwm4/trunk/src/Makefile.am
+	  xfwm4/trunk/src/event_filter.c
+	  xfwm4/trunk/src/events.c
+	  xfwm4/trunk/src/keyboard.c
+	  xfwm4/trunk/src/keyboard.h
+	  xfwm4/trunk/src/screen.h
+	  xfwm4/trunk/src/settings.c
+	  xfwm4/trunk/themes/Makefile.am
+	  xfwm4/trunk/configure.ac.in
+	  xfwm4/trunk/defaults/defaults: Add support for keyboard shortcuts. 
+	  Remove experimental shortcuts code and add dependency on 
+	  libxfce4kbd-private instead and replace MappingNotify event handler 
+	  with a GdkKeymap "keys-changed" callback.
+	  Remove support for key themes. Properly stop startup notification 
+	  when dialogs are plugged into xfce4-settings-manager (Bug #4492).
+	  po/*: Update translation files.
+
+2008-10-30  olivier
+
 	* settings-dialogs/xfwm4-settings.c, src/client.c: Fix compiler 
 	  warnings
 

@@ -39,6 +39,7 @@
 #include <glade/glade.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfcegui4/libxfcegui4.h>
 #include <xfconf/xfconf.h>
 #include <libxfce4kbd-private/xfce-shortcut-dialog.h>
 #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
@@ -1123,6 +1124,8 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
   active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
   children = gtk_container_get_children (GTK_CONTAINER (active_box));
 
+  /* Set a value so that the compiler does not (rightfully) complain */
+  ix = INDICATOR_SIZE;
   for (iter = children; iter != NULL; iter = g_list_next (iter))
     {
       if (GTK_WIDGET_VISIBLE (iter->data))
@@ -1815,7 +1818,6 @@ xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
   XfceShortcut          *other_shortcut = NULL;
   GList                 *providers;
   GList                 *iter;
-  gchar                 *property;
   gboolean               accepted = TRUE;
   gint                   response;
 
