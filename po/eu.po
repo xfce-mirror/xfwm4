@@ -46,9 +46,8 @@ msgid "Ma_ximize"
 msgstr "Ma_ximizatu"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "(Des)Ma_ximizatu"
+msgstr "Desma_ximizatu"
 
 #: ../src/menu.c:46
 msgid "Mi_nimize"
@@ -56,7 +55,7 @@ msgstr "Txiki_tu"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Txikitu beste leiho _guztiak"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -73,53 +72,48 @@ msgstr "_Tamaina-aldatu"
 #. --------------------------------------------------------
 #: ../src/menu.c:52
 msgid "Always on Top"
-msgstr ""
+msgstr "Beti goian"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Itsatsi _leihoak beraien artean"
+msgstr "Beste leihoak bezala"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Beti beste leihoen azpian"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Bete leihoa"
+msgstr "Bildu leihoa"
 
 #: ../src/menu.c:56
 msgid "Roll Window Down"
-msgstr ""
+msgstr "Zabaldu leihoa"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
 msgstr "_Pantaila-osoa"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "_Pantaila-osoa"
+msgstr "Utzi _pantaila-osoa"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
 msgstr "Kontestu _laguntza"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
 msgid "Always on Visible Workspace"
-msgstr ""
+msgstr "Beti idazmahai ikusgarrian"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Bakarrik idazmahai honetan"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
+msgstr "Mugitu beste idazmahai batetara"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -451,64 +445,52 @@ msgid "Move window to next workspace"
 msgstr "Mugitu leihoa hurrengo idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 1 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 2 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 3 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 4 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 5 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 6 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 7 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 8 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 9 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 10 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 11 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+msgstr "Mugitu leihoa 12 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Show desktop"
@@ -539,64 +521,52 @@ msgid "Next workspace"
 msgstr "Hurrengo idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Workspace 1"
-msgstr "%i Idazmahaia"
+msgstr "1 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Workspace 2"
-msgstr "%i Idazmahaia"
+msgstr "2 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Workspace 3"
-msgstr "%i Idazmahaia"
+msgstr "3 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
 msgid "Workspace 4"
-msgstr "%i Idazmahaia"
+msgstr "4 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
 msgid "Workspace 5"
-msgstr "%i Idazmahaia"
+msgstr "5 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Workspace 6"
-msgstr "%i Idazmahaia"
+msgstr "6 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Workspace 7"
-msgstr "%i Idazmahaia"
+msgstr "7 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Workspace 8"
-msgstr "%i Idazmahaia"
+msgstr "8 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Workspace 9"
-msgstr "%i Idazmahaia"
+msgstr "9 Idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Workspace 10"
-msgstr "%i Idazmahaia"
+msgstr "10 Idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
 msgid "Workspace 11"
-msgstr "%i Idazmahaia"
+msgstr "11 idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
 msgid "Workspace 12"
-msgstr "%i Idazmahaia"
+msgstr "12 Idazmahaia"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Add workspace"
@@ -672,7 +642,6 @@ msgstr "Ezin da ezapen elkarrizketa sortu"
 
 #: ../settings-dialogs/xfwm4-settings.c:1775
 #: ../settings-dialogs/xfwm4-settings.c:1776
-#, fuzzy
 msgid "Reset to Defaults"
 msgstr "Be_rrezarri lehenespenetara"
 
@@ -681,6 +650,8 @@ msgid ""
 "This will reset <b>all</b> shortcuts to their default values. Do you really "
 "want to do this?"
 msgstr ""
+"Honek laster-tekla <b>guztiak</b> lehenetsitako balioetara ezarriko ditu. Ziur "
+"hau egin nahi duzula?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -990,9 +961,8 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "<b>Itzulbiratu idazmahaiak</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "<b>Izenburu _lerrokatzea</b>"
+msgstr "<b>_Gaia</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
@@ -1135,7 +1105,6 @@ msgid "_Edge resistance:"
 msgstr "_Ertzaren erresistentzia :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#, fuzzy
 msgid "_Reset to Defaults"
 msgstr "Be_rrezarri lehenespenetara"
 
