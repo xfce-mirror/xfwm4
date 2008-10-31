@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-29 23:07+0000\n"
+"POT-Creation-Date: 2008-10-31 13:45+0100\n"
 "PO-Revision-Date: 2008-10-18 21:39+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -37,13 +37,1570 @@ msgstr ""
 msgid "Warning"
 msgstr "警告"
 
+#: ../mcs-plugin/margins.c:130
+#, fuzzy
+msgid "Workspace Margins"
+msgstr "ワークスペース"
+
+#: ../mcs-plugin/margins.c:136
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "余白とは画面端のウィンドウが置かれない空間のことです"
+
+#: ../mcs-plugin/margins.c:167
+#, fuzzy
+msgid "Left :"
+msgstr "左"
+
+#: ../mcs-plugin/margins.c:187
+#, fuzzy
+msgid "Right :"
+msgstr "右"
+
+#: ../mcs-plugin/margins.c:207
+msgid "Top :"
+msgstr ""
+
+#: ../mcs-plugin/margins.c:227
+msgid "Bottom :"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:471
+#: ../settings-dialogs/tweaks-settings.c:42
+msgid "None"
+msgstr "無し"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:476
+#, fuzzy
+msgid "Bring window on current workspace"
+msgstr "ウィンドウを現在のワークスペースに移す(_B)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:477
+#, fuzzy
+msgid "Switch to window's workspace"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:478
+#, fuzzy
+msgid "Do nothing"
+msgstr "何もしない(_N)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:483
+msgid "Place window under the mouse"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:484
+msgid "Place window in the center"
+msgstr ""
+
+# FIXME: Q_()
+#: ../mcs-plugin/wmtweaks_plugin.c:493
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgid "Window Manager Tweaks"
+msgstr "ウィンドウマネージャー設定 (詳細)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:512
+#, fuzzy
+msgid ""
+"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr ""
+"「ページャーを飛ばす」または「タスクバーを飛ばす」というプロパティが\n"
+"設定されているウィンドウを飛ばす(_S)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:518
+#, fuzzy
+msgid "Include hidden (i.e. iconified) windows"
+msgstr "アイコン化されたなどの隠しウィンドウも含める(_I)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:524
+#, fuzzy
+msgid "Cycle through windows from all workspaces"
+msgstr "全てのワークスペースを循環させる(_T)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:529
+#, fuzzy
+msgid "Cycling"
+msgstr "循環(_Y)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:541
+#, fuzzy
+msgid "Activate focus stealing prevention"
+msgstr "アクティブ化フォーカスの横取りを防ぐ(_F)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:547
+#, fuzzy
+msgid "Honor the standard ICCCM focus hint"
+msgstr "ICCCM 標準フォーカスヒントに則る(_S)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:553
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+msgid "When a window raises itself:"
+msgstr "ウィンドウ自身が前面に出る場合:"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
+#, fuzzy
+msgid "Focus"
+msgstr "フォーカス(_F)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:570
+#, fuzzy
+msgid "Key used to grab and move windows"
+msgstr "ウィンドウを掴んだり移動したりするために使うキー(_G):"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:576
+#, fuzzy
+msgid "Raise windows when any mouse button is pressed"
+msgstr "いずれかのマウスボタンが押されている時にウィンドウを前面に出す(_R)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:583
+#, fuzzy
+msgid "Hide frame of windows when maximized"
+msgstr "最大化する時はウィンドウの枠を隠す(_F)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:590
+#, fuzzy
+msgid "Restore original size of maximized windows when moving"
+msgstr "最大化されたウィンドウを移動する時は大きさを元に戻す(_S)"
+
+# FIXME: should be revised
+#: ../mcs-plugin/wmtweaks_plugin.c:596
+#, fuzzy
+msgid "Use edge resistance instead of windows snapping"
+msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E)"
+
+# FIXME: i hate this transliteration
+#: ../mcs-plugin/wmtweaks_plugin.c:601
+#, fuzzy
+msgid "Accessibility"
+msgstr "アクセシビリティ(_A)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:614
+msgid "Switch workspaces using the mouse wheel over the desktop"
+msgstr ""
+
+#: ../mcs-plugin/wmtweaks_plugin.c:621
+#, fuzzy
+msgid ""
+"Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr ""
+"ショートカットキーを使用して切り替える時に\n"
+"以前のワークスペースを覚えておく(_R)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:628
+#, fuzzy
+msgid "Wrap workspaces depending on the actual desktop layout"
+msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する(_L)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:635
+#, fuzzy
+msgid "Wrap workspaces when the first or last workspace is reached"
+msgstr "先頭または最後のワークスペースに来たら循環する(_F)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:640 ../mcs-plugin/workspaces.c:519
+#: ../mcs-plugin/workspaces_plugin.c:163
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+msgid "Workspaces"
+msgstr "ワークスペース"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:652
+#, fuzzy
+msgid "Minimum size of windows to trigger smart placement"
+msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ(_M):"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:653
+#, fuzzy
+msgid "Size|Small"
+msgstr "<i>小さい</i>"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:653
+#, fuzzy
+msgid "Size|Large"
+msgstr "<i>大きい</i>"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:658
+#, fuzzy
+msgid "Default positionning of windows without smart placement:"
+msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ(_M):"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:663
+#, fuzzy
+msgid "Placement"
+msgstr "配置(_P)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:683
+#, fuzzy
+msgid "Enable display compositing"
+msgstr "合成処理を有効にする(_E)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:697
+#, fuzzy
+msgid "Display full screen overlay windows directly"
+msgstr "全画面オーバーレイウィンドウを直接表示する(_F)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:703
+#, fuzzy
+msgid "Show shadows under dock windows"
+msgstr "ドックウィンドウに影を落とす(_D)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:709
+#, fuzzy
+msgid "Show shadows under regular windows"
+msgstr "通常のウィンドウに影を落とす(_R)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:715
+#, fuzzy
+msgid "Show shadows under popup windows"
+msgstr "ポップアップウィンドウに影を落とす(_U)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:721
+#, fuzzy
+msgid "Opacity of window decorations"
+msgstr "ウィンドウ枠の透明度(_T):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:745
+#, fuzzy
+msgid "Transparent"
+msgstr "<i>透明</i>"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:746
+#, fuzzy
+msgid "Opaque"
+msgstr "<i>不透明</i>"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:727
+#, fuzzy
+msgid "Opacity of inactive windows"
+msgstr "非アクティブ・ウィンドウの透明度(_I):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:733
+#, fuzzy
+msgid "Opacity of windows during move"
+msgstr "移動中のウィンドウの透明度(_M):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:739
+#, fuzzy
+msgid "Opacity of windows during resize"
+msgstr "大きさ変更中のウィンドウの透明度(_Z):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:745
+#, fuzzy
+msgid "Opacity of popup windows"
+msgstr "ポップアップウィンドウの透明度(_S):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../mcs-plugin/wmtweaks_plugin.c:750
+#, fuzzy
+msgid "Compositor"
+msgstr "合成処理(_O)"
+
+# FIXME: Q_()
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/wmtweaks_plugin.c:792
+#, fuzzy
+msgid "Button Label|Window Manager Tweaks"
+msgstr "ウィンドウマネージャー設定 (詳細)"
+
+#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
+#, c-format
+msgid "These settings cannot work with your current window manager (%s)"
+msgstr ""
+
+#: ../mcs-plugin/workspaces.c:332
+#, fuzzy
+msgid "Change name"
+msgstr "ワークスペース名の変更"
+
+#: ../mcs-plugin/workspaces.c:341 ../mcs-plugin/xfwm4_shortcuteditor.c:484
+#: ../settings-dialogs/workspace-settings.c:72
+#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:148
+#, c-format
+msgid "Workspace %d"
+msgstr "Workspace %d"
+
+#: ../mcs-plugin/workspaces.c:349
+#, fuzzy
+msgid "Name:"
+msgstr "名前(_N):"
+
+#: ../mcs-plugin/workspaces.c:428
+msgid "Click on a workspace name to edit it"
+msgstr ""
+
+#: ../mcs-plugin/workspaces.c:494
+#, fuzzy
+msgid "Number of workspaces:"
+msgstr "ワークスペースの数(_N):"
+
+#: ../mcs-plugin/workspaces.c:530
+#, fuzzy
+msgid "Workspace names"
+msgstr "ワークスペース名"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/workspaces_plugin.c:111
+msgid "Button Label|Workspaces and Margins"
+msgstr ""
+
+# FIXME: should be separated in between `Comment' and  `GenericName'
+#: ../mcs-plugin/workspaces_plugin.c:145
+#, fuzzy
+msgid "Workspaces and Margins"
+msgstr "ワークスペースの設定"
+
+#: ../mcs-plugin/workspaces_plugin.c:172
+#, fuzzy
+msgid "Margins"
+msgstr "<b>余白</b>"
+
+# FIXME: should be separated in between `Comment' and  `GenericName'
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
+msgid "Window Manager Settings"
+msgstr "ウィンドウマネージャー設定"
+
+#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
+msgid "Xfce 4 Window Manager Settings"
+msgstr "Xfce 4 ウィンドウマネージャー設定"
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
+msgid "Advanced Configuration"
+msgstr ""
+
+#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
+msgid "Xfce 4 Window Manager Tweaks"
+msgstr "Xfce 4 ウィンドウマネージャー設定 (詳細)"
+
+# FIXME: should be separated in between `Comment' and  `GenericName'
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
+msgid "Workspaces Settings"
+msgstr "ワークスペースの設定"
+
+#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
+msgid "Xfce 4 Workspaces Settings"
+msgstr "Xfce 4 ワークスペースの設定"
+
+#: ../mcs-plugin/xfwm4_plugin.c:68 ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "Menu"
+msgstr "メニュー"
+
+# FIXME:
+#: ../mcs-plugin/xfwm4_plugin.c:69 ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "Stick"
+msgstr "貼る"
+
+# FIXME:
+#: ../mcs-plugin/xfwm4_plugin.c:70 ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Shade"
+msgstr "折り畳む"
+
+# FIXME:
+#: ../mcs-plugin/xfwm4_plugin.c:71 ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "Hide"
+msgstr "隠す"
+
+# FIXME:
+#: ../mcs-plugin/xfwm4_plugin.c:72 ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Maximize"
+msgstr "最大化"
+
+#: ../mcs-plugin/xfwm4_plugin.c:73 ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "Close"
+msgstr "閉じる"
+
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../settings-dialogs/xfwm4-settings.c:210
+#: ../settings-dialogs/xfwm4-settings.c:240
+msgid "Shade window"
+msgstr "ウィンドウを折り畳む"
+
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../settings-dialogs/xfwm4-settings.c:211
+#: ../settings-dialogs/xfwm4-settings.c:237
+msgid "Hide window"
+msgstr "ウィンドウを隠す"
+
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../settings-dialogs/xfwm4-settings.c:212
+#: ../settings-dialogs/xfwm4-settings.c:236
+msgid "Maximize window"
+msgstr "ウィンドウを最大化する"
+
+#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../settings-dialogs/xfwm4-settings.c:213
+#: ../settings-dialogs/xfwm4-settings.c:244
+msgid "Fill window"
+msgstr "ウィンドウを全画面化する"
+
+#: ../mcs-plugin/xfwm4_plugin.c:83 ../settings-dialogs/xfwm4-settings.c:214
+msgid "Nothing"
+msgstr "無し"
+
+#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:229
+msgid "Left"
+msgstr "左"
+
+#: ../mcs-plugin/xfwm4_plugin.c:89 ../settings-dialogs/xfwm4-settings.c:220
+msgid "Center"
+msgstr "中央"
+
+#: ../mcs-plugin/xfwm4_plugin.c:90 ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:230
+msgid "Right"
+msgstr "右"
+
+#: ../mcs-plugin/xfwm4_plugin.c:589
+#, fuzzy
+msgid "Click and drag buttons to change the layout"
+msgstr "レイアウトを変更するにはボタンをクリック＆ドラッグしてください"
+
+#: ../mcs-plugin/xfwm4_plugin.c:594
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Active"
+msgstr "アクティブ"
+
+#: ../mcs-plugin/xfwm4_plugin.c:605
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "Title"
+msgstr "タイトル"
+
+#: ../mcs-plugin/xfwm4_plugin.c:606
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "The window title, it cannot be removed"
+msgstr "ウィンドウタイトル - 削除できません"
+
+#: ../mcs-plugin/xfwm4_plugin.c:618
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Hidden"
+msgstr "隠す"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1391
+msgid "Font Selection Dialog"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1456
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "Window Manager"
+msgstr "ウィンドウマネージャー"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1496
+#, fuzzy
+msgid "Title font"
+msgstr "<b>タイトルのフォント</b>(_T)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1505
+#, fuzzy
+msgid "Title Alignment"
+msgstr "<b>タイトルの位置</b>(_A)"
+
+#. XXX
+#: ../mcs-plugin/xfwm4_plugin.c:1507
+msgid "Text alignment inside title bar :"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1513
+#, fuzzy
+msgid "Button layout"
+msgstr "<b>ボタンの配置</b>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1518
+#, fuzzy
+msgid "Style"
+msgstr "スタイル(_S)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1566
+#, fuzzy
+msgid "Window shortcuts"
+msgstr "<b>ウィンドウショートカットキー</b>(_S)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1580
+#, fuzzy
+msgid "Command"
+msgstr "コマンド: %s"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1586 ../settings-dialogs/xfwm4-settings.c:609
+#, fuzzy
+msgid "Shortcut"
+msgstr "ショートカットキー:"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1603
+#, fuzzy
+msgid "Keyboard"
+msgstr "キーボード(_Y)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1618
+#, fuzzy
+msgid "Focus model"
+msgstr "<b>フォーカスモデル</b>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1622
+#, fuzzy
+msgid "Click to focus"
+msgstr "クリックでフォーカス(_K)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1632
+#, fuzzy
+msgid "Focus follows mouse"
+msgstr "マウスに従ってフォーカス(_M)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1645
+#, fuzzy
+msgid "Delay before window receives focus"
+msgstr "ウィンドウがフォーカスされるまでの遅延時間(_D)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
+#, fuzzy
+msgid "Slow"
+msgstr "表示(_H)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
+msgid "Fast"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_plugin.c:1682
+#, fuzzy
+msgid "Automatically give focus to newly created windows"
+msgstr "新規作成されたウィンドウに自動的にフォーカスを移動する(_N)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1686
+#, fuzzy
+msgid "New window focus"
+msgstr "<b>新規ウィンドウのフォーカス</b>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1693
+#, fuzzy
+msgid "Raise on focus"
+msgstr "<b>フォーカスで前面へ</b>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1699
+#, fuzzy
+msgid "Automatically raise windows when they receive focus"
+msgstr "ウィンドウがフォーカスを取得した場合自動的に前面に出す(_R)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1709
+#, fuzzy
+msgid "Delay before raising focused window :"
+msgstr "フォーカス取得後、前面に出すまでの遅延時間(_B):"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1744
+#, fuzzy
+msgid "Raise window when clicking inside application window"
+msgstr "アプリケーションウィンドウ内でクリックした場合前面に出す(_I)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1748
+#, fuzzy
+msgid "Raise on click"
+msgstr "<b>クリックで前面に出す</b>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1766
+#, fuzzy
+msgid "Windows snapping"
+msgstr "<b>ウィンドウのスナップ</b>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1771
+#, fuzzy
+msgid "Snap windows to screen border"
+msgstr "画面の境界でウィンドウを止める(_B)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1777
+#, fuzzy
+msgid "Snap windows to other windows"
+msgstr "他のウィンドウでウィンドウを止める(_W)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1788
+#, fuzzy
+msgid "Distance :"
+msgstr "距離(_T):"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1795
+#, fuzzy
+msgid "Distance|Small"
+msgstr "<i>小さい</i>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1802
+#, fuzzy
+msgid "Distance|Wide"
+msgstr "<i>大きい</i>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1823
+#, fuzzy
+msgid "Wrap workspaces"
+msgstr "<b>ワークスペースの循環</b>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1829
+#, fuzzy
+msgid "Wrap workspaces when the pointer reaches a screen edge"
+msgstr "ポインタが画面端に来たらワークスペースを循環する(_P)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1837
+#, fuzzy
+msgid "Wrap workspaces when dragging a window off the screen"
+msgstr "画面でウィンドウをドラッグするとワークスペースを循環する(_D)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1847
+#, fuzzy
+msgid "Edge Resistance :"
+msgstr "エッジ抵抗(_E):"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1854
+#, fuzzy
+msgid "Resistance|Small"
+msgstr "<i>小さい</i>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1861
+#, fuzzy
+msgid "Resistance|Wide"
+msgstr "<i>大きい</i>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1883
+#, fuzzy
+msgid "Opaque move and resize"
+msgstr "<b>移動とサイズ変更</b>"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1888
+#, fuzzy
+msgid "Display content of windows when resizing"
+msgstr "大きさ変更時にウィンドウの内容を表示しない(_R)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1894
+#, fuzzy
+msgid "Display content of windows when moving"
+msgstr "移動時にウィンドウの内容を表示しない(_M)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1899
+#, fuzzy
+msgid "Double click action"
+msgstr "<b>ダブルクリック時の動作</b>(_A)"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1901
+#, fuzzy
+msgid "Action to perform when double clicking on title bar :"
+msgstr "タイトルバーをダブルクリックした時の動作"
+
+#: ../mcs-plugin/xfwm4_plugin.c:1906
+#, fuzzy
+msgid "Advanced"
+msgstr "詳細(_V)"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../mcs-plugin/xfwm4_plugin.c:2051
+#, fuzzy
+msgid "Button Label|Window Manager"
+msgstr "ウィンドウマネージャー"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:54
+msgid "Do you really want to remove this keybinding theme ?"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:133
+msgid "Add keybinding theme"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
+msgid "Enter a name for the theme:"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:176
+msgid "A keybinding theme with the same name already exists"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
+msgid "You have to provide a name for the keybinding theme"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
+#: ../settings-dialogs/xfwm4-settings.c:226
+msgid "Window operations menu"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
+#: ../settings-dialogs/xfwm4-settings.c:227
+msgid "Up"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../settings-dialogs/xfwm4-settings.c:228
+msgid "Down"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
+#: ../settings-dialogs/xfwm4-settings.c:231
+#, fuzzy
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../settings-dialogs/xfwm4-settings.c:232
+#, fuzzy
+msgid "Cycle windows"
+msgstr "ウィンドウを隠す"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
+#: ../settings-dialogs/xfwm4-settings.c:233
+#, fuzzy
+msgid "Close window"
+msgstr "ウィンドウを隠す"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
+#: ../settings-dialogs/xfwm4-settings.c:234
+#, fuzzy
+msgid "Maximize window horizontally"
+msgstr "ウィンドウを最大化する"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
+#: ../settings-dialogs/xfwm4-settings.c:235
+#, fuzzy
+msgid "Maximize window vertically"
+msgstr "ウィンドウを最大化する"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
+#: ../settings-dialogs/xfwm4-settings.c:238
+#, fuzzy
+msgid "Move window"
+msgstr "ウィンドウを隠す"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
+#: ../settings-dialogs/xfwm4-settings.c:239
+#, fuzzy
+msgid "Resize window"
+msgstr "ウィンドウを隠す"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
+#: ../settings-dialogs/xfwm4-settings.c:241
+#, fuzzy
+msgid "Stick window"
+msgstr "ウィンドウを隠す"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
+#: ../settings-dialogs/xfwm4-settings.c:242
+#, fuzzy
+msgid "Raise window"
+msgstr "ウィンドウを隠す"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
+#: ../settings-dialogs/xfwm4-settings.c:243
+#, fuzzy
+msgid "Lower window"
+msgstr "ウィンドウを隠す"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
+#: ../settings-dialogs/xfwm4-settings.c:245
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "ウィンドウを全画面化する"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
+#: ../settings-dialogs/xfwm4-settings.c:246
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "ウィンドウを全画面化する"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
+#: ../settings-dialogs/xfwm4-settings.c:247
+msgid "Toggle above"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
+#: ../settings-dialogs/xfwm4-settings.c:248
+#, fuzzy
+msgid "Toggle fullscreen"
+msgstr "全画面化(_F)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
+#: ../settings-dialogs/xfwm4-settings.c:249
+#, fuzzy
+msgid "Move window to upper workspace"
+msgstr "ウィンドウを現在のワークスペースに移す(_B)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
+#: ../settings-dialogs/xfwm4-settings.c:250
+#, fuzzy
+msgid "Move window to bottom workspace"
+msgstr "ウィンドウを現在のワークスペースに移す(_B)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
+#: ../settings-dialogs/xfwm4-settings.c:251
+#, fuzzy
+msgid "Move window to left workspace"
+msgstr "ウィンドウを現在のワークスペースに移す(_B)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
+#: ../settings-dialogs/xfwm4-settings.c:252
+#, fuzzy
+msgid "Move window to right workspace"
+msgstr "ウィンドウを現在のワークスペースに移す(_B)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
+#: ../settings-dialogs/xfwm4-settings.c:253
+#, fuzzy
+msgid "Move window to previous workspace"
+msgstr "ウィンドウを現在のワークスペースに移す(_B)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
+#: ../settings-dialogs/xfwm4-settings.c:254
+#, fuzzy
+msgid "Move window to next workspace"
+msgstr "ウィンドウを現在のワークスペースに移す(_B)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
+#: ../settings-dialogs/xfwm4-settings.c:267
+msgid "Show desktop"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
+#: ../settings-dialogs/xfwm4-settings.c:268
+#, fuzzy
+msgid "Upper workspace"
+msgstr "ワークスペースの数(_N):"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
+#: ../settings-dialogs/xfwm4-settings.c:269
+#, fuzzy
+msgid "Bottom workspace"
+msgstr "ワークスペース"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
+#: ../settings-dialogs/xfwm4-settings.c:270
+#, fuzzy
+msgid "Left workspace"
+msgstr "ワークスペース"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
+#: ../settings-dialogs/xfwm4-settings.c:271
+#, fuzzy
+msgid "Right workspace"
+msgstr "ワークスペース"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
+#: ../settings-dialogs/xfwm4-settings.c:272
+#, fuzzy
+msgid "Previous workspace"
+msgstr "ワークスペースの数(_N):"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
+#: ../settings-dialogs/xfwm4-settings.c:273
+#, fuzzy
+msgid "Next workspace"
+msgstr "ワークスペース"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
+#: ../settings-dialogs/xfwm4-settings.c:286
+#, fuzzy
+msgid "Add workspace"
+msgstr "ワークスペース"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
+#: ../settings-dialogs/xfwm4-settings.c:287
+msgid "Add adjacent workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
+#: ../settings-dialogs/xfwm4-settings.c:288
+msgid "Delete last workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
+#: ../settings-dialogs/xfwm4-settings.c:289
+msgid "Delete active workspace"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:505
+#, fuzzy, c-format
+msgid "Move window to workspace %d"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
+msgid "Cannot open the theme directory !"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:604
+#, c-format
+msgid ""
+"Cannot open %s : \n"
+"%s"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:618
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:629
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
+#, fuzzy
+msgid ""
+"Shortcut already in use !\n"
+"Are you sure you want to use it ?"
+msgstr ""
+"ショートカットキーは既にコマンド <b>%s</b> で使用されています。どちらの動作で"
+"使用しますか?"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
+msgid "Compose shortcut for :"
+msgstr ""
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
+#, fuzzy
+msgid "Compose shortcut"
+msgstr "ショートカットキーを入力してください"
+
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
+#, fuzzy
+msgid "No shortcut"
+msgstr "ショートカットキー:"
+
+#: ../settings-dialogs/tweaks-settings.c:396
+msgid "Session manager socket"
+msgstr "セッションマネージャソケット"
+
+#: ../settings-dialogs/tweaks-settings.c:396
+#: ../settings-dialogs/workspace-settings.c:369
+#: ../settings-dialogs/xfwm4-settings.c:297
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
+
+#: ../settings-dialogs/tweaks-settings.c:397
+#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/xfwm4-settings.c:299
+msgid "Version information"
+msgstr "バージョン情報"
+
+#: ../settings-dialogs/tweaks-settings.c:414
+#: ../settings-dialogs/workspace-settings.c:387
+#: ../settings-dialogs/xfwm4-settings.c:941
+msgid "."
+msgstr "."
+
+#: ../settings-dialogs/tweaks-settings.c:418
+#: ../settings-dialogs/workspace-settings.c:391
+#: ../settings-dialogs/xfwm4-settings.c:945
+#, c-format
+msgid ""
+"%s: %s\n"
+"Try %s --help to see a full list of available command line options.\n"
+msgstr ""
+"%s: %s\n"
+"%s --help で使用可能な全てのコマンドラインオプションが表示されます。\n"
+
+#: ../settings-dialogs/workspace-settings.c:134
+#, c-format
+msgid "Change the name of workspace %d"
+msgstr "ワークスペース %d の名前を変更します"
+
+#: ../settings-dialogs/workspace-settings.c:275
+msgid "Workspace Name"
+msgstr "ワークスペース名"
+
+#: ../settings-dialogs/workspace-settings.c:369
+#: ../settings-dialogs/xfwm4-settings.c:297
+msgid "Settings manager socket"
+msgstr "マネージャソケットの設定"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#, fuzzy
+msgid "Configure window behavior and shortcuts"
+msgstr "ウィンドウの振る舞いを設定します"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#, fuzzy
+msgid "Fine-tune window behaviour and effects"
+msgstr "ウィンドウの振る舞いを設定します"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+msgid "Set number and names of workspaces"
+msgstr "ワークスペースの数と名前を設定してください"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
+msgid "  "
+msgstr "  "
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "<b>Box move and resize</b>"
+msgstr "<b>移動とサイズ変更</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+msgid "<b>Button layout</b>"
+msgstr "<b>ボタンの配置</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Double click _action</b>"
+msgstr "<b>ダブルクリック時の動作</b>(_A)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+msgid "<b>Focus model</b>"
+msgstr "<b>フォーカスモデル</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+msgid "<b>New window focus</b>"
+msgstr "<b>新規ウィンドウのフォーカス</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "<b>Raise on click</b>"
+msgstr "<b>クリックで前面に出す</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "<b>Raise on focus</b>"
+msgstr "<b>フォーカスで前面へ</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "<b>Title _alignment</b>"
+msgstr "<b>タイトルの位置</b>(_A)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+msgid "<b>Title fon_t</b>"
+msgstr "<b>タイトルのフォント</b>(_T)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+msgid "<b>Window _shortcuts</b>"
+msgstr "<b>ウィンドウショートカットキー</b>(_S)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+msgid "<b>Windows snapping</b>"
+msgstr "<b>ウィンドウのスナップ</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+msgid "<b>Wrap workspaces</b>"
+msgstr "<b>ワークスペースの循環</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+#, fuzzy
+msgid "<b>_Theme</b>"
+msgstr "<b>タイトルの位置</b>(_A)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Ad_vanced"
+msgstr "詳細(_V)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "Automatically _raise windows when they receive focus"
+msgstr "ウィンドウがフォーカスを取得した場合自動的に前面に出す(_R)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "Automatically give focus to _newly created windows"
+msgstr "新規作成されたウィンドウに自動的にフォーカスを移動する(_N)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "Clic_k to focus"
+msgstr "クリックでフォーカス(_K)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+msgid "Click and drag the buttons to change the layout"
+msgstr "レイアウトを変更するにはボタンをクリック＆ドラッグしてください"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Delay _before raising focused window:"
+msgstr "フォーカス取得後、前面に出すまでの遅延時間(_B):"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "Delay|<i>Long</i>"
+msgstr "<i>長い</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+msgid "Delay|<i>Short</i>"
+msgstr "<i>短い</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+msgid "Dis_tance:"
+msgstr "距離(_T):"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+msgid "Distance|<i>Small</i>"
+msgstr "<i>小さい</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "Distance|<i>Wide</i>"
+msgstr "<i>大きい</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "Focus follows _mouse"
+msgstr "マウスに従ってフォーカス(_M)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Hide content of windows when _moving"
+msgstr "移動時にウィンドウの内容を表示しない(_M)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Hide content of windows when _resizing"
+msgstr "大きさ変更時にウィンドウの内容を表示しない(_R)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "Ke_yboard"
+msgstr "キーボード(_Y)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+msgid "Raise window when clicking _inside application window"
+msgstr "アプリケーションウィンドウ内でクリックした場合前面に出す(_I)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgid "Resistance|<i>Small</i>"
+msgstr "<i>小さい</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Resistance|<i>Wide</i>"
+msgstr "<i>大きい</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+msgid "Snap windows to other _windows"
+msgstr "他のウィンドウでウィンドウを止める(_W)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+msgid "Snap windows to screen _border"
+msgstr "画面の境界でウィンドウを止める(_B)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "タイトルバーをダブルクリックした時の動作"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "画面でウィンドウをドラッグするとワークスペースを循環する(_D)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "ポインタが画面端に来たらワークスペースを循環する(_P)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "_Delay before window receives focus:"
+msgstr "ウィンドウがフォーカスされるまでの遅延時間(_D)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+msgid "_Edge resistance:"
+msgstr "エッジ抵抗(_E):"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "_Focus"
+msgstr "フォーカス(_F)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "_Reset to Defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+msgid "_Style"
+msgstr "スタイル(_S)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+msgid "gtk-clear"
+msgstr "クリア"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
+msgid "gtk-close"
+msgstr "閉じる"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
+msgid "gtk-help"
+msgstr "ヘルプ"
+
+#: ../settings-dialogs/xfwm4-settings.c:255
+#, fuzzy
+msgid "Move window to workspace 1"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:256
+#, fuzzy
+msgid "Move window to workspace 2"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:257
+#, fuzzy
+msgid "Move window to workspace 3"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:258
+#, fuzzy
+msgid "Move window to workspace 4"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:259
+#, fuzzy
+msgid "Move window to workspace 5"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:260
+#, fuzzy
+msgid "Move window to workspace 6"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:261
+#, fuzzy
+msgid "Move window to workspace 7"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:262
+#, fuzzy
+msgid "Move window to workspace 8"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:263
+#, fuzzy
+msgid "Move window to workspace 9"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:264
+#, fuzzy
+msgid "Move window to workspace 10"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:265
+#, fuzzy
+msgid "Move window to workspace 11"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:266
+#, fuzzy
+msgid "Move window to workspace 12"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-settings.c:274
+#, fuzzy
+msgid "Workspace 1"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:275
+#, fuzzy
+msgid "Workspace 2"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:276
+#, fuzzy
+msgid "Workspace 3"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:277
+#, fuzzy
+msgid "Workspace 4"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:278
+#, fuzzy
+msgid "Workspace 5"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:279
+#, fuzzy
+msgid "Workspace 6"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:280
+#, fuzzy
+msgid "Workspace 7"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:281
+#, fuzzy
+msgid "Workspace 8"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:282
+#, fuzzy
+msgid "Workspace 9"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:283
+#, fuzzy
+msgid "Workspace 10"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:284
+#, fuzzy
+msgid "Workspace 11"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:285
+#, fuzzy
+msgid "Workspace 12"
+msgstr "ワークスペース %i"
+
+#: ../settings-dialogs/xfwm4-settings.c:454
+msgid "Theme"
+msgstr "テーマ"
+
+#: ../settings-dialogs/xfwm4-settings.c:604
+#, fuzzy
+msgid "Action"
+msgstr "動作: %s"
+
+#: ../settings-dialogs/xfwm4-settings.c:963
+#, c-format
+msgid "Failed to initialize xfconf. Reason: %s"
+msgstr "xfconf の初期化に失敗しました。理由: %s"
+
+#: ../settings-dialogs/xfwm4-settings.c:974
+msgid "Could not create the settings dialog."
+msgstr "設定ダイアログボックスの生成ができませんでした。"
+
+#: ../settings-dialogs/xfwm4-settings.c:1777
+#: ../settings-dialogs/xfwm4-settings.c:1778
+msgid "Reset to Defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:1779
+msgid ""
+"This will reset <b>all</b> shortcuts to their default values. Do you really "
+"want to do this?"
+msgstr ""
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "<i>Opaque</i>"
+msgstr "<i>不透明</i>"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+msgid "<i>Transparent</i>"
+msgstr "<i>透明</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+msgid "Activate _focus stealing prevention"
+msgstr "アクティブ化フォーカスの横取りを防ぐ(_F)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+msgid "At the _center of the screen"
+msgstr "画面の中央(_C)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "By default, place windows:"
+msgstr "デフォルトのウィンドウ配置:"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "C_ompositor"
+msgstr "合成処理(_O)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "C_ycling"
+msgstr "循環(_Y)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "Cycle _through windows on all workspaces"
+msgstr "全てのワークスペースを循環させる(_T)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Display _fullscreen overlay windows directly"
+msgstr "全画面オーバーレイウィンドウを直接表示する(_F)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "Do _nothing"
+msgstr "何もしない(_N)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "Hide _frame of windows when maximized"
+msgstr "最大化する時はウィンドウの枠を隠す(_F)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Honor _standard ICCCM focus hint"
+msgstr "ICCCM 標準フォーカスヒントに則る(_S)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Keep urgent windows blinking"
+msgstr "緊急通知のあるウィンドウは点滅を続ける"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "Key used to _grab and move windows:"
+msgstr "ウィンドウを掴んだり移動したりするために使うキー(_G):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+msgid "Opaci_ty of window decorations:"
+msgstr "ウィンドウ枠の透明度(_T):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+msgid "Opacity of _inactive windows:"
+msgstr "非アクティブ・ウィンドウの透明度(_I):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Opacity of popup window_s:"
+msgstr "ポップアップウィンドウの透明度(_S):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "Opacity of windows during _move:"
+msgstr "移動中のウィンドウの透明度(_M):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+msgid "Opacity of windows during resi_ze:"
+msgstr "大きさ変更中のウィンドウの透明度(_Z):"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Restore original _size of maximized windows when moving"
+msgstr "最大化されたウィンドウを移動する時は大きさを元に戻す(_S)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Show shadows under _dock windows"
+msgstr "ドックウィンドウに影を落とす(_D)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "Show shadows under _regular windows"
+msgstr "通常のウィンドウに影を落とす(_R)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "Show shadows under pop_up windows"
+msgstr "ポップアップウィンドウに影を落とす(_U)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Size|<i>Large</i>"
+msgstr "<i>大きい</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+msgid "Size|<i>Small</i>"
+msgstr "<i>小さい</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+msgid "Switch to win_dow's workspace"
+msgstr "ウィンドウのワークスペースへ切り換える(_D)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Under the mouse _pointer"
+msgstr "マウスポインタの下(_P)"
+
+# FIXME: should be revised
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+msgid "Use _edge resistance instead of window snapping"
+msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する(_L)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "先頭または最後のワークスペースに来たら循環する(_F)"
+
+# FIXME: i hate this transliteration
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "_Accessibility"
+msgstr "アクセシビリティ(_A)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "_Bring window on current workspace"
+msgstr "ウィンドウを現在のワークスペースに移す(_B)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "_Draw frame around selected windows while cycling"
+msgstr "循環中選択したウィンドウの枠を描画する(_D)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "_Enable display compositing"
+msgstr "合成処理を有効にする(_E)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "アイコン化されたなどの隠しウィンドウも含める(_I)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ(_M):"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "_Mouse wheel over desktop switches workspaces"
+msgstr "デスクトップ上でマウスホイールを使用してワークスペースを切り替える(_M)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "_Placement"
+msgstr "配置(_P)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "いずれかのマウスボタンが押されている時にウィンドウを前面に出す(_R)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
+msgstr ""
+"ショートカットキーを使用して切り替える時に\n"
+"以前のワークスペースを覚えておく(_R)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid ""
+"_Skip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr ""
+"「ページャーを飛ばす」または「タスクバーを飛ばす」というプロパティが\n"
+"設定されているウィンドウを飛ばす(_S)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "_Workspaces"
+msgstr "ワークスペース(_W)"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "<b>Margins</b>"
+msgstr "<b>余白</b>"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "<b>Workspaces</b>"
+msgstr "<b>ワークスペース</b>"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#, fuzzy
+msgid "Change workspace name"
+msgstr "ワークスペース名の変更"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
+msgid "_Name:"
+msgstr "名前(_N):"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+msgid "_Number of workspaces:"
+msgstr "ワークスペースの数(_N):"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
+msgid "gtk-cancel"
+msgstr "キャンセル"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
+msgid "gtk-save"
+msgstr "保存"
+
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (ホスト %s)"
 
-#: ../src/main.c:145
+#: ../src/main.c:139
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: セグメンテーション違反です"
@@ -150,22 +1707,22 @@ msgstr "再起動"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインタを取得できませんでした\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: 色 %s を割り当てられません\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: 色を割り当てられません: 色の GValue が STRING 型ではありません"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 色 %s を解析できません\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: 色を解析できません: 色の GValue が STRING 型ではありません"
@@ -180,1022 +1737,58 @@ msgstr "子プロセスからのデータ読み込みエラーです: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "ヘルパーダイアログを生成できませんでした: %s\n"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Configure window behavior"
-msgstr "ウィンドウの振る舞いを設定します"
+#~ msgid "Advanced window manager settings"
+#~ msgstr "ウィンドウマネージャーの拡張設定"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-msgid "Window Manager"
-msgstr "ウィンドウマネージャー"
+#~ msgid ""
+#~ "This shortcut is already being used by <b>another window manager action</"
+#~ "b>. Which action do you want to use?"
+#~ msgstr ""
+#~ "ショートカットキーは既に<b>他のウィンドウマネージャーの動作</b>で使用され"
+#~ "ています。どちらの動作に使用しますか?"
 
-# FIXME: should be separated in between `Comment' and  `GenericName'
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid "Window Manager Settings"
-msgstr "ウィンドウマネージャー設定"
+#~ msgid "Use %s"
+#~ msgstr "%s で使用"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:4
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Xfce 4 ウィンドウマネージャー設定"
+#~ msgid "Keep the other one"
+#~ msgstr "他のもので継続使用"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
-msgid "Advanced window manager settings"
-msgstr "ウィンドウマネージャーの拡張設定"
+#~ msgid "Keep %s"
+#~ msgstr "%s で継続使用"
 
-# FIXME: Q_()
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Window Manager Tweaks"
-msgstr "ウィンドウマネージャー設定 (詳細)"
+#~ msgid ""
+#~ "The shortcut is already being used by a <b>window manager action</b>. "
+#~ "Which action do you want to use?"
+#~ msgstr ""
+#~ "ショートカットキーは既に<b>ウィンドウマネージャーの動作</b>で使用されてい"
+#~ "ます。どちらの動作で使用しますか?"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Xfce 4 ウィンドウマネージャー設定 (詳細)"
+#~ msgid "Keep the window manager action"
+#~ msgstr "ウィンドウマネージャーの動作で継続使用"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-msgid "Set number and names of workspaces"
-msgstr "ワークスペースの数と名前を設定してください"
+#~ msgid "Conflicting actions for %s"
+#~ msgstr "%s の動作と衝突"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
-msgid "Workspaces"
-msgstr "ワークスペース"
+#~ msgid "The shortcut is already being used for something else."
+#~ msgstr "ショートカットキーは既に他で使用されています。"
 
-# FIXME: should be separated in between `Comment' and  `GenericName'
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid "Workspaces Settings"
-msgstr "ワークスペースの設定"
+#~ msgid "Enter window manager action shortcut"
+#~ msgstr "ウィンドウマネージャーの動作のショートカットキーを入力してください"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:4
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Xfce 4 ワークスペースの設定"
+#~ msgid "Action: %s"
+#~ msgstr "動作: %s"
 
-#: ../settings-dialogs/frap-shortcuts.c:53
-msgid ""
-"This shortcut is already being used by <b>another window manager action</b>. "
-"Which action do you want to use?"
-msgstr ""
-"ショートカットキーは既に<b>他のウィンドウマネージャーの動作</b>で使用されてい"
-"ます。どちらの動作に使用しますか?"
+#~ msgid "Enter command shortcut"
+#~ msgstr "コマンドのショートカットキーを入力してください"
 
-#: ../settings-dialogs/frap-shortcuts.c:54
-#: ../settings-dialogs/frap-shortcuts.c:57
-#: ../settings-dialogs/frap-shortcuts.c:60
-#: ../settings-dialogs/frap-shortcuts.c:63
-#, c-format
-msgid "Use %s"
-msgstr "%s で使用"
+#~ msgid "Shortcut:"
+#~ msgstr "ショートカットキー:"
 
-#: ../settings-dialogs/frap-shortcuts.c:54
-msgid "Keep the other one"
-msgstr "他のもので継続使用"
+#~ msgid "Could not grab the keyboard."
+#~ msgstr "キーボードを取得できませんでした。"
 
-#: ../settings-dialogs/frap-shortcuts.c:56
-#: ../settings-dialogs/frap-shortcuts.c:59
-#, c-format
-msgid ""
-"The shortcut is already being used for the command <b>%s</b>. Which action "
-"do you want to use?"
-msgstr ""
-"ショートカットキーは既にコマンド <b>%s</b> で使用されています。どちらの動作で"
-"使用しますか?"
-
-#: ../settings-dialogs/frap-shortcuts.c:57
-#: ../settings-dialogs/frap-shortcuts.c:60
-#, c-format
-msgid "Keep %s"
-msgstr "%s で継続使用"
-
-#: ../settings-dialogs/frap-shortcuts.c:62
-msgid ""
-"The shortcut is already being used by a <b>window manager action</b>. Which "
-"action do you want to use?"
-msgstr ""
-"ショートカットキーは既に<b>ウィンドウマネージャーの動作</b>で使用されていま"
-"す。どちらの動作で使用しますか?"
-
-#: ../settings-dialogs/frap-shortcuts.c:63
-msgid "Keep the window manager action"
-msgstr "ウィンドウマネージャーの動作で継続使用"
-
-#: ../settings-dialogs/frap-shortcuts.c:95
-#: ../settings-dialogs/frap-shortcuts.c:102
-#, c-format
-msgid "Conflicting actions for %s"
-msgstr "%s の動作と衝突"
-
-#: ../settings-dialogs/frap-shortcuts.c:134
-msgid "The shortcut is already being used for something else."
-msgstr "ショートカットキーは既に他で使用されています。"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:248
-msgid "Enter window manager action shortcut"
-msgstr "ウィンドウマネージャーの動作のショートカットキーを入力してください"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:249
-#: ../settings-dialogs/frap-shortcuts-dialog.c:259
-#, c-format
-msgid "Action: %s"
-msgstr "動作: %s"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:253
-msgid "Enter command shortcut"
-msgstr "コマンドのショートカットキーを入力してください"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:254
-#, c-format
-msgid "Command: %s"
-msgstr "コマンド: %s"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:258
-msgid "Enter shortcut"
-msgstr "ショートカットキーを入力してください"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:289
-msgid "Shortcut:"
-msgstr "ショートカットキー:"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:333
-msgid "Could not grab the keyboard."
-msgstr "キーボードを取得できませんでした。"
-
-#: ../settings-dialogs/frap-shortcuts-dialog.c:354
-#, c-format
-msgid "<span size='large'><b>%s</b></span>"
-msgstr "<span size='large'><b>%s</b></span>"
-
-#: ../settings-dialogs/xfwm4-settings.c:211
-#: ../settings-dialogs/xfwm4-settings.c:241
-msgid "Shade window"
-msgstr "ウィンドウを折り畳む"
-
-#: ../settings-dialogs/xfwm4-settings.c:212
-#: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Hide window"
-msgstr "ウィンドウを隠す"
-
-#: ../settings-dialogs/xfwm4-settings.c:213
-#: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Maximize window"
-msgstr "ウィンドウを最大化する"
-
-#: ../settings-dialogs/xfwm4-settings.c:214
-#: ../settings-dialogs/xfwm4-settings.c:245
-msgid "Fill window"
-msgstr "ウィンドウを全画面化する"
-
-#: ../settings-dialogs/xfwm4-settings.c:215
-msgid "Nothing"
-msgstr "無し"
-
-#: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:230
-msgid "Left"
-msgstr "左"
-
-#: ../settings-dialogs/xfwm4-settings.c:221
-msgid "Center"
-msgstr "中央"
-
-#: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:231
-msgid "Right"
-msgstr "右"
-
-#: ../settings-dialogs/xfwm4-settings.c:227
-msgid "Window operations menu"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:228
-msgid "Up"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:229
-msgid "Down"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:232
-#, fuzzy
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: ../settings-dialogs/xfwm4-settings.c:233
-#, fuzzy
-msgid "Cycle windows"
-msgstr "ウィンドウを隠す"
-
-#: ../settings-dialogs/xfwm4-settings.c:234
-#, fuzzy
-msgid "Close window"
-msgstr "ウィンドウを隠す"
-
-#: ../settings-dialogs/xfwm4-settings.c:235
-#, fuzzy
-msgid "Maximize window horizontally"
-msgstr "ウィンドウを最大化する"
-
-#: ../settings-dialogs/xfwm4-settings.c:236
-#, fuzzy
-msgid "Maximize window vertically"
-msgstr "ウィンドウを最大化する"
-
-#: ../settings-dialogs/xfwm4-settings.c:239
-#, fuzzy
-msgid "Move window"
-msgstr "ウィンドウを隠す"
-
-#: ../settings-dialogs/xfwm4-settings.c:240
-#, fuzzy
-msgid "Resize window"
-msgstr "ウィンドウを隠す"
-
-#: ../settings-dialogs/xfwm4-settings.c:242
-#, fuzzy
-msgid "Stick window"
-msgstr "ウィンドウを隠す"
-
-#: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
-msgid "Raise window"
-msgstr "ウィンドウを隠す"
-
-#: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
-msgid "Lower window"
-msgstr "ウィンドウを隠す"
-
-#: ../settings-dialogs/xfwm4-settings.c:246
-#, fuzzy
-msgid "Fill window horizontally"
-msgstr "ウィンドウを全画面化する"
-
-#: ../settings-dialogs/xfwm4-settings.c:247
-#, fuzzy
-msgid "Fill window vertically"
-msgstr "ウィンドウを全画面化する"
-
-#: ../settings-dialogs/xfwm4-settings.c:248
-msgid "Toggle above"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:249
-#, fuzzy
-msgid "Toggle fullscreen"
-msgstr "全画面化(_F)"
-
-#: ../settings-dialogs/xfwm4-settings.c:250
-#, fuzzy
-msgid "Move window to upper workspace"
-msgstr "ウィンドウを現在のワークスペースに移す(_B)"
-
-#: ../settings-dialogs/xfwm4-settings.c:251
-#, fuzzy
-msgid "Move window to bottom workspace"
-msgstr "ウィンドウを現在のワークスペースに移す(_B)"
-
-#: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
-msgid "Move window to left workspace"
-msgstr "ウィンドウを現在のワークスペースに移す(_B)"
-
-#: ../settings-dialogs/xfwm4-settings.c:253
-#, fuzzy
-msgid "Move window to right workspace"
-msgstr "ウィンドウを現在のワークスペースに移す(_B)"
-
-#: ../settings-dialogs/xfwm4-settings.c:254
-#, fuzzy
-msgid "Move window to previous workspace"
-msgstr "ウィンドウを現在のワークスペースに移す(_B)"
-
-#: ../settings-dialogs/xfwm4-settings.c:255
-#, fuzzy
-msgid "Move window to next workspace"
-msgstr "ウィンドウを現在のワークスペースに移す(_B)"
-
-#: ../settings-dialogs/xfwm4-settings.c:256
-#, fuzzy
-msgid "Move window to workspace 1"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
-msgid "Move window to workspace 2"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
-msgid "Move window to workspace 3"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
-msgid "Move window to workspace 4"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
-msgid "Move window to workspace 5"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:261
-#, fuzzy
-msgid "Move window to workspace 6"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:262
-#, fuzzy
-msgid "Move window to workspace 7"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:263
-#, fuzzy
-msgid "Move window to workspace 8"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:264
-#, fuzzy
-msgid "Move window to workspace 9"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:265
-#, fuzzy
-msgid "Move window to workspace 10"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
-msgid "Move window to workspace 11"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
-msgid "Move window to workspace 12"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-settings.c:268
-msgid "Show desktop"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
-msgid "Upper workspace"
-msgstr "ワークスペースの数(_N):"
-
-#: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
-msgid "Bottom workspace"
-msgstr "ワークスペース"
-
-#: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
-msgid "Left workspace"
-msgstr "ワークスペース"
-
-#: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
-msgid "Right workspace"
-msgstr "ワークスペース"
-
-#: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
-msgid "Previous workspace"
-msgstr "ワークスペースの数(_N):"
-
-#: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
-msgid "Next workspace"
-msgstr "ワークスペース"
-
-#: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
-msgid "Workspace 1"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
-msgid "Workspace 2"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
-msgid "Workspace 3"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
-msgid "Workspace 4"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
-msgid "Workspace 5"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
-msgid "Workspace 6"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
-msgid "Workspace 7"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
-msgid "Workspace 8"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
-msgid "Workspace 9"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
-msgid "Workspace 10"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
-msgid "Workspace 11"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
-msgid "Workspace 12"
-msgstr "ワークスペース %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
-msgid "Add workspace"
-msgstr "ワークスペース"
-
-#: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Add adjacent workspace"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Delete last workspace"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Delete active workspace"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:298
-#: ../settings-dialogs/workspace-settings.c:369
-msgid "Settings manager socket"
-msgstr "マネージャソケットの設定"
-
-#: ../settings-dialogs/xfwm4-settings.c:298
-#: ../settings-dialogs/tweaks-settings.c:396
-#: ../settings-dialogs/workspace-settings.c:369
-msgid "SOCKET ID"
-msgstr "SOCKET ID"
-
-#: ../settings-dialogs/xfwm4-settings.c:300
-#: ../settings-dialogs/tweaks-settings.c:397
-#: ../settings-dialogs/workspace-settings.c:370
-msgid "Version information"
-msgstr "バージョン情報"
-
-#: ../settings-dialogs/xfwm4-settings.c:455
-msgid "Theme"
-msgstr "テーマ"
-
-#: ../settings-dialogs/xfwm4-settings.c:605
-#, fuzzy
-msgid "Action"
-msgstr "動作: %s"
-
-#: ../settings-dialogs/xfwm4-settings.c:610
-#, fuzzy
-msgid "Shortcut"
-msgstr "ショートカットキー:"
-
-#: ../settings-dialogs/xfwm4-settings.c:942
-#: ../settings-dialogs/tweaks-settings.c:414
-#: ../settings-dialogs/workspace-settings.c:387
-msgid "."
-msgstr "."
-
-#: ../settings-dialogs/xfwm4-settings.c:946
-#: ../settings-dialogs/tweaks-settings.c:418
-#: ../settings-dialogs/workspace-settings.c:391
-#, c-format
-msgid ""
-"%s: %s\n"
-"Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"%s --help で使用可能な全てのコマンドラインオプションが表示されます。\n"
-
-#: ../settings-dialogs/xfwm4-settings.c:964
-#, c-format
-msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "xfconf の初期化に失敗しました。理由: %s"
-
-#: ../settings-dialogs/xfwm4-settings.c:975
-msgid "Could not create the settings dialog."
-msgstr "設定ダイアログボックスの生成ができませんでした。"
-
-#: ../settings-dialogs/xfwm4-settings.c:1775
-#: ../settings-dialogs/xfwm4-settings.c:1776
-msgid "Reset to Defaults"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1777
-msgid ""
-"This will reset <b>all</b> shortcuts to their default values. Do you really "
-"want to do this?"
-msgstr ""
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "<i>Opaque</i>"
-msgstr "<i>不透明</i>"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Transparent</i>"
-msgstr "<i>透明</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "Activate _focus stealing prevention"
-msgstr "アクティブ化フォーカスの横取りを防ぐ(_F)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-msgid "At the _center of the screen"
-msgstr "画面の中央(_C)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "By default, place windows:"
-msgstr "デフォルトのウィンドウ配置:"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "C_ompositor"
-msgstr "合成処理(_O)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "C_ycling"
-msgstr "循環(_Y)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Cycle _through windows on all workspaces"
-msgstr "全てのワークスペースを循環させる(_T)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-msgid "Display _fullscreen overlay windows directly"
-msgstr "全画面オーバーレイウィンドウを直接表示する(_F)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "Do _nothing"
-msgstr "何もしない(_N)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "Hide _frame of windows when maximized"
-msgstr "最大化する時はウィンドウの枠を隠す(_F)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "Honor _standard ICCCM focus hint"
-msgstr "ICCCM 標準フォーカスヒントに則る(_S)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Keep urgent windows blinking"
-msgstr "緊急通知のあるウィンドウは点滅を続ける"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-msgid "Key used to _grab and move windows:"
-msgstr "ウィンドウを掴んだり移動したりするために使うキー(_G):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Opaci_ty of window decorations:"
-msgstr "ウィンドウ枠の透明度(_T):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Opacity of _inactive windows:"
-msgstr "非アクティブ・ウィンドウの透明度(_I):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Opacity of popup window_s:"
-msgstr "ポップアップウィンドウの透明度(_S):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Opacity of windows during _move:"
-msgstr "移動中のウィンドウの透明度(_M):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Opacity of windows during resi_ze:"
-msgstr "大きさ変更中のウィンドウの透明度(_Z):"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Restore original _size of maximized windows when moving"
-msgstr "最大化されたウィンドウを移動する時は大きさを元に戻す(_S)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Show shadows under _dock windows"
-msgstr "ドックウィンドウに影を落とす(_D)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Show shadows under _regular windows"
-msgstr "通常のウィンドウに影を落とす(_R)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Show shadows under pop_up windows"
-msgstr "ポップアップウィンドウに影を落とす(_U)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Size|<i>Large</i>"
-msgstr "<i>大きい</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Size|<i>Small</i>"
-msgstr "<i>小さい</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Switch to win_dow's workspace"
-msgstr "ウィンドウのワークスペースへ切り換える(_D)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid "Under the mouse _pointer"
-msgstr "マウスポインタの下(_P)"
-
-# FIXME: should be revised
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-msgid "Use _edge resistance instead of window snapping"
-msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-msgid "When a window raises itself:"
-msgstr "ウィンドウ自身が前面に出る場合:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する(_L)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "先頭または最後のワークスペースに来たら循環する(_F)"
-
-# FIXME: i hate this transliteration
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "_Accessibility"
-msgstr "アクセシビリティ(_A)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-msgid "_Bring window on current workspace"
-msgstr "ウィンドウを現在のワークスペースに移す(_B)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "_Draw frame around selected windows while cycling"
-msgstr "循環中選択したウィンドウの枠を描画する(_D)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "_Enable display compositing"
-msgstr "合成処理を有効にする(_E)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
-msgid "_Focus"
-msgstr "フォーカス(_F)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "アイコン化されたなどの隠しウィンドウも含める(_I)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ(_M):"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "_Mouse wheel over desktop switches workspaces"
-msgstr "デスクトップ上でマウスホイールを使用してワークスペースを切り替える(_M)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Placement"
-msgstr "配置(_P)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Raise windows when any mouse button is pressed"
-msgstr "いずれかのマウスボタンが押されている時にウィンドウを前面に出す(_R)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid ""
-"_Remember and recall previous workspace\n"
-"when switching via keyboard shortcuts"
-msgstr ""
-"ショートカットキーを使用して切り替える時に\n"
-"以前のワークスペースを覚えておく(_R)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid ""
-"_Skip windows that have \"skip pager\"\n"
-"or \"skip taskbar\" properties set"
-msgstr ""
-"「ページャーを飛ばす」または「タスクバーを飛ばす」というプロパティが\n"
-"設定されているウィンドウを飛ばす(_S)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-msgid "_Workspaces"
-msgstr "ワークスペース(_W)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-msgid "gtk-close"
-msgstr "閉じる"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
-msgid "gtk-help"
-msgstr "ヘルプ"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "<b>Margins</b>"
-msgstr "<b>余白</b>"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-msgid "<b>Workspaces</b>"
-msgstr "<b>ワークスペース</b>"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change Workspace Name"
-msgstr "ワークスペース名の変更"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr "余白とは画面端のウィンドウが置かれない空間のことです"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "名前(_N):"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-msgid "_Number of workspaces:"
-msgstr "ワークスペースの数(_N):"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-msgid "gtk-cancel"
-msgstr "キャンセル"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-msgid "gtk-save"
-msgstr "保存"
-
-#: ../settings-dialogs/tweaks-settings.c:42
-msgid "None"
-msgstr "無し"
-
-#: ../settings-dialogs/tweaks-settings.c:396
-msgid "Session manager socket"
-msgstr "セッションマネージャソケット"
-
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
-#: ../settings-dialogs/workspace-settings.c:148
-#, c-format
-msgid "Workspace %d"
-msgstr "Workspace %d"
-
-#: ../settings-dialogs/workspace-settings.c:134
-#, c-format
-msgid "Change the name of workspace %d"
-msgstr "ワークスペース %d の名前を変更します"
-
-#: ../settings-dialogs/workspace-settings.c:275
-msgid "Workspace Name"
-msgstr "ワークスペース名"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "  "
-msgstr "  "
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Box move and resize</b>"
-msgstr "<b>移動とサイズ変更</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>Button layout</b>"
-msgstr "<b>ボタンの配置</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Double click _action</b>"
-msgstr "<b>ダブルクリック時の動作</b>(_A)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>Focus model</b>"
-msgstr "<b>フォーカスモデル</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>New window focus</b>"
-msgstr "<b>新規ウィンドウのフォーカス</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on click</b>"
-msgstr "<b>クリックで前面に出す</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-msgid "<b>Raise on focus</b>"
-msgstr "<b>フォーカスで前面へ</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-msgid "<b>Title _alignment</b>"
-msgstr "<b>タイトルの位置</b>(_A)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-msgid "<b>Title fon_t</b>"
-msgstr "<b>タイトルのフォント</b>(_T)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "<b>Window _shortcuts</b>"
-msgstr "<b>ウィンドウショートカットキー</b>(_S)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Windows snapping</b>"
-msgstr "<b>ウィンドウのスナップ</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>ワークスペースの循環</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
-msgid "<b>_Theme</b>"
-msgstr "<b>タイトルの位置</b>(_A)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "Active"
-msgstr "アクティブ"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
-msgid "Ad_vanced"
-msgstr "詳細(_V)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-msgid "Automatically _raise windows when they receive focus"
-msgstr "ウィンドウがフォーカスを取得した場合自動的に前面に出す(_R)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-msgid "Automatically give focus to _newly created windows"
-msgstr "新規作成されたウィンドウに自動的にフォーカスを移動する(_N)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
-msgid "Clic_k to focus"
-msgstr "クリックでフォーカス(_K)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
-msgid "Click and drag the buttons to change the layout"
-msgstr "レイアウトを変更するにはボタンをクリック＆ドラッグしてください"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Close"
-msgstr "閉じる"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Delay _before raising focused window:"
-msgstr "フォーカス取得後、前面に出すまでの遅延時間(_B):"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Delay|<i>Long</i>"
-msgstr "<i>長い</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Delay|<i>Short</i>"
-msgstr "<i>短い</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Dis_tance:"
-msgstr "距離(_T):"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-msgid "Distance|<i>Small</i>"
-msgstr "<i>小さい</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Distance|<i>Wide</i>"
-msgstr "<i>大きい</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-msgid "Focus follows _mouse"
-msgstr "マウスに従ってフォーカス(_M)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Hidden"
-msgstr "隠す"
-
-# FIXME:
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Hide"
-msgstr "隠す"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Hide content of windows when _moving"
-msgstr "移動時にウィンドウの内容を表示しない(_M)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hide content of windows when _resizing"
-msgstr "大きさ変更時にウィンドウの内容を表示しない(_R)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Ke_yboard"
-msgstr "キーボード(_Y)"
-
-# FIXME:
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Maximize"
-msgstr "最大化"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Menu"
-msgstr "メニュー"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Raise window when clicking _inside application window"
-msgstr "アプリケーションウィンドウ内でクリックした場合前面に出す(_I)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Resistance|<i>Small</i>"
-msgstr "<i>小さい</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-msgid "Resistance|<i>Wide</i>"
-msgstr "<i>大きい</i>"
-
-# FIXME:
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-msgid "Shade"
-msgstr "折り畳む"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Snap windows to other _windows"
-msgstr "他のウィンドウでウィンドウを止める(_W)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to screen _border"
-msgstr "画面の境界でウィンドウを止める(_B)"
-
-# FIXME:
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "Stick"
-msgstr "貼る"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "タイトルバーをダブルクリックした時の動作"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The window title, it cannot be removed"
-msgstr "ウィンドウタイトル - 削除できません"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "Title"
-msgstr "タイトル"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "画面でウィンドウをドラッグするとワークスペースを循環する(_D)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "ポインタが画面端に来たらワークスペースを循環する(_P)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "_Delay before window receives focus:"
-msgstr "ウィンドウがフォーカスされるまでの遅延時間(_D)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
-msgid "_Edge resistance:"
-msgstr "エッジ抵抗(_E):"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
-msgid "_Reset to Defaults"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Style"
-msgstr "スタイル(_S)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "gtk-clear"
-msgstr "クリア"
+#~ msgid "<span size='large'><b>%s</b></span>"
+#~ msgstr "<span size='large'><b>%s</b></span>"
 
 #~ msgid "Hide _all others"
 #~ msgstr "他を隠す(_A)"

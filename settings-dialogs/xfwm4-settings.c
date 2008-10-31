@@ -39,14 +39,12 @@
 #include <glade/glade.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
 #include <xfconf/xfconf.h>
+#include <libxfce4kbd-private/xfce-shortcut-dialog.h>
+#include <libxfce4kbd-private/xfce-shortcuts-provider.h>
 
 #include "xfwm4-dialog_glade.h"
 #include "xfwm4-settings.h"
-
-#include "frap-shortcuts-dialog.h"
-#include "xfce-shortcuts-provider.h"
 
 
 
@@ -989,6 +987,9 @@ main (int    argc,
       plug = xfwm_settings_create_plug (settings, opt_socket_id);
       g_signal_connect (plug, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
 
+      /* Stop startup notification */
+      gdk_notify_startup_complete ();
+
       gtk_main ();
     }
 
@@ -1122,7 +1123,6 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
   active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
   children = gtk_container_get_children (GTK_CONTAINER (active_box));
 
-  ix = 0;
   for (iter = children; iter != NULL; iter = g_list_next (iter))
     {
       if (GTK_WIDGET_VISIBLE (iter->data))
@@ -1807,7 +1807,7 @@ xfwm_settings_shortcut_feature_name (const gchar *feature)
 
 
 static gboolean
-xfwm_settings_validate_shortcut (FrapShortcutsDialog *dialog,
+xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
                                  const gchar         *shortcut,
                                  XfwmSettings        *settings)
 {
@@ -1815,10 +1815,11 @@ xfwm_settings_validate_shortcut (FrapShortcutsDialog *dialog,
   XfceShortcut          *other_shortcut = NULL;
   GList                 *providers;
   GList                 *iter;
+  gchar                 *property;
   gboolean               accepted = TRUE;
   gint                   response;
 
-  g_return_val_if_fail (FRAP_IS_SHORTCUTS_DIALOG (dialog), FALSE);
+  g_return_val_if_fail (XFCE_IS_SHORTCUT_DIALOG (dialog), FALSE);
   g_return_val_if_fail (XFWM_IS_SETTINGS (settings), FALSE);
   g_return_val_if_fail (shortcut != NULL, FALSE);
 
@@ -1851,12 +1852,12 @@ xfwm_settings_validate_shortcut (FrapShortcutsDialog *dialog,
 
   if (G_UNLIKELY (other_shortcut != NULL))
     {
-      response = frap_shortcuts_conflict_dialog (xfce_shortcuts_provider_get_name (settings->priv->provider),
-                                                 xfce_shortcuts_provider_get_name (other_provider),
-                                                 shortcut,
-                                                 frap_shortcuts_dialog_get_action_name (dialog),
-                                                 xfwm_settings_shortcut_feature_name (other_shortcut->command),
-                                                 FALSE);
+      response = xfce_shortcut_conflict_dialog (xfce_shortcuts_provider_get_name (settings->priv->provider),
+                                                xfce_shortcuts_provider_get_name (other_provider),
+                                                shortcut,
+                                                xfce_shortcut_dialog_get_action_name (dialog),
+                                                xfwm_settings_shortcut_feature_name (other_shortcut->command),
+                                                FALSE);
 
       accepted = response == GTK_RESPONSE_ACCEPT;
 
@@ -1898,10 +1899,10 @@ xfwm_settings_shortcut_row_activated (GtkTreeView       *tree_view,
                           SHORTCUTS_SHORTCUT_COLUMN, &shortcut, -1);
   
       /* Request a new shortcut from the user */
-      dialog = frap_shortcuts_dialog_new ("xfwm4", name, feature);
+      dialog = xfce_shortcut_dialog_new ("xfwm4", name, feature);
       g_signal_connect (dialog, "validate-shortcut", 
                         G_CALLBACK (xfwm_settings_validate_shortcut), settings);
-      response = frap_shortcuts_dialog_run (FRAP_SHORTCUTS_DIALOG (dialog));
+      response = xfce_shortcut_dialog_run (XFCE_SHORTCUT_DIALOG (dialog));
 
       if (G_LIKELY (response == GTK_RESPONSE_OK))
         {
@@ -1910,7 +1911,7 @@ xfwm_settings_shortcut_row_activated (GtkTreeView       *tree_view,
             xfce_shortcuts_provider_reset_shortcut (settings->priv->provider, shortcut);
 
           /* Get new shortcut entered by the user */
-          new_shortcut = frap_shortcuts_dialog_get_shortcut (FRAP_SHORTCUTS_DIALOG (dialog));
+          new_shortcut = xfce_shortcut_dialog_get_shortcut (XFCE_SHORTCUT_DIALOG (dialog));
 
           /* Save new shortcut */
           xfce_shortcuts_provider_set_shortcut (settings->priv->provider, new_shortcut, feature);

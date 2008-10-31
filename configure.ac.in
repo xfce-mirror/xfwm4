@@ -12,7 +12,8 @@ m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_ve
 
 m4_define([gtk_minimum_version], [2.10.0])
 m4_define([xfce_minimum_version], [4.5.91])
-m4_define([libxfcegui4_minimum_version], [4.5.91svn-r28280])
+m4_define([libxfcegui4_minimum_version], [4.5.91svn-r28487])
+m4_define([libxfce4kbd_private_minimum_version], [4.5.91svn-r28487])
 m4_define([xfconf_minimum_version], [4.5.91])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.12])
@@ -73,6 +74,7 @@ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([GLADE], [libglade-2.0], [2.0.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCEGUI4], libxfcegui4-1.0, [libxfcegui4_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCE4KBD_PRIVATE], libxfce4kbd-private-1.0, [libxfce4kbd_private_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCONF], libxfconf-0, [xfconf_minimum_version])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([DBUS], [dbus-1], [1.0.0])
@@ -226,7 +228,6 @@ src/Makefile
 themes/Makefile
 themes/daloa/Makefile
 themes/default/Makefile
-themes/default.keys/Makefile
 themes/default-4.0/Makefile
 themes/default-4.2/Makefile
 themes/default-4.4/Makefile

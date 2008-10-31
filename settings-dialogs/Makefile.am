@@ -39,13 +39,7 @@ xfwm4_workspace_settings_LDADD = \
 
 xfwm4_settings_SOURCES = \
 	xfwm4-settings.c \
-	xfwm4-dialog_glade.h \
-	xfce-shortcuts-provider.h \
-	xfce-shortcuts-provider.c \
-	frap-shortcuts.h \
-	frap-shortcuts.c \
-	frap-shortcuts-dialog.h \
-	frap-shortcuts-dialog.c
+	xfwm4-dialog_glade.h
 
 xfwm4_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
@@ -53,6 +47,7 @@ xfwm4_settings_CFLAGS = \
 	$(GLADE_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4KBD_PRIVATE_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
 	-DSRCDIR=\"$(top_srcdir)\" \
@@ -64,6 +59,7 @@ xfwm4_settings_LDADD = \
 	$(GLADE_LIBS) \
 	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4KBD_PRIVATE_LIBS) \
 	$(LIBXFCONF_LIBS)
 
 xfwm4_tweaks_settings_SOURCES = \

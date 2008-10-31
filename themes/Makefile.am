@@ -4,7 +4,6 @@
 SUBDIRS =								\
 	daloa								\
 	default								\
-	default.keys							\
 	default-4.0							\
 	default-4.2							\
 	default-4.4							\

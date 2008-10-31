@@ -17,7 +17,8 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2008 Olivier Fourdan
+        xfwm4    - (c) 2002-2008 Olivier Fourdan,
+                       2008 Jannis Pohlmann
  */
 
 #ifdef HAVE_CONFIG_H
@@ -31,6 +32,7 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
+#include <libxfce4kbd-private/xfce-shortcuts-provider.h>
 
 #include "screen.h"
 #include "hints.h"
@@ -41,13 +43,8 @@
 #include "compositor.h"
 #include "ui_style.h"
 
-#define CHANNEL1                "xfwm4"
-#define CHANNEL2                "xfwm4_keys"
-
-#define DEFAULT_KEYTHEME        "Default"
-#define KEYTHEMERC              "keythemerc"
+#define CHANNEL_XFWM            "xfwm4"
 #define THEMERC                 "themerc"
-
 #define XPM_COLOR_SYMBOL_SIZE   22
 #define XFWM4_SETTINGS_COUNT    66
 
@@ -61,16 +58,30 @@ static void              loadRcData           (ScreenInfo *,
                                                Settings *);
 static void              loadTheme            (ScreenInfo *,
                                                Settings *);
-static gboolean          loadKeyBindings      (ScreenInfo *,
-                                               Settings *);
+static void              loadKeyBindings      (ScreenInfo *);
 static void              unloadTheme          (ScreenInfo *);
+static void              unloadKeyBindings    (ScreenInfo *);
 static void              unloadSettings       (ScreenInfo *);
 static gboolean          reloadScreenSettings (ScreenInfo *,
                                                int);
+static void              parseShortcut        (ScreenInfo *,
+                                               int,
+                                               const gchar *,
+                                               GList *);
+static const gchar      *getShortcut          (const gchar *,
+                                               GList *);
 static void              cb_xfwm4_channel_property_changed (XfconfChannel *,
                                                            const gchar *,
                                                            const GValue *,
                                                            ScreenInfo *);
+static void              cb_keys_changed      (GdkKeymap *,
+                                               ScreenInfo *);
+static void              cb_shortcut_added    (XfceShortcutsProvider *,
+                                               const gchar *,
+                                               ScreenInfo *);
+static void              cb_shortcut_removed  (XfceShortcutsProvider *,
+                                               const gchar *,
+                                               ScreenInfo *);
 
 static void
 update_grabs (ScreenInfo *screen_info)
@@ -129,6 +140,8 @@ set_settings_margin (ScreenInfo *screen_info, int idx, int value)
 static void
 set_easy_click (ScreenInfo *screen_info, const char *modifier)
 {
+    gchar *modstr;
+
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (modifier != NULL);
 
@@ -138,7 +151,9 @@ set_easy_click (ScreenInfo *screen_info, const char *modifier)
     }
     else
     {
-        screen_info->params->easy_click = getModifierMap (modifier);
+        modstr = g_strdup_printf ("<%s>", modifier);
+        screen_info->params->easy_click = getModifierMap (modstr);
+        g_free (modstr);
     }
 }
 
@@ -182,29 +197,11 @@ static void
 loadRcData (ScreenInfo *screen_info, Settings *rc)
 {
     gchar *homedir;
-    const gchar *keythemevalue;
-    gchar *keytheme;
-    gchar *system_keytheme;
 
     if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
     {
         g_warning ("Missing defaults file");
         exit (1);
-    }
-    keythemevalue = getStringValue ("keytheme", rc);
-    if (keythemevalue)
-    {
-        system_keytheme = getSystemThemeDir ();
-        parseRc (KEYTHEMERC, system_keytheme, rc);
-
-        keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
-        if (keytheme)
-        {
-            /* If there is a custom key theme, merge it with system defaults */
-            parseRc (KEYTHEMERC, keytheme, rc);
-            g_free (keytheme);
-        }
-        g_free (system_keytheme);
     }
     homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG,
                                            "xfce4" G_DIR_SEPARATOR_S "xfwm4",
@@ -535,96 +532,74 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     g_free (theme);
 }
 
-static gboolean
-loadKeyBindings (ScreenInfo *screen_info, Settings *rc)
+static void
+loadKeyBindings (ScreenInfo *screen_info)
 {
+    GList *shortcuts;
     gchar keyname[30];
     Display *dpy;
-    gchar *keytheme;
-    const gchar *keythemevalue;
     guint i;
 
     dpy = myScreenGetXDisplay (screen_info);
-    /*
-       Load defaults keytheme so that even if there are
-       missing shortcuts in an older user defined key theme
-       the missing keys will be taken from the default
-     */
-    keytheme = getThemeDir (DEFAULT_KEYTHEME, KEYTHEMERC);
-    parseRc (KEYTHEMERC, keytheme, rc);
-    g_free (keytheme);
 
-    keythemevalue = getStringValue ("keytheme", rc);
-    if (keythemevalue)
-    {
-        keytheme = getThemeDir (keythemevalue, KEYTHEMERC);
-        if (!parseRc (KEYTHEMERC, keytheme, rc))
-        {
-            g_warning ("Specified key theme \"%s\" missing, using default", keythemevalue);
-        }
-        g_free (keytheme);
+    shortcuts = xfce_shortcuts_provider_get_shortcuts (screen_info->shortcuts_provider);
 
-        if (!checkRc (rc))
-        {
-            g_warning ("Missing values in defaults file");
-            return FALSE;
-        }
-    }
-
-    parseKeyString (dpy, &screen_info->params->keys[KEY_CANCEL], getStringValue ("cancel_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN], getStringValue ("down_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT], getStringValue ("left_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT], getStringValue ("right_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_UP], getStringValue ("up_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_WORKSPACE], getStringValue ("add_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_ADD_ADJACENT_WORKSPACE], getStringValue ("add_adjacent_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_CLOSE_WINDOW], getStringValue ("close_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_CYCLE_WINDOWS], getStringValue ("cycle_windows_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_WORKSPACE], getStringValue ("del_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_DEL_ACTIVE_WORKSPACE], getStringValue ("del_active_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_DOWN_WORKSPACE], getStringValue ("down_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_HORIZ], getStringValue ("fill_horiz_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_VERT], getStringValue ("fill_vert_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_FILL_WINDOW], getStringValue ("fill_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_HIDE_WINDOW], getStringValue ("hide_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_LEFT_WORKSPACE], getStringValue ("left_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_LOWER_WINDOW], getStringValue ("lower_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE], getStringValue ("move_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_HORIZ], getStringValue ("maximize_horiz_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_VERT], getStringValue ("maximize_vert_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MAXIMIZE_WINDOW], getStringValue ("maximize_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_DOWN_WORKSPACE], getStringValue ("move_window_down_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_LEFT_WORKSPACE], getStringValue ("move_window_left_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_NEXT_WORKSPACE], getStringValue ("move_window_next_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_PREV_WORKSPACE], getStringValue ("move_window_prev_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_RIGHT_WORKSPACE], getStringValue ("move_window_right_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_UP_WORKSPACE], getStringValue ("move_window_up_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_NEXT_WORKSPACE], getStringValue ("next_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_POPUP_MENU], getStringValue ("popup_menu_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_PREV_WORKSPACE], getStringValue ("prev_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RAISE_WINDOW], getStringValue ("raise_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RESIZE], getStringValue ("resize_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_RIGHT_WORKSPACE], getStringValue ("right_workspace_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHADE_WINDOW], getStringValue ("shade_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_SHOW_DESKTOP], getStringValue("show_desktop_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_STICK_WINDOW], getStringValue ("stick_window_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_ABOVE], getStringValue ("above_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_TOGGLE_FULLSCREEN], getStringValue ("fullscreen_key", rc));
-    parseKeyString (dpy, &screen_info->params->keys[KEY_UP_WORKSPACE], getStringValue ("up_workspace_key", rc));
+    parseShortcut (screen_info, KEY_CANCEL, "cancel_key", shortcuts);
+    parseShortcut (screen_info, KEY_DOWN, "down_key", shortcuts);
+    parseShortcut (screen_info, KEY_LEFT, "left_key", shortcuts);
+    parseShortcut (screen_info, KEY_RIGHT, "right_key", shortcuts);
+    parseShortcut (screen_info, KEY_UP, "up_key", shortcuts);
+    parseShortcut (screen_info, KEY_ADD_WORKSPACE, "add_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_ADD_ADJACENT_WORKSPACE, "add_adjacent_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_CLOSE_WINDOW, "close_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_CYCLE_WINDOWS, "cycle_windows_key", shortcuts);
+    parseShortcut (screen_info, KEY_DEL_WORKSPACE, "del_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_DEL_ACTIVE_WORKSPACE, "del_active_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_DOWN_WORKSPACE, "down_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_FILL_HORIZ, "fill_horiz_key", shortcuts);
+    parseShortcut (screen_info, KEY_FILL_VERT, "fill_vert_key", shortcuts);
+    parseShortcut (screen_info, KEY_FILL_WINDOW, "fill_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_HIDE_WINDOW, "hide_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_LEFT_WORKSPACE, "left_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_LOWER_WINDOW, "lower_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE, "move_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_MAXIMIZE_HORIZ, "maximize_horiz_key", shortcuts);
+    parseShortcut (screen_info, KEY_MAXIMIZE_VERT, "maximize_vert_key", shortcuts);
+    parseShortcut (screen_info, KEY_MAXIMIZE_WINDOW, "maximize_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_DOWN_WORKSPACE, "move_window_down_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_LEFT_WORKSPACE, "move_window_left_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_NEXT_WORKSPACE, "move_window_next_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_PREV_WORKSPACE, "move_window_prev_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_RIGHT_WORKSPACE, "move_window_right_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_UP_WORKSPACE, "move_window_up_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_NEXT_WORKSPACE, "next_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_POPUP_MENU, "popup_menu_key", shortcuts);
+    parseShortcut (screen_info, KEY_PREV_WORKSPACE, "prev_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_RAISE_WINDOW, "raise_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_RESIZE, "resize_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_RIGHT_WORKSPACE, "right_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_SHADE_WINDOW, "shade_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_SHOW_DESKTOP, "show_desktop_key", shortcuts);
+    parseShortcut (screen_info, KEY_STICK_WINDOW, "stick_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_TOGGLE_ABOVE, "above_key", shortcuts);
+    parseShortcut (screen_info, KEY_TOGGLE_FULLSCREEN, "fullscreen_key", shortcuts);
+    parseShortcut (screen_info, KEY_UP_WORKSPACE, "up_workspace_key", shortcuts);
 
     for (i = 0; i < 12; i++)
     {
         g_snprintf(keyname, sizeof (keyname), "move_window_workspace_%d_key", i + 1);
-        parseKeyString (dpy, &screen_info->params->keys[KEY_MOVE_WORKSPACE_1 + i], getStringValue (keyname, rc));
+        parseShortcut (screen_info, KEY_MOVE_WORKSPACE_1 + i, keyname, shortcuts);
 
         g_snprintf(keyname, sizeof (keyname), "workspace_%d_key", i + 1);
-        parseKeyString (dpy, &screen_info->params->keys[KEY_WORKSPACE_1 + i], getStringValue (keyname, rc));
+        parseShortcut (screen_info, KEY_WORKSPACE_1 + i, keyname, shortcuts);
     }
+
+    xfce_shortcuts_free (shortcuts);
 
     myScreenUngrabKeys (screen_info);
     myScreenGrabKeys (screen_info);
 
-    return TRUE;
+    return;
 }
 
 gboolean
@@ -677,7 +652,6 @@ loadSettings (ScreenInfo *screen_info)
         {"frame_opacity", NULL, G_TYPE_INT, TRUE},
         {"full_width_title", NULL, G_TYPE_BOOLEAN, TRUE},
         {"inactive_opacity", NULL, G_TYPE_INT, TRUE},
-        {"keytheme", NULL, G_TYPE_STRING, TRUE},
         {"margin_bottom", NULL, G_TYPE_INT, FALSE},
         {"margin_left", NULL, G_TYPE_INT, FALSE},
         {"margin_right", NULL, G_TYPE_INT, FALSE},
@@ -802,11 +776,7 @@ loadSettings (ScreenInfo *screen_info)
     loadTheme (screen_info, rc);
     update_grabs (screen_info);
 
-    if (!loadKeyBindings (screen_info, rc))
-    {
-        freeRc (rc);
-        return FALSE;
-    }
+    loadKeyBindings (screen_info);
 
     screen_info->params->borderless_maximize =
         getBoolValue ("borderless_maximize", rc);
@@ -978,6 +948,20 @@ unloadTheme (ScreenInfo *screen_info)
     }
 }
 
+
+static void
+unloadKeyBindings (ScreenInfo *screen_info)
+{
+    int i;
+
+    g_return_if_fail (screen_info);
+
+    for (i = 0; i < KEY_COUNT; ++i)
+    {
+        g_free (screen_info->params->keys[i].internal_name);
+    }
+}
+
 static void
 unloadSettings (ScreenInfo *screen_info)
 {
@@ -986,6 +970,7 @@ unloadSettings (ScreenInfo *screen_info)
     TRACE ("entering unloadSettings");
 
     unloadTheme (screen_info);
+    unloadKeyBindings (screen_info);
 }
 
 static gboolean
@@ -1035,6 +1020,7 @@ reloadSettings (DisplayInfo *display_info, int mask)
 gboolean
 initSettings (ScreenInfo *screen_info)
 {
+    GdkKeymap *keymap;
     DisplayInfo *display_info;
     char **names;
     long val;
@@ -1050,17 +1036,24 @@ initSettings (ScreenInfo *screen_info)
         return FALSE;
     }
 
-
     display_info = screen_info->display_info;
     names = NULL;
     val = 0;
     i = 0;
 
-    screen_info->xfwm4_channel = xfconf_channel_new(CHANNEL1);
-    screen_info->keys_channel = xfconf_channel_new(CHANNEL2);
+    screen_info->xfwm4_channel = xfconf_channel_new(CHANNEL_XFWM);
+    g_signal_connect (screen_info->xfwm4_channel, "property-changed",
+                      G_CALLBACK (cb_xfwm4_channel_property_changed), screen_info);
 
-    g_signal_connect (G_OBJECT(screen_info->xfwm4_channel), "property-changed", (GCallback)cb_xfwm4_channel_property_changed, screen_info);
+    keymap = gdk_keymap_get_default ();
+    g_signal_connect (keymap, "keys-changed",
+                      G_CALLBACK (cb_keys_changed), screen_info);
 
+    screen_info->shortcuts_provider = xfce_shortcuts_provider_new ("xfwm4");
+    g_signal_connect (screen_info->shortcuts_provider, "shortcut-added",
+                      G_CALLBACK (cb_shortcut_added), screen_info);
+    g_signal_connect (screen_info->shortcuts_provider, "shortcut-removed",
+                      G_CALLBACK (cb_shortcut_removed), screen_info);
 
     if (!loadSettings (screen_info))
     {
@@ -1128,11 +1121,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
                 }
-                else if (!strcmp (name, "keytheme"))
-                {
-                    reloadScreenSettings (screen_info, NO_UPDATE_FLAG);
-                }
-                else if (!strcmp (name, "easy_click"))
+                 else if (!strcmp (name, "easy_click"))
                 {
                     reloadScreenSettings (screen_info, UPDATE_BUTTON_GRABS);
                 }
@@ -1359,4 +1348,116 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 break;
         }
     }
+}
+
+static void
+cb_keys_changed (GdkKeymap *keymap, ScreenInfo *screen_info)
+{
+    initModifiers (myScreenGetXDisplay (screen_info));
+    reloadSettings (screen_info->display_info, UPDATE_BUTTON_GRABS);
+}
+
+static void
+cb_shortcut_added (XfceShortcutsProvider *provider, const gchar *shortcut,
+                   ScreenInfo *screen_info)
+{
+    XfceShortcut *sc;
+    Display *dpy;
+    int i;
+
+    g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider));
+    g_return_if_fail (shortcut);
+    g_return_if_fail (screen_info);
+
+    sc = xfce_shortcuts_provider_get_shortcut (provider, shortcut);
+
+    if (sc == NULL)
+    {
+        return;
+    }
+
+    dpy = myScreenGetXDisplay (screen_info);
+
+    for (i = 0; i < KEY_COUNT; ++i)
+    {
+        if (g_str_equal (screen_info->params->keys[i].internal_name, sc->command))
+        {
+            parseKeyString (dpy, &screen_info->params->keys[i], shortcut);
+
+            myScreenUngrabKeys (screen_info);
+            myScreenGrabKeys (screen_info);
+            break;
+        }
+    }
+
+    xfce_shortcut_free (sc);
+}
+
+static void
+cb_shortcut_removed (XfceShortcutsProvider *provider, const gchar *shortcut,
+                     ScreenInfo *screen_info)
+{
+    MyKey key;
+    Display *dpy;
+    int i;
+
+    g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (provider));
+    g_return_if_fail (screen_info);
+    g_return_if_fail (shortcut);
+
+    dpy = myScreenGetXDisplay (screen_info);
+
+    parseKeyString (dpy, &key, shortcut);
+
+    for (i = 0; i < KEY_COUNT; ++i)
+    {
+        if (screen_info->params->keys[i].keycode == key.keycode &&
+            screen_info->params->keys[i].modifier == key.modifier)
+        {
+            screen_info->params->keys[i].keycode = 0;
+            screen_info->params->keys[i].modifier = 0;
+
+            myScreenUngrabKeys (screen_info);
+            myScreenGrabKeys (screen_info);
+            break;
+        }
+    }
+}
+
+static void
+parseShortcut (ScreenInfo *screen_info, int index, const gchar *name,
+               GList *shortcuts)
+{
+    Display *dpy;
+    const gchar *shortcut;
+
+    g_return_if_fail (screen_info);
+    g_return_if_fail (index >= 0 && index < KEY_COUNT);
+
+    dpy = myScreenGetXDisplay (screen_info);
+    shortcut = getShortcut (name, shortcuts);
+    parseKeyString (dpy, &screen_info->params->keys[index], shortcut);
+
+    screen_info->params->keys[index].internal_name = g_strdup (name);
+}
+
+static const gchar *
+getShortcut (const gchar *name, GList *shortcuts)
+{
+    XfceShortcut *shortcut;
+    GList *iter;
+    const gchar *result = NULL;
+
+    for (iter = shortcuts; iter != NULL; iter = g_list_next (iter))
+    {
+        shortcut = iter->data;
+
+        if (g_str_equal (shortcut->command, name))
+        {
+            result = shortcut->shortcut;
+            break;
+        }
+    }
+
+    return result;
 }

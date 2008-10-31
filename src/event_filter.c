@@ -127,9 +127,6 @@ default_event_filter (XEvent * xevent, gpointer data)
         case ColormapNotify:
             TRACE ("Unhandled ColormapNotify event");
             break;
-        case MappingNotify:
-            TRACE ("Unhandled MappingNotify event");
-            break;
         default:
             TRACE ("Unhandled Unknown event");
             break;

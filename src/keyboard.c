@@ -17,7 +17,8 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2008 Olivier Fourdan
+        xfwm4    - (c) 2002-2008 Olivier Fourdan,
+                       2008 Jannis Pohlmann
 
  */
 
@@ -27,11 +28,28 @@
 
 #include <X11/Xlib.h>
 #include <glib.h>
+#include <gtk/gtk.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <libxfce4util/libxfce4util.h>
 #include "keyboard.h"
+
+#define MODIFIER_MASK (GDK_SHIFT_MASK | \
+                       GDK_CONTROL_MASK | \
+                       GDK_MOD1_MASK | \
+                       GDK_MOD2_MASK | \
+                       GDK_MOD3_MASK | \
+                       GDK_MOD4_MASK | \
+                       GDK_MOD5_MASK)
+
+#define IGNORE_MASK (0x2000 | \
+                     GDK_LOCK_MASK | \
+                     GDK_HYPER_MASK | \
+                     GDK_SUPER_MASK | \
+                     GDK_META_MASK | \
+                     NumLockMask | \
+                     ScrollLockMask)
 
 unsigned int AltMask;
 unsigned int MetaMask;
@@ -40,92 +58,43 @@ unsigned int ScrollLockMask;
 unsigned int SuperMask;
 unsigned int HyperMask;
 
-static gboolean
-getKeycode (Display *dpy, const char *str, KeyCode *keycode)
+static KeyCode
+getKeycode (Display *dpy, const char *str)
 {
-    unsigned int value;
-    KeySym keysym;
+    GdkModifierType keysym;
 
-    keysym = XStringToKeysym (str);
-    if (keysym == NoSymbol)
-    {
-        if (sscanf (str, "0x%X", (unsigned int *) &value) != 1)
-        {
-            *keycode = 0;
-            return FALSE;
-        }
-        *keycode = (KeyCode) value;
-    }
-    else
-    {
-        *keycode = XKeysymToKeycode (dpy, keysym);
-    }
-    return TRUE;
+    gtk_accelerator_parse (str, &keysym, NULL);
+    return XKeysymToKeycode (dpy, keysym);
 }
 
-int
+guint
 getModifierMap (const char *str)
 {
-    gchar *tmp;
-    int map;
+    guint map;
 
-    tmp = g_ascii_strdown ((gchar *) str, strlen (str));
-    map = 0;
+    gtk_accelerator_parse (str, NULL, &map);
 
-    if (strstr (tmp, "shift"))
-    {
-        map |= ShiftMask;
-    }
-    if (strstr (tmp, "control"))
-    {
-        map |= ControlMask;
-    }
-    if (strstr (tmp, "alt"))
-    {
-        map |= AltMask;
-    }
-    if (strstr (tmp, "meta"))
-    {
-        map |= MetaMask;
-    }
-    if (strstr (tmp, "super"))
+    if ((map & GDK_SUPER_MASK) == GDK_SUPER_MASK)
     {
         map |= SuperMask;
     }
-    if (strstr (tmp, "hyper"))
+
+    if ((map & GDK_HYPER_MASK) == GDK_HYPER_MASK)
     {
         map |= HyperMask;
     }
-    if (strstr (tmp, "mod1"))
-    {
-        map |= Mod1Mask;
-    }
-    if (strstr (tmp, "mod2"))
-    {
-        map |= Mod2Mask;
-    }
-    if (strstr (tmp, "mod3"))
-    {
-        map |= Mod3Mask;
-    }
-    if (strstr (tmp, "mod4"))
-    {
-        map |= Mod4Mask;
-    }
-    if (strstr (tmp, "mod5"))
-    {
-        map |= Mod5Mask;
-    }
-    g_free (tmp);
 
-    return map;
+    if ((map & GDK_META_MASK) == GDK_META_MASK)
+    {
+        map |= MetaMask;
+    }
+
+    return map & MODIFIER_MASK & ~IGNORE_MASK;
 }
 
 void
 parseKeyString (Display * dpy, MyKey * key, const char *str)
 {
-    char *k;
-
     g_return_if_fail (key != NULL);
 
     TRACE ("entering parseKeyString");
@@ -134,25 +103,20 @@ parseKeyString (Display * dpy, MyKey * key, const char *str)
     key->keycode = 0;
     key->modifier = 0;
 
-    g_return_if_fail (str != NULL);
+    if (str == NULL)
+    {
+        return;
+    }
 
     if (!g_ascii_strcasecmp (str, "none"))
     {
         return;
     }
 
-    k = strrchr (str, '+');
-    if (k)
-    {
-        /* There is a modifier */
-        getKeycode (dpy, ++k, &key->keycode);
-        key->modifier = getModifierMap (str);
-    }
-    else
-    {
-        getKeycode (dpy, str, &key->keycode);
-        key->modifier = 0;
-    }
+    key->keycode = getKeycode (dpy, str);
+    key->modifier = getModifierMap (str);
+
+    TRACE ("keycode = 0x%x, modifier = 0x%x", key->keycode, key->modifier);
 }
 
 gboolean

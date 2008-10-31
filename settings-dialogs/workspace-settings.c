@@ -434,6 +434,9 @@ main(int argc, gchar **argv)
             gtk_widget_reparent (plug_child, plug);
             gtk_widget_show (plug_child);
 
+            /* Stop startup notification */
+            gdk_notify_startup_complete ();
+
             /* Enter main loop */
             gtk_main ();
         }

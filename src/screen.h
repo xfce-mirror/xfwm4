@@ -30,6 +30,8 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <xfconf/xfconf.h>
+#include <libxfce4kbd-private/xfce-shortcuts-provider.h>
+
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #define SN_API_NOT_YET_FROZEN
@@ -117,7 +119,9 @@ struct _ScreenInfo
 
     /* xfconf */
     XfconfChannel *xfwm4_channel;
-    XfconfChannel *keys_channel;
+
+    /* Shortcuts */
+    XfceShortcutsProvider *shortcuts_provider;
 
     /* Per screen parameters */
     XfwmParams *params;

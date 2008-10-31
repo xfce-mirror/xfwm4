@@ -10,11 +10,8 @@ mcs-plugin/xfce-wmtweaks-settings.desktop.in
 mcs-plugin/xfce-workspaces-settings.desktop.in
 mcs-plugin/xfwm4_plugin.c
 mcs-plugin/xfwm4_shortcuteditor.c
-settings-dialogs/frap-shortcuts.c
-settings-dialogs/frap-shortcuts-dialog.c
 settings-dialogs/tweaks-settings.c
 settings-dialogs/workspace-settings.c
-settings-dialogs/xfce-shortcuts-provider.c
 settings-dialogs/xfce-wm-settings.desktop.in
 settings-dialogs/xfce-wmtweaks-settings.desktop.in
 settings-dialogs/xfce-workspaces-settings.desktop.in

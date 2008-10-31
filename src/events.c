@@ -2215,31 +2215,6 @@ handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
 }
 
 static eventFilterStatus
-handleMappingNotify (DisplayInfo *display_info, XMappingEvent * ev)
-{
-    TRACE ("entering handleMappingNotify");
-
-    /* Refreshes the stored modifier and keymap information */
-    XRefreshKeyboardMapping (ev);
-
-    /* Update internal modifiers masks if necessary */
-    if (ev->request == MappingModifier)
-    {
-        TRACE ("handleMappingNotify: modifiers mapping has changed");
-        initModifiers (display_info->dpy);
-    }
-
-    /* Regrab all keys if the notify is for keyboard (ie not pointer) */
-    if (ev->request != MappingPointer)
-    {
-        TRACE ("handleMappingNotify: Reload settings");
-        reloadSettings (display_info, UPDATE_BUTTON_GRABS);
-    }
-
-    return EVENT_FILTER_PASS;
-}
-
-static eventFilterStatus
 handleReparentNotify (DisplayInfo *display_info, XReparentEvent * ev)
 {
     TRACE ("entering handleReparentNotify, 0x%lx reparented in 0x%lx", ev->window, ev->parent);
@@ -2340,9 +2315,6 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
             break;
         case ColormapNotify:
             handleColormapNotify (display_info, (XColormapEvent *) ev);
-            break;
-        case MappingNotify:
-            status = handleMappingNotify (display_info, (XMappingEvent *) ev);
             break;
         case ReparentNotify:
             status = handleReparentNotify (display_info, (XReparentEvent *) ev);

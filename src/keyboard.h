@@ -35,6 +35,7 @@ struct _MyKey
 {
     KeyCode keycode;
     int modifier;
+    gchar *internal_name;
 };
 
 extern unsigned int AltMask;
@@ -44,7 +45,7 @@ extern unsigned int ScrollLockMask;
 extern unsigned int SuperMask;
 extern unsigned int HyperMask;
 
-int                      getModifierMap                         (const char *);
+guint                    getModifierMap                         (const char *);
 void                     parseKeyString                         (Display *,
                                                                  MyKey *,
                                                                  const char *);
