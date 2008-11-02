@@ -333,8 +333,8 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                             "/general/repeat_urgent_blink",
                             G_TYPE_BOOLEAN,
                             (GObject *)repeat_urgent_blink, "active");
-    gtk_widget_set_sensitive (repeat_urgent_blink, 
-	                          gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (urgent_blink)));
+    gtk_widget_set_sensitive (repeat_urgent_blink,
+                              gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (urgent_blink)));
 
     /* Workspaces tab */
     xfconf_g_property_bind (xfwm4_channel,

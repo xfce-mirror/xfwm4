@@ -19,6 +19,7 @@
         oroborus - (c) 2001 Ken Lynch
         xfwm4    - (c) 2002-2008 Olivier Fourdan,
                        2008 Jannis Pohlmann
+
  */
 
 #ifdef HAVE_CONFIG_H
