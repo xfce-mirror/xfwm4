@@ -693,6 +693,7 @@ loadSettings (ScreenInfo *screen_info)
         {"title_vertical_offset_inactive", NULL, G_TYPE_INT, TRUE},
         {"toggle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
         {"unredirect_overlays", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"urgent_blink", NULL, G_TYPE_BOOLEAN, TRUE},
         {"use_compositing", NULL, G_TYPE_BOOLEAN, TRUE},
         {"workspace_count", NULL, G_TYPE_INT, TRUE},
         {"wrap_cycle", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -812,6 +813,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("raise_with_any_button", rc);
     screen_info->params->repeat_urgent_blink =
         getBoolValue ("repeat_urgent_blink", rc);
+    screen_info->params->urgent_blink =
+        getBoolValue ("urgent_blink", rc);
     screen_info->params->restore_on_move =
         getBoolValue ("restore_on_move", rc);
     screen_info->params->frame_opacity =
@@ -1238,6 +1241,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "repeat_urgent_blink"))
                 {
                     screen_info->params->repeat_urgent_blink = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "urgent_blink"))
+                {
+                    screen_info->params->urgent_blink = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "snap_to_border"))
                 {

@@ -1,6 +1,7 @@
 /*
  *  Copyright (c) 2008 Stephan Arts <stephan@xfce.org>
  *  Copyright (c) 2008 Jannis Pohlmann <jannis@xfce.org>
+ *  Copyright (c) 2008 Olivier Fourdan <olivier@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -128,6 +129,13 @@ cb_activate_placement_mouse_radio_toggled (GtkToggleButton *toggle, XfconfChanne
 }
 
 static void
+cb_urgent_blink_button_toggled (GtkToggleButton *toggle, GtkWidget *repeat_urgent_blink)
+{
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (repeat_urgent_blink), FALSE);
+    gtk_widget_set_sensitive (repeat_urgent_blink, gtk_toggle_button_get_active (toggle));
+}
+
+static void
 wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
 {
     GtkWidget *vbox;
@@ -150,7 +158,6 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     /* Focus tab */
     GtkWidget *prevent_focus_stealing_check = glade_xml_get_widget (gxml, "prevent_focus_stealing_check");
     GtkWidget *focus_hint_check = glade_xml_get_widget (gxml, "focus_hint_check");
-    GtkWidget *repeat_urgent_blink = glade_xml_get_widget (gxml, "repeat_urgent_blink");
 
     GtkWidget *activate_action_bring_option = glade_xml_get_widget (gxml, "activate_action_bring_option");
     GtkWidget *activate_action_switch_option = glade_xml_get_widget (gxml, "activate_action_switch_option");
@@ -162,6 +169,8 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     GtkWidget *borderless_maximize_check = glade_xml_get_widget (gxml, "borderless_maximize_check");
     GtkWidget *restore_on_move_check = glade_xml_get_widget (gxml, "restore_on_move_check");
     GtkWidget *snap_resist_check = glade_xml_get_widget (gxml, "snap_resist_check");
+    GtkWidget *urgent_blink = glade_xml_get_widget (gxml, "urgent_blink");
+    GtkWidget *repeat_urgent_blink = glade_xml_get_widget (gxml, "repeat_urgent_blink");
 
     /* Workspaces tab */
     GtkWidget *scroll_workspaces_check = glade_xml_get_widget (gxml, "scroll_workspaces_check");
@@ -265,6 +274,10 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                       "changed",
                       G_CALLBACK (cb_easy_click_combo_box_changed),
                       xfwm4_channel);
+    g_signal_connect (G_OBJECT (urgent_blink),
+                      "toggled",
+                      G_CALLBACK (cb_urgent_blink_button_toggled),
+                      repeat_urgent_blink);
 
     /* Bind easy properties */
     /* Cycling tab */
@@ -294,10 +307,6 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                             "/general/focus_hint",
                             G_TYPE_BOOLEAN,
                             (GObject *)focus_hint_check, "active");
-    xfconf_g_property_bind (xfwm4_channel,
-                            "/general/repeat_urgent_blink",
-                            G_TYPE_BOOLEAN,
-                            (GObject *)repeat_urgent_blink, "active");
 
     /* Accessibility tab */
     xfconf_g_property_bind (xfwm4_channel,
@@ -316,6 +325,16 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                             "/general/snap_resist",
                             G_TYPE_BOOLEAN,
                             (GObject *)snap_resist_check, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/urgent_blink",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)urgent_blink, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/repeat_urgent_blink",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)repeat_urgent_blink, "active");
+    gtk_widget_set_sensitive (repeat_urgent_blink, 
+	                          gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (urgent_blink)));
 
     /* Workspaces tab */
     xfconf_g_property_bind (xfwm4_channel,

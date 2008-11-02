@@ -7,6 +7,7 @@
 - Rework the window menu to improve consistency with libwnck menu (Bug #4531).
 - Simplify management of transients.
 - Add support for keyboard shortcuts (Bug #4492).
+- Add new option do disable blinking of urgent windows.
 
 4.5.91 (Xfce 4.6beta1)
 ======================

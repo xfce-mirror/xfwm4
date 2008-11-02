@@ -102,7 +102,7 @@
 #endif
 
 #ifndef CLIENT_BLINK_TIMEOUT
-#define CLIENT_BLINK_TIMEOUT            200  /* ms */
+#define CLIENT_BLINK_TIMEOUT            500  /* ms */
 #endif
 
 #ifndef CLIENT_PING_TIMEOUT

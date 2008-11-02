@@ -353,31 +353,48 @@ urgent_cb (gpointer data)
 
     if (c != clientGetFocus ())
     {
-        c->blink_iterations++;
-        if (c->blink_iterations < (2 * MAX_BLINK_ITERATIONS + 1))
-        {
-            FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
-            frameQueueDraw (c, FALSE);
-        }
-        else if (c->blink_iterations > (8 * MAX_BLINK_ITERATIONS))
-        {
-            /*
-             * A bit of hack. Instead of removing the callback
-             * if "repeat_urgent_blink" is unset, we simply reset
-             * the number of iterations at a higher value so that
-             * it does not blink.
-             * This way, if the user changes the setting later on,
-             * we don't have to go through all windows to reinstall
-             * the callbacks...
-             */
-            if (!screen_info->params->repeat_urgent_blink)
-            {
-                c->blink_iterations = 2 * MAX_BLINK_ITERATIONS;
-            }
-            else
+		/* 
+		 * If we do not blink on urgency, check if the window was last
+		 * drawn focused and redraw it unfocused.
+		 * This is for th case when the tuser changes the settings
+		 * in between two redraws.
+		 */
+        if (!screen_info->params->urgent_blink)
+		{
+			if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE))
+		    {
+                FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
+                frameQueueDraw (c, FALSE);
+		    }
+
+            if (c->blink_iterations)
             {
                 c->blink_iterations = 0;
             }
+			return TRUE;
+		}
+		/*
+		 * If we blink on urgency, check if we've not reach the number
+		 * of iterations and if not, simply change the status and redraw
+		 */
+        if (c->blink_iterations < (2 * MAX_BLINK_ITERATIONS))
+		{
+            c->blink_iterations++;
+            FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
+            frameQueueDraw (c, FALSE);
+			return TRUE;
+		}
+		/*
+		 * If we reached the max number of iterations, check if we
+		 * repeat. If repeat_urgent_blink is set, redraw the frame and
+		 * restart counting from 1
+		 */
+        if (screen_info->params->repeat_urgent_blink)
+        {
+            FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
+            frameQueueDraw (c, FALSE);
+            c->blink_iterations = 1;
+			return TRUE;
         }
     }
     else if (c->blink_iterations)

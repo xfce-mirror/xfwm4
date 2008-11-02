@@ -1,3 +1,10 @@
+2008-11-02  olivier
+
+	* settings-dialogs/xfwm4-tweaks-dialog.glade, 
+	  settings-dialogs/tweaks-settings.c, src/settings.c, src/settings.h, 
+	  src/client.c, src/client.h, defaults/defaults: Add new option do 
+	  disable blinking of urgent windows.
+
 2008-10-30  olivier
 
 	* settings-dialogs/xfwm4-settings.c: Fix compiler warnings
