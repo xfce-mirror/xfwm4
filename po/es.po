@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-31 13:45+0100\n"
-"PO-Revision-Date: 2008-10-20 20:05+0100\n"
+"PO-Revision-Date: 2008-11-02 18:55+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish, http://i18n.xfce.org/wiki/team_es\n"
 "MIME-Version: 1.0\n"
@@ -30,31 +30,28 @@ msgstr "Advertencia"
 
 #: ../mcs-plugin/margins.c:130
 msgid "Workspace Margins"
-msgstr "Márgenes del Escritorio"
+msgstr "Márgenes del escritorio"
 
 #: ../mcs-plugin/margins.c:136
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Los bordes son áreas a los lados de la pantalla donde no se colocará ninguna "
-"ventana"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Los márgenes son áreas a los lados de la pantalla donde no se colocará ninguna ventana"
 
 #: ../mcs-plugin/margins.c:167
 msgid "Left :"
-msgstr "Izquierda :"
+msgstr "Izquierda:"
 
 #: ../mcs-plugin/margins.c:187
 msgid "Right :"
-msgstr "Derecha :"
+msgstr "Derecha:"
 
 #: ../mcs-plugin/margins.c:207
 msgid "Top :"
-msgstr "Arriba :"
+msgstr "Arriba:"
 
 #: ../mcs-plugin/margins.c:227
 msgid "Bottom :"
-msgstr "Abajo :"
+msgstr "Abajo:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:471
 #: ../settings-dialogs/tweaks-settings.c:42
@@ -62,27 +59,24 @@ msgid "None"
 msgstr "Ninguno"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "_Traer ventana al área de trabajo actual"
+msgstr "Traer ventana al área de trabajo actual"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Cambiar al área de trabajo de la _ventana"
+msgstr "Cambiar al área de trabajo de la ventana"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Do nothing"
-msgstr "No hacer _nada"
+msgstr "No hacer nada"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "Situar ventana bajo el ratón"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "Situar ventana en el centro"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -92,103 +86,81 @@ msgid "Window Manager Tweaks"
 msgstr "Ajustes del gestor de ventanas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
-#, fuzzy
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
-"_Omitir ventanas que tienen activas las\n"
-"propiedades \"omitir selector de tareas\" y \"omitir barra de tareas\""
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr "Omitir ventanas que tienen activas las propiedades \"omitir selector de áreas de trabajo\" y \"omitir barra de tareas\""
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
-#, fuzzy
 msgid "Include hidden (i.e. iconified) windows"
-msgstr "_Incluir ventanas ocultas (i.e. miniaturizadas)"
+msgstr "Incluir ventanas ocultas (i.e. miniaturizadas)"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:524
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "_Recorrer cíclicamente las ventanas de todas las áreas de trabajo"
+msgstr "Recorrer cíclicamente las ventanas de todas las áreas de trabajo"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:529
-#, fuzzy
 msgid "Cycling"
-msgstr "Recorrer cícl_icamente"
+msgstr "Recorrer cíclicamente"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:541
-#, fuzzy
 msgid "Activate focus stealing prevention"
-msgstr "Activar la prevención de pérdida de _foco"
+msgstr "Activar la prevención de pérdida de foco"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:547
-#, fuzzy
 msgid "Honor the standard ICCCM focus hint"
-msgstr "Respetar e_stándar ICCCM de obtención de foco"
+msgstr "Respetar el estándar ICCCM de obtención de foco"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "When a window raises itself:"
 msgstr "Cuando una ventana aparece por sí misma:"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
-#, fuzzy
+#: ../mcs-plugin/wmtweaks_plugin.c:558
+#: ../mcs-plugin/xfwm4_plugin.c:1752
 msgid "Focus"
-msgstr "_Foco"
+msgstr "Foco"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:570
-#, fuzzy
 msgid "Key used to grab and move windows"
-msgstr "Tecla utilizada para _desplazar ventanas:"
+msgstr "Tecla utilizada para coger y mover ventanas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:576
-#, fuzzy
 msgid "Raise windows when any mouse button is pressed"
-msgstr "_Activar ventanas al pulsar cualquier botón del ratón"
+msgstr "Traer ventanas al frente al pulsar cualquier botón del ratón"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:583
-#, fuzzy
 msgid "Hide frame of windows when maximized"
-msgstr "Ocultar _marco de ventanas al maximizar"
+msgstr "Ocultar marco de ventanas al maximizar"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:590
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr ""
-"Restaurar el _tamaño original de ventanas maximizadas al ser desplazadas"
+msgstr "Restaurar el tamaño original de ventanas maximizadas al ser movidas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:596
-#, fuzzy
 msgid "Use edge resistance instead of windows snapping"
-msgstr "Usar resistencia de _borde en lugar de atracción entre ventanas"
+msgstr "Usar resistencia de bordes en lugar de atracción entre ventanas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:601
-#, fuzzy
 msgid "Accessibility"
-msgstr "_Accesibilidad"
+msgstr "Accesibilidad"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:614
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "Cambiar de área de trabajo al usar la rueda del ratón sobre el escritorio"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:621
-#, fuzzy
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
-"_Recordar áreas de trabajo previas\n"
-"al cambiar mediante atajos de teclado"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "Recordar áreas de trabajo previas al cambiar mediante atajos de teclado"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:628
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
-"Cambiar de área de trabajo dependiendo de la _disposición real de escritorio"
+msgstr "Cambiar de área de trabajo dependiendo de la distribución real del escritorio"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:635
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Desplazamiento _cíclico entre áreas de trabajo"
+msgstr "Desplazamiento cíclico entre áreas de trabajo"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:640 ../mcs-plugin/workspaces.c:519
+#: ../mcs-plugin/wmtweaks_plugin.c:640
+#: ../mcs-plugin/workspaces.c:519
 #: ../mcs-plugin/workspaces_plugin.c:163
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -196,115 +168,102 @@ msgid "Workspaces"
 msgstr "Áreas de trabajo"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:652
-#, fuzzy
 msgid "Minimum size of windows to trigger smart placement"
-msgstr "Tamaño _mínimo de ventana para activar posicionamiento inteligente"
+msgstr "Tamaño mínimo de ventana para activar posicionamiento inteligente"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:653
-#, fuzzy
 msgid "Size|Small"
 msgstr "Pequeño"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:653
-#, fuzzy
 msgid "Size|Large"
-msgstr "<i>Grande</i>"
+msgstr "Grande"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "Tamaño _mínimo de ventana para activar posicionamiento inteligente"
+msgstr "Posición predeterminada de ventanas sin posicionamiento inteligente"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
-#, fuzzy
 msgid "Placement"
-msgstr "_Posicionamiento"
+msgstr "Posicionamiento"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:683
-#, fuzzy
 msgid "Enable display compositing"
-msgstr "_Activar composición de visualización"
+msgstr "Activar composición de visualización"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:697
-#, fuzzy
 msgid "Display full screen overlay windows directly"
-msgstr "Mostrar directamente superposición de ventanas a _pantalla completa"
+msgstr "Mostrar directamente superposición de ventanas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Mostar sombra bajo ventanas _empotrables"
+msgstr "Mostrar sombra bajo ventanas empotrables"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:709
-#, fuzzy
 msgid "Show shadows under regular windows"
-msgstr "Mostrar sombra bajo ventanas _normales"
+msgstr "Mostrar sombra bajo ventanas normales"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:715
-#, fuzzy
 msgid "Show shadows under popup windows"
-msgstr "Mostar sombras bajo ventanas _emergentes"
+msgstr "Mostrar sombras bajo ventanas emergentes"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:721
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Opaci_dad de la decoración de ventanas:"
+msgstr "Opacidad de la decoración de ventanas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
-#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
+#: ../mcs-plugin/wmtweaks_plugin.c:721
+#: ../mcs-plugin/wmtweaks_plugin.c:727
+#: ../mcs-plugin/wmtweaks_plugin.c:733
+#: ../mcs-plugin/wmtweaks_plugin.c:739
 #: ../mcs-plugin/wmtweaks_plugin.c:745
-#, fuzzy
 msgid "Transparent"
-msgstr "<i>Transparente</i>"
+msgstr "Transparente"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
-#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
+#: ../mcs-plugin/wmtweaks_plugin.c:722
+#: ../mcs-plugin/wmtweaks_plugin.c:728
+#: ../mcs-plugin/wmtweaks_plugin.c:734
+#: ../mcs-plugin/wmtweaks_plugin.c:740
 #: ../mcs-plugin/wmtweaks_plugin.c:746
-#, fuzzy
 msgid "Opaque"
-msgstr "<i>Opaco</i>"
+msgstr "Opaco"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:727
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Opacidad de ventanas _inactivas:"
+msgstr "Opacidad de ventanas inactivas"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:733
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "Opacidad de ventanas al des_plazarse:"
+msgstr "Opacidad de ventanas al desplazarse"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:739
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Opacidad de ventanas durante _redimensionado:"
+msgstr "Opacidad de ventanas durante redimensionado"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:745
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Opacidad de ventana_s emergentes:"
+msgstr "Opacidad de ventanas emergentes"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:750
-#, fuzzy
 msgid "Compositor"
-msgstr "C_ompositor"
+msgstr "Compositor"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:792
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
-msgstr "Gestor de Ventanas"
+msgstr "Ajustes del gestor de ventanas"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
+#: ../mcs-plugin/wmtweaks_plugin.c:914
+#: ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "Estas opciones no pueden funcionar con el gestor de ventanas actual (%s)"
 
 #: ../mcs-plugin/workspaces.c:332
 msgid "Change name"
 msgstr "Cambiar nombre"
 
-#: ../mcs-plugin/workspaces.c:341 ../mcs-plugin/xfwm4_shortcuteditor.c:484
+#: ../mcs-plugin/workspaces.c:341
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:484
 #: ../settings-dialogs/workspace-settings.c:72
 #: ../settings-dialogs/workspace-settings.c:87
 #: ../settings-dialogs/workspace-settings.c:148
@@ -313,38 +272,33 @@ msgid "Workspace %d"
 msgstr "Área de trabajo %d"
 
 #: ../mcs-plugin/workspaces.c:349
-#, fuzzy
 msgid "Name:"
-msgstr "_Nombre:"
+msgstr "Nombre:"
 
 #: ../mcs-plugin/workspaces.c:428
 msgid "Click on a workspace name to edit it"
 msgstr "Pinche en el nombre de escritorio para editarlo"
 
 #: ../mcs-plugin/workspaces.c:494
-#, fuzzy
 msgid "Number of workspaces:"
-msgstr "_Número de áreas de trabajo:"
+msgstr "Número de áreas de trabajo:"
 
 #: ../mcs-plugin/workspaces.c:530
-#, fuzzy
 msgid "Workspace names"
-msgstr "Nombre del área de trabajo"
+msgstr "Nombres de las áreas de trabajo"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:111
-#, fuzzy
 msgid "Button Label|Workspaces and Margins"
-msgstr "Escritorios y Márgenes"
+msgstr "Áreas de trabajo y márgenes"
 
 #: ../mcs-plugin/workspaces_plugin.c:145
 msgid "Workspaces and Margins"
-msgstr "Escritorios y Márgenes"
+msgstr "Escritorios y márgenes"
 
 #: ../mcs-plugin/workspaces_plugin.c:172
-#, fuzzy
 msgid "Margins"
-msgstr "<b>Márgenes</b>"
+msgstr "Márgenes"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
@@ -355,9 +309,8 @@ msgid "Xfce 4 Window Manager Settings"
 msgstr "Configuración del gestor de ventanas de Xfce 4"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Gestor de Ventanas"
+msgstr "Configuración avanzada"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
@@ -371,83 +324,96 @@ msgstr "Configuración de áreas de trabajo"
 msgid "Xfce 4 Workspaces Settings"
 msgstr "Configuración de áreas de trabajo de Xfce 4"
 
-#: ../mcs-plugin/xfwm4_plugin.c:68 ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../mcs-plugin/xfwm4_plugin.c:68
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
 msgstr "Menú"
 
-#: ../mcs-plugin/xfwm4_plugin.c:69 ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../mcs-plugin/xfwm4_plugin.c:69
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "Pegar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:70 ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../mcs-plugin/xfwm4_plugin.c:70
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Enrollar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:71 ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../mcs-plugin/xfwm4_plugin.c:71
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hide"
 msgstr "Ocultar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:72 ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../mcs-plugin/xfwm4_plugin.c:72
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:73 ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../mcs-plugin/xfwm4_plugin.c:73
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
 msgstr "Cerrar"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:372
+#: ../mcs-plugin/xfwm4_plugin.c:79
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:372
 #: ../settings-dialogs/xfwm4-settings.c:210
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Shade window"
 msgstr "Enrollar ventana"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:369
+#: ../mcs-plugin/xfwm4_plugin.c:80
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:369
 #: ../settings-dialogs/xfwm4-settings.c:211
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Hide window"
 msgstr "Ocultar ventana"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:368
+#: ../mcs-plugin/xfwm4_plugin.c:81
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:368
 #: ../settings-dialogs/xfwm4-settings.c:212
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Maximize window"
 msgstr "Maximizar ventana"
 
-#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:376
+#: ../mcs-plugin/xfwm4_plugin.c:82
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:376
 #: ../settings-dialogs/xfwm4-settings.c:213
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Fill window"
 msgstr "Completar ventana"
 
-#: ../mcs-plugin/xfwm4_plugin.c:83 ../settings-dialogs/xfwm4-settings.c:214
+#: ../mcs-plugin/xfwm4_plugin.c:83
+#: ../settings-dialogs/xfwm4-settings.c:214
 msgid "Nothing"
 msgstr "Nada"
 
-#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:361
+#: ../mcs-plugin/xfwm4_plugin.c:88
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:361
 #: ../settings-dialogs/xfwm4-settings.c:219
 #: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Left"
 msgstr "Izquierda"
 
-#: ../mcs-plugin/xfwm4_plugin.c:89 ../settings-dialogs/xfwm4-settings.c:220
+#: ../mcs-plugin/xfwm4_plugin.c:89
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Center"
 msgstr "Centro"
 
-#: ../mcs-plugin/xfwm4_plugin.c:90 ../mcs-plugin/xfwm4_shortcuteditor.c:362
+#: ../mcs-plugin/xfwm4_plugin.c:90
+#: ../mcs-plugin/xfwm4_shortcuteditor.c:362
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "Derecha"
 
 #: ../mcs-plugin/xfwm4_plugin.c:589
-#, fuzzy
 msgid "Click and drag buttons to change the layout"
-msgstr "Haga clic y arrastre botones para cambiar la disposición"
+msgstr "Haga clic y arrastre botones para cambiar la distribución"
 
 #: ../mcs-plugin/xfwm4_plugin.c:594
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
-msgstr "Activos"
+msgstr "Activa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:605
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
@@ -457,32 +423,30 @@ msgstr "Título"
 #: ../mcs-plugin/xfwm4_plugin.c:606
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title, it cannot be removed"
-msgstr "El título de ventana, no puede ser removido"
+msgstr "El título de ventana. No puede ser eliminado."
 
 #: ../mcs-plugin/xfwm4_plugin.c:618
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
-msgstr "Ocultos"
+msgstr "Oculta"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1391
 msgid "Font Selection Dialog"
-msgstr "Diálogo de Selección de Fuente"
+msgstr "Diálogo de selección de fuente"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1456
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
-msgstr "Gestor de Ventanas"
+msgstr "Gestor de ventanas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1496
-#, fuzzy
 msgid "Title font"
-msgstr "<b>Fuen_te del título</b>"
+msgstr "Fuente del título"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1505
-#, fuzzy
 msgid "Title Alignment"
-msgstr "<b>_Alineación de título</b>"
+msgstr "Alineación del título"
 
 #. XXX
 #: ../mcs-plugin/xfwm4_plugin.c:1507
@@ -490,216 +454,180 @@ msgid "Text alignment inside title bar :"
 msgstr "Alineado del texto dentro de la barra de título :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1513
-#, fuzzy
 msgid "Button layout"
-msgstr "<b>Disposición de botones</b>"
+msgstr "Distribución de botones"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1518
-#, fuzzy
 msgid "Style"
-msgstr "E_stilo"
+msgstr "Estilo"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1566
-#, fuzzy
 msgid "Window shortcuts"
-msgstr "<b>Ata_jos para ventanas</b>"
+msgstr "Atajos para ventanas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1580
-#, fuzzy
 msgid "Command"
-msgstr "Comando: %s"
+msgstr "Comando"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1586 ../settings-dialogs/xfwm4-settings.c:609
+#: ../mcs-plugin/xfwm4_plugin.c:1586
+#: ../settings-dialogs/xfwm4-settings.c:609
 msgid "Shortcut"
 msgstr "Atajo"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1603
-#, fuzzy
 msgid "Keyboard"
-msgstr "Te_clado"
+msgstr "Teclado"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1618
-#, fuzzy
 msgid "Focus model"
-msgstr "<b>Modelo de foco</b>"
+msgstr "Modelo de foco"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1622
-#, fuzzy
 msgid "Click to focus"
-msgstr "Cli_c para dar foco"
+msgstr "Clic para dar foco"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1632
-#, fuzzy
 msgid "Focus follows mouse"
-msgstr "El foco sigue al _ratón"
+msgstr "El foco sigue al ratón"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "_Tiempo de espera antes que la ventana obtenga el foco:"
+msgstr "Tiempo de espera antes que la ventana obtenga el foco"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
+#: ../mcs-plugin/xfwm4_plugin.c:1654
+#: ../mcs-plugin/xfwm4_plugin.c:1716
 msgid "Slow"
 msgstr "Lento"
 
-#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
+#: ../mcs-plugin/xfwm4_plugin.c:1661
+#: ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Fast"
 msgstr "Rápido"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1682
-#, fuzzy
 msgid "Automatically give focus to newly created windows"
-msgstr "Dar el foco automáticamente a las ventanas _nuevas"
+msgstr "Dar el foco automáticamente a las ventanas nuevas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1686
-#, fuzzy
 msgid "New window focus"
-msgstr "<b>Foco para nuevas ventanas</b>"
+msgstr "Foco para ventanas nuevas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1693
-#, fuzzy
 msgid "Raise on focus"
-msgstr "<b>Traer al frente al obtener foco</b>"
+msgstr "Traer al frente al obtener el foco"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1699
-#, fuzzy
 msgid "Automatically raise windows when they receive focus"
-msgstr "Traer al f_rente automáticamente las ventanas cuando obtengan el foco"
+msgstr "Traer al frente automáticamente las ventanas cuando obtengan el foco"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1709
-#, fuzzy
 msgid "Delay before raising focused window :"
-msgstr "Tiempo de espera _antes de traer al frente la ventana con el foco:"
+msgstr "Tiempo de espera antes de traer al frente la ventana con el foco:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1744
-#, fuzzy
 msgid "Raise window when clicking inside application window"
-msgstr "Traer al frente la ventana cuando se haga clic _dentro de ella"
+msgstr "Traer al frente la ventana cuando se haga clic dentro de ella"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1748
-#, fuzzy
 msgid "Raise on click"
-msgstr "<b>Traer al frente al hacer clic</b>"
+msgstr "Traer al frente al hacer clic"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1766
-#, fuzzy
 msgid "Windows snapping"
-msgstr "<b>Atracción de las ventanas</b>"
+msgstr "Atracción entre ventanas"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1771
-#, fuzzy
 msgid "Snap windows to screen border"
-msgstr "Pegar ventanas al _borde del escritorio"
+msgstr "Pegar ventanas al borde del escritorio"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1777
-#, fuzzy
 msgid "Snap windows to other windows"
-msgstr "Atraer _ventanas entre sí"
+msgstr "Atraer ventanas entre sí"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1788
-#, fuzzy
 msgid "Distance :"
-msgstr "Dis_tancia:"
+msgstr "Distancia:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1795
-#, fuzzy
 msgid "Distance|Small"
-msgstr "<i>Pequeña</i>"
+msgstr "Pequeña"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1802
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "<i>Ancho</i>"
+msgstr "Ancho"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1823
-#, fuzzy
 msgid "Wrap workspaces"
-msgstr "<b>Desplazamiento cíclico entre áreas de trabajo</b>"
+msgstr "Desplazamiento cíclico entre áreas de trabajo"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1829
-#, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Saltar a la siguiente área de trabajo cuando el _puntero llegue al borde de "
-"la pantalla"
+msgstr "Saltar a la siguiente área de trabajo cuando el puntero llegue al borde de la pantalla"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1837
-#, fuzzy
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Saltar a la siguiente área de trabajo al a_rrastrar una ventana fuera del "
-"área de trabajo actual"
+msgstr "Saltar a la siguiente área de trabajo al arrastrar una ventana fuera del área de trabajo actual"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1847
-#, fuzzy
 msgid "Edge Resistance :"
-msgstr "Resistencia en los _bordes:"
+msgstr "Resistencia en los bordes:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1854
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "<i>Pequeña</i>"
+msgstr "Pequeña"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1861
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "<i>Ancho</i>"
+msgstr "Ancho"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1883
-#, fuzzy
 msgid "Opaque move and resize"
-msgstr "<b>Desplazamiento y redimensionado de ventana</b>"
+msgstr "Desplazamiento y redimensionado opacos"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1888
-#, fuzzy
 msgid "Display content of windows when resizing"
-msgstr "Ocultar el contenido de las ventanas al _redimensionar"
+msgstr "Mostrar el contenido de las ventanas al redimensionar"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1894
-#, fuzzy
 msgid "Display content of windows when moving"
-msgstr "Ocultar contenido de ventana al _desplazar"
+msgstr "Ocultar contenido de ventana al desplazar"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1899
-#, fuzzy
 msgid "Double click action"
-msgstr "<b>_Acción al hacer doble clic</b>"
+msgstr "Acción al hacer doble clic"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1901
-#, fuzzy
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Acción a realizar cuando se haga doble clic en la barra de título"
+msgstr "Acción a realizar al hacer doble clic en la barra de título:"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1906
-#, fuzzy
 msgid "Advanced"
-msgstr "A_vanzado"
+msgstr "Avanzado"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:2051
-#, fuzzy
 msgid "Button Label|Window Manager"
-msgstr "Gestor de Ventanas"
+msgstr "Gestor de ventanas"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:54
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "¿Está seguro de que desea eliminar este tema de atajos de teclado?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:133
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Añadir tema de atajos de teclado"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Introduzca un nombre para el tema:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:176
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Ya existe un tema de atajos de teclado con ese nombre"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:182
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Debe proporcionar un nombre para el tema de atajos de teclado"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 #: ../settings-dialogs/xfwm4-settings.c:226
@@ -725,7 +653,7 @@ msgstr "Cancelar"
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:364
 #: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Cycle windows"
-msgstr "Selección cíclica de ventanas"
+msgstr "Seleccionar ventanas cíclicamente"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:365
 #: ../settings-dialogs/xfwm4-settings.c:233
@@ -873,9 +801,9 @@ msgid "Delete active workspace"
 msgstr "Borrar área de trabajo activa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:505
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo %d"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:585
 msgid "Cannot open the theme directory !"
@@ -901,13 +829,12 @@ msgstr ""
 "%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:788
-#, fuzzy
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
-"El atajo ya está siendo usado por el comando <b>%s</b>. ¿Qué acción desea "
-"usar?"
+"¡El atajo ya está siendo usado!\n"
+"¿Está seguro de querer usarlo?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:852
 msgid "Compose shortcut for :"
@@ -918,9 +845,8 @@ msgid "Compose shortcut"
 msgstr "Generar atajo"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:862
-#, fuzzy
 msgid "No shortcut"
-msgstr "Generar atajo"
+msgstr "Sin atajo"
 
 #: ../settings-dialogs/tweaks-settings.c:396
 msgid "Session manager socket"
@@ -953,8 +879,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Pruebe %s --help para ver una lista completa de opciones de línea de comando "
-"disponibles.\n"
+"Pruebe %s --help para ver una lista completa de opciones de línea de comando disponibles.\n"
 
 #: ../settings-dialogs/workspace-settings.c:134
 #, c-format
@@ -972,15 +897,13 @@ msgstr "Socket del gestor de configuración"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Configurar el comportamiento de las ventanas"
+msgstr "Configurar el comportamiento de ventanas y atajos"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Configurar el comportamiento de las ventanas"
+msgstr "Ajuste fino de comportamiento y efectos de ventanas"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -993,7 +916,7 @@ msgstr "  "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Box move and resize</b>"
-msgstr "<b>Desplazamiento y redimensionado de ventana</b>"
+msgstr "<b>Desplazamiento y redimensionado de caja</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Button layout</b>"
@@ -1040,9 +963,8 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "<b>Desplazamiento cíclico entre áreas de trabajo</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "<b>_Alineación de título</b>"
+msgstr "<b>_Tema</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Ad_vanced"
@@ -1130,15 +1052,11 @@ msgstr "Acción a realizar cuando se haga doble clic en la barra de título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
-"Saltar a la siguiente área de trabajo al a_rrastrar una ventana fuera del "
-"área de trabajo actual"
+msgstr "Saltar a la siguiente área de trabajo al a_rrastrar una ventana fuera del área de trabajo actual"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
-"Saltar a la siguiente área de trabajo cuando el _puntero llegue al borde de "
-"la pantalla"
+msgstr "Saltar a la siguiente área de trabajo cuando el _puntero llegue al borde de la pantalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
@@ -1154,9 +1072,8 @@ msgid "_Focus"
 msgstr "_Foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#, fuzzy
 msgid "_Reset to Defaults"
-msgstr "_Restablecer valores por defecto"
+msgstr "_Restablecer valores predeterminados"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Style"
@@ -1179,124 +1096,100 @@ msgid "gtk-help"
 msgstr "gtk-help"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Mover ventana al escritorio 1"
+msgstr "Mover ventana al área de trabajo 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Escritorio %d"
+msgstr "Área de trabajo 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Workspace 10"
-msgstr "Escritorio %d"
+msgstr "Área de trabajo 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Workspace 11"
-msgstr "Área de trabajo %i"
+msgstr "Área de trabajo 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
 msgid "Workspace 12"
-msgstr "Escritorio %d"
+msgstr "Área de trabajo 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:454
 msgid "Theme"
@@ -1317,15 +1210,12 @@ msgstr "No se pudo crear el diálogo de configuración."
 
 #: ../settings-dialogs/xfwm4-settings.c:1777
 #: ../settings-dialogs/xfwm4-settings.c:1778
-#, fuzzy
 msgid "Reset to Defaults"
-msgstr "_Restablecer valores por defecto"
+msgstr "Restablecer valores predeterminados"
 
 #: ../settings-dialogs/xfwm4-settings.c:1779
-msgid ""
-"This will reset <b>all</b> shortcuts to their default values. Do you really "
-"want to do this?"
-msgstr ""
+msgid "This will reset <b>all</b> shortcuts to their default values. Do you really want to do this?"
+msgstr "Esto restablecerá <b>todos</b> los atajos a sus valores predeterminados. ¿Está seguro de querer hacer esto?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -1345,7 +1235,7 @@ msgstr "En el _centro de la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "By default, place windows:"
-msgstr "Por defecto, colocar ventanas:"
+msgstr "Por defecto, situar ventanas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "C_ompositor"
@@ -1381,7 +1271,7 @@ msgstr "Hacer que las ventanas urgentes parpadeen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
-msgstr "Tecla utilizada para _desplazar ventanas:"
+msgstr "Tecla utilizada para co_ger y desplazar ventanas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Opaci_ty of window decorations:"
@@ -1405,8 +1295,7 @@ msgstr "Opacidad de ventanas durante _redimensionado:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"Restaurar el _tamaño original de ventanas maximizadas al ser desplazadas"
+msgstr "Restaurar el _tamaño original de ventanas maximizadas al ser desplazadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Show shadows under _dock windows"
@@ -1442,8 +1331,7 @@ msgstr "Usar resistencia de _borde en lugar de atracción entre ventanas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Cambiar de área de trabajo dependiendo de la _disposición real de escritorio"
+msgstr "Cambiar de área de trabajo dependiendo de la _disposición real de escritorio"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -1459,8 +1347,7 @@ msgstr "_Traer ventana al área de trabajo actual"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
-"_Dibujar marco alrededor de las ventanas seleccionadas durante la selección"
+msgstr "_Dibujar marco alrededor de las ventanas seleccionadas durante la selección"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Enable display compositing"
@@ -1476,8 +1363,7 @@ msgstr "Tamaño _mínimo de ventana para activar posicionamiento inteligente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Mouse wheel over desktop switches workspaces"
-msgstr ""
-"Accionar la _rueda del ratón sobre el escritorio cambia de área de trabajo"
+msgstr "Accionar la _rueda del ratón sobre el escritorio cambia de área de trabajo"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
@@ -1516,7 +1402,6 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Áreas de trabajo</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
 msgstr "Cambiar nombre del área de trabajo"
 
@@ -1552,9 +1437,8 @@ msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "Des_maximizar"
+msgstr "_Desmaximizar"
 
 #: ../src/menu.c:46
 msgid "Mi_nimize"
@@ -1562,7 +1446,7 @@ msgstr "Mi_nimizar"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Minimizar _todas las demás ventanas"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -1578,57 +1462,49 @@ msgstr "_Redimensionar"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
 msgstr "Siempre encima"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Atraer _ventanas entre sí"
+msgstr "Igual que otras ventanas"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Siempre por debajo de otras ventanas"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Completar ventana"
+msgstr "Enrollar ventana"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Mover ventana hacia abajo"
+msgstr "Desenrollar ventana"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
 msgstr "_Pantalla completa"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "_Pantalla completa"
+msgstr "Abandonar _pantalla completa"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
 msgstr "A_yuda contextual"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "Siempre encima"
+msgstr "Siempre en el área de trabajo visible"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Sólo en esta área de trabajo"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Mover ventana al área de trabajo siguiente"
+msgstr "Mover a otra área de trabajo"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1661,9 +1537,7 @@ msgstr "%s: No se puede reservar el color %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: No se puede reserver espacio para color: GValue para color no es de tipo "
-"STRING"
+msgstr "%s: No se puede reserver espacio para color: GValue para color no es de tipo STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1687,120 +1561,84 @@ msgstr "No se puede desplegar el diálogo de ayuda: %s\n"
 
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Configuración avanzada del gestor de ventanas"
-
 #~ msgid ""
 #~ "This shortcut is already being used by <b>another window manager action</"
 #~ "b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Este atajo está siendo utilizado por la acción del gestor de ventanas "
 #~ "<b>otra acción del gestor de ventanas</b>. ¿Qué acción desea usar?"
-
 #~ msgid "Use %s"
 #~ msgstr "Usar %s"
-
 #~ msgid "Keep the other one"
 #~ msgstr "Mantener la otra"
-
 #~ msgid "Keep %s"
 #~ msgstr "Mantener %s"
-
 #~ msgid ""
 #~ "The shortcut is already being used by a <b>window manager action</b>. "
 #~ "Which action do you want to use?"
 #~ msgstr ""
 #~ "El atajo ya está siendo usado por una <b>acción del gestor de ventanas</"
 #~ "b>. ¿Qué acción desea usar?"
-
 #~ msgid "Keep the window manager action"
 #~ msgstr "Mantener acción del gestor de ventanas"
-
 #~ msgid "Conflicting actions for %s"
 #~ msgstr "Acciones en conflicto para %s"
-
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr "El atajo ya está siendo usado por algo."
-
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "Introduzca el atajo para la acción del gestor de ventanas"
-
 #~ msgid "Action: %s"
 #~ msgstr "Acción: %s"
-
 #~ msgid "Enter command shortcut"
 #~ msgstr "Introduzca atajo para comando"
-
 #~ msgid "Enter shortcut"
 #~ msgstr "Introducir atajo"
-
 #~ msgid "Shortcut:"
 #~ msgstr "Atajo:"
-
 #~ msgid "Could not grab the keyboard."
 #~ msgstr "No se pudo capturar el teclado"
-
 #~ msgid "<span size='large'><b>%s</b></span>"
 #~ msgstr "<span size='large'><b>%s</b></span>"
-
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "(Des)Ma_ximizar"
-
 #~ msgid "Hide _all others"
 #~ msgstr "Ocultar el _resto"
-
 #~ msgid "_Shade"
 #~ msgstr "_Enrollar"
-
 #~ msgid "(Un)_Shade"
 #~ msgstr "(Des)_Enrollar"
-
 #~ msgid "S_tick"
 #~ msgstr "_Pegar"
-
 #~ msgid "(Un)S_tick"
 #~ msgstr "(Des)_Pegar"
-
 #~ msgid "Above"
 #~ msgstr "Encima"
-
 #~ msgid "Normal"
 #~ msgstr "Normal"
-
 #~ msgid "Below"
 #~ msgstr "Debajo"
-
 #~ msgid "(Un)_Fullscreen"
 #~ msgstr "_Pantalla completa"
-
 #~ msgid "Send to..."
 #~ msgstr "Enviar a..."
-
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Área de trabajo %i (%s)"
-
 #~ msgid "Use this action"
 #~ msgstr "Usar esta acción"
-
 #~ msgid "gtk-revert-to-saved"
 #~ msgstr "gtk-revert-to-saved"
-
 #~ msgid "gtk-select-all"
 #~ msgstr "gtk-select-all"
-
 #~ msgid "%s shortcut conflict"
 #~ msgstr "Conflicto de atajo para %s"
-
 #~ msgid "Shortcut conflict"
 #~ msgstr "Conflicto de atajo"
-
 #~ msgid "Alt"
 #~ msgstr "Alt"
-
 #~ msgid "Ctrl"
 #~ msgstr "Ctrl"
-
 #~ msgid "\t"
 #~ msgstr "\t"
-
 #~ msgid "<i>Wide</i>"
 #~ msgstr "<i>Ancho</i>"
 
@@ -1811,28 +1649,22 @@ msgstr "No se puede desplegar el diálogo de ayuda: %s\n"
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Atajo"
-
 #~ msgid "Move window left"
 #~ msgstr "Mover ventana hacia la izquierda"
-
 #~ msgid "Move window right"
 #~ msgstr "Mover ventana hacia la derecha"
-
 #~ msgid "Resize window down"
 #~ msgstr "Redimensionar ventana hacia abajo"
-
 #~ msgid "Resize window left"
 #~ msgstr "Redimensionar ventana hacia la izquierda"
-
 #~ msgid "Resize window right"
 #~ msgstr "Redimensionar ventana hacia la derecha"
 
 #, fuzzy
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Cerrar ventana"
-
 #~ msgid "_Hide"
 #~ msgstr "_Ocultar"
-
 #~ msgid "Unknown application!"
 #~ msgstr "Aplicacion desconocida."
+
