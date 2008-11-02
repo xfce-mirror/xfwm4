@@ -1137,6 +1137,11 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     set_placement_mode (screen_info, g_value_get_string (value));
                 }
+                else if ((!strcmp (name, "title_shadow_active"))
+                      || (!strcmp (name, "title_shadow_inactive")))
+                {
+                    /* These properties are not configurable via xfconf */
+                }
                 else
                 {
                     g_warning("The property '%s' is not supported", property_name);
@@ -1206,6 +1211,21 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "placement_ratio"))
                 {
                     screen_info->params->placement_ratio = g_value_get_int (value);
+                }
+                else if ((!strcmp (name, "button_offset"))
+                      || (!strcmp (name, "button_spacing"))
+                      || (!strcmp (name, "dbl_click_time"))
+                      || (!strcmp (name, "maximized_offset"))
+                      || (!strcmp (name, "shadow_delta_height"))
+                      || (!strcmp (name, "shadow_delta_width"))
+                      || (!strcmp (name, "shadow_delta_x"))
+                      || (!strcmp (name, "shadow_delta_y"))
+                      || (!strcmp (name, "shadow_opacity"))
+                      || (!strcmp (name, "title_horizontal_offset"))
+                      || (!strcmp (name, "title_vertical_offset_active"))
+                      || (!strcmp (name, "title_vertical_offset_inactive")))
+                {
+                    /* These properties are not configurable via xfconf */
                 }
                 else
                 {
@@ -1345,6 +1365,11 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "wrap_cycle"))
                 {
                     screen_info->params->wrap_cycle = g_value_get_boolean (value);
+                }
+                else if ((!strcmp (name, "full_width_title"))
+                      || (!strcmp (name, "show_app_icon")))
+                {
+                    /* These properties are not configurable via xfconf */
                 }
                 else
                 {

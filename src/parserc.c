@@ -184,7 +184,6 @@ setGValue (const gchar * lvalue, const GValue *rvalue, Settings *rc)
                 }
 
                 g_value_copy (rvalue, rc[i].value);
-                //TRACE ("%s=%s", rc[i].option, rc[i].value);
                 return TRUE;
             }
         }
@@ -336,7 +335,7 @@ getIntValue (const gchar *option, Settings *rc)
     return 0;
 }
 
-gboolean 
+gboolean
 getBoolValue (const gchar *option, Settings *rc)
 {
     gint i;

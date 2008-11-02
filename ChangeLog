@@ -1,8 +1,12 @@
 2008-11-02  olivier
 
+	* src/parserc.c, src/settings.c: Do not display warnings for values 
+	  that are not configurable via xfconf (typically theme settings).
+
+2008-11-02  olivier
+
 	* settings-dialogs/tweaks-settings.c, src/settings.c, src/client.c: Fix
 	  indentation.
-.
 
 2008-11-02  olivier
 
