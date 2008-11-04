@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-31 13:45+0100\n"
-"PO-Revision-Date: 2008-09-30 12:57+0200\n"
+"PO-Revision-Date: 2008-11-04 12:24+0100\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <debian-l10n-basque@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,33 +31,29 @@ msgid "Warning"
 msgstr "Abisua"
 
 #: ../mcs-plugin/margins.c:130
-#, fuzzy
 msgid "Workspace Margins"
-msgstr "Idazmahaiak"
+msgstr "Idazmahai marjinak"
 
 #: ../mcs-plugin/margins.c:136
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak pantailaren ertzetan leihorik kokatu ezin den eremuak dira"
 
 #: ../mcs-plugin/margins.c:167
-#, fuzzy
 msgid "Left :"
-msgstr "Ezkerra"
+msgstr "Ezkerra :"
 
 #: ../mcs-plugin/margins.c:187
-#, fuzzy
 msgid "Right :"
-msgstr "Eskuina"
+msgstr "Eskuina :"
 
 #: ../mcs-plugin/margins.c:207
 msgid "Top :"
-msgstr ""
+msgstr "Goian :"
 
 #: ../mcs-plugin/margins.c:227
 msgid "Bottom :"
-msgstr ""
+msgstr "Behean :"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:471
 #: ../settings-dialogs/tweaks-settings.c:42
@@ -65,27 +61,24 @@ msgid "None"
 msgstr "Batez"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
 msgid "Bring window on current workspace"
-msgstr "_Ekarri leihoa uneko idazmahaiera"
+msgstr "Ekarri leihoa uneko idazmahaiera"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
 msgid "Switch to window's workspace"
-msgstr "Aldatu lei_hoaren idazmahaiera"
+msgstr "Aldatu leihoaren idazmahaiera"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
 msgid "Do nothing"
-msgstr "Eze_r ez egin"
+msgstr "Ezer ez egin"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:483
 msgid "Place window under the mouse"
-msgstr ""
+msgstr "Ipini leiho saguaren azpian"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:484
 msgid "Place window in the center"
-msgstr ""
+msgstr "Ipini leihoa erdian"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:493
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
@@ -95,37 +88,28 @@ msgid "Window Manager Tweaks"
 msgstr "Leiho kudeatzaile gomendioak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:512
-#, fuzzy
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
-"\"paginatzailea utzi\" edo \"ataza-barra utzi\"\n"
-"propietateak ezarririk duten leihoa e_zik"
+msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+msgstr "\"Orrialdekatzailea\" utzi\" edo \"ataza-barra utzi\"\n propietateak ezarririk duten leihoak alde batetara urt"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:518
-#, fuzzy
 msgid "Include hidden (i.e. iconified) windows"
-msgstr "_Ezkutatutako leihoak (adib, txikitutakoak) barne"
+msgstr "Ezkutatutako leihoak (adib, txikitutakoak) barne"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:524
-#, fuzzy
 msgid "Cycle through windows from all workspaces"
-msgstr "Idazmahai _guztien artean ziklikoki aldatu"
+msgstr "Idazmahai guztien artean ziklikoki aldatu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:529
-#, fuzzy
 msgid "Cycling"
-msgstr "Z_iklikoki"
+msgstr "Ziklikoki"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:541
-#, fuzzy
 msgid "Activate focus stealing prevention"
-msgstr "_Foku lapurtze aurreikuspena gaitu"
+msgstr "Foku lapurtze aurreikuspena gaitu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:547
-#, fuzzy
 msgid "Honor the standard ICCCM focus hint"
-msgstr "ICCCM e_standarreko foko gomendioei ohore egin"
+msgstr "ICCCM estandarreko foko gomendioei ohore egin"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:553
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
@@ -133,62 +117,48 @@ msgid "When a window raises itself:"
 msgstr "Leiho batek bere burua nabarmentzean:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
-#, fuzzy
 msgid "Focus"
-msgstr "_Fokua"
+msgstr "Fokua"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:570
-#, fuzzy
 msgid "Key used to grab and move windows"
-msgstr "Leihoak _eldu eta mugitzeko erabiliko den tekla"
+msgstr "Leihoak eldu eta mugitzeko erabiliko den tekla"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:576
-#, fuzzy
 msgid "Raise windows when any mouse button is pressed"
-msgstr "Leihoa _erakarri saguaren edozein botoi sakatzean"
+msgstr "Leihoa erakarri saguaren edozein botoi sakatzean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:583
-#, fuzzy
 msgid "Hide frame of windows when maximized"
-msgstr "Leiho _markoa ezkutatu guztiz handitzean"
+msgstr "Leiho markoa ezkutatu guztiz handitzean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:590
-#, fuzzy
 msgid "Restore original size of maximized windows when moving"
-msgstr "Mugitzerakoan maximizatutako leihoen jatorrizko _tamaina berezarri"
+msgstr "Mugitzerakoan maximizatutako leihoen jatorrizko tamaina berezarri"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:596
-#, fuzzy
 msgid "Use edge resistance instead of windows snapping"
-msgstr "_Ertz erresistentzia erabili leiho elkartzea beharrean"
+msgstr "Ertz erresistentzia erabili leiho elkartzea beharrean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:601
-#, fuzzy
 msgid "Accessibility"
-msgstr "_Erabilgarritasuna"
+msgstr "Erabilgarritasuna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:614
 msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
+msgstr "Idazmahaia aldatu saguaren gurpila udazmahaiaren gainaean erabiltzean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:621
-#, fuzzy
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
-"Aurreko idazmahaia _gogoratu eta berriz deitu\n"
-"teklatu laster-tekla bitartez aldatzean"
+msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+msgstr "Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla bitartez aldatzean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:628
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
-"Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
+msgstr "Idazmahaiak egokitu erabiltzen den uneko idazmahai ingurunearen arabera"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:635
-#, fuzzy
 msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr "Idazmahaiak egokitu _lehen edo azken idazmahaiera ailatzerakoan"
+msgstr "Idazmahaiak egokitu lehen edo azken idazmahaiera ailatzerakoan"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:640 ../mcs-plugin/workspaces.c:519
 #: ../mcs-plugin/workspaces_plugin.c:163
@@ -198,114 +168,94 @@ msgid "Workspaces"
 msgstr "Idazmahaiak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:652
-#, fuzzy
 msgid "Minimum size of windows to trigger smart placement"
-msgstr "Leihoen _gutxieneko tamaina abiarazte garbi kokapenean"
+msgstr "Leihoen gutxieneko tamaina abiarazte garbi kokapenean"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:653
-#, fuzzy
 msgid "Size|Small"
-msgstr "<i>Txikia</i>"
+msgstr "Txikia"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:653
-#, fuzzy
 msgid "Size|Large"
-msgstr "<i>Handia</i>"
+msgstr "Handia"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
 msgid "Default positionning of windows without smart placement:"
-msgstr "Leihoen _gutxieneko tamaina abiarazte garbi kokapenean"
+msgstr "Leihoen lehenetsitako koalekua abiarazte garbian:"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:663
-#, fuzzy
 msgid "Placement"
-msgstr "_Kokalekua"
+msgstr "Kokalekua"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:683
-#, fuzzy
 msgid "Enable display compositing"
-msgstr "_Pantaila konposizioa gaitu"
+msgstr "Pantaila konposizioa gaitu"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:697
-#, fuzzy
 msgid "Display full screen overlay windows directly"
-msgstr "Zuzenean leihoak _pantaila osoan bistarazi"
+msgstr "Zuzenean leihoak pantaila osoan bistarazi"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
 msgid "Show shadows under dock windows"
-msgstr "Itzalak bistarazi _blokeaturiko leihoen azpian "
+msgstr "Itzalak bistarazi blokeaturiko leihoen azpian"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:709
-#, fuzzy
 msgid "Show shadows under regular windows"
-msgstr "Itzalak bistarazi leiho _arrunten azpian"
+msgstr "Itzalak bistarazi leiho arrunten azpian"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:715
-#, fuzzy
 msgid "Show shadows under popup windows"
 msgstr "Itzalak bistarazi popup leihoen azpian"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:721
-#, fuzzy
 msgid "Opacity of window decorations"
-msgstr "Leiho dekorazioaren opako_tasuna"
+msgstr "Leiho dekorazioaren opakotasuna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
 #: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
 #: ../mcs-plugin/wmtweaks_plugin.c:745
-#, fuzzy
 msgid "Transparent"
-msgstr "<i>Gardena</i>"
+msgstr "Gardena"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
 #: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
 #: ../mcs-plugin/wmtweaks_plugin.c:746
-#, fuzzy
 msgid "Opaque"
-msgstr "<i>Opakoa</i>"
+msgstr "Opakoa"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:727
-#, fuzzy
 msgid "Opacity of inactive windows"
-msgstr "Leiho _inaktiboen opakotasuna"
+msgstr "Leiho inaktiboen opakotasuna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:733
-#, fuzzy
 msgid "Opacity of windows during move"
-msgstr "_Mugitzerakoan leihoaren opakotasuna"
+msgstr "Mugitzerakoan leihoaren opakotasuna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:739
-#, fuzzy
 msgid "Opacity of windows during resize"
-msgstr "Tamaina_z aldatzean leihoaren opakotasuna"
+msgstr "Tamainaz aldatzean leihoaren opakotasun"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:745
-#, fuzzy
 msgid "Opacity of popup windows"
-msgstr "Popup leihoen opakota_suna"
+msgstr "Popup leihoen opakotasuna"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:750
-#, fuzzy
 msgid "Compositor"
-msgstr "S_ortzailea"
+msgstr "Sortzailea"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/wmtweaks_plugin.c:792
-#, fuzzy
 msgid "Button Label|Window Manager Tweaks"
 msgstr "Leiho kudeatzaile gomendioak"
 
 #: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
+msgstr "Ezarpen hauek ezin dute funtzionatu erabiltzen duzun leiho kudeatzailearekin (%s)"
 
 #: ../mcs-plugin/workspaces.c:332
-#, fuzzy
 msgid "Change name"
-msgstr "Aldatu idazmahai izena"
+msgstr "Aldatu izena"
 
 #: ../mcs-plugin/workspaces.c:341 ../mcs-plugin/xfwm4_shortcuteditor.c:484
 #: ../settings-dialogs/workspace-settings.c:72
@@ -316,38 +266,33 @@ msgid "Workspace %d"
 msgstr "%d idazmahaia"
 
 #: ../mcs-plugin/workspaces.c:349
-#, fuzzy
 msgid "Name:"
-msgstr "Ize_na:"
+msgstr "Izena:"
 
 #: ../mcs-plugin/workspaces.c:428
 msgid "Click on a workspace name to edit it"
-msgstr ""
+msgstr "Klikatu idazmahai izenean editatzeko"
 
 #: ../mcs-plugin/workspaces.c:494
-#, fuzzy
 msgid "Number of workspaces:"
-msgstr "idazmahai _kopurua:"
+msgstr "Idazmahai kopurua:"
 
 #: ../mcs-plugin/workspaces.c:530
-#, fuzzy
 msgid "Workspace names"
-msgstr "Idazmahai Izena"
+msgstr "Idazmahai izenak"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/workspaces_plugin.c:111
 msgid "Button Label|Workspaces and Margins"
-msgstr ""
+msgstr "Idazmahai eta marjinak"
 
 #: ../mcs-plugin/workspaces_plugin.c:145
-#, fuzzy
 msgid "Workspaces and Margins"
-msgstr "Idazmahai ezarpenak"
+msgstr "Idazmahai eta marjinak"
 
 #: ../mcs-plugin/workspaces_plugin.c:172
-#, fuzzy
 msgid "Margins"
-msgstr "<b>Marjinak</b>"
+msgstr "Marjinak"
 
 #: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
 msgid "Window Manager Settings"
@@ -359,7 +304,7 @@ msgstr "Xfce 4 leiho kudeatzaile ezarpenak"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Konfigurazio aurreratua"
 
 #: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
 msgid "Xfce 4 Window Manager Tweaks"
@@ -442,7 +387,6 @@ msgid "Right"
 msgstr "Eskuina"
 
 #: ../mcs-plugin/xfwm4_plugin.c:589
-#, fuzzy
 msgid "Click and drag buttons to change the layout"
 msgstr "Klikatu eta arratratu botoiak ingurunea eraldatzeko"
 
@@ -459,7 +403,7 @@ msgstr "Izenburua"
 #: ../mcs-plugin/xfwm4_plugin.c:606
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title, it cannot be removed"
-msgstr "Leiho Izenburua, berau ezin da ezabatu"
+msgstr "Leiho izenburua, berau ezin da ezabatu"
 
 #: ../mcs-plugin/xfwm4_plugin.c:618
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
@@ -468,7 +412,7 @@ msgstr "Ezkutukoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1391
 msgid "Font Selection Dialog"
-msgstr ""
+msgstr "Letra-tipo hautapen menua"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1456
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
@@ -477,228 +421,190 @@ msgid "Window Manager"
 msgstr "Leiho kudeatzailea"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1496
-#, fuzzy
 msgid "Title font"
-msgstr "<b>Izenburuaren karak_tere-jokoa</b>"
+msgstr "Izenburuaren letra-tipoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1505
-#, fuzzy
 msgid "Title Alignment"
-msgstr "<b>Izenburu _lerrokatzea</b>"
+msgstr "Izenburu _lerrokatzea"
 
 #. XXX
 #: ../mcs-plugin/xfwm4_plugin.c:1507
 msgid "Text alignment inside title bar :"
-msgstr ""
+msgstr "Testu lerrokatzea izenburu barran :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1513
-#, fuzzy
 msgid "Button layout"
-msgstr "<b>Botoi-diseinua</b>"
+msgstr "Botoi-diseinua"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1518
-#, fuzzy
 msgid "Style"
-msgstr "E_stiloa"
+msgstr "Estiloa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1566
-#, fuzzy
 msgid "Window shortcuts"
-msgstr "<b>Leiho laster-teklak</b>"
+msgstr "Leiho laster-teklak"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1580
-#, fuzzy
 msgid "Command"
-msgstr "Komandoa: %s"
+msgstr "Komandoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1586 ../settings-dialogs/xfwm4-settings.c:609
 msgid "Shortcut"
 msgstr "Laster-tekla"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1603
-#, fuzzy
 msgid "Keyboard"
-msgstr "Tek_latua"
+msgstr "Teklatua"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1618
-#, fuzzy
 msgid "Focus model"
-msgstr "<b>Foku modeloa</b>"
+msgstr "Foku modeloa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1622
-#, fuzzy
 msgid "Click to focus"
-msgstr "Egin _klik fokua ezartzeko"
+msgstr "Klikatu fokua ezartzeko"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1632
-#, fuzzy
 msgid "Focus follows mouse"
-msgstr "Fokuak _sagua jarraitzen du"
+msgstr "Fokuak sagua jarraitzen du"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
 msgid "Delay before window receives focus"
-msgstr "Fokua duen leihoa bistaratu arteko _denbora"
+msgstr "Fokua duen leihoa bistaratu arteko denbora"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
-#, fuzzy
 msgid "Slow"
-msgstr "E_rakutsi"
+msgstr "Geldoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
 msgid "Fast"
-msgstr ""
+msgstr "Azkarra"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1682
-#, fuzzy
 msgid "Automatically give focus to newly created windows"
-msgstr "Automatikoki ezarri fokua leiho _berrietan"
+msgstr "Automatikoki ezarri fokua leiho berrietan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1686
-#, fuzzy
 msgid "New window focus"
-msgstr "<b>Leiho berri fokoa</b>"
+msgstr "Leiho berri fokoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1693
-#, fuzzy
 msgid "Raise on focus"
-msgstr "<b>Goratu fokuaz</b>"
+msgstr "Goratu fokuaz"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1699
-#, fuzzy
 msgid "Automatically raise windows when they receive focus"
-msgstr "Automatikoki _goratu leihoak fokua dutenean"
+msgstr "Automatikoki goratu leihoak fokua dutenean"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1709
-#, fuzzy
 msgid "Delay before raising focused window :"
-msgstr "Fokua duen leihoa bistaratu arte _itxarongo den denbora :"
+msgstr "Fokua duen leihoa bistaratu arte itxarongo den denbora :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1744
-#, fuzzy
 msgid "Raise window when clicking inside application window"
-msgstr "Goratu leihoa, honen _barnean klikatzerakoan"
+msgstr "Goratu leihoa, honen barnean klikatzerakoan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1748
-#, fuzzy
 msgid "Raise on click"
-msgstr "<b>Bistaratu klikatzerakoan</b>"
+msgstr "Bistaratu klikatzerakoan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1766
-#, fuzzy
 msgid "Windows snapping"
-msgstr "<b>Leiho Itsasgarritasuna</b>"
+msgstr "Leiho itsasgarritasuna"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1771
-#, fuzzy
 msgid "Snap windows to screen border"
-msgstr "Itsatsi leihoak pantaila _ertzari"
+msgstr "Itsatsi leihoak pantaila ertzari"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1777
-#, fuzzy
 msgid "Snap windows to other windows"
-msgstr "Itsatsi _leihoak beraien artean"
+msgstr "Itsatsi leihoak beraien artean"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1788
-#, fuzzy
 msgid "Distance :"
-msgstr "_Tartea :"
+msgstr "Tartea :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1795
-#, fuzzy
 msgid "Distance|Small"
-msgstr "<i>Txikia</i>"
+msgstr "Txikia"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1802
-#, fuzzy
 msgid "Distance|Wide"
-msgstr "<i>Zabala</i>"
+msgstr "Zabala"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1823
-#, fuzzy
 msgid "Wrap workspaces"
-msgstr "<b>Itzulbiratu idazmahaiak</b>"
+msgstr "Itzulbiratu idazmahaiak"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1829
-#, fuzzy
 msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr "Joan hurrengo idazmahaiera sagua _pantaila ertzera ailatzerakoan"
+msgstr "Joan hurrengo idazmahaiera sagua pantaila ertzera ailatzerakoan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1837
-#, fuzzy
 msgid "Wrap workspaces when dragging a window off the screen"
-msgstr "Leihoak _arrastatzerakoan hurrengo mahaigainera pasa"
+msgstr "Leihoak arrastatzerakoan hurrengo mahaigainera pasa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1847
-#, fuzzy
 msgid "Edge Resistance :"
-msgstr "_Ertzaren erresistentzia :"
+msgstr "Ertzaren erresistentzia :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1854
-#, fuzzy
 msgid "Resistance|Small"
-msgstr "<i>Biguna</i>"
+msgstr "Biguna"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1861
-#, fuzzy
 msgid "Resistance|Wide"
-msgstr "<i>Gogorra</i>"
+msgstr "Gogorra"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1883
-#, fuzzy
 msgid "Opaque move and resize"
-msgstr "<b>Kutxa tamaina aldatzea eta mugitzea</b>"
+msgstr "Tamaina aldatzea eta mugitze opakoa"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1888
-#, fuzzy
 msgid "Display content of windows when resizing"
-msgstr "Ezkutatu leihoaren edukia _tamainaz aldatzean"
+msgstr "Bistarazi leihoaren edukia tamainaz aldatzean"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1894
-#, fuzzy
 msgid "Display content of windows when moving"
-msgstr "Ezkutatu leihoaren edukia _mugitzerakoan"
+msgstr "Bistarazi leihoaren edukia mugitzerakoan"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1899
-#, fuzzy
 msgid "Double click action"
-msgstr "<b>Klik bikoitzaren ekintza</b>"
+msgstr "Klik bikoitzaren ekintza"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1901
-#, fuzzy
 msgid "Action to perform when double clicking on title bar :"
-msgstr "Titulu-barran bi aldiz klikatzerakoan egingo den ekintza"
+msgstr "Titulu-barran bi aldiz klikatzerakoan egingo den ekintza :"
 
 #: ../mcs-plugin/xfwm4_plugin.c:1906
-#, fuzzy
 msgid "Advanced"
-msgstr "Au_rreratua"
+msgstr "Aurreratua"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../mcs-plugin/xfwm4_plugin.c:2051
-#, fuzzy
 msgid "Button Label|Window Manager"
 msgstr "Leiho kudeatzailea"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:54
 msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
+msgstr "Benetan kendu nahi duzu laster-tekla gaia?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:133
 msgid "Add keybinding theme"
-msgstr ""
+msgstr "Gehitu laster-tekla gaia"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:140
 msgid "Enter a name for the theme:"
-msgstr ""
+msgstr "Idatzi gaiaren izena:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:176
 msgid "A keybinding theme with the same name already exists"
-msgstr ""
+msgstr "Izen horretako laster-tekla gai bat badago dagoeneko"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:182
 msgid "You have to provide a name for the keybinding theme"
-msgstr ""
+msgstr "Laster-tekla gaiaren izena idatzi behar duzu"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:358
 #: ../settings-dialogs/xfwm4-settings.c:226
@@ -872,13 +778,13 @@ msgid "Delete active workspace"
 msgstr "Ezabatu idazmahai aktiboa"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:505
-#, fuzzy, c-format
+#, c-format
 msgid "Move window to workspace %d"
-msgstr "Mugitu leihoa 1 idazmahaiera"
+msgstr "Mugitu leihoa %d idazmahaiera"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:585
 msgid "Cannot open the theme directory !"
-msgstr ""
+msgstr "Ezin da gai direktorioa ireki!"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:604
 #, c-format
@@ -886,6 +792,8 @@ msgid ""
 "Cannot open %s : \n"
 "%s"
 msgstr ""
+"Ezin da %s ireki: \n"
+"%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:618
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:629
@@ -894,29 +802,28 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Ezin da %s-(e)n idatzi: \n"
+"%s"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:788
-#, fuzzy
 msgid ""
 "Shortcut already in use !\n"
 "Are you sure you want to use it ?"
 msgstr ""
-"Laster-tekla dagoneko <b>%s</b> komandoak erabiltzen du. Zein komando "
-"erabiltzea nahi duzu?"
+"Laster-tekla dagoneko erabilia dago!\n"
+"Ziur zaude erabili nahi duzula?"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:852
 msgid "Compose shortcut for :"
-msgstr ""
+msgstr "Sortu laster-tekla:"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:856
-#, fuzzy
 msgid "Compose shortcut"
-msgstr "Idatzi laster-tekla"
+msgstr "Sortu laster-tekla"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:862
-#, fuzzy
 msgid "No shortcut"
-msgstr "Laster-tekla"
+msgstr "Laster-teklarik ez"
 
 #: ../settings-dialogs/tweaks-settings.c:396
 msgid "Session manager socket"
@@ -968,15 +875,13 @@ msgstr "Ezarpena kudeatzaile socketa"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Leiho portaera konfiguratu"
+msgstr "Leiho portaera eta lastre-teklak konfiguratu"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Leiho portaera konfiguratu"
+msgstr "Leiho portaera eta efektuak doitu"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -1029,7 +934,7 @@ msgstr "<b>Leiho laster-teklak</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Leiho Itsasgarritasuna</b>"
+msgstr "<b>Leiho itsasgarritasuna</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>Wrap workspaces</b>"
@@ -1133,7 +1038,7 @@ msgstr "Joan hurrengo idazmahaiera sagua _pantaila ertzera ailatzerakoan"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
-msgstr "Fokua duen leihoa bistaratu arteko _denbora"
+msgstr "Fokua duen leihoa bistaratu arteko _denbora:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Edge resistance:"
@@ -1279,7 +1184,7 @@ msgstr "Huts xfconf abiaraztean. Arrazoia: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:974
 msgid "Could not create the settings dialog."
-msgstr "Ezin da ezapen elkarrizketa sortu"
+msgstr "Ezin da ezapen elkarrizketa sortu."
 
 #: ../settings-dialogs/xfwm4-settings.c:1777
 #: ../settings-dialogs/xfwm4-settings.c:1778
@@ -1344,7 +1249,7 @@ msgstr "ICCCM e_standarreko foko gomendioei ohore egin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Keep urgent windows blinking"
-msgstr "Mantendu premiazko leihoak "
+msgstr "Mantendu premiazko leihoak keinuka"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
@@ -1408,8 +1313,7 @@ msgstr "_Ertz erresistentzia erabili leiho elkartzea beharrean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
+msgstr "Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -1441,7 +1345,7 @@ msgstr "Leihoen _gutxieneko tamaina abiarazte garbi kokapenean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Mouse wheel over desktop switches workspaces"
-msgstr "_Sagu erruberak idazmahaiaren gainean idazmahaiak txandakatzen ditu"
+msgstr "_Sagu gurpilak idazmahaiaren gainean idazmahaiak txandakatzen ditu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
@@ -1464,7 +1368,7 @@ msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"\"paginatzailea utzi\" edo \"ataza-barra utzi\"\n"
+"\"orrialdekatzailea utzi\" edo \"ataza-barra utzi\"\n"
 "propietateak ezarririk duten leihoa e_zik"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
@@ -1480,7 +1384,6 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Idazmahaiak</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
 msgstr "Aldatu idazmahai izena"
 
@@ -1616,8 +1519,7 @@ msgstr "%s: Ezin da %s kolorea esleitu\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
+msgstr "%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1627,8 +1529,7 @@ msgstr "%s: Ezin da %s kolorea analizatu\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
+msgstr "%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
 
 #: ../src/terminate.c:74
 #, c-format
@@ -1640,103 +1541,3 @@ msgstr "Errorea seme-prozesutik datuak irakurtzean: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Ezin da laguntza-elkarrizketa abiarazi: %s\n"
 
-#~ msgid "Advanced window manager settings"
-#~ msgstr "Leiho kudeatzaile ezarpen aurreratuak"
-
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "Laster-tekla dagoneko <b>leiho kudeatzailearen beste ekintza batek</b> "
-#~ "erabiltzen du. Zein ekintzak erabiltzea nahi duzu?"
-
-#~ msgid "Use %s"
-#~ msgstr "%s erabili"
-
-#~ msgid "Keep the other one"
-#~ msgstr "Beste ekintza mantendu"
-
-#~ msgid "Keep %s"
-#~ msgstr "%s mantendu"
-
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "'%s' laster-tekla dagoneko <b>leiho kudeatzaile ekintza</b> batek "
-#~ "erabiltzen du. Zein ekintza erabiltzea nahi duzu?"
-
-#~ msgid "Keep the window manager action"
-#~ msgstr "Mantendu leiho kudeatzaile ekintza"
-
-#~ msgid "Conflicting actions for %s"
-#~ msgstr "Elkar-jotzen duten %s-ren ekintzak"
-
-#~ msgid "The shortcut is already being used for something else."
-#~ msgstr "Laster-tekla beste zerbaitek erabiltzen du."
-
-#~ msgid "Enter window manager action shortcut"
-#~ msgstr "Idatzi leiho kudeatzaile ekintza laster-tekla"
-
-#~ msgid "Action: %s"
-#~ msgstr "Ekintza: %s"
-
-#~ msgid "Enter command shortcut"
-#~ msgstr "Idatzi komando laster-tekla"
-
-#~ msgid "Shortcut:"
-#~ msgstr "Laster-tekla:"
-
-#~ msgid "Could not grab the keyboard."
-#~ msgstr "Ezin da teklatua kapturatu"
-
-#~ msgid "<span size='large'><b>%s</b></span>"
-#~ msgstr "<span size='large'><b>%s</b></span>"
-
-#~ msgid "Hide _all others"
-#~ msgstr "Beste _guztiak ezkutatu"
-
-#~ msgid "_Shade"
-#~ msgstr "_Bildu"
-
-#~ msgid "(Un)_Shade"
-#~ msgstr "(des)_Bildu"
-
-#~ msgid "S_tick"
-#~ msgstr "I_tsatsi"
-
-#~ msgid "(Un)S_tick"
-#~ msgstr "(des)I_tsasi"
-
-#~ msgid "Above"
-#~ msgstr "Gainean"
-
-#~ msgid "Normal"
-#~ msgstr "Arrunta"
-
-#~ msgid "Below"
-#~ msgstr "Behean"
-
-#~ msgid "(Un)_Fullscreen"
-#~ msgstr "(des)_Pantaila-osoa"
-
-#~ msgid "Send to..."
-#~ msgstr "Bidali hona..."
-
-#~ msgid "Workspace %i (%s)"
-#~ msgstr "%i (%s) Idazmahaia"
-
-#~ msgid "Use this action"
-#~ msgstr "Ekintza hau erabili"
-
-#~ msgid "gtk-revert-to-saved"
-#~ msgstr "gtk-itzuli-grabtura"
-
-#~ msgid "gtk-select-all"
-#~ msgstr "gtk-hautatu-dana"
-
-#~ msgid "%s shortcut conflict"
-#~ msgstr "%s laster-tekla elkarlotze"
-
-#~ msgid "Shortcut conflict"
-#~ msgstr "Laster-tekla elkarlotzea"
