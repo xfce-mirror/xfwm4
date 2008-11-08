@@ -74,7 +74,7 @@ paint_selected (GtkWidget * w, GdkEventExpose * event, gpointer data)
         w->allocation.y - WIN_ICON_BORDER,
         w->allocation.width + 2 * WIN_ICON_BORDER,
         w->allocation.height + 2 * WIN_ICON_BORDER);
-   gtk_draw_focus (w->style, w->window,
+    gtk_draw_focus (w->style, w->window,
         w->allocation.x - WIN_ICON_BORDER,
         w->allocation.y - WIN_ICON_BORDER,
         w->allocation.width + 2 * WIN_ICON_BORDER,
