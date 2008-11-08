@@ -1138,8 +1138,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                     set_placement_mode (screen_info, g_value_get_string (value));
                 }
                 else if ((!strcmp (name, "title_shadow_active"))
-                      || (!strcmp (name, "title_shadow_inactive"))
-                      || (!strcmp (name, "workspace_names")))
+                      || (!strcmp (name, "title_shadow_inactive")))
                 {
                     /* These properties are not configurable via xfconf */
                 }
@@ -1378,7 +1377,14 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 }
                 break;
             default:
-                g_warning("The type of property '%s' is not supported", property_name);
+                if (!strcmp (name, "workspace_names"))
+                {
+                    /* These properties are not configurable via xfconf */
+                }
+                else
+                {
+                    g_warning("The property '%s' is not supported", property_name);
+                }
                 break;
         }
     }

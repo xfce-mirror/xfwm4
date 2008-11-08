@@ -1,5 +1,10 @@
 2008-11-08  olivier
 
+	* src/settings.c: Do not display warnings for "workspace_names", for
+	  real this time... 
+
+2008-11-08  olivier
+
 	* settings-dialogs/workspace-settings.c: Fix workspaces names not being
 	  set in the workspace settings GUI.
 
