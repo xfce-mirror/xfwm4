@@ -67,10 +67,14 @@ get_color (GtkWidget * win, GtkStateType state_type)
 static gboolean
 paint_selected (GtkWidget * w, GdkEventExpose * event, gpointer data)
 {
-    gtk_paint_box (w->style, w->window,
+    gtk_draw_flat_box (w->style, w->window,
         GTK_STATE_SELECTED,
-        GTK_SHADOW_IN,
-        NULL, w, "box",
+        GTK_SHADOW_NONE,
+        w->allocation.x - WIN_ICON_BORDER,
+        w->allocation.y - WIN_ICON_BORDER,
+        w->allocation.width + 2 * WIN_ICON_BORDER,
+        w->allocation.height + 2 * WIN_ICON_BORDER);
+   gtk_draw_focus (w->style, w->window,
         w->allocation.x - WIN_ICON_BORDER,
         w->allocation.y - WIN_ICON_BORDER,
         w->allocation.width + 2 * WIN_ICON_BORDER,

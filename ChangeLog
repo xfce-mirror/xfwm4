@@ -1,5 +1,10 @@
 2008-11-08  olivier
 
+	* src/tabwin.c: Draw focus in tabwin to make sure the selection is
+	  visible even with themes that do not show selected items. 
+
+2008-11-08  olivier
+
 	* src/settings.c: Do not display warnings for "workspace_names", for
 	  real this time... 
 
