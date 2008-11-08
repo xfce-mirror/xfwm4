@@ -9,6 +9,9 @@
 - Add support for keyboard shortcuts (Bug #4492).
 - Add new option do disable blinking of urgent windows.
 - Fix possible crash when the dbl_click_action setting gets unset.
+- Fix workspaces names not being set in the workspace settings GUI.
+- Do not display warnings for values that are not configurable via xfconf 
+  (typically theme settings).
 
 4.5.91 (Xfce 4.6beta1)
 ======================

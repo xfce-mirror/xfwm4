@@ -248,6 +248,7 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
     WnckScreen *screen;
     gint n_workspaces, i;
     GtkTreeIter iter;
+    gchar **names;
 
     dialog = glade_xml_get_widget(gxml, "change_name_dialog");
     g_object_set_data(G_OBJECT(dialog), "name-entry",
@@ -280,9 +281,20 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
 
     screen = wnck_screen_get_default();
     wnck_screen_force_update(screen);
+    names = xfconf_channel_get_string_list(channel, WORKSPACE_NAMES_PROP);
 
     n_workspaces = wnck_screen_get_workspace_count(screen);
-    for(i = 0; i < n_workspaces; ++i) {
+    i = 0;
+    for(; i < n_workspaces && names[i]; ++i) {
+        WnckWorkspace *space = wnck_screen_get_workspace(screen, i);
+
+        gtk_list_store_append(ls, &iter);
+        gtk_list_store_set(ls, &iter,
+                           COL_NUMBER, i + 1,
+                           COL_NAME, names[i],
+                           -1);
+    }
+    for(; i < n_workspaces; ++i) {
         WnckWorkspace *space = wnck_screen_get_workspace(screen, i);
         const char *name = wnck_workspace_get_name(space);
 
@@ -292,6 +304,7 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
                            COL_NAME, name,
                            -1);
     }
+    g_strfreev(names);
 
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ls));
 
@@ -334,7 +347,7 @@ workspace_dialog_configure_widgets (GladeXML *gxml,
     gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_left_spinbutton), 0, hmax);
 
     /* Bind easy properties */
-    xfconf_g_property_bind (channel, 
+    xfconf_g_property_bind (channel,
                             "/general/workspace_count",
                             G_TYPE_INT,
                             (GObject *)workspace_count_spinbutton, "value");
@@ -372,7 +385,7 @@ static GOptionEntry entries[] =
 };
 
 
-int 
+int
 main(int argc, gchar **argv)
 {
     GladeXML *gxml;
@@ -417,7 +430,7 @@ main(int argc, gchar **argv)
 
         if(opt_socket_id == 0) {
             dialog = glade_xml_get_widget (gxml, "main-dialog");
-            
+
             while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
                 /* FIXME: launch help */
             }
