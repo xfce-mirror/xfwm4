@@ -1,3 +1,12 @@
+2008-11-08  olivier
+
+	* src/settings.c: Do not display warnings for "workspace_names" either. 
+
+2008-11-08  brian
+
+	* settings-dialogs/xfwm4-settings.c: Fix possible crash when the 
+	  dbl_click_action setting gets unset.
+
 2008-11-02  olivier
 
 	* src/parserc.c, src/settings.c: Do not display warnings for values 

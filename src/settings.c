@@ -1138,7 +1138,8 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                     set_placement_mode (screen_info, g_value_get_string (value));
                 }
                 else if ((!strcmp (name, "title_shadow_active"))
-                      || (!strcmp (name, "title_shadow_inactive")))
+                      || (!strcmp (name, "title_shadow_inactive"))
+                      || (!strcmp (name, "workspace_names")))
                 {
                     /* These properties are not configurable via xfconf */
                 }
