@@ -8,6 +8,7 @@
 - Simplify management of transients.
 - Add support for keyboard shortcuts (Bug #4492).
 - Add new option do disable blinking of urgent windows.
+- Fix possible crash when the dbl_click_action setting gets unset.
 
 4.5.91 (Xfce 4.6beta1)
 ======================

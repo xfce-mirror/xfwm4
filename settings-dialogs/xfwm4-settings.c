@@ -1547,6 +1547,7 @@ xfwm_settings_double_click_action_property_changed (XfconfChannel *channel,
   GtkTreeModel *model;
   GtkTreeIter   iter;
   GtkWidget    *combo;
+  const gchar  *new_value;
   gchar        *current_value;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
@@ -1554,13 +1555,18 @@ xfwm_settings_double_click_action_property_changed (XfconfChannel *channel,
   combo = glade_xml_get_widget (settings->priv->glade_xml, "double_click_action_combo");
   model = gtk_combo_box_get_model (GTK_COMBO_BOX (combo));
 
+  if (G_UNLIKELY (G_VALUE_TYPE (value) == G_TYPE_INVALID))
+    new_value = "maximize";
+  else
+    new_value = g_value_get_string (value);
+
   if (G_LIKELY (gtk_tree_model_get_iter_first (model, &iter)))
     {
       do 
         {
           gtk_tree_model_get (model, &iter, 1, &current_value, -1);
 
-          if (G_UNLIKELY (g_str_equal (current_value, g_value_get_string (value))))
+          if (G_UNLIKELY (g_str_equal (current_value, new_value)))
             {
               g_free (current_value);
               gtk_combo_box_set_active_iter (GTK_COMBO_BOX (combo), &iter);
