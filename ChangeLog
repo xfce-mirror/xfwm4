@@ -1,5 +1,9 @@
 2008-11-09  olivier
 
+	* po/POTFILES.in, settings-dialogs/Makefile.am: Fix make distcheck
+
+2008-11-09  olivier
+
 	* configure.ac.in: Update version
 	  po/*: Update po
 

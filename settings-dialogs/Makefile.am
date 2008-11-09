@@ -39,6 +39,7 @@ xfwm4_workspace_settings_LDADD = \
 
 xfwm4_settings_SOURCES = \
 	xfwm4-settings.c \
+	xfwm4-settings.h \
 	xfwm4-dialog_glade.h
 
 xfwm4_settings_CFLAGS = \

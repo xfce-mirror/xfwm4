@@ -1,15 +1,6 @@
 # List of source files containing translatable strings.
 
 helper-dialog/helper-dialog.c
-mcs-plugin/margins.c
-mcs-plugin/wmtweaks_plugin.c
-mcs-plugin/workspaces.c
-mcs-plugin/workspaces_plugin.c
-mcs-plugin/xfce-wm-settings.desktop.in
-mcs-plugin/xfce-wmtweaks-settings.desktop.in
-mcs-plugin/xfce-workspaces-settings.desktop.in
-mcs-plugin/xfwm4_plugin.c
-mcs-plugin/xfwm4_shortcuteditor.c
 settings-dialogs/tweaks-settings.c
 settings-dialogs/workspace-settings.c
 settings-dialogs/xfce-wm-settings.desktop.in
