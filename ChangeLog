@@ -1,5 +1,10 @@
 2008-11-09  olivier
 
+	* configure.ac.in: Update version
+	  po/*: Update po
+
+2008-11-09  olivier
+
 	* settings-dialogs/workspace-settings.c: Fix compiler warning
 	  src/cycle.c: Add key shortcut for reverse cycling (Bug #2778)
 

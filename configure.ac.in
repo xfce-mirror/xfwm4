@@ -5,7 +5,7 @@ dnl
 
 m4_define([xfwm4_version_major], [4])
 m4_define([xfwm4_version_minor], [5])
-m4_define([xfwm4_version_micro], [91])
+m4_define([xfwm4_version_micro], [92])
 m4_define([xfwm4_version_build], [r@REVISION@])
 m4_define([xfwm4_version_tag],   [svn])
 m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_version_micro()ifelse(xfwm4_version_tag(), [svn], [xfwm4_version_tag().xfwm4_version_build()], [xfwm4_version_tag()])])
@@ -86,7 +86,7 @@ dnl
 LIBSTARTUP_NOTIFICATION_FOUND="no"
 XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
                        [libstartup-notification-1.0], [startup_notification_minimum_version],
-                       [startup-notification], 
+                       [startup-notification],
                        [startup notification library], [yes])
 
 
@@ -123,7 +123,7 @@ if test x"$enable_render" = x"yes"; then
     have_render="yes"
     AC_DEFINE([HAVE_RENDER], [1], [Define to enable render])
   else
-    dnl fallback to check for libXrender 
+    dnl fallback to check for libXrender
     AC_CHECK_LIB([Xrender], [XRenderCreatePicture],
         [ have_render="yes"
           RENDER_LIBS=" -lXrender"
@@ -153,7 +153,7 @@ if test x"$enable_randr" = x"yes"; then
                                   RANDR_LIBS="-lXrandr -lXrender"
                                   AC_DEFINE([HAVE_RANDR], [1], [Define to enable xrandr])
                                   have_xrandr="yes",,
-                                  [#include <X11/Xlib.h>])],, 
+                                  [#include <X11/Xlib.h>])],,
                   $LIBS $LIBX11_LDFLAGS $LIBX11_LIBS -lXrender -lXext)
     CFLAGS="$ac_CFLAGS"
   fi
@@ -208,7 +208,7 @@ fi
 AC_DEFINE_UNQUOTED([REVISION], "$REVISION", [svn revision number])
 AC_SUBST([REVISION])
 
-AC_OUTPUT([ 
+AC_OUTPUT([
 Makefile
 doc/Makefile
 doc/C/Makefile
@@ -222,7 +222,7 @@ helper-dialog/Makefile
 icons/Makefile
 icons/48x48/Makefile
 icons/scalable/Makefile
-po/Makefile.in 
+po/Makefile.in
 settings-dialogs/Makefile
 src/Makefile
 themes/Makefile
