@@ -65,9 +65,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     ClientCycleData *passdata;
     Client *c, *removed;
     eventFilterStatus status;
-    KeyCode cycle;
     KeyCode cancel;
-    int modifier;
+    int key, modifier;
     gboolean key_pressed, cycling, gone;
 
     TRACE ("entering clientCycleEventFilter");
@@ -81,11 +80,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     c = passdata->c;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    cycle = screen_info->params->keys[KEY_CYCLE_WINDOWS].keycode;
     cancel = screen_info->params->keys[KEY_CANCEL].keycode;
     modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
-    key_pressed = ((xevent->type == KeyPress) && ((xevent->xkey.keycode == cycle) ||
-                                                  (xevent->xkey.keycode == cancel)));
     status = EVENT_FILTER_STOP;
     cycling = TRUE;
     gone = FALSE;
@@ -110,24 +106,28 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             status = EVENT_FILTER_CONTINUE;
             /* Walk through */
         case KeyPress:
+            key_pressed = (xevent->type == KeyPress);
             if (gone || key_pressed)
             {
                 if (key_pressed)
                 {
                     Client *c2 = NULL;
-
+                    key = myScreenGetKeyPressed (screen_info, (XKeyEvent *) xevent);
+                    /*
+                     * We cannot simply check for key == KEY_CANCEL here because of the
+                     * mofidier being pressed, so we need to look at the keycode directly.
+                     */
                     if (xevent->xkey.keycode == cancel)
                     {
                         c2 = tabwinGetHead (passdata->tabwin);
                         cycling = FALSE;
                     }
-                    /* If KEY_CYCLE_WINDOWS has Shift, then do not reverse */
-                    else if (!(modifier & ShiftMask) && (xevent->xkey.state & ShiftMask))
+                    else if (key == KEY_CYCLE_REVERSE_WINDOWS)
                     {
                         TRACE ("Cycle: previous");
                         c2 = tabwinSelectPrev(passdata->tabwin);
                     }
-                    else
+                    else if (key == KEY_CYCLE_WINDOWS)
                     {
                         TRACE ("Cycle: next");
                         c2 = tabwinSelectNext(passdata->tabwin);

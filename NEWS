@@ -14,6 +14,7 @@
   (typically theme settings).
 - Draw focus in tabwin to make sure the selection is visible even with themes 
   that do not show selected items.
+- Add key shortcut for reverse cycling (Bug #2778)
 
 4.5.91 (Xfce 4.6beta1)
 ======================

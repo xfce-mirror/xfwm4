@@ -1,5 +1,10 @@
 2008-11-09  olivier
 
+	* settings-dialogs/workspace-settings.c: Fix compiler warning
+	  src/cycle.c: Add key shortcut for reverse cycling (Bug #2778)
+
+2008-11-09  olivier
+
 	* settings-dialogs/xfwm4-settings.c, src/cycle.c, src/settings.c,
 	  src/events.c, src/settings.h, src/screen.c, src/screen.h:
 	  Prepare code for reverse cycling (not finished yet).
