@@ -198,6 +198,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     DisplayInfo *display_info;
     ClientCycleData passdata;
     gboolean g1, g2;
+    int key;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCycle");
@@ -235,7 +236,15 @@ clientCycle (Client * c, XKeyEvent * ev)
     {
         passdata.cycle_range |= INCLUDE_ALL_WORKSPACES;
     }
-    passdata.c = clientGetNext (c, passdata.cycle_range);
+    key = myScreenGetKeyPressed (screen_info, ev);
+    if (key == KEY_CYCLE_REVERSE_WINDOWS)
+    {
+        passdata.c = clientGetPrevious (c, passdata.cycle_range);
+    }
+    else
+    {
+        passdata.c = clientGetNext (c, passdata.cycle_range);
+    }
     passdata.wireframe = None;
 
     /* If there is one single client, and if it's eligible for focus, use it */

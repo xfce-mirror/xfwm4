@@ -48,6 +48,13 @@
 #include "client.h"
 #include "hints.h"
 
+#define MODIFIER_MASK           (ShiftMask | \
+                                 ControlMask | \
+                                 AltMask | \
+                                 MetaMask | \
+                                 SuperMask | \
+                                 HyperMask)
+
 #ifdef HAVE_COMPOSITOR
 struct _gaussian_conv {
     int     size;
@@ -198,6 +205,8 @@ unsigned int             myScreenUngrabPointer                  (ScreenInfo *,
                                                                  guint32);
 void                     myScreenGrabKeys                       (ScreenInfo *);
 void                     myScreenUngrabKeys                     (ScreenInfo *);
+int                      myScreenGetKeyPressed                  (ScreenInfo *,
+                                                                 XKeyEvent *);
 Client                  *myScreenGetClientFromWindow            (ScreenInfo *,
                                                                  Window,
                                                                  unsigned short);

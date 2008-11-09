@@ -522,6 +522,24 @@ myScreenUngrabKeys (ScreenInfo *screen_info)
     ungrabKeys (dpy, screen_info->xroot);
 }
 
+int
+myScreenGetKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
+{
+    int key, state;
+
+    state = ev->state & MODIFIER_MASK;
+    for (key = 0; key < KEY_COUNT; key++)
+    {
+        if ((screen_info->params->keys[key].keycode == ev->keycode)
+            && (screen_info->params->keys[key].modifier == state))
+        {
+            break;
+        }
+    }
+
+    return key;
+}
+
 Client *
 myScreenGetClientFromWindow (ScreenInfo *screen_info, Window w, unsigned short mode)
 {

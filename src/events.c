@@ -77,13 +77,6 @@
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
 
-#define MODIFIER_MASK           (ShiftMask | \
-                                 ControlMask | \
-                                 AltMask | \
-                                 MetaMask | \
-                                 SuperMask | \
-                                 HyperMask)
-
 static GdkAtom atom_rcfiles = GDK_NONE;
 static xfwmWindow menu_event_window;
 static int edge_scroll_x = 0;
@@ -291,24 +284,6 @@ handleMotionNotify (DisplayInfo *display_info, XMotionEvent * ev)
     return EVENT_FILTER_REMOVE;
 }
 
-static int
-getKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
-{
-    int key, state;
-
-    state = ev->state & MODIFIER_MASK;
-    for (key = 0; key < KEY_COUNT; key++)
-    {
-        if ((screen_info->params->keys[key].keycode == ev->keycode)
-            && (screen_info->params->keys[key].modifier == state))
-        {
-            break;
-        }
-    }
-
-    return key;
-}
-
 static eventFilterStatus
 handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 {
@@ -334,7 +309,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     if (c)
     {
         screen_info = c->screen_info;
-        key = getKeyPressed (screen_info, ev);
+        key = myScreenGetKeyPressed (screen_info, ev);
         status = EVENT_FILTER_REMOVE;
 
         switch (key)
@@ -346,6 +321,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
                 break;
             case KEY_CYCLE_WINDOWS:
+            case KEY_CYCLE_REVERSE_WINDOWS:
                 clientCycle (c, ev);
                 break;
             case KEY_CLOSE_WINDOW:
@@ -445,7 +421,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     }
     else
     {
-        key = getKeyPressed (ev_screen_info, ev);
+        key = myScreenGetKeyPressed (ev_screen_info, ev);
         switch (key)
         {
             case KEY_CYCLE_WINDOWS:
