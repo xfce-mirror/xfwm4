@@ -164,6 +164,10 @@ static void       xfwm_settings_double_click_action_property_changed (XfconfChan
                                                                       const gchar           *property,
                                                                       const GValue          *value,
                                                                       XfwmSettings          *settings);
+static void       xfwm_settings_click_to_focus_property_changed      (XfconfChannel         *channel,
+                                                                      const gchar           *property,
+                                                                      const GValue          *value,
+                                                                      XfwmSettings          *settings);
 static void       xfwm_settings_initialize_shortcuts                 (XfwmSettings          *settings);
 static void       xfwm_settings_reload_shortcuts                     (XfwmSettings          *settings);
 static void       xfwm_settings_shortcut_added                       (XfceShortcutsProvider *provider,
@@ -414,7 +418,7 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *shortcuts_clear_button;
   GtkWidget          *shortcuts_reset_button;
   GtkWidget          *focus_delay_scale;
-  GtkWidget          *click_to_focus_mode;
+  GtkWidget          *click_to_focus_radio;
   GtkWidget          *raise_on_click_check;
   GtkWidget          *raise_on_focus_check;
   GtkWidget          *focus_new_check;
@@ -626,19 +630,24 @@ xfwm_settings_constructed (GObject *object)
   focus_new_check = glade_xml_get_widget (settings->priv->glade_xml, "focus_new_check");
   raise_on_focus_check = glade_xml_get_widget (settings->priv->glade_xml, "raise_on_focus_check");
   raise_on_click_check = glade_xml_get_widget (settings->priv->glade_xml, "raise_on_click_check");
-  click_to_focus_mode = glade_xml_get_widget (settings->priv->glade_xml, "click_to_focus_mode");
 
   /* Focus tab */
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/focus_delay", G_TYPE_INT,
                           gtk_range_get_adjustment (GTK_RANGE (focus_delay_scale)), "value");
-  xfconf_g_property_bind (settings->priv->wm_channel, "/general/click_to_focus", G_TYPE_BOOLEAN,
-                          click_to_focus_mode, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/raise_on_click", G_TYPE_BOOLEAN,
                           raise_on_click_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/raise_on_focus", G_TYPE_BOOLEAN,
                           raise_on_focus_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/focus_new", G_TYPE_BOOLEAN,
                           focus_new_check, "active");
+
+  g_signal_connect (settings->priv->wm_channel, "property-changed::/general/click_to_focus", 
+                    G_CALLBACK (xfwm_settings_click_to_focus_property_changed), settings);
+  
+  xfconf_channel_get_property (settings->priv->wm_channel, "/general/click_to_focus", &value);
+  xfwm_settings_click_to_focus_property_changed (settings->priv->wm_channel, 
+                                                 "/general/click_to_focus", &value, settings);
+  g_value_unset (&value);
 
   /* Advanced tab widgets */
   box_move_check = glade_xml_get_widget (settings->priv->glade_xml, "box_move_check");
@@ -1577,6 +1586,36 @@ xfwm_settings_double_click_action_property_changed (XfconfChannel *channel,
           g_free (current_value);
         }
       while (gtk_tree_model_iter_next (model, &iter));
+    }
+}
+
+
+
+static void
+xfwm_settings_click_to_focus_property_changed (XfconfChannel *channel,
+                                               const gchar   *property,
+                                               const GValue  *value,
+                                               XfwmSettings  *settings)
+{
+  GtkWidget *click_to_focus_radio;
+  GtkWidget *focus_follows_mouse_radio;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+
+  click_to_focus_radio = glade_xml_get_widget (settings->priv->glade_xml, 
+                                               "click_to_focus_radio");
+  focus_follows_mouse_radio = glade_xml_get_widget (settings->priv->glade_xml, 
+                                                    "focus_follows_mouse_radio");
+
+  if (G_UNLIKELY (G_VALUE_TYPE (value) != G_TYPE_BOOLEAN))
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (click_to_focus_radio), TRUE);
+  else 
+    {
+      if (g_value_get_boolean (value))
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (click_to_focus_radio), TRUE);
+      else
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_follows_mouse_radio), TRUE);
     }
 }
 
