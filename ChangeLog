@@ -1,3 +1,7 @@
+2008-11-11  olivier
+
+	* settings-dialogs/xfwm4-settings.c: Fix focus model selection
+
 2008-11-11	jannis
 
 	* src/settings.c: Place the sidewalks again after wrap_workspaces has
