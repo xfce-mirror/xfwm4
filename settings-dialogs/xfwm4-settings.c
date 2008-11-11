@@ -418,7 +418,6 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *shortcuts_clear_button;
   GtkWidget          *shortcuts_reset_button;
   GtkWidget          *focus_delay_scale;
-  GtkWidget          *click_to_focus_radio;
   GtkWidget          *raise_on_click_check;
   GtkWidget          *raise_on_focus_check;
   GtkWidget          *focus_new_check;

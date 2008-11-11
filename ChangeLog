@@ -1,5 +1,9 @@
 2008-11-11  olivier
 
+	* settings-dialogs/xfwm4-settings.c: Fix build with -Werror.
+
+2008-11-11  olivier
+
 	* settings-dialogs/workspace-settings.c: Use editable cells instead of 
 	  yet another popup dialog.
 
