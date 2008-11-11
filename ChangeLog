@@ -1,5 +1,9 @@
 2008-11-11  olivier
 
+	* po/*.po, po/xfwm4.pot: update po
+
+2008-11-11  olivier
+
 	* settings-dialogs/xfwm4-settings.c: Fix focus model selection
 
 2008-11-11	jannis
