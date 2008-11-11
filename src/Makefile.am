@@ -22,6 +22,11 @@ xfwm4_SOURCES =								\
 	icons.c								\
 	icons.h								\
 	inline-default-icon.h						\
+	inline-stock-maximize.h						\
+	inline-stock-minimize.h						\
+	inline-stock-rolldown.h						\
+	inline-stock-rollup.h						\
+	inline-stock-unmaximize.h					\
 	inline-tabwin-icon.h						\
 	keyboard.c							\
 	keyboard.h							\
@@ -106,6 +111,7 @@ xfwm4_LDADD =								\
 	$(RANDR_LIBS)
 
 EXTRA_DIST = 								\
+	inline-default-icon.h default_icon.png default_icon.svg		\
 	inline-tabwin-icon.h tabwin-icon.png				\
 	inline-stock-maximize.h stock_maximize.png			\
 	inline-stock-unmaximize.h stock_unmaximize.png			\
@@ -115,6 +121,7 @@ EXTRA_DIST = 								\
 	gen-color-table.pl
 
 noinst_DATA = 								\
+	inline-default-icon.h default_icon.png default_icon.svg		\
 	inline-tabwin-icon.h tabwin-icon.png				\
 	inline-stock-maximize.h stock_maximize.png			\
 	inline-stock-unmaximize.h stock_unmaximize.png			\

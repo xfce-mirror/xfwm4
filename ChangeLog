@@ -1,5 +1,9 @@
 2008-11-11  olivier
 
+	* src/Makefile.am: add missing inline icons
+
+2008-11-11  olivier
+
 	* settings-dialogs/xfwm4-settings.c: Fix build with -Werror.
 
 2008-11-11  olivier
