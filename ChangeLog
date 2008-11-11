@@ -1,5 +1,9 @@
 2008-11-11  olivier
 
+	* settings-dialogs/workspace-settings.c: Revert
+
+2008-11-11  olivier
+
 	* src/Makefile.am: stock_rolldown.png missing in Makefile.am
 
 2008-11-09  olivier
