@@ -111,7 +111,7 @@ EXTRA_DIST = 								\
 	inline-stock-unmaximize.h stock_unmaximize.png			\
 	inline-stock-minimize.h stock_minimize.png			\
 	inline-stock-rollup.h stock_rollup.png				\
-	inline-stock-rolldown.h stock_rollup.png			\
+	inline-stock-rolldown.h stock_rolldown.png			\
 	gen-color-table.pl
 
 noinst_DATA = 								\
@@ -120,7 +120,7 @@ noinst_DATA = 								\
 	inline-stock-unmaximize.h stock_unmaximize.png			\
 	inline-stock-minimize.h stock_minimize.png			\
 	inline-stock-rollup.h stock_rollup.png				\
-	inline-stock-rolldown.h stock_rollup.png
+	inline-stock-rolldown.h stock_rolldown.png
 
 build.h:
 	echo "#define BUILD_ID \""`date +%H%M-%y%m%d`"\"" > build.h
