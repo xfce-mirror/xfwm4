@@ -3,6 +3,7 @@
  *  Copyright (c) 2008 Stephan Arts <stephan@xfce.org>
  *  Copyright (c) 2008 Jannis Pohlmann <jannis@xfce.org>
  *  Copyright (c) 2008 Mike Massonnet <mmassonnet@xfce.org>
+ *  Copyright (c) 2008 Olivier Fourdan <olivier@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -112,55 +113,32 @@ workspace_names_update_xfconf(gint workspace,
 }
 
 static void
-treeview_ws_names_row_activated(GtkTreeView *treeview,
-                                GtkTreePath *path,
-                                GtkTreeViewColumn *column,
-                                gpointer user_data)
+treeview_ws_names_cell_edited (GtkCellRendererText *cell,
+                               const gchar         *path_string,
+                               const gchar         *new_name,
+                               gpointer             user_data)
 {
-    GtkWidget *dialog = user_data, *entry;
-    GtkTreeModel *model = gtk_tree_view_get_model(treeview);
+    GtkTreeView *treeview;
+    GtkTreeModel *model;
+    GtkTreePath *path;
     GtkTreeIter iter;
+    gchar *old_name = NULL;
     gint ws_num = 1;
-    gchar *subtitle, *old_name = NULL;
 
-    if(!gtk_tree_model_get_iter(model, &iter, path))
-        return;
+    treeview = (GtkTreeView *) user_data;
+    model = gtk_tree_view_get_model(treeview);
+    path = gtk_tree_path_new_from_string (path_string);
+    gtk_tree_model_get_iter (model, &iter, path);
 
-    gtk_tree_model_get(model, &iter,
-                       COL_NUMBER, &ws_num,
-                       COL_NAME, &old_name,
-                       -1);
-
-    subtitle = g_strdup_printf(_("Change the name of workspace %d"), ws_num);
-    xfce_titled_dialog_set_subtitle(XFCE_TITLED_DIALOG(dialog), subtitle);
-    g_free(subtitle);
-
-    entry = g_object_get_data(G_OBJECT(dialog), "name-entry");
-    gtk_entry_set_text(GTK_ENTRY(entry), old_name);
-    gtk_editable_select_region(GTK_EDITABLE(entry), 0, -1);
-
-    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
-        gchar *new_name;
-
-        new_name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
-        if(!*new_name) {
-            g_free(new_name);
-            new_name = g_strdup_printf(_("Workspace %d"), ws_num);
-        }
-
-        /* only update it if the name's actually different */
-        if(strcmp(old_name, new_name)) {
-            gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-                               COL_NAME, new_name,
-                               -1);
-            workspace_names_update_xfconf(ws_num - 1, new_name);
-        }
-
-        g_free(new_name);
+    gtk_tree_model_get(model, &iter, COL_NUMBER, &ws_num, COL_NAME, &old_name, -1);
+    if(strcmp(old_name, new_name)) {
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_NAME, new_name, -1);
+        workspace_names_update_xfconf(ws_num - 1, new_name);
     }
 
     g_free(old_name);
-    gtk_widget_hide(dialog);
+
+    gtk_tree_path_free (path);
 }
 
 
@@ -257,8 +235,6 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
                      G_CALLBACK(gtk_true), NULL);
 
     treeview = glade_xml_get_widget(gxml, "treeview_ws_names");
-    g_signal_connect(G_OBJECT(treeview), "row-activated",
-                     G_CALLBACK(treeview_ws_names_row_activated), dialog);
 
     ls = gtk_list_store_new(N_COLS, G_TYPE_INT, G_TYPE_STRING);
 
@@ -270,6 +246,7 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
 
     render = gtk_cell_renderer_text_new();
     g_object_set(G_OBJECT(render),
+                 "editable", TRUE,
                  "ellipsize", PANGO_ELLIPSIZE_END,
                  "ellipsize-set", TRUE,
                  NULL);
@@ -277,6 +254,8 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
                                                    render,
                                                    "text", COL_NAME,
                                                    NULL);
+    g_signal_connect (render, "edited", G_CALLBACK (treeview_ws_names_cell_edited), treeview);
+
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
 
     screen = wnck_screen_get_default();

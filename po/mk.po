@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-09 16:01+0000\n"
+"POT-Creation-Date: 2008-11-11 20:29+0000\n"
 "PO-Revision-Date: 2006-12-24 03:21+0100\n"
 "Last-Translator: Jovan Naumovski <jovan@lugola.net>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -26,956 +26,54 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
-#: ../mcs-plugin/margins.c:130
-msgid "Workspace Margins"
-msgstr "Маргини на на работната површина"
-
-#: ../mcs-plugin/margins.c:136
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Маргините се површина на краевите на екранот каде не може да се постави "
-"прозорец"
-
-#: ../mcs-plugin/margins.c:167
-msgid "Left :"
-msgstr "Лево :"
-
-#: ../mcs-plugin/margins.c:187
-msgid "Right :"
-msgstr "Десно :"
-
-#: ../mcs-plugin/margins.c:207
-msgid "Top :"
-msgstr "Горе :"
-
-#: ../mcs-plugin/margins.c:227
-msgid "Bottom :"
-msgstr "Долу :"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:471
 #: ../settings-dialogs/tweaks-settings.c:43
 msgid "None"
 msgstr "Ништо"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:476
-#, fuzzy
-msgid "Bring window on current workspace"
-msgstr "Помести го прозорецот во следната работна површина"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:477
-#, fuzzy
-msgid "Switch to window's workspace"
-msgstr "Премести го прозорецот до работната површина %d"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:478
-#, fuzzy
-msgid "Do nothing"
-msgstr "Ништо"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:483
-msgid "Place window under the mouse"
-msgstr ""
-
-#: ../mcs-plugin/wmtweaks_plugin.c:484
-msgid "Place window in the center"
-msgstr ""
-
-#: ../mcs-plugin/wmtweaks_plugin.c:493
-#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Window Manager Tweaks"
-msgstr "Подобрувања на менаџерот за прозорци"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:512
-#, fuzzy
-msgid ""
-"Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-msgstr ""
-"Прескокни ги прозорците кај кои е поставено својството \"прескокни пејџер\" "
-"или \"прескокни лента со задачи\""
-
-#: ../mcs-plugin/wmtweaks_plugin.c:518
-#, fuzzy
-msgid "Include hidden (i.e. iconified) windows"
-msgstr "Вклучувај ги и скриените (т.е. иконизирани) прозорци"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:524
-#, fuzzy
-msgid "Cycle through windows from all workspaces"
-msgstr "Кружи низ прозорците од сите работни површини"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:529
-#, fuzzy
-msgid "Cycling"
-msgstr "Кружење"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:541
-#, fuzzy
-msgid "Activate focus stealing prevention"
-msgstr "Активирај превенција од крадење на фокусот"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:547
-#, fuzzy
-msgid "Honor the standard ICCCM focus hint"
-msgstr "Користи го стандардниот ICCCM фокус"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:553
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "When a window raises itself:"
-msgstr ""
-
-#: ../mcs-plugin/wmtweaks_plugin.c:558 ../mcs-plugin/xfwm4_plugin.c:1752
-#, fuzzy
-msgid "Focus"
-msgstr "Фокус"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:570
-#, fuzzy
-msgid "Key used to grab and move windows"
-msgstr "Копчињата користени за фаќање и поместување на прозорците"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:576
-#, fuzzy
-msgid "Raise windows when any mouse button is pressed"
-msgstr "Подигни ги прозорците кога било кое копче од глувчето е притиснато"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:583
-#, fuzzy
-msgid "Hide frame of windows when maximized"
-msgstr "Криј ја рамката на прозорците кога се максимизирани"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:590
-#, fuzzy
-msgid "Restore original size of maximized windows when moving"
-msgstr ""
-"Врати ја оригиналната големина на максимизираните прозорци кога се "
-"поместуваат"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:596
-#, fuzzy
-msgid "Use edge resistance instead of windows snapping"
-msgstr "Користи отпор на ќошевите, наместо прилепување на прозорците"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:601
-#, fuzzy
-msgid "Accessibility"
-msgstr "Пристапност"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:614
-msgid "Switch workspaces using the mouse wheel over the desktop"
-msgstr ""
-"Менувај ги работните површини со користење на тркалцето над работната "
-"површина"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:621
-#, fuzzy
-msgid ""
-"Remember and recall previous workspace when switching via keyboard shortcuts"
-msgstr ""
-"Запомни ги и врати ја претходната работна површина при преминување со "
-"кратенки на тастатурата"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:628
-#, fuzzy
-msgid "Wrap workspaces depending on the actual desktop layout"
-msgstr ""
-"Преминувај преку работните површини, во зависност од изгледот на тековната "
-"работна површина"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:635
-#, fuzzy
-msgid "Wrap workspaces when the first or last workspace is reached"
-msgstr ""
-"Преминувај меѓу работните површини кога првата или последната работна "
-"површина е достигната"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:640 ../mcs-plugin/workspaces.c:519
-#: ../mcs-plugin/workspaces_plugin.c:163
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
-msgid "Workspaces"
-msgstr "Работни површи"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:652
-#, fuzzy
-msgid "Minimum size of windows to trigger smart placement"
-msgstr "Минимална големина на прозорците за да се пушти паметното поставување"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:653
-#, fuzzy
-msgid "Size|Small"
-msgstr "Мало"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:653
-#, fuzzy
-msgid "Size|Large"
-msgstr "Големо"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:658
-#, fuzzy
-msgid "Default positionning of windows without smart placement:"
-msgstr "Минимална големина на прозорците за да се пушти паметното поставување"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:663
-#, fuzzy
-msgid "Placement"
-msgstr "Поставување"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:683
-#, fuzzy
-msgid "Enable display compositing"
-msgstr "Овозможи го прелевањето"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:697
-#, fuzzy
-msgid "Display full screen overlay windows directly"
-msgstr "Прикажи ги прозорците на цел екран директно"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:703
-#, fuzzy
-msgid "Show shadows under dock windows"
-msgstr "Прикажи сенки под скокачките прозорци"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:709
-#, fuzzy
-msgid "Show shadows under regular windows"
-msgstr "Прикажи сенки под обичните прозорци"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:715
-#, fuzzy
-msgid "Show shadows under popup windows"
-msgstr "Прикажи сенки под скокачките прозорци"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:721
-#, fuzzy
-msgid "Opacity of window decorations"
-msgstr "Провидност на декорацијата на прозорците"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:721 ../mcs-plugin/wmtweaks_plugin.c:727
-#: ../mcs-plugin/wmtweaks_plugin.c:733 ../mcs-plugin/wmtweaks_plugin.c:739
-#: ../mcs-plugin/wmtweaks_plugin.c:745
-#, fuzzy
-msgid "Transparent"
-msgstr "Транспарентност"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:722 ../mcs-plugin/wmtweaks_plugin.c:728
-#: ../mcs-plugin/wmtweaks_plugin.c:734 ../mcs-plugin/wmtweaks_plugin.c:740
-#: ../mcs-plugin/wmtweaks_plugin.c:746
-#, fuzzy
-msgid "Opaque"
-msgstr "Провидност"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:727
-#, fuzzy
-msgid "Opacity of inactive windows"
-msgstr "Провидност на неактивните прозорци"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:733
-#, fuzzy
-msgid "Opacity of windows during move"
-msgstr "Провидност на на прозорците при поместување"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:739
-#, fuzzy
-msgid "Opacity of windows during resize"
-msgstr "Провидност на прозорците при промена на големината"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:745
-#, fuzzy
-msgid "Opacity of popup windows"
-msgstr "Провидност на скокачките прозорци"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:750
-#, fuzzy
-msgid "Compositor"
-msgstr "Композитор"
-
-#. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/wmtweaks_plugin.c:792
-msgid "Button Label|Window Manager Tweaks"
-msgstr "Прилагодувања на менаџерот на прозорци"
-
-#: ../mcs-plugin/wmtweaks_plugin.c:914 ../mcs-plugin/xfwm4_plugin.c:2430
-#, c-format
-msgid "These settings cannot work with your current window manager (%s)"
-msgstr ""
-"Овие поставувања нема да работат со Вашиот тековен менаџер на прозорци (%s)"
-
-#: ../mcs-plugin/workspaces.c:332
-msgid "Change name"
-msgstr "Промени го името"
-
-#: ../mcs-plugin/workspaces.c:341 ../mcs-plugin/xfwm4_shortcuteditor.c:484
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
-#: ../settings-dialogs/workspace-settings.c:148
-#, c-format
-msgid "Workspace %d"
-msgstr "Работен простор %d"
-
-#: ../mcs-plugin/workspaces.c:349
-#, fuzzy
-msgid "Name:"
-msgstr "Име:"
-
-#: ../mcs-plugin/workspaces.c:428
-msgid "Click on a workspace name to edit it"
-msgstr "Кликнете на името на работниот простор за да го промените"
-
-#: ../mcs-plugin/workspaces.c:494
-#, fuzzy
-msgid "Number of workspaces:"
-msgstr "Број на работни површини:"
-
-#: ../mcs-plugin/workspaces.c:530
-#, fuzzy
-msgid "Workspace names"
-msgstr "Имиња на работните површини"
-
-#. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/workspaces_plugin.c:111
-msgid "Button Label|Workspaces and Margins"
-msgstr "Работни површини и маргини"
-
-#: ../mcs-plugin/workspaces_plugin.c:145
-msgid "Workspaces and Margins"
-msgstr "Работни површини и маргини"
-
-#: ../mcs-plugin/workspaces_plugin.c:172
-#, fuzzy
-msgid "Margins"
-msgstr "Маргини"
-
-#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:1
-msgid "Window Manager Settings"
-msgstr "Поставувања за менаџерот на прозорци"
-
-#: ../mcs-plugin/xfce-wm-settings.desktop.in.h:2
-msgid "Xfce 4 Window Manager Settings"
-msgstr "Поставувања на менаџерот на прозорци на Xfce 4"
-
-#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:1
-msgid "Advanced Configuration"
-msgstr "Напредна конфигурација"
-
-#: ../mcs-plugin/xfce-wmtweaks-settings.desktop.in.h:3
-msgid "Xfce 4 Window Manager Tweaks"
-msgstr "Подобрувања на менаџерот на прозорци на Xfce 4"
-
-#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:1
-msgid "Workspaces Settings"
-msgstr "Поставувања за работните површини"
-
-#: ../mcs-plugin/xfce-workspaces-settings.desktop.in.h:2
-msgid "Xfce 4 Workspaces Settings"
-msgstr "Поставувања за работните површини на Xfce 4"
-
-#: ../mcs-plugin/xfwm4_plugin.c:68 ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Menu"
-msgstr "Мени"
-
-#: ../mcs-plugin/xfwm4_plugin.c:69 ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "Stick"
-msgstr "Прилепи"
-
-#: ../mcs-plugin/xfwm4_plugin.c:70 ../settings-dialogs/xfwm4-dialog.glade.h:40
-msgid "Shade"
-msgstr "Сенка"
-
-#: ../mcs-plugin/xfwm4_plugin.c:71 ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Hide"
-msgstr "Скриј"
-
-#: ../mcs-plugin/xfwm4_plugin.c:72 ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Maximize"
-msgstr "Максимизирај"
-
-#: ../mcs-plugin/xfwm4_plugin.c:73 ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Close"
-msgstr "Затвори"
-
-#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:372
-#: ../settings-dialogs/xfwm4-settings.c:211
-#: ../settings-dialogs/xfwm4-settings.c:242
-msgid "Shade window"
-msgstr "Засени ги прозорците"
-
-#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:369
-#: ../settings-dialogs/xfwm4-settings.c:212
-#: ../settings-dialogs/xfwm4-settings.c:239
-msgid "Hide window"
-msgstr "Скриј прозорец"
-
-#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:368
-#: ../settings-dialogs/xfwm4-settings.c:213
-#: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Maximize window"
-msgstr "Максимизирај го прозорецот"
-
-#: ../mcs-plugin/xfwm4_plugin.c:82 ../mcs-plugin/xfwm4_shortcuteditor.c:376
-#: ../settings-dialogs/xfwm4-settings.c:214
-#: ../settings-dialogs/xfwm4-settings.c:246
-#, fuzzy
-msgid "Fill window"
-msgstr "Скриј прозорец"
-
-#: ../mcs-plugin/xfwm4_plugin.c:83 ../settings-dialogs/xfwm4-settings.c:215
-msgid "Nothing"
-msgstr "Ништо"
-
-#: ../mcs-plugin/xfwm4_plugin.c:88 ../mcs-plugin/xfwm4_shortcuteditor.c:361
-#: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:230
-msgid "Left"
-msgstr "Лево"
-
-#: ../mcs-plugin/xfwm4_plugin.c:89 ../settings-dialogs/xfwm4-settings.c:221
-msgid "Center"
-msgstr "Центар"
-
-#: ../mcs-plugin/xfwm4_plugin.c:90 ../mcs-plugin/xfwm4_shortcuteditor.c:362
-#: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:231
-msgid "Right"
-msgstr "Десно"
-
-#: ../mcs-plugin/xfwm4_plugin.c:589
-#, fuzzy
-msgid "Click and drag buttons to change the layout"
-msgstr "Кликнете и влечете ги копчињата за да го промените изгледот"
-
-#: ../mcs-plugin/xfwm4_plugin.c:594
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "Active"
-msgstr "Активно"
-
-#: ../mcs-plugin/xfwm4_plugin.c:605
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "Title"
-msgstr "Наслов"
-
-#: ../mcs-plugin/xfwm4_plugin.c:606
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The window title, it cannot be removed"
-msgstr "Насловот на прозорецот, не може да се отстрани"
-
-#: ../mcs-plugin/xfwm4_plugin.c:618
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Hidden"
-msgstr "Скриен"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1391
-msgid "Font Selection Dialog"
-msgstr "Дијалог прозорец за избор на фонт"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1456
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-msgid "Window Manager"
-msgstr "Менаџер за прозорци"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1496
-#, fuzzy
-msgid "Title font"
-msgstr "Фонт за наслов "
-
-#: ../mcs-plugin/xfwm4_plugin.c:1505
-#, fuzzy
-msgid "Title Alignment"
-msgstr "Поставување на насловот"
-
-#. XXX
-#: ../mcs-plugin/xfwm4_plugin.c:1507
-msgid "Text alignment inside title bar :"
-msgstr "Поставување на текстот во полето за наслов :"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1513
-#, fuzzy
-msgid "Button layout"
-msgstr "Изглед на копчињата"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1518
-#, fuzzy
-msgid "Style"
-msgstr "Стил"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1566
-#, fuzzy
-msgid "Window shortcuts"
-msgstr "Кратенки на прозорец"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1580
-#, fuzzy
-msgid "Command"
-msgstr "Команда"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1586 ../settings-dialogs/xfwm4-settings.c:611
-#, fuzzy
-msgid "Shortcut"
-msgstr "Нема кратенка"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1603
-#, fuzzy
-msgid "Keyboard"
-msgstr "Тастатура"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1618
-#, fuzzy
-msgid "Focus model"
-msgstr "Модел на фокус"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1622
-#, fuzzy
-msgid "Click to focus"
-msgstr "Кликнете за фокус"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1632
-#, fuzzy
-msgid "Focus follows mouse"
-msgstr "Фокусот го следи глувчето"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1645
-#, fuzzy
-msgid "Delay before window receives focus"
-msgstr "Задоцнување пред подигнување на фокусираниот прозорец :"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1654 ../mcs-plugin/xfwm4_plugin.c:1716
-msgid "Slow"
-msgstr "Бавно "
-
-#: ../mcs-plugin/xfwm4_plugin.c:1661 ../mcs-plugin/xfwm4_plugin.c:1723
-msgid "Fast"
-msgstr "Брзо"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1682
-#, fuzzy
-msgid "Automatically give focus to newly created windows"
-msgstr "Автоматски додели фокус на новокреираните прозорци"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1686
-#, fuzzy
-msgid "New window focus"
-msgstr "Фокус на новите прозорци"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1693
-#, fuzzy
-msgid "Raise on focus"
-msgstr "Подигни при фокус"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1699
-#, fuzzy
-msgid "Automatically raise windows when they receive focus"
-msgstr "Автоматски подигнувај ги прозорците кога добиваат фокус"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1709
-#, fuzzy
-msgid "Delay before raising focused window :"
-msgstr "Задоцнување пред подигнување на фокусираниот прозорец :"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1744
-#, fuzzy
-msgid "Raise window when clicking inside application window"
-msgstr "Подигни ги прозорците при кликнување во прозорецот ан апликацијата"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1748
-#, fuzzy
-msgid "Raise on click"
-msgstr "Подигни при клик"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1766
-#, fuzzy
-msgid "Windows snapping"
-msgstr "Лепење на прозорците"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1771
-#, fuzzy
-msgid "Snap windows to screen border"
-msgstr "Прилепувај ги прозорците на работ на екранот"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1777
-#, fuzzy
-msgid "Snap windows to other windows"
-msgstr "Прилепувај ги прозорците на другите прозорци"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1788
-#, fuzzy
-msgid "Distance :"
-msgstr "Растојание :"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1795
-#, fuzzy
-msgid "Distance|Small"
-msgstr "Мало"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1802
-#, fuzzy
-msgid "Distance|Wide"
-msgstr "Широко"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1823
-#, fuzzy
-msgid "Wrap workspaces"
-msgstr "Преминувај преку работните површини"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1829
-#, fuzzy
-msgid "Wrap workspaces when the pointer reaches a screen edge"
-msgstr ""
-"Преминувај преку работните површини кога стрелката го достигнува работ на "
-"екранот"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1837
-#, fuzzy
-msgid "Wrap workspaces when dragging a window off the screen"
-msgstr ""
-"Преминувај преку работните површини при влечење на прозорец преку екранот"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1847
-#, fuzzy
-msgid "Edge Resistance :"
-msgstr "Отпор на ќошевите :"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1854
-#, fuzzy
-msgid "Resistance|Small"
-msgstr "Мал"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1861
-#, fuzzy
-msgid "Resistance|Wide"
-msgstr "Широк"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1883
-#, fuzzy
-msgid "Opaque move and resize"
-msgstr "Провидност при движење и промена на големина"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1888
-#, fuzzy
-msgid "Display content of windows when resizing"
-msgstr "Прикажи ја содржината на прозорецот при промена на големината"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1894
-#, fuzzy
-msgid "Display content of windows when moving"
-msgstr "Прикажи ја содржината на прозорецот при поместување"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1899
-#, fuzzy
-msgid "Double click action"
-msgstr "Дејство при двоен клик"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1901
-#, fuzzy
-msgid "Action to perform when double clicking on title bar :"
-msgstr "Дејство за извршување при двоен клик на полето со наслов :"
-
-#: ../mcs-plugin/xfwm4_plugin.c:1906
-#, fuzzy
-msgid "Advanced"
-msgstr "Напредно"
-
-#. the button label in the xfce-mcs-manager dialog
-#: ../mcs-plugin/xfwm4_plugin.c:2051
-msgid "Button Label|Window Manager"
-msgstr "Менаџер на прозорци"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:54
-msgid "Do you really want to remove this keybinding theme ?"
-msgstr ""
-"дали навистина сакате да ја отстраните оваа тема за поврзување на копчињата ?"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:133
-msgid "Add keybinding theme"
-msgstr "Додај тема за поврзување на копчиења"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:140
-#, fuzzy
-msgid "Enter a name for the theme:"
-msgstr "Внесете име за темата:"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:176
-msgid "A keybinding theme with the same name already exists"
-msgstr "Тема за поврзување на копчиња со истото име веќе постои"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:182
-msgid "You have to provide a name for the keybinding theme"
-msgstr "Мора да внесете име за темата за поврзување на копчиња"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:358
-#: ../settings-dialogs/xfwm4-settings.c:227
-msgid "Window operations menu"
-msgstr "Мени на операциите на прозорецот"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:359
-#: ../settings-dialogs/xfwm4-settings.c:228
-msgid "Up"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
-#: ../settings-dialogs/xfwm4-settings.c:229
-msgid "Down"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:858
-#: ../settings-dialogs/xfwm4-settings.c:232
-msgid "Cancel"
-msgstr "Откажи"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
-#: ../settings-dialogs/xfwm4-settings.c:233
-msgid "Cycle windows"
-msgstr "Кружи помеѓу прозорците"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:365
-#: ../settings-dialogs/xfwm4-settings.c:235
-msgid "Close window"
-msgstr "Затвори го прозорецот"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:366
-#: ../settings-dialogs/xfwm4-settings.c:236
-msgid "Maximize window horizontally"
-msgstr "Максимизирај го прозоревот хоризонтално"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:367
-#: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Maximize window vertically"
-msgstr "Максимизирај ги прозорците вертикално"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:370
-#: ../settings-dialogs/xfwm4-settings.c:240
-#, fuzzy
-msgid "Move window"
-msgstr "Помести го прозорецот нагоре"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:371
-#: ../settings-dialogs/xfwm4-settings.c:241
-#, fuzzy
-msgid "Resize window"
-msgstr "Промени ја големината на прозорецот кон горе"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:373
-#: ../settings-dialogs/xfwm4-settings.c:243
-msgid "Stick window"
-msgstr "Прилепи го прозорецот"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:374
-#: ../settings-dialogs/xfwm4-settings.c:244
-msgid "Raise window"
-msgstr "Подигни го прозорецот"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:375
-#: ../settings-dialogs/xfwm4-settings.c:245
-msgid "Lower window"
-msgstr "Спушти го прозорецот"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:377
-#: ../settings-dialogs/xfwm4-settings.c:247
-#, fuzzy
-msgid "Fill window horizontally"
-msgstr "Максимизирај го прозоревот хоризонтално"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:378
-#: ../settings-dialogs/xfwm4-settings.c:248
-#, fuzzy
-msgid "Fill window vertically"
-msgstr "Максимизирај ги прозорците вертикално"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:379
-#: ../settings-dialogs/xfwm4-settings.c:249
-msgid "Toggle above"
-msgstr ""
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:380
-#: ../settings-dialogs/xfwm4-settings.c:250
-msgid "Toggle fullscreen"
-msgstr "Пушти/исклучи режим на цел екран"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:381
-#: ../settings-dialogs/xfwm4-settings.c:251
-msgid "Move window to upper workspace"
-msgstr "Помести го прозорецот во погорната работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:382
-#: ../settings-dialogs/xfwm4-settings.c:252
-msgid "Move window to bottom workspace"
-msgstr "Помести го прозорецот во долната работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:383
-#: ../settings-dialogs/xfwm4-settings.c:253
-msgid "Move window to left workspace"
-msgstr "Помести го прозорецот во левата работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:384
-#: ../settings-dialogs/xfwm4-settings.c:254
-msgid "Move window to right workspace"
-msgstr "Помести го прозорецот во десната работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:385
-#: ../settings-dialogs/xfwm4-settings.c:255
-msgid "Move window to previous workspace"
-msgstr "Помести го прозорецот во претходната работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:386
-#: ../settings-dialogs/xfwm4-settings.c:256
-msgid "Move window to next workspace"
-msgstr "Помести го прозорецот во следната работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:387
-#: ../settings-dialogs/xfwm4-settings.c:269
-msgid "Show desktop"
-msgstr "Прикажи ја работната површината"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:388
-#: ../settings-dialogs/xfwm4-settings.c:270
-msgid "Upper workspace"
-msgstr "Погорна работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:389
-#: ../settings-dialogs/xfwm4-settings.c:271
-msgid "Bottom workspace"
-msgstr "Долна работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:390
-#: ../settings-dialogs/xfwm4-settings.c:272
-msgid "Left workspace"
-msgstr "Лева работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:391
-#: ../settings-dialogs/xfwm4-settings.c:273
-msgid "Right workspace"
-msgstr "Десна работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:392
-#: ../settings-dialogs/xfwm4-settings.c:274
-msgid "Previous workspace"
-msgstr "Претходна работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:393
-#: ../settings-dialogs/xfwm4-settings.c:275
-msgid "Next workspace"
-msgstr "Следна работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:394
-#: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Add workspace"
-msgstr "Додај работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:395
-#: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
-msgid "Add adjacent workspace"
-msgstr "Додај работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:396
-#: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
-msgid "Delete last workspace"
-msgstr "Избриши работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:397
-#: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
-msgid "Delete active workspace"
-msgstr "Избриши работна површина"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:505
-#, fuzzy, c-format
-msgid "Move window to workspace %d"
-msgstr "Премести го прозорецот до работната површина %d"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:585
-msgid "Cannot open the theme directory !"
-msgstr "Не можам да го отворам директориумот на темата !"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:604
-#, c-format
-msgid ""
-"Cannot open %s : \n"
-"%s"
-msgstr ""
-"Не можам да отворам %s : \n"
-"%s"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:618
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:629
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-"Не можам да запишам во %s : \n"
-"%s"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:788
-#, fuzzy
-msgid ""
-"Shortcut already in use !\n"
-"Are you sure you want to use it ?"
-msgstr ""
-"Кратенката веќе е во употреба !\n"
-"Дали сте сигурни дека сакате да го користите ?"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:852
-msgid "Compose shortcut for :"
-msgstr "Композит кратенка за :"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:856
-msgid "Compose shortcut"
-msgstr "Композит кратенка"
-
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:862
-#, fuzzy
-msgid "No shortcut"
-msgstr "Композит кратенка"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 msgid "Session manager socket"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:415
-#: ../settings-dialogs/workspace-settings.c:380
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:416
-#: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Version information"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:433
-#: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/workspace-settings.c:377
+#: ../settings-dialogs/xfwm4-settings.c:955
 msgid "."
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:402
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/xfwm4-settings.c:959
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
-#: ../settings-dialogs/workspace-settings.c:134
-#, fuzzy, c-format
-msgid "Change the name of workspace %d"
-msgstr "Број на работни површини:"
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
+#, c-format
+msgid "Workspace %d"
+msgstr "Работен простор %d"
 
-#: ../settings-dialogs/workspace-settings.c:276
+#: ../settings-dialogs/workspace-settings.c:253
 #, fuzzy
 msgid "Workspace Name"
 msgstr "Имиња на работните површини"
 
-#: ../settings-dialogs/workspace-settings.c:380
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
 msgstr ""
 
@@ -985,17 +83,31 @@ msgstr ""
 msgid "Configure window behavior and shortcuts"
 msgstr "Прекини го дејството на прозорецот"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+msgid "Window Manager"
+msgstr "Менаџер за прозорци"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 #, fuzzy
 msgid "Fine-tune window behaviour and effects"
 msgstr "Прекини го дејството на прозорецот"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+msgid "Window Manager Tweaks"
+msgstr "Подобрувања на менаџерот за прозорци"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 #, fuzzy
 msgid "Set number and names of workspaces"
 msgstr "Број на работни површини:"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+msgid "Workspaces"
+msgstr "Работни површи"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "  "
@@ -1066,6 +178,10 @@ msgstr "Преминувај преку работните површини"
 msgid "<b>_Theme</b>"
 msgstr "Поставување на насловот"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Active"
+msgstr "Активно"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
 #, fuzzy
 msgid "Ad_vanced"
@@ -1090,6 +206,10 @@ msgstr "Кликнете за фокус"
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "Кликнете и влечете ги копчињата за да го промените изгледот"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "Close"
+msgstr "Затвори"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
@@ -1124,6 +244,14 @@ msgstr "Широко"
 msgid "Focus follows _mouse"
 msgstr "Фокусот го следи глувчето"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Hidden"
+msgstr "Скриен"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "Hide"
+msgstr "Скриј"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 #, fuzzy
 msgid "Hide content of windows when _moving"
@@ -1138,6 +266,14 @@ msgstr "Прикажи ја содржината на прозорецот пр�
 #, fuzzy
 msgid "Ke_yboard"
 msgstr "Тастатура"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Maximize"
+msgstr "Максимизирај"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "Menu"
+msgstr "Мени"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #, fuzzy
@@ -1154,6 +290,10 @@ msgstr "Мал"
 msgid "Resistance|<i>Wide</i>"
 msgstr "Широк"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Shade"
+msgstr "Сенка"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #, fuzzy
 msgid "Snap windows to other _windows"
@@ -1164,215 +304,414 @@ msgstr "Прилепувај ги прозорците на другите пр�
 msgid "Snap windows to screen _border"
 msgstr "Прилепувај ги прозорците на работ на екранот"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "Stick"
+msgstr "Прилепи"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Дејство за извршување при двоен клик на полето со наслов :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "The window title, it cannot be removed"
+msgstr "Насловот на прозорецот, не може да се отстрани"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "Title"
+msgstr "Наслов"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr ""
 "Преминувај преку работните површини при влечење на прозорец преку екранот"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr ""
 "Преминувај преку работните површини кога стрелката го достигнува работ на "
 "екранот"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "Задоцнување пред подигнување на фокусираниот прозорец :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "Отпор на ќошевите :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 #, fuzzy
 msgid "_Focus"
 msgstr "Фокус"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #, fuzzy
 msgid "_Style"
 msgstr "Стил"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 #, fuzzy
 msgid "gtk-clear"
 msgstr "Откажи"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
 msgid "gtk-close"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
 msgid "gtk-help"
 msgstr ""
 
+#: ../settings-dialogs/xfwm4-settings.c:215
+#: ../settings-dialogs/xfwm4-settings.c:246
+msgid "Shade window"
+msgstr "Засени ги прозорците"
+
+#: ../settings-dialogs/xfwm4-settings.c:216
+#: ../settings-dialogs/xfwm4-settings.c:243
+msgid "Hide window"
+msgstr "Скриј прозорец"
+
+#: ../settings-dialogs/xfwm4-settings.c:217
+#: ../settings-dialogs/xfwm4-settings.c:242
+msgid "Maximize window"
+msgstr "Максимизирај го прозорецот"
+
+#: ../settings-dialogs/xfwm4-settings.c:218
+#: ../settings-dialogs/xfwm4-settings.c:250
+#, fuzzy
+msgid "Fill window"
+msgstr "Скриј прозорец"
+
+#: ../settings-dialogs/xfwm4-settings.c:219
+msgid "Nothing"
+msgstr "Ништо"
+
+#: ../settings-dialogs/xfwm4-settings.c:224
 #: ../settings-dialogs/xfwm4-settings.c:234
+msgid "Left"
+msgstr "Лево"
+
+#: ../settings-dialogs/xfwm4-settings.c:225
+msgid "Center"
+msgstr "Центар"
+
+#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:235
+msgid "Right"
+msgstr "Десно"
+
+#: ../settings-dialogs/xfwm4-settings.c:231
+msgid "Window operations menu"
+msgstr "Мени на операциите на прозорецот"
+
+#: ../settings-dialogs/xfwm4-settings.c:232
+msgid "Up"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:233
+msgid "Down"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:236
+msgid "Cancel"
+msgstr "Откажи"
+
+#: ../settings-dialogs/xfwm4-settings.c:237
+msgid "Cycle windows"
+msgstr "Кружи помеѓу прозорците"
+
+#: ../settings-dialogs/xfwm4-settings.c:238
 #, fuzzy
 msgid "Cycle windows (Reverse)"
 msgstr "Кружи помеѓу прозорците"
 
+#: ../settings-dialogs/xfwm4-settings.c:239
+msgid "Close window"
+msgstr "Затвори го прозорецот"
+
+#: ../settings-dialogs/xfwm4-settings.c:240
+msgid "Maximize window horizontally"
+msgstr "Максимизирај го прозоревот хоризонтално"
+
+#: ../settings-dialogs/xfwm4-settings.c:241
+msgid "Maximize window vertically"
+msgstr "Максимизирај ги прозорците вертикално"
+
+#: ../settings-dialogs/xfwm4-settings.c:244
+#, fuzzy
+msgid "Move window"
+msgstr "Помести го прозорецот нагоре"
+
+#: ../settings-dialogs/xfwm4-settings.c:245
+#, fuzzy
+msgid "Resize window"
+msgstr "Промени ја големината на прозорецот кон горе"
+
+#: ../settings-dialogs/xfwm4-settings.c:247
+msgid "Stick window"
+msgstr "Прилепи го прозорецот"
+
+#: ../settings-dialogs/xfwm4-settings.c:248
+msgid "Raise window"
+msgstr "Подигни го прозорецот"
+
+#: ../settings-dialogs/xfwm4-settings.c:249
+msgid "Lower window"
+msgstr "Спушти го прозорецот"
+
+#: ../settings-dialogs/xfwm4-settings.c:251
+#, fuzzy
+msgid "Fill window horizontally"
+msgstr "Максимизирај го прозоревот хоризонтално"
+
+#: ../settings-dialogs/xfwm4-settings.c:252
+#, fuzzy
+msgid "Fill window vertically"
+msgstr "Максимизирај ги прозорците вертикално"
+
+#: ../settings-dialogs/xfwm4-settings.c:253
+msgid "Toggle above"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:254
+msgid "Toggle fullscreen"
+msgstr "Пушти/исклучи режим на цел екран"
+
+#: ../settings-dialogs/xfwm4-settings.c:255
+msgid "Move window to upper workspace"
+msgstr "Помести го прозорецот во погорната работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:256
+msgid "Move window to bottom workspace"
+msgstr "Помести го прозорецот во долната работна површина"
+
 #: ../settings-dialogs/xfwm4-settings.c:257
+msgid "Move window to left workspace"
+msgstr "Помести го прозорецот во левата работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:258
+msgid "Move window to right workspace"
+msgstr "Помести го прозорецот во десната работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:259
+msgid "Move window to previous workspace"
+msgstr "Помести го прозорецот во претходната работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:260
+msgid "Move window to next workspace"
+msgstr "Помести го прозорецот во следната работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:261
 #, fuzzy
 msgid "Move window to workspace 1"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:262
 #, fuzzy
 msgid "Move window to workspace 2"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:259
+#: ../settings-dialogs/xfwm4-settings.c:263
 #, fuzzy
 msgid "Move window to workspace 3"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:260
+#: ../settings-dialogs/xfwm4-settings.c:264
 #, fuzzy
 msgid "Move window to workspace 4"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:265
 #, fuzzy
 msgid "Move window to workspace 5"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:266
 #, fuzzy
 msgid "Move window to workspace 6"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:267
 #, fuzzy
 msgid "Move window to workspace 7"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:268
 #, fuzzy
 msgid "Move window to workspace 8"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:269
 #, fuzzy
 msgid "Move window to workspace 9"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:270
 #, fuzzy
 msgid "Move window to workspace 10"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:271
 #, fuzzy
 msgid "Move window to workspace 11"
 msgstr "Премести го прозорецот до работната површина %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:272
 #, fuzzy
 msgid "Move window to workspace 12"
 msgstr "Премести го прозорецот до работната површина %d"
 
+#: ../settings-dialogs/xfwm4-settings.c:273
+msgid "Show desktop"
+msgstr "Прикажи ја работната површината"
+
+#: ../settings-dialogs/xfwm4-settings.c:274
+msgid "Upper workspace"
+msgstr "Погорна работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:275
+msgid "Bottom workspace"
+msgstr "Долна работна површина"
+
 #: ../settings-dialogs/xfwm4-settings.c:276
+msgid "Left workspace"
+msgstr "Лева работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:277
+msgid "Right workspace"
+msgstr "Десна работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:278
+msgid "Previous workspace"
+msgstr "Претходна работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:279
+msgid "Next workspace"
+msgstr "Следна работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:280
 #, fuzzy
 msgid "Workspace 1"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:277
+#: ../settings-dialogs/xfwm4-settings.c:281
 #, fuzzy
 msgid "Workspace 2"
 msgstr "Работен простор %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:278
+#: ../settings-dialogs/xfwm4-settings.c:282
 #, fuzzy
 msgid "Workspace 3"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:279
+#: ../settings-dialogs/xfwm4-settings.c:283
 #, fuzzy
 msgid "Workspace 4"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:280
+#: ../settings-dialogs/xfwm4-settings.c:284
 #, fuzzy
 msgid "Workspace 5"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:281
+#: ../settings-dialogs/xfwm4-settings.c:285
 #, fuzzy
 msgid "Workspace 6"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:286
 #, fuzzy
 msgid "Workspace 7"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:287
 #, fuzzy
 msgid "Workspace 8"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:288
 #, fuzzy
 msgid "Workspace 9"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:289
 #, fuzzy
 msgid "Workspace 10"
 msgstr "Работен простор %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:290
 #, fuzzy
 msgid "Workspace 11"
 msgstr "Работен простор %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:291
 #, fuzzy
 msgid "Workspace 12"
 msgstr "Работен простор %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:456
+#: ../settings-dialogs/xfwm4-settings.c:292
+msgid "Add workspace"
+msgstr "Додај работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:293
+#, fuzzy
+msgid "Add adjacent workspace"
+msgstr "Додај работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:294
+#, fuzzy
+msgid "Delete last workspace"
+msgstr "Избриши работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:295
+#, fuzzy
+msgid "Delete active workspace"
+msgstr "Избриши работна површина"
+
+#: ../settings-dialogs/xfwm4-settings.c:460
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:606
+#: ../settings-dialogs/xfwm4-settings.c:610
 #, fuzzy
 msgid "Action"
 msgstr "Активно"
 
-#: ../settings-dialogs/xfwm4-settings.c:965
+#: ../settings-dialogs/xfwm4-settings.c:615
+#, fuzzy
+msgid "Shortcut"
+msgstr "Нема кратенка"
+
+#: ../settings-dialogs/xfwm4-settings.c:977
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:976
+#: ../settings-dialogs/xfwm4-settings.c:988
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1787
-#: ../settings-dialogs/xfwm4-settings.c:1788
+#: ../settings-dialogs/xfwm4-settings.c:1829
+#: ../settings-dialogs/xfwm4-settings.c:1830
 msgid "Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1789
+#: ../settings-dialogs/xfwm4-settings.c:1831
 msgid ""
 "This will reset <b>all</b> shortcuts to their default values. Do you really "
 "want to do this?"
@@ -1520,6 +859,10 @@ msgstr ""
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Користи отпор на ќошевите, наместо прилепување на прозорците"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgid "When a window raises itself:"
+msgstr ""
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 #, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -1614,6 +957,13 @@ msgstr "Преминувај преку работните површини"
 #, fuzzy
 msgid "Change workspace name"
 msgstr "Имиња на работните површини"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Маргините се површина на краевите на екранот каде не може да се постави "
+"прозорец"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 #, fuzzy
@@ -1783,6 +1133,470 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#~ msgid "Workspace Margins"
+#~ msgstr "Маргини на на работната површина"
+
+#~ msgid "Left :"
+#~ msgstr "Лево :"
+
+#~ msgid "Right :"
+#~ msgstr "Десно :"
+
+#~ msgid "Top :"
+#~ msgstr "Горе :"
+
+#~ msgid "Bottom :"
+#~ msgstr "Долу :"
+
+#, fuzzy
+#~ msgid "Bring window on current workspace"
+#~ msgstr "Помести го прозорецот во следната работна површина"
+
+#, fuzzy
+#~ msgid "Switch to window's workspace"
+#~ msgstr "Премести го прозорецот до работната површина %d"
+
+#, fuzzy
+#~ msgid "Do nothing"
+#~ msgstr "Ништо"
+
+#, fuzzy
+#~ msgid ""
+#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr ""
+#~ "Прескокни ги прозорците кај кои е поставено својството \"прескокни пејџер"
+#~ "\" или \"прескокни лента со задачи\""
+
+#, fuzzy
+#~ msgid "Include hidden (i.e. iconified) windows"
+#~ msgstr "Вклучувај ги и скриените (т.е. иконизирани) прозорци"
+
+#, fuzzy
+#~ msgid "Cycle through windows from all workspaces"
+#~ msgstr "Кружи низ прозорците од сите работни површини"
+
+#, fuzzy
+#~ msgid "Cycling"
+#~ msgstr "Кружење"
+
+#, fuzzy
+#~ msgid "Activate focus stealing prevention"
+#~ msgstr "Активирај превенција од крадење на фокусот"
+
+#, fuzzy
+#~ msgid "Honor the standard ICCCM focus hint"
+#~ msgstr "Користи го стандардниот ICCCM фокус"
+
+#, fuzzy
+#~ msgid "Focus"
+#~ msgstr "Фокус"
+
+#, fuzzy
+#~ msgid "Key used to grab and move windows"
+#~ msgstr "Копчињата користени за фаќање и поместување на прозорците"
+
+#, fuzzy
+#~ msgid "Raise windows when any mouse button is pressed"
+#~ msgstr "Подигни ги прозорците кога било кое копче од глувчето е притиснато"
+
+#, fuzzy
+#~ msgid "Hide frame of windows when maximized"
+#~ msgstr "Криј ја рамката на прозорците кога се максимизирани"
+
+#, fuzzy
+#~ msgid "Restore original size of maximized windows when moving"
+#~ msgstr ""
+#~ "Врати ја оригиналната големина на максимизираните прозорци кога се "
+#~ "поместуваат"
+
+#, fuzzy
+#~ msgid "Use edge resistance instead of windows snapping"
+#~ msgstr "Користи отпор на ќошевите, наместо прилепување на прозорците"
+
+#, fuzzy
+#~ msgid "Accessibility"
+#~ msgstr "Пристапност"
+
+#~ msgid "Switch workspaces using the mouse wheel over the desktop"
+#~ msgstr ""
+#~ "Менувај ги работните површини со користење на тркалцето над работната "
+#~ "површина"
+
+#, fuzzy
+#~ msgid ""
+#~ "Remember and recall previous workspace when switching via keyboard "
+#~ "shortcuts"
+#~ msgstr ""
+#~ "Запомни ги и врати ја претходната работна површина при преминување со "
+#~ "кратенки на тастатурата"
+
+#, fuzzy
+#~ msgid "Wrap workspaces depending on the actual desktop layout"
+#~ msgstr ""
+#~ "Преминувај преку работните површини, во зависност од изгледот на "
+#~ "тековната работна површина"
+
+#, fuzzy
+#~ msgid "Wrap workspaces when the first or last workspace is reached"
+#~ msgstr ""
+#~ "Преминувај меѓу работните површини кога првата или последната работна "
+#~ "површина е достигната"
+
+#, fuzzy
+#~ msgid "Minimum size of windows to trigger smart placement"
+#~ msgstr ""
+#~ "Минимална големина на прозорците за да се пушти паметното поставување"
+
+#, fuzzy
+#~ msgid "Size|Small"
+#~ msgstr "Мало"
+
+#, fuzzy
+#~ msgid "Size|Large"
+#~ msgstr "Големо"
+
+#, fuzzy
+#~ msgid "Default positionning of windows without smart placement:"
+#~ msgstr ""
+#~ "Минимална големина на прозорците за да се пушти паметното поставување"
+
+#, fuzzy
+#~ msgid "Placement"
+#~ msgstr "Поставување"
+
+#, fuzzy
+#~ msgid "Enable display compositing"
+#~ msgstr "Овозможи го прелевањето"
+
+#, fuzzy
+#~ msgid "Display full screen overlay windows directly"
+#~ msgstr "Прикажи ги прозорците на цел екран директно"
+
+#, fuzzy
+#~ msgid "Show shadows under dock windows"
+#~ msgstr "Прикажи сенки под скокачките прозорци"
+
+#, fuzzy
+#~ msgid "Show shadows under regular windows"
+#~ msgstr "Прикажи сенки под обичните прозорци"
+
+#, fuzzy
+#~ msgid "Show shadows under popup windows"
+#~ msgstr "Прикажи сенки под скокачките прозорци"
+
+#, fuzzy
+#~ msgid "Opacity of window decorations"
+#~ msgstr "Провидност на декорацијата на прозорците"
+
+#, fuzzy
+#~ msgid "Transparent"
+#~ msgstr "Транспарентност"
+
+#, fuzzy
+#~ msgid "Opaque"
+#~ msgstr "Провидност"
+
+#, fuzzy
+#~ msgid "Opacity of inactive windows"
+#~ msgstr "Провидност на неактивните прозорци"
+
+#, fuzzy
+#~ msgid "Opacity of windows during move"
+#~ msgstr "Провидност на на прозорците при поместување"
+
+#, fuzzy
+#~ msgid "Opacity of windows during resize"
+#~ msgstr "Провидност на прозорците при промена на големината"
+
+#, fuzzy
+#~ msgid "Opacity of popup windows"
+#~ msgstr "Провидност на скокачките прозорци"
+
+#, fuzzy
+#~ msgid "Compositor"
+#~ msgstr "Композитор"
+
+#~ msgid "Button Label|Window Manager Tweaks"
+#~ msgstr "Прилагодувања на менаџерот на прозорци"
+
+#~ msgid "These settings cannot work with your current window manager (%s)"
+#~ msgstr ""
+#~ "Овие поставувања нема да работат со Вашиот тековен менаџер на прозорци (%"
+#~ "s)"
+
+#~ msgid "Change name"
+#~ msgstr "Промени го името"
+
+#, fuzzy
+#~ msgid "Name:"
+#~ msgstr "Име:"
+
+#~ msgid "Click on a workspace name to edit it"
+#~ msgstr "Кликнете на името на работниот простор за да го промените"
+
+#, fuzzy
+#~ msgid "Number of workspaces:"
+#~ msgstr "Број на работни површини:"
+
+#, fuzzy
+#~ msgid "Workspace names"
+#~ msgstr "Имиња на работните површини"
+
+#~ msgid "Button Label|Workspaces and Margins"
+#~ msgstr "Работни површини и маргини"
+
+#~ msgid "Workspaces and Margins"
+#~ msgstr "Работни површини и маргини"
+
+#, fuzzy
+#~ msgid "Margins"
+#~ msgstr "Маргини"
+
+#~ msgid "Window Manager Settings"
+#~ msgstr "Поставувања за менаџерот на прозорци"
+
+#~ msgid "Xfce 4 Window Manager Settings"
+#~ msgstr "Поставувања на менаџерот на прозорци на Xfce 4"
+
+#~ msgid "Advanced Configuration"
+#~ msgstr "Напредна конфигурација"
+
+#~ msgid "Xfce 4 Window Manager Tweaks"
+#~ msgstr "Подобрувања на менаџерот на прозорци на Xfce 4"
+
+#~ msgid "Workspaces Settings"
+#~ msgstr "Поставувања за работните површини"
+
+#~ msgid "Xfce 4 Workspaces Settings"
+#~ msgstr "Поставувања за работните површини на Xfce 4"
+
+#, fuzzy
+#~ msgid "Click and drag buttons to change the layout"
+#~ msgstr "Кликнете и влечете ги копчињата за да го промените изгледот"
+
+#~ msgid "Font Selection Dialog"
+#~ msgstr "Дијалог прозорец за избор на фонт"
+
+#, fuzzy
+#~ msgid "Title font"
+#~ msgstr "Фонт за наслов "
+
+#, fuzzy
+#~ msgid "Title Alignment"
+#~ msgstr "Поставување на насловот"
+
+#~ msgid "Text alignment inside title bar :"
+#~ msgstr "Поставување на текстот во полето за наслов :"
+
+#, fuzzy
+#~ msgid "Button layout"
+#~ msgstr "Изглед на копчињата"
+
+#, fuzzy
+#~ msgid "Style"
+#~ msgstr "Стил"
+
+#, fuzzy
+#~ msgid "Window shortcuts"
+#~ msgstr "Кратенки на прозорец"
+
+#, fuzzy
+#~ msgid "Command"
+#~ msgstr "Команда"
+
+#, fuzzy
+#~ msgid "Keyboard"
+#~ msgstr "Тастатура"
+
+#, fuzzy
+#~ msgid "Focus model"
+#~ msgstr "Модел на фокус"
+
+#, fuzzy
+#~ msgid "Click to focus"
+#~ msgstr "Кликнете за фокус"
+
+#, fuzzy
+#~ msgid "Focus follows mouse"
+#~ msgstr "Фокусот го следи глувчето"
+
+#, fuzzy
+#~ msgid "Delay before window receives focus"
+#~ msgstr "Задоцнување пред подигнување на фокусираниот прозорец :"
+
+#~ msgid "Slow"
+#~ msgstr "Бавно "
+
+#~ msgid "Fast"
+#~ msgstr "Брзо"
+
+#, fuzzy
+#~ msgid "Automatically give focus to newly created windows"
+#~ msgstr "Автоматски додели фокус на новокреираните прозорци"
+
+#, fuzzy
+#~ msgid "New window focus"
+#~ msgstr "Фокус на новите прозорци"
+
+#, fuzzy
+#~ msgid "Raise on focus"
+#~ msgstr "Подигни при фокус"
+
+#, fuzzy
+#~ msgid "Automatically raise windows when they receive focus"
+#~ msgstr "Автоматски подигнувај ги прозорците кога добиваат фокус"
+
+#, fuzzy
+#~ msgid "Delay before raising focused window :"
+#~ msgstr "Задоцнување пред подигнување на фокусираниот прозорец :"
+
+#, fuzzy
+#~ msgid "Raise window when clicking inside application window"
+#~ msgstr "Подигни ги прозорците при кликнување во прозорецот ан апликацијата"
+
+#, fuzzy
+#~ msgid "Raise on click"
+#~ msgstr "Подигни при клик"
+
+#, fuzzy
+#~ msgid "Windows snapping"
+#~ msgstr "Лепење на прозорците"
+
+#, fuzzy
+#~ msgid "Snap windows to screen border"
+#~ msgstr "Прилепувај ги прозорците на работ на екранот"
+
+#, fuzzy
+#~ msgid "Snap windows to other windows"
+#~ msgstr "Прилепувај ги прозорците на другите прозорци"
+
+#, fuzzy
+#~ msgid "Distance :"
+#~ msgstr "Растојание :"
+
+#, fuzzy
+#~ msgid "Distance|Small"
+#~ msgstr "Мало"
+
+#, fuzzy
+#~ msgid "Distance|Wide"
+#~ msgstr "Широко"
+
+#, fuzzy
+#~ msgid "Wrap workspaces"
+#~ msgstr "Преминувај преку работните површини"
+
+#, fuzzy
+#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
+#~ msgstr ""
+#~ "Преминувај преку работните површини кога стрелката го достигнува работ на "
+#~ "екранот"
+
+#, fuzzy
+#~ msgid "Wrap workspaces when dragging a window off the screen"
+#~ msgstr ""
+#~ "Преминувај преку работните површини при влечење на прозорец преку екранот"
+
+#, fuzzy
+#~ msgid "Edge Resistance :"
+#~ msgstr "Отпор на ќошевите :"
+
+#, fuzzy
+#~ msgid "Resistance|Small"
+#~ msgstr "Мал"
+
+#, fuzzy
+#~ msgid "Resistance|Wide"
+#~ msgstr "Широк"
+
+#, fuzzy
+#~ msgid "Opaque move and resize"
+#~ msgstr "Провидност при движење и промена на големина"
+
+#, fuzzy
+#~ msgid "Display content of windows when resizing"
+#~ msgstr "Прикажи ја содржината на прозорецот при промена на големината"
+
+#, fuzzy
+#~ msgid "Display content of windows when moving"
+#~ msgstr "Прикажи ја содржината на прозорецот при поместување"
+
+#, fuzzy
+#~ msgid "Double click action"
+#~ msgstr "Дејство при двоен клик"
+
+#, fuzzy
+#~ msgid "Action to perform when double clicking on title bar :"
+#~ msgstr "Дејство за извршување при двоен клик на полето со наслов :"
+
+#, fuzzy
+#~ msgid "Advanced"
+#~ msgstr "Напредно"
+
+#~ msgid "Button Label|Window Manager"
+#~ msgstr "Менаџер на прозорци"
+
+#~ msgid "Do you really want to remove this keybinding theme ?"
+#~ msgstr ""
+#~ "дали навистина сакате да ја отстраните оваа тема за поврзување на "
+#~ "копчињата ?"
+
+#~ msgid "Add keybinding theme"
+#~ msgstr "Додај тема за поврзување на копчиења"
+
+#, fuzzy
+#~ msgid "Enter a name for the theme:"
+#~ msgstr "Внесете име за темата:"
+
+#~ msgid "A keybinding theme with the same name already exists"
+#~ msgstr "Тема за поврзување на копчиња со истото име веќе постои"
+
+#~ msgid "You have to provide a name for the keybinding theme"
+#~ msgstr "Мора да внесете име за темата за поврзување на копчиња"
+
+#, fuzzy
+#~ msgid "Move window to workspace %d"
+#~ msgstr "Премести го прозорецот до работната површина %d"
+
+#~ msgid "Cannot open the theme directory !"
+#~ msgstr "Не можам да го отворам директориумот на темата !"
+
+#~ msgid ""
+#~ "Cannot open %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Не можам да отворам %s : \n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Cannot write in %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Не можам да запишам во %s : \n"
+#~ "%s"
+
+#, fuzzy
+#~ msgid ""
+#~ "Shortcut already in use !\n"
+#~ "Are you sure you want to use it ?"
+#~ msgstr ""
+#~ "Кратенката веќе е во употреба !\n"
+#~ "Дали сте сигурни дека сакате да го користите ?"
+
+#~ msgid "Compose shortcut for :"
+#~ msgstr "Композит кратенка за :"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "Композит кратенка"
+
+#, fuzzy
+#~ msgid "No shortcut"
+#~ msgstr "Композит кратенка"
+
+#, fuzzy
+#~ msgid "Change the name of workspace %d"
+#~ msgstr "Број на работни површини:"
 
 #, fuzzy
 #~ msgid "Advanced window manager settings"

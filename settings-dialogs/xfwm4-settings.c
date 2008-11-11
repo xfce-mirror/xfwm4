@@ -418,9 +418,9 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *shortcuts_clear_button;
   GtkWidget          *shortcuts_reset_button;
   GtkWidget          *focus_delay_scale;
-  GtkWidget          *click_to_focus_radio;
   GtkWidget          *raise_on_click_check;
   GtkWidget          *raise_on_focus_check;
+  GtkWidget          *click_to_focus_radio;
   GtkWidget          *focus_new_check;
   GtkWidget          *box_move_check;
   GtkWidget          *box_resize_check;
@@ -630,6 +630,7 @@ xfwm_settings_constructed (GObject *object)
   focus_new_check = glade_xml_get_widget (settings->priv->glade_xml, "focus_new_check");
   raise_on_focus_check = glade_xml_get_widget (settings->priv->glade_xml, "raise_on_focus_check");
   raise_on_click_check = glade_xml_get_widget (settings->priv->glade_xml, "raise_on_click_check");
+  click_to_focus_radio = glade_xml_get_widget (settings->priv->glade_xml, "click_to_focus_radio");
 
   /* Focus tab */
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/focus_delay", G_TYPE_INT,
@@ -640,6 +641,8 @@ xfwm_settings_constructed (GObject *object)
                           raise_on_focus_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/focus_new", G_TYPE_BOOLEAN,
                           focus_new_check, "active");
+  xfconf_g_property_bind (settings->priv->wm_channel, "/general/click_to_focus", G_TYPE_BOOLEAN,
+                          click_to_focus_radio, "active");
 
   g_signal_connect (settings->priv->wm_channel, "property-changed::/general/click_to_focus", 
                     G_CALLBACK (xfwm_settings_click_to_focus_property_changed), settings);

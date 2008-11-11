@@ -1280,6 +1280,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "wrap_workspaces"))
                 {
                     screen_info->params->wrap_workspaces = g_value_get_boolean (value);
+                    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
                 }
                 else if (!strcmp (name, "wrap_windows"))
                 {

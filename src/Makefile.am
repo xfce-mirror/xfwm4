@@ -22,6 +22,11 @@ xfwm4_SOURCES =								\
 	icons.c								\
 	icons.h								\
 	inline-default-icon.h						\
+	inline-stock-maximize.h						\
+	inline-stock-minimize.h						\
+	inline-stock-rolldown.h						\
+	inline-stock-rollup.h						\
+	inline-stock-unmaximize.h					\
 	inline-tabwin-icon.h						\
 	keyboard.c							\
 	keyboard.h							\
@@ -106,21 +111,23 @@ xfwm4_LDADD =								\
 	$(RANDR_LIBS)
 
 EXTRA_DIST = 								\
+	inline-default-icon.h default_icon.png default_icon.svg		\
 	inline-tabwin-icon.h tabwin-icon.png				\
 	inline-stock-maximize.h stock_maximize.png			\
 	inline-stock-unmaximize.h stock_unmaximize.png			\
 	inline-stock-minimize.h stock_minimize.png			\
 	inline-stock-rollup.h stock_rollup.png				\
-	inline-stock-rolldown.h stock_rollup.png			\
+	inline-stock-rolldown.h stock_rolldown.png			\
 	gen-color-table.pl
 
 noinst_DATA = 								\
+	inline-default-icon.h default_icon.png default_icon.svg		\
 	inline-tabwin-icon.h tabwin-icon.png				\
 	inline-stock-maximize.h stock_maximize.png			\
 	inline-stock-unmaximize.h stock_unmaximize.png			\
 	inline-stock-minimize.h stock_minimize.png			\
 	inline-stock-rollup.h stock_rollup.png				\
-	inline-stock-rolldown.h stock_rollup.png
+	inline-stock-rolldown.h stock_rolldown.png
 
 build.h:
 	echo "#define BUILD_ID \""`date +%H%M-%y%m%d`"\"" > build.h

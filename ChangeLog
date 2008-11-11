@@ -1,3 +1,37 @@
+2008-11-11  olivier
+
+	* po/*.po, po/xfwm4.pot: update po
+
+2008-11-11  olivier
+
+	* settings-dialogs/xfwm4-settings.c: Fix focus model selection
+
+2008-11-11	jannis
+
+	* src/settings.c: Place the sidewalks again after wrap_workspaces has
+	  changed.
+
+2008-11-11  olivier
+
+	* src/Makefile.am: add missing inline icons
+
+2008-11-11  olivier
+
+	* settings-dialogs/xfwm4-settings.c: Fix build with -Werror.
+
+2008-11-11  olivier
+
+	* settings-dialogs/workspace-settings.c: Use editable cells instead of 
+	  yet another popup dialog.
+
+2008-11-11  olivier
+
+	* settings-dialogs/workspace-settings.c: Revert
+
+2008-11-11  olivier
+
+	* src/Makefile.am: stock_rolldown.png missing in Makefile.am
+
 2008-11-09  olivier
 
 	* po/POTFILES.in, settings-dialogs/Makefile.am: Fix make distcheck
