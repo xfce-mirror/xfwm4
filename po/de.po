@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 20:29+0000\n"
+"POT-Creation-Date: 2008-11-13 22:48+0100\n"
 "PO-Revision-Date: 2008-10-19 12:54+0200\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -42,7 +42,7 @@ msgstr "Socket für die Sitzungsverwaltung"
 #: ../settings-dialogs/workspace-settings.c:359
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
-msgstr "SOCKETNUMMER"
+msgstr "SOCKET-NUMMER"
 
 #: ../settings-dialogs/tweaks-settings.c:416
 #: ../settings-dialogs/workspace-settings.c:360
@@ -65,7 +65,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Versuchen Sie »%s -- help«, um eine vollständige Liste verfügbarer "
+"Geben Sie »%s -- help« ein, um eine vollständige Liste verfügbarer "
 "Befehlszeilenoptionen zu sehen.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
@@ -85,9 +85,8 @@ msgstr "Socket für die Sitzungsverwaltung"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Fensterverhalten anpassen"
+msgstr "Passen Sie das Fensterverhalten und die Fenstertastenkürzel an"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 msgid "Window Manager"
@@ -95,14 +94,14 @@ msgstr "Fensterverwaltung"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Fensterverhalten anpassen"
+msgstr ""
+"Nehmen Sie Feineinstellungen am Fensterverhalten und den Fenstereffekten vor"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Window Manager Tweaks"
-msgstr "Fensterverwaltungs-Tweaks"
+msgstr "Feineinstellungen des Fensterverhaltens"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -120,7 +119,7 @@ msgstr "  "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Box move and resize</b>"
-msgstr "<b>Bewegen und vergrößern der Fensterbox</b>"
+msgstr "<b>Bewegen und Vergrößern der Fensterbox</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Button layout</b>"
@@ -400,9 +399,8 @@ msgid "Cycle windows"
 msgstr "Fenster durchwechseln"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "Fenster durchwechseln"
+msgstr "Fenster durchwechseln (Rückwärts)"
 
 #: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Close window"
@@ -699,17 +697,16 @@ msgid "Honor _standard ICCCM focus hint"
 msgstr "_Den normalen ICCCM-Fokus-Hinweis berücksichtigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Dringende Fenster in blinkendem Zustand lassen"
+msgstr "Dr_ingende Fenster ununterbrochen in blinkendem Zustand lassen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
-msgstr "_Taste zum Bewegen der Fenster:"
+msgstr "_Taste zum Verschieben der Fenster:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "_Dringlichkeit mitteilen, indem der Fensterrahmen blinkt"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Opaci_ty of window decorations:"
@@ -721,7 +718,7 @@ msgstr "Dec_kkraft von inaktiven Fenstern:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Opacity of popup window_s:"
-msgstr "_Deckkraft von Popup-Fenstern:"
+msgstr "Deckkraft von P_opup-Fenstern:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Opacity of windows during _move:"
@@ -738,7 +735,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Show shadows under _dock windows"
-msgstr "Schatt_en unter angedockten Fenstern anzeigen"
+msgstr "FIXME Schatt_en unter FIXME Fenstern anzeigen FIXME"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Show shadows under _regular windows"
@@ -780,8 +777,8 @@ msgstr "A_rbeitsflächen in Abhängigkeit der derzeitigen Anordnung umbrechen"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr ""
-"Arb_eitsflächen umbrechen, wenn die erste oder letzte Arbeitsfläche \n"
-"erreicht wird."
+"Arbe_itsflächen umbrechen, wenn die erste oder letzte Arbeitsfläche erreicht "
+"wird."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Accessibility"
@@ -811,8 +808,8 @@ msgstr "M_inimale Größe, unterhalb derer Fenster intelligent platziert werden:
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Mouse wheel over desktop switches workspaces"
 msgstr ""
-"_Betätigung des Mausrads über der Arbeitsoberfläche führt zum Wechsel \n"
-"der Arbeitsfläche"
+"B_etätigung des Mausrads über der Arbeitsoberfläche führt zum Wechsel der "
+"Arbeitsfläche"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Placement"
@@ -827,16 +824,16 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"_Vorige Arbeitsfläche merken und wieder verwenden beim\n"
-"Wechseln mittels Tastenkürzeln"
+"_Vorige Arbeitsfläche merken und wieder verwenden beim Wechseln mittels "
+"Tastenkürzeln"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"F_enster, die nicht im Pager oder nicht in der Taskleiste\n"
-"erscheinen sollen, auch wirklich übergehen."
+"F_enster, die nicht im Pager oder nicht in der Taskleiste erscheinen sollen, "
+"auch wirklich übergehen."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Workspaces"
@@ -851,9 +848,8 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Arbeitsflächen</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
-msgstr "Namen für die Arbeitsflächen"
+msgstr "Namen der Arbeitsflächen ändern"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
@@ -894,7 +890,6 @@ msgid "Ma_ximize"
 msgstr "Ma_ximieren"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_Maximierung aufheben"
 
@@ -904,7 +899,7 @@ msgstr "Mi_nimieren"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "_Alle anderen Fenster minimieren"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -920,57 +915,49 @@ msgstr "_Größe ändern"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
 msgstr "Immer zuoberst"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Fe_nster an anderen Fenstern einrasten lassen"
+msgstr "Wie bei anderen Fenstern"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Immer unterhalb anderer Fenster"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Fenster füllen"
+msgstr "Fenster einrollen"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Fenster runterschieben"
+msgstr "Fenster ausrollen"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
-msgstr "_Vollbildmodus"
+msgstr "V_ollbildmodus"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "_Vollbildmodus"
+msgstr "_Vollbildmodus verlassen"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
-msgstr "_Hilfe"
+msgstr "Kontext_hilfe"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "Immer zuoberst"
+msgstr "Immer auf sichtbarer Arbeitsfläche"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Nur auf dieser Arbeitsfläche"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Fenster auf die nächste Arbeitsfläche verschieben"
+msgstr "Fenster auf eine andere Arbeitsfläche verschieben"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1043,17 +1030,14 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid "Bottom :"
 #~ msgstr "Unten:"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
-#~ msgstr "F_enster auf die aktuelle Arbeitsfläche verschieben"
+#~ msgstr "Fenster auf die aktuelle Arbeitsfläche verschieben"
 
-#, fuzzy
 #~ msgid "Switch to window's workspace"
-#~ msgstr "Zu_r Arbeitsfläche des Fensters wechseln"
+#~ msgstr "Zur Arbeitsfläche des Fensters wechseln"
 
-#, fuzzy
 #~ msgid "Do nothing"
-#~ msgstr "_Nichts unternehmen"
+#~ msgstr "Nichts unternehmen"
 
 #~ msgid "Place window under the mouse"
 #~ msgstr "Fenster unter der Maus platzieren"
@@ -1061,11 +1045,10 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Fenster in der Mitte platzieren"
 
-#, fuzzy
 #~ msgid ""
 #~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr ""
-#~ "F_enster, die nicht im Pager oder nicht in der Taskleiste\n"
+#~ "Fenster, die nicht im Pager oder nicht in der Taskleiste\n"
 #~ "erscheinen sollen, auch wirklich übergehen."
 
 #, fuzzy
@@ -1084,13 +1067,11 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "Fo_kusverlust verhindern"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "_Den normalen ICCCM-Fokus-Hinweis berücksichtigen"
+#~ msgstr "Den normalen ICCCM-Fokus-Hinweis berücksichtigen"
 
-#, fuzzy
 #~ msgid "Focus"
-#~ msgstr "F_okus"
+#~ msgstr "Fokus"
 
 #, fuzzy
 #~ msgid "Key used to grab and move windows"
@@ -1245,9 +1226,8 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Arbeitsflächen und Seitenränder"
 
-#, fuzzy
 #~ msgid "Margins"
-#~ msgstr "<b>Seitenränder</b>"
+#~ msgstr "Seitenränder"
 
 #~ msgid "Window Manager Settings"
 #~ msgstr "Fensterverwaltung"
@@ -1267,16 +1247,14 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Xfce4-Arbeitsflächeneinstellungen"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Ziehen Sie die Knöpfe nach unten, um die Anordnung zu verändern"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Schrift wählen"
 
-#, fuzzy
 #~ msgid "Title font"
-#~ msgstr "<b>Sch_rift im Titel</b>"
+#~ msgstr "Sch_rift im Titel"
 
 #, fuzzy
 #~ msgid "Title Alignment"

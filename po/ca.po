@@ -3,14 +3,14 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 #
-# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003-2004, 2006, 2008
-# Pau Ruŀlan Ferragut <paurullan@bulma.net> 2005-07
+# Carles Muñoz Gorriz <carlesmu@internautas.org> 2003-2004, 2006, 2008
+# Pau Ruŀlan Ferragut <paurullan@bulma.net> 2005-2007
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-11 20:29+0000\n"
-"PO-Revision-Date: 2008-10-19 19:52+0100\n"
+"PO-Revision-Date: 2008-11-16 10:56+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,13 +39,13 @@ msgstr "Cap"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 msgid "Session manager socket"
-msgstr "«Socket» del gestor de sessió"
+msgstr "Sòcol del gestor de sessió"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 #: ../settings-dialogs/workspace-settings.c:359
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
-msgstr "«SOCKET» ID"
+msgstr "SÒCOL ID"
 
 #: ../settings-dialogs/tweaks-settings.c:416
 #: ../settings-dialogs/workspace-settings.c:360
@@ -68,7 +68,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Empreu %s --help per veure la llista sencera d'opcions i ordres.\n"
+"Feu %s --help per veure la llista sencera d'opcions.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -83,13 +83,12 @@ msgstr "Nom de l'espai de treball"
 #: ../settings-dialogs/workspace-settings.c:359
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
-msgstr "«Socket» del gestor d'ajustaments"
+msgstr "Sòcol del gestor d'ajustaments"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Configura el comportament de la finestra"
+msgstr "Configura el comportament de les finestres i de les dreceres"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 msgid "Window Manager"
@@ -97,9 +96,8 @@ msgstr "Gestor de finestres"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Configura el comportament de la finestra"
+msgstr "Ajusta el comportament i els efectes de les finestres"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
@@ -162,16 +160,15 @@ msgstr "<b>_Dreceres de finestres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Alineació ràpida de finestres</b>"
+msgstr "<b>Alineació de les finestres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>Wrap workspaces</b>"
 msgstr "<b>Ajustament dels espais de treball</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "<b>_Alineació del títol</b>"
+msgstr "<b>_Tema</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
@@ -276,11 +273,11 @@ msgstr "Enrotlla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Snap windows to other _windows"
-msgstr "Alinea ràpidament les finestres amb les altres _finestres"
+msgstr "Alinea les finestres amb les altres _finestres"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to screen _border"
-msgstr "Alinea ràpidament les finestres a la _vora de la pantalla"
+msgstr "Alinea les finestres a la _vora de la pantalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
@@ -324,7 +321,7 @@ msgstr "En_focament"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "_Torna als valors per defecte"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Style"
@@ -332,19 +329,19 @@ msgstr "E_stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "gtk-clear"
-msgstr "gtk-clear"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
 msgid "gtk-close"
-msgstr "gtk-close"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
 msgid "gtk-help"
-msgstr "gtk-help"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:215
 #: ../settings-dialogs/xfwm4-settings.c:246
@@ -390,11 +387,11 @@ msgstr "Menú d’operacions de finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Up"
-msgstr ""
+msgstr "Amunt"
 
 #: ../settings-dialogs/xfwm4-settings.c:233
 msgid "Down"
-msgstr ""
+msgstr "Avall"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Cancel"
@@ -405,7 +402,6 @@ msgid "Cycle windows"
 msgstr "Cicla les finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
-#, fuzzy
 msgid "Cycle windows (Reverse)"
 msgstr "Cicla les finestra"
 
@@ -422,14 +418,12 @@ msgid "Maximize window vertically"
 msgstr "Maximitza la finestra verticalment"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
 msgid "Move window"
-msgstr "Mou la finestra amunt"
+msgstr "Mou la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Resize window"
-msgstr "Redimensiona la finestra cap amunt"
+msgstr "Redimensiona la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Stick window"
@@ -457,7 +451,7 @@ msgstr "Commuta amunt"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Toggle fullscreen"
-msgstr "Commuta a pantalla completa"
+msgstr "Commuta a pantalla sencera"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Move window to upper workspace"
@@ -484,64 +478,52 @@ msgid "Move window to next workspace"
 msgstr "Mou la finestra a l'espai de treball següent"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Mou la finestra a l'àrea de treball %d"
+msgstr "Mou la finestra a l'espai de treball 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Show desktop"
@@ -572,97 +554,80 @@ msgid "Next workspace"
 msgstr "Espai de treball següent"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
 msgid "Workspace 10"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
 msgid "Workspace 11"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
 msgid "Workspace 12"
-msgstr "Espai de treball %i"
+msgstr "Espai de treball 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Add workspace"
 msgstr "Afegeix espai de treball"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "Afegeix espai de treball"
+msgstr "Afegeix espai de treball adjacent"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Esborra l'espai de treball"
+msgstr "Esborra el darrer espai de treball"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Esborra l'espai de treball"
+msgstr "Esborra l'espai de treball actiu"
 
 #: ../settings-dialogs/xfwm4-settings.c:460
 msgid "Theme"
 msgstr "Tema"
 
 #: ../settings-dialogs/xfwm4-settings.c:610
-#, fuzzy
 msgid "Action"
-msgstr "Actiu"
+msgstr "Acció"
 
 #: ../settings-dialogs/xfwm4-settings.c:615
-#, fuzzy
 msgid "Shortcut"
-msgstr "Sense drecera"
+msgstr "Drecera"
 
 #: ../settings-dialogs/xfwm4-settings.c:977
 #, c-format
@@ -676,17 +641,19 @@ msgstr "No s'ha pogut mostrar el diàleg de propietats."
 #: ../settings-dialogs/xfwm4-settings.c:1829
 #: ../settings-dialogs/xfwm4-settings.c:1830
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Torna als valors per defecte"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
 msgid ""
 "This will reset <b>all</b> shortcuts to their default values. Do you really "
 "want to do this?"
 msgstr ""
+"Això reiniciarà <b>totes</b> les dreceres als seus valors per defecte. És el "
+"que voleu fer?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
-msgstr "<i>Opacitat<(i>"
+msgstr "<i>Opacitat</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "<i>Transparent</i>"
@@ -733,9 +700,8 @@ msgid "Honor _standard ICCCM focus hint"
 msgstr "Fes cas de la senyal e_standard d'enfocament ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Manté les finestres urgents fent pampallugues"
+msgstr "Manté les finestres urgents fent _pampallugues"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
@@ -744,6 +710,7 @@ msgstr "Tecla emprada per arrosse_gar i moure finestres:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
+"Notifica l'_urgència fent que la decoració de la finestra fassi pampallugues"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Opaci_ty of window decorations:"
@@ -799,8 +766,7 @@ msgstr "Sota el _punter del ratolí"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use _edge resistance instead of window snapping"
-msgstr ""
-"Empra resistència a les vor_es en lloc de l'alineació ràpida de finestres"
+msgstr "Empra resistència a les _vores en lloc de l'alineació de les finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "When a window raises itself:"
@@ -829,7 +795,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Enable display compositing"
-msgstr "_Habilita el «composite»"
+msgstr "_Habilita la pantalla composta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Include hidden (i.e. iconified) windows"
@@ -880,7 +846,6 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Espais de treball</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
 msgstr "Canvia el nom de l'espai de treball"
 
@@ -901,11 +866,11 @@ msgstr "_Nombre d'espais de treball:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
 msgid "gtk-cancel"
-msgstr "gtk-cancel"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
 msgid "gtk-save"
-msgstr "gtk-save"
+msgstr ""
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -923,7 +888,6 @@ msgid "Ma_ximize"
 msgstr "Ma_ximitza"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "Desma_ximitza"
 
@@ -933,7 +897,7 @@ msgstr "Mi_nimitza"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Minimitza _totes les altres finestres"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -949,57 +913,49 @@ msgstr "_Redimensiona"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
-msgstr "Sempre al damunt"
+msgstr "Sempre a dalt"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Alinea ràpidament les finestres amb les altres _finestres"
+msgstr "Igual que la resta de finestres"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Sempre sota les altres finestres"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Emplena la finestra"
+msgstr "Enrotlla la finestra cap a dalt"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Mou la finestra avall"
+msgstr "Enrotlla la finestra cap a baix"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
 msgstr "_Pantalla sencera"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "_Pantalla sencera"
+msgstr "Surt de la _pantalla sencera"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
 msgstr "A_juda contextual"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "Sempre al damunt"
+msgstr "Sempre al espai de treball actiu"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Només en aquest espai de treball"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Mou la finestra a l'espai de treball següent"
+msgstr "Mou a un altre espai de treball"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1070,17 +1026,14 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "Bottom :"
 #~ msgstr "Inferior:"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
-#~ msgstr "_Porta la finestra a l'actual espai de treball"
+#~ msgstr "Porta la finestra a l'espai de treball actual"
 
-#, fuzzy
 #~ msgid "Switch to window's workspace"
-#~ msgstr "Canvia a l'espai de treball de la fines_tra"
+#~ msgstr "Canvia a l'espai de treball de la finestra"
 
-#, fuzzy
 #~ msgid "Do nothing"
-#~ msgstr "_No fessis res"
+#~ msgstr "No fessis res"
 
 #~ msgid "Place window under the mouse"
 #~ msgstr "Situa la finestra sota el ratolí"
@@ -1088,155 +1041,121 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Situa la finestra al centre"
 
-#, fuzzy
 #~ msgid ""
 #~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr ""
-#~ "_Omet les finestres que tenen activades les propietats\n"
-#~ "«omet el paginador» o «omet la barra de tasques»"
+#~ "Omet les finestres que tenen activades les propietats «omet el paginador» "
+#~ "o «omet la barra de tasques»"
 
-#, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "_Inclou les finestres amagades (i.e. les iconificades)"
+#~ msgstr "Inclou les finestres amagades (i.e. les iconificades)"
 
-#, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Rota en_tre les finestres de tots els espais de treball"
+#~ msgstr "Rota entre les finestres de tots els espais de treball"
 
-#, fuzzy
 #~ msgid "Cycling"
-#~ msgstr "_Rotació"
+#~ msgstr "Rotació"
 
-#, fuzzy
 #~ msgid "Activate focus stealing prevention"
-#~ msgstr "Activa la prevenció de furt d'en_focament"
+#~ msgstr "Activa la prevenció de furt d'enfocament"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "Fes cas de la senyal e_standard d'enfocament ICCCM"
+#~ msgstr "Fes cas de la senyal estandard d'enfocament ICCCM"
 
-#, fuzzy
 #~ msgid "Focus"
-#~ msgstr "En_focament"
+#~ msgstr "Enfocament"
 
-#, fuzzy
 #~ msgid "Key used to grab and move windows"
-#~ msgstr "Tecla emprada per arrosse_gar i moure finestres:"
+#~ msgstr "Tecla emprada per arrossegar i moure finestres:"
 
-#, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "Posa en p_rimer pla quan es pitgi qualsevol botó del ratolí"
+#~ msgstr "Posa en primer pla quan es pitgi qualsevol botó del ratolí"
 
-#, fuzzy
 #~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Amaga el _marc de les finestres al maximitzar-les"
+#~ msgstr "Amaga el marc de les finestres al maximitzar-les"
 
-#, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
 #~ msgstr ""
-#~ "Recupera la _mida original de les finestres maximitzades quan es mouen"
+#~ "Recupera la mida original de les finestres maximitzades quan es mouen"
 
-#, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr ""
-#~ "Empra resistència a les vor_es en lloc de l'alineació ràpida de finestres"
+#~ msgstr "Empra resistència a les vores en lloc de l'alineació de finestres"
 
-#, fuzzy
 #~ msgid "Accessibility"
-#~ msgstr "_Accesibilitat"
+#~ msgstr "Accesibilitat"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr ""
 #~ "Canvia d'espai de treball mitjançant la roda del ratolí sobre l'escriptori"
 
-#, fuzzy
 #~ msgid ""
 #~ "Remember and recall previous workspace when switching via keyboard "
 #~ "shortcuts"
 #~ msgstr ""
-#~ "_Recorda i recrida l'espai de treball previ\n"
-#~ "quan canvii mitjançant les dreceres de teclat"
+#~ "Recorda i recrida l'espai de treball previ quan canvii mitjançant les "
+#~ "dreceres de teclat"
 
-#, fuzzy
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr ""
-#~ "Canvia d'espai de treball en funció del _format actual de l'escriptori"
+#~ "Canvia d'espai de treball en funció del format actual de l'escriptori"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Canvia d'espai de treball quan s'arribi al _primer o últim"
+#~ msgstr "Canvia d'espai de treball quan s'arribi al primer o últim"
 
-#, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Mida _mínima de les finestres per emplaçar-les inteŀligentment:"
+#~ msgstr "Mida mínima de les finestres per emplaçar-les inteŀligentment"
 
-#, fuzzy
 #~ msgid "Size|Small"
-#~ msgstr "<i>Petit</i>"
+#~ msgstr "Petita"
 
-#, fuzzy
 #~ msgid "Size|Large"
-#~ msgstr "<i>Gran</i>"
+#~ msgstr "Gran"
 
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr ""
 #~ "Posició predeterminada per les finestres sense emplaçament inteŀligent:"
 
-#, fuzzy
 #~ msgid "Placement"
-#~ msgstr "_Posicionament"
+#~ msgstr "Posicionament"
 
-#, fuzzy
 #~ msgid "Enable display compositing"
-#~ msgstr "_Habilita el «composite»"
+#~ msgstr "Habilita la visualització composta"
 
-#, fuzzy
 #~ msgid "Display full screen overlay windows directly"
-#~ msgstr "Mostra directament a pantalla sencera les _finestres"
+#~ msgstr "Mostra directament les finestres a pantalla sencera"
 
-#, fuzzy
 #~ msgid "Show shadows under dock windows"
-#~ msgstr "Mostra ombres a les finestres ancora_des"
+#~ msgstr "Mostra ombres a les finestres ancorades"
 
-#, fuzzy
 #~ msgid "Show shadows under regular windows"
-#~ msgstr "Mostra ombres a les finestres no_rmals"
+#~ msgstr "Mostra ombres a les finestres normals"
 
-#, fuzzy
 #~ msgid "Show shadows under popup windows"
-#~ msgstr "Mostra ombres a les finestres _emergents"
+#~ msgstr "Mostra ombres a les finestres emergents"
 
-#, fuzzy
 #~ msgid "Opacity of window decorations"
-#~ msgstr "Opaci_tat de la decoració de les finestres:"
+#~ msgstr "Opacitat de la decoració de les finestres"
 
-#, fuzzy
 #~ msgid "Transparent"
-#~ msgstr "<i>Transparència</i>"
+#~ msgstr "Transparent"
 
-#, fuzzy
 #~ msgid "Opaque"
-#~ msgstr "<i>Opacitat<(i>"
+#~ msgstr "Opacitat"
 
-#, fuzzy
 #~ msgid "Opacity of inactive windows"
-#~ msgstr "Opacitat de les finestres _inactives:"
+#~ msgstr "Opacitat de les finestres inactives"
 
-#, fuzzy
 #~ msgid "Opacity of windows during move"
-#~ msgstr "Opacitat de les finestres al _moure-les:"
+#~ msgstr "Opacitat de les finestres al moure-les"
 
-#, fuzzy
 #~ msgid "Opacity of windows during resize"
-#~ msgstr "Opacitat de les finestres al re_dimensinar-les:"
+#~ msgstr "Opacitat de les finestres al redimensinar-les"
 
-#, fuzzy
 #~ msgid "Opacity of popup windows"
-#~ msgstr "Opacitat de les finestres emergent_s:"
+#~ msgstr "Opacitat de les finestres emergents"
 
-#, fuzzy
 #~ msgid "Compositor"
-#~ msgstr "«C_ompositor»"
+#~ msgstr "«Compositor»"
 
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr ""
@@ -1251,20 +1170,17 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "Change name"
 #~ msgstr "Canvia el nom"
 
-#, fuzzy
 #~ msgid "Name:"
-#~ msgstr "_Nom:"
+#~ msgstr "Nom:"
 
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Pitjeu en el nom de l'espai de treball per editar-lo"
 
-#, fuzzy
 #~ msgid "Number of workspaces:"
-#~ msgstr "_Nombre d'espais de treball:"
+#~ msgstr "Nombre d'espais de treball:"
 
-#, fuzzy
 #~ msgid "Workspace names"
-#~ msgstr "Nom de l'espai de treball"
+#~ msgstr "Noms dels espais de treball"
 
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr ""
@@ -1274,9 +1190,8 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Espais de treball i marges"
 
-#, fuzzy
 #~ msgid "Margins"
-#~ msgstr "<b>Marges</b>"
+#~ msgstr "Marges"
 
 #~ msgid "Window Manager Settings"
 #~ msgstr "Paràmetres del gestor de finestres"
@@ -1296,59 +1211,47 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Paràmetres dels espais de treball d'Xfce 4"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Pitgeu i arrossegueu el botons per canviar el disseny"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Diàleg de selecció de fonts"
 
-#, fuzzy
 #~ msgid "Title font"
-#~ msgstr "<b>Font del _títol</b>"
+#~ msgstr "Font del títol"
 
-#, fuzzy
 #~ msgid "Title Alignment"
-#~ msgstr "<b>_Alineació del títol</b>"
+#~ msgstr "Alineació del títol"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Alineació del text dins de la barra de títol:"
 
-#, fuzzy
 #~ msgid "Button layout"
-#~ msgstr "<b>Disseny del botó</b>"
+#~ msgstr "Disseny del botó"
 
-#, fuzzy
 #~ msgid "Style"
-#~ msgstr "E_stil"
+#~ msgstr "Estil"
 
-#, fuzzy
 #~ msgid "Window shortcuts"
-#~ msgstr "<b>_Dreceres de finestres</b>"
+#~ msgstr "Dreceres de finestres"
 
-#, fuzzy
 #~ msgid "Command"
-#~ msgstr "Ordre: «%s»"
+#~ msgstr "Ordre"
 
-#, fuzzy
 #~ msgid "Keyboard"
-#~ msgstr "_Teclat"
+#~ msgstr "Teclat"
 
-#, fuzzy
 #~ msgid "Focus model"
-#~ msgstr "</b>Tipus d'enfocament</b>"
+#~ msgstr "Tipus d'enfocament"
 
-#, fuzzy
 #~ msgid "Click to focus"
-#~ msgstr "S'enfoca al _pitjar"
+#~ msgstr "S'enfoca al pitjar"
 
-#, fuzzy
 #~ msgid "Focus follows mouse"
 #~ msgstr "L'enfocament segueix el _ratolí"
 
-#, fuzzy
 #~ msgid "Delay before window receives focus"
-#~ msgstr "Retar_d abans que la finestra guanyi l'enfocament:"
+#~ msgstr "Retard abans que la finestra guanyi l'enfocament"
 
 #~ msgid "Slow"
 #~ msgstr "Lent"
@@ -1356,111 +1259,83 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "Fast"
 #~ msgstr "Ràpid"
 
-#, fuzzy
 #~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "Automàticament enfoca les finestres _noves"
+#~ msgstr "Automàticament enfoca les finestres noves"
 
-#, fuzzy
 #~ msgid "New window focus"
-#~ msgstr "<b>Enfoca de les finestres noves</b>"
+#~ msgstr "Enfocament de les noves finestres"
 
-#, fuzzy
 #~ msgid "Raise on focus"
-#~ msgstr "<b>Primer pla al enfocar</b>"
+#~ msgstr "Primer pla al enfocar"
 
-#, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "Automàticament posa en _primer pla les finestres enfocades"
+#~ msgstr "Automàticament posa en primer pla les finestres enfocades"
 
-#, fuzzy
 #~ msgid "Delay before raising focused window :"
-#~ msgstr "Retard a_bans de posar en primer pla la finestra enfocada:"
+#~ msgstr "Retard abans de posar en primer pla la finestra enfocada:"
 
-#, fuzzy
 #~ msgid "Raise window when clicking inside application window"
-#~ msgstr ""
-#~ "Posaen primer pla la finestra quan es pitgi d_ins la finestra de "
-#~ "l’aplicació"
+#~ msgstr "Coŀloca en primer pla la finestra quan es pitgi dins la finestra"
 
-#, fuzzy
 #~ msgid "Raise on click"
-#~ msgstr "<b>Primer pla al pitjar</b>"
+#~ msgstr "Primer pla al pitjar"
 
-#, fuzzy
 #~ msgid "Windows snapping"
-#~ msgstr "<b>Alineació ràpida de finestres</b>"
+#~ msgstr "Alineació de les finestres"
 
-#, fuzzy
 #~ msgid "Snap windows to screen border"
-#~ msgstr "Alinea ràpidament les finestres a la _vora de la pantalla"
+#~ msgstr "Alinea les finestres a la vora de la pantalla"
 
-#, fuzzy
 #~ msgid "Snap windows to other windows"
-#~ msgstr "Alinea ràpidament les finestres amb les altres _finestres"
+#~ msgstr "Alinea les finestres amb les altres finestres"
 
-#, fuzzy
 #~ msgid "Distance :"
-#~ msgstr "Dis_tància:"
+#~ msgstr "Distància:"
 
-#, fuzzy
 #~ msgid "Distance|Small"
-#~ msgstr "<i>Petita</i>"
+#~ msgstr "Petita"
 
-#, fuzzy
 #~ msgid "Distance|Wide"
-#~ msgstr "<i>Gran</i>"
+#~ msgstr "Gran"
 
-#, fuzzy
 #~ msgid "Wrap workspaces"
-#~ msgstr "<b>Ajustament dels espais de treball</b>"
+#~ msgstr "Moviment entre els espais de treball"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
 #~ msgstr ""
-#~ "Canvia d'espai de treball quan el _punter arribi a un dels laterals de la "
-#~ "pantalla"
+#~ "Canvia d'espai de treball quan el punter arribi al lateral de la pantalla"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
 #~ msgstr ""
-#~ "Canvia d'espai de treball quan s'_arrossegui una finestra fora de la "
+#~ "Canvia d'espai de treball quan s'arrossegui una finestra fora de la "
 #~ "pantalla"
 
-#, fuzzy
 #~ msgid "Edge Resistance :"
-#~ msgstr "Resistència de les _vores:"
+#~ msgstr "Resistència de les vores:"
 
-#, fuzzy
 #~ msgid "Resistance|Small"
-#~ msgstr "<i>Poca</i>"
+#~ msgstr "Poca"
 
-#, fuzzy
 #~ msgid "Resistance|Wide"
-#~ msgstr "<i>Molta</i>"
+#~ msgstr "Molta"
 
-#, fuzzy
 #~ msgid "Opaque move and resize"
-#~ msgstr "</b>Moure i redimensionar finestres</b>"
+#~ msgstr "Opacitat al moure i redimensionar"
 
-#, fuzzy
 #~ msgid "Display content of windows when resizing"
-#~ msgstr "Amaga el contingut de les finestres quan es _redimensionin"
+#~ msgstr "Mostra el contingut de les finestres quan es redimensionen"
 
-#, fuzzy
 #~ msgid "Display content of windows when moving"
-#~ msgstr "Amaga el contingut de les finestres quan es _moguin"
+#~ msgstr "Mostra el contingut de les finestres quan es mouen"
 
-#, fuzzy
 #~ msgid "Double click action"
-#~ msgstr "<b>_Acció del doble clic</b>"
+#~ msgstr "Acció del doble clic"
 
-#, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "Acció quan es fa doble clic a la barra de títol"
+#~ msgstr "Acció a realitzar que es fa doble clic a la barra de títol:"
 
-#, fuzzy
 #~ msgid "Advanced"
-#~ msgstr "A_vançat"
+#~ msgstr "Avançat"
 
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Gestor de finestres"
@@ -1471,9 +1346,8 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "Add keybinding theme"
 #~ msgstr "Afegeix un esquema d'assignació de tecles"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
-#~ msgstr "Introduïu nom per l'esquema:"
+#~ msgstr "Introduïu nom pel tema:"
 
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Ja hi ha un altre esquema d'assignació de tecles amb aquest nom"
@@ -1481,9 +1355,8 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Introduïu un nom per l'esquema d'assignació de tecles"
 
-#, fuzzy
 #~ msgid "Move window to workspace %d"
-#~ msgstr "Mou la finestra a l'àrea de treball %d"
+#~ msgstr "Mou la finestra a l'espai de treball %d"
 
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "No s'ha pogut obrir el directori de l'esquema"
@@ -1502,13 +1375,12 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ "No s'ha pogut escriure a %s:\n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
 #~ msgstr ""
-#~ "La drecera ja s'està emprant per l'ordre <b>%s</b>. Quina acció voleu "
-#~ "emprar?"
+#~ "La drecera ja s'està emprant.\n"
+#~ "Esteu segur de voler emprar-la?"
 
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Creo una drecera per:"
@@ -1516,9 +1388,8 @@ msgstr "No s'ha pogut crear la finestra d'ajuda: %s\n"
 #~ msgid "Compose shortcut"
 #~ msgstr "Crea una drecera"
 
-#, fuzzy
 #~ msgid "No shortcut"
-#~ msgstr "Crea una drecera"
+#~ msgstr "Sense drecera"
 
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "Canvia el nom de l'espai de treball %d"
