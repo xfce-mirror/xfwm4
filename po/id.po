@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-11 20:29+0000\n"
-"PO-Revision-Date: 2008-10-22 22:11+0700\n"
+"PO-Revision-Date: 2008-11-10 22:13+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -82,9 +82,8 @@ msgstr "Pengaturan soket manajer"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Atur perilaku jendela"
+msgstr "Atur perilaku jendela dan jalan pintas"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 msgid "Window Manager"
@@ -92,9 +91,8 @@ msgstr "Manajer Jendela"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Atur perilaku jendela"
+msgstr "Atur perilaku jendela dah efek"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
@@ -164,9 +162,8 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "<b>Gulung ruang kerja</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "<b>Perataan _judul</b>"
+msgstr "<b>_Tema</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
@@ -314,9 +311,8 @@ msgid "_Focus"
 msgstr "_Fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
 msgid "_Reset to Defaults"
-msgstr "K_embalikan ke standar"
+msgstr "K_embalikan ke Standar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Style"
@@ -397,9 +393,8 @@ msgid "Cycle windows"
 msgstr "Daur jendela"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "Daur jendela"
+msgstr "Daur jendela (Mundur)"
 
 #: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Close window"
@@ -474,64 +469,52 @@ msgid "Move window to next workspace"
 msgstr "Pindah jendela ke ruang kerja selanjutnya"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Pindah jendela ke ruang kerja %d"
+msgstr "Pindah jendela ke ruang kerja 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Show desktop"
@@ -562,64 +545,52 @@ msgid "Next workspace"
 msgstr "Ruang kerja selanjutnya"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
 msgid "Workspace 10"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
 msgid "Workspace 11"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
 msgid "Workspace 12"
-msgstr "Ruang kerja %i"
+msgstr "Ruang kerja 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Add workspace"
@@ -660,15 +631,16 @@ msgstr "Tak dapat membuat dialog pengaturan."
 
 #: ../settings-dialogs/xfwm4-settings.c:1829
 #: ../settings-dialogs/xfwm4-settings.c:1830
-#, fuzzy
 msgid "Reset to Defaults"
-msgstr "K_embalikan ke standar"
+msgstr "Kembalikan ke Standar"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
 msgid ""
 "This will reset <b>all</b> shortcuts to their default values. Do you really "
 "want to do this?"
 msgstr ""
+"Ini akan mengatur ulang <b>semua</b> jalan pintas ke nilai standar mereka. "
+"Anda yakin ingin melakukan ini?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -719,9 +691,8 @@ msgid "Honor _standard ICCCM focus hint"
 msgstr "Hormati _standar petujuk fokus ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Biarkan jendela mendesak berkedip"
+msgstr "Biarkan jendela mendesak _berkedip berulang kali"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
@@ -730,6 +701,7 @@ msgstr "Tombol yang digunakan untuk _menangkap dan memindahkan jendela:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
+"Pemberitahuan _keadaan mendesak dengan membuat dekorasi jendela berkedip"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Opaci_ty of window decorations:"
@@ -865,9 +837,8 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Ruang kerja</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
-msgstr "Ubah Nama Ruang Kerja"
+msgstr "Ubah nama ruang kerja"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
@@ -907,9 +878,8 @@ msgid "Ma_ximize"
 msgstr "Maksima_lkan"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "Tak _maksimalkan"
+msgstr "T_ak Maksimalkan"
 
 #: ../src/menu.c:46
 msgid "Mi_nimize"
@@ -917,7 +887,7 @@ msgstr "Mi_nimalkan"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Minimalkan _Semua Jendela Lain"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -933,57 +903,49 @@ msgstr "_Ubah Ukuran"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
 msgstr "Selalu di atas"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Lekatkan jendela ke _jendela lain"
+msgstr "Sama Seperti Jendela Lain"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Selalu di Bawah Jendela Lain"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Isi jendela"
+msgstr "Gulung Jendela ke Atas"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Pindah jendela ke bawah"
+msgstr "Gulung Jendela ke Bawah"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
 msgstr "_Layar Penuh"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "_Layar Penuh"
+msgstr "Keluar _Layar Penuh"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
 msgstr "Isi _bantuan"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "Selalu di atas"
+msgstr "Selalu di Ruang Kerja Tampak"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Hanya di Ruang Kerja Ini"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Pindah jendela ke ruang kerja selanjutnya"
+msgstr "Pindah ke Ruang Kerja Lain"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1053,17 +1015,14 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Bottom :"
 #~ msgstr "Bawah :"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
-#~ msgstr "_Bawa jendela ke ruang kerja saat ini"
+#~ msgstr "Bawa jendela ke ruang kerja saat ini"
 
-#, fuzzy
 #~ msgid "Switch to window's workspace"
-#~ msgstr "Pindah ke jende_la ruang kerja"
+#~ msgstr "Pindah ke jendela ruang kerja"
 
-#, fuzzy
 #~ msgid "Do nothing"
-#~ msgstr "Tak lakukan _apa-apa"
+#~ msgstr "Tak lakukan apa-apa"
 
 #~ msgid "Place window under the mouse"
 #~ msgstr "Tempatkan jendela di bawah tetikus"
@@ -1071,84 +1030,67 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Tempatkan jendela di tengah"
 
-#, fuzzy
 #~ msgid ""
 #~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr ""
-#~ "_Lewati jendela yang punya pengaturan properti\n"
-#~ "\"skip pager\" atau \"skip taskbar\""
+#~ "Lewati jendela yang punya pengaturan properti \"skip pager\" atau \"skip "
+#~ "taskbar\""
 
-#, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "_Termasuk jendela (misalnya dalam bentuk ikon) tersembunyi"
+#~ msgstr "Termasuk jendela (misalnya dalam bentuk ikon) tersembunyi"
 
-#, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Daur _seluruh jendela dari semua ruang kerja"
+#~ msgstr "Daur seluruh jendela dari semua ruang kerja"
 
-#, fuzzy
 #~ msgid "Cycling"
-#~ msgstr "D_aur"
+#~ msgstr "Daur"
 
-#, fuzzy
 #~ msgid "Activate focus stealing prevention"
-#~ msgstr "Aktifkan _pencegahan pencurian fokus"
+#~ msgstr "Aktifkan pencegahan pencurian fokus"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "Hormati _standar petujuk fokus ICCCM"
+#~ msgstr "Hormati standar petujuk fokus ICCCM"
 
-#, fuzzy
 #~ msgid "Focus"
-#~ msgstr "_Fokus"
+#~ msgstr "Fokus"
 
-#, fuzzy
 #~ msgid "Key used to grab and move windows"
-#~ msgstr "Tombol yang digunakan untuk _menangkap dan memindahkan jendela:"
+#~ msgstr "Tombol yang digunakan untuk menangkap dan memindahkan jendela"
 
-#, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "_Naikkan jendela ketika ada tombol tetikus yang ditekan"
+#~ msgstr "Naikkan jendela ketika ada tombol tetikus yang ditekan"
 
-#, fuzzy
 #~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Sembunyikan _bingkai jendela ketika dimaksimalkan"
+#~ msgstr "Sembunyikan bingkai jendela ketika dimaksimalkan"
 
-#, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
 #~ msgstr ""
-#~ "Kembalikan ukuran asli _dari jendela yang dimaksimalkan ketika memindahkan"
+#~ "Kembalikan ukuran asli dari jendela yang dimaksimalkan ketika memindahkan"
 
-#, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "Gunakan ketahanan _tepi ketimbang mangetitasi jendela"
+#~ msgstr "Gunakan ketahanan tepi ketimbang mangetitasi jendela"
 
-#, fuzzy
 #~ msgid "Accessibility"
-#~ msgstr "_Aksesibilitas"
+#~ msgstr "Aksesibilitas"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Pindah ruang kerja menggunakan roda tetikus antar destop"
 
-#, fuzzy
 #~ msgid ""
 #~ "Remember and recall previous workspace when switching via keyboard "
 #~ "shortcuts"
 #~ msgstr ""
-#~ "_Ingat dan panggil ulang ruang kerja sebelumnya\n"
-#~ "ketika pindah via jalan pintas papan ketik"
+#~ "Ingat dan panggil ulang ruang kerja sebelumnya ketika pindah via jalan "
+#~ "pintas papan ketik"
 
-#, fuzzy
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr "Gulung ruang kerja berdasarkan tata _letak destop sebenarnya"
+#~ msgstr "Gulung ruang kerja berdasarkan tata letak destop sebenarnya"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Gulung ruang kerja jika ruang kerja _pertama atau terakhir tercapai"
+#~ msgstr "Gulung ruang kerja jika ruang kerja pertama atau terakhir tercapai"
 
-#, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "_Ukuran minimum jendela untuk menyulut penempatan cerdas:"
+#~ msgstr "Ukuran minimum jendela untuk menyulut penempatan cerdas"
 
 #~ msgid "Size|Small"
 #~ msgstr "Kecil"
@@ -1159,61 +1101,47 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Penempatan standar jendela tanpa penempatan cerdas:"
 
-#, fuzzy
 #~ msgid "Placement"
-#~ msgstr "_Penempatan"
+#~ msgstr "Penempatan"
 
-#, fuzzy
 #~ msgid "Enable display compositing"
-#~ msgstr "Akti_fkan komposisi tampilan"
+#~ msgstr "Aktifkan komposisi tampilan"
 
-#, fuzzy
 #~ msgid "Display full screen overlay windows directly"
-#~ msgstr "Tampilkan _langsung jendela lapisan layar penuh"
+#~ msgstr "Tampilkan langsung jendela lapisan layar penuh"
 
-#, fuzzy
 #~ msgid "Show shadows under dock windows"
-#~ msgstr "Tampilkan bayangan di bawah _dok jendela"
+#~ msgstr "Tampilkan bayangan di bawah dok jendela"
 
-#, fuzzy
 #~ msgid "Show shadows under regular windows"
-#~ msgstr "Tampilkan bayangan di bawah jendela _reguler"
+#~ msgstr "Tampilkan bayangan di bawah jendela reguler"
 
-#, fuzzy
 #~ msgid "Show shadows under popup windows"
-#~ msgstr "Tampilkan bayangan di bawah jendela yang mun_cul"
+#~ msgstr "Tampilkan bayangan di bawah jendela yang muncul"
 
-#, fuzzy
 #~ msgid "Opacity of window decorations"
-#~ msgstr "Opasi_tas dekorasi jendela:"
+#~ msgstr "Opasitas dekorasi jendela"
 
-#, fuzzy
 #~ msgid "Transparent"
-#~ msgstr "<i>Transparan</i>"
+#~ msgstr "Transparan"
 
-#, fuzzy
 #~ msgid "Opaque"
-#~ msgstr "<i>Opasitas</i>"
+#~ msgstr "Opasitas"
 
-#, fuzzy
 #~ msgid "Opacity of inactive windows"
-#~ msgstr "Opasitas _jendela tidak aktif:"
+#~ msgstr "Opasitas jendela tidak aktif"
 
-#, fuzzy
 #~ msgid "Opacity of windows during move"
-#~ msgstr "Opasitas jendela ketika _pindah:"
+#~ msgstr "Opasitas jendela ketika pindah"
 
-#, fuzzy
 #~ msgid "Opacity of windows during resize"
-#~ msgstr "Opasitas jendela ketika ubah uku_ran:"
+#~ msgstr "Opasitas jendela ketika ubah ukuran"
 
-#, fuzzy
 #~ msgid "Opacity of popup windows"
-#~ msgstr "Opasitas jendela yang munc_ul:"
+#~ msgstr "Opasitas jendela yang muncul"
 
-#, fuzzy
 #~ msgid "Compositor"
-#~ msgstr "K_ompositor"
+#~ msgstr "Kompositor"
 
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Tweak Manajer Jendela"
@@ -1225,20 +1153,17 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Change name"
 #~ msgstr "Ubah nama"
 
-#, fuzzy
 #~ msgid "Name:"
-#~ msgstr "_Nama:"
+#~ msgstr "Nama:"
 
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Klik pada nama ruang kerja untuk mengubahnya"
 
-#, fuzzy
 #~ msgid "Number of workspaces:"
-#~ msgstr "_Jumlah ruang kerja:"
+#~ msgstr "Jumlah ruang kerja:"
 
-#, fuzzy
 #~ msgid "Workspace names"
-#~ msgstr "Nama Ruang Kerja"
+#~ msgstr "Nama ruang kerja"
 
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Ruang Kerja dan Margin"
@@ -1246,9 +1171,8 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Ruang Kerja dan Margin"
 
-#, fuzzy
 #~ msgid "Margins"
-#~ msgstr "<b>Margin</b>"
+#~ msgstr "Margin"
 
 #~ msgid "Window Manager Settings"
 #~ msgstr "Pengaturan Manajer Jendela"
@@ -1268,59 +1192,47 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Pengaturan Ruang Kerja Xfce 4"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Klik dan tarik tombol untuk mengubah tata letak"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Dialog Seleksi Fonta"
 
-#, fuzzy
 #~ msgid "Title font"
-#~ msgstr "<b>Fonta judu_l</b>"
+#~ msgstr "Fonta judul"
 
-#, fuzzy
 #~ msgid "Title Alignment"
-#~ msgstr "<b>Perataan _judul</b>"
+#~ msgstr "Perataan Judul"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Perataan teks di dalam batang judul :"
 
-#, fuzzy
 #~ msgid "Button layout"
-#~ msgstr "<b>Tata letak tombol</b>"
+#~ msgstr "Tata letak tombol"
 
-#, fuzzy
 #~ msgid "Style"
-#~ msgstr "_Gaya"
+#~ msgstr "Gaya"
 
-#, fuzzy
 #~ msgid "Window shortcuts"
-#~ msgstr "<b>Jalan _pintas jendela</b>"
+#~ msgstr "Jalan pintas jendela"
 
-#, fuzzy
 #~ msgid "Command"
-#~ msgstr "Perintah: %s"
+#~ msgstr "Perintah"
 
-#, fuzzy
 #~ msgid "Keyboard"
-#~ msgstr "Pa_pan ketik"
+#~ msgstr "Papan ketik"
 
-#, fuzzy
 #~ msgid "Focus model"
-#~ msgstr "<b>Model fokus</b>"
+#~ msgstr "Model fokus"
 
-#, fuzzy
 #~ msgid "Click to focus"
-#~ msgstr "Kli_k untuk fokus"
+#~ msgstr "Klik untuk fokus"
 
-#, fuzzy
 #~ msgid "Focus follows mouse"
-#~ msgstr "Fokus mengikuti _tetikus"
+#~ msgstr "Fokus mengikuti tetikus"
 
-#, fuzzy
 #~ msgid "Delay before window receives focus"
-#~ msgstr "_Tunda sebelum jendela menerima fokus:"
+#~ msgstr "Tunda sebelum jendela menerima fokus"
 
 #~ msgid "Slow"
 #~ msgstr "Pelan"
@@ -1328,105 +1240,80 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Fast"
 #~ msgstr "Cepat"
 
-#, fuzzy
 #~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "Otomatis memfokuskan pada jendela yang _baru dibuat"
+#~ msgstr "Otomatis memfokuskan pada jendela yang baru dibuat"
 
-#, fuzzy
 #~ msgid "New window focus"
-#~ msgstr "<b>Fokus jendela baru</b>"
+#~ msgstr "Fokus jendela baru"
 
-#, fuzzy
 #~ msgid "Raise on focus"
-#~ msgstr "<b>Naikkan pada fokus</b>"
+#~ msgstr "Naikkan pada fokus"
 
-#, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "Otomatis _menaikkan jendela ketika jendela menerima fokus"
+#~ msgstr "Otomatis menaikkan jendela ketika jendela menerima fokus"
 
-#, fuzzy
 #~ msgid "Delay before raising focused window :"
-#~ msgstr "Tunda _sebelum menaikkan jendela yang difokuskan:"
+#~ msgstr "Tunda sebelum menaikkan jendela yang difokuskan:"
 
-#, fuzzy
 #~ msgid "Raise window when clicking inside application window"
-#~ msgstr "Naikkan jendela ketika klik _di dalam jendela aplikasi"
+#~ msgstr "Naikkan jendela ketika klik di dalam jendela aplikasi"
 
-#, fuzzy
 #~ msgid "Raise on click"
-#~ msgstr "<b>Naikkan pada klik</b>"
+#~ msgstr "Naikkan pada klik"
 
-#, fuzzy
 #~ msgid "Windows snapping"
-#~ msgstr "<b>Magnetisasi jendela</b>"
+#~ msgstr "Magnetisasi jendela"
 
-#, fuzzy
 #~ msgid "Snap windows to screen border"
-#~ msgstr "Lekatkan jendela ke _batas layar"
+#~ msgstr "Lekatkan jendela ke batas layar"
 
-#, fuzzy
 #~ msgid "Snap windows to other windows"
-#~ msgstr "Lekatkan jendela ke _jendela lain"
+#~ msgstr "Lekatkan jendela ke jendela lain"
 
-#, fuzzy
 #~ msgid "Distance :"
-#~ msgstr "Ja_rak:"
+#~ msgstr "Jarak:"
 
-#, fuzzy
 #~ msgid "Distance|Small"
-#~ msgstr "<i>Sempit</i>"
+#~ msgstr "Kecil"
 
-#, fuzzy
 #~ msgid "Distance|Wide"
-#~ msgstr "<i>Lebar</i>"
+#~ msgstr "Lebar"
 
-#, fuzzy
 #~ msgid "Wrap workspaces"
-#~ msgstr "<b>Gulung ruang kerja</b>"
+#~ msgstr "Gulung ruang kerja"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Gulung ruang kerja ketika _penunjuk mencapai tepi layar"
+#~ msgstr "Gulung ruang kerja ketika penunjuk mencapai tepi layar"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Gulung ruang kerja _ketika menarik jendela keluar layar"
+#~ msgstr "Gulung ruang kerja ketika menarik jendela keluar layar"
 
-#, fuzzy
 #~ msgid "Edge Resistance :"
-#~ msgstr "_Ketahanan tepi:"
+#~ msgstr "Ketahanan Tepi :"
 
-#, fuzzy
 #~ msgid "Resistance|Small"
-#~ msgstr "<i>Kecil</i>"
+#~ msgstr "Kecil"
 
-#, fuzzy
 #~ msgid "Resistance|Wide"
-#~ msgstr "<i>Lebar</>"
+#~ msgstr "Lebar"
 
-#, fuzzy
 #~ msgid "Opaque move and resize"
-#~ msgstr "<b>Pindah kotak dan ubah ukuran</b>"
+#~ msgstr "Pindah kotak dan ubah ukuran"
 
-#, fuzzy
 #~ msgid "Display content of windows when resizing"
-#~ msgstr "Tampilkan isi jendela ketika mengubah _ukuran"
+#~ msgstr "Tampilkan isi jendela ketika mengubah ukuran"
 
-#, fuzzy
 #~ msgid "Display content of windows when moving"
-#~ msgstr "Tampilkan isi jendela ketika _memindahkan"
+#~ msgstr "Tampilkan isi jendela ketika memindahkan"
 
-#, fuzzy
 #~ msgid "Double click action"
-#~ msgstr "<b>Aksi klik _ganda</b>"
+#~ msgstr "Aksi klik ganda"
 
-#, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "Aksi yang dilakukan ketika batang judul diklik-ganda"
+#~ msgstr "Aksi yang dilakukan ketika klik ganda di batang judul :"
 
-#, fuzzy
 #~ msgid "Advanced"
-#~ msgstr "Ma_hir"
+#~ msgstr "Mahir"
 
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Manajer Jendela"
@@ -1437,9 +1324,8 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Add keybinding theme"
 #~ msgstr "Tambah tema ikat kunci"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
-#~ msgstr "Masukkan nama untuk tema jalan pintas baru:"
+#~ msgstr "Masukkan nama untuk tema:"
 
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Tema ikat kunci dengan nama sama telah ada"
@@ -1447,9 +1333,8 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Anda harus memasukkan nama untuk tema ikat kunci"
 
-#, fuzzy
 #~ msgid "Move window to workspace %d"
-#~ msgstr "Pindah jendela ke ruang kerja %d"
+#~ msgstr "Pindahkan jendela ke ruang kerja %d"
 
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Tak dapat membuka direktori tema !"
@@ -1468,13 +1353,12 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ "Tak dapat menulis di %s : \n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
 #~ msgstr ""
-#~ "Jalan pintas telah digunakan untuk perintah <b>%s</b>. Aksi mana yang "
-#~ "ingin ingin anda gunakan?"
+#~ "Jalan pintas telah digunakan !\n"
+#~ "Anda yakin ingin melakukannya?"
 
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Tulis jalan pintas untuk :"
@@ -1482,9 +1366,8 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Compose shortcut"
 #~ msgstr "Tulis jalan pintas"
 
-#, fuzzy
 #~ msgid "No shortcut"
-#~ msgstr "Tulis jalan pintas"
+#~ msgstr "Tak ada jalan pintas"
 
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "Ubah nama ruang kerja %d"
