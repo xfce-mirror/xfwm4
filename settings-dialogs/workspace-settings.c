@@ -264,7 +264,7 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
 
     n_workspaces = wnck_screen_get_workspace_count(screen);
     i = 0;
-    for(; i < n_workspaces && names[i]; ++i) {
+    for(; i < n_workspaces && names && names[i]; ++i) {
         gtk_list_store_append(ls, &iter);
         gtk_list_store_set(ls, &iter,
                            COL_NUMBER, i + 1,
