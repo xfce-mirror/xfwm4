@@ -1,3 +1,8 @@
+2008-11-19  olivier
+
+	* settings-dialogs/workspace-settings.c: Trivial optimization, no need 
+	  to check the value for eatch iteration.
+
 2008-11-18  olivier
 
 	* settings-dialogs/workspace-settings.c: Make sure the data retrieved
