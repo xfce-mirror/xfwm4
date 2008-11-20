@@ -1,3 +1,9 @@
+4.5.99.1 (Xfce 4.6rc1)
+======================
+
+- Work arround a problem affecting the use of the "Super" key as modifier for 
+  moving windows (Bug #4632)
+
 4.5.92 (Xfce 4.6beta2)
 ======================
 

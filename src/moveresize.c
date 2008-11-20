@@ -194,6 +194,13 @@ clientMovePointer (DisplayInfo *display_info, gint dx, gint dy, guint repeat)
     }
 }
 
+static gboolean
+clientKeyPressIsModifier (XEvent *xevent)
+{
+    int keysym = XLookupKeysym (&xevent->xkey, 0);
+    return (gboolean) IsModifierKey(keysym);
+}
+
 static void
 clientSetHandle(MoveResizeData *passdata, int handle)
 {
@@ -629,7 +636,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         }
         else
         {
-            moving = FALSE;
+            moving = clientKeyPressIsModifier(xevent);
         }
     }
     else if (xevent->type == ButtonRelease)
@@ -1255,7 +1262,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         else
         {
-            resizing = FALSE;
+            resizing = clientKeyPressIsModifier(xevent);
         }
     }
     else if (xevent->type == MotionNotify)

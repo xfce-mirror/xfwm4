@@ -1,3 +1,8 @@
+2008-11-20  olivier
+
+	* src/moveresize.c: Work arround a problem affecting the use of 
+	  the "Super" key as modifier for moving windows (Bug #4632)
+
 2008-11-19  olivier
 
 	* settings-dialogs/workspace-settings.c: Trivial optimization, no need 
