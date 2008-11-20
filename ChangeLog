@@ -1,5 +1,9 @@
 2008-11-20  olivier
 
+	* defaults/defaults: Fix default value for easy_click
+
+2008-11-20  olivier
+
 	* src/moveresize.c: Work arround a problem affecting the use of 
 	  the "Super" key as modifier for moving windows (Bug #4632)
 
