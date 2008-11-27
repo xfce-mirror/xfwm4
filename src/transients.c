@@ -256,49 +256,25 @@ Client *
 clientGetModalFor (Client * c)
 {
     ScreenInfo *screen_info;
-    Client *latest_modal;
-    Client *c2, *c3;
-    GList *modals;
-    GList *index1, *index2;
+    Client *c2;
+    GList *index;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetModalFor");
 
-    modals = NULL;
-    latest_modal = NULL;
     screen_info = c->screen_info;
-    for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
+    for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
     {
-        c2 = (Client *) index1->data;
+        c2 = (Client *) index->data;
         if (c2)
         {
             if ((c2 != c) && clientIsModalFor (c2, c))
             {
-                modals = g_list_append (modals, c2);
-                latest_modal = c2;
-            }
-            else
-            {
-                for (index2 = modals; index2;
-                    index2 = g_list_next (index2))
-                {
-                    c3 = (Client *) index2->data;
-                    if ((c3 != c2) && clientIsModalFor (c2, c3))
-                    {
-                        modals = g_list_append (modals, c2);
-                        latest_modal = c2;
-                        break;
-                    }
-                }
+                return c2;
             }
         }
     }
-    if (modals)
-    {
-        g_list_free (modals);
-    }
-
-    return latest_modal;
+    return NULL;
 }
 
 Client *
