@@ -134,7 +134,13 @@ clientIsModalFor (Client * c1, Client * c2)
 
     if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL) && (c1->type & WINDOW_REGULAR_FOCUSABLE) && (c1->serial >= c2->serial))
     {
-        return (clientIsTransientFor (c1, c2) || clientSameGroup (c1, c2));
+        /*
+         * We used to consider all windows of the same group here
+         * (ie. "clientSameGroup (c1, c2)") but that seems too
+         * wide so we restric modality to transient relationship
+         * for now.
+         */
+        return (clientIsTransientFor (c1, c2));
     }
     return FALSE;
 }

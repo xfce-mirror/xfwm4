@@ -1,5 +1,10 @@
 2008-11-27  olivier
 
+	* src/transients.c: Do not consider all windows of the same group for
+	  modality (See comment in Bug #3586)
+
+2008-11-27  olivier
+
 	* src/focus.c, src/focus.h: Only focus the fallback window when 
 	  transitioning focus from a destroy or unmap (Should fix Bug #4652)
 	  Do some small cleanup, remove older code ifdef'ed.
