@@ -323,12 +323,12 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
     new_focus = NULL;
     current_focus = client_focus;
     c2 = NULL;
-#if 1
+
     if (pending_focus)
     {
         current_focus = pending_focus;
     }
-#endif
+
     if ((c || current_focus) && (c != current_focus))
     {
         return;
@@ -341,39 +341,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
 
     display_info = screen_info->display_info;
     top_most = clientGetTopMostFocusable (screen_info, look_in_layer, exclude_list);
-#if 0
-    if (screen_info->params->click_to_focus)
-    {
-        if (c)
-        {
-            if (clientIsModal (c))
-            {
-                /* If the window is a modal, send focus back to its parent
-                 * window.
-                 * Modals are transients, and we aren't interested in modal
-                 * for group, so it safe to use clientGetTransient because
-                 * it's really what we want...
-                 */
-                c2 = clientGetTransient (c);
-                if (c2 && FLAG_TEST(c2->xfwm_flags, XFWM_FLAG_VISIBLE))
-                {
-                    new_focus = c2;
-                    /* Usability: raise the parent, to grab user's attention */
-                    clientRaise (c2, None);
-                }
-            }
-            else
-            {
-                c2 = clientGetNext (c, 0);
-                if ((c2) && (c2->win_layer >= c->win_layer))
-                {
-                    new_focus = c2;
-                }
-            }
-        }
-    }
-    else
-#endif
+
     if (!(screen_info->params->click_to_focus) &&
         XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask))
     {
@@ -385,7 +353,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
     }
     clientSetFocus (screen_info, new_focus,
                     myDisplayGetCurrentTime (display_info),
-                    FOCUS_IGNORE_MODAL | FOCUS_FORCE);
+                    FOCUS_IGNORE_MODAL | FOCUS_FORCE | FOCUS_TRANSITION);
 }
 
 gboolean
@@ -604,7 +572,7 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, guint32 timestamp, unsigned 
                 XSetInputFocus (myScreenGetXDisplay (screen_info), c->window, RevertToPointerRoot, timestamp);
             }
         }
-        else
+        else if (flags & FOCUS_TRANSITION)
         {
             /*
              * If we are relying only on the client application to take focus, we need to set the focus

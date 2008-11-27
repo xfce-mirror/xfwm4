@@ -1,3 +1,9 @@
+2008-11-27  olivier
+
+	* src/focus.c, src/focus.h: Only focus the fallback window when 
+	  transitioning focus from a destroy or unmap (Should fix Bug #4652)
+	  Do some small cleanup, remove older code ifdef'ed.
+
 2008-11-25  olivier
 
 	* themes/daloa: Enlarge active zone of buttons
@@ -8,13 +14,13 @@
 
 2008-11-20  olivier
 
-	* src/moveresize.c: Work arround a problem affecting the use of 
+	* src/moveresize.c: Work around a problem affecting the use of 
 	  the "Super" key as modifier for moving windows (Bug #4632)
 
 2008-11-19  olivier
 
 	* settings-dialogs/workspace-settings.c: Trivial optimization, no need 
-	  to check the value for eatch iteration.
+	  to check the value for each iteration.
 
 2008-11-18  olivier
 

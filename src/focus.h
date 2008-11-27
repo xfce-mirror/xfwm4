@@ -38,6 +38,7 @@
 #define FOCUS_SORT                      (1<<0)
 #define FOCUS_IGNORE_MODAL              (1<<1)
 #define FOCUS_FORCE                     (1<<2)
+#define FOCUS_TRANSITION                (1<<3)
 
 void                     clientFocusTop                         (ScreenInfo *,
                                                                  int,
