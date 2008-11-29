@@ -1,4 +1,4 @@
-2008-11-27  olivier
+2008-11-29  olivier
 
 	* src/placement.c: Fix smart placement not working for windows with 
 	  height or width larger than actual screen size (Bug# 3126). 
