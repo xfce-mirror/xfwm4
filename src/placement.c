@@ -586,11 +586,11 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     best_x = full_x + frameLeft (c);
     best_y = full_y + frameTop (c);
 
-    for (test_y = full_y + frameTop (c); test_y <= ymax;
-        test_y += 8)
+    test_y = full_y + frameTop (c);
+    do
     {
-        for (test_x = full_x + frameLeft (c);
-            test_x <= xmax; test_x += 8)
+        test_x = full_x + frameLeft (c);
+        do
         {
             gfloat count_overlaps = 0.0;
             TRACE ("analyzing %i clients", screen_info->client_count);
@@ -628,8 +628,13 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
             {
                 first = FALSE;
             }
+            test_x += 8;
         }
+        while (test_x <= xmax);
+        test_y += 8;
     }
+    while (test_y <= ymax);
+
     c->x = best_x;
     c->y = best_y;
 }
