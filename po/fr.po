@@ -637,7 +637,7 @@ msgstr "Réinitialiser aux valeurs par défaut"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
 msgid "This will reset <b>all</b> shortcuts to their default values. Do you really want to do this?"
-msgstr "Voulez-vous vraiment réinitialiser tous <b>les</b> raccourcis à leur valeur par défaut ?"
+msgstr "Voulez-vous vraiment réinitialiser <b>tous</b> les raccourcis à leur valeur par défaut ?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
