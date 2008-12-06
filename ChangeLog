@@ -1,3 +1,11 @@
+2008-12-06  olivier
+
+	* settings-dialogs/monitor-icon.svg, settings-dialogs/monitor-icon.png,
+	  settings-dialogs/monitor-icon.h: Replace monitor icon with an icon
+	  based on the Tango icon theme (Bug #4666), 
+	  COPYING: Add the CCPL as some icons are derived work from the 
+	  Tango icons.
+
 2008-11-29  olivier
 
 	* src/placement.c: Fix smart placement not working for windows with 

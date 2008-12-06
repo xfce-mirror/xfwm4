@@ -4,13 +4,15 @@ xfwm4-tweaks-settings  \
 xfwm4-workspace-settings 
 
 noinst_DATA = \
-monitor-icon.h  \
-monitor-icon.png
+	monitor-icon.png \
+	monitor-icon.svg \
+	monitor-icon.h
 
 xfwm4_workspace_settings_SOURCES = \
 	workspace-settings.c \
 	xfwm4-workspace-dialog_glade.h \
 	monitor-icon.png \
+	monitor-icon.svg \
 	monitor-icon.h
 
 xfwm4_workspace_settings_CFLAGS = \
