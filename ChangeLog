@@ -1,3 +1,10 @@
+2008-12-10  olivier
+
+	* settings-dialogs/monitor-icon.svg, settings-dialogs/monitor-icon.png,
+	  src/default_icon.svg, src/default_icon.png: Redo the icons from
+	  scratch so we it's not a derivative work from the Tango icons anymore
+	  (and thus remove the CCPL).
+
 2008-12-06  olivier
 
 	* settings-dialogs/monitor-icon.svg, settings-dialogs/monitor-icon.png,
