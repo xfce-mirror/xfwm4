@@ -27,15 +27,11 @@
       <stop
          id="stop3239"
          offset="0"
-         style="stop-color:#555753;stop-opacity:1;" />
-      <stop
-         style="stop-color:#555753;stop-opacity:0.66929132;"
-         offset="0.5"
-         id="stop3243" />
+         style="stop-color:#000000;stop-opacity:1;" />
       <stop
          id="stop3241"
          offset="1"
-         style="stop-color:#fefeff;stop-opacity:1;" />
+         style="stop-color:#000000;stop-opacity:0;" />
     </linearGradient>
     <linearGradient
        id="linearGradient3189">
@@ -105,20 +101,8 @@
        fx="238.58025"
        fy="372.90125"
        r="235.55556"
-       gradientTransform="matrix(1,0,0,0.2426625,0,282.41211)"
+       gradientTransform="matrix(1.9104091,1.7452917e-8,-1.7046826e-8,0.4707049,-217.20561,197.37482)"
        gradientUnits="userSpaceOnUse" />
-    <filter
-       inkscape:collect="always"
-       id="filter3277"
-       x="-0.12958134"
-       width="1.2591627"
-       y="-0.54809989"
-       height="2.0961998">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="25.593405"
-         id="feGaussianBlur3279" />
-    </filter>
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3189"
@@ -199,6 +183,18 @@
        y1="187.05577"
        x2="31.31473"
        y2="390.09641" />
+    <filter
+       inkscape:collect="always"
+       id="filter3177"
+       x="-0.062369609"
+       width="1.1247392"
+       y="-0.2660436"
+       height="1.5320872">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="12.349741"
+         id="feGaussianBlur3179" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -210,9 +206,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.81"
+     inkscape:zoom="0.28637825"
      inkscape:cx="241.48175"
-     inkscape:cy="257.95506"
+     inkscape:cy="237.91967"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -220,10 +216,10 @@
      inkscape:object-paths="true"
      inkscape:object-nodes="true"
      inkscape:snap-intersection-line-segments="true"
-     inkscape:window-width="720"
-     inkscape:window-height="767"
-     inkscape:window-x="645"
-     inkscape:window-y="249" />
+     inkscape:window-width="648"
+     inkscape:window-height="676"
+     inkscape:window-x="2009"
+     inkscape:window-y="424" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -248,16 +244,17 @@
      id="layer1">
     <path
        sodipodi:type="arc"
-       style="opacity:0.25;fill:url(#radialGradient3235);fill-opacity:1;stroke:#ffffff;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3277)"
+       style="opacity:0.25;fill:url(#radialGradient3235);fill-opacity:1;stroke:#ffffff;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3177)"
        id="path3227"
        sodipodi:cx="238.58025"
        sodipodi:cy="372.90125"
        sodipodi:rx="230.55556"
        sodipodi:ry="52.160492"
        d="M 469.1358,372.90125 A 230.55556,52.160492 0 1 1 8.0246887,372.90125 A 230.55556,52.160492 0 1 1 469.1358,372.90125 z"
-       transform="matrix(1.0120942,0,0,1.6865939,-1.6508767,-279.17992)" />
+       transform="matrix(1.0095358,0,0,2.0100104,-0.8552995,-379.30971)" />
     <g
-       id="g3310">
+       id="g3310"
+       transform="matrix(1.1006667,0,0,1.1806265,-24.160008,-43.35036)">
       <rect
          ry="13.13198"
          y="93.022812"
@@ -273,7 +270,7 @@
          height="32.644596"
          width="348.75104"
          id="rect3187"
-         style="opacity:0.8;fill:url(#linearGradient3303);fill-opacity:1;stroke:url(#linearGradient3305);stroke-width:7.50000000000000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:0.8;fill:url(#linearGradient3303);fill-opacity:1;stroke:url(#linearGradient3305);stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <rect
          ry="3.9628613"
          y="102.76115"
