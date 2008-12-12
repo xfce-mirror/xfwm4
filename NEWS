@@ -4,7 +4,8 @@
 - Work arround a problem affecting the use of the "Super" key as modifier for 
   moving windows (Bug #4632).
 - Fix smart placement not working for windows with height or width larger than 
-  actual screen size (Bug# 3126). 
+  actual screen size (Bug# 3126).
+- Remove maximization if a client updates its size max size hint (Bug #4706).
 
 4.5.92 (Xfce 4.6beta2)
 ======================

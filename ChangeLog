@@ -1,3 +1,8 @@
+2008-12-12  olivier
+
+	* src/client.c: Remove maximization if a client updates its size max
+	  size hint (Bug #4706)
+
 2008-12-11  olivier
 
 	* settings-dialogs/monitor-icon.svg, settings-dialogs/monitor-icon.png,
