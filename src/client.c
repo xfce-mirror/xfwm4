@@ -1292,7 +1292,11 @@ clientGetWMNormalHints (Client * c, gboolean update)
     {
         if ((c->width != wc.width) || (c->height != wc.height))
         {
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_CONSTRAINED);
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+            {
+                clientRemoveMaximizeFlag (c);
+            }
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_CONSTRAINED | CFG_FORCE_REDRAW);
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
