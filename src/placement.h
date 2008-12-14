@@ -44,5 +44,7 @@ gboolean                 clientCkeckTitle                       (Client *);
 unsigned int             clientConstrainPos                     (Client *,
                                                                  gboolean);
 void                     clientInitPosition                     (Client *);
+void                     clientFill                             (Client *,
+                                                                 int);
 
 #endif /* INC_PLACEMENT_H */

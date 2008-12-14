@@ -1,5 +1,11 @@
 2008-12-14  olivier
 
+	* src/placement.c, src/placement.h, src/client.c, src/client.h:
+	  Fix fill horizontally and vertically not working as expected 
+	  (Bug #4712)
+
+2008-12-14  olivier
+
 	* settings-dialogs/xfwm4-dialog.glade, 
 	  settings-dialogs/xfwm4-tweaks-dialog.glade: String review by 
 	  Josh Saddler <nightmorph@gentoo.org> (Bug #4703)

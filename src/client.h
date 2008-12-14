@@ -416,8 +416,6 @@ void                     clientRemoveMaximizeFlag               (Client *);
 void                     clientToggleMaximized                  (Client *,
                                                                  int,
                                                                  gboolean);
-void                     clientFill                             (Client *,
-                                                                 int);
 void                     clientUpdateOpacity                    (Client *);
 void                     clientUpdateAllOpacity                 (ScreenInfo *);
 void                     clientSetOpacity                       (Client *,
