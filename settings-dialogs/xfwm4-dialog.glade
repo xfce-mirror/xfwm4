@@ -186,7 +186,7 @@
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
-                                                <property name="tooltip" translatable="yes">The window title, it cannot be removed</property>
+                                                <property name="tooltip" translatable="yes">The window title cannot be removed</property>
                                                 <property name="label" translatable="yes">Title</property>
                                                 <property name="response_id">0</property>
                                               </widget>

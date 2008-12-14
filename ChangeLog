@@ -1,3 +1,9 @@
+2008-12-14  olivier
+
+	* settings-dialogs/xfwm4-dialog.glade, 
+	  settings-dialogs/xfwm4-tweaks-dialog.glade: String review by 
+	  Josh Saddler <nightmorph@gentoo.org> (Bug #4703)
+
 2008-12-12  olivier
 
 	* src/client.c: Remove maximization if a client updates its size max

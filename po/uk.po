@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 20:29+0000\n"
+"POT-Creation-Date: 2008-12-14 12:29+0000\n"
 "PO-Revision-Date: 2008-11-24 14:36+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -39,25 +40,25 @@ msgid "Session manager socket"
 msgstr "Сокет Менеджера властивостей"
 
 #: ../settings-dialogs/tweaks-settings.c:415
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
 #: ../settings-dialogs/tweaks-settings.c:416
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:362
 #: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Version information"
 msgstr "Інформація про версію"
 
 #: ../settings-dialogs/tweaks-settings.c:433
-#: ../settings-dialogs/workspace-settings.c:377
+#: ../settings-dialogs/workspace-settings.c:379
 #: ../settings-dialogs/xfwm4-settings.c:955
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:383
 #: ../settings-dialogs/xfwm4-settings.c:959
 #, c-format
 msgid ""
@@ -77,7 +78,7 @@ msgstr "Робоча область %d"
 msgid "Workspace Name"
 msgstr "Назва робочої області"
 
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
 msgstr "Сокет Менеджера властивостей"
@@ -97,7 +98,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Тонке налаштування заголовку вікна і ефектів"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Window Manager Tweaks"
 msgstr "Менеджер вікон"
 
@@ -284,7 +285,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Дія, що виконується при подвійному клацанні на заголовку вікна"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The window title, it cannot be removed"
+#, fuzzy
+msgid "The window title cannot be removed"
 msgstr "Заголовок вікна неможливо видалити"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
@@ -293,7 +295,8 @@ msgstr "Заголовок"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Переходити на іншу робочу область при перетягу_ванні вікна за межі екрану"
+msgstr ""
+"Переходити на іншу робочу область при перетягу_ванні вікна за межі екрану"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
@@ -308,7 +311,7 @@ msgid "_Edge resistance:"
 msgstr "Відс_тань від краю:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Focus"
 msgstr "Фокус вікн_а"
 
@@ -641,8 +644,8 @@ msgid ""
 "This will reset <b>all</b> shortcuts to their default values. Do you really "
 "want to do this?"
 msgstr ""
-"Це зробить відновлення <b>всіх</b> комбінацій клавіш до їх "
-"типових значень. Ви дійсно хочете зробити це?"
+"Це зробить відновлення <b>всіх</b> комбінацій клавіш до їх типових значень. "
+"Ви дійсно хочете зробити це?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -761,48 +764,50 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Використов_увати опір меж вікна замість прилипання вікон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "Прокрутка ми_шки над стільницею перемикає робочі області"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
 msgstr "Коли вікно піднімається:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
-"Перехо_дити на іншу робочу область в залежності від "
-"поточного розташування стільниці"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
-"Переходити на іншу робочу область при досягненні першої "
-"чи ост_анньої робочої області"
+"Перехо_дити на іншу робочу область в залежності від поточного розташування "
+"стільниці"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr ""
+"Переходити на іншу робочу область при досягненні першої чи ост_анньої "
+"робочої області"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Accessibility"
 msgstr "_Доступність"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Bring window on current workspace"
 msgstr "Поміст_ити вікно на поточну робочу область"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
 msgstr "_Відображати рамки навколо вибраних вікон під час перемикання"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Enable display compositing"
 msgstr "Увімкну_ти ефекти дисплею"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "Вклю_чаючи приховані (згорнуті в значки) вінка"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "_Мінімальний розмір вікон, при якому буде увімкнено розумне розташування:"
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Mouse wheel over desktop switches workspaces"
-msgstr "Прокрутка ми_шки над стільницею перемикає робочі області"
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr ""
+"_Мінімальний розмір вікон, при якому буде увімкнено розумне розташування:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Placement"
@@ -845,7 +850,8 @@ msgid "Change workspace name"
 msgstr "Вибрати назви робочих областей"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Поля - це області на краях екрану, у яких не розташовуватимуться вікна"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -1001,4 +1007,3 @@ msgstr "Помилка читання даних з підпроцесу   : %s\
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Неможливо створити діалог : %s\n"
-

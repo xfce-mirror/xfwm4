@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 20:29+0000\n"
+"POT-Creation-Date: 2008-12-14 12:29+0000\n"
 "PO-Revision-Date: 2008-11-30 20:30+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
@@ -42,25 +42,25 @@ msgid "Session manager socket"
 msgstr "Sòcol del gestor de sessió"
 
 #: ../settings-dialogs/tweaks-settings.c:415
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
 msgstr "SÒCOL ID"
 
 #: ../settings-dialogs/tweaks-settings.c:416
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:362
 #: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Version information"
 msgstr "Informació de la versió"
 
 #: ../settings-dialogs/tweaks-settings.c:433
-#: ../settings-dialogs/workspace-settings.c:377
+#: ../settings-dialogs/workspace-settings.c:379
 #: ../settings-dialogs/xfwm4-settings.c:955
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:383
 #: ../settings-dialogs/xfwm4-settings.c:959
 #, c-format
 msgid ""
@@ -80,7 +80,7 @@ msgstr "Espai de treball %d"
 msgid "Workspace Name"
 msgstr "Nom de l'espai de treball"
 
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
 msgstr "Sòcol del gestor d'ajustaments"
@@ -100,7 +100,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Ajusta el comportament i els efectes de les finestres"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Window Manager Tweaks"
 msgstr "Ajustaments avançats del gestor de finestres"
 
@@ -288,7 +288,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Acció quan es fa doble clic a la barra de títol"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The window title, it cannot be removed"
+#, fuzzy
+msgid "The window title cannot be removed"
 msgstr "El títol de la finestra no es pot treure"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
@@ -315,7 +316,7 @@ msgid "_Edge resistance:"
 msgstr "Resistència de les _vores:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Focus"
 msgstr "En_focament"
 
@@ -769,45 +770,46 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Empra resistència a les _vores en lloc de l'alineació de les finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "La roda del _ratolí en l'escriptori canvia d'espai de treball"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
 msgstr "Quan una finestra s’alça:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Canvia d'espai de treball en funció del _format actual de l'escriptori"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "Canvia d'espai de treball quan s'arribi al _primer o últim"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Accessibility"
 msgstr "_Accesibilitat"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Bring window on current workspace"
 msgstr "_Porta la finestra a l'actual espai de treball"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
 msgstr ""
 "_Dibuixa el marc al voltant de les finestres seleccionades al rotar-les"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Enable display compositing"
 msgstr "_Habilita la pantalla composta"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_Inclou les finestres amagades (i.e. les iconificades)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Mida _mínima de les finestres per emplaçar-les inteŀligentment:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Mouse wheel over desktop switches workspaces"
-msgstr "La roda del _ratolí en l'escriptori canvia d'espai de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Placement"

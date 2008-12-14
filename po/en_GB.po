@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 20:29+0000\n"
+"POT-Creation-Date: 2008-12-14 12:29+0000\n"
 "PO-Revision-Date: 2008-05-10 12:31+1000\n"
 "Last-Translator: Jeff Bailes <thepizzaking@gmail.com>\n"
 "Language-Team: English/GB\n"
@@ -37,25 +37,25 @@ msgid "Session manager socket"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:415
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:416
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:362
 #: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Version information"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:433
-#: ../settings-dialogs/workspace-settings.c:377
+#: ../settings-dialogs/workspace-settings.c:379
 #: ../settings-dialogs/xfwm4-settings.c:955
 msgid "."
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:383
 #: ../settings-dialogs/xfwm4-settings.c:959
 #, c-format
 msgid ""
@@ -74,7 +74,7 @@ msgstr "Workspace %d"
 msgid "Workspace Name"
 msgstr "Workspace names"
 
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
 msgstr ""
@@ -96,7 +96,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Cancel window action"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Window Manager Tweaks"
 msgstr "Window Manager Tweaks"
 
@@ -316,7 +316,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Action to perform when double clicking on title bar :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The window title, it cannot be removed"
+#, fuzzy
+msgid "The window title cannot be removed"
 msgstr "The window title, it cannot be removed"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
@@ -344,7 +345,7 @@ msgid "_Edge resistance:"
 msgstr "Edge Resistance :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 #, fuzzy
 msgid "_Focus"
 msgstr "Focus"
@@ -854,51 +855,51 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Use edge resistance instead of windows snapping"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
 msgstr "When a window raises itself:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 #, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Wrap workspaces depending on the actual desktop layout"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 #, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "Wrap workspaces when the first or last workspace is reached"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 #, fuzzy
 msgid "_Accessibility"
 msgstr "Accessibility"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 #, fuzzy
 msgid "_Bring window on current workspace"
 msgstr "Bring window on current workspace"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 #, fuzzy
 msgid "_Enable display compositing"
 msgstr "Enable display compositing"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 #, fuzzy
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "Include hidden (i.e. iconified) windows"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 #, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Minimum size of windows to trigger smart placement"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Mouse wheel over desktop switches workspaces"
-msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 #, fuzzy

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 20:29+0000\n"
+"POT-Creation-Date: 2008-12-14 12:29+0000\n"
 "PO-Revision-Date: 2008-11-11 01:39+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
@@ -31,25 +31,25 @@ msgid "Session manager socket"
 msgstr "\"Socket\" përgjegjësi sesioni"
 
 #: ../settings-dialogs/tweaks-settings.c:415
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
 msgstr "ID \"SOCKET\"-i"
 
 #: ../settings-dialogs/tweaks-settings.c:416
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:362
 #: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Version information"
 msgstr "Të dhëna versioni"
 
 #: ../settings-dialogs/tweaks-settings.c:433
-#: ../settings-dialogs/workspace-settings.c:377
+#: ../settings-dialogs/workspace-settings.c:379
 #: ../settings-dialogs/xfwm4-settings.c:955
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:383
 #: ../settings-dialogs/xfwm4-settings.c:959
 #, c-format
 msgid ""
@@ -70,7 +70,7 @@ msgstr "Hapësirë pune %d"
 msgid "Workspace Name"
 msgstr "Emër Hapësire Pune:"
 
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
 msgstr "\"Socket\" përgjegjësi rregullimesh"
@@ -90,7 +90,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Rregulloni më imët efekte dhe sjellje dritaresh"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Window Manager Tweaks"
 msgstr "Rregullime të Imta për Përgjegjës Dritaresh"
 
@@ -277,7 +277,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Veprim për t'u bërë kur dyklikohet te shtyllë titulli"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The window title, it cannot be removed"
+#, fuzzy
+msgid "The window title cannot be removed"
 msgstr "Titulli i dritares, nuk mund të hiqet"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
@@ -301,7 +302,7 @@ msgid "_Edge resistance:"
 msgstr "Qëndresë _skajesh :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Focus"
 msgstr "_Fokus"
 
@@ -756,46 +757,47 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Përdor më mirë qëndresë _skajesh se sa përlarje dritaresh"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "Këmbe hapësira pune duke përdorur në desktop rrotëzën e _miut"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
 msgstr "Kur një dritare ngre veten:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Mbështill hapësira pune në varësi të _skemës aktuale për desktopin"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr ""
 "Mbështill hapësira pune kur mbërrihet te hapësira e _parë apo e fundit e "
 "punës"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Accessibility"
 msgstr "_Hyrshmëri"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Bring window on current workspace"
 msgstr "_Bjere dritaren te hapësira e punës e tanishme"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
 msgstr "_Vizato kornizë përreth dritareve të përzgjedhura kur cikolhet"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Enable display compositing"
 msgstr "_Aktivizo hartim ekrani"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_Përfshi dritare të fshehura (d.m.th. të ikonizuara)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Madhësia më e _vogël që nxit vendosje të mençur:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Mouse wheel over desktop switches workspaces"
-msgstr "Këmbe hapësira pune duke përdorur në desktop rrotëzën e _miut"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Placement"
@@ -999,53 +1001,53 @@ msgstr "Gabim gjatë leximit të të dhënave prej procesi bijë: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
 
-msgid ""
-"This shortcut is already being used by <b>another window manager action</b>. "
-"Which action do you want to use?"
-msgstr ""
-"Kjo shkurtore sht tashm n prdorim nga <b>nj tjetr veprim prgjegjsi "
-"dritaresh</b>. Cilin veprim doni t prdoret?"
+#~ msgid ""
+#~ "This shortcut is already being used by <b>another window manager action</"
+#~ "b>. Which action do you want to use?"
+#~ msgstr ""
+#~ "Kjo shkurtore sht tashm n prdorim nga <b>nj tjetr veprim prgjegjsi "
+#~ "dritaresh</b>. Cilin veprim doni t prdoret?"
 
-msgid "Use %s"
-msgstr ""
-"Kto rregullime nuk mund t punojn me prgjegjsin e tanishm t dritareve (%s)"
+#~ msgid "Use %s"
+#~ msgstr ""
+#~ "Kto rregullime nuk mund t punojn me prgjegjsin e tanishm t dritareve (%s)"
 
-msgid "Keep the other one"
-msgstr "Mbaj tjetrn"
+#~ msgid "Keep the other one"
+#~ msgstr "Mbaj tjetrn"
 
-msgid "Keep %s"
-msgstr "Mbaj  %s"
+#~ msgid "Keep %s"
+#~ msgstr "Mbaj  %s"
 
-msgid ""
-"The shortcut is already being used by a <b>window manager action</b>. Which "
-"action do you want to use?"
-msgstr ""
-"Shkurtorja sht duke u prdorur tashm nga <b>nj veprim prgjegjsi dritaresh</"
-"b>. Cilin veprim doni t prdoret?"
+#~ msgid ""
+#~ "The shortcut is already being used by a <b>window manager action</b>. "
+#~ "Which action do you want to use?"
+#~ msgstr ""
+#~ "Shkurtorja sht duke u prdorur tashm nga <b>nj veprim prgjegjsi dritaresh</"
+#~ "b>. Cilin veprim doni t prdoret?"
 
-msgid "Conflicting actions for %s"
-msgstr "Veprime prplasse pr %s"
+#~ msgid "Conflicting actions for %s"
+#~ msgstr "Veprime prplasse pr %s"
 
-msgid "The shortcut is already being used for something else."
-msgstr "Shkurtorja sht duke u prdorur tashm pr dika tjetr."
+#~ msgid "The shortcut is already being used for something else."
+#~ msgstr "Shkurtorja sht duke u prdorur tashm pr dika tjetr."
 
-msgid "<span size='large'><b>%s</b></span>"
-msgstr "<span size='large'><b>%s</b></span>"
+#~ msgid "<span size='large'><b>%s</b></span>"
+#~ msgstr "<span size='large'><b>%s</b></span>"
 
-msgid "Hide _all others"
-msgstr "Fshih _tr t tjert"
+#~ msgid "Hide _all others"
+#~ msgstr "Fshih _tr t tjert"
 
-msgid "Normal"
-msgstr "Normale"
+#~ msgid "Normal"
+#~ msgstr "Normale"
 
-msgid "Send to..."
-msgstr "Drgo te..."
+#~ msgid "Send to..."
+#~ msgstr "Drgo te..."
 
-msgid "Use this action"
-msgstr "Prdor kt veprim"
+#~ msgid "Use this action"
+#~ msgstr "Prdor kt veprim"
 
-msgid "gtk-revert-to-saved"
-msgstr "gtk-revert-to-saved"
+#~ msgid "gtk-revert-to-saved"
+#~ msgstr "gtk-revert-to-saved"
 
 #~ msgid "Workspace Margins"
 #~ msgstr "Mënjana Hapësire Pune"

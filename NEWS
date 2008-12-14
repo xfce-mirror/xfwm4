@@ -6,6 +6,7 @@
 - Fix smart placement not working for windows with height or width larger than 
   actual screen size (Bug# 3126).
 - Remove maximization if a client updates its size max size hint (Bug #4706).
+- String review by Josh Saddler <nightmorph@gentoo.org> (Bug #4703).
 
 4.5.92 (Xfce 4.6beta2)
 ======================

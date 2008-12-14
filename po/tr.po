@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 20:29+0000\n"
+"POT-Creation-Date: 2008-12-14 12:29+0000\n"
 "PO-Revision-Date: 2008-11-14 16:04+0200\n"
 "Last-Translator: Gökmen Görgen <gkmngrgn@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -41,25 +41,25 @@ msgid "Session manager socket"
 msgstr "Oturum yöneticisi yuvası"
 
 #: ../settings-dialogs/tweaks-settings.c:415
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
 msgstr "YUVA ID'Sİ"
 
 #: ../settings-dialogs/tweaks-settings.c:416
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:362
 #: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Version information"
 msgstr "Sürüm bilgisi"
 
 #: ../settings-dialogs/tweaks-settings.c:433
-#: ../settings-dialogs/workspace-settings.c:377
+#: ../settings-dialogs/workspace-settings.c:379
 #: ../settings-dialogs/xfwm4-settings.c:955
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:383
 #: ../settings-dialogs/xfwm4-settings.c:959
 #, c-format
 msgid ""
@@ -79,7 +79,7 @@ msgstr "Çalışma alanı %d"
 msgid "Workspace Name"
 msgstr "Çalışma Alanı İsmi"
 
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
 msgstr "Ayarlar yöneticisi yuvası"
@@ -99,7 +99,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Pencere davranışı ve olaylarını ayarla"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Window Manager Tweaks"
 msgstr "Pencere Yöneticisi İnce Ayarları"
 
@@ -286,7 +286,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The window title, it cannot be removed"
+#, fuzzy
+msgid "The window title cannot be removed"
 msgstr "Pencere başlığı, bu kaldırılamaz"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
@@ -310,7 +311,7 @@ msgid "_Edge resistance:"
 msgstr "K_enar direnci :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Focus"
 msgstr "_Odak"
 
@@ -639,8 +640,12 @@ msgid "Reset to Defaults"
 msgstr "Öntanımlılara Geri Dön"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
-msgid "This will reset <b>all</b> shortcuts to their default values. Do you really want to do this?"
-msgstr "Bu, <b>tüm</b> kısayolları öntanımlı değerlerine geri döndürecek. Bunu yapmak istediğinizden emin misiniz?"
+msgid ""
+"This will reset <b>all</b> shortcuts to their default values. Do you really "
+"want to do this?"
+msgstr ""
+"Bu, <b>tüm</b> kısayolları öntanımlı değerlerine geri döndürecek. Bunu "
+"yapmak istediğinizden emin misiniz?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -759,44 +764,45 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "P_encereleri koparmak yerine kenarlık direncini kullan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "_Fare tekeri kullanarak çalışma alanlarını değiştir"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
 msgstr "Pencere kendisini büyülttüğünde:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Günce_l masaüstü yerleşimine bağlı olarak çalışma alanlarını kaydır"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "İlk veya son çalış_ma alanı uzadığında çalışma alanlarını kaydır"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Accessibility"
 msgstr "_Erişilebilirlik"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Bring window on current workspace"
 msgstr "Şuanki çalışma alanından _pencereyi al"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
 msgstr "Pencere _değiştirme sırasında, pencereleri çerçeve içine al"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Enable display compositing"
 msgstr "Görüntü düzenlemeyi _etkinleştir"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "G_izlenmiş (ör: simgelenmiş) pencereleri içine al"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Akıllı konu_mlandırmayı tetiklemek için pencerelerin en az büyüklüğü:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Mouse wheel over desktop switches workspaces"
-msgstr "_Fare tekeri kullanarak çalışma alanlarını değiştir"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Placement"
@@ -839,7 +845,8 @@ msgid "Change workspace name"
 msgstr "Çalışma alanı ismini değiştir"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Sınırlar, ekranın kenarlarında pencere yerleştirilmeyecek bölgelerdir."
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -998,12 +1005,16 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 
 #~ msgid "Workspace Margins"
 #~ msgstr "Çalışma Alanı Sınırları"
+
 #~ msgid "Left :"
 #~ msgstr "Sol :"
+
 #~ msgid "Right :"
 #~ msgstr "Sağ :"
+
 #~ msgid "Top :"
 #~ msgstr "Üst :"
+
 #~ msgid "Bottom :"
 #~ msgstr "Alt :"
 
@@ -1018,8 +1029,10 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "Hiçbir şey yapma"
+
 #~ msgid "Place window under the mouse"
 #~ msgstr "Pencereyi farenin altına konumlandır"
+
 #~ msgid "Place window in the center"
 #~ msgstr "Pencereyi ortaya konumlandır"
 
@@ -1077,6 +1090,7 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Erişilebilirlik"
+
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr ""
 #~ "Masaüstü üzerinde fare topunu kullanarak çalışma alanları arasında geçiş "
@@ -1109,6 +1123,7 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Büyük"
+
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Akıllı konumlandırma dışında öntanımlı pencere pozisyonu:"
 
@@ -1167,16 +1182,20 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Birleştirici"
+
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Pencere Yöneticisi İnce Ayarları"
+
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "Bu ayarlar şu anki pencere yöneticinizde (%s) kullanılamaz"
+
 #~ msgid "Change name"
 #~ msgstr "İsim değiştir"
 
 #, fuzzy
 #~ msgid "Name:"
 #~ msgstr "İsim:"
+
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Çalışma alanı adını düzenlemek için üzerine tıklayın."
 
@@ -1187,30 +1206,39 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "Çalışma alanı isimleri"
+
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Çalışma Alanları ve Sınırlar"
+
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Çalışma Alanları ve Sınırlar"
 
 #, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Boşluklar"
+
 #~ msgid "Window Manager Settings"
 #~ msgstr "Pencere Yöneticisi Ayarları"
+
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "Xfce 4 Pencere Yöneticisi Ayarları"
+
 #~ msgid "Advanced Configuration"
 #~ msgstr "Gelişmiş Ayarlar"
+
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "Xfce 4 Pencere Yöneticis İnce Ayarları"
+
 #~ msgid "Workspaces Settings"
 #~ msgstr "Çalışma Alanı Ayarları"
+
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Xfce 4 Çalışma Alanı Ayarları"
 
 #, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Yerleşimi değiştirmek için düğmeye tıklayın ve sürükleyin"
+
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Yazıtipi Seçim Diyaloğu"
 
@@ -1221,6 +1249,7 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Başlık Hizalaması"
+
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Başlık çubuğundaki metin hizalaması :"
 
@@ -1259,8 +1288,10 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Pencere odaklanmadan önceki gecikme"
+
 #~ msgid "Slow"
 #~ msgstr "Yavaş"
+
 #~ msgid "Fast"
 #~ msgstr "Hızlı"
 
@@ -1363,32 +1394,40 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Gelişmiş"
+
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Pencere Yöneticisi"
+
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "Bu tuş takımı temasını silmek istediğinizden emin misiniz?"
+
 #~ msgid "Add keybinding theme"
 #~ msgstr "Tuş takımı teması ekle"
 
 #, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Tema için yeni bir ad gir:"
+
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Benzer isimde bir tuş takımı tema zaten var"
+
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Tuş takımı teması için bir isim belirlemelisiniz"
 
 #, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Pencereyi %d. çalışma alanına gönder"
+
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Tema dizini açılamıyor !"
+
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "%s Açılamıyor : \n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
@@ -1403,8 +1442,10 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgstr ""
 #~ "Kısayol zaten kullanımda !\n"
 #~ "Kullanmak istediğinizden emin misiniz ?"
+
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Kısayol düzenle:"
+
 #~ msgid "Compose shortcut"
 #~ msgstr "Kısayol düzenle"
 
@@ -1465,14 +1506,17 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "_Büyült"
+
 #~ msgid "Hide _all others"
 #~ msgstr "Diğe_rlerini gizle"
+
 #~ msgid "_Shade"
 #~ msgstr "Gö_lgele"
 
 #, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "Gölgelemeyi ka_pat"
+
 #~ msgid "S_tick"
 #~ msgstr "Sa_bit"
 
@@ -1483,8 +1527,10 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Below"
 #~ msgstr "Yavaş"
+
 #~ msgid "Send to..."
 #~ msgstr "Gönder..."
+
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Çalışma alanı %i (%s)"
 
@@ -1499,18 +1545,24 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Kısayol"
+
 #~ msgid "Move window left"
 #~ msgstr "Pencereyi sola taşı"
+
 #~ msgid "Move window right"
 #~ msgstr "Pencereyi sağa taşı"
+
 #~ msgid "Resize window down"
 #~ msgstr "Pencereyi yeniden boyutlandır (aşağı)"
+
 #~ msgid "Resize window left"
 #~ msgstr "Pencereyi yeniden boyutlandır (sol)"
+
 #~ msgid "Resize window right"
 #~ msgstr "Pencereyi yeniden boyutlandır (sağ)"
+
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Pencere taşımayı/yeniden boyutlandırmayı iptal et"
+
 #~ msgid "_Hide"
 #~ msgstr "_Gizle"
-

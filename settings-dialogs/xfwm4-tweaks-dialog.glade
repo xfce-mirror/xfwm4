@@ -379,7 +379,7 @@ or "skip taskbar" properties set</property>
                   <widget class="GtkCheckButton" id="scroll_workspaces_check">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="label" translatable="yes">_Mouse wheel over desktop switches workspaces</property>
+                    <property name="label" translatable="yes">Use the _mouse wheel on the desktop to switch workspaces</property>
                     <property name="use_underline">True</property>
                     <property name="response_id">0</property>
                     <property name="draw_indicator">True</property>

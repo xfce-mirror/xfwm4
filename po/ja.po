@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-17 22:53+0900\n"
+"POT-Creation-Date: 2008-12-14 12:29+0000\n"
 "PO-Revision-Date: 2008-11-21 22:53+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -46,25 +46,25 @@ msgid "Session manager socket"
 msgstr "セッションマネージャソケット"
 
 #: ../settings-dialogs/tweaks-settings.c:415
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:416
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:362
 #: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Version information"
 msgstr "バージョン情報"
 
 #: ../settings-dialogs/tweaks-settings.c:433
-#: ../settings-dialogs/workspace-settings.c:377
+#: ../settings-dialogs/workspace-settings.c:379
 #: ../settings-dialogs/xfwm4-settings.c:955
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:383
 #: ../settings-dialogs/xfwm4-settings.c:959
 #, c-format
 msgid ""
@@ -84,7 +84,7 @@ msgstr "ワークスペース %d"
 msgid "Workspace Name"
 msgstr "ワークスペース名"
 
-#: ../settings-dialogs/workspace-settings.c:359
+#: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
 msgstr "マネージャソケットの設定"
@@ -105,7 +105,7 @@ msgstr "ウィンドウの振る舞いと効果を微調整します"
 
 # FIXME: Q_()
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Window Manager Tweaks"
 msgstr "ウィンドウマネージャ (詳細)"
 
@@ -296,7 +296,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "タイトルバーをダブルクリックした時の動作"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The window title, it cannot be removed"
+#, fuzzy
+msgid "The window title cannot be removed"
 msgstr "ウィンドウタイトル - 削除できません"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
@@ -320,7 +321,7 @@ msgid "_Edge resistance:"
 msgstr "エッジ抵抗(_E):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Focus"
 msgstr "フォーカス(_F)"
 
@@ -649,8 +650,12 @@ msgid "Reset to Defaults"
 msgstr "デフォルトに戻す"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
-msgid "This will reset <b>all</b> shortcuts to their default values. Do you really want to do this?"
-msgstr "これは<b>全ての</b>ショートカットキーをデフォルト値にリセットします。本当によろしいですか?"
+msgid ""
+"This will reset <b>all</b> shortcuts to their default values. Do you really "
+"want to do this?"
+msgstr ""
+"これは<b>全ての</b>ショートカットキーをデフォルト値にリセットします。本当によ"
+"ろしいですか?"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -782,46 +787,47 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "デスクトップ上でマウスホイールを使用してワークスペースを切り替える(_M)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
 msgstr "ウィンドウ自身が前面に出る場合:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する(_L)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "先頭または最後のワークスペースに来たら循環する(_F)"
 
 # FIXME: i hate this transliteration
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Accessibility"
 msgstr "アクセシビリティ(_A)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Bring window on current workspace"
 msgstr "ウィンドウを現在のワークスペースに移す(_B)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
 msgstr "循環中選択したウィンドウの枠を描画する(_D)"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Enable display compositing"
 msgstr "合成処理を有効にする(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "アイコン化されたなどの隠しウィンドウも含める(_I)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ(_M):"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Mouse wheel over desktop switches workspaces"
-msgstr "デスクトップ上でマウスホイールを使用してワークスペースを切り替える(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Placement"
@@ -864,7 +870,8 @@ msgid "Change workspace name"
 msgstr "ワークスペース名の変更"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "余白とは画面端のウィンドウが置かれない空間のことです"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -1020,4 +1027,3 @@ msgstr "子プロセスからのデータ読み込みエラーです: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "ヘルパーダイアログを生成できませんでした: %s\n"
-
