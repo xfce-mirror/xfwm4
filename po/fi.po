@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 12:29+0000\n"
-"PO-Revision-Date: 2008-11-10 14:32+0200\n"
+"POT-Creation-Date: 2008-12-16 20:27+0200\n"
+"PO-Revision-Date: 2008-12-16 20:30+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -281,7 +281,6 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Toiminto, joka suoritetaan kaksoisnapsautettaessa otsikkopalkkia"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
 msgstr "Ikkunan otsaketta ei voi poistaa"
 
@@ -320,19 +319,19 @@ msgstr "_Tyyli"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "gtk-clear"
-msgstr ""
+msgstr "gtk-clear"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
 msgid "gtk-close"
-msgstr ""
+msgstr "gtk-close"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
 msgid "gtk-help"
-msgstr ""
+msgstr "gtk-help"
 
 #: ../settings-dialogs/xfwm4-settings.c:215
 #: ../settings-dialogs/xfwm4-settings.c:246
@@ -759,7 +758,6 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Käytä r_eunavastusta ikkunoiden loksahtamisen sijaan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "_Hiiren rulla työpöydän yllä vaihtaa työtilaa"
 
@@ -851,11 +849,11 @@ msgstr "Työtilojen luku_määrä:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
 msgid "gtk-cancel"
-msgstr ""
+msgstr "gtk-cancel"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
 msgid "gtk-save"
-msgstr ""
+msgstr "gtk-save"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
