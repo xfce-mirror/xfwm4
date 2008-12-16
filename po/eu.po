@@ -286,9 +286,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Titulu-barran bi aldiz klikatzerakoan egingo den ekintza"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "Leiho izenburua, berau ezin da ezabatu"
+msgstr "Leiho izenburua ezin da ezabatu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
@@ -398,9 +397,8 @@ msgid "Cycle windows"
 msgstr "Leiho ziklikoak"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "Leiho ziklikoak"
+msgstr "Leiho ziklikoak (Alderantziz)"
 
 #: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Close window"
@@ -697,9 +695,8 @@ msgid "Honor _standard ICCCM focus hint"
 msgstr "ICCCM e_standarreko foko gomendioei ohore egin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Mantendu premiazko leihoak keinuka"
+msgstr "Mantendu premiazko leihoak _keinuka"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
@@ -707,7 +704,7 @@ msgstr "Leihoak _eldu eta mugitzeko erabiliko den tekla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "Larrialdi be_rriematea leiho dekoraziak keinu egitearen bidez"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Opaci_ty of window decorations:"
@@ -766,9 +763,8 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "_Ertz erresistentzia erabili leiho elkartzea beharrean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "_Sagu gurpilak idazmahaiaren gainean idazmahaiak txandakatzen ditu"
+msgstr "_Sagu gurpilak mahaigainaren gainean idazmahaiak txandakatzen ditu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
