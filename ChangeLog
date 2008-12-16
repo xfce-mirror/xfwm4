@@ -1,5 +1,12 @@
 2008-12-16  olivier
 
+	* settings-dialogs/xfwm4-workspace-dialog.glade,
+	  settings-dialogs/xfwm4-tweaks-dialog.glade,
+	  settings-dialogs/xfwm4-dialog.glade: Do not mark gtk+ stock labels as
+	  translatable (Bug #4722)
+
+2008-12-16  olivier
+
 	* src/placement.c: Prevent "fill" from expanding beyound physical 
 	  monitor.
 
