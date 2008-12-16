@@ -918,43 +918,47 @@ clientFill (Client * c, int fill_type)
     }
 
     /* If there are neighbours, resize to their borders.
-     * If not, resize to the largest size available taht you just have computed.
+     * If not, resize to the largest size available that you just have computed.
      */
 
+    wc.x = frameLeft(c);
     if (east_neighbour)
     {
-        wc.x = frameX(east_neighbour) + frameWidth(east_neighbour) + frameLeft(c);
+        wc.x += MAX (frameX(east_neighbour) + frameWidth(east_neighbour), full_x);
     }
     else
     {
-        wc.x = full_x + frameLeft(c);
+        wc.x += full_x;
     }
 
+    wc.width = full_x - frameRight(c) - wc.x;
     if (west_neighbour)
     {
-        wc.width = full_x + frameX(west_neighbour) - frameRight(c) - wc.x;
+        wc.width += MIN (frameX(west_neighbour), full_w);
     }
     else
     {
-        wc.width = full_x + full_w - frameRight(c) - wc.x;
+        wc.width += full_w;
     }
 
+    wc.y = frameTop(c);
     if (north_neighbour)
     {
-        wc.y = frameY(north_neighbour) + frameHeight(north_neighbour) + frameTop(c);
+        wc.y += MAX (frameY(north_neighbour) + frameHeight(north_neighbour), full_y);
     }
     else
     {
-        wc.y = full_y + frameTop(c);
+        wc.y += full_y;
     }
 
+    wc.height = full_y - frameBottom(c) - wc.y;
     if (south_neighbour)
     {
-        wc.height = full_y + frameY(south_neighbour) - frameBottom(c) - wc.y;
+        wc.height += MIN (frameY(south_neighbour), full_h);
     }
     else
     {
-        wc.height = full_y + full_h - frameBottom(c) - wc.y;
+        wc.height += full_h;
     }
 
     TRACE ("Fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);

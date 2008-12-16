@@ -1,3 +1,8 @@
+2008-12-16  olivier
+
+	* src/placement.c: Prevent "fill" from expanding beyound physical 
+	  monitor.
+
 2008-12-14  olivier
 
 	* src/placement.c, src/placement.h, src/client.c, src/client.h:

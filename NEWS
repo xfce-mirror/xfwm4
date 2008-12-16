@@ -8,6 +8,7 @@
 - Remove maximization if a client updates its size max size hint (Bug #4706).
 - String review by Josh Saddler <nightmorph@gentoo.org> (Bug #4703).
 - Fix fill horizontally and vertically not working as expected (Bug #4712).
+- Prevent "fill" from expanding beyound physical monitor.
 
 4.5.92 (Xfce 4.6beta2)
 ======================
