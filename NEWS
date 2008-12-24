@@ -10,6 +10,7 @@
 - Fix fill horizontally and vertically not working as expected (Bug #4712).
 - Prevent "fill" from expanding beyound physical monitor.
 - Do not mark gtk+ stock labels as translatable (Bug #4722).
+- Change default shadow radius and position.
 
 4.5.92 (Xfce 4.6beta2)
 ======================

@@ -50,15 +50,15 @@
 #include <X11/extensions/Xrender.h>
 
 #ifndef SHADOW_RADIUS
-#define SHADOW_RADIUS   6
+#define SHADOW_RADIUS   12
 #endif /* SHADOW_RADIUS */
 
 #ifndef SHADOW_OFFSET_X
-#define SHADOW_OFFSET_X (SHADOW_RADIUS * -3 /2)
+#define SHADOW_OFFSET_X (-3 * SHADOW_RADIUS / 2)
 #endif /* SHADOW_OFFSET_X */
 
 #ifndef SHADOW_OFFSET_Y
-#define SHADOW_OFFSET_Y (SHADOW_RADIUS * -5 / 4)
+#define SHADOW_OFFSET_Y (-3 * SHADOW_RADIUS / 2)
 #endif /* SHADOW_OFFSET_Y */
 
 /* Some convenient macros */
