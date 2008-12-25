@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 12:29+0000\n"
-"PO-Revision-Date: 2008-11-21 22:53+0900\n"
+"POT-Creation-Date: 2008-12-17 17:27+0900\n"
+"PO-Revision-Date: 2008-12-16 23:05+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -296,9 +296,10 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "タイトルバーをダブルクリックした時の動作"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "ウィンドウタイトル - 削除できません"
+msgstr ""
+"このウィンドウはビジーのようで応答がありません。\n"
+"アプリケーションを終了させますか?"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
@@ -332,22 +333,6 @@ msgstr "デフォルトに戻す(_R)"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Style"
 msgstr "スタイル(_S)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "gtk-clear"
-msgstr "クリア"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-msgid "gtk-close"
-msgstr "閉じる"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-msgid "gtk-help"
-msgstr "ヘルプ"
 
 #: ../settings-dialogs/xfwm4-settings.c:215
 #: ../settings-dialogs/xfwm4-settings.c:246
@@ -787,9 +772,9 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "デスクトップ上でマウスホイールを使用してワークスペースを切り替える(_M)"
+msgstr ""
+"ワークスペースの切り替えにデスクトップ上でのマウスホイールを使用する(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
@@ -881,14 +866,6 @@ msgstr "名前(_N):"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
 msgstr "ワークスペースの数(_N):"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-msgid "gtk-cancel"
-msgstr "キャンセル"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-msgid "gtk-save"
-msgstr "保存"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -1027,3 +1004,18 @@ msgstr "子プロセスからのデータ読み込みエラーです: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "ヘルパーダイアログを生成できませんでした: %s\n"
+
+#~ msgid "gtk-clear"
+#~ msgstr "クリア"
+
+#~ msgid "gtk-close"
+#~ msgstr "閉じる"
+
+#~ msgid "gtk-help"
+#~ msgstr "ヘルプ"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "キャンセル"
+
+#~ msgid "gtk-save"
+#~ msgstr "保存"
