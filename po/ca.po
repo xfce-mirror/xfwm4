@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-14 12:29+0000\n"
-"PO-Revision-Date: 2008-11-30 20:30+0100\n"
+"PO-Revision-Date: 2008-12-28 15:26+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -288,7 +288,6 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Acció quan es fa doble clic a la barra de títol"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
 msgstr "El títol de la finestra no es pot treure"
 
@@ -770,9 +769,9 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Empra resistència a les _vores en lloc de l'alineació de les finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "La roda del _ratolí en l'escriptori canvia d'espai de treball"
+msgstr ""
+"Empra la roda del _ratolí a l'escriptori per canviar d'espai de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
