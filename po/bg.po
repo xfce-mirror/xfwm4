@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 12:29+0000\n"
+"POT-Creation-Date: 2009-01-06 09:22+0000\n"
 "PO-Revision-Date: 2005-08-19 21:11+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -77,7 +77,7 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
 msgid "Configure window behavior and shortcuts"
 msgstr "Показва съдържанието на прозорците при промяна на размера"
@@ -180,203 +180,192 @@ msgid "<b>_Theme</b>"
 msgstr "Подравнение на заглавието"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#, fuzzy
+msgid ">Window Manager"
+msgstr "Мениджър на прозорци"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Active"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 #, fuzzy
 msgid "Ad_vanced"
 msgstr "Допълнителни"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr ""
 "Автоматично повдига прозорците·\n"
 "когато се фокусират"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr ""
 "Автоматично се фокусират\n"
 "новосъздадените прозорци"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "Натискане за фокус"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Click and drag the buttons to change the layout"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Close"
 msgstr "Затваряне"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "Изчакване преди да се повдигне фокусирания прозорец :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Long</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Delay|<i>Short</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 #, fuzzy
 msgid "Dis_tance:"
 msgstr "Разстояние :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "Разстояние :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 #, fuzzy
 msgid "Distance|<i>Wide</i>"
 msgstr "Разстояние :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 #, fuzzy
 msgid "Focus follows _mouse"
 msgstr "Фокуса следва мишката"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hidden"
 msgstr "Скрит"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide"
 msgstr "Скрива"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Hide content of windows when _moving"
 msgstr "Показва·съдържанието·на·прозорците·при местене"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 #, fuzzy
 msgid "Hide content of windows when _resizing"
 msgstr "Показва съдържанието на прозорците при промяна на размера"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 #, fuzzy
 msgid "Ke_yboard"
 msgstr "Клавишни комбинации"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "Максимизира"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Menu"
 msgstr "Меню"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 #, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr ""
 "Повдига прозореца когато се натисне\n"
 "в прозореца на приложението"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "Разстояние :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
 msgid "Resistance|<i>Wide</i>"
 msgstr "Разстояние :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "Сянка"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "Прилеплва прозорците до другите прозорци"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "Прилепва прозорците по границата на екрана"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "Забодено"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Действие което да се извърши при двойно натискане на заглавната лента"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
 msgstr "Заглавие"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "Превклюва работните места когато се изтегля прозорец извън екрана"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Превключва работните места когато курсора достигне края на екрана"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "Изчакване преди да се повдигне фокусирания прозорец :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "Съпротивление по краищата :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 #, fuzzy
 msgid "_Focus"
 msgstr "Тип на фокуса"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 #, fuzzy
 msgid "_Style"
 msgstr "Заглавие"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "gtk-clear"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-msgid "gtk-close"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-msgid "gtk-help"
-msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:215
 #: ../settings-dialogs/xfwm4-settings.c:246
@@ -962,14 +951,6 @@ msgstr ""
 #, fuzzy
 msgid "_Number of workspaces:"
 msgstr "Превключване на работните места"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-msgid "gtk-cancel"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-msgid "gtk-save"
-msgstr ""
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182

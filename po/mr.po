@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 12:29+0000\n"
+"POT-Creation-Date: 2009-01-06 09:22+0000\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
 msgid "Configure window behavior and shortcuts"
 msgstr "पुन:आकारित करताना विण्डोचे आशय दाखवा"
@@ -180,199 +180,188 @@ msgid "<b>_Theme</b>"
 msgstr "शीर्षक मांडणी"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#, fuzzy
+msgid ">Window Manager"
+msgstr "विण्डो व्यवस्थापक"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Active"
 msgstr "क्रियाशील"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 #, fuzzy
 msgid "Ad_vanced"
 msgstr "आधुनिक"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr "आपोआप विण्डो उचलतो जेव्हा त्यांना फोकस मिळतोंतर "
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr "नविन निर्माण केलेल्या विण्डोजला आपोआप फोकस देतो"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "फोकस वर क्लिक करा"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "स्वरुप बदलण्याहेतू क्लिक आणि ओढणेची बटनस "
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Close"
 msgstr "बंद"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "फोकसड विण्डो उचलण्याआधी उशीर:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Long</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Delay|<i>Short</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 #, fuzzy
 msgid "Dis_tance:"
 msgstr "अंतर:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "अंतर:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 #, fuzzy
 msgid "Distance|<i>Wide</i>"
 msgstr "अंतर:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 #, fuzzy
 msgid "Focus follows _mouse"
 msgstr "फोकस माउसच्या मागे असतो"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hidden"
 msgstr "लुप्त"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide"
 msgstr "लुप्त"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Hide content of windows when _moving"
 msgstr "हलविताना विण्डोचे आशय दाखवा "
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 #, fuzzy
 msgid "Hide content of windows when _resizing"
 msgstr "पुन:आकारित करताना विण्डोचे आशय दाखवा"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 #, fuzzy
 msgid "Ke_yboard"
 msgstr "कीबोर्ड"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "विस्तीर्ण"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Menu"
 msgstr "यादी"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 #, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr "एप्लिकेशन विण्डोमध्ये क्लिक करताना विण्डो उचला"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "अंतर:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
 msgid "Resistance|<i>Wide</i>"
 msgstr "अंतर:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "छाया"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "बाकीच्या विण्डोजमध्ये या विण्डोजला स्नॅप करा"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "स्क्रीन बॉर्डरला विण्डोजमध्ये स्नॅप कराा"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "चिटकवा"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "शीर्शक दांड्यावर दोनदा क्लिक करताना होणारीि क्रिया:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 #, fuzzy
 msgid "The window title cannot be removed"
 msgstr "विण्डोचे शीर्षक काढूण टाकू शकत नाही"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
 msgstr "शीर्षक"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "विण्डोला पडद्याबाहेर खेचताना कार्यक्षेत्रांना आच्छादित करा"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "पॉइंटर पडद्याच्या कडेला पोहोचल्यावर कार्यक्षेत्रांना आच्छादित करा"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "फोकसड विण्डो उचलण्याआधी उशीर:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "किनार प्रतिरोध:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 #, fuzzy
 msgid "_Focus"
 msgstr "फोकस"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 #, fuzzy
 msgid "_Style"
 msgstr "शैली"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "gtk-clear"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-msgid "gtk-close"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-msgid "gtk-help"
-msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:215
 #: ../settings-dialogs/xfwm4-settings.c:246
@@ -939,14 +928,6 @@ msgstr "नाव:"
 #, fuzzy
 msgid "_Number of workspaces:"
 msgstr "कार्यक्षेत्रांची संख्या:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-msgid "gtk-cancel"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-msgid "gtk-save"
-msgstr ""
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182

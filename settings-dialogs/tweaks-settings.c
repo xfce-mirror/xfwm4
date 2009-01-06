@@ -65,7 +65,7 @@ cb_easy_click_combo_box_changed (GtkComboBox *combo, XfconfChannel *channel)
     {
         if (gtk_combo_box_get_active (combo) == n)
         {
-            xfconf_channel_set_string (channel, "/general/easy_click", modifier_list[n]);
+            xfconf_channel_set_string (channel, "/general/easy_click", _(modifier_list[n]));
         }
         n++;
     }

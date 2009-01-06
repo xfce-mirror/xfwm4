@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 12:29+0000\n"
+"POT-Creation-Date: 2009-01-06 09:22+0000\n"
 "PO-Revision-Date: 2006-10-14 10:13+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg@serverhive.com>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -78,7 +78,7 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
 msgid "Configure window behavior and shortcuts"
 msgstr "Ακύρωση ενέργειας παραθύρου"
@@ -179,199 +179,188 @@ msgid "<b>_Theme</b>"
 msgstr "Στοίχιση τίτλου"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#, fuzzy
+msgid ">Window Manager"
+msgstr "Διαχειριστής παραθύρων"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Active"
 msgstr "Ενεργό"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 #, fuzzy
 msgid "Ad_vanced"
 msgstr "Για προχωρημένους"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Ανύψωσε τα παράθυρα αυτόματα όταν εστιαστούν"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr "Εστίασε νέα παράθυρα αυτόματα"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "Κλικ για εστίαση"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "Επιλέξετε και σύρετε τα κουμπιά για να αλλάξετε τη διάταξη"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "Καθυστέρηση πριν την ανύψωση παραθύρου :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Long</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Delay|<i>Short</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 #, fuzzy
 msgid "Dis_tance:"
 msgstr "Απόσταση :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "Μικρή"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 #, fuzzy
 msgid "Distance|<i>Wide</i>"
 msgstr "Μεγάλη"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 #, fuzzy
 msgid "Focus follows _mouse"
 msgstr "Η εστίαση ακολουθεί το ποντίκι"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hidden"
 msgstr "Κρυμμένο"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide"
 msgstr "Απόκρυψη"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Hide content of windows when _moving"
 msgstr "Εμφάνιση περιεχομένων παραθύρου κατά τη μετακίνηση"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 #, fuzzy
 msgid "Hide content of windows when _resizing"
 msgstr "Εμφάνιση περιεχομένων παραθύρου κατά τη αλλαγή μεγέθους"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 #, fuzzy
 msgid "Ke_yboard"
 msgstr "Πληκτρολόγιο"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "Μεγιστοποίηση"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Menu"
 msgstr "Μενού"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 #, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr "Ανύψωση παραθύρου όταν γίνεται κλικ μέσα σε παράθυρο εφαρμογής "
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "Μικρή"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
 msgid "Resistance|<i>Wide</i>"
 msgstr "Μεγάλη"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "Σκίαση"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "Ταίριασμα παραθύρων σε άλλα παράθυρα"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "Ταίριασμα παραθύρων στο περίγραμμα της οθόνης"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "Επικόλληση"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Τι να γίνει στο διπλό κλικ στη μπάρα τίτλου :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 #, fuzzy
 msgid "The window title cannot be removed"
 msgstr "Ο τίτλος του παραθύρου δεν μπορεί να αφαιρεθεί"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
 msgstr "Τίτλος"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "Αναδίπλωση χώρων εργασίας όταν σύρεται παράθυρο έξω από την οθόνη"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Αναδίπλωση χώρων εργασίας όταν ο δείκτης φτάσει στην άκρη της οθόνης"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "_Delay before window receives focus:"
 msgstr "Καθυστέρηση πριν την ανύψωση παραθύρου :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "Αντίσταση άκρων :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 #, fuzzy
 msgid "_Focus"
 msgstr "Εστίαση"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 #, fuzzy
 msgid "_Style"
 msgstr "Στυλ"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "gtk-clear"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-msgid "gtk-close"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-msgid "gtk-help"
-msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:215
 #: ../settings-dialogs/xfwm4-settings.c:246
@@ -968,14 +957,6 @@ msgstr "Όνομα :"
 #, fuzzy
 msgid "_Number of workspaces:"
 msgstr "Αριθμός χώρων εργασίας:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-msgid "gtk-cancel"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-msgid "gtk-save"
-msgstr ""
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182

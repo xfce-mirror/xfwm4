@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 12:29+0000\n"
+"POT-Creation-Date: 2009-01-06 09:22+0000\n"
 "PO-Revision-Date: 2008-08-26 02:04+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -80,7 +80,7 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
 msgid "Configure window behavior and shortcuts"
 msgstr "창 동작 설정"
@@ -168,181 +168,169 @@ msgid "<b>_Theme</b>"
 msgstr "<b>창 제목 정렬(_a)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#, fuzzy
+msgid ">Window Manager"
+msgstr "창 관리자"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Active"
 msgstr "활성"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Ad_vanced"
 msgstr "고급 설정(_v)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Automatically _raise windows when they receive focus"
 msgstr "활성된 창은 무조건 최상위로 올리기(_r)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Automatically give focus to _newly created windows"
 msgstr "새로운 창은 무조건 활성(_n)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Clic_k to focus"
 msgstr "클릭(_k)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Click and drag the buttons to change the layout"
 msgstr "배치를 바꾸려면 버튼을 딸깍해서 끌어다 놓으십시오."
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Close"
 msgstr "닫기"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay _before raising focused window:"
 msgstr "활성된 창을 올리기까지의 지연 시간(_b):"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 #, fuzzy
 msgid "Delay|<i>Long</i>"
 msgstr "<i>길게</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 #, fuzzy
 msgid "Delay|<i>Short</i>"
 msgstr "<i>짧게</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Dis_tance:"
 msgstr "거리(_t):"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "<i>작게</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 #, fuzzy
 msgid "Distance|<i>Wide</i>"
 msgstr "<i>넓게</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Focus follows _mouse"
 msgstr "마우스를 따라가기(_m)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hidden"
 msgstr "숨김"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide"
 msgstr "숨기기"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hide content of windows when _moving"
 msgstr "창을 움직일 때 내용 숨김(_m)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Hide content of windows when _resizing"
 msgstr "창 크기를 변경할 때 내용을 숨김(_r)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Ke_yboard"
 msgstr "키보드(_y)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "최대화"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Menu"
 msgstr "메뉴"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Raise window when clicking _inside application window"
 msgstr "창 내부를 클릭하면 올림(_i)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "<i>작게</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
 msgid "Resistance|<i>Wide</i>"
 msgstr "<i>넓게</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "말아올리기"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
 msgstr "다른 창에 맞추어 움직임(_w)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Snap windows to screen _border"
 msgstr "화면 경계에 따라 움직임(_b)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "모든 작업공간에 보이기"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "제목 틀을 따닥했을 때의 동작"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 #, fuzzy
 msgid "The window title cannot be removed"
 msgstr "창 제목은 삭제할 수 없습니다."
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
 msgstr "제목"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "창을 화면 밖으로 이동시키면 작업공간 전환(_d)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "마우스 포인터가 화면 모서리에 닿으면 작업공간 전환(_p)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
 msgstr "창 활성화 지연 시간(_D):"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Edge resistance:"
 msgstr "화면 모서리 저항(_E):"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Focus"
 msgstr "창 활성 방법(_F)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Style"
 msgstr "모양새(_S)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-#, fuzzy
-msgid "gtk-clear"
-msgstr "gtk-close"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-msgid "gtk-close"
-msgstr "gtk-close"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-msgid "gtk-help"
-msgstr "gtk-help"
 
 #: ../settings-dialogs/xfwm4-settings.c:215
 #: ../settings-dialogs/xfwm4-settings.c:246
@@ -891,15 +879,6 @@ msgstr ""
 msgid "_Number of workspaces:"
 msgstr "작업공간의 수(_N):"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-msgid "gtk-cancel"
-msgstr "gtk-cancel"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-#, fuzzy
-msgid "gtk-save"
-msgstr "gtk-close"
-
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
 #, c-format
@@ -1043,6 +1022,23 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "gtk-clear"
+#~ msgstr "gtk-close"
+
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
+
+#~ msgid "gtk-help"
+#~ msgstr "gtk-help"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancel"
+
+#, fuzzy
+#~ msgid "gtk-save"
+#~ msgstr "gtk-close"
 
 #, fuzzy
 #~ msgid "Workspace Margins"

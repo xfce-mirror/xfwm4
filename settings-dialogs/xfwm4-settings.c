@@ -485,7 +485,7 @@ xfwm_settings_constructed (GObject *object)
     for (template = title_align_values; template->name != NULL; ++template)
       {
         gtk_list_store_append (list_store, &iter);
-        gtk_list_store_set (list_store, &iter, 0, template->name, 1, template->value, -1);
+        gtk_list_store_set (list_store, &iter, 0, _(template->name), 1, template->value, -1);
       }
 
     xfconf_channel_get_property (settings->priv->wm_channel, "/general/title_alignment", &value);
@@ -644,11 +644,11 @@ xfwm_settings_constructed (GObject *object)
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/click_to_focus", G_TYPE_BOOLEAN,
                           click_to_focus_radio, "active");
 
-  g_signal_connect (settings->priv->wm_channel, "property-changed::/general/click_to_focus", 
+  g_signal_connect (settings->priv->wm_channel, "property-changed::/general/click_to_focus",
                     G_CALLBACK (xfwm_settings_click_to_focus_property_changed), settings);
-  
+
   xfconf_channel_get_property (settings->priv->wm_channel, "/general/click_to_focus", &value);
-  xfwm_settings_click_to_focus_property_changed (settings->priv->wm_channel, 
+  xfwm_settings_click_to_focus_property_changed (settings->priv->wm_channel,
                                                  "/general/click_to_focus", &value, settings);
   g_value_unset (&value);
 
@@ -682,7 +682,7 @@ xfwm_settings_constructed (GObject *object)
     for (template = double_click_values; template->name != NULL; ++template)
       {
         gtk_list_store_append (list_store, &iter);
-        gtk_list_store_set (list_store, &iter, 0, template->name, 1, template->value, -1);
+        gtk_list_store_set (list_store, &iter, 0, _(template->name), 1, template->value, -1);
       }
 
     xfconf_channel_get_property (settings->priv->wm_channel, "/general/double_click_action",
@@ -1606,14 +1606,14 @@ xfwm_settings_click_to_focus_property_changed (XfconfChannel *channel,
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
   g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
 
-  click_to_focus_radio = glade_xml_get_widget (settings->priv->glade_xml, 
+  click_to_focus_radio = glade_xml_get_widget (settings->priv->glade_xml,
                                                "click_to_focus_radio");
-  focus_follows_mouse_radio = glade_xml_get_widget (settings->priv->glade_xml, 
+  focus_follows_mouse_radio = glade_xml_get_widget (settings->priv->glade_xml,
                                                     "focus_follows_mouse_radio");
 
   if (G_UNLIKELY (G_VALUE_TYPE (value) != G_TYPE_BOOLEAN))
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (click_to_focus_radio), TRUE);
-  else 
+  else
     {
       if (g_value_get_boolean (value))
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (click_to_focus_radio), TRUE);
@@ -1644,7 +1644,7 @@ xfwm_settings_initialize_shortcuts (XfwmSettings *settings)
     {
       gtk_list_store_append (GTK_LIST_STORE (model), &iter);
       gtk_list_store_set (GTK_LIST_STORE (model), &iter,
-                          SHORTCUTS_NAME_COLUMN, shortcut_values[i].name,
+                          SHORTCUTS_NAME_COLUMN, _(shortcut_values[i].name),
                           SHORTCUTS_FEATURE_COLUMN, shortcut_values[i].feature,
                           -1);
     }

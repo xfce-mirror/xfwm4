@@ -4,7 +4,7 @@
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="main-dialog">
-    <property name="title">Window Manager</property>
+    <property name="title" translatable="yes">>Window Manager</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
     <property name="icon_name">xfwm4</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-14 12:29+0000\n"
+"POT-Creation-Date: 2009-01-06 09:22+0000\n"
 "PO-Revision-Date: 2008-12-17 02:20+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -82,7 +82,7 @@ msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Configure window behavior and shortcuts"
 msgstr "配置窗口行为及快捷方式"
 
@@ -167,173 +167,162 @@ msgid "<b>_Theme</b>"
 msgstr "<b>主题(_T)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#, fuzzy
+msgid ">Window Manager"
+msgstr "窗口管理器"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Active"
 msgstr "激活"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Ad_vanced"
 msgstr "高级(_v)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Automatically _raise windows when they receive focus"
 msgstr "当窗口获得焦点时自动将该窗口置顶(_r)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Automatically give focus to _newly created windows"
 msgstr "自动为新建立窗口获取焦点(_n)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Clic_k to focus"
 msgstr "点击获取焦点(_k)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Click and drag the buttons to change the layout"
 msgstr "点击并拖拽按钮来改变布局"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Close"
 msgstr "关闭"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay _before raising focused window:"
 msgstr "置顶焦点所在窗口前的延时(_b)："
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Long</i>"
 msgstr "<i>长</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Delay|<i>Short</i>"
 msgstr "<i>短</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Dis_tance:"
 msgstr "距离(_t)："
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Distance|<i>Small</i>"
 msgstr "<i>窄</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Distance|<i>Wide</i>"
 msgstr "<i>宽</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Focus follows _mouse"
 msgstr "焦点跟随鼠标(_m)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hidden"
 msgstr "隐藏"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide"
 msgstr "隐藏"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hide content of windows when _moving"
 msgstr "移动窗口时隐藏其内容(_m)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Hide content of windows when _resizing"
 msgstr "改变窗口尺寸时隐藏其内容(_r)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Ke_yboard"
 msgstr "键盘(_y)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "最大化"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Menu"
 msgstr "菜单"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Raise window when clicking _inside application window"
 msgstr "当在窗口客户区点击时将其置顶(_i)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Resistance|<i>Small</i>"
 msgstr "<i>弱</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Resistance|<i>Wide</i>"
 msgstr "<i>强</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "卷起"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
 msgstr "将窗口吸附到其它窗口(_w)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Snap windows to screen _border"
 msgstr "在屏幕边缘吸附窗口(_b)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "粘连"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "双击标题栏所执行的动作"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
 msgstr "窗口标题不能删除"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
 msgstr "标题"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "拖拽窗口离开屏幕时回绕工作区(_d)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "鼠标到达屏幕边缘时回绕工作区(_p)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
 msgstr "当窗口接受焦点前延时(_D)："
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Edge resistance:"
 msgstr "屏幕边缘阻力(_E)："
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Focus"
 msgstr "焦点(_F)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Reset to Defaults"
 msgstr "重设至默认值(_R)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Style"
 msgstr "风格(_S)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "gtk-clear"
-msgstr "清除"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10
-msgid "gtk-close"
-msgstr "关闭"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:11
-msgid "gtk-help"
-msgstr "帮助"
 
 #: ../settings-dialogs/xfwm4-settings.c:215
 #: ../settings-dialogs/xfwm4-settings.c:246
@@ -636,7 +625,9 @@ msgid "Reset to Defaults"
 msgstr "重设至默认值"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
-msgid "This will reset <b>all</b> shortcuts to their default values. Do you really want to do this?"
+msgid ""
+"This will reset <b>all</b> shortcuts to their default values. Do you really "
+"want to do this?"
 msgstr "这将重设<b>全部</b>快捷方式至其默认值。您确定想要这样做？"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -832,7 +823,8 @@ msgid "Change workspace name"
 msgstr "改变工作区名称"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "边缘是屏幕边上不能放置窗口的区域。"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -842,14 +834,6 @@ msgstr "名称(_N)："
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
 msgstr "工作区数目(_N)："
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
-msgid "gtk-cancel"
-msgstr "取消"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:12
-msgid "gtk-save"
-msgstr "保存"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -989,14 +973,33 @@ msgstr "从子进程读取数据时发生错误：%s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "无法启动帮助对话框：%s\n"
 
+#~ msgid "gtk-clear"
+#~ msgstr "清除"
+
+#~ msgid "gtk-close"
+#~ msgstr "关闭"
+
+#~ msgid "gtk-help"
+#~ msgstr "帮助"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "取消"
+
+#~ msgid "gtk-save"
+#~ msgstr "保存"
+
 #~ msgid "Workspace Margins"
 #~ msgstr "工作区边缘"
+
 #~ msgid "Left :"
 #~ msgstr "左侧: "
+
 #~ msgid "Right :"
 #~ msgstr "右侧:"
+
 #~ msgid "Top :"
 #~ msgstr "顶端:"
+
 #~ msgid "Bottom :"
 #~ msgstr "底部:"
 
@@ -1011,8 +1014,10 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "不做任何动作"
+
 #~ msgid "Place window under the mouse"
 #~ msgstr "放置窗口至鼠标下"
+
 #~ msgid "Place window in the center"
 #~ msgstr "放置窗口至中间"
 
@@ -1068,6 +1073,7 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "辅助性"
+
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "在桌面使用鼠标滚轮切换工作区"
 
@@ -1096,6 +1102,7 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "大"
+
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "默认窗口大小："
 
@@ -1154,16 +1161,20 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "混合设置"
+
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "窗口管理器调整"
+
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "这些设置无法作用于当前窗口管理器 (%s)"
+
 #~ msgid "Change name"
 #~ msgstr "改变名称"
 
 #, fuzzy
 #~ msgid "Name:"
 #~ msgstr "名称："
+
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "点击一个工作区的名称来编辑它"
 
@@ -1174,30 +1185,39 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "工作区名称"
+
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "工作区边缘"
+
 #~ msgid "Workspaces and Margins"
 #~ msgstr "工作区边缘"
 
 #, fuzzy
 #~ msgid "Margins"
 #~ msgstr "边缘"
+
 #~ msgid "Window Manager Settings"
 #~ msgstr "窗口管理器设置"
+
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "xfce4 窗口管理器设置"
+
 #~ msgid "Advanced Configuration"
 #~ msgstr "高级选项设置"
+
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "xfce4 窗口管理器调整"
+
 #~ msgid "Workspaces Settings"
 #~ msgstr "工作区设置"
+
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "xfce4 工作区设置"
 
 #, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "点击并拖拽按钮来改变布局"
+
 #~ msgid "Font Selection Dialog"
 #~ msgstr "字体选择对话框"
 
@@ -1208,6 +1228,7 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "标题对齐方式"
+
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "标题拦内的文本对齐方式 :"
 
@@ -1246,8 +1267,10 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "当窗口接受焦点前延时"
+
 #~ msgid "Slow"
 #~ msgstr "慢"
+
 #~ msgid "Fast"
 #~ msgstr "快"
 
@@ -1350,32 +1373,40 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "高级"
+
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "窗口管理器"
+
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "您确实要删除这个快捷键设置主题吗？"
+
 #~ msgid "Add keybinding theme"
 #~ msgstr "添加快捷键设置主题"
 
 #, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "请为该主题输入名称："
+
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "已经存在一个同名的快捷键设置主题"
+
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "您必须为该快捷键设置主题提供名称"
 
 #, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "移动窗口至工作区 %d"
+
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "无法打开主题目录！"
+
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "无法打开 %s：\n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
@@ -1390,8 +1421,10 @@ msgstr "无法启动帮助对话框：%s\n"
 #~ msgstr ""
 #~ "快捷键已被使用！\n"
 #~ "您确定要使用它吗？"
+
 #~ msgid "Compose shortcut for :"
 #~ msgstr "组合快捷键用于："
+
 #~ msgid "Compose shortcut"
 #~ msgstr "组合快捷键"
 
@@ -1452,14 +1485,17 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "最大化(_x)"
+
 #~ msgid "Hide _all others"
 #~ msgstr "隐藏其它全部窗口(_A)"
+
 #~ msgid "_Shade"
 #~ msgstr "卷起(_S)"
 
 #, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "展开(_s)"
+
 #~ msgid "S_tick"
 #~ msgstr "粘附(_t)"
 
@@ -1470,8 +1506,10 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Below"
 #~ msgstr "慢"
+
 #~ msgid "Send to..."
 #~ msgstr "发送到 ..."
+
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "工作区 %i (%s)"
 
@@ -1486,20 +1524,27 @@ msgstr "无法启动帮助对话框：%s\n"
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "快捷键"
+
 #~ msgid "Move window left"
 #~ msgstr "向左移动窗口"
+
 #~ msgid "Move window right"
 #~ msgstr "向右移动窗口"
+
 #~ msgid "Resize window down"
 #~ msgstr "向下改变窗口大小"
+
 #~ msgid "Resize window left"
 #~ msgstr "向左改变窗口大小"
+
 #~ msgid "Resize window right"
 #~ msgstr "向右改变窗口大小"
+
 #~ msgid "Cancel move/resize window"
 #~ msgstr "取消移动/缩放窗口"
+
 #~ msgid "_Hide"
 #~ msgstr "隐藏(_H)"
+
 #~ msgid "Unknown application!"
 #~ msgstr "未知应用程序！"
-
