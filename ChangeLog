@@ -1,3 +1,8 @@
+2009-01-07  olivier
+
+	* settings-dialogs/xfwm4-dialog.glade: Fix typo introduced in previous
+	  update
+
 2009-01-06  olivier
 
 	* settings-dialogs/xfwm4-settings.c, 
