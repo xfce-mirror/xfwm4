@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-06 09:22+0000\n"
+"POT-Creation-Date: 2009-01-07 22:12+0000\n"
 "PO-Revision-Date: 2005-10-09 20:48+0900\n"
 "Last-Translator: Mantas Zapolskas <mantaz@users.sf.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -77,12 +77,13 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 #, fuzzy
 msgid "Configure window behavior and shortcuts"
 msgstr "Keičiant lango dydį rodyti jo turinį"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
 msgstr "Langų tvarkyklė"
 
@@ -179,157 +180,152 @@ msgid "<b>_Theme</b>"
 msgstr "Pavadinimo lygiavimas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
-msgid ">Window Manager"
-msgstr "Langų tvarkyklė"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Active"
 msgstr "Aktyvus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 #, fuzzy
 msgid "Ad_vanced"
 msgstr "Išplėstas"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 #, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr ""
 "Automatiškai iškelti langus\n"
 "kai jie dėmesio centre"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr ""
 "Atomatiškai sutelkti dėmesį \n"
 "į naujai sukurtus langus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #, fuzzy
 msgid "Clic_k to focus"
 msgstr "Spauskite norėdami fokusuoti"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 #, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "Paskauskite ir tempkite norėdami pakeisti išdėstymą"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
 msgstr "Uždaryti"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 #, fuzzy
 msgid "Dis_tance:"
 msgstr "Atstumas :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 #, fuzzy
 msgid "Distance|<i>Small</i>"
 msgstr "Atstumas :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 #, fuzzy
 msgid "Distance|<i>Wide</i>"
 msgstr "Atstumas :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 #, fuzzy
 msgid "Focus follows _mouse"
 msgstr "Dėmesys sutelkiamas pagal pelės poziciją"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
 msgstr "Slepiamas"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hide"
 msgstr "Paslėpti"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 #, fuzzy
 msgid "Hide content of windows when _moving"
 msgstr "Perkeliant langą rodyti jo turinį"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Hide content of windows when _resizing"
 msgstr "Keičiant lango dydį rodyti jo turinį"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 #, fuzzy
 msgid "Ke_yboard"
 msgstr "Klaviatūra"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
 msgstr "išskleisti"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
 msgstr "Meniu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr ""
 "Iškelti langą kai spaudžiama viduje\n"
 "programos lango"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 #, fuzzy
 msgid "Resistance|<i>Small</i>"
 msgstr "Atstumas :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
 msgid "Resistance|<i>Wide</i>"
 msgstr "Atstumas :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Šešėlis"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "Pritraukti langus prie kitų langų"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "Užsklęsti langą į ekrano sieną"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "Prisegti"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 #, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 #, fuzzy
 msgid "The window title cannot be removed"
 msgstr "Lango antraštė, ji negali būti pašalinta"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
 msgstr "Pavadinimas"
 
@@ -720,8 +716,8 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
 msgid ""
-"This will reset <b>all</b> shortcuts to their default values. Do you really "
-"want to do this?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -1096,6 +1092,10 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid ">Window Manager"
+#~ msgstr "Langų tvarkyklė"
 
 #~ msgid "Workspace Margins"
 #~ msgstr "Darbo vietos paraštės"

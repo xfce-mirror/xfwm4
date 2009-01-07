@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-06 09:22+0000\n"
+"POT-Creation-Date: 2009-01-07 22:12+0000\n"
 "PO-Revision-Date: 2008-12-21 21:53+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -81,11 +81,12 @@ msgid "Settings manager socket"
 msgstr "Pengaturan soket manajer"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Configure window behavior and shortcuts"
 msgstr "Atur perilaku jendela dan jalan pintas"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
 msgstr "Manajer Jendela"
 
@@ -166,131 +167,126 @@ msgid "<b>_Theme</b>"
 msgstr "<b>_Tema</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
-msgid ">Window Manager"
-msgstr "Manajer Jendela"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Active"
 msgstr "Aktif"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Ad_vanced"
 msgstr "Ma_hir"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Otomatis _menaikkan jendela ketika jendela menerima fokus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Automatically give focus to _newly created windows"
 msgstr "Otomatis memfokuskan pada jendela yang _baru dibuat"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Clic_k to focus"
 msgstr "Kli_k untuk fokus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Click and drag the buttons to change the layout"
 msgstr "Klik dan tarik tombol untuk mengubah tata letak"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
 msgstr "Tutup"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Delay _before raising focused window:"
 msgstr "Tunda _sebelum menaikkan jendela yang difokuskan:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
 msgstr "<i>Panjang</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
 msgstr "<i>Pendek</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Dis_tance:"
 msgstr "Ja_rak:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Distance|<i>Small</i>"
 msgstr "<i>Sempit</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Distance|<i>Wide</i>"
 msgstr "<i>Lebar</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Focus follows _mouse"
 msgstr "Fokus mengikuti _tetikus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
 msgstr "Tersembunyi"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hide"
 msgstr "Sembunyi"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide content of windows when _moving"
 msgstr "Tampilkan isi jendela ketika _memindahkan"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hide content of windows when _resizing"
 msgstr "Tampilkan isi jendela ketika mengubah _ukuran"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Ke_yboard"
 msgstr "Pa_pan ketik"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
 msgstr "Maksimalkan"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
 msgstr "Menu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "Naikkan jendela ketika klik _di dalam jendela aplikasi"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Resistance|<i>Small</i>"
 msgstr "<i>Kecil</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Resistance|<i>Wide</i>"
 msgstr "<i>Lebar</>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Bayang"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Snap windows to other _windows"
 msgstr "Lekatkan jendela ke _jendela lain"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to screen _border"
 msgstr "Lekatkan jendela ke _batas layar"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "Lekat"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Aksi yang dilakukan ketika batang judul diklik-ganda"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title cannot be removed"
 msgstr "Judul jendela tak dapat dihapus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
 msgstr "Judul"
 
@@ -625,11 +621,11 @@ msgstr "Kembalikan ke Standar"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
 msgid ""
-"This will reset <b>all</b> shortcuts to their default values. Do you really "
-"want to do this?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr ""
-"Ini akan mengatur ulang <b>semua</b> jalan pintas ke nilai standar mereka. "
-"Anda yakin ingin melakukan ini?"
+"Ini akan mengatur ulang semua jalan pintas ke nilai standar mereka. Anda "
+"yakin ingin melakukan ini?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -980,6 +976,10 @@ msgstr "Galat membaca data dari proses anak: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Tak dapat pijah helper-dialog: %s\n"
+
+#, fuzzy
+#~ msgid ">Window Manager"
+#~ msgstr "Manajer Jendela"
 
 #~ msgid "gtk-clear"
 #~ msgstr "gtk-clear"

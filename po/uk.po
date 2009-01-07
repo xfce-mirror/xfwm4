@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-06 09:22+0000\n"
+"POT-Creation-Date: 2009-01-07 22:12+0000\n"
 "PO-Revision-Date: 2008-12-15 15:34+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -84,11 +84,12 @@ msgid "Settings manager socket"
 msgstr "Сокет Менеджера властивостей"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Configure window behavior and shortcuts"
 msgstr "Налаштувати заголовок вікна і ярлик запуску"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
 msgstr "Менеджер вікон"
 
@@ -169,131 +170,126 @@ msgid "<b>_Theme</b>"
 msgstr "<b>_Тема</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
-msgid ">Window Manager"
-msgstr "Менеджер вікон"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Active"
 msgstr "Активне вікно"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Ad_vanced"
 msgstr "Д_одатково"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Автоматично піднімати вікна при одержанні фо_кусу"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Automatically give focus to _newly created windows"
 msgstr "Автоматичне одержання фокусу новос_твореними вікнами"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Clic_k to focus"
 msgstr "Отримати фокус при к_лацанні"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Click and drag the buttons to change the layout"
 msgstr "Клацніть та перетягніть кнопки, щоб змінити їх розкладку"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
 msgstr "Закрити"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Delay _before raising focused window:"
 msgstr "Затр_имка перед підніманням вікна з фокусом:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
 msgstr "Затримка|<i>Тривала</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
 msgstr "Затримка|<i>Коротка</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Dis_tance:"
 msgstr "Від_стань:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Distance|<i>Small</i>"
 msgstr "Відстань|<i>Вузька</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Distance|<i>Wide</i>"
 msgstr "Відстань|<i>Широка</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Focus follows _mouse"
 msgstr "Отримати фокус при наведенні _мишки"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
 msgstr "Приховування"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Hide"
 msgstr "Приховати"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide content of windows when _moving"
 msgstr "Ховати вміст вікон при пере_міщенні"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hide content of windows when _resizing"
 msgstr "Приховати вміст вікон при зміні _розміру"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Ke_yboard"
 msgstr "К_лавіатура"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
 msgstr "Розгорнути"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
 msgstr "Меню"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "Піднімати вікно при клацанні _всередині вікна програми"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Resistance|<i>Small</i>"
 msgstr "Протидія|<i>Вузька</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Resistance|<i>Wide</i>"
 msgstr "Протидія|<i>Широка</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Згорнути у заголовок"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Snap windows to other _windows"
 msgstr "Прилипання вікна до _інших вікон"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to screen _border"
 msgstr "Пр_илипання вікна до меж екрана"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "Приліпити"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Дія, що виконується при подвійному клацанні на заголовку вікна"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title cannot be removed"
 msgstr "Неможливо видалити заголовок вікна"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
 msgstr "Заголовок"
 
@@ -629,11 +625,11 @@ msgstr "Скинути на типові"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
 msgid ""
-"This will reset <b>all</b> shortcuts to their default values. Do you really "
-"want to do this?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr ""
-"Це зробить відновлення <b>всіх</b> комбінацій клавіш до їх типових значень. "
-"Ви дійсно хочете зробити це?"
+"Це зробить відновлення всіх комбінацій клавіш до їх типових значень. Ви "
+"дійсно хочете зробити це?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -986,6 +982,10 @@ msgstr "Помилка читання даних з підпроцесу   : %s\
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Неможливо створити діалог : %s\n"
+
+#, fuzzy
+#~ msgid ">Window Manager"
+#~ msgstr "Менеджер вікон"
 
 #~ msgid "gtk-clear"
 #~ msgstr "gtk-очистити"

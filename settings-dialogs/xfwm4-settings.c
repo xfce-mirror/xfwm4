@@ -1828,7 +1828,7 @@ xfwm_settings_shortcut_reset_clicked (GtkButton    *button,
 
   response = xfce_message_dialog (NULL, _("Reset to Defaults"), GTK_STOCK_DIALOG_QUESTION,
                                   _("Reset to Defaults"),
-                                  _("This will reset <b>all</b> shortcuts to their default "
+                                  _("This will reset all shortcuts to their default "
                                     "values. Do you really want to do this?"),
                                   GTK_STOCK_NO, GTK_RESPONSE_NO,
                                   GTK_STOCK_YES, GTK_RESPONSE_YES,

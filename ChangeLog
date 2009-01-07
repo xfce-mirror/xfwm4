@@ -1,5 +1,10 @@
 2009-01-07  olivier
 
+	* settings-dialogs/xfwm4-settings.c: Remove markup not supported
+	  by xfce_message_dialog() (Bug #4786)
+
+2009-01-07  olivier
+
 	* settings-dialogs/xfwm4-dialog.glade: Fix typo introduced in previous
 	  update
 

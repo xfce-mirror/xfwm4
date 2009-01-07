@@ -12,6 +12,7 @@
 - Do not mark gtk+ stock labels as translatable (Bug #4722).
 - Change default shadow radius and position.
 - Fix some controls not being localized (Bug #4740).
+- Remove markup not supported by xfce_message_dialog() (Bug #4786).
 
 4.5.92 (Xfce 4.6beta2)
 ======================

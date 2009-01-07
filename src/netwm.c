@@ -1464,7 +1464,7 @@ clientSendNetWMPing (Client *c, guint32 timestamp)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    /* Makes sure the tiemstamp is meaningfull */
+    /* Makes sure the timestamp is meaningfull */
     c->ping_time = myDisplayGetTime (display_info, timestamp);
     g_return_val_if_fail (timestamp != CurrentTime, FALSE);
 
