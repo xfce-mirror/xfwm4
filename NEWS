@@ -8,11 +8,13 @@
 - Remove maximization if a client updates its size max size hint (Bug #4706).
 - String review by Josh Saddler <nightmorph@gentoo.org> (Bug #4703).
 - Fix fill horizontally and vertically not working as expected (Bug #4712).
-- Prevent "fill" from expanding beyound physical monitor.
+- Prevent "fill" from expanding beyond physical monitor.
 - Do not mark gtk+ stock labels as translatable (Bug #4722).
 - Change default shadow radius and position.
 - Fix some controls not being localized (Bug #4740).
 - Remove markup not supported by xfce_message_dialog() (Bug #4786).
+- Avoid placing unfocused windows on top of the current focused window when not 
+  focusing new windows (Bug #4795).
 
 4.5.92 (Xfce 4.6beta2)
 ======================

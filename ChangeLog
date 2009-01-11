@@ -1,3 +1,8 @@
+2009-01-11  olivier
+
+	* src/focus.c: Do not place unfocused windows on top of the focused
+	  window, when not focusing new windows (Bug #4795)
+
 2009-01-07  olivier
 
 	* settings-dialogs/xfwm4-settings.c: Remove markup not supported

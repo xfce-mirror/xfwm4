@@ -199,10 +199,13 @@ clientFocusNew(Client * c)
     {
         Client *c2 = clientGetFocus();
 
-        if ((prevented) && (c2 != NULL) && (c2->win_layer == c->win_layer))
+        if ((c2 != NULL) && (c2->win_layer == c->win_layer))
         {
-            TRACE ("clientFocusNew: Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
-            FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+            if (prevented)
+            {
+                TRACE ("clientFocusNew: Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+            }
             clientSortRing(c);
             clientLower (c, c2->frame);
             clientSortRing(c2);
