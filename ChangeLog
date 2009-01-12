@@ -1,3 +1,7 @@
+2009-01-12  olivier
+
+	* NEWS: Typos
+
 2009-01-11  olivier
 
 	* src/focus.c: Do not place unfocused windows on top of the focused

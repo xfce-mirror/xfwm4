@@ -1,7 +1,7 @@
 4.5.99.1 (Xfce 4.6rc1)
 ======================
 
-- Work arround a problem affecting the use of the "Super" key as modifier for 
+- Work around a problem affecting the use of the "Super" key as modifier for 
   moving windows (Bug #4632).
 - Fix smart placement not working for windows with height or width larger than 
   actual screen size (Bug# 3126).
@@ -101,7 +101,7 @@
   frames at once.
 - Use timeout for frame redraw, check actual WM name changes to work around
   apps that falsely update their WM name property (Bug #2810).
-- Uodate Hungarian translation
+- Update Hungarian translation
 - Update Catalan translation
 - Update Italian translation
 - Update Polish translation
@@ -138,7 +138,7 @@
 - Update the NET_WM_STATE when the client requests an update of
   NET_WM_STATE_DEMANDS_ATTENTION (Bug #2678)
 - Focus the internal fallback window
-  when focus is transfered to a window that doesn't have InputHint set but
+  when focus is transferred to a window that doesn't have InputHint set but
   still use WM_PROTOCOLS_TAKE_FOCUS (ie, there is no way for the window
   manager to tell whether or not the client will accept focus in the end
   since focus is set by the client alone through the 'take focus' mechanism)
@@ -150,7 +150,7 @@
   started un-focused (Bug #2664), re-add some traces (which compile with
   -Werror this time), small code/api cleanup.
 - Remove shadow on dock-type windows (bug #2648)
-- Prevent fullscreen windows from beeing maximized (Bug #2663).
+- Prevent fullscreen windows from being maximized (Bug #2663).
 - Use timestamp provided by NET_ACTIVE_WINDOW and NET_CURRENT_DESKTOP messages
   from EWMH version 1.3 and above, fix focus transition with
   NET_CURRENT_DESKTOP messages causing either flickering or wrong restacking
@@ -181,7 +181,7 @@
 - Hide as more windows when showing desktop (Bug #2518)
 - Don't skip windows that have the skip pager/taskbar properties when
   searching for windows below the pointer (bug #2550)
-- Fix focus transitionning to root taking into account the pending focus too,
+- Fix focus transitioning to root taking into account the pending focus too,
   so that focus doesn't return to the fallback internal window when it should
   return to some other client window (like when an application closes with a
   modal dialog opened).
@@ -273,5 +273,5 @@
 4.3.90.1 (beta1)
 ================
 
-- First public release
+- First public release for xfce-4.4
 
