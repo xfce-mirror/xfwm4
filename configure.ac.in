@@ -5,23 +5,23 @@ dnl
 
 m4_define([xfwm4_version_major], [4])
 m4_define([xfwm4_version_minor], [5])
-m4_define([xfwm4_version_micro], [92])
+m4_define([xfwm4_version_micro], [93])
 m4_define([xfwm4_version_build], [r@REVISION@])
 m4_define([xfwm4_version_tag],   [])
 m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_version_micro()ifelse(xfwm4_version_tag(), [svn], [xfwm4_version_tag().xfwm4_version_build()], [xfwm4_version_tag()])])
 
 m4_define([gtk_minimum_version], [2.10.0])
-m4_define([xfce_minimum_version], [4.5.92])
-m4_define([libxfcegui4_minimum_version], [4.5.92])
-m4_define([libxfce4kbd_private_minimum_version], [4.5.92])
-m4_define([xfconf_minimum_version], [4.5.92])
+m4_define([xfce_minimum_version], [4.5.93])
+m4_define([libxfcegui4_minimum_version], [4.5.93])
+m4_define([libxfce4kbd_private_minimum_version], [4.5.93])
+m4_define([xfconf_minimum_version], [4.5.93])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.12])
 m4_define([startup_notification_minimum_version], [0.5])
 m4_define([intltool_minimum_version], [0.31])
 
 dnl init autoconf
-AC_COPYRIGHT([Copyright (c) 2002-2008
+AC_COPYRIGHT([Copyright (c) 2002-2009
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
