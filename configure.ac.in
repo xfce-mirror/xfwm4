@@ -7,7 +7,7 @@ m4_define([xfwm4_version_major], [4])
 m4_define([xfwm4_version_minor], [5])
 m4_define([xfwm4_version_micro], [93])
 m4_define([xfwm4_version_build], [r@REVISION@])
-m4_define([xfwm4_version_tag],   [])
+m4_define([xfwm4_version_tag],   [svn])
 m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_version_micro()ifelse(xfwm4_version_tag(), [svn], [xfwm4_version_tag().xfwm4_version_build()], [xfwm4_version_tag()])])
 
 m4_define([gtk_minimum_version], [2.10.0])
