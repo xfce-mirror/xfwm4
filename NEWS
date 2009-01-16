@@ -1,6 +1,11 @@
 4.5.99.1 (Xfce 4.6rc1)
 ======================
 
+- Fix a crash when removing a monitor with xrandr 1.2
+
+4.5.93 (Xfce 4.6beta3)
+======================
+
 - Work around a problem affecting the use of the "Super" key as modifier for 
   moving windows (Bug #4632).
 - Fix smart placement not working for windows with height or width larger than 

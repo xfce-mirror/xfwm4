@@ -217,7 +217,7 @@ createWindowlist (GdkScreen * scr, Client * current, Client * new, unsigned int 
     g_return_val_if_fail (n_clients > 0, NULL);
 
     getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
-    monitor = find_monitor_at_point (scr, msx, msy);
+    monitor = myScreenFindMonitorAtPoint (screen_info, msx, msy);
     gdk_screen_get_monitor_geometry (scr, monitor, &monitor_sz);
 
     /* add the width of the border on each side */

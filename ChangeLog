@@ -1,3 +1,10 @@
+2009-01-16	olivier
+
+	* src/misc.h, src/misc.c, src/screen.h, src/screen.c, src/events.c,
+	  src/menu.c, src/tabwin.c, src/placement.c, src/client.c, 
+	  src/moveresize.c, src/netwm.c: Need to invalidate our internal 
+	  monitor caching when adding/removing monitors with randr 1.2
+
 2009-01-14	jannis
 
 	* configure.in.in: Post-release version bump.

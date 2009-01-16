@@ -2736,14 +2736,26 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
 static void
 monitors_changed_cb(GdkScreen *gscreen, gpointer data)
 {
+    ScreenInfo *screen_info;
+
     TRACE ("entering monitors_changed_cb");
+
+    screen_info = (ScreenInfo *) data;
+    g_return_if_fail (screen_info);
+
+    /* We have added/removed a monitor or even changed the layout,
+     * the cache for monitor position we use in our screen structure
+     * is not valid anymore and potentially refers to a monitor that
+     * was just removed, so invalidate it.
+     */
+    screen_info->cache_monitor = -1;
 
     /*
      * From the window manager point of view,
      * a XRand 1.2 monitor change is similar to
      * a screen size change.
      */
-    size_changed_cb(gscreen, data);
+    size_changed_cb (gscreen, data);
 }
 
 void
@@ -2756,15 +2768,15 @@ initGtkCallbacks (ScreenInfo *screen_info)
                           "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
     g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
                       GTK_SIGNAL_FUNC (client_event_cb), (gpointer) (screen_info->display_info));
-    g_signal_connect(G_OBJECT(screen_info->gscr), "size-changed",
-                     G_CALLBACK(size_changed_cb),
-                     (gpointer) (screen_info));
+    g_signal_connect (G_OBJECT(screen_info->gscr), "size-changed",
+                      G_CALLBACK(size_changed_cb),
+                      (gpointer) (screen_info));
     if(gtk_major_version > 2 || (gtk_major_version == 2 && gtk_minor_version >= 13))
     {
         TRACE ("connect \"monitors-changed\" cb");
-        g_signal_connect(G_OBJECT(screen_info->gscr), "monitors-changed",
-                         G_CALLBACK(monitors_changed_cb),
-                         (gpointer) (screen_info));
+        g_signal_connect (G_OBJECT(screen_info->gscr), "monitors-changed",
+                          G_CALLBACK(monitors_changed_cb),
+                          (gpointer) (screen_info));
     }
 
     settings = gtk_settings_get_default ();

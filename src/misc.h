@@ -70,9 +70,6 @@ gboolean                 checkWindowOnRoot                      (ScreenInfo *,
                                                                  Window);
 void                     placeSidewalks                         (ScreenInfo *,
                                                                  gboolean);
-gint                     find_monitor_at_point                  (GdkScreen *,
-                                                                 gint,
-                                                                 gint);
 gchar*                   get_atom_name                          (DisplayInfo *,
                                                                  Atom);
 

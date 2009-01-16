@@ -405,7 +405,7 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     best_frame_x = frame_x;
     best_frame_y = frame_y;
 
-    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
     disp_x = rect.x;
@@ -1149,7 +1149,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             || (passdata->handle == CORNER_COUNT + SIDE_LEFT)) ?
         1 : 0;
 
-    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
     disp_x = rect.x;

@@ -225,7 +225,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     cy = frame_y + (frame_height / 2);
 
     screen_info = c->screen_info;
-    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
     screen_width = screen_info->width;
@@ -668,7 +668,7 @@ clientInitPosition (Client * c)
     if ((n_monitors > 1) || (screen_info->params->placement_mode == PLACE_MOUSE))
     {
         getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
-        monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
+        monitor_nbr = myScreenFindMonitorAtPoint (screen_info, msx, msy);
     }
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
@@ -684,7 +684,7 @@ clientInitPosition (Client * c)
             {
                 msx = frameX (c) + (frameWidth (c) / 2);
                 msy = frameY (c) + (frameHeight (c) / 2);
-                monitor_nbr = find_monitor_at_point (screen_info->gscr, msx, msy);
+                monitor_nbr = myScreenFindMonitorAtPoint (screen_info, msx, msy);
                 gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
             }
         }
@@ -888,7 +888,7 @@ clientFill (Client * c, int fill_type)
     cx = tmp_x + (tmp_w / 2);
     cy = tmp_y + (tmp_h / 2);
 
-    monitor_nbr = find_monitor_at_point (screen_info->gscr, cx, cy);
+    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
     gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
 
     full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
