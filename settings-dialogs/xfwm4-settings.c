@@ -1602,6 +1602,7 @@ xfwm_settings_click_to_focus_property_changed (XfconfChannel *channel,
 {
   GtkWidget *click_to_focus_radio;
   GtkWidget *focus_follows_mouse_radio;
+  GtkWidget *focus_delay_hbox;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
   g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
@@ -1610,6 +1611,8 @@ xfwm_settings_click_to_focus_property_changed (XfconfChannel *channel,
                                                "click_to_focus_radio");
   focus_follows_mouse_radio = glade_xml_get_widget (settings->priv->glade_xml,
                                                     "focus_follows_mouse_radio");
+  focus_delay_hbox = glade_xml_get_widget (settings->priv->glade_xml,
+                                           "focus_delay_hbox");
 
   if (G_UNLIKELY (G_VALUE_TYPE (value) != G_TYPE_BOOLEAN))
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (click_to_focus_radio), TRUE);
@@ -1620,7 +1623,11 @@ xfwm_settings_click_to_focus_property_changed (XfconfChannel *channel,
       else
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (focus_follows_mouse_radio), TRUE);
     }
+  gtk_widget_set_sensitive (GTK_WIDGET (focus_delay_hbox),
+                            gtk_toggle_button_get_active (
+                                  GTK_TOGGLE_BUTTON (focus_follows_mouse_radio)));
 }
+
 
 
 

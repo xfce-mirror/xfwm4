@@ -573,7 +573,7 @@
                                 <property name="visible">True</property>
                                 <property name="left_padding">12</property>
                                 <child>
-                                  <widget class="GtkHBox" id="hbox6">
+                                  <widget class="GtkHBox" id="focus_delay_hbox">
                                     <property name="visible">True</property>
                                     <property name="spacing">12</property>
                                     <child>
