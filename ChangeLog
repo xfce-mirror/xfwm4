@@ -1,3 +1,10 @@
+2009-01-18	olivier
+
+	* src/client.c, src/events.c, src/moveresize.c, src/netwm.c,
+	  src/placement.c, src/screen.c, src/screen.h, src/tabwin.c: Cache
+	  the monitor geometry instead of just the monitor number, it's more
+	  efficient.
+
 2009-01-17	olivier
 
 	* settings-dialogs/xfwm4-settings.c, 

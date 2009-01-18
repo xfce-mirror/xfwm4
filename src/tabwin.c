@@ -201,7 +201,6 @@ createWindowlist (GdkScreen * scr, Client * current, Client * new, unsigned int 
     unsigned int grid_rows;
     int i, packpos;
     int msx, msy;
-    gint monitor;
 
     g_return_val_if_fail (current != NULL, NULL);
 
@@ -217,8 +216,7 @@ createWindowlist (GdkScreen * scr, Client * current, Client * new, unsigned int 
     g_return_val_if_fail (n_clients > 0, NULL);
 
     getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
-    monitor = myScreenFindMonitorAtPoint (screen_info, msx, msy);
-    gdk_screen_get_monitor_geometry (scr, monitor, &monitor_sz);
+    myScreenFindMonitorAtPoint (screen_info, msx, msy, &monitor_sz);
 
     /* add the width of the border on each side */
     grid_cols = (monitor_sz.width / (WIN_ICON_SIZE + 2 * WIN_ICON_BORDER)) * 0.75;

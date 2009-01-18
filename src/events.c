@@ -50,6 +50,7 @@
 #include "client.h"
 #include "moveresize.h"
 #include "cycle.h"
+#include "placement.h"
 #include "stacking.h"
 #include "transients.h"
 #include "focus.h"
@@ -2748,7 +2749,10 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
      * is not valid anymore and potentially refers to a monitor that
      * was just removed, so invalidate it.
      */
-    screen_info->cache_monitor = -1;
+    screen_info->cache_monitor.x = -1;
+    screen_info->cache_monitor.y = -1;
+    screen_info->cache_monitor.width = 0;
+    screen_info->cache_monitor.height = 0;
 
     /*
      * From the window manager point of view,

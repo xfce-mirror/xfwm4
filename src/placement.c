@@ -202,7 +202,6 @@ clientConstrainPos (Client * c, gboolean show_full)
     int screen_width, screen_height;
     unsigned int ret;
     GdkRectangle rect;
-    gint monitor_nbr;
     gint min_visible;
 
     g_return_val_if_fail (c != NULL, 0);
@@ -225,8 +224,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     cy = frame_y + (frame_height / 2);
 
     screen_info = c->screen_info;
-    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     screen_width = screen_info->width;
     screen_height = screen_info->height;
@@ -650,7 +648,6 @@ clientInitPosition (Client * c)
     Client *c2;
     GdkRectangle rect;
     int full_x, full_y, full_w, full_h, msx, msy;
-    gint monitor_nbr;
     gint n_monitors;
     gboolean place;
     gboolean position;
@@ -664,14 +661,15 @@ clientInitPosition (Client * c)
     position = (c->size->flags & (PPosition | USPosition));
 
     n_monitors = gdk_screen_get_n_monitors (c->screen_info->gscr);
-    monitor_nbr = 0;
     if ((n_monitors > 1) || (screen_info->params->placement_mode == PLACE_MOUSE))
     {
         getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
-        monitor_nbr = myScreenFindMonitorAtPoint (screen_info, msx, msy);
+        myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
     }
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
-
+    else
+    {
+        gdk_screen_get_monitor_geometry (screen_info->gscr, 0, &rect);
+    }
     if (position || (c->type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)) || clientIsTransient (c))
     {
         if (!position && clientIsTransient (c) && (c2 = clientGetTransient (c)))
@@ -684,8 +682,7 @@ clientInitPosition (Client * c)
             {
                 msx = frameX (c) + (frameWidth (c) / 2);
                 msy = frameY (c) + (frameHeight (c) / 2);
-                monitor_nbr = myScreenFindMonitorAtPoint (screen_info, msx, msy);
-                gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+                myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
             }
         }
         if (CONSTRAINED_WINDOW (c))
@@ -761,7 +758,6 @@ clientFill (Client * c, int fill_type)
     unsigned short mask;
     int i, cx, cy, full_x, full_y, full_w, full_h;
     int tmp_x, tmp_y, tmp_w, tmp_h;
-    gint monitor_nbr;
 
     g_return_if_fail (c != NULL);
 
@@ -888,8 +884,7 @@ clientFill (Client * c, int fill_type)
     cx = tmp_x + (tmp_w / 2);
     cy = tmp_y + (tmp_h / 2);
 
-    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
     full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);

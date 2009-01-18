@@ -2983,14 +2983,12 @@ void clientToggleFullscreen (Client * c)
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && (c->size->flags & PMaxSize))
     {
         GdkRectangle rect;
-        gint monitor_nbr;
         int cx, cy;
 
         cx = frameX (c) + (frameWidth (c) / 2);
         cy = frameY (c) + (frameHeight (c) / 2);
 
-        monitor_nbr = myScreenFindMonitorAtPoint (c->screen_info, cx, cy);
-        gdk_screen_get_monitor_geometry (c->screen_info->gscr, monitor_nbr, &rect);
+        myScreenFindMonitorAtPoint (c->screen_info, cx, cy, &rect);
 
         if ((c->size->max_width < rect.width) || (c->size->max_height < rect.height))
         {
@@ -3117,7 +3115,6 @@ clientNewMaxSize (Client * c, XWindowChanges *wc)
     GdkRectangle rect;
     int cx, cy, full_x, full_y, full_w, full_h;
     int tmp_x, tmp_y, tmp_w, tmp_h;
-    gint monitor_nbr;
 
     tmp_x = frameX (c);
     tmp_y = frameY (c);
@@ -3129,8 +3126,7 @@ clientNewMaxSize (Client * c, XWindowChanges *wc)
 
     screen_info = c->screen_info;
 
-    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
     full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);

@@ -741,14 +741,12 @@ clientUpdateFullscreenState (Client * c)
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         GdkRectangle rect;
-        gint monitor_nbr;
         int cx, cy;
 
         cx = frameX (c) + (frameWidth (c) / 2);
         cy = frameY (c) + (frameHeight (c) / 2);
 
-        monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
-        gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+        myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
         c->fullscreen_old_x = c->x;
         c->fullscreen_old_y = c->y;

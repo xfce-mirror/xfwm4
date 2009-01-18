@@ -221,10 +221,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->key_grabs = 0;
     screen_info->pointer_grabs = 0;
 
-    screen_info->cache_monitor = -1;
-    screen_info->cache_x = 0;
-    screen_info->cache_y =0;
-
     getHint (display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &desktop_visible);
     screen_info->show_desktop = (desktop_visible != 0);
 
@@ -313,6 +309,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
         xfwmPixmapInit (screen_info, &screen_info->top[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->top[i][INACTIVE]);
     }
+
+    myScreenInvalidateMonitorCache (screen_info);
 
     return (screen_info);
 }
@@ -566,46 +564,53 @@ myScreenGetClientFromWindow (ScreenInfo *screen_info, Window w, unsigned short m
     return NULL;
 }
 
+void
+myScreenInvalidateMonitorCache (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info != NULL);
+
+    screen_info->cache_monitor.x = -1;
+    screen_info->cache_monitor.y = -1;
+    screen_info->cache_monitor.width = -1;
+    screen_info->cache_monitor.height = -1;
+}
+
 /*
    gdk_screen_get_monitor_at_point () doesn't give accurate results
    when the point is off screen, use my own implementation from xfce 3
  */
-gint
-myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y)
+void
+myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangle *rect)
 {
-    gint dx, dy, center_x, center_y;
+    gint dx, dy, center_x, center_y, num_monitors, i;
     guint32 distsquare, min_distsquare;
-    gint num_monitors, nearest_monitor, i;
-    GdkRectangle monitor;
+    GdkRectangle monitor, nearest_monitor = { 0, 0, 0, 0 };
 
-    g_return_val_if_fail (screen_info != NULL, 0);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen_info->gscr), 0);
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (rect != NULL);
+    g_return_if_fail (GDK_IS_SCREEN (screen_info->gscr));
 
     /* Cache system */
-    if ((screen_info->cache_monitor >= 0) &&
-        (x == screen_info->cache_x) && (y == screen_info->cache_y))
+    if ((x >= screen_info->cache_monitor.x) && (x < screen_info->cache_monitor.x + screen_info->cache_monitor.width) &&
+        (y >= screen_info->cache_monitor.y) && (y < screen_info->cache_monitor.y + screen_info->cache_monitor.height))
     {
-        return (screen_info->cache_monitor);
+        *rect = screen_info->cache_monitor;
+        return;
     }
 
-    screen_info->cache_x = x;
-    screen_info->cache_y = y;
-
-    /* No monitor has been eligible, use the closest one */
-
-    min_distsquare = ((guint32) 0xffffffff);
-    nearest_monitor = 0;
-
+    min_distsquare = G_MAXUINT32;
     num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+
     for (i = 0; i < num_monitors; i++)
     {
         gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
 
-        if ((x >= monitor.x) && (x < monitor.x + monitor.width) &&
+        if ((x >= monitor.x) && (x < (monitor.x + monitor.width)) &&
             (y >= monitor.y) && (y < (monitor.y + monitor.height)))
         {
-            screen_info->cache_monitor = i;
-            return i;
+            screen_info->cache_monitor = monitor;
+            *rect = screen_info->cache_monitor;
+            return;
         }
 
         center_x = monitor.x + (monitor.width / 2);
@@ -619,10 +624,10 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y)
         if (distsquare < min_distsquare)
         {
             min_distsquare = distsquare;
-            nearest_monitor = i;
+            nearest_monitor = monitor;
         }
     }
 
     screen_info->cache_monitor = nearest_monitor;
-    return (nearest_monitor);
+    *rect = screen_info->cache_monitor;
 }

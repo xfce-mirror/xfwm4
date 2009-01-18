@@ -116,9 +116,7 @@ struct _ScreenInfo
     int previous_ws;
 
     /* Monitor search caching */
-    gint cache_monitor;
-    gint cache_x;
-    gint cache_y;
+    GdkRectangle cache_monitor;
 
     /* Workspace definitions */
     int workspace_count;
@@ -215,8 +213,10 @@ int                      myScreenGetKeyPressed                  (ScreenInfo *,
 Client                  *myScreenGetClientFromWindow            (ScreenInfo *,
                                                                  Window,
                                                                  unsigned short);
-gint                    myScreenFindMonitorAtPoint              (ScreenInfo *,
+void                     myScreenInvalidateMonitorCache         (ScreenInfo *);
+void                     myScreenFindMonitorAtPoint             (ScreenInfo *,
                                                                  gint,
-                                                                 gint);
+                                                                 gint,
+                                                                 GdkRectangle *);
 
 #endif /* INC_SCREEN_H */

@@ -378,7 +378,6 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     int best_delta_x, best_delta_y;
     int c_frame_x1, c_frame_x2, c_frame_y1, c_frame_y2;
     GdkRectangle rect;
-    gint monitor_nbr;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSnapPosition");
@@ -405,8 +404,7 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     best_frame_x = frame_x;
     best_frame_y = frame_y;
 
-    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     disp_x = rect.x;
     disp_y = rect.y;
@@ -1106,7 +1104,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     int frame_top, frame_left, frame_right, frame_bottom;
     int move_top, move_bottom, move_left, move_right;
     int temp;
-    gint monitor_nbr;
     gint min_visible;
     gboolean resizing;
 
@@ -1149,8 +1146,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             || (passdata->handle == CORNER_COUNT + SIDE_LEFT)) ?
         1 : 0;
 
-    monitor_nbr = myScreenFindMonitorAtPoint (screen_info, cx, cy);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
+    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     disp_x = rect.x;
     disp_y = rect.y;
