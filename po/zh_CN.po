@@ -4,6 +4,7 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
 # wuli <wurisky@gmail.com>,2007
+# Chris K Zhang <plutino@gmail.com>, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
@@ -686,7 +687,7 @@ msgstr "组合快捷键"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:850
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: ../mcs-plugin/xfwm4_shortcuteditor.c:854
 msgid "No shortcut"

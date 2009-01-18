@@ -1,3 +1,7 @@
+2009-01-18  Maximilian Schleiss <maximilian@xfce.org>
+
+	* zh_CN.po: simplified Chinese translation update (Chris K. Zhang)
+
 2008-10-20 Lars Nielsen <lars@mit-web.dk>
 
 	* da.po,LINGUAS: Added Danish translation
@@ -8,7 +12,7 @@
 
 2008-04-12  Mike Massonnet <mmassonnet@xfce.org>
 
-    * lv.po: Update Latvian translation (Rihards Prieditis <rprieditis@gmail.com>)
+	* lv.po: Update Latvian translation (Rihards Prieditis <rprieditis@gmail.com>)
 
 2008-02-22	Mike Massonnet <mmassonnet@xfce.org>
 
