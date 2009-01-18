@@ -1,5 +1,9 @@
 2009-01-18	olivier
 
+	* src/screen.c: Use G_MAXINT as default to make sure it's off bound.
+
+2009-01-18	olivier
+
 	* src/*.c, src/*.h: Update year.
 
 2009-01-18	olivier

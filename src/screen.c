@@ -569,10 +569,10 @@ myScreenInvalidateMonitorCache (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
 
-    screen_info->cache_monitor.x = -1;
-    screen_info->cache_monitor.y = -1;
-    screen_info->cache_monitor.width = -1;
-    screen_info->cache_monitor.height = -1;
+    screen_info->cache_monitor.x = G_MAXINT;
+    screen_info->cache_monitor.y = G_MAXINT;
+    screen_info->cache_monitor.width = 0;
+    screen_info->cache_monitor.height = 0;
 }
 
 /*
@@ -584,7 +584,7 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
 {
     gint dx, dy, center_x, center_y, num_monitors, i;
     guint32 distsquare, min_distsquare;
-    GdkRectangle monitor, nearest_monitor = { 0, 0, 0, 0 };
+    GdkRectangle monitor, nearest_monitor = { G_MAXINT, G_MAXINT, 0, 0 };
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (rect != NULL);
