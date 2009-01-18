@@ -1,17 +1,17 @@
 # Swedish translations for xfwm4 package.
-# Copyright (C) 2002-2008 The Xfce development team.
+# Copyright (C) 2002-2009 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Joakim Andreasson <joakim.andreasson@gmx.net>, 2003-2004.
 # Jens Hagerman <godhet@gmail.com>, 2006.
 # Alexander Toresson <alexander.toresson@gmail.com>, 2006.
-# Daniel Nylander <po@danielnylander.se>, 2008.
+# Daniel Nylander <po@danielnylander.se>, 2008, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-07 22:12+0000\n"
-"PO-Revision-Date: 2008-12-15 21:53+0100\n"
+"POT-Creation-Date: 2009-01-18 12:16+0100\n"
+"PO-Revision-Date: 2009-01-18 12:43+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -66,8 +66,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Prova %s --help för att se en komplett lista över tillgängliga "
-"kommandoradsflaggor.\n"
+"Prova %s --help för att se en komplett lista över tillgängliga kommandoradsflaggor.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -287,9 +286,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Åtgärden att genomföra när titellisten dubbelklickas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "Fönstrets titel, den kan inte tas bort"
+msgstr "Fönstrets titel kan inte tas bort"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
@@ -619,18 +617,14 @@ msgstr "Misslyckades med att initiera xfconf. Anledning: %s"
 msgid "Could not create the settings dialog."
 msgstr "Kunde inte skapa inställningsdialogen."
 
-#: ../settings-dialogs/xfwm4-settings.c:1829
-#: ../settings-dialogs/xfwm4-settings.c:1830
+#: ../settings-dialogs/xfwm4-settings.c:1836
+#: ../settings-dialogs/xfwm4-settings.c:1837
 msgid "Reset to Defaults"
 msgstr "Återställ till standardvärden"
 
-#: ../settings-dialogs/xfwm4-settings.c:1831
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Detta kommer att återställa alla genvägar till sin standardvärden. Vill du "
-"verkligen göra detta?"
+#: ../settings-dialogs/xfwm4-settings.c:1838
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Detta kommer att återställa alla genvägar till sin standardvärden. Vill du verkligen göra detta?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -714,8 +708,7 @@ msgstr "Opacitet när storleken på ett fönster _ändras:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"Återställ ursprunglig _storlek för maximerade fönster när de förflyttas"
+msgstr "Återställ ursprunglig _storlek för maximerade fönster när de förflyttas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Show shadows under _dock windows"
@@ -750,9 +743,8 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Använd _kantmotstånd istället för fönsterattraktion"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "_Mushjul över skrivbordet växlar arbetsytor"
+msgstr "Använd _mushjulet på skrivbordet för att växla arbetsytor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
@@ -831,11 +823,8 @@ msgid "Change workspace name"
 msgstr "Byt namn på arbetsyta"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Marginaler är områden vid skärmens kanter där inga fönster kommer att "
-"placeras"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Marginaler är områden vid skärmens kanter där inga fönster kommer att placeras"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -986,34 +975,24 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Fönsterhanterare"
-
 #~ msgid "gtk-clear"
 #~ msgstr "Töm"
-
 #~ msgid "gtk-close"
 #~ msgstr "Stäng"
-
 #~ msgid "gtk-help"
 #~ msgstr "Hjälp"
-
 #~ msgid "gtk-cancel"
 #~ msgstr "Avbryt"
-
 #~ msgid "gtk-save"
 #~ msgstr "Spara"
-
 #~ msgid "Workspace Margins"
 #~ msgstr "Skrivbordsmarginaler"
-
 #~ msgid "Left :"
 #~ msgstr "Vänster:"
-
 #~ msgid "Right :"
 #~ msgstr "Höger:"
-
 #~ msgid "Top :"
 #~ msgstr "Uppe:"
-
 #~ msgid "Bottom :"
 #~ msgstr "Nere:"
 
@@ -1084,7 +1063,6 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Hjälpmedel"
-
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Växla arbetsyta genom att rulla mushjulet över skrivbordet"
 
@@ -1170,21 +1148,17 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Effekter"
-
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Fönsterhanterare - finjusteringar"
-
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr ""
 #~ "De här inställningarna fungerar inte med den här fönsterhanteraren (%s)"
-
 #~ msgid "Change name"
 #~ msgstr "Byt namn"
 
 #, fuzzy
 #~ msgid "Name:"
 #~ msgstr "Namn:"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Klicka på en arbetsyta för att redigera dess namn"
 
@@ -1195,39 +1169,30 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "Namnge arbetsytor"
-
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Arbetsytor och marginaler"
-
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Arbetsytor och marginaler"
 
 #, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Marginaler"
-
 #~ msgid "Window Manager Settings"
 #~ msgstr "Inställningar för Fönsterhanteraren"
-
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
-
 #~ msgid "Advanced Configuration"
 #~ msgstr "Avancerad konfiguration"
-
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "Avancerade inställningar för fönsterhanteraren"
-
 #~ msgid "Workspaces Settings"
 #~ msgstr "Inställningar för Arbetsytorna"
-
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Xfce 4 Inställningar för Arbetsytorna"
 
 #, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Klicka och dra knapparna för att ändra layouten"
-
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Typsnittsvalsdialog"
 
@@ -1238,7 +1203,6 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Titeljustering"
-
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Textjustering i titelraden:"
 
@@ -1277,10 +1241,8 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Fördröjning innan ett fokuserat fönster höjs:"
-
 #~ msgid "Slow"
 #~ msgstr "Lång"
-
 #~ msgid "Fast"
 #~ msgstr "Kort"
 
@@ -1383,40 +1345,32 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Avancerat"
-
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Fönsterhanterare"
-
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "Vill du verkligen ta bort detta schema?"
-
 #~ msgid "Add keybinding theme"
 #~ msgstr "Lägg till schema"
 
 #, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Skriv in ett namn för schemat:"
-
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Det finns redan ett schema med samma namn"
-
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Du måste skriva in ett namn för schemat"
 
 #, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Flytta fönster till arbetsyta %d"
-
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Kunde inte öppna schemamappen!"
-
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "Kunde inte öppna %s : \n"
 #~ "%s"
-
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
@@ -1431,10 +1385,8 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
-
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Tangentkombination för:"
-
 #~ msgid "Compose shortcut"
 #~ msgstr "Ställ in tangentkombination"
 
@@ -1495,17 +1447,14 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "Ma_ximera"
-
 #~ msgid "Hide _all others"
 #~ msgstr "Göm alla a_ndra"
-
 #~ msgid "_Shade"
 #~ msgstr "_Rulla upp"
 
 #, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "_Rulla ned"
-
 #~ msgid "S_tick"
 #~ msgstr "_Visa på alla arbetsytor"
 
@@ -1516,10 +1465,8 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Below"
 #~ msgstr "Lång"
-
 #~ msgid "Send to..."
 #~ msgstr "Skicka till..."
-
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Arbetsyta %i (%s)"
 
@@ -1534,24 +1481,18 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Tangentkombination"
-
 #~ msgid "Move window left"
 #~ msgstr "Flytta fönster åt vänster"
-
 #~ msgid "Move window right"
 #~ msgstr "Flytta fönster åt höger"
-
 #~ msgid "Resize window down"
 #~ msgstr "Öka höjd på fönster"
-
 #~ msgid "Resize window left"
 #~ msgstr "Minska bredd på fönster"
-
 #~ msgid "Resize window right"
 #~ msgstr "Öka bredd på fönster"
-
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Avbryt flyttning eller storleksändring av fönster"
-
 #~ msgid "_Hide"
 #~ msgstr "_Göm"
+
