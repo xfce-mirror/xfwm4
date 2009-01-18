@@ -17,7 +17,7 @@
 
 
         Metacity - (c) 2003 Havoc Pennington
-        xfwm4    - (c) 2002-2008 Olivier Fourdan
+        xfwm4    - (c) 2002-2009 Olivier Fourdan
 
  */
 

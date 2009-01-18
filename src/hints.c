@@ -18,7 +18,7 @@
 
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2008 Olivier Fourdan
+        xfwm4    - (c) 2002-2009 Olivier Fourdan
 
  */
 

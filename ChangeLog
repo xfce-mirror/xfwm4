@@ -1,5 +1,9 @@
 2009-01-18	olivier
 
+	* src/*.c, src/*.h: Update year.
+
+2009-01-18	olivier
+
 	* src/client.c, src/events.c, src/moveresize.c, src/netwm.c,
 	  src/placement.c, src/screen.c, src/screen.h, src/tabwin.c: Cache
 	  the monitor geometry instead of just the monitor number, it's more

@@ -17,7 +17,7 @@
 
 
         xcompmgr - (c) 2003 Keith Packard
-        xfwm4    - (c) 2005-2008 Olivier Fourdan
+        xfwm4    - (c) 2005-2009 Olivier Fourdan
 
  */
 

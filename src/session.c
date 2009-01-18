@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2008 Olivier Fourdan
+        xfwm4    - (c) 2002-2009 Olivier Fourdan
  */
 
 /* Initially inspired by xfwm, fvwm2, enlightment and twm implementations */
@@ -768,7 +768,7 @@ sessionDie (gpointer data)
     DisplayInfo *display_info;
 
     display_info = (DisplayInfo *) data;
-    client_session_set_restart_style(display_info->session, SESSION_RESTART_IF_RUNNING);    
+    client_session_set_restart_style(display_info->session, SESSION_RESTART_IF_RUNNING);
     display_info->quit = TRUE;
     gtk_main_quit ();
 }

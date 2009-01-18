@@ -18,7 +18,7 @@
 
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2008 Olivier Fourdan
+        xfwm4    - (c) 2002-2009 Olivier Fourdan
 
  */
 
@@ -243,8 +243,8 @@ gboolean                 getWindowRole                          (DisplayInfo *,
                                                                  gchar **);
 Window                   getClientLeader                        (DisplayInfo *,
                                                                  Window);
-gboolean                 getNetWMUserTime                       (DisplayInfo *, 
-                                                                 Window, 
+gboolean                 getNetWMUserTime                       (DisplayInfo *,
+                                                                 Window,
                                                                  guint32 *);
 Window                   getNetWMUserTimeWindow                 (DisplayInfo *,
                                                                  Window);
