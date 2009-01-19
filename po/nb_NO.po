@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Eskild Hustvedt <eskild@goldenfiles.com>, 2004.
 # Terje Uriansrud <ter@operamail.com>, 2007.
+# Terje Uriansrud <terje@uriansrud.net>, 2009.
 #
 msgid ""
 msgstr ""
@@ -10,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-07 22:12+0000\n"
 "PO-Revision-Date: 2005-08-19 21:16+0900\n"
-"Last-Translator: Terje Uriansrud <ter@operamail.com>\n"
+"Last-Translator: Terje Uriansrud <terje@uriansrud.net>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -284,7 +285,6 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Handling som utføres ved dobbelklikk på tittellinjen :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
 msgstr "Vinduets tittel kan ikke fjernes"
 
@@ -747,9 +747,8 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Bruk _kantmotstand istedet for tiltrekning mellom vinduer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "_Musepekerhjul over skrivebordet bytter arbeidsområde"
+msgstr "Bruk _musepekerhjulet over skrivebordet for å bytte arbeidsområde"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
@@ -978,22 +977,3 @@ msgstr "Feil ved lesing av data fra underprosess: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan ikke starte «helper-dialog»: %s\n"
-
-#, fuzzy
-#~ msgid ">Window Manager"
-#~ msgstr "Vindusbehandler"
-
-#~ msgid "gtk-clear"
-#~ msgstr "Tilbakestill"
-
-#~ msgid "gtk-close"
-#~ msgstr "Lukk"
-
-#~ msgid "gtk-help"
-#~ msgstr "Hjelp"
-
-#~ msgid "gtk-cancel"
-#~ msgstr "Avbryt"
-
-#~ msgid "gtk-save"
-#~ msgstr "Lagre"
