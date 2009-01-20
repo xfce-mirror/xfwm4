@@ -1,3 +1,7 @@
+2009-01-20	olivier
+
+	* mcs-plugin: Removed.
+
 2009-01-18	olivier
 
 	* src/screen.c: Use G_MAXINT as default to make sure it's off bound.
