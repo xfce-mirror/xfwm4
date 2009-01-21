@@ -1,3 +1,8 @@
+2009-01-21	olivier
+
+	* src/main.c: Command line option "--daemon" would have no effect 
+	  when xfwm4 connects to the session manager.
+
 2009-01-20	olivier
 
 	* mcs-plugin: Removed.

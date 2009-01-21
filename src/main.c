@@ -589,6 +589,7 @@ main (int argc, char **argv)
             exit (1);
             break;
         case 0:
+        case 1:
             if (daemon_mode)
             {
 #ifdef HAVE_DAEMON
@@ -616,8 +617,6 @@ main (int argc, char **argv)
                 }
 #endif /* !HAVE_DAEMON */
             }
-            /* Walk through */
-        case 1:
             /* enter GTK main loop */
             gtk_main ();
             break;
