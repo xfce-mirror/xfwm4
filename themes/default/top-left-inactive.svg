@@ -21,32 +21,6 @@
   <defs
      id="defs4">
     <linearGradient
-       id="linearGradient1886">
-      <stop
-         style="stop-color:white;stop-opacity:1;"
-         offset="0"
-         id="stop1888" />
-      <stop
-         style="stop-color:white;stop-opacity:0.25;"
-         offset="1"
-         id="stop1890" />
-    </linearGradient>
-    <linearGradient
-       id="linearGradient5873">
-      <stop
-         id="stop5875"
-         offset="0"
-         style="stop-color:white;stop-opacity:1;" />
-      <stop
-         id="stop5877"
-         offset="0.5"
-         style="stop-color:white;stop-opacity:0.90;" />
-      <stop
-         id="stop5879"
-         offset="1"
-         style="stop-color:white;stop-opacity:0;" />
-    </linearGradient>
-    <linearGradient
        id="linearGradient5847">
       <stop
          id="stop5849"
@@ -75,26 +49,6 @@
        x2="0"
        y2="21.5"
        gradientTransform="matrix(1,0,0,1,0,0)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient5873"
-       id="linearGradient6962"
-       x1="0"
-       y1="1"
-       x2="0"
-       y2="8"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.2,0,1)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1886"
-       id="linearGradient1892"
-       x1="0"
-       y1="1"
-       x2="0"
-       y2="14"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.75,0,0,1,0.75,0)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -161,19 +115,6 @@
        d="M 8,1 L 3,1 C 3,1 1,1 1,4 L 1,17 C 1,17 1,22 6,22 L 8,22 L 8,22 L 8,1 z " />
   </g>
   <g
-     inkscape:label="hilight"
-     id="layer3"
-     inkscape:groupmode="layer">
-    <path
-       id="path6061"
-       d="M 8,1 L 5.75,1 C 5.75,1 2,1 2,4 C 2,4 2.75,4 2.75,4 L 8,4 L 8,4 z "
-       style="fill:url(#linearGradient6962);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linejoin:miter;stroke-opacity:1" />
-    <path
-       style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:0.60;stroke:none;stroke-width:0;stroke-opacity:1"
-       d="M 8,1 L 3,1 C 3,1 1,1 1,4 L 1,11 C 1,11 1,16 6,16 L 8,16 L 8,16 L 8,1 z "
-       id="path1884" />
-  </g>
-  <g
      style="display:inline"
      id="layer1"
      inkscape:groupmode="layer"
@@ -181,7 +122,7 @@
     <path
        id="rect1319"
        d="M 8,0 L 8,1 L 3,1 C 3,1 1,1 1,4 C 1,22 1,22 1,22 L 0,22 L 0,0 L 8,0 z "
-       style="fill:black;fill-opacity:0.15" />
+       style="fill:black;fill-opacity:0.25" />
   </g>
   <g
      inkscape:label="Shadow"
@@ -192,7 +133,7 @@
        d="M 2.5,21.5 L 7.5,21.5"
        id="path6989" />
     <path
-       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.35"
        d="M 8,1.5 L 3.5,1.5 C 3.5,1.5 1.5,1.5 1.5,4.5 C 1.5,7.5 1.5,24 1.5,24 L 1.5,24 L 1.5,24"
        id="path2170" />
   </g>

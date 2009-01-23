@@ -21,17 +21,6 @@
   <defs
      id="defs4">
     <linearGradient
-       id="linearGradient1886">
-      <stop
-         style="stop-color:white;stop-opacity:1;"
-         offset="0"
-         id="stop1888" />
-      <stop
-         style="stop-color:white;stop-opacity:0.25;"
-         offset="1"
-         id="stop1890" />
-    </linearGradient>
-    <linearGradient
        id="linearGradient5873">
       <stop
          id="stop5875"
@@ -46,45 +35,6 @@
          offset="1"
          style="stop-color:white;stop-opacity:0;" />
     </linearGradient>
-    <linearGradient
-       id="linearGradient5847">
-      <stop
-         id="stop5849"
-         offset="0"
-         style="stop-color:white;stop-opacity:0;" />
-      <stop
-         id="stop2776"
-         offset="0.5"
-         style="stop-color:black;stop-opacity:0;" />
-      <stop
-         id="stop2779"
-         offset="0.75"
-         style="stop-color:black;stop-opacity:0.0125;" />
-      <stop
-         id="stop5851"
-         offset="1"
-         style="stop-color:black;stop-opacity:0.05;" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient5847"
-       id="linearGradient6945"
-       gradientUnits="userSpaceOnUse"
-       x1="0"
-       y1="0.5"
-       x2="0"
-       y2="21.5"
-       gradientTransform="matrix(1,0,0,1,0,0)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient5873"
-       id="linearGradient6962"
-       x1="0"
-       y1="1"
-       x2="0"
-       y2="8"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.2,0,1)" />
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5873"
@@ -95,25 +45,6 @@
        fy="3"
        r="22"
        gradientTransform="matrix(1,0,0,1,0,0.5)"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1886"
-       id="linearGradient1892"
-       x1="0"
-       y1="1"
-       x2="0"
-       y2="12"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.75,0,0,1,0.75,0)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1886"
-       id="linearGradient2791"
-       x1="0"
-       y1="1"
-       x2="0"
-       y2="25"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
@@ -187,7 +118,7 @@
        id="g1789"
        transform="translate(0,1)">
       <rect
-         style="opacity:0.5;fill:url(#radialGradient3087);fill-opacity:0.50;stroke:url(#radialGradient3087);stroke-width:1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:0.25;fill:url(#radialGradient3087);fill-opacity:0.50;stroke:url(#radialGradient3087);stroke-width:1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect3079"
          width="24"
          height="22"
@@ -197,42 +128,22 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Grad"
-     style="display:inline">
-    <rect
-       style="fill:url(#linearGradient6945);fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1"
-       id="rect6057"
-       width="24"
-       height="21"
-       x="0"
-       y="1" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="hilight">
     <rect
-       style="fill:url(#linearGradient6962);fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect6061"
-       width="24"
-       height="4"
-       x="0"
-       y="1" />
-    <rect
-       style="opacity:0.25;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:0.25;fill:none;fill-opacity:0;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1884"
        width="24"
        height="15"
        x="0"
        y="1" />
     <path
-       style="fill:none;stroke:url(#linearGradient2791);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.60"
-       d="M 0.5,1 L 0.5,16.5 C 0.5,16.5 0.5,18.5 2.5,18.5 C 4,18.5 21.5,18.5 21.5,18.5 C 21.5,18.5 23.5,18.5 23.5,16.5 C 23.5,14.5 23.5,1 23.5,1 L 23.5,1 L 23.5,1"
+       style="fill:none;stroke:#ffffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.30"
+       d="M 0.5,2 L 0.5,16.5 C 0.5,16.5 0.5,18.5 2.5,18.5 C 4,18.5 21.5,18.5 21.5,18.5 C 21.5,18.5 23.5,18.5 23.5,16.5 C 23.5,14.5 23.5,2 23.5,2 L 23.5,2 L 23.5,2"
        id="path2187" />
     <path
-       style="fill:url(#linearGradient4147);fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:0.50"
-       d="M 2,1 C 2,1 2,13 2,15 C 2,17 5,17 5,17 L 20,17 C 20,17 22,17 22,15 C 22,13 22,1 22,1 L 2,1 z "
+       style="fill:url(#linearGradient4147);fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:0.20"
+       d="M 2,2 C 2,2 2,13 2,15 C 2,17 5,17 5,17 L 20,17 C 20,17 22,17 22,15 C 22,13 22,2 22,2 L 2,2 z "
        id="path2188" />
   </g>
   <g
@@ -241,9 +152,13 @@
      id="g31"
      style="display:inline">
     <path
-       style="fill:none;stroke:black;stroke-width:1px;stroke-opacity:0.15"
+       style="fill:none;stroke:black;stroke-width:1px;stroke-opacity:0.25"
        d="M 0,0.5 L 24,0.5"
        id="path6059" />
+    <path
+       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.30"
+       d="M 0,1.5 L 24,1.5"
+       id="path28" />
   </g>
   <g
      inkscape:groupmode="layer"

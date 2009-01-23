@@ -148,7 +148,6 @@ setValue (const gchar * lvalue, const gchar *rvalue, Settings *rc)
                         setBooleanValue (lvalue, !g_ascii_strcasecmp ("true", rvalue), rc);
                         break;
                 }
-                //TRACE ("%s=%s", rc[i].option, rc[i].value);
                 return TRUE;
             }
         }
@@ -197,7 +196,6 @@ setBooleanValue (const gchar * lvalue, gboolean value, Settings *rc)
     GValue tmp_val = {0, };
     g_value_init(&tmp_val, G_TYPE_BOOLEAN);
     g_value_set_boolean(&tmp_val, value);
-
     return setGValue (lvalue, &tmp_val, rc);
 }
 
@@ -302,11 +300,7 @@ getStringValue (const gchar *option, Settings *rc)
         {
             if (rc[i].value == NULL)
                 return NULL;
-            if (G_VALUE_TYPE(rc[i].value) != G_TYPE_STRING)
-            {
-                g_print("%s", rc[i].option);
-                return NULL;
-            }
+            g_return_val_if_fail(G_VALUE_TYPE(rc[i].value) == G_TYPE_STRING, NULL);
             return g_value_get_string(rc[i].value);
         }
     }
@@ -350,11 +344,6 @@ getBoolValue (const gchar *option, Settings *rc)
         {
             if (rc[i].value == NULL)
                 return FALSE;
-            if (G_VALUE_TYPE(rc[i].value) != G_TYPE_BOOLEAN)
-            {
-                g_print("%s", rc[i].option);
-                return FALSE;
-            }
             g_return_val_if_fail(G_VALUE_TYPE(rc[i].value) == G_TYPE_BOOLEAN, FALSE);
             return g_value_get_boolean(rc[i].value);
         }

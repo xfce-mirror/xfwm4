@@ -61,7 +61,7 @@
      id="layer3"
      inkscape:label="hilight">
     <path
-       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
+       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.30"
        d="M 0.5,2.5 L 24,2.5"
        id="path6061" />
   </g>
@@ -70,7 +70,7 @@
      inkscape:groupmode="layer"
      id="border">
     <path
-       style="fill:none;stroke:black;stroke-width:1px;stroke-opacity:0.15"
+       style="fill:none;stroke:black;stroke-width:1px;stroke-opacity:0.25"
        d="M 0,3.5 L 24,3.5"
        id="path1340" />
   </g>

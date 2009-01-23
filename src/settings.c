@@ -47,7 +47,6 @@
 #define CHANNEL_XFWM            "xfwm4"
 #define THEMERC                 "themerc"
 #define XPM_COLOR_SYMBOL_SIZE   22
-#define XFWM4_SETTINGS_COUNT    66
 
 /* Forward static decls. */
 
@@ -214,8 +213,8 @@ loadRcData (ScreenInfo *screen_info, Settings *rc)
 static void
 loadXfconfData (ScreenInfo *screen_info, Settings *rc)
 {
-    gint i = XPM_COLOR_SYMBOL_SIZE;
-    for (; i < (XPM_COLOR_SYMBOL_SIZE + XFWM4_SETTINGS_COUNT); ++i)
+    gint i;
+    for (i = XPM_COLOR_SYMBOL_SIZE; rc[i].option; ++i)
     {
         gchar *property_name = g_strconcat("/general/", rc[i].option, NULL);
         if(xfconf_channel_has_property(screen_info->xfwm4_channel, property_name))
@@ -229,7 +228,7 @@ loadXfconfData (ScreenInfo *screen_info, Settings *rc)
 
             if(!xfconf_channel_get_property(screen_info->xfwm4_channel, property_name, rc[i].value))
             {
-               /* g_debug("get prop failed"); */
+               g_warning("get prop failed");
             }
         }
         else
@@ -703,72 +702,6 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_resistance", NULL, G_TYPE_INT, TRUE},
         {"wrap_windows", NULL, G_TYPE_BOOLEAN, TRUE},
         {"wrap_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
-        /* Keys */
-        {"above_key", NULL, G_TYPE_STRING, TRUE},
-        {"add_adjacent_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"add_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"cancel_key", NULL, G_TYPE_STRING, TRUE},
-        {"close_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"cycle_windows_key", NULL, G_TYPE_STRING, TRUE},
-        {"cycle_reverse_windows_key", NULL, G_TYPE_STRING, TRUE},
-        {"del_active_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"del_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"down_key", NULL, G_TYPE_STRING, TRUE},
-        {"down_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"fill_horiz_key", NULL, G_TYPE_STRING, TRUE},
-        {"fill_vert_key", NULL, G_TYPE_STRING, TRUE},
-        {"fill_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"fullscreen_key", NULL, G_TYPE_STRING, TRUE},
-        {"hide_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"left_key", NULL, G_TYPE_STRING, TRUE},
-        {"left_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"lower_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"maximize_horiz_key", NULL, G_TYPE_STRING, TRUE},
-        {"maximize_vert_key", NULL, G_TYPE_STRING, TRUE},
-        {"maximize_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_down_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_left_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_next_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_prev_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_right_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_up_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_1_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_2_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_3_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_4_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_5_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_6_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_7_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_8_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_9_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_10_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_11_key", NULL, G_TYPE_STRING, TRUE},
-        {"move_window_workspace_12_key", NULL, G_TYPE_STRING, TRUE},
-        {"next_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"popup_menu_key", NULL, G_TYPE_STRING, TRUE},
-        {"prev_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"raise_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"resize_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"right_key", NULL, G_TYPE_STRING, TRUE},
-        {"right_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"shade_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"show_desktop_key", NULL, G_TYPE_STRING, FALSE},
-        {"stick_window_key", NULL, G_TYPE_STRING, TRUE},
-        {"up_key", NULL, G_TYPE_STRING, TRUE},
-        {"up_workspace_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_1_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_2_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_3_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_4_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_5_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_6_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_7_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_8_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_9_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_10_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_11_key", NULL, G_TYPE_STRING, TRUE},
-        {"workspace_12_key", NULL, G_TYPE_STRING, TRUE},
         {NULL, NULL, G_TYPE_INVALID, FALSE}
     };
 
@@ -850,6 +783,25 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("snap_resist", rc);
     screen_info->params->snap_width =
         getIntValue ("snap_width", rc);
+    screen_info->params->toggle_workspaces =
+        getBoolValue ("toggle_workspaces", rc);
+    screen_info->params->unredirect_overlays =
+        getBoolValue ("unredirect_overlays", rc);
+    screen_info->params->use_compositing =
+        getBoolValue ("use_compositing", rc);
+    screen_info->params->wrap_workspaces =
+        getBoolValue ("wrap_workspaces", rc);
+
+    screen_info->params->wrap_layout =
+        getBoolValue ("wrap_layout", rc);
+    screen_info->params->wrap_windows =
+        getBoolValue ("wrap_windows", rc);
+    screen_info->params->wrap_cycle =
+        getBoolValue ("wrap_cycle", rc);
+    screen_info->params->scroll_workspaces =
+        getBoolValue ("scroll_workspaces", rc);
+    screen_info->params->wrap_resistance =
+        getIntValue ("wrap_resistance", rc);
 
     set_settings_margin (screen_info, STRUTS_LEFT,   getIntValue ("margin_left", rc));
     set_settings_margin (screen_info, STRUTS_RIGHT,  getIntValue ("margin_right", rc));
@@ -892,25 +844,6 @@ loadSettings (ScreenInfo *screen_info)
         workspace_count = MAX (getIntValue ("workspace_count", rc), 0);
         workspaceSetCount (screen_info, workspace_count);
     }
-
-    screen_info->params->toggle_workspaces =
-        getBoolValue ("toggle_workspaces", rc);
-    screen_info->params->unredirect_overlays =
-        getBoolValue ("unredirect_overlays", rc);
-    screen_info->params->use_compositing =
-        getBoolValue ("use_compositing", rc);
-    screen_info->params->wrap_workspaces =
-        getBoolValue ("wrap_workspaces", rc);
-    screen_info->params->wrap_layout =
-        getBoolValue ("wrap_layout", rc);
-    screen_info->params->wrap_windows =
-        getBoolValue ("wrap_windows", rc);
-    screen_info->params->wrap_cycle =
-        getBoolValue ("wrap_cycle", rc);
-    screen_info->params->scroll_workspaces =
-        getBoolValue ("scroll_workspaces", rc);
-    screen_info->params->wrap_resistance =
-        getIntValue ("wrap_resistance", rc);
 
     freeRc (rc);
     return TRUE;

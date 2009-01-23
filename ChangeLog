@@ -1,3 +1,9 @@
+2009-01-23	olivier
+
+	* src/parserc.c, src/settings.c, src/settings.c: Fix settings not
+	  being set at startup (Bug #4845)
+	  themes/default/*: Flatten default theme
+
 2009-01-21	olivier
 
 	* src/main.c: Command line option "--daemon" would have no effect 

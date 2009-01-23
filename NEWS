@@ -4,6 +4,8 @@
 - Fix a crash when removing a monitor with xrandr 1.2
 - Command line option "--daemon" would have no effect when xfwm4 connects to 
   the session manager (Bug #4839).
+- Fix settings not being set at startup (Bug #4845)
+- Flatten default theme
 
 4.5.93 (Xfce 4.6beta3)
 ======================
