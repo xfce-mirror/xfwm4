@@ -1760,6 +1760,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         c->ncmap = 0;
     }
 
+    c->fullscreen_monitors[0] = 0;
+    c->fullscreen_monitors[1] = 0;
+    c->fullscreen_monitors[2] = 0;
+    c->fullscreen_monitors[3] = 0;
+
     /* Opacity for compositing manager */
     c->opacity = NET_WM_OPAQUE;
     getOpacity (display_info, c->window, &c->opacity);
@@ -2973,6 +2978,70 @@ clientToggleSticky (Client * c, gboolean include_transients)
     }
 }
 
+void
+clientUpdateFullscreenSize (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    XWindowChanges wc;
+    GdkRectangle monitor, rect;
+    int i;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientUpdateFullscreenSize");
+    TRACE ("Update fullscreen size for client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS))
+        {
+            gdk_screen_get_monitor_geometry (screen_info->gscr, c->fullscreen_monitors[0], &rect);
+            for (i = 1; i < 4; i++)
+            {
+                gdk_screen_get_monitor_geometry (screen_info->gscr, c->fullscreen_monitors[i], &monitor);
+                gdk_rectangle_union (&rect, &monitor, &rect);
+            }
+        }
+        else
+        {
+            int cx, cy;
+
+            cx = frameX (c) + (frameWidth (c) / 2);
+            cy = frameY (c) + (frameHeight (c) / 2);
+
+            myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
+        }
+
+        wc.x = rect.x;
+        wc.y = rect.y;
+        wc.width = rect.width;
+        wc.height = rect.height;
+    }
+
+    else
+    {
+        wc.x = c->fullscreen_old_x;
+        wc.y = c->fullscreen_old_y;
+        wc.width = c->fullscreen_old_width;
+        wc.height = c->fullscreen_old_height;
+    }
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
+    {
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
+    }
+    else
+    {
+        c->x = wc.x;
+        c->y = wc.y;
+        c->height = wc.height;
+        c->width = wc.width;
+    }
+}
+
 void clientToggleFullscreen (Client * c)
 {
     g_return_if_fail (c != NULL);
@@ -3000,6 +3069,48 @@ void clientToggleFullscreen (Client * c)
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
         clientUpdateFullscreenState (c);
+    }
+}
+
+void clientSetFullscreenMonitor (Client * c, gint top, gint bottom, gint left, gint right)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gint num_monitors;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientSetFullscreenMonitor");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+    if ((top >= 0)    && (top < num_monitors)    &&
+        (bottom >= 0) && (bottom < num_monitors) &&
+        (left >= 0)   && (left < num_monitors)   &&
+        (right >= 0)  && (right < num_monitors))
+    {
+        c->fullscreen_monitors[0] = top;
+        c->fullscreen_monitors[1] = bottom;
+        c->fullscreen_monitors[2] = left;
+        c->fullscreen_monitors[3] = right;
+        FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS);
+    }
+    else
+    {
+        c->fullscreen_monitors[0] = 0;
+        c->fullscreen_monitors[1] = 0;
+        c->fullscreen_monitors[2] = 0;
+        c->fullscreen_monitors[3] = 0;
+        FLAG_UNSET (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS);
+    }
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        clientUpdateFullscreenSize (c);
+    }
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS))
+    {
+        setNetFullscreenMonitors (display_info, c->window, top, bottom, left, right);
     }
 }
 

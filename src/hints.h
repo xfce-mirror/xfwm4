@@ -205,6 +205,12 @@ void                     setNetFrameExtents                     (DisplayInfo *,
                                                                  int,
                                                                  int,
                                                                  int);
+void                     setNetFullscreenMonitors               (DisplayInfo *,
+                                                                 Window,
+                                                                 gint,
+                                                                 gint,
+                                                                 gint,
+                                                                 gint);
 void                     initNetDesktopInfo                     (DisplayInfo *,
                                                                  Window,
                                                                  int,

@@ -1,3 +1,9 @@
+2009-01-24	olivier
+
+	* src/display.c, src/display.h, src/events.c, src/client.c
+	  src/client.h, src/hints.c, src/hints.h, src/netwm.c, README:
+	  Add support for NET_WM_FULLSCREEN_MONITORS
+
 2009-01-23	olivier
 
 	* src/parserc.c, src/settings.c, src/settings.c: Fix settings not

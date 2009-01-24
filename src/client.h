@@ -157,6 +157,7 @@
 #define CLIENT_FLAG_NAME_CHANGED        (1L<<16)
 #define CLIENT_FLAG_DEMANDS_ATTENTION   (1L<<17)
 #define CLIENT_FLAG_HAS_SHAPE           (1L<<18)
+#define CLIENT_FLAG_FULLSCREN_MONITORS  (1L<<19)
 
 #define WM_FLAG_DELETE                  (1L<<0)
 #define WM_FLAG_INPUT                   (1L<<1)
@@ -298,6 +299,7 @@ struct _Client
     unsigned long flags;
     unsigned long wm_flags;
     unsigned long xfwm_flags;
+    gint fullscreen_monitors[4];
 
     /* Termination dialog */
     int dialog_pid;
@@ -408,7 +410,13 @@ void                     clientUnstick                          (Client *,
                                                                  gboolean);
 void                     clientToggleSticky                     (Client *,
                                                                  gboolean);
+void                     clientUpdateFullscreenSize             (Client *);
 void                     clientToggleFullscreen                 (Client *);
+void                     clientSetFullscreenMonitor             (Client *,
+                                                                 gint,
+                                                                 gint,
+                                                                 gint,
+                                                                 gint);
 void                     clientToggleLayerAbove                 (Client *);
 void                     clientToggleLayerBelow                 (Client *);
 void                     clientSetLayerNormal                   (Client *);

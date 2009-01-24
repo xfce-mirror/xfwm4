@@ -728,7 +728,6 @@ clientUpdateFullscreenState (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XWindowChanges wc;
     int layer;
 
     g_return_if_fail (c != NULL);
@@ -740,46 +739,19 @@ clientUpdateFullscreenState (Client * c)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        GdkRectangle rect;
-        int cx, cy;
-
-        cx = frameX (c) + (frameWidth (c) / 2);
-        cy = frameY (c) + (frameHeight (c) / 2);
-
-        myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
-
         c->fullscreen_old_x = c->x;
         c->fullscreen_old_y = c->y;
         c->fullscreen_old_width = c->width;
         c->fullscreen_old_height = c->height;
         c->fullscreen_old_layer = c->win_layer;
-
-        wc.x = rect.x;
-        wc.y = rect.y;
-        wc.width = rect.width;
-        wc.height = rect.height;
         layer = WIN_LAYER_FULLSCREEN;
     }
     else
     {
-        wc.x = c->fullscreen_old_x;
-        wc.y = c->fullscreen_old_y;
-        wc.width = c->fullscreen_old_width;
-        wc.height = c->fullscreen_old_height;
         layer = c->fullscreen_old_layer;
     }
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
-    {
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
-    }
-    else
-    {
-        c->x = wc.x;
-        c->y = wc.y;
-        c->height = wc.height;
-        c->width = wc.width;
-    }
     clientSetLayer (c, layer);
+    clientUpdateFullscreenSize (c);
 
     /* Fullscreen has no decoration at all, update NET_FRAME_EXTENTS accordingly */
     setNetFrameExtents (display_info,

@@ -6,6 +6,7 @@
   the session manager (Bug #4839).
 - Fix settings not being set at startup (Bug #4845)
 - Flatten default theme
+- Add support for NET_WM_FULLSCREEN_MONITORS
 
 4.5.93 (Xfce 4.6beta3)
 ======================

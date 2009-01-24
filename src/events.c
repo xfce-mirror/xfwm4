@@ -2026,6 +2026,12 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
                                                          frameRight (c), frameBottom (c));
         }
+        else if (ev->message_type == display_info->atoms[NET_WM_FULLSCREEN_MONITORS])
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_FULLSCREEN_MONITORS event", c->name, c->window);
+            clientSetFullscreenMonitor (c, (gint) ev->data.l[0], (gint) ev->data.l[1],
+                                           (gint) ev->data.l[2], (gint) ev->data.l[3]);
+        }
     }
     else
     {

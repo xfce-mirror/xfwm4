@@ -113,6 +113,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_ALLOWED_ACTIONS",
         "_NET_WM_CONTEXT_HELP",
         "_NET_WM_DESKTOP",
+        "_NET_WM_FULLSCREEN_MONITORS",
         "_NET_WM_ICON",
         "_NET_WM_ICON_GEOMETRY",
         "_NET_WM_ICON_NAME",

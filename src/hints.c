@@ -423,6 +423,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_ALLOWED_ACTIONS];
     atoms[i++] = display_info->atoms[NET_WM_CONTEXT_HELP];
     atoms[i++] = display_info->atoms[NET_WM_DESKTOP];
+    atoms[i++] = display_info->atoms[NET_WM_FULLSCREEN_MONITORS];
     atoms[i++] = display_info->atoms[NET_WM_ICON];
     atoms[i++] = display_info->atoms[NET_WM_ICON_GEOMETRY];
     atoms[i++] = display_info->atoms[NET_WM_ICON_NAME];
@@ -586,6 +587,20 @@ setNetFrameExtents (DisplayInfo *display_info, Window w, int top, int left, int 
     data[2] = (unsigned long) top;
     data[3] = (unsigned long) bottom;
     XChangeProperty (display_info->dpy, w, display_info->atoms[NET_FRAME_EXTENTS],
+                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
+}
+
+void
+setNetFullscreenMonitors (DisplayInfo *display_info, Window w, gint top, gint bottom, gint left, gint right)
+{
+    unsigned long data[4] = { 0, 0, 0, 0 };
+
+    TRACE ("entering setNetFullscreenMonitors");
+    data[0] = (unsigned long) top;;
+    data[1] = (unsigned long) bottom;
+    data[2] = (unsigned long) left;
+    data[3] = (unsigned long) right;
+    XChangeProperty (display_info->dpy, w, display_info->atoms[NET_WM_FULLSCREEN_MONITORS],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
 }
 
