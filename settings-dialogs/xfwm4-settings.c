@@ -1080,7 +1080,7 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
   source = glade_xml_get_widget (settings->priv->glade_xml,
-#if GLIB_CHECK_VERSION (2,14,0)
+#if GTK_CHECK_VERSION (2,14,0)
                                  (const gchar *)gtk_selection_data_get_data (data));
 #else
                                  (const gchar *) data->data);
@@ -1207,7 +1207,7 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
   source = glade_xml_get_widget (settings->priv->glade_xml,
-#if GLIB_CHECK_VERSION (2,14,0)
+#if GTK_CHECK_VERSION (2,14,0)
                                  (const gchar *)gtk_selection_data_get_data (data));
 #else
                                  (const gchar *) data->data);
