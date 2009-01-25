@@ -841,7 +841,7 @@ xfwm_settings_load_themes (XfwmSettings *settings)
   xfce_resource_push_path (XFCE_RESOURCE_THEMES, DATADIR G_DIR_SEPARATOR_S "themes");
   theme_dirs = xfce_resource_dirs (XFCE_RESOURCE_THEMES);
   xfce_resource_pop_path (XFCE_RESOURCE_THEMES);
-  
+
   active_theme_name = xfconf_channel_get_string (settings->priv->wm_channel, "/general/theme", DEFAULT_THEME);
 
   for (i = 0; theme_dirs[i] != NULL; ++i)
@@ -864,10 +864,10 @@ xfwm_settings_load_themes (XfwmSettings *settings)
 
               /* insert in the list store */
               gtk_list_store_append (GTK_LIST_STORE (model), &iter);
-              gtk_list_store_set (GTK_LIST_STORE (model), &iter, 
+              gtk_list_store_set (GTK_LIST_STORE (model), &iter,
                                   COL_THEME_NAME, file,
                                   COL_THEME_RC, filename, -1);
-                                  
+
               if (G_UNLIKELY (g_str_equal (active_theme_name, file)))
                 {
                   gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (view)),
@@ -1008,18 +1008,18 @@ xfwm_settings_theme_selection_changed (GtkTreeSelection *selection,
   if (gtk_tree_selection_get_selected (selection, &model, &iter))
     {
       gtk_tree_model_get (model, &iter,
-                          COL_THEME_NAME, &theme, 
+                          COL_THEME_NAME, &theme,
                           COL_THEME_RC, &filename, -1);
-                          
+
       /* set the theme name */
       xfconf_channel_set_string (settings->priv->wm_channel, "/general/theme", theme);
       g_free (theme);
-      
+
       /* check in the rc if the theme supports a custom button layout and/or
        * title alignement */
       rc = xfce_rc_simple_open (filename, TRUE);
       g_free (filename);
-      
+
       if (G_LIKELY (rc != NULL))
         {
           button_layout = !xfce_rc_has_entry (rc, "button_layout");
@@ -1027,10 +1027,10 @@ xfwm_settings_theme_selection_changed (GtkTreeSelection *selection,
           xfce_rc_close (rc);
         }
     }
-    
+
   widget = glade_xml_get_widget (settings->priv->glade_xml, "button_layout_box");
   gtk_widget_set_sensitive (widget, button_layout);
-  
+
   widget = glade_xml_get_widget (settings->priv->glade_xml, "title_align_box");
   gtk_widget_set_sensitive (widget, title_alignment);
 }
@@ -1079,10 +1079,14 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  source = glade_xml_get_widget (settings->priv->glade_xml, 
+  source = glade_xml_get_widget (settings->priv->glade_xml,
+#if GLIB_CHECK_VERSION (2,14,0)
                                  (const gchar *)gtk_selection_data_get_data (data));
+#else
+                                 (const gchar *) data->data);
+#endif
   parent = gtk_widget_get_parent (source);
-  
+
   active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
 
   g_object_ref (source);
@@ -1203,7 +1207,11 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
   source = glade_xml_get_widget (settings->priv->glade_xml,
+#if GLIB_CHECK_VERSION (2,14,0)
                                  (const gchar *)gtk_selection_data_get_data (data));
+#else
+                                 (const gchar *) data->data);
+#endif
   parent = gtk_widget_get_parent (source);
 
   hidden_box = glade_xml_get_widget (settings->priv->glade_xml, "hidden-box");
@@ -1310,8 +1318,8 @@ xfwm_settings_title_button_drag_data (GtkWidget        *widget,
                                       guint             time)
 {
   gtk_widget_hide (widget);
-  gtk_selection_data_set (data, gdk_atom_intern ("_xfwm4_button_layout", FALSE), 8, 
-                          (const guchar *)gtk_widget_get_name (widget), 
+  gtk_selection_data_set (data, gdk_atom_intern ("_xfwm4_button_layout", FALSE), 8,
+                          (const guchar *)gtk_widget_get_name (widget),
                           strlen (gtk_widget_get_name (widget)));
 }
 

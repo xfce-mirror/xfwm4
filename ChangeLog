@@ -1,3 +1,8 @@
+2009-01-25	olivier
+
+	* settings-dialogs/xfwm4-settings.c: gtk_selection_data_get_data() is
+	  gtk+2.14 (Bug #4855)
+
 2009-01-25	nick
 
 	* settings-dialogs/xfwm4-settings.c, 
