@@ -114,7 +114,7 @@
                         <property name="label_xalign">0</property>
                         <property name="shadow_type">GTK_SHADOW_NONE</property>
                         <child>
-                          <widget class="GtkAlignment" id="alignment15">
+                          <widget class="GtkAlignment" id="title_align_box">
                             <property name="visible">True</property>
                             <property name="border_width">6</property>
                             <property name="bottom_padding">6</property>
@@ -152,7 +152,7 @@
                         <property name="label_xalign">0</property>
                         <property name="shadow_type">GTK_SHADOW_NONE</property>
                         <child>
-                          <widget class="GtkAlignment" id="alignment16">
+                          <widget class="GtkAlignment" id="button_layout_box">
                             <property name="visible">True</property>
                             <property name="bottom_padding">6</property>
                             <property name="left_padding">12</property>

@@ -47,7 +47,6 @@ AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 AC_PROG_LIBTOOL
 
 dnl Check C Compiler Characteristics
-AC_C_CONST
 AC_C_INLINE
 
 dnl check for standard header files

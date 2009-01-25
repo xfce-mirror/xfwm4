@@ -1,3 +1,16 @@
+2009-01-25	nick
+
+	* settings-dialogs/xfwm4-settings.c, 
+	  settings-dialogs/xfwm4-dialog.glade: Make title alignment and button
+	  layout insensitive when not supported by the theme selected, fix a
+	  memory leak,
+	  configure.ac.in: Remove AC_C_CONST
+
+2009-01-25	nick
+
+	* settings-dialogs/xfwm4-settings.c: Fix dragging button layout when 
+	  the dialog is embedded in the settings dialog (Bug #4524).
+
 2009-01-24	olivier
 
 	* src/display.c, src/display.h, src/events.c, src/client.c

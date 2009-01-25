@@ -9,6 +9,8 @@
 - Add support for NET_WM_FULLSCREEN_MONITORS
 - Fix dragging button layout when the dialog is embedded in the settings
   dialog (Bug #4524).
+- Make title alignment and button layout insensitive when not supported by the 
+  theme selected.
 
 4.5.93 (Xfce 4.6beta3)
 ======================

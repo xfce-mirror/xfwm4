@@ -205,6 +205,13 @@ struct _ShortcutTemplate
   const gchar *shortcut;
 };
 
+enum
+{
+  COL_THEME_NAME,
+  COL_THEME_RC,
+  N_COLUMNS
+};
+
 
 
 static GObjectClass      *xfwm_settings_parent_class = NULL;
@@ -333,25 +340,6 @@ xfwm_settings_get_type (void)
 }
 
 
-/*
- * Xfce 4.6 depends on glib 2.12,
- * Glib 2.14 comes with g_hash_table_get_keys(),
- * until then... use the following function with
- * g_hash_table_foreach()
- */
-#if !GLIB_CHECK_VERSION (2,14,0)
-static void
-xfwm4_settings_get_list_keys_foreach (gpointer key,
-                                      gpointer value,
-                                      gpointer user_data)
-{
-  GList **keys = user_data;
-  *keys = g_list_prepend (*keys, key);
-}
-#endif
-
-
-
 
 static void
 xfwm_settings_class_init (XfwmSettingsClass *klass)
@@ -446,12 +434,13 @@ xfwm_settings_constructed (GObject *object)
 
   /* Style tab: theme name */
   {
-    list_store = gtk_list_store_new (1, G_TYPE_STRING);
-    gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (list_store), 0,
+    list_store = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING);
+    gtk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (list_store), COL_THEME_NAME,
                                      (GtkTreeIterCompareFunc) xfwm_settings_theme_sort_func,
                                      NULL, NULL);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (list_store), 0, GTK_SORT_ASCENDING);
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (list_store), COL_THEME_NAME, GTK_SORT_ASCENDING);
     gtk_tree_view_set_model (GTK_TREE_VIEW (theme_name_treeview), GTK_TREE_MODEL (list_store));
+    g_object_unref (G_OBJECT (list_store));
 
     renderer = gtk_cell_renderer_text_new ();
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (theme_name_treeview),
@@ -485,7 +474,7 @@ xfwm_settings_constructed (GObject *object)
         gtk_list_store_append (list_store, &iter);
         gtk_list_store_set (list_store, &iter, 0, _(template->name), 1, template->value, -1);
       }
-
+    g_object_unref (G_OBJECT (list_store));
     xfconf_channel_get_property (settings->priv->wm_channel, "/general/title_alignment", &value);
     xfwm_settings_title_alignment_property_changed (settings->priv->wm_channel,
                                                     "/general/title_alignment", &value, settings);
@@ -600,6 +589,7 @@ xfwm_settings_constructed (GObject *object)
 
     list_store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
     gtk_tree_view_set_model (GTK_TREE_VIEW (shortcuts_treeview), GTK_TREE_MODEL (list_store));
+    g_object_unref (G_OBJECT (list_store));
 
     renderer = gtk_cell_renderer_text_new ();
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (shortcuts_treeview),
@@ -680,7 +670,7 @@ xfwm_settings_constructed (GObject *object)
         gtk_list_store_append (list_store, &iter);
         gtk_list_store_set (list_store, &iter, 0, _(template->name), 1, template->value, -1);
       }
-
+    g_object_unref (G_OBJECT (list_store));
     xfconf_channel_get_property (settings->priv->wm_channel, "/general/double_click_action",
                                  &value);
     xfwm_settings_double_click_action_property_changed (settings->priv->wm_channel,
@@ -804,7 +794,6 @@ xfwm_settings_new (void)
 }
 
 
-
 static gint
 xfwm_settings_theme_sort_func (GtkTreeModel *model,
                                GtkTreeIter  *iter1,
@@ -837,8 +826,6 @@ xfwm_settings_load_themes (XfwmSettings *settings)
   GtkTreeIter   iter;
   GtkWidget    *view;
   GHashTable   *themes;
-  GList        *keys;
-  GList        *key;
   GDir         *dir;
   const gchar  *file;
   gchar       **theme_dirs;
@@ -854,6 +841,8 @@ xfwm_settings_load_themes (XfwmSettings *settings)
   xfce_resource_push_path (XFCE_RESOURCE_THEMES, DATADIR G_DIR_SEPARATOR_S "themes");
   theme_dirs = xfce_resource_dirs (XFCE_RESOURCE_THEMES);
   xfce_resource_pop_path (XFCE_RESOURCE_THEMES);
+  
+  active_theme_name = xfconf_channel_get_string (settings->priv->wm_channel, "/general/theme", DEFAULT_THEME);
 
   for (i = 0; theme_dirs[i] != NULL; ++i)
     {
@@ -866,10 +855,24 @@ xfwm_settings_load_themes (XfwmSettings *settings)
         {
           filename = g_build_filename (theme_dirs[i], file, "xfwm4", "themerc", NULL);
 
+          /* check if the theme rc exists and there is not already a theme with the
+           * same name in the database */
           if (g_file_test (filename, G_FILE_TEST_EXISTS | G_FILE_TEST_IS_REGULAR) &&
               g_hash_table_lookup (themes, file) == NULL)
             {
               g_hash_table_insert (themes, g_strdup (file), GINT_TO_POINTER (1));
+
+              /* insert in the list store */
+              gtk_list_store_append (GTK_LIST_STORE (model), &iter);
+              gtk_list_store_set (GTK_LIST_STORE (model), &iter, 
+                                  COL_THEME_NAME, file,
+                                  COL_THEME_RC, filename, -1);
+                                  
+              if (G_UNLIKELY (g_str_equal (active_theme_name, file)))
+                {
+                  gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (view)),
+                                                  &iter);
+                }
             }
 
           g_free (filename);
@@ -878,31 +881,9 @@ xfwm_settings_load_themes (XfwmSettings *settings)
       g_dir_close (dir);
     }
 
-  active_theme_name = xfconf_channel_get_string (settings->priv->wm_channel, "/general/theme", DEFAULT_THEME);
-
-  keys = NULL;
-#if !GLIB_CHECK_VERSION (2,14,0)
-  g_hash_table_foreach (themes, xfwm4_settings_get_list_keys_foreach, &keys);
-#else
-  keys = g_hash_table_get_keys (themes);
-#endif
-
-  for (key = keys; key != NULL; key = g_list_next (key))
-    {
-      gtk_list_store_append (GTK_LIST_STORE (model), &iter);
-      gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, g_strdup (key->data), -1);
-
-      if (G_UNLIKELY (g_str_equal (active_theme_name, key->data)))
-        {
-          gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (view)),
-                                          &iter);
-        }
-    }
-
-  g_list_free (keys);
   g_free (active_theme_name);
-  g_hash_table_unref (themes);
   g_strfreev (theme_dirs);
+  g_hash_table_destroy (themes);
 }
 
 
@@ -1018,22 +999,40 @@ xfwm_settings_theme_selection_changed (GtkTreeSelection *selection,
 {
   GtkTreeModel *model;
   GtkTreeIter   iter;
-  GList        *rows;
-  gchar        *theme;
+  gchar        *theme, *filename;
+  XfceRc       *rc;
+  GtkWidget    *widget;
+  gboolean      button_layout = FALSE;
+  gboolean      title_alignment = FALSE;
 
-  rows = gtk_tree_selection_get_selected_rows (selection, &model);
-
-  if (G_UNLIKELY (g_list_length (rows) == 0))
-    return;
-
-  gtk_tree_model_get_iter (model, &iter, rows->data);
-  gtk_tree_model_get (model, &iter, 0, &theme, -1);
-
-  xfconf_channel_set_string (settings->priv->wm_channel, "/general/theme", theme);
-
-  g_free (theme);
-  g_list_foreach (rows, (GFunc) gtk_tree_path_free, NULL);
-  g_list_free (rows);
+  if (gtk_tree_selection_get_selected (selection, &model, &iter))
+    {
+      gtk_tree_model_get (model, &iter,
+                          COL_THEME_NAME, &theme, 
+                          COL_THEME_RC, &filename, -1);
+                          
+      /* set the theme name */
+      xfconf_channel_set_string (settings->priv->wm_channel, "/general/theme", theme);
+      g_free (theme);
+      
+      /* check in the rc if the theme supports a custom button layout and/or
+       * title alignement */
+      rc = xfce_rc_simple_open (filename, TRUE);
+      g_free (filename);
+      
+      if (G_LIKELY (rc != NULL))
+        {
+          button_layout = !xfce_rc_has_entry (rc, "button_layout");
+          title_alignment = !xfce_rc_has_entry (rc, "title_alignment");
+          xfce_rc_close (rc);
+        }
+    }
+    
+  widget = glade_xml_get_widget (settings->priv->glade_xml, "button_layout_box");
+  gtk_widget_set_sensitive (widget, button_layout);
+  
+  widget = glade_xml_get_widget (settings->priv->glade_xml, "title_align_box");
+  gtk_widget_set_sensitive (widget, title_alignment);
 }
 
 
@@ -1312,7 +1311,7 @@ xfwm_settings_title_button_drag_data (GtkWidget        *widget,
 {
   gtk_widget_hide (widget);
   gtk_selection_data_set (data, gdk_atom_intern ("_xfwm4_button_layout", FALSE), 8, 
-                          gtk_widget_get_name (widget), 
+                          (const guchar *)gtk_widget_get_name (widget), 
                           strlen (gtk_widget_get_name (widget)));
 }
 
