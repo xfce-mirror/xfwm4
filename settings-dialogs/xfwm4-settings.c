@@ -135,9 +135,7 @@ static void       xfwm_settings_title_button_drag_data               (GtkWidget 
                                                                       GdkDragContext       *drag_context,
                                                                       GtkSelectionData     *data,
                                                                       guint                 info,
-                                                                      guint                 time,
-                                                                      const gchar          *atom_name,
-                                                                      XfwmSettings         *settings);
+                                                                      guint                 time);
 static void       xfwm_settings_title_button_drag_begin              (GtkWidget            *widget,
                                                                       GdkDragContext       *drag_context);
 static void       xfwm_settings_title_button_drag_end                (GtkWidget            *widget,
@@ -502,11 +500,11 @@ xfwm_settings_constructed (GObject *object)
   /* Style tab: button layout */
   {
     target_entry[0].target = "_xfwm4_button_layout";
-    target_entry[0].flags = GTK_TARGET_SAME_APP;
+    target_entry[0].flags = 0;
     target_entry[0].info = 2;
 
     target_entry[1].target = "_xfwm4_active_layout";
-    target_entry[1].flags = GTK_TARGET_SAME_APP;
+    target_entry[1].flags = 0;
     target_entry[1].info = 3;
 
     gtk_drag_dest_set (active_frame, GTK_DEST_DEFAULT_ALL, target_entry, 2, GDK_ACTION_MOVE);
@@ -541,8 +539,7 @@ xfwm_settings_constructed (GObject *object)
         gtk_drag_source_set (button, GDK_BUTTON1_MASK, &target_entry[1], 1, GDK_ACTION_MOVE);
 
         g_signal_connect (button, "drag_data_get",
-                          G_CALLBACK (xfwm_settings_title_button_drag_data),
-                          target_entry[1].target);
+                          G_CALLBACK (xfwm_settings_title_button_drag_data), NULL);
         g_signal_connect (button, "drag_begin", G_CALLBACK (xfwm_settings_title_button_drag_begin),
                           NULL);
         g_signal_connect (button, "drag_end", G_CALLBACK (xfwm_settings_title_button_drag_end),
@@ -566,8 +563,7 @@ xfwm_settings_constructed (GObject *object)
       gtk_drag_source_set (button, GDK_BUTTON1_MASK, &target_entry[0], 1, GDK_ACTION_MOVE);
 
         g_signal_connect (button, "drag_data_get",
-                          G_CALLBACK (xfwm_settings_title_button_drag_data),
-                          target_entry[1].target);
+                          G_CALLBACK (xfwm_settings_title_button_drag_data), NULL);
         g_signal_connect (button, "drag_begin", G_CALLBACK (xfwm_settings_title_button_drag_begin),
                           NULL);
         g_signal_connect (button, "drag_end", G_CALLBACK (xfwm_settings_title_button_drag_end),
@@ -1084,9 +1080,10 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  source = gtk_drag_get_source_widget (drag_context);
+  source = glade_xml_get_widget (settings->priv->glade_xml, 
+                                 (const gchar *)gtk_selection_data_get_data (data));
   parent = gtk_widget_get_parent (source);
-
+  
   active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
 
   g_object_ref (source);
@@ -1206,7 +1203,8 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  source = gtk_drag_get_source_widget (drag_context);
+  source = glade_xml_get_widget (settings->priv->glade_xml,
+                                 (const gchar *)gtk_selection_data_get_data (data));
   parent = gtk_widget_get_parent (source);
 
   hidden_box = glade_xml_get_widget (settings->priv->glade_xml, "hidden-box");
@@ -1310,12 +1308,12 @@ xfwm_settings_title_button_drag_data (GtkWidget        *widget,
                                       GdkDragContext   *drag_context,
                                       GtkSelectionData *data,
                                       guint             info,
-                                      guint             time,
-                                      const gchar      *atom_name,
-                                      XfwmSettings     *settings)
+                                      guint             time)
 {
   gtk_widget_hide (widget);
-  gtk_selection_data_set (data, gdk_atom_intern (atom_name, FALSE), 8, NULL, 0);
+  gtk_selection_data_set (data, gdk_atom_intern ("_xfwm4_button_layout", FALSE), 8, 
+                          gtk_widget_get_name (widget), 
+                          strlen (gtk_widget_get_name (widget)));
 }
 
 

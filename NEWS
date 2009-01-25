@@ -7,6 +7,8 @@
 - Fix settings not being set at startup (Bug #4845)
 - Flatten default theme
 - Add support for NET_WM_FULLSCREEN_MONITORS
+- Fix dragging button layout when the dialog is embedded in the settings
+  dialog (Bug #4524).
 
 4.5.93 (Xfce 4.6beta3)
 ======================
