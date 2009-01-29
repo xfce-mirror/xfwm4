@@ -1,3 +1,8 @@
+2009-01-29	olivier
+
+	* src/events.c: Clear monitor cache when the screen size changes, but 
+	  avoid redoing the work twice in the case of a monitor-changed event.
+
 2009-01-26	jannis
 
 	* == 4.5.99.1 released! ==

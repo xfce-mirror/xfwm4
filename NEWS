@@ -1,3 +1,8 @@
+4.6.0?
+=====
+
+- Fix possible monitor cache size inconsistency when the screen size changes
+
 4.5.99.1 (Xfce 4.6rc1)
 ======================
 

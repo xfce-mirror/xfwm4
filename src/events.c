@@ -2724,17 +2724,43 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    int new_width, new_height;
 
     TRACE ("entering size_changed_cb");
 
     screen_info = (ScreenInfo *) data;
     g_return_if_fail (screen_info);
 
+    /*
+     * We have added/removed a monitor or even changed the layout,
+     * the cache for monitor position we use in our screen structure
+     * is not valid anymore and potentially refers to a monitor that
+     * was just removed, so invalidate it.
+     */
+    screen_info->cache_monitor.x = -1;
+    screen_info->cache_monitor.y = -1;
+    screen_info->cache_monitor.width = 0;
+    screen_info->cache_monitor.height = 0;
+
+    /*
+     * If the overall size of the screen hasn't changed,
+     * there is no need to continue any further...
+     */
+    new_width  = WidthOfScreen (screen_info->xscreen);
+    new_height = HeightOfScreen (screen_info->xscreen);
+
+    if ((screen_info->width  == new_width) &&
+        (screen_info->height == new_height))
+    {
+        return;
+    }
+
     display_info = screen_info->display_info;
-    screen_info->width = WidthOfScreen (screen_info->xscreen);
-    screen_info->height = HeightOfScreen (screen_info->xscreen);
+    screen_info->width = new_width;
+    screen_info->height = new_height;
+
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
-                    screen_info->width, screen_info->height, screen_info->margins);
+                    new_width, new_height, screen_info->margins);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
     compositorUpdateScreenSize (screen_info);
@@ -2749,16 +2775,6 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
 
     screen_info = (ScreenInfo *) data;
     g_return_if_fail (screen_info);
-
-    /* We have added/removed a monitor or even changed the layout,
-     * the cache for monitor position we use in our screen structure
-     * is not valid anymore and potentially refers to a monitor that
-     * was just removed, so invalidate it.
-     */
-    screen_info->cache_monitor.x = -1;
-    screen_info->cache_monitor.y = -1;
-    screen_info->cache_monitor.width = 0;
-    screen_info->cache_monitor.height = 0;
 
     /*
      * From the window manager point of view,
