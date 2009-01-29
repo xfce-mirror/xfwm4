@@ -760,6 +760,7 @@ clientFill (Client * c, int fill_type)
     int tmp_x, tmp_y, tmp_w, tmp_h;
 
     g_return_if_fail (c != NULL);
+    TRACE ("entering clientFill");
 
     if (!CLIENT_CAN_FILL_WINDOW (c))
     {
@@ -793,29 +794,12 @@ clientFill (Client * c, int fill_type)
                 {
                     if ((frameX(c2) + frameWidth(c2)) < frameX(c))
                     {
-                        if (east_neighbour)
-                        {
-                            /* Check if c2 is closer to the client
-                             * then the east neighbour already found
-                             */
-                            if ((frameX(east_neighbour) + frameWidth(east_neighbour)) < (frameX(c2) + frameWidth(c2)))
-                            {
-                                east_neighbour = c2;
-                            }
-                        }
-                        else
-                        {
-                            east_neighbour = c2;
-                        }
-                    }
-                    if ((frameX(c) + frameWidth(c)) < frameX(c2))
-                    {
-                        /* Check if c2 is closer to the client
-                         * then the west neighbour already found
-                         */
                         if (west_neighbour)
                         {
-                            if (frameX(c2) < frameX(west_neighbour))
+                            /* Check if c2 is closer to the client
+                             * then the west neighbour already found
+                             */
+                            if ((frameX(west_neighbour) + frameWidth(west_neighbour)) < (frameX(c2) + frameWidth(c2)))
                             {
                                 west_neighbour = c2;
                             }
@@ -823,6 +807,23 @@ clientFill (Client * c, int fill_type)
                         else
                         {
                             west_neighbour = c2;
+                        }
+                    }
+                    if ((frameX(c) + frameWidth(c)) < frameX(c2))
+                    {
+                        /* Check if c2 is closer to the client
+                         * then the west neighbour already found
+                         */
+                        if (east_neighbour)
+                        {
+                            if (frameX(c2) < frameX(east_neighbour))
+                            {
+                                east_neighbour = c2;
+                            }
+                        }
+                        else
+                        {
+                            east_neighbour = c2;
                         }
                     }
                 }
@@ -917,9 +918,9 @@ clientFill (Client * c, int fill_type)
      */
 
     wc.x = frameLeft(c);
-    if (east_neighbour)
+    if (west_neighbour)
     {
-        wc.x += MAX (frameX(east_neighbour) + frameWidth(east_neighbour), full_x);
+        wc.x += MAX (frameX(west_neighbour) + frameWidth(west_neighbour), full_x);
     }
     else
     {
@@ -927,9 +928,9 @@ clientFill (Client * c, int fill_type)
     }
 
     wc.width = full_x - frameRight(c) - wc.x;
-    if (west_neighbour)
+    if (east_neighbour)
     {
-        wc.width += MIN (frameX(west_neighbour), full_w);
+        wc.width += MIN (frameX(east_neighbour) - rect.x, full_w);
     }
     else
     {
@@ -949,7 +950,7 @@ clientFill (Client * c, int fill_type)
     wc.height = full_y - frameBottom(c) - wc.y;
     if (south_neighbour)
     {
-        wc.height += MIN (frameY(south_neighbour), full_h);
+        wc.height += MIN (frameY(south_neighbour) - rect.y, full_h);
     }
     else
     {

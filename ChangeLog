@@ -1,5 +1,10 @@
 2009-01-29	olivier
 
+	* src/placement.c: Apparently someone is confusing East and West :)
+	  Fix fill function not working with multiscreen.
+
+2009-01-29	olivier
+
 	* src/events.c: Clear monitor cache when the screen size changes, but 
 	  avoid redoing the work twice in the case of a monitor-changed event.
 

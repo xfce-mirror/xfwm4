@@ -1,7 +1,8 @@
 4.6.0?
 =====
 
-- Fix possible monitor cache size inconsistency when the screen size changes
+- Fix possible monitor cache size inconsistency when the screen size changes.
+- Fix fill function not working with multiscreen.
 
 4.5.99.1 (Xfce 4.6rc1)
 ======================
