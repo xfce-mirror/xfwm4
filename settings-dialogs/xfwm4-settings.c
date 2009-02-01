@@ -1915,14 +1915,17 @@ xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
 
   if (G_UNLIKELY (other_shortcut != NULL))
     {
-      response = xfce_shortcut_conflict_dialog (xfce_shortcuts_provider_get_name (settings->priv->provider),
-                                                xfce_shortcuts_provider_get_name (other_provider),
-                                                shortcut,
-                                                xfce_shortcut_dialog_get_action_name (dialog),
-                                                xfwm_settings_shortcut_feature_name (other_shortcut->command),
-                                                FALSE);
+      if (G_LIKELY (!g_str_equal (xfce_shortcut_dialog_get_action (dialog), other_shortcut->command)))
+        {
+          response = xfce_shortcut_conflict_dialog (xfce_shortcuts_provider_get_name (settings->priv->provider),
+                                                    xfce_shortcuts_provider_get_name (other_provider),
+                                                    shortcut,
+                                                    xfce_shortcut_dialog_get_action_name (dialog),
+                                                    xfwm_settings_shortcut_feature_name (other_shortcut->command),
+                                                    FALSE);
 
-      accepted = response == GTK_RESPONSE_ACCEPT;
+          accepted = response == GTK_RESPONSE_ACCEPT;
+        }
 
       xfce_shortcut_free (other_shortcut);
       g_object_unref (other_provider);

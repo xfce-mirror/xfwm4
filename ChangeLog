@@ -1,3 +1,9 @@
+2009-02-01	jannis
+
+	* settings-dialogs/xfwm4-settings.c: Only display shortcut conflict
+	  dialog if the action of the new shortcut differs from the one
+	  that's being edited.
+
 2009-01-29	olivier
 
 	* src/placement.c: Apparently someone is confusing East and West :)
