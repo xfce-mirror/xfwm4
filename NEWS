@@ -3,6 +3,10 @@
 
 - Fix possible monitor cache size inconsistency when the screen size changes.
 - Fix fill function not working with multiscreen.
+- Only display the shortcut conflict dialog if the conflict is with a different
+  shortcut than the one being edited.
+- When stealing a shortcut from another shortcuts provider, clear the shortcut
+  of that provider first.
 
 4.5.99.1 (Xfce 4.6rc1)
 ======================

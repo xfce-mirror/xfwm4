@@ -1924,7 +1924,10 @@ xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
                                                     xfwm_settings_shortcut_feature_name (other_shortcut->command),
                                                     FALSE);
 
-          accepted = response == GTK_RESPONSE_ACCEPT;
+          if (G_UNLIKELY (response == GTK_RESPONSE_ACCEPT))
+            xfce_shortcuts_provider_reset_shortcut (other_provider, shortcut);
+          else
+            accepted = FALSE;
         }
 
       xfce_shortcut_free (other_shortcut);

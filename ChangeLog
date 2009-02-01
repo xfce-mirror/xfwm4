@@ -1,5 +1,12 @@
 2009-02-01	jannis
 
+	* NEWS: Update NEWS file.
+	* settings-dialogs/xfwm4-settings.c: When stealing a shortcut from 
+	  another shortcuts provider, clear the shortcut of that provider 
+	  first.
+
+2009-02-01	jannis
+
 	* settings-dialogs/xfwm4-settings.c: Only display shortcut conflict
 	  dialog if the action of the new shortcut differs from the one
 	  that's being edited.
