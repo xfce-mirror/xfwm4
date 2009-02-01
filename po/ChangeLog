@@ -1,12 +1,16 @@
+2009-02-01  Michal Várady <miko.vaji@gmail.com>
+
+	* cs.po: Czech translation fixed
+
 2009-01-31  Eren Türkay <erenturkay@xfce.org>
 
-    * tr.po: Turkish translation update (Gökmen Görgen, Samed Beyribey)
+	* tr.po: Turkish translation update (Gökmen Görgen, Samed Beyribey)
 
-2009-01-26	Jannis Pohlmann <jannis@xfce.org>
+2009-01-26  Jannis Pohlmann <jannis@xfce.org>
 
 	* xfwm4.pot, *.po: Update translation files for the release.
 
-2009-01-24 Per Kongstad <pko@xfce.org>
+2009-01-24  Per Kongstad <pko@xfce.org>
 
 	* da.po: Danish translation update (Per Kongstad)
 
