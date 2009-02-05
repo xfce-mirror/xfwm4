@@ -552,7 +552,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     gboolean moving = TRUE;
     gboolean warp_pointer = FALSE;
     XWindowChanges wc;
-    int prev_x, prev_y;
+    int prev_x, prev_y, delta;
 
     TRACE ("entering clientMoveEventFilter");
 
@@ -722,18 +722,19 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                     edge_scroll_x = 0;
                     if ((msx == 0) || (msx == maxx))
                     {
+                        delta = MAX (9 * maxx / 10, maxx - 5 * screen_info->params->wrap_resistance);
                         if (msx == 0)
                         {
                             if (workspaceMove (screen_info, 0, -1, c, xevent->xmotion.time))
                             {
-                                rx = 4 * maxx / 5;
+                                rx = delta;
                             }
                         }
                         else
                         {
                             if (workspaceMove (screen_info, 0, 1, c, xevent->xmotion.time))
                             {
-                                rx = -4 * maxx / 5;
+                                rx = -delta;
                             }
                         }
                         warp_pointer = TRUE;
@@ -745,18 +746,19 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                     edge_scroll_y = 0;
                     if ((msy == 0) || (msy == maxy))
                     {
+                        delta = MAX (9 * maxy / 10, maxy - 5 * screen_info->params->wrap_resistance);
                         if (msy == 0)
                         {
                             if (workspaceMove (screen_info, -1, 0, c, xevent->xmotion.time))
                             {
-                                ry = 4 * maxy / 5;
+                                ry = delta;
                             }
                         }
                         else
                         {
                             if (workspaceMove (screen_info, 1, 0, c, xevent->xmotion.time))
                             {
-                                ry = -4 * maxy / 5;
+                                ry = -delta;
                             }
                         }
                         warp_pointer = TRUE;

@@ -1380,7 +1380,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         && screen_info->params->wrap_resistance)
     {
         int msx, msy, maxx, maxy;
-        int rx, ry;
+        int rx, ry, delta;
 
         msx = ev->x_root;
         msy = ev->y_root;
@@ -1436,18 +1436,19 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         if (edge_scroll_x > screen_info->params->wrap_resistance)
         {
             edge_scroll_x = 0;
+            delta = MAX (9 * maxx / 10, maxx - 5 * screen_info->params->wrap_resistance);
             if (msx == 0)
             {
                 if (workspaceMove (screen_info, 0, -1, NULL, ev->time))
                 {
-                    rx = 4 * maxx / 5;
+                    rx = delta;
                 }
             }
             else
             {
                 if (workspaceMove (screen_info, 0, 1, NULL, ev->time))
                 {
-                    rx = -4 * maxx / 5;
+                    rx = -delta;
                 }
             }
             warp_pointer = TRUE;
@@ -1455,18 +1456,19 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         if (edge_scroll_y > screen_info->params->wrap_resistance)
         {
             edge_scroll_y = 0;
+            delta = MAX (9 * maxy / 10, maxy - 5 * screen_info->params->wrap_resistance);
             if (msy == 0)
             {
                 if (workspaceMove (screen_info, -1, 0, NULL, ev->time))
                 {
-                    ry = 4 * maxy / 5;
+                    ry = delta;
                 }
             }
             else
             {
                 if (workspaceMove (screen_info, 1, 0, NULL, ev->time))
                 {
-                    ry = -4 * maxy / 5;
+                    ry = -delta;
                 }
             }
             warp_pointer = TRUE;

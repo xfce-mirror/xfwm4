@@ -1,3 +1,11 @@
+2009-05-01	olivier
+
+	* settings-dialogs/xfwm4-dialog.glade: Set minimum value for 
+	  wrap_resistance and snap_width (0 is not a valid value)
+	  src/settings.c: clamp values to sensible defaults
+	  src/events.c, src/moveresize.c: reduce the warping distance of the
+	  mouse pointer (bug #3290)
+
 2009-02-01	jannis
 
 	* NEWS: Update NEWS file.

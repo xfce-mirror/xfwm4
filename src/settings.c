@@ -1085,19 +1085,19 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
             case G_TYPE_INT:
                 if (!strcmp (name, "raise_delay"))
                 {
-                    screen_info->params->raise_delay = g_value_get_int (value);
+                    screen_info->params->raise_delay = CLAMP (g_value_get_int (value), 100, 2000);
                 }
                 else if (!strcmp (name, "focus_delay"))
                 {
-                    screen_info->params->focus_delay = g_value_get_int (value);
+                    screen_info->params->focus_delay = CLAMP (g_value_get_int (value), 100, 2000);
                 }
                 else if (!strcmp (name, "snap_width"))
                 {
-                    screen_info->params->snap_width = g_value_get_int (value);
+                    screen_info->params->snap_width = CLAMP (g_value_get_int (value), 5, 100);
                 }
                 else if (!strcmp (name, "wrap_resistance"))
                 {
-                    screen_info->params->wrap_resistance = g_value_get_int (value);
+                    screen_info->params->wrap_resistance = CLAMP (g_value_get_int (value), 5, 100);
                 }
                 else if (!strcmp (name, "margin_left"))
                 {
@@ -1121,31 +1121,31 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 }
                 else if (!strcmp (name, "frame_opacity"))
                 {
-                    screen_info->params->frame_opacity = g_value_get_int(value);
+                    screen_info->params->frame_opacity = CLAMP (g_value_get_int(value), 0, 100);
                     reloadScreenSettings (screen_info, UPDATE_FRAME);
                 }
                 else if (!strcmp (name, "inactive_opacity"))
                 {
-                    screen_info->params->inactive_opacity = g_value_get_int(value);
+                    screen_info->params->inactive_opacity = CLAMP (g_value_get_int(value), 0, 100);
                     reloadScreenSettings (screen_info, UPDATE_FRAME);
                     clientUpdateAllOpacity (screen_info);
                 }
                 else if (!strcmp (name, "move_opacity"))
                 {
-                    screen_info->params->move_opacity = g_value_get_int (value);
+                    screen_info->params->move_opacity = CLAMP (g_value_get_int(value), 0, 100);
                 }
                 else if (!strcmp (name, "resize_opacity"))
                 {
-                    screen_info->params->resize_opacity = g_value_get_int (value);
+                    screen_info->params->resize_opacity = CLAMP (g_value_get_int(value), 0, 100);
                 }
                 else if (!strcmp (name, "popup_opacity"))
                 {
-                    screen_info->params->popup_opacity = g_value_get_int (value);
+                    screen_info->params->popup_opacity = CLAMP (g_value_get_int(value), 0, 100);
                     reloadScreenSettings (screen_info, UPDATE_FRAME);
                 }
                 else if (!strcmp (name, "placement_ratio"))
                 {
-                    screen_info->params->placement_ratio = g_value_get_int (value);
+                    screen_info->params->placement_ratio = CLAMP (g_value_get_int(value), 0, 100);
                 }
                 else if ((!strcmp (name, "button_offset"))
                       || (!strcmp (name, "button_spacing"))
