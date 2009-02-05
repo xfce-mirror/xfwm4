@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Rodrigo Coacci <rcoacci@gmail.com>, 2004.
 # Adriano Winter Bess <awbess@gmail.com>, 2006.
-# Og Maciel <ogmaciel@gnome.org>, 2008.
+# Og Maciel <ogmaciel@gnome.org>, 2008-2009.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 # Vladimir Melo <vmelo@gnome.org>, 2008.
 #
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 02:17+0100\n"
-"PO-Revision-Date: 2009-01-15 09:16-0500\n"
+"POT-Creation-Date: 2009-02-04 20:21-0500\n"
+"PO-Revision-Date: 2009-02-04 20:21-0500\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
