@@ -705,10 +705,10 @@ xpm_image_load (const char *filename, xfwmColorSymbol *color_sym)
     return pixbuf;
 }
 
+#ifdef HAVE_RENDER
 static void
 xfwmPixmapRefreshPict (xfwmPixmap * pm)
 {
-#ifdef HAVE_RENDER
     ScreenInfo * screen_info;
 
     screen_info = pm->screen_info;
@@ -729,8 +729,8 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
         pm->pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info),
                                          pm->pixmap, pm->pict_format, 0, NULL);
     }
-#endif
 }
+#endif
 
 static GdkPixbuf *
 xfwmPixmapCompose (GdkPixbuf *pixbuf, const gchar * dir, const gchar * file)

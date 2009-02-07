@@ -164,9 +164,22 @@ clientFocusNew(Client * c)
     }
     else if ((client_focus) && (prevent_focus_stealing))
     {
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME) && (c->user_time == CurrentTime))
+        if (client_focus->win_layer > c->win_layer)
         {
-            TRACE ("Given startup time is 0, not focusing");
+            TRACE ("Not focusing \"%s\" because the current focused window is on a upper layer", c->name);
+            give_focus = FALSE;
+            prevented = TRUE;
+        }
+        else if (client_focus->win_layer < c->win_layer)
+        {
+            /* We short don't use focus stealing prevention against upper layers */
+            TRACE ("Ignoring startup prevention because the current focused window is on a lower layer");
+            give_focus = TRUE;
+            prevented = FALSE;
+        }
+        else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME) && (c->user_time == CurrentTime))
+        {
+            TRACE ("Given startup time is nil, not focusing \"%s\"", c->name);
             give_focus = FALSE;
             prevented = TRUE;
         }
@@ -174,7 +187,9 @@ clientFocusNew(Client * c)
         {
             if (TIMESTAMP_IS_BEFORE (c->user_time, client_focus->user_time))
             {
-                TRACE ("Current %u, new %u", (unsigned int) client_focus->user_time, (unsigned int) c->user_time);
+                TRACE ("Current time is %u, new time is %u, not focusing \"%s\" \n",
+                       (unsigned int) client_focus->user_time,
+                       (unsigned int) c->user_time, c->name);
                 give_focus = FALSE;
                 prevented = TRUE;
             }
@@ -201,11 +216,6 @@ clientFocusNew(Client * c)
 
         if ((c2 != NULL) && (c2->win_layer == c->win_layer))
         {
-            if (prevented)
-            {
-                TRACE ("clientFocusNew: Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
-                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-            }
             clientSortRing(c);
             clientLower (c, c2->frame);
             clientSortRing(c2);
@@ -215,6 +225,12 @@ clientFocusNew(Client * c)
         {
             clientRaise (c, None);
             clientSortRing(c);
+        }
+
+        if (prevented)
+        {
+            TRACE ("clientFocusNew: Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+            FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         }
 
         clientShow (c, TRUE);

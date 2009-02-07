@@ -1799,7 +1799,12 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[NET_WM_USER_TIME])
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_USER_TIME notify", c->name, c->window);
-            if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
+            /*
+             * We can use "c->user_time_win" safely here because this will be
+             * the same as "c->window" if the app does not support the protocol
+             * NET_WM_USER_TIME_WINDOW
+             */
+            if (getNetWMUserTime (display_info, c->user_time_win, &c->user_time) && (c->user_time != 0))
             {
                 myDisplaySetLastUserTime (display_info, c->user_time);
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);

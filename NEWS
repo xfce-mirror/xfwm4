@@ -7,6 +7,11 @@
   shortcut than the one being edited.
 - When stealing a shortcut from another shortcuts provider, clear the shortcut
   of that provider first.
+- Fix focus stealing prevention with applications which support the 
+  NET_WM_USER_TIME_WINDOW protocol
+- Do not automatically give focus to windows placed on lower layers, but 
+  focus those on upper layers at first map.
+- Fix compilation failure in debug full without render
 
 4.5.99.1 (Xfce 4.6rc1)
 ======================

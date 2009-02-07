@@ -1,4 +1,12 @@
-2009-05-01	olivier
+2009-02-06	olivier
+
+	* src/events.c, : Fix user time not being taken from the user time
+	  window for apps which support that protocol, that was breaking
+	  focus stealing prevention for all gtk,
+	  src/focus.c: Do not automatically give focus to windows placed on 
+	  lower layers, but focus those on upper layers at first map.
+
+2009-02-05	olivier
 
 	* settings-dialogs/xfwm4-dialog.glade: Set minimum value for 
 	  wrap_resistance and snap_width (0 is not a valid value)

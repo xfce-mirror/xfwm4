@@ -261,10 +261,10 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
     xfwmWindowSetVisual (win, visual, depth);
 }
 
+#ifdef HAVE_RENDER
 static gboolean
 xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 {
-#ifdef HAVE_RENDER
     if (myDisplayHaveRender (win->screen_info->display_info))
     {
         Picture pict;
@@ -309,9 +309,9 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
         XFreePixmap (myScreenGetXDisplay (win->screen_info), temp);
         return TRUE;
     }
-#endif
     return FALSE;
 }
+#endif
 
 void
 xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
