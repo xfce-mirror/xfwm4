@@ -1971,7 +1971,7 @@ xfwm_settings_shortcut_row_activated (GtkTreeView       *tree_view,
       dialog = xfce_shortcut_dialog_new ("xfwm4", name, feature);
       g_signal_connect (dialog, "validate-shortcut",
                         G_CALLBACK (xfwm_settings_validate_shortcut), settings);
-      response = xfce_shortcut_dialog_run (XFCE_SHORTCUT_DIALOG (dialog));
+      response = xfce_shortcut_dialog_run (XFCE_SHORTCUT_DIALOG (dialog), gtk_widget_get_toplevel (GTK_WIDGET (tree_view)));
 
       if (G_LIKELY (response == GTK_RESPONSE_OK))
         {

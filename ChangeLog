@@ -1,6 +1,12 @@
+2009-02-07	jannis
+
+	* settings-dialogs/xfwm4-settings.c : Add the new parameter required
+	  for the API change for xfce_shortcut_dialog_run(), 
+	  Add dependecy on libxfce4kbd_private revision.
+
 2009-02-06	olivier
 
-	* src/events.c, : Fix user time not being taken from the user time
+	* src/events.c : Fix user time not being taken from the user time
 	  window for apps which support that protocol, that was breaking
 	  focus stealing prevention for all gtk,
 	  src/focus.c: Do not automatically give focus to windows placed on 

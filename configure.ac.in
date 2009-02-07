@@ -13,7 +13,7 @@ m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_ve
 m4_define([gtk_minimum_version], [2.10.0])
 m4_define([xfce_minimum_version], [4.5.93])
 m4_define([libxfcegui4_minimum_version], [4.5.93])
-m4_define([libxfce4kbd_private_minimum_version], [4.5.93])
+m4_define([libxfce4kbd_private_minimum_version], [4.5.99.1svn-r29462])
 m4_define([xfconf_minimum_version], [4.5.93])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.12])
