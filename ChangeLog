@@ -1,3 +1,12 @@
+2009-02-16	olivier
+
+	* src/events.c, src/client.c: Fix ICCCM synthetic unmap notify 
+	  handling causing a race condition with amule when started hidden 
+	  to system tray (Bug #4928). Note: This is still unclear to me
+	  what is correct behaviour here, the problem reported in bug
+	  #4928 happens with some other window managers too (e.g. kwin from
+	  kde 4.2, fluxbox) but not with others (openbox, metacity, icewm).
+
 2009-02-07	jannis
 
 	* settings-dialogs/xfwm4-settings.c : Add the new parameter required

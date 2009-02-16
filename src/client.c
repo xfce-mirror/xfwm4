@@ -1940,7 +1940,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         XCreateWindow (display_info->dpy, screen_info->xroot, 0, 0, 1, 1, 0,
         c->depth, InputOutput, c->visual, valuemask, &attributes);
 
-    XSelectInput (display_info->dpy, c->window, 0);
+    XSelectInput (display_info->dpy, c->window, NoEventMask);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
@@ -1950,7 +1950,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     valuemask = CWEventMask;
     attributes.event_mask = (CLIENT_EVENT_MASK);
     XChangeWindowAttributes (display_info->dpy, c->window, valuemask, &attributes);
-    XSelectInput (display_info->dpy, c->window, CLIENT_EVENT_MASK);
     if (display_info->have_shape)
     {
         XShapeSelectInput (display_info->dpy, c->window, ShapeNotifyMask);
@@ -2652,6 +2651,7 @@ clientClose (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     timestamp = myDisplayGetCurrentTime (display_info);
+    timestamp = myDisplayGetTime (display_info, timestamp);
 
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {

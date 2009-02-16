@@ -1186,12 +1186,14 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
          */
         if ((ev->event == screen_info->xroot) && (ev->send_event))
         {
-            TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
-            list_of_windows = clientListTransientOrModal (c);
-            clientPassFocus (screen_info, c, list_of_windows);
-            clientUnframe (c, FALSE);
-            g_list_free (list_of_windows);
-
+            if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+            {
+                TRACE ("ICCCM UnmapNotify for \"%s\"", c->name);
+                list_of_windows = clientListTransientOrModal (c);
+                clientPassFocus (screen_info, c, list_of_windows);
+                clientUnframe (c, FALSE);
+                g_list_free (list_of_windows);
+            }
             return status;
         }
 

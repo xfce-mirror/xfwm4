@@ -12,6 +12,8 @@
 - Do not automatically give focus to windows placed on lower layers, but 
   focus those on upper layers at first map.
 - Fix compilation failure in debug full without render
+- Fix ICCCM synthetic unmap notify handling causing a race condition with
+  amule when started hidden to system tray (Bug #4928)
 
 4.5.99.1 (Xfce 4.6rc1)
 ======================
