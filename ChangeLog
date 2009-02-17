@@ -1,3 +1,7 @@
+2009-02-17	olivier
+
+	* src/keyboard.c: Use proper type for returned value.
+
 2009-02-16	olivier
 
 	* src/events.c, src/client.c: Fix ICCCM synthetic unmap notify 

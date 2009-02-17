@@ -122,7 +122,7 @@ parseKeyString (Display * dpy, MyKey * key, const char *str)
 gboolean
 grabKey (Display * dpy, MyKey * key, Window w)
 {
-    gboolean status;
+    int status;
 
     TRACE ("entering grabKey");
 
@@ -187,7 +187,7 @@ ungrabKeys (Display * dpy, Window w)
 gboolean
 grabButton (Display * dpy, int button, int modifier, Window w)
 {
-    gboolean status;
+    int status;
 
     TRACE ("entering grabButton");
 
