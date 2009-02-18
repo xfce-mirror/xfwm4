@@ -923,10 +923,10 @@ clientFill (Client * c, int fill_type)
         wc.x += MAX (frameX(west_neighbour) + frameWidth(west_neighbour) - full_x, 0);
     }
 
-    wc.width = full_w - frameRight(c) - (wc.x - rect.x);
+    wc.width = full_w - frameRight(c) - (wc.x - full_x);
     if (east_neighbour)
     {
-        wc.width -= MAX (full_w - (frameX(east_neighbour) - rect.x), 0);
+        wc.width -= MAX (full_w - (frameX(east_neighbour) - full_x), 0);
     }
 
     wc.y = full_y + frameTop(c);
@@ -935,10 +935,10 @@ clientFill (Client * c, int fill_type)
         wc.y += MAX (frameY(north_neighbour) + frameHeight(north_neighbour) - full_y, 0);
     }
 
-    wc.height = full_h - frameBottom(c) - (wc.y - rect.y);
+    wc.height = full_h - frameBottom(c) - (wc.y - full_y);
     if (south_neighbour)
     {
-        wc.height -= MAX (full_h - (frameY(south_neighbour) - rect.y), 0);
+        wc.height -= MAX (full_h - (frameY(south_neighbour) - full_y), 0);
     }
 
     TRACE ("Fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
