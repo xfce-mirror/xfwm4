@@ -917,44 +917,28 @@ clientFill (Client * c, int fill_type)
      * If not, resize to the largest size available that you just have computed.
      */
 
-    wc.x = frameLeft(c);
+    wc.x = full_x + frameLeft(c);
     if (west_neighbour)
     {
-        wc.x += MAX (frameX(west_neighbour) + frameWidth(west_neighbour), full_x);
-    }
-    else
-    {
-        wc.x += full_x;
+        wc.x += MAX (frameX(west_neighbour) + frameWidth(west_neighbour) - full_x, 0);
     }
 
-    wc.width = full_x - frameRight(c) - wc.x;
+    wc.width = full_w - frameRight(c) - (wc.x - rect.x);
     if (east_neighbour)
     {
-        wc.width += MIN (frameX(east_neighbour) - rect.x, full_w);
-    }
-    else
-    {
-        wc.width += full_w;
+        wc.width -= MAX (full_w - (frameX(east_neighbour) - rect.x), 0);
     }
 
-    wc.y = frameTop(c);
+    wc.y = full_y + frameTop(c);
     if (north_neighbour)
     {
-        wc.y += MAX (frameY(north_neighbour) + frameHeight(north_neighbour), full_y);
-    }
-    else
-    {
-        wc.y += full_y;
+        wc.y += MAX (frameY(north_neighbour) + frameHeight(north_neighbour) - full_y, 0);
     }
 
-    wc.height = full_y - frameBottom(c) - wc.y;
+    wc.height = full_h - frameBottom(c) - (wc.y - rect.y);
     if (south_neighbour)
     {
-        wc.height += MIN (frameY(south_neighbour) - rect.y, full_h);
-    }
-    else
-    {
-        wc.height += full_h;
+        wc.height -= MAX (full_h - (frameY(south_neighbour) - rect.y), 0);
     }
 
     TRACE ("Fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);

@@ -1,3 +1,8 @@
+2009-02-18	olivier
+
+	* src/placement.c: Fix size not properly computed by the fill 
+	  function with a dock on top or left (Bug #4960).
+
 2009-02-17	olivier
 
 	* src/keyboard.c: Use proper type for returned value.
