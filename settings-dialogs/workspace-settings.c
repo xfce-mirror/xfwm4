@@ -320,10 +320,10 @@ workspace_dialog_configure_widgets (GladeXML *gxml,
     wmax = gdk_screen_width () / 4;
     hmax = gdk_screen_height () / 4;
 
-    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_top_spinbutton), 0, wmax);
-    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_right_spinbutton), 0, hmax);
-    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_bottom_spinbutton), 0, wmax);
-    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_left_spinbutton), 0, hmax);
+    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_top_spinbutton), 0, hmax);
+    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_right_spinbutton), 0, wmax);
+    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_bottom_spinbutton), 0, hmax);
+    gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_left_spinbutton), 0, wmax);
 
     /* Bind easy properties */
     xfconf_g_property_bind (channel,

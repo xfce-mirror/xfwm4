@@ -16,6 +16,7 @@
 - Fix compilation failure in debug full without render
 - Fix ICCCM synthetic unmap notify handling causing a race condition with
   amule when started hidden to system tray (Bug #4928)
+- Fix margin max value (Bug #4931)
 
 4.5.99.1 (Xfce 4.6rc1)
 ======================

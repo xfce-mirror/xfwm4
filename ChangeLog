@@ -1,5 +1,11 @@
 2009-02-18	olivier
 
+	* settings-dialogs/workspace-settings.c: Fix limits for margin being
+	  inverted - patch by Mike Massonnet <mike.massonnet@gmail.com> 
+	  (Bug #4931).
+
+2009-02-18	olivier
+
 	* src/placement.c: Same, still not right (Bug #4960).
 
 2009-02-18	olivier
