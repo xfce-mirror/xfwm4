@@ -1,3 +1,8 @@
+2009-02-19	olivier
+
+	* src/settings.c, src/events.c, src/screen.c, src/screen.h: Apply
+	  font settings changes in real time (DPI, hinting, hint style, rgba).
+
 2009-02-18	olivier
 
 	* settings-dialogs/workspace-settings.c: Fix limits for margin being

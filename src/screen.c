@@ -31,6 +31,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <pango/pango.h>
 #include <libxfce4util/libxfce4util.h>
 
 #ifdef HAVE_RENDER
@@ -47,6 +48,7 @@
 #include "misc.h"
 #include "mywindow.h"
 #include "compositor.h"
+#include "ui_style.h"
 
 gboolean
 myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
@@ -630,4 +632,33 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
 
     screen_info->cache_monitor = nearest_monitor;
     *rect = screen_info->cache_monitor;
+}
+
+gboolean
+myScreenUpdateFontHeight (ScreenInfo *screen_info)
+{
+    PangoFontDescription *desc;
+    PangoContext *context;
+    PangoFontMetrics *metrics;
+    PangoLanguage *language;
+    GtkWidget *widget;
+
+    widget = myScreenGetGtkWidget (screen_info);
+    context = getUIPangoContext (widget);
+    desc = getUIPangoFontDesc (widget);
+
+    if (desc && context)
+    {
+        language = pango_context_get_language (context);
+        metrics = pango_context_get_metrics (context, desc, language);
+        screen_info->font_height =
+                 PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
+                               pango_font_metrics_get_descent (metrics));
+        pango_font_metrics_unref (metrics);
+
+        return TRUE;
+    }
+
+    return FALSE;
+
 }

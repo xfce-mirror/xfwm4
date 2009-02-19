@@ -218,5 +218,6 @@ void                     myScreenFindMonitorAtPoint             (ScreenInfo *,
                                                                  gint,
                                                                  gint,
                                                                  GdkRectangle *);
+gboolean                 myScreenUpdateFontHeight               (ScreenInfo *);
 
 #endif /* INC_SCREEN_H */
