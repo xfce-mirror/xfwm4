@@ -1,5 +1,9 @@
 2009-02-19	olivier
 
+	* src/events.c: Use more appropriate callback function name (trivial).
+
+2009-02-19	olivier
+
 	* src/settings.c, src/events.c, src/screen.c, src/screen.h: Apply
 	  font settings changes in real time (DPI, hinting, hint style, rgba).
 

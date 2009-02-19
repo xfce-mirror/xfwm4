@@ -2729,7 +2729,7 @@ client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data)
 }
 
 static gboolean
-refresh_frames_cb (GObject * obj, GdkEvent * ev, gpointer data)
+refresh_font_cb (GObject * obj, GdkEvent * ev, gpointer data)
 {
     ScreenInfo *screen_info;
 
@@ -2837,15 +2837,15 @@ initGtkCallbacks (ScreenInfo *screen_info)
         g_signal_connect (settings, "notify::gtk-double-click-time",
             G_CALLBACK (dbl_click_time_cb), (gpointer) (screen_info->display_info));
         g_signal_connect_after (settings, "notify::gtk-xft-antialias",
-            G_CALLBACK (refresh_frames_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
         g_signal_connect_after (settings, "notify::gtk-xft-dpi",
-            G_CALLBACK (refresh_frames_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
         g_signal_connect_after (settings, "notify::gtk-xft-hinting",
-            G_CALLBACK (refresh_frames_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
         g_signal_connect_after (settings, "notify::gtk-xft-hintstyle",
-            G_CALLBACK (refresh_frames_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
         g_signal_connect_after (settings, "notify::gtk-xft-rgba",
-            G_CALLBACK (refresh_frames_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
     }
 }
 
