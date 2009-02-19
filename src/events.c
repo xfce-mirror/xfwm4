@@ -300,7 +300,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     if (!ev_screen_info)
     {
         /* Release queued events */
-        XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
+        XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
 
         return EVENT_FILTER_PASS;
     }
@@ -511,7 +511,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     }
 
     /* Release queued events */
-    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
+    XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
 
     return status;
 }
@@ -522,7 +522,7 @@ handleKeyRelease (DisplayInfo *display_info, XKeyEvent * ev)
     TRACE ("entering handleKeyRelease");
 
     /* Release queued events */
-    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
+    XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
 
     return EVENT_FILTER_PASS;
 }

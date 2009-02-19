@@ -1,5 +1,10 @@
 2009-02-19	olivier
 
+	* src/events.c: Use timestamp provided by the event itself to 
+	  release queued events (Bug #4959).
+
+2009-02-19	olivier
+
 	* src/events.c: Use more appropriate callback function name (trivial).
 
 2009-02-19	olivier

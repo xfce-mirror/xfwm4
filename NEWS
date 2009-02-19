@@ -18,6 +18,8 @@
   amule when started hidden to system tray (Bug #4928)
 - Fix margin max value (Bug #4931)
 - Apply font settings changes in real time (DPI, hinting, hint style, rgba).
+- Fix key "Super" remaining sticky when used as a modifier shortcut 
+  (Bug #4959).
 
 4.5.99.1 (Xfce 4.6rc1)
 ======================
