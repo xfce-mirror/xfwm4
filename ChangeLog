@@ -1,5 +1,10 @@
 2009-02-19	olivier
 
+	* src/events.c: Only release events on identified key shortcut
+	  (Bug #4959).
+
+2009-02-19	olivier
+
 	* src/events.c: And do not release events on key release, as Super is
 	  both a modifier and a regular key that repeats, it breaks when used
 	  as a modifier (Bug #4959).

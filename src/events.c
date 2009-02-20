@@ -297,10 +297,10 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     TRACE ("entering handleKeyEvent");
 
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
-    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
 
     if (!ev_screen_info)
     {
+        XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
         return EVENT_FILTER_PASS;
     }
 
@@ -315,37 +315,47 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         switch (key)
         {
             case KEY_MOVE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientMove (c, (XEvent *) ev);
                 break;
             case KEY_RESIZE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientResize (c, CORNER_BOTTOM_RIGHT, (XEvent *) ev);
                 break;
             case KEY_CYCLE_WINDOWS:
             case KEY_CYCLE_REVERSE_WINDOWS:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientCycle (c, ev);
                 break;
             case KEY_CLOSE_WINDOW:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientClose (c);
                 break;
             case KEY_HIDE_WINDOW:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 if (CLIENT_CAN_HIDE_WINDOW (c))
                 {
                     clientWithdraw (c, c->win_workspace, TRUE);
                 }
                 break;
             case KEY_MAXIMIZE_WINDOW:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 break;
             case KEY_MAXIMIZE_VERT:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT, TRUE);
                 break;
             case KEY_MAXIMIZE_HORIZ:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ, TRUE);
                 break;
             case KEY_SHADE_WINDOW:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientToggleShaded (c);
                 break;
             case KEY_STICK_WINDOW:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
                 {
                     clientToggleSticky (c, TRUE);
@@ -353,33 +363,43 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_RAISE_WINDOW:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientRaise (c, None);
                 break;
             case KEY_LOWER_WINDOW:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientLower (c, None);
                 break;
             case KEY_TOGGLE_ABOVE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientToggleLayerAbove (c);
                 break;
             case KEY_TOGGLE_FULLSCREEN:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientToggleFullscreen (c);
                 break;
             case KEY_MOVE_NEXT_WORKSPACE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 workspaceSwitch (screen_info, screen_info->current_ws + 1, c, TRUE, ev->time);
                 break;
             case KEY_MOVE_PREV_WORKSPACE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 workspaceSwitch (screen_info, screen_info->current_ws - 1, c, TRUE, ev->time);
                 break;
             case KEY_MOVE_UP_WORKSPACE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 workspaceMove (screen_info, -1, 0, c, ev->time);
                 break;
             case KEY_MOVE_DOWN_WORKSPACE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 workspaceMove (screen_info, 1, 0, c, ev->time);
                 break;
             case KEY_MOVE_LEFT_WORKSPACE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 workspaceMove (screen_info, 0, -1, c, ev->time);
                 break;
             case KEY_MOVE_RIGHT_WORKSPACE:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 workspaceMove (screen_info, 0, 1, c, ev->time);
                 break;
             case KEY_MOVE_WORKSPACE_1:
@@ -394,6 +414,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_10:
             case KEY_MOVE_WORKSPACE_11:
             case KEY_MOVE_WORKSPACE_12:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 if (key - KEY_MOVE_WORKSPACE_1 < screen_info->workspace_count)
                 {
                     clientRaise (c, None);
@@ -401,17 +422,21 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_POPUP_MENU:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 show_window_menu (c, frameX (c) + frameLeft (c),
                                      frameY (c) + frameTop (c),
                                      Button1, ev->time);
                 break;
             case KEY_FILL_WINDOW:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientFill (c, CLIENT_FILL);
                 break;
             case KEY_FILL_VERT:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientFill (c, CLIENT_FILL_VERT);
                 break;
             case KEY_FILL_HORIZ:
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 clientFill (c, CLIENT_FILL_HORIZ);
                 break;
             default:
@@ -425,6 +450,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         {
             case KEY_CYCLE_WINDOWS:
                 status = EVENT_FILTER_REMOVE;
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 if (ev_screen_info->clients)
                 {
                     clientCycle (ev_screen_info->clients->prev, ev);
@@ -432,6 +458,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 break;
             case KEY_CLOSE_WINDOW:
                 status = EVENT_FILTER_REMOVE;
+                XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
                 if (display_info->session)
                 {
                     logout_session (display_info->session);
@@ -446,40 +473,50 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     {
         case KEY_NEXT_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceSwitch (ev_screen_info, ev_screen_info->current_ws + 1, NULL, TRUE, ev->time);
             break;
         case KEY_PREV_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceSwitch (ev_screen_info, ev_screen_info->current_ws - 1, NULL, TRUE, ev->time);
             break;
         case KEY_UP_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceMove(ev_screen_info, -1, 0, NULL, ev->time);
             break;
         case KEY_DOWN_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceMove(ev_screen_info, 1, 0, NULL, ev->time);
             break;
         case KEY_LEFT_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceMove(ev_screen_info, 0, -1, NULL, ev->time);
             break;
         case KEY_RIGHT_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceMove(ev_screen_info, 0, 1, NULL, ev->time);
             break;
         case KEY_ADD_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceSetCount (ev_screen_info, ev_screen_info->workspace_count + 1);
             break;
         case KEY_DEL_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceSetCount (ev_screen_info, ev_screen_info->workspace_count - 1);
             break;
         case KEY_ADD_ADJACENT_WORKSPACE:
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceInsert (ev_screen_info, ev_screen_info->current_ws + 1);
             break;
         case KEY_DEL_ACTIVE_WORKSPACE:
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             workspaceDelete (ev_screen_info, ev_screen_info->current_ws);
             break;
         case KEY_WORKSPACE_1:
@@ -495,6 +532,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         case KEY_WORKSPACE_11:
         case KEY_WORKSPACE_12:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             if (key - KEY_WORKSPACE_1 < ev_screen_info->workspace_count)
             {
                 workspaceSwitch (ev_screen_info, key - KEY_WORKSPACE_1, NULL, TRUE, ev->time);
@@ -502,6 +540,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             break;
         case KEY_SHOW_DESKTOP:
             status = EVENT_FILTER_REMOVE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
             toggle_show_desktop (ev_screen_info);
             break;
         default:
@@ -515,13 +554,7 @@ static eventFilterStatus
 handleKeyRelease (DisplayInfo *display_info, XKeyEvent * ev)
 {
     TRACE ("entering handleKeyRelease");
-#if 0
-    /*
-     * Do not release queued events here, that breaks with keys
-     * that are both modifier and regular key as they repeat
-     */
-    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
-#endif
+
     return EVENT_FILTER_PASS;
 }
 
