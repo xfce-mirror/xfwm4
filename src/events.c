@@ -297,11 +297,10 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     TRACE ("entering handleKeyEvent");
 
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
+    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
+
     if (!ev_screen_info)
     {
-        /* Release queued events */
-        XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
-
         return EVENT_FILTER_PASS;
     }
 
@@ -402,10 +401,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_POPUP_MENU:
-                XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
                 show_window_menu (c, frameX (c) + frameLeft (c),
                                      frameY (c) + frameTop (c),
-                                     Button1, GDK_CURRENT_TIME);
+                                     Button1, ev->time);
                 break;
             case KEY_FILL_WINDOW:
                 clientFill (c, CLIENT_FILL);
@@ -510,9 +508,6 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             break;
     }
 
-    /* Release queued events */
-    XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
-
     return status;
 }
 
@@ -520,10 +515,13 @@ static eventFilterStatus
 handleKeyRelease (DisplayInfo *display_info, XKeyEvent * ev)
 {
     TRACE ("entering handleKeyRelease");
-
-    /* Release queued events */
-    XAllowEvents (display_info->dpy, SyncKeyboard, ev->time);
-
+#if 0
+    /*
+     * Do not release queued events here, that breaks with keys
+     * that are both modifier and regular key as they repeat
+     */
+    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
+#endif
     return EVENT_FILTER_PASS;
 }
 
