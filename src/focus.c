@@ -185,11 +185,11 @@ clientFocusNew(Client * c)
         }
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME))
         {
+            TRACE ("Current time is %u, time for \"%s\" is %u",
+                   (unsigned int) client_focus->user_time,
+                   c->name, (unsigned int) c->user_time);
             if (TIMESTAMP_IS_BEFORE (c->user_time, client_focus->user_time))
             {
-                TRACE ("Current time is %u, new time is %u, not focusing \"%s\" \n",
-                       (unsigned int) client_focus->user_time,
-                       (unsigned int) c->user_time, c->name);
                 give_focus = FALSE;
                 prevented = TRUE;
             }

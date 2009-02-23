@@ -1446,3 +1446,68 @@ clientSendNetWMPing (Client *c, guint32 timestamp)
                             (gpointer) c, NULL);
     return (TRUE);
 }
+
+gboolean
+clientGetUserTime (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+    g_return_val_if_fail (c->window != None, FALSE);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    /*
+     * We can use "c->user_time_win" safely here because this will be
+     * the same as "c->window" if the app does not support the protocol
+     * NET_WM_USER_TIME_WINDOW
+     */
+
+    if (getNetWMUserTime (display_info, c->user_time_win, &c->user_time) && (c->user_time != 0))
+    {
+        myDisplaySetLastUserTime (display_info, c->user_time);
+        FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void
+clientAddUserTimeWin (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if ((c->user_time_win != None) && (c->user_time_win != c->window))
+    {
+        XSelectInput (display_info->dpy, c->user_time_win, PropertyChangeMask);
+    }
+}
+
+void
+clientRemoveUserTimeWin (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if ((c->user_time_win != None) && (c->user_time_win != c->window))
+    {
+        XSelectInput (display_info->dpy, c->user_time_win, NoEventMask);
+    }
+}

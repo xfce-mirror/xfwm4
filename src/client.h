@@ -339,8 +339,6 @@ Display                 *clientGetXDisplay                      (Client *);
 void                     clientClearLastOpTime                  (Client *);
 void                     clientUpdateWinState                   (Client *,
                                                                  XClientMessageEvent *);
-void                     clientAddUserTimeWin                   (Client *);
-void                     clientRemoveUserTimeWin                (Client *);
 void                     clientUpdateUrgency                    (Client *);
 void                     clientCoordGravitate                   (Client *,
                                                                  int,

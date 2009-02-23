@@ -1,3 +1,10 @@
+2009-02-23	olivier
+
+	* src/netwm.h, src/netwm.c, src/client.h, src/client.c, src/events.c,
+	  src/focus.c: Capture user time at startup, a bit of refactoring to
+	  avoid duplication of code (that led to this bug to remain after a
+	  similar fix went previously in to events.c in revision 29456).
+
 2009-02-19	olivier
 
 	* src/events.c: Only release events on identified key shortcut

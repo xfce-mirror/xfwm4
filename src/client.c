@@ -1457,61 +1457,6 @@ clientCheckShape (Client * c)
 }
 
 static void
-clientGetUserTime (Client * c)
-{
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
-
-    g_return_if_fail (c != NULL);
-    g_return_if_fail (c->window != None);
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-
-    if (getNetWMUserTime (display_info, c->window, &c->user_time) && (c->user_time != 0))
-    {
-        FLAG_SET (c->flags, CLIENT_FLAG_HAS_USER_TIME);
-        myDisplayUpdateLastUserTime (display_info, c->user_time);
-    }
-}
-
-void
-clientAddUserTimeWin (Client * c)
-{
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
-
-    g_return_if_fail (c != NULL);
-    g_return_if_fail (c->window != None);
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-
-    if ((c->user_time_win != None) && (c->user_time_win != c->window))
-    {
-        XSelectInput (display_info->dpy, c->user_time_win, PropertyChangeMask);
-    }
-}
-
-void
-clientRemoveUserTimeWin (Client * c)
-{
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
-
-    g_return_if_fail (c != NULL);
-    g_return_if_fail (c->window != None);
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-
-    if ((c->user_time_win != None) && (c->user_time_win != c->window))
-    {
-        XSelectInput (display_info->dpy, c->user_time_win, NoEventMask);
-    }
-}
-
-static void
 clientUpdateIconPix (Client * c)
 {
     ScreenInfo *screen_info;
