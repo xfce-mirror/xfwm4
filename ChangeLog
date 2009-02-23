@@ -1,5 +1,10 @@
 2009-02-23	olivier
 
+	* src/cycle.c, src/moveresize.c: Make sure any active grab on the
+	  keyboard and pointer are released  (Corollary to bug #4959).
+
+2009-02-23	olivier
+
 	* src/netwm.h, src/netwm.c, src/client.h, src/client.c, src/events.c,
 	  src/focus.c: Capture user time at startup, a bit of refactoring to
 	  avoid duplication of code (that led to this bug to remain after a

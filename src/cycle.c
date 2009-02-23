@@ -214,8 +214,8 @@ clientCycle (Client * c, XKeyEvent * ev)
         TRACE ("grab failed in clientCycle");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, ev->time);
-        myScreenUngrabPointer (screen_info, ev->time);
+        myScreenUngrabKeyboard (screen_info, CurrentTime);
+        myScreenUngrabPointer (screen_info, CurrentTime);
 
         return;
     }
@@ -304,6 +304,10 @@ clientCycle (Client * c, XKeyEvent * ev)
         clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     }
 
-    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+    /*
+     * Use CurrentTime instead of actual last event time to make sure
+     * that the grab is released in any case.
+     */
+    myScreenUngrabKeyboard (screen_info, CurrentTime);
+    myScreenUngrabPointer (screen_info, CurrentTime);
 }
