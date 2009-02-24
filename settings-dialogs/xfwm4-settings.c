@@ -34,8 +34,9 @@
 #include <glib.h>
 #include <glib-object.h>
 
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-
 #include <glade/glade.h>
 
 #include <libxfce4util/libxfce4util.h>

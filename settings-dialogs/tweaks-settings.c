@@ -34,6 +34,8 @@
 #include <glib/gi18n.h>
 #endif
 
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
 
