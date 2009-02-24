@@ -18,8 +18,13 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
+
+#ifdef HAVE_STRING_H
 #include <string.h>
+#endif
 
 #include <glib.h>
 
@@ -425,6 +430,7 @@ main (int argc, gchar **argv)
     GtkWidget *plug_child;
     GladeXML *gxml;
     GError *cli_error = NULL;
+    const gchar  *wm_name;
 
 #ifdef ENABLE_NLS
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
@@ -438,6 +444,13 @@ main (int argc, gchar **argv)
             g_error_free (cli_error);
             return 1;
         }
+    }
+
+    wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default ());
+    if (G_UNLIKELY (g_ascii_strcasecmp (wm_name, "Xfwm4")))
+    {
+        g_print ("These settings cannot work with your current window manager (%s)\n", wm_name);
+        return 1;
     }
 
     if (opt_version)

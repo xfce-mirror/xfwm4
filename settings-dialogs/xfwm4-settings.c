@@ -926,8 +926,11 @@ main (int    argc,
   GtkWidget    *dialog;
   GtkWidget    *plug;
   GError       *error = NULL;
+  const gchar  *wm_name;
 
+#ifdef ENABLE_NLS
   xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+#endif
 
   if (G_UNLIKELY (!gtk_init_with_args (&argc, &argv, _("."), opt_entries, PACKAGE, &error)))
     {
@@ -938,6 +941,13 @@ main (int    argc,
           g_error_free (error);
         }
 
+      return EXIT_FAILURE;
+    }
+
+  wm_name = gdk_x11_screen_get_window_manager_name (gdk_screen_get_default ());
+  if (G_UNLIKELY (g_ascii_strcasecmp (wm_name, "Xfwm4")))
+    {
+      g_print ("These settings cannot work with your current window manager (%s)\n", wm_name);
       return EXIT_FAILURE;
     }
 

@@ -1,3 +1,9 @@
+2009-02-24	olivier
+
+	* settings-dialogs/xfwm4-settings.c, 
+	  settings-dialogs/tweaks-settings.c: Do not run setting dialogs if
+	  current window manager is not xfwm4 (Bug #4989).
+
 2009-02-23	olivier
 
 	* src/cycle.c, src/moveresize.c: Make sure any active grab on the
