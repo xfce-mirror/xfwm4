@@ -4,17 +4,17 @@ dnl xfwm4 - window manager for the Xfce4 desktop environment
 dnl
 
 m4_define([xfwm4_version_major], [4])
-m4_define([xfwm4_version_minor], [5])
-m4_define([xfwm4_version_micro], [99.1])
+m4_define([xfwm4_version_minor], [6])
+m4_define([xfwm4_version_micro], [0])
 m4_define([xfwm4_version_build], [r@REVISION@])
 m4_define([xfwm4_version_tag],   [])
 m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_version_micro()ifelse(xfwm4_version_tag(), [svn], [xfwm4_version_tag().xfwm4_version_build()], [xfwm4_version_tag()])])
 
 m4_define([gtk_minimum_version], [2.10.0])
-m4_define([xfce_minimum_version], [4.5.93])
-m4_define([libxfcegui4_minimum_version], [4.5.93])
-m4_define([libxfce4kbd_private_minimum_version], [4.5.99.1svn-r29463])
-m4_define([xfconf_minimum_version], [4.5.93])
+m4_define([xfce_minimum_version], [4.6.0])
+m4_define([libxfcegui4_minimum_version], [4.6.0])
+m4_define([libxfce4kbd_private_minimum_version], [4.6.0])
+m4_define([xfconf_minimum_version], [4.6.0])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.12])
 m4_define([startup_notification_minimum_version], [0.5])

@@ -1,4 +1,4 @@
-4.6.0?
+4.6.0
 =====
 
 - Fix possible monitor cache size inconsistency when the screen size changes.
