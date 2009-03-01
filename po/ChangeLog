@@ -1,3 +1,9 @@
+2009-03-01  Maximilian Schleiss <maximilian@xfce.org>
+
+	* es.po: Spanish translation update (Abel Martín)
+	* pl.po: Polish translation update (Piotr Sokół)
+	* uk.po: Ukrainian translation update (Dmitry Nikitin)
+
 2009-02-28  Masato Hashimoto <cabezon.hashimoto@gmail.com>
 
 	* ja.po: Japanese translation update (Masato Hashimoto)
@@ -8,7 +14,7 @@
 
 2009-02-21  Stavros Giannouris <stavrosg@hellug.gr>
 
-	* el.po: Greek translation update ()
+	* el.po: Greek translation update
 
 2009-02-07  Maximilian Schleiss <maximilian@xfce.org>
 

@@ -2,14 +2,14 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Edscott Wilson Garcia <edscott@xfce.org>, 2004.
-# Abel Martín <abel.martin.ruiz@gmail.com>, 2008.
+# Abel Martín <abel.martin.ruiz@gmail.com>, 2008-2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 02:17+0100\n"
-"PO-Revision-Date: 2009-01-26 23:17+0100\n"
+"PO-Revision-Date: 2009-02-24 13:39+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -120,7 +120,7 @@ msgstr "<b>Desplazamiento y redimensionado de caja</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Button layout</b>"
-msgstr "<b>Disposición de botones</b>"
+msgstr "<b>Distribución de botones</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Double click _action</b>"
@@ -144,11 +144,11 @@ msgstr "<b>Traer al frente al obtener foco</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title _alignment</b>"
-msgstr "<b>_Alineación de título</b>"
+msgstr "<b>_Alineación del título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Title fon_t</b>"
-msgstr "<b>Fuen_te del título</b>"
+msgstr "<b>_Tipo de letra del título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Window _shortcuts</b>"
@@ -156,7 +156,7 @@ msgstr "<b>Ata_jos para ventanas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Atracción de las ventanas</b>"
+msgstr "<b>Atracción entre ventanas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>Wrap workspaces</b>"
@@ -188,7 +188,7 @@ msgstr "Cli_c para dar foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Click and drag the buttons to change the layout"
-msgstr "Haga clic y arrastre botones para cambiar la disposición"
+msgstr "Haga clic y arrastre botones para cambiar la distribución"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
@@ -216,7 +216,7 @@ msgstr "<i>Pequeña</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Distance|<i>Wide</i>"
-msgstr "<i>Ancho</i>"
+msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Focus follows _mouse"
@@ -232,11 +232,11 @@ msgstr "Ocultar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide content of windows when _moving"
-msgstr "Ocultar contenido de ventana al _desplazar"
+msgstr "No mostrar el contenido de ventana al _desplazar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hide content of windows when _resizing"
-msgstr "Ocultar el contenido de las ventanas al _redimensionar"
+msgstr "No mostrar el contenido de las ventanas al _redimensionar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Ke_yboard"
@@ -260,7 +260,7 @@ msgstr "<i>Pequeña</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Resistance|<i>Wide</i>"
-msgstr "<i>Ancho</i>"
+msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
@@ -284,7 +284,7 @@ msgstr "Acción a realizar cuando se haga doble clic en la barra de título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title cannot be removed"
-msgstr "El título de ventana no puede ser eliminado."
+msgstr "El título de la ventana no puede ser eliminado."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
@@ -337,7 +337,7 @@ msgstr "Maximizar ventana"
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Fill window"
-msgstr "Completar ventana"
+msgstr "Ocupar toda la ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -379,7 +379,7 @@ msgstr "Seleccionar ventanas cíclicamente"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows (Reverse)"
-msgstr "Seleccionar ventanas cíclicamente (invertir)"
+msgstr "Seleccionar ventanas cíclicamente (inversamente)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Close window"
@@ -407,7 +407,7 @@ msgstr "Pegar ventana a todos los escritorios"
 
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Raise window"
-msgstr "Subir ventana"
+msgstr "Elevar ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Lower window"
@@ -415,11 +415,11 @@ msgstr "Bajar ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Fill window horizontally"
-msgstr "Completar ventana horizontalmente"
+msgstr "Ocupar la ventana horizontalmente"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Fill window vertically"
-msgstr "Completar ventana verticalmente"
+msgstr "Ocupar la ventana verticalmente"
 
 #: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Toggle above"
@@ -653,7 +653,7 @@ msgstr "_Selección"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
-msgstr "_Recorrer cíclicamente las ventanas de todas las áreas de trabajo"
+msgstr "_Seleccionar cíclicamente las ventanas de todas las áreas de trabajo"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Display _fullscreen overlay windows directly"
@@ -785,7 +785,7 @@ msgstr "_Posicionamiento"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Activar ventanas al pulsar cualquier botón del ratón"
+msgstr "_Elevar ventanas al pulsar cualquier botón del ratón"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid ""
