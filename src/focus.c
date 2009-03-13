@@ -162,6 +162,12 @@ clientFocusNew(Client * c)
     {
         give_focus = FALSE;
     }
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME) && (c->user_time == (guint32) 0))
+    {
+        TRACE ("Given startup time is nil, not focusing \"%s\"", c->name);
+        give_focus = FALSE;
+        prevented = TRUE;
+    }
     else if ((client_focus) && (prevent_focus_stealing))
     {
         if (client_focus->win_layer > c->win_layer)
@@ -176,12 +182,6 @@ clientFocusNew(Client * c)
             TRACE ("Ignoring startup prevention because the current focused window is on a lower layer");
             give_focus = TRUE;
             prevented = FALSE;
-        }
-        else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME) && (c->user_time == CurrentTime))
-        {
-            TRACE ("Given startup time is nil, not focusing \"%s\"", c->name);
-            give_focus = FALSE;
-            prevented = TRUE;
         }
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME))
         {

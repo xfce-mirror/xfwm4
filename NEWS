@@ -2,6 +2,8 @@
 =====
 
 - Reduce repaint timeout in the compositor (Bug #5080)
+- Fix applications getting focused when focus on map is unset even 
+  without focus stealing prevention enabled (Bug #5044)
 
 4.6.0
 =====

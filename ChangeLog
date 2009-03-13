@@ -1,5 +1,12 @@
 2009-03-13	olivier
 
+	* src/focus.c, serc/netwm.c: Check for nil timestamp regardless of 
+	  focus stealing prevention setting, so that applications using
+	  gtk_window_set_focus_on_map() don't get focused even when focus
+	  stealing prevention is disabled (Bug #5044)
+
+2009-03-13	olivier
+
 	* src/compositor.c: Reduce repaint timeout in the compositor 
 	  (Bug #5080)
 
