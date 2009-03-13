@@ -1,3 +1,8 @@
+4.6.1
+=====
+
+- Reduce repaint timeout in the compositor (Bug #5080)
+
 4.6.0
 =====
 

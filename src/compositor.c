@@ -86,7 +86,7 @@
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
 /* Set TIMEOUT_REPAINT to 0 to disable timeout repaint */
-#define TIMEOUT_REPAINT       20 /* (1/50 sec.) */
+#define TIMEOUT_REPAINT       10 /* msec.) */
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -1464,7 +1464,7 @@ repair_display (DisplayInfo *display_info)
 
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
-        add_repair ((ScreenInfo *) screens->data);
+        repair_screen ((ScreenInfo *) screens->data);
     }
 }
 #endif
