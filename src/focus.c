@@ -166,7 +166,7 @@ clientFocusNew(Client * c)
     {
         TRACE ("Given startup time is nil, not focusing \"%s\"", c->name);
         give_focus = FALSE;
-        prevented = TRUE;
+        prevented = FALSE;
     }
     else if ((client_focus) && (prevent_focus_stealing))
     {
