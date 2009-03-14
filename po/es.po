@@ -78,7 +78,7 @@ msgstr "Nombre del área de trabajo"
 #: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:308
 msgid "Settings manager socket"
-msgstr "Socket del gestor de configuración"
+msgstr "Socket del administrador de configuración"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
