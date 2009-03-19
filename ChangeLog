@@ -1,10 +1,16 @@
 2009-03-19	olivier
 
+	* src/netwm.c: Do not try to update last user timestamp if the given
+	  timestamp is outdated, that avoids some unecessary warnings for
+	  "Last user time set back to..." upon restart.
+
+2009-03-19	olivier
+
 	* settings-dialogs/xfwm4-settings.c, 
 	  settings-dialogs/xfwm4-dialog.glade,
 	  src/settings.c: Reduce minimum timeout for focus delay in focus 
 	  follow mouse (100ms was way too much),
-      Fix raise delay settings in xfwm4 dialog being totally ignored
+	  Fix raise delay settings in xfwm4 dialog being totally ignored
 
 2009-03-13	olivier
 

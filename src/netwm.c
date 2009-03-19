@@ -1467,7 +1467,10 @@ clientGetUserTime (Client * c)
 
     if (getNetWMUserTime (display_info, c->user_time_win, &c->user_time))
     {
-        if (c->user_time != 0)
+        guint32 last_user_time;
+        
+        last_user_time = myDisplayGetLastUserTime (display_info);
+        if (c->user_time && TIMESTAMP_IS_BEFORE(last_user_time, c->user_time))
         {
             myDisplaySetLastUserTime (display_info, c->user_time);
         }
