@@ -1065,11 +1065,11 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
             case G_TYPE_INT:
                 if (!strcmp (name, "raise_delay"))
                 {
-                    screen_info->params->raise_delay = CLAMP (g_value_get_int (value), 100, 2000);
+                    screen_info->params->raise_delay = CLAMP (g_value_get_int (value), 5, 2000);
                 }
                 else if (!strcmp (name, "focus_delay"))
                 {
-                    screen_info->params->focus_delay = CLAMP (g_value_get_int (value), 100, 2000);
+                    screen_info->params->focus_delay = CLAMP (g_value_get_int (value), 5, 2000);
                 }
                 else if (!strcmp (name, "snap_width"))
                 {

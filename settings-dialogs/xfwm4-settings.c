@@ -405,6 +405,7 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *shortcuts_clear_button;
   GtkWidget          *shortcuts_reset_button;
   GtkWidget          *focus_delay_scale;
+  GtkWidget          *focus_raise_delay_scale;
   GtkWidget          *raise_on_click_check;
   GtkWidget          *raise_on_focus_check;
   GtkWidget          *click_to_focus_radio;
@@ -614,6 +615,7 @@ xfwm_settings_constructed (GObject *object)
 
   /* Focus tab widgets */
   focus_delay_scale = glade_xml_get_widget (settings->priv->glade_xml, "focus_delay_scale");
+  focus_raise_delay_scale = glade_xml_get_widget (settings->priv->glade_xml, "focus_raise_delay_scale");
   focus_new_check = glade_xml_get_widget (settings->priv->glade_xml, "focus_new_check");
   raise_on_focus_check = glade_xml_get_widget (settings->priv->glade_xml, "raise_on_focus_check");
   raise_on_click_check = glade_xml_get_widget (settings->priv->glade_xml, "raise_on_click_check");
@@ -622,6 +624,8 @@ xfwm_settings_constructed (GObject *object)
   /* Focus tab */
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/focus_delay", G_TYPE_INT,
                           gtk_range_get_adjustment (GTK_RANGE (focus_delay_scale)), "value");
+  xfconf_g_property_bind (settings->priv->wm_channel, "/general/raise_delay", G_TYPE_INT,
+                          gtk_range_get_adjustment (GTK_RANGE (focus_raise_delay_scale)), "value");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/raise_on_click", G_TYPE_BOOLEAN,
                           raise_on_click_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/raise_on_focus", G_TYPE_BOOLEAN,

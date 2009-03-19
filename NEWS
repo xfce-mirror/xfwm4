@@ -4,6 +4,9 @@
 - Reduce repaint timeout in the compositor (Bug #5080)
 - Fix applications getting focused when focus on map is unset even 
   without focus stealing prevention enabled (Bug #5044)
+- Reduce minimum timeout for focus delay in focus follow mouse (100ms was way
+  too much)
+- Fix raise delay settings in xfwm4 dialog being totally ignored
 
 4.6.0
 =====

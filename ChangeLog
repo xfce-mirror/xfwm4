@@ -1,3 +1,11 @@
+2009-03-19	olivier
+
+	* settings-dialogs/xfwm4-settings.c, 
+	  settings-dialogs/xfwm4-dialog.glade,
+	  src/settings.c: Reduce minimum timeout for focus delay in focus 
+	  follow mouse (100ms was way too much),
+      Fix raise delay settings in xfwm4 dialog being totally ignored
+
 2009-03-13	olivier
 
 	* src/focus.c: do not set the demand attendtion flag if the 
