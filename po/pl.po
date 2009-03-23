@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-07 22:12+0000\n"
-"PO-Revision-Date: 2009-02-23 21:41+0100\n"
+"PO-Revision-Date: 2009-03-20 20:50+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "Nazwa"
 #: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Settings manager socket"
-msgstr "Gniazdo menedżera ustawień"
+msgstr "Określa gniazdo menedżera ustawień"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
@@ -91,7 +91,7 @@ msgstr "Konfiguruje ustawienia okien i skrótów klawiszowych"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
-msgstr "Menedżer okien"
+msgstr "Okna"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
@@ -101,7 +101,7 @@ msgstr "Konfiguruje szczegółowe ustawienia okien oraz efekty wizualne"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Window Manager Tweaks"
-msgstr "Dodatkowe ustawienia menedżera okien"
+msgstr "Menedżer okien"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -611,7 +611,7 @@ msgstr "Klawisz skrótu"
 #: ../settings-dialogs/xfwm4-settings.c:977
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Nie udało się zainicjalizować xfconf. Przyczyna: %s"
+msgstr "Nie udało się zainicjować programu xfconf. Przyczyna: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:988
 msgid "Could not create the settings dialog."
@@ -675,8 +675,9 @@ msgid "Honor _standard ICCCM focus hint"
 msgstr "Uznawanie _standardu ICCCM zaznaczania okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#, fuzzy
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Powtarzanie _migania pilnych okien"
+msgstr "_Nieustające miganie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
