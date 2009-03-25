@@ -1,3 +1,9 @@
+2009-03-25	olivier
+
+	* src/client.c, src/cycle.c: Fix a long standing bug in xfwm4 4.6 
+	  were activating a transient would not regrab the mouse on parent
+	  window.
+
 2009-03-19	olivier
 
 	* src/netwm.c: Do not try to update last user timestamp if the given

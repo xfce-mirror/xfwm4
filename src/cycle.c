@@ -302,6 +302,7 @@ clientCycle (Client * c, XKeyEvent * ev)
         clientRaise (sibling, None);
         clientShow (sibling, TRUE);
         clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+        clientSetLastRaise (c);
     }
 
     /*

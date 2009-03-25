@@ -2572,6 +2572,7 @@ clientActivate (Client * c, guint32 timestamp)
         clientShow (sibling, TRUE);
         clientClearAllShowDesktop (screen_info);
         clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
+        clientSetLastRaise (c);
     }
     else
     {
