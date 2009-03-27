@@ -1,3 +1,7 @@
+2009-03-26	olivier
+
+	* src/placement.c: Do not not fill over adjacent windows (Bug #5152)
+
 2009-03-25	olivier
 
 	* src/client.c, src/cycle.c: Fix a long standing bug in xfwm4 4.6 

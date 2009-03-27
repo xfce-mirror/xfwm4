@@ -792,7 +792,7 @@ clientFill (Client * c, int fill_type)
                  */
                 if (segment_overlap (frameY(c), frameY(c) + frameHeight(c), frameY(c2), frameY(c2) + frameHeight(c2)))
                 {
-                    if ((frameX(c2) + frameWidth(c2)) < frameX(c))
+                    if ((frameX(c2) + frameWidth(c2)) <= frameX(c))
                     {
                         if (west_neighbour)
                         {
@@ -809,7 +809,7 @@ clientFill (Client * c, int fill_type)
                             west_neighbour = c2;
                         }
                     }
-                    if ((frameX(c) + frameWidth(c)) < frameX(c2))
+                    if ((frameX(c) + frameWidth(c)) <= frameX(c2))
                     {
                         /* Check if c2 is closer to the client
                          * then the west neighbour already found
@@ -837,7 +837,7 @@ clientFill (Client * c, int fill_type)
                  */
                 if (segment_overlap (frameX(c), frameX(c) + frameWidth(c), frameX(c2), frameX(c2) + frameWidth(c2)))
                 {
-                    if ((frameY(c2) + frameHeight(c2)) < frameY(c))
+                    if ((frameY(c2) + frameHeight(c2)) <= frameY(c))
                     {
                         if (north_neighbour)
                         {
@@ -854,7 +854,7 @@ clientFill (Client * c, int fill_type)
                             north_neighbour = c2;
                         }
                     }
-                    if ((frameY(c) + frameHeight(c)) < frameY(c2))
+                    if ((frameY(c) + frameHeight(c)) <= frameY(c2))
                     {
                         if (south_neighbour)
                         {

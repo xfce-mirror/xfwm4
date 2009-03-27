@@ -10,6 +10,7 @@
 - Avoid unecessary warnings about timestamps at startup
 - Fix a long standing bug in xfwm4 4.6 were activating a transient would not
   regrab the mouse on parent window.
+- Do not go over adjacent windows with fill (Bug #5152)
 
 4.6.0
 =====
