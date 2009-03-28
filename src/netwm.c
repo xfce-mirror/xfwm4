@@ -1309,11 +1309,14 @@ clientWindowType (Client * c)
         }
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
     }
-    if ((old_type != c->type) || (c->initial_layer != c->win_layer))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE|CLIENT_FLAG_BELOW|CLIENT_FLAG_FULLSCREEN))
     {
-        TRACE ("setting layer %i", c->initial_layer);
-        clientSetLayer (c, c->initial_layer);
-        clientSetNetState (c);
+        if ((old_type != c->type) || (c->initial_layer != c->win_layer))
+        {
+            TRACE ("setting layer %i", c->initial_layer);
+            clientSetLayer (c, c->initial_layer);
+            clientSetNetState (c);
+        }
     }
 }
 
@@ -1468,7 +1471,7 @@ clientGetUserTime (Client * c)
     if (getNetWMUserTime (display_info, c->user_time_win, &c->user_time))
     {
         guint32 last_user_time;
-        
+
         last_user_time = myDisplayGetLastUserTime (display_info);
         if (c->user_time && TIMESTAMP_IS_BEFORE(last_user_time, c->user_time))
         {

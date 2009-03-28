@@ -1,3 +1,8 @@
+2009-03-28	olivier
+
+	* src/netwm.c: Keep window layer when status is above, below or 
+	  fullscreen (Bug #5030)
+
 2009-03-26	olivier
 
 	* src/placement.c: Do not not fill over adjacent windows (Bug #5152)

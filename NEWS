@@ -11,6 +11,8 @@
 - Fix a long standing bug in xfwm4 4.6 were activating a transient would not
   regrab the mouse on parent window.
 - Do not go over adjacent windows with fill (Bug #5152)
+- Do not actually change window layer when status is above, below or fullscreen
+  (Bug #5030)
 
 4.6.0
 =====
