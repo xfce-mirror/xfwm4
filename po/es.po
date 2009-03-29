@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 02:17+0100\n"
-"PO-Revision-Date: 2009-02-24 13:39+0100\n"
+"PO-Revision-Date: 2009-03-29 23:17+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr "Cli_c para dar foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Click and drag the buttons to change the layout"
-msgstr "Haga clic y arrastre botones para cambiar la distribución"
+msgstr "Haga clic y arrastre los botones para cambiar la distribución"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
@@ -232,11 +232,11 @@ msgstr "Ocultar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Hide content of windows when _moving"
-msgstr "No mostrar el contenido de ventana al _desplazar"
+msgstr "Ocultar el contenido de ventana al _desplazar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hide content of windows when _resizing"
-msgstr "No mostrar el contenido de las ventanas al _redimensionar"
+msgstr "Ocultar el contenido de las ventanas al _redimensionar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Ke_yboard"
@@ -284,7 +284,7 @@ msgstr "Acción a realizar cuando se haga doble clic en la barra de título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title cannot be removed"
-msgstr "El título de la ventana no puede ser eliminado."
+msgstr "El título de la ventana no puede ser eliminado"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
@@ -677,7 +677,7 @@ msgstr "Mantener las ventanas urgentes pa_rpadeando repetidamente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
-msgstr "Tecla utilizada para co_ger y desplazar ventanas:"
+msgstr "Tecla utilizada para a_garrar y desplazar ventanas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
@@ -856,7 +856,7 @@ msgstr "Mi_nimizar"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr "Minimizar _todas las demás ventanas"
+msgstr "Minimizar el _resto de ventanas"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -947,12 +947,12 @@ msgstr "%s: No se puede reservar el color %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: No se puede reserver espacio para color: GValue para color no es de tipo STRING"
+msgstr "%s: No se puede reservar espacio para el color: GValue para el color no es de tipo STRING"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: No se puede interpretar el color %s\n"
+msgstr "%s: No se puede procesar el color %s\n"
 
 #: ../src/settings.c:284
 #, c-format
