@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-07 22:12+0000\n"
-"PO-Revision-Date: 2009-03-20 20:50+0100\n"
+"PO-Revision-Date: 2009-03-29 14:38+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "Określa gniazdo menedżera ustawień"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Configure window behavior and shortcuts"
-msgstr "Konfiguruje ustawienia okien i skrótów klawiszowych"
+msgstr "Konfiguruje ustawienia okien i skróty klawiszowe"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
@@ -96,7 +96,7 @@ msgstr "Okna"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Fine-tune window behaviour and effects"
-msgstr "Konfiguruje szczegółowe ustawienia okien oraz efekty wizualne"
+msgstr "Konfiguruje ustawienia menedżera okien oraz efekty wizualne"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
@@ -106,7 +106,7 @@ msgstr "Menedżer okien"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Set number and names of workspaces"
-msgstr "Określa ilość oraz nazwy obszarów roboczych"
+msgstr "Konfiguruje ilość oraz nazwy obszarów roboczych"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -127,7 +127,7 @@ msgstr "<b>Rozmieszczenie przycisków</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Double click _action</b>"
-msgstr "<b>Akcja podwójnego kliknięcia</b>"
+msgstr "<b>Akcja _dwukrotnego kliknięcia</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Focus model</b>"
@@ -139,11 +139,11 @@ msgstr "<b>Nowe okna</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on click</b>"
-msgstr "<b>Zachowanie okna po kliknięciu</b>"
+msgstr "<b>Zachowanie po kliknięciu</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Zachowanie okna po zaznaczeniu</b>"
+msgstr "<b>Zachowanie po zaznaczeniu</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title _alignment</b>"
@@ -163,7 +163,7 @@ msgstr "<b>Przyleganie okien</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Zmiana obszaru roboczego</b>"
+msgstr "<b>Obszary robocze</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "<b>_Theme</b>"
@@ -199,7 +199,7 @@ msgstr "Zamyka okno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Delay _before raising focused window:"
-msgstr "Opóźnienie, po którym zaznaczone okno zostanie przeniesione na wierzch:"
+msgstr "_Opóźnienie, po którym zaznaczone okno zostanie przeniesione na wierzch:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
@@ -247,7 +247,7 @@ msgstr "_Klawiatura"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
-msgstr "Maksymalizuje okno"
+msgstr "Maksymalizuje rozmiar okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
@@ -267,7 +267,7 @@ msgstr "<i>Duży</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
-msgstr "Zwija okno"
+msgstr "Zwija okno do paska tytułowego"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Snap windows to other _windows"
@@ -295,11 +295,11 @@ msgstr "Tytuł"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Przenosząc _okno poza krawędź ekranu"
+msgstr "Przełączanie podczas przenoszenia _okna poza krawędź ekranu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Przenosząc k_ursor myszy poza krawędź ekranu"
+msgstr "Przełączanie podczas przenoszenia k_ursora myszy poza krawędź ekranu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
@@ -307,7 +307,7 @@ msgstr "_Opóźnienie, po którym okno zostanie zaznaczone:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Edge resistance:"
-msgstr "Opór _krawędzi:"
+msgstr "Opór k_rawędzi:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
@@ -330,7 +330,7 @@ msgstr "Zwiń/rozwiń"
 #: ../settings-dialogs/xfwm4-settings.c:216
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Hide window"
-msgstr "Ukryj"
+msgstr "Zminimalizuj"
 
 #: ../settings-dialogs/xfwm4-settings.c:217
 #: ../settings-dialogs/xfwm4-settings.c:242
@@ -636,7 +636,7 @@ msgstr "<i>Całkowita</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "Activate _focus stealing prevention"
-msgstr "Zapobieganie utracie _zaznaczenia okna"
+msgstr "Zapobieganie _utracie zaznaczenia okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid "At the _center of the screen"
@@ -656,7 +656,7 @@ msgstr "_Przechodzenie pomiędzy oknami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
-msgstr "Uwzględnianie okien ze _wszystkich obszarów roboczych"
+msgstr "Uwzględnianie okien ze w_szystkich obszarów roboczych"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Display _fullscreen overlay windows directly"
@@ -668,24 +668,23 @@ msgstr "_Brak"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Hide _frame of windows when maximized"
-msgstr "Ukrywanie _obramowań zmaksymalizowanych okien"
+msgstr "Ukrywanie o_bramowań zmaksymalizowanych okien"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Honor _standard ICCCM focus hint"
 msgstr "Uznawanie _standardu ICCCM zaznaczania okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "_Nieustające miganie"
+msgstr "Pow_tarzające się miganie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
-msgstr "Klawisz służący do _chwytania i przenoszenia okien:"
+msgstr "Klawisz służący do c_hwytania i przenoszenia okien:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "_Pilne powiadamianie miganiem dekoracją okna"
+msgstr "Powiadamianie o pi_lności okien migającym obramowaniem"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Opaci_ty of window decorations:"
@@ -709,7 +708,7 @@ msgstr "Przezroczystość okien podczas zmiany _rozmiaru:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Przywracanie pierwotnego _rozmiaru zmaksymalizowanego okna podczas przenoszenia"
+msgstr "Przywracanie pierwotnego rozm_iaru zmaksymalizowanego okna podczas przenoszenia"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Show shadows under _dock windows"
@@ -733,7 +732,7 @@ msgstr "<i>Mały</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Switch to win_dow's workspace"
-msgstr "Przejście na obszar roboczny _okna"
+msgstr "Przejście na obszar roboczny o_kna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Under the mouse _pointer"
@@ -745,7 +744,7 @@ msgstr "Używanie oporu _krawędzi zamiast przylegania okien"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Zmienianie obszaru roboczego przy użyciu kółka _myszy na pulpicie"
+msgstr "Zmienianie obszaru roboczego przy użyciu kółka m_yszy na pulpicie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
@@ -753,11 +752,11 @@ msgstr "Akcja uruchamiana po przeniesieniu okna na wierzch przez system:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Zawijanie obszarów roboczych uwzględniając ich _układ"
+msgstr "Przełączanie pomiędzy obszarami roboczymi uwzględniając ich _układ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Zawijanie obszarów roboczych po osiągnięciu _pierwszego lub ostatniego z nich"
+msgstr "Przełączanie pomiędzy _krańcowymi obszarami roboczymi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Accessibility"
@@ -765,11 +764,11 @@ msgstr "_Dostępność"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Bring window on current workspace"
-msgstr "_Przeniesienie okna na bieżący obszar roboczy"
+msgstr "Prz_eniesienie okna na bieżący obszar roboczy"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Wyświetlanie ramki dookoła zaznaczonego okna"
+msgstr "W_yświetlanie ramki dookoła zaznaczonego okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Enable display compositing"
@@ -785,25 +784,25 @@ msgstr "_Minimalny rozmiar okna potrzebny do włączenia inteligentnego rozmiesz
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Placement"
-msgstr "_Położenie"
+msgstr "P_ołożenie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Przenoszenie na wierzch okien po kliknięciu w ich zawartość dowolnym przyciskiem myszy"
+msgstr "Prz_enoszenie na wierzch okien po kliknięciu w ich zawartość dowolnym przyciskiem myszy"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"_Pamiętanie i przywracanie poprzedniego obszaru roboczego\n"
+"Z_apamiętywanie i przywracanie poprzedniego obszaru roboczego\n"
 "podczas przełączania za pomocą skrótów klawiszowych"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Pomijanie okien ukrytych na liście zadań lub pagerze"
+msgstr "Pom_ijanie okien ukrytych na liście zadań lub podglądzie obszarów roboczych"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Workspaces"
