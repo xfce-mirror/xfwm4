@@ -742,7 +742,7 @@ msgstr "Skift til vin_duets arbejdsområde"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Under the mouse _pointer"
-msgstr "Under muserm_arkøren"
+msgstr "Under musem_arkøren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use _edge resistance instead of window snapping"
@@ -774,7 +774,7 @@ msgstr "Fly_t vindue til aktivt arbejdsområde"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Tegn en ramme omkring valgte vindue under under gennemløb af vinduer"
+msgstr "_Tegn en ramme omkring valgte vindue under gennemløb af vinduer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Enable display compositing"
@@ -782,7 +782,7 @@ msgstr "Ak_tivér skærmbilledesammensætning"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "I_nkludér skjulte (ikke f.eks minimerede) vinduer"
+msgstr "I_nkludér skjulte (det vil sige minimerede) vinduer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Minimum size of windows to trigger smart placement:"
@@ -794,7 +794,7 @@ msgstr "P_lacering"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Bring vinduer forrest ved tryk på virkårlig muse-knap"
+msgstr "_Flyt vinduer forrest ved tryk på vilkårlig museknap"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid ""
