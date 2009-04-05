@@ -13,6 +13,8 @@
 - Do not go over adjacent windows with fill (Bug #5152)
 - Do not actually change window layer when status is above, below or fullscreen
   (Bug #5030)
+- Check fullscreen status against each monitor and not just the overall screen
+  size in the compositor. 
 
 4.6.0
 =====

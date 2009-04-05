@@ -73,10 +73,6 @@
 #define WIN_IS_ARGB(cw)                 (cw->argb)
 #define WIN_IS_OPAQUE(cw)               ((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw))
 #define WIN_IS_NATIVE_OPAQUE(cw)        ((cw->native_opacity) && !WIN_IS_ARGB(cw))
-#define WIN_IS_FULLSCREEN(cw)           ((cw->attr.x <= 0) && \
-                                           (cw->attr.y <= 0) && \
-                                           (cw->attr.width + 2 * cw->attr.border_width >= cw->screen_info->width) && \
-                                           (cw->attr.height + 2 * cw->attr.border_width >= cw->screen_info->height))
 #define WIN_IS_SHAPED(cw)               ((WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
                                            (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
 #define WIN_IS_VIEWABLE(cw)             (cw->viewable)
@@ -186,6 +182,32 @@ is_shaped (DisplayInfo *display_info, Window id)
         return (boundingShaped != 0);
     }
     return FALSE;
+}
+
+static gboolean
+is_fullscreen (CWindow *cw)
+{
+    GdkRectangle rect;
+
+    /* First, check the good old way, the window is larger than the screen size */
+    if ((cw->attr.x <= 0) &&
+        (cw->attr.y <= 0) &&
+        (cw->attr.width + 2 * cw->attr.border_width >= cw->screen_info->width) &&
+        (cw->attr.height + 2 * cw->attr.border_width >= cw->screen_info->height))
+    {
+        return TRUE;
+    }
+
+    /* Next check against the monitors which compose the entire screen */
+    myScreenFindMonitorAtPoint (cw->screen_info,
+                                cw->attr.x + (cw->attr.width + 2 * cw->attr.border_width) / 2,
+                                cw->attr.y + (cw->attr.height + 2 * cw->attr.border_width) / 2,
+                                &rect);
+
+    return ((cw->attr.x == rect.x) &&
+            (cw->attr.y == rect.y) &&
+            (cw->attr.width + 2 * cw->attr.border_width == rect.width) &&
+            (cw->attr.height + 2 * cw->attr.border_width == rect.height));
 }
 
 static gdouble
@@ -928,8 +950,8 @@ win_extents (CWindow *cw)
 
     if ((screen_info->params->show_popup_shadow &&
               WIN_IS_OVERRIDE(cw) &&
-              !WIN_IS_FULLSCREEN(cw) &&
-              !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw))) ||
+              !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)) &&
+              !is_fullscreen(cw)) ||
           (screen_info->params->show_frame_shadow &&
               !WIN_IS_OVERRIDE(cw) &&
               !WIN_NO_SHADOW(cw) &&
@@ -1745,7 +1767,7 @@ map_win (CWindow *cw)
 
     if (!WIN_IS_REDIRECTED(cw))
     {
-        cw->fulloverlay = WIN_IS_FULLSCREEN(cw);
+        cw->fulloverlay = is_fullscreen(cw);
         if (cw->fulloverlay)
         {
             /*
@@ -1778,7 +1800,7 @@ map_win (CWindow *cw)
     }
 
     /* Check for new windows to un-redirect. */
-    if ((WIN_IS_FULLSCREEN(cw) || (screen_info->wins_unredirected > 0)) && WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) &&
+    if (((screen_info->wins_unredirected > 0) || is_fullscreen(cw)) && WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) &&
         WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw))
     {
         CWindow *top;

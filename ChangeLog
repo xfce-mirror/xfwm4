@@ -1,3 +1,8 @@
+2009-04-05	olivier
+
+	* src/compositor.c: Check fullscreen status against each monitor and not
+	  just the overall screen size in the compositor
+
 2009-03-28	olivier
 
 	* src/netwm.c: Keep window layer when status is above, below or 
