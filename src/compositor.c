@@ -73,6 +73,10 @@
 #define WIN_IS_ARGB(cw)                 (cw->argb)
 #define WIN_IS_OPAQUE(cw)               ((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw))
 #define WIN_IS_NATIVE_OPAQUE(cw)        ((cw->native_opacity) && !WIN_IS_ARGB(cw))
+#define WIN_IS_FULLSCREEN(cw)           ((cw->attr.x <= 0) && \
+                                           (cw->attr.y <= 0) && \
+                                           (cw->attr.width + 2 * cw->attr.border_width >= cw->screen_info->width) && \
+                                           (cw->attr.height + 2 * cw->attr.border_width >= cw->screen_info->height))
 #define WIN_IS_SHAPED(cw)               ((WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
                                            (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
 #define WIN_IS_VIEWABLE(cw)             (cw->viewable)
@@ -190,10 +194,7 @@ is_fullscreen (CWindow *cw)
     GdkRectangle rect;
 
     /* First, check the good old way, the window is larger than the screen size */
-    if ((cw->attr.x <= 0) &&
-        (cw->attr.y <= 0) &&
-        (cw->attr.width + 2 * cw->attr.border_width >= cw->screen_info->width) &&
-        (cw->attr.height + 2 * cw->attr.border_width >= cw->screen_info->height))
+    if (WIN_IS_FULLSCREEN(cw))
     {
         return TRUE;
     }
@@ -951,7 +952,7 @@ win_extents (CWindow *cw)
     if ((screen_info->params->show_popup_shadow &&
               WIN_IS_OVERRIDE(cw) &&
               !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)) &&
-              !is_fullscreen(cw)) ||
+              !WIN_IS_FULLSCREEN(cw)) ||
           (screen_info->params->show_frame_shadow &&
               !WIN_IS_OVERRIDE(cw) &&
               !WIN_NO_SHADOW(cw) &&
@@ -1793,15 +1794,10 @@ map_win (CWindow *cw)
     cw->viewable = TRUE;
     cw->damaged = FALSE;
 
-    if (!screen_info->params->unredirect_overlays)
-    {
-        TRACE ("Not unredirecting wins_unredirected");
-        return;
-    }
-
     /* Check for new windows to un-redirect. */
-    if (((screen_info->wins_unredirected > 0) || is_fullscreen(cw)) && WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) &&
-        WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw))
+    if (WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) &&
+        WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw)
+        && ((screen_info->wins_unredirected > 0) || is_fullscreen(cw)))
     {
         CWindow *top;
         GList *index;
@@ -1811,8 +1807,13 @@ map_win (CWindow *cw)
 
         if (cw == top)
         {
-            TRACE ("Unredirecting toplevel window 0x%lx", cw->id);
-            unredirect_win (cw);
+            /* Make those opaque, we don't want them to be transparent */
+            cw->opacity = NET_WM_OPAQUE;
+            if (screen_info->params->unredirect_overlays)
+            {
+                TRACE ("Unredirecting toplevel window 0x%lx", cw->id);
+                unredirect_win (cw);
+            }
         }
     }
 }

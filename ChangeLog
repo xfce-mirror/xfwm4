@@ -1,3 +1,9 @@
+2009-04-07	olivier
+
+	* src/compositor.c: Make fullscreen override opaque, so screensaver
+	  is not partly transparent even if not unredirecting fullscreen
+	  windows.
+
 2009-04-05	olivier
 
 	* src/compositor.c: Check fullscreen status against each monitor and not
