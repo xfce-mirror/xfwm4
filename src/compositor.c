@@ -1799,21 +1799,12 @@ map_win (CWindow *cw)
         WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw)
         && ((screen_info->wins_unredirected > 0) || is_fullscreen(cw)))
     {
-        CWindow *top;
-        GList *index;
-
-        index = screen_info->cwindows;
-        top = (CWindow *) index->data;
-
-        if (cw == top)
+        /* Make those opaque, we don't want them to be transparent */
+        cw->opacity = NET_WM_OPAQUE;
+        if (screen_info->params->unredirect_overlays)
         {
-            /* Make those opaque, we don't want them to be transparent */
-            cw->opacity = NET_WM_OPAQUE;
-            if (screen_info->params->unredirect_overlays)
-            {
-                TRACE ("Unredirecting toplevel window 0x%lx", cw->id);
-                unredirect_win (cw);
-            }
+            TRACE ("Unredirecting toplevel window 0x%lx", cw->id);
+            unredirect_win (cw);
         }
     }
 }

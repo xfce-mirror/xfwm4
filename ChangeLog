@@ -1,5 +1,9 @@
 2009-04-08	olivier
 
+	* src/compositor.c: Ignore stacking when detecting overlays
+
+2009-04-08	olivier
+
 	* src/parserc.c, src/settings.c, src/events.c: Plug various memory
 	  leaks
 
