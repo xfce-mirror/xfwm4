@@ -1,3 +1,8 @@
+2009-04-08	olivier
+
+	* src/parserc.c, src/settings.c, src/events.c: Plug various memory
+	  leaks
+
 2009-04-07	olivier
 
 	* src/compositor.c: Make fullscreen override opaque, so screensaver

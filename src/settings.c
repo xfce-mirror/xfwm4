@@ -305,6 +305,7 @@ getTitleShadow (Settings *rc, const gchar * name)
 static void
 loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
+
     static const char *side_names[] = {
         "left",
         "right",
@@ -338,6 +339,58 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "toggled-pressed"
     };
 
+    static const char *ui_part[] = {
+        "fg",
+        "fg",
+        "dark",
+        "dark",
+        "fg",
+        "fg",
+        "bg",
+        "light",
+        "dark",
+        "mid",
+        "bg",
+        "light",
+        "dark",
+        "mid",
+        "bg",
+        "light",
+        "dark",
+        "mid",
+        "bg",
+        "light",
+        "dark",
+        "mid",
+        NULL
+    };
+
+    static const char *ui_state[] = {
+        "selected",
+        "insensitive",
+        "selected",
+        "insensitive",
+        "normal",
+        "normal",
+        "selected",
+        "selected",
+        "selected",
+        "selected",
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "insensitive",
+        "insensitive",
+        "insensitive",
+        "insensitive",
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        NULL
+    };
+
     gchar imagename[30];
     GValue tmp_val = { 0, };
     DisplayInfo *display_info;
@@ -354,30 +407,17 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
     desc = NULL;
     context = NULL;
+    i = 0;
 
-    setStringValue (rc[0].option, getUIStyle (widget, "fg",    "selected"), rc);
-    setStringValue (rc[1].option, getUIStyle (widget, "fg",    "insensitive"), rc);
-    setStringValue (rc[2].option, getUIStyle (widget, "dark",  "selected"), rc);
-    setStringValue (rc[3].option, getUIStyle (widget, "dark",  "insensitive"), rc);
-    setStringValue (rc[4].option, getUIStyle (widget, "fg",    "normal"), rc);
-    setStringValue (rc[5].option, getUIStyle (widget, "fg",    "normal"), rc);
-    setStringValue (rc[6].option, getUIStyle (widget, "bg",    "selected"), rc);
-    setStringValue (rc[7].option, getUIStyle (widget, "light", "selected"), rc);
-    setStringValue (rc[8].option, getUIStyle (widget, "dark",  "selected"), rc);
-    setStringValue (rc[9].option, getUIStyle (widget, "mid",   "selected"), rc);
-    setStringValue (rc[10].option, getUIStyle (widget, "bg",    "normal"), rc);
-    setStringValue (rc[11].option, getUIStyle (widget, "light", "normal"), rc);
-    setStringValue (rc[12].option, getUIStyle (widget, "dark",  "normal"), rc);
-    setStringValue (rc[13].option, getUIStyle (widget, "mid",   "normal"), rc);
-    setStringValue (rc[14].option, getUIStyle (widget, "bg",    "insensitive"), rc);
-    setStringValue (rc[15].option, getUIStyle (widget, "light", "insensitive"), rc);
-    setStringValue (rc[16].option, getUIStyle (widget, "dark",  "insensitive"), rc);
-    setStringValue (rc[17].option, getUIStyle (widget, "mid",   "insensitive"), rc);
-    setStringValue (rc[18].option, getUIStyle (widget, "bg",    "normal"), rc);
-    setStringValue (rc[19].option, getUIStyle (widget, "light", "normal"), rc);
-    setStringValue (rc[20].option, getUIStyle (widget, "dark",  "normal"), rc);
-    setStringValue (rc[21].option, getUIStyle (widget, "mid",   "normal"), rc);
+    while (ui_part[i] && ui_state[i])
+    {
+        gchar *color;
 
+        color = getUIStyle  (widget, ui_part[i], ui_state[i]);
+        setStringValue (rc[i].option, color, rc);
+        g_free (color);
+        ++i;
+    }
 
     theme = getThemeDir (getStringValue ("theme", rc), THEMERC);
     parseRc (THEMERC, theme, rc);
@@ -688,7 +728,6 @@ loadSettings (ScreenInfo *screen_info)
     TRACE ("entering loadSettings");
 
     loadRcData (screen_info, rc);
-    loadRcData (screen_info, rc);
     loadXfconfData (screen_info, rc);
     loadTheme (screen_info, rc);
     update_grabs (screen_info);
@@ -897,7 +936,7 @@ reloadScreenSettings (ScreenInfo *screen_info, int mask)
 {
     g_return_val_if_fail (screen_info, FALSE);
 
-    unloadTheme (screen_info);
+    unloadSettings (screen_info);
     if (!loadSettings (screen_info))
     {
         return FALSE;
