@@ -1,3 +1,8 @@
+2009-04-09	olivier
+
+	* src/events.c, src/keyboard.c: Fix grab remaining if shortcut is not
+	  used (Bug #5207)
+
 2009-04-08	olivier
 
 	* src/compositor.c: Ignore stacking when detecting overlays

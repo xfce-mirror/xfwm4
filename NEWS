@@ -15,6 +15,7 @@
   (Bug #5030)
 - Check fullscreen status against each monitor and not just the overall screen
   size in the compositor. 
+- Fix remaining active grab if shortcut if shortcut is not used (Bug #5207) 
 - Plug various memory leaks
 
 
