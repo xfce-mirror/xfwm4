@@ -1,3 +1,7 @@
+2009-04-12	olivier
+
+	* configure.ac.in, themes/Makefile.am: Update versions
+
 2009-04-09	olivier
 
 	* src/events.c, src/keyboard.c: Fix grab remaining if shortcut is not
