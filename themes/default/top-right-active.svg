@@ -23,11 +23,11 @@
     <linearGradient
        id="linearGradient3143">
       <stop
-         style="stop-color:#ffffff;stop-opacity:0.00;"
+         style="stop-color:#ffffff;stop-opacity:0.0;"
          offset="0"
          id="stop3145" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:0.15;"
+         style="stop-color:#000000;stop-opacity:0.10;"
          offset="1"
          id="stop3147" />
     </linearGradient>
@@ -86,9 +86,9 @@
        xlink:href="#linearGradient3143"
        id="linearGradient3149"
        x1="0"
-       y1="18"
+       y1="13"
        x2="0"
-       y2="22"
+       y2="24"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
@@ -175,11 +175,11 @@
        id="path6061" />
     <path
        style="fill:url(#linearGradient3149);fill-opacity:1.00;stroke:none;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 6,14 L 0,14 L 0,23 L 3,23 C 6,23 6,20 6,14 z"
+       d="M 6,12 L 0,12 L 0,24 L 4,24 L 6,12 z"
        id="path2396" />
     <path
        style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
-       d="M 0,1.5 L 4.5,1.5 C 4.5,1.5 6.5,1.5 6.5,4.5 C 6.5,0.5 6.5,24 6.5,24 L 6.5,24 L 6.5,24"
+       d="M 0,1.5 L 4.5,1.5 C 4.5,1.5 6.5,1.5 6.5,4.5 C 6.5,0.5 6.5,24 6.5,24 L 6.5,24 L 6.5,25"
        id="path2170" />
   </g>
 </svg>
