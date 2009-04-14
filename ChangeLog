@@ -1,3 +1,7 @@
+2009-04-14	olivier
+
+	* configure.ac.in: === xfwm4 4.6.1 ===
+
 2009-04-09	olivier
 
 	* src/events.c, src/keyboard.c: Fix grab remaining if shortcut is not
