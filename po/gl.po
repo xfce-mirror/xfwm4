@@ -10,10 +10,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
-"Report-Msgid-Bugs-To: xfce-i18n@xfce.org\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 02:17+0100\n"
-"PO-Revision-Date: 2009-03-08 00:45+0100\n"
-"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"PO-Revision-Date: 2009-04-15 01:04+0100\n"
+"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -256,14 +256,12 @@ msgid "Hide content of windows when _moving"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "Opacidade das fiestras mentres se redimensionan"
+msgstr "Opacidade das ventás mentres se _redimensionan"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "Tra_zar camiño..."
+msgstr "_Teclado"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
@@ -358,9 +356,8 @@ msgstr "Enrolar a ventá"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:248
-#, fuzzy
 msgid "Hide window"
-msgstr "Ocultar a ventá principal"
+msgstr "Ocultar a ventá"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 #: ../settings-dialogs/xfwm4-settings.c:247
@@ -717,9 +714,8 @@ msgid "Display _fullscreen overlay windows directly"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "Do _nothing"
-msgstr "Non facer nada"
+msgstr "_Non facer nada"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Hide _frame of windows when maximized"
@@ -742,9 +738,8 @@ msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "Opacidade das fiestras mentres se redimensionan"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 #, fuzzy
@@ -752,19 +747,16 @@ msgid "Opacity of _inactive windows:"
 msgstr "Windows Metafiles (*.wmf)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "%d ventá emerxente oculta"
+msgstr "Opacidade das ventá_s emerxentes:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "Moverse inmediatamente entre ventás"
+msgstr "Opacidade das ventás mentres se _moven:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "Opacidade das fiestras mentres se redimensionan"
+msgstr "Opacidade das ventás mentres se :redimensionan:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Restore original _size of maximized windows when moving"
@@ -929,9 +921,8 @@ msgid "Minimize _All Other Windows"
 msgstr "Pechar todas as ventás de navegación"
 
 #: ../src/menu.c:48
-#, fuzzy
 msgid "S_how"
-msgstr "_Mostrar grade"
+msgstr "_Mostrar"
 
 #: ../src/menu.c:49
 msgid "_Move"
@@ -1048,112 +1039,4 @@ msgstr "Erro ao ler desde o proceso de diálogo de pantalla: %s\n"
 #, fuzzy, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Non se pode facer fork do asistente de bloqueo: %s"
-
-#, fuzzy
-#~ msgid "Cycling"
-#~ msgstr "Maximizar a ventá"
-
-#, fuzzy
-#~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Opacidade das fiestras mentres se redimensionan"
-
-#, fuzzy
-#~ msgid "Size|Large"
-#~ msgstr "Opaca"
-
-#, fuzzy
-#~ msgid "Opacity of window decorations"
-#~ msgstr "Opacidade das fiestras mentres se redimensionan"
-
-#, fuzzy
-#~ msgid "Transparent"
-#~ msgstr "Transparente"
-
-#, fuzzy
-#~ msgid "Opaque"
-#~ msgstr "Opaca"
-
-#, fuzzy
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "Opacidade das fiestras mentres se moven"
-
-#, fuzzy
-#~ msgid "Opacity of windows during move"
-#~ msgstr "Opacidade das fiestras mentres se moven"
-
-#, fuzzy
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "Opacidade das fiestras mentres se redimensionan"
-
-#, fuzzy
-#~ msgid "Opacity of popup windows"
-#~ msgstr "Opacidade das fiestras mentres se moven"
-
-#, fuzzy
-#~ msgid "Name:"
-#~ msgstr "Nome:"
-#~ msgid "Advanced Configuration"
-#~ msgstr "Configuración Avanzada"
-
-#, fuzzy
-#~ msgid "Title font"
-#~ msgstr "Título"
-
-#, fuzzy
-#~ msgid "Style"
-#~ msgstr "Estilo"
-
-#, fuzzy
-#~ msgid "Window shortcuts"
-#~ msgstr "Atallo"
-
-#, fuzzy
-#~ msgid "Keyboard"
-#~ msgstr "Teclado"
-
-#, fuzzy
-#~ msgid "New window focus"
-#~ msgstr "Maximizar a ventá"
-
-#, fuzzy
-#~ msgid "Raise on focus"
-#~ msgstr "Maximizar a ventá"
-
-#, fuzzy
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "Opacidade das fiestras mentres se redimensionan"
-
-#, fuzzy
-#~ msgid "Display content of windows when moving"
-#~ msgstr "Opacidade das fiestras mentres se redimensionan"
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Non se puido abrir %s:\n"
-#~ "%s"
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Non se puido escribir en %s:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Compose shortcut"
-#~ msgstr "Atallo"
-
-#, fuzzy
-#~ msgid "No shortcut"
-#~ msgstr "Atallo"
-
-#, fuzzy
-#~ msgid "Shortcut:"
-#~ msgstr "Atallo"
-
-#, fuzzy
-#~ msgid "(Un)Ma_ximize"
-#~ msgstr "Ma_ximizar"
-#~ msgid "Unknown application!"
-#~ msgstr "Aplicación descoñecida!"
 
