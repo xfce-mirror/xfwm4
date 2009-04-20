@@ -66,7 +66,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Proszę wpisać „%s --help” aby wypisać listę wszystkich opcji wiersza poleceń.\n"
+"Proszę wpisać „%s --help” aby wypisać listę wszystkich opcji wiersza "
+"poleceń.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -199,7 +200,8 @@ msgstr "Zamyka okno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Delay _before raising focused window:"
-msgstr "_Opóźnienie, po którym zaznaczone okno zostanie przeniesione na wierzch:"
+msgstr ""
+"_Opóźnienie, po którym zaznaczone okno zostanie przeniesione na wierzch:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
@@ -283,7 +285,8 @@ msgstr "Wyświetla okno na wszyskich obszarach roboczych"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Określa akcję wykonywaną po podwójnym kliknięciu na pasku tytułowym okna"
+msgstr ""
+"Określa akcję wykonywaną po podwójnym kliknięciu na pasku tytułowym okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title cannot be removed"
@@ -623,7 +626,9 @@ msgid "Reset to Defaults"
 msgstr "Przywracanie wartości domyślnych"
 
 #: ../settings-dialogs/xfwm4-settings.c:1831
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr "Przywrócić wartości domyślne wszystkich skrótów klawiszowych?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -708,7 +713,9 @@ msgstr "Przezroczystość okien podczas zmiany _rozmiaru:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Przywracanie pierwotnego rozm_iaru zmaksymalizowanego okna podczas przenoszenia"
+msgstr ""
+"Przywracanie pierwotnego rozm_iaru zmaksymalizowanego okna podczas "
+"przenoszenia"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Show shadows under _dock windows"
@@ -780,7 +787,8 @@ msgstr "_Uwzględnianie ukrytych okien"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "_Minimalny rozmiar okna potrzebny do włączenia inteligentnego rozmieszczania:"
+msgstr ""
+"_Minimalny rozmiar okna potrzebny do włączenia inteligentnego rozmieszczania:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Placement"
@@ -788,7 +796,9 @@ msgstr "P_ołożenie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Prz_enoszenie na wierzch okien po kliknięciu w ich zawartość dowolnym przyciskiem myszy"
+msgstr ""
+"Prz_enoszenie na wierzch okien po kliknięciu w ich zawartość dowolnym "
+"przyciskiem myszy"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid ""
@@ -802,7 +812,8 @@ msgstr ""
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Pom_ijanie okien ukrytych na liście zadań lub podglądzie obszarów roboczych"
+msgstr ""
+"Pom_ijanie okien ukrytych na liście zadań lub podglądzie obszarów roboczych"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Workspaces"
@@ -821,7 +832,8 @@ msgid "Change workspace name"
 msgstr "Zmień nazwę obszaru roboczego"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marginesy to obszary ekranu, na których nie są umieszczane okna."
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -958,7 +970,8 @@ msgstr "%s: Nie można przetworzyć koloru %s\n"
 #: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Nie można przetworzyć koloru: GValue dla koloru nie jest typu STRING"
+msgstr ""
+"%s: Nie można przetworzyć koloru: GValue dla koloru nie jest typu STRING"
 
 #: ../src/terminate.c:74
 #, c-format
@@ -973,14 +986,19 @@ msgstr ""
 #, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Menadżer Okien"
+
 #~ msgid "Workspace Margins"
 #~ msgstr "Marginesy Obszaru Roboczego"
+
 #~ msgid "Left :"
 #~ msgstr "Lewy :"
+
 #~ msgid "Right :"
 #~ msgstr "Prawy :"
+
 #~ msgid "Top :"
 #~ msgstr "Górny :"
+
 #~ msgid "Bottom :"
 #~ msgstr "Dolny :"
 
@@ -1048,6 +1066,7 @@ msgstr ""
 #, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Dostępność"
+
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Zmieniaj Pulpity za pomocą rolki myszy"
 
@@ -1138,16 +1157,20 @@ msgstr ""
 #, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Kompozytor"
+
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Opcje Menadżera Okien"
+
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "Te ustawienia nie mogą działać z bieżącym menadżerem okien  (%s)"
+
 #~ msgid "Change name"
 #~ msgstr "Zmień nazwę"
 
 #, fuzzy
 #~ msgid "Name:"
 #~ msgstr "Nazwa:"
+
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Kliknij na nazwie obszaru roboczego aby ją zmienić"
 
@@ -1158,30 +1181,39 @@ msgstr ""
 #, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "nazwy obszarów roboczych"
+
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Obszary robocze i marginesy"
+
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Obszary robocze i marginesy"
 
 #, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Marginesy"
+
 #~ msgid "Window Manager Settings"
 #~ msgstr "Ustawienia Menadżera Okien"
+
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "Ustawienia Menadżera Okien Xfce 4"
+
 #~ msgid "Advanced Configuration"
 #~ msgstr "Zaawansowana Konfiguracja"
+
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "Opcje Menadżera Okien Xfce 4"
+
 #~ msgid "Workspaces Settings"
 #~ msgstr "Ustawienia Obszaru Roboczego"
+
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Ustawienia Obszaru Roboczego"
 
 #, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Kliknij i przeciągnij przyciski aby zmienić układ"
+
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Okno Wyboru Czcionki"
 
@@ -1192,6 +1224,7 @@ msgstr ""
 #, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Wyrównanie Tytułu"
+
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Wyrównanie tekstu wewnątrz paska tytułowego :"
 
@@ -1230,8 +1263,10 @@ msgstr ""
 #, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Opóźnienie przeniesienia na wierzch aktywowanego okna :"
+
 #~ msgid "Slow"
 #~ msgstr "Wolno"
+
 #~ msgid "Fast"
 #~ msgstr "Szybko"
 
@@ -1334,32 +1369,40 @@ msgstr ""
 #, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Zaawansowane"
+
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Menadżer Okien"
+
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "Czy na pewno chcesz usunąć ten temat skrótów klawiszowych?"
+
 #~ msgid "Add keybinding theme"
 #~ msgstr "Dodaj temat aktywatorów"
 
 #, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Wprowadź nazwę dla tematu:"
+
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Schemat aktywatorów o takiej nazwie już istnieje"
+
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Musisz podać nazwę dla schematu aktywatorów"
 
 #, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Przesuń okno na %d obszar roboczy"
+
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Nie można otworzyć katalogu z tematami !"
+
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "Nie można odczytać %s : \n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
@@ -1374,8 +1417,10 @@ msgstr ""
 #~ msgstr ""
 #~ "Aktywator jest już w użyciu!\n"
 #~ "Czy jesteś pewny/a, że chcesz go użyć ?"
+
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Stwórz aktywator dla :"
+
 #~ msgid "Compose shortcut"
 #~ msgstr "Stwórz aktywator"
 
@@ -1432,20 +1477,28 @@ msgstr ""
 #, fuzzy
 #~ msgid "Shortcut:"
 #~ msgstr "Brak aktywatora"
+
 #~ msgid "Hide _all others"
 #~ msgstr "Schowaj _wszystkie inne"
+
 #~ msgid "_Shade"
 #~ msgstr "Zw_iń"
+
 #~ msgid "(Un)_Shade"
 #~ msgstr "Rozw_iń"
+
 #~ msgid "S_tick"
 #~ msgstr "Przyp_nij"
+
 #~ msgid "(Un)S_tick"
 #~ msgstr "Odep_nij"
+
 #~ msgid "Below"
 #~ msgstr "Poniżej"
+
 #~ msgid "Send to..."
 #~ msgstr "Wyślij do..."
+
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Obszar roboczy %i (%s)"
 
@@ -1460,20 +1513,27 @@ msgstr ""
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Aktywator"
+
 #~ msgid "Move window left"
 #~ msgstr "Przesuń okno w lewo"
+
 #~ msgid "Move window right"
 #~ msgstr "Przesuń okno w prawo"
+
 #~ msgid "Resize window down"
 #~ msgstr "Rozszerz okno w dół"
+
 #~ msgid "Resize window left"
 #~ msgstr "Rozszerz okno w lewo"
+
 #~ msgid "Resize window right"
 #~ msgstr "Rozszerz okno w prawo"
+
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Anuluj przenieś/skaluj okno"
+
 #~ msgid "_Hide"
 #~ msgstr "_Schowaj"
+
 #~ msgid "Unknown application!"
 #~ msgstr "Nieznana aplikacja!"
-
