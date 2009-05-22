@@ -313,9 +313,6 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         return;
     }
 
-    layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), c->name);
-    pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
-
     if (left < frameTopLeftWidth (c, state))
     {
         left = frameTopLeftWidth (c, state);
@@ -343,6 +340,10 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     {
         voffset = screen_info->params->title_vertical_offset_inactive;
     }
+
+    layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), c->name);
+    pango_layout_set_auto_dir (layout, FALSE);
+    pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
     title_height = screen_info->font_height;
     if (!title_height)

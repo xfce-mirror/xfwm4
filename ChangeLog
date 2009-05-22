@@ -1,3 +1,7 @@
+2009-05-22	olivier
+	* frame.c, tabwin.c: Fix mixed RTL/LTR text not rendering properly 
+	  in title and tabwin
+
 2009-04-14	olivier
 
 	* configure.ac.in: === xfwm4 4.6.1 ===
