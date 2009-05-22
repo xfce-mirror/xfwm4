@@ -107,9 +107,9 @@ tabwinSetLabel (Tabwin * t, gchar * class, gchar * label, int workspace)
 {
     gchar *markup;
     gchar *message;
+    PangoLayout *layout;
 
     message = pretty_string (class);
-    gtk_label_set_use_markup (GTK_LABEL (t->class), TRUE);
     markup = g_strconcat ("<span size=\"larger\" weight=\"bold\">", message, "</span>", NULL);
     g_free (message);
 
@@ -124,7 +124,13 @@ tabwinSetLabel (Tabwin * t, gchar * class, gchar * label, int workspace)
     {
         message = g_strdup_printf ("%s", label);
     }
+
     gtk_label_set_text (GTK_LABEL (t->label), message);
+    /* Need to update the layout after setting the text */
+    layout = gtk_label_get_layout (GTK_LABEL(t->label));
+    pango_layout_set_auto_dir (layout, FALSE);
+    /* the layout belong to the gtk_label and must not be freed */
+
     g_free (message);
 }
 
@@ -287,7 +293,7 @@ tabwinCreate (GdkScreen * scr, Client * current, Client * new, unsigned int cycl
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
     gtk_container_add (GTK_CONTAINER (colorbox2), vbox);
 
-    tabwin->class = gtk_label_new (NULL);
+    tabwin->class = gtk_label_new ("");
     gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
     gtk_label_set_justify (GTK_LABEL (tabwin->class), GTK_JUSTIFY_CENTER);
     gtk_box_pack_start (GTK_BOX (vbox), tabwin->class, TRUE, TRUE, 0);
@@ -300,6 +306,7 @@ tabwinCreate (GdkScreen * scr, Client * current, Client * new, unsigned int cycl
     tabwin->label = gtk_label_new ("");
     gtk_label_set_use_markup (GTK_LABEL (tabwin->label), FALSE);
     gtk_label_set_justify (GTK_LABEL (tabwin->label), GTK_JUSTIFY_CENTER);
+    gtk_label_set_use_markup (GTK_LABEL (tabwin->class), TRUE);
     gtk_box_pack_start (GTK_BOX (vbox), tabwin->label, TRUE, TRUE, 0);
     gtk_widget_set_size_request (GTK_WIDGET (tabwin->label), 240, -1);
 

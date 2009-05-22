@@ -1,3 +1,8 @@
+4.6.2
+=====
+
+- Fix mixed RTL/LTR text not rendering properly in title and tabwin
+
 4.6.1
 =====
 
