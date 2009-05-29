@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 02:17+0100\n"
-"PO-Revision-Date: 2007-10-28 19:52+0200\n"
-"Last-Translator: Muhammad Ali Makki <makki.ma@gmai.com>\n"
+"PO-Revision-Date: 2009-05-14 02:34+0500\n"
+"Last-Translator: Muhammad Ali Makki <makki.ma@gmail.com>\n"
 "Language-Team: urdu <makki.ma@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +18,19 @@ msgstr ""
 "X-Poedit-Country: PAKISTAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"یہ ونڈو شاید مصروف ہے اور جواب نہیں دے رہی.\n"
+"کیا آپ اطلاقیے کو بند کرنا چاہتے ہیں؟"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "انتباہ"
 
 #: ../settings-dialogs/tweaks-settings.c:43
 msgid "None"
@@ -35,25 +38,25 @@ msgstr "کچھ نہیں"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 msgid "Session manager socket"
-msgstr ""
+msgstr "ترتیبات منیجر ساکٹ"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 #: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:308
 msgid "SOCKET ID"
-msgstr ""
+msgstr "ساکٹ آئی ڈی"
 
 #: ../settings-dialogs/tweaks-settings.c:416
 #: ../settings-dialogs/workspace-settings.c:362
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Version information"
-msgstr ""
+msgstr "ورژن معلومات"
 
 #: ../settings-dialogs/tweaks-settings.c:433
 #: ../settings-dialogs/workspace-settings.c:379
 #: ../settings-dialogs/xfwm4-settings.c:932
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:437
 #: ../settings-dialogs/workspace-settings.c:383
@@ -63,6 +66,8 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"تمام دستیاب کمانڈ لائن اختیارات دیکھنے کے لیے %s --help ٹرائی کریں\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -71,20 +76,18 @@ msgid "Workspace %d"
 msgstr "مقام کار %d"
 
 #: ../settings-dialogs/workspace-settings.c:253
-#, fuzzy
 msgid "Workspace Name"
 msgstr "مقام کار کا نام"
 
 #: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:308
 msgid "Settings manager socket"
-msgstr ""
+msgstr "ترتیبات منیجر ساکٹ"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "ونڈو حرکت مسترد کریں"
+msgstr "ونڈو کا سلوک اور شارٹ کٹ وضع کریں"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
@@ -93,9 +96,8 @@ msgstr "ونڈو منیجر"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "ونڈو حرکت مسترد کریں"
+msgstr "ونڈو کا سلوک اور ایفیکٹ مرتب کریں"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
@@ -104,9 +106,8 @@ msgstr "ونڈو منیجر کار کردگی"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Set number and names of workspaces"
-msgstr "مقام کار کی تعداد:"
+msgstr "مقام کاروں کی تعداد اور نام متعین کریں"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -115,99 +116,81 @@ msgstr "مقام کار"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "  "
-msgstr ""
+msgstr "  "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "معتم منتقلی اور ری سائز"
+msgstr "<b>بکس منتقلی اور ری سائز</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "بٹن کا خاکہ"
+msgstr "<b>بٹن کا خاکہ</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "دہرا کلک حرکت"
+msgstr "<b>ڈبل کلک ح_رکت</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "ماڈل فوکس"
+msgstr "<b>فوکس ماڈل</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "نئی ونڈو فوکس"
+msgstr "<b>نئی ونڈو فوکس</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "کلک پر بڑا کریں"
+msgstr "<b>کلک پر اونچا کریں</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "فوکس پر Raise کرین"
+msgstr "<b>فوکس پر اونچا کریں</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "عنوان کی ہمواری"
+msgstr "<b>عنوان کی _ہمواری</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "عنوان کا فونٹ"
+msgstr "<b>عنوان کا _فونٹ</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "ونڈو شارٹ کٹ"
+msgstr "<b>ونڈو _شارٹ کٹ</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "ونڈوز سنیپنگ"
+msgstr "<b>ونڈوز سنیپنگ</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "مقام کار کا سمیٹنا"
+msgstr "<b>مقام کار سمیٹنا</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "عنوان کی ہمواری"
+msgstr "<b>_تھیم</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
 msgstr "فعال"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "اعلی"
+msgstr "ا_علی"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
-msgstr "جب ونڈوز کو فوکس وصول ہو انہیں خودکار Raise کریں"
+msgstr "جب ونڈوز کو فوکس وصول ہو انہیں خودکار اونچا کریں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr "نئی بننے والی ونڈوز کو خودکار فوکس دیں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "فوکس کے لیے کلک کریں"
+msgstr "فوکس کے لیے _کلک کریں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
 msgstr "خاکہ تبدیل کرنے کے لیے بٹن پر کلک کرکے گھسیٹیں"
 
@@ -216,37 +199,32 @@ msgid "Close"
 msgstr "بند کریں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "فوکس شدہ ونڈو کی raising سے پہلے وقفہ:"
+msgstr "فوکس شدہ ونڈو کی اونچائی سے _پہلے وقفہ:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
-msgstr ""
+msgstr "تاخیر|<i>طویل</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
-msgstr ""
+msgstr "تاخیر|<i>مختصر</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "فاصلہ"
+msgstr "فا_صلہ:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Distance|<i>Small</i>"
-msgstr "فاصلہ|کم"
+msgstr "فاصلہ|<i>چھوٹا</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
 msgid "Distance|<i>Wide</i>"
-msgstr "فاصلہ|زیادہ"
+msgstr "فاصلہ|<i>چوڑا</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "فوکس ماؤس کے پیچھے"
+msgstr "فوکس _ماؤس کے پیچھے"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
@@ -257,19 +235,16 @@ msgid "Hide"
 msgstr "چھپائیں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "ونڈو کی منتقلی پر اس کا مواد دکھائیں"
+msgstr "ونڈوز کی منتقلی پر اس کا مواد پوشیدہ کریں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "ونڈو کی resizing پر اس کا مواد دکھائیں"
+msgstr "ونڈوز کی _ریزنگ پر اس کا مواد چھپائیں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "کی بورڈ"
+msgstr "_کیبورڈ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
@@ -280,86 +255,73 @@ msgid "Menu"
 msgstr "مینیو"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr "اطلاقیہ ونڈو کے اندر کلک کرنے پر ونڈو Raise کریں"
+msgstr "اطلاقیہ ونڈو کے اندر کلک کرنے پر ونڈو اونچی کریں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Resistance|<i>Small</i>"
-msgstr "مدافعت|کم"
+msgstr "مدافعت|<i>چھوٹا</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Resistance|<i>Wide</i>"
-msgstr "مدافعت|زیادہ"
+msgstr "مدافعت|<i>چوڑا</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "شیڈ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
-#, fuzzy
 msgid "Snap windows to other _windows"
-msgstr "ونڈوز دیگر ونڈوز کی طرف Snap کریں"
+msgstr "ونڈوز دیگر ونڈوز کی طرف سنیپ کریں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr "ونڈوز سکرین بارڈر کی طرف Snap کریں"
+msgstr "ونڈوز سکرین _بارڈر کی طرف سنیپ کریں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "چسپاں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "عنوان پٹی پر دہرا کلک کرنے پر ادا ہونے والی حرکت:"
+msgstr "عنوان پٹی پر دہرا کلک کرنے پر ادا ہونے والی حرکت"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "ونڈو کا عنوان، اسے حذف نہیں کیا جاسکتا"
+msgstr "ونڈو کا عنوان حذف نہیں کیا جاسکتا"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
 msgstr "عنوان"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "سکرین کی ونڈو گھسیٹنے پر مقام کار سمیٹیں"
+msgstr "سکرین کی ونڈو گھسیٹنے _پر مقام کار سمیٹیں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "جب پؤائنٹر سکرین کے کناروں تک پہنچے مقام کار کو سمیٹیں"
+msgstr "جب پ_ؤائنٹر سکرین کے کناروں تک پہنچے مقام کار کو سمیٹیں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "ونڈو کا فوکس لینے سے پہلے وقفہ"
+msgstr "ونڈو کا فوکس لینے سے پہلے _وقفہ:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "کناروں کی مدافعت:"
+msgstr "ک_ناروں کی مدافعت:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-#, fuzzy
 msgid "_Focus"
-msgstr "فوکس"
+msgstr "_فوکس"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "طے شدہ پر _بحال کریں"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-#, fuzzy
 msgid "_Style"
-msgstr "انداز"
+msgstr "_انداز"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:251
@@ -405,11 +367,11 @@ msgstr "ونڈو آپریشن مینیو"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr ""
+msgstr "اوپر"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr ""
+msgstr "نیچے"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
@@ -420,9 +382,8 @@ msgid "Cycle windows"
 msgstr "ونڈوز سائکل"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "ونڈوز سائکل"
+msgstr "ونڈوز چکر (عکسی)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Close window"
@@ -437,14 +398,12 @@ msgid "Maximize window vertically"
 msgstr "ونڈو عمودی طور پر بڑی کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:249
-#, fuzzy
 msgid "Move window"
-msgstr "ونڈو اوپر منتقل کریں"
+msgstr "ونڈو منتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:250
-#, fuzzy
 msgid "Resize window"
-msgstr "ونڈو اوپر ری سائز کریں"
+msgstr "ونڈو ری سائز کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Stick window"
@@ -499,64 +458,52 @@ msgid "Move window to next workspace"
 msgstr "ونڈو اگلے مقام کار میں منتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 1 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 2 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 3 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 4 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 5 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 6 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 7 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 8 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 9 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 10 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 11 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "ونڈو مقام کار %d میں منتقل کریں"
+msgstr "ونڈو مقام کار 12 پرمنتقل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Show desktop"
@@ -587,351 +534,299 @@ msgid "Next workspace"
 msgstr "اگلا مقام کار"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
 msgid "Workspace 1"
-msgstr "مقام کار %i"
+msgstr "مقام کار 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
 msgid "Workspace 2"
-msgstr "مقام کار %i"
+msgstr "مقام کار 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
 msgid "Workspace 3"
-msgstr "مقام کار %i"
+msgstr "مقام کار 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
 msgid "Workspace 4"
-msgstr "مقام کار %i"
+msgstr "مقام کار 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
 msgid "Workspace 5"
-msgstr "مقام کار %i"
+msgstr "مقام کار 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
 msgid "Workspace 6"
-msgstr "مقام کار %i"
+msgstr "مقام کار 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
 msgid "Workspace 7"
-msgstr "مقام کار %i"
+msgstr "مقام کار 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
 msgid "Workspace 8"
-msgstr "مقام کار %i"
+msgstr "مقام کار 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
 msgid "Workspace 9"
-msgstr "مقام کار %i"
+msgstr "مقام کار 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
 msgid "Workspace 10"
-msgstr "مقام کار %i"
+msgstr "مقام کار 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
 msgid "Workspace 11"
-msgstr "مقام کار %i"
+msgstr "مقام کار 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
 msgid "Workspace 12"
-msgstr "مقام کار %i"
+msgstr "مقام کار 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Add workspace"
 msgstr "مقام کار شامل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "مقام کار شامل کریں"
+msgstr "نزدیکی مقام کار شامل کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "مقام کار حذف کریں"
+msgstr "آخری مقام کار حذف کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "مقام کار حذف کریں"
+msgstr "فعال مقام کار حذف کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:447
 msgid "Theme"
-msgstr ""
+msgstr "تھیم"
 
 #: ../settings-dialogs/xfwm4-settings.c:596
-#, fuzzy
 msgid "Action"
-msgstr "فعال"
+msgstr "حرکت"
 
 #: ../settings-dialogs/xfwm4-settings.c:601
-#, fuzzy
 msgid "Shortcut"
-msgstr "بغیر شارٹ کٹ"
+msgstr "شارٹ کٹ"
 
 #: ../settings-dialogs/xfwm4-settings.c:954
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "xfconf کو چلانے میں ناکامی. وجہ: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:965
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "ترتیبات ڈائیلاگ نہیں بنایا جاسکتا."
 
 #: ../settings-dialogs/xfwm4-settings.c:1841
 #: ../settings-dialogs/xfwm4-settings.c:1842
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "طے شدہ پر بحال کریں"
 
 #: ../settings-dialogs/xfwm4-settings.c:1843
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
+"یہ شارٹ کٹس کو ان کی طے شدہ قدروں پر بحال کردے گا. کیا آپ واقعی ایسا کرنا "
+"چاہتے ہیں؟"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-#, fuzzy
 msgid "<i>Opaque</i>"
-msgstr "معتم"
+msgstr "<i>معتم</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Transparent</i>"
-msgstr "شفاف"
+msgstr "<i>شفاف</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#, fuzzy
 msgid "Activate _focus stealing prevention"
-msgstr "فوکس چوری ممانعت فعال کریں"
+msgstr "_فوکس چوری ممانعت فعال کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "سکرین کے _وسط میں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "By default, place windows:"
-msgstr ""
+msgstr "طے شدہ طور پر، ونڈوز رکھیں:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-#, fuzzy
 msgid "C_ompositor"
-msgstr "کمپوزیٹر"
+msgstr "کمپ_وزیٹر"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
 msgid "C_ycling"
-msgstr "سائکلنگ"
+msgstr "سائکلن_گ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "ونڈوز سے Cycle کریں تمام مقام کار سے"
+msgstr "تمام مقام کاروں پر ونڈوز کے درمیان چکر"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Display _fullscreen overlay windows directly"
-msgstr "براہ راست فل سکرین overlay ونڈو ظاہر کریں"
+msgstr "براہ راست فل سکرین اوورلے ونڈو ظاہر کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "Do _nothing"
-msgstr "کچھ نہ کریں"
+msgstr "کچ_ھ نہ کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
 msgid "Hide _frame of windows when maximized"
-msgstr "جب بڑی کی جائے ونڈوز کے فریم چھپائیں"
+msgstr "بڑا کرنے پر ونڈوز کے _فریم چھپائیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-#, fuzzy
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Honor the standard ICCCM focus hint"
+msgstr "اعزام معیاری ICCCM فوکس ہنٹ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "ارجنٹ ونڈو کی تکراری بلنکنگ باقی رکھیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
 msgid "Key used to _grab and move windows:"
-msgstr "ونڈوز کو پکڑنے اور منتقل کرنے کا بٹن"
+msgstr "ونڈوز کو پک_ڑنے اور منتقل کرنے کا بٹن:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "ونڈوز کی ڈیکوریشن چمکا کر اضطراری حالت سے متنبہ کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "ونڈوز کی ڈیکوریشن کی کثافت"
+msgstr "ونڈوز ڈیکوریشن کی ک_ثافت:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "غیر فعال ونڈوز کی کثافت"
+msgstr "_غیر فعال ونڈوز کی کثافت:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "پوپ اپ ونڈوز کی کثافت"
+msgstr "پوپ اپ ون_ڈوز کی کثافت:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "منتقل کرتے وقت ونڈوز کی کثافت"
+msgstr "_منتقل کرتے وقت ونڈوز کی کثافت:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "حجم تبدیل کرتے وقت ونڈوز کی کثافت"
+msgstr "حجم تب_دیل کرتے وقت ونڈوز کی کثافت:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr "ونڈوز منتقل کرتے وقت ان کا اصل حجم برقرار رکھیں"
+msgstr "ونڈوز منتقل کرتے وقت ان کا اصل _حجم برقرار رکھیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
 msgid "Show shadows under _dock windows"
-msgstr "dock ونڈوز کے ذیل میں سایہ ظاہر کریں"
+msgstr "_ڈوک ونڈوز کے ذیل میں سایہ ظاہر کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "Show shadows under _regular windows"
-msgstr "سادہ ونڈوز کے ذیل میں سایہ ظاہر کریں"
+msgstr "_سادہ ونڈوز کے ذیل میں سایہ ظاہر کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Show shadows under pop_up windows"
-msgstr "پوپ اپ ونڈوز کے ذیل میں سایہ ظاہر کریں"
+msgstr "پ_وپ اپ ونڈوز کے ذیل میں سایہ ظاہر کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Size|<i>Large</i>"
-msgstr "حجم|بڑا"
+msgstr "حجم|<i>بڑا</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
 msgid "Size|<i>Small</i>"
-msgstr "حجم|چھوٹا"
+msgstr "حجم|<i>چھوٹا</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
 msgid "Switch to win_dow's workspace"
-msgstr "ونڈوز مقام کار پر منتقل ہوں"
+msgstr "ونڈو_ز مقام کار پر منتقل ہوں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "ماؤس _پؤائنٹر کے ذیل میں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
 msgid "Use _edge resistance instead of window snapping"
-msgstr "ونڈوز snapping کی بجائے کنارہ مدافعت استعمال کرین"
+msgstr "ونڈو سنیپنگ کی بجائے _کنارہ مدافعت استعمال کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
+"مقام کاروں کے درمیان منتقلی کے لیے ڈیسک ٹاپ پر _ماؤس کا پہیہ استعمال کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
 msgstr "جب ونڈو خود کو raises کرے:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "اصل ڈیسک ٹاپ خاکہ کے مطابق مقام کار سمیٹیں"
+msgstr "اصل ڈیسک ٹاپ _خاکہ کے مطابق مقام کار سمیٹیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-#, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "جب پہلی یا آخری مقام کار تمام ہو مقام کار سمیٹیں"
+msgstr "جب _پہلا یا آخری مقام کار تمام ہو مقام کار سمیٹیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "_Accessibility"
-msgstr "قابلیتِ رسائی"
+msgstr "_قابلیتِ رسائی"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "ونڈو حالیہ ڈیسک ٹاپ پر لائیں"
+msgstr "ونڈو حالیہ ڈیسک ٹاپ پر _لائیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "منتخب کردہ ونڈوز کی سائکلنگ کے دوران اس کے گرد فری_م بنائیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
 msgid "_Enable display compositing"
-msgstr "ڈسپلے کمپوزیٹنگ فعال کریں"
+msgstr "_ڈسپلے کمپوزیٹنگ فعال کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "بشمول خفیہ (مثلاً iconified) ونڈوز"
+msgstr "_بشمول خفیہ (مثلاً iconified) ونڈوز"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Minimum size of windows to trigger smart placement"
+msgstr "ونڈوز کا کم سے کم حجم:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "_Placement"
-msgstr "پلیسمنٹ"
+msgstr "_پلیسمنٹ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "جب ماؤس کا کوئی بھی بٹن دبایا جائے ونڈوز Raise کریں"
+msgstr "جب ماؤس کا کوئی بھی بٹن دبایا جائے ونڈوز _ریز کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"کی بورڈ شارٹ کٹ سے تبدیلی پر سابقہ ونڈو یاد رکھیں اور اسی کو واپس لائیں"
+"سابقہ مقام کار _یاد رکھیں اور اسے پھر بلائیں\n"
+"جب کیبورڈ شارٹ کٹ سے منتقلی انجام دی جائے"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"وہ ونڈوز نظر انداز کریں جو \"skip pager\" یا \"skip taskbar\" خصوصیات سیٹ "
-"رکھتی ہیں"
+"وہ ونڈوز ن_ظر انداز کریں جو \"skip pager\"\n"
+"یا \"skip taskbar\" خصوصیات سیٹ رکھتی ہیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
 msgid "_Workspaces"
-msgstr "مقام کار"
+msgstr "_مقام کار"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "مارجن"
+msgstr "<b>مارجن</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "مقام کار کا سمیٹنا"
+msgstr "<b>مقام کار</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
-msgstr "مقام کار کا نام"
+msgstr "مقام کار کا نام تبدیل کریں"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
@@ -939,14 +834,12 @@ msgid ""
 msgstr "مارجن سکرین کے کناروں کا علاقہ ہے جہاں کوئی ونڈو نہیں رکھی جاسکتی"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "نام:"
+msgstr "_نام:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "مقام کار کی تعداد:"
+msgstr "مقام کاروں کی _تعداد:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -964,18 +857,16 @@ msgid "Ma_ximize"
 msgstr "ب_ڑا کریں"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "_چھوٹا کریں"
+msgstr "_بڑا کریں"
 
 #: ../src/menu.c:46
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "ب_ڑا کریں"
+msgstr "_چھوٹا کریں"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "ت_مام دیگر ونڈوز منمائز کریں"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -983,66 +874,57 @@ msgstr "_ظاہر کریں"
 
 #: ../src/menu.c:49
 msgid "_Move"
-msgstr ""
+msgstr "_منتقل کریں"
 
 #: ../src/menu.c:50
 msgid "_Resize"
-msgstr ""
+msgstr "_دوبارہ حجم دیں"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
 msgstr "ہمیشہ آگے"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "ونڈوز دیگر ونڈوز کی طرف Snap کریں"
+msgstr "بالکل دیگر ونڈوز کی طرح"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "ہمیشہ دیگر ونڈوز کے نیچے"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "ونڈو بھریں"
+msgstr "ونڈو اوپر رول کریں"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "ونڈو نیچے منتقل کریں"
+msgstr "ونڈو نیچے رول کریں"
 
 #: ../src/menu.c:57
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "فل سکرین منعکس کریں"
+msgstr "_فُل سکرین"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "فل سکرین منعکس کریں"
+msgstr "فل س_کرین چھوڑیں"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
-msgstr "کونٹیکسٹ _ہدایات"
+msgstr "سیاق _ہدایات"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "ہمیشہ آگے"
+msgstr "ہمیشہ ظاہری مقام کار پر"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "صرف اسی مقام کار پر"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "ونڈو اگلے مقام کار میں منتقل کریں"
+msgstr "دوسرے مقام کار پر منتقل کریں"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1060,7 +942,7 @@ msgstr "_برخاست"
 
 #: ../src/menu.c:72
 msgid "Restart"
-msgstr "ری سٹارٹ"
+msgstr "دوبارہ چلائیں"
 
 #: ../src/menu.c:423
 #, c-format
@@ -1075,7 +957,7 @@ msgstr "%s: رنگ مختص نہیں کیا جاسکتا %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: رنگ مختص نہیں کیے جاسکتے: رنگوں کی جی قدر نوعیت ڈورے کی نہیں ہے"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1085,32 +967,58 @@ msgstr "%s: رنگ کا تجزیہ نہیں ہوسکا %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: رنگ بیان نہیں کیے جاسکتے: رنگوں کی جی قدر نوعیت ڈورا نہیں ہے"
 
 #: ../src/terminate.c:74
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "چائلڈ عمل کاری سے مواد پڑھنے میں غلطی: %s\n"
 
 #: ../src/terminate.c:122
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
+msgstr "امدادی ڈائیلاگ سپاؤن نہیں کیا جاسکتا: %s\n"
+
+#, fuzzy
+msgid "gtk-clear"
+msgstr "مسترد"
+
+#, fuzzy
+msgid "gtk-save"
+msgstr "مسترد"
+
+#, fuzzy
+msgid ""
+"This shortcut is already being used by <b>another window manager action</b>. "
+"Which action do you want to use?"
 msgstr ""
+"شارٹ کٹ پہلے ہی استعمال میں ہے !\n"
+"کیا آپ واقعی اسے استعمال کرنا چاہتے ہیں؟"
+
+#, fuzzy
+msgid ""
+"The shortcut is already being used by a <b>window manager action</b>. Which "
+"action do you want to use?"
+msgstr ""
+"شارٹ کٹ پہلے ہی استعمال میں ہے !\n"
+"کیا آپ واقعی اسے استعمال کرنا چاہتے ہیں؟"
+
+#, fuzzy
+msgid "The shortcut is already being used for something else."
+msgstr ""
+"شارٹ کٹ پہلے ہی استعمال میں ہے !\n"
+"کیا آپ واقعی اسے استعمال کرنا چاہتے ہیں؟"
+
+#, fuzzy
+msgid "Button"
+msgstr "بٹن کا خاکہ"
 
 #, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "ونڈو منیجر"
 
 #, fuzzy
-#~ msgid "gtk-clear"
-#~ msgstr "مسترد"
-
-#, fuzzy
 #~ msgid "gtk-cancel"
-#~ msgstr "مسترد"
-
-#, fuzzy
-#~ msgid "gtk-save"
 #~ msgstr "مسترد"
 
 #~ msgid "Workspace Margins"
@@ -1130,15 +1038,15 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Bring window on current workspace"
-#~ msgstr "ونڈو حالیہ ڈیسک ٹاپ پر لائیں"
+#~ msgstr "ونڈو حالیہ ڈیسک ٹاپ پر _لائیں"
 
 #, fuzzy
 #~ msgid "Switch to window's workspace"
-#~ msgstr "ونڈوز مقام کار پر منتقل ہوں"
+#~ msgstr "ونڈو_ز مقام کار پر منتقل ہوں"
 
 #, fuzzy
 #~ msgid "Do nothing"
-#~ msgstr "کچھ نہ کریں"
+#~ msgstr "کچ_ھ نہ کریں"
 
 #~ msgid "Place window under the mouse"
 #~ msgstr "ونڈو ماؤس کے نیچے رکھیں"
@@ -1150,56 +1058,56 @@ msgstr ""
 #~ msgid ""
 #~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr ""
-#~ "وہ ونڈوز نظر انداز کریں جو \"skip pager\" یا \"skip taskbar\" خصوصیات سیٹ "
-#~ "رکھتی ہیں"
+#~ "وہ ونڈوز ن_ظر انداز کریں جو \"skip pager\"\n"
+#~ "یا \"skip taskbar\" خصوصیات سیٹ رکھتی ہیں"
 
 #, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "بشمول خفیہ (مثلاً iconified) ونڈوز"
+#~ msgstr "_بشمول خفیہ (مثلاً iconified) ونڈوز"
 
 #, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "ونڈوز سے Cycle کریں تمام مقام کار سے"
+#~ msgstr "تمام مقام کاروں پر ونڈوز کے درمیان چکر"
 
 #, fuzzy
 #~ msgid "Cycling"
-#~ msgstr "سائکلنگ"
+#~ msgstr "سائکلن_گ"
 
 #, fuzzy
 #~ msgid "Activate focus stealing prevention"
-#~ msgstr "فوکس چوری ممانعت فعال کریں"
+#~ msgstr "_فوکس چوری ممانعت فعال کریں"
 
 #, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "Honor the standard ICCCM focus hint"
+#~ msgstr "اعزام معیاری ICCCM فوکس ہنٹ"
 
 #, fuzzy
 #~ msgid "Focus"
-#~ msgstr "فوکس"
+#~ msgstr "_فوکس"
 
 #, fuzzy
 #~ msgid "Key used to grab and move windows"
-#~ msgstr "ونڈوز کو پکڑنے اور منتقل کرنے کا بٹن"
+#~ msgstr "ونڈوز کو پک_ڑنے اور منتقل کرنے کا بٹن:"
 
 #, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "جب ماؤس کا کوئی بھی بٹن دبایا جائے ونڈوز Raise کریں"
+#~ msgstr "جب ماؤس کا کوئی بھی بٹن دبایا جائے ونڈوز _ریز کریں"
 
 #, fuzzy
 #~ msgid "Hide frame of windows when maximized"
-#~ msgstr "جب بڑی کی جائے ونڈوز کے فریم چھپائیں"
+#~ msgstr "بڑا کرنے پر ونڈوز کے _فریم چھپائیں"
 
 #, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "ونڈوز منتقل کرتے وقت ان کا اصل حجم برقرار رکھیں"
+#~ msgstr "ونڈوز منتقل کرتے وقت ان کا اصل _حجم برقرار رکھیں"
 
 #, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "ونڈوز snapping کی بجائے کنارہ مدافعت استعمال کرین"
+#~ msgstr "ونڈو سنیپنگ کی بجائے _کنارہ مدافعت استعمال کریں"
 
 #, fuzzy
 #~ msgid "Accessibility"
-#~ msgstr "قابلیتِ رسائی"
+#~ msgstr "_قابلیتِ رسائی"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "ڈیسک ٹاپ پر ماؤس کما ویل گھمانے پر مقام کار تبدیل کریں"
@@ -1209,86 +1117,87 @@ msgstr ""
 #~ "Remember and recall previous workspace when switching via keyboard "
 #~ "shortcuts"
 #~ msgstr ""
-#~ "کی بورڈ شارٹ کٹ سے تبدیلی پر سابقہ ونڈو یاد رکھیں اور اسی کو واپس لائیں"
+#~ "سابقہ مقام کار _یاد رکھیں اور اسے پھر بلائیں\n"
+#~ "جب کیبورڈ شارٹ کٹ سے منتقلی انجام دی جائے"
 
 #, fuzzy
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr "اصل ڈیسک ٹاپ خاکہ کے مطابق مقام کار سمیٹیں"
+#~ msgstr "اصل ڈیسک ٹاپ _خاکہ کے مطابق مقام کار سمیٹیں"
 
 #, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "جب پہلی یا آخری مقام کار تمام ہو مقام کار سمیٹیں"
+#~ msgstr "جب _پہلا یا آخری مقام کار تمام ہو مقام کار سمیٹیں"
 
 #, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Minimum size of windows to trigger smart placement"
+#~ msgstr "ونڈوز کا کم سے کم حجم:"
 
 #, fuzzy
 #~ msgid "Size|Small"
-#~ msgstr "حجم|چھوٹا"
+#~ msgstr "حجم|<i>چھوٹا</i>"
 
 #, fuzzy
 #~ msgid "Size|Large"
-#~ msgstr "حجم|بڑا"
+#~ msgstr "حجم|<i>بڑا</i>"
 
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Default positionning of windows without smart placement:"
 
 #, fuzzy
 #~ msgid "Placement"
-#~ msgstr "پلیسمنٹ"
+#~ msgstr "_پلیسمنٹ"
 
 #, fuzzy
 #~ msgid "Enable display compositing"
-#~ msgstr "ڈسپلے کمپوزیٹنگ فعال کریں"
+#~ msgstr "_ڈسپلے کمپوزیٹنگ فعال کریں"
 
 #, fuzzy
 #~ msgid "Display full screen overlay windows directly"
-#~ msgstr "براہ راست فل سکرین overlay ونڈو ظاہر کریں"
+#~ msgstr "براہ راست فل سکرین اوورلے ونڈو ظاہر کریں"
 
 #, fuzzy
 #~ msgid "Show shadows under dock windows"
-#~ msgstr "dock ونڈوز کے ذیل میں سایہ ظاہر کریں"
+#~ msgstr "_ڈوک ونڈوز کے ذیل میں سایہ ظاہر کریں"
 
 #, fuzzy
 #~ msgid "Show shadows under regular windows"
-#~ msgstr "سادہ ونڈوز کے ذیل میں سایہ ظاہر کریں"
+#~ msgstr "_سادہ ونڈوز کے ذیل میں سایہ ظاہر کریں"
 
 #, fuzzy
 #~ msgid "Show shadows under popup windows"
-#~ msgstr "پوپ اپ ونڈوز کے ذیل میں سایہ ظاہر کریں"
+#~ msgstr "پ_وپ اپ ونڈوز کے ذیل میں سایہ ظاہر کریں"
 
 #, fuzzy
 #~ msgid "Opacity of window decorations"
-#~ msgstr "ونڈوز کی ڈیکوریشن کی کثافت"
+#~ msgstr "ونڈوز ڈیکوریشن کی ک_ثافت:"
 
 #, fuzzy
 #~ msgid "Transparent"
-#~ msgstr "شفاف"
+#~ msgstr "<i>شفاف</i>"
 
 #, fuzzy
 #~ msgid "Opaque"
-#~ msgstr "معتم"
+#~ msgstr "<i>معتم</i>"
 
 #, fuzzy
 #~ msgid "Opacity of inactive windows"
-#~ msgstr "غیر فعال ونڈوز کی کثافت"
+#~ msgstr "_غیر فعال ونڈوز کی کثافت:"
 
 #, fuzzy
 #~ msgid "Opacity of windows during move"
-#~ msgstr "منتقل کرتے وقت ونڈوز کی کثافت"
+#~ msgstr "_منتقل کرتے وقت ونڈوز کی کثافت:"
 
 #, fuzzy
 #~ msgid "Opacity of windows during resize"
-#~ msgstr "حجم تبدیل کرتے وقت ونڈوز کی کثافت"
+#~ msgstr "حجم تب_دیل کرتے وقت ونڈوز کی کثافت:"
 
 #, fuzzy
 #~ msgid "Opacity of popup windows"
-#~ msgstr "پوپ اپ ونڈوز کی کثافت"
+#~ msgstr "پوپ اپ ون_ڈوز کی کثافت:"
 
 #, fuzzy
 #~ msgid "Compositor"
-#~ msgstr "کمپوزیٹر"
+#~ msgstr "کمپ_وزیٹر"
 
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "ونڈو منیجر کار کردگی"
@@ -1301,14 +1210,14 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Name:"
-#~ msgstr "نام:"
+#~ msgstr "_نام:"
 
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "تدوین کے لیے مقام کار کے نام پر کلک کریں"
 
 #, fuzzy
 #~ msgid "Number of workspaces:"
-#~ msgstr "مقام کار کی تعداد:"
+#~ msgstr "مقام کاروں کی _تعداد:"
 
 #, fuzzy
 #~ msgid "Workspace names"
@@ -1322,7 +1231,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Margins"
-#~ msgstr "مارجن"
+#~ msgstr "<b>مارجن</b>"
 
 #~ msgid "Window Manager Settings"
 #~ msgstr "ونڈو منیجر ترتیبات"
@@ -1351,50 +1260,49 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Title font"
-#~ msgstr "عنوان کا فونٹ"
+#~ msgstr "<b>عنوان کا _فونٹ</b>"
 
 #, fuzzy
 #~ msgid "Title Alignment"
-#~ msgstr "عنوان کی ہمواری"
+#~ msgstr "<b>عنوان کی _ہمواری</b>"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "عنوان کی پٹی میں متن کی ہمواری:"
 
 #, fuzzy
 #~ msgid "Button layout"
-#~ msgstr "بٹن کا خاکہ"
+#~ msgstr "<b>بٹن کا خاکہ</b>"
 
 #, fuzzy
 #~ msgid "Style"
-#~ msgstr "انداز"
+#~ msgstr "_انداز"
 
 #, fuzzy
 #~ msgid "Window shortcuts"
-#~ msgstr "ونڈو شارٹ کٹ"
+#~ msgstr "<b>ونڈو _شارٹ کٹ</b>"
 
-#, fuzzy
 #~ msgid "Command"
 #~ msgstr "کمانڈ"
 
 #, fuzzy
 #~ msgid "Keyboard"
-#~ msgstr "کی بورڈ"
+#~ msgstr "_کیبورڈ"
 
 #, fuzzy
 #~ msgid "Focus model"
-#~ msgstr "ماڈل فوکس"
+#~ msgstr "<b>فوکس ماڈل</b>"
 
 #, fuzzy
 #~ msgid "Click to focus"
-#~ msgstr "فوکس کے لیے کلک کریں"
+#~ msgstr "فوکس کے لیے _کلک کریں"
 
 #, fuzzy
 #~ msgid "Focus follows mouse"
-#~ msgstr "فوکس ماؤس کے پیچھے"
+#~ msgstr "فوکس _ماؤس کے پیچھے"
 
 #, fuzzy
 #~ msgid "Delay before window receives focus"
-#~ msgstr "ونڈو کا فوکس لینے سے پہلے وقفہ"
+#~ msgstr "ونڈو کا فوکس لینے سے پہلے _وقفہ:"
 
 #~ msgid "Slow"
 #~ msgstr "آہستہ"
@@ -1408,99 +1316,99 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "New window focus"
-#~ msgstr "نئی ونڈو فوکس"
+#~ msgstr "<b>نئی ونڈو فوکس</b>"
 
 #, fuzzy
 #~ msgid "Raise on focus"
-#~ msgstr "فوکس پر Raise کرین"
+#~ msgstr "<b>فوکس پر اونچا کریں</b>"
 
 #, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "جب ونڈوز کو فوکس وصول ہو انہیں خودکار Raise کریں"
+#~ msgstr "جب ونڈوز کو فوکس وصول ہو انہیں خودکار اونچا کریں"
 
 #, fuzzy
 #~ msgid "Delay before raising focused window :"
-#~ msgstr "فوکس شدہ ونڈو کی raising سے پہلے وقفہ:"
+#~ msgstr "فوکس شدہ ونڈو کی اونچائی سے _پہلے وقفہ:"
 
 #, fuzzy
 #~ msgid "Raise window when clicking inside application window"
-#~ msgstr "اطلاقیہ ونڈو کے اندر کلک کرنے پر ونڈو Raise کریں"
+#~ msgstr "اطلاقیہ ونڈو کے اندر کلک کرنے پر ونڈو اونچی کریں"
 
 #, fuzzy
 #~ msgid "Raise on click"
-#~ msgstr "کلک پر بڑا کریں"
+#~ msgstr "<b>کلک پر اونچا کریں</b>"
 
 #, fuzzy
 #~ msgid "Windows snapping"
-#~ msgstr "ونڈوز سنیپنگ"
+#~ msgstr "<b>ونڈوز سنیپنگ</b>"
 
 #, fuzzy
 #~ msgid "Snap windows to screen border"
-#~ msgstr "ونڈوز سکرین بارڈر کی طرف Snap کریں"
+#~ msgstr "ونڈوز سکرین _بارڈر کی طرف سنیپ کریں"
 
 #, fuzzy
 #~ msgid "Snap windows to other windows"
-#~ msgstr "ونڈوز دیگر ونڈوز کی طرف Snap کریں"
+#~ msgstr "ونڈوز دیگر ونڈوز کی طرف سنیپ کریں"
 
 #, fuzzy
 #~ msgid "Distance :"
-#~ msgstr "فاصلہ"
+#~ msgstr "فا_صلہ:"
 
 #, fuzzy
 #~ msgid "Distance|Small"
-#~ msgstr "فاصلہ|کم"
+#~ msgstr "فاصلہ|<i>چھوٹا</i>"
 
 #, fuzzy
 #~ msgid "Distance|Wide"
-#~ msgstr "فاصلہ|زیادہ"
+#~ msgstr "فاصلہ|<i>چوڑا</i>"
 
 #, fuzzy
 #~ msgid "Wrap workspaces"
-#~ msgstr "مقام کار کا سمیٹنا"
+#~ msgstr "<b>مقام کار سمیٹنا</b>"
 
 #, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "جب پؤائنٹر سکرین کے کناروں تک پہنچے مقام کار کو سمیٹیں"
+#~ msgstr "جب پ_ؤائنٹر سکرین کے کناروں تک پہنچے مقام کار کو سمیٹیں"
 
 #, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "سکرین کی ونڈو گھسیٹنے پر مقام کار سمیٹیں"
+#~ msgstr "سکرین کی ونڈو گھسیٹنے _پر مقام کار سمیٹیں"
 
 #, fuzzy
 #~ msgid "Edge Resistance :"
-#~ msgstr "کناروں کی مدافعت:"
+#~ msgstr "ک_ناروں کی مدافعت:"
 
 #, fuzzy
 #~ msgid "Resistance|Small"
-#~ msgstr "مدافعت|کم"
+#~ msgstr "مدافعت|<i>چھوٹا</i>"
 
 #, fuzzy
 #~ msgid "Resistance|Wide"
-#~ msgstr "مدافعت|زیادہ"
+#~ msgstr "مدافعت|<i>چوڑا</i>"
 
 #, fuzzy
 #~ msgid "Opaque move and resize"
-#~ msgstr "معتم منتقلی اور ری سائز"
+#~ msgstr "<b>بکس منتقلی اور ری سائز</b>"
 
 #, fuzzy
 #~ msgid "Display content of windows when resizing"
-#~ msgstr "ونڈو کی resizing پر اس کا مواد دکھائیں"
+#~ msgstr "ونڈوز کی _ریزنگ پر اس کا مواد چھپائیں"
 
 #, fuzzy
 #~ msgid "Display content of windows when moving"
-#~ msgstr "ونڈو کی منتقلی پر اس کا مواد دکھائیں"
+#~ msgstr "ونڈوز کی منتقلی پر اس کا مواد پوشیدہ کریں"
 
 #, fuzzy
 #~ msgid "Double click action"
-#~ msgstr "دہرا کلک حرکت"
+#~ msgstr "<b>ڈبل کلک ح_رکت</b>"
 
 #, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "عنوان پٹی پر دہرا کلک کرنے پر ادا ہونے والی حرکت:"
+#~ msgstr "عنوان پٹی پر دہرا کلک کرنے پر ادا ہونے والی حرکت"
 
 #, fuzzy
 #~ msgid "Advanced"
-#~ msgstr "اعلی"
+#~ msgstr "ا_علی"
 
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "ونڈو منیجر"
@@ -1511,7 +1419,6 @@ msgstr ""
 #~ msgid "Add keybinding theme"
 #~ msgstr "keybinding تھیم شامل کریں"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "تھیم کا نام لکھیں:"
 
@@ -1523,7 +1430,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Move window to workspace %d"
-#~ msgstr "ونڈو مقام کار %d میں منتقل کریں"
+#~ msgstr "ونڈو مقام کار 1 پرمنتقل کریں"
 
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "تھیم ڈائریکٹری نہیں کھولی جاسکتی !"
@@ -1542,7 +1449,6 @@ msgstr ""
 #~ "%s میں نہیں لکھا جاسکتا : \n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
@@ -1556,51 +1462,28 @@ msgstr ""
 #~ msgid "Compose shortcut"
 #~ msgstr "شارٹ کٹ بنائیں"
 
-#, fuzzy
 #~ msgid "No shortcut"
-#~ msgstr "شارٹ کٹ بنائیں"
+#~ msgstr "بغیر شارٹ کٹ"
 
 #, fuzzy
 #~ msgid "Change the name of workspace %d"
-#~ msgstr "مقام کار کی تعداد:"
+#~ msgstr "مقام کار کا نام تبدیل کریں"
 
 #, fuzzy
 #~ msgid "Advanced window manager settings"
 #~ msgstr "ایکسفس 4 ونڈو منیجر ترتیبات"
 
 #, fuzzy
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "شارٹ کٹ پہلے ہی استعمال میں ہے !\n"
-#~ "کیا آپ واقعی اسے استعمال کرنا چاہتے ہیں؟"
-
-#, fuzzy
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "شارٹ کٹ پہلے ہی استعمال میں ہے !\n"
-#~ "کیا آپ واقعی اسے استعمال کرنا چاہتے ہیں؟"
-
-#, fuzzy
 #~ msgid "Keep the window manager action"
 #~ msgstr "ایکسفس 4 ونڈو منیجر ترتیبات"
 
 #, fuzzy
-#~ msgid "The shortcut is already being used for something else."
-#~ msgstr ""
-#~ "شارٹ کٹ پہلے ہی استعمال میں ہے !\n"
-#~ "کیا آپ واقعی اسے استعمال کرنا چاہتے ہیں؟"
-
-#, fuzzy
 #~ msgid "Enter window manager action shortcut"
-#~ msgstr "ایکسفس 4 ونڈو منیجر ترتیبات"
+#~ msgstr "ونڈو کا سلوک اور شارٹ کٹ وضع کریں"
 
 #, fuzzy
 #~ msgid "Action: %s"
-#~ msgstr "فعال"
+#~ msgstr "حرکت"
 
 #, fuzzy
 #~ msgid "Enter shortcut"
@@ -1608,11 +1491,11 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Shortcut:"
-#~ msgstr "بغیر شارٹ کٹ"
+#~ msgstr "شارٹ کٹ"
 
 #, fuzzy
 #~ msgid "(Un)Ma_ximize"
-#~ msgstr "ب_ڑا کریں"
+#~ msgstr "_بڑا کریں"
 
 #~ msgid "Hide _all others"
 #~ msgstr "دیگر _تمام چھپائیں"
@@ -1646,10 +1529,6 @@ msgstr ""
 #~ msgstr "درمیان"
 
 #, fuzzy
-#~ msgid "Button"
-#~ msgstr "بٹن کا خاکہ"
-
-#, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "شارٹ کٹ"
 
@@ -1673,3 +1552,9 @@ msgstr ""
 
 #~ msgid "_Hide"
 #~ msgstr "چ_ھپائیں"
+
+#~ msgid "Cancel window action"
+#~ msgstr "ونڈو حرکت مسترد کریں"
+
+#~ msgid "Workspace %i"
+#~ msgstr "مقام کار %i"
