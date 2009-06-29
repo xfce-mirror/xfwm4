@@ -1,3 +1,9 @@
+2009-06-29	jannis
+
+	* themes/daloa/Makefile.am, themes/default-4.6/Makefile.am,
+	  themes/default/Makefile.am, themes/kokodi/Makefile.am: Remove 
+	  duplicate hide-pressed.png entries from Makefile.am.
+
 2009-05-22	olivier
 	* frame.c, tabwin.c: Fix mixed RTL/LTR text not rendering properly 
 	  in title and tabwin

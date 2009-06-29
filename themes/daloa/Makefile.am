@@ -14,7 +14,6 @@ PNG_FILES = 								\
 	hide-active.png							\
 	hide-inactive.png						\
 	hide-pressed.png						\
-	hide-pressed.png						\
 	hide-prelight.png						\
 	left-active.png							\
 	left-inactive.png						\
