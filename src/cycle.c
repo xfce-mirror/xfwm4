@@ -287,15 +287,19 @@ clientCycle (Client * c, XKeyEvent * ev)
         workspace = c->win_workspace;
         focused = clientGetFocus ();
 
+        if ((focused) && (passdata.c != focused))
+        {
+            /* We might be able to avoid this if we are about to switch workspace */
+            clientAdjustFullscreenLayer (focused, FALSE);
+        }
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
+        {
+            /* We are explicitely activating a window that was shown before show-desktop */
+            clientClearAllShowDesktop (screen_info);
+        }
         if (workspace != screen_info->current_ws)
         {
             workspaceSwitch (screen_info, workspace, c, FALSE, myDisplayGetCurrentTime (display_info));
-        }
-
-        if ((focused) && (passdata.c != focused))
-        {
-            clientClearAllShowDesktop (screen_info);
-            clientAdjustFullscreenLayer (focused, FALSE);
         }
 
         sibling = clientGetTransientFor(c);

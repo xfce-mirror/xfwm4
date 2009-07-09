@@ -1168,8 +1168,11 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
             status = EVENT_FILTER_REMOVE;
         }
 
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
+        {
+             clientClearAllShowDesktop (screen_info);
+        }
         clientShow (c, TRUE);
-        clientClearAllShowDesktop (screen_info);
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) ||
             (c->win_workspace == screen_info->current_ws))
@@ -2490,8 +2493,11 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 clientWithdrawAll (c, c->win_workspace);
                 break;
             case MENU_OP_UNMINIMIZE:
+                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
+                {
+                    clientClearAllShowDesktop (c->screen_info);
+                }
                 clientShow (c, TRUE);
-                clientClearAllShowDesktop (c->screen_info);
                 break;
             case MENU_OP_SHADE:
             case MENU_OP_UNSHADE:

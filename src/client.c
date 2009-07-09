@@ -2548,6 +2548,7 @@ void
 clientActivate (Client * c, guint32 timestamp)
 {
     ScreenInfo *screen_info;
+    Client *focused;
     Client *sibling;
 
     g_return_if_fail (c != NULL);
@@ -2555,8 +2556,20 @@ clientActivate (Client * c, guint32 timestamp)
 
     screen_info = c->screen_info;
     sibling = clientGetTransientFor(c);
+    focused = clientGetFocus ();
+
     if ((screen_info->current_ws == c->win_workspace) || (screen_info->params->activate_action != ACTIVATE_ACTION_NONE))
     {
+        if ((focused) && (c != focused))
+        {
+            /* We might be able to avoid this if we are about to switch workspace */
+            clientAdjustFullscreenLayer (focused, FALSE);
+        }
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
+        {
+            /* We are explicitely activating a window that was shown before show-desktop */
+            clientClearAllShowDesktop (screen_info);
+        }
         if (screen_info->current_ws != c->win_workspace)
         {
             if (screen_info->params->activate_action == ACTIVATE_ACTION_BRING)
@@ -2570,7 +2583,6 @@ clientActivate (Client * c, guint32 timestamp)
         }
         clientRaise (sibling, None);
         clientShow (sibling, TRUE);
-        clientClearAllShowDesktop (screen_info);
         clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
         clientSetLastRaise (c);
     }

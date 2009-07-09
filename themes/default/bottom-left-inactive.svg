@@ -14,14 +14,14 @@
    sodipodi:version="0.32"
    inkscape:version="0.46"
    version="1.0"
-   sodipodi:docbase="/themes/default"
    sodipodi:docname="bottom-left-inactive.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:docbase="/home/ofourdan/src/svn/xfwm4/trunk/themes/default">
   <defs
-     id="defs4" />
+     id="defs7" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="white"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
@@ -46,30 +46,13 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Border</dc:title>
+        <dc:title>Top Corner</dc:title>
         <dc:creator>
           <cc:Agent>
             <dc:title>Olivier Fourdan</dc:title>
           </cc:Agent>
         </dc:creator>
-        <cc:license
-           rdf:resource="http://creativecommons.org/licenses/GPL/2.0/" />
       </cc:Work>
-      <cc:License
-         rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
-        <cc:permits
-           rdf:resource="http://web.resource.org/cc/Reproduction" />
-        <cc:permits
-           rdf:resource="http://web.resource.org/cc/Distribution" />
-        <cc:requires
-           rdf:resource="http://web.resource.org/cc/Notice" />
-        <cc:permits
-           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
-        <cc:requires
-           rdf:resource="http://web.resource.org/cc/ShareAlike" />
-        <cc:requires
-           rdf:resource="http://web.resource.org/cc/SourceCode" />
-      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
@@ -78,7 +61,7 @@
      inkscape:label="hilight">
     <path
        style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
-       d="M 1.5,0 L 1.5,12.5 C 1.5,12.5 1.5,14.5 3.5,14.5 C 5.5,14.5 16,14.5 16,14.5"
+       d="M 1.5,0 L 1.5,13.5 C 1.5,14.5 1.5,14.5 2.5,14.5 C 1.5,14.5 16,14.5 16,14.5"
        id="path6061" />
   </g>
   <g
@@ -86,8 +69,8 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:#000000;fill-opacity:0.25"
-       d="M 0,0 L 0,16 L 16,16 L 16,15 C 16,15 16,15 3,15 C 1,15 1,13 1,13 L 1,0 L 0,0 z "
+       style="fill:black;fill-opacity:0.25"
+       d="M 0,0 L 0,16 L 16,16 L 16,15 C 16,15 16,15 2,15 C 1,15 1,14 1,14 L 1,0 L 0,0 z "
        id="rect1870" />
   </g>
 </svg>

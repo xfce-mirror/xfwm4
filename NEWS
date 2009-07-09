@@ -1,6 +1,10 @@
-4.6.2
+4.7.x
 =====
-
+- Transition fullscreen windows back to their original layer 
+  when another window is activated (Bug #3551)
+- Do not clear the show desktop flag upon activation of
+  already visible windows
+- Implement prelinminary support for snap on resize (patch by Clifford Jolly <cliff@cliffjolly.com>)
 - Fix mixed RTL/LTR text not rendering properly in title and tabwin
 
 4.6.1

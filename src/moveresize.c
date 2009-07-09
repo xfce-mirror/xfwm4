@@ -364,6 +364,114 @@ clientDrawOutline (Client * c)
     }
 }
 
+gboolean
+clientCheckOverlap (int s1, int e1, int s2, int e2)
+{
+    /* Simple overlap test for an arbitary axis. -Cliff */
+    if ((s1 >= s2 && s1 <= e2) ||
+        (e1 >= s2 && e1 <= e2) ||
+        (s2 >= s1 && s2 <= e1) ||
+        (e2 >= s1 && e2 <= e1))
+    {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+int
+clientFindClosestEdgeX (Client *c, int edge_pos)
+{
+    /* Find the closest edge of anything that we can snap to, taking
+       frames into account, or just return the original value if nothing
+       is within the snapping range. -Cliff */
+       
+    Client *c2;
+    ScreenInfo *screen_info;
+    int i, closest;
+    int snap_width;
+
+    screen_info = c->screen_info;
+    snap_width = screen_info->params->snap_width;
+    closest = edge_pos + snap_width + 2; /* This only needs to be out of the snap range to work. -Cliff */
+    
+    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    {
+        if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&
+            (((screen_info->params->snap_to_windows) && (c2->win_layer == c->win_layer))
+             || ((screen_info->params->snap_to_border)
+                  && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
+                  && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))  
+        {
+        
+            if (clientCheckOverlap (c->y - frameTop (c) - 1, c->y + c->height + frameBottom (c) + 1, c2->y - frameTop (c) - 1, c2->y + c2->height + frameBottom (c) + 1))
+            {
+                if (abs (c2->x - frameLeft (c2) - edge_pos) < abs (closest - edge_pos))
+                {
+                    closest = c2->x - frameLeft (c2);
+                }
+                if (abs ((c2->x + c2->width) + frameRight (c2) - edge_pos) < abs (closest - edge_pos))
+                {
+                    closest = (c2->x + c2->width) + frameRight (c2);
+                }
+            }            
+        }
+    }
+    
+    if (abs (closest - edge_pos) > snap_width)
+    {
+        closest = edge_pos;
+    }
+    
+    return closest;
+}
+
+int
+clientFindClosestEdgeY (Client *c, int edge_pos)
+{
+    /* This function is mostly identical to the one above, but swaps the
+       axes. If there's a better way to do it than this, I'd like to
+       know. -Cliff */
+       
+    Client *c2;
+    ScreenInfo *screen_info;
+    int i, closest;
+    int snap_width;
+
+    screen_info = c->screen_info;
+    snap_width = screen_info->params->snap_width;
+    closest = edge_pos + snap_width + 1; /* This only needs to be out of the snap range to work. -Cliff */
+    
+    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    {
+        if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&
+            (((screen_info->params->snap_to_windows) && (c2->win_layer == c->win_layer))
+             || ((screen_info->params->snap_to_border)
+                  && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
+                  && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))  
+        {
+
+            if (clientCheckOverlap (c->x - frameLeft (c) - 1, c->x + c->width + frameRight (c) + 1, c2->x - frameLeft (c) - 1, c2->x + c2->width + frameRight (c) + 1))
+            {
+                if (abs (c2->y - frameTop(c2) - edge_pos) < abs (closest - edge_pos))
+                {
+                    closest = c2->y - frameTop (c2);
+                }
+                if (abs ((c2->y + c2->height) + frameBottom (c2) - edge_pos) < abs (closest - edge_pos))
+                {
+                    closest = (c2->y + c2->height) + frameBottom (c2);
+                }
+            }            
+        }
+    }
+    
+    if (abs (closest - edge_pos) > snap_width)
+    {
+        closest = edge_pos;
+    }
+    
+    return closest;
+}
+
 static void
 clientSnapPosition (Client * c, int prev_x, int prev_y)
 {
@@ -1113,6 +1221,8 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     int temp;
     gint min_visible;
     gboolean resizing;
+    int right_edge; /* -Cliff */
+    int bottom_edge; /* -Cliff */
 
     TRACE ("entering clientResizeEventFilter");
 
@@ -1300,6 +1410,10 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         else if (move_right)
         {
             c->width = passdata->ow + (xevent->xmotion.x_root - passdata->mx);
+
+            /* Attempt to snap the right edge to something. -Cliff */
+            c->width = clientFindClosestEdgeX (c, c->x + c->width + frameRight (c)) - c->x - frameRight (c);
+            
         }
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
@@ -1310,6 +1424,9 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             else if (move_bottom)
             {
                 c->height = passdata->oh + (xevent->xmotion.y_root - passdata->my);
+                
+                /* Attempt to snap the bottom edge to something. -Cliff */
+                c->height = clientFindClosestEdgeY (c, c->y + c->height + frameBottom (c)) - c->y - frameBottom (c);
             }
         }
         clientConstrainRatio (c, &c->width, &c->height, passdata->handle);
@@ -1318,6 +1435,12 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         if (move_left)
         {
             c->x = c->x - (c->width - passdata->oldw);
+            
+            /* Snap the left edge to something. -Cliff */
+            right_edge = c->x + c->width;
+            c->x = clientFindClosestEdgeX (c, c->x - frameLeft (c)) + frameLeft (c);
+            c->width = right_edge - c->x;
+            
             frame_x = frameX (c);
         }
 
@@ -1325,6 +1448,12 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
         {
             c->y = c->y - (c->height - passdata->oldh);
+            
+            /* Snap the top edge to something. -Cliff */
+            bottom_edge = c->y + c->height;
+            c->y = clientFindClosestEdgeY (c, c->y - frameTop (c)) + frameTop (c);
+            c->height = bottom_edge - c->y;
+            
             frame_y = frameY (c);
         }
 
