@@ -2097,13 +2097,13 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 }
                 else
                 {
-                    clientActivate (c, ev_time);
+                    clientActivate (c, ev_time, source_is_application);
                 }
             }
             else
             {
                 /* The request is either from a pager or an older client, use the most accurate timestamp */
-                clientActivate (c, getXServerTime (display_info));
+                clientActivate (c, getXServerTime (display_info), source_is_application);
             }
         }
         else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])
