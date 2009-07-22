@@ -214,7 +214,12 @@ clientFocusNew(Client * c)
     {
         Client *c2 = clientGetFocus();
 
-        if ((c2 != NULL) && (c2->win_layer == c->win_layer))
+        /*
+         * Place windows under the currently focused only if focus
+         * stealing prevention had prevented the focus transition,
+         * otherwise, leave the unfocused window on top.
+         */
+        if ((c2 != NULL) && (c2->win_layer == c->win_layer) && prevented)
         {
             clientSortRing(c);
             clientLower (c, c2->frame);

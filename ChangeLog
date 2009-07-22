@@ -1,10 +1,15 @@
+2009-07-19	olivier
+
+	* src/focus.c: Place windows on top of stack even when not focused in
+	  focus follow mouse.
+
 2009-07-09	olivier
 	* src/cycle.c, src/events.c, src/client.c: Transition fullscreen
 	  windows back to their original layer when another window is 
 	  activated (Bug #3551), do not clear the show desktop flag upon 
 	  activation of already visible windows,
 	* src/moveresize.c: prelinminary support for snap on resize 
-	  (patch by Clifford Jolly<cliff@cliffjolly.com>)
+	  (patch by Clifford Jolly<cliff@cliffjolly.com>).
 
 2009-06-29	jannis
 

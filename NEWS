@@ -6,6 +6,7 @@
   already visible windows
 - Implement prelinminary support for snap on resize (patch by Clifford Jolly <cliff@cliffjolly.com>)
 - Fix mixed RTL/LTR text not rendering properly in title and tabwin
+- Place windows on top of stack even when not focused in focus follow mouse
 
 4.6.1
 =====
