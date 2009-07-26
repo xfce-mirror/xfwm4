@@ -2583,7 +2583,7 @@ clientActivate (Client * c, guint32 timestamp, gboolean source_is_application)
         }
         clientRaise (sibling, None);
         clientShow (sibling, TRUE);
-        if (!source_is_application || screen_info->params->click_to_focus)
+        if (source_is_application || screen_info->params->click_to_focus)
         {
             clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
         }
