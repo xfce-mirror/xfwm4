@@ -1,3 +1,10 @@
+2009-07-27	olivier
+
+	* src/focus.c: Place windows on top of stack even when not focused in
+	  focus follow mouse (Bug #5479).
+	* src/client.c: Transition fullscreen windows back to their original
+	  layer when another window is activated (Bug #3551)
+
 2009-05-22	olivier
 	* frame.c, tabwin.c: Fix mixed RTL/LTR text not rendering properly 
 	  in title and tabwin

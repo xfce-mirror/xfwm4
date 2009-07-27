@@ -1,7 +1,11 @@
 4.6.2
 =====
 
+- Transition fullscreen windows back to their original layer 
+  when another window is activated (Bug #3551)
 - Fix mixed RTL/LTR text not rendering properly in title and tabwin
+- Place windows on top of stack even when not focused in focus follow mouse
+  (Bug #5479)
 
 4.6.1
 =====

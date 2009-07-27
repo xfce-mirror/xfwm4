@@ -2548,6 +2548,7 @@ void
 clientActivate (Client * c, guint32 timestamp)
 {
     ScreenInfo *screen_info;
+    Client *focused;
     Client *sibling;
 
     g_return_if_fail (c != NULL);
@@ -2555,8 +2556,15 @@ clientActivate (Client * c, guint32 timestamp)
 
     screen_info = c->screen_info;
     sibling = clientGetTransientFor(c);
+    focused = clientGetFocus ();
+
     if ((screen_info->current_ws == c->win_workspace) || (screen_info->params->activate_action != ACTIVATE_ACTION_NONE))
     {
+        if ((focused) && (c != focused))
+        {
+            /* We might be able to avoid this if we are about to switch workspace */
+            clientAdjustFullscreenLayer (focused, FALSE);
+        }
         if (screen_info->current_ws != c->win_workspace)
         {
             if (screen_info->params->activate_action == ACTIVATE_ACTION_BRING)
