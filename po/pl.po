@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-07 22:12+0000\n"
-"PO-Revision-Date: 2009-03-29 14:38+0100\n"
+"PO-Revision-Date: 2009-07-08 00:23+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -127,7 +127,7 @@ msgstr "<b>Rozmieszczenie przycisków</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Double click _action</b>"
-msgstr "<b>Akcja _dwukrotnego kliknięcia</b>"
+msgstr "<b>Czynność wykonywana po _dwukrotnym kliknięciu</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Focus model</b>"
@@ -139,11 +139,11 @@ msgstr "<b>Nowe okna</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on click</b>"
-msgstr "<b>Zachowanie po kliknięciu</b>"
+msgstr "<b>Czynność wykonywana po kliknięciu</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Zachowanie po zaznaczeniu</b>"
+msgstr "<b>Czynność wykonywana po zaznaczeniu</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title _alignment</b>"
@@ -223,7 +223,7 @@ msgstr "<i>Duża</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Focus follows _mouse"
-msgstr "Zaznaczanie kursorem _myszki"
+msgstr "Zaznaczanie kursorem _myszy"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
@@ -251,7 +251,7 @@ msgstr "Maksymalizuje rozmiar okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
-msgstr "Wyświetla menu akcji okna"
+msgstr "Wyświetla menu okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
@@ -362,7 +362,7 @@ msgstr "Prawo"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Window operations menu"
-msgstr "Wyświetl menu akcji"
+msgstr "Wyświetl menu okna"
 
 #: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Up"
@@ -602,11 +602,11 @@ msgstr "Motyw"
 
 #: ../settings-dialogs/xfwm4-settings.c:610
 msgid "Action"
-msgstr "Akcja"
+msgstr "Czynność"
 
 #: ../settings-dialogs/xfwm4-settings.c:615
 msgid "Shortcut"
-msgstr "Klawisz skrótu"
+msgstr "Skrót"
 
 #: ../settings-dialogs/xfwm4-settings.c:977
 #, c-format
@@ -748,7 +748,7 @@ msgstr "Zmienianie obszaru roboczego przy użyciu kółka m_yszy na pulpicie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
-msgstr "Akcja uruchamiana po przeniesieniu okna na wierzch przez system:"
+msgstr "Czynność wykonywana po przeniesieniu okna na wierzch przez system:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
