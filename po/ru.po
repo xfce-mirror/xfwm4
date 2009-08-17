@@ -4,14 +4,15 @@
 # Poul Ionkin <wizzard@nmg.lv>, 2003.
 # Anthony Ivanoff <a-i@bk.ru>, 2004, 2005.
 # Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006.
+# Dmitriy Kudryashov <overmailed@gmail.com>, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: xfwm4 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 02:17+0100\n"
-"PO-Revision-Date: 2006-09-24 21:00+0600\n"
-"Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
+"PO-Revision-Date: 2009-08-10 17:00+0400\n"
+"Last-Translator: Dmitriy Kudryashov <overmailed@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,10 +25,12 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"Это приложение, возможно, занято и не отвечает.\n"
+"Вы хотите прервать выполнение приложения?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "Предупреждение"
 
 #: ../settings-dialogs/tweaks-settings.c:43
 msgid "None"
@@ -35,7 +38,7 @@ msgstr "Ничего"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 msgid "Session manager socket"
-msgstr ""
+msgstr "Сокет менеджера сессий"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 #: ../settings-dialogs/workspace-settings.c:361
@@ -63,6 +66,8 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"Попробуйте %s --help чтобы показать все возможные опции командной строки.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -71,20 +76,18 @@ msgid "Workspace %d"
 msgstr "Рабочее место %d"
 
 #: ../settings-dialogs/workspace-settings.c:253
-#, fuzzy
 msgid "Workspace Name"
-msgstr "Названия рабочих мест"
+msgstr "Название рабочего места"
 
 #: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:308
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Сокет менеджера настроек"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Прозрачность оформления окон"
+msgstr "Настройки поведения окон и сочетаний клавиш"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
@@ -93,9 +96,8 @@ msgstr "Окна"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Прозрачность оформления окон"
+msgstr "Дополнительные настройки поведения окон и эффектов"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
@@ -104,9 +106,8 @@ msgstr "Оконный менеджер"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Set number and names of workspaces"
-msgstr "Количество рабочих мест:"
+msgstr "Настройка параметров рабочих мест"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -118,135 +119,112 @@ msgid "  "
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "Перемещение и изменение размера окна"
+msgstr "<b>Перемещение и изменение размера окна</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "Расположение кнопок"
+msgstr "<b>Расположение кнопок</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "Двойной щелчок на заголовке"
+msgstr "<b>Двойной щелчок на за_головке</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "Фокус окна"
+msgstr "<b>Схема активации окон</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "Активизировать новые окна"
+msgstr "<b>Активация новых окон</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "Показ окна при щелчке мышью"
+msgstr "<b>Поднятие окна по щелчку мыши</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "Показ окна при наведении курсора"
+msgstr "<b>Подимать при активации</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "Выравнивание текста заголовка"
+msgstr "<b>Выравнивание т_екста заголовка</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "Шрифт заголовка"
+msgstr "<b>Шрифт заголовка</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "Горячие клавиши"
+msgstr "С_очетания клавиш оконного менеджера"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "Прилипание окон"
+msgstr "<b>Прилипание окон</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "Переключение рабочих мест"
+msgstr "<b>Рабочие места</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "Выравнивание текста заголовка"
+msgstr "<b>_Тема</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
 msgstr "Активные"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "Дополнительно"
+msgstr "_Дополнительно"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Автоматически поднимать окно при активизации"
+msgstr "А_втоматически поднимать окно при активиции"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
-msgstr "Автоматически активизировать вновь созданные окна"
+msgstr "Автоматически активировать в_новь созданные окна"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "Активизация при щелчке мышью"
+msgstr "Активация при _щелчке мышью"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
-msgstr "Щелкните и перетащите кнопки, чтобы изменить их расположение"
+msgstr "Перетаскивайте кнопки для изменения их расположения"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
 msgstr "Закрыть"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "Задержка перед поднятием активизированного окна:"
+msgstr "Задержка перед _поднятием активированного окна:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
-msgstr ""
+msgstr "Длинная"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
-msgstr ""
+msgstr "Короткая"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "Расстояние :"
+msgstr "_Расстояние :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Distance|<i>Small</i>"
-msgstr "Расстояние|Маленькое"
+msgstr "<i>Маленькое</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
 msgid "Distance|<i>Wide</i>"
-msgstr "Расстояние|Большое"
+msgstr "<i>Большое</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "Активизация при наведении курсора"
+msgstr "Активация при наведении _курсора"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
@@ -257,19 +235,16 @@ msgid "Hide"
 msgstr "Скрыть"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "Показывать содержимое окна при перемещении"
+msgstr "Не показывать содержимое окна при переме_щении"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "Показывать содержимое окна при изменении размера"
+msgstr "Не показывать содержимое окна при изменении ра_змера"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "Клавиатура"
+msgstr "Сочетани_я клавиш"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
@@ -280,86 +255,73 @@ msgid "Menu"
 msgstr "Меню"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr "Поднимать окно при щелчке на нём"
+msgstr "Поднимать окно при щ_елчке вниутри него"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Resistance|<i>Small</i>"
-msgstr "Сопротивление|Низкое"
+msgstr "<i>Низкое</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Resistance|<i>Wide</i>"
-msgstr "Сопротивление|Высокое"
+msgstr "<i>Высокое</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Свернуть в заголовок"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
-#, fuzzy
 msgid "Snap windows to other _windows"
-msgstr "Прилипание окон к другим окнам"
+msgstr "Окна прилипают к другим _окнам"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr "Прилипание окон к краям экрана"
+msgstr "Окна придипают к _краям экрана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "Приклеить"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Действие при двойном щелчке на заголовке:"
+msgstr "Действие при двойном щелчке на заголовке окна"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "Заголовок окна (нельзя удалить)"
+msgstr "Заголовок окна не может быть удалён"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
 msgstr "Заголовок"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Переключать рабочее место при перемещении окна за экран"
+msgstr "Переключать рабочее место при _перемещении окна за экран"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Переключать рабочее место при достижении курсором края экрана"
+msgstr "Переключать рабочее место при достижении к_урсором края экрана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "Задержка перед поднятием активизированного окна:"
+msgstr "Задержка перед _активацией окна:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "Сопротивление у краев:"
+msgstr "Сопро_тивление у краев:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-#, fuzzy
 msgid "_Focus"
-msgstr "Фокус окна"
+msgstr "Активац_ия окон"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "С_бросить настройки"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-#, fuzzy
 msgid "_Style"
-msgstr "Стиль"
+msgstr "_Стиль"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:251
@@ -380,7 +342,7 @@ msgstr "Развернуть окно"
 #: ../settings-dialogs/xfwm4-settings.c:255
 #, fuzzy
 msgid "Fill window"
-msgstr "Скрыть окно"
+msgstr "Заполнить окном"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -389,7 +351,7 @@ msgstr "Ничего"
 #: ../settings-dialogs/xfwm4-settings.c:229
 #: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
-msgstr "Слева"
+msgstr "Влево"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
@@ -398,32 +360,31 @@ msgstr "По центру"
 #: ../settings-dialogs/xfwm4-settings.c:231
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
-msgstr "Справа"
+msgstr "Вправо"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
-msgstr ""
+msgstr "Меню действий окна"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr ""
+msgstr "Вверх"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr ""
+msgstr "Вниз"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cycle windows"
 msgstr "Переключать окна"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "Переключать окна"
+msgstr "Переключать окна (в обратном порядке)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Close window"
@@ -438,14 +399,12 @@ msgid "Maximize window vertically"
 msgstr "Развернуть окно по вертикали"
 
 #: ../settings-dialogs/xfwm4-settings.c:249
-#, fuzzy
 msgid "Move window"
-msgstr "Переместить окно вверх"
+msgstr "Переместить окно"
 
 #: ../settings-dialogs/xfwm4-settings.c:250
-#, fuzzy
 msgid "Resize window"
-msgstr "Изменить размер окна сверху"
+msgstr "Изменить размер окна"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Stick window"
@@ -460,18 +419,16 @@ msgid "Lower window"
 msgstr "Отправить окно на задний план"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
-#, fuzzy
 msgid "Fill window horizontally"
 msgstr "Развернуть окно по горизонтали"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Fill window vertically"
 msgstr "Развернуть окно по вертикали"
 
 #: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Toggle above"
-msgstr ""
+msgstr "Поверх всех окон"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Toggle fullscreen"
@@ -502,64 +459,52 @@ msgid "Move window to next workspace"
 msgstr "Переместить окно на следующее рабочее место"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переместить окно на рабочее место 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Show desktop"
@@ -590,169 +535,146 @@ msgid "Next workspace"
 msgstr "Следующее рабочее место"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Рабочее место %d"
+msgstr "Рабочее место 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
 msgid "Workspace 10"
-msgstr "Рабочее место %d"
+msgstr "Рабочее место 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
 msgid "Workspace 11"
-msgstr "Рабочее место %i"
+msgstr "Рабочее место 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
 msgid "Workspace 12"
-msgstr "Рабочее место %d"
+msgstr "Рабочее место 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Add workspace"
 msgstr "Добавить рабочее место"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "Добавить рабочее место"
+msgstr "Добавить соседнее рабочее место"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Удалить рабочее место"
+msgstr "Удалить последнее рабочее место"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Удалить рабочее место"
+msgstr "Удалить активное рабочее место"
 
 #: ../settings-dialogs/xfwm4-settings.c:447
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #: ../settings-dialogs/xfwm4-settings.c:596
-#, fuzzy
 msgid "Action"
-msgstr "Активные"
+msgstr "Действие"
 
 #: ../settings-dialogs/xfwm4-settings.c:601
-#, fuzzy
 msgid "Shortcut"
-msgstr "Нет сочетания клавиш"
+msgstr "Сочетание клавиш"
 
 #: ../settings-dialogs/xfwm4-settings.c:954
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Не удалось инициализировать xfconf. Причина: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:965
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "Невозможно создать диалог настроек."
 
 #: ../settings-dialogs/xfwm4-settings.c:1841
 #: ../settings-dialogs/xfwm4-settings.c:1842
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Вернуть настройки по умолчанию"
 
 #: ../settings-dialogs/xfwm4-settings.c:1843
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
+"Все сочетания клавиш будут сброшены в значения по умолчанию. Вы "
+"действительно этого хотите?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-#, fuzzy
 msgid "<i>Opaque</i>"
-msgstr "Непрозрачный"
+msgstr "<i>Непрозрачно</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Transparent</i>"
-msgstr "Прозрачный"
+msgstr "<i>Прозрачно</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#, fuzzy
 msgid "Activate _focus stealing prevention"
-msgstr "Активировать предотвращение \"похищения\" фокуса ввода"
+msgstr "Активировать предотвращение _перехвата фокуса ввода"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "В _центре экрана"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "By default, place windows:"
-msgstr ""
+msgstr "По умолчанию размещать окна:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-#, fuzzy
 msgid "C_ompositor"
-msgstr "Эффекты"
+msgstr "_Эффекты"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
 msgid "C_ycling"
-msgstr "Переключение окон"
+msgstr "Переклю_чение между окнами"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "Переключаться между окнами, расположенными на всех рабочих местах"
+msgstr "Переключаться между окнами на всех р_абочих местах"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Display _fullscreen overlay windows directly"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "Do _nothing"
-msgstr "Ничего"
+msgstr "_Ничего не делать"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
 msgid "Hide _frame of windows when maximized"
-msgstr "Прятать рамку развернутого окна"
+msgstr "Скрывать _рамку развернутого окна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Honor _standard ICCCM focus hint"
@@ -760,93 +682,84 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "Требующие внимания окна п_ереодически мерцают"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
 msgid "Key used to _grab and move windows:"
-msgstr "Клавиша, используемая для захвата и перемещения окон"
+msgstr "Клавиша для _захвата и перемещения окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
+"Сообщать о том, что окно требует\n"
+"внимания, мер_цанием оформления"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "Прозрачность оформления окон"
+msgstr "Прозрачность оформ_ления окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "Прозрачность неактивных окон"
+msgstr "Прозрачность _неактивных окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "Прозрачность всплывающих окон"
+msgstr "Прозрачность вспл_ывающих окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "Прозрачность окна при перемещении"
+msgstr "Прозрачность окон при переме_щении"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "Прозрачность окон при изменении размера"
+msgstr "Прозрачность окон при изменении ра_змера"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Восстанавливать исходный размер развернутого окна при перемещении"
+msgstr "Восстановить _исходный размерразвернутого окна при перемещении"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 #, fuzzy
 msgid "Show shadows under _dock windows"
-msgstr "Рисовать тени под всплывающими окнами"
+msgstr "Отображать тени с_тыкующихся окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "Show shadows under _regular windows"
-msgstr "Рисовать тени под обычными окнами"
+msgstr "Отображать тени о_бычных окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Show shadows under pop_up windows"
-msgstr "Рисовать тени под всплывающими окнами"
+msgstr "Отображать тени в_сплывающих окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Size|<i>Large</i>"
-msgstr "Размер|Большой"
+msgstr "<i>Большое</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
 msgid "Size|<i>Small</i>"
-msgstr "Размер|Маленький"
+msgstr "<i>Маленькое</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
 msgid "Switch to win_dow's workspace"
-msgstr "Переместить окно на рабочее место %d"
+msgstr "Переключиться на рабочее место _окна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "Под у_казателем мыши"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Использовать сопротивление границ окна вместо прилипания"
+msgstr "Использовать отталкивание _границ вместо прилипания окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
+"Переключать рабочие места при вращении\n"
+"_колёсика мыши над рабочим столом"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "При самостоятельном поднятии окна:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -855,84 +768,75 @@ msgstr ""
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 #, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Переключать рабочее место при достижении курсором края экрана"
+msgstr ""
+"Переключать рабочее место при достижении первого или последнего рабочего "
+"места"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "_Accessibility"
-msgstr "Доступность"
+msgstr "_Доступность"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "Переместить окно на следующее рабочее место"
+msgstr "Переместить окно на _текущее рабочее место"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "_Отображать рамку текущего окна при переключении"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
 msgid "_Enable display compositing"
-msgstr "Включить эффекты"
+msgstr "_Включить эффекты"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "Включить скрытые (свёрнутые) окна"
+msgstr "Включить _скрытые (свёрнутые) окна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Минимальный размер окон, при котором будет включено умное размещение"
+msgstr ""
+"Минимальный размер окна, при котором будет включено _умное\n"
+"размещение:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "_Placement"
-msgstr "Размещение"
+msgstr "_Размещение окон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Поднимать окно при нажатии любой кнопки мыши"
+msgstr "Поднимать окно нажатием _любой кнопки мыши"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"Запоминать и возвращаться к предыдущему рабочему месту при переключениями "
-"горячими клавишами"
+"_Запоминать и возвращаться к предыдущему рабочему\n"
+"месту при переключениями горячими клавишами"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"Пропускать окна, у которых установлено свойство \"не показывать в "
+"_Пропускать окна, у которых установлено свойство \"не показывать в\n"
 "переключателе рабочих мест\" или \"не показывать на панели задач\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
 msgid "_Workspaces"
-msgstr "Рабочие места"
+msgstr "Рабочие _места"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "Поля"
+msgstr "<b>Поля</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "Переключение рабочих мест"
+msgstr "<b>Рабочие места</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
-msgstr "Названия рабочих мест"
+msgstr "Переименовать рабочее место"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
@@ -940,14 +844,12 @@ msgid ""
 msgstr "Поля - это области экрана, где невозможно размещать окна"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "Название:"
+msgstr "_Название:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "Количество рабочих мест:"
+msgstr "_Количество рабочих мест:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -965,18 +867,16 @@ msgid "Ma_ximize"
 msgstr "_Развернуть"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_Восстановить"
 
 #: ../src/menu.c:46
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_Развернуть"
+msgstr "_Свернуть"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Свернуть _другие окна"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -984,15 +884,14 @@ msgstr "_Показать"
 
 #: ../src/menu.c:49
 msgid "_Move"
-msgstr ""
+msgstr "П_ереместить"
 
 #: ../src/menu.c:50
 msgid "_Resize"
-msgstr ""
+msgstr "_Изменить размер"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
 msgstr "Поверх всех окон"
 
@@ -1003,47 +902,40 @@ msgstr "Прилипание окон к другим окнам"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Под всеми окнами"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Скрыть окно"
+msgstr "Свернуть в заголовок"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Переместить окно вниз"
+msgstr "Развернуть из заголовка"
 
 #: ../src/menu.c:57
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Полноэкранный режим"
+msgstr "Полно_экранный режим"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "Полноэкранный режим"
+msgstr "Покинуть _полноэкранный режим"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
 msgstr "Контекстная _справка"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "Поверх всех окон"
+msgstr "Всегда на видимом рабочем месте"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Только на этом рабочем месте"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Переместить окно на следующее рабочее место"
+msgstr "Переместить на другое рабочее место"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
