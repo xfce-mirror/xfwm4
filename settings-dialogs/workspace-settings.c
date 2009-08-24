@@ -31,7 +31,7 @@
 #include <libwnck/libwnck.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
 #include "xfwm4-workspace-dialog_glade.h"
 #include "monitor-icon.h"
@@ -311,7 +311,7 @@ workspace_dialog_configure_widgets (GladeXML *gxml,
     GtkWidget *margin_left_spinbutton = glade_xml_get_widget (gxml, "margin_left_spinbutton");
 
     /* Set monitor icon */
-    monitor = xfce_inline_icon_at_size (monitor_icon_data, -1, -1);
+    monitor = gdk_pixbuf_new_from_inline (sizeof (*monitor_icon_data), monitor_icon_data, TRUE, NULL);
     image = glade_xml_get_widget (gxml, "monitor_icon");
     gtk_image_set_from_pixbuf (GTK_IMAGE (image), monitor);
     g_object_unref (monitor);
