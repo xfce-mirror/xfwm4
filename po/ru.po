@@ -660,7 +660,7 @@ msgstr "Переключаться между окнами, расположен
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Показать экр_ан со всеми окнами "
+msgstr "Полно_экранный режим перекрывает все окна и панели"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Do _nothing"
