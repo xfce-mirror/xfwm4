@@ -36,11 +36,11 @@
       <stop
          id="stop5875"
          offset="0"
-         style="stop-color:#ffffff;stop-opacity:1;" />
+         style="stop-color:#ffffff;stop-opacity:0.15;" />
       <stop
          id="stop5877"
          offset="0.5"
-         style="stop-color:#ffffff;stop-opacity:0.95;" />
+         style="stop-color:#ffffff;stop-opacity:0.00;" />
       <stop
          id="stop5879"
          offset="1"
@@ -51,15 +51,11 @@
       <stop
          id="stop5849"
          offset="0"
-         style="stop-color:#ffffff;stop-opacity:0.90;" />
-      <stop
-         id="stop5850"
-         offset="0.75"
-         style="stop-color:#ffffff;stop-opacity:0.10;" />
+         style="stop-color:#ffffff;stop-opacity:0.50;" />
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#ffffff;stop-opacity:0;" />
+         style="stop-color:#000000;stop-opacity:0.10;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -152,7 +148,7 @@
      inkscape:label="Border">
     <path
        id="rect1319"
-       d="M 8,0 L 8,1 L 5,1 C 5,1 1,1 1,6 C 1,22 1,22 1,22 L 0,22 L 0,0 L 8,0 z"
+       d="M 8,0 8,1 4,1 C 4,1 1,1 1,5 1,16 1,21 1,21.1 L 8,21 8,22 0,22 0,22 0,0 8,0 z"
        style="fill:#000000;fill-opacity:0.25" />
   </g>
   <g
@@ -163,7 +159,7 @@
     <path
        id="path6057"
        style="fill:url(#linearGradient3148);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
-       d="M 8,1 L 5,1 C 4,1 1,1 1,4 C 1,7.5 1,11 1,14 L 8,14 L 8,14 L 8,1 z " />
+       d="M 8,2 L 4,2 C 3,2 2,2 2,5 C 2,8.5 2,12 2,20 L 8,20 L 8,20 L 8,2 z " />
   </g>
   <g
      inkscape:label="hilight"
@@ -179,7 +175,7 @@
        id="path2396" />
     <path
        style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
-       d="M 8,1.5 L 3.5,1.5 C 3.5,1.5 1.5,1.5 1.5,4.5 C 1.5,7.5 1.5,22 1.5,22 L 1.5,22 L 1.5,25"
+       d="M 8,1.5 L 3.5,1.5 C 3.5,1.5 1.5,1.5 1.5,4.5 C 1.5,7.5 1.5,18 1.5,18 L 1.5,18 L 1.5,20.5 L 8,20.5"
        id="path2170" />
   </g>
 </svg>
