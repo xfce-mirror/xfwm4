@@ -94,18 +94,12 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     {
         case DestroyNotify:
             if ((removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
-            {
-                /* No need to go any further */
-                break;
-            }
+                break; /* No need to go any further */
             gone |= (c == removed);
             /* Walk through */
         case UnmapNotify:
             if (!removed && (removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
-            {
-                /* No need to go any further */
-                break;
-            }
+                break; /* No need to go any further */
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
             passdata->c = c;

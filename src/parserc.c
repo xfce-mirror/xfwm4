@@ -344,7 +344,6 @@ getBoolValue (const gchar *option, Settings *rc)
         {
             if (rc[i].value == NULL)
                 return FALSE;
-            g_print ("Reading option %s\n", option);
             g_return_val_if_fail(G_VALUE_TYPE(rc[i].value) == G_TYPE_BOOLEAN, FALSE);
             return g_value_get_boolean(rc[i].value);
         }
