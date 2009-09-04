@@ -224,7 +224,6 @@ clientFocusNew(Client * c)
             clientSortRing(c);
             clientLower (c, c2->frame);
             clientSortRing(c2);
-            clientSetOpacity (c, c->opacity, 0, 0);
         }
         else
         {

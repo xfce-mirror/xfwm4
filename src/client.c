@@ -1987,6 +1987,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         setWMState (display_info, c->window, IconicState);
         clientSetNetActions (c);
     }
+    clientUpdateOpacity (c);
 
     if (!grabbed)
     {
