@@ -3108,6 +3108,9 @@ compositorActivateScreen (ScreenInfo *screen_info, gboolean active)
 #ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
 
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+    TRACE ("entering compositorActivateScreen");
+
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
     {
