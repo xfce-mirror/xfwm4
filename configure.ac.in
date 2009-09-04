@@ -5,10 +5,10 @@ dnl
 
 m4_define([xfwm4_version_major], [4])
 m4_define([xfwm4_version_minor], [6])
-m4_define([xfwm4_version_micro], [1])
-m4_define([xfwm4_version_build], [r@REVISION@])
-m4_define([xfwm4_version_tag],   [])
-m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_version_micro()ifelse(xfwm4_version_tag(), [svn], [xfwm4_version_tag().xfwm4_version_build()], [xfwm4_version_tag()])])
+m4_define([xfwm4_version_micro], [2])
+m4_define([xfwm4_version_build], [@REVISION@])
+m4_define([xfwm4_version_tag],   [git])
+m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_version_micro()ifelse(xfwm4_version_tag(), [git], [xfwm4_version_tag().xfwm4_version_build()], [xfwm4_version_tag()])])
 
 m4_define([gtk_minimum_version], [2.10.0])
 m4_define([xfce_minimum_version], [4.6.0])
@@ -204,7 +204,7 @@ REVISION=unknown
 if test x"@REVISION@" != x""; then
     REVISION=@REVISION@
 fi
-AC_DEFINE_UNQUOTED([REVISION], "$REVISION", [svn revision number])
+AC_DEFINE_UNQUOTED([REVISION], "$REVISION", [git id])
 AC_SUBST([REVISION])
 
 AC_OUTPUT([

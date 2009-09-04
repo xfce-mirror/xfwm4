@@ -1,7 +1,7 @@
 bin_PROGRAMS = \
 xfwm4-settings  \
 xfwm4-tweaks-settings  \
-xfwm4-workspace-settings 
+xfwm4-workspace-settings
 
 noinst_DATA = \
 	monitor-icon.png \
@@ -130,5 +130,4 @@ EXTRA_DIST = \
 	xfwm4-dialog.glade
 
 DISTCLEANFILES = \
-	$(desktop_DATA)  \
-	monitor-icon.h
+	$(desktop_DATA)
