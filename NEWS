@@ -8,6 +8,7 @@
 - Fix mixed RTL/LTR text not rendering properly in title and tabwin
 - Place windows on top of stack even when not focused in focus follow mouse
 - Fix opacity for newly mapped window not focused by default (bug #5706)
+- Display an app switcher window per physical monitor (bug #5229)
 
 4.6.1
 =====

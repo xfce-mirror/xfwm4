@@ -32,26 +32,38 @@
 #include <gtk/gtk.h>
 
 typedef struct _Tabwin Tabwin;
+typedef struct _TabwinWidget TabwinWidget;
+
 struct _Tabwin
+{
+    GList *tabwins;
+    GList *clients;
+    GList *selected;
+    guint client_count;
+    gboolean display_workspace;
+};
+
+struct _TabwinWidget
 {
     /* The below must be freed when destroying */
     GtkWidget *window;
-    GList *head;
+    GList *widgets;
 
     /* these don't have to be */
+    Tabwin *tabwin;
     GtkWidget *class;
     GtkWidget *label;
     GtkWidget *container;
-    GList *current;
-    gulong selected_callback;
-    gboolean display_workspace;
+    GtkWidget *selected;
 
-    int grid_cols;
-    int grid_rows;
+    gulong selected_callback;
+    gint monitor_num;
+    gint width, height;
+    gint grid_cols;
+    gint grid_rows;
 };
 
-Tabwin                  *tabwinCreate                           (GdkScreen *,
-                                                                 Client *,
+Tabwin                  *tabwinCreate                           (Client *,
                                                                  Client *,
                                                                  unsigned int,
                                                                  gboolean);

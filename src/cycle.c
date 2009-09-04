@@ -83,6 +83,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     cancel = screen_info->params->keys[KEY_CANCEL].keycode;
     modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
     status = EVENT_FILTER_STOP;
+    removed = NULL;
     cycling = TRUE;
     gone = FALSE;
 
@@ -92,14 +93,19 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     switch (xevent->type)
     {
         case DestroyNotify:
-            removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, SEARCH_WINDOW);
+            if ((removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
+            {
+                /* No need to go any further */
+                break;
+            }
             gone |= (c == removed);
-            c = tabwinRemoveClient(passdata->tabwin, removed);
-            passdata->c = c;
-            status = EVENT_FILTER_CONTINUE;
             /* Walk through */
         case UnmapNotify:
-            removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, SEARCH_WINDOW);
+            if (!removed && (removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
+            {
+                /* No need to go any further */
+                break;
+            }
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
             passdata->c = c;
@@ -261,8 +267,7 @@ clientCycle (Client * c, XKeyEvent * ev)
         {
             passdata.wireframe = wireframeCreate (passdata.c);
         }
-        passdata.tabwin = tabwinCreate (passdata.c->screen_info->gscr, c,
-                                        passdata.c, passdata.cycle_range,
+        passdata.tabwin = tabwinCreate (c, passdata.c, passdata.cycle_range,
                                         screen_info->params->cycle_workspaces);
         eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
         gtk_main ();
