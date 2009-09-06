@@ -387,36 +387,105 @@ clientFindClosestEdgeX (Client *c, int edge_pos)
        
     Client *c2;
     ScreenInfo *screen_info;
-    int i, closest;
-    int snap_width;
+    int i, closest, snap_width, left_margin, right_margin;
+    gboolean is_visible, is_snap_window, is_snap_strut;
 
     screen_info = c->screen_info;
     snap_width = screen_info->params->snap_width;
     closest = edge_pos + snap_width + 2; /* This only needs to be out of the snap range to work. -Cliff */
     
+    /* iterate over all client windows */
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
-        if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&
-            (((screen_info->params->snap_to_windows) && (c2->win_layer == c->win_layer))
-             || ((screen_info->params->snap_to_border)
-                  && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
-                  && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))  
+        /* skip the parameter client itself */
+        if (c2 == c)
         {
-        
+            continue;
+        }
+
+        /* check if the client is visible */
+        is_visible = FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE);
+
+        /* check if this is a window we can snap to (if window snapping is enabled) */
+        is_snap_window = is_visible && screen_info->params->snap_to_windows && (c2->win_layer == c->win_layer);
+
+        /* check if this a strut we can snap to (if snapping to the screen edges is enabled) */
+        is_snap_strut = is_visible && screen_info->params->snap_to_border && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT);
+
+        /* calculate margins */
+        if (is_snap_window)
+        {
+            left_margin = right_margin = screen_info->params->window_spacing;
+        }
+        else if (is_snap_strut)
+        {
+            left_margin = screen_info->params->xfwm_margins[STRUTS_RIGHT];
+            right_margin = screen_info->params->xfwm_margins[STRUTS_LEFT];
+        }
+
+        /* check if this client is something we can snap to */
+        if (is_snap_window || is_snap_strut)
+        {
+            /* check if the two clients overlap vertically */
             if (clientCheckOverlap (c->y - frameTop (c) - 1, c->y + c->height + frameBottom (c) + 1, c2->y - frameTop (c) - 1, c2->y + c2->height + frameBottom (c) + 1))
             {
+                /* check if we are closer to the left edge of c2 than to any previous edge */
                 if (abs (c2->x - frameLeft (c2) - edge_pos) < abs (closest - edge_pos))
                 {
+                    /* snap directly to the edge */
                     closest = c2->x - frameLeft (c2);
                 }
-                if (abs ((c2->x + c2->width) + frameRight (c2) - edge_pos) < abs (closest - edge_pos))
+                
+                if (abs (c2->x - frameLeft (c2) - left_margin - edge_pos) < (closest - edge_pos))
                 {
-                    closest = (c2->x + c2->width) + frameRight (c2);
+                    /* we're approaching the edge from the left. snap to the edge from the left, with a certain space between the two clients */
+                    closest = c2->x - frameLeft (c2) - left_margin;
+                }
+                
+                if (abs (c2->x - frameLeft (c2) + left_margin - edge_pos) < (closest - edge_pos))
+                {
+                    if (is_snap_window) 
+                    {
+                        /* we're approaching the edge from the right. snap to the edge directly */
+                        closest = c2->x - frameLeft (c2);
+                    }
+                    else
+                    {
+                        /* we're approaching the edge from the right. snap to the edge from the right, with a certain space between the two clients */
+                        closest = c2->x - frameLeft (c2) + left_margin;
+                    }
+                }
+
+                /* check if we are closer to the right edge of c2 than to any previous edge */
+                if (abs (c2->x + c2->width + frameRight (c2) - edge_pos) < abs (closest - edge_pos))
+                {
+                    /* snap directly to the edge */
+                    closest = c2->x + c2->width + frameRight (c2);
+                }
+                
+                if (abs (c2->x + c2->width + frameRight (c2) - right_margin - edge_pos) < (closest - edge_pos))
+                {
+                    if (is_snap_window)
+                    {
+                        /* we're approaching the edge from the left. snap to directly to the edge */
+                        closest = c2->x + c2->width + frameRight (c2);
+                    }
+                    else
+                    {
+                        /* we're approaching the edge from the left. snap to the edge from the left, with a certain space between the two clients */
+                        closest = c2->x + c2->width + frameRight (c2) - right_margin;
+                    }
+                }
+
+                if (abs (c2->x + c2->width + frameRight (c2) + right_margin - edge_pos) < (closest - edge_pos))
+                {
+                    /* we're approaching the edge from the right. snap to the edge from the right, with a certain space between the two clients */
+                    closest = c2->x + c2->width + frameRight (c2) + right_margin;
                 }
             }            
         }
     }
-    
+
     if (abs (closest - edge_pos) > snap_width)
     {
         closest = edge_pos;
@@ -434,31 +503,100 @@ clientFindClosestEdgeY (Client *c, int edge_pos)
        
     Client *c2;
     ScreenInfo *screen_info;
-    int i, closest;
-    int snap_width;
+    int i, closest, snap_width, top_margin, bottom_margin;
+    gboolean is_visible, is_snap_window, is_snap_strut;
 
     screen_info = c->screen_info;
     snap_width = screen_info->params->snap_width;
     closest = edge_pos + snap_width + 1; /* This only needs to be out of the snap range to work. -Cliff */
     
+    /* iterate over all client windows */
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
-        if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&
-            (((screen_info->params->snap_to_windows) && (c2->win_layer == c->win_layer))
-             || ((screen_info->params->snap_to_border)
-                  && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
-                  && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))  
+        /* skip the parameter client itself */
+        if (c2 == c)
         {
+            continue;
+        }
 
+        /* check if the client is visible */
+        is_visible = FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE);
+
+        /* check if this is a window we can snap to (if window snapping is enabled) */
+        is_snap_window = is_visible && screen_info->params->snap_to_windows && (c2->win_layer == c->win_layer);
+
+        /* check if this a strut we can snap to (if snapping to the screen edges is enabled) */
+        is_snap_strut = is_visible && screen_info->params->snap_to_border && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT);
+
+        /* calculate margins */
+        if (is_snap_window)
+        {
+            top_margin = bottom_margin = screen_info->params->window_spacing;
+        }
+        else if (is_snap_strut)
+        {
+            top_margin = screen_info->params->xfwm_margins[STRUTS_BOTTOM];
+            bottom_margin = screen_info->params->xfwm_margins[STRUTS_TOP];
+        }
+
+        /* check if this client is something we can snap to */
+        if (is_snap_window || is_snap_strut)
+        {
+            /* check if the two clients overlap horizontally */
             if (clientCheckOverlap (c->x - frameLeft (c) - 1, c->x + c->width + frameRight (c) + 1, c2->x - frameLeft (c) - 1, c2->x + c2->width + frameRight (c) + 1))
             {
+                /* check if we are closer to the top edge of c2 than to any previous edge */
                 if (abs (c2->y - frameTop(c2) - edge_pos) < abs (closest - edge_pos))
                 {
+                    /* snap directly to the edge */
                     closest = c2->y - frameTop (c2);
                 }
-                if (abs ((c2->y + c2->height) + frameBottom (c2) - edge_pos) < abs (closest - edge_pos))
+
+                if (abs (c2->y - frameTop (c2) - top_margin - edge_pos) < abs (closest - edge_pos))
                 {
-                    closest = (c2->y + c2->height) + frameBottom (c2);
+                    /* we're approaching the edge from the top. snap to the edge from the top, with a certain space between the two clients */
+                    closest = c2->y - frameTop (c2) - top_margin;
+                }
+
+                if (abs (c2->y - frameTop (c2) + top_margin - edge_pos) < abs (closest - edge_pos))
+                {
+                    if (is_snap_window)
+                    {
+                        /* we're approaching the edge from the bottom. snap directly to the edge */
+                        closest = c2->y - frameTop (c2);
+                    }
+                    else
+                    {
+                        /* we're approaching the edge from the bottom. snap to the edge from the bottom, with a certain space between the two clients */
+                        closest = c2->y - frameTop (c2) + top_margin;
+                    }
+                }
+
+                /* check if we are closer to the bottom edge of c2 than to any previous edge */
+                if (abs (c2->y + c2->height + frameBottom (c2) - edge_pos) < abs (closest - edge_pos))
+                {
+                    /* snap directly to the edge */
+                    closest = c2->y + c2->height + frameBottom (c2);
+                }
+                
+                if (abs (c2->y + c2->height + frameBottom (c2) - bottom_margin - edge_pos) < (closest - edge_pos))
+                {
+                    if (is_snap_window)
+                    {
+                        /* we're approaching the edge from the top. snap directly to the edge */
+                        closest = c2->y + c2->height + frameBottom (c2);
+                    }
+                    else
+                    {
+                        /* we're approaching the edge from the top. snap to the edge from the top, with a certain space between the two clients */
+                        closest = c2->y + c2->height + frameBottom (c2) - bottom_margin;
+                    }
+                }
+                
+                if (abs (c2->y + c2->height + frameBottom (c2) + bottom_margin - edge_pos) < (closest - edge_pos))
+                {
+                    /* snap to the edge from the bottom, with a certain space between the two clients */
+                    closest = c2->y + c2->height + frameBottom (c2) + bottom_margin;
                 }
             }            
         }
