@@ -716,6 +716,7 @@ loadSettings (ScreenInfo *screen_info)
         {"unredirect_overlays", NULL, G_TYPE_BOOLEAN, TRUE},
         {"urgent_blink", NULL, G_TYPE_BOOLEAN, TRUE},
         {"use_compositing", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"window_spacing", NULL, G_TYPE_UINT, TRUE},
         {"workspace_count", NULL, G_TYPE_INT, TRUE},
         {"wrap_cycle", NULL, G_TYPE_BOOLEAN, TRUE},
         {"wrap_layout", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -808,6 +809,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("unredirect_overlays", rc);
     screen_info->params->use_compositing =
         getBoolValue ("use_compositing", rc);
+    screen_info->params->window_spacing = 
+        getIntValue ("window_spacing", rc);
     screen_info->params->wrap_workspaces =
         getBoolValue ("wrap_workspaces", rc);
 
@@ -1113,6 +1116,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "snap_width"))
                 {
                     screen_info->params->snap_width = CLAMP (g_value_get_int (value), 5, 100);
+                }
+                else if (!strcmp (name, "window_spacing"))
+                {
+                    screen_info->params->window_spacing = CLAMP (g_value_get_int (value), 5, 100);
                 }
                 else if (!strcmp (name, "wrap_resistance"))
                 {

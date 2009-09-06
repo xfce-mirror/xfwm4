@@ -310,6 +310,8 @@ workspace_dialog_configure_widgets (GladeXML *gxml,
     GtkWidget *margin_bottom_spinbutton = glade_xml_get_widget (gxml, "margin_bottom_spinbutton");
     GtkWidget *margin_left_spinbutton = glade_xml_get_widget (gxml, "margin_left_spinbutton");
 
+    GtkWidget *window_spacing_spinbutton = glade_xml_get_widget (gxml, "window_spacing_spinbutton");
+
     /* Set monitor icon */
     monitor = xfce_inline_icon_at_size (monitor_icon_data, -1, -1);
     image = glade_xml_get_widget (gxml, "monitor_icon");
@@ -347,6 +349,10 @@ workspace_dialog_configure_widgets (GladeXML *gxml,
                             "/general/margin_left",
                             G_TYPE_INT,
                             (GObject *)margin_left_spinbutton, "value");
+    xfconf_g_property_bind (channel,
+                            "/general/window_spacing",
+                            G_TYPE_INT,
+                            (GObject *)window_spacing_spinbutton, "value");
 
     workspace_dialog_setup_names_treeview(gxml, channel);
 
