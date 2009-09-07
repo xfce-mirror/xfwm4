@@ -148,8 +148,12 @@
      inkscape:label="Border">
     <path
        id="rect1319"
-       d="M 8,0 8,1 4,1 C 4,1 1,1 1,5 1,16 1,21 1,21.1 L 8,21 8,22 0,22 0,22 0,0 8,0 z"
+       d="M 8,0 L 8,1 L 3,1 C 3,1 1,1 1,4 C 1,22 1,22 1,22 L 0,22 L 0,0 L 8,0 z "
        style="fill:#000000;fill-opacity:0.25" />
+    <path
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
+       d="M 3.5,21.5 L 7.5,21.5"
+       id="path6060" />
   </g>
   <g
      style="display:inline"
@@ -175,7 +179,11 @@
        id="path2396" />
     <path
        style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
-       d="M 8,1.5 L 3.5,1.5 C 3.5,1.5 1.5,1.5 1.5,4.5 C 1.5,7.5 1.5,18 1.5,18 L 1.5,18 L 1.5,20.5 L 8,20.5"
+       d="M 8,1.5 L 3.5,1.5 C 3.5,1.5 1.5,1.5 1.5,4.5 C 1.5,7.5 1.5,21.5 1.5,21.5 L 1.5,21.5 L 1.5,21.5"
        id="path2170" />
+    <path
+       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
+       d="M 3.5,20.5 L 7.5,20.5"
+       id="path6062" />
   </g>
 </svg>
