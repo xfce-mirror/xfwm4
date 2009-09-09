@@ -45,12 +45,15 @@ void                     clientFocusTop                         (ScreenInfo *,
                                                                  guint32);
 gboolean                 clientFocusNew                         (Client *);
 gboolean                 clientSelectMask                       (Client *,
-                                                                 int,
-                                                                 int);
+                                                                 Client *,
+                                                                 guint,
+                                                                 guint);
 Client                  *clientGetNext                          (Client *,
-                                                                 int);
+                                                                 guint,
+                                                                 guint);
 Client                  *clientGetPrevious                      (Client *,
-                                                                 int);
+                                                                 guint,
+                                                                 guint);
 void                     clientPassFocus                        (ScreenInfo *,
                                                                  Client *,
                                                                  GList *);

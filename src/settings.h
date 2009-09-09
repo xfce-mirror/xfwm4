@@ -97,6 +97,8 @@ enum
     KEY_SHADE_WINDOW,
     KEY_SHOW_DESKTOP,
     KEY_STICK_WINDOW,
+    KEY_SWITCH_APPLICATION,
+    KEY_SWITCH_WINDOW,
     KEY_TOGGLE_ABOVE,
     KEY_TOGGLE_FULLSCREEN,
     KEY_UP_WORKSPACE,
@@ -194,6 +196,7 @@ struct _XfwmParams
     gboolean box_move;
     gboolean box_resize;
     gboolean click_to_focus;
+    gboolean cycle_apps_only;
     gboolean cycle_draw_frame;
     gboolean cycle_hidden;
     gboolean cycle_minimum;

@@ -4,11 +4,18 @@
   when another window is activated (Bug #3551)
 - Do not clear the show desktop flag upon activation of
   already visible windows
-- Implement prelinminary support for snap on resize (patch by Clifford Jolly <cliff@cliffjolly.com>)
+- Implement prelinminary support for snap on resize (patch by Clifford Jolly
+  <cliff@cliffjolly.com>)
 - Fix mixed RTL/LTR text not rendering properly in title and tabwin
 - Place windows on top of stack even when not focused in focus follow mouse
 - Fix opacity for newly mapped window not focused by default (bug #5706)
 - Display an app switcher window per physical monitor (bug #5229)
+- Add new keyboard shortcut to switch between windows of the same application
+- Add new keyboard shortcut to switch between windows of different applications
+  only.
+- Add new option "cycle_apps_only" to switch between regular toplevels only 
+  (avoiding dialogs - This option coupled with the new shortcut allows for
+  faster window selection through keyboard)
 
 4.6.1
 =====

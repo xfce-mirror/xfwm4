@@ -54,8 +54,103 @@ struct _ClientCycleData
     Client *c;
     Tabwin *tabwin;
     Window wireframe;
-    int cycle_range;
 };
+
+#if 0
+static gint
+clientCompareApp (gconstpointer a, gconstpointer b)
+{
+    return !clientSameApplication ((Client *) a, (Client *) b);
+}
+#endif
+
+static guint
+clientGetCycleRange (ScreenInfo *screen_info)
+{
+    guint range;
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    TRACE ("entering clientGetCycleRange");
+
+    range = 0;
+    if (screen_info->params->cycle_hidden)
+    {
+        range |= SEARCH_INCLUDE_HIDDEN;
+    }
+    if (!screen_info->params->cycle_minimum)
+    {
+        range |= SEARCH_INCLUDE_SKIP_TASKBAR | SEARCH_INCLUDE_SKIP_PAGER;
+    }
+    if (screen_info->params->cycle_workspaces)
+    {
+        range |= SEARCH_INCLUDE_ALL_WORKSPACES;
+    }
+
+    return range;
+}
+
+static GList *
+clientCycleCreateList (Client *c)
+{
+    ScreenInfo *screen_info;
+    Client *c2;
+    guint range;
+    GList *clients;
+    int i;
+
+    g_return_val_if_fail (c, NULL);
+    TRACE ("entering clientCycleCreateList");
+
+    screen_info = c->screen_info;
+    range = clientGetCycleRange (screen_info);
+    clients = NULL;
+
+    for (c2 = c, i = 0; c && i < screen_info->client_count; i++, c2 = c2->next)
+    {
+        if (!clientSelectMask (c2, NULL, range,
+             screen_info->params->cycle_apps_only ? WINDOW_NORMAL : WINDOW_REGULAR_FOCUSABLE))
+            continue;
+#if 0
+        if (screen_info->params->cycle_apps_only)
+        {
+            /*
+             *  For apps only cycling, it's a tad more complicated
+             * - We want only regular windows (no dialog or anything else)
+             * - We don't want a window from the same application to be
+             *   in the list.
+             */
+            if (c2->type != WINDOW_NORMAL)
+                continue;
+            if (g_list_find_custom (clients, c2, clientCompareApp))
+                continue;
+        }
+#endif
+        TRACE ("clientCycleCreateList: adding %s", c2->name);
+        clients = g_list_append (clients, c2);
+    }
+
+    return clients;
+}
+
+static void
+clientCycleFocusAndRaise (Client *c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *sibling;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientFocusAndRaise");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    sibling = clientGetTransientFor(c);
+    clientRaise (sibling, None);
+    clientShow (sibling, TRUE);
+    clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+    clientSetLastRaise (c);
+}
 
 static eventFilterStatus
 clientCycleEventFilter (XEvent * xevent, gpointer data)
@@ -197,6 +292,8 @@ clientCycle (Client * c, XKeyEvent * ev)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     ClientCycleData passdata;
+    GList *clients, *selected;
+    guint cycle_range;
     gboolean g1, g2;
     int key;
 
@@ -205,6 +302,12 @@ clientCycle (Client * c, XKeyEvent * ev)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+
+    clients = clientCycleCreateList (c);
+    if (!clients)
+    {
+        return;
+    }
 
     g1 = myScreenGrabKeyboard (screen_info, ev->time);
     g2 = myScreenGrabPointer (screen_info, LeaveWindowMask,  None, ev->time);
@@ -216,65 +319,42 @@ clientCycle (Client * c, XKeyEvent * ev)
         gdk_beep ();
         myScreenUngrabKeyboard (screen_info, CurrentTime);
         myScreenUngrabPointer (screen_info, CurrentTime);
+        g_list_free (clients);
 
         return;
     }
-
-    if (screen_info->params->cycle_hidden)
-    {
-        passdata.cycle_range = INCLUDE_HIDDEN;
-    }
-    else
-    {
-        passdata.cycle_range = 0;
-    }
-    if (!screen_info->params->cycle_minimum)
-    {
-        passdata.cycle_range |= INCLUDE_SKIP_TASKBAR | INCLUDE_SKIP_PAGER;
-    }
-    if (screen_info->params->cycle_workspaces)
-    {
-        passdata.cycle_range |= INCLUDE_ALL_WORKSPACES;
-    }
+    cycle_range = clientGetCycleRange (screen_info);
     key = myScreenGetKeyPressed (screen_info, ev);
+
     if (key == KEY_CYCLE_REVERSE_WINDOWS)
     {
-        passdata.c = clientGetPrevious (c, passdata.cycle_range);
+        selected = g_list_last (clients);
     }
     else
     {
-        passdata.c = clientGetNext (c, passdata.cycle_range);
+        selected = g_list_next (clients);
     }
+    passdata.c = (Client *) selected->data;
     passdata.wireframe = None;
 
-    /* If there is one single client, and if it's eligible for focus, use it */
-    if ((passdata.c == NULL) && (c != clientGetFocus()) &&
-        clientSelectMask (c, passdata.cycle_range, WINDOW_REGULAR_FOCUSABLE))
+    TRACE ("entering cycle loop");
+    if (screen_info->params->cycle_draw_frame)
     {
-        passdata.c = c;
+        passdata.wireframe = wireframeCreate (passdata.c);
     }
-
-    if (passdata.c)
+    passdata.tabwin = tabwinCreate (&clients, selected, screen_info->params->cycle_workspaces);
+    eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
+    gtk_main ();
+    eventFilterPop (display_info->xfilter);
+    TRACE ("leaving cycle loop");
+    tabwinDestroy (passdata.tabwin);
+    g_free (passdata.tabwin);
+    g_list_free (clients);
+    if (passdata.wireframe)
     {
-        TRACE ("entering cycle loop");
-        if (screen_info->params->cycle_draw_frame)
-        {
-            passdata.wireframe = wireframeCreate (passdata.c);
-        }
-        passdata.tabwin = tabwinCreate (c, passdata.c, passdata.cycle_range,
-                                        screen_info->params->cycle_workspaces);
-        eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
-        gtk_main ();
-        eventFilterPop (display_info->xfilter);
-        TRACE ("leaving cycle loop");
-        tabwinDestroy (passdata.tabwin);
-        g_free (passdata.tabwin);
-        if (passdata.wireframe)
-        {
-            wireframeDelete (screen_info, passdata.wireframe);
-        }
-        updateXserverTime (display_info);
+        wireframeDelete (screen_info, passdata.wireframe);
     }
+    updateXserverTime (display_info);
 
     if (passdata.c)
     {
@@ -301,11 +381,7 @@ clientCycle (Client * c, XKeyEvent * ev)
             workspaceSwitch (screen_info, workspace, c, FALSE, myDisplayGetCurrentTime (display_info));
         }
 
-        sibling = clientGetTransientFor(c);
-        clientRaise (sibling, None);
-        clientShow (sibling, TRUE);
-        clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
-        clientSetLastRaise (c);
+        clientCycleFocusAndRaise (c);
     }
 
     /*
@@ -314,4 +390,51 @@ clientCycle (Client * c, XKeyEvent * ev)
      */
     myScreenUngrabKeyboard (screen_info, CurrentTime);
     myScreenUngrabPointer (screen_info, CurrentTime);
+}
+
+gboolean
+clientSwitchWindow (void)
+{
+    Client *focus, *new;
+    guint range;
+
+    focus = clientGetFocus();
+    if (!focus)
+    {
+        return FALSE;
+    }
+
+    range = clientGetCycleRange (focus->screen_info);
+    new = clientGetPrevious(focus, range | SEARCH_SAME_APPLICATION, WINDOW_REGULAR_FOCUSABLE);
+    if (new)
+    {
+        clientCycleFocusAndRaise (new);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+gboolean
+clientSwitchApp (void)
+{
+    Client *focus, *new;
+    guint range;
+
+    TRACE ("entering clientSwitchApp");
+
+    focus = clientGetFocus();
+    if (!focus)
+    {
+        return FALSE;
+    }
+
+    range = clientGetCycleRange (focus->screen_info);
+    /* We do not want dialogs, just toplevel app windows here */
+    new = clientGetPrevious(focus, range | SEARCH_DIFFERENT_APPLICATION, WINDOW_NORMAL);
+    if (new)
+    {
+        clientCycleFocusAndRaise (new);
+        return TRUE;
+    }
+    return FALSE;
 }

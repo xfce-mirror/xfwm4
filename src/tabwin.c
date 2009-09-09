@@ -211,35 +211,6 @@ createWindowIcon (Client *c)
     return icon;
 }
 
-static GList *
-createClientlist (Tabwin *tabwin, Client *clients, Client *selected, unsigned int cycle_range)
-{
-    ScreenInfo *screen_info;
-    Client *c;
-    int i;
-
-    g_return_val_if_fail (clients, NULL);
-    TRACE ("entering createClientlist");
-
-    screen_info = clients->screen_info;
-    for (c = clients, i = 0; c && i < screen_info->client_count; i++, c = c->next)
-    {
-        if (!clientSelectMask (c, cycle_range, WINDOW_REGULAR_FOCUSABLE))
-            continue;
-        TRACE ("createClientlist: adding %s", c->name);
-        tabwin->clients = g_list_append (tabwin->clients, c);
-        tabwin->client_count++;
-        if (c == selected)
-        {
-            TRACE ("createClientlist: selected %s", c->name);
-            /* Use last entry added to the list */
-            tabwin->selected = g_list_last (tabwin->clients);
-        }
-    }
-
-    return tabwin->clients;
-}
-
 static GtkWidget *
 createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 {
@@ -267,7 +238,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     windowlist = gtk_table_new (tbw->grid_rows, tbw->grid_cols, FALSE);
 
     /* pack the client icons */
-    for (clients = t->clients; clients; clients = g_list_next (clients))
+    for (clients = *t->clients; clients; clients = g_list_next (clients))
     {
         c = (Client *) clients->data;
         TRACE ("createWindowlist: adding %s", c->name);
@@ -412,23 +383,25 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
 }
 
 Tabwin *
-tabwinCreate (Client *clients, Client *selected, unsigned int cycle_range, gboolean display_workspace)
+tabwinCreate (GList **clients, GList *selected, gboolean display_workspace)
 {
     ScreenInfo *screen_info;
+    Client *c;
     Tabwin *tabwin;
     int num_monitors, i;
 
     g_return_val_if_fail (selected, NULL);
     g_return_val_if_fail (clients, NULL);
+    g_return_val_if_fail (*clients, NULL);
 
     TRACE ("entering tabwinCreate");
-
+    c = (Client *) selected->data;
     tabwin = g_new0 (Tabwin, 1);
-    screen_info = selected->screen_info;
+    screen_info = c->screen_info;
     tabwin->display_workspace = display_workspace;
-    tabwin->clients = NULL;
-    tabwin->client_count = 0;
-    createClientlist (tabwin, clients, selected, cycle_range);
+    tabwin->clients = clients;
+    tabwin->selected = selected;
+    tabwin->client_count = g_list_length (*clients);
     tabwin->tabwins = NULL;
     num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
     for (i = 0; i < num_monitors; i++)
@@ -464,13 +437,13 @@ tabwinRemoveClient (Tabwin *t, Client *c)
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering tabwinRemoveClient");
 
-    if (!t->clients)
+    if (!*t->clients)
     {
         return NULL;
     }
 
     /* First, remove the client from our own client list */
-    for (clients = t->clients; clients; clients = g_list_next (clients))
+    for (clients = *t->clients; clients; clients = g_list_next (clients))
     {
         if (clients->data == c)
         {
@@ -478,7 +451,7 @@ tabwinRemoveClient (Tabwin *t, Client *c)
             {
                 tabwinSelectNext (t);
             }
-            t->clients = g_list_delete_link (t->clients, clients);
+            *t->clients = g_list_delete_link (*t->clients, clients);
             break;
         }
     }
@@ -515,7 +488,7 @@ tabwinSelectNext (Tabwin *t)
     next = g_list_next(t->selected);
     if (!next)
     {
-        next = t->clients;
+        next = *t->clients;
         g_return_val_if_fail (next != NULL, NULL);
     }
     t->selected = next;
@@ -550,7 +523,7 @@ tabwinSelectPrev (Tabwin *t)
     prev = g_list_previous (t->selected);
     if (!prev)
     {
-        prev = g_list_last (t->clients);
+        prev = g_list_last (*t->clients);
         g_return_val_if_fail (prev != NULL, NULL);
     }
     t->selected = prev;
@@ -574,12 +547,15 @@ tabwinSelectPrev (Tabwin *t)
 Client *
 tabwinGetHead (Tabwin *t)
 {
+    GList *head;
+
     g_return_val_if_fail (t != NULL, NULL);
     TRACE ("entering tabwinGetHead");
 
-    if (t->clients)
+    head = *t->clients;
+    if (head)
     {
-        return (Client *)  t->clients->data;
+        return (Client *)  head->data;
     }
 
     return NULL;
@@ -603,5 +579,4 @@ tabwinDestroy (Tabwin *t)
         g_free (tbw);
     }
     g_list_free (t->tabwins);
-    g_list_free (t->clients);
 }

@@ -37,6 +37,10 @@ gboolean                 clientIsTransientOrModal               (Client *);
 gboolean                 clientIsValidTransientOrModal          (Client *);
 gboolean                 clientSameGroup                        (Client *,
                                                                  Client *);
+gboolean                 clientSameLeader                        (Client *,
+                                                                 Client *);
+gboolean                 clientSameApplication                  (Client *,
+                                                                 Client *);
 gboolean                 clientIsTransientFor                   (Client *,
                                                                  Client *);
 gboolean                 clientIsModalFor                       (Client *,
@@ -54,4 +58,6 @@ GList                   *clientListTransient                    (Client *);
 GList                   *clientListTransientOrModal             (Client *);
 gboolean                 clientCheckTransientWindow             (Client *,
                                                                  Window);
+gboolean                 clientSameApplication                  (Client *,
+                                                                 Client *);
 #endif /* INC_TRANSIENTS_H */

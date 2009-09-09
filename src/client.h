@@ -66,12 +66,14 @@
 #define CFG_NOTIFY                      (1<<2)
 #define CFG_FORCE_REDRAW                (1<<3)
 
-#define INCLUDE_HIDDEN                  (1<<0)
-#define INCLUDE_SHADED                  (1<<1)
-#define INCLUDE_ALL_WORKSPACES          (1<<2)
-#define INCLUDE_SKIP_FOCUS              (1<<3)
-#define INCLUDE_SKIP_PAGER              (1<<4)
-#define INCLUDE_SKIP_TASKBAR            (1<<5)
+#define SEARCH_INCLUDE_HIDDEN           (1<<0)
+#define SEARCH_INCLUDE_SHADED           (1<<1)
+#define SEARCH_INCLUDE_ALL_WORKSPACES   (1<<2)
+#define SEARCH_INCLUDE_SKIP_FOCUS       (1<<3)
+#define SEARCH_INCLUDE_SKIP_PAGER       (1<<4)
+#define SEARCH_INCLUDE_SKIP_TASKBAR     (1<<5)
+#define SEARCH_SAME_APPLICATION         (1<<6)
+#define SEARCH_DIFFERENT_APPLICATION    (1<<7)
 
 #define NO_UPDATE_FLAG                  0
 #define UPDATE_BUTTON_GRABS             (1<<0)

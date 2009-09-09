@@ -242,6 +242,8 @@ static const ShortcutTemplate shortcut_values[] = {
   { N_("Cancel"), "cancel_key", NULL },
   { N_("Cycle windows"), "cycle_windows_key", NULL },
   { N_("Cycle windows (Reverse)"), "cycle_reverse_windows_key", NULL },
+  { N_("Switch window for same application"), "switch_window_key", NULL },
+  { N_("Switch application"), "switch_application_key", NULL },
   { N_("Close window"), "close_window_key", NULL },
   { N_("Maximize window horizontally"), "maximize_horiz_key", NULL },
   { N_("Maximize window vertically"), "maximize_vert_key", NULL },

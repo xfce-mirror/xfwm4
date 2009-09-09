@@ -602,6 +602,8 @@ loadKeyBindings (ScreenInfo *screen_info)
     parseShortcut (screen_info, KEY_SHADE_WINDOW, "shade_window_key", shortcuts);
     parseShortcut (screen_info, KEY_SHOW_DESKTOP, "show_desktop_key", shortcuts);
     parseShortcut (screen_info, KEY_STICK_WINDOW, "stick_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_SWITCH_APPLICATION, "switch_application_key", shortcuts);
+    parseShortcut (screen_info, KEY_SWITCH_WINDOW, "switch_window_key", shortcuts);
     parseShortcut (screen_info, KEY_TOGGLE_ABOVE, "above_key", shortcuts);
     parseShortcut (screen_info, KEY_TOGGLE_FULLSCREEN, "fullscreen_key", shortcuts);
     parseShortcut (screen_info, KEY_UP_WORKSPACE, "up_workspace_key", shortcuts);
@@ -661,6 +663,7 @@ loadSettings (ScreenInfo *screen_info)
         {"button_spacing", NULL, G_TYPE_INT, TRUE},
         {"click_to_focus", NULL, G_TYPE_BOOLEAN, TRUE},
         {"focus_delay", NULL, G_TYPE_INT, TRUE},
+        {"cycle_apps_only", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_draw_frame", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -742,6 +745,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("box_move", rc);
     screen_info->params->click_to_focus =
         getBoolValue ("click_to_focus", rc);
+    screen_info->params->cycle_apps_only =
+        getBoolValue ("cycle_apps_only", rc);
     screen_info->params->cycle_minimum =
         getBoolValue ("cycle_minimum", rc);
     screen_info->params->cycle_draw_frame =

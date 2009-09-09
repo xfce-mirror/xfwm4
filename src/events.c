@@ -500,6 +500,16 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 
     switch (key)
     {
+        case KEY_SWITCH_WINDOW:
+            handled = TRUE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
+            clientSwitchWindow ();
+            break;
+        case KEY_SWITCH_APPLICATION:
+            handled = TRUE;
+            XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
+            clientSwitchApp ();
+            break;
         case KEY_NEXT_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
             handled = TRUE;
@@ -919,19 +929,29 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         win = ev->subwindow;
         screen_info = c->screen_info;
 
-        if ((ev->button == Button1) && (screen_info->params->easy_click) && (state == screen_info->params->easy_click))
+        if ((ev->button == Button1) && (state) && (state == screen_info->params->easy_click))
         {
             button1Action (c, ev);
         }
-        else if ((ev->button == Button2) && (screen_info->params->easy_click) && (state == screen_info->params->easy_click))
+        else if ((ev->button == Button2) && (state) && (state == screen_info->params->easy_click))
         {
             clientLower (c, None);
         }
-        else if ((ev->button == Button3) && (screen_info->params->easy_click) && (state == screen_info->params->easy_click))
+        else if ((ev->button == Button3) && (state) && (state == screen_info->params->easy_click))
         {
             part = edgeGetPart (c, ev);
             edgeButton (c, part, ev);
         }
+#if 0   /* Binding the alt+scroll wheel to switch app/window is not handy, disabling for now */
+        else if ((ev->button == Button4) && (state) && (state == screen_info->params->easy_click))
+        {
+            clientSwitchWindow ();
+        }
+        else if ((ev->button == Button5) && (state) && (state == screen_info->params->easy_click))
+        {
+            clientSwitchApp ();
+        }
+#endif
         else if (WIN_IS_BUTTON (win))
         {
             if (ev->button <= Button3)

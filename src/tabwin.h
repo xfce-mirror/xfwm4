@@ -37,7 +37,7 @@ typedef struct _TabwinWidget TabwinWidget;
 struct _Tabwin
 {
     GList *tabwins;
-    GList *clients;
+    GList **clients;
     GList *selected;
     guint client_count;
     gboolean display_workspace;
@@ -63,9 +63,8 @@ struct _TabwinWidget
     gint grid_rows;
 };
 
-Tabwin                  *tabwinCreate                           (Client *,
-                                                                 Client *,
-                                                                 unsigned int,
+Tabwin                  *tabwinCreate                           (GList **,
+                                                                 GList *,
                                                                  gboolean);
 Client                  *tabwinGetSelected                      (Tabwin *);
 Client                  *tabwinSelectNext                       (Tabwin *);

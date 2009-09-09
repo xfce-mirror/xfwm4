@@ -352,7 +352,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
-            if ((!new_focus) && (c == previous) && clientSelectMask (c, 0, WINDOW_REGULAR_FOCUSABLE))
+            if ((!new_focus) && (c == previous) && clientSelectMask (c, NULL, 0, WINDOW_REGULAR_FOCUSABLE))
             {
                 new_focus = c;
             }

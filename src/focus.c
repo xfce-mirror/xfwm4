@@ -106,7 +106,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, GList * exclude_l
             }
             else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
             {
-                if (clientSelectMask (c, 0, WINDOW_REGULAR_FOCUSABLE))
+                if (clientSelectMask (c, NULL, 0, WINDOW_REGULAR_FOCUSABLE))
                 {
                     top_client.prefered = c;
                 }
@@ -246,30 +246,36 @@ clientFocusNew(Client * c)
 }
 
 gboolean
-clientSelectMask (Client * c, int mask, int type)
+clientSelectMask (Client * c, Client *other, guint mask, guint type)
 {
     g_return_val_if_fail (c != NULL, FALSE);
     TRACE ("entering clientSelectMask");
 
-    if ((!clientAcceptFocus (c)) && !(mask & INCLUDE_SKIP_FOCUS))
+    if ((mask & SEARCH_SAME_APPLICATION) && !clientSameApplication (c, other))
     {
         return FALSE;
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED) && !(mask & INCLUDE_HIDDEN))
+    if ((mask & SEARCH_DIFFERENT_APPLICATION) && clientSameApplication (c, other))
     {
         return FALSE;
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER)
-        && !(mask & INCLUDE_SKIP_PAGER))
+    if (!(mask & SEARCH_INCLUDE_SKIP_FOCUS) && !clientAcceptFocus (c))
     {
         return FALSE;
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_TASKBAR)
-        && !(mask & INCLUDE_SKIP_TASKBAR))
+    if (!(mask & SEARCH_INCLUDE_HIDDEN) && FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
         return FALSE;
     }
-    if ((c->win_workspace != c->screen_info->current_ws) && !(mask & INCLUDE_ALL_WORKSPACES))
+    if (!(mask & SEARCH_INCLUDE_SKIP_PAGER) && FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER))
+    {
+        return FALSE;
+    }
+    if (!(mask & SEARCH_INCLUDE_SKIP_TASKBAR) && FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_TASKBAR))
+    {
+        return FALSE;
+    }
+    if (!(mask & SEARCH_INCLUDE_ALL_WORKSPACES) && (c->win_workspace != c->screen_info->current_ws))
     {
         return FALSE;
     }
@@ -282,7 +288,7 @@ clientSelectMask (Client * c, int mask, int type)
 }
 
 Client *
-clientGetNext (Client * c, int mask)
+clientGetNext (Client * c, guint mask, guint type)
 {
     Client *c2;
     unsigned int i;
@@ -295,7 +301,7 @@ clientGetNext (Client * c, int mask)
         for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count - 1);
             c2 = c2->next, i++)
         {
-            if (clientSelectMask (c2, mask, WINDOW_REGULAR_FOCUSABLE))
+            if (clientSelectMask (c2, c, mask, type))
             {
                 return c2;
             }
@@ -305,7 +311,7 @@ clientGetNext (Client * c, int mask)
 }
 
 Client *
-clientGetPrevious (Client * c, int mask)
+clientGetPrevious (Client * c, guint mask, guint type)
 {
     Client *c2;
     unsigned int i;
@@ -318,7 +324,7 @@ clientGetPrevious (Client * c, int mask)
         for (c2 = c->prev, i = 0; (c2) && (i < screen_info->client_count);
             c2 = c2->prev, i++)
         {
-            if (clientSelectMask (c2, mask, WINDOW_REGULAR_FOCUSABLE))
+            if (clientSelectMask (c2, c, mask, type))
             {
                 return c2;
             }

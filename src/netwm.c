@@ -792,9 +792,6 @@ clientGetNetWmType (Client * c)
             case WIN_LAYER_DOCK:
                 c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_DOCK];
                 break;
-            case WIN_LAYER_NORMAL:
-                c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL];
-                break;
             default:
                 if (c->transient_for != None)
                 {

@@ -36,5 +36,6 @@
 
 void                     clientCycle                            (Client *,
                                                                  XKeyEvent *);
-
+gboolean                 clientCycleWindow                      (void);
+gboolean                 clientCycleApp                         (void);
 #endif /* INC_CYCLE_H */

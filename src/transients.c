@@ -98,6 +98,21 @@ clientSameGroup (Client * c1, Client * c2)
 }
 
 gboolean
+clientSameLeader (Client * c1, Client * c2)
+{
+    g_return_val_if_fail (c1 != NULL, FALSE);
+    g_return_val_if_fail (c2 != NULL, FALSE);
+
+    TRACE ("entering clientSameLeader");
+
+    return ((c1 != c2) &&
+            (((c1->client_leader != None) &&
+              (c1->client_leader == c2->client_leader)) ||
+             (c1->client_leader == c2->window) ||
+             (c2->client_leader == c1->window)));
+}
+
+gboolean
 clientIsTransientFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -415,4 +430,19 @@ clientCheckTransientWindow (Client *c, Window w)
     }
     g_list_free (transients);
     return TRUE;
+}
+
+gboolean
+clientSameApplication (Client *c1, Client *c2)
+{
+    g_return_val_if_fail (c1 != NULL, FALSE);
+    g_return_val_if_fail (c2 != NULL, FALSE);
+
+    return (clientIsTransientOrModalFor (c1, c2) ||
+            clientIsTransientOrModalFor (c2, c1) ||
+            clientSameGroup (c1, c2) ||
+            clientSameLeader (c1, c2) ||
+            (c1->pid != 0 && c1->pid == c2->pid &&
+             c1->hostname && c2->hostname &&
+             !g_strcasecmp (c1->hostname, c2->hostname)));
 }
