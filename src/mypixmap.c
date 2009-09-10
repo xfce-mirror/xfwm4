@@ -346,7 +346,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
     gint new_key;
     gint key;
     gint current_key;
-    guint space;
+    gint space;
 
     p = &buffer[0];
     space = 128;
@@ -367,7 +367,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
         for (r = word;
                  (*p != '\0') &&
                  (!g_ascii_isspace (*p)) &&
-                 (r - word < (gchar) sizeof (word) - 1);
+                 (r - word < (gint) sizeof (word) - 1);
              p++, r++)
         {
                 *r = *p;
@@ -428,7 +428,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
                 space -= MIN (space, 1);
             }
             strncat (color, word, space);
-            space -= MIN (space, strlen (word));
+            space -= MIN (space, (gint) strlen (word));
         }
         else if (key == 5)
         {
@@ -519,8 +519,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     const gchar *buffer;
     gchar *name_buf;
     gint w, h, n_col, cpp, items;
-    gint cnt, xcnt, ycnt;
-    guint wbytes, n;
+    gint cnt, xcnt, ycnt, wbytes, n;
     GHashTable *color_hash;
     XPMColor *colors, *color, *fallbackcolor;
     guchar *pixtmp;
@@ -633,7 +632,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
         pixtmp = gdk_pixbuf_get_pixels (pixbuf) + ycnt * gdk_pixbuf_get_rowstride(pixbuf);
 
         buffer = file_buffer (op_body, handle);
-        if ((!buffer) || (strlen (buffer) < wbytes))
+        if ((!buffer) || (wbytes > (gint) strlen (buffer)))
         {
             continue;
         }
