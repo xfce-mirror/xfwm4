@@ -61,12 +61,12 @@ clientApplyStackList (ScreenInfo *screen_info)
 
     if (nwindows)
     {
-        GList *index;
+        GList *list;
         Client *c = NULL;
 
-        for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
+        for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
         {
-            c = (Client *) index->data;
+            c = (Client *) list->data;
             xwinstack[i++] = c->frame;
             DBG ("  [%i] \"%s\" (0x%lx)", i, c->name, c->window);
         }
@@ -82,7 +82,7 @@ clientGetLowestTransient (Client * c)
 {
     ScreenInfo *screen_info;
     Client *lowest_transient, *c2;
-    GList *index;
+    GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
 
@@ -90,9 +90,9 @@ clientGetLowestTransient (Client * c)
 
     lowest_transient = NULL;
     screen_info = c->screen_info;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if ((c2 != c) && clientIsTransientFor (c2, c))
         {
             lowest_transient = c2;
@@ -108,16 +108,16 @@ clientGetHighestTransientOrModalFor (Client * c)
     ScreenInfo *screen_info;
     Client *highest_transient;
     Client *c2;
-    GList *index;
+    GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetHighestTransientOrModalFor");
 
     screen_info = c->screen_info;
     highest_transient = NULL;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if (c2)
         {
             if (clientIsTransientOrModalFor (c, c2))
@@ -136,16 +136,16 @@ clientGetTopMostForGroup (Client * c)
     ScreenInfo *screen_info;
     Client *top_most;
     Client *c2;
-    GList *index;
+    GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetTopMostForGroup");
 
     screen_info = c->screen_info;
     top_most = NULL;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if (c2 != c)
         {
             if (clientSameGroup (c, c2))
@@ -162,7 +162,7 @@ gboolean
 clientIsTopMost (Client *c)
 {
     ScreenInfo *screen_info;
-    GList *index, *index2;
+    GList *list, *list2;
     Client *c2;
 
     g_return_val_if_fail (c != NULL, FALSE);
@@ -170,35 +170,35 @@ clientIsTopMost (Client *c)
 
     screen_info = c->screen_info;
 
-    index = g_list_find (screen_info->windows_stack, (gconstpointer) c);
-    if (index)
+    list = g_list_find (screen_info->windows_stack, (gconstpointer) c);
+    if (list)
     {
-        index2 = g_list_next (index);
-        while (index2)
+        list2 = g_list_next (list);
+        while (list2)
         {
-            c2 = (Client *) index2->data;
+            c2 = (Client *) list2->data;
             if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE) && (c2->win_layer == c->win_layer))
             {
                 return FALSE;
             }
-            index2 = g_list_next (index2);
+            list2 = g_list_next (list2);
         }
     }
     return TRUE;
 }
 
 Client *
-clientGetNextTopMost (ScreenInfo *screen_info, int layer, Client * exclude)
+clientGetNextTopMost (ScreenInfo *screen_info, guint layer, Client * exclude)
 {
     Client *top, *c;
-    GList *index;
+    GList *list;
 
     TRACE ("entering clientGetNextTopMost");
 
     top = NULL;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c = (Client *) index->data;
+        c = (Client *) list->data;
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name, c->window, (int) c->win_layer);
         if (!exclude || (c != exclude))
         {
@@ -214,17 +214,17 @@ clientGetNextTopMost (ScreenInfo *screen_info, int layer, Client * exclude)
 }
 
 Client *
-clientGetBottomMost (ScreenInfo *screen_info, int layer, Client * exclude)
+clientGetBottomMost (ScreenInfo *screen_info, guint layer, Client * exclude)
 {
     Client *bot, *c;
-    GList *index;
+    GList *list;
 
     TRACE ("entering clientGetBottomMost");
 
     bot = NULL;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c = (Client *) index->data;
+        c = (Client *) list->data;
         if (c)
         {
             TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
@@ -252,15 +252,15 @@ clientGetBottomMost (ScreenInfo *screen_info, int layer, Client * exclude)
 Client *
 clientAtPosition (ScreenInfo *screen_info, int x, int y, GList * exclude_list)
 {
-    GList *index;
+    GList *list;
     Client *c, *c2;
 
     TRACE ("entering clientAtPosition");
 
     c = NULL;
-    for (index = g_list_last (screen_info->windows_stack); index; index = g_list_previous (index))
+    for (list = g_list_last (screen_info->windows_stack); list; list = g_list_previous (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if ((frameX (c2) <= x) && (frameX (c2) + frameWidth (c2) >= x)
             && (frameY (c2) <= y) && (frameY (c2) + frameHeight (c2) >= y))
         {
@@ -284,7 +284,7 @@ clientRaise (Client * c, Window wsibling)
     Client *c2, *c3, *client_sibling;
     GList *transients;
     GList *sibling;
-    GList *index1, *index2;
+    GList *list1, *list2;
     GList *windows_stack_copy;
 
     g_return_if_fail (c != NULL);
@@ -342,10 +342,10 @@ clientRaise (Client * c, Window wsibling)
                 sibling = g_list_find (screen_info->windows_stack, (gconstpointer) c2);
                 if (sibling)
                 {
-                    index1 = g_list_next (sibling);
-                    if (index1)
+                    list1 = g_list_next (sibling);
+                    if (list1)
                     {
-                        client_sibling = (Client *) index1->data;
+                        client_sibling = (Client *) list1->data;
                         /* Do not place window under higher layers though */
                         if ((client_sibling) && (client_sibling->win_layer < c->win_layer))
                         {
@@ -373,9 +373,9 @@ clientRaise (Client * c, Window wsibling)
             screen_info->windows_stack = g_list_append (screen_info->windows_stack, c);
         }
         /* Now, look for transients, transients of transients, etc. */
-        for (index1 = windows_stack_copy; index1; index1 = g_list_next (index1))
+        for (list1 = windows_stack_copy; list1; list1 = g_list_next (list1))
         {
-            c2 = (Client *) index1->data;
+            c2 = (Client *) list1->data;
             if (c2)
             {
                 if ((c2 != c) && clientIsTransientOrModalFor (c2, c) && (c2->win_layer <= c->win_layer))
@@ -400,9 +400,9 @@ clientRaise (Client * c, Window wsibling)
                 }
                 else
                 {
-                    for (index2 = transients; index2; index2 = g_list_next (index2))
+                    for (list2 = transients; list2; list2 = g_list_next (list2))
                     {
-                        c3 = (Client *) index2->data;
+                        c3 = (Client *) list2->data;
                         if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                         {
                             transients = g_list_append (transients, c2);
@@ -452,7 +452,7 @@ clientLower (Client * c, Window wsibling)
     DisplayInfo *display_info;
     Client *c2, *client_sibling;
     GList *sibling;
-    GList *index;
+    GList *list;
     gint position;
 
     g_return_if_fail (c != NULL);
@@ -489,10 +489,10 @@ clientLower (Client * c, Window wsibling)
                 sibling = g_list_find (screen_info->windows_stack, (gconstpointer) c2);
                 if (sibling)
                 {
-                    index = g_list_previous (sibling);
-                    if (index)
+                    list = g_list_previous (sibling);
+                    if (list)
                     {
-                        client_sibling = (Client *) index->data;
+                        client_sibling = (Client *) list->data;
                         /* Do not place window above lower layers though */
                         if ((client_sibling) && (client_sibling->win_layer > c->win_layer))
                         {

@@ -862,10 +862,10 @@ loadSettings (ScreenInfo *screen_info)
         screen_info->params->double_click_action = DBL_CLICK_ACTION_NONE;
     }
 
-    if (screen_info->workspace_count < 0)
+    if (screen_info->workspace_count == 0)
     {
-        gint workspace_count;
-        workspace_count = MAX (getIntValue ("workspace_count", rc), 0);
+        guint workspace_count;
+        workspace_count = MAX ((guint) getIntValue ("workspace_count", rc), 0);
         workspaceSetCount (screen_info, workspace_count);
     }
 
@@ -987,7 +987,7 @@ initSettings (ScreenInfo *screen_info)
     DisplayInfo *display_info;
     char **names;
     long val;
-    int i;
+    guint i;
 
     g_return_val_if_fail (screen_info, FALSE);
 
@@ -1425,20 +1425,20 @@ cb_shortcut_removed (XfceShortcutsProvider *provider, const gchar *shortcut,
 }
 
 static void
-parseShortcut (ScreenInfo *screen_info, int index, const gchar *name,
+parseShortcut (ScreenInfo *screen_info, int id, const gchar *name,
                GList *shortcuts)
 {
     Display *dpy;
     const gchar *shortcut;
 
     g_return_if_fail (screen_info);
-    g_return_if_fail (index >= 0 && index < KEY_COUNT);
+    g_return_if_fail (id >= 0 && id < KEY_COUNT);
 
     dpy = myScreenGetXDisplay (screen_info);
     shortcut = getShortcut (name, shortcuts);
-    parseKeyString (dpy, &screen_info->params->keys[index], shortcut);
+    parseKeyString (dpy, &screen_info->params->keys[id], shortcut);
 
-    screen_info->params->keys[index].internal_name = g_strdup (name);
+    screen_info->params->keys[id].internal_name = g_strdup (name);
 }
 
 static const gchar *

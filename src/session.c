@@ -268,10 +268,10 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 {
     DisplayInfo *display_info;
     Client *c;
-    char *client_id, *window_role;
-    char **wm_command;
-    int wm_command_count;
-    gint client_idx;
+    gchar *client_id, *window_role;
+    gchar **wm_command;
+    gint wm_command_count;
+    guint client_idx;
 
     display_info = screen_info->display_info;
     wm_command_count = 0;
@@ -391,8 +391,8 @@ gboolean
 sessionLoadWindowStates (gchar * filename)
 {
     FILE *f;
-    char s[4096], s1[4096];
-    int i, pos, pos1;
+    gchar s[4096], s1[4096];
+    gint i, pos, pos1;
     unsigned long w;
 
     g_return_val_if_fail (filename != NULL, FALSE);
@@ -506,7 +506,7 @@ sessionLoadWindowStates (gchar * filename)
 void
 sessionFreeWindowStates (void)
 {
-    int i;
+    gint i;
 
     for (i = 0; i < num_match; i++)
     {
@@ -561,11 +561,11 @@ matchWin (Client * c, Match * m)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    char *client_id;
-    char *window_role;
-    char **wm_command;
-    int wm_command_count;
-    int i;
+    gchar *client_id;
+    gchar *window_role;
+    gchar **wm_command;
+    gint wm_command_count;
+    gint i;
     gboolean found;
 
     g_return_val_if_fail (c != NULL, FALSE);
@@ -677,7 +677,7 @@ matchWin (Client * c, Match * m)
 gboolean
 sessionMatchWinToSM (Client * c)
 {
-    int i;
+    gint i;
 
     g_return_val_if_fail (c != NULL, FALSE);
     for (i = 0; i < num_match; i++)

@@ -78,18 +78,18 @@ clientDumpList (ScreenInfo *screen_info)
 #endif
 
 static ClientPair
-clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, GList * exclude_list)
+clientGetTopMostFocusable (ScreenInfo *screen_info, guint layer, GList * exclude_list)
 {
     ClientPair top_client;
     Client *c;
-    GList *index;
+    GList *list;
 
     TRACE ("entering clientGetTopMostFocusable");
 
     top_client.prefered = top_client.highest = NULL;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c = (Client *) index->data;
+        c = (Client *) list->data;
         TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
             c->window, (int) c->win_layer);
 
@@ -119,7 +119,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, int layer, GList * exclude_l
 }
 
 void
-clientFocusTop (ScreenInfo *screen_info, int layer, guint32 timestamp)
+clientFocusTop (ScreenInfo *screen_info, guint layer, guint32 timestamp)
 {
     ClientPair top_client;
     DisplayInfo *display_info;
@@ -634,8 +634,8 @@ clientInitFocusFlag (Client * c)
 {
     ScreenInfo *screen_info;
     Client *c2;
-    GList *index;
-    int workspace;
+    GList *list;
+    guint workspace;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSetFocus");
@@ -647,9 +647,9 @@ clientInitFocusFlag (Client * c)
 
     screen_info = c->screen_info;
     workspace = c->win_workspace;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if ((c2->win_workspace == workspace) && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_FOCUS))
         {
             FLAG_UNSET (c2->xfwm_flags, XFWM_FLAG_FOCUS);
@@ -742,7 +742,7 @@ void
 clientGrabMouseButtonForAll (ScreenInfo *screen_info)
 {
     Client *c;
-    int i;
+    guint i;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering clientGrabMouseButtonForAll");
@@ -758,7 +758,7 @@ void
 clientUngrabMouseButtonForAll (ScreenInfo *screen_info)
 {
     Client *c;
-    int i;
+    guint i;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering clientUngrabMouseButtonForAll");

@@ -91,19 +91,19 @@ enum {
 static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISION " $";
 #endif
 
-static DisplayInfo *display_info;
+static DisplayInfo *main_display_info = NULL;
 
 static void
 cleanUp (void)
 {
     GSList *screens;
 
-    g_return_if_fail (display_info);
+    g_return_if_fail (main_display_info);
 
     TRACE ("entering cleanUp");
 
-    eventFilterClose (display_info->xfilter);
-    for (screens = display_info->screens; screens; screens = g_slist_next (screens))
+    eventFilterClose (main_display_info->xfilter);
+    for (screens = main_display_info->screens; screens; screens = g_slist_next (screens))
     {
         ScreenInfo *screen_info_n = (ScreenInfo *) screens->data;
         myScreenClose (screen_info_n);
@@ -112,9 +112,9 @@ cleanUp (void)
     sn_close_display ();
     sessionFreeWindowStates ();
 
-    myDisplayClose (display_info);
-    g_free (display_info);
-    display_info = NULL;
+    myDisplayClose (main_display_info);
+    g_free (main_display_info);
+    main_display_info = NULL;
     xfconf_shutdown();
 }
 
@@ -128,11 +128,11 @@ handleSignal (int sig)
         case SIGINT:
         case SIGTERM:
             gtk_main_quit ();
-            display_info->quit = TRUE;
+            main_display_info->quit = TRUE;
             break;
         case SIGHUP:
         case SIGUSR1:
-            display_info->reload = TRUE;
+            main_display_info->reload = TRUE;
             break;
         case SIGSEGV:
             cleanUp ();
@@ -416,26 +416,26 @@ initialize (int argc, char **argv, gint compositor_mode, gboolean replace_wm)
 
     initMenuEventWin ();
     clientClearFocus (NULL);
-    display_info = myDisplayInit (gdk_display_get_default ());
+    main_display_info = myDisplayInit (gdk_display_get_default ());
 
 #ifdef HAVE_COMPOSITOR
     if (compositor_mode < COMPOSITOR_MODE_OFF)
     {
-        compositor_mode = get_default_compositor (display_info);
+        compositor_mode = get_default_compositor (main_display_info);
     }
 
     /* Disabling compositor from command line */
     if (!compositor_mode)
     {
-        display_info->enable_compositor = FALSE;
+        main_display_info->enable_compositor = FALSE;
     }
-    compositorSetCompositeMode (display_info, (compositor_mode == COMPOSITOR_MODE_MANUAL));
+    compositorSetCompositeMode (main_display_info, (compositor_mode == COMPOSITOR_MODE_MANUAL));
 #else /* HAVE_COMPOSITOR */
-    display_info->enable_compositor = FALSE;
+    main_display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
     initWMStopIcons ();
 
-    initModifiers (display_info->dpy);
+    initModifiers (main_display_info->dpy);
 
     act.sa_handler = handleSignal;
     act.sa_flags = 0;
@@ -445,14 +445,14 @@ initialize (int argc, char **argv, gint compositor_mode, gboolean replace_wm)
     sigaction (SIGUSR1, &act, NULL);
     sigaction (SIGSEGV, &act, NULL);
 
-    nscreens = gdk_display_get_n_screens (display_info->gdisplay);
+    nscreens = gdk_display_get_n_screens (main_display_info->gdisplay);
     for(i = 0; i < nscreens; i++)
     {
         ScreenInfo *screen_info;
         GdkScreen *gscr;
 
-        gscr = gdk_display_get_screen (display_info->gdisplay, i);
-        screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK, replace_wm);
+        gscr = gdk_display_get_screen (main_display_info->gdisplay, i);
+        screen_info = myScreenInit (main_display_info, gscr, MAIN_EVENT_MASK, replace_wm);
 
         if (!screen_info)
         {
@@ -490,44 +490,44 @@ initialize (int argc, char **argv, gint compositor_mode, gboolean replace_wm)
                    compositing manager (used by WM tweaks to determine whether or not
                    show the "compositor" tab.
                  */
-                setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
+                setAtomIdManagerOwner (main_display_info, XFWM4_COMPOSITING_MANAGER,
                                        screen_info->xroot, screen_info->xfwm4_win);
             }
         }
 
         sn_init_display (screen_info);
-        myDisplayAddScreen (display_info, screen_info);
-        setGnomeProtocols (display_info, screen_info->xroot, screen_info->xfwm4_win);
-        setHint (display_info, screen_info->xroot, WIN_SUPPORTING_WM_CHECK, screen_info->xfwm4_win);
-        setHint (display_info, screen_info->xroot, WIN_DESKTOP_BUTTON_PROXY, screen_info->xfwm4_win);
-        setHint (display_info, screen_info->xfwm4_win, WIN_DESKTOP_BUTTON_PROXY, screen_info->xfwm4_win);
-        getHint (display_info, screen_info->xroot, WIN_WORKSPACE, &ws);
+        myDisplayAddScreen (main_display_info, screen_info);
+        setGnomeProtocols (main_display_info, screen_info->xroot, screen_info->xfwm4_win);
+        setHint (main_display_info, screen_info->xroot, WIN_SUPPORTING_WM_CHECK, screen_info->xfwm4_win);
+        setHint (main_display_info, screen_info->xroot, WIN_DESKTOP_BUTTON_PROXY, screen_info->xfwm4_win);
+        setHint (main_display_info, screen_info->xfwm4_win, WIN_DESKTOP_BUTTON_PROXY, screen_info->xfwm4_win);
+        getHint (main_display_info, screen_info->xroot, WIN_WORKSPACE, &ws);
         screen_info->current_ws = (int) ws;
-        getGnomeDesktopMargins (display_info, screen_info->xroot, screen_info->gnome_margins);
-        setUTF8StringHint (display_info, screen_info->xfwm4_win, NET_WM_NAME, "Xfwm4");
-        setNetSupportedHint (display_info, screen_info->xroot, screen_info->xfwm4_win);
-        initNetDesktopInfo (display_info, screen_info->xroot, screen_info->current_ws,
+        getGnomeDesktopMargins (main_display_info, screen_info->xroot, screen_info->gnome_margins);
+        setUTF8StringHint (main_display_info, screen_info->xfwm4_win, NET_WM_NAME, "Xfwm4");
+        setNetSupportedHint (main_display_info, screen_info->xroot, screen_info->xfwm4_win);
+        initNetDesktopInfo (main_display_info, screen_info->xroot, screen_info->current_ws,
                                    screen_info->width,
                                    screen_info->height);
         workspaceUpdateArea (screen_info);
-        XSetInputFocus (display_info->dpy, screen_info->xfwm4_win, RevertToPointerRoot, CurrentTime);
+        XSetInputFocus (main_display_info->dpy, screen_info->xfwm4_win, RevertToPointerRoot, CurrentTime);
 
         clientFrameAll (screen_info);
 
         initGtkCallbacks (screen_info);
 
-        XDefineCursor (display_info->dpy, screen_info->xroot, myDisplayGetCursorRoot(display_info));
+        XDefineCursor (main_display_info->dpy, screen_info->xroot, myDisplayGetCursorRoot(main_display_info));
     }
 
     /* No screen to manage, give up */
-    if (!display_info->nb_screens)
+    if (!main_display_info->nb_screens)
     {
         return -1;
     }
-    display_info->xfilter = eventFilterInit ((gpointer) display_info);
-    eventFilterPush (display_info->xfilter, xfwm4_event_filter, (gpointer) display_info);
+    main_display_info->xfilter = eventFilterInit ((gpointer) main_display_info);
+    eventFilterPush (main_display_info->xfilter, xfwm4_event_filter, (gpointer) main_display_info);
 
-    return sessionStart (argc, argv, display_info);
+    return sessionStart (argc, argv, main_display_info);
 }
 
 int

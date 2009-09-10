@@ -37,10 +37,10 @@ Client                  *clientGetHighestTransientOrModalFor    (Client *);
 gboolean                 clientIsTopMost                        (Client *);
 Client                  *clientGetTopMostForGroup               (Client *);
 Client                  *clientGetNextTopMost                   (ScreenInfo *,
-                                                                 int,
+                                                                 guint,
                                                                  Client *);
 Client                  *clientGetBottomMost                    (ScreenInfo *,
-                                                                 int,
+                                                                 guint,
                                                                  Client *);
 Client                  *clientAtPosition                       (ScreenInfo *,
                                                                  int,

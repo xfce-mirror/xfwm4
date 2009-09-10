@@ -231,12 +231,12 @@ gboolean                 getUTF8String                          (DisplayInfo *,
                                                                  Window,
                                                                  int,
                                                                  gchar **,
-                                                                 int *);
+                                                                 guint *);
 gboolean                 getUTF8StringList                      (DisplayInfo *,
                                                                  Window,
                                                                  int,
                                                                  gchar ***,
-                                                                 int *);
+                                                                 guint *);
 gboolean                 getWindowProp                          (DisplayInfo *,
                                                                  Window,
                                                                  int,

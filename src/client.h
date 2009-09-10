@@ -260,6 +260,7 @@ struct _Client
     unsigned long win_state;
     unsigned long win_layer;
     unsigned long serial;
+    unsigned long initial_layer;
     Atom type_atom;
     Visual *visual;
     XSizeHints *size;
@@ -268,31 +269,30 @@ struct _Client
     Client *next;
     Client *prev;
     netWindowType type;
-    int x;
-    int y;
-    int width;
-    int height;
-    int depth;
-    int border_width;
-    int gravity;
-    int win_workspace;
+    gint x;
+    gint y;
+    gint width;
+    gint height;
+    gint depth;
+    gint border_width;
+    gint gravity;
+    guint win_workspace;
     unsigned int ignore_unmap;
-    int old_x;
-    int old_y;
-    int old_width;
-    int old_height;
-    int fullscreen_old_x;
-    int fullscreen_old_y;
-    int fullscreen_old_width;
-    int fullscreen_old_height;
-    int fullscreen_old_layer;
-    int previous_width;
-    int previous_height;
-    int initial_layer;
-    int ncmap;
-    int blink_iterations;
-    int button_status[BUTTON_COUNT];
-    int struts[STRUTS_SIZE];
+    gint old_x;
+    gint old_y;
+    gint old_width;
+    gint old_height;
+    gint fullscreen_old_x;
+    gint fullscreen_old_y;
+    gint fullscreen_old_width;
+    gint fullscreen_old_height;
+    gint fullscreen_old_layer;
+    gint previous_width;
+    gint previous_height;
+    gint ncmap;
+    gint blink_iterations;
+    gint button_status[BUTTON_COUNT];
+    gint struts[STRUTS_SIZE];
     gchar *hostname;
     gchar *name;
     guint32 user_time;
@@ -304,8 +304,8 @@ struct _Client
     gint fullscreen_monitors[4];
 
     /* Termination dialog */
-    int dialog_pid;
-    int dialog_fd;
+    gint dialog_pid;
+    gint dialog_fd;
     /* Timout for asynchronous icon update */
     guint icon_timeout_id;
     /* Timout for asynchronous frame update */
@@ -384,10 +384,10 @@ Client                  *clientGetFromWindow                    (Client *,
 void                     clientShow                             (Client *,
                                                                  gboolean);
 void                     clientWithdraw                         (Client *,
-                                                                 int,
+                                                                 guint,
                                                                  gboolean);
 void                     clientWithdrawAll                      (Client *,
-                                                                 int);
+                                                                 guint);
 void                     clientClearAllShowDesktop              (ScreenInfo *);
 void                     clientToggleShowDesktop                (ScreenInfo *);
 void                     clientActivate                         (Client *,
@@ -398,9 +398,9 @@ void                     clientKill                             (Client *);
 void                     clientTerminate                        (Client *);
 void                     clientEnterContextMenuState            (Client *);
 void                     clientSetLayer                         (Client *,
-                                                                 int);
+                                                                 guint);
 void                     clientSetWorkspace                     (Client *,
-                                                                 int,
+                                                                 guint,
                                                                  gboolean);
 void                     clientShade                            (Client *);
 void                     clientUnshade                          (Client *);
@@ -433,13 +433,6 @@ void                     clientSetOpacity                       (Client *,
 void                     clientIncOpacity                       (Client *);
 void                     clientDecOpacity                       (Client *);
 void                     clientScreenResize                     (ScreenInfo *);
-void                     clientMove                             (Client *,
-                                                                 XEvent *);
-void                     clientResize                           (Client *,
-                                                                 int,
-                                                                 XEvent *);
-void                     clientCycle                            (Client *,
-                                                                 XKeyEvent *);
 void                     clientButtonPress                      (Client *,
                                                                  Window,
                                                                  XButtonEvent *);
@@ -453,8 +446,5 @@ Client                  *clientGetLeader                        (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char                    *clientGetStartupId                     (Client *);
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
-#ifdef HAVE_XSYNC
-void                     clientXSyncRequest                     (Client *);
-#endif /* HAVE_XSYNC */
 
 #endif /* INC_CLIENT_H */

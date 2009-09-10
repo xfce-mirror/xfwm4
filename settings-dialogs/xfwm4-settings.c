@@ -124,7 +124,7 @@ static void       xfwm_settings_hidden_frame_drag_data               (GtkWidget 
                                                                       gint                  y,
                                                                       GtkSelectionData     *data,
                                                                       guint                 info,
-                                                                      guint                 time,
+                                                                      guint                 timestamp,
                                                                       XfwmSettings         *settings);
 static void       xfwm_settings_delete_indicator                     (GtkWidget            *widget);
 static void       xfwm_settings_create_indicator                     (GtkWidget            *widget,
@@ -136,7 +136,7 @@ static void       xfwm_settings_title_button_drag_data               (GtkWidget 
                                                                       GdkDragContext       *drag_context,
                                                                       GtkSelectionData     *data,
                                                                       guint                 info,
-                                                                      guint                 time);
+                                                                      guint                 timestamp);
 static void       xfwm_settings_title_button_drag_begin              (GtkWidget            *widget,
                                                                       GdkDragContext       *drag_context);
 static void       xfwm_settings_title_button_drag_end                (GtkWidget            *widget,
@@ -1083,7 +1083,7 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
                                       gint              y,
                                       GtkSelectionData *data,
                                       guint             info,
-                                      guint             time,
+                                      guint             timestamp,
                                       XfwmSettings     *settings)
 {
   GtkWidget *source;
@@ -1137,7 +1137,7 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
                                         GdkDragContext *drag_context,
                                         gint            x,
                                         gint            y,
-                                        guint           time,
+                                        guint           timestamp,
                                         XfwmSettings   *settings)
 {
   GtkWidget *active_box;
@@ -1196,7 +1196,7 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
 static void
 xfwm_settings_active_frame_drag_leave (GtkWidget      *widget,
                                        GdkDragContext *drag_context,
-                                       guint           time,
+                                       guint           timestamp,
                                        XfwmSettings   *settings)
 {
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
@@ -1213,7 +1213,7 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
                                       gint              y,
                                       GtkSelectionData *data,
                                       guint             info,
-                                      guint             time,
+                                      guint             timestamp,
                                       XfwmSettings     *settings)
 {
   GtkWidget *source;
@@ -1332,7 +1332,7 @@ xfwm_settings_title_button_drag_data (GtkWidget        *widget,
                                       GdkDragContext   *drag_context,
                                       GtkSelectionData *data,
                                       guint             info,
-                                      guint             time)
+                                      guint             timestamp)
 {
   gtk_widget_hide (widget);
   gtk_selection_data_set (data, gdk_atom_intern ("_xfwm4_button_layout", FALSE), 8,

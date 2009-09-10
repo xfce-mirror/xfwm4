@@ -93,15 +93,15 @@ struct _ScreenInfo
     GdkGC *white_gc;
 
     /* Title font height */
-    int font_height;
+    gint font_height;
 
     /* Screen data */
     Colormap cmap;
     GdkScreen *gscr;
     Screen *xscreen;
-    int depth;
-    int width;
-    int height;
+    gint depth;
+    gint width;
+    gint height;
     Visual *visual;
 
     GtkWidget *gtk_win;
@@ -109,17 +109,17 @@ struct _ScreenInfo
     Window xfwm4_win;
     Window xroot;
 
-    int gnome_margins[4];
-    int margins[4];
-    int screen;
-    int current_ws;
-    int previous_ws;
+    gint gnome_margins[4];
+    gint margins[4];
+    gint screen;
+    guint current_ws;
+    guint previous_ws;
 
     /* Monitor search caching */
     GdkRectangle cache_monitor;
 
     /* Workspace definitions */
-    int workspace_count;
+    guint workspace_count;
     gchar **workspace_names;
     int workspace_names_items;
     NetWmDesktopLayout desktop_layout;
@@ -189,7 +189,6 @@ ScreenInfo              *myScreenInit                           (DisplayInfo *,
                                                                  gboolean);
 ScreenInfo              *myScreenClose                          (ScreenInfo *);
 Display                 *myScreenGetXDisplay                    (ScreenInfo *);
-GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GdkWindow               *myScreenGetGdkWindow                   (ScreenInfo *);
 gboolean                 myScreenGrabKeyboard                   (ScreenInfo *,

@@ -1302,7 +1302,7 @@ clientWindowType (Client * c)
         if ((c2) && (c->initial_layer < c2->win_layer))
         {
             c->initial_layer = c2->win_layer;
-            TRACE ("Applied layer is %i", c->initial_layer);
+            TRACE ("Applied layer is %lu", c->initial_layer);
         }
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
     }
@@ -1310,7 +1310,7 @@ clientWindowType (Client * c)
     {
         if ((old_type != c->type) || (c->initial_layer != c->win_layer))
         {
-            TRACE ("setting layer %i", c->initial_layer);
+            TRACE ("setting layer %lu", c->initial_layer);
             clientSetLayer (c, c->initial_layer);
             clientSetNetState (c);
         }
@@ -1398,7 +1398,7 @@ void
 clientReceiveNetWMPong (ScreenInfo *screen_info, guint32 timestamp)
 {
     Client *c;
-    int i;
+    guint i;
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (timestamp != CurrentTime);

@@ -96,11 +96,12 @@ workspaceGetPosition (ScreenInfo *screen_info, int n, int * row, int * col)
     }
 }
 
-static int
-workspaceGetNumber (ScreenInfo *screen_info, int row, int col)
+static gint
+workspaceGetNumber (ScreenInfo *screen_info, gint row, gint col)
 {
     NetWmDesktopLayout l;
-    int major_length, minor_length, n, tmp;
+    gulong major_length, minor_length;
+    guint n, tmp;
 
     l = screen_info->desktop_layout;
     if (l.orientation == NET_WM_ORIENTATION_HORZ)
@@ -178,9 +179,10 @@ modify_with_wrap (int value, int by, int limit, gboolean wrap)
 
 /* returns TRUE if the workspace was changed, FALSE otherwise */
 gboolean
-workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, guint32 timestamp)
+workspaceMove (ScreenInfo *screen_info, gint rowmod, gint colmod, Client * c, guint32 timestamp)
 {
-    int row, col, newrow, newcol, previous_ws, n;
+    gint row, col, newrow, newcol, n;
+    guint previous_ws;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
 
@@ -191,13 +193,13 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, guin
     newcol = modify_with_wrap (col, colmod, screen_info->desktop_layout.cols, screen_info->params->wrap_layout);
     n = workspaceGetNumber (screen_info, newrow, newcol);
 
-    if (n == screen_info->current_ws)
+    if (n == (gint) screen_info->current_ws)
     {
         return FALSE;
     }
 
     previous_ws = screen_info->current_ws;
-    if ((n >= 0) && (n < screen_info->workspace_count))
+    if ((n >= 0) && (n < (gint) screen_info->workspace_count))
     {
         workspaceSwitch (screen_info, n, c, TRUE, timestamp);
     }
@@ -235,15 +237,15 @@ workspaceMove (ScreenInfo *screen_info, int rowmod, int colmod, Client * c, guin
 }
 
 void
-workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean update_focus, guint32 timestamp)
+workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean update_focus, guint32 timestamp)
 {
     DisplayInfo *display_info;
     Client *c, *new_focus;
     Client *previous;
-    GList *index;
+    GList *list;
     GList *list_hide;
     Window dr, window;
-    int rx, ry, wx, wy;
+    gint rx, ry, wx, wy;
     unsigned int mask;
     unsigned long data[1];
 
@@ -252,28 +254,28 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     TRACE ("entering workspaceSwitch");
 
     display_info = screen_info->display_info;
-    if ((new_ws == screen_info->current_ws) && (screen_info->params->toggle_workspaces))
+    if ((new_ws == (gint) screen_info->current_ws) && (screen_info->params->toggle_workspaces))
     {
-        new_ws = screen_info->previous_ws;
+        new_ws = (gint) screen_info->previous_ws;
     }
 
-    if (new_ws == screen_info->current_ws)
+    if (new_ws == (gint) screen_info->current_ws)
     {
         return;
     }
 
     if (screen_info->params->wrap_cycle)
     {
-        if (new_ws > screen_info->workspace_count - 1)
+        if (new_ws > (gint) screen_info->workspace_count - 1)
         {
             new_ws = 0;
         }
         if (new_ws < 0)
         {
-            new_ws = screen_info->workspace_count - 1;
+            new_ws = (gint) screen_info->workspace_count - 1;
         }
     }
-    else if ((new_ws > screen_info->workspace_count - 1) || (new_ws < 0))
+    else if ((new_ws > (gint) screen_info->workspace_count - 1) || (new_ws < 0))
     {
         return;
     }
@@ -304,14 +306,14 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     }
 
     /* First pass: Show, from top to bottom */
-    for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
+    for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
     {
-        c = (Client *) index->data;
+        c = (Client *) list->data;
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             clientSetWorkspace (c, new_ws, TRUE);
         }
-        else if (c->win_workspace == new_ws)
+        else if (new_ws == (gint) c->win_workspace)
         {
             if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED) && !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
             {
@@ -324,11 +326,11 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     }
 
     /* Second pass: Hide from bottom to top */
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c = (Client *) index->data;
+        c = (Client *) list->data;
 
-        if (c->win_workspace != new_ws)
+        if (new_ws != (gint) c->win_workspace)
         {
             if (c == previous)
             {
@@ -346,9 +348,9 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
     }
 
     /* Third pass: Check for focus, from top to bottom */
-    for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
+    for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
     {
-        c = (Client *) index->data;
+        c = (Client *) list->data;
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
@@ -358,7 +360,7 @@ workspaceSwitch (ScreenInfo *screen_info, int new_ws, Client * c2, gboolean upda
             }
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_FOCUS);
         }
-        else if (c->win_workspace == new_ws)
+        else if (new_ws == (gint) c->win_workspace)
         {
             if ((!new_focus) && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_FOCUS))
             {
@@ -423,11 +425,11 @@ workspaceSetNames (ScreenInfo * screen_info, gchar **names, int items)
 }
 
 void
-workspaceSetCount (ScreenInfo * screen_info, int count)
+workspaceSetCount (ScreenInfo * screen_info, guint count)
 {
     DisplayInfo *display_info;
     Client *c;
-    int i;
+    guint i;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -466,10 +468,10 @@ workspaceSetCount (ScreenInfo * screen_info, int count)
 }
 
 void
-workspaceInsert (ScreenInfo * screen_info, int index)
+workspaceInsert (ScreenInfo * screen_info, guint position)
 {
     Client *c;
-    int i, count;
+    guint i, count;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -478,14 +480,14 @@ workspaceInsert (ScreenInfo * screen_info, int index)
     count = screen_info->workspace_count;
     workspaceSetCount(screen_info, count + 1);
 
-    if ((index < 0) || (index > count))
+    if (position > count)
     {
         return;
     }
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        if (c->win_workspace >= index)
+        if (c->win_workspace >= position)
         {
             clientSetWorkspace (c, c->win_workspace + 1, TRUE);
         }
@@ -493,24 +495,24 @@ workspaceInsert (ScreenInfo * screen_info, int index)
 }
 
 void
-workspaceDelete (ScreenInfo * screen_info, int index)
+workspaceDelete (ScreenInfo * screen_info, guint position)
 {
     Client *c;
-    int i, count;
+    guint i, count;
 
     g_return_if_fail (screen_info != NULL);
 
     TRACE ("entering workspaceDelete");
 
     count = screen_info->workspace_count;
-    if ((index < 0) || (index > count))
+    if ((count < 1) || (position > count))
     {
         return;
     }
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        if (c->win_workspace > index)
+        if (c->win_workspace > position)
         {
             clientSetWorkspace (c, c->win_workspace - 1, TRUE);
         }
@@ -528,7 +530,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
     int prev_left;
     int prev_right;
     int prev_bottom;
-    int i;
+    guint i;
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (screen_info->margins != NULL);

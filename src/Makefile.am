@@ -90,7 +90,6 @@ xfwm4_CFLAGS =								\
 	$(RENDER_CFLAGS)						\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
 	$(COMPOSITOR_CFLAGS)						\
-	-I$(top_builddir)/common					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DLIBEXECDIR=\"$(libexecdir)\"					\

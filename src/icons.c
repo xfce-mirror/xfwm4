@@ -57,7 +57,7 @@ find_largest_sizes (gulong * data, gulong nitems, int *width, int *height)
         w = data[0];
         h = data[1];
 
-        if (nitems < ((w * h) + 2))
+        if (nitems < (gulong) ((w * h) + 2))
         {
             return FALSE;       /* not enough data */
         }
@@ -117,7 +117,7 @@ find_best_size (gulong * data, gulong nitems, int ideal_width, int ideal_height,
         w = data[0];
         h = data[1];
 
-        if (nitems < ((w * h) + 2))
+        if (nitems < (gulong) ((w * h) + 2))
         {
             break;              /* not enough data */
         }

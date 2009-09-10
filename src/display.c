@@ -431,12 +431,12 @@ myDisplayGetCursorRoot (DisplayInfo *display)
 }
 
 Cursor
-myDisplayGetCursorResize (DisplayInfo *display, guint index)
+myDisplayGetCursorResize (DisplayInfo *display, guint list)
 {
     g_return_val_if_fail (display, None);
-    g_return_val_if_fail (index < 8, None);
+    g_return_val_if_fail (list < 8, None);
 
-    return display->resize_cursor [index];
+    return display->resize_cursor [list];
 }
 
 
@@ -496,14 +496,14 @@ myDisplayRemoveClient (DisplayInfo *display, Client *c)
 Client *
 myDisplayGetClientFromWindow (DisplayInfo *display, Window w, unsigned short mode)
 {
-    GSList *index;
+    GSList *list;
 
     g_return_val_if_fail (w != None, NULL);
     g_return_val_if_fail (display != NULL, NULL);
 
-    for (index = display->clients; index; index = g_slist_next (index))
+    for (list = display->clients; list; list = g_slist_next (list))
     {
-        Client *c = (Client *) index->data;
+        Client *c = (Client *) list->data;
         if (clientGetFromWindow (c, w, mode))
         {
             return (c);
@@ -541,14 +541,14 @@ myDisplayRemoveScreen (DisplayInfo *display, ScreenInfo *screen)
 ScreenInfo *
 myDisplayGetScreenFromRoot (DisplayInfo *display, Window root)
 {
-    GSList *index;
+    GSList *list;
 
     g_return_val_if_fail (root != None, NULL);
     g_return_val_if_fail (display != NULL, NULL);
 
-    for (index = display->screens; index; index = g_slist_next (index))
+    for (list = display->screens; list; list = g_slist_next (list))
     {
-        ScreenInfo *screen = (ScreenInfo *) index->data;
+        ScreenInfo *screen = (ScreenInfo *) list->data;
         if (screen->xroot == root)
         {
             return screen;
@@ -562,13 +562,13 @@ myDisplayGetScreenFromRoot (DisplayInfo *display, Window root)
 ScreenInfo *
 myDisplayGetScreenFromNum (DisplayInfo *display, int num)
 {
-    GSList *index;
+    GSList *list;
 
     g_return_val_if_fail (display != NULL, NULL);
 
-    for (index = display->screens; index; index = g_slist_next (index))
+    for (list = display->screens; list; list = g_slist_next (list))
     {
-        ScreenInfo *screen = (ScreenInfo *) index->data;
+        ScreenInfo *screen = (ScreenInfo *) list->data;
         if (screen->screen == num)
         {
             return screen;
@@ -617,14 +617,14 @@ myDisplayGetScreenFromWindow (DisplayInfo *display, Window w)
 ScreenInfo *
 myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
 {
-    GSList *index;
+    GSList *list;
 
     g_return_val_if_fail (w != None, NULL);
     g_return_val_if_fail (display != NULL, NULL);
 
-    for (index = display->screens; index; index = g_slist_next (index))
+    for (list = display->screens; list; list = g_slist_next (list))
     {
-        ScreenInfo *screen = (ScreenInfo *) index->data;
+        ScreenInfo *screen = (ScreenInfo *) list->data;
         if (screen->systray == w)
         {
             return screen;
@@ -638,17 +638,17 @@ myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
 
 #ifdef HAVE_XSYNC
 Client *
-myDisplayGetClientFromXSyncAlarm (DisplayInfo *display, XSyncAlarm alarm)
+myDisplayGetClientFromXSyncAlarm (DisplayInfo *display, XSyncAlarm xalarm)
 {
-    GSList *index;
+    GSList *list;
 
-    g_return_val_if_fail (alarm != None, NULL);
+    g_return_val_if_fail (xalarm != None, NULL);
     g_return_val_if_fail (display != NULL, NULL);
 
-    for (index = display->clients; index; index = g_slist_next (index))
+    for (list = display->clients; list; list = g_slist_next (list))
     {
-        Client *c = (Client *) index->data;
-        if (alarm == c->xsync_alarm)
+        Client *c = (Client *) list->data;
+        if (xalarm == c->xsync_alarm)
         {
             return (c);
         }
@@ -662,14 +662,14 @@ myDisplayGetClientFromXSyncAlarm (DisplayInfo *display, XSyncAlarm alarm)
 ScreenInfo *
 myDisplayGetDefaultScreen (DisplayInfo *display)
 {
-    GSList *index;
+    GSList *list;
 
     g_return_val_if_fail (display != NULL, NULL);
 
-    index = display->screens;
-    if (index)
+    list = display->screens;
+    if (list)
     {
-        return (ScreenInfo *) index->data;
+        return (ScreenInfo *) list->data;
     }
 
     return NULL;
@@ -728,16 +728,16 @@ myDisplayGetCurrentTime (DisplayInfo *display)
 guint32
 myDisplayGetTime (DisplayInfo * display, guint32 timestamp)
 {
-    guint32 time;
+    guint32 display_timestamp;
 
-    time = timestamp;
-    if (time == (guint32) CurrentTime)
+    display_timestamp = timestamp;
+    if (display_timestamp == (guint32) CurrentTime)
     {
-        time = getXServerTime (display);
+        display_timestamp = getXServerTime (display);
     }
 
-    TRACE ("myDisplayGetTime gives timestamp=%u", (guint32) time);
-    return time;
+    TRACE ("myDisplayGetTime gives timestamp=%u", (guint32) display_timestamp);
+    return display_timestamp;
 }
 
 guint32

@@ -41,7 +41,7 @@
 #define FOCUS_TRANSITION                (1<<3)
 
 void                     clientFocusTop                         (ScreenInfo *,
-                                                                 int,
+                                                                 guint,
                                                                  guint32);
 gboolean                 clientFocusNew                         (Client *);
 gboolean                 clientSelectMask                       (Client *,

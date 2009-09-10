@@ -43,6 +43,7 @@
 #include "display.h"
 #include "screen.h"
 #include "client.h"
+#include "startup_notification.h"
 
 #define STARTUP_TIMEOUT (30 /* seconds */ * 1000)
 
@@ -58,13 +59,13 @@ CollectTimedOutData;
 static gboolean sn_startup_sequence_timeout (void *data);
 
 static void
-sn_error_trap_push (SnDisplay * sn_display, Display * dpy)
+sn_error_trap_push (SnDisplay * d, Display * dpy)
 {
     gdk_error_trap_push ();
 }
 
 static void
-sn_error_trap_pop (SnDisplay * sn_display, Display * dpy)
+sn_error_trap_pop (SnDisplay * d, Display * dpy)
 {
     gdk_error_trap_pop ();
 }

@@ -65,7 +65,7 @@ static const gchar *const modifier_list[] = {
 static void
 cb_easy_click_combo_box_changed (GtkComboBox *combo, XfconfChannel *channel)
 {
-    guint n;
+    gint n;
 
     n = 0;
     while (modifier_list[n])

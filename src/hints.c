@@ -151,7 +151,7 @@ unsigned int
 getWMProtocols (DisplayInfo *display_info, Window w)
 {
     Atom *protocols, *ap;
-    int i, n;
+    gint i, n;
     Atom atype;
     int aformat;
     unsigned int result;
@@ -197,7 +197,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
                     &aformat, &nitems, &bytes_remain,
                     (unsigned char **) &data)) == Success)
         {
-            for (i = 0, ap = (Atom *) data; i < nitems; i++, ap++)
+            for (i = 0, ap = (Atom *) data; (unsigned long) i < nitems; i++, ap++)
             {
                 if (*ap == display_info->atoms[WM_TAKE_FOCUS])
                 {
@@ -713,7 +713,7 @@ get_text_property (DisplayInfo *display_info, Window w, Atom a)
 }
 
 static gboolean
-getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, int *length)
+getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, guint *length)
 {
     Atom type;
     int format;
@@ -751,7 +751,7 @@ getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str
 }
 
 gboolean
-getUTF8String (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, int *length)
+getUTF8String (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, guint *length)
 {
     char *xstr;
 
@@ -790,12 +790,11 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, 
 }
 
 gboolean
-getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***str_p, int *n_items)
+getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***str_p, guint *n_items)
 {
     char *xstr, *ptr;
     gchar **retval;
-    guint i;
-    int length;
+    guint i, length;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
 
@@ -912,7 +911,7 @@ gboolean
 getWindowName (DisplayInfo *display_info, Window w, gchar **name)
 {
     char *str;
-    int len;
+    guint len;
     gboolean status;
 
     TRACE ("entering getWindowName");
@@ -979,7 +978,7 @@ getClientLeader (DisplayInfo *display_info, Window window)
 }
 
 gboolean
-getNetWMUserTime (DisplayInfo *display_info, Window window, guint32 *time)
+getNetWMUserTime (DisplayInfo *display_info, Window window, guint32 *timestamp)
 {
     Atom actual_type;
     int actual_format;
@@ -998,12 +997,12 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, guint32 *time)
         if ((data) && (actual_type == XA_CARDINAL)
             && (nitems == 1) && (bytes_after == 0))
         {
-            *time = *((guint32 *) data);
+            *timestamp= *((guint32 *) data);
             XFree (data);
             return TRUE;
         }
     }
-    *time = 0;
+    *timestamp = (guint32) CurrentTime;
 
     return FALSE;
 }
@@ -1332,7 +1331,7 @@ gboolean
 getWindowStartupId (DisplayInfo *display_info, Window w, gchar **startup_id)
 {
     char *str;
-    int len;
+    guint len;
 
     TRACE ("entering getWindowStartupId");
 

@@ -272,9 +272,7 @@ initModifiers (Display * dpy)
 {
     XModifierKeymap *modmap;
     KeySym *keymap;
-    unsigned int keycode;
-    int min_keycode;
-    int max_keycode;
+    int min_keycode, max_keycode, keycode;
     int keysyms_per_keycode;
     int i;
 

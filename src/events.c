@@ -438,7 +438,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_MOVE_WORKSPACE_12:
                 handled = TRUE;
                 XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
-                if (key - KEY_MOVE_WORKSPACE_1 < screen_info->workspace_count)
+                if ((guint) (key - KEY_MOVE_WORKSPACE_1) < screen_info->workspace_count)
                 {
                     clientRaise (c, None);
                     workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c, TRUE, ev->time);
@@ -583,7 +583,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             status = EVENT_FILTER_REMOVE;
             handled = TRUE;
             XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
-            if (key - KEY_WORKSPACE_1 < ev_screen_info->workspace_count)
+            if ((guint) (key - KEY_WORKSPACE_1) < ev_screen_info->workspace_count)
             {
                 workspaceSwitch (ev_screen_info, key - KEY_WORKSPACE_1, NULL, TRUE, ev->time);
             }
@@ -625,7 +625,7 @@ static void
 edgeButton (Client * c, int part, XButtonEvent * ev)
 {
     ScreenInfo *screen_info;
-    int state;
+    guint state;
 
     screen_info = c->screen_info;
     state = ev->state & MODIFIER_MASK;
@@ -786,7 +786,7 @@ button1Action (Client * c, XButtonEvent * ev)
 }
 
 static void
-titleButton (Client * c, int state, XButtonEvent * ev)
+titleButton (Client * c, guint state, XButtonEvent * ev)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -916,7 +916,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     ScreenInfo *screen_info;
     Client *c;
     Window win;
-    int state, part;
+    guint state, part;
     gboolean replay;
 
     TRACE ("entering handleButtonPress");
@@ -1985,7 +1985,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
     if (ev->atom == display_info->atoms[NET_DESKTOP_NAMES])
     {
         gchar **names;
-        int items;
+        guint items;
 
         TRACE ("root has received a NET_DESKTOP_NAMES notify");
         if (getUTF8StringList (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &items))
@@ -2041,7 +2041,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[WIN_LAYER]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a WIN_LAYER event", c->name, c->window);
-            if (ev->data.l[0] != c->win_layer)
+            if ((unsigned long) ev->data.l[0] != c->win_layer)
             {
                 clientSetLayer (c, ev->data.l[0]);
             }
@@ -2112,7 +2112,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 guint32 current = myDisplayGetLastUserTime (display_info);
 
                 TRACE ("Time of event received is %u, current XServer time is %u", (guint32) ev_time, (guint32) current);
-                if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE(ev_time, current))
+                if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE((guint32) ev_time, (guint32) current))
                 {
                     TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
@@ -2212,7 +2212,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         }
         else if (ev->message_type == display_info->atoms[WM_PROTOCOLS])
         {
-            if (ev->data.l[0] == display_info->atoms[NET_WM_PING])
+            if ((Atom) ev->data.l[0] == display_info->atoms[NET_WM_PING])
             {
                 TRACE ("root has received a NET_WM_PING (pong) event\n");
                 clientReceiveNetWMPong (screen_info, (guint32) ev->data.l[1]);
@@ -2569,7 +2569,7 @@ initMenuEventWin (void)
 }
 
 static void
-show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
+show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2762,7 +2762,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 time)
                          screen_info->workspace_names, screen_info->workspace_names_items,
                          display_info->xfilter, screen_info);
 
-    if (!menu_popup (menu, x, y, button, time))
+    if (!menu_popup (menu, x, y, button, timestamp))
     {
         TRACE ("Cannot open menu");
         gdk_beep ();

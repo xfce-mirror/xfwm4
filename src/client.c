@@ -246,7 +246,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 {
     Client *c;
     XWindowChanges wc;
-    int i;
+    guint i;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -2239,7 +2239,7 @@ clientGetFromWindow (Client *c, Window w, unsigned short mode)
 }
 
 static void
-clientSetWorkspaceSingle (Client * c, int ws)
+clientSetWorkspaceSingle (Client * c, guint ws)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2275,21 +2275,21 @@ clientSetWorkspaceSingle (Client * c, int ws)
 }
 
 void
-clientSetWorkspace (Client * c, int ws, gboolean manage_mapping)
+clientSetWorkspace (Client * c, guint ws, gboolean manage_mapping)
 {
     Client *c2;
     GList *list_of_windows;
-    GList *index;
-    int previous_ws;
+    GList *list;
+    guint previous_ws;
 
     g_return_if_fail (c != NULL);
 
     TRACE ("entering clientSetWorkspace");
 
     list_of_windows = clientListTransientOrModal (c);
-    for (index = list_of_windows; index; index = g_list_next (index))
+    for (list = list_of_windows; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
 
         if (c2->win_workspace != ws)
         {
@@ -2351,15 +2351,15 @@ clientShow (Client * c, gboolean deiconify)
 {
     Client *c2;
     GList *list_of_windows;
-    GList *index;
+    GList *list;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientShow \"%s\" (0x%lx)", c->name, c->window);
 
     list_of_windows = clientListTransientOrModal (c);
-    for (index = g_list_last (list_of_windows); index; index = g_list_previous (index))
+    for (list = g_list_last (list_of_windows); list; list = g_list_previous (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         clientSetWorkspaceSingle (c2, c->win_workspace);
         /* Ignore request before if the window is not yet managed */
         if (!FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_MANAGED))
@@ -2410,19 +2410,19 @@ clientWithdrawSingle (Client * c, GList *exclude_list, gboolean iconify)
 }
 
 void
-clientWithdraw (Client * c, int ws, gboolean iconify)
+clientWithdraw (Client * c, guint ws, gboolean iconify)
 {
     Client *c2;
     GList *list_of_windows;
-    GList *index;
+    GList *list;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientWithdraw \"%s\" (0x%lx)", c->name, c->window);
 
     list_of_windows = clientListTransientOrModal (c);
-    for (index = list_of_windows; index; index = g_list_next (index))
+    for (list = list_of_windows; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
 
         /* Ignore request before if the window is not yet managed */
         if (!FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_MANAGED))
@@ -2457,9 +2457,9 @@ clientWithdraw (Client * c, int ws, gboolean iconify)
 }
 
 void
-clientWithdrawAll (Client * c, int ws)
+clientWithdrawAll (Client * c, guint ws)
 {
-    GList *index;
+    GList *list;
     Client *c2;
     ScreenInfo *screen_info;
 
@@ -2468,9 +2468,9 @@ clientWithdrawAll (Client * c, int ws)
     TRACE ("entering clientWithdrawAll");
 
     screen_info = c->screen_info;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
 
         if ((c2 != c)
             && CLIENT_CAN_HIDE_WINDOW (c2)
@@ -2489,15 +2489,15 @@ clientWithdrawAll (Client * c, int ws)
 void
 clientClearAllShowDesktop (ScreenInfo *screen_info)
 {
-    GList *index;
+    GList *list;
 
     TRACE ("entering clientClearShowDesktop");
 
     if (screen_info->show_desktop)
     {
-        for (index = screen_info->windows_stack; index; index = g_list_next (index))
+        for (list = screen_info->windows_stack; list; list = g_list_next (list))
         {
-            Client *c = (Client *) index->data;
+            Client *c = (Client *) list->data;
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
         }
         screen_info->show_desktop = FALSE;
@@ -2509,7 +2509,7 @@ clientClearAllShowDesktop (ScreenInfo *screen_info)
 void
 clientToggleShowDesktop (ScreenInfo *screen_info)
 {
-    GList *index;
+    GList *list;
 
     TRACE ("entering clientToggleShowDesktop");
 
@@ -2518,9 +2518,9 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
                     FOCUS_IGNORE_MODAL);
     if (screen_info->show_desktop)
     {
-        for (index = screen_info->windows_stack; index; index = g_list_next (index))
+        for (list = screen_info->windows_stack; list; list = g_list_next (list))
         {
-            Client *c = (Client *) index->data;
+            Client *c = (Client *) list->data;
             if ((c->type & WINDOW_REGULAR_FOCUSABLE)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED | CLIENT_FLAG_SKIP_TASKBAR))
             {
@@ -2532,9 +2532,9 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
     }
     else
     {
-        for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
+        for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
         {
-            Client *c = (Client *) index->data;
+            Client *c = (Client *) list->data;
             if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
             {
                 clientShow (c, TRUE);
@@ -2689,12 +2689,12 @@ clientEnterContextMenuState (Client * c)
 }
 
 void
-clientSetLayer (Client * c, int l)
+clientSetLayer (Client * c, guint l)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     GList *list_of_windows = NULL;
-    GList *index = NULL;
+    GList *list = NULL;
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
@@ -2704,9 +2704,9 @@ clientSetLayer (Client * c, int l)
     display_info = screen_info->display_info;
 
     list_of_windows = clientListTransientOrModal (c);
-    for (index = list_of_windows; index; index = g_list_next (index))
+    for (list = list_of_windows; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if (c2->win_layer != l)
         {
             TRACE ("setting client \"%s\" (0x%lx) layer to %d", c2->name,
@@ -2847,7 +2847,7 @@ clientStick (Client * c, gboolean include_transients)
     DisplayInfo *display_info;
     Client *c2;
     GList *list_of_windows;
-    GList *index;
+    GList *list;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientStick");
@@ -2858,9 +2858,9 @@ clientStick (Client * c, gboolean include_transients)
     if (include_transients)
     {
         list_of_windows = clientListTransientOrModal (c);
-        for (index = list_of_windows; index; index = g_list_next (index))
+        for (list = list_of_windows; list; list = g_list_next (list))
         {
-            c2 = (Client *) index->data;
+            c2 = (Client *) list->data;
             TRACE ("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             c2->win_state |= WIN_STATE_STICKY;
             FLAG_SET (c2->flags, CLIENT_FLAG_STICKY);
@@ -2889,7 +2889,7 @@ clientUnstick (Client * c, gboolean include_transients)
     DisplayInfo *display_info;
     Client *c2;
     GList *list_of_windows;
-    GList *index;
+    GList *list;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUnstick");
@@ -2901,9 +2901,9 @@ clientUnstick (Client * c, gboolean include_transients)
     if (include_transients)
     {
         list_of_windows = clientListTransientOrModal (c);
-        for (index = list_of_windows; index; index = g_list_next (index))
+        for (list = list_of_windows; list; list = g_list_next (list))
         {
-            c2 = (Client *) index->data;
+            c2 = (Client *) list->data;
             c2->win_state &= ~WIN_STATE_STICKY;
             FLAG_UNSET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
@@ -3332,7 +3332,7 @@ clientUpdateAllOpacity (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     Client *c;
-    int i;
+    guint i;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -3452,7 +3452,7 @@ void
 clientScreenResize(ScreenInfo *screen_info)
 {
     Client *c = NULL;
-    GList *index, *list_of_windows;
+    GList *list, *list_of_windows;
     XWindowChanges wc;
 
     list_of_windows = clientGetStackList (screen_info);
@@ -3463,20 +3463,20 @@ clientScreenResize(ScreenInfo *screen_info)
     }
 
     /* Revalidate client struts */
-    for (index = list_of_windows; index; index = g_list_next (index))
+    for (list = list_of_windows; list; list = g_list_next (list))
     {
-        c = (Client *) index->data;
+        c = (Client *) list->data;
         if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
         {
             clientValidateNetStrut (c);
         }
     }
 
-    for (index = list_of_windows; index; index = g_list_next (index))
+    for (list = list_of_windows; list; list = g_list_next (list))
     {
         unsigned long maximization_flags = 0L;
 
-        c = (Client *) index->data;
+        c = (Client *) list->data;
         if (!CONSTRAINED_WINDOW (c))
         {
             continue;

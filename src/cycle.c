@@ -37,6 +37,7 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
 
+#include "cycle.h"
 #include "client.h"
 #include "focus.h"
 #include "frame.h"
@@ -51,7 +52,6 @@
 typedef struct _ClientCycleData ClientCycleData;
 struct _ClientCycleData
 {
-    Client *c;
     Tabwin *tabwin;
     Window wireframe;
 };
@@ -94,16 +94,15 @@ clientCycleCreateList (Client *c)
 {
     ScreenInfo *screen_info;
     Client *c2;
-    guint range;
-    GList *clients;
-    int i;
+    guint range, i;
+    GList *client_list;
 
     g_return_val_if_fail (c, NULL);
     TRACE ("entering clientCycleCreateList");
 
     screen_info = c->screen_info;
     range = clientGetCycleRange (screen_info);
-    clients = NULL;
+    client_list = NULL;
 
     for (c2 = c, i = 0; c && i < screen_info->client_count; i++, c2 = c2->next)
     {
@@ -121,15 +120,15 @@ clientCycleCreateList (Client *c)
              */
             if (c2->type != WINDOW_NORMAL)
                 continue;
-            if (g_list_find_custom (clients, c2, clientCompareApp))
+            if (g_list_find_custom (client_list, c2, clientCompareApp))
                 continue;
         }
 #endif
         TRACE ("clientCycleCreateList: adding %s", c2->name);
-        clients = g_list_append (clients, c2);
+        client_list = g_list_append (client_list, c2);
     }
 
-    return clients;
+    return client_list;
 }
 
 static void
@@ -167,12 +166,12 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     TRACE ("entering clientCycleEventFilter");
 
     passdata = (ClientCycleData *) data;
-    if (passdata->c == NULL)
+    c = tabwinGetSelected(passdata->tabwin);
+    if (c == NULL)
     {
         return EVENT_FILTER_CONTINUE;
     }
 
-    c = passdata->c;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     cancel = screen_info->params->keys[KEY_CANCEL].keycode;
@@ -197,7 +196,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                 break; /* No need to go any further */
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
-            passdata->c = c;
             status = EVENT_FILTER_CONTINUE;
             /* Walk through */
         case KeyPress:
@@ -210,11 +208,11 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     key = myScreenGetKeyPressed (screen_info, (XKeyEvent *) xevent);
                     /*
                      * We cannot simply check for key == KEY_CANCEL here because of the
-                     * mofidier being pressed, so we need to look at the keycode directly.
+                     * modidier being pressed, so we need to look at the keycode directly.
                      */
                     if (xevent->xkey.keycode == cancel)
                     {
-                        c2 = tabwinGetHead (passdata->tabwin);
+                        c2 = tabwinSelectHead (passdata->tabwin);
                         cycling = FALSE;
                     }
                     else if (key == KEY_CYCLE_REVERSE_WINDOWS)
@@ -230,7 +228,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     if (c2)
                     {
                         c = c2;
-                        passdata->c = c;
                     }
 
                     /* If last key press event had not our modifier pressed, finish cycling */
@@ -292,7 +289,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     ClientCycleData passdata;
-    GList *clients, *selected;
+    GList *client_list, *selected;
     guint cycle_range;
     gboolean g1, g2;
     int key;
@@ -303,8 +300,8 @@ clientCycle (Client * c, XKeyEvent * ev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    clients = clientCycleCreateList (c);
-    if (!clients)
+    client_list = clientCycleCreateList (c);
+    if (!client_list)
     {
         return;
     }
@@ -319,7 +316,7 @@ clientCycle (Client * c, XKeyEvent * ev)
         gdk_beep ();
         myScreenUngrabKeyboard (screen_info, CurrentTime);
         myScreenUngrabPointer (screen_info, CurrentTime);
-        g_list_free (clients);
+        g_list_free (client_list);
 
         return;
     }
@@ -328,45 +325,40 @@ clientCycle (Client * c, XKeyEvent * ev)
 
     if (key == KEY_CYCLE_REVERSE_WINDOWS)
     {
-        selected = g_list_last (clients);
+        selected = g_list_last (client_list);
     }
     else
     {
-        selected = g_list_next (clients);
+        selected = g_list_next (client_list);
     }
-    passdata.c = (Client *) selected->data;
     passdata.wireframe = None;
 
     TRACE ("entering cycle loop");
     if (screen_info->params->cycle_draw_frame)
     {
-        passdata.wireframe = wireframeCreate (passdata.c);
+        passdata.wireframe = wireframeCreate ((Client *) selected->data);
     }
-    passdata.tabwin = tabwinCreate (&clients, selected, screen_info->params->cycle_workspaces);
+    passdata.tabwin = tabwinCreate (&client_list, selected, screen_info->params->cycle_workspaces);
     eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving cycle loop");
-    tabwinDestroy (passdata.tabwin);
-    g_free (passdata.tabwin);
-    g_list_free (clients);
     if (passdata.wireframe)
     {
         wireframeDelete (screen_info, passdata.wireframe);
     }
     updateXserverTime (display_info);
 
-    if (passdata.c)
+    c = tabwinGetSelected (passdata.tabwin);
+    if (c)
     {
         Client *focused;
-        Client *sibling;
-        int workspace;
+        guint workspace;
 
-        c = passdata.c;
         workspace = c->win_workspace;
         focused = clientGetFocus ();
 
-        if ((focused) && (passdata.c != focused))
+        if ((focused) && (c != focused))
         {
             /* We might be able to avoid this if we are about to switch workspace */
             clientAdjustFullscreenLayer (focused, FALSE);
@@ -383,6 +375,10 @@ clientCycle (Client * c, XKeyEvent * ev)
 
         clientCycleFocusAndRaise (c);
     }
+
+    tabwinDestroy (passdata.tabwin);
+    g_free (passdata.tabwin);
+    g_list_free (client_list);
 
     /*
      * Use CurrentTime instead of actual last event time to make sure

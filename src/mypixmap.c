@@ -346,7 +346,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
     gint new_key;
     gint key;
     gint current_key;
-    gint space;
+    guint space;
 
     p = &buffer[0];
     space = 128;
@@ -367,7 +367,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
         for (r = word;
                  (*p != '\0') &&
                  (!g_ascii_isspace (*p)) &&
-                 (r - word < sizeof (word) - 1);
+                 (r - word < (gchar) sizeof (word) - 1);
              p++, r++)
         {
                 *r = *p;
@@ -519,7 +519,8 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     const gchar *buffer;
     gchar *name_buf;
     gint w, h, n_col, cpp, items;
-    gint cnt, xcnt, ycnt, wbytes, n;
+    gint cnt, xcnt, ycnt;
+    guint wbytes, n;
     GHashTable *color_hash;
     XPMColor *colors, *color, *fallbackcolor;
     guchar *pixtmp;
@@ -547,7 +548,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
         (cpp >= 32) ||
         (n_col <= 0) ||
         (n_col >= G_MAXINT / (cpp + 1)) ||
-        (n_col >= G_MAXINT / sizeof (XPMColor)))
+        (n_col >= G_MAXINT / (gint) sizeof (XPMColor)))
     {
         g_warning ("Pixmap definition contains invalid attributes");
         return NULL;

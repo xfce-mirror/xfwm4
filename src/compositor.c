@@ -132,15 +132,15 @@ struct _CWindow
 static CWindow*
 find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
 {
-    GList *index;
+    GList *list;
 
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("entering find_cwindow_in_screen");
 
-    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
-        CWindow *cw = (CWindow *) index->data;
+        CWindow *cw = (CWindow *) list->data;
         if (cw->id == id)
         {
             return cw;
@@ -152,15 +152,15 @@ find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
 static CWindow*
 find_cwindow_in_display (DisplayInfo *display_info, Window id)
 {
-    GSList *index;
+    GSList *list;
 
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (display_info != NULL, NULL);
     TRACE ("entering find_cwindow_in_display");
 
-    for (index = display_info->screens; index; index = g_slist_next (index))
+    for (list = display_info->screens; list; list = g_slist_next (list))
     {
-        ScreenInfo *screen_info = (ScreenInfo *) index->data;
+        ScreenInfo *screen_info = (ScreenInfo *) list->data;
         CWindow *cw = find_cwindow_in_screen (screen_info, id);
         if (cw)
         {
@@ -1249,7 +1249,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     DisplayInfo *display_info;
     XserverRegion paint_region;
     Display *dpy;
-    GList *index;
+    GList *list;
     gint screen_width;
     gint screen_height;
     gint screen_number;
@@ -1282,9 +1282,9 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
      * Painting from top to bottom, reducing the clipping area at each iteration.
      * Only the opaque windows are painted 1st.
      */
-    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
-        cw = (CWindow *) index->data;
+        cw = (CWindow *) list->data;
         TRACE ("painting forward 0x%lx", cw->id);
         if (!WIN_IS_VISIBLE(cw) || !WIN_IS_DAMAGED(cw))
         {
@@ -1347,12 +1347,11 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     /*
      * Painting from bottom to top, translucent windows and shadows are painted now...
      */
-    for (index = g_list_last(screen_info->cwindows); index; index = g_list_previous (index))
+    for (list = g_list_last(screen_info->cwindows); list; list = g_list_previous (list))
     {
-        CWindow *cw;
         XserverRegion shadowClip;
 
-        cw = (CWindow *) index->data;
+        cw = (CWindow *) list->data;
         shadowClip = None;
         TRACE ("painting backward 0x%lx", cw->id);
 
@@ -1525,7 +1524,7 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
 static void
 fix_region (CWindow *cw, XserverRegion region)
 {
-    GList *index;
+    GList *list;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
 
@@ -1533,11 +1532,11 @@ fix_region (CWindow *cw, XserverRegion region)
     display_info = screen_info->display_info;
 
     /* Exclude opaque windows in front of the given area */
-    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
         CWindow *cw2;
 
-        cw2 = (CWindow *) index->data;
+        cw2 = (CWindow *) list->data;
         if (cw2 == cw)
         {
             break;
@@ -2032,21 +2031,21 @@ restack_win (CWindow *cw, Window above)
     }
     else if (previous_above != above)
     {
-        GList *index;
+        GList *list;
 
-        for (index = screen_info->cwindows; index; index = g_list_next (index))
+        for (list = screen_info->cwindows; list; list = g_list_next (list))
         {
-            CWindow *cw2 = (CWindow *) index->data;
+            CWindow *cw2 = (CWindow *) list->data;
             if (cw2->id == above)
             {
                 break;
             }
         }
 
-        if (index != NULL)
+        if (list != NULL)
         {
             screen_info->cwindows = g_list_delete_link (screen_info->cwindows, sibling);
-            screen_info->cwindows = g_list_insert_before (screen_info->cwindows, index, cw);
+            screen_info->cwindows = g_list_insert_before (screen_info->cwindows, list, cw);
         }
     }
 }
@@ -2984,7 +2983,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
-    GList *index;
+    GList *list;
     gint i;
 
     g_return_if_fail (screen_info != NULL);
@@ -3008,9 +3007,9 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #endif /* TIMEOUT_REPAINT */
 
     i = 0;
-    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
-        CWindow *cw2 = (CWindow *) index->data;
+        CWindow *cw2 = (CWindow *) list->data;
         free_win_data (cw2, TRUE);
         i++;
     }
@@ -3196,7 +3195,7 @@ compositorRebuildScreen (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
-    GList *index;
+    GList *list;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering compositorRepairScreen");
@@ -3207,9 +3206,9 @@ compositorRebuildScreen (ScreenInfo *screen_info)
         return;
     }
 
-    for (index = screen_info->cwindows; index; index = g_list_next (index))
+    for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
-        CWindow *cw2 = (CWindow *) index->data;
+        CWindow *cw2 = (CWindow *) list->data;
         free_win_data (cw2, FALSE);
         init_opacity (cw2);
     }

@@ -51,13 +51,13 @@ void                    workspaceSetNames                       (ScreenInfo *,
                                                                  gchar **,
                                                                  int);
 void                    workspaceSetCount                       (ScreenInfo *,
-                                                                 int);
+                                                                 guint);
 void                    workspaceUpdateArea                     (ScreenInfo *);
 
 void                    workspaceInsert                         (ScreenInfo *,
-                                                                 int);
+                                                                 guint);
 
 void                    workspaceDelete                         (ScreenInfo *,
-                                                                 int);
+                                                                 guint);
 
 #endif /* INC_WORKSPACES_H */

@@ -99,7 +99,8 @@ void
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
     Client *c2;
-    int i, delta, screen_width, screen_height;
+    guint i;
+    gint delta, screen_width, screen_height;
 
     g_return_if_fail (x != NULL);
     g_return_if_fail (y != NULL);
@@ -162,7 +163,8 @@ clientCkeckTitle (Client * c)
 {
     Client *c2;
     ScreenInfo *screen_info;
-    int i, frame_x, frame_y, frame_width, frame_top;
+    guint i;
+    gint frame_x, frame_y, frame_width, frame_top;
 
     frame_x = frameX (c);
     frame_y = frameY (c);
@@ -196,11 +198,12 @@ clientConstrainPos (Client * c, gboolean show_full)
 {
     Client *c2;
     ScreenInfo *screen_info;
-    int i, cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
-    int frame_height, frame_width, frame_top, frame_left;
-    int frame_x, frame_y, frame_visible;
-    int screen_width, screen_height;
-    unsigned int ret;
+    guint i;
+    gint cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
+    gint frame_height, frame_width, frame_top, frame_left;
+    gint frame_x, frame_y, frame_visible;
+    gint screen_width, screen_height;
+    guint ret;
     GdkRectangle rect;
     gint min_visible;
 
@@ -538,8 +541,9 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     Client *c2;
     ScreenInfo *screen_info;
     gfloat best_overlaps;
-    int test_x, test_y, xmax, ymax, best_x, best_y, i;
-    int frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
+    guint i;
+    gint test_x, test_y, xmax, ymax, best_x, best_y;
+    gint frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
     gboolean first;
 
     g_return_if_fail (c != NULL);
@@ -756,8 +760,9 @@ clientFill (Client * c, int fill_type)
     GdkRectangle rect;
     XWindowChanges wc;
     unsigned short mask;
-    int i, cx, cy, full_x, full_y, full_w, full_h;
-    int tmp_x, tmp_y, tmp_w, tmp_h;
+    guint i;
+    gint cx, cy, full_x, full_y, full_w, full_h;
+    gint tmp_x, tmp_y, tmp_w, tmp_h;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientFill");

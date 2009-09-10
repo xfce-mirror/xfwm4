@@ -151,7 +151,7 @@ xfconf_workspace_names_changed(XfconfChannel *channel,
     GtkTreeView *treeview = user_data;
     GtkTreeModel *model = gtk_tree_view_get_model(treeview);
     WnckScreen *screen = wnck_screen_get_default();
-    gint i, n_workspaces;
+    guint i, n_workspaces;
     GPtrArray *names;
     GtkTreePath *path;
     GtkTreeIter iter;

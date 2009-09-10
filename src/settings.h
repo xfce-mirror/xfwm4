@@ -165,12 +165,12 @@ struct _XfwmParams
 {
     MyKey keys[KEY_COUNT];
     gchar button_layout[BUTTON_STRING_COUNT + 1];
-    unsigned int xfwm_margins[4];
+    int xfwm_margins[4];
     int activate_action;
     int button_offset;
     int button_spacing;
     int double_click_action;
-    int easy_click;
+    guint easy_click;
     int focus_delay;
     int frame_opacity;
     int inactive_opacity;

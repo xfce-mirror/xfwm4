@@ -847,9 +847,10 @@ frameDrawWin (Client * c)
     ScreenInfo *screen_info;
     FramePixmap frame_pix;
     xfwmPixmap *my_pixmap;
-    int state, i, j, x, button, left, right;
-    int top_width, bottom_width, left_height, right_height;
-    int button_x[BUTTON_COUNT];
+    gint state, x, button, left, right;
+    gint top_width, bottom_width, left_height, right_height;
+    gint button_x[BUTTON_COUNT];
+    guint i, j;
     gboolean requires_clearing;
     gboolean width_changed;
     gboolean height_changed;

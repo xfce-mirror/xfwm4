@@ -211,12 +211,12 @@ clientIsValidTransientOrModal (Client * c)
     if (clientIsTransientOrModalForGroup (c))
     {
         ScreenInfo *screen_info = c->screen_info;
-        GList *index;
+        GList *list;
 
         /* Look for a valid transient or modal for the same group */
-        for (index = screen_info->windows_stack; index; index = g_list_next (index))
+        for (list = screen_info->windows_stack; list; list = g_list_next (list))
         {
-            Client *c2 = (Client *) index->data;
+            Client *c2 = (Client *) list->data;
             if (c2 != c)
             {
                 if (clientIsTransientOrModalFor (c, c2))
@@ -236,10 +236,10 @@ clientIsValidTransientOrModal (Client * c)
 }
 
 gboolean
-clientTransientOrModalHasAncestor (Client * c, int ws)
+clientTransientOrModalHasAncestor (Client * c, guint ws)
 {
     Client *c2;
-    GList *index;
+    GList *list;
     ScreenInfo *screen_info;
 
     g_return_val_if_fail (c != NULL, FALSE);
@@ -252,9 +252,9 @@ clientTransientOrModalHasAncestor (Client * c, int ws)
     }
 
     screen_info = c->screen_info;
-    for (index = screen_info->windows_stack; index; index = g_list_next (index))
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if ((c2 != c) && !clientIsTransientOrModal (c2)
             && clientIsTransientOrModalFor (c, c2)
             && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED)
@@ -272,15 +272,15 @@ clientGetModalFor (Client * c)
 {
     ScreenInfo *screen_info;
     Client *c2;
-    GList *index;
+    GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetModalFor");
 
     screen_info = c->screen_info;
-    for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
+    for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if (c2)
         {
             if ((c2 != c) && clientIsModalFor (c2, c))
@@ -298,20 +298,20 @@ clientGetTransientFor (Client * c)
     ScreenInfo *screen_info;
     Client *latest_transient;
     Client *c2;
-    GList *index;
+    GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("entering clientGetTransientFor");
 
     latest_transient = c;
     screen_info = c->screen_info;
-    for (index = g_list_last(screen_info->windows_stack); index; index = g_list_previous (index))
+    for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
     {
         if (!clientIsTransient (latest_transient))
         {
             break;
         }
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if (c2)
         {
             if (clientIsTransientFor (latest_transient, c2))
@@ -331,16 +331,16 @@ clientListTransient (Client * c)
     ScreenInfo *screen_info;
     Client *c2, *c3;
     GList *transients;
-    GList *index1, *index2;
+    GList *list1, *list2;
 
     g_return_val_if_fail (c != NULL, NULL);
 
     transients = NULL;
     screen_info = c->screen_info;
     transients = g_list_append (transients, c);
-    for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
+    for (list1 = screen_info->windows_stack; list1; list1 = g_list_next (list1))
     {
-        c2 = (Client *) index1->data;
+        c2 = (Client *) list1->data;
         if (c2 != c)
         {
             if (clientIsTransientFor (c2, c))
@@ -349,10 +349,10 @@ clientListTransient (Client * c)
             }
             else
             {
-                for (index2 = transients; index2;
-                    index2 = g_list_next (index2))
+                for (list2 = transients; list2;
+                    list2 = g_list_next (list2))
                 {
-                    c3 = (Client *) index2->data;
+                    c3 = (Client *) list2->data;
                     if ((c3 != c2) && clientIsTransientFor (c2, c3))
                     {
                         transients = g_list_append (transients, c2);
@@ -372,16 +372,16 @@ clientListTransientOrModal (Client * c)
     ScreenInfo *screen_info;
     Client *c2, *c3;
     GList *transients;
-    GList *index1, *index2;
+    GList *list1, *list2;
 
     g_return_val_if_fail (c != NULL, NULL);
 
     screen_info = c->screen_info;
     transients = NULL;
     transients = g_list_append (transients, c);
-    for (index1 = screen_info->windows_stack; index1; index1 = g_list_next (index1))
+    for (list1 = screen_info->windows_stack; list1; list1 = g_list_next (list1))
     {
-        c2 = (Client *) index1->data;
+        c2 = (Client *) list1->data;
         if (c2 != c)
         {
             if (clientIsTransientOrModalFor (c2, c))
@@ -390,10 +390,10 @@ clientListTransientOrModal (Client * c)
             }
             else
             {
-                for (index2 = transients; index2;
-                    index2 = g_list_next (index2))
+                for (list2 = transients; list2;
+                    list2 = g_list_next (list2))
                 {
-                    c3 = (Client *) index2->data;
+                    c3 = (Client *) list2->data;
                     if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                     {
                         transients = g_list_append (transients, c2);
@@ -413,15 +413,15 @@ gboolean
 clientCheckTransientWindow (Client *c, Window w)
 {
     GList *transients;
-    GList *index;
+    GList *list;
     Client *c2;
 
     g_return_val_if_fail (c != NULL, FALSE);
 
     transients = clientListTransient (c);
-    for (index = transients; index; index = g_list_next (index))
+    for (list = transients; list; list = g_list_next (list))
     {
-        c2 = (Client *) index->data;
+        c2 = (Client *) list->data;
         if (c2->window == w)
         {
             g_list_free (transients);

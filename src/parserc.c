@@ -155,7 +155,7 @@ setValue (const gchar * lvalue, const gchar *rvalue, Settings *rc)
     return FALSE;
 }
 
-gboolean
+static gboolean
 setGValue (const gchar * lvalue, const GValue *rvalue, Settings *rc)
 {
     gint i;

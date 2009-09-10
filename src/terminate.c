@@ -30,6 +30,7 @@
 #include <errno.h>
 
 #include "client.h"
+#include "terminate.h"
 
 void
 terminateCloseDialog (Client *c)
