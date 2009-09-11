@@ -73,10 +73,10 @@ struct _ScreenInfo
     Client *last_raise;
     GList *windows;
     Client *clients;
-    unsigned int client_count;
+    guint client_count;
     unsigned long client_serial;
-    int key_grabs;
-    int pointer_grabs;
+    gint key_grabs;
+    gint pointer_grabs;
 
     /* Theme pixmaps and other params, per screen */
     XfwmColor title_colors[2];

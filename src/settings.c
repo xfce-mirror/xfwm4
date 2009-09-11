@@ -865,7 +865,7 @@ loadSettings (ScreenInfo *screen_info)
     if (screen_info->workspace_count == 0)
     {
         guint workspace_count;
-        workspace_count = MAX ((guint) getIntValue ("workspace_count", rc), 0);
+        workspace_count = MAX ((guint) getIntValue ("workspace_count", rc), 1);
         workspaceSetCount (screen_info, workspace_count);
     }
 
