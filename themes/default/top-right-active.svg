@@ -162,7 +162,7 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient3148);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,2 L 2,2 C 3,2 6,2 6,5 C 6,8.5 6,12 6,20 L 0,20 L 0,20 L 0,2 z "
+       d="M 0,2 L 4,2 C 5,2 6,2 6,5 C 6,8.5 6,12 6,20 L 0,20 L 0,20 L 0,2 z "
        id="path6057" />
   </g>
   <g
