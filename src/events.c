@@ -2049,9 +2049,9 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[WIN_WORKSPACE]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a WIN_WORKSPACE event", c->name, c->window);
-            if (ev->data.l[0] != c->win_workspace)
+            if (ev->data.l[0] != (guint) c->win_workspace)
             {
-                clientSetWorkspace (c, ev->data.l[0], TRUE);
+                clientSetWorkspace (c, (guint) ev->data.l[0], TRUE);
             }
         }
         else if ((ev->message_type == display_info->atoms[NET_WM_DESKTOP]) && (ev->format == 32))
@@ -2072,9 +2072,9 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                     clientUnstick (c, TRUE);
                     frameQueueDraw (c, FALSE);
                 }
-                if (ev->data.l[0] != c->win_workspace)
+                if (ev->data.l[0] != (guint) c->win_workspace)
                 {
-                    clientSetWorkspace (c, ev->data.l[0], TRUE);
+                    clientSetWorkspace (c, (guint) ev->data.l[0], TRUE);
                 }
             }
         }
