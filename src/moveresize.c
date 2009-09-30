@@ -1062,8 +1062,8 @@ clientMove (Client * c, XEvent * ev)
         TRACE ("grab failed in clientMove");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, CurrentTime);
-        myScreenUngrabPointer (screen_info, CurrentTime);
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
     }
@@ -1133,12 +1133,8 @@ clientMove (Client * c, XEvent * ev)
         eventFilterPop (display_info->xfilter);
     }
 
-    /*
-     * Use CurrentTime instead of actual last event time to make sure
-     * that the grab is released in any case.
-     */
-    myScreenUngrabKeyboard (screen_info, CurrentTime);
-    myScreenUngrabPointer (screen_info, CurrentTime);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
     if (passdata.grab && screen_info->params->box_move)
     {
@@ -1627,8 +1623,8 @@ clientResize (Client * c, int handle, XEvent * ev)
         TRACE ("grab failed in clientResize");
 
         gdk_beep ();
-        myScreenUngrabKeyboard (screen_info, CurrentTime);
-        myScreenUngrabPointer (screen_info, CurrentTime);
+        myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
     }
@@ -1700,12 +1696,8 @@ clientResize (Client * c, int handle, XEvent * ev)
         eventFilterPop (display_info->xfilter);
     }
 
-    /*
-     * Use CurrentTime instead of actual last event time to make sure
-     * that the grab is released in any case.
-     */
-    myScreenUngrabKeyboard (screen_info, CurrentTime);
-    myScreenUngrabPointer (screen_info, CurrentTime);
+    myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
     if (passdata.grab && screen_info->params->box_resize)
     {

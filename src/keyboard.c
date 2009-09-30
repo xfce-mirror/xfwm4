@@ -141,31 +141,31 @@ grabKey (Display * dpy, MyKey * key, Window w)
         status |=
             XGrabKey (dpy, key->keycode,
                                     key->modifier | ScrollLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
+                                    TRUE, GrabModeAsync, GrabModeAsync);
         status |=
             XGrabKey (dpy, key->keycode,
                                     key->modifier | NumLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
+                                    TRUE, GrabModeAsync, GrabModeAsync);
         status |=
             XGrabKey (dpy, key->keycode,
                                     key->modifier | LockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
+                                    TRUE, GrabModeAsync, GrabModeAsync);
         status |=
             XGrabKey (dpy, key->keycode,
                                     key->modifier | ScrollLockMask | NumLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
+                                    TRUE, GrabModeAsync, GrabModeAsync);
         status |=
             XGrabKey (dpy, key->keycode,
                                     key->modifier | ScrollLockMask | LockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
+                                    TRUE, GrabModeAsync, GrabModeAsync);
         status |=
             XGrabKey (dpy, key->keycode,
                                     key->modifier | LockMask | NumLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
+                                    TRUE, GrabModeAsync, GrabModeAsync);
         status |=
             XGrabKey (dpy, key->keycode,
                                     key->modifier | ScrollLockMask | LockMask | NumLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
+                                    TRUE, GrabModeAsync, GrabModeAsync);
     }
 
     return (status == GrabSuccess);

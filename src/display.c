@@ -678,48 +678,62 @@ myDisplayGetDefaultScreen (DisplayInfo *display)
 guint32
 myDisplayUpdateCurrentTime (DisplayInfo *display, XEvent *ev)
 {
-    g_return_val_if_fail (display != NULL, CurrentTime);
+    guint32 timestamp;
 
+    g_return_val_if_fail (display != NULL, (guint32) CurrentTime);
+
+    timestamp = (guint32) CurrentTime;
     switch (ev->type)
     {
         case KeyPress:
         case KeyRelease:
-            display->current_time = (guint32) ev->xkey.time;
+            timestamp = (guint32) ev->xkey.time;
             break;
         case ButtonPress:
         case ButtonRelease:
-            display->current_time = (guint32) ev->xbutton.time;
+            timestamp = (guint32) ev->xbutton.time;
             break;
         case MotionNotify:
-            display->current_time = (guint32) ev->xmotion.time;
+            timestamp = (guint32) ev->xmotion.time;
             break;
         case EnterNotify:
         case LeaveNotify:
-            display->current_time = (guint32) ev->xcrossing.time;
+            timestamp = (guint32) ev->xcrossing.time;
             break;
         case PropertyNotify:
-            display->current_time = (guint32) ev->xproperty.time;
+            timestamp = (guint32) ev->xproperty.time;
             break;
         case SelectionClear:
-            display->current_time = (guint32) ev->xselectionclear.time;
+            timestamp = (guint32) ev->xselectionclear.time;
             break;
         case SelectionRequest:
-            display->current_time = (guint32) ev->xselectionrequest.time;
+            timestamp = (guint32) ev->xselectionrequest.time;
             break;
         case SelectionNotify:
-            display->current_time = (guint32) ev->xselection.time;
+            timestamp = (guint32) ev->xselection.time;
             break;
         default:
-            display->current_time = (guint32) CurrentTime;
+#ifdef HAVE_XSYNC
+            if ((display->have_xsync) && (ev->type == display->xsync_event_base + XSyncAlarmNotify))
+            {
+                timestamp = ((XSyncAlarmNotifyEvent*) ev)->time;
+            }
+#endif /* HAVE_XSYNC */
             break;
     }
+
+    if ((timestamp == (guint32) CurrentTime) || TIMESTAMP_IS_BEFORE(display->current_time, timestamp))
+    {
+        display->current_time = timestamp;
+    }
+
     return display->current_time;
 }
 
 guint32
 myDisplayGetCurrentTime (DisplayInfo *display)
 {
-    g_return_val_if_fail (display != NULL, CurrentTime);
+    g_return_val_if_fail (display != NULL, (guint32) CurrentTime);
 
     TRACE ("myDisplayGetCurrentTime gives timestamp=%u", (guint32) display->current_time);
     return display->current_time;
@@ -743,7 +757,7 @@ myDisplayGetTime (DisplayInfo * display, guint32 timestamp)
 guint32
 myDisplayGetLastUserTime (DisplayInfo *display)
 {
-    g_return_val_if_fail (display != NULL, CurrentTime);
+    g_return_val_if_fail (display != NULL, (guint32) CurrentTime);
 
     TRACE ("myDisplayGetLastUserTime gives timestamp=%u", (guint32) display->last_user_time);
     return display->last_user_time;
