@@ -2077,34 +2077,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         }
         else if ((ev->message_type == display_info->atoms[NET_ACTIVE_WINDOW]) && (ev->format == 32))
         {
-            gboolean source_is_application;
-            guint32 ev_time;
-
-            ev_time = myDisplayGetTime (display_info, (guint32) ev->data.l[1]);
-            source_is_application = (ev->data.l[0] == 1);
-
             TRACE ("client \"%s\" (0x%lx) has received a NET_ACTIVE_WINDOW event", c->name, c->window);
-            if (source_is_application)
-            {
-                guint32 current = myDisplayGetLastUserTime (display_info);
-
-                TRACE ("Time of event received is %u, current XServer time is %u", (guint32) ev_time, (guint32) current);
-                if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE(ev_time, current))
-                {
-                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
-                    FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-                    clientSetNetState (c);
-                }
-                else
-                {
-                    clientActivate (c, ev_time, source_is_application);
-                }
-            }
-            else
-            {
-                /* The request is either from a pager or an older client, use the most accurate timestamp */
-                clientActivate (c, getXServerTime (display_info), source_is_application);
-            }
+            clientHandleNetActiveWindow (c, (guint32) ev->data.l[1], (gboolean) (ev->data.l[0] == 1));
         }
         else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])
         {
@@ -2132,8 +2106,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
              (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace or a NET_CURRENT_DESKTOP event %li", ev->data.l[0]);
-            if ((ev->data.l[0] >= 0) && (ev->data.l[0] < screen_info->workspace_count) &&
-                (ev->data.l[0] != screen_info->current_ws))
+            if ((ev->data.l[0] >= 0) && (ev->data.l[0] < (long) screen_info->workspace_count) &&
+                (ev->data.l[0] != (long) screen_info->current_ws))
             {
                 workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE,
                                  myDisplayGetTime (display_info, (guint32) ev->data.l[1]));
@@ -2143,7 +2117,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                   (ev->message_type == display_info->atoms[NET_NUMBER_OF_DESKTOPS])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace_count event");
-            if (ev->data.l[0] != screen_info->workspace_count)
+            if (ev->data.l[0] != (long) screen_info->workspace_count)
             {
                 workspaceSetCount (screen_info, ev->data.l[0]);
                 getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
@@ -2823,12 +2797,13 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    int new_width, new_height;
+    gboolean size_changed;
 
     TRACE ("entering size_changed_cb");
 
     screen_info = (ScreenInfo *) data;
     g_return_if_fail (screen_info);
+    display_info = screen_info->display_info;
 
     /*
      * We have added/removed a monitor or even changed the layout,
@@ -2841,28 +2816,16 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
     screen_info->cache_monitor.width = 0;
     screen_info->cache_monitor.height = 0;
 
-    /*
-     * If the overall size of the screen hasn't changed,
-     * there is no need to continue any further...
-     */
-    new_width  = WidthOfScreen (screen_info->xscreen);
-    new_height = HeightOfScreen (screen_info->xscreen);
-
-    if ((screen_info->width  == new_width) &&
-        (screen_info->height == new_height))
-    {
-        return;
-    }
-
-    display_info = screen_info->display_info;
-    screen_info->width = new_width;
-    screen_info->height = new_height;
-
+    size_changed = myScreenComputeSize (screen_info);
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
-                    new_width, new_height, screen_info->margins);
+                    screen_info->width, screen_info->height, screen_info->margins);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
-    compositorUpdateScreenSize (screen_info);
+
+    if (size_changed)
+    {
+        compositorUpdateScreenSize (screen_info);
+    }
 }
 
 static void

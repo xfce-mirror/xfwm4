@@ -1365,6 +1365,49 @@ clientSetNetActiveWindow (ScreenInfo *screen_info, Client *c, guint32 timestamp)
                      PropModeReplace, (unsigned char *) data, 2);
 }
 
+void
+clientHandleNetActiveWindow (Client *c, guint32 timestamp, gboolean source_is_application)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    guint32 ev_time, current_time;
+    Client *focused;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientHandleNetActiveWindow");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    ev_time = myDisplayGetTime (display_info, timestamp);
+
+    if (source_is_application)
+    {
+        current_time = myDisplayGetLastUserTime (display_info);
+
+        TRACE ("Time of event received is %u, current XServer time is %u", (guint32) ev_time, (guint32) current_time);
+        if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE((guint32) ev_time, (guint32) current_time))
+        {
+            focused = clientGetFocus ();
+            /* We do not want to set the demand attention flag if the window is focused though */
+            if (c != focused)
+            {
+                TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+                FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
+                clientSetNetState (c);
+            }
+        }
+        else
+        {
+            clientActivate (c, ev_time, source_is_application);
+        }
+    }
+    else
+    {
+        /* The request is either from a pager or an older client, use the most accurate timestamp */
+        clientActivate (c, getXServerTime (display_info), source_is_application);
+    }
+}
+
 static gboolean
 ping_timeout_cb (gpointer data)
 {
