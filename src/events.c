@@ -1993,34 +1993,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         }
         else if ((ev->message_type == display_info->atoms[NET_ACTIVE_WINDOW]) && (ev->format == 32))
         {
-            gboolean source_is_application;
-            guint32 ev_time;
-
-            ev_time = myDisplayGetTime (display_info, (guint32) ev->data.l[1]);
-            source_is_application = (ev->data.l[0] == 1);
-
             TRACE ("client \"%s\" (0x%lx) has received a NET_ACTIVE_WINDOW event", c->name, c->window);
-            if (source_is_application)
-            {
-                guint32 current = myDisplayGetLastUserTime (display_info);
-
-                TRACE ("Time of event received is %u, current XServer time is %u", (guint32) ev_time, (guint32) current);
-                if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE((guint32) ev_time, (guint32) current))
-                {
-                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
-                    FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-                    clientSetNetState (c);
-                }
-                else
-                {
-                    clientActivate (c, ev_time, source_is_application);
-                }
-            }
-            else
-            {
-                /* The request is either from a pager or an older client, use the most accurate timestamp */
-                clientActivate (c, getXServerTime (display_info), source_is_application);
-            }
+            clientHandleNetActiveWindow (c, (guint32) ev->data.l[1], (gboolean) (ev->data.l[0] == 1));
         }
         else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])
         {

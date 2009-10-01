@@ -55,6 +55,9 @@ void                     clientUpdateLayerState                 (Client *);
 void                     clientSetNetActiveWindow               (ScreenInfo *,
                                                                  Client *,
                                                                  guint32);
+void                     clientHandleNetActiveWindow            (Client *,
+                                                                 guint32,
+                                                                 gboolean);
 void                     clientRemoveNetWMPing                  (Client *);
 gboolean                 clientSendNetWMPing                    (Client *,
                                                                  guint32);
