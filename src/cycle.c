@@ -331,6 +331,11 @@ clientCycle (Client * c, XKeyEvent * ev)
     {
         selected = g_list_next (client_list);
     }
+    if (!selected)
+    {
+        /* Only one element in list */
+        selected = client_list;
+    }
     passdata.wireframe = None;
 
     TRACE ("entering cycle loop");
