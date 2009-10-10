@@ -722,8 +722,7 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
          && CONSTRAINED_WINDOW (c)
          && !((c->gravity == StaticGravity) && (c->x == 0) && (c->y == 0)))
     {
-        /* Keep fully visible only on resize */
-        clientConstrainPos (c, (mask & (CWWidth | CWHeight)));
+        clientConstrainPos (c, CFG_KEEP_VISIBLE);
 
         if (c->x != px)
         {
@@ -804,7 +803,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    gboolean constrained;
+    unsigned short flags;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientMoveResizeWindow");
@@ -843,14 +842,18 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
     }
 
     /* Still a move/resize after cleanup? */
-    constrained = FALSE;
+    flags = CFG_REQUEST;
     if (mask & (CWX | CWY | CWWidth | CWHeight))
     {
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             clientRemoveMaximizeFlag (c);
         }
-        constrained = TRUE;
+        flags |= CFG_REQUEST;
+    }
+    if (mask & (CWWidth | CWHeight))
+    {
+        flags |= CFG_KEEP_VISIBLE;
     }
     /*
        Let's say that if the client performs a XRaiseWindow, we show the window if focus
@@ -878,7 +881,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
         }
     }
     /* And finally, configure the window */
-    clientConfigure (c, wc, mask, (constrained ? CFG_CONSTRAINED : 0) | CFG_REQUEST);
+    clientConfigure (c, wc, mask, flags);
 }
 
 void
@@ -3505,7 +3508,7 @@ clientScreenResize(ScreenInfo *screen_info)
         {
              wc.x = c->x;
              wc.y = c->y;
-             clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST);
+             clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST | CFG_KEEP_VISIBLE);
         }
     }
 
