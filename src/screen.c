@@ -403,8 +403,8 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, guint32 timestamp)
     if (screen_info->key_grabs == 0)
     {
         grab = (XGrabKeyboard (myScreenGetXDisplay (screen_info),
-                               screen_info->xfwm4_win,
-                               FALSE,
+                               screen_info->xroot,
+                               TRUE,
                                GrabModeAsync, GrabModeAsync,
                                (Time) timestamp) == GrabSuccess);
     }
@@ -426,7 +426,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
     if (screen_info->pointer_grabs == 0)
     {
         grab = (XGrabPointer (myScreenGetXDisplay (screen_info),
-                              screen_info->xfwm4_win,
+                              screen_info->xroot,
                               FALSE, event_mask,
                               GrabModeAsync, GrabModeAsync,
                               screen_info->xroot,
