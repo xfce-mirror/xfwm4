@@ -531,6 +531,8 @@ myScreenGetKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
 {
     int key, state;
 
+    TRACE ("entering myScreenGetKeyPressed");
+
     state = ev->state & MODIFIER_MASK;
     for (key = 0; key < KEY_COUNT; key++)
     {
@@ -601,6 +603,7 @@ void
 myScreenInvalidateMonitorCache (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
+    TRACE ("entering myScreenInvalidateMonitorCache");
 
     screen_info->cache_monitor.x = G_MAXINT;
     screen_info->cache_monitor.y = G_MAXINT;
@@ -622,6 +625,7 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (rect != NULL);
     g_return_if_fail (GDK_IS_SCREEN (screen_info->gscr));
+    TRACE ("entering myScreenFindMonitorAtPoint");
 
     /* Cache system */
     if ((x >= screen_info->cache_monitor.x) && (x < screen_info->cache_monitor.x + screen_info->cache_monitor.width) &&
@@ -674,6 +678,9 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
     PangoLanguage *language;
     GtkWidget *widget;
 
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+    TRACE ("entering myScreenUpdateFontHeight");
+
     widget = myScreenGetGtkWidget (screen_info);
     context = getUIPangoContext (widget);
     desc = getUIPangoFontDesc (widget);
@@ -691,5 +698,4 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
     }
 
     return FALSE;
-
 }

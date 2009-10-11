@@ -213,6 +213,7 @@ int                      myScreenGetKeyPressed                  (ScreenInfo *,
 Client                  *myScreenGetClientFromWindow            (ScreenInfo *,
                                                                  Window,
                                                                  unsigned short);
+gboolean                 myScreenComputeSize                    (ScreenInfo *);
 void                     myScreenInvalidateMonitorCache         (ScreenInfo *);
 void                     myScreenFindMonitorAtPoint             (ScreenInfo *,
                                                                  gint,
