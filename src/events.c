@@ -2716,11 +2716,13 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    gboolean size_changed;
 
     TRACE ("entering size_changed_cb");
 
     screen_info = (ScreenInfo *) data;
     g_return_if_fail (screen_info);
+    display_info = screen_info->display_info;
 
     /*
      * We have added/removed a monitor or even changed the layout,
@@ -2733,21 +2735,16 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
     screen_info->cache_monitor.width = 0;
     screen_info->cache_monitor.height = 0;
 
-    /*
-     * If the overall size of the screen hasn't changed,
-     * there is no need to continue any further...
-     */
-    if (!myScreenComputeSize (screen_info))
-    {
-        return;
-    }
-    display_info = screen_info->display_info;
-
+    size_changed = myScreenComputeSize (screen_info);
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                     screen_info->width, screen_info->height, screen_info->margins);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     clientScreenResize (screen_info);
-    compositorUpdateScreenSize (screen_info);
+
+    if (size_changed)
+    {
+        compositorUpdateScreenSize (screen_info);
+    }
 }
 
 static void
