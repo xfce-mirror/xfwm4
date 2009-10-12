@@ -566,6 +566,37 @@ myScreenGetClientFromWindow (ScreenInfo *screen_info, Window w, unsigned short m
     return NULL;
 }
 
+gboolean
+myScreenComputeSize (ScreenInfo *screen_info)
+{
+    gint num_monitors, i;
+    gint width, height;
+    GdkRectangle monitor;
+    gboolean changed;
+
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+    g_return_val_if_fail (GDK_IS_SCREEN (screen_info->gscr), FALSE);
+    TRACE ("entering myScreenComputeSize");
+
+    width = 0;
+    height = 0;
+    num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+
+    for (i = 0; i < num_monitors; i++)
+    {
+        gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        width = MAX (monitor.x + monitor.width, width);
+        height = MAX (monitor.y + monitor.height, height);
+    }
+
+    changed = ((screen_info->width != width) | (screen_info->height != height));
+    screen_info->width = width;
+    screen_info->height = height;
+    TRACE ("myScreenComputeSize(): width=%i, height=%i", width, height);
+
+    return changed;
+}
+
 void
 myScreenInvalidateMonitorCache (ScreenInfo *screen_info)
 {
