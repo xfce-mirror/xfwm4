@@ -1942,7 +1942,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[WIN_WORKSPACE]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a WIN_WORKSPACE event", c->name, c->window);
-            if (ev->data.l[0] != (guint) c->win_workspace)
+            if (ev->data.l[0] != (long) c->win_workspace)
             {
                 clientSetWorkspace (c, (guint) ev->data.l[0], TRUE);
             }
@@ -1965,7 +1965,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                     clientUnstick (c, TRUE);
                     frameQueueDraw (c, FALSE);
                 }
-                if (ev->data.l[0] != (guint) c->win_workspace)
+                if (ev->data.l[0] != (long) c->win_workspace)
                 {
                     clientSetWorkspace (c, (guint) ev->data.l[0], TRUE);
                 }
@@ -2022,8 +2022,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
              (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace or a NET_CURRENT_DESKTOP event %li", ev->data.l[0]);
-            if ((ev->data.l[0] >= 0) && (ev->data.l[0] < screen_info->workspace_count) &&
-                (ev->data.l[0] != screen_info->current_ws))
+            if ((ev->data.l[0] >= 0) && (ev->data.l[0] < (long) screen_info->workspace_count) &&
+                (ev->data.l[0] != (long) screen_info->current_ws))
             {
                 workspaceSwitch (screen_info, ev->data.l[0], NULL, TRUE,
                                  myDisplayGetTime (display_info, (guint32) ev->data.l[1]));
@@ -2033,7 +2033,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                   (ev->message_type == display_info->atoms[NET_NUMBER_OF_DESKTOPS])) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace_count event");
-            if (ev->data.l[0] != screen_info->workspace_count)
+            if (ev->data.l[0] != (long) screen_info->workspace_count)
             {
                 workspaceSetCount (screen_info, ev->data.l[0]);
                 getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);

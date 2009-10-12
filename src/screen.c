@@ -593,7 +593,7 @@ myScreenComputeSize (ScreenInfo *screen_info)
 
     changed = ((screen_info->width != width) | (screen_info->height != height));
     screen_info->width = width;
-    screen_info->height != height;
+    screen_info->height = height;
     TRACE ("myScreenComputeSize(): width=%i, height=%i", width, height);
 
     return changed;
