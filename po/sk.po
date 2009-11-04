@@ -3,17 +3,17 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Juraj Brosz <juro@jurajbrosz.info>, 2004.
 # Stefan Miklosovic <miklosovic@gmail.com>, 2008.
-#
+# Robert Hartl <hartl.robert@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 02:17+0100\n"
-"PO-Revision-Date: 2008-06-09 11:50-0700\n"
-"Last-Translator: Stefan Miklosovic <miklosovic@gmail.com>\n"
+"PO-Revision-Date: 2009-11-04 15:18+0100\n"
+"Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -24,7 +24,7 @@ msgstr ""
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "Varovanie"
 
 #: ../settings-dialogs/tweaks-settings.c:43
 msgid "None"
@@ -32,25 +32,25 @@ msgstr "Nič"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 msgid "Session manager socket"
-msgstr ""
+msgstr "Sedenie správcu soketu"
 
 #: ../settings-dialogs/tweaks-settings.c:415
 #: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:308
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:416
 #: ../settings-dialogs/workspace-settings.c:362
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Version information"
-msgstr ""
+msgstr "Informácie o verzií"
 
 #: ../settings-dialogs/tweaks-settings.c:433
 #: ../settings-dialogs/workspace-settings.c:379
 #: ../settings-dialogs/xfwm4-settings.c:932
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:437
 #: ../settings-dialogs/workspace-settings.c:383
@@ -65,23 +65,21 @@ msgstr ""
 #: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
-msgstr "Virtuálna plocha %d"
+msgstr "Pracovná plocha %d"
 
 #: ../settings-dialogs/workspace-settings.c:253
-#, fuzzy
 msgid "Workspace Name"
-msgstr "Názvy virtuálnych plôch"
+msgstr "Názov pracovnej plochy"
 
 #: ../settings-dialogs/workspace-settings.c:361
 #: ../settings-dialogs/xfwm4-settings.c:308
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Nastavenia správcu soketu"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Zrušiť akciu okna"
+msgstr "Konfigurácia správania okna a klávesových skratiek"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
@@ -90,9 +88,8 @@ msgstr "Správca okien"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Zrušiť akciu okna"
+msgstr "Doladenie správania okna a efektov"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
@@ -101,9 +98,8 @@ msgstr "Pokročilé nastavenie správcu okien"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Set number and names of workspaces"
-msgstr "Počet virtuálnych plôch:"
+msgstr "Nastavte počet pracovných plôch"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -112,138 +108,115 @@ msgstr "Virtuálne plochy"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "  "
-msgstr ""
+msgstr "  "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "Vykreslovanie okna pri presune a zmene veľkosti"
+msgstr "<b>Vykresľovanie okna pri presune a zmene veľkosti</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "Rozloženie tlačidiel"
+msgstr "<b>Rozloženie tlačidiel</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "Akcia pri dvojkliku"
+msgstr "<b>_Akcia pri dvojkliku</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "Spôsob aktivácie okna"
+msgstr "<b>Spôsob aktivácie okna</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "Nové okno je aktívne"
+msgstr "<b>Nové okno je aktívne</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "Kliknutím zdvihnúť"
+msgstr "<b>Kliknutím zdvihnúť</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "Zdvihnúť pri aktivácii"
+msgstr "<b>Zdvihnúť pri aktivácii</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "Zarovnanie titulku"
+msgstr "<b>_Zarovnanie titulku</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "Font titulku"
+msgstr "<b>Písmo _titulku</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "Klávesové skratky okien"
+msgstr "<b>Klávesové _skratky správcu okien</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "Prichytávanie okien"
+msgstr "<b>Prichytávanie okien</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "Prechádzanie medzi plochami"
+msgstr "<b>Prechádzanie medzi plochami</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "Zarovnanie titulku"
+msgstr "<b>_Motív</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Active"
 msgstr "Aktívny"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "Pokročilé"
+msgstr "_Pokročilé"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Automatický zdvihnúť okná, keď získajú aktiváciu"
+msgstr "Po zameraní automatický _zdvihnúť okná"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
-msgstr "Automaticky aktivovať novovytvorené okná"
+msgstr "Automaticky zameriavať _novovytvorené okná"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "Kliknúť pre aktiváciu"
+msgstr "_Kliknúť pre zameranie"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
-msgstr "Klknite a ťahajte tlačidlá k zmene vzhľadu"
+msgstr "Kliknite a ťahajte tlačidlá pre zmenu rozloženia"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Close"
 msgstr "Zavrieť"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "Oneskorenie pred zdvihnutím aktivovaného okna :"
+msgstr "Oneskorenie _pred zdvihnutím zameraného okna:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
-msgstr ""
+msgstr "<i>Dlhé</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
-msgstr ""
+msgstr "<i>krátke</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "Vzdialenosť:"
+msgstr "_Vzdialenosť:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Distance|<i>Small</i>"
-msgstr "Malá"
+msgstr "<i>Malá</>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
 msgid "Distance|<i>Wide</i>"
-msgstr "Veľká"
+msgstr "<i>Veľká</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "Okno pod myšou je aktívne"
+msgstr "Zamerať _umiestnenením kurzoru myši nad okno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Hidden"
@@ -254,19 +227,16 @@ msgid "Hide"
 msgstr "Skryť"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "Zobraziť obsah v presúvaných oknách"
+msgstr "Nezobrazovať obsah obsah okna pri _presúvaní"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "Zobraziť obsah v zväčšujúcich sa oknách"
+msgstr "Nezobrazovať obsah obsah okna pri zmene _veľkosti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "Klávesnica"
+msgstr "_Klávesnica"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Maximize"
@@ -274,36 +244,31 @@ msgstr "Maximalizovať"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Menu"
-msgstr "Menu"
+msgstr "Ponuka"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr "Zdvihnúť okno, keď je kliknuté vo vnútry okna aplikácie"
+msgstr "Zdvihnúť okno, keď je kliknuté vo vnútri okna aplikácie"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Resistance|<i>Small</i>"
-msgstr "Nízka"
+msgstr "<i>Nízka</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Resistance|<i>Wide</i>"
-msgstr "Vysoká"
+msgstr "<i>Vysoká</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Zabaliť"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
-#, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "Prichytávať okná k iným oknám"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr "Prichytávať okná k okrajom obrazovky"
+msgstr "Prichytávať okná k _okrajom obrazovky"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
@@ -334,29 +299,25 @@ msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Prejsť na vedľajšiu plochu pri ukázaní kurzorom myši k okraji plochy"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "Oneskorenie pred presunutím okna do popredia"
+msgstr "_Oneskorenie pred presunutím okna do popredia:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "Odolnosť:"
+msgstr "_Odolnosť okrajov:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-#, fuzzy
 msgid "_Focus"
-msgstr "Fokus"
+msgstr "_Zameranie"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "_Obnoviť predvolené"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-#, fuzzy
 msgid "_Style"
-msgstr "Štýl"
+msgstr "Š_týl"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:251
@@ -402,11 +363,11 @@ msgstr "Ponuka možností okna"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr ""
+msgstr "Hore"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr ""
+msgstr "Dole"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
@@ -417,9 +378,8 @@ msgid "Cycle windows"
 msgstr "Prechádzať okná"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "Prechádzať okná"
+msgstr "Prechádzať okná (obrátene)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Close window"
@@ -434,14 +394,12 @@ msgid "Maximize window vertically"
 msgstr "Maximalizovať okno vertikálne"
 
 #: ../settings-dialogs/xfwm4-settings.c:249
-#, fuzzy
 msgid "Move window"
-msgstr "Posunúť okno hore"
+msgstr "Presunúť okno"
 
 #: ../settings-dialogs/xfwm4-settings.c:250
-#, fuzzy
 msgid "Resize window"
-msgstr "Zmena veľkosti smerom hore"
+msgstr "Zmeniť veľkosť okna"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Stick window"
@@ -496,64 +454,52 @@ msgid "Move window to next workspace"
 msgstr "Presunúť okno na nasledujúcu plochu"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Presunúť okno na pracovnú plochu %d"
+msgstr "Presunúť okno na pracovnú plochu 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Show desktop"
@@ -577,177 +523,149 @@ msgstr "Pravá pracovná plocha"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Previous workspace"
-msgstr "Predchádzajúca virtuálna plocha"
+msgstr "Predchádzajúca pracovná plocha"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Next workspace"
-msgstr "Nasledujúca virtuálna plocha"
+msgstr "Nasledujúca pracovná plocha"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Virtuálna plocha %d"
+msgstr "Pracovná plocha 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
 msgid "Workspace 10"
-msgstr "Virtuálna plocha %d"
+msgstr "Pracovná plocha 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
 msgid "Workspace 11"
-msgstr "Virtuálna plocha %i"
+msgstr "Pracovná plocha 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
 msgid "Workspace 12"
-msgstr "Virtuálna plocha %d"
+msgstr "Pracovná plocha 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Add workspace"
-msgstr "Pridať virtuálnu plochu"
+msgstr "Pridať pracovnú plochu"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "Pridať virtuálnu plochu"
+msgstr "Pridať priľahlú pracovnú plochu"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Odstrániť virtuálnu plochu"
+msgstr "Odstrániť poslednú pracovnú ploch"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Odstrániť virtuálnu plochu"
+msgstr "Odstrániť pracovnú plochu"
 
 #: ../settings-dialogs/xfwm4-settings.c:447
 msgid "Theme"
-msgstr ""
+msgstr "Motív"
 
 #: ../settings-dialogs/xfwm4-settings.c:596
-#, fuzzy
 msgid "Action"
-msgstr "Aktívny"
+msgstr "Akcia"
 
 #: ../settings-dialogs/xfwm4-settings.c:601
-#, fuzzy
 msgid "Shortcut"
-msgstr "Žiadna klávesová skratka"
+msgstr "Klávesová skratka"
 
 #: ../settings-dialogs/xfwm4-settings.c:954
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Nepodarilo sa inicializovať xfconf. Dôvod: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:965
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "Nedá sa vytvoriť dialógové okno nastavení."
 
 #: ../settings-dialogs/xfwm4-settings.c:1841
 #: ../settings-dialogs/xfwm4-settings.c:1842
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Obnoviť predvolené"
 
 #: ../settings-dialogs/xfwm4-settings.c:1843
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj chcete pokračovať?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-#, fuzzy
 msgid "<i>Opaque</i>"
-msgstr "Nepriehľadné"
+msgstr "<i>Nepriehľadné</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Transparent</i>"
-msgstr "Priehľadné"
+msgstr "<i>Priehľadné</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#, fuzzy
 msgid "Activate _focus stealing prevention"
-msgstr "Predchádzať strate zamerania okna"
+msgstr "Predchádzať strate _zamerania okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "V _strede obrazovky"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Predvolené umiestňovanie okien:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-#, fuzzy
 msgid "C_ompositor"
-msgstr "Kompozitor"
+msgstr "_Kompozitor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
 msgid "C_ycling"
-msgstr "Prechádzanie"
+msgstr "_Prechádzanie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "Prechádzať okná zo všetkých pracovných plôch"
+msgstr "Prechádzať okná zo _všetkých pracovných plôch"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Použiť priame zobrazovanie pre okná v režime celej obrazovky"
+msgstr "Použiť priame zobrazovanie pre okná v režime _celej obrazovky"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "Do _nothing"
-msgstr "Žiadna akcia"
+msgstr "Nerobiť _nič"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
 msgid "Hide _frame of windows when maximized"
-msgstr "Pri maximalizácii skryť okraje okna"
+msgstr "Skryť _okraje okna pri maximalizácií"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 #, fuzzy
@@ -759,68 +677,56 @@ msgid "Keep urgent windows _blinking repeatedly"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
 msgid "Key used to _grab and move windows:"
-msgstr "Klávesa pre uchopenie a presun okien"
+msgstr "Klávesa pre _uchopenie a presun okien:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "Priehľadnosť dekorácii okien"
+msgstr "Priehľadnosť _dekorácii okien:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "Priehľadnosť neaktívnych okien"
+msgstr "Priehľadnosť _neaktívnych okien:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "Priehľadnosť vyskakovacích okien"
+msgstr "Priehľadnosť _vyskakovacích okien:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "Priehľadnosť okien pri presune"
+msgstr "Priehľadnosť okien pri _presúvaní:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "Priehľadnosť okien pri zmene veľkosti"
+msgstr "Priehľadnosť okien pri zmene _veľkosti:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Pri presune obnoviť pôvodnú veľkosť pri maximalizovaných oknách"
+msgstr "Pri presune obnoviť pôvodnú _veľkosť pri maximalizovaných oknách"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
 msgid "Show shadows under _dock windows"
-msgstr "Zobraziť tiene pod dokovacími oknami"
+msgstr "Zobraziť tiene pod _dokovacími oknami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "Show shadows under _regular windows"
-msgstr "Zobraziť tiene pod bežnými oknami"
+msgstr "Zobraziť tiene pod _bežnými oknami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Show shadows under pop_up windows"
-msgstr "Zobrazovať tiene po vyskakovacími oknami"
+msgstr "Zobrazovať tiene pod _vyskakovacími oknami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Size|<i>Large</i>"
-msgstr "Veľká"
+msgstr "<i>Veľká</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
 msgid "Size|<i>Small</i>"
-msgstr "Malá"
+msgstr "<i>Malá</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 #, fuzzy
@@ -842,7 +748,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
-msgstr "Po samovolnom premiestnení okna do popredia:"
+msgstr "Po samovoľnom premiestnení okna do popredia:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 #, fuzzy
@@ -855,9 +761,8 @@ msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "Prechádzať pri dosiahnutí prvej alebo poslednej pracovnej plochy"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "_Accessibility"
-msgstr "Prístupnosť"
+msgstr "_Prístupnosť"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 #, fuzzy
@@ -884,9 +789,8 @@ msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Najmenšia veľkosť okien pre použitie šikovného umiestnenia"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "_Placement"
-msgstr "Umiestnenie"
+msgstr "_Umiestnenie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 #, fuzzy
@@ -898,55 +802,42 @@ msgstr "Preniesť okno do popredia po stlačení ľubovoľného tlačidla myši"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní skratkovými "
-"klávesami"
+msgstr "Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní skratkovými klávesami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 #, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" alebo "
-"\"vynechať v paneli úloh\""
+msgstr "Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" alebo \"vynechať v paneli úloh\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
 msgid "_Workspaces"
-msgstr "Virtuálne plochy"
+msgstr "_Pracovné plochy"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "Okraje"
+msgstr "<b>Okraje</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "Prechádzanie medzi plochami"
+msgstr "<b>Pracovné plochy</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
-msgstr "Názvy virtuálnych plôch"
+msgstr "Zmeniť názov pracovnej plochy"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Okraje plôch sú miesta po stranách obrazovky, kam nemôžu byť umiestnené "
-"žiadne okná"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Okraje plôch sú miesta po stranách obrazovky, kam nemôžu byť umiestnené žiadne okná"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "Meno:"
+msgstr "_Názov:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "Počet virtuálnych plôch:"
+msgstr "_Počet pracovných plôch:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -964,85 +855,74 @@ msgid "Ma_ximize"
 msgstr "Ma_ximalizovať"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "Od_maximalizovať"
+msgstr "Zrušiť ma_ximalizáciu"
 
 #: ../src/menu.c:46
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "Ma_ximalizovať"
+msgstr "Mi_nimalizovať"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Minimalizovať _všetky ostatné okná"
 
 #: ../src/menu.c:48
 msgid "S_how"
-msgstr "_Ukázať"
+msgstr "_Zobraziť"
 
 #: ../src/menu.c:49
 msgid "_Move"
-msgstr ""
+msgstr "_Presunúť"
 
 #: ../src/menu.c:50
 msgid "_Resize"
-msgstr ""
+msgstr "Zmeniť _veľkosť"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
 msgstr "Vždy navrchu"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Prichytávať okná k iným oknám"
+msgstr "Rovnako ako ostatné okná"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Vždy pod ostatnými oknami"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Vyplniť okno"
+msgstr "Zrolovať okno"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Posunúť okno dole"
+msgstr "Odrolovať okno"
 
 #: ../src/menu.c:57
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Prepnúť na celú obrazovku"
+msgstr "_Celá obrazovka"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "Prepnúť na celú obrazovku"
+msgstr "Opustiť režim _celej obrazovky"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
 msgstr "Kontextový _pomocník"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "Vždy navrchu"
+msgstr "Vždy na viditeľnej pracovnej ploche"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Iba na tejto pracovnej ploche"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Presunúť okno na nasledujúcu plochu"
+msgstr "Presunúť okno na inú pracovnú plochu"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1056,7 +936,7 @@ msgstr "Odstrániť"
 
 #: ../src/menu.c:71
 msgid "_Quit"
-msgstr "U_končiť"
+msgstr "_Ukončiť"
 
 #: ../src/menu.c:72
 msgid "Restart"
@@ -1112,19 +992,14 @@ msgstr ""
 #, fuzzy
 #~ msgid "gtk-save"
 #~ msgstr "Zrušiť"
-
 #~ msgid "Workspace Margins"
 #~ msgstr "Okraje virtuálnej plochy"
-
 #~ msgid "Left :"
 #~ msgstr "Vľavo :"
-
 #~ msgid "Right :"
 #~ msgstr "Vpravo :"
-
 #~ msgid "Top :"
 #~ msgstr "Hore :"
-
 #~ msgid "Bottom :"
 #~ msgstr "Dole :"
 
@@ -1139,10 +1014,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "Žiadna akcia"
-
 #~ msgid "Place window under the mouse"
 #~ msgstr "Umiestniť okno pod ukazovateľ myši"
-
 #~ msgid "Place window in the center"
 #~ msgstr "Umiestniť okno do stredu"
 
@@ -1200,7 +1073,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Prístupnosť"
-
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Prepínať plochy pomocou kolečka myši nad plochou"
 
@@ -1231,7 +1103,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Veľká"
-
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Východzie nastavenie pozície okien bez šikovného umiestnenia:"
 
@@ -1290,22 +1161,18 @@ msgstr ""
 #, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Kompozitor"
-
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr ""
 #~ "Pokročilé nastavenia\n"
 #~ "správcu okien"
-
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "Tieto nastavenia nebudú pracovať so súčasným správcom okien (%s)"
-
 #~ msgid "Change name"
 #~ msgstr "Zmeniť meno"
 
 #, fuzzy
 #~ msgid "Name:"
 #~ msgstr "Meno:"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "K zmene názvu virtuálnej plochy kliknite na jej meno"
 
@@ -1316,39 +1183,30 @@ msgstr ""
 #, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "Názvy virtuálnych plôch"
-
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Pracovné plochy a okraje"
-
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Pracovné plochy a okraje"
 
 #, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Okraje"
-
 #~ msgid "Window Manager Settings"
 #~ msgstr "Nastavenia správcu okien"
-
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "Nastavenia správcu okien prostredia Xfce 4"
-
 #~ msgid "Advanced Configuration"
 #~ msgstr "Pokročilé nastavenie"
-
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "Podrobné nastavenie správcu okien Xfce 4"
-
 #~ msgid "Workspaces Settings"
 #~ msgstr "Nastavenie virtuálnych plôch"
-
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Nastavenie virtuálnych plôch prostredia Xfce 4"
 
 #, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Klknite a ťahajte tlačidlá k zmene vzhľadu"
-
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Dialóg pre výber písma"
 
@@ -1359,7 +1217,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Zarovnanie titulku"
-
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Zarovnanie textu v nadpise okna"
 
@@ -1398,10 +1255,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Oneskorenie pred presunutím okna do popredia"
-
 #~ msgid "Slow"
 #~ msgstr "Pomaly"
-
 #~ msgid "Fast"
 #~ msgstr "Rýchlo"
 
@@ -1506,40 +1361,32 @@ msgstr ""
 #, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Pokročilé"
-
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Správca okien"
-
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "Chcete naozaj odstrániť toto nastavenie klávesových skratiek ?"
-
 #~ msgid "Add keybinding theme"
 #~ msgstr "Pridať nastavenie klávesových skratiek"
 
 #, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Vložte názov nastavenia klávesových skratiek"
-
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Už existuje nastavenie skratkových kláves s rovnakým názvom"
-
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Vložte iný názov pre nastavenie klávesových skratiek"
 
 #, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Presunúť okno na pracovnú plochu %d"
-
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Nemôžem otvoriť priečinok s témami !"
-
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "Nemôžem otvoriť %s : \n"
 #~ "%s"
-
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
@@ -1554,10 +1401,8 @@ msgstr ""
 #~ msgstr ""
 #~ "Skratka sa už používa!\n"
 #~ "Ste si istý, že ju chcete použiť?"
-
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Vložte skratkovú klávesu pre:"
-
 #~ msgid "Compose shortcut"
 #~ msgstr "Vložiť skratkovú klávesu"
 
@@ -1618,17 +1463,14 @@ msgstr ""
 #, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "Ma_ximalizovať"
-
 #~ msgid "Hide _all others"
 #~ msgstr "Skryť _všetky ostatné"
-
 #~ msgid "_Shade"
 #~ msgstr "_Zabaliť"
 
 #, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "_Rozbaliť"
-
 #~ msgid "S_tick"
 #~ msgstr "_Prilepiť"
 
@@ -1639,10 +1481,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Below"
 #~ msgstr "Pomaly"
-
 #~ msgid "Send to..."
 #~ msgstr "Poslať do..."
-
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Virtuálna plocha %i (%s)"
 
@@ -1657,27 +1497,20 @@ msgstr ""
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Skratka"
-
 #~ msgid "Move window left"
 #~ msgstr "Posunúť okno vľavo"
-
 #~ msgid "Move window right"
 #~ msgstr "Posunúť okno vpravo"
-
 #~ msgid "Resize window down"
 #~ msgstr "Zmena veľkosti smerom dole"
-
 #~ msgid "Resize window left"
 #~ msgstr "Zmena veľkosti smerom vľavo"
-
 #~ msgid "Resize window right"
 #~ msgstr "Zmena veľkosti smerom vpravo"
-
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Zrušiť presun alebo zmenu veľkosti okna"
-
 #~ msgid "_Hide"
 #~ msgstr "_Skryť"
-
 #~ msgid "Unknown application!"
 #~ msgstr "Neznáma aplikácia!"
+
