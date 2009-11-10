@@ -2293,7 +2293,7 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
                 status = handleXSyncAlarmNotify (display_info, (XSyncAlarmNotifyEvent *) ev);
             }
 #endif /* HAVE_XSYNC */
-             break;
+            break;
     }
     if (!gdk_events_pending () && !XPending (display_info->dpy))
     {
