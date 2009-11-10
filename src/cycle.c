@@ -187,16 +187,17 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     switch (xevent->type)
     {
         case DestroyNotify:
+            status = EVENT_FILTER_CONTINUE;
             if ((removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
                 break; /* No need to go any further */
             gone |= (c == removed);
             /* Walk through */
         case UnmapNotify:
+            status = EVENT_FILTER_CONTINUE;
             if (!removed && (removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
                 break; /* No need to go any further */
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
-            status = EVENT_FILTER_CONTINUE;
             /* Walk through */
         case KeyPress:
             key_pressed = (xevent->type == KeyPress);
