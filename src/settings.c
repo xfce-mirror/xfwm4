@@ -1348,8 +1348,15 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
 static void
 cb_keys_changed (GdkKeymap *keymap, ScreenInfo *screen_info)
 {
+    /* Recompute modifiers mask in case it changed */
     initModifiers (myScreenGetXDisplay (screen_info));
-    reloadSettings (screen_info->display_info, UPDATE_BUTTON_GRABS);
+
+    /* Ungrab/regrab shortcuts */
+    myScreenUngrabKeys (screen_info);
+    myScreenGrabKeys (screen_info);
+
+    /* Uupdate all grabs for mouse buttons */
+    clientUpdateAllFrames (screen_info, UPDATE_BUTTON_GRABS);
 }
 
 static void
