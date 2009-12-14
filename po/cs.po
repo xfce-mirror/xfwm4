@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 02:17+0100\n"
+"POT-Creation-Date: 2009-12-15 00:34+0100\n"
 "PO-Revision-Date: 2009-02-01 02:01+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -30,35 +30,35 @@ msgstr ""
 msgid "Warning"
 msgstr "Varování"
 
-#: ../settings-dialogs/tweaks-settings.c:43
+#: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
 msgstr "Nic"
 
-#: ../settings-dialogs/tweaks-settings.c:415
+#: ../settings-dialogs/tweaks-settings.c:422
 msgid "Session manager socket"
 msgstr "Soket správce relace"
 
-#: ../settings-dialogs/tweaks-settings.c:415
+#: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:361
-#: ../settings-dialogs/xfwm4-settings.c:308
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:416
+#: ../settings-dialogs/tweaks-settings.c:423
 #: ../settings-dialogs/workspace-settings.c:362
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "Informace o verzi"
 
-#: ../settings-dialogs/tweaks-settings.c:433
+#: ../settings-dialogs/tweaks-settings.c:441
 #: ../settings-dialogs/workspace-settings.c:379
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/tweaks-settings.c:445
 #: ../settings-dialogs/workspace-settings.c:383
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -78,7 +78,7 @@ msgid "Workspace Name"
 msgstr "Název pracovní plochy"
 
 #: ../settings-dialogs/workspace-settings.c:361
-#: ../settings-dialogs/xfwm4-settings.c:308
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "Soket správce nastavení"
 
@@ -321,309 +321,323 @@ msgstr "_Obnovit výchozí"
 msgid "_Style"
 msgstr "_Styl"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:251
+#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Shade window"
 msgstr "Zarolovat okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Hide window"
 msgstr "Skrýt okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:247
+#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Maximize window"
 msgstr "Maximalizovat okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:255
+#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "Vyplnit okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Nothing"
 msgstr "Nic"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
+#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Left"
 msgstr "Vlevo"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Center"
 msgstr "Vystředit"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Right"
 msgstr "Vpravo"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Window operations menu"
 msgstr "Nabídka možností okna"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Up"
 msgstr "Nahoru"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Down"
 msgstr "Dolů"
 
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows"
 msgstr "Procházet okna"
 
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Cycle windows (Reverse)"
 msgstr "Procházet okna (v opačném směru)"
 
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:245
+#, fuzzy
+msgid "Switch window for same application"
+msgstr "Přepnout se na pracovní plochu okna"
+
+#: ../settings-dialogs/xfwm4-settings.c:246
+#, fuzzy
+msgid "Switch application"
+msgstr "Neznámá aplikace!"
+
+#: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
 msgstr "Zavřít okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:245
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window horizontally"
 msgstr "Maximalizovat okno ve vodorovném směru"
 
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window vertically"
 msgstr "Maximalizovat okno ve svislém směru"
 
-#: ../settings-dialogs/xfwm4-settings.c:249
+#: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Move window"
 msgstr "Přesunout okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Resize window"
 msgstr "Změnit velikost okna"
 
-#: ../settings-dialogs/xfwm4-settings.c:252
+#: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Stick window"
 msgstr "Přilepit okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:253
+#: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Raise window"
 msgstr "Přenést okno do popředí"
 
-#: ../settings-dialogs/xfwm4-settings.c:254
+#: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Lower window"
 msgstr "Přenést okno do pozadí"
 
-#: ../settings-dialogs/xfwm4-settings.c:256
+#: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
 msgstr "Vyplnit okno ve vodorovném směru"
 
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
 msgstr "Vyplnit okno ve svislém směru"
 
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
 msgstr "Přepnout nahoru"
 
-#: ../settings-dialogs/xfwm4-settings.c:259
+#: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
 msgstr "Přepnout do režimu celé obrazovky"
 
-#: ../settings-dialogs/xfwm4-settings.c:260
+#: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
 msgstr "Přesunout okno na vrchní pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to bottom workspace"
 msgstr "Přesunout okno na spodní pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
 msgstr "Přesunout okno na levou pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
 msgstr "Přesunout okno na pravou pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
 msgstr "Přesunout okno na předchozí pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
 msgstr "Přesunout okno na další pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 1"
 msgstr "Přesunout okno na pracovní plochu 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 2"
 msgstr "Přesunout okno na pracovní plochu 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 3"
 msgstr "Přesunout okno na pracovní plochu 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:269
+#: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 4"
 msgstr "Přesunout okno na pracovní plochu 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:270
+#: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 5"
 msgstr "Přesunout okno na pracovní plochu 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:271
+#: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 6"
 msgstr "Přesunout okno na pracovní plochu 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:272
+#: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 7"
 msgstr "Přesunout okno na pracovní plochu 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:273
+#: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 8"
 msgstr "Přesunout okno na pracovní plochu 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:274
+#: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 9"
 msgstr "Přesunout okno na pracovní plochu 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:275
+#: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 10"
 msgstr "Přesunout okno na pracovní plochu 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:276
+#: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Move window to workspace 11"
 msgstr "Přesunout okno na pracovní plochu 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:277
+#: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Move window to workspace 12"
 msgstr "Přesunout okno na pracovní plochu 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:278
+#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Show desktop"
 msgstr "Zobrazit pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:279
+#: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Upper workspace"
 msgstr "Vrchní pracovní plocha"
 
-#: ../settings-dialogs/xfwm4-settings.c:280
+#: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Bottom workspace"
 msgstr "Spodní pracovní plocha"
 
-#: ../settings-dialogs/xfwm4-settings.c:281
+#: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Left workspace"
 msgstr "Levá pracovní plocha"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Right workspace"
 msgstr "Pravá pracovní plocha"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Previous workspace"
 msgstr "Předchozí pracovní plocha"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Next workspace"
 msgstr "Další pracovní plocha"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 1"
 msgstr "Pracovní plocha 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 2"
 msgstr "Pracovní plocha 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 3"
 msgstr "Pracovní plocha 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 4"
 msgstr "Pracovní plocha 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 5"
 msgstr "Pracovní plocha 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 6"
 msgstr "Pracovní plocha 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 7"
 msgstr "Pracovní plocha 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 8"
 msgstr "Pracovní plocha 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 9"
 msgstr "Pracovní plocha 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 10"
 msgstr "Pracovní plocha 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 11"
 msgstr "Pracovní plocha 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 12"
 msgstr "Pracovní plocha 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
 msgstr "Přidat pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Add adjacent workspace"
 msgstr "Přidat sousední pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete last workspace"
 msgstr "Smazat poslední pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Delete active workspace"
 msgstr "Smazat aktivní pracovní plochu"
 
-#: ../settings-dialogs/xfwm4-settings.c:447
+#: ../settings-dialogs/xfwm4-settings.c:451
 msgid "Theme"
 msgstr "Motiv"
 
-#: ../settings-dialogs/xfwm4-settings.c:596
+#: ../settings-dialogs/xfwm4-settings.c:600
 msgid "Action"
 msgstr "Akce"
 
-#: ../settings-dialogs/xfwm4-settings.c:601
+#: ../settings-dialogs/xfwm4-settings.c:605
 msgid "Shortcut"
 msgstr "Klávesová zkratka"
 
-#: ../settings-dialogs/xfwm4-settings.c:954
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Inicializace aplikace xfconf se nezdařila. Důvod: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:965
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Nelze vytvořit dialogové okno nastavení."
 
-#: ../settings-dialogs/xfwm4-settings.c:1841
-#: ../settings-dialogs/xfwm4-settings.c:1842
+#: ../settings-dialogs/xfwm4-settings.c:1858
+#: ../settings-dialogs/xfwm4-settings.c:1859
 msgid "Reset to Defaults"
 msgstr "Obnovit výchozí"
 
-#: ../settings-dialogs/xfwm4-settings.c:1843
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty. Chcete pokračovat?"
+#: ../settings-dialogs/xfwm4-settings.c:1860
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty. Chcete "
+"pokračovat?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -822,8 +836,11 @@ msgid "Change workspace name"
 msgstr "Změnit název pracovní plochy"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Okraje ploch jsou místa po stranách obrazovky, kam nemohou být umístěna žádná okna"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Okraje ploch jsou místa po stranách obrazovky, kam nemohou být umístěna "
+"žádná okna"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -961,12 +978,12 @@ msgstr "%s: Nelze zpracovat barvu %s\n"
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Nelze zpracovat barvu: Hodnota GValue pro barvu není typu ŘETĚZEC"
 
-#: ../src/terminate.c:74
+#: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr "Chyba při čtení dat z procesu potomka: %s\n"
 
-#: ../src/terminate.c:122
+#: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Nelze otevřít dialogové okno helper-dialog: %s\n"
@@ -974,351 +991,507 @@ msgstr "Nelze otevřít dialogové okno helper-dialog: %s\n"
 #, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Správce oken"
+
 #~ msgid "gtk-clear"
 #~ msgstr "gtk-clear"
+
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
+
 #~ msgid "gtk-help"
 #~ msgstr "gtk-help"
+
 #~ msgid "gtk-cancel"
 #~ msgstr "gtk-cancel"
+
 #~ msgid "gtk-save"
 #~ msgstr "gtk-save"
+
 #~ msgid "Workspace Margins"
 #~ msgstr "Okraje ploch"
+
 #~ msgid "Left :"
 #~ msgstr "Vlevo:"
+
 #~ msgid "Right :"
 #~ msgstr "Vpravo:"
+
 #~ msgid "Top :"
 #~ msgstr "Nahoře:"
+
 #~ msgid "Bottom :"
 #~ msgstr "Dole:"
+
 #~ msgid "Bring window on current workspace"
 #~ msgstr "Přesunout okno na aktuální pracovní plochu"
-#~ msgid "Switch to window's workspace"
-#~ msgstr "Přepnout se na pracovní plochu okna"
+
 #~ msgid "Do nothing"
 #~ msgstr "Žádná akce"
+
 #~ msgid "Place window under the mouse"
 #~ msgstr "Umístit okna pod ukazatel myši"
+
 #~ msgid "Place window in the center"
 #~ msgstr "Umístit okno do středu"
+
 #~ msgid ""
 #~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr ""
 #~ "Přeskočit okna s nastavenou vlastností\n"
 #~ "\"vynechat v přepínači ploch\" nebo \"vynechat v panelu úloh\""
+
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Zahrnout skrytá (minimalizovaná) okna"
+
 #~ msgid "Cycle through windows from all workspaces"
 #~ msgstr "Procházet okna ze všech pracovních ploch"
+
 #~ msgid "Cycling"
 #~ msgstr "Procházení"
+
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "Předejít ztrátě zaměření okna"
+
 #~ msgid "Honor the standard ICCCM focus hint"
 #~ msgstr "Dodržovat standardní ICCCM focus hint"
+
 #~ msgid "Focus"
 #~ msgstr "Zaměření"
+
 #~ msgid "Key used to grab and move windows"
 #~ msgstr "Klávesa pro uchopení a přesun oken"
+
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "Přenést okno do popředí po stisknutí libovolného tlačítka myši"
+
 #~ msgid "Hide frame of windows when maximized"
 #~ msgstr "Při maximalizaci skrýt okraje okna"
+
 #~ msgid "Restore original size of maximized windows when moving"
 #~ msgstr "Při přesunu obnovit původní velikost u maximalizovaných oken"
+
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "Použít odolnost okrajů namísto přichytávání oken"
+
 #~ msgid "Accessibility"
 #~ msgstr "Přístupnost"
+
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Přepínat plochy pomocí kolečka myši nad plochou"
+
 #~ msgid ""
 #~ "Remember and recall previous workspace when switching via keyboard "
 #~ "shortcuts"
 #~ msgstr ""
 #~ "Zapamatovat si a znovu vyvolat předchozí plochu\n"
 #~ "při přepínání klávesovými zkratkami"
+
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr "Přecházet na plochy podle jejich aktuálního rozmístění"
+
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "Přecházet při dosažení první nebo poslední pracovní plochy"
+
 #~ msgid "Minimum size of windows to trigger smart placement"
 #~ msgstr "Nejmenší velikost oken pro použití chytrého umístění"
+
 #~ msgid "Size|Small"
 #~ msgstr "Malá"
+
 #~ msgid "Size|Large"
 #~ msgstr "Velká"
+
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Výchozí nastavení pozice oken bez chytrého umístění:"
+
 #~ msgid "Placement"
 #~ msgstr "Umisťování"
+
 #~ msgid "Enable display compositing"
 #~ msgstr "Používat kompozitor"
+
 #~ msgid "Display full screen overlay windows directly"
 #~ msgstr "Použít přímé zobrazování pro okna v režimu celá obrazovka"
+
 #~ msgid "Show shadows under dock windows"
 #~ msgstr "Zobrazovat stíny pod dokovacími okny"
+
 #~ msgid "Show shadows under regular windows"
 #~ msgstr "Zobrazovat stíny pod běžnými okny"
+
 #~ msgid "Show shadows under popup windows"
 #~ msgstr "Zobrazovat stíny pod vyskakovacími okny"
+
 #~ msgid "Opacity of window decorations"
 #~ msgstr "Průhlednost dekorací oken"
+
 #~ msgid "Transparent"
 #~ msgstr "Průhledné"
+
 #~ msgid "Opaque"
 #~ msgstr "Neprůhledné"
+
 #~ msgid "Opacity of inactive windows"
 #~ msgstr "Průhlednost neaktivních oken"
+
 #~ msgid "Opacity of windows during move"
 #~ msgstr "Průhlednost oken při přesunu"
+
 #~ msgid "Opacity of windows during resize"
 #~ msgstr "Průhlednost oken při změně velikosti"
+
 #~ msgid "Opacity of popup windows"
 #~ msgstr "Průhlednost vyskakovacích oken"
+
 #~ msgid "Compositor"
 #~ msgstr "Kompozitor"
+
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr ""
 #~ "Pokročilá nastavení\n"
 #~ "správce oken"
+
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "Tato nastavení nebudou pracovat se současným správcem oken (%s)"
+
 #~ msgid "Change name"
 #~ msgstr "Změna názvu"
+
 #~ msgid "Name:"
 #~ msgstr "Název:"
+
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Název pracovní plochy upravíte kliknutím na něj"
+
 #~ msgid "Number of workspaces:"
 #~ msgstr "Počet pracovních ploch:"
+
 #~ msgid "Workspace names"
 #~ msgstr "Názvy pracovních ploch"
+
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Pracovní plochy a okraje"
+
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Pracovní plochy a okraje"
+
 #~ msgid "Margins"
 #~ msgstr "Okraje"
+
 #~ msgid "Window Manager Settings"
 #~ msgstr "Nastavení správce oken"
+
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "Nastavení správce oken prostředí Xfce 4"
+
 #~ msgid "Advanced Configuration"
 #~ msgstr "Pokročilé nastavení"
+
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "Podrobná nastavení správce oken Xfce 4"
+
 #~ msgid "Workspaces Settings"
 #~ msgstr "Nastavení virtuálních ploch"
+
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Nastavení virtuálních ploch prostředí Xfce 4"
+
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Pro změnu rozvržení přemístěte tlačítka přetažením myší"
+
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Dialogové okno pro výběr písma"
+
 #~ msgid "Title font"
 #~ msgstr "Písmo titulku"
+
 #~ msgid "Title Alignment"
 #~ msgstr "Zarovnání titulku"
+
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Zarovnání textu v titulku okna:"
+
 #~ msgid "Button layout"
 #~ msgstr "Rozmístění tlačítek"
+
 #~ msgid "Style"
 #~ msgstr "Styl"
+
 #~ msgid "Window shortcuts"
 #~ msgstr "Klávesové zkratky správce oken"
+
 #~ msgid "Command"
 #~ msgstr "Příkaz"
+
 #~ msgid "Keyboard"
 #~ msgstr "Klávesnice"
+
 #~ msgid "Focus model"
 #~ msgstr "Způsob zaměření"
+
 #~ msgid "Click to focus"
 #~ msgstr "Kliknout pro zaměření"
+
 #~ msgid "Focus follows mouse"
 #~ msgstr "Zaměřit umístěním kurzoru myši nad okno"
+
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Zpoždění před přesunutím okna do popředí"
+
 #~ msgid "Slow"
 #~ msgstr "Nízké"
+
 #~ msgid "Fast"
 #~ msgstr "Vysoké"
+
 #~ msgid "Automatically give focus to newly created windows"
 #~ msgstr "Automaticky zaměřovat nově vytvořená okna"
+
 #~ msgid "New window focus"
 #~ msgstr "Zaměřování nových oken"
+
 #~ msgid "Raise on focus"
 #~ msgstr "Přenést do popředí při zaměření"
+
 #~ msgid "Automatically raise windows when they receive focus"
 #~ msgstr "Po zaměření automaticky přenést okno do popředí"
+
 #~ msgid "Delay before raising focused window :"
 #~ msgstr "Zpoždění před přesunutím zaměřeného okna do popředí:"
+
 #~ msgid "Raise window when clicking inside application window"
 #~ msgstr "Přenést okno do popředí při kliknutí do okna aplikace"
+
 #~ msgid "Raise on click"
 #~ msgstr "Přenést do popředí při kliknutí"
+
 #~ msgid "Windows snapping"
 #~ msgstr "Přichytávání oken"
+
 #~ msgid "Snap windows to screen border"
 #~ msgstr "Přichytávat okna k okrajům obrazovky"
+
 #~ msgid "Snap windows to other windows"
 #~ msgstr "Přichytávat okna k jiným oknům"
+
 #~ msgid "Distance :"
 #~ msgstr "Přilnavost:"
+
 #~ msgid "Distance|Small"
 #~ msgstr "Malá"
+
 #~ msgid "Distance|Wide"
 #~ msgstr "Velká"
+
 #~ msgid "Wrap workspaces"
 #~ msgstr "Přecházení mezi plochami"
+
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
 #~ msgstr "Přejít na vedlejší plochu při ukázání kurzorem myši k okraji plochy"
+
 #~ msgid "Wrap workspaces when dragging a window off the screen"
 #~ msgstr "Přejít na vedlejší plochu při přetáhnutí okna mimo oblast obrazovky"
+
 #~ msgid "Edge Resistance :"
 #~ msgstr "Odolnost okrajů:"
+
 #~ msgid "Resistance|Small"
 #~ msgstr "Nízká"
+
 #~ msgid "Resistance|Wide"
 #~ msgstr "Vysoká"
+
 #~ msgid "Opaque move and resize"
 #~ msgstr "Vykreslování okna při přesunu a změně velikosti"
+
 #~ msgid "Display content of windows when resizing"
 #~ msgstr "Nezobrazovat obsah okna při změně velikosti"
+
 #~ msgid "Display content of windows when moving"
 #~ msgstr "Nezobrazovat obsah okna při přesunu"
+
 #~ msgid "Double click action"
 #~ msgstr "Akce při dvojitém kliknutí"
+
 #~ msgid "Action to perform when double clicking on title bar :"
 #~ msgstr "Akce při dvojitém kliknutí na titulkový pruh:"
+
 #~ msgid "Advanced"
 #~ msgstr "Pokročilé"
+
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Správce oken"
+
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "Chcete opravdu odstranit toto nastavení klávesových zkratek?"
+
 #~ msgid "Add keybinding theme"
 #~ msgstr "Přidat nastavení klávesových zkratek"
+
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Vložte název nastavení klávesových zkratek:"
+
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Již existuje nastavení zkratkových kláves se stejným názvem"
+
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Vložte jiný název pro nastavení klávesových zkratek"
+
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Přesunout okno na pracovní plochu %d"
+
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Nelze otevřít adresář s motivy!"
+
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "Nelze otevřít %s: \n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "Nelze zapisovat do %s: \n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
 #~ msgstr ""
 #~ "Klávesová zkratka se již používá!\n"
 #~ "Opravdu ji chcete použít?"
+
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Vložte klávesovou zkratku pro:"
+
 #~ msgid "Compose shortcut"
 #~ msgstr "Vložit klávesovou zkratku"
+
 #~ msgid "No shortcut"
 #~ msgstr "Bez klávesové zkratky"
+
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "Změnit název pracovní plochy %d"
+
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Pokročilá nastavení správce oken"
+
 #~ msgid ""
 #~ "This shortcut is already being used by <b>another window manager action</"
 #~ "b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Tuto klávesovou zkratku již používá akce <b>jiná akce správce oken</b>. "
 #~ "Kterou akci chcete používat?"
+
 #~ msgid "Use %s"
 #~ msgstr "Použít %s"
+
 #~ msgid "Keep the other one"
 #~ msgstr "Zachovat jiný"
+
 #~ msgid "Keep %s"
 #~ msgstr "Zachovat %s"
+
 #~ msgid ""
 #~ "The shortcut is already being used by a <b>window manager action</b>. "
 #~ "Which action do you want to use?"
 #~ msgstr ""
 #~ "Klávesová zkratka se již používá pro <b>akci správce oken</b>. Kterou "
 #~ "akci chcete používat?"
+
 #~ msgid "Keep the window manager action"
 #~ msgstr "Zachovat akci správce oken"
+
 #~ msgid "Conflicting actions for %s"
 #~ msgstr "Akce %s v konfliktu"
+
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr "Tato klávesová zkratka se již používá pro jinou akci."
+
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "Zadejte klávesovou zkratku pro akci správce oken"
+
 #~ msgid "Action: %s"
 #~ msgstr "Akce: %s"
+
 #~ msgid "Enter command shortcut"
 #~ msgstr "Vložte klávesovou zkratku pro akci"
+
 #~ msgid "Enter shortcut"
 #~ msgstr "Zadejte klávesovou zkratku"
+
 #~ msgid "Shortcut:"
 #~ msgstr "Klávesová zkratka:"
+
 #~ msgid "Could not grab the keyboard."
 #~ msgstr "Nelze zachytávat výstup z klávesnice."
+
 #~ msgid "<span size='large'><b>%s</b></span>"
 #~ msgstr "<span size='large'><b>%s</b></span>"
+
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "_Obnovit"
+
 #~ msgid "Hide _all others"
 #~ msgstr "S_krýt ostatní"
+
 #~ msgid "_Shade"
 #~ msgstr "Za_rolovat"
+
 #~ msgid "(Un)_Shade"
 #~ msgstr "O_drolovat"
+
 #~ msgid "S_tick"
 #~ msgstr "Při_lepit"
+
 #~ msgid "(Un)S_tick"
 #~ msgstr "Od_lepit"
+
 #~ msgid "Above"
 #~ msgstr "Nahoru"
+
 #~ msgid "Normal"
 #~ msgstr "Běžný"
+
 #~ msgid "Below"
 #~ msgstr "Dolů"
+
 #~ msgid "(Un)_Fullscreen"
 #~ msgstr "Vypnout režim _celé obrazovky"
+
 #~ msgid "Send to..."
 #~ msgstr "Poslat na..."
+
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Pracovní plocha %i (%s)"
+
 #~ msgid "Use this action"
 #~ msgstr "Použít tuto akci"
+
 #~ msgid "gtk-revert-to-saved"
 #~ msgstr "gtk-revert-to-saved"
+
 #~ msgid "gtk-select-all"
 #~ msgstr "gtk-select-all"
+
 #~ msgid "%s shortcut conflict"
 #~ msgstr "Konflikt klávesových zkratek %s "
+
 #~ msgid "Shortcut conflict"
 #~ msgstr "Konflikt klávesových zkratek"
+
 #~ msgid "Alt"
 #~ msgstr "Alt"
+
 #~ msgid "Ctrl"
 #~ msgstr "Ctrl"
+
 #~ msgid "\t"
 #~ msgstr "\t"
+
 #~ msgid "<i>Wide</i>"
 #~ msgstr "<i>Široká</i>"
 
@@ -1329,20 +1502,24 @@ msgstr "Nelze otevřít dialogové okno helper-dialog: %s\n"
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Klávesová zkratka"
+
 #~ msgid "Move window left"
 #~ msgstr "Posunout okno doleva"
+
 #~ msgid "Move window right"
 #~ msgstr "Posunout okno doprava"
+
 #~ msgid "Resize window down"
 #~ msgstr "Změna velikosti okna směrem dolů"
+
 #~ msgid "Resize window left"
 #~ msgstr "Změna velikosti okna směrem doleva"
+
 #~ msgid "Resize window right"
 #~ msgstr "Změna velikosti okna směrem doprava"
+
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Zrušit přesun nebo změnu velikosti okna"
+
 #~ msgid "_Hide"
 #~ msgstr "_Skrýt"
-#~ msgid "Unknown application!"
-#~ msgstr "Neznámá aplikace!"
-

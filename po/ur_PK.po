@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 02:17+0100\n"
+"POT-Creation-Date: 2009-12-15 00:34+0100\n"
 "PO-Revision-Date: 2009-05-14 02:34+0500\n"
 "Last-Translator: Muhammad Ali Makki <makki.ma@gmail.com>\n"
 "Language-Team: urdu <makki.ma@gmail.com>\n"
@@ -32,35 +32,35 @@ msgstr ""
 msgid "Warning"
 msgstr "انتباہ"
 
-#: ../settings-dialogs/tweaks-settings.c:43
+#: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
 msgstr "کچھ نہیں"
 
-#: ../settings-dialogs/tweaks-settings.c:415
+#: ../settings-dialogs/tweaks-settings.c:422
 msgid "Session manager socket"
 msgstr "ترتیبات منیجر ساکٹ"
 
-#: ../settings-dialogs/tweaks-settings.c:415
+#: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:361
-#: ../settings-dialogs/xfwm4-settings.c:308
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "ساکٹ آئی ڈی"
 
-#: ../settings-dialogs/tweaks-settings.c:416
+#: ../settings-dialogs/tweaks-settings.c:423
 #: ../settings-dialogs/workspace-settings.c:362
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "ورژن معلومات"
 
-#: ../settings-dialogs/tweaks-settings.c:433
+#: ../settings-dialogs/tweaks-settings.c:441
 #: ../settings-dialogs/workspace-settings.c:379
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/tweaks-settings.c:445
 #: ../settings-dialogs/workspace-settings.c:383
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -80,7 +80,7 @@ msgid "Workspace Name"
 msgstr "مقام کار کا نام"
 
 #: ../settings-dialogs/workspace-settings.c:361
-#: ../settings-dialogs/xfwm4-settings.c:308
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "ترتیبات منیجر ساکٹ"
 
@@ -323,309 +323,322 @@ msgstr "طے شدہ پر _بحال کریں"
 msgid "_Style"
 msgstr "_انداز"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:251
+#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Shade window"
 msgstr "ونڈو شیڈ"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Hide window"
 msgstr "ونڈو چھپائیں"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:247
+#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Maximize window"
 msgstr "ونڈو بڑی کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:255
+#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "ونڈو بھریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Nothing"
 msgstr "کچھ نہیں"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
+#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Left"
 msgstr "بائیں"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Center"
 msgstr "درمیان"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Right"
 msgstr "دائیں"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Window operations menu"
 msgstr "ونڈو آپریشن مینیو"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Up"
 msgstr "اوپر"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Down"
 msgstr "نیچے"
 
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cancel"
 msgstr "مسترد"
 
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows"
 msgstr "ونڈوز سائکل"
 
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Cycle windows (Reverse)"
 msgstr "ونڈوز چکر (عکسی)"
 
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:245
+#, fuzzy
+msgid "Switch window for same application"
+msgstr "ونڈو_ز مقام کار پر منتقل ہوں"
+
+#: ../settings-dialogs/xfwm4-settings.c:246
+msgid "Switch application"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
 msgstr "ونڈو بند کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:245
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window horizontally"
 msgstr "ونڈو افقی طور پر بڑی کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window vertically"
 msgstr "ونڈو عمودی طور پر بڑی کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:249
+#: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Move window"
 msgstr "ونڈو منتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Resize window"
 msgstr "ونڈو ری سائز کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:252
+#: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Stick window"
 msgstr "ونڈو چسپاں کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:253
+#: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Raise window"
 msgstr "بڑی ونڈو"
 
-#: ../settings-dialogs/xfwm4-settings.c:254
+#: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Lower window"
 msgstr "چھوٹی ونڈو"
 
-#: ../settings-dialogs/xfwm4-settings.c:256
+#: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
 msgstr "ونڈو افقی طور پر بھریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
 msgstr "ونڈو عمودی طور پر بھریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
 msgstr "اوپر منعکس کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:259
+#: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
 msgstr "فل سکرین منعکس کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:260
+#: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
 msgstr "ونڈو اوپری مقام کار میں منتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to bottom workspace"
 msgstr "ونڈو نچلے مقام کار میں منتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
 msgstr "ونڈو بائیں مقام کار میں منتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
 msgstr "ونڈو دائیں مقام کار میں منتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
 msgstr "ونڈو سابقہ مقام کار میں منتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
 msgstr "ونڈو اگلے مقام کار میں منتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 1"
 msgstr "ونڈو مقام کار 1 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 2"
 msgstr "ونڈو مقام کار 2 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 3"
 msgstr "ونڈو مقام کار 3 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:269
+#: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 4"
 msgstr "ونڈو مقام کار 4 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:270
+#: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 5"
 msgstr "ونڈو مقام کار 5 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:271
+#: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 6"
 msgstr "ونڈو مقام کار 6 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:272
+#: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 7"
 msgstr "ونڈو مقام کار 7 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:273
+#: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 8"
 msgstr "ونڈو مقام کار 8 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:274
+#: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 9"
 msgstr "ونڈو مقام کار 9 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:275
+#: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 10"
 msgstr "ونڈو مقام کار 10 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:276
+#: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Move window to workspace 11"
 msgstr "ونڈو مقام کار 11 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:277
+#: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Move window to workspace 12"
 msgstr "ونڈو مقام کار 12 پرمنتقل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:278
+#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Show desktop"
 msgstr "ڈیسک ٹاپ ظاہر کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:279
+#: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Upper workspace"
 msgstr "اوپری مقام کار"
 
-#: ../settings-dialogs/xfwm4-settings.c:280
+#: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Bottom workspace"
 msgstr "نچلا مقام کار"
 
-#: ../settings-dialogs/xfwm4-settings.c:281
+#: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Left workspace"
 msgstr "بائیں مقام کار"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Right workspace"
 msgstr "دائیں مقام کار"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Previous workspace"
 msgstr "سابقہ مقام کار"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Next workspace"
 msgstr "اگلا مقام کار"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 1"
 msgstr "مقام کار 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 2"
 msgstr "مقام کار 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 3"
 msgstr "مقام کار 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 4"
 msgstr "مقام کار 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 5"
 msgstr "مقام کار 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 6"
 msgstr "مقام کار 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 7"
 msgstr "مقام کار 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 8"
 msgstr "مقام کار 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 9"
 msgstr "مقام کار 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 10"
 msgstr "مقام کار 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 11"
 msgstr "مقام کار 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 12"
 msgstr "مقام کار 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
 msgstr "مقام کار شامل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Add adjacent workspace"
 msgstr "نزدیکی مقام کار شامل کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete last workspace"
 msgstr "آخری مقام کار حذف کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Delete active workspace"
 msgstr "فعال مقام کار حذف کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:447
+#: ../settings-dialogs/xfwm4-settings.c:451
 msgid "Theme"
 msgstr "تھیم"
 
-#: ../settings-dialogs/xfwm4-settings.c:596
+#: ../settings-dialogs/xfwm4-settings.c:600
 msgid "Action"
 msgstr "حرکت"
 
-#: ../settings-dialogs/xfwm4-settings.c:601
+#: ../settings-dialogs/xfwm4-settings.c:605
 msgid "Shortcut"
 msgstr "شارٹ کٹ"
 
-#: ../settings-dialogs/xfwm4-settings.c:954
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf کو چلانے میں ناکامی. وجہ: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:965
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "ترتیبات ڈائیلاگ نہیں بنایا جاسکتا."
 
-#: ../settings-dialogs/xfwm4-settings.c:1841
-#: ../settings-dialogs/xfwm4-settings.c:1842
+#: ../settings-dialogs/xfwm4-settings.c:1858
+#: ../settings-dialogs/xfwm4-settings.c:1859
 msgid "Reset to Defaults"
 msgstr "طے شدہ پر بحال کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:1843
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "یہ شارٹ کٹس کو ان کی طے شدہ قدروں پر بحال کردے گا. کیا آپ واقعی ایسا کرنا چاہتے ہیں؟"
+#: ../settings-dialogs/xfwm4-settings.c:1860
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"یہ شارٹ کٹس کو ان کی طے شدہ قدروں پر بحال کردے گا. کیا آپ واقعی ایسا کرنا "
+"چاہتے ہیں؟"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -745,7 +758,8 @@ msgstr "ونڈو سنیپنگ کی بجائے _کنارہ مدافعت استع�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "مقام کاروں کے درمیان منتقلی کے لیے ڈیسک ٹاپ پر _ماؤس کا پہیہ استعمال کریں"
+msgstr ""
+"مقام کاروں کے درمیان منتقلی کے لیے ڈیسک ٹاپ پر _ماؤس کا پہیہ استعمال کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
@@ -824,7 +838,8 @@ msgid "Change workspace name"
 msgstr "مقام کار کا نام تبدیل کریں"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "مارجن سکرین کے کناروں کا علاقہ ہے جہاں کوئی ونڈو نہیں رکھی جاسکتی"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -963,136 +978,189 @@ msgstr "%s: رنگ کا تجزیہ نہیں ہوسکا %s\n"
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: رنگ بیان نہیں کیے جاسکتے: رنگوں کی جی قدر نوعیت ڈورا نہیں ہے"
 
-#: ../src/terminate.c:74
+#: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr "چائلڈ عمل کاری سے مواد پڑھنے میں غلطی: %s\n"
 
-#: ../src/terminate.c:122
+#: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "امدادی ڈائیلاگ سپاؤن نہیں کیا جاسکتا: %s\n"
 
 #~ msgid "Workspace Margins"
 #~ msgstr "مقام کار مارجن"
+
 #~ msgid "Left :"
 #~ msgstr "بائیں:"
+
 #~ msgid "Right :"
 #~ msgstr "دائیں:"
+
 #~ msgid "Top :"
 #~ msgstr "اوپر:"
+
 #~ msgid "Bottom :"
 #~ msgstr "نیچے:"
+
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "مقام کار اور مارجن"
+
 #~ msgid "Workspaces and Margins"
 #~ msgstr "مقام کار اور مارجن"
+
 #~ msgid "Place window under the mouse"
 #~ msgstr "ونڈو ماؤس کے نیچے رکھیں"
+
 #~ msgid "Place window in the center"
 #~ msgstr "ونڈو درمیان میں رکھیں"
+
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "ڈیسک ٹاپ پر ماؤس کما ویل گھمانے پر مقام کار تبدیل کریں"
+
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Default positionning of windows without smart placement:"
+
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "ونڈو منیجر کار کردگی"
+
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "یہ ترتیبات حالیہ ونڈو منیجر کے ساتھ کام نہیں کرسکتیں (%s)"
+
 #~ msgid "Change name"
 #~ msgstr "نام تبدیل کریں"
+
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "تدوین کے لیے مقام کار کے نام پر کلک کریں"
+
 #~ msgid "Font Selection Dialog"
 #~ msgstr "فونٹ انتخاب ڈائیلاگ"
+
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "عنوان کی پٹی میں متن کی ہمواری:"
+
 #~ msgid "Command"
 #~ msgstr "کمانڈ"
+
 #~ msgid "Slow"
 #~ msgstr "آہستہ"
+
 #~ msgid "Fast"
 #~ msgstr "تیز"
+
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "ونڈو منیجر"
+
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "کیا آپ واقعی یہ keybinding تھیم حذف کرنا چاہتے ہیں؟"
+
 #~ msgid "Add keybinding theme"
 #~ msgstr "keybinding تھیم شامل کریں"
+
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "تھیم کا نام لکھیں:"
+
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "اس نام کی ایک keybinding تھیم پہلے ہی موجود ہے"
+
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "لازم ہے کہ keybinding تھیم کا نام فراہم کیا جائے"
+
 #~ msgid "Move window left"
 #~ msgstr "ونڈو بائیں منتقل کریں"
+
 #~ msgid "Move window right"
 #~ msgstr "ونڈو دائیں منتقل کریں"
+
 #~ msgid "Resize window down"
 #~ msgstr "ونڈو نیچے ری سائز کریں"
+
 #~ msgid "Resize window left"
 #~ msgstr "ونڈو بائیں ری سائز کریں"
+
 #~ msgid "Resize window right"
 #~ msgstr "ونڈو دائیں ری سائز کریں"
+
 #~ msgid "Cancel move/resize window"
 #~ msgstr "ونڈو منتقل/ری سائز مسترد کریں"
+
 #~ msgid "Cancel window action"
 #~ msgstr "ونڈو حرکت مسترد کریں"
+
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "تھیم ڈائریکٹری نہیں کھولی جاسکتی !"
+
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "نہیں کھولا جاسکتا %s : \n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "%s میں نہیں لکھا جاسکتا : \n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
 #~ msgstr ""
 #~ "شارٹ کٹ پہلے ہی استعمال میں ہے !\n"
 #~ "کیا آپ واقعی اسے استعمال کرنا چاہتے ہیں؟"
+
 #~ msgid "Compose shortcut for :"
 #~ msgstr "شارٹ کٹ بنائیں برائے:"
+
 #~ msgid "Compose shortcut"
 #~ msgstr "شارٹ کٹ بنائیں"
+
 #~ msgid "No shortcut"
 #~ msgstr "بغیر شارٹ کٹ"
+
 #~ msgid "_Hide"
 #~ msgstr "چ_ھپائیں"
+
 #~ msgid "Hide _all others"
 #~ msgstr "دیگر _تمام چھپائیں"
+
 #~ msgid "_Shade"
 #~ msgstr "_سمیٹیں"
+
 #~ msgid "Un_shade"
 #~ msgstr "_پھیلائیں"
+
 #~ msgid "S_tick"
 #~ msgstr "چس_پاں"
+
 #~ msgid "Uns_tick"
 #~ msgstr "_غیر چسپاں"
+
 #~ msgid "Send to..."
 #~ msgstr "بھیجیں تا..."
+
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "مقام کار %i (%s)"
+
 #~ msgid "Workspace %i"
 #~ msgstr "مقام کار %i"
+
 #~ msgid "Window Manager Settings"
 #~ msgstr "ونڈو منیجر ترتیبات"
+
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "ایکسفس 4 ونڈو منیجر ترتیبات"
+
 #~ msgid "Advanced Configuration"
 #~ msgstr "اعلی تشکیل"
+
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "ایکسفس 4 ونڈو منیجر ٹویک"
+
 #~ msgid "Workspaces Settings"
 #~ msgstr "مقام کار ترتیبات"
+
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "ایکسفس 4 مقام کار ترتیبات"
-
