@@ -6,10 +6,10 @@
 # Per Kongstad <p_kongstad@op.pl>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm 4.5.93\n"
+"Project-Id-Version: xfwm 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-15 00:34+0100\n"
-"PO-Revision-Date: 2009-01-23 18:44+0100\n"
+"PO-Revision-Date: 2009-12-15 13:53+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -67,8 +67,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Prøv %s --help for at se en fuld liste over tilgængelige "
-"kommandolinjetilvalg.\n"
+"Prøv %s --help for at se en fuld liste over tilgængelige kommandolinjetilvalg.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -387,13 +386,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Gennemløb vinduer (omvendt)"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Skift til vin_duets arbejdsområde"
+msgstr "Skift vindue til samme program"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
-msgstr ""
+msgstr "Skift program"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
@@ -634,12 +632,8 @@ msgid "Reset to Defaults"
 msgstr "Nulstil til standarder"
 
 #: ../settings-dialogs/xfwm4-settings.c:1860
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Dette vil nulstille alle genveje til deres standardværdier. Vil du virkelig "
-"gøre dette?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Dette vil nulstille alle genveje til deres standardværdier. Vil du virkelig gøre dette?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -838,11 +832,8 @@ msgid "Change workspace name"
 msgstr "Ændr arbejdsområdenavn"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Margener er de områder i kanten af skærmbilledet, hvor vinduer ikke vil "
-"blive placeret"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Margener er de områder i kanten af skærmbilledet, hvor vinduer ikke vil blive placeret"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -989,3 +980,4 @@ msgstr "Fejl ved læsning af data fra underproces: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan ikke kalde hjælperdialog: %s\n"
+
