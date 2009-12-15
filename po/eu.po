@@ -4,20 +4,21 @@
 # This file is distributed under the same license as the xfwm4 package.
 #
 # Piarres Beobide Egaña <pi@beobide.net>, 2004, 2006, 2007, 2008.
+# Piarres Beobide <pi+debian@beobide.net>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-15 00:34+0100\n"
-"PO-Revision-Date: 2008-12-09 11:09+0100\n"
-"Last-Translator: Piarres Beobide <pi@beobide.net>\n"
-"Language-Team: Euskara <debian-l10n-basque@lists.debian.org>\n"
+"PO-Revision-Date: 2009-12-15 11:54+0100\n"
+"Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
+"Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 1.1.0\n"
+"X-Generator: Lokalize 1.0\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -386,13 +387,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Leiho ziklikoak (Alderantziz)"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Aldatu leihoaren idazmahaiera"
+msgstr "Aldatu leihoa aplikazio berarentzat"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
-msgstr ""
+msgstr "Aldatu aplikazioa"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
