@@ -3,14 +3,15 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 #
-# Carles Muñoz Gorriz <carlesmu@internautas.org> 2003-2004, 2006, 2008
-# Pau Ruŀlan Ferragut <paurullan@bulma.net> 2005-2007
+# Carles Muñoz Gorriz <carlesmu@internautas.org> 2003-2004, 2006, 2008-2009.
+# Pau Ruŀlan Ferragut <paurullan@bulma.net> 2005-2007.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-15 00:34+0100\n"
-"PO-Revision-Date: 2008-12-28 15:26+0100\n"
+"POT-Creation-Date: 2009-12-18 16:44+0000\n"
+"PO-Revision-Date: 2009-12-19 11:26+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -391,13 +392,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Cicla les finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Canvia a l'espai de treball de la finestra"
+msgstr "Canvia la finestra de la mateixa aplicació"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
-msgstr ""
+msgstr "Canvia d'aplicació"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
