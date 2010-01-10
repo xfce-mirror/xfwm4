@@ -32,7 +32,6 @@
 #include <gdk/gdkx.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 #include "inline-default-icon.h"
 #include "icons.h"
@@ -522,5 +521,5 @@ getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
         }
     }
 
-    return xfce_inline_icon_at_size (default_icon_data, width, height);
+    return NULL; /*xfce_inline_icon_at_size (default_icon_data, width, height);*/
 }

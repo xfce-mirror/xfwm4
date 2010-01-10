@@ -290,7 +290,7 @@ struct _DisplayInfo
     GdkDisplay *gdisplay;
     Display *dpy;
 
-    SessionClient *session;
+    XfceSMClient *session;
     gboolean quit;
     gboolean reload;
 

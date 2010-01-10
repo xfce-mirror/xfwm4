@@ -40,7 +40,7 @@
 
 #include <gtk/gtk.h>
 #include <glib.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include "display.h"
 #include "screen.h"
@@ -706,7 +706,7 @@ sessionMatchWinToSM (Client * c)
 }
 
 static char *
-sessionBuildFilename(SessionClient *client_session)
+sessionBuildFilename(XfceSMClient *client_session)
 {
     gchar *filename, *path, *file;
     GError *error;
@@ -722,7 +722,7 @@ sessionBuildFilename(SessionClient *client_session)
         return NULL;
     }
 
-    file = g_strdup_printf("xfwm4-%s", client_session->given_client_id);
+    file = g_strdup_printf("xfwm4-%s", xfce_sm_client_get_client_id(client_session));
     filename = g_build_filename (path, file, NULL);
     g_free (file);
     g_free (path);
@@ -733,7 +733,7 @@ sessionBuildFilename(SessionClient *client_session)
 static void
 sessionLoad (DisplayInfo *display_info)
 {
-    SessionClient *session;
+    XfceSMClient *session;
     gchar *filename;
 
     session = display_info->session;
@@ -745,11 +745,12 @@ sessionLoad (DisplayInfo *display_info)
     }
 }
 
+/*
 static void
 sessionSavePhase2 (gpointer data)
 {
     DisplayInfo *display_info;
-    SessionClient *session;
+    XfceSMClient *session;
     gchar *filename;
 
     display_info = (DisplayInfo *) data;
@@ -768,24 +769,27 @@ sessionDie (gpointer data)
     DisplayInfo *display_info;
 
     display_info = (DisplayInfo *) data;
-    client_session_set_restart_style(display_info->session, SESSION_RESTART_IF_RUNNING);
+    xfce_sm_client_set_restart_style(display_info->session, XFCE_SM_CLIENT_RESTART_NORMAL);
     display_info->quit = TRUE;
     gtk_main_quit ();
 }
+*/
 
 int
 sessionStart (int argc, char **argv, DisplayInfo *display_info)
 {
-    SessionClient *session;
+    XfceSMClient *session;
 
-    display_info->session = client_session_new (argc, argv, (gpointer) display_info,
-                                                SESSION_RESTART_IMMEDIATELY, 20);
+    display_info->session = xfce_sm_client_get_with_argv (argc, argv,
+                                                XFCE_SM_CLIENT_RESTART_IMMEDIATELY, 20);
     session = display_info->session;
+    /*
     session->data = (gpointer) display_info;
     session->save_phase_2 = sessionSavePhase2;
     session->die = sessionDie;
+    */
 
-    if (session_init (session))
+    if (xfce_sm_client_connect(session, NULL))
     {
         sessionLoad (display_info);
         return 1;

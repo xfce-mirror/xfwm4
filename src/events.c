@@ -41,6 +41,7 @@
 #include <X11/extensions/Xrandr.h>
 #endif
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include "misc.h"
 #include "workspaces.h"
@@ -418,7 +419,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 status = EVENT_FILTER_REMOVE;
                 if (display_info->session)
                 {
-                    logout_session (display_info->session);
+                    xfce_sm_client_request_shutdown(display_info->session, XFCE_SM_CLIENT_SHUTDOWN_HINT_LOGOUT);
                 }
                 break;
             default:
@@ -2308,7 +2309,7 @@ handleEvent (DisplayInfo *display_info, XEvent * ev)
              * Qutting on purpose, update session manager so
              * it does not restart the program immediately
              */
-            client_session_set_restart_style(display_info->session, SESSION_RESTART_IF_RUNNING);
+            xfce_sm_client_set_restart_style(display_info->session, XFCE_SM_CLIENT_RESTART_NORMAL);
             gtk_main_quit ();
         }
     }
