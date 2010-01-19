@@ -4,12 +4,12 @@
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003.
 # Alois Nespor <Alois.Nespor@seznam.cz>, 2004.
 # Michal Várady <miko.vaji@gmail.com>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-09 14:29+0200\n"
+"POT-Creation-Date: 2010-01-19 12:06+0100\n"
 "PO-Revision-Date: 2007-11-07 21:21+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -51,8 +51,7 @@ msgstr "Pracovní plochy a okraje"
 msgid "Workspaces and Margins"
 msgstr "Pracovní plochy a okraje"
 
-#: ../mcs-plugin/workspaces_plugin.c:162
-#: ../mcs-plugin/wmtweaks_plugin.c:522
+#: ../mcs-plugin/workspaces_plugin.c:162 ../mcs-plugin/wmtweaks_plugin.c:522
 #: ../mcs-plugin/workspaces.c:516
 msgid "Workspaces"
 msgstr "Pracovní plochy"
@@ -94,8 +93,7 @@ msgstr "Předejít ztrátě zaměření okna"
 msgid "Honor the standard ICCCM focus hint"
 msgstr "Dodržovat standardní ICCCM focus hint"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:440
-#: ../mcs-plugin/xfwm4_plugin.c:1698
+#: ../mcs-plugin/wmtweaks_plugin.c:440 ../mcs-plugin/xfwm4_plugin.c:1698
 msgid "Focus"
 msgstr "Zaměření"
 
@@ -175,18 +173,14 @@ msgstr "Zobrazovat stíny pod vyskakovacími okny"
 msgid "Opacity of window decorations"
 msgstr "Průhlednost dekorací oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:591
-#: ../mcs-plugin/wmtweaks_plugin.c:597
-#: ../mcs-plugin/wmtweaks_plugin.c:603
-#: ../mcs-plugin/wmtweaks_plugin.c:609
+#: ../mcs-plugin/wmtweaks_plugin.c:591 ../mcs-plugin/wmtweaks_plugin.c:597
+#: ../mcs-plugin/wmtweaks_plugin.c:603 ../mcs-plugin/wmtweaks_plugin.c:609
 #: ../mcs-plugin/wmtweaks_plugin.c:615
 msgid "Transparent"
 msgstr "Průhledné"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:592
-#: ../mcs-plugin/wmtweaks_plugin.c:598
-#: ../mcs-plugin/wmtweaks_plugin.c:604
-#: ../mcs-plugin/wmtweaks_plugin.c:610
+#: ../mcs-plugin/wmtweaks_plugin.c:592 ../mcs-plugin/wmtweaks_plugin.c:598
+#: ../mcs-plugin/wmtweaks_plugin.c:604 ../mcs-plugin/wmtweaks_plugin.c:610
 #: ../mcs-plugin/wmtweaks_plugin.c:616
 msgid "Opaque"
 msgstr "Neprůhledné"
@@ -218,8 +212,7 @@ msgstr ""
 "Pokročilá nastavení\n"
 "správce oken"
 
-#: ../mcs-plugin/wmtweaks_plugin.c:781
-#: ../mcs-plugin/xfwm4_plugin.c:2359
+#: ../mcs-plugin/wmtweaks_plugin.c:781 ../mcs-plugin/xfwm4_plugin.c:2359
 #, c-format
 msgid "These settings cannot work with your current window manager (%s)"
 msgstr "Tato nastavení nebudou pracovat se současným správcem oken (%s)"
@@ -228,8 +221,7 @@ msgstr "Tato nastavení nebudou pracovat se současným správcem oken (%s)"
 msgid "Change name"
 msgstr "Změna názvu"
 
-#: ../mcs-plugin/workspaces.c:338
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:482
+#: ../mcs-plugin/workspaces.c:338 ../mcs-plugin/xfwm4_shortcuteditor.c:482
 #, c-format
 msgid "Workspace %d"
 msgstr "Pracovní plocha %d"
@@ -274,18 +266,15 @@ msgstr "Maximalizovat"
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../mcs-plugin/xfwm4_plugin.c:79
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:364
+#: ../mcs-plugin/xfwm4_plugin.c:79 ../mcs-plugin/xfwm4_shortcuteditor.c:364
 msgid "Shade window"
 msgstr "Zarolovat okno"
 
-#: ../mcs-plugin/xfwm4_plugin.c:80
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:363
+#: ../mcs-plugin/xfwm4_plugin.c:80 ../mcs-plugin/xfwm4_shortcuteditor.c:363
 msgid "Hide window"
 msgstr "Skrýt okno"
 
-#: ../mcs-plugin/xfwm4_plugin.c:81
-#: ../mcs-plugin/xfwm4_shortcuteditor.c:360
+#: ../mcs-plugin/xfwm4_plugin.c:81 ../mcs-plugin/xfwm4_shortcuteditor.c:360
 msgid "Maximize window"
 msgstr "Maximalizovat okno"
 
@@ -715,92 +704,109 @@ msgstr "%s (na %s)"
 msgid "%s: Segmentation fault"
 msgstr "%s: Chyba segmentace"
 
-#: ../src/menu.c:40
+#: ../src/menu.c:41
 msgid "Ma_ximize"
 msgstr "Ma_ximalizovat"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:42
 msgid "Un_maximize"
 msgstr "_Obnovit"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:43
 msgid "_Hide"
 msgstr "_Skrýt"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:44
 msgid "Hide _all others"
 msgstr "S_krýt ostatní"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:45
 msgid "S_how"
 msgstr "_Zobrazit"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:46
 msgid "_Shade"
 msgstr "Za_rolovat"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:47
 msgid "Un_shade"
 msgstr "Vy_rolovat"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:48
 msgid "S_tick"
 msgstr "_Přilepit"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:49
 msgid "Uns_tick"
 msgstr "Od_lepit"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:50
 msgid "Context _help"
 msgstr "Kontextová _nápověda"
 
-#: ../src/menu.c:50
-#: ../src/menu.c:51
+#: ../src/menu.c:51 ../src/menu.c:52
 msgid "Always on top"
 msgstr "Vždy nahoře"
 
-#: ../src/menu.c:52
+#: ../src/menu.c:53
 msgid "Send to..."
 msgstr "Poslat na..."
 
-#: ../src/menu.c:54
+#: ../src/menu.c:55
 msgid "_Close"
 msgstr "_Zavřit"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:58
 msgid "Destroy"
 msgstr "Zničit"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:61
 msgid "_Quit"
 msgstr "_Konec"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:62
 msgid "Restart"
 msgstr "Restart"
 
-#: ../src/menu.c:169
+#: ../src/menu.c:177
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Pracovní plocha %i (%s)"
 
-#: ../src/menu.c:173
+#: ../src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Pracovní plocha %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:417
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponentě GtkMenu se nepodařilo uchopit ukazatel\n"
 
-#: ../src/settings.c:932
+#: ../src/screen.c:88
+msgid "To replace the window manager, try with \"--replace\"\n"
+msgstr ""
+"Správce oken nahradíte parametrem \"--replace\"\n"
+"\r\n"
+
+#: ../src/screen.c:102
+#, c-format
+msgid "Cannot acquire window manager selection on screen %d\n"
+msgstr ""
+"Nelze získat výběr správce oken na obrazovce %d\n"
+"\r\n"
+
+#: ../src/screen.c:123
+#, c-format
+msgid "Previous window manager on screen %d is not exiting"
+msgstr "Předchozí správce oken na obrazovce %d se neukončil"
+
+#: ../src/settings.c:921
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nelze přidělit barvu %s\n"
 
-#: ../src/settings.c:938
+#: ../src/settings.c:927
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nelze zpracovat barvu %s\n"
@@ -831,4 +837,3 @@ msgstr "Nastavení virtuálních ploch prostředí Xfce 4"
 
 #~ msgid "Unknown application!"
 #~ msgstr "Neznámá aplikace!"
-
