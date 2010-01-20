@@ -2,12 +2,12 @@
 # Copyright (C) 2002-2008 The Xfce Development Team.
 # This file is distributed under the same license as the xfwm4 package.
 # Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-15 00:34+0100\n"
+"POT-Creation-Date: 2010-01-20 18:05+0100\n"
 "PO-Revision-Date: 2008-12-16 20:30+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -381,13 +381,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Selaa ikkunoita (takaperin)"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Siirry ikkunan työtilaan"
+msgstr "Vaihda saman sovelluksen ikkunaa"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
-msgstr ""
+msgstr "Siirry toiseen sovellukseen"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
@@ -628,12 +627,8 @@ msgid "Reset to Defaults"
 msgstr "Palauta oletukset"
 
 #: ../settings-dialogs/xfwm4-settings.c:1860
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Tämä palauttaa kaikki pikanäppäimet oletusarvoihinsa. Haluatko varmasti "
-"tehdä tämän?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Tämä palauttaa kaikki pikanäppäimet oletusarvoihinsa. Haluatko varmasti tehdä tämän?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -828,10 +823,8 @@ msgid "Change workspace name"
 msgstr "Vaihda työtilan nimi"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Reunukset ovat näytön reunoilla olevat alueet, joille ikkunoita ei aseteta"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Reunukset ovat näytön reunoilla olevat alueet, joille ikkunoita ei aseteta"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -979,7 +972,6 @@ msgstr "Virhe luettaessa lapsiprosessin tietoa: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Apudialogia ei voi avata: %s\n"
 
-#, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Ikkunamanageri"
 
@@ -1028,8 +1020,7 @@ msgstr "Apudialogia ei voi avata: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Aseta ikkuna keskelle"
 
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr "Ohita työtilan vaihtajasta tai tehtäväpalkista piilotetut ikkunat"
 
 #~ msgid "Include hidden (i.e. iconified) windows"
@@ -1071,9 +1062,7 @@ msgstr "Apudialogia ei voi avata: %s\n"
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Vaihda työtilaa, kun hiiren rullaa pyöritetään työpöydän yllä"
 
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
+#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
 #~ msgstr "Muista edellinen työtila pikanäppäimillä vaihdettaessa"
 
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
@@ -1361,12 +1350,8 @@ msgstr "Apudialogia ei voi avata: %s\n"
 #~ msgid "No shortcut"
 #~ msgstr "Ei pikanäppäintä"
 
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "Pikanäppäin on jo yhdistetty <b>toiseen ikkunamanagerin toimintoon</b>. "
-#~ "Kumpaa toimintoa haluat käyttää?"
+#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
+#~ msgstr "Pikanäppäin on jo yhdistetty <b>toiseen ikkunamanagerin toimintoon</b>. Kumpaa toimintoa haluat käyttää?"
 
 #~ msgid "Use %s"
 #~ msgstr "Ota käyttöön %s"
@@ -1374,22 +1359,14 @@ msgstr "Apudialogia ei voi avata: %s\n"
 #~ msgid "Keep the other one"
 #~ msgstr "Säilytä toinen"
 
-#~ msgid ""
-#~ "The shortcut is already being used for the command <b>%s</b>. Which "
-#~ "action do you want to use?"
-#~ msgstr ""
-#~ "Pikanäppäin on jo yhdistetty komentoon <b>%s</b>. Kumpaa toimintoa haluat "
-#~ "käyttää?"
+#~ msgid "The shortcut is already being used for the command <b>%s</b>. Which action do you want to use?"
+#~ msgstr "Pikanäppäin on jo yhdistetty komentoon <b>%s</b>. Kumpaa toimintoa haluat käyttää?"
 
 #~ msgid "Keep %s"
 #~ msgstr "Säilytä %s"
 
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "Pikanäppäin on jo yhdistetty <b>ikkunamanagerin toimintoon</b>. Kumpaa "
-#~ "toimintoa haluat käyttää?"
+#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
+#~ msgstr "Pikanäppäin on jo yhdistetty <b>ikkunamanagerin toimintoon</b>. Kumpaa toimintoa haluat käyttää?"
 
 #~ msgid "Keep the window manager action"
 #~ msgstr "Säilytä ikkunamanagerin toiminto"
