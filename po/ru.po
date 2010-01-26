@@ -6,12 +6,12 @@
 # Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006.
 # Dmitriy Kudryashov <overmailed@gmail.com>, 2009.
 # Denis Koryavov <dkoryavov@yandex.ru>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-15 00:34+0100\n"
+"POT-Creation-Date: 2010-01-26 18:05+0100\n"
 "PO-Revision-Date: 2009-05-13 12:02+0400\n"
 "Last-Translator: Denis Koryavov <dkoryavov@yandex.ru>\n"
 "Language-Team: Russian\n"
@@ -392,7 +392,7 @@ msgstr "Переключится на рабочее место окна "
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
-msgstr ""
+msgstr "Переключить приложение"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
@@ -633,12 +633,8 @@ msgid "Reset to Defaults"
 msgstr "Сбросить на стандартные настройки "
 
 #: ../settings-dialogs/xfwm4-settings.c:1860
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Данное действие сбросит все значения горячих клавиш к их первоначальным "
-"значениям. Вы действительно хотите продолжить? "
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Данное действие сбросит все значения горячих клавиш к их первоначальным значениям. Вы действительно хотите продолжить? "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -758,9 +754,7 @@ msgstr "Использовать сопротивление границ окн�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
-"Переключать рабочие места с помощью прокручивания колесика мыши над рабочим "
-"столом "
+msgstr "Переключать рабочие места с помощью прокручивания колесика мыши над рабочим столом "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
@@ -810,17 +804,13 @@ msgstr "_Поднимать окна при нажатии любой клави
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Запоминать и возвращаться к предыдущему рабочему месту при переключении "
-"горячими клавишами "
+msgstr "Запоминать и возвращаться к предыдущему рабочему месту при переключении горячими клавишами "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Пропускать окна, у которых установлено свойство \"не показывать в "
-"переключателе рабочих мест\" или \"не показывать на панели задач\" "
+msgstr "Пропускать окна, у которых установлено свойство \"не показывать в переключателе рабочих мест\" или \"не показывать на панели задач\" "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Workspaces"
@@ -839,8 +829,7 @@ msgid "Change workspace name"
 msgstr "Изменить название рабочего места "
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Поля - это области экрана, где невозможно размещать окна "
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -967,9 +956,7 @@ msgstr "%s: Ошибка выделения цвета %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ошибка выделения цвета: Значение GValue для цвета должно быть строкового "
-"типа "
+msgstr "%s: Ошибка выделения цвета: Значение GValue для цвета должно быть строкового типа "
 
 #: ../src/settings.c:282
 #, c-format
@@ -979,9 +966,7 @@ msgstr "%s: Ошибка обработки цвета %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ошибка обработки цвета: Значение GValue для цвета должно быть строкового "
-"типа "
+msgstr "%s: Ошибка обработки цвета: Значение GValue для цвета должно быть строкового типа "
 
 #: ../src/terminate.c:75
 #, c-format
