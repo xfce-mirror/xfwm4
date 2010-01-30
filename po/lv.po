@@ -10,16 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-15 00:34+0100\n"
-"PO-Revision-Date: 2009-09-18 18:39+0100\n"
+"POT-Creation-Date: 2010-01-30 12:05+0100\n"
+"PO-Revision-Date: 2010-01-30 12:53-0000\n"
 "Last-Translator: Rihards Prieditis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <translation-team-lv@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 "X-Poedit-Language: Latvian\n"
 "X-Poedit-Country: Latvia\n"
 
@@ -70,8 +69,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Mēģiniet %s --help , lai redzētu pilnu pieejamo komandu līniju iespēju "
-"sarakstu.\n"
+"Mēģiniet %s --help , lai redzētu pilnu pieejamo komandu līniju iespēju sarakstu.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -390,13 +388,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Ciklot starp logiem (pretējā virzienā)"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Pārslēgties uz loga darbavietu"
+msgstr "Pārslēgt logu, tai pašai lietotnei"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
-msgstr ""
+msgstr "Pārslēgt lietotni"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
@@ -637,11 +634,8 @@ msgid "Reset to Defaults"
 msgstr "Atstatīt uz noklusētajiem"
 
 #: ../settings-dialogs/xfwm4-settings.c:1860
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Šis atstatīs visus īsceļus uz noklusētajām vērtībām. Vai vēlaties turpināt?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Šis atstatīs visus īsceļus uz noklusētajām vērtībām. Vai vēlaties turpināt?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -840,8 +834,7 @@ msgid "Change workspace name"
 msgstr "Mainīt darbavietas nosaukumu"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Apmales, ir ekrāna daļa, kur logi netiks novietoti"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
