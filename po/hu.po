@@ -1,7 +1,7 @@
 # Hungarian translation of the xfwm4 package
 # Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, Free Software Foundation, Inc.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Somogyi Peter <jerry@gnu>, 2003.
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003.
 # SZERVÁC Attila <sas@321>, 2004-2009.
@@ -10,15 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-15 00:34+0100\n"
+"POT-Creation-Date: 2010-02-05 12:06+0100\n"
 "PO-Revision-Date: 2009-07-25 12:16+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at gnome dot hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -386,13 +386,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Ablakok közti lépkedés (fordítva)"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "_Váltás az ablak munkaterületére"
+msgstr "Ugyanazon alkalmazás ablakára váltás "
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
-msgstr ""
+msgstr "Alkalmazásváltás"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
@@ -633,12 +632,8 @@ msgid "Reset to Defaults"
 msgstr "Alapértelmezések visszaállítása"
 
 #: ../settings-dialogs/xfwm4-settings.c:1860
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Ez minden gyorsbillentyűt visszaállít az alapértelmezett értékére. Valóban "
-"ezt szeretné?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Ez minden gyorsbillentyűt visszaállít az alapértelmezett értékére. Valóban ezt szeretné?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -770,8 +765,7 @@ msgstr "Váltás munkaterületek kö_zt az aktuális asztalelrendezéstől függ
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
-"_Váltás munkaterületek közt az első vagy utolsó munkaterület elérésekor"
+msgstr "_Váltás munkaterületek közt az első vagy utolsó munkaterület elérésekor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Accessibility"
@@ -838,10 +832,8 @@ msgid "Change workspace name"
 msgstr "Munkaterület nevének módosítása"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"A margók a képernyő szélén lévő területek, ahol nem jelennek meg ablakok"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "A margók a képernyő szélén lévő területek, ahol nem jelennek meg ablakok"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -967,8 +959,7 @@ msgstr "%s: Nem foglalható le a szín (%s)\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Nem foglalható le a szín: a színhez tartozó GValue nem STRING típusú"
+msgstr "%s: Nem foglalható le a szín: a színhez tartozó GValue nem STRING típusú"
 
 #: ../src/settings.c:282
 #, c-format
@@ -978,8 +969,7 @@ msgstr "%s: A szín (%s) nem dolgozható fel\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: A szín nem dolgozható fel: a színhez tartozó GValue nem STRING típusú"
+msgstr "%s: A szín nem dolgozható fel: a színhez tartozó GValue nem STRING típusú"
 
 #: ../src/terminate.c:75
 #, c-format
