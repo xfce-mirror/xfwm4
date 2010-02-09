@@ -584,6 +584,11 @@ myScreenComputeSize (ScreenInfo *screen_info)
     height = 0;
     num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
 
+    if (num_monitors == 0)
+    {
+        return FALSE;
+    }
+
     for (i = 0; i < num_monitors; i++)
     {
         gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
