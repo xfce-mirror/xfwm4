@@ -2730,6 +2730,16 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
     g_return_if_fail (screen_info);
     display_info = screen_info->display_info;
 
+    if (gdk_screen_get_n_monitors (screen_info->gscr) == 0)
+    {
+        /*
+         * Recent Xorg drivers remove all monitors on laptops when lid
+         * is closed, in that case, simply ignore the event to avoid
+         * messing with windows' positions for nothing.
+         */
+        return;
+    }
+
     /*
      * We have added/removed a monitor or even changed the layout,
      * the cache for monitor position we use in our screen structure
