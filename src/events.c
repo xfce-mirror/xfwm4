@@ -2732,9 +2732,9 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
     if (gdk_screen_get_n_monitors (screen_info->gscr) == 0)
     {
         /*
-         * Recent Xorg drivers remove all monitors on laptops when lid
-         * is closed, in that case, simply ignore the event to avoid
-         * messing with windows' positions for nothing.
+         * Recent Xorg drivers disable the output when the lid
+         * is closed, leaving no active monitor, in that case simply
+         * ignore the event to avoid messing with windows' positions.
          */
         return;
     }
