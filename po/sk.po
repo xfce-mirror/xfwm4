@@ -3,24 +3,26 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Juraj Brosz <juro@jurajbrosz.info>, 2004.
 # Stefan Miklosovic <miklosovic@gmail.com>, 2008.
-# Robert Hartl <hartl.robert@gmail.com>, 2009.
+# Robert Hartl <hartl.robert@gmail.com>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-15 00:34+0100\n"
-"PO-Revision-Date: 2009-11-04 15:16+0100\n"
+"POT-Creation-Date: 2010-02-18 00:05+0100\n"
+"PO-Revision-Date: 2010-02-18 01:10+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
-"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8-bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"Toto okno je zaneprázdnené a neodpovedá.\n"
+"Chcete aplikáciu ukončiť?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -282,9 +284,8 @@ msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Akcia pri dvojkliku na titulku okna :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "Názov okna, nemôže byť odstránený"
+msgstr "Titulok okna nemôže byť odstránený"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
@@ -384,14 +385,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Prechádzať okná (obrátene)"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Presunúť sa na pracovnú plochu okna"
+msgstr "Prepnúť okno rovnakej aplikácie"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
-#, fuzzy
 msgid "Switch application"
-msgstr "Neznáma aplikácia!"
+msgstr "Prepnúť aplikáciu"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
@@ -668,9 +667,8 @@ msgid "C_ycling"
 msgstr "_Prechádzanie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "Prechádzať okná zo všetkých pracovných plôch"
+msgstr "_Prechádzať oknami zo všetkých pracovných plôch"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Display _fullscreen overlay windows directly"
@@ -690,7 +688,7 @@ msgstr "Dodržiavať š_tandardný ICCCM focus hint"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "Zachovať _blikanie u okna s príznakom urgent"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Key used to _grab and move windows:"
@@ -746,11 +744,11 @@ msgstr "<i>Malá</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Switch to win_dow's workspace"
-msgstr ""
+msgstr "Prepnúť sa na _pracovnú plochu okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "Pod _ukazovateľom myši"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 #, fuzzy
@@ -759,7 +757,7 @@ msgstr "Použiť odolnosť okrajov namiesto prichytávania okien"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "Použiť koliesko myši na pracovnej ploche na prepínanie plôch"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "When a window raises itself:"
@@ -793,9 +791,8 @@ msgid "_Enable display compositing"
 msgstr "Povoliť zobrazenie kompozícií"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "Zahrnúť skryté (minimalizované) okná"
+msgstr "Zahrnúť _skryté (minimalizované) okná"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Minimum size of windows to trigger smart placement:"
@@ -970,27 +967,29 @@ msgstr "%s: komponente GtkMenu sa nepodarilo uchopiť ukazovateľ\n"
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Nejde prideliť farbu %s\n"
+msgstr "%s: Nemožno prideliť farbu %s\n"
 
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr ""
+"%s: Nemožno prideliť farba: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Nejde spracovať farbu %s\n"
+msgstr "%s: Nemožno spracovať farbu %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr ""
+"%s: Nemožno spracovať farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Chyba pri čítaní dát z procesu potomka: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
