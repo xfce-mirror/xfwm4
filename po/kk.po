@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-15 00:49+0100\n"
-"PO-Revision-Date: 2009-08-12 18:43+0600\n"
-"Last-Translator: Baurzhan M. <baurthefirst@gmail.com>\n"
+"POT-Creation-Date: 2010-02-19 18:05+0100\n"
+"PO-Revision-Date: 2010-02-20 00:15+0600\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -200,11 +200,11 @@ msgstr "Ф_окус алған терезені көтеру алдындағы 
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Delay|<i>Long</i>"
-msgstr "Күту|<i>Ұзақ</i>"
+msgstr "Delay|<i>Ұзақ</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Delay|<i>Short</i>"
-msgstr "Күту|<i>Қысқа</i>"
+msgstr "Delay|<i>Қысқа</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Dis_tance:"
@@ -212,11 +212,11 @@ msgstr "Қашық_тық:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Distance|<i>Small</i>"
-msgstr "Қашықтық|<i>Кішкентай</i>"
+msgstr "Distance|<i>Кішкентай</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Distance|<i>Wide</i>"
-msgstr "Қашықтық|<i>Үлкен</i>"
+msgstr "Distance|<i>Үлкен</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Focus follows _mouse"
@@ -256,11 +256,11 @@ msgstr "Бағдар_лама терезесіне шерткенде оны к�
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Resistance|<i>Small</i>"
-msgstr "Кедергі|<i>Аз</i>"
+msgstr "Resistance|<i>Аз</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Resistance|<i>Wide</i>"
-msgstr "Кедергі|<i>Үлкен</i>"
+msgstr "Resistance|<i>Үлкен</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
@@ -382,13 +382,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Терезелерді (керісінше) ауыстыру"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Тере_зенің жұмыс орнына ауысу"
+msgstr "Бір қолданба терезелерін ауыстыру"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
-msgstr ""
+msgstr "Қолданбаны ауыстыру"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
@@ -629,12 +628,8 @@ msgid "Reset to Defaults"
 msgstr "Бастапқы түріне келтіру"
 
 #: ../settings-dialogs/xfwm4-settings.c:1860
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Бұл әрекет жарлықтардың барлығын бастапқы түріне келтіреді. Осыны шынымен "
-"қалайсыз ба?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Бұл әрекет жарлықтардың барлығын бастапқы түріне келтіреді. Осыны шынымен қалайсыз ба?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -718,8 +713,7 @@ msgstr "Өл_шемін өзгерту кезінде терезелердің �
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"Максималды терезелерді жы_лжытқан кезде өлшемдерін бастапқы мәнге келтіру"
+msgstr "Максималды терезелерді жы_лжытқан кезде өлшемдерін бастапқы мәнге келтіру"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Show shadows under _dock windows"
@@ -763,8 +757,7 @@ msgstr "Терезе өздігімен көтерілсе:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Ағы_мдағы жұмыс орынның орналасуына байланысты жұмыс орындарды ауыстыру"
+msgstr "Ағы_мдағы жұмыс орынның орналасуына байланысты жұмыс орындарды ауыстыру"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -835,10 +828,8 @@ msgid "Change workspace name"
 msgstr "Жұмыс орынның атын ауыстыру"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Өрістер - бұл экран бұрыштарындағы аймақтар, оларға терезелер қойылмайды"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Өрістер - бұл экран бұрыштарындағы аймақтар, оларға терезелер қойылмайды"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -985,3 +976,4 @@ msgstr "Ұрпақ үрдісінен мәліметтерді оқу қатес
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Сұхбат терезесін шақыру мүмкін емес: %s\n"
+
