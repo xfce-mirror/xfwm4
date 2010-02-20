@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-23 19:57+0100\n"
-"PO-Revision-Date: 2008-04-06 22:21+0300\n"
-"Last-Translator: Rihards Prieditis <RPrieditis@inbox.lv>\n"
+"POT-Creation-Date: 2010-02-20 12:08+0100\n"
+"PO-Revision-Date: 2010-02-20 12:29+0100\n"
+"Last-Translator: Rihards Priedītis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <RPrieditis@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -714,92 +714,106 @@ msgstr "%s (uz %s)"
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentācijas vaina"
 
-#: ../src/menu.c:40
+#: ../src/menu.c:41
 msgid "Ma_ximize"
 msgstr "_Maksimizēt"
 
-#: ../src/menu.c:41
+#: ../src/menu.c:42
 msgid "Un_maximize"
 msgstr "_Atjaunot"
 
-#: ../src/menu.c:42
+#: ../src/menu.c:43
 msgid "_Hide"
 msgstr "S_lēpt"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:44
 msgid "Hide _all others"
 msgstr "Slēpt _pārējos"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:45
 msgid "S_how"
 msgstr "Rā_dīt"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:46
 msgid "_Shade"
 msgstr "Ē_not"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:47
 msgid "Un_shade"
 msgstr "Atēno_t"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:48
 msgid "S_tick"
 msgstr "Pie_lipināt"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:49
 msgid "Uns_tick"
 msgstr "Atlipi_nāt"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:50
 msgid "Context _help"
 msgstr "Kontekstuālā _palīdzība"
 
-#: ../src/menu.c:50
 #: ../src/menu.c:51
+#: ../src/menu.c:52
 msgid "Always on top"
 msgstr "Vienmēr priekšā"
 
-#: ../src/menu.c:52
+#: ../src/menu.c:53
 msgid "Send to..."
 msgstr "Nosūtīt uz..."
 
-#: ../src/menu.c:54
+#: ../src/menu.c:55
 msgid "_Close"
 msgstr "_Aizvērt"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:58
 msgid "Destroy"
 msgstr "Iznīcināt"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:61
 msgid "_Quit"
 msgstr "_Iziet"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:62
 msgid "Restart"
 msgstr "Restartēt"
 
-#: ../src/menu.c:169
+#: ../src/menu.c:177
 #, c-format
 msgid "Workspace %i (%s)"
 msgstr "Darbavieta %i (%s)"
 
-#: ../src/menu.c:173
+#: ../src/menu.c:181
 #, c-format
 msgid "Workspace %i"
 msgstr "Darbavieta %i"
 
-#: ../src/menu.c:409
+#: ../src/menu.c:417
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: norādi uz GtkMenu neizdevās saķert\n"
 
-#: ../src/settings.c:932
+#: ../src/screen.c:88
+msgid "To replace the window manager, try with \"--replace\"\n"
+msgstr "Lai aizvietotu logu pārvaldnieku, mēģiniet ar \"--replace\"\n"
+
+#: ../src/screen.c:102
+#, c-format
+msgid "Cannot acquire window manager selection on screen %d\n"
+msgstr "Nevar iegūt logu pārvaldnieka atlasi ekrānā %d\n"
+
+#: ../src/screen.c:123
+#, c-format
+msgid "Previous window manager on screen %d is not exiting"
+msgstr "Iepriekšējais logu pārvaldnieks ekrānā %d neiziet"
+
+#: ../src/settings.c:921
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nevar iedalīt krāsu %s\n"
 
-#: ../src/settings.c:938
+#: ../src/settings.c:927
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nevar nolasīt krāsu %s\n"
