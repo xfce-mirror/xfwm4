@@ -107,7 +107,8 @@ xfwm4_LDADD =								\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
 	$(RENDER_LIBS)							\
 	$(COMPOSITOR_LIBS)						\
-	$(RANDR_LIBS)
+	$(RANDR_LIBS) 							\
+	$(MATH_LIBS)	
 
 EXTRA_DIST = 								\
 	inline-default-icon.h default_icon.png default_icon.svg		\
