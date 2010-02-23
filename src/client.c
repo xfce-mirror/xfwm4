@@ -2325,6 +2325,12 @@ clientShowSingle (Client * c, gboolean deiconify)
 
     g_return_if_fail (c != NULL);
 
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+    {
+        /* Should we map the window if it is visible? */
+        return;
+    }
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
@@ -2864,24 +2870,22 @@ clientStick (Client * c, gboolean include_transients)
         for (list = list_of_windows; list; list = g_list_next (list))
         {
             c2 = (Client *) list->data;
-            TRACE ("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             c2->win_state |= WIN_STATE_STICKY;
+            TRACE ("Sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             FLAG_SET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
-            clientSetNetState (c2);
             frameQueueDraw (c2, FALSE);
         }
-        clientSetWorkspace (c, screen_info->current_ws, TRUE);
         g_list_free (list_of_windows);
     }
     else
     {
-        TRACE ("sticking client \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("Sticking client \"%s\" (0x%lx)", c->name, c->window);
         c->win_state |= WIN_STATE_STICKY;
         FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
-        clientSetWorkspace (c, screen_info->current_ws, TRUE);
     }
+    clientSetWorkspace (c, screen_info->current_ws, TRUE);
     clientSetNetState (c);
 }
 
@@ -2896,7 +2900,6 @@ clientUnstick (Client * c, gboolean include_transients)
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUnstick");
-    TRACE ("unsticking client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -2908,21 +2911,21 @@ clientUnstick (Client * c, gboolean include_transients)
         {
             c2 = (Client *) list->data;
             c2->win_state &= ~WIN_STATE_STICKY;
+            TRACE ("Unsticking client \"%s\" (0x%lx)", c2->name, c2->window);
             FLAG_UNSET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
-            clientSetNetState (c2);
             frameQueueDraw (c2, FALSE);
         }
-        clientSetWorkspace (c, screen_info->current_ws, TRUE);
         g_list_free (list_of_windows);
     }
     else
     {
+        TRACE ("Unsticking client \"%s\" (0x%lx)", c->name, c->window);
         c->win_state &= ~WIN_STATE_STICKY;
         FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
-        clientSetWorkspace (c, screen_info->current_ws, TRUE);
     }
+    clientSetWorkspace (c, screen_info->current_ws, TRUE);
     clientSetNetState (c);
 }
 
