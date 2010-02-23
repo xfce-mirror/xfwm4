@@ -1470,6 +1470,7 @@ xfwm_settings_title_alignment_property_changed (XfconfChannel *channel,
   GtkTreeIter   iter;
   GtkWidget    *combo;
   gchar        *alignment;
+  const gchar  *new_value;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
@@ -1482,7 +1483,12 @@ xfwm_settings_title_alignment_property_changed (XfconfChannel *channel,
         {
           gtk_tree_model_get (model, &iter, 1, &alignment, -1);
 
-          if (G_UNLIKELY (g_str_equal (alignment, g_value_get_string (value))))
+          if (G_UNLIKELY (G_VALUE_TYPE (value) == G_TYPE_INVALID))
+              new_value = "center";
+          else
+              new_value = g_value_get_string (value);
+
+          if (G_UNLIKELY (g_str_equal (alignment, new_value)))
             {
               g_free (alignment);
               gtk_combo_box_set_active_iter (GTK_COMBO_BOX (combo), &iter);
