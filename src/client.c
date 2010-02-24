@@ -3087,7 +3087,8 @@ void clientToggleLayerAbove (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleAbove");
 
-    if (!clientIsTransientOrModal (c) &&
+    if ((c->type & WINDOW_REGULAR_FOCUSABLE) &&
+        !clientIsTransientOrModal (c) &&
         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
@@ -3101,7 +3102,8 @@ void clientToggleLayerBelow (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleBelow");
 
-    if (!clientIsTransientOrModal (c) &&
+    if ((c->type & WINDOW_REGULAR_FOCUSABLE) &&
+        !clientIsTransientOrModal (c) &&
         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);
