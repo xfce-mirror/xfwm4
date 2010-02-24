@@ -1103,7 +1103,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 }
                 else
                 {
-                    g_warning("The property '%s' is not supported", property_name);
+                    g_warning("The property '%s' of type string is not supported", property_name);
                 }
                 break;
             case G_TYPE_INT:
@@ -1188,7 +1188,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 }
                 else
                 {
-                    g_warning("The property '%s' is not supported", property_name);
+                    g_warning("The property '%s' of type int is not supported", property_name);
                 }
                 break;
             case G_TYPE_BOOLEAN:
@@ -1264,6 +1264,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     screen_info->params->cycle_workspaces = g_value_get_boolean (value);
                 }
+                else if (!strcmp (name, "cycle_apps_only"))
+                {
+                    screen_info->params->cycle_apps_only = g_value_get_boolean (value);
+                }
                 else if (!strcmp (name, "focus_hint"))
                 {
                     screen_info->params->focus_hint = g_value_get_boolean (value);
@@ -1333,7 +1337,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 }
                 else
                 {
-                    g_warning("The property '%s' is not supported", property_name);
+                    g_warning("The property '%s' of type boolean is not supported", property_name);
                 }
                 break;
             default:
