@@ -300,7 +300,11 @@ getStringValue (const gchar *option, Settings *rc)
         {
             if (rc[i].value == NULL)
                 return NULL;
-            g_return_val_if_fail(G_VALUE_TYPE(rc[i].value) == G_TYPE_STRING, NULL);
+            if (G_VALUE_TYPE(rc[i].value) != G_TYPE_STRING)
+            {
+                g_warning ("Option \"%s\" in not of expected type string", option);
+                return NULL;
+            }
             return g_value_get_string(rc[i].value);
         }
     }
@@ -322,7 +326,11 @@ getIntValue (const gchar *option, Settings *rc)
         {
             if (rc[i].value == NULL)
                 return 0;
-            g_return_val_if_fail(G_VALUE_TYPE(rc[i].value) == G_TYPE_INT, 0);
+            if (G_VALUE_TYPE(rc[i].value) != G_TYPE_INT)
+            {
+                g_warning ("Option \"%s\" in not of expected type int", option);
+                return 0;
+            }
             return g_value_get_int(rc[i].value);
         }
     }
@@ -344,7 +352,11 @@ getBoolValue (const gchar *option, Settings *rc)
         {
             if (rc[i].value == NULL)
                 return FALSE;
-            g_return_val_if_fail(G_VALUE_TYPE(rc[i].value) == G_TYPE_BOOLEAN, FALSE);
+            if (G_VALUE_TYPE(rc[i].value) != G_TYPE_BOOLEAN)
+            {
+                g_warning ("Option \"%s\" in not of expected type boolean", option);
+                return FALSE;
+            }
             return g_value_get_boolean(rc[i].value);
         }
     }
