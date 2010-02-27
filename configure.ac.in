@@ -70,7 +70,6 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [gtk_minimum_version])
-XDT_CHECK_PACKAGE([GLADE], [libglade-2.0], [2.0.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], libxfce4ui-1, [libxfce4ui_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4KBD_PRIVATE], libxfce4kbd-private-2, [libxfce4kbd_private_minimum_version])
