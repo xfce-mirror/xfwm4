@@ -37,7 +37,6 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -45,7 +44,7 @@
 #include <libxfce4kbd-private/xfce-shortcut-dialog.h>
 #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
 
-#include "xfwm4-dialog_glade.h"
+#include "xfwm4-dialog_ui.h"
 #include "xfwm4-settings.h"
 
 
@@ -75,7 +74,7 @@ typedef struct _ShortcutTemplate ShortcutTemplate;
 enum
 {
   PROP_0,
-  PROP_GLADE_XML,
+  PROP_GTK_BUILDER,
 };
 
 
@@ -188,7 +187,7 @@ static void       xfwm_settings_shortcut_row_activated               (GtkTreeVie
 
 struct _XfwmSettingsPrivate
 {
-  GladeXML              *glade_xml;
+  GtkBuilder            *builder;
   XfceShortcutsProvider *provider;
   XfconfChannel         *wm_channel;
 };
@@ -363,11 +362,11 @@ xfwm_settings_class_init (XfwmSettingsClass *klass)
   gobject_class->set_property = xfwm_settings_set_property;
 
   g_object_class_install_property (gobject_class,
-                                   PROP_GLADE_XML,
-                                   g_param_spec_object ("glade-xml",
-                                                        "glade-xml",
-                                                        "glade-xml",
-                                                        GLADE_TYPE_XML,
+                                   PROP_GTK_BUILDER,
+                                   g_param_spec_object ("gtk-builder",
+                                                        "gtk-builder",
+                                                        "gtk-builder",
+                                                        GTK_TYPE_BUILDER,
                                                         G_PARAM_CONSTRUCT_ONLY |
                                                         G_PARAM_WRITABLE));
 }
@@ -379,7 +378,7 @@ xfwm_settings_init (XfwmSettings *settings)
 {
   settings->priv = XFWM_SETTINGS_GET_PRIVATE (settings);
 
-  settings->priv->glade_xml = NULL;
+  settings->priv->builder = NULL;
   settings->priv->provider = xfce_shortcuts_provider_new ("xfwm4");
   settings->priv->wm_channel = xfconf_channel_new ("xfwm4");
 }
@@ -428,13 +427,13 @@ xfwm_settings_constructed (GObject *object)
   const gchar        *name;
 
   /* Style tab widgets */
-  theme_name_treeview = glade_xml_get_widget (settings->priv->glade_xml, "theme_name_treeview");
-  title_font_button = glade_xml_get_widget (settings->priv->glade_xml, "title_font_button");
-  title_align_combo = glade_xml_get_widget (settings->priv->glade_xml, "title_align_combo");
-  active_frame = glade_xml_get_widget (settings->priv->glade_xml, "active-frame");
-  active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
-  hidden_frame = glade_xml_get_widget (settings->priv->glade_xml, "hidden-frame");
-  hidden_box = glade_xml_get_widget (settings->priv->glade_xml, "hidden-box");
+  theme_name_treeview = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "theme_name_treeview"));
+  title_font_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "title_font_button"));
+  title_align_combo = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "title_align_combo"));
+  active_frame = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-frame"));
+  active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
+  hidden_frame = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "hidden-frame"));
+  hidden_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "hidden-box"));
 
   /* Style tab: theme name */
   {
@@ -575,11 +574,11 @@ xfwm_settings_constructed (GObject *object)
   g_value_unset (&value);
 
   /* Keyboard tab widgets */
-  shortcuts_treeview = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
-  shortcuts_clear_button = glade_xml_get_widget (settings->priv->glade_xml,
-                                                 "shortcuts_clear_button");
-  shortcuts_reset_button = glade_xml_get_widget (settings->priv->glade_xml,
-                                                 "shortcuts_reset_button");
+  shortcuts_treeview = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
+  shortcuts_clear_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                       "shortcuts_clear_button"));
+  shortcuts_reset_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                       "shortcuts_reset_button"));
 
   /* Set reset button icon */
   gtk_button_set_image (GTK_BUTTON (shortcuts_reset_button),
@@ -616,12 +615,12 @@ xfwm_settings_constructed (GObject *object)
                     G_CALLBACK (xfwm_settings_shortcut_reset_clicked), settings);
 
   /* Focus tab widgets */
-  focus_delay_scale = glade_xml_get_widget (settings->priv->glade_xml, "focus_delay_scale");
-  focus_raise_delay_scale = glade_xml_get_widget (settings->priv->glade_xml, "focus_raise_delay_scale");
-  focus_new_check = glade_xml_get_widget (settings->priv->glade_xml, "focus_new_check");
-  raise_on_focus_check = glade_xml_get_widget (settings->priv->glade_xml, "raise_on_focus_check");
-  raise_on_click_check = glade_xml_get_widget (settings->priv->glade_xml, "raise_on_click_check");
-  click_to_focus_radio = glade_xml_get_widget (settings->priv->glade_xml, "click_to_focus_radio");
+  focus_delay_scale = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "focus_delay_scale"));
+  focus_raise_delay_scale = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "focus_raise_delay_scale"));
+  focus_new_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "focus_new_check"));
+  raise_on_focus_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "raise_on_focus_check"));
+  raise_on_click_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "raise_on_click_check"));
+  click_to_focus_radio = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "click_to_focus_radio"));
 
   /* Focus tab */
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/focus_delay", G_TYPE_INT,
@@ -646,18 +645,18 @@ xfwm_settings_constructed (GObject *object)
   g_value_unset (&value);
 
   /* Advanced tab widgets */
-  box_move_check = glade_xml_get_widget (settings->priv->glade_xml, "box_move_check");
-  box_resize_check = glade_xml_get_widget (settings->priv->glade_xml, "box_resize_check");
-  wrap_workspaces_check = glade_xml_get_widget (settings->priv->glade_xml,
-                                                "wrap_workspaces_check");
-  wrap_windows_check = glade_xml_get_widget (settings->priv->glade_xml, "wrap_windows_check");
-  snap_to_border_check = glade_xml_get_widget (settings->priv->glade_xml, "snap_to_border_check");
-  snap_to_window_check = glade_xml_get_widget (settings->priv->glade_xml, "snap_to_window_check");
-  double_click_action_combo = glade_xml_get_widget (settings->priv->glade_xml,
-                                                    "double_click_action_combo");
-  snap_width_scale = glade_xml_get_widget (settings->priv->glade_xml, "snap_width_scale");
-  wrap_resistance_scale = glade_xml_get_widget (settings->priv->glade_xml,
-                                                "wrap_resistance_scale");
+  box_move_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "box_move_check"));
+  box_resize_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "box_resize_check"));
+  wrap_workspaces_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                      "wrap_workspaces_check"));
+  wrap_windows_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "wrap_windows_check"));
+  snap_to_border_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "snap_to_border_check"));
+  snap_to_window_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "snap_to_window_check"));
+  double_click_action_combo = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                          "double_click_action_combo"));
+  snap_width_scale = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "snap_width_scale"));
+  wrap_resistance_scale = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                      "wrap_resistance_scale"));
 
   /* Advanced tab: double click action */
   {
@@ -730,7 +729,7 @@ xfwm_settings_finalize (GObject *object)
 
   g_object_unref (settings->priv->wm_channel);
   g_object_unref (settings->priv->provider);
-  g_object_unref (settings->priv->glade_xml);
+  g_object_unref (settings->priv->builder);
 
   (*G_OBJECT_CLASS (xfwm_settings_parent_class)->finalize) (object);
 }
@@ -747,8 +746,8 @@ xfwm_settings_get_property (GObject    *object,
 
   switch (prop_id)
     {
-    case PROP_GLADE_XML:
-      g_value_set_object (value, settings->priv->glade_xml);
+    case PROP_GTK_BUILDER:
+      g_value_set_object (value, settings->priv->builder);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -768,11 +767,11 @@ xfwm_settings_set_property (GObject      *object,
 
   switch (prop_id)
     {
-    case PROP_GLADE_XML:
-      if (GLADE_IS_XML (settings->priv->glade_xml))
-        g_object_unref (settings->priv->glade_xml);
-      settings->priv->glade_xml = g_value_get_object (value);
-      g_object_notify (object, "glade-xml");
+    case PROP_GTK_BUILDER:
+      if (GTK_IS_BUILDER (settings->priv->builder))
+        g_object_unref (settings->priv->builder);
+      settings->priv->builder = g_value_get_object (value);
+      g_object_notify (object, "gtk-builder");
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -786,12 +785,14 @@ XfwmSettings *
 xfwm_settings_new (void)
 {
   XfwmSettings *settings = NULL;
-  GladeXML     *glade_xml;
+  GtkBuilder   *builder;
 
-  glade_xml = glade_xml_new_from_buffer (xfwm4_dialog_glade, xfwm4_dialog_glade_length, NULL, NULL);
+  builder = gtk_builder_new ();
 
-  if (G_LIKELY (glade_xml != NULL))
-    settings = g_object_new (XFWM_TYPE_SETTINGS, "glade-xml", glade_xml, NULL);
+  gtk_builder_add_from_string (builder, xfwm4_dialog_ui, xfwm4_dialog_ui_length, NULL);
+
+  if (G_LIKELY (builder != NULL))
+    settings = g_object_new (XFWM_TYPE_SETTINGS, "gtk-builder", builder, NULL);
 
 #if !GLIB_CHECK_VERSION (2,14,0)
   xfwm_settings_constructed (G_OBJECT(settings));
@@ -842,7 +843,7 @@ xfwm_settings_load_themes (XfwmSettings *settings)
 
   themes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 
-  view = glade_xml_get_widget (settings->priv->glade_xml, "theme_name_treeview");
+  view = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "theme_name_treeview"));
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
 
   xfce_resource_push_path (XFCE_RESOURCE_THEMES, DATADIR G_DIR_SEPARATOR_S "themes");
@@ -899,7 +900,7 @@ static GtkWidget *
 xfwm_settings_create_dialog (XfwmSettings *settings)
 {
   g_return_val_if_fail (XFWM_IS_SETTINGS (settings), NULL);
-  return glade_xml_get_widget (settings->priv->glade_xml, "main-dialog");
+  return GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "main-dialog"));
 }
 
 
@@ -916,7 +917,7 @@ xfwm_settings_create_plug (XfwmSettings   *settings,
   plug = gtk_plug_new (socket_id);
   gtk_widget_show (plug);
 
-  child = glade_xml_get_widget (settings->priv->glade_xml, "plug-child");
+  child = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "plug-child"));
   gtk_widget_reparent (child, plug);
   gtk_widget_show (child);
 
@@ -1045,10 +1046,10 @@ xfwm_settings_theme_selection_changed (GtkTreeSelection *selection,
         }
     }
 
-  widget = glade_xml_get_widget (settings->priv->glade_xml, "button_layout_box");
+  widget = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "button_layout_box"));
   gtk_widget_set_sensitive (widget, button_layout);
 
-  widget = glade_xml_get_widget (settings->priv->glade_xml, "title_align_box");
+  widget = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "title_align_box"));
   gtk_widget_set_sensitive (widget, title_alignment);
 }
 
@@ -1096,15 +1097,15 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  source = glade_xml_get_widget (settings->priv->glade_xml,
+  source = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
 #if GTK_CHECK_VERSION (2,14,0)
-                                 (const gchar *)gtk_selection_data_get_data (data));
+                                 (const gchar *)gtk_selection_data_get_data (data)));
 #else
-                                 (const gchar *) data->data);
+                                 (const gchar *) data->data));
 #endif
   parent = gtk_widget_get_parent (source);
 
-  active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
+  active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
 
   g_object_ref (source);
   gtk_container_remove (GTK_CONTAINER (parent), source);
@@ -1151,7 +1152,7 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
 
   g_return_val_if_fail (XFWM_IS_SETTINGS (settings), FALSE);
 
-  active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
+  active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
   children = gtk_container_get_children (GTK_CONTAINER (active_box));
 
   /* Set a value so that the compiler does not (rightfully) complain */
@@ -1201,7 +1202,7 @@ xfwm_settings_active_frame_drag_leave (GtkWidget      *widget,
 {
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  xfwm_settings_delete_indicator (glade_xml_get_widget (settings->priv->glade_xml, "active-box"));
+  xfwm_settings_delete_indicator (GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box")));
 }
 
 
@@ -1223,16 +1224,16 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  source = glade_xml_get_widget (settings->priv->glade_xml,
+  source = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
 #if GTK_CHECK_VERSION (2,14,0)
-                                 (const gchar *)gtk_selection_data_get_data (data));
+                                 (const gchar *)gtk_selection_data_get_data (data)));
 #else
-                                 (const gchar *) data->data);
+                                 (const gchar *) data->data));
 #endif
   parent = gtk_widget_get_parent (source);
 
-  hidden_box = glade_xml_get_widget (settings->priv->glade_xml, "hidden-box");
-  active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
+  hidden_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "hidden-box"));
+  active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
 
   if (G_UNLIKELY (parent == hidden_box))
     return;
@@ -1407,8 +1408,8 @@ xfwm_settings_button_layout_property_changed (XfconfChannel *channel,
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  hidden_box = glade_xml_get_widget (settings->priv->glade_xml, "hidden-box");
-  active_box = glade_xml_get_widget (settings->priv->glade_xml, "active-box");
+  hidden_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "hidden-box"));
+  active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
 
   gtk_widget_set_app_paintable (active_box, FALSE);
   gtk_widget_set_app_paintable (hidden_box, FALSE);
@@ -1474,7 +1475,7 @@ xfwm_settings_title_alignment_property_changed (XfconfChannel *channel,
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  combo = glade_xml_get_widget (settings->priv->glade_xml, "title_align_combo");
+  combo = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "title_align_combo"));
   model = gtk_combo_box_get_model (GTK_COMBO_BOX (combo));
 
   if (gtk_tree_model_get_iter_first (model, &iter))
@@ -1593,7 +1594,7 @@ xfwm_settings_double_click_action_property_changed (XfconfChannel *channel,
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  combo = glade_xml_get_widget (settings->priv->glade_xml, "double_click_action_combo");
+  combo = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "double_click_action_combo"));
   model = gtk_combo_box_get_model (GTK_COMBO_BOX (combo));
 
   if (G_UNLIKELY (G_VALUE_TYPE (value) == G_TYPE_INVALID))
@@ -1633,14 +1634,14 @@ xfwm_settings_click_to_focus_property_changed (XfconfChannel *channel,
   GtkWidget *focus_delay_hbox;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
-  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+  g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
 
-  click_to_focus_radio = glade_xml_get_widget (settings->priv->glade_xml,
-                                               "click_to_focus_radio");
-  focus_follows_mouse_radio = glade_xml_get_widget (settings->priv->glade_xml,
-                                                    "focus_follows_mouse_radio");
-  focus_delay_hbox = glade_xml_get_widget (settings->priv->glade_xml,
-                                           "focus_delay_hbox");
+  click_to_focus_radio = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                     "click_to_focus_radio"));
+  focus_follows_mouse_radio = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                          "focus_follows_mouse_radio"));
+  focus_delay_hbox = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                 "focus_delay_hbox"));
 
   if (G_UNLIKELY (G_VALUE_TYPE (value) != G_TYPE_BOOLEAN))
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (click_to_focus_radio), TRUE);
@@ -1668,9 +1669,9 @@ xfwm_settings_initialize_shortcuts (XfwmSettings *settings)
   gint          i;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
-  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+  g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
 
-  view = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  view = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
 
   gtk_list_store_clear (GTK_LIST_STORE (model));
@@ -1695,9 +1696,9 @@ xfwm_settings_clear_shortcuts_view (XfwmSettings *settings)
   GtkWidget    *view;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
-  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+  g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
 
-  view = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  view = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
 
   if (G_LIKELY (gtk_tree_model_get_iter_first (model, &iter)))
@@ -1751,10 +1752,10 @@ xfwm_settings_reload_shortcuts (XfwmSettings *settings)
   GList        *shortcuts;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
-  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+  g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
   g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
 
-  view = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  view = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (view));
 
   xfwm_settings_clear_shortcuts_view (settings);
@@ -1803,10 +1804,10 @@ xfwm_settings_shortcut_clear_clicked (GtkButton    *button,
   gchar            *shortcut;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
-  g_return_if_fail (GLADE_IS_XML (settings->priv->glade_xml));
+  g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
   g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
 
-  view = glade_xml_get_widget (settings->priv->glade_xml, "shortcuts_treeview");
+  view = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
   rows = gtk_tree_selection_get_selected_rows (selection, &model);
 
