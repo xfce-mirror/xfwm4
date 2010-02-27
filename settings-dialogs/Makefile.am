@@ -20,7 +20,7 @@ xfwm4_workspace_settings_CFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
-	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
@@ -33,7 +33,7 @@ xfwm4_workspace_settings_LDADD = \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
-	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCONF_LIBS) \
 	$(LIBWNCK_LIBS)
 
@@ -46,7 +46,7 @@ xfwm4_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
-	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCE4KBD_PRIVATE_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
@@ -57,7 +57,7 @@ xfwm4_settings_LDADD = \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
-	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4KBD_PRIVATE_LIBS) \
 	$(LIBXFCONF_LIBS)
 
@@ -69,7 +69,7 @@ xfwm4_tweaks_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
-	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
 	-DSRCDIR=\"$(top_srcdir)\" \
@@ -79,7 +79,7 @@ xfwm4_tweaks_settings_LDADD = \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
-	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCONF_LIBS)
 
 INCLUDES = \
