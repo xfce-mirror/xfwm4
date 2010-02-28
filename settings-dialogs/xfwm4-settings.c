@@ -878,8 +878,13 @@ xfwm_settings_load_themes (XfwmSettings *settings)
 
               if (G_UNLIKELY (g_str_equal (active_theme_name, file)))
                 {
+                  GtkTreePath *path = gtk_tree_model_get_path (model, &iter);
+
                   gtk_tree_selection_select_iter (gtk_tree_view_get_selection (GTK_TREE_VIEW (view)),
                                                   &iter);
+                  gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (view), path, NULL, TRUE, 0.5, 0.5);
+
+                  gtk_tree_path_free (path);
                 }
             }
 
