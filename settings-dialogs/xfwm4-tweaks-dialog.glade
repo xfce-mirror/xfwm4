@@ -1135,6 +1135,7 @@ when switching via keyboard shortcuts</property>
               <object class="GtkButton" id="button2">
                 <property name="label" context="yes">gtk-help</property>
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
