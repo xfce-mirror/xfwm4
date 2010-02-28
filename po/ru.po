@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 18:05+0100\n"
+"POT-Creation-Date: 2010-02-28 18:05+0100\n"
 "PO-Revision-Date: 2009-05-13 12:02+0400\n"
 "Last-Translator: Denis Koryavov <dkoryavov@yandex.ru>\n"
 "Language-Team: Russian\n"
@@ -386,9 +386,8 @@ msgid "Cycle windows (Reverse)"
 msgstr "Переключать окна (в обратном направлении) "
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Переключится на рабочее место окна "
+msgstr "Переключить окно этого приложения"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Switch application"
@@ -627,12 +626,12 @@ msgstr "Не удалось запустить менеджер настроек
 msgid "Could not create the settings dialog."
 msgstr "Невозможно отобразить диалоговое окно со свойствами программы. "
 
-#: ../settings-dialogs/xfwm4-settings.c:1858
-#: ../settings-dialogs/xfwm4-settings.c:1859
+#: ../settings-dialogs/xfwm4-settings.c:1864
+#: ../settings-dialogs/xfwm4-settings.c:1865
 msgid "Reset to Defaults"
 msgstr "Сбросить на стандартные настройки "
 
-#: ../settings-dialogs/xfwm4-settings.c:1860
+#: ../settings-dialogs/xfwm4-settings.c:1866
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "Данное действие сбросит все значения горячих клавиш к их первоначальным значениям. Вы действительно хотите продолжить? "
 
