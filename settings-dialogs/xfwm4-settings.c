@@ -988,13 +988,23 @@ main (int    argc,
   if (G_UNLIKELY (opt_socket_id == 0))
     {
       dialog = xfwm_settings_create_dialog (settings);
-      gtk_dialog_run (GTK_DIALOG (dialog));
+      gtk_widget_show (dialog);
+      g_signal_connect (dialog, "response", G_CALLBACK (gtk_main_quit), NULL);
+
+      /* To prevent the settings dialog to be saved in the session */
+      gdk_set_sm_client_id ("FAKE ID");
+
+      gtk_main ();
+
       gtk_widget_destroy (dialog);
     }
   else
     {
       plug = xfwm_settings_create_plug (settings, opt_socket_id);
       g_signal_connect (plug, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
+
+      /* To prevent the settings dialog to be saved in the session */
+      gdk_set_sm_client_id ("FAKE ID");
 
       /* Stop startup notification */
       gdk_notify_startup_complete ();

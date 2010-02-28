@@ -407,10 +407,13 @@ main(int argc, gchar **argv)
 
         if(opt_socket_id == 0) {
             dialog = GTK_WIDGET (gtk_builder_get_object (builder, "main-dialog"));
+            gtk_widget_show (dialog);
+            g_signal_connect (dialog, "response", G_CALLBACK (gtk_main_quit), NULL);
 
-            while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
-                /* FIXME: launch help */
-            }
+            /* To prevent the settings dialog to be saved in the session */
+            gdk_set_sm_client_id ("FAKE ID");
+
+            gtk_main ();
 
             gtk_widget_destroy(dialog);
         } else {
@@ -423,6 +426,9 @@ main(int argc, gchar **argv)
             plug_child = GTK_WIDGET (gtk_builder_get_object (builder, "plug-child"));
             gtk_widget_reparent (plug_child, plug);
             gtk_widget_show (plug_child);
+
+            /* To prevent the settings dialog to be saved in the session */
+            gdk_set_sm_client_id ("FAKE ID");
 
             /* Stop startup notification */
             gdk_notify_startup_complete ();
