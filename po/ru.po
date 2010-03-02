@@ -386,6 +386,7 @@ msgid "Cycle windows (Reverse)"
 msgstr "Переключать окна (в обратном направлении) "
 
 #: ../settings-dialogs/xfwm4-settings.c:245
+#, fuzzy
 msgid "Switch window for same application"
 msgstr "Переключить окно этого приложения"
 
