@@ -18,10 +18,9 @@ xfwm4_workspace_settings_SOURCES = \
 xfwm4_workspace_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
-	$(GLADE_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
-	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
@@ -32,10 +31,9 @@ xfwm4_workspace_settings_CFLAGS = \
 xfwm4_workspace_settings_LDADD = \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
-	$(GLADE_LIBS) \
 	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
-	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCONF_LIBS) \
 	$(LIBWNCK_LIBS)
 
@@ -47,9 +45,8 @@ xfwm4_settings_SOURCES = \
 xfwm4_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
-	$(GLADE_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
-	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCE4KBD_PRIVATE_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
@@ -59,9 +56,8 @@ xfwm4_settings_CFLAGS = \
 xfwm4_settings_LDADD = \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
-	$(GLADE_LIBS) \
 	$(DBUS_GLIB_LIBS) \
-	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4KBD_PRIVATE_LIBS) \
 	$(LIBXFCONF_LIBS)
 
@@ -72,9 +68,8 @@ xfwm4_tweaks_settings_SOURCES = \
 xfwm4_tweaks_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
-	$(GLADE_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
-	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
 	-DSRCDIR=\"$(top_srcdir)\" \
@@ -83,9 +78,8 @@ xfwm4_tweaks_settings_CFLAGS = \
 xfwm4_tweaks_settings_LDADD = \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
-	$(GLADE_LIBS) \
 	$(DBUS_GLIB_LIBS) \
-	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCONF_LIBS)
 
 INCLUDES = \
@@ -95,18 +89,18 @@ if MAINTAINER_MODE
 
 BUILT_SOURCES = \
 monitor-icon.h \
-xfwm4-dialog_glade.h \
-xfwm4-tweaks-dialog_glade.h \
-xfwm4-workspace-dialog_glade.h
+xfwm4-dialog_ui.h \
+xfwm4-tweaks-dialog_ui.h \
+xfwm4-workspace-dialog_ui.h
 
-xfwm4-workspace-dialog_glade.h: xfwm4-workspace-dialog.glade
-	exo-csource --static --strip-comments --strip-content --name=workspace_dialog_glade $< >$@
+xfwm4-workspace-dialog_ui.h: xfwm4-workspace-dialog.glade
+	exo-csource --static --strip-comments --strip-content --name=workspace_dialog_ui $< >$@
 
-xfwm4-dialog_glade.h: xfwm4-dialog.glade
-	exo-csource --static --strip-comments --strip-content --name=xfwm4_dialog_glade $< >$@
+xfwm4-dialog_ui.h: xfwm4-dialog.glade
+	exo-csource --static --strip-comments --strip-content --name=xfwm4_dialog_ui $< >$@
 
-xfwm4-tweaks-dialog_glade.h: xfwm4-tweaks-dialog.glade
-	exo-csource --static --strip-comments --strip-content --name=tweaks_dialog_glade $< >$@
+xfwm4-tweaks-dialog_ui.h: xfwm4-tweaks-dialog.glade
+	exo-csource --static --strip-comments --strip-content --name=tweaks_dialog_ui $< >$@
 
 monitor-icon.h: $(srcdir)/monitor-icon.png
 	gdk-pixbuf-csource --raw --build-list \

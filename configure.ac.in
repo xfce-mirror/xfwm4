@@ -12,8 +12,8 @@ m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_ve
 
 m4_define([gtk_minimum_version], [2.10.0])
 m4_define([xfce_minimum_version], [4.6.0])
-m4_define([libxfcegui4_minimum_version], [4.6.0])
-m4_define([libxfce4kbd_private_minimum_version], [4.6.0])
+m4_define([libxfce4ui_minimum_version], [4.7.0])
+m4_define([libxfce4kbd_private_minimum_version], [4.7.0])
 m4_define([xfconf_minimum_version], [4.6.0])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.12])
@@ -70,10 +70,9 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [gtk_minimum_version])
-XDT_CHECK_PACKAGE([GLADE], [libglade-2.0], [2.0.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
-XDT_CHECK_PACKAGE([LIBXFCEGUI4], libxfcegui4-1.0, [libxfcegui4_minimum_version])
-XDT_CHECK_PACKAGE([LIBXFCE4KBD_PRIVATE], libxfce4kbd-private-1.0, [libxfce4kbd_private_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], libxfce4ui-1, [libxfce4ui_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCE4KBD_PRIVATE], libxfce4kbd-private-2, [libxfce4kbd_private_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCONF], libxfconf-0, [xfconf_minimum_version])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([DBUS], [dbus-1], [1.0.0])

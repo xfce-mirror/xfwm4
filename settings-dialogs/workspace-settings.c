@@ -26,14 +26,13 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 #include <dbus/dbus-glib.h>
 #include <libwnck/libwnck.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
-#include "xfwm4-workspace-dialog_glade.h"
+#include "xfwm4-workspace-dialog_ui.h"
 #include "monitor-icon.h"
 
 #define WORKSPACES_CHANNEL         "xfwm4"
@@ -216,7 +215,7 @@ xfconf_workspace_names_changed(XfconfChannel *channel,
 }
 
 static void
-workspace_dialog_setup_names_treeview(GladeXML *gxml,
+workspace_dialog_setup_names_treeview(GtkBuilder *builder,
                                       XfconfChannel *channel)
 {
     GtkWidget *treeview, *dialog;
@@ -228,13 +227,13 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
     GtkTreeIter iter;
     gchar **names;
 
-    dialog = glade_xml_get_widget(gxml, "change_name_dialog");
+    dialog = GTK_WIDGET (gtk_builder_get_object(builder, "change_name_dialog"));
     g_object_set_data(G_OBJECT(dialog), "name-entry",
-                      glade_xml_get_widget(gxml, "entry_name"));
+                      GTK_WIDGET (gtk_builder_get_object(builder, "entry_name")));
     g_signal_connect(G_OBJECT(dialog), "delete-event",
                      G_CALLBACK(gtk_true), NULL);
 
-    treeview = glade_xml_get_widget(gxml, "treeview_ws_names");
+    treeview = GTK_WIDGET (gtk_builder_get_object(builder, "treeview_ws_names"));
 
     ls = gtk_list_store_new(N_COLS, G_TYPE_INT, G_TYPE_STRING);
 
@@ -293,7 +292,7 @@ workspace_dialog_setup_names_treeview(GladeXML *gxml,
 }
 
 static void
-workspace_dialog_configure_widgets (GladeXML *gxml,
+workspace_dialog_configure_widgets (GtkBuilder *builder,
                                     XfconfChannel *channel)
 {
     GtkWidget *vbox;
@@ -303,16 +302,16 @@ workspace_dialog_configure_widgets (GladeXML *gxml,
 
     gint wmax, hmax;
 
-    GtkWidget *workspace_count_spinbutton = glade_xml_get_widget (gxml, "workspace_count_spinbutton");
+    GtkWidget *workspace_count_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "workspace_count_spinbutton"));
 
-    GtkWidget *margin_top_spinbutton = glade_xml_get_widget (gxml, "margin_top_spinbutton");
-    GtkWidget *margin_right_spinbutton = glade_xml_get_widget (gxml, "margin_right_spinbutton");
-    GtkWidget *margin_bottom_spinbutton = glade_xml_get_widget (gxml, "margin_bottom_spinbutton");
-    GtkWidget *margin_left_spinbutton = glade_xml_get_widget (gxml, "margin_left_spinbutton");
+    GtkWidget *margin_top_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "margin_top_spinbutton"));
+    GtkWidget *margin_right_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "margin_right_spinbutton"));
+    GtkWidget *margin_bottom_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "margin_bottom_spinbutton"));
+    GtkWidget *margin_left_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "margin_left_spinbutton"));
 
     /* Set monitor icon */
-    monitor = xfce_inline_icon_at_size (monitor_icon_data, -1, -1);
-    image = glade_xml_get_widget (gxml, "monitor_icon");
+    monitor = gdk_pixbuf_new_from_inline (-1, monitor_icon_data, TRUE, NULL);
+    image = GTK_WIDGET (gtk_builder_get_object (builder, "monitor_icon"));
     gtk_image_set_from_pixbuf (GTK_IMAGE (image), monitor);
     g_object_unref (monitor);
 
@@ -348,9 +347,9 @@ workspace_dialog_configure_widgets (GladeXML *gxml,
                             G_TYPE_INT,
                             (GObject *)margin_left_spinbutton, "value");
 
-    workspace_dialog_setup_names_treeview(gxml, channel);
+    workspace_dialog_setup_names_treeview(builder, channel);
 
-    vbox = glade_xml_get_widget (gxml, "main-vbox");
+    vbox = GTK_WIDGET (gtk_builder_get_object (builder, "main-vbox"));
 
     gtk_widget_show_all(vbox);
 }
@@ -367,7 +366,7 @@ static GOptionEntry entries[] =
 int
 main(int argc, gchar **argv)
 {
-    GladeXML *gxml;
+    GtkBuilder *builder;
     GtkWidget *dialog;
     GtkWidget *plug;
     GtkWidget *plug_child;
@@ -400,19 +399,21 @@ main(int argc, gchar **argv)
 
     channel = xfconf_channel_get(WORKSPACES_CHANNEL);
 
-    gxml = glade_xml_new_from_buffer (workspace_dialog_glade,
-                                      workspace_dialog_glade_length,
-                                      NULL, NULL);
+    builder = gtk_builder_new();
+    gtk_builder_add_from_string(builder, workspace_dialog_ui, workspace_dialog_ui_length, NULL);
 
-    if(gxml) {
-        workspace_dialog_configure_widgets (gxml, channel);
+    if(builder) {
+        workspace_dialog_configure_widgets (builder, channel);
 
         if(opt_socket_id == 0) {
-            dialog = glade_xml_get_widget (gxml, "main-dialog");
+            dialog = GTK_WIDGET (gtk_builder_get_object (builder, "main-dialog"));
+            gtk_widget_show (dialog);
+            g_signal_connect (dialog, "response", G_CALLBACK (gtk_main_quit), NULL);
 
-            while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
-                /* FIXME: launch help */
-            }
+            /* To prevent the settings dialog to be saved in the session */
+            gdk_set_sm_client_id ("FAKE ID");
+
+            gtk_main ();
 
             gtk_widget_destroy(dialog);
         } else {
@@ -422,9 +423,12 @@ main(int argc, gchar **argv)
             gtk_widget_show (plug);
 
             /* Get plug child widget */
-            plug_child = glade_xml_get_widget (gxml, "plug-child");
+            plug_child = GTK_WIDGET (gtk_builder_get_object (builder, "plug-child"));
             gtk_widget_reparent (plug_child, plug);
             gtk_widget_show (plug_child);
+
+            /* To prevent the settings dialog to be saved in the session */
+            gdk_set_sm_client_id ("FAKE ID");
 
             /* Stop startup notification */
             gdk_notify_startup_complete ();

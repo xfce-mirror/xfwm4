@@ -37,11 +37,10 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
-#include "xfwm4-tweaks-dialog_glade.h"
+#include "xfwm4-tweaks-dialog_ui.h"
 
 static GdkNativeWindow opt_socket_id = 0;
 static gboolean opt_version = FALSE;
@@ -143,7 +142,7 @@ cb_urgent_blink_button_toggled (GtkToggleButton *toggle, GtkWidget *repeat_urgen
 }
 
 static void
-wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
+wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
 {
     GtkWidget *vbox;
     GtkTreeIter iter;
@@ -157,53 +156,53 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
     guint n;
 
     /* Cycling tab */
-    GtkWidget *cycle_workspaces_check = glade_xml_get_widget (gxml, "cycle_workspaces_check");
-    GtkWidget *cycle_hidden_check = glade_xml_get_widget (gxml, "cycle_hidden_check");
-    GtkWidget *cycle_minimum_check = glade_xml_get_widget (gxml, "cycle_minimum_check");
-    GtkWidget *cycle_draw_frame = glade_xml_get_widget (gxml, "cycle_draw_frame");
+    GtkWidget *cycle_workspaces_check = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_workspaces_check"));
+    GtkWidget *cycle_hidden_check = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_hidden_check"));
+    GtkWidget *cycle_minimum_check = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_minimum_check"));
+    GtkWidget *cycle_draw_frame = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_draw_frame"));
 
     /* Focus tab */
-    GtkWidget *prevent_focus_stealing_check = glade_xml_get_widget (gxml, "prevent_focus_stealing_check");
-    GtkWidget *focus_hint_check = glade_xml_get_widget (gxml, "focus_hint_check");
+    GtkWidget *prevent_focus_stealing_check = GTK_WIDGET (gtk_builder_get_object (builder, "prevent_focus_stealing_check"));
+    GtkWidget *focus_hint_check = GTK_WIDGET (gtk_builder_get_object (builder, "focus_hint_check"));
 
-    GtkWidget *activate_action_bring_option = glade_xml_get_widget (gxml, "activate_action_bring_option");
-    GtkWidget *activate_action_switch_option = glade_xml_get_widget (gxml, "activate_action_switch_option");
-    GtkWidget *activate_action_none_option = glade_xml_get_widget (gxml, "activate_action_none_option");
+    GtkWidget *activate_action_bring_option = GTK_WIDGET (gtk_builder_get_object (builder, "activate_action_bring_option"));
+    GtkWidget *activate_action_switch_option = GTK_WIDGET (gtk_builder_get_object (builder, "activate_action_switch_option"));
+    GtkWidget *activate_action_none_option = GTK_WIDGET (gtk_builder_get_object (builder, "activate_action_none_option"));
 
     /* Accessibility tab */
-    GtkWidget *easy_click_combo_box = glade_xml_get_widget (gxml, "easy_click_combo_box");
-    GtkWidget *raise_with_any_button_check = glade_xml_get_widget (gxml, "raise_with_any_button_check");
-    GtkWidget *borderless_maximize_check = glade_xml_get_widget (gxml, "borderless_maximize_check");
-    GtkWidget *restore_on_move_check = glade_xml_get_widget (gxml, "restore_on_move_check");
-    GtkWidget *snap_resist_check = glade_xml_get_widget (gxml, "snap_resist_check");
-    GtkWidget *urgent_blink = glade_xml_get_widget (gxml, "urgent_blink");
-    GtkWidget *repeat_urgent_blink = glade_xml_get_widget (gxml, "repeat_urgent_blink");
+    GtkWidget *easy_click_combo_box = GTK_WIDGET (gtk_builder_get_object (builder, "easy_click_combo_box"));
+    GtkWidget *raise_with_any_button_check = GTK_WIDGET (gtk_builder_get_object (builder, "raise_with_any_button_check"));
+    GtkWidget *borderless_maximize_check = GTK_WIDGET (gtk_builder_get_object (builder, "borderless_maximize_check"));
+    GtkWidget *restore_on_move_check = GTK_WIDGET (gtk_builder_get_object (builder, "restore_on_move_check"));
+    GtkWidget *snap_resist_check = GTK_WIDGET (gtk_builder_get_object (builder, "snap_resist_check"));
+    GtkWidget *urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "urgent_blink"));
+    GtkWidget *repeat_urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "repeat_urgent_blink"));
 
     /* Workspaces tab */
-    GtkWidget *scroll_workspaces_check = glade_xml_get_widget (gxml, "scroll_workspaces_check");
-    GtkWidget *toggle_workspaces_check = glade_xml_get_widget (gxml, "toggle_workspaces_check");
-    GtkWidget *wrap_layout_check = glade_xml_get_widget (gxml, "wrap_layout_check");
-    GtkWidget *wrap_cycle_check = glade_xml_get_widget (gxml, "wrap_cycle_check");
+    GtkWidget *scroll_workspaces_check = GTK_WIDGET (gtk_builder_get_object (builder, "scroll_workspaces_check"));
+    GtkWidget *toggle_workspaces_check = GTK_WIDGET (gtk_builder_get_object (builder, "toggle_workspaces_check"));
+    GtkWidget *wrap_layout_check = GTK_WIDGET (gtk_builder_get_object (builder, "wrap_layout_check"));
+    GtkWidget *wrap_cycle_check = GTK_WIDGET (gtk_builder_get_object (builder, "wrap_cycle_check"));
 
     /* Placement tab */
-    GtkWidget *placement_ratio_scale = (GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "placement_ratio_scale")));
-    GtkWidget *placement_center_option = glade_xml_get_widget (gxml, "placement_center_option");
-    GtkWidget *placement_mouse_option = glade_xml_get_widget (gxml, "placement_mouse_option");
+    GtkWidget *placement_ratio_scale = (GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "placement_ratio_scale"))));
+    GtkWidget *placement_center_option = GTK_WIDGET (gtk_builder_get_object (builder, "placement_center_option"));
+    GtkWidget *placement_mouse_option = GTK_WIDGET (gtk_builder_get_object (builder, "placement_mouse_option"));
 
     /* Compositing tab */
-    GtkWidget *use_compositing_check = glade_xml_get_widget (gxml, "use_compositing_check");
-    GtkWidget *use_compositing_box = glade_xml_get_widget (gxml, "use_compositing_box");
+    GtkWidget *use_compositing_check = GTK_WIDGET (gtk_builder_get_object (builder, "use_compositing_check"));
+    GtkWidget *use_compositing_box = GTK_WIDGET (gtk_builder_get_object (builder, "use_compositing_box"));
 
-    GtkWidget *unredirect_overlays_check = glade_xml_get_widget (gxml, "unredirect_overlays_check");
-    GtkWidget *show_frame_shadow_check = glade_xml_get_widget (gxml, "show_frame_shadow_check");
-    GtkWidget *show_popup_shadow_check = glade_xml_get_widget (gxml, "show_popup_shadow_check");
-    GtkWidget *show_dock_shadow_check = glade_xml_get_widget (gxml, "show_dock_shadow_check");
+    GtkWidget *unredirect_overlays_check = GTK_WIDGET (gtk_builder_get_object (builder, "unredirect_overlays_check"));
+    GtkWidget *show_frame_shadow_check = GTK_WIDGET (gtk_builder_get_object (builder, "show_frame_shadow_check"));
+    GtkWidget *show_popup_shadow_check = GTK_WIDGET (gtk_builder_get_object (builder, "show_popup_shadow_check"));
+    GtkWidget *show_dock_shadow_check = GTK_WIDGET (gtk_builder_get_object (builder, "show_dock_shadow_check"));
 
-    GtkWidget *frame_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "frame_opacity_scale")));
-    GtkWidget *inactive_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "inactive_opacity_scale")));
-    GtkWidget *move_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "move_opacity_scale")));
-    GtkWidget *popup_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "popup_opacity_scale")));
-    GtkWidget *resize_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (glade_xml_get_widget (gxml, "resize_opacity_scale")));
+    GtkWidget *frame_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "frame_opacity_scale"))));
+    GtkWidget *inactive_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "inactive_opacity_scale"))));
+    GtkWidget *move_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "move_opacity_scale"))));
+    GtkWidget *popup_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "popup_opacity_scale"))));
+    GtkWidget *resize_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "resize_opacity_scale"))));
 
 
     /* Fill combo-box */
@@ -410,7 +409,7 @@ wm_tweaks_dialog_configure_widgets (GladeXML *gxml)
                             G_TYPE_INT,
                             (GObject *)popup_opacity_scale, "value");
 
-    vbox = glade_xml_get_widget (gxml, "main-vbox");
+    vbox = GTK_WIDGET (gtk_builder_get_object (builder, "main-vbox"));
     gtk_widget_show_all (vbox);
 
     g_free (easy_click);
@@ -430,7 +429,7 @@ main (int argc, gchar **argv)
     GtkWidget *dialog;
     GtkWidget *plug;
     GtkWidget *plug_child;
-    GladeXML *gxml;
+    GtkBuilder *builder;
     GError *cli_error = NULL;
     const gchar  *wm_name;
 
@@ -463,18 +462,25 @@ main (int argc, gchar **argv)
 
     xfconf_init (NULL);
 
-    gxml = glade_xml_new_from_buffer (tweaks_dialog_glade,
-                                      tweaks_dialog_glade_length,
-                                      NULL, NULL);
+    builder = gtk_builder_new ();
 
-    if (gxml)
+    gtk_builder_add_from_string (builder, tweaks_dialog_ui, tweaks_dialog_ui_length, NULL);
+
+    if (builder)
     {
-        wm_tweaks_dialog_configure_widgets (gxml);
+        wm_tweaks_dialog_configure_widgets (builder);
 
         if (opt_socket_id == 0)
         {
-            dialog = glade_xml_get_widget (gxml, "main-dialog");
-            gtk_dialog_run (GTK_DIALOG (dialog));
+            dialog = GTK_WIDGET (gtk_builder_get_object (builder, "main-dialog"));
+            gtk_widget_show (dialog);
+            g_signal_connect (dialog, "response", G_CALLBACK (gtk_main_quit), NULL);
+
+            /* To prevent the settings dialog to be saved in the session */
+            gdk_set_sm_client_id ("FAKE ID");
+
+            gtk_main ();
+
             gtk_widget_destroy (dialog);
         }
         else
@@ -485,9 +491,12 @@ main (int argc, gchar **argv)
             gtk_widget_show (plug);
 
             /* Get plug child widget */
-            plug_child = glade_xml_get_widget (gxml, "plug-child");
+            plug_child = GTK_WIDGET (gtk_builder_get_object (builder, "plug-child"));
             gtk_widget_reparent (plug_child, plug);
             gtk_widget_show (plug_child);
+
+            /* To prevent the settings dialog to be saved in the session */
+            gdk_set_sm_client_id ("FAKE ID");
 
             /* Stop startup notification */
             gdk_notify_startup_complete ();
@@ -496,7 +505,7 @@ main (int argc, gchar **argv)
             gtk_main ();
         }
 
-        g_object_unref (gxml);
+        g_object_unref (builder);
     }
 
     xfconf_shutdown ();

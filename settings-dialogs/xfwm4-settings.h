@@ -22,7 +22,6 @@
 #define __XFWM_SETTINGS_H__
 
 #include <glib-object.h>
-#include <glade/glade.h>
 
 G_BEGIN_DECLS;
 
