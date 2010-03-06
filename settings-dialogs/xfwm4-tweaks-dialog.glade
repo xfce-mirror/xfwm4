@@ -1130,7 +1130,7 @@ when switching via keyboard shortcuts</property>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
-            <property name="layout_style">edge</property>
+            <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="button2">
                 <property name="label">gtk-help</property>
@@ -1144,6 +1144,7 @@ when switching via keyboard shortcuts</property>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">0</property>
+                <property name="secondary">True</property>
               </packing>
             </child>
             <child>
