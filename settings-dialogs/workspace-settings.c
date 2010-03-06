@@ -399,6 +399,9 @@ main(int argc, gchar **argv)
 
     channel = xfconf_channel_get(WORKSPACES_CHANNEL);
 
+    if (xfce_titled_dialog_get_type () == 0)
+      return 1;
+
     builder = gtk_builder_new();
     gtk_builder_add_from_string(builder, workspace_dialog_ui, workspace_dialog_ui_length, NULL);
 
