@@ -464,6 +464,9 @@ main (int argc, gchar **argv)
 
     builder = gtk_builder_new ();
 
+    if (xfce_titled_dialog_get_type () == 0)
+      return 1;
+
     gtk_builder_add_from_string (builder, tweaks_dialog_ui, tweaks_dialog_ui_length, NULL);
 
     if (builder)
