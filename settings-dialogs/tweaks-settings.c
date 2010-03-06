@@ -185,7 +185,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *wrap_cycle_check = GTK_WIDGET (gtk_builder_get_object (builder, "wrap_cycle_check"));
 
     /* Placement tab */
-    GtkWidget *placement_ratio_scale = (GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "placement_ratio_scale"))));
+    GtkWidget *placement_ratio_scale = GTK_WIDGET (gtk_builder_get_object (builder, "placement_ratio_scale"));
     GtkWidget *placement_center_option = GTK_WIDGET (gtk_builder_get_object (builder, "placement_center_option"));
     GtkWidget *placement_mouse_option = GTK_WIDGET (gtk_builder_get_object (builder, "placement_mouse_option"));
 
@@ -198,11 +198,11 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *show_popup_shadow_check = GTK_WIDGET (gtk_builder_get_object (builder, "show_popup_shadow_check"));
     GtkWidget *show_dock_shadow_check = GTK_WIDGET (gtk_builder_get_object (builder, "show_dock_shadow_check"));
 
-    GtkWidget *frame_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "frame_opacity_scale"))));
-    GtkWidget *inactive_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "inactive_opacity_scale"))));
-    GtkWidget *move_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "move_opacity_scale"))));
-    GtkWidget *popup_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "popup_opacity_scale"))));
-    GtkWidget *resize_opacity_scale =(GtkWidget *)gtk_range_get_adjustment (GTK_RANGE (GTK_WIDGET (gtk_builder_get_object (builder, "resize_opacity_scale"))));
+    GtkWidget *frame_opacity_scale = GTK_WIDGET (gtk_builder_get_object (builder, "frame_opacity_scale"));
+    GtkWidget *inactive_opacity_scale = GTK_WIDGET (gtk_builder_get_object (builder, "inactive_opacity_scale"));
+    GtkWidget *move_opacity_scale = GTK_WIDGET (gtk_builder_get_object (builder, "move_opacity_scale"));
+    GtkWidget *popup_opacity_scale = GTK_WIDGET (gtk_builder_get_object (builder, "popup_opacity_scale"));
+    GtkWidget *resize_opacity_scale = GTK_WIDGET (gtk_builder_get_object (builder, "resize_opacity_scale"));
 
 
     /* Fill combo-box */
@@ -364,7 +364,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/placement_ratio",
                             G_TYPE_INT,
-                            (GObject *)placement_ratio_scale, "value");
+                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (placement_ratio_scale)), "value");
 
     /* Compositing tab */
     xfconf_g_property_bind (xfwm4_channel,
@@ -391,23 +391,23 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/frame_opacity",
                             G_TYPE_INT,
-                            (GObject *)frame_opacity_scale, "value");
+                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (frame_opacity_scale)), "value");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/resize_opacity",
                             G_TYPE_INT,
-                            (GObject *)resize_opacity_scale, "value");
+                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (resize_opacity_scale)), "value");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/move_opacity",
                             G_TYPE_INT,
-                            (GObject *)move_opacity_scale, "value");
+                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (move_opacity_scale)), "value");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/inactive_opacity",
                             G_TYPE_INT,
-                            (GObject *)inactive_opacity_scale, "value");
+                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (inactive_opacity_scale)), "value");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/popup_opacity",
                             G_TYPE_INT,
-                            (GObject *)popup_opacity_scale, "value");
+                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (popup_opacity_scale)), "value");
 
     vbox = GTK_WIDGET (gtk_builder_get_object (builder, "main-vbox"));
     gtk_widget_show_all (vbox);
