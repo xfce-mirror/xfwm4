@@ -1,18 +1,11 @@
 bin_PROGRAMS = \
-xfwm4-settings  \
-xfwm4-tweaks-settings  \
-xfwm4-workspace-settings
-
-noinst_DATA = \
-	monitor-icon.png \
-	monitor-icon.svg \
-	monitor-icon.h
+	xfwm4-settings  \
+	xfwm4-tweaks-settings  \
+	xfwm4-workspace-settings
 
 xfwm4_workspace_settings_SOURCES = \
 	workspace-settings.c \
-	xfwm4-workspace-dialog_glade.h \
-	monitor-icon.png \
-	monitor-icon.svg \
+	xfwm4-workspace-dialog_ui.h \
 	monitor-icon.h
 
 xfwm4_workspace_settings_CFLAGS = \
@@ -40,7 +33,7 @@ xfwm4_workspace_settings_LDADD = \
 xfwm4_settings_SOURCES = \
 	xfwm4-settings.c \
 	xfwm4-settings.h \
-	xfwm4-dialog_glade.h
+	xfwm4-dialog_ui.h
 
 xfwm4_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
@@ -63,7 +56,7 @@ xfwm4_settings_LDADD = \
 
 xfwm4_tweaks_settings_SOURCES = \
 	tweaks-settings.c \
-	xfwm4-tweaks-dialog_glade.h
+	xfwm4-tweaks-dialog_ui.h
 
 xfwm4_tweaks_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
@@ -88,10 +81,10 @@ INCLUDES = \
 if MAINTAINER_MODE
 
 BUILT_SOURCES = \
-monitor-icon.h \
-xfwm4-dialog_ui.h \
-xfwm4-tweaks-dialog_ui.h \
-xfwm4-workspace-dialog_ui.h
+	monitor-icon.h \
+	xfwm4-dialog_ui.h \
+	xfwm4-tweaks-dialog_ui.h \
+	xfwm4-workspace-dialog_ui.h
 
 xfwm4-workspace-dialog_ui.h: xfwm4-workspace-dialog.glade
 	exo-csource --static --strip-comments --strip-content --name=workspace_dialog_ui $< >$@
@@ -121,7 +114,8 @@ EXTRA_DIST = \
 	$(desktop_in_files)  \
 	xfwm4-workspace-dialog.glade  \
 	xfwm4-tweaks-dialog.glade  \
-	xfwm4-dialog.glade
+	xfwm4-dialog.glade \
+	monitor-icon.png
 
 DISTCLEANFILES = \
 	$(desktop_DATA)
