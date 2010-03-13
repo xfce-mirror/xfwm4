@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-10 00:05+0100\n"
+"POT-Creation-Date: 2010-03-13 18:05+0100\n"
 "PO-Revision-Date: 2010-03-13 18:58+0530\n"
 "Last-Translator: Akila Wajirasena <akila.wajirasena@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -712,7 +712,7 @@ msgstr "කිසිවක් කරන්න එපා (_n)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
-msgstr ""
+msgstr "විහිදී ඇති විට කවුළු රාමුව සඟවන්න (_f)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
@@ -764,15 +764,16 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _regular windows"
-msgstr ""
+msgstr "සාමාන්‍ය කවුළු යටින් සෙවනැලි පෙන්වන්න (_r)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#, fuzzy
 msgid "Show shadows under pop_up windows"
-msgstr ""
+msgstr "පැනුම් කවුලළු යටින් සෙවනැලි පෙන්වන්න (_u)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Switch to win_dow's workspace"
-msgstr ""
+msgstr "කවුළුවේ වැඩ අවකාශය වෙත මාරුවන්න (_d)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 #, fuzzy
