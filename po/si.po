@@ -156,8 +156,9 @@ msgid "<b>Window _shortcuts</b>"
 msgstr "<b>කවුළු කෙටිමං (_s)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr ""
+msgstr " <b>කවුළු එකට ඇදීම</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Wrap workspaces</b>"
@@ -199,11 +200,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
+msgstr "කවුළු වෙත යොමු වූ පසු ස්වයංක්‍රීයවම ඒවා නගන්න (_r)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr ""
+msgstr "අලුතින් ඇතිවූ කවුළු වෙත ස්වයංක්‍රීයවම යොමු වෙන්න (_n)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 #, fuzzy
@@ -731,7 +732,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Opaci_ty of window decorations:"
-msgstr ""
+msgstr "කවුළු අලංකරණයේ පාරාන්ධතාව (_t): "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 #, fuzzy
@@ -1016,3 +1017,5 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+"උදව් සංවාද කොටුව ඉපදවීමට නොහැක: %s\n"
+"\r\n"
