@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -95,7 +95,7 @@ msgstr "කවුළු කළමනාකරු"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Fine-tune window behaviour and effects"
-msgstr ""
+msgstr "Fine-tune window behaviour and effects"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -134,12 +134,14 @@ msgid "<b>New window focus</b>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr ""
+msgstr "<b>ක්ලික් කිරිමේදී නගන්න</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
+#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr ""
+msgstr "<b>යොමු විමේදී නගන්න</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -204,8 +206,9 @@ msgid "Automatically give focus to _newly created windows"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#, fuzzy
 msgid "Clic_k to focus"
-msgstr ""
+msgstr "යොමුවීම සඳහා ක්ලික් කරන්න"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
@@ -232,17 +235,16 @@ msgid "Hidden"
 msgstr "සැඟවුණු"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Hide"
 msgstr "සඟවන්න"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
-msgstr ""
+msgstr "එහාමෙහා යාමේදී කවුළු අන්තර්ගතය සඟවන්න (_m) "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Hide content of windows when _resizing"
-msgstr ""
+msgstr "ප්‍රමානය වෙනස් කිරීමේදී කවුළු අන්තර්ගතය සඟවන්න (_r)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Ke_yboard"
@@ -258,8 +260,9 @@ msgid "Menu"
 msgstr "මෙනුව"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr ""
+msgstr "යෙදුම් කවුළුව තුල ක්ලික් කිරීමේදී කවුළුව නගන්න (_i)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #, fuzzy
@@ -275,8 +278,9 @@ msgid "Snap windows to screen _border"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#, fuzzy
 msgid "Stick"
-msgstr ""
+msgstr "ඇලවෙන්න"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
@@ -284,7 +288,7 @@ msgstr "ක්‍රියාව සිදුවන්නේ නාම තීර
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
-msgstr ""
+msgstr "මෙම කවුළු සිරසිය ඉවත් කළ නොහැක"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
@@ -308,8 +312,9 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#, fuzzy
 msgid "_Focus"
-msgstr ""
+msgstr "යොමුව (_F)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
@@ -321,8 +326,9 @@ msgstr "විලාසය (_S)"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
+#, fuzzy
 msgid "Shade window"
-msgstr ""
+msgstr "කවුළුව අඳුරු කරන්න."
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
@@ -415,16 +421,19 @@ msgid "Resize window"
 msgstr "කවුළු ප්‍රමාණය වෙනස් කරන්න"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
+#, fuzzy
 msgid "Stick window"
-msgstr ""
+msgstr "කවුළුව අලවන්න"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
+#, fuzzy
 msgid "Raise window"
-msgstr ""
+msgstr "කවුළුව නගන්න"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
+#, fuzzy
 msgid "Lower window"
-msgstr ""
+msgstr "කවුළුව හෙලන්න"
 
 # පුරවන්න
 #: ../settings-dialogs/xfwm4-settings.c:258
@@ -439,8 +448,9 @@ msgid "Fill window vertically"
 msgstr "කවුළු සිරස්ව පිහිටුවන්න"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
+#, fuzzy
 msgid "Toggle above"
-msgstr ""
+msgstr "ඉහළ සමඟ මාරු වන්න"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle fullscreen"
@@ -629,7 +639,7 @@ msgstr "කෙටිමඟ "
 #: ../settings-dialogs/xfwm4-settings.c:977
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "xfconf ඇරභීමට නොහැකිවිය. හේතුව: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:988
 msgid "Could not create the settings dialog."
@@ -706,7 +716,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "හදිසි කවුළු "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Key used to _grab and move windows:"
@@ -791,7 +801,7 @@ msgstr "ප්‍රවේශ්‍යතාව"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Bring window on current workspace"
-msgstr ""
+msgstr "වත්මන් වැඩ අවකායට කවුළුව ගෙනෙන්න (_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
