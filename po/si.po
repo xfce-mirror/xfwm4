@@ -131,7 +131,7 @@ msgstr "<b>යොමු ආකෘතිය</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
-msgstr ""
+msgstr "<b>නව කවුළු යොමුව</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 #, fuzzy
@@ -153,7 +153,7 @@ msgstr "<b>සිරසි ෆොන්ටය (_t)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Window _shortcuts</b>"
-msgstr ""
+msgstr "<b>කවුළු කෙටිමං (_s)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
@@ -220,7 +220,7 @@ msgstr "වසන්න"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
-msgstr ""
+msgstr "යොමුවූ කවුළුව නැගීමට පෙර පමාව (_b): "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Dis_tance:"
@@ -228,7 +228,7 @@ msgstr "දුර (_s):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Focus follows _mouse"
-msgstr ""
+msgstr "යොමුවීම මූසිකය අනුගමනය කරයි (_m)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
@@ -270,12 +270,14 @@ msgid "Shade"
 msgstr "අඳුරු කිරීම"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#, fuzzy
 msgid "Snap windows to other _windows"
-msgstr ""
+msgstr "කවුළු අනෙක් කවුළු වලට අද්දවන්න (_w)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr ""
+msgstr "කවුළු තිර දාරය වෙත අද්දවන්න (_w)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 #, fuzzy
@@ -610,7 +612,7 @@ msgstr "වැඩ අවකාශයක් එක් කරන්න "
 
 #: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add adjacent workspace"
-msgstr ""
+msgstr "යාබද වැඩ අවකාශයක් එක් කරන්න"
 
 # last = final or last = previous
 #: ../settings-dialogs/xfwm4-settings.c:301
@@ -696,7 +698,7 @@ msgstr "චක්‍රීය ලෙස යෑම (_y)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle _through windows on all workspaces"
-msgstr ""
+msgstr "සියලු වැඩ අවකාශ වල ඇති කවුළු හරහා චක්‍රියව යන්න (_t)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
