@@ -126,9 +126,8 @@ msgid "<b>Double click _action</b>"
 msgstr "<b>ද්වි ක්ලික්  ක්‍රියාව (_a)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "<b>යොමු ආකෘතිය /b>"
+msgstr "<b>යොමු ආකෘතිය</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
