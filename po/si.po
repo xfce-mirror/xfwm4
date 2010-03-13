@@ -161,8 +161,9 @@ msgid "<b>Windows snapping</b>"
 msgstr " <b>කවුළු එකට ඇදීම</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr ""
+msgstr "<b> වැඩතල වෙළන්න</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
@@ -298,12 +299,14 @@ msgid "Title"
 msgstr "සිරැසිය"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
+msgstr "තිරයෙන් පිටතට කවුළුවක් ඇදගෙන යාමේදී වැඩතල වෙළන්න (_d)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
+msgstr "දක්වනය තිරයේ දාරයට ගියවිට වැඩතල වෙළන්න (_p)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
