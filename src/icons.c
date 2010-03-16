@@ -38,6 +38,45 @@
 #include "display.h"
 #include "hints.h"
 
+/*
+ * create a GdkPixbuf from inline data and scale it to a given size
+ */
+static GdkPixbuf *
+inline_icon_at_size (const guint8 *data,
+                          int width,
+                          int height)
+{
+    GdkPixbuf *base;
+
+    base = gdk_pixbuf_new_from_inline (-1, data, FALSE, NULL);
+
+    g_return_val_if_fail (base, NULL);
+
+    if ((width < 0 && height < 0)
+        || (gdk_pixbuf_get_width (base) == width
+            && gdk_pixbuf_get_height (base) == height))
+    {
+        return base;
+    }
+    else
+    {
+        GdkPixbuf *scaled;
+
+        scaled = gdk_pixbuf_scale_simple (base,
+                                          width >
+                                          0 ? width : gdk_pixbuf_get_width (base),
+                                          height >
+                                          0 ? height :
+                                          gdk_pixbuf_get_height (base),
+                                          GDK_INTERP_BILINEAR);
+
+        g_object_unref (G_OBJECT (base));
+
+        return scaled;
+    }
+}
+
+
 static gboolean
 find_largest_sizes (gulong * data, gulong nitems, int *width, int *height)
 {
@@ -521,5 +560,5 @@ getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
         }
     }
 
-    return NULL; /*xfce_inline_icon_at_size (default_icon_data, width, height);*/
+    inline_icon_at_size (default_icon_data, width, height);
 }
