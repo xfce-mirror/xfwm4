@@ -560,5 +560,5 @@ getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
         }
     }
 
-    inline_icon_at_size (default_icon_data, width, height);
+    return inline_icon_at_size (default_icon_data, width, height);
 }
