@@ -179,7 +179,6 @@ msgstr "<i>Κοντό</i>"
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
 msgstr "<i>Μικρό</i>"
 
@@ -631,7 +630,6 @@ msgstr "Αυτό θα επαναφέρει όλες τις συντομεύσε�
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Large</i>"
 msgstr "<i>Μεγάλο</i>"
 
