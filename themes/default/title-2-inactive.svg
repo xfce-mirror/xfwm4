@@ -27,7 +27,7 @@
          offset="0"
          id="stop3145" />
       <stop
-         style="stop-color:#000000;stop-opacity:0.10;"
+         style="stop-color:#ffffff;stop-opacity:0.00;"
          offset="1"
          id="stop3147" />
     </linearGradient>
@@ -51,11 +51,15 @@
       <stop
          id="stop5849"
          offset="0"
-         style="stop-color:#ffffff;stop-opacity:0.50;" />
+         style="stop-color:#ffffff;stop-opacity:1.00;" />
+      <stop
+         id="stop5851"
+         offset="0.5"
+         style="stop-color:#ffffff;stop-opacity:0.20;" />
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#000000;stop-opacity:0.10;" />
+         style="stop-color:#000000;stop-opacity:0.20;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -64,7 +68,7 @@
        x1="0"
        y1="1"
        x2="0"
-       y2="20"
+       y2="22"
        gradientUnits="userSpaceOnUse"
        spreadMethod="none" />
     <linearGradient
@@ -150,10 +154,6 @@
        style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
        d="M 0.5,0.5 L 7.5,0.5"
        id="path6059" />
-    <path
-       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
-       d="M 0.5,21.5 L 7.5,21.5"
-       id="path6060" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -164,7 +164,7 @@
        style="fill:url(#linearGradient3148);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect6057"
        width="8"
-       height="18"
+       height="20"
        x="0"
        y="2" />
   </g>
@@ -187,9 +187,5 @@
        style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
        d="M 0,1.5 L 8,1.5"
        id="path6061" />
-    <path
-       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
-       d="M 0,20.5 L 8,20.5"
-       id="path6062" />
   </g>
 </svg>

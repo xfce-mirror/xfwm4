@@ -8,7 +8,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="5"
+   width="4"
    height="24"
    id="svg2"
    sodipodi:version="0.32"
@@ -60,7 +60,7 @@
      inkscape:label="hilight">
     <path
        style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
-       d="M 3.5,0 L 3.5,24"
+       d="M 2.5,0 L 2.5,24"
        id="path6061" />
   </g>
   <g
@@ -69,7 +69,7 @@
      id="border">
     <path
        style="fill:none;stroke:black;stroke-width:1px;stroke-opacity:0.25"
-       d="M 4.5,0 L 4.5,24"
+       d="M 3.5,0 L 3.5,24"
        id="path1340" />
   </g>
 </svg>

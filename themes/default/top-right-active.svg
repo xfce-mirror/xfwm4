@@ -27,7 +27,7 @@
          offset="0"
          id="stop3145" />
       <stop
-         style="stop-color:#000000;stop-opacity:0.10;"
+         style="stop-color:#ffffff;stop-opacity:0.00;"
          offset="1"
          id="stop3147" />
     </linearGradient>
@@ -51,11 +51,15 @@
       <stop
          id="stop5849"
          offset="0"
-         style="stop-color:#ffffff;stop-opacity:0.50;" />
+         style="stop-color:#ffffff;stop-opacity:1.00;" />
+      <stop
+         id="stop5851"
+         offset="0.5"
+         style="stop-color:#ffffff;stop-opacity:0.20;" />
       <stop
          id="stop5851"
          offset="1"
-         style="stop-color:#000000;stop-opacity:0.10;" />
+         style="stop-color:#000000;stop-opacity:0.20;" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -64,7 +68,7 @@
        x1="0"
        y1="1"
        x2="0"
-       y2="20"
+       y2="22"
        gradientUnits="userSpaceOnUse"
        spreadMethod="none" />
     <linearGradient
@@ -150,10 +154,6 @@
        id="rect1319"
        d="M 0,0 L 0,1 L 5,1 C 5,1 7,1 7,4 C 7,22 7,22 7,22 L 8,22 L 8,0 L 0,0 z "
        style="fill:#000000;fill-opacity:0.25" />
-    <path
-       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
-       d="M 0.5,21.5 L 4.5,21.5"
-       id="path6060" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -162,7 +162,7 @@
      style="display:inline">
     <path
        style="fill:url(#linearGradient3148);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,2 L 4,2 C 5,2 6,2 6,5 C 6,8.5 6,12 6,20 L 0,20 L 0,20 L 0,2 z "
+       d="M 0,2 L 4,2 C 5,2 6,2 6,5 C 6,8.5 6,12 6,22 L 0,22 L 0,22 L 0,2 z "
        id="path6057" />
   </g>
   <g
@@ -181,9 +181,5 @@
        style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
        d="M 0,1.5 L 4.5,1.5 C 4.5,1.5 6.5,1.5 6.5,4.5 C 6.5,0.5 6.5,21.5 6.5,21.5 L 6.5,21.5 L 6.5,21.5 "
        id="path2170" />
-    <path
-       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
-       d="M 0.5,20.5 L 4.5,20.5"
-       id="path6062" />
   </g>
 </svg>
