@@ -1,11 +1,28 @@
 4.6.2
 =====
 
-- Transition fullscreen windows back to their original layer 
-  when another window is activated (Bug #3551)
-- Fix mixed RTL/LTR text not rendering properly in title and tabwin
-- Place windows on top of stack even when not focused in focus follow mouse
-  (Bug #5479)
+- Build fixes for GIT.
+- Fix mixed RTL/LTR text not rendering properly in title and tabwin.
+- Place windows on top of stack even when not focused in focus
+  follow mouse (bug #5479).
+- Increase menu button height and redice width (bug #5567).
+- Do not set the "demand attention" flag when the window is already
+  focused.
+- Keep windows entirely visible on screen change (bug #5795).
+- Various compilation warnings fixed.
+- Compute screen size based on each monitor size and layout and
+  avoid using reported size (bug #5795).
+- Reloading settings on keys-changed signal is a huge overhead and
+  complete nonsense (bug #5964).
+- Recent Xorg drivers disable the output when the lid is closed,
+  leaving no active monitor, in that case simply ignore the event to
+  avoid messing with windows' positions (bug #6209).
+- Add linkage to libm when compositor is used (bug #6231).
+- Check for invalid type for GValue to avoid a crash (bug #6195).
+- Allow only regular windows to be placed either above or below.
+- Translation updates (cs, el, es, gl, it, pl, pt, sv, tr, uk, lv,
+  ur, ur_PK, ro, ru, nl, ug).
+
 
 4.6.1
 =====
