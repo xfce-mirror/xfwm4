@@ -7,15 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-25 22:07+0000\n"
+"POT-Creation-Date: 2010-05-26 10:07+0000\n"
 "PO-Revision-Date: 2010-05-26 01:55+0200\n"
-"Last-Translator:  Ivica Kolić<ikoli@yahoo.com> <>\n"
+"Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -183,7 +182,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
-msgstr ""
+msgstr "Aktivan"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Ad_vanced"
@@ -207,7 +206,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -223,11 +222,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
-msgstr ""
+msgstr "Skriveno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Hide"
-msgstr ""
+msgstr "Sakrij"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
@@ -239,15 +238,15 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Ke_yboard"
-msgstr ""
+msgstr "Ti_pkovnica"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Maximize"
-msgstr ""
+msgstr "Maksimiziraj"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Menu"
-msgstr ""
+msgstr "Izbornik"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -255,7 +254,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
-msgstr ""
+msgstr "Sjena"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
@@ -279,7 +278,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
-msgstr ""
+msgstr "Naslov"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
@@ -308,45 +307,45 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "_Style"
-msgstr ""
+msgstr "_Stil"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
-msgstr ""
+msgstr "Osjenči prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
-msgstr ""
+msgstr "Sakrij prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 #: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
-msgstr ""
+msgstr "Maksimiziraj prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Fill window"
-msgstr ""
+msgstr "Ispuni prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
-msgstr ""
+msgstr "Ništa"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
 #: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
-msgstr ""
+msgstr "Lijevo"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
-msgstr ""
+msgstr "Centar"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
-msgstr ""
+msgstr "Desno"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
@@ -354,15 +353,15 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr ""
+msgstr "Gore"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr ""
+msgstr "Dolje"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
-msgstr ""
+msgstr "Odustani"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cycle windows"
@@ -382,19 +381,19 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
-msgstr ""
+msgstr "Zatvori prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Maximize window horizontally"
-msgstr ""
+msgstr "Maksimiziraj prozor vodoravno"
 
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window vertically"
-msgstr ""
+msgstr "Maksimiziraj prozor okomito"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Move window"
-msgstr ""
+msgstr "Pomakni prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Resize window"
@@ -414,11 +413,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window horizontally"
-msgstr ""
+msgstr "Ispuni prozor vodoravno"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window vertically"
-msgstr ""
+msgstr "Ispuni prozor okomito"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Toggle above"
@@ -502,7 +501,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Show desktop"
-msgstr ""
+msgstr "Pokaži radnu površinu"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Upper workspace"
@@ -594,7 +593,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:450
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../settings-dialogs/xfwm4-settings.c:599
 msgid "Action"
@@ -602,7 +601,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:604
 msgid "Shortcut"
-msgstr ""
+msgstr "Prečac"
 
 #: ../settings-dialogs/xfwm4-settings.c:977
 #, c-format
@@ -619,9 +618,7 @@ msgid "Reset to Defaults"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:1882
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr ""
 
 #. Smart placement size
@@ -814,13 +811,12 @@ msgid "Change workspace name"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
-msgstr ""
+msgstr "_Ime"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
@@ -839,7 +835,7 @@ msgstr ""
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
-msgstr ""
+msgstr "Ma_ksimiziraj"
 
 #: ../src/menu.c:45
 msgid "Unma_ximize"
@@ -851,15 +847,15 @@ msgstr ""
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Minimiziraj _ostale prozore"
 
 #: ../src/menu.c:48
 msgid "S_how"
-msgstr ""
+msgstr "P_okaži"
 
 #: ../src/menu.c:49
 msgid "_Move"
-msgstr ""
+msgstr "_Makni"
 
 #: ../src/menu.c:50
 msgid "_Resize"
@@ -868,7 +864,7 @@ msgstr ""
 #. --------------------------------------------------------
 #: ../src/menu.c:52
 msgid "Always on Top"
-msgstr ""
+msgstr "Uvijek na vrhu"
 
 #: ../src/menu.c:53
 msgid "Same as Other Windows"
@@ -888,11 +884,11 @@ msgstr ""
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
-msgstr ""
+msgstr "_Cijeli zaslon"
 
 #: ../src/menu.c:58
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "Napusti _Cijeli zaslon"
 
 #: ../src/menu.c:59
 msgid "Context _Help"
@@ -914,7 +910,7 @@ msgstr ""
 #. --------------------------------------------------------
 #: ../src/menu.c:65
 msgid "_Close"
-msgstr ""
+msgstr "_Zatvori"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:68
@@ -923,11 +919,11 @@ msgstr ""
 
 #: ../src/menu.c:71
 msgid "_Quit"
-msgstr ""
+msgstr "_Iskjluči"
 
 #: ../src/menu.c:72
 msgid "Restart"
-msgstr ""
+msgstr "Ponovno pokreni"
 
 #: ../src/menu.c:423
 #, c-format
