@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-26 10:07+0000\n"
+"POT-Creation-Date: 2010-05-27 10:07+0000\n"
 "PO-Revision-Date: 2010-05-26 01:55+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -21,6 +21,8 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"Ovaj prozor ne reagira.\n"
+"Želite li prisilno ugasiti aplikaciju?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -28,17 +30,18 @@ msgstr "Upozorenje"
 
 #: ../settings-dialogs/tweaks-settings.c:49
 msgid "None"
-msgstr ""
+msgstr "Ništa"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 msgid "Session manager socket"
-msgstr ""
+msgstr "Socket upravitelja sesijom"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:360
 #: ../settings-dialogs/xfwm4-settings.c:310
+#, fuzzy
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:361
@@ -49,8 +52,9 @@ msgstr "Informacija o verziji"
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:378
 #: ../settings-dialogs/xfwm4-settings.c:948
+#, fuzzy
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:382
@@ -60,26 +64,28 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"Pokušajte %s --help da vi vidjeli popis svih mogućih opcija.\n"
 
 #: ../settings-dialogs/workspace-settings.c:72
 #: ../settings-dialogs/workspace-settings.c:87
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "Radni prostor %d"
 
 #: ../settings-dialogs/workspace-settings.c:252
 msgid "Workspace Name"
-msgstr ""
+msgstr "Naziv Radnog Prostora"
 
 #: ../settings-dialogs/workspace-settings.c:360
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Socket upravitelja postavkama"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr ""
+msgstr "Postavi ponašanje prozora i prečica"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -89,66 +95,66 @@ msgstr "Upravitelj prozora"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Fine-tune window behaviour and effects"
-msgstr ""
+msgstr "Detaljno postavljanje ponašanja prozora i efekata"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Window Manager Tweaks"
-msgstr ""
+msgstr "Postavke Upravitelja Prozora"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Set number and names of workspaces"
-msgstr ""
+msgstr "Postavi broj i imena radnih prostora"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "Workspaces"
-msgstr ""
+msgstr "Radni prostori"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "<b>Box move and resize</b>"
-msgstr ""
+msgstr "<b>Micanje i promjena veličine okvira</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
-msgstr ""
+msgstr "<b>Način prikaza gumbića</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Double click _action</b>"
-msgstr ""
+msgstr "<b>Dvoklik _radnja</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
-msgstr ""
+msgstr "<b>Način fokusa</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
-msgstr ""
+msgstr "<b>Fokusiranje novih prozora</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
-msgstr ""
+msgstr "<b>Podigni na klik</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr ""
+msgstr "<b>Podigni na fokus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
-msgstr ""
+msgstr "<b>_Centriranje natpisa</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title fon_t</b>"
-msgstr ""
+msgstr "<b>Fon_t Natpisa</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Window _shortcuts</b>"
-msgstr ""
+msgstr "<b>Kratice pro_zora</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
-msgstr ""
+msgstr "<b>Ljepljenje prozora</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Wrap workspaces</b>"
