@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-27 10:07+0000\n"
+"POT-Creation-Date: 2010-05-28 10:07+0000\n"
 "PO-Revision-Date: 2010-05-26 01:55+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -158,7 +158,7 @@ msgstr "<b>Ljepljenje prozora</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Wrap workspaces</b>"
-msgstr ""
+msgstr "<b>Radne površine u krug</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
@@ -184,7 +184,7 @@ msgstr "<i>Malo</i>"
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "<i>Wide</i>"
-msgstr ""
+msgstr "<i>Širina</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
@@ -196,19 +196,19 @@ msgstr "Na_predno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
+msgstr "Automatski podigni p_rozor čim dobi fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr ""
+msgstr "Automatski daj fokus _novim prozorima"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr ""
+msgstr "Kli_kni za fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
-msgstr ""
+msgstr "Klikni i vuci gumbiće za izmjenu rasporeda izgleda"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -216,15 +216,15 @@ msgstr "Zatvori"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
-msgstr ""
+msgstr "Stanka _prije podizanja prozora"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Dis_tance:"
-msgstr ""
+msgstr "Udaljenos_t"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Focus follows _mouse"
-msgstr ""
+msgstr "Fokus slijedi _miša"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
@@ -236,11 +236,11 @@ msgstr "Sakrij"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
-msgstr ""
+msgstr "Sakrij sadržaj prozora prilikom pre_mještanja"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Hide content of windows when _resizing"
-msgstr ""
+msgstr "Sakrij sadržaj prozora prilikom p_romjene veličine"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Ke_yboard"
@@ -256,7 +256,7 @@ msgstr "Izbornik"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
-msgstr ""
+msgstr "Podigni prozor prilikom k_lika na unutarnji prozor"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
@@ -264,23 +264,23 @@ msgstr "Sjena"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
-msgstr ""
+msgstr "Priljepi prozore sa ostale _prozor_e"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Snap windows to screen _border"
-msgstr ""
+msgstr "Priljepi prozore za granice zaslona"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
-msgstr ""
+msgstr "Priljepi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr ""
+msgstr "Radnja koja se odvija kad se napravi dvoklik na traku sa natpisom"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
-msgstr ""
+msgstr "Natpis prozora ne može biti maknut"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
@@ -296,20 +296,20 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
-msgstr ""
+msgstr "Stanka prije nego prozor _primi  fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
-msgstr ""
+msgstr "O_tpornost ruba"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Focus"
-msgstr ""
+msgstr "_Fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "_Postavi na uobičajene vrijednosti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "_Style"
@@ -411,11 +411,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Raise window"
-msgstr ""
+msgstr "Podigni prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Lower window"
-msgstr ""
+msgstr "Spusti prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window horizontally"
