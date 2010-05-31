@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-28 10:07+0000\n"
+"POT-Creation-Date: 2010-05-31 10:07+0000\n"
 "PO-Revision-Date: 2010-05-26 01:55+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -39,7 +39,6 @@ msgstr "Socket upravitelja sesijom"
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:360
 #: ../settings-dialogs/xfwm4-settings.c:310
-#, fuzzy
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
@@ -52,7 +51,6 @@ msgstr "Informacija o verziji"
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:378
 #: ../settings-dialogs/xfwm4-settings.c:948
-#, fuzzy
 msgid "."
 msgstr "."
 
@@ -355,7 +353,7 @@ msgstr "Desno"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
-msgstr ""
+msgstr "Izbornik operacija prozora"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
@@ -403,7 +401,7 @@ msgstr "Pomakni prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Resize window"
-msgstr ""
+msgstr "Promijeni veličinu prozora"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
@@ -435,75 +433,75 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Move window to upper workspace"
-msgstr ""
+msgstr "Pomakni prozor u gornji radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to bottom workspace"
-msgstr ""
+msgstr "Pomakni prozor u donji radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to left workspace"
-msgstr ""
+msgstr "Pomakni prozor u lijevi radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to right workspace"
-msgstr ""
+msgstr "Pomakni prozor u desni radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to previous workspace"
-msgstr ""
+msgstr "Pomakni prozor u prethodni radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to next workspace"
-msgstr ""
+msgstr "Pomakni prozor u slijedeći radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to workspace 1"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 2"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 3"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 4"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 5"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 6"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 7"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 8"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 9"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 10"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 11"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Move window to workspace 12"
-msgstr ""
+msgstr "Pomakni prozor u radni prostor 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Show desktop"
@@ -511,79 +509,79 @@ msgstr "Pokaži radnu površinu"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Upper workspace"
-msgstr ""
+msgstr "Gornji radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Bottom workspace"
-msgstr ""
+msgstr "Donji radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Left workspace"
-msgstr ""
+msgstr "Lijevi radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Right workspace"
-msgstr ""
+msgstr "Desni radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Previous workspace"
-msgstr ""
+msgstr "Prethodni radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Next workspace"
-msgstr ""
+msgstr "Slijedeći radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Workspace 1"
-msgstr ""
+msgstr "Radni prostor 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 2"
-msgstr ""
+msgstr "Radni prostor 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 3"
-msgstr ""
+msgstr "Radni prostor 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 4"
-msgstr ""
+msgstr "Radni prostor 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 5"
-msgstr ""
+msgstr "Radni prostor 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 6"
-msgstr ""
+msgstr "Radni prostor 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 7"
-msgstr ""
+msgstr "Radni prostor 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 8"
-msgstr ""
+msgstr "Radni prostor 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 9"
-msgstr ""
+msgstr "Radni prostor 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 10"
-msgstr ""
+msgstr "Radni prostor 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 11"
-msgstr ""
+msgstr "Radni prostor 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 12"
-msgstr ""
+msgstr "Radni prostor 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Add workspace"
-msgstr ""
+msgstr "Dodaj radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add adjacent workspace"
@@ -591,11 +589,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Delete last workspace"
-msgstr ""
+msgstr "Obriši zadnji radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete active workspace"
-msgstr ""
+msgstr "Obriši aktivni radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:450
 msgid "Theme"
@@ -630,15 +628,15 @@ msgstr ""
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "<i>Large</i>"
-msgstr ""
+msgstr "<i>Veliki</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "<i>Opaque</i>"
-msgstr ""
+msgstr "<i>Neproziran</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "<i>Transparent</i>"
-msgstr ""
+msgstr "<i>Proziran</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Activate _focus stealing prevention"
@@ -802,19 +800,19 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
-msgstr ""
+msgstr "_Radni prostori"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "<b>Margins</b>"
-msgstr ""
+msgstr "<b>Margine</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "<b>Workspaces</b>"
-msgstr ""
+msgstr "<b>Radni prostori</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "Change workspace name"
-msgstr ""
+msgstr "Promjeni ime radnog prostora "
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Margins are areas on the edges of the screen where no window will be placed"
@@ -826,7 +824,7 @@ msgstr "_Ime"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
-msgstr ""
+msgstr "_Broj radnih prostora"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -849,7 +847,7 @@ msgstr ""
 
 #: ../src/menu.c:46
 msgid "Mi_nimize"
-msgstr ""
+msgstr "Mi_nimiziraj"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
@@ -865,7 +863,7 @@ msgstr "_Makni"
 
 #: ../src/menu.c:50
 msgid "_Resize"
-msgstr ""
+msgstr "_Promijeni veličinu"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
@@ -874,11 +872,11 @@ msgstr "Uvijek na vrhu"
 
 #: ../src/menu.c:53
 msgid "Same as Other Windows"
-msgstr ""
+msgstr "Isto kao ostali prozori"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Uvijek ispod ostalih prozora"
 
 #: ../src/menu.c:55
 msgid "Roll Window Up"
@@ -903,15 +901,15 @@ msgstr ""
 #. --------------------------------------------------------
 #: ../src/menu.c:61
 msgid "Always on Visible Workspace"
-msgstr ""
+msgstr "Uvijek na vidljivom radnom prostoru"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Samo na ovom radnom prostoru"
 
 #: ../src/menu.c:63
 msgid "Move to Another Workspace"
-msgstr ""
+msgstr "Pomakni na drugi radni prostor"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
