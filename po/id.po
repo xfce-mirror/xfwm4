@@ -626,7 +626,6 @@ msgstr "Ini akan mengatur ulang semua jalan pintas ke nilai standar mereka. Anda
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Large</i>"
 msgstr "<i>Besar</i>"
 
