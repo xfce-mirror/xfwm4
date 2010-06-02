@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-31 10:07+0000\n"
+"POT-Creation-Date: 2010-06-02 10:11+0000\n"
 "PO-Revision-Date: 2010-05-26 01:55+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -405,7 +405,7 @@ msgstr "Promijeni veličinu prozora"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
-msgstr ""
+msgstr "Lijepi prozore"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Raise window"
@@ -601,7 +601,7 @@ msgstr "Tema"
 
 #: ../settings-dialogs/xfwm4-settings.c:599
 msgid "Action"
-msgstr ""
+msgstr "Radnja"
 
 #: ../settings-dialogs/xfwm4-settings.c:604
 msgid "Shortcut"
@@ -610,11 +610,11 @@ msgstr "Prečac"
 #: ../settings-dialogs/xfwm4-settings.c:977
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Xfconf neuspješno inicijaliziran. Razlog: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:988
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "Ne mogu kreirati prozor sa postavkama."
 
 #: ../settings-dialogs/xfwm4-settings.c:1880
 #: ../settings-dialogs/xfwm4-settings.c:1881
