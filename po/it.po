@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-13 12:06+0100\n"
+"POT-Creation-Date: 2010-07-08 16:07+0000\n"
 "PO-Revision-Date: 2010-02-11 15:03+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -902,7 +902,7 @@ msgstr "Arrotola la finestra verso il basso"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
-msgstr "_A schermo intero"
+msgstr "A schermo _intero"
 
 #: ../src/menu.c:58
 msgid "Leave _Fullscreen"
