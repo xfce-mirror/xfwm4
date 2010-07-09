@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 16:07+0000\n"
+"POT-Creation-Date: 2010-07-09 10:07+0000\n"
 "PO-Revision-Date: 2010-02-11 15:03+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -140,11 +140,11 @@ msgstr "<b>Fuoco per le nuove finestre</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
-msgstr "<b>Solleva al clic</b>"
+msgstr "<b>Sollevamento al clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Solleva quando a fuoco</b>"
+msgstr "<b>Sollevamento se a fuoco</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -212,7 +212,7 @@ msgstr "Metti a fuoco automaticamente le _nuove finestre create"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr "Fare c_lic per mettere a fuoco"
+msgstr "Metti a fuoco al c_lic"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
@@ -264,7 +264,7 @@ msgstr "Menu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
-msgstr "Solleva la finestra quando si fa clic all'intern_o"
+msgstr "Solleva la finestra quando si fa clic al suo intern_o"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
