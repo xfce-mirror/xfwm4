@@ -38,6 +38,7 @@
 #define WORKSPACES_CHANNEL         "xfwm4"
 
 #define WORKSPACE_NAMES_PROP       "/general/workspace_names"
+#define WORKSPACE_COUNT_PROP       "/general/workspace_count"
 
 static GdkNativeWindow opt_socket_id = 0;
 static gboolean opt_version = FALSE;
@@ -142,32 +143,17 @@ treeview_ws_names_cell_edited (GtkCellRendererText *cell,
 
 
 static void
-xfconf_workspace_names_changed(XfconfChannel *channel,
-                               const gchar *property,
-                               const GValue *value,
-                               gpointer user_data)
+xfconf_workspace_names_update(GPtrArray *names,
+                              GtkTreeView *treeview)
 {
-    GtkTreeView *treeview = user_data;
     GtkTreeModel *model = gtk_tree_view_get_model(treeview);
     WnckScreen *screen = wnck_screen_get_default();
     guint i, n_workspaces;
-    GPtrArray *names;
     GtkTreePath *path;
     GtkTreeIter iter;
 
-    if(G_VALUE_TYPE(value) !=  dbus_g_type_get_collection("GPtrArray",
-                                                          G_TYPE_VALUE))
-    {
-        g_warning("(workspace names) Expected boxed GPtrArray property, got %s",
-                  G_VALUE_TYPE_NAME(value));
-        return;
-    }
+    g_return_if_fail(GTK_IS_TREE_VIEW(treeview));
 
-    names = g_value_get_boxed(value);
-    if(!names)
-        return;
-
-    wnck_screen_force_update(screen);
     n_workspaces = wnck_screen_get_workspace_count(screen);
     for(i = 0; i < n_workspaces && i < names->len; ++i) {
         GValue *val = g_ptr_array_index(names, i);
@@ -214,6 +200,50 @@ xfconf_workspace_names_changed(XfconfChannel *channel,
     gtk_tree_path_free(path);
 }
 
+
+
+static void
+xfconf_workspace_names_changed(XfconfChannel *channel,
+                               const gchar *property,
+                               const GValue *value,
+                               gpointer user_data)
+{
+    GPtrArray *names;
+
+    if(G_VALUE_TYPE(value) !=  dbus_g_type_get_collection("GPtrArray",
+                                                          G_TYPE_VALUE))
+    {
+        g_warning("(workspace names) Expected boxed GPtrArray property, got %s",
+                  G_VALUE_TYPE_NAME(value));
+        return;
+    }
+
+    names = g_value_get_boxed(value);
+    if(!names)
+        return;
+
+    xfconf_workspace_names_update(names, user_data);
+}
+
+
+
+static void
+workspace_dialog_count_changed(GtkTreeView *treeview)
+{
+    GPtrArray *names;
+    XfconfChannel *channel;
+
+    channel = xfconf_channel_get(WORKSPACES_CHANNEL);
+
+    names = xfconf_channel_get_arrayv (channel, WORKSPACE_NAMES_PROP);
+    if(names != NULL)
+    {
+        xfconf_workspace_names_update(names, treeview);
+        xfconf_array_free(names);
+    }
+}
+
+
 static void
 workspace_dialog_setup_names_treeview(GtkBuilder *builder,
                                       XfconfChannel *channel)
@@ -223,9 +253,6 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
     GtkCellRenderer *render;
     GtkTreeViewColumn *col;
     WnckScreen *screen;
-    gint n_workspaces, i;
-    GtkTreeIter iter;
-    gchar **names;
 
     dialog = GTK_WIDGET (gtk_builder_get_object(builder, "change_name_dialog"));
     g_object_set_data(G_OBJECT(dialog), "name-entry",
@@ -236,6 +263,7 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
     treeview = GTK_WIDGET (gtk_builder_get_object(builder, "treeview_ws_names"));
 
     ls = gtk_list_store_new(N_COLS, G_TYPE_INT, G_TYPE_STRING);
+    gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ls));
 
     render = gtk_cell_renderer_text_new();
     col = gtk_tree_view_column_new_with_attributes("", render,
@@ -258,33 +286,15 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
 
     screen = wnck_screen_get_default();
-    wnck_screen_force_update(screen);
-    names = xfconf_channel_get_string_list(channel, WORKSPACE_NAMES_PROP);
+    wnck_screen_force_update (screen);
 
-    n_workspaces = wnck_screen_get_workspace_count(screen);
-    i = 0;
-    if (names) {
-        for(; i < n_workspaces && names[i]; ++i) {
-            gtk_list_store_append(ls, &iter);
-            gtk_list_store_set(ls, &iter,
-                               COL_NUMBER, i + 1,
-                               COL_NAME, names[i],
-                               -1);
-        }
-    }
-    for(; i < n_workspaces; ++i) {
-        WnckWorkspace *space = wnck_screen_get_workspace(screen, i);
-        const char *name = wnck_workspace_get_name(space);
+    workspace_dialog_count_changed (GTK_TREE_VIEW (treeview));
 
-        gtk_list_store_append(ls, &iter);
-        gtk_list_store_set(ls, &iter,
-                           COL_NUMBER, i + 1,
-                           COL_NAME, name,
-                           -1);
-    }
-    g_strfreev(names);
-
-    gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ls));
+    /* watch ws count changes */
+    g_signal_connect_swapped(G_OBJECT(screen), "workspace-created",
+                             G_CALLBACK (workspace_dialog_count_changed), treeview);
+    g_signal_connect_swapped(G_OBJECT(screen), "workspace-destroyed",
+                             G_CALLBACK (workspace_dialog_count_changed), treeview);
 
     g_signal_connect(G_OBJECT(channel),
                      "property-changed::" WORKSPACE_NAMES_PROP,
