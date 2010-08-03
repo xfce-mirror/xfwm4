@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-11 06:05+0100\n"
-"PO-Revision-Date: 2010-03-11 13:00+0600\n"
+"PO-Revision-Date: 2010-08-03 10:34+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Ескерту"
 
 #: ../settings-dialogs/tweaks-settings.c:49
 msgid "None"
-msgstr "Жоқ"
+msgstr "Ешнәрсе"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 msgid "Session manager socket"
@@ -69,11 +69,11 @@ msgstr ""
 #: ../settings-dialogs/workspace-settings.c:87
 #, c-format
 msgid "Workspace %d"
-msgstr "%d жұмыс орны"
+msgstr "Жұмыс орны %d"
 
 #: ../settings-dialogs/workspace-settings.c:252
 msgid "Workspace Name"
-msgstr "Жұмыс орны аты"
+msgstr "Жұмыс орын аты"
 
 #: ../settings-dialogs/workspace-settings.c:360
 #: ../settings-dialogs/xfwm4-settings.c:310
@@ -98,7 +98,7 @@ msgstr "Терезе әрекеттерін мен жарлықтарды тур
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Window Manager Tweaks"
-msgstr "Терезе басқарушының қу баптаулары"
+msgstr "Терезелер басқарушының қу баптаулары"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -331,7 +331,7 @@ msgstr "Терезені максималды қылу"
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Fill window"
-msgstr "Терезені жазу"
+msgstr "Терезені жазық қылу"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -425,11 +425,11 @@ msgstr "Терезені биіктігінен жазу"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Toggle above"
-msgstr "Басқа терезелердің үстінде"
+msgstr "Басқа терезелердің үстінде болуды қосу/сөндіру"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle fullscreen"
-msgstr "Толық экранға"
+msgstr "Толық экранға болуды қосу/сөндіру"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Move window to upper workspace"
@@ -680,7 +680,7 @@ msgstr "Қалыпты ICCCM _фокуст тәсілін елемеу"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Назар талап ететін терезелер уақыт өте жыпылықта_й береді"
+msgstr "Назарды талап ететін терезелер уақыт өте жыпылықта_й береді"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Key used to _grab and move windows:"
@@ -740,7 +740,7 @@ msgstr "Экран шеттердің кедергісін терезелер _�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Жұмыс оры_ндарын ауыстыру үшін тышқан дөнгелегін қолдану"
+msgstr "Жұмыс оры_ндарын ауыстыру үшін тышқан дөңгелегін қолдану"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -756,7 +756,7 @@ msgstr "Бірінші не соңғ_ы жұмыс орнына жеткен к�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
-msgstr "Қ_олжетерлік"
+msgstr "Қ_олжетерлілік"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Bring window on current workspace"
@@ -791,7 +791,7 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"_Пернетақта ыстық батырмаларымен ауысқан кезде\n"
+"_Пернетақтаның ыстық батырмаларымен ауысқан кезде\n"
 "алдыңғы жұмыс орнын есте сақтау және оған қайту"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
@@ -799,12 +799,12 @@ msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"\"Аустырғышта көрсетпеу\" және \"есептер жолағында көрсетпеу\"\n"
-" қасиеті орнатылған терезелерді аттап өту"
+"\"Ауыстырғышта көрсетпеу\" және \"есептер жолағында көрсетпеу\"\n"
+" қасиеттері орнатылған терезелерді аттап өту"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
-msgstr "Жұм_ыс орындар"
+msgstr "Жұм_ыс орындары"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "<b>Margins</b>"
@@ -843,11 +843,11 @@ msgstr "%s: Segmentation fault"
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
-msgstr "Терезені жа_зу"
+msgstr "Терезені жа_зық қылу"
 
 #: ../src/menu.c:45
 msgid "Unma_ximize"
-msgstr "Тере_зені жинау"
+msgstr "Тере_зені жазық емес қылу"
 
 #: ../src/menu.c:46
 msgid "Mi_nimize"
@@ -888,7 +888,7 @@ msgstr "Терезені атау жолағына жинау"
 
 #: ../src/menu.c:56
 msgid "Roll Window Down"
-msgstr "Терезені қалпына келтіру"
+msgstr "Терезені атау жолағынан қайтару"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
