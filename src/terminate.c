@@ -110,7 +110,7 @@ terminateShowDialog (Client *c)
     screen_info = c->screen_info;
     xid = g_strdup_printf ("0x%lx", c->window);
 
-    argv[0] = LIBEXECDIR"/xfce4/xfwm4/helper-dialog";
+    argv[0] = LIBDIR "/xfce4/xfwm4/helper-dialog";
     argv[1] = xid;
     argv[2] = c->name;
     argv[3] = NULL;

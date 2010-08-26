@@ -92,7 +92,7 @@ xfwm4_CFLAGS =								\
 	$(COMPOSITOR_CFLAGS)						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
-	-DLIBEXECDIR=\"$(libexecdir)\"					\
+	-DLIBDIR=\"$(libdir)\"						\
 	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"
 
 xfwm4_LDADD =								\

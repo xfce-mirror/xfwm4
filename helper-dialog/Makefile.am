@@ -6,7 +6,7 @@ INCLUDES =								\
 	$(LIBX11_CFLAGS)						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"
 
-helper_dialogdir = $(libexecdir)/xfce4/xfwm4
+helper_dialogdir = $(libdir)/xfce4/xfwm4
 
 helper_dialog_PROGRAMS =						\
 	helper-dialog
