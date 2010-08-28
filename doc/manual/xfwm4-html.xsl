@@ -4,17 +4,12 @@
                 xmlns="http://www.w3.org/TR/xhtml1/transitional"
                 exclude-result-prefixes="#default">
 
-<!-- Load onechunk.xsl stylesheet 
-     TODO: how can I put a location independent link here?
-This should work. The url can be translated to a local one in the catalog
-file"
--->
 <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/onechunk.xsl"/>
 
 <xsl:param name="suppress.navigation">1</xsl:param>
 
 <!-- Use stylesheet -->
-<xsl:param name="html.stylesheet" select="'../xfce.css'"/>
+<xsl:param name="html.stylesheet" select="'../xfdesktop.css'"/>
 
 <!-- labels and numbering -->
 <xsl:param name="autotoc.label.separator" select="'. '"/>
@@ -28,6 +23,7 @@ file"
 
 <xsl:template match="releaseinfo" mode="titlepage.mode">
   <span class="{name(.)}">
+    <br/>
     <xsl:apply-templates mode="titlepage.mode"/>
     <br/>
   </span>
@@ -47,25 +43,15 @@ file"
 
 <xsl:param name="graphic.default.extension" select="png"/>
 
-<xsl:attribute-set name="shade.verbatim.style">
-	<xsl:attribute name="border">0</xsl:attribute>
-	<xsl:attribute name="bgcolor">#F3F4F8</xsl:attribute>
-	<xsl:attribute name="width">100%</xsl:attribute>
-</xsl:attribute-set>
-
-<!-- Addition by Jasper Huijsmans to be able to set background color -->
-<!-- and cell attributes. -->
 <!-- This requires an adapted template for tgroup (see end of stylesheet) -->
 <xsl:attribute-set name="table.style">
-  	<xsl:attribute name="bgcolor">#F8F9FD</xsl:attribute>
+	<xsl:attribute name="bgcolor">#fdf9f8</xsl:attribute>
 	<xsl:attribute name="cellspacing">0</xsl:attribute>
-	<xsl:attribute name="cellpadding">4</xsl:attribute> 
+	<xsl:attribute name="cellpadding">4</xsl:attribute>
 </xsl:attribute-set>
 
 
 <xsl:param name="generate.legalnotice.link" select="0"/>
-
-<xsl:param name="shade.verbatim" select="1"/>
 
 <!-- set font styles for various tags   -->
 <xsl:template match="guibutton">

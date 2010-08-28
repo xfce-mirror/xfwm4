@@ -1,0 +1,1080 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 4.7.0\n"
+"POT-Creation-Date: 2010-08-28 12:29+0200\n"
+"PO-Revision-Date: 2009-01-21 11:52+0100\n"
+"Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Generator: KBabel 1.11.4\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml:145(None)
+msgid "@@image: 'images/titlebar.png'; md5=56d7905e86d8b9ee03054561f8075752"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml:461(None)
+msgid ""
+"@@image: 'images/decoration_style.png'; md5=5022390bb1a6154cd7225a8819aad790"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml:530(None)
+msgid ""
+"@@image: 'images/keyboard_shortcuts.png'; "
+"md5=3063f52810e263badf47b370c5928726"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml:602(None)
+msgid ""
+"@@image: 'images/compose_shortcut.png'; md5=3d6eea671fdd800a3c5379b71e1eb3e8"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml:635(None)
+msgid "@@image: 'images/focus.png'; md5=53a29587d206af848f07f4623b76c61a"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml:709(None)
+msgid ""
+"@@image: 'images/misc_wm_prefs.png'; md5=49847fe3486b9327e4da7429e236832a"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml:785(None)
+msgid ""
+"@@image: 'images/xfwm_workspaces.png'; md5=66a06d2b9faaa634b7a0f7a40768013c"
+msgstr ""
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml:831(None)
+msgid ""
+"@@image: 'images/workspace_margins.png'; md5=8e53c961fe17d3a2255c8ea591d96016"
+msgstr ""
+
+#: xfwm4.xml:14(title)
+msgid "Xfce 4 Window Manager"
+msgstr ""
+
+#: xfwm4.xml:17(year) xfwm4.xml:21(year)
+msgid "2004"
+msgstr ""
+
+#: xfwm4.xml:17(holder)
+msgid "François Le Clainche"
+msgstr ""
+
+#: xfwm4.xml:21(holder)
+msgid "Jasper Huijsmans"
+msgstr ""
+
+#: xfwm4.xml:44(firstname)
+msgid "François"
+msgstr ""
+
+#: xfwm4.xml:44(surname)
+msgid "Le Clainche"
+msgstr ""
+
+#: xfwm4.xml:46(email)
+msgid "fleclainche@wanadoo.fr"
+msgstr ""
+
+#. <revhistory>
+#.     <revision>
+#.       <revnumber>0.1</revnumber>
+#.       <date>May 2003</date>
+#.       <authorinitials>ma</authorinitials>
+#.     </revision>
+#.   </revhistory>
+#: xfwm4.xml:74(releaseinfo)
+msgid "This manual describes @PACKAGE_NAME@ version @PACKAGE_VERSION@"
+msgstr ""
+
+#: xfwm4.xml:80(title)
+msgid "Introduction"
+msgstr ""
+
+#: xfwm4.xml:82(para)
+msgid ""
+"The Xfce 4 Window Manager is part of the <ulink url=\"http://www.xfce.org\" "
+"type=\"html\">Xfce Desktop Environment</ulink>. The actual command to run is "
+"<application>@PACKAGE_NAME@</application>. To run it in the background use "
+"<command><application>@PACKAGE_NAME@</application> --daemon</command>. The "
+"window manager is responsible for the placement of windows on the screen, "
+"provides the window decorations and allows you for instance to move, resize "
+"or close them."
+msgstr ""
+
+#: xfwm4.xml:90(para)
+msgid ""
+"<application>@PACKAGE_NAME@</application> adheres strongly to the standards "
+"defined on <ulink url=\"http://www.freedesktop.org\" type=\"html"
+"\">freedesktop.org</ulink>. Consequently, special features such as making "
+"windows borderless, or providing an icon for the application must now be "
+"implemented in the application; you can no longer use the window manager to "
+"force different behaviour. One of the great features of "
+"<application>@PACKAGE_NAME@</application> is its themeability. The window "
+"decorations (borders, title bar and window buttons) can be configured by "
+"using window manager themes."
+msgstr ""
+
+#: xfwm4.xml:101(para)
+msgid ""
+"<application>@PACKAGE_NAME@</application> offers multihead support, for both "
+"xinerama and real multiscreen modes, useful when you have more than one "
+"monitor connected to your computer."
+msgstr ""
+
+#: xfwm4.xml:105(para)
+msgid ""
+"<application>@PACKAGE_NAME@</application> can be run stand-alone, but if you "
+"use it this way, you will need the <ulink url=\"xfce-mcs-manager.html\" type="
+"\"http\">Xfce 4 Settings Manager</ulink> if you want GUI settings "
+"management. Tasks other than managing windows, like setting a background "
+"image or launching programs, need to be performed by other programs."
+msgstr ""
+
+#: xfwm4.xml:112(para)
+msgid ""
+"<application>@PACKAGE_NAME@</application> includes its own compositing "
+"manager, which takes advantage of the new <ulink url=\"http://freedesktop."
+"org/Software/xorg\" type=\"html\">X.org</ulink>'s server extensions. The "
+"compositor is like a WM on its own, it manages a stack of all windows, "
+"monitor all kinds on X event and reacts accordingly. Having the compositing "
+"manager embedded in the window manager also helps keeping the various visual "
+"effects in sync with window events. If you want to use the compositor, you "
+"have to build <application>@PACKAGE_NAME@</application> using the --enable-"
+"compositor configure option. In any case, you can disable the compositor on "
+"<application>@PACKAGE_NAME@</application> startup using the '--"
+"compositor=off' argument."
+msgstr ""
+
+#: xfwm4.xml:125(title)
+msgid "Using <application>@PACKAGE_NAME@</application>"
+msgstr ""
+
+#: xfwm4.xml:128(title)
+msgid "Manage windows"
+msgstr ""
+
+#: xfwm4.xml:130(para)
+msgid ""
+"The window manager provides borders, a title bar and window buttons to "
+"application windows. The look is defined by the window manager theme."
+msgstr ""
+
+#: xfwm4.xml:134(para)
+msgid ""
+"In the default theme <application>@PACKAGE_NAME@</application> shows six "
+"buttons and a title on regular application windows. The six buttons perform "
+"these basic functions:"
+msgstr ""
+
+#: xfwm4.xml:140(title)
+msgid "<application>@PACKAGE_NAME@</application> title bar buttons"
+msgstr ""
+
+#: xfwm4.xml:148(phrase)
+msgid ""
+"<application>@PACKAGE_NAME@</application> title bar buttons and functions"
+msgstr ""
+
+#: xfwm4.xml:154(para)
+msgid ""
+"You can open the window menu with a left-click on the menu button on the "
+"title bar, or with a right-click on the window title area itself."
+msgstr ""
+
+#: xfwm4.xml:157(para)
+msgid ""
+"If you use <application>xftaskbar4</application>, you can open an action "
+"menu with a right-click on one of the taskbar entries; it includes several "
+"items among those available in the window menu."
+msgstr ""
+
+#: xfwm4.xml:165(term)
+msgid "Give focus to a window"
+msgstr ""
+
+#: xfwm4.xml:167(para)
+msgid ""
+"You need to give the focus to a window if you want it to receive keyboard "
+"and mouse input. Window decorations colors will change, following the focus. "
+"To obtain more details about focus options, please refer to the <ulink url="
+"\"#focus\">corresponding section</ulink> below."
+msgstr ""
+
+#: xfwm4.xml:172(para)
+msgid ""
+"A keyboard shortcut allows to switch the focus from a window to others : "
+"Hold Alt and then you can press Tab repeatedly untill you get to the window "
+"you want to focus. If you use it, you will see a small popup showing the "
+"application name, its icon and the window title. Also "
+"<application>@PACKAGE_NAME@</application> will highlight the outline of the "
+"window that will receive the focus."
+msgstr ""
+
+#. <para>
+#. 	    If you want the panel, and apps that do not appear in the taskbar,
+#. 	    to be included when you switch the focus using the Alt+Tab
+#. 	    shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one)
+#. 	    and add this line : cycle_minimum=false</para>
+#.
+#. 	  <para>
+#. 	    To exclude hidden windows from the list presented when using
+#. 		Alt+Tab edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create a new one) and
+#. 		add this line : cycle_hidden=false
+#. 	  </para>
+#: xfwm4.xml:193(para)
+msgid ""
+"NOTE: the use of a keyboard shortcut in an application needs the application "
+"window to have the focus :)"
+msgstr ""
+
+#: xfwm4.xml:201(term)
+msgid "Maximize / unmaximize windows"
+msgstr ""
+
+#: xfwm4.xml:203(para)
+msgid ""
+"If you maximize a window, it will expand on your display and use all avaible "
+"space (as it is defined by <ulink url=\"xfdesktop.html#xfdesktop-workspace\" "
+"type=\"http\">workspace settings</ulink>). You can maximize a window either "
+"vertically, horizontally, or both at once."
+msgstr ""
+
+#: xfwm4.xml:209(para)
+msgid "To maximize a window, perform one of those actions:"
+msgstr ""
+
+#: xfwm4.xml:212(para)
+msgid "click the maximize button of the title bar"
+msgstr ""
+
+#: xfwm4.xml:215(para)
+msgid ""
+"open the window menu from the title bar and choose the \"maximize\" item"
+msgstr ""
+
+#: xfwm4.xml:221(para)
+msgid "use Alt + F5 keyboard shortcut"
+msgstr ""
+
+#: xfwm4.xml:225(para)
+msgid ""
+"You can make any window appear in fullscreen mode (it will then use all the "
+"size of your screen without showing the window borders) by using the "
+"customizable Alt + F11 keyboard shortcut."
+msgstr ""
+
+#: xfwm4.xml:230(para)
+msgid "To maximize a window vertically :"
+msgstr ""
+
+#: xfwm4.xml:232(para)
+msgid "middle-click the maximize button of the title bar"
+msgstr ""
+
+#: xfwm4.xml:233(para)
+msgid "use Alt + F6 keyboard shortcut"
+msgstr ""
+
+#: xfwm4.xml:236(para)
+msgid "To maximize a window horizontally :"
+msgstr ""
+
+#: xfwm4.xml:239(para)
+msgid "right-click the maximize button of the title bar"
+msgstr ""
+
+#: xfwm4.xml:240(para)
+msgid "use Alt + F7 keyboard shortcut"
+msgstr ""
+
+#: xfwm4.xml:243(para)
+msgid ""
+"When a window has been maximized in a way or another, it can be restored to "
+"its previous size doing one of these actions :"
+msgstr ""
+
+#: xfwm4.xml:247(para)
+msgid "click the unmaximize button of the title bar"
+msgstr ""
+
+#: xfwm4.xml:248(para)
+msgid "use the same keyboard shortcut once again"
+msgstr ""
+
+#: xfwm4.xml:249(para)
+msgid "choose the \"Unmaximize\" item in the window menu"
+msgstr ""
+
+#: xfwm4.xml:255(term)
+msgid "Resize windows"
+msgstr ""
+
+#: xfwm4.xml:257(para)
+msgid ""
+"Although certain special windows can not be resized, you are able to resize "
+"most of them to fit your needs."
+msgstr ""
+
+#: xfwm4.xml:260(para)
+msgid ""
+"you can use the edges and corners of the window frame to modify its size, "
+"dragging them with the mouse"
+msgstr ""
+
+#: xfwm4.xml:262(para)
+msgid ""
+"you can use the Alt + right click shortcut while you hold the mouse pointer "
+"anywhere over the window frame; it will act as if you were dragging the "
+"bottom-right corner of the window"
+msgstr ""
+
+#: xfwm4.xml:265(para)
+msgid ""
+"you can use practical keyboard shortcuts : Shift + Alt + (up, down, right or "
+"left) Arrow"
+msgstr ""
+
+#: xfwm4.xml:279(term)
+msgid "Hide / unhide windows"
+msgstr ""
+
+#: xfwm4.xml:281(para)
+msgid "You can hide a window performing one of these actions :"
+msgstr ""
+
+#: xfwm4.xml:283(para)
+msgid "click the hide button of the title bar"
+msgstr ""
+
+#: xfwm4.xml:284(para)
+msgid "open the window menu from the title bar and choose the \"Hide\" item"
+msgstr ""
+
+#: xfwm4.xml:286(para)
+msgid "use Alt + F8 keyboard shortcut"
+msgstr ""
+
+#: xfwm4.xml:288(para)
+msgid ""
+"Alternatively, you can hide all windows of current workspace, excepted the "
+"one you are using, in only one action : click the menu button of the title "
+"bar and choose \"Hide all others\"."
+msgstr ""
+
+#: xfwm4.xml:291(para)
+msgid ""
+"To \"unhide\" a window, you will have to select its name or its icon in one "
+"of those Xfce 4 components :"
+msgstr ""
+
+#: xfwm4.xml:294(application)
+msgid "xftaskbar4"
+msgstr ""
+
+#: xfwm4.xml:295(para)
+msgid ""
+"the list of windows, accessible with a middle-click on the desktop "
+"background. This list shows all opened windows, classified by workspaces. "
+"Windows that are currently hidden are marked between [ ]."
+msgstr ""
+
+#: xfwm4.xml:299(para)
+msgid "the <application>xfce4-iconbox</application>"
+msgstr ""
+
+#: xfwm4.xml:305(term)
+msgid "Shade / unshade windows"
+msgstr ""
+
+#: xfwm4.xml:307(para)
+msgid ""
+"If you \"shade\" a window, it will be reduced to the size of its title bar. "
+"The same repeated action makes a window to shade/unshade :"
+msgstr ""
+
+#: xfwm4.xml:311(para)
+msgid "click the shade/unshade button of the title bar"
+msgstr ""
+
+#: xfwm4.xml:312(para)
+msgid ""
+"open the window menu from the title bar and choose \"Shade\" or \"Unshade\" "
+"item"
+msgstr ""
+
+#: xfwm4.xml:314(para)
+msgid "use the mouse scrollwheel while you hold the pointer over the title bar"
+msgstr ""
+
+#: xfwm4.xml:316(para)
+msgid "use the Alt + F9 keyboard shortcut"
+msgstr ""
+
+#: xfwm4.xml:322(term)
+msgid "Stick / unstick windows"
+msgstr ""
+
+#: xfwm4.xml:324(para)
+msgid ""
+"If you \"stick\" a window, it will be visible at the same place on all your "
+"workspaces. The same repeated action make a window to stick/unstick :"
+msgstr ""
+
+#: xfwm4.xml:329(para)
+msgid "click the stick/unstick button of the title bar"
+msgstr ""
+
+#: xfwm4.xml:330(para)
+msgid ""
+"open the window menu button from the title bar and choose \"Stick\" or "
+"\"Unstick\" item"
+msgstr ""
+
+#: xfwm4.xml:332(para)
+msgid "use the Alt + F10 keyboard shortcut"
+msgstr ""
+
+#: xfwm4.xml:338(term)
+msgid "Raise / lower windows"
+msgstr ""
+
+#: xfwm4.xml:340(para)
+msgid ""
+"The \"raise window\" function makes a window frame appear above all the "
+"other frames. To raise a window, you can :"
+msgstr ""
+
+#: xfwm4.xml:344(para)
+msgid "left click on its titlebar"
+msgstr ""
+
+#: xfwm4.xml:345(para)
+msgid ""
+"give the focus to the window, if the corresponding option is selected in the "
+"<ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus "
+"preferences dialog</ulink>"
+msgstr ""
+
+#: xfwm4.xml:347(para)
+msgid ""
+"left click anywhere on its frame, if the corresponding option is selected in "
+"the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus "
+"preferences dialog</ulink>"
+msgstr ""
+
+#: xfwm4.xml:349(para)
+msgid "click on its label in the taskbar or the iconbox"
+msgstr ""
+
+#: xfwm4.xml:350(para)
+msgid ""
+"use the Shift + Alt + Page_Up keyboard shortcut (if the window is already "
+"focused)"
+msgstr ""
+
+#: xfwm4.xml:353(para)
+msgid ""
+"You can make a window frame to always stay above all other windows by "
+"opening the window menu and selecting the \"always on top\" item."
+msgstr ""
+
+#: xfwm4.xml:357(para)
+msgid ""
+"The \"lower\" function sends a window frame below all other frames. To "
+"\"lower\" a window, you can :"
+msgstr ""
+
+#: xfwm4.xml:361(para)
+msgid "middle-click on its title bar"
+msgstr ""
+
+#: xfwm4.xml:362(para)
+msgid ""
+"use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)"
+msgstr ""
+
+#: xfwm4.xml:368(term)
+msgid "Move windows"
+msgstr ""
+
+#: xfwm4.xml:370(para)
+msgid "There are several ways to move windows :"
+msgstr ""
+
+#: xfwm4.xml:372(para)
+msgid "left or right click on the title bar of the window and drag it"
+msgstr ""
+
+#: xfwm4.xml:374(para)
+msgid ""
+"use Alt + left click while the pointer is anywhere over the window frame and "
+"move the mouse"
+msgstr ""
+
+#: xfwm4.xml:376(para)
+msgid ""
+"use Control + Alt + Shift + (up, down, left or right) Arrow keyboard shortcut"
+msgstr ""
+
+#: xfwm4.xml:391(term)
+msgid "Move a window to another workspace"
+msgstr ""
+
+#: xfwm4.xml:393(para)
+msgid ""
+"You can send a window to another workspace by performing one of these "
+"actions :"
+msgstr ""
+
+#: xfwm4.xml:396(para)
+msgid "stick the window, move to another workspace, then unstick the window."
+msgstr ""
+
+#: xfwm4.xml:398(para)
+msgid "use the window menu and choose one of the \"Send to\" submenu items."
+msgstr ""
+
+#: xfwm4.xml:400(para)
+msgid ""
+"left or right click on the title bar of the window, drag it to the screen "
+"edge : the pointer will then go to the next workspace, still holding the "
+"window. Corresponding option needs to be selected in the <ulink url=\"xfwm4."
+"html#wm_misc\" type=\"http\">Window Manager Preferences dialog</ulink>."
+msgstr ""
+
+#: xfwm4.xml:405(para)
+msgid "use keyboard shortcuts :"
+msgstr ""
+
+#: xfwm4.xml:407(para)
+msgid "Alt + Control + End will move a window to the next workspace"
+msgstr ""
+
+#: xfwm4.xml:409(para)
+msgid "Alt + Control + Home will move a window to the previous workspace"
+msgstr ""
+
+#: xfwm4.xml:411(para)
+msgid ""
+"Alt + Control + Keypad-Number will move the current window to corresponding "
+"workspace"
+msgstr ""
+
+#: xfwm4.xml:415(para)
+msgid ""
+"use the <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http"
+"\">graphical pager </ulink> by clicking on the representation of the window, "
+"and move it to the desired workspace."
+msgstr ""
+
+#: xfwm4.xml:425(term)
+msgid "Close a window"
+msgstr ""
+
+#: xfwm4.xml:427(para)
+msgid "To close a window :"
+msgstr ""
+
+#: xfwm4.xml:429(para)
+msgid "click the close button of the title bar"
+msgstr ""
+
+#: xfwm4.xml:430(para)
+msgid "Open the window menu from the title bar and choose the \"Close\" item"
+msgstr ""
+
+#: xfwm4.xml:432(para)
+msgid "or use Alt + F4 keyboard shortcut"
+msgstr ""
+
+#: xfwm4.xml:443(title)
+msgid "Customizing <application>@PACKAGE_NAME@</application>"
+msgstr ""
+
+#: xfwm4.xml:445(para)
+msgid ""
+"To open the Window Manager preferences dialog, click the button labelled "
+"\"Window Manager\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog"
+"\" type=\"http\">Xfce 4 Settings manager</ulink>. The dialog shows four "
+"tabs : Style, Keyboard, Focus, Advanced. All modifications will have an "
+"immediate effect on the behaviour of the selected module."
+msgstr ""
+
+#: xfwm4.xml:453(title)
+msgid "Decoration style"
+msgstr ""
+
+#: xfwm4.xml:456(title)
+msgid "Decoration style preferences"
+msgstr ""
+
+#: xfwm4.xml:464(phrase)
+msgid "The decoration style tab"
+msgstr ""
+
+#: xfwm4.xml:473(term)
+msgid "Window style"
+msgstr ""
+
+#: xfwm4.xml:475(para)
+msgid ""
+"The list on the left side of the dialog shows all avaible window "
+"decorations. The xfwm 4 module offers the choice between 4 different themes, "
+"but there are more than 60 supplementary themes avaible in xfwm4-themes "
+"extra package."
+msgstr ""
+
+#: xfwm4.xml:484(term)
+msgid "Title font"
+msgstr ""
+
+#: xfwm4.xml:486(para)
+msgid ""
+"The \"Font select\" button shows the family font currently in use for the "
+"window title appearance. Click this button if you want to change it, and a "
+"\"Font selection\" dialog will appear. It works like the font selection "
+"dialog of the <ulink url=\"xfce-mcs-plugins.html#id2811474\" type=\"http"
+"\">user interface settings manager plugin</ulink>."
+msgstr ""
+
+#: xfwm4.xml:497(term)
+msgid "Title alignment"
+msgstr ""
+
+#: xfwm4.xml:499(para)
+msgid ""
+"Whatever the buttons layout is, you can choose the alignment of the title "
+"inside the title bar, selecting one of those simple options : align it to "
+"the left, center or right."
+msgstr ""
+
+#: xfwm4.xml:507(term)
+msgid "Button layout"
+msgstr ""
+
+#: xfwm4.xml:509(para)
+msgid ""
+"The button layout configuration uses an easy drag and drop tool. Click and "
+"drag the buttons to change the layout. Drop a button in the \"Hidden\" area "
+"to remove a button from the titlebar. All modifications will have an "
+"immediate effect on the title bar buttons position."
+msgstr ""
+
+#: xfwm4.xml:522(title)
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: xfwm4.xml:525(title)
+msgid "Keyboard shortcuts preferences"
+msgstr ""
+
+#: xfwm4.xml:533(phrase)
+msgid "The keyboard shortcuts tab"
+msgstr ""
+
+#: xfwm4.xml:542(term)
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: xfwm4.xml:544(para)
+msgid ""
+"The list on the left side of the dialog shows all avaible shortcuts themes, "
+"using the name of directories that contain a keythemerc file."
+msgstr ""
+
+#: xfwm4.xml:548(para)
+msgid ""
+"By default, there's only one theme : $(datadir)/themes/Default/xfwm4/"
+"keythemerc"
+msgstr ""
+
+#: xfwm4.xml:552(para)
+msgid "In the default configuration the following keybindings are defined:"
+msgstr ""
+
+#: xfwm4.xml:556(para)
+msgid "close window : Alt + F4"
+msgstr ""
+
+#: xfwm4.xml:557(para)
+msgid "Maximize window : Alt + F5"
+msgstr ""
+
+#: xfwm4.xml:558(para)
+msgid "Maximize vertically : Alt + F6"
+msgstr ""
+
+#: xfwm4.xml:559(para)
+msgid "Maximize horizontally : Alt + F7"
+msgstr ""
+
+#: xfwm4.xml:560(para)
+msgid "Hide window : Alt + F8"
+msgstr ""
+
+#: xfwm4.xml:561(para)
+msgid "Shade window : Alt + F9"
+msgstr ""
+
+#: xfwm4.xml:562(para)
+msgid "Stick window : Alt + F10"
+msgstr ""
+
+#: xfwm4.xml:563(para)
+msgid "Cycle windows focus : Alt + Tab"
+msgstr ""
+
+#: xfwm4.xml:564(para)
+msgid "Move window : Control + Shift + Alt + Arrow (up, down, left, or right)"
+msgstr ""
+
+#: xfwm4.xml:566(para)
+msgid "Resize window : Shift + Alt + Arrow (up, down, left, or right)"
+msgstr ""
+
+#: xfwm4.xml:568(para)
+msgid "Raise window : Shift + Alt + Page_Up"
+msgstr ""
+
+#: xfwm4.xml:569(para)
+msgid "Lower window : Shift + Alt + Page_Down"
+msgstr ""
+
+#: xfwm4.xml:570(para)
+msgid "Toggle fullscreen : Alt + F11"
+msgstr ""
+
+#: xfwm4.xml:571(para)
+msgid "Next workspace : Control + Alt + Arrow right arrow"
+msgstr ""
+
+#: xfwm4.xml:573(para)
+msgid "Previous workspace : Control + Alt + Arrow left"
+msgstr ""
+
+#: xfwm4.xml:574(para)
+msgid "Add a workspace : Alt + Insert"
+msgstr ""
+
+#: xfwm4.xml:575(para)
+msgid "Delete a workspace : Alt + Delete"
+msgstr ""
+
+#: xfwm4.xml:576(para)
+msgid "Go to workspace number N (1-9) : Control + F(N)"
+msgstr ""
+
+#: xfwm4.xml:577(para)
+msgid "Move the window to previous|next workspace : Alt + Control + Home|End"
+msgstr ""
+
+#: xfwm4.xml:579(para)
+msgid ""
+"Move a window to workspace number N (1-9) : Alt + Control + keypad key "
+"number N"
+msgstr ""
+
+#: xfwm4.xml:581(para)
+msgid "Start xfhelp4 : Alt + F1"
+msgstr ""
+
+#: xfwm4.xml:582(para)
+msgid "Start xfrun4 : Alt + F2"
+msgstr ""
+
+#: xfwm4.xml:583(para)
+msgid "Lock the screen : Alt + Control + Delete"
+msgstr ""
+
+#: xfwm4.xml:586(para)
+msgid ""
+"There are two lists on the right side of the dialog. The \"Windows shortcuts"
+"\" list shows the keyboard shortcuts which are used to drive the window "
+"manager. The \"Command shortcuts\" list shows the keyboard shortcuts which "
+"are aimed at launching applications. To modify one of the shortcuts, you "
+"have to double-click on it in the list, using the left button of your mouse, "
+"and compose your new shortcut when the \"Compose shortcut\" popup window "
+"appears."
+msgstr ""
+
+#: xfwm4.xml:597(title) xfwm4.xml:605(phrase)
+msgid "The compose shortcut popup"
+msgstr ""
+
+#: xfwm4.xml:611(para)
+msgid ""
+"If you want to create a new theme, create a directory like this one, for "
+"instance : $HOME/.themes/Custom/xfwm4/keythemerc, then select it in the list "
+"of available themes."
+msgstr ""
+
+#: xfwm4.xml:616(para)
+msgid ""
+"If you do not know the names of your keyboard modifier keys, you can launch "
+"the \"xev\" application from a terminal and test them."
+msgstr ""
+
+#: xfwm4.xml:627(title) xfwm4.xml:630(title)
+msgid "Focus preferences"
+msgstr ""
+
+#: xfwm4.xml:638(phrase)
+msgid "The Focus tab"
+msgstr ""
+
+#: xfwm4.xml:647(term)
+msgid "Focus model"
+msgstr ""
+
+#: xfwm4.xml:649(para)
+msgid ""
+"A focused window receives the keyboard and mouse input. You have the choice "
+"between two focus models :"
+msgstr ""
+
+#: xfwm4.xml:652(para)
+msgid ""
+"Click to focus : select this option if you want a window to receive the "
+"focus only when you click anywhere on its frame."
+msgstr ""
+
+#: xfwm4.xml:656(para)
+msgid ""
+"Focus follow mouse : select this option if you want a window to receive the "
+"focus as soon as the mouse pointer is over its frame."
+msgstr ""
+
+#: xfwm4.xml:665(term)
+msgid "New window focus"
+msgstr ""
+
+#: xfwm4.xml:667(para)
+msgid ""
+"Selecting this option will automatically give the focus to newly created "
+"windows, without the need to click or move the mouse pointer."
+msgstr ""
+
+#: xfwm4.xml:675(term)
+msgid "Raise on focus"
+msgstr ""
+
+#: xfwm4.xml:677(para)
+msgid ""
+"If this option is selected, the frame of a newly focused window will "
+"automatically appear over all other frames, after an amount of time that you "
+"can adjust with the \"delay\" slider."
+msgstr ""
+
+#: xfwm4.xml:685(term)
+msgid "Raise on click"
+msgstr ""
+
+#: xfwm4.xml:687(para)
+msgid ""
+"Choose this option if you want a window to pass over the others when you "
+"click anywhere on its frame. If this option is not selected, you will have "
+"to click somewhere on its decorations (title bar, borders or corners) to "
+"raise it."
+msgstr ""
+
+#: xfwm4.xml:701(title)
+msgid "Advanced settings"
+msgstr ""
+
+#: xfwm4.xml:704(title)
+msgid "Advanced preferences"
+msgstr ""
+
+#: xfwm4.xml:712(phrase)
+msgid "Advanced tab"
+msgstr ""
+
+#: xfwm4.xml:721(term)
+msgid "Windows snapping"
+msgstr ""
+
+#: xfwm4.xml:723(para)
+msgid ""
+"You can choose the windows borders to be attracted by the borders of other "
+"windows, or by the screen edges, when they are moved. The distance from "
+"which this effect will be applied can be specified with the \"Distance\" "
+"slider."
+msgstr ""
+
+#: xfwm4.xml:731(term)
+msgid "Wrap workspaces"
+msgstr ""
+
+#: xfwm4.xml:733(para)
+msgid ""
+"Select the first option if you want to switch to the next workspace when the "
+"mouse pointer reaches the screen edges. Select the second one if you want "
+"the same behaviour while dragging a window. You can specify the screen edges "
+"resistance using the corresponding slider."
+msgstr ""
+
+#: xfwm4.xml:742(term)
+msgid "Opaque move and resize"
+msgstr ""
+
+#: xfwm4.xml:744(para)
+msgid ""
+"Two options allow you to choose if the content of a window will appear or "
+"not, when you move or resize it (not displaying the content will save some "
+"system resources)."
+msgstr ""
+
+#: xfwm4.xml:751(term)
+msgid "Double click action"
+msgstr ""
+
+#: xfwm4.xml:753(para)
+msgid ""
+"Select what must be the behaviour of the window manager when you double-"
+"click on the title bar of a window : shade window, hide window, maximize "
+"window or none."
+msgstr ""
+
+#: xfwm4.xml:766(title)
+msgid "Managing workspaces"
+msgstr ""
+
+#: xfwm4.xml:768(para)
+msgid ""
+"<application>@PACKAGE_NAME@</application> also manages workspaces. There is "
+"a special settings dialog to change the workspace properties. You can start "
+"it by choosing <emphasis>Workspaces and Margins</emphasis> from the the "
+"<ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings "
+"manager dialog</ulink>. The dialog contains two tab folders where you can "
+"change workspace settings and desktop margins."
+msgstr ""
+
+#: xfwm4.xml:778(title)
+msgid "Workspaces settings"
+msgstr ""
+
+#: xfwm4.xml:781(title)
+msgid "Workspace Settings"
+msgstr ""
+
+#: xfwm4.xml:788(phrase)
+msgid "Shows workspace settings tab folder."
+msgstr ""
+
+#: xfwm4.xml:798(term)
+msgid "Workspaces"
+msgstr ""
+
+#: xfwm4.xml:800(para)
+msgid ""
+"This option allows you too choose the number of workspaces you want to use "
+"(between 1 and 32)."
+msgstr ""
+
+#: xfwm4.xml:807(term)
+msgid "Worspace names"
+msgstr ""
+
+#: xfwm4.xml:809(para)
+msgid ""
+"This field shows the list of avaible workspaces. If you want to edit the "
+"name of one of them, click its number and a fill the entry of the dialog "
+"that will then appear. When it's done, click the \"Apply\" button, or just "
+"press the Enter key, to return to the list."
+msgstr ""
+
+#: xfwm4.xml:823(title)
+msgid "Workspaces margins"
+msgstr ""
+
+#: xfwm4.xml:826(title)
+msgid "The workspace margins dialog"
+msgstr ""
+
+#: xfwm4.xml:834(phrase)
+msgid "The workspace margins tab folder"
+msgstr ""
+
+#: xfwm4.xml:840(para)
+msgid ""
+"To open the Workspace Margins dialog, click the button labelled \"Workspaces "
+"and Margins\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" "
+"type=\"http\">settings manager dialog</ulink> and choose the tab labelled "
+"\"Margins\"."
+msgstr ""
+
+#: xfwm4.xml:846(para)
+msgid ""
+"Margins are areas on the edges of the screen that maximized windows won't "
+"cover. You can adjust the size, in pixels, of all margins (left, right, top "
+"and bottom). Use this feature, for example, if you do not want maximized "
+"windows to overlap panel or iconbox frames."
+msgstr ""
+
+#: xfwm4.xml:857(title)
+msgid "About <application>@PACKAGE_NAME@</application>"
+msgstr ""
+
+#: xfwm4.xml:859(para)
+msgid ""
+"<application>@PACKAGE_NAME@</application> was written Olivier Fourdan "
+"(<email>fourdan@xfce.org</email>). To find more information, please visit "
+"the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce web site</ulink>."
+msgstr ""
+
+#: xfwm4.xml:864(para)
+msgid ""
+"To report a bug or make a suggestion regarding this application or this "
+"manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/"
+"\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
+msgstr ""
+
+#: xfwm4.xml:870(para)
+msgid ""
+"If you have questions about the use or installation of this package, please "
+"ask on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce\" type="
+"\"http\">xfce</ulink> mailing list. Development discussion takes place on "
+"the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type="
+"\"http\">xfce4-dev</ulink> mailing list."
+msgstr ""
+
+#: xfwm4.xml:879(para)
+msgid ""
+"This program is distributed under the terms of the GNU General Public "
+"License as published by the Free Software Foundation; either version 2 of "
+"the License, or (at your option) any later version."
+msgstr ""
+
+#: xfwm4.xml:884(para)
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: xfwm4.xml:0(None)
+msgid "translator-credits"
+msgstr ""

@@ -1,18 +1,18 @@
-<?xml version='1.0'?> 
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+<?xml version='1.0'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "Jan 2005"> 
-  <!ENTITY appversion "4.2.0"> 
-  <!ENTITY app "<application>xfwm4</application>">
+  <!ENTITY date "Jan 2005">
+  <!ENTITY appversion "@PACKAGE_VERSION@">
+  <!ENTITY app "@PACKAGE_NAME@">
 ]>
 
 <article id="xfwm4" lang="en">
 
-<!-- Header --> 
+<!-- Header -->
 <articleinfo>
 
   <title>Xfce 4 Window Manager</title>
-  
+
   <copyright>
     <year>2004</year> <holder>François Le Clainche</holder>
   </copyright>
@@ -64,7 +64,7 @@ maintainers, etc. Commented out by default.
   <!--
   <revhistory>
     <revision>
-      <revnumber>0.1</revnumber> 
+      <revnumber>0.1</revnumber>
       <date>May 2003</date>
       <authorinitials>ma</authorinitials>
     </revision>
@@ -76,74 +76,68 @@ maintainers, etc. Commented out by default.
 
 </articleinfo>
 
-  <!-- extra space -->
-  <para>&nbsp;</para>
-  
 <sect1 id="wm-intro">
   <title>Introduction</title>
 
-  <para>The Xfce 4 Window Manager is part of the <ulink 
+  <para>The Xfce 4 Window Manager is part of the <ulink
       url="http://www.xfce.org" type="html">Xfce Desktop Environment</ulink>.
-    The actual command to run is &app;. To run it in the background use 
-    <command>&app; --daemon</command>. The window manager is responsible for
+    The actual command to run is <application>&app;</application>. To run it in the background use
+    <command><application>&app;</application> --daemon</command>. The window manager is responsible for
     the placement of windows on the screen, provides the window
     decorations and allows you for instance to move, resize or close them.
   </para>
 
-  <para>&app; adheres strongly to the standards defined on
+  <para><application>&app;</application> adheres strongly to the standards defined on
     <ulink url="http://www.freedesktop.org"
       type="html">freedesktop.org</ulink>.
-    Consequently, special features such as making windows borderless, or 
-    providing an icon for the application must now be implemented in the 
-    application; you can no longer use the window manager to force different 
-    behaviour. One of the great features of &app; is its themeability. The window 
-    decorations (borders, title bar and window buttons) can be configured by 
-    using window manager themes. 
+    Consequently, special features such as making windows borderless, or
+    providing an icon for the application must now be implemented in the
+    application; you can no longer use the window manager to force different
+    behaviour. One of the great features of <application>&app;</application> is its themeability. The window
+    decorations (borders, title bar and window buttons) can be configured by
+    using window manager themes.
   </para>
 
-  <para>&app; offers multihead support, for both xinerama and real multiscreen modes, 
+  <para><application>&app;</application> offers multihead support, for both xinerama and real multiscreen modes,
 	useful when you have more than one monitor connected to your computer.
   </para>
 
-  <para>&app; can be run stand-alone, but if you use it this way, you will
+  <para><application>&app;</application> can be run stand-alone, but if you use it this way, you will
     need the <ulink url="xfce-mcs-manager.html" type="http">Xfce 4 Settings
       Manager</ulink> if you want GUI settings management. Tasks other than
-    managing windows, like setting a background image or launching programs, 
+    managing windows, like setting a background image or launching programs,
     need to be performed by other programs.
   </para>
-  
-  <para>&app; includes its own compositing manager, which takes advantage 
-  of the new <ulink url="http://freedesktop.org/Software/xorg" type="html">X.org</ulink>'s 
-  server extensions. The compositor is like a WM on its own, it manages a stack 
-  of all windows, monitor all kinds on X event and reacts accordingly. Having the 
-  compositing manager embedded in the window manager also helps keeping the 
-  various visual effects in sync with window events. If you want to use the compositor, 
-  you have to build &app; using the --enable-compositor configure option. In any case, 
-  you can disable the compositor on &app; startup using the '--compositor=off' argument.
+
+  <para><application>&app;</application> includes its own compositing manager, which takes advantage
+  of the new <ulink url="http://freedesktop.org/Software/xorg" type="html">X.org</ulink>'s
+  server extensions. The compositor is like a WM on its own, it manages a stack
+  of all windows, monitor all kinds on X event and reacts accordingly. Having the
+  compositing manager embedded in the window manager also helps keeping the
+  various visual effects in sync with window events. If you want to use the compositor,
+  you have to build <application>&app;</application> using the --enable-compositor configure option. In any case,
+  you can disable the compositor on <application>&app;</application> startup using the '--compositor=off' argument.
   </para>
 
 </sect1>
 
-  <!-- extra space -->
-  <para>&nbsp;</para>
-  
 <sect1 id="wm-using">
-  <title>Using &app;</title>
+  <title>Using <application>&app;</application></title>
 
   <sect2 id="wm-windows">
     <title>Manage windows</title>
-  
+
     <para>The window manager provides borders, a title bar and window buttons
       to application windows. The look is defined by the window manager
       theme.</para>
-    
-    <para>In the default theme &app; shows six buttons and a title on regular
+
+    <para>In the default theme <application>&app;</application> shows six buttons and a title on regular
       application windows. The six buttons perform these basic
       functions:</para>
-    
+
 
     <figure id="titlebar-fig">
-      <title>&app; title bar buttons</title>
+      <title><application>&app;</application> title bar buttons</title>
 
       <screenshot>
 	<mediaobject>
@@ -151,7 +145,7 @@ maintainers, etc. Commented out by default.
 	    <imagedata fileref="images/titlebar.png" format="PNG"/>
 	  </imageobject>
 	  <textobject>
-	    <phrase>&app; title bar buttons and functions</phrase>
+	    <phrase><application>&app;</application> title bar buttons and functions</phrase>
 	  </textobject>
 	</mediaobject>
       </screenshot>
@@ -160,37 +154,35 @@ maintainers, etc. Commented out by default.
 	<para>You can open the window menu with a left-click on the menu button on
       the title bar, or with a right-click on the window title area itself.
 	</para>
-	<para>If you use <application>xftaskbar4</application>, you can open an 
-		action menu with a right-click on one of the taskbar entries; it includes 
+	<para>If you use <application>xftaskbar4</application>, you can open an
+		action menu with a right-click on one of the taskbar entries; it includes
 		several items among those available in the window menu.
 	</para>
-
-      <para>&nbsp;</para>
 
     <variablelist>
 
       <varlistentry>
 	<term>Give focus to a window</term>
 	<listitem>
-	  <para>You need to give the focus to a window if you want it to 
-	    receive keyboard and mouse input. Window decorations colors will 
-	    change, following the focus. To obtain more details about focus 
+	  <para>You need to give the focus to a window if you want it to
+	    receive keyboard and mouse input. Window decorations colors will
+	    change, following the focus. To obtain more details about focus
 	    options, please refer to the <ulink url="#focus">corresponding section</ulink> below.
 	  </para>
 	  <para>A keyboard shortcut allows to switch the focus from a window
 	    to others : Hold Alt and then you can press Tab repeatedly untill
-	    you get to the window you want to focus. If you use it, you will 
-	    see a small popup showing the application name, its icon and the 
-	    window title. Also &app; will highlight the outline of the window that 
+	    you get to the window you want to focus. If you use it, you will
+	    see a small popup showing the application name, its icon and the
+	    window title. Also <application>&app;</application> will highlight the outline of the window that
 	    will receive the focus.
 	  </para>
 
 <!--	  <para>
-	    If you want the panel, and apps that do not appear in the taskbar, 
-	    to be included when you switch the focus using the Alt+Tab 
-	    shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) 
+	    If you want the panel, and apps that do not appear in the taskbar,
+	    to be included when you switch the focus using the Alt+Tab
+	    shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one)
 	    and add this line : cycle_minimum=false</para>
-	  
+
 	  <para>
 	    To exclude hidden windows from the list presented when using
 		Alt+Tab edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create a new one) and
@@ -198,7 +190,7 @@ maintainers, etc. Commented out by default.
 	  </para>
 -->
 
-	  <para>NOTE: the use of a keyboard shortcut in an application needs 
+	  <para>NOTE: the use of a keyboard shortcut in an application needs
 	    the application window to have the focus :)
 	  </para>
 
@@ -211,41 +203,51 @@ maintainers, etc. Commented out by default.
 	<para>If you maximize a window, it will expand on your display and use
 	  all avaible space (as it is defined by <ulink
 	    url="xfdesktop.html#xfdesktop-workspace" type="http">workspace
-	    settings</ulink>). You can maximize a window either vertically, 
+	    settings</ulink>). You can maximize a window either vertically,
 	    horizontally, or both at once.
 	</para>
 	<para>To maximize a window, perform one of those actions:</para>
 	<itemizedlist>
-	  <listitem>click the maximize button of the title bar</listitem>
-	  <listitem>open the window menu from the title bar and choose the
-	    "maximize" item</listitem>
-	  <listitem>use Alt + F5 keyboard shortcut</listitem>
+	  <listitem>
+	    <para>click the maximize button of the title bar</para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      open the window menu from the title bar and choose the
+	      "maximize" item
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>use Alt + F5 keyboard shortcut</para>
+	  </listitem>
 	</itemizedlist>
-	
-	<para>You can make any window appear in fullscreen mode (it will 
-		then use all the size of your screen without showing the window 
+
+	<para>You can make any window appear in fullscreen mode (it will
+		then use all the size of your screen without showing the window
 		borders) by using the customizable Alt + F11 keyboard shortcut.
 	</para>
-	
+
 	<para>To maximize a window vertically :</para>
 	<itemizedlist>
-	<listitem>middle-click the maximize button of the title bar</listitem>
-	<listitem>use Alt + F6 keyboard shortcut</listitem>
+	  <listitem><para>middle-click the maximize button of the title bar</para></listitem>
+	  <listitem><para>use Alt + F6 keyboard shortcut</para></listitem>
 	</itemizedlist>
+
 	<para>To maximize a window horizontally :</para>
+
 	<itemizedlist>
-	<listitem>right-click the maximize button of the title bar</listitem>
-	<listitem>use Alt + F7 keyboard shortcut</listitem>
+	  <listitem><para>right-click the maximize button of the title bar</para></listitem>
+	  <listitem><para>use Alt + F7 keyboard shortcut</para></listitem>
 	</itemizedlist>
+
 	<para>When a window has been maximized in a way or another, it can be
 	  restored to its previous size doing one of these actions :</para>
+
 	<itemizedlist>
-	<listitem>click the unmaximize button of the title bar</listitem>
-	<listitem>use the same keyboard shortcut once again</listitem>
-	<listitem>choose the "Unmaximize" item in the window menu</listitem>
-	</itemizedlist>	
-	
-	<para>&nbsp;</para>
+	  <listitem><para>click the unmaximize button of the title bar</para></listitem>
+	  <listitem><para>use the same keyboard shortcut once again</para></listitem>
+	  <listitem><para>choose the "Unmaximize" item in the window menu</para></listitem>
+	</itemizedlist>
       </listitem>
     </varlistentry>
 
@@ -255,23 +257,21 @@ maintainers, etc. Commented out by default.
 	<para>Although certain special windows can not be resized, you are
 	  able to resize most of them to fit your needs.</para>
 	<itemizedlist>
-	<listitem>you can use the edges and corners of the window frame to
-	  modify its size, dragging them with the mouse</listitem>
-	<listitem>you can use the Alt + right click shortcut while you hold
+	<listitem><para>you can use the edges and corners of the window frame to
+	  modify its size, dragging them with the mouse</para></listitem>
+	<listitem><para>you can use the Alt + right click shortcut while you hold
 	  the mouse pointer anywhere over the window frame; it will act as if
-	  you were dragging the bottom-right corner of the window</listitem>
-	<listitem>you can use practical keyboard shortcuts : Shift +
-	  Alt + (up, down, right or left) Arrow</listitem>
+	  you were dragging the bottom-right corner of the window</para></listitem>
+	<listitem><para>you can use practical keyboard shortcuts : Shift +
+	  Alt + (up, down, right or left) Arrow</para></listitem>
 	</itemizedlist>
 
 <!--
-		<para>If you want to disable the ability to move and resize windows 
-		using the Alt button + mouse click shortcut, edit your 
-		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line : 
+		<para>If you want to disable the ability to move and resize windows
+		using the Alt button + mouse click shortcut, edit your
+		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line :
 		easy_click=false</para>
 -->
-
-	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
 
@@ -280,10 +280,10 @@ maintainers, etc. Commented out by default.
       <listitem>
 	<para>You can hide a window performing one of these actions :</para>
 	<itemizedlist>
-	<listitem>click the hide button of the title bar</listitem>
-	<listitem>open the window menu from the title bar and choose the
-	  "Hide" item</listitem>
-	<listitem>use Alt + F8 keyboard shortcut </listitem>
+	<listitem><para>click the hide button of the title bar</para></listitem>
+	<listitem><para>open the window menu from the title bar and choose the
+	  "Hide" item</para></listitem>
+	<listitem><para>use Alt + F8 keyboard shortcut </para></listitem>
 	</itemizedlist>
 	<para>Alternatively, you can hide all windows of current workspace,
 	  excepted the one you are using, in only one action : click the menu
@@ -291,14 +291,13 @@ maintainers, etc. Commented out by default.
 	<para>To "unhide" a window, you will have to select its name or its
 	  icon in one of those Xfce 4 components :</para>
 	<itemizedlist>
-	<listitem><application>xftaskbar4</application></listitem>
-	<listitem>the list of windows, accessible with a middle-click on the
+	<listitem><para><application>xftaskbar4</application></para></listitem>
+	<listitem><para>the list of windows, accessible with a middle-click on the
 	  desktop background. This list shows all opened windows, classified
 	  by workspaces. Windows that are currently hidden are marked between
-	  [  ].</listitem>
-	<listitem>the <application>xfce4-iconbox</application></listitem>
+	  [  ].</para></listitem>
+	<listitem><para>the <application>xfce4-iconbox</application></para></listitem>
 	</itemizedlist>
-	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
 
@@ -309,63 +308,59 @@ maintainers, etc. Commented out by default.
 	  title bar. The same repeated action makes a window to shade/unshade
 	  :</para>
 	<itemizedlist>
-	<listitem>click the shade/unshade button of the title bar</listitem>
-	<listitem>open the window menu from the title bar and choose "Shade"
-	  or "Unshade" item</listitem>
-	<listitem>use the mouse scrollwheel while you hold the pointer over
-	  the title bar</listitem>
-	<listitem>use the Alt + F9 keyboard shortcut</listitem>
+	<listitem><para>click the shade/unshade button of the title bar</para></listitem>
+	<listitem><para>open the window menu from the title bar and choose "Shade"
+	  or "Unshade" item</para></listitem>
+	<listitem><para>use the mouse scrollwheel while you hold the pointer over
+	  the title bar</para></listitem>
+	<listitem><para>use the Alt + F9 keyboard shortcut</para></listitem>
 	</itemizedlist>
-	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>Stick / unstick windows</term>
       <listitem>
-	<para>If you "stick" a window, it will be visible at the same place on 
+	<para>If you "stick" a window, it will be visible at the same place on
 	  all your workspaces. The same repeated action make a window to
 	  stick/unstick :
 	</para>
 	<itemizedlist>
-	  <listitem>click the stick/unstick button of the title bar</listitem>
-	  <listitem>open the window menu button from the title bar and choose
-	    "Stick" or "Unstick" item</listitem>
-	  <listitem>use the Alt + F10 keyboard shortcut</listitem>
+	  <listitem><para>click the stick/unstick button of the title bar</para></listitem>
+	  <listitem><para>open the window menu button from the title bar and choose
+	    "Stick" or "Unstick" item</para></listitem>
+	  <listitem><para>use the Alt + F10 keyboard shortcut</para></listitem>
 	</itemizedlist>
-	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>Raise / lower windows</term>
       <listitem>
-         <para>The "raise window" function makes a window frame appear above all the other frames. 
+         <para>The "raise window" function makes a window frame appear above all the other frames.
          To raise a window, you can :
          </para>
 	<itemizedlist>
-	<listitem>left click on its titlebar</listitem>
-	<listitem>give the focus to the window, if the corresponding option is selected in the <ulink
-      url="xfwm4.html#wm-focus" type="http">Keyboard and focus preferences dialog</ulink></listitem>
-	<listitem>left click anywhere on its frame, if the corresponding option is selected in the <ulink
-      url="xfwm4.html#wm-focus" type="http">Keyboard and focus preferences dialog</ulink></listitem>
-	<listitem>click on its label in the taskbar or the iconbox</listitem>
-        <listitem>use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)</listitem>
+	<listitem><para>left click on its titlebar</para></listitem>
+	<listitem><para>give the focus to the window, if the corresponding option is selected in the <ulink
+      url="xfwm4.html#wm-focus" type="http">Keyboard and focus preferences dialog</ulink></para></listitem>
+	<listitem><para>left click anywhere on its frame, if the corresponding option is selected in the <ulink
+      url="xfwm4.html#wm-focus" type="http">Keyboard and focus preferences dialog</ulink></para></listitem>
+	<listitem><para>click on its label in the taskbar or the iconbox</para></listitem>
+        <listitem><para>use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)</para></listitem>
 	</itemizedlist>
-	
-	<para>You can make a window frame to always stay above all other windows 
+
+	<para>You can make a window frame to always stay above all other windows
 		by opening the window menu and selecting the "always on top" item.
 	</para>
-	
+
         <para>The "lower" function sends a window frame below all other frames.
 	To "lower" a window, you can :
 	</para>
 	<itemizedlist>
-	<listitem>middle-click on its title bar</listitem>
-        <listitem>use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)</listitem>
+	<listitem><para>middle-click on its title bar</para></listitem>
+        <listitem><para>use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)</para></listitem>
 	</itemizedlist>
-	
-	<para>&nbsp;</para>
     </listitem>
     </varlistentry>
 
@@ -374,23 +369,21 @@ maintainers, etc. Commented out by default.
       <listitem>
 	<para>There are several ways to move windows :</para>
 	<itemizedlist>
-	  <listitem>left or right click on the title bar of the window and
-	    drag it</listitem>
-	  <listitem>use Alt + left click while the pointer is anywhere over
-	    the window frame and move the mouse</listitem>
-	  <listitem>use Control + Alt + Shift + (up, down, left or right)
-	    Arrow keyboard shortcut</listitem>
+	  <listitem><para>left or right click on the title bar of the window and
+	    drag it</para></listitem>
+	  <listitem><para>use Alt + left click while the pointer is anywhere over
+	    the window frame and move the mouse</para></listitem>
+	  <listitem><para>use Control + Alt + Shift + (up, down, left or right)
+	    Arrow keyboard shortcut</para></listitem>
 	</itemizedlist>
-	
+
 <!--
 
-		<para>If you want to disable the ability to move and resize windows 
-		using the Alt button + mouse click shortcut, edit your 
-		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line : 
+		<para>If you want to disable the ability to move and resize windows
+		using the Alt button + mouse click shortcut, edit your
+		$HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new one) and add this line :
 		easy_click=false</para>
 -->
-	
-	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
 
@@ -400,32 +393,31 @@ maintainers, etc. Commented out by default.
 	<para>You can send a window to another workspace by performing one of
 	  these actions :</para>
 	<itemizedlist>
-	  <listitem>stick the window, move to another workspace, then unstick
-	    the window.</listitem>
-	<listitem>use the window menu and choose one of the "Send to" submenu
-	  items.</listitem>
-	<listitem>left or right click on the title bar of the window, drag it
+	  <listitem><para>stick the window, move to another workspace, then unstick
+	    the window.</para></listitem>
+	<listitem><para>use the window menu and choose one of the "Send to" submenu
+	  items.</para></listitem>
+	<listitem><para>left or right click on the title bar of the window, drag it
 	  to the screen edge : the pointer will then go to the next workspace,
 	  still holding the window. Corresponding option needs to be selected
 	  in the <ulink url="xfwm4.html#wm_misc" type="http">Window Manager
-	    Preferences dialog</ulink>.</listitem>
-	<listitem>use keyboard shortcuts :
+	    Preferences dialog</ulink>.</para></listitem>
+	<listitem><para>use keyboard shortcuts :</para>
 	  <itemizedlist>
-	    <listitem>Alt + Control + End will move a window to the next
-	      workspace</listitem>
-	    <listitem>Alt + Control + Home will move a window to the previous
-	      workspace</listitem>
-	    <listitem>Alt + Control + Keypad-Number will move the current
-	      window to corresponding workspace</listitem>
+	    <listitem><para>Alt + Control + End will move a window to the next
+	      workspace</para></listitem>
+	    <listitem><para>Alt + Control + Home will move a window to the previous
+	      workspace</para></listitem>
+	    <listitem><para>Alt + Control + Keypad-Number will move the current
+	      window to corresponding workspace</para></listitem>
 	  </itemizedlist>
 	</listitem>
-	<listitem>use the <ulink url="xfce4-panel.html#switcher-item"
+	<listitem><para>use the <ulink url="xfce4-panel.html#switcher-item"
 	    type="http">graphical pager </ulink> by clicking on the
 	  representation of the window, and move it to the desired
 	  workspace.
-	</listitem>
+	</para></listitem>
       </itemizedlist>
-      <para>&nbsp;</para>
     </listitem>
   </varlistentry>
 
@@ -434,10 +426,10 @@ maintainers, etc. Commented out by default.
     <listitem>
       <para>To close a window :</para>
 	<itemizedlist>
-	<listitem>click the close button of the title bar</listitem>
-	<listitem>Open the window menu from the title bar and choose the
-	  "Close" item</listitem>
-	<listitem>or use Alt + F4 keyboard shortcut</listitem>
+	<listitem><para>click the close button of the title bar</para></listitem>
+	<listitem><para>Open the window menu from the title bar and choose the
+	  "Close" item</para></listitem>
+	<listitem><para>or use Alt + F4 keyboard shortcut</para></listitem>
 	</itemizedlist>
       </listitem>
     </varlistentry>
@@ -447,11 +439,8 @@ maintainers, etc. Commented out by default.
 
 </sect1>
 
-  <!-- extra space -->
-  <para>&nbsp;</para>
-  
 <sect1 id="wm-settings">
-  <title>Customizing &app;</title>
+  <title>Customizing <application>&app;</application></title>
 
   <para>To open the Window Manager preferences dialog, click the button
     labelled "Window Manager" in the <ulink
@@ -465,7 +454,7 @@ maintainers, etc. Commented out by default.
 
     <figure id="wm_decoration_style-fig">
       <title>Decoration style preferences</title>
-  
+
       <screenshot>
 	<mediaobject>
 	  <imageobject>
@@ -517,10 +506,10 @@ maintainers, etc. Commented out by default.
     <varlistentry>
       <term>Button layout</term>
       <listitem>
-        <para>The button layout configuration uses an easy drag and drop 
-        tool. Click and drag the buttons to change the layout. 
-        Drop a button in the "Hidden" area to remove a button from the 
-        titlebar. All modifications will have an immediate effect on 
+        <para>The button layout configuration uses an easy drag and drop
+        tool. Click and drag the buttons to change the layout.
+        Drop a button in the "Hidden" area to remove a button from the
+        titlebar. All modifications will have an immediate effect on
         the title bar buttons position.
 	</para>
       </listitem>
@@ -559,51 +548,51 @@ maintainers, etc. Commented out by default.
 	<para>By default, there's only one theme :
 	  $(datadir)/themes/Default/xfwm4/keythemerc
 	</para>
-	
+
     <para>In the default configuration the following keybindings are
       defined:</para>
-      
+
     <itemizedlist>
-      <listitem>close window : Alt + F4</listitem>
-      <listitem>Maximize window : Alt + F5</listitem>
-      <listitem>Maximize vertically : Alt + F6</listitem>
-      <listitem>Maximize horizontally : Alt + F7</listitem>
-      <listitem>Hide window : Alt + F8</listitem>
-      <listitem>Shade window : Alt + F9</listitem>
-      <listitem>Stick window : Alt + F10</listitem>
-      <listitem>Cycle windows focus : Alt + Tab</listitem>
-      <listitem>Move window : Control + Shift + Alt + Arrow (up, down, left,
-	or right)</listitem>
-      <listitem>Resize window : Shift + Alt + Arrow (up, down, left, or
-	right)</listitem>
-      <listitem>Raise window : Shift + Alt + Page_Up</listitem>
-      <listitem>Lower window : Shift + Alt + Page_Down</listitem>
-      <listitem>Toggle fullscreen : Alt + F11</listitem>
-      <listitem>Next workspace : Control + Alt + Arrow right
-	arrow</listitem>
-      <listitem>Previous workspace : Control + Alt + Arrow left</listitem>
-      <listitem>Add a workspace : Alt + Insert</listitem>
-      <listitem>Delete a workspace : Alt + Delete</listitem>
-      <listitem>Go to workspace number N (1-9) : Control + F(N)</listitem>
-      <listitem>Move the window to previous|next workspace : Alt + Control +
-	Home|End</listitem>
-      <listitem>Move a window to workspace number N (1-9) : Alt + Control +
-	keypad key number N</listitem>
-      <listitem>Start xfhelp4 : Alt + F1</listitem>
-      <listitem>Start xfrun4 : Alt + F2</listitem>
-      <listitem>Lock the screen : Alt + Control + Delete</listitem>
+      <listitem><para>close window : Alt + F4</para></listitem>
+      <listitem><para>Maximize window : Alt + F5</para></listitem>
+      <listitem><para>Maximize vertically : Alt + F6</para></listitem>
+      <listitem><para>Maximize horizontally : Alt + F7</para></listitem>
+      <listitem><para>Hide window : Alt + F8</para></listitem>
+      <listitem><para>Shade window : Alt + F9</para></listitem>
+      <listitem><para>Stick window : Alt + F10</para></listitem>
+      <listitem><para>Cycle windows focus : Alt + Tab</para></listitem>
+      <listitem><para>Move window : Control + Shift + Alt + Arrow (up, down, left,
+	or right)</para></listitem>
+      <listitem><para>Resize window : Shift + Alt + Arrow (up, down, left, or
+	right)</para></listitem>
+      <listitem><para>Raise window : Shift + Alt + Page_Up</para></listitem>
+      <listitem><para>Lower window : Shift + Alt + Page_Down</para></listitem>
+      <listitem><para>Toggle fullscreen : Alt + F11</para></listitem>
+      <listitem><para>Next workspace : Control + Alt + Arrow right
+	arrow</para></listitem>
+      <listitem><para>Previous workspace : Control + Alt + Arrow left</para></listitem>
+      <listitem><para>Add a workspace : Alt + Insert</para></listitem>
+      <listitem><para>Delete a workspace : Alt + Delete</para></listitem>
+      <listitem><para>Go to workspace number N (1-9) : Control + F(N)</para></listitem>
+      <listitem><para>Move the window to previous|next workspace : Alt + Control +
+	Home|End</para></listitem>
+      <listitem><para>Move a window to workspace number N (1-9) : Alt + Control +
+	keypad key number N</para></listitem>
+      <listitem><para>Start xfhelp4 : Alt + F1</para></listitem>
+      <listitem><para>Start xfrun4 : Alt + F2</para></listitem>
+      <listitem><para>Lock the screen : Alt + Control + Delete</para></listitem>
     </itemizedlist>
 
-	<para>There are two lists on the right side of the dialog. The 
-		"Windows shortcuts" list shows the keyboard shortcuts which are 
-		used to drive the window manager. The "Command shortcuts" list 
-		shows the keyboard shortcuts which are aimed at launching 
-		applications. To modify one of the shortcuts, you have to 
-		double-click on it in the list, using the left button of your 
-		mouse, and compose your new shortcut when the "Compose shortcut" 
+	<para>There are two lists on the right side of the dialog. The
+		"Windows shortcuts" list shows the keyboard shortcuts which are
+		used to drive the window manager. The "Command shortcuts" list
+		shows the keyboard shortcuts which are aimed at launching
+		applications. To modify one of the shortcuts, you have to
+		double-click on it in the list, using the left button of your
+		mouse, and compose your new shortcut when the "Compose shortcut"
 		popup window appears.
 	</para>
-	
+
 	  <figure id="compose_shortcut-fig">
     <title>The compose shortcut popup</title>
 
@@ -618,16 +607,16 @@ maintainers, etc. Commented out by default.
       </mediaobject>
     </screenshot>
   </figure>
-	
-	<para>If you want to create a new theme, create a directory like 
-		this one, for instance : $HOME/.themes/Custom/xfwm4/keythemerc, 
+
+	<para>If you want to create a new theme, create a directory like
+		this one, for instance : $HOME/.themes/Custom/xfwm4/keythemerc,
 		then select it in the list of available themes.
 	</para>
-	
-	<para>If you do not know the names of your keyboard modifier keys, 
+
+	<para>If you do not know the names of your keyboard modifier keys,
 		you can launch the "xev" application from a terminal and test them.
 	</para>
-	
+
       </listitem>
     </varlistentry>
 
@@ -660,16 +649,15 @@ maintainers, etc. Commented out by default.
 	<para>A focused window receives the keyboard and mouse input. You have
 	  the choice between two focus models :</para>
 	<itemizedlist>
-	  <listitem>Click to focus : select this option if you want a window
+	  <listitem><para>Click to focus : select this option if you want a window
 	    to receive the focus only when you click anywhere on its
 	    frame.
-	  </listitem>
-	  <listitem>Focus follow mouse : select this option if you want a
+	  </para></listitem>
+	  <listitem><para>Focus follow mouse : select this option if you want a
 	    window to receive the focus as soon as the mouse pointer is over
 	    its frame.
-	  </listitem>
+	  </para></listitem>
 	</itemizedlist>
-	<para>&nbsp;</para>
       </listitem>
     </varlistentry>
 
@@ -699,7 +687,7 @@ maintainers, etc. Commented out by default.
 	<para>Choose this option if you want a window to pass over the others
 	  when you click anywhere on its frame. If this option is not
 	  selected, you will have to click somewhere on its decorations (title
-	  bar, borders or corners) to raise it. 
+	  bar, borders or corners) to raise it.
 	</para>
       </listitem>
     </varlistentry>
@@ -714,7 +702,7 @@ maintainers, etc. Commented out by default.
 
   <figure id="misc_wm_prefs-fig">
     <title>Advanced preferences</title>
-  
+
     <screenshot>
       <mediaobject>
 	<imageobject>
@@ -773,18 +761,15 @@ maintainers, etc. Commented out by default.
 
 </sect1>
 
-  <!-- extra space -->
-  <para>&nbsp;</para>
-  
 <sect1 id="workspaces">
 
   <title>Managing workspaces</title>
 
-  <para>&app; also manages workspaces. There is a special settings dialog to
-    change the workspace properties. You can start it by choosing 
+  <para><application>&app;</application> also manages workspaces. There is a special settings dialog to
+    change the workspace properties. You can start it by choosing
     <emphasis>Workspaces and Margins</emphasis> from the the <ulink
       url="xfce-mcs-manager.html#manager-dialog" type="http">settings manager
-      dialog</ulink>. The dialog contains two tab folders where you can 
+      dialog</ulink>. The dialog contains two tab folders where you can
     change workspace settings and desktop margins.
   </para>
 
@@ -793,12 +778,12 @@ maintainers, etc. Commented out by default.
     <title>Workspaces settings</title>
 
     <figure id="xfwm-workspace-fig">
-      <title>Workspace Settings</title> 
+      <title>Workspace Settings</title>
       <screenshot>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="images/xfwm_workspaces.png" format="PNG"/>
-	  </imageobject> 
+	  </imageobject>
 	  <textobject>
 	    <phrase>Shows workspace settings tab folder.
 	    </phrase>
@@ -865,42 +850,40 @@ maintainers, etc. Commented out by default.
 
   </sect2>
 
-  <!-- extra space -->
-  <para>&nbsp;</para>
 
 </sect1>
-  
-<sect1 id="wm-copyright">
-  <title>About &app;</title>
 
-  <para>&app; was written Olivier Fourdan  
-    (<email>fourdan@xfce.org</email>). To find more information, please visit 
-    the <ulink url="http://www.xfce.org" type="http">Xfce web site</ulink>. 
+<sect1 id="wm-copyright">
+  <title>About <application>&app;</application></title>
+
+  <para><application>&app;</application> was written Olivier Fourdan
+    (<email>fourdan@xfce.org</email>). To find more information, please visit
+    the <ulink url="http://www.xfce.org" type="http">Xfce web site</ulink>.
   </para>
 
   <para>To report a bug or make a suggestion regarding this application or
-    this manual, use the bug tracking system at <ulink 
-      url="http://bugzilla.xfce.org/" 
-      type="http">http://bugzilla.xfce.org/</ulink>. 
+    this manual, use the bug tracking system at <ulink
+      url="http://bugzilla.xfce.org/"
+      type="http">http://bugzilla.xfce.org/</ulink>.
   </para>
 
   <para>If you have questions about the use or installation of this package,
-    please ask on the <ulink 
+    please ask on the <ulink
       url="http://lunar-linux.org/mailman/listinfo/xfce"
       type="http">xfce</ulink> mailing list. Development discussion takes
-    place on the <ulink 
+    place on the <ulink
       url="http://lunar-linux.org/mailman/listinfo/xfce4-dev"
       type="http">xfce4-dev</ulink> mailing list.
   </para>
-    
+
   <para> This program is distributed under the terms of the
-    GNU General Public License as published by the Free Software Foundation; 
+    GNU General Public License as published by the Free Software Foundation;
     either version 2 of the License, or (at your option) any later version.
   </para>
 
-  <para>You should have received a copy of the GNU General Public License 
-    along with this program; if not, write to the Free Software 
-    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+  <para>You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
     USA.
   </para>
 

@@ -1,0 +1,15 @@
+body 		{ font: "Vera Sans", "Arial", "Helvetica", "sans-serif"; 
+    		  margin: 2em; background-color: #F3F4F8}
+h1,h2,h3,h4	{ color: #11375F; }
+h2              { margin-top: 1.5em; border-bottom: solid 1px; }
+h3              { margin-top: 1em; margin-bottom: 0; }
+dt              { margin-top: 0.2em; }
+a		{ font-weight: bold; text-decoration: none; }
+a:link,a:active { color: #1A5593; }
+a:visited	{ color: #1A5593; }
+a:hover		{ color: #3366FF; text-decoration: underline; }
+hr		{ background-color: #11375F; border-style: solid; }
+li		{ list-style-type: square; }
+dt		{ font-weight: bold; }
+.programlisting { background-color: #F8F9FD; border-color: #8593B3;
+		  border-width: 1px; border-style: solid; padding: 0.5em; }
