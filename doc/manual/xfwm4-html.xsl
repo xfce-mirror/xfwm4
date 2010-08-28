@@ -9,7 +9,7 @@
 <xsl:param name="suppress.navigation">1</xsl:param>
 
 <!-- Use stylesheet -->
-<xsl:param name="html.stylesheet" select="'../xfdesktop.css'"/>
+<xsl:param name="html.stylesheet" select="'../xfwm4.css'"/>
 
 <!-- labels and numbering -->
 <xsl:param name="autotoc.label.separator" select="'. '"/>
