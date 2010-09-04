@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-15 00:34+0100\n"
-"PO-Revision-Date: 2006-06-12 21:21+0800\n"
-"Last-Translator: Hydonsingore Cia <hydonsingore@educities.edu.tw>\n"
+"POT-Creation-Date: 2010-09-03 10:07+0000\n"
+"PO-Revision-Date: 2010-09-04 10:19+0800\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -22,45 +22,49 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"此視窗可能處於忙碌狀態而無法回應。\n"
+"您想要終止該應用程式嗎？"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
-#: ../settings-dialogs/tweaks-settings.c:50
+#: ../settings-dialogs/tweaks-settings.c:49
 msgid "None"
 msgstr "無"
 
-#: ../settings-dialogs/tweaks-settings.c:422
+#: ../settings-dialogs/tweaks-settings.c:421
 msgid "Session manager socket"
-msgstr ""
+msgstr "工作階段管理員 socket"
+
+#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/xfwm4-settings.c:310
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
-#: ../settings-dialogs/xfwm4-settings.c:311
-msgid "SOCKET ID"
-msgstr ""
-
-#: ../settings-dialogs/tweaks-settings.c:423
-#: ../settings-dialogs/workspace-settings.c:362
-#: ../settings-dialogs/xfwm4-settings.c:313
+#: ../settings-dialogs/workspace-settings.c:371
+#: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
-msgstr ""
+msgstr "版本資訊"
 
-#: ../settings-dialogs/tweaks-settings.c:441
-#: ../settings-dialogs/workspace-settings.c:379
-#: ../settings-dialogs/xfwm4-settings.c:942
+#: ../settings-dialogs/tweaks-settings.c:440
+#: ../settings-dialogs/workspace-settings.c:388
+#: ../settings-dialogs/xfwm4-settings.c:948
 msgid "."
-msgstr ""
+msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:445
-#: ../settings-dialogs/workspace-settings.c:383
-#: ../settings-dialogs/xfwm4-settings.c:946
+#: ../settings-dialogs/tweaks-settings.c:444
+#: ../settings-dialogs/workspace-settings.c:392
+#: ../settings-dialogs/xfwm4-settings.c:952
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"試試 %s --help 以查看可用指令列選項的完整清單。\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -69,43 +73,39 @@ msgid "Workspace %d"
 msgstr "工作區 %d"
 
 #  Workspace names
-#: ../settings-dialogs/workspace-settings.c:253
-#, fuzzy
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
-msgstr "工作區個數"
+msgstr "工作區名稱"
 
-#: ../settings-dialogs/workspace-settings.c:361
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
-msgstr ""
+msgstr "設定值管理員 socket"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr "視窗裝飾的不透明程度"
+msgstr "調整視窗行為與捷徑"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "Window Manager"
 msgstr "視窗管理程式"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Fine-tune window behaviour and effects"
-msgstr "視窗裝飾的不透明程度"
+msgstr "微調視窗視窗行為與效果"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Window Manager Tweaks"
 msgstr "視窗管理程式調校"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Set number and names of workspaces"
-msgstr "工作區名稱："
+msgstr "設定工作區數目與名稱："
 
 #  Number of workspaces
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
@@ -114,855 +114,740 @@ msgid "Workspaces"
 msgstr "工作區"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "  "
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "移動和縮放時顯示其內容"
+msgstr "<b>移動與重新調整大小</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "<b>Button layout</b>"
+msgstr "<b>按鈕配置</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
-msgid "<b>Button layout</b>"
-msgstr "按鈕布局"
+msgid "<b>Double click _action</b>"
+msgstr "<>雙擊執行動作(_A)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
-msgid "<b>Double click _action</b>"
-msgstr "雙擊執行動作"
+msgid "<b>Focus model</b>"
+msgstr "<b>焦點模型</>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
-msgid "<b>Focus model</b>"
-msgstr "焦點模式"
+msgid "<b>New window focus</b>"
+msgstr "<b>新視窗焦點</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
-msgid "<b>New window focus</b>"
-msgstr "新視窗獲取焦點"
+msgid "<b>Raise on click</b>"
+msgstr "<b>點選時抬升</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
-msgid "<b>Raise on click</b>"
-msgstr "點選置頂"
+msgid "<b>Raise on focus</b>"
+msgstr "<b>獲取焦點時抬升</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
-msgid "<b>Raise on focus</b>"
-msgstr "獲取焦點時置頂"
+msgid "<b>Title _alignment</b>"
+msgstr "<b>標題對齊方式(_A)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
-msgid "<b>Title _alignment</b>"
-msgstr "標題對齊方式"
+msgid "<b>Title fon_t</b>"
+msgstr "<b>標題字型(_T)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
-msgid "<b>Title fon_t</b>"
-msgstr "標題字型"
+msgid "<b>Window _shortcuts</b>"
+msgstr "<b>視窗捷徑(_S)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
-msgid "<b>Window _shortcuts</b>"
-msgstr "有關視窗的快速鍵"
+msgid "<b>Windows snapping</b>"
+msgstr "<b>視窗吸引</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 #, fuzzy
-msgid "<b>Windows snapping</b>"
-msgstr "視窗吸引"
+msgid "<b>Wrap workspaces</b>"
+msgstr "<b>迴繞工作區</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
-msgid "<b>Wrap workspaces</b>"
-msgstr "迴繞工作區"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "標題對齊方式"
+msgstr "<b>主題(_T)</b>"
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "<i>Long</i>"
+msgstr "<i>長</i>"
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<i>Short</i>"
+msgstr "<i>短</i>"
+
+#. Edge resistance
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "<i>Small</i>"
+msgstr "<i>小</i>"
+
+#. Edge resistance
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "<i>Wide</i>"
+msgstr "<i>寬</i>"
 
 # FIXME 譯文有待改進
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
 msgstr "現用"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Ad_vanced"
-msgstr "進階"
+msgstr "進階(_V)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "當視窗獲取焦點時自動將該視窗置頂"
+msgstr "當視窗獲取焦點時自動抬升該視窗(_R)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr "自動為新建立的視窗獲取焦點"
+msgstr "自動為新建立的視窗取得焦點(_N)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr "點選獲取焦點"
+msgstr "點擊以獲取焦點(_K)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
-msgstr "要修改按鈕的布局，拖曳下面按鈕即可"
+msgstr "點擊並拖曳按鈕以變更其配置"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
 msgstr "關閉"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
-msgstr "置頂焦點所在視窗前的延遲："
+msgstr "抬升焦點所在視窗前的延遲時間(_B)："
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Delay|<i>Long</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Delay|<i>Short</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Dis_tance:"
-msgstr "距離："
+msgstr "距離(T)："
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
-msgid "Distance|<i>Small</i>"
-msgstr "距離|窄"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
-msgid "Distance|<i>Wide</i>"
-msgstr "距離|寬"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Focus follows _mouse"
-msgstr "焦點跟隨游標"
+msgstr "焦點跟隨滑鼠(_M)"
 
 # FIXME 譯文有待改進
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
 msgstr "隱藏"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Hide"
 msgstr "隱藏"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
-msgid "Hide content of windows when _moving"
-msgstr "移動視窗時顯示其內容"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
-msgid "Hide content of windows when _resizing"
-msgstr "縮放視窗時顯示其內容"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
-msgid "Ke_yboard"
-msgstr "鍵盤"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Hide content of windows when _moving"
+msgstr "當移動視窗時隱藏其內容(_M)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "Hide content of windows when _resizing"
+msgstr "當重新調整視窗大小時隱藏其內容(_R)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+msgid "Ke_yboard"
+msgstr "鍵盤(_Y)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Maximize"
 msgstr "最大化"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Menu"
 msgstr "選單"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
-msgid "Raise window when clicking _inside application window"
-msgstr "點選視窗內部時將視窗置頂"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
-msgid "Resistance|<i>Small</i>"
-msgstr "阻抗|弱"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
-msgid "Resistance|<i>Wide</i>"
-msgstr "阻抗|強"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Raise window when clicking _inside application window"
+msgstr "當點擊應用程式視窗內部時抬升視窗(_I)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "捲起"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-#, fuzzy
-msgid "Snap windows to other _windows"
-msgstr "將視窗吸引到其他視窗"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
-msgid "Snap windows to screen _border"
-msgstr "在螢幕邊緣吸引視窗"
+msgid "Snap windows to other _windows"
+msgstr "讓視窗被其它視窗吸引(_W)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "Snap windows to screen _border"
+msgstr "在螢幕邊緣吸引視窗(_B)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "貼連"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "雙擊標題列執行的動作："
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
-msgid "The window title cannot be removed"
-msgstr "視窗標題，不可移走"
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "當雙擊標題列時要執行的動作"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "The window title cannot be removed"
+msgstr "不能移除視窗標題"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
 msgstr "標題"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "拖曳視窗離開螢幕時回繞工作區"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "遊標移到螢幕邊緣時迴繞工作區"
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "拖曳視窗離開螢幕時回繞工作區(_D)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
-msgid "_Delay before window receives focus:"
-msgstr "置頂焦點所在視窗前的延遲："
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "指標抵達螢幕邊緣時迴繞工作區(_P)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
-msgid "_Edge resistance:"
-msgstr "螢幕邊緣阻抗："
+msgid "_Delay before window receives focus:"
+msgstr "視窗獲取焦點前的延遲時間(_D)："
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-#, fuzzy
-msgid "_Focus"
-msgstr "焦點"
+msgid "_Edge resistance:"
+msgstr "邊緣抗拒(_E)："
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-msgid "_Reset to Defaults"
-msgstr ""
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "_Focus"
+msgstr "焦點(_F)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-#, fuzzy
-msgid "_Style"
-msgstr "風格"
+msgid "_Reset to Defaults"
+msgstr "重設為預設值(_R)"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:254
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+msgid "_Style"
+msgstr "風格(_S)"
+
+#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
 msgstr "捲起視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:251
+#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
 msgstr "隱藏視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
 msgstr "最大化視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
-#: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Fill window"
-msgstr "隱藏視窗"
+msgstr "填滿視窗視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
 msgstr "無"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
-msgstr "左側"
+msgstr "左"
+
+#: ../settings-dialogs/xfwm4-settings.c:230
+msgid "Center"
+msgstr "中"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
-msgid "Center"
-msgstr "中間"
-
-#: ../settings-dialogs/xfwm4-settings.c:232
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
-msgstr "右側"
+msgstr "右"
+
+#: ../settings-dialogs/xfwm4-settings.c:236
+msgid "Window operations menu"
+msgstr "視窗操作選單"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Window operations menu"
-msgstr ""
+msgid "Up"
+msgstr "上"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Up"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Down"
-msgstr ""
+msgstr "下"
+
+#: ../settings-dialogs/xfwm4-settings.c:241
+msgid "Cancel"
+msgstr "取消"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
-msgid "Cancel"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows"
 msgstr "循環視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows (Reverse)"
-msgstr "循環視窗"
+msgstr "循環視窗 (遞迴)"
+
+#: ../settings-dialogs/xfwm4-settings.c:244
+msgid "Switch window for same application"
+msgstr "切換同一個應用程式的視窗"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
-msgid "Switch window for same application"
-msgstr "將視窗移至工作區 %d"
+msgid "Switch application"
+msgstr "切換應用程式"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
-#, fuzzy
-msgid "Switch application"
-msgstr "不明的應用程式！"
-
-#: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Close window"
 msgstr "關閉視窗"
 
 # FIXME 譯文有待改進
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Maximize window horizontally"
 msgstr "水平的最大化視窗"
 
 # FIXME 譯文有待改進
-#: ../settings-dialogs/xfwm4-settings.c:249
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window vertically"
 msgstr "垂直的最大化視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Move window"
-msgstr "將視窗向上移"
+msgstr "移動視窗"
 
 # FIXME check
-#: ../settings-dialogs/xfwm4-settings.c:253
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Resize window"
-msgstr "向上修改視窗大小"
+msgstr "重新調整視窗大小"
 
-#: ../settings-dialogs/xfwm4-settings.c:255
+#: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
 msgstr "貼連視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:256
+#: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Raise window"
 msgstr "提升視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Lower window"
 msgstr "降低視窗"
 
 # FIXME 譯文有待改進
-#: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window horizontally"
-msgstr "水平的最大化視窗"
+msgstr "水平方向填滿視窗"
 
 # FIXME 譯文有待改進
-#: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window vertically"
-msgstr "垂直的最大化視窗"
+msgstr "垂直方向填滿視窗"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Toggle above"
-msgstr ""
+msgstr "切換至上方"
 
 # TODO check translation
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle fullscreen"
 msgstr "切換全螢幕模式"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Move window to upper workspace"
 msgstr "將視窗移至上方工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to bottom workspace"
 msgstr "將視窗移至下方工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to left workspace"
 msgstr "將視窗移至左方工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to right workspace"
 msgstr "將視窗移至右方工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to previous workspace"
 msgstr "將視窗移至上一個工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to next workspace"
 msgstr "將視窗移至下一個工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to workspace 1"
-msgstr "將視窗移至工作區 %d"
+msgstr "將視窗移至工作區 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:269
+msgid "Move window to workspace 2"
+msgstr "將視窗移至工作區 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
-msgid "Move window to workspace 2"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 3"
+msgstr "將視窗移至工作區 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
-msgid "Move window to workspace 3"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 4"
+msgstr "將視窗移至工作區 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
-msgid "Move window to workspace 4"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 5"
+msgstr "將視窗移至工作區 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
-msgid "Move window to workspace 5"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 6"
+msgstr "將視窗移至工作區 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
-msgid "Move window to workspace 6"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 7"
+msgstr "將視窗移至工作區 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
-msgid "Move window to workspace 7"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 8"
+msgstr "將視窗移至工作區 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
-msgid "Move window to workspace 8"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 9"
+msgstr "將視窗移至工作區 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
-msgid "Move window to workspace 9"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 10"
+msgstr "將視窗移至工作區 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
-msgid "Move window to workspace 10"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 11"
+msgstr "將視窗移至工作區 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
-msgid "Move window to workspace 11"
-msgstr "將視窗移至工作區 %d"
+msgid "Move window to workspace 12"
+msgstr "將視窗移至工作區 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
-msgid "Move window to workspace 12"
-msgstr "將視窗移至工作區 %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Show desktop"
 msgstr "顯示桌面"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Upper workspace"
 msgstr "上方工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Bottom workspace"
 msgstr "下方工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Left workspace"
 msgstr "左方工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Right workspace"
 msgstr "右方工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Previous workspace"
 msgstr "上一個工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Next workspace"
 msgstr "下一個工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Workspace 1"
-msgstr "工作區 %i"
+msgstr "工作區 1"
+
+#: ../settings-dialogs/xfwm4-settings.c:288
+msgid "Workspace 2"
+msgstr "工作區 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
-msgid "Workspace 2"
-msgstr "工作區 %d"
+msgid "Workspace 3"
+msgstr "工作區 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
-msgid "Workspace 3"
-msgstr "工作區 %i"
+msgid "Workspace 4"
+msgstr "工作區 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
-msgid "Workspace 4"
-msgstr "工作區 %i"
+msgid "Workspace 5"
+msgstr "工作區 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
-msgid "Workspace 5"
-msgstr "工作區 %i"
+msgid "Workspace 6"
+msgstr "工作區 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
-msgid "Workspace 6"
-msgstr "工作區 %i"
+msgid "Workspace 7"
+msgstr "工作區 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
-msgid "Workspace 7"
-msgstr "工作區 %i"
+msgid "Workspace 8"
+msgstr "工作區 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
-msgid "Workspace 8"
-msgstr "工作區 %i"
+msgid "Workspace 9"
+msgstr "工作區 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
-msgid "Workspace 9"
-msgstr "工作區 %i"
+msgid "Workspace 10"
+msgstr "工作區 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
-#, fuzzy
-msgid "Workspace 10"
-msgstr "工作區 %d"
+msgid "Workspace 11"
+msgstr "工作區 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
-msgid "Workspace 11"
-msgstr "工作區 %i"
+msgid "Workspace 12"
+msgstr "工作區 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-#, fuzzy
-msgid "Workspace 12"
-msgstr "工作區 %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
 msgstr "新增工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add adjacent workspace"
-msgstr "新增工作區"
+msgstr "加入相鄰工作區"
+
+#: ../settings-dialogs/xfwm4-settings.c:301
+msgid "Delete last workspace"
+msgstr "刪除最後一個工作區"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
-#, fuzzy
-msgid "Delete last workspace"
-msgstr "移除工作區"
-
-#: ../settings-dialogs/xfwm4-settings.c:303
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "移除工作區"
+msgstr "刪除活動中的工作區"
 
-#: ../settings-dialogs/xfwm4-settings.c:451
+#: ../settings-dialogs/xfwm4-settings.c:450
 msgid "Theme"
-msgstr ""
+msgstr "主題"
 
 # FIXME 譯文有待改進
-#: ../settings-dialogs/xfwm4-settings.c:600
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:599
 msgid "Action"
-msgstr "現用"
+msgstr "動作"
 
-#: ../settings-dialogs/xfwm4-settings.c:605
-#, fuzzy
+#: ../settings-dialogs/xfwm4-settings.c:604
 msgid "Shortcut"
-msgstr "沒有快速鍵"
+msgstr "捷徑"
 
-#: ../settings-dialogs/xfwm4-settings.c:971
+#: ../settings-dialogs/xfwm4-settings.c:977
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "未能初始化 xfconf。原因：%s"
 
-#: ../settings-dialogs/xfwm4-settings.c:982
+#: ../settings-dialogs/xfwm4-settings.c:988
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "無法建立設定值對話窗。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1858
-#: ../settings-dialogs/xfwm4-settings.c:1859
+#: ../settings-dialogs/xfwm4-settings.c:1880
+#: ../settings-dialogs/xfwm4-settings.c:1881
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "重設為預設值"
 
-#: ../settings-dialogs/xfwm4-settings.c:1860
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
+#: ../settings-dialogs/xfwm4-settings.c:1882
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "這會將所有捷徑重設為其預設值。您真的想要這麼做嗎？"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-#, fuzzy
-msgid "<i>Opaque</i>"
-msgstr "不透明"
-
+#. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
-msgid "<i>Transparent</i>"
-msgstr "透明"
+msgid "<i>Large</i>"
+msgstr "<i>大</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#, fuzzy
-msgid "Activate _focus stealing prevention"
-msgstr "啟用「預防偷竊焦點」"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
-msgid "At the _center of the screen"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-msgid "By default, place windows:"
-msgstr ""
+msgid "<i>Opaque</i>"
+msgstr "<i>不透明</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "<i>Transparent</i>"
+msgstr "<i>透明</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "Activate _focus stealing prevention"
+msgstr "啟用預防竊取焦點功能(_F)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "At the _center of the screen"
+msgstr "於螢幕中央(_C)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "By default, place windows:"
+msgstr "預設的視窗擺放位置："
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 #, fuzzy
 msgid "C_ompositor"
 msgstr "設定快速鍵"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ycling"
-msgstr "循環"
+msgstr "循環(_Y)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle _through windows on all workspaces"
-msgstr "在所有工作區的視窗間循環"
+msgstr "在所有工作區的視窗間循環(_T)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
-msgid "Do _nothing"
-msgstr "無"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "Hide _frame of windows when maximized"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "Honor _standard ICCCM focus hint"
-msgstr ""
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
-msgid "Key used to _grab and move windows:"
-msgstr "用來抓住及移動視窗的按鍵"
+msgid "Do _nothing"
+msgstr "無動作(_N)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgid "Hide _frame of windows when maximized"
+msgstr "當最大化時隱藏視窗的框架(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
-msgid "Opaci_ty of window decorations:"
-msgstr "視窗裝飾的不透明程度"
+msgid "Honor _standard ICCCM focus hint"
+msgstr "尊重標準 ICCCM 焦點提示(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-#, fuzzy
-msgid "Opacity of _inactive windows:"
-msgstr "跳出視窗的不透明程度"
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr "讓緊急視窗保持閃爍(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
-msgid "Opacity of popup window_s:"
-msgstr "跳出視窗的不透明程度"
+msgid "Key used to _grab and move windows:"
+msgstr "用來抓住並移動視窗的按鍵(_G)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
-msgid "Opacity of windows during _move:"
-msgstr "移動視窗時的不透明程度"
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr "藉由讓視窗裝飾閃爍來通知緊急事件(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
-msgid "Opacity of windows during resi_ze:"
-msgstr "縮放視窗時的不透明程度"
+msgid "Opaci_ty of window decorations:"
+msgstr "視窗裝飾的不透明度(T)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
-msgid "Restore original _size of maximized windows when moving"
-msgstr "移動視窗時回復最大化視窗原本的大小"
+msgid "Opacity of _inactive windows:"
+msgstr "非活動中視窗的不透明度(_I)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
-msgid "Show shadows under _dock windows"
-msgstr "在跳出視窗下顯示陰影"
+msgid "Opacity of popup window_s:"
+msgstr "彈出式視窗的不透明度(_S)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
-msgid "Show shadows under _regular windows"
-msgstr "在一般視窗下顯示陰影"
+msgid "Opacity of windows during _move:"
+msgstr "移動視窗時的不透明度(M)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
-msgid "Show shadows under pop_up windows"
-msgstr "在跳出視窗下顯示陰影"
+msgid "Opacity of windows during resi_ze:"
+msgstr "調整視窗大小時的不透明度(_Z)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
-msgid "Size|<i>Large</i>"
-msgstr "大小|大"
+msgid "Restore original _size of maximized windows when moving"
+msgstr "移動視窗時還原最大化視窗的原始大小(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
-msgid "Size|<i>Small</i>"
-msgstr "大小|小"
+msgid "Show shadows under _dock windows"
+msgstr "在 _dock 視窗下顯示陰影"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
-msgid "Switch to win_dow's workspace"
-msgstr "將視窗移至工作區 %d"
+msgid "Show shadows under _regular windows"
+msgstr "在一般視窗下顯示陰影(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-msgid "Under the mouse _pointer"
-msgstr ""
+msgid "Show shadows under pop_up windows"
+msgstr "在彈出式視窗下顯示陰影(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
-msgid "Use _edge resistance instead of window snapping"
-msgstr "使用邊緣阻抗取代視窗吸引"
+msgid "Switch to win_dow's workspace"
+msgstr "切換至視窗的工作區(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgid "Under the mouse _pointer"
+msgstr "在滑鼠指標之下(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "When a window raises itself:"
-msgstr ""
+msgid "Use _edge resistance instead of window snapping"
+msgstr "使用邊緣抗拒取代視窗吸引(_E)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "在桌面上使用滑鼠滾輪以切換工作區(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-#, fuzzy
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "以實際上的桌面輸出決定工作區迴繞"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-#, fuzzy
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "抵達第一個或最後一個工作區時時迴繞工作區"
+msgid "When a window raises itself:"
+msgstr "當視窗抬升自己時："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 #, fuzzy
-msgid "_Accessibility"
-msgstr "可近性"
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "以實際的桌面配置決定工作區迴繞(_L)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 #, fuzzy
-msgid "_Bring window on current workspace"
-msgstr "將視窗移至下一個工作區"
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "抵達第一個或最後一個工作區時時迴繞工作區(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgid "_Accessibility"
+msgstr "輔助功能(_A)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Bring window on current workspace"
+msgstr "將視窗移至目前工作區(_B)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "_Draw frame around selected windows while cycling"
+msgstr "當循環時繪製所選視窗周圍的框架(_D)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "包含隱藏(如：圖示化的)視窗"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "觸發智慧配置的最小視窗大小"
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
-msgid "_Placement"
-msgstr "配置"
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "包含隱藏 (如：圖示化的) 視窗(_I)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
-msgid "_Raise windows when any mouse button is pressed"
-msgstr "按下任一滑鼠鍵時揚起視窗"
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "觸發智慧配置的最小視窗大小(_M)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#, fuzzy
+msgid "_Placement"
+msgstr "配置(_P)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "按下任一滑鼠鍵時抬升視窗(_R)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "由鍵盤捷徑切換時，記住並回到先前的作區"
+msgstr ""
+"透過鍵盤捷徑切換時，記住並召回\n"
+"先前的工作區(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
 
 #  Number of workspaces
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
-msgstr "工作區"
+msgstr "工作區(_W)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "邊緣"
+msgstr "<b>邊緣</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "迴繞工作區"
+msgstr "<b>工作區</b>"
 
 #  Workspace names
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
-msgstr "工作區個數"
+msgstr "變更工作區名稱"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "邊緣是螢幕邊上不能放置視窗的區域"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "名稱："
+msgstr "名稱(_N)："
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "工作區名稱："
+msgstr "工作區數量(_N)："
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:182
@@ -970,7 +855,7 @@ msgstr "工作區名稱："
 msgid "%s (on %s)"
 msgstr "%s (於 %s)"
 
-#: ../src/main.c:139
+#: ../src/main.c:138
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: 分斷錯誤"
@@ -980,18 +865,16 @@ msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "還原(_M)"
+msgstr "取消最大化(_X)"
 
 #: ../src/menu.c:46
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "最大化(_X)"
+msgstr "最小化(_N)"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "最小化所有其它視窗(_A)"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -999,68 +882,59 @@ msgstr "顯示(_H)"
 
 #: ../src/menu.c:49
 msgid "_Move"
-msgstr ""
+msgstr "移動(_M)"
 
 #: ../src/menu.c:50
 msgid "_Resize"
-msgstr ""
+msgstr "重新調整大小(_R)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
 msgstr "總是置頂"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "將視窗吸引到其他視窗"
+msgstr "與其它視窗相同"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "總是在其它視窗下方"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "隱藏視窗"
+msgstr "向上捲動視窗"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "將視窗向下移"
+msgstr "向下捲動視窗"
 
 # TODO check translation
 #: ../src/menu.c:57
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "切換全螢幕模式"
+msgstr "全螢幕(_F)"
 
 # TODO check translation
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "切換全螢幕模式"
+msgstr "離開全螢幕(_F)"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
-msgstr "上下文說明(_H)"
+msgstr "條目說明(_H)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "總是置頂"
+msgstr "總是置於可見的工作區"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "總是位於此工作區"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "將視窗移至下一個工作區"
+msgstr "移至另一個工作區"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1070,7 +944,7 @@ msgstr "關閉(_C)"
 #. --------------------------------------------------------
 #: ../src/menu.c:68
 msgid "Destroy"
-msgstr "結束"
+msgstr "銷毀"
 
 #: ../src/menu.c:71
 msgid "_Quit"
@@ -1084,7 +958,7 @@ msgstr "重新啟動"
 #: ../src/menu.c:423
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu 無法取得遊標\n"
+msgstr "%s: GtkMenu 無法取得指標\n"
 
 #: ../src/settings.c:273
 #, c-format
@@ -1094,22 +968,22 @@ msgstr "%s: 無法分配顏色 %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s：無法分配顏色：此顏色的 GValue  不是 STRING 類型"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: 無法處理顏色 %s\n"
+msgstr "%s: 無法解析顏色 %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s：無法解析顏色：此顏色的 GValue  不是 STRING 類型"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "從子代程序讀取資料時發生錯誤：%s\n"
 
 #: ../src/terminate.c:123
 #, c-format
@@ -1117,21 +991,28 @@ msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
 
 #, fuzzy
+#~ msgid "Distance|<i>Small</i>"
+#~ msgstr "距離|窄"
+
+#, fuzzy
+#~ msgid "Resistance|<i>Small</i>"
+#~ msgstr "阻抗|弱"
+
+#, fuzzy
+#~ msgid "Resistance|<i>Wide</i>"
+#~ msgstr "阻抗|強"
+
+#, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "視窗管理程式"
-
 #~ msgid "Workspace Margins"
 #~ msgstr "工作區邊緣"
-
 #~ msgid "Left :"
 #~ msgstr "左側："
-
 #~ msgid "Right :"
 #~ msgstr "右側："
-
 #~ msgid "Top :"
 #~ msgstr "頂部："
-
 #~ msgid "Bottom :"
 #~ msgstr "底部："
 
@@ -1186,7 +1067,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "可近性"
-
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "在桌面上使用滾輪切換工作區"
 
@@ -1267,20 +1147,16 @@ msgstr ""
 #, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "設定快速鍵"
-
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "視窗管理程式調校"
-
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "這些設定無法運作於您目前的視窗管理程式 (%s) "
-
 #~ msgid "Change name"
 #~ msgstr "改變名稱"
 
 #, fuzzy
 #~ msgid "Name:"
 #~ msgstr "名稱："
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "選取一個工作區名稱來編輯它"
 
@@ -1292,39 +1168,30 @@ msgstr ""
 #, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "工作區個數"
-
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "工作區和邊緣"
-
 #~ msgid "Workspaces and Margins"
 #~ msgstr "工作區和邊緣"
 
 #, fuzzy
 #~ msgid "Margins"
 #~ msgstr "邊緣"
-
 #~ msgid "Window Manager Settings"
 #~ msgstr "視窗管理程式設定"
-
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "Xfce 4 視窗管理程式設定"
-
 #~ msgid "Advanced Configuration"
 #~ msgstr "進階組態設定"
-
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "Xfce 4 視窗管理程式調校"
-
 #~ msgid "Workspaces Settings"
 #~ msgstr "工作區設定"
-
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Xfce 4 工作區設定"
 
 #, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "要修改按鈕的布局，拖曳下面按鈕即可"
-
 #~ msgid "Font Selection Dialog"
 #~ msgstr "字型選擇對話框"
 
@@ -1335,7 +1202,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "標題對齊方式"
-
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "標題欄內的本文對齊方式："
 
@@ -1374,10 +1240,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "置頂焦點所在視窗前的延遲："
-
 #~ msgid "Slow"
 #~ msgstr "慢"
-
 #~ msgid "Fast"
 #~ msgstr "快"
 
@@ -1480,40 +1344,32 @@ msgstr ""
 #, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "進階"
-
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "視窗管理程式"
-
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "您真的想要移除本自訂鍵主題？"
-
 #~ msgid "Add keybinding theme"
 #~ msgstr "新增自訂鍵主題"
 
 #, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "為新的主題鍵入一個名稱："
-
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "有一個同名的自訂鍵主題已經存在"
-
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "您必需給自訂鍵主題一個名稱"
 
 #, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "將視窗移至工作區 %d"
-
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "無法開啟主題目錄！"
-
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "無法開啟 %s：\n"
 #~ "%s"
-
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
@@ -1532,10 +1388,8 @@ msgstr ""
 # FIXME The source is wrong!! untranslatable string!!
 #~ msgid "Compose shortcut for :"
 #~ msgstr "為下列動作設定快速鍵："
-
 #~ msgid "Compose shortcut"
 #~ msgstr "設定快速鍵"
-
 #, fuzzy
 #~ msgid "No shortcut"
 #~ msgstr "設定快速鍵"
@@ -1594,17 +1448,14 @@ msgstr ""
 #, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "最大化(_X)"
-
 #~ msgid "Hide _all others"
 #~ msgstr "隱藏其他視窗(_A)"
-
 #~ msgid "_Shade"
 #~ msgstr "捲起(_S)"
 
 #, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "展開(_s)"
-
 #~ msgid "S_tick"
 #~ msgstr "貼連(_T)"
 
@@ -1615,10 +1466,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Below"
 #~ msgstr "慢"
-
 #~ msgid "Send to..."
 #~ msgstr "傳送到..."
-
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "工作區 %i (%s)"
 
@@ -1633,28 +1482,23 @@ msgstr ""
 #, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "快速鍵"
-
 #~ msgid "Move window left"
 #~ msgstr "將視窗向左移"
-
 #~ msgid "Move window right"
 #~ msgstr "將視窗向右移"
 
 # FIXME check
 #~ msgid "Resize window down"
 #~ msgstr "向下修改視窗大小"
-
 # FIXME check
 #~ msgid "Resize window left"
 #~ msgstr "向左修改視窗大小"
-
 # FIXME check
 #~ msgid "Resize window right"
 #~ msgstr "向右修改視窗大小"
-
 #, fuzzy
 #~ msgid "Cancel move/resize window"
 #~ msgstr "關閉視窗"
-
 #~ msgid "_Hide"
 #~ msgstr "隱藏(_H)"
+
