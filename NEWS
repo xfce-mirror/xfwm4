@@ -1,27 +1,64 @@
-4.7.x
+4.7.0
 =====
-- Transition fullscreen windows back to their original layer 
-  when another window is activated (Bug #3551)
+- Fix window positioning problem when output it removed (bug #6209).
 - Do not clear the show desktop flag upon activation of
   already visible windows
-- Implement prelinminary support for snap on resize (patch by Clifford Jolly
-  <cliff@cliffjolly.com>)
-- Fix mixed RTL/LTR text not rendering properly in title and tabwin
-- Place windows on top of stack even when not focused in focus follow mouse
-- Fix opacity for newly mapped window not focused by default (bug #5706)
-- Display an app switcher window per physical monitor (bug #5229)
-- Add new keyboard shortcut to switch between windows of the same application
-- Add new keyboard shortcut to switch between windows of different applications
-  only.
-- Add new option "cycle_apps_only" to switch between regular toplevels only 
+- Transition fullscreen windows back to their original layer
+  when another window is activated (bug #3551).
+- Add new keyboard shortcut to switch between windows of the
+  same application.
+- Add new keyboard shortcut to switch between windows of different
+  applications only.
+- Port to libxfce4ui + GtkBuilder and drop libxfcegui4 dependency.
+- Display an app switcher window per physical monitor (bug #5229).
+- Fix opacity for newly mapped window not focused by default (bug #5706).
+- Add new option "cycle_apps_only" to switch between regular toplevels only
   (avoiding dialogs - This option coupled with the new shortcut allows for
   faster window selection through keyboard)
+- Implement prelinminary support for snap on resize.
+- Implement a workaround to avoid loosing key release events.
+- Add linkage to libm when compositor is used (bug #6231).
+- Check for invalid type for GValue to avoid a crash (bug #6195).
+- Don't save the settings dialogs when saving the session.
+- Watch workspace changes in wnck and update treeview accordingly.
+- Move helper-dialog to $libdir/xfce4/xfwm4.
+- Build documentation in make dist.
+- Various theme updates.
+- Translation updates (ja, es, pl, uk, da, ro, ast, lv, sq, gl, ru, sk, pt,
+  fi, hu, it, de, pt_BR, cs, kk, si, hr, id, zh_TW)
+
+
+4.6.2
+=====
+
+- Build fixes for GIT.
+- Fix mixed RTL/LTR text not rendering properly in title and tabwin.
+- Place windows on top of stack even when not focused in focus
+  follow mouse (bug #5479).
+- Increase menu button height and redice width (bug #5567).
+- Do not set the "demand attention" flag when the window is already
+  focused.
+- Keep windows entirely visible on screen change (bug #5795).
+- Various compilation warnings fixed.
+- Compute screen size based on each monitor size and layout and
+  avoid using reported size (bug #5795).
+- Reloading settings on keys-changed signal is a huge overhead and
+  complete nonsense (bug #5964).
+- Recent Xorg drivers disable the output when the lid is closed,
+  leaving no active monitor, in that case simply ignore the event to
+  avoid messing with windows' positions (bug #6209).
+- Add linkage to libm when compositor is used (bug #6231).
+- Check for invalid type for GValue to avoid a crash (bug #6195).
+- Allow only regular windows to be placed either above or below.
+- Translation updates (cs, el, es, gl, it, pl, pt, sv, tr, uk, lv,
+  ur, ur_PK, ro, ru, nl, ug).
+
 
 4.6.1
 =====
 
 - Reduce repaint timeout in the compositor (Bug #5080)
-- Fix applications getting focused when focus on map is unset even 
+- Fix applications getting focused when focus on map is unset even
   without focus stealing prevention enabled (Bug #5044)
 - Reduce minimum timeout for focus delay in focus follow mouse (100ms was way
   too much)
@@ -33,8 +70,8 @@
 - Do not actually change window layer when status is above, below or fullscreen
   (Bug #5030)
 - Check fullscreen status against each monitor and not just the overall screen
-  size in the compositor. 
-- Fix remaining active grab if shortcut is not used (Bug #5207) 
+  size in the compositor.
+- Fix remaining active grab if shortcut is not used (Bug #5207)
 - Plug various memory leaks
 
 
@@ -49,39 +86,39 @@
   shortcut than the one being edited.
 - When stealing a shortcut from another shortcuts provider, clear the shortcut
   of that provider first.
-- Fix focus stealing prevention with applications which support the 
+- Fix focus stealing prevention with applications which support the
   NET_WM_USER_TIME_WINDOW protocol
-- Do not automatically give focus to windows placed on lower layers, but 
+- Do not automatically give focus to windows placed on lower layers, but
   focus those on upper layers at first map.
 - Fix compilation failure in debug full without render
 - Fix ICCCM synthetic unmap notify handling causing a race condition with
   amule when started hidden to system tray (Bug #4928)
 - Fix margin max value (Bug #4931)
 - Apply font settings changes in real time (DPI, hinting, hint style, rgba).
-- Fix key "Super" remaining sticky when used as a modifier shortcut 
+- Fix key "Super" remaining sticky when used as a modifier shortcut
   (Bug #4959).
 
 4.5.99.1 (Xfce 4.6rc1)
 ======================
 
 - Fix a crash when removing a monitor with xrandr 1.2.
-- Command line option "--daemon" would have no effect when xfwm4 connects to 
+- Command line option "--daemon" would have no effect when xfwm4 connects to
   the session manager (Bug #4839).
 - Fix settings not being set at startup (Bug #4845).
 - Flatten default theme.
 - Add support for NET_WM_FULLSCREEN_MONITORS.
 - Fix dragging button layout when the dialog is embedded in the settings
   dialog (Bug #4524).
-- Make title alignment and button layout insensitive when not supported by the 
+- Make title alignment and button layout insensitive when not supported by the
   theme selected.
 - Use gtk_selection_data_get_data() only if available (Bug #4855).
 
 4.5.93 (Xfce 4.6beta3)
 ======================
 
-- Work around a problem affecting the use of the "Super" key as modifier for 
+- Work around a problem affecting the use of the "Super" key as modifier for
   moving windows (Bug #4632).
-- Fix smart placement not working for windows with height or width larger than 
+- Fix smart placement not working for windows with height or width larger than
   actual screen size (Bug# 3126).
 - Remove maximization if a client updates its size max size hint (Bug #4706).
 - String review by Josh Saddler <nightmorph@gentoo.org> (Bug #4703).
@@ -91,7 +128,7 @@
 - Change default shadow radius and position.
 - Fix some controls not being localized (Bug #4740).
 - Remove markup not supported by xfce_message_dialog() (Bug #4786).
-- Avoid placing unfocused windows on top of the current focused window when not 
+- Avoid placing unfocused windows on top of the current focused window when not
   focusing new windows (Bug #4795).
 
 4.5.92 (Xfce 4.6beta2)
@@ -106,9 +143,9 @@
 - Add new option do disable blinking of urgent windows.
 - Fix possible crash when the dbl_click_action setting gets unset.
 - Fix workspaces names not being set in the workspace settings GUI.
-- Do not display warnings for values that are not configurable via xfconf 
+- Do not display warnings for values that are not configurable via xfconf
   (typically theme settings).
-- Draw focus in tabwin to make sure the selection is visible even with themes 
+- Draw focus in tabwin to make sure the selection is visible even with themes
   that do not show selected items.
 - Add key shortcut for reverse cycling (Bug #2778)
 
