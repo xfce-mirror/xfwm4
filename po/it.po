@@ -4,13 +4,13 @@
 # Gabriele Modena <randall@email.it>, 2005.
 # Alex Dupre <ale@FreeBSD.org>, 2004, 2005.
 # Cristian Marchi <cri.penta@gmail.com>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-09 10:07+0000\n"
-"PO-Revision-Date: 2010-02-11 15:03+0100\n"
+"POT-Creation-Date: 2010-09-08 04:07+0000\n"
+"PO-Revision-Date: 2010-09-08 11:45+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -45,25 +45,25 @@ msgid "Session manager socket"
 msgstr "Socket del gestore della sessione"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "Informazioni di versione"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
+#: ../settings-dialogs/workspace-settings.c:388
 #: ../settings-dialogs/xfwm4-settings.c:948
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
+#: ../settings-dialogs/workspace-settings.c:392
 #: ../settings-dialogs/xfwm4-settings.c:952
 #, c-format
 msgid ""
@@ -73,17 +73,17 @@ msgstr ""
 "%s: %s\n"
 "Digitare %s --help per consultare l'elenco completo delle opzioni da riga di comando.\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
 msgstr "Spazio di lavoro %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
 msgstr "Nome dello spazio di lavoro"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "Socket del gestore delle impostazioni"
@@ -202,9 +202,7 @@ msgstr "A_vanzate"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
-"Porta automaticamente in p_rimo piano le finestre\n"
-"quando vengono messe a fuoco"
+msgstr "Solleva automaticamente le finest_re quando vengono messe a fuoco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
@@ -268,7 +266,7 @@ msgstr "Solleva la finestra quando si fa clic al suo intern_o"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
-msgstr "Adombra"
+msgstr "Arrotola"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
@@ -284,7 +282,7 @@ msgstr "Blocca"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Azione da intraprendere al doppio clic sulla barra del titolo:"
+msgstr "Azione da intraprendere al doppio clic sulla barra del titolo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
@@ -326,7 +324,7 @@ msgstr "_Stile"
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
-msgstr "Adombra la finestra"
+msgstr "Arrotola la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
@@ -341,7 +339,7 @@ msgstr "Massimizza la finestra"
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Fill window"
-msgstr "Riempi la finestra"
+msgstr "Espandi la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -419,11 +417,11 @@ msgstr "Blocca la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Raise window"
-msgstr "Ingrandisce la finestra"
+msgstr "Solleva la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Lower window"
-msgstr "Rimpicciolisce la finestra"
+msgstr "Abbassa la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window horizontally"
@@ -898,7 +896,7 @@ msgstr "Arrotola la finestra verso l'alto"
 
 #: ../src/menu.c:56
 msgid "Roll Window Down"
-msgstr "Arrotola la finestra verso il basso"
+msgstr "Srotola la finestra"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
