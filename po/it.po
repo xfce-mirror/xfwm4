@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-08 16:15+0000\n"
+"POT-Creation-Date: 2010-09-08 10:14+0000\n"
 "PO-Revision-Date: 2010-02-11 15:03+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -184,9 +184,7 @@ msgstr "A_vanzate"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
-"Porta automaticamente in p_rimo piano le finestre\n"
-"quando vengono messe a fuoco"
+msgstr "Solleva automaticamente le finest_re quando vengono messe a fuoco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Automatically give focus to _newly created windows"
@@ -274,7 +272,7 @@ msgstr "<i>Forte</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
-msgstr "Adombra"
+msgstr "Arrotola"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Snap windows to other _windows"
@@ -290,7 +288,7 @@ msgstr "Blocca"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Azione da intraprendere al doppio clic sulla barra del titolo:"
+msgstr "Azione da intraprendere al doppio clic sulla barra del titolo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title cannot be removed"
@@ -332,7 +330,7 @@ msgstr "_Stile"
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Shade window"
-msgstr "Adombra la finestra"
+msgstr "Arrotola la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 #: ../settings-dialogs/xfwm4-settings.c:249
@@ -347,7 +345,7 @@ msgstr "Massimizza la finestra"
 #: ../settings-dialogs/xfwm4-settings.c:224
 #: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Fill window"
-msgstr "Riempi la finestra"
+msgstr "Espandi la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Nothing"
@@ -417,11 +415,11 @@ msgstr "Blocca la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Raise window"
-msgstr "Ingrandisce la finestra"
+msgstr "Solleva la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Lower window"
-msgstr "Rimpicciolisce la finestra"
+msgstr "Abbassa la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Fill window horizontally"
@@ -899,7 +897,7 @@ msgstr "Arrotola la finestra verso l'alto"
 
 #: ../src/menu.c:56
 msgid "Roll Window Down"
-msgstr "Arrotola la finestra verso il basso"
+msgstr "Srotola la finestra"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
