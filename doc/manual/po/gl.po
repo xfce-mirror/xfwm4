@@ -733,7 +733,7 @@ msgstr ""
 
 #: ./xfwm4.xml701(title)
 msgid "Advanced settings"
-msgstr ""
+msgstr "Configuración avanzada"
 
 #: ./xfwm4.xml704(title)
 msgid "Advanced preferences"
@@ -741,11 +741,11 @@ msgstr ""
 
 #: ./xfwm4.xml712(phrase)
 msgid "Advanced tab"
-msgstr ""
+msgstr "Lapela avanzada"
 
 #: ./xfwm4.xml721(term)
 msgid "Windows snapping"
-msgstr ""
+msgstr "Axuste de fiestras"
 
 #: ./xfwm4.xml723(para)
 msgid "You can choose the windows borders to be attracted by the borders of other windows, or by the screen edges, when they are moved. The distance from which this effect will be applied can be specified with the \"Distance\" slider."
@@ -785,11 +785,11 @@ msgstr ""
 
 #: ./xfwm4.xml778(title)
 msgid "Workspaces settings"
-msgstr ""
+msgstr "Configuración dos espazos de traballo"
 
 #: ./xfwm4.xml781(title)
 msgid "Workspace Settings"
-msgstr ""
+msgstr "Configuración do espazo de traballo"
 
 #: ./xfwm4.xml788(phrase)
 msgid "Shows workspace settings tab folder."
@@ -797,7 +797,7 @@ msgstr ""
 
 #: ./xfwm4.xml798(term)
 msgid "Workspaces"
-msgstr ""
+msgstr "Espazos de traballo"
 
 #: ./xfwm4.xml800(para)
 msgid "This option allows you too choose the number of workspaces you want to use (between 1 and 32)."
@@ -805,7 +805,7 @@ msgstr ""
 
 #: ./xfwm4.xml807(term)
 msgid "Worspace names"
-msgstr ""
+msgstr "Nomes dos espazos de traballo"
 
 #: ./xfwm4.xml809(para)
 msgid "This field shows the list of avaible workspaces. If you want to edit the name of one of them, click its number and a fill the entry of the dialog that will then appear. When it's done, click the \"Apply\" button, or just press the Enter key, to return to the list."
@@ -813,7 +813,7 @@ msgstr ""
 
 #: ./xfwm4.xml823(title)
 msgid "Workspaces margins"
-msgstr ""
+msgstr "Marxes dos espazos de traballo"
 
 #: ./xfwm4.xml826(title)
 msgid "The workspace margins dialog"
@@ -858,4 +858,4 @@ msgstr ""
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: ./xfwm4.xml0(None)
 msgid "translator-credits"
-msgstr ""
+msgstr "Leandro Regueiro <leandro.regueiro@gmail.com>, 2010."
