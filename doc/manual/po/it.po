@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-docs\n"
 "POT-Creation-Date: 2010-08-28 12:29+0200\n"
-"PO-Revision-Date: 2010-09-08 12:20+0100\n"
+"PO-Revision-Date: 2010-09-09 10:40+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -124,7 +124,7 @@ msgstr "<application>@PACKAGE_NAME@</application> può essere eseguita stand-alo
 
 #: ./xfwm4.xml:112(para)
 msgid "<application>@PACKAGE_NAME@</application> includes its own compositing manager, which takes advantage of the new <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink>'s server extensions. The compositor is like a WM on its own, it manages a stack of all windows, monitor all kinds on X event and reacts accordingly. Having the compositing manager embedded in the window manager also helps keeping the various visual effects in sync with window events. If you want to use the compositor, you have to build <application>@PACKAGE_NAME@</application> using the --enable-compositor configure option. In any case, you can disable the compositor on <application>@PACKAGE_NAME@</application> startup using the '--compositor=off' argument."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> include un proprio gestore della composizione, che si avvale delle nuove estensioni del server di <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink>. Il compositore è come un gestore delle finestre: gestisce un insieme di tutte le finestre, monitora tutti i tipi di eventi su X e reagisce di conseguenza. Avere il gestore della composizione incluso nel gestore delle fienstre permette anche di mantenere sincronizzati gli effetti visivi con gli eventi delle finestre. Per utilizzare il compositore, è necessario compilare <application>@PACKAGE_NAME@</application> utilizzando l'opzione di configure  --enable-compositor. In ogni caso, è possibile disabilitare il compositore all'avvio di <application>@PACKAGE_NAME@</application> utilizzando l'argomento --compositor=off."
 
 #: ./xfwm4.xml:125(title)
 msgid "Using <application>@PACKAGE_NAME@</application>"
@@ -156,7 +156,7 @@ msgstr "Il menu della fienstra può essere aperto con un clic del tasto sinistro
 
 #: ./xfwm4.xml:157(para)
 msgid "If you use <application>xftaskbar4</application>, you can open an action menu with a right-click on one of the taskbar entries; it includes several items among those available in the window menu."
-msgstr ""
+msgstr "Se si utilizza <application>xftaskbar4</application>, è possibile aprire un menu delle azioni con un clic con il tasto destro del mouse su uno degli elementi della barra delle applicazioni. il menu comprende diversi elementi fra cui quelli disponibili nel menu della finestra."
 
 #: ./xfwm4.xml:165(term)
 msgid "Give focus to a window"
@@ -168,7 +168,7 @@ msgstr "È necessario fornire il fuoco a una finestra se si vuole che questa ric
 
 #: ./xfwm4.xml:172(para)
 msgid "A keyboard shortcut allows to switch the focus from a window to others : Hold Alt and then you can press Tab repeatedly untill you get to the window you want to focus. If you use it, you will see a small popup showing the application name, its icon and the window title. Also <application>@PACKAGE_NAME@</application> will highlight the outline of the window that will receive the focus."
-msgstr ""
+msgstr "Una scorciatoia da tastiera permette di passare il fuoco da una finestra all'altra: tenere premuto il tasto «Alt» e premere poi «Tab» ripetutamente fino a quando non si arriva alla finestra che si vuole avere a fuoco. Con questo metodo verrà visualizzata una finestra a comparsa in cui vengono mostrati il nome dell'applicazione, la sua icona i il titolo della finestra. Inoltre <application>@PACKAGE_NAME@</application> evidenzierà la sagoma della finestra che riceverà il fuoco."
 
 #. <para>
 #. If you want the panel, and apps that do not appear in the taskbar,
@@ -371,11 +371,11 @@ msgstr "clic sinistro sulla sua barra del titolo"
 
 #: ./xfwm4.xml:345(para)
 msgid "give the focus to the window, if the corresponding option is selected in the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>"
-msgstr ""
+msgstr "dare il fuoco alla finestra, se la corrispondente opzione è selezionata nella <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">schermata delle preferenze di tastiera e fuoco</ulink>."
 
 #: ./xfwm4.xml:347(para)
 msgid "left click anywhere on its frame, if the corresponding option is selected in the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>"
-msgstr ""
+msgstr "fare clic in un punto qualsiasi della sua sagoma, se la corrispondente opzione è selezionata nella <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">schermata delle preferenze di tastiera e fuoco</ulink>."
 
 #: ./xfwm4.xml:349(para)
 msgid "click on its label in the taskbar or the iconbox"
@@ -439,7 +439,7 @@ msgstr "usare il menu della finestra e scegliere una delle sotto voci di «Invia
 
 #: ./xfwm4.xml:400(para)
 msgid "left or right click on the title bar of the window, drag it to the screen edge : the pointer will then go to the next workspace, still holding the window. Corresponding option needs to be selected in the <ulink url=\"xfwm4.html#wm_misc\" type=\"http\">Window Manager Preferences dialog</ulink>."
-msgstr ""
+msgstr "fare clic con il tasto destro o sinistro sulla barra del titolo della finestra, trascinarla verso il bordo dello schermo: il puntatore si sposterà nello spazio di lavoro successivo assieme alla finestra. L'opzione corrispondente deve essere selezionata nella <ulink url=\"xfwm4.html#wm_misc\" type=\"http\">schermata delle preferenze del gestore delle finestre</ulink>."
 
 #: ./xfwm4.xml:405(para)
 msgid "use keyboard shortcuts :"
@@ -459,7 +459,7 @@ msgstr "«Alt + Control + n° tastierino numerico» sposta la fienstra corrente 
 
 #: ./xfwm4.xml:415(para)
 msgid "use the <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">graphical pager </ulink> by clicking on the representation of the window, and move it to the desired workspace."
-msgstr ""
+msgstr "usare il <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">selettore grafico</ulink> facendo clic sulla rappresentazione della finestra e muoverla nello spazio di lavoro desiderato."
 
 #: ./xfwm4.xml:425(term)
 msgid "Close a window"
@@ -487,27 +487,27 @@ msgstr "Personalizzare <application>@PACKAGE_NAME@</application>"
 
 #: ./xfwm4.xml:445(para)
 msgid "To open the Window Manager preferences dialog, click the button labelled \"Window Manager\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce 4 Settings manager</ulink>. The dialog shows four tabs : Style, Keyboard, Focus, Advanced. All modifications will have an immediate effect on the behaviour of the selected module."
-msgstr ""
+msgstr "Per aprire la schermata delle preferenze del gestore delle fienstre, fare clic sul pulsante identificato con «Gestore delle fienstre» nel <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Gestore delle impostazioni di Xfce 4</ulink>. La schermata mostra quattro schede: stile, tastiera, fuoco e avanzate. Tutte le modifiche hanno un effetto immediato sul comportamento del modulo selezionato."
 
 #: ./xfwm4.xml:453(title)
 msgid "Decoration style"
-msgstr ""
+msgstr "Stile della decorazione"
 
 #: ./xfwm4.xml:456(title)
 msgid "Decoration style preferences"
-msgstr ""
+msgstr "Preferenze dello stile di decorazione"
 
 #: ./xfwm4.xml:464(phrase)
 msgid "The decoration style tab"
-msgstr ""
+msgstr "La scheda dello stile di decorazione"
 
 #: ./xfwm4.xml:473(term)
 msgid "Window style"
-msgstr ""
+msgstr "Stile della fienstra"
 
 #: ./xfwm4.xml:475(para)
 msgid "The list on the left side of the dialog shows all avaible window decorations. The xfwm 4 module offers the choice between 4 different themes, but there are more than 60 supplementary themes avaible in xfwm4-themes extra package."
-msgstr ""
+msgstr "L'elenco sulla sinistra della schermata mostra tutte le decorazioni disponibili. Il modulo xfwm 4 offre la scelta tra 4 temi differenti, ma sono disponibili più di 60 temi aggiuntivi disponibili nel pacchetto xfwm4-theme."
 
 #: ./xfwm4.xml:484(term)
 msgid "Title font"
@@ -523,7 +523,7 @@ msgstr "Allineamento del titolo"
 
 #: ./xfwm4.xml:499(para)
 msgid "Whatever the buttons layout is, you can choose the alignment of the title inside the title bar, selecting one of those simple options : align it to the left, center or right."
-msgstr ""
+msgstr "Qualsiasi sia la disposizione dei pulsanti, è possibile scegliere l'allineamento del titolo all'interno della barra del titolo, selezionando una delle seguenti semplici opzioni: allinea a sinistra, al centro o a destra."
 
 #: ./xfwm4.xml:507(term)
 msgid "Button layout"
@@ -531,7 +531,7 @@ msgstr "Disposizione dei pulsanti"
 
 #: ./xfwm4.xml:509(para)
 msgid "The button layout configuration uses an easy drag and drop tool. Click and drag the buttons to change the layout. Drop a button in the \"Hidden\" area to remove a button from the titlebar. All modifications will have an immediate effect on the title bar buttons position."
-msgstr ""
+msgstr "La configurazione della disposizione dei pulsanti utilizza un semplice strumento a drag&drop. Fare clic e trascinare i pulsanti per cambiarne la disposizione. Spostare un pulsante nell'area identificata con \"Nascosti\" per rimuoverlo dalla barra del titolo. Tutte le modifiche hanno un effetto immediato sulla posizione dei pulsanti della barra del titolo."
 
 #: ./xfwm4.xml:522(title)
 msgid "Keyboard shortcuts"
@@ -551,7 +551,7 @@ msgstr "Scorciatoie da tastiera"
 
 #: ./xfwm4.xml:544(para)
 msgid "The list on the left side of the dialog shows all avaible shortcuts themes, using the name of directories that contain a keythemerc file."
-msgstr ""
+msgstr "L'elenco sulla sinistra della finestra mostra tutti i temi delle scorciatoie disponibili utilizzando il nome delle cartelle che contengono un file keythemerc."
 
 #: ./xfwm4.xml:548(para)
 msgid "By default, there's only one theme : $(datadir)/themes/Default/xfwm4/keythemerc"
@@ -655,16 +655,16 @@ msgstr "Blocca lo schermo: Alt + Control + Canc"
 
 #: ./xfwm4.xml:586(para)
 msgid "There are two lists on the right side of the dialog. The \"Windows shortcuts\" list shows the keyboard shortcuts which are used to drive the window manager. The \"Command shortcuts\" list shows the keyboard shortcuts which are aimed at launching applications. To modify one of the shortcuts, you have to double-click on it in the list, using the left button of your mouse, and compose your new shortcut when the \"Compose shortcut\" popup window appears."
-msgstr ""
+msgstr "Sono presenti due liste nella parte destra della schermata. La lista delle scorciatoie delle finestre mostra le scorciatoie da tastiera che vengono utilizzate per guidare il gestore delle fienstre. La lista delle scorciatoie dei comandi mostra le scorciatoie da tastiera dedicate al lancio delle applicazioni. Per modificarne una, occorre fare un doppio clic sulla relativa voce nella lista usando il pulsante sinistro del mouse e inserire la nuova scorciatoia quando viene visualizzata la finestra a comparsa per la composizione della scorciatoia."
 
 #: ./xfwm4.xml:597(title)
 #: ./xfwm4.xml:605(phrase)
 msgid "The compose shortcut popup"
-msgstr ""
+msgstr "La finestra a comparsa della composizione della scorciatoia"
 
 #: ./xfwm4.xml:611(para)
 msgid "If you want to create a new theme, create a directory like this one, for instance : $HOME/.themes/Custom/xfwm4/keythemerc, then select it in the list of available themes."
-msgstr ""
+msgstr "Per creare un nuovo tema, creare una cartella come questa (ad esempio $HOME/.themes/Custom/xfwm4/keythemer) poi selezionarla nella lista dei temi disponibili."
 
 #: ./xfwm4.xml:616(para)
 msgid "If you do not know the names of your keyboard modifier keys, you can launch the \"xev\" application from a terminal and test them."
@@ -701,7 +701,7 @@ msgstr "Fuoco per le nuove finestre"
 
 #: ./xfwm4.xml:667(para)
 msgid "Selecting this option will automatically give the focus to newly created windows, without the need to click or move the mouse pointer."
-msgstr ""
+msgstr "Selezionando questa opzione il fuoco verrà fornito automaticamente alle nuove fienstre create, senza che ci sia bisogno di fare clic o di muovere il puntatore del mouse."
 
 #: ./xfwm4.xml:675(term)
 msgid "Raise on focus"
@@ -709,7 +709,7 @@ msgstr "Sollevamento se a fuoco"
 
 #: ./xfwm4.xml:677(para)
 msgid "If this option is selected, the frame of a newly focused window will automatically appear over all other frames, after an amount of time that you can adjust with the \"delay\" slider."
-msgstr ""
+msgstr "Se questa opzione è selezionata, la sagoma di una nuova finestra a fuoco apparirà automaticamente al di sopra delle altre dopo un certo tempo che può essere impostato con la barra di scorrimento denominata \"ritardo\"."
 
 #: ./xfwm4.xml:685(term)
 msgid "Raise on click"
@@ -717,7 +717,7 @@ msgstr "Sollevamento al clic"
 
 #: ./xfwm4.xml:687(para)
 msgid "Choose this option if you want a window to pass over the others when you click anywhere on its frame. If this option is not selected, you will have to click somewhere on its decorations (title bar, borders or corners) to raise it."
-msgstr ""
+msgstr "Selezionare questa opzione per fare in modo che la finestra venga posizionata al di sopra delle altre quando si fa clic in un punto qualsiasi della sua sagoma. Se questa opzione non è selezionata sarà necessario fare clic sulla sua decorazione (barra del titolo, bordi o angoli) per portarla in primo piano."
 
 #: ./xfwm4.xml:701(title)
 msgid "Advanced settings"
@@ -737,7 +737,7 @@ msgstr "Finestre magnetiche"
 
 #: ./xfwm4.xml:723(para)
 msgid "You can choose the windows borders to be attracted by the borders of other windows, or by the screen edges, when they are moved. The distance from which this effect will be applied can be specified with the \"Distance\" slider."
-msgstr ""
+msgstr "È possibile fare in modo che i bordi di una finestra siano attratti dai bordi delle altre finestre, o dai bordi dello schermo quando vengono spostate. La distanza a cui si risente di questo effetto può essere impostata con la barra di scorrimento \"Distanza\""
 
 #: ./xfwm4.xml:731(term)
 msgid "Wrap workspaces"
@@ -745,7 +745,7 @@ msgstr "Scorrimento degli spazi di lavoro"
 
 #: ./xfwm4.xml:733(para)
 msgid "Select the first option if you want to switch to the next workspace when the mouse pointer reaches the screen edges. Select the second one if you want the same behaviour while dragging a window. You can specify the screen edges resistance using the corresponding slider."
-msgstr ""
+msgstr "Selezionare la prima opzione per passare allo spazio di lavoro adiacente quando il puntatore del mouse raggiunge i bordi dello schermo. Selezionare la seconda opzione per avere lo stesso comportamento quando si trascina una finestra. Con la corrispondente barra di scorrimento è possibile impostare la resistenza dei bordi."
 
 #: ./xfwm4.xml:742(term)
 msgid "Opaque move and resize"
@@ -813,7 +813,7 @@ msgstr ""
 
 #: ./xfwm4.xml:840(para)
 msgid "To open the Workspace Margins dialog, click the button labelled \"Workspaces and Margins\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings manager dialog</ulink> and choose the tab labelled \"Margins\"."
-msgstr ""
+msgstr "Per aprire la schermata relativa ai margini degli spazi di lavoro, fare clic sul pulsante denominato \"Spazi di lavoro e margini\" nella finestra del <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">gestore delle impostazioni</ulink> e sceglierela scheda denominata \"Margini\"."
 
 #: ./xfwm4.xml:846(para)
 msgid "Margins are areas on the edges of the screen that maximized windows won't cover. You can adjust the size, in pixels, of all margins (left, right, top and bottom). Use this feature, for example, if you do not want maximized windows to overlap panel or iconbox frames."
