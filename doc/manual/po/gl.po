@@ -77,7 +77,7 @@ msgstr ""
 
 #: ./xfwm4.xml14(title)
 msgid "Xfce 4 Window Manager"
-msgstr ""
+msgstr "Xestor de fiestras de Xfce 4"
 
 #: ./xfwm4.xml17(year) ./xfwm4.xml21(year)
 msgid "2004"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: ./xfwm4.xml128(title)
 msgid "Manage windows"
-msgstr ""
+msgstr "Xestionar as fiestras"
 
 #: ./xfwm4.xml130(para)
 msgid "The window manager provides borders, a title bar and window buttons to application windows. The look is defined by the window manager theme."
@@ -305,7 +305,7 @@ msgstr ""
 
 #: ./xfwm4.xml286(para)
 msgid "use Alt + F8 keyboard shortcut"
-msgstr ""
+msgstr "usar o atallo de teclado Alt + F8"
 
 #: ./xfwm4.xml288(para)
 msgid "Alternatively, you can hide all windows of current workspace, excepted the one you are using, in only one action : click the menu button of the title bar and choose \"Hide all others\"."
@@ -317,7 +317,7 @@ msgstr ""
 
 #: ./xfwm4.xml294(application)
 msgid "xftaskbar4"
-msgstr ""
+msgstr "xftaskbar4"
 
 #: ./xfwm4.xml295(para)
 msgid "the list of windows, accessible with a middle-click on the desktop background. This list shows all opened windows, classified by workspaces. Windows that are currently hidden are marked between [ ]."
@@ -349,7 +349,7 @@ msgstr ""
 
 #: ./xfwm4.xml316(para)
 msgid "use the Alt + F9 keyboard shortcut"
-msgstr ""
+msgstr "usar o atallo de teclado Alt + F9"
 
 #: ./xfwm4.xml322(term)
 msgid "Stick / unstick windows"
@@ -457,7 +457,7 @@ msgstr ""
 
 #: ./xfwm4.xml405(para)
 msgid "use keyboard shortcuts :"
-msgstr ""
+msgstr "usar os atallos de teclado:"
 
 #: ./xfwm4.xml407(para)
 msgid "Alt + Control + End will move a window to the next workspace"
@@ -477,15 +477,15 @@ msgstr ""
 
 #: ./xfwm4.xml425(term)
 msgid "Close a window"
-msgstr ""
+msgstr "Pechar unha fiestra"
 
 #: ./xfwm4.xml427(para)
 msgid "To close a window :"
-msgstr ""
+msgstr "Para pechar unha fiestra:"
 
 #: ./xfwm4.xml429(para)
 msgid "click the close button of the title bar"
-msgstr ""
+msgstr "prema no botón pechar da barra de título"
 
 #: ./xfwm4.xml430(para)
 msgid "Open the window menu from the title bar and choose the \"Close\" item"
@@ -493,11 +493,11 @@ msgstr ""
 
 #: ./xfwm4.xml432(para)
 msgid "or use Alt + F4 keyboard shortcut"
-msgstr ""
+msgstr "ou use o atallo de teclado Alt + F4"
 
 #: ./xfwm4.xml443(title)
 msgid "Customizing <application>@PACKAGE_NAME@</application>"
-msgstr ""
+msgstr "Personalizar <application>@PACKAGE_NAME@</application>"
 
 #: ./xfwm4.xml445(para)
 msgid "To open the Window Manager preferences dialog, click the button labelled \"Window Manager\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce 4 Settings manager</ulink>. The dialog shows four tabs : Style, Keyboard, Focus, Advanced. All modifications will have an immediate effect on the behaviour of the selected module."
@@ -517,7 +517,7 @@ msgstr ""
 
 #: ./xfwm4.xml473(term)
 msgid "Window style"
-msgstr ""
+msgstr "Estilo de fiestra"
 
 #: ./xfwm4.xml475(para)
 msgid "The list on the left side of the dialog shows all avaible window decorations. The xfwm 4 module offers the choice between 4 different themes, but there are more than 60 supplementary themes avaible in xfwm4-themes extra package."
@@ -525,7 +525,7 @@ msgstr ""
 
 #: ./xfwm4.xml484(term)
 msgid "Title font"
-msgstr ""
+msgstr "Tipo de letra do título"
 
 #: ./xfwm4.xml486(para)
 msgid "The \"Font select\" button shows the family font currently in use for the window title appearance. Click this button if you want to change it, and a \"Font selection\" dialog will appear. It works like the font selection dialog of the <ulink url=\"xfce-mcs-plugins.html#id2811474\" type=\"http\">user interface settings manager plugin</ulink>."
@@ -533,7 +533,7 @@ msgstr ""
 
 #: ./xfwm4.xml497(term)
 msgid "Title alignment"
-msgstr ""
+msgstr "Aliñamento do título"
 
 #: ./xfwm4.xml499(para)
 msgid "Whatever the buttons layout is, you can choose the alignment of the title inside the title bar, selecting one of those simple options : align it to the left, center or right."
@@ -541,7 +541,7 @@ msgstr ""
 
 #: ./xfwm4.xml507(term)
 msgid "Button layout"
-msgstr ""
+msgstr "Disposición dos botóns"
 
 #: ./xfwm4.xml509(para)
 msgid "The button layout configuration uses an easy drag and drop tool. Click and drag the buttons to change the layout. Drop a button in the \"Hidden\" area to remove a button from the titlebar. All modifications will have an immediate effect on the title bar buttons position."
@@ -549,19 +549,19 @@ msgstr ""
 
 #: ./xfwm4.xml522(title)
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Atallos de teclado"
 
 #: ./xfwm4.xml525(title)
 msgid "Keyboard shortcuts preferences"
-msgstr ""
+msgstr "Preferencias dos atallos de teclado"
 
 #: ./xfwm4.xml533(phrase)
 msgid "The keyboard shortcuts tab"
-msgstr ""
+msgstr "Lapela de atallos de teclado"
 
 #: ./xfwm4.xml542(term)
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Atallos de teclado"
 
 #: ./xfwm4.xml544(para)
 msgid "The list on the left side of the dialog shows all avaible shortcuts themes, using the name of directories that contain a keythemerc file."
@@ -577,23 +577,23 @@ msgstr ""
 
 #: ./xfwm4.xml556(para)
 msgid "close window : Alt + F4"
-msgstr ""
+msgstr "pechar fiestra: Alt + F4"
 
 #: ./xfwm4.xml557(para)
 msgid "Maximize window : Alt + F5"
-msgstr ""
+msgstr "Maximizar fiestra: Alt + F5"
 
 #: ./xfwm4.xml558(para)
 msgid "Maximize vertically : Alt + F6"
-msgstr ""
+msgstr "Maximizar verticalmente: Alt + F6"
 
 #: ./xfwm4.xml559(para)
 msgid "Maximize horizontally : Alt + F7"
-msgstr ""
+msgstr "Maximizar horizontalmente: Alt + F7"
 
 #: ./xfwm4.xml560(para)
 msgid "Hide window : Alt + F8"
-msgstr ""
+msgstr "Ocultar fiestra: Alt + F8"
 
 #: ./xfwm4.xml561(para)
 msgid "Shade window : Alt + F9"
@@ -657,11 +657,11 @@ msgstr ""
 
 #: ./xfwm4.xml581(para)
 msgid "Start xfhelp4 : Alt + F1"
-msgstr ""
+msgstr "Iniciar xfhelp4: Alt + F1"
 
 #: ./xfwm4.xml582(para)
 msgid "Start xfrun4 : Alt + F2"
-msgstr ""
+msgstr "Iniciar xfrun4: Alt + F2"
 
 #: ./xfwm4.xml583(para)
 msgid "Lock the screen : Alt + Control + Delete"
@@ -685,15 +685,15 @@ msgstr ""
 
 #: ./xfwm4.xml627(title) ./xfwm4.xml630(title)
 msgid "Focus preferences"
-msgstr ""
+msgstr "Preferencias de foco"
 
 #: ./xfwm4.xml638(phrase)
 msgid "The Focus tab"
-msgstr ""
+msgstr "A lapela de foco"
 
 #: ./xfwm4.xml647(term)
 msgid "Focus model"
-msgstr ""
+msgstr "Modelo de foco"
 
 #: ./xfwm4.xml649(para)
 msgid "A focused window receives the keyboard and mouse input. You have the choice between two focus models :"
@@ -737,7 +737,7 @@ msgstr "Configuración avanzada"
 
 #: ./xfwm4.xml704(title)
 msgid "Advanced preferences"
-msgstr ""
+msgstr "Preferencias avanzadas"
 
 #: ./xfwm4.xml712(phrase)
 msgid "Advanced tab"
@@ -777,7 +777,7 @@ msgstr ""
 
 #: ./xfwm4.xml766(title)
 msgid "Managing workspaces"
-msgstr ""
+msgstr "Xestión de espazos de traballo"
 
 #: ./xfwm4.xml768(para)
 msgid "<application>@PACKAGE_NAME@</application> also manages workspaces. There is a special settings dialog to change the workspace properties. You can start it by choosing <emphasis>Workspaces and Margins</emphasis> from the the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings manager dialog</ulink>. The dialog contains two tab folders where you can change workspace settings and desktop margins."
@@ -817,7 +817,7 @@ msgstr "Marxes dos espazos de traballo"
 
 #: ./xfwm4.xml826(title)
 msgid "The workspace margins dialog"
-msgstr ""
+msgstr "O diálogo de marxes de espazo de traballo"
 
 #: ./xfwm4.xml834(phrase)
 msgid "The workspace margins tab folder"
@@ -833,7 +833,7 @@ msgstr ""
 
 #: ./xfwm4.xml857(title)
 msgid "About <application>@PACKAGE_NAME@</application>"
-msgstr ""
+msgstr "Acerca de <application>@PACKAGE_NAME@</application>"
 
 #: ./xfwm4.xml859(para)
 msgid "<application>@PACKAGE_NAME@</application> was written Olivier Fourdan (<email>fourdan@xfce.org</email>). To find more information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce web site</ulink>."
