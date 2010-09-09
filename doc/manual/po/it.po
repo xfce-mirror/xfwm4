@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-docs\n"
 "POT-Creation-Date: 2010-08-28 12:29+0200\n"
-"PO-Revision-Date: 2010-09-09 10:40+0100\n"
+"PO-Revision-Date: 2010-09-09 15:48+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -311,7 +311,7 @@ msgstr "la lista delle fienstre, accessibile con un clic del tasto centrale del 
 
 #: ./xfwm4.xml:299(para)
 msgid "the <application>xfce4-iconbox</application>"
-msgstr ""
+msgstr "nel <application>xfce4-iconbox</application>"
 
 #: ./xfwm4.xml:305(term)
 msgid "Shade / unshade windows"
@@ -668,7 +668,7 @@ msgstr "Per creare un nuovo tema, creare una cartella come questa (ad esempio $H
 
 #: ./xfwm4.xml:616(para)
 msgid "If you do not know the names of your keyboard modifier keys, you can launch the \"xev\" application from a terminal and test them."
-msgstr ""
+msgstr "Se non si conosce il nome dei tasti modificatori della propria tastiera, è possibile avviare l'applicazione \"xev\" dal terminale per eseguire una prova."
 
 #: ./xfwm4.xml:627(title)
 #: ./xfwm4.xml:630(title)
@@ -781,7 +781,7 @@ msgstr "Impostazioni dello spazio di lavoro"
 
 #: ./xfwm4.xml:788(phrase)
 msgid "Shows workspace settings tab folder."
-msgstr ""
+msgstr "La scheda delle impostazioni degli spazi di lavoro"
 
 #: ./xfwm4.xml:798(term)
 msgid "Workspaces"
@@ -809,7 +809,7 @@ msgstr "la finestra dei margini degli spazi di lavoro"
 
 #: ./xfwm4.xml:834(phrase)
 msgid "The workspace margins tab folder"
-msgstr ""
+msgstr "La scheda dei margini degli spazi di lavoro"
 
 #: ./xfwm4.xml:840(para)
 msgid "To open the Workspace Margins dialog, click the button labelled \"Workspaces and Margins\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings manager dialog</ulink> and choose the tab labelled \"Margins\"."
