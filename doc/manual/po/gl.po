@@ -1,17 +1,17 @@
 # Galician translation of xfwm4-doc
 # Copyright (C) 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-# 
+#
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2010.
-# 
+#
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-doc\n"
 "POT-Creation-Date: 2010-08-28 12:29+0200\n"
-"PO-Revision-Date: 2010-09-09 13:11+0200\n"
+"PO-Revision-Date: 2010-10-19 19:12+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: ./xfwm4.xml14(title)
 msgid "Xfce 4 Window Manager"
-msgstr "Xestor de fiestras de Xfce 4"
+msgstr "Xestor de xanelas de Xfce 4"
 
 #: ./xfwm4.xml17(year) ./xfwm4.xml21(year)
 msgid "2004"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: ./xfwm4.xml128(title)
 msgid "Manage windows"
-msgstr "Xestionar as fiestras"
+msgstr "Xestionar as xanelas"
 
 #: ./xfwm4.xml130(para)
 msgid "The window manager provides borders, a title bar and window buttons to application windows. The look is defined by the window manager theme."
@@ -188,7 +188,7 @@ msgstr ""
 #.             shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or
 #. create an new one)
 #. 	    and add this line : cycle_minimum=false</para>
-#. 
+#.
 #. 	  <para>
 #. 	    To exclude hidden windows from the list presented when using
 #.                 Alt+Tab edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or
@@ -209,19 +209,19 @@ msgstr ""
 
 #: ./xfwm4.xml209(para)
 msgid "To maximize a window, perform one of those actions:"
-msgstr ""
+msgstr "Para maximizar unha xanela realice algunha das seguintes accións:"
 
 #: ./xfwm4.xml212(para)
 msgid "click the maximize button of the title bar"
-msgstr ""
+msgstr "prema no botón maximizar da barra de título"
 
 #: ./xfwm4.xml215(para)
 msgid "open the window menu from the title bar and choose the \"maximize\" item"
-msgstr ""
+msgstr "abra o menú de xanela na barra de título e seleccione o elemento \"maximizar\""
 
 #: ./xfwm4.xml221(para)
 msgid "use Alt + F5 keyboard shortcut"
-msgstr ""
+msgstr "use o atallo de teclado Alt + F5"
 
 #: ./xfwm4.xml225(para)
 msgid "You can make any window appear in fullscreen mode (it will then use all the size of your screen without showing the window borders) by using the customizable Alt + F11 keyboard shortcut."
@@ -237,7 +237,7 @@ msgstr ""
 
 #: ./xfwm4.xml233(para)
 msgid "use Alt + F6 keyboard shortcut"
-msgstr ""
+msgstr "use o atallo de teclado Alt + F6"
 
 #: ./xfwm4.xml236(para)
 msgid "To maximize a window horizontally :"
@@ -249,7 +249,7 @@ msgstr ""
 
 #: ./xfwm4.xml240(para)
 msgid "use Alt + F7 keyboard shortcut"
-msgstr ""
+msgstr "use o atallo de teclado Alt + F7"
 
 #: ./xfwm4.xml243(para)
 msgid "When a window has been maximized in a way or another, it can be restored to its previous size doing one of these actions :"
@@ -261,7 +261,7 @@ msgstr ""
 
 #: ./xfwm4.xml248(para)
 msgid "use the same keyboard shortcut once again"
-msgstr ""
+msgstr "use outra vez o mesmo atallo de teclado"
 
 #: ./xfwm4.xml249(para)
 msgid "choose the \"Unmaximize\" item in the window menu"
@@ -269,7 +269,7 @@ msgstr ""
 
 #: ./xfwm4.xml255(term)
 msgid "Resize windows"
-msgstr "Redimensionar as fiestras"
+msgstr "Redimensionar as xanelas"
 
 #: ./xfwm4.xml257(para)
 msgid "Although certain special windows can not be resized, you are able to resize most of them to fit your needs."
@@ -381,7 +381,7 @@ msgstr ""
 
 #: ./xfwm4.xml344(para)
 msgid "left click on its titlebar"
-msgstr ""
+msgstr "prema co botón esquerdo na barra de título"
 
 #: ./xfwm4.xml345(para)
 msgid "give the focus to the window, if the corresponding option is selected in the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>"
@@ -477,11 +477,11 @@ msgstr ""
 
 #: ./xfwm4.xml425(term)
 msgid "Close a window"
-msgstr "Pechar unha fiestra"
+msgstr "Pechar unha xanela"
 
 #: ./xfwm4.xml427(para)
 msgid "To close a window :"
-msgstr "Para pechar unha fiestra:"
+msgstr "Para pechar unha xanela:"
 
 #: ./xfwm4.xml429(para)
 msgid "click the close button of the title bar"
@@ -509,15 +509,15 @@ msgstr ""
 
 #: ./xfwm4.xml456(title)
 msgid "Decoration style preferences"
-msgstr ""
+msgstr "Preferencias de estilo de decoración"
 
 #: ./xfwm4.xml464(phrase)
 msgid "The decoration style tab"
-msgstr ""
+msgstr "Lapela de estilo de decoración"
 
 #: ./xfwm4.xml473(term)
 msgid "Window style"
-msgstr "Estilo de fiestra"
+msgstr "Estilo de xanela"
 
 #: ./xfwm4.xml475(para)
 msgid "The list on the left side of the dialog shows all avaible window decorations. The xfwm 4 module offers the choice between 4 different themes, but there are more than 60 supplementary themes avaible in xfwm4-themes extra package."
@@ -577,11 +577,11 @@ msgstr ""
 
 #: ./xfwm4.xml556(para)
 msgid "close window : Alt + F4"
-msgstr "pechar fiestra: Alt + F4"
+msgstr "pechar xanela: Alt + F4"
 
 #: ./xfwm4.xml557(para)
 msgid "Maximize window : Alt + F5"
-msgstr "Maximizar fiestra: Alt + F5"
+msgstr "Maximizar xanela: Alt + F5"
 
 #: ./xfwm4.xml558(para)
 msgid "Maximize vertically : Alt + F6"
@@ -593,7 +593,7 @@ msgstr "Maximizar horizontalmente: Alt + F7"
 
 #: ./xfwm4.xml560(para)
 msgid "Hide window : Alt + F8"
-msgstr "Ocultar fiestra: Alt + F8"
+msgstr "Ocultar xanela: Alt + F8"
 
 #: ./xfwm4.xml561(para)
 msgid "Shade window : Alt + F9"
@@ -637,11 +637,11 @@ msgstr ""
 
 #: ./xfwm4.xml574(para)
 msgid "Add a workspace : Alt + Insert"
-msgstr ""
+msgstr "Engadir un espazo de traballo : Alt + Insert"
 
 #: ./xfwm4.xml575(para)
 msgid "Delete a workspace : Alt + Delete"
-msgstr ""
+msgstr "Borrar un espazo de traballo: Alt + Supr"
 
 #: ./xfwm4.xml576(para)
 msgid "Go to workspace number N (1-9) : Control + F(N)"
@@ -745,7 +745,7 @@ msgstr "Lapela avanzada"
 
 #: ./xfwm4.xml721(term)
 msgid "Windows snapping"
-msgstr "Axuste de fiestras"
+msgstr "Axuste de xanelas"
 
 #: ./xfwm4.xml723(para)
 msgid "You can choose the windows borders to be attracted by the borders of other windows, or by the screen edges, when they are moved. The distance from which this effect will be applied can be specified with the \"Distance\" slider."
@@ -837,7 +837,7 @@ msgstr "Acerca de <application>@PACKAGE_NAME@</application>"
 
 #: ./xfwm4.xml859(para)
 msgid "<application>@PACKAGE_NAME@</application> was written Olivier Fourdan (<email>fourdan@xfce.org</email>). To find more information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce web site</ulink>."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> foi escrito por Olivier Fourdan (<email>fourdan@xfce.org</email>). Para atopar máis información visite o <ulink url=\"http://www.xfce.org\" type=\"http\">sitio web de Xfce</ulink>."
 
 #: ./xfwm4.xml864(para)
 msgid "To report a bug or make a suggestion regarding this application or this manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
@@ -859,3 +859,4 @@ msgstr ""
 #: ./xfwm4.xml0(None)
 msgid "translator-credits"
 msgstr "Leandro Regueiro <leandro.regueiro@gmail.com>, 2010."
+
