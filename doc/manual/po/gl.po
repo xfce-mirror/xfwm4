@@ -1,12 +1,12 @@
 # Galician translation of xfwm4-doc
 # Copyright (C) 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-#
+# 
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2010.
-#
+# 
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-doc\n"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: ./xfwm4.xml125(title)
 msgid "Using <application>@PACKAGE_NAME@</application>"
-msgstr ""
+msgstr "Uso de <application>@PACKAGE_NAME@</application>"
 
 #: ./xfwm4.xml128(title)
 msgid "Manage windows"
@@ -188,7 +188,7 @@ msgstr ""
 #.             shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or
 #. create an new one)
 #. 	    and add this line : cycle_minimum=false</para>
-#.
+#. 
 #. 	  <para>
 #. 	    To exclude hidden windows from the list presented when using
 #.                 Alt+Tab edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or
@@ -859,4 +859,3 @@ msgstr ""
 #: ./xfwm4.xml0(None)
 msgid "translator-credits"
 msgstr "Leandro Regueiro <leandro.regueiro@gmail.com>, 2010."
-
