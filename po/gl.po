@@ -657,7 +657,6 @@ msgid "By default, place windows:"
 msgstr "Por defecto, situar as xanelas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "C_ompositor"
 msgstr "C_ompositor"
 
