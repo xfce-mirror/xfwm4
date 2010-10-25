@@ -1,17 +1,17 @@
 # Galician translation of xfwm4
 # Copyright (C) 2006, 2008, 2009, 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-#
+# 
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009, 2010.
-#
+# 
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 10:07+0000\n"
+"POT-Creation-Date: 2010-10-25 10:09+0000\n"
 "PO-Revision-Date: 2010-10-19 19:01+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -41,25 +41,25 @@ msgid "Session manager socket"
 msgstr "Conectador do xestor de sesións"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
 msgstr "ID DO CONECTADOR"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "Información da versión"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
+#: ../settings-dialogs/workspace-settings.c:388
 #: ../settings-dialogs/xfwm4-settings.c:948
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
+#: ../settings-dialogs/workspace-settings.c:392
 #: ../settings-dialogs/xfwm4-settings.c:952
 #, c-format
 msgid ""
@@ -69,17 +69,17 @@ msgstr ""
 "%s: %s\n"
 "Execute '%s --help' para ver unha lista completa das opcións de liña de ordes dispoñibles.\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
 msgstr "Espazo de traballo %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
 msgstr "Nome do espazo de traballo"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "Conectador do xestor de configuración"
@@ -186,7 +186,7 @@ msgstr "<i>Pequeno</i>"
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "<i>Wide</i>"
-msgstr ""
+msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
@@ -682,9 +682,8 @@ msgid "Hide _frame of windows when maximized"
 msgstr "Ocultar o _marco das xanelas ao maximizalas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Cumprir as recomendacións de foco ICCCM estándar"
+msgstr "Cumprir as recomendacións de foco do _estándar ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
@@ -980,10 +979,12 @@ msgstr "Non se puido iniciar helper-dialog: %s\n"
 
 #~ msgid "  "
 #~ msgstr "  "
+
 #~ msgid "Distance|<i>Small</i>"
 #~ msgstr "<i>Pequena</i>"
+
 #~ msgid "Resistance|<i>Small</i>"
 #~ msgstr "<i>Pequena</i>"
+
 #~ msgid "Resistance|<i>Wide</i>"
 #~ msgstr "<i>Grande</i>"
-
