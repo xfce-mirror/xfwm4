@@ -1,3 +1,9 @@
+4.7.1
+=====
+- Fix break with latest API changes in libxfce4ui.
+- Translation updates (zh_TW, ug, it, gl, ja, sv).
+
+
 4.7.0
 =====
 - Fix window positioning problem when output it removed (bug #6209).
