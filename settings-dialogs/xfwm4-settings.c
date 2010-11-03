@@ -2022,7 +2022,7 @@ xfwm_settings_shortcut_row_activated (GtkTreeView       *tree_view,
           new_shortcut = xfce_shortcut_dialog_get_shortcut (XFCE_SHORTCUT_DIALOG (dialog));
 
           /* Save new shortcut */
-          xfce_shortcuts_provider_set_shortcut (settings->priv->provider, new_shortcut, feature);
+          xfce_shortcuts_provider_set_shortcut (settings->priv->provider, new_shortcut, feature, FALSE);
         }
       else if (G_UNLIKELY (response == GTK_RESPONSE_REJECT))
         {
