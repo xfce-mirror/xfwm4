@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4-docs\n"
 "POT-Creation-Date: 2010-08-28 12:29+0200\n"
-"PO-Revision-Date: 2010-09-27 10:10+0100\n"
+"PO-Revision-Date: 2010-11-04 15:26+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -152,7 +152,7 @@ msgstr "<application>@PACKAGE_NAME@</application> funzioni e pulsanti della barr
 
 #: ./xfwm4.xml:154(para)
 msgid "You can open the window menu with a left-click on the menu button on the title bar, or with a right-click on the window title area itself."
-msgstr "Il menu della fienstra può essere aperto con un clic del tasto sinistro del mouse sul pulsante del menu sulla barra del titolo, o con un clic del tasto destro sulla barra del titolo."
+msgstr "Il menu della finestra può essere aperto con un clic del tasto sinistro del mouse sul pulsante del menu sulla barra del titolo, o con un clic del tasto destro sulla barra del titolo."
 
 #: ./xfwm4.xml:157(para)
 msgid "If you use <application>xftaskbar4</application>, you can open an action menu with a right-click on one of the taskbar entries; it includes several items among those available in the window menu."
@@ -191,7 +191,7 @@ msgstr "Massimizzare o demassimizzare le finestre"
 
 #: ./xfwm4.xml:203(para)
 msgid "If you maximize a window, it will expand on your display and use all avaible space (as it is defined by <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">workspace settings</ulink>). You can maximize a window either vertically, horizontally, or both at once."
-msgstr "Se si massimizza una finestra, questa si espanderà fino a occupare tutto lo spazio disponibile sullo schermo come definito dalle <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">impostazioni dello spazio di lavoro</ulink>). È possibile massimizzare una finestra sia verticalmente, sia orizzontalmente sia in entrambe le direzioni contemporaneamente."
+msgstr "Se si massimizza una finestra, questa si espanderà fino a occupare tutto lo spazio disponibile sullo schermo come definito dalle <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">impostazioni dello spazio di lavoro</ulink>). È possibile massimizzare una finestra verticalmente, orizzontalmente o in entrambe le direzioni contemporaneamente."
 
 #: ./xfwm4.xml:209(para)
 msgid "To maximize a window, perform one of those actions:"
@@ -299,7 +299,7 @@ msgstr "In alternativa, è possibile nascondere tutte le finestre dello spazio d
 
 #: ./xfwm4.xml:291(para)
 msgid "To \"unhide\" a window, you will have to select its name or its icon in one of those Xfce 4 components :"
-msgstr "Per far ricomparire una fienstra nascosta, si deve selezionare il suo nome o la sua icona in uno dei seguenti componenti di Xfce 4:"
+msgstr "Per far ricomparire una finestra nascosta, si deve selezionare il suo nome o la sua icona in uno dei seguenti componenti di Xfce 4:"
 
 #: ./xfwm4.xml:294(application)
 msgid "xftaskbar4"
@@ -327,7 +327,7 @@ msgstr "fare clic sul pulsante arrotola/srotola della barra del titolo"
 
 #: ./xfwm4.xml:312(para)
 msgid "open the window menu from the title bar and choose \"Shade\" or \"Unshade\" item"
-msgstr "aprire il menu della fienstra dalla barra del titolo e scegliere la voce «Arrotola» o «Srotola»"
+msgstr "aprire il menu della finestra dalla barra del titolo e scegliere la voce «Arrotola» o «Srotola»"
 
 #: ./xfwm4.xml:314(para)
 msgid "use the mouse scrollwheel while you hold the pointer over the title bar"
@@ -351,7 +351,7 @@ msgstr "fare clic sul pulsante blocca/sblocca della barra del titolo"
 
 #: ./xfwm4.xml:330(para)
 msgid "open the window menu button from the title bar and choose \"Stick\" or \"Unstick\" item"
-msgstr "aprire il menu della fienstra sulla barra del titolo e scegliere la voce «Blocca» o «Sblocca» "
+msgstr "aprire il menu della finestra sulla barra del titolo e scegliere la voce «Blocca» o «Sblocca» "
 
 #: ./xfwm4.xml:332(para)
 msgid "use the Alt + F10 keyboard shortcut"
@@ -387,11 +387,11 @@ msgstr "usare la scorciatoia da tastiera Maiusc + Alt + PGgiù (se la finestra �
 
 #: ./xfwm4.xml:353(para)
 msgid "You can make a window frame to always stay above all other windows by opening the window menu and selecting the \"always on top\" item."
-msgstr "È possibile far restare una finestra sempre sopra le altre aprendo il menu della fienstra e selezionando la voce «Sempre in primo piano»."
+msgstr "È possibile far restare una finestra sempre sopra le altre aprendo il menu della finestra e selezionando la voce «Sempre in primo piano»."
 
 #: ./xfwm4.xml:357(para)
 msgid "The \"lower\" function sends a window frame below all other frames. To \"lower\" a window, you can :"
-msgstr "La funzione \"Abbassa\" spedisce la finestra al di sotto delle altre. Per abbassare una finestra si può:"
+msgstr "La funzione \"Abbassa\" porta la finestra al di sotto delle altre. Per abbassare una finestra si può:"
 
 #: ./xfwm4.xml:361(para)
 msgid "middle-click on its title bar"
@@ -427,7 +427,7 @@ msgstr "Spostare una finestra su un altro spazio di lavoro"
 
 #: ./xfwm4.xml:393(para)
 msgid "You can send a window to another workspace by performing one of these actions :"
-msgstr "È possibile inviare una finestra a un altro spazio di lavoro eseguendo una delle seguenti azioni:"
+msgstr "È possibile spostare una finestra in un altro spazio di lavoro eseguendo una delle seguenti azioni:"
 
 #: ./xfwm4.xml:396(para)
 msgid "stick the window, move to another workspace, then unstick the window."
@@ -455,7 +455,7 @@ msgstr "«Alt + Control + Home» sposta la finestra allo spazio di lavoro preced
 
 #: ./xfwm4.xml:411(para)
 msgid "Alt + Control + Keypad-Number will move the current window to corresponding workspace"
-msgstr "«Alt + Control + n° tastierino numerico» sposta la fienstra corrente al corrispondente spazio di lavoro"
+msgstr "«Alt + Control + n° tastierino numerico» sposta la finestra corrente al corrispondente spazio di lavoro"
 
 #: ./xfwm4.xml:415(para)
 msgid "use the <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">graphical pager </ulink> by clicking on the representation of the window, and move it to the desired workspace."
@@ -503,7 +503,7 @@ msgstr "La scheda dello stile di decorazione"
 
 #: ./xfwm4.xml:473(term)
 msgid "Window style"
-msgstr "Stile della fienstra"
+msgstr "Stile della finestra"
 
 #: ./xfwm4.xml:475(para)
 msgid "The list on the left side of the dialog shows all avaible window decorations. The xfwm 4 module offers the choice between 4 different themes, but there are more than 60 supplementary themes avaible in xfwm4-themes extra package."
