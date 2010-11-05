@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 15:35+0900\n"
-"PO-Revision-Date: 2009-10-11 17:11+0900\n"
+"POT-Creation-Date: 2010-11-05 21:35+0900\n"
+"PO-Revision-Date: 2010-11-05 21:35+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -47,25 +47,25 @@ msgid "Session manager socket"
 msgstr "セッションマネージャソケット"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "バージョン情報"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
+#: ../settings-dialogs/workspace-settings.c:388
 #: ../settings-dialogs/xfwm4-settings.c:948
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
+#: ../settings-dialogs/workspace-settings.c:392
 #: ../settings-dialogs/xfwm4-settings.c:952
 #, c-format
 msgid ""
@@ -75,17 +75,17 @@ msgstr ""
 "%s: %s\n"
 "%s --help で使用可能なすべてのコマンドラインオプションが表示されます。\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
 msgstr "ワークスペース名"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "マネージャソケットの設定"
@@ -175,13 +175,11 @@ msgstr "<b>テーマ</b>(_T)"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
 msgid "<i>Long</i>"
 msgstr "<i>長い</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "<i>Short</i>"
 msgstr "<i>短い</i>"
 
@@ -189,13 +187,11 @@ msgstr "<i>短い</i>"
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
 msgstr "<i>小さい</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
 msgstr "<i>大きい</i>"
 
@@ -647,12 +643,11 @@ msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
-"これはすべてのショートカットキーをデフォルト値にリセットします。本当によろしい"
-"ですか?"
+"これはすべてのショートカットキーをデフォルト値にリセットします。本当によろし"
+"いですか?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Large</i>"
 msgstr "<i>大きい</i>"
 
