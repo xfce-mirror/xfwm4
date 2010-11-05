@@ -87,16 +87,16 @@ BUILT_SOURCES = \
 	xfwm4-workspace-dialog_ui.h
 
 xfwm4-workspace-dialog_ui.h: xfwm4-workspace-dialog.glade
-	exo-csource --static --strip-comments --strip-content --name=workspace_dialog_ui $< >$@
+	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=workspace_dialog_ui $< >$@
 
 xfwm4-dialog_ui.h: xfwm4-dialog.glade
-	exo-csource --static --strip-comments --strip-content --name=xfwm4_dialog_ui $< >$@
+	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=xfwm4_dialog_ui $< >$@
 
 xfwm4-tweaks-dialog_ui.h: xfwm4-tweaks-dialog.glade
-	exo-csource --static --strip-comments --strip-content --name=tweaks_dialog_ui $< >$@
+	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=tweaks_dialog_ui $< >$@
 
 monitor-icon.h: $(srcdir)/monitor-icon.png
-	gdk-pixbuf-csource --raw --build-list \
+	$(AM_V_GEN) gdk-pixbuf-csource --raw --build-list \
 	monitor_icon_data $(srcdir)/monitor-icon.png > monitor-icon.h
 
 endif
