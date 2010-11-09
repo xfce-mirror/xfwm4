@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-09 06:05+0100\n"
-"PO-Revision-Date: 2010-03-09 12:19-0000\n"
-"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
+"PO-Revision-Date: 2010-11-09 16:10+0100\n"
+"Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -656,15 +656,15 @@ msgstr "C_ompositor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ycling"
-msgstr "Perc_orrer"
+msgstr "P_ercorrer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle _through windows on all workspaces"
-msgstr "Percorrer janelas de _todas as áreas de trabalho"
+msgstr "Pe_rcorrer janelas de todas as áreas de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Mostrar ecrã in_teiro directamente sobre as janelas"
+msgstr "Mostrar ecrã i_nteiro directamente sobre as janelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
@@ -672,7 +672,7 @@ msgstr "Não fazer _nada"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
-msgstr "Ocultar moldura das janelas maximizadas"
+msgstr "Ocultar _moldura das janelas maximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
@@ -692,15 +692,15 @@ msgstr "Avisar da urgê_ncia fazendo piscar a decoração da janela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Opaci_ty of window decorations:"
-msgstr "Opaci_dade das decorações de janela:"
+msgstr "Opac_idade das decorações de janela:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Opacity of _inactive windows:"
-msgstr "Opacidade das janelas _inactivas:"
+msgstr "Opacidade das janelas inacti_vas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Opacity of popup window_s:"
-msgstr "Opacidade das janelas_s de contexto:"
+msgstr "Opacidade das janela_s de contexto:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Opacity of windows during _move:"
@@ -712,7 +712,7 @@ msgstr "Opacidade das janelas ao redi_mensionar"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Re_staurar tamanho original das janelas maximizadas ao mover"
+msgstr "Restaurar taman_ho original das janelas maximizadas ao mover"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -740,7 +740,7 @@ msgstr "Usar r_esistência de limite ao invés do alinhamento de janelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Usar a roda do rato no ambiente para mudar de áreas de trabalho"
+msgstr "Usar a roda do rato no a_mbiente para mudar de área de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -748,11 +748,11 @@ msgstr "Quando uma janela se levanta:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Saltar áreas de trabalho dependendo da disposição do ambiente actua_l"
+msgstr "Saltar áreas de trabalho dependendo da _disposição do ambiente actual"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Saltar áreas de trabalho quando a pri_meira ou a última área de trabalho é atingida"
+msgstr "Saltar áreas de trabalho quando a primeira ou a última área de trabal_ho é atingida"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -768,7 +768,7 @@ msgstr "_Desenhar moldura das janelas seleccionadas ao percorrer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
-msgstr "A_ctivarr composição de ecrã"
+msgstr "_Ligar composição de ecrã"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
