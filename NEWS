@@ -2,6 +2,8 @@
 =====
 - Fix corrupted button layouts by obtaining the button IDs correctly
   (bug #6824).
+- Bump the GTK+ dependency to 2.14 which is the minimum version required
+  for Xfce 4.8.
 
 
 4.7.1
