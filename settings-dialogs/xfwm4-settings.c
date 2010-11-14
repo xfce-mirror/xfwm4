@@ -354,9 +354,7 @@ xfwm_settings_class_init (XfwmSettingsClass *klass)
   xfwm_settings_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
-#if GLIB_CHECK_VERSION (2,14,0)
   gobject_class->constructed = xfwm_settings_constructed;
-#endif
   gobject_class->finalize = xfwm_settings_finalize;
   gobject_class->get_property = xfwm_settings_get_property;
   gobject_class->set_property = xfwm_settings_set_property;
@@ -794,10 +792,6 @@ xfwm_settings_new (void)
   if (G_LIKELY (builder != NULL))
     settings = g_object_new (XFWM_TYPE_SETTINGS, "gtk-builder", builder, NULL);
 
-#if !GLIB_CHECK_VERSION (2,14,0)
-  xfwm_settings_constructed (G_OBJECT(settings));
-#endif
-
   return settings;
 }
 
@@ -1113,11 +1107,7 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
   source = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
-#if GTK_CHECK_VERSION (2,14,0)
                                  (const gchar *)gtk_selection_data_get_data (data)));
-#else
-                                 (const gchar *) data->data));
-#endif
   parent = gtk_widget_get_parent (source);
 
   active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
@@ -1240,11 +1230,7 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
   source = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
-#if GTK_CHECK_VERSION (2,14,0)
                                  (const gchar *)gtk_selection_data_get_data (data)));
-#else
-                                 (const gchar *) data->data));
-#endif
   parent = gtk_widget_get_parent (source);
 
   hidden_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "hidden-box"));
