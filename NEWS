@@ -1,3 +1,9 @@
+4.7.x
+=====
+- Fix corrupted button layouts by obtaining the button IDs correctly
+  (bug #6824).
+
+
 4.7.1
 =====
 - Fix break with latest API changes in libxfce4ui.

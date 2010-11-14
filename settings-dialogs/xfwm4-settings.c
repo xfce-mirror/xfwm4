@@ -517,7 +517,7 @@ xfwm_settings_constructed (GObject *object)
     for (list_iter = children; list_iter != NULL; list_iter = g_list_next (list_iter))
       {
         button = GTK_WIDGET (list_iter->data);
-        name = gtk_widget_get_name (button);
+        name = gtk_buildable_get_name (GTK_BUILDABLE (button));
 
         if (name[strlen (name) - 1] == '|')
           {
@@ -542,36 +542,36 @@ xfwm_settings_constructed (GObject *object)
                           G_CALLBACK (xfwm_settings_signal_blocker), NULL);
         g_signal_connect (button, "focus",  G_CALLBACK (xfwm_settings_signal_blocker), NULL);
       }
+    g_list_free (children);
+
+    children = gtk_container_get_children (GTK_CONTAINER (hidden_box));
+    for (list_iter = children; list_iter != NULL; list_iter = g_list_next (list_iter))
+      {
+        button = GTK_WIDGET (list_iter->data);
+        name = gtk_buildable_get_name (GTK_BUILDABLE (button));
+
+        g_object_set_data (G_OBJECT (button), "key_char", (gpointer) &name[strlen (name) - 1]);
+        gtk_drag_source_set (button, GDK_BUTTON1_MASK, &target_entry[0], 1, GDK_ACTION_MOVE);
+
+          g_signal_connect (button, "drag_data_get",
+                            G_CALLBACK (xfwm_settings_title_button_drag_data), NULL);
+          g_signal_connect (button, "drag_begin", G_CALLBACK (xfwm_settings_title_button_drag_begin),
+                            NULL);
+          g_signal_connect (button, "drag_end", G_CALLBACK (xfwm_settings_title_button_drag_end),
+                            NULL);
+          g_signal_connect (button, "button_press_event",
+                            G_CALLBACK (xfwm_settings_signal_blocker), NULL);
+          g_signal_connect (button, "enter_notify_event",
+                            G_CALLBACK (xfwm_settings_signal_blocker), NULL);
+          g_signal_connect (button, "focus",  G_CALLBACK (xfwm_settings_signal_blocker), NULL);
+      }
+    g_list_free (children);
+
+    xfconf_channel_get_property (settings->priv->wm_channel, "/general/button_layout", &value);
+    xfwm_settings_button_layout_property_changed (settings->priv->wm_channel,
+                                                  "/general/button_layout", &value, settings);
+    g_value_unset (&value);
   }
-  g_list_free (children);
-
-  children = gtk_container_get_children (GTK_CONTAINER (hidden_box));
-  for (list_iter = children; list_iter != NULL; list_iter = g_list_next (list_iter))
-    {
-      button = GTK_WIDGET (list_iter->data);
-      name = gtk_widget_get_name (button);
-
-      g_object_set_data (G_OBJECT (button), "key_char", (gpointer) &name[strlen (name) - 1]);
-      gtk_drag_source_set (button, GDK_BUTTON1_MASK, &target_entry[0], 1, GDK_ACTION_MOVE);
-
-        g_signal_connect (button, "drag_data_get",
-                          G_CALLBACK (xfwm_settings_title_button_drag_data), NULL);
-        g_signal_connect (button, "drag_begin", G_CALLBACK (xfwm_settings_title_button_drag_begin),
-                          NULL);
-        g_signal_connect (button, "drag_end", G_CALLBACK (xfwm_settings_title_button_drag_end),
-                          NULL);
-        g_signal_connect (button, "button_press_event",
-                          G_CALLBACK (xfwm_settings_signal_blocker), NULL);
-        g_signal_connect (button, "enter_notify_event",
-                          G_CALLBACK (xfwm_settings_signal_blocker), NULL);
-        g_signal_connect (button, "focus",  G_CALLBACK (xfwm_settings_signal_blocker), NULL);
-    }
-  g_list_free (children);
-
-  xfconf_channel_get_property (settings->priv->wm_channel, "/general/button_layout", &value);
-  xfwm_settings_button_layout_property_changed (settings->priv->wm_channel,
-                                                "/general/button_layout", &value, settings);
-  g_value_unset (&value);
 
   /* Keyboard tab widgets */
   shortcuts_treeview = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
@@ -1350,10 +1350,13 @@ xfwm_settings_title_button_drag_data (GtkWidget        *widget,
                                       guint             info,
                                       guint             timestamp)
 {
+  const gchar *name;
+
+  name = gtk_buildable_get_name (GTK_BUILDABLE (widget));
+
   gtk_widget_hide (widget);
   gtk_selection_data_set (data, gdk_atom_intern ("_xfwm4_button_layout", FALSE), 8,
-                          (const guchar *)gtk_widget_get_name (widget),
-                          strlen (gtk_widget_get_name (widget)));
+                          (const guchar *)name, strlen (name));
 }
 
 
