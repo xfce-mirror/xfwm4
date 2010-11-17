@@ -148,7 +148,7 @@ msgstr "Xestionar as xanelas"
 
 #: ./xfwm4.xml130(para)
 msgid "The window manager provides borders, a title bar and window buttons to application windows. The look is defined by the window manager theme."
-msgstr ""
+msgstr "O xestor de xanelas proporciona bordos, unha barra de título e os botóns da xanela para as xanelas dos aplicativos. A aparencia defínea o tema do xestor de xanelas."
 
 #: ./xfwm4.xml134(para)
 msgid "In the default theme <application>@PACKAGE_NAME@</application> shows six buttons and a title on regular application windows. The six buttons perform these basic functions:"
@@ -156,7 +156,7 @@ msgstr ""
 
 #: ./xfwm4.xml140(title)
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons"
-msgstr ""
+msgstr "Botóns da barra de título de <application>@PACKAGE_NAME@</application>"
 
 #: ./xfwm4.xml148(phrase)
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons and functions"
@@ -172,11 +172,11 @@ msgstr ""
 
 #: ./xfwm4.xml165(term)
 msgid "Give focus to a window"
-msgstr ""
+msgstr "Enfocar unha xanela"
 
 #: ./xfwm4.xml167(para)
 msgid "You need to give the focus to a window if you want it to receive keyboard and mouse input. Window decorations colors will change, following the focus. To obtain more details about focus options, please refer to the <ulink url=\"#focus\">corresponding section</ulink> below."
-msgstr ""
+msgstr "Precisa enfocar unha xanela se desexa que reciba a entrada do teclado e do rato. As cores das decoracións das xanelas cambiarán dependendo de se ten ou non o foco. Para obter máis información sobre as opcións de foco, consulte a <ulink url=\"#focus\">sección correspondente</ulink> máis abaixo."
 
 #: ./xfwm4.xml172(para)
 msgid "A keyboard shortcut allows to switch the focus from a window to others : Hold Alt and then you can press Tab repeatedly untill you get to the window you want to focus. If you use it, you will see a small popup showing the application name, its icon and the window title. Also <application>@PACKAGE_NAME@</application> will highlight the outline of the window that will receive the focus."
