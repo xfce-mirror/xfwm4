@@ -36,7 +36,6 @@
     <property name="window_position">center-on-parent</property>
     <property name="icon_name">xfwm4</property>
     <property name="type_hint">dialog</property>
-    <property name="has_separator">False</property>
     <property name="subtitle" translatable="yes">Configure window behavior and shortcuts</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="main-vbox">
@@ -1222,8 +1221,9 @@
                     <child>
                       <object class="GtkAlignment" id="alignment13">
                         <property name="visible">True</property>
-                        <property name="border_width">6</property>
-                        <property name="left_padding">12</property>
+                        <property name="top_padding">6</property>
+                        <property name="bottom_padding">6</property>
+                        <property name="left_padding">18</property>
                         <child>
                           <object class="GtkComboBox" id="double_click_action_combo">
                             <property name="visible">True</property>
