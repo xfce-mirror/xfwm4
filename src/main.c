@@ -32,6 +32,7 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -91,6 +92,7 @@ static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISIO
 #endif
 
 static DisplayInfo *main_display_info = NULL;
+static gint compositor = COMPOSITOR_MODE_MANUAL;
 
 static void
 cleanUp (void)
@@ -260,16 +262,6 @@ ensure_basedir_spec (void)
 }
 
 static void
-print_usage (void)
-{
-    g_print ("%s [--sm-client-id=ID] [--display=DISPLAY] "
-#ifdef HAVE_COMPOSITOR
-             "[--compositor=off|on|auto] "
-#endif
-             "[--daemon] [--replace] [--version|-V] [--help|-H]\n", PACKAGE);
-}
-
-static void
 print_version (void)
 {
     g_print ("\tThis is %s version %s (revision %s) for Xfce %s\n",
@@ -362,51 +354,46 @@ get_default_compositor (DisplayInfo *display_info)
 #endif /* HAVE_COMPOSITOR */
 
 #ifdef HAVE_COMPOSITOR
-static gint
-parse_compositor (const gchar *s)
+static gboolean
+compositor_callback (const gchar  *name,
+                     const gchar  *value,
+                     gpointer      user_data,
+                     GError      **error)
 {
-    gchar *rvalue;
-    gint retval;
+    gboolean succeed = TRUE;
 
-    retval = COMPOSITOR_MODE_MANUAL;
-    rvalue = strrchr (s, '=');
-    if (rvalue)
+    g_return_val_if_fail (value != NULL, FALSE);
+
+    if (strcmp (value, "off") == 0)
     {
-        rvalue++;
-        if (!strcmp (rvalue, "off"))
-        {
-            retval = COMPOSITOR_MODE_OFF;
-        }
-        else if (!strcmp (rvalue, "auto"))
-        {
-            retval = COMPOSITOR_MODE_AUTO;
-        }
-        else if (!strcmp (rvalue, "on"))
-        {
-            retval = COMPOSITOR_MODE_MANUAL;
-        }
-        else
-        {
-            g_warning ("Unrecognized compositor option \"%s\"", rvalue);
-        }
+        compositor = COMPOSITOR_MODE_OFF;
+    }
+    else if (strcmp (value, "auto") == 0)
+    {
+        compositor = COMPOSITOR_MODE_AUTO;
+    }
+    else if (strcmp (value, "on") == 0)
+    {
+        compositor = COMPOSITOR_MODE_MANUAL;
+    }
+    else
+    {
+        g_set_error (error, 0, 0, "Unrecognized compositor option \"%s\"", value);
+        succeed = FALSE;
     }
 
-    return retval;
+    return succeed;
 }
 #endif /* HAVE_COMPOSITOR */
 
 static int
-initialize (int argc, char **argv, gint compositor_mode, gboolean replace_wm)
+initialize (gint compositor_mode, gboolean replace_wm)
 {
     struct sigaction act;
     long ws;
     gint i, nscreens;
 
     TRACE ("entering initialize");
-
-    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-
-    gtk_init (&argc, &argv);
 
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version,
          gtk_minor_version, gtk_micro_version);
@@ -526,52 +513,66 @@ initialize (int argc, char **argv, gint compositor_mode, gboolean replace_wm)
     main_display_info->xfilter = eventFilterInit ((gpointer) main_display_info);
     eventFilterPush (main_display_info->xfilter, xfwm4_event_filter, (gpointer) main_display_info);
 
-    return sessionStart (argc, argv, main_display_info);
+    return sessionStart (main_display_info);
 }
 
 int
 main (int argc, char **argv)
 {
-    gboolean daemon_mode;
-    gboolean replace_wm;
-    gint compositor;
+    gboolean daemon_mode = FALSE;
+    gboolean version = FALSE;
+    gboolean replace_wm = FALSE;
     int status;
-    int i;
+    GOptionContext *context;
+    GError *error = NULL;
+#ifndef HAVE_COMPOSITOR
+    gchar *compositor_foo = NULL;
+#endif
+    GOptionEntry option_entries[] =
+    {
+#ifdef HAVE_DAEMON
+        { "daemon", '\0', 0, G_OPTION_ARG_NONE, &daemon_mode, N_("Fork to the background"), NULL },
+#else
+        { "daemon", '\0', 0, G_OPTION_ARG_NONE, &daemon_mode, N_("Fork to the background (not supported)"), NULL },
+#endif
+#ifdef HAVE_COMPOSITOR
+        { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK, compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
+#else
+        { "compositor", '\0', 0, G_OPTION_ARG_STRING, &compositor_foo, N_("Set the compositor mode (not supported)"), "on|off|auto" },
+#endif
+        { "replace", '\0', 0, G_OPTION_ARG_NONE, &replace_wm, N_("Replace the existing window manager"), NULL },
+        { "version", 'V', 0, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
+        { NULL }
+    };
 
     DBG ("xfwm4 starting");
 
-    daemon_mode = FALSE;
-    replace_wm = FALSE;
-    compositor = -1;
-    for (i = 1; i < argc; i++)
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
+    context = g_option_context_new (_("[ARGUMENTS...]"));
+    g_option_context_add_main_entries (context, option_entries, GETTEXT_PACKAGE);
+    g_option_context_add_group (context, gtk_get_option_group (FALSE));
+    g_option_context_add_group (context, xfce_sm_client_get_option_group (argc, argv));
+    if (!g_option_context_parse (context, &argc, &argv, &error))
     {
-        if (!strcmp (argv[i], "--daemon"))
-        {
-            daemon_mode = TRUE;
-        }
-#ifdef HAVE_COMPOSITOR
-        else if (!strncmp (argv[i], "--compositor=", strlen ("--compositor=")))
-        {
-            compositor = parse_compositor (argv[i]);
-        }
-#endif /* HAVE_COMPOSITOR */
-        else if (!strcmp (argv[i], "--replace"))
-        {
-            replace_wm = TRUE;
-        }
-        else if (!strcmp (argv[i], "--version") || !strcmp (argv[i], "-V"))
-        {
-            print_version ();
-            exit (0);
-        }
-        else if (!strcmp (argv[i], "--help") || !strcmp (argv[i], "-H"))
-        {
-            print_usage ();
-            exit (0);
-        }
+          g_print ("%s: %s.\n", PACKAGE_NAME, error->message);
+          g_print (_("Type \"%s --help\" for usage."), G_LOG_DOMAIN);
+          g_print ("\n");
+          g_error_free (error);
+
+          return EXIT_FAILURE;
+    }
+    g_option_context_free (context);
+
+    gtk_init (&argc, &argv);
+
+    if (G_UNLIKELY (version))
+    {
+         print_version ();
+         return EXIT_SUCCESS;
     }
 
-    status = initialize (argc, argv, compositor, replace_wm);
+    status = initialize (compositor, replace_wm);
     /*
        status  < 0   =>   Error, cancel execution
        status == 0   =>   Run w/out session manager

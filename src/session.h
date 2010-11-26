@@ -36,12 +36,12 @@
  *  Save window states to file which name is given in argument.
  */
 gboolean                sessionSaveWindowStates                 (DisplayInfo *,
-                                                                 gchar *);
+                                                                 const gchar *);
 
 /*
  *  Load window states to file which name is given in argument.
  */
-gboolean                sessionLoadWindowStates                 (gchar *);
+gboolean                sessionLoadWindowStates                 (const gchar *);
 
 /*
  * Free allocated structure. Should be called before xfwm4 dies
@@ -58,8 +58,6 @@ gboolean                sessionMatchWinToSM                     (Client *);
  * Initiate session, connect to session manager and
  * load saved states if the connection succeeds.
  */
-int                     sessionStart                            (int,
-                                                                 char **,
-                                                                 DisplayInfo *);
+int                     sessionStart                            (DisplayInfo *);
 
 #endif /* INC_CLIENT_H */

@@ -366,7 +366,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 }
 
 gboolean
-sessionSaveWindowStates (DisplayInfo *display_info, gchar * filename)
+sessionSaveWindowStates (DisplayInfo *display_info, const gchar * filename)
 {
     FILE *f;
     GSList *screens;
@@ -388,7 +388,7 @@ sessionSaveWindowStates (DisplayInfo *display_info, gchar * filename)
 }
 
 gboolean
-sessionLoadWindowStates (gchar * filename)
+sessionLoadWindowStates (const gchar * filename)
 {
     FILE *f;
     gchar s[4096], s1[4096];
@@ -705,94 +705,83 @@ sessionMatchWinToSM (Client * c)
     return FALSE;
 }
 
-static char *
-sessionBuildFilename(XfceSMClient *client_session)
-{
-    gchar *filename, *path, *file;
-    GError *error;
-
-    path = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
-
-    error = NULL;
-    if (!xfce_mkdirhier(path, 0700, &error))
-    {
-        g_warning("Unable to create session dir %s: %s", path, error->message);
-        g_error_free (error);
-        g_free (path);
-        return NULL;
-    }
-
-    file = g_strdup_printf("xfwm4-%s", xfce_sm_client_get_client_id(client_session));
-    filename = g_build_filename (path, file, NULL);
-    g_free (file);
-    g_free (path);
-
-    return filename;
-}
-
 static void
 sessionLoad (DisplayInfo *display_info)
 {
-    XfceSMClient *session;
-    gchar *filename;
+    const gchar *filename;
 
-    session = display_info->session;
-    filename = sessionBuildFilename(session);
+    filename = xfce_sm_client_get_state_file (display_info->session);
+    DBG ("Restoring session from \"%s\"", filename);
     if (filename)
     {
         sessionLoadWindowStates (filename);
-        g_free (filename);
     }
 }
 
-/*
 static void
-sessionSavePhase2 (gpointer data)
+sessionSavePhase2 (XfceSMClient *session,
+                   DisplayInfo *display_info)
 {
-    DisplayInfo *display_info;
-    XfceSMClient *session;
-    gchar *filename;
+    const gchar *filename;
 
-    display_info = (DisplayInfo *) data;
-    session = display_info->session;
-    filename = sessionBuildFilename(session);
+    g_return_if_fail (XFCE_IS_SM_CLIENT (session));
+    g_return_if_fail (session == display_info->session);
+
+    filename = xfce_sm_client_get_state_file (display_info->session);
+    DBG ("Saving session to \"%s\"", filename);
     if (filename)
     {
         sessionSaveWindowStates (display_info, filename);
-        g_free (filename);
     }
 }
 
 static void
-sessionDie (gpointer data)
+sessionDie (XfceSMClient *session,
+            DisplayInfo *display_info)
 {
-    DisplayInfo *display_info;
+    g_return_if_fail (XFCE_IS_SM_CLIENT (session));
+    g_return_if_fail (session == display_info->session);
 
-    display_info = (DisplayInfo *) data;
-    xfce_sm_client_set_restart_style(display_info->session, XFCE_SM_CLIENT_RESTART_NORMAL);
-    display_info->quit = TRUE;
+    /*
+     * Do not change the session restart style to NORMAL here, else
+     * xfwm4 will never be restarted the next time we login. just
+     * gracefully quit the application.
+     */
+    DBG ("Session clients asked to quit");
     gtk_main_quit ();
 }
-*/
 
 int
-sessionStart (int argc, char **argv, DisplayInfo *display_info)
+sessionStart (DisplayInfo *display_info)
 {
     XfceSMClient *session;
+    GError *error = NULL;
 
-    display_info->session = xfce_sm_client_get_with_argv (argc, argv,
-                                                XFCE_SM_CLIENT_RESTART_IMMEDIATELY, 20);
-    session = display_info->session;
-    /*
-    session->data = (gpointer) display_info;
-    session->save_phase_2 = sessionSavePhase2;
-    session->die = sessionDie;
-    */
+    DBG ("Starting session client");
 
-    if (xfce_sm_client_connect(session, NULL))
+    session = xfce_sm_client_get ();
+    xfce_sm_client_set_restart_style (session, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
+    xfce_sm_client_set_priority (session, XFCE_SM_CLIENT_PRIORITY_WM);
+
+    if (xfce_sm_client_connect(session, &error))
     {
+        display_info->session = session;
+
         sessionLoad (display_info);
+
+        /* save-state-extended is special for window managers to store
+         * the window positions of all the clients */
+        g_signal_connect (G_OBJECT (session), "save-state-extended",
+                          G_CALLBACK (sessionSavePhase2), display_info);
+        g_signal_connect (G_OBJECT (session), "quit",
+                          G_CALLBACK (sessionDie), display_info);
+
         return 1;
+    }
+    else
+    {
+        g_warning ("Failed to connect to session manager: %s", error->message);
+        g_error_free (error);
     }
 
     return 0;

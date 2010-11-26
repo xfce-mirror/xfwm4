@@ -93,7 +93,8 @@ xfwm4_CFLAGS =								\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DLIBDIR=\"$(libdir)\"						\
-	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"
+	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"				\
+	-DG_LOG_DOMAIN=\"xfwm4\"
 
 xfwm4_LDADD =								\
 	$(GTK_LIBS) 							\
