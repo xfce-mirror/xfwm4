@@ -767,7 +767,8 @@ sessionStart (DisplayInfo *display_info)
     {
         display_info->session = session;
 
-        sessionLoad (display_info);
+        if (xfce_sm_client_is_resumed (session))
+            sessionLoad (display_info);
 
         /* save-state-extended is special for window managers to store
          * the window positions of all the clients */
