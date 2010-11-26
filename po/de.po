@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-22 16:07+0000\n"
+"POT-Creation-Date: 2010-11-26 17:10+0000\n"
 "PO-Revision-Date: 2008-10-19 12:54+0200\n"
 "Last-Translator: Jannis Pohlmann <jannis@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -52,13 +52,13 @@ msgstr "Versionsinformation"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -597,33 +597,33 @@ msgstr "Letzte Arbeitsfläche löschen"
 msgid "Delete active workspace"
 msgstr "Aktive Arbeitsfläche löschen"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "Thema"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "Aktion"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Konnte xfconf nicht initialisieren. Grund: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Konnte den Einstellungsdialog nicht erzeugen."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "Standardwerte setzen"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "Dies wird alle Tastenkürzel auf ihre Standardwerte zurücksetzen. Möchten Sie dies wirklich?"
 
@@ -834,10 +834,43 @@ msgstr "_Anzahl der Arbeitsflächen:"
 msgid "%s (on %s)"
 msgstr "%s (auf %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Speicherzugriffsfehler"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr ""
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr ""
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr ""
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr ""
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr "Ersetze den existierenden Fenstermanager"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "Versionsinformation anzeigen und beenden"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr "[ARGUMENTE…]"
+
+#: ../src/main.c:559
+#, c-format, fuzzy
+msgid "Type \"%s --help\" for usage."
+msgstr "Geben Sie »%s --help« für Nutzungsinformationen an."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -1382,9 +1415,6 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 
 #~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
 #~ msgstr "Dieses Tastenkürzel wird bereits für eine <b>Fensterverwaltungaktion</b> verwendet. Welche Aktion soll mit ihm zukünftig ausgeführt werden?"
-
-#~ msgid "Keep the window manager action"
-#~ msgstr "Behalte die Fensterverwaltungsaktion"
 
 #~ msgid "Conflicting actions for %s"
 #~ msgstr "Im Konflikt stehende Aktionen für %s"
