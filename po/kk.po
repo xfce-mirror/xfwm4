@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 06:05+0100\n"
+"POT-Creation-Date: 2010-11-27 05:10+0000\n"
 "PO-Revision-Date: 2010-08-03 10:34+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -37,26 +37,26 @@ msgid "Session manager socket"
 msgstr "Сессиялар басқарушының сокеті"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
 msgstr "СОКЕТ ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "Нұсқа ақпараты"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/workspace-settings.c:388
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/workspace-settings.c:392
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -65,17 +65,17 @@ msgstr ""
 "%s: %s\n"
 "Командалық жолдың бар опцияларын қарап шығу үшін, %s --help енгізіңз.\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
 msgstr "Жұмыс орны %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
 msgstr "Жұмыс орын аты"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "Баптаулар басқарушының сокеті"
@@ -595,33 +595,33 @@ msgstr "Соңғы жұмыс орнын өшіру"
 msgid "Delete active workspace"
 msgstr "Белсенді тұрған жұмыс орнын жою"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "Тақырыбы"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "Әрекет"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "Жарлық"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Xfconf іске қосу қатесі. Себебі: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Баптаулар сұхбат терезесін жасау мүмкін емес."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "Бастапқы түріне келтіру"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "Бұл әрекет жарлықтардың барлығын бастапқы түріне келтіреді. Осыны шынымен қалайсыз ба?"
 
@@ -836,10 +836,43 @@ msgstr "Жұмыс оры_ндар саны:"
 msgid "%s (on %s)"
 msgstr "%s (%s орналасады)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmentation fault"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr "Фонда орындау"
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr "Фонда орындау (қолдау жоқ)"
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr "Композитинг режиміне өту"
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr "Композитинг режиміне өту (қолдау жоқ)"
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr "Ағымдағы терезелер басқарушысын алмастыру"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "Нұсқа ақпаратын шығару мен шығу"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr "[АРГУМЕНТТЕР...]"
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr "Қолдану ақпаратын қарау үшін \"%s --help\" енгізіңіз."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
