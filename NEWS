@@ -1,9 +1,14 @@
-4.7.x
+4.7.2
 =====
 - Fix corrupted button layouts by obtaining the button IDs correctly
   (bug #6824).
-- Bump the GTK+ dependency to 2.14 which is the minimum version required
-  for Xfce 4.8.
+- Bump the GTK+ dependency to 2.14 which is the minimum version
+  required for Xfce 4.8.
+- Properly implement session handling (bug #6330).
+- Make the settings dialog smaller so it fits on netbooks screens.
+- Depend on libxfce4ui 4.7.5 for crucial fix in the
+  save-state-extended signal.
+- Translation updates (it, gl, pt, da, de, kk, hu, zh_CN).
 
 
 4.7.1
