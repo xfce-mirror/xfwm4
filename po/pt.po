@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Nuno Donato <nunodonato@gmail.com>, 2004.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-13 05:09+0000\n"
+"POT-Creation-Date: 2010-11-29 05:10+0000\n"
 "PO-Revision-Date: 2010-11-13 10:48-0000\n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: \n"
@@ -50,13 +50,13 @@ msgstr "Informação de versão"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -595,33 +595,33 @@ msgstr "Apagar última área de trabalho"
 msgid "Delete active workspace"
 msgstr "Apagar área de trabalho activa"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "Acção"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "Atalho"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Falha ao iniciar xfconf. Motivo: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Incapaz de criar o diálogo de definições."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "Repor as omissões"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "Isto irá repor todos os atalhos para os seus valores por omissão. Deseja realmente fazer isto?"
 
@@ -836,10 +836,43 @@ msgstr "_Número de áreas de trabalho:"
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Falha de segmentação"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr "Enviar para segundo plano"
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr "Enviar para segundo plano (não suportado)"
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr "Definir o modo de composição"
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr "Definir o modo de composição (não suportado)"
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr "Substituir o gestor de janelas existente"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "Mostra informação de versão e sai"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr "[ARGUMENTOS...]"
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr "Digite \"%s --help\" para a ajuda."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -967,4 +1000,3 @@ msgstr "Erro ao ler dados do processo dependente: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Incapaz de criar helper-dialog: %s\n"
-
