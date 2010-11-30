@@ -876,7 +876,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
             }
             else
             {
-                clientActivate (c, getXServerTime (display_info), TRUE);
+                clientActivate (c, getXServerTime (display_info), FALSE);
             }
         }
     }
