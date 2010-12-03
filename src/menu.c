@@ -288,15 +288,6 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
     return (menu);
 }
 
-static Menu *
-menu_connect (Menu * menu)
-{
-    TRACE ("entering menu_connect");
-    g_return_val_if_fail (menu != NULL, NULL);
-    g_return_val_if_fail (GTK_IS_MENU (menu->menu), NULL);
-    return (menu);
-}
-
 static void
 closure_notify (gpointer data, GClosure * closure)
 {
