@@ -283,7 +283,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
         }
         ++i;
     }
-    g_signal_connect (GTK_OBJECT (menu->menu), "selection-done", GTK_SIGNAL_FUNC (menu), menu);
+    g_signal_connect (GTK_OBJECT (menu->menu), "selection-done", GTK_SIGNAL_FUNC (menu_closed), menu);
 
     return (menu);
 }
