@@ -3211,7 +3211,7 @@ clientNewMaxSize (Client * c, XWindowChanges *wc)
     {
         /* Adjust size to the largest size available, not covering struts */
         clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
-	if(FLAG_TEST(c->flags, XFWM_FLAG_HAS_BORDER))
+	if(FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
         {
             wc->x = full_x + frameLeft (c);
             wc->y = full_y + frameTop (c);
