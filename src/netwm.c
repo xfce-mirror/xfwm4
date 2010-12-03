@@ -1379,7 +1379,11 @@ clientHandleNetActiveWindow (Client *c, guint32 timestamp, gboolean source_is_ap
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     ev_time = myDisplayGetTime (display_info, timestamp);
-
+    if (!source_is_application && (timestamp == 0))
+    {
+         TRACE ("Client \"%s\" (0x%lx) sent a NET_ACTIVE_WINDOW message with a timestamp of 0", c->name, c->window);
+         source_is_application = TRUE;
+    }
     if (source_is_application)
     {
         current_time = myDisplayGetLastUserTime (display_info);
