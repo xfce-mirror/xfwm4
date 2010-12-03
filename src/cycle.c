@@ -147,6 +147,7 @@ clientCycleFocusAndRaise (Client *c)
     sibling = clientGetTransientFor(c);
     clientRaise (sibling, None);
     clientShow (sibling, TRUE);
+    clientUnshade (c);
     clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     clientSetLastRaise (c);
 }
