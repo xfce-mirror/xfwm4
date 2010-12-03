@@ -107,6 +107,8 @@ struct _ButtonPressData
 /* Forward decl */
 static void
 clientUpdateIconPix (Client * c);
+static void
+clientNewMaxSize (Client * c, XWindowChanges *wc);
 
 Display *
 clientGetXDisplay (Client * c)
@@ -983,6 +985,13 @@ clientGetMWMHints (Client * c, gboolean update)
         wc.y = c->y;
         wc.width = c->width;
         wc.height = c->height;
+
+        /* If client is maximized, we need to update its coordonates and size as well */
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        {
+            clientNewMaxSize (c, &wc);
+        }
+
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
 
         /* MWM hints can add or remove decorations, update NET_FRAME_EXTENTS accordingly */
@@ -3220,20 +3229,10 @@ clientNewMaxSize (Client * c, XWindowChanges *wc)
     {
         /* Adjust size to the largest size available, not covering struts */
         clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
-	if(FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
-        {
-            wc->x = full_x + frameLeft (c);
-            wc->y = full_y + frameTop (c);
-            wc->width = full_w - frameLeft (c) - frameRight (c);
-            wc->height = full_h - frameTop (c) - frameBottom (c);
-        }
-        else
-        {
-            wc->x = full_x;
-            wc->y = full_y;
-            wc->width = full_w;
-            wc->height = full_h;
-        }
+        wc->x = full_x + frameLeft (c);
+        wc->y = full_y + frameTop (c);
+        wc->width = full_w - frameLeft (c) - frameRight (c);
+        wc->height = full_h - frameTop (c) - frameBottom (c);
 
         return;
     }
