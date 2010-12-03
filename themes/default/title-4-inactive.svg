@@ -32,6 +32,31 @@
          id="stop3147" />
     </linearGradient>
     <linearGradient
+       id="linearGradient5847">
+      <stop
+         id="stop5849"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:0.75;" />
+      <stop
+         id="stop5851"
+         offset="0.75"
+         style="stop-color:#ffffff;stop-opacity:0.15;" />
+      <stop
+         id="stop14"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:0.00;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5847"
+       id="linearGradient3148"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="15"
+       gradientUnits="userSpaceOnUse"
+       spreadMethod="none" />
+    <linearGradient
        id="linearGradient5873">
       <stop
          id="stop5875"
@@ -47,36 +72,11 @@
          style="stop-color:#ffffff;stop-opacity:0;" />
     </linearGradient>
     <linearGradient
-       id="linearGradient5847">
-      <stop
-         id="stop5849"
-         offset="0"
-         style="stop-color:#ffffff;stop-opacity:1.00;" />
-      <stop
-         id="stop5851"
-         offset="0.5"
-         style="stop-color:#ffffff;stop-opacity:0.20;" />
-      <stop
-         id="stop14"
-         offset="1"
-         style="stop-color:#000000;stop-opacity:0.20;" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient5847"
-       id="linearGradient3148"
-       x1="0"
-       y1="1"
-       x2="0"
-       y2="22"
-       gradientUnits="userSpaceOnUse"
-       spreadMethod="none" />
-    <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5873"
        id="linearGradient6962"
        x1="0"
-       y1="1"
+       y1="0"
        x2="0"
        y2="8"
        gradientUnits="userSpaceOnUse"
@@ -151,7 +151,7 @@
      id="layer1"
      style="display:inline">
     <path
-       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
+       style="fill:none;fill-opacity:0.50;fill-rule:evenodd;stroke:#a0a0a0;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.25"
        d="M 0.5,0.5 L 7.5,0.5"
        id="path6059" />
   </g>
@@ -164,9 +164,9 @@
        style="fill:url(#linearGradient3148);fill-opacity:0.50;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect6057"
        width="8"
-       height="20"
+       height="21"
        x="0"
-       y="2" />
+       y="1" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -184,7 +184,7 @@
        x="0"
        y="12" />
     <path
-       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.15"
+       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.0"
        d="M 0,1.5 L 8,1.5"
        id="path29" />
   </g>
