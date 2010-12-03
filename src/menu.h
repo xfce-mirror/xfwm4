@@ -107,7 +107,6 @@ Menu                    *menu_default                           (GdkScreen *,
                                                                  gint,
                                                                  eventFilterSetup*,
                                                                  gpointer);
-Menu                    *menu_connect                           (Menu *);
 GtkWidget               *menu_item_connect                      (GtkWidget *,
                                                                  MenuData *);
 gboolean                 menu_is_opened                         (void);

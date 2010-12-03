@@ -251,6 +251,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     }
                     ws_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsn_items);
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), ws_menu);
+                    g_signal_connect (GTK_OBJECT (ws_menu), "selection-done", GTK_SIGNAL_FUNC (menu_closed), menu);
                     break;
                 default:
                     if (menuitems[i].image_name)
@@ -282,19 +283,17 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
         }
         ++i;
     }
-    menu_connect (menu);
+    g_signal_connect (GTK_OBJECT (menu->menu), "selection-done", GTK_SIGNAL_FUNC (menu), menu);
 
     return (menu);
 }
 
-Menu *
+static Menu *
 menu_connect (Menu * menu)
 {
     TRACE ("entering menu_connect");
     g_return_val_if_fail (menu != NULL, NULL);
     g_return_val_if_fail (GTK_IS_MENU (menu->menu), NULL);
-    g_signal_connect (GTK_OBJECT (menu->menu), "selection_done",
-        GTK_SIGNAL_FUNC (menu_closed), menu);
     return (menu);
 }
 
