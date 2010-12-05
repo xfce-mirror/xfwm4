@@ -1,3 +1,14 @@
+4.7.3
+=====
+- Panel won't focus entries in focus follow mode (bug #6649).
+- Adjusted sizes when a maximized window is undecorated (bug #6543).
+- Unshade windows when given focus with Alt-Tab (bug #5931).
+- Fix hang when closing a submenu (bug #6562).
+- New theme for 4.8.
+- Focus-follows-mouse activate/raise should not do focus (bug #4679).
+- Translation updates (pt, pt_BR, it).
+
+
 4.7.2
 =====
 - Fix corrupted button layouts by obtaining the button IDs correctly
