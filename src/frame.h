@@ -44,6 +44,7 @@ int                      frameX                                 (Client *);
 int                      frameY                                 (Client *);
 int                      frameWidth                             (Client *);
 int                      frameHeight                            (Client *);
+void                     frameSetShapeInput                     (Client *);
 void                     frameClearQueueDraw                    (Client *);
 void                     frameQueueDraw                         (Client *,
                                                                  gboolean);

@@ -360,6 +360,7 @@ struct _DisplayInfo
 DisplayInfo             *myDisplayInit                          (GdkDisplay *);
 DisplayInfo             *myDisplayClose                         (DisplayInfo *);
 gboolean                 myDisplayHaveShape                     (DisplayInfo *);
+gboolean                 myDisplayHaveShapeInput                (DisplayInfo *);
 gboolean                 myDisplayHaveRender                    (DisplayInfo *);
 Cursor                   myDisplayGetCursorBusy                 (DisplayInfo *);
 Cursor                   myDisplayGetCursorMove                 (DisplayInfo *);

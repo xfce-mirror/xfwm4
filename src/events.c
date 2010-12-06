@@ -2134,19 +2134,24 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
     if (c)
     {
         update = FALSE;
-        if (ev->kind == ShapeBounding)
+        if (ev->kind == ShapeInput)
+        {
+            frameSetShapeInput (c);
+            update = TRUE;
+        }
+        else if (ev->kind == ShapeBounding)
         {
             if ((ev->shaped) && !FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
             {
-                FLAG_SET (c->flags, CLIENT_FLAG_HAS_SHAPE);
-                clientGetMWMHints (c, TRUE);
                 update = TRUE;
+                FLAG_SET (c->flags, CLIENT_FLAG_HAS_SHAPE);
+                clientGetMWMHints (c, update);
             }
             else if (!(ev->shaped) && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
             {
-                FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_SHAPE);
-                clientGetMWMHints (c, TRUE);
                 update = TRUE;
+                FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_SHAPE);
+                clientGetMWMHints (c, update);
             }
         }
         if (!update)

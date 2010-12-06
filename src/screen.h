@@ -108,6 +108,7 @@ struct _ScreenInfo
     xfwmWindow sidewalk[4];
     Window xfwm4_win;
     Window xroot;
+    Window shape_win;
 
     gint gnome_margins[4];
     gint margins[4];

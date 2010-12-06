@@ -180,6 +180,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->width = WidthOfScreen (screen_info->xscreen);
     screen_info->height = HeightOfScreen (screen_info->xscreen);
     screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
+    screen_info->shape_win = (Window) None;
 
     screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
     if (!myScreenSetWMAtom (screen_info, replace_wm))
@@ -337,6 +338,12 @@ myScreenClose (ScreenInfo *screen_info)
     }
     screen_info->workspace_names = NULL;
     screen_info->workspace_names_items = 0;
+
+    if (screen_info->shape_win != None)
+    {
+        XDestroyWindow (display_info->dpy, screen_info->shape_win);
+        screen_info->shape_win = (Window) None;
+    }
 
     xfwmWindowDelete (&screen_info->sidewalk[0]);
     xfwmWindowDelete (&screen_info->sidewalk[1]);

@@ -399,6 +399,14 @@ myDisplayHaveShape (DisplayInfo *display)
 }
 
 gboolean
+myDisplayHaveShapeInput (DisplayInfo *display)
+{
+    g_return_val_if_fail (display != NULL, FALSE);
+
+    return ((display->have_shape) && (display->shape_version >= 1001));
+}
+
+gboolean
 myDisplayHaveRender (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, FALSE);
