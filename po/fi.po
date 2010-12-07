@@ -1,5 +1,5 @@
 # Translation of xfwm4 package into Finnish.
-# Copyright (C) 2002-2010 The Xfce Development Team.
+# Copyright (C) 2002-2010 Olivier Fourdan.
 # This file is distributed under the same license as the xfwm4 package.
 # Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2010.
 # 
@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.7.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-07 10:07+0100\n"
-"PO-Revision-Date: 2010-03-07 12:30+0200\n"
+"POT-Creation-Date: 2010-12-07 11:10+0000\n"
+"PO-Revision-Date: 2010-12-07 15:40+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
-"Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
+"Language-Team: Finnish <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,26 +36,26 @@ msgid "Session manager socket"
 msgstr "Istunnonhallinnan pistoke"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
 msgstr "PISTOKE"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "Versiotiedot"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/workspace-settings.c:388
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/workspace-settings.c:392
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -64,17 +64,17 @@ msgstr ""
 "%s: %s\n"
 "Saat listan komentorivin valitsimista kirjoittamalla %s --help.\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
 msgstr "Työtila %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
 msgstr "Työtilan nimi"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "Asetustenhallinnan pistoke"
@@ -594,33 +594,33 @@ msgstr "Poista viimeinen työtila"
 msgid "Delete active workspace"
 msgstr "Poista nykyinen työtila"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "Teema"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "Toiminto"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "Pikanäppäin"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Virhe alustaessa xfconfia: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Asetusdialogin luominen epäonnistui."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "Palauta oletukset"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -832,15 +832,48 @@ msgid "_Number of workspaces:"
 msgstr "Työtilojen luku_määrä:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (isäntäkoneella %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Muistinosoitusvirhe"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr "Haaraudu taustalle"
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr "Haaraudu taustalle (ei tuettu)"
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr "Aseta komposointitila"
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr "Aseta komposointitila (ei tuettu)"
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr "Korvaa nykyinen ikkunamanageri"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "Tulosta versiotiedot ja poistu"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr "[VALITSIMET...]"
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr "Saat käyttöohjeita komennolla \"%s --help\"."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -934,7 +967,7 @@ msgstr "_Lopeta"
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
@@ -968,462 +1001,3 @@ msgstr "Virhe luettaessa lapsiprosessin tietoa: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Apudialogia ei voi avata: %s\n"
-
-#~ msgid "  "
-#~ msgstr "  "
-
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "<i>Pieni</i>"
-
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "<i>Pieni</i>"
-
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "<i>Suuri</i>"
-
-#~ msgid ">Window Manager"
-#~ msgstr "Ikkunamanageri"
-
-#~ msgid "gtk-clear"
-#~ msgstr "gtk-clear"
-
-#~ msgid "gtk-close"
-#~ msgstr "gtk-close"
-
-#~ msgid "gtk-help"
-#~ msgstr "gtk-help"
-
-#~ msgid "gtk-cancel"
-#~ msgstr "gtk-cancel"
-
-#~ msgid "gtk-save"
-#~ msgstr "gtk-save"
-
-#~ msgid "Change the name of workspace %d"
-#~ msgstr "Vaihda työtilan %d nimi"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "Työtilan reunukset"
-
-#~ msgid "Left :"
-#~ msgstr "Vasen:"
-
-#~ msgid "Right :"
-#~ msgstr "Oikea:"
-
-#~ msgid "Top :"
-#~ msgstr "Yläreuna:"
-
-#~ msgid "Bottom :"
-#~ msgstr "Alareuna:"
-
-#~ msgid "Bring window on current workspace"
-#~ msgstr "Tuo ikkuna nykyiseen työtilaan"
-
-#~ msgid "Do nothing"
-#~ msgstr "Älä tee mitään"
-
-#~ msgid "Place window under the mouse"
-#~ msgstr "Aseta ikkuna osoittimen alle"
-
-#~ msgid "Place window in the center"
-#~ msgstr "Aseta ikkuna keskelle"
-
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr "Ohita työtilan vaihtajasta tai tehtäväpalkista piilotetut ikkunat"
-
-#~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "Sisällytä piilotetut (pienennetyt) ikkunat"
-
-#~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Selaa kaikkien työtilojen ikkunoita"
-
-#~ msgid "Cycling"
-#~ msgstr "Selaaminen"
-
-#~ msgid "Activate focus stealing prevention"
-#~ msgstr "Käytä kohdistuksen ryöstön estoa"
-
-#~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "Noudata standardia ICCCM -kohdistusvihjettä"
-
-#~ msgid "Focus"
-#~ msgstr "Kohdistus"
-
-#~ msgid "Key used to grab and move windows"
-#~ msgstr "Ikkunoiden liikutteluun käytettävä näppäin:"
-
-#~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "Kaikki hiiren painikkeet nostavat ikkunan"
-
-#~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Piilota ikkunan kehys suurennettaessa"
-
-#~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "Palauta suurennettujen ikkunoiden koko siirrettäessä"
-
-#~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "Käytä reunavastusta ikkunoiden loksahtamisen sijaan"
-
-#~ msgid "Accessibility"
-#~ msgstr "Esteettömyys"
-
-#~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr "Vaihda työtilaa, kun hiiren rullaa pyöritetään työpöydän yllä"
-
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr "Muista edellinen työtila pikanäppäimillä vaihdettaessa"
-
-#~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr "Kierrätä työtiloja työpöytäasettelun mukaisesti"
-
-#~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Kierrätä työtiloja, kun ohitetaan ensimmäinen tai viimeinen tila"
-
-#~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Älykkäästi sijoitettavan ikkunan minimikoko:"
-
-#~ msgid "Size|Small"
-#~ msgstr "<i>Pieni</i>"
-
-#~ msgid "Size|Large"
-#~ msgstr "<i>Suuri</i>"
-
-#~ msgid "Default positionning of windows without smart placement:"
-#~ msgstr "Ikkunan oletussijainti, kun ei käytetä älykästä sijoitusta:"
-
-#~ msgid "Placement"
-#~ msgstr "Sijainti"
-
-#~ msgid "Enable display compositing"
-#~ msgstr "Käytä näytön komposointia"
-
-#~ msgid "Display full screen overlay windows directly"
-#~ msgstr "Näytä kokoruudun peittokuvaikkunat suoraan"
-
-#~ msgid "Show shadows under dock windows"
-#~ msgstr "Näytä varjot telakkaikkunoiden alla"
-
-#~ msgid "Show shadows under regular windows"
-#~ msgstr "Näytä varjot tavallisten ikkunoiden alla"
-
-#~ msgid "Show shadows under popup windows"
-#~ msgstr "Näytä varjot ponnahdusikkunoiden alla"
-
-#~ msgid "Opacity of window decorations"
-#~ msgstr "Ikkunoiden kehysten läpinäkyvyys"
-
-#~ msgid "Transparent"
-#~ msgstr "Läpinäkyvä"
-
-#~ msgid "Opaque"
-#~ msgstr "Läpinäkymätön"
-
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "Epäaktiivisten ikkunoiden läpinäkyvyys"
-
-#~ msgid "Opacity of windows during move"
-#~ msgstr "Ikkunoiden läpinäkyvyys siirrettäessä:"
-
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "Ikkunoiden läpinäkyvyys kokoa muutettaessa:"
-
-#~ msgid "Opacity of popup windows"
-#~ msgstr "Ponnahdusikkunoiden läpinäkyvyys"
-
-#~ msgid "Compositor"
-#~ msgstr "Komposoija"
-
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "Ikkunamanagerin viritys"
-
-#~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr "Nämä asetukset eivät toimi käyttämäsi ikkunamanagerin kanssa (%s)"
-
-#~ msgid "Change name"
-#~ msgstr "Vaihda nimi"
-
-#~ msgid "Name:"
-#~ msgstr "Nimi:"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Napsauta työtilan nimeä muokataksesi sitä"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Työtilojen lukumäärä:"
-
-#~ msgid "Workspace names"
-#~ msgstr "Työtilojen nimet"
-
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Työtilat ja reunukset"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "Työtilat ja reunukset"
-
-#~ msgid "Margins"
-#~ msgstr "Reunukset"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Ikkunamanagerin asetukset"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 Ikkunamanagerin asetukset"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Lisäasetukset"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 Ikkunamanagerin viritys"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Työtilojen asetukset"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 Työtilojen asetukset"
-
-#~ msgid "Click and drag buttons to change the layout"
-#~ msgstr "Raahaa painikkeita muuttaaksesi asettelua"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "Kirjasimen valintaikkuna"
-
-#~ msgid "Title font"
-#~ msgstr "Otsakkeen kirjasin"
-
-#~ msgid "Title Alignment"
-#~ msgstr "Otsakkeen tasaus"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "Tekstin tasaus otsakepalkissa:"
-
-#~ msgid "Button layout"
-#~ msgstr "Painikkeiden asettelu"
-
-#~ msgid "Style"
-#~ msgstr "Tyyli"
-
-#~ msgid "Window shortcuts"
-#~ msgstr "Ikkunoiden pikanäppäimet"
-
-#~ msgid "Command"
-#~ msgstr "Komento"
-
-#~ msgid "Keyboard"
-#~ msgstr "Näppäimistö"
-
-#~ msgid "Focus model"
-#~ msgstr "Kohdistustapa"
-
-#~ msgid "Click to focus"
-#~ msgstr "Kohdistus napsauttaessa"
-
-#~ msgid "Focus follows mouse"
-#~ msgstr "Kohdistus seuraa hiirtä"
-
-#~ msgid "Delay before window receives focus"
-#~ msgstr "Viive ennen ikkunan kohdistamista"
-
-#~ msgid "Slow"
-#~ msgstr "Hidas"
-
-#~ msgid "Fast"
-#~ msgstr "Nopea"
-
-#~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "Kohdista automaattisesti juuri luotuihin ikkunoihin"
-
-#~ msgid "New window focus"
-#~ msgstr "Uuden ikkunan kohdistus"
-
-#~ msgid "Raise on focus"
-#~ msgstr "Nosta kohdistaessa"
-
-#~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "Nosta ikkunat automaattisesti, kun niihin kohdistetaan"
-
-#~ msgid "Delay before raising focused window :"
-#~ msgstr "Viive ennen kohdistetun ikkunan nostoa:"
-
-#~ msgid "Raise window when clicking inside application window"
-#~ msgstr "Nosta sovellusikkuna, kun sen sisällä napsautetaan"
-
-#~ msgid "Raise on click"
-#~ msgstr "Nosta napsauttaessa"
-
-#~ msgid "Windows snapping"
-#~ msgstr "Ikkunoiden loksahtaminen"
-
-#~ msgid "Snap windows to screen border"
-#~ msgstr "Loksauta ikkunat näytön reunaan"
-
-#~ msgid "Snap windows to other windows"
-#~ msgstr "Loksauta ikkunat toisiinsa"
-
-#~ msgid "Distance :"
-#~ msgstr "Etäisyys:"
-
-#~ msgid "Distance|Small"
-#~ msgstr "Pieni"
-
-#~ msgid "Distance|Wide"
-#~ msgstr "Suuri"
-
-#~ msgid "Wrap workspaces"
-#~ msgstr "Kierrätä työtiloja"
-
-#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Vaihda työtilaa osoittimen saavuttaessa näytön reunan"
-
-#~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Vaihda työtilaa, kun ikkuna raahataan ulos näytöltä"
-
-#~ msgid "Edge Resistance :"
-#~ msgstr "Reunan vastus:"
-
-#~ msgid "Resistance|Small"
-#~ msgstr "Pieni"
-
-#~ msgid "Resistance|Wide"
-#~ msgstr "Suuri"
-
-#~ msgid "Opaque move and resize"
-#~ msgstr "Läpinäkymätön siirtäminen ja koon muuttaminen"
-
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "Piilota ikkunan sisältö kokoa muutettaessa"
-
-#~ msgid "Display content of windows when moving"
-#~ msgstr "Piilota ikkunan sisältö siirrettäessä"
-
-#~ msgid "Double click action"
-#~ msgstr "Kaksoisnapsautus"
-
-#~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "Otsikkopalkin kaksoisnapsautustoiminto:"
-
-#~ msgid "Advanced"
-#~ msgstr "Lisäasetukset"
-
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "Ikkunamanageri"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Haluatko varmasti poistaa tämän pikanäppäinteeman?"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "Lisää pikanäppäinteema"
-
-#~ msgid "Enter a name for the theme:"
-#~ msgstr "Nimeä teema:"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Nimi on jo toisen pikanäppäinteeman käytössä"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Pikanäppäinteemalle on annettava nimi"
-
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Siirrä ikkuna työtilaan %d"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "Teemakansiota ei voi poistaa!"
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Kohdetta %s ei voi avata: \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Kohteeseen %s ei voi kirjoittaa: \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "Pikanäppäin on jo käytössä!\n"
-#~ "Haluatko varmasti käyttää sitä?"
-
-#~ msgid "Compose shortcut for :"
-#~ msgstr "Aseta pikanäppäin toiminnolle:"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "Aseta pikanäppäin"
-
-#~ msgid "No shortcut"
-#~ msgstr "Ei pikanäppäintä"
-
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "Pikanäppäin on jo yhdistetty <b>toiseen ikkunamanagerin toimintoon</b>. "
-#~ "Kumpaa toimintoa haluat käyttää?"
-
-#~ msgid "Use %s"
-#~ msgstr "Ota käyttöön %s"
-
-#~ msgid "Keep the other one"
-#~ msgstr "Säilytä toinen"
-
-#~ msgid ""
-#~ "The shortcut is already being used for the command <b>%s</b>. Which "
-#~ "action do you want to use?"
-#~ msgstr ""
-#~ "Pikanäppäin on jo yhdistetty komentoon <b>%s</b>. Kumpaa toimintoa haluat "
-#~ "käyttää?"
-
-#~ msgid "Keep %s"
-#~ msgstr "Säilytä %s"
-
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "Pikanäppäin on jo yhdistetty <b>ikkunamanagerin toimintoon</b>. Kumpaa "
-#~ "toimintoa haluat käyttää?"
-
-#~ msgid "Keep the window manager action"
-#~ msgstr "Säilytä ikkunamanagerin toiminto"
-
-#~ msgid "Conflicting actions for %s"
-#~ msgstr "Toimintoristiriita: %s"
-
-#~ msgid "The shortcut is already being used for something else."
-#~ msgstr "Pikanäppäin on jo muussa käytössä."
-
-#~ msgid "Enter window manager action shortcut"
-#~ msgstr "Syötä ikkunamanagerin toiminnon pikanäppäin"
-
-#~ msgid "Action: %s"
-#~ msgstr "Toiminto: %s"
-
-#~ msgid "Enter command shortcut"
-#~ msgstr "Syötä komennon pikanäppäin"
-
-#~ msgid "Command: %s"
-#~ msgstr "Komento: %s"
-
-#~ msgid "Enter shortcut"
-#~ msgstr "Syötä pikanäppäin"
-
-#~ msgid "Shortcut:"
-#~ msgstr "Pikanäppäin:"
-
-#~ msgid "Could not grab the keyboard."
-#~ msgstr "Näppäimistöä ei voi kaapata."
-
-#~ msgid "<span size='large'><b>%s</b></span>"
-#~ msgstr "<span size='large'><b>%s</b></span>"
-
-#~ msgid "Advanced window manager settings"
-#~ msgstr "Ikkunamanagerin lisäasetukset"
