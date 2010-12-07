@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 06:05+0100\n"
+"POT-Creation-Date: 2010-12-07 17:10+0000\n"
 "PO-Revision-Date: 2009-02-24 20:24+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -39,26 +39,26 @@ msgid "Session manager socket"
 msgstr "Сокет Менеджера властивостей"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "Інформація про версію"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/workspace-settings.c:388
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/workspace-settings.c:392
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -67,17 +67,17 @@ msgstr ""
 "%s: %s\n"
 "Спробуйте %s --help щоб побачити повний список опцій команди.\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
 msgstr "Робоча область %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
 msgstr "Назва робочої області"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "Сокет Менеджера властивостей"
@@ -597,33 +597,33 @@ msgstr "Видалити останню робочу область"
 msgid "Delete active workspace"
 msgstr "Видалити активну робочу область"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "Тема"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "Дія"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "Комбінація клавіш"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Невдача ініціалізації xfconf. Відповідь: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Неможливо створити діалог властивостей."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "Скинути на типові"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "Це зробить відновлення всіх комбінацій клавіш до їх типових значень. Ви дійсно хочете зробити це?"
 
@@ -833,15 +833,48 @@ msgid "_Number of workspaces:"
 msgstr "_Кількість робочих областей:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: помилка сегментації"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr ""
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr ""
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr ""
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr ""
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr "Замінти існуючий менеджер вікон"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "Показати інформацію про версію і вийти"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr ""
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr "Введіть \"%s --help\" для допомоги по використанню."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -935,7 +968,7 @@ msgstr "Ви_йти"
 msgid "Restart"
 msgstr "Перезапустити"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
