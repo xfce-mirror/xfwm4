@@ -339,7 +339,8 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->screens = NULL;
     display->clients = NULL;
     display->xgrabcount = 0;
-    display->dbl_click_time = 300;
+    display->double_click_time = 250;
+    display->double_click_distance = 5;
     display->nb_screens = 0;
     display->current_time = CurrentTime;
 

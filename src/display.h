@@ -312,7 +312,8 @@ struct _DisplayInfo
     gboolean have_xsync;
     gint shape_version;
     gint shape_event_base;
-    gint dbl_click_time;
+    gint double_click_time;
+    gint double_click_distance;
     gint xgrabcount;
     gint nb_screens;
     gchar* hostname;

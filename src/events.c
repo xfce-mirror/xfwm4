@@ -74,7 +74,7 @@
                                  (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || \
                                  (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON])))
 
-#define DBL_CLICK_GRAB          (ButtonMotionMask | \
+#define DOUBLE_CLICK_GRAB          (ButtonMotionMask | \
                                  PointerMotionMask | \
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
@@ -127,6 +127,7 @@ struct _XfwmButtonClickData
     gint y;
     gint xcurrent;
     gint ycurrent;
+    gint distance;
     gboolean allow_double_click;
 };
 
@@ -134,6 +135,7 @@ static gboolean
 typeOfClick_break (gpointer data)
 {
     XfwmButtonClickData *passdata;
+    TRACE ("Double click timeout\n");
 
     passdata = (XfwmButtonClickData *) data;
     if (passdata->timeout)
@@ -194,8 +196,8 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
         status = EVENT_FILTER_CONTINUE;
     }
 
-    if ((ABS (passdata->x - passdata->xcurrent) > 1) ||
-        (ABS (passdata->y - passdata->ycurrent) > 1) ||
+    if ((ABS (passdata->x - passdata->xcurrent) > passdata->distance) ||
+        (ABS (passdata->y - passdata->ycurrent) > passdata->distance) ||
         (!keep_going))
     {
         TRACE ("event loop now finished");
@@ -218,7 +220,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
 
     display_info = screen_info->display_info;
     XFlush (display_info->dpy);
-    g = myScreenGrabPointer (screen_info, DBL_CLICK_GRAB, None, ev->xbutton.time);
+    g = myScreenGrabPointer (screen_info, DOUBLE_CLICK_GRAB, None, ev->xbutton.time);
 
     if (!g)
     {
@@ -237,8 +239,11 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.ycurrent = passdata.y;
     passdata.clicks = 1;
     passdata.allow_double_click = allow_double_click;
+    passdata.distance = display_info->double_click_distance;
+    TRACE ("Double click time= %i, distance=%i\n", display_info->double_click_time,
+                                                   display_info->double_click_distance);
     passdata.timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
-                                           display_info->dbl_click_time,
+                                           display_info->double_click_time,
                                            (GSourceFunc) typeOfClick_break,
                                            (gpointer) &passdata, NULL);
 
@@ -662,16 +667,16 @@ button1Action (Client * c, XButtonEvent * ev)
     {
         switch (screen_info->params->double_click_action)
         {
-            case DBL_CLICK_ACTION_MAXIMIZE:
+            case DOUBLE_CLICK_ACTION_MAXIMIZE:
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
                 break;
-            case DBL_CLICK_ACTION_SHADE:
+            case DOUBLE_CLICK_ACTION_SHADE:
                 clientToggleShaded (c);
                 break;
-            case DBL_CLICK_ACTION_FILL:
+            case DOUBLE_CLICK_ACTION_FILL:
                 clientFill(c, CLIENT_FILL);
                 break;
-            case DBL_CLICK_ACTION_HIDE:
+            case DOUBLE_CLICK_ACTION_HIDE:
                 if (CLIENT_CAN_HIDE_WINDOW (c))
                 {
                     clientWithdraw (c, c->win_workspace, TRUE);
@@ -2674,7 +2679,7 @@ set_reload (GObject * obj, GdkEvent * ev, gpointer data)
 }
 
 static gboolean
-dbl_click_time_cb (GObject * obj, GdkEvent * ev, gpointer data)
+double_click_time_cb (GObject * obj, GdkEvent * ev, gpointer data)
 {
     DisplayInfo *display_info;
     GValue tmp_val = { 0, };
@@ -2685,7 +2690,25 @@ dbl_click_time_cb (GObject * obj, GdkEvent * ev, gpointer data)
     g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
     {
-        display_info->dbl_click_time = abs (g_value_get_int (&tmp_val));
+        display_info->double_click_time = abs (g_value_get_int (&tmp_val));
+    }
+
+    return (TRUE);
+}
+
+static gboolean
+double_click_distance_cb (GObject * obj, GdkEvent * ev, gpointer data)
+{
+    DisplayInfo *display_info;
+    GValue tmp_val = { 0, };
+
+    display_info = (DisplayInfo *) data;
+    g_return_val_if_fail (display_info, TRUE);
+
+    g_value_init (&tmp_val, G_TYPE_INT);
+    if (gdk_setting_get ("gtk-double-click-distance", &tmp_val))
+    {
+        display_info->double_click_distance = abs (g_value_get_int (&tmp_val));
     }
 
     return (TRUE);
@@ -2815,7 +2838,9 @@ initGtkCallbacks (ScreenInfo *screen_info)
         g_signal_connect (settings, "notify::gtk-font-name",
             G_CALLBACK (set_reload), (gpointer) (screen_info->display_info));
         g_signal_connect (settings, "notify::gtk-double-click-time",
-            G_CALLBACK (dbl_click_time_cb), (gpointer) (screen_info->display_info));
+            G_CALLBACK (double_click_time_cb), (gpointer) (screen_info->display_info));
+        g_signal_connect (settings, "notify::gtk-double-click-distance",
+            G_CALLBACK (double_click_distance_cb), (gpointer) (screen_info->display_info));
         g_signal_connect_after (settings, "notify::gtk-xft-antialias",
             G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
         g_signal_connect_after (settings, "notify::gtk-xft-dpi",

@@ -439,11 +439,22 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     colsym[XPM_COLOR_SYMBOL_SIZE].name = NULL;
     colsym[XPM_COLOR_SYMBOL_SIZE].value = NULL;
 
-    display_info->dbl_click_time = abs (getIntValue ("dbl_click_time", rc));
+    /* Standard double click time ... */
+    display_info->double_click_time = abs (getIntValue ("double_click_time", rc));
     g_value_init (&tmp_val, G_TYPE_INT);
     if (gdk_setting_get ("gtk-double-click-time", &tmp_val))
     {
-        display_info->dbl_click_time = abs (g_value_get_int (&tmp_val));
+        display_info->double_click_time = abs (g_value_get_int (&tmp_val));
+        g_value_unset (&tmp_val);
+    }
+
+    /* ... and distance */
+    display_info->double_click_distance = abs (getIntValue ("double_click_distance", rc));
+    g_value_init (&tmp_val, G_TYPE_INT);
+    if (gdk_setting_get ("gtk-double-click-distance", &tmp_val))
+    {
+        display_info->double_click_distance = abs (g_value_get_int (&tmp_val));
+        g_value_unset (&tmp_val);
     }
 
     screen_info->font_height = 0;
@@ -668,7 +679,8 @@ loadSettings (ScreenInfo *screen_info)
         {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
-        {"dbl_click_time", NULL, G_TYPE_INT, TRUE},
+        {"double_click_time", NULL, G_TYPE_INT, TRUE},
+        {"double_click_distance", NULL, G_TYPE_INT, TRUE},
         {"double_click_action", NULL, G_TYPE_STRING, TRUE},
         {"easy_click", NULL, G_TYPE_STRING, TRUE},
         {"focus_hint", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -843,23 +855,23 @@ loadSettings (ScreenInfo *screen_info)
     value = getStringValue ("double_click_action", rc);
     if (!g_ascii_strcasecmp ("shade", value))
     {
-        screen_info->params->double_click_action = DBL_CLICK_ACTION_SHADE;
+        screen_info->params->double_click_action = DOUBLE_CLICK_ACTION_SHADE;
     }
     else if (!g_ascii_strcasecmp ("hide", value))
     {
-        screen_info->params->double_click_action = DBL_CLICK_ACTION_HIDE;
+        screen_info->params->double_click_action = DOUBLE_CLICK_ACTION_HIDE;
     }
     else if (!g_ascii_strcasecmp ("maximize", value))
     {
-        screen_info->params->double_click_action = DBL_CLICK_ACTION_MAXIMIZE;
+        screen_info->params->double_click_action = DOUBLE_CLICK_ACTION_MAXIMIZE;
     }
     else if (!g_ascii_strcasecmp ("fill", value))
     {
-        screen_info->params->double_click_action = DBL_CLICK_ACTION_FILL;
+        screen_info->params->double_click_action = DOUBLE_CLICK_ACTION_FILL;
     }
     else
     {
-        screen_info->params->double_click_action = DBL_CLICK_ACTION_NONE;
+        screen_info->params->double_click_action = DOUBLE_CLICK_ACTION_NONE;
     }
 
     if (screen_info->workspace_count == 0)
@@ -1173,7 +1185,8 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 }
                 else if ((!strcmp (name, "button_offset"))
                       || (!strcmp (name, "button_spacing"))
-                      || (!strcmp (name, "dbl_click_time"))
+                      || (!strcmp (name, "double_click_time"))
+                      || (!strcmp (name, "double_DOUBLE_CLICKclick_distance"))
                       || (!strcmp (name, "maximized_offset"))
                       || (!strcmp (name, "shadow_delta_height"))
                       || (!strcmp (name, "shadow_delta_width"))
