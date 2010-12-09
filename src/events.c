@@ -123,19 +123,22 @@ struct _XfwmButtonClickData
     guint button;
     guint clicks;
     guint timeout;
-    gint x;
-    gint y;
-    gint xcurrent;
-    gint ycurrent;
-    gint distance;
+    gint  x0;
+    gint  y0;
+    guint t0;
+    gint  xcurrent;
+    gint  ycurrent;
+    guint tcurrent;
+    gint  double_click_time;
+    gint  double_click_distance;
     gboolean allow_double_click;
 };
 
 static gboolean
-typeOfClick_break (gpointer data)
+typeOfClick_end (gpointer data)
 {
     XfwmButtonClickData *passdata;
-    TRACE ("Double click timeout\n");
+    TRACE ("typeOfClick_end(): Exit typeOfClick() event loop");
 
     passdata = (XfwmButtonClickData *) data;
     if (passdata->timeout)
@@ -154,6 +157,7 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
 {
     XfwmButtonClickData *passdata;
     eventFilterStatus status;
+    guint32 timestamp;
     gboolean keep_going;
 
     keep_going = TRUE;
@@ -161,7 +165,9 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
     status = EVENT_FILTER_STOP;
 
     /* Update the display time */
-    myDisplayUpdateCurrentTime (passdata->display_info, xevent);
+    timestamp = myDisplayUpdateCurrentTime (passdata->display_info, xevent);
+    if (timestamp)
+        passdata->tcurrent = timestamp;
 
     if ((xevent->type == ButtonRelease) || (xevent->type == ButtonPress))
     {
@@ -196,12 +202,16 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
         status = EVENT_FILTER_CONTINUE;
     }
 
-    if ((ABS (passdata->x - passdata->xcurrent) > passdata->distance) ||
-        (ABS (passdata->y - passdata->ycurrent) > passdata->distance) ||
+    if ((ABS (passdata->x0 - passdata->xcurrent) > passdata->double_click_distance) ||
+        (ABS (passdata->y0 - passdata->ycurrent) > passdata->double_click_distance) ||
+        (((gint) passdata->tcurrent - (gint) passdata->t0) > passdata->double_click_time) ||
         (!keep_going))
     {
-        TRACE ("event loop now finished");
-        typeOfClick_break (data);
+        TRACE ("click type=%u", passdata->clicks);
+        TRACE ("time=%ims (timeout=%ims)", (gint) passdata->tcurrent - (gint) passdata->t0, passdata->double_click_time);
+        TRACE ("dist x=%i (max=%i)", ABS (passdata->x0 - passdata->xcurrent), passdata->double_click_distance);
+        TRACE ("dist y=%i (max=%i)", ABS (passdata->y0 - passdata->ycurrent), passdata->double_click_distance);
+        typeOfClick_end (data);
     }
 
     return status;
@@ -233,18 +243,21 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.display_info = display_info;
     passdata.button = ev->xbutton.button;
     passdata.w = w;
-    passdata.x = ev->xbutton.x_root;
-    passdata.y = ev->xbutton.y_root;
-    passdata.xcurrent = passdata.x;
-    passdata.ycurrent = passdata.y;
+    passdata.x0 = ev->xbutton.x_root;
+    passdata.y0 = ev->xbutton.y_root;
+    passdata.t0 = ev->xbutton.time;
+    passdata.xcurrent = passdata.x0;
+    passdata.ycurrent = passdata.y0;
+    passdata.tcurrent = passdata.t0;
     passdata.clicks = 1;
     passdata.allow_double_click = allow_double_click;
-    passdata.distance = display_info->double_click_distance;
+    passdata.double_click_time = display_info->double_click_time;
+    passdata.double_click_distance = display_info->double_click_distance;
     TRACE ("Double click time= %i, distance=%i\n", display_info->double_click_time,
                                                    display_info->double_click_distance);
-    passdata.timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
+    passdata.timeout =  g_timeout_add_full (G_PRIORITY_DEFAULT,
                                            display_info->double_click_time,
-                                           (GSourceFunc) typeOfClick_break,
+                                           (GSourceFunc) typeOfClick_end,
                                            (gpointer) &passdata, NULL);
 
     TRACE ("entering typeOfClick loop");
