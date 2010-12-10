@@ -255,7 +255,8 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.double_click_distance = display_info->double_click_distance;
     TRACE ("Double click time= %i, distance=%i\n", display_info->double_click_time,
                                                    display_info->double_click_distance);
-    passdata.timeout =  g_timeout_add_full (G_PRIORITY_DEFAULT,
+    /* Use G_PRIORITY_DEFAULT_IDLE to make sure the timeout occurs after possible events */
+    passdata.timeout =  g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE,
                                            display_info->double_click_time,
                                            (GSourceFunc) typeOfClick_end,
                                            (gpointer) &passdata, NULL);
