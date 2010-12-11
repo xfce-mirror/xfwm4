@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-05 21:35+0900\n"
-"PO-Revision-Date: 2010-11-05 21:35+0900\n"
+"POT-Creation-Date: 2010-12-12 00:16+0900\n"
+"PO-Revision-Date: 2010-12-12 00:16+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -60,13 +60,13 @@ msgstr "バージョン情報"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -612,33 +612,33 @@ msgstr "最後のワークスペースを削除"
 msgid "Delete active workspace"
 msgstr "現在のワークスペースを削除"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "テーマ"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "動作"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "ショートカットキー"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf の初期化に失敗しました。理由: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "設定ダイアログボックスの生成ができませんでした。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "デフォルトに戻す"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -869,15 +869,48 @@ msgid "_Number of workspaces:"
 msgstr "ワークスペースの数(_N):"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (ホスト %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: セグメンテーション違反です"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr "バックグラウンドに fork する"
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr "バックグラウンドに fork する (未サポート)"
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr "合成処理モードを設定する"
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr "合成処理モードを設定する (未サポート)"
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr "既存のウィンドウマネージャを置き換える"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "バージョン情報を表示して終了する"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr "[引数...]"
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr "\"%s --help\" と入力すると使用法が表示されます。"
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -971,7 +1004,7 @@ msgstr "終了(_Q)"
 msgid "Restart"
 msgstr "再起動"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインタを取得できませんでした\n"
