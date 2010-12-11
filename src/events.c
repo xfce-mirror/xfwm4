@@ -555,7 +555,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
         {
             clientLower (c, None);
         }
-        else if (tclick != XFWM_BUTTON_UNDEFINED)
+        else if (tclick == XFWM_BUTTON_DRAG)
         {
             clientMove (c, (XEvent *) ev);
         }
@@ -589,7 +589,7 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
                     break;
             }
         }
-        else if (tclick != XFWM_BUTTON_UNDEFINED)
+        else if (tclick == XFWM_BUTTON_DRAG)
         {
             clientResize (c, part, (XEvent *) ev);
         }
