@@ -542,6 +542,7 @@ static void
 edgeButton (Client * c, int part, XButtonEvent * ev)
 {
     ScreenInfo *screen_info;
+    XfwmButtonClickType tclick;
     guint state;
 
     screen_info = c->screen_info;
@@ -549,8 +550,6 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
 
     if (ev->button == Button2)
     {
-        XfwmButtonClickType tclick;
-
         tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, FALSE);
         if (tclick == XFWM_BUTTON_CLICK)
         {
@@ -572,7 +571,28 @@ edgeButton (Client * c, int part, XButtonEvent * ev)
             }
             clientRaise (c, None);
         }
-        clientResize (c, part, (XEvent *) ev);
+        tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, TRUE);
+        if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
+        {
+            switch (part)
+            {
+                case CORNER_COUNT + SIDE_LEFT:
+                case CORNER_COUNT + SIDE_RIGHT:
+                    clientFill(c, CLIENT_FILL_HORIZ);
+                    break;
+                case CORNER_COUNT + SIDE_TOP:
+                case CORNER_COUNT + SIDE_BOTTOM:
+                    clientFill(c, CLIENT_FILL_VERT);
+                    break;
+                default:
+                    clientFill(c, CLIENT_FILL);
+                    break;
+            }
+        }
+        else if (tclick != XFWM_BUTTON_UNDEFINED)
+        {
+            clientResize (c, part, (XEvent *) ev);
+        }
     }
 }
 
