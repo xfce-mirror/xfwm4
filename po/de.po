@@ -2,18 +2,19 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Moritz Heiber <moe@xfce.org>, 2003.
-# Fabian Nowak <timystery@arcor.de>, 2006, 2007, 2008.
+# Fabian Nowak <timystery@arcor.de>, 2006-2008,2010.
 # Nico Schümann <nico@prog.nico22.de>, 2007.
 # Jannis Pohlmann <jannis@xfce.org>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-26 17:10+0000\n"
+"POT-Creation-Date: 2010-12-12 18:32+0100\n"
 "PO-Revision-Date: 2008-10-19 12:54+0200\n"
-"Last-Translator: Jannis Pohlmann <jannis@xfce.org>\n"
+"Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -65,7 +66,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Geben Sie »%s -- help« ein, um eine vollständige Liste verfügbarer Befehlszeilenoptionen zu sehen.\n"
+"Geben Sie »%s -- help« ein, um eine vollständige Liste verfügbarer "
+"Befehlszeilenoptionen zu sehen.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -95,7 +97,8 @@ msgstr "Fensterverwaltung"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Fine-tune window behaviour and effects"
-msgstr "Nehmen Sie Feineinstellungen am Fensterverhalten und den Fenstereffekten vor"
+msgstr ""
+"Nehmen Sie Feineinstellungen am Fensterverhalten und den Fenstereffekten vor"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -105,7 +108,7 @@ msgstr "Feineinstellungen des Fensterverhaltens"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Set number and names of workspaces"
-msgstr "Definiere Anzahl und Namen von Arbeitsflächen"
+msgstr "Stellen Sie Anzahl und Namen von Arbeitsflächen ein"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -196,7 +199,7 @@ msgstr "_Weitere Optionen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "_Bringe Fenster in den Vordergrund, wenn sie den Fokus erhalten"
+msgstr "Fenster in den Vordergrund _bringen, wenn sie den Fokus erhalten"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
@@ -276,7 +279,7 @@ msgstr "Anheften"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Aktion, die beim Doppelklicken auf die Titelleiste ausgeführt wird"
+msgstr "Aktion, die bei Doppelklick auf die Titelleiste ausgeführt wird"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
@@ -288,11 +291,13 @@ msgstr "Titelleiste"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "A_rbeitsfläche wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
+msgstr ""
+"A_rbeitsfläche wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Ar_beitsfläche wechseln, wenn der Mauszeiger den Bildschirmrand erreicht"
+msgstr ""
+"Ar_beitsfläche wechseln, wenn der Mauszeiger den Bildschirmrand erreicht"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
@@ -624,8 +629,12 @@ msgid "Reset to Defaults"
 msgstr "Standardwerte setzen"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Dies wird alle Tastenkürzel auf ihre Standardwerte zurücksetzen. Möchten Sie dies wirklich?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Dies wird alle Tastenkürzel auf ihre Standardwerte zurücksetzen. Möchten Sie "
+"dies wirklich?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -714,7 +723,8 @@ msgstr "Deckkraft bei _Größenänderung:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Ur_sprüngliche Größe maximierter Fenster nach Verschieben wiederherstellen"
+msgstr ""
+"Ur_sprüngliche Größe maximierter Fenster nach Verschieben wiederherstellen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -738,11 +748,13 @@ msgstr "Un_terhalb des Mauszeigers"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr "_Verwende Widerstand an den Kanten, statt die Fenster einrasten zu lassen"
+msgstr "_Widerstand an den Kanten, statt die Fenster einrasten zu lassen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "B_etätigung des Mausrads über der Arbeitsoberfläche zum Wechseln der Arbeitsfläche"
+msgstr ""
+"B_etätigung des Mausrads über der Arbeitsoberfläche zum Wechseln der "
+"Arbeitsfläche"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -754,7 +766,9 @@ msgstr "A_rbeitsflächen in Abhängigkeit der derzeitigen Anordnung umbrechen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Arbe_itsflächen umbrechen, wenn die erste oder letzte Arbeitsfläche erreicht wird."
+msgstr ""
+"Arbe_itsflächen umbrechen, wenn die erste oder letzte Arbeitsfläche erreicht "
+"wird."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -766,7 +780,8 @@ msgstr "F_enster auf die aktuelle Arbeitsfläche verschieben"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Rahmen um die ausgewählten Fenster zeichnen während des Fensterwechsels"
+msgstr ""
+"_Rahmen um die ausgewählten Fenster zeichnen während des Fensterwechsels"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
@@ -792,13 +807,17 @@ msgstr "F_enster hervorbringen, wenn eine beliebige Maustaste gedrückt wird"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Vorige Arbeitsfläche merken und wieder verwenden beim Wechseln mittels Tastenkürzeln"
+msgstr ""
+"_Vorige Arbeitsfläche merken und wieder verwenden beim Wechseln mittels "
+"Tastenkürzeln"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "F_enster, die nicht im Pager oder nicht in der Taskleiste erscheinen sollen, auch wirklich übergehen."
+msgstr ""
+"F_enster, die nicht im Pager oder nicht in der Taskleiste erscheinen sollen, "
+"auch wirklich übergehen."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
@@ -817,8 +836,11 @@ msgid "Change workspace name"
 msgstr "Namen der Arbeitsflächen ändern"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Hiermit kann man Ränder definieren, über die hinaus keine Fenster gesetzt werden"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Hiermit kann man Ränder definieren, über die hinaus keine Fenster gesetzt "
+"werden"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -829,7 +851,7 @@ msgid "_Number of workspaces:"
 msgstr "_Anzahl der Arbeitsflächen:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (auf %s)"
@@ -841,23 +863,23 @@ msgstr "%s: Speicherzugriffsfehler"
 
 #: ../src/main.c:534
 msgid "Fork to the background"
-msgstr ""
+msgstr "Prozess in den Hintergrund abspalten"
 
 #: ../src/main.c:536
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Prozess in den Hintergrund abspalten (nicht unterstützt)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Compositor-Modus einstellen"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Compositor-Modus einstellen (nicht unterstützt)"
 
 #: ../src/main.c:543
 msgid "Replace the existing window manager"
-msgstr "Ersetze den existierenden Fenstermanager"
+msgstr "Existierenden Fenstermanager ersetzen"
 
 #: ../src/main.c:544
 msgid "Print version information and exit"
@@ -868,7 +890,7 @@ msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTE…]"
 
 #: ../src/main.c:559
-#, c-format, fuzzy
+#, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Geben Sie »%s --help« für Nutzungsinformationen an."
 
@@ -903,7 +925,7 @@ msgstr "_Größe ändern"
 #. --------------------------------------------------------
 #: ../src/menu.c:52
 msgid "Always on Top"
-msgstr "Immer zuoberst"
+msgstr "Immer oberhalb"
 
 #: ../src/menu.c:53
 msgid "Same as Other Windows"
@@ -962,9 +984,9 @@ msgstr "_Beenden"
 
 #: ../src/menu.c:72
 msgid "Restart"
-msgstr "Neu starten"
+msgstr "Neustarten"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu konnte die Position des Mauszeigers nicht feststellen\n"
@@ -977,7 +999,9 @@ msgstr "%s: Kann Farbe »%s« nicht allokieren\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: Kann die Farbe nicht allokieren: GValue für die Farbe ist nicht vom Typ String"
+msgstr ""
+"%s: Kann die Farbe nicht anlegen: GValue für die Farbe ist nicht vom Typ "
+"String"
 
 #: ../src/settings.c:282
 #, c-format
@@ -987,7 +1011,8 @@ msgstr "%s: Kann Farbe »%s« nicht einlesen\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Kann Farbe nicht einlesen: GValue der Farbe ist nicht vom Typ String"
+msgstr ""
+"%s: Kann Farbe nicht einlesen: GValue der Farbe ist nicht vom Typ String"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -1059,7 +1084,8 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Fenster in der Mitte platzieren"
 
-#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgid ""
+#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr ""
 #~ "Fenster, die nicht im Pager oder nicht in der Taskleiste\n"
 #~ "erscheinen sollen, auch wirklich übergehen."
@@ -1092,18 +1118,24 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgstr "_Rahmen bei maximierten Fenstern nicht anzeigen"
 
 #~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "Ur_sprüngliche Größe maximierter Fenster nach Verschieben wiederherstellen"
+#~ msgstr ""
+#~ "Ur_sprüngliche Größe maximierter Fenster nach Verschieben wiederherstellen"
 
 #~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "_Verwende Widerstand an den Kanten, statt die Fenster einrasten zu lassen"
+#~ msgstr ""
+#~ "_Verwende Widerstand an den Kanten, statt die Fenster einrasten zu lassen"
 
 #~ msgid "Accessibility"
 #~ msgstr "Z_ugreifbarkeit"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr "Arbeitsflächen wechseln durch Betätigung des Mausrads auf der Arbeitsoberfläche"
+#~ msgstr ""
+#~ "Arbeitsflächen wechseln durch Betätigung des Mausrads auf der "
+#~ "Arbeitsoberfläche"
 
-#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#~ msgid ""
+#~ "Remember and recall previous workspace when switching via keyboard "
+#~ "shortcuts"
 #~ msgstr ""
 #~ "_Vorige Arbeitsfläche merken und wieder verwenden beim\n"
 #~ "Wechseln mittels Tastenkürzeln"
@@ -1117,7 +1149,8 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ "erreicht wird."
 
 #~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "M_inimale Größe, unterhalb derer Fenster intelligent platziert werden:"
+#~ msgstr ""
+#~ "M_inimale Größe, unterhalb derer Fenster intelligent platziert werden:"
 
 #~ msgid "Size|Small"
 #~ msgstr "Klein"
@@ -1176,7 +1209,9 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgstr "Fensterverwaltung-Tweaks"
 
 #~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr "Diese Einstellungen können mit dem derzeitigen Fensterverwaltung nicht arbeiten (%s)"
+#~ msgstr ""
+#~ "Diese Einstellungen können mit dem derzeitigen Fensterverwaltung nicht "
+#~ "arbeiten (%s)"
 
 #~ msgid "Change name"
 #~ msgstr "Namen ändern"
@@ -1311,10 +1346,12 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgstr "<b>Arbeitsflächen wechseln</b>"
 
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Ar_beitsfläche wechseln, wenn der Mauszeiger den Bildschirmrand erreicht"
+#~ msgstr ""
+#~ "Ar_beitsfläche wechseln, wenn der Mauszeiger den Bildschirmrand erreicht"
 
 #~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "A_rbeitsfläche wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
+#~ msgstr ""
+#~ "A_rbeitsfläche wechseln, wenn ein Fenster aus dem Sichtfeld gezogen wird"
 
 #~ msgid "Edge Resistance :"
 #~ msgstr "W_iderstand an den Kanten:"
@@ -1384,7 +1421,9 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
-#~ msgstr "Dieses Tastenkürzel wird bereits für den Befehl <b>%s</b> verwendet. Welche Aktion soll mit ihm zukünftig ausgeführt werden?"
+#~ msgstr ""
+#~ "Dieses Tastenkürzel wird bereits für den Befehl <b>%s</b> verwendet. "
+#~ "Welche Aktion soll mit ihm zukünftig ausgeführt werden?"
 
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Tastenkürzel erstellen für:"
@@ -1401,8 +1440,12 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Erweiterte Fensterverwaltungseinstellungen"
 
-#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
-#~ msgstr "Dieses Tastenkürzel wird schon von <b>einer anderen Aktion der Fensterverwaltung</b> verwendet. Welche Aktion soll nun verwendet werden?"
+#~ msgid ""
+#~ "This shortcut is already being used by <b>another window manager action</"
+#~ "b>. Which action do you want to use?"
+#~ msgstr ""
+#~ "Dieses Tastenkürzel wird schon von <b>einer anderen Aktion der "
+#~ "Fensterverwaltung</b> verwendet. Welche Aktion soll nun verwendet werden?"
 
 #~ msgid "Use %s"
 #~ msgstr "Verwende %s"
@@ -1413,8 +1456,12 @@ msgstr "Kann Hilfsdialog nicht starten: %s\n"
 #~ msgid "Keep %s"
 #~ msgstr "Behalte %s"
 
-#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
-#~ msgstr "Dieses Tastenkürzel wird bereits für eine <b>Fensterverwaltungaktion</b> verwendet. Welche Aktion soll mit ihm zukünftig ausgeführt werden?"
+#~ msgid ""
+#~ "The shortcut is already being used by a <b>window manager action</b>. "
+#~ "Which action do you want to use?"
+#~ msgstr ""
+#~ "Dieses Tastenkürzel wird bereits für eine <b>Fensterverwaltungaktion</b> "
+#~ "verwendet. Welche Aktion soll mit ihm zukünftig ausgeführt werden?"
 
 #~ msgid "Conflicting actions for %s"
 #~ msgstr "Im Konflikt stehende Aktionen für %s"
