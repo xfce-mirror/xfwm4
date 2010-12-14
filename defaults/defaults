@@ -26,6 +26,7 @@ move_opacity=100
 placement_mode=center
 placement_ratio=20
 popup_opacity=100
+mousewheel_rollup=true
 prevent_focus_stealing=false
 raise_delay=250
 raise_on_click=true

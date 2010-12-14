@@ -697,6 +697,7 @@ loadSettings (ScreenInfo *screen_info)
         {"placement_ratio", NULL, G_TYPE_INT, TRUE},
         {"placement_mode", NULL, G_TYPE_STRING, TRUE},
         {"popup_opacity", NULL, G_TYPE_INT, TRUE},
+        {"mousewheel_rollup", NULL, G_TYPE_BOOLEAN, TRUE},
         {"prevent_focus_stealing", NULL, G_TYPE_BOOLEAN, TRUE},
         {"raise_delay", NULL, G_TYPE_INT, TRUE},
         {"raise_on_click", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -771,12 +772,14 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("focus_hint", rc);
     screen_info->params->focus_new =
         getBoolValue ("focus_new", rc);
-    screen_info->params->raise_on_focus =
-        getBoolValue ("raise_on_focus", rc);
+    screen_info->params->mousewheel_rollup =
+        getBoolValue ("mousewheel_rollup", rc);
     screen_info->params->prevent_focus_stealing =
         getBoolValue ("prevent_focus_stealing", rc);
     screen_info->params->raise_delay =
         getIntValue ("raise_delay", rc);
+    screen_info->params->raise_on_focus =
+        getBoolValue ("raise_on_focus", rc);
     screen_info->params->focus_delay =
         getIntValue ("focus_delay", rc);
     screen_info->params->raise_on_click =
@@ -1285,6 +1288,27 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     screen_info->params->focus_hint = g_value_get_boolean (value);
                 }
+                else if (!strcmp (name, "mousewheel_rollup"))
+                {
+                    screen_info->params->mousewheel_rollup = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "prevent_focus_stealing"))
+                {
+                    screen_info->params->prevent_focus_stealing = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "raise_with_any_button"))
+                {
+                    screen_info->params->raise_with_any_button = g_value_get_boolean (value);
+                    update_grabs (screen_info);
+                }
+                else if (!strcmp (name, "restore_on_move"))
+                {
+                    screen_info->params->restore_on_move = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "scroll_workspaces"))
+                {
+                    screen_info->params->scroll_workspaces = g_value_get_boolean (value);
+                }
                 else if (!strcmp (name, "show_dock_shadow"))
                 {
                     screen_info->params->show_dock_shadow = g_value_get_boolean (value);
@@ -1303,23 +1327,6 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "snap_resist"))
                 {
                     screen_info->params->snap_resist = g_value_get_boolean (value);
-                }
-                else if (!strcmp (name, "prevent_focus_stealing"))
-                {
-                    screen_info->params->prevent_focus_stealing = g_value_get_boolean (value);
-                }
-                else if (!strcmp (name, "raise_with_any_button"))
-                {
-                    screen_info->params->raise_with_any_button = g_value_get_boolean (value);
-                    update_grabs (screen_info);
-                }
-                else if (!strcmp (name, "restore_on_move"))
-                {
-                    screen_info->params->restore_on_move = g_value_get_boolean (value);
-                }
-                else if (!strcmp (name, "scroll_workspaces"))
-                {
-                    screen_info->params->scroll_workspaces = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "toggle_workspaces"))
                 {

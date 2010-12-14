@@ -789,7 +789,10 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
         }
         else if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
-            clientShade (c);
+            if (screen_info->params->mousewheel_rollup)
+            {
+                clientShade (c);
+            }
         }
     }
     else if (ev->button == Button5)
@@ -801,7 +804,10 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
         }
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
-            clientUnshade (c);
+            if (screen_info->params->mousewheel_rollup)
+            {
+                clientUnshade (c);
+            }
         }
     }
     else if (ev->button == Button6)
