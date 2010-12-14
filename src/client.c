@@ -724,7 +724,7 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
          && CONSTRAINED_WINDOW (c)
          && !((c->gravity == StaticGravity) && (c->x == 0) && (c->y == 0)))
     {
-        clientConstrainPos (c, CFG_KEEP_VISIBLE);
+        clientConstrainPos (c, flags & CFG_KEEP_VISIBLE);
 
         if (c->x != px)
         {
@@ -3522,7 +3522,7 @@ clientScreenResize(ScreenInfo *screen_info)
         {
              wc.x = c->x;
              wc.y = c->y;
-             clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST | CFG_KEEP_VISIBLE);
+             clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST);
         }
     }
 
