@@ -313,7 +313,9 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
         xfwmPixmapInit (screen_info, &screen_info->top[i][INACTIVE]);
     }
 
+    screen_info->monitors_index = NULL;
     myScreenInvalidateMonitorCache (screen_info);
+    myScreenRebuildMonitorIndex (screen_info);
 
     return (screen_info);
 }
@@ -362,6 +364,12 @@ myScreenClose (ScreenInfo *screen_info)
 
     g_list_free (screen_info->windows);
     screen_info->windows = NULL;
+
+    if (screen_info->monitors_index)
+    {
+        g_array_free (screen_info->monitors_index, TRUE);
+        screen_info->monitors_index = NULL;
+    }
 
     return (screen_info);
 }
@@ -611,14 +619,83 @@ myScreenComputeSize (ScreenInfo *screen_info)
     return changed;
 }
 
+gint
+myScreenGetNumMonitors (ScreenInfo *screen_info)
+{
+    g_return_val_if_fail (screen_info != NULL, 0);
+    g_return_val_if_fail (screen_info->monitors_index != NULL, 0);
+    TRACE ("entering myScreenGetNMonitors");
+
+    return (screen_info->monitors_index->len);
+}
+
+gint
+myScreenGetMonitorIndex (ScreenInfo *screen_info, gint idx)
+{
+    g_return_val_if_fail (screen_info != NULL, 0);
+    g_return_val_if_fail (screen_info->monitors_index != NULL, 0);
+    TRACE ("entering myScreenGetMonitorIndex");
+
+    return (g_array_index (screen_info->monitors_index, gint, idx));
+}
+
+gboolean
+myScreenRebuildMonitorIndex (ScreenInfo *screen_info)
+{
+    gint i, j, num_monitors, previous_num_monitors;
+    GdkRectangle monitor, previous;
+    gboolean cloned;
+
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+    TRACE ("entering myScreenRebuildMonitorIndex");
+
+    previous_num_monitors = screen_info->num_monitors;
+    screen_info->num_monitors = 0;
+
+    if (screen_info->monitors_index)
+    {
+        g_array_free (screen_info->monitors_index, TRUE);
+    }
+    screen_info->monitors_index = g_array_new (FALSE, TRUE, sizeof (guint));
+
+    /* GDK already sorts monitors for us, for "cloned" monitors, sort
+     * the bigger ones first (giving preference to taller monitors
+     * over wider monitors)
+     */
+    num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+    for (i = 0; i < num_monitors; i++)
+    {
+        gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        cloned = FALSE;
+        for (j = 0; j < (gint) screen_info->monitors_index->len; j++)
+        {
+            gdk_screen_get_monitor_geometry (screen_info->gscr, j, &previous);
+            if ((previous.x == monitor.x) && (previous.y == monitor.y))
+            {
+                cloned = TRUE;
+            }
+        }
+        if (!cloned)
+        {
+            screen_info->num_monitors++;
+            g_array_append_val (screen_info->monitors_index , i);
+        }
+    }
+
+    TRACE ("Physical monitor reported.: %i", num_monitors);
+    TRACE ("Logical views found.......: %i", screen_info->num_monitors);
+
+    return (screen_info->num_monitors != previous_num_monitors);
+}
+
 void
 myScreenInvalidateMonitorCache (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering myScreenInvalidateMonitorCache");
 
-    screen_info->cache_monitor.x = G_MAXINT;
-    screen_info->cache_monitor.y = G_MAXINT;
+    screen_info->cache_monitor.x = -1;
+    screen_info->cache_monitor.y = -1;
     screen_info->cache_monitor.width = 0;
     screen_info->cache_monitor.height = 0;
 }
@@ -648,11 +725,14 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
     }
 
     min_distsquare = G_MAXUINT32;
-    num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+    num_monitors = myScreenGetNumMonitors (screen_info);
 
     for (i = 0; i < num_monitors; i++)
     {
-        gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        gint monitor_index;
+
+        monitor_index = myScreenGetMonitorIndex (screen_info, i);
+        gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_index, &monitor);
 
         if ((x >= monitor.x) && (x < (monitor.x + monitor.width)) &&
             (y >= monitor.y) && (y < (monitor.y + monitor.height)))

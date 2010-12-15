@@ -402,10 +402,13 @@ tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
     tabwin->client_list = client_list;
     tabwin->selected = selected;
     tabwin->tabwin_list = NULL;
-    num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+    num_monitors = myScreenGetNumMonitors (screen_info);
     for (i = 0; i < num_monitors; i++)
     {
-        tabwin->tabwin_list  = g_list_append (tabwin->tabwin_list, tabwinCreateWidget (tabwin, screen_info, i));
+        gint monitor_index;
+
+        monitor_index = myScreenGetMonitorIndex(screen_info, i);
+        tabwin->tabwin_list  = g_list_append (tabwin->tabwin_list, tabwinCreateWidget (tabwin, screen_info, monitor_index));
     }
 
     return tabwin;

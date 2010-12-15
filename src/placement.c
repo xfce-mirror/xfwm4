@@ -664,7 +664,7 @@ clientInitPosition (Client * c)
     msy = 0;
     position = (c->size->flags & (PPosition | USPosition));
 
-    n_monitors = gdk_screen_get_n_monitors (c->screen_info->gscr);
+    n_monitors = myScreenGetNumMonitors (c->screen_info);
     if ((n_monitors > 1) || (screen_info->params->placement_mode == PLACE_MOUSE))
     {
         getMouseXY (screen_info, screen_info->xroot, &msx, &msy);

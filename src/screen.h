@@ -118,6 +118,8 @@ struct _ScreenInfo
 
     /* Monitor search caching */
     GdkRectangle cache_monitor;
+    gint num_monitors;
+    GArray *monitors_index;
 
     /* Workspace definitions */
     guint workspace_count;
@@ -214,6 +216,10 @@ Client                  *myScreenGetClientFromWindow            (ScreenInfo *,
                                                                  Window,
                                                                  unsigned short);
 gboolean                 myScreenComputeSize                    (ScreenInfo *);
+gint                     myScreenGetNumMonitors                 (ScreenInfo *);
+gint                     myScreenGetMonitorIndex                (ScreenInfo *,
+                                                                 gint);
+gboolean                 myScreenRebuildMonitorIndex            (ScreenInfo *);
 void                     myScreenInvalidateMonitorCache         (ScreenInfo *);
 void                     myScreenFindMonitorAtPoint             (ScreenInfo *,
                                                                  gint,

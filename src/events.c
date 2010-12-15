@@ -2785,6 +2785,10 @@ refresh_font_cb (GObject * obj, GdkEvent * ev, gpointer data)
     return (TRUE);
 }
 
+/*
+ * The size-changed signal is emitted when the pixel width or height
+ * of a screen changes.
+ */
 static void
 size_changed_cb(GdkScreen *gscreen, gpointer data)
 {
@@ -2808,45 +2812,76 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
         return;
     }
 
+    size_changed = myScreenComputeSize (screen_info);
+    if (size_changed)
+    {
+        myScreenInvalidateMonitorCache (screen_info);
+
+        setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
+                        screen_info->width, screen_info->height, screen_info->margins);
+
+        placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
+
+        clientScreenResize (screen_info, FALSE);
+
+        compositorUpdateScreenSize (screen_info);
+    }
+}
+
+/*
+ * The monitors-changed signal is emitted when the number, size or
+ * position of the monitors attached to the screen change.
+ */
+static void
+monitors_changed_cb(GdkScreen *gscreen, gpointer data)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gint previous_num_monitors;
+    gboolean size_changed;
+
+    TRACE ("entering monitors_changed_cb");
+
+    screen_info = (ScreenInfo *) data;
+    g_return_if_fail (screen_info);
+    display_info = screen_info->display_info;
+
+    if (gdk_screen_get_n_monitors (screen_info->gscr) == 0)
+    {
+        /*
+         * Recent Xorg drivers disable the output when the lid
+         * is closed, leaving no active monitor, in that case simply
+         * ignore the event to avoid messing with windows' positions.
+         */
+        return;
+    }
+
     /*
      * We have added/removed a monitor or even changed the layout,
      * the cache for monitor position we use in our screen structure
      * is not valid anymore and potentially refers to a monitor that
      * was just removed, so invalidate it.
      */
-    screen_info->cache_monitor.x = -1;
-    screen_info->cache_monitor.y = -1;
-    screen_info->cache_monitor.width = 0;
-    screen_info->cache_monitor.height = 0;
-
+    previous_num_monitors = screen_info->num_monitors;
+    myScreenInvalidateMonitorCache (screen_info);
+    myScreenRebuildMonitorIndex (screen_info);
     size_changed = myScreenComputeSize (screen_info);
-    setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
-                    screen_info->width, screen_info->height, screen_info->margins);
-    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
-    clientScreenResize (screen_info);
+
+    if (size_changed || (screen_info->num_monitors != previous_num_monitors))
+    {
+
+        setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
+                        screen_info->width, screen_info->height, screen_info->margins);
+
+        placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
+
+        clientScreenResize (screen_info, (screen_info->num_monitors < previous_num_monitors));
+    }
 
     if (size_changed)
     {
         compositorUpdateScreenSize (screen_info);
     }
-}
-
-static void
-monitors_changed_cb(GdkScreen *gscreen, gpointer data)
-{
-    ScreenInfo *screen_info;
-
-    TRACE ("entering monitors_changed_cb");
-
-    screen_info = (ScreenInfo *) data;
-    g_return_if_fail (screen_info);
-
-    /*
-     * From the window manager point of view,
-     * a XRand 1.2 monitor change is similar to
-     * a screen size change.
-     */
-    size_changed_cb (gscreen, data);
 }
 
 void

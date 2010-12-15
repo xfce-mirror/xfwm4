@@ -569,6 +569,6 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                         screen_info->width, screen_info->height, screen_info->margins);
         /* Also prevent windows from being off screen, just like when screen is resized */
-        clientScreenResize(screen_info);
+        clientScreenResize(screen_info, FALSE);
     }
 }

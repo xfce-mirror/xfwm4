@@ -3466,11 +3466,12 @@ clientIncOpacity (Client * c)
 
 /* Xrandr stuff: on screen size change, make sure all clients are still visible */
 void
-clientScreenResize(ScreenInfo *screen_info)
+clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
 {
     Client *c = NULL;
     GList *list, *list_of_windows;
     XWindowChanges wc;
+    unsigned short configure_flags;
 
     list_of_windows = clientGetStackList (screen_info);
 
@@ -3502,27 +3503,33 @@ clientScreenResize(ScreenInfo *screen_info)
         /* Recompute size and position of maximized windows */
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
         {
-             /* Too bad, the flags used internally are different from the WIN_STATE_* bits */
-             maximization_flags |= FLAG_TEST (c->flags,
-                 CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
-             maximization_flags |= FLAG_TEST (c->flags,
-                 CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
+            /* Too bad, the flags used internally are different from the WIN_STATE_* bits */
+            maximization_flags |= FLAG_TEST (c->flags,
+                CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
+            maximization_flags |= FLAG_TEST (c->flags,
+                CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
 
-             /* Force an update by clearing the internal flags */
-             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
-             clientToggleMaximized (c, maximization_flags, FALSE);
+            /* Force an update by clearing the internal flags */
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
+            clientToggleMaximized (c, maximization_flags, FALSE);
 
-             wc.x = c->x;
-             wc.y = c->y;
-             wc.width = c->width;
-             wc.height = c->height;
-             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
+            wc.x = c->x;
+            wc.y = c->y;
+            wc.width = c->width;
+            wc.height = c->height;
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
         }
         else
         {
-             wc.x = c->x;
-             wc.y = c->y;
-             clientConfigure (c, &wc, CWX | CWY, CFG_CONSTRAINED | CFG_REQUEST);
+            configure_flags = CFG_CONSTRAINED | CFG_REQUEST;
+            if (fully_visible)
+            {
+                configure_flags |= CFG_KEEP_VISIBLE;
+            }
+
+            wc.x = c->x;
+            wc.y = c->y;
+            clientConfigure (c, &wc, CWX | CWY, configure_flags);
         }
     }
 
