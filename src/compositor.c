@@ -18,7 +18,7 @@
 
         xcompmgr - (c) 2003 Keith Packard
         metacity - (c) 2003, 2004 Red Hat, Inc.
-        xfwm4    - (c) 2005-2009 Olivier Fourdan
+        xfwm4    - (c) 2005-2010 Olivier Fourdan
 
 */
 

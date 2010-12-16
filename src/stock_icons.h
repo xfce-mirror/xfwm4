@@ -18,7 +18,7 @@
 
         metacity - Copyright (C) 2002 Havoc Pennington
         stock icon code Copyright (C) 2002 Jorn Baayen <jorn@nl.linux.org>
-        xfwm4    - (c) 2002-2009 Olivier Fourdan
+        xfwm4    - (c) 2002-2010 Olivier Fourdan
 
  */
 

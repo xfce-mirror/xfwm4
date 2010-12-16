@@ -28,7 +28,7 @@
         XPM color substitution used by the themes to apply gtk+ colors.
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2009 Olivier Fourdan
+        xfwm4    - (c) 2002-2010 Olivier Fourdan
 
  */
 
