@@ -267,6 +267,10 @@ clientSelectMask (Client * c, Client *other, guint mask, guint type)
     {
         return FALSE;
     }
+    if (!(mask & SEARCH_INCLUDE_ALL_WORKSPACES) && (c->win_workspace != c->screen_info->current_ws))
+    {
+        return FALSE;
+    }
     if (!(mask & SEARCH_INCLUDE_SKIP_PAGER) && FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER))
     {
         return FALSE;
@@ -275,16 +279,12 @@ clientSelectMask (Client * c, Client *other, guint mask, guint type)
     {
         return FALSE;
     }
-    if (!(mask & SEARCH_INCLUDE_ALL_WORKSPACES) && (c->win_workspace != c->screen_info->current_ws))
-    {
-        return FALSE;
-    }
     if (c->type & type)
     {
         return TRUE;
     }
 
-    return FALSE;
+    return (c->type & type);
 }
 
 Client *

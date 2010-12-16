@@ -56,13 +56,11 @@ struct _ClientCycleData
     Window wireframe;
 };
 
-#if 0
 static gint
-clientCompareApp (gconstpointer a, gconstpointer b)
+clientCompareModal (gconstpointer a, gconstpointer b)
 {
-    return !clientSameApplication ((Client *) a, (Client *) b);
+    return !clientIsModalFor ((Client *) a, (Client *) b);
 }
-#endif
 
 static guint
 clientGetCycleRange (ScreenInfo *screen_info)
@@ -94,7 +92,7 @@ clientCycleCreateList (Client *c)
 {
     ScreenInfo *screen_info;
     Client *c2;
-    guint range, i;
+    guint range, search_range,   i;
     GList *client_list;
 
     g_return_val_if_fail (c, NULL);
@@ -106,24 +104,58 @@ clientCycleCreateList (Client *c)
 
     for (c2 = c, i = 0; c && i < screen_info->client_count; i++, c2 = c2->next)
     {
-        if (!clientSelectMask (c2, NULL, range,
-             screen_info->params->cycle_apps_only ? WINDOW_NORMAL : WINDOW_REGULAR_FOCUSABLE))
+        search_range = range;
+        /*
+         *  We want to include modals even if skip pager/taskbar because
+         *  modals are supposed to be focused
+         */
+        if (clientIsModal(c2))
+        {
+            search_range |= (SEARCH_INCLUDE_SKIP_TASKBAR | SEARCH_INCLUDE_SKIP_PAGER);
+        }
+        if (!clientSelectMask (c2, NULL, search_range, WINDOW_REGULAR_FOCUSABLE))
+        {
+            TRACE ("%s not in select mask", c2->name);
             continue;
-#if 0
+        }
         if (screen_info->params->cycle_apps_only)
         {
             /*
              *  For apps only cycling, it's a tad more complicated
-             * - We want only regular windows (no dialog or anything else)
-             * - We don't want a window from the same application to be
-             *   in the list.
+             * - We want "fake" dialogs, ie without a parent window
+             * - We do not want dialogs but we want modals
+             * - If a modal was added,we do not want to add
+             *   its parent again
              */
-            if (c2->type != WINDOW_NORMAL)
-                continue;
-            if (g_list_find_custom (client_list, c2, clientCompareApp))
-                continue;
+
+            if (c2->type & WINDOW_TYPE_DIALOG)
+            {
+                if (clientIsValidTransientOrModal (c2))
+                {
+                    if (!clientIsModal(c2))
+                    {
+                        TRACE ("%s is not modal", c2->name);
+                        continue;
+                    }
+                }
+            }
+            else if (!(c2->type & WINDOW_NORMAL))
+            {
+                {
+                    TRACE ("%s is not normal", c2->name);
+                    continue;
+                }
+            }
+            else
+            {
+                if (g_list_find_custom (client_list, c2, clientCompareModal))
+                {
+                    TRACE ("%s found as modal list", c2->name);
+                    continue;
+                }
+            }
         }
-#endif
+
         TRACE ("clientCycleCreateList: adding %s", c2->name);
         client_list = g_list_append (client_list, c2);
     }
@@ -292,7 +324,6 @@ clientCycle (Client * c, XKeyEvent * ev)
     DisplayInfo *display_info;
     ClientCycleData passdata;
     GList *client_list, *selected;
-    guint cycle_range;
     gboolean g1, g2;
     int key;
 
@@ -322,7 +353,6 @@ clientCycle (Client * c, XKeyEvent * ev)
 
         return;
     }
-    cycle_range = clientGetCycleRange (screen_info);
     key = myScreenGetKeyPressed (screen_info, ev);
 
     if (key == KEY_CYCLE_REVERSE_WINDOWS)
