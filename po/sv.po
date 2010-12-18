@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-18 11:11+0000\n"
+"POT-Creation-Date: 2010-12-18 17:11+0000\n"
 "PO-Revision-Date: 2010-10-17 17:08+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -854,16 +854,15 @@ msgstr "Kör i bakgrunden (stöds inte)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Ställ in compositor-läge"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Ställ in compositor-läge (stöds inte)"
 
 #: ../src/main.c:543
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Xfce 4 Inställningar för fönsterhanteraren"
+msgstr "Ersätt befintlig fönsterhanterare"
 
 #: ../src/main.c:544
 msgid "Print version information and exit"
