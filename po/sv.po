@@ -5,12 +5,12 @@
 # Jens Hagerman <godhet@gmail.com>, 2006.
 # Alexander Toresson <alexander.toresson@gmail.com>, 2006.
 # Daniel Nylander <po@danielnylander.se>, 2008, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-16 10:09+0000\n"
+"POT-Creation-Date: 2010-12-18 11:11+0000\n"
 "PO-Revision-Date: 2010-10-17 17:08+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -53,13 +53,13 @@ msgstr "Versionsinformation"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -598,33 +598,33 @@ msgstr "Ta bort sista arbetsytan"
 msgid "Delete active workspace"
 msgstr "Ta bort aktiv arbetsyta"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "Åtgärd"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "Genväg"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Misslyckades med att initiera xfconf. Anledning: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Kunde inte skapa inställningsdialogen."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "Återställ till standardvärden"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "Detta kommer att återställa alla genvägar till sin standardvärden. Vill du verkligen göra detta?"
 
@@ -834,15 +834,49 @@ msgid "_Number of workspaces:"
 msgstr "A_ntal arbetsytor:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Segmenteringsfel"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr "Kör i bakgrunden"
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr "Kör i bakgrunden (stöds inte)"
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr ""
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr ""
+
+#: ../src/main.c:543
+#, fuzzy
+msgid "Replace the existing window manager"
+msgstr "Xfce 4 Inställningar för fönsterhanteraren"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "Skriv ut versionsinformation och avsluta"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr "[ARGUMENT...]"
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr "Skriv \"%s --help\" för användningsinformation."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -936,7 +970,7 @@ msgstr "A_vsluta"
 msgid "Restart"
 msgstr "Starta om"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu misslyckades med att fånga pekaren\n"
@@ -973,408 +1007,359 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 
 #~ msgid "  "
 #~ msgstr "  "
+
 #~ msgid "Distance|<i>Small</i>"
 #~ msgstr "<i>Litet</i>"
+
 #~ msgid "Resistance|<i>Small</i>"
 #~ msgstr "<i>Litet</i>"
+
 #~ msgid "Resistance|<i>Wide</i>"
 #~ msgstr "<i>Stort</i>"
 
-#, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Fönsterhanterare"
+
 #~ msgid "gtk-clear"
 #~ msgstr "Töm"
+
 #~ msgid "gtk-close"
 #~ msgstr "Stäng"
+
 #~ msgid "gtk-help"
 #~ msgstr "Hjälp"
+
 #~ msgid "gtk-cancel"
 #~ msgstr "Avbryt"
+
 #~ msgid "gtk-save"
 #~ msgstr "Spara"
+
 #~ msgid "Workspace Margins"
 #~ msgstr "Skrivbordsmarginaler"
+
 #~ msgid "Left :"
 #~ msgstr "Vänster:"
+
 #~ msgid "Right :"
 #~ msgstr "Höger:"
+
 #~ msgid "Top :"
 #~ msgstr "Uppe:"
+
 #~ msgid "Bottom :"
 #~ msgstr "Nere:"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
 #~ msgstr "Flytta fönster till nästa arbetsyta"
 
-#, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "Ingenting"
 
-#, fuzzy
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "Lyd program när de säger att de inte vill att något av deras fönster inte "
-#~ "ska visas i aktivitetsfältet eller skrivbordsbläddraren"
+#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr "Lyd program när de säger att de inte vill att något av deras fönster inte ska visas i aktivitetsfältet eller skrivbordsbläddraren"
 
-#, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Inkludera minimerade fönster"
 
-#, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
 #~ msgstr "Växla mellan fönster från alla arbetsytor"
 
-#, fuzzy
 #~ msgid "Cycling"
 #~ msgstr "Fönsterväxling"
 
-#, fuzzy
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "Förhindra att fokus stjäls"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
 #~ msgstr "Använd standarden \"ICCCM focus hint\""
 
-#, fuzzy
 #~ msgid "Focus"
 #~ msgstr "Fokus"
 
-#, fuzzy
 #~ msgid "Key used to grab and move windows"
 #~ msgstr "Tangent för att ta tag i och flytta fönster"
 
-#, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "Höj fönster vid klick oavsett musknapp"
 
-#, fuzzy
 #~ msgid "Hide frame of windows when maximized"
 #~ msgstr "Dölj fönsterramar för maximerade fönster"
 
-#, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr ""
-#~ "Återställ maximerade fönster till sin ursprungliga storlek när de flyttas"
+#~ msgstr "Återställ maximerade fönster till sin ursprungliga storlek när de flyttas"
 
-#, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "Använd kantmotstånd istället för attraktion mellan fönster"
 
-#, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Hjälpmedel"
+
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Växla arbetsyta genom att rulla mushjulet över skrivbordet"
 
-#, fuzzy
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Kom ihåg och återkalla föregående arbetsyta vid växling med snabbtangenter"
+#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#~ msgstr "Kom ihåg och återkalla föregående arbetsyta vid växling med snabbtangenter"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "Byt arbetsyta när muspekaren når skärmens kant"
 
-#, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
 #~ msgstr "Minsta fönsterstorlek för att aktivera smart placering:"
 
-#, fuzzy
 #~ msgid "Size|Small"
 #~ msgstr "Liten"
 
-#, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Stor"
 
-#, fuzzy
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Minsta fönsterstorlek för att aktivera smart placering:"
 
-#, fuzzy
 #~ msgid "Placement"
 #~ msgstr "Placering"
 
-#, fuzzy
 #~ msgid "Enable display compositing"
 #~ msgstr "Aktivera kompositeffekter"
 
-#, fuzzy
 #~ msgid "Display full screen overlay windows directly"
 #~ msgstr "Visa överlagrade fönster i fullskärm direkt, utan komposit"
 
-#, fuzzy
 #~ msgid "Show shadows under dock windows"
 #~ msgstr "Visa skuggor under popup-fönster"
 
-#, fuzzy
 #~ msgid "Show shadows under regular windows"
 #~ msgstr "Visa skuggor under vanliga fönster"
 
-#, fuzzy
 #~ msgid "Show shadows under popup windows"
 #~ msgstr "Visa skuggor under popup-fönster"
 
-#, fuzzy
 #~ msgid "Opacity of window decorations"
 #~ msgstr "Genomskinlighet för fönsterdekorationer"
 
-#, fuzzy
 #~ msgid "Transparent"
 #~ msgstr "Genomskinlig"
 
-#, fuzzy
 #~ msgid "Opaque"
 #~ msgstr "Solid"
 
-#, fuzzy
 #~ msgid "Opacity of inactive windows"
 #~ msgstr "Genomskinlighet för inaktiva fönster"
 
-#, fuzzy
 #~ msgid "Opacity of windows during move"
 #~ msgstr "Genomskinlighet då fönster flyttas"
 
-#, fuzzy
 #~ msgid "Opacity of windows during resize"
 #~ msgstr "Genomskinlighet då storleken på ett fönster ändras"
 
-#, fuzzy
 #~ msgid "Opacity of popup windows"
 #~ msgstr "Genomskinlighet för popup-fönster"
 
-#, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Effekter"
+
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "Fönsterhanterare - finjusteringar"
+
 #~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr ""
-#~ "De här inställningarna fungerar inte med den här fönsterhanteraren (%s)"
+#~ msgstr "De här inställningarna fungerar inte med den här fönsterhanteraren (%s)"
+
 #~ msgid "Change name"
 #~ msgstr "Byt namn"
 
-#, fuzzy
 #~ msgid "Name:"
 #~ msgstr "Namn:"
+
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Klicka på en arbetsyta för att redigera dess namn"
 
-#, fuzzy
 #~ msgid "Number of workspaces:"
 #~ msgstr "Antal arbetsytor:"
 
-#, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "Namnge arbetsytor"
+
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Arbetsytor och marginaler"
+
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Arbetsytor och marginaler"
 
-#, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Marginaler"
+
 #~ msgid "Window Manager Settings"
 #~ msgstr "Inställningar för Fönsterhanteraren"
+
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
+
 #~ msgid "Advanced Configuration"
 #~ msgstr "Avancerad konfiguration"
+
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "Avancerade inställningar för fönsterhanteraren"
+
 #~ msgid "Workspaces Settings"
 #~ msgstr "Inställningar för Arbetsytorna"
+
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Xfce 4 Inställningar för Arbetsytorna"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Klicka och dra knapparna för att ändra layouten"
+
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Typsnittsvalsdialog"
 
-#, fuzzy
 #~ msgid "Title font"
 #~ msgstr "Teckensnitt för fönstertiteln"
 
-#, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Titeljustering"
+
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Textjustering i titelraden:"
 
-#, fuzzy
 #~ msgid "Button layout"
 #~ msgstr "Knapplayout"
 
-#, fuzzy
 #~ msgid "Style"
 #~ msgstr "Utseende"
 
-#, fuzzy
 #~ msgid "Window shortcuts"
 #~ msgstr "Genvägar"
 
-#, fuzzy
 #~ msgid "Command"
 #~ msgstr "Kommando"
 
-#, fuzzy
 #~ msgid "Keyboard"
 #~ msgstr "Snabbtangenter"
 
-#, fuzzy
 #~ msgid "Focus model"
 #~ msgstr "Fokusmodell"
 
-#, fuzzy
 #~ msgid "Click to focus"
 #~ msgstr "Klicka för att fokusera"
 
-#, fuzzy
 #~ msgid "Focus follows mouse"
 #~ msgstr "Fokus följer musen"
 
-#, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Fördröjning innan ett fokuserat fönster höjs:"
+
 #~ msgid "Slow"
 #~ msgstr "Lång"
+
 #~ msgid "Fast"
 #~ msgstr "Kort"
 
-#, fuzzy
 #~ msgid "Automatically give focus to newly created windows"
 #~ msgstr "Ge automatiskt fokus till nya fönster"
 
-#, fuzzy
 #~ msgid "New window focus"
 #~ msgstr "Nya fönster"
 
-#, fuzzy
 #~ msgid "Raise on focus"
 #~ msgstr "Höj vid fokus"
 
-#, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
 #~ msgstr "Höj automatiskt fönster då de får fokus"
 
-#, fuzzy
 #~ msgid "Delay before raising focused window :"
 #~ msgstr "Fördröjning innan ett fokuserat fönster höjs:"
 
-#, fuzzy
 #~ msgid "Raise window when clicking inside application window"
 #~ msgstr "Höj fönstret vid klick inom applikationsfönstret"
 
-#, fuzzy
 #~ msgid "Raise on click"
 #~ msgstr "Höj vid klick"
 
-#, fuzzy
 #~ msgid "Windows snapping"
 #~ msgstr "Fönsterattraktion"
 
-#, fuzzy
 #~ msgid "Snap windows to screen border"
 #~ msgstr "Fönster attraheras till skärmens kant"
 
-#, fuzzy
 #~ msgid "Snap windows to other windows"
 #~ msgstr "Fönster attraheras till andra fönster"
 
-#, fuzzy
 #~ msgid "Distance :"
 #~ msgstr "Avstånd:"
 
-#, fuzzy
 #~ msgid "Distance|Small"
 #~ msgstr "Litet"
 
-#, fuzzy
 #~ msgid "Distance|Wide"
 #~ msgstr "Stort"
 
-#, fuzzy
 #~ msgid "Wrap workspaces"
 #~ msgstr "Växling mellan arbetsytor"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
 #~ msgstr "Byt arbetsyta när muspekaren når skärmens kant"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
 #~ msgstr "Byt arbetsyta när fönster dras utanför skärmen"
 
-#, fuzzy
 #~ msgid "Edge Resistance :"
 #~ msgstr "Kantmotstånd:"
 
-#, fuzzy
 #~ msgid "Resistance|Small"
 #~ msgstr "Litet"
 
-#, fuzzy
 #~ msgid "Resistance|Wide"
 #~ msgstr "Stort"
 
-#, fuzzy
 #~ msgid "Opaque move and resize"
 #~ msgstr "Flyttning och storleksändring"
 
-#, fuzzy
 #~ msgid "Display content of windows when resizing"
 #~ msgstr "Visa fönsterinnehåll vid storleksändring"
 
-#, fuzzy
 #~ msgid "Display content of windows when moving"
 #~ msgstr "Visa fönsterinnehåll vid flyttning"
 
-#, fuzzy
 #~ msgid "Double click action"
 #~ msgstr "Dubbelklicksåtgärd"
 
-#, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
 #~ msgstr "Åtgärd vid dubbelklick på titelraden:"
 
-#, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Avancerat"
+
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "Fönsterhanterare"
+
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "Vill du verkligen ta bort detta schema?"
+
 #~ msgid "Add keybinding theme"
 #~ msgstr "Lägg till schema"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Skriv in ett namn för schemat:"
+
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "Det finns redan ett schema med samma namn"
+
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Du måste skriva in ett namn för schemat"
 
-#, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Flytta fönster till arbetsyta %d"
+
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "Kunde inte öppna schemamappen!"
+
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "Kunde inte öppna %s : \n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
@@ -1382,121 +1367,108 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ "Kunde inte skriva i %s : \n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
+
 #~ msgid "Compose shortcut for :"
 #~ msgstr "Tangentkombination för:"
+
 #~ msgid "Compose shortcut"
 #~ msgstr "Ställ in tangentkombination"
 
-#, fuzzy
 #~ msgid "No shortcut"
 #~ msgstr "Ställ in tangentkombination"
 
-#, fuzzy
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "Antal arbetsytor:"
 
-#, fuzzy
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
 
-#, fuzzy
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
+#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
 
-#, fuzzy
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
+#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
 
-#, fuzzy
-#~ msgid "Keep the window manager action"
-#~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
-
-#, fuzzy
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
 
-#, fuzzy
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
 
-#, fuzzy
 #~ msgid "Action: %s"
 #~ msgstr "Aktiva"
 
-#, fuzzy
 #~ msgid "Enter shortcut"
 #~ msgstr "Ingen genväg"
 
-#, fuzzy
 #~ msgid "Shortcut:"
 #~ msgstr "Ingen genväg"
 
-#, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "Ma_ximera"
+
 #~ msgid "Hide _all others"
 #~ msgstr "Göm alla a_ndra"
+
 #~ msgid "_Shade"
 #~ msgstr "_Rulla upp"
 
-#, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "_Rulla ned"
+
 #~ msgid "S_tick"
 #~ msgstr "_Visa på alla arbetsytor"
 
-#, fuzzy
 #~ msgid "(Un)S_tick"
 #~ msgstr "_Visa ej på alla arbetsytor"
 
-#, fuzzy
 #~ msgid "Below"
 #~ msgstr "Lång"
+
 #~ msgid "Send to..."
 #~ msgstr "Skicka till..."
+
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Arbetsyta %i (%s)"
 
-#, fuzzy
 #~ msgid "Ctrl"
 #~ msgstr "Mitten"
 
-#, fuzzy
 #~ msgid "Button"
 #~ msgstr "Knapplayout"
 
-#, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Tangentkombination"
+
 #~ msgid "Move window left"
 #~ msgstr "Flytta fönster åt vänster"
+
 #~ msgid "Move window right"
 #~ msgstr "Flytta fönster åt höger"
+
 #~ msgid "Resize window down"
 #~ msgstr "Öka höjd på fönster"
+
 #~ msgid "Resize window left"
 #~ msgstr "Minska bredd på fönster"
+
 #~ msgid "Resize window right"
 #~ msgstr "Öka bredd på fönster"
+
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Avbryt flyttning eller storleksändring av fönster"
+
 #~ msgid "_Hide"
 #~ msgstr "_Göm"
-
