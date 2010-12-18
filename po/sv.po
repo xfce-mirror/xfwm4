@@ -155,7 +155,7 @@ msgstr "<b>Fönstergenv_ägar</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Fönsterattra_ktion</b>"
+msgstr "<b>Fönsterattraktion</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Wrap workspaces</b>"
