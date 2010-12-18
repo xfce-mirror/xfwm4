@@ -735,7 +735,7 @@ msgstr "Växla til_l fönstrets arbetsyta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
-msgstr "Under mus _pekaren"
+msgstr "Under mus_pekaren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
