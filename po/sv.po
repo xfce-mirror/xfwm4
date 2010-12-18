@@ -5,12 +5,12 @@
 # Jens Hagerman <godhet@gmail.com>, 2006.
 # Alexander Toresson <alexander.toresson@gmail.com>, 2006.
 # Daniel Nylander <po@danielnylander.se>, 2008, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-01 19:17+0100\n"
+"POT-Creation-Date: 2010-12-18 17:27+0000\n"
 "PO-Revision-Date: 2009-02-01 19:18+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -31,43 +31,42 @@ msgstr ""
 msgid "Warning"
 msgstr "Varning"
 
-#: ../settings-dialogs/tweaks-settings.c:43
+#: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
 msgstr "Ingen"
 
-#: ../settings-dialogs/tweaks-settings.c:415
+#: ../settings-dialogs/tweaks-settings.c:422
 msgid "Session manager socket"
 msgstr "Uttag för sessionshanterare"
 
-#: ../settings-dialogs/tweaks-settings.c:415
+#: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:361
-#: ../settings-dialogs/xfwm4-settings.c:308
+#: ../settings-dialogs/xfwm4-settings.c:309
 msgid "SOCKET ID"
 msgstr "UTTAGS-ID"
 
-#: ../settings-dialogs/tweaks-settings.c:416
+#: ../settings-dialogs/tweaks-settings.c:423
 #: ../settings-dialogs/workspace-settings.c:362
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../settings-dialogs/tweaks-settings.c:433
+#: ../settings-dialogs/tweaks-settings.c:441
 #: ../settings-dialogs/workspace-settings.c:379
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:940
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/tweaks-settings.c:445
 #: ../settings-dialogs/workspace-settings.c:383
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:944
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Prova %s --help för att se en komplett lista över tillgängliga "
-"kommandoradsflaggor.\n"
+"Prova %s --help för att se en komplett lista över tillgängliga kommandoradsflaggor.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -80,7 +79,7 @@ msgid "Workspace Name"
 msgstr "Namn på arbetsyta"
 
 #: ../settings-dialogs/workspace-settings.c:361
-#: ../settings-dialogs/xfwm4-settings.c:308
+#: ../settings-dialogs/xfwm4-settings.c:309
 msgid "Settings manager socket"
 msgstr "Uttag för inställningshanterare"
 
@@ -160,7 +159,7 @@ msgstr "<b>Fönstergenv_ägar</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Fönsterattra_ktion</b>"
+msgstr "<b>Fönsterattraktion</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>Wrap workspaces</b>"
@@ -323,313 +322,309 @@ msgstr "Åte_rställ till standardvärden"
 msgid "_Style"
 msgstr "_Stil"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:251
+#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Shade window"
 msgstr "Rulla upp fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Hide window"
 msgstr "Dölj fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:247
+#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window"
 msgstr "Maximera fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:255
+#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Fill window"
 msgstr "Fyll fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Nothing"
 msgstr "Ingenting"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
+#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Left"
 msgstr "Vänster"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Center"
 msgstr "Mitten"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Right"
 msgstr "Höger"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Window operations menu"
 msgstr "Meny för fönsteråtgärder"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Up"
 msgstr "Uppåt"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Down"
 msgstr "Nedåt"
 
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows"
 msgstr "Växla mellan fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Cycle windows (Reverse)"
 msgstr "Växla fönster (omvänt)"
 
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Close window"
 msgstr "Stäng fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:245
+#: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Maximize window horizontally"
 msgstr "Maximera fönster horisontellt"
 
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Maximize window vertically"
 msgstr "Maximera fönster vertikalt"
 
-#: ../settings-dialogs/xfwm4-settings.c:249
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Move window"
 msgstr "Flytta fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Resize window"
 msgstr "Ändra storlek på fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:252
+#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Stick window"
 msgstr "Klistra fast fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:253
+#: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Raise window"
 msgstr "Höj fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:254
+#: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Lower window"
 msgstr "Sänk fönster"
 
-#: ../settings-dialogs/xfwm4-settings.c:256
+#: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Fill window horizontally"
 msgstr "Fyll ut fönster horisontellt"
 
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window vertically"
 msgstr "Fyll ut fönster vertikalt"
 
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Toggle above"
 msgstr "Växla ovanstående"
 
-#: ../settings-dialogs/xfwm4-settings.c:259
+#: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Toggle fullscreen"
 msgstr "Växla helskärmsläge"
 
-#: ../settings-dialogs/xfwm4-settings.c:260
+#: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Move window to upper workspace"
 msgstr "Flytta fönster till arbetsytan ovanför"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Move window to bottom workspace"
 msgstr "Flytta fönster till arbetsytan nedanför"
 
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to left workspace"
 msgstr "Flytta fönster till arbetsytan åt vänster"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to right workspace"
 msgstr "Flytta fönster till arbetsytan åt höger"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to previous workspace"
 msgstr "Flytta fönster till föregående arbetsyta"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to next workspace"
 msgstr "Flytta fönster till nästa arbetsyta"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to workspace 1"
 msgstr "Flytta fönster till arbetsyta 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to workspace 2"
 msgstr "Flytta fönster till arbetsyta 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 3"
 msgstr "Flytta fönster till arbetsyta 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:269
+#: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 4"
 msgstr "Flytta fönster till arbetsyta 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:270
+#: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 5"
 msgstr "Flytta fönster till arbetsyta 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:271
+#: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 6"
 msgstr "Flytta fönster till arbetsyta 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:272
+#: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 7"
 msgstr "Flytta fönster till arbetsyta 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:273
+#: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 8"
 msgstr "Flytta fönster till arbetsyta 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:274
+#: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 9"
 msgstr "Flytta fönster till arbetsyta 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:275
+#: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 10"
 msgstr "Flytta fönster till arbetsyta 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:276
+#: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 11"
 msgstr "Flytta fönster till arbetsyta 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:277
+#: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 12"
 msgstr "Flytta fönster till arbetsyta 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:278
+#: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Show desktop"
 msgstr "Visa skrivbordet"
 
-#: ../settings-dialogs/xfwm4-settings.c:279
+#: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Upper workspace"
 msgstr "Växla till arbetsytan ovan"
 
-#: ../settings-dialogs/xfwm4-settings.c:280
+#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Bottom workspace"
 msgstr "Växla till arbetsytan nedan"
 
-#: ../settings-dialogs/xfwm4-settings.c:281
+#: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Left workspace"
 msgstr "Växla till arbetsytan till vänster"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Right workspace"
 msgstr "Växla till arbetsytan till höger"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Previous workspace"
 msgstr "Föregående arbetsyta"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Next workspace"
 msgstr "Nästa arbetsyta"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Workspace 1"
 msgstr "Arbetsyta 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Workspace 2"
 msgstr "Arbetsyta 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 3"
 msgstr "Arbetsyta 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 4"
 msgstr "Arbetsyta 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 5"
 msgstr "Arbetsyta 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 6"
 msgstr "Arbetsyta 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 7"
 msgstr "Arbetsyta 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 8"
 msgstr "Arbetsyta 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 9"
 msgstr "Arbetsyta 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 10"
 msgstr "Arbetsyta 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 11"
 msgstr "Arbetsyta 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 12"
 msgstr "Arbetsyta 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Add workspace"
 msgstr "Lägg till arbetsyta"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Add adjacent workspace"
 msgstr "Lägg till angränsande arbetsyta"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Delete last workspace"
 msgstr "Ta bort sista arbetsytan"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Delete active workspace"
 msgstr "Ta bort aktiv arbetsyta"
 
-#: ../settings-dialogs/xfwm4-settings.c:447
+#: ../settings-dialogs/xfwm4-settings.c:449
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:596
+#: ../settings-dialogs/xfwm4-settings.c:598
 msgid "Action"
 msgstr "Åtgärd"
 
-#: ../settings-dialogs/xfwm4-settings.c:601
+#: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
 msgstr "Genväg"
 
-#: ../settings-dialogs/xfwm4-settings.c:954
+#: ../settings-dialogs/xfwm4-settings.c:969
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Misslyckades med att initiera xfconf. Anledning: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:965
+#: ../settings-dialogs/xfwm4-settings.c:980
 msgid "Could not create the settings dialog."
 msgstr "Kunde inte skapa inställningsdialogen."
 
-#: ../settings-dialogs/xfwm4-settings.c:1841
-#: ../settings-dialogs/xfwm4-settings.c:1842
+#: ../settings-dialogs/xfwm4-settings.c:1862
+#: ../settings-dialogs/xfwm4-settings.c:1863
 msgid "Reset to Defaults"
 msgstr "Återställ till standardvärden"
 
-#: ../settings-dialogs/xfwm4-settings.c:1843
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Detta kommer att återställa alla genvägar till sin standardvärden. Vill du "
-"verkligen göra detta?"
+#: ../settings-dialogs/xfwm4-settings.c:1864
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Detta kommer att återställa alla genvägar till sin standardvärden. Vill du verkligen göra detta?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "<i>Opaque</i>"
@@ -713,8 +708,7 @@ msgstr "Opacitet när storleken på ett fönster _ändras:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"Återställ ursprunglig _storlek för maximerade fönster när de förflyttas"
+msgstr "Återställ ursprunglig _storlek för maximerade fönster när de förflyttas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Show shadows under _dock windows"
@@ -829,11 +823,8 @@ msgid "Change workspace name"
 msgstr "Byt namn på arbetsyta"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Marginaler är områden vid skärmens kanter där inga fönster kommer att "
-"placeras"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Marginaler är områden vid skärmens kanter där inga fönster kommer att placeras"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -844,7 +835,7 @@ msgid "_Number of workspaces:"
 msgstr "A_ntal arbetsytor:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
@@ -946,7 +937,7 @@ msgstr "A_vsluta"
 msgid "Restart"
 msgstr "Starta om"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu misslyckades med att fånga pekaren\n"
@@ -981,7 +972,6 @@ msgstr "Fel vid läsning av data från underprocess: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan inte starta helper-dialog: %s\n"
 
-#, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Fönsterhanterare"
 
@@ -1015,157 +1005,114 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Bottom :"
 #~ msgstr "Nere:"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
 #~ msgstr "Flytta fönster till nästa arbetsyta"
 
-#, fuzzy
 #~ msgid "Switch to window's workspace"
 #~ msgstr "Flytta fönster till arbetsyta %d"
 
-#, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "Ingenting"
 
-#, fuzzy
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "Lyd program när de säger att de inte vill att något av deras fönster inte "
-#~ "ska visas i aktivitetsfältet eller skrivbordsbläddraren"
+#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr "Lyd program när de säger att de inte vill att något av deras fönster inte ska visas i aktivitetsfältet eller skrivbordsbläddraren"
 
-#, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Inkludera minimerade fönster"
 
-#, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
 #~ msgstr "Växla mellan fönster från alla arbetsytor"
 
-#, fuzzy
 #~ msgid "Cycling"
 #~ msgstr "Fönsterväxling"
 
-#, fuzzy
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "Förhindra att fokus stjäls"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
 #~ msgstr "Använd standarden \"ICCCM focus hint\""
 
-#, fuzzy
 #~ msgid "Focus"
 #~ msgstr "Fokus"
 
-#, fuzzy
 #~ msgid "Key used to grab and move windows"
 #~ msgstr "Tangent för att ta tag i och flytta fönster"
 
-#, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "Höj fönster vid klick oavsett musknapp"
 
-#, fuzzy
 #~ msgid "Hide frame of windows when maximized"
 #~ msgstr "Dölj fönsterramar för maximerade fönster"
 
-#, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr ""
-#~ "Återställ maximerade fönster till sin ursprungliga storlek när de flyttas"
+#~ msgstr "Återställ maximerade fönster till sin ursprungliga storlek när de flyttas"
 
-#, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "Använd kantmotstånd istället för attraktion mellan fönster"
 
-#, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Hjälpmedel"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Växla arbetsyta genom att rulla mushjulet över skrivbordet"
 
-#, fuzzy
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Kom ihåg och återkalla föregående arbetsyta vid växling med snabbtangenter"
+#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#~ msgstr "Kom ihåg och återkalla föregående arbetsyta vid växling med snabbtangenter"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "Byt arbetsyta när muspekaren når skärmens kant"
 
-#, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
 #~ msgstr "Minsta fönsterstorlek för att aktivera smart placering:"
 
-#, fuzzy
 #~ msgid "Size|Small"
 #~ msgstr "Liten"
 
-#, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Stor"
 
-#, fuzzy
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Minsta fönsterstorlek för att aktivera smart placering:"
 
-#, fuzzy
 #~ msgid "Placement"
 #~ msgstr "Placering"
 
-#, fuzzy
 #~ msgid "Enable display compositing"
 #~ msgstr "Aktivera kompositeffekter"
 
-#, fuzzy
 #~ msgid "Display full screen overlay windows directly"
 #~ msgstr "Visa överlagrade fönster i fullskärm direkt, utan komposit"
 
-#, fuzzy
 #~ msgid "Show shadows under dock windows"
 #~ msgstr "Visa skuggor under popup-fönster"
 
-#, fuzzy
 #~ msgid "Show shadows under regular windows"
 #~ msgstr "Visa skuggor under vanliga fönster"
 
-#, fuzzy
 #~ msgid "Show shadows under popup windows"
 #~ msgstr "Visa skuggor under popup-fönster"
 
-#, fuzzy
 #~ msgid "Opacity of window decorations"
 #~ msgstr "Genomskinlighet för fönsterdekorationer"
 
-#, fuzzy
 #~ msgid "Transparent"
 #~ msgstr "Genomskinlig"
 
-#, fuzzy
 #~ msgid "Opaque"
 #~ msgstr "Solid"
 
-#, fuzzy
 #~ msgid "Opacity of inactive windows"
 #~ msgstr "Genomskinlighet för inaktiva fönster"
 
-#, fuzzy
 #~ msgid "Opacity of windows during move"
 #~ msgstr "Genomskinlighet då fönster flyttas"
 
-#, fuzzy
 #~ msgid "Opacity of windows during resize"
 #~ msgstr "Genomskinlighet då storleken på ett fönster ändras"
 
-#, fuzzy
 #~ msgid "Opacity of popup windows"
 #~ msgstr "Genomskinlighet för popup-fönster"
 
-#, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Effekter"
 
@@ -1173,24 +1120,20 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgstr "Fönsterhanterare - finjusteringar"
 
 #~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr ""
-#~ "De här inställningarna fungerar inte med den här fönsterhanteraren (%s)"
+#~ msgstr "De här inställningarna fungerar inte med den här fönsterhanteraren (%s)"
 
 #~ msgid "Change name"
 #~ msgstr "Byt namn"
 
-#, fuzzy
 #~ msgid "Name:"
 #~ msgstr "Namn:"
 
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Klicka på en arbetsyta för att redigera dess namn"
 
-#, fuzzy
 #~ msgid "Number of workspaces:"
 #~ msgstr "Antal arbetsytor:"
 
-#, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "Namnge arbetsytor"
 
@@ -1200,7 +1143,6 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Arbetsytor och marginaler"
 
-#, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Marginaler"
 
@@ -1222,57 +1164,45 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Xfce 4 Inställningar för Arbetsytorna"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Klicka och dra knapparna för att ändra layouten"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Typsnittsvalsdialog"
 
-#, fuzzy
 #~ msgid "Title font"
 #~ msgstr "Teckensnitt för fönstertiteln"
 
-#, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Titeljustering"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Textjustering i titelraden:"
 
-#, fuzzy
 #~ msgid "Button layout"
 #~ msgstr "Knapplayout"
 
-#, fuzzy
 #~ msgid "Style"
 #~ msgstr "Utseende"
 
-#, fuzzy
 #~ msgid "Window shortcuts"
 #~ msgstr "Genvägar"
 
-#, fuzzy
 #~ msgid "Command"
 #~ msgstr "Kommando"
 
-#, fuzzy
 #~ msgid "Keyboard"
 #~ msgstr "Snabbtangenter"
 
-#, fuzzy
 #~ msgid "Focus model"
 #~ msgstr "Fokusmodell"
 
-#, fuzzy
 #~ msgid "Click to focus"
 #~ msgstr "Klicka för att fokusera"
 
-#, fuzzy
 #~ msgid "Focus follows mouse"
 #~ msgstr "Fokus följer musen"
 
-#, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Fördröjning innan ett fokuserat fönster höjs:"
 
@@ -1282,103 +1212,78 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Fast"
 #~ msgstr "Kort"
 
-#, fuzzy
 #~ msgid "Automatically give focus to newly created windows"
 #~ msgstr "Ge automatiskt fokus till nya fönster"
 
-#, fuzzy
 #~ msgid "New window focus"
 #~ msgstr "Nya fönster"
 
-#, fuzzy
 #~ msgid "Raise on focus"
 #~ msgstr "Höj vid fokus"
 
-#, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
 #~ msgstr "Höj automatiskt fönster då de får fokus"
 
-#, fuzzy
 #~ msgid "Delay before raising focused window :"
 #~ msgstr "Fördröjning innan ett fokuserat fönster höjs:"
 
-#, fuzzy
 #~ msgid "Raise window when clicking inside application window"
 #~ msgstr "Höj fönstret vid klick inom applikationsfönstret"
 
-#, fuzzy
 #~ msgid "Raise on click"
 #~ msgstr "Höj vid klick"
 
-#, fuzzy
 #~ msgid "Windows snapping"
 #~ msgstr "Fönsterattraktion"
 
-#, fuzzy
 #~ msgid "Snap windows to screen border"
 #~ msgstr "Fönster attraheras till skärmens kant"
 
-#, fuzzy
 #~ msgid "Snap windows to other windows"
 #~ msgstr "Fönster attraheras till andra fönster"
 
-#, fuzzy
 #~ msgid "Distance :"
 #~ msgstr "Avstånd:"
 
-#, fuzzy
 #~ msgid "Distance|Small"
 #~ msgstr "Litet"
 
-#, fuzzy
 #~ msgid "Distance|Wide"
 #~ msgstr "Stort"
 
-#, fuzzy
 #~ msgid "Wrap workspaces"
 #~ msgstr "Växling mellan arbetsytor"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
 #~ msgstr "Byt arbetsyta när muspekaren når skärmens kant"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
 #~ msgstr "Byt arbetsyta när fönster dras utanför skärmen"
 
-#, fuzzy
 #~ msgid "Edge Resistance :"
 #~ msgstr "Kantmotstånd:"
 
-#, fuzzy
 #~ msgid "Resistance|Small"
 #~ msgstr "Litet"
 
-#, fuzzy
 #~ msgid "Resistance|Wide"
 #~ msgstr "Stort"
 
-#, fuzzy
 #~ msgid "Opaque move and resize"
 #~ msgstr "Flyttning och storleksändring"
 
-#, fuzzy
 #~ msgid "Display content of windows when resizing"
 #~ msgstr "Visa fönsterinnehåll vid storleksändring"
 
-#, fuzzy
 #~ msgid "Display content of windows when moving"
 #~ msgstr "Visa fönsterinnehåll vid flyttning"
 
-#, fuzzy
 #~ msgid "Double click action"
 #~ msgstr "Dubbelklicksåtgärd"
 
-#, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
 #~ msgstr "Åtgärd vid dubbelklick på titelraden:"
 
-#, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Avancerat"
 
@@ -1391,7 +1296,6 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Add keybinding theme"
 #~ msgstr "Lägg till schema"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Skriv in ett namn för schemat:"
 
@@ -1401,7 +1305,6 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Du måste skriva in ett namn för schemat"
 
-#, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Flytta fönster till arbetsyta %d"
 
@@ -1422,7 +1325,6 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ "Kunde inte skriva i %s : \n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
@@ -1436,61 +1338,45 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Compose shortcut"
 #~ msgstr "Ställ in tangentkombination"
 
-#, fuzzy
 #~ msgid "No shortcut"
 #~ msgstr "Ställ in tangentkombination"
 
-#, fuzzy
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "Antal arbetsytor:"
 
-#, fuzzy
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
 
-#, fuzzy
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
+#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
 
-#, fuzzy
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
+#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
 
-#, fuzzy
 #~ msgid "Keep the window manager action"
 #~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
 
-#, fuzzy
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
 
-#, fuzzy
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
 
-#, fuzzy
 #~ msgid "Action: %s"
 #~ msgstr "Aktiva"
 
-#, fuzzy
 #~ msgid "Enter shortcut"
 #~ msgstr "Ingen genväg"
 
-#, fuzzy
 #~ msgid "Shortcut:"
 #~ msgstr "Ingen genväg"
 
-#, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "Ma_ximera"
 
@@ -1500,18 +1386,15 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "_Shade"
 #~ msgstr "_Rulla upp"
 
-#, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "_Rulla ned"
 
 #~ msgid "S_tick"
 #~ msgstr "_Visa på alla arbetsytor"
 
-#, fuzzy
 #~ msgid "(Un)S_tick"
 #~ msgstr "_Visa ej på alla arbetsytor"
 
-#, fuzzy
 #~ msgid "Below"
 #~ msgstr "Lång"
 
@@ -1521,15 +1404,12 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Arbetsyta %i (%s)"
 
-#, fuzzy
 #~ msgid "Ctrl"
 #~ msgstr "Mitten"
 
-#, fuzzy
 #~ msgid "Button"
 #~ msgstr "Knapplayout"
 
-#, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Tangentkombination"
 
