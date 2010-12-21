@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-07 17:10+0000\n"
+"POT-Creation-Date: 2010-12-21 05:11+0000\n"
 "PO-Revision-Date: 2009-02-24 20:24+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -845,19 +845,19 @@ msgstr "%s: помилка сегментації"
 
 #: ../src/main.c:534
 msgid "Fork to the background"
-msgstr ""
+msgstr "Перевести у фоновий режим"
 
 #: ../src/main.c:536
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Перевести у фоновий режим (не підтримується)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Призначити композитний режим"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Призначити композитний режим (не підтримується)"
 
 #: ../src/main.c:543
 msgid "Replace the existing window manager"
@@ -869,7 +869,7 @@ msgstr "Показати інформацію про версію і вийти"
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[АРГУМЕНТИ...]"
 
 #: ../src/main.c:559
 #, c-format
