@@ -1,3 +1,19 @@
+4.7.4
+=====
+- Fix bug #6651 Shape Mask Changes not Immediately Recognized by Xfwm4.
+- Use Xsettings standard double-click-distance (bug 6334).
+- Fix bug #6334.
+- Bug 6334: Use lower prio for double click timeout.
+- Thinner bottom frame.
+- Double-click on edges trigger window fill in any given direction.
+- Fix bug 6989.
+- Fix bug #6589.
+- Fix bug #6902.
+- Fix application cycling.
+- Translation updates (zh_TW, fi, uk, ca, nb, cs, ja, el, de,
+  en_GB, sv, id, pt);
+
+
 4.7.3
 =====
 - Panel won't focus entries in focus follow mode (bug #6649).
