@@ -17,7 +17,7 @@
 
 
         mozilla  - (c) 1998 mozilla.org
-        xfwm4    - (c) 2002-2010 Olivier Fourdan
+        xfwm4    - (c) 2002-2011 Olivier Fourdan
 
  */
 
