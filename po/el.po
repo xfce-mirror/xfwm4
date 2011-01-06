@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 git version\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-12 11:11+0000\n"
+"POT-Creation-Date: 2011-01-06 17:11+0000\n"
 "PO-Revision-Date: 2010-05-04 23:40+0200\n"
 "Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
 "Language-Team: el <nls@tux.hellug.gr>\n"
@@ -847,19 +847,19 @@ msgstr "%s: Σφάλμα κατάτμησης"
 
 #: ../src/main.c:534
 msgid "Fork to the background"
-msgstr ""
+msgstr "Διακλάδωση στο παρασκήνιο"
 
 #: ../src/main.c:536
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Διακλάδωση στο παρασκήνιο (δεν υποστηρίζεται)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Ρύθμιση της λειτουργίας σύνθεσης"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Ρύθμιση της λειτουργίας σύνθεσης (δεν υποστηρίζεται)"
 
 #: ../src/main.c:543
 msgid "Replace the existing window manager"
@@ -870,9 +870,8 @@ msgid "Print version information and exit"
 msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"
 
 #: ../src/main.c:552
-#, fuzzy
 msgid "[ARGUMENTS...]"
-msgstr "[ΕΠΙΧΕΙΡΗΜΑΤΑ ...]"
+msgstr "[ΟΡΙΣΜΑΤΑ...]"
 
 #: ../src/main.c:559
 #, c-format
