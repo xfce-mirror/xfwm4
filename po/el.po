@@ -204,7 +204,7 @@ msgstr "Αυτόματη αν_ύψωση παραθύρων όταν εστια�
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr "Αυτόματη εστίαση νέων παραθύρων όταν δημιουργούνται"
+msgstr "Αυτόματη εστίαση _νέων παραθύρων όταν δημιουργούνται"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
@@ -260,7 +260,7 @@ msgstr "Μενού"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
-msgstr "Ανύψωση παραθύρου επιλέγοντας εντός του παράθυρου της εφαρμογής"
+msgstr "Ανύψωση παραθύρου επ_ιλέγοντας εντός του παράθυρου της εφαρμογής"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
@@ -670,7 +670,7 @@ msgstr "Κυκλική εναλλαγή μ_εταξύ των παραθύρων 
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Να απεικονίζονται απευθείας σε πλήρη οθόνης τα επικαλυπτόμενα παράθυρα"
+msgstr "Να απεικονίζονται απευθείας σε πλήρη ο_θόνης τα επικαλυπτόμενα παράθυρα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
@@ -678,7 +678,7 @@ msgstr "Μην γίνει τ_ίποτα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
-msgstr "Απόκρυψη περιγραμμάτων των παραθύρων όταν μεγιστοποιούνται"
+msgstr "Απόκρυψη περιγρα_μμάτων των παραθύρων όταν μεγιστοποιούνται"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
@@ -686,7 +686,7 @@ msgstr "Να τηρείται η πρ_ότυπη υπόδειξη εστίαση
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Κράτημα επείγον παραθύρων αναβοσβήνοντας τα συνέχεια"
+msgstr "Κράτημα επείγον παραθύρων ανα_βοσβήνοντας τα συνέχεια"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Key used to _grab and move windows:"
@@ -758,7 +758,7 @@ msgstr "Αναδίπλωση χώρων εργασίας σύμφωνα με τ�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Αναδίπλωση χώρων εργασίας όταν φτάσει στον πρώτο ή στον τελευταίο χώρο εργασίας "
+msgstr "Αναδίπλωση χώρων εργασίας όταν _φτάσει στον πρώτο ή στον τελευταίο χώρο εργασίας "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -766,7 +766,7 @@ msgstr "Πρ_οσβασιμότητα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Bring window on current workspace"
-msgstr "Μεταφορά παραθύρου στο τρέχον χώρο εργασίας"
+msgstr "_Μεταφορά παραθύρου στο τρέχον χώρο εργασίας"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
@@ -797,7 +797,7 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"Ενθύμιση και επανάκληση του προηγούμενο χώρου εργασίας\n"
+"Ενθύμιση και επανάκληση του π_ροηγούμενο χώρου εργασίας\n"
 "κατά την εναλλαγή μέσω συντομεύσεων πληκτρολογίου"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
