@@ -7,15 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-11 16:07+0000\n"
+"POT-Creation-Date: 2011-01-07 05:11+0000\n"
 "PO-Revision-Date: 2010-06-12 00:06+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -38,26 +37,26 @@ msgid "Session manager socket"
 msgstr "Socket upravitelja sesijom"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "Informacija o verziji"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/workspace-settings.c:388
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/workspace-settings.c:392
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -66,17 +65,17 @@ msgstr ""
 "%s: %s\n"
 "Pokušajte %s --help da vi vidjeli popis svih mogućih opcija.\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
 msgstr "Radni prostor %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
 msgstr "Naziv Radnog Prostora"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "Socket upravitelja postavkama"
@@ -596,39 +595,35 @@ msgstr "Obriši zadnji radni prostor"
 msgid "Delete active workspace"
 msgstr "Obriši aktivni radni prostor"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "Radnja"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "Prečac"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Xfconf neuspješno inicijaliziran. Razlog: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Ne mogu kreirati prozor sa postavkama."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "Vrati na zadano"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Ovo će vratiti sve prečace na njihovu zadanu vrijednost.Želite li doista to "
-"učiniti?"
+#: ../settings-dialogs/xfwm4-settings.c:1871
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Ovo će vratiti sve prečace na njihovu zadanu vrijednost.Želite li doista to učiniti?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -677,7 +672,7 @@ msgstr "Ne _radi ništa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
-msgstr ""
+msgstr "Sakrij _okvir prozora kada je maksimiziran"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
@@ -689,7 +684,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Key used to _grab and move windows:"
-msgstr ""
+msgstr "Tipka za _uzimanje i premještanje prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
@@ -737,7 +732,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "Ispod pokazivača _miša"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
@@ -745,7 +740,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "Koristi _kotačić miša na radnoj površini za prebacivanje radnih prostora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -820,9 +815,8 @@ msgid "Change workspace name"
 msgstr "Promjeni ime radnog prostora "
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Margine su prostori na rubovima zaslona gdje nijedan prozor neće biti smješten"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -833,15 +827,48 @@ msgid "_Number of workspaces:"
 msgstr "_Broj radnih prostora:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr ""
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr ""
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr ""
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr ""
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr ""
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr "Zamjeni postojeći upravitelj prozora"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "Ispiši informaciju o verziji i izađi"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr "[ARGUMENTi...]"
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr "Upiši \"%s --help\" za uporabu."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -935,7 +962,7 @@ msgstr "_Isključi"
 msgid "Restart"
 msgstr "Ponovno pokreni"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
