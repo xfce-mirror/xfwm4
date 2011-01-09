@@ -1,7 +1,7 @@
 # Greek translation of xfwm4.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Stavros Giannouris <StavrosG2002@freemail.gr>, 2005.
 # Stathis Kamperis <ekamperi@auth.gr>, 2006.
 # Evaggelos Balaskas <ebalaskas@ebalaskas.gr>, 2009.
@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 git version\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-06 17:11+0000\n"
+"POT-Creation-Date: 2011-01-09 17:12+0000\n"
 "PO-Revision-Date: 2011-01-07 17:51+0200\n"
 "Last-Translator: Spiros Georgaras <sng@hellug.gr>\n"
 "Language-Team: el <nls@tux.hellug.gr>\n"
@@ -620,7 +620,7 @@ msgstr "Αποτυχία της αρχικοποίησης του xfconf. Ο λ�
 
 #: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
-msgstr "Αδυναμία στην δημιουργία του διαλόγου ρυθμίσεων."
+msgstr "Δεν ήταν δυνατή η δημιουργία του διαλόγου ρυθμίσεων."
 
 #: ../settings-dialogs/xfwm4-settings.c:1869
 #: ../settings-dialogs/xfwm4-settings.c:1870
@@ -1004,4 +1004,3 @@ msgstr "Σφάλμα ανάγνωσης δεδομένων από την διε�
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Δεν είναι δυνατή η έναρξη του διαλόγου: %s\n"
-
