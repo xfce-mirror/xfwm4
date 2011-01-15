@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-21 10:06+0000\n"
+"POT-Creation-Date: 2011-01-15 17:11+0000\n"
 "PO-Revision-Date: 2009-01-18 16:24+0100\n"
 "Last-Translator: Jérôme Guelfucci <jeromeg@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
@@ -38,26 +38,26 @@ msgid "Session manager socket"
 msgstr "Socket du gestionnaire de sessions"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "Informations sur la version"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/workspace-settings.c:388
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/workspace-settings.c:392
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -66,17 +66,17 @@ msgstr ""
 "%s : %s\n"
 "Essayez %s --help pour afficher une liste complète des options de ligne de commande.\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
 msgstr "Espace de travail %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
 msgstr "Nom de l'espace de travail"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "Socket du gestionnaire de paramètres"
@@ -596,33 +596,33 @@ msgstr "Supprimer le dernier espace de travail"
 msgid "Delete active workspace"
 msgstr "Supprimer l'espace de travail actif"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "Thème"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 msgid "Action"
 msgstr "Action"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "Raccourci"
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Impossible d'initialiser xfconf. Raison : %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "Impossible de créer la boîte de dialogue des paramètres."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "Réinitialiser aux valeurs par défaut"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "Voulez-vous vraiment réinitialiser tous les raccourcis à leur valeur par défaut ?"
 
@@ -832,15 +832,48 @@ msgid "_Number of workspaces:"
 msgstr "_Nombre d'espaces de travail :"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (sur %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: Erreur de segmentation"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr "Forker en arrière-plan"
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr "Forker en arrière-plan (non supporté)"
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr "Appliquer le mode du compositeur"
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr "Appliquer le mode du compositeur (non supporté)"
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr "Remplacer le gestionnaire de fenêtre actuel"
+
+#: ../src/main.c:544
+msgid "Print version information and exit"
+msgstr "Information sur la version et quitter"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr "[ARGUMENTS...]"
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr "Saisissez \"%s --help\" pour l'usage."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -934,7 +967,7 @@ msgstr "_Quitter"
 msgid "Restart"
 msgstr "Redémarrer"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu n'a pas pu capturer le pointeur\n"
