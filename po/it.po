@@ -4,15 +4,16 @@
 # Gabriele Modena <randall@email.it>, 2005.
 # Alex Dupre <ale@FreeBSD.org>, 2004, 2005.
 # Cristian Marchi <cri.penta@gmail.com>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-03 11:10+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2010-09-08 11:45+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -71,7 +72,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Digitare %s --help per consultare l'elenco completo delle opzioni da riga di comando.\n"
+"Digitare %s --help per consultare l'elenco completo delle opzioni da riga di "
+"comando.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -294,11 +296,14 @@ msgstr "Titolo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Scorri gli spazi di lavoro se una finestra viene t_rascinata fuori dallo schermo"
+msgstr ""
+"Scorri gli spazi di lavoro se una finestra viene t_rascinata fuori dallo "
+"schermo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Scorri gli spazi di lavoro se il p_untatore raggiunge il bordo dello schermo"
+msgstr ""
+"Scorri gli spazi di lavoro se il p_untatore raggiunge il bordo dello schermo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
@@ -630,8 +635,12 @@ msgid "Reset to Defaults"
 msgstr "Ripristina predefiniti"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Questo riporterà tutte le scorciatoie ai valori predefiniti. Continuare davvero?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Questo riporterà tutte le scorciatoie ai valori predefiniti. Continuare "
+"davvero?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -720,7 +729,9 @@ msgstr "Opacità delle finestre _durante il ridimensionamento:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Ripristina la _dimensione originale delle finestre massimizzate quando vengono spostate"
+msgstr ""
+"Ripristina la _dimensione originale delle finestre massimizzate quando "
+"vengono spostate"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -748,7 +759,8 @@ msgstr "Usa la resistenza dei bordi inv_ece delle finestre magnetiche"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Utilizza la rotella del mo_use sulla scrivania per cambiare spazio di lavoro"
+msgstr ""
+"Utilizza la rotella del mo_use sulla scrivania per cambiare spazio di lavoro"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -756,11 +768,14 @@ msgstr "Quando una finestra si solleva:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Scorri gli spazi di lavoro secondo l'effettiva disposizione del_la scrivania"
+msgstr ""
+"Scorri gli spazi di lavoro secondo l'effettiva disposizione del_la scrivania"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Continua a scorrere gli spazi di lavoro al raggiungimento del pri_mo o dell'ultimo"
+msgstr ""
+"Continua a scorrere gli spazi di lavoro al raggiungimento del pri_mo o "
+"dell'ultimo"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -772,7 +787,8 @@ msgstr "Porta la finestra nello spazio di lavoro co_rrente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Disegna la cornice attorno alle finestre selezionate mentre si scorrono"
+msgstr ""
+"_Disegna la cornice attorno alle finestre selezionate mentre si scorrono"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
@@ -784,7 +800,9 @@ msgstr "Includi le finestre _nascoste (ovvero minimizzate)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Dimensione _minima delle finestre per provocare il posizionamento intelligente:"
+msgstr ""
+"Dimensione _minima delle finestre per provocare il posizionamento "
+"intelligente:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Placement"
@@ -827,8 +845,11 @@ msgid "Change workspace name"
 msgstr "Cambia nome dello spazio di lavoro"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "I bordi sono aree agli angoli dello schermo dove non verrà posta alcuna finestra"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"I bordi sono aree agli angoli dello schermo dove non verrà posta alcuna "
+"finestra"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -839,7 +860,7 @@ msgid "_Number of workspaces:"
 msgstr "_Numero degli spazi di lavoro:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (su %s)"
@@ -974,7 +995,7 @@ msgstr "_Esci"
 msgid "Restart"
 msgstr "Riavvia"
 
-#: ../src/menu.c:422
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu non è riuscito a catturare il puntatore\n"
@@ -987,7 +1008,9 @@ msgstr "%s: Impossibile allocare il colore %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: Impossibile allocare il colore: GValue per il colore non è del tipo STRING"
+msgstr ""
+"%s: Impossibile allocare il colore: GValue per il colore non è del tipo "
+"STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -997,7 +1020,9 @@ msgstr "%s: Impossibile analizzare il colore %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Impossibile analizzare il colore: GValue per il colore non è del tipo STRING"
+msgstr ""
+"%s: Impossibile analizzare il colore: GValue per il colore non è del tipo "
+"STRING"
 
 #: ../src/terminate.c:75
 #, c-format

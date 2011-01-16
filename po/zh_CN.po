@@ -6,15 +6,15 @@
 # wuli <wurisky@gmail.com>,2007, 2008.
 # Hunt Xu <huntxu@live.cn>,2008, 2010.
 # Aron Xu <aronmalache@163.com>, 2009.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-27 11:10+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2010-11-27 21:12+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -833,7 +833,7 @@ msgid "_Number of workspaces:"
 msgstr "工作区数目(_N)："
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (于 %s)"
@@ -968,7 +968,7 @@ msgstr "退出(_Q)"
 msgid "Restart"
 msgstr "重启"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 无法获取鼠标\n"

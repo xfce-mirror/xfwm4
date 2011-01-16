@@ -2,15 +2,16 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-19 11:11+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2008-12-21 21:53+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,7 +63,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Coba %s --help untuk melihat senarai penuh opsi baris perintah yang tersedia.\n"
+"Coba %s --help untuk melihat senarai penuh opsi baris perintah yang "
+"tersedia.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -621,8 +623,12 @@ msgid "Reset to Defaults"
 msgstr "Kembalikan ke Standar"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Ini akan mengatur ulang semua jalan pintas ke nilai standar mereka. Anda yakin ingin melakukan ini?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Ini akan mengatur ulang semua jalan pintas ke nilai standar mereka. Anda "
+"yakin ingin melakukan ini?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -687,7 +693,8 @@ msgstr "Tombol yang digunakan untuk _menangkap dan memindahkan jendela:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Pemberitahuan _keadaan mendesak dengan membuat dekorasi jendela berkedip"
+msgstr ""
+"Pemberitahuan _keadaan mendesak dengan membuat dekorasi jendela berkedip"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Opaci_ty of window decorations:"
@@ -711,7 +718,8 @@ msgstr "Opasitas jendela ketika ubah uku_ran:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Kembalikan ukuran asli _dari jendela yang dimaksimalkan ketika memindahkan"
+msgstr ""
+"Kembalikan ukuran asli _dari jendela yang dimaksimalkan ketika memindahkan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -818,8 +826,10 @@ msgid "Change workspace name"
 msgstr "Ubah nama ruang kerja"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margin adalah area di pinggir layar dimana tak ada jendela akan ditempatkan"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Margin adalah area di pinggir layar dimana tak ada jendela akan ditempatkan"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -1060,8 +1070,11 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Tempatkan jendela di tengah"
 
-#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr "Lewati jendela yang punya pengaturan properti \"skip pager\" atau \"skip taskbar\""
+#~ msgid ""
+#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr ""
+#~ "Lewati jendela yang punya pengaturan properti \"skip pager\" atau \"skip "
+#~ "taskbar\""
 
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Termasuk jendela (misalnya dalam bentuk ikon) tersembunyi"
@@ -1091,7 +1104,8 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgstr "Sembunyikan bingkai jendela ketika dimaksimalkan"
 
 #~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "Kembalikan ukuran asli dari jendela yang dimaksimalkan ketika memindahkan"
+#~ msgstr ""
+#~ "Kembalikan ukuran asli dari jendela yang dimaksimalkan ketika memindahkan"
 
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "Gunakan ketahanan tepi ketimbang mangetitasi jendela"
@@ -1102,8 +1116,12 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Pindah ruang kerja menggunakan roda tetikus antar destop"
 
-#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-#~ msgstr "Ingat dan panggil ulang ruang kerja sebelumnya ketika pindah via jalan pintas papan ketik"
+#~ msgid ""
+#~ "Remember and recall previous workspace when switching via keyboard "
+#~ "shortcuts"
+#~ msgstr ""
+#~ "Ingat dan panggil ulang ruang kerja sebelumnya ketika pindah via jalan "
+#~ "pintas papan ketik"
 
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr "Gulung ruang kerja berdasarkan tata letak destop sebenarnya"
@@ -1169,7 +1187,8 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgstr "Tweak Manajer Jendela"
 
 #~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr "Pengaturan ini tak dapat bekerja dengan manajer jendela anda saat ini (%s)"
+#~ msgstr ""
+#~ "Pengaturan ini tak dapat bekerja dengan manajer jendela anda saat ini (%s)"
 
 #~ msgid "Change name"
 #~ msgstr "Ubah nama"
@@ -1396,8 +1415,12 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Pengaturan manajer jendela mahir"
 
-#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
-#~ msgstr "Jalan pintas ini telah digunakan oleh <b>aksi manajer jendela lain</b>. Aksi mana yang ingin anda gunakan?"
+#~ msgid ""
+#~ "This shortcut is already being used by <b>another window manager action</"
+#~ "b>. Which action do you want to use?"
+#~ msgstr ""
+#~ "Jalan pintas ini telah digunakan oleh <b>aksi manajer jendela lain</b>. "
+#~ "Aksi mana yang ingin anda gunakan?"
 
 #~ msgid "Use %s"
 #~ msgstr "Gunakan %s"
@@ -1408,8 +1431,12 @@ msgstr "Tak dapat pijah helper-dialog: %s\n"
 #~ msgid "Keep %s"
 #~ msgstr "Jaga %s"
 
-#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
-#~ msgstr "Jalan pintas telah digunakan oleh <b>aksi manajer jendela</b>. Aksi mana yang ingin anda gunakan?"
+#~ msgid ""
+#~ "The shortcut is already being used by a <b>window manager action</b>. "
+#~ "Which action do you want to use?"
+#~ msgstr ""
+#~ "Jalan pintas telah digunakan oleh <b>aksi manajer jendela</b>. Aksi mana "
+#~ "yang ingin anda gunakan?"
 
 #~ msgid "Conflicting actions for %s"
 #~ msgstr "Aksi konflik untuk %s"

@@ -10,10 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-06 17:10+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2010-12-07 01:35+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -635,7 +636,9 @@ msgid "Reset to Defaults"
 msgstr "重設為預設值"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr "這會將所有捷徑重設為其預設值。您真的想要這麼做嗎？"
 
 #. Smart placement size
@@ -832,7 +835,8 @@ msgid "Change workspace name"
 msgstr "變更工作區名稱"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "邊緣是螢幕邊上不能放置視窗的區域"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -1019,308 +1023,447 @@ msgstr "無法建立輔助程式對話窗：%s\n"
 
 #~ msgid "Distance|<i>Small</i>"
 #~ msgstr "距離|窄"
+
 #~ msgid "Resistance|<i>Small</i>"
 #~ msgstr "阻抗|弱"
+
 #~ msgid "Resistance|<i>Wide</i>"
 #~ msgstr "阻抗|強"
+
 #~ msgid ">Window Manager"
 #~ msgstr "視窗管理程式"
+
 #~ msgid "Workspace Margins"
 #~ msgstr "工作區邊緣"
+
 #~ msgid "Left :"
 #~ msgstr "左側："
+
 #~ msgid "Right :"
 #~ msgstr "右側："
+
 #~ msgid "Top :"
 #~ msgstr "頂部："
+
 #~ msgid "Bottom :"
 #~ msgstr "底部："
+
 #~ msgid "Bring window on current workspace"
 #~ msgstr "將視窗移至下一個工作區"
+
 #~ msgid "Do nothing"
 #~ msgstr "無"
+
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "包含隱藏(如：圖示化的)視窗"
+
 #~ msgid "Cycle through windows from all workspaces"
 #~ msgstr "在所有工作區的視窗間循環"
+
 #~ msgid "Cycling"
 #~ msgstr "循環"
+
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "啟用「預防偷竊焦點」"
+
 #~ msgid "Focus"
 #~ msgstr "焦點"
+
 #~ msgid "Key used to grab and move windows"
 #~ msgstr "用來抓住及移動視窗的按鍵"
+
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "按下任一滑鼠鍵時揚起視窗"
+
 #~ msgid "Hide frame of windows when maximized"
 #~ msgstr "移動視窗時顯示其內容"
+
 #~ msgid "Restore original size of maximized windows when moving"
 #~ msgstr "移動視窗時回復最大化視窗原本的大小"
+
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "使用邊緣阻抗取代視窗吸引"
+
 #~ msgid "Accessibility"
 #~ msgstr "可近性"
+
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "在桌面上使用滾輪切換工作區"
+
 #~ msgid ""
 #~ "Remember and recall previous workspace when switching via keyboard "
 #~ "shortcuts"
 #~ msgstr "由鍵盤捷徑切換時，記住並回到先前的作區"
+
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr "以實際上的桌面輸出決定工作區迴繞"
+
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "抵達第一個或最後一個工作區時時迴繞工作區"
+
 #~ msgid "Minimum size of windows to trigger smart placement"
 #~ msgstr "觸發智慧配置的最小視窗大小"
+
 #~ msgid "Size|Small"
 #~ msgstr "大小|小"
+
 #~ msgid "Size|Large"
 #~ msgstr "大小|大"
+
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "觸發智慧配置的最小視窗大小"
+
 #~ msgid "Placement"
 #~ msgstr "配置"
+
 #~ msgid "Show shadows under dock windows"
 #~ msgstr "在跳出視窗下顯示陰影"
+
 #~ msgid "Show shadows under regular windows"
 #~ msgstr "在一般視窗下顯示陰影"
+
 #~ msgid "Show shadows under popup windows"
 #~ msgstr "在跳出視窗下顯示陰影"
+
 #~ msgid "Opacity of window decorations"
 #~ msgstr "視窗裝飾的不透明程度"
+
 #~ msgid "Transparent"
 #~ msgstr "透明"
+
 #~ msgid "Opaque"
 #~ msgstr "不透明"
+
 #~ msgid "Opacity of inactive windows"
 #~ msgstr "跳出視窗的不透明程度"
+
 #~ msgid "Opacity of windows during move"
 #~ msgstr "移動視窗時的不透明程度"
+
 #~ msgid "Opacity of windows during resize"
 #~ msgstr "縮放視窗時的不透明程度"
+
 #~ msgid "Opacity of popup windows"
 #~ msgstr "跳出視窗的不透明程度"
+
 #~ msgid "Compositor"
 #~ msgstr "設定快速鍵"
+
 #~ msgid "Button Label|Window Manager Tweaks"
 #~ msgstr "視窗管理程式調校"
+
 #~ msgid "These settings cannot work with your current window manager (%s)"
 #~ msgstr "這些設定無法運作於您目前的視窗管理程式 (%s) "
+
 #~ msgid "Change name"
 #~ msgstr "改變名稱"
+
 #~ msgid "Name:"
 #~ msgstr "名稱："
+
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "選取一個工作區名稱來編輯它"
+
 #~ msgid "Number of workspaces:"
 #~ msgstr "工作區名稱："
+
 #~ msgid "Workspace names"
 #~ msgstr "工作區個數"
+
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "工作區和邊緣"
+
 #~ msgid "Workspaces and Margins"
 #~ msgstr "工作區和邊緣"
+
 #~ msgid "Margins"
 #~ msgstr "邊緣"
+
 #~ msgid "Window Manager Settings"
 #~ msgstr "視窗管理程式設定"
+
 #~ msgid "Xfce 4 Window Manager Settings"
 #~ msgstr "Xfce 4 視窗管理程式設定"
+
 #~ msgid "Advanced Configuration"
 #~ msgstr "進階組態設定"
+
 #~ msgid "Xfce 4 Window Manager Tweaks"
 #~ msgstr "Xfce 4 視窗管理程式調校"
+
 #~ msgid "Workspaces Settings"
 #~ msgstr "工作區設定"
+
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Xfce 4 工作區設定"
+
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "要修改按鈕的布局，拖曳下面按鈕即可"
+
 #~ msgid "Font Selection Dialog"
 #~ msgstr "字型選擇對話框"
+
 #~ msgid "Title font"
 #~ msgstr "標題字型"
+
 #~ msgid "Title Alignment"
 #~ msgstr "標題對齊方式"
+
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "標題欄內的本文對齊方式："
+
 #~ msgid "Button layout"
 #~ msgstr "按鈕布局"
+
 #~ msgid "Style"
 #~ msgstr "風格"
+
 #~ msgid "Window shortcuts"
 #~ msgstr "有關視窗的快速鍵"
+
 #~ msgid "Command"
 #~ msgstr "指令"
+
 #~ msgid "Keyboard"
 #~ msgstr "鍵盤"
+
 #~ msgid "Focus model"
 #~ msgstr "焦點模式"
+
 #~ msgid "Click to focus"
 #~ msgstr "點選獲取焦點"
+
 #~ msgid "Focus follows mouse"
 #~ msgstr "焦點跟隨游標"
+
 #~ msgid "Delay before window receives focus"
 #~ msgstr "置頂焦點所在視窗前的延遲："
+
 #~ msgid "Slow"
 #~ msgstr "慢"
+
 #~ msgid "Fast"
 #~ msgstr "快"
+
 #~ msgid "Automatically give focus to newly created windows"
 #~ msgstr "自動為新建立的視窗獲取焦點"
+
 #~ msgid "New window focus"
 #~ msgstr "新視窗獲取焦點"
+
 #~ msgid "Raise on focus"
 #~ msgstr "獲取焦點時置頂"
+
 #~ msgid "Automatically raise windows when they receive focus"
 #~ msgstr "當視窗獲取焦點時自動將該視窗置頂"
+
 #~ msgid "Delay before raising focused window :"
 #~ msgstr "置頂焦點所在視窗前的延遲："
+
 #~ msgid "Raise window when clicking inside application window"
 #~ msgstr "點選視窗內部時將視窗置頂"
+
 #~ msgid "Raise on click"
 #~ msgstr "點選置頂"
+
 #~ msgid "Windows snapping"
 #~ msgstr "視窗吸引"
+
 #~ msgid "Snap windows to screen border"
 #~ msgstr "在螢幕邊緣吸引視窗"
+
 #~ msgid "Snap windows to other windows"
 #~ msgstr "將視窗吸引到其他視窗"
+
 #~ msgid "Distance :"
 #~ msgstr "距離："
+
 #~ msgid "Distance|Small"
 #~ msgstr "距離|窄"
+
 #~ msgid "Distance|Wide"
 #~ msgstr "距離|寬"
+
 #~ msgid "Wrap workspaces"
 #~ msgstr "迴繞工作區"
+
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
 #~ msgstr "遊標移到螢幕邊緣時迴繞工作區"
+
 #~ msgid "Wrap workspaces when dragging a window off the screen"
 #~ msgstr "拖曳視窗離開螢幕時回繞工作區"
+
 #~ msgid "Edge Resistance :"
 #~ msgstr "螢幕邊緣阻抗："
+
 #~ msgid "Resistance|Small"
 #~ msgstr "阻抗|弱"
+
 #~ msgid "Resistance|Wide"
 #~ msgstr "阻抗|強"
+
 #~ msgid "Opaque move and resize"
 #~ msgstr "移動和縮放時顯示其內容"
+
 #~ msgid "Display content of windows when resizing"
 #~ msgstr "縮放視窗時顯示其內容"
+
 #~ msgid "Display content of windows when moving"
 #~ msgstr "移動視窗時顯示其內容"
+
 #~ msgid "Double click action"
 #~ msgstr "雙擊執行動作"
+
 #~ msgid "Action to perform when double clicking on title bar :"
 #~ msgstr "雙擊標題列執行的動作："
+
 #~ msgid "Advanced"
 #~ msgstr "進階"
+
 #~ msgid "Button Label|Window Manager"
 #~ msgstr "視窗管理程式"
+
 #~ msgid "Do you really want to remove this keybinding theme ?"
 #~ msgstr "您真的想要移除本自訂鍵主題？"
+
 #~ msgid "Add keybinding theme"
 #~ msgstr "新增自訂鍵主題"
+
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "為新的主題鍵入一個名稱："
+
 #~ msgid "A keybinding theme with the same name already exists"
 #~ msgstr "有一個同名的自訂鍵主題已經存在"
+
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "您必需給自訂鍵主題一個名稱"
+
 #~ msgid "Move window to workspace %d"
 #~ msgstr "將視窗移至工作區 %d"
+
 #~ msgid "Cannot open the theme directory !"
 #~ msgstr "無法開啟主題目錄！"
+
 #~ msgid ""
 #~ "Cannot open %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "無法開啟 %s：\n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Cannot write in %s : \n"
 #~ "%s"
 #~ msgstr ""
 #~ "無法寫入 %s：\n"
 #~ "%s"
+
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
 #~ msgstr ""
 #~ "這個快速鍵已在使用中！\n"
 #~ "您真的要用這個快速鍵嗎？"
+
 #~ msgid "Compose shortcut for :"
 #~ msgstr "為下列動作設定快速鍵："
+
 #~ msgid "Compose shortcut"
 #~ msgstr "設定快速鍵"
+
 #~ msgid "No shortcut"
 #~ msgstr "設定快速鍵"
+
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "工作區名稱："
+
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Xfce 4 視窗管理程式設定"
+
 #~ msgid ""
 #~ "This shortcut is already being used by <b>another window manager action</"
 #~ "b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "這個快速鍵已在使用中！\n"
 #~ "您真的要用這個快速鍵嗎？"
+
 #~ msgid ""
 #~ "The shortcut is already being used by a <b>window manager action</b>. "
 #~ "Which action do you want to use?"
 #~ msgstr ""
 #~ "這個快速鍵已在使用中！\n"
 #~ "您真的要用這個快速鍵嗎？"
+
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr ""
 #~ "這個快速鍵已在使用中！\n"
 #~ "您真的要用這個快速鍵嗎？"
+
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "Xfce 4 視窗管理程式設定"
+
 #~ msgid "Action: %s"
 #~ msgstr "現用"
+
 #~ msgid "Enter shortcut"
 #~ msgstr "沒有快速鍵"
+
 #~ msgid "Shortcut:"
 #~ msgstr "沒有快速鍵"
+
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "最大化(_X)"
+
 #~ msgid "Hide _all others"
 #~ msgstr "隱藏其他視窗(_A)"
+
 #~ msgid "_Shade"
 #~ msgstr "捲起(_S)"
+
 #~ msgid "(Un)_Shade"
 #~ msgstr "展開(_s)"
+
 #~ msgid "S_tick"
 #~ msgstr "貼連(_T)"
+
 #~ msgid "(Un)S_tick"
 #~ msgstr "分離(_T)"
+
 #~ msgid "Below"
 #~ msgstr "慢"
+
 #~ msgid "Send to..."
 #~ msgstr "傳送到..."
+
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "工作區 %i (%s)"
+
 #~ msgid "Ctrl"
 #~ msgstr "中間"
+
 #~ msgid "Button"
 #~ msgstr "按鈕布局"
+
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "快速鍵"
+
 #~ msgid "Move window left"
 #~ msgstr "將視窗向左移"
+
 #~ msgid "Move window right"
 #~ msgstr "將視窗向右移"
+
 #~ msgid "Resize window down"
 #~ msgstr "向下修改視窗大小"
+
 #~ msgid "Resize window left"
 #~ msgstr "向左修改視窗大小"
+
 #~ msgid "Resize window right"
 #~ msgstr "向右修改視窗大小"
+
 #~ msgid "Cancel move/resize window"
 #~ msgstr "關閉視窗"
+
 #~ msgid "_Hide"
 #~ msgstr "隱藏(_H)"
-

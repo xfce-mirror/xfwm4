@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-29 05:10+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2010-12-30 15:33+0100\n"
 "Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -622,8 +623,12 @@ msgid "Reset to Defaults"
 msgstr "Repor as omissões"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Isto irá repor todos os atalhos para os seus valores por omissão. Deseja realmente fazer isto?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Isto irá repor todos os atalhos para os seus valores por omissão. Deseja "
+"realmente fazer isto?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -752,7 +757,9 @@ msgstr "Saltar áreas de trabalho dependendo da _disposição do ambiente actual
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Saltar áreas de trabalho quando a primeira ou a última área de trabal_ho for atingida"
+msgstr ""
+"Saltar áreas de trabalho quando a primeira ou a última área de trabal_ho for "
+"atingida"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -819,8 +826,10 @@ msgid "Change workspace name"
 msgstr "Mudar nome da área de trabalho"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margens são áreas nos limites do ecrã onde nenhuma janela irá ser colocada"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Margens são áreas nos limites do ecrã onde nenhuma janela irá ser colocada"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -831,7 +840,7 @@ msgid "_Number of workspaces:"
 msgstr "_Número de áreas de trabalho:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
@@ -966,7 +975,7 @@ msgstr "_Sair"
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falhou a capturar o ponteiro\n"
@@ -1000,4 +1009,3 @@ msgstr "Erro ao ler dados do processo dependente: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Incapaz de criar helper-dialog: %s\n"
-

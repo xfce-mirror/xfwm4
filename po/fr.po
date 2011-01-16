@@ -4,15 +4,16 @@
 # Olivier Fourdan <fourdan@xfce.org>, 2002-2006.
 # Maximilian Schleiss <maximilian@xfce.org>, 2006-2008.
 # Mike Massonnet <mmassonnet@xfce.org>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-15 17:11+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2009-01-18 16:24+0100\n"
 "Last-Translator: Jérôme Guelfucci <jeromeg@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,7 +65,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s : %s\n"
-"Essayez %s --help pour afficher une liste complète des options de ligne de commande.\n"
+"Essayez %s --help pour afficher une liste complète des options de ligne de "
+"commande.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -195,7 +197,8 @@ msgstr "A_vancé"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Mettre les fenêtres au premier plan lorsqu'elles _reçoivent l'attention"
+msgstr ""
+"Mettre les fenêtres au premier plan lorsqu'elles _reçoivent l'attention"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
@@ -287,11 +290,13 @@ msgstr "Titre"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Changer d'espace de travail en _déplaçant une fenêtre au bord de l'écran"
+msgstr ""
+"Changer d'espace de travail en _déplaçant une fenêtre au bord de l'écran"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Changer d'espace de travail lorsque le _pointeur arrive au bord de l'écran"
+msgstr ""
+"Changer d'espace de travail lorsque le _pointeur arrive au bord de l'écran"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
@@ -623,8 +628,12 @@ msgid "Reset to Defaults"
 msgstr "Réinitialiser aux valeurs par défaut"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Voulez-vous vraiment réinitialiser tous les raccourcis à leur valeur par défaut ?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Voulez-vous vraiment réinitialiser tous les raccourcis à leur valeur par "
+"défaut ?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -713,7 +722,9 @@ msgstr "Opacité des fenêtres durant leur _redimensionnement :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr "_Restaurer la taille originale des fenêtres maximisées lors de leur déplacement"
+msgstr ""
+"_Restaurer la taille originale des fenêtres maximisées lors de leur "
+"déplacement"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -737,11 +748,14 @@ msgstr "Sous le _pointeur de la souris"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr "_Utiliser la résistance aux bords au lieu de l'aimantation entre les fenêtres"
+msgstr ""
+"_Utiliser la résistance aux bords au lieu de l'aimantation entre les fenêtres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Changer d'espace de travail à l'aide de la _molette de la souris sur le bureau"
+msgstr ""
+"Changer d'espace de travail à l'aide de la _molette de la souris sur le "
+"bureau"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -753,7 +767,8 @@ msgstr "Changer d'espace de travail en fonction de l'_agencement du bureau"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Changer d'espace de travail après en avoir atteint le _premier ou le dernier"
+msgstr ""
+"Changer d'espace de travail après en avoir atteint le _premier ou le dernier"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -765,7 +780,8 @@ msgstr "_Placer la fenêtre dans l'espace de travail actif"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Dessiner un cadre autour des fenêtres sélectionnées lors de la navigation"
+msgstr ""
+"_Dessiner un cadre autour des fenêtres sélectionnées lors de la navigation"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
@@ -820,8 +836,10 @@ msgid "Change workspace name"
 msgstr "Renommer l'espace de travail"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Les marges sont des zones au bord de l'écran où aucune fenêtre ne sera placée"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Les marges sont des zones au bord de l'écran où aucune fenêtre ne sera placée"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -980,7 +998,9 @@ msgstr "%s: Impossible d'allouer la couleur %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s : Impossible d'allouer la couleur : la GValue de la couleur n'est pas de type STRING"
+msgstr ""
+"%s : Impossible d'allouer la couleur : la GValue de la couleur n'est pas de "
+"type STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -990,7 +1010,9 @@ msgstr "%s: Impossible d'analyser la couleur %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s : Impossible d'analyser la couleur : la GValue de la couleur n'est pas de type STRING"
+msgstr ""
+"%s : Impossible d'analyser la couleur : la GValue de la couleur n'est pas de "
+"type STRING"
 
 #: ../src/terminate.c:75
 #, c-format

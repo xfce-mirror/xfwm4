@@ -6,15 +6,16 @@
 # Og Maciel <ogmaciel@gnome.org>, 2008-2009.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 # Vladimir Melo <vmelo@gnome.org>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-04 11:10+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2009-02-04 20:21-0500\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,7 +67,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Digite %s --help para ver uma lista completa de opções disponíveis de linha de comando.\n"
+"Digite %s --help para ver uma lista completa de opções disponíveis de linha "
+"de comando.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -625,8 +627,12 @@ msgid "Reset to Defaults"
 msgstr "Restaurar para padrões"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Isto restaurará todos os atalhos aos seus valores padrões. Você realmente deseja fazer isso?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Isto restaurará todos os atalhos aos seus valores padrões. Você realmente "
+"deseja fazer isso?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -743,7 +749,9 @@ msgstr "Usar r_esistência de bordas em vez de alinhamento de janelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Use a roda do _mouse sobre a área de trabalho para alternar os espaços de trabalho"
+msgstr ""
+"Use a roda do _mouse sobre a área de trabalho para alternar os espaços de "
+"trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -751,11 +759,15 @@ msgstr "Quando uma janela for levantada:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Ativar espaços de traba_lho dependendo da disposição exata da área de trabalho"
+msgstr ""
+"Ativar espaços de traba_lho dependendo da disposição exata da área de "
+"trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Ativar espaços de trabalho quando o primeiro ou o último espaço de trabalho _for alcançado"
+msgstr ""
+"Ativar espaços de trabalho quando o primeiro ou o último espaço de trabalho "
+"_for alcançado"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -801,7 +813,9 @@ msgstr ""
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Ignorar a_s janelas que têm as propriedades \"ignorar paginador\" ou \"ignorar barra de tarefas\" definidas"
+msgstr ""
+"Ignorar a_s janelas que têm as propriedades \"ignorar paginador\" ou "
+"\"ignorar barra de tarefas\" definidas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
@@ -820,8 +834,10 @@ msgid "Change workspace name"
 msgstr "Alterar nome do espaço de trabalho"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margens são áreas nas bordas da tela onde nenhuma janela será posicionada"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Margens são áreas nas bordas da tela onde nenhuma janela será posicionada"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -990,7 +1006,8 @@ msgstr "%s: Não foi possível analisar a cor %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Não foi possível analisar cor: GValue para cor não é do tipo STRING"
+msgstr ""
+"%s: Não foi possível analisar cor: GValue para cor não é do tipo STRING"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -1059,8 +1076,11 @@ msgstr "Não foi possível criar o helper-dialog: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Posicionar a janela no centro"
 
-#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr "Ignorar as janelas que têm as propriedades \"ignorar paginador\" ou \"ignorar barra de tarefas\" definidas"
+#~ msgid ""
+#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr ""
+#~ "Ignorar as janelas que têm as propriedades \"ignorar paginador\" ou "
+#~ "\"ignorar barra de tarefas\" definidas"
 
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Incluir janelas ocultas (i.e. iconificadas)"
@@ -1099,19 +1119,29 @@ msgstr "Não foi possível criar o helper-dialog: %s\n"
 #~ msgstr "Acessibilidade"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr "Mudar de espaço de trabalho usando a roda do mouse sobre a área de trabalho"
+#~ msgstr ""
+#~ "Mudar de espaço de trabalho usando a roda do mouse sobre a área de "
+#~ "trabalho"
 
-#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-#~ msgstr "Lembrar e retornar ao espaço de trabalho anterior ao trocar através dos atalhos de teclado"
+#~ msgid ""
+#~ "Remember and recall previous workspace when switching via keyboard "
+#~ "shortcuts"
+#~ msgstr ""
+#~ "Lembrar e retornar ao espaço de trabalho anterior ao trocar através dos "
+#~ "atalhos de teclado"
 
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr "Ativar espaços de trabalho dependendo da disposição da área de trabalho"
+#~ msgstr ""
+#~ "Ativar espaços de trabalho dependendo da disposição da área de trabalho"
 
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Ativar espaços de trabalho quando o primeiro ou o último espaço de trabalho for alcançado"
+#~ msgstr ""
+#~ "Ativar espaços de trabalho quando o primeiro ou o último espaço de "
+#~ "trabalho for alcançado"
 
 #~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Tamanho mínimo das janelas para acionar o posicionamento inteligente:"
+#~ msgstr ""
+#~ "Tamanho mínimo das janelas para acionar o posicionamento inteligente:"
 
 #~ msgid "Size|Small"
 #~ msgstr "Pequeno"
@@ -1168,7 +1198,9 @@ msgstr "Não foi possível criar o helper-dialog: %s\n"
 #~ msgstr "Ajustes do Gerenciador de Janelas"
 
 #~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr "Estas configurações não podem funcionar com seu gerenciador de janelas atual (%s)"
+#~ msgstr ""
+#~ "Estas configurações não podem funcionar com seu gerenciador de janelas "
+#~ "atual (%s)"
 
 #~ msgid "Change name"
 #~ msgstr "Mudar nome"
@@ -1395,8 +1427,12 @@ msgstr "Não foi possível criar o helper-dialog: %s\n"
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Configurações Avançadas do Gerenciador de Janelas"
 
-#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
-#~ msgstr "O atalho já está em uso por <b>outra ação do gerenciador de janelas</b>. Qual ação você deseja usar?"
+#~ msgid ""
+#~ "This shortcut is already being used by <b>another window manager action</"
+#~ "b>. Which action do you want to use?"
+#~ msgstr ""
+#~ "O atalho já está em uso por <b>outra ação do gerenciador de janelas</b>. "
+#~ "Qual ação você deseja usar?"
 
 #~ msgid "Use %s"
 #~ msgstr "Usar %s"
@@ -1407,8 +1443,12 @@ msgstr "Não foi possível criar o helper-dialog: %s\n"
 #~ msgid "Keep %s"
 #~ msgstr "Manter %s"
 
-#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
-#~ msgstr "O atalho já está em uso por uma <b>ação do gerenciador de janelas</b>. Qual ação você deseja usar?"
+#~ msgid ""
+#~ "The shortcut is already being used by a <b>window manager action</b>. "
+#~ "Which action do you want to use?"
+#~ msgstr ""
+#~ "O atalho já está em uso por uma <b>ação do gerenciador de janelas</b>. "
+#~ "Qual ação você deseja usar?"
 
 #~ msgid "Conflicting actions for %s"
 #~ msgstr "Ações em conflito para %s"

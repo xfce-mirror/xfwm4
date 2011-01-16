@@ -5,15 +5,16 @@
 # Jens Hagerman <godhet@gmail.com>, 2006.
 # Alexander Toresson <alexander.toresson@gmail.com>, 2006.
 # Daniel Nylander <po@danielnylander.se>, 2008, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-18 17:11+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2010-10-17 17:08+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,7 +67,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Prova %s --help för att se en komplett lista över tillgängliga kommandoradsflaggor.\n"
+"Prova %s --help för att se en komplett lista över tillgängliga "
+"kommandoradsflaggor.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -625,8 +627,12 @@ msgid "Reset to Defaults"
 msgstr "Återställ till standardvärden"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Detta kommer att återställa alla genvägar till sin standardvärden. Vill du verkligen göra detta?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Detta kommer att återställa alla genvägar till sin standardvärden. Vill du "
+"verkligen göra detta?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -715,7 +721,8 @@ msgstr "Opacitet när storleken på ett fönster _ändras:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Återställ ursprunglig _storlek för maximerade fönster när de förflyttas"
+msgstr ""
+"Återställ ursprunglig _storlek för maximerade fönster när de förflyttas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -822,8 +829,11 @@ msgid "Change workspace name"
 msgstr "Byt namn på arbetsyta"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marginaler är områden vid skärmens kanter där inga fönster kommer att placeras"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Marginaler är områden vid skärmens kanter där inga fönster kommer att "
+"placeras"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -1055,8 +1065,11 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Do nothing"
 #~ msgstr "Ingenting"
 
-#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr "Lyd program när de säger att de inte vill att något av deras fönster inte ska visas i aktivitetsfältet eller skrivbordsbläddraren"
+#~ msgid ""
+#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr ""
+#~ "Lyd program när de säger att de inte vill att något av deras fönster inte "
+#~ "ska visas i aktivitetsfältet eller skrivbordsbläddraren"
 
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Inkludera minimerade fönster"
@@ -1086,7 +1099,8 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgstr "Dölj fönsterramar för maximerade fönster"
 
 #~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "Återställ maximerade fönster till sin ursprungliga storlek när de flyttas"
+#~ msgstr ""
+#~ "Återställ maximerade fönster till sin ursprungliga storlek när de flyttas"
 
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "Använd kantmotstånd istället för attraktion mellan fönster"
@@ -1097,8 +1111,11 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Växla arbetsyta genom att rulla mushjulet över skrivbordet"
 
-#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-#~ msgstr "Kom ihåg och återkalla föregående arbetsyta vid växling med snabbtangenter"
+#~ msgid ""
+#~ "Remember and recall previous workspace when switching via keyboard "
+#~ "shortcuts"
+#~ msgstr ""
+#~ "Kom ihåg och återkalla föregående arbetsyta vid växling med snabbtangenter"
 
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "Byt arbetsyta när muspekaren når skärmens kant"
@@ -1161,7 +1178,8 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgstr "Fönsterhanterare - finjusteringar"
 
 #~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr "De här inställningarna fungerar inte med den här fönsterhanteraren (%s)"
+#~ msgstr ""
+#~ "De här inställningarna fungerar inte med den här fönsterhanteraren (%s)"
 
 #~ msgid "Change name"
 #~ msgstr "Byt namn"
@@ -1388,12 +1406,16 @@ msgstr "Kan inte starta helper-dialog: %s\n"
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Xfce 4 Inställningar för fönsterhanteraren"
 
-#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
+#~ msgid ""
+#~ "This shortcut is already being used by <b>another window manager action</"
+#~ "b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"
 
-#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
+#~ msgid ""
+#~ "The shortcut is already being used by a <b>window manager action</b>. "
+#~ "Which action do you want to use?"
 #~ msgstr ""
 #~ "Tangentkombinationen används redan!\n"
 #~ "Vill du verkligen använda den?"

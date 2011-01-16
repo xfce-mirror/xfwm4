@@ -1,15 +1,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Danishka Navin, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-13 18:05+0100\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2010-03-13 18:58+0530\n"
 "Last-Translator: Akila Wajirasena <akila.wajirasena@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
+"Language: si\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,27 +38,27 @@ msgid "Session manager socket"
 msgstr "සැසි කළමනාකරන සොකට්ටුව"
 
 #: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 #, fuzzy
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:361
+#: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:312
 msgid "Version information"
 msgstr "අනුවාද තොරතුරු"
 
 #: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:378
-#: ../settings-dialogs/xfwm4-settings.c:948
+#: ../settings-dialogs/workspace-settings.c:388
+#: ../settings-dialogs/xfwm4-settings.c:942
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:952
+#: ../settings-dialogs/workspace-settings.c:392
+#: ../settings-dialogs/xfwm4-settings.c:946
 #, fuzzy, c-format
 msgid ""
 "%s: %s\n"
@@ -66,18 +67,18 @@ msgstr ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 
-#: ../settings-dialogs/workspace-settings.c:72
-#: ../settings-dialogs/workspace-settings.c:87
+#: ../settings-dialogs/workspace-settings.c:73
+#: ../settings-dialogs/workspace-settings.c:88
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "වැඩ අවකාශය  %d"
 
-#: ../settings-dialogs/workspace-settings.c:252
+#: ../settings-dialogs/workspace-settings.c:280
 #, fuzzy
 msgid "Workspace Name"
 msgstr "වැඩ අවකාශ නාමය"
 
-#: ../settings-dialogs/workspace-settings.c:360
+#: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
 msgstr "සැකසුම් කළමනාකරන සොකට්ටුව"
@@ -630,36 +631,39 @@ msgstr "අවසන් වැඩ අවකාශය මකා දමන්න"
 msgid "Delete active workspace"
 msgstr "සක්‍රීය වැඩ අවකාශය මකා දමන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:450
+#: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
 msgstr "තේමාව"
 
-#: ../settings-dialogs/xfwm4-settings.c:599
+#: ../settings-dialogs/xfwm4-settings.c:597
 #, fuzzy
 msgid "Action"
 msgstr "ක්‍රියාව"
 
-#: ../settings-dialogs/xfwm4-settings.c:604
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Shortcut"
 msgstr "කෙටිමඟ "
 
-#: ../settings-dialogs/xfwm4-settings.c:977
+#: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf ඇරභීමට නොහැකිවිය. හේතුව: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:988
+#: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
 msgstr "සැකසුම් සංවාද කොටුව තැනීමට නොහැකි විය."
 
-#: ../settings-dialogs/xfwm4-settings.c:1880
-#: ../settings-dialogs/xfwm4-settings.c:1881
+#: ../settings-dialogs/xfwm4-settings.c:1869
+#: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
 msgstr "පෙරනිමියට යළි  පිහිටුවන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:1882
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "මෙමගින් සියලු කෙටිමං ඒවායේ පෙරනිමි තත්වයට පත් කරනු ඇත. ඔබට ඇත්තටම මෙය කිරීමට අවශ්‍යද? "
+#: ../settings-dialogs/xfwm4-settings.c:1871
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"මෙමගින් සියලු කෙටිමං ඒවායේ පෙරනිමි තත්වයට පත් කරනු ඇත. ඔබට ඇත්තටම මෙය කිරීමට අවශ්‍යද? "
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -867,7 +871,8 @@ msgid "Change workspace name"
 msgstr "වැඩ අවකාශ නාමය වෙනස් කරන්න"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -879,15 +884,49 @@ msgid "_Number of workspaces:"
 msgstr "වැඩ අවකාශ ගණන (_N):"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, fuzzy, c-format
 msgid "%s (on %s)"
 msgstr "%s (මත %s)"
 
-#: ../src/main.c:138
+#: ../src/main.c:140
 #, fuzzy, c-format
 msgid "%s: Segmentation fault"
 msgstr "%s: ඛණ්ඩන දෝෂය"
+
+#: ../src/main.c:534
+msgid "Fork to the background"
+msgstr ""
+
+#: ../src/main.c:536
+msgid "Fork to the background (not supported)"
+msgstr ""
+
+#: ../src/main.c:539
+msgid "Set the compositor mode"
+msgstr ""
+
+#: ../src/main.c:541
+msgid "Set the compositor mode (not supported)"
+msgstr ""
+
+#: ../src/main.c:543
+msgid "Replace the existing window manager"
+msgstr ""
+
+#: ../src/main.c:544
+#, fuzzy
+msgid "Print version information and exit"
+msgstr "අනුවාද තොරතුරු"
+
+#: ../src/main.c:552
+msgid "[ARGUMENTS...]"
+msgstr ""
+
+#: ../src/main.c:559
+#, c-format
+msgid "Type \"%s --help\" for usage."
+msgstr ""
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -987,7 +1026,7 @@ msgstr "පිටවෙන්න (_Q)"
 msgid "Restart"
 msgstr "යළි අරඔන්න"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""

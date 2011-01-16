@@ -1,3 +1,10 @@
+4.8.0
+=====
+- Update copyright year.
+- Updated translations: Greek, Croatian, Polish, Romanian,
+  Frensh, Arabic.
+
+
 4.7.4
 =====
 - Fix bug #6651 Shape Mask Changes not Immediately Recognized by Xfwm4.

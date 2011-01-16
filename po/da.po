@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-26 17:10+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2009-12-15 13:53+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,7 +68,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Prøv %s --help for at se en fuld liste over tilgængelige kommandolinjetilvalg.\n"
+"Prøv %s --help for at se en fuld liste over tilgængelige "
+"kommandolinjetilvalg.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -626,8 +628,12 @@ msgid "Reset to Defaults"
 msgstr "Nulstil til standarder"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Dette vil nulstille alle genveje til deres standardværdier. Vil du virkelig gøre dette?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Dette vil nulstille alle genveje til deres standardværdier. Vil du virkelig "
+"gøre dette?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -823,8 +829,11 @@ msgid "Change workspace name"
 msgstr "Ændr arbejdsområdenavn"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margener er de områder i kanten af skærmbilledet, hvor vinduer ikke vil blive placeret"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Margener er de områder i kanten af skærmbilledet, hvor vinduer ikke vil "
+"blive placeret"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -835,7 +844,7 @@ msgid "_Number of workspaces:"
 msgstr "A_ntal arbejdsområder:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:182
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
@@ -970,7 +979,7 @@ msgstr "_Afslut"
 msgid "Restart"
 msgstr "Genstart"
 
-#: ../src/menu.c:423
+#: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke gribe fat i muse-markøren\n"

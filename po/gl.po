@@ -1,20 +1,21 @@
 # Galician translation of xfwm4
 # Copyright (C) 2006, 2008, 2009, 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-# 
+#
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009, 2010.
-# 
+#
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-12 17:12+0000\n"
+"POT-Creation-Date: 2011-01-16 17:27+0100\n"
 "PO-Revision-Date: 2010-10-19 19:01+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,7 +68,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Execute '%s --help' para ver unha lista completa das opcións de liña de ordes dispoñibles.\n"
+"Execute '%s --help' para ver unha lista completa das opcións de liña de "
+"ordes dispoñibles.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -291,11 +293,14 @@ msgstr "Título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "_Dividir os espazos de traballo cando se arrastre unha xanela fóra da pantalla"
+msgstr ""
+"_Dividir os espazos de traballo cando se arrastre unha xanela fóra da "
+"pantalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Dividir os espazos de traballo cando o _punteiro chega ao bordo da pantalla"
+msgstr ""
+"Dividir os espazos de traballo cando o _punteiro chega ao bordo da pantalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
@@ -628,8 +633,11 @@ msgid "Reset to Defaults"
 msgstr "Restablecer as predefinicións"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Isto restablecerá as predefinicións de todos os atallos. Desexa facer isto?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Isto restablecerá as predefinicións de todos os atallos. Desexa facer isto?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -694,7 +702,8 @@ msgstr "Tecla que se usa para _seleccionar e mover as xanelas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Notificar a _urxencia facendo que as decoracións das xanelas pestanexen"
+msgstr ""
+"Notificar a _urxencia facendo que as decoracións das xanelas pestanexen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Opaci_ty of window decorations:"
@@ -754,11 +763,14 @@ msgstr "Cando unha xanela se eleva:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Dividir os espazos de traballo dependendo da _disposición actual do escritorio"
+msgstr ""
+"Dividir os espazos de traballo dependendo da _disposición actual do "
+"escritorio"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Dividir os _espazos de traballo cando se chega ao primeiro ou ao último"
+msgstr ""
+"Dividir os _espazos de traballo cando se chega ao primeiro ou ao último"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -827,8 +839,11 @@ msgid "Change workspace name"
 msgstr "Cambiar o nome do espazo de traballo"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "As marxes son as zonas dos bordos da pantalla nas que non se sitúa ningunha xanela"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"As marxes son as zonas dos bordos da pantalla nas que non se sitúa ningunha "
+"xanela"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
