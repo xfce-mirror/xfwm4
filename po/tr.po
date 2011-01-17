@@ -2,23 +2,23 @@
 # Turkish translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Erçin EKER <erc.caldera@gmx.net>, 2003.
 # Eren Türkay <turkay.eren@gmail.com>, 2007.
 # Gökmen Görgen <gkmngrgn@gmail.com>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-01-17 05:12+0000\n"
 "PO-Revision-Date: 2009-01-30 21:31+0200\n"
 "Last-Translator: Gökmen Görgen <gkmngrgn@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -169,29 +169,25 @@ msgstr "<b>_Tema</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
 msgid "<i>Long</i>"
-msgstr "Gecikme|<i>Uzunz/i>"
+msgstr "<i>Uzunz/i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "<i>Short</i>"
-msgstr "Gecikme|<i>Kısa</i>"
+msgstr "<i>Kısa</i>"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "Boyut|<i>Küçük</i>"
+msgstr "<i>Küçük</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "Uzaklık|<i>Geniş</i>"
+msgstr "<i>Geniş</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
@@ -385,13 +381,12 @@ msgid "Cycle windows (Reverse)"
 msgstr "Pencereleri çevir"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Pencerenin çalışma alanına gönder"
+msgstr "Aynı uygulama için pencereyi değiştir."
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
-msgstr ""
+msgstr "Uygulamayı değiştir"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
@@ -632,18 +627,13 @@ msgid "Reset to Defaults"
 msgstr "Öntanımlılara Geri Dön"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Bu, tüm kısayolları öntanımlı değerlerine geri döndürecek. Bunu yapmak "
-"istediğinizden emin misiniz?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Bu, tüm kısayolları öntanımlı değerlerine geri döndürecek. Bunu yapmak istediğinizden emin misiniz?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Large</i>"
-msgstr "Boyut|<i>Büyük</i>"
+msgstr "<i>Büyük</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "<i>Opaque</i>"
@@ -834,8 +824,7 @@ msgid "Change workspace name"
 msgstr "Çalışma alanı ismini değiştir"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Sınırlar, ekranın kenarlarında pencere yerleştirilmeyecek bölgelerdir."
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -859,38 +848,36 @@ msgstr "%s: Parçalanma hatası"
 
 #: ../src/main.c:534
 msgid "Fork to the background"
-msgstr ""
+msgstr "Arka planda çalıştır"
 
 #: ../src/main.c:536
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Arka planda çalıştır (desteklenmiyor)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Compositor modunu ayarla"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Compositor modunu ayarla (desteklenmiyor)"
 
 #: ../src/main.c:543
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Xfce 4 Pencere Yöneticisi Ayarları"
+msgstr "Var olan pencere yöneticisi ile değiştir"
 
 #: ../src/main.c:544
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "Sürüm bilgisi"
+msgstr "Sürüm bilgisini göster ve çık."
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGÜMANLAR]"
 
 #: ../src/main.c:559
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Kullanım bilgisi için \"%s --help\" yazın"
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -1031,7 +1018,6 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Resistance|<i>Wide</i>"
 #~ msgstr "Direnme|<i>Fazla</i>"
 
-#, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Pencere Yöneticisi"
 
@@ -1065,11 +1051,9 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Bottom :"
 #~ msgstr "Alt :"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
 #~ msgstr "Şu anki çalışma alanından pencereyi al"
 
-#, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "Hiçbir şey yapma"
 
@@ -1079,150 +1063,108 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Pencereyi ortaya konumlandır"
 
-#, fuzzy
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "\"sayfalayıcıyı atla\" veya \"görev çubuğunu atla\" seçenekleri "
-#~ "ayarlanmış olan pencereleri atla"
+#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr "\"sayfalayıcıyı atla\" veya \"görev çubuğunu atla\" seçenekleri ayarlanmış olan pencereleri atla"
 
-#, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Gizlenmiş (ö.r: simgelenmiş) pencereleri ekle"
 
-#, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
 #~ msgstr "Tüm çalışma alanları içinde pencereler arasında gezin"
 
-#, fuzzy
 #~ msgid "Cycling"
 #~ msgstr "Gezinme"
 
-#, fuzzy
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "Odaklama çalma korumasını etkinleştir"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
 #~ msgstr "Standart ICCCM odaklama ipucunu kabul et"
 
-#, fuzzy
 #~ msgid "Focus"
 #~ msgstr "Odakla"
 
-#, fuzzy
 #~ msgid "Key used to grab and move windows"
 #~ msgstr "Pencereleri yakalamak ve taşımak için tuş:"
 
-#, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "Herhangi bir fare tuşuna basıldığında pencereleri büyült"
 
-#, fuzzy
 #~ msgid "Hide frame of windows when maximized"
 #~ msgstr "Büyültültüğünde pencerelerin çerçevesini gizle"
 
-#, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
 #~ msgstr "Pencereleri taşırken büyütülmüş olan pencereyi asıl haline getir"
 
-#, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "Pencereleri koparmak yerine kenarlık direncini kullan"
 
-#, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Erişilebilirlik"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr ""
-#~ "Masaüstü üzerinde fare topunu kullanarak çalışma alanları arasında geçiş "
-#~ "yap"
+#~ msgstr "Masaüstü üzerinde fare topunu kullanarak çalışma alanları arasında geçiş yap"
 
-#, fuzzy
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Klavye kısayolları ile geçiş yaparken önceki çalışma alanını hatırla ve "
-#~ "çağır"
+#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#~ msgstr "Klavye kısayolları ile geçiş yaparken önceki çalışma alanını hatırla ve çağır"
 
-#, fuzzy
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr "Güncel masaüstü yerleşimine bağlı olarak çalışma alanlarını kaydır"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "İlk veya son çalışma alanı uzadığında çalışma alanlarını kaydır"
 
-#, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
 #~ msgstr "Akıllı konumlandırmayı tetiklemek için pencerelerin en az büyüklüğü"
 
-#, fuzzy
 #~ msgid "Size|Small"
 #~ msgstr "Küçük"
 
-#, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Büyük"
 
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Akıllı konumlandırma dışında öntanımlı pencere pozisyonu:"
 
-#, fuzzy
 #~ msgid "Placement"
 #~ msgstr "Konum"
 
-#, fuzzy
 #~ msgid "Enable display compositing"
 #~ msgstr "Görüntü düzenlemeyi etkinleştir"
 
-#, fuzzy
 #~ msgid "Display full screen overlay windows directly"
 #~ msgstr "Direkt olarak tam ekran pencereleri göster"
 
-#, fuzzy
 #~ msgid "Show shadows under dock windows"
 #~ msgstr "Açılan pencereler altında gölgeleri göster"
 
-#, fuzzy
 #~ msgid "Show shadows under regular windows"
 #~ msgstr "Normal pencereler altında gölge göster"
 
-#, fuzzy
 #~ msgid "Show shadows under popup windows"
 #~ msgstr "Açılan pencereler altında gölge göster"
 
-#, fuzzy
 #~ msgid "Opacity of window decorations"
 #~ msgstr "Pencere dekorasyonlarının şeffaflığı"
 
-#, fuzzy
 #~ msgid "Transparent"
 #~ msgstr "Şeffaf"
 
-#, fuzzy
 #~ msgid "Opaque"
 #~ msgstr "Opak"
 
-#, fuzzy
 #~ msgid "Opacity of inactive windows"
 #~ msgstr "Aktif olmayan pencerelerin şeffaflığı"
 
-#, fuzzy
 #~ msgid "Opacity of windows during move"
 #~ msgstr "Taşıma sırasında pencerelerin parlaklığı"
 
-#, fuzzy
 #~ msgid "Opacity of windows during resize"
 #~ msgstr "Yeniden boyutlandırma sırasında pencerelerin şeffaflığı"
 
-#, fuzzy
 #~ msgid "Opacity of popup windows"
 #~ msgstr "Yeni açılan pencerelerin şeffaflığı"
 
-#, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Birleştirici"
 
@@ -1235,18 +1177,15 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Change name"
 #~ msgstr "İsim değiştir"
 
-#, fuzzy
 #~ msgid "Name:"
 #~ msgstr "İsim:"
 
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Çalışma alanı adını düzenlemek için üzerine tıklayın."
 
-#, fuzzy
 #~ msgid "Number of workspaces:"
 #~ msgstr "Çalışma alanı sayısı:"
 
-#, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "Çalışma alanı isimleri"
 
@@ -1256,7 +1195,6 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Çalışma Alanları ve Sınırlar"
 
-#, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Boşluklar"
 
@@ -1278,57 +1216,45 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Xfce 4 Çalışma Alanı Ayarları"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Yerleşimi değiştirmek için düğmeye tıklayın ve sürükleyin"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Yazıtipi Seçim Diyaloğu"
 
-#, fuzzy
 #~ msgid "Title font"
 #~ msgstr "Başlık yazıtipi"
 
-#, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Başlık Hizalaması"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Başlık çubuğundaki metin hizalaması :"
 
-#, fuzzy
 #~ msgid "Button layout"
 #~ msgstr "Düğme düzeni"
 
-#, fuzzy
 #~ msgid "Style"
 #~ msgstr "Stil"
 
-#, fuzzy
 #~ msgid "Window shortcuts"
 #~ msgstr "Pencere kısayolları"
 
-#, fuzzy
 #~ msgid "Command"
 #~ msgstr "Komut"
 
-#, fuzzy
 #~ msgid "Keyboard"
 #~ msgstr "Klavye"
 
-#, fuzzy
 #~ msgid "Focus model"
 #~ msgstr "Odaklama şekli"
 
-#, fuzzy
 #~ msgid "Click to focus"
 #~ msgstr "Odaklama için tıklansın"
 
-#, fuzzy
 #~ msgid "Focus follows mouse"
 #~ msgstr "Odak fareyi takip etsin"
 
-#, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Pencere odaklanmadan önceki gecikme"
 
@@ -1338,103 +1264,78 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Fast"
 #~ msgstr "Hızlı"
 
-#, fuzzy
 #~ msgid "Automatically give focus to newly created windows"
 #~ msgstr "Yeni oluşturulan pencereye otomatik olarak odaklan"
 
-#, fuzzy
 #~ msgid "New window focus"
 #~ msgstr "Yeni pencere odaklaması"
 
-#, fuzzy
 #~ msgid "Raise on focus"
 #~ msgstr "Odaklamada yükselt"
 
-#, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
 #~ msgstr "Pencereler odaklanma kazanınca otomatik olarak yükselt"
 
-#, fuzzy
 #~ msgid "Delay before raising focused window :"
 #~ msgstr "Odaklanmış pencere büyültmesi öncesi gecikme :"
 
-#, fuzzy
 #~ msgid "Raise window when clicking inside application window"
 #~ msgstr "Uygulama penceresinin içine tıklayınca pencereyi yükselt"
 
-#, fuzzy
 #~ msgid "Raise on click"
 #~ msgstr "Tıklamada yükselt"
 
-#, fuzzy
 #~ msgid "Windows snapping"
 #~ msgstr "Pencere yerleştirme"
 
-#, fuzzy
 #~ msgid "Snap windows to screen border"
 #~ msgstr "Pencereleri ekran sınırlarına daya"
 
-#, fuzzy
 #~ msgid "Snap windows to other windows"
 #~ msgstr "Pencereleri diğerlerine daya"
 
-#, fuzzy
 #~ msgid "Distance :"
 #~ msgstr "Uzaklık :"
 
-#, fuzzy
 #~ msgid "Distance|Small"
 #~ msgstr "Yakın"
 
-#, fuzzy
 #~ msgid "Distance|Wide"
 #~ msgstr "Uzun"
 
-#, fuzzy
 #~ msgid "Wrap workspaces"
 #~ msgstr "Çalışma alanlarını değiştir"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
 #~ msgstr "İşaretçi ekran kenarına geldiğinde çalışma alanını değiştir"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
 #~ msgstr "Bir pencereyi ekran dışına taşıyınca çalışma alanını değiştir"
 
-#, fuzzy
 #~ msgid "Edge Resistance :"
 #~ msgstr "Kenar direnci :"
 
-#, fuzzy
 #~ msgid "Resistance|Small"
 #~ msgstr "Küçük"
 
-#, fuzzy
 #~ msgid "Resistance|Wide"
 #~ msgstr "Büyük"
 
-#, fuzzy
 #~ msgid "Opaque move and resize"
 #~ msgstr "Mat taşıma ve boyutlandırma"
 
-#, fuzzy
 #~ msgid "Display content of windows when resizing"
 #~ msgstr "Pencereleri yeniden boyutlandırıken içeriğini göster"
 
-#, fuzzy
 #~ msgid "Display content of windows when moving"
 #~ msgstr "Pencereleri taşırken içeriğini göster"
 
-#, fuzzy
 #~ msgid "Double click action"
 #~ msgstr "Çift tıklama eylemi"
 
-#, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
 #~ msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem :"
 
-#, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Gelişmiş"
 
@@ -1447,7 +1348,6 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Add keybinding theme"
 #~ msgstr "Tuş takımı teması ekle"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Tema için yeni bir ad gir:"
 
@@ -1457,7 +1357,6 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Tuş takımı teması için bir isim belirlemelisiniz"
 
-#, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Pencereyi %d. çalışma alanına gönder"
 
@@ -1478,7 +1377,6 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ "%s öğesine yazılamıyor : \n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
@@ -1492,57 +1390,42 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Compose shortcut"
 #~ msgstr "Kısayol düzenle"
 
-#, fuzzy
 #~ msgid "No shortcut"
 #~ msgstr "Kısayol düzenle"
 
-#, fuzzy
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "Çalışma alanı sayısı:"
 
-#, fuzzy
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Xfce 4 Pencere Yöneticisi Ayarları"
 
-#, fuzzy
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
+#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Kısayol zaten kullanımda !\n"
 #~ "Kullanmak istediğinizden emin misiniz ?"
 
-#, fuzzy
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
+#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Kısayol zaten kullanımda !\n"
 #~ "Kullanmak istediğinizden emin misiniz ?"
 
-#, fuzzy
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr ""
 #~ "Kısayol zaten kullanımda !\n"
 #~ "Kullanmak istediğinizden emin misiniz ?"
 
-#, fuzzy
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "Xfce 4 Pencere Yöneticisi Ayarları"
 
-#, fuzzy
 #~ msgid "Action: %s"
 #~ msgstr "Aktif"
 
-#, fuzzy
 #~ msgid "Enter shortcut"
 #~ msgstr "Kısayol yok"
 
-#, fuzzy
 #~ msgid "Shortcut:"
 #~ msgstr "Kısayol yok"
 
-#, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "_Büyült"
 
@@ -1552,18 +1435,15 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "_Shade"
 #~ msgstr "Gö_lgele"
 
-#, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "Gölgelemeyi ka_pat"
 
 #~ msgid "S_tick"
 #~ msgstr "Sa_bit"
 
-#, fuzzy
 #~ msgid "(Un)S_tick"
 #~ msgstr "Sab_it değil"
 
-#, fuzzy
 #~ msgid "Below"
 #~ msgstr "Yavaş"
 
@@ -1573,15 +1453,12 @@ msgstr "Yardımcı menü oluşturulamadı: %s\n"
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Çalışma alanı %i (%s)"
 
-#, fuzzy
 #~ msgid "Ctrl"
 #~ msgstr "Merkez"
 
-#, fuzzy
 #~ msgid "Button"
 #~ msgstr "Düğme düzeni"
 
-#, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Kısayol"
 
