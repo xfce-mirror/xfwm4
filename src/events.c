@@ -301,6 +301,8 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 
     TRACE ("entering handleKeyEvent");
 
+    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
+
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!ev_screen_info)
     {
@@ -525,10 +527,6 @@ static eventFilterStatus
 handleKeyRelease (DisplayInfo *display_info, XKeyEvent * ev)
 {
     TRACE ("entering handleKeyRelease");
-    /* Seems we loose KeyRelease as a results of active grabs after
-     * a workspace switch of a cycling.
-     */
-    XAllowEvents (display_info->dpy, ReplayKeyboard, ev->time);
 
     return EVENT_FILTER_PASS;
 }
