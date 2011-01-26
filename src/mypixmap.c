@@ -800,6 +800,7 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     GdkColormap *cmap;
     gint width, height;
     gint dest_x, dest_y;
+    gint alpha_threshold;
 
     g_return_val_if_fail (pm != NULL, FALSE);
     g_return_val_if_fail (pm->pixmap != None, FALSE);
@@ -858,9 +859,10 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     gdk_draw_pixbuf (GDK_DRAWABLE (dest_pixmap), NULL, pixbuf, 0, 0, dest_x, dest_y,
                      width, height, GDK_RGB_DITHER_NONE, 0, 0);
 
+    alpha_threshold = (gdk_pixbuf_get_has_alpha (pixbuf) ? 0xFF : 0);
     gdk_pixbuf_render_threshold_alpha (pixbuf, dest_bitmap,
                                        0, 0, dest_x, dest_y,
-                                       width, height, 0xFF);
+                                       width, height, alpha_threshold);
 
     g_object_unref (cmap);
     g_object_unref (dest_pixmap);
