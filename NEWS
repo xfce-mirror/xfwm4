@@ -1,3 +1,10 @@
+4.8.1
+=====
+- Allow images without an alpha channel to be used in themes as well.
+- Restore the release keyboard events.
+- Updated translations: Russian, Basque, Swedish, Turkish.
+
+
 4.8.0
 =====
 - Update copyright year.
