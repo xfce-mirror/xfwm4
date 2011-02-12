@@ -92,7 +92,7 @@ xfwm4_CFLAGS =								\
 	$(COMPOSITOR_CFLAGS)						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
-	-DLIBDIR=\"$(libdir)\"						\
+	-DHELPERDIR=\"$(HELPER_PATH_PREFIX)\"				\
 	-DPACKAGE_DATADIR=\"$(pkgdatadir)\"				\
 	-DG_LOG_DOMAIN=\"xfwm4\"
 
