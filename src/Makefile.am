@@ -27,7 +27,6 @@ xfwm4_SOURCES =								\
 	inline-stock-rolldown.h						\
 	inline-stock-rollup.h						\
 	inline-stock-unmaximize.h					\
-	inline-tabwin-icon.h						\
 	keyboard.c							\
 	keyboard.h							\
 	main.c								\
@@ -113,7 +112,6 @@ xfwm4_LDADD =								\
 
 EXTRA_DIST = 								\
 	inline-default-icon.h default_icon.png default_icon.svg		\
-	inline-tabwin-icon.h tabwin-icon.png				\
 	inline-stock-maximize.h stock_maximize.png			\
 	inline-stock-unmaximize.h stock_unmaximize.png			\
 	inline-stock-minimize.h stock_minimize.png			\
@@ -123,7 +121,6 @@ EXTRA_DIST = 								\
 
 noinst_DATA = 								\
 	inline-default-icon.h default_icon.png default_icon.svg		\
-	inline-tabwin-icon.h tabwin-icon.png				\
 	inline-stock-maximize.h stock_maximize.png			\
 	inline-stock-unmaximize.h stock_unmaximize.png			\
 	inline-stock-minimize.h stock_minimize.png			\
@@ -132,10 +129,6 @@ noinst_DATA = 								\
 
 build.h:
 	$(AM_V_GEN) echo "#define BUILD_ID \""`date +%H%M-%y%m%d`"\"" > build.h
-
-inline-tabwin-icon.h: $(srcdir)/tabwin-icon.png
-	$(AM_V_GEN) gdk-pixbuf-csource --raw --build-list 		\
-	tabwin_icon_data $(srcdir)/tabwin-icon.png > inline-tabwin-icon.h
 
 inline-default-icon.h: $(srcdir)/default_icon.png
 	$(AM_V_GEN) gdk-pixbuf-csource --raw --build-list 		\

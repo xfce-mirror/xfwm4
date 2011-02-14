@@ -32,3 +32,6 @@ Metacity: Havoc Pennington <hp@redhat.com>
 Sawfish:  John Harper <jsh@unfactored.org>
 xcompmgr: Copyright © 2003 Keith Packard
 
+gen-color-table.pl comes from gtk/gdk-pixbuf/gen-color-table.pl and has been
+copied as is without any modification so original copyright/license remain on
+this file.

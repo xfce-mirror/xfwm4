@@ -36,7 +36,6 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
-#include "inline-tabwin-icon.h"
 #include "icons.h"
 #include "focus.h"
 #include "tabwin.h"
