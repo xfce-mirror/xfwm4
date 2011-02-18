@@ -2507,7 +2507,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
         return;
     }
 
-    if (!c || !FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_VISIBLE))
+    if (!c || !FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_MENU | XFWM_FLAG_VISIBLE))
     {
         return;
     }
