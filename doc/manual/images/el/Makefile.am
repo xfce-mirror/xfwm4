@@ -1,9 +1,4 @@
-SUBDIRS = \
-	el \
-	fr \
-	it
-
-imagesdir = $(docdir)/html/C/images
+imagesdir = $(docdir)/html/el/images
 images_DATA = \
 	xfwm_workspaces.png \
 	workspace_margins.png \

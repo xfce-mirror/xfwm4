@@ -252,6 +252,7 @@ Makefile
 doc/Makefile
 doc/manual/Makefile
 doc/manual/images/Makefile
+doc/manual/images/el/Makefile
 doc/manual/images/fr/Makefile
 doc/manual/images/it/Makefile
 doc/manual/po/Makefile
