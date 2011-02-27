@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-02-27 05:30+0000\n"
 "PO-Revision-Date: 2010-02-18 01:28+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
-"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sk\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -35,7 +35,7 @@ msgstr "Nič"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 msgid "Session manager socket"
-msgstr ""
+msgstr "Soket správcu sedenia"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:370
@@ -165,15 +165,13 @@ msgstr "<b>_Motív</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
 msgid "<i>Long</i>"
 msgstr "<i>Dlhé</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "<i>Short</i>"
-msgstr "<i>krátke</i>"
+msgstr "<i>Krátke</i>"
 
 #. Edge resistance
 #. Smart placement size
@@ -630,12 +628,8 @@ msgid "Reset to Defaults"
 msgstr "Obnoviť predvolené"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj chcete "
-"pokračovať?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj chcete pokračovať?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -809,18 +803,14 @@ msgstr "Preniesť okno do popredia po stlačení ľubovoľného tlačidla myši"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní skratkovými "
-"klávesami"
+msgstr "Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní skratkovými klávesami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 #, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" alebo "
-"\"vynechať v paneli úloh\""
+msgstr "Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" alebo \"vynechať v paneli úloh\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
@@ -839,11 +829,8 @@ msgid "Change workspace name"
 msgstr "Zmeniť názov pracovnej plochy"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Okraje plôch sú miesta po stranách obrazovky, kam nemôžu byť umiestnené "
-"žiadne okná"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Okraje plôch sú miesta po stranách obrazovky, kam nemôžu byť umiestnené žiadne okná"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -892,7 +879,7 @@ msgstr "Informácia o verzií"
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENTY...]"
 
 #: ../src/main.c:559
 #, c-format
@@ -1004,8 +991,7 @@ msgstr "%s: Nemožno prideliť farbu %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Nemožno prideliť farba: Hodnota GValue pre farbu nie je typu REŤAZEC"
+msgstr "%s: Nemožno prideliť farba: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1015,8 +1001,7 @@ msgstr "%s: Nemožno spracovať farbu %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Nemožno spracovať farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
+msgstr "%s: Nemožno spracovať farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -1040,19 +1025,15 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Resistance|<i>Wide</i>"
 #~ msgstr "<i>Vysoká</i>"
 
-#, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Správca okien"
 
-#, fuzzy
 #~ msgid "gtk-clear"
 #~ msgstr "Zrušiť"
 
-#, fuzzy
 #~ msgid "gtk-cancel"
 #~ msgstr "Zrušiť"
 
-#, fuzzy
 #~ msgid "gtk-save"
 #~ msgstr "Zrušiť"
 
@@ -1071,11 +1052,9 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Bottom :"
 #~ msgstr "Dole :"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
 #~ msgstr "Presunúť okno na nasledujúcu pracovnú plochu"
 
-#, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "Žiadna akcia"
 
@@ -1085,148 +1064,108 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Umiestniť okno do stredu"
 
-#, fuzzy
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" "
-#~ "alebo \"vynechať v paneli úloh\""
+#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr "Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" alebo \"vynechať v paneli úloh\""
 
-#, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Zahrnúť skryté (minimalizované) okná"
 
-#, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
 #~ msgstr "Prechádzať okná zo všetkých pracovných plôch"
 
-#, fuzzy
 #~ msgid "Cycling"
 #~ msgstr "Prechádzanie"
 
-#, fuzzy
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "Predchádzať strate zamerania okna"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
 #~ msgstr "Dodržiavať štandardný ICCCM focus hint"
 
-#, fuzzy
 #~ msgid "Focus"
 #~ msgstr "Fokus"
 
-#, fuzzy
 #~ msgid "Key used to grab and move windows"
 #~ msgstr "Klávesa pre uchopenie a presun okien"
 
-#, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "Preniesť okno do popredia po stlačení ľubovoľného tlačidla myši"
 
-#, fuzzy
 #~ msgid "Hide frame of windows when maximized"
 #~ msgstr "Pri maximalizácii skryť okraje okna"
 
-#, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
 #~ msgstr "Pri presune obnoviť pôvodnú veľkosť pri maximalizovaných oknách"
 
-#, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "Použiť odolnosť okrajov namiesto prichytávania okien"
 
-#, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Prístupnosť"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Prepínať plochy pomocou kolečka myši nad plochou"
 
-#, fuzzy
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní "
-#~ "skratkovými klávesami"
+#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#~ msgstr "Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní skratkovými klávesami"
 
-#, fuzzy
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr "Prechádzať na plochy podľa ich aktuálneho rozmiestnenia"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "Prechádzať pri dosiahnutí prvej alebo poslednej pracovnej plochy"
 
-#, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
 #~ msgstr "Najmenšia veľkosť okien pre použitie šikovného umiestnenia"
 
-#, fuzzy
 #~ msgid "Size|Small"
 #~ msgstr "Malá"
 
-#, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Veľká"
 
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Východzie nastavenie pozície okien bez šikovného umiestnenia:"
 
-#, fuzzy
 #~ msgid "Placement"
 #~ msgstr "Umiestnenie"
 
-#, fuzzy
 #~ msgid "Enable display compositing"
 #~ msgstr "Používať kompozitor"
 
-#, fuzzy
 #~ msgid "Display full screen overlay windows directly"
 #~ msgstr "Použiť priame zobrazovanie pre okná v režime celej obrazovky"
 
-#, fuzzy
 #~ msgid "Show shadows under dock windows"
 #~ msgstr "Zobraziť tiene pod dokovacími oknami"
 
-#, fuzzy
 #~ msgid "Show shadows under regular windows"
 #~ msgstr "Zobraziť tiene pod bežnými oknami"
 
-#, fuzzy
 #~ msgid "Show shadows under popup windows"
 #~ msgstr "Zobrazovať tiene po vyskakovacími oknami"
 
-#, fuzzy
 #~ msgid "Opacity of window decorations"
 #~ msgstr "Priehľadnosť dekorácii okien"
 
-#, fuzzy
 #~ msgid "Transparent"
 #~ msgstr "Priehľadné"
 
-#, fuzzy
 #~ msgid "Opaque"
 #~ msgstr "Nepriehľadné"
 
-#, fuzzy
 #~ msgid "Opacity of inactive windows"
 #~ msgstr "Priehľadnosť neaktívnych okien"
 
-#, fuzzy
 #~ msgid "Opacity of windows during move"
 #~ msgstr "Priehľadnosť okien pri presune"
 
-#, fuzzy
 #~ msgid "Opacity of windows during resize"
 #~ msgstr "Priehľadnosť okien pri zmene veľkosti"
 
-#, fuzzy
 #~ msgid "Opacity of popup windows"
 #~ msgstr "Priehľadnosť vyskakovacích okien"
 
-#, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Kompozitor"
 
@@ -1241,18 +1180,15 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Change name"
 #~ msgstr "Zmeniť meno"
 
-#, fuzzy
 #~ msgid "Name:"
 #~ msgstr "Meno:"
 
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "K zmene názvu virtuálnej plochy kliknite na jej meno"
 
-#, fuzzy
 #~ msgid "Number of workspaces:"
 #~ msgstr "Počet virtuálnych plôch:"
 
-#, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "Názvy virtuálnych plôch"
 
@@ -1262,7 +1198,6 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Pracovné plochy a okraje"
 
-#, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Okraje"
 
@@ -1284,57 +1219,45 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Nastavenie virtuálnych plôch prostredia Xfce 4"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Klknite a ťahajte tlačidlá k zmene vzhľadu"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Dialóg pre výber písma"
 
-#, fuzzy
 #~ msgid "Title font"
 #~ msgstr "Font titulku"
 
-#, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Zarovnanie titulku"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Zarovnanie textu v nadpise okna"
 
-#, fuzzy
 #~ msgid "Button layout"
 #~ msgstr "Rozloženie tlačidiel"
 
-#, fuzzy
 #~ msgid "Style"
 #~ msgstr "Štýl"
 
-#, fuzzy
 #~ msgid "Window shortcuts"
 #~ msgstr "Klávesové skratky okien"
 
-#, fuzzy
 #~ msgid "Command"
 #~ msgstr "Príkaz"
 
-#, fuzzy
 #~ msgid "Keyboard"
 #~ msgstr "Klávesnica"
 
-#, fuzzy
 #~ msgid "Focus model"
 #~ msgstr "Spôsob aktivácie okna"
 
-#, fuzzy
 #~ msgid "Click to focus"
 #~ msgstr "Kliknúť pre aktiváciu"
 
-#, fuzzy
 #~ msgid "Focus follows mouse"
 #~ msgstr "Okno pod myšou je aktívne"
 
-#, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Oneskorenie pred presunutím okna do popredia"
 
@@ -1344,105 +1267,78 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Fast"
 #~ msgstr "Rýchlo"
 
-#, fuzzy
 #~ msgid "Automatically give focus to newly created windows"
 #~ msgstr "Automaticky aktivovať novovytvorené okná"
 
-#, fuzzy
 #~ msgid "New window focus"
 #~ msgstr "Nové okno je aktívne"
 
-#, fuzzy
 #~ msgid "Raise on focus"
 #~ msgstr "Zdvihnúť pri aktivácii"
 
-#, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
 #~ msgstr "Automatický zdvihnúť okná, keď získajú aktiváciu"
 
-#, fuzzy
 #~ msgid "Delay before raising focused window :"
 #~ msgstr "Oneskorenie pred zdvihnutím aktivovaného okna :"
 
-#, fuzzy
 #~ msgid "Raise window when clicking inside application window"
 #~ msgstr "Zdvihnúť okno, keď je kliknuté vo vnútry okna aplikácie"
 
-#, fuzzy
 #~ msgid "Raise on click"
 #~ msgstr "Kliknutím zdvihnúť"
 
-#, fuzzy
 #~ msgid "Windows snapping"
 #~ msgstr "Prichytávanie okien"
 
-#, fuzzy
 #~ msgid "Snap windows to screen border"
 #~ msgstr "Prichytávať okná k okrajom obrazovky"
 
-#, fuzzy
 #~ msgid "Snap windows to other windows"
 #~ msgstr "Prichytávať okná k iným oknám"
 
-#, fuzzy
 #~ msgid "Distance :"
 #~ msgstr "Vzdialenosť:"
 
-#, fuzzy
 #~ msgid "Distance|Small"
 #~ msgstr "Malá"
 
-#, fuzzy
 #~ msgid "Distance|Wide"
 #~ msgstr "Veľká"
 
-#, fuzzy
 #~ msgid "Wrap workspaces"
 #~ msgstr "Prechádzanie medzi plochami"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr ""
-#~ "Prejsť na vedľajšiu plochu pri ukázaní kurzorom myši k okraji plochy"
+#~ msgstr "Prejsť na vedľajšiu plochu pri ukázaní kurzorom myši k okraji plochy"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr ""
-#~ "Prejsť na vedľajšiu plochu pri pretiahnutí okna mimo oblasť obrazovky"
+#~ msgstr "Prejsť na vedľajšiu plochu pri pretiahnutí okna mimo oblasť obrazovky"
 
-#, fuzzy
 #~ msgid "Edge Resistance :"
 #~ msgstr "Odolnosť:"
 
-#, fuzzy
 #~ msgid "Resistance|Small"
 #~ msgstr "Nízka"
 
-#, fuzzy
 #~ msgid "Resistance|Wide"
 #~ msgstr "Vysoká"
 
-#, fuzzy
 #~ msgid "Opaque move and resize"
 #~ msgstr "Vykreslovanie okna pri presune a zmene veľkosti"
 
-#, fuzzy
 #~ msgid "Display content of windows when resizing"
 #~ msgstr "Zobraziť obsah v zväčšujúcich sa oknách"
 
-#, fuzzy
 #~ msgid "Display content of windows when moving"
 #~ msgstr "Zobraziť obsah v presúvaných oknách"
 
-#, fuzzy
 #~ msgid "Double click action"
 #~ msgstr "Akcia pri dvojkliku"
 
-#, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
 #~ msgstr "Akcia pri dvojkliku na titulku okna :"
 
-#, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Pokročilé"
 
@@ -1455,7 +1351,6 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Add keybinding theme"
 #~ msgstr "Pridať nastavenie klávesových skratiek"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Vložte názov nastavenia klávesových skratiek"
 
@@ -1465,7 +1360,6 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Vložte iný názov pre nastavenie klávesových skratiek"
 
-#, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Presunúť okno na pracovnú plochu %d"
 
@@ -1486,7 +1380,6 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ "Nemôžem zapísať do %s : \n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
@@ -1500,57 +1393,42 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Compose shortcut"
 #~ msgstr "Vložiť skratkovú klávesu"
 
-#, fuzzy
 #~ msgid "No shortcut"
 #~ msgstr "Vložiť skratkovú klávesu"
 
-#, fuzzy
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "Počet virtuálnych plôch:"
 
-#, fuzzy
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Nastavenia správcu okien prostredia Xfce 4"
 
-#, fuzzy
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
+#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Skratka sa už používa!\n"
 #~ "Ste si istý, že ju chcete použiť?"
 
-#, fuzzy
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
+#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Skratka sa už používa!\n"
 #~ "Ste si istý, že ju chcete použiť?"
 
-#, fuzzy
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr ""
 #~ "Skratka sa už používa!\n"
 #~ "Ste si istý, že ju chcete použiť?"
 
-#, fuzzy
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "Nastavenia správcu okien prostredia Xfce 4"
 
-#, fuzzy
 #~ msgid "Action: %s"
 #~ msgstr "Aktívny"
 
-#, fuzzy
 #~ msgid "Enter shortcut"
 #~ msgstr "Žiadna klávesová skratka"
 
-#, fuzzy
 #~ msgid "Shortcut:"
 #~ msgstr "Žiadna klávesová skratka"
 
-#, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "Ma_ximalizovať"
 
@@ -1560,18 +1438,15 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "_Shade"
 #~ msgstr "_Zabaliť"
 
-#, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "_Rozbaliť"
 
 #~ msgid "S_tick"
 #~ msgstr "_Prilepiť"
 
-#, fuzzy
 #~ msgid "(Un)S_tick"
 #~ msgstr "O_dlepiť"
 
-#, fuzzy
 #~ msgid "Below"
 #~ msgstr "Pomaly"
 
@@ -1581,15 +1456,12 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Virtuálna plocha %i (%s)"
 
-#, fuzzy
 #~ msgid "Ctrl"
 #~ msgstr "V strede"
 
-#, fuzzy
 #~ msgid "Button"
 #~ msgstr "Rozloženie tlačidiel"
 
-#, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Skratka"
 
