@@ -231,19 +231,19 @@ msgstr "başlık çubuğundaki büyüt düğmesine orta tuşla tıkla"
 
 #: ./xfwm4.xml233(para)
 msgid "use Alt + F6 keyboard shortcut"
-msgstr ""
+msgstr "Alt + F6 tuş takımı kısayolunu kullan"
 
 #: ./xfwm4.xml236(para)
 msgid "To maximize a window horizontally :"
-msgstr ""
+msgstr "Bir pencereyi büyütmek için:"
 
 #: ./xfwm4.xml239(para)
 msgid "right-click the maximize button of the title bar"
-msgstr ""
+msgstr "başlık çubuğundaki büyüt düğmesine sağ tıklama"
 
 #: ./xfwm4.xml240(para)
 msgid "use Alt + F7 keyboard shortcut"
-msgstr ""
+msgstr "Alt + F7 tuş takımı kısayolunu kullan"
 
 #: ./xfwm4.xml243(para)
 msgid "When a window has been maximized in a way or another, it can be restored to its previous size doing one of these actions :"
@@ -255,7 +255,7 @@ msgstr ""
 
 #: ./xfwm4.xml248(para)
 msgid "use the same keyboard shortcut once again"
-msgstr ""
+msgstr "aynı tuş takımı kısayolunu bir daha kullan"
 
 #: ./xfwm4.xml249(para)
 msgid "choose the \"Unmaximize\" item in the window menu"
@@ -283,11 +283,11 @@ msgstr ""
 
 #: ./xfwm4.xml279(term)
 msgid "Hide / unhide windows"
-msgstr ""
+msgstr "Pencereleri gizle / göster"
 
 #: ./xfwm4.xml281(para)
 msgid "You can hide a window performing one of these actions :"
-msgstr ""
+msgstr "Bir pencereyi bu eylemlerden birini gerçekleştirerek gizleyebilirsiniz:"
 
 #: ./xfwm4.xml283(para)
 msgid "click the hide button of the title bar"
@@ -295,7 +295,7 @@ msgstr "başlık çubuğundaki gizle düğmesine tıklayın"
 
 #: ./xfwm4.xml284(para)
 msgid "open the window menu from the title bar and choose the \"Hide\" item"
-msgstr ""
+msgstr "Başlık çubuğundan pencere menüsünü aç ve \"Gizle\" maddesini seç"
 
 #: ./xfwm4.xml286(para)
 msgid "use Alt + F8 keyboard shortcut"
@@ -311,7 +311,7 @@ msgstr ""
 
 #: ./xfwm4.xml294(application)
 msgid "xftaskbar4"
-msgstr ""
+msgstr "xftaskbar4"
 
 #: ./xfwm4.xml295(para)
 msgid "the list of windows, accessible with a middle-click on the desktop background. This list shows all opened windows, classified by workspaces. Windows that are currently hidden are marked between [ ]."
@@ -319,7 +319,7 @@ msgstr ""
 
 #: ./xfwm4.xml299(para)
 msgid "the <application>xfce4-iconbox</application>"
-msgstr ""
+msgstr "<application>xfce4-iconbox</application>"
 
 #: ./xfwm4.xml305(term)
 msgid "Shade / unshade windows"
@@ -343,7 +343,7 @@ msgstr ""
 
 #: ./xfwm4.xml316(para)
 msgid "use the Alt + F9 keyboard shortcut"
-msgstr ""
+msgstr "the Alt + F9 tuş takımı kısayolunu kullan"
 
 #: ./xfwm4.xml322(term)
 msgid "Stick / unstick windows"
