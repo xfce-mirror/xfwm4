@@ -699,19 +699,19 @@ msgstr ""
 
 #: ./xfwm4.xml656(para)
 msgid "Focus follow mouse : select this option if you want a window to receive the focus as soon as the mouse pointer is over its frame."
-msgstr ""
+msgstr "Odak fareyi takip eder : fare imleci çerçevenin üzerine geldiğinde bir pencerenin hemen odaklanmasını istiyorsanız bu seçeneği seçin."
 
 #: ./xfwm4.xml665(term)
 msgid "New window focus"
-msgstr ""
+msgstr "Yeni pencereye odaklan"
 
 #: ./xfwm4.xml667(para)
 msgid "Selecting this option will automatically give the focus to newly created windows, without the need to click or move the mouse pointer."
-msgstr ""
+msgstr "Bu seçeneği seçmek, fare imlecini hareket ettirmeye veya tıklamaya gerek kalmadan, yeni oluşturulan pencereleri odağa yerleştirecek."
 
 #: ./xfwm4.xml675(term)
 msgid "Raise on focus"
-msgstr ""
+msgstr "Odaklanıldığında yükselt"
 
 #: ./xfwm4.xml677(para)
 msgid "If this option is selected, the frame of a newly focused window will automatically appear over all other frames, after an amount of time that you can adjust with the \"delay\" slider."
@@ -719,7 +719,7 @@ msgstr ""
 
 #: ./xfwm4.xml685(term)
 msgid "Raise on click"
-msgstr ""
+msgstr "Tıklandığında yükselt"
 
 #: ./xfwm4.xml687(para)
 msgid "Choose this option if you want a window to pass over the others when you click anywhere on its frame. If this option is not selected, you will have to click somewhere on its decorations (title bar, borders or corners) to raise it."
@@ -727,15 +727,15 @@ msgstr ""
 
 #: ./xfwm4.xml701(title)
 msgid "Advanced settings"
-msgstr ""
+msgstr "Gelişmiş ayarlar"
 
 #: ./xfwm4.xml704(title)
 msgid "Advanced preferences"
-msgstr ""
+msgstr "Gelişmiş tercihler"
 
 #: ./xfwm4.xml712(phrase)
 msgid "Advanced tab"
-msgstr ""
+msgstr "Gelişmiş sekmesi"
 
 #: ./xfwm4.xml721(term)
 msgid "Windows snapping"
@@ -763,7 +763,7 @@ msgstr ""
 
 #: ./xfwm4.xml751(term)
 msgid "Double click action"
-msgstr ""
+msgstr "Çift tıklama eylemi"
 
 #: ./xfwm4.xml753(para)
 msgid "Select what must be the behaviour of the window manager when you double-click on the title bar of a window : shade window, hide window, maximize window or none."
@@ -771,7 +771,7 @@ msgstr ""
 
 #: ./xfwm4.xml766(title)
 msgid "Managing workspaces"
-msgstr ""
+msgstr "Çalışma alanlarını yönetmek"
 
 #: ./xfwm4.xml768(para)
 msgid "<application>@PACKAGE_NAME@</application> also manages workspaces. There is a special settings dialog to change the workspace properties. You can start it by choosing <emphasis>Workspaces and Margins</emphasis> from the the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings manager dialog</ulink>. The dialog contains two tab folders where you can change workspace settings and desktop margins."
@@ -779,11 +779,11 @@ msgstr ""
 
 #: ./xfwm4.xml778(title)
 msgid "Workspaces settings"
-msgstr ""
+msgstr "Çalışma alanları ayarları"
 
 #: ./xfwm4.xml781(title)
 msgid "Workspace Settings"
-msgstr ""
+msgstr "Çalışma Alanı Ayarları"
 
 #: ./xfwm4.xml788(phrase)
 msgid "Shows workspace settings tab folder."
@@ -791,11 +791,11 @@ msgstr ""
 
 #: ./xfwm4.xml798(term)
 msgid "Workspaces"
-msgstr ""
+msgstr "Çalışma Alanları"
 
 #: ./xfwm4.xml800(para)
 msgid "This option allows you too choose the number of workspaces you want to use (between 1 and 32)."
-msgstr ""
+msgstr "Bu seçenek kullanmak istediğiniz çalışma alanı sayısını seçmenize olanak veriyor (1 ve 32 arasında)."
 
 #: ./xfwm4.xml807(term)
 msgid "Worspace names"
