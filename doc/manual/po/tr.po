@@ -166,7 +166,7 @@ msgstr ""
 
 #: ./xfwm4.xml165(term)
 msgid "Give focus to a window"
-msgstr ""
+msgstr "Bir pencereyi odakla"
 
 #: ./xfwm4.xml167(para)
 msgid "You need to give the focus to a window if you want it to receive keyboard and mouse input. Window decorations colors will change, following the focus. To obtain more details about focus options, please refer to the <ulink url=\"#focus\">corresponding section</ulink> below."
@@ -191,10 +191,9 @@ msgstr ""
 #. </para>
 #: ./xfwm4.xml193(para)
 msgid "NOTE: the use of a keyboard shortcut in an application needs the application window to have the focus :)"
-msgstr ""
+msgstr "NOT: bir tuş takımı kısayolunun kullanılabilmesi için uygulama penceresinin odaklanmış olması gerekir."
 
 #: ./xfwm4.xml201(term)
-#, fuzzy
 msgid "Maximize / unmaximize windows"
 msgstr "Pencereleri küçült / büyüt"
 
