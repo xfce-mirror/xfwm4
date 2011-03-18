@@ -194,8 +194,9 @@ msgid "NOTE: the use of a keyboard shortcut in an application needs the applicat
 msgstr ""
 
 #: ./xfwm4.xml201(term)
+#, fuzzy
 msgid "Maximize / unmaximize windows"
-msgstr ""
+msgstr "Pencereleri küçült / büyüt"
 
 #: ./xfwm4.xml203(para)
 msgid "If you maximize a window, it will expand on your display and use all avaible space (as it is defined by <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">workspace settings</ulink>). You can maximize a window either vertically, horizontally, or both at once."
@@ -223,11 +224,11 @@ msgstr ""
 
 #: ./xfwm4.xml230(para)
 msgid "To maximize a window vertically :"
-msgstr ""
+msgstr "Bir pencereyi dikey olarak büyütmek için:"
 
 #: ./xfwm4.xml232(para)
 msgid "middle-click the maximize button of the title bar"
-msgstr ""
+msgstr "başlık çubuğundaki büyüt düğmesine orta tuşla tıkla"
 
 #: ./xfwm4.xml233(para)
 msgid "use Alt + F6 keyboard shortcut"
