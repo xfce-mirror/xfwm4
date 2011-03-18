@@ -132,6 +132,8 @@ msgstr ""
 #: ./xfwm4.xml125(title)
 msgid "Using <application>@PACKAGE_NAME@</application>"
 msgstr ""
+"Kullanmak\r\n"
+"<application>@PACKAGE_NAME@</application>"
 
 #: ./xfwm4.xml128(title)
 msgid "Manage windows"
@@ -200,7 +202,7 @@ msgstr ""
 
 #: ./xfwm4.xml209(para)
 msgid "To maximize a window, perform one of those actions:"
-msgstr ""
+msgstr "Bir pencereyi büyütmek için bu eylemlerden birini yapın:"
 
 #: ./xfwm4.xml212(para)
 msgid "click the maximize button of the title bar"
