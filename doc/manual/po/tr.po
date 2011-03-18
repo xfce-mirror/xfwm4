@@ -804,7 +804,7 @@ msgstr "Bu seçenek kullanmak istediğiniz çalışma alanı sayısını seçmen
 
 #: ./xfwm4.xml807(term)
 msgid "Worspace names"
-msgstr ""
+msgstr "Çalışma alanı isimleri"
 
 #: ./xfwm4.xml809(para)
 msgid "This field shows the list of avaible workspaces. If you want to edit the name of one of them, click its number and a fill the entry of the dialog that will then appear. When it's done, click the \"Apply\" button, or just press the Enter key, to return to the list."
