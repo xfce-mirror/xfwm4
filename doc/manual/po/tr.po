@@ -140,8 +140,9 @@ msgid "Manage windows"
 msgstr "Pencereleri yönet"
 
 #: ./xfwm4.xml130(para)
+#, fuzzy
 msgid "The window manager provides borders, a title bar and window buttons to application windows. The look is defined by the window manager theme."
-msgstr ""
+msgstr "Pencere yöneticisi uygulama pencerelerine kenarlıklar, bir başlık çubuğu ve pencere düğmeleri sağlar. Görünümü pencere yöneticisi teması tarafından belirlenir."
 
 #: ./xfwm4.xml134(para)
 msgid "In the default theme <application>@PACKAGE_NAME@</application> shows six buttons and a title on regular application windows. The six buttons perform these basic functions:"
@@ -149,11 +150,11 @@ msgstr ""
 
 #: ./xfwm4.xml140(title)
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> başlık çubuğu düğmeleri"
 
 #: ./xfwm4.xml148(phrase)
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons and functions"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> başlık çubuğu düğmeleri ve işlevleri"
 
 #: ./xfwm4.xml154(para)
 msgid "You can open the window menu with a left-click on the menu button on the title bar, or with a right-click on the window title area itself."
@@ -206,7 +207,7 @@ msgstr "Bir pencereyi büyütmek için bu eylemlerden birini yapın:"
 
 #: ./xfwm4.xml212(para)
 msgid "click the maximize button of the title bar"
-msgstr ""
+msgstr "başlık çubuğundaki genişlet düğmesine tıklayın"
 
 #: ./xfwm4.xml215(para)
 msgid "open the window menu from the title bar and choose the \"maximize\" item"
@@ -214,7 +215,7 @@ msgstr ""
 
 #: ./xfwm4.xml221(para)
 msgid "use Alt + F5 keyboard shortcut"
-msgstr ""
+msgstr "Alt + F5 tuş takımı kısayolunu kullanın"
 
 #: ./xfwm4.xml225(para)
 msgid "You can make any window appear in fullscreen mode (it will then use all the size of your screen without showing the window borders) by using the customizable Alt + F11 keyboard shortcut."
@@ -290,7 +291,7 @@ msgstr ""
 
 #: ./xfwm4.xml283(para)
 msgid "click the hide button of the title bar"
-msgstr ""
+msgstr "başlık çubuğundaki gizle düğmesine tıklayın"
 
 #: ./xfwm4.xml284(para)
 msgid "open the window menu from the title bar and choose the \"Hide\" item"
@@ -298,7 +299,7 @@ msgstr ""
 
 #: ./xfwm4.xml286(para)
 msgid "use Alt + F8 keyboard shortcut"
-msgstr ""
+msgstr "Alt + F8 tuş takımı kısayolunu kullanın"
 
 #: ./xfwm4.xml288(para)
 msgid "Alternatively, you can hide all windows of current workspace, excepted the one you are using, in only one action : click the menu button of the title bar and choose \"Hide all others\"."
