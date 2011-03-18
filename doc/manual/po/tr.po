@@ -76,23 +76,23 @@ msgstr "2004"
 
 #: ./xfwm4.xml17(holder)
 msgid "François Le Clainche"
-msgstr ""
+msgstr "François Le Clainche"
 
 #: ./xfwm4.xml21(holder)
 msgid "Jasper Huijsmans"
-msgstr ""
+msgstr "Jasper Huijsmans"
 
 #: ./xfwm4.xml44(firstname)
 msgid "François"
-msgstr ""
+msgstr "François"
 
 #: ./xfwm4.xml44(surname)
 msgid "Le Clainche"
-msgstr ""
+msgstr "Le Clainche"
 
 #: ./xfwm4.xml46(email)
 msgid "fleclainche@wanadoo.fr"
-msgstr ""
+msgstr "fleclainche@wanadoo.fr"
 
 #. <revhistory>
 #. <revision>
@@ -103,7 +103,7 @@ msgstr ""
 #. </revhistory>
 #: ./xfwm4.xml74(releaseinfo)
 msgid "This manual describes @PACKAGE_NAME@ version @PACKAGE_VERSION@"
-msgstr ""
+msgstr "Bu el kitabı @PACKAGE_NAME@ paketinin,  @PACKAGE_VERSION@ sürümünü açıklıyor."
 
 #: ./xfwm4.xml80(title)
 msgid "Introduction"
