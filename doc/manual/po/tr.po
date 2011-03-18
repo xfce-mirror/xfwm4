@@ -612,55 +612,55 @@ msgstr ""
 
 #: ./xfwm4.xml568(para)
 msgid "Raise window : Shift + Alt + Page_Up"
-msgstr ""
+msgstr "Pencereyi yükselt : Shift + Alt + Page_Up"
 
 #: ./xfwm4.xml569(para)
 msgid "Lower window : Shift + Alt + Page_Down"
-msgstr ""
+msgstr "Pencereyi alçalt : Shift + Alt + Page_Down"
 
 #: ./xfwm4.xml570(para)
 msgid "Toggle fullscreen : Alt + F11"
-msgstr ""
+msgstr "Tam ekrana geç/çık : Alt + F11"
 
 #: ./xfwm4.xml571(para)
 msgid "Next workspace : Control + Alt + Arrow right arrow"
-msgstr ""
+msgstr "Sonraki çalışma alanı : Control + Alt + Sağ ok"
 
 #: ./xfwm4.xml573(para)
 msgid "Previous workspace : Control + Alt + Arrow left"
-msgstr ""
+msgstr "Önceki çalışma alanı : Control + Alt + Sol ok"
 
 #: ./xfwm4.xml574(para)
 msgid "Add a workspace : Alt + Insert"
-msgstr ""
+msgstr "Bir çalışma alanı ekle : Alt + Insert"
 
 #: ./xfwm4.xml575(para)
 msgid "Delete a workspace : Alt + Delete"
-msgstr ""
+msgstr "Bir çalışma alanını sil : Alt + Delete"
 
 #: ./xfwm4.xml576(para)
 msgid "Go to workspace number N (1-9) : Control + F(N)"
-msgstr ""
+msgstr "N (1-9) sayılı çalışma alanına git : Control + F(N)"
 
 #: ./xfwm4.xml577(para)
 msgid "Move the window to previous|next workspace : Alt + Control + Home|End"
-msgstr ""
+msgstr "Pencereyi önceki|sonraki çalışma alanına taşı : Alt + Control + Home|End"
 
 #: ./xfwm4.xml579(para)
 msgid "Move a window to workspace number N (1-9) : Alt + Control + keypad key number N"
-msgstr ""
+msgstr "Bir pencereyi N (1-9) sayılı çalışma alanına taşı  : Alt + Control + keypad key sayı N"
 
 #: ./xfwm4.xml581(para)
 msgid "Start xfhelp4 : Alt + F1"
-msgstr ""
+msgstr "xfhelp4'u başlat : Alt + F1"
 
 #: ./xfwm4.xml582(para)
 msgid "Start xfrun4 : Alt + F2"
-msgstr ""
+msgstr "xfrun4'u başlat : Alt + F2"
 
 #: ./xfwm4.xml583(para)
 msgid "Lock the screen : Alt + Control + Delete"
-msgstr ""
+msgstr "Ekranı kilitle : Alt + Control + Delete"
 
 #: ./xfwm4.xml586(para)
 msgid "There are two lists on the right side of the dialog. The \"Windows shortcuts\" list shows the keyboard shortcuts which are used to drive the window manager. The \"Command shortcuts\" list shows the keyboard shortcuts which are aimed at launching applications. To modify one of the shortcuts, you have to double-click on it in the list, using the left button of your mouse, and compose your new shortcut when the \"Compose shortcut\" popup window appears."
@@ -679,24 +679,28 @@ msgid "If you do not know the names of your keyboard modifier keys, you can laun
 msgstr ""
 
 #: ./xfwm4.xml627(title) ./xfwm4.xml630(title)
+#, fuzzy
 msgid "Focus preferences"
-msgstr ""
+msgstr "Odaklama tercihleri"
 
 #: ./xfwm4.xml638(phrase)
+#, fuzzy
 msgid "The Focus tab"
-msgstr ""
+msgstr "Odaklama sekmesi"
 
 #: ./xfwm4.xml647(term)
 msgid "Focus model"
-msgstr ""
+msgstr "Odaklama modeli"
 
 #: ./xfwm4.xml649(para)
+#, fuzzy
 msgid "A focused window receives the keyboard and mouse input. You have the choice between two focus models :"
-msgstr ""
+msgstr "Odaklanmış bir pencere tuş takımı ve fale komutlarını alır. İki odaklanma modeli arasında seçim yapabilirsiniz :"
 
 #: ./xfwm4.xml652(para)
+#, fuzzy
 msgid "Click to focus : select this option if you want a window to receive the focus only when you click anywhere on its frame."
-msgstr ""
+msgstr "Odaklanmak için tıkla : bir pencereye sadece çerçevesinin herhangi bir yerine tıklandığında odaklanılmasını istiyorsanız bu seçeneği seçin."
 
 #: ./xfwm4.xml656(para)
 msgid "Focus follow mouse : select this option if you want a window to receive the focus as soon as the mouse pointer is over its frame."
