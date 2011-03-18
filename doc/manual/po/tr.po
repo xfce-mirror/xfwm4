@@ -267,11 +267,11 @@ msgstr "Pencereleri boyutlandır"
 
 #: ./xfwm4.xml257(para)
 msgid "Although certain special windows can not be resized, you are able to resize most of them to fit your needs."
-msgstr ""
+msgstr "Bazı özel pencerelerin yeniden boyutlandırılamamasına rağmen, pencerelerin çoğunu ihtiyaçlarınıza uyacak şekilde yeniden boyutlandırabilirsiniz."
 
 #: ./xfwm4.xml260(para)
 msgid "you can use the edges and corners of the window frame to modify its size, dragging them with the mouse"
-msgstr ""
+msgstr "pencere çerçevesinin kenarlarını ve köşelerini, fare ile sürükleyerek, pencerelerin boyutlarını değiştirmek için kullanabilirsiniz"
 
 #: ./xfwm4.xml262(para)
 msgid "you can use the Alt + right click shortcut while you hold the mouse pointer anywhere over the window frame; it will act as if you were dragging the bottom-right corner of the window"
@@ -362,8 +362,9 @@ msgid "open the window menu button from the title bar and choose \"Stick\" or \"
 msgstr ""
 
 #: ./xfwm4.xml332(para)
+#, fuzzy
 msgid "use the Alt + F10 keyboard shortcut"
-msgstr ""
+msgstr "Alt + F10 tuş takımı kısayolunu kullanın"
 
 #: ./xfwm4.xml338(term)
 msgid "Raise / lower windows"
@@ -391,7 +392,7 @@ msgstr ""
 
 #: ./xfwm4.xml350(para)
 msgid "use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)"
-msgstr ""
+msgstr "Shift + Alt + Page_Up tuş takımı kısayolunu kullanın (eğer pencere hale odaklıysa)"
 
 #: ./xfwm4.xml353(para)
 msgid "You can make a window frame to always stay above all other windows by opening the window menu and selecting the \"always on top\" item."
