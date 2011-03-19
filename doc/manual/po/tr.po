@@ -140,7 +140,6 @@ msgid "Manage windows"
 msgstr "Pencereleri yönet"
 
 #: ./xfwm4.xml130(para)
-#, fuzzy
 msgid "The window manager provides borders, a title bar and window buttons to application windows. The look is defined by the window manager theme."
 msgstr "Pencere yöneticisi uygulama pencerelerine kenarlıklar, bir başlık çubuğu ve pencere düğmeleri sağlar. Görünümü pencere yöneticisi teması tarafından belirlenir."
 
