@@ -157,7 +157,7 @@ msgstr "<application>@PACKAGE_NAME@</application> başlık çubuğu düğmeleri 
 
 #: ./xfwm4.xml154(para)
 msgid "You can open the window menu with a left-click on the menu button on the title bar, or with a right-click on the window title area itself."
-msgstr ""
+msgstr "Pencere menüsünü başlık çubuğundaki menü düğmesine sol tıklayarak veya pencere başlık alanının kendisine sağ tıklayarak açabilirsiniz."
 
 #: ./xfwm4.xml157(para)
 msgid "If you use <application>xftaskbar4</application>, you can open an action menu with a right-click on one of the taskbar entries; it includes several items among those available in the window menu."
