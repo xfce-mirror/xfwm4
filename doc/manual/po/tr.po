@@ -111,7 +111,7 @@ msgstr "Giriş"
 
 #: ./xfwm4.xml82(para)
 msgid "The Xfce 4 Window Manager is part of the <ulink url=\"http://www.xfce.org\" type=\"html\">Xfce Desktop Environment</ulink>. The actual command to run is <application>@PACKAGE_NAME@</application>. To run it in the background use <command><application>@PACKAGE_NAME@</application> --daemon</command>. The window manager is responsible for the placement of windows on the screen, provides the window decorations and allows you for instance to move, resize or close them."
-msgstr ""
+msgstr "The Xfce 4 Pencere Yöneticisi <ulink url=\"http://www.xfce.org\" type=\"html\">Xfce Masaüstü Ortamı</ulink>'nın parçasıdır. Çalıştırmak için kullanılacak komut <application>@PACKAGE_NAME@</application>. Arkaplanda çalıştırmak için kullanılacak komut <command><application>@PACKAGE_NAME@</application> --daemon</command>. Pencere yöneticisi pencerelerin ekranda yerleştirilmesinden sorumludur, pencere süslemelerini sağlar ve sizin pencereleri hareket ettirmenizi, yeniden boyutlandırmanızı veya kapatmanızı sağlar."
 
 #: ./xfwm4.xml90(para)
 msgid "<application>@PACKAGE_NAME@</application> adheres strongly to the standards defined on <ulink url=\"http://www.freedesktop.org\" type=\"html\">freedesktop.org</ulink>. Consequently, special features such as making windows borderless, or providing an icon for the application must now be implemented in the application; you can no longer use the window manager to force different behaviour. One of the great features of <application>@PACKAGE_NAME@</application> is its themeability. The window decorations (borders, title bar and window buttons) can be configured by using window manager themes."
