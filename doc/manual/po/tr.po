@@ -499,7 +499,7 @@ msgstr ""
 
 #: ./xfwm4.xml453(title)
 msgid "Decoration style"
-msgstr ""
+msgstr "Süsleme  tarzı"
 
 #: ./xfwm4.xml456(title)
 msgid "Decoration style preferences"
@@ -526,8 +526,9 @@ msgid "The \"Font select\" button shows the family font currently in use for the
 msgstr ""
 
 #: ./xfwm4.xml497(term)
+#, fuzzy
 msgid "Title alignment"
-msgstr ""
+msgstr "Başlık hizalaması"
 
 #: ./xfwm4.xml499(para)
 msgid "Whatever the buttons layout is, you can choose the alignment of the title inside the title bar, selecting one of those simple options : align it to the left, center or right."
@@ -535,15 +536,16 @@ msgstr ""
 
 #: ./xfwm4.xml507(term)
 msgid "Button layout"
-msgstr ""
+msgstr "Tuş düzeni"
 
 #: ./xfwm4.xml509(para)
 msgid "The button layout configuration uses an easy drag and drop tool. Click and drag the buttons to change the layout. Drop a button in the \"Hidden\" area to remove a button from the titlebar. All modifications will have an immediate effect on the title bar buttons position."
 msgstr ""
 
 #: ./xfwm4.xml522(title)
+#, fuzzy
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Klavye kısayolları"
 
 #: ./xfwm4.xml525(title)
 msgid "Keyboard shortcuts preferences"
@@ -554,8 +556,9 @@ msgid "The keyboard shortcuts tab"
 msgstr ""
 
 #: ./xfwm4.xml542(term)
+#, fuzzy
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Klavye Kısayolları"
 
 #: ./xfwm4.xml544(para)
 msgid "The list on the left side of the dialog shows all avaible shortcuts themes, using the name of directories that contain a keythemerc file."
@@ -571,23 +574,23 @@ msgstr ""
 
 #: ./xfwm4.xml556(para)
 msgid "close window : Alt + F4"
-msgstr ""
+msgstr "pencereyi kapat: Alt + F4"
 
 #: ./xfwm4.xml557(para)
 msgid "Maximize window : Alt + F5"
-msgstr ""
+msgstr "Pencereyi büyüt: Alt + F5"
 
 #: ./xfwm4.xml558(para)
 msgid "Maximize vertically : Alt + F6"
-msgstr ""
+msgstr "Dikey büyüt: Alt + F6"
 
 #: ./xfwm4.xml559(para)
 msgid "Maximize horizontally : Alt + F7"
-msgstr ""
+msgstr "Yatay büyüt: Alt + F7"
 
 #: ./xfwm4.xml560(para)
 msgid "Hide window : Alt + F8"
-msgstr ""
+msgstr "Pencereyi gizle: Alt + F8"
 
 #: ./xfwm4.xml561(para)
 msgid "Shade window : Alt + F9"
@@ -810,8 +813,9 @@ msgid "This field shows the list of avaible workspaces. If you want to edit the 
 msgstr ""
 
 #: ./xfwm4.xml823(title)
+#, fuzzy
 msgid "Workspaces margins"
-msgstr ""
+msgstr "Çalışma alanı marjları"
 
 #: ./xfwm4.xml826(title)
 msgid "The workspace margins dialog"
