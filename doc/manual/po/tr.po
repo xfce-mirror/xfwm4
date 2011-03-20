@@ -278,7 +278,7 @@ msgstr ""
 
 #: ./xfwm4.xml265(para)
 msgid "you can use practical keyboard shortcuts : Shift + Alt + (up, down, right or left) Arrow"
-msgstr ""
+msgstr "Klavye kısayollarını kullanabilirsiniz: Shift + Alt + (yukarı, aşağı, saü ve sol) Yön Tuşları"
 
 #: ./xfwm4.xml279(term)
 msgid "Hide / unhide windows"
@@ -361,7 +361,6 @@ msgid "open the window menu button from the title bar and choose \"Stick\" or \"
 msgstr ""
 
 #: ./xfwm4.xml332(para)
-#, fuzzy
 msgid "use the Alt + F10 keyboard shortcut"
 msgstr "Alt + F10 tuş takımı kısayolunu kullanın"
 
@@ -526,7 +525,6 @@ msgid "The \"Font select\" button shows the family font currently in use for the
 msgstr ""
 
 #: ./xfwm4.xml497(term)
-#, fuzzy
 msgid "Title alignment"
 msgstr "Başlık hizalaması"
 
@@ -543,7 +541,6 @@ msgid "The button layout configuration uses an easy drag and drop tool. Click an
 msgstr ""
 
 #: ./xfwm4.xml522(title)
-#, fuzzy
 msgid "Keyboard shortcuts"
 msgstr "Klavye kısayolları"
 
@@ -556,7 +553,6 @@ msgid "The keyboard shortcuts tab"
 msgstr ""
 
 #: ./xfwm4.xml542(term)
-#, fuzzy
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
@@ -686,7 +682,6 @@ msgid "Focus preferences"
 msgstr "Odaklama tercihleri"
 
 #: ./xfwm4.xml638(phrase)
-#, fuzzy
 msgid "The Focus tab"
 msgstr "Odaklama sekmesi"
 
@@ -813,9 +808,8 @@ msgid "This field shows the list of avaible workspaces. If you want to edit the 
 msgstr ""
 
 #: ./xfwm4.xml823(title)
-#, fuzzy
 msgid "Workspaces margins"
-msgstr "Çalışma alanı marjları"
+msgstr ""
 
 #: ./xfwm4.xml826(title)
 msgid "The workspace margins dialog"
@@ -835,7 +829,7 @@ msgstr ""
 
 #: ./xfwm4.xml857(title)
 msgid "About <application>@PACKAGE_NAME@</application>"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> Hakkında"
 
 #: ./xfwm4.xml859(para)
 msgid "<application>@PACKAGE_NAME@</application> was written Olivier Fourdan (<email>fourdan@xfce.org</email>). To find more information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce web site</ulink>."
