@@ -15,56 +15,56 @@ msgstr ""
 #. It doesn't matter what you translate it to: it's not used at all.
 #: ./xfwm4.xml145(None)
 msgid "@@image: 'images/titlebar.png'; md5=56d7905e86d8b9ee03054561f8075752"
-msgstr ""
+msgstr "@@image: 'images/titlebar.png'; md5=56d7905e86d8b9ee03054561f8075752"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: ./xfwm4.xml461(None)
 msgid "@@image: 'images/decoration_style.png'; md5=5022390bb1a6154cd7225a8819aad790"
-msgstr ""
+msgstr "@@image: 'images/decoration_style.png'; md5=5022390bb1a6154cd7225a8819aad790"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: ./xfwm4.xml530(None)
 msgid "@@image: 'images/keyboard_shortcuts.png'; md5=3063f52810e263badf47b370c5928726"
-msgstr ""
+msgstr "@@image: 'images/keyboard_shortcuts.png'; md5=3063f52810e263badf47b370c5928726"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: ./xfwm4.xml602(None)
 msgid "@@image: 'images/compose_shortcut.png'; md5=3d6eea671fdd800a3c5379b71e1eb3e8"
-msgstr ""
+msgstr "@@image: 'images/compose_shortcut.png'; md5=3d6eea671fdd800a3c5379b71e1eb3e8"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: ./xfwm4.xml635(None)
 msgid "@@image: 'images/focus.png'; md5=53a29587d206af848f07f4623b76c61a"
-msgstr ""
+msgstr "@@image: 'images/focus.png'; md5=53a29587d206af848f07f4623b76c61a"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: ./xfwm4.xml709(None)
 msgid "@@image: 'images/misc_wm_prefs.png'; md5=49847fe3486b9327e4da7429e236832a"
-msgstr ""
+msgstr "@@image: 'images/misc_wm_prefs.png'; md5=49847fe3486b9327e4da7429e236832a"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: ./xfwm4.xml785(None)
 msgid "@@image: 'images/xfwm_workspaces.png'; md5=66a06d2b9faaa634b7a0f7a40768013c"
-msgstr ""
+msgstr "@@image: 'images/xfwm_workspaces.png'; md5=66a06d2b9faaa634b7a0f7a40768013c"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: ./xfwm4.xml831(None)
 msgid "@@image: 'images/workspace_margins.png'; md5=8e53c961fe17d3a2255c8ea591d96016"
-msgstr ""
+msgstr "@@image: 'images/workspace_margins.png'; md5=8e53c961fe17d3a2255c8ea591d96016"
 
 #: ./xfwm4.xml14(title)
 msgid "Xfce 4 Window Manager"
