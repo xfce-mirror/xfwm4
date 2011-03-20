@@ -411,11 +411,11 @@ msgstr ""
 
 #: ./xfwm4.xml368(term)
 msgid "Move windows"
-msgstr ""
+msgstr "Pencereleri taşı"
 
 #: ./xfwm4.xml370(para)
 msgid "There are several ways to move windows :"
-msgstr ""
+msgstr "Pencereleri taşımak için birçok yol bulunmaktadır:"
 
 #: ./xfwm4.xml372(para)
 msgid "left or right click on the title bar of the window and drag it"
@@ -431,7 +431,7 @@ msgstr ""
 
 #: ./xfwm4.xml391(term)
 msgid "Move a window to another workspace"
-msgstr ""
+msgstr "Bir pencereyi başka bir çalışma alanına taşı"
 
 #: ./xfwm4.xml393(para)
 msgid "You can send a window to another workspace by performing one of these actions :"
@@ -451,11 +451,11 @@ msgstr ""
 
 #: ./xfwm4.xml405(para)
 msgid "use keyboard shortcuts :"
-msgstr ""
+msgstr "kısayol tuşlarını kullan:"
 
 #: ./xfwm4.xml407(para)
 msgid "Alt + Control + End will move a window to the next workspace"
-msgstr ""
+msgstr "Alt + Ctrl + End pencereyi sonraki çalışma alanına yaşıyacak"
 
 #: ./xfwm4.xml409(para)
 msgid "Alt + Control + Home will move a window to the previous workspace"
@@ -471,11 +471,11 @@ msgstr ""
 
 #: ./xfwm4.xml425(term)
 msgid "Close a window"
-msgstr ""
+msgstr "Bir pencereyi kapat"
 
 #: ./xfwm4.xml427(para)
 msgid "To close a window :"
-msgstr ""
+msgstr "Bir pencereyi kapatmak için:"
 
 #: ./xfwm4.xml429(para)
 msgid "click the close button of the title bar"
@@ -487,7 +487,7 @@ msgstr ""
 
 #: ./xfwm4.xml432(para)
 msgid "or use Alt + F4 keyboard shortcut"
-msgstr ""
+msgstr "ya da  Alt + F4 kısayolunu kullan"
 
 #: ./xfwm4.xml443(title)
 msgid "Customizing <application>@PACKAGE_NAME@</application>"
@@ -511,7 +511,7 @@ msgstr ""
 
 #: ./xfwm4.xml473(term)
 msgid "Window style"
-msgstr ""
+msgstr "Pencere stili"
 
 #: ./xfwm4.xml475(para)
 msgid "The list on the left side of the dialog shows all avaible window decorations. The xfwm 4 module offers the choice between 4 different themes, but there are more than 60 supplementary themes avaible in xfwm4-themes extra package."
@@ -519,7 +519,7 @@ msgstr ""
 
 #: ./xfwm4.xml484(term)
 msgid "Title font"
-msgstr ""
+msgstr "Başlık yazı tipi"
 
 #: ./xfwm4.xml486(para)
 msgid "The \"Font select\" button shows the family font currently in use for the window title appearance. Click this button if you want to change it, and a \"Font selection\" dialog will appear. It works like the font selection dialog of the <ulink url=\"xfce-mcs-plugins.html#id2811474\" type=\"http\">user interface settings manager plugin</ulink>."
