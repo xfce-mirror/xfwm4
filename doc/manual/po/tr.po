@@ -145,7 +145,7 @@ msgstr "Pencere yöneticisi uygulama pencerelerine kenarlıklar, bir başlık ç
 
 #: ./xfwm4.xml134(para)
 msgid "In the default theme <application>@PACKAGE_NAME@</application> shows six buttons and a title on regular application windows. The six buttons perform these basic functions:"
-msgstr ""
+msgstr "Öntanımlı tema olan <application>@PACKAGE_NAME@</application>  altı düğme ve uygulama penceresinin üzerinde bir başlık gösterir. Bu altı düğme şu temel işlevleri yerine getirir:"
 
 #: ./xfwm4.xml140(title)
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons"
