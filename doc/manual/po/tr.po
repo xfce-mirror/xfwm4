@@ -218,7 +218,7 @@ msgstr "Alt + F5 tuş takımı kısayolunu kullanın"
 
 #: ./xfwm4.xml225(para)
 msgid "You can make any window appear in fullscreen mode (it will then use all the size of your screen without showing the window borders) by using the customizable Alt + F11 keyboard shortcut."
-msgstr ""
+msgstr "Herhangi bir pencereyi Alt + F11 kısayolunu kullanarak tam ekran yapabilirsiniz. Bunu yaptığınızda pencere kenarlıkları olmadan tüm ekranınızı kullanmış olacaksanız."
 
 #: ./xfwm4.xml230(para)
 msgid "To maximize a window vertically :"
