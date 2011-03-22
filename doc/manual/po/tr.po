@@ -426,7 +426,7 @@ msgstr ""
 
 #: ./xfwm4.xml376(para)
 msgid "use Control + Alt + Shift + (up, down, left or right) Arrow keyboard shortcut"
-msgstr ""
+msgstr "Control + Alt + Shift + (yukarı, aşağı, sol veya sağ) Yön tuşu kısayollarını kullanın"
 
 #: ./xfwm4.xml391(term)
 msgid "Move a window to another workspace"
@@ -502,7 +502,7 @@ msgstr "Süsleme  tarzı"
 
 #: ./xfwm4.xml456(title)
 msgid "Decoration style preferences"
-msgstr ""
+msgstr "Dekorasyon sitili seçenekleri"
 
 #: ./xfwm4.xml464(phrase)
 msgid "The decoration style tab"
