@@ -458,11 +458,11 @@ msgstr "Alt + Ctrl + End pencereyi sonraki çalışma alanına yaşıyacak"
 
 #: ./xfwm4.xml409(para)
 msgid "Alt + Control + Home will move a window to the previous workspace"
-msgstr ""
+msgstr "Alt + Control + Home tuşları bir pencereyi daha önceki çalışma alanına gönderir"
 
 #: ./xfwm4.xml411(para)
 msgid "Alt + Control + Keypad-Number will move the current window to corresponding workspace"
-msgstr ""
+msgstr "Alt + Control + Sayı Tuşları seçili pencereyi karşılık gelen çalışma alanına gönderir"
 
 #: ./xfwm4.xml415(para)
 msgid "use the <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">graphical pager </ulink> by clicking on the representation of the window, and move it to the desired workspace."
@@ -478,7 +478,7 @@ msgstr "Bir pencereyi kapatmak için:"
 
 #: ./xfwm4.xml429(para)
 msgid "click the close button of the title bar"
-msgstr ""
+msgstr "başlık çubuğunun kapat düğmesini tıklayın"
 
 #: ./xfwm4.xml430(para)
 msgid "Open the window menu from the title bar and choose the \"Close\" item"
@@ -490,7 +490,7 @@ msgstr "ya da  Alt + F4 kısayolunu kullan"
 
 #: ./xfwm4.xml443(title)
 msgid "Customizing <application>@PACKAGE_NAME@</application>"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> uygulaması özelleştiriliyor"
 
 #: ./xfwm4.xml445(para)
 msgid "To open the Window Manager preferences dialog, click the button labelled \"Window Manager\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce 4 Settings manager</ulink>. The dialog shows four tabs : Style, Keyboard, Focus, Advanced. All modifications will have an immediate effect on the behaviour of the selected module."
