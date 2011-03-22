@@ -840,7 +840,7 @@ msgstr "Bu uygulama veya klavuz hakkında bir hata raporlamak ya da öneride bul
 
 #: ./xfwm4.xml870(para)
 msgid "If you have questions about the use or installation of this package, please ask on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> mailing list. Development discussion takes place on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> mailing list."
-msgstr ""
+msgstr "Bu paketin kurulumu veya kullanımı ile ilgili sorulaırnızı <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> eposta listesine yazabilirsiniz. Geliştirme tartışmaları ise <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> listesinde sürdürülmektedir."
 
 #: ./xfwm4.xml879(para)
 msgid "This program is distributed under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
