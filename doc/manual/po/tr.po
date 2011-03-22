@@ -562,11 +562,11 @@ msgstr ""
 
 #: ./xfwm4.xml548(para)
 msgid "By default, there's only one theme : $(datadir)/themes/Default/xfwm4/keythemerc"
-msgstr ""
+msgstr "Öntanımlı olarak sadece tek bir tema var: $(datadir)/themes/Default/xfwm4/keythemerc"
 
 #: ./xfwm4.xml552(para)
 msgid "In the default configuration the following keybindings are defined:"
-msgstr ""
+msgstr "Öntanımlı yapılandırmada şu klavye kısayolları tanımlı:"
 
 #: ./xfwm4.xml556(para)
 msgid "close window : Alt + F4"
