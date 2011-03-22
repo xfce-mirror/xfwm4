@@ -832,11 +832,11 @@ msgstr "<application>@PACKAGE_NAME@</application> Hakkında"
 
 #: ./xfwm4.xml859(para)
 msgid "<application>@PACKAGE_NAME@</application> was written Olivier Fourdan (<email>fourdan@xfce.org</email>). To find more information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce web site</ulink>."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> Olivier Fourdan (<email>fourdan@xfce.org</email>) tarafından yazılmıştır. Daha fazla bilgi için <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce Internet Adresini</ulink> ziyaret edebilirsiniz."
 
 #: ./xfwm4.xml864(para)
 msgid "To report a bug or make a suggestion regarding this application or this manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
-msgstr ""
+msgstr "Bu uygulama veya klavuz hakkında bir hata raporlamak ya da öneride bulunmak için <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink> adresindeki hata takip sistemimizi kullanabilirsiniz."
 
 #: ./xfwm4.xml870(para)
 msgid "If you have questions about the use or installation of this package, please ask on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> mailing list. Development discussion takes place on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> mailing list."
