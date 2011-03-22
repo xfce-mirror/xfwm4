@@ -602,11 +602,11 @@ msgstr ""
 
 #: ./xfwm4.xml564(para)
 msgid "Move window : Control + Shift + Alt + Arrow (up, down, left, or right)"
-msgstr ""
+msgstr "Pencereyi taşı: Control + Shift + Alt + (yukarı, aşağı, sol, sağ) Yön Tuşları"
 
 #: ./xfwm4.xml566(para)
 msgid "Resize window : Shift + Alt + Arrow (up, down, left, or right)"
-msgstr ""
+msgstr "Pencereyi boyutlandır: Shift + Alt + (yukarı, aşağı, sol, sağ) Yön Tuşları"
 
 #: ./xfwm4.xml568(para)
 msgid "Raise window : Shift + Alt + Page_Up"
@@ -677,7 +677,6 @@ msgid "If you do not know the names of your keyboard modifier keys, you can laun
 msgstr ""
 
 #: ./xfwm4.xml627(title) ./xfwm4.xml630(title)
-#, fuzzy
 msgid "Focus preferences"
 msgstr "Odaklama tercihleri"
 
@@ -809,7 +808,7 @@ msgstr ""
 
 #: ./xfwm4.xml823(title)
 msgid "Workspaces margins"
-msgstr ""
+msgstr "Çalışma alanı sınırları"
 
 #: ./xfwm4.xml826(title)
 msgid "The workspace margins dialog"
