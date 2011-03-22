@@ -374,7 +374,7 @@ msgstr ""
 
 #: ./xfwm4.xml344(para)
 msgid "left click on its titlebar"
-msgstr ""
+msgstr "başlık çubuğuna sol tıklayın"
 
 #: ./xfwm4.xml345(para)
 msgid "give the focus to the window, if the corresponding option is selected in the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>"
@@ -442,7 +442,7 @@ msgstr ""
 
 #: ./xfwm4.xml398(para)
 msgid "use the window menu and choose one of the \"Send to\" submenu items."
-msgstr ""
+msgstr "pencere menüsünü kullanarak  \"Gönder\" alt menü seçeneklerinden birini seçin"
 
 #: ./xfwm4.xml400(para)
 msgid "left or right click on the title bar of the window, drag it to the screen edge : the pointer will then go to the next workspace, still holding the window. Corresponding option needs to be selected in the <ulink url=\"xfwm4.html#wm_misc\" type=\"http\">Window Manager Preferences dialog</ulink>."
@@ -482,7 +482,7 @@ msgstr "başlık çubuğunun kapat düğmesini tıklayın"
 
 #: ./xfwm4.xml430(para)
 msgid "Open the window menu from the title bar and choose the \"Close\" item"
-msgstr ""
+msgstr "Başlık çubuğundan pencere menüsünü açın ve \"Kapat\"ı seçin"
 
 #: ./xfwm4.xml432(para)
 msgid "or use Alt + F4 keyboard shortcut"
@@ -546,7 +546,7 @@ msgstr "Klavye kısayolları"
 
 #: ./xfwm4.xml525(title)
 msgid "Keyboard shortcuts preferences"
-msgstr ""
+msgstr "Klavye kısayolları seçenekleri"
 
 #: ./xfwm4.xml533(phrase)
 msgid "The keyboard shortcuts tab"
