@@ -694,7 +694,6 @@ msgid "A focused window receives the keyboard and mouse input. You have the choi
 msgstr "Odaklanmış bir pencere tuş takımı ve fale komutlarını alır. İki odaklanma modeli arasında seçim yapabilirsiniz :"
 
 #: ./xfwm4.xml652(para)
-#, fuzzy
 msgid "Click to focus : select this option if you want a window to receive the focus only when you click anywhere on its frame."
 msgstr "Odaklanmak için tıkla : bir pencereye sadece çerçevesinin herhangi bir yerine tıklandığında odaklanılmasını istiyorsanız bu seçeneği seçin."
 
@@ -768,7 +767,7 @@ msgstr "Çift tıklama eylemi"
 
 #: ./xfwm4.xml753(para)
 msgid "Select what must be the behaviour of the window manager when you double-click on the title bar of a window : shade window, hide window, maximize window or none."
-msgstr ""
+msgstr "Bir pencerenin başlık çubuğuna çift tıklandığında ne yapılması gerektiğini seçin: pencereyi gölgele, pencereyi sakla, tam ekran yap veya hiçbiri."
 
 #: ./xfwm4.xml766(title)
 msgid "Managing workspaces"
@@ -848,7 +847,7 @@ msgstr ""
 
 #: ./xfwm4.xml884(para)
 msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
-msgstr ""
+msgstr "Bu programla birlikte GNU Genel kamu Lisansının bir kopyasını almış olmalısınız. Eğer almamışsanız şu adrese yazabilirsiniz: Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: ./xfwm4.xml0(None)
