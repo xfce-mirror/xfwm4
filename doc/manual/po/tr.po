@@ -590,7 +590,7 @@ msgstr "Pencereyi gizle: Alt + F8"
 
 #: ./xfwm4.xml561(para)
 msgid "Shade window : Alt + F9"
-msgstr ""
+msgstr "Arkaplan'a gönder: Alt + F9"
 
 #: ./xfwm4.xml562(para)
 msgid "Stick window : Alt + F10"
@@ -598,7 +598,7 @@ msgstr "Tam Ekran: Alt + F10"
 
 #: ./xfwm4.xml563(para)
 msgid "Cycle windows focus : Alt + Tab"
-msgstr ""
+msgstr "Aktif pencereler arası geçiş: Alt + Tab"
 
 #: ./xfwm4.xml564(para)
 msgid "Move window : Control + Shift + Alt + Arrow (up, down, left, or right)"
