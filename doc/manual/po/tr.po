@@ -670,7 +670,7 @@ msgstr ""
 
 #: ./xfwm4.xml611(para)
 msgid "If you want to create a new theme, create a directory like this one, for instance : $HOME/.themes/Custom/xfwm4/keythemerc, then select it in the list of available themes."
-msgstr ""
+msgstr "Yeni bir tema yaratmak isterseniz, $HOME/.themes/Custom/xfwm4/keythemerc dizini gibi bir dizin oluşturun. Daha sonra onu mevcut temalar listesinden seçebilirsiniz."
 
 #: ./xfwm4.xml616(para)
 msgid "If you do not know the names of your keyboard modifier keys, you can launch the \"xev\" application from a terminal and test them."
