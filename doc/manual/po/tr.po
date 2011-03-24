@@ -740,7 +740,7 @@ msgstr "Gelişmiş sekmesi"
 
 #: ./xfwm4.xml721(term)
 msgid "Windows snapping"
-msgstr ""
+msgstr "Pencere boyutlandırması"
 
 #: ./xfwm4.xml723(para)
 msgid "You can choose the windows borders to be attracted by the borders of other windows, or by the screen edges, when they are moved. The distance from which this effect will be applied can be specified with the \"Distance\" slider."
@@ -788,7 +788,7 @@ msgstr "Çalışma Alanı Ayarları"
 
 #: ./xfwm4.xml788(phrase)
 msgid "Shows workspace settings tab folder."
-msgstr ""
+msgstr "Çalışma alanı ayarlar sekmesini gösterir"
 
 #: ./xfwm4.xml798(term)
 msgid "Workspaces"
