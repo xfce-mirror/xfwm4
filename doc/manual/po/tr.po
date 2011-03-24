@@ -322,7 +322,7 @@ msgstr "<application>xfce4-iconbox</application>"
 
 #: ./xfwm4.xml305(term)
 msgid "Shade / unshade windows"
-msgstr ""
+msgstr "Pencereleri gölgelendir/gölgelendirme"
 
 #: ./xfwm4.xml307(para)
 msgid "If you \"shade\" a window, it will be reduced to the size of its title bar. The same repeated action makes a window to shade/unshade :"
