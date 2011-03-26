@@ -759,7 +759,7 @@ msgstr ""
 
 #: ./xfwm4.xml744(para)
 msgid "Two options allow you to choose if the content of a window will appear or not, when you move or resize it (not displaying the content will save some system resources)."
-msgstr ""
+msgstr "Bu iki seçenek bir pencereyi haraket ettirdiğinizde veya yeniden boyutlandırdığınızda onun içeriğinin görünüp görünmemesini (görünmemesi sistem kaynaklarını daha az harcayacaktır) seçmenize izin verir."
 
 #: ./xfwm4.xml751(term)
 msgid "Double click action"
