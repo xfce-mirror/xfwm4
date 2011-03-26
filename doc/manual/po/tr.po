@@ -173,7 +173,7 @@ msgstr ""
 
 #: ./xfwm4.xml172(para)
 msgid "A keyboard shortcut allows to switch the focus from a window to others : Hold Alt and then you can press Tab repeatedly untill you get to the window you want to focus. If you use it, you will see a small popup showing the application name, its icon and the window title. Also <application>@PACKAGE_NAME@</application> will highlight the outline of the window that will receive the focus."
-msgstr ""
+msgstr "Alt ve Tab tuşlarını birlikte ard arda kullanarak odaklanmak istediğiniz pencereye ulaşabilirsiniz. Bu tuş kombinasyonunu kullandığınızda küçük bir pencerede uygulamanın adını, simgesini ve pencere başlığını görürsünüz. <application>@PACKAGE_NAME@</application> uygulaması da odaklanacağınız pencereyi vurgulayacaktır."
 
 #. <para>
 #. If you want the panel, and apps that do not appear in the taskbar,
