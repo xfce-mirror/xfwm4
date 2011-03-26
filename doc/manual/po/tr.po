@@ -394,7 +394,7 @@ msgstr "Shift + Alt + Page_Up tuş takımı kısayolunu kullanın (eğer pencere
 
 #: ./xfwm4.xml353(para)
 msgid "You can make a window frame to always stay above all other windows by opening the window menu and selecting the \"always on top\" item."
-msgstr ""
+msgstr "Bir pencerenein her zaman diğerlerinin üzerinde yeralmasını istiyorsanız bunu pencere menüsünden \"hep zaman üstte kal\"ı seçerek yapabilirsiniz."
 
 #: ./xfwm4.xml357(para)
 msgid "The \"lower\" function sends a window frame below all other frames. To \"lower\" a window, you can :"
@@ -550,7 +550,7 @@ msgstr "Klavye kısayolları seçenekleri"
 
 #: ./xfwm4.xml533(phrase)
 msgid "The keyboard shortcuts tab"
-msgstr ""
+msgstr "Klavye kısayolları sekmesi"
 
 #: ./xfwm4.xml542(term)
 msgid "Keyboard Shortcuts"
@@ -689,7 +689,6 @@ msgid "Focus model"
 msgstr "Odaklama modeli"
 
 #: ./xfwm4.xml649(para)
-#, fuzzy
 msgid "A focused window receives the keyboard and mouse input. You have the choice between two focus models :"
 msgstr "Odaklanmış bir pencere tuş takımı ve fale komutlarını alır. İki odaklanma modeli arasında seçim yapabilirsiniz :"
 
@@ -843,7 +842,7 @@ msgstr "Bu paketin kurulumu veya kullanımı ile ilgili sorulaırnızı <ulink u
 
 #: ./xfwm4.xml879(para)
 msgid "This program is distributed under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
-msgstr ""
+msgstr "Bu program Özgür Yazılım Vakfı tarafından yayınlanan GNU Genel Kamu Lisansının 2 veya (seçiminize bağlı olarak) daha sonraki sürümlerinden birinin koşulları altında dağıtılımaktadır."
 
 #: ./xfwm4.xml884(para)
 msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
