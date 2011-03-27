@@ -402,11 +402,11 @@ msgstr ""
 
 #: ./xfwm4.xml361(para)
 msgid "middle-click on its title bar"
-msgstr ""
+msgstr "başlık çubuğuna farenin orta tuşuyla tıklayabilirsiniz"
 
 #: ./xfwm4.xml362(para)
 msgid "use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)"
-msgstr ""
+msgstr "Shift + Alt + Page_Down kısa yolunu kullanabilirsiniz"
 
 #: ./xfwm4.xml368(term)
 msgid "Move windows"
@@ -418,11 +418,11 @@ msgstr "Pencereleri taşımak için birçok yol bulunmaktadır:"
 
 #: ./xfwm4.xml372(para)
 msgid "left or right click on the title bar of the window and drag it"
-msgstr ""
+msgstr "pencerenin başlık çubuğuna sağ veya sol tıklayıp sürükleyebilirsiniz"
 
 #: ./xfwm4.xml374(para)
 msgid "use Alt + left click while the pointer is anywhere over the window frame and move the mouse"
-msgstr ""
+msgstr "imleç pencerenin üzerindeyken Alt + sol tıklayıp fareyi hareket ettirebilirsiniz"
 
 #: ./xfwm4.xml376(para)
 msgid "use Control + Alt + Shift + (up, down, left or right) Arrow keyboard shortcut"
@@ -434,11 +434,11 @@ msgstr "Bir pencereyi başka bir çalışma alanına taşı"
 
 #: ./xfwm4.xml393(para)
 msgid "You can send a window to another workspace by performing one of these actions :"
-msgstr ""
+msgstr "Bir pencereyi başka bir çalışma alanına göndermek için şunları yapabilirsiniz:"
 
 #: ./xfwm4.xml396(para)
 msgid "stick the window, move to another workspace, then unstick the window."
-msgstr ""
+msgstr "pencereyi tutup başka bir çalışma alanına sürükleyip bırakabilirsiniz"
 
 #: ./xfwm4.xml398(para)
 msgid "use the window menu and choose one of the \"Send to\" submenu items."
