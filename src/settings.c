@@ -393,6 +393,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
     gchar imagename[30];
     GValue tmp_val = { 0, };
+    GValue tmp_val2 = { 0, };
     DisplayInfo *display_info;
     xfwmColorSymbol colsym[ XPM_COLOR_SYMBOL_SIZE + 1 ];
     GtkWidget *widget;
@@ -450,11 +451,11 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
     /* ... and distance */
     display_info->double_click_distance = abs (getIntValue ("double_click_distance", rc));
-    g_value_init (&tmp_val, G_TYPE_INT);
-    if (gdk_setting_get ("gtk-double-click-distance", &tmp_val))
+    g_value_init (&tmp_val2, G_TYPE_INT);
+    if (gdk_setting_get ("gtk-double-click-distance", &tmp_val2))
     {
-        display_info->double_click_distance = abs (g_value_get_int (&tmp_val));
-        g_value_unset (&tmp_val);
+        display_info->double_click_distance = abs (g_value_get_int (&tmp_val2));
+        g_value_unset (&tmp_val2);
     }
 
     screen_info->font_height = 0;
