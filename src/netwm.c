@@ -954,12 +954,10 @@ clientValidateNetStrut (Client * c)
 {
     ScreenInfo *screen_info;
     gboolean valid;
-    int max_value;
 
     g_return_val_if_fail (c != NULL, TRUE);
     TRACE ("entering clientValidateNetStrut for \"%s\" (0x%lx)", c->name, c->window);
     screen_info = c->screen_info;
-    max_value = MIN (screen_info->width, screen_info->height) / 4;
     valid = TRUE;
 
     if (c->struts[STRUTS_TOP] > screen_info->height - screen_info->margins[STRUTS_BOTTOM])

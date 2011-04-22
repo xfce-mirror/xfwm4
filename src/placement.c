@@ -454,7 +454,6 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
     ScreenInfo *screen_info;
     GdkRectangle rect;
     gboolean centered;
-    int cx, cy;
     int diff_x, diff_y;
     int monitor_nbr;
 
@@ -462,8 +461,6 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
     TRACE ("entering clientKeepVisible");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    cx = frameX (c) + (frameWidth (c) / 2);
-    cy = frameY (c) + (frameHeight (c) / 2);
     screen_info = c->screen_info;
 
     centered = FALSE;
@@ -543,15 +540,13 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     gfloat best_overlaps;
     guint i;
     gint test_x, test_y, xmax, ymax, best_x, best_y;
-    gint frame_x, frame_y, frame_height, frame_width, frame_left, frame_top;
+    gint frame_height, frame_width, frame_left, frame_top;
     gboolean first;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering smartPlacement");
 
     screen_info = c->screen_info;
-    frame_x = frameX (c);
-    frame_y = frameY (c);
     frame_height = frameHeight (c);
     frame_width = frameWidth (c);
     frame_left = frameLeft(c);
@@ -751,7 +746,6 @@ void
 clientFill (Client * c, int fill_type)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     Client *east_neighbour;
     Client *west_neighbour;
     Client *north_neighbour;
@@ -773,7 +767,6 @@ clientFill (Client * c, int fill_type)
     }
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
     mask = 0;
     east_neighbour = NULL;
     west_neighbour = NULL;

@@ -59,11 +59,7 @@ char *names[] = {
 static gint
 state_value (const gchar * s)
 {
-    gchar *t;
-    gint u;
-
-    t = states[0];
-    u = 0;
+    gint u = 0;
 
     while ((states[u]) && (strcmp (states[u], s)))
     {
@@ -79,11 +75,7 @@ state_value (const gchar * s)
 static gint
 name_value (const gchar * s)
 {
-    gchar *t;
-    gint u;
-
-    t = names[0];
-    u = 0;
+    gint u = 0;
 
     while ((names[u]) && (strcmp (names[u], s)))
     {

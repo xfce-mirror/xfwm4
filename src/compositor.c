@@ -1252,7 +1252,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     GList *list;
     gint screen_width;
     gint screen_height;
-    gint screen_number;
     CWindow *cw;
 
     TRACE ("entering paint_all");
@@ -1262,7 +1261,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     dpy = display_info->dpy;
     screen_width = screen_info->width;
     screen_height = screen_info->height;
-    screen_number = screen_info->screen;
 
     /* Create root buffer if not done yet */
     if (screen_info->rootBuffer == None)
@@ -2586,8 +2584,6 @@ void
 compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
 {
 #ifdef HAVE_COMPOSITOR
-    CWindow *cw;
-
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
     TRACE ("entering compositorAddWindow for 0x%lx", id);
@@ -2597,7 +2593,6 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
         return;
     }
 
-    cw = find_cwindow_in_display (display_info, id);
     if (!compositorSetClient (display_info, id, c))
     {
         add_win (display_info, id, c);

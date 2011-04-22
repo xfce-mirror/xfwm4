@@ -281,7 +281,6 @@ static void
 frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap * title_pm, xfwmPixmap * top_pm)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     GdkPixmap *gpixmap;
     GdkGCValues values;
     GdkGC *gc;
@@ -298,7 +297,6 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     g_return_if_fail (top_pm);
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (left > right)
     {

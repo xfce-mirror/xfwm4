@@ -2959,7 +2959,6 @@ void
 clientUpdateFullscreenSize (Client * c)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     XWindowChanges wc;
     GdkRectangle monitor, rect;
     int i;
@@ -2969,7 +2968,6 @@ clientUpdateFullscreenSize (Client * c)
     TRACE ("Update fullscreen size for client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -3761,10 +3759,6 @@ clientGetButtonPixmap (Client * c, int button, int state)
 int
 clientGetButtonState (Client *c, int button, int state)
 {
-    ScreenInfo *screen_info;
-
-    screen_info = c->screen_info;
-
     if (state == INACTIVE)
     {
         return (state);

@@ -400,14 +400,12 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     gchar *theme;
     const gchar *font;
     PangoFontDescription *desc;
-    PangoContext *context;
     guint i, j;
 
     widget = myScreenGetGtkWidget (screen_info);
     display_info = screen_info->display_info;
 
     desc = NULL;
-    context = NULL;
     i = 0;
 
     while (ui_part[i] && ui_state[i])
@@ -463,7 +461,6 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     if (font && strlen (font))
     {
         desc = pango_font_description_from_string (font);
-        context = getUIPangoContext (widget);
         if (desc)
         {
             gtk_widget_modify_font (widget, desc);
@@ -569,10 +566,7 @@ loadKeyBindings (ScreenInfo *screen_info)
 {
     GList *shortcuts;
     gchar keyname[30];
-    Display *dpy;
     guint i;
-
-    dpy = myScreenGetXDisplay (screen_info);
 
     shortcuts = xfce_shortcuts_provider_get_shortcuts (screen_info->shortcuts_provider);
 

@@ -243,7 +243,6 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
     Client *c, *new_focus;
     Client *previous;
     GList *list;
-    GList *list_hide;
     Window dr, window;
     gint rx, ry, wx, wy;
     unsigned int mask;
@@ -284,7 +283,6 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
     screen_info->current_ws = new_ws;
 
     new_focus = NULL;
-    list_hide = NULL;
     previous  = NULL;
     c = clientGetFocus ();
 

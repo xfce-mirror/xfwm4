@@ -217,12 +217,11 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     GList *client_list;
     GdkRectangle monitor;
     GtkWidget *windowlist, *icon, *selected;
-    int i, packpos;
+    int packpos;
     Tabwin *t;
 
     TRACE ("entering createWindowlist");
 
-    i = 0;
     packpos = 0;
     c = NULL;
     selected = NULL;
