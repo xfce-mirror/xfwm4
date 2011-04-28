@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-21 10:14+0000\n"
-"PO-Revision-Date: 2011-04-26 19:56-0300\n"
+"PO-Revision-Date: 2011-04-28 11:04-0300\n"
 "Last-Translator: Sérgio Cipolla <secipolla@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
-"Esta janela pode estar ocupada e não responder.\n"
+"Essa janela pode estar ocupada e não está respondendo.\n"
 "Você deseja terminar o aplicativo?"
 
 #: ../helper-dialog/helper-dialog.c:89
@@ -82,12 +82,12 @@ msgstr "Nome do espaço de trabalho"
 #: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "Settings manager socket"
-msgstr "Socket de gerenciador de configurações"
+msgstr "Socket do gerenciador de configurações"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr "Configurar o comportamento da janela e atalhos"
+msgstr "Configure o comportamento da janela e atalhos"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -97,7 +97,7 @@ msgstr "Gerenciador de Janelas"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Fine-tune window behaviour and effects"
-msgstr "Configure o comportamento da janela"
+msgstr "Configure o comportamento das janelas e efeitos"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -181,7 +181,7 @@ msgstr "<i>Curto</i>"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "<i>Small</i>"
-msgstr "<i>Pequeno</i>"
+msgstr "<i>Pequena</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
@@ -290,11 +290,11 @@ msgstr "Título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Envolver espaços _de trabalho ao arrastar uma janela para fora da tela"
+msgstr "Mudar de espaço _de trabalho ao arrastar uma janela para fora da tela"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Envolver espaços de trabalho quando o _ponteiro alcançar a borda da tela"
+msgstr "Mudar de espaço de trabalho quando o _ponteiro alcançar a borda da tela"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
@@ -672,7 +672,7 @@ msgstr "Exibir tela _cheia diretamente sobreposta às janelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
-msgstr "Fazer _nada"
+msgstr "Não fazer _nada"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
@@ -684,7 +684,7 @@ msgstr "_Honrar o padrão ICCCM para dica de foco"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Manter janelas de urgência _piscando intermitentes"
+msgstr "Manter janelas de urgência _piscando repetidamente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Key used to _grab and move windows:"
@@ -732,7 +732,7 @@ msgstr "Mostrar sombras sob janelas de conte_xto"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Switch to win_dow's workspace"
-msgstr "Trocar para o espaço de trabalho _da janela"
+msgstr "Mudar para o espaço de trabalho _da janela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
@@ -751,13 +751,12 @@ msgid "When a window raises itself:"
 msgstr "Quando uma janela for levantada:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Envolver espaços de traba_lho dependendo da disposição exata da área de trabalho"
+msgstr "Envolver o primeiro e o último espaço de traba_lho ao arrastar janela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Envolver espaços de trabalho quando o primeiro ou o último espaço de trabalho _for alcançado"
+msgstr "Envolver o primeiro e o úl_timo espaço de trabalho ao alternar com a roda do mouse"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -777,7 +776,7 @@ msgstr "_Habilitar composição de tela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Incluir janelas ocultas (i.e. iconificadas)"
+msgstr "_Incluir janelas ocultas (minimizadas)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Minimum size of windows to trigger smart placement:"
@@ -795,9 +794,7 @@ msgstr "Levanta_r janelas quando qualquer botão do mouse for pressionado"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Lembra_r e retornar ao espaço de trabalho anterior\n"
-"ao trocar através dos atalhos de teclado"
+msgstr "Lembra_r e retornar ao espaço de trabalho anterior ao trocar através dos atalhos de teclado"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
