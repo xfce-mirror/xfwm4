@@ -853,7 +853,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
         }
         flags |= CFG_REQUEST;
     }
-    if (mask & (CWX | CWY | CWWidth | CWHeight) == (CWWidth | CWHeight))
+    if ((mask & (CWWidth | CWHeight)) && !(mask & (CWX | CWY)))
     {
         /*
          * The client is resizing its window, but did not specify a
