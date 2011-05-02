@@ -853,14 +853,19 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
         }
         flags |= CFG_REQUEST;
     }
-    if (mask & (CWWidth | CWHeight))
+    if (mask & (CWX | CWY | CWWidth | CWHeight) == (CWWidth | CWHeight))
     {
-        flags |= CFG_KEEP_VISIBLE;
+        /*
+         * The client is resizing its window, but did not specify a
+         * position, make sure the window remains fully visible in that
+         * case so that the user does not have to relocate the window
+         */
+        flags |= CFG_CONSTRAINED | CFG_KEEP_VISIBLE;
     }
     /*
-       Let's say that if the client performs a XRaiseWindow, we show the window if focus
-       stealing prevention is not activated, otherwise we just set the "demands attention"
-       flag...
+     * Let's say that if the client performs a XRaiseWindow, we show the window if focus
+     * stealing prevention is not activated, otherwise we just set the "demands attention"
+     * flag...
      */
     if ((mask & CWStackMode) && (wc->stack_mode == Above) && (wc->sibling == None) && !(c->type & WINDOW_TYPE_DONT_FOCUS))
     {
