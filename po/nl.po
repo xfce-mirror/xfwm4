@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 10:34+0000\n"
+"POT-Creation-Date: 2011-05-09 10:34+0000\n"
 "PO-Revision-Date: 2006-11-3 12:41+0100\n"
 "Last-Translator: Stephan Arts <stephan@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -40,7 +40,7 @@ msgstr "Contactpunt voor sessiebeheerder"
 #: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:371
@@ -62,6 +62,8 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"Probeer %s --help om een volledige lijst te zien van beschikbare commando-opties.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -109,9 +111,8 @@ msgid "Workspaces"
 msgstr "Werkbladen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "Inhoud tonen bij verplaatsen en formaat aanpassen"
+msgstr "<b>Veld verplaatsen en grootte veranderen</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
@@ -122,9 +123,8 @@ msgid "<b>Double click _action</b>"
 msgstr "<b>Dubbelklik _actie</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "Vensterfocus"
+msgstr "<b>Vensterfocus-model</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 #, fuzzy
@@ -231,19 +231,16 @@ msgid "Close"
 msgstr "Sluiten"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "Vertraging voor naar voren halen vensters :"
+msgstr "Vertraging _voor naar voren halen vensters:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "Afstand :"
+msgstr "_Afstand:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "Focus volgt muis"
+msgstr "Focus volgt _muis"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
