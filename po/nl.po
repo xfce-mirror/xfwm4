@@ -424,9 +424,8 @@ msgid "Fill window vertically"
 msgstr "Venster verticaal vullen"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
 msgid "Toggle above"
-msgstr "Toggle above"
+msgstr "Schakel het bovenstaande"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle fullscreen"
