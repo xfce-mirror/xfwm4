@@ -1381,7 +1381,7 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ msgstr "Verander de naam van werkblad %d"
 
 #~ msgid "Advanced window manager settings"
-#~ msgstr "Geavanceerde vensterbeheerder Instellingen"
+#~ msgstr "Geavanceerde vensterbeheerder instellingen"
 
 #~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
@@ -1399,22 +1399,22 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ "Weet u zeker dat u deze toetscombinatie wilt gebruiken?"
 
 #~ msgid "Enter window manager action shortcut"
-#~ msgstr "Xfce 4 Venster Beheer Instellingen "
+#~ msgstr "Voer de sneltoets in voor de vensterbeheerderactie"
 
 #~ msgid "Action: %s"
-#~ msgstr "Actief"
+#~ msgstr "Actie: %s"
 
 #~ msgid "Enter shortcut"
-#~ msgstr "Geen sneltoets"
+#~ msgstr "Geef sneltoets in"
 
 #~ msgid "Shortcut:"
-#~ msgstr "Geen sneltoets"
+#~ msgstr "Sneltoets:"
 
 #~ msgid "(Un)Ma_ximize"
-#~ msgstr "Ma_ximaliseren"
+#~ msgstr "(Ont)Ma_ximaliseren"
 
 #~ msgid "Hide _all others"
-#~ msgstr "_Andere verbergen"
+#~ msgstr "_Alle andere verbergen"
 
 #~ msgid "_Shade"
 #~ msgstr "_Oprollen"
@@ -1426,10 +1426,10 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ msgstr "_Plakken"
 
 #~ msgid "(Un)S_tick"
-#~ msgstr "_Loslaten"
+#~ msgstr "_Losmaken/plakken"
 
 #~ msgid "Below"
-#~ msgstr "Langzaam"
+#~ msgstr "Onderaan"
 
 #~ msgid "Send to..."
 #~ msgstr "Zenden naar..."
@@ -1438,31 +1438,31 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ msgstr "Werkblad %i (%s)"
 
 #~ msgid "Ctrl"
-#~ msgstr "Midden"
+#~ msgstr "Ctrl"
 
 #~ msgid "Button"
-#~ msgstr "Knopvolgorde"
+#~ msgstr "Knop"
 
 #~ msgid "Add Shortcut Theme"
-#~ msgstr "Sneltoets"
+#~ msgstr "Voeg Sneltoetsthema toe"
 
 #~ msgid "Move window left"
-#~ msgstr "Venster naar links verplaatsen"
+#~ msgstr "Venster links verplaatsen"
 
 #~ msgid "Move window right"
-#~ msgstr "Venster naar rechts verplaatsen"
+#~ msgstr "Venster rechts verplaatsen"
 
 #~ msgid "Resize window down"
-#~ msgstr "Venster verticaal vergroten"
+#~ msgstr "Venstergrootte beneden veranderen"
 
 #~ msgid "Resize window left"
-#~ msgstr "Venster horizontaal verkleinen"
+#~ msgstr "Venstergrootte links veranderen"
 
 #~ msgid "Resize window right"
-#~ msgstr "Venster horizontaal vergroten"
+#~ msgstr "Venstergrootte rechts veranderen"
 
 #~ msgid "Cancel move/resize window"
-#~ msgstr "Venster verplaatsen / grootte veranderen annuleren"
+#~ msgstr "Annuleer venster verplaatsen / grootte veranderen"
 
 #~ msgid "_Hide"
 #~ msgstr "_Verbergen"
