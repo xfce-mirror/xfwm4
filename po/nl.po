@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-09 10:34+0000\n"
+"POT-Creation-Date: 2011-05-10 04:32+0000\n"
 "PO-Revision-Date: 2006-11-3 12:41+0100\n"
 "Last-Translator: Stephan Arts <stephan@xfce.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -127,104 +127,86 @@ msgid "<b>Focus model</b>"
 msgstr "<b>Vensterfocus-model</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "Focus voor nieuwe vensters"
+msgstr "<b>Nieuwe venster focus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "Naar voren halen bij klik"
+msgstr "<b>Naar voren halen bij klik</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "Naar voren halen bij focus"
+msgstr "<b>Naar voren halen bij focus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "Uitlijning titel"
+msgstr "<b>_Titel-uitlijning</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "Lettertype titel"
+msgstr "<b>_Lettertype titel</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "Venster-sneltoetsen"
+msgstr "<b>Venster_sneltoetsen</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "Aantrekken vensters"
+msgstr "<b>Vensters aantrekken</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "Werkbladen door laten lopen"
+msgstr "<b>Werkbladen inpakken</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "Uitlijning titel"
+msgstr "<b>_Thema</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
 msgid "<i>Long</i>"
-msgstr "Groot"
+msgstr "<i>Lang</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "<i>Short</i>"
-msgstr "Transparant"
+msgstr "<i>Kort</i>"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "Klein"
+msgstr "<i>Klein</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "Lang"
+msgstr "<i>Breed</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
 msgstr "Actief"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "Geavanceerd"
+msgstr "Ge_avanceerd"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Venster met focus automatisch naar voren halen"
+msgstr "Vensters met focus automatisch naar voren halen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
-msgstr "Nieuwe venster krijgen focus automatisch"
+msgstr "_Nieuw gemaakte vensters krijgen focus automatisch"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "Klik voor focus"
+msgstr "Kli_k voor focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
-msgstr "Klik en sleep de knoppen om de layout te veranderen"
+msgstr "Klik en sleep de knoppen om de vormgeving te veranderen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -251,19 +233,16 @@ msgid "Hide"
 msgstr "Verbergen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "Inhoud venster tonen bij verplaatsen"
+msgstr "Inhoud venster verbergen bij _verplaatsen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "Inhoud venster tonen bij veranderen grootte"
+msgstr "Inhoud venster verbergen bij veranderen _grootte"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "Toetsenbord"
+msgstr "_Toetsenbord"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Maximize"
@@ -274,76 +253,65 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr "Venster naar voren halen bij klikken in het venster"
+msgstr "Venster naar voren halen bij klikken in toepassingvenster"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "Oprollen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
 msgid "Snap windows to other _windows"
-msgstr "Vensters naar andere vensters trekken"
+msgstr "Vensters naar andere _vensters trekken"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr "Vensters naar schermranden trekken"
+msgstr "Vensters naar _schermrand trekken"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "Plakken"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Actie voor dubbelklikken op de titelbalk :"
+msgstr "Actie voor dubbelklikken op de titelbalk "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "De venstertitel; kan niet worden verwijderd."
+msgstr "De venstertitel kan niet worden verwijderd"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
 msgstr "Titel"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Wissel werkbladen bij slepen voorbij de rand van het scherm"
+msgstr "Verpak werkbladen bij _slepen voorbij de rand van het scherm"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Wissel werkbladen wanneer de muisaanwijzer de rand van het scherm bereikt"
+msgstr "Verpak werkbladen wanneer de _muisaanwijzer de rand van het scherm bereikt"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "Vertraging voor naar voren halen vensters"
+msgstr "_Vertraging voordat een venster focus verkrijgt:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "Weerstand :"
+msgstr "Weerstand van de _rand:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
 msgid "_Focus"
-msgstr "Focus"
+msgstr "_Focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "Zet _terug op standaardwaarden"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#, fuzzy
 msgid "_Style"
-msgstr "Stijl"
+msgstr "_Stijl"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -362,9 +330,8 @@ msgstr "Venster maximaliseren"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Fill window"
-msgstr "Venster verbergen"
+msgstr "Venster vullen"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -390,11 +357,11 @@ msgstr "Venster acties menu"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr ""
+msgstr "Naar boven"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr ""
+msgstr "Naar beneden"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
@@ -405,18 +372,16 @@ msgid "Cycle windows"
 msgstr "Venster Wisselen"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "Venster Wisselen"
+msgstr "Vensters Wisselen (achterwaarts)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Wissel naar het venster's werkblad"
+msgstr "Wissel venster voor dezelfde toepassing"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
-msgstr ""
+msgstr "Wissel toepassing"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
@@ -431,14 +396,12 @@ msgid "Maximize window vertically"
 msgstr "Venster verticaal maximaliseren"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
-#, fuzzy
 msgid "Move window"
-msgstr "Venster omhoog verplaatsen"
+msgstr "Venster verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
 msgid "Resize window"
-msgstr "Venster verticaal verkleinen"
+msgstr "Venstergrootte aanpassen"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
@@ -453,19 +416,17 @@ msgid "Lower window"
 msgstr "Venster naar de achtergrond brengen"
 
 #: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Venster horizontaal maximaliseren"
+msgstr "Venster horizontaal vullen"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Venster verticaal maximaliseren"
+msgstr "Venster verticaal vullen"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
 #, fuzzy
 msgid "Toggle above"
-msgstr "Naar boven/onder brengen"
+msgstr "Toggle above"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle fullscreen"
@@ -496,64 +457,52 @@ msgid "Move window to next workspace"
 msgstr "Venster naar volgend werkblad verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 1 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 2 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 3 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 4 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 5 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 6 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 7 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 8 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 9 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 10 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 11 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Venster naar werkblad %d verplaatsen"
+msgstr "Venster naar werkblad 12 verplaatsen"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Show desktop"
@@ -584,144 +533,123 @@ msgid "Next workspace"
 msgstr "Volgend werkblad"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Werkblad %i"
+msgstr "Werkblad 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Werkblad %d"
+msgstr "Werkblad 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Werkblad %i"
+msgstr "Werkblad 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Werkblad %i"
+msgstr "Werkblad 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Werkblad %i"
+msgstr "Werkblad 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Werkblad %i"
+msgstr "Werkblad 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Werkblad %i"
+msgstr "Werkblad 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Werkblad %i"
+msgstr "Werkblad 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Werkblad %i"
+msgstr "Werkblad 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
 msgid "Workspace 10"
-msgstr "Werkblad %d"
+msgstr "Werkblad 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
-#, fuzzy
 msgid "Workspace 11"
-msgstr "Werkblad %i"
+msgstr "Werkblad 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
 msgid "Workspace 12"
-msgstr "Werkblad %d"
+msgstr "Werkblad 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Add workspace"
 msgstr "Werkblad toevoegen"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "Werkblad toevoegen"
+msgstr "Aangrenzende werkblad toevoegen"
 
 #: ../settings-dialogs/xfwm4-settings.c:301
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Werkblad verwijderen"
+msgstr "Laatste werkblad verwijderen"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Werkblad verwijderen"
+msgstr "Actieve werkblad verwijderen"
 
 #: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
-msgstr ""
+msgstr "Thema"
 
 #: ../settings-dialogs/xfwm4-settings.c:597
-#, fuzzy
 msgid "Action"
-msgstr "Actief"
+msgstr "Actie"
 
 #: ../settings-dialogs/xfwm4-settings.c:602
-#, fuzzy
 msgid "Shortcut"
-msgstr "Geen sneltoets"
+msgstr "Snelkoppeling"
 
 #: ../settings-dialogs/xfwm4-settings.c:971
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Kon xconf niet initialiseren. Reden: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:982
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "Kon de instellingendialoog niet maken"
 
 #: ../settings-dialogs/xfwm4-settings.c:1869
 #: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Zet terug op Standaardwaarden"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr ""
+msgstr "Dit zal alle snelkoppelingen terugzetten naar hun standaardwaarden. Wilt u dit echt doen?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Large</i>"
-msgstr "Groot"
+msgstr "<i>Groot</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#, fuzzy
 msgid "<i>Opaque</i>"
-msgstr "Ondoorzichtig"
+msgstr "<i>Ondoorzichtig</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-#, fuzzy
 msgid "<i>Transparent</i>"
-msgstr "Transparant"
+msgstr "<i>Transparant</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
 msgid "Activate _focus stealing prevention"
-msgstr "Activeer focus diefstal preventie"
+msgstr "Activeer _focus overpakpreventie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "In het _midden van het scherm"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Plaats vensters standaard:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 #, fuzzy
