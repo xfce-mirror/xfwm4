@@ -652,216 +652,182 @@ msgid "By default, place windows:"
 msgstr "Plaats vensters standaard:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "C_ompositor"
-msgstr "Compositor"
+msgstr "_Samensteller"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "C_ycling"
-msgstr "Wisselen"
+msgstr "Aan het wisselen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "Wissel tussen vensters van alle werkbladen"
+msgstr "Wissel _tussen vensters van alle werkbladen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-#, fuzzy
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Geef volledig scherm getoonde vensters direct weer"
+msgstr "Geef _volledig schermvullende vensters direct weer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
 msgid "Do _nothing"
-msgstr "Niets doen"
+msgstr "Doe _niets"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-#, fuzzy
 msgid "Hide _frame of windows when maximized"
-msgstr "Verberg venster rand wanneer het is gemaximaliseerd"
+msgstr "Verberg randen van vensters wanneer gemaximaliseerd"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Houden aan de standaard ICCCM focus hint"
+msgstr "Houd vast aan de standaard ICCCM focus hint"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "Laat _belangrijke vensters herhaaldelijk knipperen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Key used to _grab and move windows:"
-msgstr "Toets gebruikt voor het pakken en verplaatsen van vensters"
+msgstr "Toets _gebruikt voor het pakken en verplaatsen van vensters:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "Meld _urgentie door de vensterdecoratie te laten knipperen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "Ondoorzichtigheid van venster decoraties"
+msgstr "Ondoorzich_tigheid van vensterdecoraties:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "Ondoorzichtigheid van inactieve vensters"
+msgstr "Ondoorzichtigheid van _inactieve vensters:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "Ondoorzichtigheid van popup vensters"
+msgstr "Ondoorzichtigheid van opduikvenster_s:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "Ondoorzichtigheid van vensters tijdens verplaatsen"
+msgstr "Ondoorzichtigheid van vensters tijdens verp_laatsen:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "Ondoorzichtigheid van vensters bij veranderen grootte"
+msgstr "Ondoor_zichtigheid van vensters bij veranderen grootte:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Herstel de originele grootte bij het verplaatsen van gemaximaliseerde vensters"
+msgstr "Herstel de ori_ginele grootte bij het verplaatsen van gemaximaliseerde vensters"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
 msgid "Show shadows under _dock windows"
-msgstr "Schaduws weergeven onder dock vensters"
+msgstr "Schaduwen weergeven onder _dokvensters"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
 msgid "Show shadows under _regular windows"
-msgstr "Schaduw weergeven onder normale vensters"
+msgstr "Schaduwen weergeven onder _normale vensters"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-#, fuzzy
 msgid "Show shadows under pop_up windows"
-msgstr "Schaduws weergeven onder popup vensters"
+msgstr "Schaduwen weergeven onder _opduikvensters"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
 msgid "Switch to win_dow's workspace"
-msgstr "Wissel naar het venster's werkblad"
+msgstr "Wissel naar het _werkblad van het venster"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "Onder de muis_pijl"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-#, fuzzy
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Gebruik rand weerstand in plaats van het klikken van vensters"
+msgstr "Gebruik _randweerstand in plaats van het klikken van vensters"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "Gebruik het _muiswieltje op het bureaublad om werkbladen te wisselen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
 msgstr "Wanneer een venster zichzelf naar de voorgrond brengt:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Werkbladen wisselen afhankelijk van de bureaublad layout"
+msgstr "Verpak werkbladen afhankelijk van de eigenlijke bureaubla_dvormgeving"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Wisselen tussen laatste en eerste werkblad toestaan"
+msgstr "Verpak werkbladen wanneer het _eerste of laatste werkblad is bereikt"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-#, fuzzy
 msgid "_Accessibility"
-msgstr "Toegankelijkheid"
+msgstr "_Toegankelijkheid"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "Venster naar huidig werkblad verplaatsen"
+msgstr "Venster naar huidig werkblad ver_plaatsen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "Teken rand rond geselecteerd venster tijdens het wisselen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
 msgid "_Enable display compositing"
-msgstr "Activeer beeld samensmelting"
+msgstr "_Activeer schermsamenvoeging"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "Voeg verborgen (geminimalizeerde) vensters toe"
+msgstr "_Voeg verborgen (geminimaliseerde) vensters toe"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Minimum venster-grootte om slimme plaatsing te activeren"
+msgstr "_Minimum-venstergrootte om slimme plaatsing te activeren:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#, fuzzy
 msgid "_Placement"
-msgstr "Plaatsing"
+msgstr "_Plaatsing"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-#, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Vensters naar boven halen wanneer er op een muis knop geklikt"
+msgstr "Vensters naar _boven halen wanneer er op een willekeurige muisknop wordt geklikt"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Vorige werkblad onthouden wanneer er wordt gewisseld met het sneltoetsen"
+msgstr ""
+"Vorige werkblad _onthouden en oproepen\n"
+"wanneer er wordt gewisseld via sneltoetsen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Vensters overslaan die de \"pager overslaan\" of \"taakbalk overslaan\" instellingen actief hebben"
+msgstr "Vensters over_slaan die de \"pager overslaan\" of \"taakbalk overslaan\" eigenschappen hebben"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#, fuzzy
 msgid "_Workspaces"
-msgstr "Werkbladen"
+msgstr "_Werkbladen"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "Marges"
+msgstr "<b>Marges</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "Werkbladen door laten lopen"
+msgstr "<b>Werkbladen</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
-msgstr "Werkblad namen"
+msgstr "Werkbladnaam veranderen"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marges zijn gebieden aan de randen van het scherm waar geen vensters geplaatst worden"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "Naam:"
+msgstr "_Naam:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "Aantal werkbladen"
+msgstr "Aantal werkbladen:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -876,55 +842,52 @@ msgstr "%s: Segmentatie fout"
 
 #: ../src/main.c:534
 msgid "Fork to the background"
-msgstr ""
+msgstr "Vork naar de achtergrond"
 
 #: ../src/main.c:536
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Vork naar de achtergrond (niet ondersteund)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Stel de samenstellermodus in"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Stel de samenstellermodus in (niet ondersteund)"
 
 #: ../src/main.c:543
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Xfce 4 Venster Beheer Instellingen "
+msgstr "Vervang de bestaande vensterbeheerder"
 
 #: ../src/main.c:544
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Druk de versie-informatie af en sluit af"
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENTS...]"
 
 #: ../src/main.c:559
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Tik \"%s --help\" voor gebruik."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
 msgstr "Ma_ximaliseren"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "On_maximaliseren"
+msgstr "ONT_maximaliseren"
 
 #: ../src/menu.c:46
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "Ma_ximaliseren"
+msgstr "Mi_nimaliseren"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Minimaliseer _Alle Andere Vensters"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -932,66 +895,57 @@ msgstr "_Tonen"
 
 #: ../src/menu.c:49
 msgid "_Move"
-msgstr ""
+msgstr "_Verplaats"
 
 #: ../src/menu.c:50
 msgid "_Resize"
-msgstr ""
+msgstr "Verander _grootte"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Always on Top"
-msgstr "Altijd boven"
+msgstr "Altijd bovenaan"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Vensters naar andere vensters trekken"
+msgstr "Zelfde als Andere Vensters"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Altijd onder Andere Vensters"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Venster verbergen"
+msgstr "Rol venster omhoog"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Venster omlaag verplaatsen"
+msgstr "Rol venster naar beneden"
 
 #: ../src/menu.c:57
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Wissel volledig scherm"
+msgstr "Schermvullend"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "Wissel volledig scherm"
+msgstr "Verlaat Schermvullend"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
-msgstr "Context _help"
+msgstr "Contekstuele _hulp"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "Altijd boven"
+msgstr "Altijd op Zichtbare Werkblad"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Alleen op Dit Werkblad"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Venster naar volgend werkblad verplaatsen"
+msgstr "Naar Ander Werkblad verplaatsen"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1024,7 +978,7 @@ msgstr "%s: Kan actieve kleur %s niet creëren\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Kan geen kleur toewijzen: GValue voor kleur is niet van type STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1034,17 +988,17 @@ msgstr "%s: Kan actieve kleur %s niet vertalen\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Kan kleur niet ontleden: GValue voor kleur is niet van type STRING"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Fout bij het lezen van gegevens van het afgeleide proces: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 
 #~ msgid "Distance|<i>Small</i>"
 #~ msgstr "Kort"
