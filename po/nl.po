@@ -1,13 +1,14 @@
 # Dutch translations for xfwm4 package.
-# Copyright (C) 2002-2006 The Xfce development team.
+# Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Jasper Huijsmans <jasper@xfce.org>, 2004.
-#
+# Pjotr, 2011.
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-26 16:33+0000\n"
+"POT-Creation-Date: 2011-05-27 04:33+0000\n"
 "PO-Revision-Date: 2006-11-3 12:41+0100\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -793,8 +794,8 @@ msgstr "_Plaatsing"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Raise windows when any mouse button is pressed"
 msgstr ""
-"Vensters naar _boven halen wanneer er op een "
-"willekeurige muisknop wordt geklikt"
+"Vensters naar _boven halen wanneer er op een willekeurige muisknop wordt "
+"geklikt"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid ""
