@@ -112,7 +112,7 @@ msgstr "fleclainche@wanadoo.fr"
 #.   </revhistory>
 #: xfwm4.xml:74(releaseinfo)
 msgid "This manual describes @PACKAGE_NAME@ version @PACKAGE_VERSION@"
-msgstr "此手册介绍了 @PACKAGE_VERSION@ 版本 的@PACKAGE_NAME@"
+msgstr "本手册介绍了 @PACKAGE_VERSION@ 版本 的@PACKAGE_NAME@"
 
 #: xfwm4.xml:80(title)
 msgid "Introduction"
@@ -746,7 +746,7 @@ msgstr ""
 msgid ""
 "By default, there's only one theme : $(datadir)/themes/Default/xfwm4/"
 "keythemerc"
-msgstr "默认有一主题： $(datadir)/themes/Default/xfwm4/keythemerc"
+msgstr "默认只有一主题： $(datadir)/themes/Default/xfwm4/keythemerc"
 
 #: xfwm4.xml:552(para)
 msgid "In the default configuration the following keybindings are defined:"
@@ -814,11 +814,11 @@ msgstr ""
 
 #: xfwm4.xml:574(para)
 msgid "Add a workspace : Alt + Insert"
-msgstr ""
+msgstr "添加工作区： Alt + Ins"
 
 #: xfwm4.xml:575(para)
 msgid "Delete a workspace : Alt + Delete"
-msgstr ""
+msgstr "删除工作区： Alt + Del"
 
 #: xfwm4.xml:576(para)
 msgid "Go to workspace number N (1-9) : Control + F(N)"
@@ -844,7 +844,7 @@ msgstr "启动 xfrun4： Alt + F2"
 
 #: xfwm4.xml:583(para)
 msgid "Lock the screen : Alt + Control + Delete"
-msgstr "锁住屏幕： Alt + Control + Delete"
+msgstr "锁住屏幕： Alt + Ctrl + Del"
 
 #: xfwm4.xml:586(para)
 msgid ""
