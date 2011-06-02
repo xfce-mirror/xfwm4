@@ -2,21 +2,21 @@
 # Euskara translation of xfwm4.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Piarres Beobide Egaña <pi@beobide.net>, 2004, 2006, 2007, 2008.
 # Piarres Beobide <pi+debian@beobide.net>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-06-02 16:13+0000\n"
 "PO-Revision-Date: 2009-12-15 11:54+0100\n"
 "Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
-"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.0\n"
 
@@ -67,8 +67,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Erabili %s --help komando lerro aukera erabilgarrien zerrenda osoa "
-"ikusteko.\n"
+"Erabili %s --help komando lerro aukera erabilgarrien zerrenda osoa ikusteko.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -627,12 +626,8 @@ msgid "Reset to Defaults"
 msgstr "Be_rrezarri lehenespenetara"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Honek laster-tekla guztiak lehenetsitako balioetara ezarriko ditu. Ziur hau "
-"egin nahi duzula?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Honek laster-tekla guztiak lehenetsitako balioetara ezarriko ditu. Ziur hau egin nahi duzula?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -757,8 +752,7 @@ msgstr "Leiho batek bere burua nabarmentzean:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
+msgstr "Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -829,8 +823,7 @@ msgid "Change workspace name"
 msgstr "Aldatu idazmahai izena"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak pantailaren ertzetan leihorik kokatu ezin den eremuak dira"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -854,37 +847,36 @@ msgstr "%s: Segmentazio errorea"
 
 #: ../src/main.c:534
 msgid "Fork to the background"
-msgstr ""
+msgstr "Banandu atzealdera"
 
 #: ../src/main.c:536
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Banandu atzealdera (euskarririk gabe)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Ezarri konposizio modua"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Ezarri konposizio modua (euskarririk gabe)"
 
 #: ../src/main.c:543
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Ordeztu dagoen leiho kudeatzailea"
 
 #: ../src/main.c:544
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "Bertsio argibideak"
+msgstr "Bertsio argibideak inprimatu eta irten"
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENTUAK...]"
 
 #: ../src/main.c:559
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Idatzi \"%s --help\" erabilerarako."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -991,8 +983,7 @@ msgstr "%s: Ezin da %s kolorea esleitu\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
+msgstr "%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1002,8 +993,7 @@ msgstr "%s: Ezin da %s kolorea analizatu\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
+msgstr "%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -1072,8 +1062,7 @@ msgstr "Ezin da laguntza-elkarrizketa abiarazi: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Ipini leihoa erdian"
 
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr ""
 #~ "\"Orrialdekatzailea\" utzi\" edo \"ataza-barra utzi\"\n"
 #~ " propietateak ezarririk duten leihoak alde batetara urt"
@@ -1115,19 +1104,13 @@ msgstr "Ezin da laguntza-elkarrizketa abiarazi: %s\n"
 #~ msgstr "Erabilgarritasuna"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr ""
-#~ "Idazmahaia aldatu saguaren gurpila udazmahaiaren gainaean erabiltzean"
+#~ msgstr "Idazmahaia aldatu saguaren gurpila udazmahaiaren gainaean erabiltzean"
 
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla "
-#~ "bitartez aldatzean"
+#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#~ msgstr "Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla bitartez aldatzean"
 
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr ""
-#~ "Idazmahaiak egokitu erabiltzen den uneko idazmahai ingurunearen arabera"
+#~ msgstr "Idazmahaiak egokitu erabiltzen den uneko idazmahai ingurunearen arabera"
 
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "Idazmahaiak egokitu lehen edo azken idazmahaiera ailatzerakoan"
@@ -1190,9 +1173,7 @@ msgstr "Ezin da laguntza-elkarrizketa abiarazi: %s\n"
 #~ msgstr "Leiho kudeatzaile ezarpenak"
 
 #~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr ""
-#~ "Ezarpen hauek ezin dute funtzionatu erabiltzen duzun leiho "
-#~ "kudeatzailearekin (%s)"
+#~ msgstr "Ezarpen hauek ezin dute funtzionatu erabiltzen duzun leiho kudeatzailearekin (%s)"
 
 #~ msgid "Change name"
 #~ msgstr "Aldatu izena"
