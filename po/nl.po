@@ -1,4 +1,4 @@
-# Dutch translations for the xfwm4 package.
+# Dutch translation for the xfwm4 package.
 # Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Jasper Huijsmans <jasper@xfce.org>, 2004.
@@ -8,14 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-27 10:14+0000\n"
-"PO-Revision-Date: 2006-11-3 12:41+0100\n"
+"POT-Creation-Date: 2011-06-16 22:14+0000\n"
+"PO-Revision-Date: 2011-06-15 12:41+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
+"Language: nl (Dutch)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -122,7 +123,7 @@ msgstr "<b>Knopvormgeving</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Double click _action</b>"
-msgstr "<b>Dubbelklik _actie</b>"
+msgstr "<b>Dubbelklik-_actie</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
@@ -150,7 +151,7 @@ msgstr "<b>_Lettertype titel</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Window _shortcuts</b>"
-msgstr "<b>Venster_sneltoetsen</b>"
+msgstr "<b>Venster-_sneltoetsen</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
@@ -629,7 +630,7 @@ msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
-"Dit zal alle snelkoppelingen terugzetten naar hun standaardwaarden. Wilt u "
+"Dit zal alle sneltoetsen terugzetten naar hun standaardwaarden. Wilt u "
 "dit echt doen?"
 
 #. Smart placement size
@@ -881,7 +882,7 @@ msgstr "Druk de versie-informatie af en sluit af"
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
-msgstr "[ARGUMENTS...]"
+msgstr "[ARGUMENTEN...]"
 
 #: ../src/main.c:559
 #, c-format
@@ -947,7 +948,7 @@ msgstr "Verlaat Schermvullend"
 
 #: ../src/menu.c:59
 msgid "Context _Help"
-msgstr "Contekstuele _hulp"
+msgstr "Contextuele _hulp"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
@@ -999,7 +1000,7 @@ msgstr ""
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Kan kleur %s niet ontleden\n"
+msgstr "%s: Kan kleur %s niet lezen\n"
 
 #: ../src/settings.c:284
 #, c-format
