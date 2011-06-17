@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-16 22:14+0000\n"
+"POT-Creation-Date: 2011-06-17 10:15+0000\n"
 "PO-Revision-Date: 2011-06-15 12:41+0200\n"
 "Last-Translator: Pjotr\n"
-"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,7 +86,7 @@ msgstr "Contactpunt voor instellingenbeheerder"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr "Configureer venstergedrag en snelkoppelingen"
+msgstr "Configureer venstergedrag en sneltoetsen"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -630,8 +630,8 @@ msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
-"Dit zal alle sneltoetsen terugzetten naar hun standaardwaarden. Wilt u "
-"dit echt doen?"
+"Dit zal alle sneltoetsen terugzetten naar hun standaardwaarden. Wilt u dit "
+"echt doen?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -716,12 +716,12 @@ msgstr "Ondoorzichtigheid van vensters tijdens verp_laatsen:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Opacity of windows during resi_ze:"
-msgstr "Ondoor_zichtigheid van vensters bij veranderen grootte:"
+msgstr "Ondoorzichtigheid van vensters bij _veranderen grootte:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
 msgstr ""
-"Herstel de ori_ginele grootte bij het verplaatsen van gemaximaliseerde "
+"Herstel oorspronkelijke _grootte bij verplaatsen van gemaximaliseerde "
 "vensters"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
@@ -975,7 +975,7 @@ msgstr "Vernietigen"
 
 #: ../src/menu.c:71
 msgid "_Quit"
-msgstr "A_fsluiten"
+msgstr "_Afsluiten"
 
 #: ../src/menu.c:72
 msgid "Restart"
