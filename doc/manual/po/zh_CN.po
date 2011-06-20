@@ -128,13 +128,12 @@ msgid ""
 "provides the window decorations and allows you for instance to move, resize "
 "or close them."
 msgstr ""
-""
-""
-""
-""
-""
-""
-""
+"Xfce 4 窗口管理器是 <ulink url=\"http://www.xfce.org\" type=\"html\">Xfce "
+"Desktop Environment</ulink> 的一部分。实际运行的命令是 "
+"<application>@PACKAGE_NAME@</application> 。要在后台运行它可使用 "
+"<command><application>@PACKAGE_NAME@</application> --daemon</command> 。"
+"窗口管理器负责屏幕上窗口的位置、修饰窗口，让您移动窗口、"
+"更改窗口大小或关闭窗口。"
 
 #: xfwm4.xml:90(para)
 msgid ""
@@ -148,13 +147,12 @@ msgid ""
 "decorations (borders, title bar and window buttons) can be configured by "
 "using window manager themes."
 msgstr ""
-""
-""
-""
-""
-""
-""
-""
+"<ulink url=\"http://www.freedesktop.org\" type=\"html\">freedesktop.org"
+"</ulink> 中定义的标准是 <application>@PACKAGE_NAME@</application> 高度遵循的。"
+"因此，某些特殊的功能现在必须在应用程序中应用，比如使窗口无边界"
+"或为应用程序提供图标；您再也用不着使用窗口管理器去强迫使用不同的"
+"行为。 <application>@PACKAGE_NAME@</application> 的重要功能之一是它的可主题化。"
+"窗口修饰(边界、标题栏和窗口按钮)可以由窗口管理器主题来配置。"
 
 #: xfwm4.xml:101(para)
 msgid ""
@@ -162,9 +160,8 @@ msgid ""
 "xinerama and real multiscreen modes, useful when you have more than one "
 "monitor connected to your computer."
 msgstr ""
-""
-""
-""
+"<application>@PACKAGE_NAME@</application> 提供多传感头支持，无论是双屏还是真实的多屏"
+"模式，在您有一个以上的显示器接到电脑上时，此支持是有用的。"
 
 #: xfwm4.xml:105(para)
 msgid ""
@@ -174,11 +171,10 @@ msgid ""
 "management. Tasks other than managing windows, like setting a background "
 "image or launching programs, need to be performed by other programs."
 msgstr ""
-""
-""
-""
-""
-""
+"<application>@PACKAGE_NAME@</application> 可以单独运行，但如果您使用此种方式，"
+"如果您想使用图形化的设置管理，您需要 <ulink url=\"xfce-mcs-manager.html\" "
+"type=\"http\">Xfce 4 设置管理器</ulink> 。非窗口管理方面的任务，比如设置"
+"背景或启动程序，则要由其它程序来完成。"
 
 #: xfwm4.xml:112(para)
 msgid ""
@@ -218,6 +214,8 @@ msgid ""
 "The window manager provides borders, a title bar and window buttons to "
 "application windows. The look is defined by the window manager theme."
 msgstr ""
+"窗口管理器为应用程序窗口提供边界、标题栏和窗口按钮。"
+"外表有窗口管理器主题定义。"
 
 #: xfwm4.xml:134(para)
 msgid ""
@@ -289,7 +287,7 @@ msgstr ""
 
 #: xfwm4.xml:201(term)
 msgid "Maximize / unmaximize windows"
-msgstr "最大化/恢复窗口"
+msgstr "最大化或恢复窗口"
 
 #: xfwm4.xml:203(para)
 msgid ""
@@ -310,11 +308,11 @@ msgstr "点击标题栏上的最大化按钮"
 #: xfwm4.xml:215(para)
 msgid ""
 "open the window menu from the title bar and choose the \"maximize\" item"
-msgstr ""
+msgstr "从标题栏中打开窗口菜单并选择 “最大化” 条目"
 
 #: xfwm4.xml:221(para)
 msgid "use Alt + F5 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F5 键盘快捷键"
 
 #: xfwm4.xml:225(para)
 msgid ""
@@ -325,27 +323,27 @@ msgstr ""
 
 #: xfwm4.xml:230(para)
 msgid "To maximize a window vertically :"
-msgstr ""
+msgstr "竖直最大化窗口："
 
 #: xfwm4.xml:232(para)
 msgid "middle-click the maximize button of the title bar"
-msgstr ""
+msgstr "中击标题栏上的最大化按钮"
 
 #: xfwm4.xml:233(para)
 msgid "use Alt + F6 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F6 键盘快捷键"
 
 #: xfwm4.xml:236(para)
 msgid "To maximize a window horizontally :"
-msgstr ""
+msgstr "水平最大化窗口："
 
 #: xfwm4.xml:239(para)
 msgid "right-click the maximize button of the title bar"
-msgstr ""
+msgstr "右击标题栏上的最大化按钮"
 
 #: xfwm4.xml:240(para)
 msgid "use Alt + F7 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F7 键盘快捷键"
 
 #: xfwm4.xml:243(para)
 msgid ""
@@ -355,19 +353,19 @@ msgstr ""
 
 #: xfwm4.xml:247(para)
 msgid "click the unmaximize button of the title bar"
-msgstr ""
+msgstr "点击标题栏上的恢复按钮"
 
 #: xfwm4.xml:248(para)
 msgid "use the same keyboard shortcut once again"
-msgstr ""
+msgstr "再一次使用相同的键盘快捷键"
 
 #: xfwm4.xml:249(para)
 msgid "choose the \"Unmaximize\" item in the window menu"
-msgstr ""
+msgstr "在窗口菜单中选择 “恢复” 条目"
 
 #: xfwm4.xml:255(term)
 msgid "Resize windows"
-msgstr ""
+msgstr "调整窗口大小"
 
 #: xfwm4.xml:257(para)
 msgid ""
@@ -396,23 +394,23 @@ msgstr ""
 
 #: xfwm4.xml:279(term)
 msgid "Hide / unhide windows"
-msgstr "隐藏/显示窗口"
+msgstr "隐藏或显示窗口"
 
 #: xfwm4.xml:281(para)
 msgid "You can hide a window performing one of these actions :"
-msgstr ""
+msgstr "您可以执行以下某个动作来隐藏窗口："
 
 #: xfwm4.xml:283(para)
 msgid "click the hide button of the title bar"
-msgstr ""
+msgstr "点击标题栏的隐藏按钮"
 
 #: xfwm4.xml:284(para)
 msgid "open the window menu from the title bar and choose the \"Hide\" item"
-msgstr ""
+msgstr "从标题栏中打开窗口菜单并选择 “隐藏” 条目"
 
 #: xfwm4.xml:286(para)
 msgid "use Alt + F8 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F8 键盘快捷键"
 
 #: xfwm4.xml:288(para)
 msgid ""
@@ -444,7 +442,7 @@ msgstr "<application>xfce4-iconbox</application>"
 
 #: xfwm4.xml:305(term)
 msgid "Shade / unshade windows"
-msgstr ""
+msgstr "折叠或展开窗口"
 
 #: xfwm4.xml:307(para)
 msgid ""
@@ -454,21 +452,21 @@ msgstr ""
 
 #: xfwm4.xml:311(para)
 msgid "click the shade/unshade button of the title bar"
-msgstr ""
+msgstr "点击标题栏中的折叠或展开按钮"
 
 #: xfwm4.xml:312(para)
 msgid ""
 "open the window menu from the title bar and choose \"Shade\" or \"Unshade\" "
 "item"
-msgstr ""
+msgstr "从标题栏中选择窗口菜单并选择 “折叠” 或 “展开” 条目"
 
 #: xfwm4.xml:314(para)
 msgid "use the mouse scrollwheel while you hold the pointer over the title bar"
-msgstr ""
+msgstr "当您把鼠标指针停在标题栏上时使用鼠标滚轮"
 
 #: xfwm4.xml:316(para)
 msgid "use the Alt + F9 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F9 键盘快捷键"
 
 #: xfwm4.xml:322(term)
 msgid "Stick / unstick windows"
@@ -492,11 +490,11 @@ msgstr ""
 
 #: xfwm4.xml:332(para)
 msgid "use the Alt + F10 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F10 键盘快捷键"
 
 #: xfwm4.xml:338(term)
 msgid "Raise / lower windows"
-msgstr ""
+msgstr "提升或降低窗口"
 
 #: xfwm4.xml:340(para)
 msgid ""
@@ -641,11 +639,11 @@ msgstr "点击标题栏上的关闭按钮"
 
 #: xfwm4.xml:430(para)
 msgid "Open the window menu from the title bar and choose the \"Close\" item"
-msgstr ""
+msgstr "从标题栏中打开窗口并选择 “关闭” 条目"
 
 #: xfwm4.xml:432(para)
 msgid "or use Alt + F4 keyboard shortcut"
-msgstr ""
+msgstr "或使用 Alt + F4 键盘快捷键"
 
 #: xfwm4.xml:443(title)
 msgid "Customizing <application>@PACKAGE_NAME@</application>"
@@ -699,7 +697,7 @@ msgstr ""
 
 #: xfwm4.xml:497(term)
 msgid "Title alignment"
-msgstr ""
+msgstr "标题对齐方式"
 
 #: xfwm4.xml:499(para)
 msgid ""
@@ -722,19 +720,19 @@ msgstr ""
 
 #: xfwm4.xml:522(title)
 msgid "Keyboard shortcuts"
-msgstr "键盘快捷方式"
+msgstr "键盘快捷键"
 
 #: xfwm4.xml:525(title)
 msgid "Keyboard shortcuts preferences"
-msgstr "键盘快捷方式首选项"
+msgstr "键盘快捷键首选项"
 
 #: xfwm4.xml:533(phrase)
 msgid "The keyboard shortcuts tab"
-msgstr "键盘快捷方式标签"
+msgstr "键盘快捷键标签"
 
 #: xfwm4.xml:542(term)
 msgid "Keyboard Shortcuts"
-msgstr "键盘快捷方式"
+msgstr "键盘快捷键"
 
 #: xfwm4.xml:544(para)
 msgid ""
@@ -746,35 +744,35 @@ msgstr ""
 msgid ""
 "By default, there's only one theme : $(datadir)/themes/Default/xfwm4/"
 "keythemerc"
-msgstr "默认只有一主题： $(datadir)/themes/Default/xfwm4/keythemerc"
+msgstr "默认只有一主题：$(datadir)/themes/Default/xfwm4/keythemerc"
 
 #: xfwm4.xml:552(para)
 msgid "In the default configuration the following keybindings are defined:"
-msgstr ""
+msgstr "在默认的配置下定义了以下绑定键"
 
 #: xfwm4.xml:556(para)
 msgid "close window : Alt + F4"
-msgstr "关闭窗口： Alt + F4"
+msgstr "关闭窗口：Alt + F4"
 
 #: xfwm4.xml:557(para)
 msgid "Maximize window : Alt + F5"
-msgstr "最大化窗口： Alt + F5"
+msgstr "最大化窗口：Alt + F5"
 
 #: xfwm4.xml:558(para)
 msgid "Maximize vertically : Alt + F6"
-msgstr "竖直最大化： Alt + F6"
+msgstr "竖直最大化：Alt + F6"
 
 #: xfwm4.xml:559(para)
 msgid "Maximize horizontally : Alt + F7"
-msgstr "水平最大化： Alt + F7"
+msgstr "水平最大化：Alt + F7"
 
 #: xfwm4.xml:560(para)
 msgid "Hide window : Alt + F8"
-msgstr "隐藏窗口： Alt + F8"
+msgstr "隐藏窗口：Alt + F8"
 
 #: xfwm4.xml:561(para)
 msgid "Shade window : Alt + F9"
-msgstr ""
+msgstr "折叠窗口：Alt + F9"
 
 #: xfwm4.xml:562(para)
 msgid "Stick window : Alt + F10"
@@ -786,43 +784,43 @@ msgstr ""
 
 #: xfwm4.xml:564(para)
 msgid "Move window : Control + Shift + Alt + Arrow (up, down, left, or right)"
-msgstr ""
+msgstr "移动窗口：Ctrl + Shift + Alt + 方向键(上、下、左或右)"
 
 #: xfwm4.xml:566(para)
 msgid "Resize window : Shift + Alt + Arrow (up, down, left, or right)"
-msgstr ""
+msgstr "调整窗口大小：Shift + Alt + 方向键(上、下、左或右)"
 
 #: xfwm4.xml:568(para)
 msgid "Raise window : Shift + Alt + Page_Up"
-msgstr ""
+msgstr "提升窗口：Shift + Alt + Page_Up(_U)"
 
 #: xfwm4.xml:569(para)
 msgid "Lower window : Shift + Alt + Page_Down"
-msgstr ""
+msgstr "降低窗口：Shift + Alt + Page_Down(_D)"
 
 #: xfwm4.xml:570(para)
 msgid "Toggle fullscreen : Alt + F11"
-msgstr ""
+msgstr "全屏切换：Alt + F11"
 
 #: xfwm4.xml:571(para)
 msgid "Next workspace : Control + Alt + Arrow right arrow"
-msgstr ""
+msgstr "下一个工作区：Ctrl + Alt + 方向右键"
 
 #: xfwm4.xml:573(para)
 msgid "Previous workspace : Control + Alt + Arrow left"
-msgstr ""
+msgstr "前一个工作区：Ctrl + Alt + 方向左键"
 
 #: xfwm4.xml:574(para)
 msgid "Add a workspace : Alt + Insert"
-msgstr "添加工作区： Alt + Ins"
+msgstr "添加工作区：Alt + Ins"
 
 #: xfwm4.xml:575(para)
 msgid "Delete a workspace : Alt + Delete"
-msgstr "删除工作区： Alt + Del"
+msgstr "删除工作区：Alt + Del"
 
 #: xfwm4.xml:576(para)
 msgid "Go to workspace number N (1-9) : Control + F(N)"
-msgstr ""
+msgstr "转到第 N(1-9) 个工作区：Ctrl + F(N)"
 
 #: xfwm4.xml:577(para)
 msgid "Move the window to previous|next workspace : Alt + Control + Home|End"
@@ -832,19 +830,19 @@ msgstr ""
 msgid ""
 "Move a window to workspace number N (1-9) : Alt + Control + keypad key "
 "number N"
-msgstr ""
+msgstr "将窗口移动到第 N(1-9) 个工作区：Alt + Ctrl + 小键盘数字键 N"
 
 #: xfwm4.xml:581(para)
 msgid "Start xfhelp4 : Alt + F1"
-msgstr "启动 xfhelp4： Alt + F1"
+msgstr "启动 xfhelp4 ：Alt + F1"
 
 #: xfwm4.xml:582(para)
 msgid "Start xfrun4 : Alt + F2"
-msgstr "启动 xfrun4： Alt + F2"
+msgstr "启动 xfrun4 ：Alt + F2"
 
 #: xfwm4.xml:583(para)
 msgid "Lock the screen : Alt + Control + Delete"
-msgstr "锁住屏幕： Alt + Ctrl + Del"
+msgstr "锁屏：Alt + Ctrl + Del"
 
 #: xfwm4.xml:586(para)
 msgid ""
@@ -1045,15 +1043,15 @@ msgstr ""
 
 #: xfwm4.xml:823(title)
 msgid "Workspaces margins"
-msgstr ""
+msgstr "工作区边缘"
 
 #: xfwm4.xml:826(title)
 msgid "The workspace margins dialog"
-msgstr ""
+msgstr "工作区边缘对话框"
 
 #: xfwm4.xml:834(phrase)
 msgid "The workspace margins tab folder"
-msgstr ""
+msgstr "工作区边缘标签文件夹"
 
 #: xfwm4.xml:840(para)
 msgid ""
