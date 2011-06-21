@@ -86,7 +86,7 @@ msgstr "设置管理器套接字"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr "配置窗口行为和快捷方式"
+msgstr "配置窗口行为和快捷键"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -301,7 +301,7 @@ msgstr "窗口获取焦点前的延时(_D)："
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
-msgstr "屏幕边缘最小距离(_E)："
+msgstr "边界阻距(_E)："
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
@@ -628,7 +628,7 @@ msgstr "重设至默认值"
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
-msgstr "这会把全部快捷方式重设为默认值。您确实要这样做吗？"
+msgstr "这会把全部快捷键重设为默认值。您确实要这样做吗？"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -741,7 +741,7 @@ msgstr "在当前鼠标指针下(_P)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr "使用屏幕边缘最小距离取代窗口吸附(_E)"
+msgstr "使用边界阻距取代窗口吸附(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -801,8 +801,8 @@ msgstr "键盘快捷键切换时记住并恢复先前的工作区(_R)"
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "跳过属性设置有 “skip pager” \n"
-"或 “skip taskbar” 的窗口(_S)"
+msgstr "跳过属性设置有 “跳过页面” \n"
+"或 “跳过任务栏” 的窗口(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
@@ -810,7 +810,7 @@ msgstr "工作区(_W)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "<b>Margins</b>"
-msgstr "<b>边缘</b>"
+msgstr "<b>边缘区</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "<b>Workspaces</b>"
@@ -823,7 +823,7 @@ msgstr "改变工作区名称"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "边缘是屏幕边上不能放置窗口的区域。"
+msgstr "边缘区是屏幕边上不能放置窗口的区域。"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
