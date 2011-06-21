@@ -925,7 +925,7 @@ msgstr ""
 
 #: xfwm4.xml:685(term)
 msgid "Raise on click"
-msgstr ""
+msgstr "点击时提升"
 
 #: xfwm4.xml:687(para)
 msgid ""
@@ -945,7 +945,7 @@ msgstr "高级首选项"
 
 #: xfwm4.xml:712(phrase)
 msgid "Advanced tab"
-msgstr ""
+msgstr "高级标签"
 
 #: xfwm4.xml:721(term)
 msgid "Windows snapping"
@@ -970,10 +970,13 @@ msgid ""
 "the same behaviour while dragging a window. You can specify the screen edges "
 "resistance using the corresponding slider."
 msgstr ""
+"如果在鼠标指针碰到屏幕边缘时，您要切换到下一个工作区，选择第一个"
+"选项。如果在拖拽窗口时您要相同的行为，选择第二个选项。您可以使用"
+"相应的滑块指定屏幕最小距离。"
 
 #: xfwm4.xml:742(term)
 msgid "Opaque move and resize"
-msgstr ""
+msgstr "不透明移动和调整大小"
 
 #: xfwm4.xml:744(para)
 msgid ""
@@ -981,10 +984,12 @@ msgid ""
 "not, when you move or resize it (not displaying the content will save some "
 "system resources)."
 msgstr ""
+"两个选项让您选择窗口内容是否显示，如果您移动或调整了它的大小"
+"(不显示内容会节省一些系统资源)。"
 
 #: xfwm4.xml:751(term)
 msgid "Double click action"
-msgstr ""
+msgstr "双击动作"
 
 #: xfwm4.xml:753(para)
 msgid ""
@@ -992,6 +997,8 @@ msgid ""
 "click on the title bar of a window : shade window, hide window, maximize "
 "window or none."
 msgstr ""
+"选择在您双击窗口标题栏时窗口管理器必须使用的行为：折叠窗口、"
+"隐藏窗口、最大化窗口或无"
 
 #: xfwm4.xml:766(title)
 msgid "Managing workspaces"
@@ -1006,6 +1013,11 @@ msgid ""
 "manager dialog</ulink>. The dialog contains two tab folders where you can "
 "change workspace settings and desktop margins."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> 也管理工作区。有一特殊的设置对话框用来更改"
+"工作区属性。您可以从 <ulink url=\"xfce-mcs-manager.html#manager-dialog\" "
+"type=\"http\">设置管理器对话框</ulink> 中选择 <emphasis>工作区和边缘</emphasis> 来"
+"启动此特殊的设置对话框。此对话框包含两个标签文件夹，您可以在此"
+"更改工作区设置和桌面边缘。"
 
 #: xfwm4.xml:778(title)
 msgid "Workspaces settings"
@@ -1017,7 +1029,7 @@ msgstr "工作区设置"
 
 #: xfwm4.xml:788(phrase)
 msgid "Shows workspace settings tab folder."
-msgstr ""
+msgstr "显示工作区设置标签文件夹。"
 
 #: xfwm4.xml:798(term)
 msgid "Workspaces"
@@ -1027,7 +1039,7 @@ msgstr "工作区"
 msgid ""
 "This option allows you too choose the number of workspaces you want to use "
 "(between 1 and 32)."
-msgstr ""
+msgstr "此选项让您选择您要使用的工作区编号(在 1 与 32 之间)"
 
 #: xfwm4.xml:807(term)
 msgid "Worspace names"
@@ -1040,6 +1052,9 @@ msgid ""
 "that will then appear. When it's done, click the \"Apply\" button, or just "
 "press the Enter key, to return to the list."
 msgstr ""
+"此地显示工作区列表。如果您要编辑其中的某个工作区的名称，点击工作区"
+"编号并在出现的对话框中填写。之后，点击 “应用” 按钮，或仅按回车键，"
+"返回原列表。"
 
 #: xfwm4.xml:823(title)
 msgid "Workspaces margins"
@@ -1060,6 +1075,9 @@ msgid ""
 "type=\"http\">settings manager dialog</ulink> and choose the tab labelled "
 "\"Margins\"."
 msgstr ""
+"要打开工作区边缘对话框，在 <ulink url=\"xfce-mcs-manager.html#manager"
+"-dialog\" type=\"http\">设置管理器对话框</ulink> 中点击标有 “工作区和边缘” "
+"的按钮并选择标有 “边缘” 的标签。"
 
 #: xfwm4.xml:846(para)
 msgid ""
@@ -1068,6 +1086,9 @@ msgid ""
 "and bottom). Use this feature, for example, if you do not want maximized "
 "windows to overlap panel or iconbox frames."
 msgstr ""
+"边缘是最大化窗口不能遮盖的的屏幕边上的区域。您可以调整，以像素，"
+"所有边缘(左、右、上和下)的大小。使用此功能，比如，如果您不想"
+"最大化窗口与面板或图标框边框重叠。"
 
 #: xfwm4.xml:857(title)
 msgid "About <application>@PACKAGE_NAME@</application>"
@@ -1079,6 +1100,10 @@ msgid ""
 "(<email>fourdan@xfce.org</email>). To find more information, please visit "
 "the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce web site</ulink>."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> 由 Olivier Fourdan "
+"(<email>fourdan@xfce.org</email>) 编写。要查询更多信息，"
+"请访问 <ulink url=\"http://www.xfce.org\" "
+"type=\"http\">Xfce web site</ulink> 。"
 
 #: xfwm4.xml:864(para)
 msgid ""
@@ -1086,6 +1111,9 @@ msgid ""
 "manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/"
 "\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
 msgstr ""
+"对于本应用程序或本手册，要报告缺陷或提出建议，使用缺陷追踪系统 "
+"<ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">"
+"http://bugzilla.xfce.org/</ulink>."
 
 #: xfwm4.xml:870(para)
 msgid ""
@@ -1095,6 +1123,10 @@ msgid ""
 "the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type="
 "\"http\">xfce4-dev</ulink> mailing list."
 msgstr ""
+"如果您有本软件包的使用或安装方面的问题， <ulink url=\"http://lunar-linux."
+"org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> 请在邮件列表上提问。"
+"开发讨论位于邮件列表 <ulink url=\"http://lunar-linux.org/mailman"
+"/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> 。"
 
 #: xfwm4.xml:879(para)
 msgid ""
@@ -1102,6 +1134,8 @@ msgid ""
 "License as published by the Free Software Foundation; either version 2 of "
 "the License, or (at your option) any later version."
 msgstr ""
+"此软件在自由软件基金会发布的 GNU 通用公共许可协议的第二版或者"
+"(您可以选择)更高版本的条款约束下发布。"
 
 #: xfwm4.xml:884(para)
 msgid ""
@@ -1109,6 +1143,10 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
 "Place - Suite 330, Boston, MA 02111-1307, USA."
 msgstr ""
+"您应该与此程序一道收到了一份 GUN 通用公共许可协议的副本；"
+"如果没有，致信给 "
+"the Free Software Foundation, Inc.,"
+"59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: xfwm4.xml:0(None)
