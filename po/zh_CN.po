@@ -908,7 +908,7 @@ msgstr "调整大小(_R)"
 #. --------------------------------------------------------
 #: ../src/menu.c:52
 msgid "Always on Top"
-msgstr "总是置顶"
+msgstr "总是最前"
 
 #: ../src/menu.c:53
 msgid "Same as Other Windows"
