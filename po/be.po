@@ -2,19 +2,19 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Ales Nyakhaychyk <nab@mail.by>, 2004-2007.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-06-22 16:34+0000\n"
 "PO-Revision-Date: 2007-09-10 00:08+0300\n"
 "Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
 "Language-Team: Belarusian <xfce-i18n@xfce.org>\n"
-"Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: be\n"
 "X-Rosetta-Export-Date: 2007-01-01 23:28+0000\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -22,10 +22,12 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"Гэтае акно занятае і не адказвае.\n"
+"Ці хочаце вы прымосова завяршыць выкананне гэтай праграмы?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "Увага"
 
 #: ../settings-dialogs/tweaks-settings.c:49
 msgid "None"
@@ -69,9 +71,8 @@ msgid "Workspace %d"
 msgstr "Працоўная прастора %d"
 
 #: ../settings-dialogs/workspace-settings.c:280
-#, fuzzy
 msgid "Workspace Name"
-msgstr "Назвы працоўных прастораў"
+msgstr "Назва працоўнай прасторы"
 
 #: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:310
@@ -80,9 +81,8 @@ msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Скасаваць дзеяньне над вакном"
+msgstr "Наладка паводзін акна і цэтлікаў"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -91,9 +91,8 @@ msgstr "Кіраўнік вокнаў"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Скасаваць дзеяньне над вакном"
+msgstr "Дадатковыя наладкі паводзін акна і эфектаў"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -102,9 +101,8 @@ msgstr "Наладкі Кіраўніка вокнаў"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Set number and names of workspaces"
-msgstr "Колькасьць працоўных прастораў:"
+msgstr "Вызначыць колькасць працоўных прастораў і іх імёны"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -112,69 +110,56 @@ msgid "Workspaces"
 msgstr "Працоўныя прасторы"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "Непразрыстае перамяшчэньне й зьмена памераў"
+msgstr "<b>Перамяшчэньне й зьмена памераў</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "Разьмеркаваньне кнопак"
+msgstr "<b>Разьмеркаваньне кнопак</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "Узьдзеяньне двайное пстрычкі"
+msgstr "<b>Узьдзеяньне двайное пстрычкі</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "Мадэль засяроджаньня"
+msgstr "<b>Мадэль засяроджаньня</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "Засяроджаньне новага вакна"
+msgstr "<b>Засяроджаньне новага вакна</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "Уздымаць па пстрычцы"
+msgstr "<b>Уздымаць па пстрычцы</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "Уздымаць пры атрыманьні засяроджаньня"
+msgstr "<b>Уздымаць пры атрыманьні засяроджаньня</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "Выроўніваньне загалоўка"
+msgstr "<b>Выроўніваньне загалоўка</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "Шрыфт загалоўка"
+msgstr "<b>Шрыфт загалоўка</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "Гарачыя клявішы"
+msgstr "<b>Цэтлікі вакна</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "Прыцягненьне вокнаў"
+msgstr "<b>Прыцягненьне вокнаў</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "Загортваньне прастораў"
+msgstr "<b>Загортваньне прастораў</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "Выроўніваньне загалоўка"
+msgstr "<b>Тэма</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
@@ -321,14 +306,12 @@ msgstr "Загаловак"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
-"Крочыць паміж працоўнымі прасторамі, калі перацягваюцца вокны за межы экрана"
+msgstr "Крочыць паміж працоўнымі прасторамі, калі перацягваюцца вокны за межы экрана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
-"Крочыць паміж працоўнымі прасторамі, калі паказьнік сягае за межы экрана"
+msgstr "Крочыць паміж працоўнымі прасторамі, калі паказьнік сягае за межы экрана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 #, fuzzy
@@ -698,9 +681,7 @@ msgid "Reset to Defaults"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr ""
 
 #. Smart placement size
@@ -901,18 +882,14 @@ msgstr "Уздымаць вокны, калі націснута любая кн
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Запамінаць і выклікаць папярэднюю прастору, калі пераключэньне ідзе праз "
-"камбінацыю клявішаў"
+msgstr "Запамінаць і выклікаць папярэднюю прастору, калі пераключэньне ідзе праз камбінацыю клявішаў"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 #, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Абмінаць вокны, якія маюць уласьцівасьці \"абмінаць панэль задач\" і "
-"\"абмінаць вакно прастораў\""
+msgstr "Абмінаць вокны, якія маюць уласьцівасьці \"абмінаць панэль задач\" і \"абмінаць вакно прастораў\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 #, fuzzy
@@ -935,11 +912,8 @@ msgid "Change workspace name"
 msgstr "Назвы працоўных прастораў"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Водступы - гэта адмысловыя плошы па краёх экрана, дзе нельга разьмяшчаць "
-"вокны"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Водступы - гэта адмысловыя плошы па краёх экрана, дзе нельга разьмяшчаць вокны"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 #, fuzzy
@@ -1134,31 +1108,24 @@ msgstr ""
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
 
-#, fuzzy
 #~ msgid "Distance|<i>Small</i>"
 #~ msgstr "Вузкі"
 
-#, fuzzy
 #~ msgid "Resistance|<i>Small</i>"
 #~ msgstr "Маленькі"
 
-#, fuzzy
 #~ msgid "Resistance|<i>Wide</i>"
 #~ msgstr "Вялікі"
 
-#, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "Кіраўнік вокнаў"
 
-#, fuzzy
 #~ msgid "gtk-clear"
 #~ msgstr "Скасаваць"
 
-#, fuzzy
 #~ msgid "gtk-cancel"
 #~ msgstr "Скасаваць"
 
-#, fuzzy
 #~ msgid "gtk-save"
 #~ msgstr "Скасаваць"
 
@@ -1177,11 +1144,9 @@ msgstr ""
 #~ msgid "Bottom :"
 #~ msgstr "Ніжні:"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
 #~ msgstr "Перамясьціць вакно на бягучую прастору"
 
-#, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "Нічога"
 
@@ -1191,148 +1156,108 @@ msgstr ""
 #~ msgid "Place window in the center"
 #~ msgstr "Зьмясьціць вакно ў цэнтры"
 
-#, fuzzy
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "Абмінаць вокны, якія маюць уласьцівасьці \"абмінаць панэль задач\" і "
-#~ "\"абмінаць вакно прастораў\""
+#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr "Абмінаць вокны, якія маюць уласьцівасьці \"абмінаць панэль задач\" і \"абмінаць вакно прастораў\""
 
-#, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Уключыць схаваныя (найменшаныя) вокны"
 
-#, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
 #~ msgstr "Кругазварот усіх вокнаў з усіх працоўных прастораў"
 
-#, fuzzy
 #~ msgid "Cycling"
 #~ msgstr "Кругазварот"
 
-#, fuzzy
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "Абарона ад скраданьня засяроджаньня"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
 #~ msgstr "Паважаць стандарт засяроджаньня ICCCM"
 
-#, fuzzy
 #~ msgid "Focus"
 #~ msgstr "Засяроджаньне"
 
-#, fuzzy
 #~ msgid "Key used to grab and move windows"
 #~ msgstr "Клявіша для захопу і перамяшчэньня вокнаў"
 
-#, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "Уздымаць вокны, калі націснута любая кнопка мышы"
 
-#, fuzzy
 #~ msgid "Hide frame of windows when maximized"
 #~ msgstr "Хаваць мяжу вакна, калі яно найбольшана"
 
-#, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
 #~ msgstr "Аднаўляць зыходны памер найбольшаных вокнаў у час перамяшчэньня"
 
-#, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "Выкарыстоўваць супраціў межаў, замест прыцягненьня да вокнаў"
 
-#, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "Даступнасьць"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Пераключаць прасторы з дапамогай павароту кола мышы над Стальцом"
 
-#, fuzzy
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Запамінаць і выклікаць папярэднюю прастору, калі пераключэньне ідзе праз "
-#~ "камбінацыю клявішаў"
+#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#~ msgstr "Запамінаць і выклікаць папярэднюю прастору, калі пераключэньне ідзе праз камбінацыю клявішаў"
 
-#, fuzzy
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr "Загортваньне прастораў у залежнасьці ад актуальнага разьмеркаваньня"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "Крочыць паміж прасторамі, калі дасягаецца першая альбо апошняя"
 
-#, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
 #~ msgstr "Найменшы памер вакна, для задзейнічаньня разумнага разьмяшчэньня"
 
-#, fuzzy
 #~ msgid "Size|Small"
 #~ msgstr "Маленькі"
 
-#, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Вялікі"
 
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "Прадвызначанае разьмяшчэньне вокнаў без разумнага разьмяшчэньня:"
 
-#, fuzzy
 #~ msgid "Placement"
 #~ msgstr "Разьмяшчаньне"
 
-#, fuzzy
 #~ msgid "Enable display compositing"
 #~ msgstr "Уключыць кампазыцыйныя вокны"
 
-#, fuzzy
 #~ msgid "Display full screen overlay windows directly"
 #~ msgstr "Адлюстроўваць наўпрост вокны, што перакрываюць увесь экран"
 
-#, fuzzy
 #~ msgid "Show shadows under dock windows"
 #~ msgstr "Паказваць цені пад dock-вокнамі"
 
-#, fuzzy
 #~ msgid "Show shadows under regular windows"
 #~ msgstr "Паказваць цені пад звычайнымі вокнамі"
 
-#, fuzzy
 #~ msgid "Show shadows under popup windows"
 #~ msgstr "Паказваць цені пад раптоўнымі вокнамі"
 
-#, fuzzy
 #~ msgid "Opacity of window decorations"
 #~ msgstr "Непразрыстыя межы вокнаў"
 
-#, fuzzy
 #~ msgid "Transparent"
 #~ msgstr "Празрыстыя"
 
-#, fuzzy
 #~ msgid "Opaque"
 #~ msgstr "Непразрыстыя"
 
-#, fuzzy
 #~ msgid "Opacity of inactive windows"
 #~ msgstr "Непразрыстасьць неактыўнага вакна"
 
-#, fuzzy
 #~ msgid "Opacity of windows during move"
 #~ msgstr "Непразрыстя вокны ў час перамяшчэньня"
 
-#, fuzzy
 #~ msgid "Opacity of windows during resize"
 #~ msgstr "Непразрыстыя вокны ў час зьмены памераў"
 
-#, fuzzy
 #~ msgid "Opacity of popup windows"
 #~ msgstr "Раптоўныя вокны зьяўляюцца непразрыстымі"
 
-#, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "Складальнік"
 
@@ -1340,24 +1265,20 @@ msgstr ""
 #~ msgstr "Хітрыкі вокнаў"
 
 #~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr ""
-#~ "Гэтыя настаўленьні ня могуць працаваць з бягучым кіраўніом вокнаў (%s)"
+#~ msgstr "Гэтыя настаўленьні ня могуць працаваць з бягучым кіраўніом вокнаў (%s)"
 
 #~ msgid "Change name"
 #~ msgstr "Зьмяніць назву"
 
-#, fuzzy
 #~ msgid "Name:"
 #~ msgstr "Назва:"
 
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Пстрыкніце па назве працоўнае прасторы каб рэдагаваць яе"
 
-#, fuzzy
 #~ msgid "Number of workspaces:"
 #~ msgstr "Колькасьць працоўных прастораў:"
 
-#, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "Назвы працоўных прастораў"
 
@@ -1367,7 +1288,6 @@ msgstr ""
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Працоўныя прасторы й водсуты"
 
-#, fuzzy
 #~ msgid "Margins"
 #~ msgstr "Водступы"
 
@@ -1389,56 +1309,45 @@ msgstr ""
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "Настаўленьні працоўных прастораў Xfce 4"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "Перацягніце кнопкі, каб зьмяніць іх разьмеркаваньне"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "Дыялёг вылучэньне шрыфта"
 
-#, fuzzy
 #~ msgid "Title font"
 #~ msgstr "Шрыфт загалоўка"
 
-#, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "Выроўніваньне загалоўка"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "Выроўніваньне тэкста загалоўка вакна:"
 
-#, fuzzy
 #~ msgid "Button layout"
 #~ msgstr "Разьмеркаваньне кнопак"
 
-#, fuzzy
 #~ msgid "Style"
 #~ msgstr "Стыль"
 
-#, fuzzy
 #~ msgid "Window shortcuts"
 #~ msgstr "Гарачыя клявішы"
 
 #~ msgid "Command"
 #~ msgstr "Загад"
 
-#, fuzzy
 #~ msgid "Keyboard"
 #~ msgstr "Клявіятура"
 
-#, fuzzy
 #~ msgid "Focus model"
 #~ msgstr "Мадэль засяроджаньня"
 
-#, fuzzy
 #~ msgid "Click to focus"
 #~ msgstr "Пстрыкнуць для засяроджаньня"
 
-#, fuzzy
 #~ msgid "Focus follows mouse"
 #~ msgstr "Засяроджаньне крочыць за мышой"
 
-#, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "Затрымка перад тым, як вакно атрымае фокус"
 
@@ -1448,106 +1357,78 @@ msgstr ""
 #~ msgid "Fast"
 #~ msgstr "Хутка"
 
-#, fuzzy
 #~ msgid "Automatically give focus to newly created windows"
 #~ msgstr "Аўтаматычна перадаваць засяроджаньне новым вокнам"
 
-#, fuzzy
 #~ msgid "New window focus"
 #~ msgstr "Засяроджаньне новага вакна"
 
-#, fuzzy
 #~ msgid "Raise on focus"
 #~ msgstr "Уздымаць пры атрыманьні засяроджаньня"
 
-#, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
 #~ msgstr "Аўтаматычна ўздымаць вокны, калі яны атрымліваюць засяроджаньне"
 
-#, fuzzy
 #~ msgid "Delay before raising focused window :"
 #~ msgstr "Затрымка перад уздыманьнем засяроджанага вакна:"
 
-#, fuzzy
 #~ msgid "Raise window when clicking inside application window"
 #~ msgstr "Уздымаць вокны, калі адбываецца пстрык мышой у межах вакна"
 
-#, fuzzy
 #~ msgid "Raise on click"
 #~ msgstr "Уздымаць па пстрычцы"
 
-#, fuzzy
 #~ msgid "Windows snapping"
 #~ msgstr "Прыцягненьне вокнаў"
 
-#, fuzzy
 #~ msgid "Snap windows to screen border"
 #~ msgstr "Працягненьне вокнаў да межаў экрана"
 
-#, fuzzy
 #~ msgid "Snap windows to other windows"
 #~ msgstr "Прыцягненьне вокнаў да іншых вокнаў"
 
-#, fuzzy
 #~ msgid "Distance :"
 #~ msgstr "Прамежак:"
 
-#, fuzzy
 #~ msgid "Distance|Small"
 #~ msgstr "Вузкі"
 
-#, fuzzy
 #~ msgid "Distance|Wide"
 #~ msgstr "Шырокі"
 
-#, fuzzy
 #~ msgid "Wrap workspaces"
 #~ msgstr "Загортваньне прастораў"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr ""
-#~ "Крочыць паміж працоўнымі прасторамі, калі паказьнік сягае за межы экрана"
+#~ msgstr "Крочыць паміж працоўнымі прасторамі, калі паказьнік сягае за межы экрана"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr ""
-#~ "Крочыць паміж працоўнымі прасторамі, калі перацягваюцца вокны за межы "
-#~ "экрана"
+#~ msgstr "Крочыць паміж працоўнымі прасторамі, калі перацягваюцца вокны за межы экрана"
 
-#, fuzzy
 #~ msgid "Edge Resistance :"
 #~ msgstr "Супраціў межаў:"
 
-#, fuzzy
 #~ msgid "Resistance|Small"
 #~ msgstr "Маленькі"
 
-#, fuzzy
 #~ msgid "Resistance|Wide"
 #~ msgstr "Вялікі"
 
-#, fuzzy
 #~ msgid "Opaque move and resize"
 #~ msgstr "Непразрыстае перамяшчэньне й зьмена памераў"
 
-#, fuzzy
 #~ msgid "Display content of windows when resizing"
 #~ msgstr "Адлюстроўваць зьмест вокнаў пад час зьмяненьня памераў"
 
-#, fuzzy
 #~ msgid "Display content of windows when moving"
 #~ msgstr "Адлюстроўваць зьмест вокнаў пад час перамяшчэньня"
 
-#, fuzzy
 #~ msgid "Double click action"
 #~ msgstr "Узьдзеяньне двайное пстрычкі"
 
-#, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
 #~ msgstr "Узьдзеяньне двайной пстрычкі па загалоўку вакна:"
 
-#, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "Дадатковыя"
 
@@ -1560,7 +1441,6 @@ msgstr ""
 #~ msgid "Add keybinding theme"
 #~ msgstr "Дадаць тэму камбінацыяў"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "Увядзіце назву тэмы:"
 
@@ -1570,7 +1450,6 @@ msgstr ""
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "Вы мусіце задаць назву тэмы"
 
-#, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "Перамясьціць вакно на прастору %d"
 
@@ -1591,7 +1470,6 @@ msgstr ""
 #~ "Немагчыма запісаць %s : \n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
@@ -1605,65 +1483,48 @@ msgstr ""
 #~ msgid "Compose shortcut"
 #~ msgstr "Прызначыць гарачыя клявішы"
 
-#, fuzzy
 #~ msgid "No shortcut"
 #~ msgstr "Прызначыць гарачыя клявішы"
 
-#, fuzzy
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "Колькасьць працоўных прастораў:"
 
-#, fuzzy
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Настаўленьні Кіраўніка вокнаў Xfce 4"
 
-#, fuzzy
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
+#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Камбінацыя ўжо выкарыстоўваецца!\n"
 #~ "Вы насамрэч жадаеце выкарыстоўваць яе?"
 
-#, fuzzy
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
+#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Камбінацыя ўжо выкарыстоўваецца!\n"
 #~ "Вы насамрэч жадаеце выкарыстоўваць яе?"
 
-#, fuzzy
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr ""
 #~ "Камбінацыя ўжо выкарыстоўваецца!\n"
 #~ "Вы насамрэч жадаеце выкарыстоўваць яе?"
 
-#, fuzzy
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "Настаўленьні Кіраўніка вокнаў Xfce 4"
 
-#, fuzzy
 #~ msgid "Action: %s"
 #~ msgstr "Задзейнічана"
 
-#, fuzzy
 #~ msgid "Enter command shortcut"
 #~ msgstr "Зьвяз клявіш"
 
-#, fuzzy
 #~ msgid "Command: %s"
 #~ msgstr "Загад:"
 
-#, fuzzy
 #~ msgid "Enter shortcut"
 #~ msgstr "Камбінацыя адсутнічае"
 
-#, fuzzy
 #~ msgid "Shortcut:"
 #~ msgstr "Камбінацыя адсутнічае"
 
-#, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "Най_большыць"
 
@@ -1673,18 +1534,15 @@ msgstr ""
 #~ msgid "_Shade"
 #~ msgstr "З_гарнуць"
 
-#, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "Раз_гарнуць"
 
 #~ msgid "S_tick"
 #~ msgstr "Пры_ляпіць"
 
-#, fuzzy
 #~ msgid "(Un)S_tick"
 #~ msgstr "Ад_ляпіць"
 
-#, fuzzy
 #~ msgid "Below"
 #~ msgstr "Павольна"
 
@@ -1694,21 +1552,17 @@ msgstr ""
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "Працоўная прастора %i (%s)"
 
-#, fuzzy
 #~ msgid "Ctrl"
 #~ msgstr "Пасярэдзіне"
 
-#, fuzzy
 #~ msgid ""
 #~ "Set shortcut for command\n"
 #~ "<b>%s</b>"
 #~ msgstr "Прызначыць гарачыя клявішы для загада:"
 
-#, fuzzy
 #~ msgid "Button"
 #~ msgstr "Разьмеркаваньне кнопак"
 
-#, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "Зьвяз клявіш"
 
