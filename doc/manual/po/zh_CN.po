@@ -612,7 +612,7 @@ msgstr "使用 Ctrl + Alt + Shift + 方向键(上、下、左或右)键盘快捷
 
 #: xfwm4.xml:391(term)
 msgid "Move a window to another workspace"
-msgstr "将窗口移动到其它工作区"
+msgstr "将窗口移动至其它工作区"
 
 #: xfwm4.xml:393(para)
 msgid ""
@@ -622,7 +622,7 @@ msgstr "通过执行以下某个动作您能将窗口发送至其它工作区：
 
 #: xfwm4.xml:396(para)
 msgid "stick the window, move to another workspace, then unstick the window."
-msgstr "粘附窗口、移动到其它工作区，然后非粘附窗口"
+msgstr "粘附窗口、移动至其它工作区，然后非粘附窗口"
 
 #: xfwm4.xml:398(para)
 msgid "use the window menu and choose one of the \"Send to\" submenu items."
@@ -645,17 +645,17 @@ msgstr "使用键盘快捷键："
 
 #: xfwm4.xml:407(para)
 msgid "Alt + Control + End will move a window to the next workspace"
-msgstr "Alt + Ctrl + End 会把窗口移动到下一个工作区"
+msgstr "Alt + Ctrl + End 会把窗口移动至下一个工作区"
 
 #: xfwm4.xml:409(para)
 msgid "Alt + Control + Home will move a window to the previous workspace"
-msgstr "Alt + Ctrl + Home 会把窗口移动到上一个工作区"
+msgstr "Alt + Ctrl + Home 会把窗口移动至上一个工作区"
 
 #: xfwm4.xml:411(para)
 msgid ""
 "Alt + Control + Keypad-Number will move the current window to corresponding "
 "workspace"
-msgstr "Alt + Control + 小键盘数字键 会把当前窗口移动到相应的工作区"
+msgstr "Alt + Ctrl + 小键盘数字键 会把当前窗口移动至相应的工作区"
 
 #: xfwm4.xml:415(para)
 msgid ""
@@ -698,18 +698,22 @@ msgid ""
 "tabs : Style, Keyboard, Focus, Advanced. All modifications will have an "
 "immediate effect on the behaviour of the selected module."
 msgstr ""
+"要打开窗口管理器首选项对话框，在 <ulink url=\"xfce-mcs-manager.html#manager-"
+"dialog\" type=\"http\">Xfce 4 设置管理器</ulink> 中点击标有 “窗口管理” 的按钮。"
+"对话框有四个标签：样式、键盘、焦点、高级。所有修改会立即影响到选中"
+"模块的行为。"
 
 #: xfwm4.xml:453(title)
 msgid "Decoration style"
-msgstr "装饰样式"
+msgstr "修饰样式"
 
 #: xfwm4.xml:456(title)
 msgid "Decoration style preferences"
-msgstr "装饰样式首选项"
+msgstr "修饰样式首选项"
 
 #: xfwm4.xml:464(phrase)
 msgid "The decoration style tab"
-msgstr "装饰样式标签"
+msgstr "修饰样式标签"
 
 #: xfwm4.xml:473(term)
 msgid "Window style"
@@ -722,6 +726,8 @@ msgid ""
 "but there are more than 60 supplementary themes avaible in xfwm4-themes "
 "extra package."
 msgstr ""
+"对话框左边列出了所有可用的窗口修饰。xfwm 4 模块提供四个不同的主题"
+"选择，但在 xfwm4-themes 额外软件包中有超过 60 种附加主题。"
 
 #: xfwm4.xml:484(term)
 msgid "Title font"
@@ -735,6 +741,10 @@ msgid ""
 "dialog of the <ulink url=\"xfce-mcs-plugins.html#id2811474\" type=\"http"
 "\">user interface settings manager plugin</ulink>."
 msgstr ""
+"“字体选择” 按钮表示当前窗口标题外观使用的字体族。如果您要更改它，"
+"点击此按钮，一 “字体选择” 对话框会出现。它的作用与 <ulink url=\"xfce-mcs-"
+"plugins.html#id2811474\" type=\"http\">用户界面设置管理器插件</ulink> 中的字体"
+"选择对话框相似。"
 
 #: xfwm4.xml:497(term)
 msgid "Title alignment"
@@ -746,6 +756,8 @@ msgid ""
 "inside the title bar, selecting one of those simple options : align it to "
 "the left, center or right."
 msgstr ""
+"无论按钮布局如何，您能在标题栏内选择标题的对齐方式，选择以下某个"
+"简单选项：靠左、居中或靠右对齐。"
 
 #: xfwm4.xml:507(term)
 msgid "Button layout"
@@ -758,6 +770,9 @@ msgid ""
 "to remove a button from the titlebar. All modifications will have an "
 "immediate effect on the title bar buttons position."
 msgstr ""
+"按钮布局配置使用一个易用的拖放工具。点击并拖动按钮更改布局。按下"
+"“隐藏” 区域的按钮以便将该按钮从标题栏中移除。所有修改会立即影响"
+"到标题栏按钮的位置。"
 
 #: xfwm4.xml:522(title)
 msgid "Keyboard shortcuts"
@@ -780,16 +795,18 @@ msgid ""
 "The list on the left side of the dialog shows all avaible shortcuts themes, "
 "using the name of directories that contain a keythemerc file."
 msgstr ""
+"对话框左边列出了所有可用的快捷键主题，使用包含 keythemerc 文件"
+"的目录的名称。"
 
 #: xfwm4.xml:548(para)
 msgid ""
 "By default, there's only one theme : $(datadir)/themes/Default/xfwm4/"
 "keythemerc"
-msgstr "默认只有一主题：$(datadir)/themes/Default/xfwm4/keythemerc"
+msgstr "默认只有一个主题：$(datadir)/themes/Default/xfwm4/keythemerc"
 
 #: xfwm4.xml:552(para)
 msgid "In the default configuration the following keybindings are defined:"
-msgstr "在默认的配置下定义了以下绑定键"
+msgstr "默认配置定义了以下绑定键："
 
 #: xfwm4.xml:556(para)
 msgid "close window : Alt + F4"
@@ -817,11 +834,11 @@ msgstr "折叠窗口：Alt + F9"
 
 #: xfwm4.xml:562(para)
 msgid "Stick window : Alt + F10"
-msgstr ""
+msgstr "粘附窗口：Alt + F10"
 
 #: xfwm4.xml:563(para)
 msgid "Cycle windows focus : Alt + Tab"
-msgstr ""
+msgstr "循环窗口焦点：Alt + Tab"
 
 #: xfwm4.xml:564(para)
 msgid "Move window : Control + Shift + Alt + Arrow (up, down, left, or right)"
@@ -865,13 +882,13 @@ msgstr "转到第 N(1-9) 个工作区：Ctrl + F(N)"
 
 #: xfwm4.xml:577(para)
 msgid "Move the window to previous|next workspace : Alt + Control + Home|End"
-msgstr ""
+msgstr "将窗口移动至上一个/下一个工作区：Alt + Ctrl + Home/End"
 
 #: xfwm4.xml:579(para)
 msgid ""
 "Move a window to workspace number N (1-9) : Alt + Control + keypad key "
 "number N"
-msgstr "将窗口移动到第 N(1-9) 个工作区：Alt + Ctrl + 小键盘数字键 N"
+msgstr "将窗口移动至第 N(1-9) 个工作区：Alt + Ctrl + 小键盘数字键 N"
 
 #: xfwm4.xml:581(para)
 msgid "Start xfhelp4 : Alt + F1"
@@ -895,10 +912,14 @@ msgid ""
 "and compose your new shortcut when the \"Compose shortcut\" popup window "
 "appears."
 msgstr ""
+"对话框右边有两个列表。“窗口快捷键” 显示驱动窗口管理器所使用的键盘"
+"快捷键。“命令快捷键” 显示目的在于启动应用程序的键盘快捷键。要修改"
+"某个快捷键，您必须在列表上双击它，使用鼠标左键，然后在 “合成快捷键” "
+"弹出窗口出现合成您的新快捷键。"
 
 #: xfwm4.xml:597(title) xfwm4.xml:605(phrase)
 msgid "The compose shortcut popup"
-msgstr ""
+msgstr "合成快捷键弹出窗口"
 
 #: xfwm4.xml:611(para)
 msgid ""
@@ -906,24 +927,29 @@ msgid ""
 "instance : $HOME/.themes/Custom/xfwm4/keythemerc, then select it in the list "
 "of available themes."
 msgstr ""
+"如果您要创建一个新主题，先创建一个像这样的目录，比如："
+"$HOME/.themes/Custom/xfwm4/keythemerc ，然后"
+"在可用主题列表中选择它。"
 
 #: xfwm4.xml:616(para)
 msgid ""
 "If you do not know the names of your keyboard modifier keys, you can launch "
 "the \"xev\" application from a terminal and test them."
 msgstr ""
+"如果您不知道键盘修改器关键字的名称，您能从终端启动 “xev“ 应用"
+"程序并测试它们。"
 
 #: xfwm4.xml:627(title) xfwm4.xml:630(title)
 msgid "Focus preferences"
-msgstr ""
+msgstr "焦点首选项"
 
 #: xfwm4.xml:638(phrase)
 msgid "The Focus tab"
-msgstr ""
+msgstr "焦点标签"
 
 #: xfwm4.xml:647(term)
 msgid "Focus model"
-msgstr ""
+msgstr "焦点模式"
 
 #: xfwm4.xml:649(para)
 msgid ""
@@ -936,26 +962,30 @@ msgid ""
 "Click to focus : select this option if you want a window to receive the "
 "focus only when you click anywhere on its frame."
 msgstr ""
+"点击获取焦点：在点击窗口任何地方时，如果您要让窗口获取焦点，选择此"
+"选项。"
 
 #: xfwm4.xml:656(para)
 msgid ""
 "Focus follow mouse : select this option if you want a window to receive the "
 "focus as soon as the mouse pointer is over its frame."
 msgstr ""
+"焦点跟随鼠标：在鼠标指针处于窗口之上时，如果您要让窗口立即获取焦点，"
+"选择此选项。"
 
 #: xfwm4.xml:665(term)
 msgid "New window focus"
-msgstr ""
+msgstr "新窗口焦点"
 
 #: xfwm4.xml:667(para)
 msgid ""
 "Selecting this option will automatically give the focus to newly created "
 "windows, without the need to click or move the mouse pointer."
-msgstr ""
+msgstr "选择此选项会让新创建的窗口自动获取焦点，用不着点击或移动鼠标指针。"
 
 #: xfwm4.xml:675(term)
 msgid "Raise on focus"
-msgstr ""
+msgstr "获取焦点时提升"
 
 #: xfwm4.xml:677(para)
 msgid ""
@@ -963,6 +993,8 @@ msgid ""
 "automatically appear over all other frames, after an amount of time that you "
 "can adjust with the \"delay\" slider."
 msgstr ""
+"如果选中此选项，在超过您可以用 “延时” 滑块调整的时间后，新获取"
+"焦点的窗口会自动出现在其它所有窗口之上。"
 
 #: xfwm4.xml:685(term)
 msgid "Raise on click"
@@ -975,6 +1007,9 @@ msgid ""
 "to click somewhere on its decorations (title bar, borders or corners) to "
 "raise it."
 msgstr ""
+"在点击窗口内任何地方时，如果您要窗口越过其它窗口，选择此选项。如果"
+"没有选中此选项，您必须点击窗口修饰(标题栏、边界或拐角)的某个地方来"
+"提升它。"
 
 #: xfwm4.xml:701(title)
 msgid "Advanced settings"
@@ -999,6 +1034,8 @@ msgid ""
 "which this effect will be applied can be specified with the \"Distance\" "
 "slider."
 msgstr ""
+"您能选择在窗口边界移动时，要被其它窗口边界，或屏幕边缘吸引的窗口"
+"边界。此作用可以影响的距离可以用 “距离” 滑块来指定。"
 
 #: xfwm4.xml:731(term)
 msgid "Wrap workspaces"
@@ -1164,8 +1201,8 @@ msgid ""
 "the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type="
 "\"http\">xfce4-dev</ulink> mailing list."
 msgstr ""
-"如果您有本软件包的使用或安装方面的问题， <ulink url=\"http://lunar-linux."
-"org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> 请在邮件列表上提问。"
+"如果您有本软件包的使用或安装方面的问题，请在 <ulink url=\"http://lunar-linux."
+"org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> 邮件列表上提问。"
 "开发讨论位于邮件列表 <ulink url=\"http://lunar-linux.org/mailman"
 "/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> 。"
 
