@@ -4,18 +4,22 @@
 # Juraj Brosz <juro@jurajbrosz.info>, 2004.
 # Stefan Miklosovic <miklosovic@gmail.com>, 2008.
 # Robert Hartl <hartl.robert@gmail.com>, 2009, 2010.
+# Tomáš Vadina <kyberdev@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 05:30+0000\n"
-"PO-Revision-Date: 2010-02-18 01:28+0100\n"
-"Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
+"POT-Creation-Date: 2011-07-07 04:35+0000\n"
+"PO-Revision-Date: 2011-07-07 15:07+0100\n"
+"Last-Translator: Tomáš Vadina <kyberdev@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sk\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"X-Poedit-Language: Slovak\n"
+"X-Poedit-Country: SLOVAKIA\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -23,7 +27,7 @@ msgid ""
 "Do you want to terminate the application?"
 msgstr ""
 "Toto okno je zaneprázdnené a neodpovedá.\n"
-"Chcete aplikáciu ukončiť?"
+"Želáte si ukončiť aplikáciu?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -64,7 +68,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Úplný zoznam volieb príkazového riadku získate príkazom %s --help\n"
+"Úplný zoznam možností príkazového riadka získate príkazom %s --help\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -177,13 +181,11 @@ msgstr "<i>Krátke</i>"
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
 msgstr "<i>Malá</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
 msgstr "<i>Veľká</i>"
 
@@ -193,11 +195,11 @@ msgstr "Aktívny"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Ad_vanced"
-msgstr "_Pokročilé"
+msgstr "P_okročilé"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Po zameraní automatický _zdvihnúť okná"
+msgstr "Po zameraní automaticky _zdvihnúť okná"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
@@ -213,7 +215,7 @@ msgstr "Kliknite a ťahajte tlačidlá pre zmenu rozloženia"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
-msgstr "Zavrieť"
+msgstr "Zatvoriť"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -276,9 +278,8 @@ msgid "Stick"
 msgstr "Prilepiť"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Akcia pri dvojkliku na titulku okna :"
+msgstr "Akcia pri dvojkliku na titulku okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
@@ -289,14 +290,12 @@ msgid "Title"
 msgstr "Titulok"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Prejsť na vedľajšiu plochu pri pretiahnutí okna mimo oblasť obrazovky"
+msgstr "Prejsť na ve_dľajšiu plochu pri pretiahnutí okna mimo oblasť obrazovky"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Prejsť na vedľajšiu plochu pri ukázaní kurzorom myši k okraji plochy"
+msgstr "Prejsť na vedľajšiu _plochu pri ukázaní kurzorom myši k okraju plochy"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
@@ -391,7 +390,7 @@ msgstr "Prepnúť aplikáciu"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
-msgstr "Zavrieť okno"
+msgstr "Zatvoriť okno"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Maximize window horizontally"
@@ -595,7 +594,7 @@ msgstr "Pridať priľahlú pracovnú plochu"
 
 #: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Delete last workspace"
-msgstr "Odstrániť poslednú pracovnú ploch"
+msgstr "Odstrániť poslednú pracovnú plochu"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete active workspace"
@@ -633,7 +632,6 @@ msgstr "Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Large</i>"
 msgstr "<i>Veľká</i>"
 
@@ -663,7 +661,7 @@ msgstr "_Kompozitor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ycling"
-msgstr "_Prechádzanie"
+msgstr "Pr_echádzanie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle _through windows on all workspaces"
@@ -695,7 +693,7 @@ msgstr "Klávesa pre _uchopenie a presun okien:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "_Upozorniť na príznak urgent blikaním dekorácie okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Opaci_ty of window decorations:"
@@ -742,9 +740,8 @@ msgid "Under the mouse _pointer"
 msgstr "Pod _ukazovateľom myši"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-#, fuzzy
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Použiť odolnosť okrajov namiesto prichytávania okien"
+msgstr "Použiť odolnosť okrajov nami_esto prichytávania okien"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -755,27 +752,24 @@ msgid "When a window raises itself:"
 msgstr "Po samovoľnom premiestnení okna do popredia:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Prechádzať na plochy podľa ich aktuálneho rozmiestnenia"
+msgstr "Prechádzať na plochy podľa ich aktuá_lneho rozmiestnenia"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Prechádzať pri dosiahnutí prvej alebo poslednej pracovnej plochy"
+msgstr "Prechádzať pri dosiahnutí p_rvej alebo poslednej pracovnej plochy"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
-msgstr "_Prístupnosť"
+msgstr "Prí_stupnosť"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "Presunúť okno na nasledujúcu pracovnú plochu"
+msgstr "Presunúť okno na a_ktuálnu pracovnú plochu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_"
+msgstr "_Vykresľovať rám okolo okien pri prechádzaní"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
@@ -794,27 +788,28 @@ msgid "_Placement"
 msgstr "_Umiestnenie"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-#, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Preniesť okno do popredia po stlačení ľubovoľného tlačidla myši"
+msgstr "P_reniesť okno do popredia po stlačení ľubovoľného tlačidla myši"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní skratkovými klávesami"
+msgstr ""
+"Zapamätať si a znovu vyvolať p_redchádzajúcu plochu\n"
+"pri prepínaní klávesovými skratkami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" alebo \"vynechať v paneli úloh\""
+msgstr ""
+"Pre_skočiť okná s nastavenou vlastnosťou\n"
+"\"vynechať v prepínači plôch\" alebo \"vynechať v paneli úloh\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
-msgstr "_Pracovné plochy"
+msgstr "P_racovné plochy"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "<b>Margins</b>"
@@ -853,38 +848,36 @@ msgstr "%s: Chyba segmentácie"
 
 #: ../src/main.c:534
 msgid "Fork to the background"
-msgstr ""
+msgstr "Presunúť do pozadia"
 
 #: ../src/main.c:536
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Presunúť do pozadia (nepodporované)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Nastaviť režim kompozitora"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Nastaviť režim kompozitora (nepodporované)"
 
 #: ../src/main.c:543
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Nastavenia správcu okien prostredia Xfce 4"
+msgstr "Nahradiť existujúceho správcu okien"
 
 #: ../src/main.c:544
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "Informácia o verzií"
+msgstr "Zobrazí informácie o verzii a ukončí sa"
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
-msgstr "[ARGUMENTY...]"
+msgstr "[PARAMETRE...]"
 
 #: ../src/main.c:559
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Informácie o použití získate príkazom \"%s --help\" ."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -963,7 +956,7 @@ msgstr "Presunúť okno na inú pracovnú plochu"
 #. --------------------------------------------------------
 #: ../src/menu.c:65
 msgid "_Close"
-msgstr "_Zavrieť"
+msgstr "_Zatvoriť"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:68
@@ -986,22 +979,22 @@ msgstr "%s: komponente GtkMenu sa nepodarilo uchopiť ukazovateľ\n"
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Nemožno prideliť farbu %s\n"
+msgstr "%s: Nie je možné prideliť farbu %s\n"
 
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: Nemožno prideliť farba: Hodnota GValue pre farbu nie je typu REŤAZEC"
+msgstr "%s: Nie je možné prideliť farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Nemožno spracovať farbu %s\n"
+msgstr "%s: Nie je možné spracovať farbu %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Nemožno spracovať farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
+msgstr "%s: Nie je možné spracovať farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -1064,8 +1057,11 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "Umiestniť okno do stredu"
 
-#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr "Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" alebo \"vynechať v paneli úloh\""
+#~ msgid ""
+#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgstr ""
+#~ "Preskočiť okná s nastavenou vlastnosťou \"vynechať v prepínači plôch\" "
+#~ "alebo \"vynechať v paneli úloh\""
 
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "Zahrnúť skryté (minimalizované) okná"
@@ -1106,8 +1102,12 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "Prepínať plochy pomocou kolečka myši nad plochou"
 
-#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
-#~ msgstr "Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní skratkovými klávesami"
+#~ msgid ""
+#~ "Remember and recall previous workspace when switching via keyboard "
+#~ "shortcuts"
+#~ msgstr ""
+#~ "Zapamätať si a znovu vyvolať predchádzajúcu plochu pri prepínaní "
+#~ "skratkovými klávesami"
 
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr "Prechádzať na plochy podľa ich aktuálneho rozmiestnenia"
@@ -1310,10 +1310,12 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgstr "Prechádzanie medzi plochami"
 
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Prejsť na vedľajšiu plochu pri ukázaní kurzorom myši k okraji plochy"
+#~ msgstr ""
+#~ "Prejsť na vedľajšiu plochu pri ukázaní kurzorom myši k okraji plochy"
 
 #~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Prejsť na vedľajšiu plochu pri pretiahnutí okna mimo oblasť obrazovky"
+#~ msgstr ""
+#~ "Prejsť na vedľajšiu plochu pri pretiahnutí okna mimo oblasť obrazovky"
 
 #~ msgid "Edge Resistance :"
 #~ msgstr "Odolnosť:"
@@ -1402,12 +1404,16 @@ msgstr "Nedá sa vytvoriť helper-dialog: %s\n"
 #~ msgid "Advanced window manager settings"
 #~ msgstr "Nastavenia správcu okien prostredia Xfce 4"
 
-#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
+#~ msgid ""
+#~ "This shortcut is already being used by <b>another window manager action</"
+#~ "b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "Skratka sa už používa!\n"
 #~ "Ste si istý, že ju chcete použiť?"
 
-#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
+#~ msgid ""
+#~ "The shortcut is already being used by a <b>window manager action</b>. "
+#~ "Which action do you want to use?"
 #~ msgstr ""
 #~ "Skratka sa už používa!\n"
 #~ "Ste si istý, že ju chcete použiť?"
