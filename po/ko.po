@@ -120,7 +120,7 @@ msgstr "<b>버튼 배치</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Double click _action</b>"
-msgstr "<b>더블클릭하면(_a)</b>"
+msgstr "<b>더블클릭 동작(_a)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
@@ -128,7 +128,7 @@ msgstr "<b>창 활성 방법</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
-msgstr "<b>새로운 창 활성 방법</b>"
+msgstr "<b>새로운 창 활성화</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
@@ -136,7 +136,7 @@ msgstr "<b>클릭했을 때 창 올리기</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr "<b>활성된 창 올리기</b>f"
+msgstr "<b>활성된 창 올리기</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -144,19 +144,19 @@ msgstr "<b>창 제목 정렬(_a)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title fon_t</b>"
-msgstr "<b>창 제목 글꼴(_t)</b>"
+msgstr "<b>제목 글꼴(_t)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Window _shortcuts</b>"
-msgstr "<b>창 관련 단축 키(_s)</b>"
+msgstr "<b>창 단축키(_s)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
-msgstr "<b>창 움직임</b>"
+msgstr "<b>창 잡기</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Wrap workspaces</b>"
-msgstr "<b>작업 공간 전환</b>"
+msgstr "<b>작업공간 전환</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
@@ -190,23 +190,23 @@ msgstr "활성"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Ad_vanced"
-msgstr "고급 설정(_v)"
+msgstr "고급 설정 (_v)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "활성된 창은 무조건 최상위로 올리기(_r)"
+msgstr "활성된 창은 무조건 최상위로 올리기 (_r)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr "새로운 창은 무조건 활성(_n)"
+msgstr "새로운 창은 무조건 활성 (_n)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr "클릭(_k)"
+msgstr "클릭 (_k)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
-msgstr "배치를 바꾸려면 버튼을 딸깍해서 끌어다 놓으십시오."
+msgstr "배치를 바꾸려면 버튼을 클릭해서 끌어다 놓으십시오."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -214,15 +214,15 @@ msgstr "닫기"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
-msgstr "활성된 창을 올리기까지의 지연 시간(_b):"
+msgstr "활성된 창을 올리기까지의 지연 시간 (_b):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Dis_tance:"
-msgstr "거리(_t):"
+msgstr "거리 (_t):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Focus follows _mouse"
-msgstr "마우스를 따라가기(_m)"
+msgstr "마우스를 따라가기 (_m)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
@@ -234,15 +234,15 @@ msgstr "숨기기"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
-msgstr "창을 움직일 때 내용 숨김(_m)"
+msgstr "창을 움직일 때 내용 숨김 (_m)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Hide content of windows when _resizing"
-msgstr "창 크기를 변경할 때 내용을 숨김(_r)"
+msgstr "창 크기를 변경할 때 내용을 숨김 (_r)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Ke_yboard"
-msgstr "키보드(_y)"
+msgstr "키보드 (_y)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Maximize"
@@ -254,7 +254,7 @@ msgstr "메뉴"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
-msgstr "창 내부를 클릭하면 올림(_i)"
+msgstr "창 내부를 클릭하면 올림 (_i)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
@@ -262,19 +262,19 @@ msgstr "말아올리기"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
-msgstr "다른 창에 맞추어 움직임(_w)"
+msgstr "다른 창에 맞추어 움직임 (_w)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Snap windows to screen _border"
-msgstr "화면 경계에 따라 움직임(_b)"
+msgstr "화면 경계에 따라 움직임 (_b)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
-msgstr "모든 작업공간에 보이기"
+msgstr "붙이기"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "제목 틀을 따닥했을 때의 동작"
+msgstr "제목표시줄을 더블클릭했을 때 수행하는 동작"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
@@ -286,11 +286,11 @@ msgstr "제목"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "창을 화면 밖으로 이동시키면 작업공간 전환(_d)"
+msgstr "창을 화면 밖으로 이동시키면 작업공간 전환 (_d)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "마우스 포인터가 화면 모서리에 닿으면 작업공간 전환(_p)"
+msgstr "마우스 포인터가 화면 모서리에 닿으면 작업공간 전환 (_p)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
