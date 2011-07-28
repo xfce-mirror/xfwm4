@@ -858,32 +858,29 @@ msgid "Set the compositor mode (not supported)"
 msgstr ""
 
 #: ../src/main.c:543
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "창 관리자 고급 설정"
+msgstr "기존 창 관리자 대체"
 
 #: ../src/main.c:544
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "판올림 정보"
+msgstr "버전 정보"
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENTS...]"
 
 #: ../src/main.c:559
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "사용법을 보려면 \"%s --help\"를 입력하십시오."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
 msgstr "최대화(_x)"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "최대화(취소)(_x)"
+msgstr "최대화 취소 (_x)"
 
 #: ../src/menu.c:46
 msgid "Mi_nimize"
@@ -891,7 +888,7 @@ msgstr "최소화(_x)"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "모든 다른 창을 최소화 (_A)"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -908,53 +905,48 @@ msgstr "크기변경(_R)"
 #. --------------------------------------------------------
 #: ../src/menu.c:52
 msgid "Always on Top"
-msgstr ""
+msgstr "항상 위로"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "다른 창에 맞추어 움직임(_w)"
+msgstr "다른 창과 맞춤"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "항상 다른 창의 아래로"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "창 채우기"
+msgstr "창 말아올리기"
 
 #: ../src/menu.c:56
 msgid "Roll Window Down"
-msgstr ""
+msgstr "창 "
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
 msgstr "전체화면(_F)"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "전체화면(_F)"
+msgstr "전체화면으로 남김 (_F)"
 
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Context _Help"
 msgstr "도움말(_h)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
 msgid "Always on Visible Workspace"
-msgstr ""
+msgstr "항상 보이는 작업공간으로"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "이 작업공간에만"
 
 #: ../src/menu.c:63
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "창을 다음 작업 공간으로 이동"
+msgstr "다른 작업공간으로 이동"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1002,12 +994,12 @@ msgstr "%s: 색을 분석하지 못 했습니다.: 색의 GValue형식이 문자
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "자식 프로세스로부터 데이터를 읽는동안 오류가 발생했습니다: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "도우미 대화상자를 생성할 수 없습니다: %s\n"
 
 #~ msgid "Distance|<i>Small</i>"
 #~ msgstr "<i>작게</i>"
