@@ -851,11 +851,11 @@ msgstr "바탕화면으로 쪼개기 (지원되지 않음)"
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "합성처리 모드 설정"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "합성처리 모드 설정 (지원되지 않음)"
 
 #: ../src/main.c:543
 msgid "Replace the existing window manager"
