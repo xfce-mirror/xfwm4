@@ -1,30 +1,30 @@
 # $Id$
-#
+# 
 # Japanese translations for xfwm4 package.
 # Copyright (C) 2002-2007 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
 # Daichi Kawahata <daichi@xfce.org>, 2005-2007.
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008.
-#
+# 
 # 対訳一覧:
-#
+# 
 # composite     合成
 # compositing   合成処理
 # compositor    コンポジター
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-07-20 22:35+0000\n"
 "PO-Revision-Date: 2010-12-12 00:16+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -293,9 +293,7 @@ msgstr "タイトルバーをダブルクリックした時の動作"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
-msgstr ""
-"このウィンドウはビジーのようで応答がありません。\n"
-"アプリケーションを終了させますか?"
+msgstr "ウィンドウタイトルは除去できません"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
@@ -639,12 +637,8 @@ msgid "Reset to Defaults"
 msgstr "デフォルトに戻す"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"これはすべてのショートカットキーをデフォルト値にリセットします。本当によろし"
-"いですか?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "これはすべてのショートカットキーをデフォルト値にリセットします。本当によろしいですか?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -774,8 +768,7 @@ msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
-"ワークスペースの切り替えにデスクトップ上でのマウスホイールを使用する(_M)"
+msgstr "ワークスペースの切り替えにデスクトップ上でのマウスホイールを使用する(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -856,8 +849,7 @@ msgid "Change workspace name"
 msgstr "ワークスペース名の変更"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "余白とは画面端のウィンドウが置かれない空間のことです"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7

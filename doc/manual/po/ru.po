@@ -1,0 +1,856 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: xfwm4 4.8\n"
+"POT-Creation-Date: 2010-08-28 12:29+0200\n"
+"PO-Revision-Date: 2011-08-17 12:23+0300\n"
+"Last-Translator: Artem Zolochevskiy <artem.zolochevskiy@gmail.com>\n"
+"Language-Team: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. When image changes, this message will be marked fuzzy or untranslated for
+#. you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml145(None)
+msgid "@@image: 'images/titlebar.png'; md5=56d7905e86d8b9ee03054561f8075752"
+msgstr "@@image: 'images/titlebar.png'; md5=56d7905e86d8b9ee03054561f8075752"
+
+#. When image changes, this message will be marked fuzzy or untranslated for
+#. you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml461(None)
+msgid "@@image: 'images/decoration_style.png'; md5=5022390bb1a6154cd7225a8819aad790"
+msgstr "@@image: 'images/decoration_style.png'; md5=5022390bb1a6154cd7225a8819aad790"
+
+#. When image changes, this message will be marked fuzzy or untranslated for
+#. you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml530(None)
+msgid "@@image: 'images/keyboard_shortcuts.png'; md5=3063f52810e263badf47b370c5928726"
+msgstr "@@image: 'images/keyboard_shortcuts.png'; md5=3063f52810e263badf47b370c5928726"
+
+#. When image changes, this message will be marked fuzzy or untranslated for
+#. you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml602(None)
+msgid "@@image: 'images/compose_shortcut.png'; md5=3d6eea671fdd800a3c5379b71e1eb3e8"
+msgstr "@@image: 'images/compose_shortcut.png'; md5=3d6eea671fdd800a3c5379b71e1eb3e8"
+
+#. When image changes, this message will be marked fuzzy or untranslated for
+#. you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml635(None)
+msgid "@@image: 'images/focus.png'; md5=53a29587d206af848f07f4623b76c61a"
+msgstr "@@image: 'images/focus.png'; md5=53a29587d206af848f07f4623b76c61a"
+
+#. When image changes, this message will be marked fuzzy or untranslated for
+#. you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml709(None)
+msgid "@@image: 'images/misc_wm_prefs.png'; md5=49847fe3486b9327e4da7429e236832a"
+msgstr "@@image: 'images/misc_wm_prefs.png'; md5=49847fe3486b9327e4da7429e236832a"
+
+#. When image changes, this message will be marked fuzzy or untranslated for
+#. you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml785(None)
+msgid "@@image: 'images/xfwm_workspaces.png'; md5=66a06d2b9faaa634b7a0f7a40768013c"
+msgstr "@@image: 'images/xfwm_workspaces.png'; md5=66a06d2b9faaa634b7a0f7a40768013c"
+
+#. When image changes, this message will be marked fuzzy or untranslated for
+#. you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: xfwm4.xml831(None)
+msgid "@@image: 'images/workspace_margins.png'; md5=8e53c961fe17d3a2255c8ea591d96016"
+msgstr "@@image: 'images/workspace_margins.png'; md5=8e53c961fe17d3a2255c8ea591d96016"
+
+#: xfwm4.xml14(title)
+msgid "Xfce 4 Window Manager"
+msgstr "Диспетчер окон Xfce 4"
+
+#: xfwm4.xml17(year) xfwm4.xml21(year)
+msgid "2004"
+msgstr "2004"
+
+#: xfwm4.xml17(holder)
+msgid "François Le Clainche"
+msgstr "François Le Clainche"
+
+#: xfwm4.xml21(holder)
+msgid "Jasper Huijsmans"
+msgstr "Jasper Huijsmans"
+
+#: xfwm4.xml44(firstname)
+msgid "François"
+msgstr "François"
+
+#: xfwm4.xml44(surname)
+msgid "Le Clainche"
+msgstr "Le Clainche"
+
+#: xfwm4.xml46(email)
+msgid "fleclainche@wanadoo.fr"
+msgstr "fleclainche@wanadoo.fr"
+
+#. <revhistory>
+#. <revision>
+#. <revnumber>0.1</revnumber>
+#. <date>May 2003</date>
+#. <authorinitials>ma</authorinitials>
+#. </revision>
+#. </revhistory>
+#: xfwm4.xml74(releaseinfo)
+msgid "This manual describes @PACKAGE_NAME@ version @PACKAGE_VERSION@"
+msgstr "Это руководство описывает @PACKAGE_NAME@ версии @PACKAGE_VERSION@"
+
+#: xfwm4.xml80(title)
+msgid "Introduction"
+msgstr "Введение"
+
+#: xfwm4.xml82(para)
+msgid "The Xfce 4 Window Manager is part of the <ulink url=\"http://www.xfce.org\" type=\"html\">Xfce Desktop Environment</ulink>. The actual command to run is <application>@PACKAGE_NAME@</application>. To run it in the background use <command><application>@PACKAGE_NAME@</application> --daemon</command>. The window manager is responsible for the placement of windows on the screen, provides the window decorations and allows you for instance to move, resize or close them."
+msgstr "Оконный менеджер Xfce 4 является частью <ulink url=\"http://www.xfce.org\" type=\"html\">рабочей среды Xfce</ulink>. Команда для его запуска – <application>@PACKAGE_NAME@</application>. Для запуска в фоновом режиме используйте команду <command><application>@PACKAGE_NAME@</application> --daemon</command>. Оконный менеджер отвечает за размещение окон на экране, обеспечивает оформление окон и позволяет, например, перемещать, изменять размер или закрывать их."
+
+#: xfwm4.xml90(para)
+msgid "<application>@PACKAGE_NAME@</application> adheres strongly to the standards defined on <ulink url=\"http://www.freedesktop.org\" type=\"html\">freedesktop.org</ulink>. Consequently, special features such as making windows borderless, or providing an icon for the application must now be implemented in the application; you can no longer use the window manager to force different behaviour. One of the great features of <application>@PACKAGE_NAME@</application> is its themeability. The window decorations (borders, title bar and window buttons) can be configured by using window manager themes."
+msgstr "<application>@PACKAGE_NAME@</application> строго следует стандартам, определённым <ulink url=\"http://www.freedesktop.org\" type=\"html\">freedesktop.org</ulink>. Следовательно, специальные возможности, такие как окна без рамок или определение значка для приложения, теперь должны быть реализованы в самом приложении, и вы более не можете использовать оконный менеджер для изменения этого поведения. Одна из самых замечательных возможностей <application>@PACKAGE_NAME@</application> – это темизация. Оформление окна (рамки, строка заголовка и кнопки окна) может быть задано с помощью тем оконного менеджера."
+
+#: xfwm4.xml101(para)
+msgid "<application>@PACKAGE_NAME@</application> offers multihead support, for both xinerama and real multiscreen modes, useful when you have more than one monitor connected to your computer."
+msgstr "<application>@PACKAGE_NAME@</application> поддерживает xinerama и многоэкранные режимы. Это удобно, если к вашему компьютеру подключены несколько мониторов."
+
+#: xfwm4.xml105(para)
+msgid "<application>@PACKAGE_NAME@</application> can be run stand-alone, but if you use it this way, you will need the <ulink url=\"xfce-mcs-manager.html\" type=\"http\">Xfce 4 Settings Manager</ulink> if you want GUI settings management. Tasks other than managing windows, like setting a background image or launching programs, need to be performed by other programs."
+msgstr "<application>@PACKAGE_NAME@</application> может быть запущен отдельно, но если вы хотите управлять настройками графического интерфейса пользователя, вам понадобится <ulink url=\"xfce-mcs-manager.html\" type=\"http\">диспетчер настроек Xfce 4</ulink>. Задачи выходящие за рамки управления окнами, такие как установка фонового изображения или запуск приложений, должны выполняться другими программами."
+
+#: xfwm4.xml112(para)
+msgid "<application>@PACKAGE_NAME@</application> includes its own compositing manager, which takes advantage of the new <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink>'s server extensions. The compositor is like a WM on its own, it manages a stack of all windows, monitor all kinds on X event and reacts accordingly. Having the compositing manager embedded in the window manager also helps keeping the various visual effects in sync with window events. If you want to use the compositor, you have to build <application>@PACKAGE_NAME@</application> using the --enable-compositor configure option. In any case, you can disable the compositor on <application>@PACKAGE_NAME@</application> startup using the '--compositor=off' argument."
+msgstr "В состав <application>@PACKAGE_NAME@</application> входит свой собственный композитный менеджер, который использует новые расширения сервера <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink>. Композитный менеджер похож на оконный менеджер, он управляет стеком всех окон, отслеживает все виды событий X Window и реагирует соответственно. Встраивание композитного менеджера в оконный менеджер также помогает соотносить различные визуальные эффекты с событиями окон. Если вы хотите использовать композитный менеджер, вам необходимо собрать <application>@PACKAGE_NAME@</application> с опцией конфигурации --enable-compositor. В любом случае, вы можете отключить композитный менеджер при старте <application>@PACKAGE_NAME@</application>, используя аргумент «--compositor=off»."
+
+#: xfwm4.xml125(title)
+msgid "Using <application>@PACKAGE_NAME@</application>"
+msgstr "Использование <application>@PACKAGE_NAME@</application>"
+
+#: xfwm4.xml128(title)
+msgid "Manage windows"
+msgstr "Управление окнами"
+
+#: xfwm4.xml130(para)
+msgid "The window manager provides borders, a title bar and window buttons to application windows. The look is defined by the window manager theme."
+msgstr "Оконный менеджер обеспечивает рамки, строку заголовка и кнопки окон приложений. Внешний вид определяется темой оконного менеджера."
+
+#: xfwm4.xml134(para)
+msgid "In the default theme <application>@PACKAGE_NAME@</application> shows six buttons and a title on regular application windows. The six buttons perform these basic functions:"
+msgstr "В теме по умолчанию <application>@PACKAGE_NAME@</application> для обычных окон приложений выводит шесть кнопок и заголовок. Шесть кнопок выполняют следующие основные функции:"
+
+#: xfwm4.xml140(title)
+msgid "<application>@PACKAGE_NAME@</application> title bar buttons"
+msgstr "Кнопки строки заголовка <application>@PACKAGE_NAME@</application>"
+
+#: xfwm4.xml148(phrase)
+msgid "<application>@PACKAGE_NAME@</application> title bar buttons and functions"
+msgstr "Кнопки и функции заголовка окна <application>@PACKAGE_NAME@</application>"
+
+#: xfwm4.xml154(para)
+msgid "You can open the window menu with a left-click on the menu button on the title bar, or with a right-click on the window title area itself."
+msgstr "Вы можете открыть меню окна щелчком левой кнопки мыши по кнопке меню на строке заголовка или щелчком правой кнопкой мыши на самой области заголовка окна."
+
+#: xfwm4.xml157(para)
+msgid "If you use <application>xftaskbar4</application>, you can open an action menu with a right-click on one of the taskbar entries; it includes several items among those available in the window menu."
+msgstr "Если вы используете <application>xftaskbar4</application>, вы можете открыть список действий щелчком правой кнопкой мыши по любому из элементов панели задач. Этот список включает несколько дополнительных пунктов."
+
+#: xfwm4.xml165(term)
+msgid "Give focus to a window"
+msgstr "Передать фокус окну"
+
+#: xfwm4.xml167(para)
+msgid "You need to give the focus to a window if you want it to receive keyboard and mouse input. Window decorations colors will change, following the focus. To obtain more details about focus options, please refer to the <ulink url=\"#focus\">corresponding section</ulink> below."
+msgstr "Если вы хотите, чтобы окно получало ввод с клавиатуры/мыши, вы должны передать фокус окну. При этом изменяется цветовое оформление активного окна с фокусом. Для получения дополнительной информации о параметрах фокуса обратитесь к <ulink url=\"#focus\">соответствующему разделу</ulink> ниже."
+
+#: xfwm4.xml172(para)
+msgid "A keyboard shortcut allows to switch the focus from a window to others : Hold Alt and then you can press Tab repeatedly untill you get to the window you want to focus. If you use it, you will see a small popup showing the application name, its icon and the window title. Also <application>@PACKAGE_NAME@</application> will highlight the outline of the window that will receive the focus."
+msgstr "Вы можете передать фокус от одного окна в другое, используя комбинацию клавиш: удерживайте Alt и нажимайте Tab пока не активируется окно, в которое вы желаете передать фокус. При этом вы увидите маленькое всплывающее окно, отображающее название приложения, его значок и заголовок окна. <application>@PACKAGE_NAME@</application> также подсветит рамку окна, которое получает фокус."
+
+#. <para>
+#. If you want the panel, and apps that do not appear in the taskbar,
+#. to be included when you switch the focus using the Alt+Tab
+#. shortcut, edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create an new
+#. one)
+#. and add this line : cycle_minimum=false</para>
+#. 
+#. <para>
+#. To exclude hidden windows from the list presented when using
+#. Alt+Tab edit your $HOME/.config/xfce4/xfwm4/xfwm4rc (or create a new one)
+#. and
+#. add this line : cycle_hidden=false
+#. </para>
+#: xfwm4.xml193(para)
+msgid "NOTE: the use of a keyboard shortcut in an application needs the application window to have the focus :)"
+msgstr "Примечание: использование комбинаций клавиш в приложении требует, чтоб окно этого приложения было в фокусе :-)"
+
+#: xfwm4.xml201(term)
+msgid "Maximize / unmaximize windows"
+msgstr "Развернуть / восстановить размер окна"
+
+#: xfwm4.xml203(para)
+msgid "If you maximize a window, it will expand on your display and use all avaible space (as it is defined by <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">workspace settings</ulink>). You can maximize a window either vertically, horizontally, or both at once."
+msgstr "При разворачивании окна оно увеличивается и занимает всё пространство экрана (в соответствии с настройками в <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">workspace settings</ulink>). Вы можете развернуть окно по вертикали, горизонтали или же в обоих направлениях одновременно."
+
+#: xfwm4.xml209(para)
+msgid "To maximize a window, perform one of those actions:"
+msgstr "Для того чтобы развернуть окно, выполните одно из действий:"
+
+#: xfwm4.xml212(para)
+msgid "click the maximize button of the title bar"
+msgstr "щёлкните кнопку развернуть в заголовке окна;"
+
+#: xfwm4.xml215(para)
+msgid "open the window menu from the title bar and choose the \"maximize\" item"
+msgstr "откройте меню окна из заголовка окна и выберите «Развернуть»;"
+
+#: xfwm4.xml221(para)
+msgid "use Alt + F5 keyboard shortcut"
+msgstr " воспользуйтесь комбинацией клавиш Alt + F5."
+
+#: xfwm4.xml225(para)
+msgid "You can make any window appear in fullscreen mode (it will then use all the size of your screen without showing the window borders) by using the customizable Alt + F11 keyboard shortcut."
+msgstr "Вы можете перевести любое окно в полноэкранный режим, используя комбинацию клавиш Alt + F11, которую можно переназначить. В этом режиме окно будет занимать всё пространство экрана, не отображая края окна."
+
+#: xfwm4.xml230(para)
+msgid "To maximize a window vertically :"
+msgstr "Для того чтобы развернуть окно по вертикали:"
+
+#: xfwm4.xml232(para)
+msgid "middle-click the maximize button of the title bar"
+msgstr "щёлкните средней кнопкой мыши на заголовке окна;"
+
+#: xfwm4.xml233(para)
+msgid "use Alt + F6 keyboard shortcut"
+msgstr "воспользуйтесь комбинацией клавиш Alt + F6;"
+
+#: xfwm4.xml236(para)
+msgid "To maximize a window horizontally :"
+msgstr "Для того чтобы развернуть окно по горизонтали:"
+
+#: xfwm4.xml239(para)
+msgid "right-click the maximize button of the title bar"
+msgstr "щёлкните правой кнопкой мыши по кнопке развернуть на в заголовке окна;"
+
+#: xfwm4.xml240(para)
+msgid "use Alt + F7 keyboard shortcut"
+msgstr "воспользуйтесь комбинацией клавиш Alt + F7;"
+
+#: xfwm4.xml243(para)
+msgid "When a window has been maximized in a way or another, it can be restored to its previous size doing one of these actions :"
+msgstr "Если окно было развёрнуто одним либо другим способом, вы можете вернуть его первоначальный размер одним из способов:"
+
+#: xfwm4.xml247(para)
+msgid "click the unmaximize button of the title bar"
+msgstr "щёлкните кнопку восстановления размера в заголовке окна;"
+
+#: xfwm4.xml248(para)
+msgid "use the same keyboard shortcut once again"
+msgstr "воспользуйтесь повторно использовавшейся комбинацией клавиш."
+
+#: xfwm4.xml249(para)
+msgid "choose the \"Unmaximize\" item in the window menu"
+msgstr "выберите пункт меню окна «Восстановить размер развёрнутого окна»"
+
+#: xfwm4.xml255(term)
+msgid "Resize windows"
+msgstr "Изменить размер окон"
+
+#: xfwm4.xml257(para)
+msgid "Although certain special windows can not be resized, you are able to resize most of them to fit your needs."
+msgstr "Хотя размер некоторых специальных окон не может быть изменён, вы можете изменять размер размер большинства из них в соответствии с вашими желаниями."
+
+#: xfwm4.xml260(para)
+msgid "you can use the edges and corners of the window frame to modify its size, dragging them with the mouse"
+msgstr "вы можете использовать края и углы окна для изменения размера окна, передвигая их при помощи мыши;"
+
+#: xfwm4.xml262(para)
+msgid "you can use the Alt + right click shortcut while you hold the mouse pointer anywhere over the window frame; it will act as if you were dragging the bottom-right corner of the window"
+msgstr "вы можете воспользоваться комбинацией Alt + щелчок правой кнопкой мыши над областью окна. Это работает также, как если бы вы использовали перетаскивание правого верхнего угла окна;"
+
+#: xfwm4.xml265(para)
+msgid "you can use practical keyboard shortcuts : Shift + Alt + (up, down, right or left) Arrow"
+msgstr "вы можете использовать удобные комбинации клавиш: Shift + Alt + стрелка (вверх, вниз, вправо или влево)."
+
+#: xfwm4.xml279(term)
+msgid "Hide / unhide windows"
+msgstr "Свернуть / развернуть окно"
+
+#: xfwm4.xml281(para)
+msgid "You can hide a window performing one of these actions :"
+msgstr "Вы можете свернуть окно выполнив одно из действий:"
+
+#: xfwm4.xml283(para)
+msgid "click the hide button of the title bar"
+msgstr "щёлкните на кнопку свернуть на заголовке окна"
+
+#: xfwm4.xml284(para)
+msgid "open the window menu from the title bar and choose the \"Hide\" item"
+msgstr "откройте меню окна из заголовка окна и выберите пункт «Свернуть»;"
+
+#: xfwm4.xml286(para)
+msgid "use Alt + F8 keyboard shortcut"
+msgstr "воспользуйтесь комбинацией клавиш Alt + F8."
+
+#: xfwm4.xml288(para)
+msgid "Alternatively, you can hide all windows of current workspace, excepted the one you are using, in only one action : click the menu button of the title bar and choose \"Hide all others\"."
+msgstr "Как вариант, вы можете свернуть все окна текущего рабочего места, за исключением того, которые вы сейчас используете. Для этого щёлкните на кнопку меню окна в заголовке окна и выберите «Свернуть все остальные окна»."
+
+#: xfwm4.xml291(para)
+msgid "To \"unhide\" a window, you will have to select its name or its icon in one of those Xfce 4 components :"
+msgstr "Для того чтобы «развернуть» окно, вам нужно выбрать его название или значок в одном из компонентов Xfce 4:"
+
+#: xfwm4.xml294(application)
+msgid "xftaskbar4"
+msgstr "xftaskbar4"
+
+#: xfwm4.xml295(para)
+msgid "the list of windows, accessible with a middle-click on the desktop background. This list shows all opened windows, classified by workspaces. Windows that are currently hidden are marked between [ ]."
+msgstr "список окон, к которому можно получить доступ по щелчку средней кнопкой мыши на фоне рабочего стола. Этот список показывает все открытые окна, сгруппированные по рабочим местам. Свёрнутые окна отмечены между [ ]."
+
+#: xfwm4.xml299(para)
+msgid "the <application>xfce4-iconbox</application>"
+msgstr "<application>xfce4-iconbox</application>."
+
+#: xfwm4.xml305(term)
+msgid "Shade / unshade windows"
+msgstr "Свернуть окно в заголовок / развернуть из заголовка"
+
+#: xfwm4.xml307(para)
+msgid "If you \"shade\" a window, it will be reduced to the size of its title bar. The same repeated action makes a window to shade/unshade :"
+msgstr "При сворачивании окна в заголовок оно уменьшается до размера заголовка. Действия, приводящие к сворачиванию/разворачиванию окна:"
+
+#: xfwm4.xml311(para)
+msgid "click the shade/unshade button of the title bar"
+msgstr "щёлкните в заголовке окна на кнопку свернуть в заголовок/развернуть из заголовка;"
+
+#: xfwm4.xml312(para)
+msgid "open the window menu from the title bar and choose \"Shade\" or \"Unshade\" item"
+msgstr "откройте меню окна из заголовка окна и выберите «Свернуть в заголовок» или «Развернуть из заголовка»;"
+
+#: xfwm4.xml314(para)
+msgid "use the mouse scrollwheel while you hold the pointer over the title bar"
+msgstr "воспользуйтесь колёсиком мыши наведя курсор на заголовок окна;"
+
+#: xfwm4.xml316(para)
+msgid "use the Alt + F9 keyboard shortcut"
+msgstr "воспользуйтесь комбинацией клавиш Alt + F9."
+
+#: xfwm4.xml322(term)
+msgid "Stick / unstick windows"
+msgstr "Приклеить / отклеить окно"
+
+#: xfwm4.xml324(para)
+msgid "If you \"stick\" a window, it will be visible at the same place on all your workspaces. The same repeated action make a window to stick/unstick :"
+msgstr "При «приклеивании» окна оно остаётся видимым на своём месте на всех рабочих местах. Действия для при приклеивания/отмены приклеивания:"
+
+#: xfwm4.xml329(para)
+msgid "click the stick/unstick button of the title bar"
+msgstr "щёлкните в заголовке окна на кнопку приклеить/отклеить;"
+
+#: xfwm4.xml330(para)
+msgid "open the window menu button from the title bar and choose \"Stick\" or \"Unstick\" item"
+msgstr "откройте меню окна из заголовка окна и выберите «Приклеить» или «Отклеить»;"
+
+#: xfwm4.xml332(para)
+msgid "use the Alt + F10 keyboard shortcut"
+msgstr "воспользуйтесь комбинацией клавиш Alt + F10."
+
+#: xfwm4.xml338(term)
+msgid "Raise / lower windows"
+msgstr "Поднять окно на передний план / опустить окно"
+
+#: xfwm4.xml340(para)
+msgid "The \"raise window\" function makes a window frame appear above all the other frames. To raise a window, you can :"
+msgstr "Функция «поднятия» окна на передний план приводит к тому, что окно отображается поверх всех остальных. Для этого вы можете:"
+
+#: xfwm4.xml344(para)
+msgid "left click on its titlebar"
+msgstr "щёлкнуть правой кнопкой мыши по заголовку окна;"
+
+#: xfwm4.xml345(para)
+msgid "give the focus to the window, if the corresponding option is selected in the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>"
+msgstr "передать фокус окну, если выбран соответствующий параметр в <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>;"
+
+#: xfwm4.xml347(para)
+msgid "left click anywhere on its frame, if the corresponding option is selected in the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>"
+msgstr "щёлкнуть левой кнопкой мыши где угодно в области окна, если выбран соответствующий параметр в <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>;"
+
+#: xfwm4.xml349(para)
+msgid "click on its label in the taskbar or the iconbox"
+msgstr "щёлкнуть на названии окна в панели задач или iconbox"
+
+#: xfwm4.xml350(para)
+msgid "use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)"
+msgstr "воспользуйтесь комбинацией Shift + Alt + Page_Up (если окно находится в фокусе)."
+
+#: xfwm4.xml353(para)
+msgid "You can make a window frame to always stay above all other windows by opening the window menu and selecting the \"always on top\" item."
+msgstr "Открыв меню окна и выбрав «Всегда наверху», вы можете заставить окно отображаться всегда поверх всех остальных окон."
+
+#: xfwm4.xml357(para)
+msgid "The \"lower\" function sends a window frame below all other frames. To \"lower\" a window, you can :"
+msgstr "Функция «опускания» окна на задний план приводит к тому, что окно отображается снизу всех остальных. Для этого вы можете:"
+
+#: xfwm4.xml361(para)
+msgid "middle-click on its title bar"
+msgstr "щёлкните средней кнопкой мыши по заголовку окна;"
+
+#: xfwm4.xml362(para)
+msgid "use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)"
+msgstr "воспользуйтесь комбинацией Shift + Alt + Page_Down (если окно находится в фокусе)."
+
+#: xfwm4.xml368(term)
+msgid "Move windows"
+msgstr "Переместить окно"
+
+#: xfwm4.xml370(para)
+msgid "There are several ways to move windows :"
+msgstr "Существует несколько способов перемещать окна:"
+
+#: xfwm4.xml372(para)
+msgid "left or right click on the title bar of the window and drag it"
+msgstr "щёлкните левой или правой кнопкой мыши по заголовку окна и перетащите его;"
+
+#: xfwm4.xml374(para)
+msgid "use Alt + left click while the pointer is anywhere over the window frame and move the mouse"
+msgstr "воспользуйтесь комбинацией Alt + щелчок левой кнопкой мыши в любом месте над окном и перемещайте мышь;"
+
+#: xfwm4.xml376(para)
+msgid "use Control + Alt + Shift + (up, down, left or right) Arrow keyboard shortcut"
+msgstr "пользуйтесь комбинацией Control + Alt + Shift + стрелка (вверх вниз, влево или вправо)"
+
+#: xfwm4.xml391(term)
+msgid "Move a window to another workspace"
+msgstr "Переместить окно на другое рабочее место"
+
+#: xfwm4.xml393(para)
+msgid "You can send a window to another workspace by performing one of these actions :"
+msgstr "Вы можете переместить окно на другое рабочее место, выполнив одной из действий:"
+
+#: xfwm4.xml396(para)
+msgid "stick the window, move to another workspace, then unstick the window."
+msgstr "приклейте окно, перейдите на другое рабочее место и отклейте окно;"
+
+#: xfwm4.xml398(para)
+msgid "use the window menu and choose one of the \"Send to\" submenu items."
+msgstr "откройте меню окна и выберите один из вариантов подменю «Переместить на другое рабочее место»;"
+
+#: xfwm4.xml400(para)
+msgid "left or right click on the title bar of the window, drag it to the screen edge : the pointer will then go to the next workspace, still holding the window. Corresponding option needs to be selected in the <ulink url=\"xfwm4.html#wm_misc\" type=\"http\">Window Manager Preferences dialog</ulink>."
+msgstr "щёлкните правой или левой кнопкой мыши по заголовку окна и перетащите его к краю экрана. Указатель мыши переместится на следующее рабочее место вместе с захваченным окном. Соответствующий параметр должен быть включён в диалоге <ulink url=\"xfwm4.html#wm_misc\" type=\"http\">Диспетчер окон</ulink>"
+
+#: xfwm4.xml405(para)
+msgid "use keyboard shortcuts :"
+msgstr "воспользуйтесь комбинацией клавиш:"
+
+#: xfwm4.xml407(para)
+msgid "Alt + Control + End will move a window to the next workspace"
+msgstr "Alt + Control + End – перемещает текущее окно на следующее рабочее место;"
+
+#: xfwm4.xml409(para)
+msgid "Alt + Control + Home will move a window to the previous workspace"
+msgstr "Alt + Control + Home – перемещает текущее окно на предыдущее рабочее место;"
+
+#: xfwm4.xml411(para)
+msgid "Alt + Control + Keypad-Number will move the current window to corresponding workspace"
+msgstr "Alt + Control + цифра на цифровом блоке клавиатуры – перемещает текущее окно на соответствующее рабочее место;"
+
+#: xfwm4.xml415(para)
+msgid "use the <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">graphical pager </ulink> by clicking on the representation of the window, and move it to the desired workspace."
+msgstr "воспользуйтесь графическим <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">переключателем рабочих мест</ulink>, щёлкнув на представлении окна и переместив его на желаемое рабочее место."
+
+#: xfwm4.xml425(term)
+msgid "Close a window"
+msgstr "Закрыть окно"
+
+#: xfwm4.xml427(para)
+msgid "To close a window :"
+msgstr "Для того чтобы закрыть окно:"
+
+#: xfwm4.xml429(para)
+msgid "click the close button of the title bar"
+msgstr "щёлкните на кнопку закрытия окна в заголовке окна;"
+
+#: xfwm4.xml430(para)
+msgid "Open the window menu from the title bar and choose the \"Close\" item"
+msgstr "откройте меню окна из заголовка окна и выберите «Закрыть»;"
+
+#: xfwm4.xml432(para)
+msgid "or use Alt + F4 keyboard shortcut"
+msgstr "воспользуйтесь комбинацией клавиш Alt + F4."
+
+#: xfwm4.xml443(title)
+msgid "Customizing <application>@PACKAGE_NAME@</application>"
+msgstr "Настройка <application>@PACKAGE_NAME@</application>"
+
+#: xfwm4.xml445(para)
+msgid "To open the Window Manager preferences dialog, click the button labelled \"Window Manager\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce 4 Settings manager</ulink>. The dialog shows four tabs : Style, Keyboard, Focus, Advanced. All modifications will have an immediate effect on the behaviour of the selected module."
+msgstr "Для открытия диалогового окна настроек диспетчера окон, щёлкните кнопку «Диспетчер окон» в <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Диспетчере настроек Xfce 4</ulink>. Диалог разделён на четыре вкладки: стиль, клавиатура, фокус, дополнительные. Все изменения настроек ступают в силу незамедлительно."
+
+#: xfwm4.xml453(title)
+msgid "Decoration style"
+msgstr "Стиль оформления"
+
+#: xfwm4.xml456(title)
+msgid "Decoration style preferences"
+msgstr "Параметры стиля оформления"
+
+#: xfwm4.xml464(phrase)
+msgid "The decoration style tab"
+msgstr "Вкладка стиля оформления"
+
+#: xfwm4.xml473(term)
+msgid "Window style"
+msgstr "Стиль окна"
+
+#: xfwm4.xml475(para)
+msgid "The list on the left side of the dialog shows all avaible window decorations. The xfwm 4 module offers the choice between 4 different themes, but there are more than 60 supplementary themes avaible in xfwm4-themes extra package."
+msgstr "Список слева показывает все доступные варианты оформления окон. Xfwm 4 предлагает выбор из четырёх различных тем. В пакете xfwm4-themes существует более 60-ти дополнительных тем."
+
+#: xfwm4.xml484(term)
+msgid "Title font"
+msgstr "Шрифт заголовка"
+
+#: xfwm4.xml486(para)
+msgid "The \"Font select\" button shows the family font currently in use for the window title appearance. Click this button if you want to change it, and a \"Font selection\" dialog will appear. It works like the font selection dialog of the <ulink url=\"xfce-mcs-plugins.html#id2811474\" type=\"http\">user interface settings manager plugin</ulink>."
+msgstr "Кнопка выбора шрифта показывает используемый в настоящее время для заголовка окна шрифт. Щёлкните эту кнопку если вы хотите сменить шрифт. Появится диалоговое окно «Выберите шрифт». Оно работает также как и диалог выбора шрифта <ulink url=\"xfce-mcs-plugins.html#id2811474\" type=\"http\">user interface settings manager plugin</ulink>."
+
+#: xfwm4.xml497(term)
+msgid "Title alignment"
+msgstr "Расположение заголовка"
+
+#: xfwm4.xml499(para)
+msgid "Whatever the buttons layout is, you can choose the alignment of the title inside the title bar, selecting one of those simple options : align it to the left, center or right."
+msgstr "Вне зависимости от расположения кнопок вы можете изменить расположение заголовка в строке заголовка, выбрав один из вариантов: слева, по центру, справа."
+
+#: xfwm4.xml507(term)
+msgid "Button layout"
+msgstr "Расположение кнопок"
+
+#: xfwm4.xml509(para)
+msgid "The button layout configuration uses an easy drag and drop tool. Click and drag the buttons to change the layout. Drop a button in the \"Hidden\" area to remove a button from the titlebar. All modifications will have an immediate effect on the title bar buttons position."
+msgstr "Настройка расположения кнопок осуществляется с помощью перетаскивания. Щёлкните и перетаскивайте кнопки для изменения их расположения. Перетащите кнопку в область «Скрытые», чтобы удалять её с заголовка окна. Все изменения вступают в силу незамедлительно."
+
+#: xfwm4.xml522(title)
+msgid "Keyboard shortcuts"
+msgstr "Комбинации клавиш"
+
+#: xfwm4.xml525(title)
+msgid "Keyboard shortcuts preferences"
+msgstr "Параметры комбинаций клавиш"
+
+#: xfwm4.xml533(phrase)
+msgid "The keyboard shortcuts tab"
+msgstr "Вкладка комбинаций клавиш"
+
+#: xfwm4.xml542(term)
+msgid "Keyboard Shortcuts"
+msgstr "Комбинации клавиш"
+
+#: xfwm4.xml544(para)
+msgid "The list on the left side of the dialog shows all avaible shortcuts themes, using the name of directories that contain a keythemerc file."
+msgstr "Список слева показывает все доступные темы комбинаций клавиш. В качестве названия используется название каталогов, в которых находится файл keythemerc."
+
+#: xfwm4.xml548(para)
+msgid "By default, there's only one theme : $(datadir)/themes/Default/xfwm4/keythemerc"
+msgstr "По умолчанию существует только одна тема: $(datadir)/themes/Default/xfwm4/keythemerc"
+
+#: xfwm4.xml552(para)
+msgid "In the default configuration the following keybindings are defined:"
+msgstr "В стандартной конфигурации установлены следующие комбинации клавиш:"
+
+#: xfwm4.xml556(para)
+msgid "close window : Alt + F4"
+msgstr "Закрыть окно: Alt + F4"
+
+#: xfwm4.xml557(para)
+msgid "Maximize window : Alt + F5"
+msgstr "Развернуть окно: Alt + F5"
+
+#: xfwm4.xml558(para)
+msgid "Maximize vertically : Alt + F6"
+msgstr "Развернуть окно по вертикали: Alt + F6"
+
+#: xfwm4.xml559(para)
+msgid "Maximize horizontally : Alt + F7"
+msgstr "Развернуть окно по горизонтали: Alt + F7"
+
+#: xfwm4.xml560(para)
+msgid "Hide window : Alt + F8"
+msgstr "Свернуть окно: Alt + F8"
+
+#: xfwm4.xml561(para)
+msgid "Shade window : Alt + F9"
+msgstr "Свернуть окно в заголовок: Alt + F9"
+
+#: xfwm4.xml562(para)
+msgid "Stick window : Alt + F10"
+msgstr "Приклеить окно: Alt + F10"
+
+#: xfwm4.xml563(para)
+msgid "Cycle windows focus : Alt + Tab"
+msgstr "Переключать окна: Alt + Tab"
+
+#: xfwm4.xml564(para)
+msgid "Move window : Control + Shift + Alt + Arrow (up, down, left, or right)"
+msgstr "Переместить окно: Control + Shift + Alt + стрелка (вверх, вниз, влево или вправо)"
+
+#: xfwm4.xml566(para)
+msgid "Resize window : Shift + Alt + Arrow (up, down, left, or right)"
+msgstr "Изменить размер окна: Shift + Alt + стрелка (вверх, вниз, влево или вправо)"
+
+#: xfwm4.xml568(para)
+msgid "Raise window : Shift + Alt + Page_Up"
+msgstr "Поднять окно на передний план: Shift + Alt + Page_Up"
+
+#: xfwm4.xml569(para)
+msgid "Lower window : Shift + Alt + Page_Down"
+msgstr "Опустить окно на задний план: Shift + Alt + Page_Down"
+
+#: xfwm4.xml570(para)
+msgid "Toggle fullscreen : Alt + F11"
+msgstr "Полноэкранный режим: Alt + F11"
+
+#: xfwm4.xml571(para)
+msgid "Next workspace : Control + Alt + Arrow right arrow"
+msgstr "Следующее рабочее место: Control + Alt + стрелка вправо"
+
+#: xfwm4.xml573(para)
+msgid "Previous workspace : Control + Alt + Arrow left"
+msgstr "Предыдущее рабочее место: Control + Alt + стрелка влево"
+
+#: xfwm4.xml574(para)
+msgid "Add a workspace : Alt + Insert"
+msgstr "Добавить рабочее место: Alt + Insert"
+
+#: xfwm4.xml575(para)
+msgid "Delete a workspace : Alt + Delete"
+msgstr "Удалить рабочее место: Alt + Delete"
+
+#: xfwm4.xml576(para)
+msgid "Go to workspace number N (1-9) : Control + F(N)"
+msgstr "Перейти на рабочее место номер N (1-9) : Control + F(N)"
+
+#: xfwm4.xml577(para)
+msgid "Move the window to previous|next workspace : Alt + Control + Home|End"
+msgstr "Переместить окно на предыдущее|следующее рабочее место: : Alt + Control + Home|End"
+
+#: xfwm4.xml579(para)
+msgid "Move a window to workspace number N (1-9) : Alt + Control + keypad key number N"
+msgstr "Переместить окно на рабочее место номер N (1-9) : Alt + Control + цифра на цифровом блоке N"
+
+#: xfwm4.xml581(para)
+msgid "Start xfhelp4 : Alt + F1"
+msgstr "Запустить справку xfhelp4: Alt + F1"
+
+#: xfwm4.xml582(para)
+msgid "Start xfrun4 : Alt + F2"
+msgstr "Запустить xfrun4: Alt + F2"
+
+#: xfwm4.xml583(para)
+msgid "Lock the screen : Alt + Control + Delete"
+msgstr "Заблокировать экран: Alt + Control + Delete"
+
+#: xfwm4.xml586(para)
+msgid "There are two lists on the right side of the dialog. The \"Windows shortcuts\" list shows the keyboard shortcuts which are used to drive the window manager. The \"Command shortcuts\" list shows the keyboard shortcuts which are aimed at launching applications. To modify one of the shortcuts, you have to double-click on it in the list, using the left button of your mouse, and compose your new shortcut when the \"Compose shortcut\" popup window appears."
+msgstr "В правой области диалогового окна находится два списка: список комбинаций для работы с окнами и список комбинаций для запуска приложений. Для изменения комбинации щёлкните на неё дважды левой кнопкой мыши и задайте новую комбинацию в появившемся диалоге создания новой комбинации."
+
+#: xfwm4.xml597(title) xfwm4.xml605(phrase)
+msgid "The compose shortcut popup"
+msgstr "Диалог создания новой комбинации"
+
+#: xfwm4.xml611(para)
+msgid "If you want to create a new theme, create a directory like this one, for instance : $HOME/.themes/Custom/xfwm4/keythemerc, then select it in the list of available themes."
+msgstr "Если вы хотите создать новую тему, создайте каталог по аналогии с этим, например $HOME/.themes/Custom/xfwm4/keythemerc, и затем выберите новую тему из списка доступных тем."
+
+#: xfwm4.xml616(para)
+msgid "If you do not know the names of your keyboard modifier keys, you can launch the \"xev\" application from a terminal and test them."
+msgstr "Если вы не знаете названия клавиш вашей клавиатуры, вы можете запустить в терминале приложение «xev» и протестировать это."
+
+#: xfwm4.xml627(title) xfwm4.xml630(title)
+msgid "Focus preferences"
+msgstr "Параметры фокуса"
+
+#: xfwm4.xml638(phrase)
+msgid "The Focus tab"
+msgstr "Вкладка «Фокус»"
+
+#: xfwm4.xml647(term)
+msgid "Focus model"
+msgstr "Режим фокуса"
+
+#: xfwm4.xml649(para)
+msgid "A focused window receives the keyboard and mouse input. You have the choice between two focus models :"
+msgstr "Окно в фокусе получает ввод клавиатуры и мыши. Вы можете выбрать одну из двух моделей фокуса:"
+
+#: xfwm4.xml652(para)
+msgid "Click to focus : select this option if you want a window to receive the focus only when you click anywhere on its frame."
+msgstr "Фокус при щелчке мышью: выберите этот параметр, если вы хотите, чтобы окно получало фокус только, когда вы щёлкаете где-то в его области."
+
+#: xfwm4.xml656(para)
+msgid "Focus follow mouse : select this option if you want a window to receive the focus as soon as the mouse pointer is over its frame."
+msgstr "Фокус следует за мышью: выберите этот параметр, если вы хотите, чтобы окно получало фокус как только указатель мыши окажется над его областью."
+
+#: xfwm4.xml665(term)
+msgid "New window focus"
+msgstr "Фокус новых окон"
+
+#: xfwm4.xml667(para)
+msgid "Selecting this option will automatically give the focus to newly created windows, without the need to click or move the mouse pointer."
+msgstr "Выбор этого параметра приводит к тому, что все вновь создаваемые она автоматически получают фокус, без необходимости щёлкать или наводить на них указатель мыши."
+
+#: xfwm4.xml675(term)
+msgid "Raise on focus"
+msgstr "Поднятие на передний план при наведении курсора"
+
+#: xfwm4.xml677(para)
+msgid "If this option is selected, the frame of a newly focused window will automatically appear over all other frames, after an amount of time that you can adjust with the \"delay\" slider."
+msgstr "Если вы выбрали этот параметр, то окно, получившее фокус, будет автоматически поднято на передний план по прошествии времени, которые вы можете задать ползунком «Задержка перед поднятием окна с фокусом на передний план»."
+
+#: xfwm4.xml685(term)
+msgid "Raise on click"
+msgstr "Поднятие на передний план при щелчке мышью"
+
+#: xfwm4.xml687(para)
+msgid "Choose this option if you want a window to pass over the others when you click anywhere on its frame. If this option is not selected, you will have to click somewhere on its decorations (title bar, borders or corners) to raise it."
+msgstr "Выберите этот параметр, если вы хотите, чтобы окно поднималось на передний план при щелчке в любой области этого окна. Если этот параметр не выбран, вам надо щёлнуть где-то на оформлении окна (заголовок, край или угол), чтобы поднять его."
+
+#: xfwm4.xml701(title)
+msgid "Advanced settings"
+msgstr "Дополнительные настройки"
+
+#: xfwm4.xml704(title)
+msgid "Advanced preferences"
+msgstr "Дополнительные параметры"
+
+#: xfwm4.xml712(phrase)
+msgid "Advanced tab"
+msgstr "Вкладка «Дополнительные»"
+
+#: xfwm4.xml721(term)
+msgid "Windows snapping"
+msgstr "Прилипание окон"
+
+#: xfwm4.xml723(para)
+msgid "You can choose the windows borders to be attracted by the borders of other windows, or by the screen edges, when they are moved. The distance from which this effect will be applied can be specified with the \"Distance\" slider."
+msgstr "Вы можете установить притягивание краёв окна при его перемещении к краям других окон или к краям экрана. Расстояние, на котором должен проявляться этот эффект, вы можете установить ползунком «Расстояние»."
+
+#: xfwm4.xml731(term)
+msgid "Wrap workspaces"
+msgstr "Переключение рабочих мест"
+
+#: xfwm4.xml733(para)
+msgid "Select the first option if you want to switch to the next workspace when the mouse pointer reaches the screen edges. Select the second one if you want the same behaviour while dragging a window. You can specify the screen edges resistance using the corresponding slider."
+msgstr "Выберите первый параметр, если вы хотите, чтобы при достижении края экрана указателем мыши происходил переход на следующее рабочее место. Выберите второй параметр, если вы хотите добиться схожего поведения при перемещении окна. Вы можете установить сопротивление у края, используя соответствующий ползунок."
+
+#: xfwm4.xml742(term)
+msgid "Opaque move and resize"
+msgstr "Перемещение и изменение размера окна"
+
+#: xfwm4.xml744(para)
+msgid "Two options allow you to choose if the content of a window will appear or not, when you move or resize it (not displaying the content will save some system resources)."
+msgstr "Два параметра позволяют установить, должно ли отображаться содержимое окна при его перемещении или изменении его размера. Скрытие содержимого позволяет сэкономить некоторое количество системных ресурсов."
+
+#: xfwm4.xml751(term)
+msgid "Double click action"
+msgstr "Действие при двойном щелчке на заголовке"
+
+#: xfwm4.xml753(para)
+msgid "Select what must be the behaviour of the window manager when you double-click on the title bar of a window : shade window, hide window, maximize window or none."
+msgstr "Выберите действие диспетчера окон при двойном щелчке по заголовку окна: свернуть окно в заголовок, свернуть окно, развернуть окно или ничего."
+
+#: xfwm4.xml766(title)
+msgid "Managing workspaces"
+msgstr "Управление рабочими столами"
+
+#: xfwm4.xml768(para)
+msgid "<application>@PACKAGE_NAME@</application> also manages workspaces. There is a special settings dialog to change the workspace properties. You can start it by choosing <emphasis>Workspaces and Margins</emphasis> from the the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings manager dialog</ulink>. The dialog contains two tab folders where you can change workspace settings and desktop margins."
+msgstr "<application>@PACKAGE_NAME@</application> также управляет рабочими столами. Существует специальный диалог настроек для изменения параметров рабочих столов. Вы можете запустить его, выбрав <emphasis>Рабочий стол</emphasis> из <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings manager dialog</ulink>. Диалог разделён на две области, где бы можете настроить рабочие столы и поля."
+
+#: xfwm4.xml778(title)
+msgid "Workspaces settings"
+msgstr "Настройки рабочих мест"
+
+#: xfwm4.xml781(title)
+msgid "Workspace Settings"
+msgstr "Настройки рабочих мест"
+
+#: xfwm4.xml788(phrase)
+msgid "Shows workspace settings tab folder."
+msgstr "Показывает вкладку настроек рабочих мест."
+
+#: xfwm4.xml798(term)
+msgid "Workspaces"
+msgstr "Рабочие места"
+
+#: xfwm4.xml800(para)
+msgid "This option allows you too choose the number of workspaces you want to use (between 1 and 32)."
+msgstr "Этот параметр позволяет задать количество рабочих мест, которое вы желаете использовать (от 1 до 32)."
+
+#: xfwm4.xml807(term)
+msgid "Worspace names"
+msgstr "Название рабочего места"
+
+#: xfwm4.xml809(para)
+msgid "This field shows the list of avaible workspaces. If you want to edit the name of one of them, click its number and a fill the entry of the dialog that will then appear. When it's done, click the \"Apply\" button, or just press the Enter key, to return to the list."
+msgstr "Это поле отображает список всех доступных рабочих мест. Есил вы хотите изменить название одного из них, дважды щёлкните по его названию и залайте новое название."
+
+#: xfwm4.xml823(title)
+msgid "Workspaces margins"
+msgstr "Поля рабочих мест"
+
+#: xfwm4.xml826(title)
+msgid "The workspace margins dialog"
+msgstr "Диалоговое окно полей рабочих мест"
+
+#: xfwm4.xml834(phrase)
+msgid "The workspace margins tab folder"
+msgstr "Показывает вкладку настроек полей рабочих мест"
+
+#: xfwm4.xml840(para)
+msgid "To open the Workspace Margins dialog, click the button labelled \"Workspaces and Margins\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings manager dialog</ulink> and choose the tab labelled \"Margins\"."
+msgstr "Для того чтобы запустить диалоговое окно настроек рабочего стола, щёлкните кнопку «Рабочий стол» в <ulink url=\"xfce4-settings.html#manager-dialog\" type=\"http\">Диспетчере настроек Xfce</ulink>."
+
+#: xfwm4.xml846(para)
+msgid "Margins are areas on the edges of the screen that maximized windows won't cover. You can adjust the size, in pixels, of all margins (left, right, top and bottom). Use this feature, for example, if you do not want maximized windows to overlap panel or iconbox frames."
+msgstr "Поля – это области у края экрана, которое не занимается развёрнутыми окнами. Вы можете настроить размер всех полей в пикселях (слева, справа, сверху, снизу). Используйте эту возможность, например, если вы не хотите, чтобы развёрнутые окна перекрывали панель или область iconbox."
+
+#: xfwm4.xml857(title)
+msgid "About <application>@PACKAGE_NAME@</application>"
+msgstr "О программе <application>@PACKAGE_NAME@</application>"
+
+#: xfwm4.xml859(para)
+msgid "<application>@PACKAGE_NAME@</application> was written Olivier Fourdan (<email>fourdan@xfce.org</email>). To find more information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce web site</ulink>."
+msgstr "<application>@PACKAGE_NAME@</application> написал Olivier Fourdan (<email>fourdan@xfce.org</email>). Посетите <ulink url=\"http://www.xfce.org\" type=\"http\">сайт Xfce</ulink> для получения более подробной информации."
+
+#: xfwm4.xml864(para)
+msgid "To report a bug or make a suggestion regarding this application or this manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
+msgstr "Чтобы сообщить об ошибке или внести предложение, относящееся к этой программе или данному руководству, используйте систему отслеживания ошибок <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
+
+#: xfwm4.xml870(para)
+msgid "If you have questions about the use or installation of this package, please ask on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> mailing list. Development discussion takes place on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> mailing list."
+msgstr "Если у вас есть вопросы по использованию или установке этого пакета, пожалуйста, задайте их в <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce\" type=\"http\">списке рассылки xfce</ulink>. Обсуждение разработки происходит в <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type=\"http\">списке рассылки xfce4-dev</ulink>."
+
+#: xfwm4.xml879(para)
+msgid "This program is distributed under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
+msgstr "Это программное обеспечение распространяется на условиях лицензии GNU General Public License, опубликованной Free Software Foundation, версии 2 или (по вашему выбору) любой более поздней версии."
+
+#: xfwm4.xml884(para)
+msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr "Вы должны были получить копию лицензии GNU General Public License вместе с этой программой. Если это не так, напишите во Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: xfwm4.xml0(None)
+msgid "translator-credits"
+msgstr ""
+"Denis Koryavov <dkoryavov@yandex.ru>, 2010\n"
+"Artem Zolochevskiy <artem.zolochevskiy@gmail.com>, 2011"

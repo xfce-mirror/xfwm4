@@ -139,7 +139,7 @@ msgstr "<b>点击时提升</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr "<b>获取焦点时时提升</b>"
+msgstr "<b>获取焦点时提升</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -343,16 +343,16 @@ msgstr "无"
 #: ../settings-dialogs/xfwm4-settings.c:229
 #: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
-msgstr "左侧"
+msgstr "靠左"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
-msgstr "中间"
+msgstr "居中"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
-msgstr "右侧"
+msgstr "靠右"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
@@ -360,11 +360,11 @@ msgstr "窗口操作菜单"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr "上"
+msgstr "向上"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr "下"
+msgstr "向下"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
@@ -432,7 +432,7 @@ msgstr "切换至上面"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle fullscreen"
-msgstr "切换全屏显示方式"
+msgstr "全屏切换"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Move window to upper workspace"
