@@ -1,4 +1,4 @@
-# Dutch translation for the xfwm4 package.
+# Dutch translation of the xfwm4 package.
 # Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Jasper Huijsmans <jasper@xfce.org>, 2004.
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-17 10:15+0000\n"
-"PO-Revision-Date: 2011-06-15 12:41+0200\n"
+"POT-Creation-Date: 2011-09-08 22:15+0000\n"
+"PO-Revision-Date: 2011-09-09 12:41+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr "Fijnregeling venstergedrag en -effecten"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Window Manager Tweaks"
-msgstr "Vensterbeheerder Bijstellen"
+msgstr "Vensterbeheerder bijstellen"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -589,7 +589,7 @@ msgstr "Werkblad toevoegen"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add adjacent workspace"
-msgstr "Aangrenzende werkblad toevoegen"
+msgstr "Aangrenzend werkblad toevoegen"
 
 #: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Delete last workspace"
@@ -597,7 +597,7 @@ msgstr "Laatste werkblad verwijderen"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete active workspace"
-msgstr "Actieve werkblad verwijderen"
+msgstr "Actief werkblad verwijderen"
 
 #: ../settings-dialogs/xfwm4-settings.c:448
 msgid "Theme"
@@ -623,7 +623,7 @@ msgstr "Kon de instellingendialoog niet maken."
 #: ../settings-dialogs/xfwm4-settings.c:1869
 #: ../settings-dialogs/xfwm4-settings.c:1870
 msgid "Reset to Defaults"
-msgstr "Zet terug op Standaardwaarden"
+msgstr "Zet terug op standaardwaarden"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
 msgid ""
@@ -887,7 +887,7 @@ msgstr "[ARGUMENTEN...]"
 #: ../src/main.c:559
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Tik \"%s --help\" voor gebruik."
+msgstr "Tik \"%s --help\" voor gebruiksinformatie."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -903,7 +903,7 @@ msgstr "Mi_nimaliseren"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr "Minimaliseer _Alle Andere Vensters"
+msgstr "Minimaliseer _alle andere vensters"
 
 #: ../src/menu.c:48
 msgid "S_how"
@@ -924,11 +924,11 @@ msgstr "Altijd bovenaan"
 
 #: ../src/menu.c:53
 msgid "Same as Other Windows"
-msgstr "Zelfde als Andere Vensters"
+msgstr "Zelfde als andere vensters"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr "Altijd onder Andere Vensters"
+msgstr "Altijd onder andere vensters"
 
 #: ../src/menu.c:55
 msgid "Roll Window Up"
@@ -944,7 +944,7 @@ msgstr "Schermvullend"
 
 #: ../src/menu.c:58
 msgid "Leave _Fullscreen"
-msgstr "Verlaat Schermvullend"
+msgstr "Verlaat schermvullend"
 
 #: ../src/menu.c:59
 msgid "Context _Help"
@@ -953,15 +953,15 @@ msgstr "Contextuele _hulp"
 #. --------------------------------------------------------
 #: ../src/menu.c:61
 msgid "Always on Visible Workspace"
-msgstr "Altijd op Zichtbare Werkblad"
+msgstr "Altijd op zichtbare werkblad"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr "Alleen op Dit Werkblad"
+msgstr "Alleen op dit werkblad"
 
 #: ../src/menu.c:63
 msgid "Move to Another Workspace"
-msgstr "Naar Ander Werkblad verplaatsen"
+msgstr "Naar ander werkblad verplaatsen"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -1207,25 +1207,25 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ msgstr "Werkbladnamen"
 
 #~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Knopetiket|Werkbladen en Marges"
+#~ msgstr "Knopetiket|Werkbladen en marges"
 
 #~ msgid "Workspaces and Margins"
-#~ msgstr "Werkbladen en Marges"
+#~ msgstr "Werkbladen en marges"
 
 #~ msgid "Margins"
 #~ msgstr "Marges"
 
 #~ msgid "Window Manager Settings"
-#~ msgstr "Vensterbeheerder Instellingen"
+#~ msgstr "Vensterbeheerder instellingen"
 
 #~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce-Vensterbeheerder Instellingen "
+#~ msgstr "Xfce-Vensterbeheerder instellingen "
 
 #~ msgid "Advanced Configuration"
-#~ msgstr "Geavanceerde Configuratie"
+#~ msgstr "Geavanceerde configuratie"
 
 #~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce-Vensterbeheerder Bijstellingen"
+#~ msgstr "Xfce-Vensterbeheerder bijstellingen"
 
 #~ msgid "Workspaces Settings"
 #~ msgstr "Werkbladinstellingen"
@@ -1237,7 +1237,7 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ msgstr "Klik en sleep de knoppen om de vormgeving te veranderen"
 
 #~ msgid "Font Selection Dialog"
-#~ msgstr "Dialoog voor Lettertypeselectie"
+#~ msgstr "Dialoog voor lettertypeselectie"
 
 #~ msgid "Title font"
 #~ msgstr "Lettertype titel"
@@ -1462,7 +1462,7 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ msgstr "_Plakken"
 
 #~ msgid "(Un)S_tick"
-#~ msgstr "_Losmaken/Plakken"
+#~ msgstr "_Losmaken/plakken"
 
 #~ msgid "Below"
 #~ msgstr "Onderaan"
@@ -1480,7 +1480,7 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ msgstr "Knop"
 
 #~ msgid "Add Shortcut Theme"
-#~ msgstr "Voeg Sneltoetsthema toe"
+#~ msgstr "Voeg sneltoetsthema toe"
 
 #~ msgid "Move window left"
 #~ msgstr "Venster links verplaatsen"
