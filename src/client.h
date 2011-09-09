@@ -392,8 +392,7 @@ void                     clientWithdrawAll                      (Client *,
 void                     clientClearAllShowDesktop              (ScreenInfo *);
 void                     clientToggleShowDesktop                (ScreenInfo *);
 void                     clientActivate                         (Client *,
-                                                                 guint32,
-                                                                 gboolean);
+                                                                 guint32);
 void                     clientClose                            (Client *);
 void                     clientKill                             (Client *);
 void                     clientTerminate                        (Client *);
