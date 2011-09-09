@@ -883,7 +883,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
             }
             else
             {
-                clientActivate (c, getXServerTime (display_info), FALSE);
+                clientActivate (c, getXServerTime (display_info));
             }
         }
     }
@@ -2569,7 +2569,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
 }
 
 void
-clientActivate (Client * c, guint32 timestamp, gboolean source_is_application)
+clientActivate (Client * c, guint32 timestamp)
 {
     ScreenInfo *screen_info;
     Client *focused;
@@ -2607,10 +2607,7 @@ clientActivate (Client * c, guint32 timestamp, gboolean source_is_application)
         }
         clientRaise (sibling, None);
         clientShow (sibling, TRUE);
-        if (source_is_application || screen_info->params->click_to_focus)
-        {
-            clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
-        }
+        clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
         clientSetLastRaise (c);
     }
     else

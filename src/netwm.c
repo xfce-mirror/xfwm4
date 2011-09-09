@@ -1401,13 +1401,13 @@ clientHandleNetActiveWindow (Client *c, guint32 timestamp, gboolean source_is_ap
         }
         else
         {
-            clientActivate (c, ev_time, source_is_application);
+            clientActivate (c, ev_time);
         }
     }
     else
     {
         /* The request is either from a pager or an older client, use the most accurate timestamp */
-        clientActivate (c, getXServerTime (display_info), source_is_application);
+        clientActivate (c, getXServerTime (display_info));
     }
 }
 
