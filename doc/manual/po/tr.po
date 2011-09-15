@@ -84,24 +84,29 @@ msgid "2004"
 msgstr "2004"
 
 #: xfwm4.xml17(holder)
+#, fuzzy
 msgid "François Le Clainche"
-msgstr ""
+msgstr "François Le Clainche"
 
 #: xfwm4.xml21(holder)
+#, fuzzy
 msgid "Jasper Huijsmans"
-msgstr ""
+msgstr "Jasper Huijsmans"
 
 #: xfwm4.xml44(firstname)
+#, fuzzy
 msgid "François"
-msgstr ""
+msgstr "François"
 
 #: xfwm4.xml44(surname)
+#, fuzzy
 msgid "Le Clainche"
-msgstr ""
+msgstr "Le Clainche"
 
 #: xfwm4.xml46(email)
+#, fuzzy
 msgid "fleclainche@wanadoo.fr"
-msgstr ""
+msgstr "fleclainche@wanadoo.fr"
 
 #. <revhistory>
 #.     <revision>
@@ -115,8 +120,9 @@ msgid "This manual describes @PACKAGE_NAME@ version @PACKAGE_VERSION@"
 msgstr ""
 
 #: xfwm4.xml80(title)
+#, fuzzy
 msgid "Introduction"
-msgstr ""
+msgstr "Giriş"
 
 #: xfwm4.xml82(para)
 msgid "The Xfce 4 Window Manager is part of the <ulink url=\"http://www.xfce.org\" type=\"html\">Xfce Desktop Environment</ulink>. The actual command to run is <application>@PACKAGE_NAME@</application>. To run it in the background use <command><application>@PACKAGE_NAME@</application> --daemon</command>. The window manager is responsible for the placement of windows on the screen, provides the window decorations and allows you for instance to move, resize or close them."
@@ -144,7 +150,7 @@ msgstr ""
 
 #: xfwm4.xml128(title)
 msgid "Manage windows"
-msgstr ""
+msgstr "Pencereleri yönet"
 
 #: xfwm4.xml130(para)
 msgid "The window manager provides borders, a title bar and window buttons to application windows. The look is defined by the window manager theme."
@@ -269,7 +275,7 @@ msgstr ""
 
 #: xfwm4.xml255(term)
 msgid "Resize windows"
-msgstr ""
+msgstr "Pencereleri yeniden boyutlandır"
 
 #: xfwm4.xml257(para)
 msgid "Although certain special windows can not be resized, you are able to resize most of them to fit your needs."
@@ -316,8 +322,9 @@ msgid "To \"unhide\" a window, you will have to select its name or its icon in o
 msgstr ""
 
 #: xfwm4.xml294(application)
+#, fuzzy
 msgid "xftaskbar4"
-msgstr ""
+msgstr "xftaskbar4"
 
 #: xfwm4.xml295(para)
 msgid "the list of windows, accessible with a middle-click on the desktop background. This list shows all opened windows, classified by workspaces. Windows that are currently hidden are marked between [ ]."
