@@ -762,11 +762,10 @@ sessionStart (DisplayInfo *display_info)
     session = xfce_sm_client_get ();
     xfce_sm_client_set_restart_style (session, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
     xfce_sm_client_set_priority (session, XFCE_SM_CLIENT_PRIORITY_WM);
+    display_info->session = session;
 
     if (xfce_sm_client_connect(session, &error))
     {
-        display_info->session = session;
-
         if (xfce_sm_client_is_resumed (session))
             sessionLoad (display_info);
 
