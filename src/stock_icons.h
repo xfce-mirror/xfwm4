@@ -44,6 +44,6 @@
 #define WM_STOCK_ROLLUP     "wm-rollup"
 #define WM_STOCK_ROLLDOWN   "wm-rolldown"
 
-void                     initWMStopIcons                        (void);
+void                     initWMStockIcons                        (void);
 
 #endif /* INC_STOCK_ICONS_H */
