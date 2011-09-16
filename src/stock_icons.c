@@ -42,7 +42,7 @@ typedef struct
 
 
 void
-initWMStopIcons (void)
+initWMStockIcons (void)
 {
     GtkIconFactory *factory;
     GtkIconSet *icon_set;

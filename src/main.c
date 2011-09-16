@@ -419,7 +419,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
 #else /* HAVE_COMPOSITOR */
     main_display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
-    initWMStopIcons ();
+    initWMStockIcons ();
 
     initModifiers (main_display_info->dpy);
 
