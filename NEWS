@@ -1,3 +1,17 @@
+4.8.2
+=====
+- Relax resize wrt to size increments.
+- Allow menu shortcut to work even for non-decorated windows (bug #7300).
+- Keep window fully visible on screen on size request.
+- Fix panel plugins such as verve not receiving focus in focus follow
+  mouse mode (bug #6617, bug #6649).
+- Display session's struct memeber needs to be set even when not
+  connected otherwise bad things may happen when quitting.
+- Translation updates: be, es, ja, ko, ms, nl, pt_BR, ro, ru, sk,
+  te, zh_CN.
+- Manual translation updates: ru, tr, zh_CN.
+
+
 4.8.1
 =====
 - Allow images without an alpha channel to be used in themes as well.
