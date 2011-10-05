@@ -5,16 +5,18 @@
 # Stefan Miklosovic <miklosovic@gmail.com>, 2008.
 # Robert Hartl <hartl.robert@gmail.com>, 2009.
 # Tomáš Vadina <kyberdev@gmail.com>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-07 04:28+0000\n"
-"PO-Revision-Date: 2011-07-07 15:07+0100\n"
+"POT-Creation-Date: 2011-10-05 04:14+0000\n"
+"PO-Revision-Date: 2011-10-05 09:21+0200\n"
 "Last-Translator: Tomáš Vadina <kyberdev@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Poedit-Language: Slovak\n"
@@ -85,22 +87,22 @@ msgid "Settings manager socket"
 msgstr "Nastavenia správcu soketu"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "Configure window behavior and shortcuts"
 msgstr "Konfigurácia správania okna a klávesových skratiek"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Window Manager"
 msgstr "Správca okien"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "Fine-tune window behaviour and effects"
 msgstr "Doladenie správania okna a efektov"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Window Manager Tweaks"
 msgstr "Pokročilé nastavenie správcu okien"
 
@@ -115,213 +117,242 @@ msgid "Workspaces"
 msgstr "Virtuálne plochy"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "  "
-msgstr "  "
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Vykresľovanie okna pri presune a zmene veľkosti</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Button layout</b>"
 msgstr "<b>Rozloženie tlačidiel</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Double click _action</b>"
-msgstr "<b>_Akcia pri dvojkliku</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>Focus model</b>"
-msgstr "<b>Spôsob aktivácie okna</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>New window focus</b>"
-msgstr "<b>Nové okno je aktívne</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on click</b>"
-msgstr "<b>Kliknutím zdvihnúť</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-msgid "<b>Raise on focus</b>"
-msgstr "<b>Zdvihnúť pri aktivácii</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Title _alignment</b>"
 msgstr "<b>_Zarovnanie titulku</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Title fon_t</b>"
 msgstr "<b>Písmo _titulku</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Window _shortcuts</b>"
 msgstr "<b>Klávesové _skratky správcu okien</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Windows snapping</b>"
-msgstr "<b>Prichytávanie okien</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Prechádzanie medzi plochami</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>_Theme</b>"
 msgstr "<b>_Motív</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Active"
 msgstr "Aktívny"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
-msgid "Ad_vanced"
-msgstr "_Pokročilé"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-msgid "Automatically _raise windows when they receive focus"
-msgstr "Po zameraní automatický _zdvihnúť okná"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-msgid "Automatically give focus to _newly created windows"
-msgstr "Automaticky zameriavať _novovytvorené okná"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Clic_k to focus"
 msgstr "_Kliknúť pre zameranie"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
 msgstr "Kliknite a ťahajte tlačidlá pre zmenu rozloženia"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Close"
 msgstr "Zavrieť"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Delay _before raising focused window:"
-msgstr "Oneskorenie _pred zdvihnutím zameraného okna:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Delay|<i>Long</i>"
-msgstr "<i>Dlhé</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Delay|<i>Short</i>"
-msgstr "<i>krátke</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Dis_tance:"
-msgstr "_Vzdialenosť:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-msgid "Distance|<i>Small</i>"
-msgstr "<i>Malá</>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Distance|<i>Wide</i>"
-msgstr "<i>Veľká</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Focus follows _mouse"
 msgstr "Zamerať _umiestnenením kurzoru myši nad okno"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Hidden"
 msgstr "Skryté"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Hide"
 msgstr "Skryť"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Hide content of windows when _moving"
-msgstr "Nezobrazovať obsah obsah okna pri _presúvaní"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hide content of windows when _resizing"
-msgstr "Nezobrazovať obsah obsah okna pri zmene _veľkosti"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Ke_yboard"
 msgstr "_Klávesnica"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Maximize"
 msgstr "Maximalizovať"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Menu"
 msgstr "Ponuka"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Raise window when clicking _inside application window"
-msgstr "Zdvihnúť okno, keď je kliknuté vo vnútri okna aplikácie"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Resistance|<i>Small</i>"
-msgstr "<i>Nízka</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-msgid "Resistance|<i>Wide</i>"
-msgstr "<i>Vysoká</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Shade"
 msgstr "Zabaliť"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Snap windows to other _windows"
-msgstr "Prichytávať okná k iným oknám"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to screen _border"
-msgstr "Prichytávať okná k _okrajom obrazovky"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Stick"
 msgstr "Prilepiť"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Akcia pri dvojkliku na titulku okna"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "The window title cannot be removed"
 msgstr "Titulok okna nemôže byť odstránený"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Title"
 msgstr "Titulok"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Prejsť na ve_dľajšiu plochu pri pretiahnutí okna mimo oblasť obrazovky"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Prejsť na vedľajšiu _plochu pri ukázaní kurzorom myši k okraju plochy"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Delay before window receives focus:"
 msgstr "_Oneskorenie pred presunutím okna do popredia:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
-msgid "_Edge resistance:"
-msgstr "_Odolnosť okrajov:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "_Focus"
-msgstr "_Zameranie"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Reset to Defaults"
 msgstr "_Obnoviť predvolené"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Style"
 msgstr "Š_týl"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+msgctxt "yes"
+msgid "  "
+msgstr "  "
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+msgctxt "yes"
+msgid "<b>Box move and resize</b>"
+msgstr "<b>Vykresľovanie okna pri presune a zmene veľkosti</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+msgctxt "yes"
+msgid "<b>Double click _action</b>"
+msgstr "<b>_Akcia pri dvojkliku</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgctxt "yes"
+msgid "<b>Focus model</b>"
+msgstr "<b>Spôsob aktivácie okna</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgctxt "yes"
+msgid "<b>New window focus</b>"
+msgstr "<b>Nové okno je aktívne</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgctxt "yes"
+msgid "<b>Raise on click</b>"
+msgstr "<b>Kliknutím zdvihnúť</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgctxt "yes"
+msgid "<b>Raise on focus</b>"
+msgstr "<b>Zdvihnúť pri aktivácii</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgctxt "yes"
+msgid "<b>Windows snapping</b>"
+msgstr "<b>Prichytávanie okien</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgctxt "yes"
+msgid "<b>Wrap workspaces</b>"
+msgstr "<b>Prechádzanie medzi plochami</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgctxt "yes"
+msgid "Ad_vanced"
+msgstr "_Pokročilé"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgctxt "yes"
+msgid "Automatically _raise windows when they receive focus"
+msgstr "Po zameraní automatický _zdvihnúť okná"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgctxt "yes"
+msgid "Automatically give focus to _newly created windows"
+msgstr "Automaticky zameriavať _novovytvorené okná"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+msgctxt "yes"
+msgid "Delay _before raising focused window:"
+msgstr "Oneskorenie _pred zdvihnutím zameraného okna:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgctxt "yes"
+msgid "Delay|<i>Long</i>"
+msgstr "Oneskorenie|<i>Dlhé</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgctxt "yes"
+msgid "Delay|<i>Short</i>"
+msgstr "Oneskorenie|<i>Krátke</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgctxt "yes"
+msgid "Dis_tance:"
+msgstr "_Vzdialenosť:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+msgctxt "yes"
+msgid "Distance|<i>Small</i>"
+msgstr "Vzdialenosť|<i>Malá</>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+msgctxt "yes"
+msgid "Distance|<i>Wide</i>"
+msgstr "Vzdialenosť|<i>Veľká</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgctxt "yes"
+msgid "Hide content of windows when _moving"
+msgstr "Nezobrazovať obsah obsah okna pri _presúvaní"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgctxt "yes"
+msgid "Hide content of windows when _resizing"
+msgstr "Nezobrazovať obsah obsah okna pri zmene _veľkosti"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgctxt "yes"
+msgid "Raise window when clicking _inside application window"
+msgstr "Zdvihnúť okno, keď je kliknuté vo vnútri okna aplikácie"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgctxt "yes"
+msgid "Resistance|<i>Small</i>"
+msgstr "Odolnosť|<i>Nízka</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgctxt "yes"
+msgid "Resistance|<i>Wide</i>"
+msgstr "Odolnosť|<i>Vysoká</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+msgctxt "yes"
+msgid "Snap windows to other _windows"
+msgstr "Prichytávať okná k iným oknám"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgctxt "yes"
+msgid "Snap windows to screen _border"
+msgstr "Prichytávať okná k _okrajom obrazovky"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgctxt "yes"
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Akcia pri dvojkliku na titulku okna"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+msgctxt "yes"
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "Prejsť na ve_dľajšiu plochu pri pretiahnutí okna mimo oblasť obrazovky"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+msgctxt "yes"
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "Prejsť na vedľajšiu _plochu pri ukázaní kurzorom myši k okraju plochy"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgctxt "yes"
+msgid "_Edge resistance:"
+msgstr "_Odolnosť okrajov:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+msgctxt "yes"
+msgid "_Focus"
+msgstr "_Zameranie"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:252
@@ -624,174 +655,106 @@ msgid "Reset to Defaults"
 msgstr "Obnoviť predvolené"
 
 #: ../settings-dialogs/xfwm4-settings.c:1864
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj chcete pokračovať?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj chcete "
+"pokračovať?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "<i>Opaque</i>"
-msgstr "<i>Nepriehľadné</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Transparent</i>"
-msgstr "<i>Priehľadné</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "Activate _focus stealing prevention"
 msgstr "Predchádzať strate _zamerania okna"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
-msgid "At the _center of the screen"
-msgstr "V _strede obrazovky"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-msgid "By default, place windows:"
-msgstr "Predvolené umiestňovanie okien:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "C_ompositor"
-msgstr "_Kompozitor"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "C_ycling"
 msgstr "_Prechádzanie"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "Cycle _through windows on all workspaces"
 msgstr "Prechádzať okná zo _všetkých pracovných plôch"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Display _fullscreen overlay windows directly"
-msgstr "Použiť priame zobrazovanie pre okná v režime _celej obrazovky"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid "Do _nothing"
 msgstr "Nerobiť _nič"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Hide _frame of windows when maximized"
 msgstr "Skryť _okraje okna pri maximalizácií"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Honor _standard ICCCM focus hint"
 msgstr "Dodržiavať š_tandardný ICCCM focus hint"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "Zachovať _blikanie u okna s príznakom urgent"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Key used to _grab and move windows:"
 msgstr "Klávesa pre _uchopenie a presun okien:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "_Upozorniť na príznak urgent blikaním dekorácie okna"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Opaci_ty of window decorations:"
-msgstr "Priehľadnosť _dekorácii okien:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Opacity of _inactive windows:"
-msgstr "Priehľadnosť _neaktívnych okien:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Opacity of popup window_s:"
-msgstr "Priehľadnosť _vyskakovacích okien:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Opacity of windows during _move:"
-msgstr "Priehľadnosť okien pri _presúvaní:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Opacity of windows during resi_ze:"
-msgstr "Priehľadnosť okien pri zmene _veľkosti:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Restore original _size of maximized windows when moving"
 msgstr "Pri presune obnoviť pôvodnú _veľkosť pri maximalizovaných oknách"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Show shadows under _dock windows"
-msgstr "Zobraziť tiene pod _dokovacími oknami"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Show shadows under _regular windows"
-msgstr "Zobraziť tiene pod _bežnými oknami"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Show shadows under pop_up windows"
-msgstr "Zobrazovať tiene pod _vyskakovacími oknami"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Size|<i>Large</i>"
-msgstr "<i>Veľká</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Size|<i>Small</i>"
-msgstr "<i>Malá</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Switch to win_dow's workspace"
 msgstr "Prepnúť sa na _pracovnú plochu okna"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-msgid "Under the mouse _pointer"
-msgstr "Pod _ukazovateľom myši"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Použiť odolnosť okrajov nami_esto prichytávania okien"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "Použiť koliesko myši na pracovnej ploche na prepínanie plôch"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
 msgstr "Po samovoľnom premiestnení okna do popredia:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Prechádzať na plochy podľa ich aktuá_lneho rozmiestnenia"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "Prechádzať pri dosiahnutí p_rvej alebo poslednej pracovnej plochy"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Accessibility"
 msgstr "_Prístupnosť"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "_Bring window on current workspace"
 msgstr "Presunúť okno na a_ktuálnu pracovnú plochu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Draw frame around selected windows while cycling"
 msgstr "_Vykresľovať rám okolo okien pri prechádzaní"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-msgid "_Enable display compositing"
-msgstr "Povoliť zobrazenie kompozícií"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "_Focus"
+msgstr "_Zameranie"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "Zahrnúť _skryté (minimalizované) okná"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "_Najmenšia veľkosť okien pre použitie šikovného umiestnenia:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Placement"
-msgstr "_Umiestnenie"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "P_reniesť okno do popredia po stlačení ľubovoľného tlačidla myši"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
@@ -799,7 +762,7 @@ msgstr ""
 "Zapamätať si a znovu vyvolať p_redchádzajúcu plochu\n"
 "pri prepínaní klávesovými skratkami"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
@@ -807,9 +770,104 @@ msgstr ""
 "Pre_skočiť okná s nastavenou vlastnosťou\n"
 "\"vynechať v prepínači plôch\" alebo \"vynechať v paneli úloh\""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "P_racovné plochy"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgctxt "yes"
+msgid "<i>Opaque</i>"
+msgstr "<i>Nepriehľadné</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+msgctxt "yes"
+msgid "<i>Transparent</i>"
+msgstr "<i>Priehľadné</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+msgctxt "yes"
+msgid "At the _center of the screen"
+msgstr "V _strede obrazovky"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgctxt "yes"
+msgid "By default, place windows:"
+msgstr "Predvolené umiestňovanie okien:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgctxt "yes"
+msgid "C_ompositor"
+msgstr "_Kompozitor"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgctxt "yes"
+msgid "Display _fullscreen overlay windows directly"
+msgstr "Použiť priame zobrazovanie pre okná v režime _celej obrazovky"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgctxt "yes"
+msgid "Opaci_ty of window decorations:"
+msgstr "Priehľadnosť _dekorácii okien:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgctxt "yes"
+msgid "Opacity of _inactive windows:"
+msgstr "Priehľadnosť _neaktívnych okien:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgctxt "yes"
+msgid "Opacity of popup window_s:"
+msgstr "Priehľadnosť _vyskakovacích okien:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgctxt "yes"
+msgid "Opacity of windows during _move:"
+msgstr "Priehľadnosť okien pri _presúvaní:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgctxt "yes"
+msgid "Opacity of windows during resi_ze:"
+msgstr "Priehľadnosť okien pri zmene _veľkosti:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgctxt "yes"
+msgid "Show shadows under _dock windows"
+msgstr "Zobraziť tiene pod _dokovacími oknami"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgctxt "yes"
+msgid "Show shadows under _regular windows"
+msgstr "Zobraziť tiene pod _bežnými oknami"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgctxt "yes"
+msgid "Show shadows under pop_up windows"
+msgstr "Zobrazovať tiene pod _vyskakovacími oknami"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgctxt "yes"
+msgid "Size|<i>Large</i>"
+msgstr "Veľkosť|<i>Veľká</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgctxt "yes"
+msgid "Size|<i>Small</i>"
+msgstr "Veľkosť|<i>Malá</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgctxt "yes"
+msgid "Under the mouse _pointer"
+msgstr "Pod _ukazovateľom myši"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgctxt "yes"
+msgid "_Enable display compositing"
+msgstr "Povoliť zobrazenie kompozícií"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+msgctxt "yes"
+msgid "_Placement"
+msgstr "_Umiestnenie"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "<b>Margins</b>"
@@ -824,8 +882,11 @@ msgid "Change workspace name"
 msgstr "Zmeniť názov pracovnej plochy"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Okraje plôch sú miesta po stranách obrazovky, kam nemôžu byť umiestnené žiadne okná"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Okraje plôch sú miesta po stranách obrazovky, kam nemôžu byť umiestnené "
+"žiadne okná"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -951,7 +1012,8 @@ msgstr "%s: Nejde prideliť farbu %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: Nie je možné prideliť farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
+msgstr ""
+"%s: Nie je možné prideliť farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
 #: ../src/settings.c:282
 #, c-format
@@ -961,7 +1023,8 @@ msgstr "%s: Nejde spracovať farbu %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Nie je možné prideliť farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
+msgstr ""
+"%s: Nie je možné prideliť farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
 #: ../src/terminate.c:74
 #, c-format
