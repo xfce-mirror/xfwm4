@@ -666,11 +666,11 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
     }
     if (mask & CWWidth)
     {
-        c->width = wc->width;
+        clientSetWidth (c, wc->width, flags & CFG_REQUEST);
     }
     if (mask & CWHeight)
     {
-        c->height = wc->height;
+        clientSetHeight (c, wc->height, flags & CFG_REQUEST);
     }
     if (mask & CWBorderWidth)
     {
@@ -1834,6 +1834,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
     {
+        g_print ("Full screen for old apps\n");
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN);
     }
 
