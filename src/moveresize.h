@@ -34,9 +34,11 @@
 #ifndef INC_MOVERESIZE_H
 #define INC_MOVERESIZE_H
 void                     clientSetWidth                         (Client *,
-                                                                 int);
+                                                                 int,
+                                                                 gboolean);
 void                     clientSetHeight                        (Client *,
-                                                                 int);
+                                                                 int,
+                                                                 gboolean);
 void                     clientMove                             (Client *,
                                                                  XEvent *);
 void                     clientResize                           (Client *,

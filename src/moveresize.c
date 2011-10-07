@@ -77,48 +77,48 @@ struct _MoveResizeData
 };
 
 static void
-clientComputeWidth (Client * c, int *w)
+clientSetSize (Client * c, int *size, int size_min, int size_max, int size_inc, gboolean source_is_application)
 {
-    int w2;
+    int temp;
 
     g_return_if_fail (c != NULL);
-    g_return_if_fail (w != NULL);
-    TRACE ("entering clientComputeWidth");
+    g_return_if_fail (size != NULL);
+    TRACE ("entering clientSetSize");
 
     /* Bypass resize increment and max sizes for fullscreen */
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
         && !(FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
              && (c->screen_info->params->borderless_maximize)))
     {
-        if ((c->size->flags & PResizeInc) && (c->size->width_inc))
+        if (!source_is_application && (c->size->flags & PResizeInc) && (size_inc))
         {
-            w2 = (*w - c->size->min_width) / c->size->width_inc;
-            *w = c->size->min_width + (w2 * c->size->width_inc);
+            temp = (*size - size_min) / size_inc;
+            *size = size_min + (temp * size_inc);
         }
         if (c->size->flags & PMaxSize)
         {
-            if (*w > c->size->max_width)
+            if (*size > size_max)
             {
-                *w = c->size->max_width;
+                *size = size_max;
             }
         }
     }
 
     if (c->size->flags & PMinSize)
     {
-        if (*w < c->size->min_width)
+        if (*size < size_min)
         {
-            *w = c->size->min_width;
+            *size = size_min;
         }
     }
-    if (*w < 1)
+    if (*size < 1)
     {
-        *w = 1;
+        *size = 1;
     }
 }
 
 void
-clientSetWidth (Client * c, int w)
+clientSetWidth (Client * c, int w, gboolean source_is_application)
 {
     int temp;
 
@@ -127,52 +127,12 @@ clientSetWidth (Client * c, int w)
     TRACE ("setting width %i for client \"%s\" (0x%lx)", w, c->name, c->window);
 
     temp = w;
-    clientComputeWidth (c, &temp);
+    clientSetSize (c, &temp, c->size->min_width, c->size->max_width, c->size->width_inc, source_is_application);
     c->width = temp;
 }
 
-static void
-clientComputeHeight (Client * c, int *h)
-{
-    int h2;
-
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientComputeHeight");
-
-    /* Bypass resize increment and max sizes for fullscreen */
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && !(FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-             && (c->screen_info->params->borderless_maximize)))
-    {
-        if ((c->size->flags & PResizeInc) && (c->size->height_inc))
-        {
-            h2 = (*h - c->size->min_height) / c->size->height_inc;
-            *h = c->size->min_height + (h2 * c->size->height_inc);
-        }
-        if (c->size->flags & PMaxSize)
-        {
-            if (*h > c->size->max_height)
-            {
-                *h = c->size->max_height;
-            }
-        }
-    }
-
-    if (c->size->flags & PMinSize)
-    {
-        if (*h < c->size->min_height)
-        {
-            *h = c->size->min_height;
-        }
-    }
-    if (*h < 1)
-    {
-        *h = 1;
-    }
-}
-
 void
-clientSetHeight (Client * c, int h)
+clientSetHeight (Client * c, int h, gboolean source_is_application)
 {
     int temp;
 
@@ -181,7 +141,7 @@ clientSetHeight (Client * c, int h)
     TRACE ("setting height %i for client \"%s\" (0x%lx)", h, c->name, c->window);
 
     temp = h;
-    clientComputeHeight (c, &temp);
+    clientSetSize (c, &temp, c->size->min_height, c->size->max_height, c->size->height_inc, source_is_application);
     c->height = temp;
 }
 
@@ -273,7 +233,7 @@ clientSetHandle(MoveResizeData *passdata, int handle)
 
 #define MAKE_MULT(a,b) ((b==1) ? (a) : (((int)((a)/(b))) * (b)) )
 static void
-clientConstrainRatio (Client * c, int *w, int *h, int handle)
+clientConstrainRatio (Client * c, int handle)
 {
 
     g_return_if_fail (c != NULL);
@@ -291,59 +251,59 @@ clientConstrainRatio (Client * c, int *w, int *h, int handle)
         maxx = c->size->max_aspect.x;
         maxy = c->size->max_aspect.y;
 
-        if ((minx * *h > miny * *w) && (miny) &&
+        if ((minx * c->height > miny * c->width) && (miny) &&
             ((handle == CORNER_COUNT + SIDE_TOP) || (handle == CORNER_COUNT + SIDE_BOTTOM)))
         {
             /* Change width to match */
-            delta = MAKE_MULT (minx * *h /  miny - *w, xinc);
+            delta = MAKE_MULT (minx * c->height /  miny - c->width, xinc);
             if (!(c->size->flags & PMaxSize) ||
-                (*w + delta <= c->size->max_width))
+                (c->width + delta <= c->size->max_width))
             {
-                *w += delta;
+                c->width += delta;
             }
         }
-        if ((minx * *h > miny * *w) && (minx))
+        if ((minx * c->height > miny * c->width) && (minx))
         {
-            delta = MAKE_MULT (*h - *w * miny / minx, yinc);
+            delta = MAKE_MULT (c->height - c->width * miny / minx, yinc);
             if (!(c->size->flags & PMinSize) ||
-                (*h - delta >= c->size->min_height))
+                (c->height - delta >= c->size->min_height))
             {
-                *h -= delta;
+                c->height -= delta;
             }
             else
             {
-                delta = MAKE_MULT (minx * *h / miny - *w, xinc);
+                delta = MAKE_MULT (minx * c->height / miny - c->width, xinc);
                 if (!(c->size->flags & PMaxSize) ||
-                    (*w + delta <= c->size->max_width))
-                  *w += delta;
+                    (c->width + delta <= c->size->max_width))
+                  c->width += delta;
             }
         }
 
-        if ((maxx * *h < maxy * *w) && (maxx) &&
+        if ((maxx * c->height < maxy * c->width) && (maxx) &&
             ((handle == CORNER_COUNT + SIDE_LEFT) || (handle == CORNER_COUNT + SIDE_RIGHT)))
         {
-            delta = MAKE_MULT (*w * maxy / maxx - *h, yinc);
+            delta = MAKE_MULT (c->width * maxy / maxx - c->height, yinc);
             if (!(c->size->flags & PMaxSize) ||
-                (*h + delta <= c->size->max_height))
+                (c->height + delta <= c->size->max_height))
             {
-                *h += delta;
+                c->height += delta;
             }
         }
-        if ((maxx * *h < maxy * *w) && (maxy))
+        if ((maxx * c->height < maxy * c->width) && (maxy))
         {
-            delta = MAKE_MULT (*w - maxx * *h / maxy, xinc);
+            delta = MAKE_MULT (c->width - maxx * c->height / maxy, xinc);
             if (!(c->size->flags & PMinSize) ||
-                (*w - delta >= c->size->min_width))
+                (c->width - delta >= c->size->min_width))
             {
-                *w -= delta;
+                c->width -= delta;
             }
             else
             {
-                delta = MAKE_MULT (*w * maxy / maxx - *h, yinc);
+                delta = MAKE_MULT (c->width * maxy / maxx - c->height, yinc);
                 if (!(c->size->flags & PMaxSize) ||
-                    (*h + delta <= c->size->max_height))
+                    (c->height + delta <= c->size->max_height))
                 {
-                    *h += delta;
+                    c->height += delta;
                 }
             }
         }
@@ -1427,9 +1387,9 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 c->height = clientFindClosestEdgeY (c, c->y + c->height + frameBottom (c)) - c->y - frameBottom (c);
             }
         }
-        clientConstrainRatio (c, &c->width, &c->height, passdata->handle);
+        clientConstrainRatio (c, passdata->handle);
 
-        clientSetWidth (c, c->width);
+        clientSetWidth (c, c->width, FALSE);
         if (move_left)
         {
             c->x = c->x - (c->width - passdata->oldw);
@@ -1442,7 +1402,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             frame_x = frameX (c);
         }
 
-        clientSetHeight (c, c->height);
+        clientSetHeight (c, c->height, FALSE);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
         {
             c->y = c->y - (c->height - passdata->oldh);
@@ -1463,14 +1423,14 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 temp = c->y + c->height;
                 c->y = CLAMP (c->y, screen_info->margins [STRUTS_TOP] + frame_top,
                          MAX (disp_max_y - min_visible,  screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible));
-                clientSetHeight (c, temp - c->y);
+                clientSetHeight (c, temp - c->y, FALSE);
                 c->y = temp - c->height;
             }
             else if (frame_y < 0)
             {
                 temp = c->y + c->height;
                 c->y = frame_top;
-                clientSetHeight (c, temp - c->y);
+                clientSetHeight (c, temp - c->y, FALSE);
                 c->y = temp - c->height;
             }
         }
@@ -1479,7 +1439,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             if (c->y + c->height < MAX (disp_y + min_visible, screen_info->margins [STRUTS_TOP] + min_visible))
             {
                 temp = MAX (disp_y + min_visible, screen_info->margins [STRUTS_TOP] + min_visible);
-                clientSetHeight (c, temp - c->y);
+                clientSetHeight (c, temp - c->y, FALSE);
             }
         }
         if (move_left)
@@ -1488,7 +1448,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             {
                 temp = c->x + c->width;
                 c->x = MIN (disp_max_x - min_visible, screen_info->width - screen_info->margins [STRUTS_RIGHT] - min_visible);
-                clientSetWidth (c, temp - c->x);
+                clientSetWidth (c, temp - c->x, FALSE);
                 c->x = temp - c->width;
             }
         }
@@ -1497,7 +1457,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             if (c->x + c->width < MAX (disp_x + min_visible, screen_info->margins [STRUTS_LEFT] + min_visible))
             {
                 temp = MAX (disp_x + min_visible, screen_info->margins [STRUTS_LEFT] + min_visible);
-                clientSetWidth (c, temp - c->x);
+                clientSetWidth (c, temp - c->x, FALSE);
             }
         }
 
