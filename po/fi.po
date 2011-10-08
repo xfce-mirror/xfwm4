@@ -397,7 +397,7 @@ msgstr "Suurenna pystysuunnassa"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Move window"
-msgstr "Piilota"
+msgstr "Siirrä ikkunaa"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Resize window"
