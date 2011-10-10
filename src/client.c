@@ -983,6 +983,7 @@ clientGetMWMHints (Client * c, gboolean update)
             && !FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             /* legacy app changed its decoration, put it back on regular layer */
+            TRACE ("Legacy app changed its decoration \"%s\" (0x%lx)", c->name, c->window);
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN);
             clientSetLayer (c, WIN_LAYER_NORMAL);
         }
@@ -1834,7 +1835,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         (c->win_layer == WIN_LAYER_NORMAL) &&
         (c->type == WINDOW_NORMAL))
     {
-        g_print ("Full screen for old apps\n");
+        TRACE ("Fullscreen for old apps \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN);
     }
 
@@ -2730,7 +2731,7 @@ clientSetLayer (Client * c, guint l)
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetLayer");
+    TRACE ("entering clientSetLayer for \"%s\" (0x%lx) on layer %d", c->name, c->window, l);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;

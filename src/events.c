@@ -1976,7 +1976,13 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[WIN_LAYER]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a WIN_LAYER event", c->name, c->window);
-            if ((unsigned long) ev->data.l[0] != c->win_layer)
+            /*
+             * Some apps that I wouldn't name try to manipulate the win layer by themselves
+             * and cause havoc when doing so on transient dialogs, so we need to be extra careful
+             * here before allowing apps to change the layer.
+             * Actually, I beleive twe should get rid of support of this old protocol...
+             */
+            if (!clientIsTransientOrModal(c) && ((unsigned long) ev->data.l[0] != c->win_layer))
             {
                 clientSetLayer (c, ev->data.l[0]);
             }
