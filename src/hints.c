@@ -338,52 +338,6 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
 }
 
 void
-getGnomeDesktopMargins (DisplayInfo *display_info, Window root, int * m)
-{
-    Atom real_type;
-    int real_format;
-    unsigned long items_read, items_left;
-    unsigned long *ptr;
-    unsigned char *data;
-
-    TRACE ("entering getGnomeDesktopMargins");
-
-    ptr = NULL;
-    data = NULL;
-    if ((XGetWindowProperty (display_info->dpy, root,
-                display_info->atoms[GNOME_PANEL_DESKTOP_AREA], 0L, 4L, FALSE, XA_CARDINAL,
-                &real_type, &real_format, &items_read, &items_left,
-                (unsigned char **) &data) == Success) && (items_read >= 4))
-    {
-        ptr = (unsigned long *) data;
-        m[0] = (int) *ptr++;
-        m[1] = (int) *ptr++;
-        m[2] = (int) *ptr++;
-        m[3] = (int) *ptr++;
-        XFree (data);
-    }
-    else
-    {
-        m[0] = 0;
-        m[1] = 0;
-        m[2] = 0;
-        m[3] = 0;
-    }
-}
-
-void
-setGnomeProtocols (DisplayInfo *display_info, Window root, Window w)
-{
-    Atom atoms[1];
-
-    atoms[0] = display_info->atoms[WIN_LAYER];
-    XChangeProperty (display_info->dpy, root, display_info->atoms[WIN_PROTOCOLS], XA_ATOM,
-                     32, PropModeReplace, (unsigned char *) atoms, 1);
-    setHint (display_info, w, WIN_SUPPORTING_WM_CHECK, w);
-    setHint (display_info, root, WIN_SUPPORTING_WM_CHECK, w);
-}
-
-void
 setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 {
     Atom atoms[ATOM_COUNT];

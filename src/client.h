@@ -213,12 +213,12 @@
 #define CLIENT_CAN_HIDE_WINDOW(c)       (!(c->transient_for) && \
                                          FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_HIDE) && \
                                          !FLAG_TEST(c->flags, CLIENT_FLAG_SKIP_TASKBAR))
-#define CLIENT_CAN_MAXIMIZE_WINDOW(c)   (FLAG_TEST_AND_NOT(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | \
-                                                                          XFWM_FLAG_HAS_RESIZE | \
-                                                                          XFWM_FLAG_IS_RESIZABLE) && \
+#define CLIENT_CAN_MAXIMIZE_WINDOW(c)   (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | \
+                                                                  XFWM_FLAG_HAS_RESIZE | \
+                                                                  XFWM_FLAG_IS_RESIZABLE) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-#define CLIENT_CAN_FILL_WINDOW(c)       (FLAG_TEST_AND_NOT(c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | \
-                                                                          XFWM_FLAG_IS_RESIZABLE) && \
+#define CLIENT_CAN_FILL_WINDOW(c)       (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | \
+                                                                  XFWM_FLAG_IS_RESIZABLE) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_MAXIMIZED))
 
 typedef enum
@@ -254,8 +254,6 @@ struct _Client
     Window group_leader;
     xfwmPixmap appmenu[STATE_TOGGLED];
     Colormap cmap;
-    unsigned long win_hints;
-    unsigned long win_state;
     unsigned long win_layer;
     unsigned long serial;
     unsigned long initial_layer;

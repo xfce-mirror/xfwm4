@@ -338,13 +338,13 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_MAXIMIZE_WINDOW:
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
+                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
                 break;
             case KEY_MAXIMIZE_VERT:
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT, TRUE);
+                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED_VERT, TRUE);
                 break;
             case KEY_MAXIMIZE_HORIZ:
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ, TRUE);
+                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED_HORIZ, TRUE);
                 break;
             case KEY_SHADE_WINDOW:
                 clientToggleShaded (c);
@@ -696,7 +696,7 @@ button1Action (Client * c, XButtonEvent * ev)
         switch (screen_info->params->double_click_action)
         {
             case DOUBLE_CLICK_ACTION_MAXIMIZE:
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
+                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
                 break;
             case DOUBLE_CLICK_ACTION_SHADE:
                 clientToggleShaded (c);
@@ -1813,11 +1813,6 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 c->transient_for = w;
             }
         }
-        else if (ev->atom == display_info->atoms[WIN_HINTS])
-        {
-            TRACE ("client \"%s\" (0x%lx) has received a WIN_HINTS notify", c->name, c->window);
-            getHint (display_info, c->window, WIN_HINTS, (long *) &c->win_hints);
-        }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_TYPE])
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_WINDOW_TYPE notify", c->name, c->window);
@@ -1928,12 +1923,6 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             workspaceSetNames (screen_info, names, items);
         }
     }
-    else if (ev->atom == display_info->atoms[GNOME_PANEL_DESKTOP_AREA])
-    {
-        TRACE ("root has received a GNOME_PANEL_DESKTOP_AREA notify");
-        getGnomeDesktopMargins (display_info, screen_info->xroot, screen_info->gnome_margins);
-        workspaceUpdateArea (screen_info);
-    }
     else if (ev->atom == display_info->atoms[NET_DESKTOP_LAYOUT])
     {
         TRACE ("root has received a NET_DESKTOP_LAYOUT notify");
@@ -1952,7 +1941,13 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
     Client *c;
 
     TRACE ("entering handleClientMessage");
+    TRACE ("handleClientMessage from window (0x%lx)", ev->window);
 
+    if (ev->window == None)
+    {
+        /* Some do not set the window member, not much we can do without */
+        return EVENT_FILTER_PASS;
+    }
     status = EVENT_FILTER_PASS;
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
@@ -1966,33 +1961,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
             {
                 clientWithdraw (c, c->win_workspace, TRUE);
-            }
-        }
-        else if ((ev->message_type == display_info->atoms[WIN_STATE]) && (ev->format == 32))
-        {
-            TRACE ("client \"%s\" (0x%lx) has received a WIN_STATE event", c->name, c->window);
-            clientUpdateWinState (c, ev);
-        }
-        else if ((ev->message_type == display_info->atoms[WIN_LAYER]) && (ev->format == 32))
-        {
-            TRACE ("client \"%s\" (0x%lx) has received a WIN_LAYER event", c->name, c->window);
-            /*
-             * Some apps that I wouldn't name try to manipulate the win layer by themselves
-             * and cause havoc when doing so on transient dialogs, so we need to be extra careful
-             * here before allowing apps to change the layer.
-             * Actually, I beleive twe should get rid of support of this old protocol...
-             */
-            if (!clientIsTransientOrModal(c) && ((unsigned long) ev->data.l[0] != c->win_layer))
-            {
-                clientSetLayer (c, ev->data.l[0]);
-            }
-        }
-        else if ((ev->message_type == display_info->atoms[WIN_WORKSPACE]) && (ev->format == 32))
-        {
-            TRACE ("client \"%s\" (0x%lx) has received a WIN_WORKSPACE event", c->name, c->window);
-            if (ev->data.l[0] != (long) c->win_workspace)
-            {
-                clientSetWorkspace (c, (guint) ev->data.l[0], TRUE);
             }
         }
         else if ((ev->message_type == display_info->atoms[NET_WM_DESKTOP]) && (ev->format == 32))
@@ -2066,8 +2034,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         }
 
         status = EVENT_FILTER_REMOVE;
-        if (((ev->message_type == display_info->atoms[WIN_WORKSPACE]) ||
-             (ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP])) && (ev->format == 32))
+        if ((ev->message_type == display_info->atoms[NET_CURRENT_DESKTOP]) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace or a NET_CURRENT_DESKTOP event %li", ev->data.l[0]);
             if ((ev->data.l[0] >= 0) && (ev->data.l[0] < (long) screen_info->workspace_count) &&
@@ -2077,8 +2044,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                                  myDisplayGetTime (display_info, (guint32) ev->data.l[1]));
             }
         }
-        else if (((ev->message_type == display_info->atoms[WIN_WORKSPACE_COUNT]) ||
-                  (ev->message_type == display_info->atoms[NET_NUMBER_OF_DESKTOPS])) && (ev->format == 32))
+        else if ((ev->message_type == display_info->atoms[NET_NUMBER_OF_DESKTOPS]) && (ev->format == 32))
         {
             TRACE ("root has received a win_workspace_count event");
             if (ev->data.l[0] != (long) screen_info->workspace_count)
@@ -2415,7 +2381,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_UNMAXIMIZE:
                 if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
                 {
-                    clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
+                    clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
                 }
                 break;
             case MENU_OP_MINIMIZE:

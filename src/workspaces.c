@@ -368,7 +368,6 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
         }
     }
 
-    setHint (display_info, screen_info->xroot, WIN_WORKSPACE, new_ws);
     data[0] = new_ws;
     XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot,
                      display_info->atoms[NET_CURRENT_DESKTOP], XA_CARDINAL, 32,
@@ -443,7 +442,6 @@ workspaceSetCount (ScreenInfo * screen_info, guint count)
     }
 
     display_info = screen_info->display_info;
-    setHint (display_info, screen_info->xroot, WIN_WORKSPACE_COUNT, count);
     setHint (display_info, screen_info->xroot, NET_NUMBER_OF_DESKTOPS, count);
     screen_info->workspace_count = count;
 

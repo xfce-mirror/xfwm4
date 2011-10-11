@@ -1036,10 +1036,6 @@ initSettings (ScreenInfo *screen_info)
     {
         workspaceSetCount (screen_info, val);
     }
-    else if (getHint (display_info, screen_info->xroot, WIN_WORKSPACE_COUNT, &val))
-    {
-        workspaceSetCount (screen_info, val);
-    }
 
     if (getUTF8StringList (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &i))
     {

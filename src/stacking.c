@@ -600,7 +600,6 @@ clientAddToList (Client * c)
     screen_info->windows_stack = g_list_append (screen_info->windows_stack, c);
 
     clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST], screen_info->windows);
-    clientSetNetClientList (screen_info, display_info->atoms[WIN_CLIENT_LIST], screen_info->windows);
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 }
@@ -643,7 +642,6 @@ clientRemoveFromList (Client * c)
     screen_info->windows_stack = g_list_remove (screen_info->windows_stack, c);
 
     clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST], screen_info->windows);
-    clientSetNetClientList (screen_info, display_info->atoms[WIN_CLIENT_LIST], screen_info->windows);
     clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
 
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MANAGED);

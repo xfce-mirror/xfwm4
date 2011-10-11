@@ -133,11 +133,6 @@ clientSetNetState (Client * c)
     XChangeProperty (display_info->dpy, c->window,
                      display_info->atoms[NET_WM_STATE], XA_ATOM, 32,
                      PropModeReplace, (unsigned char *) data, i);
-    /*
-       We also set GNOME hint here for consistency and convenience,
-       although the meaning of net_wm_state and win_state aren't the same.
-     */
-    setHint (display_info, c->window, WIN_STATE, c->win_state);
 }
 
 void
@@ -162,25 +157,21 @@ clientGetNetState (Client * c)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             TRACE ("clientGetNetState : shaded from session management");
-            c->win_state |= WIN_STATE_SHADED;
             FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             TRACE ("clientGetNetState : sticky from session management");
-            c->win_state |= WIN_STATE_STICKY;
             FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
             TRACE ("clientGetNetState : maximized horiz from session management");
-            c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
             TRACE ("clientGetNetState : maximized vert from session management");
-            c->win_state |= WIN_STATE_MAXIMIZED_VERT;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
         }
     }
@@ -196,25 +187,21 @@ clientGetNetState (Client * c)
             if ((atoms[i] == display_info->atoms[NET_WM_STATE_SHADED]))
             {
                 TRACE ("clientGetNetState : shaded");
-                c->win_state |= WIN_STATE_SHADED;
                 FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
             }
             else if ((atoms[i] == display_info->atoms[NET_WM_STATE_STICKY]))
             {
                 TRACE ("clientGetNetState : sticky");
-                c->win_state |= WIN_STATE_STICKY;
                 FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
             }
             else if ((atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
             {
                 TRACE ("clientGetNetState : maximized horiz");
-                c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
                 FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
             }
             else if ((atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]))
             {
                 TRACE ("clientGetNetState : maximized vert");
-                c->win_state |= WIN_STATE_MAXIMIZED_VERT;
                 FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
             }
             else if ((atoms[i] == display_info->atoms[NET_WM_STATE_FULLSCREEN]))
@@ -351,16 +338,16 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
         {
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
-                mode = 0;
+                mode = 0L;
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
                 {
-                    mode |= !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
+                    mode |= !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) ? CLIENT_FLAG_MAXIMIZED_HORIZ : 0;
                 }
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]))
                 {
-                    mode |= !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
+                    mode |= !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) ? CLIENT_FLAG_MAXIMIZED_VERT : 0;
                 }
                 clientToggleMaximized (c, mode, TRUE);
             }
@@ -370,12 +357,12 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
                 {
-                    mode |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
+                    mode |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
                 }
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]))
                 {
-                    mode |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
+                    mode |= FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
                 }
                 clientToggleMaximized (c, mode, TRUE);
             }
@@ -385,12 +372,12 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
                 {
-                    mode |= WIN_STATE_MAXIMIZED_HORIZ;
+                    mode |= CLIENT_FLAG_MAXIMIZED_HORIZ;
                 }
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]))
                 {
-                    mode |= WIN_STATE_MAXIMIZED_VERT;
+                    mode |= CLIENT_FLAG_MAXIMIZED_VERT;
                 }
                 clientToggleMaximized (c, mode, TRUE);
             }
@@ -862,7 +849,6 @@ clientGetInitialNetWmDesktop (Client * c)
             {
                 TRACE ("atom net_wm_desktop specifies window \"%s\" is sticky", c->name);
                 FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
-                c->win_state |= WIN_STATE_STICKY;
             }
             c->win_workspace = c->screen_info->current_ws;
         }
@@ -871,12 +857,6 @@ clientGetInitialNetWmDesktop (Client * c)
             TRACE ("atom net_wm_desktop specifies window \"%s\" is on desk %i", c->name, (int) val);
             c->win_workspace = (int) val;
         }
-        FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
-    }
-    else if (getHint (display_info, c->window, WIN_WORKSPACE, &val))
-    {
-        TRACE ("atom win_workspace specifies window \"%s\" is on desk %i", c->name, (int) val);
-        c->win_workspace = (int) val;
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
     }
 
@@ -891,7 +871,6 @@ clientGetInitialNetWmDesktop (Client * c)
             if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY))
             {
                 FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
-                c->win_state |= WIN_STATE_STICKY;
                 c->win_workspace = c->screen_info->current_ws;
             }
         }
@@ -905,7 +884,6 @@ clientGetInitialNetWmDesktop (Client * c)
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
     }
     TRACE ("initial desktop for window \"%s\" is %i", c->name, c->win_workspace);
-    setHint (display_info, c->window, WIN_WORKSPACE, c->win_workspace);
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
@@ -1193,7 +1171,6 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_desktop detected");
             c->type = WINDOW_DESKTOP;
             c->initial_layer = WIN_LAYER_DESKTOP;
-            c->win_state |= WIN_STATE_STICKY;
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
                 CLIENT_FLAG_SKIP_TASKBAR);

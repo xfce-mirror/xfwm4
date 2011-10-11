@@ -695,7 +695,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             if (toggled_maximize)
             {
                 toggled_maximize = FALSE;
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
+                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
                 configure_flags = CFG_FORCE_REDRAW;
                 passdata->move_resized = TRUE;
             }
@@ -857,7 +857,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
                 xratio = (xevent->xmotion.x_root - c->x)/(double)c->width;
 
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
+                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
                 passdata->move_resized = TRUE;
                 passdata->ox = c->x;
                 passdata->mx = CLAMP(c->x + c->width * xratio, c->x, c->x + c->width);
@@ -881,7 +881,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         {
             if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) && toggled_maximize)
             {
-                clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
+                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
                 configure_flags = CFG_FORCE_REDRAW;
                 toggled_maximize = FALSE;
                 passdata->move_resized = TRUE;

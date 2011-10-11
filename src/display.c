@@ -75,7 +75,6 @@ myDisplayInitAtoms (DisplayInfo *display_info)
 {
     static const char *atom_names[] = {
         "COMPOSITING_MANAGER",
-        "GNOME_PANEL_DESKTOP_AREA",
         "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
         "_MOTIF_WM_HINTS",
@@ -156,15 +155,6 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "PIXMAP",
         "SM_CLIENT_ID",
         "UTF8_STRING",
-        "_WIN_CLIENT_LIST",
-        "_WIN_DESKTOP_BUTTON_PROXY",
-        "_WIN_HINTS",
-        "_WIN_LAYER",
-        "_WIN_PROTOCOLS",
-        "_WIN_STATE",
-        "_WIN_SUPPORTING_WM_CHECK",
-        "_WIN_WORKSPACE",
-        "_WIN_WORKSPACE_COUNT",
         "WM_CHANGE_STATE",
         "WM_CLIENT_LEADER",
         "WM_CLIENT_MACHINE",

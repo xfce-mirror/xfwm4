@@ -392,11 +392,6 @@ clientAcceptFocus (Client * c)
     {
         return TRUE;
     }
-    /* First check GNOME protocol */
-    if (c->win_hints & WIN_HINTS_SKIP_FOCUS)
-    {
-        return FALSE;
-    }
     if ((c->screen_info->params->focus_hint)
         && !FLAG_TEST (c->wm_flags, WM_FLAG_INPUT | WM_FLAG_TAKEFOCUS))
     {

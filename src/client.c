@@ -287,10 +287,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
             /* Recompute size and position of maximized windows */
             if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
             {
-                maximization_flags |= FLAG_TEST (c->flags,
-                    CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
-                maximization_flags |= FLAG_TEST (c->flags,
-                    CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
+                maximization_flags = c->flags & CLIENT_FLAG_MAXIMIZED;
 
                 /* Force an update by clearing the internal flags */
                 FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
@@ -716,13 +713,9 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
     }
     mask &= ~(CWStackMode | CWSibling);
 
-    /* Keep control over what the application does. However, some broken apps try
-       to achieve fullscreen by using static gravity and a (0,0) position, the
-       second part of the test is for this case.
-     */
+    /* Keep control over what the application does. */
     if (((flags & (CFG_CONSTRAINED | CFG_REQUEST)) == (CFG_CONSTRAINED | CFG_REQUEST))
-         && CONSTRAINED_WINDOW (c)
-         && !((c->gravity == StaticGravity) && (c->x == 0) && (c->y == 0)))
+         && CONSTRAINED_WINDOW (c))
     {
         clientConstrainPos (c, flags & CFG_KEEP_VISIBLE);
 
@@ -851,7 +844,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
         {
             clientRemoveMaximizeFlag (c);
         }
-        flags |= CFG_REQUEST;
+        flags |= CFG_REQUEST | CFG_CONSTRAINED;
     }
     if ((mask & (CWWidth | CWHeight)) && !(mask & (CWX | CWY)))
     {
@@ -860,7 +853,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
          * position, make sure the window remains fully visible in that
          * case so that the user does not have to relocate the window
          */
-        flags |= CFG_CONSTRAINED | CFG_KEEP_VISIBLE;
+        flags |= CFG_KEEP_VISIBLE;
     }
     /*
      * Let's say that if the client performs a XRaiseWindow, we show the window if focus
@@ -1298,44 +1291,6 @@ clientFree (Client * c)
 }
 
 static void
-clientGetWinState (Client * c)
-{
-    g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientGetWinState");
-
-    if (c->win_state & WIN_STATE_STICKY)
-    {
-        FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
-    }
-    if (c->win_state & WIN_STATE_SHADED)
-    {
-        FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
-    }
-    if (c->win_state & WIN_STATE_MAXIMIZED_HORIZ)
-    {
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
-        }
-    }
-    if (c->win_state & WIN_STATE_MAXIMIZED_VERT)
-    {
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
-        }
-    }
-    if (c->win_state & WIN_STATE_MAXIMIZED)
-    {
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
-        }
-    }
-}
-
-static void
 clientApplyInitialState (Client * c)
 {
     g_return_if_fail (c != NULL);
@@ -1347,19 +1302,11 @@ clientApplyInitialState (Client * c)
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
         {
-            unsigned long mode = 0;
+            unsigned long mode = 0L;
 
             TRACE ("Applying client's initial state: maximized");
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
-            {
-                TRACE ("initial state: maximized horiz.");
-                mode |= WIN_STATE_MAXIMIZED_HORIZ;
-            }
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
-            {
-                TRACE ("initial state: maximized vert.");
-                mode |= WIN_STATE_MAXIMIZED_VERT;
-            }
+            mode = c->flags & CLIENT_FLAG_MAXIMIZED;
+
             /* Unset fullscreen mode so that clientToggleMaximized() really change the state */
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
             clientToggleMaximized (c, mode, FALSE);
@@ -1390,56 +1337,6 @@ clientApplyInitialState (Client * c)
     {
         TRACE ("Applying client's initial state: shaded");
         clientShade (c);
-    }
-}
-
-void
-clientUpdateWinState (Client * c, XClientMessageEvent * ev)
-{
-    unsigned long action;
-    Atom add_remove;
-
-    g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateWinState");
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    action = ((XEvent *) ev)->xclient.data.l[0];
-    add_remove = ((XEvent *) ev)->xclient.data.l[1];
-
-    if (action & WIN_STATE_SHADED)
-    {
-        TRACE ("client \"%s\" (0x%lx) has received a win_state/shade event",
-            c->name, c->window);
-        if (add_remove == WIN_STATE_SHADED)
-        {
-            clientShade (c);
-        }
-        else
-        {
-            clientUnshade (c);
-        }
-    }
-    else if ((action & WIN_STATE_STICKY)
-             && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
-    {
-        TRACE ("client \"%s\" (0x%lx) has received a win_state/stick event",
-        c->name, c->window);
-        if (add_remove == WIN_STATE_STICKY)
-        {
-            clientStick (c, TRUE);
-        }
-        else
-        {
-            clientUnstick (c, TRUE);
-        }
-        frameQueueDraw (c, FALSE);
-    }
-    else if ((action & WIN_STATE_MAXIMIZED)
-             && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
-    {
-        TRACE ("client \"%s\" (0x%lx) has received a win_state/maximize event",
-            c->name, c->window);
-        clientToggleMaximized (c, add_remove, TRUE);
     }
 }
 
@@ -1782,12 +1679,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     clientGetWMProtocols (c);
     clientGetMWMHints (c, FALSE);
-    getHint (display_info, w, WIN_HINTS, (long *) &c->win_hints);
-    getHint (display_info, w, WIN_STATE, (long *) &c->win_state);
-    if (!getHint (display_info, w, WIN_LAYER, (long *) &c->win_layer))
-    {
-        c->win_layer = WIN_LAYER_NORMAL;
-    }
+    c->win_layer = WIN_LAYER_NORMAL;
     c->fullscreen_old_layer = c->win_layer;
 
     /* net_wm_user_time standard */
@@ -1811,7 +1703,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
 
     /* Beware, order of calls is important here ! */
-    clientGetWinState (c);
     clientGetNetState (c);
     clientGetNetWmType (c);
     clientGetInitialNetWmDesktop (c);
@@ -2060,13 +1951,7 @@ clientUnframe (Client * c, gboolean remap)
         XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[NET_WM_STATE]);
         XDeleteProperty (display_info->dpy, c->window,
-                         display_info->atoms[WIN_STATE]);
-        XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[NET_WM_DESKTOP]);
-        XDeleteProperty (display_info->dpy, c->window,
-                         display_info->atoms[WIN_WORKSPACE]);
-        XDeleteProperty (display_info->dpy, c->window,
-                         display_info->atoms[WIN_LAYER]);
         XDeleteProperty (display_info->dpy, c->window,
                          display_info->atoms[NET_WM_ALLOWED_ACTIONS]);
     }
@@ -2259,7 +2144,6 @@ clientSetWorkspaceSingle (Client * c, guint ws)
     {
         TRACE ("setting client \"%s\" (0x%lx) to current_ws %d", c->name, c->window, ws);
         c->win_workspace = ws;
-        setHint (display_info, c->window, WIN_WORKSPACE, ws);
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
             setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
@@ -2724,7 +2608,6 @@ clientSetLayer (Client * c, guint l)
             TRACE ("setting client \"%s\" (0x%lx) layer to %d", c2->name,
                 c2->window, l);
             c2->win_layer = l;
-            setHint (display_info, c2->window, WIN_LAYER, l);
         }
     }
     g_list_free (list_of_windows);
@@ -2762,7 +2645,6 @@ clientShade (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    c->win_state |= WIN_STATE_SHADED;
     FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
@@ -2816,7 +2698,6 @@ clientUnshade (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    c->win_state &= ~WIN_STATE_SHADED;
     FLAG_UNSET (c->flags, CLIENT_FLAG_SHADED);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
@@ -2873,7 +2754,6 @@ clientStick (Client * c, gboolean include_transients)
         for (list = list_of_windows; list; list = g_list_next (list))
         {
             c2 = (Client *) list->data;
-            c2->win_state |= WIN_STATE_STICKY;
             TRACE ("Sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             FLAG_SET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
@@ -2884,7 +2764,6 @@ clientStick (Client * c, gboolean include_transients)
     else
     {
         TRACE ("Sticking client \"%s\" (0x%lx)", c->name, c->window);
-        c->win_state |= WIN_STATE_STICKY;
         FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
     }
@@ -2913,7 +2792,6 @@ clientUnstick (Client * c, gboolean include_transients)
         for (list = list_of_windows; list; list = g_list_next (list))
         {
             c2 = (Client *) list->data;
-            c2->win_state &= ~WIN_STATE_STICKY;
             TRACE ("Unsticking client \"%s\" (0x%lx)", c2->name, c2->window);
             FLAG_UNSET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
@@ -2924,7 +2802,6 @@ clientUnstick (Client * c, gboolean include_transients)
     else
     {
         TRACE ("Unsticking client \"%s\" (0x%lx)", c->name, c->window);
-        c->win_state &= ~WIN_STATE_STICKY;
         FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
     }
@@ -3133,7 +3010,6 @@ clientRemoveMaximizeFlag (Client * c)
     TRACE ("Removing maximize flag on client \"%s\" (0x%lx)", c->name,
         c->window);
 
-    c->win_state &= ~WIN_STATE_MAXIMIZED;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
     frameQueueDraw (c, FALSE);
     clientSetNetActions (c);
@@ -3152,37 +3028,33 @@ clientNewMaxState (Client * c, XWindowChanges *wc, int mode)
      * while either horizontal or vertical maximization still shows decorations...
      */
 
-    if ((mode & WIN_STATE_MAXIMIZED) == WIN_STATE_MAXIMIZED)
+    if ((mode & CLIENT_FLAG_MAXIMIZED) == CLIENT_FLAG_MAXIMIZED)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
-            c->win_state |= WIN_STATE_MAXIMIZED;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
             return;
         }
     }
 
-    if (mode & WIN_STATE_MAXIMIZED_HORIZ)
+    if (mode & CLIENT_FLAG_MAXIMIZED_HORIZ)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
-            c->win_state |= WIN_STATE_MAXIMIZED_HORIZ;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
             return;
         }
     }
 
-    if (mode & WIN_STATE_MAXIMIZED_VERT)
+    if (mode & CLIENT_FLAG_MAXIMIZED_VERT)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
-            c->win_state |= WIN_STATE_MAXIMIZED_VERT;
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
             return;
         }
     }
 
-    c->win_state &= ~WIN_STATE_MAXIMIZED;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
     wc->x = c->old_x;
     wc->y = c->old_y;
@@ -3493,16 +3365,12 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
         }
 
         /* Recompute size and position of maximized windows */
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
-            /* Too bad, the flags used internally are different from the WIN_STATE_* bits */
-            maximization_flags |= FLAG_TEST (c->flags,
-                CLIENT_FLAG_MAXIMIZED_HORIZ) ? WIN_STATE_MAXIMIZED_HORIZ : 0;
-            maximization_flags |= FLAG_TEST (c->flags,
-                CLIENT_FLAG_MAXIMIZED_VERT) ? WIN_STATE_MAXIMIZED_VERT : 0;
+            maximization_flags = c->flags & CLIENT_FLAG_MAXIMIZED;
 
             /* Force an update by clearing the internal flags */
-            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
             clientToggleMaximized (c, maximization_flags, FALSE);
 
             wc.x = c->x;
@@ -3679,15 +3547,15 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
                 {
                     if (bev->button == Button1)
                     {
-                        clientToggleMaximized (c, WIN_STATE_MAXIMIZED, TRUE);
+                        clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
                     }
                     else if (bev->button == Button2)
                     {
-                        clientToggleMaximized (c, WIN_STATE_MAXIMIZED_VERT, TRUE);
+                        clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED_VERT, TRUE);
                     }
                     else if (bev->button == Button3)
                     {
-                        clientToggleMaximized (c, WIN_STATE_MAXIMIZED_HORIZ, TRUE);
+                        clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED_HORIZ, TRUE);
                     }
                 }
                 break;
