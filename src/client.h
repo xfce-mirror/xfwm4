@@ -135,7 +135,7 @@
 #define XFWM_FLAG_DRAW_ACTIVE           (1L<<17)
 #define XFWM_FLAG_SEEN_ACTIVE           (1L<<18)
 #define XFWM_FLAG_FIRST_MAP             (1L<<19)
-#define XFWM_FLAG_LEGACY_FULLSCREEN     (1L<<20)
+/* Unused slot                          ........ */
 #define XFWM_FLAG_MOVING_RESIZING       (1L<<21)
 #define XFWM_FLAG_NEEDS_REDRAW          (1L<<22)
 #define XFWM_FLAG_OPACITY_LOCKED        (1L<<23)
@@ -183,8 +183,7 @@
 #define ALL_WORKSPACES                  (int) 0xFFFFFFFF
 
 #define CONSTRAINED_WINDOW(c)           ((c->win_layer > WIN_LAYER_DESKTOP) && \
-                                        !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \
-                                        !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN))
+                                        !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
 
 #define WINDOW_TYPE_DIALOG              (WINDOW_DIALOG | \
                                          WINDOW_MODAL_DIALOG)
@@ -216,12 +215,10 @@
                                          !FLAG_TEST(c->flags, CLIENT_FLAG_SKIP_TASKBAR))
 #define CLIENT_CAN_MAXIMIZE_WINDOW(c)   (FLAG_TEST_AND_NOT(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | \
                                                                           XFWM_FLAG_HAS_RESIZE | \
-                                                                          XFWM_FLAG_IS_RESIZABLE, \
-                                                                          XFWM_FLAG_LEGACY_FULLSCREEN) && \
+                                                                          XFWM_FLAG_IS_RESIZABLE) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
 #define CLIENT_CAN_FILL_WINDOW(c)       (FLAG_TEST_AND_NOT(c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | \
-                                                                          XFWM_FLAG_IS_RESIZABLE, \
-                                                                          XFWM_FLAG_LEGACY_FULLSCREEN) && \
+                                                                          XFWM_FLAG_IS_RESIZABLE) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_MAXIMIZED))
 
 typedef enum

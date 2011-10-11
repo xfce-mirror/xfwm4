@@ -503,7 +503,6 @@ static void
 clientAutoMaximize (Client * c, int full_w, int full_h)
 {
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
-        FLAG_TEST (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN) ||
         !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
     {
         /*

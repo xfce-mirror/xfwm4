@@ -979,14 +979,6 @@ clientGetMWMHints (Client * c, gboolean update)
 
     if (update)
     {
-        if (FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_LEGACY_FULLSCREEN)
-            && !FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
-        {
-            /* legacy app changed its decoration, put it back on regular layer */
-            TRACE ("Legacy app changed its decoration \"%s\" (0x%lx)", c->name, c->window);
-            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN);
-            clientSetLayer (c, WIN_LAYER_NORMAL);
-        }
         wc.x = c->x;
         wc.y = c->y;
         wc.width = c->width;
@@ -1825,19 +1817,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGetInitialNetWmDesktop (c);
     /* workarea will be updated when shown, no need to worry here */
     clientGetNetStruts (c);
-
-    /* Fullscreen for older legacy apps */
-    if ((c->x <= 0) && (c->y <= 0) &&
-        (c->width >= screen_info->width) &&
-        (c->height >= screen_info->height) &&
-        !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_BORDER) &&
-        !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW | CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN) &&
-        (c->win_layer == WIN_LAYER_NORMAL) &&
-        (c->type == WINDOW_NORMAL))
-    {
-        TRACE ("Fullscreen for old apps \"%s\" (0x%lx)", c->name, c->window);
-        FLAG_SET (c->xfwm_flags, XFWM_FLAG_LEGACY_FULLSCREEN);
-    }
 
     /* Once we know the type of window, we can initialize window position */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED))
