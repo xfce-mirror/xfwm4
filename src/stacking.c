@@ -545,7 +545,7 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
     g_return_val_if_fail (c, FALSE);
 
     TRACE ("entering clientAdjustFullscreenLayer");
-    TRACE ("Adjusting fullscreen layer for  \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("%s fullscreen layer for  \"%s\" (0x%lx)", set ? "Setting" : "Unsetting", c->name, c->window);
 
     if (set)
     {
