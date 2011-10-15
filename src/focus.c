@@ -193,11 +193,13 @@ clientFocusNew(Client * c)
             }
         }
     }
-
-    if ((give_focus) || FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
+    if (FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
     {
         give_focus = TRUE;
-        if ((client_focus) && !(clientIsTransientOrModalFor (c, client_focus)))
+    }
+    if (give_focus)
+    {
+        if (client_focus)
         {
             clientAdjustFullscreenLayer (client_focus, FALSE);
         }
@@ -212,22 +214,21 @@ clientFocusNew(Client * c)
     {
         Client *c2 = clientGetFocus();
 
-        /*
-         * Place windows under the currently focused only if focus
-         * stealing prevention had prevented the focus transition,
-         * otherwise, leave the unfocused window on top.
-         */
+        clientSortRing(c);
         if ((c2 != NULL) && (c2->win_layer == c->win_layer) && prevented)
         {
-            clientSortRing(c);
+            /*
+             * Place windows under the currently focused only if focus
+             * stealing prevention had prevented the focus transition,
+             * otherwise, leave the unfocused window on top.
+             */
             clientLower (c, c2->frame);
-            clientSortRing(c2);
         }
         else
         {
             clientRaise (c, None);
-            clientSortRing(c);
         }
+        clientSortRing(c2);
 
         if (prevented)
         {
@@ -406,9 +407,11 @@ clientSortRing(Client *c)
 {
     ScreenInfo *screen_info;
 
-    g_return_if_fail (c != NULL);
     TRACE ("entering clientSortRing");
-
+    if (c == NULL)
+    {
+        return;
+    }
     screen_info = c->screen_info;
     if ((screen_info->client_count > 2) && (c != screen_info->clients))
     {
@@ -503,6 +506,12 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     }
 
     client_focus = c;
+    if (c2)
+    {
+        clientAdjustFullscreenLayer (c2, FALSE);
+        frameQueueDraw (c2, FALSE);
+        clientUpdateOpacity (c2);
+    }
     if (c)
     {
         user_focus = c;
@@ -520,15 +529,6 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         clientAdjustFullscreenLayer (c, TRUE);
         frameQueueDraw (c, FALSE);
         clientUpdateOpacity (c);
-    }
-    if (c2)
-    {
-        if (c)
-        {
-            clientAdjustFullscreenLayer (c2, FALSE);
-        }
-        frameQueueDraw (c2, FALSE);
-        clientUpdateOpacity (c2);
     }
     clientSetNetActiveWindow (screen_info, c, 0);
     clientClearDelayedFocus ();
