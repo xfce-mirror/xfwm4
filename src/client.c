@@ -2318,32 +2318,31 @@ clientWithdraw (Client * c, guint ws, gboolean iconify)
             continue;
         }
 
-        /* ws is used when transitioning between desktops, to avoid
-           hiding a transient for group that will be shown again on the new
-           workspace (transient for groups can be transients for multiple
-           ancesors splitted across workspaces...)
-         */
-        if (clientIsTransientOrModal (c2) &&
-            clientTransientOrModalHasAncestor (c2, ws))
-        {
-            /* Other ancestors for that transient window are visible on
-             * the specified workspace, so don't hide it...
-             */
-            continue;
-        }
-
-        if (clientIsTransientOrModalForGroup (c2) &&
-            clientTransientOrModalHasAncestor (c2, c2->win_workspace))
-        {
-            /* Other ancestors for that transient for group are still
-             * visible on current workspace, so don't hide it...
-             */
-            continue;
-        }
-
         if (FLAG_TEST (c2->flags, CLIENT_FLAG_STICKY) && !iconify)
         {
             continue;
+        }
+
+        if (clientIsTransientOrModalForGroup (c2))
+        {
+
+            if (clientTransientOrModalHasAncestor (c2, c2->win_workspace))
+            {
+                /* Other ancestors for that transient for group are still
+                 * visible on current workspace, so don't hide it...
+                 */
+                continue;
+            }
+            if ((ws != c2->win_workspace) &&
+                clientTransientOrModalHasAncestor (c2, ws))
+            {
+                /* ws is used when transitioning between desktops, to avoid
+                   hiding a transient for group that will be shown again on the new
+                   workspace (transient for groups can be transients for multiple
+                   ancesors splitted across workspaces...)
+                 */
+                continue;
+            }
         }
         clientWithdrawSingle (c2, list_of_windows, iconify);
     }
