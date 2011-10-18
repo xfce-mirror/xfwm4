@@ -50,6 +50,10 @@
 #include "compositor.h"
 #include "ui_style.h"
 
+#ifndef WM_EXITING_TIMEOUT
+#define WM_EXITING_TIMEOUT 15 /*seconds */
+#endif
+
 gboolean
 myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
 {
@@ -109,8 +113,9 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
     /* Waiting for previous window manager to exit */
     if (current_wm)
     {
+        g_print ("Waiting for current window manager on screen %d to exit", screen_info->screen);
         wait = 0;
-        timeout = 10 * G_USEC_PER_SEC;
+        timeout = WM_EXITING_TIMEOUT * G_USEC_PER_SEC;
         while (wait < timeout)
         {
             if (XCheckWindowEvent (display_info->dpy, current_wm, StructureNotifyMask, &event) && (event.type == DestroyNotify))
@@ -119,13 +124,19 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
             }
             g_usleep(G_USEC_PER_SEC / 10);
             wait += G_USEC_PER_SEC / 10;
+            if (wait % G_USEC_PER_SEC == 0)
+            {
+              g_print (".");
+            }
         }
 
         if (wait >= timeout)
         {
+            g_print(" Failed\n");
             g_warning("Previous window manager on screen %d is not exiting", screen_info->screen);
             return FALSE;
         }
+        g_print(" Done\n");
     }
     return TRUE;
 }
