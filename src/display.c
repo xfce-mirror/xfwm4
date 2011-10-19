@@ -300,28 +300,7 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->have_xrandr = FALSE;
 #endif /* HAVE_RANDR */
 
-    display->root_cursor =
-        XCreateFontCursor (display->dpy, CURSOR_ROOT);
-    display->move_cursor =
-        XCreateFontCursor (display->dpy, CURSOR_MOVE);
-    display->busy_cursor =
-        cursorCreateSpinning (display->dpy);
-    display->resize_cursor[CORNER_TOP_LEFT] =
-        XCreateFontCursor (display->dpy, XC_top_left_corner);
-    display->resize_cursor[CORNER_TOP_RIGHT] =
-        XCreateFontCursor (display->dpy, XC_top_right_corner);
-    display->resize_cursor[CORNER_BOTTOM_LEFT] =
-        XCreateFontCursor (display->dpy, XC_bottom_left_corner);
-    display->resize_cursor[CORNER_BOTTOM_RIGHT] =
-        XCreateFontCursor (display->dpy, XC_bottom_right_corner);
-    display->resize_cursor[CORNER_COUNT + SIDE_LEFT] =
-        XCreateFontCursor (display->dpy, XC_left_side);
-    display->resize_cursor[CORNER_COUNT + SIDE_RIGHT] =
-        XCreateFontCursor (display->dpy, XC_right_side);
-    display->resize_cursor[CORNER_COUNT + SIDE_TOP] =
-        XCreateFontCursor (display->dpy, XC_top_side);
-    display->resize_cursor[CORNER_COUNT + SIDE_BOTTOM] =
-        XCreateFontCursor (display->dpy, XC_bottom_side);
+    myDisplayCreateCursor (display);
 
     myDisplayCreateTimestampWin (display);
 
@@ -349,14 +328,7 @@ myDisplayInit (GdkDisplay *gdisplay)
 DisplayInfo *
 myDisplayClose (DisplayInfo *display)
 {
-    int i;
-
-    XFreeCursor (display->dpy, display->busy_cursor);
-    display->busy_cursor = None;
-    XFreeCursor (display->dpy, display->move_cursor);
-    display->move_cursor = None;
-    XFreeCursor (display->dpy, display->root_cursor);
-    display->root_cursor = None;
+    myDisplayFreeCursor (display);
     XDestroyWindow (display->dpy, display->timestamp_win);
     display->timestamp_win = None;
 
@@ -364,12 +336,6 @@ myDisplayClose (DisplayInfo *display)
     {
         g_free (display->hostname);
         display->hostname = NULL;
-    }
-
-    for (i = 0; i < SIDE_COUNT + CORNER_COUNT; i++)
-    {
-        XFreeCursor (display->dpy, display->resize_cursor[i]);
-        display->resize_cursor[i] = None;
     }
 
     g_slist_free (display->clients);
@@ -403,6 +369,52 @@ myDisplayHaveRender (DisplayInfo *display)
     g_return_val_if_fail (display != NULL, FALSE);
 
     return (display->have_render);
+}
+
+void
+myDisplayCreateCursor (DisplayInfo *display)
+{
+    display->root_cursor =
+        XCreateFontCursor (display->dpy, CURSOR_ROOT);
+    display->move_cursor =
+        XCreateFontCursor (display->dpy, CURSOR_MOVE);
+    display->busy_cursor =
+        cursorCreateSpinning (display->dpy);
+    display->resize_cursor[CORNER_TOP_LEFT] =
+        XCreateFontCursor (display->dpy, XC_top_left_corner);
+    display->resize_cursor[CORNER_TOP_RIGHT] =
+        XCreateFontCursor (display->dpy, XC_top_right_corner);
+    display->resize_cursor[CORNER_BOTTOM_LEFT] =
+        XCreateFontCursor (display->dpy, XC_bottom_left_corner);
+    display->resize_cursor[CORNER_BOTTOM_RIGHT] =
+        XCreateFontCursor (display->dpy, XC_bottom_right_corner);
+    display->resize_cursor[CORNER_COUNT + SIDE_LEFT] =
+        XCreateFontCursor (display->dpy, XC_left_side);
+    display->resize_cursor[CORNER_COUNT + SIDE_RIGHT] =
+        XCreateFontCursor (display->dpy, XC_right_side);
+    display->resize_cursor[CORNER_COUNT + SIDE_TOP] =
+        XCreateFontCursor (display->dpy, XC_top_side);
+    display->resize_cursor[CORNER_COUNT + SIDE_BOTTOM] =
+        XCreateFontCursor (display->dpy, XC_bottom_side);
+}
+
+void
+myDisplayFreeCursor (DisplayInfo *display)
+{
+    int i;
+
+    XFreeCursor (display->dpy, display->busy_cursor);
+    display->busy_cursor = None;
+    XFreeCursor (display->dpy, display->move_cursor);
+    display->move_cursor = None;
+    XFreeCursor (display->dpy, display->root_cursor);
+    display->root_cursor = None;
+
+    for (i = 0; i < SIDE_COUNT + CORNER_COUNT; i++)
+    {
+        XFreeCursor (display->dpy, display->resize_cursor[i]);
+        display->resize_cursor[i] = None;
+    }
 }
 
 Cursor

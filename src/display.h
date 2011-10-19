@@ -353,6 +353,8 @@ DisplayInfo             *myDisplayClose                         (DisplayInfo *);
 gboolean                 myDisplayHaveShape                     (DisplayInfo *);
 gboolean                 myDisplayHaveShapeInput                (DisplayInfo *);
 gboolean                 myDisplayHaveRender                    (DisplayInfo *);
+void                     myDisplayCreateCursor                  (DisplayInfo *);
+void                     myDisplayFreeCursor                    (DisplayInfo *);
 Cursor                   myDisplayGetCursorBusy                 (DisplayInfo *);
 Cursor                   myDisplayGetCursorMove                 (DisplayInfo *);
 Cursor                   myDisplayGetCursorRoot                 (DisplayInfo *);

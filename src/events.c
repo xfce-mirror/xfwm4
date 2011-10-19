@@ -63,6 +63,7 @@
 #include "events.h"
 #include "event_filter.h"
 #include "xsync.h"
+#include "display.h"
 
 #ifndef CHECK_BUTTON_TIME
 #define CHECK_BUTTON_TIME 0
@@ -2718,6 +2719,26 @@ double_click_distance_cb (GObject * obj, GdkEvent * ev, gpointer data)
     return (TRUE);
 }
 
+static void
+cursor_theme_cb (GObject * obj, GParamSpec * pspec, gpointer data)
+{
+    DisplayInfo * display_info;
+    GSList *list;
+
+    display_info = (DisplayInfo *) data;
+    g_return_if_fail (display_info);
+
+    myDisplayFreeCursor (display_info);
+    myDisplayCreateCursor (display_info);
+
+    for (list = display_info->screens; list; list = g_slist_next (list))
+    {
+        ScreenInfo *screen_info = (ScreenInfo *) list->data;
+        clientUpdateAllCursor (screen_info);
+        XDefineCursor (display_info->dpy, screen_info->xroot, display_info->root_cursor);
+   }
+}
+
 static gboolean
 client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data)
 {
@@ -2739,13 +2760,19 @@ client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data)
 static gboolean
 refresh_font_cb (GObject * obj, GdkEvent * ev, gpointer data)
 {
-    ScreenInfo *screen_info;
+    DisplayInfo * display_info;
+    GSList *list;
 
-    screen_info = (ScreenInfo *) data;
-    g_return_val_if_fail (screen_info, TRUE);
+    display_info = (DisplayInfo *) data;
+    g_return_val_if_fail (display_info, TRUE);
 
-    myScreenUpdateFontHeight (screen_info);
-    clientUpdateAllFrames (screen_info, UPDATE_FRAME);
+    for (list = display_info->screens; list; list = g_slist_next (list))
+    {
+        ScreenInfo *screen_info = (ScreenInfo *) list->data;
+        myScreenUpdateFontHeight (screen_info);
+        clientUpdateAllFrames (screen_info, UPDATE_FRAME);
+    }
+
     return (TRUE);
 }
 
@@ -2849,15 +2876,15 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
 }
 
 void
-initGtkCallbacks (ScreenInfo *screen_info)
+initPerScreenCallbacks (ScreenInfo *screen_info)
 {
-    GtkSettings *settings;
+    g_return_if_fail (screen_info);
 
     screen_info->button_handler_id =
         g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)),
                           "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
     g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
-                      GTK_SIGNAL_FUNC (client_event_cb), (gpointer) (screen_info->display_info));
+                      GTK_SIGNAL_FUNC (client_event_cb), NULL);
     g_signal_connect (G_OBJECT(screen_info->gscr), "size-changed",
                       G_CALLBACK(size_changed_cb),
                       (gpointer) (screen_info));
@@ -2868,28 +2895,40 @@ initGtkCallbacks (ScreenInfo *screen_info)
                           G_CALLBACK(monitors_changed_cb),
                           (gpointer) (screen_info));
     }
+}
+
+void
+initPerDisplayCallbacks (DisplayInfo *display_info)
+{
+    GtkSettings *settings;
+
+    g_return_if_fail (display_info);
 
     settings = gtk_settings_get_default ();
     if (settings)
     {
         g_signal_connect (settings, "notify::gtk-theme-name",
-            G_CALLBACK (set_reload), (gpointer) (screen_info->display_info));
+            G_CALLBACK (set_reload), (gpointer) (display_info));
         g_signal_connect (settings, "notify::gtk-font-name",
-            G_CALLBACK (set_reload), (gpointer) (screen_info->display_info));
+            G_CALLBACK (set_reload), (gpointer) (display_info));
         g_signal_connect (settings, "notify::gtk-double-click-time",
-            G_CALLBACK (double_click_time_cb), (gpointer) (screen_info->display_info));
+            G_CALLBACK (double_click_time_cb), (gpointer) (display_info));
         g_signal_connect (settings, "notify::gtk-double-click-distance",
-            G_CALLBACK (double_click_distance_cb), (gpointer) (screen_info->display_info));
+            G_CALLBACK (double_click_distance_cb), (gpointer) (display_info));
+        g_signal_connect (settings, "notify::gtk-cursor-theme-name",
+            G_CALLBACK (cursor_theme_cb), (gpointer) (display_info));
+        g_signal_connect (settings, "notify::gtk-cursor-theme-size",
+            G_CALLBACK (cursor_theme_cb), (gpointer) (display_info));
         g_signal_connect_after (settings, "notify::gtk-xft-antialias",
-            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
         g_signal_connect_after (settings, "notify::gtk-xft-dpi",
-            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
         g_signal_connect_after (settings, "notify::gtk-xft-hinting",
-            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
         g_signal_connect_after (settings, "notify::gtk-xft-hintstyle",
-            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
         g_signal_connect_after (settings, "notify::gtk-xft-rgba",
-            G_CALLBACK (refresh_font_cb), (gpointer) (screen_info));
+            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
     }
 }
 

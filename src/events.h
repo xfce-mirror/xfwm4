@@ -40,6 +40,6 @@
 void                     initMenuEventWin                       (void);
 eventFilterStatus        xfwm4_event_filter                     (XEvent *,
                                                                  gpointer);
-void                     initGtkCallbacks                       (ScreenInfo *);
-
+void                     initPerScreenCallbacks                 (ScreenInfo *);
+void                     initPerDisplayCallbacks                (DisplayInfo *);
 #endif /* INC_EVENTS_H */

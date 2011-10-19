@@ -78,6 +78,17 @@ xfwmWindowInit (xfwmWindow * win)
 }
 
 void
+xfwmWindowSetCursor (xfwmWindow * win, Cursor cursor)
+{
+    g_return_if_fail (win != NULL);
+
+    if ((win->window != None) && (cursor != None))
+    {
+        XDefineCursor (myScreenGetXDisplay (win->screen_info), win->window, cursor);
+    }
+}
+
+void
 xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window parent,
                   xfwmWindow * win, long eventmask, Cursor cursor)
 {
@@ -101,11 +112,7 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
                                  valuemask, &attributes);
 
     TRACE ("Created XID 0x%lx", win->window);
-    if (cursor != None)
-    {
-        XDefineCursor (myScreenGetXDisplay (screen_info),
-                       win->window, cursor);
-    }
+
     win->map = FALSE;
     win->screen_info = screen_info;
     win->x = 0;
@@ -113,6 +120,7 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
     win->width = 1;
     win->height = 1;
     xfwmWindowSetVisual (win, visual, depth);
+    xfwmWindowSetCursor (win, cursor);
 #ifdef HAVE_RENDER
     win->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), win->visual);
 #endif

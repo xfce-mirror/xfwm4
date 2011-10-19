@@ -55,6 +55,8 @@ struct _xfwmWindow
 };
 
 void                     xfwmWindowInit                         (xfwmWindow *);
+void                     xfwmWindowSetCursor                    (xfwmWindow *,
+                                                                 Cursor);
 void                     xfwmWindowCreate                       (ScreenInfo *,
                                                                  Visual *,
                                                                  gint,

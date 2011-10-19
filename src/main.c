@@ -390,7 +390,6 @@ static int
 initialize (gint compositor_mode, gboolean replace_wm)
 {
     struct sigaction act;
-    long ws;
     gint i, nscreens;
 
     TRACE ("entering initialize");
@@ -483,7 +482,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
 
         sn_init_display (screen_info);
         myDisplayAddScreen (main_display_info, screen_info);
-        screen_info->current_ws = (int) ws;
+        screen_info->current_ws = 0;
         setUTF8StringHint (main_display_info, screen_info->xfwm4_win, NET_WM_NAME, "Xfwm4");
         setNetSupportedHint (main_display_info, screen_info->xroot, screen_info->xfwm4_win);
         initNetDesktopInfo (main_display_info, screen_info->xroot, screen_info->current_ws,
@@ -494,7 +493,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
 
         clientFrameAll (screen_info);
 
-        initGtkCallbacks (screen_info);
+        initPerScreenCallbacks (screen_info);
 
         XDefineCursor (main_display_info->dpy, screen_info->xroot, myDisplayGetCursorRoot(main_display_info));
     }
@@ -506,6 +505,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
     }
     main_display_info->xfilter = eventFilterInit ((gpointer) main_display_info);
     eventFilterPush (main_display_info->xfilter, xfwm4_event_filter, (gpointer) main_display_info);
+    initPerDisplayCallbacks (main_display_info);
 
     return sessionStart (main_display_info);
 }
