@@ -246,7 +246,6 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
     Window dr, window;
     gint rx, ry, wx, wy;
     unsigned int mask;
-    unsigned long data[1];
 
     g_return_if_fail (screen_info != NULL);
 
@@ -368,10 +367,7 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
         }
     }
 
-    data[0] = new_ws;
-    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot,
-                     display_info->atoms[NET_CURRENT_DESKTOP], XA_CARDINAL, 32,
-                     PropModeReplace, (unsigned char *) data, 1);
+    setNetCurrentDesktop (display_info, screen_info->xroot, new_ws);
     if (!(screen_info->params->click_to_focus))
     {
         if (!(c2) && (XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &dr, &window, &rx, &ry, &wx, &wy, &mask)))

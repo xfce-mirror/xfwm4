@@ -195,6 +195,11 @@ void                     setNetFullscreenMonitors               (DisplayInfo *,
                                                                  gint,
                                                                  gint,
                                                                  gint);
+int                      getNetCurrentDesktop                   (DisplayInfo *,
+                                                                 Window root);
+void                     setNetCurrentDesktop                   (DisplayInfo *,
+                                                                 Window,
+                                                                 int);
 void                     initNetDesktopInfo                     (DisplayInfo *,
                                                                  Window,
                                                                  int,

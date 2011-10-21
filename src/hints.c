@@ -558,6 +558,31 @@ setNetFullscreenMonitors (DisplayInfo *display_info, Window w, gint top, gint bo
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
 }
 
+int
+getNetCurrentDesktop (DisplayInfo *display_info, Window root)
+{
+    long ws;
+
+    TRACE ("entering getNetCurrentDesktop");
+    getHint (display_info, root, NET_CURRENT_DESKTOP, &ws);
+    return (int) ws;
+}
+
+void
+setNetCurrentDesktop (DisplayInfo *display_info, Window root, int workspace)
+{
+    unsigned long data[2];
+    TRACE ("entering setNetCurrentDesktop");
+
+    data[0] = 0;
+    data[1] = 0;
+    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_VIEWPORT],
+                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
+    data[0] = workspace;
+    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_CURRENT_DESKTOP],
+                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
+}
+
 void
 initNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int width, int height)
 {
@@ -567,13 +592,7 @@ initNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int w
     data[1] = height;
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_GEOMETRY],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
-    data[0] = 0;
-    data[1] = 0;
-    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_VIEWPORT],
-                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 2);
-    data[0] = workspace;
-    XChangeProperty (display_info->dpy, root, display_info->atoms[NET_CURRENT_DESKTOP],
-                     XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 1);
+    setNetCurrentDesktop (display_info, root, workspace);
 }
 
 void
