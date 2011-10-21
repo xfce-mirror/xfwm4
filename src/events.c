@@ -1808,11 +1808,14 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             Window w;
 
             TRACE ("client \"%s\" (0x%lx) has received a WM_TRANSIENT_FOR notify", c->name, c->window);
+            c->transient_for = None;
             getTransientFor (display_info, c->screen_info->xroot, c->window, &w);
             if (clientCheckTransientWindow (c, w))
             {
                 c->transient_for = w;
             }
+            /* Recompute window type as it may have changed */
+            clientWindowType (c);
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_TYPE])
         {
@@ -2881,20 +2884,16 @@ initPerScreenCallbacks (ScreenInfo *screen_info)
     g_return_if_fail (screen_info);
 
     screen_info->button_handler_id =
-        g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)),
+        g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)),
                           "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
-    g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
+    g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
                       GTK_SIGNAL_FUNC (client_event_cb), NULL);
-    g_signal_connect (G_OBJECT(screen_info->gscr), "size-changed",
-                      G_CALLBACK(size_changed_cb),
-                      (gpointer) (screen_info));
-    if (gtk_major_version > 2 || (gtk_major_version == 2 && gtk_minor_version >= 13))
-    {
-        TRACE ("connect \"monitors-changed\" cb");
-        g_signal_connect (G_OBJECT(screen_info->gscr), "monitors-changed",
-                          G_CALLBACK(monitors_changed_cb),
-                          (gpointer) (screen_info));
-    }
+    g_object_connect (G_OBJECT(screen_info->gscr),
+                      "signal::notify::size-changed",
+                      G_CALLBACK(size_changed_cb), (gpointer) (screen_info),
+                      "signal::notify::monitors-changed",
+                      G_CALLBACK(monitors_changed_cb), (gpointer) (screen_info),
+                      NULL);
 }
 
 void
@@ -2905,30 +2904,29 @@ initPerDisplayCallbacks (DisplayInfo *display_info)
     g_return_if_fail (display_info);
 
     settings = gtk_settings_get_default ();
-    if (settings)
-    {
-        g_signal_connect (settings, "notify::gtk-theme-name",
-            G_CALLBACK (set_reload), (gpointer) (display_info));
-        g_signal_connect (settings, "notify::gtk-font-name",
-            G_CALLBACK (set_reload), (gpointer) (display_info));
-        g_signal_connect (settings, "notify::gtk-double-click-time",
-            G_CALLBACK (double_click_time_cb), (gpointer) (display_info));
-        g_signal_connect (settings, "notify::gtk-double-click-distance",
-            G_CALLBACK (double_click_distance_cb), (gpointer) (display_info));
-        g_signal_connect (settings, "notify::gtk-cursor-theme-name",
-            G_CALLBACK (cursor_theme_cb), (gpointer) (display_info));
-        g_signal_connect (settings, "notify::gtk-cursor-theme-size",
-            G_CALLBACK (cursor_theme_cb), (gpointer) (display_info));
-        g_signal_connect_after (settings, "notify::gtk-xft-antialias",
-            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
-        g_signal_connect_after (settings, "notify::gtk-xft-dpi",
-            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
-        g_signal_connect_after (settings, "notify::gtk-xft-hinting",
-            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
-        g_signal_connect_after (settings, "notify::gtk-xft-hintstyle",
-            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
-        g_signal_connect_after (settings, "notify::gtk-xft-rgba",
-            G_CALLBACK (refresh_font_cb), (gpointer) (display_info));
-    }
+    g_object_connect (settings,
+                      "signal::notify::gtk-theme-name",
+                      G_CALLBACK (set_reload),  (gpointer) (display_info),
+                      "signal::notify::gtk-font-name",
+                      G_CALLBACK (set_reload), (gpointer) (display_info),
+                      "signal::notify::gtk-double-click-time",
+                      G_CALLBACK (double_click_time_cb), (gpointer) (display_info),
+                      "signal::notify::gtk-double-click-distance",
+                      G_CALLBACK (double_click_distance_cb), (gpointer) (display_info),
+                      "signal::notify::gtk-cursor-theme-name",
+                      G_CALLBACK (cursor_theme_cb), (gpointer) (display_info),
+                      "signal::notify::gtk-cursor-theme-size",
+                      G_CALLBACK (cursor_theme_cb), (gpointer) (display_info),
+                      "signal::notify::gtk-xft-antialias",
+                      G_CALLBACK (refresh_font_cb), (gpointer) (display_info),
+                      "signal::notify::gtk-xft-dpi",
+                      G_CALLBACK (refresh_font_cb), (gpointer) (display_info),
+                      "signal::notify::gtk-xft-hinting",
+                      G_CALLBACK (refresh_font_cb), (gpointer) (display_info),
+                      "signal::notify::gtk-xft-hintstyle",
+                      G_CALLBACK (refresh_font_cb), (gpointer) (display_info),
+                      "signal::notify::gtk-xft-rgba",
+                      G_CALLBACK (refresh_font_cb), (gpointer) (display_info),
+                      NULL);
 }
 
