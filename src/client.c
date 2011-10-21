@@ -3022,30 +3022,17 @@ clientRemoveMaximizeFlag (Client * c)
 static void
 clientNewMaxState (Client * c, XWindowChanges *wc, int mode)
 {
-    /*
-     * We treat differently full maximization from vertical or horizontal maximization.
-     * This is for usability concerns, otherwise maximization acts like a toggle,
-     * switching from horizontal to vertical instead of switching to full maximization.
-     *
-     * The full size is not computed yet, as full maximization removes borders
-     * while either horizontal or vertical maximization still shows decorations...
-     */
-
-    if ((mode & CLIENT_FLAG_MAXIMIZED) == CLIENT_FLAG_MAXIMIZED)
-    {
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
-            return;
-        }
-    }
-
     if (mode & CLIENT_FLAG_MAXIMIZED_HORIZ)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
-            return;
+        }
+        else
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            wc->x = c->old_x;
+            wc->width = c->old_width;
         }
     }
 
@@ -3054,15 +3041,14 @@ clientNewMaxState (Client * c, XWindowChanges *wc, int mode)
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
-            return;
+        }
+        else
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+            wc->y = c->old_y;
+            wc->height = c->old_height;
         }
     }
-
-    FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    wc->x = c->old_x;
-    wc->y = c->old_y;
-    wc->width = c->old_width;
-    wc->height = c->old_height;
 }
 
 static void
@@ -3150,12 +3136,16 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     wc.width = c->width;
     wc.height = c->height;
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) && (restore_position))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) && (restore_position))
+    {
+        c->old_y = c->y;
+        c->old_height = c->height;
+    }
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && (restore_position))
     {
         c->old_x = c->x;
-        c->old_y = c->y;
         c->old_width = c->width;
-        c->old_height = c->height;
     }
 
     /* 1) Compute the new state */
