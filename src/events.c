@@ -295,7 +295,6 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     eventFilterStatus status;
     ScreenInfo *screen_info;
     ScreenInfo *ev_screen_info;
-    gboolean handled;
     Client *c;
     int key;
 
@@ -309,7 +308,6 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
         return EVENT_FILTER_PASS;
     }
 
-    handled = FALSE;
     status = EVENT_FILTER_PASS;
     c = clientGetFocus ();
     if (c)
@@ -671,7 +669,6 @@ static void
 button1Action (Client * c, XButtonEvent * ev)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     XEvent copy_event;
     XfwmButtonClickType tclick;
 
@@ -679,7 +676,6 @@ button1Action (Client * c, XButtonEvent * ev)
     g_return_if_fail (ev != NULL);
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
     {
@@ -724,14 +720,12 @@ static void
 titleButton (Client * c, guint state, XButtonEvent * ev)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (ev != NULL);
 
     /* Get Screen data from the client itself */
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (ev->button == Button1)
     {

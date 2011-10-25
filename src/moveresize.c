@@ -442,7 +442,7 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     int cx, cy, delta;
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
-    int frame_top, frame_left, frame_right, frame_bottom;
+    int frame_top, frame_left;
     int frame_x2, frame_y2;
     int best_frame_x, best_frame_y;
     int best_delta_x, best_delta_y;
@@ -463,8 +463,6 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     frame_width = frameWidth (c);
     frame_top = frameTop (c);
     frame_left = frameLeft (c);
-    frame_right = frameRight (c);
-    frame_bottom = frameBottom (c);
 
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
@@ -855,11 +853,9 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             if (xevent->xmotion.y_root - passdata->my > 15)
             {
                 /* to keep the distance from the edges of the window proportional. */
-                double xratio, yratio;
+                double xratio;
 
-                xratio = (xevent->xmotion.x_root - c->x)/(double)c->width;
-                yratio = (xevent->xmotion.y_root - c->y)/(double)c->width;
-
+                xratio = (xevent->xmotion.x_root - c->x) / (double)c->width;
                 clientToggleMaximized (c, WIN_STATE_MAXIMIZED, FALSE);
                 passdata->move_resized = TRUE;
                 passdata->ox = c->x;
@@ -1173,8 +1169,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     eventFilterStatus status;
     int prev_x, prev_y, prev_width, prev_height;
     int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
-    int frame_x, frame_y, frame_height, frame_width;
-    int frame_top, frame_left, frame_right, frame_bottom;
+    int frame_x, frame_y, frame_height, frame_width, frame_top;
     int move_top, move_bottom, move_left, move_right;
     int temp;
     gint min_visible;
@@ -1196,9 +1191,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     frame_height = frameHeight (c);
     frame_width = frameWidth (c);
     frame_top = frameTop (c);
-    frame_left = frameLeft (c);
-    frame_right = frameRight (c);
-    frame_bottom = frameBottom (c);
     min_visible = MAX (frame_top, CLIENT_MIN_VISIBLE);
 
     cx = frame_x + (frame_width / 2);

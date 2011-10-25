@@ -122,9 +122,7 @@ void
 clientFocusTop (ScreenInfo *screen_info, guint layer, guint32 timestamp)
 {
     ClientPair top_client;
-    DisplayInfo *display_info;
 
-    display_info = screen_info->display_info;
     top_client = clientGetTopMostFocusable (screen_info, layer, NULL);
     if (top_client.prefered)
     {
@@ -340,7 +338,6 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
     ClientPair top_most;
     Client *new_focus;
     Client *current_focus;
-    Client *c2;
     Window dr, window;
     unsigned int mask;
     int rx, ry, wx, wy;
@@ -351,7 +348,6 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
     look_in_layer = (c ? c->win_layer : WIN_LAYER_NORMAL);
     new_focus = NULL;
     current_focus = client_focus;
-    c2 = NULL;
 
     if (pending_focus)
     {
@@ -484,13 +480,11 @@ clientFocusNone (ScreenInfo *screen_info, Client *previous, guint32 timestamp)
 void
 clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 {
-    DisplayInfo *display_info;
     Client *c2;
 
     TRACE ("entering clientUpdateFocus");
 
     c2 = ((client_focus != c) ? client_focus : NULL);
-    display_info = screen_info->display_info;
     pending_focus = NULL;
     if ((c) && !clientAcceptFocus (c))
     {
@@ -548,12 +542,10 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 void
 clientSetFocus (ScreenInfo *screen_info, Client *c, guint32 timestamp, unsigned short flags)
 {
-    DisplayInfo *display_info;
     Client *c2;
 
     TRACE ("entering clientSetFocus");
 
-    display_info = screen_info->display_info;
     c2 = NULL;
     if ((c) && !(flags & FOCUS_IGNORE_MODAL))
     {
@@ -726,13 +718,10 @@ clientGrabMouseButton (Client * c)
 void
 clientUngrabMouseButton (Client * c)
 {
-    ScreenInfo *screen_info;
-
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUngrabMouseButton");
     TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
-    screen_info = c->screen_info;
     ungrabButton(clientGetXDisplay (c), AnyButton, AnyModifier, c->window);
     /* We've ungrabbed way too much, so regrab the regular buttons/modifiers */
     clientGrabButtons (c);

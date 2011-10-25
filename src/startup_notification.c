@@ -187,7 +187,6 @@ sn_startup_sequence_timeout (void *data)
 static void
 sn_screen_event (SnMonitorEvent * event, void *user_data)
 {
-    const char *wmclass;
     ScreenInfo *screen_info;
     SnStartupSequence *sequence;
 
@@ -200,7 +199,6 @@ sn_screen_event (SnMonitorEvent * event, void *user_data)
     switch (sn_monitor_event_get_type (event))
     {
         case SN_MONITOR_EVENT_INITIATED:
-            wmclass = sn_startup_sequence_get_wmclass (sequence);
             sn_add_sequence (screen_info, sequence);
             break;
 
