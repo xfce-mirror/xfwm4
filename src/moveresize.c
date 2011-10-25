@@ -854,8 +854,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 /* to keep the distance from the edges of the window proportional. */
                 double xratio;
 
-                xratio = (xevent->xmotion.x_root - c->x)/(double)c->width;
-
+                xratio = (xevent->xmotion.x_root - c->x) / (double)c->width;
                 clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
                 passdata->move_resized = TRUE;
                 passdata->ox = c->x;
@@ -1169,8 +1168,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     eventFilterStatus status;
     int prev_x, prev_y, prev_width, prev_height;
     int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
-    int frame_x, frame_y, frame_height, frame_width;
-    int frame_top;
+    int frame_x, frame_y, frame_height, frame_width, frame_top;
     int move_top, move_bottom, move_left, move_right;
     int temp;
     gint min_visible;
