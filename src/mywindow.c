@@ -257,9 +257,8 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
     {
         XRaiseWindow (myScreenGetXDisplay (screen_info), win->window);
     }
-    XMapWindow (myScreenGetXDisplay (screen_info), win->window);
-    XFlush (myScreenGetXDisplay (screen_info));
 
+    XMapWindow (myScreenGetXDisplay (screen_info), win->window);
     win->map = TRUE;
     win->screen_info = screen_info;
     win->x = x;

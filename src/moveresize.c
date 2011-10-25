@@ -837,7 +837,6 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 if (warp_pointer)
                 {
                     XWarpPointer (display_info->dpy, None, None, 0, 0, 0, 0, rx, ry);
-                    XFlush (display_info->dpy);
                     msx += rx;
                     msy += ry;
                 }

@@ -75,7 +75,7 @@
                                  (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || \
                                  (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON])))
 
-#define DOUBLE_CLICK_GRAB          (ButtonMotionMask | \
+#define DOUBLE_CLICK_GRAB       (ButtonMotionMask | \
                                  PointerMotionMask | \
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
@@ -230,7 +230,6 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
 
     display_info = screen_info->display_info;
-    XFlush (display_info->dpy);
     g = myScreenGrabPointer (screen_info, DOUBLE_CLICK_GRAB, None, ev->xbutton.time);
 
     if (!g)
@@ -269,7 +268,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     TRACE ("leaving typeOfClick loop");
 
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
-    XFlush (display_info->dpy);
+
     return (XfwmButtonClickType) passdata.clicks;
 }
 
@@ -1516,7 +1515,6 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         if (warp_pointer)
         {
             XWarpPointer (display_info->dpy, None, None, 0, 0, 0, 0, rx, ry);
-            XFlush (display_info->dpy);
         }
     }
 
