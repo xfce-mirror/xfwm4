@@ -134,7 +134,6 @@ setupHandler (gboolean install)
     sigaction (SIGTERM, &act, NULL);
     sigaction (SIGHUP,  &act, NULL);
     sigaction (SIGUSR1, &act, NULL);
-    sigaction (SIGSEGV, &act, NULL);
 }
 
 static void
