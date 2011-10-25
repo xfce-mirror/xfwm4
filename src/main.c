@@ -95,13 +95,58 @@ static DisplayInfo *main_display_info = NULL;
 static gint compositor = COMPOSITOR_MODE_MANUAL;
 
 static void
+handleSignal (int sig)
+{
+    if (main_display_info)
+    {
+        switch (sig)
+        {
+            case SIGINT:
+                /* Walk thru */
+            case SIGTERM:
+                gtk_main_quit ();
+                main_display_info->quit = TRUE;
+                break;
+            case SIGHUP:
+                /* Walk thru */
+            case SIGUSR1:
+                main_display_info->reload = TRUE;
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+static void
+setupHandler (gboolean install)
+{
+    struct sigaction act;
+
+    if (install)
+        act.sa_handler = handleSignal;
+    else
+        act.sa_handler = SIG_DFL;
+
+    sigemptyset (&act.sa_mask);
+    act.sa_flags = 0;
+    sigaction (SIGINT,  &act, NULL);
+    sigaction (SIGTERM, &act, NULL);
+    sigaction (SIGHUP,  &act, NULL);
+    sigaction (SIGUSR1, &act, NULL);
+    sigaction (SIGSEGV, &act, NULL);
+}
+
+static void
 cleanUp (void)
 {
     GSList *screens;
 
-    g_return_if_fail (main_display_info);
-
     TRACE ("entering cleanUp");
+
+    setupHandler (FALSE);
+
+    g_return_if_fail (main_display_info);
 
     eventFilterClose (main_display_info->xfilter);
     for (screens = main_display_info->screens; screens; screens = g_slist_next (screens))
@@ -117,31 +162,6 @@ cleanUp (void)
     g_free (main_display_info);
     main_display_info = NULL;
     xfconf_shutdown();
-}
-
-static void
-handleSignal (int sig)
-{
-    TRACE ("entering handleSignal");
-
-    switch (sig)
-    {
-        case SIGINT:
-        case SIGTERM:
-            gtk_main_quit ();
-            main_display_info->quit = TRUE;
-            break;
-        case SIGHUP:
-        case SIGUSR1:
-            main_display_info->reload = TRUE;
-            break;
-        case SIGSEGV:
-            cleanUp ();
-            g_error (_("%s: Segmentation fault"), PACKAGE);
-            break;
-        default:
-            break;
-    }
 }
 
 static void
@@ -389,7 +409,6 @@ compositor_callback (const gchar  *name,
 static int
 initialize (gint compositor_mode, gboolean replace_wm)
 {
-    struct sigaction act;
     long ws;
     gint i, nscreens;
 
@@ -423,13 +442,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
 
     initModifiers (main_display_info->dpy);
 
-    act.sa_handler = handleSignal;
-    act.sa_flags = 0;
-    sigaction (SIGINT,  &act, NULL);
-    sigaction (SIGTERM, &act, NULL);
-    sigaction (SIGHUP,  &act, NULL);
-    sigaction (SIGUSR1, &act, NULL);
-    sigaction (SIGSEGV, &act, NULL);
+    setupHandler (TRUE);
 
     nscreens = gdk_display_get_n_screens (main_display_info->gdisplay);
     for(i = 0; i < nscreens; i++)
