@@ -874,9 +874,7 @@ loadSettings (ScreenInfo *screen_info)
 
     if (screen_info->workspace_count == 0)
     {
-        guint workspace_count;
-        workspace_count = MAX ((guint) getIntValue ("workspace_count", rc), 1);
-        workspaceSetCount (screen_info, workspace_count);
+        workspaceSetCount (screen_info, (guint) MAX (getIntValue ("workspace_count", rc), 1));
     }
 
     freeRc (rc);
@@ -1034,7 +1032,7 @@ initSettings (ScreenInfo *screen_info)
     }
     if (getHint (display_info, screen_info->xroot, NET_NUMBER_OF_DESKTOPS, &val))
     {
-        workspaceSetCount (screen_info, val);
+        workspaceSetCount (screen_info, (guint) MAX (val, 1));
     }
 
     if (getUTF8StringList (display_info, screen_info->xroot, NET_DESKTOP_NAMES, &names, &i))
@@ -1147,7 +1145,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 }
                 else if (!strcmp (name, "workspace_count"))
                 {
-                    workspaceSetCount(screen_info, g_value_get_int (value));
+                    workspaceSetCount(screen_info, (guint) MAX (g_value_get_int (value), 1));
                 }
                 else if (!strcmp (name, "frame_opacity"))
                 {
