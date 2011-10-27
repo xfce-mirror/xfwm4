@@ -603,6 +603,7 @@ loadKeyBindings (ScreenInfo *screen_info)
     parseShortcut (screen_info, KEY_POPUP_MENU, "popup_menu_key", shortcuts);
     parseShortcut (screen_info, KEY_PREV_WORKSPACE, "prev_workspace_key", shortcuts);
     parseShortcut (screen_info, KEY_RAISE_WINDOW, "raise_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_RAISELOWER_WINDOW, "raiselower_window_key", shortcuts);
     parseShortcut (screen_info, KEY_RESIZE, "resize_window_key", shortcuts);
     parseShortcut (screen_info, KEY_RIGHT_WORKSPACE, "right_workspace_key", shortcuts);
     parseShortcut (screen_info, KEY_SHADE_WINDOW, "shade_window_key", shortcuts);

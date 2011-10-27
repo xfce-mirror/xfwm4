@@ -362,6 +362,16 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_LOWER_WINDOW:
                 clientLower (c, None);
                 break;
+            case KEY_RAISELOWER_WINDOW:
+                if (clientIsTopMost (c))
+                {
+                    clientLower (c, None);
+                }
+                else
+                {
+                    clientRaise (c, None);
+                }
+                break;
             case KEY_TOGGLE_ABOVE:
                 clientToggleLayerAbove (c);
                 break;

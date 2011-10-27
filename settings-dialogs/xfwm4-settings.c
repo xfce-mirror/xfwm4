@@ -254,6 +254,7 @@ static const ShortcutTemplate shortcut_values[] = {
   { N_("Stick window"), "stick_window_key", NULL },
   { N_("Raise window"), "raise_window_key", NULL },
   { N_("Lower window"), "lower_window_key", NULL },
+  { N_("Raise or loser window"), "raiselower_window_key", NULL },
   { N_("Fill window"), "fill_window_key", NULL },
   { N_("Fill window horizontally"), "fill_horiz_key", NULL },
   { N_("Fill window vertically"), "fill_vert_key", NULL },
