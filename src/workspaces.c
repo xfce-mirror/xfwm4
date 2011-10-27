@@ -422,7 +422,7 @@ workspaceSetCount (ScreenInfo * screen_info, guint count)
 {
     DisplayInfo *display_info;
     Client *c;
-    guint i;
+    GList *list;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -441,8 +441,9 @@ workspaceSetCount (ScreenInfo * screen_info, guint count)
     setHint (display_info, screen_info->xroot, NET_NUMBER_OF_DESKTOPS, count);
     screen_info->workspace_count = count;
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
+        c = (Client *) list->data;
         if (c->win_workspace > count - 1)
         {
             clientSetWorkspace (c, count - 1, TRUE);
@@ -463,7 +464,8 @@ void
 workspaceInsert (ScreenInfo * screen_info, guint position)
 {
     Client *c;
-    guint i, count;
+    GList *list;
+    guint count;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -477,8 +479,9 @@ workspaceInsert (ScreenInfo * screen_info, guint position)
         return;
     }
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
+        c = (Client *) list->data;
         if (c->win_workspace >= position)
         {
             clientSetWorkspace (c, c->win_workspace + 1, TRUE);
@@ -490,7 +493,8 @@ void
 workspaceDelete (ScreenInfo * screen_info, guint position)
 {
     Client *c;
-    guint i, count;
+    GList *list;
+    guint count;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -500,14 +504,6 @@ workspaceDelete (ScreenInfo * screen_info, guint position)
     if ((count < 1) || (position > count))
     {
         return;
-    }
-
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
-    {
-        if (c->win_workspace > position)
-        {
-            clientSetWorkspace (c, c->win_workspace - 1, TRUE);
-        }
     }
 
     workspaceSetCount(screen_info, count - 1);
