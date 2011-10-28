@@ -976,6 +976,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, const gchar * dir, co
 #ifdef HAVE_RENDER
     xfwmPixmapRefreshPict (pm);
 #endif
+    g_object_unref (pixbuf);
 
     return TRUE;
 }
