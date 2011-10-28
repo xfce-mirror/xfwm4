@@ -70,6 +70,8 @@
     SubstructureRedirectMask|\
     ButtonPressMask|\
     ButtonReleaseMask|\
+    KeyPressMask|\
+    KeyReleaseMask|\
     FocusChangeMask|\
     PropertyChangeMask|\
     ColormapNotify
