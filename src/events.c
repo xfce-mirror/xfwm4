@@ -300,8 +300,6 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
 
     TRACE ("entering handleKeyEvent");
 
-    XAllowEvents (display_info->dpy, AsyncKeyboard, ev->time);
-
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!ev_screen_info)
     {
@@ -528,6 +526,9 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             break;
     }
 
+    /* Release pending events */
+    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
+
     return status;
 }
 
@@ -535,6 +536,9 @@ static eventFilterStatus
 handleKeyRelease (DisplayInfo *display_info, XKeyEvent * ev)
 {
     TRACE ("entering handleKeyRelease");
+
+    /* Release pending events */
+    XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
 
     return EVENT_FILTER_PASS;
 }
@@ -1040,7 +1044,7 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
     }
 
     /* Release pending events */
-    XAllowEvents (display_info->dpy, replay ? ReplayPointer : SyncPointer, myDisplayGetCurrentTime (display_info));
+    XAllowEvents (display_info->dpy, replay ? ReplayPointer : SyncPointer, CurrentTime);
 
     return EVENT_FILTER_REMOVE;
 }
@@ -1060,7 +1064,7 @@ handleButtonRelease (DisplayInfo *display_info, XButtonEvent * ev)
     }
 
     /* Release pending events */
-    XAllowEvents (display_info->dpy, SyncPointer, myDisplayGetCurrentTime (display_info));
+    XAllowEvents (display_info->dpy, SyncPointer, CurrentTime);
 
     return EVENT_FILTER_REMOVE;
 }
