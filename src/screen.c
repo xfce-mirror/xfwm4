@@ -778,7 +778,6 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
     PangoFontDescription *desc;
     PangoContext *context;
     PangoFontMetrics *metrics;
-    PangoLanguage *language;
     GtkWidget *widget;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
@@ -790,8 +789,7 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
 
     if (desc && context)
     {
-        language = pango_context_get_language (context);
-        metrics = pango_context_get_metrics (context, desc, language);
+        metrics = pango_context_get_metrics (context, desc, NULL);
         screen_info->font_height =
                  PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
                                pango_font_metrics_get_descent (metrics));
