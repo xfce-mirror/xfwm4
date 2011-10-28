@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-30 10:13+0000\n"
+"POT-Creation-Date: 2011-10-27 22:08+0000\n"
 "PO-Revision-Date: 2010-11-27 21:12+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
@@ -41,25 +41,25 @@ msgstr "会话管理器套接字"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:312
+#: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "版本信息"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:942
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:946
+#: ../settings-dialogs/xfwm4-settings.c:947
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -79,7 +79,7 @@ msgid "Workspace Name"
 msgstr "工作区名称"
 
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
@@ -332,7 +332,7 @@ msgid "Maximize window"
 msgstr "最大化窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "填充窗口"
 
@@ -418,214 +418,220 @@ msgstr "提升窗口"
 msgid "Lower window"
 msgstr "降低窗口"
 
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:257
+msgid "Raise or lower window"
+msgstr "提高或降低窗口"
+
+#: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
 msgstr "水平填充窗口"
 
-#: ../settings-dialogs/xfwm4-settings.c:259
+#: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
 msgstr "垂直填充窗口"
 
-#: ../settings-dialogs/xfwm4-settings.c:260
+#: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
 msgstr "折叠以上"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
 msgstr "切换全屏显示方式"
 
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
 msgstr "移动窗口至上方工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to bottom workspace"
 msgstr "移动窗口至下方工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
 msgstr "移动窗口至左边工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
 msgstr "移动窗口至右边工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
 msgstr "移动窗口至上一个工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
 msgstr "移动窗口至下一个工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 1"
 msgstr "移动窗口至工作区 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:269
+#: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 2"
 msgstr "移动窗口至工作区 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:270
+#: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 3"
 msgstr "移动窗口至工作区 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:271
+#: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 4"
 msgstr "移动窗口至工作区 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:272
+#: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 5"
 msgstr "移动窗口至工作区 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:273
+#: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 6"
 msgstr "移动窗口至工作区 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:274
+#: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 7"
 msgstr "移动窗口至工作区 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:275
+#: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 8"
 msgstr "移动窗口至工作区 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:276
+#: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 9"
 msgstr "移动窗口至工作区 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:277
+#: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 10"
 msgstr "移动窗口至工作区 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:278
+#: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Move window to workspace 11"
 msgstr "移动窗口至工作区 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:279
+#: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Move window to workspace 12"
 msgstr "移动窗口至工作区 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:280
+#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Show desktop"
 msgstr "显示桌面"
 
-#: ../settings-dialogs/xfwm4-settings.c:281
+#: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Upper workspace"
 msgstr "上方工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Bottom workspace"
 msgstr "下方工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Left workspace"
 msgstr "左边工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Right workspace"
 msgstr "右边工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Previous workspace"
 msgstr "上一个工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Next workspace"
 msgstr "下一个工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 1"
 msgstr "工作区 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 2"
 msgstr "工作区 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 3"
 msgstr "工作区 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 4"
 msgstr "工作区 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 5"
 msgstr "工作区 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 6"
 msgstr "工作区 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 7"
 msgstr "工作区 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 8"
 msgstr "工作区 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 9"
 msgstr "工作区 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 10"
 msgstr "工作区 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 11"
 msgstr "工作区 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 12"
 msgstr "工作区 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
 msgstr "添加工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Add adjacent workspace"
 msgstr "添加工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete last workspace"
 msgstr "删除最后一个工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Delete active workspace"
 msgstr "删除当前工作区"
 
-#: ../settings-dialogs/xfwm4-settings.c:448
+#: ../settings-dialogs/xfwm4-settings.c:449
 msgid "Theme"
 msgstr "主题"
 
-#: ../settings-dialogs/xfwm4-settings.c:597
+#: ../settings-dialogs/xfwm4-settings.c:598
 msgid "Action"
 msgstr "动作"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
 msgstr "快捷方式"
 
-#: ../settings-dialogs/xfwm4-settings.c:971
+#: ../settings-dialogs/xfwm4-settings.c:972
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "初始化 xfconf 失败。原因：%s"
 
-#: ../settings-dialogs/xfwm4-settings.c:982
+#: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
 msgstr "无法创建设置对话框。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1869
 #: ../settings-dialogs/xfwm4-settings.c:1870
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "Reset to Defaults"
 msgstr "重设至默认值"
 
-#: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+#: ../settings-dialogs/xfwm4-settings.c:1872
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr "这将重设全部快捷方式至其默认值。您确定想要这样做？"
 
 #. Smart placement size
@@ -818,7 +824,8 @@ msgid "Change workspace name"
 msgstr "改变工作区名称"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "边缘是屏幕边上不能放置窗口的区域。"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -835,40 +842,35 @@ msgstr "工作区数目(_N)："
 msgid "%s (on %s)"
 msgstr "%s (于 %s)"
 
-#: ../src/main.c:140
-#, c-format
-msgid "%s: Segmentation fault"
-msgstr "%s: 段错误"
-
-#: ../src/main.c:534
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "转入后台"
 
-#: ../src/main.c:536
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "转入后台（不支持）"
 
-#: ../src/main.c:539
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "设置排版模式"
 
-#: ../src/main.c:541
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "设置排版模式（不支持）"
 
-#: ../src/main.c:543
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "替换运行中的窗口管理器"
 
-#: ../src/main.c:544
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "打印版本信息并退出"
 
-#: ../src/main.c:552
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[参数...]"
 
-#: ../src/main.c:559
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "输入 \"%s --help\" 查看使用说明。"
@@ -1000,6 +1002,9 @@ msgstr "从子进程读取数据时发生错误：%s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "无法启动帮助对话框：%s\n"
 
+#~ msgid "%s: Segmentation fault"
+#~ msgstr "%s: 段错误"
+
 #~ msgid "  "
 #~ msgstr "  "
 
@@ -1057,7 +1062,8 @@ msgstr "无法启动帮助对话框：%s\n"
 #~ msgid "Place window in the center"
 #~ msgstr "放置窗口至中间"
 
-#~ msgid "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
+#~ msgid ""
+#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr "跳过有 \"skip pager\" 或者 \"skip taskbar\"属性设置的窗口"
 
 #~ msgid "Include hidden (i.e. iconified) windows"
@@ -1099,7 +1105,9 @@ msgstr "无法启动帮助对话框：%s\n"
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "在桌面使用鼠标滚轮切换工作区"
 
-#~ msgid "Remember and recall previous workspace when switching via keyboard shortcuts"
+#~ msgid ""
+#~ "Remember and recall previous workspace when switching via keyboard "
+#~ "shortcuts"
 #~ msgstr "由键盘快捷键切换时记住并恢复先前的工作区"
 
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
@@ -1393,12 +1401,16 @@ msgstr "无法启动帮助对话框：%s\n"
 #~ msgid "Advanced window manager settings"
 #~ msgstr "xfce4 窗口管理器设置"
 
-#~ msgid "This shortcut is already being used by <b>another window manager action</b>. Which action do you want to use?"
+#~ msgid ""
+#~ "This shortcut is already being used by <b>another window manager action</"
+#~ "b>. Which action do you want to use?"
 #~ msgstr ""
 #~ "快捷键已被使用！\n"
 #~ "您确定要使用它吗？"
 
-#~ msgid "The shortcut is already being used by a <b>window manager action</b>. Which action do you want to use?"
+#~ msgid ""
+#~ "The shortcut is already being used by a <b>window manager action</b>. "
+#~ "Which action do you want to use?"
 #~ msgstr ""
 #~ "快捷键已被使用！\n"
 #~ "您确定要使用它吗？"
