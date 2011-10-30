@@ -259,6 +259,7 @@ doc/manual/po/Makefile
 defaults/Makefile
 helper-dialog/Makefile
 icons/Makefile
+icons/22x22/Makefile
 icons/48x48/Makefile
 icons/scalable/Makefile
 po/Makefile.in

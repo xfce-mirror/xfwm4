@@ -198,14 +198,12 @@
                                   <object class="GtkFrame" id="active-frame">
                                     <property name="visible">True</property>
                                     <property name="label_xalign">0</property>
-                                    <property name="shadow_type">in</property>
                                     <child>
                                       <object class="GtkAlignment" id="alignment17">
                                         <property name="visible">True</property>
                                         <property name="border_width">6</property>
                                         <child>
                                           <object class="GtkHBox" id="active-box">
-                                            <property name="height_request">26</property>
                                             <property name="visible">True</property>
                                             <child>
                                               <object class="GtkButton" id="button-layout-|">
@@ -241,16 +239,14 @@
                                   <object class="GtkFrame" id="hidden-frame">
                                     <property name="visible">True</property>
                                     <property name="label_xalign">0</property>
-                                    <property name="shadow_type">in</property>
                                     <child>
                                       <object class="GtkAlignment" id="alignment18">
                                         <property name="visible">True</property>
                                         <property name="border_width">6</property>
                                         <child>
                                           <object class="GtkHBox" id="hidden-box">
-                                            <property name="height_request">26</property>
                                             <property name="visible">True</property>
-                                            <property name="spacing">5</property>
+                                            <property name="spacing">6</property>
                                             <child>
                                               <object class="GtkButton" id="button-layout-O">
                                                 <property name="visible">True</property>
@@ -260,7 +256,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image1">
                                                     <property name="visible">True</property>
-                                                    <property name="stock">gtk-index</property>
+                                                    <property name="icon_name">xfwm4-settings-menu</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -279,7 +275,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image2">
                                                     <property name="visible">True</property>
-                                                    <property name="stock">gtk-add</property>
+                                                    <property name="icon_name">xfwm4-settings-stick</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -298,7 +294,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image3">
                                                     <property name="visible">True</property>
-                                                    <property name="stock">gtk-goto-top</property>
+                                                    <property name="icon_name">xfwm4-settings-shade</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -313,11 +309,11 @@
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
-                                                <property name="tooltip_text" translatable="yes">Hide</property>
+                                                <property name="tooltip_text" translatable="yes">Minimize</property>
                                                 <child>
                                                   <object class="GtkImage" id="image4">
                                                     <property name="visible">True</property>
-                                                    <property name="stock">gtk-undo</property>
+                                                    <property name="icon_name">xfwm4-settings-minimize</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -336,7 +332,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image5">
                                                     <property name="visible">True</property>
-                                                    <property name="stock">gtk-zoom-100</property>
+                                                    <property name="icon_name">xfwm4-settings-maximize</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -355,7 +351,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image6">
                                                     <property name="visible">True</property>
-                                                    <property name="stock">gtk-close</property>
+                                                    <property name="icon_name">xfwm4-settings-close</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -1315,5 +1311,12 @@
       <action-widget response="0">help_button</action-widget>
       <action-widget response="0">close_button</action-widget>
     </action-widgets>
+  </object>
+  <object class="GtkSizeGroup" id="sizegroup1">
+    <property name="mode">vertical</property>
+    <widgets>
+      <widget name="alignment17"/>
+      <widget name="alignment18"/>
+    </widgets>
   </object>
 </interface>
