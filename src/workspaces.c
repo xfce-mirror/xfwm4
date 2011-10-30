@@ -492,8 +492,6 @@ workspaceInsert (ScreenInfo * screen_info, guint position)
 void
 workspaceDelete (ScreenInfo * screen_info, guint position)
 {
-    Client *c;
-    GList *list;
     guint count;
 
     g_return_if_fail (screen_info != NULL);
