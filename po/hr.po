@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 22:08+0000\n"
+"POT-Creation-Date: 2011-10-30 23:09+0000\n"
 "PO-Revision-Date: 2010-06-12 00:06+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -230,28 +230,28 @@ msgid "Hidden"
 msgstr "Skriveno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide"
-msgstr "Sakrij"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
 msgstr "Sakrij sadržaj prozora prilikom pre_mještanja"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
 msgstr "Sakrij sadržaj prozora prilikom p_romjene veličine"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
 msgstr "Ti_pkovnica"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr "Maksimiziraj"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
 msgstr "Izbornik"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Minimize"
+msgstr "Minimiziraj"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -845,35 +845,35 @@ msgstr "_Broj radnih prostora:"
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:542
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:542
+#: ../src/main.c:544
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:545
+#: ../src/main.c:547
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:547
+#: ../src/main.c:549
 msgid "Set the compositor mode (not supported)"
 msgstr ""
 
-#: ../src/main.c:549
+#: ../src/main.c:551
 msgid "Replace the existing window manager"
 msgstr "Zamjeni postojeći upravitelj prozora"
 
-#: ../src/main.c:550
+#: ../src/main.c:552
 msgid "Print version information and exit"
 msgstr "Ispiši informaciju o verziji i izađi"
 
-#: ../src/main.c:558
+#: ../src/main.c:560
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTi...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:567
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Upiši \"%s --help\" za uporabu."
@@ -1004,3 +1004,6 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#~ msgid "Hide"
+#~ msgstr "Sakrij"
