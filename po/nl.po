@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-28 10:08+0000\n"
+"POT-Creation-Date: 2011-10-31 11:08+0000\n"
 "PO-Revision-Date: 2011-09-09 12:41+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -232,28 +232,28 @@ msgid "Hidden"
 msgstr "Verborgen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide"
-msgstr "Verbergen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
 msgstr "Inhoud vensters verbergen bij _verplaatsen"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
 msgstr "Inhoud vensters verbergen bij veranderen _grootte"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
 msgstr "_Toetsenbord"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr "Maximaliseren"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
 msgstr "Menu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Minimize"
+msgstr "Minimaliseren"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -855,35 +855,35 @@ msgstr "Aantal werkbladen:"
 msgid "%s (on %s)"
 msgstr "%s (op %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:542
 msgid "Fork to the background"
 msgstr "Vork naar de achtergrond"
 
-#: ../src/main.c:542
+#: ../src/main.c:544
 msgid "Fork to the background (not supported)"
 msgstr "Vork naar de achtergrond (niet ondersteund)"
 
-#: ../src/main.c:545
+#: ../src/main.c:547
 msgid "Set the compositor mode"
 msgstr "Stel de samenstellermodus in"
 
-#: ../src/main.c:547
+#: ../src/main.c:549
 msgid "Set the compositor mode (not supported)"
 msgstr "Stel de samenstellermodus in (niet ondersteund)"
 
-#: ../src/main.c:549
+#: ../src/main.c:551
 msgid "Replace the existing window manager"
 msgstr "Vervang de bestaande vensterbeheerder"
 
-#: ../src/main.c:550
+#: ../src/main.c:552
 msgid "Print version information and exit"
 msgstr "Druk de versie-informatie af en sluit af"
 
-#: ../src/main.c:558
+#: ../src/main.c:560
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTEN...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:567
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Tik \"%s --help\" voor gebruiksinformatie."
@@ -1015,6 +1015,9 @@ msgstr "Fout bij het lezen van gegevens van het afgeleide proces: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
+
+#~ msgid "Hide"
+#~ msgstr "Verbergen"
 
 #~ msgid "%s: Segmentation fault"
 #~ msgstr "%s: Segmentatiefout"
