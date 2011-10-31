@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 16:08+0000\n"
+"POT-Creation-Date: 2011-10-31 17:08+0000\n"
 "PO-Revision-Date: 2009-02-24 20:24+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -232,28 +232,28 @@ msgid "Hidden"
 msgstr "Приховування"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide"
-msgstr "Приховати"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
 msgstr "Ховати вміст вікон при пере_міщенні"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
 msgstr "Приховати вміст вікон при зміні _розміру"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
 msgstr "К_лавіатура"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr "Розгорнути"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
 msgstr "Меню"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Minimize"
+msgstr "Мінімізувати"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -854,35 +854,35 @@ msgstr "_Кількість робочих областей:"
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:542
 msgid "Fork to the background"
 msgstr "Перевести у фоновий режим"
 
-#: ../src/main.c:542
+#: ../src/main.c:544
 msgid "Fork to the background (not supported)"
 msgstr "Перевести у фоновий режим (не підтримується)"
 
-#: ../src/main.c:545
+#: ../src/main.c:547
 msgid "Set the compositor mode"
 msgstr "Призначити композитний режим"
 
-#: ../src/main.c:547
+#: ../src/main.c:549
 msgid "Set the compositor mode (not supported)"
 msgstr "Призначити композитний режим (не підтримується)"
 
-#: ../src/main.c:549
+#: ../src/main.c:551
 msgid "Replace the existing window manager"
 msgstr "Замінти існуючий менеджер вікон"
 
-#: ../src/main.c:550
+#: ../src/main.c:552
 msgid "Print version information and exit"
 msgstr "Показати інформацію про версію і вийти"
 
-#: ../src/main.c:558
+#: ../src/main.c:560
 msgid "[ARGUMENTS...]"
 msgstr "[АРГУМЕНТИ...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:567
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Введіть \"%s --help\" для допомоги по використанню."
@@ -1013,6 +1013,9 @@ msgstr "Помилка читання даних з підпроцесу   : %s\
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Неможливо створити діалог : %s\n"
+
+#~ msgid "Hide"
+#~ msgstr "Приховати"
 
 #~ msgid "%s: Segmentation fault"
 #~ msgstr "%s: помилка сегментації"
