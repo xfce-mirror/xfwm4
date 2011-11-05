@@ -666,7 +666,7 @@ msgstr "I_n der Mitte des Bildschirms"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "By default, place windows:"
-msgstr "Standardmäßig die Fester folgendermaßen platzieren:"
+msgstr "Standardmäßig die Fenster folgendermaßen platzieren:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "C_ompositor"
