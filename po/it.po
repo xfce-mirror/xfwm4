@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-29 10:09+0000\n"
+"POT-Creation-Date: 2011-11-05 05:09+0000\n"
 "PO-Revision-Date: 2010-09-08 11:45+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -239,28 +239,28 @@ msgid "Hidden"
 msgstr "Nascosti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide"
-msgstr "Nascondi"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
 msgstr "Nascondi il contenuto delle finestre quando vengono sp_ostate"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
 msgstr "Nascondi il contenuto delle finestre quando vengono ri_dimensionate"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
 msgstr "Tasti_era"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr "Massimizza"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
 msgstr "Menu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Minimize"
+msgstr "Minimizza"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -1032,6 +1032,9 @@ msgstr "Si è verificato un errore leggendo i dati dal processo figlio: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Impossibile creare la finestra dell'assistente: %s\n"
+
+#~ msgid "Hide"
+#~ msgstr "Nascondi"
 
 #~ msgid "%s: Segmentation fault"
 #~ msgstr "%s: Errore di segmentazione"
