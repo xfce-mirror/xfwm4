@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 04:15+0000\n"
+"POT-Creation-Date: 2011-11-05 11:10+0000\n"
 "PO-Revision-Date: 2011-08-11 20:58+0300\n"
 "Last-Translator: Artem Zolochevskiy <artem.zolochevskiy@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -49,25 +49,25 @@ msgstr "Сокет менеджера настроек"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
 #: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:312
+#: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "Информация о версии"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:942
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:946
+#: ../settings-dialogs/xfwm4-settings.c:947
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -87,7 +87,7 @@ msgid "Workspace Name"
 msgstr "Название рабочего места"
 
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "Сокет менеджера настроек"
 
@@ -205,7 +205,8 @@ msgstr "_Дополнительные"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Автоматически _поднимать окна на передний план окна, когда они получают фокус"
+msgstr ""
+"Автоматически _поднимать окна на передний план окна, когда они получают фокус"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
@@ -240,28 +241,28 @@ msgid "Hidden"
 msgstr "Скрытые"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide"
-msgstr "Свернуть"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
 msgstr "Скрывать содержимое окна при _перемещении"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
 msgstr "Скрывать содержимое окна при изменении _размера"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
 msgstr "_Клавиатура"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr "Развернуть"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
 msgstr "Меню"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Minimize"
+msgstr "Свернуть"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -340,7 +341,7 @@ msgid "Maximize window"
 msgstr "Развернуть окно"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "Максимально увеличить размер окна"
 
@@ -426,215 +427,223 @@ msgstr "Поднять окно на передний план"
 msgid "Lower window"
 msgstr "Опустить окно на задний план"
 
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:257
+msgid "Raise or lower window"
+msgstr "Переместить окно на передний план или обратно"
+
+#: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
 msgstr "Развернуть окно по горизонтали"
 
-#: ../settings-dialogs/xfwm4-settings.c:259
+#: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
 msgstr "Развернуть окно по вертикали"
 
-#: ../settings-dialogs/xfwm4-settings.c:260
+#: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
 msgstr "Переключить наверх"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
 msgstr "Полноэкранный режим"
 
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
 msgstr "Переместить окно на верхнее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to bottom workspace"
 msgstr "Переместить окно на нижнее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
 msgstr "Переместить окно на левое рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
 msgstr "Переместить окно на правое рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
 msgstr "Переместить окно на предыдущее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
 msgstr "Переместить окно на следующее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 1"
 msgstr "Переместить окно на рабочее место 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:269
+#: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 2"
 msgstr "Переместить окно на рабочее место 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:270
+#: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 3"
 msgstr "Переместить окно на рабочее место 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:271
+#: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 4"
 msgstr "Переместить окно на рабочее место 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:272
+#: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 5"
 msgstr "Переместить окно на рабочее место 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:273
+#: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 6"
 msgstr "Переместить окно на рабочее место 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:274
+#: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 7"
 msgstr "Переместить окно на рабочее место 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:275
+#: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 8"
 msgstr "Переместить окно на рабочее место 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:276
+#: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 9"
 msgstr "Переместить окно на рабочее место 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:277
+#: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 10"
 msgstr "Переместить окно на рабочее место 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:278
+#: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Move window to workspace 11"
 msgstr "Переместить окно на рабочее место 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:279
+#: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Move window to workspace 12"
 msgstr "Переместить окно на рабочее место 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:280
+#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Show desktop"
 msgstr "Показать рабочий стол"
 
-#: ../settings-dialogs/xfwm4-settings.c:281
+#: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Upper workspace"
 msgstr "Верхнее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Bottom workspace"
 msgstr "Нижнее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Left workspace"
 msgstr "Левое рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Right workspace"
 msgstr "Правое рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Previous workspace"
 msgstr "Предыдущее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Next workspace"
 msgstr "Следующее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 1"
 msgstr "Рабочее место 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 2"
 msgstr "Рабочее место 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 3"
 msgstr "Рабочее место 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 4"
 msgstr "Рабочее место 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 5"
 msgstr "Рабочее место 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 6"
 msgstr "Рабочее место 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 7"
 msgstr "Рабочее место 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 8"
 msgstr "Рабочее место 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 9"
 msgstr "Рабочее место 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 10"
 msgstr "Рабочее место 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 11"
 msgstr "Рабочее место 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 12"
 msgstr "Рабочее место 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
 msgstr "Добавить рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Add adjacent workspace"
 msgstr "Добавить соседнее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete last workspace"
 msgstr "Удалить последнее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Delete active workspace"
 msgstr "Удалить текущее рабочее место"
 
-#: ../settings-dialogs/xfwm4-settings.c:448
+#: ../settings-dialogs/xfwm4-settings.c:449
 msgid "Theme"
 msgstr "Тема"
 
-#: ../settings-dialogs/xfwm4-settings.c:597
+#: ../settings-dialogs/xfwm4-settings.c:598
 msgid "Action"
 msgstr "Действие"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
 msgstr "Комбинация"
 
-#: ../settings-dialogs/xfwm4-settings.c:971
+#: ../settings-dialogs/xfwm4-settings.c:972
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Не удалось инициализировать xfconf. Причина: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:982
+#: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
 msgstr "Не удалось создать диалоговое окно настроек."
 
-#: ../settings-dialogs/xfwm4-settings.c:1869
 #: ../settings-dialogs/xfwm4-settings.c:1870
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "Reset to Defaults"
 msgstr "Сбросить настройки"
 
-#: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Это действие сбросит все настройки комбинаций клавиш на их стандартные значение. Вы действительно хотите сделать это?"
+#: ../settings-dialogs/xfwm4-settings.c:1872
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Это действие сбросит все настройки комбинаций клавиш на их стандартные "
+"значение. Вы действительно хотите сделать это?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -751,7 +760,9 @@ msgstr "Использовать сопротивление у _краёв вм�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Переключать рабочие места с помощью прокручивания колёсика _мыши над рабочим столом"
+msgstr ""
+"Переключать рабочие места с помощью прокручивания колёсика _мыши над рабочим "
+"столом"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -763,7 +774,9 @@ msgstr "Перелистывать рабочие места в зависимо
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Перелистывать рабочие места далее при достижении _первого или последнего рабочего места"
+msgstr ""
+"Перелистывать рабочие места далее при достижении _первого или последнего "
+"рабочего места"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -831,7 +844,8 @@ msgid "Change workspace name"
 msgstr "Изменить название рабочего места"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Поля – это области экрана, где размещение окон невозможно"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -848,40 +862,35 @@ msgstr "_Количество рабочих мест:"
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
-#: ../src/main.c:140
-#, c-format
-msgid "%s: Segmentation fault"
-msgstr "%s: Ошибка сегментации"
-
-#: ../src/main.c:534
+#: ../src/main.c:542
 msgid "Fork to the background"
 msgstr "Перевести в фоновый режим"
 
-#: ../src/main.c:536
+#: ../src/main.c:544
 msgid "Fork to the background (not supported)"
 msgstr "Перевести в фоновый режим (не поддерживается)"
 
-#: ../src/main.c:539
+#: ../src/main.c:547
 msgid "Set the compositor mode"
 msgstr "Установить композитный режим"
 
-#: ../src/main.c:541
+#: ../src/main.c:549
 msgid "Set the compositor mode (not supported)"
 msgstr "Установить композитный режим (не поддерживается)"
 
-#: ../src/main.c:543
+#: ../src/main.c:551
 msgid "Replace the existing window manager"
 msgstr "Заменить существующий оконный менеджер"
 
-#: ../src/main.c:544
+#: ../src/main.c:552
 msgid "Print version information and exit"
 msgstr "Показать информацию о версии и выйти"
 
-#: ../src/main.c:552
+#: ../src/main.c:560
 msgid "[ARGUMENTS...]"
 msgstr "[ПАРАМЕТРЫ...]"
 
-#: ../src/main.c:559
+#: ../src/main.c:567
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Выполните «%s --help» для получения информации об использовании."
@@ -991,7 +1000,9 @@ msgstr "%s: Ошибка выделения цвета %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: Ошибка выделения цвета: Значение GValue для цвета должно быть строкового типа"
+msgstr ""
+"%s: Ошибка выделения цвета: Значение GValue для цвета должно быть строкового "
+"типа"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1001,7 +1012,9 @@ msgstr "%s: Ошибка обработки цвета %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Ошибка обработки цвета: Значение GValue для цвета должно быть строкового типа"
+msgstr ""
+"%s: Ошибка обработки цвета: Значение GValue для цвета должно быть строкового "
+"типа"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -1012,3 +1025,9 @@ msgstr "Ошибка чтения данных от процесса потом�
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Невозможно отобразить диалог помощи: %s\n"
+
+#~ msgid "Hide"
+#~ msgstr "Свернуть"
+
+#~ msgid "%s: Segmentation fault"
+#~ msgstr "%s: Ошибка сегментации"
