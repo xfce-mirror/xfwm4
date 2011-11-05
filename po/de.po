@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 17:10+0000\n"
+"POT-Creation-Date: 2011-11-05 23:10+0000\n"
 "PO-Revision-Date: 2011-11-05 23:44+0100\n"
 "Last-Translator: Jakob Kramer <jakob.kramer@gmx.de>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -799,8 +799,9 @@ msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_Versteckte (z.B. ikonifizierte) Fenster miteinbeziehen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "M_inimale Größe, unterhalb derer Fenster intelligent platziert werden:"
+msgstr "M_indestgröße zur intelligenten Fensterplatzierung:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Placement"
