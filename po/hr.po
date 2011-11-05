@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-11-05 11:22+0000\n"
 "PO-Revision-Date: 2010-06-12 00:06+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -379,11 +379,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
-msgstr ""
+msgstr "Promijeni  prozor za isti program"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
-msgstr ""
+msgstr "Promijeni program"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
@@ -654,7 +654,7 @@ msgstr "U _centru zaslona"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Po zadanom,smjesti prozore:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "C_ompositor"
@@ -779,7 +779,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "_Uključi skrivene (tj. iconified) prozore"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Minimum size of windows to trigger smart placement:"
@@ -840,42 +840,37 @@ msgstr "_Broj radnih prostora:"
 #: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (na %s)"
 
-#: ../src/main.c:140
-#, c-format
-msgid "%s: Segmentation fault"
-msgstr ""
-
-#: ../src/main.c:534
+#: ../src/main.c:548
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:536
+#: ../src/main.c:550
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:539
+#: ../src/main.c:553
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:541
+#: ../src/main.c:555
 msgid "Set the compositor mode (not supported)"
 msgstr ""
 
-#: ../src/main.c:543
+#: ../src/main.c:557
 msgid "Replace the existing window manager"
 msgstr "Zamjeni postojeći upravitelj prozora"
 
-#: ../src/main.c:544
+#: ../src/main.c:558
 msgid "Print version information and exit"
 msgstr "Ispiši informaciju o verziji i izađi"
 
-#: ../src/main.c:552
+#: ../src/main.c:566
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTi...]"
 
-#: ../src/main.c:559
+#: ../src/main.c:573
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Upiši \"%s --help\" za uporabu."
@@ -962,7 +957,7 @@ msgstr "_Zatvori"
 #. --------------------------------------------------------
 #: ../src/menu.c:68
 msgid "Destroy"
-msgstr ""
+msgstr "Uništi"
 
 #: ../src/menu.c:71
 msgid "_Quit"
@@ -980,7 +975,7 @@ msgstr ""
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr ""
+msgstr "%s: Ne mogu dodijeliti boju %s\n"
 
 #: ../src/settings.c:275
 #, c-format
@@ -1006,3 +1001,6 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#~ msgid "Minimize"
+#~ msgstr "Minimiziraj"
