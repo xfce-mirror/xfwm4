@@ -572,6 +572,19 @@ myScreenGetKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
     return key;
 }
 
+int
+myScreenGetModifierPressed (ScreenInfo *screen_info)
+{
+    Window dr, window;
+    unsigned int modifiers;
+    int rx, ry, wx, wy;
+
+    XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot,
+                   &dr, &window, &rx, &ry, &wx, &wy, &modifiers);
+
+    return (int) modifiers;
+}
+
 Client *
 myScreenGetClientFromWindow (ScreenInfo *screen_info, Window w, unsigned short mode)
 {

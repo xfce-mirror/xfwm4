@@ -184,6 +184,42 @@ clientCycleFocusAndRaise (Client *c)
     clientSetLastRaise (c);
 }
 
+static void
+clientCycleActivate (Client *c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Client *focused;
+    guint workspace;
+
+    if (c == NULL)
+    {
+        return;
+    }
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    workspace = c->win_workspace;
+    focused = clientGetFocus ();
+
+    if ((focused) && (c != focused))
+    {
+        /* We might be able to avoid this if we are about to switch workspace */
+        clientAdjustFullscreenLayer (focused, FALSE);
+    }
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
+    {
+        /* We are explicitely activating a window that was shown before show-desktop */
+        clientClearAllShowDesktop (screen_info);
+    }
+    if (workspace != screen_info->current_ws)
+    {
+        workspaceSwitch (screen_info, workspace, c, FALSE, myDisplayGetCurrentTime (display_info));
+    }
+
+    clientCycleFocusAndRaise (c);
+}
+
 static eventFilterStatus
 clientCycleEventFilter (XEvent * xevent, gpointer data)
 {
@@ -193,7 +229,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     Client *c, *removed;
     eventFilterStatus status;
     KeyCode cancel;
-    int key, modifier;
+    int key, modifiers;
     gboolean key_pressed, cycling, gone;
 
     TRACE ("entering clientCycleEventFilter");
@@ -208,7 +244,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     cancel = screen_info->params->keys[KEY_CANCEL].keycode;
-    modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
+    modifiers = (screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier |
+                 screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier);
     status = EVENT_FILTER_STOP;
     removed = NULL;
     cycling = TRUE;
@@ -264,8 +301,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                         c = c2;
                     }
 
-                    /* If last key press event had not our modifier pressed, finish cycling */
-                    if (!(xevent->xkey.state & modifier))
+                    /* If last key press event had not our modifiers pressed, finish cycling */
+                    if (!(xevent->xkey.state & modifiers))
                     {
                         cycling = FALSE;
                     }
@@ -291,10 +328,12 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             {
                 int keysym = XLookupKeysym (&xevent->xkey, 0);
 
-                if (!(xevent->xkey.state & modifier) ||
-                    (IsModifierKey(keysym) && (keysym != XK_Shift_L) && (keysym != XK_Shift_R)))
+                if (IsModifierKey(keysym))
                 {
-                    cycling = FALSE;
+                    if (!(myScreenGetModifierPressed (screen_info) & modifiers))
+                    {
+                        cycling = FALSE;
+                    }
                 }
             }
             break;
@@ -325,7 +364,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     ClientCycleData passdata;
     GList *client_list, *selected;
     gboolean g1, g2;
-    int key;
+    int key, modifier;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCycle");
@@ -336,6 +375,36 @@ clientCycle (Client * c, XKeyEvent * ev)
     client_list = clientCycleCreateList (c);
     if (!client_list)
     {
+        return;
+    }
+
+    modifier = 0;
+    key = myScreenGetKeyPressed (screen_info, ev);
+    if (key == KEY_CYCLE_REVERSE_WINDOWS)
+    {
+        selected = g_list_last (client_list);
+        modifier = screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier;
+    }
+    else
+    {
+        selected = g_list_next (client_list);
+        modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
+    }
+    if (!selected)
+    {
+        /* Only one element in list */
+        selected = client_list;
+    }
+
+    if (!modifier)
+    {
+        /*
+         * The shortcut has no modifier so there's no point in entering
+         * the cycle loop, just select the next or previous window and
+         * that's it...
+         */
+        clientCycleActivate ((Client *) selected->data);
+        g_list_free (client_list);
         return;
     }
 
@@ -353,21 +422,7 @@ clientCycle (Client * c, XKeyEvent * ev)
 
         return;
     }
-    key = myScreenGetKeyPressed (screen_info, ev);
 
-    if (key == KEY_CYCLE_REVERSE_WINDOWS)
-    {
-        selected = g_list_last (client_list);
-    }
-    else
-    {
-        selected = g_list_next (client_list);
-    }
-    if (!selected)
-    {
-        /* Only one element in list */
-        selected = client_list;
-    }
     passdata.wireframe = None;
 
     TRACE ("entering cycle loop");
@@ -389,28 +444,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     c = tabwinGetSelected (passdata.tabwin);
     if (c)
     {
-        Client *focused;
-        guint workspace;
-
-        workspace = c->win_workspace;
-        focused = clientGetFocus ();
-
-        if ((focused) && (c != focused))
-        {
-            /* We might be able to avoid this if we are about to switch workspace */
-            clientAdjustFullscreenLayer (focused, FALSE);
-        }
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
-        {
-            /* We are explicitely activating a window that was shown before show-desktop */
-            clientClearAllShowDesktop (screen_info);
-        }
-        if (workspace != screen_info->current_ws)
-        {
-            workspaceSwitch (screen_info, workspace, c, FALSE, myDisplayGetCurrentTime (display_info));
-        }
-
-        clientCycleFocusAndRaise (c);
+        clientCycleActivate (c);
     }
 
     tabwinDestroy (passdata.tabwin);
