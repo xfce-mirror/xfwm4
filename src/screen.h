@@ -212,6 +212,7 @@ void                     myScreenGrabKeys                       (ScreenInfo *);
 void                     myScreenUngrabKeys                     (ScreenInfo *);
 int                      myScreenGetKeyPressed                  (ScreenInfo *,
                                                                  XKeyEvent *);
+int                      myScreenGetModifierPressed             (ScreenInfo *);
 Client                  *myScreenGetClientFromWindow            (ScreenInfo *,
                                                                  Window,
                                                                  unsigned short);
