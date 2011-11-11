@@ -171,7 +171,7 @@ clientXSyncTimeout (gpointer data)
         wc.height = c->height;
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
     }
-    return (TRUE);
+    return (FALSE);
 }
 
 static void

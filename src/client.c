@@ -1433,7 +1433,7 @@ update_icon_idle_cb (gpointer data)
     }
     c->icon_timeout_id = 0;
 
-    return FALSE;
+    return (FALSE);
 }
 
 void

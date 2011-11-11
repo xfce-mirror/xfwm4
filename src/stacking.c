@@ -698,7 +698,7 @@ delayed_raise_cb (gpointer data)
     {
         clientRaise (c, None);
     }
-    return (TRUE);
+    return (FALSE);
 }
 
 void

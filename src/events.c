@@ -123,7 +123,6 @@ struct _XfwmButtonClickData
     Window w;
     guint button;
     guint clicks;
-    guint timeout;
     gint  x0;
     gint  y0;
     guint t0;
@@ -135,24 +134,6 @@ struct _XfwmButtonClickData
     gboolean allow_double_click;
 };
 
-static gboolean
-typeOfClick_end (gpointer data)
-{
-    XfwmButtonClickData *passdata;
-    TRACE ("typeOfClick_end(): Exit typeOfClick() event loop");
-
-    passdata = (XfwmButtonClickData *) data;
-    if (passdata->timeout)
-    {
-        g_source_remove (passdata->timeout);
-        passdata->timeout = 0;
-    }
-
-    gtk_main_quit ();
-
-    return (TRUE);
-}
-
 static eventFilterStatus
 typeOfClick_event_filter (XEvent * xevent, gpointer data)
 {
@@ -163,13 +144,19 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
 
     keep_going = TRUE;
     passdata = (XfwmButtonClickData *) data;
-    status = EVENT_FILTER_STOP;
+    status = EVENT_FILTER_CONTINUE;
 
     /* Update the display time */
     timestamp = myDisplayUpdateCurrentTime (passdata->display_info, xevent);
-    if (timestamp)
-        passdata->tcurrent = timestamp;
 
+    if (timestamp)
+    {
+        passdata->tcurrent = timestamp;
+        if (((gint) passdata->tcurrent - (gint) passdata->t0) > passdata->double_click_time)
+        {
+            keep_going = FALSE;
+        }
+    }
     if ((xevent->type == ButtonRelease) || (xevent->type == ButtonPress))
     {
         if (xevent->xbutton.button == passdata->button)
@@ -182,11 +169,19 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
         {
             keep_going = FALSE;
         }
+        status = EVENT_FILTER_STOP;
     }
     else if (xevent->type == MotionNotify)
     {
         passdata->xcurrent = xevent->xmotion.x_root;
         passdata->ycurrent = xevent->xmotion.y_root;
+
+        if ((ABS (passdata->x0 - passdata->xcurrent) > passdata->double_click_distance) ||
+            (ABS (passdata->y0 - passdata->ycurrent) > passdata->double_click_distance))
+        {
+            keep_going = FALSE;
+        }
+        status = EVENT_FILTER_STOP;
     }
     else if ((xevent->type == DestroyNotify) || (xevent->type == UnmapNotify))
     {
@@ -196,23 +191,15 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
             passdata->clicks = (guint) XFWM_BUTTON_UNDEFINED;
             keep_going = FALSE;
         }
-        status = EVENT_FILTER_CONTINUE;
-    }
-    else
-    {
-        status = EVENT_FILTER_CONTINUE;
     }
 
-    if ((ABS (passdata->x0 - passdata->xcurrent) > passdata->double_click_distance) ||
-        (ABS (passdata->y0 - passdata->ycurrent) > passdata->double_click_distance) ||
-        (((gint) passdata->tcurrent - (gint) passdata->t0) > passdata->double_click_time) ||
-        (!keep_going))
+    if (!keep_going)
     {
         TRACE ("click type=%u", passdata->clicks);
         TRACE ("time=%ims (timeout=%ims)", (gint) passdata->tcurrent - (gint) passdata->t0, passdata->double_click_time);
         TRACE ("dist x=%i (max=%i)", ABS (passdata->x0 - passdata->xcurrent), passdata->double_click_distance);
         TRACE ("dist y=%i (max=%i)", ABS (passdata->y0 - passdata->ycurrent), passdata->double_click_distance);
-        typeOfClick_end (data);
+        gtk_main_quit ();
     }
 
     return status;
@@ -255,12 +242,6 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.double_click_distance = display_info->double_click_distance;
     TRACE ("Double click time= %i, distance=%i\n", display_info->double_click_time,
                                                    display_info->double_click_distance);
-    /* Use G_PRIORITY_DEFAULT_IDLE to make sure the timeout occurs after possible events */
-    passdata.timeout =  g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE,
-                                           display_info->double_click_time,
-                                           (GSourceFunc) typeOfClick_end,
-                                           (gpointer) &passdata, NULL);
-
     TRACE ("entering typeOfClick loop");
     eventFilterPush (display_info->xfilter, typeOfClick_event_filter, &passdata);
     gtk_main ();
@@ -683,7 +664,6 @@ static void
 button1Action (Client * c, XButtonEvent * ev)
 {
     ScreenInfo *screen_info;
-    XEvent copy_event;
     XfwmButtonClickType tclick;
 
     g_return_if_fail (c != NULL);
@@ -697,11 +677,8 @@ button1Action (Client * c, XButtonEvent * ev)
     }
     clientRaise (c, None);
 
-    memcpy(&copy_event, ev, sizeof(XEvent));
-    tclick = typeOfClick (screen_info, c->window, &copy_event, TRUE);
-
-    if ((tclick == XFWM_BUTTON_DRAG)
-        || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
+    tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, TRUE);
+    if ((tclick == XFWM_BUTTON_DRAG) || (tclick == XFWM_BUTTON_CLICK_AND_DRAG))
     {
         clientMove (c, (XEvent *) ev);
     }
@@ -751,17 +728,9 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
     }
     else if (ev->button == Button3)
     {
-        /*
-           We need to copy the event to keep the original event untouched
-           for gtk to handle it (in case we open up the menu)
-         */
-
-        XEvent copy_event;
         XfwmButtonClickType tclick;
 
-        memcpy(&copy_event, ev, sizeof(XEvent));
-        tclick = typeOfClick (screen_info, c->window, &copy_event, FALSE);
-
+        tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, FALSE);
         if (tclick == XFWM_BUTTON_DRAG)
         {
             clientMove (c, (XEvent *) ev);
@@ -925,22 +894,10 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         {
             if (ev->button == Button1)
             {
-                /*
-                   We need to copy the event to keep the original event untouched
-                   for gtk to handle it (in case we open up the menu)
-                 */
-
-                XEvent copy_event;
                 XfwmButtonClickType tclick;
 
-                memcpy(&copy_event, ev, sizeof(XEvent));
-                tclick = typeOfClick (screen_info, c->window, &copy_event, TRUE);
-
-                if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
-                {
-                    clientClose (c);
-                }
-                else if (tclick != XFWM_BUTTON_UNDEFINED)
+                tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, FALSE);
+                if (tclick != XFWM_BUTTON_UNDEFINED)
                 {
                     if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
                     {
