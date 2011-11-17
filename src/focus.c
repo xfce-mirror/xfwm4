@@ -176,10 +176,15 @@ clientFocusNew(Client * c)
         }
         else if (client_focus->win_layer < c->win_layer)
         {
-            /* We short don't use focus stealing prevention against upper layers */
+            /* We don't use focus stealing prevention against upper layers */
             TRACE ("Ignoring startup prevention because the current focused window is on a lower layer");
             give_focus = TRUE;
             prevented = FALSE;
+        }
+        else if (FLAG_TEST (client_focus->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
+        {
+            give_focus = FALSE;
+            prevented = TRUE;
         }
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME))
         {

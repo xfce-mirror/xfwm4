@@ -123,6 +123,7 @@ struct _XfwmButtonClickData
     Window w;
     guint button;
     guint clicks;
+    guint timeout;
     gint  x0;
     gint  y0;
     guint t0;
@@ -133,6 +134,23 @@ struct _XfwmButtonClickData
     gint  double_click_distance;
     gboolean allow_double_click;
 };
+
+static gboolean
+typeOfClick_end (gpointer data)
+{
+    XfwmButtonClickData *passdata;
+
+    passdata = (XfwmButtonClickData *) data;
+    if (passdata->timeout)
+    {
+        g_source_remove (passdata->timeout);
+        passdata->timeout = 0;
+    }
+
+    gtk_main_quit ();
+
+    return (FALSE);
+}
 
 static eventFilterStatus
 typeOfClick_event_filter (XEvent * xevent, gpointer data)
@@ -199,7 +217,7 @@ typeOfClick_event_filter (XEvent * xevent, gpointer data)
         TRACE ("time=%ims (timeout=%ims)", (gint) passdata->tcurrent - (gint) passdata->t0, passdata->double_click_time);
         TRACE ("dist x=%i (max=%i)", ABS (passdata->x0 - passdata->xcurrent), passdata->double_click_distance);
         TRACE ("dist y=%i (max=%i)", ABS (passdata->y0 - passdata->ycurrent), passdata->double_click_distance);
-        gtk_main_quit ();
+        typeOfClick_end (data);
     }
 
     return status;
@@ -217,16 +235,6 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
 
     display_info = screen_info->display_info;
-    g = myScreenGrabPointer (screen_info, DOUBLE_CLICK_GRAB, None, ev->xbutton.time);
-
-    if (!g)
-    {
-        TRACE ("grab failed in typeOfClick");
-        gdk_beep ();
-        myScreenUngrabPointer (screen_info, ev->xbutton.time);
-        return XFWM_BUTTON_UNDEFINED;
-    }
-
     passdata.display_info = display_info;
     passdata.button = ev->xbutton.button;
     passdata.w = w;
@@ -242,13 +250,16 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     passdata.double_click_distance = display_info->double_click_distance;
     TRACE ("Double click time= %i, distance=%i\n", display_info->double_click_time,
                                                    display_info->double_click_distance);
+    passdata.timeout = g_timeout_add_full (G_PRIORITY_HIGH,
+                                           display_info->double_click_time,
+                                           (GSourceFunc) typeOfClick_end,
+                                           (gpointer) &passdata, NULL);
+
     TRACE ("entering typeOfClick loop");
     eventFilterPush (display_info->xfilter, typeOfClick_event_filter, &passdata);
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving typeOfClick loop");
-
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
     return (XfwmButtonClickType) passdata.clicks;
 }
@@ -896,8 +907,13 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
             {
                 XfwmButtonClickType tclick;
 
-                tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, FALSE);
-                if (tclick != XFWM_BUTTON_UNDEFINED)
+                tclick = typeOfClick (screen_info, c->window, (XEvent *) ev, TRUE);
+
+                if (tclick == XFWM_BUTTON_DOUBLE_CLICK)
+                {
+                    clientClose (c);
+                }
+                else if (tclick != XFWM_BUTTON_UNDEFINED)
                 {
                     if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
                     {
