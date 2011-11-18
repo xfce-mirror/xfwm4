@@ -2824,10 +2824,10 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
 
         placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
 
-        clientScreenResize (screen_info, FALSE);
-
         compositorUpdateScreenSize (screen_info);
     }
+
+    clientScreenResize (screen_info, FALSE);
 }
 
 /*
@@ -2876,14 +2876,14 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
                         screen_info->width, screen_info->height, screen_info->margins);
 
         placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
-
-        clientScreenResize (screen_info, (screen_info->num_monitors < previous_num_monitors));
     }
 
     if (size_changed)
     {
         compositorUpdateScreenSize (screen_info);
     }
+
+    clientScreenResize (screen_info, (screen_info->num_monitors < previous_num_monitors));
 }
 
 void
