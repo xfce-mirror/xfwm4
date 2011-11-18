@@ -235,6 +235,16 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
 
     display_info = screen_info->display_info;
+    g = myScreenGrabPointer (screen_info, DOUBLE_CLICK_GRAB, None, ev->xbutton.time);
+
+    if (!g)
+    {
+        TRACE ("grab failed in typeOfClick");
+        gdk_beep ();
+        myScreenUngrabPointer (screen_info, ev->xbutton.time);
+        return XFWM_BUTTON_UNDEFINED;
+    }
+
     passdata.display_info = display_info;
     passdata.button = ev->xbutton.button;
     passdata.w = w;
@@ -260,6 +270,8 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving typeOfClick loop");
+
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
     return (XfwmButtonClickType) passdata.clicks;
 }
@@ -2801,10 +2813,10 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
 
         placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
 
-        clientScreenResize (screen_info, FALSE);
-
         compositorUpdateScreenSize (screen_info);
     }
+
+    clientScreenResize (screen_info, FALSE);
 }
 
 /*
@@ -2853,14 +2865,14 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
                         screen_info->width, screen_info->height, screen_info->margins);
 
         placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
-
-        clientScreenResize (screen_info, (screen_info->num_monitors < previous_num_monitors));
     }
 
     if (size_changed)
     {
         compositorUpdateScreenSize (screen_info);
     }
+
+    clientScreenResize (screen_info, (screen_info->num_monitors < previous_num_monitors));
 }
 
 void
@@ -2874,9 +2886,9 @@ initPerScreenCallbacks (ScreenInfo *screen_info)
     g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
                       GTK_SIGNAL_FUNC (client_event_cb), NULL);
     g_object_connect (G_OBJECT(screen_info->gscr),
-                      "signal::notify::size-changed",
+                      "signal::size-changed",
                       G_CALLBACK(size_changed_cb), (gpointer) (screen_info),
-                      "signal::notify::monitors-changed",
+                      "signal::monitors-changed",
                       G_CALLBACK(monitors_changed_cb), (gpointer) (screen_info),
                       NULL);
 }
