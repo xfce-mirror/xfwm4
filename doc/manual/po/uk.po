@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uk\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n\\n\\n\\n\\n\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n\\n\\n\\n\\n\\n\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
@@ -23,7 +23,6 @@ msgstr "@@image: 'images/titlebar.png'; md5=56d7905e86d8b9ee03054561f8075752"
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: xfwm4.xml461(None)
-#, fuzzy
 msgid ""
 "@@image: 'images/decoration_style.png'; md5=5022390bb1a6154cd7225a8819aad790"
 msgstr "@@image: 'images/decoration_style.png'; md5=5022390bb1a6154cd7225a8819aad790"
@@ -32,7 +31,6 @@ msgstr "@@image: 'images/decoration_style.png'; md5=5022390bb1a6154cd7225a8819aa
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: xfwm4.xml530(None)
-#, fuzzy
 msgid ""
 "@@image: 'images/keyboard_shortcuts.png'; "
 "md5=3063f52810e263badf47b370c5928726"
@@ -42,7 +40,6 @@ msgstr "@@image: 'images/keyboard_shortcuts.png'; md5=3063f52810e263badf47b370c5
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: xfwm4.xml602(None)
-#, fuzzy
 msgid ""
 "@@image: 'images/compose_shortcut.png'; md5=3d6eea671fdd800a3c5379b71e1eb3e8"
 msgstr "@@image: 'images/compose_shortcut.png'; md5=3d6eea671fdd800a3c5379b71e1eb3e8"
@@ -51,7 +48,6 @@ msgstr "@@image: 'images/compose_shortcut.png'; md5=3d6eea671fdd800a3c5379b71e1e
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: xfwm4.xml635(None)
-#, fuzzy
 msgid "@@image: 'images/focus.png'; md5=53a29587d206af848f07f4623b76c61a"
 msgstr "@@image: 'images/focus.png'; md5=53a29587d206af848f07f4623b76c61a"
 
@@ -59,7 +55,6 @@ msgstr "@@image: 'images/focus.png'; md5=53a29587d206af848f07f4623b76c61a"
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: xfwm4.xml709(None)
-#, fuzzy
 msgid ""
 "@@image: 'images/misc_wm_prefs.png'; md5=49847fe3486b9327e4da7429e236832a"
 msgstr "@@image: 'images/misc_wm_prefs.png'; md5=49847fe3486b9327e4da7429e236832a"
@@ -68,7 +63,6 @@ msgstr "@@image: 'images/misc_wm_prefs.png'; md5=49847fe3486b9327e4da7429e236832
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: xfwm4.xml785(None)
-#, fuzzy
 msgid ""
 "@@image: 'images/xfwm_workspaces.png'; md5=66a06d2b9faaa634b7a0f7a40768013c"
 msgstr "@@image: 'images/xfwm_workspaces.png'; md5=66a06d2b9faaa634b7a0f7a40768013c"
@@ -77,7 +71,6 @@ msgstr "@@image: 'images/xfwm_workspaces.png'; md5=66a06d2b9faaa634b7a0f7a407680
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: xfwm4.xml831(None)
-#, fuzzy
 msgid ""
 "@@image: 'images/workspace_margins.png'; md5=8e53c961fe17d3a2255c8ea591d96016"
 msgstr "@@image: 'images/workspace_margins.png'; md5=8e53c961fe17d3a2255c8ea591d96016"
@@ -87,32 +80,26 @@ msgid "Xfce 4 Window Manager"
 msgstr "Менеджер вікон Xfce 4"
 
 #: xfwm4.xml17(year) xfwm4.xml21(year)
-#, fuzzy
 msgid "2004"
 msgstr "2004"
 
 #: xfwm4.xml17(holder)
-#, fuzzy
 msgid "François Le Clainche"
 msgstr "François Le Clainche"
 
 #: xfwm4.xml21(holder)
-#, fuzzy
 msgid "Jasper Huijsmans"
 msgstr "Jasper Huijsmans"
 
 #: xfwm4.xml44(firstname)
-#, fuzzy
 msgid "François"
 msgstr "François"
 
 #: xfwm4.xml44(surname)
-#, fuzzy
 msgid "Le Clainche"
 msgstr "Le Clainche"
 
 #: xfwm4.xml46(email)
-#, fuzzy
 msgid "fleclainche@wanadoo.fr"
 msgstr "fleclainche@wanadoo.fr"
 
