@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-23 05:50+0000\n"
+"POT-Creation-Date: 2011-11-23 15:18+0000\n"
 "PO-Revision-Date: 2011-02-19 17:21+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: Polish <>\n"
@@ -275,7 +275,7 @@ msgstr "Przyleganie krawędzi okien do krawędzi _ekranu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
-msgstr "Wyświetla okno na wszyskich obszarach roboczych"
+msgstr "Wyświetla okno na wszystkich obszarach roboczych"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
@@ -284,7 +284,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
-msgstr "Wyśwetla tytuł okna. Tego elementu nie można usunąć."
+msgstr "Wyświetla tytuł okna. Tego elementu nie można usunąć."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
@@ -424,7 +424,7 @@ msgstr "Przemieszczenie na spód"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Raise or lower window"
-msgstr "Przemieść okno na wierzch/spód"
+msgstr "Przemieszczenie okna na wierzch lub spód"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -885,7 +885,7 @@ msgstr "[ARGUMENT...]"
 #: ../src/main.c:567
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy."
+msgstr "Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
