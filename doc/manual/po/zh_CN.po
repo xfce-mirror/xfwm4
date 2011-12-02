@@ -1,13 +1,13 @@
-# Simplified Chinese for xfwm4-docs package.
-# Copyright (C) 2002-2011 The Xfce development team.
-# This file is distributed under the same license as the xfwm4-docs package.
+# Simplified Chinese for xfwm4.docs package.
+# This file is distributed under the same license as the xfwm4.docs package.
 # Chipong Luo <chipong_l@yahoo.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4-docs\n"
+"Project-Id-Version: xfwm4.docs\n"
 "POT-Creation-Date: 2011-05-29 16:29+0200\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese/Simplified <xfce-i18n@xfce.org>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -607,7 +607,7 @@ msgstr "当鼠标指针处于窗口内任何地方时使用 Alt + 左击 并移�
 #: xfwm4.xml:376(para)
 msgid ""
 "use Control + Alt + Shift + (up, down, left or right) Arrow keyboard shortcut"
-msgstr "使用 Ctrl + Alt + Shift + 方向键(上、下、左或右)键盘快捷键"
+msgstr "使用 Ctrl + Alt + Shift + (上、下、左或右)方向键键盘快捷键"
 
 #: xfwm4.xml:391(term)
 msgid "Move a window to another workspace"
