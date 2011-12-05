@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.xfce-4-8.untitled\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-01 05:39+0000\n"
+"POT-Creation-Date: 2011-12-05 07:39+0000\n"
 "PO-Revision-Date: 2011-12-01 09:34+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -51,7 +51,6 @@ msgstr "Útgáfuupplýsingar"
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
 #: ../settings-dialogs/xfwm4-settings.c:942
-#, fuzzy
 msgid "."
 msgstr "."
 
@@ -180,7 +179,6 @@ msgstr "<i>Lítill</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
 msgstr "<i>Breidd</i>"
 
@@ -225,12 +223,10 @@ msgid "Focus follows _mouse"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
 msgid "Hidden"
 msgstr "Falin"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Hide"
 msgstr "Fela"
 
@@ -247,12 +243,10 @@ msgid "Ke_yboard"
 msgstr "Ly_klaborð"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Maximize"
 msgstr "Hámarka"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Menu"
 msgstr "Valmynd"
 
@@ -261,7 +255,6 @@ msgid "Raise window when clicking _inside application window"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
-#, fuzzy
 msgid "Shade"
 msgstr "Skyggja"
 
@@ -274,7 +267,6 @@ msgid "Snap windows to screen _border"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
 msgid "Stick"
 msgstr "Festa"
 
@@ -287,7 +279,6 @@ msgid "The window title cannot be removed"
 msgstr "Ekki er hægt að fjarlægja þennan glugga titil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
-#, fuzzy
 msgid "Title"
 msgstr "Titill"
 
@@ -313,7 +304,6 @@ msgid "_Focus"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-#, fuzzy
 msgid "_Reset to Defaults"
 msgstr "_Endurheimta upprunalegar stillingar"
 
@@ -323,47 +313,39 @@ msgstr "_Stíll"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
-#, fuzzy
 msgid "Shade window"
 msgstr "Skuggi glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
-#, fuzzy
 msgid "Hide window"
 msgstr "Fela glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 #: ../settings-dialogs/xfwm4-settings.c:249
-#, fuzzy
 msgid "Maximize window"
 msgstr "Hámarka glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Fill window"
 msgstr "Fylla glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
-#, fuzzy
 msgid "Nothing"
 msgstr "Ekkert"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
 #: ../settings-dialogs/xfwm4-settings.c:239
-#, fuzzy
 msgid "Left"
 msgstr "Vinstri"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
-#, fuzzy
 msgid "Center"
 msgstr "Miðjað"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 #: ../settings-dialogs/xfwm4-settings.c:240
-#, fuzzy
 msgid "Right"
 msgstr "Hægri"
 
@@ -372,17 +354,14 @@ msgid "Window operations menu"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:237
-#, fuzzy
 msgid "Up"
 msgstr "Upp"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
-#, fuzzy
 msgid "Down"
 msgstr "Niður"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
-#, fuzzy
 msgid "Cancel"
 msgstr "Hætta við"
 
@@ -403,27 +382,22 @@ msgid "Switch application"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:246
-#, fuzzy
 msgid "Close window"
 msgstr "Loka glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
-#, fuzzy
 msgid "Maximize window horizontally"
 msgstr "Hámarka glugga lárétt"
 
 #: ../settings-dialogs/xfwm4-settings.c:248
-#, fuzzy
 msgid "Maximize window vertically"
 msgstr "Hámarka glugga lóðrétt"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
-#, fuzzy
 msgid "Move window"
 msgstr "Flytja glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
 msgid "Resize window"
 msgstr "Breyta stærð á glugga"
 
@@ -484,62 +458,50 @@ msgid "Move window to workspace 1"
 msgstr "Flytja glugga yfir á vinnusvæði 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 2"
 msgstr "Flytja yfir á vinnusvæði 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 3"
 msgstr "Flytja yfir á vinnusvæði 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 4"
 msgstr "Flytja yfir á vinnusvæði 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 5"
 msgstr "Flytja yfir á vinnusvæði 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 6"
 msgstr "Flytja yfir á vinnusvæði 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 7"
 msgstr "Flytja yfir á vinnusvæði 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 8"
 msgstr "Flytja yfir á vinnusvæði 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 9"
 msgstr "Flytja yfir á vinnusvæði 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 10"
 msgstr "Flytja yfir á vinnusvæði 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
 msgid "Move window to workspace 11"
 msgstr "Flytja yfir á vinnusvæði 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
 msgid "Move window to workspace 12"
 msgstr "Flytja yfir á vinnusvæði 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Show desktop"
 msgstr "Sýna skjáborðið"
 
@@ -745,7 +707,6 @@ msgid "Opacity of windows during _move:"
 msgstr "Gegnsæi glugga þegar verið er að færa:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
 msgstr "Gegnsæi glugga þegar verið er að breyta stærð:"
 
@@ -854,7 +815,8 @@ msgid "Change workspace name"
 msgstr "Breyta heiti vinnusvæðis"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -892,7 +854,6 @@ msgid "Replace the existing window manager"
 msgstr ""
 
 #: ../src/main.c:558
-#, fuzzy
 msgid "Print version information and exit"
 msgstr "Prenta upplýsingar um útgáfu og hætta"
 
