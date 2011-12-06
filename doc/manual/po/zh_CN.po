@@ -113,7 +113,7 @@ msgstr "fleclainche@wanadoo.fr"
 #.   </revhistory>
 #: xfwm4.xml:74(releaseinfo)
 msgid "This manual describes @PACKAGE_NAME@ version @PACKAGE_VERSION@"
-msgstr "本手册介绍了 @PACKAGE_VERSION@ 版本 的@PACKAGE_NAME@"
+msgstr "此手册介绍了 @PACKAGE_VERSION@ 版的 @PACKAGE_NAME@"
 
 #: xfwm4.xml:80(title)
 msgid "Introduction"
@@ -129,6 +129,12 @@ msgid ""
 "provides the window decorations and allows you for instance to move, resize "
 "or close them."
 msgstr ""
+"Xfce 4 窗口管理器是 <ulink url=\"http://www.xfce.org\" "
+"type=\"html\">Xfce 桌面环境</ulink> 的一部分。实际运行的命令是 "
+"<application>@PACKAGE_NAME@</application>。要在后台运行它可使用 "
+"<command><application>@PACKAGE_NAME@</application> --daemon</command>。"
+"窗口管理器负责屏幕上窗口的放置、提供窗口修饰和"
+"例如让您移动、更改大小或关闭它们。"
 
 #: xfwm4.xml:90(para)
 msgid ""
@@ -142,6 +148,15 @@ msgid ""
 "decorations (borders, title bar and window buttons) can be configured by "
 "using window manager themes."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> 高度遵循在 "
+"<ulink url=\"http://www.freedesktop.org\" "
+"type=\"html\">freedesktop.org</ulink> 中定义的标准。"
+"因此，现在必须在应用程序中实现特殊的比如"
+"使窗口无边界或为应用程序提供图标的功能；"
+"您可以不再使用窗口管理器去强迫不同的行为。"
+" <application>@PACKAGE_NAME@</application> 的伟大功能之一是它的主题性。"
+"窗口修饰(边界、标题栏和窗口按钮)可以使用"
+"窗口管理器主题配置。"
 
 #: xfwm4.xml:101(para)
 msgid ""
@@ -149,6 +164,9 @@ msgid ""
 "xinerama and real multiscreen modes, useful when you have more than one "
 "monitor connected to your computer."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> 提供多传感头支持，"
+"对于多屏拼接和真实的多屏模式，在您有不止一个显示器"
+"接到计算机上时有用。"
 
 #: xfwm4.xml:105(para)
 msgid ""
@@ -158,6 +176,11 @@ msgid ""
 "management. Tasks other than managing windows, like setting a background "
 "image or launching programs, need to be performed by other programs."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> 可以单独运行，"
+"但如果您使用此方式，在您要用图形化的设置管理时"
+"您会需要 <ulink url=\"xfce-mcs-manager.html\" "
+"type=\"http\">Xfce 4 设置管理器</ulink>。非窗口管理方面的任务，"
+"如设置背景图片或启动程序，则要由其它程序来执行。"
 
 #: xfwm4.xml:112(para)
 msgid ""
@@ -173,6 +196,16 @@ msgid ""
 "<application>@PACKAGE_NAME@</application> startup using the '--"
 "compositor=off' argument."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> 包含它自己的合成管理器，"
+"它利用新的 <ulink url=\"http://freedesktop.org/Software/"
+"xorg\" type=\"html\">X.org</ulink> 中的服务器扩展。合成器如它自己中的"
+"窗口管理器一样，它管理所有窗口堆栈、监视所有种类的 "
+"X 事件并作相应反应。在窗口管理器中嵌入此合成管理器"
+"还有助于保持各种视觉效果与窗口事件同步。如果您要"
+"使用此合成器，您不得不使用 --enable-compositor "
+"配置选项编译 <application>@PACKAGE_NAME@</application>。不管怎样，"
+"您可以使用 ‘--compositor=off’ 参数使 "
+"<application>@PACKAGE_NAME@</application> 在启动时禁用此合成器。"
 
 #: xfwm4.xml:125(title)
 msgid "Using <application>@PACKAGE_NAME@</application>"
@@ -187,6 +220,8 @@ msgid ""
 "The window manager provides borders, a title bar and window buttons to "
 "application windows. The look is defined by the window manager theme."
 msgstr ""
+"窗口管理器为应用程序窗口提供边框、标题栏和窗口按钮。"
+"外观由窗口管理器主题定义。"
 
 #: xfwm4.xml:134(para)
 msgid ""
@@ -194,6 +229,8 @@ msgid ""
 "buttons and a title on regular application windows. The six buttons perform "
 "these basic functions:"
 msgstr ""
+"默认的主题中 <application>@PACKAGE_NAME@</application> 在常规应用程序窗口上显示"
+"六个按钮和一个标题。此六个按钮执行这些基本功能："
 
 #: xfwm4.xml:140(title)
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons"
@@ -202,13 +239,15 @@ msgstr "<application>@PACKAGE_NAME@</application> 标题栏按钮"
 #: xfwm4.xml:148(phrase)
 msgid ""
 "<application>@PACKAGE_NAME@</application> title bar buttons and functions"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> 标题栏按钮和功能"
 
 #: xfwm4.xml:154(para)
 msgid ""
 "You can open the window menu with a left-click on the menu button on the "
 "title bar, or with a right-click on the window title area itself."
 msgstr ""
+"左击标题栏上的菜单按钮或右击窗口标题区域本身，您可以"
+"打开窗口。"
 
 #: xfwm4.xml:157(para)
 msgid ""
@@ -216,6 +255,8 @@ msgid ""
 "menu with a right-click on one of the taskbar entries; it includes several "
 "items among those available in the window menu."
 msgstr ""
+"如果您使用 <application>xftaskbar4</application>，在任务栏某个"
+"条目上右击，您能打开一个动作菜单；在窗口菜单中它包含几个条目在其中。"
 
 #: xfwm4.xml:165(term)
 msgid "Give focus to a window"
