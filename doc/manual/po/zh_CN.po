@@ -256,11 +256,12 @@ msgid ""
 "items among those available in the window menu."
 msgstr ""
 "如果您使用 <application>xftaskbar4</application>，在任务栏某个"
-"条目上右击，您能打开一个动作菜单；在窗口菜单中它包含几个条目在其中。"
+"条目上右击，您能打开一个动作菜单；与这些在窗口"
+"菜单中的一道它包含几个条目。"
 
 #: xfwm4.xml:165(term)
 msgid "Give focus to a window"
-msgstr ""
+msgstr "给窗口焦点"
 
 #: xfwm4.xml:167(para)
 msgid ""
@@ -269,6 +270,9 @@ msgid ""
 "To obtain more details about focus options, please refer to the <ulink url="
 "\"#focus\">corresponding section</ulink> below."
 msgstr ""
+"如果您要窗口接受键盘和鼠标输入，您需要给此窗口焦点。"
+"窗口修饰颜色会依照焦点更改。要获得有关焦点选项的详情，"
+"请参考以下的 <ulink url=\"#focus\">相关章节</ulink>。"
 
 #: xfwm4.xml:172(para)
 msgid ""
@@ -279,6 +283,11 @@ msgid ""
 "<application>@PACKAGE_NAME@</application> will highlight the outline of the "
 "window that will receive the focus."
 msgstr ""
+"键盘快捷键让您将焦点从一个窗口切换到其它窗口："
+"按住 Alt 然后重复按 Tab 直至到达您要聚焦的窗口。"
+"如果您使用它，您会看到一个小的显示应用程序名、它的"
+"图标和窗口标题的弹出窗口。且 <application>@PACKAGE_NAME@</application> "
+"会突出显示将获取焦点的窗口的轮廓。"
 
 #. <para>
 #. 	    If you want the panel, and apps that do not appear in the taskbar,
@@ -296,10 +305,12 @@ msgid ""
 "NOTE: the use of a keyboard shortcut in an application needs the application "
 "window to have the focus :)"
 msgstr ""
+"注意：在应用程序中使用键盘快捷键需要应用程序窗口"
+"获得焦点 :)"
 
 #: xfwm4.xml:201(term)
 msgid "Maximize / unmaximize windows"
-msgstr "最大化/恢复窗口"
+msgstr "最大化/取消最大化窗口"
 
 #: xfwm4.xml:203(para)
 msgid ""
@@ -308,6 +319,10 @@ msgid ""
 "type=\"http\">workspace settings</ulink>). You can maximize a window either "
 "vertically, horizontally, or both at once."
 msgstr ""
+"如果您最大化窗口，它会在您的显示器上扩展并使用所有"
+"可用的空间(如 <ulink url=\"xfdesktop.html#xfdesktop-"
+"workspace\" type=\"http\">workspace settings</ulink> 中定义的)"
+"您可以竖直、水平最大化窗口，或二者同时。"
 
 #: xfwm4.xml:209(para)
 msgid "To maximize a window, perform one of those actions:"
@@ -320,11 +335,11 @@ msgstr "点击标题栏上的最大化按钮"
 #: xfwm4.xml:215(para)
 msgid ""
 "open the window menu from the title bar and choose the \"maximize\" item"
-msgstr ""
+msgstr "从标题栏中打开窗口菜单并选择 “最大化” 条目"
 
 #: xfwm4.xml:221(para)
 msgid "use Alt + F5 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F5 键盘快捷键"
 
 #: xfwm4.xml:225(para)
 msgid ""
@@ -332,64 +347,73 @@ msgid ""
 "size of your screen without showing the window borders) by using the "
 "customizable Alt + F11 keyboard shortcut."
 msgstr ""
+"通过可自定义的 Alt + F11 键盘快捷键，您能让任何"
+"窗口以全屏模式出现(这样会不显示窗口边框而使用屏幕的"
+"全部大小)。"
 
 #: xfwm4.xml:230(para)
 msgid "To maximize a window vertically :"
-msgstr ""
+msgstr "要竖直最大化窗口："
 
 #: xfwm4.xml:232(para)
 msgid "middle-click the maximize button of the title bar"
-msgstr ""
+msgstr "中击标题栏上的最大化按钮"
 
 #: xfwm4.xml:233(para)
 msgid "use Alt + F6 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F6 键盘快捷键"
 
 #: xfwm4.xml:236(para)
 msgid "To maximize a window horizontally :"
-msgstr ""
+msgstr "要水平最大化窗口："
 
 #: xfwm4.xml:239(para)
 msgid "right-click the maximize button of the title bar"
-msgstr ""
+msgstr "右击标题栏上的最大化按钮"
 
 #: xfwm4.xml:240(para)
 msgid "use Alt + F7 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F7 键盘快捷键"
 
 #: xfwm4.xml:243(para)
 msgid ""
 "When a window has been maximized in a way or another, it can be restored to "
 "its previous size doing one of these actions :"
 msgstr ""
+"当窗口以这个或那个方式最大化以后，您能采用以下某个动作"
+"恢复它先前的大小："
 
 #: xfwm4.xml:247(para)
 msgid "click the unmaximize button of the title bar"
-msgstr ""
+msgstr "点击标题栏上的取消最大化按钮"
 
 #: xfwm4.xml:248(para)
 msgid "use the same keyboard shortcut once again"
-msgstr ""
+msgstr "再一次使用相同的键盘快捷键"
 
 #: xfwm4.xml:249(para)
 msgid "choose the \"Unmaximize\" item in the window menu"
-msgstr ""
+msgstr "在窗口菜单中选择 “取消最大化” 条目"
 
 #: xfwm4.xml:255(term)
 msgid "Resize windows"
-msgstr ""
+msgstr "调整窗口大小"
 
 #: xfwm4.xml:257(para)
 msgid ""
 "Although certain special windows can not be resized, you are able to resize "
 "most of them to fit your needs."
 msgstr ""
+"虽然不能调整某些特殊窗口的大小，您能按自己所需调整"
+"绝大多数窗口的大小。"
 
 #: xfwm4.xml:260(para)
 msgid ""
 "you can use the edges and corners of the window frame to modify its size, "
 "dragging them with the mouse"
 msgstr ""
+"您可以使用窗口框架的边缘或拐角来修改其大小，用鼠标"
+"拖动它们。"
 
 #: xfwm4.xml:262(para)
 msgid ""
@@ -397,32 +421,37 @@ msgid ""
 "anywhere over the window frame; it will act as if you were dragging the "
 "bottom-right corner of the window"
 msgstr ""
+"在鼠标指针位于窗口框架中的任何地方时，您能使用 Alt "
+"加右击快捷键；这样所起的作用与您拖动窗口的右下角是"
+"一样的。"
 
 #: xfwm4.xml:265(para)
 msgid ""
 "you can use practical keyboard shortcuts : Shift + Alt + (up, down, right or "
 "left) Arrow"
 msgstr ""
+"您能使用实用的键盘快捷键："
+"Shift + Alt + (上、下、右、或左)方向键"
 
 #: xfwm4.xml:279(term)
 msgid "Hide / unhide windows"
-msgstr "隐藏/显示窗口"
+msgstr "隐藏/取消隐藏窗口"
 
 #: xfwm4.xml:281(para)
 msgid "You can hide a window performing one of these actions :"
-msgstr ""
+msgstr "您可以执行以下某个动作来隐藏窗口："
 
 #: xfwm4.xml:283(para)
 msgid "click the hide button of the title bar"
-msgstr ""
+msgstr "点击标题栏的隐藏按钮"
 
 #: xfwm4.xml:284(para)
 msgid "open the window menu from the title bar and choose the \"Hide\" item"
-msgstr ""
+msgstr "从标题栏上打开窗口菜单并选择 “隐藏” 条目"
 
 #: xfwm4.xml:286(para)
 msgid "use Alt + F8 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F8 键盘快捷键"
 
 #: xfwm4.xml:288(para)
 msgid ""
@@ -430,6 +459,9 @@ msgid ""
 "one you are using, in only one action : click the menu button of the title "
 "bar and choose \"Hide all others\"."
 msgstr ""
+"或者，除了您正在使用的窗口，您能隐藏当前工作区中的"
+"所有窗口，只需一个动作：点击标题栏上的菜单按钮并"
+"选择 “其它全部隐藏”。"
 
 #: xfwm4.xml:291(para)
 msgid ""
