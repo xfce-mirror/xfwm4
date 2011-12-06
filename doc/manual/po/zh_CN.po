@@ -1,13 +1,13 @@
-# Simplified Chinese for xfwm4-docs package.
-# Copyright (C) 2002-2011 The Xfce development team.
-# This file is distributed under the same license as the xfwm4-docs package.
+# Simplified Chinese for xfwm4.docs package.
+# This file is distributed under the same license as the xfwm4.docs package.
 # Chipong Luo <chipong_l@yahoo.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4-docs\n"
+"Project-Id-Version: xfwm4.docs\n"
 "POT-Creation-Date: 2011-05-29 16:29+0200\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese/Simplified <xfce-i18n@xfce.org>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -127,12 +127,12 @@ msgid ""
 "provides the window decorations and allows you for instance to move, resize "
 "or close them."
 msgstr ""
-"Xfce 4 窗口管理器是 <ulink url=\"http://www.xfce.org\" type=\"html\">Xfce "
-"Desktop Environment</ulink> 的一部分。实际运行的命令是 "
-"<application>@PACKAGE_NAME@</application> 。要在后台运行它可使用 "
-"<command><application>@PACKAGE_NAME@</application> --daemon</command> 。"
-"窗口管理器负责屏幕上窗口的位置、修饰窗口，让您移动窗口、"
-"更改窗口大小或关闭窗口。"
+"Xfce 4 窗口管理器是 <ulink url=\"http://www.xfce.org\" "
+"type=\"html\">Xfce 桌面环境</ulink> 的一部分。实际运行的命令是 "
+"<application>@PACKAGE_NAME@</application>。要在后台运行它可使用 "
+"<command><application>@PACKAGE_NAME@</application> --daemon</command>。"
+"窗口管理器负责屏幕上窗口的放置、提供窗口修饰和"
+"例如让您移动、更改大小或关闭它们。"
 
 #: xfwm4.xml:90(para)
 msgid ""
@@ -146,12 +146,15 @@ msgid ""
 "decorations (borders, title bar and window buttons) can be configured by "
 "using window manager themes."
 msgstr ""
-"<ulink url=\"http://www.freedesktop.org\" type=\"html\">freedesktop.org"
-"</ulink> 中定义的标准是 <application>@PACKAGE_NAME@</application> 高度遵循的。"
-"因此，某些特殊的功能现在必须在应用程序中应用，比如使窗口无边界"
-"或为应用程序提供图标；您再也用不着使用窗口管理器去强迫使用不同的"
-"行为。 <application>@PACKAGE_NAME@</application> 的重要功能之一是它的可主题化。"
-"窗口修饰(边界、标题栏和窗口按钮)可以由窗口管理器主题来配置。"
+"<application>@PACKAGE_NAME@</application> 高度遵循在 "
+"<ulink url=\"http://www.freedesktop.org\" "
+"type=\"html\">freedesktop.org</ulink> 中定义的标准。"
+"因此，现在必须在应用程序中实现特殊的比如"
+"使窗口无边界或为应用程序提供图标的功能；"
+"您可以不再使用窗口管理器去强迫不同的行为。"
+" <application>@PACKAGE_NAME@</application> 的伟大功能之一是它的主题性。"
+"窗口修饰(边界、标题栏和窗口按钮)可以使用"
+"窗口管理器主题配置。"
 
 #: xfwm4.xml:101(para)
 msgid ""
@@ -159,8 +162,9 @@ msgid ""
 "xinerama and real multiscreen modes, useful when you have more than one "
 "monitor connected to your computer."
 msgstr ""
-"<application>@PACKAGE_NAME@</application> 提供多传感头支持，无论是双屏还是真实的多屏"
-"模式，在您有一个以上的显示器接到计算机上时，此支持是有用的。"
+"<application>@PACKAGE_NAME@</application> 提供多传感头支持，"
+"对于多屏拼接和真实的多屏模式，在您有不止一个显示器"
+"接到计算机上时有用。"
 
 #: xfwm4.xml:105(para)
 msgid ""
@@ -170,10 +174,11 @@ msgid ""
 "management. Tasks other than managing windows, like setting a background "
 "image or launching programs, need to be performed by other programs."
 msgstr ""
-"<application>@PACKAGE_NAME@</application> 可以单独运行，但如果您使用此种方式，"
-"如果您想使用图形化的设置管理，您需要 <ulink url=\"xfce-mcs-manager.html\" "
-"type=\"http\">Xfce 4 设置管理器</ulink> 。非窗口管理方面的任务，比如设置"
-"背景或启动程序，则要由其它程序来完成。"
+"<application>@PACKAGE_NAME@</application> 可以单独运行，"
+"但如果您使用此方式，在您要用图形化的设置管理时"
+"您会需要 <ulink url=\"xfce-mcs-manager.html\" "
+"type=\"http\">Xfce 4 设置管理器</ulink>。非窗口管理方面的任务，"
+"如设置背景图片或启动程序，则要由其它程序来执行。"
 
 #: xfwm4.xml:112(para)
 msgid ""
@@ -189,15 +194,16 @@ msgid ""
 "<application>@PACKAGE_NAME@</application> startup using the '--"
 "compositor=off' argument."
 msgstr ""
-"<application>@PACKAGE_NAME@</application> 包含它自己的合成管理器，此合成管理器利用"
-"<ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">"
-"X.org</ulink> 中的新的服务扩展。合成器如它自己中的窗口管理器一样，"
-"它管理所有窗口堆栈、监视所有种类的 X 事件和相应的反应。"
-"将此合成管理器内嵌在窗口管理器中还有助于各种视觉效果于"
-"窗口事件同步。如果您要使用此合成器，您必须用 --enable-"
-"compositor 配置选项编译 <application>@PACKAGE_NAME@</application> 。不管怎样，您"
-"可以使用 ‘--compositor=off’ 参数使 <application>@PACKAGE_NAME@</application> "
-"在启动时禁用合成器。"
+"<application>@PACKAGE_NAME@</application> 包含它自己的合成管理器，"
+"它利用新的 <ulink url=\"http://freedesktop.org/Software/"
+"xorg\" type=\"html\">X.org</ulink> 中的服务器扩展。合成器如它自己中的"
+"窗口管理器一样，它管理所有窗口堆栈、监视所有种类的 "
+"X 事件并作相应反应。在窗口管理器中嵌入此合成管理器"
+"还有助于保持各种视觉效果与窗口事件同步。如果您要"
+"使用此合成器，您不得不使用 --enable-compositor "
+"配置选项编译 <application>@PACKAGE_NAME@</application>。不管怎样，"
+"您可以使用 ‘--compositor=off’ 参数使 "
+"<application>@PACKAGE_NAME@</application> 在启动时禁用此合成器。"
 
 #: xfwm4.xml:125(title)
 msgid "Using <application>@PACKAGE_NAME@</application>"
@@ -212,8 +218,8 @@ msgid ""
 "The window manager provides borders, a title bar and window buttons to "
 "application windows. The look is defined by the window manager theme."
 msgstr ""
-"窗口管理器为应用程序窗口提供边界、标题栏和窗口按钮。外表由窗口管理器"
-"主题定义。"
+"窗口管理器为应用程序窗口提供边框、标题栏和窗口按钮。"
+"外观由窗口管理器主题定义。"
 
 #: xfwm4.xml:134(para)
 msgid ""
@@ -221,8 +227,8 @@ msgid ""
 "buttons and a title on regular application windows. The six buttons perform "
 "these basic functions:"
 msgstr ""
-"默认的 <application>@PACKAGE_NAME@</application> 主题在常规应用程序窗口中显示六个"
-"按钮和一个标题栏。这六个按钮执行这些基本功能："
+"默认的主题中 <application>@PACKAGE_NAME@</application> 在常规应用程序窗口上显示"
+"六个按钮和一个标题。此六个按钮执行这些基本功能："
 
 #: xfwm4.xml:140(title)
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons"
@@ -238,7 +244,8 @@ msgid ""
 "You can open the window menu with a left-click on the menu button on the "
 "title bar, or with a right-click on the window title area itself."
 msgstr ""
-"在标题栏上左击菜单按钮，您能打开该窗口菜单，或右击窗口标题区域本身。"
+"左击标题栏上的菜单按钮或右击窗口标题区域本身，您可以"
+"打开窗口。"
 
 #: xfwm4.xml:157(para)
 msgid ""
@@ -246,8 +253,9 @@ msgid ""
 "menu with a right-click on one of the taskbar entries; it includes several "
 "items among those available in the window menu."
 msgstr ""
-"如果您使用 <application>xftaskbar4</application> ，在任务栏条目上右击，您能打开一"
-"动作菜单；在窗口菜单中它包含几个条目在其中。"
+"如果您使用 <application>xftaskbar4</application>，在任务栏某个"
+"条目上右击，您能打开一个动作菜单；与这些在窗口"
+"菜单中的一道它包含几个条目。"
 
 #: xfwm4.xml:165(term)
 msgid "Give focus to a window"
@@ -260,9 +268,9 @@ msgid ""
 "To obtain more details about focus options, please refer to the <ulink url="
 "\"#focus\">corresponding section</ulink> below."
 msgstr ""
-"如果您要在一个窗口中用键盘输入或用鼠标操作，您需要给该窗口焦点。窗口"
-"修饰颜色会改变，按焦点。要获取有关焦点选项的更多详情，请参考以下的"
-"<ulink url=\"#focus\">相关章节</ulink> 。"
+"如果您要窗口接受键盘和鼠标输入，您需要给此窗口焦点。"
+"窗口修饰颜色会依照焦点更改。要获得有关焦点选项的详情，"
+"请参考以下的 <ulink url=\"#focus\">相关章节</ulink>。"
 
 #: xfwm4.xml:172(para)
 msgid ""
@@ -273,10 +281,11 @@ msgid ""
 "<application>@PACKAGE_NAME@</application> will highlight the outline of the "
 "window that will receive the focus."
 msgstr ""
-"快捷键让您将焦点从一个窗口切换到其它窗口：按住 Alt 然后重复按 Tab "
-"直至到达您要给焦点的窗口。如果您使用它，您会看到一显示应用程序名、"
-"图标和窗口标题的小弹出窗口。且 <application>@PACKAGE_NAME@</application> 会突出显示"
-"已获取焦点的窗口的轮廓。"
+"键盘快捷键让您将焦点从一个窗口切换到其它窗口："
+"按住 Alt 然后重复按 Tab 直至到达您要聚焦的窗口。"
+"如果您使用它，您会看到一个小的显示应用程序名、它的"
+"图标和窗口标题的弹出窗口。且 <application>@PACKAGE_NAME@</application> "
+"会突出显示将获取焦点的窗口的轮廓。"
 
 #. <para>
 #. 	    If you want the panel, and apps that do not appear in the taskbar,
@@ -297,7 +306,7 @@ msgstr "注意：在应用程序中使用键盘快捷键需要应用程序窗口
 
 #: xfwm4.xml:201(term)
 msgid "Maximize / unmaximize windows"
-msgstr "最大化/恢复窗口"
+msgstr "最大化/取消最大化窗口"
 
 #: xfwm4.xml:203(para)
 msgid ""
@@ -306,9 +315,10 @@ msgid ""
 "type=\"http\">workspace settings</ulink>). You can maximize a window either "
 "vertically, horizontally, or both at once."
 msgstr ""
-"如果您最大化窗口，它会在您的显示器上扩展并使用所有可用的区域(如"
-"<ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">工作区设置"
-"</ulink>) 中定义的。您能竖直、水平最大化窗口，或二者同时。"
+"如果您最大化窗口，它会在您的显示器上扩展并使用所有"
+"可用的空间(如 <ulink url=\"xfdesktop.html#xfdesktop-"
+"workspace\" type=\"http\">workspace settings</ulink> 中定义的)"
+"您可以竖直、水平最大化窗口，或二者同时。"
 
 #: xfwm4.xml:209(para)
 msgid "To maximize a window, perform one of those actions:"
@@ -333,12 +343,13 @@ msgid ""
 "size of your screen without showing the window borders) by using the "
 "customizable Alt + F11 keyboard shortcut."
 msgstr ""
-"使用自定义的 Alt + F11 键盘快捷键，您能让任何窗口以全屏模式出现"
-"(这样会不显示窗口边框而使用屏幕的全部大小)。"
+"通过可自定义的 Alt + F11 键盘快捷键，您能让任何"
+"窗口以全屏模式出现(这样会不显示窗口边框而使用屏幕的"
+"全部大小)。"
 
 #: xfwm4.xml:230(para)
 msgid "To maximize a window vertically :"
-msgstr "竖直最大化窗口："
+msgstr "要竖直最大化窗口："
 
 #: xfwm4.xml:232(para)
 msgid "middle-click the maximizAlt +e button of the title bar"
@@ -350,7 +361,7 @@ msgstr "使用 Alt + F6 键盘快捷键"
 
 #: xfwm4.xml:236(para)
 msgid "To maximize a window horizontally :"
-msgstr "水平最大化窗口："
+msgstr "要水平最大化窗口："
 
 #: xfwm4.xml:239(para)
 msgid "right-click the maximize button of the title bar"
@@ -365,12 +376,12 @@ msgid ""
 "When a window has been maximized in a way or another, it can be restored to "
 "its previous size doing one of these actions :"
 msgstr ""
-"当窗口以此方式或其它方式最大化以后，您能采用以下某个动作恢复它的先前"
-"大小："
+"当窗口以这个或那个方式最大化以后，您能采用以下某个动作"
+"恢复它先前的大小："
 
 #: xfwm4.xml:247(para)
 msgid "click the unmaximize button of the title bar"
-msgstr "点击标题栏上的恢复按钮"
+msgstr "点击标题栏上的取消最大化按钮"
 
 #: xfwm4.xml:248(para)
 msgid "use the same keyboard shortcut once again"
@@ -378,7 +389,7 @@ msgstr "再一次使用相同的键盘快捷键"
 
 #: xfwm4.xml:249(para)
 msgid "choose the \"Unmaximize\" item in the window menu"
-msgstr "在窗口菜单中选择 “恢复” 条目"
+msgstr "在窗口菜单中选择 “取消最大化” 条目"
 
 #: xfwm4.xml:255(term)
 msgid "Resize windows"
@@ -389,14 +400,16 @@ msgid ""
 "Although certain special windows can not be resized, you are able to resize "
 "most of them to fit your needs."
 msgstr ""
-"虽然不能调整某些特殊窗口的大小，但是您能按自己所需调整绝大多数窗口"
-"的大小。"
+"虽然不能调整某些特殊窗口的大小，您能按自己所需调整"
+"绝大多数窗口的大小。"
 
 #: xfwm4.xml:260(para)
 msgid ""
 "you can use the edges and corners of the window frame to modify its size, "
 "dragging them with the mouse"
-msgstr "您能使用窗口的边缘或拐角来修改其大小，通过鼠标拖动它们。"
+msgstr ""
+"您可以使用窗口框架的边缘或拐角来修改其大小，用鼠标"
+"拖动它们。"
 
 #: xfwm4.xml:262(para)
 msgid ""
@@ -404,18 +417,21 @@ msgid ""
 "anywhere over the window frame; it will act as if you were dragging the "
 "bottom-right corner of the window"
 msgstr ""
-"在鼠标指针位于窗口上的任何地方时，您能使用 Alt + 右击 快捷键；"
-"这样做所起的作用与您拖动窗口的右下拐角是一样的。"
+"在鼠标指针位于窗口框架中的任何地方时，您能使用 Alt "
+"加右击快捷键；这样所起的作用与您拖动窗口的右下角是"
+"一样的。"
 
 #: xfwm4.xml:265(para)
 msgid ""
 "you can use practical keyboard shortcuts : Shift + Alt + (up, down, right or "
 "left) Arrow"
-msgstr "您能使用实用的键盘快捷键：Shift + Alt + 方向键(上、下、右、或左)"
+msgstr ""
+"您能使用实用的键盘快捷键："
+"Shift + Alt + (上、下、右、或左)方向键"
 
 #: xfwm4.xml:279(term)
 msgid "Hide / unhide windows"
-msgstr "隐藏/显示窗口"
+msgstr "隐藏/取消隐藏窗口"
 
 #: xfwm4.xml:281(para)
 msgid "You can hide a window performing one of these actions :"
@@ -439,8 +455,9 @@ msgid ""
 "one you are using, in only one action : click the menu button of the title "
 "bar and choose \"Hide all others\"."
 msgstr ""
-"或者，您能隐藏所有当前工作区中的窗口，除了您正在使用的，只需一个"
-"动作：点击标题栏上的菜单按钮并选择 “其它全部隐藏” 。"
+"或者，除了您正在使用的窗口，您能隐藏当前工作区中的"
+"所有窗口，只需一个动作：点击标题栏上的菜单按钮并"
+"选择 “其它全部隐藏”。"
 
 #: xfwm4.xml:291(para)
 msgid ""
@@ -607,7 +624,7 @@ msgstr "当鼠标指针处于窗口内任何地方时使用 Alt + 左击 并移�
 #: xfwm4.xml:376(para)
 msgid ""
 "use Control + Alt + Shift + (up, down, left or right) Arrow keyboard shortcut"
-msgstr "使用 Ctrl + Alt + Shift + 方向键(上、下、左或右)键盘快捷键"
+msgstr "使用 Ctrl + Alt + Shift + (上、下、左或右)方向键键盘快捷键"
 
 #: xfwm4.xml:391(term)
 msgid "Move a window to another workspace"

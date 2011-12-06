@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-05 11:28+0000\n"
+"POT-Creation-Date: 2011-11-30 22:39+0000\n"
 "PO-Revision-Date: 2011-01-15 20:46+0200\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
@@ -65,7 +65,8 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Încercați „%s --help” pentru a vedea lista completă a opțiunilor disponibile.\n"
+"Încercați „%s --help” pentru a vedea lista completă a opțiunilor "
+"disponibile.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -288,7 +289,7 @@ msgstr "Titlu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Treci în spațiul adiacent la tragerea unei ferestre înafara _ecranului"
+msgstr "Treci în spațiul adiacent la tragerea unei ferestre în afara _ecranului"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
@@ -624,8 +625,12 @@ msgid "Reset to Defaults"
 msgstr "Reinițializare a opțiunilor"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Această acțiune va reinițializa toate combinațiile de taste, revenindu-se astfel la opțiunile implicite. Sigur doriți acest lucru?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Această acțiune va reinițializa toate combinațiile de taste, revenindu-se "
+"astfel la opțiunile implicite. Sigur doriți acest lucru?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -742,7 +747,8 @@ msgstr "Utilizează rezistența și nu potri_virea la margini"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Schimbă spațiul de lucru curent când folosesc rotița de _maus pe desktop"
+msgstr ""
+"Schimbă spațiul de lucru curent când folosesc rotița de _maus pe desktop"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -792,13 +798,15 @@ msgstr "_Ridică ferestrele la apăsarea oricărui buton de maus"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Reține spațiul de lucru precedent la comutarea din tastatură și revino la el"
+msgstr ""
+"_Reține spațiul de lucru precedent la comutarea din tastatură și revino la el"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Nu include ferestrele cu proprietăți de tip „skip pager” sau „skip taskbar”"
+msgstr ""
+"_Nu include ferestrele cu proprietăți de tip „skip pager” sau „skip taskbar”"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
@@ -817,8 +825,10 @@ msgid "Change workspace name"
 msgstr "Redenumire a spațiului de lucru"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marginile sunt zone la limita ecranului unde nicio fereastră nu va fi plasată"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Marginile sunt zone la limita ecranului unde nicio fereastră nu va fi plasată"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -834,40 +844,35 @@ msgstr "_Numărul spațiilor de lucru:"
 msgid "%s (on %s)"
 msgstr "%s (pe %s)"
 
-#: ../src/main.c:140
-#, c-format
-msgid "%s: Segmentation fault"
-msgstr "%s: Eroare de segmentare"
-
-#: ../src/main.c:534
+#: ../src/main.c:548
 msgid "Fork to the background"
 msgstr "Clonează în fundal"
 
-#: ../src/main.c:536
+#: ../src/main.c:550
 msgid "Fork to the background (not supported)"
 msgstr "Clonează în fundal (nesuportat)"
 
-#: ../src/main.c:539
+#: ../src/main.c:553
 msgid "Set the compositor mode"
 msgstr "Alege modul compozitorului"
 
-#: ../src/main.c:541
+#: ../src/main.c:555
 msgid "Set the compositor mode (not supported)"
 msgstr "Alege modul compozitorului (nesuportat)"
 
-#: ../src/main.c:543
+#: ../src/main.c:557
 msgid "Replace the existing window manager"
 msgstr "Înlocuiește managerul de ferestre activ"
 
-#: ../src/main.c:544
+#: ../src/main.c:558
 msgid "Print version information and exit"
 msgstr "Arată detalii despre versiune și ieși"
 
-#: ../src/main.c:552
+#: ../src/main.c:566
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTE...]"
 
-#: ../src/main.c:559
+#: ../src/main.c:573
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Încercați „%s --help” pentru lista opțiunilor de utilizare."
@@ -977,7 +982,9 @@ msgstr "%s: Nu se poate aloca culoarea %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: Nu se poate aloca culoarea, GValue pentru această culoare nu este de tipul STRING"
+msgstr ""
+"%s: Nu se poate aloca culoarea, GValue pentru această culoare nu este de "
+"tipul STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -987,7 +994,9 @@ msgstr "%s: Nu se poate prelucra culoarea %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Nu se poate prelucra culoarea, GValue pentru această culoare nu este de tipul STRING"
+msgstr ""
+"%s: Nu se poate prelucra culoarea, GValue pentru această culoare nu este de "
+"tipul STRING"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -998,3 +1007,6 @@ msgstr "Eroare la citirea datelor din procesul copil: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Nu s-a putut crea fereastra helper-dialog: %s\n"
+
+#~ msgid "%s: Segmentation fault"
+#~ msgstr "%s: Eroare de segmentare"
