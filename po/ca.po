@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-06 14:21+0000\n"
-"PO-Revision-Date: 2011-12-06 21:01+0100\n"
+"PO-Revision-Date: 2011-12-06 21:28+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "Language: ca\n"
@@ -790,7 +790,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
-msgstr "_Habilita la pantalla composta"
+msgstr "_Habilita el «composite»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
@@ -871,11 +871,11 @@ msgstr "Executar-se com a procés de fons (no suportat)"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode"
-msgstr "Establir el mode compositor"
+msgstr "Estableix el mode «composite»"
 
 #: ../src/main.c:549
 msgid "Set the compositor mode (not supported)"
-msgstr "Establir el mode compositor (no suportat)"
+msgstr "Estableix el mode «composite» (no suportat)"
 
 #: ../src/main.c:551
 msgid "Replace the existing window manager"
@@ -892,7 +892,7 @@ msgstr "[PARÀMETRES...]"
 #: ../src/main.c:567
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Escriviu \"%s --help\" per a obtenir ajuda"
+msgstr "Escriviu «%s --help» per a obtenir ajuda"
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
