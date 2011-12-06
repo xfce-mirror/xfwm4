@@ -395,7 +395,7 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
         }
         else
         {
-            clientFocusTop (screen_info, WIN_LAYER_NORMAL, timestamp);
+            clientFocusTop (screen_info, WIN_LAYER_FULLSCREEN, timestamp);
         }
     }
 }

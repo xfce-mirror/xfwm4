@@ -2031,7 +2031,7 @@ clientFrameAll (ScreenInfo *screen_info)
     {
         XFree (wins);
     }
-    clientFocusTop (screen_info, WIN_LAYER_NORMAL, myDisplayGetCurrentTime (display_info));
+    clientFocusTop (screen_info, WIN_LAYER_FULLSCREEN, myDisplayGetCurrentTime (display_info));
     xfwmWindowDelete (&shield);
     myDisplayUngrabServer (display_info);
     XSync (display_info->dpy, FALSE);
@@ -2437,7 +2437,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
             }
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
         }
-        clientFocusTop (screen_info, WIN_LAYER_NORMAL, myDisplayGetCurrentTime (screen_info->display_info));
+        clientFocusTop (screen_info, WIN_LAYER_FULLSCREEN, myDisplayGetCurrentTime (screen_info->display_info));
     }
 }
 
@@ -2614,11 +2614,23 @@ clientSetLayer (Client * c, guint l)
         }
     }
     g_list_free (list_of_windows);
+
     if (clientGetLastRaise (c->screen_info) == c)
     {
         clientClearLastRaise (c->screen_info);
     }
-    clientRaise (c, None);
+
+    c2 = clientGetFocusOrPending ();
+    if (c2 && (c2 != c) && (c2->win_layer == c->win_layer))
+    {
+        TRACE ("Placing %s under %s", c->name, c2->name);
+        clientLower (c, c2->frame);
+    }
+    else
+    {
+       TRACE ("Placing %s on top of its layer %i", c->name, c->win_layer);
+       clientRaise (c, None);
+    }
 }
 
 void
