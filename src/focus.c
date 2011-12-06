@@ -485,16 +485,17 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     TRACE ("entering clientUpdateFocus");
 
     c2 = ((client_focus != c) ? client_focus : NULL);
-    pending_focus = NULL;
     if ((c) && !clientAcceptFocus (c))
     {
         TRACE ("SKIP_FOCUS set for client \"%s\" (0x%lx)", c->name, c->window);
+        pending_focus = NULL;
         return;
     }
 
     if ((c) && (c == client_focus) && !(flags & FOCUS_FORCE))
     {
         TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request", c->name, c->window);
+        pending_focus = NULL;
         return;
     }
 
@@ -537,6 +538,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     }
     clientSetNetActiveWindow (screen_info, c, 0);
     clientClearDelayedFocus ();
+    pending_focus = NULL;
 }
 
 void
