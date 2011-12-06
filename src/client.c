@@ -2772,7 +2772,7 @@ clientSetLayer (Client * c, guint l)
     }
     else
     {
-       TRACE ("Placing %s on top of its layer %i", c->name, c->win_layer);
+       TRACE ("Placing %s on top of its layer %lu", c->name, c->win_layer);
        clientRaise (c, None);
     }
 }
