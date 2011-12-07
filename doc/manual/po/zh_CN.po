@@ -468,6 +468,8 @@ msgid ""
 "To \"unhide\" a window, you will have to select its name or its icon in one "
 "of those Xfce 4 components :"
 msgstr ""
+"要 “取消隐藏” 窗口，您只得在那些 Xfce 4 组件中选择"
+"某个的名称或图标："
 
 #: xfwm4.xml:294(application)
 msgid "xftaskbar4"
