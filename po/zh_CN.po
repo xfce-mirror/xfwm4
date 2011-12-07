@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-18 04:34+0000\n"
+"POT-Creation-Date: 2011-12-06 08:21+0000\n"
 "PO-Revision-Date: 2010-11-27 21:12+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
@@ -116,7 +116,7 @@ msgstr "工作区"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "<b>Box move and resize</b>"
-msgstr "<b>视窗移动及调整大小</b>"
+msgstr "<b>窗口移动和调整大小</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
@@ -429,7 +429,7 @@ msgstr "竖直填充窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Toggle above"
-msgstr "切换至上面"
+msgstr "切换以上"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle fullscreen"
@@ -666,7 +666,7 @@ msgstr "循环切换(_Y)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle _through windows on all workspaces"
-msgstr "在所有工作区的窗口间循环切换(_T)"
+msgstr "在所有工作区的窗口间循环(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
@@ -678,7 +678,7 @@ msgstr "无动作(_N)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
-msgstr "最大化时隐藏窗口边框(_F)"
+msgstr "最大化时隐藏窗口框架(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
@@ -734,15 +734,15 @@ msgstr "在弹出窗口下显示阴影(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Switch to win_dow's workspace"
-msgstr "切换至窗口所在的工作区(_D)"
+msgstr "切换至窗口的工作区(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
-msgstr "在当前鼠标指针下(_P)"
+msgstr "在鼠标光标下(_P)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr "使用边界阻距取代窗口吸附(_E)"
+msgstr "使用边界阻距而不是窗口吸附(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -750,11 +750,11 @@ msgstr "在桌面上使用鼠标滚轮切换工作区(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
-msgstr "当某个窗口提升自己时："
+msgstr "窗口提升自己时："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "以实际桌面布局决定工作区回绕(_l)"
+msgstr "回绕以实际桌面布局决定工作区回绕(_l)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -766,7 +766,7 @@ msgstr "辅助功能(_A)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Bring window on current workspace"
-msgstr "移动窗口至当前工作区(_B)"
+msgstr "窗口放在当前工作区(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
@@ -774,7 +774,7 @@ msgstr "循环窗口时显示窗口边框(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
-msgstr "允许显示合成(_E)"
+msgstr "启用显示合成(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
@@ -782,11 +782,11 @@ msgstr "包含隐藏(如图标化)窗口(_I)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "最小窗口大小以触发智能定位(_M)："
+msgstr "最小窗口大小以触发智能放置(_M)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Placement"
-msgstr "定位(_P)"
+msgstr "放置(_P)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Raise windows when any mouse button is pressed"
@@ -802,7 +802,8 @@ msgstr "键盘快捷键切换时记住并恢复先前的工作区(_R)"
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "跳过属性设置有 “跳过页面” \n"
+msgstr ""
+"跳过属性设置有 “跳过页面” \n"
 "或 “跳过任务栏” 的窗口(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
@@ -832,7 +833,7 @@ msgstr "名称(_N)："
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
-msgstr "工作区数目(_N)："
+msgstr "工作区编号(_N)："
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -840,40 +841,35 @@ msgstr "工作区数目(_N)："
 msgid "%s (on %s)"
 msgstr "%s (于 %s)"
 
-#: ../src/main.c:140
-#, c-format
-msgid "%s: Segmentation fault"
-msgstr "%s: 段错误"
-
-#: ../src/main.c:534
+#: ../src/main.c:548
 msgid "Fork to the background"
 msgstr "转入后台"
 
-#: ../src/main.c:536
+#: ../src/main.c:550
 msgid "Fork to the background (not supported)"
 msgstr "转入后台(不支持)"
 
-#: ../src/main.c:539
+#: ../src/main.c:553
 msgid "Set the compositor mode"
 msgstr "设置合成器模式"
 
-#: ../src/main.c:541
+#: ../src/main.c:555
 msgid "Set the compositor mode (not supported)"
 msgstr "设置合成器模式(不支持)"
 
-#: ../src/main.c:543
+#: ../src/main.c:557
 msgid "Replace the existing window manager"
 msgstr "替换运行中的窗口管理器"
 
-#: ../src/main.c:544
+#: ../src/main.c:558
 msgid "Print version information and exit"
 msgstr "打印版本信息并退出"
 
-#: ../src/main.c:552
+#: ../src/main.c:566
 msgid "[ARGUMENTS...]"
 msgstr "[参数...]"
 
-#: ../src/main.c:559
+#: ../src/main.c:573
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "输入 ‘%s --help’ 查看使用说明。"
@@ -917,23 +913,23 @@ msgstr "与其它窗口相同"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr "总在其它窗口之下"
+msgstr "总是在其它窗口下"
 
 #: ../src/menu.c:55
 msgid "Roll Window Up"
-msgstr "窗口上移一层"
+msgstr "向上收起窗口"
 
 #: ../src/menu.c:56
 msgid "Roll Window Down"
-msgstr "窗口下移一层"
+msgstr "向下收起窗口"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
-msgstr "全屏显示(_F)"
+msgstr "全屏(_F)"
 
 #: ../src/menu.c:58
 msgid "Leave _Fullscreen"
-msgstr "恢复(_F)"
+msgstr "离开全屏(_F)"
 
 #: ../src/menu.c:59
 msgid "Context _Help"
@@ -942,7 +938,7 @@ msgstr "交互菜单帮助(_H)"
 #. --------------------------------------------------------
 #: ../src/menu.c:61
 msgid "Always on Visible Workspace"
-msgstr "总是在可见工作区"
+msgstr "总是在可见工作区上"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
@@ -960,7 +956,7 @@ msgstr "关闭(_C)"
 #. --------------------------------------------------------
 #: ../src/menu.c:68
 msgid "Destroy"
-msgstr "销毁"
+msgstr "摧毁"
 
 #: ../src/menu.c:71
 msgid "_Quit"
@@ -978,7 +974,7 @@ msgstr "%s：GtkMenu 无法获取鼠标\n"
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s：无法分配所选颜色 %s\n"
+msgstr "%s：无法分配颜色 %s\n"
 
 #: ../src/settings.c:275
 #, c-format
