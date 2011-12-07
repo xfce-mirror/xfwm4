@@ -270,7 +270,7 @@ msgid ""
 "To obtain more details about focus options, please refer to the <ulink url="
 "\"#focus\">corresponding section</ulink> below."
 msgstr ""
-"如果您要窗口接受键盘和鼠标输入，您需要给此窗口焦点。"
+"如果您要窗口接收键盘和鼠标输入，您需要给此窗口焦点。"
 "窗口修饰颜色会依照焦点更改。要获得有关焦点选项的详情，"
 "请参考以下的 <ulink url=\"#focus\">相关章节</ulink>。"
 
@@ -287,7 +287,7 @@ msgstr ""
 "按住 Alt 然后重复按 Tab 直至到达您要聚焦的窗口。"
 "如果您使用它，您会看到一个小的显示应用程序名、它的"
 "图标和窗口标题的弹出窗口。且 <application>@PACKAGE_NAME@</application> "
-"会突出显示将获取焦点的窗口的轮廓。"
+"会突出显示将接收焦点的窗口的轮廓。"
 
 #. <para>
 #. 	    If you want the panel, and apps that do not appear in the taskbar,
@@ -604,7 +604,7 @@ msgid ""
 "opening the window menu and selecting the \"always on top\" item."
 msgstr ""
 "通过打开窗口菜单并选择 “总是最前” 条目，您能使窗口"
-"框架总是停留在其它窗口上。"
+"框架总是停留在所有其它窗口上。"
 
 #: xfwm4.xml:357(para)
 msgid ""
@@ -809,7 +809,7 @@ msgid ""
 "the left, center or right."
 msgstr ""
 "无论按钮布局如何，您可以在标题栏内选择标题的对齐，选择"
-"以下某个简单选项：靠左、居中或靠右对齐。"
+"以下某个简单选项：左、中或右对齐。"
 
 #: xfwm4.xml:507(term)
 msgid "Button layout"
@@ -892,7 +892,7 @@ msgstr "粘滞窗口：Alt + F10"
 
 #: xfwm4.xml:563(para)
 msgid "Cycle windows focus : Alt + Tab"
-msgstr "轮换窗口焦点：Alt + Tab"
+msgstr "循环窗口焦点：Alt + Tab"
 
 #: xfwm4.xml:564(para)
 msgid "Move window : Control + Shift + Alt + Arrow (up, down, left, or right)"
@@ -1038,7 +1038,7 @@ msgstr ""
 
 #: xfwm4.xml:665(term)
 msgid "New window focus"
-msgstr "新建窗口焦点"
+msgstr "聚焦新窗口"
 
 #: xfwm4.xml:667(para)
 msgid ""
