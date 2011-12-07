@@ -26,7 +26,7 @@ msgid ""
 "Do you want to terminate the application?"
 msgstr ""
 "这个窗口可能正忙且无响应。\n"
-"您要中止该程序吗？"
+"您要中止此应用程序吗？"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -66,8 +66,9 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
-"%s: %s\n"
-"输入 %s --help 获得一份详细的可用命令行参数列表。\n"
+"%s：%s\n"
+"输入 %s --help 参看可用命令行选项的\n"
+"完整列表。\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -87,7 +88,7 @@ msgstr "设置管理器套接字"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr "配置窗口行为及快捷方式"
+msgstr "配置窗口行为和快捷方式"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -97,7 +98,7 @@ msgstr "窗口管理器"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Fine-tune window behaviour and effects"
-msgstr "微调窗口行为及效果"
+msgstr "微调窗口行为和效果"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -107,7 +108,7 @@ msgstr "窗口管理器调整"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Set number and names of workspaces"
-msgstr "设置工作区数目："
+msgstr "设置工作区数目和名称："
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -116,7 +117,7 @@ msgstr "工作区"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "<b>Box move and resize</b>"
-msgstr "<b>移动及调整大小时显示窗口内容</b>"
+msgstr "<b>窗口移动和调整大小</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
@@ -124,15 +125,15 @@ msgstr "<b>按钮布局</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Double click _action</b>"
-msgstr "<b>双击执行动作(_a)</b>"
+msgstr "<b>双击动作(_A)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
-msgstr "<b>焦点获取模式</b>"
+msgstr "<b>焦点模式</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
-msgstr "<b>新窗口获取焦点</b>"
+msgstr "<b>聚焦新窗口</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
@@ -140,19 +141,19 @@ msgstr "<b>点击时提升</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr "<b>获得焦点时置顶</b>"
+msgstr "<b>聚焦时提升</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
-msgstr "<b>标题对齐方式(_a)</b>"
+msgstr "<b>标题的对齐(_A)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title fon_t</b>"
-msgstr "<b>标题字体(_t)</b>"
+msgstr "<b>标题字体(_T)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Window _shortcuts</b>"
-msgstr "<b>窗口快捷键(_s)</b>"
+msgstr "<b>窗口快捷键(_S)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
@@ -160,7 +161,7 @@ msgstr "<b>窗口吸附</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Wrap workspaces</b>"
-msgstr "<b>工作区回绕</b>"
+msgstr "<b>回绕工作区</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
@@ -194,23 +195,23 @@ msgstr "激活"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Ad_vanced"
-msgstr "高级(_v)"
+msgstr "高级(_V)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "当窗口获得焦点时自动将该窗口置顶(_r)"
+msgstr "当窗口接收焦点时自动提升它们(_R)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr "自动为新建立窗口获取焦点(_n)"
+msgstr "自动聚焦新创建的窗口(_N)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr "点击获取焦点(_k)"
+msgstr "点击聚焦(_K)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
-msgstr "点击并拖拽按钮来改变布局"
+msgstr "点击并拖动按钮来改变布局"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -218,15 +219,15 @@ msgstr "关闭"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
-msgstr "置顶焦点所在窗口前的延时(_b)："
+msgstr "提升已聚焦窗口前的延时(_B)："
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Dis_tance:"
-msgstr "距离(_t)："
+msgstr "距离(_T)："
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Focus follows _mouse"
-msgstr "焦点跟随鼠标(_m)"
+msgstr "焦点跟随鼠标(_M)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
@@ -234,15 +235,15 @@ msgstr "隐藏"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Hide content of windows when _moving"
-msgstr "移动窗口时隐藏其内容(_m)"
+msgstr "移动时隐藏窗口内容(_M)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
-msgstr "改变窗口尺寸时隐藏其内容(_r)"
+msgstr "调整大小时隐藏窗口内容(_R)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
-msgstr "键盘(_y)"
+msgstr "键盘(_Y)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
@@ -258,31 +259,31 @@ msgstr "最小化"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
-msgstr "当在窗口客户区点击时将其置顶(_i)"
+msgstr "在应用程序窗口内点击时提升窗口(_I)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
-msgstr "卷起"
+msgstr "折叠"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
-msgstr "将窗口吸附到其它窗口(_w)"
+msgstr "将窗口吸附到其它窗口(_W)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Snap windows to screen _border"
-msgstr "在屏幕边缘吸附窗口(_b)"
+msgstr "将窗口吸附到屏幕边缘(_B)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
-msgstr "粘附"
+msgstr "粘滞"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "双击标题栏所执行的动作"
+msgstr "双击标题栏时执行的动作"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
-msgstr "窗口标题不能删除"
+msgstr "不能移除窗口标题"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
@@ -290,19 +291,19 @@ msgstr "标题"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "拖拽窗口离开屏幕时回绕工作区(_d)"
+msgstr "拖动窗口离开屏幕时回绕工作区(_D)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "鼠标到达屏幕边缘时回绕工作区(_p)"
+msgstr "光标碰到屏幕边缘时回绕工作区(_P)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
-msgstr "当窗口接受焦点前延时(_D)："
+msgstr "窗口接收焦点前的延时(_D)："
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
-msgstr "屏幕边缘阻力(_E)："
+msgstr "边缘阻距(_E)："
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
@@ -311,16 +312,16 @@ msgstr "焦点(_F)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
-msgstr "重设至默认值(_R)"
+msgstr "重置为默认(_R)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "_Style"
-msgstr "风格(_S)"
+msgstr "样式(_S)"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
-msgstr "卷起窗口"
+msgstr "折叠窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
@@ -344,16 +345,16 @@ msgstr "无"
 #: ../settings-dialogs/xfwm4-settings.c:229
 #: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
-msgstr "左侧"
+msgstr "左"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
-msgstr "中间"
+msgstr "中"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
-msgstr "右侧"
+msgstr "右"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
@@ -381,7 +382,7 @@ msgstr "循环窗口(反向)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
-msgstr "在相同应用程序的窗口间切换"
+msgstr "切换同一应用程序的窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
@@ -397,7 +398,7 @@ msgstr "水平最大化窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window vertically"
-msgstr "垂直最大化窗口"
+msgstr "竖直最大化窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Move window"
@@ -409,7 +410,7 @@ msgstr "调整窗口大小"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
-msgstr "粘附窗口"
+msgstr "粘滞窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Raise window"
@@ -429,15 +430,15 @@ msgstr "水平填充窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
-msgstr "垂直填充窗口"
+msgstr "竖直填充窗口"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr "折叠以上"
+msgstr "切换以上"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
-msgstr "切换全屏显示方式"
+msgstr "全屏切换"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
@@ -457,11 +458,11 @@ msgstr "移动窗口至右边工作区"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
-msgstr "移动窗口至上一个工作区"
+msgstr "移动窗口至上一工作区"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
-msgstr "移动窗口至下一个工作区"
+msgstr "移动窗口至下一工作区"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 1"
@@ -533,11 +534,11 @@ msgstr "右边工作区"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Previous workspace"
-msgstr "上一个工作区"
+msgstr "上一工作区"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Next workspace"
-msgstr "下一个工作区"
+msgstr "下一工作区"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 1"
@@ -593,7 +594,7 @@ msgstr "添加工作区"
 
 #: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Add adjacent workspace"
-msgstr "添加工作区"
+msgstr "添加相邻工作区"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete last workspace"
@@ -613,27 +614,29 @@ msgstr "动作"
 
 #: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
-msgstr "快捷方式"
+msgstr "快捷键"
 
 #: ../settings-dialogs/xfwm4-settings.c:972
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "初始化 xfconf 失败。原因：%s"
+msgstr "无法初始化 xfconf。原因：%s"
 
 #: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
-msgstr "无法创建设置对话框。"
+msgstr "未能创建设置对话框。"
 
 #: ../settings-dialogs/xfwm4-settings.c:1870
 #: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "Reset to Defaults"
-msgstr "重设至默认值"
+msgstr "重置为默认"
 
 #: ../settings-dialogs/xfwm4-settings.c:1872
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
-msgstr "这将重设全部快捷方式至其默认值。您确定想要这样做？"
+msgstr ""
+"这会将所有快捷键重置为默认。"
+"您真的要这样做吗？"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -646,15 +649,15 @@ msgstr "<i>不透明</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "<i>Transparent</i>"
-msgstr "透明"
+msgstr "<i>透明</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Activate _focus stealing prevention"
-msgstr "激活预防偷窃焦点(_f)"
+msgstr "激活焦点防偷看(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "At the _center of the screen"
-msgstr "在屏幕中央(_c)"
+msgstr "在屏幕中央(_C)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "By default, place windows:"
@@ -662,123 +665,124 @@ msgstr "默认放置窗口至："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "C_ompositor"
-msgstr "混合设置(_o)"
+msgstr "合成器(_O)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ycling"
-msgstr "循环(_y)"
+msgstr "循环(_Y)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle _through windows on all workspaces"
-msgstr "在所有工作区的窗口间循环(_t)"
+msgstr "在所有工作区的窗口间循环(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
-msgstr "全屏显示直接覆盖的窗口(_f)"
+msgstr "直接覆盖窗口显示全屏(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
-msgstr "不做任何动作(_n)"
+msgstr "什么都不做(_N)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
-msgstr "最大化时隐藏窗口边框(_f)"
+msgstr "最大化时隐藏窗口框架(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
-msgstr "启用 ICCCM 焦点提示标准(_s)"
+msgstr "遵照标准的 ICCCM 焦点提示(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "窗口闪动以提示信息(_b)"
+msgstr "紧急窗口保持闪烁(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Key used to _grab and move windows:"
-msgstr "用来捕获和移动窗口的按键(_g)："
+msgstr "用来捕获和移动窗口的按键(_G)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "窗口装饰闪动以提示信息(_u)"
+msgstr "窗口修饰闪烁以示紧急(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Opaci_ty of window decorations:"
-msgstr "窗口装饰透明度(_t)："
+msgstr "窗口装饰的不透明度(_T)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Opacity of _inactive windows:"
-msgstr "非活动窗口透明度(_i)："
+msgstr "不活动窗口的不透明度(_I)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Opacity of popup window_s:"
-msgstr "弹出窗口的透明度(_s)："
+msgstr "弹出窗口的不透明度(_S)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Opacity of windows during _move:"
-msgstr "移动窗口时的透明度(_m)："
+msgstr "移动窗口时的不透明度(_M)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Opacity of windows during resi_ze:"
-msgstr "改变窗口尺寸时的透明度(_z)："
+msgstr "调整窗口大小时的不透明度(_Z)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr "移动窗口时恢复最大化窗口原始大小(_s)"
+msgstr "移动时恢复已最大化窗口的原大小(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
-msgstr "在dock窗口中显示阴影(_d)"
+msgstr "在 dock 窗口下显示阴影(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _regular windows"
-msgstr "在常规窗口中显示阴影(_r)"
+msgstr "在常规窗口下显示阴影(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Show shadows under pop_up windows"
-msgstr "在弹出窗口中显示阴影(_u)"
+msgstr "在弹出窗口下显示阴影(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Switch to win_dow's workspace"
-msgstr "切换至窗口所在的工作区(_d)"
+msgstr "切换至窗口的工作区(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
-msgstr "在当前鼠标指针下(_p)"
+msgstr "在鼠标光标下(_P)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr "使用边缘阻力取代窗口吸附(_e)"
+msgstr "使用边缘阻距而不是窗口吸附(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "在桌面使用鼠标滚轮切换工作区(_m)"
+msgstr "在桌面使用鼠标滚轮切换工作区(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
-msgstr "当某个窗口自动置顶："
+msgstr "窗口提升自己时："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "以实际桌面版面决定工作区回绕(_l)"
+msgstr "回绕工作区取决于实际的桌面布局(_L)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "到达第一或最后一个工作区时回绕工作区(_f)"
+msgstr ""
+"到达第一个或最后一个工作区时回绕工作区(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
-msgstr "辅助性(_A)"
+msgstr "辅助功能(_A)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Bring window on current workspace"
-msgstr "移动窗口至当前工作区(_B)"
+msgstr "窗口放在当前工作区(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr "循环窗口时显示窗口边框(_D)"
+msgstr "循环时绘制窗口框架(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
-msgstr "允许混合显示(_E)"
+msgstr "启用显示合成(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
@@ -786,27 +790,31 @@ msgstr "包含隐藏(如图标化)窗口(_I)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "触发智能定位最小窗口大小(_M)："
+msgstr "最小窗口大小以触发智能放置(_M)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Placement"
-msgstr "定位(_P)"
+msgstr "放置(_P)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "按下任意鼠标键时提升窗口(_R)"
+msgstr "按下任意鼠标按钮时提升窗口(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "由键盘快捷键切换时记住并恢复先前的工作区(_R)"
+msgstr ""
+"由键盘快捷键切换时记住并恢复\n"
+"先前的工作区(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "跳过有 \"skip pager\" 或者 \"skip taskbar\"属性设置的窗口(_S)"
+msgstr ""
+"跳过有 “跳过页面” 或 “跳过工具栏”\n"
+"属性设置的窗口(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
@@ -822,12 +830,12 @@ msgstr "<b>工作区</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "Change workspace name"
-msgstr "改变工作区名称"
+msgstr "更改工作区名称"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "边缘是屏幕边上不能放置窗口的区域。"
+msgstr "边缘是屏幕边上不能放置窗口的边界区域。"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -835,7 +843,7 @@ msgstr "名称(_N)："
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
-msgstr "工作区数目(_N)："
+msgstr "工作区编号(_N)："
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -849,23 +857,23 @@ msgstr "转入后台"
 
 #: ../src/main.c:544
 msgid "Fork to the background (not supported)"
-msgstr "转入后台（不支持）"
+msgstr "转入后台(不支持)"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode"
-msgstr "设置排版模式"
+msgstr "设置合成模式"
 
 #: ../src/main.c:549
 msgid "Set the compositor mode (not supported)"
-msgstr "设置排版模式（不支持）"
+msgstr "设置合成模式(不支持)"
 
 #: ../src/main.c:551
 msgid "Replace the existing window manager"
-msgstr "替换运行中的窗口管理器"
+msgstr "替换已存在的窗口管理器"
 
 #: ../src/main.c:552
 msgid "Print version information and exit"
-msgstr "打印版本信息并退出"
+msgstr "列印版本信息并退出"
 
 #: ../src/main.c:560
 msgid "[ARGUMENTS...]"
@@ -874,27 +882,27 @@ msgstr "[参数...]"
 #: ../src/main.c:567
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "输入 \"%s --help\" 查看使用说明。"
+msgstr "输入 “%s --help” 获取用法。"
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
-msgstr "最大化(_x)"
+msgstr "最大化(_X)"
 
 #: ../src/menu.c:45
 msgid "Unma_ximize"
-msgstr "恢复(_x)"
+msgstr "取消最大化(_X)"
 
 #: ../src/menu.c:46
 msgid "Mi_nimize"
-msgstr "最小化(_n)"
+msgstr "最小化(_N)"
 
 #: ../src/menu.c:47
 msgid "Minimize _All Other Windows"
-msgstr "最小化所有其他窗口(_A)"
+msgstr "最小化所有其它窗口(_A)"
 
 #: ../src/menu.c:48
 msgid "S_how"
-msgstr "显示(_h)"
+msgstr "显示(_H)"
 
 #: ../src/menu.c:49
 msgid "_Move"
@@ -907,48 +915,48 @@ msgstr "调整大小(_R)"
 #. --------------------------------------------------------
 #: ../src/menu.c:52
 msgid "Always on Top"
-msgstr "总是置顶"
+msgstr "总是最前"
 
 #: ../src/menu.c:53
 msgid "Same as Other Windows"
-msgstr "与其他窗口保持一致"
+msgstr "与其它窗口相同"
 
 #: ../src/menu.c:54
 msgid "Always Below Other Windows"
-msgstr "总在其他窗口之下"
+msgstr "总是在其它窗口下"
 
 #: ../src/menu.c:55
 msgid "Roll Window Up"
-msgstr "窗口上移一层"
+msgstr "向上收起窗口"
 
 #: ../src/menu.c:56
 msgid "Roll Window Down"
-msgstr "窗口下移一层"
+msgstr "向下收起窗口"
 
 #: ../src/menu.c:57
 msgid "_Fullscreen"
-msgstr "全屏显示(_F)"
+msgstr "全屏(_F)"
 
 #: ../src/menu.c:58
 msgid "Leave _Fullscreen"
-msgstr "离开全屏显示(_F)"
+msgstr "离开全屏(_F)"
 
 #: ../src/menu.c:59
 msgid "Context _Help"
-msgstr "帮助(_H)"
+msgstr "交互菜单帮助(_H)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:61
 msgid "Always on Visible Workspace"
-msgstr "总是在可见工作区"
+msgstr "总是在可见工作区上"
 
 #: ../src/menu.c:62
 msgid "Only on This Workspace"
-msgstr "只在这个工作区"
+msgstr "仅在此工作区上"
 
 #: ../src/menu.c:63
 msgid "Move to Another Workspace"
-msgstr "移动至另一个工作区"
+msgstr "移至另一工作区"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:65
@@ -958,7 +966,7 @@ msgstr "关闭(_C)"
 #. --------------------------------------------------------
 #: ../src/menu.c:68
 msgid "Destroy"
-msgstr "结束"
+msgstr "摧毁"
 
 #: ../src/menu.c:71
 msgid "_Quit"
@@ -971,34 +979,34 @@ msgstr "重启"
 #: ../src/menu.c:413
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu 无法获取鼠标\n"
+msgstr "%s：GtkMenu 无法获取光标\n"
 
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s： 无法分配所选颜色 %s\n"
+msgstr "%s：未能分配颜色 %s\n"
 
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s：无法初始化颜色：颜色的GValue值非STRING类型"
+msgstr "%s：未能分配颜色：颜色的 GValue 值不是 STRING 类型"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s： 无法解释所选颜色 %s\n"
+msgstr "%s：未能解析颜色 %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s：无法解析颜色：颜色的GValue值非STRING类型"
+msgstr "%s：未能解析颜色：颜色的 GValue 值不是 STRING 类型"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "从子进程读取数据时发生错误：%s\n"
+msgstr "从子进程读取数据时出错：%s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "无法启动帮助对话框：%s\n"
+msgstr "未能启动帮助对话框：%s\n"
