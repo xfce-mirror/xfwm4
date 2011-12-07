@@ -745,18 +745,23 @@ msgid ""
 "tabs : Style, Keyboard, Focus, Advanced. All modifications will have an "
 "immediate effect on the behaviour of the selected module."
 msgstr ""
+"要打开窗口管理器首选项对话框，点击 "
+"<ulink url=\"xfce-mcs-manager.html#manager-dialog"
+"\" type=\"http\">Xfce 4 设置管理器</ulink> 中标有 “窗口管理器” 的按钮。"
+"对话框显示四个标签：样式、键盘、焦点、高级。所有修改"
+"对选中的模块的行为会立即起效。"
 
 #: xfwm4.xml:453(title)
 msgid "Decoration style"
-msgstr "装饰样式"
+msgstr "修饰样式"
 
 #: xfwm4.xml:456(title)
 msgid "Decoration style preferences"
-msgstr "装饰样式首选项"
+msgstr "修饰样式首选项"
 
 #: xfwm4.xml:464(phrase)
 msgid "The decoration style tab"
-msgstr "装饰样式标签"
+msgstr "修饰样式标签"
 
 #: xfwm4.xml:473(term)
 msgid "Window style"
@@ -769,6 +774,9 @@ msgid ""
 "but there are more than 60 supplementary themes avaible in xfwm4-themes "
 "extra package."
 msgstr ""
+"对话框左边的列表显示所有可用的窗口修饰。xfwm 4 "
+"模块提供四个不同的主题选择，但在 xfwm4-themes "
+"额外软件包中有超过 60 种附加主题。"
 
 #: xfwm4.xml:484(term)
 msgid "Title font"
@@ -782,10 +790,15 @@ msgid ""
 "dialog of the <ulink url=\"xfce-mcs-plugins.html#id2811474\" type=\"http"
 "\">user interface settings manager plugin</ulink>."
 msgstr ""
+"“字体选择” 按钮显示当前窗口标题外观使用的字体族。"
+"如果您要更改它，点击此按钮，会出现一个 “字体选择器” "
+"对话框。它的作用与 <ulink url=\"xfce-mcs-plugins.html"
+"#id2811474\" type=\"http\">用户界面设置管理器插件</ulink> "
+"中的字体选择器对话框相似。"
 
 #: xfwm4.xml:497(term)
 msgid "Title alignment"
-msgstr ""
+msgstr "标题的对齐"
 
 #: xfwm4.xml:499(para)
 msgid ""
@@ -793,6 +806,8 @@ msgid ""
 "inside the title bar, selecting one of those simple options : align it to "
 "the left, center or right."
 msgstr ""
+"无论按钮布局如何，您可以在标题栏内选择标题的对齐，选择"
+"以下某个简单选项：靠左、居中或靠右对齐。"
 
 #: xfwm4.xml:507(term)
 msgid "Button layout"
@@ -805,6 +820,9 @@ msgid ""
 "to remove a button from the titlebar. All modifications will have an "
 "immediate effect on the title bar buttons position."
 msgstr ""
+"按钮布局配置使用一个易用的拖放工具。点击并拖动按钮"
+"更改布局。按下 “隐藏” 区域中的按钮将按钮从标题栏中"
+"移除。所有修改对标题栏按钮的位置会立即起效。"
 
 #: xfwm4.xml:522(title)
 msgid "Keyboard shortcuts"
@@ -827,28 +845,32 @@ msgid ""
 "The list on the left side of the dialog shows all avaible shortcuts themes, "
 "using the name of directories that contain a keythemerc file."
 msgstr ""
+"对话框左边的列表显示所有可用的快捷键主题，使用包含 "
+"keythemerc 文件的目录的名称。"
 
 #: xfwm4.xml:548(para)
 msgid ""
 "By default, there's only one theme : $(datadir)/themes/Default/xfwm4/"
 "keythemerc"
-msgstr "默认只有一主题： $(datadir)/themes/Default/xfwm4/keythemerc"
+msgstr ""
+"默认只有一个主题："
+"$(datadir)/themes/Default/xfwm4/keythemerc"
 
 #: xfwm4.xml:552(para)
 msgid "In the default configuration the following keybindings are defined:"
-msgstr ""
+msgstr "默认配置定义了以下绑定键："
 
 #: xfwm4.xml:556(para)
 msgid "close window : Alt + F4"
-msgstr "关闭窗口： Alt + F4"
+msgstr "关闭窗口：Alt + F4"
 
 #: xfwm4.xml:557(para)
 msgid "Maximize window : Alt + F5"
-msgstr "最大化窗口： Alt + F5"
+msgstr "最大化窗口：Alt + F5"
 
 #: xfwm4.xml:558(para)
 msgid "Maximize vertically : Alt + F6"
-msgstr "竖直最大化： Alt + F6"
+msgstr "竖直最大化：Alt + F6"
 
 #: xfwm4.xml:559(para)
 msgid "Maximize horizontally : Alt + F7"
@@ -860,77 +882,84 @@ msgstr "隐藏窗口： Alt + F8"
 
 #: xfwm4.xml:561(para)
 msgid "Shade window : Alt + F9"
-msgstr ""
+msgstr "折叠窗口：Alt + F9"
 
 #: xfwm4.xml:562(para)
 msgid "Stick window : Alt + F10"
-msgstr ""
+msgstr "粘滞窗口：Alt + F10"
 
 #: xfwm4.xml:563(para)
 msgid "Cycle windows focus : Alt + Tab"
-msgstr ""
+msgstr "轮换窗口焦点：Alt + Tab"
 
 #: xfwm4.xml:564(para)
 msgid "Move window : Control + Shift + Alt + Arrow (up, down, left, or right)"
 msgstr ""
+"移动窗口：Ctrl + Shift + Alt + 方向键"
+"(上、下、左或右)"
 
 #: xfwm4.xml:566(para)
 msgid "Resize window : Shift + Alt + Arrow (up, down, left, or right)"
 msgstr ""
+"调整窗口大小：Shift + Alt + 方向键(上、下、左或右)"
 
 #: xfwm4.xml:568(para)
 msgid "Raise window : Shift + Alt + Page_Up"
-msgstr ""
+msgstr "提升窗口：Shift + Alt + Page_Up"
 
 #: xfwm4.xml:569(para)
 msgid "Lower window : Shift + Alt + Page_Down"
-msgstr ""
+msgstr "降低窗口：Shift + Alt + Page_Down"
 
 #: xfwm4.xml:570(para)
 msgid "Toggle fullscreen : Alt + F11"
-msgstr ""
+msgstr "全屏切换：Alt + F11"
 
 #: xfwm4.xml:571(para)
 msgid "Next workspace : Control + Alt + Arrow right arrow"
-msgstr ""
+msgstr "下一工作区：Ctrl + Alt + 方向右键"
 
 #: xfwm4.xml:573(para)
 msgid "Previous workspace : Control + Alt + Arrow left"
-msgstr ""
+msgstr "上一工作区：Ctrl + Alt + 方向左键"
 
 #: xfwm4.xml:574(para)
 msgid "Add a workspace : Alt + Insert"
-msgstr "添加工作区： Alt + Ins"
+msgstr "添加工作区：Alt + Ins"
 
 #: xfwm4.xml:575(para)
 msgid "Delete a workspace : Alt + Delete"
-msgstr "删除工作区： Alt + Del"
+msgstr "删除工作区：Alt + Del"
 
 #: xfwm4.xml:576(para)
 msgid "Go to workspace number N (1-9) : Control + F(N)"
-msgstr ""
+msgstr "转至工作区 N(1-9)：Ctrl + F(N)"
 
 #: xfwm4.xml:577(para)
 msgid "Move the window to previous|next workspace : Alt + Control + Home|End"
 msgstr ""
+"将窗口移至上一/下一工作区："
+"Alt + Ctrl + Home/End"
 
 #: xfwm4.xml:579(para)
 msgid ""
 "Move a window to workspace number N (1-9) : Alt + Control + keypad key "
 "number N"
 msgstr ""
+"将窗口移动至工作区 N(1-9)："
+"Alt + Ctrl + 小键盘数字键 N"
 
 #: xfwm4.xml:581(para)
 msgid "Start xfhelp4 : Alt + F1"
-msgstr "启动 xfhelp4： Alt + F1"
+msgstr "启动 xfhelp4：Alt + F1"
 
 #: xfwm4.xml:582(para)
 msgid "Start xfrun4 : Alt + F2"
-msgstr "启动 xfrun4： Alt + F2"
+msgstr "启动 xfrun4：Alt + F2"
 
 #: xfwm4.xml:583(para)
 msgid "Lock the screen : Alt + Control + Delete"
-msgstr "锁住屏幕： Alt + Ctrl + Del"
+msgstr "锁屏：Alt + Ctrl + Del"
 
 #: xfwm4.xml:586(para)
 msgid ""
@@ -942,10 +971,15 @@ msgid ""
 "and compose your new shortcut when the \"Compose shortcut\" popup window "
 "appears."
 msgstr ""
+"对话框右边有两个列表。“窗口快捷键” 列表显示驱动窗口"
+"管理器所使用的键盘快捷键。“命令快捷键” 列表显示旨在"
+"启动应用程序的键盘快捷键。要修改某个快捷键，您只得在"
+"列表中使用鼠标左键双击它，然后在 “合成快捷键” 弹出"
+"窗口出现时合成您的新快捷键。"
 
 #: xfwm4.xml:597(title) xfwm4.xml:605(phrase)
 msgid "The compose shortcut popup"
-msgstr ""
+msgstr "合成快捷键弹出窗口"
 
 #: xfwm4.xml:611(para)
 msgid ""
@@ -953,56 +987,68 @@ msgid ""
 "instance : $HOME/.themes/Custom/xfwm4/keythemerc, then select it in the list "
 "of available themes."
 msgstr ""
+"如果您要创建新主题，先创建一个这样的目录，比如："
+"$HOME/.themes/Custom/xfwm4/keythemerc，"
+"然后在可用主题列表中选择它。"
 
 #: xfwm4.xml:616(para)
 msgid ""
 "If you do not know the names of your keyboard modifier keys, you can launch "
 "the \"xev\" application from a terminal and test them."
 msgstr ""
+"如果您不知道键盘修饰键的名称，您可以从终端启动 “xev“ "
+"应用程序并测试它们。"
 
 #: xfwm4.xml:627(title) xfwm4.xml:630(title)
 msgid "Focus preferences"
-msgstr ""
+msgstr "焦点首选项"
 
 #: xfwm4.xml:638(phrase)
 msgid "The Focus tab"
-msgstr ""
+msgstr "焦点标签"
 
 #: xfwm4.xml:647(term)
 msgid "Focus model"
-msgstr ""
+msgstr "焦点模式"
 
 #: xfwm4.xml:649(para)
 msgid ""
 "A focused window receives the keyboard and mouse input. You have the choice "
 "between two focus models :"
 msgstr ""
+"已聚焦的窗口接收键盘和鼠标输入。您有两个焦点模式可选："
 
 #: xfwm4.xml:652(para)
 msgid ""
 "Click to focus : select this option if you want a window to receive the "
 "focus only when you click anywhere on its frame."
 msgstr ""
+"点击聚焦：选择此项，如果您要让窗口只在您点击窗口框架"
+"任一地方时接收焦点。"
 
 #: xfwm4.xml:656(para)
 msgid ""
 "Focus follow mouse : select this option if you want a window to receive the "
 "focus as soon as the mouse pointer is over its frame."
 msgstr ""
+"焦点跟随鼠标：选择此项，如果您要让窗口在鼠标指针处于"
+"其窗口框架上时立即接收焦点。"
 
 #: xfwm4.xml:665(term)
 msgid "New window focus"
-msgstr ""
+msgstr "新建窗口焦点"
 
 #: xfwm4.xml:667(para)
 msgid ""
 "Selecting this option will automatically give the focus to newly created "
 "windows, without the need to click or move the mouse pointer."
 msgstr ""
+"选择此项会自动聚焦新创建的窗口，用不着点击或移动鼠标"
+"指针。"
 
 #: xfwm4.xml:675(term)
 msgid "Raise on focus"
-msgstr ""
+msgstr "聚焦时提升"
 
 #: xfwm4.xml:677(para)
 msgid ""
@@ -1010,10 +1056,12 @@ msgid ""
 "automatically appear over all other frames, after an amount of time that you "
 "can adjust with the \"delay\" slider."
 msgstr ""
+"如果选中此项，在超过您可以用 “延时” 滑块调整的时间后，"
+"新聚焦的窗口会在所有其它窗口上自动出现。"
 
 #: xfwm4.xml:685(term)
 msgid "Raise on click"
-msgstr ""
+msgstr "点击时提升"
 
 #: xfwm4.xml:687(para)
 msgid ""
