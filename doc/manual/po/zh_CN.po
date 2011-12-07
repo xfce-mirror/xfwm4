@@ -443,7 +443,7 @@ msgstr "您可以执行以下某个动作来隐藏窗口："
 
 #: xfwm4.xml:283(para)
 msgid "click the hide button of the title bar"
-msgstr "点击标题栏的隐藏按钮"
+msgstr "点击标题栏上的隐藏按钮"
 
 #: xfwm4.xml:284(para)
 msgid "open the window menu from the title bar and choose the \"Hide\" item"
@@ -479,76 +479,90 @@ msgid ""
 "background. This list shows all opened windows, classified by workspaces. "
 "Windows that are currently hidden are marked between [ ]."
 msgstr ""
+"窗口列表，可以在桌面背景上用中击访问。此列表显示"
+"所有已打开的窗口，按工作区分类。当前隐藏的窗口"
+"标记在 [ ] 中间。"
 
 #: xfwm4.xml:299(para)
 msgid "the <application>xfce4-iconbox</application>"
-msgstr ""
+msgstr "<application>xfce4-iconbox</application>"
 
 #: xfwm4.xml:305(term)
 msgid "Shade / unshade windows"
-msgstr ""
+msgstr "折叠/取消折叠窗口"
 
 #: xfwm4.xml:307(para)
 msgid ""
 "If you \"shade\" a window, it will be reduced to the size of its title bar. "
 "The same repeated action makes a window to shade/unshade :"
 msgstr ""
+"如果您 “折叠” 窗口，它会缩小至标题栏的大小。同一"
+"重复动作使窗口折叠/取消折叠："
+
 
 #: xfwm4.xml:311(para)
 msgid "click the shade/unshade button of the title bar"
-msgstr ""
+msgstr "点击标题栏上的折叠/取消折叠按钮"
 
 #: xfwm4.xml:312(para)
 msgid ""
 "open the window menu from the title bar and choose \"Shade\" or \"Unshade\" "
 "item"
 msgstr ""
+"从标题栏中打开窗口菜单并选择 “折叠” 或 “取消折叠” "
+"条目"
 
 #: xfwm4.xml:314(para)
 msgid "use the mouse scrollwheel while you hold the pointer over the title bar"
-msgstr ""
+msgstr "当您把鼠标指针停在标题栏上时使用鼠标滚轮"
 
 #: xfwm4.xml:316(para)
 msgid "use the Alt + F9 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F9 键盘快捷键"
 
 #: xfwm4.xml:322(term)
 msgid "Stick / unstick windows"
-msgstr ""
+msgstr "粘滞/取消粘滞窗口"
 
 #: xfwm4.xml:324(para)
 msgid ""
 "If you \"stick\" a window, it will be visible at the same place on all your "
 "workspaces. The same repeated action make a window to stick/unstick :"
 msgstr ""
+"如果您 “粘滞” 窗口，它会在所有工作区的同一位置显示。"
+"同一重复动作使窗口粘滞/取消粘滞："
 
 #: xfwm4.xml:329(para)
 msgid "click the stick/unstick button of the title bar"
-msgstr ""
+msgstr "点击标题栏上的粘滞/取消粘滞按钮"
 
 #: xfwm4.xml:330(para)
 msgid ""
 "open the window menu button from the title bar and choose \"Stick\" or "
 "\"Unstick\" item"
 msgstr ""
+"从标题栏中打开窗口菜单并选择 “粘滞” 或 “取消粘滞” "
+"条目"
 
 #: xfwm4.xml:332(para)
 msgid "use the Alt + F10 keyboard shortcut"
-msgstr ""
+msgstr "使用 Alt + F10 键盘快捷键"
 
 #: xfwm4.xml:338(term)
 msgid "Raise / lower windows"
-msgstr ""
+msgstr "提升/降低窗口"
 
 #: xfwm4.xml:340(para)
 msgid ""
 "The \"raise window\" function makes a window frame appear above all the "
 "other frames. To raise a window, you can :"
 msgstr ""
+"“提升窗口” 功能使窗口框架出现在所有其它窗口框架上。"
+"要提升窗口，您可以："
 
 #: xfwm4.xml:344(para)
 msgid "left click on its titlebar"
-msgstr "在标题栏上左击"
+msgstr "在其标题栏上左击"
 
 #: xfwm4.xml:345(para)
 msgid ""
@@ -556,6 +570,9 @@ msgid ""
 "<ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus "
 "preferences dialog</ulink>"
 msgstr ""
+"给窗口焦点，如果相应的选项已经在 "
+"<ulink url=\"xfwm4.html#wm-focus\" type=\"http\">键盘和焦点首选项对话框</ulink> "
+"中选择了"
 
 #: xfwm4.xml:347(para)
 msgid ""
@@ -563,37 +580,48 @@ msgid ""
 "the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus "
 "preferences dialog</ulink>"
 msgstr ""
+"左击窗口的任何地方，如果相应的选项已经在 "
+"<ulink url=\"xfwm4.html#wm-focus\" type=\"http\">键盘和焦点首选项对话框</ulink> "
+"中选择了"
 
 #: xfwm4.xml:349(para)
 msgid "click on its label in the taskbar or the iconbox"
-msgstr ""
+msgstr "在任务栏或图标框中点击其标签"
 
 #: xfwm4.xml:350(para)
 msgid ""
 "use the Shift + Alt + Page_Up keyboard shortcut (if the window is already "
 "focused)"
 msgstr ""
+"使用 Shift + Alt + Page_Up 键盘快捷键"
+"(如果窗口已经获得了焦点)"
 
 #: xfwm4.xml:353(para)
 msgid ""
 "You can make a window frame to always stay above all other windows by "
 "opening the window menu and selecting the \"always on top\" item."
 msgstr ""
+"通过打开窗口菜单并选择 “总是最前” 条目，您能使窗口"
+"框架总是停留在其它窗口上。"
 
 #: xfwm4.xml:357(para)
 msgid ""
 "The \"lower\" function sends a window frame below all other frames. To "
 "\"lower\" a window, you can :"
 msgstr ""
+"“降低” 功能把窗口送至所有其它窗口框架下。要 “降低” "
+"窗口，您能："
 
 #: xfwm4.xml:361(para)
 msgid "middle-click on its title bar"
-msgstr ""
+msgstr "在标题栏上中击"
 
 #: xfwm4.xml:362(para)
 msgid ""
 "use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)"
 msgstr ""
+"使用 Shift + Alt + Page_Down 键盘快捷键"
+"(如果窗口已获得焦点)"
 
 #: xfwm4.xml:368(term)
 msgid "Move windows"
@@ -605,36 +633,41 @@ msgstr "移动窗口有几种方法："
 
 #: xfwm4.xml:372(para)
 msgid "left or right click on the title bar of the window and drag it"
-msgstr ""
+msgstr "在窗口的标题栏上左击或右击并拖动"
 
 #: xfwm4.xml:374(para)
 msgid ""
 "use Alt + left click while the pointer is anywhere over the window frame and "
 "move the mouse"
 msgstr ""
+"当鼠标指针处于窗口内任何地方时使用 Alt + 左击 "
+"并移动鼠标"
 
 #: xfwm4.xml:376(para)
 msgid ""
 "use Control + Alt + Shift + (up, down, left or right) Arrow keyboard shortcut"
 msgstr ""
+"使用 Ctrl + Alt + Shift + (上、下、左或右)"
+"方向键键盘快捷键"
 
 #: xfwm4.xml:391(term)
 msgid "Move a window to another workspace"
-msgstr "将窗口移动到另一工作区"
+msgstr "将窗口移至另一工作区"
 
 #: xfwm4.xml:393(para)
 msgid ""
 "You can send a window to another workspace by performing one of these "
 "actions :"
 msgstr ""
+"通过执行以下某个动作您能将窗口送到另一工作区："
 
 #: xfwm4.xml:396(para)
 msgid "stick the window, move to another workspace, then unstick the window."
-msgstr ""
+msgstr "粘滞窗口、移至另一工作区，然后取消粘滞窗口"
 
 #: xfwm4.xml:398(para)
 msgid "use the window menu and choose one of the \"Send to\" submenu items."
-msgstr ""
+msgstr "使用窗口菜单并选择某个 “发送至” 子菜单条目。"
 
 #: xfwm4.xml:400(para)
 msgid ""
@@ -643,24 +676,32 @@ msgid ""
 "window. Corresponding option needs to be selected in the <ulink url=\"xfwm4."
 "html#wm_misc\" type=\"http\">Window Manager Preferences dialog</ulink>."
 msgstr ""
+"在窗口标题栏上左击或右击，将它拖到屏幕边缘：指针会"
+"进入下一个工作区，仍然拖着此窗口。相应选项需要在 "
+"<ulink url=\"xfwm4.html#wm_misc\" type=\"http\">窗口管理器首选项对话框</ulink> "
+"中选择了。"
 
 #: xfwm4.xml:405(para)
 msgid "use keyboard shortcuts :"
-msgstr "使用键盘快捷方式："
+msgstr "使用键盘快捷键："
 
 #: xfwm4.xml:407(para)
 msgid "Alt + Control + End will move a window to the next workspace"
 msgstr ""
+"Alt + Ctrl + End 会把窗口移至下一个工作区"
 
 #: xfwm4.xml:409(para)
 msgid "Alt + Control + Home will move a window to the previous workspace"
 msgstr ""
+"Alt + Ctrl + Home 会把窗口移至上一个工作区"
 
 #: xfwm4.xml:411(para)
 msgid ""
 "Alt + Control + Keypad-Number will move the current window to corresponding "
 "workspace"
 msgstr ""
+"Alt + Ctrl + Num_Lock 会把当前窗口移至相应的"
+"工作区"
 
 #: xfwm4.xml:415(para)
 msgid ""
@@ -668,6 +709,9 @@ msgid ""
 "\">graphical pager </ulink> by clicking on the representation of the window, "
 "and move it to the desired workspace."
 msgstr ""
+"通过在窗口代表物上点击来使用 "
+"<ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">图形页面</ulink>，"
+"把它移至所要的工作区。"
 
 #: xfwm4.xml:425(term)
 msgid "Close a window"
@@ -683,11 +727,11 @@ msgstr "点击标题栏上的关闭按钮"
 
 #: xfwm4.xml:430(para)
 msgid "Open the window menu from the title bar and choose the \"Close\" item"
-msgstr ""
+msgstr "从标题栏中打开窗口菜单并选择 “关闭” 条目"
 
 #: xfwm4.xml:432(para)
 msgid "or use Alt + F4 keyboard shortcut"
-msgstr ""
+msgstr "或使用 Alt + F4 键盘快捷键"
 
 #: xfwm4.xml:443(title)
 msgid "Customizing <application>@PACKAGE_NAME@</application>"
@@ -764,19 +808,19 @@ msgstr ""
 
 #: xfwm4.xml:522(title)
 msgid "Keyboard shortcuts"
-msgstr "键盘快捷方式"
+msgstr "键盘快捷键："
 
 #: xfwm4.xml:525(title)
 msgid "Keyboard shortcuts preferences"
-msgstr "键盘快捷方式首选项"
+msgstr "键盘快捷键首选项"
 
 #: xfwm4.xml:533(phrase)
 msgid "The keyboard shortcuts tab"
-msgstr "键盘快捷方式标签"
+msgstr "键盘快捷键标签"
 
 #: xfwm4.xml:542(term)
 msgid "Keyboard Shortcuts"
-msgstr "键盘快捷方式"
+msgstr "键盘快捷键"
 
 #: xfwm4.xml:544(para)
 msgid ""
@@ -1157,4 +1201,5 @@ msgstr ""
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: xfwm4.xml:0(None)
 msgid "translator-credits"
-msgstr "Chipong Luo <chipong_l@yahoo.com>, 2011."
+msgstr ""
+"Chipong Luo <chipong_l@yahoo.com>, 2011."
