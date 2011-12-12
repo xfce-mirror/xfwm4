@@ -1210,10 +1210,6 @@ clientFree (Client * c)
     {
         clientClearLastRaise (c->screen_info);
     }
-    if (clientGetLastUngrab () == c)
-    {
-        clientClearLastUngrab ();
-    }
     if (clientGetDelayedFocus () == c)
     {
         clientClearDelayedFocus ();
@@ -1459,7 +1455,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XSetWindowAttributes attributes;
     Client *c = NULL;
     gboolean shaped;
-    gboolean grabbed;
     unsigned long valuemask;
     long pid;
     int i;
@@ -1845,7 +1840,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* Notify the compositor about this new window */
     compositorAddWindow (display_info, c->frame, c);
 
-    grabbed = FALSE;
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
         if ((c->win_workspace == screen_info->current_ws) ||
@@ -1860,7 +1854,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
             else
             {
                 clientFocusNew(c);
-                grabbed = TRUE;
             }
         }
         else
@@ -1877,11 +1870,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         clientSetNetActions (c);
     }
     clientUpdateOpacity (c);
-
-    if (!grabbed)
-    {
-        clientGrabMouseButton (c);
-    }
+    clientGrabMouseButton (c);
     setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
                                                  frameRight (c), frameBottom (c));
     clientSetNetState (c);

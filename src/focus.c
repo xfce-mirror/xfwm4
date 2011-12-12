@@ -58,7 +58,6 @@ struct _ClientPair
 static Client *client_focus  = NULL;
 static Client *pending_focus = NULL;
 static Client *user_focus    = NULL;
-static Client *last_ungrab   = NULL;
 static Client *delayed_focus = NULL;
 static guint focus_timeout   = 0;
 
@@ -213,7 +212,6 @@ clientFocusNew(Client * c)
         clientSetFocus (screen_info, c,
                         myDisplayGetCurrentTime (display_info),
                         FOCUS_IGNORE_MODAL);
-        clientPassGrabMouseButton (c);
     }
     else
     {
@@ -242,7 +240,6 @@ clientFocusNew(Client * c)
         }
 
         clientShow (c, TRUE);
-        clientGrabMouseButton (c);
         clientSetNetState (c);
     }
 
@@ -363,11 +360,6 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
     if ((c || current_focus) && (c != current_focus))
     {
         return;
-    }
-
-    if (current_focus == last_ungrab)
-    {
-        clientPassGrabMouseButton (NULL);
     }
 
     display_info = screen_info->display_info;
@@ -500,15 +492,6 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         TRACE ("client \"%s\" (0x%lx) is already focused, ignoring request", c->name, c->window);
         pending_focus = NULL;
         return;
-    }
-
-    /*
-       We can release the button mouse grab if we don't raise on click or if the focused window
-       is the one that has been raised at last.
-     */
-    if (!(screen_info->params->raise_on_click) || (c == clientGetLastRaise (screen_info)))
-    {
-        clientPassGrabMouseButton (c);
     }
 
     client_focus = c;
@@ -742,7 +725,6 @@ clientGrabMouseButtonForAll (ScreenInfo *screen_info)
     {
         clientGrabMouseButton (c);
     }
-    clientClearLastUngrab ();
 }
 
 void
@@ -758,48 +740,6 @@ clientUngrabMouseButtonForAll (ScreenInfo *screen_info)
     {
         clientUngrabMouseButton (c);
     }
-    clientClearLastUngrab ();
-}
-
-void
-clientPassGrabMouseButton (Client * c)
-{
-    TRACE ("entering clientPassMouseGrabButton");
-
-    if (c == NULL)
-    {
-        if (last_ungrab)
-        {
-            clientGrabMouseButton (last_ungrab);
-        }
-        last_ungrab = NULL;
-        return;
-    }
-
-    if (last_ungrab == c)
-    {
-        return;
-    }
-
-    TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
-    if (last_ungrab)
-    {
-        clientGrabMouseButton (last_ungrab);
-    }
-    clientUngrabMouseButton (c);
-    last_ungrab = c;
-}
-
-Client *
-clientGetLastUngrab (void)
-{
-    return last_ungrab;
-}
-
-void
-clientClearLastUngrab (void)
-{
-    last_ungrab = NULL;
 }
 
 static gboolean

@@ -62,7 +62,6 @@
 #include "startup_notification.h"
 #include "compositor.h"
 #include "spinning_cursor.h"
-#include "stock_icons.h"
 
 #define BASE_EVENT_MASK \
     SubstructureNotifyMask|\
@@ -438,7 +437,6 @@ initialize (gint compositor_mode, gboolean replace_wm)
 #else /* HAVE_COMPOSITOR */
     main_display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
-    initWMStockIcons ();
 
     initModifiers (main_display_info->dpy);
 

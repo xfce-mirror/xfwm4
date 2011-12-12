@@ -315,15 +315,6 @@ clientRaise (Client * c, Window wsibling)
      * by clicking inside.
      */
 
-    if (c == clientGetFocus ())
-    {
-        clientPassGrabMouseButton (c);
-    }
-    else
-    {
-        clientPassGrabMouseButton (NULL);
-    }
-
     if (g_list_length (screen_info->windows_stack) < 1)
     {
         return;
@@ -530,7 +521,6 @@ clientLower (Client * c, Window wsibling)
          */
         clientApplyStackList (screen_info);
         clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST_STACKING], screen_info->windows_stack);
-        clientPassGrabMouseButton (NULL);
         clientPassFocus (screen_info, c, NULL);
         if (screen_info->last_raise == c)
         {

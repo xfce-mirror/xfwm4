@@ -302,7 +302,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
     Client *c;
     int key;
 
-    TRACE ("entering handleKeyEvent");
+    TRACE ("entering handleKeyPress");
 
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, ev->root);
     if (!ev_screen_info)
@@ -990,7 +990,6 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         else if (ev->window == c->window)
         {
             replay = TRUE;
-            clientPassGrabMouseButton (c);
             if (((screen_info->params->raise_with_any_button) && (c->type & WINDOW_REGULAR_FOCUSABLE)) || (ev->button == Button1))
             {
                 if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
@@ -1722,7 +1721,6 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
         if ((c) && (c == clientGetFocus ()))
         {
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
-            clientPassGrabMouseButton (NULL);
             clientUpdateFocus (c->screen_info, NULL, NO_FOCUS_FLAG);
             clientClearDelayedRaise ();
         }
