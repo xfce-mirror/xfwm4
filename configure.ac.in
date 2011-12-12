@@ -271,17 +271,8 @@ src/Makefile
 themes/Makefile
 themes/daloa/Makefile
 themes/default/Makefile
-themes/default-4.0/Makefile
-themes/default-4.2/Makefile
-themes/default-4.4/Makefile
-themes/default-4.6/Makefile
 themes/kokodi/Makefile
 themes/moheli/Makefile
-themes/sassandra/Makefile
-themes/stoneage/Makefile
-themes/therapy/Makefile
-themes/tyrex/Makefile
-themes/wallis/Makefile
 xfwm4.spec
 ])
 
