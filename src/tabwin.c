@@ -32,6 +32,10 @@
 #define WIN_ICON_BORDER 5
 #endif
 
+#ifndef WIN_COLOR_BORDER
+#define WIN_COLOR_BORDER 3
+#endif
+
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
@@ -41,6 +45,34 @@
 #include "focus.h"
 #include "tabwin.h"
 
+static void tabwin_widget_class_init (TabwinWidgetClass *klass);
+
+static GType
+tabwin_widget_get_type (void)
+{
+    static GType type = G_TYPE_INVALID;
+
+    if (G_UNLIKELY (type == G_TYPE_INVALID))
+    {
+        static const GTypeInfo info =
+        {
+            sizeof (TabwinWidgetClass),
+            NULL,
+            NULL,
+            (GClassInitFunc) tabwin_widget_class_init,
+            NULL,
+            NULL,
+            sizeof (TabwinWidget),
+            0,
+            NULL,
+            NULL,
+        };
+
+        type = g_type_register_static (GTK_TYPE_WINDOW, "Xfwm4TabwinWidget", &info, 0);
+    }
+
+    return type;
+}
 
 static GdkColor *
 get_color (GtkWidget *win, GtkStateType state_type)
@@ -174,7 +206,7 @@ tabwinSetSelected (TabwinWidget *tbw, GtkWidget *w)
 }
 
 static GtkWidget *
-createWindowIcon (Client *c)
+createWindowIcon (Client *c, gint icon_size)
 {
     GdkPixbuf *icon_pixbuf;
     GdkPixbuf *icon_pixbuf_stated;
@@ -183,7 +215,7 @@ createWindowIcon (Client *c)
     g_return_val_if_fail (c, NULL);
     TRACE ("entering createWindowIcon");
 
-    icon_pixbuf = getAppIcon (c->screen_info->display_info, c->window, WIN_ICON_SIZE, WIN_ICON_SIZE);
+    icon_pixbuf = getAppIcon (c->screen_info->display_info, c->window, icon_size, icon_size);
     icon_pixbuf_stated = NULL;
     icon = gtk_image_new ();
     g_object_set_data (G_OBJECT (icon), "client-ptr-val", c);
@@ -220,6 +252,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     GtkWidget *windowlist, *icon, *selected;
     int packpos;
     Tabwin *t;
+    gint icon_size = WIN_ICON_SIZE;
 
     TRACE ("entering createWindowlist");
 
@@ -231,7 +264,8 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 
     gdk_screen_get_monitor_geometry (screen_info->gscr, tbw->monitor_num, &monitor);
 
-    tbw->grid_cols = (monitor.width / (WIN_ICON_SIZE + 2 * WIN_ICON_BORDER)) * 0.75;
+    gtk_widget_style_get (GTK_WIDGET (tbw), "icon-size", &icon_size, NULL);
+    tbw->grid_cols = (monitor.width / (icon_size + 2 * WIN_ICON_BORDER)) * 0.75;
     tbw->grid_rows = screen_info->client_count / tbw->grid_cols + 1;
     tbw->widgets = NULL;
     windowlist = gtk_table_new (tbw->grid_rows, tbw->grid_cols, FALSE);
@@ -241,7 +275,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     {
         c = (Client *) client_list->data;
         TRACE ("createWindowlist: adding %s", c->name);
-        icon = createWindowIcon (c);
+        icon = createWindowIcon (c, icon_size);
         gtk_table_attach (GTK_TABLE (windowlist), GTK_WIDGET (icon),
             packpos % tbw->grid_cols, packpos % tbw->grid_cols + 1,
             packpos / tbw->grid_cols, packpos / tbw->grid_cols + 1,
@@ -277,7 +311,7 @@ tabwinConfigure (TabwinWidget *tbw, GdkEventConfigure *event)
         return FALSE;
     }
 
-    window = GTK_WINDOW(tbw->window);
+    window = GTK_WINDOW(tbw);
     screen = gtk_window_get_screen(window);
     gdk_screen_get_monitor_geometry (screen, tbw->monitor_num, &monitor);
     x = monitor.x + (monitor.width - event->width) / 2;
@@ -290,6 +324,27 @@ tabwinConfigure (TabwinWidget *tbw, GdkEventConfigure *event)
     return FALSE;
 }
 
+static void
+tabwin_widget_class_init (TabwinWidgetClass *klass)
+{
+    GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+
+    gtk_widget_class_install_style_property (widget_class,
+                                             g_param_spec_int("icon-size",
+                                                              "icon size",
+                                                               "the size of the application icon",
+                                                               24, 128,
+                                                               WIN_ICON_SIZE,
+                                                               G_PARAM_READABLE));
+    gtk_widget_class_install_style_property (widget_class,
+                                             g_param_spec_int("border-width",
+                                                              "border width",
+                                                               "the width of the colored border",
+                                                               0, 8,
+                                                               WIN_COLOR_BORDER,
+                                                               G_PARAM_READABLE));
+}
+
 static TabwinWidget *
 tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
 {
@@ -300,12 +355,12 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     GtkWidget *windowlist;
     GdkColor *color;
     GdkRectangle monitor;
+    gint border_width = WIN_COLOR_BORDER;
 
     TRACE ("entering tabwinCreateWidget for monitor %i", monitor_num);
 
-    tbw = g_new0 (TabwinWidget, 1);
+    tbw = g_object_new (tabwin_widget_get_type(), "type", GTK_WINDOW_POPUP, NULL);
 
-    tbw->window = gtk_window_new (GTK_WINDOW_POPUP);
     tbw->width = -1;
     tbw->height = -1;
     tbw->monitor_num = monitor_num;
@@ -313,25 +368,26 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     tbw->selected = NULL;
     tbw->selected_callback = 0;
 
-    gtk_window_set_screen (GTK_WINDOW (tbw->window), screen_info->gscr);
-    gtk_widget_set_name (GTK_WIDGET (tbw->window), "xfwm4-tabwin");
-    gtk_widget_realize (GTK_WIDGET (tbw->window));
-    gtk_container_set_border_width (GTK_CONTAINER (tbw->window), 0);
-    gtk_window_set_position (GTK_WINDOW (tbw->window), GTK_WIN_POS_NONE);
+    gtk_window_set_screen (GTK_WINDOW (tbw), screen_info->gscr);
+    gtk_widget_set_name (GTK_WIDGET (tbw), "xfwm4-tabwin");
+    gtk_widget_realize (GTK_WIDGET (tbw));
+    gtk_container_set_border_width (GTK_CONTAINER (tbw), 0);
+    gtk_window_set_position (GTK_WINDOW (tbw), GTK_WIN_POS_NONE);
     gdk_screen_get_monitor_geometry (screen_info->gscr, tbw->monitor_num, &monitor);
-    gtk_window_move (GTK_WINDOW(tbw->window), monitor.x + monitor.width / 2,
-                                              monitor.y + monitor.height / 2);
+    gtk_window_move (GTK_WINDOW(tbw), monitor.x + monitor.width / 2,
+                                      monitor.y + monitor.height / 2);
 
     frame = gtk_frame_new (NULL);
     gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
     gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
-    gtk_container_add (GTK_CONTAINER (tbw->window), frame);
+    gtk_container_add (GTK_CONTAINER (tbw), frame);
 
     colorbox1 = gtk_event_box_new ();
     gtk_container_add (GTK_CONTAINER (frame), colorbox1);
 
+    gtk_widget_style_get (GTK_WIDGET (tbw), "border-width", &border_width, NULL);
     colorbox2 = gtk_event_box_new ();
-    gtk_container_set_border_width (GTK_CONTAINER (colorbox2), 3);
+    gtk_container_set_border_width (GTK_CONTAINER (colorbox2), border_width);
     gtk_container_add (GTK_CONTAINER (colorbox1), colorbox2);
 
     vbox = gtk_vbox_new (FALSE, 5);
@@ -359,7 +415,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     tbw->container = windowlist;
     gtk_container_add (GTK_CONTAINER (frame), windowlist);
 
-    color = get_color (tbw->window, GTK_STATE_SELECTED);
+    color = get_color (GTK_WIDGET (tbw), GTK_STATE_SELECTED);
     if (color)
     {
         gtk_widget_modify_bg (colorbox1, GTK_STATE_NORMAL, color);
@@ -373,10 +429,10 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     }
 #endif
 
-    g_signal_connect_swapped (tbw->window, "configure-event",
+    g_signal_connect_swapped (tbw, "configure-event",
                               GTK_SIGNAL_FUNC (tabwinConfigure), (gpointer) tbw);
 
-    gtk_widget_show_all (GTK_WIDGET (tbw->window));
+    gtk_widget_show_all (GTK_WIDGET (tbw));
 
     return tbw;
 }
@@ -501,7 +557,7 @@ tabwinSelectHead (Tabwin *t)
             if (((Client *) g_object_get_data (G_OBJECT(icon), "client-ptr-val")) == head->data)
                 {
                     tabwinSetSelected (tbw, icon);
-                    gtk_widget_queue_draw (tbw->window);
+                    gtk_widget_queue_draw (GTK_WIDGET(tbw));
                 }
             }
     }
@@ -536,7 +592,7 @@ tabwinSelectNext (Tabwin *t)
             if (((Client *) g_object_get_data (G_OBJECT(icon), "client-ptr-val")) == next->data)
                 {
                     tabwinSetSelected (tbw, icon);
-                    gtk_widget_queue_draw (tbw->window);
+                    gtk_widget_queue_draw (GTK_WIDGET(tbw));
                 }
             }
     }
@@ -571,7 +627,7 @@ tabwinSelectPrev (Tabwin *t)
             if (((Client *) g_object_get_data (G_OBJECT(icon), "client-ptr-val")) == prev->data)
                 {
                     tabwinSetSelected (tbw, icon);
-                    gtk_widget_queue_draw (tbw->window);
+                    gtk_widget_queue_draw (GTK_WIDGET(tbw));
                 }
             }
     }
@@ -593,8 +649,8 @@ tabwinDestroy (Tabwin *t)
     {
         tbw = (TabwinWidget *) tabwin_list->data;
         g_list_free (tbw->widgets);
-        gtk_widget_destroy (tbw->window);
-        g_free (tbw);
+        gtk_widget_destroy (GTK_WIDGET (tbw));
     }
     g_list_free (t->tabwin_list);
 }
+
