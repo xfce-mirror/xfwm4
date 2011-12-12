@@ -37,39 +37,38 @@
 #include "event_filter.h"
 #include "menu.h"
 #include "misc.h"
-#include "stock_icons.h"
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    {MENU_OP_MAXIMIZE,     WM_STOCK_MAXIMIZE,   N_("Ma_ximize")},
-    {MENU_OP_UNMAXIMIZE,   WM_STOCK_UNMAXIMIZE, N_("Unma_ximize")},
-    {MENU_OP_MINIMIZE,     WM_STOCK_MINIMIZE,   N_("Mi_nimize")},
-    {MENU_OP_MINIMIZE_ALL, NULL,                N_("Minimize _All Other Windows")},
-    {MENU_OP_UNMINIMIZE,   NULL,                N_("S_how")},
-    {MENU_OP_MOVE,         NULL,                N_("_Move")},
-    {MENU_OP_RESIZE,       NULL,                N_("_Resize")},
+    {MENU_OP_MAXIMIZE,     "xfce-wm-maximize",   N_("Ma_ximize")},
+    {MENU_OP_UNMAXIMIZE,   "xfce-wm-unmaximize", N_("Unma_ximize")},
+    {MENU_OP_MINIMIZE,     "xfce-wm-minimize",   N_("Mi_nimize")},
+    {MENU_OP_MINIMIZE_ALL, NULL,                 N_("Minimize _All Other Windows")},
+    {MENU_OP_UNMINIMIZE,   NULL,                 N_("S_how")},
+    {MENU_OP_MOVE,         NULL,                 N_("_Move")},
+    {MENU_OP_RESIZE,       NULL,                 N_("_Resize")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_ABOVE,        NULL,                N_("Always on Top")},
-    {MENU_OP_NORMAL,       NULL,                N_("Same as Other Windows")},
-    {MENU_OP_BELOW,        NULL,                N_("Always Below Other Windows")},
-    {MENU_OP_SHADE,        WM_STOCK_ROLLUP,     N_("Roll Window Up")},
-    {MENU_OP_UNSHADE,      WM_STOCK_ROLLDOWN,   N_("Roll Window Down")},
-    {MENU_OP_FULLSCREEN,   "gtk-fullscreen",    N_("_Fullscreen")},
-    {MENU_OP_UNFULLSCREEN, "gtk-fullscreen",    N_("Leave _Fullscreen")},
-    {MENU_OP_CONTEXT_HELP, "gtk-help",          N_("Context _Help")},
+    {MENU_OP_ABOVE,        NULL,                 N_("Always on Top")},
+    {MENU_OP_NORMAL,       NULL,                 N_("Same as Other Windows")},
+    {MENU_OP_BELOW,        NULL,                 N_("Always Below Other Windows")},
+    {MENU_OP_SHADE,        "xfce-wm-shade",      N_("Roll Window Up")},
+    {MENU_OP_UNSHADE,      "xfce-wm-unshade",    N_("Roll Window Down")},
+    {MENU_OP_FULLSCREEN,   "gtk-fullscreen",     N_("_Fullscreen")},
+    {MENU_OP_UNFULLSCREEN, "gtk-fullscreen",     N_("Leave _Fullscreen")},
+    {MENU_OP_CONTEXT_HELP, "gtk-help",           N_("Context _Help")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_STICK,        NULL,                N_("Always on Visible Workspace")},
-    {MENU_OP_UNSTICK,      NULL,                N_("Only on This Workspace")},
-    {MENU_OP_WORKSPACES,   NULL,                N_("Move to Another Workspace")},
+    {MENU_OP_STICK,        "xfce-wm-stick",      N_("Always on Visible Workspace")},
+    {MENU_OP_UNSTICK,      "xfce-wm-unstick",    N_("Only on This Workspace")},
+    {MENU_OP_WORKSPACES,   NULL,                 N_("Move to Another Workspace")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_DELETE,       "gtk-close",         N_("_Close")},
+    {MENU_OP_DELETE,       "xfce-wm-close",      N_("_Close")},
 #if 0
     {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_DESTROY,      "gtk-delete",        N_("Destroy")},
+    {MENU_OP_DESTROY,      "gtk-delete",         N_("Destroy")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
 #endif
-    {MENU_OP_QUIT, "gtk-quit",                  N_("_Quit")},
-    {MENU_OP_RESTART, "gtk-refresh",            N_("Restart")},
+    {MENU_OP_QUIT,         "gtk-quit",           N_("_Quit")},
+    {MENU_OP_RESTART,      "gtk-refresh",        N_("Restart")},
 };
 
 static eventFilterStatus
@@ -258,7 +257,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     {
                         menuitem = gtk_image_menu_item_new_with_mnemonic (label);
                         image =
-                            gtk_image_new_from_stock (menuitems[i].image_name,
+                            gtk_image_new_from_icon_name (menuitems[i].image_name,
                             GTK_ICON_SIZE_MENU);
                         gtk_widget_show (image);
                         gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem), image);

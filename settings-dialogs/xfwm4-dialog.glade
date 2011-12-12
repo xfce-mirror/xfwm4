@@ -256,7 +256,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image1">
                                                     <property name="visible">True</property>
-                                                    <property name="icon_name">xfwm4-settings-menu</property>
+                                                    <property name="icon_name">xfce-wm-menu</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -275,7 +275,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image2">
                                                     <property name="visible">True</property>
-                                                    <property name="icon_name">xfwm4-settings-stick</property>
+                                                    <property name="icon_name">xfce-wm-stick</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -294,7 +294,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image3">
                                                     <property name="visible">True</property>
-                                                    <property name="icon_name">xfwm4-settings-shade</property>
+                                                    <property name="icon_name">xfce-wm-shade</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -313,7 +313,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image4">
                                                     <property name="visible">True</property>
-                                                    <property name="icon_name">xfwm4-settings-minimize</property>
+                                                    <property name="icon_name">xfce-wm-minimize</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -332,7 +332,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image5">
                                                     <property name="visible">True</property>
-                                                    <property name="icon_name">xfwm4-settings-maximize</property>
+                                                    <property name="icon_name">xfce-wm-maximize</property>
                                                   </object>
                                                 </child>
                                               </object>
@@ -351,7 +351,7 @@
                                                 <child>
                                                   <object class="GtkImage" id="image6">
                                                     <property name="visible">True</property>
-                                                    <property name="icon_name">xfwm4-settings-close</property>
+                                                    <property name="icon_name">xfce-wm-close</property>
                                                   </object>
                                                 </child>
                                               </object>
