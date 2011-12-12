@@ -33,6 +33,7 @@
 
 typedef struct _Tabwin Tabwin;
 typedef struct _TabwinWidget TabwinWidget;
+typedef struct _TabwinWidgetClass TabwinWidgetClass;
 
 struct _Tabwin
 {
@@ -44,8 +45,8 @@ struct _Tabwin
 
 struct _TabwinWidget
 {
+    GtkWindow __parent__;
     /* The below must be freed when destroying */
-    GtkWidget *window;
     GList *widgets;
 
     /* these don't have to be */
@@ -60,6 +61,11 @@ struct _TabwinWidget
     gint width, height;
     gint grid_cols;
     gint grid_rows;
+};
+
+struct _TabwinWidgetClass
+{
+    GtkWindowClass __parent__;
 };
 
 Tabwin                  *tabwinCreate                           (GList **,
