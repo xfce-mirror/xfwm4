@@ -700,7 +700,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 passdata->move_resized = TRUE;
             }
         }
-        else
+        else if (passdata->use_keys)
         {
             moving = clientKeyPressIsModifier(xevent);
         }
@@ -1323,7 +1323,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 clientResizeConfigure (c, prev_x, prev_y, prev_width, prev_height);
             }
         }
-        else
+        else if (passdata->use_keys)
         {
             resizing = clientKeyPressIsModifier(xevent);
         }
