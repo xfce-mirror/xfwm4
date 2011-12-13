@@ -37,7 +37,6 @@ src/settings.c
 src/spinning_cursor.c
 src/stacking.c
 src/startup_notification.c
-src/stock_icons.c
 src/tabwin.c
 src/terminate.c
 src/transients.c
