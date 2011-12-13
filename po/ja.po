@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-19 23:45+0900\n"
+"POT-Creation-Date: 2011-12-13 09:01+0100\n"
 "PO-Revision-Date: 2011-11-19 23:47+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -640,8 +640,12 @@ msgid "Reset to Defaults"
 msgstr "デフォルトに戻す"
 
 #: ../settings-dialogs/xfwm4-settings.c:1872
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "これはすべてのショートカットキーをデフォルト値にリセットします。本当によろしいですか?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"これはすべてのショートカットキーをデフォルト値にリセットします。本当によろし"
+"いですか?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -771,7 +775,8 @@ msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "ワークスペースの切り替えにデスクトップ上でのマウスホイールを使用する(_M)"
+msgstr ""
+"ワークスペースの切り替えにデスクトップ上でのマウスホイールを使用する(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -852,7 +857,8 @@ msgid "Change workspace name"
 msgstr "ワークスペース名の変更"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "余白とは画面端のウィンドウが置かれない空間のことです"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
@@ -869,132 +875,132 @@ msgstr "ワークスペースの数(_N):"
 msgid "%s (on %s)"
 msgstr "%s (ホスト %s)"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "バックグラウンドに fork する"
 
-#: ../src/main.c:544
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "バックグラウンドに fork する (未サポート)"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "合成処理モードを設定する"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "合成処理モードを設定する (未サポート)"
 
-#: ../src/main.c:551
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "既存のウィンドウマネージャを置き換える"
 
-#: ../src/main.c:552
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "バージョン情報を表示して終了する"
 
-#: ../src/main.c:560
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[引数...]"
 
-#: ../src/main.c:567
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "\"%s --help\" と入力すると使用法が表示されます。"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "Unma_ximize"
 msgstr "元に戻す(_X)"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "Mi_nimize"
 msgstr "最小化(_N)"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
 msgstr "他をすべて最小化(_A)"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_how"
 msgstr "表示(_H)"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "_Move"
 msgstr "移動(_M)"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "_Resize"
 msgstr "サイズ変更(_R)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:52
+#: ../src/menu.c:51
 msgid "Always on Top"
 msgstr "常に最前面へ"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Same as Other Windows"
 msgstr "元に戻す"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:53
 msgid "Always Below Other Windows"
 msgstr "常に最後面へ"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "Roll Window Up"
 msgstr "巻き上げ"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:55
 msgid "Roll Window Down"
 msgstr "元に戻す"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:56
 msgid "_Fullscreen"
 msgstr "全画面化(_F)"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Leave _Fullscreen"
 msgstr "元に戻す(_F)"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:58
 msgid "Context _Help"
 msgstr "コンテキストヘルプ(_H)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "Always on Visible Workspace"
 msgstr "常に表示中のワークスペースに置く"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Only on This Workspace"
 msgstr "元に戻す"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Move to Another Workspace"
 msgstr "他のワークスペースへ移動"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "_Close"
 msgstr "閉じる(_C)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Destroy"
 msgstr "破棄"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:70
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "Restart"
 msgstr "再起動"
 
-#: ../src/menu.c:413
+#: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインタを取得できませんでした\n"
@@ -1028,4 +1034,3 @@ msgstr "子プロセスからのデータ読み込みエラーです: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "ヘルパーダイアログを生成できませんでした: %s\n"
-

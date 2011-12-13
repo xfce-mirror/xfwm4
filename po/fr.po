@@ -4,19 +4,19 @@
 # Olivier Fourdan <fourdan@xfce.org>, 2002-2006.
 # Maximilian Schleiss <maximilian@xfce.org>, 2006-2008.
 # Mike Massonnet <mmassonnet@xfce.org>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-12 11:09+0000\n"
+"POT-Creation-Date: 2011-12-13 09:01+0100\n"
 "PO-Revision-Date: 2009-01-18 16:24+0100\n"
 "Last-Translator: Jérôme Guelfucci <jeromeg@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -859,132 +859,132 @@ msgstr "_Nombre d'espaces de travail :"
 msgid "%s (on %s)"
 msgstr "%s (sur %s)"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "Forker en arrière-plan"
 
-#: ../src/main.c:544
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "Forker en arrière-plan (non supporté)"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "Appliquer le mode du compositeur"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "Appliquer le mode du compositeur (non supporté)"
 
-#: ../src/main.c:551
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "Remplacer le gestionnaire de fenêtre actuel"
 
-#: ../src/main.c:552
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "Information sur la version et quitter"
 
-#: ../src/main.c:560
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:567
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Saisissez \"%s --help\" pour l'usage."
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr "Ma_ximiser"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "Unma_ximize"
 msgstr "_Restaurer"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "Mi_nimize"
 msgstr "_Réduire"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
 msgstr "Réduire toutes les _autres fenêtres"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_how"
 msgstr "Affic_her"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "_Move"
 msgstr "_Déplacer"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "_Resize"
 msgstr "_Redimensionner"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:52
+#: ../src/menu.c:51
 msgid "Always on Top"
 msgstr "Toujours au dessus"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Same as Other Windows"
 msgstr "Comme les autres fenêtres"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:53
 msgid "Always Below Other Windows"
 msgstr "Toujours sous les autres fenêtres"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "Roll Window Up"
 msgstr "Enrouler la fenêtre"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:55
 msgid "Roll Window Down"
 msgstr "Dérouler la fenêtre"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:56
 msgid "_Fullscreen"
 msgstr "_Plein écran"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Leave _Fullscreen"
 msgstr "Laisser en _plein écran"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:58
 msgid "Context _Help"
 msgstr "A_ide contextuelle"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "Always on Visible Workspace"
 msgstr "Toujours visible sur l'espace de travail"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Only on This Workspace"
 msgstr "Seulement sur cet espace de travail"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Move to Another Workspace"
 msgstr "Déplacer vers un autre espace de travail"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "_Close"
 msgstr "_Fermer"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Destroy"
 msgstr "Détruire"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:70
 msgid "_Quit"
 msgstr "_Quitter"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "Restart"
 msgstr "Redémarrer"
 
-#: ../src/menu.c:413
+#: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu n'a pas pu capturer le pointeur\n"

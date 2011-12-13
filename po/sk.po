@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 05:09+0000\n"
+"POT-Creation-Date: 2011-12-13 09:01+0100\n"
 "PO-Revision-Date: 2011-07-07 15:07+0100\n"
 "Last-Translator: Tomáš Vadina <kyberdev@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-Country: SLOVAKIA\n"
@@ -852,132 +852,132 @@ msgstr "_Počet pracovných plôch:"
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "Presunúť do pozadia"
 
-#: ../src/main.c:544
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "Presunúť do pozadia (nepodporované)"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "Nastaviť režim kompozitora"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "Nastaviť režim kompozitora (nepodporované)"
 
-#: ../src/main.c:551
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "Nahradiť existujúceho správcu okien"
 
-#: ../src/main.c:552
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "Zobrazí informácie o verzii a ukončí sa"
 
-#: ../src/main.c:560
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRE...]"
 
-#: ../src/main.c:567
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informácie o použití získate príkazom \"%s --help\" ."
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr "Ma_ximalizovať"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "Unma_ximize"
 msgstr "Zrušiť ma_ximalizáciu"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "Mi_nimize"
 msgstr "Mi_nimalizovať"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
 msgstr "Minimalizovať _všetky ostatné okná"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_how"
 msgstr "_Zobraziť"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "_Move"
 msgstr "_Presunúť"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "_Resize"
 msgstr "Zmeniť _veľkosť"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:52
+#: ../src/menu.c:51
 msgid "Always on Top"
 msgstr "Vždy navrchu"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Same as Other Windows"
 msgstr "Rovnako ako ostatné okná"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:53
 msgid "Always Below Other Windows"
 msgstr "Vždy pod ostatnými oknami"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "Roll Window Up"
 msgstr "Zrolovať okno"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:55
 msgid "Roll Window Down"
 msgstr "Odrolovať okno"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:56
 msgid "_Fullscreen"
 msgstr "_Celá obrazovka"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Leave _Fullscreen"
 msgstr "Opustiť režim _celej obrazovky"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:58
 msgid "Context _Help"
 msgstr "Kontextový _pomocník"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "Always on Visible Workspace"
 msgstr "Vždy na viditeľnej pracovnej ploche"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Only on This Workspace"
 msgstr "Iba na tejto pracovnej ploche"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Move to Another Workspace"
 msgstr "Presunúť okno na inú pracovnú plochu"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "_Close"
 msgstr "_Zatvoriť"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Destroy"
 msgstr "Zničiť"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:70
 msgid "_Quit"
 msgstr "_Ukončiť"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "Restart"
 msgstr "Reštartovať"
 
-#: ../src/menu.c:413
+#: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponente GtkMenu sa nepodarilo uchopiť ukazovateľ\n"

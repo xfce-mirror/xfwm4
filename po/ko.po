@@ -3,19 +3,20 @@
 # This file is distributed under the same license as the xfwm4 package.
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005.
 # Seong-ho, Cho <darkcircle.0426@gmail.com>, 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-15 08:30+0000\n"
+"POT-Creation-Date: 2011-12-13 09:01+0100\n"
 "PO-Revision-Date: 2011-09-13 06:20+0900\n"
 "Last-Translator: Seong-ho, Cho <darkcircle.0426@gmail.com>\n"
-"Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
+"Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
+"net>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -844,132 +845,132 @@ msgstr "작업공간의 수(_N):"
 msgid "%s (on %s)"
 msgstr "%s(%s에서 동작중)"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "배경화면으로 쪼개기"
 
-#: ../src/main.c:544
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "배경화면으로 쪼개기 (지원되지 않음)"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "합성처리 모드 설정"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "합성처리 모드 설정 (지원되지 않음)"
 
-#: ../src/main.c:551
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "기존 창 관리자 바꾸기"
 
-#: ../src/main.c:552
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "버전 정보"
 
-#: ../src/main.c:560
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:567
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "사용법을 보려면 \"%s --help\"를 입력하십시오."
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr "최대화(_x)"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "Unma_ximize"
 msgstr "최대화 취소 (_x)"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "Mi_nimize"
 msgstr "최소화(_n)"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
 msgstr "모든 다른 창을 최소화 (_A)"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_how"
 msgstr "보이기(_h)"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "_Move"
 msgstr "이동(_M)"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "_Resize"
 msgstr "크기변경(_R)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:52
+#: ../src/menu.c:51
 msgid "Always on Top"
 msgstr "항상 위로"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Same as Other Windows"
 msgstr "다른 창과 맞춤"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:53
 msgid "Always Below Other Windows"
 msgstr "항상 다른 창의 아래로"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "Roll Window Up"
 msgstr "창 말아올리기"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:55
 msgid "Roll Window Down"
 msgstr "창 "
 
-#: ../src/menu.c:57
+#: ../src/menu.c:56
 msgid "_Fullscreen"
 msgstr "전체화면(_F)"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Leave _Fullscreen"
 msgstr "전체화면으로 남김 (_F)"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:58
 msgid "Context _Help"
 msgstr "도움말(_h)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "Always on Visible Workspace"
 msgstr "항상 보이는 작업공간으로"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Only on This Workspace"
 msgstr "이 작업공간에만"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Move to Another Workspace"
 msgstr "다른 작업공간으로 이동"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "_Close"
 msgstr "닫기(_C)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Destroy"
 msgstr "강제 종료"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:70
 msgid "_Quit"
 msgstr "종료(_Q)"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "Restart"
 msgstr "다시 시작"
 
-#: ../src/menu.c:413
+#: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu가 포인터를 얻지 못 했습니다.\n"

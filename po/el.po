@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 git version\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-12-13 09:01+0100\n"
 "PO-Revision-Date: 2011-01-07 17:51+0200\n"
 "Last-Translator: Spiros Georgaras <sng@hellug.gr>\n"
 "Language-Team: el <nls@tux.hellug.gr>\n"
@@ -45,25 +45,25 @@ msgstr "Υποδοχή διαχειριστή συνδέσεων"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "ΤΑΥΤΟΤΗΤΑ ΥΠΟΔΟΧΕΑ"
 
 #: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:312
+#: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "Πληροφορίες έκδοσης"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:942
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:946
+#: ../settings-dialogs/xfwm4-settings.c:947
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -84,7 +84,7 @@ msgid "Workspace Name"
 msgstr "Ονόμα χώρου εργασίας"
 
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "Υποδοχή διαχειριστή ρυθμίσεων"
 
@@ -237,28 +237,29 @@ msgid "Hidden"
 msgstr "Κρυμμένο"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide"
-msgstr "Απόκρυψη"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
 msgstr "Απόκρυψη περιεχομένων των παραθύρων όταν μ_ετακινούνται"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
 msgstr "Απόκρυψη των περιεχομένων των αραθύρων κατά τη α_λλαγή μεγέθους"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
 msgstr "Πλ_ηκτρολόγιο"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr "Μεγιστοποίηση"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
 msgstr "Μενού"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#, fuzzy
+msgid "Minimize"
+msgstr "Ελ_αχιστοποίηση"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -337,7 +338,7 @@ msgid "Maximize window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
@@ -423,213 +424,218 @@ msgstr "Ανύψωση παραθύρου "
 msgid "Lower window"
 msgstr "Χαμήλωση παραθύρου"
 
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:257
+#, fuzzy
+msgid "Raise or lower window"
+msgstr "Ανύψωση παραθύρου "
+
+#: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
 msgstr "Οριζόντια μεγιστοποίηση παραθύρου"
 
-#: ../settings-dialogs/xfwm4-settings.c:259
+#: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
 msgstr "Κάθετη μεγιστοποίηση παραθύρου"
 
-#: ../settings-dialogs/xfwm4-settings.c:260
+#: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
 msgstr "Εναλλαγή με το παραπάνω"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
 msgstr "Σε πλήρη οθόνη"
 
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
 msgstr "Μετακίνηση παραθύρου στον πάνω χώρο εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to bottom workspace"
 msgstr "Μετακίνηση παραθύρου στον κάτω χώρο εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας αριστερά"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας δεξιά"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
 msgstr "Μετακίνηση παραθύρου στον προηγούμενο χώρο εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
 msgstr "Μετακίνηση παραθύρου στον επόμενο χώρο εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 1"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:269
+#: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 2"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:270
+#: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 3"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:271
+#: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 4"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:272
+#: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 5"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:273
+#: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 6"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:274
+#: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 7"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:275
+#: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 8"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:276
+#: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 9"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:277
+#: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 10"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:278
+#: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Move window to workspace 11"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:279
+#: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Move window to workspace 12"
 msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:280
+#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Show desktop"
 msgstr "Εμφάνιση επιφάνειας εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:281
+#: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Upper workspace"
 msgstr "Πάνω χώρος εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Bottom workspace"
 msgstr "Κάτω χώρος εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Left workspace"
 msgstr "Χώρος εργασίας αριστερά"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Right workspace"
 msgstr "Χώρος εργασίας δεξιά"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Previous workspace"
 msgstr "Προηγούμενος χώρος εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Next workspace"
 msgstr "Επόμενος χώρος εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 1"
 msgstr "Χώρος εργασίας 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 2"
 msgstr "Χώρος εργασίας 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 3"
 msgstr "Χώρος εργασίας 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 4"
 msgstr "Χώρος εργασίας 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 5"
 msgstr "Χώρος εργασίας 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 6"
 msgstr "Χώρος εργασίας 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 7"
 msgstr "Χώρος εργασίας 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 8"
 msgstr "Χώρος εργασίας 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 9"
 msgstr "Χώρος εργασίας 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 10"
 msgstr "Χώρος εργασίας 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 11"
 msgstr "Χώρος εργασίας 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 12"
 msgstr "Χώρος εργασίας 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
 msgstr "Προσθήκη χώρου εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Add adjacent workspace"
 msgstr "Προσθήκη γειτονικού χώρου εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete last workspace"
 msgstr "Διαγραφή του τελευταίου χώρου εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Delete active workspace"
 msgstr "Διαγραφή ενεργού χώρου εργασίας"
 
-#: ../settings-dialogs/xfwm4-settings.c:448
+#: ../settings-dialogs/xfwm4-settings.c:449
 msgid "Theme"
 msgstr "Θέμα"
 
-#: ../settings-dialogs/xfwm4-settings.c:597
+#: ../settings-dialogs/xfwm4-settings.c:598
 msgid "Action"
 msgstr "Ενέργεια"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
 msgstr "Συντόμευση"
 
-#: ../settings-dialogs/xfwm4-settings.c:971
+#: ../settings-dialogs/xfwm4-settings.c:972
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Αποτυχία της αρχικοποίησης του xfconf. Ο λόγος: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:982
+#: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
 msgstr "Δεν ήταν δυνατή η δημιουργία του διαλόγου ρυθμίσεων."
 
-#: ../settings-dialogs/xfwm4-settings.c:1869
 #: ../settings-dialogs/xfwm4-settings.c:1870
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "Reset to Defaults"
 msgstr "Επαναφορά στις προκαθορισμένες"
 
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1872
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -864,137 +870,132 @@ msgstr "Αρ_ιθμός χώρων εργασίας:"
 msgid "%s (on %s)"
 msgstr "%s (στο %s)"
 
-#: ../src/main.c:140
-#, c-format
-msgid "%s: Segmentation fault"
-msgstr "%s: Σφάλμα κατάτμησης"
-
-#: ../src/main.c:534
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "Διακλάδωση στο παρασκήνιο"
 
-#: ../src/main.c:536
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "Διακλάδωση στο παρασκήνιο (δεν υποστηρίζεται)"
 
-#: ../src/main.c:539
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "Ρύθμιση της λειτουργίας σύνθεσης"
 
-#: ../src/main.c:541
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "Ρύθμιση της λειτουργίας σύνθεσης (δεν υποστηρίζεται)"
 
-#: ../src/main.c:543
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "Αντικατάσταση του τρέχοντος διαχειριστή παραθύρων"
 
-#: ../src/main.c:544
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"
 
-#: ../src/main.c:552
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[ΟΡΙΣΜΑΤΑ...]"
 
-#: ../src/main.c:559
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Πληκτρολογήστε \"% s - help \" για χρήση."
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr "Με_γιστοποίηση"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "Unma_ximize"
 msgstr "Απομεγ_ιστοποίηση"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "Mi_nimize"
 msgstr "Ελ_αχιστοποίηση"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
 msgstr "Ελαχιστοποίηση όλ_ων των υπόλοιπων παραθύρων"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_how"
 msgstr "Εμ_φάνιση"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "_Move"
 msgstr "_Μετακίνηση"
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "_Resize"
 msgstr "_Αλλαγή μεγέθους"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:52
+#: ../src/menu.c:51
 msgid "Always on Top"
 msgstr "Πάντα στην κορυφή"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Same as Other Windows"
 msgstr "Όπως και τα υπόλοιπα παράθυρα"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:53
 msgid "Always Below Other Windows"
 msgstr "Πάντα κάτω από τα άλλα παράθυρα"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "Roll Window Up"
 msgstr "Μάζεμα παραθύρου"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:55
 msgid "Roll Window Down"
 msgstr "Άπλωμα παραθύρου"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:56
 msgid "_Fullscreen"
 msgstr "Πλ_ήρης οθόνη"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Leave _Fullscreen"
 msgstr "Επαναφορά πλ_ήρης οθόνη"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:58
 msgid "Context _Help"
 msgstr "Βοήθεια πε_ριεχομένου"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "Always on Visible Workspace"
 msgstr "Πάντα στον τρέχον χώρο εργασίας"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Only on This Workspace"
 msgstr "Μόνο σε αυτό τον χώρο εργασίας"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Move to Another Workspace"
 msgstr "Μετακίνηση σε άλλο χώρο εργασίας"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Destroy"
 msgstr "Καταστροφή"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:70
 msgid "_Quit"
 msgstr "Έ_ξοδος"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "Restart"
 msgstr "Επανεκκίνηση"
 
-#: ../src/menu.c:413
+#: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Το GtkMenu απέτυχε να αρπάξει τον δείκτη\n"
@@ -1032,3 +1033,9 @@ msgstr "Σφάλμα ανάγνωσης δεδομένων από την διε�
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Δεν είναι δυνατή η έναρξη του διαλόγου: %s\n"
+
+#~ msgid "Hide"
+#~ msgstr "Απόκρυψη"
+
+#~ msgid "%s: Segmentation fault"
+#~ msgstr "%s: Σφάλμα κατάτμησης"

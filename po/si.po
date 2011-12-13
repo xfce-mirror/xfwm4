@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-12-13 09:01+0100\n"
 "PO-Revision-Date: 2010-03-13 18:58+0530\n"
 "Last-Translator: Akila Wajirasena <akila.wajirasena@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -39,26 +39,26 @@ msgstr "සැසි කළමනාකරන සොකට්ටුව"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 #, fuzzy
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:312
+#: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "අනුවාද තොරතුරු"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:942
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:946
+#: ../settings-dialogs/xfwm4-settings.c:947
 #, fuzzy, c-format
 msgid ""
 "%s: %s\n"
@@ -79,7 +79,7 @@ msgid "Workspace Name"
 msgstr "වැඩ අවකාශ නාමය"
 
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "සැකසුම් කළමනාකරන සොකට්ටුව"
 
@@ -238,29 +238,30 @@ msgid "Hidden"
 msgstr "සැඟවුණු"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide"
-msgstr "සඟවන්න"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
 msgstr "එහාමෙහා යාමේදී කවුළු අන්තර්ගතය සඟවන්න (_m) "
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
 msgstr "ප්‍රමානය වෙනස් කිරීමේදී කවුළු අන්තර්ගතය සඟවන්න (_r)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
 msgstr "යතුරුපුවරුව (_y)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #, fuzzy
 msgid "Maximize"
 msgstr "විහිදන්න"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
 msgstr "මෙනුව"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#, fuzzy
+msgid "Minimize"
+msgstr "හකුළන්න (_n)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
@@ -348,7 +349,7 @@ msgid "Maximize window"
 msgstr "කවුළුව විහිදන්න"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:258
 #, fuzzy
 msgid "Fill window"
 msgstr "කවුළුව පුරවන්න"
@@ -443,222 +444,227 @@ msgstr "කවුළුව නගන්න"
 msgid "Lower window"
 msgstr "කවුළුව හෙලන්න"
 
+#: ../settings-dialogs/xfwm4-settings.c:257
+#, fuzzy
+msgid "Raise or lower window"
+msgstr "කවුළුව නගන්න"
+
 # පුරවන්න
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:259
 #, fuzzy
 msgid "Fill window horizontally"
 msgstr "කවුළු තිරස්ව පිහිටුවන්න"
 
 # පුරවන්න
-#: ../settings-dialogs/xfwm4-settings.c:259
+#: ../settings-dialogs/xfwm4-settings.c:260
 #, fuzzy
 msgid "Fill window vertically"
 msgstr "කවුළු සිරස්ව පිහිටුවන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:260
+#: ../settings-dialogs/xfwm4-settings.c:261
 #, fuzzy
 msgid "Toggle above"
 msgstr "ඉහළ සමඟ මාරු වන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:261
+#: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:262
+#: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
 msgstr "කවුළුව  ඉහළ වැඩ අවකාශයට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:263
+#: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to bottom workspace"
 msgstr "කවුළුව  පහළ වැඩ අවකාශයට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:264
+#: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
 msgstr "කවුළුව වම් වැඩ අවකාශයට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:265
+#: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
 msgstr "කවුළුව දකුණු වැඩ අවකාශයට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:266
+#: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
 msgstr "කවුළුව කලින් වැඩ අවකාශයට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:267
+#: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
 msgstr "කවුළුව ඊලඟ වැඩ අවකාශයට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:268
+#: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 1"
 msgstr "කවුළුව වැඩ අවකාශ 1 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:269
+#: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 2"
 msgstr "කවුළුව වැඩ අවකාශ 2 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:270
+#: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 3"
 msgstr "කවුළුව වැඩ අවකාශ 3 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:271
+#: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 4"
 msgstr "කවුළුව වැඩ අවකාශ 4 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:272
+#: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 5"
 msgstr "කවුළුව වැඩ අවකාශ 5 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:273
+#: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 6"
 msgstr "කවුළුව වැඩ අවකාශ 6 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:274
+#: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 7"
 msgstr "කවුළුව වැඩ අවකාශ 7 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:275
+#: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 8"
 msgstr "කවුළුව වැඩ අවකාශ 8 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:276
+#: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 9"
 msgstr "කවුළුව වැඩ අවකාශ 9 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:277
+#: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 10"
 msgstr "කවුළුව වැඩ අවකාශ 10 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:278
+#: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Move window to workspace 11"
 msgstr "කවුළුව වැඩ අවකාශ 11 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:279
+#: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Move window to workspace 12"
 msgstr "කවුළුව වැඩ අවකාශ 12 ට ගෙනයනන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:280
+#: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Show desktop"
 msgstr "වැඩතලය පෙන්වන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:281
+#: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Upper workspace"
 msgstr "ඉහළ වැඩ අවකාශය"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Bottom workspace"
 msgstr "පහළ වැඩ අවකාශය"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Left workspace"
 msgstr "වම් වැඩ අවකාශය"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Right workspace"
 msgstr "දකුණු වැඩ අවකාශය"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Previous workspace"
 msgstr "කලින් වැඩ අවකාශය"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Next workspace"
 msgstr "ඊලඟ වැඩ අවකාශය"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 1"
 msgstr "වැඩ අවකාශය 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 2"
 msgstr "වැඩ අවකාශය 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 3"
 msgstr "වැඩ අවකාශය 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 4"
 msgstr "වැඩ අවකාශය 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 5"
 msgstr "වැඩ අවකාශය 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 6"
 msgstr "වැඩ අවකාශය 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 7"
 msgstr "වැඩ අවකාශය 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 8"
 msgstr "වැඩ අවකාශය 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 9"
 msgstr "වැඩ අවකාශය 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 10"
 msgstr "වැඩ අවකාශය 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 11"
 msgstr "වැඩ අවකාශය 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 12"
 msgstr "වැඩ අවකාශය 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
 msgstr "වැඩ අවකාශයක් එක් කරන්න "
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Add adjacent workspace"
 msgstr "යාබද වැඩ අවකාශයක් එක් කරන්න"
 
 # last = final or last = previous
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:302
 #, fuzzy
 msgid "Delete last workspace"
 msgstr "අවසන් වැඩ අවකාශය මකා දමන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:303
 #, fuzzy
 msgid "Delete active workspace"
 msgstr "සක්‍රීය වැඩ අවකාශය මකා දමන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:448
+#: ../settings-dialogs/xfwm4-settings.c:449
 msgid "Theme"
 msgstr "තේමාව"
 
-#: ../settings-dialogs/xfwm4-settings.c:597
+#: ../settings-dialogs/xfwm4-settings.c:598
 #, fuzzy
 msgid "Action"
 msgstr "ක්‍රියාව"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
 msgstr "කෙටිමඟ "
 
-#: ../settings-dialogs/xfwm4-settings.c:971
+#: ../settings-dialogs/xfwm4-settings.c:972
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf ඇරභීමට නොහැකිවිය. හේතුව: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:982
+#: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
 msgstr "සැකසුම් සංවාද කොටුව තැනීමට නොහැකි විය."
 
-#: ../settings-dialogs/xfwm4-settings.c:1869
 #: ../settings-dialogs/xfwm4-settings.c:1870
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "Reset to Defaults"
 msgstr "පෙරනිමියට යළි  පිහිටුවන්න"
 
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1872
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -889,144 +895,139 @@ msgstr "වැඩ අවකාශ ගණන (_N):"
 msgid "%s (on %s)"
 msgstr "%s (මත %s)"
 
-#: ../src/main.c:140
-#, fuzzy, c-format
-msgid "%s: Segmentation fault"
-msgstr "%s: ඛණ්ඩන දෝෂය"
-
-#: ../src/main.c:534
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:536
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:539
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:541
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr ""
 
-#: ../src/main.c:543
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr ""
 
-#: ../src/main.c:544
+#: ../src/main.c:550
 #, fuzzy
 msgid "Print version information and exit"
 msgstr "අනුවාද තොරතුරු"
 
-#: ../src/main.c:552
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../src/main.c:559
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr "විහිදන්න (_x)"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "Unma_ximize"
 msgstr "නොවිහිදන්න (_x)"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "Mi_nimize"
 msgstr "හකුළන්න (_n)"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
 msgstr "අනෙක් සියලු කවුළු හකුලන්න (_A)"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_how"
 msgstr "පෙන්වන්න (_h)"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "_Move"
 msgstr ""
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "_Resize"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:52
+#: ../src/menu.c:51
 msgid "Always on Top"
 msgstr "සැම විටම ඉහලින්"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Same as Other Windows"
 msgstr "අනෙක් කවුළු ලෙසම"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:53
 msgid "Always Below Other Windows"
 msgstr "සැම විටම අනෙක් කවුළු වලට පහළින්"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 #, fuzzy
 msgid "Roll Window Up"
 msgstr "කවුළුව ඉහළට අකුලන්න"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:55
 #, fuzzy
 msgid "Roll Window Down"
 msgstr "කවුළුව පහළට අකුලන්න"
 
 # තිරය පුරා
-#: ../src/menu.c:57
+#: ../src/menu.c:56
 #, fuzzy
 msgid "_Fullscreen"
 msgstr "මුලු තිරයේම (_F)"
 
 # තිරය පුරා
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 #, fuzzy
 msgid "Leave _Fullscreen"
 msgstr "මුලු තිරයේම පෙන්වීමෙන් ඉවත් වන්න (_F)"
 
-#: ../src/menu.c:59
+#: ../src/menu.c:58
 msgid "Context _Help"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "Always on Visible Workspace"
 msgstr "සැම විටම දෘෂ්‍ය වැඩ අවකාශයේ"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Only on This Workspace"
 msgstr "මෙමෙ වැඩ අවකාශයේ පමණි"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Move to Another Workspace"
 msgstr "වෙනත් වැඩ අවකාශයකට ගෙනයන්න"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "_Close"
 msgstr "වසන්න (_C)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Destroy"
 msgstr ""
 
-#: ../src/menu.c:71
+#: ../src/menu.c:70
 msgid "_Quit"
 msgstr "පිටවෙන්න (_Q)"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "Restart"
 msgstr "යළි අරඔන්න"
 
-#: ../src/menu.c:413
+#: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
@@ -1062,3 +1063,10 @@ msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
 "උදව් සංවාද කොටුව ඉපදවීමට නොහැක: %s\n"
 "\r\n"
+
+#~ msgid "Hide"
+#~ msgstr "සඟවන්න"
+
+#, fuzzy
+#~ msgid "%s: Segmentation fault"
+#~ msgstr "%s: ඛණ්ඩන දෝෂය"

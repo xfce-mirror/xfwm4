@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:27+0100\n"
+"POT-Creation-Date: 2011-12-13 09:01+0100\n"
 "PO-Revision-Date: 2006-08-24 23:50+0400\n"
 "Last-Translator: Dimitri Gogelia <delphi.knight@gmail.com>\n"
 "Language-Team: Georgian <delphi.knight@gmail.com>\n"
@@ -33,25 +33,25 @@ msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:312
+#: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:942
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "."
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:946
+#: ../settings-dialogs/xfwm4-settings.c:947
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -69,7 +69,7 @@ msgid "Workspace Name"
 msgstr ""
 
 #: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:310
+#: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr ""
 
@@ -222,27 +222,27 @@ msgid "Hidden"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _moving"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Minimize"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
@@ -322,7 +322,7 @@ msgid "Maximize window"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:257
+#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr ""
 
@@ -408,213 +408,217 @@ msgstr ""
 msgid "Lower window"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:258
-msgid "Fill window horizontally"
+#: ../settings-dialogs/xfwm4-settings.c:257
+msgid "Raise or lower window"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:259
-msgid "Fill window vertically"
+msgid "Fill window horizontally"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:260
-msgid "Toggle above"
+msgid "Fill window vertically"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:261
-msgid "Toggle fullscreen"
+msgid "Toggle above"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:262
-msgid "Move window to upper workspace"
+msgid "Toggle fullscreen"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:263
-msgid "Move window to bottom workspace"
+msgid "Move window to upper workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:264
-msgid "Move window to left workspace"
+msgid "Move window to bottom workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:265
-msgid "Move window to right workspace"
+msgid "Move window to left workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-msgid "Move window to previous workspace"
+msgid "Move window to right workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-msgid "Move window to next workspace"
+msgid "Move window to previous workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-msgid "Move window to workspace 1"
+msgid "Move window to next workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-msgid "Move window to workspace 2"
+msgid "Move window to workspace 1"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-msgid "Move window to workspace 3"
+msgid "Move window to workspace 2"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-msgid "Move window to workspace 4"
+msgid "Move window to workspace 3"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-msgid "Move window to workspace 5"
+msgid "Move window to workspace 4"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-msgid "Move window to workspace 6"
+msgid "Move window to workspace 5"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-msgid "Move window to workspace 7"
+msgid "Move window to workspace 6"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-msgid "Move window to workspace 8"
+msgid "Move window to workspace 7"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-msgid "Move window to workspace 9"
+msgid "Move window to workspace 8"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-msgid "Move window to workspace 10"
+msgid "Move window to workspace 9"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-msgid "Move window to workspace 11"
+msgid "Move window to workspace 10"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-msgid "Move window to workspace 12"
+msgid "Move window to workspace 11"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-msgid "Show desktop"
+msgid "Move window to workspace 12"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-msgid "Upper workspace"
+msgid "Show desktop"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-msgid "Bottom workspace"
+msgid "Upper workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-msgid "Left workspace"
+msgid "Bottom workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-msgid "Right workspace"
+msgid "Left workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-msgid "Previous workspace"
+msgid "Right workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-msgid "Next workspace"
+msgid "Previous workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-msgid "Workspace 1"
+msgid "Next workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Workspace 2"
+msgid "Workspace 1"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Workspace 3"
+msgid "Workspace 2"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Workspace 4"
+msgid "Workspace 3"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-msgid "Workspace 5"
+msgid "Workspace 4"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-msgid "Workspace 6"
+msgid "Workspace 5"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-msgid "Workspace 7"
+msgid "Workspace 6"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-msgid "Workspace 8"
+msgid "Workspace 7"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-msgid "Workspace 9"
+msgid "Workspace 8"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-msgid "Workspace 10"
+msgid "Workspace 9"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:297
-msgid "Workspace 11"
+msgid "Workspace 10"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-msgid "Workspace 12"
+msgid "Workspace 11"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-msgid "Add workspace"
+msgid "Workspace 12"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:300
-msgid "Add adjacent workspace"
+msgid "Add workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:301
-msgid "Delete last workspace"
+msgid "Add adjacent workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:302
+msgid "Delete last workspace"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Delete active workspace"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:448
+#: ../settings-dialogs/xfwm4-settings.c:449
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:597
+#: ../settings-dialogs/xfwm4-settings.c:598
 msgid "Action"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:971
+#: ../settings-dialogs/xfwm4-settings.c:972
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:982
+#: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1869
 #: ../settings-dialogs/xfwm4-settings.c:1870
+#: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1872
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -829,137 +833,132 @@ msgstr ""
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:140
-#, c-format
-msgid "%s: Segmentation fault"
-msgstr ""
-
-#: ../src/main.c:534
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:536
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:539
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:541
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr ""
 
-#: ../src/main.c:543
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr ""
 
-#: ../src/main.c:544
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr ""
 
-#: ../src/main.c:552
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../src/main.c:559
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""
 
-#: ../src/menu.c:44
+#: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr ""
 
-#: ../src/menu.c:45
+#: ../src/menu.c:44
 msgid "Unma_ximize"
 msgstr ""
 
-#: ../src/menu.c:46
+#: ../src/menu.c:45
 msgid "Mi_nimize"
 msgstr ""
 
-#: ../src/menu.c:47
+#: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
 msgstr ""
 
-#: ../src/menu.c:48
+#: ../src/menu.c:47
 msgid "S_how"
 msgstr ""
 
-#: ../src/menu.c:49
+#: ../src/menu.c:48
 msgid "_Move"
 msgstr ""
 
-#: ../src/menu.c:50
+#: ../src/menu.c:49
 msgid "_Resize"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:52
+#: ../src/menu.c:51
 msgid "Always on Top"
 msgstr ""
 
-#: ../src/menu.c:53
+#: ../src/menu.c:52
 msgid "Same as Other Windows"
 msgstr ""
 
-#: ../src/menu.c:54
+#: ../src/menu.c:53
 msgid "Always Below Other Windows"
 msgstr ""
 
-#: ../src/menu.c:55
+#: ../src/menu.c:54
 msgid "Roll Window Up"
 msgstr ""
 
-#: ../src/menu.c:56
+#: ../src/menu.c:55
 msgid "Roll Window Down"
 msgstr ""
 
-#: ../src/menu.c:57
+#: ../src/menu.c:56
 msgid "_Fullscreen"
 msgstr ""
 
-#: ../src/menu.c:58
+#: ../src/menu.c:57
 msgid "Leave _Fullscreen"
 msgstr ""
 
-#: ../src/menu.c:59
+#: ../src/menu.c:58
 msgid "Context _Help"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:61
+#: ../src/menu.c:60
 msgid "Always on Visible Workspace"
 msgstr ""
 
-#: ../src/menu.c:62
+#: ../src/menu.c:61
 msgid "Only on This Workspace"
 msgstr ""
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Move to Another Workspace"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "_Close"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Destroy"
 msgstr ""
 
-#: ../src/menu.c:71
+#: ../src/menu.c:70
 msgid "_Quit"
 msgstr ""
 
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "Restart"
 msgstr ""
 
-#: ../src/menu.c:413
+#: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
