@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
-"PO-Revision-Date: 2010-08-03 10:34+0600\n"
+"POT-Creation-Date: 2011-12-17 12:39+0000\n"
+"PO-Revision-Date: 2011-12-17 22:52+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
@@ -35,7 +35,7 @@ msgstr "Ешнәрсе"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 msgid "Session manager socket"
-msgstr "Сессиялар басқарушының сокеті"
+msgstr "Сессиялар басқарушысының сокеті"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:370
@@ -250,9 +250,8 @@ msgid "Menu"
 msgstr "Мәзір"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
-msgstr "Қа_йыру"
+msgstr "Қайыру"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -418,9 +417,8 @@ msgid "Lower window"
 msgstr "Терезені артқа апару"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Терезені көтеру"
+msgstr "Терезені көтеру не төмендету"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -629,12 +627,8 @@ msgid "Reset to Defaults"
 msgstr "Бастапқы түріне келтіру"
 
 #: ../settings-dialogs/xfwm4-settings.c:1872
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Бұл әрекет жарлықтардың барлығын бастапқы түріне келтіреді. Осыны шынымен "
-"қалайсыз ба?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Бұл әрекет жарлықтардың барлығын бастапқы түріне келтіреді. Осыны шынымен қалайсыз ба?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -723,8 +717,7 @@ msgstr "Өл_шемін өзгерту кезінде терезелердің �
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"Максималды терезелерді жы_лжытқан кезде өлшемдерін бастапқы мәнге келтіру"
+msgstr "Максималды терезелерді жы_лжытқан кезде өлшемдерін бастапқы мәнге келтіру"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -760,8 +753,7 @@ msgstr "Терезе өздігімен көтерілсе:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Ағы_мдағы жұмыс орынның орналасуына байланысты жұмыс орындарды ауыстыру"
+msgstr "Ағы_мдағы жұмыс орынның орналасуына байланысты жұмыс орындарды ауыстыру"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -832,10 +824,8 @@ msgid "Change workspace name"
 msgstr "Жұмыс орынның атын ауыстыру"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Өрістер - бұл экран бұрыштарындағы аймақтар, оларға терезелер қойылмайды"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Өрістер - бұл экран бұрыштарындағы аймақтар, оларға терезелер қойылмайды"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
