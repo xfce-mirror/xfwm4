@@ -34,23 +34,57 @@
 #include "frame.h"
 #include "poswin.h"
 
+static void poswin_widget_class_init (PoswinWidgetClass *klass);
+
+static GType
+poswin_widget_get_type (void)
+{
+    static GType type = G_TYPE_INVALID;
+
+    if (G_UNLIKELY (type == G_TYPE_INVALID))
+    {
+        static const GTypeInfo info =
+        {
+            sizeof (PoswinWidgetClass),
+            NULL,
+            NULL,
+            (GClassInitFunc) poswin_widget_class_init,
+            NULL,
+            NULL,
+            sizeof (Poswin),
+            0,
+            NULL,
+            NULL,
+        };
+
+        type = g_type_register_static (GTK_TYPE_WINDOW, "Xfwm4PoswinWidget", &info, 0);
+    }
+
+    return type;
+}
+
+static void
+poswin_widget_class_init (PoswinWidgetClass *klass)
+{
+    /* void */
+}
+
 Poswin *
 poswinCreate (GdkScreen *gscr)
 {
     Poswin *poswin;
     GtkWidget *frame;
 
-    poswin = g_new (Poswin, 1);
+    poswin = g_object_new (poswin_widget_get_type(), "type", GTK_WINDOW_POPUP, NULL);
 
-    poswin->window = gtk_window_new (GTK_WINDOW_POPUP);
-    gtk_window_set_screen (GTK_WINDOW (poswin->window), gscr);
-    gtk_container_set_border_width (GTK_CONTAINER (poswin->window), 0);
-    gtk_window_set_resizable (GTK_WINDOW (poswin->window), TRUE);
+    gtk_window_set_screen (GTK_WINDOW (poswin), gscr);
+    gtk_container_set_border_width (GTK_CONTAINER (poswin), 0);
+    gtk_window_set_resizable (GTK_WINDOW (poswin), TRUE);
 
     frame = gtk_frame_new (NULL);
     gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
     gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
-    gtk_container_add (GTK_CONTAINER (poswin->window), frame);
+    gtk_container_add (GTK_CONTAINER (poswin), frame);
 
     poswin->label = gtk_label_new ("");
     gtk_misc_set_alignment (GTK_MISC (poswin->label), 0.5, 0.5);
@@ -96,18 +130,11 @@ poswinSetPosition (Poswin * poswin, Client *c)
     g_snprintf (label, 32, "(%dx%d)", wsize, hsize);
 #endif
     gtk_label_set_text (GTK_LABEL (poswin->label), label);
-    gtk_widget_queue_draw (poswin->window);
-    gtk_window_get_size (GTK_WINDOW (poswin->window), &pw, &ph);
+    gtk_widget_queue_draw (GTK_WIDGET(poswin));
+    gtk_window_get_size (GTK_WINDOW (poswin), &pw, &ph);
     px = x + (frameWidth (c) - pw) / 2;
     py = y + (frameHeight (c) - ph) / 2;
-    if (GTK_WIDGET_REALIZED (poswin->window))
-    {
-        gdk_window_move_resize (poswin->window->window, px, py, pw, ph);
-    }
-    else
-    {
-        gtk_window_move   (GTK_WINDOW (poswin->window), px, py);
-    }
+    gtk_window_move (GTK_WINDOW (poswin), px, py);
 }
 
 void
@@ -115,7 +142,7 @@ poswinDestroy (Poswin * poswin)
 {
     g_return_if_fail (poswin != NULL);
 
-    gtk_widget_destroy (poswin->window);
+    gtk_widget_destroy (GTK_WIDGET(poswin));
 }
 
 void
@@ -123,7 +150,7 @@ poswinShow (Poswin * poswin)
 {
     g_return_if_fail (poswin != NULL);
 
-    gtk_widget_show (poswin->window);
+    gtk_widget_show (GTK_WIDGET(poswin));
 }
 
 void
@@ -131,5 +158,5 @@ poswinHide(Poswin * poswin)
 {
     g_return_if_fail (poswin != NULL);
 
-    gtk_widget_hide (poswin->window);
+    gtk_widget_hide (GTK_WIDGET(poswin));
 }

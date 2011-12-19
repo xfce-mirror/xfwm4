@@ -34,10 +34,17 @@
 #include "client.h"
 
 typedef struct _Poswin Poswin;
+typedef struct _PoswinWidgetClass PoswinWidgetClass;
+
 struct _Poswin
 {
-    GtkWidget *window;
+    GtkWindow __parent__;
     GtkWidget *label;
+};
+
+struct _PoswinWidgetClass
+{
+    GtkWindowClass __parent__;
 };
 
 Poswin                  *poswinCreate                           (GdkScreen *);
