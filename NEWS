@@ -1,3 +1,32 @@
+4.8.3
+=====
+
+- Do not exit the move/resize loop when just any key is pressed unless the
+  operation is triggered via the keyboard (this should be enough to fix the
+  remaining part of Bug #8233)
+- Reverting from desktop view may not focus the top most window (Bug #8173)
+- Recompute window's position/maximization state even if the overall size of
+  the screen hasn't changed as the actual layout of the monitors may have
+  changed nevertheless.
+- Check for both forward and backward cycling modifier to be released before
+  exiting the cycle loop (Bug #6508)
+- Fix a couple of memory leaks
+- Fix some events being lost causing the tabwin window to remain sometimes
+  after the key has been released
+- Fix crash when workspace count is set to negative values (Bug #8002)
+- Fix crash in signal handler
+- Fix a bug with transients for group (including utility windows)
+  being withdrawn as many times as parent windows where in the group, causing
+  utility windows to disapear when switching workspaces (this bug was affecting
+  The GIMP and reported initially bugzilla.gnome.org as bug #651454).
+- Do not allow applications to change the win layer on dialogs to prevent
+  dialogs to be unreachable in some Java based applications
+- Do not enforce the size increment only if the size request comes
+  from the application itself (refix Bug #7445)
+- On docs installation, create relative paths in symlinks to images
+- Translations updates: de, fi, hr, is, ko, ro, zh_CN, zh_TW
+
+
 4.8.2
 =====
 - Relax resize wrt to size increments.
