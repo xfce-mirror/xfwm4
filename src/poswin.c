@@ -116,6 +116,7 @@ poswinDestroy (Poswin * poswin)
     g_return_if_fail (poswin != NULL);
 
     gtk_widget_destroy (poswin->window);
+    g_free (poswin);
 }
 
 void
