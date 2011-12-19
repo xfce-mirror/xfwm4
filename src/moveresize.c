@@ -51,6 +51,7 @@
 
 #define MOVERESIZE_EVENT_MASK \
     PointerMotionMask | \
+    PointerMotionHintMask | \
     ButtonMotionMask | \
     ButtonReleaseMask | \
     LeaveWindowMask

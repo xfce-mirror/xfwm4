@@ -58,6 +58,12 @@ unsigned int ScrollLockMask;
 unsigned int SuperMask;
 unsigned int HyperMask;
 
+#define BUTTON_GRAB_MASK \
+    ButtonPressMask | \
+    ButtonReleaseMask | \
+    PointerMotionMask | \
+    PointerMotionHintMask
+
 static KeyCode
 getKeycode (Display *dpy, const char *str)
 {
@@ -191,7 +197,7 @@ grabButton (Display * dpy, int button, int modifier, Window w)
     {
         status |=
             XGrabButton (dpy, button, AnyModifier, w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
     }
     else
@@ -200,42 +206,42 @@ grabButton (Display * dpy, int button, int modifier, Window w)
         status |=
             XGrabButton (dpy, button, modifier,
                                 w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
         status |=
             XGrabButton (dpy, button, modifier | ScrollLockMask,
                                 w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
         status |=
             XGrabButton (dpy, button, modifier | NumLockMask,
                                 w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
         status |=
             XGrabButton (dpy, button, modifier | LockMask, w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
         status |=
             XGrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask,
                                 w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
         status |=
             XGrabButton (dpy, button, modifier | ScrollLockMask | LockMask,
                                 w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
         status |=
             XGrabButton (dpy, button, modifier | LockMask | NumLockMask,
                                 w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
         status |=
             XGrabButton (dpy, button,
                                 modifier | ScrollLockMask | LockMask | NumLockMask,
                                 w, FALSE,
-                                ButtonPressMask|ButtonReleaseMask, GrabModeSync, GrabModeAsync,
+                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
                                 None, None);
     }
 
