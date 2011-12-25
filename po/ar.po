@@ -2,7 +2,7 @@
 # Arabic translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Saleh Alhathal <hathalsal@hotmail.com>, 2004.
 # Mohamed Magdy <alnokta@yahoo.com>, 2006.
 # Mohamed SAAD محمد سعد <metehyi@free.fr>, 2007.
@@ -11,26 +11,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
+"POT-Creation-Date: 2011-12-25 15:51+0000\n"
 "PO-Revision-Date: 2011-01-10 23:47-0000\n"
 "Last-Translator: كريم أولاد الشلحة <herr.linux88@gmail.com>\n"
 "Language-Team: Arabic <herr.linux88@gmail.org>\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && "
-"n<=10 ? 2 : 3\n"
 "X-Poedit-Country: Morocco\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"يمكن أن هذه النافذة معطوبة و لا تستجيب.\n"
+"هل تريد إنهاء هذا التطبيق?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -70,6 +71,8 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"جرب %s --help لمشاهدة قائمة كاملة بأوامر خيارات المتوفرة.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -84,12 +87,12 @@ msgstr "إسم مساحات العمل"
 #: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
-msgstr ""
+msgstr "مقبس مدير الإعدادات"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr ""
+msgstr "إعداد سلوك و إختصارات النافذة"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -99,7 +102,7 @@ msgstr "مدير النوافذ"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Fine-tune window behaviour and effects"
-msgstr ""
+msgstr "تهذيب سلوك و تأتيرات النافذة"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -111,7 +114,6 @@ msgstr "تضبيطات لمدير النوافذ"
 msgid "Set number and names of workspaces"
 msgstr "حدد عدد و إسماء مساحات العمل"
 
-#
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "Workspaces"
@@ -139,11 +141,11 @@ msgstr "<b>بؤرة نافذة جديدة</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
-msgstr ""
+msgstr "<b>رفع عند الضغط</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr ""
+msgstr "<b>رفع عند التركيز</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -157,7 +159,6 @@ msgstr "<b>خط ال_عنوان</b>"
 msgid "<b>Window _shortcuts</b>"
 msgstr "<b>إ_ختصار النافذة</b>"
 
-#
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
 msgstr "<b>جذب النوافذ</b>"
@@ -172,29 +173,25 @@ msgstr "<b>_سمة</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
 msgid "<i>Long</i>"
-msgstr "مهلة|<i>طويلة</i>"
+msgstr "<i>طويل</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "<i>Short</i>"
-msgstr "مهلة|<i>قصيرة</i>"
+msgstr "<i>قصير</i>"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "حجم|<i>صغير</i>"
+msgstr "<i>صغير</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "مسافة|<i>غريض</i>"
+msgstr "<i>واسع</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
@@ -214,19 +211,17 @@ msgstr "اعطي البؤرة  تلقائيا للنوافذ ال_منشأة ح�
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr ""
+msgstr "ضغط لتركيز"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
-msgstr "انقر و إسحب الأزرار كي تغيّر التصميم"
+msgstr "أنقر و إسحب الأزرار كي تغيّر التصميم"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
 msgstr "اغلق"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "التأخير قبل رفع النافذة ذات البؤرة :"
 
@@ -243,14 +238,12 @@ msgid "Hidden"
 msgstr "مخفي"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "اعرض محتوى النوافذ عند النقل"
+msgstr "إخفاء محتويات النوافذ عن_د التحريك"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "اعرض محتوى النوافذ عند اعادة التحجيم"
+msgstr "إخفاء محتويات النوافذ عند التح_جيم"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
@@ -265,20 +258,17 @@ msgid "Menu"
 msgstr "قائمة"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
 msgstr "صغر"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr "ارفع النافذة عند التقر داخل نافذة التطبيق"
+msgstr "ارفع النافذة عند النقر داخل نافذة التطبيق"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "ظلّل"
 
-#
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
 msgstr "إجذب النوافذ  إلى النوافذ الأخرى"
@@ -292,12 +282,10 @@ msgid "Stick"
 msgstr "ثبِّت"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "الإجراء الذي سينفّذ عند النقر المزدوج على شريط العنوان :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#, fuzzy
 msgid "The window title cannot be removed"
 msgstr "عنوان النافذة ، لا يمكن حذفه"
 
@@ -305,22 +293,18 @@ msgstr "عنوان النافذة ، لا يمكن حذفه"
 msgid "Title"
 msgstr "العنوان"
 
-#
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "صفف مساحات العمل عند سحب نافذة _خارج حدود الشاشة"
 
-#
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "صفِّف بيئات العمل عند سحب نافذة خارج حدود الشاشة"
+msgstr "صفِّف مساحات العمل عند سحب نافذة خارج حدود الشاشة"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
 msgstr "المهلة قبل رفع النافذة ذات البؤرة :"
 
-#
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
 msgstr "_مقاومة الحافة :"
@@ -402,11 +386,11 @@ msgstr "دوران النوافذ (عكسي)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
-msgstr ""
+msgstr "إبدال نافذة بعض التطبيقات"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
-msgstr ""
+msgstr "إبدال التطبيق"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
@@ -441,9 +425,8 @@ msgid "Lower window"
 msgstr "اخفض النافذة"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "ارفع النافذة"
+msgstr "رفع أو خفظ النافذة"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -455,7 +438,7 @@ msgstr "املأ النافذة عموديا"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr ""
+msgstr "تبديل أعلاه"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
@@ -644,7 +627,7 @@ msgstr "فشل بدء xfconf. السبب: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "لا يمكن إنشاء حوار الإعدادات."
 
 #: ../settings-dialogs/xfwm4-settings.c:1870
 #: ../settings-dialogs/xfwm4-settings.c:1871
@@ -655,13 +638,12 @@ msgstr "إعادة إلى وضغ الإفتراضي"
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
-msgstr ""
+msgstr "هذا يبقوم بإعادة تعيين كل الإختصارات إلى القيمة الإفتراضية.هل تريد حقا فعل هذا؟"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Large</i>"
-msgstr "حجم|<i>عريض</i>"
+msgstr "<i>عريض</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "<i>Opaque</i>"
@@ -672,137 +654,118 @@ msgid "<i>Transparent</i>"
 msgstr "<i>شفافية</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
 msgid "Activate _focus stealing prevention"
-msgstr "نشِّط منع سرقة البؤرة"
+msgstr "نشِّط منع سرقة التركيز"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "ع_ند مركز الشاشة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "By default, place windows:"
-msgstr ""
+msgstr "مكان النوافذ, إفتراضيا:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "C_ompositor"
-msgstr ""
+msgstr "تنضيد"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ycling"
 msgstr "_دوران"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
 msgstr "دُر على كلّ النوافذ من كلّ مساحات العمل"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-#, fuzzy
 msgid "Display _fullscreen overlay windows directly"
-msgstr "اعرض نوافذ تغطية ملء الشاشة مباشرة"
+msgstr "عرض نوافذ تغطية ملء الشاشة مباشرة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
 msgstr "لا تفعل _شيء"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-#, fuzzy
 msgid "Hide _frame of windows when maximized"
-msgstr "إخفي إطار النافذة عند تكبير النوافذ"
+msgstr "إخفاء إطار النوافذ عند تكبير النوافذ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "Honor _standard ICCCM focus hint"
 msgstr "احترم تلميح بؤرة ICCCM القياسي"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "نرك النوافذ العاجلة تومض مرارا"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Key used to _grab and move windows:"
 msgstr "المفتاح المستخدم لالتقاط ونقل النوافذ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "إشعار بالنوافذ العاجلة بجعل زينة النوافذ تومض"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "عتامة زينة النافذة"
+msgstr "عتامة زينة النوافذ:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "عتامة النوافذ غير النشطة"
+msgstr "عتامة النوافذ غير النشطة:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "عتامة النوافذ المنبثقة"
+msgstr "عتامة النوافذ المنبثقة:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "عتامة النوافذ خلال التحريك"
+msgstr "عتامة النوافذ خلال التحريك:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "عتامة النوافذ خلال تغيير القياس"
+msgstr "عتامة النوافذ خلال التحجيم:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr "عند تحريك النوافذ ، إستعد قياسها الأصلي"
+msgstr "عند تحريكها ، إستعد قياس النوافذ المصغرة الأصلي"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
 msgid "Show shadows under _dock windows"
-msgstr "أظهر ظل تحت النوافذ المنبثقة"
+msgstr "أظهر ظل تحت حوض النوافذ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
 msgid "Show shadows under _regular windows"
 msgstr "أظهر ظل تحت النوافذ العاديّة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-#, fuzzy
 msgid "Show shadows under pop_up windows"
 msgstr "أظهر ظل تحت النوافذ المنبثقة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
 msgid "Switch to win_dow's workspace"
-msgstr "انقل النافذة لمساحة العمل %d"
+msgstr "أنقل النافذة لمساحة العمل %d"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "تحت مؤ_شر الفأرة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-#, fuzzy
 msgid "Use _edge resistance instead of window snapping"
-msgstr "استخدم مقاومة الحواف بدلا من جذب النوافذ"
+msgstr "إستخدم مقاومة الحواف بدلا من جذب النوافذ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "إستعمل عجلة الفأرة في سطح المكتب لإبدال مساحة العمل"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "عند رفع النافذة لنفسها:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "لف مساحات العمل طبقا لهيئة سطح المكتب الفعليّة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "لف حول مساحات العمل عند الوصول للأولى أو الأخيرة"
 
@@ -811,26 +774,22 @@ msgid "_Accessibility"
 msgstr "إتا_حة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "انقل النافذة لمساحة العمل التالية"
+msgstr "_حلب النافذة إلى مساحة العمل الحالية"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "ر_سم إطار حول النوافذ المحددة عند التدوير"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
 msgid "_Enable display compositing"
-msgstr "فعِّل مزج العرض"
+msgstr "فعِّل مزج العرض"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "تضمّن النوافذ المخفيّة ( أي المصغرة إلى قياس أيقونات)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "قياس النوافذ الأدنى لإطلاق الموضع الذكي"
 
@@ -839,12 +798,10 @@ msgid "_Placement"
 msgstr "_وضع"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-#, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "ارفع النوافذ عند ضغط على أي زرّ للفأرة"
+msgstr "أرفع النوافذ عند ضغط على أي زرّ للفأرة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
@@ -852,13 +809,13 @@ msgstr ""
 "تذكّر و استدعي مساحة العمل السابقة عند التبديل بواسطة إختصارات لوحة المفاتيح"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "تخطّى النوافذ ذات الخصائص \"skip pager\" أو \"skip taskbar\""
+msgstr ""
+"تخطّى النوافذ ذات الخصائص \"skip pager\"\n"
+" أو \"skip taskbar\""
 
-#
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
 msgstr "مساحات _العمل"
@@ -896,38 +853,36 @@ msgstr "%s (على %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr ""
+msgstr "تفرغ إلى الخلفية"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "تفرغ إلى الخلفية غير مدعوم)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "تحديد وضع المنضد"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "تحديد وضع المنضد (غير مدعوم)"
 
 #: ../src/main.c:549
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "إعدادات مدير نوافذ Xfce 4"
+msgstr "إستبدل مدير النوافذ الحالي"
 
 #: ../src/main.c:550
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "معلومات النسخة"
+msgstr "أكتب معلومات الإصدار والخروج"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[حجج...]"
 
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "أكتب \"%s --help\" لإستعمال."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
@@ -962,7 +917,6 @@ msgstr "_حجّم"
 msgid "Always on Top"
 msgstr "دوما في الأعلى"
 
-#
 #: ../src/menu.c:52
 msgid "Same as Other Windows"
 msgstr "نفسه في نوافذ أخرى"
@@ -1035,7 +989,7 @@ msgstr "%s: تعذّر تخصيص اللون %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: لا يمكن تخصيص اللون: GValue for color is not of type STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1045,17 +999,17 @@ msgstr "%s: تعذّر تحليل اللون %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: لا يمكن نحليل اللون: GValue for color is not of type STRING"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "خطأ عند قراءة البيانات من العملية البنت: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "لا يمكن توليد helper-dialog: %s\n"
 
 #~ msgid "Hide"
 #~ msgstr "اخفي"
@@ -1075,26 +1029,21 @@ msgstr ""
 #~ msgid "Resistance|<i>Wide</i>"
 #~ msgstr "المقاومة|<i>عريضة</i>"
 
-#, fuzzy
 #~ msgid ">Window Manager"
 #~ msgstr "مدير النوافذ"
 
-#, fuzzy
 #~ msgid "gtk-clear"
 #~ msgstr "الغي"
 
-#, fuzzy
 #~ msgid "gtk-cancel"
 #~ msgstr "الغي"
 
-#, fuzzy
 #~ msgid "gtk-save"
 #~ msgstr "الغي"
 
 #~ msgid "Workspace Margins"
 #~ msgstr "هوامش مساحة العمل"
 
-#
 #~ msgid "Left :"
 #~ msgstr "يسار :"
 
@@ -1107,71 +1056,55 @@ msgstr ""
 #~ msgid "Bottom :"
 #~ msgstr "أسفل :"
 
-#, fuzzy
 #~ msgid "Bring window on current workspace"
 #~ msgstr "انقل النافذة لمساحة العمل التالية"
 
-#, fuzzy
 #~ msgid "Do nothing"
 #~ msgstr "لا تفعل شيء"
 
-#, fuzzy
 #~ msgid ""
 #~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
 #~ msgstr "تخطّى النوافذ ذات الخصائص \"skip pager\" أو \"skip taskbar\""
 
-#, fuzzy
 #~ msgid "Include hidden (i.e. iconified) windows"
 #~ msgstr "تضمّن النوافذ المخفيّة ( أي المصغرة إلى قياس أيقونات)"
 
-#, fuzzy
 #~ msgid "Cycle through windows from all workspaces"
 #~ msgstr "دُر على كلّ النوافذ من كلّ مساحات العمل"
 
-#, fuzzy
 #~ msgid "Cycling"
 #~ msgstr "دوران"
 
-#, fuzzy
 #~ msgid "Activate focus stealing prevention"
 #~ msgstr "نشِّط منع سرقة البؤرة"
 
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
 #~ msgstr "احترم تلميح بؤرة ICCCM القياسي"
 
-#, fuzzy
 #~ msgid "Focus"
 #~ msgstr "بُؤرة"
 
-#, fuzzy
 #~ msgid "Key used to grab and move windows"
 #~ msgstr "المفتاح المستخدم لالتقاط ونقل النوافذ"
 
-#, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "ارفع النوافذ عند ضغط على أي زرّ للفأرة"
 
-#, fuzzy
 #~ msgid "Hide frame of windows when maximized"
 #~ msgstr "إخفي إطار النافذة عند تكبير النوافذ"
 
-#, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
 #~ msgstr "عند تحريك النوافذ ، إستعد قياسها الأصلي"
 
-#, fuzzy
 #~ msgid "Use edge resistance instead of windows snapping"
 #~ msgstr "استخدم مقاومة الحواف بدلا من جذب النوافذ"
 
-#, fuzzy
 #~ msgid "Accessibility"
 #~ msgstr "إتاحة"
 
 #~ msgid "Switch workspaces using the mouse wheel over the desktop"
 #~ msgstr "بدّل مساحات العمل مستعملاً عجلة الفأرة فوق سطح المكتب"
 
-#, fuzzy
 #~ msgid ""
 #~ "Remember and recall previous workspace when switching via keyboard "
 #~ "shortcuts"
@@ -1179,83 +1112,63 @@ msgstr ""
 #~ "تذكّر و استدعي مساحة العمل السابقة عند التبديل بواسطة إختصارات لوحة "
 #~ "المفاتيح"
 
-#, fuzzy
 #~ msgid "Wrap workspaces depending on the actual desktop layout"
 #~ msgstr "لف مساحات العمل طبقا لهيئة سطح المكتب الفعليّة"
 
-#, fuzzy
 #~ msgid "Wrap workspaces when the first or last workspace is reached"
 #~ msgstr "لف حول مساحات العمل عند الوصول للأولى أو الأخيرة"
 
-#, fuzzy
 #~ msgid "Minimum size of windows to trigger smart placement"
 #~ msgstr "قياس النوافذ الأدنى لإطلاق الموضع الذكي"
 
-#, fuzzy
 #~ msgid "Size|Small"
 #~ msgstr "Size|صغير"
 
-#, fuzzy
 #~ msgid "Size|Large"
 #~ msgstr "Size|كبير"
 
-#, fuzzy
 #~ msgid "Default positionning of windows without smart placement:"
 #~ msgstr "قياس النوافذ الأدنى لإطلاق الموضع الذكي"
 
-#, fuzzy
 #~ msgid "Placement"
 #~ msgstr "وضع"
 
-#, fuzzy
 #~ msgid "Enable display compositing"
 #~ msgstr "فعِّل مزج العرض"
 
-#, fuzzy
 #~ msgid "Display full screen overlay windows directly"
 #~ msgstr "اعرض نوافذ تغطية ملء الشاشة مباشرة"
 
-#, fuzzy
 #~ msgid "Show shadows under dock windows"
 #~ msgstr "أظهر ظل تحت النوافذ المنبثقة"
 
-#, fuzzy
 #~ msgid "Show shadows under regular windows"
 #~ msgstr "أظهر ظل تحت النوافذ العاديّة"
 
-#, fuzzy
 #~ msgid "Show shadows under popup windows"
 #~ msgstr "أظهر ظل تحت النوافذ المنبثقة"
 
-#, fuzzy
 #~ msgid "Opacity of window decorations"
 #~ msgstr "عتامة زينة النافذة"
 
-#, fuzzy
 #~ msgid "Transparent"
 #~ msgstr "شفّاف"
 
-#, fuzzy
 #~ msgid "Opaque"
 #~ msgstr "معتّم"
 
-#, fuzzy
 #~ msgid "Opacity of inactive windows"
 #~ msgstr "عتامة النوافذ غير النشطة"
 
-#, fuzzy
 #~ msgid "Opacity of windows during move"
 #~ msgstr "عتامة النوافذ خلال التحريك"
 
-#, fuzzy
 #~ msgid "Opacity of windows during resize"
 #~ msgstr "عتامة النوافذ خلال تغيير القياس"
 
-#, fuzzy
 #~ msgid "Opacity of popup windows"
 #~ msgstr "عتامة النوافذ المنبثقة"
 
-#, fuzzy
 #~ msgid "Compositor"
 #~ msgstr "المازج"
 
@@ -1268,30 +1181,24 @@ msgstr ""
 #~ msgid "Change name"
 #~ msgstr "غيّر الإسم"
 
-#, fuzzy
 #~ msgid "Name:"
 #~ msgstr "الإسم:"
 
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "أنقر على مساحة العمل للتحريرها"
 
-#, fuzzy
 #~ msgid "Number of workspaces:"
 #~ msgstr "عدد مساحات العمل:"
 
-#, fuzzy
 #~ msgid "Workspace names"
 #~ msgstr "أسماء مساحات العمل"
 
-#
 #~ msgid "Button Label|Workspaces and Margins"
 #~ msgstr "Button Label||مساحات العمل و الهوامش"
 
-#
 #~ msgid "Workspaces and Margins"
 #~ msgstr "مساحات العمل و الهوامش"
 
-#, fuzzy
 #~ msgid "Margins"
 #~ msgstr "الهوامش"
 
@@ -1313,57 +1220,45 @@ msgstr ""
 #~ msgid "Xfce 4 Workspaces Settings"
 #~ msgstr "إعدادات مساحات عمل Xfce 4"
 
-#, fuzzy
 #~ msgid "Click and drag buttons to change the layout"
 #~ msgstr "انقر و إسحب الأزرار كي تغيّر التصميم"
 
 #~ msgid "Font Selection Dialog"
 #~ msgstr "حوار انتقاء الخط"
 
-#, fuzzy
 #~ msgid "Title font"
 #~ msgstr "خط العنوان"
 
-#, fuzzy
 #~ msgid "Title Alignment"
 #~ msgstr "محاذاة العنوان"
 
 #~ msgid "Text alignment inside title bar :"
 #~ msgstr "محاذاة الخط داخل شريط العنوان :"
 
-#, fuzzy
 #~ msgid "Button layout"
 #~ msgstr "هيئة الزر"
 
-#, fuzzy
 #~ msgid "Style"
 #~ msgstr "الأسلوب"
 
-#, fuzzy
 #~ msgid "Window shortcuts"
 #~ msgstr "اختصارات النافذة"
 
-#, fuzzy
 #~ msgid "Command"
 #~ msgstr "أمر"
 
-#, fuzzy
 #~ msgid "Keyboard"
 #~ msgstr "لوحة المفاتيح"
 
-#, fuzzy
 #~ msgid "Focus model"
 #~ msgstr "طراز البؤرة"
 
-#, fuzzy
 #~ msgid "Click to focus"
 #~ msgstr "انقر لنقل البؤرة"
 
-#, fuzzy
 #~ msgid "Focus follows mouse"
 #~ msgstr "البؤرة يتبع الفأرة"
 
-#, fuzzy
 #~ msgid "Delay before window receives focus"
 #~ msgstr "التأخير قبل رفع النافذة ذات البؤرة :"
 
@@ -1373,108 +1268,78 @@ msgstr ""
 #~ msgid "Fast"
 #~ msgstr "سريع"
 
-#, fuzzy
 #~ msgid "Automatically give focus to newly created windows"
 #~ msgstr "اعطي البؤرة آليا للنوافذ المنشأة حديثاً"
 
-#, fuzzy
 #~ msgid "New window focus"
 #~ msgstr "بؤرة النافذة الجديدة"
 
-#, fuzzy
 #~ msgid "Raise on focus"
 #~ msgstr "ارفع عندما تصبِح في البؤرة"
 
-#, fuzzy
 #~ msgid "Automatically raise windows when they receive focus"
 #~ msgstr "ارفع النوافذ آليا عندما تتلقى البؤرة"
 
-#, fuzzy
 #~ msgid "Delay before raising focused window :"
 #~ msgstr "التأخير قبل رفع النافذة ذات البؤرة :"
 
-#, fuzzy
 #~ msgid "Raise window when clicking inside application window"
 #~ msgstr "ارفع النافذة عند التقر داخل نافذة التطبيق"
 
-#, fuzzy
 #~ msgid "Raise on click"
 #~ msgstr "ارفع عند النقر"
 
-#
-#, fuzzy
 #~ msgid "Windows snapping"
 #~ msgstr "جذب النوافذ"
 
-#, fuzzy
 #~ msgid "Snap windows to screen border"
 #~ msgstr "اجذب النوافذ  الى حدود الشاشة"
 
-#
-#, fuzzy
 #~ msgid "Snap windows to other windows"
 #~ msgstr "اجذب النوافذ  الى النوافذ الأخرى"
 
-#, fuzzy
 #~ msgid "Distance :"
 #~ msgstr "المسافة :"
 
-#, fuzzy
 #~ msgid "Distance|Small"
 #~ msgstr "Distance|صغيرة"
 
-#, fuzzy
 #~ msgid "Distance|Wide"
 #~ msgstr "Distance|عريضة"
 
-#, fuzzy
 #~ msgid "Wrap workspaces"
 #~ msgstr "صفِّف بيئات العمل"
 
-#
-#, fuzzy
 #~ msgid "Wrap workspaces when the pointer reaches a screen edge"
 #~ msgstr "صفِّف بيئات العمل عند سحب نافذة خارج حدود الشاشة"
 
-#
-#, fuzzy
 #~ msgid "Wrap workspaces when dragging a window off the screen"
 #~ msgstr "صفِّف بيئات العمل عند سحب نافذة خارج حدود الشاشة"
 
-#
-#, fuzzy
 #~ msgid "Edge Resistance :"
 #~ msgstr "مقاومة الحافة :"
 
-#, fuzzy
 #~ msgid "Resistance|Small"
 #~ msgstr "Resistance|صغيرة"
 
-#, fuzzy
 #~ msgid "Resistance|Wide"
 #~ msgstr "Resistance|عريضة"
 
-#, fuzzy
 #~ msgid "Opaque move and resize"
 #~ msgstr "نقل وإعادة تحجيم معتم"
 
-#, fuzzy
 #~ msgid "Display content of windows when resizing"
 #~ msgstr "اعرض محتوى النوافذ عند اعادة التحجيم"
 
-#, fuzzy
 #~ msgid "Display content of windows when moving"
 #~ msgstr "اعرض محتوى النوافذ عند النقل"
 
-#, fuzzy
 #~ msgid "Double click action"
 #~ msgstr "اجراء النقر المزدوج"
 
-#, fuzzy
 #~ msgid "Action to perform when double clicking on title bar :"
 #~ msgstr "الإجراء الذي سينفّذ عند النقر المزدوج على شريط العنوان :"
 
-#, fuzzy
 #~ msgid "Advanced"
 #~ msgstr "متقدم"
 
@@ -1487,7 +1352,6 @@ msgstr ""
 #~ msgid "Add keybinding theme"
 #~ msgstr "أضِف سِمة ارتباطات مفاتيح"
 
-#, fuzzy
 #~ msgid "Enter a name for the theme:"
 #~ msgstr "أدخل اسما للسِمة:"
 
@@ -1497,7 +1361,6 @@ msgstr ""
 #~ msgid "You have to provide a name for the keybinding theme"
 #~ msgstr "تحتاج لإعطاء اسما لسِمة ارتباطات المفاتيح"
 
-#, fuzzy
 #~ msgid "Move window to workspace %d"
 #~ msgstr "انقل النافذة لمساحة العمل %d"
 
@@ -1518,7 +1381,6 @@ msgstr ""
 #~ "تعذّرت الكتابة فى %s : \n"
 #~ "%s"
 
-#, fuzzy
 #~ msgid ""
 #~ "Shortcut already in use !\n"
 #~ "Are you sure you want to use it ?"
@@ -1532,19 +1394,15 @@ msgstr ""
 #~ msgid "Compose shortcut"
 #~ msgstr "ألِّف اختصارا"
 
-#, fuzzy
 #~ msgid "No shortcut"
 #~ msgstr "ألِّف اختصارا"
 
-#, fuzzy
 #~ msgid "Change the name of workspace %d"
 #~ msgstr "عدد مساحات العمل:"
 
-#, fuzzy
 #~ msgid "Advanced window manager settings"
 #~ msgstr "إعدادات مدير نوافذ Xfce 4"
 
-#, fuzzy
 #~ msgid ""
 #~ "This shortcut is already being used by <b>another window manager action</"
 #~ "b>. Which action do you want to use?"
@@ -1552,7 +1410,6 @@ msgstr ""
 #~ "الإختصار مستخدم بالفعل !\n"
 #~ "أواثق من رغبتك في استعماله؟"
 
-#, fuzzy
 #~ msgid ""
 #~ "The shortcut is already being used by a <b>window manager action</b>. "
 #~ "Which action do you want to use?"
@@ -1560,29 +1417,23 @@ msgstr ""
 #~ "الإختصار مستخدم بالفعل !\n"
 #~ "أواثق من رغبتك في استعماله؟"
 
-#, fuzzy
 #~ msgid "The shortcut is already being used for something else."
 #~ msgstr ""
 #~ "الإختصار مستخدم بالفعل !\n"
 #~ "أواثق من رغبتك في استعماله؟"
 
-#, fuzzy
 #~ msgid "Enter window manager action shortcut"
 #~ msgstr "إعدادات مدير نوافذ Xfce 4"
 
-#, fuzzy
 #~ msgid "Action: %s"
 #~ msgstr "نشِّط"
 
-#, fuzzy
 #~ msgid "Enter shortcut"
 #~ msgstr "بدون اختصار"
 
-#, fuzzy
 #~ msgid "Shortcut:"
 #~ msgstr "بدون اختصار"
 
-#, fuzzy
 #~ msgid "(Un)Ma_ximize"
 #~ msgstr "_كبِّر"
 
@@ -1592,14 +1443,12 @@ msgstr ""
 #~ msgid "_Shade"
 #~ msgstr "_ظلِّل"
 
-#, fuzzy
 #~ msgid "(Un)_Shade"
 #~ msgstr "أ_زل التظليل"
 
 #~ msgid "S_tick"
 #~ msgstr "_ثبِّت"
 
-#, fuzzy
 #~ msgid "(Un)S_tick"
 #~ msgstr "ا_لغي التثبيت"
 
@@ -1612,22 +1461,18 @@ msgstr ""
 #~ msgid "Below"
 #~ msgstr "تحت"
 
-#
 #~ msgid "Send to..."
 #~ msgstr "أرسل الى..."
 
 #~ msgid "Workspace %i (%s)"
 #~ msgstr "مساحة العمل %i (%s)"
 
-#, fuzzy
 #~ msgid "Ctrl"
 #~ msgstr "وسط"
 
-#, fuzzy
 #~ msgid "Button"
 #~ msgstr "هيئة الزر"
 
-#, fuzzy
 #~ msgid "Add Shortcut Theme"
 #~ msgstr "اختصار"
 
