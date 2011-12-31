@@ -972,11 +972,11 @@ msgid ""
 "Select what must be the behaviour of the window manager when you double-"
 "click on the title bar of a window : shade window, hide window, maximize "
 "window or none."
-msgstr ""
+msgstr "Bir pencerenin başlık çubuğuna çift tıklandığında ne yapılması gerektiğini seçin: pencereyi gölgele, pencereyi sakla, tam ekran yap veya hiçbiri."
 
 #: xfwm4.xml766(title)
 msgid "Managing workspaces"
-msgstr ""
+msgstr "Çalışma alanlarını yönetmek"
 
 #: xfwm4.xml768(para)
 msgid ""
@@ -986,33 +986,33 @@ msgid ""
 "<ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">settings "
 "manager dialog</ulink>. The dialog contains two tab folders where you can "
 "change workspace settings and desktop margins."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> aynı zamanda çalışma alanlarını da yönetir. Çalışma alanı özelliklerini ayarlamaya yönelik bir pencere vardır. Bur pencereyi, <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">ayarlar yöneticisi penceresi</ulink>nden <emphasis>Çalışma Alanları ve Sınırlar</emphasis>'ı seçerek açabilirsiniz. Açılacak pencere, çalışma alanı ayarlarını ve masaüstü sınırlarını değiştirebileceğiniz iki adet etiket dizini içerir."
 
 #: xfwm4.xml778(title)
 msgid "Workspaces settings"
-msgstr ""
+msgstr "Çalışma alanları ayarları"
 
 #: xfwm4.xml781(title)
 msgid "Workspace Settings"
-msgstr ""
+msgstr "Çalışma Alanı Ayarları"
 
 #: xfwm4.xml788(phrase)
 msgid "Shows workspace settings tab folder."
-msgstr ""
+msgstr "Çalışma alanı ayarlar sekmesini gösterir"
 
 #: xfwm4.xml798(term)
 msgid "Workspaces"
-msgstr ""
+msgstr "Çalışma Alanları"
 
 #: xfwm4.xml800(para)
 msgid ""
 "This option allows you too choose the number of workspaces you want to use "
 "(between 1 and 32)."
-msgstr ""
+msgstr "Bu seçenek kullanmak istediğiniz çalışma alanı sayısını seçmenize olanak veriyor (1 ve 32 arasında)."
 
 #: xfwm4.xml807(term)
 msgid "Worspace names"
-msgstr ""
+msgstr "Çalışma alanı isimleri"
 
 #: xfwm4.xml809(para)
 msgid ""
@@ -1020,19 +1020,19 @@ msgid ""
 "name of one of them, click its number and a fill the entry of the dialog "
 "that will then appear. When it's done, click the \"Apply\" button, or just "
 "press the Enter key, to return to the list."
-msgstr ""
+msgstr "Bu kısım, mevcut çalışma alanlarının listesini gösterir. Eğer bu çalışma alanlarından birinin ismini değiştirmek istiyorsanız, numarasının üstüne tıklayıp, açılan penceredeki kısmı doldurunuz. Bu işlem bittiğinde listeye dönmek için, \"Uygula\" düğmesine tıklayın ya da Enter tuşuna basın."
 
 #: xfwm4.xml823(title)
 msgid "Workspaces margins"
-msgstr ""
+msgstr "Çalışma alanı sınırları"
 
 #: xfwm4.xml826(title)
 msgid "The workspace margins dialog"
-msgstr ""
+msgstr "Çalışma alanı sınırları penceresi"
 
 #: xfwm4.xml834(phrase)
 msgid "The workspace margins tab folder"
-msgstr ""
+msgstr "Çalışma alanı sınırları etiket dizini"
 
 #: xfwm4.xml840(para)
 msgid ""
@@ -1040,7 +1040,7 @@ msgid ""
 "and Margins\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" "
 "type=\"http\">settings manager dialog</ulink> and choose the tab labelled "
 "\"Margins\"."
-msgstr ""
+msgstr "Çalışma alanı sınırları penceresini açmak için, <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">ayarlar yöneticisi penceresi</ulink>ndeki \"Çalışma Alanı ve Sınırlar\" düğmesine tıklayın ve sonra \"Sınırlar\" sekmesini seçin."
 
 #: xfwm4.xml846(para)
 msgid ""
@@ -1048,25 +1048,25 @@ msgid ""
 "cover. You can adjust the size, in pixels, of all margins (left, right, top "
 "and bottom). Use this feature, for example, if you do not want maximized "
 "windows to overlap panel or iconbox frames."
-msgstr ""
+msgstr "Sınırlar: büyütülen pencerelerin ekranda kaplayamayacakları alanın miktarını belirtirler. Bu boyutu piksel olarak tüm sınırlar (sol, sağ, üst ve alt) için değiştirebilirsiniz. Örneğin bu özelliği, büyütülen pencerelerin, paneli ya da simge kutularını örtmemesi için kullanabilirsiniz. "
 
 #: xfwm4.xml857(title)
 msgid "About <application>@PACKAGE_NAME@</application>"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> Hakkında"
 
 #: xfwm4.xml859(para)
 msgid ""
 "<application>@PACKAGE_NAME@</application> was written Olivier Fourdan "
 "(<email>fourdan@xfce.org</email>). To find more information, please visit "
 "the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce web site</ulink>."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> Olivier Fourdan (<email>fourdan@xfce.org</email>) tarafından yazılmıştır. Daha fazla bilgi için <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce Internet Adresini</ulink> ziyaret edebilirsiniz."
 
 #: xfwm4.xml864(para)
 msgid ""
 "To report a bug or make a suggestion regarding this application or this "
 "manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/"
 "\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
-msgstr ""
+msgstr "Bu uygulama veya klavuz hakkında bir hata raporlamak ya da öneride bulunmak için <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink> adresindeki hata takip sistemimizi kullanabilirsiniz."
 
 #: xfwm4.xml870(para)
 msgid ""
@@ -1075,23 +1075,23 @@ msgid ""
 "\"http\">xfce</ulink> mailing list. Development discussion takes place on "
 "the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type="
 "\"http\">xfce4-dev</ulink> mailing list."
-msgstr ""
+msgstr "Bu paketin kurulumu veya kullanımı ile ilgili sorulaırnızı <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> eposta listesine yazabilirsiniz. Geliştirme tartışmaları ise <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> listesinde sürdürülmektedir."
 
 #: xfwm4.xml879(para)
 msgid ""
 "This program is distributed under the terms of the GNU General Public "
 "License as published by the Free Software Foundation; either version 2 of "
 "the License, or (at your option) any later version."
-msgstr ""
+msgstr "Bu program Özgür Yazılım Vakfı tarafından yayınlanan GNU Genel Kamu Lisansının 2 veya (seçiminize bağlı olarak) daha sonraki sürümlerinden birinin koşulları altında dağıtılımaktadır."
 
 #: xfwm4.xml884(para)
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
 "Place - Suite 330, Boston, MA 02111-1307, USA."
-msgstr ""
+msgstr "Bu programla birlikte GNU Genel kamu Lisansının bir kopyasını almış olmalısınız. Eğer almamışsanız şu adrese yazabilirsiniz: Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: xfwm4.xml0(None)
 msgid "translator-credits"
-msgstr ""
+msgstr "Gökmen Görgen <gkmngrgn@gmail.com>, 2011"
