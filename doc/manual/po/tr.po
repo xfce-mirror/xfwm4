@@ -875,38 +875,38 @@ msgstr "Odaklanmış bir pencere tuş takımı ve fale komutlarını alır. İki
 msgid ""
 "Click to focus : select this option if you want a window to receive the "
 "focus only when you click anywhere on its frame."
-msgstr ""
+msgstr "Odaklanmak için tıkla : bir pencereye sadece çerçevesinin herhangi bir yerine tıklandığında odaklanılmasını istiyorsanız bu seçeneği seçin."
 
 #: xfwm4.xml656(para)
 msgid ""
 "Focus follow mouse : select this option if you want a window to receive the "
 "focus as soon as the mouse pointer is over its frame."
-msgstr ""
+msgstr "Odak fareyi takip eder : fare imleci çerçevenin üzerine geldiğinde bir pencerenin hemen odaklanmasını istiyorsanız bu seçeneği seçin."
 
 #: xfwm4.xml665(term)
 msgid "New window focus"
-msgstr ""
+msgstr "Yeni pencereye odaklan"
 
 #: xfwm4.xml667(para)
 msgid ""
 "Selecting this option will automatically give the focus to newly created "
 "windows, without the need to click or move the mouse pointer."
-msgstr ""
+msgstr "Bu seçeneği seçmek, fare imlecini hareket ettirmeye veya tıklamaya gerek kalmadan, yeni oluşturulan pencereleri odağa yerleştirecek."
 
 #: xfwm4.xml675(term)
 msgid "Raise on focus"
-msgstr ""
+msgstr "Odaklanıldığında yükselt"
 
 #: xfwm4.xml677(para)
 msgid ""
 "If this option is selected, the frame of a newly focused window will "
 "automatically appear over all other frames, after an amount of time that you "
 "can adjust with the \"delay\" slider."
-msgstr ""
+msgstr "Eğer bu seçenek seçili ise, yeni odaklanan pencerenin çerçevesi, bir süre sonra kendiliğinden diğer tüm çerçevelerin üzerinde gözükecek, bu süreyi \"gecikme\" seçeneği ile ayarlayabilirsiniz."
 
 #: xfwm4.xml685(term)
 msgid "Raise on click"
-msgstr ""
+msgstr "Tıklandığında yükselt"
 
 #: xfwm4.xml687(para)
 msgid ""
@@ -914,23 +914,23 @@ msgid ""
 "click anywhere on its frame. If this option is not selected, you will have "
 "to click somewhere on its decorations (title bar, borders or corners) to "
 "raise it."
-msgstr ""
+msgstr "Bir pencere çerçevesinin üzerinde bir yere tıkladığınızda o pencerenin, diğerlerinin üzerine geçmesini istiyorsanız bu seçeneği işaretleyin. Eğer bu seçenek seçili değil ise, pencereyi diğerlerinin üzerine çıkarmak için o pencerenin kenarlıklarına (başlık çubuğu, kenarlar ya da köşeler) tıklamanız gerekecektir."
 
 #: xfwm4.xml701(title)
 msgid "Advanced settings"
-msgstr ""
+msgstr "Gelişmiş ayarlar"
 
 #: xfwm4.xml704(title)
 msgid "Advanced preferences"
-msgstr ""
+msgstr "Gelişmiş tercihler"
 
 #: xfwm4.xml712(phrase)
 msgid "Advanced tab"
-msgstr ""
+msgstr "Gelişmiş sekmesi"
 
 #: xfwm4.xml721(term)
 msgid "Windows snapping"
-msgstr ""
+msgstr "Pencere boyutlandırması"
 
 #: xfwm4.xml723(para)
 msgid ""
@@ -938,11 +938,11 @@ msgid ""
 "windows, or by the screen edges, when they are moved. The distance from "
 "which this effect will be applied can be specified with the \"Distance\" "
 "slider."
-msgstr ""
+msgstr "Pencereler hareket ettirildiğinde diğer pencere kenarlarından ya da ekran kenarlarından etkilenecek olan kenarların hangileri olacağını seçebilirsiniz. Bu etkinin ne kadar mesafe kaldığında gerçekleşeceği \"Uzaklık\" seçeneği ile belirtilebilir."
 
 #: xfwm4.xml731(term)
 msgid "Wrap workspaces"
-msgstr ""
+msgstr "Çalışma alanlarını değiştir"
 
 #: xfwm4.xml733(para)
 msgid ""
@@ -950,22 +950,22 @@ msgid ""
 "mouse pointer reaches the screen edges. Select the second one if you want "
 "the same behaviour while dragging a window. You can specify the screen edges "
 "resistance using the corresponding slider."
-msgstr ""
+msgstr "Fare işaretçisi ekranın kenarlarına eriştiğinde, sonraki çalışma alanına geçilmesini istiyorsanız ilk seçeneği işaretleyin. Eğer aynı etkinin pencere taşırken gerçekleşmesini istiyorsanız ikinci seçeneği işaretleyin. Ekran kenarı direncini, buradaki kaydırma çubuğunu kullanarak ayarlayabilirsiniz."
 
 #: xfwm4.xml742(term)
 msgid "Opaque move and resize"
-msgstr ""
+msgstr "Mat taşıma ve boyutlandırma"
 
 #: xfwm4.xml744(para)
 msgid ""
 "Two options allow you to choose if the content of a window will appear or "
 "not, when you move or resize it (not displaying the content will save some "
 "system resources)."
-msgstr ""
+msgstr "Bu iki seçenek bir pencereyi haraket ettirdiğinizde veya yeniden boyutlandırdığınızda onun içeriğinin görünüp görünmemesini (görünmemesi sistem kaynaklarını daha az harcayacaktır) seçmenize izin verir."
 
 #: xfwm4.xml751(term)
 msgid "Double click action"
-msgstr ""
+msgstr "Çift tıklama eylemi"
 
 #: xfwm4.xml753(para)
 msgid ""
