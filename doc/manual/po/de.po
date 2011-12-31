@@ -169,48 +169,59 @@ msgid "<application>@PACKAGE_NAME@</application> can be run stand-alone, but if 
 msgstr "<application>@PACKAGE_NAME@</application> kann eigenständig ausgeführt werden, falls Sie es aber auf diese Art nutzen, benötigen Sie die <ulink url=\"xfce-mcs-manager.html\" type=\"http\">Xfce4-Einstellungsverwaltung</ulink>. Andere Aufgaben, als das Verwalten von Fenstern, wie das Setzen eines Hintergrundbilds oder das Starten von Programmen, müssen durch andere Programme durchgeführt werden."
 
 #: ./xfwm4.xml112(para)
+#, fuzzy
 msgid "<application>@PACKAGE_NAME@</application> includes its own compositing manager, which takes advantage of the new <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink>'s server extensions. The compositor is like a WM on its own, it manages a stack of all windows, monitor all kinds on X event and reacts accordingly. Having the compositing manager embedded in the window manager also helps keeping the various visual effects in sync with window events. If you want to use the compositor, you have to build <application>@PACKAGE_NAME@</application> using the --enable-compositor configure option. In any case, you can disable the compositor on <application>@PACKAGE_NAME@</application> startup using the '--compositor=off' argument."
 msgstr "<application>@PACKAGE_NAME@</application> beinhaltet seine eigene Compositing-Verwaltung, die die Vorteile der neuen Servererweiterungen von <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink> nutzt. Das Compositing-System für sich allein ist wie ein Fenstermanager. Es verwaltet einen Stapel von allen Fenstern, Monitoren, allen Arten von X-Ereignissen und reagiert entprechend. Außerdem hilft der in den Fenstermanager eingebettete Compositing-Manager die verschiedenen optischen Effekte in Übereinstimmung mit den Fensterereignissen zu halten. Falls Sie das Compositing-System benutzen möchten, müssen Sie <application>@PACKAGE_NAME@</application> unter Benutzung der »configure«-Option --enable-compositor bauen. Auf jeden Fall können Sie das Compositing-System beim Start von <application>@PACKAGE_NAME@</application> mit dem Argument »--compositor=off« deaktivieren."
 
 #: ./xfwm4.xml125(title)
+#, fuzzy
 msgid "Using <application>@PACKAGE_NAME@</application>"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> benutzen"
 
 #: ./xfwm4.xml128(title)
+#, fuzzy
 msgid "Manage windows"
-msgstr ""
+msgstr "Fenster verwalten"
 
 #: ./xfwm4.xml130(para)
+#, fuzzy
 msgid "The window manager provides borders, a title bar and window buttons to application windows. The look is defined by the window manager theme."
-msgstr ""
+msgstr "Der Fenstermanager stellt Anwendungsfenstern Ränder, eine Titelleiste und Fensterschaltflächen bereit. Das Aussehen wird vom Fenstermanager-Theme bestimmt."
 
 #: ./xfwm4.xml134(para)
+#, fuzzy
 msgid "In the default theme <application>@PACKAGE_NAME@</application> shows six buttons and a title on regular application windows. The six buttons perform these basic functions:"
-msgstr ""
+msgstr "Im Standard-Theme zeigt <application>@PACKAGE_NAME@</application> auf normalen Anwendungsfenstern sechs Schaltflächen und einen Titel. Die sechs Schaltflächen führen diese Basisfunktionen aus:"
 
 #: ./xfwm4.xml140(title)
+#, fuzzy
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application>-Fensterleistenschaltflächen"
 
 #: ./xfwm4.xml148(phrase)
+#, fuzzy
 msgid "<application>@PACKAGE_NAME@</application> title bar buttons and functions"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application>-Fensterleistenschaltflächen und Funktionen"
 
 #: ./xfwm4.xml154(para)
+#, fuzzy
 msgid "You can open the window menu with a left-click on the menu button on the title bar, or with a right-click on the window title area itself."
-msgstr ""
+msgstr "Sie können das Fenstermenü mit einem Linksklick auf die Menüschaltfläche in der Titelleiste oder mit einem Rechtsklick auf den Fenstertitel selbst öffnen."
 
 #: ./xfwm4.xml157(para)
+#, fuzzy
 msgid "If you use <application>xftaskbar4</application>, you can open an action menu with a right-click on one of the taskbar entries; it includes several items among those available in the window menu."
-msgstr ""
+msgstr "Falls Sie <application>xftaskbar4</application> verwenden, können Sie ein Aktionsmenü mit einem Rechtsklick auf einen der Aufgabenleisteneinträge öffnen; es umfasst mehrere Elemente neben denen, die im Fenstermenü verfügbar sind."
 
 #: ./xfwm4.xml165(term)
+#, fuzzy
 msgid "Give focus to a window"
-msgstr ""
+msgstr "Einem Fenster den Fokus geben"
 
 #: ./xfwm4.xml167(para)
+#, fuzzy
 msgid "You need to give the focus to a window if you want it to receive keyboard and mouse input. Window decorations colors will change, following the focus. To obtain more details about focus options, please refer to the <ulink url=\"#focus\">corresponding section</ulink> below."
-msgstr ""
+msgstr "Sie müssen einem Fenster den Fokus geben, falls Sie möchten, dass es Tastatur- und Mauseingaben erhält. Fensterverzierungsfarben werden sich, dem Fokus folgend, ändern. Um weitere Einzelheiten über die Fokusoptionen zu erhalten, sehen Sie bitte im <ulink url=\"#focus\">entsprechenden Abschnitt</ulink> unterhalb nach."
 
 #: ./xfwm4.xml172(para)
 msgid "A keyboard shortcut allows to switch the focus from a window to others : Hold Alt and then you can press Tab repeatedly untill you get to the window you want to focus. If you use it, you will see a small popup showing the application name, its icon and the window title. Also <application>@PACKAGE_NAME@</application> will highlight the outline of the window that will receive the focus."
