@@ -224,8 +224,9 @@ msgid "You need to give the focus to a window if you want it to receive keyboard
 msgstr "Sie müssen einem Fenster den Fokus geben, falls Sie möchten, dass es Tastatur- und Mauseingaben erhält. Fensterverzierungsfarben werden sich, dem Fokus folgend, ändern. Um weitere Einzelheiten über die Fokusoptionen zu erhalten, sehen Sie bitte im <ulink url=\"#focus\">entsprechenden Abschnitt</ulink> unterhalb nach."
 
 #: ./xfwm4.xml172(para)
+#, fuzzy
 msgid "A keyboard shortcut allows to switch the focus from a window to others : Hold Alt and then you can press Tab repeatedly untill you get to the window you want to focus. If you use it, you will see a small popup showing the application name, its icon and the window title. Also <application>@PACKAGE_NAME@</application> will highlight the outline of the window that will receive the focus."
-msgstr ""
+msgstr "Ein Tastaturkürzel ermöglicht, den Fokus von einem Fenster zu anderen umzuschalten: Halten Sie »Alt« gedrückt und drücken Sie dann wiederholt »Tab«, bis das gewünschte Fenster den Fokus hat. Falls Sie dieses Tastaturkürzel benutzen, werden Sie ein kleines aufklappendes Fenster sehen, das Ihnen den Namen der Anwendung, ihr Symbol und den Fenstertitel anzeigt. Außerdem wird <application>@PACKAGE_NAME@</application> den Umriss des Fensters hervorheben, das den Fokus erhalten wird."
 
 #. <para>
 #. 	    If you want the panel, and apps that do not appear in the taskbar,
@@ -241,12 +242,14 @@ msgstr ""
 #. 		add this line : cycle_hidden=false
 #. 	  </para>
 #: ./xfwm4.xml193(para)
+#, fuzzy
 msgid "NOTE: the use of a keyboard shortcut in an application needs the application window to have the focus :)"
-msgstr ""
+msgstr "HINWEIS: Die Benutzung eines Tastaturkürzels in einer Anwendung erfordert, dass das Anwendungsfenster den Fokus hat. :)"
 
 #: ./xfwm4.xml201(term)
+#, fuzzy
 msgid "Maximize / unmaximize windows"
-msgstr ""
+msgstr "Fenster maxinierem und Maximierung aufheben"
 
 #: ./xfwm4.xml203(para)
 msgid "If you maximize a window, it will expand on your display and use all avaible space (as it is defined by <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">workspace settings</ulink>). You can maximize a window either vertically, horizontally, or both at once."
