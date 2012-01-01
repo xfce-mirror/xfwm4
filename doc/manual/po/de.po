@@ -252,52 +252,64 @@ msgid "Maximize / unmaximize windows"
 msgstr "Fenster maxinierem und Maximierung aufheben"
 
 #: ./xfwm4.xml203(para)
+#, fuzzy
 msgid "If you maximize a window, it will expand on your display and use all avaible space (as it is defined by <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">workspace settings</ulink>). You can maximize a window either vertically, horizontally, or both at once."
-msgstr ""
+msgstr "Falls Sie ein Fenster maximieren, wird es auf Ihrer Anzeige expandiert und es wird allen verfügbaren Raum einnehmen (wie es durch die <ulink url=\"xfdesktop.html#xfdesktop-workspace\" type=\"http\">Arbeitsflächeneinstellungen</ulink> definiert ist). Sie können ein Fenster entweder vertikal, horizontal oder vertikal und Horizontal auf einmal maximieren."
 
 #: ./xfwm4.xml209(para)
+#, fuzzy
 msgid "To maximize a window, perform one of those actions:"
-msgstr ""
+msgstr "Um ein Fenster zu maximieren, führen Sie diese Aktionen durch:"
 
 #: ./xfwm4.xml212(para)
+#, fuzzy
 msgid "click the maximize button of the title bar"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche zum Maximieren in der Titelleiste."
 
 #: ./xfwm4.xml215(para)
+#, fuzzy
 msgid "open the window menu from the title bar and choose the \"maximize\" item"
-msgstr ""
+msgstr "Öffnen Sie das Fenstermenü aus der Titelleiste und wählen Sie das Element »Maximieren«."
 
 #: ./xfwm4.xml221(para)
+#, fuzzy
 msgid "use Alt + F5 keyboard shortcut"
-msgstr ""
+msgstr "Benutzen Sie das Tastaturkürzel »Alt« + »F5«."
 
 #: ./xfwm4.xml225(para)
+#, fuzzy
 msgid "You can make any window appear in fullscreen mode (it will then use all the size of your screen without showing the window borders) by using the customizable Alt + F11 keyboard shortcut."
-msgstr ""
+msgstr "Sie können jedes Fenster im Vollbildmodus erscheinen lassen (es wird dann die Größe Ihres Bildschirms verwenden ohne die Fensterränder anzuzeigen), indem Sie das anpassbare Tastaturkürzel »Alt« + »F11« benutzen."
 
 #: ./xfwm4.xml230(para)
+#, fuzzy
 msgid "To maximize a window vertically :"
-msgstr ""
+msgstr "So maximieren Sie ein Fenster vertikal:"
 
 #: ./xfwm4.xml232(para)
+#, fuzzy
 msgid "middle-click the maximize button of the title bar"
-msgstr ""
+msgstr "Mittelklicken Sie auf die Schaltfläche zum Maximieren der Titelleiste."
 
 #: ./xfwm4.xml233(para)
+#, fuzzy
 msgid "use Alt + F6 keyboard shortcut"
-msgstr ""
+msgstr "Benutzen Sie das Tastaturkürzel »Alt« + »F6«."
 
 #: ./xfwm4.xml236(para)
+#, fuzzy
 msgid "To maximize a window horizontally :"
-msgstr ""
+msgstr "So maximieren Sie ein Fenster horizontal:"
 
 #: ./xfwm4.xml239(para)
+#, fuzzy
 msgid "right-click the maximize button of the title bar"
-msgstr ""
+msgstr "Rechtsklicken Sie auf die Schaltfläche zum Maximieren der Titelleiste."
 
 #: ./xfwm4.xml240(para)
+#, fuzzy
 msgid "use Alt + F7 keyboard shortcut"
-msgstr ""
+msgstr "Benutzen Sie das Tastaturkürzel »Alt« + »F7«."
 
 #: ./xfwm4.xml243(para)
 msgid "When a window has been maximized in a way or another, it can be restored to its previous size doing one of these actions :"
