@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003.
 # Alois Nespor <Alois.Nespor@seznam.cz>, 2004.
-# Michal Várady <miko.vaji@gmail.com>, 2006-2010.
+# Michal Várady <miko.vaji@gmail.com>, 2006-2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
-"PO-Revision-Date: 2010-12-11 00:59+0100\n"
+"POT-Creation-Date: 2012-01-02 00:45+0000\n"
+"PO-Revision-Date: 2012-01-02 02:15+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "Language: cs\n"
@@ -252,9 +252,8 @@ msgid "Menu"
 msgstr "Nabídka"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
-msgstr "Mi_nimalizovat"
+msgstr "Minimalizovat"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -420,9 +419,8 @@ msgid "Lower window"
 msgstr "Přenést okno do pozadí"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Přenést okno do popředí"
+msgstr "Přenést okno do popředí nebo do pozadí"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -631,12 +629,8 @@ msgid "Reset to Defaults"
 msgstr "Obnovit výchozí"
 
 #: ../settings-dialogs/xfwm4-settings.c:1872
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty. Chcete "
-"pokračovat?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty. Chcete pokračovat?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -832,11 +826,8 @@ msgid "Change workspace name"
 msgstr "Změnit název pracovní plochy"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Okraje ploch jsou místa po stranách obrazovky, kam nemohou být umístěna "
-"žádná okna"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Okraje ploch jsou místa po stranách obrazovky, kam nemohou být umístěna žádná okna"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
