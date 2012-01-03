@@ -331,48 +331,59 @@ msgid "choose the \"Unmaximize\" item in the window menu"
 msgstr "Wahlen Sie das Element »Maximierung aufheben« im Fenstermenü."
 
 #: ./xfwm4.xml255(term)
+#, fuzzy
 msgid "Resize windows"
-msgstr ""
+msgstr "Ändern Sie die Größe des Fensters."
 
 #: ./xfwm4.xml257(para)
+#, fuzzy
 msgid "Although certain special windows can not be resized, you are able to resize most of them to fit your needs."
-msgstr ""
+msgstr "Obwohl die Größe bestimmter Spezialfenster nicht geändert werden kann, können Sie die Größe der meisten so ändern, dass sie Ihren Bedürfnissen entsprechen."
 
 #: ./xfwm4.xml260(para)
+#, fuzzy
 msgid "you can use the edges and corners of the window frame to modify its size, dragging them with the mouse"
-msgstr ""
+msgstr "Sie können die Kanten und Ecken des Fensterrahmens benutzen, um die Größe zu ändern, indem Sie sie mit der Maus ziehen."
 
 #: ./xfwm4.xml262(para)
+#, fuzzy
 msgid "you can use the Alt + right click shortcut while you hold the mouse pointer anywhere over the window frame; it will act as if you were dragging the bottom-right corner of the window"
-msgstr ""
+msgstr "Sie können das Kürzel »Alt«+»Rechtsklick« verwenden, während Sie den Mauszeiger irgendwo über dem Fensterrahmen halten; es wird sich auswirken, als ob Sie die untere rechte Ecke des Fenster ziehen würden."
 
 #: ./xfwm4.xml265(para)
+#, fuzzy
 msgid "you can use practical keyboard shortcuts : Shift + Alt + (up, down, right or left) Arrow"
-msgstr ""
+msgstr "Sie können die praktischen Tastaturkürzel benutzen: »Feststelltaste«+»Alt«+»Pfeil nach unten, oben, rechts oder links«"
 
 #: ./xfwm4.xml279(term)
+#, fuzzy
 msgid "Hide / unhide windows"
-msgstr ""
+msgstr "Fenster anzeigen/verbergen"
 
 #: ./xfwm4.xml281(para)
+#, fuzzy
 msgid "You can hide a window performing one of these actions :"
-msgstr ""
+msgstr "Sie können ein Fenster verbergen, indem Sie eine der folgenden Aktionen durchführen:"
 
 #: ./xfwm4.xml283(para)
+#, fuzzy
 msgid "click the hide button of the title bar"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche »Minimieren« in der Titelleiste."
 
 #: ./xfwm4.xml284(para)
+#, fuzzy
 msgid "open the window menu from the title bar and choose the \"Hide\" item"
-msgstr ""
+msgstr "Öffnen Sie das Fenstermenu der Titelleiste und wählen Sie das Element »Minimieren«."
 
 #: ./xfwm4.xml286(para)
+#, fuzzy
 msgid "use Alt + F8 keyboard shortcut"
-msgstr ""
+msgstr "Benutzen Sie das Tastaturkürzel »Alt«+»F8«."
 
 #: ./xfwm4.xml288(para)
+#, fuzzy
 msgid "Alternatively, you can hide all windows of current workspace, excepted the one you are using, in only one action : click the menu button of the title bar and choose \"Hide all others\"."
-msgstr ""
+msgstr "Alternativ können Sie alle Fenster der aktuellen Arbeitsfläche, mit Ausnahme des gerade benutzen, in einer einzigen Aktion verbergen: Klicken Sie auf die Menüschaltfläche der Titelleiste und wählen Sie »Alle anderen Fenster minimieren«."
 
 #: ./xfwm4.xml291(para)
 msgid "To \"unhide\" a window, you will have to select its name or its icon in one of those Xfce 4 components :"
