@@ -312,20 +312,23 @@ msgid "use Alt + F7 keyboard shortcut"
 msgstr "Benutzen Sie das Tastaturkürzel »Alt« + »F7«."
 
 #: ./xfwm4.xml243(para)
+#, fuzzy
 msgid "When a window has been maximized in a way or another, it can be restored to its previous size doing one of these actions :"
-msgstr ""
+msgstr "Wenn ein Fenster auf eine andere Art maximiert wurde, kann es in seiner vorherigen Größe durch folgende Aktionen wiederhergestellt werden:"
 
 #: ./xfwm4.xml247(para)
+#, fuzzy
 msgid "click the unmaximize button of the title bar"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche in der Titelleiste, die die Maximierung aufhebt."
 
 #: ./xfwm4.xml248(para)
 msgid "use the same keyboard shortcut once again"
-msgstr ""
+msgstr "Benutzen Sie das gleiche Tastaturkürzel noch einmal."
 
 #: ./xfwm4.xml249(para)
+#, fuzzy
 msgid "choose the \"Unmaximize\" item in the window menu"
-msgstr ""
+msgstr "Wahlen Sie das Element »Maximierung aufheben« im Fenstermenü."
 
 #: ./xfwm4.xml255(term)
 msgid "Resize windows"
