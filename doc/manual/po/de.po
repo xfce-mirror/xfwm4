@@ -322,6 +322,7 @@ msgid "click the unmaximize button of the title bar"
 msgstr "Klicken Sie auf die Schaltfläche in der Titelleiste, die die Maximierung aufhebt."
 
 #: ./xfwm4.xml248(para)
+#, fuzzy
 msgid "use the same keyboard shortcut once again"
 msgstr "Benutzen Sie das gleiche Tastaturkürzel noch einmal."
 
@@ -386,16 +387,19 @@ msgid "Alternatively, you can hide all windows of current workspace, excepted th
 msgstr "Alternativ können Sie alle Fenster der aktuellen Arbeitsfläche, mit Ausnahme des gerade benutzen, in einer einzigen Aktion verbergen: Klicken Sie auf die Menüschaltfläche der Titelleiste und wählen Sie »Alle anderen Fenster minimieren«."
 
 #: ./xfwm4.xml291(para)
+#, fuzzy
 msgid "To \"unhide\" a window, you will have to select its name or its icon in one of those Xfce 4 components :"
-msgstr ""
+msgstr "Um ein verborgenes Fenster wieder anzuzeigen, müssen Sie seinen Namen oder sein Symbol in einer dieser Xfce-4-Komponenten auswählen:"
 
 #: ./xfwm4.xml294(application)
+#, fuzzy
 msgid "xftaskbar4"
-msgstr ""
+msgstr "Xftaskbar4"
 
 #: ./xfwm4.xml295(para)
+#, fuzzy
 msgid "the list of windows, accessible with a middle-click on the desktop background. This list shows all opened windows, classified by workspaces. Windows that are currently hidden are marked between [ ]."
-msgstr ""
+msgstr "Die Liste der Fenster, auf die mit einem Mittelklick auf den Arbeitsflächenhintergrund zugegriffen werden kann. Diese Liste zeigt alle offenen Fenster, geordnet nach Arbeitsflächen. Fenster, die derzeit verborgen sind, werden markiert, indem sie in Klammern [] gesetzt werden. "
 
 #: ./xfwm4.xml299(para)
 msgid "the <application>xfce4-iconbox</application>"
