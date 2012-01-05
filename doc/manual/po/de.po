@@ -449,6 +449,7 @@ msgid "open the window menu button from the title bar and choose \"Stick\" or \"
 msgstr ""
 
 #: ./xfwm4.xml332(para)
+#, fuzzy
 msgid "use the Alt + F10 keyboard shortcut"
 msgstr "Benutzen Sie das Tastaturkürzel »Alt«+»F10«."
 
@@ -570,6 +571,7 @@ msgid "click the close button of the title bar"
 msgstr ""
 
 #: ./xfwm4.xml430(para)
+#, fuzzy
 msgid "Open the window menu from the title bar and choose the \"Close\" item"
 msgstr "Öffnen Sie das Fenstermenü der Titlelleiste und wählen Sie das Element »Schließen«"
 
