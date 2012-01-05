@@ -399,11 +399,12 @@ msgstr "Xftaskbar4"
 #: ./xfwm4.xml295(para)
 #, fuzzy
 msgid "the list of windows, accessible with a middle-click on the desktop background. This list shows all opened windows, classified by workspaces. Windows that are currently hidden are marked between [ ]."
-msgstr "Die Liste der Fenster, auf die mit einem Mittelklick auf den Arbeitsflächenhintergrund zugegriffen werden kann. Diese Liste zeigt alle offenen Fenster, geordnet nach Arbeitsflächen. Fenster, die derzeit verborgen sind, werden markiert, indem sie in Klammern [] gesetzt werden. "
+msgstr "die Liste der Fenster, auf die mit einem Mittelklick auf den Arbeitsflächenhintergrund zugegriffen werden kann. Diese Liste zeigt alle offenen Fenster, geordnet nach Arbeitsflächen. Fenster, die derzeit verborgen sind, werden markiert, indem sie in Klammern [] gesetzt werden. "
 
 #: ./xfwm4.xml299(para)
+#, fuzzy
 msgid "the <application>xfce4-iconbox</application>"
-msgstr ""
+msgstr "die <application>Xfce4-Iconbox</application>"
 
 #: ./xfwm4.xml305(term)
 msgid "Shade / unshade windows"
@@ -422,12 +423,14 @@ msgid "open the window menu from the title bar and choose \"Shade\" or \"Unshade
 msgstr ""
 
 #: ./xfwm4.xml314(para)
+#, fuzzy
 msgid "use the mouse scrollwheel while you hold the pointer over the title bar"
-msgstr ""
+msgstr "Benutzen Sie das Mausrad, während sie den Zeiger über die Titelleiste halten."
 
 #: ./xfwm4.xml316(para)
+#, fuzzy
 msgid "use the Alt + F9 keyboard shortcut"
-msgstr ""
+msgstr "Benutzen Sie das Tastaturkürzel »Alt« + »F9«."
 
 #: ./xfwm4.xml322(term)
 msgid "Stick / unstick windows"
@@ -447,7 +450,7 @@ msgstr ""
 
 #: ./xfwm4.xml332(para)
 msgid "use the Alt + F10 keyboard shortcut"
-msgstr ""
+msgstr "Benutzen Sie das Tastaturkürzel »Alt«+»F10«."
 
 #: ./xfwm4.xml338(term)
 msgid "Raise / lower windows"
@@ -542,8 +545,9 @@ msgid "Alt + Control + End will move a window to the next workspace"
 msgstr ""
 
 #: ./xfwm4.xml409(para)
+#, fuzzy
 msgid "Alt + Control + Home will move a window to the previous workspace"
-msgstr ""
+msgstr "»Alt« + »Strg« + »Pos1« wird ein Fenster auf die vorherige Arbeitsfläche verschieben."
 
 #: ./xfwm4.xml411(para)
 msgid "Alt + Control + Keypad-Number will move the current window to corresponding workspace"
@@ -567,15 +571,17 @@ msgstr ""
 
 #: ./xfwm4.xml430(para)
 msgid "Open the window menu from the title bar and choose the \"Close\" item"
-msgstr ""
+msgstr "Öffnen Sie das Fenstermenü der Titlelleiste und wählen Sie das Element »Schließen«"
 
 #: ./xfwm4.xml432(para)
+#, fuzzy
 msgid "or use Alt + F4 keyboard shortcut"
-msgstr ""
+msgstr "oder benutzen Sie das Tastaturkürzel »Alt«+»F4«."
 
 #: ./xfwm4.xml443(title)
+#, fuzzy
 msgid "Customizing <application>@PACKAGE_NAME@</application>"
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> anpassen"
 
 #: ./xfwm4.xml445(para)
 msgid "To open the Window Manager preferences dialog, click the button labelled \"Window Manager\" in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce 4 Settings manager</ulink>. The dialog shows four tabs : Style, Keyboard, Focus, Advanced. All modifications will have an immediate effect on the behaviour of the selected module."
