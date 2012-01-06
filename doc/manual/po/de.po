@@ -417,10 +417,12 @@ msgid "If you \"shade\" a window, it will be reduced to the size of its title ba
 msgstr "Falls Sie ein Fenster »einrollen«, wird es auf die Größe der Titelleiste verkleinert. Wiederholen der gleichen Aktion, läßt ein Fenster ein-/ausrollen:"
 
 #: ./xfwm4.xml311(para)
+#, fuzzy
 msgid "click the shade/unshade button of the title bar"
 msgstr "Klicken Sie auf die Schaltfläche Ein-/Ausrollen der Titlelleiste."
 
 #: ./xfwm4.xml312(para)
+#, fuzzy
 msgid "open the window menu from the title bar and choose \"Shade\" or \"Unshade\" item"
 msgstr "Öffnen Sie das Fenstermenü der Titlelleiste und wählen Sie das Element »Fenster einrollen« oder »Fenster ausrollen«."
 
