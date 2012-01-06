@@ -407,20 +407,22 @@ msgid "the <application>xfce4-iconbox</application>"
 msgstr "die <application>Xfce4-Iconbox</application>"
 
 #: ./xfwm4.xml305(term)
+#, fuzzy
 msgid "Shade / unshade windows"
-msgstr ""
+msgstr "Fenster ein-/ausrollen"
 
 #: ./xfwm4.xml307(para)
+#, fuzzy
 msgid "If you \"shade\" a window, it will be reduced to the size of its title bar. The same repeated action makes a window to shade/unshade :"
-msgstr ""
+msgstr "Falls Sie ein Fenster »einrollen«, wird es auf die Größe der Titelleiste verkleinert. Wiederholen der gleichen Aktion, läßt ein Fenster ein-/ausrollen:"
 
 #: ./xfwm4.xml311(para)
 msgid "click the shade/unshade button of the title bar"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche Ein-/Ausrollen der Titlelleiste."
 
 #: ./xfwm4.xml312(para)
 msgid "open the window menu from the title bar and choose \"Shade\" or \"Unshade\" item"
-msgstr ""
+msgstr "Öffnen Sie das Fenstermenü der Titlelleiste und wählen Sie das Element »Fenster einrollen« oder »Fenster ausrollen«."
 
 #: ./xfwm4.xml314(para)
 #, fuzzy
@@ -433,20 +435,24 @@ msgid "use the Alt + F9 keyboard shortcut"
 msgstr "Benutzen Sie das Tastaturkürzel »Alt« + »F9«."
 
 #: ./xfwm4.xml322(term)
+#, fuzzy
 msgid "Stick / unstick windows"
-msgstr ""
+msgstr "Fenster anheften/lösen"
 
 #: ./xfwm4.xml324(para)
+#, fuzzy
 msgid "If you \"stick\" a window, it will be visible at the same place on all your workspaces. The same repeated action make a window to stick/unstick :"
-msgstr ""
+msgstr "Falls Sie ein Fenster anheften, wird es auf all Ihren Arbeitsflächen an der gleichen Stelle sichtbar sein. Wiederholen der gleichen Aktion, heftet ein Fenster an/löst es:"
 
 #: ./xfwm4.xml329(para)
+#, fuzzy
 msgid "click the stick/unstick button of the title bar"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche »Immer auf sichtbarer Arbeitsfläche« der Titlelleiste."
 
 #: ./xfwm4.xml330(para)
+#, fuzzy
 msgid "open the window menu button from the title bar and choose \"Stick\" or \"Unstick\" item"
-msgstr ""
+msgstr "Öffnen Sie das Fenstermenü mit der Schaltfläche der Titelleiste und wählen Sie das Element »Immer auf sichtbarer Arbeitsfläche« oder »Nur auf dieser Arbeitsfläche«"
 
 #: ./xfwm4.xml332(para)
 #, fuzzy
@@ -454,28 +460,36 @@ msgid "use the Alt + F10 keyboard shortcut"
 msgstr "Benutzen Sie das Tastaturkürzel »Alt«+»F10«."
 
 #: ./xfwm4.xml338(term)
+#, fuzzy
 msgid "Raise / lower windows"
-msgstr ""
+msgstr "Fenster zuoberst/wie bei andern Fenstern"
 
 #: ./xfwm4.xml340(para)
+#, fuzzy
 msgid "The \"raise window\" function makes a window frame appear above all the other frames. To raise a window, you can :"
-msgstr ""
+msgstr "Die Funktion »Fenster zuoberst« läßt einen Fensterrahmen über allen anderen Rahmen erscheinen. Um ein Fenster zuoberst anzuzeigen, können Sie:"
 
 #: ./xfwm4.xml344(para)
+#, fuzzy
 msgid "left click on its titlebar"
-msgstr ""
+msgstr "auf seine Titlelleiste linksklicken,"
 
 #: ./xfwm4.xml345(para)
+#, fuzzy
 msgid "give the focus to the window, if the corresponding option is selected in the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>"
-msgstr ""
+msgstr "dem Fenster den Fokus geben, wenn die entsprechende Option im <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Fenstermanager-Einstellungsdialog</ulink> ausgewählt wurde,"
 
 #: ./xfwm4.xml347(para)
+#, fuzzy
 msgid "left click anywhere on its frame, if the corresponding option is selected in the <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Keyboard and focus preferences dialog</ulink>"
 msgstr ""
+"irgendwo auf den Rahmen linksklicken, falls die entsprechende Option im <ulink url=\"xfwm4.html#wm-focus\" type=\"http\">Tastatur- und Fokuseinstellungsdialog</ulink> ausgewählt wurde,\r\n"
+"\t"
 
 #: ./xfwm4.xml349(para)
+#, fuzzy
 msgid "click on its label in the taskbar or the iconbox"
-msgstr ""
+msgstr "auf seine Beschriftung in der Aufgabenleiste oder der Iconbox klicken"
 
 #: ./xfwm4.xml350(para)
 msgid "use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)"
