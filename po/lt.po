@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-07 02:45+0000\n"
-"PO-Revision-Date: 2012-01-07 09:12+0200\n"
+"PO-Revision-Date: 2012-01-07 10:26+0200\n"
 "Last-Translator: Algimantas Margevičius <margevicius.algimantas@gmail.com>\n"
 "Language-Team: Lietuvių <>\n"
 "Language: lt\n"
@@ -66,7 +66,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Bandykite %s --help norėdami pamatyti visas komandinės eilutės pasirinktis.\n"
+"Naudokite %s --help norėdami pamatyti visas komandinės eilutės pasirinktis.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -76,7 +76,7 @@ msgstr "Darbo laukas %d"
 
 #: ../settings-dialogs/workspace-settings.c:280
 msgid "Workspace Name"
-msgstr "Darbo vietos pavadinimai"
+msgstr "Darbo lauko pavadinimas"
 
 #: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:311
@@ -86,7 +86,7 @@ msgstr "Nustatymų tvarkyklės lizdas"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr "Konfigūruoti lango elgseną ir nuorodas"
+msgstr "Konfigūruoti lango elgseną ir trumpinius"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -269,7 +269,7 @@ msgstr "Pritraukti langus prie kitų _langų"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Snap windows to screen _border"
-msgstr "Užsklęsti langą į ekrano _sieną"
+msgstr "Užsklęsti langą į ekrano _kraštą"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
@@ -428,7 +428,7 @@ msgstr "Užpildyti langą horizontaliai"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
-msgstr "Užpildyti  langą vertikaliai"
+msgstr "Užpildyti langą vertikaliai"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
@@ -592,7 +592,7 @@ msgstr "Pridėti darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Add adjacent workspace"
-msgstr "Pridėti darbo lauką"
+msgstr "Pridėti darbo lauką šalia"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Delete last workspace"
@@ -612,7 +612,7 @@ msgstr "Veiksmas"
 
 #: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
-msgstr "Nuoroda"
+msgstr "Trumpinys"
 
 #: ../settings-dialogs/xfwm4-settings.c:972
 #, c-format
@@ -621,7 +621,7 @@ msgstr "Nepavyko inicijuoti xfconf. Priežastis: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "Nepavyko sukurti nustatymų dialogo."
 
 #: ../settings-dialogs/xfwm4-settings.c:1870
 #: ../settings-dialogs/xfwm4-settings.c:1871
@@ -633,31 +633,33 @@ msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
+"Visos nuorodos bus atstatytos į jų numatytąsias reikšmes. Ar jūs tikrai to "
+"norite?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "<i>Large</i>"
-msgstr ""
+msgstr "<i>Didelis</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "<i>Opaque</i>"
-msgstr ""
+msgstr "<i>Matomumas</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "<i>Transparent</i>"
-msgstr ""
+msgstr "<i>Permatomumas</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Activate _focus stealing prevention"
-msgstr ""
+msgstr "Aktyvuoti _fokuso pavogimo draudimą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "Ekrano _centre"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Pagal nutylėjimą langus išdėstyti:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "C_ompositor"
@@ -669,11 +671,11 @@ msgstr "_Perjungimas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle _through windows on all workspaces"
-msgstr "Perjungti tarp langų iš visų darbo laukų"
+msgstr "Perjungti t_arp langų iš visų darbo laukų"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
-msgstr ""
+msgstr "Rodyti _persidengiančius langus visame ekrane tiesiogiai"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
@@ -681,23 +683,23 @@ msgstr "_Nieko nedaryti"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
-msgstr ""
+msgstr "Išdidinus _slėpti lango rėmą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "Garbingas _standartinis ICCCM fokuso patarimas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "Svarbius langus laikyti _pastoviai mirksinčius"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Key used to _grab and move windows:"
-msgstr ""
+msgstr "Klavišas langų _paėmimui ir perkėlimui:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "Pranešti apie _lango svarbumą priverčiant mirksėti jo dekoracijas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Opaci_ty of window decorations:"
@@ -725,15 +727,15 @@ msgstr "Perkeliant išdidintą langą atstatyti _originalų lango dydį"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
-msgstr ""
+msgstr "Aplink paslėptus langus _rodyti šešėlius"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _regular windows"
-msgstr ""
+msgstr "Aplink įprastus langus _rodyti šešėlius"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Show shadows under pop_up windows"
-msgstr ""
+msgstr "Aplink iššokančius langus _rodyti šešėlius"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Switch to win_dow's workspace"
@@ -741,31 +743,31 @@ msgstr "Perjungti į lango _darbo lauką"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "Po _pelės žymekliu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr ""
+msgstr "Vietoj lango karpymo naudoti _lango atsparumą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "Perjungti darbo _laukams naudoti pelės ratuką darbalaukyje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Kai langas iškelia save:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
+msgstr "Laužyti darbo laukus priklausomai nuo tikro darbalaukio _išdėstymo"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Laužyti darbo vietas kai pasiekiama pirma arba paskutinė darbo vieta"
+msgstr "Laužyti darbo vietas kai pasiekiama pirma a_rba paskutinė darbo vieta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
-msgstr ""
+msgstr "_Prieinamumas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Bring window on current workspace"
@@ -773,39 +775,43 @@ msgstr "_Atkelti langą į dabartinį darbastalį"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "_Perjunginėjant piešti rėmelį aplink langą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
-msgstr ""
+msgstr "Į_jungti ekrano kompozicionavimą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Į_traukti paslėptus (t.y. neatpažintus) langus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
+msgstr "_Mažiausias langas kuris iššauks talpų išdėstymą:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Placement"
-msgstr ""
+msgstr "_Išdėstymas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "_Iškelti langus paspaudus bet kurį pelės mygtuką"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
+"_Prisiminti ir atkurti ankstesnį darbo lauką\n"
+"perjungiant klaviatūros trumpiniais"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
+"_Praleisti langus kurie turi „skip pager“\n"
+"arba „skip taskabar“ savybę"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "_Workspaces"
@@ -840,23 +846,23 @@ msgstr "_Darbo vietų skaičius:"
 #: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (ant %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr ""
+msgstr "Prijungti prie fono"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Prijungti prie fono (nepalaikoma)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Nustatyti kompozicionavimo režimą"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Nustatyti kompozicionavimo režimą (nepalaikoma)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
@@ -881,15 +887,15 @@ msgstr "Iš_skleisti"
 
 #: ../src/menu.c:44
 msgid "Unma_ximize"
-msgstr "_Grąžinti iš išdidinimo"
+msgstr "_Grąžinti iš išskleidimo"
 
 #: ../src/menu.c:45
 msgid "Mi_nimize"
-msgstr "_Sumažinti"
+msgstr "_Suskleisti"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
-msgstr "Sumažinti _Visus kitus langus"
+msgstr "Suskleisti _visus kitus langus"
 
 #: ../src/menu.c:47
 msgid "S_how"
@@ -970,37 +976,37 @@ msgstr "Perkrauti"
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu nesugebėjo sugauti rodyklės\n"
+msgstr "%s: GtkMenu nesugebėjo paimti žymeklio\n"
 
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Neįmanoma rasti spalvos %s\n"
+msgstr "%s: Nepavyko rasti spalvos %s\n"
 
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Nepavyko rasti spalvos: spalvos GValue reikšmė nėra STRING tipo"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Neįmanoma apdoroti spalvos %s\n"
+msgstr "%s: Nepavyko apdoroti spalvos %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: nepavyko apdoroti spalvos: spalvos GValue reikšmė nėra STRING tipo"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Klaida skaitant iš antrinio proceso: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Nepavyko sukurti pagalbos dialogo: %s\n"
 
 #~ msgid "Hide"
 #~ msgstr "Paslėpti"
