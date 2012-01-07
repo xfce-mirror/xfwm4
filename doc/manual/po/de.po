@@ -495,47 +495,57 @@ msgstr "auf seine Beschriftung in der Aufgabenleiste oder der Iconbox klicken"
 
 #: ./xfwm4.xml350(para)
 msgid "use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)"
-msgstr ""
+msgstr "das Tastaturkürzel »Feststelltaste« + »Alt« + »Bild auf« benutzen (falls das Fenster bereits den Fokus hat)."
 
 #: ./xfwm4.xml353(para)
+#, fuzzy
 msgid "You can make a window frame to always stay above all other windows by opening the window menu and selecting the \"always on top\" item."
-msgstr ""
+msgstr "Sie können dafür sorgen, dass ein Fensterrahmen immer über allen anderen Fenstern bleibt, indem Sie das Fenstermenü öffnen und das Element »Immer zuoberst« auswählen."
 
 #: ./xfwm4.xml357(para)
+#, fuzzy
 msgid "The \"lower\" function sends a window frame below all other frames. To \"lower\" a window, you can :"
-msgstr ""
+msgstr "Die Funktion »Immer unterhalb anderer Fenster« legt einen Fensterrahmen unter alle anderen Rahmen. Um ein Fenster »nach hinten zu verschieben«, können Sie:"
 
 #: ./xfwm4.xml361(para)
+#, fuzzy
 msgid "middle-click on its title bar"
-msgstr ""
+msgstr "auf seine Titelleiste mittelklicken"
 
 #: ./xfwm4.xml362(para)
+#, fuzzy
 msgid "use the Shift + Alt + Page_Down keyboard shortcut (if the window is focused)"
-msgstr ""
+msgstr "das Tastaturkürzel »Feststelltaste« + »Alt« + »Bild ab« benutzen (falls das Fenster bereits den Fokus hat)."
 
 #: ./xfwm4.xml368(term)
+#, fuzzy
 msgid "Move windows"
-msgstr ""
+msgstr "Fenster verschieben"
 
 #: ./xfwm4.xml370(para)
+#, fuzzy
 msgid "There are several ways to move windows :"
-msgstr ""
+msgstr "Es gibt mehrere Möglichkeiten, Fenster zu verschieben:"
 
 #: ./xfwm4.xml372(para)
+#, fuzzy
 msgid "left or right click on the title bar of the window and drag it"
-msgstr ""
+msgstr "Links- oder rechtsklicken Sie auf die Titelleiste des Fensters und ziehen Sie es"
 
 #: ./xfwm4.xml374(para)
+#, fuzzy
 msgid "use Alt + left click while the pointer is anywhere over the window frame and move the mouse"
-msgstr ""
+msgstr "Benutzen Sie »Alt« und linksklicksklicken Sie, während der Mauszeiger irgendwo über dem Fensterrahmen steht und ziehen Sie die Maus"
 
 #: ./xfwm4.xml376(para)
+#, fuzzy
 msgid "use Control + Alt + Shift + (up, down, left or right) Arrow keyboard shortcut"
-msgstr ""
+msgstr "Benutzen Sie das Tastaturkürzel »Alt« + »Feststelltaste« + »Pfeil (auf, ab, links oder rechts)«."
 
 #: ./xfwm4.xml391(term)
+#, fuzzy
 msgid "Move a window to another workspace"
-msgstr ""
+msgstr "Verschieben eines Fensters auf eine andere Arbeitsfläche"
 
 #: ./xfwm4.xml393(para)
 msgid "You can send a window to another workspace by performing one of these actions :"
