@@ -549,28 +549,34 @@ msgid "Move a window to another workspace"
 msgstr "Verschieben eines Fensters auf eine andere Arbeitsfläche"
 
 #: ./xfwm4.xml393(para)
+#, fuzzy
 msgid "You can send a window to another workspace by performing one of these actions :"
-msgstr ""
+msgstr "Sie können ein Fenster auf eine andere Arbeitsfläche verschieben, indem Sie diese Aktionen durchführen:"
 
 #: ./xfwm4.xml396(para)
+#, fuzzy
 msgid "stick the window, move to another workspace, then unstick the window."
-msgstr ""
+msgstr "Minimieren Sie das Fenster an, verschieben Sie es auf eine andere Arbeitsfläche und lassen Sie das Fenster los."
 
 #: ./xfwm4.xml398(para)
+#, fuzzy
 msgid "use the window menu and choose one of the \"Send to\" submenu items."
-msgstr ""
+msgstr "Benutzen Sie das Fenstermenü und wählen Sie eines der Elemente des Untermenüs »Fenster auf eine andere Arbeitsfläche verschieben«."
 
 #: ./xfwm4.xml400(para)
+#, fuzzy
 msgid "left or right click on the title bar of the window, drag it to the screen edge : the pointer will then go to the next workspace, still holding the window. Corresponding option needs to be selected in the <ulink url=\"xfwm4.html#wm_misc\" type=\"http\">Window Manager Preferences dialog</ulink>."
-msgstr ""
+msgstr "Links- oder rechtsklicken Sie auf die Titlelleiste des Fensters, ziehen Sie es zum Rand des Bildschirms: Der Mauszeiger wird dann auf die nächste Arbeitsfläche wandern und das Fenster weiterhin festhalten. Die entsprechende Option muss im <ulink url=\"xfwm4.html#wm_misc\" type=\"http\">Fenstermanager-Einstellungsdialog</ulink> ausgewählt sein."
 
 #: ./xfwm4.xml405(para)
+#, fuzzy
 msgid "use keyboard shortcuts :"
-msgstr ""
+msgstr "Benutzen Sie Tastaturkürzel:"
 
 #: ./xfwm4.xml407(para)
+#, fuzzy
 msgid "Alt + Control + End will move a window to the next workspace"
-msgstr ""
+msgstr "»Alt« + »Strg« + »Ende« wird ein Fenster auf die nächste Arbeitsfläche bewegen."
 
 #: ./xfwm4.xml409(para)
 #, fuzzy
