@@ -156,22 +156,22 @@ msgstr ""
 #: ./xfwm4.xml90(para)
 #, fuzzy
 msgid "<application>@PACKAGE_NAME@</application> adheres strongly to the standards defined on <ulink url=\"http://www.freedesktop.org\" type=\"html\">freedesktop.org</ulink>. Consequently, special features such as making windows borderless, or providing an icon for the application must now be implemented in the application; you can no longer use the window manager to force different behaviour. One of the great features of <application>@PACKAGE_NAME@</application> is its themeability. The window decorations (borders, title bar and window buttons) can be configured by using window manager themes."
-msgstr "<application>@PACKAGE_NAME@</application> hält sich streng an die Vorgaben, die auf <ulink url=\"http://www.freedesktop.org\" type=\"html\">freedesktop.org</ulink> definiert wurden. Infolgedessen müssen besondere Funktionen wie die Erzeugung randloser Fenster oder das Bereitstellen eines Symbols für eine Anwendung nun in der Anwendung implementiert werden; Sie können nicht nicht länger den Fenstermanager benutzen, um ein anderes Verhalten zu erzwingen. Eines des tollsten Funktionen von <application>@PACKAGE_NAME@</application> ist seine Fähigkeit Themes zu verwenden. Die Fensterverzierungen (Ränder, Titelleiste und Fensterschaltflächen) können durch Verwendung der Fenstermanger-Themes konfiguriert werden."
+msgstr "<application>@PACKAGE_NAME@</application> hält sich streng an die Vorgaben, die auf <ulink url=\"http://www.freedesktop.org\" type=\"html\">freedesktop.org</ulink> definiert wurden. Infolgedessen müssen besondere Funktionen, wie die Erzeugung randloser Fenster oder das Bereitstellen eines Symbols für eine Anwendung, nun in der Anwendung implementiert werden; Sie können nicht nicht länger den Fenstermanager benutzen, um ein anderes Verhalten zu erzwingen. Eines des tollsten Funktionen von <application>@PACKAGE_NAME@</application> ist seine Fähigkeit Themes zu verwenden. Die Fensterverzierungen (Ränder, Titelleiste und Fensterschaltflächen) können durch Verwendung der Fenstermanger-Themes konfiguriert werden."
 
 #: ./xfwm4.xml101(para)
 #, fuzzy
 msgid "<application>@PACKAGE_NAME@</application> offers multihead support, for both xinerama and real multiscreen modes, useful when you have more than one monitor connected to your computer."
-msgstr "<application>@PACKAGE_NAME@</application> bietet Unterstützung mehrerer Threads, sowohl für Xinerama als auch für echte Modi mit mehreren Bildschirmen. Dies ist nützlich, wenn an Ihren Rechner mehr als ein Monitor angeschlossen ist."
+msgstr "<application>@PACKAGE_NAME@</application> bietet Unterstützung mehrerer Threads, sowohl für Xinerama als auch für echte Modi mit mehreren Bildschirmen. Dies ist nützlich, wenn an Ihrem Rechner mehr als ein Monitor angeschlossen ist."
 
 #: ./xfwm4.xml105(para)
 #, fuzzy
 msgid "<application>@PACKAGE_NAME@</application> can be run stand-alone, but if you use it this way, you will need the <ulink url=\"xfce-mcs-manager.html\" type=\"http\">Xfce 4 Settings Manager</ulink> if you want GUI settings management. Tasks other than managing windows, like setting a background image or launching programs, need to be performed by other programs."
-msgstr "<application>@PACKAGE_NAME@</application> kann eigenständig ausgeführt werden, falls Sie es aber auf diese Art nutzen, benötigen Sie die <ulink url=\"xfce-mcs-manager.html\" type=\"http\">Xfce4-Einstellungsverwaltung</ulink>. Andere Aufgaben, als das Verwalten von Fenstern, wie das Setzen eines Hintergrundbilds oder das Starten von Programmen, müssen durch andere Programme durchgeführt werden."
+msgstr "<application>@PACKAGE_NAME@</application> kann eigenständig ausgeführt werden, falls Sie es aber auf diese Art nutzen, benötigen Sie die <ulink url=\"xfce-mcs-manager.html\" type=\"http\">Xfce-4-Einstellungsverwaltung</ulink>. Andere Aufgaben, als das Verwalten von Fenstern, wie das Setzen eines Hintergrundbilds oder das Starten von Programmen, müssen durch andere Programme durchgeführt werden."
 
 #: ./xfwm4.xml112(para)
 #, fuzzy
 msgid "<application>@PACKAGE_NAME@</application> includes its own compositing manager, which takes advantage of the new <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink>'s server extensions. The compositor is like a WM on its own, it manages a stack of all windows, monitor all kinds on X event and reacts accordingly. Having the compositing manager embedded in the window manager also helps keeping the various visual effects in sync with window events. If you want to use the compositor, you have to build <application>@PACKAGE_NAME@</application> using the --enable-compositor configure option. In any case, you can disable the compositor on <application>@PACKAGE_NAME@</application> startup using the '--compositor=off' argument."
-msgstr "<application>@PACKAGE_NAME@</application> beinhaltet seine eigene Compositing-Verwaltung, die die Vorteile der neuen Servererweiterungen von <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink> nutzt. Das Compositing-System für sich allein ist wie ein Fenstermanager. Es verwaltet einen Stapel von allen Fenstern, Monitoren, allen Arten von X-Ereignissen und reagiert entprechend. Außerdem hilft der in den Fenstermanager eingebettete Compositing-Manager die verschiedenen optischen Effekte in Übereinstimmung mit den Fensterereignissen zu halten. Falls Sie das Compositing-System benutzen möchten, müssen Sie <application>@PACKAGE_NAME@</application> unter Benutzung der »configure«-Option --enable-compositor bauen. Auf jeden Fall können Sie das Compositing-System beim Start von <application>@PACKAGE_NAME@</application> mit dem Argument »--compositor=off« deaktivieren."
+msgstr "<application>@PACKAGE_NAME@</application> beinhaltet seine eigene Compositing-Verwaltung, die die Vorteile der neuen Servererweiterungen von <ulink url=\"http://freedesktop.org/Software/xorg\" type=\"html\">X.org</ulink> nutzt. Das Compositing-System für sich allein ist wie ein Fenstermanager. Es verwaltet einen Stapel aller Fenster, Monitore, allen Arten von X-Ereignissen und reagiert entprechend. Außerdem hilft der in den Fenstermanager eingebettete Compositing-Manager die verschiedenen optischen Effekte in Übereinstimmung mit den Fensterereignissen zu halten. Falls Sie das Compositing-System benutzen möchten, müssen Sie <application>@PACKAGE_NAME@</application> unter Benutzung der »configure«-Option --enable-compositor bauen. Auf jeden Fall können Sie das Compositing-System beim Start von <application>@PACKAGE_NAME@</application> mit dem Argument »--compositor=off« deaktivieren."
 
 #: ./xfwm4.xml125(title)
 #, fuzzy
@@ -211,7 +211,7 @@ msgstr "Sie können das Fenstermenü mit einem Linksklick auf die Menüschaltfl�
 #: ./xfwm4.xml157(para)
 #, fuzzy
 msgid "If you use <application>xftaskbar4</application>, you can open an action menu with a right-click on one of the taskbar entries; it includes several items among those available in the window menu."
-msgstr "Falls Sie <application>xftaskbar4</application> verwenden, können Sie ein Aktionsmenü mit einem Rechtsklick auf einen der Aufgabenleisteneinträge öffnen; es umfasst mehrere Elemente neben denen, die im Fenstermenü verfügbar sind."
+msgstr "Falls Sie <application>Xftaskbar4</application> verwenden, können Sie ein Aktionsmenü mit einem Rechtsklick auf einen der Aufgabenleisteneinträge öffnen; es umfasst mehrere Elemente neben denen, die im Fenstermenü verfügbar sind."
 
 #: ./xfwm4.xml165(term)
 #, fuzzy
@@ -584,24 +584,29 @@ msgid "Alt + Control + Home will move a window to the previous workspace"
 msgstr "»Alt« + »Strg« + »Pos1« wird ein Fenster auf die vorherige Arbeitsfläche verschieben."
 
 #: ./xfwm4.xml411(para)
+#, fuzzy
 msgid "Alt + Control + Keypad-Number will move the current window to corresponding workspace"
-msgstr ""
+msgstr "»Alt« + »Strg« + »Tastenfeldzahl« wird das aktuelle Fenster auf die entsprechende Arbeitsfläche bewegen."
 
 #: ./xfwm4.xml415(para)
+#, fuzzy
 msgid "use the <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">graphical pager </ulink> by clicking on the representation of the window, and move it to the desired workspace."
-msgstr ""
+msgstr "Benutzen Sie den <ulink url=\"xfce4-panel.html#switcher-item\" type=\"http\">grafischen Pager</ulink> indem Sie auf die Entsprechung des Fensers klicken und verschieben Sie es auf die gewünschte Arbeitsfläche."
 
 #: ./xfwm4.xml425(term)
+#, fuzzy
 msgid "Close a window"
-msgstr ""
+msgstr "Ein Fenster schließen"
 
 #: ./xfwm4.xml427(para)
+#, fuzzy
 msgid "To close a window :"
-msgstr ""
+msgstr "Um ein Fenster zu schließen:"
 
 #: ./xfwm4.xml429(para)
+#, fuzzy
 msgid "click the close button of the title bar"
-msgstr ""
+msgstr "Klicken Sie auf die Schaltfläche »Schließen« der Titleleiste."
 
 #: ./xfwm4.xml430(para)
 #, fuzzy
