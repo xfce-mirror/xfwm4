@@ -494,6 +494,7 @@ msgid "click on its label in the taskbar or the iconbox"
 msgstr "auf seine Beschriftung in der Aufgabenleiste oder der Iconbox klicken"
 
 #: ./xfwm4.xml350(para)
+#, fuzzy
 msgid "use the Shift + Alt + Page_Up keyboard shortcut (if the window is already focused)"
 msgstr "das Tastaturkürzel »Feststelltaste« + »Alt« + »Bild auf« benutzen (falls das Fenster bereits den Fokus hat)."
 
