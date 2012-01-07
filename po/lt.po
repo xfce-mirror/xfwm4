@@ -2,55 +2,60 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Mantas Zapolskas <mantaz@users.sf.net>, 2003.
+# Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
-"PO-Revision-Date: 2005-10-09 20:48+0900\n"
-"Last-Translator: Mantas Zapolskas <mantaz@users.sf.net>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"POT-Creation-Date: 2012-01-07 02:45+0000\n"
+"PO-Revision-Date: 2012-01-07 09:12+0200\n"
+"Last-Translator: Algimantas Margevičius <margevicius.algimantas@gmail.com>\n"
+"Language-Team: Lietuvių <>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"Šis langas gali būti užsiėmęs ir neatsakyti.\n"
+"Ar norite uždaryti programą?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "Įspėjimas"
 
 #: ../settings-dialogs/tweaks-settings.c:49
 msgid "None"
-msgstr ""
+msgstr "Nėra"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 msgid "Session manager socket"
-msgstr ""
+msgstr "Sesijos tvarkyklės lizdas"
 
 #: ../settings-dialogs/tweaks-settings.c:421
 #: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
-msgstr ""
+msgstr "LIZDO ID"
 
 #: ../settings-dialogs/tweaks-settings.c:422
 #: ../settings-dialogs/workspace-settings.c:371
 #: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
-msgstr ""
+msgstr "Versija"
 
 #: ../settings-dialogs/tweaks-settings.c:440
 #: ../settings-dialogs/workspace-settings.c:388
 #: ../settings-dialogs/xfwm4-settings.c:943
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:444
 #: ../settings-dialogs/workspace-settings.c:392
@@ -60,28 +65,28 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"Bandykite %s --help norėdami pamatyti visas komandinės eilutės pasirinktis.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
 #, c-format
 msgid "Workspace %d"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas %d"
 
 #: ../settings-dialogs/workspace-settings.c:280
-#, fuzzy
 msgid "Workspace Name"
 msgstr "Darbo vietos pavadinimai"
 
 #: ../settings-dialogs/workspace-settings.c:370
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Nustatymų tvarkyklės lizdas"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Keičiant lango dydį rodyti jo turinį"
+msgstr "Konfigūruoti lango elgseną ir nuorodas"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -90,21 +95,18 @@ msgstr "Langų tvarkyklė"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Keičiant lango dydį rodyti jo turinį"
+msgstr "Konfigūruokite langų elgseną ir efektus"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Langų tvarkyklė"
+msgstr "Langų tvarkyklės patobulinimai"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Set number and names of workspaces"
-msgstr "Darbo vietų skaičius:"
+msgstr "Nustatykite darbo vietų skaičių ir pavadinimus"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
@@ -112,251 +114,207 @@ msgid "Workspaces"
 msgstr "Darbo laukai"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "Nepermatomas perkėlimas ir dydžio pakeitimas"
+msgstr "<b>Perkėlimas ir dydžio pakeitimas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "Mygtukų išdėstymas"
+msgstr "<b>Mygtukų išdėstymas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "Veiksmas dukart spragtelėti"
+msgstr "<b>Veiksmas dukart _spragtelėjus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "Fokusavimo modelis"
+msgstr "<b>Fokusavimo modelis</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "Naujas langas dėmesio centre"
+msgstr "<b>Naujo lango fokusavimas<b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "Iškelti paspaudus"
+msgstr "<b>Iškelti paspaudus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "aiškelti kai fokusuojama"
+msgstr "<b>Iškelti kai fokusuojama</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "Pavadinimo lygiavimas"
+msgstr "<b>Pavadinimo _lygiavimas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "Pavadinimo šriftas"
+msgstr "<b>Pavadinimo š_riftas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "Naujas langas dėmesio centre"
+msgstr "<b>Lango _nuorodos</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "Langų pritraukimas"
+msgstr "<b>Langų pritraukimas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "Laužyti darbo vietas"
+msgstr "</b>Laužyti darbo vietas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "Pavadinimo lygiavimas"
+msgstr "<b>_Tema</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "<i>Long</i>"
-msgstr ""
+msgstr "<i>Ilgas</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "<i>Short</i>"
-msgstr ""
+msgstr "<i>Trumpas</i>"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "Mažas"
+msgstr "<i>Mažas</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "Atstumas :"
+msgstr "<i>Platus</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
 msgstr "Aktyvus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "Išplėstas"
+msgstr "Iš_plėstas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
-"Automatiškai iškelti langus\n"
-"kai jie dėmesio centre"
+msgstr "Automatiškai iškelti _langus kai jie dėmesio centre"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
-msgstr ""
-"Atomatiškai sutelkti dėmesį \n"
-"į naujai sukurtus langus"
+msgstr "Automatiškai sutelkti _dėmesį į naujai sukurtus langus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "Spauskite norėdami fokusuoti"
+msgstr "_Spauskite norėdami fokusuoti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
-msgstr "Paskauskite ir tempkite norėdami pakeisti išdėstymą"
+msgstr "Paspauskite ir tempkite norėdami pakeisti išdėstymą"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
 msgstr "Uždaryti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
+msgstr "_Užlaikyti prieš iškeliant fokusuotą langą:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "Atstumas :"
+msgstr "_Atstumas:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "Dėmesys sutelkiamas pagal pelės poziciją"
+msgstr "Dėmesys _sutelkiamas pagal pelės poziciją"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
 msgstr "Slepiamas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "Perkeliant langą rodyti jo turinį"
+msgstr "Perkeliant langą rodyti jo _turinį"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "Keičiant lango dydį rodyti jo turinį"
+msgstr "Keičiant lango dydį rodyti j_o turinį"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "Klaviatūra"
+msgstr "_Klaviatūra"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
-msgstr "išskleisti"
+msgstr "Išskleisti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
 msgstr "Meniu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
-msgstr "Iš_skleisti"
+msgstr "Suskleisti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr ""
-"Iškelti langą kai spaudžiama viduje\n"
-"programos lango"
+msgstr "Iškelti langą kai _spaudžiama programos lango viduje"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "Šešėlis"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
 msgid "Snap windows to other _windows"
-msgstr "Pritraukti langus prie kitų langų"
+msgstr "Pritraukti langus prie kitų _langų"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr "Užsklęsti langą į ekrano sieną"
+msgstr "Užsklęsti langą į ekrano _sieną"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "Prisegti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
+msgstr "Veiksmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "Lango antraštė, ji negali būti pašalinta"
+msgstr "Lango antraštė negali būti pašalinta"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
 msgstr "Pavadinimas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Laužyti darbo vietas kai tempiamas langas yra už ekrano"
+msgstr "Laužyti darbo vietas kai _tempiamas langas yra už ekrano"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
+msgstr "_Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
+msgstr "_Užlaikyti prieš iškeliant fokusuotą langą:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "Kraštų atsparumas :"
+msgstr "_Kraštų atsparumas :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
 msgid "_Focus"
-msgstr "Fokusavimas"
+msgstr "_Fokusavimas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "_Atstatyti į numatytąsias"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#, fuzzy
 msgid "_Style"
-msgstr "Stilius"
+msgstr "_Stilius"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -371,13 +329,12 @@ msgstr "Paslėpti langą"
 #: ../settings-dialogs/xfwm4-settings.c:222
 #: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
-msgstr "išskleisti langą"
+msgstr "Išskleisti langą"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
 msgid "Fill window"
-msgstr "Paslėpti langą"
+msgstr "Užpildyti langą"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -399,43 +356,39 @@ msgstr "Dešinė"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
-msgstr ""
+msgstr "Lango operacijų meniu"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr ""
+msgstr "Aukštyn"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr ""
+msgstr "Žemyn"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
-msgstr ""
+msgstr "Atsisakyti"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Paslėpti langą"
+msgstr "Perjungti langus"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "Paslėpti langą"
+msgstr "Perjungti langus (atvirkščiai)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perjungti langą tai pačiai programai"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
 msgid "Switch application"
-msgstr "Nežinoma programa!"
+msgstr "Perjungti programą"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
-msgstr "Paslėpti langą"
+msgstr "Užverti langą"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Maximize window horizontally"
@@ -446,14 +399,12 @@ msgid "Maximize window vertically"
 msgstr "Išskleisti langą vertikaliai"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
-#, fuzzy
 msgid "Move window"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
 msgid "Resize window"
-msgstr "Paslėpti langą"
+msgstr "Keisti lango dydį"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
@@ -464,255 +415,209 @@ msgid "Raise window"
 msgstr "Iškelti langą"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
-#, fuzzy
 msgid "Lower window"
-msgstr "Paslėpti langą"
+msgstr "Nuleisti langą"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Iškelti langą"
+msgstr "Iškelti ar nuleisti langą"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Išskleisti langą horizontaliai"
+msgstr "Užpildyti langą horizontaliai"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Išskleisti langą vertikaliai"
+msgstr "Užpildyti  langą vertikaliai"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr ""
+msgstr "Perjungti aukščiau"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
-#, fuzzy
 msgid "Toggle fullscreen"
-msgstr "Neįmanoma gauti pagrindinio ekrano"
+msgstr "Perjungti viso ekrano veikseną"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į aukštesnį darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į žemesnį darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į kairį darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į dešinį darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to previous workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Perkelti langą į buvusį darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to next workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti langą į sekantį darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 1"
 msgstr "Perkelti langą į darbo lauką 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perkelti langą į darbo lauką 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Show desktop"
-msgstr ""
+msgstr "Rodyti darbastalį"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Viršutinis darbo laukas"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Žemutinis darbo laukas"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Left workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Kairysis darbo laukas"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-#, fuzzy
 msgid "Right workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Dešinysis darbo laukas"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
 msgid "Previous workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Ankstesnis darbo laukas"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
 msgid "Next workspace"
-msgstr "Laužyti darbo vietas"
+msgstr "Sekantis darbo laukas"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
-#, fuzzy
 msgid "Workspace 10"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
 msgid "Workspace 11"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-#, fuzzy
 msgid "Workspace 12"
-msgstr "Darbo laukas %i"
+msgstr "Darbo laukas 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
 msgstr "Pridėti darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:301
-#, fuzzy
 msgid "Add adjacent workspace"
 msgstr "Pridėti darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Panaikinti Darbo lauką"
+msgstr "Panaikinti paskutinį darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:303
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Panaikinti Darbo lauką"
+msgstr "Panaikinti aktyvų darbo lauką"
 
 #: ../settings-dialogs/xfwm4-settings.c:449
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../settings-dialogs/xfwm4-settings.c:598
-#, fuzzy
 msgid "Action"
-msgstr "Aktyvus"
+msgstr "Veiksmas"
 
 #: ../settings-dialogs/xfwm4-settings.c:603
-#, fuzzy
 msgid "Shortcut"
-msgstr "Klaviatūros nuoroda"
+msgstr "Nuoroda"
 
 #: ../settings-dialogs/xfwm4-settings.c:972
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Nepavyko inicijuoti xfconf. Priežastis: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:983
 msgid "Could not create the settings dialog."
@@ -721,7 +626,7 @@ msgstr ""
 #: ../settings-dialogs/xfwm4-settings.c:1870
 #: ../settings-dialogs/xfwm4-settings.c:1871
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Atstatyti numatytasias"
 
 #: ../settings-dialogs/xfwm4-settings.c:1872
 msgid ""
@@ -755,27 +660,24 @@ msgid "By default, place windows:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "C_ompositor"
-msgstr "Klaviatūros nuoroda"
+msgstr "_Kūrimas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ycling"
-msgstr ""
+msgstr "_Perjungimas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perjungti tarp langų iš visų darbo laukų"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
 msgid "Do _nothing"
-msgstr "Nieko"
+msgstr "_Nieko nedaryti"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
@@ -798,34 +700,28 @@ msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "Keičiant lango dydį rodyti jo turinį"
+msgstr "_Lango dekoracijų permatomumas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "Perkeliant langą rodyti jo turinį"
+msgstr "_Neaktyvių langų permatomumas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "Perkeliant langą rodyti jo turinį"
+msgstr "_Iššokančių langų permatomumas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "Perkeliant langą rodyti jo turinį"
+msgstr "_Perkeliamų langų permatomumas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "Keičiant lango dydį rodyti jo turinį"
+msgstr "_Keičiant lango dydį permatomumas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Perkeliant langą rodyti jo turinį"
+msgstr "Perkeliant išdidintą langą atstatyti _originalų lango dydį"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -840,9 +736,8 @@ msgid "Show shadows under pop_up windows"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
 msgid "Switch to win_dow's workspace"
-msgstr "Perkelti langą į darbo lauką 1"
+msgstr "Perjungti į lango _darbo lauką"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
@@ -865,18 +760,16 @@ msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
+msgstr "Laužyti darbo vietas kai pasiekiama pirma arba paskutinė darbo vieta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "_Atkelti langą į dabartinį darbastalį"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
@@ -915,24 +808,20 @@ msgid ""
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#, fuzzy
 msgid "_Workspaces"
-msgstr "Darbo laukai"
+msgstr "_Darbo laukai"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Margins</b>"
-msgstr "Paraštės"
+msgstr "<b>Paraštės</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Workspaces</b>"
-msgstr "Laužyti darbo vietas"
+msgstr "<b>Darbo vietos</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "Change workspace name"
-msgstr "Darbo vietos pavadinimai"
+msgstr "Keisti darbo vietos pavadinimą"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
@@ -940,14 +829,12 @@ msgid ""
 msgstr "Paraštės yra ekrano kraštų vietos, kuriose langai negali būti padėti"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Name:"
-msgstr "Pavadinimas:"
+msgstr "_Pavadinimas:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "Darbo vietų skaičius:"
+msgstr "_Darbo vietų skaičius:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -972,40 +859,37 @@ msgid "Set the compositor mode (not supported)"
 msgstr ""
 
 #: ../src/main.c:549
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Langų tvarkyklė"
+msgstr "Pakeisti dabartinę langų tvarkyklę"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Parodyti versiją ir išeiti"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENTAI...]"
 
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Naudojimui įrašykite „%s --help“."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
 msgstr "Iš_skleisti"
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "A_tstatyti"
+msgstr "_Grąžinti iš išdidinimo"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "Iš_skleisti"
+msgstr "_Sumažinti"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "Sumažinti _Visus kitus langus"
 
 #: ../src/menu.c:47
 msgid "S_how"
@@ -1013,66 +897,57 @@ msgstr "_Rodyti"
 
 #: ../src/menu.c:48
 msgid "_Move"
-msgstr ""
+msgstr "P_erkelti"
 
 #: ../src/menu.c:49
 msgid "_Resize"
-msgstr ""
+msgstr "_Keisti dydį"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-#, fuzzy
 msgid "Always on Top"
 msgstr "Visada viršuje"
 
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Pritraukti langus prie kitų langų"
+msgstr "Taip pat kaip ir kituose languose"
 
 #: ../src/menu.c:53
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Visada po kitais langais"
 
 #: ../src/menu.c:54
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Paslėpti langą"
+msgstr "Perstumti langą aukštyn"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perstumti langą žemyn"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Neįmanoma gauti pagrindinio ekrano"
+msgstr "_Visas ekranas"
 
 #: ../src/menu.c:57
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "Neįmanoma gauti pagrindinio ekrano"
+msgstr "Išjungti _viso ekrano veikseną"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Context _Help"
 msgstr "Konteksto _pagalba"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "Visada viršuje"
+msgstr "Visada matomame darbo lauke"
 
 #: ../src/menu.c:61
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "Tik šiame darbo lauke"
 
 #: ../src/menu.c:62
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Naujas langas dėmesio centre"
+msgstr "Perkelti į kitą darbo lauką"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -1098,9 +973,9 @@ msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nesugebėjo sugauti rodyklės\n"
 
 #: ../src/settings.c:273
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Neįmanoma paskirti aktyvios spalvos %s\n"
+msgstr "%s: Neįmanoma rasti spalvos %s\n"
 
 #: ../src/settings.c:275
 #, c-format
@@ -1108,9 +983,9 @@ msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr ""
 
 #: ../src/settings.c:282
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Neįmanoma sužinoti aktyvios spalvos %s\n"
+msgstr "%s: Neįmanoma apdoroti spalvos %s\n"
 
 #: ../src/settings.c:284
 #, c-format
