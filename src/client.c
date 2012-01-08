@@ -2157,6 +2157,12 @@ clientSetWorkspace (Client * c, guint ws, gboolean manage_mapping)
 
     TRACE ("entering clientSetWorkspace");
 
+    if (ws > c->screen_info->workspace_count - 1)
+    {
+        g_warning ("Requested workspace %d does not exist", ws);
+        return;
+    }
+
     list_of_windows = clientListTransientOrModal (c);
     for (list = list_of_windows; list; list = g_list_next (list))
     {

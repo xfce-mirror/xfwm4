@@ -271,6 +271,43 @@ clientGetNetState (Client * c)
 }
 
 void
+clientUpdateNetWmDesktop (Client * c, XClientMessageEvent * ev)
+{
+    ScreenInfo *screen_info;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientUpdateNetWmDesktop");
+    TRACE ("client \"%s\" (0x%lx), value 0x%lx", c->name, c->window, ev->data.l[0]);
+
+    screen_info = c->screen_info;
+
+    if ((guint) ev->data.l[0] == ALL_WORKSPACES)
+    {
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+        {
+            clientStick (c, TRUE);
+            frameQueueDraw (c, FALSE);
+        }
+    }
+    else if ((guint) ev->data.l[0] < (guint) screen_info->workspace_count)
+    {
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+        {
+            clientUnstick (c, TRUE);
+            frameQueueDraw (c, FALSE);
+        }
+        if ((guint) ev->data.l[0] != (guint) c->win_workspace)
+        {
+            clientSetWorkspace (c, (guint) ev->data.l[0], TRUE);
+        }
+    }
+    else
+    {
+        TRACE ("Ignoring invalid NET_WM_DESKTOP value 0x%lx specified for client \"%s\" (0x%lx)", ev->data.l[0], c->name, c->window);
+    }
+}
+
+void
 clientUpdateNetState (Client * c, XClientMessageEvent * ev)
 {
     ScreenInfo *screen_info;
