@@ -83,12 +83,25 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
     g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
     wm_sn_atom = XInternAtom (display_info->dpy, selection, FALSE);
 
+    XSync (display_info->dpy, FALSE);
     current_wm = XGetSelectionOwner (display_info->dpy, wm_sn_atom);
     if (current_wm)
     {
         if (!replace_wm)
         {
+            const char *wm_name;
+            gchar *display_name;
+
+            display_name = gdk_screen_make_display_name (screen_info->gscr);
+            wm_name = gdk_x11_screen_get_window_manager_name (screen_info->gscr);
+            g_message ("Another Window Manager (%s) is already running on screen %s", wm_name, display_name);
             g_message ("To replace the current window manager, try \"--replace\"");
+            g_free (display_name);
+            /*
+             * Note: gdk_x11_screen_get_window_manager_name() returns a
+             * const not to be freed, no leak here...
+             */
+
             return FALSE;
         }
         gdk_error_trap_push ();

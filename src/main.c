@@ -595,7 +595,7 @@ main (int argc, char **argv)
     switch (status)
     {
         case -1:
-            g_warning ("Another Window Manager is already running");
+            g_warning ("Could not find a screen to manage, exiting");
             exit (1);
             break;
         case -2:
