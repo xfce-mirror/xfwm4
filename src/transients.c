@@ -255,10 +255,13 @@ clientTransientOrModalHasAncestor (Client * c, guint ws)
     for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
         c2 = (Client *) list->data;
-        if ((c2 != c) && !clientIsTransientOrModal (c2)
+        if ((c2 != c)
+            && !clientIsTransientOrModal (c2)
             && clientIsTransientOrModalFor (c, c2)
-            && !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED)
-            && (c2->win_workspace == ws))
+            && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)
+            && (c2->win_workspace == ws)
+            && (((ws == screen_info->current_ws) && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
+                || !FLAG_TEST (c2->flags, CLIENT_FLAG_ICONIFIED)))
         {
             return TRUE;
         }
