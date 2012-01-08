@@ -2001,27 +2001,8 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         }
         else if ((ev->message_type == display_info->atoms[NET_WM_DESKTOP]) && (ev->format == 32))
         {
-            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_DESKTOP event", c->name, c->window);
-            if (ev->data.l[0] == ALL_WORKSPACES)
-            {
-                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-                {
-                    clientStick (c, TRUE);
-                    frameQueueDraw (c, FALSE);
-                }
-            }
-            else
-            {
-                if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK) && FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-                {
-                    clientUnstick (c, TRUE);
-                    frameQueueDraw (c, FALSE);
-                }
-                if (ev->data.l[0] != (long) c->win_workspace)
-                {
-                    clientSetWorkspace (c, (guint) ev->data.l[0], TRUE);
-                }
-            }
+            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_DESKTOP event (0x%lx)", c->name, c->window);
+            clientUpdateNetWmDesktop (c, ev);
         }
         else if ((ev->message_type == display_info->atoms[NET_CLOSE_WINDOW]) && (ev->format == 32))
         {
