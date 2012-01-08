@@ -926,6 +926,23 @@ xfwm_settings_create_plug (XfwmSettings   *settings,
 
 
 
+static void
+xfwm_settings_response (GtkWidget *dialog,
+                        gint response_id)
+{
+    if (response_id == GTK_RESPONSE_HELP)
+    {
+        xfce_dialog_show_help (GTK_WINDOW (dialog), "xfwm4",
+                               "preferences", NULL);
+    }
+    else
+    {
+        gtk_main_quit ();
+    }
+}
+
+
+
 int
 main (int    argc,
       char **argv)
@@ -989,7 +1006,7 @@ main (int    argc,
     {
       dialog = xfwm_settings_create_dialog (settings);
       gtk_widget_show (dialog);
-      g_signal_connect (dialog, "response", G_CALLBACK (gtk_main_quit), NULL);
+      g_signal_connect (dialog, "response", G_CALLBACK (xfwm_settings_response), NULL);
 
       /* To prevent the settings dialog to be saved in the session */
       gdk_set_sm_client_id ("FAKE ID");

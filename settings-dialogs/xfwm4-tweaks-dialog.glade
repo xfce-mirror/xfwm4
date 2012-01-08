@@ -1135,7 +1135,7 @@ when switching via keyboard shortcuts</property>
               <object class="GtkButton" id="button2">
                 <property name="label">gtk-help</property>
                 <property name="visible">True</property>
-                <property name="sensitive">False</property>
+                <property name="sensitive">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
@@ -1171,7 +1171,7 @@ when switching via keyboard shortcuts</property>
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">button2</action-widget>
+      <action-widget response="-11">button2</action-widget>
       <action-widget response="0">button1</action-widget>
     </action-widgets>
   </object>

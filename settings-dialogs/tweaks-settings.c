@@ -416,6 +416,21 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     g_free (activate_action);
 }
 
+static void
+wm_tweaks_dialog_response (GtkWidget *dialog,
+                           gint response_id)
+{
+    if (response_id == GTK_RESPONSE_HELP)
+    {
+        xfce_dialog_show_help (GTK_WINDOW (dialog), "xfwm4",
+                               "wmtweaks", NULL);
+    }
+    else
+    {
+        gtk_main_quit ();
+    }
+}
+
 static GOptionEntry entries[] =
 {
     { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_ ("Session manager socket"), N_ ("SOCKET ID") },
@@ -477,7 +492,7 @@ main (int argc, gchar **argv)
         {
             dialog = GTK_WIDGET (gtk_builder_get_object (builder, "main-dialog"));
             gtk_widget_show (dialog);
-            g_signal_connect (dialog, "response", G_CALLBACK (gtk_main_quit), NULL);
+            g_signal_connect (dialog, "response", G_CALLBACK (wm_tweaks_dialog_response), NULL);
 
             /* To prevent the settings dialog to be saved in the session */
             gdk_set_sm_client_id ("FAKE ID");

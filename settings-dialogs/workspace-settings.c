@@ -248,17 +248,11 @@ static void
 workspace_dialog_setup_names_treeview(GtkBuilder *builder,
                                       XfconfChannel *channel)
 {
-    GtkWidget *treeview, *dialog;
+    GtkWidget *treeview;
     GtkListStore *ls;
     GtkCellRenderer *render;
     GtkTreeViewColumn *col;
     WnckScreen *screen;
-
-    dialog = GTK_WIDGET (gtk_builder_get_object(builder, "change_name_dialog"));
-    g_object_set_data(G_OBJECT(dialog), "name-entry",
-                      GTK_WIDGET (gtk_builder_get_object(builder, "entry_name")));
-    g_signal_connect(G_OBJECT(dialog), "delete-event",
-                     G_CALLBACK(gtk_true), NULL);
 
     treeview = GTK_WIDGET (gtk_builder_get_object(builder, "treeview_ws_names"));
 
@@ -365,6 +359,22 @@ workspace_dialog_configure_widgets (GtkBuilder *builder,
 }
 
 
+static void
+workspace_dialog_response (GtkWidget *dialog,
+                           gint response_id)
+{
+    if (response_id == GTK_RESPONSE_HELP)
+    {
+        xfce_dialog_show_help (GTK_WINDOW (dialog), "xfwm4",
+                               "workspaces", NULL);
+    }
+    else
+    {
+        gtk_main_quit ();
+    }
+}
+
+
 static GOptionEntry entries[] =
 {
     { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_("Settings manager socket"), N_("SOCKET ID") },
@@ -421,7 +431,7 @@ main(int argc, gchar **argv)
         if(opt_socket_id == 0) {
             dialog = GTK_WIDGET (gtk_builder_get_object (builder, "main-dialog"));
             gtk_widget_show (dialog);
-            g_signal_connect (dialog, "response", G_CALLBACK (gtk_main_quit), NULL);
+            g_signal_connect (dialog, "response", G_CALLBACK (workspace_dialog_response), NULL);
 
             /* To prevent the settings dialog to be saved in the session */
             gdk_set_sm_client_id ("FAKE ID");

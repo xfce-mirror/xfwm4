@@ -1272,7 +1272,7 @@
               <object class="GtkButton" id="help_button">
                 <property name="label">gtk-help</property>
                 <property name="visible">True</property>
-                <property name="sensitive">False</property>
+                <property name="sensitive">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
@@ -1308,7 +1308,7 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">help_button</action-widget>
+      <action-widget response="-11">help_button</action-widget>
       <action-widget response="0">close_button</action-widget>
     </action-widgets>
   </object>
