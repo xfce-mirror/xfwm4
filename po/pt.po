@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Nuno Donato <nunodonato@gmail.com>, 2004.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
+"POT-Creation-Date: 2012-01-08 15:03+0000\n"
 "PO-Revision-Date: 2010-12-30 15:33+0100\n"
 "Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -33,31 +33,31 @@ msgstr "Aviso"
 msgid "None"
 msgstr "Nenhum"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr "\"Socket\" do gestor de sessões"
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "ID de \"SOCKET\""
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "Informação de versão"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:960
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:964
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -72,11 +72,11 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Área de trabalho %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "Nome da área de trabalho"
 
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "\"Socket\" do gestor de definições"
@@ -102,12 +102,12 @@ msgid "Window Manager Tweaks"
 msgstr "Ajustes do gestor de janelas"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr "Definir número e nomes das áreas de trabalho"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Áreas de trabalho"
 
@@ -250,9 +250,8 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
-msgstr "Mi_nimizar"
+msgstr "Minimizar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -418,9 +417,8 @@ msgid "Lower window"
 msgstr "Colocar janela atrás"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Colocar janela à frente"
+msgstr "Subir ou baixar janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -614,21 +612,21 @@ msgstr "Acção"
 msgid "Shortcut"
 msgstr "Atalho"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:989
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Falha ao iniciar xfconf. Motivo: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1000
 msgid "Could not create the settings dialog."
 msgstr "Incapaz de criar o diálogo de definições."
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1887
+#: ../settings-dialogs/xfwm4-settings.c:1888
 msgid "Reset to Defaults"
 msgstr "Repor as omissões"
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1889
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -828,20 +826,12 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Áreas de trabalho</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr "Mudar nome da área de trabalho"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Margens são áreas nos limites do ecrã onde nenhuma janela irá ser colocada"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "_Nome:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr "_Número de áreas de trabalho:"
 
@@ -1010,6 +1000,12 @@ msgstr "Erro ao ler dados do processo dependente: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Incapaz de criar helper-dialog: %s\n"
+
+#~ msgid "Change workspace name"
+#~ msgstr "Mudar nome da área de trabalho"
+
+#~ msgid "_Name:"
+#~ msgstr "_Nome:"
 
 #~ msgid "Hide"
 #~ msgstr "Ocultar"
