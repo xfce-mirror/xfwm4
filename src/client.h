@@ -180,7 +180,7 @@
                                         XFWM_FLAG_FIRST_MAP | \
                                         XFWM_FLAG_NEEDS_REDRAW
 
-#define ALL_WORKSPACES                  (int) 0xFFFFFFFF
+#define ALL_WORKSPACES                  (guint) 0xFFFFFFFF
 
 #define CONSTRAINED_WINDOW(c)           ((c->win_layer > WIN_LAYER_DESKTOP) && \
                                         !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)) && \

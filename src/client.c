@@ -851,7 +851,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
         {
             clientRemoveMaximizeFlag (c);
         }
-        flags |= CFG_REQUEST;
+        flags |= CFG_CONSTRAINED | CFG_REQUEST;
     }
     if ((mask & (CWWidth | CWHeight)) && !(mask & (CWX | CWY)))
     {
@@ -860,7 +860,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
          * position, make sure the window remains fully visible in that
          * case so that the user does not have to relocate the window
          */
-        flags |= CFG_CONSTRAINED | CFG_KEEP_VISIBLE;
+        flags |= CFG_KEEP_VISIBLE;
     }
     /*
      * Let's say that if the client performs a XRaiseWindow, we show the window if focus
@@ -2304,6 +2304,12 @@ clientSetWorkspace (Client * c, guint ws, gboolean manage_mapping)
     g_return_if_fail (c != NULL);
 
     TRACE ("entering clientSetWorkspace");
+
+    if (ws > c->screen_info->workspace_count - 1)
+    {
+        g_warning ("Requested workspace %d does not exist", ws);
+        return;
+    }
 
     list_of_windows = clientListTransientOrModal (c);
     for (list = list_of_windows; list; list = g_list_next (list))

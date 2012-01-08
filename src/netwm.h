@@ -35,6 +35,8 @@
 
 void                     clientSetNetState                      (Client *);
 void                     clientGetNetState                      (Client *);
+void                     clientUpdateNetWmDesktop               (Client *,
+                                                                 XClientMessageEvent *);
 void                     clientUpdateNetState                   (Client *,
                                                                  XClientMessageEvent *);
 void                     clientNetMoveResize                    (Client *,
