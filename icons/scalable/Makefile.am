@@ -16,4 +16,4 @@ actionsicons_DATA =							\
 	xfce-wm-unshade.svg						\
 	xfce-wm-unstick.svg
 
-EXTRA_DIST = $(icons_DATA) $(actionsicons_DATA)
+EXTRA_DIST = $(appicons_DATA) $(actionsicons_DATA)
