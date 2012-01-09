@@ -14,7 +14,6 @@ DISTCLEANFILES =							\
 
 SUBDIRS = 								\
 	defaults 							\
-	doc 								\
 	helper-dialog 							\
 	icons 								\
 	po 								\
@@ -52,6 +51,3 @@ ChangeLog: Makefile
 	|| (touch ChangeLog; echo 'Git directory not found: installing possibly empty changelog.' >&2)
 
 dist-hook: ChangeLog
-
-DISTCHECK_CONFIGURE_FLAGS = \
-	--enable-gen-doc

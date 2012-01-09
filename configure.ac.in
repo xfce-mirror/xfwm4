@@ -213,33 +213,6 @@ if test x"$kde_systray" = x"yes"; then
 fi
 AC_SUBST(ENABLE_KDE_SYSTRAY)
 
-dnl ***************************************************
-dnl *** Check if we need to build the documentation ***
-dnl ***************************************************
-AC_ARG_ENABLE([gen-doc], [AC_HELP_STRING([--enable-gen-doc], 
-              [Generate HTML documentation (requires xsltproc, xml2po and xmllint) [default=no]])],, [enable_gen_doc=no])
-if test x"$enable_gen_doc" = x"yes"; then
-    AC_PATH_PROG([XSLTPROC], [xsltproc], [no])
-    if test x"$XSLTPROC" = x"no"; then
-        enable_gen_doc=no
-    fi
-
-    AC_PATH_PROG([XML2PO], [xml2po], [no])
-    if test x"$XML2PO" = x"no"; then
-        enable_gen_doc=no
-    fi
-
-    AC_PATH_PROG([XMLLINT], [xmllint], [no])
-    if test x"$XML2PO" = x"no"; then
-        enable_gen_doc=no
-    fi
-
-    if test x"$enable_gen_doc" = x"no"; then
-        AC_MSG_ERROR([Compiling with --enable-gen-doc but one of xml2po, xsltproc or xmllint not found.])
-    fi
-fi
-AM_CONDITIONAL([GENERATE_DOCUMENTATION], [test x"$enable_gen_doc" = x"yes"])
-
 dnl Check for debugging support
 XDT_FEATURE_DEBUG
 
@@ -252,13 +225,6 @@ AC_SUBST([REVISION])
 
 AC_OUTPUT([
 Makefile
-doc/Makefile
-doc/manual/Makefile
-doc/manual/images/Makefile
-doc/manual/images/el/Makefile
-doc/manual/images/fr/Makefile
-doc/manual/images/it/Makefile
-doc/manual/po/Makefile
 defaults/Makefile
 helper-dialog/Makefile
 icons/Makefile
@@ -277,17 +243,10 @@ themes/moheli/Makefile
 
 echo
 echo "Build Configuration for $PACKAGE version $VERSION revision $REVISION:"
-echo "  Startup notification support:                 $LIBSTARTUP_NOTIFICATION_FOUND"
-echo "  XSync support:                                $have_xsync"
-echo "  Render support:                               $have_render"
-echo "  Xrandr support:                               $have_xrandr"
-echo "  Embedded compositor:                          $compositor"
-echo "  KDE systray protocol proxy:                   $kde_systray"
-if test x"$enable_gen_doc" = x"yes"; then
-echo "  Documentation:                                yes (generate)"
-elif test -d "${srcdir}/docs/manual/html"; then
-echo "  Documentation:                                yes (in tarball)"
-else
-echo "  Documentation:                                no"
-fi
+echo "  Startup notification support: $LIBSTARTUP_NOTIFICATION_FOUND"
+echo "  XSync support:                $have_xsync"
+echo "  Render support:               $have_render"
+echo "  Xrandr support:               $have_xrandr"
+echo "  Embedded compositor:          $compositor"
+echo "  KDE systray protocol proxy:   $kde_systray"
 echo
