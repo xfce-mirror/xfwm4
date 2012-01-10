@@ -962,17 +962,19 @@ clientMove (Client * c, XEvent * ev)
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientDoMove");
-    TRACE ("moving client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING) ||
+        !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
+    {
+        return;
+    }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         return;
     }
 
-    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
-    {
-        return;
-    }
+    TRACE ("moving client \"%s\" (0x%lx)", c->name, c->window);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) &&
         !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -1508,18 +1510,8 @@ clientResize (Client * c, int handle, XEvent * ev)
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientResize");
-    TRACE ("resizing client \"%s\" (0x%lx)", c->name, c->window);
 
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-    {
-        return;
-    }
-
-    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-        && (screen_info->params->borderless_maximize))
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
     {
         return;
     }
@@ -1532,6 +1524,22 @@ clientResize (Client * c, int handle, XEvent * ev)
         }
         return;
     }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        return;
+    }
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+        && (screen_info->params->borderless_maximize))
+    {
+        return;
+    }
+
+    TRACE ("resizing client \"%s\" (0x%lx)", c->name, c->window);
 
     passdata.c = c;
     passdata.cancel_x = passdata.ox = c->x;
