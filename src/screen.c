@@ -70,13 +70,16 @@ myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
 static gboolean
 myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
 {
+    const char *wm_name;
     gchar selection[32];
+    gchar *display_name;
     gulong wait, timeout;
     DisplayInfo *display_info;
     XSetWindowAttributes attrs;
     Window current_wm;
     XEvent event;
     Atom wm_sn_atom;
+
 
     g_return_val_if_fail (screen_info, FALSE);
     g_return_val_if_fail (screen_info->display_info, FALSE);
@@ -86,6 +89,8 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
     display_info = screen_info->display_info;
     g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
     wm_sn_atom = XInternAtom (display_info->dpy, selection, FALSE);
+    display_name = gdk_screen_make_display_name (screen_info->gscr);
+    wm_name = gdk_x11_screen_get_window_manager_name (screen_info->gscr);
 
     XSync (display_info->dpy, FALSE);
     current_wm = XGetSelectionOwner (display_info->dpy, wm_sn_atom);
@@ -93,18 +98,9 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
     {
         if (!replace_wm)
         {
-            const char *wm_name;
-            gchar *display_name;
-
-            display_name = gdk_screen_make_display_name (screen_info->gscr);
-            wm_name = gdk_x11_screen_get_window_manager_name (screen_info->gscr);
             g_message ("Another Window Manager (%s) is already running on screen %s", wm_name, display_name);
             g_message ("To replace the current window manager, try \"--replace\"");
             g_free (display_name);
-            /*
-             * Note: gdk_x11_screen_get_window_manager_name() returns a
-             * const not to be freed, no leak here...
-             */
 
             return FALSE;
         }
@@ -119,14 +115,16 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
 
     if (!setXAtomManagerOwner (display_info, wm_sn_atom, screen_info->xroot, screen_info->xfwm4_win))
     {
-        g_warning ("Cannot acquire window manager selection on screen %d", screen_info->screen);
+        g_warning ("Cannot acquire window manager selection on screen %s", display_name);
+        g_free (display_name);
+
         return FALSE;
     }
 
     /* Waiting for previous window manager to exit */
     if (current_wm)
     {
-        g_print ("Waiting for current window manager on screen %d to exit", screen_info->screen);
+        g_print ("Waiting for current window manager (%s) on screen %s to exit:", wm_name, display_name);
         wait = 0;
         timeout = WM_EXITING_TIMEOUT * G_USEC_PER_SEC;
         while (wait < timeout)
@@ -146,11 +144,15 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
         if (wait >= timeout)
         {
             g_print(" Failed\n");
-            g_warning("Previous window manager on screen %d is not exiting", screen_info->screen);
+            g_warning("Previous window manager (%s) on screen %s is not exiting", wm_name, display_name);
+            g_free (display_name);
+
             return FALSE;
         }
         g_print(" Done\n");
     }
+    g_free (display_name);
+
     return TRUE;
 }
 
