@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-16 17:27+0100\n"
-"PO-Revision-Date: 2009-09-25 16:38+0200\n"
+"PO-Revision-Date: 2012-01-10 22:26+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
 "Language: sq\n"
@@ -62,8 +62,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Provoni %s --help për të parë një listë të plotë të mundësive të passhme për "
-"rresht urdhërash.\n"
+"Provoni %s --help për të parë një listë të plotë të mundësive të passhme për rresht urdhërash.\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -164,29 +163,25 @@ msgstr "<b>_Temë</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-#, fuzzy
 msgid "<i>Long</i>"
-msgstr "Vonesë|<i>E gjatë</i>"
+msgstr "<i>I gjatë</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "<i>Short</i>"
-msgstr "Vonesë|<i>E shkurtër</i>"
+msgstr "<i>I shkurtër</i>"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "Madhësi|<i>E vogël</i>"
+msgstr "<i>I vogël</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "Largësi|<i>E madhe</i>"
+msgstr "<i>I gjerë</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
@@ -380,9 +375,8 @@ msgid "Cycle windows (Reverse)"
 msgstr "Ciklo dritare (Së Prapthi)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Kalo te hapësirë pune e dritares"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
@@ -627,18 +621,13 @@ msgid "Reset to Defaults"
 msgstr "Riktheji te Parazgjedhjet"
 
 #: ../settings-dialogs/xfwm4-settings.c:1871
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Kjo do të rikthejë tërë shkurtoret te vlerat e tyre parazgjedhje. Doni "
-"vërtet të bëhet kjo?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Kjo do të rikthejë tërë shkurtoret te vlerat e tyre parazgjedhje. Doni vërtet të bëhet kjo?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "<i>Large</i>"
-msgstr "Madhësi|<i>E madhe</i>"
+msgstr "<i>I gjerë</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "<i>Opaque</i>"
@@ -722,9 +711,7 @@ msgstr "Patejdukshmëri dritaresh gjatë _ripërmasimesh:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"Kur lëvizen, rikthe _madhësinë origjinale të dritareve të zmadhuara në "
-"maksimum"
+msgstr "Kur lëvizen, rikthe _madhësinë origjinale të dritareve të zmadhuara në maksimum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
@@ -764,9 +751,7 @@ msgstr "Mbështill hapësira pune në varësi të _skemës aktuale për desktopi
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
-"Mbështill hapësira pune kur mbërrihet te hapësira e _parë apo e fundit e "
-"punës"
+msgstr "Mbështill hapësira pune kur mbërrihet te hapësira e _parë apo e fundit e punës"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -833,10 +818,8 @@ msgid "Change workspace name"
 msgstr "Ndryshoni emër hapësire pune"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Mënjanat janë zona në skajet e ekranit në të cilat nuk do të vendoset dritare"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Mënjanat janë zona në skajet e ekranit në të cilat nuk do të vendoset dritare"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Name:"
@@ -859,7 +842,7 @@ msgstr "%s: Gabim copëzimi"
 
 #: ../src/main.c:534
 msgid "Fork to the background"
-msgstr ""
+msgstr "Përthyeje drejt sfondit"
 
 #: ../src/main.c:536
 msgid "Fork to the background (not supported)"
@@ -874,14 +857,12 @@ msgid "Set the compositor mode (not supported)"
 msgstr ""
 
 #: ../src/main.c:543
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Rregullime për Përgjegjës Dritaresh Xfce 4"
+msgstr "Zëvendëso përgjegjësin ekzistues të dritareve"
 
 #: ../src/main.c:544
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "Të dhëna versioni"
+msgstr "Shtyp të dhëna versioni dhe dil"
 
 #: ../src/main.c:552
 msgid "[ARGUMENTS...]"
@@ -890,7 +871,7 @@ msgstr ""
 #: ../src/main.c:559
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Shtypni \"%s --help\" për përdorimin."
 
 #: ../src/menu.c:44
 msgid "Ma_ximize"
@@ -997,8 +978,7 @@ msgstr "%s: Nuk siguron dot ngjyrë %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Nuk siguron dot ngjyrë: GValue për ngjyrën nuk është e llojit STRING"
+msgstr "%s: Nuk siguron dot ngjyrë: GValue për ngjyrën nuk është e llojit STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1008,8 +988,7 @@ msgstr "%s: Nuk përtyp dot ngjyrën %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Nuk përtyp dot ngjyrë: GValue për ngjyrën nuk është e llojit STRING"
+msgstr "%s: Nuk përtyp dot ngjyrë: GValue për ngjyrën nuk është e llojit STRING"
 
 #: ../src/terminate.c:75
 #, c-format
