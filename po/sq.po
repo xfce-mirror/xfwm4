@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-16 17:27+0100\n"
-"PO-Revision-Date: 2012-01-10 22:26+0200\n"
+"PO-Revision-Date: 2012-01-11 23:50+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
 "Language: sq\n"
@@ -850,11 +850,11 @@ msgstr ""
 
 #: ../src/main.c:539
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Caktoni mënyrën e kompozitorit"
 
 #: ../src/main.c:541
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Caktoni mënyrën e kompozitorit (e pambuluar)"
 
 #: ../src/main.c:543
 msgid "Replace the existing window manager"
