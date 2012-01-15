@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-07 02:45+0000\n"
+"POT-Creation-Date: 2012-01-15 15:34+0200\n"
 "PO-Revision-Date: 2012-01-07 10:26+0200\n"
 "Last-Translator: Algimantas Margevičius <margevicius.algimantas@gmail.com>\n"
 "Language-Team: Lietuvių <>\n"
@@ -35,31 +35,31 @@ msgstr "Įspėjimas"
 msgid "None"
 msgstr "Nėra"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr "Sesijos tvarkyklės lizdas"
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "LIZDO ID"
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "Versija"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:960
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:964
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -74,11 +74,11 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Darbo laukas %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "Darbo lauko pavadinimas"
 
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "Nustatymų tvarkyklės lizdas"
@@ -104,12 +104,12 @@ msgid "Window Manager Tweaks"
 msgstr "Langų tvarkyklės patobulinimai"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr "Nustatykite darbo vietų skaičių ir pavadinimus"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Darbo laukai"
 
@@ -614,21 +614,21 @@ msgstr "Veiksmas"
 msgid "Shortcut"
 msgstr "Trumpinys"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:989
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Nepavyko inicijuoti xfconf. Priežastis: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1000
 msgid "Could not create the settings dialog."
 msgstr "Nepavyko sukurti nustatymų dialogo."
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1887
+#: ../settings-dialogs/xfwm4-settings.c:1888
 msgid "Reset to Defaults"
 msgstr "Atstatyti numatytasias"
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1889
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -826,19 +826,11 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Darbo vietos</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr "Keisti darbo vietos pavadinimą"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Paraštės yra ekrano kraštų vietos, kuriose langai negali būti padėti"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "_Pavadinimas:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr "_Darbo vietų skaičius:"
 
@@ -1007,471 +999,3 @@ msgstr "Klaida skaitant iš antrinio proceso: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Nepavyko sukurti pagalbos dialogo: %s\n"
-
-#~ msgid "Hide"
-#~ msgstr "Paslėpti"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Segmentacijos klaida"
-
-#, fuzzy
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid ">Window Manager"
-#~ msgstr "Langų tvarkyklė"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "Darbo vietos paraštės"
-
-#~ msgid "Left :"
-#~ msgstr "Kairė"
-
-#~ msgid "Right :"
-#~ msgstr "Dešinė"
-
-#~ msgid "Top :"
-#~ msgstr "Viršus"
-
-#~ msgid "Bottom :"
-#~ msgstr "Apačia:"
-
-#, fuzzy
-#~ msgid "Bring window on current workspace"
-#~ msgstr "Naujas langas dėmesio centre"
-
-#, fuzzy
-#~ msgid "Do nothing"
-#~ msgstr "Nieko"
-
-#, fuzzy
-#~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Naujas langas dėmesio centre"
-
-#, fuzzy
-#~ msgid "Cycling"
-#~ msgstr "Paslėpti langą"
-
-#, fuzzy
-#~ msgid "Focus"
-#~ msgstr "Fokusavimas"
-
-#, fuzzy
-#~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Perkeliant langą rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "Perkeliant langą rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
-
-#, fuzzy
-#~ msgid "Size|Small"
-#~ msgstr "Mažas"
-
-#, fuzzy
-#~ msgid "Opacity of window decorations"
-#~ msgstr "Keičiant lango dydį rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "Perkeliant langą rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Opacity of windows during move"
-#~ msgstr "Perkeliant langą rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "Keičiant lango dydį rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Opacity of popup windows"
-#~ msgstr "Perkeliant langą rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Compositor"
-#~ msgstr "Klaviatūros nuoroda"
-
-#, fuzzy
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "Langų tvarkyklė"
-
-#~ msgid "Change name"
-#~ msgstr "Pakeisti pavadinimą"
-
-#, fuzzy
-#~ msgid "Name:"
-#~ msgstr "Pavadinimas:"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Spauskite ant darbalaukio norėdami pakeisti pavadinimą"
-
-#, fuzzy
-#~ msgid "Number of workspaces:"
-#~ msgstr "Darbo vietų skaičius:"
-
-#, fuzzy
-#~ msgid "Workspace names"
-#~ msgstr "Darbo vietos pavadinimai"
-
-#, fuzzy
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Darbo vietos ir paraštės"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "Darbo vietos ir paraštės"
-
-#, fuzzy
-#~ msgid "Margins"
-#~ msgstr "Paraštės"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Langų tvarkyklė"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Langų tvarkyklė"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Langų tvarkyklė"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Langų tvarkyklė"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Darbo vietos paraštės"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Darbo vietos paraštės"
-
-#, fuzzy
-#~ msgid "Click and drag buttons to change the layout"
-#~ msgstr "Paskauskite ir tempkite norėdami pakeisti išdėstymą"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "Šrifto pasirinkimo dialogas"
-
-#, fuzzy
-#~ msgid "Title font"
-#~ msgstr "Pavadinimo šriftas"
-
-#, fuzzy
-#~ msgid "Title Alignment"
-#~ msgstr "Pavadinimo lygiavimas"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "Teksto lygiavimas pavadinimo juostoje :"
-
-#, fuzzy
-#~ msgid "Button layout"
-#~ msgstr "Mygtukų išdėstymas"
-
-#, fuzzy
-#~ msgid "Style"
-#~ msgstr "Stilius"
-
-#, fuzzy
-#~ msgid "Window shortcuts"
-#~ msgstr "Naujas langas dėmesio centre"
-
-#, fuzzy
-#~ msgid "Command"
-#~ msgstr "Komanda"
-
-#, fuzzy
-#~ msgid "Keyboard"
-#~ msgstr "Klaviatūra"
-
-#, fuzzy
-#~ msgid "Focus model"
-#~ msgstr "Fokusavimo modelis"
-
-#, fuzzy
-#~ msgid "Click to focus"
-#~ msgstr "Spauskite norėdami fokusuoti"
-
-#, fuzzy
-#~ msgid "Focus follows mouse"
-#~ msgstr "Dėmesys sutelkiamas pagal pelės poziciją"
-
-#, fuzzy
-#~ msgid "Delay before window receives focus"
-#~ msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
-
-#~ msgid "Slow"
-#~ msgstr "Lėtai"
-
-#~ msgid "Fast"
-#~ msgstr "Greitai"
-
-#, fuzzy
-#~ msgid "Automatically give focus to newly created windows"
-#~ msgstr ""
-#~ "Atomatiškai sutelkti dėmesį \n"
-#~ "į naujai sukurtus langus"
-
-#, fuzzy
-#~ msgid "New window focus"
-#~ msgstr "Naujas langas dėmesio centre"
-
-#, fuzzy
-#~ msgid "Raise on focus"
-#~ msgstr "aiškelti kai fokusuojama"
-
-#, fuzzy
-#~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr ""
-#~ "Automatiškai iškelti langus\n"
-#~ "kai jie dėmesio centre"
-
-#, fuzzy
-#~ msgid "Delay before raising focused window :"
-#~ msgstr "Užlaikyti prieš iškeliant fokusuotą langą :"
-
-#, fuzzy
-#~ msgid "Raise window when clicking inside application window"
-#~ msgstr ""
-#~ "Iškelti langą kai spaudžiama viduje\n"
-#~ "programos lango"
-
-#, fuzzy
-#~ msgid "Raise on click"
-#~ msgstr "Iškelti paspaudus"
-
-#, fuzzy
-#~ msgid "Windows snapping"
-#~ msgstr "Langų pritraukimas"
-
-#, fuzzy
-#~ msgid "Snap windows to screen border"
-#~ msgstr "Užsklęsti langą į ekrano sieną"
-
-#, fuzzy
-#~ msgid "Snap windows to other windows"
-#~ msgstr "Pritraukti langus prie kitų langų"
-
-#, fuzzy
-#~ msgid "Distance :"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Distance|Small"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Distance|Wide"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Wrap workspaces"
-#~ msgstr "Laužyti darbo vietas"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Laužyti darbo vietas kai žymeklis pasiekia ekrano kraštą"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Laužyti darbo vietas kai tempiamas langas yra už ekrano"
-
-#, fuzzy
-#~ msgid "Edge Resistance :"
-#~ msgstr "Kraštų atsparumas :"
-
-#, fuzzy
-#~ msgid "Resistance|Small"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Resistance|Wide"
-#~ msgstr "Atstumas :"
-
-#, fuzzy
-#~ msgid "Opaque move and resize"
-#~ msgstr "Nepermatomas perkėlimas ir dydžio pakeitimas"
-
-#, fuzzy
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "Keičiant lango dydį rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Display content of windows when moving"
-#~ msgstr "Perkeliant langą rodyti jo turinį"
-
-#, fuzzy
-#~ msgid "Double click action"
-#~ msgstr "Veiksmas dukart spragtelėti"
-
-#, fuzzy
-#~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr ""
-#~ "Veiskmas kuris bus atliktas dukart spragtelėjus ant pavadinimo juostos"
-
-#, fuzzy
-#~ msgid "Advanced"
-#~ msgstr "Išplėstas"
-
-#, fuzzy
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "Langų tvarkyklė"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Ar tikrai norite pašalinti šiuos klavišų susiejimus"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "Pridėti klavišų susiejimų temą"
-
-#, fuzzy
-#~ msgid "Enter a name for the theme:"
-#~ msgstr "Įveskite temos vardą:"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Klavišų susiejimo tema tokiu vardu jau egzistuoja"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Turite nurodyti klavišų susiejimo temos vardą"
-
-#, fuzzy
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Perkelti langą į darbo lauką 1"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "Neįmanoma atidaryti temos aplanko !"
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Neįmanoma atidaryti %s : \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Neįmanoma įrašyti į %s : \n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Compose shortcut for :"
-#~ msgstr "Klaviatūros nuoroda"
-
-#, fuzzy
-#~ msgid "Compose shortcut"
-#~ msgstr "Klaviatūros nuoroda"
-
-#, fuzzy
-#~ msgid "No shortcut"
-#~ msgstr "Klaviatūros nuoroda"
-
-#, fuzzy
-#~ msgid "Change the name of workspace %d"
-#~ msgstr "Darbo vietų skaičius:"
-
-#, fuzzy
-#~ msgid "Advanced window manager settings"
-#~ msgstr "Langų tvarkyklė"
-
-#, fuzzy
-#~ msgid "Enter window manager action shortcut"
-#~ msgstr "Langų tvarkyklė"
-
-#, fuzzy
-#~ msgid "Action: %s"
-#~ msgstr "Aktyvus"
-
-#, fuzzy
-#~ msgid "Enter shortcut"
-#~ msgstr "Klaviatūros nuoroda"
-
-#, fuzzy
-#~ msgid "Shortcut:"
-#~ msgstr "Klaviatūros nuoroda"
-
-#, fuzzy
-#~ msgid "(Un)Ma_ximize"
-#~ msgstr "Iš_skleisti"
-
-#~ msgid "Hide _all others"
-#~ msgstr "Visus kitus p_aslėpti"
-
-#~ msgid "_Shade"
-#~ msgstr "_Uždengti"
-
-#, fuzzy
-#~ msgid "(Un)_Shade"
-#~ msgstr "_Atidengti"
-
-#~ msgid "S_tick"
-#~ msgstr "Priseg_ti"
-
-#, fuzzy
-#~ msgid "(Un)S_tick"
-#~ msgstr "Nuseg_ti"
-
-#, fuzzy
-#~ msgid "Below"
-#~ msgstr "Lėtai"
-
-#~ msgid "Send to..."
-#~ msgstr "Siųsti į..."
-
-#~ msgid "Workspace %i (%s)"
-#~ msgstr "Darbo laukas %i (%s)"
-
-#, fuzzy
-#~ msgid "Ctrl"
-#~ msgstr "Centras"
-
-#, fuzzy
-#~ msgid "Button"
-#~ msgstr "Mygtukų išdėstymas"
-
-#, fuzzy
-#~ msgid "Add Shortcut Theme"
-#~ msgstr "Nuoroda"
-
-#, fuzzy
-#~ msgid "Move window left"
-#~ msgstr "Naujas langas dėmesio centre"
-
-#, fuzzy
-#~ msgid "Move window right"
-#~ msgstr "Naujas langas dėmesio centre"
-
-#, fuzzy
-#~ msgid "Resize window down"
-#~ msgstr "Paslėpti langą"
-
-#, fuzzy
-#~ msgid "Resize window left"
-#~ msgstr "Paslėpti langą"
-
-#, fuzzy
-#~ msgid "Resize window right"
-#~ msgstr "Paslėpti langą"
-
-#, fuzzy
-#~ msgid "Cancel move/resize window"
-#~ msgstr "Paslėpti langą"
-
-#~ msgid "_Hide"
-#~ msgstr "_Paslėpti"
