@@ -537,7 +537,6 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         clientUpdateOpacity (c2);
     }
     clientSetNetActiveWindow (screen_info, c, 0);
-    clientClearDelayedFocus ();
     pending_focus = NULL;
 }
 
@@ -807,13 +806,14 @@ delayed_focus_cb (gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    guint32 timestamp = (guint32) GPOINTER_TO_INT (data);
 
     TRACE ("entering delayed_focus_cb");
     g_return_val_if_fail (delayed_focus != NULL, FALSE);
 
     screen_info = delayed_focus->screen_info;
     display_info = screen_info->display_info;
-    clientSetFocus (screen_info, delayed_focus, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
+    clientSetFocus (screen_info, delayed_focus, timestamp, NO_FOCUS_FLAG);
     focus_timeout = 0;
     delayed_focus = NULL;
 
@@ -832,7 +832,7 @@ clientClearDelayedFocus (void)
 }
 
 void
-clientAddDelayedFocus (Client *c)
+clientAddDelayedFocus (Client *c, guint32 timestamp)
 {
     ScreenInfo *screen_info;
 
@@ -841,7 +841,7 @@ clientAddDelayedFocus (Client *c)
     focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
                                         screen_info->params->focus_delay,
                                         (GSourceFunc) delayed_focus_cb,
-                                        NULL, NULL);
+                                        GINT_TO_POINTER (timestamp), NULL);
 }
 
 Client *
