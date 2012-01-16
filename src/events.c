@@ -1362,7 +1362,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
                 if(screen_info->params->focus_delay)
                 {
                     clientClearDelayedFocus ();
-                    clientAddDelayedFocus (c);
+                    clientAddDelayedFocus (c, ev->time);
                 }
                 else
                 {
