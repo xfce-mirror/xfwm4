@@ -3,19 +3,21 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Nuno Donato <nunodonato@gmail.com>, 2004.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009.
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.6.0\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-08 15:03+0000\n"
-"PO-Revision-Date: 2010-12-30 15:33+0100\n"
-"Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
+"PO-Revision-Date: 2012-01-18 12:25-0000\n"
+"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: PORTUGAL\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -47,7 +49,7 @@ msgstr "ID de \"SOCKET\""
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
-msgstr "Informação de versão"
+msgstr "Informações da versão"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:398
@@ -64,7 +66,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Tente %s --help para ver uma lista completa de opções em linha de comandos.\n"
+"Tente %s --help para ver uma lista completa de opções em linha de comandos\n"
 
 #: ../settings-dialogs/workspace-settings.c:73
 #: ../settings-dialogs/workspace-settings.c:88
@@ -117,15 +119,15 @@ msgstr "<b>Mover e redimensionar</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
-msgstr "<b>Disposição dos botões</b>"
+msgstr "<b>Esquema dos botões</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Double click _action</b>"
-msgstr "<b>Acção do _duplo clique</b>"
+msgstr "<b>Ação do _duplo clique</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
-msgstr "<b>Modelo de focagem</b>"
+msgstr "<b>Modelo de foco</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -145,7 +147,7 @@ msgstr "<b>Alinh_amento do título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title fon_t</b>"
-msgstr "<b>Fon_te do título</b>"
+msgstr "<b>_Tipo de letra do título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Window _shortcuts</b>"
@@ -187,7 +189,7 @@ msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
-msgstr "Activo"
+msgstr "Ativo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Ad_vanced"
@@ -199,15 +201,15 @@ msgstr "Subi_r janelas automaticamente quando recebem foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr "Dar foco automaticamente a _novas janelas criadas"
+msgstr "Focar automaticamente as _novas janelas criadas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr "C_licar para focar"
+msgstr "C_lique para focar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
-msgstr "Clique e arraste os botões para mudar a disposição"
+msgstr "Clique e arraste os botões para mudar o esquema"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -255,11 +257,11 @@ msgstr "Minimizar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
-msgstr "Trazer janela para a frente ao clicar dentro da janela da apl_icação"
+msgstr "Trazer janela para a frente ao clicar na janela da apl_icação"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
-msgstr "Sombra"
+msgstr "Enrolar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
@@ -267,7 +269,7 @@ msgstr "Alinhar janelas com outras ja_nelas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Snap windows to screen _border"
-msgstr "Alinhar janelas para a _borda do ecrã"
+msgstr "Alinhar janelas ao limite _do ecrã"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
@@ -275,7 +277,7 @@ msgstr "Prender"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Acção a executar ao fazer duplo clique na barra de título"
+msgstr "A ação a executar ao clicar duas vezes na barra de título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
@@ -291,7 +293,7 @@ msgstr "Mu_dar de área de trabalho ao arrastar uma janela para fora do ecrã"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Mudar de área de trabalho quando o _ponteiro atinge o limite do ecrã"
+msgstr "Mudar de área de trabalho se o _ponteiro atingir o limite do ecrã"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
@@ -299,7 +301,7 @@ msgstr "Atraso antes _da janela receber foco:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
-msgstr "Re_sistência do limite:"
+msgstr "R_esistência do limite:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
@@ -317,7 +319,7 @@ msgstr "_Estilo"
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
-msgstr "Sombrear janela"
+msgstr "Enrolar janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
@@ -378,7 +380,7 @@ msgstr "Percorrer janelas (invertido)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
-msgstr "Trocar a janela para a mesma aplicação"
+msgstr "Trocar janela para a mesma aplicação"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
@@ -390,11 +392,11 @@ msgstr "Fechar janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Maximize window horizontally"
-msgstr "Maximizar a janela horizontalmente"
+msgstr "Maximizar janela horizontalmente"
 
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window vertically"
-msgstr "Maximizar a janela verticalmente"
+msgstr "Maximizar janela verticalmente"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Move window"
@@ -434,7 +436,7 @@ msgstr "Colocar por cima"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
-msgstr "Alternar para ecrã completo"
+msgstr "Trocar para ecrã completo"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
@@ -446,11 +448,11 @@ msgstr "Mover janela para a área de trabalho abaixo"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
-msgstr "Mover janela para a área de trabalho esquerda"
+msgstr "Mover janela para a área de trabalho à esquerda"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
-msgstr "Mover janela para a área de trabalho direita"
+msgstr "Mover janela para a área de trabalho à direita"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
@@ -538,51 +540,51 @@ msgstr "Área de trabalho seguinte"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Workspace 1"
-msgstr "Área de Trabalho 1"
+msgstr "Área de trabalho 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Workspace 2"
-msgstr "Área de Trabalho 2"
+msgstr "Área de trabalho 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Workspace 3"
-msgstr "Área de Trabalho 3"
+msgstr "Área de trabalho 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Workspace 4"
-msgstr "Área de Trabalho 4"
+msgstr "Área de trabalho 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 5"
-msgstr "Área de Trabalho 5"
+msgstr "Área de trabalho 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 6"
-msgstr "Área de Trabalho 6"
+msgstr "Área de trabalho 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 7"
-msgstr "Área de Trabalho 7"
+msgstr "Área de trabalho 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 8"
-msgstr "Área de Trabalho 8"
+msgstr "Área de trabalho 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 9"
-msgstr "Área de Trabalho 9"
+msgstr "Área de trabalho 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 10"
-msgstr "Área de Trabalho 10"
+msgstr "Área de trabalho 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 11"
-msgstr "Área de Trabalho 11"
+msgstr "Área de trabalho 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 12"
-msgstr "Área de Trabalho 12"
+msgstr "Área de trabalho 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Add workspace"
@@ -598,7 +600,7 @@ msgstr "Apagar última área de trabalho"
 
 #: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Delete active workspace"
-msgstr "Apagar área de trabalho activa"
+msgstr "Apagar área de trabalho ativa"
 
 #: ../settings-dialogs/xfwm4-settings.c:449
 msgid "Theme"
@@ -606,7 +608,7 @@ msgstr "Tema"
 
 #: ../settings-dialogs/xfwm4-settings.c:598
 msgid "Action"
-msgstr "Acção"
+msgstr "Ação"
 
 #: ../settings-dialogs/xfwm4-settings.c:603
 msgid "Shortcut"
@@ -619,20 +621,16 @@ msgstr "Falha ao iniciar xfconf. Motivo: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:1000
 msgid "Could not create the settings dialog."
-msgstr "Incapaz de criar o diálogo de definições."
+msgstr "Incapaz de criar o diálogo de definições"
 
 #: ../settings-dialogs/xfwm4-settings.c:1887
 #: ../settings-dialogs/xfwm4-settings.c:1888
 msgid "Reset to Defaults"
-msgstr "Repor as omissões"
+msgstr "Repor omissões"
 
 #: ../settings-dialogs/xfwm4-settings.c:1889
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Isto irá repor todos os atalhos para os seus valores por omissão. Deseja "
-"realmente fazer isto?"
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Vai repor todos os atalhos para os seus valores originais. Continuar?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -649,7 +647,7 @@ msgstr "<i>Transparente</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Activate _focus stealing prevention"
-msgstr "Activar _foco retirando prevenção"
+msgstr "Ativar _foco retira a prevenção"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "At the _center of the screen"
@@ -673,11 +671,11 @@ msgstr "Pe_rcorrer janelas de todas as áreas de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Display _fullscreen overlay windows directly"
-msgstr "O ecrã _completo cobre directamente as janelas"
+msgstr "O ecrã _completo cobre as janelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
-msgstr "Não fazer _nada"
+msgstr "_Nada fazer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
@@ -685,7 +683,7 @@ msgstr "Ocultar _moldura das janelas maximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Re_speitar o padrão de focagem ICCCM "
+msgstr "Re_speitar o padrão de foco ICCCM "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
@@ -697,7 +695,7 @@ msgstr "Tecla usada para a_garrar e mover janelas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Avisar da urgê_ncia fazendo piscar a decoração da janela"
+msgstr "Avisar da _urgência fazendo piscar a decoração da janela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Opaci_ty of window decorations:"
@@ -705,7 +703,7 @@ msgstr "Opac_idade das decorações de janela:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Opacity of _inactive windows:"
-msgstr "Opacidade das janelas inacti_vas:"
+msgstr "Opacidade das janelas inati_vas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Opacity of popup window_s:"
@@ -725,15 +723,15 @@ msgstr "Ao mover, restaurar taman_ho original das janelas maximizadas "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
-msgstr "Mostrar sombras por baixo das janelas _dock"
+msgstr "Mostrar sombras por baixo das janelas acopla_das"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _regular windows"
-msgstr "Mostrar somb_ras sobre janelas normais"
+msgstr "Mostrar somb_ras por baixo das janelas normais"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Show shadows under pop_up windows"
-msgstr "Mostrar sombras sobre janelas de conte_xto"
+msgstr "Mostrar sombras por baixo das janelas de conte_xto"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Switch to win_dow's workspace"
@@ -741,15 +739,15 @@ msgstr "Mu_dar para a área de trabalho da janela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Under the mouse _pointer"
-msgstr "Sobre o ponteiro do _rato"
+msgstr "Por baixo do _ponteiro do rato"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Usar r_esistência de limite ao invés do alinhamento de janelas"
+msgstr "Utilizar r_esistência de limites ao invés do alinhamento de janelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Usar a roda do rato no a_mbiente para mudar de área de trabalho"
+msgstr "Utilizar roda do rato para trocar entre áreas de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "When a window raises itself:"
@@ -757,13 +755,11 @@ msgstr "Quando uma janela se levanta:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Saltar áreas de trabalho dependendo da _disposição do ambiente actual"
+msgstr "Trocar de áreas _de trabalho de acordo com o esquema do ambiente de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
-"Saltar áreas de trabalho quando a primeira ou a última área de trabal_ho for "
-"atingida"
+msgstr "Trocar de áreas de trabalho se a primeira ou a última área de trabal_ho for atingida"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "_Accessibility"
@@ -771,15 +767,15 @@ msgstr "_Acessibilidade"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Bring window on current workspace"
-msgstr "Tra_zer janela para a área de trabalho actual"
+msgstr "Tra_zer janela para a área de trabalho atual"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Desenhar moldura das janelas seleccionadas ao percorrer"
+msgstr "_Desenhar moldura das janelas selecionadas ao percorrer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
-msgstr "_Ligar composição de ecrã"
+msgstr "Ativar composição d_e ecrã"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
@@ -787,7 +783,7 @@ msgstr "_Incluir janelas ocultas (i.e. minimizadas) "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Tamanho _mínimo das janelas para correcto posicionamento:"
+msgstr "Tamanho _mínimo das janelas para posicionamento inteligente:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Placement"
@@ -826,10 +822,8 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Áreas de trabalho</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Margens são áreas nos limites do ecrã onde nenhuma janela irá ser colocada"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "As margens são as áreas nos limites do ecrã onde nenhuma janela será colocada"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
@@ -851,11 +845,11 @@ msgstr "Enviar para segundo plano (não suportado)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr "Definir o modo de composição"
+msgstr "Definir modo de composição"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr "Definir o modo de composição (não suportado)"
+msgstr "Definir modo de composição (não suportado)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
@@ -863,7 +857,7 @@ msgstr "Substituir o gestor de janelas existente"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
-msgstr "Mostra informação de versão e sai"
+msgstr "Mostra as informações da versão e sai"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
@@ -872,7 +866,7 @@ msgstr "[ARGUMENTOS...]"
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Digite \"%s --help\" para a ajuda."
+msgstr "Digite \"%s --help\" para instruções de utilização"
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
@@ -974,22 +968,22 @@ msgstr "%s: GtkMenu falhou a capturar o ponteiro\n"
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Incapaz de alocar a cor %s\n"
+msgstr "%s: incapaz de alocar a cor %s\n"
 
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: Incapaz de alocar cor: GValue para cor não é do tipo STRING"
+msgstr "%s: incapaz de alocar cor. GValue para cor não é do tipo STRING"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Incapaz de analisar a cor %s\n"
+msgstr "%s: incapaz de processar a cor %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Incapaz de analisar cor: GValue para cor não é do tipo STRING"
+msgstr "%s: incapaz de processar a cor. GValue para cor não é do tipo STRING"
 
 #: ../src/terminate.c:75
 #, c-format
