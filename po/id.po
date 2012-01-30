@@ -2,19 +2,19 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
+"POT-Creation-Date: 2012-01-30 10:15+0000\n"
 "PO-Revision-Date: 2008-12-21 21:53+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
-"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -32,31 +32,31 @@ msgstr "Peringatan"
 msgid "None"
 msgstr "Tak ada"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr "Soket manajer sesi"
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "Informasi versi"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:960
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:964
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -72,11 +72,11 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Ruang kerja %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "Nama Ruang Kerja"
 
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "Pengaturan soket manajer"
@@ -102,12 +102,12 @@ msgid "Window Manager Tweaks"
 msgstr "Tweak Manajer Jendela"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr "Atur jumlah dan nama ruang kerja"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Ruang Kerja"
 
@@ -250,9 +250,8 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
-msgstr "Mi_nimalkan"
+msgstr "Minimalkan"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -418,9 +417,8 @@ msgid "Lower window"
 msgstr "Turunkan jendela"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Naikkan jendela"
+msgstr "Naikkan atau turunkan jendela"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -614,21 +612,21 @@ msgstr "Aksi"
 msgid "Shortcut"
 msgstr "Jalan pintas"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:989
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Gagal menginisialisasi xfconf. Alasan: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1000
 msgid "Could not create the settings dialog."
 msgstr "Tak dapat membuat dialog pengaturan."
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1887
+#: ../settings-dialogs/xfwm4-settings.c:1888
 msgid "Reset to Defaults"
 msgstr "Kembalikan ke Standar"
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1889
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -828,20 +826,12 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Ruang kerja</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr "Ubah nama ruang kerja"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Margin adalah area di pinggir layar dimana tak ada jendela akan ditempatkan"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "_Nama:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr "_Jumlah ruang kerja:"
 
@@ -1010,6 +1000,12 @@ msgstr "Galat membaca data dari proses anak: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Tak dapat pijah helper-dialog: %s\n"
+
+#~ msgid "Change workspace name"
+#~ msgstr "Ubah nama ruang kerja"
+
+#~ msgid "_Name:"
+#~ msgstr "_Nama:"
 
 #~ msgid "Hide"
 #~ msgstr "Sembunyi"
