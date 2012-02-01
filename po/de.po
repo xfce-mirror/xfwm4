@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-02 12:57+0000\n"
+"POT-Creation-Date: 2012-02-01 08:39+0000\n"
 "PO-Revision-Date: 2011-11-05 23:44+0100\n"
 "Last-Translator: Jakob Kramer <jakob.kramer@gmx.de>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -37,31 +37,31 @@ msgstr "Warnung"
 msgid "None"
 msgstr "Keine"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr "Socket für die Sitzungsverwaltung"
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "SOCKET-NUMMER"
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:960
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:964
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -77,11 +77,11 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Arbeitsfläche %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "Name der Arbeitsfläche"
 
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "Socket für die Sitzungsverwaltung"
@@ -108,12 +108,12 @@ msgid "Window Manager Tweaks"
 msgstr "Feineinstellungen des Fensterverhaltens"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr "Stellen Sie Anzahl und Namen von Arbeitsflächen ein"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Arbeitsflächen"
 
@@ -425,7 +425,6 @@ msgid "Lower window"
 msgstr "Fenster herabsetzen"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
 msgstr "Fenster hervorheben oder absenken"
 
@@ -621,21 +620,21 @@ msgstr "Aktion"
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:989
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Konnte xfconf nicht initialisieren. Grund: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1000
 msgid "Could not create the settings dialog."
 msgstr "Konnte den Einstellungsdialog nicht erzeugen."
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1887
+#: ../settings-dialogs/xfwm4-settings.c:1888
 msgid "Reset to Defaults"
 msgstr "Standardwerte setzen"
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1889
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -799,7 +798,6 @@ msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_Versteckte (z.B. ikonifizierte) Fenster miteinbeziehen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "M_indestgröße zur intelligenten Fensterplatzierung:"
 
@@ -840,21 +838,13 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Arbeitsflächen</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr "Namen der Arbeitsflächen ändern"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Hiermit kann man Ränder definieren, über die hinaus keine Fenster gesetzt "
 "werden"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "_Name:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr "_Anzahl der Arbeitsflächen:"
 
@@ -1026,6 +1016,12 @@ msgstr "Kann Daten vom Kindprozess nicht lesen: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kann Hilfsdialog nicht starten: %s\n"
+
+#~ msgid "Change workspace name"
+#~ msgstr "Namen der Arbeitsflächen ändern"
+
+#~ msgid "_Name:"
+#~ msgstr "_Name:"
 
 #~ msgid "Hide"
 #~ msgstr "Verstecken"
