@@ -6,13 +6,13 @@
 # wuli <wurisky@gmail.com>,2007, 2008.
 # Hunt Xu <huntxu@live.cn>,2008, 2010.
 # Aron Xu <aronmalache@163.com>, 2009.
-# Chipong Luo <chipong_l@yahoo.com>, 2011.
+# Chipong Luo <chipong_l@yahoo.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
+"POT-Creation-Date: 2012-02-07 09:39+0000\n"
 "PO-Revision-Date: 2010-11-27 21:12+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
@@ -37,31 +37,31 @@ msgstr "警告"
 msgid "None"
 msgstr "无"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr "会话管理器套接字"
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:313
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:960
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:964
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -77,11 +77,11 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "工作区名称"
 
-#: ../settings-dialogs/workspace-settings.c:370
+#: ../settings-dialogs/workspace-settings.c:380
 #: ../settings-dialogs/xfwm4-settings.c:311
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
@@ -89,7 +89,7 @@ msgstr "设置管理器套接字"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr "配置窗口行为和快捷方式"
+msgstr "配置窗口行为和快捷键"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -107,12 +107,12 @@ msgid "Window Manager Tweaks"
 msgstr "窗口管理器调整"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr "设置工作区数目和名称："
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "工作区"
 
@@ -146,7 +146,7 @@ msgstr "<b>聚焦时提升</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
-msgstr "<b>标题的对齐(_A)</b>"
+msgstr "<b>标题对齐(_A)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title fon_t</b>"
@@ -284,7 +284,7 @@ msgstr "双击标题栏时执行的动作"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
-msgstr "不能移除窗口标题"
+msgstr "未能移除窗口标题"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
@@ -617,25 +617,26 @@ msgstr "动作"
 msgid "Shortcut"
 msgstr "快捷键"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:989
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "无法初始化 xfconf。原因：%s"
+msgstr "无法初始化 Xfconf。原因：%s"
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1000
 msgid "Could not create the settings dialog."
 msgstr "未能创建设置对话框。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1887
+#: ../settings-dialogs/xfwm4-settings.c:1888
 msgid "Reset to Defaults"
 msgstr "重置为默认"
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1889
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
-msgstr "这会将所有快捷键重置为默认。您真的要这样做吗？"
+msgstr ""
+"这会将所有快捷键重置为默认。您真的要这样做吗？"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -684,7 +685,7 @@ msgstr "什么都不做(_N)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Hide _frame of windows when maximized"
-msgstr "最大化时隐藏窗口框架(_F)"
+msgstr "最大化时隐藏窗口边框(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
@@ -776,7 +777,7 @@ msgstr "窗口放在当前工作区(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr "循环时绘制窗口框架(_D)"
+msgstr "循环时在选中的窗口周围绘制窗口边框(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
@@ -788,7 +789,7 @@ msgstr "包含隐藏(如图标化)窗口(_I)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "最小窗口大小以触发智能放置(_M)："
+msgstr "触发智能放置的窗口最小大小(_M)："
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Placement"
@@ -803,8 +804,8 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"由键盘快捷键切换时记住并恢复\n"
-"先前的工作区(_R)"
+"由键盘快捷键切换时记住并恢复先前的\n"
+"工作区(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
@@ -827,19 +828,11 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>工作区</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr "更改工作区名称"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "边缘是屏幕边上不能放置窗口的边界区域。"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "名称(_N)："
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr "工作区编号(_N)："
 
@@ -987,7 +980,9 @@ msgstr "%s：未能分配颜色 %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s：未能分配颜色：颜色的 GValue 值不是 STRING 类型"
+msgstr ""
+"%s：未能分配颜色：颜色的 GValue 值"
+"不是 STRING 类型"
 
 #: ../src/settings.c:282
 #, c-format
@@ -997,7 +992,9 @@ msgstr "%s：未能解析颜色 %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s：未能解析颜色：颜色的 GValue 值不是 STRING 类型"
+msgstr ""
+"%s：未能解析颜色：颜色的 GValue 值"
+"不是 STRING 类型"
 
 #: ../src/terminate.c:75
 #, c-format
