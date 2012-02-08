@@ -6,13 +6,13 @@
 # wuli <wurisky@gmail.com>,2007, 2008.
 # Hunt Xu <huntxu@live.cn>,2008, 2010.
 # Aron Xu <aronmalache@163.com>, 2009.
-# Chipong Luo <chipong_l@yahoo.com>, 2011, 2012.
+# Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 09:39+0000\n"
+"POT-Creation-Date: 2012-02-08 03:03+0000\n"
 "PO-Revision-Date: 2010-11-27 21:12+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
@@ -635,8 +635,7 @@ msgstr "重置为默认"
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
-msgstr ""
-"这会将所有快捷键重置为默认。您真的要这样做吗？"
+msgstr "这会将所有快捷键重置为默认。您真的要这样做吗？"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -980,9 +979,7 @@ msgstr "%s：未能分配颜色 %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s：未能分配颜色：颜色的 GValue 值"
-"不是 STRING 类型"
+msgstr "%s：未能分配颜色：颜色的 GValue 值不是 STRING 类型"
 
 #: ../src/settings.c:282
 #, c-format
@@ -992,9 +989,7 @@ msgstr "%s：未能解析颜色 %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s：未能解析颜色：颜色的 GValue 值"
-"不是 STRING 类型"
+msgstr "%s：未能解析颜色：颜色的 GValue 值不是 STRING 类型"
 
 #: ../src/terminate.c:75
 #, c-format
