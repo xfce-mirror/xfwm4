@@ -1,19 +1,19 @@
-# #-#-#-#-#  zh_CN.po (4.3.90.1)  #-#-#-#-#
-# Simplified Chinese translations for xfwm4 package.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
+# Simplified Chinese translations for
+# the xfwm4 package.
+# This file is distributed under the same license as
+# the xfwm4 package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
 # wuli <wurisky@gmail.com>,2007, 2008.
 # Hunt Xu <huntxu@live.cn>,2008, 2010.
 # Aron Xu <aronmalache@163.com>, 2009.
-# Chipong Luo <chipong_l@yahoo.com, 2011.
+# Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-06 08:21+0000\n"
+"POT-Creation-Date: 2012-02-10 07:18+0000\n"
 "PO-Revision-Date: 2010-11-27 21:12+0800\n"
-"Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
+"Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
 "Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
