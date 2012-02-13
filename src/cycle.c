@@ -290,12 +290,21 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                         c2 = tabwinSelectHead (passdata->tabwin);
                         cycling = FALSE;
                     }
-                    else if (xevent->xkey.keycode == up || xevent->xkey.keycode == down || xevent->xkey.keycode == left || xevent->xkey.keycode == right)
+                    else if (xevent->xkey.keycode == up)
                     {
-			int rowdelta = (xevent->xkey.keycode == up   ? -1 : xevent->xkey.keycode == down  ? 1 : 0);
-			int coldelta = (xevent->xkey.keycode == left ? -1 : xevent->xkey.keycode == right ? 1 : 0);
-                        TRACE ("Cycle: arrow");
-                        c2 = tabwinSelectDelta(passdata->tabwin, rowdelta, coldelta);
+                        c2 = tabwinSelectDelta(passdata->tabwin, -1, 0);
+                    }
+                    else if (xevent->xkey.keycode == down)
+                    {
+                        c2 = tabwinSelectDelta(passdata->tabwin, 1, 0);
+                    }
+                    else if (xevent->xkey.keycode == left)
+                    {
+                        c2 = tabwinSelectDelta(passdata->tabwin, 0, -1);
+                    }
+                    else if (xevent->xkey.keycode == right)
+                    {
+                        c2 = tabwinSelectDelta(passdata->tabwin, -0, 1);
                     }
                     else if (key == KEY_CYCLE_REVERSE_WINDOWS)
                     {

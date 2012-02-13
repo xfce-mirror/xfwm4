@@ -465,7 +465,7 @@ tabwinChange2Selected (Tabwin *t, GList *selected)
             if (((Client *) g_object_get_data (G_OBJECT(icon), "client-ptr-val")) == t->selected->data)
             {
                     tabwinSetSelected (tbw, icon);
-                    gtk_widget_queue_draw (tbw->window);
+                    gtk_widget_queue_draw (GTK_WIDGET(tbw));
             }
         }
     }
@@ -635,43 +635,78 @@ tabwinSelectPrev (Tabwin *t)
 }
 
 Client *
-tabwinSelectDelta (Tabwin *t, int rowdelta, int coldelta)
+tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
 {
     GList *selected;
-    int curpos, curcol, currow, listlen, cols, rows;
+    int pos_current, col_current, row_current, nitems, cols, rows;
     TabwinWidget *tbw;
 
     TRACE ("entering tabwinSelectDelta");
     g_return_val_if_fail (t != NULL, NULL);
 
     tbw = (TabwinWidget *) t->tabwin_list->data;
-    curpos = g_list_position (*t->client_list, t->selected);
-    listlen = g_list_length (*t->client_list);
-    cols = (listlen < tbw->grid_cols ? listlen : tbw->grid_cols);
-    rows = (listlen-1)/cols + 1;
-    curcol = curpos % cols;
-    currow = curpos / cols;
+    pos_current = g_list_position (*t->client_list, t->selected);
+    nitems = g_list_length (*t->client_list);
 
-    curcol += coldelta;
-    curcol = (curcol<0 ? cols - 1 : curcol>=cols ? 0 : curcol);
-    currow += rowdelta;
-    currow = (currow<0 ? rows - 1 : currow>=rows ? 0 : currow);
-    curpos = curcol + currow*cols;	/* So here we are at the new (wrapped) position in the rectangle */
-    if (curpos>=listlen)		/* If that position does not exist */
+    cols = MIN (nitems, tbw->grid_cols);
+    rows = (nitems - 1) / cols + 1;
+    col_current = pos_current % cols;
+    row_current = pos_current / cols;
+
+    /* Wrap column */
+    col_current += col_delta;
+    if (col_current < 0)
     {
-        if (coldelta)			/* Let horizontal prevail */
+        col_current = cols - 1;
+    }
+    else if (col_current >= cols)
+    {
+        col_current = 0;
+    }
+
+    /* Wrap row */
+    row_current += row_delta;
+    if (row_current < 0)
+    {
+        row_current = rows - 1;
+    }
+    else if (row_current >= rows)
+    {
+        row_current = 0;
+    }
+
+    /* So here we are at the new (wrapped) position in the rectangle */
+    pos_current = col_current + row_current * cols;
+    if (pos_current >= nitems)   /* If that position does not exist */
+    {
+        if (col_delta)            /* Let horizontal prevail */
         {
-            curcol = (coldelta>0 ? 0 : (listlen-1)%cols);
+            if (col_delta > 0)
+            {
+                col_current = 0;
+            }
+            else
+            {
+                col_current = (nitems - 1) % cols;
+            }
         }
         else
         {
-            currow = (rowdelta>0 ? 0 : currow-1);
+            if (row_delta > 0)
+            {
+                row_current = 0;
+            }
+            else
+            {
+                row_current = row_current - 1;
+            }
+
         }
-        curpos = curcol + currow*cols;
+        pos_current = col_current + row_current * cols;
     }
 
-    selected = g_list_nth(*t->client_list, curpos);
-    g_return_val_if_fail (selected != NULL, NULL);
+    selected = g_list_nth(*t->client_list, pos_current);
+
     return tabwinChange2Selected (t, selected);
 }
 
