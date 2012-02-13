@@ -220,6 +220,7 @@
 #define CLIENT_CAN_FILL_WINDOW(c)       (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | \
                                                                   XFWM_FLAG_IS_RESIZABLE) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_MAXIMIZED))
+#define CLIENT_CAN_TILE_WINDOW(c)       (CLIENT_CAN_MAXIMIZE_WINDOW(c) | (c->type & WINDOW_NORMAL))
 
 typedef enum
 {
@@ -235,6 +236,16 @@ typedef enum
     WINDOW_SPLASHSCREEN = (1 << 8)
 }
 netWindowType;
+
+typedef enum
+{
+    TILE_NONE = 0,
+    TILE_LEFT,
+    TILE_RIGHT,
+    TILE_DOWN,
+    TILE_UP
+}
+tilePositionType;
 
 struct _Client
 {
@@ -421,6 +432,10 @@ void                     clientRemoveMaximizeFlag               (Client *);
 void                     clientToggleMaximized                  (Client *,
                                                                  int,
                                                                  gboolean);
+void                     clientTile                             (Client *,
+                                                                 gint,
+                                                                 gint,
+                                                                 tilePositionType);
 void                     clientUpdateOpacity                    (Client *);
 void                     clientUpdateAllOpacity                 (ScreenInfo *);
 void                     clientSetOpacity                       (Client *,

@@ -428,7 +428,24 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 clientFill (c, CLIENT_FILL_VERT);
                 break;
             case KEY_FILL_HORIZ:
-                    clientFill (c, CLIENT_FILL_HORIZ);
+                clientFill (c, CLIENT_FILL_HORIZ);
+                break;
+            case KEY_TILE_DOWN:
+                clientTile (c, frameX (c) + frameWidth (c) / 2,
+                               frameY (c) + frameHeight (c) / 2,
+                               TILE_DOWN);
+            case KEY_TILE_LEFT:
+                clientTile (c, frameX (c) + frameWidth (c) / 2,
+                               frameY (c) + frameHeight (c) / 2,
+                               TILE_LEFT);
+            case KEY_TILE_RIGHT:
+                clientTile (c, frameX (c) + frameWidth (c) / 2,
+                               frameY (c) + frameHeight (c) / 2,
+                               TILE_RIGHT);
+            case KEY_TILE_UP:
+                clientTile (c, frameX (c) + frameWidth (c) / 2,
+                               frameY (c) + frameHeight (c) / 2,
+                               TILE_UP);
                 break;
             default:
                 break;

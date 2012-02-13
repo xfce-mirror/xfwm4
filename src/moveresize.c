@@ -56,6 +56,8 @@
     ButtonReleaseMask | \
     LeaveWindowMask
 
+#define TILE_DISTANCE 15
+
 typedef struct _MoveResizeData MoveResizeData;
 struct _MoveResizeData
 {
@@ -605,13 +607,210 @@ clientButtonReleaseFilter (XEvent * xevent, gpointer data)
     return EVENT_FILTER_CONTINUE;
 }
 
+static void
+clientMoveWarp (Client * c, XMotionEvent *xevent)
+{
+    static guint32 lastresist = 0;
+    static int edge_scroll_x = 0;
+    static int edge_scroll_y = 0;
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gboolean warp_pointer = FALSE;
+    int msx, msy, maxx, maxy;
+    int rx, ry, delta;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientMoveWarp");
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (xevent == NULL)
+    {
+        /* Cleanup */
+        edge_scroll_x = 0;
+        edge_scroll_y = 0;
+        return;
+    }
+
+    if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
+    {
+
+        msx = xevent->x_root;
+        msy = xevent->y_root;
+        maxx = screen_info->width - 1;
+        maxy = screen_info->height - 1;
+        rx = 0;
+        ry = 0;
+        warp_pointer = FALSE;
+
+        if ((msx == 0) || (msx == maxx))
+        {
+            if ((xevent->time - lastresist) > 250)  /* ms */
+            {
+                edge_scroll_x = 0;
+            }
+            else
+            {
+                edge_scroll_x++;
+            }
+            if (msx == 0)
+            {
+                rx = 1;
+            }
+            else
+            {
+                rx = -1;
+            }
+            warp_pointer = TRUE;
+            lastresist = xevent->time;
+        }
+        if ((msy == 0) || (msy == maxy))
+        {
+            if ((xevent->time - lastresist) > 250)  /* ms */
+            {
+                edge_scroll_y = 0;
+            }
+            else
+            {
+                edge_scroll_y++;
+            }
+            if (msy == 0)
+            {
+                ry = 1;
+            }
+            else
+            {
+                ry = -1;
+            }
+            warp_pointer = TRUE;
+            lastresist = xevent->time;
+        }
+
+        if (edge_scroll_x > screen_info->params->wrap_resistance)
+        {
+            edge_scroll_x = 0;
+            if ((msx == 0) || (msx == maxx))
+            {
+                delta = MAX (9 * maxx / 10, maxx - 5 * screen_info->params->wrap_resistance);
+                if (msx == 0)
+                {
+                    if (workspaceMove (screen_info, 0, -1, c, xevent->time))
+                    {
+                        rx = delta;
+                    }
+                }
+                else
+                {
+                    if (workspaceMove (screen_info, 0, 1, c, xevent->time))
+                    {
+                        rx = -delta;
+                    }
+                }
+                warp_pointer = TRUE;
+            }
+            lastresist = 0;
+        }
+        if (edge_scroll_y > screen_info->params->wrap_resistance)
+        {
+            edge_scroll_y = 0;
+            if ((msy == 0) || (msy == maxy))
+            {
+                delta = MAX (9 * maxy / 10, maxy - 5 * screen_info->params->wrap_resistance);
+                if (msy == 0)
+                {
+                    if (workspaceMove (screen_info, -1, 0, c, xevent->time))
+                    {
+                        ry = delta;
+                    }
+                }
+                else
+                {
+                    if (workspaceMove (screen_info, 1, 0, c, xevent->time))
+                    {
+                        ry = -delta;
+                    }
+                }
+                warp_pointer = TRUE;
+            }
+            lastresist = 0;
+        }
+
+        if (warp_pointer)
+        {
+            XWarpPointer (display_info->dpy, None, None, 0, 0, 0, 0, rx, ry);
+            msx += rx;
+            msy += ry;
+        }
+
+        xevent->x_root = msx;
+        xevent->y_root = msy;
+    }
+}
+
+static gboolean
+clientMoveTile (Client *c, XMotionEvent *xevent)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    GdkRectangle rect;
+    int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist;
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (screen_info->params->wrap_windows)
+    {
+        return FALSE;
+    }
+
+    x = xevent->x;
+    y = xevent->y;
+
+    myScreenFindMonitorAtPoint (screen_info, x, y, &rect);
+    disp_x = rect.x;
+    disp_y = rect.y;
+    disp_max_x = rect.x + rect.width;
+    disp_max_y = rect.y + rect.height;
+
+    dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
+    if ((x >= disp_x - 1) && (x < disp_x + dist) &&
+        (y >= disp_y - 1) && (y < disp_max_y + 1))
+    {
+        TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile LEFT", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
+        clientTile (c, x, y, TILE_LEFT);
+        return TRUE;
+    }
+    if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
+        (y >= disp_y - 1) && (y < disp_max_y + 1))
+    {
+        TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile RIGHT", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
+        clientTile (c, x, y, TILE_RIGHT);
+        return TRUE;
+    }
+    if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
+        (y >= disp_y - 1) && (y < disp_y + dist))
+    {
+        TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile UP", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
+        clientTile (c, x, y, TILE_UP);
+        return TRUE;
+    }
+    if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
+        (y >= disp_max_y - dist) && (y < disp_max_y + 1))
+    {
+        TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile DOWN", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
+        clientTile (c, x, y, TILE_DOWN);
+        return TRUE;
+    }
+
+    TRACE ("event (%i,%i) monitor (%i,%i) %ix%i *no* tile", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
+    return FALSE;
+}
+
 static eventFilterStatus
 clientMoveEventFilter (XEvent * xevent, gpointer data)
 {
-    static int edge_scroll_x = 0;
-    static int edge_scroll_y = 0;
     static gboolean toggled_maximize = FALSE;
-    static guint32 lastresist = 0;
     unsigned long configure_flags;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -619,9 +818,8 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = NULL;
     gboolean moving = TRUE;
-    gboolean warp_pointer = FALSE;
     XWindowChanges wc;
-    int prev_x, prev_y, delta;
+    int prev_x, prev_y;
 
     TRACE ("entering clientMoveEventFilter");
 
@@ -730,140 +928,33 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         }
         if ((screen_info->workspace_count > 1) && !(passdata->is_transient))
         {
-            if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
-            {
-                int msx, msy, maxx, maxy;
-                int rx, ry;
-
-                msx = xevent->xmotion.x_root;
-                msy = xevent->xmotion.y_root;
-                maxx = screen_info->width - 1;
-                maxy = screen_info->height - 1;
-                rx = 0;
-                ry = 0;
-                warp_pointer = FALSE;
-
-                if ((msx == 0) || (msx == maxx))
-                {
-                    if ((xevent->xmotion.time - lastresist) > 250)  /* ms */
-                    {
-                        edge_scroll_x = 0;
-                    }
-                    else
-                    {
-                        edge_scroll_x++;
-                    }
-                    if (msx == 0)
-                    {
-                        rx = 1;
-                    }
-                    else
-                    {
-                        rx = -1;
-                    }
-                    warp_pointer = TRUE;
-                    lastresist = xevent->xmotion.time;
-                }
-                if ((msy == 0) || (msy == maxy))
-                {
-                    if ((xevent->xmotion.time - lastresist) > 250)  /* ms */
-                    {
-                        edge_scroll_y = 0;
-                    }
-                    else
-                    {
-                        edge_scroll_y++;
-                    }
-                    if (msy == 0)
-                    {
-                        ry = 1;
-                    }
-                    else
-                    {
-                        ry = -1;
-                    }
-                    warp_pointer = TRUE;
-                    lastresist = xevent->xmotion.time;
-                }
-
-                if (edge_scroll_x > screen_info->params->wrap_resistance)
-                {
-                    edge_scroll_x = 0;
-                    if ((msx == 0) || (msx == maxx))
-                    {
-                        delta = MAX (9 * maxx / 10, maxx - 5 * screen_info->params->wrap_resistance);
-                        if (msx == 0)
-                        {
-                            if (workspaceMove (screen_info, 0, -1, c, xevent->xmotion.time))
-                            {
-                                rx = delta;
-                            }
-                        }
-                        else
-                        {
-                            if (workspaceMove (screen_info, 0, 1, c, xevent->xmotion.time))
-                            {
-                                rx = -delta;
-                            }
-                        }
-                        warp_pointer = TRUE;
-                    }
-                    lastresist = 0;
-                }
-                if (edge_scroll_y > screen_info->params->wrap_resistance)
-                {
-                    edge_scroll_y = 0;
-                    if ((msy == 0) || (msy == maxy))
-                    {
-                        delta = MAX (9 * maxy / 10, maxy - 5 * screen_info->params->wrap_resistance);
-                        if (msy == 0)
-                        {
-                            if (workspaceMove (screen_info, -1, 0, c, xevent->xmotion.time))
-                            {
-                                ry = delta;
-                            }
-                        }
-                        else
-                        {
-                            if (workspaceMove (screen_info, 1, 0, c, xevent->xmotion.time))
-                            {
-                                ry = -delta;
-                            }
-                        }
-                        warp_pointer = TRUE;
-                    }
-                    lastresist = 0;
-                }
-
-                if (warp_pointer)
-                {
-                    XWarpPointer (display_info->dpy, None, None, 0, 0, 0, 0, rx, ry);
-                    msx += rx;
-                    msy += ry;
-                }
-
-                xevent->xmotion.x_root = msx;
-                xevent->xmotion.y_root = msy;
-            }
+            clientMoveWarp (c, (XMotionEvent *) xevent);
         }
 
-        if (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED)
-            && (screen_info->params->restore_on_move))
+        if ((screen_info->params->restore_on_move) && FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
-            if (xevent->xmotion.y_root - passdata->my > 15)
+
+            if ((ABS (xevent->xmotion.x_root - passdata->mx) > 15) ||
+                (ABS (xevent->xmotion.y_root - passdata->my) > 15))
             {
                 /* to keep the distance from the edges of the window proportional. */
-                double xratio;
+                double xratio = .5;
 
-                xratio = (xevent->xmotion.x_root - c->x) / (double)c->width;
-                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
+                if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+                {
+                    xratio = (xevent->xmotion.x_root - c->x) / (double)c->width;
+                    if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
+                    {
+                       toggled_maximize = TRUE;
+                    }
+                }
+                clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE);
                 passdata->move_resized = TRUE;
                 passdata->ox = c->x;
                 passdata->mx = CLAMP(c->x + c->width * xratio, c->x, c->x + c->width);
                 passdata->oy = c->y;
                 passdata->my = c->y - frameTop(c) / 2;
                 configure_flags = CFG_FORCE_REDRAW;
-                toggled_maximize = TRUE;
             }
             else
             {
@@ -876,9 +967,9 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
         clientSnapPosition (c, prev_x, prev_y);
-        if (screen_info->params->restore_on_move)
+        if ((screen_info->params->restore_on_move) && toggled_maximize)
         {
-            if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) && toggled_maximize)
+            if (clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP)
             {
                 clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
                 configure_flags = CFG_FORCE_REDRAW;
@@ -891,7 +982,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 passdata->my = c->y - frameTop(c) / 2;
             }
         }
-        else
+        else if (!clientMoveTile (c, (XMotionEvent *) xevent))
         {
             clientConstrainPos(c, FALSE);
         }
@@ -941,9 +1032,8 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     if (!moving)
     {
         TRACE ("event loop now finished");
-        edge_scroll_x = 0;
-        edge_scroll_y = 0;
         toggled_maximize = FALSE;
+        clientMoveWarp (c, NULL);
         gtk_main_quit ();
     }
 
@@ -975,14 +1065,6 @@ clientMove (Client * c, XEvent * ev)
     }
 
     TRACE ("moving client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) &&
-        !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
-    {
-        /* Partial maximization, clear it up */
-        clientRemoveMaximizeFlag (c);
-    }
-
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 

@@ -611,6 +611,10 @@ loadKeyBindings (ScreenInfo *screen_info)
     parseShortcut (screen_info, KEY_STICK_WINDOW, "stick_window_key", shortcuts);
     parseShortcut (screen_info, KEY_SWITCH_APPLICATION, "switch_application_key", shortcuts);
     parseShortcut (screen_info, KEY_SWITCH_WINDOW, "switch_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_TILE_DOWN, "tile_down_key", shortcuts);
+    parseShortcut (screen_info, KEY_TILE_LEFT, "tile_left_key", shortcuts);
+    parseShortcut (screen_info, KEY_TILE_RIGHT, "tile_right_key", shortcuts);
+    parseShortcut (screen_info, KEY_TILE_UP, "tile_up_key", shortcuts);
     parseShortcut (screen_info, KEY_TOGGLE_ABOVE, "above_key", shortcuts);
     parseShortcut (screen_info, KEY_TOGGLE_FULLSCREEN, "fullscreen_key", shortcuts);
     parseShortcut (screen_info, KEY_UP_WORKSPACE, "up_workspace_key", shortcuts);
