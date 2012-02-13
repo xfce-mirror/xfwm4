@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
+"POT-Creation-Date: 2012-02-13 23:10+0100\n"
 "PO-Revision-Date: 2009-12-15 11:54+0100\n"
 "Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
-"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.0\n"
 
@@ -36,31 +36,31 @@ msgstr "Abisua"
 msgid "None"
 msgstr "Batez"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr "Saio kudeatzaile socketa"
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr "SOCKET IDa"
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:313
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr "Bertsio argibideak"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -76,12 +76,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "%d idazmahaia"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "Idazmahai Izena"
 
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr "Ezarpena kudeatzaile socketa"
 
@@ -106,12 +106,12 @@ msgid "Window Manager Tweaks"
 msgstr "Leiho kudeatzaile ezarpenak"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr "Ezarri idazmahai kopurua eta izenak"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Idazmahaiak"
 
@@ -513,124 +513,144 @@ msgid "Move window to workspace 12"
 msgstr "Mugitu leihoa 12 idazmahaiera"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
+#, fuzzy
+msgid "Tile window to the top"
+msgstr "Ipini leihoa erdian"
+
+#: ../settings-dialogs/xfwm4-settings.c:282
+#, fuzzy
+msgid "Tile window to the bottom"
+msgstr "Mugitu leihoa beheko idazmahaiera"
+
+#: ../settings-dialogs/xfwm4-settings.c:283
+#, fuzzy
+msgid "Tile window to the left"
+msgstr "Ipini leihoa erdian"
+
+#: ../settings-dialogs/xfwm4-settings.c:284
+#, fuzzy
+msgid "Tile window to the right"
+msgstr "Ipini leihoa erdian"
+
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
 msgstr "Ikusi idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Upper workspace"
 msgstr "Goiko idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Bottom workspace"
 msgstr "Beheko idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Left workspace"
 msgstr "Ezkerreko idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Right workspace"
 msgstr "Eskuineko idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Previous workspace"
 msgstr "Aurreko idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Next workspace"
 msgstr "Hurrengo idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 1"
 msgstr "1 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 2"
 msgstr "2 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 3"
 msgstr "3 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 4"
 msgstr "4 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 5"
 msgstr "5 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 6"
 msgstr "6 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 7"
 msgstr "7 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 8"
 msgstr "8 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Workspace 9"
 msgstr "9 Idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Workspace 10"
 msgstr "10 Idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Workspace 11"
 msgstr "11 idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Workspace 12"
 msgstr "12 Idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:304
 msgid "Add workspace"
 msgstr "Gehitu idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Add adjacent workspace"
 msgstr "Gehitu ondoko idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:306
 msgid "Delete last workspace"
 msgstr "Ezabatu azken idazmahaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:303
+#: ../settings-dialogs/xfwm4-settings.c:307
 msgid "Delete active workspace"
 msgstr "Ezabatu idazmahai aktiboa"
 
-#: ../settings-dialogs/xfwm4-settings.c:449
+#: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
 msgstr "Gaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:598
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Action"
 msgstr "Ekintza"
 
-#: ../settings-dialogs/xfwm4-settings.c:603
+#: ../settings-dialogs/xfwm4-settings.c:607
 msgid "Shortcut"
 msgstr "Laster-tekla"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Huts xfconf abiaraztean. Arrazoia: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
 msgstr "Ezin da ezapen elkarrizketa sortu."
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1891
+#: ../settings-dialogs/xfwm4-settings.c:1892
 msgid "Reset to Defaults"
 msgstr "Be_rrezarri lehenespenetara"
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1893
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -829,19 +849,11 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Idazmahaiak</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr "Aldatu idazmahai izena"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Marjinak pantailaren ertzetan leihorik kokatu ezin den eremuak dira"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "Ize_na:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr "idazmahai _kopurua:"
 
@@ -1013,6 +1025,12 @@ msgstr "Errorea seme-prozesutik datuak irakurtzean: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Ezin da laguntza-elkarrizketa abiarazi: %s\n"
 
+#~ msgid "Change workspace name"
+#~ msgstr "Aldatu idazmahai izena"
+
+#~ msgid "_Name:"
+#~ msgstr "Ize_na:"
+
 #~ msgid "Hide"
 #~ msgstr "Ezkutatu"
 
@@ -1072,9 +1090,6 @@ msgstr "Ezin da laguntza-elkarrizketa abiarazi: %s\n"
 
 #~ msgid "Place window under the mouse"
 #~ msgstr "Ipini leiho saguaren azpian"
-
-#~ msgid "Place window in the center"
-#~ msgstr "Ipini leihoa erdian"
 
 #~ msgid ""
 #~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"

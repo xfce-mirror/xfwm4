@@ -7,12 +7,12 @@
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 # Vladimir Melo <vmelo@gnome.org>, 2008.
 # Sérgio Cipolla <secipolla@gmail.com> 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-17 18:45+0000\n"
+"POT-Creation-Date: 2012-02-13 23:10+0100\n"
 "PO-Revision-Date: 2011-05-01 06:49-0300\n"
 "Last-Translator: Sérgio Cipolla <secipolla@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -37,31 +37,31 @@ msgstr "Aviso"
 msgid "None"
 msgstr "Nenhuma"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr "Socket do gerenciador de sessão"
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:313
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr "Informações de versão"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -77,12 +77,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "Espaço de trabalho %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "Nome do espaço de trabalho"
 
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr "Socket do gerenciador de configurações"
 
@@ -107,12 +107,12 @@ msgid "Window Manager Tweaks"
 msgstr "Ajustes do Gerenciador de Janelas"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr "Define o número e os nomes dos espaços de trabalho"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Espaços de trabalho"
 
@@ -515,124 +515,144 @@ msgid "Move window to workspace 12"
 msgstr "Mover a janela para o espaço de trabalho 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
+#, fuzzy
+msgid "Tile window to the top"
+msgstr "Posicionar a janela no centro"
+
+#: ../settings-dialogs/xfwm4-settings.c:282
+#, fuzzy
+msgid "Tile window to the bottom"
+msgstr "Mover a janela para o espaço de trabalho abaixo"
+
+#: ../settings-dialogs/xfwm4-settings.c:283
+#, fuzzy
+msgid "Tile window to the left"
+msgstr "Posicionar a janela no centro"
+
+#: ../settings-dialogs/xfwm4-settings.c:284
+#, fuzzy
+msgid "Tile window to the right"
+msgstr "Redimensionar a janela para direita"
+
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
 msgstr "Mostrar área de trabalho"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Upper workspace"
 msgstr "Espaço de trabalho acima"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Bottom workspace"
 msgstr "Espaço de trabalho abaixo"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Left workspace"
 msgstr "Espaço de trabalho à esquerda"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Right workspace"
 msgstr "Espaço de trabalho à direita"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Previous workspace"
 msgstr "Espaço de trabalho anterior"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Next workspace"
 msgstr "Espaço de trabalho seguinte"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 1"
 msgstr "Espaço de trabalho 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 2"
 msgstr "Espaço de trabalho 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 3"
 msgstr "Espaço de trabalho 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 4"
 msgstr "Espaço de trabalho 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 5"
 msgstr "Espaço de trabalho 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 6"
 msgstr "Espaço de trabalho 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 7"
 msgstr "Espaço de trabalho 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 8"
 msgstr "Espaço de trabalho 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Workspace 9"
 msgstr "Espaço de trabalho 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Workspace 10"
 msgstr "Espaço de trabalho 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Workspace 11"
 msgstr "Espaço de trabalho 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Workspace 12"
 msgstr "Espaço de trabalho 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:304
 msgid "Add workspace"
 msgstr "Adicionar espaço de trabalho"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Add adjacent workspace"
 msgstr "Adicionar espaço de trabalho adjacente"
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:306
 msgid "Delete last workspace"
 msgstr "Excluir o último espaço de trabalho"
 
-#: ../settings-dialogs/xfwm4-settings.c:303
+#: ../settings-dialogs/xfwm4-settings.c:307
 msgid "Delete active workspace"
 msgstr "Excluir o espaço de trabalho ativo"
 
-#: ../settings-dialogs/xfwm4-settings.c:449
+#: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:598
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Action"
 msgstr "Ação"
 
-#: ../settings-dialogs/xfwm4-settings.c:603
+#: ../settings-dialogs/xfwm4-settings.c:607
 msgid "Shortcut"
 msgstr "Atalho"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Falha ao inicializar o xfconf. Motivo: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
 msgstr "Não foi possível criar o diálogo de configurações."
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1891
+#: ../settings-dialogs/xfwm4-settings.c:1892
 msgid "Reset to Defaults"
 msgstr "Restaurar para padrões"
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1893
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -835,20 +855,12 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>Espaços de trabalho</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr "Alterar nome do espaço de trabalho"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Margens são áreas nas bordas da tela onde nenhuma janela será posicionada"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "_Nome:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr "_Número de espaços de trabalho:"
 
@@ -1020,6 +1032,12 @@ msgstr "Erro ao ler dados do processo filho: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Não é possível criar o helper-dialog: %s\n"
 
+#~ msgid "Change workspace name"
+#~ msgstr "Alterar nome do espaço de trabalho"
+
+#~ msgid "_Name:"
+#~ msgstr "_Nome:"
+
 #~ msgid "Hide"
 #~ msgstr "Ocultar"
 
@@ -1079,9 +1097,6 @@ msgstr "Não é possível criar o helper-dialog: %s\n"
 
 #~ msgid "Place window under the mouse"
 #~ msgstr "Posicionar a janela sob o mouse"
-
-#~ msgid "Place window in the center"
-#~ msgstr "Posicionar a janela no centro"
 
 #~ msgid ""
 #~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
@@ -1540,9 +1555,6 @@ msgstr "Não é possível criar o helper-dialog: %s\n"
 
 #~ msgid "Resize window left"
 #~ msgstr "Redimensionar a janela para esquerda"
-
-#~ msgid "Resize window right"
-#~ msgstr "Redimensionar a janela para direita"
 
 #~ msgid "Cancel move/resize window"
 #~ msgstr "Cancela mover/redimencionar janela"

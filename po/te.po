@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
+"POT-Creation-Date: 2012-02-13 23:10+0100\n"
 "PO-Revision-Date: 2011-07-13 17:35+0530\n"
 "Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
-"Language: te\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: te\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -31,31 +31,31 @@ msgstr "హెచ్చరిక"
 msgid "None"
 msgstr "ఏదీకాదు"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr "సెషన్ నిర్వాహకము సాకెట్"
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr "సాకెట్ ఐడి"
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:313
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr "రూపాంతర సమాచారం"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -68,12 +68,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "కార్యక్షేత్రం %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "కార్యక్షేత్రము పేరు"
 
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr "అమరికల నిర్వాహకము సాకెట్"
 
@@ -98,12 +98,12 @@ msgid "Window Manager Tweaks"
 msgstr ""
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr "కార్యక్షేత్రాల యొక్క సంఖ్య మరియు పేర్లను అమర్చు"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "కార్యక్షేత్రాలు"
 
@@ -507,124 +507,144 @@ msgid "Move window to workspace 12"
 msgstr "విండోని కార్యక్షేత్రం 12కి తరలించు"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
+#, fuzzy
+msgid "Tile window to the top"
+msgstr "విండోని ఎడమవైపు కార్యక్షేత్రానికి తరలించు"
+
+#: ../settings-dialogs/xfwm4-settings.c:282
+#, fuzzy
+msgid "Tile window to the bottom"
+msgstr "విండోని దిగువ కార్యక్షేత్రానికి తరలించు"
+
+#: ../settings-dialogs/xfwm4-settings.c:283
+#, fuzzy
+msgid "Tile window to the left"
+msgstr "విండోని ఎడమవైపు కార్యక్షేత్రానికి తరలించు"
+
+#: ../settings-dialogs/xfwm4-settings.c:284
+#, fuzzy
+msgid "Tile window to the right"
+msgstr "విండోని కుడివైపు కార్యక్షేత్రానికి తరలించు"
+
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
 msgstr "డెస్క్‍టాప్ చూపించు"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Upper workspace"
 msgstr "ఎగువ కార్యక్షేత్రం"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Bottom workspace"
 msgstr "దిగువ కార్యక్షేత్రం"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Left workspace"
 msgstr "ఎడమవైపు కార్యక్షేత్రం"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Right workspace"
 msgstr "కుడివైపు కార్యక్షేత్రం"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Previous workspace"
 msgstr "మునుపటి కార్యక్షేత్రం"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Next workspace"
 msgstr "తదుపరి కార్యక్షేత్రం"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:292
 msgid "Workspace 1"
 msgstr "కార్యక్షేత్రం 1"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 2"
 msgstr "కార్యక్షేత్రం 2"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 3"
 msgstr "కార్యక్షేత్రం 3"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 4"
 msgstr "కార్యక్షేత్రం 4"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 5"
 msgstr "కార్యక్షేత్రం 5"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 6"
 msgstr "కార్యక్షేత్రం 6"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 7"
 msgstr "కార్యక్షేత్రం 7"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:299
 msgid "Workspace 8"
 msgstr "కార్యక్షేత్రం 8"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:300
 msgid "Workspace 9"
 msgstr "కార్యక్షేత్రం 9"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:301
 msgid "Workspace 10"
 msgstr "కార్యక్షేత్రం 10"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:302
 msgid "Workspace 11"
 msgstr "కార్యక్షేత్రం 11"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:303
 msgid "Workspace 12"
 msgstr "కార్యక్షేత్రం 12"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:304
 msgid "Add workspace"
 msgstr "కార్యక్షేత్రాన్ని జతచేయి"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Add adjacent workspace"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:306
 msgid "Delete last workspace"
 msgstr "చివరి కార్యక్షేత్రాన్ని తొలగించు"
 
-#: ../settings-dialogs/xfwm4-settings.c:303
+#: ../settings-dialogs/xfwm4-settings.c:307
 msgid "Delete active workspace"
 msgstr "క్రియాశీల కార్యక్షేత్రాన్ని తొలగించు"
 
-#: ../settings-dialogs/xfwm4-settings.c:449
+#: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
 msgstr "థీమ్"
 
-#: ../settings-dialogs/xfwm4-settings.c:598
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Action"
 msgstr "చర్య"
 
-#: ../settings-dialogs/xfwm4-settings.c:603
+#: ../settings-dialogs/xfwm4-settings.c:607
 msgid "Shortcut"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1891
+#: ../settings-dialogs/xfwm4-settings.c:1892
 msgid "Reset to Defaults"
 msgstr "అప్రమేయాలకు తిరిగిఅమర్చు"
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1893
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -816,19 +836,11 @@ msgid "<b>Workspaces</b>"
 msgstr "<b>కార్యక్షేత్రాలు</b>"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr "కార్యక్షేత్రము పేరు మార్చు"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Name:"
-msgstr "పేరు (_N):"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr ""
 
@@ -997,6 +1009,12 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#~ msgid "Change workspace name"
+#~ msgstr "కార్యక్షేత్రము పేరు మార్చు"
+
+#~ msgid "_Name:"
+#~ msgstr "పేరు (_N):"
 
 #~ msgid "Hide"
 #~ msgstr "దాయి"

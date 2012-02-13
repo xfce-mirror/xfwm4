@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
+"POT-Creation-Date: 2012-02-13 23:10+0100\n"
 "PO-Revision-Date: 2004-08-23 18:04+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
-"Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: az\n"
 "X-Generator: KBabel 1.3.1\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -31,31 +31,31 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:313
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -68,13 +68,13 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "İş Sahəsi %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 #, fuzzy
 msgid "Workspace Name"
 msgstr "İş sahəsi adları"
 
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr ""
 
@@ -102,13 +102,13 @@ msgid "Window Manager Tweaks"
 msgstr "Pəncərə İdarəçisi"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 #, fuzzy
 msgid "Set number and names of workspaces"
 msgstr "İş sahəsi ədədi:"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "İş Sahələri"
 
@@ -574,145 +574,165 @@ msgid "Move window to workspace 12"
 msgstr "Pəncərəni 1-ci iş sahəsinə daşı"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
+#, fuzzy
+msgid "Tile window to the top"
+msgstr "Pəncərəni növbəti iş sahəsinə daşı"
+
+#: ../settings-dialogs/xfwm4-settings.c:282
+#, fuzzy
+msgid "Tile window to the bottom"
+msgstr "Pəncərəni növbəti iş sahəsinə daşı"
+
+#: ../settings-dialogs/xfwm4-settings.c:283
+#, fuzzy
+msgid "Tile window to the left"
+msgstr "Pəncərəni sola ölçüləndir"
+
+#: ../settings-dialogs/xfwm4-settings.c:284
+#, fuzzy
+msgid "Tile window to the right"
+msgstr "Pəncərəni sağa ölçüləndir"
+
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:286
 #, fuzzy
 msgid "Upper workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:287
 #, fuzzy
 msgid "Bottom workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:288
 #, fuzzy
 msgid "Left workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:289
 #, fuzzy
 msgid "Right workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Previous workspace"
 msgstr "Əvvəlki iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Next workspace"
 msgstr "Növbəti iş sahəsi"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:292
 #, fuzzy
 msgid "Workspace 1"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:293
 #, fuzzy
 msgid "Workspace 2"
 msgstr "İş Sahəsi %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:294
 #, fuzzy
 msgid "Workspace 3"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:295
 #, fuzzy
 msgid "Workspace 4"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:296
 #, fuzzy
 msgid "Workspace 5"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:297
 #, fuzzy
 msgid "Workspace 6"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:298
 #, fuzzy
 msgid "Workspace 7"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:299
 #, fuzzy
 msgid "Workspace 8"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:300
 #, fuzzy
 msgid "Workspace 9"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:301
 #, fuzzy
 msgid "Workspace 10"
 msgstr "İş Sahəsi %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:302
 #, fuzzy
 msgid "Workspace 11"
 msgstr "İş Sahəsi %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:303
 #, fuzzy
 msgid "Workspace 12"
 msgstr "İş Sahəsi %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:304
 msgid "Add workspace"
 msgstr "İş sahəsi əlavə et"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:305
 #, fuzzy
 msgid "Add adjacent workspace"
 msgstr "İş sahəsi əlavə et"
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:306
 #, fuzzy
 msgid "Delete last workspace"
 msgstr "İş sahəsini sil"
 
-#: ../settings-dialogs/xfwm4-settings.c:303
+#: ../settings-dialogs/xfwm4-settings.c:307
 #, fuzzy
 msgid "Delete active workspace"
 msgstr "İş sahəsini sil"
 
-#: ../settings-dialogs/xfwm4-settings.c:449
+#: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:598
+#: ../settings-dialogs/xfwm4-settings.c:602
 #, fuzzy
 msgid "Action"
 msgstr "Fəal"
 
-#: ../settings-dialogs/xfwm4-settings.c:603
+#: ../settings-dialogs/xfwm4-settings.c:607
 #, fuzzy
 msgid "Shortcut"
 msgstr "Qısa yol yarat"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1891
+#: ../settings-dialogs/xfwm4-settings.c:1892
 msgid "Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1893
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -919,21 +939,11 @@ msgid "<b>Workspaces</b>"
 msgstr "İş sahələrini dəyişdir"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
-msgid "Change workspace name"
-msgstr "İş sahəsi adları"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Kənarlar, ekranın pəncərə yerləşdirilməyəcəyi yerləridir"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
-msgid "_Name:"
-msgstr "Ad:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 #, fuzzy
 msgid "_Number of workspaces:"
 msgstr "İş sahəsi ədədi:"
@@ -1115,6 +1125,14 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Change workspace name"
+#~ msgstr "İş sahəsi adları"
+
+#, fuzzy
+#~ msgid "_Name:"
+#~ msgstr "Ad:"
 
 #~ msgid "Hide"
 #~ msgstr "Gizlət"
@@ -1570,12 +1588,6 @@ msgstr ""
 
 #~ msgid "Resize window down"
 #~ msgstr "Pəncərəni aşağı ölçüləndir"
-
-#~ msgid "Resize window left"
-#~ msgstr "Pəncərəni sola ölçüləndir"
-
-#~ msgid "Resize window right"
-#~ msgstr "Pəncərəni sağa ölçüləndir"
 
 #, fuzzy
 #~ msgid "Cancel move/resize window"

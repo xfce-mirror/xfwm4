@@ -2,7 +2,7 @@
 # Hebrew translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# 
+#
 # Dotan Kamber <kamberd@yahoo.com>, 2004.
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004.
 # Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-28 10:57+0000\n"
+"POT-Creation-Date: 2012-02-13 23:10+0100\n"
 "PO-Revision-Date: 2006-11-11 21:28+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
@@ -36,31 +36,31 @@ msgstr "אזהרה"
 msgid "None"
 msgstr "כלום"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:313
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr "פרטי הגרסה"
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -73,12 +73,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr "סביבת עבודה %d"
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr "שם סביבת העבודה"
 
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr ""
 
@@ -105,13 +105,13 @@ msgid "Window Manager Tweaks"
 msgstr "הגדרות נוספות של מנהל החלונות"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 #, fuzzy
 msgid "Set number and names of workspaces"
 msgstr "מספר סביבות עבודה:"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "סביבות עבודה"
 
@@ -572,141 +572,161 @@ msgid "Move window to workspace 12"
 msgstr "העבר חלון לסביבת עבודה %d"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
+#, fuzzy
+msgid "Tile window to the top"
+msgstr "העבר חלון לסביבת העבודה השמאלית"
+
+#: ../settings-dialogs/xfwm4-settings.c:282
+#, fuzzy
+msgid "Tile window to the bottom"
+msgstr "העבר חלון לסביבת העבודה התחתונה"
+
+#: ../settings-dialogs/xfwm4-settings.c:283
+#, fuzzy
+msgid "Tile window to the left"
+msgstr "הזז קצה שמאלי של חלון"
+
+#: ../settings-dialogs/xfwm4-settings.c:284
+#, fuzzy
+msgid "Tile window to the right"
+msgstr "הזז קצה ימני של חלון"
+
+#: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
 msgstr "הצג שולחן עבודה"
 
-#: ../settings-dialogs/xfwm4-settings.c:282
+#: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Upper workspace"
 msgstr "סביבת עבודה עליונה"
 
-#: ../settings-dialogs/xfwm4-settings.c:283
+#: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Bottom workspace"
 msgstr "סביבת עבודה תחתונה"
 
-#: ../settings-dialogs/xfwm4-settings.c:284
+#: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Left workspace"
 msgstr "סביבת עבודה משמאל"
 
-#: ../settings-dialogs/xfwm4-settings.c:285
+#: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Right workspace"
 msgstr "סביבת עבודה מימין"
 
-#: ../settings-dialogs/xfwm4-settings.c:286
+#: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Previous workspace"
 msgstr "סביבת עבודה קודמת"
 
-#: ../settings-dialogs/xfwm4-settings.c:287
+#: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Next workspace"
 msgstr "סביבת עבודה הבאה"
 
-#: ../settings-dialogs/xfwm4-settings.c:288
+#: ../settings-dialogs/xfwm4-settings.c:292
 #, fuzzy
 msgid "Workspace 1"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:289
+#: ../settings-dialogs/xfwm4-settings.c:293
 #, fuzzy
 msgid "Workspace 2"
 msgstr "סביבת עבודה %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:290
+#: ../settings-dialogs/xfwm4-settings.c:294
 #, fuzzy
 msgid "Workspace 3"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:291
+#: ../settings-dialogs/xfwm4-settings.c:295
 #, fuzzy
 msgid "Workspace 4"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:292
+#: ../settings-dialogs/xfwm4-settings.c:296
 #, fuzzy
 msgid "Workspace 5"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:293
+#: ../settings-dialogs/xfwm4-settings.c:297
 #, fuzzy
 msgid "Workspace 6"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:294
+#: ../settings-dialogs/xfwm4-settings.c:298
 #, fuzzy
 msgid "Workspace 7"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:295
+#: ../settings-dialogs/xfwm4-settings.c:299
 #, fuzzy
 msgid "Workspace 8"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:296
+#: ../settings-dialogs/xfwm4-settings.c:300
 #, fuzzy
 msgid "Workspace 9"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:297
+#: ../settings-dialogs/xfwm4-settings.c:301
 #, fuzzy
 msgid "Workspace 10"
 msgstr "סביבת עבודה %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:298
+#: ../settings-dialogs/xfwm4-settings.c:302
 #, fuzzy
 msgid "Workspace 11"
 msgstr "סביבת עבודה %i"
 
-#: ../settings-dialogs/xfwm4-settings.c:299
+#: ../settings-dialogs/xfwm4-settings.c:303
 #, fuzzy
 msgid "Workspace 12"
 msgstr "סביבת עבודה %d"
 
-#: ../settings-dialogs/xfwm4-settings.c:300
+#: ../settings-dialogs/xfwm4-settings.c:304
 msgid "Add workspace"
 msgstr "הוסף סביבת עבודה"
 
-#: ../settings-dialogs/xfwm4-settings.c:301
+#: ../settings-dialogs/xfwm4-settings.c:305
 #, fuzzy
 msgid "Add adjacent workspace"
 msgstr "הוסף סביבת עבודה"
 
-#: ../settings-dialogs/xfwm4-settings.c:302
+#: ../settings-dialogs/xfwm4-settings.c:306
 #, fuzzy
 msgid "Delete last workspace"
 msgstr "מחק סביבת עבודה"
 
-#: ../settings-dialogs/xfwm4-settings.c:303
+#: ../settings-dialogs/xfwm4-settings.c:307
 #, fuzzy
 msgid "Delete active workspace"
 msgstr "מחק סביבת עבודה"
 
-#: ../settings-dialogs/xfwm4-settings.c:449
+#: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:598
+#: ../settings-dialogs/xfwm4-settings.c:602
 #, fuzzy
 msgid "Action"
 msgstr "פעיל"
 
-#: ../settings-dialogs/xfwm4-settings.c:603
+#: ../settings-dialogs/xfwm4-settings.c:607
 #, fuzzy
 msgid "Shortcut"
 msgstr "אין קיצור"
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1891
+#: ../settings-dialogs/xfwm4-settings.c:1892
 msgid "Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1893
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -937,21 +957,11 @@ msgid "<b>Workspaces</b>"
 msgstr "גלישת סביבות עבודה"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
-msgid "Change workspace name"
-msgstr "שמות סביבות עבודה"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
-msgid "_Name:"
-msgstr "שם:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 #, fuzzy
 msgid "_Number of workspaces:"
 msgstr "מספר סביבות עבודה:"
@@ -1133,6 +1143,14 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Change workspace name"
+#~ msgstr "שמות סביבות עבודה"
+
+#, fuzzy
+#~ msgid "_Name:"
+#~ msgstr "שם:"
 
 #~ msgid "Hide"
 #~ msgstr "הסתר"
@@ -1590,12 +1608,6 @@ msgstr ""
 
 #~ msgid "Resize window down"
 #~ msgstr "הזז קצה תחתון של חלון"
-
-#~ msgid "Resize window left"
-#~ msgstr "הזז קצה שמאלי של חלון"
-
-#~ msgid "Resize window right"
-#~ msgstr "הזז קצה ימני של חלון"
 
 #~ msgid "Cancel move/resize window"
 #~ msgstr "בטל הזזה או שינוי גודל של חלון"

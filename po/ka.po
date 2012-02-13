@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 09:01+0100\n"
+"POT-Creation-Date: 2012-02-13 23:10+0100\n"
 "PO-Revision-Date: 2006-08-24 23:50+0400\n"
 "Last-Translator: Dimitri Gogelia <delphi.knight@gmail.com>\n"
 "Language-Team: Georgian <delphi.knight@gmail.com>\n"
-"Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ka\n"
 "X-Poedit-Language: Georgian\n"
 "X-Poedit-Country: GEORGIA\n"
 
@@ -27,31 +27,31 @@ msgstr ""
 msgid "None"
 msgstr "არაფერი"
 
-#: ../settings-dialogs/tweaks-settings.c:421
+#: ../settings-dialogs/tweaks-settings.c:436
 msgid "Session manager socket"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:421
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:422
-#: ../settings-dialogs/workspace-settings.c:371
-#: ../settings-dialogs/xfwm4-settings.c:313
+#: ../settings-dialogs/tweaks-settings.c:437
+#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:440
-#: ../settings-dialogs/workspace-settings.c:388
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:444
-#: ../settings-dialogs/workspace-settings.c:392
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/tweaks-settings.c:459
+#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -64,12 +64,12 @@ msgstr ""
 msgid "Workspace %d"
 msgstr ""
 
-#: ../settings-dialogs/workspace-settings.c:280
+#: ../settings-dialogs/workspace-settings.c:274
 msgid "Workspace Name"
 msgstr ""
 
-#: ../settings-dialogs/workspace-settings.c:370
-#: ../settings-dialogs/xfwm4-settings.c:311
+#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr ""
 
@@ -94,12 +94,12 @@ msgid "Window Manager Tweaks"
 msgstr ""
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Set number and names of workspaces"
 msgstr ""
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr ""
 
@@ -501,124 +501,140 @@ msgid "Move window to workspace 12"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-msgid "Show desktop"
+msgid "Tile window to the top"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-msgid "Upper workspace"
+msgid "Tile window to the bottom"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-msgid "Bottom workspace"
+msgid "Tile window to the left"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-msgid "Left workspace"
+msgid "Tile window to the right"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:285
-msgid "Right workspace"
+msgid "Show desktop"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-msgid "Previous workspace"
+msgid "Upper workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-msgid "Next workspace"
+msgid "Bottom workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Workspace 1"
+msgid "Left workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Workspace 2"
+msgid "Right workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Workspace 3"
+msgid "Previous workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-msgid "Workspace 4"
+msgid "Next workspace"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-msgid "Workspace 5"
+msgid "Workspace 1"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-msgid "Workspace 6"
+msgid "Workspace 2"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-msgid "Workspace 7"
+msgid "Workspace 3"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-msgid "Workspace 8"
+msgid "Workspace 4"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-msgid "Workspace 9"
+msgid "Workspace 5"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:297
-msgid "Workspace 10"
+msgid "Workspace 6"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-msgid "Workspace 11"
+msgid "Workspace 7"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-msgid "Workspace 12"
+msgid "Workspace 8"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:300
-msgid "Add workspace"
+msgid "Workspace 9"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:301
-msgid "Add adjacent workspace"
+msgid "Workspace 10"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:302
-msgid "Delete last workspace"
+msgid "Workspace 11"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:303
+msgid "Workspace 12"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:304
+msgid "Add workspace"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:305
+msgid "Add adjacent workspace"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:306
+msgid "Delete last workspace"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:307
 msgid "Delete active workspace"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:449
+#: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:598
+#: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Action"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:603
+#: ../settings-dialogs/xfwm4-settings.c:607
 msgid "Shortcut"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:972
+#: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:983
+#: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1870
-#: ../settings-dialogs/xfwm4-settings.c:1871
+#: ../settings-dialogs/xfwm4-settings.c:1891
+#: ../settings-dialogs/xfwm4-settings.c:1892
 msgid "Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1872
+#: ../settings-dialogs/xfwm4-settings.c:1893
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -810,20 +826,11 @@ msgid "<b>Workspaces</b>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Change workspace name"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
-msgid "_Name:"
-msgstr "სახელი:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_Number of workspaces:"
 msgstr ""
 
@@ -992,6 +999,10 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "_Name:"
+#~ msgstr "სახელი:"
 
 #, fuzzy
 #~ msgid "Name:"
