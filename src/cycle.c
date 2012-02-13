@@ -228,7 +228,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     ClientCycleData *passdata;
     Client *c, *removed;
     eventFilterStatus status;
-    KeyCode cancel;
+    KeyCode cancel, left, right, up, down;
     int key, modifiers;
     gboolean key_pressed, cycling, gone;
 
@@ -244,6 +244,10 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     cancel = screen_info->params->keys[KEY_CANCEL].keycode;
+    left = screen_info->params->keys[KEY_LEFT].keycode;
+    right = screen_info->params->keys[KEY_RIGHT].keycode;
+    up = screen_info->params->keys[KEY_UP].keycode;
+    down = screen_info->params->keys[KEY_DOWN].keycode;
     modifiers = (screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier |
                  screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier);
     status = EVENT_FILTER_STOP;
@@ -285,6 +289,13 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     {
                         c2 = tabwinSelectHead (passdata->tabwin);
                         cycling = FALSE;
+                    }
+                    else if (xevent->xkey.keycode == up || xevent->xkey.keycode == down || xevent->xkey.keycode == left || xevent->xkey.keycode == right)
+                    {
+			int rowdelta = (xevent->xkey.keycode == up   ? -1 : xevent->xkey.keycode == down  ? 1 : 0);
+			int coldelta = (xevent->xkey.keycode == left ? -1 : xevent->xkey.keycode == right ? 1 : 0);
+                        TRACE ("Cycle: arrow");
+                        c2 = tabwinSelectDelta(passdata->tabwin, rowdelta, coldelta);
                     }
                     else if (key == KEY_CYCLE_REVERSE_WINDOWS)
                     {

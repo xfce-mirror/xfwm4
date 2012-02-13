@@ -75,6 +75,7 @@ Client                  *tabwinGetSelected                      (Tabwin *);
 Client                  *tabwinSelectHead                       (Tabwin *);
 Client                  *tabwinSelectNext                       (Tabwin *);
 Client                  *tabwinSelectPrev                       (Tabwin *);
+Client                  *tabwinSelectDelta                      (Tabwin *, int, int);
 Client                  *tabwinRemoveClient                     (Tabwin *,
                                                                  Client *);
 void                    tabwinDestroy                           (Tabwin *);
