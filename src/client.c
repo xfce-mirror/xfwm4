@@ -3033,6 +3033,25 @@ clientRemoveMaximizeFlag (Client * c)
 static void
 clientNewMaxState (Client * c, XWindowChanges *wc, int mode)
 {
+    if (FLAG_TEST_ALL (mode, CLIENT_FLAG_MAXIMIZED))
+    {
+        /*
+         * We need to test specifically for full de-maximization
+         * otherwise it's too confusing when the window changes
+         * from horiz to vertical maximization or vice-versa.
+         */
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
+            wc->x = c->old_x;
+            wc->y = c->old_y;
+            wc->width = c->old_width;
+            wc->height = c->old_height;
+
+            return;
+        }
+    }
+
     if (FLAG_TEST (mode, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
@@ -3187,16 +3206,14 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
     wc.width = c->width;
     wc.height = c->height;
 
-    if (restore_position && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
-    {
-        c->old_y = c->y;
-        c->old_height = c->height;
-    }
-
-    if (restore_position && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+    if (restore_position &&
+        FLAG_TEST (mode, CLIENT_FLAG_MAXIMIZED) &&
+        !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         c->old_x = c->x;
+        c->old_y = c->y;
         c->old_width = c->width;
+        c->old_height = c->height;
     }
 
     /* 1) Compute the new state */
@@ -3229,7 +3246,7 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
 }
 
 void
-clientTile (Client * c, gint cx, gint cy, tilePositionType tile)
+clientTile (Client * c, gint cx, gint cy, tilePositionType tile, gboolean send_configure)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -3287,16 +3304,17 @@ clientTile (Client * c, gint cx, gint cy, tilePositionType tile)
     c->height = wc.height;
     c->width = wc.width;
 
-    setNetFrameExtents (display_info,
-                        c->window,
-                        frameTop (c),
-                        frameLeft (c),
-                        frameRight (c),
-                        frameBottom (c));
-
-    clientSetNetActions (c);
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
+    if (send_configure)
     {
+        setNetFrameExtents (display_info,
+                            c->window,
+                            frameTop (c),
+                            frameLeft (c),
+                            frameRight (c),
+                            frameBottom (c));
+
+        clientSetNetActions (c);
+
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);

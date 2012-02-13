@@ -51,7 +51,6 @@
 
 #define MOVERESIZE_EVENT_MASK \
     PointerMotionMask | \
-    PointerMotionHintMask | \
     ButtonMotionMask | \
     ButtonReleaseMask | \
     LeaveWindowMask
@@ -778,28 +777,28 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
         (y >= disp_y - 1) && (y < disp_max_y + 1))
     {
         TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile LEFT", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
-        clientTile (c, x, y, TILE_LEFT);
+        clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move);
         return TRUE;
     }
     if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
         (y >= disp_y - 1) && (y < disp_max_y + 1))
     {
         TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile RIGHT", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
-        clientTile (c, x, y, TILE_RIGHT);
+        clientTile (c, x, y, TILE_RIGHT, !screen_info->params->box_move);
         return TRUE;
     }
     if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
         (y >= disp_y - 1) && (y < disp_y + dist))
     {
         TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile UP", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
-        clientTile (c, x, y, TILE_UP);
+        clientTile (c, x, y, TILE_UP, !screen_info->params->box_move);
         return TRUE;
     }
     if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
         (y >= disp_max_y - dist) && (y < disp_max_y + 1))
     {
         TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile DOWN", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
-        clientTile (c, x, y, TILE_DOWN);
+        clientTile (c, x, y, TILE_DOWN, !screen_info->params->box_move);
         return TRUE;
     }
 

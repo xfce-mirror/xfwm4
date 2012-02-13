@@ -433,22 +433,22 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
             case KEY_TILE_DOWN:
                 clientTile (c, frameX (c) + frameWidth (c) / 2,
                                frameY (c) + frameHeight (c) / 2,
-                               TILE_DOWN);
+                               TILE_DOWN, TRUE);
                 break;
             case KEY_TILE_LEFT:
                 clientTile (c, frameX (c) + frameWidth (c) / 2,
                                frameY (c) + frameHeight (c) / 2,
-                               TILE_LEFT);
+                               TILE_LEFT, TRUE);
                 break;
             case KEY_TILE_RIGHT:
                 clientTile (c, frameX (c) + frameWidth (c) / 2,
                                frameY (c) + frameHeight (c) / 2,
-                               TILE_RIGHT);
+                               TILE_RIGHT, TRUE);
                 break;
             case KEY_TILE_UP:
                 clientTile (c, frameX (c) + frameWidth (c) / 2,
                                frameY (c) + frameHeight (c) / 2,
-                               TILE_UP);
+                               TILE_UP, TRUE);
                 break;
             default:
                 break;
