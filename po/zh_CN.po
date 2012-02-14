@@ -12,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-02-14 09:51+0000\n"
 "PO-Revision-Date: 2010-11-27 21:12+0800\n"
 "Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -514,24 +514,20 @@ msgid "Move window to workspace 12"
 msgstr "移动窗口至工作区 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "移动窗口至左边工作区"
+msgstr "窗口放在顶部"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "移动窗口至下方工作区"
+msgstr "窗口放在底部"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "移动窗口至左边工作区"
+msgstr "窗口放在左边"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "移动窗口至右边工作区"
+msgstr "窗口放在右边"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
