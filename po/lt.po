@@ -158,7 +158,7 @@ msgstr "<b>Langų pritraukimas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Wrap workspaces</b>"
-msgstr "</b>Laužyti darbo vietas</b>"
+msgstr "<b>Laužyti darbo vietas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
