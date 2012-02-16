@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-02-16 02:30+0000\n"
 "PO-Revision-Date: 2011-12-17 22:52+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -509,24 +509,20 @@ msgid "Move window to workspace 12"
 msgstr "Терезені 12-ші жұмыс орнына апару"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Терезені сол жақтағы жұмыс орнына апару"
+msgstr "Терезені үстіге толтыру"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Терезені төмендегі жұмыс орнына апару"
+msgstr "Терезені астыға толтыру"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Терезені сол жақтағы жұмыс орнына апару"
+msgstr "Терезені сол жаққа толтыру"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Терезені оң жақтағы жұмыс орнына апару"
+msgstr "Терезені оң жаққа толтыру"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
