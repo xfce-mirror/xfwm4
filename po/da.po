@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-02-16 02:30+0000\n"
 "PO-Revision-Date: 2009-12-15 13:53+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -514,24 +514,20 @@ msgid "Move window to workspace 12"
 msgstr "Flyt vindue til arbejdsområde 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Flyt vindue til venstre arbejdsområde"
+msgstr "Flyt vindue til toppen som flise"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Fylt vindue til nedre arbejdsområde"
+msgstr "Flyt vindue til bunden som flise"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Flyt vindue til venstre arbejdsområde"
+msgstr "Flyt vindue til venstre som flise"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Flyt vindue til højre arbejdsområde"
+msgstr "Flyt vindue til højre som flise"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
