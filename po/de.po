@@ -6,12 +6,12 @@
 # Nico Schümann <nico@prog.nico22.de>, 2007.
 # Jannis Pohlmann <jannis@xfce.org>, 2008.
 # Jakob Kramer <jakob.kramer@gmx.de>, 2011.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-02-17 07:45+0000\n"
 "PO-Revision-Date: 2011-11-05 23:44+0100\n"
 "Last-Translator: Jakob Kramer <jakob.kramer@gmx.de>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -519,22 +519,22 @@ msgstr "Fenster auf Arbeitsfläche 12 verschieben"
 #: ../settings-dialogs/xfwm4-settings.c:281
 #, fuzzy
 msgid "Tile window to the top"
-msgstr "Fenster in der Mitte platzieren"
+msgstr "Fenster oben platzieren"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
 #, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Fenster auf die untere Arbeitsfläche verschieben"
+msgstr "Fensterunten platzieren"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
 #, fuzzy
 msgid "Tile window to the left"
-msgstr "Fenster in der Mitte platzieren"
+msgstr "Fenster links platzieren"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 #, fuzzy
 msgid "Tile window to the right"
-msgstr "Fenster nach rechts vergrößern"
+msgstr "Fenster rechts platzieren"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
