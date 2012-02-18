@@ -2,12 +2,12 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-02-18 01:18+0000\n"
 "PO-Revision-Date: 2008-12-21 21:53+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -509,24 +509,20 @@ msgid "Move window to workspace 12"
 msgstr "Pindah jendela ke ruang kerja 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Tempatkan jendela di tengah"
+msgstr "Tempatkan jendela di atas"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Pindah jendela ke bagian bawah ruang kerja"
+msgstr "Tempatkan jendela ke bawah"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Tempatkan jendela di tengah"
+msgstr "Tempatkan jendela di kiri"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Ubah ukuran jendela ke kanan"
+msgstr "Tempatkan jendela ke kanan"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
