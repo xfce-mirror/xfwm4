@@ -1984,7 +1984,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         }
         else if ((ev->message_type == display_info->atoms[NET_WM_DESKTOP]) && (ev->format == 32))
         {
-            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_DESKTOP event (0x%lx)", c->name, c->window);
+            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_DESKTOP event", c->name, c->window);
             clientUpdateNetWmDesktop (c, ev);
         }
         else if ((ev->message_type == display_info->atoms[NET_CLOSE_WINDOW]) && (ev->format == 32))
