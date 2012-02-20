@@ -751,12 +751,10 @@ static gboolean
 clientMoveTile (Client *c, XMotionEvent *xevent)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     GdkRectangle rect;
     int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist;
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (screen_info->params->wrap_windows)
     {

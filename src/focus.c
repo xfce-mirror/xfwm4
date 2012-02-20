@@ -745,14 +745,12 @@ static gboolean
 delayed_focus_cb (gpointer data)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     guint32 timestamp = (guint32) GPOINTER_TO_INT (data);
 
     TRACE ("entering delayed_focus_cb");
     g_return_val_if_fail (delayed_focus != NULL, FALSE);
 
     screen_info = delayed_focus->screen_info;
-    display_info = screen_info->display_info;
     clientSetFocus (screen_info, delayed_focus, timestamp, NO_FOCUS_FLAG);
     focus_timeout = 0;
     delayed_focus = NULL;

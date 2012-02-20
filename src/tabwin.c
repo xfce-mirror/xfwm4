@@ -262,7 +262,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     Client *c;
     GList *client_list;
     GtkWidget *windowlist, *icon, *selected;
-    int i, packpos, monitor_width;
+    int packpos, monitor_width;
     Tabwin *t;
     gint icon_size = WIN_ICON_SIZE;
 
