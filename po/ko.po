@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-20 11:48+0000\n"
-"PO-Revision-Date: 2012-02-21 00:56+0900\n"
+"PO-Revision-Date: 2012-02-21 14:44+0900\n"
 "Last-Translator: Seong-ho, Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
 "Language: Korean\n"
@@ -662,7 +662,7 @@ msgstr "<i>투명</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Activate _focus stealing prevention"
-msgstr "창활성 강탈 금지 기능 활성화(_F)"
+msgstr "창 활성 강탈 방지 활성화(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "At the _center of the screen"
@@ -758,7 +758,7 @@ msgstr "마우스 포인터 위치 시키기(_P)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr "창 움직임 대신 모서리 저항을 사용(_E)"
+msgstr "창 잡기 대신 모서리 저항을 사용(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -770,7 +770,7 @@ msgstr "창이 위로 올라 올 때:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "실제 데스크톱의 모양에 따라 작업공간을 전환(_L)"
+msgstr "실제 데스크톱 배치에 따라 작업공간을 전환(_L)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces when the _first or the last workspace is reached"
@@ -790,7 +790,7 @@ msgstr "순환하는 동안 선택된 창 주변으로 틀 그리기(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
-msgstr "표시 합성 활성화(_E)"
+msgstr "디스플레이 합성 활성화(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Include hidden (i.e. iconified) windows"
@@ -1010,14 +1010,3 @@ msgstr "자식 프로세스로부터 데이터를 읽는동안 오류가 발생�
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "도우미 대화상자를 생성할 수 없습니다: %s\n"
 
-#~ msgid "Change workspace name"
-#~ msgstr "작업공간 이름 바꾸기"
-
-#~ msgid "_Name:"
-#~ msgstr "이름(_N):"
-
-#~ msgid "Hide"
-#~ msgstr "숨기기"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: 메모리 오류(segment fault)"
