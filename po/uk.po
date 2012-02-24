@@ -1,14 +1,14 @@
 # Ukrainian translation of xfwm4
 # Copyright (C) 2002-2006 The Xfce development team
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006.
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-02-24 21:06+0000\n"
 "PO-Revision-Date: 2009-02-24 20:24+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -16,8 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uk\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -513,24 +512,20 @@ msgid "Move window to workspace 12"
 msgstr "Перемістити вікно на робочу область 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Перемістити вікно на ліву робочу область"
+msgstr "Перемістити вікно догори"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Перемістити вікно на нижню робочу область"
+msgstr "Перемістити вікно донизу"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Перемістити вікно на ліву робочу область"
+msgstr "Перемістити вікно ліворуч"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Перемістити вікно на праву робочу область"
+msgstr "Перемістити вікно на праворуч"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
