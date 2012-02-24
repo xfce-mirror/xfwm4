@@ -2,7 +2,7 @@
 # Arabic translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Saleh Alhathal <hathalsal@hotmail.com>, 2004.
 # Mohamed Magdy <alnokta@yahoo.com>, 2006.
 # Mohamed SAAD محمد سعد <metehyi@free.fr>, 2007.
@@ -20,8 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
-"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && "
-"n<=10 ? 2 : 3\n"
+"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: Morocco\n"
@@ -519,24 +518,20 @@ msgid "Move window to workspace 12"
 msgstr "أنقل النافذة لمساحة العمل 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "انقل النافذة لمساحة العمل على اليسار"
+msgstr "يلاط النافذة إلى الأعلى"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "انقل النافذة لمساحة العمل السفلى"
+msgstr "بلاط النافذة إلى الأسفل"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "حجم النافذة يساراً"
+msgstr "بلاط النافذة إلى اليسار"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "حجم النافذة يميناً"
+msgstr "بلاط النافذة إلى اليمين"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
