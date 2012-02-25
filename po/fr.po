@@ -127,19 +127,19 @@ msgstr "<b>_Action du double clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
-msgstr "<b>Modèle de focalisation</b>"
+msgstr "<b>Modèle de focus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
-msgstr "<b>Focaliser les nouvelles fenêtres</b>"
+msgstr "<b>Focus sur les nouvelles fenêtres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
-msgstr "<b>Mettre au premier plan lors d'un clic</b>"
+msgstr "<b>Fenêtres au premier plan lors d'un clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Mettre au premier plan à la focalisation</b>"
+msgstr "<b>Fenêtres au premier plan lors du focus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -198,15 +198,15 @@ msgstr "A_vancé"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
 msgstr ""
-"Mettre les fenêtres au premier plan lorsqu'elles _reçoivent l'attention"
+"Placer les fenêtres automatiquement au premier plan lorsqu'elles _reçoivent le focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr "Focaliser automatiquement les _nouvelles fenêtres"
+msgstr "Donner le focus automatiquement sur les _nouvelles fenêtres"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr "_Cliquer pour focaliser"
+msgstr "_Cliquer pour donner le focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
@@ -226,7 +226,7 @@ msgstr "Dis_tance :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Focus follows _mouse"
-msgstr "La focalisation suit la _souris"
+msgstr "Le focus suit la _souris"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
@@ -258,7 +258,7 @@ msgstr "Réduire"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
-msgstr "Mettre au premier plan en cl_iquant dans la fenêtre"
+msgstr "Placer les fenêtres au premier plan en cl_iquant à l'intérieur"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
-msgstr "_Délai avant la focalisation de la fenêtre :"
+msgstr "_Délai avant le focus sur la fenêtre :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
@@ -309,7 +309,7 @@ msgstr "_Résistance aux bords :"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Focus"
-msgstr "_Focalisation"
+msgstr "_Focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
@@ -674,7 +674,7 @@ msgstr "<i>Transparent</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Activate _focus stealing prevention"
-msgstr "Activer la prévention d'acquisition de _focalisation"
+msgstr "Activer la prévention d'acquisition du _focus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "At the _center of the screen"
@@ -710,7 +710,7 @@ msgstr "_Masquer la bordure des fenêtres maximisées"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Suivre le _standard ICCCM pour la focalisation"
+msgstr "Suivre le _standard ICCCM pour le focus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Keep urgent windows _blinking repeatedly"
