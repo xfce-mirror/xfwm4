@@ -645,7 +645,7 @@ msgstr "기본값으로 초기화"
 
 #: ../settings-dialogs/xfwm4-settings.c:1893
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "이 행동은 모든 단축기를 기본 값으로 되돌립니다. 정말로 실행하시렵니까?"
+msgstr "이 행동은 모든 단축기를 기본값으로 되돌립니다. 정말로 실행하시렵니까?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
