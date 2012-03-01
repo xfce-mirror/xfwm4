@@ -4,12 +4,12 @@
 # Olivier Fourdan <fourdan@xfce.org>, 2002-2006.
 # Maximilian Schleiss <maximilian@xfce.org>, 2006-2008.
 # Mike Massonnet <mmassonnet@xfce.org>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-03-01 11:39+0000\n"
 "PO-Revision-Date: 2009-01-18 16:24+0100\n"
 "Last-Translator: Jérôme Guelfucci <jeromeg@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
@@ -198,7 +198,8 @@ msgstr "A_vancé"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
 msgstr ""
-"Placer les fenêtres automatiquement au premier plan lorsqu'elles _reçoivent le focus"
+"Placer les fenêtres automatiquement au premier plan lorsqu'elles _reçoivent "
+"le focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
@@ -514,22 +515,18 @@ msgid "Move window to workspace 12"
 msgstr "Déplacer la fenêtre vers l'espace de travail 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Déplacer la fenêtre vers l'espace de travail à gauche"
+msgstr "Déplacer la fenêtre vers l'espace de travail supérieur"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
 msgstr "Déplacer la fenêtre vers l'espace de travail inférieur"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
 msgstr "Déplacer la fenêtre vers l'espace de travail à gauche"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
 msgstr "Déplacer la fenêtre vers l'espace de travail à droite"
 
