@@ -523,19 +523,16 @@ msgid "Tile window to the top"
 msgstr "Situa la finestra al centre"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Mou la finestra a l'espai de treball esquerra inferior"
+msgstr "Ajusta la finestra a baix"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Situa la finestra al centre"
+msgstr "Ajusta la finestra a l'esquerra"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Redimensiona la finestra cap a la dreta"
+msgstr "Ajusta la finestra a la dreta"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
