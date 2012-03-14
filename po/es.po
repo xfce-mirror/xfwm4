@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Edscott Wilson Garcia <edscott@xfce.org>, 2004.
 # Abel Martín <abel.martin.ruiz@gmail.com>, 2008-2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-03-14 13:30+0000\n"
 "PO-Revision-Date: 2009-12-14 18:44-0300\n"
 "Last-Translator: elega <elega@elega.com.ar>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
@@ -514,24 +514,20 @@ msgid "Move window to workspace 12"
 msgstr "Mover ventana al área de trabajo 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Situar ventana en el centro"
+msgstr "Mosaico de ventanas en la parte superior"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Mover ventana al área de trabajo inferior"
+msgstr "Mosaico de ventanas en la parte inferior"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Situar ventana en el centro"
+msgstr "Mosaico de ventanas en la parte izquierda"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Redimensionar ventana hacia la derecha"
+msgstr "Mosaico de ventanas en la parte derecha"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
