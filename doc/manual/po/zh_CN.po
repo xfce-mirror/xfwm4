@@ -13,6 +13,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -1277,11 +1278,10 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
 "Place - Suite 330, Boston, MA 02111-1307, USA."
 msgstr ""
-"您应该与此程序一道收到了一份 GUN 通用公共许可"
-"协议的副本；如果没有，致信给 "
-"the Free Software Foundation, Inc.,"
-"59 Temple Place - Suite 330, Boston, "
-"MA 02111-1307, USA."
+"您应该与此程序一道收到了一份 GUN 通用公共许可协议的副本；"
+"如果没有，致信给 "
+"the Free Software Foundation, Inc.,59 Temple Place - "
+"Suite 330, Boston, MA 02111-1307, USA."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: xfwm4.xml:0(None)
