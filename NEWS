@@ -1,3 +1,98 @@
+4.9.0
+=====
+- Add tiling feature (bug #6648).
+- Navigate with arrows in task switcher (bug #4752).
+- Show dialogs in settings category.
+- Do not cancel pending focus transition and use actual meaningful
+  timestamp to avoid setting focus on wrong window in focus follow
+  mouse (Bug #8323).
+- Remove docbook documentation.
+- Remove older themes from main package (moved to xfwm4-themes now).
+- Add patch for themeable tab-window (bug #8238).
+- Use themeable icons for the settings manager and the menu, rework
+  the default icons for the settings manager and the window menu and
+  add SVG version.
+- Reintroduce the double-click timeout.
+- Drop AC_PROG_LIBTOOL in favor of LT_PREREQ and LT_INIT.
+- Simply double click detection logic.
+- Add special icons for the button layout in settings.
+- Remove some XFlush() calls.
+- Upon restart, restore the previous selected workspace.
+- Improve horizontal/vertical maximization toggle so that de-maximizing
+  in either direction while fully maximized gives the expected
+  maximization result.
+- Change the default theme to differentiate from 4.8.
+- Update mouse cursor theme and size dynamically (bug #6854).
+- Optimize transients for group evaluation while withdrawing windows.
+- Increase timeout for other WM to exit with "--replace",
+- Rework focus and fullscreen windows to make xfwm4 simpler and
+  more predictable.
+- Get rid or of old GNOME 1.x protocol.
+- Get rif of legacy fullscreen emulation.
+- Translation updates ().
+
+
+4.8.x
+=====
+- Workaround Adobe AIR setting workspace to 0xFF instead of 0xFFFFFFFF
+  as per EWMH specifications (bug #8304).
+- Name the window manager when one is already running to help debugging
+  sessions issues.
+- Add missing bit from master causing pidgin buddy list to be shown on
+  all workspaces (bug #8263).
+- Avoid entering the move/resize loop twice (can happen when using
+  NET_WM_MOVERESIZE client message).
+
+
+4.8.3
+=====
+- Do not exit the move/resize loop when just any key is pressed unless the
+  operation is triggered via the keyboard (this should be enough to fix the
+  remaining part of Bug #8233)
+- Reverting from desktop view may not focus the top most window (Bug #8173)
+- Recompute window's position/maximization state even if the overall size of
+  the screen hasn't changed as the actual layout of the monitors may have
+  changed nevertheless.
+- Check for both forward and backward cycling modifier to be released before
+  exiting the cycle loop (Bug #6508)
+- Fix a couple of memory leaks
+- Fix some events being lost causing the tabwin window to remain sometimes
+  after the key has been released
+- Fix crash when workspace count is set to negative values (Bug #8002)
+- Fix crash in signal handler
+- Fix a bug with transients for group (including utility windows)
+  being withdrawn as many times as parent windows where in the group, causing
+  utility windows to disapear when switching workspaces (this bug was affecting
+  The GIMP and reported initially bugzilla.gnome.org as bug #651454).
+- Do not allow applications to change the win layer on dialogs to prevent
+  dialogs to be unreachable in some Java based applications
+- Do not enforce the size increment only if the size request comes
+  from the application itself (refix Bug #7445)
+- On docs installation, create relative paths in symlinks to images
+- Translations updates: de, fi, hr, is, ko, ro, zh_CN, zh_TW
+
+
+4.8.2
+=====
+- Relax resize wrt to size increments.
+- Allow menu shortcut to work even for non-decorated windows (bug #7300).
+- Keep window fully visible on screen on size request.
+- Fix panel plugins such as verve not receiving focus in focus follow
+  mouse mode (bug #6617, bug #6649).
+- Display session's struct memeber needs to be set even when not
+  connected otherwise bad things may happen when quitting.
+- Translation updates: be, es, ja, ko, ms, nl, pt_BR, ro, ru, sk,
+  te, zh_CN.
+- Manual translation updates: ru, tr, zh_CN.
+
+
+4.8.1
+=====
+- Allow images without an alpha channel to be used in themes as well.
+- Restore the release keyboard events.
+- Updated translations: Russian, Basque, Swedish, Turkish.
+
+
 4.8.0
 =====
 - Update copyright year.
