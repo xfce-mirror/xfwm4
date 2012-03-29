@@ -789,7 +789,7 @@ msgstr "창을 현재 작업 공간으로 이동(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Draw frame around selected windows while cycling"
-msgstr "순환하는 동안 선택된 창 주변으로 틀 그리기(_D)"
+msgstr "순환하는 동안 선택한 창 주변으로 틀 그리기(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Enable display compositing"
