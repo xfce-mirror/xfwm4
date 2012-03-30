@@ -753,10 +753,18 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
     ScreenInfo *screen_info;
     GdkRectangle rect;
     int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist;
+    NetWmDesktopLayout layout;
 
     screen_info = c->screen_info;
 
-    if (screen_info->params->wrap_windows)
+    /*
+     * Tiling when moving really relies on restore_on_move to work
+     * reliably so just don't do anything if any of the above requirement
+     * is not met (restore_on_move being disabled is from another time,
+     * we should really not have such an option, I must have been weaked
+     * in the past...)
+     */
+    if (!screen_info->params->restore_on_move)
     {
         return FALSE;
     }
@@ -770,37 +778,39 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
     disp_max_x = rect.x + rect.width;
     disp_max_y = rect.y + rect.height;
 
+    layout = screen_info->desktop_layout;
     dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
-    if ((x >= disp_x - 1) && (x < disp_x + dist) &&
-        (y >= disp_y - 1) && (y < disp_max_y + 1))
+
+    if (!screen_info->params->wrap_windows || layout.cols < 2)
     {
-        TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile LEFT", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
-        clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move);
-        return TRUE;
-    }
-    if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
-        (y >= disp_y - 1) && (y < disp_max_y + 1))
-    {
-        TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile RIGHT", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
-        clientTile (c, x, y, TILE_RIGHT, !screen_info->params->box_move);
-        return TRUE;
-    }
-    if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
-        (y >= disp_y - 1) && (y < disp_y + dist))
-    {
-        TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile UP", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
-        clientTile (c, x, y, TILE_UP, !screen_info->params->box_move);
-        return TRUE;
-    }
-    if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
-        (y >= disp_max_y - dist) && (y < disp_max_y + 1))
-    {
-        TRACE ("event (%i,%i) monitor (%i,%i) %ix%i tile DOWN", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
-        clientTile (c, x, y, TILE_DOWN, !screen_info->params->box_move);
-        return TRUE;
+        if ((x >= disp_x - 1) && (x < disp_x + dist) &&
+            (y >= disp_y - 1) && (y < disp_max_y + 1))
+        {
+            return clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move);
+        }
+
+        if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
+            (y >= disp_y - 1) && (y < disp_max_y + 1))
+        {
+            return clientTile (c, x, y, TILE_RIGHT, !screen_info->params->box_move);
+        }
     }
 
-    TRACE ("event (%i,%i) monitor (%i,%i) %ix%i *no* tile", x, y, disp_x, disp_y, disp_max_x, disp_max_y);
+    if (!screen_info->params->wrap_windows || layout.rows < 2)
+    {
+        if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
+            (y >= disp_y - 1) && (y < disp_y + dist))
+        {
+            return clientTile (c, x, y, TILE_UP, !screen_info->params->box_move);
+        }
+
+        if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
+            (y >= disp_max_y - dist) && (y < disp_max_y + 1))
+        {
+            return clientTile (c, x, y, TILE_DOWN, !screen_info->params->box_move);
+        }
+    }
+
     return FALSE;
 }
 
@@ -891,9 +901,11 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             if (toggled_maximize)
             {
                 toggled_maximize = FALSE;
-                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
-                configure_flags = CFG_FORCE_REDRAW;
-                passdata->move_resized = TRUE;
+                if (clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE))
+                {
+                    configure_flags = CFG_FORCE_REDRAW;
+                    passdata->move_resized = TRUE;
+                }
             }
         }
         else if (passdata->use_keys)
@@ -945,13 +957,15 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                        toggled_maximize = TRUE;
                     }
                 }
-                clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE);
-                passdata->move_resized = TRUE;
-                passdata->ox = c->x;
-                passdata->mx = CLAMP(c->x + c->width * xratio, c->x, c->x + c->width);
-                passdata->oy = c->y;
-                passdata->my = c->y - frameTop(c) / 2;
-                configure_flags = CFG_FORCE_REDRAW;
+                if (clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE))
+                {
+                    passdata->move_resized = TRUE;
+                    passdata->ox = c->x;
+                    passdata->mx = CLAMP(c->x + c->width * xratio, c->x, c->x + c->width);
+                    passdata->oy = c->y;
+                    passdata->my = c->y - frameTop(c) / 2;
+                    configure_flags = CFG_FORCE_REDRAW;
+                }
             }
             else
             {
@@ -964,11 +978,11 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
         clientSnapPosition (c, prev_x, prev_y);
-        if ((screen_info->params->restore_on_move) && toggled_maximize)
+        if (screen_info->params->restore_on_move && toggled_maximize)
         {
-            if (clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP)
+            if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) &&
+                 clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE))
             {
-                clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
                 configure_flags = CFG_FORCE_REDRAW;
                 toggled_maximize = FALSE;
                 passdata->move_resized = TRUE;
@@ -1078,6 +1092,8 @@ clientMove (Client * c, XEvent * ev)
     passdata.is_transient = clientIsValidTransientOrModal (c);
     passdata.move_resized = FALSE;
 
+    clientSaveSizePos (c);
+
     if (ev && (ev->type == ButtonPress))
     {
         passdata.button = ev->xbutton.button;
@@ -1135,7 +1151,7 @@ clientMove (Client * c, XEvent * ev)
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
     /* Put back the sidewalks as they ought to be */
-    placeSidewalks(screen_info, screen_info->params->wrap_workspaces);
+    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
 
 #ifdef SHOW_POSITION
     if (passdata.poswin)

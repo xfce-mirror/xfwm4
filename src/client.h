@@ -371,7 +371,8 @@ void                     clientGetMWMHints                      (Client *,
 void                     clientGetWMNormalHints                 (Client *,
                                                                  gboolean);
 void                     clientGetWMProtocols                   (Client *);
-void                     clientUpdateIcon                       (Client * c);
+void                     clientUpdateIcon                       (Client *);
+void                     clientSaveSizePos                      (Client *);
 Client                  *clientFrame                            (DisplayInfo *,
                                                                  Window,
                                                                  gboolean);
@@ -430,10 +431,10 @@ void                     clientToggleLayerAbove                 (Client *);
 void                     clientToggleLayerBelow                 (Client *);
 void                     clientSetLayerNormal                   (Client *);
 void                     clientRemoveMaximizeFlag               (Client *);
-void                     clientToggleMaximized                  (Client *,
+gboolean                 clientToggleMaximized                  (Client *,
                                                                  int,
                                                                  gboolean);
-void                     clientTile                             (Client *,
+gboolean                 clientTile                             (Client *,
                                                                  gint,
                                                                  gint,
                                                                  tilePositionType,

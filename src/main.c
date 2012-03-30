@@ -67,13 +67,11 @@
     SubstructureNotifyMask|\
     StructureNotifyMask|\
     SubstructureRedirectMask|\
-    ButtonPressMask|\
-    ButtonReleaseMask|\
     KeyPressMask|\
     KeyReleaseMask|\
     FocusChangeMask|\
     PropertyChangeMask|\
-    ColormapNotify
+    ColormapChangeMask
 
 #ifdef HAVE_COMPOSITOR
 #define MAIN_EVENT_MASK BASE_EVENT_MASK|ExposureMask

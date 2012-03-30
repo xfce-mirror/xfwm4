@@ -186,7 +186,6 @@ struct _XfwmParams
     int popup_opacity;
     int raise_delay;
     int resize_opacity;
-    int restore_on_move;
     int shadow_delta_height;
     int shadow_delta_width;
     int shadow_delta_x;
@@ -215,6 +214,7 @@ struct _XfwmParams
     gboolean raise_on_focus;
     gboolean raise_with_any_button;
     gboolean repeat_urgent_blink;
+    gboolean restore_on_move;
     gboolean scroll_workspaces;
     gboolean show_app_icon;
     gboolean show_dock_shadow;
@@ -223,6 +223,7 @@ struct _XfwmParams
     gboolean snap_resist;
     gboolean snap_to_border;
     gboolean snap_to_windows;
+    gboolean tile_on_move;
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;
     gboolean toggle_workspaces;

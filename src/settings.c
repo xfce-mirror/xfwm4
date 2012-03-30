@@ -721,6 +721,7 @@ loadSettings (ScreenInfo *screen_info)
         {"snap_to_windows", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_width", NULL, G_TYPE_INT, TRUE},
         {"theme", NULL, G_TYPE_STRING, TRUE},
+        {"tile_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"title_alignment", NULL, G_TYPE_STRING, TRUE},
         {"title_font", NULL, G_TYPE_STRING, FALSE},
         {"title_horizontal_offset", NULL, G_TYPE_INT, TRUE},
@@ -822,6 +823,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("snap_resist", rc);
     screen_info->params->snap_width =
         getIntValue ("snap_width", rc);
+    screen_info->params->tile_on_move =
+        getBoolValue ("tile_on_move", rc);
     screen_info->params->toggle_workspaces =
         getBoolValue ("toggle_workspaces", rc);
     screen_info->params->unredirect_overlays =
@@ -1321,6 +1324,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "snap_resist"))
                 {
                     screen_info->params->snap_resist = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "tile_on_move"))
+                {
+                    screen_info->params->tile_on_move = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "toggle_workspaces"))
                 {

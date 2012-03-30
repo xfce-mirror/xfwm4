@@ -106,12 +106,12 @@ struct _ButtonPressData
 
 /* Forward decl */
 static void
-clientUpdateIconPix (Client * c);
-static void
-clientNewMaxSize (Client * c, XWindowChanges *wc, GdkRectangle *, tilePositionType tile);
+clientUpdateIconPix (Client *c);
+static gboolean
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *, tilePositionType tile);
 
 Display *
-clientGetXDisplay (Client * c)
+clientGetXDisplay (Client *c)
 {
     g_return_val_if_fail (c, NULL);
 
@@ -119,7 +119,7 @@ clientGetXDisplay (Client * c)
 }
 
 void
-clientInstallColormaps (Client * c)
+clientInstallColormaps (Client *c)
 {
     XWindowAttributes attr;
     gboolean installed;
@@ -148,7 +148,7 @@ clientInstallColormaps (Client * c)
 }
 
 void
-clientUpdateColormaps (Client * c)
+clientUpdateColormaps (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUpdateColormaps");
@@ -166,7 +166,7 @@ clientUpdateColormaps (Client * c)
 }
 
 static gchar*
-clientCreateTitleName (Client * c, gchar *name, gchar *hostname)
+clientCreateTitleName (Client *c, gchar *name, gchar *hostname)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -192,7 +192,7 @@ clientCreateTitleName (Client * c, gchar *name, gchar *hostname)
 }
 
 void
-clientUpdateName (Client * c)
+clientUpdateName (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -314,7 +314,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 }
 
 void
-clientGrabButtons (Client * c)
+clientGrabButtons (Client *c)
 {
     ScreenInfo *screen_info;
 
@@ -330,7 +330,7 @@ clientGrabButtons (Client * c)
 }
 
 void
-clientUngrabButtons (Client * c)
+clientUngrabButtons (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUngrabButtons");
@@ -442,7 +442,7 @@ clientUpdateUrgency (Client *c)
 }
 
 void
-clientCoordGravitate (Client * c, int gravity, int mode, int *x, int *y)
+clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
 {
     int dx, dy;
 
@@ -503,7 +503,7 @@ clientCoordGravitate (Client * c, int gravity, int mode, int *x, int *y)
 }
 
 void
-clientAdjustCoordGravity (Client * c, int gravity, unsigned long *mask, XWindowChanges *wc)
+clientAdjustCoordGravity (Client *c, int gravity, unsigned long *mask, XWindowChanges *wc)
 {
     int tx, ty, dw, dh;
 
@@ -583,7 +583,7 @@ clientAdjustCoordGravity (Client * c, int gravity, unsigned long *mask, XWindowC
 #define WIN_RESIZED (mask & (CWWidth | CWHeight))
 
 static void
-clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
+clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
     unsigned long change_mask_frame, change_mask_client;
     XWindowChanges change_values;
@@ -630,7 +630,7 @@ clientConfigureWindows (Client * c, XWindowChanges * wc, unsigned long mask, uns
 }
 
 void
-clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
+clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
     XConfigureEvent ce;
     int px, py, pwidth, pheight;
@@ -794,7 +794,7 @@ clientConfigure (Client * c, XWindowChanges * wc, unsigned long mask, unsigned s
 }
 
 void
-clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
+clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -818,7 +818,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
         /* Not allowed in fullscreen or maximzed mode */
         mask &= ~(CWX | CWY | CWWidth | CWHeight);
     }
-    /* Clean up buggy requests that set all flags */
+    /*clean up buggy requests that set all flags */
     if ((mask & CWX) && (wc->x == c->x))
     {
         mask &= ~CWX;
@@ -851,7 +851,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
         /*
          * The client is resizing its window, but did not specify a
          * position, make sure the window remains fully visible in that
-         * case so that the user does not have to relocate the window
+         *case so that the user does not have to relocate the window
          */
         flags |= CFG_KEEP_VISIBLE;
     }
@@ -885,7 +885,7 @@ clientMoveResizeWindow (Client * c, XWindowChanges * wc, unsigned long mask)
 }
 
 void
-clientGetMWMHints (Client * c, gboolean update)
+clientGetMWMHints (Client *c, gboolean update)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1000,7 +1000,7 @@ clientGetMWMHints (Client * c, gboolean update)
 }
 
 void
-clientGetWMNormalHints (Client * c, gboolean update)
+clientGetWMNormalHints (Client *c, gboolean update)
 {
     XWindowChanges wc;
     unsigned long previous_value;
@@ -1169,7 +1169,7 @@ clientGetWMNormalHints (Client * c, gboolean update)
 }
 
 void
-clientGetWMProtocols (Client * c)
+clientGetWMProtocols (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1202,7 +1202,7 @@ clientGetWMProtocols (Client * c)
 }
 
 static void
-clientFree (Client * c)
+clientFree (Client *c)
 {
     g_return_if_fail (c != NULL);
 
@@ -1291,7 +1291,7 @@ clientFree (Client * c)
 }
 
 static void
-clientApplyInitialState (Client * c)
+clientApplyInitialState (Client *c)
 {
     g_return_if_fail (c != NULL);
 
@@ -1341,7 +1341,7 @@ clientApplyInitialState (Client * c)
 }
 
 static gboolean
-clientCheckShape (Client * c)
+clientCheckShape (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1364,7 +1364,7 @@ clientCheckShape (Client * c)
 }
 
 static void
-clientUpdateIconPix (Client * c)
+clientUpdateIconPix (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1437,7 +1437,7 @@ update_icon_idle_cb (gpointer data)
 }
 
 void
-clientUpdateIcon (Client * c)
+clientUpdateIcon (Client *c)
 {
     g_return_if_fail (c);
 
@@ -1447,6 +1447,24 @@ clientUpdateIcon (Client * c)
     {
         c->icon_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
                                               update_icon_idle_cb, c, NULL);
+    }
+}
+
+void
+clientSaveSizePos (Client *c)
+{
+    g_return_if_fail (c != NULL);
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+    {
+        c->old_x = c->x;
+        c->old_width = c->width;
+    }
+
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
+    {
+        c->old_y = c->y;
+        c->old_height = c->height;
     }
 }
 
@@ -1687,7 +1705,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientAddUserTimeWin (c);
     clientGetUserTime (c);
 
-    /* Client PID */
+    /*client PID */
     getHint (display_info, c->window, NET_WM_PID, (long *) &pid);
     c->pid = (GPid) pid;
     TRACE ("Client \"%s\" (0x%lx) PID = %i", c->name, c->window, c->pid);
@@ -1723,10 +1741,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
        initially maximized or fullscreen windows being placed offscreen
        once de-maximized
      */
-    c->old_x = c->x;
-    c->old_y = c->y;
-    c->old_width = c->width;
-    c->old_height = c->height;
+    clientSaveSizePos (c);
     c->fullscreen_old_x = c->x;
     c->fullscreen_old_y = c->y;
     c->fullscreen_old_width = c->width;
@@ -1815,7 +1830,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
         &c->title, NoEventMask, None);
 
-    /* create the top side window AFTER the title window since they overlap
+    /*create the top side window AFTER the title window since they overlap
        and the top side window should be on top */
 
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
@@ -1892,7 +1907,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 }
 
 void
-clientUnframe (Client * c, gboolean remap)
+clientUnframe (Client *c, gboolean remap)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2115,7 +2130,7 @@ clientGetFromWindow (Client *c, Window w, unsigned short mode)
 }
 
 static void
-clientSetWorkspaceSingle (Client * c, guint ws)
+clientSetWorkspaceSingle (Client *c, guint ws)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2150,7 +2165,7 @@ clientSetWorkspaceSingle (Client * c, guint ws)
 }
 
 void
-clientSetWorkspace (Client * c, guint ws, gboolean manage_mapping)
+clientSetWorkspace (Client *c, guint ws, gboolean manage_mapping)
 {
     Client *c2;
     GList *list_of_windows;
@@ -2196,7 +2211,7 @@ clientSetWorkspace (Client * c, guint ws, gboolean manage_mapping)
 }
 
 static void
-clientShowSingle (Client * c, gboolean deiconify)
+clientShowSingle (Client *c, gboolean deiconify)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2234,7 +2249,7 @@ clientShowSingle (Client * c, gboolean deiconify)
 }
 
 void
-clientShow (Client * c, gboolean deiconify)
+clientShow (Client *c, gboolean deiconify)
 {
     Client *c2;
     GList *list_of_windows;
@@ -2262,7 +2277,7 @@ clientShow (Client * c, gboolean deiconify)
 }
 
 static void
-clientWithdrawSingle (Client * c, GList *exclude_list, gboolean iconify)
+clientWithdrawSingle (Client *c, GList *exclude_list, gboolean iconify)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2297,7 +2312,7 @@ clientWithdrawSingle (Client * c, GList *exclude_list, gboolean iconify)
 }
 
 void
-clientWithdraw (Client * c, guint ws, gboolean iconify)
+clientWithdraw (Client *c, guint ws, gboolean iconify)
 {
     Client *c2;
     GList *list_of_windows;
@@ -2352,7 +2367,7 @@ clientWithdraw (Client * c, guint ws, gboolean iconify)
 }
 
 void
-clientWithdrawAll (Client * c, guint ws)
+clientWithdrawAll (Client *c, guint ws)
 {
     GList *list;
     Client *c2;
@@ -2441,7 +2456,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
 }
 
 void
-clientActivate (Client * c, guint32 timestamp, gboolean source_is_application)
+clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
 {
     ScreenInfo *screen_info;
     Client *focused;
@@ -2502,7 +2517,7 @@ clientActivate (Client * c, guint32 timestamp, gboolean source_is_application)
 }
 
 void
-clientClose (Client * c)
+clientClose (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2533,7 +2548,7 @@ clientClose (Client * c)
 }
 
 void
-clientKill (Client * c)
+clientKill (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientKill");
@@ -2543,7 +2558,7 @@ clientKill (Client * c)
 }
 
 void
-clientTerminate (Client * c)
+clientTerminate (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2571,7 +2586,7 @@ clientTerminate (Client * c)
 }
 
 void
-clientEnterContextMenuState (Client * c)
+clientEnterContextMenuState (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2592,7 +2607,7 @@ clientEnterContextMenuState (Client * c)
 }
 
 void
-clientSetLayer (Client * c, guint l)
+clientSetLayer (Client *c, guint l)
 {
     GList *list_of_windows = NULL;
     GList *list = NULL;
@@ -2633,7 +2648,7 @@ clientSetLayer (Client * c, guint l)
 }
 
 void
-clientShade (Client * c)
+clientShade (Client *c)
 {
     XWindowChanges wc;
     ScreenInfo *screen_info;
@@ -2693,7 +2708,7 @@ clientShade (Client * c)
 }
 
 void
-clientUnshade (Client * c)
+clientUnshade (Client *c)
 {
     XWindowChanges wc;
     ScreenInfo *screen_info;
@@ -2735,7 +2750,7 @@ clientUnshade (Client * c)
 }
 
 void
-clientToggleShaded (Client * c)
+clientToggleShaded (Client *c)
 {
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
@@ -2748,7 +2763,7 @@ clientToggleShaded (Client * c)
 }
 
 void
-clientStick (Client * c, gboolean include_transients)
+clientStick (Client *c, gboolean include_transients)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2786,7 +2801,7 @@ clientStick (Client * c, gboolean include_transients)
 }
 
 void
-clientUnstick (Client * c, gboolean include_transients)
+clientUnstick (Client *c, gboolean include_transients)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2824,7 +2839,7 @@ clientUnstick (Client * c, gboolean include_transients)
 }
 
 void
-clientToggleSticky (Client * c, gboolean include_transients)
+clientToggleSticky (Client *c, gboolean include_transients)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleSticky");
@@ -2841,7 +2856,7 @@ clientToggleSticky (Client * c, gboolean include_transients)
 }
 
 void
-clientUpdateFullscreenSize (Client * c)
+clientUpdateFullscreenSize (Client *c)
 {
     ScreenInfo *screen_info;
     XWindowChanges wc;
@@ -2902,13 +2917,13 @@ clientUpdateFullscreenSize (Client * c)
     }
 }
 
-void clientToggleFullscreen (Client * c)
+void clientToggleFullscreen (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleFullscreen");
     TRACE ("toggle fullscreen client \"%s\" (0x%lx)", c->name, c->window);
 
-    /* Can we switch to full screen, does it make any sense? */
+    /*can we switch to full screen, does it make any sense? */
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && (c->size->flags & PMaxSize))
     {
         GdkRectangle rect;
@@ -2932,7 +2947,7 @@ void clientToggleFullscreen (Client * c)
     }
 }
 
-void clientSetFullscreenMonitor (Client * c, gint top, gint bottom, gint left, gint right)
+void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gint right)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2974,7 +2989,7 @@ void clientSetFullscreenMonitor (Client * c, gint top, gint bottom, gint left, g
     }
 }
 
-void clientToggleLayerAbove (Client * c)
+void clientToggleLayerAbove (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleAbove");
@@ -2989,7 +3004,7 @@ void clientToggleLayerAbove (Client * c)
     }
 }
 
-void clientToggleLayerBelow (Client * c)
+void clientToggleLayerBelow (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientToggleBelow");
@@ -3004,7 +3019,7 @@ void clientToggleLayerBelow (Client * c)
     }
 }
 
-void clientSetLayerNormal (Client * c)
+void clientSetLayerNormal (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientSetLayerNormal");
@@ -3017,7 +3032,7 @@ void clientSetLayerNormal (Client * c)
 }
 
 void
-clientRemoveMaximizeFlag (Client * c)
+clientRemoveMaximizeFlag (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("entering clientRemoveMaximizeFlag");
@@ -3031,7 +3046,7 @@ clientRemoveMaximizeFlag (Client * c)
 }
 
 static void
-clientNewMaxState (Client * c, XWindowChanges *wc, int mode)
+clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 {
     if (FLAG_TEST_ALL (mode, CLIENT_FLAG_MAXIMIZED))
     {
@@ -3085,8 +3100,8 @@ clientNewMaxState (Client * c, XWindowChanges *wc, int mode)
     }
 }
 
-static void
-clientNewMaxSize (Client * c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
+static gboolean
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
 {
     ScreenInfo *screen_info;
     int full_x, full_y, full_w, full_h;
@@ -3114,7 +3129,7 @@ clientNewMaxSize (Client * c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
         wc->width = full_w - frameLeft (c) - frameRight (c);
         wc->height = full_h - frameTop (c) - frameBottom (c);
 
-        return;
+        return ((wc->width <= c->size->max_width) && (wc->height <= c->size->max_height));
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
@@ -3144,7 +3159,7 @@ clientNewMaxSize (Client * c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
         wc->x = full_x + frameLeft (c);
         wc->width = full_w - frameLeft (c) - frameRight (c);
 
-        return;
+        return (wc->width <= c->size->max_width);
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
@@ -3174,25 +3189,29 @@ clientNewMaxSize (Client * c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
         wc->y = full_y + frameTop (c);
         wc->height = full_h - frameTop (c) - frameBottom (c);
 
-        return;
+        return (wc->height <= c->size->max_height);
     }
+
+    return TRUE;
 }
 
-void
-clientToggleMaximized (Client * c, int mode, gboolean restore_position)
+gboolean
+clientToggleMaximized (Client *c, int mode, gboolean restore_position)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
     XWindowChanges wc;
     GdkRectangle rect;
+    unsigned long old_flags;
 
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, FALSE);
+
     TRACE ("entering clientToggleMaximized");
     TRACE ("maximzing/unmaximizing client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
     {
-        return;
+        return FALSE;
     }
 
     screen_info = c->screen_info;
@@ -3210,17 +3229,20 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
         FLAG_TEST (mode, CLIENT_FLAG_MAXIMIZED) &&
         !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
-        c->old_x = c->x;
-        c->old_y = c->y;
-        c->old_width = c->width;
-        c->old_height = c->height;
+        clientSaveSizePos (c);
     }
+
+    old_flags = c->flags;
 
     /* 1) Compute the new state */
     clientNewMaxState (c, &wc, mode);
 
     /* 2) Compute the new size, based on the state */
-    clientNewMaxSize (c, &wc, &rect, TILE_NONE);
+    if (!clientNewMaxSize (c, &wc, &rect, TILE_NONE))
+    {
+        c->flags = old_flags;
+        return FALSE;
+    }
 
     /* 3) Update size and position fields */
     c->x = wc.x;
@@ -3243,24 +3265,28 @@ clientToggleMaximized (Client * c, int mode, gboolean restore_position)
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
+
+    return TRUE;
 }
 
-void
-clientTile (Client * c, gint cx, gint cy, tilePositionType tile, gboolean send_configure)
+gboolean
+clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
     XWindowChanges wc;
     GdkRectangle rect;
+    unsigned long old_flags;
     int mode;
 
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, FALSE);
+
     TRACE ("entering clientTile");
     TRACE ("Tiling client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!CLIENT_CAN_TILE_WINDOW (c))
     {
-        return;
+        return FALSE;
     }
 
     screen_info = c->screen_info;
@@ -3289,15 +3315,17 @@ clientTile (Client * c, gint cx, gint cy, tilePositionType tile, gboolean send_c
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
-        c->old_x = c->x;
-        c->old_y = c->y;
-        c->old_width = c->width;
-        c->old_height = c->height;
+        clientSaveSizePos (c);
     }
 
+    old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
     clientNewMaxState (c, &wc, mode);
-    clientNewMaxSize (c, &wc, &rect, tile);
+    if (!clientNewMaxSize (c, &wc, &rect, tile))
+    {
+        c->flags = old_flags;
+        return FALSE;
+    }
 
     c->x = wc.x;
     c->y = wc.y;
@@ -3419,7 +3447,7 @@ clientSetOpacity (Client *c, guint opacity, guint clear, guint xor)
 }
 
 void
-clientDecOpacity (Client * c)
+clientDecOpacity (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -3439,7 +3467,7 @@ clientDecOpacity (Client * c)
 }
 
 void
-clientIncOpacity (Client * c)
+clientIncOpacity (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -3639,7 +3667,7 @@ clientButtonPressEventFilter (XEvent * xevent, gpointer data)
 }
 
 void
-clientButtonPress (Client * c, Window w, XButtonEvent * bev)
+clientButtonPress (Client *c, Window w, XButtonEvent * bev)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -3748,7 +3776,7 @@ clientButtonPress (Client * c, Window w, XButtonEvent * bev)
 }
 
 xfwmPixmap *
-clientGetButtonPixmap (Client * c, int button, int state)
+clientGetButtonPixmap (Client *c, int button, int state)
 {
     ScreenInfo *screen_info;
 
@@ -3818,7 +3846,7 @@ clientGetButtonState (Client *c, int button, int state)
 
 
 Client *
-clientGetLeader (Client * c)
+clientGetLeader (Client *c)
 {
     TRACE ("entering clientGetLeader");
     g_return_val_if_fail (c != NULL, NULL);
@@ -3836,7 +3864,7 @@ clientGetLeader (Client * c)
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char *
-clientGetStartupId (Client * c)
+clientGetStartupId (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
