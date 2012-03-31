@@ -4,12 +4,12 @@
 # Gabriele Modena <randall@email.it>, 2005.
 # Alex Dupre <ale@FreeBSD.org>, 2004, 2005.
 # Cristian Marchi <cri.penta@gmail.com>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-03-31 05:42+0000\n"
 "PO-Revision-Date: 2010-09-08 11:45+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -521,24 +521,20 @@ msgid "Move window to workspace 12"
 msgstr "Sposta la finestra nello spazio di lavoro 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Sposta la finestra nello spazio di lavoro di sinistra"
+msgstr "Riquadra la finestra in alto"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Sposta la finestra nello spazio di lavoro inferiore"
+msgstr "Riquadra la finestra in basso"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Sposta la finestra nello spazio di lavoro di sinistra"
+msgstr "Riquadra la finestra a sinistra"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Sposta la finestra nello spazio di lavoro di destra"
+msgstr "Riquadra la finestra a destra"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -881,35 +877,35 @@ msgstr "_Numero degli spazi di lavoro:"
 msgid "%s (on %s)"
 msgstr "%s (su %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr "Esegue il fork in background"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr "Esegue il fork in background (non supportato)"
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr "Imposta la modalità del compositore"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr " Imposta la modalità del compositore (non supportato) "
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Replace the existing window manager"
 msgstr "Sostituisce il gestore di finestre esistente"
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 msgid "Print version information and exit"
 msgstr "Stampa le informazioni di versione ed esce"
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr "[ARGOMENTI...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Digitare \"%s --help\" per le informazioni di utilizzo"
