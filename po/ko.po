@@ -725,7 +725,7 @@ msgstr "비활성창을 불투명으로(_I):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Opacity of popup window_s:"
-msgstr "튀어나온 창을 불투명으로(_S):"
+msgstr "팝업 창을 불투명으로(_S):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Opacity of windows during _move:"
