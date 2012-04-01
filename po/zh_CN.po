@@ -516,19 +516,19 @@ msgstr "移动窗口至工作区 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Tile window to the top"
-msgstr "窗口放在顶部"
+msgstr "窗口贴在顶部"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Tile window to the bottom"
-msgstr "窗口放在底部"
+msgstr "窗口贴在底部"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Tile window to the left"
-msgstr "窗口放在左边"
+msgstr "窗口贴在左边"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Tile window to the right"
-msgstr "窗口放在右边"
+msgstr "窗口贴在右边"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
