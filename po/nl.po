@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-14 09:51+0000\n"
+"POT-Creation-Date: 2012-04-02 09:54+0000\n"
 "PO-Revision-Date: 2011-09-09 12:41+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -127,11 +127,11 @@ msgstr "<b>Dubbelklik-_actie</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
-msgstr "<b>Vensterfocus-model</b>"
+msgstr "<b>Vensterscherpstelling-model</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
-msgstr "<b>Focus van nieuw venster</b>"
+msgstr "<b>Scherpstelling van nieuw venster</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
@@ -139,7 +139,7 @@ msgstr "<b>Naar voren halen bij klik</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Naar voren halen bij focus</b>"
+msgstr "<b>Naar voren halen bij scherpstelling</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -197,15 +197,15 @@ msgstr "Ge_avanceerd"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Vensters met focus automatisch naar voren halen"
+msgstr "Vensters met scherpstelling automatisch naar voren halen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
-msgstr "_Nieuw gemaakte vensters krijgen automatisch focus"
+msgstr "_Nieuw gemaakte vensters krijgen automatisch scherpstelling"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr "Kli_k voor focus"
+msgstr "Kli_k voor scherpstelling"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
@@ -225,7 +225,7 @@ msgstr "_Afstand:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Focus follows _mouse"
-msgstr "Focus volgt _muis"
+msgstr "Scherpstelling volgt _muis"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
@@ -298,7 +298,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
-msgstr "_Vertraging voordat een venster focus verkrijgt:"
+msgstr "_Vertraging voordat een venster scherpstelling verkrijgt:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
@@ -307,7 +307,7 @@ msgstr "Weerstand van de _rand:"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Focus"
-msgstr "_Focus"
+msgstr "Scher_pstelling"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
@@ -409,7 +409,7 @@ msgstr "Venstergrootte aanpassen"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
-msgstr "Venster vastplakken op alle werkbladen"
+msgstr "Venster vastplakken"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Raise window"
@@ -433,11 +433,11 @@ msgstr "Venster verticaal vullen"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr "Schakel het bovenstaande"
+msgstr "Schakel het bovenstaande om"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
-msgstr "Schakel schermvullend"
+msgstr "Schakel schermvullend om"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
@@ -668,7 +668,7 @@ msgstr "<i>Transparant</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Activate _focus stealing prevention"
-msgstr "Activeer _focus overpakpreventie"
+msgstr "Activeer preventie voor overpakken van scherpstelling"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "At the _center of the screen"
@@ -766,7 +766,7 @@ msgstr "Onder de muis_pijl"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Gebruik _randweerstand in plaats van het klikken van vensters"
+msgstr "Gebruik _randweerstand in plaats van het aanvoegen van vensters"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -863,38 +863,38 @@ msgstr "Aantal werkbladen:"
 msgid "%s (on %s)"
 msgstr "%s (op %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr "Vork naar de achtergrond"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr "Vork naar de achtergrond (niet ondersteund)"
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr "Stel de samenstellermodus in"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr "Stel de samenstellermodus in (niet ondersteund)"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Replace the existing window manager"
 msgstr "Vervang de bestaande vensterbeheerder"
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 msgid "Print version information and exit"
 msgstr "Druk de versie-informatie af en sluit af"
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTEN...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Tik \"%s --help\" voor gebruiksinformatie."
+msgstr "Tik \"%s --help\" voor een gebruiksaanwijzing."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
