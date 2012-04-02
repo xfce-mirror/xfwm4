@@ -7,12 +7,12 @@
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 # Vladimir Melo <vmelo@gnome.org>, 2008.
 # Sérgio Cipolla <secipolla@gmail.com> 2011.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-04-01 22:18+0000\n"
 "PO-Revision-Date: 2011-05-01 06:49-0300\n"
 "Last-Translator: Sérgio Cipolla <secipolla@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -515,24 +515,20 @@ msgid "Move window to workspace 12"
 msgstr "Mover a janela para o espaço de trabalho 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Posicionar a janela no centro"
+msgstr "Posicionar a janela no topo"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Mover a janela para o espaço de trabalho abaixo"
+msgstr "Posicionar a janela abaixo"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Posicionar a janela no centro"
+msgstr "Posicionar a janela à esquerda"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Redimensionar a janela para direita"
+msgstr "Posicionar a janela à direita"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -870,35 +866,35 @@ msgstr "_Número de espaços de trabalho:"
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr "Bifurcar para o segundo plano"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr "Bifurcar para o segundo plano (não suportado)"
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr "Definir o modo compositor"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr "Definir o modo compositor (não suportado)"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Replace the existing window manager"
 msgstr "Substituir o gerenciador de janelas existente"
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 msgid "Print version information and exit"
 msgstr "Imprimir informação de versão e sair"
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Digite \"%s --help\" para as opções de uso."
