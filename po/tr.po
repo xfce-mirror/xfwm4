@@ -2,16 +2,16 @@
 # Turkish translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Erçin EKER <erc.caldera@gmx.net>, 2003.
 # Eren Türkay <turkay.eren@gmail.com>, 2007.
 # Gökmen Görgen <gkmngrgn@gmail.com>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-04-04 14:06+0000\n"
 "PO-Revision-Date: 2009-01-30 21:31+0200\n"
 "Last-Translator: Gökmen Görgen <gkmngrgn@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -254,9 +254,8 @@ msgid "Menu"
 msgstr "Menü"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
-msgstr "Küçü_lt"
+msgstr "Küçült"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
@@ -422,9 +421,8 @@ msgid "Lower window"
 msgstr "Alçak pencere"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Pencereyi yükselt"
+msgstr "Pencereyi yükselt veya alçalt"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -515,24 +513,20 @@ msgid "Move window to workspace 12"
 msgstr "Pencereyi 12. çalışma alanına taşı"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Pencereyi ortaya konumlandır"
+msgstr "Pencere yukarıyı kaplasın"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Pencereyi alt çalışma alanına taşı"
+msgstr "Pencere aşağıyı kaplasın"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Pencereyi ortaya konumlandır"
+msgstr "Pencere solu kaplasın"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Pencereyi yeniden boyutlandır (sağ)"
+msgstr "Pencere sağı kaplasın"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -864,35 +858,35 @@ msgstr "Çalışma ala_nlarının sayısı:"
 msgid "%s (on %s)"
 msgstr "%s (%s üzerinde)"
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr "Arka planda çalıştır"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr "Arka planda çalıştır (desteklenmiyor)"
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr "Compositor modunu ayarla"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr "Compositor modunu ayarla (desteklenmiyor)"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Replace the existing window manager"
 msgstr "Var olan pencere yöneticisi ile değiştir"
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 msgid "Print version information and exit"
 msgstr "Sürüm bilgisini göster ve çık."
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr "[ARGÜMANLAR]"
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Kullanım bilgisi için \"%s --help\" yazın"
