@@ -3309,7 +3309,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
             mode = CLIENT_FLAG_MAXIMIZED_HORIZ;
             break;
         default:
-            return;
+            return FALSE;
             break;
     }
 
@@ -3346,6 +3346,8 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
+
+    return TRUE;
 }
 
 void
