@@ -740,15 +740,15 @@ msgstr "최대화된 창을 움직일 때 원래 크기로(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Show shadows under _dock windows"
-msgstr "붙이기 창에 그림자 보기(_D)"
+msgstr "붙이기 창에 그림자 표시(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _regular windows"
-msgstr "보통 창에 그림자 보기(_R)"
+msgstr "보통 창에 그림자 표시(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Show shadows under pop_up windows"
-msgstr "팝업 창에 그림자 보기(_U)"
+msgstr "팝업 창에 그림자 표시(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Switch to win_dow's workspace"
@@ -904,7 +904,7 @@ msgstr "모든 다른 창을 최소화(_A)"
 
 #: ../src/menu.c:47
 msgid "S_how"
-msgstr "보기(_H)"
+msgstr "보이기(_H)"
 
 #: ../src/menu.c:48
 msgid "_Move"
