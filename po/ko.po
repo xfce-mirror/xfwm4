@@ -859,7 +859,7 @@ msgstr "배경화면으로 쪼개기"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr "배경화면으로 쪼개기 (지원되지 않음)"
+msgstr "배경화면으로 쪼개기 (지원하지 않음)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
@@ -867,7 +867,7 @@ msgstr "합성처리 모드 설정"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr "합성처리 모드 설정 (지원되지 않음)"
+msgstr "합성처리 모드 설정 (지원하지 않음)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
