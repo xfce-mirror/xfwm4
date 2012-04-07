@@ -260,7 +260,7 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ls));
 
     render = gtk_cell_renderer_text_new();
-    col = gtk_tree_view_column_new_with_attributes("", render,
+    col = gtk_tree_view_column_new_with_attributes("#", render,
                                                    "text", COL_NUMBER,
                                                    NULL);
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
