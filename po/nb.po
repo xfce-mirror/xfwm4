@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-04-07 19:58+0200\n"
 "PO-Revision-Date: 2005-08-19 21:16+0900\n"
 "Last-Translator: Terje Uriansrud <terje@uriansrud.net>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nb\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -84,238 +84,238 @@ msgid "Settings manager socket"
 msgstr "Innstillingsbehandlersokkel"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-msgid "Configure window behavior and shortcuts"
-msgstr "Sett opp vindusoppførsel og hurtigtaster"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Vindusbehandler"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-msgid "Fine-tune window behaviour and effects"
-msgstr "Finjuster vindusoppførsel og effekter"
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "Configure window behavior and shortcuts"
+msgstr "Sett opp vindusoppførsel og hurtigtaster"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
 msgstr "Vindusbehandler Tweaks"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Set number and names of workspaces"
-msgstr "Sett antallet og navn på arbeidsområder:"
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+msgid "Fine-tune window behaviour and effects"
+msgstr "Finjuster vindusoppførsel og effekter"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
 msgstr "Arbeidsområde"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Dialog flytting og skalering</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Button layout</b>"
-msgstr "<b>Knapputforming</b>"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>Double click _action</b>"
-msgstr "<b>Handling ved _dobbelklikk</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Focus model</b>"
-msgstr "<b>Fokusmodell</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>New window focus</b>"
-msgstr "<b>Nytt vindu fokus</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>Raise on click</b>"
-msgstr "<b>Hev ved museklikk</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on focus</b>"
-msgstr "<b>Hev ved fokus</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-msgid "<b>Title _alignment</b>"
-msgstr "<b>Tittel_justering</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-msgid "<b>Title fon_t</b>"
-msgstr "<b>Tittel _skrifttype</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-msgid "<b>Window _shortcuts</b>"
-msgstr "<b>Vindus_snarveier</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "<b>Windows snapping</b>"
-msgstr "<b>Vindussnapping</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Roter arbeidsområdene</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
 msgstr "<b>_Tema</b>"
 
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "<i>Long</i>"
-msgstr "<i>Lang</i>"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Title fon_t</b>"
+msgstr "<b>Tittel _skrifttype</b>"
 
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-msgid "<i>Short</i>"
-msgstr "<i>Kort</i>"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+msgid "<b>Title _alignment</b>"
+msgstr "<b>Tittel_justering</b>"
 
-#. Edge resistance
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-msgid "<i>Small</i>"
-msgstr "<i>Liten</i>"
-
-#. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "<i>Wide</i>"
-msgstr "<i>Bred</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Active"
-msgstr "Aktiv"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Ad_vanced"
-msgstr "A_vansert"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Automatically _raise windows when they receive focus"
-msgstr "Automatisk _hev vinduer når de mottar fokus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Automatically give focus to _newly created windows"
-msgstr "Gi _nye vinduer fokus automatisk"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Clic_k to focus"
-msgstr "_Klikk for å fokusere"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
 msgstr "Klikk og dra knappene for å endre utforming"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Close"
-msgstr "Lukk"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "Tittel"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Delay _before raising focused window:"
-msgstr "Forsikelse _før heving av fokusert vindu:"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "The window title cannot be removed"
+msgstr "Vinduets tittel kan ikke fjernes"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Dis_tance:"
-msgstr "Avs_tand:"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "Active"
+msgstr "Aktiv"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Focus follows _mouse"
-msgstr "Fokus følger _musepekeren"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "Skjult"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "Skjul innhold i vinduer når de _flyttes"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "Skjul innhold i vinduer når _størrelsen endres"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Ke_yboard"
-msgstr "_Tastatur"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Maximize"
-msgstr "Maksimer"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "Menu"
 msgstr "Meny"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+msgid "Stick"
+msgstr "Fast"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+msgid "Shade"
+msgstr "Rull opp"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 #, fuzzy
 msgid "Minimize"
 msgstr "Mi_nimer"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-msgid "Raise window when clicking _inside application window"
-msgstr "Hev vindu ved klikk _innenfor programvinduet"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "Maximize"
+msgstr "Maksimer"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Shade"
-msgstr "Rull opp"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Close"
+msgstr "Lukk"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to other _windows"
-msgstr "Snapp vinduer til andre _vinduer"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Skjult"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "Snap windows to screen _border"
-msgstr "Snapp vinduer til skjerm_kanten"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<b>Button layout</b>"
+msgstr "<b>Knapputforming</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "Stick"
-msgstr "Fast"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "_Style"
+msgstr "_Stil"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Handling som utføres ved dobbelklikk på tittellinjen :"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "The window title cannot be removed"
-msgstr "Vinduets tittel kan ikke fjernes"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-msgid "Title"
-msgstr "Tittel"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Roter arbeidsområder ved å _dra vindu av skjermen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Roter arbeidsområdene når muse_pekeren når kanten av skjermen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
-msgid "_Delay before window receives focus:"
-msgstr "_Forsinkelse før vindu mottar fokus:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
-msgid "_Edge resistance:"
-msgstr "_Kantmotstand:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Focus"
-msgstr "_Fokus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "_Reset to Defaults"
 msgstr "_Tilbakestill til standardverdier"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+msgid "<b>Window _shortcuts</b>"
+msgstr "<b>Vindus_snarveier</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "Ke_yboard"
+msgstr "_Tastatur"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "Clic_k to focus"
+msgstr "_Klikk for å fokusere"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Focus follows _mouse"
+msgstr "Fokus følger _musepekeren"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "_Delay before window receives focus:"
+msgstr "_Forsinkelse før vindu mottar fokus:"
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+msgid "<i>Short</i>"
+msgstr "<i>Kort</i>"
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "<i>Long</i>"
+msgstr "<i>Lang</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "<b>Focus model</b>"
+msgstr "<b>Fokusmodell</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Automatically give focus to _newly created windows"
+msgstr "Gi _nye vinduer fokus automatisk"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "<b>New window focus</b>"
+msgstr "<b>Nytt vindu fokus</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Automatically _raise windows when they receive focus"
+msgstr "Automatisk _hev vinduer når de mottar fokus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Delay _before raising focused window:"
+msgstr "Forsikelse _før heving av fokusert vindu:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "<b>Raise on focus</b>"
+msgstr "<b>Hev ved fokus</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Raise window when clicking _inside application window"
+msgstr "Hev vindu ved klikk _innenfor programvinduet"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "<b>Raise on click</b>"
+msgstr "<b>Hev ved museklikk</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "_Focus"
+msgstr "_Fokus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgid "Snap windows to screen _border"
+msgstr "Snapp vinduer til skjerm_kanten"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Snap windows to other _windows"
+msgstr "Snapp vinduer til andre _vinduer"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Dis_tance:"
+msgstr "Avs_tand:"
+
+#. Edge resistance
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+msgid "<i>Small</i>"
+msgstr "<i>Liten</i>"
+
+#. Edge resistance
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "<i>Wide</i>"
+msgstr "<i>Bred</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "<b>Windows snapping</b>"
+msgstr "<b>Vindussnapping</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "Roter arbeidsområdene når muse_pekeren når kanten av skjermen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "Roter arbeidsområder ved å _dra vindu av skjermen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+msgid "_Edge resistance:"
+msgstr "_Kantmotstand:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgid "<b>Wrap workspaces</b>"
+msgstr "<b>Roter arbeidsområdene</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "Hide content of windows when _resizing"
+msgstr "Skjul innhold i vinduer når _størrelsen endres"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+msgid "Hide content of windows when _moving"
+msgstr "Skjul innhold i vinduer når de _flyttes"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+msgid "<b>Box move and resize</b>"
+msgstr "<b>Dialog flytting og skalering</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Handling som utføres ved dobbelklikk på tittellinjen :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+msgid "<b>Double click _action</b>"
+msgstr "<b>Handling ved _dobbelklikk</b>"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "_Style"
-msgstr "_Stil"
+msgid "Ad_vanced"
+msgstr "A_vansert"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -658,175 +658,7 @@ msgstr ""
 "Dette vil tilbakestille alle snarveier til standardverdi. Ønsker du å gjøre "
 "dette?"
 
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Large</i>"
-msgstr "<i>Stor</i>"
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "<i>Opaque</i>"
-msgstr "<i>Ugjennomsiktig</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "<i>Transparent</i>"
-msgstr "<i>Gjennomsiktig</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate _focus stealing prevention"
-msgstr "Aktiver beskyttelse mot stjeling av _fokus"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the _center of the screen"
-msgstr "_Midtstilt på skjermen"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "By default, place windows:"
-msgstr "Som standard, plasser vinduer:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-msgid "C_ompositor"
-msgstr "K_ompositt"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "C_ycling"
-msgstr "_Veksle mellom"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "Cycle _through windows on all workspaces"
-msgstr "_Veksle mellom vinduer fra alle arbeidsområdene"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "Display _fullscreen overlay windows directly"
-msgstr "Vis _fullskjermsvinduer direkte uten å bruke kompositt"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Do _nothing"
-msgstr "Gjør _ingenting"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Hide _frame of windows when maximized"
-msgstr "Skjul _vindusramme når maksimert"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Honor _standard ICCCM focus hint"
-msgstr "Overhold ICCCM _standarder for fokus"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr "La kritiske vinduer _blinke gjentatte ganger"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Key used to _grab and move windows:"
-msgstr "Tast for å ta _tak i og flytte vinduer:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Varsle _kritiske vinduer ved at vindusdekorasjonen blinker"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Opaci_ty of window decorations:"
-msgstr "Dekkevne _for vindusdekorasjoner:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Opacity of _inactive windows:"
-msgstr "Dekkevne for _inaktive vinduer:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Opacity of popup window_s:"
-msgstr "Dekkevne for _sprettoppvinduer:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of windows during _move:"
-msgstr "Dekkevne for vinduer som _flyttes:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Opacity of windows during resi_ze:"
-msgstr "Dekkevne for vinduer som endrer s_tørrelse"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Restore original _size of maximized windows when moving"
-msgstr "Gjenopprett origina_l størrelse på vindu mens det flyttes"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Show shadows under _dock windows"
-msgstr "Vis skygge under sa_mlevinduer"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid "Show shadows under _regular windows"
-msgstr "Vis skugge under va_nlige vinduer"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-msgid "Show shadows under pop_up windows"
-msgstr "Vis skygge under sprett_oppvinduer"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-msgid "Switch to win_dow's workspace"
-msgstr "Bytt til vind_uets arbeidsområde"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Under the mouse _pointer"
-msgstr "Under muse_pekeren"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Use _edge resistance instead of window snapping"
-msgstr "Bruk _kantmotstand istedet for tiltrekning mellom vinduer"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Bruk _musepekerhjulet over skrivebordet for å bytte arbeidsområde"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "When a window raises itself:"
-msgstr "Når et vindu hever seg selv:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Bryt arbeidsområdet avhengig av skrivebordets _utforming"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Bryt arbeidsområder når den _første eller siste nås"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "_Accessibility"
-msgstr "_Tilgjengelighet"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-msgid "_Bring window on current workspace"
-msgstr "_Ta med vindu til gjeldende arbeidsområde"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "_Draw frame around selected windows while cycling"
-msgstr "_Tegn ramme rundt valgte vinduer ved rotering"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "_Enable display compositing"
-msgstr "_Bruk kompositteffekter (skjermeffekter)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Inkluder skjulte vinduer (ikonifiserte)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "_Minimum størrelse på vinduer for å utløse smart plassering"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "_Placement"
-msgstr "_Plassering"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Hev vinduer ved hvilket som helst museklikk"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-msgid ""
-"_Remember and recall previous workspace\n"
-"when switching via keyboard shortcuts"
-msgstr ""
-"_Lagre og gjenopprett forrige arbeidsområde ved bytting med hurtigtast."
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
@@ -834,28 +666,206 @@ msgstr ""
 "_Hopp over vinduer som har «hopp over skrivebordoversikt/oppgavelinje» "
 "egenskaper satt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "_Inkluder skjulte vinduer (ikonifiserte)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "Cycle _through windows on all workspaces"
+msgstr "_Veksle mellom vinduer fra alle arbeidsområdene"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
+msgstr "_Tegn ramme rundt valgte vinduer ved rotering"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr "_Veksle mellom"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Activate _focus stealing prevention"
+msgstr "Aktiver beskyttelse mot stjeling av _fokus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "Honor _standard ICCCM focus hint"
+msgstr "Overhold ICCCM _standarder for fokus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr "Når et vindu hever seg selv:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "_Bring window on current workspace"
+msgstr "_Ta med vindu til gjeldende arbeidsområde"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Switch to win_dow's workspace"
+msgstr "Bytt til vind_uets arbeidsområde"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Do _nothing"
+msgstr "Gjør _ingenting"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+msgid "Key used to _grab and move windows:"
+msgstr "Tast for å ta _tak i og flytte vinduer:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "_Hev vinduer ved hvilket som helst museklikk"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Hide _frame of windows when maximized"
+msgstr "Skjul _vindusramme når maksimert"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "Restore original _size of maximized windows when moving"
+msgstr "Gjenopprett origina_l størrelse på vindu mens det flyttes"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+msgid "Use _edge resistance instead of window snapping"
+msgstr "Bruk _kantmotstand istedet for tiltrekning mellom vinduer"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr "Varsle _kritiske vinduer ved at vindusdekorasjonen blinker"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr "La kritiske vinduer _blinke gjentatte ganger"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "_Accessibility"
+msgstr "_Tilgjengelighet"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "Bruk _musepekerhjulet over skrivebordet for å bytte arbeidsområde"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
+msgstr ""
+"_Lagre og gjenopprett forrige arbeidsområde ved bytting med hurtigtast."
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "Bryt arbeidsområdet avhengig av skrivebordets _utforming"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "Bryt arbeidsområder når den _første eller siste nås"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Workspaces"
 msgstr "_Arbeidsområder"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "<b>Margins</b>"
-msgstr "<b>Marginer</b>"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "_Minimum størrelse på vinduer for å utløse smart plassering"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-msgid "<b>Workspaces</b>"
-msgstr "<b>Arbeidsområder</b>"
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "<i>Large</i>"
+msgstr "<i>Stor</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "By default, place windows:"
+msgstr "Som standard, plasser vinduer:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "At the _center of the screen"
+msgstr "_Midtstilt på skjermen"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "Under the mouse _pointer"
+msgstr "Under muse_pekeren"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "_Placement"
+msgstr "_Plassering"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Enable display compositing"
+msgstr "_Bruk kompositteffekter (skjermeffekter)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "Display _fullscreen overlay windows directly"
+msgstr "Vis _fullskjermsvinduer direkte uten å bruke kompositt"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "Show shadows under _regular windows"
+msgstr "Vis skugge under va_nlige vinduer"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "Show shadows under pop_up windows"
+msgstr "Vis skygge under sprett_oppvinduer"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "Show shadows under _dock windows"
+msgstr "Vis skygge under sa_mlevinduer"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Opaci_ty of window decorations:"
+msgstr "Dekkevne _for vindusdekorasjoner:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "<i>Transparent</i>"
+msgstr "<i>Gjennomsiktig</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "<i>Opaque</i>"
+msgstr "<i>Ugjennomsiktig</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgid "Opacity of _inactive windows:"
+msgstr "Dekkevne for _inaktive vinduer:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "Opacity of windows during _move:"
+msgstr "Dekkevne for vinduer som _flyttes:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+msgid "Opacity of windows during resi_ze:"
+msgstr "Dekkevne for vinduer som endrer s_tørrelse"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+msgid "Opacity of popup window_s:"
+msgstr "Dekkevne for _sprettoppvinduer:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "C_ompositor"
+msgstr "K_ompositt"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid "_Number of workspaces:"
+msgstr "_Antall arbeidsområder:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid "Layout"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#, fuzzy
+msgid "Names"
+msgstr "_Navn:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+msgid "_General"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Marginer er områder ved kantene på skjermen hvor ingen vinduer vil bli "
 "plassert"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
-msgid "_Number of workspaces:"
-msgstr "_Antall arbeidsområder:"
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#, fuzzy
+msgid "_Margins"
+msgstr "<b>Marginer</b>"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -863,35 +873,35 @@ msgstr "_Antall arbeidsområder:"
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr "Forgren til bakgrunnen"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr "Forgren til bakgrunn (ikke støttet)"
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr "Sett komposittmodus"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr "Sett komposittmodus (ikke støttet)"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Replace the existing window manager"
 msgstr "Erstatt den eksisterende vindusbehandleren"
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 msgid "Print version information and exit"
 msgstr "Skriv ut versjonsinformasjon og avslutt"
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTER...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skriv \"%s --help\" for informasjon om bruk."
@@ -1023,11 +1033,14 @@ msgstr "Feil ved lesing av data fra underprosess: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan ikke starte «helper-dialog»: %s\n"
 
+#~ msgid "Set number and names of workspaces"
+#~ msgstr "Sett antallet og navn på arbeidsområder:"
+
+#~ msgid "<b>Workspaces</b>"
+#~ msgstr "<b>Arbeidsområder</b>"
+
 #~ msgid "Change workspace name"
 #~ msgstr "Endre arbeidsområdenavn"
-
-#~ msgid "_Name:"
-#~ msgstr "_Navn:"
 
 #~ msgid "Hide"
 #~ msgstr "Skjul"

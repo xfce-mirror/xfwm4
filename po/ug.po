@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-04-07 19:58+0200\n"
 "PO-Revision-Date: 2009-10-11 17:11+0900\n"
 "Last-Translator: Gheyret T.Kenji <gheyret@gmail.com>\n"
 "Language-Team:Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -84,244 +84,244 @@ msgid "Settings manager socket"
 msgstr "manager socket نىڭ تەڭشەكلىرى"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-msgid "Configure window behavior and shortcuts"
-msgstr "كۆزنەك ھەرىكىتى ۋە تېزلەتمىنى سەپلەش"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "كۆزنەك باشقۇرغۇ"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-msgid "Fine-tune window behaviour and effects"
-msgstr "كۆزنەك ھەرىكىتى ۋە ئۈنۈمىنى ئىنچىكە تەڭشەش"
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "Configure window behavior and shortcuts"
+msgstr "كۆزنەك ھەرىكىتى ۋە تېزلەتمىنى سەپلەش"
 
 # FIXME: Q_()
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
 msgstr "كۆزنەك باشقۇرغۇ (Tweaks)"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-msgid "Set number and names of workspaces"
-msgstr "خىزمەت مۇھىتىنىڭ ئاتى ۋە سانىنى بەلگىلەش"
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+msgid "Fine-tune window behaviour and effects"
+msgstr "كۆزنەك ھەرىكىتى ۋە ئۈنۈمىنى ئىنچىكە تەڭشەش"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
 msgstr "خىزمەت مۇھىتلىرى"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>يۆتكەش ۋە چوڭلۇقىنى ئۆزگەرتىش</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Button layout</b>"
-msgstr "<b>توپچىنىڭ ئورۇنلاشتۇرۇلۇشى</b>"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>Double click _action</b>"
-msgstr "<b>قوش چېكىلگەندىكى ھەرىكەت</b>(_A)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Focus model</b>"
-msgstr "<b>فوكۇس model</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>New window focus</b>"
-msgstr "<b>يېڭى كۆزنەكنىڭ فوكۇسى</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>Raise on click</b>"
-msgstr "<b>چېكىلگەندە كۆتۈرۈلسۇن</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on focus</b>"
-msgstr "<b>فوكۇسلانغاندا كۆتۈرۈلسۇن</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-msgid "<b>Title _alignment</b>"
-msgstr "<b>ماۋزۇنىڭ ئورنى</b>(_A)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-msgid "<b>Title fon_t</b>"
-msgstr "<b>ماۋزۇ فونتى</b>(_T)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-msgid "<b>Window _shortcuts</b>"
-msgstr "<b>كۆزنەكنىڭ تېزلەتمە كۇنۇپكىلىرى</b>(_S)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "<b>Windows snapping</b>"
-msgstr "<b>كۆزنەك snapping</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>خىمەت مۇھىتلىرىنى قاتلاش</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
 msgstr "<b>ئۇسلۇب</b>(_T)"
 
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "<i>Long</i>"
-msgstr "<i>ئۇزۇن</i>"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Title fon_t</b>"
+msgstr "<b>ماۋزۇ فونتى</b>(_T)"
 
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-msgid "<i>Short</i>"
-msgstr "<i>قىسقا</i>"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+msgid "<b>Title _alignment</b>"
+msgstr "<b>ماۋزۇنىڭ ئورنى</b>(_A)"
 
-#. Edge resistance
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-msgid "<i>Small</i>"
-msgstr "<i>كىچىك</i>"
-
-#. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "<i>Wide</i>"
-msgstr "<i>كەڭرى</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Active"
-msgstr "ئاكتىپ"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Ad_vanced"
-msgstr "ئالىي(_V)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Automatically _raise windows when they receive focus"
-msgstr "كۆزنەك فوكۇسلانغاندا ئاپتوماتىك كۆتۈرۈلسۇن(_R)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Automatically give focus to _newly created windows"
-msgstr "يېڭى كۆزنەك قۇرۇلغاندا ئاپتوماتىك فوكۇسلانسۇن(_N)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Clic_k to focus"
-msgstr "چېكىلگەندە فوكۇسلانسۇن(_K)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
 msgstr "توپچىنىڭ ئورۇنلاشتۇرۇلۇشىنى ئۆزگەرتىش ئۈچۈن چېكىپ سۆرەڭ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Close"
-msgstr "تاقا"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "ماۋزۇ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Delay _before raising focused window:"
-msgstr "فۇكۇسلىنىپ كۆتۈرۈلگۈچە بولغان ۋاقىت(_B):"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "The window title cannot be removed"
+msgstr "كۆزنەك ماۋزۇسىنى يۆتكىگىلى بولمايدۇ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Dis_tance:"
-msgstr "ئارىلىق(_T):"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "Active"
+msgstr "ئاكتىپ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Focus follows _mouse"
-msgstr "چاشقىنەككە ئەگىشىپ فوكۇسلانسۇن(_M)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "يوشۇرۇن"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "كۆزنەكنى يۆتكەۋاتقاندا مەزمۇنى كۆرۈنمىسۇن(_M)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "كۆزنەكنىڭ چوڭلۇقىنى ئۆزگەرتىۋاتقاندا مەزمۇنى كۆرۈنمىسۇن(_R)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Ke_yboard"
-msgstr "ھەرپتاختا(_Y)"
-
-# FIXME:
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Maximize"
-msgstr "ئەڭ چوڭ قىلىش"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "Menu"
 msgstr "تىزىملىك"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+# FIXME:
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+msgid "Stick"
+msgstr "چاپلا"
+
+# FIXME:
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+msgid "Shade"
+msgstr "سايە"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 #, fuzzy
 msgid "Minimize"
 msgstr "ئەڭ كىچىك قىل(_N)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+# FIXME:
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "Maximize"
+msgstr "ئەڭ چوڭ قىلىش"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Close"
+msgstr "تاقا"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "يوشۇرۇن"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<b>Button layout</b>"
+msgstr "<b>توپچىنىڭ ئورۇنلاشتۇرۇلۇشى</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "_Style"
+msgstr "ئۇسلۇب(_S)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "_Reset to Defaults"
+msgstr "كۆڭۈلدىكىگە قايتۇر(_R)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+msgid "<b>Window _shortcuts</b>"
+msgstr "<b>كۆزنەكنىڭ تېزلەتمە كۇنۇپكىلىرى</b>(_S)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "Ke_yboard"
+msgstr "ھەرپتاختا(_Y)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "Clic_k to focus"
+msgstr "چېكىلگەندە فوكۇسلانسۇن(_K)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Focus follows _mouse"
+msgstr "چاشقىنەككە ئەگىشىپ فوكۇسلانسۇن(_M)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "_Delay before window receives focus:"
+msgstr "فوكۇسلانغۇچە بولغان ۋاقىت(_D)"
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+msgid "<i>Short</i>"
+msgstr "<i>قىسقا</i>"
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "<i>Long</i>"
+msgstr "<i>ئۇزۇن</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "<b>Focus model</b>"
+msgstr "<b>فوكۇس model</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Automatically give focus to _newly created windows"
+msgstr "يېڭى كۆزنەك قۇرۇلغاندا ئاپتوماتىك فوكۇسلانسۇن(_N)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "<b>New window focus</b>"
+msgstr "<b>يېڭى كۆزنەكنىڭ فوكۇسى</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Automatically _raise windows when they receive focus"
+msgstr "كۆزنەك فوكۇسلانغاندا ئاپتوماتىك كۆتۈرۈلسۇن(_R)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Delay _before raising focused window:"
+msgstr "فۇكۇسلىنىپ كۆتۈرۈلگۈچە بولغان ۋاقىت(_B):"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "<b>Raise on focus</b>"
+msgstr "<b>فوكۇسلانغاندا كۆتۈرۈلسۇن</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
 msgstr "پروگرامما كۆزنىكى ئىچىدە چېكىلگەندە كۆزنەك كۆتۈرۈلسۇن(_I)"
 
-# FIXME:
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Shade"
-msgstr "سايە"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "<b>Raise on click</b>"
+msgstr "<b>چېكىلگەندە كۆتۈرۈلسۇن</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to other _windows"
-msgstr ""
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "_Focus"
+msgstr "فوكۇس(_F)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Snap windows to screen _border"
 msgstr ""
 
-# FIXME:
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Snap windows to other _windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Dis_tance:"
+msgstr "ئارىلىق(_T):"
+
+#. Edge resistance
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+msgid "<i>Small</i>"
+msgstr "<i>كىچىك</i>"
+
+#. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "Stick"
-msgstr "چاپلا"
+msgid "<i>Wide</i>"
+msgstr "<i>كەڭرى</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "ماۋزۇ تاياقچىسى قوش چېكىلگەندە مەزكۇر ھەرىكەت ئېلىپ بېرىلىدۇ"
+msgid "<b>Windows snapping</b>"
+msgstr "<b>كۆزنەك snapping</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "The window title cannot be removed"
-msgstr "كۆزنەك ماۋزۇسىنى يۆتكىگىلى بولمايدۇ"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-msgid "Title"
-msgstr "ماۋزۇ"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
-"بىر كوزنەكنى ئەكراندىن تۇتۇپ ئەلىپ چىقىپ كەتكەندەخىزمەت مۇھىتلىرىنى قاتلا(_D)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr ""
 "چاشقىنەك بەلگىسى ئەكران گىرۋىكىگە يەتىپ بارغاندا خىزمەت مۇھىتلىرىنى قاتلا(_P)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
-msgid "_Delay before window receives focus:"
-msgstr "فوكۇسلانغۇچە بولغان ۋاقىت(_D)"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr ""
+"بىر كوزنەكنى ئەكراندىن تۇتۇپ ئەلىپ چىقىپ كەتكەندەخىزمەت مۇھىتلىرىنى قاتلا(_D)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
 msgstr "گىرۋەك قارىشلىقى(_E):"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgid "<b>Wrap workspaces</b>"
+msgstr "<b>خىمەت مۇھىتلىرىنى قاتلاش</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "Hide content of windows when _resizing"
+msgstr "كۆزنەكنىڭ چوڭلۇقىنى ئۆزگەرتىۋاتقاندا مەزمۇنى كۆرۈنمىسۇن(_R)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+msgid "Hide content of windows when _moving"
+msgstr "كۆزنەكنى يۆتكەۋاتقاندا مەزمۇنى كۆرۈنمىسۇن(_M)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+msgid "<b>Box move and resize</b>"
+msgstr "<b>يۆتكەش ۋە چوڭلۇقىنى ئۆزگەرتىش</b>"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Focus"
-msgstr "فوكۇس(_F)"
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "ماۋزۇ تاياقچىسى قوش چېكىلگەندە مەزكۇر ھەرىكەت ئېلىپ بېرىلىدۇ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Reset to Defaults"
-msgstr "كۆڭۈلدىكىگە قايتۇر(_R)"
+msgid "<b>Double click _action</b>"
+msgstr "<b>قوش چېكىلگەندىكى ھەرىكەت</b>(_A)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "_Style"
-msgstr "ئۇسلۇب(_S)"
+msgid "Ad_vanced"
+msgstr "ئالىي(_V)"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -664,195 +664,7 @@ msgstr ""
 "بۇ بارلىق تېزلەتمىلەرنىڭ كۆڭۈلدىكى قىممەتلىرىنى ئەسلىگە كەلتۈرۈۋاتىدۇ. بۇنى "
 "قىلسۇنمۇ؟"
 
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Large</i>"
-msgstr "<i>چوڭ</i>"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "<i>Opaque</i>"
-msgstr "<i>تۇتۇق</i>"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "<i>Transparent</i>"
-msgstr "<i>سۈزۈك</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate _focus stealing prevention"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the _center of the screen"
-msgstr "ئېكراننىڭ مەركىزىدە(_C)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "By default, place windows:"
-msgstr ""
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-msgid "C_ompositor"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "C_ycling"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "Cycle _through windows on all workspaces"
-msgstr ""
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "Display _fullscreen overlay windows directly"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Do _nothing"
-msgstr "ھېچنېمە قىلما(_N)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Hide _frame of windows when maximized"
-msgstr "ئەڭ چوڭ قىلىنغاندا كۆزنەكنىڭ گىرۋىكىنى يوشۇر(_F)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Honor _standard ICCCM focus hint"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr "جىددىي ئۇقتۇرۇش كۆزنىكىنىڭ توختاتماي لىپىلدات"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Key used to _grab and move windows:"
-msgstr "كۆزنەكنى تۇتۇش ۋە يۆتكەش كۇنۇپكىسى(_G):"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr "جىددىي ئۇقتۇرۇش كۆزنىكىنىڭ گىرۋىكىنى لىپىلدات(_U)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Opaci_ty of window decorations:"
-msgstr "كۆزنەك گىرۋىكىنىڭ تۇتۇقلۇقى(_T):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Opacity of _inactive windows:"
-msgstr "ئاكتىپ بولمىغان كۆزنەكنىڭ تۇتۇقلۇقى(_I):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Opacity of popup window_s:"
-msgstr "popup كۆزنەكنىڭ تۇتۇقلۇقى(_S):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of windows during _move:"
-msgstr "يۆتكىلىۋاتقان كۆزنەكنىڭ تۇتۇقلۇقى(_M):"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Opacity of windows during resi_ze:"
-msgstr "چوڭلۇقى ئۆزگەرتىلىۋاتقان كۆزنەكنىڭ تۇتۇقلۇقى(_Z):"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"ئەڭ چوڭ ھالەتتىكى كۆزنەك يۆتكەلگەندە ئەسلىدىكى چوڭلۇقى ئەسلىگە كەلتۈرۈلسۇن"
-"(_S)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Show shadows under _dock windows"
-msgstr "dock كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_D)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid "Show shadows under _regular windows"
-msgstr "نورمال كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_R)"
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-msgid "Show shadows under pop_up windows"
-msgstr "popup كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_U)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-msgid "Switch to win_dow's workspace"
-msgstr "كۆزنەكنىڭ خىزمەت مۇھىتىنى ئالماشتۇرۇش(_D)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Under the mouse _pointer"
-msgstr "چاشقىنەك نۇر بەلگىسىنىڭ ئاستى(_P)"
-
-# FIXME: should be revised
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Use _edge resistance instead of window snapping"
-msgstr "كوزنەك snapping نى ئىشلەتمەي كوزنەك قارىشلىقىنى ئىشلەت(_E)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "workspace نى ئالماشتۇرۇش ئۈچۈن چاشقىنەك چاقىنى ئىشلەتسۇن(_M)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "When a window raises itself:"
-msgstr "كۆزنەك ئۆزىنى كۆتۈرگەندە:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"ئەمەلىي ئۇستەليۇزى ئورۇنلاشتۇرۇلىشىغا ئاساسەن خىزمەت مۇھىتىنى قاتلا(_L)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
-"بىرىنچى ياكى ئەڭ ئاخىرقى خىزمەت مۇھىتىغا بارغاندا خىزمەت مۇھىتىنى قاتلا(_F)"
-
-# FIXME: i hate this transliteration
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "_Accessibility"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-msgid "_Bring window on current workspace"
-msgstr "كۆزنەكنى ھازىرقى  خىزمەت مۇھىتىغا ئېلىپ كەل(_B)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "_Draw frame around selected windows while cycling"
-msgstr ""
-
-# FIXME: compositor won't work on irix, thus it's blind-translation
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "_Enable display compositing"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "يوشۇرۇن(سىڭەلگىلەشتۇرۇلگەن) كوزنەكنى ئوز ئىچىگە ئال(_I)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "_Placement"
-msgstr "ئورۇنلاشتۇرۇش(_P)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid "_Raise windows when any mouse button is pressed"
-msgstr "چاشقىنەك كۇنۇپكىلىرى بېسىلغاندا كۆزنەك كۆتۈرۈلسۇن(_R)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-msgid ""
-"_Remember and recall previous workspace\n"
-"when switching via keyboard shortcuts"
-msgstr ""
-"تېزلەتمە كۇنۇپكا ئارقىلىق ئالماشتۇرغاندا\n"
-"بۇرۇنقى كۆزنەكنى ئېسىدە ساقلىۋالسۇن(_R)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
@@ -860,26 +672,224 @@ msgstr ""
 "\"skip pager\" ياكى \"skip taskbar\" خاسلىقى بەكىتىلگەن\n"
 "كوزنەكتىن ئاتلاپ كەت."
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "يوشۇرۇن(سىڭەلگىلەشتۇرۇلگەن) كوزنەكنى ئوز ئىچىگە ئال(_I)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "Cycle _through windows on all workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Activate _focus stealing prevention"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "Honor _standard ICCCM focus hint"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr "كۆزنەك ئۆزىنى كۆتۈرگەندە:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "_Bring window on current workspace"
+msgstr "كۆزنەكنى ھازىرقى  خىزمەت مۇھىتىغا ئېلىپ كەل(_B)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Switch to win_dow's workspace"
+msgstr "كۆزنەكنىڭ خىزمەت مۇھىتىنى ئالماشتۇرۇش(_D)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Do _nothing"
+msgstr "ھېچنېمە قىلما(_N)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+msgid "Key used to _grab and move windows:"
+msgstr "كۆزنەكنى تۇتۇش ۋە يۆتكەش كۇنۇپكىسى(_G):"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "چاشقىنەك كۇنۇپكىلىرى بېسىلغاندا كۆزنەك كۆتۈرۈلسۇن(_R)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Hide _frame of windows when maximized"
+msgstr "ئەڭ چوڭ قىلىنغاندا كۆزنەكنىڭ گىرۋىكىنى يوشۇر(_F)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "Restore original _size of maximized windows when moving"
+msgstr ""
+"ئەڭ چوڭ ھالەتتىكى كۆزنەك يۆتكەلگەندە ئەسلىدىكى چوڭلۇقى ئەسلىگە كەلتۈرۈلسۇن"
+"(_S)"
+
+# FIXME: should be revised
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+msgid "Use _edge resistance instead of window snapping"
+msgstr "كوزنەك snapping نى ئىشلەتمەي كوزنەك قارىشلىقىنى ئىشلەت(_E)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr "جىددىي ئۇقتۇرۇش كۆزنىكىنىڭ گىرۋىكىنى لىپىلدات(_U)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr "جىددىي ئۇقتۇرۇش كۆزنىكىنىڭ توختاتماي لىپىلدات"
+
+# FIXME: i hate this transliteration
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "_Accessibility"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "workspace نى ئالماشتۇرۇش ئۈچۈن چاشقىنەك چاقىنى ئىشلەتسۇن(_M)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
+msgstr ""
+"تېزلەتمە كۇنۇپكا ئارقىلىق ئالماشتۇرغاندا\n"
+"بۇرۇنقى كۆزنەكنى ئېسىدە ساقلىۋالسۇن(_R)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr ""
+"ئەمەلىي ئۇستەليۇزى ئورۇنلاشتۇرۇلىشىغا ئاساسەن خىزمەت مۇھىتىنى قاتلا(_L)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr ""
+"بىرىنچى ياكى ئەڭ ئاخىرقى خىزمەت مۇھىتىغا بارغاندا خىزمەت مۇھىتىنى قاتلا(_F)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Workspaces"
 msgstr "خىزمەت مۇھىتى(_W)"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "<b>Margins</b>"
-msgstr "<b>بوشلۇق</b>"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-msgid "<b>Workspaces</b>"
-msgstr "<b>خىزمەت مۇھىتى</b>"
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "<i>Large</i>"
+msgstr "<i>چوڭ</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "By default, place windows:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "At the _center of the screen"
+msgstr "ئېكراننىڭ مەركىزىدە(_C)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "Under the mouse _pointer"
+msgstr "چاشقىنەك نۇر بەلگىسىنىڭ ئاستى(_P)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "_Placement"
+msgstr "ئورۇنلاشتۇرۇش(_P)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Enable display compositing"
+msgstr ""
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "Display _fullscreen overlay windows directly"
+msgstr ""
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "Show shadows under _regular windows"
+msgstr "نورمال كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_R)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "Show shadows under pop_up windows"
+msgstr "popup كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_U)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "Show shadows under _dock windows"
+msgstr "dock كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_D)"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Opaci_ty of window decorations:"
+msgstr "كۆزنەك گىرۋىكىنىڭ تۇتۇقلۇقى(_T):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "<i>Transparent</i>"
+msgstr "<i>سۈزۈك</i>"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "<i>Opaque</i>"
+msgstr "<i>تۇتۇق</i>"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgid "Opacity of _inactive windows:"
+msgstr "ئاكتىپ بولمىغان كۆزنەكنىڭ تۇتۇقلۇقى(_I):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "Opacity of windows during _move:"
+msgstr "يۆتكىلىۋاتقان كۆزنەكنىڭ تۇتۇقلۇقى(_M):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+msgid "Opacity of windows during resi_ze:"
+msgstr "چوڭلۇقى ئۆزگەرتىلىۋاتقان كۆزنەكنىڭ تۇتۇقلۇقى(_Z):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+msgid "Opacity of popup window_s:"
+msgstr "popup كۆزنەكنىڭ تۇتۇقلۇقى(_S):"
+
+# FIXME: compositor won't work on irix, thus it's blind-translation
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "C_ompositor"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid "_Number of workspaces:"
+msgstr "خىزمەت مۇھىتى سانى(_N):"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid "Layout"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#, fuzzy
+msgid "Names"
+msgstr "ئاتى(_N):"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+msgid "_General"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
-msgid "_Number of workspaces:"
-msgstr "خىزمەت مۇھىتى سانى(_N):"
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#, fuzzy
+msgid "_Margins"
+msgstr "<b>بوشلۇق</b>"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -887,36 +897,36 @@ msgstr "خىزمەت مۇھىتى سانى(_N):"
 msgid "%s (on %s)"
 msgstr "%s ( %s نىڭدا)"
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr ""
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Replace the existing window manager"
 msgstr ""
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 #, fuzzy
 msgid "Print version information and exit"
 msgstr "نەشر ئۇچۇرى"
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""
@@ -1050,11 +1060,14 @@ msgstr "بالا process تىن سانلىق-ئاساسلارنى ئوقۇشتا
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "helper-dialog نى پەيدا قىلالمىدى: %s\n"
 
+#~ msgid "Set number and names of workspaces"
+#~ msgstr "خىزمەت مۇھىتىنىڭ ئاتى ۋە سانىنى بەلگىلەش"
+
+#~ msgid "<b>Workspaces</b>"
+#~ msgstr "<b>خىزمەت مۇھىتى</b>"
+
 #~ msgid "Change workspace name"
 #~ msgstr "خىزمەت مۇھىتىنىڭ ئاتىنى ئۆزگەرت"
-
-#~ msgid "_Name:"
-#~ msgstr "ئاتى(_N):"
 
 # FIXME:
 #~ msgid "Hide"

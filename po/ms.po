@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-04-07 19:58+0200\n"
 "PO-Revision-Date: 2005-10-09 20:49+0900\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
+"Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ms\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -78,283 +78,282 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
+msgid "Window Manager"
+msgstr "Pengurus Tetingkap"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #, fuzzy
 msgid "Configure window behavior and shortcuts"
 msgstr "Lihat kandungan tetingkap apabila dipindahkan"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Window Manager"
-msgstr "Pengurus Tetingkap"
-
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
-msgid "Fine-tune window behaviour and effects"
-msgstr "Lihat kandungan tetingkap apabila dipindahkan"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 #, fuzzy
 msgid "Window Manager Tweaks"
 msgstr "Pengurus Tetingkap"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 #, fuzzy
-msgid "Set number and names of workspaces"
-msgstr "Bilangan ruangkerja:"
+msgid "Fine-tune window behaviour and effects"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
 msgstr "Ruangkerja"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-#, fuzzy
-msgid "<b>Box move and resize</b>"
-msgstr "Opaque pindah dan saizsemula"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
-msgid "<b>Button layout</b>"
-msgstr "Layout bebutang"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
-msgid "<b>Double click _action</b>"
-msgstr "Aksi dwi klik"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
-msgid "<b>Focus model</b>"
-msgstr "Model fokus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
-msgid "<b>New window focus</b>"
-msgstr "Fokus tetingkap baru"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
-msgid "<b>Raise on click</b>"
-msgstr "Bangkit ketika klik"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
-msgid "<b>Raise on focus</b>"
-msgstr "Bangkit ketika fokus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
-msgid "<b>Title _alignment</b>"
-msgstr "Penjajaran Tajuk"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
-msgid "<b>Title fon_t</b>"
-msgstr "Tajuk font"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
-msgid "<b>Window _shortcuts</b>"
-msgstr "Fokus tetingkap baru"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
-msgid "<b>Windows snapping</b>"
-msgstr "Snapping tetingkap"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
-msgid "<b>Wrap workspaces</b>"
-msgstr "Wrap ruangkerja"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 #, fuzzy
 msgid "<b>_Theme</b>"
 msgstr "Penjajaran Tajuk"
 
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "<i>Long</i>"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#, fuzzy
+msgid "<b>Title fon_t</b>"
+msgstr "Tajuk font"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#, fuzzy
+msgid "<b>Title _alignment</b>"
+msgstr "Penjajaran Tajuk"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+msgid "Click and drag the buttons to change the layout"
 msgstr ""
 
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-msgid "<i>Short</i>"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "Tajuk"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "The window title cannot be removed"
 msgstr ""
 
-#. Edge resistance
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
-msgid "<i>Small</i>"
-msgstr "Kecil"
-
-#. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
-msgid "<i>Wide</i>"
-msgstr "Jarak :"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Active"
 msgstr ""
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+msgid "Menu"
+msgstr "Menu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+msgid "Stick"
+msgstr "Lekat"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+msgid "Shade"
+msgstr "Bayang"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+#, fuzzy
+msgid "Minimize"
+msgstr "Ma_ksimakan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "Maximize"
+msgstr "Maksimakan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Close"
+msgstr "Tutup"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Sembunyi"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#, fuzzy
+msgid "<b>Button layout</b>"
+msgstr "Layout bebutang"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#, fuzzy
+msgid "_Style"
+msgstr "Tajuk"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "_Reset to Defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#, fuzzy
+msgid "<b>Window _shortcuts</b>"
+msgstr "Fokus tetingkap baru"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#, fuzzy
+msgid "Ke_yboard"
+msgstr "Pintasan Papankekunci"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#, fuzzy
+msgid "Clic_k to focus"
+msgstr "Klik untuk fokus"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "Lanjutan"
+msgid "Focus follows _mouse"
+msgstr "Fokus mengikuti tetikus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 #, fuzzy
-msgid "Automatically _raise windows when they receive focus"
-msgstr ""
-"Automatik tetingkap bangkit \n"
-"bila menerima fokus"
+msgid "_Delay before window receives focus:"
+msgstr "Lengah sebelum bangkitkan tetingkap difokus :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+msgid "<i>Short</i>"
+msgstr ""
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "<i>Long</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#, fuzzy
+msgid "<b>Focus model</b>"
+msgstr "Model fokus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 #, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr ""
 "Automatik beri fokus kepada \n"
 "tetingkap baru dicipta"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 #, fuzzy
-msgid "Clic_k to focus"
-msgstr "Klik untuk fokus"
+msgid "<b>New window focus</b>"
+msgstr "Fokus tetingkap baru"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-msgid "Click and drag the buttons to change the layout"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#, fuzzy
+msgid "Automatically _raise windows when they receive focus"
 msgstr ""
+"Automatik tetingkap bangkit \n"
+"bila menerima fokus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Close"
-msgstr "Tutup"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 #, fuzzy
 msgid "Delay _before raising focused window:"
 msgstr "Lengah sebelum bangkitkan tetingkap difokus :"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
-msgid "Dis_tance:"
-msgstr "Jarak :"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
-msgid "Focus follows _mouse"
-msgstr "Fokus mengikuti tetikus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "Sembunyi"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 #, fuzzy
-msgid "Hide content of windows when _moving"
-msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+msgid "<b>Raise on focus</b>"
+msgstr "Bangkit ketika fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
-msgid "Hide content of windows when _resizing"
-msgstr "Lihat kandungan tetingkap apabila dipindahkan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
-msgid "Ke_yboard"
-msgstr "Pintasan Papankekunci"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Maximize"
-msgstr "Maksimakan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Menu"
-msgstr "Menu"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
-msgid "Minimize"
-msgstr "Ma_ksimakan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr ""
 "Tetingkap bangkit ketika klik didalam\n"
 "tetingkap aplikasi"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Shade"
-msgstr "Bayang"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 #, fuzzy
-msgid "Snap windows to other _windows"
-msgstr "Snap tetingkap ke tetingkap lain"
+msgid "<b>Raise on click</b>"
+msgstr "Bangkit ketika klik"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
-msgid "Snap windows to screen _border"
-msgstr "Snap tetingkap ke sempadan skrin"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "Stick"
-msgstr "Lekat"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Aksi untuk dilakukan apabila dwiklik pada bar tajuk :"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "The window title cannot be removed"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-msgid "Title"
-msgstr "Tajuk"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Wrap ruangkerja bila seretkan tetingkap keluar skrin"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Wrap ruangkerja bila penunjuk mencapai sisi skrin"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
-msgid "_Delay before window receives focus:"
-msgstr "Lengah sebelum bangkitkan tetingkap difokus :"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
-msgid "_Edge resistance:"
-msgstr "Halangan Sisi :"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 #, fuzzy
 msgid "_Focus"
 msgstr "Model fokus"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#, fuzzy
+msgid "Snap windows to screen _border"
+msgstr "Snap tetingkap ke sempadan skrin"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#, fuzzy
+msgid "Snap windows to other _windows"
+msgstr "Snap tetingkap ke tetingkap lain"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#, fuzzy
+msgid "Dis_tance:"
+msgstr "Jarak :"
+
+#. Edge resistance
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#, fuzzy
+msgid "<i>Small</i>"
+msgstr "Kecil"
+
+#. Edge resistance
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#, fuzzy
+msgid "<i>Wide</i>"
+msgstr "Jarak :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#, fuzzy
+msgid "<b>Windows snapping</b>"
+msgstr "Snapping tetingkap"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#, fuzzy
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "Wrap ruangkerja bila penunjuk mencapai sisi skrin"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#, fuzzy
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "Wrap ruangkerja bila seretkan tetingkap keluar skrin"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#, fuzzy
+msgid "_Edge resistance:"
+msgstr "Halangan Sisi :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#, fuzzy
+msgid "<b>Wrap workspaces</b>"
+msgstr "Wrap ruangkerja"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#, fuzzy
+msgid "Hide content of windows when _resizing"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#, fuzzy
+msgid "Hide content of windows when _moving"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#, fuzzy
+msgid "<b>Box move and resize</b>"
+msgstr "Opaque pindah dan saizsemula"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#, fuzzy
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Aksi untuk dilakukan apabila dwiklik pada bar tajuk :"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Reset to Defaults"
-msgstr ""
+#, fuzzy
+msgid "<b>Double click _action</b>"
+msgstr "Aksi dwi klik"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 #, fuzzy
-msgid "_Style"
-msgstr "Tajuk"
+msgid "Ad_vanced"
+msgstr "Lanjutan"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -750,48 +749,50 @@ msgid ""
 "do this?"
 msgstr ""
 
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Large</i>"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+msgid ""
+"_Skip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "<i>Opaque</i>"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "_Include hidden (i.e. iconified) windows"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "<i>Transparent</i>"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate _focus stealing prevention"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the _center of the screen"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "By default, place windows:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
-msgid "C_ompositor"
-msgstr "Pintasan Papankekunci"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "C_ycling"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 #, fuzzy
 msgid "Cycle _through windows on all workspaces"
 msgstr "Fokus tetingkap baru"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "Display _fullscreen overlay windows directly"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
 msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Activate _focus stealing prevention"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "Honor _standard ICCCM focus hint"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#, fuzzy
+msgid "_Bring window on current workspace"
+msgstr "Fokus tetingkap baru"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#, fuzzy
+msgid "Switch to win_dow's workspace"
+msgstr "Fokus tetingkap baru"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 #, fuzzy
@@ -799,166 +800,172 @@ msgid "Do _nothing"
 msgstr "Tiada apa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Hide _frame of windows when maximized"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Honor _standard ICCCM focus hint"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Key used to _grab and move windows:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Notify of _urgency by making window's decoration blink"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+msgid "_Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
-msgid "Opaci_ty of window decorations:"
-msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Hide _frame of windows when maximized"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
-msgid "Opacity of _inactive windows:"
-msgstr "Lihat kandungan tetingkap apabila dipindahkan"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
-msgid "Opacity of popup window_s:"
-msgstr "Lihat kandungan tetingkap apabila dipindahkan"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
-msgid "Opacity of windows during _move:"
-msgstr "Lihat kandungan tetingkap apabila dipindahkan"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
-msgid "Opacity of windows during resi_ze:"
-msgstr "Lihat kandungan tetingkap apabila dipindahkan"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 #, fuzzy
 msgid "Restore original _size of maximized windows when moving"
 msgstr "Lihat kandungan tetingkap apabila dipindahkan"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Show shadows under _dock windows"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid "Show shadows under _regular windows"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-msgid "Show shadows under pop_up windows"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
-msgid "Switch to win_dow's workspace"
-msgstr "Fokus tetingkap baru"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Under the mouse _pointer"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Use _edge resistance instead of window snapping"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "When a window raises itself:"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Keep urgent windows _blinking repeatedly"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Wrap ruangkerja bila penunjuk mencapai sisi skrin"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "_Accessibility"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
-msgid "_Bring window on current workspace"
-msgstr "Fokus tetingkap baru"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "_Draw frame around selected windows while cycling"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "_Enable display compositing"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "_Placement"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid "_Raise windows when any mouse button is pressed"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-msgid ""
-"_Skip windows that have \"skip pager\"\n"
-"or \"skip taskbar\" properties set"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#, fuzzy
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "Wrap ruangkerja bila penunjuk mencapai sisi skrin"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 #, fuzzy
 msgid "_Workspaces"
 msgstr "Ruangkerja"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
-msgid "<b>Margins</b>"
-msgstr "Margin"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "<i>Large</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "By default, place windows:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "At the _center of the screen"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "Under the mouse _pointer"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "_Placement"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Enable display compositing"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "Display _fullscreen overlay windows directly"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "Show shadows under _regular windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "Show shadows under pop_up windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "Show shadows under _dock windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 #, fuzzy
-msgid "<b>Workspaces</b>"
-msgstr "Wrap ruangkerja"
+msgid "Opaci_ty of window decorations:"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "<i>Transparent</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "<i>Opaque</i>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#, fuzzy
+msgid "Opacity of _inactive windows:"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#, fuzzy
+msgid "Opacity of windows during _move:"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#, fuzzy
+msgid "Opacity of windows during resi_ze:"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#, fuzzy
+msgid "Opacity of popup window_s:"
+msgstr "Lihat kandungan tetingkap apabila dipindahkan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#, fuzzy
+msgid "C_ompositor"
+msgstr "Pintasan Papankekunci"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#, fuzzy
+msgid "_Number of workspaces:"
+msgstr "Bilangan ruangkerja:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid "Layout"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#, fuzzy
+msgid "Names"
+msgstr "Nama:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+msgid "_General"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Margin adalah kawasan sisi skrin dimana tiada tetingkap diletak"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 #, fuzzy
-msgid "_Number of workspaces:"
-msgstr "Bilangan ruangkerja:"
+msgid "_Margins"
+msgstr "Margin"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -966,36 +973,36 @@ msgstr "Bilangan ruangkerja:"
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr ""
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 #, fuzzy
 msgid "Replace the existing window manager"
 msgstr "Pengurus Tetingkap"
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 msgid "Print version information and exit"
 msgstr ""
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""
@@ -1137,6 +1144,18 @@ msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
 
 #, fuzzy
+#~ msgid "Set number and names of workspaces"
+#~ msgstr "Bilangan ruangkerja:"
+
+#, fuzzy
+#~ msgid "<b>Margins</b>"
+#~ msgstr "Margin"
+
+#, fuzzy
+#~ msgid "<b>Workspaces</b>"
+#~ msgstr "Wrap ruangkerja"
+
+#, fuzzy
 #~ msgid "Change workspace name"
 #~ msgstr "Nama ruangkerja"
 
@@ -1248,10 +1267,6 @@ msgstr ""
 #~ msgid "Change name"
 #~ msgstr "Tukarnama"
 
-#, fuzzy
-#~ msgid "Name:"
-#~ msgstr "Nama:"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Klik atas nama ruangkerja untuk editnya"
 
@@ -1269,10 +1284,6 @@ msgstr ""
 
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Ruangkerja dan Margin"
-
-#, fuzzy
-#~ msgid "Margins"
-#~ msgstr "Margin"
 
 #, fuzzy
 #~ msgid "Window Manager Settings"

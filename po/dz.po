@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-04-07 19:58+0200\n"
 "PO-Revision-Date: 2006-10-26 20:28+0530\n"
 "Last-Translator: sonam rinchen <somindruk@druknet.bt>\n"
 "Language-Team: dzongkha <pgeyleg@dit.gov.bt>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2;plural=(n!=1)\n"
 "X-Poedit-Language: dzongkha\n"
 "X-Poedit-Country: bhutan\n"
@@ -82,280 +82,279 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
+msgid "Window Manager"
+msgstr "སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ།"
+
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #, fuzzy
 msgid "Configure window behavior and shortcuts"
 msgstr "སྒོ་སྒྲིག་གི་བྱ་བ་ཆ་མེད་གཏང་།"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Window Manager"
-msgstr "སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ།"
-
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ་གཅུཝ་ཨིན།"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 #, fuzzy
 msgid "Fine-tune window behaviour and effects"
 msgstr "སྒོ་སྒྲིག་གི་བྱ་བ་ཆ་མེད་གཏང་།"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-msgid "Window Manager Tweaks"
-msgstr "སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ་གཅུཝ་ཨིན།"
-
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-#, fuzzy
-msgid "Set number and names of workspaces"
-msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་གྲངས་:"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
 msgstr "ལཱ་གི་ས་སྒོ་ཚུ།"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-#, fuzzy
-msgid "<b>Box move and resize</b>"
-msgstr "དྭངས་སྒྲིབ་ཅན་སྤོ་བཤུད་དང་ཚད་བསྐྱར་བཟོ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
-msgid "<b>Button layout</b>"
-msgstr "ཨེབ་རྟ་ཤཝསྒྲིག་བཀོད།"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
-msgid "<b>Double click _action</b>"
-msgstr "ཐེངས་གཉིས་ཨེབ་གཏང་བྱ་བ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
-msgid "<b>Focus model</b>"
-msgstr "ཆེད་དམིགས་ཀྱི་དཔེ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
-msgid "<b>New window focus</b>"
-msgstr "སྒོ་སྒྲིག་ཆེད་དམིགས་གསརཔ་ཚུ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
-msgid "<b>Raise on click</b>"
-msgstr "ཨེབ་གཏང་གུ་ཆེར་བསྐྱེད་འབད།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
-msgid "<b>Raise on focus</b>"
-msgstr "ཆེད་དམིགས་གུ་ཆེར་བསྐྱེད་འབད།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
-msgid "<b>Title _alignment</b>"
-msgstr "མགོ་མིང་ཕྲང་སྒྲིག།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
-msgid "<b>Title fon_t</b>"
-msgstr "མགོ་མིང་ཡིག་གཟུགས།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
-msgid "<b>Window _shortcuts</b>"
-msgstr "སྒོ་སྒྲིག་མགྱོགས་ཐབས་ཚུ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
-msgid "<b>Windows snapping</b>"
-msgstr "ཝིན་ཌོསི་པར་བཏབ་དོ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
-msgid "<b>Wrap workspaces</b>"
-msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་ལོག་མཚམས་བཟོ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 #, fuzzy
 msgid "<b>_Theme</b>"
 msgstr "མགོ་མིང་ཕྲང་སྒྲིག།"
 
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
 #, fuzzy
-msgid "<i>Long</i>"
-msgstr "ཚད་|སྦོམ།"
+msgid "<b>Title fon_t</b>"
+msgstr "མགོ་མིང་ཡིག་གཟུགས།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#, fuzzy
+msgid "<b>Title _alignment</b>"
+msgstr "མགོ་མིང་ཕྲང་སྒྲིག།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#, fuzzy
+msgid "Click and drag the buttons to change the layout"
+msgstr "སྒྲིག་བཀོད་བསྒྱུར་བཅོས་འབད་ནི་ལུ་ཨེབ་གཏང་ཞིནམ་དང་ཨེབ་རྟ་ཚུ་འདྲུད།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "མགོ་མིང་།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+#, fuzzy
+msgid "The window title cannot be removed"
+msgstr "སྒོ་སྒྲིག་མགོ་མིང་ དེ་རྩ་བསྐྲད་གཏང་མི་ཚུགས།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "Active"
+msgstr "ཤུགས་ལྡན།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+msgid "Menu"
+msgstr "དཀར་ཆག།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+msgid "Stick"
+msgstr "སྦྱར་ནི།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+msgid "Shade"
+msgstr "ནག་གྲིབ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+#, fuzzy
+msgid "Minimize"
+msgstr "སྦོམ་བཟོ། (_x)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "Maximize"
+msgstr "སྦོམ་བཟོ་ནི།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Close"
+msgstr "ཁ་བསྡམས།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "གསང་བ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#, fuzzy
+msgid "<b>Button layout</b>"
+msgstr "ཨེབ་རྟ་ཤཝསྒྲིག་བཀོད།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#, fuzzy
+msgid "_Style"
+msgstr "བཟོ་རྣམ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "_Reset to Defaults"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#, fuzzy
+msgid "<b>Window _shortcuts</b>"
+msgstr "སྒོ་སྒྲིག་མགྱོགས་ཐབས་ཚུ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#, fuzzy
+msgid "Ke_yboard"
+msgstr "ལྡེ་སྒྲོམ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#, fuzzy
+msgid "Clic_k to focus"
+msgstr "ཆེད་དམིགས་ཚུ་ལུ་ཨེབ་གཏང་།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#, fuzzy
+msgid "Focus follows _mouse"
+msgstr "ཆེད་དམིགས་གིས་མཱའུསི་རྗེས་སུ་འབྲངམ་ཨིན།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#, fuzzy
+msgid "_Delay before window receives focus:"
+msgstr "ཆེད་དམིགས་འབད་ཡོད་པའི་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་མ་འབད་བའི་ཧེ་མ་ཕྱིར་འགྱངས་འབད་:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 #, fuzzy
 msgid "<i>Short</i>"
 msgstr "དྭངས་གསལ་ཅན།"
 
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#, fuzzy
+msgid "<i>Long</i>"
+msgstr "ཚད་|སྦོམ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#, fuzzy
+msgid "<b>Focus model</b>"
+msgstr "ཆེད་དམིགས་ཀྱི་དཔེ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#, fuzzy
+msgid "Automatically give focus to _newly created windows"
+msgstr "གསརཔ་སྦེ་གསར་བསྐྲུན་འབད་ཡོད་པའི་ཝིན་ཌོསི་ལུ་རང་བཞིན་གྱིས་ཆེད་དམིགས་བྱིན།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#, fuzzy
+msgid "<b>New window focus</b>"
+msgstr "སྒོ་སྒྲིག་ཆེད་དམིགས་གསརཔ་ཚུ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#, fuzzy
+msgid "Automatically _raise windows when they receive focus"
+msgstr "ཝིན་ཌོསི་གིས་ཆེད་དམིགས་འཐོབ་པའི་སྐབས་རང་བཞིན་གྱིས་ཝིན་ཌོསི་ཆེད་དམིགས་འབད།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#, fuzzy
+msgid "Delay _before raising focused window:"
+msgstr "ཆེད་དམིགས་འབད་ཡོད་པའི་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་མ་འབད་བའི་ཧེ་མ་ཕྱིར་འགྱངས་འབད་:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#, fuzzy
+msgid "<b>Raise on focus</b>"
+msgstr "ཆེད་དམིགས་གུ་ཆེར་བསྐྱེད་འབད།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#, fuzzy
+msgid "Raise window when clicking _inside application window"
+msgstr "གློག་རིམ་སྒོ་སྒྲིག་ནང་ལུ་ཨེབ་གཏང་པའི་སྐབས་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་འབད།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#, fuzzy
+msgid "<b>Raise on click</b>"
+msgstr "ཨེབ་གཏང་གུ་ཆེར་བསྐྱེད་འབད།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#, fuzzy
+msgid "_Focus"
+msgstr "ཆེད་དམིགས།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#, fuzzy
+msgid "Snap windows to screen _border"
+msgstr "གསལ་གཞིའི་མཐའ་མཚམས་ལུ་ཝིན་ཌོསི་པར་བཏབ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#, fuzzy
+msgid "Snap windows to other _windows"
+msgstr "གཞན་ཝིན་ཌོསི་ལུ་ཝིན་ཌོསི་པར་བཏབ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#, fuzzy
+msgid "Dis_tance:"
+msgstr "གྱང་ཚད་:"
+
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 #, fuzzy
 msgid "<i>Small</i>"
 msgstr "ཚད་|ཆུང་ཀུ།"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 #, fuzzy
 msgid "<i>Wide</i>"
 msgstr "གྱང་ཚད་|རྒྱ་ཅན།"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Active"
-msgstr "ཤུགས་ལྡན།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
-msgid "Ad_vanced"
-msgstr "མཐོ་རིམ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
-msgid "Automatically _raise windows when they receive focus"
-msgstr "ཝིན་ཌོསི་གིས་ཆེད་དམིགས་འཐོབ་པའི་སྐབས་རང་བཞིན་གྱིས་ཝིན་ཌོསི་ཆེད་དམིགས་འབད།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-#, fuzzy
-msgid "Automatically give focus to _newly created windows"
-msgstr "གསརཔ་སྦེ་གསར་བསྐྲུན་འབད་ཡོད་པའི་ཝིན་ཌོསི་ལུ་རང་བཞིན་གྱིས་ཆེད་དམིགས་བྱིན།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
-msgid "Clic_k to focus"
-msgstr "ཆེད་དམིགས་ཚུ་ལུ་ཨེབ་གཏང་།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
-msgid "Click and drag the buttons to change the layout"
-msgstr "སྒྲིག་བཀོད་བསྒྱུར་བཅོས་འབད་ནི་ལུ་ཨེབ་གཏང་ཞིནམ་དང་ཨེབ་རྟ་ཚུ་འདྲུད།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Close"
-msgstr "ཁ་བསྡམས།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
-msgid "Delay _before raising focused window:"
-msgstr "ཆེད་དམིགས་འབད་ཡོད་པའི་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་མ་འབད་བའི་ཧེ་མ་ཕྱིར་འགྱངས་འབད་:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
-msgid "Dis_tance:"
-msgstr "གྱང་ཚད་:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
-msgid "Focus follows _mouse"
-msgstr "ཆེད་དམིགས་གིས་མཱའུསི་རྗེས་སུ་འབྲངམ་ཨིན།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "གསང་བ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
-msgid "Hide content of windows when _moving"
-msgstr "སྤོ་བཤུད་འབད་བའི་སྐབས་ཝིན་ཌོསི་གི་ནང་དོན་བཀྲམ་སྟོན་འབད།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
-msgid "Hide content of windows when _resizing"
-msgstr "ཚད་བསྐྱར་བཟོ་འབད་བའི་སྐབས་ཝིན་ཌོསི་གི་ནང་དོན་བཀྲམ་སྟོན་འབད།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
-msgid "Ke_yboard"
-msgstr "ལྡེ་སྒྲོམ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Maximize"
-msgstr "སྦོམ་བཟོ་ནི།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Menu"
-msgstr "དཀར་ཆག།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
-msgid "Minimize"
-msgstr "སྦོམ་བཟོ། (_x)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
-msgid "Raise window when clicking _inside application window"
-msgstr "གློག་རིམ་སྒོ་སྒྲིག་ནང་ལུ་ཨེབ་གཏང་པའི་སྐབས་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་འབད།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Shade"
-msgstr "ནག་གྲིབ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
-msgid "Snap windows to other _windows"
-msgstr "གཞན་ཝིན་ཌོསི་ལུ་ཝིན་ཌོསི་པར་བཏབ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
-msgid "Snap windows to screen _border"
-msgstr "གསལ་གཞིའི་མཐའ་མཚམས་ལུ་ཝིན་ཌོསི་པར་བཏབ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "Stick"
-msgstr "སྦྱར་ནི།"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 #, fuzzy
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "མགོ་མིང་ཕྲ་རིང་གུ་ཨེབ་གཏང་པའི་སྐབས་ལཱ་འགན་གྲུབ་ནི་ལུ་བྱ་བ་:"
+msgid "<b>Windows snapping</b>"
+msgstr "ཝིན་ཌོསི་པར་བཏབ་དོ།"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#, fuzzy
-msgid "The window title cannot be removed"
-msgstr "སྒོ་སྒྲིག་མགོ་མིང་ དེ་རྩ་བསྐྲད་གཏང་མི་ཚུགས།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-msgid "Title"
-msgstr "མགོ་མིང་།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "སྒོ་སྒྲིག་ཅིག་གསལ་གཞི་གི་ཕྱི་ཁར་འདྲུད་པའི་སྐབས་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 #, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "གསལ་གཞིའི་མཐའམ་ལུ་དཔག་བྱེད་ལྷོད་པའི་སྐབས་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 #, fuzzy
-msgid "_Delay before window receives focus:"
-msgstr "ཆེད་དམིགས་འབད་ཡོད་པའི་སྒོ་སྒྲིག་ཆེར་བསྐྱེད་མ་འབད་བའི་ཧེ་མ་ཕྱིར་འགྱངས་འབད་:"
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "སྒོ་སྒྲིག་ཅིག་གསལ་གཞི་གི་ཕྱི་ཁར་འདྲུད་པའི་སྐབས་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
 msgid "_Edge resistance:"
 msgstr "བཀག་ནུས་ཀྱི་མཐའམ་:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
-msgid "_Focus"
-msgstr "ཆེད་དམིགས།"
+msgid "<b>Wrap workspaces</b>"
+msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་ལོག་མཚམས་བཟོ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#, fuzzy
+msgid "Hide content of windows when _resizing"
+msgstr "ཚད་བསྐྱར་བཟོ་འབད་བའི་སྐབས་ཝིན་ཌོསི་གི་ནང་དོན་བཀྲམ་སྟོན་འབད།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#, fuzzy
+msgid "Hide content of windows when _moving"
+msgstr "སྤོ་བཤུད་འབད་བའི་སྐབས་ཝིན་ཌོསི་གི་ནང་དོན་བཀྲམ་སྟོན་འབད།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#, fuzzy
+msgid "<b>Box move and resize</b>"
+msgstr "དྭངས་སྒྲིབ་ཅན་སྤོ་བཤུད་དང་ཚད་བསྐྱར་བཟོ།"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#, fuzzy
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "མགོ་མིང་ཕྲ་རིང་གུ་ཨེབ་གཏང་པའི་སྐབས་ལཱ་འགན་གྲུབ་ནི་ལུ་བྱ་བ་:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Reset to Defaults"
-msgstr ""
+#, fuzzy
+msgid "<b>Double click _action</b>"
+msgstr "ཐེངས་གཉིས་ཨེབ་གཏང་བྱ་བ།"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 #, fuzzy
-msgid "_Style"
-msgstr "བཟོ་རྣམ།"
+msgid "Ad_vanced"
+msgstr "མཐོ་རིམ།"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -732,54 +731,55 @@ msgid ""
 "do this?"
 msgstr ""
 
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
-msgid "<i>Large</i>"
-msgstr "ཚད་|སྦོམ།"
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 #, fuzzy
-msgid "<i>Opaque</i>"
-msgstr "དྭངས་སྒྲིབ་ཅན།"
+msgid ""
+"_Skip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr "\"skip pager\" ཡང་ན་ \"skip taskbar\" རྒཡུ་དངོས་ཚུའི་ཆ་ཚན་ཡོད་མི་ཝིན་ཌོསི་གོམ་འགྱོ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#, fuzzy
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "གསང་བ་ (i.e. ངོས་དཔར་བཟོ་ཡོད་མི་) ཝིན་ཌོསི་གྲངས་སུ་བཙུགས།"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-#, fuzzy
-msgid "<i>Transparent</i>"
-msgstr "དྭངས་གསལ་ཅན།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
-msgid "Activate _focus stealing prevention"
-msgstr "ཆེད་དམིགས་ཨར་རྐུན་བཀག་ཐབས་ཤུགས་ལྡན་བཟོ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the _center of the screen"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "By default, place windows:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
-msgid "C_ompositor"
-msgstr "རྩོམ་བྲིས་པ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
-msgid "C_ycling"
-msgstr "བསྐྱར་འཁོར་འབད་དོ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 #, fuzzy
 msgid "Cycle _through windows on all workspaces"
 msgstr "ལཱ་གི་ས་སྒོ་ཚུ་ཆ་མཉམ་ལས་སྒོ་སྒྲིག་ཚུ་བརྒྱུད་དེ་བསྐྱར་འཁོར།"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+#, fuzzy
+msgid "C_ycling"
+msgstr "བསྐྱར་འཁོར་འབད་དོ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#, fuzzy
+msgid "Activate _focus stealing prevention"
+msgstr "ཆེད་དམིགས་ཨར་རྐུན་བཀག་ཐབས་ཤུགས་ལྡན་བཟོ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#, fuzzy
+msgid "Honor _standard ICCCM focus hint"
+msgstr "ཚད་ལྡན་ཨའི་སི་སི་སི་ཨེམ་ཆེད་དམིགས་བརྡ་མཚོན་བརྩི་འཇོག་འབད།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#, fuzzy
+msgid "_Bring window on current workspace"
+msgstr "ཤུལ་མམ་གྱི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 #, fuzzy
-msgid "Display _fullscreen overlay windows directly"
-msgstr "གསལ་གཞི་གངམ་སྤུར་ཁེབས་ཝིན་ཌོསི་ཐད་ཀར་དུ་བཀྲམ་སྟོན་འབད།"
+msgid "Switch to win_dow's workspace"
+msgstr "ལཱ་གི་ས་སྒོ་ %d ལུ་སྒོ་སྒྲིག་བཤུད།"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 #, fuzzy
@@ -788,144 +788,47 @@ msgstr "ག་ནི་ཡང་མེདཔ།"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 #, fuzzy
-msgid "Hide _frame of windows when maximized"
-msgstr "སྦོམ་བཟོ་བའི་སྐབས་ཝིན་ཌོསི་གི་གཞི་ཁྲམ་སྦ་བཞག།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
-msgid "Honor _standard ICCCM focus hint"
-msgstr "ཚད་ལྡན་ཨའི་སི་སི་སི་ཨེམ་ཆེད་དམིགས་བརྡ་མཚོན་བརྩི་འཇོག་འབད།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Key used to _grab and move windows:"
 msgstr "ཝིན་ཌོསི་འཛིན་ནི་དང་བཤུད་ནི་ལུ་ལག་ལེན་འཐབ་མི་ ལྡེ་མིག།"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
-msgid "Opaci_ty of window decorations:"
-msgstr "སྒོ་སྒྲིག་མཛེས་བཀོད་ཚུ་གི་དྭངས་སྒྲིབ་"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
-msgid "Opacity of _inactive windows:"
-msgstr "ཤུགས་མེད་ཝིན་ཌོསི་གི་དྭངས་སྒྲིབ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
-msgid "Opacity of popup window_s:"
-msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་དྭངས་སྒྲིབ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
-msgid "Opacity of windows during _move:"
-msgstr "ཝིན་ཌོསི་སྤོ་བཤུད་འབད་བའི་སྐབས་ཀྱི་དྭངས་སྒྲིབ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
-msgid "Opacity of windows during resi_ze:"
-msgstr "ཝིན་ཌོསི་ཚད་བསྐྱར་བཟོ་འབད་བའི་སྐབས་ཀྱི་དྭངས་སྒྲིབ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
-msgid "Restore original _size of maximized windows when moving"
-msgstr "སྤོ་བཤུད་འབད་བའི་སྐབས་སྦོམ་བཟོ་ཡོད་མི་ཝིན་ཌོསི་གི་ཚད་ངོ་མ་སོར་ཆུད་འབད།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
-msgid "Show shadows under _dock windows"
-msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
-msgid "Show shadows under _regular windows"
-msgstr "དུས་རྒཡུན་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-#, fuzzy
-msgid "Show shadows under pop_up windows"
-msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
-msgid "Switch to win_dow's workspace"
-msgstr "ལཱ་གི་ས་སྒོ་ %d ལུ་སྒོ་སྒྲིག་བཤུད།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Under the mouse _pointer"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-#, fuzzy
-msgid "Use _edge resistance instead of window snapping"
-msgstr "ཝིན་ཌོསི་པར་བཏབ་ནིའི་ཚབ་ལུ་བཀག་ནུས་ཀྱི་མཐའམ་ལག་ལེན་འཐབ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "When a window raises itself:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "ཌེཀསི་ཊོཔ་སྒྲིག་བཀོད་ངོ་མ་ལུ་བརྟེན་ཏེ་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-#, fuzzy
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "དང་པམ་ཡང་ན་མཇུག་གི་ལཱ་གི་ས་སྒོ་ཚུ་ལྷོད་པའི་སྐབས་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-#, fuzzy
-msgid "_Accessibility"
-msgstr "འཛུལ་སྤྱོད།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
-msgid "_Bring window on current workspace"
-msgstr "ཤུལ་མམ་གྱི་ལཱ་གི་ས་སྒོ་ལུ་སྒོ་སྒྲིག་བཤུད།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "_Draw frame around selected windows while cycling"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
-msgid "_Enable display compositing"
-msgstr "བཀྲམ་སྟོན་རྩོམ་བྲིས་འབད་ནི་ལྕོགས་ཅན་བཟོ།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "གསང་བ་ (i.e. ངོས་དཔར་བཟོ་ཡོད་མི་) ཝིན་ཌོསི་གྲངས་སུ་བཙུགས།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "སྤུར་བསྒྱིར་དྲགས་བཙུགས་བཞག་འབྱུང་སག་ས་འབད་ནི་ལུ་ཝིན་ཌོསི་གི་ཉུང་མཐའི་ཚད།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#, fuzzy
-msgid "_Placement"
-msgstr "བཙུགས་བཞག།"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 #, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "མཱའུསི་ཨེབ་རྟ་གང་རུང་ཅིག་ཨེབ་པའི་སྐབས་ཝིན་ཌོསི་ཆེར་བསྐྱེད་འབད།"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#, fuzzy
+msgid "Hide _frame of windows when maximized"
+msgstr "སྦོམ་བཟོ་བའི་སྐབས་ཝིན་ཌོསི་གི་གཞི་ཁྲམ་སྦ་བཞག།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#, fuzzy
+msgid "Restore original _size of maximized windows when moving"
+msgstr "སྤོ་བཤུད་འབད་བའི་སྐབས་སྦོམ་བཟོ་ཡོད་མི་ཝིན་ཌོསི་གི་ཚད་ངོ་མ་སོར་ཆུད་འབད།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Use _edge resistance instead of window snapping"
+msgstr "ཝིན་ཌོསི་པར་བཏབ་ནིའི་ཚབ་ལུ་བཀག་ནུས་ཀྱི་མཐའམ་ལག་ལེན་འཐབ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#, fuzzy
+msgid "_Accessibility"
+msgstr "འཛུལ་སྤྱོད།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 #, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
@@ -933,37 +836,141 @@ msgid ""
 msgstr ""
 "ལྡེ་སྒྲོམ་མགྱོགས་ཐབས་ཚུ་བརྒྱུད་དེ་སོར་བསྒྱུར་འབད་བའི་སྐབས་ཧེ་མའི་ལཱ་གི་ས་སྒོ་སླར་དྲན་ཡང་ན་སེམས་ཁར་བཞག།"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 #, fuzzy
-msgid ""
-"_Skip windows that have \"skip pager\"\n"
-"or \"skip taskbar\" properties set"
-msgstr "\"skip pager\" ཡང་ན་ \"skip taskbar\" རྒཡུ་དངོས་ཚུའི་ཆ་ཚན་ཡོད་མི་ཝིན་ཌོསི་གོམ་འགྱོ།"
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "ཌེཀསི་ཊོཔ་སྒྲིག་བཀོད་ངོ་མ་ལུ་བརྟེན་ཏེ་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#, fuzzy
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "དང་པམ་ཡང་ན་མཇུག་གི་ལཱ་གི་ས་སྒོ་ཚུ་ལྷོད་པའི་སྐབས་ལཱ་གི་ས་སྒོ་ཚུ་ལོག་མཚམས་བཟོ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 #, fuzzy
 msgid "_Workspaces"
 msgstr "ལཱ་གི་ས་སྒོ་ཚུ།"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 #, fuzzy
-msgid "<b>Margins</b>"
-msgstr "ས་སྟོང་ཚུ།"
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "སྤུར་བསྒྱིར་དྲགས་བཙུགས་བཞག་འབྱུང་སག་ས་འབད་ནི་ལུ་ཝིན་ཌོསི་གི་ཉུང་མཐའི་ཚད།"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 #, fuzzy
-msgid "<b>Workspaces</b>"
-msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་ལོག་མཚམས་བཟོ།"
+msgid "<i>Large</i>"
+msgstr "ཚད་|སྦོམ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "By default, place windows:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "At the _center of the screen"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "Under the mouse _pointer"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#, fuzzy
+msgid "_Placement"
+msgstr "བཙུགས་བཞག།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#, fuzzy
+msgid "_Enable display compositing"
+msgstr "བཀྲམ་སྟོན་རྩོམ་བྲིས་འབད་ནི་ལྕོགས་ཅན་བཟོ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#, fuzzy
+msgid "Display _fullscreen overlay windows directly"
+msgstr "གསལ་གཞི་གངམ་སྤུར་ཁེབས་ཝིན་ཌོསི་ཐད་ཀར་དུ་བཀྲམ་སྟོན་འབད།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#, fuzzy
+msgid "Show shadows under _regular windows"
+msgstr "དུས་རྒཡུན་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#, fuzzy
+msgid "Show shadows under pop_up windows"
+msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#, fuzzy
+msgid "Show shadows under _dock windows"
+msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་འོག་ལུ་གྱིབ་མ་ཚུ་སྟོན།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#, fuzzy
+msgid "Opaci_ty of window decorations:"
+msgstr "སྒོ་སྒྲིག་མཛེས་བཀོད་ཚུ་གི་དྭངས་སྒྲིབ་"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#, fuzzy
+msgid "<i>Transparent</i>"
+msgstr "དྭངས་གསལ་ཅན།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#, fuzzy
+msgid "<i>Opaque</i>"
+msgstr "དྭངས་སྒྲིབ་ཅན།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#, fuzzy
+msgid "Opacity of _inactive windows:"
+msgstr "ཤུགས་མེད་ཝིན་ཌོསི་གི་དྭངས་སྒྲིབ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#, fuzzy
+msgid "Opacity of windows during _move:"
+msgstr "ཝིན་ཌོསི་སྤོ་བཤུད་འབད་བའི་སྐབས་ཀྱི་དྭངས་སྒྲིབ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#, fuzzy
+msgid "Opacity of windows during resi_ze:"
+msgstr "ཝིན་ཌོསི་ཚད་བསྐྱར་བཟོ་འབད་བའི་སྐབས་ཀྱི་དྭངས་སྒྲིབ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#, fuzzy
+msgid "Opacity of popup window_s:"
+msgstr "པོཔ་ཨཔ་ཝིན་ཌོསི་གི་དྭངས་སྒྲིབ།"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#, fuzzy
+msgid "C_ompositor"
+msgstr "རྩོམ་བྲིས་པ།"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#, fuzzy
+msgid "_Number of workspaces:"
+msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་གྲངས་:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+msgid "Layout"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#, fuzzy
+msgid "Names"
+msgstr "མིང་:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+msgid "_General"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "ས་སྟོང་ཚུ་སྒོ་སྒྲིག་མི་བཞག་ནི་ཨིན་མིའི་གསལ་གཞི་གི་མཐའམ་ཚུ་གུའི་མངའ་ཁོངས་ཚུ་ཨིན།"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 #, fuzzy
-msgid "_Number of workspaces:"
-msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་གྲངས་:"
+msgid "_Margins"
+msgstr "ས་སྟོང་ཚུ།"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -971,36 +978,36 @@ msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་གྲངས་:"
 msgid "%s (on %s)"
 msgstr "%s (གུ་ %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr ""
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 #, fuzzy
 msgid "Replace the existing window manager"
 msgstr "ཨེཀསི་ཨེཕ་སི་ཨི་༤སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ་སྒྲིག་སྟངས་ཚུ།"
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 msgid "Print version information and exit"
 msgstr ""
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""
@@ -1142,6 +1149,18 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Set number and names of workspaces"
+#~ msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་གྲངས་:"
+
+#, fuzzy
+#~ msgid "<b>Margins</b>"
+#~ msgstr "ས་སྟོང་ཚུ།"
+
+#, fuzzy
+#~ msgid "<b>Workspaces</b>"
+#~ msgstr "ལཱ་གི་ས་སྒོ་ཚུའི་ལོག་མཚམས་བཟོ།"
 
 #, fuzzy
 #~ msgid "Change workspace name"
@@ -1350,10 +1369,6 @@ msgstr ""
 #~ msgid "Change name"
 #~ msgstr "མིང་བསྒྱུར་བཅོས་འབད།"
 
-#, fuzzy
-#~ msgid "Name:"
-#~ msgstr "མིང་:"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "ལཱགི་ས་སྒོའི་མིང་ཞུན་དག་བརྐྱབ་ནི་ལུ་ལཱ་གི་ས་སྒོའི་མིང་གུ་ཨེབ་གཏང་།"
 
@@ -1370,10 +1385,6 @@ msgstr ""
 
 #~ msgid "Workspaces and Margins"
 #~ msgstr "ལཱ་གི་ས་སྒོ་ཚུ་དང་ས་སྟོང་ཚུ།"
-
-#, fuzzy
-#~ msgid "Margins"
-#~ msgstr "ས་སྟོང་ཚུ།"
 
 #~ msgid "Window Manager Settings"
 #~ msgstr "སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ་སྒྲིག་སྟངས་ཚུ།"
