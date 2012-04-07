@@ -35,7 +35,7 @@
     <property name="window_position">center-on-parent</property>
     <property name="icon_name">xfce4-workspaces</property>
     <property name="type_hint">dialog</property>
-    <property name="subtitle" translatable="yes">Set number and names of workspaces</property>
+    <property name="subtitle" translatable="yes">Configure layout, names and margins</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="main-vbox">
         <property name="visible">True</property>

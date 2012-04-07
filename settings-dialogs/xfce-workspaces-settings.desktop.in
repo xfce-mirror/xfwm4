@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 _Name=Workspaces
-_Comment=Set number and names of workspaces
+_Comment=Configure layout, names and margins
 Exec=xfwm4-workspace-settings
 Icon=xfce4-workspaces
 Terminal=false
