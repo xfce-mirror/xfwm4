@@ -529,6 +529,7 @@ when switching via keyboard shortcuts</property>
                     <child>
                       <object class="GtkHBox" id="hbox2">
                         <property name="visible">True</property>
+                        <property name="spacing">12</property>
                         <child>
                           <object class="GtkLabel" id="label9">
                             <property name="visible">True</property>
