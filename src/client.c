@@ -840,10 +840,14 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
     flags = CFG_REQUEST;
     if (mask & (CWX | CWY | CWWidth | CWHeight))
     {
+        /* Clear any previously saved pos flag from screen resize */
+        FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SAVED_POS);
+
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             clientRemoveMaximizeFlag (c);
         }
+
         flags |= CFG_REQUEST | CFG_CONSTRAINED;
     }
     if ((mask & (CWWidth | CWHeight)) && !(mask & (CWX | CWY)))
@@ -1741,7 +1745,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
        initially maximized or fullscreen windows being placed offscreen
        once de-maximized
      */
-    clientSaveSizePos (c);
+    c->old_x = c->x;
+    c->old_y = c->y;
+    c->old_width = c->width;
+    c->old_height = c->height;
+
     c->fullscreen_old_x = c->x;
     c->fullscreen_old_y = c->y;
     c->fullscreen_old_width = c->width;
@@ -3552,9 +3560,22 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
             {
                 configure_flags |= CFG_KEEP_VISIBLE;
             }
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SAVED_POS))
+            {
+                wc.x = c->saved_x;
+                wc.y = c->saved_y;
+            }
+            else
+            {
+                FLAG_SET (c->xfwm_flags, XFWM_FLAG_SAVED_POS);
 
-            wc.x = c->x;
-            wc.y = c->y;
+                c->saved_x = c->x;
+                c->saved_y = c->y;
+
+                wc.x = c->x;
+                wc.y = c->y;
+            }
+
             clientConfigure (c, &wc, CWX | CWY, configure_flags);
         }
     }

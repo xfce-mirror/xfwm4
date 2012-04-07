@@ -135,7 +135,7 @@
 #define XFWM_FLAG_DRAW_ACTIVE           (1L<<17)
 #define XFWM_FLAG_SEEN_ACTIVE           (1L<<18)
 #define XFWM_FLAG_FIRST_MAP             (1L<<19)
-/* Unused slot                          ........ */
+#define XFWM_FLAG_SAVED_POS             (1L<<20)
 #define XFWM_FLAG_MOVING_RESIZING       (1L<<21)
 #define XFWM_FLAG_NEEDS_REDRAW          (1L<<22)
 #define XFWM_FLAG_OPACITY_LOCKED        (1L<<23)
@@ -286,6 +286,8 @@ struct _Client
     gint gravity;
     guint win_workspace;
     unsigned int ignore_unmap;
+    gint saved_x;
+    gint saved_y;
     gint old_x;
     gint old_y;
     gint old_width;

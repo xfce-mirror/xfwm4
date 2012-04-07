@@ -71,6 +71,7 @@ struct _MoveResizeData
     gint cancel_w, cancel_h;
     guint cancel_workspace;
     gint mx, my;
+    gint px, py; /* pointer relative position */
     gint ox, oy;
     gint ow, oh;
     gint oldw, oldh;
@@ -179,40 +180,40 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     switch (handle)
     {
         case CORNER_BOTTOM_LEFT:
-            px = frameX(c) + frameLeft(c) / 2;
-            py = frameY(c) + frameHeight(c) - frameBottom(c) / 2;
+            px = frameX (c) + frameLeft(c) / 2;
+            py = frameY (c) + frameHeight (c) - frameBottom(c) / 2;
             break;
         case CORNER_BOTTOM_RIGHT:
-            px = frameX(c) + frameWidth(c) - frameRight(c) / 2;
-            py = frameY(c) + frameHeight(c) - frameBottom(c) / 2;
+            px = frameX (c) + frameWidth (c) - frameRight(c) / 2;
+            py = frameY (c) + frameHeight (c) - frameBottom(c) / 2;
             break;
         case CORNER_TOP_LEFT:
-            px = frameX(c) + frameLeft(c) / 2;
-            py = frameY(c);
+            px = frameX (c) + frameLeft(c) / 2;
+            py = frameY (c);
             break;
         case CORNER_TOP_RIGHT:
-            px = frameX(c) + frameWidth(c) - frameRight(c) / 2;
-            py = frameY(c);
+            px = frameX (c) + frameWidth (c) - frameRight(c) / 2;
+            py = frameY (c);
             break;
         case CORNER_COUNT + SIDE_LEFT:
-            px = frameX(c) + frameLeft(c) / 2;
-            py = frameY(c) + frameHeight(c) / 2;
+            px = frameX (c) + frameLeft(c) / 2;
+            py = frameY (c) + frameHeight (c) / 2;
             break;
         case CORNER_COUNT + SIDE_RIGHT:
-            px = frameX(c) + frameWidth(c) - frameRight(c) / 2;
-            py = frameY(c) + frameHeight(c) / 2;
+            px = frameX (c) + frameWidth (c) - frameRight(c) / 2;
+            py = frameY (c) + frameHeight (c) / 2;
             break;
         case CORNER_COUNT + SIDE_TOP:
-            px = frameX(c) + frameWidth(c) / 2;
-            py = frameY(c);
+            px = frameX (c) + frameWidth (c) / 2;
+            py = frameY (c);
             break;
         case CORNER_COUNT + SIDE_BOTTOM:
-            px = frameX(c) + frameWidth(c) / 2;
-            py = frameY(c) + frameHeight(c) - frameBottom(c) / 2;
+            px = frameX (c) + frameWidth (c) / 2;
+            py = frameY (c) + frameHeight (c) - frameBottom(c) / 2;
             break;
         default:
-            px = frameX(c) + frameWidth(c) / 2;
-            py = frameY(c) + frameHeight(c) / 2;
+            px = frameX (c) + frameWidth (c) / 2;
+            py = frameY (c) + frameHeight (c) / 2;
             break;
     }
 
@@ -221,6 +222,8 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     passdata->handle = handle;
     passdata->mx = px;
     passdata->my = py;
+    passdata->px = passdata->mx - frameX (c);
+    passdata->py = passdata->my - frameY (c);
     passdata->ox = c->x;
     passdata->oy = c->y;
     passdata->ow = c->width;
@@ -947,23 +950,33 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 (ABS (xevent->xmotion.y_root - passdata->my) > 15))
             {
                 /* to keep the distance from the edges of the window proportional. */
-                double xratio = .5;
+                double xratio, yratio;
 
-                if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+                xratio = (xevent->xmotion.x_root - frameX (c)) / (double) frameWidth (c);
+                yratio = (xevent->xmotion.y_root - frameY (c)) / (double) frameHeight (c);
+
+                if (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED))
                 {
-                    xratio = (xevent->xmotion.x_root - c->x) / (double)c->width;
-                    if (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
-                    {
-                       toggled_maximize = TRUE;
-                    }
+                    toggled_maximize = TRUE;
                 }
                 if (clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE))
                 {
                     passdata->move_resized = TRUE;
+
                     passdata->ox = c->x;
-                    passdata->mx = CLAMP(c->x + c->width * xratio, c->x, c->x + c->width);
+                    passdata->mx =  frameX (c) + passdata->px;
+                    if ((passdata->mx <  frameX (c)) || (passdata->mx >  frameX (c) + frameWidth (c)))
+                    {
+                        passdata->mx = CLAMP(frameX (c) + frameWidth (c) * xratio, frameX (c), frameX (c) + frameWidth (c));
+                    }
+
                     passdata->oy = c->y;
-                    passdata->my = c->y - frameTop(c) / 2;
+                    passdata->my = frameY (c) + passdata->py;
+                    if ((passdata->my < frameY (c)) || (passdata->my > frameY (c) + frameHeight (c)))
+                    {
+                        passdata->my = CLAMP(frameY (c) + frameHeight (c) * yratio, frameY (c), frameY (c) + frameHeight (c));
+                    }
+
                     configure_flags = CFG_FORCE_REDRAW;
                 }
             }
@@ -986,11 +999,6 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 configure_flags = CFG_FORCE_REDRAW;
                 toggled_maximize = FALSE;
                 passdata->move_resized = TRUE;
-                /*
-                   Update "passdata->my" to the current value to
-                   allow "restore on move" to keep working next time
-                 */
-                passdata->my = c->y - frameTop(c) / 2;
             }
         }
         else if (!clientMoveTile (c, (XMotionEvent *) xevent))
@@ -1099,6 +1107,8 @@ clientMove (Client * c, XEvent * ev)
         passdata.button = ev->xbutton.button;
         passdata.mx = ev->xbutton.x_root;
         passdata.my = ev->xbutton.y_root;
+        passdata.px = passdata.mx - frameX (c);
+        passdata.py = passdata.my - frameY (c);
     }
     else
     {
@@ -1141,6 +1151,9 @@ clientMove (Client * c, XEvent * ev)
      * the motion events aren't reported on screen edges
      */
     placeSidewalks(screen_info, FALSE);
+
+    /* Clear any previously saved pos flag from screen resize */
+    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SAVED_POS);
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering move loop");
@@ -1705,6 +1718,9 @@ clientResize (Client * c, int handle, XEvent * ev)
     {
         clientSetOpacity (c, c->opacity, OPACITY_RESIZE, OPACITY_RESIZE);
     }
+
+    /* Clear any previously saved pos flag from screen resize */
+    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SAVED_POS);
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
