@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-02 09:54+0000\n"
+"POT-Creation-Date: 2012-04-07 17:03+0000\n"
 "PO-Revision-Date: 2011-09-09 12:41+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -839,21 +839,29 @@ msgid "_Workspaces"
 msgstr "_Werkbladen"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "<b>Margins</b>"
-msgstr "<b>Marges</b>"
+msgid "Layout"
+msgstr "Vormgeving"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-msgid "<b>Workspaces</b>"
-msgstr "<b>Werkbladen</b>"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 "Marges zijn gebieden aan de randen van het scherm waar geen vensters "
 "geplaatst worden"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid "Names"
+msgstr "Namen"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+msgid "_General"
+msgstr "Al_gemeen"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
+msgid "_Margins"
+msgstr "_Marges"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
 msgstr "Aantal werkbladen:"
 
@@ -1023,6 +1031,12 @@ msgstr "Fout bij het lezen van gegevens van het afgeleide proces: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
+
+#~ msgid "<b>Margins</b>"
+#~ msgstr "<b>Marges</b>"
+
+#~ msgid "<b>Workspaces</b>"
+#~ msgstr "<b>Werkbladen</b>"
 
 #~ msgid "Change workspace name"
 #~ msgstr "Werkbladnaam veranderen"
@@ -1210,9 +1224,6 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 #~ msgid "Change name"
 #~ msgstr "Naam veranderen"
 
-#~ msgid "Name:"
-#~ msgstr "Naam:"
-
 #~ msgid "Click on a workspace name to edit it"
 #~ msgstr "Klik op een werkbladnaam om hem te bewerken"
 
@@ -1227,9 +1238,6 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 
 #~ msgid "Workspaces and Margins"
 #~ msgstr "Werkbladen en marges"
-
-#~ msgid "Margins"
-#~ msgstr "Marges"
 
 #~ msgid "Window Manager Settings"
 #~ msgstr "Vensterbeheerder instellingen"
