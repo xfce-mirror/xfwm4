@@ -6,12 +6,12 @@
 # Robert Kurowski <koorek@o2.pl>, 2005.
 # Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
 # Piotr Sokół <psokol@jabster.pl>, 2009, 2011.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 23:10+0100\n"
+"POT-Creation-Date: 2012-04-07 11:18+0000\n"
 "PO-Revision-Date: 2011-02-19 17:21+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: Polish <>\n"
@@ -19,8 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%"
-"100<10 || n%100>=20)) ? 1 : 2));\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -518,22 +517,22 @@ msgstr "Przemieszczenie na obszar roboczy 12"
 #: ../settings-dialogs/xfwm4-settings.c:281
 #, fuzzy
 msgid "Tile window to the top"
-msgstr "Przemieszczenie na lewy obszar roboczy"
+msgstr "Umieszczenie na górnej krawędzi ekranu"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
 #, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Przemieszczenie na dolny obszar roboczy"
+msgstr "Umieszczenie na dolnej krawędzi ekranu"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
 #, fuzzy
 msgid "Tile window to the left"
-msgstr "Rozszerz okno w lewo"
+msgstr "Umieszczenie na lewej krawędzi ekranu"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 #, fuzzy
 msgid "Tile window to the right"
-msgstr "Rozszerz okno w prawo"
+msgstr "Umieszczenie na prawej krawędzi ekranu"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -867,35 +866,35 @@ msgstr "_Ilość:"
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:538
 msgid "Fork to the background"
 msgstr "Uruchamia w tle"
 
-#: ../src/main.c:542
+#: ../src/main.c:540
 msgid "Fork to the background (not supported)"
 msgstr "Uruchamia w tle (nie obsługiwane)"
 
-#: ../src/main.c:545
+#: ../src/main.c:543
 msgid "Set the compositor mode"
 msgstr "Przełącza obsługę kompozycji"
 
-#: ../src/main.c:547
+#: ../src/main.c:545
 msgid "Set the compositor mode (not supported)"
 msgstr "Przełącza obsługę kompozycji (nie obsługiwane)"
 
-#: ../src/main.c:549
+#: ../src/main.c:547
 msgid "Replace the existing window manager"
 msgstr "Zastępuje bieżący menedżer okien"
 
-#: ../src/main.c:550
+#: ../src/main.c:548
 msgid "Print version information and exit"
 msgstr "Wypisuje informacje o wersji i kończy"
 
-#: ../src/main.c:558
+#: ../src/main.c:556
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENT...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:563
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy."
