@@ -767,7 +767,7 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
      * we should really not have such an option, I must have been weaked
      * in the past...)
      */
-    if (!(screen_info->params->tile_on_move & screen_info->params->restore_on_move))
+    if (!(screen_info->params->tile_on_move && screen_info->params->restore_on_move))
     {
         return FALSE;
     }
