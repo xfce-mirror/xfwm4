@@ -104,16 +104,17 @@ xfwm4_LDADD =								\
 	$(MATH_LIBS)	
 
 EXTRA_DIST = 								\
-	inline-default-icon.h default_icon.png default_icon.svg		\
+	default_icon.png						\
+	default_icon.svg						\
 	gen-color-table.pl
 
-noinst_DATA = 								\
-	inline-default-icon.h default_icon.png default_icon.svg
+if MAINTAINER_MODE
 
-build.h:
-	$(AM_V_GEN) echo "#define BUILD_ID \""`date +%H%M-%y%m%d`"\"" > build.h
+BUILT_SOURCES =								\
+	inline-default-icon.h
 
 inline-default-icon.h: $(srcdir)/default_icon.png
 	$(AM_V_GEN) gdk-pixbuf-csource --raw --build-list 		\
 	default_icon_data $(srcdir)/default_icon.png > inline-default-icon.h
 
+endif
