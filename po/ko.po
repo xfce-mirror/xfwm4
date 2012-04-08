@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-08 10:18+0000\n"
-"PO-Revision-Date: 2012-04-08 20:27+0900\n"
+"PO-Revision-Date: 2012-04-08 20:28+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
@@ -276,7 +276,7 @@ msgstr "붙이기"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "제목 표시줄을 두 번 눌렀을 때 수행하는 동작"
+msgstr "제목 표시줄을 두 번 눌렀을 때 수행할 동작"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
