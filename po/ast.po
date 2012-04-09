@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-07 19:58+0200\n"
+"POT-Creation-Date: 2012-04-09 18:54+0200\n"
 "PO-Revision-Date: 2009-07-06 17:04+0100\n"
 "Last-Translator: astur <malditoastur@gmail.com>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -23,34 +23,34 @@ msgstr ""
 msgid "Warning"
 msgstr "Atención"
 
-#: ../settings-dialogs/tweaks-settings.c:49
+#: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
 msgstr "Dengún"
 
-#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
 msgstr "Socket del xestor de sesión"
 
-#: ../settings-dialogs/tweaks-settings.c:436
-#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr "ID de SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr "Información de versión"
 
-#: ../settings-dialogs/tweaks-settings.c:455
-#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:459
-#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
@@ -61,17 +61,17 @@ msgstr ""
 "Preba %s --help pa ver una llista completa d'opciones de llinia de comandu "
 "disponibles.\n"
 
-#: ../settings-dialogs/workspace-settings.c:73
-#: ../settings-dialogs/workspace-settings.c:88
+#: ../settings-dialogs/workspace-settings.c:74
+#: ../settings-dialogs/workspace-settings.c:89
 #, c-format
 msgid "Workspace %d"
 msgstr "Estaya de trabayu %d"
 
-#: ../settings-dialogs/workspace-settings.c:274
+#: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
 msgstr "Nome de la estaya de trabayu"
 
-#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr "Socket del alministrador de configuración"
@@ -259,7 +259,7 @@ msgstr "Dis_tancia:"
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 #, fuzzy
 msgid "<i>Small</i>"
 msgstr "<i>Pequeñu</i>"
@@ -725,27 +725,32 @@ msgid "Restore original _size of maximized windows when moving"
 msgstr "Restaurar el _tamañu orixinal de ventanes maximizaes al ser desplazaes"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgstr "Trayer al f_rente automáticamente les ventanes cuando garren el focu"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Usar resistencia de _berbesu en llugar d'atracción ente ventanes"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "Notificar la _urxencia faciendo parpaguiar la decoración del ventana"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "Caltener les ventanes urxentes pa_rpaguiando repetidamente"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
 msgstr "_Accesibilidá"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
 "Usar la _rueda del mur sobro l'escritoriu pa camudar d'estaya de trabayu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
@@ -753,94 +758,94 @@ msgstr ""
 "_Remembrar estayes de trabayu previes\n"
 "al camudar per aciu d'atayos de tecláu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 "Camudar d'estaya de trabayu dependiendo de la _disposición real d'escritoriu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "Desplazamientu _cíclicu ente estayes de trabayu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "Estayes de _trabayu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Tamañu _mínimu de ventana p'activar posicionamientu intelixente"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 #, fuzzy
 msgid "<i>Large</i>"
 msgstr "<i>Grande</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "By default, place windows:"
 msgstr "Por defeutu, allugar ventanes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "At the _center of the screen"
 msgstr "Nel _centru de la pantalla"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "Under the mouse _pointer"
 msgstr "Baxo'l _punteru del mur"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
 msgstr "_Posicionamientu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
 msgstr "_Activar composición de visualización"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
 msgstr "Amosar direutamente superposición de ventanes a _pantalla completa"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "Show shadows under _regular windows"
 msgstr "Amosar somlobres baxo ventanes _normales"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
 msgstr "Amosar somlobres baxo ventanos _emerxentes"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show shadows under _dock windows"
 msgstr "Amosar solombres baxo ventanes _empotrables"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Opaci_ty of window decorations:"
 msgstr "Opaci_dá de la decoración de ventanes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "<i>Transparent</i>"
 msgstr "<i>Tresparente</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "<i>Opaque</i>"
 msgstr "<i>Opacu</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opacity of _inactive windows:"
 msgstr "Opacidá de ventanes _inactives:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opacity of windows during _move:"
 msgstr "Opacidá de ventanes al des_plazase:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacidá de ventanes durante _redimensionáu:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of popup window_s:"
 msgstr "Opacidá de ventano_s emerxentes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "C_ompositor"
 msgstr "C_ompositor"
 
@@ -879,36 +884,36 @@ msgstr "<b>Márxenes</b>"
 msgid "%s (on %s)"
 msgstr "%s (en %s)"
 
-#: ../src/main.c:538
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:540
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:543
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:545
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr ""
 
-#: ../src/main.c:547
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr ""
 
-#: ../src/main.c:548
+#: ../src/main.c:550
 #, fuzzy
 msgid "Print version information and exit"
 msgstr "Información de versión"
 
-#: ../src/main.c:556
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../src/main.c:563
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""

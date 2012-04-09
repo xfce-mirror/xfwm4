@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.7.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-07 19:58+0200\n"
+"POT-Creation-Date: 2012-04-09 18:54+0200\n"
 "PO-Revision-Date: 2010-12-07 15:40+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <xfce-i18n@xfce.org>\n"
@@ -28,34 +28,34 @@ msgstr ""
 msgid "Warning"
 msgstr "Varoitus"
 
-#: ../settings-dialogs/tweaks-settings.c:49
+#: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
 msgstr "Ei mitään"
 
-#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
 msgstr "Istunnonhallinnan pistoke"
 
-#: ../settings-dialogs/tweaks-settings.c:436
-#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr "PISTOKE"
 
-#: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr "Versiotiedot"
 
-#: ../settings-dialogs/tweaks-settings.c:455
-#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:459
-#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
@@ -65,17 +65,17 @@ msgstr ""
 "%s: %s\n"
 "Saat listan komentorivin valitsimista kirjoittamalla %s --help.\n"
 
-#: ../settings-dialogs/workspace-settings.c:73
-#: ../settings-dialogs/workspace-settings.c:88
+#: ../settings-dialogs/workspace-settings.c:74
+#: ../settings-dialogs/workspace-settings.c:89
 #, c-format
 msgid "Workspace %d"
 msgstr "Työtila %d"
 
-#: ../settings-dialogs/workspace-settings.c:274
+#: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
 msgstr "Työtilan nimi"
 
-#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr "Asetustenhallinnan pistoke"
@@ -261,7 +261,7 @@ msgstr "_Etäisyys:"
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
 msgstr "<i>Pieni</i>"
 
@@ -718,117 +718,122 @@ msgid "Restore original _size of maximized windows when moving"
 msgstr "Palauta suure_nnettujen ikkunoiden koko siirrettäessä"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgstr "_Nosta ikkunat automaattisesti, kun niihin kohdistetaan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Käytä r_eunavastusta ikkunoiden loksahtamisen sijaan"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "Ilmoita _huomion tarpeesta vilkuttamalla ikkunan reunoja"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "Pidä huomiota vaativat ikkunat _vilkkuvina"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
 msgstr "_Esteettömyys"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "_Hiiren rulla työpöydän yllä vaihtaa työtilaa"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr "M_uista edellinen työtila pikanäppäimillä vaihdettaessa"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Kierrätä työtiloja t_yöpöytäasettelun mukaisesti"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "Kierrätä työtiloja, kun o_hitetaan ensimmäinen tai viimeinen tila"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "_Työtilat"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Älykkäästi sijoitettavan ikkunan _minimikoko:"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "<i>Large</i>"
 msgstr "<i>Suuri</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "By default, place windows:"
 msgstr "Ikkunan oletussijoitus:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "At the _center of the screen"
 msgstr "Ruudun _keskelle"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "Under the mouse _pointer"
 msgstr "_Osoittimen alle"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
 msgstr "_Sijoittelu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
 msgstr "Käytä näytön ko_mposointia"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
 msgstr "Näytä kokoruudun _peittokuvaikkunat suoraan"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "Show shadows under _regular windows"
 msgstr "Näytä varjot ta_vallisten ikkunoiden alla"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
 msgstr "Näytä varjot ponnahd_usikkunoiden alla"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show shadows under _dock windows"
 msgstr "Näytä varjot te_lakkaikkunoiden alla"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Opaci_ty of window decorations:"
 msgstr "Ikkunoiden kehys_ten läpinäkyvyys:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "<i>Transparent</i>"
 msgstr "<i>Läpinäkyvä</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "<i>Opaque</i>"
 msgstr "<i>Läpinäkymätön</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opacity of _inactive windows:"
 msgstr "Epäaktii_visten ikkunoiden läpinäkyvyys:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opacity of windows during _move:"
 msgstr "Ikkunoiden läpinäkyvyys sii_rrettäessä:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Opacity of windows during resi_ze:"
 msgstr "Ikkunoiden läpinäkyvyys kokoa m_uutettaessa:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of popup window_s:"
 msgstr "P_onnahdusikkunoiden läpinäkyvyys:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "C_ompositor"
 msgstr "K_omposoija"
 
@@ -866,35 +871,35 @@ msgstr "<b>Reunukset</b>"
 msgid "%s (on %s)"
 msgstr "%s (isäntäkoneella %s)"
 
-#: ../src/main.c:538
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "Haaraudu taustalle"
 
-#: ../src/main.c:540
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "Haaraudu taustalle (ei tuettu)"
 
-#: ../src/main.c:543
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "Aseta komposointitila"
 
-#: ../src/main.c:545
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "Aseta komposointitila (ei tuettu)"
 
-#: ../src/main.c:547
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "Korvaa nykyinen ikkunamanageri"
 
-#: ../src/main.c:548
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "Tulosta versiotiedot ja poistu"
 
-#: ../src/main.c:556
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[VALITSIMET...]"
 
-#: ../src/main.c:563
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Saat käyttöohjeita komennolla \"%s --help\"."

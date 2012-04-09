@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-07 19:58+0200\n"
+"POT-Creation-Date: 2012-04-09 18:54+0200\n"
 "PO-Revision-Date: 2009-01-18 16:24+0100\n"
 "Last-Translator: Jérôme Guelfucci <jeromeg@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
@@ -30,34 +30,34 @@ msgstr ""
 msgid "Warning"
 msgstr "Avertissement"
 
-#: ../settings-dialogs/tweaks-settings.c:49
+#: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
 msgstr "Aucun"
 
-#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
 msgstr "Socket du gestionnaire de sessions"
 
-#: ../settings-dialogs/tweaks-settings.c:436
-#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr "Informations sur la version"
 
-#: ../settings-dialogs/tweaks-settings.c:455
-#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:459
-#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
@@ -68,17 +68,17 @@ msgstr ""
 "Essayez %s --help pour afficher une liste complète des options de ligne de "
 "commande.\n"
 
-#: ../settings-dialogs/workspace-settings.c:73
-#: ../settings-dialogs/workspace-settings.c:88
+#: ../settings-dialogs/workspace-settings.c:74
+#: ../settings-dialogs/workspace-settings.c:89
 #, c-format
 msgid "Workspace %d"
 msgstr "Espace de travail %d"
 
-#: ../settings-dialogs/workspace-settings.c:274
+#: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
 msgstr "Nom de l'espace de travail"
 
-#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr "Socket du gestionnaire de paramètres"
@@ -265,7 +265,7 @@ msgstr "Dis_tance :"
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
 msgstr "<i>Petit</i>"
 
@@ -724,29 +724,36 @@ msgstr ""
 "déplacement"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgstr ""
+"Placer les fenêtres automatiquement au premier plan lorsqu'elles _reçoivent "
+"le focus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
 msgstr ""
 "_Utiliser la résistance aux bords au lieu de l'aimantation entre les fenêtres"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "Signaler une _urgence en faisant clignoter la décoration de la fenêtre"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "Laisser clignoter les fenêtres _urgentes"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
 msgstr "_Accessibilité"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
 "Changer d'espace de travail à l'aide de la _molette de la souris sur le "
 "bureau"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
@@ -754,93 +761,93 @@ msgstr ""
 "_Mémoriser et revenir à l'espace précédent\n"
 "en changeant d'espace de travail à l'aide du clavier"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Changer d'espace de travail en fonction de l'_agencement du bureau"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr ""
 "Changer d'espace de travail après en avoir atteint le _premier ou le dernier"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "_Espaces de travail"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Taille _minimale des fenêtres placées intelligemment :"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "<i>Large</i>"
 msgstr "<i>Large</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "By default, place windows:"
 msgstr "Par défaut, placer la fenêtre :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "At the _center of the screen"
 msgstr "au _centre de l'écran"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "Under the mouse _pointer"
 msgstr "Sous le _pointeur de la souris"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
 msgstr "_Placement"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
 msgstr "_Activer le compositeur d'affichage"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
 msgstr "Affichage direct des _fenêtres plein écran"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "Show shadows under _regular windows"
 msgstr "Afficher l'ombre sous les fenêtres no_rmales"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
 msgstr "Afficher l'ombre sous les fenêtres context_uelles"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show shadows under _dock windows"
 msgstr "Afficher l'ombre sous les fenêtres du _dock"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Opaci_ty of window decorations:"
 msgstr "Opaci_té des décorations des fenêtres :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "<i>Transparent</i>"
 msgstr "<i>Transparent</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "<i>Opaque</i>"
 msgstr "<i>Opaque</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opacity of _inactive windows:"
 msgstr "Opacité des fenêtres _inactives :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opacity of windows during _move:"
 msgstr "Opacité des fenêtres durant leur déplace_ment :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacité des fenêtres durant leur _redimensionnement :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of popup window_s:"
 msgstr "Opacité des fenêtres contextuelle_s :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "C_ompositor"
 msgstr "C_ompositeur"
 
@@ -878,35 +885,35 @@ msgstr "<b>Marges</b>"
 msgid "%s (on %s)"
 msgstr "%s (sur %s)"
 
-#: ../src/main.c:538
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "Forker en arrière-plan"
 
-#: ../src/main.c:540
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "Forker en arrière-plan (non supporté)"
 
-#: ../src/main.c:543
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "Appliquer le mode du compositeur"
 
-#: ../src/main.c:545
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "Appliquer le mode du compositeur (non supporté)"
 
-#: ../src/main.c:547
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "Remplacer le gestionnaire de fenêtre actuel"
 
-#: ../src/main.c:548
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "Information sur la version et quitter"
 
-#: ../src/main.c:556
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:563
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Saisissez \"%s --help\" pour l'usage."

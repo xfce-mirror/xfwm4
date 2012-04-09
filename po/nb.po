@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-07 19:58+0200\n"
+"POT-Creation-Date: 2012-04-09 18:54+0200\n"
 "PO-Revision-Date: 2005-08-19 21:16+0900\n"
 "Last-Translator: Terje Uriansrud <terje@uriansrud.net>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
@@ -30,34 +30,34 @@ msgstr ""
 msgid "Warning"
 msgstr "Advarsel"
 
-#: ../settings-dialogs/tweaks-settings.c:49
+#: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
 msgstr "Ingen"
 
-#: ../settings-dialogs/tweaks-settings.c:436
+#: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
 msgstr "Øktbehandlersokkel"
 
-#: ../settings-dialogs/tweaks-settings.c:436
-#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
 msgstr "SOKKEL-ID"
 
-#: ../settings-dialogs/tweaks-settings.c:437
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
 msgstr "Versjonsinformasjon"
 
-#: ../settings-dialogs/tweaks-settings.c:455
-#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:459
-#: ../settings-dialogs/workspace-settings.c:402
+#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:968
 #, c-format
 msgid ""
@@ -68,17 +68,17 @@ msgstr ""
 "Prøv «%s --help» for å se komplett liste over tilgjengelige "
 "kommandolinjeparametre.\n"
 
-#: ../settings-dialogs/workspace-settings.c:73
-#: ../settings-dialogs/workspace-settings.c:88
+#: ../settings-dialogs/workspace-settings.c:74
+#: ../settings-dialogs/workspace-settings.c:89
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeidsområde %d"
 
-#: ../settings-dialogs/workspace-settings.c:274
+#: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
 msgstr "Arbeidsområdenavn"
 
-#: ../settings-dialogs/workspace-settings.c:380
+#: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
 msgstr "Innstillingsbehandlersokkel"
@@ -264,7 +264,7 @@ msgstr "Avs_tand:"
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
 msgstr "<i>Liten</i>"
 
@@ -723,118 +723,123 @@ msgid "Restore original _size of maximized windows when moving"
 msgstr "Gjenopprett origina_l størrelse på vindu mens det flyttes"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgstr "Automatisk _hev vinduer når de mottar fokus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Bruk _kantmotstand istedet for tiltrekning mellom vinduer"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "Varsle _kritiske vinduer ved at vindusdekorasjonen blinker"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "La kritiske vinduer _blinke gjentatte ganger"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
 msgstr "_Tilgjengelighet"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "Bruk _musepekerhjulet over skrivebordet for å bytte arbeidsområde"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
 "_Lagre og gjenopprett forrige arbeidsområde ved bytting med hurtigtast."
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Bryt arbeidsområdet avhengig av skrivebordets _utforming"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
 msgstr "Bryt arbeidsområder når den _første eller siste nås"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "_Arbeidsområder"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "_Minimum størrelse på vinduer for å utløse smart plassering"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "<i>Large</i>"
 msgstr "<i>Stor</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "By default, place windows:"
 msgstr "Som standard, plasser vinduer:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "At the _center of the screen"
 msgstr "_Midtstilt på skjermen"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "Under the mouse _pointer"
 msgstr "Under muse_pekeren"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
 msgstr "_Plassering"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
 msgstr "_Bruk kompositteffekter (skjermeffekter)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
 msgstr "Vis _fullskjermsvinduer direkte uten å bruke kompositt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "Show shadows under _regular windows"
 msgstr "Vis skugge under va_nlige vinduer"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
 msgstr "Vis skygge under sprett_oppvinduer"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show shadows under _dock windows"
 msgstr "Vis skygge under sa_mlevinduer"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Opaci_ty of window decorations:"
 msgstr "Dekkevne _for vindusdekorasjoner:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "<i>Transparent</i>"
 msgstr "<i>Gjennomsiktig</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "<i>Opaque</i>"
 msgstr "<i>Ugjennomsiktig</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opacity of _inactive windows:"
 msgstr "Dekkevne for _inaktive vinduer:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opacity of windows during _move:"
 msgstr "Dekkevne for vinduer som _flyttes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Opacity of windows during resi_ze:"
 msgstr "Dekkevne for vinduer som endrer s_tørrelse"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of popup window_s:"
 msgstr "Dekkevne for _sprettoppvinduer:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "C_ompositor"
 msgstr "K_ompositt"
 
@@ -873,35 +878,35 @@ msgstr "<b>Marginer</b>"
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/main.c:538
+#: ../src/main.c:540
 msgid "Fork to the background"
 msgstr "Forgren til bakgrunnen"
 
-#: ../src/main.c:540
+#: ../src/main.c:542
 msgid "Fork to the background (not supported)"
 msgstr "Forgren til bakgrunn (ikke støttet)"
 
-#: ../src/main.c:543
+#: ../src/main.c:545
 msgid "Set the compositor mode"
 msgstr "Sett komposittmodus"
 
-#: ../src/main.c:545
+#: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
 msgstr "Sett komposittmodus (ikke støttet)"
 
-#: ../src/main.c:547
+#: ../src/main.c:549
 msgid "Replace the existing window manager"
 msgstr "Erstatt den eksisterende vindusbehandleren"
 
-#: ../src/main.c:548
+#: ../src/main.c:550
 msgid "Print version information and exit"
 msgstr "Skriv ut versjonsinformasjon og avslutt"
 
-#: ../src/main.c:556
+#: ../src/main.c:558
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTER...]"
 
-#: ../src/main.c:563
+#: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skriv \"%s --help\" for informasjon om bruk."
