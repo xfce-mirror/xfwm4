@@ -143,6 +143,12 @@ cb_urgent_blink_button_toggled (GtkToggleButton *toggle, GtkWidget *repeat_urgen
 }
 
 static void
+cb_restore_on_move_check_button_toggled (GtkToggleButton *toggle, GtkWidget *button)
+{
+    gtk_widget_set_sensitive (button, gtk_toggle_button_get_active (toggle));
+}
+
+static void
 wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
 {
     GtkWidget *vbox;
@@ -175,6 +181,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *raise_with_any_button_check = GTK_WIDGET (gtk_builder_get_object (builder, "raise_with_any_button_check"));
     GtkWidget *borderless_maximize_check = GTK_WIDGET (gtk_builder_get_object (builder, "borderless_maximize_check"));
     GtkWidget *restore_on_move_check = GTK_WIDGET (gtk_builder_get_object (builder, "restore_on_move_check"));
+    GtkWidget *tile_on_move_check = GTK_WIDGET (gtk_builder_get_object (builder, "tile_on_move_check"));
     GtkWidget *snap_resist_check = GTK_WIDGET (gtk_builder_get_object (builder, "snap_resist_check"));
     GtkWidget *urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "urgent_blink"));
     GtkWidget *repeat_urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "repeat_urgent_blink"));
@@ -285,6 +292,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                       "toggled",
                       G_CALLBACK (cb_urgent_blink_button_toggled),
                       repeat_urgent_blink);
+    g_signal_connect (G_OBJECT (restore_on_move_check),
+                      "toggled",
+                      G_CALLBACK (cb_restore_on_move_check_button_toggled),
+                      tile_on_move_check);
 
     /* Bind easy properties */
     /* Cycling tab */
@@ -329,6 +340,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             G_TYPE_BOOLEAN,
                             (GObject *)restore_on_move_check, "active");
     xfconf_g_property_bind (xfwm4_channel,
+                            "/general/tile_on_move",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)tile_on_move_check, "active");
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/snap_resist",
                             G_TYPE_BOOLEAN,
                             (GObject *)snap_resist_check, "active");
@@ -342,6 +357,8 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             (GObject *)repeat_urgent_blink, "active");
     gtk_widget_set_sensitive (repeat_urgent_blink,
                               gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (urgent_blink)));
+    gtk_widget_set_sensitive (tile_on_move_check,
+                              gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (restore_on_move_check)));
 
     /* Workspaces tab */
     xfconf_g_property_bind (xfwm4_channel,
