@@ -67,6 +67,8 @@
     SubstructureNotifyMask|\
     StructureNotifyMask|\
     SubstructureRedirectMask|\
+    ButtonPressMask|\
+    ButtonReleaseMask|\
     KeyPressMask|\
     KeyReleaseMask|\
     FocusChangeMask|\
