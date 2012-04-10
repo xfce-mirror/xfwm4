@@ -3553,6 +3553,10 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
             wc.height = c->height;
             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
         }
+        else if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+        {
+            clientUpdateFullscreenSize (c);
+        }
         else
         {
             configure_flags = CFG_CONSTRAINED | CFG_REQUEST;
