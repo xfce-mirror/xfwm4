@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Jasper Huijsmans <jasper@xfce.org>, 2004.
 # Pjotr, 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
@@ -675,7 +675,7 @@ msgid "At the _center of the screen"
 msgstr "In het _midden van het scherm"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Vensters automatisch tegelen bij beweging naar de schermrand"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

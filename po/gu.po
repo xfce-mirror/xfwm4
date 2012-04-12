@@ -799,7 +799,7 @@ msgstr "જ્યારે ખસેડી રહ્યા હોય ત્ય�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "આપોઆપ વિન્ડો મોટી કરો જ્યારે તેઓ ફોકસ થાય"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

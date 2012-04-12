@@ -725,7 +725,7 @@ msgid "Restore original _size of maximized windows when moving"
 msgstr "最大化されたウィンドウを移動する時は大きさを元に戻す(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "ウィンドウが画面端に移動された時自動的にタイル表示する(_R)"
 
 # FIXME: should be revised

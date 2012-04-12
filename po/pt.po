@@ -670,7 +670,7 @@ msgid "At the _center of the screen"
 msgstr "No ce_ntro do ecrã"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Ao mover para o _limite do ecrã, criar mosaicos das janelas automaticamente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

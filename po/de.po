@@ -7,7 +7,7 @@
 # Jannis Pohlmann <jannis@xfce.org>, 2008.
 # Jakob Kramer <jakob.kramer@gmx.de>, 2011.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2012.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 master\n"
@@ -689,7 +689,7 @@ msgstr "I_n der Mitte des Bildschirms"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Au_tomatisch Fenster gekachelt anordnen, wenn sie in die Bildschirmecke gezogen werden"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Mantas Zapolskas <mantaz@users.sf.net>, 2003.
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
@@ -673,7 +673,7 @@ msgid "At the _center of the screen"
 msgstr "Ekrano _centre"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Automatiškai iškelti _langus kai jie stumiami link lango krašto"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

@@ -798,7 +798,7 @@ msgstr "हलविताना विण्डोचे आशय दाखव
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "आपोआप विण्डो उचलतो जेव्हा त्यांना फोकस मिळतोंतर "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

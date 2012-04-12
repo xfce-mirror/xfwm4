@@ -1,7 +1,7 @@
 # Ukrainian translation of xfwm4
 # Copyright (C) 2002-2006 The Xfce development team
 # This file is distributed under the same license as the xfwm4 package.
-# 
+#
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006.
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2007.
 msgid ""
@@ -675,7 +675,7 @@ msgid "At the _center of the screen"
 msgstr "По _центру екрану"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Автоматично складати вікна в _мозаїку при русі до краю екрану"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

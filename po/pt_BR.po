@@ -7,7 +7,7 @@
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 # Vladimir Melo <vmelo@gnome.org>, 2008.
 # Sérgio Cipolla <secipolla@gmail.com> 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
@@ -678,7 +678,7 @@ msgid "At the _center of the screen"
 msgstr "No _centro do monitor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Alinhar janelas au_tomaticamente ao movê-las em relação aos cantos da tela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

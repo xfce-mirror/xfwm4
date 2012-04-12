@@ -805,7 +805,7 @@ msgstr "ሲወሰድ ቀዳሚ የተለቀ መስኮት መጠንን አድር�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "ኢላማ ሲሰጠው መስኮትን አስነሳ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

@@ -1,10 +1,10 @@
 # $Id$
-# 
+#
 # Uyghur translations for xfwm4 package.
 # Copyright (C) 2002-2007 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Gheyret T.Kenji <gheyret@gmail.com>, 2010.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.5.91\n"
@@ -732,7 +732,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "كۆزنەك فوكۇسلانغاندا ئاپتوماتىك كۆتۈرۈلسۇن(_R)"
 
 # FIXME: should be revised

@@ -810,7 +810,7 @@ msgstr "החזר את הגודל המקורי של החלון המוגדל כא�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

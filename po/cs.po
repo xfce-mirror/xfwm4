@@ -718,7 +718,7 @@ msgstr "Při přesunu _obnovit původní velikost u maximalizovaných oken"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Po zaměření _automaticky přenést okno do popředí"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

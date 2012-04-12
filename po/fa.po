@@ -806,7 +806,7 @@ msgstr "نمایش محتویات پنجره‌ها هنگام حرکت دادن
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "برافرازی پنجره بطور خودکار وقتی آنها تمرکز را دریافت میکنند"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

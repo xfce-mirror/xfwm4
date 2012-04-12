@@ -808,7 +808,7 @@ msgstr "སྤོ་བཤུད་འབད་བའི་སྐབས་སྦ
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "ཝིན་ཌོསི་གིས་ཆེད་དམིགས་འཐོབ་པའི་སྐབས་རང་བཞིན་གྱིས་ཝིན་ཌོསི་ཆེད་དམིགས་འབད།"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

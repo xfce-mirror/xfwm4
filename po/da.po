@@ -677,7 +677,7 @@ msgid "At the _center of the screen"
 msgstr "I _centrum af skærmen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Automatisk arrangér vinduer som _fliser når de flyttes mod skærmkanten"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

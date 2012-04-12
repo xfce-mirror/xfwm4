@@ -723,7 +723,7 @@ msgstr "Utilizează _mărimea inițială la mutarea ferestrelor maximizate"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Ferestrele trec automat _deasupra când primesc focus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

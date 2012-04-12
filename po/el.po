@@ -729,7 +729,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Αυτόματη αν_ύψωση παραθύρων όταν εστιαστούν"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

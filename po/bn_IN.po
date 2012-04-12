@@ -795,7 +795,7 @@ msgstr "উইন্ডো সরানোর সময় তার মধ্য�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "উজ্জ্বল করা হলে স্বয়ংক্রিয়ভাবে উইন্ডো বড় করা হবে"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

@@ -728,7 +728,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "_Ngriji dritaret vetvetiu kur këto marrin fokus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

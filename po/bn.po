@@ -722,7 +722,7 @@ msgstr "সরানোর সময় পূর্ণ বিস্তারের
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "উইন্ডো ফোকাস করা হলে স্বয়ংক্রিয়ভাবে উঠানো হবে (_r)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

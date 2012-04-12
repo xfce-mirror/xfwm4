@@ -756,7 +756,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "කවුළු වෙත යොමු වූ පසු ස්වයංක්‍රීයවම ඒවා නගන්න (_r)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

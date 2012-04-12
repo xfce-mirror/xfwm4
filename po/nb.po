@@ -724,7 +724,7 @@ msgstr "Gjenopprett origina_l størrelse på vindu mens det flyttes"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Automatisk _hev vinduer når de mottar fokus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

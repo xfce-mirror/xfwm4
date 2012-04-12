@@ -676,7 +676,7 @@ msgid "At the _center of the screen"
 msgstr "在屏幕中央(_C)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "在窗口向屏幕边缘移动时自动平铺(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

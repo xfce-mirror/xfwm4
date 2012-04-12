@@ -729,7 +729,7 @@ msgstr "移動視窗時還原最大化視窗的原始大小(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "當視窗獲取焦點時自動抬升該視窗(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

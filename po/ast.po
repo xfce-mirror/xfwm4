@@ -726,7 +726,7 @@ msgstr "Restaurar el _tamañu orixinal de ventanes maximizaes al ser desplazaes"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Trayer al f_rente automáticamente les ventanes cuando garren el focu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

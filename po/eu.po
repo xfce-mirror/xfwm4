@@ -2,7 +2,7 @@
 # Euskara translation of xfwm4.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# 
+#
 # Piarres Beobide Egaña <pi@beobide.net>, 2004, 2006, 2007, 2008.
 # Piarres Beobide <pi+debian@beobide.net>, 2009.
 msgid ""
@@ -676,7 +676,7 @@ msgid "At the _center of the screen"
 msgstr "Panatailaren er_dian"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Automatikoki _goratu leihoak pantaila ertzetik mugitzean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

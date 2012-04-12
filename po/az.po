@@ -806,7 +806,7 @@ msgstr "Daşındığında pəncərələrin məzmununu göstər"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Pəncərələrə fokus veriləndə onları avtomatik olaraq qabağa gətir"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

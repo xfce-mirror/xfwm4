@@ -726,7 +726,7 @@ msgstr "عند تحريكها ، إستعد قياس النوافذ المصغر
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "_إرفع النوافذ تلقائيا عندما تتلقى البؤرة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

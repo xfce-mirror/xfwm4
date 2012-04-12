@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
@@ -672,7 +672,7 @@ msgid "At the _center of the screen"
 msgstr "Экран ор_тасында"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Терезелерді экран шетіне апарғанда олармен экранды автот_олтыру"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10

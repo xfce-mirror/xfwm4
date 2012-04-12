@@ -733,7 +733,7 @@ msgstr "Atgriezt sākotnējo i_zmēru, kad logs tiek pārvietots"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Automātiski _pacelt logus, kad tie saņem fokusu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21

@@ -730,7 +730,7 @@ msgstr "Восстанавливать _исходный размер разве
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr ""
 "Автоматически _поднимать окна на передний план окна, когда они получают фокус"
 

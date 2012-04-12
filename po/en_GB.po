@@ -725,7 +725,7 @@ msgstr "Restore original _size of maximised windows when moving"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Automaticaly _tile windows when moving toward the screen edge"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Automatically _raise windows when they receive focus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
