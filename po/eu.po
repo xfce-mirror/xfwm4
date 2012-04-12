@@ -108,7 +108,7 @@ msgstr "Leiho kudeatzaile ezarpenak"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "Konfiguratu diseinua, izenak eta ertzak"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -676,9 +676,8 @@ msgid "At the _center of the screen"
 msgstr "Panatailaren er_dian"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Automaticaly _tile windows when moving toward the screen edge"
-msgstr "Automatikoki _goratu leihoak fokua dutenean"
+msgstr "Automatikoki _goratu leihoak pantaila ertzetik mugitzean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "By default, place windows:"
@@ -843,7 +842,7 @@ msgstr "_Idazmahaiak"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Layout"
-msgstr ""
+msgstr "Diseinua"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid ""
@@ -851,18 +850,16 @@ msgid ""
 msgstr "Marjinak pantailaren ertzetan leihorik kokatu ezin den eremuak dira"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
-#, fuzzy
 msgid "Names"
-msgstr "Izena:"
+msgstr "Izenak"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "_Orokorra"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Margins"
-msgstr "Marjinak"
+msgstr "_Ertzak"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
