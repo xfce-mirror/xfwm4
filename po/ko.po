@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 20:48+0000\n"
-"PO-Revision-Date: 2012-04-10 10:15+0900\n"
+"POT-Creation-Date: 2012-04-13 16:48+0000\n"
+"PO-Revision-Date: 2012-04-14 02:16+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
@@ -669,8 +669,8 @@ msgid "At the _center of the screen"
 msgstr "화면 한 가운데(_C)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automaticaly _tile windows when moving toward the screen edge"
-msgstr "화면 모서리로 창을 옮길 때 자동으로 타일 배치(_T)"
+msgid "Automatically _tile windows when moving toward the screen edge"
+msgstr "화면 모서리로 창을 옮길 때 자동으로 바둑판 배치(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "By default, place windows:"
