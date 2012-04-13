@@ -669,7 +669,7 @@ msgid "At the _center of the screen"
 msgstr "화면 한 가운데(_C)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automatically _tile windows when moving toward the screen edge"
+msgid "Automaticaly _tile windows when moving toward the screen edge"
 msgstr "화면 모서리로 창을 옮길 때 자동으로 타일 배치(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
@@ -864,11 +864,11 @@ msgstr "%s (%s 에서)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr "배경화면으로 쪼개기"
+msgstr "바탕 화면으로 쪼개기"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr "배경화면으로 쪼개기 (지원하지 않음)"
+msgstr "바탕 화면으로 쪼개기 (지원하지 않음)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
