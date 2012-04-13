@@ -722,7 +722,7 @@ msgstr "창 장식 불투명도(_T):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Opacity of _inactive windows:"
-msgstr "비활성창 불투명도(_I):"
+msgstr "비활성 창 불투명도(_I):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Opacity of popup window_s:"
