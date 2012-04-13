@@ -178,7 +178,7 @@ clientCreateTitleName (Client *c, gchar *name, gchar *hostname)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (strlen (hostname) && (display_info->hostname) && (g_strcasecmp (display_info->hostname, hostname)))
+    if (strlen (hostname) && (display_info->hostname) && (g_ascii_strcasecmp (display_info->hostname, hostname)))
     {
         /* TRANSLATORS: "(on %s)" is like "running on" the name of the other host */
         title = g_strdup_printf (_("%s (on %s)"), name, hostname);

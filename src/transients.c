@@ -447,5 +447,5 @@ clientSameApplication (Client *c1, Client *c2)
             clientSameLeader (c1, c2) ||
             (c1->pid != 0 && c1->pid == c2->pid &&
              c1->hostname && c2->hostname &&
-             !g_strcasecmp (c1->hostname, c2->hostname)));
+             !g_ascii_strcasecmp (c1->hostname, c2->hostname)));
 }
