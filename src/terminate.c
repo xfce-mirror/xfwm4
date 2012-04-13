@@ -77,7 +77,7 @@ terminateProcessIO (GIOChannel   *channel,
         }
         if (len > 0)
         {
-            if (!g_strncasecmp(str, "yes", 3))
+            if (!g_ascii_strncasecmp (str, "yes", 3))
             {
                 clientTerminate (c);
             }
