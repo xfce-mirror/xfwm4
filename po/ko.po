@@ -718,23 +718,23 @@ msgstr "창의 장식을 깜빡여서 응급 상황임을 알림(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Opaci_ty of window decorations:"
-msgstr "창 장식을 불투명으로(_T):"
+msgstr "창 장식 불투명도(_T):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Opacity of _inactive windows:"
-msgstr "비활성창을 불투명으로(_I):"
+msgstr "비활성창 불투명도(_I):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Opacity of popup window_s:"
-msgstr "팝업 창을 불투명으로(_S):"
+msgstr "팝업 창 불투명도(_S):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Opacity of windows during _move:"
-msgstr "창을 움직일 때 불투명으로(_M):"
+msgstr "창을 움직일 때 불투명도(_M):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Opacity of windows during resi_ze:"
-msgstr "창 크기를 변경할 때 불투명으로(_Z):"
+msgstr "창 크기를 변경할 때 불투명도(_Z):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Restore original _size of maximized windows when moving"
@@ -742,7 +742,7 @@ msgstr "최대화된 창을 움직일 때 원래 크기로(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _dock windows"
-msgstr "붙이기 창에 그림자 표시(_D)"
+msgstr "도크 창에 그림자 표시(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Show shadows under _regular windows"
@@ -826,7 +826,7 @@ msgid ""
 "or \"skip taskbar\" properties set"
 msgstr ""
 "\"페이저에 나타내지 않기\"나 \"태스크바에 나타내지 않기\"\n"
-"속성이 설정된 창 제외(_S)"
+"속성을 설정한 창 제외(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "_Workspaces"
