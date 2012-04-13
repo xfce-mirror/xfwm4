@@ -1,3 +1,31 @@
+4.9.1
+=====
+- Improve tiling.
+- Reduce tiling distance (bug #8628).
+- Keep pointer position relative to the window being moved (bug #8629).
+- Set spacing to avoid overlap with some themes (bug #8501).
+- Add workspace settings in a notebook.
+- Improve workspace dialog subtitle/comment.
+- Generate default icon during make dist.
+- Update FSF address in settings dialogs.
+- Add missing license.
+- Restore button press/release mask as removing it breaks switching
+  workspaces with scroll wheel (bug #8656).
+- Add UI option to WM tweaks for tiling.
+- Resize fullscreen windows on screen size changes (bug #8622).
+- Don't use deprecated g_str(n)casecmp (bug #8688).
+- Translation updates: Amharic, Arabic, Asturian, Azerbaijani, 
+  Belarusian, Bulgarian, Bengali, Bengali (India), Catalan (Valencian), 
+  Czech, Danish, German, Dzongkha, Greek, English (United Kingdom), 
+  Esperanto, Spanish (Castilian), Estonian, Basque, Persian, Finnish, 
+  French, Galician, Gujarati, Hebrew, Hindi, Croatian, Hungarian, 
+  Indonesian, Icelandic, Italian, Japanese, Georgian, Kazakh, Korean, 
+  Lithuanian, Latvian, Macedonian, Marathi, Malay, Norwegian Bokmal, 
+  Dutch (Flemish), Norwegian Nynorsk, Panjabi (Punjabi), Polish, 
+  Portuguese, Portuguese (Brazilian), Romanian, Russian, Sinhala, 
+  Slovak, Albanian, Swedish, Tamil, Telugu, Turkish, Uyghur, Ukrainian, 
+  Urdu, Urdu (Pakistan), Vietnamese, Chinese (China), Chinese (Taiwan).
+
 4.9.0
 =====
 - Add tiling feature (bug #6648).
