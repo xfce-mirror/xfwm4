@@ -113,9 +113,8 @@ msgstr "Диспетчер окон (дополнительно)"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "Configure layout, names and margins"
-msgstr "Настроить  расположение, имена и поля"
+msgstr "Настроить  поведение окон и комбинаций клавиш"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
