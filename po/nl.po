@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Jasper Huijsmans <jasper@xfce.org>, 2004.
 # Pjotr, 2011.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 08:18+0000\n"
+"POT-Creation-Date: 2012-04-16 19:33+0000\n"
 "PO-Revision-Date: 2011-09-09 12:41+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -135,11 +135,11 @@ msgstr "<b>Scherpstelling van nieuw venster</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
-msgstr "<b>Naar voren halen bij klik</b>"
+msgstr "<b>Verheffen bij klik</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Naar voren halen bij scherpstelling</b>"
+msgstr "<b>Verheffen bij scherpstelling</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -197,7 +197,7 @@ msgstr "Ge_avanceerd"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Vensters met scherpstelling automatisch naar voren halen"
+msgstr "Vensters met scherpstelling automatisch verheffen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Automatically give focus to _newly created windows"
@@ -257,7 +257,7 @@ msgstr "Minimaliseren"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Raise window when clicking _inside application window"
-msgstr "Venster naar voren halen bij klikken in toepassingvenster"
+msgstr "Venster verheffen bij klikken in toepassingvenster"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
@@ -906,7 +906,7 @@ msgstr "[ARGUMENTEN...]"
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Tik \"%s --help\" voor een gebruiksaanwijzing."
+msgstr "Tik '%s --help' voor een gebruiksaanwijzing."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
