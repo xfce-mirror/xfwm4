@@ -1015,7 +1015,7 @@ msgstr "%s: 색을 분석하지 못 했습니다: 색의 GValue 형식이 문자
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "자식 프로세스로부터 데이터를 읽는동안 오류가 발생했습니다: %s\n"
+msgstr "자식 프로세스에서 데이터를 읽는동안 오류가 발생했습니다: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
