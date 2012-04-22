@@ -706,7 +706,7 @@ msgstr "표준 ICCCM 포커스 힌트 수락(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "응급 창의 반복적 깜빡임 유지(_B)"
+msgstr "응급 창의 반복 깜빡임 유지(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
@@ -810,14 +810,14 @@ msgstr "배치(_P)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "아무 마우스 단추이든 눌리면 창을 앞으로(_R)"
+msgstr "아무 마우스 단추든 눌리면 창을 앞으로(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"단축키로 바꿀 때 이전 작업공간을\n"
+"단축키로 바꿀 때 이전 작업공간을 "
 "호출하고 복원(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
