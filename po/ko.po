@@ -817,7 +817,7 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"바로 가기 키로 바꿀 때 이전 작업공간을\n"
+"단축키로 바꿀 때 이전 작업공간을\n"
 "호출하고 복원(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
