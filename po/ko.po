@@ -825,7 +825,7 @@ msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"\"페이저에 나타내지 않기\"나 \"태스크바에 나타내지 않기\"\n"
+"\"페이저에 나타내지 않기\"나 \"작업표시줄에 나타내지 않기\"\n"
 "속성을 설정한 창 제외(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
