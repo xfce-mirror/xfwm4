@@ -1,17 +1,17 @@
 # Galician translation of xfwm4
 # Copyright (C) 2006, 2008, 2009, 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-#
+# 
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009, 2010.
-#
+# 
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 08:18+0000\n"
+"POT-Creation-Date: 2012-04-23 06:48+0000\n"
 "PO-Revision-Date: 2010-10-19 19:01+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -427,9 +427,8 @@ msgid "Lower window"
 msgstr "Baixar a xanela"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Elevar a xanela"
+msgstr "Elevar ou baixar a xanela"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -520,24 +519,20 @@ msgid "Move window to workspace 12"
 msgstr "Mover a xanela ao espazo de traballo 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Mover a xanela ao espazo de traballo da esquerda"
+msgstr "Situar a xanela na cima"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Mover a xanela ao espazo de traballo inferior"
+msgstr "Situar a xanela no fondo"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Mover a xanela ao espazo de traballo da esquerda"
+msgstr "Situar a xanela cara á esquerda"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Mover a xanela ao espazo de traballo da dereita"
+msgstr "Situar a xanela cara á dereita"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -686,9 +681,8 @@ msgid "At the _center of the screen"
 msgstr "No _centro da pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "_Elevar automaticamente as xanelas cando obteñen o foco"
+msgstr "Si_tuar automaticamente as xanelas cando se movan cara aos bordos da pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "By default, place windows:"
