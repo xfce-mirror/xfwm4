@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 08:18+0000\n"
-"PO-Revision-Date: 2012-04-11 15:21+0100\n"
+"PO-Revision-Date: 2012-04-26 23:06+0100\n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Socket do gestor de sessões"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
-msgstr "ID de SOCKET"
+msgstr "ID do SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
@@ -646,7 +646,7 @@ msgstr "Repor omissões"
 
 #: ../settings-dialogs/xfwm4-settings.c:1893
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
-msgstr "Vai repor todos os atalhos para os seus valores originais. Continuar?"
+msgstr "Vai repor todos os atalhos para os seus valores originais. Deseja mesmo fazer isto?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
