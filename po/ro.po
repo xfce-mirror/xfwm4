@@ -1,16 +1,16 @@
 # Romanian translation for xfwm4.
-# Copyright (C) 2002-2011 The Xfce development team.
+# Copyright (C) 2002-2012 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-# Mișu Moldovan <dumol@xfce.org>, 2004-2011.
+# Mișu Moldovan <dumol@xfce.org>, 2004-2012.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.8\n"
+"Project-Id-Version: xfwm4 4.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-20 09:48+0000\n"
-"PO-Revision-Date: 2011-01-15 20:46+0200\n"
+"PO-Revision-Date: 2012-04-28 00:33+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
-"Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
+"Language-Team: Romanian <diacritice@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,7 +32,7 @@ msgstr "Avertizare"
 
 #: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
-msgstr "Nimic"
+msgstr "Niciuna"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
@@ -86,7 +86,7 @@ msgstr "Socket al managerului opțiunilor"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Configure window behavior and shortcuts"
-msgstr "Schimbați comportamentul ferestrelor și combinațiile de taste asociate"
+msgstr "Schimbați comportamentul ferestrelor și scurtăturile"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -96,7 +96,7 @@ msgstr "Manager de ferestre"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Fine-tune window behaviour and effects"
-msgstr "Optimizați comportamentul ferestrelor și efectele asociate"
+msgstr "Optimizați efectele și comportamentul ferestrelor"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
@@ -123,7 +123,7 @@ msgstr "<b>Aranjare a butoanelor</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Double click _action</b>"
-msgstr "<b>Acțiune _dublu-clic</b>"
+msgstr "<b>Acțiune du_blu-clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
@@ -163,7 +163,7 @@ msgstr "<b>Comutare între spațiile de lucru adiacente</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
-msgstr "<b>T_emă</b>"
+msgstr "<b>Te_mă</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
@@ -205,7 +205,7 @@ msgstr "Ferestrele _nou create primesc automat focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Clic_k to focus"
-msgstr "Clic p_entru focus"
+msgstr "Clic pentru f_ocus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
@@ -241,7 +241,7 @@ msgstr "Ascunde conținutul ferestrelor la _redimensionare"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
-msgstr "_Taste"
+msgstr "Tast_e"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
@@ -290,7 +290,7 @@ msgstr "Titlu"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr ""
-"Treci în spațiul adiacent la tragerea unei ferestre în afara _ecranului"
+"Treci în spațiul adiacent la tragerea unei ferestre în afara ec_ranului"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
@@ -339,7 +339,7 @@ msgstr "Umple fereastra"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
-msgstr "Nimic"
+msgstr "Niciuna"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
 #: ../settings-dialogs/xfwm4-settings.c:239
@@ -357,7 +357,7 @@ msgstr "Dreapta"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
-msgstr "Deschide meniul de acțiuni asupra ferestrei"
+msgstr "Meniul de acțiuni asupra ferestrei"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
@@ -381,7 +381,7 @@ msgstr "Ciclează ferestrele (în sens invers)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
-msgstr "Ciclează ferestrele aceluiași program"
+msgstr "Ciclează ferestrele unui program"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
@@ -441,91 +441,91 @@ msgstr "Comută starea „pe tot ecranul”"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
-msgstr "Mută fereastra în spațiul de sus"
+msgstr "Mută în spațiul de deasupra"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to bottom workspace"
-msgstr "Mută fereastra în spațiul de jos"
+msgstr "Mută în spațiul de dedesubt"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
-msgstr "Mută fereastra în spațiul din stânga"
+msgstr "Mută în spațiul din stânga"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
-msgstr "Mută fereastra în spațiul din dreapta"
+msgstr "Mută în spațiul din dreapta"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
-msgstr "Mută fereastra în spațiul anterior"
+msgstr "Mută în spațiul anterior"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
-msgstr "Mută fereastra în spațiul următor"
+msgstr "Mută în spațiul următor"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
 msgid "Move window to workspace 1"
-msgstr "Mută fereastra în spațiul de lucru 1"
+msgstr "Mută în spațiul de lucru 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
 msgid "Move window to workspace 2"
-msgstr "Mută fereastra în spațiul de lucru 2"
+msgstr "Mută în spațiul de lucru 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
 msgid "Move window to workspace 3"
-msgstr "Mută fereastra în spațiul de lucru 3"
+msgstr "Mută în spațiul de lucru 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
 msgid "Move window to workspace 4"
-msgstr "Mută fereastra în spațiul de lucru 4"
+msgstr "Mută în spațiul de lucru 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
 msgid "Move window to workspace 5"
-msgstr "Mută fereastra în spațiul de lucru 5"
+msgstr "Mută în spațiul de lucru 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
 msgid "Move window to workspace 6"
-msgstr "Mută fereastra în spațiul de lucru 6"
+msgstr "Mută în spațiul de lucru 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
 msgid "Move window to workspace 7"
-msgstr "Mută fereastra în spațiul de lucru 7"
+msgstr "Mută în spațiul de lucru 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
 msgid "Move window to workspace 8"
-msgstr "Mută fereastra în spațiul de lucru 8"
+msgstr "Mută în spațiul de lucru 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
 msgid "Move window to workspace 9"
-msgstr "Mută fereastra în spațiul de lucru 9"
+msgstr "Mută în spațiul de lucru 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
 msgid "Move window to workspace 10"
-msgstr "Mută fereastra în spațiul de lucru 10"
+msgstr "Mută în spațiul de lucru 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
 msgid "Move window to workspace 11"
-msgstr "Mută fereastra în spațiul de lucru 11"
+msgstr "Mută în spațiul de lucru 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
 msgid "Move window to workspace 12"
-msgstr "Mută fereastra în spațiul de lucru 12"
+msgstr "Mută în spațiul de lucru 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Tile window to the top"
-msgstr "Pune fereastra în jumătatea de sus a ecranului"
+msgstr "Pune în partea de sus a ecranului"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Tile window to the bottom"
-msgstr "Pune fereastra în jumătatea de jos a ecranului"
+msgstr "Pune în partea de jos a ecranului"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Tile window to the left"
-msgstr "Pune fereastra în jumătatea din stânga a ecranului"
+msgstr "Pune în partea stângă a ecranului"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Tile window to the right"
-msgstr "Pune fereastra în jumătatea din dreapta a ecranului"
+msgstr "Pune în partea dreaptă a ecranului"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -692,7 +692,7 @@ msgstr "C_iclare"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Cycle _through windows on all workspaces"
-msgstr "Ciclează ferestrele din _toate spațiile de lucru"
+msgstr "Ciclează ferestrele din t_oate spațiile de lucru"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Display _fullscreen overlay windows directly"
@@ -716,7 +716,7 @@ msgstr "Păstrează starea de clipire repetată pentru ferestrele _urgente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
-msgstr "_Tastă pentru prinderea și mutarea ferestrelor:"
+msgstr "Tastă p_entru prinderea și mutarea ferestrelor:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Notify of _urgency by making window's decoration blink"
@@ -728,7 +728,7 @@ msgstr "Opacitate a _decorațiunilor ferestrelor:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Opacity of _inactive windows:"
-msgstr "Opacitate a ferestrelor inacti_ve:"
+msgstr "Opacitate a ferestrelor _inactive:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Opacity of popup window_s:"
@@ -773,11 +773,11 @@ msgstr "Utilizează rezistența și nu potri_virea la margini"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
-"Schimbă spațiul de lucru curent când folosesc rotița de _maus pe desktop"
+"Schimbă spațiul de lucru curent când utilizez rotița de _maus pe desktop"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "When a window raises itself:"
-msgstr "Acțiune de luat când o fereastră trece în starea „deasupra”:"
+msgstr "Acțiune de luat când apare o fereastră deasupra tuturor:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -801,7 +801,7 @@ msgstr "_Desenează un cadru în jurul ferestrelor selectate la ciclare"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Enable display compositing"
-msgstr "Ac_tivează compozitorul ecranului"
+msgstr "Acti_vează compozitorul ecranului"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Include hidden (i.e. iconified) windows"
@@ -900,7 +900,7 @@ msgstr "[ARGUMENTE...]"
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Încercați „%s --help” pentru lista opțiunilor de utilizare."
+msgstr "Încercați „%s --help” pentru detalii de utilizare."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
