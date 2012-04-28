@@ -1,3 +1,10 @@
+4.10.0
+======
+- Translation updates: Czech, English (United Kingdom), Spanish
+  (Castilian), French, Galician, Croatian, Hungarian, Italian, Kazakh,
+  Korean, Dutch (Flemish), Portuguese, Romanian, Russian, Slovak,
+  Chinese (China), Chinese (Taiwan).
+
 4.9.1
 =====
 - Improve tiling.
@@ -14,16 +21,16 @@
 - Add UI option to WM tweaks for tiling.
 - Resize fullscreen windows on screen size changes (bug #8622).
 - Don't use deprecated g_str(n)casecmp (bug #8688).
-- Translation updates: Amharic, Arabic, Asturian, Azerbaijani, 
-  Belarusian, Bulgarian, Bengali, Bengali (India), Catalan (Valencian), 
-  Czech, Danish, German, Dzongkha, Greek, English (United Kingdom), 
-  Esperanto, Spanish (Castilian), Estonian, Basque, Persian, Finnish, 
-  French, Galician, Gujarati, Hebrew, Hindi, Croatian, Hungarian, 
-  Indonesian, Icelandic, Italian, Japanese, Georgian, Kazakh, Korean, 
-  Lithuanian, Latvian, Macedonian, Marathi, Malay, Norwegian Bokmal, 
-  Dutch (Flemish), Norwegian Nynorsk, Panjabi (Punjabi), Polish, 
-  Portuguese, Portuguese (Brazilian), Romanian, Russian, Sinhala, 
-  Slovak, Albanian, Swedish, Tamil, Telugu, Turkish, Uyghur, Ukrainian, 
+- Translation updates: Amharic, Arabic, Asturian, Azerbaijani,
+  Belarusian, Bulgarian, Bengali, Bengali (India), Catalan (Valencian),
+  Czech, Danish, German, Dzongkha, Greek, English (United Kingdom),
+  Esperanto, Spanish (Castilian), Estonian, Basque, Persian, Finnish,
+  French, Galician, Gujarati, Hebrew, Hindi, Croatian, Hungarian,
+  Indonesian, Icelandic, Italian, Japanese, Georgian, Kazakh, Korean,
+  Lithuanian, Latvian, Macedonian, Marathi, Malay, Norwegian Bokmal,
+  Dutch (Flemish), Norwegian Nynorsk, Panjabi (Punjabi), Polish,
+  Portuguese, Portuguese (Brazilian), Romanian, Russian, Sinhala,
+  Slovak, Albanian, Swedish, Tamil, Telugu, Turkish, Uyghur, Ukrainian,
   Urdu, Urdu (Pakistan), Vietnamese, Chinese (China), Chinese (Taiwan).
 
 4.9.0
