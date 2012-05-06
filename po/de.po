@@ -7,12 +7,12 @@
 # Jannis Pohlmann <jannis@xfce.org>, 2008.
 # Jakob Kramer <jakob.kramer@gmx.de>, 2011.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2012.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 13:03+0000\n"
+"POT-Creation-Date: 2012-05-06 17:03+0000\n"
 "PO-Revision-Date: 2012-03-29 11:37+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -112,7 +112,6 @@ msgstr "Feineinstellungen des Fensterverhaltens"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-#, fuzzy
 msgid "Configure layout, names and margins"
 msgstr "Anordnung, Namen und Ränder einstellen"
 
@@ -690,7 +689,9 @@ msgstr "I_n der Mitte des Bildschirms"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 #, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Au_tomatisch Fenster gekachelt anordnen, wenn sie in die Bildschirmecke gezogen werden"
+msgstr ""
+"Au_tomatisch Fenster gekachelt anordnen, wenn sie in die Bildschirmecke "
+"gezogen werden"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "By default, place windows:"
@@ -859,7 +860,6 @@ msgid "_Workspaces"
 msgstr "_Arbeitsflächen"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
-#, fuzzy
 msgid "Layout"
 msgstr "Anordnung"
 
