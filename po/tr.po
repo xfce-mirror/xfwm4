@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-06 06:21+0000\n"
+"POT-Creation-Date: 2012-05-06 11:42+0000\n"
 "PO-Revision-Date: 2009-01-30 21:31+0200\n"
 "Last-Translator: Gökmen Görgen <gkmngrgn@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -676,9 +676,8 @@ msgid "At the _center of the screen"
 msgstr "Ekranın merkezin_de"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Ekran kenarına doğru taşındığında pencereleri otomatik olarak yakala"
+msgstr "Ekran köşesine doğru taşındığında pencereleri otomatik olarak _döşe"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "By default, place windows:"
