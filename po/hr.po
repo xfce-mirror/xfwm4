@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-15 14:48+0000\n"
+"POT-Creation-Date: 2012-05-12 22:51+0000\n"
 "PO-Revision-Date: 2010-06-12 00:06+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -104,7 +104,7 @@ msgstr "Postavke Upravitelja Prozora"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "Configuriraj raspored, imena i margine"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -834,7 +834,7 @@ msgstr "_Radni prostori"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Layout"
-msgstr ""
+msgstr "Raspored"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid ""
@@ -849,7 +849,7 @@ msgstr "_Imena:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "_općenito"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Margins"
@@ -1008,7 +1008,7 @@ msgstr ""
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr ""
+msgstr "%s: Ne mogu analizirati boju %s\n"
 
 #: ../src/settings.c:284
 #, c-format
