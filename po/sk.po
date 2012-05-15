@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-19 05:03+0000\n"
-"PO-Revision-Date: 2012-04-19 08:46+0200\n"
+"POT-Creation-Date: 2012-05-15 09:42+0000\n"
+"PO-Revision-Date: 2012-05-15 16:56+0200\n"
 "Last-Translator: Tomáš Vadina <kyberdev@gmail.com>\n"
 "Language-Team: slovenčina <slovenska-lokalizacia-xfce@googlegroups.com>\n"
 "Language: sk\n"
@@ -677,9 +677,8 @@ msgid "At the _center of the screen"
 msgstr "V _strede obrazovky"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Po zameraní automaticky _zdvihnúť okná"
+msgstr "Automaticky _dláždiť okná ak sa priblížia k okraju obrazovky"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "By default, place windows:"
