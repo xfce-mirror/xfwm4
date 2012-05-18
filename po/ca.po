@@ -2,15 +2,15 @@
 # Window manager for Xfce desktop environment.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Carles Muñoz Gorriz <carlesmu@internautas.org> 2003-2004, 2006, 2008-2011.
 # Pau Ruŀlan Ferragut <paurullan@bulma.net> 2005-2007.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-12 06:18+0000\n"
+"POT-Creation-Date: 2012-05-18 07:12+0000\n"
 "PO-Revision-Date: 2011-12-06 21:28+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
@@ -683,7 +683,9 @@ msgstr "Al _centre de la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Organitza automàticament les finestres en un mosaic en moure's cap a l'extrem de la pantalla"
+msgstr ""
+"Organitza automàticament les finestres en un mosaic en moure's cap a "
+"l'extrem de la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "By default, place windows:"
@@ -707,7 +709,7 @@ msgstr "Mostra directament a pantalla sencera les _finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Do _nothing"
-msgstr "_No fessis res"
+msgstr "_No facis res"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Hide _frame of windows when maximized"
