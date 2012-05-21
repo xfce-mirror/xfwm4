@@ -435,7 +435,7 @@ msgstr "전환"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
-msgstr "전체화면 전환"
+msgstr "전체 화면 전환"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
@@ -690,7 +690,7 @@ msgstr "모든 작업공간의 창을 대상으로 순환(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Display _fullscreen overlay windows directly"
-msgstr "직접 창을 도배해서 전체화면 표시(_F)"
+msgstr "직접 창을 도배해서 전체 화면 표시(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Do _nothing"
@@ -946,11 +946,11 @@ msgstr "창 "
 
 #: ../src/menu.c:56
 msgid "_Fullscreen"
-msgstr "전체화면(_F)"
+msgstr "전체 화면(_F)"
 
 #: ../src/menu.c:57
 msgid "Leave _Fullscreen"
-msgstr "전체화면으로 남김(_F)"
+msgstr "전체 화면으로 남김(_F)"
 
 #: ../src/menu.c:58
 msgid "Context _Help"
