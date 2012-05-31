@@ -22,8 +22,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"مەزكۇر كۆزنەك ئالدىراش ئوخشايدۇ، جاۋاب كەلمەيۋاتىدۇ.\n"
+msgstr "مەزكۇر كۆزنەك ئالدىراش ئوخشايدۇ، جاۋاب كەلمەيۋاتىدۇ.\n"
 "پروگراممىنى ئاخىرلاشتۇرامسىز؟"
 
 #: ../helper-dialog/helper-dialog.c:89
@@ -63,10 +62,8 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"%s --help نى كىرگۈزسە، بۇيرۇق قۇرىدا ئىشلەتكىلى بولىدىغان بارلىق تاللانمىلار "
-"كۆرسىتىلىدۇ.\n"
+msgstr "%s: %s\n"
+"%s --help نى كىرگۈزسە، بۇيرۇق قۇرىدا ئىشلەتكىلى بولىدىغان بارلىق تاللانمىلار كۆرسىتىلىدۇ.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -157,9 +154,8 @@ msgid "Shade"
 msgstr "سايە"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "Minimize"
-msgstr "ئەڭ كىچىك قىل(_N)"
+msgstr ""
 
 # FIXME:
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
@@ -283,13 +279,11 @@ msgstr "<b>كۆزنەك snapping</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
-"چاشقىنەك بەلگىسى ئەكران گىرۋىكىگە يەتىپ بارغاندا خىزمەت مۇھىتلىرىنى قاتلا(_P)"
+msgstr "چاشقىنەك بەلگىسى ئېكران گىرۋىكىگە يېتىپ بارغاندا خىزمەت مۇھىتلىرىنى قاتلا(_P)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
-"بىر كوزنەكنى ئەكراندىن تۇتۇپ ئەلىپ چىقىپ كەتكەندەخىزمەت مۇھىتلىرىنى قاتلا(_D)"
+msgstr "بىر كۆزنەكنى ئېكراندىن تۇتۇپ ئېلىپ چىقىپ كەتكەندەخىزمەت مۇھىتلىرىنى قاتلا(_D)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -297,7 +291,7 @@ msgstr "گىرۋەك قارىشلىقى(_E):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces</b>"
-msgstr "<b>خىمەت مۇھىتلىرىنى قاتلاش</b>"
+msgstr "<b>خىزمەت مۇھىتلىرىنى قاتلاش</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Hide content of windows when _resizing"
@@ -313,7 +307,7 @@ msgstr "<b>يۆتكەش ۋە چوڭلۇقىنى ئۆزگەرتىش</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "ماۋزۇ تاياقچىسى قوش چېكىلگەندە مەزكۇر ھەرىكەت ئېلىپ بېرىلىدۇ"
+msgstr "ماۋزۇ بالدىقى قوش چېكىلگەندە مەزكۇر ھەرىكەت ئېلىپ بېرىلىدۇ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Double click _action</b>"
@@ -326,7 +320,7 @@ msgstr "ئالىي(_V)"
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
-msgstr "كوزنەكنى Shade قىل"
+msgstr "كۆزنەكنى Shade قىل"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
@@ -341,7 +335,7 @@ msgstr "كۆزنەكنى ئەڭ چوڭ قىلىدۇ"
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
-msgstr "كزونەكنى تولدۇر"
+msgstr "كۆزنەكنى تولدۇر"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -387,7 +381,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
-msgstr "ئوخشاش پروگراممنىڭ كوزنىكىنى ئالماشتۇر"
+msgstr "ئوخشاش پروگراممىنىڭ كۆزنىكىنى ئالماشتۇر"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
@@ -426,17 +420,16 @@ msgid "Lower window"
 msgstr "كۆزنەكنى باس"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "كۆزنەكنى كۆتۈر"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
-msgstr "كوزنەكنى گورزىنتال يونىلىشتە تولدۇر"
+msgstr "كۆزنەكنى گورىزونتال يۆنىلىشتە تولدۇر"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
-msgstr "كوزنەكنى ۋەرتىكال يونىلىشتە تولدۇر"
+msgstr "كۆزنەكنى ۋېرتىكال يۆنىلىشتە تولدۇر"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
@@ -519,28 +512,24 @@ msgid "Move window to workspace 12"
 msgstr "كۆزنەكنى خىزمەت مۇھىتى 12 گە يۆتكە"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "كۆزنەكنى سولدىكى خىزمەت مۇھىتىغا يۆتكە"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "كۆزنەكنى تۆۋەندىكى خىزمەت مۇھىتىغا يۆتكە"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "كۆزنەكنى سولدىكى خىزمەت مۇھىتىغا يۆتكە"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "كۆزنەكنى ئوڭدىكى خىزمەت مۇھىتىغا يۆتكە"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
-msgstr "ئۈستەليۈزىنى كۆرسەت"
+msgstr "ئۈستەلئۈستىنى كۆرسەت"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Upper workspace"
@@ -572,23 +561,23 @@ msgstr "خىزمەت مۇھىتى 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
 msgid "Workspace 2"
-msgstr "خىزمەت مۇھىتى 2 "
+msgstr "خىزمەت مۇھىتى 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
 msgid "Workspace 3"
-msgstr "خىزمەت مۇھىتى 3 "
+msgstr "خىزمەت مۇھىتى 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
 msgid "Workspace 4"
-msgstr " خىزمەت مۇھىتى 4"
+msgstr "خىزمەت مۇھىتى 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
 msgid "Workspace 5"
-msgstr "خىزمەت مۇھىتى 5 "
+msgstr "خىزمەت مۇھىتى 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
 msgid "Workspace 6"
-msgstr "خىزمەت مۇھىتى 6 "
+msgstr "خىزمەت مۇھىتى 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
 msgid "Workspace 7"
@@ -660,21 +649,18 @@ msgstr "كۆڭۈلدىكىگە قايتۇر"
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
-msgstr ""
-"بۇ بارلىق تېزلەتمىلەرنىڭ كۆڭۈلدىكى قىممەتلىرىنى ئەسلىگە كەلتۈرۈۋاتىدۇ. بۇنى "
-"قىلسۇنمۇ؟"
+msgstr "بۇ بارلىق تېزلەتمىلەرنىڭ كۆڭۈلدىكى قىممەتلىرىنى ئەسلىگە كەلتۈرۈۋاتىدۇ. بۇنى قىلسۇنمۇ؟"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"\"skip pager\" ياكى \"skip taskbar\" خاسلىقى بەكىتىلگەن\n"
-"كوزنەكتىن ئاتلاپ كەت."
+msgstr "\"skip pager\" ياكى \"skip taskbar\" خاسلىقى بېكىتىلگەن\n"
+"كۆزنەكتىن ئاتلاپ كەت."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "يوشۇرۇن(سىڭەلگىلەشتۇرۇلگەن) كوزنەكنى ئوز ئىچىگە ئال(_I)"
+msgstr "يوشۇرۇن(سىڭەلگىلەشتۇرۇلگەن) كۆزنەكنى ئوز ئىچىگە ئال(_I)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
@@ -726,19 +712,16 @@ msgstr "ئەڭ چوڭ قىلىنغاندا كۆزنەكنىڭ گىرۋىكىنى
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
-"ئەڭ چوڭ ھالەتتىكى كۆزنەك يۆتكەلگەندە ئەسلىدىكى چوڭلۇقى ئەسلىگە كەلتۈرۈلسۇن"
-"(_S)"
+msgstr "ئەڭ چوڭ ھالەتتىكى كۆزنەك يۆتكەلگەندە ئەسلىدىكى چوڭلۇقى ئەسلىگە كەلتۈرۈلسۇن(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "كۆزنەك فوكۇسلانغاندا ئاپتوماتىك كۆتۈرۈلسۇن(_R)"
+msgstr ""
 
 # FIXME: should be revised
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
-msgstr "كوزنەك snapping نى ئىشلەتمەي كوزنەك قارىشلىقىنى ئىشلەت(_E)"
+msgstr "كۆزنەك snapping نى ئىشلەتمەي كۆزنەك قارىشلىقىنى ئىشلەت(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
@@ -755,25 +738,22 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "workspace نى ئالماشتۇرۇش ئۈچۈن چاشقىنەك چاقىنى ئىشلەتسۇن(_M)"
+msgstr "خىزمەت رايونىنى ئالماشتۇرۇش ئۈچۈن چاشقىنەك چاقىنى ئىشلەتسۇن(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"تېزلەتمە كۇنۇپكا ئارقىلىق ئالماشتۇرغاندا\n"
+msgstr "تېزلەتمە كۇنۇپكا ئارقىلىق ئالماشتۇرغاندا\n"
 "بۇرۇنقى كۆزنەكنى ئېسىدە ساقلىۋالسۇن(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"ئەمەلىي ئۇستەليۇزى ئورۇنلاشتۇرۇلىشىغا ئاساسەن خىزمەت مۇھىتىنى قاتلا(_L)"
+msgstr "ئەمەلىي ئۇستەليۇزى ئورۇنلاشتۇرۇلۇشىغا ئاساسەن خىزمەت مۇھىتىنى قاتلا(_L)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
-"بىرىنچى ياكى ئەڭ ئاخىرقى خىزمەت مۇھىتىغا بارغاندا خىزمەت مۇھىتىنى قاتلا(_F)"
+msgstr "بىرىنچى ياكى ئەڭ ئاخىرقى خىزمەت مۇھىتىغا بارغاندا خىزمەت مۇھىتىنى قاتلا(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
@@ -817,17 +797,17 @@ msgstr ""
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "Show shadows under _regular windows"
-msgstr "نورمال كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_R)"
+msgstr "نورمال كۆزنەكنىڭ ئاستىدىكى سايىنى كۆرسەت(_R)"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
-msgstr "popup كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_U)"
+msgstr "popup كۆزنەكنىڭ ئاستىدىكى سايىنى كۆرسەت(_U)"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show shadows under _dock windows"
-msgstr "dock كوزنەكنىڭ ئاستىدىكى سايىنى كورسەت(_D)"
+msgstr "dock كۆزنەكنىڭ ئاستىدىكى سايىنى كۆرسەت(_D)"
 
 # FIXME: compositor won't work on irix, thus it's blind-translation
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
@@ -875,16 +855,15 @@ msgstr "خىزمەت مۇھىتى سانى(_N):"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr ""
+msgstr "جايلاشتۇرۇلۇشى"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Names"
-msgstr "ئاتى(_N):"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "ئادەتتىكى(_G)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
@@ -892,9 +871,8 @@ msgid ""
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Margins"
-msgstr "<b>بوشلۇق</b>"
+msgstr ""
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -923,18 +901,17 @@ msgid "Replace the existing window manager"
 msgstr ""
 
 #: ../src/main.c:550
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "نەشر ئۇچۇرى"
+msgstr "نەشر ئۇچۇرىنى كۆرسىتىپ ئاخىرلاشتۇرۇش"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENTS...]"
 
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "\"%s --help\" نى كىرگۈزسىڭىز ئىشلىتىش ئۇسۇلى كۆرۈنىدۇ"
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
@@ -1041,8 +1018,7 @@ msgstr "%s: رەڭ %s نى تەقسىملىيەلمىدى\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: رەڭنى تەقسىملىيەلمىدى: رەڭنىڭ GValue تىپى STRING تىپىدا ئەمەس ئىكەن."
+msgstr "%s: رەڭنى تەقسىملىيەلمىدى: رەڭنىڭ GValue تىپى STRING تىپىدا ئەمەس ئىكەن."
 
 #: ../src/settings.c:282
 #, c-format
@@ -1052,8 +1028,7 @@ msgstr "%s: رەڭ  %s نى تەھلىل قىلالمىدى\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: رەڭنى تەھلىل قىلالمىدى: رەڭنىڭ GValue تىپى STRING تىپىدا ئەمەس ئىكەن."
+msgstr "%s: رەڭنى تەھلىل قىلالمىدى: رەڭنىڭ GValue تىپى STRING تىپىدا ئەمەس ئىكەن."
 
 #: ../src/terminate.c:75
 #, c-format
