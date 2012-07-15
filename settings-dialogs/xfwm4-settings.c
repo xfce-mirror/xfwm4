@@ -1591,17 +1591,19 @@ xfwm_settings_title_button_alignment_changed (GtkComboBox *combo,
   float         align = 0.5f;
 
   model = gtk_combo_box_get_model (combo);
-  gtk_combo_box_get_active_iter (combo, &iter);
-  gtk_tree_model_get (model, &iter, 1, &value, -1);
+  if (gtk_combo_box_get_active_iter (combo, &iter))
+    {
+      gtk_tree_model_get (model, &iter, 1, &value, -1);
 
-  if (g_str_equal (value, "left"))
-    align = 0.0f;
-  else if (g_str_equal (value, "right"))
-    align = 1.0f;
+      if (g_str_equal (value, "left"))
+        align = 0.0f;
+      else if (g_str_equal (value, "right"))
+        align = 1.0f;
+
+      g_free (value);
+    }
 
   gtk_button_set_alignment (GTK_BUTTON (button), align, 0.5f);
-
-  g_free (value);
 }
 
 
