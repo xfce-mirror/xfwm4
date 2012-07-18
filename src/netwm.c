@@ -695,9 +695,14 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_MOVE:
-        default:
             event->type = ButtonPress;
             resize = FALSE; /* Move */
+            break;
+        case NET_WM_MOVERESIZE_CANCEL:
+            FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
+            /* Walk through */
+        default: /* Do nothing */
+            return;
             break;
     }
 
