@@ -827,7 +827,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     eventFilterStatus status = EVENT_FILTER_STOP;
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = NULL;
-    gboolean moving = TRUE;
+    gboolean moving;
     XWindowChanges wc;
     int prev_x, prev_y;
 
@@ -839,6 +839,12 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     configure_flags = NO_CFG_FLAG;
+
+    /*
+     * Clients may choose to end the move operation,
+     * we use XFWM_FLAG_MOVING_RESIZING for that.
+     */
+    moving = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, xevent);
@@ -1294,7 +1300,12 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     status = EVENT_FILTER_STOP;
-    resizing = TRUE;
+
+    /*
+     * Clients may choose to end the resize operation,
+     * we use XFWM_FLAG_MOVING_RESIZING for that.
+     */
+    resizing = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
     frame_x = frameX (c);
     frame_y = frameY (c);
