@@ -492,7 +492,8 @@ workspaceInsert (ScreenInfo * screen_info, guint position)
 void
 workspaceDelete (ScreenInfo * screen_info, guint position)
 {
-    guint count;
+    Client *c;
+    guint i, count;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -502,6 +503,14 @@ workspaceDelete (ScreenInfo * screen_info, guint position)
     if ((count < 1) || (position > count))
     {
         return;
+    }
+
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    {
+        if (c->win_workspace > position)
+        {
+            clientSetWorkspace (c, c->win_workspace - 1, TRUE);
+        }
     }
 
     workspaceSetCount(screen_info, count - 1);
