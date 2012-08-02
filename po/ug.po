@@ -61,7 +61,7 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr "%s: %s\n"
-"%s --help نى كىرگۈزسە، بۇيرۇق قۇرىدا ئىشلەتكىلى بولىدىغان بارلىق تاللانمىلار كۆرسىتىلىدۇ.\n"
+"بۇيرۇق قۇرىدا ئىشلەتكىلى بولىدىغان بارلىق تاللانمىلارنى كۆرۈش ئۈچۈن %s --help نى كىرگۈزسە بولىدۇ.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -260,11 +260,11 @@ msgstr "سايە"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to other _windows"
-msgstr ""
+msgstr "باشقا كۆزنەكتە كۆزنەكنى توختات(_W)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Snap windows to screen _border"
-msgstr ""
+msgstr "ئېكران گىرۋىكىدە كۆزنەكنى توختات(_B)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
@@ -367,11 +367,11 @@ msgstr "ۋاز كەچ"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cycle windows"
-msgstr ""
+msgstr "كۆزنەكنى ئالماشتۇر"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows (Reverse)"
-msgstr ""
+msgstr "كۆزنەكنى ئالماشتۇر(تەتۈر يۆنىلىشتە)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
@@ -427,7 +427,7 @@ msgstr "كۆزنەكنى ۋېرتىكال يۆنىلىشتە تولدۇر"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr "ئۇستىدىكىسىگە ئالماشتۇر"
+msgstr "ئۈستىدىكىسىگە ئالماشتۇر"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
@@ -632,7 +632,7 @@ msgstr "xfconf نى دەسلەپلەشتۈرۈش مەغلۇپ بولدى. سەۋ
 
 #: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
-msgstr "تەڭشەك سۆزلەشكۈسىنى قۇرغىلى بولمىدى"
+msgstr "تەڭشەك سۆزلەشكۈسىنى قۇرغىلى بولمىدى."
 
 #: ../settings-dialogs/xfwm4-settings.c:1891
 #: ../settings-dialogs/xfwm4-settings.c:1892
@@ -676,19 +676,19 @@ msgstr "كۆڭۈلدە بۇ يەرگە قوي:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ompositor"
-msgstr ""
+msgstr "بىرىكتۈرۈش(_O)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
-msgstr ""
+msgstr "پىرقىرات(_Y)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Cycle _through windows on all workspaces"
-msgstr ""
+msgstr "بارلىق خىزمەت رايونىدا پىرقىرات(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Display _fullscreen overlay windows directly"
-msgstr ""
+msgstr "پۈتۈن ئېكرانلىق كۆزنەكلەرنى بىۋاسىتە كۆرسەت(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Do _nothing"
@@ -700,7 +700,7 @@ msgstr "ئەڭ چوڭ قىلىنغاندا كۆزنەكنىڭ گىرۋىكىنى
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "ئۆلچەملىك ICCCM فوكۇس بېشارىتىنى ھۆرمەت قىل(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Keep urgent windows _blinking repeatedly"
@@ -788,11 +788,11 @@ msgstr "كۆزنەكنى ھازىرقى  خىزمەت رايونىغا ئېلى�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "پىرقىراتقاندا تاللانغان كۆزنەكنىڭ كاندۇك گىرۋىكىنى سىزسۇن(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Enable display compositing"
-msgstr ""
+msgstr "بىرىكتۈرۈشنى ئىناۋەتلىك قىلسۇن(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Include hidden (i.e. iconified) windows"
@@ -800,7 +800,7 @@ msgstr "يوشۇرۇن(سىنبەلگىلەشتۈرۈلگەن) كۆزنەكنى 
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
+msgstr "ئەقىللىق رەتلەنگەن كۆزنەكنىڭ ئەڭ كىچىك چوڭلۇقى(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Placement"
@@ -835,7 +835,7 @@ msgstr "ئورۇنلاشتۇرۇلۇشى"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "گىرۋەكتىكى بوشلۇقلار بولسا كۆزنەك قويۇلمايدىغان بىكار ئورۇندۇر"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Names"
@@ -847,7 +847,7 @@ msgstr "ئادەتتىكى(_G)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Margins"
-msgstr "بوشلۇقلار"
+msgstr "بوشلۇقلار(_M)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
@@ -869,11 +869,11 @@ msgstr "ئارقا تەرەپكە ئاچىلا(Fork)(تېخى ئىشلەتكىل
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "بىرىكتۈرۈش ھالىتىنى بەلگىلە"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "بىرىكتۈرۈش ھالىتىنى بەلگىلە (تېخى ئىشلەتكىلى بولمايدۇ)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
@@ -890,7 +890,7 @@ msgstr "[ARGUMENTS...]"
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "«%s --help» نى كىرگۈزسىڭىز ئىشلىتىش ئۇسۇلى كۆرۈنىدۇ"
+msgstr "ئىشلىتىش ئۇسۇلىنى كۆرۈش ئۈچۈن «%s --help» نى كىرگۈزسە بولىدۇ."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
@@ -1017,4 +1017,4 @@ msgstr "بالا ئىجرادىن سانلىق-مەلۇماتلارنى ئوقۇ
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "helper-dialog نى پەيدا قىلالمىدى: %s\n"
+msgstr "ياردەمچى-سۆزلەشكۈ(helper-dialog) نى پەيدا قىلالمىدى: %s\n"
