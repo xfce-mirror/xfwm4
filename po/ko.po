@@ -184,7 +184,7 @@ msgstr "<i>작게</i>"
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "<i>Wide</i>"
-msgstr "<i>넓게</i>"
+msgstr "<i>크게</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
