@@ -342,7 +342,7 @@ msgstr "아무 것도 안함"
 #: ../settings-dialogs/xfwm4-settings.c:229
 #: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
-msgstr "좌측"
+msgstr "왼쪽"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
@@ -351,7 +351,7 @@ msgstr "가운데"
 #: ../settings-dialogs/xfwm4-settings.c:231
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
-msgstr "우측"
+msgstr "오른쪽"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
