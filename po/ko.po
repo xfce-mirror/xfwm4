@@ -678,7 +678,7 @@ msgstr "기본적으로 위치할 창:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ompositor"
-msgstr "단축키 구성(_O)"
+msgstr "바로가기 키 구성(_O)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
@@ -817,7 +817,7 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"단축키로 바꿀 때 이전 작업공간을 "
+"바로가기 키로 바꿀 때 이전 작업공간을 "
 "호출하고 복원(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
