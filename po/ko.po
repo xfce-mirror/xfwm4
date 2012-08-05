@@ -702,7 +702,7 @@ msgstr "최대화된 창은 창틀을 숨기기(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Honor _standard ICCCM focus hint"
-msgstr "표준 ICCCM 포커스 힌트 수락(_S)"
+msgstr "표준 ICCCM 포커스 힌트 이행(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Keep urgent windows _blinking repeatedly"
@@ -790,7 +790,7 @@ msgstr "창을 현재 작업공간으로 이동(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Draw frame around selected windows while cycling"
-msgstr "순환하는 동안 선택한 창 주변으로 틀 그리기(_D)"
+msgstr "순환하는 동안 선택한 창 테두리 그리기(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Enable display compositing"
@@ -798,7 +798,7 @@ msgstr "디스플레이 합성 활성화(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "숨겨진(또는 아이콘화된) 창 포함(_I)"
+msgstr "숨겨진(또는 아이콘 표시된) 창 포함(_I)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Minimum size of windows to trigger smart placement:"
