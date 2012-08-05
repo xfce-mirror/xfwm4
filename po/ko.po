@@ -236,7 +236,7 @@ msgstr "창을 움직일 때 내용 숨기기(_M)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
-msgstr "창 크기를 변경할 때 내용을 숨기기(_R)"
+msgstr "창 크기를 변경할 때 내용 숨기기(_R)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
