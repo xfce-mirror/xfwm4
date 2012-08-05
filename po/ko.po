@@ -288,7 +288,7 @@ msgstr "제목"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "창을 화면 밖으로 이동시키면 작업공간 전환(_D)"
+msgstr "창을 화면 밖으로 끌어 움직이면 작업공간 전환(_D)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
