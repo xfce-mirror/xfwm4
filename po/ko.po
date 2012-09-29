@@ -946,11 +946,11 @@ msgstr "창 "
 
 #: ../src/menu.c:56
 msgid "_Fullscreen"
-msgstr "전체 화면(_F)"
+msgstr "최대 화면(_F)"
 
 #: ../src/menu.c:57
 msgid "Leave _Fullscreen"
-msgstr "전체 화면으로 남김(_F)"
+msgstr "원래 크기로 복귀(_F)"
 
 #: ../src/menu.c:58
 msgid "Context _Help"
