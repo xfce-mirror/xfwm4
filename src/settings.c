@@ -894,6 +894,10 @@ loadSettings (ScreenInfo *screen_info)
     {
         screen_info->params->double_click_action = DOUBLE_CLICK_ACTION_FILL;
     }
+    else if (!g_ascii_strcasecmp ("above", value))
+    {
+        screen_info->params->double_click_action = DOUBLE_CLICK_ACTION_ABOVE;
+    }
     else
     {
         screen_info->params->double_click_action = DOUBLE_CLICK_ACTION_NONE;

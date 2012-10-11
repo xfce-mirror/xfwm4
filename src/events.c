@@ -750,6 +750,9 @@ button1Action (Client *c, XfwmEventButton *event)
                     clientWithdraw (c, c->win_workspace, TRUE);
                 }
                 break;
+            case DOUBLE_CLICK_ACTION_ABOVE:
+                clientToggleLayerAbove (c);
+                break;
             default:
                 break;
         }

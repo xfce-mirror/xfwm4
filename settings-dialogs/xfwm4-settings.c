@@ -220,6 +220,7 @@ static const MenuTemplate double_click_values[] = {
   { N_("Hide window"), "hide" },
   { N_("Maximize window"), "maximize" },
   { N_("Fill window"), "fill" },
+  { N_("Always on top"), "above" },
   { N_("Nothing"), "none" },
   { NULL, NULL }
 };
