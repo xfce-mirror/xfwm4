@@ -26,11 +26,11 @@ msgstr ""
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr ""
+msgstr "चेतावनी"
 
 #: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
-msgstr ""
+msgstr "बिल्कुल नहीं"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
@@ -40,13 +40,13 @@ msgstr ""
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
-msgstr ""
+msgstr "साकेट आइडी"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
-msgstr ""
+msgstr "संस्करण सूचना "
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
@@ -76,7 +76,7 @@ msgstr "कार्यस्थान शिर्षक"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
-msgstr ""
+msgstr "तंत्र प्रबंधक साकेट"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
@@ -105,7 +105,7 @@ msgstr "विन्डो प्रबंधक सुधार"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "अभिन्यास, शिर्षक तथा हाशिए को रुप दे"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -196,19 +196,16 @@ msgstr "सक्रिय"
 # #-#-#-#-#  gnome-desktop.HEAD.hi.po (gnome-desktop-2.0.hi)  #-#-#-#-#
 # libgnome-desktop/gnome-ditem-edit.c:776
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Ad_vanced"
 msgstr "उन्नत"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
 msgstr ""
 "जब विंडो में फोकस प्राप्त हो \n"
 "तो विंडो स्वतः उठाएं"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
 msgstr ""
 "नए बने हुए विंडो में  \n"
@@ -233,14 +230,12 @@ msgid "Delay _before raising focused window:"
 msgstr "फोकस किए विंडो को ऊपर लाने से पहले विलम्ब"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "दूरी :"
+msgstr "दूरी:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "फोकस माउस के पीछे"
+msgstr "फोकस माउस का अनुसरण करें"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
@@ -252,14 +247,12 @@ msgid "Hide content of windows when _moving"
 msgstr "खिसकाने पर विंडो की चीजों को दिखाएं"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "आकार बदलने पर विंडो की चीजों को दिखाएं"
+msgstr "आकार बदलने पर विंडो की चीजों को छिपाएँ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "कीबोर्ड शार्टकट"
+msgstr "कीबोर्ड"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
@@ -270,12 +263,10 @@ msgid "Menu"
 msgstr "मेन्यू"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
-msgstr "बडा करें (_x)"
+msgstr "छोटा करें"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
 msgstr ""
 "जब भीतर क्लिक करें तो विंडो उठाएं\n"
@@ -286,12 +277,10 @@ msgid "Shade"
 msgstr "छाया"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
 msgid "Snap windows to other _windows"
 msgstr "विंडोस को अन्य विंडोस में स्नेप करें"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
 msgid "Snap windows to screen _border"
 msgstr "विंडोस को स्क्रीन बार्डर में स्नेप करें"
 
