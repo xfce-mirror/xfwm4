@@ -21,6 +21,8 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"यह विंडो हो सकता है व्यस्त हो और जवाब नही दे रही।\n"
+" क्या आप चाहते है इस अनुप्रयोग को समाप्त कर दिया जाए?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -50,7 +52,7 @@ msgstr ""
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:964
 msgid "."
-msgstr ""
+msgstr "।"
 
 #: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:403
@@ -63,14 +65,13 @@ msgstr ""
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "कार्यस्थान %i"
+msgstr "कार्यस्थान %d"
 
 #: ../settings-dialogs/workspace-settings.c:275
-#, fuzzy
 msgid "Workspace Name"
-msgstr "कार्यस्थान हाशिया "
+msgstr "कार्यस्थान शिर्षक"
 
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
@@ -98,9 +99,8 @@ msgstr "आकार बदलने पर विंडो की चीजो�
 # gnome-session/splash.c:71
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "विन्डो प्रबंधक"
+msgstr "विन्डो प्रबंधक सुधार"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -113,9 +113,8 @@ msgid "Workspaces"
 msgstr "कार्यस्थान"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "अपारदर्शी हटाएं एवं आकार परिवर्तन करें"
+msgstr "<b>डिब्बे को हिलाए तथा आकार बदलें</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
@@ -150,52 +149,46 @@ msgid "<b>Title fon_t</b>"
 msgstr "<b>शीर्षक फोंट</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "नया विंडो फोकस "
+msgstr "<b>विंडो शोर्टकट</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "विंडोस स्नेपिंग"
+msgstr "<b>विंडोस स्नेपिंग</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "कार्यस्थान व्रेप करें"
+msgstr "<b>कार्यस्थान व्रेप करें</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "शीर्षक पंक्तिबद्धता"
+msgstr "<b>थीम</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "<i>Long</i>"
-msgstr ""
+msgstr "<i>लम्बा</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "<i>Short</i>"
-msgstr ""
+msgstr "<i>छोटा</i>"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "छोटा"
+msgstr "<i>लघु</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "दूरी :"
+msgstr "<i>चौड़ा</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
-msgstr ""
+msgstr "सक्रिय"
 
 # #-#-#-#-#  gnome-control-center.gnome-2-4.hi.po (control center)  #-#-#-#-#
 # #-#-#-#-#  gnome-desktop.gnome-2-2.hi.po (gnome-desktop 4.3.90.1)  #-#-#-#-#
