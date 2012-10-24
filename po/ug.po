@@ -1,13 +1,13 @@
 # Uyghur translation for xfwm4.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Gheyret Kenji <gheyret@gmail.com>, 2012.
+# Gheyret Kenji <gheyret@gmail.com>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-12 03:18+0000\n"
+"POT-Creation-Date: 2012-10-24 00:24+0000\n"
 "PO-Revision-Date: 2011-11-09 16:10+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -634,12 +634,12 @@ msgstr "xfconf نى دەسلەپلەشتۈرۈش مەغلۇپ بولدى. سەۋ
 msgid "Could not create the settings dialog."
 msgstr "تەڭشەك سۆزلەشكۈسىنى قۇرغىلى بولمىدى."
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "كۆڭۈلدىكىگە قايتۇر"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -890,7 +890,7 @@ msgstr "[ARGUMENTS...]"
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "«%s --help» نى كىرگۈزسىڭىز ئىشلىتىش ئۇسۇلى كۆرۈنىدۇ"
+msgstr "ئىشلىتىش ئۇسۇلىنى كۆرۈش ئۈچۈن «%s --help» نى كىرگۈزسە بولىدۇ."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
