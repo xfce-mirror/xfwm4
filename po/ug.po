@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 22:00+0000\n"
+"POT-Creation-Date: 2012-10-24 00:27+0000\n"
 "PO-Revision-Date: 2011-11-09 16:10+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -96,7 +96,7 @@ msgstr "كۆزنەك ھەرىكىتى ۋە ئۈنۈمىنى ئىنچىكە تە�
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Window Manager Tweaks"
-msgstr "كۆزنەك باشقۇرغۇ (Tweaks)"
+msgstr "كۆزنەك باشقۇرغۇ Tweaks"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -634,12 +634,12 @@ msgstr "xfconf نى دەسلەپلەشتۈرۈش مەغلۇپ بولدى. سەۋ
 msgid "Could not create the settings dialog."
 msgstr "تەڭشەك سۆزلەشكۈسىنى قۇرغىلى بولمىدى."
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "كۆڭۈلدىكىگە قايتۇر"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -704,7 +704,7 @@ msgstr "ئۆلچەملىك ICCCM فوكۇس بېشارىتىنى ھۆرمەت ق
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "جىددىي ئۇقتۇرۇش كۆزنىكىنىڭ توختاتماي لىپىلدات"
+msgstr "جىددىي ئۇقتۇرۇش كۆزنىكىنى توختاتماي لىپىلدات(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
