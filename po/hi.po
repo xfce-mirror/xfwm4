@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 03:30+0000\n"
+"POT-Creation-Date: 2012-10-29 08:51+0000\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -433,127 +433,104 @@ msgid "Raise or lower window"
 msgstr "विंडो को उठाएँ या निचे करे"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "विंडो को अधिकतम करें"
+msgstr "क्षितिज के समांतर दिशा में विंडो को भरें"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "विंडो को अधिकतम करें"
+msgstr "विंडो को लंबवत भरें"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr ""
+msgstr "ऊपर स्थानांतरित करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "पूर्ण-स्क्रीन में बदलें"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को ऊपर वाले कार्यक्षेत्र में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को निचे वाले कार्यक्षेत्र में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को बायँ कार्यक्षेत्र में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को दायँ कार्यक्षेत्र में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to previous workspace"
-msgstr "कार्यस्थान व्रेप करें"
+msgstr "विंडो को पिछले कार्यक्षेत्र में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to next workspace"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को अगले कार्यक्षेत्र में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र १ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र २ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र ३ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र ४ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र ५ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र ६ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र ७ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र ८ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र ९ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र १० में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र ११ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को कार्यक्षेत्र १२ में भेजे"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को शीर्ष भाग में टाइल करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को निचले भाग में टाइल करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो को बायँ भाग में टाइल करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 #, fuzzy
