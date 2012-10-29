@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-13 18:21+0000\n"
+"POT-Creation-Date: 2012-10-29 03:30+0000\n"
 "PO-Revision-Date: 2005-10-09 20:44+0900\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -34,7 +34,7 @@ msgstr "बिल्कुल नहीं"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
-msgstr ""
+msgstr "सत्र प्रबंधक साकेट"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
@@ -62,6 +62,8 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"आज़माए %s --help पूर्ण उपलब्ध कमाण्ड सुची विक्लप देखने के लिए।\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -218,7 +220,7 @@ msgstr "फोकस देने हेतु क्लिक करें"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
-msgstr ""
+msgstr "अभिन्यास बदलने के लिए बटन को क्लिक् करके खिचें"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -295,7 +297,7 @@ msgstr "टाइटल बार में डबल क्लिक करन�
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
-msgstr ""
+msgstr "विंडो शीर्षक हटाया नही जा सकता"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
@@ -329,12 +331,11 @@ msgstr "फोकस माडल"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "_R मुलभूत पर बदले"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#, fuzzy
 msgid "_Style"
-msgstr "शीर्षक"
+msgstr "_S शैली"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -377,19 +378,19 @@ msgstr "दाँया"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Window operations menu"
-msgstr ""
+msgstr "‌विंडो कार्य प्रणाली मेन्यु"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr ""
+msgstr "ऊपर"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr ""
+msgstr "निचे"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
-msgstr ""
+msgstr "रद्द करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
 #, fuzzy
