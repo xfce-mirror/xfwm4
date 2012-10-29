@@ -82,9 +82,8 @@ msgstr "तंत्र प्रबंधक साकेट"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "आकार बदलने पर विंडो की चीजों को दिखाएं"
+msgstr "समनुरुपण विंडो का व्यवहार व शॉर्ट्कट"
 
 # gnome-session/splash.c:71
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
@@ -94,9 +93,8 @@ msgstr "विन्डो प्रबंधक"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "आकार बदलने पर विंडो की चीजों को दिखाएं"
+msgstr "समनुरुपण विंडो का व्यवहार व प्रभाव ठिक करें"
 
 # gnome-session/splash.c:71
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
@@ -214,9 +212,8 @@ msgstr ""
 "स्वतः फोकस दें"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "फोकस देने हेतु क्लिक करें"
+msgstr "फोकस देने हेतु क्लिक करें _k"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
@@ -227,9 +224,8 @@ msgid "Close"
 msgstr "बंद करें"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "फोकस किए विंडो को ऊपर लाने से पहले विलम्ब"
+msgstr "फोकस किए विंडो को ऊपर लाने से पहले विलम्ब _b"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "Dis_tance:"
@@ -244,9 +240,8 @@ msgid "Hidden"
 msgstr "हिडन"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "खिसकाने पर विंडो की चीजों को दिखाएं"
+msgstr "खिसकाने पर विंडो की चीजों को छिपाएँ _m"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
@@ -291,9 +286,8 @@ msgid "Stick"
 msgstr "स्टिक"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "टाइटल बार में डबल क्लिक करने पर क्रिया निष्पादन :"
+msgstr "टाइटल बार में डबल क्लिक करने पर क्रियान्वित क्रिया"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
@@ -304,30 +298,25 @@ msgid "Title"
 msgstr "शीर्षक"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "जब स्क्रीन के बाहर विंडो को खींचें तो कार्यस्थानों को व्रेप करें"
+msgstr "जब स्क्रीन के बाहर विंडो को खींचें तो कार्यस्थानों को व्रेप करें _d"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "जब पाइंटर स्क्रीन के किनारे पर पंहुचे तो कार्यस्थानों को व्रेप करें"
+msgstr "जब पाइंटर स्क्रीन के किनारे पर पंहुचे तो कार्यस्थानों को व्रेप करें _p"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "फोकस किए विंडो को ऊपर लाने से पहले विलम्ब"
+msgstr "फोकस किए विंडो को ऊपर लाने से पहले विलम्ब _D"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "किनारा प्रतिरोध :"
+msgstr "_E किनारा प्रतिरोध :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "_Focus"
-msgstr "फोकस माडल"
+msgstr "_F फोकस"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
@@ -354,9 +343,8 @@ msgstr "विंडो को अधिकतम करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
 msgid "Fill window"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो भरें"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -393,68 +381,56 @@ msgid "Cancel"
 msgstr "रद्द करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
-#, fuzzy
 msgid "Cycle windows"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो घुमाएँ"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो घुमाएँ (उलटा)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "नया विंडो फोकस "
+msgstr "समान अनुप्रयोग के लिए ‌विंडो को बदलें"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
-msgstr ""
+msgstr "अनुप्रयोग बदले"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
-#, fuzzy
 msgid "Close window"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो बंद करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
-#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "विंडो को अधिकतम करें"
+msgstr "विंडो को क्षितिज के समांतर दिशा में अधिकतम करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:248
-#, fuzzy
 msgid "Maximize window vertically"
-msgstr "विंडो को अधिकतम करें"
+msgstr "विंडो को लम्बवत अधिकतम करें"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
-#, fuzzy
 msgid "Move window"
-msgstr "नया विंडो फोकस "
+msgstr "विंडो को हिलाएँ"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
 msgid "Resize window"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो का आकार बदलें"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
-#, fuzzy
 msgid "Stick window"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो चिपकाएँ"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
-#, fuzzy
 msgid "Raise window"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो उठाएँ"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
-#, fuzzy
 msgid "Lower window"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो निचे करे"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "विंडो छुपाएं"
+msgstr "विंडो को उठाएँ या निचे करे"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 #, fuzzy
