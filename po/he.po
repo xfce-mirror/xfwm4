@@ -2,7 +2,7 @@
 # Hebrew translations for xfwm4 package.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
-#
+# 
 # Dotan Kamber <kamberd@yahoo.com>, 2004.
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004.
 # Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 18:54+0200\n"
+"POT-Creation-Date: 2012-11-04 03:54+0000\n"
 "PO-Revision-Date: 2006-11-11 21:28+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -83,278 +83,273 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "Window Manager"
-msgstr "מנהל חלונות"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 #, fuzzy
 msgid "Configure window behavior and shortcuts"
 msgstr "בטל פעולת חלון"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "הגדרות נוספות של מנהל החלונות"
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+msgid "Window Manager"
+msgstr "מנהל חלונות"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 #, fuzzy
 msgid "Fine-tune window behaviour and effects"
 msgstr "בטל פעולת חלון"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "Window Manager Tweaks"
+msgstr "הגדרות נוספות של מנהל החלונות"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "סביבות עבודה"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>_Theme</b>"
-msgstr "<b>_ערכת נושא</b>"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+msgid "Workspaces"
+msgstr "סביבות עבודה"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
-msgid "<b>Title fon_t</b>"
-msgstr "גופן כותרת"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
-msgid "<b>Title _alignment</b>"
-msgstr "יישור כותרת"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
-msgid "Click and drag the buttons to change the layout"
-msgstr "לחץ ושחרר לחצן כדי לשנות את הפריסה"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "Title"
-msgstr "כותרת"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
-msgid "The window title cannot be removed"
-msgstr "החלון מסומן, אין אפשרות להסיר אותו"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-msgid "Active"
-msgstr "פעיל"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-msgid "Menu"
-msgstr "תפריט"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "Stick"
-msgstr "הדבק"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "Shade"
-msgstr "גלול"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
-msgid "Minimize"
-msgstr "_הגדל"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
-msgid "Maximize"
-msgstr "הגדל"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "Close"
-msgstr "סגור"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
-msgid "Hidden"
-msgstr "מוסתר"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
-msgid "<b>Button layout</b>"
-msgstr "פרישת כפתורים"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#, fuzzy
-msgid "_Style"
-msgstr "סגנון"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
-msgid "_Reset to Defaults"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
-#, fuzzy
-msgid "<b>Window _shortcuts</b>"
-msgstr "קיצורי דרך לחלונות"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
-msgid "Ke_yboard"
-msgstr "מקלדת"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
-msgid "Clic_k to focus"
-msgstr "לחיצה להתמקדות"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
-msgid "Focus follows _mouse"
-msgstr "התמקדות עוקבת אחר העכבר"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
-msgid "_Delay before window receives focus:"
-msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
-
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
-msgid "<i>Short</i>"
-msgstr "שקיפות"
-
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
-msgid "<i>Long</i>"
-msgstr "גדול"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
-msgid "<b>Focus model</b>"
-msgstr "אופן ההתמקדות"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
-msgid "Automatically give focus to _newly created windows"
-msgstr "התמקד באופן אוטומטי על חלון חדש שנוצר"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
-msgid "<b>New window focus</b>"
-msgstr "התמקדות על חלון חדש"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
-msgid "Automatically _raise windows when they receive focus"
-msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
-msgid "Delay _before raising focused window:"
-msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
-msgid "<b>Raise on focus</b>"
-msgstr "הבא לחזית בהתמקדות"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
-msgid "Raise window when clicking _inside application window"
-msgstr "הבא חלון לחזית כאשר לוחצים בתוך חלון היישום"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
-msgid "<b>Raise on click</b>"
-msgstr "הבא לחזית בלחיצה"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
-msgid "_Focus"
-msgstr "התמקדות"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
-msgid "Snap windows to screen _border"
-msgstr "הצמד חלונות לגבולות המרקע"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
-msgid "Snap windows to other _windows"
-msgstr "הצמד חלונות לחלונות סמוכים"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
-msgid "Dis_tance:"
-msgstr "מרחק:"
-
-#. Edge resistance
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#, fuzzy
-msgid "<i>Small</i>"
-msgstr "קטן"
-
-#. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
-msgid "<i>Wide</i>"
-msgstr "גדול"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
-msgid "<b>Windows snapping</b>"
-msgstr "הצמדת חלונות"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#, fuzzy
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "גלוש בין סביבות עבודה כאשר המצביע מגיע לגבול המסך"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-#, fuzzy
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "גלוש בין סביבות עבודה כאשר חלון נגרר אל מחוץ למסך"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
-msgid "_Edge resistance:"
-msgstr "התנגדות למעבר:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
-msgid "<b>Wrap workspaces</b>"
-msgstr "גלישת סביבות עבודה"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
-msgid "Hide content of windows when _resizing"
-msgstr "הצג את תוכן החלון בעת שינוי גודל"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
-msgid "Hide content of windows when _moving"
-msgstr "הצג את תוכן החלון בעת הזזה"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 #, fuzzy
 msgid "<b>Box move and resize</b>"
 msgstr "הזזה ושינוי גודל"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #, fuzzy
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "פעולה לביצוע בעת לחיצה כפולה בשורת הכותרת"
+msgid "<b>Button layout</b>"
+msgstr "פרישת כפתורים"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #, fuzzy
 msgid "<b>Double click _action</b>"
 msgstr "פעולת לחיצה כפולה"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#, fuzzy
+msgid "<b>Focus model</b>"
+msgstr "אופן ההתמקדות"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#, fuzzy
+msgid "<b>New window focus</b>"
+msgstr "התמקדות על חלון חדש"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#, fuzzy
+msgid "<b>Raise on click</b>"
+msgstr "הבא לחזית בלחיצה"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+#, fuzzy
+msgid "<b>Raise on focus</b>"
+msgstr "הבא לחזית בהתמקדות"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+#, fuzzy
+msgid "<b>Title _alignment</b>"
+msgstr "יישור כותרת"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#, fuzzy
+msgid "<b>Title fon_t</b>"
+msgstr "גופן כותרת"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#, fuzzy
+msgid "<b>Window _shortcuts</b>"
+msgstr "קיצורי דרך לחלונות"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#, fuzzy
+msgid "<b>Windows snapping</b>"
+msgstr "הצמדת חלונות"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#, fuzzy
+msgid "<b>Wrap workspaces</b>"
+msgstr "גלישת סביבות עבודה"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+msgid "<b>_Theme</b>"
+msgstr "<b>_ערכת נושא</b>"
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "<i>Long</i>"
+msgstr "ארוך"
+
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<i>Short</i>"
+msgstr "קצר"
+
+#. Edge resistance
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "<i>Small</i>"
+msgstr "קטן"
+
+#. Edge resistance
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "<i>Wide</i>"
+msgstr "רחב"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "Active"
+msgstr "פעיל"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Ad_vanced"
+msgstr "מת_קדם"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#, fuzzy
+msgid "Automatically _raise windows when they receive focus"
+msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#, fuzzy
+msgid "Automatically give focus to _newly created windows"
+msgstr "התמקד באופן אוטומטי על חלון חדש שנוצר"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#, fuzzy
+msgid "Clic_k to focus"
+msgstr "לחיצה להתמקדות"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#, fuzzy
+msgid "Click and drag the buttons to change the layout"
+msgstr "לחץ ושחרר לחצן כדי לשנות את הפריסה"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "Close"
+msgstr "סגור"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#, fuzzy
+msgid "Delay _before raising focused window:"
+msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#, fuzzy
+msgid "Dis_tance:"
+msgstr "מרחק:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#, fuzzy
+msgid "Focus follows _mouse"
+msgstr "התמקדות עוקבת אחר העכבר"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Hidden"
+msgstr "מוסתר"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#, fuzzy
+msgid "Hide content of windows when _moving"
+msgstr "הצג את תוכן החלון בעת הזזה"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#, fuzzy
+msgid "Hide content of windows when _resizing"
+msgstr "הצג את תוכן החלון בעת שינוי גודל"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#, fuzzy
+msgid "Ke_yboard"
+msgstr "מקלדת"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+msgid "Maximize"
+msgstr "הגדל"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgid "Menu"
+msgstr "תפריט"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#, fuzzy
+msgid "Minimize"
+msgstr "_הגדל"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#, fuzzy
+msgid "Raise window when clicking _inside application window"
+msgstr "הבא חלון לחזית כאשר לוחצים בתוך חלון היישום"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+msgid "Shade"
+msgstr "גלול"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#, fuzzy
+msgid "Snap windows to other _windows"
+msgstr "הצמד חלונות לחלונות סמוכים"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#, fuzzy
+msgid "Snap windows to screen _border"
+msgstr "הצמד חלונות לגבולות המרקע"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "Stick"
+msgstr "הדבק"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#, fuzzy
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "פעולה לביצוע בעת לחיצה כפולה בשורת הכותרת"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#, fuzzy
+msgid "The window title cannot be removed"
+msgstr "החלון מסומן, אין אפשרות להסיר אותו"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "Title"
+msgstr "כותרת"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#, fuzzy
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "גלוש בין סביבות עבודה כאשר חלון נגרר אל מחוץ למסך"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#, fuzzy
+msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgstr "גלוש בין סביבות עבודה כאשר המצביע מגיע לגבול המסך"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#, fuzzy
+msgid "_Delay before window receives focus:"
+msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#, fuzzy
+msgid "_Edge resistance:"
+msgstr "התנגדות למעבר:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#, fuzzy
+msgid "_Focus"
+msgstr "התמקדות"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+msgid "_Reset to Defaults"
+msgstr ""
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "מתקדם"
+msgid "_Style"
+msgstr "סגנון"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -720,18 +715,223 @@ msgstr ""
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
 
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#, fuzzy
+msgid "<i>Large</i>"
+msgstr "גדול"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#, fuzzy
+msgid "<i>Opaque</i>"
+msgstr "אטום"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+#, fuzzy
+msgid "<i>Transparent</i>"
+msgstr "שקיפות"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+#, fuzzy
+msgid "Activate _focus stealing prevention"
+msgstr "מנע גנבת מיקוד חלונות"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "At the _center of the screen"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#, fuzzy
+msgid "Automatically _tile windows when moving toward the screen edge"
+msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "By default, place windows:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#, fuzzy
+msgid "C_ompositor"
+msgstr "Compositor"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#, fuzzy
+msgid "C_ycling"
+msgstr "מעבר מחזורי"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#, fuzzy
+msgid "Cycle _through windows on all workspaces"
+msgstr "עבור דרך חלונות מכל סביבות העבודה"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#, fuzzy
+msgid "Display _fullscreen overlay windows directly"
+msgstr "הצג חלונות במצב מסך מלא ישירות"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#, fuzzy
+msgid "Do _nothing"
+msgstr "כלום"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#, fuzzy
+msgid "Hide _frame of windows when maximized"
+msgstr "הסתר את מסגרת החלון כאשר הוא בגודל מרבי"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#, fuzzy
+msgid "Honor _standard ICCCM focus hint"
+msgstr "כבד את סטנדרט סימני מיקוד החלונות ICCCM"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#, fuzzy
+msgid "Key used to _grab and move windows:"
+msgstr "מקש המשמש לתפיסת והזזת חלונות"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#, fuzzy
+msgid "Opaci_ty of window decorations:"
+msgstr "אטימות של קישוטי חלונות"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#, fuzzy
+msgid "Opacity of _inactive windows:"
+msgstr "אטימות של חלונות לא פעילים"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#, fuzzy
+msgid "Opacity of popup window_s:"
+msgstr "אטימות של חלונות קופצים"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#, fuzzy
+msgid "Opacity of windows during _move:"
+msgstr "אטימות של חלונות בזמן גרירה"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#, fuzzy
+msgid "Opacity of windows during resi_ze:"
+msgstr "אטימות של חלונות בזמן שינוי גודל"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#, fuzzy
+msgid "Restore original _size of maximized windows when moving"
+msgstr "החזר את הגודל המקורי של החלון המוגדל כאשר הוא מוזז"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#, fuzzy
+msgid "Show shadows under _dock windows"
+msgstr "הראה צל מתחת לחלון קופץ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#, fuzzy
+msgid "Show shadows under _regular windows"
+msgstr "הראה צל מתחת לחלון רגיל"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#, fuzzy
+msgid "Show shadows under pop_up windows"
+msgstr "הראה צל מתחת לחלון קופץ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#, fuzzy
+msgid "Switch to win_dow's workspace"
+msgstr "העבר חלון לסביבת עבודה %d"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+msgid "Under the mouse _pointer"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#, fuzzy
+msgid "Use _edge resistance instead of window snapping"
+msgstr "השתמש בהתנגדות שוליים במקום הצמדת החלונות אליהם"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "When a window raises itself:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#, fuzzy
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "גלוש בין סביבות עבודה לפי פריסת השולחנות האמתית"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#, fuzzy
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "אפשר גלישה גם בין סביבות העבודה הראשונה והאחרונה"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#, fuzzy
+msgid "_Accessibility"
+msgstr "נגישות"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#, fuzzy
+msgid "_Bring window on current workspace"
+msgstr "העבר חלון לסביבת העבודה ההבאה"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "_Draw frame around selected windows while cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#, fuzzy
+msgid "_Enable display compositing"
+msgstr "אפשר compositing לתצוגה"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#, fuzzy
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "שתף חלונות ממוזערים"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#, fuzzy
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "גודל חלון מינימלי להפעלת התמקמות חכמה"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#, fuzzy
+msgid "_Placement"
+msgstr "התמקמות"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#, fuzzy
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "הבא חלון לקדימה עבור כל לחיצת עכבר"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#, fuzzy
+msgid ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
+msgstr "זכור והחזר את סביבת העבודה הקודמת כאשר מחליפים באמצעות קיצורי המקדלת."
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
@@ -740,226 +940,21 @@ msgstr ""
 "דלג על חלונות שהמאפיין \"דלג מחליף סביבות עבודה\"\n"
 "או \"דלג שרות משימות\" בהם מאפשר"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "שתף חלונות ממוזערים"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-#, fuzzy
-msgid "Cycle _through windows on all workspaces"
-msgstr "עבור דרך חלונות מכל סביבות העבודה"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
-msgid "C_ycling"
-msgstr "מעבר מחזורי"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
-msgid "Activate _focus stealing prevention"
-msgstr "מנע גנבת מיקוד חלונות"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
-msgid "Honor _standard ICCCM focus hint"
-msgstr "כבד את סטנדרט סימני מיקוד החלונות ICCCM"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "When a window raises itself:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
-msgid "_Bring window on current workspace"
-msgstr "העבר חלון לסביבת העבודה ההבאה"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-#, fuzzy
-msgid "Switch to win_dow's workspace"
-msgstr "העבר חלון לסביבת עבודה %d"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
-msgid "Do _nothing"
-msgstr "כלום"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-#, fuzzy
-msgid "Key used to _grab and move windows:"
-msgstr "מקש המשמש לתפיסת והזזת חלונות"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
-msgid "_Raise windows when any mouse button is pressed"
-msgstr "הבא חלון לקדימה עבור כל לחיצת עכבר"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-#, fuzzy
-msgid "Hide _frame of windows when maximized"
-msgstr "הסתר את מסגרת החלון כאשר הוא בגודל מרבי"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
-msgid "Restore original _size of maximized windows when moving"
-msgstr "החזר את הגודל המקורי של החלון המוגדל כאשר הוא מוזז"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
-msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
-msgid "Use _edge resistance instead of window snapping"
-msgstr "השתמש בהתנגדות שוליים במקום הצמדת החלונות אליהם"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
-msgid "_Accessibility"
-msgstr "נגישות"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
-msgid ""
-"_Remember and recall previous workspace\n"
-"when switching via keyboard shortcuts"
-msgstr "זכור והחזר את סביבת העבודה הקודמת כאשר מחליפים באמצעות קיצורי המקדלת."
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "גלוש בין סביבות עבודה לפי פריסת השולחנות האמתית"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-#, fuzzy
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "אפשר גלישה גם בין סביבות העבודה הראשונה והאחרונה"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 #, fuzzy
 msgid "_Workspaces"
 msgstr "סביבות עבודה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "גודל חלון מינימלי להפעלת התמקמות חכמה"
-
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-#, fuzzy
-msgid "<i>Large</i>"
-msgstr "גדול"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "By default, place windows:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "At the _center of the screen"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "Under the mouse _pointer"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
-msgid "_Placement"
-msgstr "התמקמות"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-#, fuzzy
-msgid "_Enable display compositing"
-msgstr "אפשר compositing לתצוגה"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
-msgid "Display _fullscreen overlay windows directly"
-msgstr "הצג חלונות במצב מסך מלא ישירות"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
-msgid "Show shadows under _regular windows"
-msgstr "הראה צל מתחת לחלון רגיל"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
-msgid "Show shadows under pop_up windows"
-msgstr "הראה צל מתחת לחלון קופץ"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
-msgid "Show shadows under _dock windows"
-msgstr "הראה צל מתחת לחלון קופץ"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#, fuzzy
-msgid "Opaci_ty of window decorations:"
-msgstr "אטימות של קישוטי חלונות"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-#, fuzzy
-msgid "<i>Transparent</i>"
-msgstr "שקיפות"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#, fuzzy
-msgid "<i>Opaque</i>"
-msgstr "אטום"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-#, fuzzy
-msgid "Opacity of _inactive windows:"
-msgstr "אטימות של חלונות לא פעילים"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
-msgid "Opacity of windows during _move:"
-msgstr "אטימות של חלונות בזמן גרירה"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#, fuzzy
-msgid "Opacity of windows during resi_ze:"
-msgstr "אטימות של חלונות בזמן שינוי גודל"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#, fuzzy
-msgid "Opacity of popup window_s:"
-msgstr "אטימות של חלונות קופצים"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
-#, fuzzy
-msgid "C_ompositor"
-msgstr "Compositor"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
-msgid "_Number of workspaces:"
-msgstr "מספר סביבות עבודה:"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Layout"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 #, fuzzy
 msgid "Names"
 msgstr "שם:"
@@ -969,14 +964,14 @@ msgid "_General"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 #, fuzzy
 msgid "_Margins"
 msgstr "שוליים"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#, fuzzy
+msgid "_Number of workspaces:"
+msgstr "מספר סביבות עבודה:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -1156,23 +1151,18 @@ msgstr ""
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
 
-#, fuzzy
 #~ msgid "Set number and names of workspaces"
 #~ msgstr "מספר סביבות עבודה:"
 
-#, fuzzy
 #~ msgid "<b>Margins</b>"
 #~ msgstr "שוליים"
 
-#, fuzzy
 #~ msgid "<b>Workspaces</b>"
 #~ msgstr "גלישת סביבות עבודה"
 
-#, fuzzy
 #~ msgid "Change workspace name"
 #~ msgstr "שמות סביבות עבודה"
 
-#, fuzzy
 #~ msgid "_Name:"
 #~ msgstr "שם:"
 
