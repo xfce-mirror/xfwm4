@@ -627,7 +627,7 @@ static void
 mousePlacement (Client * c, int full_x, int full_y, int full_w, int full_h, int mx, int my)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering centerPlacement");
+    TRACE ("entering mousePlacement");
 
     c->x = mx + frameLeft(c) - frameWidth(c) / 2;
     c->y = my + frameTop(c) - frameHeight(c) / 2;
