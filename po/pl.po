@@ -6,20 +6,22 @@
 # Robert Kurowski <koorek@o2.pl>, 2005.
 # Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
 # Piotr Sokół <psokol@jabster.pl>, 2009, 2011, 2012.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-04 05:48+0000\n"
-"PO-Revision-Date: 2012-04-09 15:07+0200\n"
+"POT-Creation-Date: 2012-11-07 06:48+0000\n"
+"PO-Revision-Date: 2012-11-07 11:53+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bits\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
+"%100<10 || n%100>=20)) ? 1 : 2));\n"
+"X-Generator: Gtranslator 2.91.5\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -125,7 +127,7 @@ msgstr "<b>Układ przycisków</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Double click _action</b>"
-msgstr "<b>Czynność dw_ukrotnego kliknięcia</b>"
+msgstr "<b>Działanie dw_ukrotnego kliknięcia</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
@@ -137,11 +139,11 @@ msgstr "<b>Nowe okna</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Raise on click</b>"
-msgstr "<b>Czynność kliknięcia</b>"
+msgstr "<b>Działanie kliknięcia</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Czynność uaktywniania</b>"
+msgstr "<b>Działanie uaktywniania</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>Title _alignment</b>"
@@ -165,7 +167,7 @@ msgstr "<b>Obszary robocze</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
-msgstr "<b>M_otyw</b>"
+msgstr "<b>_Styl</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
@@ -211,7 +213,7 @@ msgstr "Uaktywnianie k_liknięciem"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
-msgstr "Aby zmienić układ, należy przeciągnąć przyciski w odpowienie pola."
+msgstr "Aby zmienić układ, należy przeciągnąć przyciski w odpowiednie miejsce."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -239,7 +241,7 @@ msgstr "Ukrywanie zawartości okien podczas przemie_szczania"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Hide content of windows when _resizing"
-msgstr "Ukrywanie zawartości okien podczas zmiany wie_lkości"
+msgstr "Ukrywanie zawartości okien podczas zmieniania _rozmiaru"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Ke_yboard"
@@ -279,8 +281,7 @@ msgstr "Wyświetla okno na wszystkich obszarach roboczych"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr ""
-"Określa czynność wykonywaną po podwójnym kliknięciu na pasku tytułowym okna"
+msgstr "Określa działanie dwukrotnego kliknięcia w obramowanie okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
@@ -624,7 +625,7 @@ msgstr "Usunięcie bieżącego obszaru roboczego"
 
 #: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
-msgstr "Motyw"
+msgstr "Styl"
 
 #: ../settings-dialogs/xfwm4-settings.c:602
 msgid "Action"
@@ -643,12 +644,12 @@ msgstr "Nie udało się zainicjować programu xfconf. Przyczyna: %s"
 msgid "Could not create the settings dialog."
 msgstr "Nie można utworzyć okna ustawień."
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "Przywracanie wartości domyślnych"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
