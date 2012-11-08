@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-04 09:39+0000\n"
-"PO-Revision-Date: 2012-10-04 12:59+0300\n"
+"POT-Creation-Date: 2012-11-08 09:36+0000\n"
+"PO-Revision-Date: 2012-11-08 13:57+0300\n"
 "Last-Translator: محمد الحرقان <malham1@gmail.com>\n"
 "Language-Team: http://www.vertaal.com.ar/files/factory/ar/list/\n"
 "Language: ar\n"
@@ -32,7 +32,7 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
-"قد تكون هذه النافذة معطوبة ولا تستجيب.\n"
+"قد تكون هذه النافذة مشغولة ولا تستجيب.\n"
 "هل تريد إنهاء هذا التطبيق؟"
 
 #: ../helper-dialog/helper-dialog.c:89
@@ -51,7 +51,7 @@ msgstr "مقبس مدير الجلسة"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
-msgstr "مقبس المعرف"
+msgstr "مُعرف المقبس"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
@@ -74,7 +74,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"جرب %s --help لمشاهدة قائمة كاملة بأوامر خيارات المتوفرة.\n"
+"جرب %s --help لمشاهدة قائمة كاملة بخيارات سطر الأوامر المتوفرة.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -109,12 +109,12 @@ msgstr "تهذيب سلوك و تأتيرات النافذة"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Window Manager Tweaks"
-msgstr "تضبيطات لمدير النوافذ"
+msgstr "تعديلات لمدير النوافذ"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Configure layout, names and margins"
-msgstr "إعداد التخطيطة أسماء و الهوامش"
+msgstr "إعداد التخطيط والأسماء والهوامش"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
@@ -127,15 +127,15 @@ msgstr "<b>صندوق التحريك و التحجيم</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
-msgstr "<b>زر التصميم</b>"
+msgstr "<b>تخطيط الزر</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Double click _action</b>"
-msgstr "<b>إخرا_ء الضغط المزدوج</b>"
+msgstr "<b>إجرا_ء الضغط المزدوج</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Focus model</b>"
-msgstr "<b>نموذج التركيز</b>"
+msgstr "<b>نمط التركيز</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -233,7 +233,7 @@ msgstr "الم_سافة:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Focus follows _mouse"
-msgstr "النركيز يتبع الفأرة"
+msgstr "التركيز يتبع الفأرة"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
@@ -285,11 +285,11 @@ msgstr "ثبِّت"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "الإجراء الذي سينفّذ عند النقر المزدوج على شريط العنوان"
+msgstr "إجراء النقر المزدوج على شريط العنوان"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
-msgstr "عنوان النافذة ، لا يمكن حذفه"
+msgstr "عنوان النافذة لا يمكن حذفه"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Title"
@@ -297,11 +297,11 @@ msgstr "العنوان"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "صفف مساحات العمل عند سحب نافذة _خارج حدود الشاشة"
+msgstr "صف مساحات العمل عند سحب نافذة _خارج حدود الشاشة"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "صفِّف مساحات العمل عند سحب نافذة خارج حدود الشاشة"
+msgstr "صف مساحات العمل عند سحب نافذة خارج حدود الشاشة"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
@@ -376,7 +376,7 @@ msgstr "تحت"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
-msgstr "الغي"
+msgstr "الغاء"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cycle windows"
@@ -616,7 +616,7 @@ msgstr "أضف مساحة عمل"
 
 #: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Add adjacent workspace"
-msgstr "أضف مساحة عمل محادية"
+msgstr "أضف مساحة عمل محاذية"
 
 #: ../settings-dialogs/xfwm4-settings.c:306
 msgid "Delete last workspace"
@@ -650,14 +650,14 @@ msgstr "لا يمكن إنشاء حوار الإعدادات."
 #: ../settings-dialogs/xfwm4-settings.c:1893
 #: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
-msgstr "إعادة إلى وضغ الإفتراضي"
+msgstr "إعادة إلى الوضع الإفتراضي"
 
 #: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
-"هذا يبقوم بإعادة تعيين كل الإختصارات إلى القيمة الإفتراضية. هل تريد حقا فعل "
+"هذا سبقوم بإعادة تعيين كل الإختصارات إلى القيم الإفتراضية. هل تريد حقا فعل "
 "هذا؟"
 
 #. Smart placement size
@@ -691,7 +691,7 @@ msgstr "مكان النوافذ, إفتراضيا:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "C_ompositor"
-msgstr "تنضيد"
+msgstr "المنظم"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
@@ -703,7 +703,7 @@ msgstr "دُر على كلّ النوافذ من كلّ مساحات العمل"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Display _fullscreen overlay windows directly"
-msgstr "عرض نوافذ تغطية ملء الشاشة مباشرة"
+msgstr "عرض نوافذ تملئ الشاشة مباشرة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Do _nothing"
@@ -727,11 +727,11 @@ msgstr "المفتاح المستخدم لالتقاط ونقل النوافذ:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "إشعار بالنوافذ العاجلة بجعل زينة النوافذ تومض"
+msgstr "إشعار بالنوافذ العاجلة بجعل ديكور النوافذ يومض"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Opaci_ty of window decorations:"
-msgstr "عتامة زينة النوافذ:"
+msgstr "عتامة ديكور النوافذ:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Opacity of _inactive windows:"
@@ -751,11 +751,11 @@ msgstr "عتامة النوافذ خلال التحجيم:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Restore original _size of maximized windows when moving"
-msgstr "عند تحريكها ، إستعد قياس النوافذ المصغرة الأصلي"
+msgstr "عند تحريكها ، إستعد حجم النوافذ المصغرة الأصلي"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _dock windows"
-msgstr "أظهر ظل تحت حوض النوافذ"
+msgstr "أظهر ظل تحت النوافذ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Show shadows under _regular windows"
@@ -767,7 +767,7 @@ msgstr "أظهر ظل تحت النوافذ المنبثقة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Switch to win_dow's workspace"
-msgstr "أنتقل لنافذة مساحة العمل"
+msgstr "انتقل لنافذة مساحة العمل"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Under the mouse _pointer"
@@ -799,7 +799,7 @@ msgstr "_إتاحة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Bring window on current workspace"
-msgstr "_حلب النافذة إلى مساحة العمل الحالية"
+msgstr "_جلب النافذة إلى مساحة العمل الحالية"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Draw frame around selected windows while cycling"
@@ -886,11 +886,11 @@ msgstr "تفرع إلى الخلفية (غير معتمد)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr "تحديد وضع المنضد"
+msgstr "تحديد وضع المنظم"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr "تحديد وضع المنضد (غير مدعوم)"
+msgstr "تحديد وضع المنظم (غير مدعوم)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
@@ -907,7 +907,7 @@ msgstr "[حجج...]"
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "أكتب \"%s --help\" لإستعمال."
+msgstr "طباعة \"%s --help\" للحصول على معلومات الإستعمال."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
@@ -944,7 +944,7 @@ msgstr "دوما في الأعلى"
 
 #: ../src/menu.c:52
 msgid "Same as Other Windows"
-msgstr "نفسه في نوافذ أخرى"
+msgstr "مثل النوافذ أخرى"
 
 #: ../src/menu.c:53
 msgid "Always Below Other Windows"
@@ -1014,7 +1014,7 @@ msgstr "%s: تعذّر تخصيص اللون %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: لا يمكن تخصيص اللون: GValue for color is not of type STRING"
+msgstr "%s: لا يمكن تخصيص اللون: الوان GValue ليست من النوع STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1024,12 +1024,12 @@ msgstr "%s: تعذّر تحليل اللون %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: لا يمكن نحليل اللون: GValue for color is not of type STRING"
+msgstr "%s: لا يمكن تحليل اللون: الوان GValue ليست من النوع STRING"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "خطأ عند قراءة البيانات من العملية البنت: %s\n"
+msgstr "خطأ عند قراءة البيانات من العملية: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
