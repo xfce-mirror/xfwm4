@@ -40,6 +40,7 @@
 
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <libxfce4ui/libxfce4ui.h>
 
 #include "display.h"
@@ -263,7 +264,7 @@ getsubstring (gchar * s, gint * length)
     return ns;
 }
 
-static void
+static gboolean
 sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 {
     DisplayInfo *display_info;
@@ -272,6 +273,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
     gchar **wm_command;
     gint wm_command_count;
     guint client_idx;
+    gboolean wrote_data = FALSE;
 
     display_info = screen_info->display_info;
     wm_command_count = 0;
@@ -295,6 +297,8 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
         {
             window_role = NULL;
         }
+
+        wrote_data = TRUE;
 
         fprintf (f, "[CLIENT] 0x%lx\n", c->window);
 
@@ -363,6 +367,8 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
                 CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED |
                 CLIENT_FLAG_NAME_CHANGED));
     }
+
+    return wrote_data;
 }
 
 gboolean
@@ -370,6 +376,7 @@ sessionSaveWindowStates (DisplayInfo *display_info, const gchar * filename)
 {
     FILE *f;
     GSList *screens;
+    gboolean wrote_data = FALSE;
 
     g_return_val_if_fail (filename != NULL, FALSE);
     g_return_val_if_fail (display_info != NULL, FALSE);
@@ -379,9 +386,15 @@ sessionSaveWindowStates (DisplayInfo *display_info, const gchar * filename)
         for (screens = display_info->screens; screens; screens = g_slist_next (screens))
         {
             ScreenInfo *screen_info_n = (ScreenInfo *) screens->data;
-            sessionSaveScreen (screen_info_n, f);
+            if (sessionSaveScreen (screen_info_n, f))
+              wrote_data = TRUE;
         }
         fclose (f);
+
+        /* remove the file if nothing has been written */
+        if (!wrote_data)
+          g_unlink (filename);
+
         return TRUE;
     }
     return FALSE;
