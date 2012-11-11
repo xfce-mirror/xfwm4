@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-10 15:03+0000\n"
+"POT-Creation-Date: 2012-11-11 12:27+0000\n"
 "PO-Revision-Date: 2012-11-07 11:53+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
@@ -145,7 +145,6 @@ msgid "<b>Raise on focus</b>"
 msgstr "<b>Działanie uaktywniania</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>The_me</b>"
 msgstr "<b>_Styl</b>"
 
@@ -166,7 +165,6 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "<b>Obszary robocze</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>_Window shortcuts</b>"
 msgstr "<b>Sk_róty klawiszowe</b>"
 
@@ -213,9 +211,8 @@ msgid "Click and drag the buttons to change the layout"
 msgstr "Aby zmienić układ, należy przeciągnąć przyciski w odpowiednie miejsce."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
-#, fuzzy
 msgid "Click to foc_us"
-msgstr "Kliknij aby aktywować"
+msgstr "Proszę klikąć, aby uaktywnić"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
