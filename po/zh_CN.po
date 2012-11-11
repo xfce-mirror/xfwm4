@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-11 12:27+0000\n"
-"PO-Revision-Date: 2012-11-11 21:46+0800\n"
+"PO-Revision-Date: 2012-11-11 21:48+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n-cn@xfce.org>\n"
 "Language: zh_CN\n"
@@ -167,7 +167,7 @@ msgstr "<b>回绕工作区</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Window shortcuts</b>"
-msgstr "<b>窗口快捷键</b>"
+msgstr "<b>窗口快捷键(_W)</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
