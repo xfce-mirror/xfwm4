@@ -211,8 +211,9 @@ msgid "Click and drag the buttons to change the layout"
 msgstr "Aby zmienić układ, należy przeciągnąć przyciski w odpowiednie miejsce."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#, fuzzy
 msgid "Click to foc_us"
-msgstr "Proszę klikąć, aby uaktywnić"
+msgstr "Proszę klikąć, aby _uaktywnić"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
