@@ -2,14 +2,14 @@
 # Copyright(C) 2002-2006 The Xfce development team
 # This file is distributed under the same license as the xfwm4 package.
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005.
-# Seong-ho, Cho <darkcircle.0426@gmail.com>, 2011, 2012.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://bugzilla.xfce.org/enter_bug.cgi?product=Xfwm4\n"
 "POT-Creation-Date: 2012-11-17 02:12+0000\n"
-"PO-Revision-Date: 2012-11-17 12:43+0900\n"
+"PO-Revision-Date: 2012-11-17 12:46+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
@@ -208,7 +208,7 @@ msgstr "배치를 바꾸려면 단추을 누르고 끌어다 놓으십시오."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click to foc_us"
-msgstr "활성화하기 위해 누르기(_U)"
+msgstr "활성화 하려면 누르기(_U)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -375,7 +375,7 @@ msgstr "창 순환"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows (Reverse)"
-msgstr "창 순환 (역순)"
+msgstr "창 순환(역순)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
@@ -824,7 +824,7 @@ msgstr "아무 마우스 단추든 눌리면 창을 앞으로(_R)"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "바로가기 키로 바꿀 때 이전 작업공간을 호출하고 복원(_R)"
+msgstr "바로 가기 키로 바꿀 때 이전 작업공간을 호출하고 복원(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "_Workspaces"
@@ -862,11 +862,11 @@ msgstr "%s (%s 에서)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr "바탕 화면으로 쪼개기"
+msgstr "배경으로 쪼개기"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr "바탕 화면으로 쪼개기 (지원하지 않음)"
+msgstr "배경으로 쪼개기(지원하지 않음)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
@@ -874,7 +874,7 @@ msgstr "합성처리 모드 설정"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr "합성처리 모드 설정 (지원하지 않음)"
+msgstr "합성 처리 모드 설정(지원하지 않음)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
@@ -979,7 +979,7 @@ msgstr "강제 종료"
 
 #: ../src/menu.c:70
 msgid "_Quit"
-msgstr "종료(_Q)"
+msgstr "끝내기(_Q)"
 
 #: ../src/menu.c:71
 msgid "Restart"
