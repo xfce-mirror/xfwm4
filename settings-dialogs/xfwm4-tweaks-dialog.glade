@@ -400,7 +400,7 @@ or "skip taskbar" properties set</property>
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="borderless_maximize_check">
-                    <property name="label" translatable="yes">Hide _frame of windows when ma_ximized</property>
+                    <property name="label" translatable="yes">Hide frame of windows when ma_ximized</property>
                     <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -447,8 +447,8 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="snap_resist_check">
-                    <property name="label" translatable="yes">Use _edge resistance instead of window snapping</property>
+                  <object class="GtkCheckButton" id="urgent_blink">
+                    <property name="label" translatable="yes">Notify of _urgency by making window's decoration blink</property>
                     <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -463,8 +463,8 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="urgent_blink">
-                    <property name="label" translatable="yes">Notify of _urgency by making window's decoration blink</property>
+                  <object class="GtkCheckButton" id="snap_resist_check">
+                    <property name="label" translatable="yes">Use _edge resistance instead of window snapping</property>
                     <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
