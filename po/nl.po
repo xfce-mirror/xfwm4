@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-07 12:09+0000\n"
+"POT-Creation-Date: 2012-11-26 05:33+0000\n"
 "PO-Revision-Date: 2011-09-09 12:41+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -703,7 +703,7 @@ msgid "Do _nothing"
 msgstr "Doe _niets"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "Verberg randen van vensters wanneer gemaximaliseerd"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
