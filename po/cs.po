@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-11 12:27+0000\n"
+"POT-Creation-Date: 2012-11-27 08:18+0000\n"
 "PO-Revision-Date: 2012-04-08 10:40+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -702,7 +702,7 @@ msgid "Do _nothing"
 msgstr "Žádná _akce"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "Při ma_ximalizaci skrýt okraje oken"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
