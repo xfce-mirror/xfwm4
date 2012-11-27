@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-07 12:09+0000\n"
+"POT-Creation-Date: 2012-11-27 08:18+0000\n"
 "PO-Revision-Date: 2012-04-26 23:06+0100\n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: \n"
@@ -703,8 +703,8 @@ msgid "Do _nothing"
 msgstr "_Nada fazer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
-msgstr "Ocultar _moldura das janelas maximizadas"
+msgid "Hide frame of windows when ma_ximized"
+msgstr "Ocultar moldura das janelas ma_ximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Honor _standard ICCCM focus hint"
