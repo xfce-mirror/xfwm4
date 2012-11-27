@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-24 10:45+0000\n"
+"POT-Creation-Date: 2012-11-27 08:18+0000\n"
 "PO-Revision-Date: 2011-12-17 22:52+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -700,7 +700,7 @@ msgid "Do _nothing"
 msgstr "_Ешнәрсе жасамау"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "Ма_ксималды етілген терезе қоршауын жасыру"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
