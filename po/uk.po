@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-13 17:57+0000\n"
+"POT-Creation-Date: 2012-11-27 19:00+0000\n"
 "PO-Revision-Date: 2009-02-24 20:24+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce-i18n@xfce.org>\n"
@@ -703,7 +703,7 @@ msgid "Do _nothing"
 msgstr "Нічого не роби_ти"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "Ховати р_амку розгорнутих вікон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
