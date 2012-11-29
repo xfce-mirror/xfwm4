@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-09 17:39+0000\n"
+"POT-Creation-Date: 2012-11-29 19:09+0000\n"
 "PO-Revision-Date: 2010-09-08 11:45+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -714,7 +714,7 @@ msgid "Do _nothing"
 msgstr "Non fare _niente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "_Nascondi la cornice delle finestre massimizzate"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
