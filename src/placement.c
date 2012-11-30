@@ -38,9 +38,10 @@
 #include "frame.h"
 #include "netwm.h"
 
+
 /* Compute rectangle overlap area */
 
-static unsigned long
+static inline unsigned long
 segment_overlap (int x0, int x1, int tx0, int tx1)
 {
     if (tx0 > x0)
@@ -58,7 +59,7 @@ segment_overlap (int x0, int x1, int tx0, int tx1)
     return (x1 - x0);
 }
 
-static unsigned long
+static inline unsigned long
 overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
 {
     /* Compute overlapping box */
@@ -541,6 +542,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     gint test_x, test_y, xmax, ymax, best_x, best_y;
     gint frame_height, frame_width, frame_left, frame_top;
     gboolean first;
+    gint c2_x, c2_y;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering smartPlacement");
@@ -574,14 +576,17 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                     && (c->win_workspace == c2->win_workspace)
                     && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
+                    c2_x = frameX (c2);
+                    c2_y = frameY (c2);
+
                     count_overlaps += overlap (test_x - frame_left,
                                                test_y - frame_top,
                                                test_x - frame_left + frame_width,
                                                test_y - frame_top + frame_height,
-                                               frameX (c2),
-                                               frameY (c2),
-                                               frameX (c2) + frameWidth (c2),
-                                               frameY (c2) + frameHeight (c2));
+                                               c2_x,
+                                               c2_y,
+                                               c2_x + frameWidth (c2),
+                                               c2_y + frameHeight (c2));
                 }
             }
             if (count_overlaps < 0.1)
