@@ -541,8 +541,8 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     guint i;
     gint test_x, test_y, xmax, ymax, best_x, best_y;
     gint frame_height, frame_width, frame_left, frame_top;
-    gboolean first;
     gint c2_x, c2_y;
+    gint xmin, ymin;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering smartPlacement");
@@ -552,24 +552,42 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     frame_width = frameWidth (c);
     frame_left = frameLeft(c);
     frame_top = frameTop (c);
-    test_x = 0;
-    test_y = 0;
-    best_overlaps = 0.0;
-    first = TRUE;
 
+    /* max coordinates (bottom-right) */
     xmax = full_x + full_w - c->width - frameRight (c);
     ymax = full_y + full_h - c->height - frameBottom (c);
-    best_x = full_x + frameLeft (c);
-    best_y = full_y + frameTop (c);
 
-    test_y = full_y + frameTop (c);
+    /* min coordinates (top-left) */
+    xmin = full_x + frameLeft (c);
+    ymin = full_y + frameTop (c);
+
+    /* start with worst-case position at top-left */
+    best_overlaps = G_MAXFLOAT;
+    best_x = xmin;
+    best_y = ymin;
+
+    TRACE ("analyzing %i clients", screen_info->client_count);
+
+    test_y = ymin;
     do
     {
-        test_x = full_x + frameLeft (c);
+        gint next_test_y = G_MAXINT;
+        gboolean first_test_x = TRUE;
+
+        TRACE ("testing y position %d", test_y);
+
+        test_x = xmin;
         do
         {
             gfloat count_overlaps = 0.0;
-            TRACE ("analyzing %i clients", screen_info->client_count);
+            gint next_test_x = G_MAXINT;
+            gint c2_next_test_x;
+            gint c2_next_test_y;
+            gint c2_frame_height;
+            gint c2_frame_width;
+
+            TRACE ("testing x position %d", test_x);
+
             for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
             {
                 if ((c2 != c) && (c2->type != WINDOW_DESKTOP)
@@ -577,7 +595,22 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                     && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
                     c2_x = frameX (c2);
+                    c2_frame_width = frameWidth (c2);
+                    if (c2_x >= full_x + full_w
+                        || c2_x + c2_frame_width < full_x)
+                    {
+                        /* skip clients on right-of or left-of monitor */
+                        continue;
+                    }
+
                     c2_y = frameY (c2);
+                    c2_frame_height = frameHeight (c2);
+                    if (c2_y >= full_y + full_h
+                        || c2_y + c2_frame_height < full_y)
+                    {
+                        /* skip clients on above-of or below-of monitor */
+                        continue;
+                    }
 
                     count_overlaps += overlap (test_x - frame_left,
                                                test_y - frame_top,
@@ -585,34 +618,97 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                                                test_y - frame_top + frame_height,
                                                c2_x,
                                                c2_y,
-                                               c2_x + frameWidth (c2),
-                                               c2_y + frameHeight (c2));
+                                               c2_x + c2_frame_width,
+                                               c2_y + c2_frame_height);
+
+                    /* find the next x boundy for the step */
+                    if (test_x > c2_x)
+                    {
+                        /* test location is beyond the x of the window,
+                         * take the window right corner as next target */
+                        c2_x += c2_frame_width;
+                    }
+                    c2_next_test_x = MIN (c2_x, xmax);
+                    if (c2_next_test_x < next_test_x
+                        && c2_next_test_x > test_x)
+                    {
+                        /* set new optimal next x step poistion */
+                        next_test_x = c2_next_test_x;
+                    }
+
+                    if (first_test_x)
+                    {
+                        /* find the next y boundry step */
+                        if (test_y > c2_y)
+                        {
+                            /* test location is beyond the y of the window,
+                             * take the window bottom corner as next target */
+                            c2_y += c2_frame_height;
+                        }
+                        c2_next_test_y = MIN (c2_y, ymax);
+                        if (c2_next_test_y < next_test_y
+                            && c2_next_test_y > test_y)
+                        {
+                            /* set new optimal next y step poistion */
+                            next_test_y = c2_next_test_y;
+                        }
+                    }
                 }
             }
-            if (count_overlaps < 0.1)
-            {
-                TRACE ("overlaps is 0 so it's the best we can get");
-                c->x = test_x;
-                c->y = test_y;
 
-                return;
-            }
-            else if ((count_overlaps < best_overlaps) || (first))
+            /* don't look for the next y boundry this x row */
+            first_test_x = FALSE;
+
+            if (count_overlaps < best_overlaps)
             {
+                /* found position with less overlap */
                 best_x = test_x;
                 best_y = test_y;
                 best_overlaps = count_overlaps;
+
+                if (count_overlaps == 0.0f)
+                {
+                    /* overlap is ideal, stop searching */
+                    TRACE ("found position without overlap");
+                    goto found_best;
+                }
             }
-            if (first)
+
+            if (G_LIKELY (next_test_x != G_MAXINT))
             {
-                first = FALSE;
+                test_x = next_test_x + frameLeft (c);
+                if (test_x > xmax)
+                {
+                   /* always clamp on the monitor */
+                   test_x = xmax;
+                }
             }
-            test_x += 8;
+            else
+            {
+                test_x++;
+            }
         }
         while (test_x <= xmax);
-        test_y += 8;
+
+        if (G_LIKELY (next_test_y != G_MAXINT))
+        {
+            test_y = next_test_y + frameTop (c);
+            if (test_y > ymax)
+            {
+                /* always clamp on the monitor */
+                test_y = ymax;
+            }
+        }
+        else
+        {
+            test_y++;
+        }
     }
     while (test_y <= ymax);
+
+    found_best:
+
+    TRACE ("overlaps %f at %d,%d (x,y)", best_overlaps, best_x, best_y);
 
     c->x = best_x;
     c->y = best_y;
