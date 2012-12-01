@@ -421,6 +421,8 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     gint x, y;
     gint x_diff;
     gint opacity_int;
+    gint x_swidth;
+    gint y_swidth;
 
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("entering make_shadow");
@@ -537,10 +539,12 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
         {
             d = sum_gaussian (screen_info->gaussianMap, opacity, x - center, center, width, height);
         }
+        x_swidth = swidth - x - 1;
         for (y = gaussianSize; y < sheight - gaussianSize; y++)
         {
-            data[y * swidth + x] = d;
-            data[y * swidth + (swidth - x - 1)] = d;
+            y_swidth = y * swidth;
+            data[y_swidth + x] = d;
+            data[y_swidth + x_swidth] = d;
         }
     }
 
