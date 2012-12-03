@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-09 17:39+0000\n"
+"POT-Creation-Date: 2012-12-03 19:27+0000\n"
 "PO-Revision-Date: 2009-12-15 11:54+0100\n"
 "Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
@@ -704,8 +704,8 @@ msgid "Do _nothing"
 msgstr "Eze_r ez egin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
-msgstr "Leiho _markoa ezkutatu guztiz _handitzean"
+msgid "Hide frame of windows when ma_ximized"
+msgstr "Leiho markoa ezkutatu guztiz _handitzean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Honor _standard ICCCM focus hint"
