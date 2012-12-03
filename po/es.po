@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-10 09:42+0000\n"
+"POT-Creation-Date: 2012-12-03 19:27+0000\n"
 "PO-Revision-Date: 2012-04-23 23:03-0600\n"
 "Last-Translator: Sergio García <oigres200@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
@@ -709,8 +709,8 @@ msgid "Do _nothing"
 msgstr "No hacer _nada"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
-msgstr "Ocultar _marco de ventanas al maximizar"
+msgid "Hide frame of windows when ma_ximized"
+msgstr "Ocultar marco de ventanas al ma_ximizar"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Honor _standard ICCCM focus hint"
@@ -800,7 +800,9 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Saltar al primer espacio de _trabajo cuando se avanza desde el último espacio de trabajo"
+msgstr ""
+"Saltar al primer espacio de _trabajo cuando se avanza desde el último "
+"espacio de trabajo"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Accessibility"
