@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-21 18:33+0000\n"
+"POT-Creation-Date: 2012-12-04 16:51+0000\n"
 "PO-Revision-Date: 2009-12-15 13:53+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -705,7 +705,7 @@ msgid "Do _nothing"
 msgstr "Gør _ingenting"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "Skjul ra_mme på vinduer når maksimeret"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
