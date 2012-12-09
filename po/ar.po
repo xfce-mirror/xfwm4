@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-11 12:27+0000\n"
-"PO-Revision-Date: 2012-11-11 19:37+0300\n"
+"PO-Revision-Date: 2012-12-09 13:14+0300\n"
 "Last-Translator: محمد الحرقان <malham1@gmail.com>\n"
 "Language-Team: http://www.vertaal.com.ar/files/factory/ar/list/\n"
 "Language: ar\n"
@@ -281,7 +281,7 @@ msgstr "ثبِّت"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "الإجراء الذي سينفّذ عند النقر المزدوج على شريط العنوان:"
+msgstr "الإجراء الذي سينفّذ عند النقر المزدوج على شريط العنوان"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title cannot be removed"
