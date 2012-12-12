@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
-"Report-Msgid-Bugs-To: https://bugzilla.xfce.org/enter_bug.cgi?product=Xfwm4\n"
-"POT-Creation-Date: 2012-11-17 02:12+0000\n"
-"PO-Revision-Date: 2012-11-17 12:46+0900\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-12 06:45+0000\n"
+"PO-Revision-Date: 2012-12-12 18:52+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
@@ -697,8 +697,8 @@ msgid "Do _nothing"
 msgstr "아무 것도 안함(_N)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when ma_ximized"
-msgstr "최대화 했을 때 창 틀을 숨기기(_F)"
+msgid "Hide frame of windows when ma_ximized"
+msgstr "창을 최대화 했을 때 테두리 숨기기(_X)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Honor _standard ICCCM focus hint"
