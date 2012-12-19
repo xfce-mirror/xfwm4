@@ -50,13 +50,14 @@
 
 
 
-#define DEFAULT_THEME             "Default"
+#define DEFAULT_THEME                   "Default"
 
-#define INDICATOR_SIZE            9
+#define INDICATOR_SIZE                  9
 
-#define SHORTCUTS_NAME_COLUMN     0
-#define SHORTCUTS_FEATURE_COLUMN  1
-#define SHORTCUTS_SHORTCUT_COLUMN 2
+#define SHORTCUTS_NAME_COLUMN           0
+#define SHORTCUTS_FEATURE_COLUMN        1
+#define SHORTCUTS_SHORTCUT_COLUMN       2
+#define SHORTCUTS_SHORTCUT_LABEL_COLUMN 3
 
 
 
@@ -66,7 +67,7 @@
 
 
 
-typedef struct _MenuTemplate     MenuTemplate;
+typedef struct _MenuTemplate            MenuTemplate;
 
 
 
@@ -512,7 +513,7 @@ xfwm_settings_constructed (GObject *object)
     gtk_tree_selection_set_mode (gtk_tree_view_get_selection (GTK_TREE_VIEW (shortcuts_treeview)),
                                  GTK_SELECTION_MULTIPLE);
 
-    list_store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    list_store = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
     gtk_tree_view_set_model (GTK_TREE_VIEW (shortcuts_treeview), GTK_TREE_MODEL (list_store));
     g_object_unref (G_OBJECT (list_store));
 
@@ -524,7 +525,7 @@ xfwm_settings_constructed (GObject *object)
     renderer = gtk_cell_renderer_text_new ();
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (shortcuts_treeview),
                                                  1, _("Shortcut"), renderer,
-                                                 "text", SHORTCUTS_SHORTCUT_COLUMN, NULL);
+                                                 "text", SHORTCUTS_SHORTCUT_LABEL_COLUMN, NULL);
 
     g_signal_connect (shortcuts_treeview, "row-activated",
                       G_CALLBACK (xfwm_settings_shortcut_row_activated), settings);
@@ -1679,8 +1680,18 @@ xfwm_settings_reload_shortcut (XfceShortcut *shortcut,
 
           if (G_UNLIKELY (g_str_equal (feature, shortcut->command)))
             {
+              GdkModifierType  modifiers;
+              guint            keyval;
+              gchar           *label;
+
+              /* Get the shortcut label */
+              gtk_accelerator_parse (shortcut->shortcut, &keyval, &modifiers);
+              label = gtk_accelerator_get_label (keyval, modifiers);
+
               gtk_list_store_set (GTK_LIST_STORE (model), &iter,
-                                  SHORTCUTS_SHORTCUT_COLUMN, shortcut->shortcut, -1);
+                                  SHORTCUTS_SHORTCUT_COLUMN, shortcut->shortcut,
+                                  SHORTCUTS_SHORTCUT_LABEL_COLUMN, label, -1);
+              g_free (label);
             }
 
           g_free (feature);
