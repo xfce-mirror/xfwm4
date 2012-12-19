@@ -1731,6 +1731,9 @@ xfwm_settings_shortcut_added (XfceShortcutsProvider *provider,
                               XfwmSettings          *settings)
 {
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
+
+  DBG ("Shortcut added signal: %s", shortcut);
+
   xfwm_settings_reload_shortcuts (settings);
 }
 
@@ -1742,6 +1745,9 @@ xfwm_settings_shortcut_removed (XfceShortcutsProvider *provider,
                                 XfwmSettings          *settings)
 {
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
+
+  DBG ("Shortcut removed signal: %s", shortcut);
+
   xfwm_settings_reload_shortcuts (settings);
 }
 
@@ -1791,6 +1797,10 @@ xfwm_settings_shortcut_clear_clicked (GtkButton    *button,
 
               /* Remove keyboard shortcut via xfconf */
               xfce_shortcuts_provider_reset_shortcut (settings->priv->provider, shortcut);
+
+              gtk_list_store_set (GTK_LIST_STORE (model), &tree_iter,
+                                  SHORTCUTS_SHORTCUT_COLUMN, NULL,
+                                  SHORTCUTS_SHORTCUT_LABEL_COLUMN, NULL, -1);
 
               /* Free shortcut string */
               g_free (shortcut);
