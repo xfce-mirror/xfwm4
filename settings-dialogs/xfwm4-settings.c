@@ -1844,24 +1844,6 @@ xfwm_settings_shortcut_reset_clicked (GtkButton    *button,
 
 
 
-static const gchar *
-xfwm_settings_shortcut_feature_name (const gchar *feature)
-{
-  const gchar *result = feature;
-  gint         i;
-
-  for (i = 0; xfwm4_shortcut_values[i].name != NULL; ++i)
-    if (G_UNLIKELY (g_str_equal (xfwm4_shortcut_values[i].feature, feature)))
-      {
-        result = xfwm4_shortcut_values[i].name;
-        break;
-      }
-
-  return result;
-}
-
-
-
 static gboolean
 xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
                                  const gchar         *shortcut,
@@ -1913,8 +1895,8 @@ xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
                                                     xfce_shortcuts_provider_get_name (settings->priv->provider),
                                                     xfce_shortcuts_provider_get_name (other_provider),
                                                     shortcut,
-                                                    xfce_shortcut_dialog_get_action_name (dialog),
-                                                    xfwm_settings_shortcut_feature_name (other_shortcut->command),
+                                                    xfce_shortcut_dialog_get_action (dialog),
+                                                    other_shortcut->command,
                                                     FALSE);
 
           if (G_UNLIKELY (response == GTK_RESPONSE_ACCEPT))
