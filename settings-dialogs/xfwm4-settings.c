@@ -1909,7 +1909,8 @@ xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
     {
       if (G_LIKELY (!g_str_equal (xfce_shortcut_dialog_get_action (dialog), other_shortcut->command)))
         {
-          response = xfce_shortcut_conflict_dialog (xfce_shortcuts_provider_get_name (settings->priv->provider),
+          response = xfce_shortcut_conflict_dialog (GTK_WINDOW (dialog),
+                                                    xfce_shortcuts_provider_get_name (settings->priv->provider),
                                                     xfce_shortcuts_provider_get_name (other_provider),
                                                     shortcut,
                                                     xfce_shortcut_dialog_get_action_name (dialog),
