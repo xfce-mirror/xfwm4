@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-24 07:42+0000\n"
-"PO-Revision-Date: 2012-12-24 14:25+0200\n"
+"PO-Revision-Date: 2012-12-24 15:40+0200\n"
 "Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -1017,7 +1017,7 @@ msgstr "Напиши \"%s --help\" за използване."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
-msgstr "Максимизира"
+msgstr "Максимизиране"
 
 #: ../src/menu.c:44
 #, fuzzy
@@ -1035,7 +1035,7 @@ msgstr "Минимизиране на всички останали прозор
 
 #: ../src/menu.c:47
 msgid "S_how"
-msgstr "Показва"
+msgstr "Показване"
 
 #: ../src/menu.c:48
 msgid "_Move"
@@ -1088,7 +1088,7 @@ msgstr "Винаги на видимият работен плот"
 
 #: ../src/menu.c:61
 msgid "Only on This Workspace"
-msgstr "Винаги на това работно място"
+msgstr "Само на това работно място"
 
 #: ../src/menu.c:62
 #, fuzzy
@@ -1098,16 +1098,16 @@ msgstr "Новите прозорци се фокусират"
 #. --------------------------------------------------------
 #: ../src/menu.c:64
 msgid "_Close"
-msgstr "Затваря"
+msgstr "Затваряне"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:67
 msgid "Destroy"
-msgstr "Унищожава"
+msgstr "Унищожаване"
 
 #: ../src/menu.c:70
 msgid "_Quit"
-msgstr "Край"
+msgstr "изход"
 
 #: ../src/menu.c:71
 msgid "Restart"
@@ -1116,12 +1116,12 @@ msgstr "Рестартиране"
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: GtkМенюто не успя да хване показалеца\n"
 
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr ""
+msgstr "%s: Не може да се определи цвета %s\n"
 
 #: ../src/settings.c:275
 #, c-format
