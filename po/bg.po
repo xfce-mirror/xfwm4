@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-24 07:42+0000\n"
-"PO-Revision-Date: 2012-12-25 14:15+0200\n"
+"PO-Revision-Date: 2012-12-25 14:40+0200\n"
 "Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -251,34 +251,28 @@ msgid "Minimize"
 msgstr "Минимизиране"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr ""
-"Повдига прозореца когато се натисне\n"
-"в прозореца на приложението"
+msgstr "Повдигане на прозореца, когато кликвате в прозореца на приложението"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Shade"
 msgstr "Сянка"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#, fuzzy
 msgid "Snap windows to other _windows"
-msgstr "Прилеплва прозорците до другите прозорци"
+msgstr "Прилепва прозорците до други прозорци"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr "Прилепва прозорците по границата на екрана"
+msgstr "Прилепва прозорците по краищата на екрана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Stick"
 msgstr "Забодено"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Действие което да се извърши при двойно натискане на заглавната лента"
+msgstr "Действие да се извърши при двойно кликване върху заглавната лента"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "The window title cannot be removed"
@@ -289,19 +283,16 @@ msgid "Title"
 msgstr "Заглавие"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Превклюва работните места когато се изтегля прозорец извън екрана"
+msgstr "Превключва работните места, когато се изтегля прозорец извън екрана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Превключва работните места когато курсора достигне края на екрана"
+msgstr "Превключва работните места, когато курсорът достигне края на екрана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "Изчакване преди да се повдигне фокусирания прозорец :"
+msgstr "Забавяне, преди да се фокусира прозорец:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
@@ -379,14 +370,12 @@ msgid "Cycle windows"
 msgstr "Циклични прозорци"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "Скрива прозореца"
+msgstr "Циклични прозорци  (Срещуположни)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "Новите прозорци се фокусират"
+msgstr "Включване на прозорец за определена програма"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
@@ -397,54 +386,44 @@ msgid "Close window"
 msgstr "Затвори прозореца"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
-#, fuzzy
 msgid "Maximize window horizontally"
-msgstr "Максимизира прозореца"
+msgstr "Максимизиране на прозореца хоризонтално"
 
 #: ../settings-dialogs/xfwm4-settings.c:248
-#, fuzzy
 msgid "Maximize window vertically"
-msgstr "Максимизира прозореца"
+msgstr "Максимизиране на прозореца вертикално"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
-#, fuzzy
 msgid "Move window"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
 msgid "Resize window"
-msgstr "Скрива прозореца"
+msgstr "Преоразмеряване на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
-#, fuzzy
 msgid "Stick window"
-msgstr "Скрива прозореца"
+msgstr "Прилепване на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
-#, fuzzy
 msgid "Raise window"
-msgstr "Скрива прозореца"
+msgstr "Вдигане на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
-#, fuzzy
 msgid "Lower window"
-msgstr "Скрива прозореца"
+msgstr "Сваляне на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Скрива прозореца"
+msgstr "Повдигане или сваляне на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "Максимизира прозореца"
+msgstr "Изпълване на прозореца хоризонтално"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "Максимизира прозореца"
+msgstr "Изпълване на прозореца вертикално"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
@@ -455,213 +434,172 @@ msgid "Toggle fullscreen"
 msgstr "Превключване в режим на цял екран"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
-#, fuzzy
 msgid "Move window to upper workspace"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца в горната част на работното място"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
-#, fuzzy
 msgid "Move window to bottom workspace"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца в долната част на работното място"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
-#, fuzzy
 msgid "Move window to left workspace"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца в лявата част на работното място"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
-#, fuzzy
 msgid "Move window to right workspace"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца в дясната част на работното място"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
-#, fuzzy
 msgid "Move window to previous workspace"
-msgstr "Превключване на работните места"
+msgstr "Преместване на прозореца на предишното работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
-#, fuzzy
 msgid "Move window to next workspace"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на следващото работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на прозореца на работно място 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Новите прозорци се фокусират"
+msgstr "Заглавието на прозореца отгоре"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Новите прозорци се фокусират"
+msgstr "Заглавието на прозореца отдолу"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Скрива прозореца"
+msgstr "Заглавието на прозореца вляво"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Скрива прозореца"
+msgstr "Заглавието на прозореца вдясно"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
 msgstr "Покажи работният плот"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
-#, fuzzy
 msgid "Upper workspace"
-msgstr "Превключване на работните места"
+msgstr "Горната част на работното място"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
-#, fuzzy
 msgid "Bottom workspace"
-msgstr "Превключване на работните места"
+msgstr "Долната част на работното място"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
-#, fuzzy
 msgid "Left workspace"
-msgstr "Превключване на работните места"
+msgstr "Лявата част на работното място"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
-#, fuzzy
 msgid "Right workspace"
-msgstr "Превключване на работните места"
+msgstr "Дясната част на работното място"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
-#, fuzzy
 msgid "Previous workspace"
-msgstr "Превключване на работните места"
+msgstr "Предишното работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
-#, fuzzy
 msgid "Next workspace"
-msgstr "Превключване на работните места"
+msgstr "Следващото работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
 msgid "Workspace 1"
-msgstr "Работно място %i"
+msgstr "Работно място 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
 msgid "Workspace 2"
-msgstr "Работно място %i"
+msgstr "Работно място 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
 msgid "Workspace 3"
-msgstr "Работно място %i"
+msgstr "Работно място 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
 msgid "Workspace 4"
-msgstr "Работно място %i"
+msgstr "Работно място 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
 msgid "Workspace 5"
-msgstr "Работно място %i"
+msgstr "Работно място 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
-#, fuzzy
 msgid "Workspace 6"
-msgstr "Работно място %i"
+msgstr "Работно място 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
 msgid "Workspace 7"
-msgstr "Работно място %i"
+msgstr "Работно място 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-#, fuzzy
 msgid "Workspace 8"
-msgstr "Работно място %i"
+msgstr "Работно място 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
-#, fuzzy
 msgid "Workspace 9"
-msgstr "Работно място %i"
+msgstr "Работно място 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:301
-#, fuzzy
 msgid "Workspace 10"
-msgstr "Работно място %i"
+msgstr "Работно място 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
-#, fuzzy
 msgid "Workspace 11"
-msgstr "Работно място %i"
+msgstr "Работно място 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:303
-#, fuzzy
 msgid "Workspace 12"
-msgstr "Работно място %i"
+msgstr "Работно място 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:304
-#, fuzzy
 msgid "Add workspace"
-msgstr "Превключване на работните места"
+msgstr "Добавяне на работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:305
 #, fuzzy
