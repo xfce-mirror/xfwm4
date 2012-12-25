@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-24 07:42+0000\n"
-"PO-Revision-Date: 2012-12-24 15:40+0200\n"
+"PO-Revision-Date: 2012-12-25 14:15+0200\n"
 "Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -65,14 +65,13 @@ msgstr ""
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "Работно място %i"
+msgstr "Работно място  %d"
 
 #: ../settings-dialogs/workspace-settings.c:275
-#, fuzzy
 msgid "Workspace Name"
-msgstr "Граница на работно място"
+msgstr "Име на работното място"
 
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
@@ -81,9 +80,8 @@ msgstr "Контакт с мениджъра на настройките"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Показва съдържанието на прозорците при промяна на размера"
+msgstr "Конфигурира поведението на прозорците и преките пътища"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
@@ -92,15 +90,13 @@ msgstr "Мениджър на прозорци"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Показва съдържанието на прозорците при промяна на размера"
+msgstr "Финна настройка на поведението на прозорците и ефектите"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
 msgid "Window Manager Tweaks"
-msgstr "Мениджър на прозорци"
+msgstr "Мениджър на прозорци - Подреждане"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -109,74 +105,60 @@ msgstr "Конфигуриране на уведомленията, именат
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Workspaces"
-msgstr "Работно място %i"
+msgstr "Работни места"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "Непрозрачно местене и промяна на размера"
+msgstr "<b>Кутия за преместване и преоразмеряване</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "Разположение на бутоните"
+msgstr "<b>Оформление на бутон</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "Действие при двойно натискане"
+msgstr "<b>Двойно кликване за действие</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "Тип на фокуса"
+msgstr "<b>Тип фокус</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "Новите прозорци се фокусират"
+msgstr "<b>Нов фокус на прозорец</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "Повдигане при натискане"
+msgstr "<b>Повдигане при кликване</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "Повдига при фокусиране"
+msgstr "<b>Издига на фокус</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "Подравнение на заглавието"
+msgstr "<b>Подравняване на заглавието</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "Шрифт на заглавието"
+msgstr "<b>Шрифт на заглавието</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "Новите прозорци се фокусират"
+msgstr "<b>Прозорец с преки пътища</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "Прилепване на прозорците"
+msgstr "<b>Прилепване на прозорците</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "Превключване на работните места"
+msgstr "<b>Превключване на работните места</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "<b>_Theme</b>"
-msgstr "Подравнение на заглавието"
+msgstr "<b>Тема</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
@@ -192,43 +174,33 @@ msgstr "<i>Късо</i>"
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "Малко"
+msgstr "<i>Малък</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "Разстояние :"
+msgstr "<i>Широчина</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Active"
 msgstr "Активен"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "Допълнителни"
+msgstr "За напреднали"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
-"Автоматично повдига прозорците·\n"
-"когато се фокусират"
+msgstr "Автоматично повдигане на прозорците, когато се фокусират"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
-msgstr ""
-"Автоматично се фокусират\n"
-"новосъздадените прозорци"
+msgstr "Автоматично фокусиране на новосъздадени прозорци"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "Натискане за фокус"
+msgstr "Кликване за фокус"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
@@ -239,38 +211,32 @@ msgid "Close"
 msgstr "Затваряне"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "Изчакване преди да се повдигне фокусирания прозорец :"
+msgstr "Изчакване, преди да се повдигне фокусираният прозорец:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "Разстояние :"
+msgstr "Разстояние:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "Фокуса следва мишката"
+msgstr "Фокусът следва мишката"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Hidden"
 msgstr "Скрит"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "Показва·съдържанието·на·прозорците·при местене"
+msgstr "Скрива·съдържанието·на·прозорците·при преместване"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "Показва съдържанието на прозорците при промяна на размера"
+msgstr "Скрива съдържанието на прозорците, когато се повдигнат"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "Клавишни комбинации"
+msgstr "Клавиатура"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
@@ -281,9 +247,8 @@ msgid "Menu"
 msgstr "Меню"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Minimize"
-msgstr "Максимизира"
+msgstr "Минимизиране"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
@@ -339,24 +304,21 @@ msgid "_Delay before window receives focus:"
 msgstr "Изчакване преди да се повдигне фокусирания прозорец :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "Съпротивление по краищата :"
+msgstr "Съпротивление по краищата:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "_Focus"
-msgstr "Тип на фокуса"
+msgstr "Фокус"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
 msgstr "Възстановяване на настройки по подразбиране"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#, fuzzy
 msgid "_Style"
-msgstr "Заглавие"
+msgstr "Стил"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -375,9 +337,8 @@ msgstr "Максимизира прозореца"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
 msgid "Fill window"
-msgstr "Скрива прозореца"
+msgstr "Изпълване на прозореца"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -414,9 +375,8 @@ msgid "Cancel"
 msgstr "Затваряне"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
-#, fuzzy
 msgid "Cycle windows"
-msgstr "Скрива прозореца"
+msgstr "Циклични прозорци"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
 #, fuzzy
@@ -433,9 +393,8 @@ msgid "Switch application"
 msgstr "Смяна на приложението"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
-#, fuzzy
 msgid "Close window"
-msgstr "Скрива прозореца"
+msgstr "Затвори прозореца"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 #, fuzzy
