@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-24 07:42+0000\n"
-"PO-Revision-Date: 2012-12-25 14:40+0200\n"
+"PO-Revision-Date: 2012-12-25 15:06+0200\n"
 "Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Този прозорец вероятно е зает и не отговаря. Изкате ли да спрете програмата?"
+msgstr "Този прозорец вероятно е зает и не отговаря. Искате ли да спрете програмата?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -602,19 +602,16 @@ msgid "Add workspace"
 msgstr "Добавяне на работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:305
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "Превключване на работните места"
+msgstr "Добавяне на съседно работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:306
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "Превключване на работните места"
+msgstr "Изтриване на последното работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:307
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "Превключване на работните места"
+msgstr "изтриване на активното работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
@@ -625,9 +622,8 @@ msgid "Action"
 msgstr "Действие"
 
 #: ../settings-dialogs/xfwm4-settings.c:607
-#, fuzzy
 msgid "Shortcut"
-msgstr "Клавишни комбинации"
+msgstr "Пряк път"
 
 #: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
@@ -669,38 +665,32 @@ msgid "At the _center of the screen"
 msgstr "В центъра на екрана"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
-"Автоматично повдига прозорците·\n"
-"когато се фокусират"
+msgstr "Автоматично показва прозорците като плочки, когато се преместват към ръба на екрана"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "By default, place windows:"
 msgstr "По подразбиране, поставете прозорците:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
 msgid "C_ompositor"
-msgstr "Клавишни комбинации"
+msgstr "Композитор"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
 msgstr "Въртене"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "Новите прозорци се фокусират"
+msgstr "Превъртане през прозорците на всички работни места"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Display _fullscreen overlay windows directly"
 msgstr "Показване на цял екран с пряко наслагване на прозорците"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
 msgid "Do _nothing"
-msgstr "Нищо"
+msgstr "Не прави нищо"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Hide _frame of windows when maximized"
@@ -723,34 +713,28 @@ msgid "Notify of _urgency by making window's decoration blink"
 msgstr "При спешни уведомления, декорацията на прозорците да премигва"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "Показва съдържанието на прозорците при промяна на размера"
+msgstr "Непрозрачност на декорацията на прозорците:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "Показва·съдържанието·на·прозорците·при местене"
+msgstr "Непрозрачност на неактивните прозорци:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "Показва·съдържанието·на·прозорците·при местене"
+msgstr "Непрозрачност на изкачащите прозорци:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "Показва·съдържанието·на·прозорците·при местене"
+msgstr "Непрозрачност на прозорците при преместване:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "Показва съдържанието на прозорците при промяна на размера"
+msgstr "Непрозрачност на прозорците при преоразмеряване:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Показва·съдържанието·на·прозорците·при местене"
+msgstr "Възстановяване на оригиналният размер на максимизираните прозорци при преместване "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _dock windows"
@@ -765,9 +749,8 @@ msgid "Show shadows under pop_up windows"
 msgstr "Покажи сенки под изкачащите прозорци"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
 msgid "Switch to win_dow's workspace"
-msgstr "Новите прозорци се фокусират"
+msgstr "Превключване между прозорците на работните места"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Under the mouse _pointer"
@@ -790,18 +773,16 @@ msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Прихващане на работните места в зависимост от действителното местоположение на работният плот"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-#, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Превключва работните места когато курсора достигне края на екрана"
+msgstr "Застъпване на прозорците, когато е достигнато първото и последното работно място"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Accessibility"
 msgstr "Достъпност"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "Новите прозорци се фокусират"
+msgstr "Докарване на прозореца до текущото работно място"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Draw frame around selected windows while cycling"
@@ -842,9 +823,8 @@ msgstr ""
 "or \"skip taskbar\" в настройките си"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
-#, fuzzy
 msgid "_Workspaces"
-msgstr "Работно място %i"
+msgstr "Работни места"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Layout"
@@ -863,14 +843,12 @@ msgid "_General"
 msgstr "Основен"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-#, fuzzy
 msgid "_Margins"
-msgstr "Повдига при фокусиране"
+msgstr "Граници"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "Превключване на работните места"
+msgstr "Номер на работните места:"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -895,9 +873,8 @@ msgid "Set the compositor mode (not supported)"
 msgstr "Задаване режим на композиране (не се поддържа)"
 
 #: ../src/main.c:549
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Мениджър на прозорци"
+msgstr "Заменяне на съществуващ мениджър на прозорци"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
@@ -917,14 +894,12 @@ msgid "Ma_ximize"
 msgstr "Максимизиране"
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "Смалява"
+msgstr "Демаксимизиране"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "Максимизира"
+msgstr "Минимизиране"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
@@ -948,23 +923,20 @@ msgid "Always on Top"
 msgstr "Винаги отгоре"
 
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "Прилеплва прозорците до другите прозорци"
+msgstr "Също като другите прозорци"
 
 #: ../src/menu.c:53
 msgid "Always Below Other Windows"
 msgstr "Винаги под останалите прозорци"
 
 #: ../src/menu.c:54
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "Скрива прозореца"
+msgstr "Завъртане на прозореца нагоре"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "Новите прозорци се фокусират"
+msgstr "Завъртане на прозореца надолу"
 
 #: ../src/menu.c:56
 msgid "_Fullscreen"
@@ -988,9 +960,8 @@ msgid "Only on This Workspace"
 msgstr "Само на това работно място"
 
 #: ../src/menu.c:62
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "Новите прозорци се фокусират"
+msgstr "Преместване на друго работно място"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
