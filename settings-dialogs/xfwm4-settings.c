@@ -175,6 +175,8 @@ static void       xfwm_settings_shortcut_added                       (XfceShortc
 static void       xfwm_settings_shortcut_removed                     (XfceShortcutsProvider *provider,
                                                                       const gchar           *shortcut,
                                                                       XfwmSettings          *settings);
+static void       xfwm_settings_shortcut_edit_clicked                (GtkButton             *button,
+                                                                      XfwmSettings          *settings);
 static void       xfwm_settings_shortcut_clear_clicked               (GtkButton             *button,
                                                                       XfwmSettings          *settings);
 static void       xfwm_settings_shortcut_reset_clicked               (GtkButton             *button,
@@ -326,6 +328,7 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *hidden_frame;
   GtkWidget          *hidden_box;
   GtkWidget          *shortcuts_treeview;
+  GtkWidget          *shortcuts_edit_button;
   GtkWidget          *shortcuts_clear_button;
   GtkWidget          *shortcuts_reset_button;
   GtkWidget          *focus_delay_scale;
@@ -498,6 +501,8 @@ xfwm_settings_constructed (GObject *object)
 
   /* Keyboard tab widgets */
   shortcuts_treeview = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
+  shortcuts_edit_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                       "shortcuts_edit_button"));
   shortcuts_clear_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
                                        "shortcuts_clear_button"));
   shortcuts_reset_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
@@ -532,6 +537,8 @@ xfwm_settings_constructed (GObject *object)
   }
 
   /* Connect to shortcut buttons */
+  g_signal_connect (shortcuts_edit_button, "clicked",
+                    G_CALLBACK (xfwm_settings_shortcut_edit_clicked), settings);
   g_signal_connect (shortcuts_clear_button, "clicked",
                     G_CALLBACK (xfwm_settings_shortcut_clear_clicked), settings);
   g_signal_connect (shortcuts_reset_button, "clicked",
@@ -1749,6 +1756,57 @@ xfwm_settings_shortcut_removed (XfceShortcutsProvider *provider,
   DBG ("Shortcut removed signal: %s", shortcut);
 
   xfwm_settings_reload_shortcuts (settings);
+}
+
+
+
+static void
+xfwm_settings_shortcut_edit_clicked (GtkButton    *button,
+                                     XfwmSettings *settings)
+{
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model;
+  GtkTreePath      *path;
+  GtkTreeIter       tree_iter;
+  GtkWidget        *view;
+  GList            *rows;
+  GList            *iter;
+  GList            *row_references = NULL;
+  gchar            *shortcut;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
+
+  view = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  rows = gtk_tree_selection_get_selected_rows (selection, &model);
+
+  for (iter = g_list_first (rows); iter != NULL; iter = g_list_next (iter))
+    {
+      row_references = g_list_append (row_references,
+                                      gtk_tree_row_reference_new (model, iter->data));
+    }
+
+  for (iter = g_list_first (row_references); iter != NULL; iter = g_list_next (iter))
+    {
+      path = gtk_tree_row_reference_get_path (iter->data);
+
+      /* Use the row-activated callback to manage the shortcut editing */
+      xfwm_settings_shortcut_row_activated (GTK_TREE_VIEW (view),
+                                            path, NULL,
+                                            settings);
+
+      gtk_tree_path_free (path);
+    }
+
+  /* Free row reference list */
+  g_list_foreach (row_references, (GFunc) gtk_tree_row_reference_free, NULL);
+  g_list_free (row_references);
+
+  /* Free row list */
+  g_list_foreach (rows, (GFunc) gtk_tree_path_free, NULL);
+  g_list_free (rows);
 }
 
 
