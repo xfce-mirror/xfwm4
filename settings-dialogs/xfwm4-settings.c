@@ -43,7 +43,7 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4kbd-private/xfce-shortcut-dialog.h>
 #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
-#include <libxfce4kbd-private/xfwm4-shortcut-values.h>
+#include <libxfce4kbd-private/xfce-shortcuts-xfwm4.h>
 
 #include "xfwm4-dialog_ui.h"
 #include "xfwm4-settings.h"
@@ -1621,7 +1621,7 @@ xfwm_settings_initialize_shortcuts (XfwmSettings *settings)
   GtkTreeModel *model;
   GtkTreeIter   iter;
   GtkWidget    *view;
-  gint          i;
+  GList        *feature_list;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
   g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
@@ -1631,13 +1631,21 @@ xfwm_settings_initialize_shortcuts (XfwmSettings *settings)
 
   gtk_list_store_clear (GTK_LIST_STORE (model));
 
-  for (i = 0; xfwm4_shortcut_values[i].name != NULL; ++i)
+  if (feature_list = xfce_shortcuts_xfwm4_get_feature_list ())
     {
-      gtk_list_store_append (GTK_LIST_STORE (model), &iter);
-      gtk_list_store_set (GTK_LIST_STORE (model), &iter,
-                          SHORTCUTS_NAME_COLUMN, _(xfwm4_shortcut_values[i].name),
-                          SHORTCUTS_FEATURE_COLUMN, xfwm4_shortcut_values[i].feature,
-                          -1);
+      GList *l;
+
+      for (l = g_list_first (feature_list); l != NULL; l = g_list_next (l))
+        {
+          gtk_list_store_append (GTK_LIST_STORE (model), &iter);
+          gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+                              SHORTCUTS_NAME_COLUMN,
+                              xfce_shortcuts_xfwm4_get_feature_name (l->data),
+                              SHORTCUTS_FEATURE_COLUMN, l->data,
+                              -1);
+        }
+
+      g_list_free (feature_list);
     }
 }
 
