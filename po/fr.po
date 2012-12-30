@@ -398,7 +398,6 @@ msgid "<i>Transparent</i>"
 msgstr "<i>Transparent</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-#, fuzzy
 msgid "Activate foc_us stealing prevention"
 msgstr "Activer la prévention de vol de _focalisation"
 
@@ -483,7 +482,6 @@ msgstr ""
 "déplacement"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
