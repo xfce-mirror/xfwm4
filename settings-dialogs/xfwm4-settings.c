@@ -175,6 +175,10 @@ static void       xfwm_settings_shortcut_added                       (XfceShortc
 static void       xfwm_settings_shortcut_removed                     (XfceShortcutsProvider *provider,
                                                                       const gchar           *shortcut,
                                                                       XfwmSettings          *settings);
+static gboolean   xfwm_settings_update_treeview_on_conflict_replace  (GtkTreeModel          *model,
+                                                                      GtkTreePath           *path,
+                                                                      GtkTreeIter           *iter,
+                                                                      gpointer               shortcut_to_erase);
 static void       xfwm_settings_shortcut_edit_clicked                (GtkButton             *button,
                                                                       XfwmSettings          *settings);
 static void       xfwm_settings_shortcut_clear_clicked               (GtkButton             *button,
@@ -1909,6 +1913,35 @@ xfwm_settings_shortcut_reset_clicked (GtkButton    *button,
 
 
 static gboolean
+xfwm_settings_update_treeview_on_conflict_replace (GtkTreeModel *model,
+                                                   GtkTreePath  *path,
+                                                   GtkTreeIter  *iter,
+                                                   gpointer      shortcut_to_erase)
+{
+  gchar *shortcut;
+
+  gtk_tree_model_get (model, iter, SHORTCUTS_SHORTCUT_COLUMN, &shortcut, -1);
+
+  if (g_strcmp0 (shortcut_to_erase, shortcut) == 0)
+    {
+      /* We found the iter for which we want to erase the shortcut value */
+      /* Let's do it! */
+      gtk_list_store_set (GTK_LIST_STORE (model), iter,
+                          SHORTCUTS_SHORTCUT_COLUMN, NULL,
+                          SHORTCUTS_SHORTCUT_LABEL_COLUMN, NULL, -1);
+
+      g_free (shortcut);
+
+      return TRUE;
+    }
+
+  g_free (shortcut);
+
+  return FALSE;
+}
+
+
+static gboolean
 xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
                                  const gchar         *shortcut,
                                  XfwmSettings        *settings)
@@ -1964,7 +1997,17 @@ xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
                                                     FALSE);
 
           if (G_UNLIKELY (response == GTK_RESPONSE_ACCEPT))
-            xfce_shortcuts_provider_reset_shortcut (other_provider, shortcut);
+            {
+              GObject *view;
+
+              xfce_shortcuts_provider_reset_shortcut (other_provider, shortcut);
+
+              /* We need to update the treeview to erase the shortcut value */
+              view = gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview");
+              gtk_tree_model_foreach (gtk_tree_view_get_model (GTK_TREE_VIEW (view)),
+                                      xfwm_settings_update_treeview_on_conflict_replace,
+                                      (gpointer) shortcut);
+            }
           else
             accepted = FALSE;
         }
