@@ -1767,12 +1767,10 @@ xfwm_settings_shortcut_edit_clicked (GtkButton    *button,
   GtkTreeSelection *selection;
   GtkTreeModel     *model;
   GtkTreePath      *path;
-  GtkTreeIter       tree_iter;
   GtkWidget        *view;
   GList            *rows;
   GList            *iter;
   GList            *row_references = NULL;
-  gchar            *shortcut;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
   g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
