@@ -43,19 +43,21 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4kbd-private/xfce-shortcut-dialog.h>
 #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
+#include <libxfce4kbd-private/xfce-shortcuts-xfwm4.h>
 
 #include "xfwm4-dialog_ui.h"
 #include "xfwm4-settings.h"
 
 
 
-#define DEFAULT_THEME             "Default"
+#define DEFAULT_THEME                   "Default"
 
-#define INDICATOR_SIZE            9
+#define INDICATOR_SIZE                  9
 
-#define SHORTCUTS_NAME_COLUMN     0
-#define SHORTCUTS_FEATURE_COLUMN  1
-#define SHORTCUTS_SHORTCUT_COLUMN 2
+#define SHORTCUTS_NAME_COLUMN           0
+#define SHORTCUTS_FEATURE_COLUMN        1
+#define SHORTCUTS_SHORTCUT_COLUMN       2
+#define SHORTCUTS_SHORTCUT_LABEL_COLUMN 3
 
 
 
@@ -65,8 +67,7 @@
 
 
 
-typedef struct _MenuTemplate     MenuTemplate;
-typedef struct _ShortcutTemplate ShortcutTemplate;
+typedef struct _MenuTemplate            MenuTemplate;
 
 
 
@@ -174,6 +175,12 @@ static void       xfwm_settings_shortcut_added                       (XfceShortc
 static void       xfwm_settings_shortcut_removed                     (XfceShortcutsProvider *provider,
                                                                       const gchar           *shortcut,
                                                                       XfwmSettings          *settings);
+static gboolean   xfwm_settings_update_treeview_on_conflict_replace  (GtkTreeModel          *model,
+                                                                      GtkTreePath           *path,
+                                                                      GtkTreeIter           *iter,
+                                                                      gpointer               shortcut_to_erase);
+static void       xfwm_settings_shortcut_edit_clicked                (GtkButton             *button,
+                                                                      XfwmSettings          *settings);
 static void       xfwm_settings_shortcut_clear_clicked               (GtkButton             *button,
                                                                       XfwmSettings          *settings);
 static void       xfwm_settings_shortcut_reset_clicked               (GtkButton             *button,
@@ -196,13 +203,6 @@ struct _MenuTemplate
 {
   const gchar *name;
   const gchar *value;
-};
-
-struct _ShortcutTemplate
-{
-  const gchar *name;
-  const gchar *feature;
-  const gchar *shortcut;
 };
 
 enum
@@ -232,81 +232,7 @@ static const MenuTemplate title_align_values[] = {
   { NULL, NULL },
 };
 
-static const ShortcutTemplate shortcut_values[] = {
-  { N_("Window operations menu"), "popup_menu_key", NULL },
-  { N_("Up"), "up_key", NULL },
-  { N_("Down"), "down_key", NULL },
-  { N_("Left"), "left_key", NULL },
-  { N_("Right"), "right_key", NULL },
-  { N_("Cancel"), "cancel_key", NULL },
-  { N_("Cycle windows"), "cycle_windows_key", NULL },
-  { N_("Cycle windows (Reverse)"), "cycle_reverse_windows_key", NULL },
-  { N_("Switch window for same application"), "switch_window_key", NULL },
-  { N_("Switch application"), "switch_application_key", NULL },
-  { N_("Close window"), "close_window_key", NULL },
-  { N_("Maximize window horizontally"), "maximize_horiz_key", NULL },
-  { N_("Maximize window vertically"), "maximize_vert_key", NULL },
-  { N_("Maximize window"), "maximize_window_key", NULL },
-  { N_("Hide window"), "hide_window_key", NULL },
-  { N_("Move window"), "move_window_key", NULL },
-  { N_("Resize window"), "resize_window_key", NULL },
-  { N_("Shade window"), "shade_window_key", NULL },
-  { N_("Stick window"), "stick_window_key", NULL },
-  { N_("Raise window"), "raise_window_key", NULL },
-  { N_("Lower window"), "lower_window_key", NULL },
-  { N_("Raise or lower window"), "raiselower_window_key", NULL },
-  { N_("Fill window"), "fill_window_key", NULL },
-  { N_("Fill window horizontally"), "fill_horiz_key", NULL },
-  { N_("Fill window vertically"), "fill_vert_key", NULL },
-  { N_("Toggle above"), "above_key", NULL },
-  { N_("Toggle fullscreen"), "fullscreen_key", NULL },
-  { N_("Move window to upper workspace"), "move_window_up_workspace_key", NULL },
-  { N_("Move window to bottom workspace"), "move_window_down_workspace_key", NULL },
-  { N_("Move window to left workspace"), "move_window_left_workspace_key", NULL },
-  { N_("Move window to right workspace"), "move_window_right_workspace_key", NULL },
-  { N_("Move window to previous workspace"), "move_window_prev_workspace_key", NULL },
-  { N_("Move window to next workspace"), "move_window_next_workspace_key", NULL },
-  { N_("Move window to workspace 1"), "move_window_workspace_1_key", NULL, },
-  { N_("Move window to workspace 2"), "move_window_workspace_2_key", NULL, },
-  { N_("Move window to workspace 3"), "move_window_workspace_3_key", NULL, },
-  { N_("Move window to workspace 4"), "move_window_workspace_4_key", NULL, },
-  { N_("Move window to workspace 5"), "move_window_workspace_5_key", NULL, },
-  { N_("Move window to workspace 6"), "move_window_workspace_6_key", NULL, },
-  { N_("Move window to workspace 7"), "move_window_workspace_7_key", NULL, },
-  { N_("Move window to workspace 8"), "move_window_workspace_8_key", NULL, },
-  { N_("Move window to workspace 9"), "move_window_workspace_9_key", NULL, },
-  { N_("Move window to workspace 10"), "move_window_workspace_10_key", NULL, },
-  { N_("Move window to workspace 11"), "move_window_workspace_11_key", NULL, },
-  { N_("Move window to workspace 12"), "move_window_workspace_12_key", NULL, },
-  { N_("Tile window to the top"), "tile_up_key", NULL, },
-  { N_("Tile window to the bottom"), "tile_down_key", NULL, },
-  { N_("Tile window to the left"), "tile_left_key", NULL, },
-  { N_("Tile window to the right"), "tile_right_key", NULL, },
-  { N_("Show desktop"), "show_desktop_key", NULL },
-  { N_("Upper workspace"), "up_workspace_key", NULL },
-  { N_("Bottom workspace"), "down_workspace_key", NULL },
-  { N_("Left workspace"), "left_workspace_key", NULL },
-  { N_("Right workspace"), "right_workspace_key", NULL },
-  { N_("Previous workspace"), "prev_workspace_key", NULL },
-  { N_("Next workspace"), "next_workspace_key", NULL },
-  { N_("Workspace 1"), "workspace_1_key", NULL, },
-  { N_("Workspace 2"), "workspace_2_key", NULL, },
-  { N_("Workspace 3"), "workspace_3_key", NULL, },
-  { N_("Workspace 4"), "workspace_4_key", NULL, },
-  { N_("Workspace 5"), "workspace_5_key", NULL, },
-  { N_("Workspace 6"), "workspace_6_key", NULL, },
-  { N_("Workspace 7"), "workspace_7_key", NULL, },
-  { N_("Workspace 8"), "workspace_8_key", NULL, },
-  { N_("Workspace 9"), "workspace_9_key", NULL, },
-  { N_("Workspace 10"), "workspace_10_key", NULL, },
-  { N_("Workspace 11"), "workspace_11_key", NULL, },
-  { N_("Workspace 12"), "workspace_12_key", NULL, },
-  { N_("Add workspace"), "add_workspace_key", NULL },
-  { N_("Add adjacent workspace"), "add_adjacent_workspace_key", NULL },
-  { N_("Delete last workspace"), "del_workspace_key", NULL },
-  { N_("Delete active workspace"), "del_active_workspace_key", NULL },
-  { NULL, NULL, NULL }
-};
+
 
 static gboolean           opt_version = FALSE;
 static GdkNativeWindow    opt_socket_id = 0;
@@ -406,6 +332,7 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *hidden_frame;
   GtkWidget          *hidden_box;
   GtkWidget          *shortcuts_treeview;
+  GtkWidget          *shortcuts_edit_button;
   GtkWidget          *shortcuts_clear_button;
   GtkWidget          *shortcuts_reset_button;
   GtkWidget          *focus_delay_scale;
@@ -578,6 +505,8 @@ xfwm_settings_constructed (GObject *object)
 
   /* Keyboard tab widgets */
   shortcuts_treeview = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
+  shortcuts_edit_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
+                                       "shortcuts_edit_button"));
   shortcuts_clear_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
                                        "shortcuts_clear_button"));
   shortcuts_reset_button = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
@@ -593,7 +522,7 @@ xfwm_settings_constructed (GObject *object)
     gtk_tree_selection_set_mode (gtk_tree_view_get_selection (GTK_TREE_VIEW (shortcuts_treeview)),
                                  GTK_SELECTION_MULTIPLE);
 
-    list_store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    list_store = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
     gtk_tree_view_set_model (GTK_TREE_VIEW (shortcuts_treeview), GTK_TREE_MODEL (list_store));
     g_object_unref (G_OBJECT (list_store));
 
@@ -605,13 +534,15 @@ xfwm_settings_constructed (GObject *object)
     renderer = gtk_cell_renderer_text_new ();
     gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (shortcuts_treeview),
                                                  1, _("Shortcut"), renderer,
-                                                 "text", SHORTCUTS_SHORTCUT_COLUMN, NULL);
+                                                 "text", SHORTCUTS_SHORTCUT_LABEL_COLUMN, NULL);
 
     g_signal_connect (shortcuts_treeview, "row-activated",
                       G_CALLBACK (xfwm_settings_shortcut_row_activated), settings);
   }
 
   /* Connect to shortcut buttons */
+  g_signal_connect (shortcuts_edit_button, "clicked",
+                    G_CALLBACK (xfwm_settings_shortcut_edit_clicked), settings);
   g_signal_connect (shortcuts_clear_button, "clicked",
                     G_CALLBACK (xfwm_settings_shortcut_clear_clicked), settings);
   g_signal_connect (shortcuts_reset_button, "clicked",
@@ -1694,7 +1625,7 @@ xfwm_settings_initialize_shortcuts (XfwmSettings *settings)
   GtkTreeModel *model;
   GtkTreeIter   iter;
   GtkWidget    *view;
-  gint          i;
+  GList        *feature_list;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
   g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
@@ -1704,13 +1635,21 @@ xfwm_settings_initialize_shortcuts (XfwmSettings *settings)
 
   gtk_list_store_clear (GTK_LIST_STORE (model));
 
-  for (i = 0; shortcut_values[i].name != NULL; ++i)
+  if (feature_list = xfce_shortcuts_xfwm4_get_feature_list ())
     {
-      gtk_list_store_append (GTK_LIST_STORE (model), &iter);
-      gtk_list_store_set (GTK_LIST_STORE (model), &iter,
-                          SHORTCUTS_NAME_COLUMN, _(shortcut_values[i].name),
-                          SHORTCUTS_FEATURE_COLUMN, shortcut_values[i].feature,
-                          -1);
+      GList *l;
+
+      for (l = g_list_first (feature_list); l != NULL; l = g_list_next (l))
+        {
+          gtk_list_store_append (GTK_LIST_STORE (model), &iter);
+          gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+                              SHORTCUTS_NAME_COLUMN,
+                              xfce_shortcuts_xfwm4_get_feature_name (l->data),
+                              SHORTCUTS_FEATURE_COLUMN, l->data,
+                              -1);
+        }
+
+      g_list_free (feature_list);
     }
 }
 
@@ -1760,8 +1699,18 @@ xfwm_settings_reload_shortcut (XfceShortcut *shortcut,
 
           if (G_UNLIKELY (g_str_equal (feature, shortcut->command)))
             {
+              GdkModifierType  modifiers;
+              guint            keyval;
+              gchar           *label;
+
+              /* Get the shortcut label */
+              gtk_accelerator_parse (shortcut->shortcut, &keyval, &modifiers);
+              label = gtk_accelerator_get_label (keyval, modifiers);
+
               gtk_list_store_set (GTK_LIST_STORE (model), &iter,
-                                  SHORTCUTS_SHORTCUT_COLUMN, shortcut->shortcut, -1);
+                                  SHORTCUTS_SHORTCUT_COLUMN, shortcut->shortcut,
+                                  SHORTCUTS_SHORTCUT_LABEL_COLUMN, label, -1);
+              g_free (label);
             }
 
           g_free (feature);
@@ -1801,6 +1750,9 @@ xfwm_settings_shortcut_added (XfceShortcutsProvider *provider,
                               XfwmSettings          *settings)
 {
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
+
+  DBG ("Shortcut added signal: %s", shortcut);
+
   xfwm_settings_reload_shortcuts (settings);
 }
 
@@ -1812,7 +1764,59 @@ xfwm_settings_shortcut_removed (XfceShortcutsProvider *provider,
                                 XfwmSettings          *settings)
 {
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
+
+  DBG ("Shortcut removed signal: %s", shortcut);
+
   xfwm_settings_reload_shortcuts (settings);
+}
+
+
+
+static void
+xfwm_settings_shortcut_edit_clicked (GtkButton    *button,
+                                     XfwmSettings *settings)
+{
+  GtkTreeSelection *selection;
+  GtkTreeModel     *model;
+  GtkTreePath      *path;
+  GtkWidget        *view;
+  GList            *rows;
+  GList            *iter;
+  GList            *row_references = NULL;
+
+  g_return_if_fail (XFWM_IS_SETTINGS (settings));
+  g_return_if_fail (GTK_IS_BUILDER (settings->priv->builder));
+  g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
+
+  view = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview"));
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (view));
+  rows = gtk_tree_selection_get_selected_rows (selection, &model);
+
+  for (iter = g_list_first (rows); iter != NULL; iter = g_list_next (iter))
+    {
+      row_references = g_list_append (row_references,
+                                      gtk_tree_row_reference_new (model, iter->data));
+    }
+
+  for (iter = g_list_first (row_references); iter != NULL; iter = g_list_next (iter))
+    {
+      path = gtk_tree_row_reference_get_path (iter->data);
+
+      /* Use the row-activated callback to manage the shortcut editing */
+      xfwm_settings_shortcut_row_activated (GTK_TREE_VIEW (view),
+                                            path, NULL,
+                                            settings);
+
+      gtk_tree_path_free (path);
+    }
+
+  /* Free row reference list */
+  g_list_foreach (row_references, (GFunc) gtk_tree_row_reference_free, NULL);
+  g_list_free (row_references);
+
+  /* Free row list */
+  g_list_foreach (rows, (GFunc) gtk_tree_path_free, NULL);
+  g_list_free (rows);
 }
 
 
@@ -1862,6 +1866,10 @@ xfwm_settings_shortcut_clear_clicked (GtkButton    *button,
               /* Remove keyboard shortcut via xfconf */
               xfce_shortcuts_provider_reset_shortcut (settings->priv->provider, shortcut);
 
+              gtk_list_store_set (GTK_LIST_STORE (model), &tree_iter,
+                                  SHORTCUTS_SHORTCUT_COLUMN, NULL,
+                                  SHORTCUTS_SHORTCUT_LABEL_COLUMN, NULL, -1);
+
               /* Free shortcut string */
               g_free (shortcut);
             }
@@ -1904,22 +1912,33 @@ xfwm_settings_shortcut_reset_clicked (GtkButton    *button,
 
 
 
-static const gchar *
-xfwm_settings_shortcut_feature_name (const gchar *feature)
+static gboolean
+xfwm_settings_update_treeview_on_conflict_replace (GtkTreeModel *model,
+                                                   GtkTreePath  *path,
+                                                   GtkTreeIter  *iter,
+                                                   gpointer      shortcut_to_erase)
 {
-  const gchar *result = feature;
-  gint         i;
+  gchar *shortcut;
 
-  for (i = 0; shortcut_values[i].name != NULL; ++i)
-    if (G_UNLIKELY (g_str_equal (shortcut_values[i].feature, feature)))
-      {
-        result = shortcut_values[i].name;
-        break;
-      }
+  gtk_tree_model_get (model, iter, SHORTCUTS_SHORTCUT_COLUMN, &shortcut, -1);
 
-  return result;
+  if (g_strcmp0 (shortcut_to_erase, shortcut) == 0)
+    {
+      /* We found the iter for which we want to erase the shortcut value */
+      /* Let's do it! */
+      gtk_list_store_set (GTK_LIST_STORE (model), iter,
+                          SHORTCUTS_SHORTCUT_COLUMN, NULL,
+                          SHORTCUTS_SHORTCUT_LABEL_COLUMN, NULL, -1);
+
+      g_free (shortcut);
+
+      return TRUE;
+    }
+
+  g_free (shortcut);
+
+  return FALSE;
 }
-
 
 
 static gboolean
@@ -1969,15 +1988,26 @@ xfwm_settings_validate_shortcut (XfceShortcutDialog  *dialog,
     {
       if (G_LIKELY (!g_str_equal (xfce_shortcut_dialog_get_action (dialog), other_shortcut->command)))
         {
-          response = xfce_shortcut_conflict_dialog (xfce_shortcuts_provider_get_name (settings->priv->provider),
+          response = xfce_shortcut_conflict_dialog (GTK_WINDOW (dialog),
+                                                    xfce_shortcuts_provider_get_name (settings->priv->provider),
                                                     xfce_shortcuts_provider_get_name (other_provider),
                                                     shortcut,
-                                                    xfce_shortcut_dialog_get_action_name (dialog),
-                                                    xfwm_settings_shortcut_feature_name (other_shortcut->command),
+                                                    xfce_shortcut_dialog_get_action (dialog),
+                                                    other_shortcut->command,
                                                     FALSE);
 
           if (G_UNLIKELY (response == GTK_RESPONSE_ACCEPT))
-            xfce_shortcuts_provider_reset_shortcut (other_provider, shortcut);
+            {
+              GObject *view;
+
+              xfce_shortcuts_provider_reset_shortcut (other_provider, shortcut);
+
+              /* We need to update the treeview to erase the shortcut value */
+              view = gtk_builder_get_object (settings->priv->builder, "shortcuts_treeview");
+              gtk_tree_model_foreach (gtk_tree_view_get_model (GTK_TREE_VIEW (view)),
+                                      xfwm_settings_update_treeview_on_conflict_replace,
+                                      (gpointer) shortcut);
+            }
           else
             accepted = FALSE;
         }
