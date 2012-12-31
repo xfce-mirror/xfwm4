@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 18:48+0000\n"
+"POT-Creation-Date: 2012-12-31 00:09+0000\n"
 "PO-Revision-Date: 2012-12-07 13:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
@@ -114,20 +114,21 @@ msgid "Workspaces"
 msgstr "Espaces de travail"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Déplacement et redimensionnement de la fenêtre</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
 msgstr "<b>Agencement des boutons</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Double click _action</b>"
 msgstr "<b>_Action du double clic</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Focus model</b>"
 msgstr "<b>Modèle de focalisation</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#, fuzzy
+msgid "<b>Hide content of windows</b>"
+msgstr "_Cacher le contenu des fenêtres lors de leur déplacement"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -158,8 +159,10 @@ msgid "<b>Windows snapping</b>"
 msgstr "<b>Aimantation des fenêtres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Basculer d'espace de travail</b>"
+#, fuzzy
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr ""
+"Changer d'espace de travail lorsque le _pointeur arrive au bord de l'écran"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
@@ -213,7 +216,9 @@ msgstr "Fermer"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Définir des raccourcis pour effectuer des actions du gestionnaire de fenêtres :"
+msgstr ""
+"Définir des raccourcis pour effectuer des actions du gestionnaire de "
+"fenêtres :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -232,66 +237,67 @@ msgid "Hidden"
 msgstr "Éléments masqués"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "_Cacher le contenu des fenêtres lors de leur déplacement"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "Cacher le contenu des fenêtres lors de leur _redimensionnement"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "Maximiser"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "Menu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Minimize"
 msgstr "Réduire"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "Mettre une fenêtre au premier plan en cl_iquant à l'intérieur"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Shade"
 msgstr "Enrouler"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Snap windows to other _windows"
-msgstr "_Aimanter les fenêtres entre elles"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to screen _border"
-msgstr "Aimanter les fenêtres aux _bords de l'écran"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Stick"
 msgstr "Fenêtre collante (visible sur tous les espaces de travail)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Action à effectuer lors d'un double clic sur la barre de titre"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "The window title cannot be removed"
 msgstr "Le titre de la fenêtre ne peut être supprimé"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Title"
 msgstr "Titre"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#, fuzzy
+msgid "To other _windows"
+msgstr "Abaisser la fenêtre"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#, fuzzy
+msgid "To screen _borders"
+msgstr "Aimanter les fenêtres aux _bords de l'écran"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "When _moving"
+msgstr "Lorsque du déplacement"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "When _resizing"
+msgstr "Lors du redimensionnement"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
-"Changer d'espace de travail en _déplaçant une fenêtre au bord de l'écran"
+#, fuzzy
+msgid "With a _dragged window"
+msgstr "Enrouler la fenêtre"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
-"Changer d'espace de travail lorsque le _pointeur arrive au bord de l'écran"
+msgid "With the mouse _pointer"
+msgstr "Avec le _pointeur de la souris"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
@@ -775,6 +781,22 @@ msgstr "Erreur lors de la lecture des données du processus fils : %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Impossible de démarrer la fenêtre d'aide : %s\n"
 
+#~ msgid "<b>Box move and resize</b>"
+#~ msgstr "<b>Déplacement et redimensionnement de la fenêtre</b>"
+
+#~ msgid "<b>Wrap workspaces</b>"
+#~ msgstr "<b>Basculer d'espace de travail</b>"
+
+#~ msgid "Hide content of windows when _resizing"
+#~ msgstr "Cacher le contenu des fenêtres lors de leur _redimensionnement"
+
+#~ msgid "Snap windows to other _windows"
+#~ msgstr "_Aimanter les fenêtres entre elles"
+
+#~ msgid "Wrap workspaces when _dragging a window off the screen"
+#~ msgstr ""
+#~ "Changer d'espace de travail en _déplaçant une fenêtre au bord de l'écran"
+
 #~ msgid "<b>_Window shortcuts</b>"
 #~ msgstr "<b>Racc_ourcis fenêtres</b>"
 
@@ -822,9 +844,6 @@ msgstr "Impossible de démarrer la fenêtre d'aide : %s\n"
 
 #~ msgid "Raise window"
 #~ msgstr "Monter la fenêtre"
-
-#~ msgid "Lower window"
-#~ msgstr "Abaisser la fenêtre"
 
 #~ msgid "Raise or lower window"
 #~ msgstr "Élever ou abaisser la fenêtre"
