@@ -288,9 +288,8 @@ msgid "When _resizing"
 msgstr "Lors du redimensionnement"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
 msgid "With a _dragged window"
-msgstr "Enrouler la fenêtre"
+msgstr "Avec une fenêtre trainée"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With the mouse _pointer"
