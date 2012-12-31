@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 18:48+0000\n"
+"POT-Creation-Date: 2012-12-31 10:51+0000\n"
 "PO-Revision-Date: 2012-04-26 23:06+0100\n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: \n"
@@ -114,20 +114,20 @@ msgid "Workspaces"
 msgstr "Áreas de trabalho"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Mover e redimensionar</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
 msgstr "<b>Esquema dos botões</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Double click _action</b>"
 msgstr "<b>Ação do d_uplo clique</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Focus model</b>"
 msgstr "<b>Modelo de foco</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Ocultar conteúdo das janelas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -158,8 +158,8 @@ msgid "<b>Windows snapping</b>"
 msgstr "<b>Alinhamento de janelas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Mudança de áreas de trabalho</b>"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr "<b>Mudar de área de trabalho ao atingir o limite do ecrã</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
@@ -232,64 +232,64 @@ msgid "Hidden"
 msgstr "Oculto"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "Ocultar conteúdo das janelas ao _mover"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "Ocultar conteúdo das janelas ao _redimensionar"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "Menu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Minimize"
 msgstr "Minimizar"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "Trazer janela para a frente ao _clicar na janela da aplicação"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Shade"
 msgstr "Enrolar"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Snap windows to other _windows"
-msgstr "Alinhar janelas com outras ja_nelas"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to screen _border"
-msgstr "Alinhar janelas ao limite do e_crã"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Stick"
 msgstr "Prender"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "A ação a executar ao clicar duas vezes na barra de título"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "The window title cannot be removed"
 msgstr "O título da janela não pode ser removido"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Title"
 msgstr "Título"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "To other _windows"
+msgstr "Em outras _janelas"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "To screen _borders"
+msgstr "No limite do e_crã"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "When _moving"
+msgstr "Ao _mover"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "When _resizing"
+msgstr "Ao _redimensionar"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Mu_dar de área de trabalho ao arrastar uma janela para fora do ecrã"
+msgid "With a _dragged window"
+msgstr "Com uma janela arrasta_da"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Mudar de área de trabalho se o _ponteiro atingir o limite do ecrã"
+msgid "With the mouse _pointer"
+msgstr "Com o_ponteiro do rato"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
@@ -763,6 +763,21 @@ msgstr "Erro ao ler dados do processo filho: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Incapaz de criar helper-dialog: %s\n"
 
+#~ msgid "<b>Box move and resize</b>"
+#~ msgstr "<b>Mover e redimensionar</b>"
+
+#~ msgid "<b>Wrap workspaces</b>"
+#~ msgstr "<b>Mudança de áreas de trabalho</b>"
+
+#~ msgid "Hide content of windows when _resizing"
+#~ msgstr "Ocultar conteúdo das janelas ao _redimensionar"
+
+#~ msgid "Snap windows to other _windows"
+#~ msgstr "Alinhar janelas com outras ja_nelas"
+
+#~ msgid "Wrap workspaces when _dragging a window off the screen"
+#~ msgstr "Mu_dar de área de trabalho ao arrastar uma janela para fora do ecrã"
+
 #~ msgid "<b>_Window shortcuts</b>"
 #~ msgstr "<b>Atalho_s de janela</b>"
 
@@ -810,9 +825,6 @@ msgstr "Incapaz de criar helper-dialog: %s\n"
 
 #~ msgid "Raise window"
 #~ msgstr "Colocar janela à frente"
-
-#~ msgid "Lower window"
-#~ msgstr "Colocar janela atrás"
 
 #~ msgid "Raise or lower window"
 #~ msgstr "Subir ou baixar janela"
