@@ -126,9 +126,8 @@ msgid "<b>Focus model</b>"
 msgstr "<b>Modèle de focalisation</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Hide content of windows</b>"
-msgstr "_Cacher le contenu des fenêtres lors de leur déplacement"
+msgstr "<b>Cacher le contenu des fenêtres</ b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -273,14 +272,12 @@ msgid "Title"
 msgstr "Titre"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:43
-#, fuzzy
 msgid "To other _windows"
-msgstr "Abaisser la fenêtre"
+msgstr "Pour les autres fenêtres"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
 msgid "To screen _borders"
-msgstr "Aimanter les fenêtres aux _bords de l'écran"
+msgstr "Pour les _bords de l'écran"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "When _moving"
