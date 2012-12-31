@@ -922,7 +922,7 @@ msgstr "_Restaurer"
 
 #: ../src/menu.c:45
 msgid "Mi_nimize"
-msgstr "_Réduire"
+msgstr "Réd_uire"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
