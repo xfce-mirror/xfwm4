@@ -4,7 +4,7 @@
 # Olivier Fourdan <fourdan@xfce.org>, 2002-2006.
 # Maximilian Schleiss <maximilian@xfce.org>, 2006-2008.
 # Mike Massonnet <mmassonnet@xfce.org>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
@@ -655,7 +655,7 @@ msgstr "_Restaurer"
 
 #: ../src/menu.c:45
 msgid "Mi_nimize"
-msgstr "_Réduire"
+msgstr "Réd_uire"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
