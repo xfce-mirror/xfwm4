@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 18:48+0000\n"
+"POT-Creation-Date: 2012-12-31 10:51+0000\n"
 "PO-Revision-Date: 2011-09-09 12:41+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -114,20 +114,20 @@ msgid "Workspaces"
 msgstr "Werkbladen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Veld verplaatsen en grootte veranderen</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
 msgstr "<b>Knopvormgeving</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Double click _action</b>"
 msgstr "<b>Dubbelklik-_actie</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Focus model</b>"
 msgstr "<b>Vensterscherpstelling-model</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Inhoud vensters verbergen</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -158,8 +158,9 @@ msgid "<b>Windows snapping</b>"
 msgstr "<b>Vensters aantrekken</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Werkbladen inpakken</b>"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr ""
+"Verpak werkbladen wanneer de _muisaanwijzer de rand van het scherm bereikt"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
@@ -232,65 +233,64 @@ msgid "Hidden"
 msgstr "Verborgen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "Inhoud vensters verbergen bij _verplaatsen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "Inhoud vensters verbergen bij veranderen _grootte"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "Maximaliseren"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "Menu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Minimize"
 msgstr "Minimaliseren"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "Venster verheffen bij klikken in toepassingvenster"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Shade"
 msgstr "Oprollen"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Snap windows to other _windows"
-msgstr "Vensters naar andere _vensters trekken"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to screen _border"
-msgstr "Vensters naar _schermrand trekken"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Stick"
 msgstr "Plakken"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Actie voor dubbelklikken op de titelbalk "
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "The window title cannot be removed"
 msgstr "De venstertitel kan niet worden verwijderd"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Title"
 msgstr "Titel"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "To other _windows"
+msgstr "Naar andere vensters"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "To screen _borders"
+msgstr "Naar schermranden"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "When _moving"
+msgstr "Bij het verplaatsen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "When _resizing"
+msgstr "Bij het veranderen van de grootte"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Verpak werkbladen bij _slepen voorbij de rand van het scherm"
+msgid "With a _dragged window"
+msgstr "Met een gesleept venster"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
-"Verpak werkbladen wanneer de _muisaanwijzer de rand van het scherm bereikt"
+msgid "With the mouse _pointer"
+msgstr "Met de muispijl"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
@@ -766,6 +766,21 @@ msgstr "Fout bij het lezen van gegevens van het afgeleide proces: %s\n"
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 
+#~ msgid "<b>Box move and resize</b>"
+#~ msgstr "<b>Veld verplaatsen en grootte veranderen</b>"
+
+#~ msgid "<b>Wrap workspaces</b>"
+#~ msgstr "<b>Werkbladen inpakken</b>"
+
+#~ msgid "Hide content of windows when _resizing"
+#~ msgstr "Inhoud vensters verbergen bij veranderen _grootte"
+
+#~ msgid "Snap windows to other _windows"
+#~ msgstr "Vensters naar andere _vensters trekken"
+
+#~ msgid "Wrap workspaces when _dragging a window off the screen"
+#~ msgstr "Verpak werkbladen bij _slepen voorbij de rand van het scherm"
+
 #~ msgid "<b>_Window shortcuts</b>"
 #~ msgstr "<b>Venster-_sneltoetsen</b>"
 
@@ -813,9 +828,6 @@ msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
 
 #~ msgid "Raise window"
 #~ msgstr "Venster naar de voorgrond halen"
-
-#~ msgid "Lower window"
-#~ msgstr "Venster naar de achtergrond verplaatsen"
 
 #~ msgid "Raise or lower window"
 #~ msgstr "Venster voluit tonen of minimaliseren"
