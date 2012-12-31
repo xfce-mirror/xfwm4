@@ -158,7 +158,6 @@ msgid "<b>Windows snapping</b>"
 msgstr "<b>Aimantation des fenêtres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr ""
 "Changer d'espace de travail lorsque le _pointeur arrive au bord de l'écran"
