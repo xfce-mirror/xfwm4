@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-24 07:42+0000\n"
-"PO-Revision-Date: 2012-12-25 15:06+0200\n"
+"POT-Creation-Date: 2012-12-30 13:30+0000\n"
+"PO-Revision-Date: 2013-01-01 15:54+0200\n"
 "Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -32,7 +32,7 @@ msgstr "Нищо"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
-msgstr "Връзка с управителя на сесията"
+msgstr "Контакт на управителя на сесията"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
@@ -67,7 +67,7 @@ msgstr ""
 #: ../settings-dialogs/workspace-settings.c:89
 #, c-format
 msgid "Workspace %d"
-msgstr "Работно място  %d"
+msgstr "Работно място %d"
 
 #: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
@@ -240,7 +240,7 @@ msgstr "Клавиатура"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
-msgstr "Максимизира"
+msgstr "Максимизиране"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Menu"
@@ -314,22 +314,22 @@ msgstr "Стил"
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
-msgstr "Засенчва прозореца"
+msgstr "Сянка на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
-msgstr "Скрива прозореца"
+msgstr "Скриване на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 #: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
-msgstr "Максимизира прозореца"
+msgstr "Максимизиране на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
-msgstr "Изпълване на прозореца"
+msgstr "Изпълване на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -523,7 +523,7 @@ msgstr "Заглавието на прозореца вдясно"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
-msgstr "Покажи работният плот"
+msgstr "Показване на работният плот"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Upper workspace"
@@ -611,7 +611,7 @@ msgstr "Изтриване на последното работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:307
 msgid "Delete active workspace"
-msgstr "изтриване на активното работно място"
+msgstr "Изтриване на активното работно място"
 
 #: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
@@ -710,7 +710,7 @@ msgstr "Клавиш, използван за хващане и преместв
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "При спешни уведомления, декорацията на прозорците да премигва"
+msgstr "При спешни уведомления, декорацията на прозорците да примигва"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Opaci_ty of window decorations:"
@@ -738,15 +738,15 @@ msgstr "Възстановяване на оригиналният размер 
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _dock windows"
-msgstr "Покажи сенки под лентата на прозорците"
+msgstr "Покаказване на сенки под лентата на прозорците"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Show shadows under _regular windows"
-msgstr "Покажи сенки под нормалните прозорци"
+msgstr "Показване на сенки под нормалните прозорци"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Show shadows under pop_up windows"
-msgstr "Покажи сенки под изкачащите прозорци"
+msgstr "Показване на сенки под изкачащите прозорци"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Switch to win_dow's workspace"
@@ -758,7 +758,7 @@ msgstr "Под показалеца на мишката"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Използвайте ръба на прозореца за прихващане"
+msgstr "Използване ръба на прозореца за прихващане"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -802,7 +802,7 @@ msgstr "Минимален размер на прозорците, за да б�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Placement"
-msgstr "Поставяне"
+msgstr "Местоположение"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Raise windows when any mouse button is pressed"
@@ -819,8 +819,8 @@ msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"Пропускане на прозорци, които имат зададени \"skip pager\"\n"
-"or \"skip taskbar\" в настройките си"
+"Пропускане на прозорци, които имат зададени \"пропускане на уведомяване\"\n"
+"или \"пропускане на лентата на задачите\" в настройките си"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "_Workspaces"
@@ -840,7 +840,7 @@ msgstr "Имена"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr "Основен"
+msgstr "Общи"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Margins"
@@ -975,7 +975,7 @@ msgstr "Унищожаване"
 
 #: ../src/menu.c:70
 msgid "_Quit"
-msgstr "изход"
+msgstr "Изход"
 
 #: ../src/menu.c:71
 msgid "Restart"
@@ -984,7 +984,7 @@ msgstr "Рестартиране"
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkМенюто не успя да хване показалеца\n"
+msgstr "%s: GtkМенюто не успя да прихване показалеца\n"
 
 #: ../src/settings.c:273
 #, c-format
@@ -994,27 +994,27 @@ msgstr "%s: Не може да се определи цвета %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Не може да бъде определен цвят: GСтойността за цвета не е от типа STRING"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr ""
+msgstr "%s: Не може да бъде анализиран цвят %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Не може да бъде определен цвят: GСтойността за цвета не е от типа STRING"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Грешка при прочитане на данни от дъщерен процес: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Не може да се появи диалог за помощ: %s\n"
 
 #, fuzzy
 #~ msgid "Set number and names of workspaces"
