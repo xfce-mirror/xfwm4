@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-27 08:18+0000\n"
+"POT-Creation-Date: 2013-01-03 08:24+0000\n"
 "PO-Revision-Date: 2011-12-17 22:52+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -39,25 +39,25 @@ msgstr "Сессиялар басқарушысының сокеті"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "СОКЕТ ID"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:317
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Нұсқа ақпараты"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:964
+#: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:968
+#: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -77,12 +77,12 @@ msgid "Workspace Name"
 msgstr "Жұмыс орын аты"
 
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Баптаулар басқарушысының сокеті"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Configure window behavior and shortcuts"
 msgstr "Терезе әрекеттерін мен жарлықтарды баптау"
 
@@ -112,20 +112,20 @@ msgid "Workspaces"
 msgstr "Жұмыс орындары"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Терезені жылжыту мен өлшемдерін өзгерту</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
 msgstr "<b>Батырмалардың орналасуы</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Double click _action</b>"
 msgstr "<b>Қ_ос шерту әрекеті</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Focus model</b>"
 msgstr "<b>Терезе фокусы</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Терезелер құрамасын жасыру</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -156,62 +156,62 @@ msgid "<b>Windows snapping</b>"
 msgstr "<b>Терезелердің жабысуы</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Жұмыс орындарын ауыстыру</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-msgid "<b>_Window shortcuts</b>"
-msgstr "<b>Терезе _жарлықтары</b>"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr "<b>Экран сыртына шыққан кезде жұмыс орнын ауыстыру</b>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "<i>Long</i>"
 msgstr "<i>Ұзақ</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "<i>Short</i>"
 msgstr "<i>Қысқа</i>"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "<i>Small</i>"
 msgstr "<i>Кіші</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "<i>Wide</i>"
 msgstr "<i>Кең</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Active"
 msgstr "Белсенді"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Ad_vanced"
 msgstr "К_еңейтілген"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Те_резелер фокус алғанда оларды көтеру"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically give focus to _newly created windows"
 msgstr "Жаңа жасалға_н терезелерге фокус беру"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Click and drag the buttons to change the layout"
 msgstr "Орналасуын ауыстыру үшін батырмаларды тартып апарыңыз"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Click to foc_us"
 msgstr "Фо_кус алу үшін шерту"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Close"
 msgstr "Жабу"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "Т_ерезелер басқарушысы әрекеттерін орындау үшін жарлықтарды орнатыңыз:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -230,64 +230,64 @@ msgid "Hidden"
 msgstr "Жасырын"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "Терезені жылжытқанда оның құрамасын жа_сыру"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "Терезе өлшемдерін ауыстырғанда оның құ_рамасын жасыру"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "Максималды қылу"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "Мәзір"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Minimize"
 msgstr "Қайыру"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "Бағдар_лама терезесіне шерткенде оны көтеру"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Shade"
 msgstr "Атау жолағына жинау"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Snap windows to other _windows"
-msgstr "Терезенің басқа терезелерге жаб_ысуы"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to screen _border"
-msgstr "Терезенің экран жақтарына жабыс_уы"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Stick"
 msgstr "Жабыстыру"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Бұл әрекет терезе атауына қос шерткенде орындалады"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "The window title cannot be removed"
 msgstr "Терезе атауын өшіруге болмайды"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Title"
 msgstr "Атауы"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "To other _windows"
+msgstr "Басқа те_резелерге"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "To screen _borders"
+msgstr "Экран _шеттеріне"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "When _moving"
+msgstr "Жы_лжытқан кезде"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "When _resizing"
+msgstr "Өлше_мін өзгерткен кезде"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Терезені экран сыртына тарқанда жұ_мыс орнын ауыстыру"
+msgid "With a _dragged window"
+msgstr "Тарты_п апарылған тереземен"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "_Тышқан курсоры экран сыртына шыққан кезде жұмыс орнын ауыстыру"
+msgid "With the mouse _pointer"
+msgstr "Ты_шқан курсорымен"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
@@ -315,22 +315,18 @@ msgid "_Style"
 msgstr "_Стиль"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
 msgstr "Терезені атау жолағына жинау"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
 msgstr "Терезені жасыру"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
 msgstr "Терезені максималды қылу"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "Терезені жазық қылу"
 
@@ -339,7 +335,6 @@ msgid "Nothing"
 msgstr "Ешнәрсе"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
 msgstr "Сол жақ"
 
@@ -348,301 +343,36 @@ msgid "Center"
 msgstr "Ортасы"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
 msgstr "Оң жақ"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
-msgid "Window operations menu"
-msgstr "Терезе әрекеттер мәзірі"
-
-#: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Up"
-msgstr "Жоғары"
-
-#: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Down"
-msgstr "Төмен"
-
-#: ../settings-dialogs/xfwm4-settings.c:241
-msgid "Cancel"
-msgstr "Бас тарту"
-
-#: ../settings-dialogs/xfwm4-settings.c:242
-msgid "Cycle windows"
-msgstr "Терезелерді ауыстыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:243
-msgid "Cycle windows (Reverse)"
-msgstr "Терезелерді (керісінше) ауыстыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:244
-msgid "Switch window for same application"
-msgstr "Бір қолданба терезелерін ауыстыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:245
-msgid "Switch application"
-msgstr "Қолданбаны ауыстыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:246
-msgid "Close window"
-msgstr "Терезені жабу"
-
-#: ../settings-dialogs/xfwm4-settings.c:247
-msgid "Maximize window horizontally"
-msgstr "Терезені енінен максималды қылу"
-
-#: ../settings-dialogs/xfwm4-settings.c:248
-msgid "Maximize window vertically"
-msgstr "Терезені биіктігінен максималды қылу"
-
-#: ../settings-dialogs/xfwm4-settings.c:251
-msgid "Move window"
-msgstr "Терезені жылжыту"
-
-#: ../settings-dialogs/xfwm4-settings.c:252
-msgid "Resize window"
-msgstr "Терезе өлшемдерін өзгерту"
-
-#: ../settings-dialogs/xfwm4-settings.c:254
-msgid "Stick window"
-msgstr "Терезені жабыстыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:255
-msgid "Raise window"
-msgstr "Терезені көтеру"
-
-#: ../settings-dialogs/xfwm4-settings.c:256
-msgid "Lower window"
-msgstr "Терезені артқа апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:257
-msgid "Raise or lower window"
-msgstr "Терезені көтеру не төмендету"
-
-#: ../settings-dialogs/xfwm4-settings.c:259
-msgid "Fill window horizontally"
-msgstr "Терезені енінен жазу"
-
-#: ../settings-dialogs/xfwm4-settings.c:260
-msgid "Fill window vertically"
-msgstr "Терезені биіктігінен жазу"
-
-#: ../settings-dialogs/xfwm4-settings.c:261
-msgid "Toggle above"
-msgstr "Басқа терезелердің үстінде болуды қосу/сөндіру"
-
-#: ../settings-dialogs/xfwm4-settings.c:262
-msgid "Toggle fullscreen"
-msgstr "Толық экранға болуды қосу/сөндіру"
-
-#: ../settings-dialogs/xfwm4-settings.c:263
-msgid "Move window to upper workspace"
-msgstr "Терезені жоғарғы жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:264
-msgid "Move window to bottom workspace"
-msgstr "Терезені төмендегі жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:265
-msgid "Move window to left workspace"
-msgstr "Терезені сол жақтағы жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:266
-msgid "Move window to right workspace"
-msgstr "Терезені оң жақтағы жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:267
-msgid "Move window to previous workspace"
-msgstr "Терезені алдыңғы жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:268
-msgid "Move window to next workspace"
-msgstr "Терезені келесі жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:269
-msgid "Move window to workspace 1"
-msgstr "Терезені 1-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:270
-msgid "Move window to workspace 2"
-msgstr "Терезені 2-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:271
-msgid "Move window to workspace 3"
-msgstr "Терезені 3-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:272
-msgid "Move window to workspace 4"
-msgstr "Терезені 4-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:273
-msgid "Move window to workspace 5"
-msgstr "Терезені 5-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:274
-msgid "Move window to workspace 6"
-msgstr "Терезені 6-шы жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:275
-msgid "Move window to workspace 7"
-msgstr "Терезені 7-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:276
-msgid "Move window to workspace 8"
-msgstr "Терезені 8-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:277
-msgid "Move window to workspace 9"
-msgstr "Терезені 9-шы жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:278
-msgid "Move window to workspace 10"
-msgstr "Терезені 10-шы жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:279
-msgid "Move window to workspace 11"
-msgstr "Терезені 11-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:280
-msgid "Move window to workspace 12"
-msgstr "Терезені 12-ші жұмыс орнына апару"
-
-#: ../settings-dialogs/xfwm4-settings.c:281
-msgid "Tile window to the top"
-msgstr "Терезені үстіге толтыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:282
-msgid "Tile window to the bottom"
-msgstr "Терезені астыға толтыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:283
-msgid "Tile window to the left"
-msgstr "Терезені сол жаққа толтыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:284
-msgid "Tile window to the right"
-msgstr "Терезені оң жаққа толтыру"
-
-#: ../settings-dialogs/xfwm4-settings.c:285
-msgid "Show desktop"
-msgstr "Жұмыс үстелін көрсету"
-
-#: ../settings-dialogs/xfwm4-settings.c:286
-msgid "Upper workspace"
-msgstr "Жоғарғы жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:287
-msgid "Bottom workspace"
-msgstr "Төменгі жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Left workspace"
-msgstr "Сол жақтағы жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Right workspace"
-msgstr "Оң жақтағы жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Previous workspace"
-msgstr "Алдыңғы жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:291
-msgid "Next workspace"
-msgstr "Келесі жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:292
-msgid "Workspace 1"
-msgstr "1-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:293
-msgid "Workspace 2"
-msgstr "2-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:294
-msgid "Workspace 3"
-msgstr "3-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:295
-msgid "Workspace 4"
-msgstr "4-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:296
-msgid "Workspace 5"
-msgstr "5-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:297
-msgid "Workspace 6"
-msgstr "6-шы жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:298
-msgid "Workspace 7"
-msgstr "7-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:299
-msgid "Workspace 8"
-msgstr "8-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:300
-msgid "Workspace 9"
-msgstr "9-шы жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:301
-msgid "Workspace 10"
-msgstr "10-шы жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:302
-msgid "Workspace 11"
-msgstr "11-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:303
-msgid "Workspace 12"
-msgstr "12-ші жұмыс орны"
-
-#: ../settings-dialogs/xfwm4-settings.c:304
-msgid "Add workspace"
-msgstr "Жұмыс орнын қосу"
-
-#: ../settings-dialogs/xfwm4-settings.c:305
-msgid "Add adjacent workspace"
-msgstr "Сыбайлас жұмыс орнын қосу"
-
-#: ../settings-dialogs/xfwm4-settings.c:306
-msgid "Delete last workspace"
-msgstr "Соңғы жұмыс орнын өшіру"
-
-#: ../settings-dialogs/xfwm4-settings.c:307
-msgid "Delete active workspace"
-msgstr "Белсенді тұрған жұмыс орнын жою"
-
-#: ../settings-dialogs/xfwm4-settings.c:453
+#: ../settings-dialogs/xfwm4-settings.c:380
 msgid "Theme"
 msgstr "Тақырыбы"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:531
 msgid "Action"
 msgstr "Әрекет"
 
-#: ../settings-dialogs/xfwm4-settings.c:607
+#: ../settings-dialogs/xfwm4-settings.c:536
 msgid "Shortcut"
 msgstr "Жарлық"
 
-#: ../settings-dialogs/xfwm4-settings.c:993
+#: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Xfconf іске қосу қатесі. Себебі: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:1004
+#: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
 msgstr "Баптаулар сұхбат терезесін жасау мүмкін емес."
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
-#: ../settings-dialogs/xfwm4-settings.c:1894
+#: ../settings-dialogs/xfwm4-settings.c:1901
+#: ../settings-dialogs/xfwm4-settings.c:1902
 msgid "Reset to Defaults"
 msgstr "Бастапқы түріне келтіру"
 
-#: ../settings-dialogs/xfwm4-settings.c:1895
+#: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -1028,6 +758,219 @@ msgstr "Ұрпақ үрдісінен мәліметтерді оқу қатес
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Сұхбат терезесін шақыру мүмкін емес: %s\n"
+
+#~ msgid "<b>Box move and resize</b>"
+#~ msgstr "<b>Терезені жылжыту мен өлшемдерін өзгерту</b>"
+
+#~ msgid "<b>Wrap workspaces</b>"
+#~ msgstr "<b>Жұмыс орындарын ауыстыру</b>"
+
+#~ msgid "<b>_Window shortcuts</b>"
+#~ msgstr "<b>Терезе _жарлықтары</b>"
+
+#~ msgid "Hide content of windows when _resizing"
+#~ msgstr "Терезе өлшемдерін ауыстырғанда оның құ_рамасын жасыру"
+
+#~ msgid "Snap windows to other _windows"
+#~ msgstr "Терезенің басқа терезелерге жаб_ысуы"
+
+#~ msgid "Wrap workspaces when _dragging a window off the screen"
+#~ msgstr "Терезені экран сыртына тарқанда жұ_мыс орнын ауыстыру"
+
+#~ msgid "Window operations menu"
+#~ msgstr "Терезе әрекеттер мәзірі"
+
+#~ msgid "Up"
+#~ msgstr "Жоғары"
+
+#~ msgid "Down"
+#~ msgstr "Төмен"
+
+#~ msgid "Cancel"
+#~ msgstr "Бас тарту"
+
+#~ msgid "Cycle windows"
+#~ msgstr "Терезелерді ауыстыру"
+
+#~ msgid "Cycle windows (Reverse)"
+#~ msgstr "Терезелерді (керісінше) ауыстыру"
+
+#~ msgid "Switch window for same application"
+#~ msgstr "Бір қолданба терезелерін ауыстыру"
+
+#~ msgid "Switch application"
+#~ msgstr "Қолданбаны ауыстыру"
+
+#~ msgid "Close window"
+#~ msgstr "Терезені жабу"
+
+#~ msgid "Maximize window horizontally"
+#~ msgstr "Терезені енінен максималды қылу"
+
+#~ msgid "Maximize window vertically"
+#~ msgstr "Терезені биіктігінен максималды қылу"
+
+#~ msgid "Move window"
+#~ msgstr "Терезені жылжыту"
+
+#~ msgid "Resize window"
+#~ msgstr "Терезе өлшемдерін өзгерту"
+
+#~ msgid "Stick window"
+#~ msgstr "Терезені жабыстыру"
+
+#~ msgid "Raise window"
+#~ msgstr "Терезені көтеру"
+
+#~ msgid "Raise or lower window"
+#~ msgstr "Терезені көтеру не төмендету"
+
+#~ msgid "Fill window horizontally"
+#~ msgstr "Терезені енінен жазу"
+
+#~ msgid "Fill window vertically"
+#~ msgstr "Терезені биіктігінен жазу"
+
+#~ msgid "Toggle above"
+#~ msgstr "Басқа терезелердің үстінде болуды қосу/сөндіру"
+
+#~ msgid "Toggle fullscreen"
+#~ msgstr "Толық экранға болуды қосу/сөндіру"
+
+#~ msgid "Move window to upper workspace"
+#~ msgstr "Терезені жоғарғы жұмыс орнына апару"
+
+#~ msgid "Move window to bottom workspace"
+#~ msgstr "Терезені төмендегі жұмыс орнына апару"
+
+#~ msgid "Move window to left workspace"
+#~ msgstr "Терезені сол жақтағы жұмыс орнына апару"
+
+#~ msgid "Move window to right workspace"
+#~ msgstr "Терезені оң жақтағы жұмыс орнына апару"
+
+#~ msgid "Move window to previous workspace"
+#~ msgstr "Терезені алдыңғы жұмыс орнына апару"
+
+#~ msgid "Move window to next workspace"
+#~ msgstr "Терезені келесі жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 1"
+#~ msgstr "Терезені 1-ші жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 2"
+#~ msgstr "Терезені 2-ші жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 3"
+#~ msgstr "Терезені 3-ші жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 4"
+#~ msgstr "Терезені 4-ші жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Терезені 5-ші жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Терезені 6-шы жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Терезені 7-ші жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Терезені 8-ші жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Терезені 9-шы жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "Терезені 10-шы жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "Терезені 11-ші жұмыс орнына апару"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "Терезені 12-ші жұмыс орнына апару"
+
+#~ msgid "Tile window to the top"
+#~ msgstr "Терезені үстіге толтыру"
+
+#~ msgid "Tile window to the bottom"
+#~ msgstr "Терезені астыға толтыру"
+
+#~ msgid "Tile window to the left"
+#~ msgstr "Терезені сол жаққа толтыру"
+
+#~ msgid "Tile window to the right"
+#~ msgstr "Терезені оң жаққа толтыру"
+
+#~ msgid "Show desktop"
+#~ msgstr "Жұмыс үстелін көрсету"
+
+#~ msgid "Upper workspace"
+#~ msgstr "Жоғарғы жұмыс орны"
+
+#~ msgid "Bottom workspace"
+#~ msgstr "Төменгі жұмыс орны"
+
+#~ msgid "Left workspace"
+#~ msgstr "Сол жақтағы жұмыс орны"
+
+#~ msgid "Right workspace"
+#~ msgstr "Оң жақтағы жұмыс орны"
+
+#~ msgid "Previous workspace"
+#~ msgstr "Алдыңғы жұмыс орны"
+
+#~ msgid "Next workspace"
+#~ msgstr "Келесі жұмыс орны"
+
+#~ msgid "Workspace 1"
+#~ msgstr "1-ші жұмыс орны"
+
+#~ msgid "Workspace 2"
+#~ msgstr "2-ші жұмыс орны"
+
+#~ msgid "Workspace 3"
+#~ msgstr "3-ші жұмыс орны"
+
+#~ msgid "Workspace 4"
+#~ msgstr "4-ші жұмыс орны"
+
+#~ msgid "Workspace 5"
+#~ msgstr "5-ші жұмыс орны"
+
+#~ msgid "Workspace 6"
+#~ msgstr "6-шы жұмыс орны"
+
+#~ msgid "Workspace 7"
+#~ msgstr "7-ші жұмыс орны"
+
+#~ msgid "Workspace 8"
+#~ msgstr "8-ші жұмыс орны"
+
+#~ msgid "Workspace 9"
+#~ msgstr "9-шы жұмыс орны"
+
+#~ msgid "Workspace 10"
+#~ msgstr "10-шы жұмыс орны"
+
+#~ msgid "Workspace 11"
+#~ msgstr "11-ші жұмыс орны"
+
+#~ msgid "Workspace 12"
+#~ msgstr "12-ші жұмыс орны"
+
+#~ msgid "Add workspace"
+#~ msgstr "Жұмыс орнын қосу"
+
+#~ msgid "Add adjacent workspace"
+#~ msgstr "Сыбайлас жұмыс орнын қосу"
+
+#~ msgid "Delete last workspace"
+#~ msgstr "Соңғы жұмыс орнын өшіру"
+
+#~ msgid "Delete active workspace"
+#~ msgstr "Белсенді тұрған жұмыс орнын жою"
 
 #~ msgid "Set number and names of workspaces"
 #~ msgstr "Жұмыс орындарының нөмірлерін мен аттарын орнату"
