@@ -75,7 +75,7 @@ xfwm4_tweaks_settings_LDADD = \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCONF_LIBS)
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I${top_srcdir}
 
 if MAINTAINER_MODE
