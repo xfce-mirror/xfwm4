@@ -26,10 +26,9 @@ AC_COPYRIGHT([Copyright (c) 2002-2011
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
 AC_INIT([xfwm4], [xfwm4_version], [xfce4-dev@xfce.org])
-AM_INIT_AUTOMAKE([xfwm4], [xfwm4_version()])
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip])
 
-AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar])
-AM_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 
 AM_MAINTAINER_MODE()
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])

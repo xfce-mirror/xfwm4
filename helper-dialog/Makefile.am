@@ -1,6 +1,6 @@
 # $Id$
 
-INCLUDES =								\
+AM_CPPFLAGS =								\
 	$(GTK_CFLAGS) 							\
 	$(LIBXFCE4UTIL_CFLAGS)						\
 	$(LIBX11_CFLAGS)						\
