@@ -2,14 +2,14 @@
 # Copyright (C) 2002-2011 The Xfce development team.
 # This file is distributed under the same license as the xfwm4 package.
 # Kiril Kirilov (Cybercop) <cybercop_montana@abv.bg>, 2012.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 08:27+0000\n"
-"PO-Revision-Date: 2013-01-03 23:30+0200\n"
-"Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
+"POT-Creation-Date: 2013-01-09 03:33+0000\n"
+"PO-Revision-Date: 2013-01-09 11:13+0200\n"
+"Last-Translator: Cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -398,7 +398,7 @@ msgstr "Максимизиране на прозорец по вертикала
 
 #: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Move window"
-msgstr "Преместванена прозорец"
+msgstr "Преместване на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Resize window"
@@ -741,7 +741,7 @@ msgstr "Възстановяване на първоначалният разм�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Show shadows under _dock windows"
-msgstr "Показване на сенки под прикачените прозорци"
+msgstr "Показване на сенки под прилепените прозорци"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Show shadows under _regular windows"
