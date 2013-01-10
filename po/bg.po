@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-09 03:33+0000\n"
-"PO-Revision-Date: 2013-01-09 11:13+0200\n"
+"POT-Creation-Date: 2013-01-10 06:18+0000\n"
+"PO-Revision-Date: 2013-01-10 12:04+0200\n"
 "Last-Translator: Cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg\n"
@@ -35,13 +35,13 @@ msgstr "Нищо"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
-msgstr "Адрес на мениджъра на сесиите"
+msgstr "Гнездо на мениджъра на сесиите"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
-msgstr "Адрес ID"
+msgstr "Гнездо ID"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
@@ -79,7 +79,7 @@ msgstr "Име на работното място"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
-msgstr "Адрес на мениджъра на настройките"
+msgstr "Гнездо на мениджъра на настройките"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
@@ -1009,7 +1009,7 @@ msgstr "%s: Не може да бъде обработен цвета %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Не може да бъде обработен цвета:  Стойността за цвета не е от типа STRING"
+msgstr "%s: Не може да бъде обработен цвета: Стойността за цвета не е от типа STRING"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -1022,16 +1022,16 @@ msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Не може да се покаже помощен диалог: %s\n"
 
 #~ msgid "Set number and names of workspaces"
-#~ msgstr "Укажите количество и названия рабочих мест"
+#~ msgstr "Задайте номер и имена на работните места"
 
 #~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Рабочие места</b>"
+#~ msgstr "<b>Работни места</b>"
 
 #~ msgid "Change workspace name"
-#~ msgstr "Изменить название рабочего места"
+#~ msgstr "Промяна на имената на работните места"
 
 #~ msgid "Hide"
-#~ msgstr "Свернуть"
+#~ msgstr "Скриване"
 
 #~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Ошибка сегментации"
+#~ msgstr "%s: Грешка при сегментация"
