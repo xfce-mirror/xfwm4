@@ -296,7 +296,6 @@ msgid "With a _dragged window"
 msgstr "Con una finestra _trascinata"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "With the mouse _pointer"
 msgstr "Con il puntatore del mo_use"
 
