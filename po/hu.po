@@ -1,7 +1,7 @@
 # Hungarian translation of the xfwm4 package
 # Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, Free Software Foundation, Inc.
 # This file is distributed under the same license as the xfwm4 package.
-# 
+#
 # Somogyi Peter <jerry@gnu>, 2003.
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003.
 # SZERVÁC Attila <sas@321>, 2004-2009.
@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 15:48+0000\n"
-"PO-Revision-Date: 2009-07-25 12:16+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2012-11-26 21:36+0000\n"
+"PO-Revision-Date: 2012-11-27 00:15+0100\n"
+"Last-Translator: Imre Benedek <nucleo@indamail.hu>\n"
 "Language-Team: Hungarian <gnome at gnome dot hu>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
@@ -91,7 +91,7 @@ msgid "Configure window behavior and shortcuts"
 msgstr "Ablakviselkedés és gyorsbillentyűk beállítása"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
 msgstr "Ablakkezelő"
 
@@ -101,7 +101,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Ablakviselkedés és -effektusok finomhangolása"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "Window Manager Tweaks"
 msgstr "Ablakkezelő hangolása"
 
@@ -144,16 +144,16 @@ msgid "<b>Raise on focus</b>"
 msgstr "<b>Előtérbe hozás fókuszra</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "<b>The_me</b>"
+msgstr "<b>_Téma</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title _alignment</b>"
 msgstr "<b>_Cím igazítása</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Title fon_t</b>"
 msgstr "<b>Cí_m betűkészlete</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-msgid "<b>Window _shortcuts</b>"
-msgstr "<b>Abla_k-gyorsbillentyűk</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
@@ -164,8 +164,8 @@ msgid "<b>Wrap workspaces</b>"
 msgstr "<b>Munkaterületek közti váltás</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-msgid "<b>_Theme</b>"
-msgstr "<b>_Téma</b>"
+msgid "<b>_Window shortcuts</b>"
+msgstr "<b>Abla_k-gyorsbillentyűk</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
@@ -206,12 +206,12 @@ msgid "Automatically give focus to _newly created windows"
 msgstr "Az új_onnan létrehozott ablakok automatikusan megkapják a fókuszt"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Clic_k to focus"
-msgstr "A fókusz a _kattintást követi"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Click and drag the buttons to change the layout"
 msgstr "Kattintson és húzza a gombokat az elrendezés módosításához"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+msgid "Click to foc_us"
+msgstr "A fókusz a _kattintást követi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Close"
@@ -242,73 +242,73 @@ msgid "Hide content of windows when _resizing"
 msgstr "Ablak tartalmának elrejtése át_méretezéskor"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Ke_yboard"
-msgstr "Bille_ntyűzet"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr "Maximalizálás"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Menu"
 msgstr "Menü"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Minimize"
 msgstr "Minimalizálás"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Raise window when clicking _inside application window"
 msgstr "Ablak előtérbe ho_zása az alkalmazásablakba kattintáskor"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Shade"
 msgstr "Felgördítés"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "Snap windows to other _windows"
 msgstr "Ablakok más ablakokhoz _illesztése"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Snap windows to screen _border"
 msgstr "Ablakok _képernyőszegélyhez illesztése"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Stick"
 msgstr "Mindig látható"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "A címsorra való dupla kattintáskor végrehajtandó művelet"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "The window title cannot be removed"
 msgstr "Az ablak címe nem távolítható el"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Title"
 msgstr "Cím"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "Wrap workspaces when _dragging a window off the screen"
 msgstr "_Váltás munkaterületek közt ablak lehúzásakor a képernyőről"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Váltás munk_aterületek közt, ha a mutató eléri a képernyő szélét"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
 msgstr "Késleltetés, _mielőtt az ablak fókuszt kap:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Edge resistance:"
 msgstr "Szélek _ellenállása:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Focus"
 msgstr "_Fókusz"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "_Keyboard"
+msgstr "Bille_ntyűzet"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
@@ -382,7 +382,7 @@ msgstr "Ablakok közti lépkedés (fordítva)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
-msgstr "Ugyanazon alkalmazás ablakára váltás "
+msgstr "Ugyanazon alkalmazás ablakára váltás"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
@@ -641,18 +641,14 @@ msgstr "Az xfconf előkészítése meghiúsult. Ok: %s"
 msgid "Could not create the settings dialog."
 msgstr "A beállítások ablak nem hozható létre."
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "Alapértelmezések visszaállítása"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
-msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Ez minden gyorsbillentyűt visszaállít az alapértelmezett értékére. Valóban "
-"ezt szeretné?"
+#: ../settings-dialogs/xfwm4-settings.c:1895
+msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr "Ez minden gyorsbillentyűt visszaállít az alapértelmezett értékére. Valóban ezt szeretné?"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -668,11 +664,11 @@ msgid "<i>Transparent</i>"
 msgstr "<i>Átlátszó</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate _focus stealing prevention"
+msgid "Activate foc_us stealing prevention"
 msgstr "Fókuszlo_pás megelőzésének bekapcsolása"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the _center of the screen"
+msgid "At the c_enter of the screen"
 msgstr "A képernyő kö_zepére"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
@@ -704,7 +700,7 @@ msgid "Do _nothing"
 msgstr "_Ne tegyen semmit"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when maximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "Ablakok keretének elrejtése ma_ximalizáláskor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
@@ -732,7 +728,7 @@ msgid "Opacity of _inactive windows:"
 msgstr "_Inaktív ablakok átlátszatlansága:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of popup window_s:"
+msgid "Opacity of popup wi_ndows:"
 msgstr "Felu_gró ablakok átlátszatlansága:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
@@ -744,97 +740,96 @@ msgid "Opacity of windows during resi_ze:"
 msgstr "Ablakok átlátszatlansága átmé_retezéskor:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Restore original _size of maximized windows when moving"
+msgid "Restore original size of maximi_zed windows when moving"
 msgstr "Maximalizált ablakok eredeti méretének visszaállítása _mozgatáskor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid ""
+"S_kip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr ""
+"A lapozó kihagyása vagy tál_ca kihagyása\n"
+"tulajdonsággal rendelkező ablakok kihagyása"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Show shadows under _dock windows"
 msgstr "Árnyékok megjelenítése _dokkolt ablakok alatt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Show shadows under _regular windows"
 msgstr "Árnyékok megjelenítése _normál ablakok alatt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Show shadows under pop_up windows"
 msgstr "Árn_yékok megjelenítése felugró ablakok alatt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Switch to win_dow's workspace"
 msgstr "_Váltás az ablak munkaterületére"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Under the mouse _pointer"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "U_nder the mouse pointer"
 msgstr "Az egér_mutató alatt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Use _edge resistance instead of window snapping"
 msgstr "S_zélek ellenállásának használata az ablakok illesztése helyett"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "Egérgörgő _használata az asztalon munkaterületek váltására"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "When a window raises itself:"
 msgstr "Amikor egy ablak előtérbe hozza magát:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Váltás munkaterületek kö_zt az aktuális asztalelrendezéstől függően"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
-"_Váltás munkaterületek közt az első vagy utolsó munkaterület elérésekor"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "Wrap workspaces when _the first or the last workspace is reached"
+msgstr "_Váltás munkaterületek közt az első vagy utolsó munkaterület elérésekor"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Accessibility"
 msgstr "_Akadálymentesítés"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Bring window on current workspace"
 msgstr "Ablak ak_tuális munkaterületre hozása"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Draw frame around selected windows while cycling"
 msgstr "Keret raj_zolása kijelölt ablakok köré körbejáráskor"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Enable display compositing"
 msgstr "Kijel_ző kompozitálásának engedélyezése"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_Rejtett (ikonméretű) ablakok felvétele"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "_Intelligens elhelyezést aktiváló ablakok minimális mérete:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "_Placement"
 msgstr "_Elhelyezés"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "Ablakok előtérbe hozása bármely egérgomb le_nyomására"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
 "Előző _munkaterület megjegyzése és\n"
 "visszahívása gyorsbillentyűkkel való váltáskor"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-msgid ""
-"_Skip windows that have \"skip pager\"\n"
-"or \"skip taskbar\" properties set"
-msgstr ""
-"A lapozó kihagyása vagy tál_ca kihagyása\n"
-"tulajdonsággal rendelkező ablakok kihagyása"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "_Workspaces"
@@ -845,10 +840,8 @@ msgid "Layout"
 msgstr "Elrendezés"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"A margók a képernyő szélén lévő területek, ahol nem jelennek meg ablakok"
+msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgstr "A margók a képernyő szélén lévő területek, ahol nem jelennek meg ablakok"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Names"
@@ -1010,8 +1003,7 @@ msgstr "%s: Nem foglalható le a szín (%s)\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Nem foglalható le a szín: a színhez tartozó GValue nem STRING típusú"
+msgstr "%s: Nem foglalható le a szín: a színhez tartozó GValue nem STRING típusú"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1021,8 +1013,7 @@ msgstr "%s: A szín (%s) nem dolgozható fel\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: A szín nem dolgozható fel: a színhez tartozó GValue nem STRING típusú"
+msgstr "%s: A szín nem dolgozható fel: a színhez tartozó GValue nem STRING típusú"
 
 #: ../src/terminate.c:75
 #, c-format
