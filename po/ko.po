@@ -2,14 +2,14 @@
 # Copyright(C) 2002-2006 The Xfce development team
 # This file is distributed under the same license as the xfwm4 package.
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005.
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011, 2012.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011-2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-12 06:45+0000\n"
-"PO-Revision-Date: 2012-12-12 18:52+0900\n"
+"Report-Msgid-Bugs-To: https://bugzilla.xfce.org/enter_bug.cgi?product=Xfwm4\n"
+"POT-Creation-Date: 2013-01-23 15:15+0000\n"
+"PO-Revision-Date: 2013-01-24 04:24+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
@@ -40,25 +40,25 @@ msgstr "세션 관리자 소켓"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:317
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "버전 정보"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:964
+#: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:968
+#: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -71,19 +71,19 @@ msgstr ""
 #: ../settings-dialogs/workspace-settings.c:89
 #, c-format
 msgid "Workspace %d"
-msgstr "작업공간 %d"
+msgstr "작업 공간 %d"
 
 #: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
-msgstr "작업공간 이름"
+msgstr "작업 공간 이름"
 
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "관리자 소켓을 설정합니다"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Configure window behavior and shortcuts"
 msgstr "창 동작 및 바로 가기를 설정합니다"
 
@@ -110,23 +110,23 @@ msgstr "배치, 이름, 여백을 설정합니다"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
-msgstr "작업공간"
+msgstr "작업 공간"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>창 이동 및 크기 변경</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
 msgstr "<b>단추 배치</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Double click _action</b>"
 msgstr "<b>두 번 누르기 동작(_A)</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Focus model</b>"
 msgstr "<b>창 활성 방법</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>창 내용 숨기기</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -157,62 +157,62 @@ msgid "<b>Windows snapping</b>"
 msgstr "<b>창 잡기</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>작업공간 전환</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-msgid "<b>_Window shortcuts</b>"
-msgstr "<b>창 바로 가기(_W)</b>"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr "<b>화면 모서리에 도달하면 작업 공간 전환</b>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "<i>Long</i>"
 msgstr "<i>길게</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "<i>Short</i>"
 msgstr "<i>짧게</i>"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "<i>Small</i>"
 msgstr "<i>작게</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "<i>Wide</i>"
 msgstr "<i>크게</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Active"
 msgstr "활성화"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Ad_vanced"
 msgstr "고급 설정(_V)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Automatically _raise windows when they receive focus"
 msgstr "활성된 창을 자동으로 최상위로 올리기(_R)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically give focus to _newly created windows"
 msgstr "새로 만든 창을 자동으로 활성(_N)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Click and drag the buttons to change the layout"
 msgstr "배치를 바꾸려면 단추을 누르고 끌어다 놓으십시오."
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Click to foc_us"
 msgstr "활성화 하려면 누르기(_U)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Close"
 msgstr "닫기"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "창 관리자 동작을 수행할 바로 가기 키 정의(_W):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -231,64 +231,64 @@ msgid "Hidden"
 msgstr "숨김"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "창을 움직일 때 내용 숨기기(_M)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "창 크기를 변경할 때 내용 숨기기(_R)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "최대화"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "메뉴"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Minimize"
 msgstr "최소화"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "창 내부를 누르면 올림(_I)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Shade"
 msgstr "말아올리기"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Snap windows to other _windows"
-msgstr "다른 창에 맞추어 움직임(_W)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to screen _border"
-msgstr "화면 경계에 따라 움직임(_B)"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Stick"
 msgstr "붙이기"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "제목 표시줄을 두 번 눌렀을 때 수행할 동작"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "The window title cannot be removed"
 msgstr "창 제목은 제거할 수 없습니다"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Title"
 msgstr "제목"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "To other _windows"
+msgstr "다른 창으로(_W)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "To screen _borders"
+msgstr "화면 테두리로(_B)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "When _moving"
+msgstr "이동할 때(_M)"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "When _resizing"
+msgstr "크기 조절할 떄(_R)"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "창을 화면 밖으로 끌어 움직이면 작업공간 전환(_D)"
+msgid "With a _dragged window"
+msgstr "끌어 놓은 창에 따라(_D)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "마우스 포인터가 화면 모서리에 닿으면 작업공간 전환(_P)"
+msgid "With the mouse _pointer"
+msgstr "마우스 포인터에 따라(_P)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
@@ -316,22 +316,18 @@ msgid "_Style"
 msgstr "모양새(_S)"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
 msgstr "창 말아올리기"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
 msgstr "창 숨기기"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
 msgstr "창 최대화"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "창 채우기"
 
@@ -340,7 +336,6 @@ msgid "Nothing"
 msgstr "아무 것도 안함"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
 msgstr "왼쪽"
 
@@ -349,301 +344,36 @@ msgid "Center"
 msgstr "가운데"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
 msgstr "오른쪽"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
-msgid "Window operations menu"
-msgstr "창 조작 메뉴"
-
-#: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Up"
-msgstr "위로"
-
-#: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Down"
-msgstr "아래로"
-
-#: ../settings-dialogs/xfwm4-settings.c:241
-msgid "Cancel"
-msgstr "취소"
-
-#: ../settings-dialogs/xfwm4-settings.c:242
-msgid "Cycle windows"
-msgstr "창 순환"
-
-#: ../settings-dialogs/xfwm4-settings.c:243
-msgid "Cycle windows (Reverse)"
-msgstr "창 순환(역순)"
-
-#: ../settings-dialogs/xfwm4-settings.c:244
-msgid "Switch window for same application"
-msgstr "동일 프로그램 창 전환"
-
-#: ../settings-dialogs/xfwm4-settings.c:245
-msgid "Switch application"
-msgstr "프로그램 전환"
-
-#: ../settings-dialogs/xfwm4-settings.c:246
-msgid "Close window"
-msgstr "창 닫기"
-
-#: ../settings-dialogs/xfwm4-settings.c:247
-msgid "Maximize window horizontally"
-msgstr "창을 가로로 최대화"
-
-#: ../settings-dialogs/xfwm4-settings.c:248
-msgid "Maximize window vertically"
-msgstr "창을 세로로 최대화"
-
-#: ../settings-dialogs/xfwm4-settings.c:251
-msgid "Move window"
-msgstr "창을 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:252
-msgid "Resize window"
-msgstr "창 크기 변경"
-
-#: ../settings-dialogs/xfwm4-settings.c:254
-msgid "Stick window"
-msgstr "모든 작업공간에서 보기"
-
-#: ../settings-dialogs/xfwm4-settings.c:255
-msgid "Raise window"
-msgstr "창을 앞으로 올리기"
-
-#: ../settings-dialogs/xfwm4-settings.c:256
-msgid "Lower window"
-msgstr "창을 뒤로 내리기"
-
-#: ../settings-dialogs/xfwm4-settings.c:257
-msgid "Raise or lower window"
-msgstr "창을 키우거나 줄이기"
-
-#: ../settings-dialogs/xfwm4-settings.c:259
-msgid "Fill window horizontally"
-msgstr "창을 가로로 채움"
-
-#: ../settings-dialogs/xfwm4-settings.c:260
-msgid "Fill window vertically"
-msgstr "창을 세로로 채움"
-
-#: ../settings-dialogs/xfwm4-settings.c:261
-msgid "Toggle above"
-msgstr "전환"
-
-#: ../settings-dialogs/xfwm4-settings.c:262
-msgid "Toggle fullscreen"
-msgstr "전체 화면 전환"
-
-#: ../settings-dialogs/xfwm4-settings.c:263
-msgid "Move window to upper workspace"
-msgstr "창을 위 쪽 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:264
-msgid "Move window to bottom workspace"
-msgstr "창을 아래 쪽 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:265
-msgid "Move window to left workspace"
-msgstr "창을 왼쪽 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:266
-msgid "Move window to right workspace"
-msgstr "창을 오른쪽 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:267
-msgid "Move window to previous workspace"
-msgstr "창을 이전 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:268
-msgid "Move window to next workspace"
-msgstr "창을 다음 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:269
-msgid "Move window to workspace 1"
-msgstr "창을 작업공간 1로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:270
-msgid "Move window to workspace 2"
-msgstr "창을 작업공간 2로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:271
-msgid "Move window to workspace 3"
-msgstr "창을 작업공간 3으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:272
-msgid "Move window to workspace 4"
-msgstr "창을 작업공간 4(으)로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:273
-msgid "Move window to workspace 5"
-msgstr "창을 작업공간 5(으)로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:274
-msgid "Move window to workspace 6"
-msgstr "창을 작업공간 6으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:275
-msgid "Move window to workspace 7"
-msgstr "창을 작업공간 7(으)로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:276
-msgid "Move window to workspace 8"
-msgstr "창을 작업공간 8로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:277
-msgid "Move window to workspace 9"
-msgstr "창을 작업공간 9(으)로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:278
-msgid "Move window to workspace 10"
-msgstr "창을 작업공간 10(으)로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:279
-msgid "Move window to workspace 11"
-msgstr "창을 작업공간 11로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:280
-msgid "Move window to workspace 12"
-msgstr "창을 작업공간 12로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:281
-msgid "Tile window to the top"
-msgstr "창을 상단에 배치"
-
-#: ../settings-dialogs/xfwm4-settings.c:282
-msgid "Tile window to the bottom"
-msgstr "창을 하단에 배치"
-
-#: ../settings-dialogs/xfwm4-settings.c:283
-msgid "Tile window to the left"
-msgstr "창을 왼편에 배치"
-
-#: ../settings-dialogs/xfwm4-settings.c:284
-msgid "Tile window to the right"
-msgstr "창을 오른편에 배치"
-
-#: ../settings-dialogs/xfwm4-settings.c:285
-msgid "Show desktop"
-msgstr "데스크톱 보기"
-
-#: ../settings-dialogs/xfwm4-settings.c:286
-msgid "Upper workspace"
-msgstr "위쪽 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:287
-msgid "Bottom workspace"
-msgstr "아래쪽 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Left workspace"
-msgstr "왼쪽 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Right workspace"
-msgstr "오른쪽 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Previous workspace"
-msgstr "이전 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:291
-msgid "Next workspace"
-msgstr "다음 작업공간으로 이동"
-
-#: ../settings-dialogs/xfwm4-settings.c:292
-msgid "Workspace 1"
-msgstr "작업공간 1"
-
-#: ../settings-dialogs/xfwm4-settings.c:293
-msgid "Workspace 2"
-msgstr "작업공간 2"
-
-#: ../settings-dialogs/xfwm4-settings.c:294
-msgid "Workspace 3"
-msgstr "작업공간 3"
-
-#: ../settings-dialogs/xfwm4-settings.c:295
-msgid "Workspace 4"
-msgstr "작업공간 4"
-
-#: ../settings-dialogs/xfwm4-settings.c:296
-msgid "Workspace 5"
-msgstr "작업공간 5"
-
-#: ../settings-dialogs/xfwm4-settings.c:297
-msgid "Workspace 6"
-msgstr "작업공간 6"
-
-#: ../settings-dialogs/xfwm4-settings.c:298
-msgid "Workspace 7"
-msgstr "작업공간 7"
-
-#: ../settings-dialogs/xfwm4-settings.c:299
-msgid "Workspace 8"
-msgstr "작업공간 8"
-
-#: ../settings-dialogs/xfwm4-settings.c:300
-msgid "Workspace 9"
-msgstr "작업공간 9"
-
-#: ../settings-dialogs/xfwm4-settings.c:301
-msgid "Workspace 10"
-msgstr "작업공간 10"
-
-#: ../settings-dialogs/xfwm4-settings.c:302
-msgid "Workspace 11"
-msgstr "작업공간 11"
-
-#: ../settings-dialogs/xfwm4-settings.c:303
-msgid "Workspace 12"
-msgstr "작업공간 12"
-
-#: ../settings-dialogs/xfwm4-settings.c:304
-msgid "Add workspace"
-msgstr "작업공간 추가"
-
-#: ../settings-dialogs/xfwm4-settings.c:305
-msgid "Add adjacent workspace"
-msgstr "이웃하는 작업공간 추가"
-
-#: ../settings-dialogs/xfwm4-settings.c:306
-msgid "Delete last workspace"
-msgstr "마지막 작업공간 제거"
-
-#: ../settings-dialogs/xfwm4-settings.c:307
-msgid "Delete active workspace"
-msgstr "사용 중인 작업공간 제거"
-
-#: ../settings-dialogs/xfwm4-settings.c:453
+#: ../settings-dialogs/xfwm4-settings.c:380
 msgid "Theme"
 msgstr "테마"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:531
 msgid "Action"
 msgstr "동작"
 
-#: ../settings-dialogs/xfwm4-settings.c:607
+#: ../settings-dialogs/xfwm4-settings.c:536
 msgid "Shortcut"
 msgstr "바로 가기"
 
-#: ../settings-dialogs/xfwm4-settings.c:993
+#: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf를 초기화 하는데 실패했습니다. 이유는 다음과 같습니다: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:1004
+#: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
 msgstr "설정 대화상자를 만들 수 없습니다."
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
-#: ../settings-dialogs/xfwm4-settings.c:1894
+#: ../settings-dialogs/xfwm4-settings.c:1901
+#: ../settings-dialogs/xfwm4-settings.c:1902
 msgid "Reset to Defaults"
 msgstr "기본값으로 초기화"
 
-#: ../settings-dialogs/xfwm4-settings.c:1895
+#: ../settings-dialogs/xfwm4-settings.c:1903
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "이 행동은 모든 단축기를 기본값으로 되돌립니다. 정말로 실행하시렵니까?"
 
@@ -686,7 +416,7 @@ msgstr "창 순환(_Y)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Cycle _through windows on all workspaces"
-msgstr "모든 작업공간의 창을 대상으로 순환(_T)"
+msgstr "모든 작업 공간의 창을 대상으로 순환(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Display _fullscreen overlay windows directly"
@@ -762,7 +492,7 @@ msgstr "팝업 창에 그림자 표시(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Switch to win_dow's workspace"
-msgstr "창의 작업공간으로 이동(_D)"
+msgstr "창의 작업 공간으로 이동(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "U_nder the mouse pointer"
@@ -774,7 +504,7 @@ msgstr "창 잡기 대신 모서리 저항을 사용(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "데스크톱 상에서 마우스 휠을 돌려 작업공간 전환(_M)"
+msgstr "데스크톱 상에서 마우스 휠을 돌려 작업 공간 전환(_M)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "When a window raises itself:"
@@ -782,11 +512,11 @@ msgstr "창이 위로 올라 올 때:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "실제 데스크톱 배치에 따라 작업공간을 전환(_L)"
+msgstr "실제 데스크톱 배치에 따라 작업 공간을 전환(_L)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "첫번째나 마지막 작업공간에 도달하면 작업공간 전환(_T)"
+msgstr "첫번째나 마지막 작업 공간에 도달하면 작업 공간 전환(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Accessibility"
@@ -794,7 +524,7 @@ msgstr "접근성(_A)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Bring window on current workspace"
-msgstr "창을 현재 작업공간으로 이동(_B)"
+msgstr "창을 현재 작업 공간으로 이동(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Draw frame around selected windows while cycling"
@@ -824,11 +554,11 @@ msgstr "아무 마우스 단추든 눌리면 창을 앞으로(_R)"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "바로 가기 키로 바꿀 때 이전 작업공간을 호출하고 복원(_R)"
+msgstr "바로 가기 키로 바꿀 때 이전 작업 공간을 호출하고 복원(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "_Workspaces"
-msgstr "작업공간(_W)"
+msgstr "작업 공간(_W)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Layout"
@@ -852,7 +582,7 @@ msgstr "여백(_M)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Number of workspaces:"
-msgstr "작업공간의 수(_N):"
+msgstr "작업 공간의 수(_N):"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -957,15 +687,15 @@ msgstr "문맥 도움말(_H)"
 #. --------------------------------------------------------
 #: ../src/menu.c:60
 msgid "Always on Visible Workspace"
-msgstr "항상 보이는 작업공간으로"
+msgstr "항상 보이는 작업 공간으로"
 
 #: ../src/menu.c:61
 msgid "Only on This Workspace"
-msgstr "이 작업공간에만"
+msgstr "이 작업 공간에만"
 
 #: ../src/menu.c:62
 msgid "Move to Another Workspace"
-msgstr "다른 작업공간으로 이동"
+msgstr "다른 작업 공간으로 이동"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -1020,3 +750,215 @@ msgstr "자식 프로세스에서 데이터를 읽는동안 오류가 발생했�
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "도우미 대화상자를 생성할 수 없습니다: %s\n"
 
+#~ msgid "<b>Box move and resize</b>"
+#~ msgstr "<b>창 이동 및 크기 변경</b>"
+
+#~ msgid "<b>Wrap workspaces</b>"
+#~ msgstr "<b>작업 공간 전환</b>"
+
+#~ msgid "<b>_Window shortcuts</b>"
+#~ msgstr "<b>창 바로 가기(_W)</b>"
+
+#~ msgid "Hide content of windows when _resizing"
+#~ msgstr "창 크기를 변경할 때 내용 숨기기(_R)"
+
+#~ msgid "Snap windows to other _windows"
+#~ msgstr "다른 창에 맞추어 움직임(_W)"
+
+#~ msgid "Wrap workspaces when _dragging a window off the screen"
+#~ msgstr "창을 화면 밖으로 끌어 움직이면 작업 공간 전환(_D)"
+
+#~ msgid "Window operations menu"
+#~ msgstr "창 조작 메뉴"
+
+#~ msgid "Up"
+#~ msgstr "위로"
+
+#~ msgid "Down"
+#~ msgstr "아래로"
+
+#~ msgid "Cancel"
+#~ msgstr "취소"
+
+#~ msgid "Cycle windows"
+#~ msgstr "창 순환"
+
+#~ msgid "Cycle windows (Reverse)"
+#~ msgstr "창 순환(역순)"
+
+#~ msgid "Switch window for same application"
+#~ msgstr "동일 프로그램 창 전환"
+
+#~ msgid "Switch application"
+#~ msgstr "프로그램 전환"
+
+#~ msgid "Close window"
+#~ msgstr "창 닫기"
+
+#~ msgid "Maximize window horizontally"
+#~ msgstr "수평 방향 창 최대화"
+
+#~ msgid "Maximize window vertically"
+#~ msgstr "수직 방향 창 최대화"
+
+#~ msgid "Move window"
+#~ msgstr "창 이동"
+
+#~ msgid "Resize window"
+#~ msgstr "창 크기 조절"
+
+#~ msgid "Stick window"
+#~ msgstr "모든 작업 공간에서 창 보기"
+
+#~ msgid "Raise window"
+#~ msgstr "창 앞으로 올리기"
+
+#~ msgid "Raise or lower window"
+#~ msgstr "창 앞으로 올리거나 뒤로 내리기"
+
+#~ msgid "Fill window horizontally"
+#~ msgstr "창 수평으로 채우기"
+
+#~ msgid "Fill window vertically"
+#~ msgstr "창 수직으로 채우기"
+
+#~ msgid "Toggle above"
+#~ msgstr "위로 전환"
+
+#~ msgid "Toggle fullscreen"
+#~ msgstr "전체 화면 전환"
+
+#~ msgid "Move window to upper workspace"
+#~ msgstr "위쪽 작업 공간으로 창 이동"
+
+#~ msgid "Move window to bottom workspace"
+#~ msgstr "아래쪽 작업 공간으로 창 이동"
+
+#~ msgid "Move window to left workspace"
+#~ msgstr "왼쪽 작업 공간으로 창 이동"
+
+#~ msgid "Move window to right workspace"
+#~ msgstr "오른쪽 작업 공간으로 창 이동"
+
+#~ msgid "Move window to previous workspace"
+#~ msgstr "이전 작업 공간으로 창 이동"
+
+#~ msgid "Move window to next workspace"
+#~ msgstr "다음 작업 공간으로 창 이동"
+
+#~ msgid "Move window to workspace 1"
+#~ msgstr "작업 공간 1로 창 이동"
+
+#~ msgid "Move window to workspace 2"
+#~ msgstr "작업 공간 2로 창 이동"
+
+#~ msgid "Move window to workspace 3"
+#~ msgstr "작업 공간 3으로 창 이동"
+
+#~ msgid "Move window to workspace 4"
+#~ msgstr "작업 공간 4로 창 이동"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "작업 공간 5로 창 이동"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "작업 공간 6으로 창 이동"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "작업 공간 7로 창 이동"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "작업 공간 8로 창 이동"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "작업 공간 9로 창 이동"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "작업 공간 10으로 창 이동"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "작업 공간 11로 창 이동"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "작업 공간 12로 창 이동"
+
+#~ msgid "Tile window to the top"
+#~ msgstr "상단에 창 바둑판 정렬"
+
+#~ msgid "Tile window to the bottom"
+#~ msgstr "하단에 창 바둑판 정렬"
+
+#~ msgid "Tile window to the left"
+#~ msgstr "왼쪽에 창 바둑판 정렬"
+
+#~ msgid "Tile window to the right"
+#~ msgstr "오른쪽에 창 바둑판 정렬"
+
+#~ msgid "Show desktop"
+#~ msgstr "데스크톱 보기"
+
+#~ msgid "Upper workspace"
+#~ msgstr "위쪽 작업 공간으로 이동"
+
+#~ msgid "Bottom workspace"
+#~ msgstr "아래쪽 작업 공간으로 이동"
+
+#~ msgid "Left workspace"
+#~ msgstr "왼쪽 작업 공간으로 이동"
+
+#~ msgid "Right workspace"
+#~ msgstr "오른쪽 작업 공간으로 이동"
+
+#~ msgid "Previous workspace"
+#~ msgstr "이전 작업 공간으로 이동"
+
+#~ msgid "Next workspace"
+#~ msgstr "다음 작업 공간으로 이동"
+
+#~ msgid "Workspace 1"
+#~ msgstr "작업 공간 1"
+
+#~ msgid "Workspace 2"
+#~ msgstr "작업 공간 2"
+
+#~ msgid "Workspace 3"
+#~ msgstr "작업 공간 3"
+
+#~ msgid "Workspace 4"
+#~ msgstr "작업 공간 4"
+
+#~ msgid "Workspace 5"
+#~ msgstr "작업 공간 5"
+
+#~ msgid "Workspace 6"
+#~ msgstr "작업 공간 6"
+
+#~ msgid "Workspace 7"
+#~ msgstr "작업 공간 7"
+
+#~ msgid "Workspace 8"
+#~ msgstr "작업 공간 8"
+
+#~ msgid "Workspace 9"
+#~ msgstr "작업 공간 9"
+
+#~ msgid "Workspace 10"
+#~ msgstr "작업 공간 10"
+
+#~ msgid "Workspace 11"
+#~ msgstr "작업 공간 11"
+
+#~ msgid "Workspace 12"
+#~ msgstr "작업 공간 12"
+
+#~ msgid "Add workspace"
+#~ msgstr "작업 공간 추가"
+
+#~ msgid "Add adjacent workspace"
+#~ msgstr "이웃하는 작업 공간 추가"
+
+#~ msgid "Delete last workspace"
+#~ msgstr "마지막 작업 공간 제거"
+
+#~ msgid "Delete active workspace"
+#~ msgstr "사용 중인 작업 공간 제거"
