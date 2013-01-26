@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-25 15:27+0000\n"
-"PO-Revision-Date: 2013-01-25 22:42+0200\n"
+"POT-Creation-Date: 2013-01-25 20:45+0000\n"
+"PO-Revision-Date: 2013-01-26 11:09+0200\n"
 "Last-Translator: Cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg\n"
@@ -31,7 +31,7 @@ msgstr "Внимание"
 
 #: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
-msgstr "Нищо"
+msgstr "Няма"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
@@ -39,25 +39,25 @@ msgstr "Гнездо на мениджъра на сесиите"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "Гнездо ID"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:317
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Информация за версията"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:964
+#: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:968
+#: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -77,17 +77,17 @@ msgid "Workspace Name"
 msgstr "Име на работното място"
 
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Гнездо на мениджъра на настройките"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Configure window behavior and shortcuts"
 msgstr "Настройка на поведението на прозорците и клавишните комбинации"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Window Manager"
 msgstr "Мениджър на прозорците"
 
@@ -97,7 +97,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Допълнителна настройка на мениджъра на прозорците и ефектите"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "Window Manager Tweaks"
 msgstr "Мениджър на прозорците (допълнителен)"
 
@@ -112,20 +112,20 @@ msgid "Workspaces"
 msgstr "Работни места"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Кутия за преместване и оразмеряване</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
 msgstr "<b>Разположение на бутоните</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Double click _action</b>"
 msgstr "<b>Действие при двойно кликване</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Focus model</b>"
 msgstr "<b>Режим на фокусиране</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Скриване на съдържанието на прозорците</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -140,78 +140,78 @@ msgid "<b>Raise on focus</b>"
 msgstr "<b>Повдигане при фокусиране</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "<b>The_me</b>"
+msgstr "<b>Тема</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title _alignment</b>"
 msgstr "<b>Разположение на заглавието</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Title fon_t</b>"
 msgstr "<b>Шрифт на заглавието</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-msgid "<b>Window _shortcuts</b>"
-msgstr "<b>Клавишни комбинации за прозорец</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "<b>Windows snapping</b>"
 msgstr "<b>Прилепваване на прозорци</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Превключване на работните места</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-msgid "<b>_Theme</b>"
-msgstr "<b>Тема</b>"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr "<b>Опаковане на работните места при достигане края на екрана</b>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "<i>Long</i>"
 msgstr "<i>Дълго</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "<i>Short</i>"
 msgstr "<i>Късо</i>"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "<i>Small</i>"
 msgstr "<i>Малко</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "<i>Wide</i>"
 msgstr "<i>Широко</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Active"
 msgstr "Активен"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Ad_vanced"
 msgstr "За напреднали"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Автоматично издигане на прозореца на преден план, когато е поставен на фокус"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically give focus to _newly created windows"
 msgstr "Автоматично прехвърляне на фокуса към новосъздадени прозорци"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Clic_k to focus"
-msgstr "Фокусиране при кликване"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Click and drag the buttons to change the layout"
 msgstr "Кликване върху бутоните и влачене за промяна на подредбата"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+msgid "Click to foc_us"
+msgstr "Фокусиране при кликване"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Close"
 msgstr "Затваряне"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "Задаване на клавишни комбинации за действията на мениджъра на прозорците"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -230,81 +230,81 @@ msgid "Hidden"
 msgstr "Скрит"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "Скриване съдържанието на прозореца при преместване"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "Скриване съдържанието на прозорците при преоразмеряване"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Ke_yboard"
-msgstr "Клавиатура"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Maximize"
 msgstr "Максимизиране"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "Меню"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Minimize"
 msgstr "Минимизиране"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "Повдигане на прозореца при кликване върху програма в него"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Shade"
 msgstr "Сянка"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to other _windows"
-msgstr "Прилепване на прозореца към други прозорци"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "Snap windows to screen _border"
-msgstr "Прилепване на прозореца към края на екрана"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Stick"
-msgstr "Залепване"
+msgstr "Прилепване"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Действия, които да се изпълняват при двойно кликване върху заглавието"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "The window title cannot be removed"
 msgstr "Не може да бъде премахнато заглавието на прозореца"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Title"
 msgstr "Заглавие"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "To other _windows"
+msgstr "На други прозорци"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "To screen _borders"
+msgstr "В края на екрана"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "When _moving"
+msgstr "При преместване"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "When _resizing"
+msgstr "При преоразмеряване"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+msgid "With a _dragged window"
+msgstr "С влачене на прозореца"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Превключване на работните места при плъзгане на прозореца извън екрана"
+msgid "With the mouse _pointer"
+msgstr "С показалеца на мишката"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Превключване на работните места, когато курсорът достигне краят на екрана"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Delay before window receives focus:"
 msgstr "Забавяне, преди прозорецът да бъде поставен на фокус:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Edge resistance:"
 msgstr "Съпротивление в краищата:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Focus"
 msgstr "Фокус"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+msgid "_Keyboard"
+msgstr "_Клавиатура"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "_Reset to Defaults"
@@ -315,22 +315,18 @@ msgid "_Style"
 msgstr "Стил"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
 msgstr "Сянка в заглавието на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
 msgstr "Скриване на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
 msgstr "Максимизиране на прозорец"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "Изпълване на прозорец"
 
@@ -339,7 +335,6 @@ msgid "Nothing"
 msgstr "Нищо"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
 msgstr "Ляво"
 
@@ -348,301 +343,36 @@ msgid "Center"
 msgstr "Център"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
 msgstr "Дясно"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
-msgid "Window operations menu"
-msgstr "Меню за операции с прозорци"
-
-#: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Up"
-msgstr "Нагоре"
-
-#: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Down"
-msgstr "Надолу"
-
-#: ../settings-dialogs/xfwm4-settings.c:241
-msgid "Cancel"
-msgstr "Отмяна"
-
-#: ../settings-dialogs/xfwm4-settings.c:242
-msgid "Cycle windows"
-msgstr "Превключване на прозорците"
-
-#: ../settings-dialogs/xfwm4-settings.c:243
-msgid "Cycle windows (Reverse)"
-msgstr "Превключване на прозорците (В обратна посока)"
-
-#: ../settings-dialogs/xfwm4-settings.c:244
-msgid "Switch window for same application"
-msgstr "Превключване на прозорци за една и съща програма"
-
-#: ../settings-dialogs/xfwm4-settings.c:245
-msgid "Switch application"
-msgstr "Превключване на програма"
-
-#: ../settings-dialogs/xfwm4-settings.c:246
-msgid "Close window"
-msgstr "Затваряне на прозорец"
-
-#: ../settings-dialogs/xfwm4-settings.c:247
-msgid "Maximize window horizontally"
-msgstr "Максимизиране на прозорец по хоризонтала"
-
-#: ../settings-dialogs/xfwm4-settings.c:248
-msgid "Maximize window vertically"
-msgstr "Максимизиране на прозорец по вертикала"
-
-#: ../settings-dialogs/xfwm4-settings.c:251
-msgid "Move window"
-msgstr "Преместване на прозорец"
-
-#: ../settings-dialogs/xfwm4-settings.c:252
-msgid "Resize window"
-msgstr "Преоразмеряване на прозорец"
-
-#: ../settings-dialogs/xfwm4-settings.c:254
-msgid "Stick window"
-msgstr "Прилепване на прозорец"
-
-#: ../settings-dialogs/xfwm4-settings.c:255
-msgid "Raise window"
-msgstr "Издигане на прозорец"
-
-#: ../settings-dialogs/xfwm4-settings.c:256
-msgid "Lower window"
-msgstr "Сваляне на прозорец"
-
-#: ../settings-dialogs/xfwm4-settings.c:257
-msgid "Raise or lower window"
-msgstr "Издигане или сваляне на прозорец"
-
-#: ../settings-dialogs/xfwm4-settings.c:259
-msgid "Fill window horizontally"
-msgstr "Изпълване на прозореца по хоризонтала"
-
-#: ../settings-dialogs/xfwm4-settings.c:260
-msgid "Fill window vertically"
-msgstr "Изпълване на прозореца по вертикала"
-
-#: ../settings-dialogs/xfwm4-settings.c:261
-msgid "Toggle above"
-msgstr "Превключване нагоре"
-
-#: ../settings-dialogs/xfwm4-settings.c:262
-msgid "Toggle fullscreen"
-msgstr "Превключване на пълен екран"
-
-#: ../settings-dialogs/xfwm4-settings.c:263
-msgid "Move window to upper workspace"
-msgstr "Преместване на прозореца в горната част на работното място"
-
-#: ../settings-dialogs/xfwm4-settings.c:264
-msgid "Move window to bottom workspace"
-msgstr "Преместване на прозореца в долната част на работното място"
-
-#: ../settings-dialogs/xfwm4-settings.c:265
-msgid "Move window to left workspace"
-msgstr "Преместване на прозореца в лявата част на работното място"
-
-#: ../settings-dialogs/xfwm4-settings.c:266
-msgid "Move window to right workspace"
-msgstr "Преместване на прозореца в дясната част на работното място"
-
-#: ../settings-dialogs/xfwm4-settings.c:267
-msgid "Move window to previous workspace"
-msgstr "Преместване на прозореца на предишното работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:268
-msgid "Move window to next workspace"
-msgstr "Преместване на прозореца на следващото работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:269
-msgid "Move window to workspace 1"
-msgstr "Преместване на прозорец на работно място 1"
-
-#: ../settings-dialogs/xfwm4-settings.c:270
-msgid "Move window to workspace 2"
-msgstr "Преместване на прозорец на работно място 2"
-
-#: ../settings-dialogs/xfwm4-settings.c:271
-msgid "Move window to workspace 3"
-msgstr "Преместване на прозорец на работно място 3"
-
-#: ../settings-dialogs/xfwm4-settings.c:272
-msgid "Move window to workspace 4"
-msgstr "Преместване на прозорец на работно място 4"
-
-#: ../settings-dialogs/xfwm4-settings.c:273
-msgid "Move window to workspace 5"
-msgstr "Преместване на прозорец на работно място 5"
-
-#: ../settings-dialogs/xfwm4-settings.c:274
-msgid "Move window to workspace 6"
-msgstr "Преместване на прозорец на работно място 6"
-
-#: ../settings-dialogs/xfwm4-settings.c:275
-msgid "Move window to workspace 7"
-msgstr "Преместване на прозорец на работно място 7"
-
-#: ../settings-dialogs/xfwm4-settings.c:276
-msgid "Move window to workspace 8"
-msgstr "Преместване на прозорец на работно място 8"
-
-#: ../settings-dialogs/xfwm4-settings.c:277
-msgid "Move window to workspace 9"
-msgstr "Преместване на прозорец на работно място 9"
-
-#: ../settings-dialogs/xfwm4-settings.c:278
-msgid "Move window to workspace 10"
-msgstr "Преместване на прозорец на работно място 10"
-
-#: ../settings-dialogs/xfwm4-settings.c:279
-msgid "Move window to workspace 11"
-msgstr "Преместване на прозорец на работно място 11"
-
-#: ../settings-dialogs/xfwm4-settings.c:280
-msgid "Move window to workspace 12"
-msgstr "Преместване на прозорец на работно място 12"
-
-#: ../settings-dialogs/xfwm4-settings.c:281
-msgid "Tile window to the top"
-msgstr "Заглавието на прозореца да е отгоре"
-
-#: ../settings-dialogs/xfwm4-settings.c:282
-msgid "Tile window to the bottom"
-msgstr "Заглавието на прозореца да е отдолу"
-
-#: ../settings-dialogs/xfwm4-settings.c:283
-msgid "Tile window to the left"
-msgstr "Заглавието на прозореца да е отляво"
-
-#: ../settings-dialogs/xfwm4-settings.c:284
-msgid "Tile window to the right"
-msgstr "Заглавието на прозореца да е отдясно"
-
-#: ../settings-dialogs/xfwm4-settings.c:285
-msgid "Show desktop"
-msgstr "Показване на работният плот"
-
-#: ../settings-dialogs/xfwm4-settings.c:286
-msgid "Upper workspace"
-msgstr "Горно работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:287
-msgid "Bottom workspace"
-msgstr "Долно работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Left workspace"
-msgstr "Ляво работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Right workspace"
-msgstr "Дясно работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Previous workspace"
-msgstr "Предишно работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:291
-msgid "Next workspace"
-msgstr "Следващо работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:292
-msgid "Workspace 1"
-msgstr "Работно място 1"
-
-#: ../settings-dialogs/xfwm4-settings.c:293
-msgid "Workspace 2"
-msgstr "Работно място 2"
-
-#: ../settings-dialogs/xfwm4-settings.c:294
-msgid "Workspace 3"
-msgstr "Работно място 3"
-
-#: ../settings-dialogs/xfwm4-settings.c:295
-msgid "Workspace 4"
-msgstr "Работно място 4"
-
-#: ../settings-dialogs/xfwm4-settings.c:296
-msgid "Workspace 5"
-msgstr "Работно място 5"
-
-#: ../settings-dialogs/xfwm4-settings.c:297
-msgid "Workspace 6"
-msgstr "Работно място 6"
-
-#: ../settings-dialogs/xfwm4-settings.c:298
-msgid "Workspace 7"
-msgstr "Работно място 7"
-
-#: ../settings-dialogs/xfwm4-settings.c:299
-msgid "Workspace 8"
-msgstr "Работно място 8"
-
-#: ../settings-dialogs/xfwm4-settings.c:300
-msgid "Workspace 9"
-msgstr "Работно място 9"
-
-#: ../settings-dialogs/xfwm4-settings.c:301
-msgid "Workspace 10"
-msgstr "Работно място 10"
-
-#: ../settings-dialogs/xfwm4-settings.c:302
-msgid "Workspace 11"
-msgstr "Работно място 11"
-
-#: ../settings-dialogs/xfwm4-settings.c:303
-msgid "Workspace 12"
-msgstr "Работно място 12"
-
-#: ../settings-dialogs/xfwm4-settings.c:304
-msgid "Add workspace"
-msgstr "Добавяне на работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:305
-msgid "Add adjacent workspace"
-msgstr "Добавяне на съседно работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:306
-msgid "Delete last workspace"
-msgstr "Изтриване на последното работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:307
-msgid "Delete active workspace"
-msgstr "Изтриване на текущото работно място"
-
-#: ../settings-dialogs/xfwm4-settings.c:453
+#: ../settings-dialogs/xfwm4-settings.c:380
 msgid "Theme"
 msgstr "Тема"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:531
 msgid "Action"
 msgstr "Действие"
 
-#: ../settings-dialogs/xfwm4-settings.c:607
+#: ../settings-dialogs/xfwm4-settings.c:536
 msgid "Shortcut"
 msgstr "Клавишна комбинация"
 
-#: ../settings-dialogs/xfwm4-settings.c:993
+#: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Но може да бъде инициализирана xfconf. Причина: %s"
+msgstr "Не може да бъде инициализирана xfconf. Причина: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:1004
+#: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
 msgstr "Не може да бъде създаден диалог за настройки."
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
-#: ../settings-dialogs/xfwm4-settings.c:1894
+#: ../settings-dialogs/xfwm4-settings.c:1901
+#: ../settings-dialogs/xfwm4-settings.c:1902
 msgid "Reset to Defaults"
 msgstr "Възстановяване на настройките по подразбиране"
 
-#: ../settings-dialogs/xfwm4-settings.c:1895
+#: ../settings-dialogs/xfwm4-settings.c:1903
 msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
 msgstr "Това действие ще възстанови всички клавишни комбинации към тяхната стойност по подразбиране. Наистина ли искате да направите това?"
 
@@ -660,11 +390,11 @@ msgid "<i>Transparent</i>"
 msgstr "<i>Прозрачно</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate _focus stealing prevention"
+msgid "Activate foc_us stealing prevention"
 msgstr "Активиране на фокус \"Превенция от кражби\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the _center of the screen"
+msgid "At the c_enter of the screen"
 msgstr "В центъра на екрана"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
@@ -696,7 +426,7 @@ msgid "Do _nothing"
 msgstr "Не прави нищо"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when maximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "Скриване на рамките на прозорците, когато са максимизирани"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
@@ -724,7 +454,7 @@ msgid "Opacity of _inactive windows:"
 msgstr "Непрозрачност на неактивните прозорци:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of popup window_s:"
+msgid "Opacity of popup wi_ndows:"
 msgstr "Непрозрачност на изскачащите прозорци:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
@@ -733,99 +463,100 @@ msgstr "Непрозрачност на прозорците при премес
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Opacity of windows during resi_ze:"
-msgstr "Непрозрачност на прозорците при оразмеряване:"
+msgstr "Непрозрачност на прозорците при преоразмеряване:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Restore original _size of maximized windows when moving"
+msgid "Restore original size of maximi_zed windows when moving"
 msgstr "Възстановяване на първоначалният размер на максимизираните прозорци при преместване"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid ""
+"S_kip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr ""
+"Пропускане на прозорците, които имат зададено свойство\n"
+" \"пропусни превключвателя на работните места\" или\n"
+"\"пропусни лентата на задачите\" в настройките"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Show shadows under _dock windows"
 msgstr "Показване на сенки под прилепените прозорци"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Show shadows under _regular windows"
 msgstr "Показване на сенки под нормалните прозорци"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Show shadows under pop_up windows"
 msgstr "Показване на сенки под изскачащите прозорци"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Switch to win_dow's workspace"
 msgstr "Превключване на прозорците на работното място"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Under the mouse _pointer"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "U_nder the mouse pointer"
 msgstr "Под показалеца на мишката"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Използване на съпротивление по краищата вместо прилепване на прозорците"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "Използване на показалеца на мишката в работният плот за смяна на работните места"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "When a window raises itself:"
 msgstr "Когато прозорецът се самоповдига:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Превъртане на работните места в зависимост от действителното разположение на десктопа"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "Wrap workspaces when the _first or the last workspace is reached"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "Превъртане на работните места, когато е достигнато първото или последното работно място"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Accessibility"
 msgstr "Достъпност"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Bring window on current workspace"
 msgstr "Преместване на прозореца на текущото работно място"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Draw frame around selected windows while cycling"
 msgstr "Очертаване на рамка около избраният прозорец при превключване"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Enable display compositing"
 msgstr "Включване на композирането на екрана /ефекти/"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "Включване на скритите (минимизирани до икона) прозорци"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Минимален размер на прозорците, при който да бъде включено интелегентното разположение:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "_Placement"
-msgstr "Поставяне"
+msgstr "Разположение"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "Повдигане на прозореца, когато някой от бутоните на мишката е натиснат"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
 "Запомняне и връщане на предишното работно място\n"
 "при превключване с бързи клавиши"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-msgid ""
-"_Skip windows that have \"skip pager\"\n"
-"or \"skip taskbar\" properties set"
-msgstr ""
-"_Пропусни прозореца, когато е зададено \"пропусни пейджъра\"\n"
-"или \"пропусни лентата на задачи\" от настройките"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "_Workspaces"
@@ -1021,17 +752,230 @@ msgstr "Грешка при прочитане на данните от дъще
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Не може да се покаже помощен диалог: %s\n"
 
+#~ msgid "<b>Box move and resize</b>"
+#~ msgstr "<b>Преместване и преоразмеряване на прозорец</b>"
+
+#~ msgid "<b>Wrap workspaces</b>"
+#~ msgstr "<b>Превключване на работните места</b>"
+
+#~ msgid "<b>_Window shortcuts</b>"
+#~ msgstr "<b>Бързи клавиши за работа с прозорци</b>"
+
+#~ msgid "Hide content of windows when _resizing"
+#~ msgstr "Скриване на съдържанието на прозорците при преоразмеряване"
+
+#~ msgid "Snap windows to other _windows"
+#~ msgstr "Прилепване към други прозорци"
+
+#~ msgid "Wrap workspaces when _dragging a window off the screen"
+#~ msgstr "Превключване на работните места при излизане на прозорците от екрана"
+
+#~ msgid "Window operations menu"
+#~ msgstr "Меню за операции с прозорци"
+
+#~ msgid "Up"
+#~ msgstr "Нагоре"
+
+#~ msgid "Down"
+#~ msgstr "Надолу"
+
+#~ msgid "Cancel"
+#~ msgstr "Отмяна"
+
+#~ msgid "Cycle windows"
+#~ msgstr "Превключване на прозорците"
+
+#~ msgid "Cycle windows (Reverse)"
+#~ msgstr "Превключване на прозорците (В обратна посока)"
+
+#~ msgid "Switch window for same application"
+#~ msgstr "Превключване на прозорци за една и съща програма"
+
+#~ msgid "Switch application"
+#~ msgstr "Превключване на програма"
+
+#~ msgid "Close window"
+#~ msgstr "Затваряне на прозорец"
+
+#~ msgid "Maximize window horizontally"
+#~ msgstr "Максимизиране на прозорец по хоризонтала"
+
+#~ msgid "Maximize window vertically"
+#~ msgstr "Максимизиране на прозорец по вертикала"
+
+#~ msgid "Move window"
+#~ msgstr "Преместване на прозорец"
+
+#~ msgid "Resize window"
+#~ msgstr "Преоразмеряване на прозорец"
+
+#~ msgid "Stick window"
+#~ msgstr "Прилепване на прозорец"
+
+#~ msgid "Raise window"
+#~ msgstr "Издигане на прозорец"
+
+#~ msgid "Raise or lower window"
+#~ msgstr "Издигане или сваляне на прозорец"
+
+#~ msgid "Fill window horizontally"
+#~ msgstr "Изпълване на прозореца по хоризонтала"
+
+#~ msgid "Fill window vertically"
+#~ msgstr "Изпълване на прозореца по вертикала"
+
+#~ msgid "Toggle above"
+#~ msgstr "Превключване нагоре"
+
+#~ msgid "Toggle fullscreen"
+#~ msgstr "Режим на цял екран"
+
+#~ msgid "Move window to upper workspace"
+#~ msgstr "Преместване на прозореца на горното работно място"
+
+#~ msgid "Move window to bottom workspace"
+#~ msgstr "Преместване на прозореца на долното работно място"
+
+#~ msgid "Move window to left workspace"
+#~ msgstr "Преместване на прозореца на лявото работно място"
+
+#~ msgid "Move window to right workspace"
+#~ msgstr "Преместване на прозореца на дясното работно място"
+
+#~ msgid "Move window to previous workspace"
+#~ msgstr "Преместване на прозореца на предишното работно място"
+
+#~ msgid "Move window to next workspace"
+#~ msgstr "Преместване на прозореца на следващото работно място"
+
+#~ msgid "Move window to workspace 1"
+#~ msgstr "Преместване на прозореца на работно място 1"
+
+#~ msgid "Move window to workspace 2"
+#~ msgstr "Преместване на прозореца на работно място 2"
+
+#~ msgid "Move window to workspace 3"
+#~ msgstr "Преместване на прозореца на работно място 3"
+
+#~ msgid "Move window to workspace 4"
+#~ msgstr "Преместване на прозореца на работно място 4"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Преместване на прозореца на работно място 5"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Преместване на прозореца на работно място 6"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Преместване на прозореца на работно място 7"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Преместване на прозореца на работно място 8"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Преместване на прозореца на работно място 9"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "Преместване на прозореца на работно място 10"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "Преместване на прозореца на работно място 11"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "Преместване на прозореца на работно място 12"
+
+#~ msgid "Tile window to the top"
+#~ msgstr "Преместване на прозореца нагоре"
+
+#~ msgid "Tile window to the bottom"
+#~ msgstr "Преместване на прозореца надолу"
+
+#~ msgid "Tile window to the left"
+#~ msgstr "Проместване на прозореца в ляво"
+
+#~ msgid "Tile window to the right"
+#~ msgstr "Преместване на прозореца в дясно"
+
+#~ msgid "Show desktop"
+#~ msgstr "Показване на Работният плот"
+
+#~ msgid "Upper workspace"
+#~ msgstr "Горното работно място"
+
+#~ msgid "Bottom workspace"
+#~ msgstr "Долното работно място"
+
+#~ msgid "Left workspace"
+#~ msgstr "Лявото работно място"
+
+#~ msgid "Right workspace"
+#~ msgstr "Дясното работно място"
+
+#~ msgid "Previous workspace"
+#~ msgstr "Предишно работно място"
+
+#~ msgid "Next workspace"
+#~ msgstr "Следующее рабочее место"
+
+#~ msgid "Workspace 1"
+#~ msgstr "Работно място 1"
+
+#~ msgid "Workspace 2"
+#~ msgstr "Работно място 2"
+
+#~ msgid "Workspace 3"
+#~ msgstr "Работно място 3"
+
+#~ msgid "Workspace 4"
+#~ msgstr "Работно място 4"
+
+#~ msgid "Workspace 5"
+#~ msgstr "Работно място 5"
+
+#~ msgid "Workspace 6"
+#~ msgstr "Работно място 6"
+
+#~ msgid "Workspace 7"
+#~ msgstr "Работно място 7"
+
+#~ msgid "Workspace 8"
+#~ msgstr "Работно място 8"
+
+#~ msgid "Workspace 9"
+#~ msgstr "Работно място 9"
+
+#~ msgid "Workspace 10"
+#~ msgstr "Работно място 10"
+
+#~ msgid "Workspace 11"
+#~ msgstr "Работно място 11"
+
+#~ msgid "Workspace 12"
+#~ msgstr "Работно място 12"
+
+#~ msgid "Add workspace"
+#~ msgstr "Добавяне на работно място"
+
+#~ msgid "Add adjacent workspace"
+#~ msgstr "Добавяне на съседно работно място"
+
+#~ msgid "Delete last workspace"
+#~ msgstr "Премахване на последното работно място"
+
+#~ msgid "Delete active workspace"
+#~ msgstr "Премахване на активното работно място"
+
 #~ msgid "Set number and names of workspaces"
-#~ msgstr "Задайте номер и имена на работните места"
+#~ msgstr "Укажите количество и названия рабочих мест"
 
 #~ msgid "<b>Workspaces</b>"
 #~ msgstr "<b>Работни места</b>"
 
 #~ msgid "Change workspace name"
-#~ msgstr "Промяна на имената на работните места"
+#~ msgstr "Смяна на имената на работните места"
 
 #~ msgid "Hide"
 #~ msgstr "Скриване"
 
 #~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Грешка при сегментация"
+#~ msgstr "%s: Неуспешна сегментация"
