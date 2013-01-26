@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-10 06:18+0000\n"
-"PO-Revision-Date: 2013-01-10 12:04+0200\n"
+"POT-Creation-Date: 2013-01-25 20:48+0000\n"
+"PO-Revision-Date: 2013-01-26 11:10+0200\n"
 "Last-Translator: Cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian\n"
 "Language: bg\n"
@@ -631,7 +631,7 @@ msgstr "Клавишна комбинация"
 #: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Но може да бъде инициализирана xfconf. Причина: %s"
+msgstr "Нe може да бъде инициализирана xfconf. Причина: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
@@ -733,7 +733,7 @@ msgstr "Непрозрачност на прозорците при премес
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Opacity of windows during resi_ze:"
-msgstr "Непрозрачност на прозорците при оразмеряване:"
+msgstr "Непрозрачност на прозорците при преоразмеряване:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Restore original _size of maximized windows when moving"
@@ -805,7 +805,7 @@ msgstr "Минимален размер на прозорците, при кой
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Placement"
-msgstr "Поставяне"
+msgstr "Разположение"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Raise windows when any mouse button is pressed"
