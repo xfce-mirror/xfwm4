@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 03:03+0000\n"
+"POT-Creation-Date: 2013-01-26 23:30+0000\n"
 "PO-Revision-Date: 2012-04-23 23:03-0600\n"
 "Last-Translator: Sergio García <oigres200@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
@@ -159,7 +159,6 @@ msgid "<b>Windows snapping</b>"
 msgstr "<b>Atracción entre ventanas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-#, fuzzy
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr ""
 "Saltar a la siguiente área de trabajo cuando el _puntero llegue al borde de "
@@ -216,9 +215,8 @@ msgid "Close"
 msgstr "Cerrar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Introduzca el atajo para la acción del gestor de ventanas"
+msgstr "Introduzca el atajo para la acción del gestor de _ventanas:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -289,7 +287,6 @@ msgid "When _resizing"
 msgstr "Cuando de _redimenciona"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
 msgid "With a _dragged window"
 msgstr "Con una ventana _enrollada"
 
