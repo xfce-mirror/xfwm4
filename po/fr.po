@@ -127,7 +127,7 @@ msgstr "<b>Modèle de focalisation</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Hide content of windows</b>"
-msgstr "<b>Cacher le contenu des fenêtres</ b>"
+msgstr "<b>Cacher le contenu des fenêtres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -160,7 +160,7 @@ msgstr "<b>Aimantation des fenêtres</b>"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr ""
-"Changer d'espace de travail lorsque le _pointeur arrive au bord de l'écran"
+"<b>Changer d'espace de travail lorsque le pointeur arrive au bord de l'écran</b>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
