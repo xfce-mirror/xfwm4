@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-27 20:38+0400\n"
-"PO-Revision-Date: 2011-08-11 20:58+0300\n"
+"POT-Creation-Date: 2013-02-07 23:02+0400\n"
+"PO-Revision-Date: 2013-02-07 23:02+0400\n"
 "Last-Translator: Sergey Alyoshin <alyoshin.s@gmail.com>\n"
 "Language-Team: xfce-i18n@xfce.org\n"
 "Language: ru\n"
@@ -443,15 +443,15 @@ msgstr "Ничего не _делать"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Key used to _grab and move windows:"
-msgstr "Клавиша, используемая для _захвата и перемещения окон:"
+msgstr "К_лавиша, используемая для _захвата и перемещения окон:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Поднимать окна при нажатии любой кнопки мыши"
+msgstr "Поднимать окна при _нажатии любой кнопки мыши"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide frame of windows when ma_ximized"
-msgstr "Скрывать границы _развёрнутого окна"
+msgstr "Скрывать _границы развёрнутого окна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original size of maximi_zed windows when moving"
@@ -459,8 +459,7 @@ msgstr "Восстанавливать _исходный размер развё
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
-"Автоматически _поднимать окна на передний план окна, когда они получают фокус"
+msgstr "Автоматически складывать окна в мозаику при _движении к краю экрана"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Notify of _urgency by making window's decoration blink"
@@ -472,7 +471,7 @@ msgstr "Использовать сопротивление у _краёв вм�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Непрерывно мигать срочными окнами"
+msgstr "_Непрерывно мигать срочными окнами"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
@@ -529,7 +528,7 @@ msgstr "Под указателем _мыши"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
-msgstr "_Размещение"
+msgstr "Разме_щение"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
