@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-02 05:39+0000\n"
+"POT-Creation-Date: 2013-03-05 04:57+0000\n"
 "PO-Revision-Date: 2010-06-12 00:06+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -145,7 +145,7 @@ msgstr "<b>Te_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "<b>Title _alignment</b>"
-msgstr "<b>_Centriranje natpisa</b>"
+msgstr "<b>_Poravnanje natpisa</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "<b>Title fon_t</b>"
