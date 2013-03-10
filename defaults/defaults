@@ -60,6 +60,7 @@ title_shadow_active=false
 title_shadow_inactive=false
 title_vertical_offset_active=0
 title_vertical_offset_inactive=0
+titleless_maximize=false
 toggle_workspaces=false
 unredirect_overlays=true
 urgent_blink=false

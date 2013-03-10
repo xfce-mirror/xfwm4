@@ -143,6 +143,13 @@ cb_urgent_blink_button_toggled (GtkToggleButton *toggle, GtkWidget *repeat_urgen
 }
 
 static void
+cb_borderless_maximize_button_toggled (GtkToggleButton *toggle, GtkWidget *titleless_maximize_check)
+{
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (titleless_maximize_check), FALSE);
+    gtk_widget_set_sensitive (titleless_maximize_check, gtk_toggle_button_get_active (toggle));
+}
+
+static void
 wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
 {
     GtkWidget *vbox;
@@ -175,6 +182,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *easy_click_combo_box = GTK_WIDGET (gtk_builder_get_object (builder, "easy_click_combo_box"));
     GtkWidget *raise_with_any_button_check = GTK_WIDGET (gtk_builder_get_object (builder, "raise_with_any_button_check"));
     GtkWidget *borderless_maximize_check = GTK_WIDGET (gtk_builder_get_object (builder, "borderless_maximize_check"));
+    GtkWidget *titleless_maximize_check = GTK_WIDGET (gtk_builder_get_object (builder, "titleless_maximize_check"));
     GtkWidget *tile_on_move_check = GTK_WIDGET (gtk_builder_get_object (builder, "tile_on_move_check"));
     GtkWidget *snap_resist_check = GTK_WIDGET (gtk_builder_get_object (builder, "snap_resist_check"));
     GtkWidget *urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "urgent_blink"));
@@ -261,13 +269,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                       "toggled",
                       G_CALLBACK (cb_activate_action_none_radio_toggled),
                       xfwm4_channel);
-#if 0
-    /* OF: Actually, this is not related, so this callback is not needed */
-    g_signal_connect (G_OBJECT (prevent_focus_stealing_check),
+    g_signal_connect (G_OBJECT (borderless_maximize_check),
                       "toggled",
-                      G_CALLBACK (cb_prevent_focus_stealing_check_button_toggled),
-                      prevent_focus_stealing_box);
-#endif
+                      G_CALLBACK (cb_borderless_maximize_button_toggled),
+                      titleless_maximize_check);
     g_signal_connect (G_OBJECT (placement_center_option),
                       "toggled",
                       G_CALLBACK (cb_activate_placement_center_radio_toggled),
@@ -332,6 +337,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             G_TYPE_BOOLEAN,
                             (GObject *)borderless_maximize_check, "active");
     xfconf_g_property_bind (xfwm4_channel,
+                            "/general/titleless_maximize",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)titleless_maximize_check, "active");
+    xfconf_g_property_bind (xfwm4_channel,
                             "/general/tile_on_move",
                             G_TYPE_BOOLEAN,
                             (GObject *)tile_on_move_check, "active");
@@ -353,6 +362,8 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             (GObject *)mousewheel_rollup, "active");
     gtk_widget_set_sensitive (repeat_urgent_blink,
                               gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (urgent_blink)));
+    gtk_widget_set_sensitive (titleless_maximize_check,
+                              gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (borderless_maximize_check)));
 
     /* Workspaces tab */
     xfconf_g_property_bind (xfwm4_channel,

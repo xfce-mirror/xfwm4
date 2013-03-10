@@ -232,9 +232,9 @@
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && \
                                          (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) || \
                                           !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED) ||  \
-                                          !(FLAG_TEST (c->flags, CLIENT_FLAG_HIDE_TITLEBAR) && \
+                                          !((FLAG_TEST (c->flags, CLIENT_FLAG_HIDE_TITLEBAR) || \
+                                            (c->screen_info->params->titleless_maximize)) && \
                                             (c->screen_info->params->borderless_maximize))))
-
 
 typedef enum
 {

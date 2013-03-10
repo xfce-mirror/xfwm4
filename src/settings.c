@@ -700,6 +700,7 @@ loadSettings (ScreenInfo *screen_info)
         /* You can change the order of the following parameters */
         {"activate_action", NULL, G_TYPE_STRING, TRUE},
         {"borderless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"titleless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
         {"box_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"box_resize", NULL, G_TYPE_BOOLEAN, TRUE},
         {"button_layout", NULL, G_TYPE_STRING, TRUE},
@@ -788,6 +789,8 @@ loadSettings (ScreenInfo *screen_info)
 
     screen_info->params->borderless_maximize =
         getBoolValue ("borderless_maximize", rc);
+    screen_info->params->titleless_maximize =
+        getBoolValue ("titleless_maximize", rc);
     screen_info->params->box_resize =
         getBoolValue ("box_resize", rc);
     screen_info->params->box_move =
@@ -1306,6 +1309,11 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "borderless_maximize"))
                 {
                     screen_info->params->borderless_maximize = g_value_get_boolean (value);
+                    reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
+                }
+                else if (!strcmp (name, "titleless_maximize"))
+                {
+                    screen_info->params->titleless_maximize = g_value_get_boolean (value);
                     reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
                 }
                 else if (!strcmp (name, "cycle_minimum"))
