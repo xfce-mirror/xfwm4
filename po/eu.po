@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-03 19:27+0000\n"
+"POT-Creation-Date: 2013-04-17 06:30+0000\n"
 "PO-Revision-Date: 2009-12-15 11:54+0100\n"
 "Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
@@ -42,25 +42,25 @@ msgstr "Saio kudeatzaile socketa"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET IDa"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:317
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Bertsio argibideak"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:964
+#: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:968
+#: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -81,12 +81,12 @@ msgid "Workspace Name"
 msgstr "Idazmahai Izena"
 
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Ezarpena kudeatzaile socketa"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "Configure window behavior and shortcuts"
 msgstr "Leiho portaera eta lastre-teklak konfiguratu"
 
@@ -116,20 +116,20 @@ msgid "Workspaces"
 msgstr "Idazmahaiak"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Kutxa tamaina aldatzea eta mugitzea</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Button layout</b>"
 msgstr "<b>Botoi-diseinua</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "<b>Double click _action</b>"
 msgstr "<b>Klik bikoitzaren ekintza</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>Focus model</b>"
 msgstr "<b>Foku modeloa</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Ezkutatu leihoaren edukia</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>New window focus</b>"
@@ -160,62 +160,62 @@ msgid "<b>Windows snapping</b>"
 msgstr "<b>Leiho itsasgarritasuna</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Itzulbiratu idazmahaiak</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-msgid "<b>_Window shortcuts</b>"
-msgstr "<b>_Leiho laster-teklak</b>"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr "<b>Joan hurrengo mahaigainera pantaila ertzera iristean</b>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "<i>Long</i>"
 msgstr "<i>Luzea</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "<i>Short</i>"
 msgstr "<i>Laburra</i>"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "<i>Small</i>"
 msgstr "<i>Txikia</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "<i>Wide</i>"
 msgstr "<i>Zabala</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Active"
 msgstr "Gaiturik"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Ad_vanced"
 msgstr "Au_rreratua"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Automatikoki _goratu leihoak fokua dutenean"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Automatically give focus to _newly created windows"
 msgstr "Automatikoki ezarri fokua leiho _berrietan"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Click and drag the buttons to change the layout"
 msgstr "Klikatu eta arratratu botoiak ingurunea eraldatzeko"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Click to foc_us"
 msgstr "Klikatu fok_ua ezartzeko"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Close"
 msgstr "Itxi"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "Laster-teklak ezarri lei_ho kudeatzaile ekintzetarako."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -234,64 +234,64 @@ msgid "Hidden"
 msgstr "Ezkutukoa"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "Ezkutatu leihoaren edukia _mugitzerakoan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "Ezkutatu leihoaren edukia _tamainaz aldatzean"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Maximize"
 msgstr "Handitu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Menu"
 msgstr "Menua"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Minimize"
 msgstr "Txikitu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "Goratu leihoa, honen _barnean klikatzerakoan"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Shade"
 msgstr "Bildu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Snap windows to other _windows"
-msgstr "Itsatsi _leihoak beraien artean"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to screen _border"
-msgstr "Itsatsi leihoak pantaila _ertzari"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Stick"
 msgstr "Finkatu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Titulu-barran bi aldiz klikatzerakoan egingo den ekintza"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "The window title cannot be removed"
 msgstr "Leiho izenburua ezin da ezabatu"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Title"
 msgstr "Izenburua"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+msgid "To other _windows"
+msgstr "Beste le_ihoetara"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+msgid "To screen _borders"
+msgstr "Pantaila e_rtzari"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+msgid "When _moving"
+msgstr "_Mugitzerakoan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+msgid "When _resizing"
+msgstr "Tamaina_z aldatzean"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Leihoak _arrastatzerakoan hurrengo mahaigainera pasa"
+msgid "With a _dragged window"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "Joan hurrengo idazmahaiera sagua _pantaila ertzera ailatzerakoan"
+msgid "With the mouse _pointer"
+msgstr "Sagu _markatzailearekin"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Delay before window receives focus:"
@@ -319,22 +319,18 @@ msgid "_Style"
 msgstr "E_stiloa"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
 msgstr "Bildu leihoa"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
 msgstr "Ezkutatu leihoa"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
 msgstr "Handitu leihoa"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "Bete leihoa"
 
@@ -343,7 +339,6 @@ msgid "Nothing"
 msgstr "Ezer ez"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
 msgstr "Ezkerra"
 
@@ -352,301 +347,36 @@ msgid "Center"
 msgstr "Zentratua"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
 msgstr "Eskuina"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
-msgid "Window operations menu"
-msgstr "Leiho ekintza menua"
-
-#: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Up"
-msgstr "Gora"
-
-#: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Down"
-msgstr "Behera"
-
-#: ../settings-dialogs/xfwm4-settings.c:241
-msgid "Cancel"
-msgstr "Utzi"
-
-#: ../settings-dialogs/xfwm4-settings.c:242
-msgid "Cycle windows"
-msgstr "Leiho ziklikoak"
-
-#: ../settings-dialogs/xfwm4-settings.c:243
-msgid "Cycle windows (Reverse)"
-msgstr "Leiho ziklikoak (Alderantziz)"
-
-#: ../settings-dialogs/xfwm4-settings.c:244
-msgid "Switch window for same application"
-msgstr "Aldatu leihoa aplikazio berarentzat"
-
-#: ../settings-dialogs/xfwm4-settings.c:245
-msgid "Switch application"
-msgstr "Aldatu aplikazioa"
-
-#: ../settings-dialogs/xfwm4-settings.c:246
-msgid "Close window"
-msgstr "Itxi leihoa"
-
-#: ../settings-dialogs/xfwm4-settings.c:247
-msgid "Maximize window horizontally"
-msgstr "Handitu leihoa alboetaraka"
-
-#: ../settings-dialogs/xfwm4-settings.c:248
-msgid "Maximize window vertically"
-msgstr "Handitu leihoa goraka"
-
-#: ../settings-dialogs/xfwm4-settings.c:251
-msgid "Move window"
-msgstr "Mugitu leihoa"
-
-#: ../settings-dialogs/xfwm4-settings.c:252
-msgid "Resize window"
-msgstr "Leiho tamaina aldatu"
-
-#: ../settings-dialogs/xfwm4-settings.c:254
-msgid "Stick window"
-msgstr "Itsatsi leihoa"
-
-#: ../settings-dialogs/xfwm4-settings.c:255
-msgid "Raise window"
-msgstr "Goratu leihoa"
-
-#: ../settings-dialogs/xfwm4-settings.c:256
-msgid "Lower window"
-msgstr "Atzeratu leihoa"
-
-#: ../settings-dialogs/xfwm4-settings.c:257
-msgid "Raise or lower window"
-msgstr "Goratu edo beheratu leihoa"
-
-#: ../settings-dialogs/xfwm4-settings.c:259
-msgid "Fill window horizontally"
-msgstr "Bete leihoa horizontalean"
-
-#: ../settings-dialogs/xfwm4-settings.c:260
-msgid "Fill window vertically"
-msgstr "Bete leihoa bertikalean"
-
-#: ../settings-dialogs/xfwm4-settings.c:261
-msgid "Toggle above"
-msgstr "Txandakatu gainean"
-
-#: ../settings-dialogs/xfwm4-settings.c:262
-msgid "Toggle fullscreen"
-msgstr "Txandakatu pantaila-osoa"
-
-#: ../settings-dialogs/xfwm4-settings.c:263
-msgid "Move window to upper workspace"
-msgstr "Mugitu leihoa goiko idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:264
-msgid "Move window to bottom workspace"
-msgstr "Mugitu leihoa beheko idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:265
-msgid "Move window to left workspace"
-msgstr "Mugitu leihoa ezkerreko idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:266
-msgid "Move window to right workspace"
-msgstr "Mugitu leihoa eskuineko idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:267
-msgid "Move window to previous workspace"
-msgstr "Mugitu leihoa aurreko idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:268
-msgid "Move window to next workspace"
-msgstr "Mugitu leihoa hurrengo idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:269
-msgid "Move window to workspace 1"
-msgstr "Mugitu leihoa 1 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:270
-msgid "Move window to workspace 2"
-msgstr "Mugitu leihoa 2 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:271
-msgid "Move window to workspace 3"
-msgstr "Mugitu leihoa 3 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:272
-msgid "Move window to workspace 4"
-msgstr "Mugitu leihoa 4 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:273
-msgid "Move window to workspace 5"
-msgstr "Mugitu leihoa 5 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:274
-msgid "Move window to workspace 6"
-msgstr "Mugitu leihoa 6 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:275
-msgid "Move window to workspace 7"
-msgstr "Mugitu leihoa 7 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:276
-msgid "Move window to workspace 8"
-msgstr "Mugitu leihoa 8 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:277
-msgid "Move window to workspace 9"
-msgstr "Mugitu leihoa 9 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:278
-msgid "Move window to workspace 10"
-msgstr "Mugitu leihoa 10 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:279
-msgid "Move window to workspace 11"
-msgstr "Mugitu leihoa 11 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:280
-msgid "Move window to workspace 12"
-msgstr "Mugitu leihoa 12 idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-settings.c:281
-msgid "Tile window to the top"
-msgstr "Mosaikoa leihoa goian"
-
-#: ../settings-dialogs/xfwm4-settings.c:282
-msgid "Tile window to the bottom"
-msgstr "Mosaikoa leihoa behean"
-
-#: ../settings-dialogs/xfwm4-settings.c:283
-msgid "Tile window to the left"
-msgstr "Mosaikoa leihoa ezkerrean"
-
-#: ../settings-dialogs/xfwm4-settings.c:284
-msgid "Tile window to the right"
-msgstr "Mosaikoa leihoa eskuinean"
-
-#: ../settings-dialogs/xfwm4-settings.c:285
-msgid "Show desktop"
-msgstr "Ikusi idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:286
-msgid "Upper workspace"
-msgstr "Goiko idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:287
-msgid "Bottom workspace"
-msgstr "Beheko idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Left workspace"
-msgstr "Ezkerreko idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Right workspace"
-msgstr "Eskuineko idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Previous workspace"
-msgstr "Aurreko idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:291
-msgid "Next workspace"
-msgstr "Hurrengo idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:292
-msgid "Workspace 1"
-msgstr "1 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:293
-msgid "Workspace 2"
-msgstr "2 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:294
-msgid "Workspace 3"
-msgstr "3 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:295
-msgid "Workspace 4"
-msgstr "4 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:296
-msgid "Workspace 5"
-msgstr "5 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:297
-msgid "Workspace 6"
-msgstr "6 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:298
-msgid "Workspace 7"
-msgstr "7 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:299
-msgid "Workspace 8"
-msgstr "8 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:300
-msgid "Workspace 9"
-msgstr "9 Idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:301
-msgid "Workspace 10"
-msgstr "10 Idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:302
-msgid "Workspace 11"
-msgstr "11 idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:303
-msgid "Workspace 12"
-msgstr "12 Idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:304
-msgid "Add workspace"
-msgstr "Gehitu idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:305
-msgid "Add adjacent workspace"
-msgstr "Gehitu ondoko idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:306
-msgid "Delete last workspace"
-msgstr "Ezabatu azken idazmahaia"
-
-#: ../settings-dialogs/xfwm4-settings.c:307
-msgid "Delete active workspace"
-msgstr "Ezabatu idazmahai aktiboa"
-
-#: ../settings-dialogs/xfwm4-settings.c:453
+#: ../settings-dialogs/xfwm4-settings.c:380
 msgid "Theme"
 msgstr "Gaia"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:531
 msgid "Action"
 msgstr "Ekintza"
 
-#: ../settings-dialogs/xfwm4-settings.c:607
+#: ../settings-dialogs/xfwm4-settings.c:536
 msgid "Shortcut"
 msgstr "Laster-tekla"
 
-#: ../settings-dialogs/xfwm4-settings.c:993
+#: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Huts xfconf abiaraztean. Arrazoia: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:1004
+#: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
 msgstr "Ezin da ezapen elkarrizketa sortu."
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
-#: ../settings-dialogs/xfwm4-settings.c:1894
+#: ../settings-dialogs/xfwm4-settings.c:1901
+#: ../settings-dialogs/xfwm4-settings.c:1902
 msgid "Reset to Defaults"
 msgstr "Be_rrezarri lehenespenetara"
 
-#: ../settings-dialogs/xfwm4-settings.c:1895
+#: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -1032,6 +762,219 @@ msgstr "Errorea seme-prozesutik datuak irakurtzean: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Ezin da laguntza-elkarrizketa abiarazi: %s\n"
+
+#~ msgid "<b>Box move and resize</b>"
+#~ msgstr "<b>Kutxa tamaina aldatzea eta mugitzea</b>"
+
+#~ msgid "<b>Wrap workspaces</b>"
+#~ msgstr "<b>Itzulbiratu idazmahaiak</b>"
+
+#~ msgid "<b>_Window shortcuts</b>"
+#~ msgstr "<b>_Leiho laster-teklak</b>"
+
+#~ msgid "Hide content of windows when _resizing"
+#~ msgstr "Ezkutatu leihoaren edukia _tamainaz aldatzean"
+
+#~ msgid "Snap windows to other _windows"
+#~ msgstr "Itsatsi _leihoak beraien artean"
+
+#~ msgid "Wrap workspaces when _dragging a window off the screen"
+#~ msgstr "Leihoak _arrastatzerakoan hurrengo mahaigainera pasa"
+
+#~ msgid "Window operations menu"
+#~ msgstr "Leiho ekintza menua"
+
+#~ msgid "Up"
+#~ msgstr "Gora"
+
+#~ msgid "Down"
+#~ msgstr "Behera"
+
+#~ msgid "Cancel"
+#~ msgstr "Utzi"
+
+#~ msgid "Cycle windows"
+#~ msgstr "Leiho ziklikoak"
+
+#~ msgid "Cycle windows (Reverse)"
+#~ msgstr "Leiho ziklikoak (Alderantziz)"
+
+#~ msgid "Switch window for same application"
+#~ msgstr "Aldatu leihoa aplikazio berarentzat"
+
+#~ msgid "Switch application"
+#~ msgstr "Aldatu aplikazioa"
+
+#~ msgid "Close window"
+#~ msgstr "Itxi leihoa"
+
+#~ msgid "Maximize window horizontally"
+#~ msgstr "Handitu leihoa alboetaraka"
+
+#~ msgid "Maximize window vertically"
+#~ msgstr "Handitu leihoa goraka"
+
+#~ msgid "Move window"
+#~ msgstr "Mugitu leihoa"
+
+#~ msgid "Resize window"
+#~ msgstr "Leiho tamaina aldatu"
+
+#~ msgid "Stick window"
+#~ msgstr "Itsatsi leihoa"
+
+#~ msgid "Raise window"
+#~ msgstr "Goratu leihoa"
+
+#~ msgid "Raise or lower window"
+#~ msgstr "Goratu edo beheratu leihoa"
+
+#~ msgid "Fill window horizontally"
+#~ msgstr "Bete leihoa horizontalean"
+
+#~ msgid "Fill window vertically"
+#~ msgstr "Bete leihoa bertikalean"
+
+#~ msgid "Toggle above"
+#~ msgstr "Txandakatu gainean"
+
+#~ msgid "Toggle fullscreen"
+#~ msgstr "Txandakatu pantaila-osoa"
+
+#~ msgid "Move window to upper workspace"
+#~ msgstr "Mugitu leihoa goiko idazmahaiera"
+
+#~ msgid "Move window to bottom workspace"
+#~ msgstr "Mugitu leihoa beheko idazmahaiera"
+
+#~ msgid "Move window to left workspace"
+#~ msgstr "Mugitu leihoa ezkerreko idazmahaiera"
+
+#~ msgid "Move window to right workspace"
+#~ msgstr "Mugitu leihoa eskuineko idazmahaiera"
+
+#~ msgid "Move window to previous workspace"
+#~ msgstr "Mugitu leihoa aurreko idazmahaiera"
+
+#~ msgid "Move window to next workspace"
+#~ msgstr "Mugitu leihoa hurrengo idazmahaiera"
+
+#~ msgid "Move window to workspace 1"
+#~ msgstr "Mugitu leihoa 1 idazmahaiera"
+
+#~ msgid "Move window to workspace 2"
+#~ msgstr "Mugitu leihoa 2 idazmahaiera"
+
+#~ msgid "Move window to workspace 3"
+#~ msgstr "Mugitu leihoa 3 idazmahaiera"
+
+#~ msgid "Move window to workspace 4"
+#~ msgstr "Mugitu leihoa 4 idazmahaiera"
+
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Mugitu leihoa 5 idazmahaiera"
+
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Mugitu leihoa 6 idazmahaiera"
+
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Mugitu leihoa 7 idazmahaiera"
+
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Mugitu leihoa 8 idazmahaiera"
+
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Mugitu leihoa 9 idazmahaiera"
+
+#~ msgid "Move window to workspace 10"
+#~ msgstr "Mugitu leihoa 10 idazmahaiera"
+
+#~ msgid "Move window to workspace 11"
+#~ msgstr "Mugitu leihoa 11 idazmahaiera"
+
+#~ msgid "Move window to workspace 12"
+#~ msgstr "Mugitu leihoa 12 idazmahaiera"
+
+#~ msgid "Tile window to the top"
+#~ msgstr "Mosaikoa leihoa goian"
+
+#~ msgid "Tile window to the bottom"
+#~ msgstr "Mosaikoa leihoa behean"
+
+#~ msgid "Tile window to the left"
+#~ msgstr "Mosaikoa leihoa ezkerrean"
+
+#~ msgid "Tile window to the right"
+#~ msgstr "Mosaikoa leihoa eskuinean"
+
+#~ msgid "Show desktop"
+#~ msgstr "Ikusi idazmahaia"
+
+#~ msgid "Upper workspace"
+#~ msgstr "Goiko idazmahaia"
+
+#~ msgid "Bottom workspace"
+#~ msgstr "Beheko idazmahaia"
+
+#~ msgid "Left workspace"
+#~ msgstr "Ezkerreko idazmahaia"
+
+#~ msgid "Right workspace"
+#~ msgstr "Eskuineko idazmahaia"
+
+#~ msgid "Previous workspace"
+#~ msgstr "Aurreko idazmahaia"
+
+#~ msgid "Next workspace"
+#~ msgstr "Hurrengo idazmahaia"
+
+#~ msgid "Workspace 1"
+#~ msgstr "1 idazmahaia"
+
+#~ msgid "Workspace 2"
+#~ msgstr "2 idazmahaia"
+
+#~ msgid "Workspace 3"
+#~ msgstr "3 idazmahaia"
+
+#~ msgid "Workspace 4"
+#~ msgstr "4 idazmahaia"
+
+#~ msgid "Workspace 5"
+#~ msgstr "5 idazmahaia"
+
+#~ msgid "Workspace 6"
+#~ msgstr "6 idazmahaia"
+
+#~ msgid "Workspace 7"
+#~ msgstr "7 idazmahaia"
+
+#~ msgid "Workspace 8"
+#~ msgstr "8 idazmahaia"
+
+#~ msgid "Workspace 9"
+#~ msgstr "9 Idazmahaia"
+
+#~ msgid "Workspace 10"
+#~ msgstr "10 Idazmahaia"
+
+#~ msgid "Workspace 11"
+#~ msgstr "11 idazmahaia"
+
+#~ msgid "Workspace 12"
+#~ msgstr "12 Idazmahaia"
+
+#~ msgid "Add workspace"
+#~ msgstr "Gehitu idazmahaia"
+
+#~ msgid "Add adjacent workspace"
+#~ msgstr "Gehitu ondoko idazmahaia"
+
+#~ msgid "Delete last workspace"
+#~ msgstr "Ezabatu azken idazmahaia"
+
+#~ msgid "Delete active workspace"
+#~ msgstr "Ezabatu idazmahai aktiboa"
 
 #~ msgid "Clic_k to focus"
 #~ msgstr "Egin _klik fokua ezartzeko"
