@@ -1,3 +1,17 @@
+4.10.1
+======
+- Autotools updates.
+- Small optimization in shadow loop.
+- Some small optimizations in placement code.
+- Do not write empty session files.
+- Fix wrong debug message (bug #7547).
+- Fix crash in settings dialog with wrong title alignment
+  value (bug #9108).
+- Implement NET_WM_MOVERESIZE_CANCEL message (bug #8949)
+- Translation updates: Arabic, Bulgarian, Catalan (Valencian), 
+  German, Greek, French, Hindi, Croatian, Indonesian, Polish, Slovak, 
+  Serbian, Swedish, Turkish, Uyghur.
+
 4.10.0
 ======
 - Translation updates: Czech, English (United Kingdom), Spanish
