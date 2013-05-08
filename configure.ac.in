@@ -19,6 +19,7 @@ m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.22])
 m4_define([startup_notification_minimum_version], [0.5])
 m4_define([intltool_minimum_version], [0.31])
+m4_define([libdrm_minimum_version], [2.4])
 
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2011
@@ -88,6 +89,14 @@ XDT_CHECK_PACKAGE([LIBXFCONF], libxfconf-0, [xfconf_minimum_version])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([DBUS], [dbus-1], [1.0.0])
 XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [0.72])
+
+dnl
+dnl Sync to vblank support
+dnl
+XDT_CHECK_OPTIONAL_PACKAGE([LIBDRM],
+                       [libdrm], [libdrm_minimum_version],
+                       [libdrm],
+                       [userspace interface to the kernel DRM services], [yes])
 
 dnl
 dnl Startup notification support

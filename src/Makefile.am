@@ -80,6 +80,7 @@ xfwm4_CFLAGS =								\
 	$(LIBXFCE4UI_CFLAGS)						\
 	$(LIBXFCE4KBD_PRIVATE_CFLAGS)					\
 	$(RENDER_CFLAGS)						\
+	$(LIBDRM_CFLAGS)						\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
 	$(COMPOSITOR_CFLAGS)						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
@@ -101,7 +102,7 @@ xfwm4_LDADD =								\
 	$(RENDER_LIBS)							\
 	$(COMPOSITOR_LIBS)						\
 	$(RANDR_LIBS) 							\
-	$(MATH_LIBS)	
+	$(MATH_LIBS)
 
 EXTRA_DIST = 								\
 	default_icon.png						\
