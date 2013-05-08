@@ -1635,7 +1635,7 @@ xfwm_settings_initialize_shortcuts (XfwmSettings *settings)
 
   gtk_list_store_clear (GTK_LIST_STORE (model));
 
-  if (feature_list = xfce_shortcuts_xfwm4_get_feature_list ())
+  if ((feature_list = xfce_shortcuts_xfwm4_get_feature_list ()) != NULL)
     {
       GList *l;
 
