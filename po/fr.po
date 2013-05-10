@@ -509,7 +509,7 @@ msgstr "Basculer dans l'espace _de travail de la fenêtre"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Synchronize drawing to the _vertical blank"
-msgstr "Synchroniser le dessin au blanc _vertical"
+msgstr "Synchroniser le dessin à l'espace vide _vertical"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "U_nder the mouse pointer"
