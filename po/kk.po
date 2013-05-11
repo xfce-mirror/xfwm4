@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 08:24+0000\n"
+"POT-Creation-Date: 2013-05-11 03:33+0000\n"
 "PO-Revision-Date: 2011-12-17 22:52+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -33,29 +33,29 @@ msgstr "Ескерту"
 msgid "None"
 msgstr "Ешнәрсе"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 msgid "Session manager socket"
 msgstr "Сессиялар басқарушысының сокеті"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "СОКЕТ ID"
 
-#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/tweaks-settings.c:464
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Нұсқа ақпараты"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -97,7 +97,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Терезе әрекеттерін мен жарлықтарды туралау"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "Window Manager Tweaks"
 msgstr "Терезелер басқарушысының қу баптаулары"
 
@@ -298,7 +298,7 @@ msgid "_Edge resistance:"
 msgstr "_Шеттердегі кедергі:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Focus"
 msgstr "_Фокус"
 
@@ -499,63 +499,67 @@ msgid "Switch to win_dow's workspace"
 msgstr "Тере_зенің жұмыс орнына ауысу"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "Synchronize drawing to the _vertical blank"
+msgstr "Бейнелеуді кадр_лық сөндіргіш импульспен синхрондау"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "U_nder the mouse pointer"
 msgstr "Ты_шқан курсорының астында"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Экран шеттердің кедергісін терезелер _жабысуының орнына қолдану"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "Жұмыс оры_ндарын ауыстыру үшін тышқан дөңгелегін қолдану"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "When a window raises itself:"
 msgstr "Терезе өздігімен көтерілсе:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 "Ағы_мдағы жұмыс орынның орналасуына байланысты жұмыс орындарды ауыстыру"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "Бірінші не соңғ_ы жұмыс орнына жеткен кезде әрі қарай ауысу"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Accessibility"
 msgstr "Қ_олжетерлілік"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Bring window on current workspace"
 msgstr "Т_ерезені ағымдағы жұмыс орнына апару"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Draw frame around selected windows while cycling"
 msgstr "Ауы_су кезінде ерекшеленген терезеге қосымша қоршау салу"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
 msgstr "_Эффектерді іске қосу"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_Жасырын (қайырылған) терезелерді қоса"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "_Ақылды орналастыруды қолдану үшін терезенің ең аз өлшемі:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Placement"
 msgstr "_Терезелердің орналасуы"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "Тышқанның кез-кел_ген батырмасы басылған кезде терезені көтеру"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
@@ -563,7 +567,7 @@ msgstr ""
 "_Пернетақтаның ыстық батырмаларымен ауысқан кезде\n"
 "алдыңғы жұмыс орнын есте сақтау және оған қайту"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "_Workspaces"
 msgstr "Жұм_ыс орындары"
 
