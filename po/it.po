@@ -511,7 +511,7 @@ msgstr "Mostra le ombre sotto alle finestre a co_mparsa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Switch to win_dow's workspace"
-msgstr "Trasferisciti allo spazio di _lavoro della finestra"
+msgstr "Trasferiscimi allo spazio di _lavoro della finestra"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Synchronize drawing to the _vertical blank"
