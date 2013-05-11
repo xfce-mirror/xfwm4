@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-12 06:24+0000\n"
+"POT-Creation-Date: 2013-05-11 08:57+0000\n"
 "PO-Revision-Date: 2010-09-08 11:45+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -41,29 +41,29 @@ msgstr "Avviso"
 msgid "None"
 msgstr "Nessuno"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 msgid "Session manager socket"
 msgstr "Socket del gestore della sessione"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/tweaks-settings.c:464
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informazioni di versione"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -106,7 +106,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Regolazione del comportamento della finestra e delle scorciatoie"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "Window Manager Tweaks"
 msgstr "Regolazioni del gestore delle finestre"
 
@@ -221,7 +221,9 @@ msgstr "Chiudi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Definizione della scorciatoia per ese_guire le azioni di gestione della finestra:"
+msgstr ""
+"Definizione della scorciatoia per ese_guire le azioni di gestione della "
+"finestra:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Delay _before raising focused window:"
@@ -308,7 +310,7 @@ msgid "_Edge resistance:"
 msgstr "Resisten_za ai bordi :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Focus"
 msgstr "_Fuoco"
 
@@ -512,69 +514,73 @@ msgid "Switch to win_dow's workspace"
 msgstr "Trasferisciti allo spazio di _lavoro della finestra"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "Synchronize drawing to the _vertical blank"
+msgstr "Sincronizza il disegno allo spazio vuoto _verticale"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "U_nder the mouse pointer"
 msgstr "Sotto al puntatore del mo_use"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Usa la resistenza dei bordi inv_ece delle finestre magnetiche"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
 "Utilizza la rotella del mo_use sulla scrivania per cambiare spazio di lavoro"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "When a window raises itself:"
 msgstr "Quando una finestra si solleva:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 "Scorri gli spazi di lavoro secondo l'effettiva disposizione del_la scrivania"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr ""
 "Continua a scorrere gli spazi di lavoro al raggiungimento del pri_mo o "
 "dell'ultimo"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Accessibility"
 msgstr "_Accessibilità"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Bring window on current workspace"
 msgstr "Porta la finestra nello spazio di lavoro co_rrente"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Draw frame around selected windows while cycling"
 msgstr ""
 "_Disegna la cornice attorno alle finestre selezionate mentre si scorrono"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
 msgstr "A_bilita la visualizzazione composita"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "Includi le finestre _nascoste (ovvero minimizzate)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr ""
 "Dimensione _minima delle finestre per provocare il posizionamento "
 "intelligente:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Placement"
 msgstr "Posi_zionamento"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "Solleva le finestre alla pressione di qualunque pulsante del mo_use"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
@@ -582,7 +588,7 @@ msgstr ""
 "_Ricorda e richiama lo spazio di lavoro precedente\n"
 "se il cambiamento avviene con una scorciatoia da tastiera"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "_Workspaces"
 msgstr "_Spazi di lavoro"
 
