@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
-"Report-Msgid-Bugs-To: https://bugzilla.xfce.org/enter_bug.cgi?product=Xfwm4\n"
-"POT-Creation-Date: 2013-01-23 15:15+0000\n"
-"PO-Revision-Date: 2013-01-24 04:24+0900\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-12 06:33+0000\n"
+"PO-Revision-Date: 2013-05-12 15:49+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
@@ -34,29 +35,29 @@ msgstr "경고"
 msgid "None"
 msgstr "없음"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 msgid "Session manager socket"
 msgstr "세션 관리자 소켓"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/tweaks-settings.c:464
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "버전 정보"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -98,7 +99,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "창 동작 및 효과 최적화"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "Window Manager Tweaks"
 msgstr "창 관리자 기능향상"
 
@@ -299,7 +300,7 @@ msgid "_Edge resistance:"
 msgstr "화면 모서리 저항(_E):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Focus"
 msgstr "창 활성 방법(_F)"
 
@@ -374,7 +375,9 @@ msgid "Reset to Defaults"
 msgstr "기본값으로 초기화"
 
 #: ../settings-dialogs/xfwm4-settings.c:1903
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr "이 행동은 모든 단축기를 기본값으로 되돌립니다. 정말로 실행하시렵니까?"
 
 #. Smart placement size
@@ -495,68 +498,72 @@ msgid "Switch to win_dow's workspace"
 msgstr "창의 작업 공간으로 이동(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "Synchronize drawing to the _vertical blank"
+msgstr "수직 동기화시 그리기 동기화(_V)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "U_nder the mouse pointer"
 msgstr "마우스 포인터 위치 시키기(_N)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Use _edge resistance instead of window snapping"
 msgstr "창 잡기 대신 모서리 저항을 사용(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "데스크톱 상에서 마우스 휠을 돌려 작업 공간 전환(_M)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "When a window raises itself:"
 msgstr "창이 위로 올라 올 때:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "실제 데스크톱 배치에 따라 작업 공간을 전환(_L)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "첫번째나 마지막 작업 공간에 도달하면 작업 공간 전환(_T)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Accessibility"
 msgstr "접근성(_A)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Bring window on current workspace"
 msgstr "창을 현재 작업 공간으로 이동(_B)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Draw frame around selected windows while cycling"
 msgstr "순환하는 동안 선택한 창 테두리 그리기(_D)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
 msgstr "디스플레이 합성 활성화(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "숨겨진(또는 아이콘 표시된) 창 포함(_I)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "똑똑한 배치를 적용할 창의 최소 크기(_M):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Placement"
 msgstr "배치(_P)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "아무 마우스 단추든 눌리면 창을 앞으로(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr "바로 가기 키로 바꿀 때 이전 작업 공간을 호출하고 복원(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "_Workspaces"
 msgstr "작업 공간(_W)"
 
@@ -565,7 +572,8 @@ msgid "Layout"
 msgstr "배치"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "여백은 창이 위치하지 않는 화면의 가장자리 영역입니다"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
