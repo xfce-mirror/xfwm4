@@ -6,21 +6,20 @@
 # Robert Kurowski <koorek@o2.pl>, 2005.
 # Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
 # Piotr Sokół <psokol@jabster.pl>, 2009, 2011, 2012, 2013.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-13 05:33+0000\n"
+"POT-Creation-Date: 2013-06-07 03:33+0000\n"
 "PO-Revision-Date: 2013-03-13 09:14+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bits\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
-"%100<10 || n%100>=20)) ? 1 : 2));\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -39,29 +38,29 @@ msgstr "Ostrzeżenie"
 msgid "None"
 msgstr "Brak"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 msgid "Session manager socket"
 msgstr "Gniazdo menedżera sesji"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID_GNIAZDA"
 
-#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/tweaks-settings.c:464
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Wypisuje informacje o wersji i kończy"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -103,7 +102,7 @@ msgid "Fine-tune window behaviour and effects"
 msgstr "Konfiguruje ustawienia menedżera okien oraz efekty wizualne"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "Window Manager Tweaks"
 msgstr "Menedżer okien"
 
@@ -304,7 +303,7 @@ msgid "_Edge resistance:"
 msgstr "Opór k_rawędzi:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Focus"
 msgstr "_Uaktywnianie"
 
@@ -501,65 +500,70 @@ msgid "Switch to win_dow's workspace"
 msgstr "Przełączenie na obszar roboczy ok_na"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#, fuzzy
+msgid "Synchronize drawing to the _vertical blank"
+msgstr "Synchronizacja rysowania do _vertical blank"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "U_nder the mouse pointer"
 msgstr "W położeniu wyświetlania _kursora myszy"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Używanie oporu k_rawędzi zamiast przylegania okien"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "Zmienianie obszaru roboczego przy użyciu kółka my_szy na pulpicie"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "When a window raises itself:"
 msgstr "Czynność wykonywana po automatycznym przemieszczeniu okna na wierzch:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Przełączanie pomiędzy obszarami roboczymi uwzględniając ich u_kład"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "Przełączanie pomiędzy k_rańcowymi obszarami roboczymi"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Accessibility"
 msgstr "Ułatwienia _dostępu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Bring window on current workspace"
 msgstr "Prz_emieszczenie okna na bieżący obszar roboczy"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Draw frame around selected windows while cycling"
 msgstr "Wyświetlanie o_bramowania zaznaczonego okna"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
 msgstr "Włącz_enie"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "Uw_zględnianie ukrytych okien"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr ""
 "M_inimalny rozmiar okna potrzebny do włączenia inteligentnego rozmieszczania:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "_Placement"
 msgstr "P_ołożenie"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "_Raise windows when any mouse button is pressed"
 msgstr ""
 "Prz_enoszenie na wierzch okien po kliknięciu w ich zawartość dowolnym "
 "przyciskiem myszy"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
@@ -567,7 +571,7 @@ msgstr ""
 "Z_apamiętywanie i przywracanie poprzedniego obszaru roboczego\n"
 "podczas przełączania za pomocą skrótów klawiszowych"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "_Workspaces"
 msgstr "Obszary _robocze"
 
