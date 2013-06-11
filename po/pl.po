@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-07 03:33+0000\n"
+"POT-Creation-Date: 2013-06-11 10:09+0000\n"
 "PO-Revision-Date: 2013-03-13 09:14+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
@@ -500,9 +500,8 @@ msgid "Switch to win_dow's workspace"
 msgstr "Przełączenie na obszar roboczy ok_na"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-#, fuzzy
 msgid "Synchronize drawing to the _vertical blank"
-msgstr "Synchronizacja rysowania do _vertical blank"
+msgstr "Synchronizacja rysowania do _pustej pionowej"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "U_nder the mouse pointer"
