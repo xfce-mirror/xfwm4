@@ -756,7 +756,7 @@ myDisplayUpdateCurrentTime (DisplayInfo *display, XEvent *ev)
             break;
     }
 
-    if ((timestamp != (guint32) CurrentTime) && TIMESTAMP_IS_BEFORE(display->current_time, timestamp))
+    if ((timestamp != (guint32) CurrentTime))
     {
         display->current_time = timestamp;
     }
