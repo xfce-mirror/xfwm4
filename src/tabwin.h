@@ -51,7 +51,6 @@ struct _TabwinWidget
 
     /* these don't have to be */
     Tabwin *tabwin;
-    GtkWidget *class;
     GtkWidget *label;
     GtkWidget *container;
     GtkWidget *selected;
