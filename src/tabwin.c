@@ -101,18 +101,8 @@ paint_selected (GtkWidget *w, GdkEventExpose *event, gpointer data)
     g_return_val_if_fail (GTK_IS_WIDGET(w), FALSE);
     TRACE ("entering paint_selected");
 
-    gtk_draw_flat_box (w->style, w->window,
-        GTK_STATE_SELECTED,
-        GTK_SHADOW_NONE,
-        w->allocation.x - WIN_ICON_BORDER,
-        w->allocation.y - WIN_ICON_BORDER,
-        w->allocation.width + 2 * WIN_ICON_BORDER,
-        w->allocation.height + 2 * WIN_ICON_BORDER);
-    gtk_draw_focus (w->style, w->window,
-        w->allocation.x - WIN_ICON_BORDER,
-        w->allocation.y - WIN_ICON_BORDER,
-        w->allocation.width + 2 * WIN_ICON_BORDER,
-        w->allocation.height + 2 * WIN_ICON_BORDER);
+    gtk_button_set_relief (GTK_BUTTON (w), GTK_RELIEF_NORMAL);
+
     return FALSE;
 }
 
@@ -124,8 +114,8 @@ pretty_string (const gchar *s)
 
     if (s)
     {
-        canonical = g_ascii_strup (s, -1);
-        g_strcanon (canonical, "[]()0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", ' ');
+        canonical = g_strdup_printf ("%s",s);
+        g_strcanon (canonical, "[]()0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", ' ');
         g_strstrip (canonical);
     }
     else
@@ -139,7 +129,6 @@ pretty_string (const gchar *s)
 static void
 tabwinSetLabel (TabwinWidget *tbw, gchar *class, gchar *label, int workspace)
 {
-    gchar *markup;
     gchar *message;
     PangoLayout *layout;
 
@@ -147,11 +136,8 @@ tabwinSetLabel (TabwinWidget *tbw, gchar *class, gchar *label, int workspace)
     TRACE ("entering tabwinSetLabel");
 
     message = pretty_string (class);
-    markup = g_strconcat ("<span size=\"larger\" weight=\"bold\">", message, "</span>", NULL);
+    gtk_button_set_label (GTK_BUTTON (tbw->selected), message);
     g_free (message);
-
-    gtk_label_set_markup (GTK_LABEL (tbw->class), markup);
-    g_free (markup);
 
     if (tbw->tabwin->display_workspace)
     {
@@ -217,7 +203,6 @@ createWindowIcon (Client *c, gint icon_size)
     icon_pixbuf = getAppIcon (c->screen_info->display_info, c->window, icon_size, icon_size);
     icon_pixbuf_stated = NULL;
     icon = gtk_image_new ();
-    g_object_set_data (G_OBJECT (icon), "client-ptr-val", c);
 
     if (icon_pixbuf)
     {
@@ -261,7 +246,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 {
     Client *c;
     GList *client_list;
-    GtkWidget *windowlist, *icon, *selected;
+    GtkWidget *windowlist, *icon, *selected, *window_button;
     int packpos, monitor_width;
     Tabwin *t;
     gint icon_size = WIN_ICON_SIZE;
@@ -280,29 +265,35 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     tbw->grid_rows = screen_info->client_count / tbw->grid_cols + 1;
     tbw->widgets = NULL;
     windowlist = gtk_table_new (tbw->grid_rows, tbw->grid_cols, FALSE);
-
     /* pack the client icons */
     for (client_list = *t->client_list; client_list; client_list = g_list_next (client_list))
     {
         c = (Client *) client_list->data;
         TRACE ("createWindowlist: adding %s", c->name);
         icon = createWindowIcon (c, icon_size);
-        gtk_table_attach (GTK_TABLE (windowlist), GTK_WIDGET (icon),
+
+        window_button = gtk_button_new_with_label ("");
+        g_object_set_data (G_OBJECT (window_button), "client-ptr-val", c);
+        gtk_button_set_image (GTK_BUTTON (window_button), icon);
+        gtk_button_set_image_position (GTK_BUTTON (window_button), GTK_POS_TOP);
+        gtk_button_set_relief (GTK_BUTTON (window_button), GTK_RELIEF_NONE);
+        gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+24);
+
+        gtk_table_attach (GTK_TABLE (windowlist), GTK_WIDGET (window_button),
             packpos % tbw->grid_cols, packpos % tbw->grid_cols + 1,
             packpos / tbw->grid_cols, packpos / tbw->grid_cols + 1,
-            GTK_FILL, GTK_FILL, 7, 7);
-        tbw->widgets = g_list_append (tbw->widgets, icon);
+            GTK_FILL, GTK_FILL, 2, 2);
+        tbw->widgets = g_list_append (tbw->widgets, window_button);
         packpos++;
         if (c == t->selected->data)
         {
-            selected = icon;
+            selected = window_button;
         }
     }
     if (selected)
     {
         tabwinSetSelected (tbw, selected);
     }
-
     return windowlist;
 }
 
@@ -360,11 +351,8 @@ static TabwinWidget *
 tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
 {
     TabwinWidget *tbw;
-    GtkWidget *frame;
-    GtkWidget *colorbox1, *colorbox2;
     GtkWidget *vbox;
     GtkWidget *windowlist;
-    GdkColor *color;
     GdkRectangle monitor;
     gint border_width = WIN_COLOR_BORDER;
 
@@ -379,64 +367,34 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     tbw->selected = NULL;
     tbw->selected_callback = 0;
 
+    gtk_widget_style_get (GTK_WIDGET (tbw), "border-width", &border_width, NULL);
     gtk_window_set_screen (GTK_WINDOW (tbw), screen_info->gscr);
     gtk_widget_set_name (GTK_WIDGET (tbw), "xfwm4-tabwin");
     gtk_widget_realize (GTK_WIDGET (tbw));
-    gtk_container_set_border_width (GTK_CONTAINER (tbw), 0);
+    gtk_container_set_border_width (GTK_CONTAINER (tbw), 6);
     gtk_window_set_position (GTK_WINDOW (tbw), GTK_WIN_POS_NONE);
     gdk_screen_get_monitor_geometry (screen_info->gscr, tbw->monitor_num, &monitor);
     gtk_window_move (GTK_WINDOW(tbw), monitor.x + monitor.width / 2,
                                       monitor.y + monitor.height / 2);
 
-    frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
-    gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
-    gtk_container_add (GTK_CONTAINER (tbw), frame);
-
-    colorbox1 = gtk_event_box_new ();
-    gtk_container_add (GTK_CONTAINER (frame), colorbox1);
-
-    gtk_widget_style_get (GTK_WIDGET (tbw), "border-width", &border_width, NULL);
-    colorbox2 = gtk_event_box_new ();
-    gtk_container_set_border_width (GTK_CONTAINER (colorbox2), border_width);
-    gtk_container_add (GTK_CONTAINER (colorbox1), colorbox2);
-
     vbox = gtk_vbox_new (FALSE, 5);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
-    gtk_container_add (GTK_CONTAINER (colorbox2), vbox);
-
-    tbw->class = gtk_label_new ("");
-    gtk_label_set_use_markup (GTK_LABEL (tbw->class), TRUE);
-    gtk_label_set_justify (GTK_LABEL (tbw->class), GTK_JUSTIFY_CENTER);
-    gtk_box_pack_start (GTK_BOX (vbox), tbw->class, TRUE, TRUE, 0);
-
-    frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
-    gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
-    gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+    gtk_container_add (GTK_CONTAINER (tbw), vbox);
 
     tbw->label = gtk_label_new ("");
-    gtk_label_set_use_markup (GTK_LABEL (tbw->label), FALSE);
+    gtk_label_set_use_markup (GTK_LABEL (tbw->label), TRUE);
     gtk_label_set_justify (GTK_LABEL (tbw->label), GTK_JUSTIFY_CENTER);
-    gtk_label_set_use_markup (GTK_LABEL (tbw->class), TRUE);
-    gtk_box_pack_start (GTK_BOX (vbox), tbw->label, TRUE, TRUE, 0);
-    gtk_widget_set_size_request (GTK_WIDGET (tbw->label), 240, -1);
+    gtk_label_set_ellipsize (GTK_LABEL (tbw->label), PANGO_ELLIPSIZE_END);
+    //gtk_widget_set_size_request (GTK_WIDGET (tbw->label), 240, -1);
+    gtk_box_pack_end (GTK_BOX (vbox), tbw->label, TRUE, TRUE, 0);
 
     windowlist = createWindowlist (screen_info, tbw);
     tbw->container = windowlist;
-    gtk_container_add (GTK_CONTAINER (frame), windowlist);
-
-    color = get_color (GTK_WIDGET (tbw), GTK_STATE_SELECTED);
-    if (color)
-    {
-        gtk_widget_modify_bg (colorbox1, GTK_STATE_NORMAL, color);
-    }
+    gtk_box_pack_start (GTK_BOX (vbox), windowlist, TRUE, TRUE, 0);
 
 #if 0
     if (GTK_CHECK_VERSION (2, 6, 2))
     {
         gtk_label_set_ellipsize (GTK_LABEL (tbw->label), PANGO_ELLIPSIZE_END);
-        gtk_label_set_ellipsize (GTK_LABEL (tbw->class), PANGO_ELLIPSIZE_END);
     }
 #endif
 
@@ -452,7 +410,7 @@ static Client *
 tabwinChange2Selected (Tabwin *t, GList *selected)
 {
     GList *tabwin_list, *widgets;
-    GtkWidget *icon;
+    GtkWidget *window_button;
     TabwinWidget *tbw;
 
     t->selected = selected;
@@ -461,10 +419,12 @@ tabwinChange2Selected (Tabwin *t, GList *selected)
         tbw = (TabwinWidget *) tabwin_list->data;
         for (widgets = tbw->widgets; widgets; widgets = g_list_next (widgets))
         {
-            icon = GTK_WIDGET (widgets->data);
-            if (((Client *) g_object_get_data (G_OBJECT(icon), "client-ptr-val")) == t->selected->data)
+            window_button = GTK_WIDGET (widgets->data);
+            gtk_button_set_relief (GTK_BUTTON (window_button), GTK_RELIEF_NONE);
+            gtk_button_set_label (GTK_BUTTON (window_button), "");
+            if (((Client *) g_object_get_data (G_OBJECT(window_button), "client-ptr-val")) == t->selected->data)
             {
-                    tabwinSetSelected (tbw, icon);
+                    tabwinSetSelected (tbw, window_button);
                     gtk_widget_queue_draw (GTK_WIDGET(tbw));
             }
         }
