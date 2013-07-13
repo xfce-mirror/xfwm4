@@ -100,7 +100,8 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
 {
     GtkWindow *window;
     GdkScreen *screen;
-    GdkColor *bg_normal, *bg_insensitive;
+    GdkColor *bg_normal = get_color(tbw, GTK_STATE_NORMAL);
+    GdkColor *bg_selected = get_color(tbw, GTK_STATE_SELECTED);
     cairo_t *cr;
     gint radius = 10.0;
     double degrees = 3.14 / 180.0;
@@ -127,19 +128,17 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
         cairo_arc (cr, radius + 0.5, height - radius - 0.5, radius, 90 * degrees, 180 * degrees);
         cairo_arc (cr, radius + 0.5, radius + 0.5, radius, 180 * degrees, 270 * degrees);
         cairo_close_path(cr);
-        cairo_set_source_rgba (cr, 0.0, 0.0, 0.0, 0.8);
+        cairo_set_source_rgba (cr, bg_normal->red/65535.0, bg_normal->green/65535.0, bg_normal->blue/65535.0, 0.8);
         cairo_fill_preserve (cr);
-        cairo_set_source_rgba (cr, 0.95, 0.95, 0.95, 0.3);
+        cairo_set_source_rgba (cr, bg_selected->red/65535.0, bg_selected->green/65535.0, bg_selected->blue/65535.0, 0.8);
         cairo_stroke (cr);
     }
     else {
         cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
         cairo_rectangle(cr, 0, 0, width, height);
-        bg_normal = get_color(tbw, GTK_STATE_NORMAL);
         gdk_cairo_set_source_color(cr, bg_normal);
         cairo_fill_preserve (cr);
-        bg_insensitive = get_color(tbw, GTK_STATE_SELECTED);
-        gdk_cairo_set_source_color(cr, bg_insensitive);
+        gdk_cairo_set_source_color(cr, bg_selected);
         cairo_stroke (cr);
     }
     
