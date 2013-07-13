@@ -216,14 +216,7 @@ tabwinSetSelected (TabwinWidget *tbw, GtkWidget *w)
                                                NULL);
     c = g_object_get_data (G_OBJECT (tbw->selected), "client-ptr-val");
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
-    {
-        classname = g_strdup_printf ("[ %s ]", c->class.res_class);
-    }
-    else
-    {
-        classname = g_strdup(c->class.res_class);
-    }
+    classname = g_strdup(c->class.res_class);
     tabwinSetLabel (tbw, classname, c->name, c->win_workspace);
     g_free (classname);
 }
@@ -247,7 +240,7 @@ createWindowIcon (Client *c, gint icon_size)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
         {
             icon_pixbuf_stated = gdk_pixbuf_copy (icon_pixbuf);
-            gdk_pixbuf_saturate_and_pixelate (icon_pixbuf, icon_pixbuf_stated, 0.25, TRUE);
+            gdk_pixbuf_saturate_and_pixelate (icon_pixbuf, icon_pixbuf_stated, 0.55, TRUE);
             gtk_image_set_from_pixbuf (GTK_IMAGE (icon), icon_pixbuf_stated);
             g_object_unref(icon_pixbuf_stated);
         }
