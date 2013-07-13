@@ -32,8 +32,20 @@
 #define WIN_ICON_BORDER 5
 #endif
 
-#ifndef WIN_COLOR_BORDER
-#define WIN_COLOR_BORDER 1
+#ifndef WIN_BORDER_WIDTH
+#define WIN_BORDER_WIDTH 1
+#endif
+
+#ifndef WIN_ALPHA
+#define WIN_ALPHA 0.9
+#endif
+
+#ifndef WIN_BORDER_ALPHA
+#define WIN_BORDER_ALPHA 0.5
+#endif
+
+#ifndef WIN_RADIUS
+#define WIN_RADIUS 10
 #endif
 
 #include <glib.h>
@@ -100,11 +112,13 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
 {
     GtkWindow *window;
     GdkScreen *screen;
+    cairo_t *cr;
     GdkColor *bg_normal = get_color(tbw, GTK_STATE_NORMAL);
     GdkColor *bg_selected = get_color(tbw, GTK_STATE_SELECTED);
-    gint border_width = WIN_COLOR_BORDER;
-    cairo_t *cr;
-    gint radius = 10.0;
+    gint border_width = WIN_BORDER_WIDTH;
+    gdouble border_alpha = WIN_BORDER_ALPHA;
+    gdouble alpha = WIN_ALPHA;
+    gint radius = WIN_RADIUS;
     double degrees = 3.14 / 180.0;
     double width = tbw->allocation.width;
     double height = tbw->allocation.height;
@@ -113,7 +127,12 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
     screen = gtk_window_get_screen(window);
     screen = gtk_widget_get_screen(GTK_WIDGET(tbw));
     cr = gdk_cairo_create (tbw->window);
-    gtk_widget_style_get (GTK_WIDGET (tbw), "border-width", &border_width, NULL);
+    gtk_widget_style_get (GTK_WIDGET (tbw),
+                            "border-width", &border_width,
+                            "border-alpha", &border_alpha,
+                            "alpha", &alpha,
+                            "radius", &radius,
+                            NULL);
     cairo_set_line_width (cr, border_width);
     
     if(gdk_screen_is_composited(screen)) {
@@ -130,9 +149,9 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
         cairo_arc (cr, radius + 0.5, height - radius - 0.5, radius, 90 * degrees, 180 * degrees);
         cairo_arc (cr, radius + 0.5, radius + 0.5, radius, 180 * degrees, 270 * degrees);
         cairo_close_path(cr);
-        cairo_set_source_rgba (cr, bg_normal->red/65535.0, bg_normal->green/65535.0, bg_normal->blue/65535.0, 0.8);
+        cairo_set_source_rgba (cr, bg_normal->red/65535.0, bg_normal->green/65535.0, bg_normal->blue/65535.0, alpha);
         cairo_fill_preserve (cr);
-        cairo_set_source_rgba (cr, bg_selected->red/65535.0, bg_selected->green/65535.0, bg_selected->blue/65535.0, 0.8);
+        cairo_set_source_rgba (cr, bg_selected->red/65535.0, bg_selected->green/65535.0, bg_selected->blue/65535.0, border_alpha);
         cairo_stroke (cr);
     }
     else {
@@ -398,7 +417,28 @@ tabwin_widget_class_init (TabwinWidgetClass *klass)
                                                               "border width",
                                                                "the width of the colored border",
                                                                0, 8,
-                                                               WIN_COLOR_BORDER,
+                                                               WIN_BORDER_WIDTH,
+                                                               G_PARAM_READABLE));
+    gtk_widget_class_install_style_property (widget_class,
+                                             g_param_spec_int("border-alpha",
+                                                              "border alpha",
+                                                               "the alpha of the colored border",
+                                                               0.0, 1.0,
+                                                               WIN_BORDER_ALPHA,
+                                                               G_PARAM_READABLE));
+    gtk_widget_class_install_style_property (widget_class,
+                                             g_param_spec_int("alpha",
+                                                              "alpha",
+                                                               "the alpha of the window",
+                                                               0.0, 1.0,
+                                                               WIN_ALPHA,
+                                                               G_PARAM_READABLE));
+    gtk_widget_class_install_style_property (widget_class,
+                                             g_param_spec_int("radius",
+                                                              "radius",
+                                                               "the radius of the window",
+                                                               0, 20,
+                                                               WIN_RADIUS,
                                                                G_PARAM_READABLE));
 }
 
@@ -425,7 +465,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     gtk_window_set_screen (GTK_WINDOW (tbw), screen_info->gscr);
     gtk_widget_set_name (GTK_WIDGET (tbw), "xfwm4-tabwin");
 
-    /* Only do the rounded corners and transparency if a compositor is in use */
+    /* Check for compositing and set colormap for it */
     screen = gtk_widget_get_screen(GTK_WIDGET(tbw));
     if(gdk_screen_is_composited(screen)) {
         GdkColormap *cmap = gdk_screen_get_rgba_colormap(screen);
