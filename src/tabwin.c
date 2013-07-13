@@ -33,7 +33,7 @@
 #endif
 
 #ifndef WIN_COLOR_BORDER
-#define WIN_COLOR_BORDER 3
+#define WIN_COLOR_BORDER 1
 #endif
 
 #include <glib.h>
@@ -102,6 +102,7 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
     GdkScreen *screen;
     GdkColor *bg_normal = get_color(tbw, GTK_STATE_NORMAL);
     GdkColor *bg_selected = get_color(tbw, GTK_STATE_SELECTED);
+    gint border_width = WIN_COLOR_BORDER;
     cairo_t *cr;
     gint radius = 10.0;
     double degrees = 3.14 / 180.0;
@@ -112,7 +113,8 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
     screen = gtk_window_get_screen(window);
     screen = gtk_widget_get_screen(GTK_WIDGET(tbw));
     cr = gdk_cairo_create (tbw->window);
-    cairo_set_line_width (cr, 1.0);
+    gtk_widget_style_get (GTK_WIDGET (tbw), "border-width", &border_width, NULL);
+    cairo_set_line_width (cr, border_width);
     
     if(gdk_screen_is_composited(screen)) {
         cairo_set_operator(cr, CAIRO_OPERATOR_CLEAR);
@@ -408,7 +410,6 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     GtkWidget *vbox;
     GtkWidget *windowlist;
     GdkRectangle monitor;
-    gint border_width = WIN_COLOR_BORDER;
 
     TRACE ("entering tabwinCreateWidget for monitor %i", monitor_num);
 
@@ -421,7 +422,6 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     tbw->selected = NULL;
     tbw->selected_callback = 0;
 
-    gtk_widget_style_get (GTK_WIDGET (tbw), "border-width", &border_width, NULL);
     gtk_window_set_screen (GTK_WINDOW (tbw), screen_info->gscr);
     gtk_widget_set_name (GTK_WIDGET (tbw), "xfwm4-tabwin");
 
