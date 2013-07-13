@@ -420,14 +420,14 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     }
 
     gtk_widget_realize (GTK_WIDGET (tbw));
-    gtk_container_set_border_width (GTK_CONTAINER (tbw), 6);
+    gtk_container_set_border_width (GTK_CONTAINER (tbw), 12);
     gtk_widget_set_app_paintable(GTK_WIDGET(tbw), TRUE);
     gtk_window_set_position (GTK_WINDOW (tbw), GTK_WIN_POS_NONE);
     gdk_screen_get_monitor_geometry (screen_info->gscr, tbw->monitor_num, &monitor);
     gtk_window_move (GTK_WINDOW(tbw), monitor.x + monitor.width / 2,
                                       monitor.y + monitor.height / 2);
 
-    vbox = gtk_vbox_new (FALSE, 5);
+    vbox = gtk_vbox_new (FALSE, 3);
     gtk_container_add (GTK_CONTAINER (tbw), vbox);
 
     tbw->label = gtk_label_new ("");
