@@ -100,6 +100,7 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
 {
     GtkWindow *window;
     GdkScreen *screen;
+    GdkColor *bg_normal, *bg_insensitive;
     cairo_t *cr;
     gint radius = 10.0;
     double degrees = 3.14 / 180.0;
@@ -108,27 +109,40 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
 
     window = GTK_WINDOW(tbw);
     screen = gtk_window_get_screen(window);
-
+    screen = gtk_widget_get_screen(GTK_WIDGET(tbw));
     cr = gdk_cairo_create (tbw->window);
-    cairo_set_operator(cr, CAIRO_OPERATOR_CLEAR);
-    gdk_cairo_region(cr, event->region);
-    cairo_set_source_rgba(cr, 1.0, 1.0, 1.0, 0.0);
-    cairo_fill_preserve(cr);
-    cairo_clip(cr);
-    cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
-
-    //Draw a filled rounded rectangle with an outline
     cairo_set_line_width (cr, 1.0);
-    cairo_arc (cr, width - radius - 0.5, radius + 0.5, radius, -90 * degrees, 0 * degrees);
-    cairo_arc (cr, width - radius - 0.5, height - radius - 0.5, radius, 0 * degrees, 90 * degrees);
-    cairo_arc (cr, radius + 0.5, height - radius - 0.5, radius, 90 * degrees, 180 * degrees);
-    cairo_arc (cr, radius + 0.5, radius + 0.5, radius, 180 * degrees, 270 * degrees);
-    cairo_close_path(cr);
-    cairo_set_source_rgba (cr, 0.0, 0.0, 0.0, 0.8);
-    cairo_fill_preserve (cr);
-    cairo_set_source_rgba (cr, 0.95, 0.95, 0.95, 0.3);
-    cairo_stroke (cr);
+    
+    if(gdk_screen_is_composited(screen)) {
+        cairo_set_operator(cr, CAIRO_OPERATOR_CLEAR);
+        gdk_cairo_region(cr, event->region);
+        cairo_set_source_rgba(cr, 1.0, 1.0, 1.0, 0.0);
+        cairo_fill_preserve(cr);
+        cairo_clip(cr);
+        cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
 
+        //Draw a filled rounded rectangle with an outline
+        cairo_arc (cr, width - radius - 0.5, radius + 0.5, radius, -90 * degrees, 0 * degrees);
+        cairo_arc (cr, width - radius - 0.5, height - radius - 0.5, radius, 0 * degrees, 90 * degrees);
+        cairo_arc (cr, radius + 0.5, height - radius - 0.5, radius, 90 * degrees, 180 * degrees);
+        cairo_arc (cr, radius + 0.5, radius + 0.5, radius, 180 * degrees, 270 * degrees);
+        cairo_close_path(cr);
+        cairo_set_source_rgba (cr, 0.0, 0.0, 0.0, 0.8);
+        cairo_fill_preserve (cr);
+        cairo_set_source_rgba (cr, 0.95, 0.95, 0.95, 0.3);
+        cairo_stroke (cr);
+    }
+    else {
+        cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
+        cairo_rectangle(cr, 0, 0, width, height);
+        bg_normal = get_color(tbw, GTK_STATE_NORMAL);
+        gdk_cairo_set_source_color(cr, bg_normal);
+        cairo_fill_preserve (cr);
+        bg_insensitive = get_color(tbw, GTK_STATE_SELECTED);
+        gdk_cairo_set_source_color(cr, bg_insensitive);
+        cairo_stroke (cr);
+    }
+    
     cairo_destroy (cr);
     return FALSE;
 }
@@ -415,7 +429,6 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     /* Only do the rounded corners and transparency if a compositor is in use */
     screen = gtk_widget_get_screen(GTK_WIDGET(tbw));
     if(gdk_screen_is_composited(screen)) {
-        g_signal_connect (tbw, "expose-event", GTK_SIGNAL_FUNC (tabwin_expose), (gpointer) tbw);
         GdkColormap *cmap = gdk_screen_get_rgba_colormap(screen);
         if(cmap)
             gtk_widget_set_colormap(GTK_WIDGET(tbw), cmap);
@@ -452,6 +465,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
 
     g_signal_connect_swapped (tbw, "configure-event",
                               GTK_SIGNAL_FUNC (tabwinConfigure), (gpointer) tbw);
+    g_signal_connect (tbw, "expose-event", GTK_SIGNAL_FUNC (tabwin_expose), (gpointer) tbw);
 
     gtk_widget_show_all (GTK_WIDGET (tbw));
 
