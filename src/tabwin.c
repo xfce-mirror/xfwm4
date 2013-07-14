@@ -420,14 +420,14 @@ tabwin_widget_class_init (TabwinWidgetClass *klass)
                                                                WIN_BORDER_WIDTH,
                                                                G_PARAM_READABLE));
     gtk_widget_class_install_style_property (widget_class,
-                                             g_param_spec_int("border-alpha",
+                                             g_param_spec_double("border-alpha",
                                                               "border alpha",
                                                                "the alpha of the colored border",
                                                                0.0, 1.0,
                                                                WIN_BORDER_ALPHA,
                                                                G_PARAM_READABLE));
     gtk_widget_class_install_style_property (widget_class,
-                                             g_param_spec_int("alpha",
+                                             g_param_spec_double("alpha",
                                                               "alpha",
                                                                "the alpha of the window",
                                                                0.0, 1.0,
