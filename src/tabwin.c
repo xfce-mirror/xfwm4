@@ -37,15 +37,15 @@
 #endif
 
 #ifndef WIN_ALPHA
-#define WIN_ALPHA 0.9
+#define WIN_ALPHA 0.85
 #endif
 
 #ifndef WIN_BORDER_ALPHA
 #define WIN_BORDER_ALPHA 0.5
 #endif
 
-#ifndef WIN_RADIUS
-#define WIN_RADIUS 10
+#ifndef WIN_BORDER_RADIUS
+#define WIN_BORDER_RADIUS 10
 #endif
 
 #include <glib.h>
@@ -118,7 +118,7 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
     gint border_width = WIN_BORDER_WIDTH;
     gdouble border_alpha = WIN_BORDER_ALPHA;
     gdouble alpha = WIN_ALPHA;
-    gint radius = WIN_RADIUS;
+    gint border_radius = WIN_BORDER_RADIUS;
     double degrees = 3.14 / 180.0;
     double width = tbw->allocation.width;
     double height = tbw->allocation.height;
@@ -131,7 +131,7 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
                             "border-width", &border_width,
                             "border-alpha", &border_alpha,
                             "alpha", &alpha,
-                            "radius", &radius,
+                            "border-radius", &border_radius,
                             NULL);
     cairo_set_line_width (cr, border_width);
     
@@ -144,10 +144,10 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
         cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
 
         //Draw a filled rounded rectangle with an outline
-        cairo_arc (cr, width - radius - 0.5, radius + 0.5, radius, -90 * degrees, 0 * degrees);
-        cairo_arc (cr, width - radius - 0.5, height - radius - 0.5, radius, 0 * degrees, 90 * degrees);
-        cairo_arc (cr, radius + 0.5, height - radius - 0.5, radius, 90 * degrees, 180 * degrees);
-        cairo_arc (cr, radius + 0.5, radius + 0.5, radius, 180 * degrees, 270 * degrees);
+        cairo_arc (cr, width - border_radius - 0.5, border_radius + 0.5, border_radius, -90 * degrees, 0 * degrees);
+        cairo_arc (cr, width - border_radius - 0.5, height - border_radius - 0.5, border_radius, 0 * degrees, 90 * degrees);
+        cairo_arc (cr, border_radius + 0.5, height - border_radius - 0.5, border_radius, 90 * degrees, 180 * degrees);
+        cairo_arc (cr, border_radius + 0.5, border_radius + 0.5, border_radius, 180 * degrees, 270 * degrees);
         cairo_close_path(cr);
         cairo_set_source_rgba (cr, bg_normal->red/65535.0, bg_normal->green/65535.0, bg_normal->blue/65535.0, alpha);
         cairo_fill_preserve (cr);
@@ -434,11 +434,11 @@ tabwin_widget_class_init (TabwinWidgetClass *klass)
                                                                WIN_ALPHA,
                                                                G_PARAM_READABLE));
     gtk_widget_class_install_style_property (widget_class,
-                                             g_param_spec_int("radius",
-                                                              "radius",
-                                                               "the radius of the window",
+                                             g_param_spec_int("border-radius",
+                                                              "border radius",
+                                                               "the border radius of the window",
                                                                0, 20,
-                                                               WIN_RADIUS,
+                                                               WIN_BORDER_RADIUS,
                                                                G_PARAM_READABLE));
 }
 
@@ -450,6 +450,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     GtkWidget *vbox;
     GtkWidget *windowlist;
     GdkRectangle monitor;
+    gint border_radius = WIN_BORDER_RADIUS;
 
     TRACE ("entering tabwinCreateWidget for monitor %i", monitor_num);
 
@@ -473,8 +474,9 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
             gtk_widget_set_colormap(GTK_WIDGET(tbw), cmap);
     }
 
+    gtk_widget_style_get(GTK_WIDGET(tbw), "border-radius", &border_radius, NULL);
     gtk_widget_realize (GTK_WIDGET (tbw));
-    gtk_container_set_border_width (GTK_CONTAINER (tbw), 12);
+    gtk_container_set_border_width (GTK_CONTAINER (tbw), border_radius + 4);
     gtk_widget_set_app_paintable(GTK_WIDGET(tbw), TRUE);
     gtk_window_set_position (GTK_WINDOW (tbw), GTK_WIN_POS_NONE);
     gdk_screen_get_monitor_geometry (screen_info->gscr, tbw->monitor_num, &monitor);
