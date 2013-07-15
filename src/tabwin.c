@@ -110,7 +110,6 @@ get_color (GtkWidget *win, GtkStateType state_type)
 static gboolean
 tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
 {
-    GtkWindow *window;
     GdkScreen *screen;
     cairo_t *cr;
     GdkColor *bg_normal = get_color(tbw, GTK_STATE_NORMAL);
@@ -119,14 +118,15 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
     gdouble border_alpha = WIN_BORDER_ALPHA;
     gdouble alpha = WIN_ALPHA;
     gint border_radius = WIN_BORDER_RADIUS;
-    double degrees = 3.14 / 180.0;
-    double width = tbw->allocation.width;
-    double height = tbw->allocation.height;
+    gdouble degrees = 3.14 / 180.0;
+    gdouble width = tbw->allocation.width;
+    gdouble height = tbw->allocation.height;
 
-    window = GTK_WINDOW(tbw);
-    screen = gtk_window_get_screen(window);
     screen = gtk_widget_get_screen(GTK_WIDGET(tbw));
     cr = gdk_cairo_create (tbw->window);
+    if (G_UNLIKELY (cr == NULL))
+      return FALSE;
+
     gtk_widget_style_get (GTK_WIDGET (tbw),
                             "border-width", &border_width,
                             "border-alpha", &border_alpha,
@@ -135,7 +135,7 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
                             NULL);
     cairo_set_line_width (cr, border_width);
     
-    if(gdk_screen_is_composited(screen)) {
+    if (gdk_screen_is_composited(screen)) {
         cairo_set_operator(cr, CAIRO_OPERATOR_CLEAR);
         gdk_cairo_region(cr, event->region);
         cairo_set_source_rgba(cr, 1.0, 1.0, 1.0, 0.0);
@@ -143,7 +143,7 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
         cairo_clip(cr);
         cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
 
-        //Draw a filled rounded rectangle with an outline
+        /* Draw a filled rounded rectangle with an outline */
         cairo_arc (cr, width - border_radius - 0.5, border_radius + 0.5, border_radius, -90 * degrees, 0 * degrees);
         cairo_arc (cr, width - border_radius - 0.5, height - border_radius - 0.5, border_radius, 0 * degrees, 90 * degrees);
         cairo_arc (cr, border_radius + 0.5, height - border_radius - 0.5, border_radius, 90 * degrees, 180 * degrees);
@@ -154,7 +154,7 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
         cairo_set_source_rgba (cr, bg_selected->red/65535.0, bg_selected->green/65535.0, bg_selected->blue/65535.0, border_alpha);
         cairo_stroke (cr);
     }
-    else {
+    else{
         cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
         cairo_rectangle(cr, 0, 0, width, height);
         gdk_cairo_set_source_color(cr, bg_normal);
@@ -250,9 +250,12 @@ tabwinSetSelected (TabwinWidget *tbw, GtkWidget *w, GtkWidget *l)
                                                NULL);
     c = g_object_get_data (G_OBJECT (tbw->selected), "client-ptr-val");
 
-    classname = g_strdup(c->class.res_class);
-    tabwinSetLabel (tbw, l, classname, c->name, c->win_workspace);
-    g_free (classname);
+    if (c != NULL)
+    {
+        classname = g_strdup(c->class.res_class);
+        tabwinSetLabel (tbw, l, classname, c->name, c->win_workspace);
+        g_free (classname);
+    }
 }
 
 static GtkWidget *
