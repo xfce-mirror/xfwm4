@@ -231,6 +231,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     KeyCode cancel, left, right, up, down;
     int key, modifiers;
     gboolean key_pressed, cycling, gone;
+    GList *li;
+    Window mouse_window = 0;
 
     TRACE ("entering clientCycleEventFilter");
 
@@ -359,12 +361,28 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             break;
         case ButtonPress:
         case ButtonRelease:
+            /* window of the event, we might accept it later */
+            mouse_window = xevent->xbutton.window;
+            break;
         case EnterNotify:
-        case MotionNotify:
+        case LeaveNotify:
+            /* window of the event, we might accept it later */
+            mouse_window = xevent->xcrossing.window;
             break;
         default:
             status = EVENT_FILTER_CONTINUE;
             break;
+    }
+    
+    if (mouse_window != 0)
+    {
+        /* only accept events for the tab windows */
+        for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
+            if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == mouse_window)
+            {
+                status = EVENT_FILTER_CONTINUE;
+                break;
+            }
     }
 
     if (!cycling)
@@ -385,6 +403,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     GList *client_list, *selected;
     gboolean g1, g2;
     int key, modifier;
+    Client *c2;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCycle");
@@ -429,7 +448,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, ev->time);
-    g2 = myScreenGrabPointer (screen_info, LeaveWindowMask,  None, ev->time);
+    g2 = myScreenGrabPointer (screen_info, EnterWindowMask | LeaveWindowMask | ButtonPressMask | ButtonMotionMask | PointerMotionMask  | ButtonReleaseMask,  None, ev->time);
 
     if (!g1 || !g2)
     {
@@ -452,6 +471,11 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
     passdata.tabwin = tabwinCreate (&client_list, selected, screen_info->params->cycle_workspaces);
     eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
+    
+    c2 = myScreenGetClientFromWindow (screen_info, GDK_WINDOW_XID (gtk_widget_get_window ( passdata.tabwin->tabwin_list->data)), SEARCH_FRAME);
+    g_message ("%p", c2);
+    clientSetFocus (screen_info, c2, ev->time, NO_FOCUS_FLAG);
+    
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving cycle loop");

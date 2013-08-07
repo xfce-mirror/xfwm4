@@ -552,6 +552,7 @@ tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
     Client *c;
     Tabwin *tabwin;
     int num_monitors, i;
+    TabwinWidget *win;
 
     g_return_val_if_fail (selected, NULL);
     g_return_val_if_fail (client_list, NULL);
@@ -571,7 +572,8 @@ tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
         gint monitor_index;
 
         monitor_index = myScreenGetMonitorIndex(screen_info, i);
-        tabwin->tabwin_list  = g_list_append (tabwin->tabwin_list, tabwinCreateWidget (tabwin, screen_info, monitor_index));
+        win = tabwinCreateWidget (tabwin, screen_info, monitor_index);
+        tabwin->tabwin_list  = g_list_append (tabwin->tabwin_list, win);
     }
 
     return tabwin;
