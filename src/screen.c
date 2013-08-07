@@ -486,7 +486,7 @@ myScreenChangeGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cur
     gboolean grab;
 
     g_return_val_if_fail (screen_info, FALSE);
-    TRACE ("entering myScreenGrabPointer");
+    TRACE ("entering myScreenChangeGrabPointer");
 
     grab = FALSE;
     if (screen_info->pointer_grabs > 0)
