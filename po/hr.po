@@ -1,29 +1,29 @@
-# Croatian translations for  xfwm4 package.
-# Copyright (C) 2010 The Xfce Development Team.
-# This file is distributed under the same license as the xfwm4 package.
-#  Ivica Kolić<ikoli@yahoo.com>, 2010.
-#  Petar Koretić<petar.koretic@gmail.com>
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Ivica  Kolić <ikoli@yahoo.com>, 2010
+# Ivica  Kolić <ikoli@yahoo.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-05 04:57+0000\n"
-"PO-Revision-Date: 2010-06-12 00:06+0200\n"
-"Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
-"Language-Team: Croatian <>\n"
+"POT-Creation-Date: 2013-07-02 22:21+0200\n"
+"PO-Revision-Date: 2013-09-09 07:17+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
+"Language-Team: Croatian (http://www.transifex.com/projects/p/xfce/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hr\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Ovaj prozor ne reagira.\n"
-"Želite li prisilno ugasiti aplikaciju?"
+msgstr "Ovaj prozor ne reagira.\nŽelite li prisilno ugasiti aplikaciju?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -33,38 +33,36 @@ msgstr "Upozorenje"
 msgid "None"
 msgstr "Ništa"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 msgid "Session manager socket"
 msgstr "Socket upravitelja sesijom"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/tweaks-settings.c:464
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informacija o verziji"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Pokušajte %s --help da vi vidjeli popis svih mogućih opcija.\n"
+msgstr "%s: %s\nPokušajte %s --help da vi vidjeli popis svih mogućih opcija.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -74,245 +72,245 @@ msgstr "Radni prostor %d"
 
 #: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
-msgstr "Naziv Radnog Prostora"
+msgstr "Ime radnog prostora"
 
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
-msgstr "Socket upravitelja postavkama"
+msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Configure window behavior and shortcuts"
-msgstr "Postavi ponašanje prozora i prečica"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Upravitelj prozora"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "Configure window behavior and shortcuts"
+msgstr "Konfiguriraj ponašanje prozora i prečace"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Ugađanja upravitelja prozora"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
 msgstr "Detaljno postavljanje ponašanja prozora i efekata"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "Window Manager Tweaks"
-msgstr "Postavke Upravitelja Prozora"
-
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Configure layout, names and margins"
-msgstr "Konfiguriraj raspored, imena i margine"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Radni prostori"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Button layout</b>"
-msgstr "<b>Način prikaza gumbića</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Double click _action</b>"
-msgstr "<b>Dvoklik _radnja</b>"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr "Konfiguriraj raspored, imena i margine"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>Focus model</b>"
-msgstr "<b>Način fokusa</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Hide content of windows</b>"
-msgstr "<b>Sakrij sadržaj prozora</b> "
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>New window focus</b>"
-msgstr "<b>Fokusiranje novih prozora</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>Raise on click</b>"
-msgstr "<b>Podigni na klik</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on focus</b>"
-msgstr "<b>Podigni na fokus</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>The_me</b>"
 msgstr "<b>Te_ma</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Title fon_t</b>"
+msgstr "<b>Fon_t natpisa</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
 msgstr "<b>_Poravnanje natpisa</b>"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+msgid "Click and drag the buttons to change the layout"
+msgstr "Klikni i vuci gumbiće za izmjenu rasporeda "
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "Naslov"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "The window title cannot be removed"
+msgstr "Natpis prozora ne može biti uklonjen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "Active"
+msgstr "Aktivan"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
-msgid "<b>Title fon_t</b>"
-msgstr "<b>Fon_t Natpisa</b>"
+msgid "Menu"
+msgstr "Izbornik"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "<b>Windows snapping</b>"
-msgstr "<b>Ljepljenje prozora</b>"
+msgid "Stick"
+msgstr "Priljepi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgid "Shade"
+msgstr "Sjena"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+msgid "Minimize"
+msgstr "Minimiziraj"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "Maximize"
+msgstr "Maksimiziraj"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Close"
+msgstr "Zatvori"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Skriveno"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<b>Button layout</b>"
+msgstr "<b>Raspored gumbića</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "_Style"
+msgstr "_Stil"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "Define shortcuts to perform _window manager actions:"
 msgstr ""
 
-#. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
-msgid "<i>Long</i>"
-msgstr "<i>Dugo</i>"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+msgid "_Reset to Defaults"
+msgstr "_Postavi na zadano"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "_Keyboard"
+msgstr "_Tipkovnica"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "Click to foc_us"
+msgstr "Klikni za fo_kus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Focus follows _mouse"
+msgstr "Fokus slijedi _miša"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "_Delay before window receives focus:"
+msgstr "_Odgoda prije nego prozor primi  fokus"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
 msgstr "<i>Kratko</i>"
 
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "<i>Long</i>"
+msgstr "<i>Dugo</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "<b>Focus model</b>"
+msgstr "<b>Način fokusa</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Automatically give focus to _newly created windows"
+msgstr "Automatski daj fokus _novostvorenim prozorima"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "<b>New window focus</b>"
+msgstr "<b>Fokus novog prozora</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Automatically _raise windows when they receive focus"
+msgstr "Automatski _podigni prozor čim dobije fokus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Delay _before raising focused window:"
+msgstr "Stanka _prije podizanja prozora"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "<b>Raise on focus</b>"
+msgstr "<b>Podigni na fokus</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Raise window when clicking _inside application window"
+msgstr "Podigni prozor prilikom klika _unutar prozora programa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "<b>Raise on click</b>"
+msgstr "<b>Podigni na klik</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "_Focus"
+msgstr "_Fokus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgid "To screen _borders"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "To other _windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Dis_tance:"
+msgstr "Uda_ljenost"
+
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
 msgstr "<i>Malo</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
-msgid "<i>Wide</i>"
-msgstr "<i>Širina</i>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Active"
-msgstr "Aktivan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Ad_vanced"
-msgstr "Na_predno"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Automatically _raise windows when they receive focus"
-msgstr "Automatski podigni p_rozor čim dobi fokus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Automatically give focus to _newly created windows"
-msgstr "Automatski daj fokus _novim prozorima"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Click and drag the buttons to change the layout"
-msgstr "Klikni i vuci gumbiće za izmjenu rasporeda izgleda"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Click to foc_us"
-msgstr "Klikni za fo_kus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-msgid "Close"
-msgstr "Zatvori"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-msgid "Define shortcuts to perform _window manager actions:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Delay _before raising focused window:"
-msgstr "Stanka _prije podizanja prozora"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Dis_tance:"
-msgstr "Uda_ljenost"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Focus follows _mouse"
-msgstr "Fokus slijedi _miša"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "Skriveno"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Maximize"
-msgstr "Maksimiziraj"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Menu"
-msgstr "Izbornik"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Minimize"
-msgstr "Minimiziraj"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Raise window when clicking _inside application window"
-msgstr "Podigni prozor prilikom k_lika na unutarnji prozor"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Shade"
-msgstr "Sjena"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-msgid "Stick"
-msgstr "Priljepi"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Radnja koja se odvija kad se napravi dvoklik na traku sa natpisom"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "The window title cannot be removed"
-msgstr "Natpis prozora ne može biti maknut"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Title"
-msgstr "Naslov"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "To other _windows"
-msgstr ""
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "To screen _borders"
-msgstr ""
+msgid "<i>Wide</i>"
+msgstr "<i>Široko</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "When _moving"
+msgid "<b>Windows snapping</b>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "When _resizing"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "With a _dragged window"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With the mouse _pointer"
 msgstr "Pokazivačem _miša"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "With a _dragged window"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+msgid "_Edge resistance:"
+msgstr "_Otpornost ruba:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr ""
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "_Delay before window receives focus:"
-msgstr "Stanka prije nego prozor _primi  fokus"
+msgid "When _moving"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-msgid "_Edge resistance:"
-msgstr "O_tpornost ruba"
+msgid "When _resizing"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "_Focus"
-msgstr "_Fokus"
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Sakrij sadržaj prozora</b> "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-msgid "_Keyboard"
-msgstr "_Tipkovnica"
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Radnja koja se odvija kad se napravi dvoklik na traku sa natpisom"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Reset to Defaults"
-msgstr "_Postavi na uobičajene vrijednosti"
+msgid "<b>Double click _action</b>"
+msgstr "<b>Dvoklik _radnja</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "_Style"
-msgstr "_Stil"
+msgid "Ad_vanced"
+msgstr "Na_predno"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Shade window"
@@ -365,7 +363,7 @@ msgstr "Xfconf neuspješno inicijaliziran. Razlog: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
-msgstr "Ne mogu kreirati prozor sa postavkama."
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:1901
 #: ../settings-dialogs/xfwm4-settings.c:1902
@@ -374,220 +372,219 @@ msgstr "Vrati na zadano"
 
 #: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Ovo će vratiti sve prečace na njihovu zadanu vrijednost.Želite li doista to "
-"učiniti?"
-
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Large</i>"
-msgstr "<i>Veliki</i>"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Ovo će vratiti sve prečace na njihovu zadanu vrijednost.Želite li doista to učiniti?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "<i>Opaque</i>"
-msgstr "<i>Neproziran</i>"
+msgid ""
+"S_kip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "_Uključi skrivene (tj. iconified) prozore"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "<i>Transparent</i>"
-msgstr "<i>Proziran</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate foc_us stealing prevention"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the c_enter of the screen"
-msgstr "U c_entru zaslona"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-msgid "By default, place windows:"
-msgstr "Po zadanom,smjesti prozore:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "C_ompositor"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "C_ycling"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Cycle _through windows on all workspaces"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Display _fullscreen overlay windows directly"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-msgid "Do _nothing"
-msgstr "Ne _radi ništa"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide frame of windows when ma_ximized"
-msgstr "Sakrij okvir prozora kada je ma_ksimiziran"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Activate foc_us stealing prevention"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
 msgstr ""
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "_Bring window on current workspace"
+msgstr "_Dovedi prozor na trenutni radni prostor"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Switch to win_dow's workspace"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Do _nothing"
+msgstr "Ne _radi ništa"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+msgid "Key used to _grab and move windows:"
+msgstr "Tipka za _uzimanje i premještanje prozora"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+msgid "_Raise windows when any mouse button is pressed"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Hide frame of windows when ma_ximized"
+msgstr "Sakrij okvir prozora kada je ma_ksimiziran"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Keep urgent windows _blinking repeatedly"
+msgid "Restore original size of maximi_zed windows when moving"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Key used to _grab and move windows:"
-msgstr "Tipka za _uzimanje i premještanje prozora"
+msgid "Automatically _tile windows when moving toward the screen edge"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Opaci_ty of window decorations:"
-msgstr "Neprozirno_st dekoracije prozora:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Opacity of _inactive windows:"
-msgstr "Neprozirnost _neaktivnih prozora:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of popup wi_ndows:"
-msgstr "Neprozirnost neaktivnih pro_zora:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Opacity of windows during _move:"
-msgstr "Neprozirnost prozora tijekom _pomicanja"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Opacity of windows during resi_ze:"
-msgstr "Neprozirnost prozora tijekom promije_ne veličine"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid ""
-"S_kip windows that have \"skip pager\"\n"
-"or \"skip taskbar\" properties set"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-msgid "Show shadows under _dock windows"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Show shadows under _regular windows"
-msgstr "POkaži sjenu ispod _običnih prozora"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Show shadows under pop_up windows"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Switch to win_dow's workspace"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "U_nder the mouse pointer"
-msgstr "I_spod pokazivača miša"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Use _edge resistance instead of window snapping"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
-"Koristi _kotačić miša na radnoj površini za prebacivanje radnih prostora"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "When a window raises itself:"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "Keep urgent windows _blinking repeatedly"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
 msgstr "_Pristupačnost"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Bring window on current workspace"
-msgstr "_Dovedi prozor na trenutni radni prostor"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "Koristi _kotačić miša na radnoj površini za prebacivanje radnih prostora"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Draw frame around selected windows while cycling"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "_Enable display compositing"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Uključi skrivene (tj. iconified) prozore"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-msgid "_Placement"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-msgid "_Raise windows when any mouse button is pressed"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+msgid "Wrap workspaces when _the first or the last workspace is reached"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "_Radni prostori"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr ""
+
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "<i>Large</i>"
+msgstr "<i>Veliki</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "By default, place windows:"
+msgstr "Po zadanom, smjesti prozore:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "At the c_enter of the screen"
+msgstr "U c_entru zaslona"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "U_nder the mouse pointer"
+msgstr "I_spod pokazivača miša"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Placement"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "_Enable display compositing"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "Display _fullscreen overlay windows directly"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "Synchronize drawing to the _vertical blank"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "Show shadows under pop_up windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Show shadows under _dock windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show shadows under _regular windows"
+msgstr "Pokaži sjenu ispod _običnih prozora"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "Opaci_ty of window decorations:"
+msgstr "Neprozirno_st dekoracije prozora:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgid "<i>Transparent</i>"
+msgstr "<i>Proziran</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "<i>Opaque</i>"
+msgstr "<i>Neproziran</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+msgid "Opacity of _inactive windows:"
+msgstr "Neprozirnost _neaktivnih prozora:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+msgid "Opacity of windows during _move:"
+msgstr "Neprozirnost prozora tijekom _pomicanja:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Opacity of windows during resi_ze:"
+msgstr "Neprozirnost prozora tijekom promije_ne veličine:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Opacity of popup wi_ndows:"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+msgid "C_ompositor"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid "_Number of workspaces:"
+msgstr "_Broj radnih prostora:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
 msgstr "Raspored"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Margine su prostori na rubovima zaslona gdje nijedan prozor neće biti "
-"smješten"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
-msgstr "_Imena:"
+msgstr "Imena"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
 msgstr "_Općenito"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Margins"
-msgstr "_Margine"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Margine su prostori na rubovima zaslona gdje nijedan prozor neće biti smješten"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-msgid "_Number of workspaces:"
-msgstr "_Broj radnih prostora:"
+msgid "_Margins"
+msgstr "_Margine"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -642,7 +639,7 @@ msgstr "Mi_nimiziraj"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
-msgstr "Minimiziraj _ostale prozore"
+msgstr "Minimiziraj _sve ostale prozore"
 
 #: ../src/menu.c:47
 msgid "S_how"
@@ -683,7 +680,7 @@ msgstr "_Cijeli zaslon"
 
 #: ../src/menu.c:57
 msgid "Leave _Fullscreen"
-msgstr "Napusti _Cijeli zaslon"
+msgstr "Napusti _cijeli zaslon"
 
 #: ../src/menu.c:58
 msgid "Context _Help"
@@ -754,207 +751,3 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
-
-#~ msgid "<b>Box move and resize</b>"
-#~ msgstr "<b>Micanje i promjena veličine okvira</b>"
-
-#~ msgid "<b>Wrap workspaces</b>"
-#~ msgstr "<b>Radne površine u krug</b>"
-
-#~ msgid "<b>_Window shortcuts</b>"
-#~ msgstr "<b>_Kratice prozora</b>"
-
-#~ msgid "Hide content of windows when _resizing"
-#~ msgstr "Sakrij sadržaj prozora prilikom p_romjene veličine"
-
-#~ msgid "Snap windows to other _windows"
-#~ msgstr "Priljepi prozore sa ostale _prozore"
-
-#~ msgid "Window operations menu"
-#~ msgstr "Izbornik operacija prozora"
-
-#~ msgid "Up"
-#~ msgstr "Gore"
-
-#~ msgid "Down"
-#~ msgstr "Dolje"
-
-#~ msgid "Cancel"
-#~ msgstr "Odustani"
-
-#~ msgid "Switch window for same application"
-#~ msgstr "Promijeni  prozor za isti program"
-
-#~ msgid "Switch application"
-#~ msgstr "Promijeni program"
-
-#~ msgid "Close window"
-#~ msgstr "Zatvori prozor"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Maksimiziraj prozor vodoravno"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Maksimiziraj prozor okomito"
-
-#~ msgid "Move window"
-#~ msgstr "Pomakni prozor"
-
-#~ msgid "Resize window"
-#~ msgstr "Promijeni veličinu prozora"
-
-#~ msgid "Stick window"
-#~ msgstr "Lijepi prozore"
-
-#~ msgid "Raise window"
-#~ msgstr "Podigni prozor"
-
-#~ msgid "Fill window horizontally"
-#~ msgstr "Ispuni prozor vodoravno"
-
-#~ msgid "Fill window vertically"
-#~ msgstr "Ispuni prozor okomito"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Pomakni prozor u gornji radni prostor"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Pomakni prozor u donji radni prostor"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Pomakni prozor u lijevi radni prostor"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Pomakni prozor u desni radni prostor"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Pomakni prozor u prethodni radni prostor"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Pomakni prozor u slijedeći radni prostor"
-
-#~ msgid "Move window to workspace 1"
-#~ msgstr "Pomakni prozor u radni prostor 1"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Pomakni prozor u radni prostor 2"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Pomakni prozor u radni prostor 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Pomakni prozor u radni prostor 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Pomakni prozor u radni prostor 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Pomakni prozor u radni prostor 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Pomakni prozor u radni prostor 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Pomakni prozor u radni prostor 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Pomakni prozor u radni prostor 9"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Pomakni prozor u radni prostor 10"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Pomakni prozor u radni prostor 11"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Pomakni prozor u radni prostor 12"
-
-#~ msgid "Tile window to the top"
-#~ msgstr "Pomakni prozor gore"
-
-#~ msgid "Tile window to the bottom"
-#~ msgstr "Pomakni prozor dolje"
-
-#~ msgid "Tile window to the left"
-#~ msgstr "Pomakni prozor lijevo"
-
-#~ msgid "Tile window to the right"
-#~ msgstr "Pomakni prozor desno"
-
-#~ msgid "Show desktop"
-#~ msgstr "Pokaži radnu površinu"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Gornji radni prostor"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Donji radni prostor"
-
-#~ msgid "Left workspace"
-#~ msgstr "Lijevi radni prostor"
-
-#~ msgid "Right workspace"
-#~ msgstr "Desni radni prostor"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Prethodni radni prostor"
-
-#~ msgid "Next workspace"
-#~ msgstr "Slijedeći radni prostor"
-
-#~ msgid "Workspace 1"
-#~ msgstr "Radni prostor 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Radni prostor 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Radni prostor 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Radni prostor 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Radni prostor 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Radni prostor 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Radni prostor 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Radni prostor 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Radni prostor 9"
-
-#~ msgid "Workspace 10"
-#~ msgstr "Radni prostor 10"
-
-#~ msgid "Workspace 11"
-#~ msgstr "Radni prostor 11"
-
-#~ msgid "Workspace 12"
-#~ msgstr "Radni prostor 12"
-
-#~ msgid "Add workspace"
-#~ msgstr "Dodaj radni prostor"
-
-#~ msgid "Delete last workspace"
-#~ msgstr "Obriši zadnji radni prostor"
-
-#~ msgid "Delete active workspace"
-#~ msgstr "Obriši aktivni radni prostor"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "Postavi broj i imena radnih prostora"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Radni prostori</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "Promjeni ime radnog prostora "
-
-#~ msgid "Hide"
-#~ msgstr "Sakrij"
