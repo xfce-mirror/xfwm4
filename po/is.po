@@ -1,28 +1,28 @@
-# translation of is.po to Icelandic
-# Copyright (C) 2011 Free Software Foundation
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Sveinn í Felli <sveinki@nett.is>, 2011.
+# 
+# Translators:
+# Sveinn í Felli <sveinki@nett.is>, 2011,2013
 msgid ""
 msgstr ""
-"Project-Id-Version: is\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 18:54+0200\n"
-"PO-Revision-Date: 2011-12-07 08:01+0000\n"
+"POT-Creation-Date: 2013-07-02 22:21+0200\n"
+"PO-Revision-Date: 2013-09-13 13:56+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
-"Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
-"Language: is\n"
+"Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language: is\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
+msgstr "Þessi gluggi gæti verið upptekinn eða svarar ekki.\nViltu stöðva keyrslu á forriti?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -32,36 +32,36 @@ msgstr "Aðvörun"
 msgid "None"
 msgstr "Ekkert"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 msgid "Session manager socket"
-msgstr ""
+msgstr "Sökkull setustjórnunar"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
-msgstr ""
+msgstr "AUÐKENNI SÖKKULS - ID"
 
-#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/tweaks-settings.c:464
 #: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:317
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Útgáfuupplýsingar"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:964
+#: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:968
+#: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
+msgstr "%s: %s\nPrufaðu %s --hjálp til að sjá lista með öllum tiltækum skipanavalkostum.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -74,9 +74,9 @@ msgid "Workspace Name"
 msgstr "Heiti vinnusvæðis"
 
 #: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Sökkull stillingastjórnunar"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -86,17 +86,17 @@ msgstr "Gluggastjóri"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr ""
+msgstr "Stilla hegðun glugga og flýtilykla"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr ""
+msgstr "Sérstakar breytingar gluggastjóra"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr ""
+msgstr "Fínstilla gluggahegðun og brellur"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -106,23 +106,23 @@ msgstr "Vinnusvæði"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "Stilla framsetningu, nöfn og spássíur"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>_Theme</b>"
+msgid "<b>The_me</b>"
 msgstr "<b>Þe_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
-msgstr ""
+msgstr "<b>Letur _titils</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
-msgstr ""
+msgstr "<b>_Jöfnun titils</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
-msgstr ""
+msgstr "Smella og draga hnappana til að breyta útliti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Title"
@@ -130,7 +130,7 @@ msgstr "Titill"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "The window title cannot be removed"
-msgstr ""
+msgstr "Ekki er hægt að fjarlægja þennan gluggatitil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Active"
@@ -173,50 +173,50 @@ msgid "_Style"
 msgstr "_Stíll"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "Skilgreina flýtilykla til að framkvæma aðgerðir gluggastjóra:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
 msgstr "Endu_rheimta upprunaleg gildi"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
-msgid "<b>Window _shortcuts</b>"
-msgstr ""
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Ke_yboard"
-msgstr "L_yklaborð"
+msgid "_Keyboard"
+msgstr "_Lyklaborð"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Clic_k to focus"
-msgstr "Smella til að vir_kja"
+msgid "Click to foc_us"
+msgstr "Smella til að _virkja"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
-msgstr ""
+msgstr "Virkni fylgir _mús"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Delay before window receives focus:"
-msgstr ""
+msgstr "_Töf áður en gluggi fær virkni:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
-msgstr ""
+msgstr "<i>Stutt</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "<i>Long</i>"
-msgstr ""
+msgstr "<i>Löng</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "<b>Focus model</b>"
-msgstr ""
+msgstr "<b>Gerð virkni</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Automatically give focus to _newly created windows"
-msgstr ""
+msgstr "Gefa nýjum glugga sjálfkrafa virkni"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>New window focus</b>"
-msgstr ""
+msgstr "<b>Virkni nýs glugga</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr ""
+msgstr "<b>Lyfta við að fá virkni</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
@@ -236,7 +236,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
-msgstr ""
+msgstr "<b>Lyfta við smell</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
@@ -244,90 +244,86 @@ msgid "_Focus"
 msgstr "_Virkni"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Snap windows to screen _border"
-msgstr ""
+msgid "To screen _borders"
+msgstr "Í skjá_jaðra"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-msgid "Snap windows to other _windows"
-msgstr ""
+msgid "To other _windows"
+msgstr "Í aðra g_lugga"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
-msgstr "Vega_lengd:"
+msgstr "_Fjarlægð:"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
-msgstr ""
+msgstr "<i>Þröngt</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "<i>Wide</i>"
-msgstr ""
+msgstr "<i>Breitt</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "<b>Windows snapping</b>"
-msgstr ""
+msgstr "<b>Grip glugga</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
+msgid "With the mouse _pointer"
+msgstr "Með músar_bendli"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
+msgid "With a _dragged window"
+msgstr "Með _dregnum glugga"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "<b>Wrap workspaces</b>"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "Hide content of windows when _resizing"
-msgstr ""
+msgid "When _moving"
+msgstr "Við _færslu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-msgid "Hide content of windows when _moving"
-msgstr ""
+msgid "When _resizing"
+msgstr "Við stærðar_breytingu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-msgid "<b>Box move and resize</b>"
-msgstr ""
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Fela efni glugga</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr ""
+msgstr "Aðgerðin sem gerist þegar tvísmellt er á titilslá"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Double click _action</b>"
-msgstr ""
+msgstr "<b>Tvísmells_aðgerð</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "Ad_vanced"
 msgstr "_Nánar"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
 msgstr "Skyggja glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
 msgstr "Fela glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
 msgstr "Hámarka glugga"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:258
 msgid "Fill window"
 msgstr "Fylla glugga"
 
@@ -336,7 +332,6 @@ msgid "Nothing"
 msgstr "Ekkert"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
 msgid "Left"
 msgstr "Vinstri"
 
@@ -345,313 +340,44 @@ msgid "Center"
 msgstr "Miðja"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Right"
 msgstr "Hægri"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
-msgid "Window operations menu"
-msgstr "Aðgerðavalmynd glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Up"
-msgstr "Upp"
-
-#: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Down"
-msgstr "Niður"
-
-#: ../settings-dialogs/xfwm4-settings.c:241
-msgid "Cancel"
-msgstr "Hætta við"
-
-#: ../settings-dialogs/xfwm4-settings.c:242
-msgid "Cycle windows"
-msgstr "Fletta í gegnum glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:243
-msgid "Cycle windows (Reverse)"
-msgstr "Fletta í gegnum glugga (afturábak)"
-
-#: ../settings-dialogs/xfwm4-settings.c:244
-msgid "Switch window for same application"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:245
-msgid "Switch application"
-msgstr "Skipta um forrit"
-
-#: ../settings-dialogs/xfwm4-settings.c:246
-msgid "Close window"
-msgstr "Loka glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:247
-msgid "Maximize window horizontally"
-msgstr "Hámarka glugga lárétt"
-
-#: ../settings-dialogs/xfwm4-settings.c:248
-msgid "Maximize window vertically"
-msgstr "Hámarka glugga lóðrétt"
-
-#: ../settings-dialogs/xfwm4-settings.c:251
-msgid "Move window"
-msgstr "Flytja glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:252
-msgid "Resize window"
-msgstr "Breyta stærð á glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:254
-msgid "Stick window"
-msgstr "Líma glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:255
-msgid "Raise window"
-msgstr "Lyfta glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:256
-msgid "Lower window"
-msgstr "Lækka glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:257
-msgid "Raise or lower window"
-msgstr "Lyfta eða lækka glugga"
-
-#: ../settings-dialogs/xfwm4-settings.c:259
-msgid "Fill window horizontally"
-msgstr "Fylla glugga lárétt"
-
-#: ../settings-dialogs/xfwm4-settings.c:260
-msgid "Fill window vertically"
-msgstr "Fylla glugga lóðrétt"
-
-#: ../settings-dialogs/xfwm4-settings.c:261
-msgid "Toggle above"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:262
-msgid "Toggle fullscreen"
-msgstr "Víxla heilskjá"
-
-#: ../settings-dialogs/xfwm4-settings.c:263
-msgid "Move window to upper workspace"
-msgstr "Flytja glugga yfir á nvinnusvæði fyrir ofan"
-
-#: ../settings-dialogs/xfwm4-settings.c:264
-msgid "Move window to bottom workspace"
-msgstr "Flytja glugga yfir á nvinnusvæði fyrir neðan"
-
-#: ../settings-dialogs/xfwm4-settings.c:265
-msgid "Move window to left workspace"
-msgstr "Flytja glugga yfir á vinnusvæði til vinstri"
-
-#: ../settings-dialogs/xfwm4-settings.c:266
-msgid "Move window to right workspace"
-msgstr "Flytja glugga yfir á nvinnusvæði til hægri"
-
-#: ../settings-dialogs/xfwm4-settings.c:267
-msgid "Move window to previous workspace"
-msgstr "Flytja glugga yfir á fyrra vinnusvæði"
-
-#: ../settings-dialogs/xfwm4-settings.c:268
-msgid "Move window to next workspace"
-msgstr "Flytja glugga yfir á næsta vinnusvæði"
-
-#: ../settings-dialogs/xfwm4-settings.c:269
-msgid "Move window to workspace 1"
-msgstr "Flytja glugga yfir á vinnusvæði 1"
-
-#: ../settings-dialogs/xfwm4-settings.c:270
-msgid "Move window to workspace 2"
-msgstr "Flytja glugga yfir á vinnusvæði 2"
-
-#: ../settings-dialogs/xfwm4-settings.c:271
-msgid "Move window to workspace 3"
-msgstr "Flytja glugga yfir á vinnusvæði 3"
-
-#: ../settings-dialogs/xfwm4-settings.c:272
-msgid "Move window to workspace 4"
-msgstr "Flytja glugga yfir á vinnusvæði 4"
-
-#: ../settings-dialogs/xfwm4-settings.c:273
-msgid "Move window to workspace 5"
-msgstr "Flytja glugga yfir á vinnusvæði 5"
-
-#: ../settings-dialogs/xfwm4-settings.c:274
-msgid "Move window to workspace 6"
-msgstr "Flytja glugga yfir á vinnusvæði 6"
-
-#: ../settings-dialogs/xfwm4-settings.c:275
-msgid "Move window to workspace 7"
-msgstr "Flytja glugga yfir á vinnusvæði 7"
-
-#: ../settings-dialogs/xfwm4-settings.c:276
-msgid "Move window to workspace 8"
-msgstr "Flytja glugga yfir á vinnusvæði 8"
-
-#: ../settings-dialogs/xfwm4-settings.c:277
-msgid "Move window to workspace 9"
-msgstr "Flytja glugga yfir á vinnusvæði 9"
-
-#: ../settings-dialogs/xfwm4-settings.c:278
-msgid "Move window to workspace 10"
-msgstr "Flytja glugga yfir á vinnusvæði 10"
-
-#: ../settings-dialogs/xfwm4-settings.c:279
-msgid "Move window to workspace 11"
-msgstr "Flytja glugga yfir á vinnusvæði 11"
-
-#: ../settings-dialogs/xfwm4-settings.c:280
-msgid "Move window to workspace 12"
-msgstr "Flytja glugga yfir á vinnusvæði 12"
-
-#: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
-msgid "Tile window to the top"
-msgstr "Flytja glugga yfir á vinnusvæði til vinstri"
-
-#: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
-msgid "Tile window to the bottom"
-msgstr "Flytja glugga yfir á nvinnusvæði fyrir neðan"
-
-#: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
-msgid "Tile window to the left"
-msgstr "Flytja glugga yfir á vinnusvæði til vinstri"
-
-#: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
-msgid "Tile window to the right"
-msgstr "Flytja glugga yfir á nvinnusvæði til hægri"
-
-#: ../settings-dialogs/xfwm4-settings.c:285
-msgid "Show desktop"
-msgstr "Sýna skjáborðið"
-
-#: ../settings-dialogs/xfwm4-settings.c:286
-msgid "Upper workspace"
-msgstr "Vinnusvæði fyrir ofan"
-
-#: ../settings-dialogs/xfwm4-settings.c:287
-msgid "Bottom workspace"
-msgstr "Vinnusvæði fyrir neðan"
-
-#: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Left workspace"
-msgstr "Vinnusvæði til vinstri"
-
-#: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Right workspace"
-msgstr "Vinnusvæði til hægri"
-
-#: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Previous workspace"
-msgstr "Fyrra vinnusvæði"
-
-#: ../settings-dialogs/xfwm4-settings.c:291
-msgid "Next workspace"
-msgstr "Næsta vinnusvæði"
-
-#: ../settings-dialogs/xfwm4-settings.c:292
-msgid "Workspace 1"
-msgstr "Vinnusvæði 1"
-
-#: ../settings-dialogs/xfwm4-settings.c:293
-msgid "Workspace 2"
-msgstr "Vinnusvæði 2"
-
-#: ../settings-dialogs/xfwm4-settings.c:294
-msgid "Workspace 3"
-msgstr "Vinnusvæði 3"
-
-#: ../settings-dialogs/xfwm4-settings.c:295
-msgid "Workspace 4"
-msgstr "Vinnusvæði 4"
-
-#: ../settings-dialogs/xfwm4-settings.c:296
-msgid "Workspace 5"
-msgstr "Vinnusvæði 5"
-
-#: ../settings-dialogs/xfwm4-settings.c:297
-msgid "Workspace 6"
-msgstr "Vinnusvæði 6"
-
-#: ../settings-dialogs/xfwm4-settings.c:298
-msgid "Workspace 7"
-msgstr "Vinnusvæði 7"
-
-#: ../settings-dialogs/xfwm4-settings.c:299
-msgid "Workspace 8"
-msgstr "Vinnusvæði 8"
-
-#: ../settings-dialogs/xfwm4-settings.c:300
-msgid "Workspace 9"
-msgstr "Vinnusvæði 9"
-
-#: ../settings-dialogs/xfwm4-settings.c:301
-msgid "Workspace 10"
-msgstr "Vinnusvæði 10"
-
-#: ../settings-dialogs/xfwm4-settings.c:302
-msgid "Workspace 11"
-msgstr "Vinnusvæði 11"
-
-#: ../settings-dialogs/xfwm4-settings.c:303
-msgid "Workspace 12"
-msgstr "Vinnusvæði 12"
-
-#: ../settings-dialogs/xfwm4-settings.c:304
-msgid "Add workspace"
-msgstr "Bæta við vinnusvæði"
-
-#: ../settings-dialogs/xfwm4-settings.c:305
-msgid "Add adjacent workspace"
-msgstr "Bæta við aðliggjandi vinnusvæði"
-
-#: ../settings-dialogs/xfwm4-settings.c:306
-msgid "Delete last workspace"
-msgstr "Eyða síðasta vinnusvæði"
-
-#: ../settings-dialogs/xfwm4-settings.c:307
-msgid "Delete active workspace"
-msgstr "Eyða virku vinnusvæði"
-
-#: ../settings-dialogs/xfwm4-settings.c:453
+#: ../settings-dialogs/xfwm4-settings.c:380
 msgid "Theme"
 msgstr "Þema"
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:531
 msgid "Action"
 msgstr "Aðgerð"
 
-#: ../settings-dialogs/xfwm4-settings.c:607
+#: ../settings-dialogs/xfwm4-settings.c:536
 msgid "Shortcut"
 msgstr "Flýtilykill"
 
-#: ../settings-dialogs/xfwm4-settings.c:993
+#: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Mistókst að frumstilla xfconf. Ástæða: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:1004
+#: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "Mistókst að búa til stillingaglugga."
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1901
+#: ../settings-dialogs/xfwm4-settings.c:1902
 msgid "Reset to Defaults"
 msgstr "Frumstilla á sjálfgefin gildi"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Þetta mun endurstilla alla flýtilykla á sjálfgefin gildi. Ertu viss um að þú viljir gera þetta?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
-"_Skip windows that have \"skip pager\"\n"
+"S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
 
@@ -661,7 +387,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr ""
+msgstr "Fle_tta í gegnum glugga á öllum vinnusvæðum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
@@ -669,11 +395,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "C_ycling"
-msgstr ""
+msgstr "_Fletting"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Activate _focus stealing prevention"
-msgstr ""
+msgid "Activate foc_us stealing prevention"
+msgstr "Vir_kja vörn gegn virknimissi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
@@ -685,11 +411,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "_Bring window on current workspace"
-msgstr ""
+msgstr "_Færa glugga yfir á núverandi vinnusvæði"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Switch to win_dow's workspace"
-msgstr ""
+msgstr "Skipta _yfir á vinnusvæði gluggans"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
@@ -697,18 +423,18 @@ msgstr "_Gera ekkert"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Key used to _grab and move windows:"
-msgstr ""
+msgstr "Lykill notaður til _grípa í og færa glugga:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Hide _frame of windows when maximized"
-msgstr ""
+msgid "Hide frame of windows when ma_ximized"
+msgstr "_Fela gluggaramma þegar gluggar eru hámarkaðir"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Restore original _size of maximized windows when moving"
+msgid "Restore original size of maximi_zed windows when moving"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
@@ -716,24 +442,24 @@ msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Use _edge resistance instead of window snapping"
-msgstr ""
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr "_Láta vita um áríðandi glugga með því að gluggaskreyting blikkar"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Notify of _urgency by making window's decoration blink"
+msgid "Use _edge resistance instead of window snapping"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "Halda áríðandi gluggum _blikkandi í sífellu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
-msgstr ""
+msgstr "_Aðgengi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "Nota _músarhjólið til að skipta um vinnusvæði"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
@@ -746,7 +472,7 @@ msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
@@ -764,19 +490,19 @@ msgstr "<i>Stórt</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Sjálfgefið staðsetja glugga:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "At the _center of the screen"
-msgstr ""
+msgid "At the c_enter of the screen"
+msgstr "Á _miðjum skjá"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "Under the mouse _pointer"
-msgstr ""
+msgid "U_nder the mouse pointer"
+msgstr "Undir músar _bendlinum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
-msgstr ""
+msgstr "_Staðsetning"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
@@ -787,48 +513,52 @@ msgid "Display _fullscreen overlay windows directly"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "Show shadows under _regular windows"
+msgid "Synchronize drawing to the _vertical blank"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
-msgstr ""
+msgstr "Sýna skugga undir _sprettgluggum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show shadows under _dock windows"
-msgstr ""
+msgstr "Sýna skugga undir s_pjaldgluggum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "Opaci_ty of window decorations:"
-msgstr ""
+msgid "Show shadows under _regular windows"
+msgstr "Sýna skugga undir _venjulegum gluggum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "Opaci_ty of window decorations:"
+msgstr "_Gegnsæi gluggaskreytingar:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "<i>Transparent</i>"
 msgstr "<i>Gegnsætt</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "<i>Opaque</i>"
 msgstr "<i>Ógegnsætt</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-msgid "Opacity of _inactive windows:"
-msgstr ""
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-msgid "Opacity of windows during _move:"
-msgstr ""
+msgid "Opacity of _inactive windows:"
+msgstr "Gegnsæi óv_irkra glugga:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-msgid "Opacity of windows during resi_ze:"
-msgstr ""
+msgid "Opacity of windows during _move:"
+msgstr "Gegnsæi glugga sem verið er að _færa:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-msgid "Opacity of popup window_s:"
-msgstr ""
+msgid "Opacity of windows during resi_ze:"
+msgstr "Gegnsæi glugga þegar verið er að b_reyta stærð:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Opacity of popup wi_ndows:"
+msgstr "Gegnsæi _sprettglugga:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "C_ompositor"
-msgstr ""
+msgstr "S_kjásamsetning"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
@@ -836,16 +566,15 @@ msgstr "Fjöldi _vinnusvæða:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr ""
+msgstr "Framsetning"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Names"
-msgstr "_Heiti:"
+msgstr "Heiti"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "_Almennt"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
@@ -853,9 +582,8 @@ msgid ""
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Margins"
-msgstr "<b>Spássíur</b>"
+msgstr "S_pássíur"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -889,7 +617,7 @@ msgstr "Prenta upplýsingar um útgáfu og hætta"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[VIÐFÖNG...]"
 
 #: ../src/main.c:565
 #, c-format
@@ -935,15 +663,15 @@ msgstr "Sama og aðrir gluggar"
 
 #: ../src/menu.c:53
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "Alltaf undir öðrum gluggum"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
-msgstr ""
+msgstr "Rúlla glugga upp"
 
 #: ../src/menu.c:55
 msgid "Roll Window Down"
-msgstr ""
+msgstr "Rúlla glugga niður"
 
 #: ../src/menu.c:56
 msgid "_Fullscreen"
@@ -1022,9 +750,3 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Vinnusvæði</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "Breyta heiti vinnusvæðis"
