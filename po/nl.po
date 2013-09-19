@@ -1,30 +1,29 @@
-# Dutch translation of the xfwm4 package.
-# Copyright (C) The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-# Jasper Huijsmans <jasper@xfce.org>, 2004.
-# Pjotr pjotrvertaalt@gmail.com , 2011, 2013.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
+# Translators:
+# Jasper Huijsmans <jasper@xfce.org>, 2004
+# Pjotr pjotrvertaalt@gmail.com , 2011,2013
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 08:21+0000\n"
-"PO-Revision-Date: 2011-09-09 12:41+0200\n"
-"Last-Translator: Pjotr pjotrvertaalt@gmail.com\n"
-"Language-Team: Dutch (Flemish)\n"
+"POT-Creation-Date: 2013-07-02 22:21+0200\n"
+"PO-Revision-Date: 2013-09-19 14:09+0000\n"
+"Last-Translator: Pjotr123 <pjotrvertaalt@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/xfce/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl (Dutch)\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Het venster zou bezig kunnen zijn en reageert niet.\n"
-"Wilt u de toepassing beëindigen?"
+msgstr "Het venster zou bezig kunnen zijn en reageert niet.\nWilt u de toepassing beëindigen?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -63,10 +62,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Probeer %s --help om een volledige lijst te zien van beschikbare\n"
-"opdrachtregel-opties.\n"
+msgstr "%s: %s\nProbeer %s --help om een volledige lijst te zien van beschikbare\nopdrachtregel-opties.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -84,237 +80,237 @@ msgid "Settings manager socket"
 msgstr "Contactpunt voor instellingenbeheerder"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Configure window behavior and shortcuts"
-msgstr "Configureer venstergedrag en sneltoetsen"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Vensterbeheerder"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Fine-tune window behaviour and effects"
-msgstr "Fijnregeling venstergedrag en -effecten"
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "Configure window behavior and shortcuts"
+msgstr "Configureer venstergedrag en sneltoetsen"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
 msgstr "Vensterbeheerder bijstellen"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+msgid "Fine-tune window behaviour and effects"
+msgstr "Fijnregeling venstergedrag en -effecten"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Configure layout, names and margins"
-msgstr "Vormgeving, namen en marges instellen"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Werkbladen"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Button layout</b>"
-msgstr "<b>Knopvormgeving</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Double click _action</b>"
-msgstr "<b>Dubbelklik-_actie</b>"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr "Vormgeving, namen en marges instellen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>Focus model</b>"
-msgstr "<b>Vensterscherpstelling-model</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Hide content of windows</b>"
-msgstr "<b>Verberg inhoud van vensters</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>New window focus</b>"
-msgstr "<b>Scherpstelling van nieuw venster</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>Raise on click</b>"
-msgstr "<b>Verheffen bij klik</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on focus</b>"
-msgstr "<b>Verheffen bij scherpstelling</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>The_me</b>"
 msgstr "<b>_Thema</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-msgid "<b>Title _alignment</b>"
-msgstr "<b>_Titel-uitlijning</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
 msgstr "<b>_Lettertype titel</b>"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+msgid "<b>Title _alignment</b>"
+msgstr "<b>_Titel-uitlijning</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+msgid "Click and drag the buttons to change the layout"
+msgstr "Klik en sleep de knoppen om de vormgeving te veranderen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "Titel"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "The window title cannot be removed"
+msgstr "De venstertitel kan niet worden verwijderd"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "Active"
+msgstr "Actief"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+msgid "Menu"
+msgstr "Menu"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "<b>Windows snapping</b>"
-msgstr "<b>Vensters aantrekken</b>"
+msgid "Stick"
+msgstr "Plakken"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Verpak werkbladen bij bereiken van rand van scherm</b>"
+msgid "Shade"
+msgstr "Oprollen"
 
-#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+msgid "Minimize"
+msgstr "Minimaliseren"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-msgid "<i>Long</i>"
-msgstr "<i>Lang</i>"
+msgid "Maximize"
+msgstr "Maximaliseren"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Close"
+msgstr "Sluiten"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Verborgen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<b>Button layout</b>"
+msgstr "<b>Knopvormgeving</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "_Style"
+msgstr "_Stijl"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "Bepaal sneltoetsen voor acties van de vensterbeheerder:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+msgid "_Reset to Defaults"
+msgstr "Zet _terug op standaardwaarden"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "_Keyboard"
+msgstr "Toetsen_bord"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "Click to foc_us"
+msgstr "Klik voor scherpstellen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Focus follows _mouse"
+msgstr "Scherpstelling volgt _muis"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "_Delay before window receives focus:"
+msgstr "_Vertraging voordat een venster scherpstelling verkrijgt:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
 msgstr "<i>Kort</i>"
 
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "<i>Long</i>"
+msgstr "<i>Lang</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "<b>Focus model</b>"
+msgstr "<b>Vensterscherpstelling-model</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Automatically give focus to _newly created windows"
+msgstr "Nieuw gemaakte vensters krijgen automatisch scherpstelling"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "<b>New window focus</b>"
+msgstr "<b>Scherpstelling van nieuw venster</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Automatically _raise windows when they receive focus"
+msgstr "Vensters met scherpstelling automatisch verheffen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Delay _before raising focused window:"
+msgstr "Vertraging _voor naar voren halen vensters:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "<b>Raise on focus</b>"
+msgstr "<b>Verheffen bij scherpstelling</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Raise window when clicking _inside application window"
+msgstr "Verhef venster bij klikken in toepassingvenster"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "<b>Raise on click</b>"
+msgstr "<b>Verheffen bij klik</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "_Focus"
+msgstr "Scher_pstelling"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgid "To screen _borders"
+msgstr "Naar schermranden"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "To other _windows"
+msgstr "Naar andere vensters"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Dis_tance:"
+msgstr "_Afstand:"
+
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
 msgstr "<i>Klein</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "<i>Wide</i>"
 msgstr "<i>Breed</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Active"
-msgstr "Actief"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Ad_vanced"
-msgstr "Ge_avanceerd"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Automatically _raise windows when they receive focus"
-msgstr "Vensters met scherpstelling automatisch verheffen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Automatically give focus to _newly created windows"
-msgstr "Nieuw gemaakte vensters krijgen automatisch scherpstelling"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Click and drag the buttons to change the layout"
-msgstr "Klik en sleep de knoppen om de vormgeving te veranderen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Click to foc_us"
-msgstr "Klik voor scherpstellen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-msgid "Close"
-msgstr "Sluiten"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Bepaal sneltoetsen voor acties van de vensterbeheerder:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Delay _before raising focused window:"
-msgstr "Vertraging _voor naar voren halen vensters:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Dis_tance:"
-msgstr "_Afstand:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Focus follows _mouse"
-msgstr "Scherpstelling volgt _muis"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "Verborgen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Maximize"
-msgstr "Maximaliseren"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Menu"
-msgstr "Menu"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Minimize"
-msgstr "Minimaliseren"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Raise window when clicking _inside application window"
-msgstr "Verhef venster bij klikken in toepassingvenster"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Shade"
-msgstr "Oprollen"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-msgid "Stick"
-msgstr "Plakken"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Actie voor dubbelklikken op de titelbalk "
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "The window title cannot be removed"
-msgstr "De venstertitel kan niet worden verwijderd"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Title"
-msgstr "Titel"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "To other _windows"
-msgstr "Naar andere vensters"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "To screen _borders"
-msgstr "Naar schermranden"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "When _moving"
-msgstr "Bij het verplaatsen"
+msgid "<b>Windows snapping</b>"
+msgstr "<b>Vensters aantrekken</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "When _resizing"
-msgstr "Bij het veranderen van de grootte"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "With a _dragged window"
-msgstr "Met een gesleept venster"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With the mouse _pointer"
 msgstr "Met de muispijl"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "_Delay before window receives focus:"
-msgstr "_Vertraging voordat een venster scherpstelling verkrijgt:"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "With a _dragged window"
+msgstr "Met een gesleept venster"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
 msgstr "Weerstand van de _rand:"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr "<b>Verpak werkbladen bij bereiken van rand van scherm</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "When _moving"
+msgstr "Bij het verplaatsen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+msgid "When _resizing"
+msgstr "Bij het veranderen van de grootte"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid "_Focus"
-msgstr "Scher_pstelling"
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Verberg inhoud van vensters</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-msgid "_Keyboard"
-msgstr "Toetsen_bord"
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Actie bij dubbelklikken op de titelbalk "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Reset to Defaults"
-msgstr "Zet _terug op standaardwaarden"
+msgid "<b>Double click _action</b>"
+msgstr "<b>Dubbelklik-_actie</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "_Style"
-msgstr "_Stijl"
+msgid "Ad_vanced"
+msgstr "Ge_avanceerd"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Shade window"
@@ -376,215 +372,204 @@ msgstr "Zet terug op standaardwaarden"
 
 #: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Dit zal alle sneltoetsen terugzetten op hun standaardwaarden. Wilt u dit "
-"echt doen?"
-
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Large</i>"
-msgstr "<i>Groot</i>"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Dit zal alle sneltoetsen terugzetten op hun standaardwaarden. Wilt u dit echt doen?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "<i>Opaque</i>"
-msgstr "<i>Ondoorzichtig</i>"
+msgid ""
+"S_kip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
+msgstr "Sla vensters over die de eigenschappen 'pager overslaan'\nof 'taakbalk overslaan' hebben"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "Voeg verborgen (geminimaliseerde) vensters toe"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "<i>Transparent</i>"
-msgstr "<i>Transparant</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate foc_us stealing prevention"
-msgstr "Activeer preventie van overpakken van scherpstelling"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the c_enter of the screen"
-msgstr "In het _midden van het scherm"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Vensters automatisch tegelen bij beweging naar de schermrand"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-msgid "By default, place windows:"
-msgstr "Plaats vensters standaard:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "C_ompositor"
-msgstr "_Samensteller"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "C_ycling"
-msgstr "Aan het afwisselen"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Cycle _through windows on all workspaces"
 msgstr "Wissel af _tussen vensters van alle werkbladen"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Display _fullscreen overlay windows directly"
-msgstr "Geef _volledig schermvullende vensters direct weer"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
+msgstr "Teken rand rond geselecteerd venster tijdens het afwisselen"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-msgid "Do _nothing"
-msgstr "Doe _niets"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr "Aan het afwisselen"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide frame of windows when ma_ximized"
-msgstr "Verberg randen van vensters wanneer gemaximaliseerd"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Activate foc_us stealing prevention"
+msgstr "Activeer preventie van overpakken van scherpstelling"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
 msgstr "Houd vast aan de standaard ICCCM focus hint"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Laat _belangrijke vensters herhaaldelijk knipperen"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr "Wanneer een venster zichzelf naar de voorgrond brengt:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "_Bring window on current workspace"
+msgstr "Verplaats venster naar huidig werkblad"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Switch to win_dow's workspace"
+msgstr "Wissel naar het _werkblad van het venster"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Do _nothing"
+msgstr "Doe _niets"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Key used to _grab and move windows:"
 msgstr "Toets gebruikt voor het pakken en verplaatsen van vensters:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "Verhef vensters wanneer er op een willekeurige muisknop wordt geklikt"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Hide frame of windows when ma_ximized"
+msgstr "Verberg randen van vensters wanneer gemaximaliseerd"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "Restore original size of maximi_zed windows when moving"
+msgstr "Herstel de oorspronkelijke grootte van gemaximaliseerde vensters bij het verplaatsen"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+msgid "Automatically _tile windows when moving toward the screen edge"
+msgstr "Vensters automatisch tegelen bij beweging naar de schermrand"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "Meld urgentie door de vensterdecoratie te laten knipperen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Opaci_ty of window decorations:"
-msgstr "Ondoorzichtigheid van vensterdecoraties:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Opacity of _inactive windows:"
-msgstr "Ondoorzichtigheid van inactieve vensters:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of popup wi_ndows:"
-msgstr "Ondoorzichtigheid van opduikvensters:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Opacity of windows during _move:"
-msgstr "Ondoorzichtigheid van vensters tijdens verp_laatsen:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Opacity of windows during resi_ze:"
-msgstr "Ondoorzichtigheid van vensters bij _veranderen grootte:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
-"Herstel de oorspronkelijke grootte van gemaximaliseerde vensters bij het "
-"verplaatsen"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid ""
-"S_kip windows that have \"skip pager\"\n"
-"or \"skip taskbar\" properties set"
-msgstr ""
-"Sla vensters over die de eigenschappen 'pager overslaan'\n"
-"of 'taakbalk overslaan' hebben"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-msgid "Show shadows under _dock windows"
-msgstr "Toon schaduwen onder _dokvensters"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Show shadows under _regular windows"
-msgstr "Toon schaduwen onder _normale vensters"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Show shadows under pop_up windows"
-msgstr "Toon schaduwen onder _opduikvensters"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Switch to win_dow's workspace"
-msgstr "Wissel naar het _werkblad van het venster"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "Synchronize drawing to the _vertical blank"
-msgstr "Synchroniseer beeldopbouw met de verticale lege ruimte"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-msgid "U_nder the mouse pointer"
-msgstr "Onder de muispijl"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Gebruik _randweerstand in plaats van het aanvoegen van vensters"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Gebruik het _muiswieltje op het bureaublad om werkbladen te wisselen"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr "Laat _belangrijke vensters herhaaldelijk knipperen"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "When a window raises itself:"
-msgstr "Wanneer een venster zichzelf naar de voorgrond brengt:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Verpak werkbladen afhankelijk van de eigenlijke bureaubladvormgeving"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Verpak werkbladen wanneer het eerste of laatste werkblad is bereikt"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
 msgstr "_Toegankelijkheid"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Bring window on current workspace"
-msgstr "Verplaats venster naar huidig werkblad"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "Gebruik het _muiswieltje op het bureaublad om werkbladen te wisselen"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "_Draw frame around selected windows while cycling"
-msgstr "Teken rand rond geselecteerd venster tijdens het afwisselen"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "_Enable display compositing"
-msgstr "_Activeer schermsamenvoeging"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "Voeg verborgen (geminimaliseerde) vensters toe"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Minimum-venstergrootte om slimme plaatsing te activeren:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-msgid "_Placement"
-msgstr "_Plaatsing"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-msgid "_Raise windows when any mouse button is pressed"
-msgstr "Verhef vensters wanneer er op een willekeurige muisknop wordt geklikt"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Vorige werkblad _onthouden en oproepen\n"
-"wanneer er wordt gewisseld via sneltoetsen"
+msgstr "Vorige werkblad _onthouden en oproepen\nwanneer er wordt gewisseld via sneltoetsen"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "Verpak werkbladen afhankelijk van de eigenlijke bureaubladvormgeving"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+msgid "Wrap workspaces when _the first or the last workspace is reached"
+msgstr "Verpak werkbladen wanneer het eerste of laatste werkblad is bereikt"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "_Werkbladen"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "Minimum-venstergrootte om slimme plaatsing te activeren:"
+
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "<i>Large</i>"
+msgstr "<i>Groot</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "By default, place windows:"
+msgstr "Plaats vensters standaard:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "At the c_enter of the screen"
+msgstr "In het _midden van het scherm"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "U_nder the mouse pointer"
+msgstr "Onder de muispijl"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Placement"
+msgstr "_Plaatsing"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "_Enable display compositing"
+msgstr "_Activeer schermsamenvoeging"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "Display _fullscreen overlay windows directly"
+msgstr "Geef _volledig schermvullende vensters direct weer"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "Synchronize drawing to the _vertical blank"
+msgstr "Synchroniseer beeldopbouw met de verticale lege ruimte"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "Show shadows under pop_up windows"
+msgstr "Toon schaduwen onder _opduikvensters"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Show shadows under _dock windows"
+msgstr "Toon schaduwen onder _dokvensters"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show shadows under _regular windows"
+msgstr "Toon schaduwen onder _normale vensters"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "Opaci_ty of window decorations:"
+msgstr "Ondoorzichtigheid van vensterdecoraties:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgid "<i>Transparent</i>"
+msgstr "<i>Transparant</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "<i>Opaque</i>"
+msgstr "<i>Ondoorzichtig</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+msgid "Opacity of _inactive windows:"
+msgstr "Ondoorzichtigheid van inactieve vensters:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+msgid "Opacity of windows during _move:"
+msgstr "Ondoorzichtigheid van vensters tijdens verp_laatsen:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Opacity of windows during resi_ze:"
+msgstr "Ondoorzichtigheid van vensters bij _veranderen grootte:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Opacity of popup wi_ndows:"
+msgstr "Ondoorzichtigheid van opduikvensters:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+msgid "C_ompositor"
+msgstr "_Samensteller"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid "_Number of workspaces:"
+msgstr "Aantal werkbladen:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
 msgstr "Vormgeving"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Marges zijn gebieden aan de randen van het scherm waar geen vensters "
-"geplaatst worden"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
 msgstr "Namen"
 
@@ -593,12 +578,13 @@ msgid "_General"
 msgstr "Al_gemeen"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Margins"
-msgstr "_Marges"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Marges zijn gebieden aan de randen van het scherm waar geen vensters geplaatst worden"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-msgid "_Number of workspaces:"
-msgstr "Aantal werkbladen:"
+msgid "_Margins"
+msgstr "_Marges"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -744,8 +730,7 @@ msgstr "%s: Kan kleur %s niet toewijzen\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Kan kleur niet toewijzen: GValue voor kleur is niet van type STRING"
+msgstr "%s: Kan kleur niet toewijzen: GValue voor kleur is niet van type STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -766,708 +751,3 @@ msgstr "Fout bij het lezen van gegevens van het afgeleide proces: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan hulpdialoog niet uitzaaien: %s\n"
-
-#~ msgid "<b>Box move and resize</b>"
-#~ msgstr "<b>Veld verplaatsen en grootte veranderen</b>"
-
-#~ msgid "<b>Wrap workspaces</b>"
-#~ msgstr "<b>Werkbladen inpakken</b>"
-
-#~ msgid "Hide content of windows when _resizing"
-#~ msgstr "Inhoud vensters verbergen bij veranderen _grootte"
-
-#~ msgid "Snap windows to other _windows"
-#~ msgstr "Vensters naar andere _vensters trekken"
-
-#~ msgid "Wrap workspaces when _dragging a window off the screen"
-#~ msgstr "Verpak werkbladen bij _slepen voorbij de rand van het scherm"
-
-#~ msgid "<b>_Window shortcuts</b>"
-#~ msgstr "<b>Venster-_sneltoetsen</b>"
-
-#~ msgid "Window operations menu"
-#~ msgstr "Vensteracties-menu"
-
-#~ msgid "Up"
-#~ msgstr "Naar boven"
-
-#~ msgid "Down"
-#~ msgstr "Naar beneden"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuleren"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Vensters afwisselen"
-
-#~ msgid "Cycle windows (Reverse)"
-#~ msgstr "Vensters afwisselen (achterwaarts)"
-
-#~ msgid "Switch window for same application"
-#~ msgstr "Wissel venster voor dezelfde toepassing"
-
-#~ msgid "Switch application"
-#~ msgstr "Wissel toepassing"
-
-#~ msgid "Close window"
-#~ msgstr "Venster sluiten"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Venster horizontaal maximaliseren"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Venster verticaal maximaliseren"
-
-#~ msgid "Move window"
-#~ msgstr "Venster verplaatsen"
-
-#~ msgid "Resize window"
-#~ msgstr "Venstergrootte aanpassen"
-
-#~ msgid "Stick window"
-#~ msgstr "Venster vastplakken"
-
-#~ msgid "Raise window"
-#~ msgstr "Venster naar de voorgrond halen"
-
-#~ msgid "Raise or lower window"
-#~ msgstr "Venster voluit tonen of minimaliseren"
-
-#~ msgid "Fill window horizontally"
-#~ msgstr "Venster horizontaal vullen"
-
-#~ msgid "Fill window vertically"
-#~ msgstr "Venster verticaal vullen"
-
-#~ msgid "Toggle above"
-#~ msgstr "Schakel het bovenstaande om"
-
-#~ msgid "Toggle fullscreen"
-#~ msgstr "Schakel schermvullend om"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Venster naar bovenliggend werkblad verplaatsen"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Venster naar onderliggend werkblad verplaatsen"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Venster naar linkerwerkblad verplaatsen"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Venster naar rechterwerkblad verplaatsen"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Venster naar vorig werkblad verplaatsen"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Venster naar volgend werkblad verplaatsen"
-
-#~ msgid "Move window to workspace 1"
-#~ msgstr "Venster naar werkblad 1 verplaatsen"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Venster naar werkblad 2 verplaatsen"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Venster naar werkblad 3 verplaatsen"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Venster naar werkblad 4 verplaatsen"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Venster naar werkblad 5 verplaatsen"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Venster naar werkblad 6 verplaatsen"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Venster naar werkblad 7 verplaatsen"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Venster naar werkblad 8 verplaatsen"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Venster naar werkblad 9 verplaatsen"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Venster naar werkblad 10 verplaatsen"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Venster naar werkblad 11 verplaatsen"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Venster naar werkblad 12 verplaatsen"
-
-#~ msgid "Tile window to the top"
-#~ msgstr "Plaats venstertegels naar boven"
-
-#~ msgid "Tile window to the bottom"
-#~ msgstr "Plaats venstertegels naar beneden"
-
-#~ msgid "Tile window to the left"
-#~ msgstr "Plaats venstertegels naar links"
-
-#~ msgid "Tile window to the right"
-#~ msgstr "Plaats venstertegels naar rechts"
-
-#~ msgid "Show desktop"
-#~ msgstr "Bureaublad tonen"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Bovenste werkblad"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Onderste werkblad"
-
-#~ msgid "Left workspace"
-#~ msgstr "Linkerwerkblad"
-
-#~ msgid "Right workspace"
-#~ msgstr "Rechterwerkblad"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Vorig werkblad"
-
-#~ msgid "Next workspace"
-#~ msgstr "Volgend werkblad"
-
-#~ msgid "Workspace 1"
-#~ msgstr "Werkblad 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Werkblad 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Werkblad 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Werkblad 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Werkblad 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Werkblad 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Werkblad 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Werkblad 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Werkblad 9"
-
-#~ msgid "Workspace 10"
-#~ msgstr "Werkblad 10"
-
-#~ msgid "Workspace 11"
-#~ msgstr "Werkblad 11"
-
-#~ msgid "Workspace 12"
-#~ msgstr "Werkblad 12"
-
-#~ msgid "Add workspace"
-#~ msgstr "Werkblad toevoegen"
-
-#~ msgid "Add adjacent workspace"
-#~ msgstr "Aangrenzend werkblad toevoegen"
-
-#~ msgid "Delete last workspace"
-#~ msgstr "Laatste werkblad verwijderen"
-
-#~ msgid "Delete active workspace"
-#~ msgstr "Actief werkblad verwijderen"
-
-#~ msgid "Clic_k to focus"
-#~ msgstr "Kli_k voor scherpstelling"
-
-#~ msgid "Ke_yboard"
-#~ msgstr "_Toetsenbord"
-
-#~ msgid "Activate _focus stealing prevention"
-#~ msgstr "Activeer preventie voor overpakken van scherpstelling"
-
-#~ msgid "Restore original _size of maximized windows when moving"
-#~ msgstr ""
-#~ "Herstel oorspronkelijke _grootte bij verplaatsen van gemaximaliseerde "
-#~ "vensters"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "Stel het aantal werkbladen (en hun namen) in"
-
-#~ msgid "<b>Margins</b>"
-#~ msgstr "<b>Marges</b>"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Werkbladen</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "Werkbladnaam veranderen"
-
-#~ msgid "_Name:"
-#~ msgstr "_Naam:"
-
-#~ msgid "Hide"
-#~ msgstr "Verbergen"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Segmentatiefout"
-
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "Afstand|<i>Klein</i>"
-
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "Weerstand|<i>Klein</i>"
-
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "Weerstand|<i>Breed</i>"
-
-#~ msgid ">Window Manager"
-#~ msgstr "Vensterbeheerder"
-
-#~ msgid "gtk-clear"
-#~ msgstr "gtk-clear"
-
-#~ msgid "gtk-cancel"
-#~ msgstr "gtk-cancel"
-
-#~ msgid "gtk-save"
-#~ msgstr "gtk-save"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "Werkbladmarges"
-
-#~ msgid "Left :"
-#~ msgstr "Links :"
-
-#~ msgid "Right :"
-#~ msgstr "Rechts :"
-
-#~ msgid "Top :"
-#~ msgstr "Boven :"
-
-#~ msgid "Bottom :"
-#~ msgstr "Onder :"
-
-#~ msgid "Bring window on current workspace"
-#~ msgstr "Venster naar huidig werkblad verplaatsen"
-
-#~ msgid "Do nothing"
-#~ msgstr "Niets doen"
-
-#~ msgid "Place window under the mouse"
-#~ msgstr "Plaats venster onder de muispijl"
-
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "Vensters overslaan die de \"pager overslaan\" of \"taakbalk overslaan\" "
-#~ "eigenschappen actief hebben"
-
-#~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "Voeg verborgen (geminimalizeerde) vensters toe"
-
-#~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Wissel af tussen vensters van alle werkbladen"
-
-#~ msgid "Cycling"
-#~ msgstr "Aan het afwisselen"
-
-#~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "Houd vast aan de standaard-focushint van de ICCCM"
-
-#~ msgid "Focus"
-#~ msgstr "Focus"
-
-#~ msgid "Key used to grab and move windows"
-#~ msgstr "Toets voor het pakken en verplaatsen van vensters"
-
-#~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr ""
-#~ "Vensters naar boven halen wanneer er met een willekeurige muisknop wordt "
-#~ "geklikt"
-
-#~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Verberg vensterrand wanneer deze is gemaximaliseerd"
-
-#~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "Gebruik randweerstand in plaats van het klikken van vensters"
-
-#~ msgid "Accessibility"
-#~ msgstr "Toegankelijkheid"
-
-#~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr ""
-#~ "Werkbladen wisselen met gebruik van het muiswieltje over het bureaublad"
-
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Vorige werkblad onthouden en oproepen wanneer er wordt gewisseld met "
-#~ "sneltoetsen"
-
-#~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr ""
-#~ "Werkbladen verpakken afhankelijk van de actuele bureaubladvormgeving"
-
-#~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr ""
-#~ "Werkbladen verpakken wanneer het eerste of laatste werkblad is bereikt"
-
-#~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Minimale venstergrootte om slimme plaatsing te activeren"
-
-#~ msgid "Size|Small"
-#~ msgstr "Grootte|Klein"
-
-#~ msgid "Size|Large"
-#~ msgstr "Grootte|Groot"
-
-#~ msgid "Default positionning of windows without smart placement:"
-#~ msgstr "Minimale venstergrootte om slimme plaatsing te activeren:"
-
-#~ msgid "Placement"
-#~ msgstr "Plaatsing"
-
-#~ msgid "Enable display compositing"
-#~ msgstr "Activeer schermsamenvoeging"
-
-#~ msgid "Display full screen overlay windows directly"
-#~ msgstr "Geef schermvullende vensters direct weer"
-
-#~ msgid "Show shadows under dock windows"
-#~ msgstr "Schaduwen weergeven onder dokvensters"
-
-#~ msgid "Show shadows under regular windows"
-#~ msgstr "Schaduwen weergeven onder normale vensters"
-
-#~ msgid "Show shadows under popup windows"
-#~ msgstr "Schaduwen weergeven onder opduikvensters"
-
-#~ msgid "Opacity of window decorations"
-#~ msgstr "Ondoorzichtigheid van vensterdecoraties"
-
-#~ msgid "Transparent"
-#~ msgstr "Transparant"
-
-#~ msgid "Opaque"
-#~ msgstr "Ondoorzichtig"
-
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "Ondoorzichtigheid van inactieve vensters"
-
-#~ msgid "Opacity of windows during move"
-#~ msgstr "Ondoorzichtigheid van vensters tijdens verplaatsen"
-
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "Ondoorzichtigheid van vensters bij veranderen grootte"
-
-#~ msgid "Opacity of popup windows"
-#~ msgstr "Ondoorzichtigheid van opduikvensters"
-
-#~ msgid "Compositor"
-#~ msgstr "Samensteller"
-
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "Knopetiket|Vensterbeheerder Bijstellingen"
-
-#~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr ""
-#~ "Deze instellingen kunnen niet werken met uw huidige vensterbeheerder (%s)"
-
-#~ msgid "Change name"
-#~ msgstr "Naam veranderen"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Klik op een werkbladnaam om hem te bewerken"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Aantal werkbladen"
-
-#~ msgid "Workspace names"
-#~ msgstr "Werkbladnamen"
-
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Knopetiket|Werkbladen en marges"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "Werkbladen en marges"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Vensterbeheerder instellingen"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce-Vensterbeheerder instellingen "
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Geavanceerde configuratie"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce-Vensterbeheerder bijstellingen"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Werkbladinstellingen"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce-Werkbladinstellingen"
-
-#~ msgid "Click and drag buttons to change the layout"
-#~ msgstr "Klik en sleep de knoppen om de vormgeving te veranderen"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "Dialoog voor lettertypeselectie"
-
-#~ msgid "Title font"
-#~ msgstr "Lettertype titel"
-
-#~ msgid "Title Alignment"
-#~ msgstr "Uitlijning titel"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "Uitlijning tekst in titelbalk"
-
-#~ msgid "Button layout"
-#~ msgstr "Knopvormgeving"
-
-#~ msgid "Style"
-#~ msgstr "Stijl"
-
-#~ msgid "Window shortcuts"
-#~ msgstr "Venster-sneltoetsen"
-
-#~ msgid "Command"
-#~ msgstr "Opdracht"
-
-#~ msgid "Focus model"
-#~ msgstr "Vensterfocus"
-
-#~ msgid "Focus follows mouse"
-#~ msgstr "Focus volgt muis"
-
-#~ msgid "Delay before window receives focus"
-#~ msgstr "Vertraging voor naar voren halen vensters"
-
-#~ msgid "Slow"
-#~ msgstr "Langzaam"
-
-#~ msgid "Fast"
-#~ msgstr "Snel"
-
-#~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "Nieuwe vensters krijgen focus automatisch"
-
-#~ msgid "New window focus"
-#~ msgstr "Focus voor nieuwe vensters"
-
-#~ msgid "Raise on focus"
-#~ msgstr "Naar voren halen bij focus"
-
-#~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "Venster met focus automatisch naar voren halen"
-
-#~ msgid "Delay before raising focused window :"
-#~ msgstr "Vertraging voor naar voren halen vensters :"
-
-#~ msgid "Raise window when clicking inside application window"
-#~ msgstr "Venster naar voren halen bij klikken in het venster"
-
-#~ msgid "Raise on click"
-#~ msgstr "Naar voren halen bij klik"
-
-#~ msgid "Windows snapping"
-#~ msgstr "Aantrekken vensters"
-
-#~ msgid "Snap windows to screen border"
-#~ msgstr "Vensters naar schermranden trekken"
-
-#~ msgid "Snap windows to other windows"
-#~ msgstr "Vensters naar andere vensters trekken"
-
-#~ msgid "Distance :"
-#~ msgstr "Afstand :"
-
-#~ msgid "Distance|Small"
-#~ msgstr "Afstand|Klein"
-
-#~ msgid "Distance|Wide"
-#~ msgstr "Afstand|Breed"
-
-#~ msgid "Wrap workspaces"
-#~ msgstr "Werkbladen verpakken"
-
-#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr ""
-#~ "Verpak werkbladen wanneer de muisaanwijzer de rand van het scherm bereikt"
-
-#~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Verpak werkbladen bij slepen voorbij de rand van het scherm"
-
-#~ msgid "Edge Resistance :"
-#~ msgstr "Randweerstand :"
-
-#~ msgid "Resistance|Small"
-#~ msgstr "Weerstand|Klein"
-
-#~ msgid "Resistance|Wide"
-#~ msgstr "Weerstand|Breed"
-
-#~ msgid "Opaque move and resize"
-#~ msgstr "Ondoorzichtig verplaatsen en formaat aanpassen"
-
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "Inhoud venster tonen bij veranderen grootte"
-
-#~ msgid "Display content of windows when moving"
-#~ msgstr "Inhoud venster tonen tijdens verplaatsen"
-
-#~ msgid "Double click action"
-#~ msgstr "Dubbelklik-actie"
-
-#~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "Actie voor dubbelklikken op de titelbalk :"
-
-#~ msgid "Advanced"
-#~ msgstr "Geavanceerd"
-
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "Knopetiket|Vensterbeheerder"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Wilt u dit toetsenthema echt verwijderen?"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "Toetsenthema toevoegen"
-
-#~ msgid "Enter a name for the theme:"
-#~ msgstr "Voer een naam in voor het thema:"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Een toetsenthema met deze naam bestaat reeds"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Het toetsenthema moet een naam krijgen"
-
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Venster naar werkblad %d verplaatsen"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "Kan themamap niet openen !"
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Kan %s niet openen:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Kan niet schrijven in %s:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "Sneltoets reeds in gebruik!\n"
-#~ "Weet u zeker dat u deze toetscombinatie wil gebruiken?"
-
-#~ msgid "Compose shortcut for :"
-#~ msgstr "Sneltoets maken voor:"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "Sneltoets samenstellen"
-
-#~ msgid "No shortcut"
-#~ msgstr "Geen sneltoets"
-
-#~ msgid "Change the name of workspace %d"
-#~ msgstr "Verander de naam van werkblad %d"
-
-#~ msgid "Advanced window manager settings"
-#~ msgstr "Geavanceerde vensterbeheerder-instellingen"
-
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "Deze sneltoets is reeds in gebruik bij <b>een andere "
-#~ "vensterbeheerderactie</b>. Welke actie wilt u gebruiken?"
-
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "De sneltoets is reeds in gebruik bij een <b>vensterbeheerderactie</b>."
-#~ "Welke actie wilt u gebruiken?"
-
-#~ msgid "The shortcut is already being used for something else."
-#~ msgstr "De sneltoets wordt al gebruikt voor iets anders."
-
-#~ msgid "Action: %s"
-#~ msgstr "Actie: %s"
-
-#~ msgid "Enter shortcut"
-#~ msgstr "Geef sneltoets in"
-
-#~ msgid "Shortcut:"
-#~ msgstr "Sneltoets:"
-
-#~ msgid "(Un)Ma_ximize"
-#~ msgstr "(Ont)Ma_ximaliseren"
-
-#~ msgid "Hide _all others"
-#~ msgstr "_Alle andere verbergen"
-
-#~ msgid "_Shade"
-#~ msgstr "_Oprollen"
-
-#~ msgid "(Un)_Shade"
-#~ msgstr "_Uitrollen"
-
-#~ msgid "S_tick"
-#~ msgstr "_Plakken"
-
-#~ msgid "(Un)S_tick"
-#~ msgstr "_Losmaken/plakken"
-
-#~ msgid "Below"
-#~ msgstr "Onderaan"
-
-#~ msgid "Send to..."
-#~ msgstr "Verzend naar..."
-
-#~ msgid "Workspace %i (%s)"
-#~ msgstr "Werkblad %i (%s)"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "Button"
-#~ msgstr "Knop"
-
-#~ msgid "Add Shortcut Theme"
-#~ msgstr "Voeg sneltoetsthema toe"
-
-#~ msgid "Move window left"
-#~ msgstr "Venster links verplaatsen"
-
-#~ msgid "Move window right"
-#~ msgstr "Venster rechts verplaatsen"
-
-#~ msgid "Resize window down"
-#~ msgstr "Venstergrootte beneden veranderen"
-
-#~ msgid "Resize window left"
-#~ msgstr "Venstergrootte links veranderen"
-
-#~ msgid "Cancel move/resize window"
-#~ msgstr "Annuleer verplaatsen/grootte veranderen van venster"
-
-#~ msgid "_Hide"
-#~ msgstr "_Verbergen"
