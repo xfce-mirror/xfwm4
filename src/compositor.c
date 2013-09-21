@@ -1357,7 +1357,7 @@ get_refresh_rate (ScreenInfo* screen_info)
 
     if (refresh_rate != screen_info->refresh_rate)
     {
-        g_message ("Detected refreshrate:%i hertz", refresh_rate);
+        DBG ("Detected refreshrate: %i hertz", refresh_rate);
         screen_info->refresh_rate = refresh_rate;
     }
 }
