@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# carlesmu <carlesmu@internautas.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:21+0200\n"
-"PO-Revision-Date: 2013-07-27 14:31+0000\n"
+"PO-Revision-Date: 2013-09-30 06:23+0000\n"
 "Last-Translator: carlesmu <carlesmu@internautas.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/xfce/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +114,7 @@ msgstr "<b>Te_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
-msgstr "<b>Font del _títol</b>"
+msgstr "<b>Tipus de lletra del _títol</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
@@ -173,7 +174,7 @@ msgstr "E_stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr ""
+msgstr "Establiu les dreceres per les accions del _gestor de finestres:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -185,7 +186,7 @@ msgstr "_Teclat"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr ""
+msgstr "Clic per en_focar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
@@ -244,11 +245,11 @@ msgstr "En_focament"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
-msgstr ""
+msgstr "A les _vores de les finestres"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
-msgstr ""
+msgstr "A altres _finestres"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
@@ -272,11 +273,11 @@ msgstr "<b>Alineació de les finestres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "With the mouse _pointer"
-msgstr ""
+msgstr "Amb el _punter del ratolí"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr ""
+msgstr "Amb una finestra _arrossegada"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -284,7 +285,7 @@ msgstr "Resistència de les _vores:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
+msgstr "<b>Canvia d'espai de treball quan arribeu a l'extrem de la pantalla</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -398,7 +399,7 @@ msgstr "_Rotació"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Activate foc_us stealing prevention"
-msgstr ""
+msgstr "Activa la prevenció de f_urt d'enfocament"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
@@ -430,11 +431,11 @@ msgstr "Posa en p_rimer pla quan es pitgi qualsevol botó del ratolí"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide frame of windows when ma_ximized"
-msgstr ""
+msgstr "Amaga el _marc de les finestres al ma_ximitzar-les"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
+msgstr "Recupera la _mida original de les finestres maximitzades quan es mouen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -472,7 +473,7 @@ msgstr "Canvia d'espai de treball en funció del _format actual de l'escriptori"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "Canvia d'espai de treball quan s'arribi al _primer o al darrer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
