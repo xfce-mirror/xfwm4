@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:21+0200\n"
-"PO-Revision-Date: 2013-09-13 13:56+0000\n"
+"PO-Revision-Date: 2013-10-15 15:31+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -212,7 +212,7 @@ msgstr "<b>Gerð virkni</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Automatically give focus to _newly created windows"
-msgstr "Gefa nýjum glugga sjálfkrafa virkni"
+msgstr "Gefa _nýjum glugga sjálfkrafa virkni"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>New window focus</b>"
@@ -220,11 +220,11 @@ msgstr "<b>Virkni nýs glugga</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
+msgstr "_Lyfta gluggum sjálfkrafa þegar þeir verða virkir"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr ""
+msgstr "_Töf áður en virkum glugga er lyft:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
@@ -232,7 +232,7 @@ msgstr "<b>Lyfta við að fá virkni</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
-msgstr ""
+msgstr "Lyfta glugga þegar smellt er _innan forritsglugga"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
@@ -281,7 +281,7 @@ msgstr "Með _dregnum glugga"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
-msgstr ""
+msgstr "_Viðnám jaðars:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
@@ -407,7 +407,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Þegar gluggi lyftist:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "_Bring window on current workspace"
@@ -506,7 +506,7 @@ msgstr "_Staðsetning"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
-msgstr ""
+msgstr "_Virkja skjásamsetningu á skjá"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
