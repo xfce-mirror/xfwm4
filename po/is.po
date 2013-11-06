@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:21+0200\n"
-"PO-Revision-Date: 2013-10-15 15:31+0000\n"
+"PO-Revision-Date: 2013-11-06 22:53+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -379,11 +379,11 @@ msgstr "Þetta mun endurstilla alla flýtilykla á sjálfgefin gildi. Ertu viss 
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "S_leppa gluggum sem hafa \"skip pager\"\neða \"skip taskbar\" eiginleika"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Taka með falda glugga (tákngerða/iconified)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
@@ -391,7 +391,7 @@ msgstr "Fle_tta í gegnum glugga á öllum vinnusvæðum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "_Draga ramma utan um valda glugga á meðan flett er"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "C_ycling"
@@ -403,7 +403,7 @@ msgstr "Vir_kja vörn gegn virknimissi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "Virða _staðlaðar ICCCM virknivísanir (focus hint)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "When a window raises itself:"
