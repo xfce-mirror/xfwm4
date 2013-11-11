@@ -1,30 +1,31 @@
-# Norwegian Bokmal translations for xfwm4 package.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-# Eskild Hustvedt <eskild@goldenfiles.com>, 2004.
-# Terje Uriansrud <ter@operamail.com>, 2007.
-# Terje Uriansrud <terje@uriansrud.net>, 2009.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Eskild Hustvedt <eskild@goldenfiles.com>, 2004
+# papparonny <ronny@olufsen.org>, 2013
+# Terje Uriansrud <terje@uriansrud.net>, 2009
+# Terje Uriansrud <ter@operamail.com>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 18:54+0200\n"
-"PO-Revision-Date: 2005-08-19 21:16+0900\n"
-"Last-Translator: Terje Uriansrud <terje@uriansrud.net>\n"
-"Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
-"Language: nb\n"
+"POT-Creation-Date: 2013-07-02 23:22+0200\n"
+"PO-Revision-Date: 2013-11-11 15:40+0000\n"
+"Last-Translator: papparonny <ronny@olufsen.org>\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfce/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Dette vinduet kan være opptatt og gir ikke respons.\n"
-"Ønsker du å avslutte programmet?"
+msgstr "Dette vinduet kan være opptatt og gir ikke respons.\nØnsker du å avslutte programmet?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -63,10 +64,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Prøv «%s --help» for å se komplett liste over tilgjengelige "
-"kommandolinjeparametre.\n"
+msgstr "%s: %s\nPrøv «%s --help» for å se komplett liste over tilgjengelige kommandolinjeparametre.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -111,7 +109,7 @@ msgstr "Arbeidsområde"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "Sett opp layout, navn og marger"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>_Theme</b>"
@@ -154,9 +152,8 @@ msgid "Shade"
 msgstr "Rull opp"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "Minimize"
-msgstr "Mi_nimer"
+msgstr "Minimer"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
@@ -420,9 +417,8 @@ msgid "Lower window"
 msgstr "Senk vindu"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Hev vindu"
+msgstr "Hev eller senk vindu"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -513,24 +509,20 @@ msgid "Move window to workspace 12"
 msgstr "Flytt vindu til arbeidsområde 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Flytt vindu til venstre skrivebord"
+msgstr "Still inn vindu til topp"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Flytt vindu til nedre skrivebord"
+msgstr "Still inn vindu til bunn"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Flytt vindu til venstre skrivebord"
+msgstr "Still inn vindu til venstre"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Flytt vindu til høyre skrivebrord"
+msgstr "Still inn vindu til høyre"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -645,26 +637,22 @@ msgstr "Klarte ikke initialisere xfconf. Årsak: %s"
 msgid "Could not create the settings dialog."
 msgstr "Klarte ikke oppretteinnstillingsvinduet."
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "Tilbakestill til standardoppsett"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Dette vil tilbakestille alle snarveier til standardverdi. Ønsker du å gjøre "
-"dette?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Dette vil tilbakestille alle snarveier til standardverdi. Ønsker du å gjøre dette?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"_Hopp over vinduer som har «hopp over skrivebordoversikt/oppgavelinje» "
-"egenskaper satt"
+msgstr "_Hopp over vinduer som har «hopp over skrivebordoversikt/oppgavelinje» egenskaper satt"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -723,9 +711,8 @@ msgid "Restore original _size of maximized windows when moving"
 msgstr "Gjenopprett origina_l størrelse på vindu mens det flyttes"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automatisk _hev vinduer når de mottar fokus"
+msgstr "Still automatisk vinduer når de flyttes mot skjermkant"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
@@ -751,8 +738,7 @@ msgstr "Bruk _musepekerhjulet over skrivebordet for å bytte arbeidsområde"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_Lagre og gjenopprett forrige arbeidsområde ved bytting med hurtigtast."
+msgstr "_Lagre og gjenopprett forrige arbeidsområde ved bytting med hurtigtast."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -849,28 +835,24 @@ msgstr "_Antall arbeidsområder:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Names"
-msgstr "_Navn:"
+msgstr "Navn"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "_Generelt"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Marginer er områder ved kantene på skjermen hvor ingen vinduer vil bli "
-"plassert"
+msgstr "Marginer er områder ved kantene på skjermen hvor ingen vinduer vil bli plassert"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Margins"
-msgstr "<b>Marginer</b>"
+msgstr "_Marger"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -1037,30 +1019,3 @@ msgstr "Feil ved lesing av data fra underprosess: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Kan ikke starte «helper-dialog»: %s\n"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "Sett antallet og navn på arbeidsområder:"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Arbeidsområder</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "Endre arbeidsområdenavn"
-
-#~ msgid "Hide"
-#~ msgstr "Skjul"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Minnepekerfeil (Segmentation fault)"
-
-#~ msgid "  "
-#~ msgstr "  "
-
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "<i>Kort</i>"
-
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "<i>Liten</i>"
-
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "<i>Stor</i>"
