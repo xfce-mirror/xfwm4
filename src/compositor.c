@@ -1385,6 +1385,12 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     {
         screen_info->rootBuffer = create_root_buffer (screen_info);
         g_return_if_fail (screen_info->rootBuffer != None);
+
+        memset(screen_info->transform.matrix, 0, 9);
+        screen_info->transform.matrix[0][0] = 1<<16;
+        screen_info->transform.matrix[1][1] = 1<<16;
+        screen_info->transform.matrix[2][2] = 1<<16;
+        screen_info->zoomed = 0;
     }
 
     /* Copy the original given region */
@@ -1515,9 +1521,17 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     }
 
     TRACE ("Copying data back to screen");
-    /* Set clipping back to the given region */
-    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
-
+    if(screen_info->zoomed)
+    {
+        /* Fixme: copy back whole screen if zoomed 
+           It would be better to scale the clipping region if possible. */
+        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, None);
+    }
+    else
+    {
+        /* Set clipping back to the given region */
+        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
+    }
 #ifdef HAVE_LIBDRM
 #if TIMEOUT_REPAINT
     use_dri = dri_enabled (screen_info);
@@ -2406,6 +2420,61 @@ destroy_win (DisplayInfo *display_info, Window id)
     }
 }
 
+void
+recenter_zoomed_area (ScreenInfo *screen_info, int x_root, int y_root)
+{
+    int zf = screen_info->transform.matrix[0][0];
+    double zoom = XFixedToDouble(zf);
+    Display *dpy = screen_info->display_info->dpy;
+
+    if(screen_info->zoomed)
+    {
+        int xp = x_root * (1-zoom);
+        int yp = y_root * (1-zoom);
+        screen_info->transform.matrix[0][2] = (xp<<16);
+        screen_info->transform.matrix[1][2] = (yp<<16);
+    }
+
+    if(zf > (1<<14) && zf < (1<<16))
+        XRenderSetPictureFilter(dpy, screen_info->rootBuffer, "bilinear", NULL, 0);
+    else
+        XRenderSetPictureFilter(dpy, screen_info->rootBuffer, "nearest", NULL, 0);
+
+    XRenderSetPictureTransform(dpy, screen_info->rootBuffer, &screen_info->transform);
+
+    damage_screen(screen_info);
+}
+
+static gboolean
+zoom_timeout_cb (gpointer data)
+{
+    ScreenInfo   *screen_info;
+    Window       root_return;
+    Window       child_return;
+    int          x_root, y_root;
+    int          x_win, y_win;
+    unsigned int mask;
+    static int   x_old=-1, y_old=-1;
+
+    screen_info = (ScreenInfo *) data;
+    
+    if(!screen_info->zoomed)
+    {
+        screen_info->zoom_timeout_id = 0;
+        return FALSE; /* stop calling this callback */
+    }
+
+    XQueryPointer (screen_info->display_info->dpy, screen_info->xroot,
+			    &root_return, &child_return,
+			    &x_root, &y_root, &x_win, &y_win, &mask);
+    if(x_old != x_root || y_old != y_root)
+    {
+        x_old = x_root; y_old = y_root;
+        recenter_zoomed_area(screen_info, x_root, y_root);
+    }
+    return TRUE;
+}
+
 static void
 compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
 {
@@ -2967,6 +3036,57 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
 }
 
 void
+compositorZoomIn (ScreenInfo *screen_info, XButtonEvent *ev)
+{
+#ifdef HAVE_COMPOSITOR
+    screen_info->transform.matrix[0][0] -= 4096;
+    screen_info->transform.matrix[1][1] -= 4096;
+
+    if(screen_info->transform.matrix[0][0] < (1<<10))
+    {
+        screen_info->transform.matrix[0][0] = (1<<10);
+        screen_info->transform.matrix[1][1] = (1<<10);
+    }
+
+    screen_info->zoomed = 1;
+    if(!screen_info->zoom_timeout_id)
+    {
+        int timeout_rate = 30; /* per second */
+#ifdef HAVE_RANDR
+        if (screen_info->display_info->have_xrandr)
+        {
+            timeout_rate = screen_info->refresh_rate/2;
+        }
+#endif /* HAVE_RANDR */
+        screen_info->zoom_timeout_id = g_timeout_add ((1000/timeout_rate), zoom_timeout_cb, screen_info);
+    }
+    recenter_zoomed_area(screen_info, ev->x_root, ev->y_root);
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
+compositorZoomOut (ScreenInfo *screen_info, XButtonEvent *ev)
+{
+#ifdef HAVE_COMPOSITOR
+    if(screen_info->zoomed)
+    {
+        screen_info->transform.matrix[0][0] += 4096;
+        screen_info->transform.matrix[1][1] += 4096;
+
+        if(screen_info->transform.matrix[0][0] >= (1<<16))
+        {
+            screen_info->transform.matrix[0][0] = (1<<16);
+            screen_info->transform.matrix[1][1] = (1<<16);
+            screen_info->zoomed = 0;
+            screen_info->transform.matrix[0][2] = 0;
+            screen_info->transform.matrix[1][2] = 0;
+        }
+        recenter_zoomed_area(screen_info, ev->x_root, ev->y_root);
+    }
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
 compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
@@ -3171,6 +3291,8 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->compositor_active = TRUE;
     screen_info->wins_unredirected = 0;
     screen_info->compositor_timeout_id = 0;
+    screen_info->zoomed = 0;
+    screen_info->zoom_timeout_id = 0;
     screen_info->damages_pending = FALSE;
 
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);

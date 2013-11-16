@@ -53,6 +53,10 @@ void                     compositorResizeWindow                 (DisplayInfo *,
                                                                  int);
 void                     compositorHandleEvent                  (DisplayInfo *,
                                                                  XEvent *);
+void                     compositorZoomIn                       (ScreenInfo *,
+                                                                 XButtonEvent *);
+void                     compositorZoomOut                      (ScreenInfo *,
+                                                                 XButtonEvent *);
 void                     compositorInitDisplay                  (DisplayInfo *);
 void                     compositorSetCompositeMode             (DisplayInfo *,
                                                                  gboolean);
