@@ -1403,9 +1403,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     paint_region = XFixesCreateRegion (dpy, NULL, 0);
     XFixesCopyRegion (dpy, paint_region, region);
 
-    /* Set clipping to the given region */
-    XFixesSetPictureClipRegion (dpy, screen_info->rootPicture, 0, 0, paint_region);
-
     /*
      * Painting from top to bottom, reducing the clipping area at each iteration.
      * Only the opaque windows are painted 1st.
