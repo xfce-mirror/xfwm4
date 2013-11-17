@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2013
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:21+0200\n"
-"PO-Revision-Date: 2013-11-11 21:20+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2013-11-17 07:04+0000\n"
+"Last-Translator: Juhani Numminen <juhaninumminen0@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/xfce/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -174,7 +175,7 @@ msgstr "_Tyyli"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr ""
+msgstr "Määrittele pikanäppäimet _ikkunanhallinnan toiminnoille:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -186,7 +187,7 @@ msgstr "_Näppäimistö"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr ""
+msgstr "_Kohdista napsauttamalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
@@ -245,11 +246,11 @@ msgstr "_Kohdistus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
-msgstr ""
+msgstr "Näytön _reunoihin"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
-msgstr ""
+msgstr "Toisiin _ikkunoihin"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
@@ -273,11 +274,11 @@ msgstr "<b>Ikkunoiden loksahtaminen</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "With the mouse _pointer"
-msgstr ""
+msgstr "_Hiiren osoittimella"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr ""
+msgstr "_Raahatulla ikkunalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -285,15 +286,15 @@ msgstr "R_eunan vastus:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
+msgstr "<b>Vaihda työtilaa kun osoitin saavuttaa näytön reunan</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
-msgstr ""
+msgstr "_Liikutettaessa"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
-msgstr ""
+msgstr "_Kokoa muutettaessa"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
@@ -379,7 +380,7 @@ msgstr "Tämä palauttaa kaikki pikanäppäimet oletusarvoihinsa. Haluatko varma
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "_Ohita työtilan vaihtajasta tai\ntehtäväpalkista piilotetut ikkunat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -399,7 +400,7 @@ msgstr "_Selaaminen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Activate foc_us stealing prevention"
-msgstr ""
+msgstr "Käytä kohdistuksen _ryöstön estoa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
@@ -431,11 +432,11 @@ msgstr "_Kaikki hiiren painikkeet nostavat ikkunan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide frame of windows when ma_ximized"
-msgstr ""
+msgstr "Piilota ikkunan ke_hys suurennettaessa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
+msgstr "Palauta suure_nnettujen ikkunoiden koko siirrettäessä"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -473,7 +474,7 @@ msgstr "Kierrätä työtiloja t_yöpöytäasettelun mukaisesti"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "Kierrätä työtiloja, kun o_hitetaan ensimmäinen tai viimeinen tila"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
@@ -494,11 +495,11 @@ msgstr "Ikkunan oletussijoitus:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "At the c_enter of the screen"
-msgstr ""
+msgstr "Ruudun _keskellä"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "U_nder the mouse pointer"
-msgstr ""
+msgstr "_Hiiren osoittimen alla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
@@ -514,7 +515,7 @@ msgstr "Näytä koko näytön _peittokuvaikkunat suoraan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "Synchronize drawing to the _vertical blank"
-msgstr ""
+msgstr "_Synkronoi piirtäminen pystysuuntaiseen tyhjennykseen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
@@ -554,7 +555,7 @@ msgstr "Ikkunoiden läpinäkyvyys kokoa m_uutettaessa:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of popup wi_ndows:"
-msgstr ""
+msgstr "P_onnahdusikkunoiden läpinäkyvyys:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "C_ompositor"
