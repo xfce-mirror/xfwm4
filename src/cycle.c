@@ -361,14 +361,11 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             break;
         case ButtonPress:
         case ButtonRelease:
+            status = EVENT_FILTER_CONTINUE;
             /* window of the event, we might accept it later */
             mouse_window = xevent->xbutton.window;
             break;
-        case EnterNotify:
-        case LeaveNotify:
-            /* window of the event, we might accept it later */
-            mouse_window = xevent->xcrossing.window;
-            break;
+
         default:
             status = EVENT_FILTER_CONTINUE;
             break;
@@ -376,19 +373,53 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     
     if (mouse_window != 0)
     {
+        Client *c2 = NULL;
+
         /* only accept events for the tab windows */
         for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
+        {
             if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == mouse_window)
             {
-                status = EVENT_FILTER_CONTINUE;
+                c2 = tabwinSelectWidget (passdata->tabwin, li->data);
+                if (c2)
+                {
+                    c = c2;
+                }
+
+                if (c)
+                {
+                    if (passdata->wireframe)
+                    {
+                        wireframeUpdate (c, passdata->wireframe);
+                    }
+                }
+                else
+                {
+                    cycling = FALSE;
+                }
                 break;
             }
+        }
+
+        if (c2 == NULL)
+        {
+            status = EVENT_FILTER_STOP;
+            cycling = FALSE;
+        }
     }
 
     if (!cycling)
     {
         TRACE ("event loop now finished");
         gtk_main_quit ();
+    }
+
+    if (status == EVENT_FILTER_STOP)
+    {
+        /* If there's any chance of a leftover grab, release it. This happens
+         * when the user clicks outside of the tabwin window area onto another
+         * window */
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     }
 
     return status;
@@ -401,7 +432,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     DisplayInfo *display_info;
     ClientCycleData passdata;
     GList *client_list, *selected;
-    gboolean g1, g2;
+    gboolean g1;
     int key, modifier;
     Client *c2;
 
@@ -448,15 +479,13 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, ev->time);
-    g2 = myScreenGrabPointer (screen_info, EnterWindowMask | LeaveWindowMask | ButtonPressMask | ButtonMotionMask | PointerMotionMask  | ButtonReleaseMask,  None, ev->time);
 
-    if (!g1 || !g2)
+    if (!g1)
     {
         TRACE ("grab failed in clientCycle");
 
         gdk_beep ();
         myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
         g_list_free (client_list);
 
         return;
@@ -496,7 +525,6 @@ clientCycle (Client * c, XKeyEvent * ev)
     g_list_free (client_list);
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 }
 
 gboolean

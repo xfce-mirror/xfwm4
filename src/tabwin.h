@@ -75,6 +75,7 @@ Client                  *tabwinSelectHead                       (Tabwin *);
 Client                  *tabwinSelectNext                       (Tabwin *);
 Client                  *tabwinSelectPrev                       (Tabwin *);
 Client                  *tabwinSelectDelta                      (Tabwin *, int, int);
+Client                  *tabwinSelectWidget                     (Tabwin *, GtkWidget *);
 Client                  *tabwinRemoveClient                     (Tabwin *,
                                                                  Client *);
 void                    tabwinDestroy                           (Tabwin *);
