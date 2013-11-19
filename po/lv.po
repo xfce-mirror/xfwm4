@@ -1,36 +1,30 @@
-# translation of lv.po to Latvian
-# Latvian translations for xfwm4 package.
-# Copyright (C) 2002-2007 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-#
-# Rihards Prieditis <rprieditis@inbox.lv>, 2007.
-# Rihards Prieditis <RPrieditis@gmail.com>, 2008.
-# Rihards Prieditis <rprieditis@gmail.com>, 2009.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Rihards Priedītis <rprieditis@gmail.com>, 2009
+# Rihards Prieditis <RPrieditis@gmail.com>, 2008
+# Rihards Prieditis <rprieditis@inbox.lv>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: lv\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 18:54+0200\n"
-"PO-Revision-Date: 2010-01-30 12:53-0000\n"
-"Last-Translator: Rihards Prieditis <rprieditis@gmail.com>\n"
-"Language-Team: Latvian <translation-team-lv@lists.sourceforge.net>\n"
-"Language: lv\n"
+"POT-Creation-Date: 2013-07-02 23:22+0200\n"
+"PO-Revision-Date: 2013-11-19 15:10+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Latvian (http://www.transifex.com/projects/p/xfce/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
-"X-Poedit-Language: Latvian\n"
-"X-Poedit-Country: Latvia\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Šis logs var būt aizņemts un neatbild.\n"
-"Vai vēlaties terminēt lietotni?"
+msgstr "Šis logs var būt aizņemts un neatbild.\nVai vēlaties terminēt lietotni?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -69,10 +63,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Mēģiniet %s --help , lai redzētu pilnu pieejamo komandu līniju iespēju "
-"sarakstu.\n"
+msgstr "%s: %s\nMēģiniet %s --help , lai redzētu pilnu pieejamo komandu līniju iespēju sarakstu.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -160,9 +151,8 @@ msgid "Shade"
 msgstr "Saritināt"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "Minimize"
-msgstr "M_inimizēt"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
@@ -210,15 +200,13 @@ msgstr "_Aizkavēt, pirms logs saņem fokusu:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "<i>Short</i>"
-msgstr "Aizture|<i>Īsa</i>"
+msgstr ""
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
 msgid "<i>Long</i>"
-msgstr "Aizture|<i>Gara</i>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "<b>Focus model</b>"
@@ -273,15 +261,13 @@ msgstr "_Attālums:"
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "Izmērs|<i>Mazs</i>"
+msgstr ""
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "Attālums|<i>Plats</i>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "<b>Windows snapping</b>"
@@ -430,9 +416,8 @@ msgid "Lower window"
 msgstr "Nocelt logu"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "Pacelt logu"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -523,24 +508,20 @@ msgid "Move window to workspace 12"
 msgstr "Pārvietot logu uz darbavietu 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "Novietot logu centrā"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "Pārvietot logu uz apakšējo darbavietu"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "Novietot logu centrā"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "Mainīt izmēru pa labi"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -655,25 +636,22 @@ msgstr "Neizdevās inicializēt xfconf. Iemesls: %s"
 msgid "Could not create the settings dialog."
 msgstr "Nevarēja izveidot uzstādījumu dialogu."
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "Atstatīt uz noklusētajiem"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Šis atstatīs visus īsceļus uz noklusētajām vērtībām. Vai vēlaties turpināt?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Šis atstatīs visus īsceļus uz noklusētajām vērtībām. Vai vēlaties turpināt?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"I_zlaist logus, kuriem ir uzstādītas īpašības\n"
-"\"izlaist peidžeri\" vai \"izlaist uzdevumjoslu\""
+msgstr "I_zlaist logus, kuriem ir uzstādītas īpašības\n\"izlaist peidžeri\" vai \"izlaist uzdevumjoslu\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -732,9 +710,8 @@ msgid "Restore original _size of maximized windows when moving"
 msgstr "Atgriezt sākotnējo i_zmēru, kad logs tiek pārvietots"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automātiski _pacelt logus, kad tie saņem fokusu"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
@@ -760,9 +737,7 @@ msgstr "Izmantot peles _ritentiņu, lai pārslēgtos starp darbavietām"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_Atcerēties un atsaukt iepriekšējo darbavietu,\n"
-"kad pārslēdzas ar klaviatūras īsinājumtaustiņiem"
+msgstr "_Atcerēties un atsaukt iepriekšējo darbavietu,\nkad pārslēdzas ar klaviatūras īsinājumtaustiņiem"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -782,9 +757,8 @@ msgstr "_Minimālais loga izmērs, lai palaistu gudro novietošanu:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-#, fuzzy
 msgid "<i>Large</i>"
-msgstr "Izmērs|<i>Liels</i>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "By default, place windows:"
@@ -863,9 +837,8 @@ msgid "Layout"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Names"
-msgstr "Nosaukums:"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
@@ -877,9 +850,8 @@ msgid ""
 msgstr "Apmales, ir ekrāna daļa, kur logi netiks novietoti"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Margins"
-msgstr "Apmales"
+msgstr ""
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -904,14 +876,12 @@ msgid "Set the compositor mode (not supported)"
 msgstr ""
 
 #: ../src/main.c:549
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Xfce 4 logu pārvaldnieka uzstādījumi"
+msgstr ""
 
 #: ../src/main.c:550
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "Versijas informācija"
+msgstr ""
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
@@ -1048,592 +1018,3 @@ msgstr "Kļūda lasot datus no bērna procesa: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Nevar izveidot helper-dialog:%s\n"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "Uzstādīt darbavietu skaitu un nosaukumus"
-
-#~ msgid "<b>Margins</b>"
-#~ msgstr "<b>Apmales</b>"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Darbavieta</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "Mainīt darbavietas nosaukumu"
-
-#~ msgid "_Name:"
-#~ msgstr "_Nosaukums:"
-
-#~ msgid "Hide"
-#~ msgstr "Slēpt"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Segmentācijas vaina"
-
-#~ msgid "  "
-#~ msgstr " "
-
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "Attālums|<i>Šaurs</i>"
-
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "Pretestība|<i>Maza</i>"
-
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "Pretestība|<i>Liela</i>"
-
-#, fuzzy
-#~ msgid ">Window Manager"
-#~ msgstr "Logu pārvaldnieks"
-
-#, fuzzy
-#~ msgid "gtk-clear"
-#~ msgstr "Atcelt"
-
-#, fuzzy
-#~ msgid "gtk-cancel"
-#~ msgstr "Atcelt"
-
-#, fuzzy
-#~ msgid "gtk-save"
-#~ msgstr "Atcelt"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "Darbavietas apmales"
-
-#~ msgid "Left :"
-#~ msgstr "No kreisās :"
-
-#~ msgid "Right :"
-#~ msgstr "No labās :"
-
-#~ msgid "Top :"
-#~ msgstr "No augšas："
-
-#~ msgid "Bottom :"
-#~ msgstr "No apakšas :"
-
-#, fuzzy
-#~ msgid "Bring window on current workspace"
-#~ msgstr "Novietot logu uz esošās darbavietas"
-
-#, fuzzy
-#~ msgid "Do nothing"
-#~ msgstr "Neko nedarīt"
-
-#~ msgid "Place window under the mouse"
-#~ msgstr "Novietot logu zem peles"
-
-#, fuzzy
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "Izlaist logus, kuriem ir uzstādītas īpašības \"izlaist peidžeri\" vai "
-#~ "\"izlaist uzdevumjoslu\""
-
-#, fuzzy
-#~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "Iekļaut slēptos logus"
-
-#, fuzzy
-#~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Ciklēt cauri visiem logiem no visām darbavietām"
-
-#, fuzzy
-#~ msgid "Cycling"
-#~ msgstr "Ciklošana"
-
-#, fuzzy
-#~ msgid "Activate focus stealing prevention"
-#~ msgstr "Aktivizēt fokusa zagšanas novēršanu"
-
-#, fuzzy
-#~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "Ievērot ICCM standarta fokusa ieteikumu"
-
-#, fuzzy
-#~ msgid "Focus"
-#~ msgstr "Fokuss"
-
-#, fuzzy
-#~ msgid "Key used to grab and move windows"
-#~ msgstr "Taustiņš, ar kuru paķert un pārvietot logu"
-
-#, fuzzy
-#~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "Pacelt logu, kad nospiest jebkurš peles taustiņš"
-
-#, fuzzy
-#~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Kad maksimizēts, slēpt loga rāmi"
-
-#, fuzzy
-#~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "Atgriezt sākotnējo izmēru, kad logs tiek pārvietots"
-
-#, fuzzy
-#~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "Izmantot malu pretestību, nevis logu piesaisti"
-
-#, fuzzy
-#~ msgid "Accessibility"
-#~ msgstr "Pieejamība"
-
-#~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr "Pārslēgt darbavietas izmantojot peli virs darbavirsmas"
-
-#, fuzzy
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Atcerēties un atsaukt iepriekšējo darbavietu, kad pārslēdzas ar "
-#~ "klaviatūras īsinājumtaustiņiem"
-
-#, fuzzy
-#~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr "Apliekt darbavietas balstoties uz esošo darbavirsmas izkārtojumu"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Apliekt darbavietu, kad pirmā vai pēdējā darbavieta ir sasniegta"
-
-#, fuzzy
-#~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Minimālais loga izmērs, lai palaistu gudro novietošanu"
-
-#, fuzzy
-#~ msgid "Size|Small"
-#~ msgstr "Mazs"
-
-#, fuzzy
-#~ msgid "Size|Large"
-#~ msgstr "Liels"
-
-#~ msgid "Default positionning of windows without smart placement:"
-#~ msgstr "Noklusētā logu izvietošana ir bez gudrās novietošanas:"
-
-#, fuzzy
-#~ msgid "Placement"
-#~ msgstr "Novietojums:"
-
-#, fuzzy
-#~ msgid "Enable display compositing"
-#~ msgstr "Iespējot attēlošanas kompozīciju"
-
-#, fuzzy
-#~ msgid "Display full screen overlay windows directly"
-#~ msgstr "Rādīt tieši pilna ekrāna pārklājuma logus"
-
-#, fuzzy
-#~ msgid "Show shadows under dock windows"
-#~ msgstr "Rādīt ēnas zem loga doka"
-
-#, fuzzy
-#~ msgid "Show shadows under regular windows"
-#~ msgstr "Rādīt ēnas zem parastiem logiem"
-
-#, fuzzy
-#~ msgid "Show shadows under popup windows"
-#~ msgstr "Rādīt ēnas zem izlecošajiem logiem"
-
-#, fuzzy
-#~ msgid "Opacity of window decorations"
-#~ msgstr "Loga dekorāciju necaurspīdība"
-
-#, fuzzy
-#~ msgid "Transparent"
-#~ msgstr "Caurspīdīgs"
-
-#, fuzzy
-#~ msgid "Opaque"
-#~ msgstr "Necaurspīdīgs"
-
-#, fuzzy
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "Necaurspīdība neaktīvam logam"
-
-#, fuzzy
-#~ msgid "Opacity of windows during move"
-#~ msgstr "Necaurspīdība loga pārvietošanas brīdī"
-
-#, fuzzy
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "Necaurspīdība loga izmēru maiņas brīdī"
-
-#, fuzzy
-#~ msgid "Opacity of popup windows"
-#~ msgstr "Izlecošo logu necaurspīdība"
-
-#, fuzzy
-#~ msgid "Compositor"
-#~ msgstr "Komponists"
-
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "Loga pārvaldnieka piedares"
-
-#~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr "Šie uzstādījumi, nav derīgi pie pašreizējā logu pārvaldnieka (%s)"
-
-#~ msgid "Change name"
-#~ msgstr "Mainīt nosaukumu"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Uzklikšķiniet uz darbavietas, lai rediģētu nosaukumu"
-
-#, fuzzy
-#~ msgid "Number of workspaces:"
-#~ msgstr "Darbavietu skaits:"
-
-#, fuzzy
-#~ msgid "Workspace names"
-#~ msgstr "Darbavietas nosaukumi"
-
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Darbavietas un apmales"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "Darbavietas un apmales"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Loga pārvaldnieka uzstādījumi"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 logu pārvaldnieka uzstādījumi"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Paplašinātā konfigurācija"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 logu pārvaldnieka piedares"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Darbavietu uzstādījumi"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 darbavietu uzstādījumi"
-
-#, fuzzy
-#~ msgid "Click and drag buttons to change the layout"
-#~ msgstr "Uzklikšķiniet un velciet pogas, lai mainītu izkārtojumu"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "Fonta izvēles dialogs"
-
-#, fuzzy
-#~ msgid "Title font"
-#~ msgstr "Virsraksta fonts"
-
-#, fuzzy
-#~ msgid "Title Alignment"
-#~ msgstr "Virsraksta novietojums"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "Teksta novietojums iekš virsraksta joslas :"
-
-#, fuzzy
-#~ msgid "Button layout"
-#~ msgstr "Pogu izkārtojums"
-
-#, fuzzy
-#~ msgid "Style"
-#~ msgstr "Stils"
-
-#, fuzzy
-#~ msgid "Window shortcuts"
-#~ msgstr "Loga īsceļi"
-
-#, fuzzy
-#~ msgid "Command"
-#~ msgstr "Komanda"
-
-#, fuzzy
-#~ msgid "Keyboard"
-#~ msgstr "Klaviatūra"
-
-#, fuzzy
-#~ msgid "Focus model"
-#~ msgstr "Fokusa modelis"
-
-#, fuzzy
-#~ msgid "Click to focus"
-#~ msgstr "Klikšķis fokusē"
-
-#, fuzzy
-#~ msgid "Focus follows mouse"
-#~ msgstr "Fokus seko pelei"
-
-#, fuzzy
-#~ msgid "Delay before window receives focus"
-#~ msgstr "Aizkavēt, pirms logs saņem fokusu"
-
-#~ msgid "Slow"
-#~ msgstr "Lēns"
-
-#~ msgid "Fast"
-#~ msgstr "Ātrs"
-
-#, fuzzy
-#~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "Automātiski sniegt fokusu jaunizveidotam logam"
-
-#, fuzzy
-#~ msgid "New window focus"
-#~ msgstr "Jauna loga fokuss"
-
-#, fuzzy
-#~ msgid "Raise on focus"
-#~ msgstr "Pacelt pie fokusa"
-
-#, fuzzy
-#~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "Automātiski pacelt logus, kad tie saņem fokusu"
-
-#, fuzzy
-#~ msgid "Delay before raising focused window :"
-#~ msgstr "Aizkave, pirms celt fokusētos logus :"
-
-#, fuzzy
-#~ msgid "Raise window when clicking inside application window"
-#~ msgstr "Pacelt logu, kad lietotnes logā ir ieklikšķināts "
-
-#, fuzzy
-#~ msgid "Raise on click"
-#~ msgstr "Celt uz klikšķi"
-
-#, fuzzy
-#~ msgid "Windows snapping"
-#~ msgstr "Logu piesaiste"
-
-#, fuzzy
-#~ msgid "Snap windows to screen border"
-#~ msgstr "Piesaistīt logus ekrāna malām"
-
-#, fuzzy
-#~ msgid "Snap windows to other windows"
-#~ msgstr "Piesaistīt logus citiem logiem"
-
-#, fuzzy
-#~ msgid "Distance :"
-#~ msgstr "Attālums :"
-
-#, fuzzy
-#~ msgid "Distance|Small"
-#~ msgstr "Mazs"
-
-#, fuzzy
-#~ msgid "Distance|Wide"
-#~ msgstr "Liels"
-
-#, fuzzy
-#~ msgid "Wrap workspaces"
-#~ msgstr "Apliekt darbavietu"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Apliekt darbavietu, kad kursors sasniedz ekrāna malu"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Apliekt darbavietu, kad velk logu nost no ekrāna"
-
-#, fuzzy
-#~ msgid "Edge Resistance :"
-#~ msgstr "Malu pretestība :"
-
-#, fuzzy
-#~ msgid "Resistance|Small"
-#~ msgstr "Mazs"
-
-#, fuzzy
-#~ msgid "Resistance|Wide"
-#~ msgstr "Liels"
-
-#, fuzzy
-#~ msgid "Opaque move and resize"
-#~ msgstr "Necaurspīdīga pārvietošana un izmēru maiņa"
-
-#, fuzzy
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "Rādīt loga saturu pie izmēru maiņas"
-
-#, fuzzy
-#~ msgid "Display content of windows when moving"
-#~ msgstr "Rādīt loga saturu pie pārvietošanas"
-
-#, fuzzy
-#~ msgid "Double click action"
-#~ msgstr "Dubultklikšķa darbība"
-
-#, fuzzy
-#~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "Veicamā darbība pēc dubultklikšķa uz virsrakstu joslas:"
-
-#, fuzzy
-#~ msgid "Advanced"
-#~ msgstr "Paplašināti"
-
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "Logu pārvaldnieks"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Vai patiesi vēlaties dzēst taustiņu sasaistes tēmu ?"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "Pievienot taustiņu sasaistes tēmu"
-
-#, fuzzy
-#~ msgid "Enter a name for the theme:"
-#~ msgstr "Ievadiet tēmas nosaukumu:"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Taustiņu sasaistes tēma ar tādu nosaukumu jau eksistē"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Jums jānorāda vārds taustiņu sasaistes tēmai"
-
-#, fuzzy
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Pārvietot logu uz darbavietu %d"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "Nevar atvērt tēmas direktoriju !"
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nevar atvērt %s : \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nevar rakstīt iekš %s : \n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "īsceļu jau lieto !\n"
-#~ "Esat drošs, ka vēlaties to izmantot ?"
-
-#~ msgid "Compose shortcut for :"
-#~ msgstr "Veidot īsceļu priekš:"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "Veidot īsceļu"
-
-#, fuzzy
-#~ msgid "No shortcut"
-#~ msgstr "Veidot īsceļu"
-
-#, fuzzy
-#~ msgid "Change the name of workspace %d"
-#~ msgstr "Darbavietu skaits:"
-
-#, fuzzy
-#~ msgid "Advanced window manager settings"
-#~ msgstr "Xfce 4 logu pārvaldnieka uzstādījumi"
-
-#, fuzzy
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "īsceļu jau lieto !\n"
-#~ "Esat drošs, ka vēlaties to izmantot ?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "īsceļu jau lieto !\n"
-#~ "Esat drošs, ka vēlaties to izmantot ?"
-
-#, fuzzy
-#~ msgid "The shortcut is already being used for something else."
-#~ msgstr ""
-#~ "īsceļu jau lieto !\n"
-#~ "Esat drošs, ka vēlaties to izmantot ?"
-
-#, fuzzy
-#~ msgid "Enter window manager action shortcut"
-#~ msgstr "Xfce 4 logu pārvaldnieka uzstādījumi"
-
-#, fuzzy
-#~ msgid "Action: %s"
-#~ msgstr "Aktīvs"
-
-#, fuzzy
-#~ msgid "Enter shortcut"
-#~ msgstr "Nav īsceļu"
-
-#, fuzzy
-#~ msgid "Shortcut:"
-#~ msgstr "Nav īsceļu"
-
-#, fuzzy
-#~ msgid "(Un)Ma_ximize"
-#~ msgstr "_Maksimizēt"
-
-#~ msgid "Hide _all others"
-#~ msgstr "Slēpt _pārējos"
-
-#~ msgid "_Shade"
-#~ msgstr "Ē_not"
-
-#, fuzzy
-#~ msgid "(Un)_Shade"
-#~ msgstr "Atēno_t"
-
-#~ msgid "S_tick"
-#~ msgstr "Pie_lipināt"
-
-#, fuzzy
-#~ msgid "(Un)S_tick"
-#~ msgstr "Atlipi_nāt"
-
-#, fuzzy
-#~ msgid "Below"
-#~ msgstr "Lēns"
-
-#~ msgid "Send to..."
-#~ msgstr "Nosūtīt uz..."
-
-#~ msgid "Workspace %i (%s)"
-#~ msgstr "Darbavieta %i (%s)"
-
-#, fuzzy
-#~ msgid "Ctrl"
-#~ msgstr "Centrēti"
-
-#, fuzzy
-#~ msgid "Button"
-#~ msgstr "Pogu izkārtojums"
-
-#, fuzzy
-#~ msgid "Add Shortcut Theme"
-#~ msgstr "īsceļš"
-
-#~ msgid "Move window left"
-#~ msgstr "Pārvietot logu pa kreisi"
-
-#~ msgid "Move window right"
-#~ msgstr "Pārvietot logu pa labi"
-
-#~ msgid "Resize window down"
-#~ msgstr "Mainīt izmēru uz leju"
-
-#~ msgid "Resize window left"
-#~ msgstr "Mainīt izmēru pa kreisi"
-
-#~ msgid "Cancel move/resize window"
-#~ msgstr "Atcelt pārvietošanu/izmēru maiņu logam"
-
-#~ msgid "_Hide"
-#~ msgstr "S_lēpt"
