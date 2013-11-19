@@ -1,28 +1,28 @@
-# Indonesian translation of the xfwm4 package.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-# Andhika Padmawan <andhika.padmawan@gmail.com>, 2008.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
+# Translators:
+# Andhika Padmawan <andhika.padmawan@gmail.com>, 2008
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 02:57+0000\n"
-"PO-Revision-Date: 2008-12-21 21:53+0700\n"
-"Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
-"Language-Team: Indonesian <id@li.org>\n"
+"POT-Creation-Date: 2013-07-02 22:21+0200\n"
+"PO-Revision-Date: 2013-11-19 14:14+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Indonesian (http://www.transifex.com/projects/p/xfce/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Jendela ini mungkin sibuk dan tidak merespon.\n"
-"Anda ingin menutup aplikasi?"
+msgstr "Jendela ini mungkin sibuk dan tidak merespon.\nAnda ingin menutup aplikasi?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -61,10 +61,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Coba %s --help untuk melihat senarai penuh opsi baris perintah yang "
-"tersedia.\n"
+msgstr "%s: %s\nCoba %s --help untuk melihat senarai penuh opsi baris perintah yang tersedia.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -82,237 +79,237 @@ msgid "Settings manager socket"
 msgstr "Soket manajer pengaturan"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Configure window behavior and shortcuts"
-msgstr "Atur perilaku jendela dan jalan pintas"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Manajer Jendela"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Fine-tune window behaviour and effects"
-msgstr "Atur perilaku jendela dan efek"
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "Configure window behavior and shortcuts"
+msgstr "Atur perilaku jendela dan jalan pintas"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
 msgstr "Pengaturan Lanjut Manajer Jendela"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+msgid "Fine-tune window behaviour and effects"
+msgstr "Atur perilaku jendela dan efek"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Configure layout, names and margins"
-msgstr "Atur tata letak, nama, dan jarak"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Ruang Kerja"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Button layout</b>"
-msgstr "<b>Tata letak tombol</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Double click _action</b>"
-msgstr "<b>Aksi klik _ganda</b>"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr "Atur tata letak, nama, dan jarak"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>Focus model</b>"
-msgstr "<b>Model fokus</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Hide content of windows</b>"
-msgstr "<b>Sembunyikan isi jendela saat memindahkan</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>New window focus</b>"
-msgstr "<b>Fokus jendela baru</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>Raise on click</b>"
-msgstr "<b>Naikkan pada klik</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on focus</b>"
-msgstr "<b>Naikkan saat difokus</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>The_me</b>"
 msgstr "<b>_Tema</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-msgid "<b>Title _alignment</b>"
-msgstr "<b>Perataan _judul</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
 msgstr "<b>Fonta judu_l</b>"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+msgid "<b>Title _alignment</b>"
+msgstr "<b>Perataan _judul</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+msgid "Click and drag the buttons to change the layout"
+msgstr "Klik dan seret tombol untuk mengubah tata letak"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "Judul"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "The window title cannot be removed"
+msgstr "Judul jendela tidak dapat dihapus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "Active"
+msgstr "Aktif"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+msgid "Menu"
+msgstr "Menu"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "<b>Windows snapping</b>"
-msgstr "<b>Magnetisasi jendela</b>"
+msgid "Stick"
+msgstr "Lekat"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Gulir ruang kerja ketika _penunjuk mencapai tepi layar<b>"
+msgid "Shade"
+msgstr "Pepal"
 
-#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+msgid "Minimize"
+msgstr "Minimalkan"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-msgid "<i>Long</i>"
-msgstr "<i>Panjang</i>"
+msgid "Maximize"
+msgstr "Maksimalkan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Close"
+msgstr "Tutup"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Tersembunyi"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<b>Button layout</b>"
+msgstr "<b>Tata letak tombol</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "_Style"
+msgstr "_Gaya"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "Tentukan tombol pintasan untuk aksi manajer _jendela:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+msgid "_Reset to Defaults"
+msgstr "K_embalikan ke Standar"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "_Keyboard"
+msgstr "Papan _Ketik"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "Click to foc_us"
+msgstr "_Klik untuk memfokus jendela"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Focus follows _mouse"
+msgstr "Fokus mengikuti _tetikus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "_Delay before window receives focus:"
+msgstr "Waktu _tunda sebelum jendela menerima fokus:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
 msgstr "<i>Pendek</i>"
 
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "<i>Long</i>"
+msgstr "<i>Panjang</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "<b>Focus model</b>"
+msgstr "<b>Model fokus</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Automatically give focus to _newly created windows"
+msgstr "Fokuskan jendela yang _baru dibuat secara otomatis"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "<b>New window focus</b>"
+msgstr "<b>Fokus jendela baru</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Automatically _raise windows when they receive focus"
+msgstr "_Angkat jendela secara otomatis saat jendela menerima fokus "
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Delay _before raising focused window:"
+msgstr "Waktu tunda _sebelum mengangkat jendela yang difokuskan:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "<b>Raise on focus</b>"
+msgstr "<b>Naikkan saat difokus</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Raise window when clicking _inside application window"
+msgstr "Angkat jendela saat kl_ik pada bagian dalam jendela aplikasi"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "<b>Raise on click</b>"
+msgstr "<b>Naikkan pada klik</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "_Focus"
+msgstr "_Fokus"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgid "To screen _borders"
+msgstr "Lekatkan jendela pada _tepi layar"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "To other _windows"
+msgstr "Lekatkan jendela pada _jendela lain"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Dis_tance:"
+msgstr "Ja_rak:"
+
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
 msgstr "<i>Kecil</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "<i>Wide</i>"
 msgstr "<i>Lebar</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Active"
-msgstr "Aktif"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Ad_vanced"
-msgstr "Ma_hir"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Automatically _raise windows when they receive focus"
-msgstr "_Angkat jendela secara otomatis saat jendela menerima fokus "
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Automatically give focus to _newly created windows"
-msgstr "Fokuskan jendela yang _baru dibuat secara otomatis"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Click and drag the buttons to change the layout"
-msgstr "Klik dan seret tombol untuk mengubah tata letak"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Click to foc_us"
-msgstr "_Klik untuk memfokus jendela"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-msgid "Close"
-msgstr "Tutup"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Tentukan tombol pintasan untuk aksi manajer _jendela:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Delay _before raising focused window:"
-msgstr "Waktu tunda _sebelum mengangkat jendela yang difokuskan:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Dis_tance:"
-msgstr "Ja_rak:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Focus follows _mouse"
-msgstr "Fokus mengikuti _tetikus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "Tersembunyi"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Maximize"
-msgstr "Maksimalkan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Menu"
-msgstr "Menu"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Minimize"
-msgstr "Minimalkan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Raise window when clicking _inside application window"
-msgstr "Angkat jendela saat kl_ik pada bagian dalam jendela aplikasi"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Shade"
-msgstr "Pepal"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-msgid "Stick"
-msgstr "Lekat"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Aksi yang dilakukan ketika batang judul diklik-ganda"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "The window title cannot be removed"
-msgstr "Judul jendela tidak dapat dihapus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Title"
-msgstr "Judul"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "To other _windows"
-msgstr "Lekatkan jendela pada _jendela lain"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "To screen _borders"
-msgstr "Lekatkan jendela pada _tepi layar"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "When _moving"
-msgstr "Saat _memindahkan"
+msgid "<b>Windows snapping</b>"
+msgstr "<b>Magnetisasi jendela</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "When _resizing"
-msgstr "Saat mengubah uku_ran"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "With a _dragged window"
-msgstr "Saat men_yeret jendela"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With the mouse _pointer"
 msgstr "Terhadap _penunjuk tetikus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "_Delay before window receives focus:"
-msgstr "Waktu _tunda sebelum jendela menerima fokus:"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "With a _dragged window"
+msgstr "Saat men_yeret jendela"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
 msgstr "_Ketahanan tepi:"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr "<b>Gulir ruang kerja ketika _penunjuk mencapai tepi layar<b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "When _moving"
+msgstr "Saat _memindahkan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+msgid "When _resizing"
+msgstr "Saat mengubah uku_ran"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid "_Focus"
-msgstr "_Fokus"
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Sembunyikan isi jendela saat memindahkan</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-msgid "_Keyboard"
-msgstr "Papan _Ketik"
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Aksi yang dilakukan ketika batang judul diklik-ganda"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Reset to Defaults"
-msgstr "K_embalikan ke Standar"
+msgid "<b>Double click _action</b>"
+msgstr "<b>Aksi klik _ganda</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "_Style"
-msgstr "_Gaya"
+msgid "Ad_vanced"
+msgstr "Ma_hir"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Shade window"
@@ -361,10 +358,7 @@ msgstr "Pintasan"
 #: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
-"Gagal menginisialisasi xfconf. \n"
-"\r\n"
-"Keterangan: %s"
+msgstr "Gagal menginisialisasi xfconf. \n\r\nKeterangan: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
@@ -377,216 +371,204 @@ msgstr "Kembalikan ke kondisi Standar"
 
 #: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Ini akan mengatur ulang semua jalan pintas ke nilai standar mereka. Anda "
-"yakin ingin melakukan ini?"
-
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Large</i>"
-msgstr "<i>Besar</i>"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Ini akan mengatur ulang semua jalan pintas ke nilai standar mereka. Anda yakin ingin melakukan ini?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "<i>Opaque</i>"
-msgstr "<i>Opasitas</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "<i>Transparent</i>"
-msgstr "<i>Transparan</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate foc_us stealing prevention"
-msgstr "Aktifkan _pencegahan pengalihan fokus"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the c_enter of the screen"
-msgstr "Di _tengah layar"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
-"Secara otomatis menyesuaikan ukuran jendela saat menggerakkannya ke _tepi "
-"layar"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-msgid "By default, place windows:"
-msgstr "Secara standar, tempatkan jendela pada:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "C_ompositor"
-msgstr "K_ompositor"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "C_ycling"
-msgstr "D_aur"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "Cycle _through windows on all workspaces"
-msgstr "Daur _seluruh jendela dari semua ruang kerja"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Display _fullscreen overlay windows directly"
-msgstr "Tampilkan secara langsung jendela lapisan layar penuh"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-msgid "Do _nothing"
-msgstr "Tak lakukan _apa-apa"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide frame of windows when ma_ximized"
-msgstr "Sembunyikan _bingkai ketika jendela dimaksimalkan"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Honor _standard ICCCM focus hint"
-msgstr "Ikuti _standar penunjuk fokus ICCCM"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Biarkan jendela mendesak _berkedip berulang kali"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Key used to _grab and move windows:"
-msgstr "Tombol yang digunakan untuk _menangkap dan memindahkan jendela:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
-"Pemberitahuan _keadaan mendesak dengan membuat dekorasi jendela berkedip"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Opaci_ty of window decorations:"
-msgstr "Opasi_tas dekorasi jendela:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Opacity of _inactive windows:"
-msgstr "Opasitas _jendela tidak aktif:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of popup wi_ndows:"
-msgstr "Opasitas jendela pop_up:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Opacity of windows during _move:"
-msgstr "Opasitas jendela ketika _pindah:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Opacity of windows during resi_ze:"
-msgstr "Opasitas jendela ketika mengubah uku_ran:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
-"Kembalikan ukuran asli dari jendela yang dimaksimalkan ketika memindahkan"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"_Lewati jendela yang punya pengaturan properti\n"
-"\"skip pager\" atau \"skip taskbar\""
+msgstr "_Lewati jendela yang punya pengaturan properti\n\"skip pager\" atau \"skip taskbar\""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-msgid "Show shadows under _dock windows"
-msgstr "Tampilkan bayangan di bawah jendela _dok"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Show shadows under _regular windows"
-msgstr "Tampilkan bayangan di bawah jendela _reguler"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Show shadows under pop_up windows"
-msgstr "Tampilkan bayangan di bawah jendela p_opup"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Switch to win_dow's workspace"
-msgstr "Pindah ke jende_la ruang kerja"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "Synchronize drawing to the _vertical blank"
-msgstr "Sinkronisasi penggambaran ke VBLANK"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-msgid "U_nder the mouse pointer"
-msgstr "Di bawah _penunjuk tetikus"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "Use _edge resistance instead of window snapping"
-msgstr "Gunakan tahanan _tepi ketimbang magnetitasi jendela"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Gunakan _roda tetikus pada desktop untuk berpindah ruang kerja"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "When a window raises itself:"
-msgstr "Ketika jendela mengangkat dirinya sendiri:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Gulung ruang kerja berdasarkan tata _letak destop sebenarnya"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "_Ulang urutan daur jika ruang kerja pertama atau terakhir tercapai"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Accessibility"
-msgstr "_Aksesibilitas"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Bring window on current workspace"
-msgstr "_Bawa jendela ke ruang kerja saat ini"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "_Draw frame around selected windows while cycling"
-msgstr "_Gambar bingkai di sekeliling jendela terpilih ketika mendaur"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "_Enable display compositing"
-msgstr "Akti_fkan fitur komposisi tampilan"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_Termasuk jendela (misalnya dalam bentuk ikon) tersembunyi"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "_Ukuran minimum jendela untuk menyulut penempatan cerdas:"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "Cycle _through windows on all workspaces"
+msgstr "Daur _seluruh jendela dari semua ruang kerja"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-msgid "_Placement"
-msgstr "_Penempatan"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
+msgstr "_Gambar bingkai di sekeliling jendela terpilih ketika mendaur"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr "D_aur"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Activate foc_us stealing prevention"
+msgstr "Aktifkan _pencegahan pengalihan fokus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "Honor _standard ICCCM focus hint"
+msgstr "Ikuti _standar penunjuk fokus ICCCM"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr "Ketika jendela mengangkat dirinya sendiri:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "_Bring window on current workspace"
+msgstr "_Bawa jendela ke ruang kerja saat ini"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Switch to win_dow's workspace"
+msgstr "Pindah ke jende_la ruang kerja"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Do _nothing"
+msgstr "Tak lakukan _apa-apa"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+msgid "Key used to _grab and move windows:"
+msgstr "Tombol yang digunakan untuk _menangkap dan memindahkan jendela:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "_Angkat jendela ketika ada tombol tetikus yang ditekan"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Hide frame of windows when ma_ximized"
+msgstr "Sembunyikan _bingkai ketika jendela dimaksimalkan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "Restore original size of maximi_zed windows when moving"
+msgstr "Kembalikan ukuran asli dari jendela yang dimaksimalkan ketika memindahkan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+msgid "Automatically _tile windows when moving toward the screen edge"
+msgstr "Secara otomatis menyesuaikan ukuran jendela saat menggerakkannya ke _tepi layar"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr "Pemberitahuan _keadaan mendesak dengan membuat dekorasi jendela berkedip"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Use _edge resistance instead of window snapping"
+msgstr "Gunakan tahanan _tepi ketimbang magnetitasi jendela"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr "Biarkan jendela mendesak _berkedip berulang kali"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "_Accessibility"
+msgstr "_Aksesibilitas"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "Gunakan _roda tetikus pada desktop untuk berpindah ruang kerja"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_Ingat dan panggil ulang ruang kerja sebelumnya\n"
-"ketika pindah via jalan pintas papan ketik"
+msgstr "_Ingat dan panggil ulang ruang kerja sebelumnya\nketika pindah via jalan pintas papan ketik"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "Gulung ruang kerja berdasarkan tata _letak destop sebenarnya"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+msgid "Wrap workspaces when _the first or the last workspace is reached"
+msgstr "_Ulang urutan daur jika ruang kerja pertama atau terakhir tercapai"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "_Ruang Kerja"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "_Ukuran minimum jendela untuk menyulut penempatan cerdas:"
+
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "<i>Large</i>"
+msgstr "<i>Besar</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "By default, place windows:"
+msgstr "Secara standar, tempatkan jendela pada:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "At the c_enter of the screen"
+msgstr "Di _tengah layar"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "U_nder the mouse pointer"
+msgstr "Di bawah _penunjuk tetikus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Placement"
+msgstr "_Penempatan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "_Enable display compositing"
+msgstr "Akti_fkan fitur komposisi tampilan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "Display _fullscreen overlay windows directly"
+msgstr "Tampilkan secara langsung jendela lapisan layar penuh"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "Synchronize drawing to the _vertical blank"
+msgstr "Sinkronisasi penggambaran ke VBLANK"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "Show shadows under pop_up windows"
+msgstr "Tampilkan bayangan di bawah jendela p_opup"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Show shadows under _dock windows"
+msgstr "Tampilkan bayangan di bawah jendela _dok"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show shadows under _regular windows"
+msgstr "Tampilkan bayangan di bawah jendela _reguler"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "Opaci_ty of window decorations:"
+msgstr "Opasi_tas dekorasi jendela:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgid "<i>Transparent</i>"
+msgstr "<i>Transparan</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "<i>Opaque</i>"
+msgstr "<i>Opasitas</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+msgid "Opacity of _inactive windows:"
+msgstr "Opasitas _jendela tidak aktif:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+msgid "Opacity of windows during _move:"
+msgstr "Opasitas jendela ketika _pindah:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Opacity of windows during resi_ze:"
+msgstr "Opasitas jendela ketika mengubah uku_ran:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Opacity of popup wi_ndows:"
+msgstr "Opasitas jendela pop_up:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+msgid "C_ompositor"
+msgstr "K_ompositor"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid "_Number of workspaces:"
+msgstr "_Jumlah ruang kerja:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
 msgstr "Tata Letak"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Margin adalah area di pinggir layar dimana tak ada jendela akan ditempatkan"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
 msgstr "Nama"
 
@@ -595,12 +577,13 @@ msgid "_General"
 msgstr "_Umum"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Margins"
-msgstr "_Marjin"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Margin adalah area di pinggir layar dimana tak ada jendela akan ditempatkan"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-msgid "_Number of workspaces:"
-msgstr "_Jumlah ruang kerja:"
+msgid "_Margins"
+msgstr "_Marjin"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -746,8 +729,7 @@ msgstr "%s: Tak dapat mengalokasi warna %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Tak dapat mengalokasi warna: GValue untuk warna tidak bertipe STRING"
+msgstr "%s: Tak dapat mengalokasi warna: GValue untuk warna tidak bertipe STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -768,776 +750,3 @@ msgstr "Galat saat membaca data dari sub-proses: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Tak dapat menampilkan dialog: %s\n"
-
-#~ msgid "<b>Box move and resize</b>"
-#~ msgstr "<b>Pindah kotak dan ubah ukuran</b>"
-
-#~ msgid "<b>Window _shortcuts</b>"
-#~ msgstr "<b>Jalan _pintas jendela</b>"
-
-#~ msgid "<b>Wrap workspaces</b>"
-#~ msgstr "<b>Gulung ruang kerja</b>"
-
-#~ msgid "Clic_k to focus"
-#~ msgstr "Kli_k untuk fokus"
-
-#~ msgid "Hide content of windows when _resizing"
-#~ msgstr "Tampilkan isi jendela ketika mengubah _ukuran"
-
-#~ msgid "Ke_yboard"
-#~ msgstr "Pa_pan ketik"
-
-#~ msgid "Snap windows to other _windows"
-#~ msgstr "Lekatkan jendela ke _jendela lain"
-
-#~ msgid "Wrap workspaces when _dragging a window off the screen"
-#~ msgstr "Gulung ruang kerja _ketika menarik jendela keluar layar"
-
-#~ msgid "Window operations menu"
-#~ msgstr "Menu operasi jendela"
-
-#~ msgid "Up"
-#~ msgstr "Atas"
-
-#~ msgid "Down"
-#~ msgstr "Bawah"
-
-#~ msgid "Cancel"
-#~ msgstr "Batal"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Daur jendela"
-
-#~ msgid "Cycle windows (Reverse)"
-#~ msgstr "Daur jendela (Mundur)"
-
-#~ msgid "Switch window for same application"
-#~ msgstr "Pindah jendela untuk aplikasi yang sama"
-
-#~ msgid "Switch application"
-#~ msgstr "Pindah aplikasi"
-
-#~ msgid "Close window"
-#~ msgstr "Tutup jendela"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Maksimalkan jendela secara horisontal"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Maksimalkan jendela secara vertikal"
-
-#~ msgid "Move window"
-#~ msgstr "Pindahkan jendela"
-
-#~ msgid "Resize window"
-#~ msgstr "Ubah ukuran jendela"
-
-#~ msgid "Stick window"
-#~ msgstr "Lekatkan jendela"
-
-#~ msgid "Raise window"
-#~ msgstr "Naikkan jendela"
-
-#~ msgid "Raise or lower window"
-#~ msgstr "Naikkan atau turunkan jendela"
-
-#~ msgid "Fill window horizontally"
-#~ msgstr "Isi jendela secara horisontal"
-
-#~ msgid "Fill window vertically"
-#~ msgstr "Isi jendela secara vertikal"
-
-#~ msgid "Toggle above"
-#~ msgstr "Ubah atas"
-
-#~ msgid "Toggle fullscreen"
-#~ msgstr "Ubah layar penuh"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Pindah jendela ke bagian atas ruang kerja"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Pindah jendela ke bagian bawah ruang kerja"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Pindah jendela ke bagian kiri ruang kerja"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Pindah jendela ke bagian kanan ruang kerja"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Pindah jendela ke ruang kerja sebelumnya"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Pindah jendela ke ruang kerja selanjutnya"
-
-#~ msgid "Move window to workspace 1"
-#~ msgstr "Pindah jendela ke ruang kerja 1"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Pindah jendela ke ruang kerja 2"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Pindah jendela ke ruang kerja 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Pindah jendela ke ruang kerja 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Pindah jendela ke ruang kerja 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Pindah jendela ke ruang kerja 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Pindah jendela ke ruang kerja 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Pindah jendela ke ruang kerja 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Pindah jendela ke ruang kerja 9"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Pindah jendela ke ruang kerja 10"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Pindah jendela ke ruang kerja 11"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Pindah jendela ke ruang kerja 12"
-
-#~ msgid "Tile window to the top"
-#~ msgstr "Tempatkan jendela di atas"
-
-#~ msgid "Tile window to the bottom"
-#~ msgstr "Tempatkan jendela ke bawah"
-
-#~ msgid "Tile window to the left"
-#~ msgstr "Tempatkan jendela di kiri"
-
-#~ msgid "Tile window to the right"
-#~ msgstr "Tempatkan jendela ke kanan"
-
-#~ msgid "Show desktop"
-#~ msgstr "Tampilkan destop"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Bagian atas ruang kerja"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Bagian dasar ruang kerja"
-
-#~ msgid "Left workspace"
-#~ msgstr "Bagian kiri ruang kerja"
-
-#~ msgid "Right workspace"
-#~ msgstr "Bagian kanan ruang kerja"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Ruang kerja sebelumnya"
-
-#~ msgid "Next workspace"
-#~ msgstr "Ruang kerja selanjutnya"
-
-#~ msgid "Workspace 1"
-#~ msgstr "Ruang kerja 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Ruang kerja 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Ruang kerja 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Ruang kerja 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Ruang kerja 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Ruang kerja 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Ruang kerja 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Ruang kerja 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Ruang kerja 9"
-
-#~ msgid "Workspace 10"
-#~ msgstr "Ruang kerja 10"
-
-#~ msgid "Workspace 11"
-#~ msgstr "Ruang kerja 11"
-
-#~ msgid "Workspace 12"
-#~ msgstr "Ruang kerja 12"
-
-#~ msgid "Add workspace"
-#~ msgstr "Tambah ruang kerja"
-
-#~ msgid "Add adjacent workspace"
-#~ msgstr "Tambah ruang kerja berdampingan"
-
-#~ msgid "Delete last workspace"
-#~ msgstr "Hapus ruang kerja terakhir"
-
-#~ msgid "Delete active workspace"
-#~ msgstr "Hapus ruang kerja aktif"
-
-#~ msgid "Activate _focus stealing prevention"
-#~ msgstr "Aktifkan _pencegahan pencurian fokus"
-
-#~ msgid "Hide _frame of windows when maximized"
-#~ msgstr "Sembunyikan _bingkai jendela ketika dimaksimalkan"
-
-#~ msgid "Restore original _size of maximized windows when moving"
-#~ msgstr ""
-#~ "Kembalikan ukuran asli _dari jendela yang dimaksimalkan ketika memindahkan"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "Atur jumlah dan nama ruang kerja"
-
-#~ msgid "<b>Margins</b>"
-#~ msgstr "<b>Margin</b>"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Ruang kerja</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "Ubah nama ruang kerja"
-
-#~ msgid "_Name:"
-#~ msgstr "_Nama:"
-
-#~ msgid "Hide"
-#~ msgstr "Sembunyi"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Galat segmentasi"
-
-#~ msgid "  "
-#~ msgstr "  "
-
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "<i>Sempit</i>"
-
-#~ msgid "Distance|<i>Wide</i>"
-#~ msgstr "<i>Lebar</i>"
-
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "<i>Kecil</i>"
-
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "<i>Lebar</>"
-
-#~ msgid ">Window Manager"
-#~ msgstr "Manajer Jendela"
-
-#~ msgid "gtk-clear"
-#~ msgstr "gtk-clear"
-
-#~ msgid "gtk-close"
-#~ msgstr "gtk-close"
-
-#~ msgid "gtk-help"
-#~ msgstr "gtk-help"
-
-#~ msgid "gtk-cancel"
-#~ msgstr "gtk-cancel"
-
-#~ msgid "gtk-save"
-#~ msgstr "gtk-save"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "Margin Ruang Kerja"
-
-#~ msgid "Left :"
-#~ msgstr "Kiri :"
-
-#~ msgid "Right :"
-#~ msgstr "Kanan :"
-
-#~ msgid "Top :"
-#~ msgstr "Atas :"
-
-#~ msgid "Bottom :"
-#~ msgstr "Bawah :"
-
-#~ msgid "Bring window on current workspace"
-#~ msgstr "Bawa jendela ke ruang kerja saat ini"
-
-#~ msgid "Do nothing"
-#~ msgstr "Tak lakukan apa-apa"
-
-#~ msgid "Place window under the mouse"
-#~ msgstr "Tempatkan jendela di bawah tetikus"
-
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "Lewati jendela yang punya pengaturan properti \"skip pager\" atau \"skip "
-#~ "taskbar\""
-
-#~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "Termasuk jendela (misalnya dalam bentuk ikon) tersembunyi"
-
-#~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Daur seluruh jendela dari semua ruang kerja"
-
-#~ msgid "Cycling"
-#~ msgstr "Daur"
-
-#~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "Hormati standar petujuk fokus ICCCM"
-
-#~ msgid "Focus"
-#~ msgstr "Fokus"
-
-#~ msgid "Key used to grab and move windows"
-#~ msgstr "Tombol yang digunakan untuk menangkap dan memindahkan jendela"
-
-#~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "Naikkan jendela ketika ada tombol tetikus yang ditekan"
-
-#~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "Gunakan ketahanan tepi ketimbang mangetitasi jendela"
-
-#~ msgid "Accessibility"
-#~ msgstr "Aksesibilitas"
-
-#~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr "Pindah ruang kerja menggunakan roda tetikus antar destop"
-
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Ingat dan panggil ulang ruang kerja sebelumnya ketika pindah via jalan "
-#~ "pintas papan ketik"
-
-#~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr "Gulung ruang kerja berdasarkan tata letak destop sebenarnya"
-
-#~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Gulung ruang kerja jika ruang kerja pertama atau terakhir tercapai"
-
-#~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Ukuran minimum jendela untuk menyulut penempatan cerdas"
-
-#~ msgid "Size|Small"
-#~ msgstr "Kecil"
-
-#~ msgid "Size|Large"
-#~ msgstr "Besar"
-
-#~ msgid "Default positionning of windows without smart placement:"
-#~ msgstr "Penempatan standar jendela tanpa penempatan cerdas:"
-
-#~ msgid "Placement"
-#~ msgstr "Penempatan"
-
-#~ msgid "Enable display compositing"
-#~ msgstr "Aktifkan komposisi tampilan"
-
-#~ msgid "Display full screen overlay windows directly"
-#~ msgstr "Tampilkan langsung jendela lapisan layar penuh"
-
-#~ msgid "Show shadows under dock windows"
-#~ msgstr "Tampilkan bayangan di bawah dok jendela"
-
-#~ msgid "Show shadows under regular windows"
-#~ msgstr "Tampilkan bayangan di bawah jendela reguler"
-
-#~ msgid "Show shadows under popup windows"
-#~ msgstr "Tampilkan bayangan di bawah jendela yang muncul"
-
-#~ msgid "Opacity of window decorations"
-#~ msgstr "Opasitas dekorasi jendela"
-
-#~ msgid "Transparent"
-#~ msgstr "Transparan"
-
-#~ msgid "Opaque"
-#~ msgstr "Opasitas"
-
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "Opasitas jendela tidak aktif"
-
-#~ msgid "Opacity of windows during move"
-#~ msgstr "Opasitas jendela ketika pindah"
-
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "Opasitas jendela ketika ubah ukuran"
-
-#~ msgid "Opacity of popup windows"
-#~ msgstr "Opasitas jendela yang muncul"
-
-#~ msgid "Compositor"
-#~ msgstr "Kompositor"
-
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "Tweak Manajer Jendela"
-
-#~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr ""
-#~ "Pengaturan ini tak dapat bekerja dengan manajer jendela anda saat ini (%s)"
-
-#~ msgid "Change name"
-#~ msgstr "Ubah nama"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Klik pada nama ruang kerja untuk mengubahnya"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Jumlah ruang kerja:"
-
-#~ msgid "Workspace names"
-#~ msgstr "Nama ruang kerja"
-
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Ruang Kerja dan Margin"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "Ruang Kerja dan Margin"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Pengaturan Manajer Jendela"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Pengaturan Manajer Jendela Xfce 4"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Konfigurasi Tingkat Lanjut"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Tweak Manajer Jendela Xfce 4"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Pengaturan Ruang Kerja"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Pengaturan Ruang Kerja Xfce 4"
-
-#~ msgid "Click and drag buttons to change the layout"
-#~ msgstr "Klik dan tarik tombol untuk mengubah tata letak"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "Dialog Seleksi Fonta"
-
-#~ msgid "Title font"
-#~ msgstr "Fonta judul"
-
-#~ msgid "Title Alignment"
-#~ msgstr "Perataan Judul"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "Perataan teks di dalam batang judul :"
-
-#~ msgid "Button layout"
-#~ msgstr "Tata letak tombol"
-
-#~ msgid "Style"
-#~ msgstr "Gaya"
-
-#~ msgid "Window shortcuts"
-#~ msgstr "Jalan pintas jendela"
-
-#~ msgid "Command"
-#~ msgstr "Perintah"
-
-#~ msgid "Focus model"
-#~ msgstr "Model fokus"
-
-#~ msgid "Focus follows mouse"
-#~ msgstr "Fokus mengikuti tetikus"
-
-#~ msgid "Delay before window receives focus"
-#~ msgstr "Tunda sebelum jendela menerima fokus"
-
-#~ msgid "Slow"
-#~ msgstr "Pelan"
-
-#~ msgid "Fast"
-#~ msgstr "Cepat"
-
-#~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "Otomatis memfokuskan pada jendela yang baru dibuat"
-
-#~ msgid "New window focus"
-#~ msgstr "Fokus jendela baru"
-
-#~ msgid "Raise on focus"
-#~ msgstr "Naikkan pada fokus"
-
-#~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "Otomatis menaikkan jendela ketika jendela menerima fokus"
-
-#~ msgid "Delay before raising focused window :"
-#~ msgstr "Tunda sebelum menaikkan jendela yang difokuskan:"
-
-#~ msgid "Raise window when clicking inside application window"
-#~ msgstr "Naikkan jendela ketika klik di dalam jendela aplikasi"
-
-#~ msgid "Raise on click"
-#~ msgstr "Naikkan pada klik"
-
-#~ msgid "Windows snapping"
-#~ msgstr "Magnetisasi jendela"
-
-#~ msgid "Snap windows to screen border"
-#~ msgstr "Lekatkan jendela ke batas layar"
-
-#~ msgid "Snap windows to other windows"
-#~ msgstr "Lekatkan jendela ke jendela lain"
-
-#~ msgid "Distance :"
-#~ msgstr "Jarak:"
-
-#~ msgid "Distance|Small"
-#~ msgstr "Kecil"
-
-#~ msgid "Distance|Wide"
-#~ msgstr "Lebar"
-
-#~ msgid "Wrap workspaces"
-#~ msgstr "Gulung ruang kerja"
-
-#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Gulung ruang kerja ketika penunjuk mencapai tepi layar"
-
-#~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Gulung ruang kerja ketika menarik jendela keluar layar"
-
-#~ msgid "Edge Resistance :"
-#~ msgstr "Ketahanan Tepi :"
-
-#~ msgid "Resistance|Small"
-#~ msgstr "Kecil"
-
-#~ msgid "Resistance|Wide"
-#~ msgstr "Lebar"
-
-#~ msgid "Opaque move and resize"
-#~ msgstr "Pindah kotak dan ubah ukuran"
-
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "Tampilkan isi jendela ketika mengubah ukuran"
-
-#~ msgid "Display content of windows when moving"
-#~ msgstr "Tampilkan isi jendela ketika memindahkan"
-
-#~ msgid "Double click action"
-#~ msgstr "Aksi klik ganda"
-
-#~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "Aksi yang dilakukan ketika klik ganda di batang judul :"
-
-#~ msgid "Advanced"
-#~ msgstr "Mahir"
-
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "Manajer Jendela"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Anda yakin ingin menghapus tema ikat kunci ini ?"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "Tambah tema ikat kunci"
-
-#~ msgid "Enter a name for the theme:"
-#~ msgstr "Masukkan nama untuk tema:"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Tema ikat kunci dengan nama sama telah ada"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Anda harus memasukkan nama untuk tema ikat kunci"
-
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Pindahkan jendela ke ruang kerja %d"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "Tak dapat membuka direktori tema !"
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Tak dapat membuka %s : \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Tak dapat menulis di %s : \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "Jalan pintas telah digunakan !\n"
-#~ "Anda yakin ingin melakukannya?"
-
-#~ msgid "Compose shortcut for :"
-#~ msgstr "Tulis jalan pintas untuk :"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "Tulis jalan pintas"
-
-#~ msgid "No shortcut"
-#~ msgstr "Tak ada jalan pintas"
-
-#~ msgid "Change the name of workspace %d"
-#~ msgstr "Ubah nama ruang kerja %d"
-
-#~ msgid "Advanced window manager settings"
-#~ msgstr "Pengaturan manajer jendela mahir"
-
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "Jalan pintas ini telah digunakan oleh <b>aksi manajer jendela lain</b>. "
-#~ "Aksi mana yang ingin anda gunakan?"
-
-#~ msgid "Use %s"
-#~ msgstr "Gunakan %s"
-
-#~ msgid "Keep the other one"
-#~ msgstr "Biarkan yang satunya lagi"
-
-#~ msgid "Keep %s"
-#~ msgstr "Jaga %s"
-
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "Jalan pintas telah digunakan oleh <b>aksi manajer jendela</b>. Aksi mana "
-#~ "yang ingin anda gunakan?"
-
-#~ msgid "Conflicting actions for %s"
-#~ msgstr "Aksi konflik untuk %s"
-
-#~ msgid "The shortcut is already being used for something else."
-#~ msgstr "Jalan pintas telah digunakan untuk yang lain."
-
-#~ msgid "Action: %s"
-#~ msgstr "Aksi: %s"
-
-#~ msgid "Enter command shortcut"
-#~ msgstr "Masukkan perintah jalan pintas"
-
-#~ msgid "Enter shortcut"
-#~ msgstr "Masukkan jalan pintas"
-
-#~ msgid "Shortcut:"
-#~ msgstr "Jalan pintas:"
-
-#~ msgid "Could not grab the keyboard."
-#~ msgstr "Tak dapat meraih papan ketik."
-
-#~ msgid "<span size='large'><b>%s</b></span>"
-#~ msgstr "<span size='large'><b>%s</b></span>"
-
-#~ msgid "(Un)Ma_ximize"
-#~ msgstr "Tak Maksima_lkan"
-
-#~ msgid "Hide _all others"
-#~ msgstr "Sembunyikan semu_a yang lain"
-
-#~ msgid "_Shade"
-#~ msgstr "_Bayang"
-
-#~ msgid "(Un)_Shade"
-#~ msgstr "(Tak)_Bayang"
-
-#~ msgid "S_tick"
-#~ msgstr "Leka_t"
-
-#~ msgid "(Un)S_tick"
-#~ msgstr "Tak Leka_t"
-
-#~ msgid "Above"
-#~ msgstr "Di Atas"
-
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
-#~ msgid "Below"
-#~ msgstr "Di Bawah"
-
-#~ msgid "(Un)_Fullscreen"
-#~ msgstr "Tak _Layar Penuh"
-
-#~ msgid "Send to..."
-#~ msgstr "Kirim ke..."
-
-#~ msgid "Workspace %i (%s)"
-#~ msgstr "Ruang kerja %i (%s)"
-
-#~ msgid "Use this action"
-#~ msgstr "Gunakan aksi ini"
-
-#~ msgid "gtk-revert-to-saved"
-#~ msgstr "gtk-revert-to-saved"
-
-#~ msgid "gtk-select-all"
-#~ msgstr "gtk-select-all"
-
-#~ msgid "%s shortcut conflict"
-#~ msgstr "%s jalan pintas konflik"
-
-#~ msgid "Shortcut conflict"
-#~ msgstr "Jalan pintas konflik"
-
-#~ msgid "Alt"
-#~ msgstr "Alt"
-
-#~ msgid "Ctrl"
-#~ msgstr "Ctrl"
-
-#~ msgid "\t"
-#~ msgstr "\t"
-
-#~ msgid "Keytheme"
-#~ msgstr "Tema Kunci"
-
-#~ msgid "Button"
-#~ msgstr "Tombol"
-
-#~ msgid "Add Shortcut Theme"
-#~ msgstr "Tambah Tema Jalan Pintas"
-
-#~ msgid "Add a new window-manager shortcut theme"
-#~ msgstr "Tambah tema jalan pintas manajer-jendela baru"
-
-#~ msgid "gtk-add"
-#~ msgstr "gtk-add"
-
-#~ msgid "gtk-ok"
-#~ msgstr "gtk-ok"
-
-#~ msgid "Move window left"
-#~ msgstr "Pindah jendela ke kiri"
-
-#~ msgid "Move window right"
-#~ msgstr "Pindah jendela ke kanan"
-
-#~ msgid "Resize window down"
-#~ msgstr "Ubah ukuran jendela ke bawah"
-
-#~ msgid "Resize window left"
-#~ msgstr "Ubah ukuran jendela ke kiri"
-
-#~ msgid "Cancel move/resize window"
-#~ msgstr "Batalkan pindah/ubah ukuran jendela"
-
-#~ msgid "_Hide"
-#~ msgstr "Sembunyikan (_H)"
