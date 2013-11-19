@@ -1,32 +1,29 @@
-# translation of eu.po to Euskara
-# Euskara translation of xfwm4.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-#
-# Piarres Beobide Egaña <pi@beobide.net>, 2004, 2006, 2007, 2008.
-# Piarres Beobide <pi+debian@beobide.net>, 2009.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Piarres Beobide <pi@beobide.net>, 2004,2006-2008
+# Piarres Beobide <pi+debian@beobide.net>, 2009
 msgid ""
 msgstr ""
-"Project-Id-Version: eu\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-12 06:18+0000\n"
-"PO-Revision-Date: 2009-12-15 11:54+0100\n"
-"Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
-"Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
+"POT-Creation-Date: 2013-07-02 23:22+0200\n"
+"PO-Revision-Date: 2013-11-19 15:10+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Basque (http://www.transifex.com/projects/p/xfce/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Leiho hau lanpeturik egon daiteke eta ez du erantzuten.\n"
-"Benetan aplikazioa itxi nahi duzu?"
+msgstr "Leiho hau lanpeturik egon daiteke eta ez du erantzuten.\nBenetan aplikazioa itxi nahi duzu?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -65,10 +62,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Erabili %s --help komando lerro aukera erabilgarrien zerrenda osoa "
-"ikusteko.\n"
+msgstr "%s: %s\nErabili %s --help komando lerro aukera erabilgarrien zerrenda osoa ikusteko.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -86,237 +80,237 @@ msgid "Settings manager socket"
 msgstr "Ezarpena kudeatzaile socketa"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-msgid "Configure window behavior and shortcuts"
-msgstr "Leiho portaera eta lastre-teklak konfiguratu"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Leiho kudeatzailea"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Fine-tune window behaviour and effects"
-msgstr "Leiho portaera eta efektuak doitu"
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "Configure window behavior and shortcuts"
+msgstr "Leiho portaera eta lastre-teklak konfiguratu"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
 msgstr "Leiho kudeatzaile ezarpenak"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+msgid "Fine-tune window behaviour and effects"
+msgstr "Leiho portaera eta efektuak doitu"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Configure layout, names and margins"
-msgstr "Konfiguratu diseinua, izenak eta ertzak"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Idazmahaiak"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Box move and resize</b>"
-msgstr "<b>Kutxa tamaina aldatzea eta mugitzea</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Button layout</b>"
-msgstr "<b>Botoi-diseinua</b>"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr "Konfiguratu diseinua, izenak eta ertzak"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>Double click _action</b>"
-msgstr "<b>Klik bikoitzaren ekintza</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Focus model</b>"
-msgstr "<b>Foku modeloa</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>New window focus</b>"
-msgstr "<b>Leiho berri fokoa</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>Raise on click</b>"
-msgstr "<b>Bistaratu klikatzerakoan</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on focus</b>"
-msgstr "<b>Goratu fokuaz</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-msgid "<b>Title _alignment</b>"
-msgstr "<b>Izenburu _lerrokatzea</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-msgid "<b>Title fon_t</b>"
-msgstr "<b>Izenburuaren karak_tere-jokoa</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
-msgid "<b>Window _shortcuts</b>"
-msgstr "<b>Leiho laster-teklak</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "<b>Windows snapping</b>"
-msgstr "<b>Leiho itsasgarritasuna</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces</b>"
-msgstr "<b>Itzulbiratu idazmahaiak</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "<b>_Theme</b>"
 msgstr "<b>_Gaia</b>"
 
-#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+msgid "<b>Title fon_t</b>"
+msgstr "<b>Izenburuaren karak_tere-jokoa</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+msgid "<b>Title _alignment</b>"
+msgstr "<b>Izenburu _lerrokatzea</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+msgid "Click and drag the buttons to change the layout"
+msgstr "Klikatu eta arratratu botoiak ingurunea eraldatzeko"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "Izenburua"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "The window title cannot be removed"
+msgstr "Leiho izenburua ezin da ezabatu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "Active"
+msgstr "Gaiturik"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+msgid "Menu"
+msgstr "Menua"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+msgid "Stick"
+msgstr "Finkatu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+msgid "Shade"
+msgstr "Bildu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+msgid "Minimize"
+msgstr "Txikitu"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+msgid "Maximize"
+msgstr "Handitu"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
-msgid "<i>Long</i>"
-msgstr "<i>Luzea</i>"
+msgid "Close"
+msgstr "Itxi"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Ezkutukoa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<b>Button layout</b>"
+msgstr "<b>Botoi-diseinua</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "_Style"
+msgstr "E_stiloa"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "_Reset to Defaults"
+msgstr "Be_rrezarri lehenespenetara"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+msgid "<b>Window _shortcuts</b>"
+msgstr "<b>Leiho laster-teklak</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "Ke_yboard"
+msgstr "Tek_latua"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "Clic_k to focus"
+msgstr "Egin _klik fokua ezartzeko"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Focus follows _mouse"
+msgstr "Fokuak _sagua jarraitzen du"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "_Delay before window receives focus:"
+msgstr "Fokua duen leihoa bistaratu arteko _denbora:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
 msgstr "<i>Laburra</i>"
 
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "<i>Long</i>"
+msgstr "<i>Luzea</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "<b>Focus model</b>"
+msgstr "<b>Foku modeloa</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Automatically give focus to _newly created windows"
+msgstr "Automatikoki ezarri fokua leiho _berrietan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "<b>New window focus</b>"
+msgstr "<b>Leiho berri fokoa</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Automatically _raise windows when they receive focus"
+msgstr "Automatikoki _goratu leihoak fokua dutenean"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Delay _before raising focused window:"
+msgstr "Fokua duen leihoa bistaratu arte _itxarongo den denbora :"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "<b>Raise on focus</b>"
+msgstr "<b>Goratu fokuaz</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Raise window when clicking _inside application window"
+msgstr "Goratu leihoa, honen _barnean klikatzerakoan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "<b>Raise on click</b>"
+msgstr "<b>Bistaratu klikatzerakoan</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "_Focus"
+msgstr "_Fokua"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgid "Snap windows to screen _border"
+msgstr "Itsatsi leihoak pantaila _ertzari"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "Snap windows to other _windows"
+msgstr "Itsatsi _leihoak beraien artean"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Dis_tance:"
+msgstr "_Tartea :"
+
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
 msgstr "<i>Txikia</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "<i>Wide</i>"
 msgstr "<i>Zabala</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Active"
-msgstr "Gaiturik"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Ad_vanced"
-msgstr "Au_rreratua"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Automatically _raise windows when they receive focus"
-msgstr "Automatikoki _goratu leihoak fokua dutenean"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Automatically give focus to _newly created windows"
-msgstr "Automatikoki ezarri fokua leiho _berrietan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Clic_k to focus"
-msgstr "Egin _klik fokua ezartzeko"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-msgid "Click and drag the buttons to change the layout"
-msgstr "Klikatu eta arratratu botoiak ingurunea eraldatzeko"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Close"
-msgstr "Itxi"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Delay _before raising focused window:"
-msgstr "Fokua duen leihoa bistaratu arte _itxarongo den denbora :"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Dis_tance:"
-msgstr "_Tartea :"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Focus follows _mouse"
-msgstr "Fokuak _sagua jarraitzen du"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "Ezkutukoa"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Hide content of windows when _moving"
-msgstr "Ezkutatu leihoaren edukia _mugitzerakoan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Hide content of windows when _resizing"
-msgstr "Ezkutatu leihoaren edukia _tamainaz aldatzean"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Ke_yboard"
-msgstr "Tek_latua"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Maximize"
-msgstr "Handitu"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Menu"
-msgstr "Menua"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-msgid "Minimize"
-msgstr "Txikitu"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-msgid "Raise window when clicking _inside application window"
-msgstr "Goratu leihoa, honen _barnean klikatzerakoan"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "Shade"
-msgstr "Bildu"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Snap windows to other _windows"
-msgstr "Itsatsi _leihoak beraien artean"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "Snap windows to screen _border"
-msgstr "Itsatsi leihoak pantaila _ertzari"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "Stick"
-msgstr "Finkatu"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Titulu-barran bi aldiz klikatzerakoan egingo den ekintza"
+msgid "<b>Windows snapping</b>"
+msgstr "<b>Leiho itsasgarritasuna</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "The window title cannot be removed"
-msgstr "Leiho izenburua ezin da ezabatu"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-msgid "Title"
-msgstr "Izenburua"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "Leihoak _arrastatzerakoan hurrengo mahaigainera pasa"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
 msgstr "Joan hurrengo idazmahaiera sagua _pantaila ertzera ailatzerakoan"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
-msgid "_Delay before window receives focus:"
-msgstr "Fokua duen leihoa bistaratu arteko _denbora:"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "Wrap workspaces when _dragging a window off the screen"
+msgstr "Leihoak _arrastatzerakoan hurrengo mahaigainera pasa"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
 msgstr "_Ertzaren erresistentzia :"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgid "<b>Wrap workspaces</b>"
+msgstr "<b>Itzulbiratu idazmahaiak</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "Hide content of windows when _resizing"
+msgstr "Ezkutatu leihoaren edukia _tamainaz aldatzean"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+msgid "Hide content of windows when _moving"
+msgstr "Ezkutatu leihoaren edukia _mugitzerakoan"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+msgid "<b>Box move and resize</b>"
+msgstr "<b>Kutxa tamaina aldatzea eta mugitzea</b>"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Focus"
-msgstr "_Fokua"
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Titulu-barran bi aldiz klikatzerakoan egingo den ekintza"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Reset to Defaults"
-msgstr "Be_rrezarri lehenespenetara"
+msgid "<b>Double click _action</b>"
+msgstr "<b>Klik bikoitzaren ekintza</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "_Style"
-msgstr "E_stiloa"
+msgid "Ad_vanced"
+msgstr "Au_rreratua"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -641,215 +635,207 @@ msgstr "Huts xfconf abiaraztean. Arrazoia: %s"
 msgid "Could not create the settings dialog."
 msgstr "Ezin da ezapen elkarrizketa sortu."
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "Be_rrezarri lehenespenetara"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Honek laster-tekla guztiak lehenetsitako balioetara ezarriko ditu. Ziur hau "
-"egin nahi duzula?"
-
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Large</i>"
-msgstr "<i>Handia</i>"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Honek laster-tekla guztiak lehenetsitako balioetara ezarriko ditu. Ziur hau egin nahi duzula?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "<i>Opaque</i>"
-msgstr "<i>Opakoa</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "<i>Transparent</i>"
-msgstr "<i>Gardena</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate _focus stealing prevention"
-msgstr "_Foku lapurtze aurreikuspena gaitu"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the _center of the screen"
-msgstr "Panatailaren er_dian"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automatikoki _goratu leihoak pantaila ertzetik mugitzean"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-msgid "By default, place windows:"
-msgstr "Lehenespen gisa, leiho kokalekua:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "C_ompositor"
-msgstr "S_ortzailea"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "C_ycling"
-msgstr "Z_iklikoki"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "Cycle _through windows on all workspaces"
-msgstr "Idazmahai _guztien artean ziklikoki aldatu"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Display _fullscreen overlay windows directly"
-msgstr "Zuzenean leihoak _pantaila osoan bistarazi"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-msgid "Do _nothing"
-msgstr "Eze_r ez egin"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide _frame of windows when maximized"
-msgstr "Leiho _markoa ezkutatu guztiz handitzean"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Honor _standard ICCCM focus hint"
-msgstr "ICCCM e_standarreko foko gomendioei ohore egin"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Mantendu premiazko leihoak _keinuka"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Key used to _grab and move windows:"
-msgstr "Leihoak _eldu eta mugitzeko erabiliko den tekla"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Larrialdi be_rriematea leiho dekoraziak keinu egitearen bidez"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Opaci_ty of window decorations:"
-msgstr "Leiho dekorazioaren opako_tasuna"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Opacity of _inactive windows:"
-msgstr "Leiho _inaktiboen opakotasuna"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of popup window_s:"
-msgstr "Popup leihoen opakota_suna"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Opacity of windows during _move:"
-msgstr "_Mugitzerakoan leihoaren opakotasuna"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Opacity of windows during resi_ze:"
-msgstr "Tamaina_z aldatzean leihoaren opakotasuna"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Restore original _size of maximized windows when moving"
-msgstr "Mugitzerakoan maximizatutako leihoen jatorrizko _tamaina berezarri"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid "Show shadows under _dock windows"
-msgstr "Itzalak bistarazi _blokeaturiko leihoen azpian"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-msgid "Show shadows under _regular windows"
-msgstr "Itzalak bistarazi leiho _arrunten azpian"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-msgid "Show shadows under pop_up windows"
-msgstr "Itzalak bistarazi popup leihoen azpian"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Switch to win_dow's workspace"
-msgstr "Aldatu lei_hoaren idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Under the mouse _pointer"
-msgstr "Sagu markatzailearen az_pian"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Use _edge resistance instead of window snapping"
-msgstr "_Ertz erresistentzia erabili leiho elkartzea beharrean"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "_Sagu gurpilak mahaigainaren gainean idazmahaiak txandakatzen ditu"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-msgid "When a window raises itself:"
-msgstr "Leiho batek bere burua nabarmentzean:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Idazmahaiak egokitu _lehen edo azken idazmahaiera ailatzerakoan"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-msgid "_Accessibility"
-msgstr "_Erabilgarritasuna"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "_Bring window on current workspace"
-msgstr "_Ekarri leihoa uneko idazmahaiera"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "_Draw frame around selected windows while cycling"
-msgstr "_Marraztu markoa hautatutako leihoaren inguruan txandakatzean"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Enable display compositing"
-msgstr "_Pantaila konposizioa gaitu"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Ezkutatutako leihoak (adib, txikitutakoak) barne"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Leihoen _gutxieneko tamaina abiarazte garbi kokapenean"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid "_Placement"
-msgstr "_Kokalekua"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-msgid "_Raise windows when any mouse button is pressed"
-msgstr "Leihoa _erakarri saguaren edozein botoi sakatzean"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-msgid ""
-"_Remember and recall previous workspace\n"
-"when switching via keyboard shortcuts"
-msgstr ""
-"Aurreko idazmahaia _gogoratu eta berriz deitu\n"
-"teklatu laster-tekla bitartez aldatzean"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"\"orrialdekatzailea utzi\" edo \"ataza-barra utzi\"\n"
-"propietateak ezarririk duten leihoa e_zik"
+msgstr "\"orrialdekatzailea utzi\" edo \"ataza-barra utzi\"\npropietateak ezarririk duten leihoa e_zik"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+msgid "_Include hidden (i.e. iconified) windows"
+msgstr "_Ezkutatutako leihoak (adib, txikitutakoak) barne"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "Cycle _through windows on all workspaces"
+msgstr "Idazmahai _guztien artean ziklikoki aldatu"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
+msgstr "_Marraztu markoa hautatutako leihoaren inguruan txandakatzean"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr "Z_iklikoki"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Activate _focus stealing prevention"
+msgstr "_Foku lapurtze aurreikuspena gaitu"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "Honor _standard ICCCM focus hint"
+msgstr "ICCCM e_standarreko foko gomendioei ohore egin"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr "Leiho batek bere burua nabarmentzean:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "_Bring window on current workspace"
+msgstr "_Ekarri leihoa uneko idazmahaiera"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Switch to win_dow's workspace"
+msgstr "Aldatu lei_hoaren idazmahaiera"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Do _nothing"
+msgstr "Eze_r ez egin"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+msgid "Key used to _grab and move windows:"
+msgstr "Leihoak _eldu eta mugitzeko erabiliko den tekla"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+msgid "_Raise windows when any mouse button is pressed"
+msgstr "Leihoa _erakarri saguaren edozein botoi sakatzean"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Hide _frame of windows when maximized"
+msgstr "Leiho _markoa ezkutatu guztiz handitzean"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "Restore original _size of maximized windows when moving"
+msgstr "Mugitzerakoan maximizatutako leihoen jatorrizko _tamaina berezarri"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+msgid "Automatically _tile windows when moving toward the screen edge"
+msgstr "Automatikoki _goratu leihoak pantaila ertzetik mugitzean"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Use _edge resistance instead of window snapping"
+msgstr "_Ertz erresistentzia erabili leiho elkartzea beharrean"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr "Larrialdi be_rriematea leiho dekoraziak keinu egitearen bidez"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr "Mantendu premiazko leihoak _keinuka"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "_Accessibility"
+msgstr "_Erabilgarritasuna"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "_Sagu gurpilak mahaigainaren gainean idazmahaiak txandakatzen ditu"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+msgid ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
+msgstr "Aurreko idazmahaia _gogoratu eta berriz deitu\nteklatu laster-tekla bitartez aldatzean"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgstr "Idazmahaiak egokitu _lehen edo azken idazmahaiera ailatzerakoan"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "_Idazmahaiak"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "Leihoen _gutxieneko tamaina abiarazte garbi kokapenean"
+
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "<i>Large</i>"
+msgstr "<i>Handia</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "By default, place windows:"
+msgstr "Lehenespen gisa, leiho kokalekua:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "At the _center of the screen"
+msgstr "Panatailaren er_dian"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "Under the mouse _pointer"
+msgstr "Sagu markatzailearen az_pian"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Placement"
+msgstr "_Kokalekua"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "_Enable display compositing"
+msgstr "_Pantaila konposizioa gaitu"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "Display _fullscreen overlay windows directly"
+msgstr "Zuzenean leihoak _pantaila osoan bistarazi"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "Show shadows under _regular windows"
+msgstr "Itzalak bistarazi leiho _arrunten azpian"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "Show shadows under pop_up windows"
+msgstr "Itzalak bistarazi popup leihoen azpian"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Show shadows under _dock windows"
+msgstr "Itzalak bistarazi _blokeaturiko leihoen azpian"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Opaci_ty of window decorations:"
+msgstr "Leiho dekorazioaren opako_tasuna"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "<i>Transparent</i>"
+msgstr "<i>Gardena</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgid "<i>Opaque</i>"
+msgstr "<i>Opakoa</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "Opacity of _inactive windows:"
+msgstr "Leiho _inaktiboen opakotasuna"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+msgid "Opacity of windows during _move:"
+msgstr "_Mugitzerakoan leihoaren opakotasuna"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+msgid "Opacity of windows during resi_ze:"
+msgstr "Tamaina_z aldatzean leihoaren opakotasuna"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Opacity of popup window_s:"
+msgstr "Popup leihoen opakota_suna"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "C_ompositor"
+msgstr "S_ortzailea"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid "_Number of workspaces:"
+msgstr "idazmahai _kopurua:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
 msgstr "Diseinua"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marjinak pantailaren ertzetan leihorik kokatu ezin den eremuak dira"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
 msgstr "Izenak"
 
@@ -858,12 +844,13 @@ msgid "_General"
 msgstr "_Orokorra"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Margins"
-msgstr "_Ertzak"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Marjinak pantailaren ertzetan leihorik kokatu ezin den eremuak dira"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-msgid "_Number of workspaces:"
-msgstr "idazmahai _kopurua:"
+msgid "_Margins"
+msgstr "_Ertzak"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -1009,8 +996,7 @@ msgstr "%s: Ezin da %s kolorea esleitu\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
+msgstr "%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1020,8 +1006,7 @@ msgstr "%s: Ezin da %s kolorea analizatu\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
+msgstr "%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -1032,416 +1017,3 @@ msgstr "Errorea seme-prozesutik datuak irakurtzean: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Ezin da laguntza-elkarrizketa abiarazi: %s\n"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "Ezarri idazmahai kopurua eta izenak"
-
-#~ msgid "<b>Margins</b>"
-#~ msgstr "<b>Marjinak</b>"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Idazmahaiak</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "Aldatu idazmahai izena"
-
-#~ msgid "_Name:"
-#~ msgstr "Ize_na:"
-
-#~ msgid "Hide"
-#~ msgstr "Ezkutatu"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Segmentazio errorea"
-
-#~ msgid "  "
-#~ msgstr "  "
-
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "<i>Txikia</i>"
-
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "<i>Biguna</i>"
-
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "<i>Gogorra</i>"
-
-#~ msgid ">Window Manager"
-#~ msgstr "Leiho kudeatzailea"
-
-#~ msgid "gtk-clear"
-#~ msgstr "gtk-garbitu"
-
-#~ msgid "gtk-close"
-#~ msgstr "gtk-itxi"
-
-#~ msgid "gtk-help"
-#~ msgstr "gtk-laguntza"
-
-#~ msgid "gtk-cancel"
-#~ msgstr "gtk-utzi"
-
-#~ msgid "gtk-save"
-#~ msgstr "gtk-gorde"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "Idazmahai marjinak"
-
-#~ msgid "Left :"
-#~ msgstr "Ezkerra :"
-
-#~ msgid "Right :"
-#~ msgstr "Eskuina :"
-
-#~ msgid "Top :"
-#~ msgstr "Goian :"
-
-#~ msgid "Bottom :"
-#~ msgstr "Behean :"
-
-#~ msgid "Bring window on current workspace"
-#~ msgstr "Ekarri leihoa uneko idazmahaiera"
-
-#~ msgid "Do nothing"
-#~ msgstr "Ezer ez egin"
-
-#~ msgid "Place window under the mouse"
-#~ msgstr "Ipini leiho saguaren azpian"
-
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "\"Orrialdekatzailea\" utzi\" edo \"ataza-barra utzi\"\n"
-#~ " propietateak ezarririk duten leihoak alde batetara urt"
-
-#~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "Ezkutatutako leihoak (adib, txikitutakoak) barne"
-
-#~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Idazmahai guztien artean ziklikoki aldatu"
-
-#~ msgid "Cycling"
-#~ msgstr "Ziklikoki"
-
-#~ msgid "Activate focus stealing prevention"
-#~ msgstr "Foku lapurtze aurreikuspena gaitu"
-
-#~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "ICCCM estandarreko foko gomendioei ohore egin"
-
-#~ msgid "Focus"
-#~ msgstr "Fokua"
-
-#~ msgid "Key used to grab and move windows"
-#~ msgstr "Leihoak eldu eta mugitzeko erabiliko den tekla"
-
-#~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "Leihoa erakarri saguaren edozein botoi sakatzean"
-
-#~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Leiho markoa ezkutatu guztiz handitzean"
-
-#~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "Mugitzerakoan maximizatutako leihoen jatorrizko tamaina berezarri"
-
-#~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "Ertz erresistentzia erabili leiho elkartzea beharrean"
-
-#~ msgid "Accessibility"
-#~ msgstr "Erabilgarritasuna"
-
-#~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr ""
-#~ "Idazmahaia aldatu saguaren gurpila udazmahaiaren gainaean erabiltzean"
-
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Aurreko idazmahaia gogoratu eta berriz deitu teklatu laster-tekla "
-#~ "bitartez aldatzean"
-
-#~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr ""
-#~ "Idazmahaiak egokitu erabiltzen den uneko idazmahai ingurunearen arabera"
-
-#~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Idazmahaiak egokitu lehen edo azken idazmahaiera ailatzerakoan"
-
-#~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Leihoen gutxieneko tamaina abiarazte garbi kokapenean"
-
-#~ msgid "Size|Small"
-#~ msgstr "Txikia"
-
-#~ msgid "Size|Large"
-#~ msgstr "Handia"
-
-#~ msgid "Default positionning of windows without smart placement:"
-#~ msgstr "Leihoen lehenetsitako koalekua abiarazte garbian:"
-
-#~ msgid "Placement"
-#~ msgstr "Kokalekua"
-
-#~ msgid "Enable display compositing"
-#~ msgstr "Pantaila konposizioa gaitu"
-
-#~ msgid "Display full screen overlay windows directly"
-#~ msgstr "Zuzenean leihoak pantaila osoan bistarazi"
-
-#~ msgid "Show shadows under dock windows"
-#~ msgstr "Itzalak bistarazi blokeaturiko leihoen azpian"
-
-#~ msgid "Show shadows under regular windows"
-#~ msgstr "Itzalak bistarazi leiho arrunten azpian"
-
-#~ msgid "Show shadows under popup windows"
-#~ msgstr "Itzalak bistarazi popup leihoen azpian"
-
-#~ msgid "Opacity of window decorations"
-#~ msgstr "Leiho dekorazioaren opakotasuna"
-
-#~ msgid "Transparent"
-#~ msgstr "Gardena"
-
-#~ msgid "Opaque"
-#~ msgstr "Opakoa"
-
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "Leiho inaktiboen opakotasuna"
-
-#~ msgid "Opacity of windows during move"
-#~ msgstr "Mugitzerakoan leihoaren opakotasuna"
-
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "Tamainaz aldatzean leihoaren opakotasun"
-
-#~ msgid "Opacity of popup windows"
-#~ msgstr "Popup leihoen opakotasuna"
-
-#~ msgid "Compositor"
-#~ msgstr "Sortzailea"
-
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "Leiho kudeatzaile ezarpenak"
-
-#~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr ""
-#~ "Ezarpen hauek ezin dute funtzionatu erabiltzen duzun leiho "
-#~ "kudeatzailearekin (%s)"
-
-#~ msgid "Change name"
-#~ msgstr "Aldatu izena"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Klikatu idazmahai izenean editatzeko"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Idazmahai kopurua:"
-
-#~ msgid "Workspace names"
-#~ msgstr "Idazmahai izenak"
-
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Idazmahai eta marjinak"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "Idazmahai eta marjinak"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "Leiho kudeatzaile ezarpenak"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Xfce 4 leiho kudeatzaile ezarpenak"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "Konfigurazio aurreratua"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Xfce 4 leiho kudeatzaile gomendioak"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "Idazmahai ezarpenak"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Xfce 4 idazmahai ezarpenak"
-
-#~ msgid "Click and drag buttons to change the layout"
-#~ msgstr "Klikatu eta arratratu botoiak ingurunea eraldatzeko"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "Letra-tipo hautapen menua"
-
-#~ msgid "Title font"
-#~ msgstr "Izenburuaren letra-tipoa"
-
-#~ msgid "Title Alignment"
-#~ msgstr "Izenburu _lerrokatzea"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "Testu lerrokatzea izenburu barran :"
-
-#~ msgid "Button layout"
-#~ msgstr "Botoi-diseinua"
-
-#~ msgid "Style"
-#~ msgstr "Estiloa"
-
-#~ msgid "Window shortcuts"
-#~ msgstr "Leiho laster-teklak"
-
-#~ msgid "Command"
-#~ msgstr "Komandoa"
-
-#~ msgid "Keyboard"
-#~ msgstr "Teklatua"
-
-#~ msgid "Focus model"
-#~ msgstr "Foku modeloa"
-
-#~ msgid "Click to focus"
-#~ msgstr "Klikatu fokua ezartzeko"
-
-#~ msgid "Focus follows mouse"
-#~ msgstr "Fokuak sagua jarraitzen du"
-
-#~ msgid "Delay before window receives focus"
-#~ msgstr "Fokua duen leihoa bistaratu arteko denbora"
-
-#~ msgid "Slow"
-#~ msgstr "Geldoa"
-
-#~ msgid "Fast"
-#~ msgstr "Azkarra"
-
-#~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "Automatikoki ezarri fokua leiho berrietan"
-
-#~ msgid "New window focus"
-#~ msgstr "Leiho berri fokoa"
-
-#~ msgid "Raise on focus"
-#~ msgstr "Goratu fokuaz"
-
-#~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "Automatikoki goratu leihoak fokua dutenean"
-
-#~ msgid "Delay before raising focused window :"
-#~ msgstr "Fokua duen leihoa bistaratu arte itxarongo den denbora :"
-
-#~ msgid "Raise window when clicking inside application window"
-#~ msgstr "Goratu leihoa, honen barnean klikatzerakoan"
-
-#~ msgid "Raise on click"
-#~ msgstr "Bistaratu klikatzerakoan"
-
-#~ msgid "Windows snapping"
-#~ msgstr "Leiho itsasgarritasuna"
-
-#~ msgid "Snap windows to screen border"
-#~ msgstr "Itsatsi leihoak pantaila ertzari"
-
-#~ msgid "Snap windows to other windows"
-#~ msgstr "Itsatsi leihoak beraien artean"
-
-#~ msgid "Distance :"
-#~ msgstr "Tartea :"
-
-#~ msgid "Distance|Small"
-#~ msgstr "Txikia"
-
-#~ msgid "Distance|Wide"
-#~ msgstr "Zabala"
-
-#~ msgid "Wrap workspaces"
-#~ msgstr "Itzulbiratu idazmahaiak"
-
-#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Joan hurrengo idazmahaiera sagua pantaila ertzera ailatzerakoan"
-
-#~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Leihoak arrastatzerakoan hurrengo mahaigainera pasa"
-
-#~ msgid "Edge Resistance :"
-#~ msgstr "Ertzaren erresistentzia :"
-
-#~ msgid "Resistance|Small"
-#~ msgstr "Biguna"
-
-#~ msgid "Resistance|Wide"
-#~ msgstr "Gogorra"
-
-#~ msgid "Opaque move and resize"
-#~ msgstr "Tamaina aldatzea eta mugitze opakoa"
-
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "Bistarazi leihoaren edukia tamainaz aldatzean"
-
-#~ msgid "Display content of windows when moving"
-#~ msgstr "Bistarazi leihoaren edukia mugitzerakoan"
-
-#~ msgid "Double click action"
-#~ msgstr "Klik bikoitzaren ekintza"
-
-#~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "Titulu-barran bi aldiz klikatzerakoan egingo den ekintza :"
-
-#~ msgid "Advanced"
-#~ msgstr "Aurreratua"
-
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "Leiho kudeatzailea"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Benetan kendu nahi duzu laster-tekla gaia?"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "Gehitu laster-tekla gaia"
-
-#~ msgid "Enter a name for the theme:"
-#~ msgstr "Idatzi gaiaren izena:"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Izen horretako laster-tekla gai bat badago dagoeneko"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Laster-tekla gaiaren izena idatzi behar duzu"
-
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Mugitu leihoa %d idazmahaiera"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "Ezin da gai direktorioa ireki!"
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Ezin da %s ireki: \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Ezin da %s-(e)n idatzi: \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "Laster-tekla dagoneko erabilia dago!\n"
-#~ "Ziur zaude erabili nahi duzula?"
-
-#~ msgid "Compose shortcut for :"
-#~ msgstr "Sortu laster-tekla:"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "Sortu laster-tekla"
-
-#~ msgid "No shortcut"
-#~ msgstr "Laster-teklarik ez"
-
-#~ msgid "Change the name of workspace %d"
-#~ msgstr "Aldatu %d idazmahaiaren izena"
