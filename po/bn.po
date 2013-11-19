@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Sadia Afroz <sadia@ankur.org.bd>, 2010.
-# Israt Jahan <israt@ankur.org.bd>, 2010.
-#
+# 
+# Translators:
+# Israt Jahan <israt@ankur.org.bd>, 2010
+# Sadia Afroz <sadia@ankur.org.bd>, 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: bn\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 18:54+0200\n"
-"PO-Revision-Date: 2010-03-31 18:45+0600\n"
-"Last-Translator: Israt Jahan <israt@ankur.org.bd>\n"
-"Language-Team: Bengali <ankur-bd-l10n@googlegroups.com>\n"
-"Language: bn\n"
+"POT-Creation-Date: 2013-07-02 23:22+0200\n"
+"PO-Revision-Date: 2013-11-19 15:10+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Bengali (http://www.transifex.com/projects/p/xfce/language/bn/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bn\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"এই উইন্ডোটি হয়ত ব্যস্ত এবং সাড়া দিচ্ছে না।\n"
-"আপনি কি অ্যাপ্লিকেশনটি শেষ করতে চান?"
+msgstr "এই উইন্ডোটি হয়ত ব্যস্ত এবং সাড়া দিচ্ছে না।\nআপনি কি অ্যাপ্লিকেশনটি শেষ করতে চান?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -62,9 +62,7 @@ msgstr "।"
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"চেষ্টা করুন %s --সহায়তা বিদ্যমান কমান্ড লাইন অপশনের পূর্ণ তালিকা দেখতে।\n"
+msgstr "%s: %s\nচেষ্টা করুন %s --সহায়তা বিদ্যমান কমান্ড লাইন অপশনের পূর্ণ তালিকা দেখতে।\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -152,9 +150,8 @@ msgid "Shade"
 msgstr "ছায়া"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "Minimize"
-msgstr "ন্যূনতম বিস্তার (_n)"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
@@ -418,9 +415,8 @@ msgid "Lower window"
 msgstr "নিম্নতর উইন্ডো"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "উইন্ডো উঠানো"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -511,24 +507,20 @@ msgid "Move window to workspace 12"
 msgstr "কর্মপরিসর ১২-তে উইন্ডো সরানো হবে"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "বাম কর্মপরিসরে উইন্ডো সরানো হবে"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "নিচের কর্মপরিসরে উইন্ডো সরানো হবে"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "বাম কর্মপরিসরে উইন্ডো সরানো হবে"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "ডান কর্মপরিসরে উইন্ডো সরানো হবে"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -643,26 +635,22 @@ msgstr "xfconf আরম্ভ করতে ব্যর্থ। কারণ: 
 msgid "Could not create the settings dialog."
 msgstr "সেটিংস ডায়ালগ তৈরি করা যায়নি।"
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "পূর্বনির্ধারিততে পুনঃনির্ধারণ"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"এটি সকল শর্টকাটকে এর পূর্বনির্ধারিত মানে পুনঃনির্ধারণ করবে। আপনি কি সত্যিই এটা করতে "
-"চান?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "এটি সকল শর্টকাটকে এর পূর্বনির্ধারিত মানে পুনঃনির্ধারণ করবে। আপনি কি সত্যিই এটা করতে চান?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"\"skip pager\"\n"
-"বা \"skip taskbar\" বৈশিষ্ট্যাবলী সেট সম্বলিত উইন্ডোসমূহকে এড়িয়ে যাওয়া হবে (_S)"
+msgstr "\"skip pager\"\nবা \"skip taskbar\" বৈশিষ্ট্যাবলী সেট সম্বলিত উইন্ডোসমূহকে এড়িয়ে যাওয়া হবে (_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -721,9 +709,8 @@ msgid "Restore original _size of maximized windows when moving"
 msgstr "সরানোর সময় পূর্ণ বিস্তারের উইন্ডোর আদি আকার পুনরুদ্ধার করা হবে (_s)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "উইন্ডো ফোকাস করা হলে স্বয়ংক্রিয়ভাবে উঠানো হবে (_r)"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
@@ -749,9 +736,7 @@ msgstr "কর্মপরিসর পরিবর্তন করতে ডে
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"কীবোর্ড শর্টকাটের দ্বারা পরিবর্তনের সময়\n"
-"পূর্ববর্তী কর্মপরিসর মনে রাখা হবে এবং পুনরায় কল করা হবে (_R)"
+msgstr "কীবোর্ড শর্টকাটের দ্বারা পরিবর্তনের সময়\nপূর্ববর্তী কর্মপরিসর মনে রাখা হবে এবং পুনরায় কল করা হবে (_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -851,9 +836,8 @@ msgid "Layout"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Names"
-msgstr "নাম: (_N)"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
@@ -865,9 +849,8 @@ msgid ""
 msgstr "মার্জিন হচ্ছে পর্দার প্রান্তের ক্ষেত্র যেখানে কোন উইন্ডো স্থাপন করা হয় না"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Margins"
-msgstr "<b>মার্জিন</b>"
+msgstr ""
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -896,9 +879,8 @@ msgid "Replace the existing window manager"
 msgstr ""
 
 #: ../src/main.c:550
-#, fuzzy
 msgid "Print version information and exit"
-msgstr "সংস্করণ তথ্যাবলী"
+msgstr ""
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
@@ -1035,30 +1017,3 @@ msgstr "চাইল্ড প্রসেস থেকে উপাত্ত �
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "বিপুল সংখ্যক সহায়তাকারী-ডায়ালগ সৃষ্টি করা যাচ্ছে না: %s\n"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "কর্মপরিসরের সংখ্যা ও নাম নির্ধারণ করুন"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>কর্মপরিসর</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "কর্মপরিসরের নাম পরিবর্তন"
-
-#~ msgid "Hide"
-#~ msgstr "আড়াল করুন"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: খন্ডন ত্রুটি"
-
-#~ msgid "  "
-#~ msgstr "  "
-
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "দুরত্ব|<i>ছোট</i>"
-
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "প্রতিরোধ|<i>ক্ষুদ্র</i>"
-
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "প্রতিরোধ|<i>প্রশস্ত</i>"
