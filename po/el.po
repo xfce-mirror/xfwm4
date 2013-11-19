@@ -1,38 +1,32 @@
-# Greek translation of xfwm4.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-#
-# Stavros Giannouris <StavrosG2002@freemail.gr>, 2005.
-# Stathis Kamperis <ekamperi@auth.gr>, 2006.
-# Evaggelos Balaskas <ebalaskas@ebalaskas.gr>, 2009.
-# Efstathios Iosifidis <iosifidis@opensuse.org>, 2012.
-# Γιώργος Στεφανάκης <nonviotale@gmail.com>, 2013.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Efstathios Iosifidis <iosifidis@opensuse.org>, 2012
+# ebal <ebalaskas@ebalaskas.gr>, 2009
+# Stathis Kamperis <ekamperi@auth.gr>, 2006
+# Stavros Giannouris <StavrosG2002@freemail.gr>, 2005
+# Γιώργος Στεφανάκης <nonviotale@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 git version\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-19 14:57+0000\n"
-"PO-Revision-Date: 2013-01-19 20:53+0200\n"
-"Last-Translator: Γιώργος Στεφανάκης <nonviotale@gmail.com>\n"
-"Language-Team: Greek, Modern (1453-) <>\n"
+"POT-Creation-Date: 2013-07-02 22:21+0200\n"
+"PO-Revision-Date: 2013-11-19 14:14+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Greek (http://www.transifex.com/projects/p/xfce/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Greek\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Country: GREECE\n"
-"X-Generator: Gtranslator 2.91.5\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Αυτό το παράθυρο πιθανών να είναι απασχολημένο και δεν ανταποκρίνεται.\n"
-"Θέλετε να τερματίσετε την εφαρμογή;"
+msgstr "Αυτό το παράθυρο πιθανών να είναι απασχολημένο και δεν ανταποκρίνεται.\nΘέλετε να τερματίσετε την εφαρμογή;"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -42,39 +36,36 @@ msgstr "Προειδοποίηση"
 msgid "None"
 msgstr "Κανένα"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 msgid "Session manager socket"
 msgstr "Υποδοχή διαχειριστή συνδέσεων"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ΤΑΥΤΟΤΗΤΑ ΥΠΟΔΟΧΕΑ"
 
-#: ../settings-dialogs/tweaks-settings.c:455
+#: ../settings-dialogs/tweaks-settings.c:464
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Πληροφορίες έκδοσης"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Δοκίμασε %s --help για να δεις μία πλήρη λίστα των διαθέσιμων επιλογών της "
-"γραμμής εντολών.\n"
+msgstr "%s: %s\nΔοκίμασε %s --help για να δεις μία πλήρη λίστα των διαθέσιμων επιλογών της γραμμής εντολών.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -92,240 +83,237 @@ msgid "Settings manager socket"
 msgstr "Υποδοχή διαχειριστή ρυθμίσεων"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-msgid "Configure window behavior and shortcuts"
-msgstr "Ρύθμιση συμπεριφοράς παραθύρων και συντομεύσεων"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Διαχειριστής παραθύρων"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-msgid "Fine-tune window behaviour and effects"
-msgstr "Ρύθμιση συμπεριφοράς παραθύρων και φαινόμενων"
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+msgid "Configure window behavior and shortcuts"
+msgstr "Ρύθμιση συμπεριφοράς παραθύρων και συντομεύσεων"
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
 msgstr "Προσαρμογή διαχειριστή παραθύρων"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+msgid "Fine-tune window behaviour and effects"
+msgstr "Ρύθμιση συμπεριφοράς παραθύρων και φαινόμενων"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Configure layout, names and margins"
-msgstr "Ρύθμιση διάταξης, ονόματα και περιθώρια"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Workspaces"
 msgstr "Χώροι εργασίας"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
-msgid "<b>Button layout</b>"
-msgstr "<b>Διάταξη κουμπιών</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
-msgid "<b>Double click _action</b>"
-msgstr "<b>Εν_έργεια διπλού κλικ</b>"
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+msgid "Configure layout, names and margins"
+msgstr "Ρύθμιση διάταξης, ονόματα και περιθώρια"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-msgid "<b>Focus model</b>"
-msgstr "<b>Μοντέλο εστίασης</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-msgid "<b>Hide content of windows</b>"
-msgstr "<b>Απόκρυψη περιεχομένων των παραθύρων</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
-msgid "<b>New window focus</b>"
-msgstr "<b>Εστίαση νέου παραθύρου</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
-msgid "<b>Raise on click</b>"
-msgstr "<b>Ανύψωση στο κλικ</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
-msgid "<b>Raise on focus</b>"
-msgstr "<b>Ανύψωση κατά την εστίαση</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "<b>The_me</b>"
 msgstr "<b>_Θέμα</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
-msgid "<b>Title _alignment</b>"
-msgstr "<b>Στ_οίχιση τίτλου</b>"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
 msgstr "<b>Γρ_αμματοσειρά τίτλου</b>"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+msgid "<b>Title _alignment</b>"
+msgstr "<b>Στ_οίχιση τίτλου</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+msgid "Click and drag the buttons to change the layout"
+msgstr "Επιλέξετε και σύρετε τα κουμπιά για να αλλάξετε τη διάταξη"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "Title"
+msgstr "Τίτλος"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "The window title cannot be removed"
+msgstr "Ο τίτλος του παραθύρου δεν μπορεί να αφαιρεθεί"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+msgid "Active"
+msgstr "Ενεργό"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+msgid "Menu"
+msgstr "Μενού"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
-msgid "<b>Windows snapping</b>"
-msgstr "<b>Ταίριασμα παραθύρων</b>"
+msgid "Stick"
+msgstr "Επικόλληση"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
-msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
-"<b>Αναδίπλωση χώρων εργασίας όταν ο δείκτης φτάσει στην άκρη της οθόνης</b>"
+msgid "Shade"
+msgstr "Σκίαση"
 
-#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+msgid "Minimize"
+msgstr "Ελαχιστοποίηση"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
-msgid "<i>Long</i>"
-msgstr "<i>Γρήγορα</i>"
+msgid "Maximize"
+msgstr "Μεγιστοποίηση"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Κρυμμένο"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+msgid "<b>Button layout</b>"
+msgstr "<b>Διάταξη κουμπιών</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+msgid "_Style"
+msgstr "Στ_υλ"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "Προσδιορισμός συντομεύσεων για την εκτέλεση ενεργειών του διαχειριστή πα_ραθύρων:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+msgid "_Reset to Defaults"
+msgstr "_Επαναφορά στα προκαθορισμένα"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+msgid "_Keyboard"
+msgstr "Πλ_ηκτρολόγιο"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "Click to foc_us"
+msgstr "Κλίκ για ε_στίαση"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "Focus follows _mouse"
+msgstr "Η εστίαση ακολουθεί το π_οντίκι"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+msgid "_Delay before window receives focus:"
+msgstr "Κ_αθυστέρηση πριν την ανύψωση παραθύρου:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
 msgstr "<i>Αργά</i>"
 
+#. Raise focus delay
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+msgid "<i>Long</i>"
+msgstr "<i>Γρήγορα</i>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+msgid "<b>Focus model</b>"
+msgstr "<b>Μοντέλο εστίασης</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+msgid "Automatically give focus to _newly created windows"
+msgstr "Αυτόματη εστίαση _νέων παραθύρων όταν δημιουργούνται"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+msgid "<b>New window focus</b>"
+msgstr "<b>Εστίαση νέου παραθύρου</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+msgid "Automatically _raise windows when they receive focus"
+msgstr "Αυτόματη αν_ύψωση παραθύρων όταν εστιαστούν"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+msgid "Delay _before raising focused window:"
+msgstr "Καθυστέρηση πρ_ιν την ανύψωση του εστιασμένου παραθύρου:"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+msgid "<b>Raise on focus</b>"
+msgstr "<b>Ανύψωση κατά την εστίαση</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+msgid "Raise window when clicking _inside application window"
+msgstr "Ανύψωση παραθύρου επ_ιλέγοντας εντός του παράθυρου της εφαρμογής"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+msgid "<b>Raise on click</b>"
+msgstr "<b>Ανύψωση στο κλικ</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+msgid "_Focus"
+msgstr "Εστ_ίαση"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+msgid "To screen _borders"
+msgstr "Στα άκρα τη _οθόνης"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+msgid "To other _windows"
+msgstr "Σε άλλο _παράθυρο"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+msgid "Dis_tance:"
+msgstr "Απ_όσταση:"
+
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
 msgstr "<i>Μικρό</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "<i>Wide</i>"
 msgstr "<i>Ευρύ</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-msgid "Active"
-msgstr "Ενεργό"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
-msgid "Ad_vanced"
-msgstr "Για πρ_οχωρημένους"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
-msgid "Automatically _raise windows when they receive focus"
-msgstr "Αυτόματη αν_ύψωση παραθύρων όταν εστιαστούν"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
-msgid "Automatically give focus to _newly created windows"
-msgstr "Αυτόματη εστίαση _νέων παραθύρων όταν δημιουργούνται"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
-msgid "Click and drag the buttons to change the layout"
-msgstr "Επιλέξετε και σύρετε τα κουμπιά για να αλλάξετε τη διάταξη"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-msgid "Click to foc_us"
-msgstr "Κλίκ για ε_στίαση"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
-msgid "Close"
-msgstr "Κλείσιμο"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-msgid "Define shortcuts to perform _window manager actions:"
-msgstr ""
-"Προσδιορισμός συντομεύσεων για την εκτέλεση ενεργειών του διαχειριστή "
-"πα_ραθύρων:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
-msgid "Delay _before raising focused window:"
-msgstr "Καθυστέρηση πρ_ιν την ανύψωση του εστιασμένου παραθύρου:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
-msgid "Dis_tance:"
-msgstr "Απ_όσταση:"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
-msgid "Focus follows _mouse"
-msgstr "Η εστίαση ακολουθεί το π_οντίκι"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
-msgid "Hidden"
-msgstr "Κρυμμένο"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
-msgid "Maximize"
-msgstr "Μεγιστοποίηση"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
-msgid "Menu"
-msgstr "Μενού"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
-msgid "Minimize"
-msgstr "Ελαχιστοποίηση"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-msgid "Raise window when clicking _inside application window"
-msgstr "Ανύψωση παραθύρου επ_ιλέγοντας εντός του παράθυρου της εφαρμογής"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
-msgid "Shade"
-msgstr "Σκίαση"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-msgid "Stick"
-msgstr "Επικόλληση"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Τι ενέργεια να γίνει στο διπλό κλικ στη μπάρα τίτλου"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-msgid "The window title cannot be removed"
-msgstr "Ο τίτλος του παραθύρου δεν μπορεί να αφαιρεθεί"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-msgid "Title"
-msgstr "Τίτλος"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
-msgid "To other _windows"
-msgstr "Σε άλλο _παράθυρο"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-msgid "To screen _borders"
-msgstr "Στα άκρα τη _οθόνης"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-msgid "When _moving"
-msgstr "Όταν _κινείται"
+msgid "<b>Windows snapping</b>"
+msgstr "<b>Ταίριασμα παραθύρων</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "When _resizing"
-msgstr "Όταν γίνεται αλλαγή με_γέθους"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
-msgid "With a _dragged window"
-msgstr "Με ένα σ_υρόμενο παράθυρο"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With the mouse _pointer"
 msgstr "Με τον _δείκτη του ποντικιού"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "_Delay before window receives focus:"
-msgstr "Κ_αθυστέρηση πριν την ανύψωση παραθύρου:"
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+msgid "With a _dragged window"
+msgstr "Με ένα σ_υρόμενο παράθυρο"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
 msgstr "Αντ_ίσταση άκρων:"
 
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr "<b>Αναδίπλωση χώρων εργασίας όταν ο δείκτης φτάσει στην άκρη της οθόνης</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+msgid "When _moving"
+msgstr "Όταν _κινείται"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+msgid "When _resizing"
+msgstr "Όταν γίνεται αλλαγή με_γέθους"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "_Focus"
-msgstr "Εστ_ίαση"
+msgid "<b>Hide content of windows</b>"
+msgstr "<b>Απόκρυψη περιεχομένων των παραθύρων</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-msgid "_Keyboard"
-msgstr "Πλ_ηκτρολόγιο"
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Τι ενέργεια να γίνει στο διπλό κλικ στη μπάρα τίτλου"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-msgid "_Reset to Defaults"
-msgstr "_Επαναφορά στα προκαθορισμένα"
+msgid "<b>Double click _action</b>"
+msgstr "<b>Εν_έργεια διπλού κλικ</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-msgid "_Style"
-msgstr "Στ_υλ"
+msgid "Ad_vanced"
+msgstr "Για πρ_οχωρημένους"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Shade window"
@@ -387,223 +375,204 @@ msgstr "Επαναφορά στις προκαθορισμένες"
 
 #: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Αυτό θα επαναφέρει όλες τις συντομεύσεις στις προκαθορισμένες τιμές. Είστε "
-"σίγουροι ότι θέλετε αυτό;"
-
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-msgid "<i>Large</i>"
-msgstr "<i>Μεγάλο</i>"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Αυτό θα επαναφέρει όλες τις συντομεύσεις στις προκαθορισμένες τιμές. Είστε σίγουροι ότι θέλετε αυτό;"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-msgid "<i>Opaque</i>"
-msgstr "<i>Αδιαφανές</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-msgid "<i>Transparent</i>"
-msgstr "<i>Διαφανές</i>"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "Activate foc_us stealing prevention"
-msgstr "Ενεργοποίηση προστασίας απώλειας της ε_στίασης"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-msgid "At the c_enter of the screen"
-msgstr "Στο κ_έντρο της οθόνης"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
-"Αυτόματη _παράθεση παραθύρων όταν μετακινηθούν προς την άκρη της οθόνης"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-msgid "By default, place windows:"
-msgstr "Προκαθορισμένα, τοποθέτησε τα παράθυρα:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-msgid "C_ompositor"
-msgstr "Στ_οιχειοθέτης"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-msgid "C_ycling"
-msgstr "Κ_υκλική εναλλαγή"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "Cycle _through windows on all workspaces"
-msgstr "Κυκλική εναλλαγή μ_εταξύ των παραθύρων σε όλους τους χώρους εργασίας"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-msgid "Display _fullscreen overlay windows directly"
-msgstr ""
-"Να απεικονίζονται απευθείας σε πλήρη ο_θόνης τα επικαλυπτόμενα παράθυρα"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-msgid "Do _nothing"
-msgstr "Μην γίνει τ_ίποτα"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-msgid "Hide frame of windows when ma_ximized"
-msgstr "Απόκρυψη περιγρα_μμάτων των παραθύρων όταν μεγιστοποιούνται"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-msgid "Honor _standard ICCCM focus hint"
-msgstr "Να τηρείται η πρ_ότυπη υπόδειξη εστίασης ICCM "
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Κράτημα επείγον παραθύρων ανα_βοσβήνοντας τα συνέχεια"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Key used to _grab and move windows:"
-msgstr ""
-"Το πλήκτρο που θα χρησιμοποιηθεί για την αρπ_αγή και μετακίνηση παραθύρων"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
-"Ειδοποίηση των επ_είγον με το να αναβοσβήνει των περίγραμμα των παραθύρων"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-msgid "Opaci_ty of window decorations:"
-msgstr "Δ_ιαφάνεια περιγραμμάτων παραθύρων:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-msgid "Opacity of _inactive windows:"
-msgstr "Διαφάνεια αν_ενεργών παραθύρων:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Opacity of popup wi_ndows:"
-msgstr "Διαφάνεια αναδυόμενων π_αραθύρων:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Opacity of windows during _move:"
-msgstr "Διαφάνεια παραθύρων κατά τη μ_ετακίνηση:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Opacity of windows during resi_ze:"
-msgstr "Διαφάνεια παραθύρων κατά τη αλλαγή μεγ_έθους:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
-"Επαναφορά αρχικού μεγέθ_ους των μεγιστοποιημένων παραθύρων κατά τη μετακίνηση"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Πρ_οσπέραση παραθύρων όταν έχουν την ιδιότητα \"προσπέρασε ειδοποιητή\"\n"
-"ή \"προσπέρασε γραμμή εργασιών\""
+msgstr "Πρ_οσπέραση παραθύρων όταν έχουν την ιδιότητα \"προσπέρασε ειδοποιητή\"\nή \"προσπέρασε γραμμή εργασιών\""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-msgid "Show shadows under _dock windows"
-msgstr "Εμφάνιση σκιών στα πρ_οσκολλημένα παράθυρα"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-msgid "Show shadows under _regular windows"
-msgstr "Εμφάνιση σκιών στα κ_ανονικά παράθυρα"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-msgid "Show shadows under pop_up windows"
-msgstr "Εμφάνιση σκιών στα αν_αδυόμενα παράθυρα"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-msgid "Switch to win_dow's workspace"
-msgstr "Αλλαγή στο χώρο εργασίας του παραθ_ύρου"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-msgid "U_nder the mouse pointer"
-msgstr "Κάτω από τον κ_έρσορα του ποντικιού"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-msgid "Use _edge resistance instead of window snapping"
-msgstr "Αντίσταση άκρ_ων αντί για συγκόλληση παραθύρων"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
-"Χρήση της ροδέλας του _ποντικιού στην επιφάνεια για την εναλλαγή των χώρων "
-"εργασίας"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "When a window raises itself:"
-msgstr "Όταν ένα παράθυρο ανυψώνεται μόνο του:"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Αναδίπλωση χώρων εργασίας σύμφωνα με την πραγματική δ_ιάταξη της επιφάνειας "
-"εργασίας"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
-"Αναδίπλωση χώρων εργασίας όταν _φτάσει στον πρώτο ή στον τελευταίο χώρο "
-"εργασίας "
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "_Accessibility"
-msgstr "Πρ_οσβασιμότητα"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "_Bring window on current workspace"
-msgstr "_Μεταφορά παραθύρου στο τρέχον χώρο εργασίας"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Draw frame around selected windows while cycling"
-msgstr ""
-"_Σχεδίαση του πλαισίου γύρω από τα επιλεγμένα παράθυρα όταν εναλλάσονται "
-"κυκλικά"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "_Enable display compositing"
-msgstr "Εν_εργοποίηση προβολής compositing"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "Να π_εριλαμβάνονται κρυμμένα (π.χ. ελαχιστοποιημένα) παράθυρα"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
-"Το ελ_άχιστο μέγεθος παραθύρων για να ενεργοποιηθεί η έξυπνη τοποθέτηση:"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+msgid "Cycle _through windows on all workspaces"
+msgstr "Κυκλική εναλλαγή μ_εταξύ των παραθύρων σε όλους τους χώρους εργασίας"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-msgid "_Placement"
-msgstr "Τ_οποθέτηση"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+msgid "_Draw frame around selected windows while cycling"
+msgstr "_Σχεδίαση του πλαισίου γύρω από τα επιλεγμένα παράθυρα όταν εναλλάσονται κυκλικά"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "C_ycling"
+msgstr "Κ_υκλική εναλλαγή"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+msgid "Activate foc_us stealing prevention"
+msgstr "Ενεργοποίηση προστασίας απώλειας της ε_στίασης"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+msgid "Honor _standard ICCCM focus hint"
+msgstr "Να τηρείται η πρ_ότυπη υπόδειξη εστίασης ICCM "
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+msgid "When a window raises itself:"
+msgstr "Όταν ένα παράθυρο ανυψώνεται μόνο του:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+msgid "_Bring window on current workspace"
+msgstr "_Μεταφορά παραθύρου στο τρέχον χώρο εργασίας"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+msgid "Switch to win_dow's workspace"
+msgstr "Αλλαγή στο χώρο εργασίας του παραθ_ύρου"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+msgid "Do _nothing"
+msgstr "Μην γίνει τ_ίποτα"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+msgid "Key used to _grab and move windows:"
+msgstr "Το πλήκτρο που θα χρησιμοποιηθεί για την αρπ_αγή και μετακίνηση παραθύρων"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "Αν_ύψωση παραθύρων όταν πατηθεί οποιοδήποτε κουμπί ποντικιού"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+msgid "Hide frame of windows when ma_ximized"
+msgstr "Απόκρυψη περιγρα_μμάτων των παραθύρων όταν μεγιστοποιούνται"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "Restore original size of maximi_zed windows when moving"
+msgstr "Επαναφορά αρχικού μεγέθ_ους των μεγιστοποιημένων παραθύρων κατά τη μετακίνηση"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+msgid "Automatically _tile windows when moving toward the screen edge"
+msgstr "Αυτόματη _παράθεση παραθύρων όταν μετακινηθούν προς την άκρη της οθόνης"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr "Ειδοποίηση των επ_είγον με το να αναβοσβήνει των περίγραμμα των παραθύρων"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+msgid "Use _edge resistance instead of window snapping"
+msgstr "Αντίσταση άκρ_ων αντί για συγκόλληση παραθύρων"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr "Κράτημα επείγον παραθύρων ανα_βοσβήνοντας τα συνέχεια"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "_Accessibility"
+msgstr "Πρ_οσβασιμότητα"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr "Χρήση της ροδέλας του _ποντικιού στην επιφάνεια για την εναλλαγή των χώρων εργασίας"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Ενθύμιση και επανάκληση του π_ροηγούμενο χώρου εργασίας\n"
-"κατά την εναλλαγή μέσω συντομεύσεων πληκτρολογίου"
+msgstr "Ενθύμιση και επανάκληση του π_ροηγούμενο χώρου εργασίας\nκατά την εναλλαγή μέσω συντομεύσεων πληκτρολογίου"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+msgid "Wrap workspaces depending on the actual desktop _layout"
+msgstr "Αναδίπλωση χώρων εργασίας σύμφωνα με την πραγματική δ_ιάταξη της επιφάνειας εργασίας"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+msgid "Wrap workspaces when _the first or the last workspace is reached"
+msgstr "Αναδίπλωση χώρων εργασίας όταν _φτάσει στον πρώτο ή στον τελευταίο χώρο εργασίας "
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
 msgstr "Χ_ώροι εργασίας"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr "Το ελ_άχιστο μέγεθος παραθύρων για να ενεργοποιηθεί η έξυπνη τοποθέτηση:"
+
+#. Smart placement size
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "<i>Large</i>"
+msgstr "<i>Μεγάλο</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "By default, place windows:"
+msgstr "Προκαθορισμένα, τοποθέτησε τα παράθυρα:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+msgid "At the c_enter of the screen"
+msgstr "Στο κ_έντρο της οθόνης"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+msgid "U_nder the mouse pointer"
+msgstr "Κάτω από τον κ_έρσορα του ποντικιού"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+msgid "_Placement"
+msgstr "Τ_οποθέτηση"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+msgid "_Enable display compositing"
+msgstr "Εν_εργοποίηση προβολής compositing"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+msgid "Display _fullscreen overlay windows directly"
+msgstr "Να απεικονίζονται απευθείας σε πλήρη ο_θόνης τα επικαλυπτόμενα παράθυρα"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+msgid "Synchronize drawing to the _vertical blank"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "Show shadows under pop_up windows"
+msgstr "Εμφάνιση σκιών στα αν_αδυόμενα παράθυρα"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Show shadows under _dock windows"
+msgstr "Εμφάνιση σκιών στα πρ_οσκολλημένα παράθυρα"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show shadows under _regular windows"
+msgstr "Εμφάνιση σκιών στα κ_ανονικά παράθυρα"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+msgid "Opaci_ty of window decorations:"
+msgstr "Δ_ιαφάνεια περιγραμμάτων παραθύρων:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgid "<i>Transparent</i>"
+msgstr "<i>Διαφανές</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "<i>Opaque</i>"
+msgstr "<i>Αδιαφανές</i>"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+msgid "Opacity of _inactive windows:"
+msgstr "Διαφάνεια αν_ενεργών παραθύρων:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+msgid "Opacity of windows during _move:"
+msgstr "Διαφάνεια παραθύρων κατά τη μ_ετακίνηση:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Opacity of windows during resi_ze:"
+msgstr "Διαφάνεια παραθύρων κατά τη αλλαγή μεγ_έθους:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Opacity of popup wi_ndows:"
+msgstr "Διαφάνεια αναδυόμενων π_αραθύρων:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+msgid "C_ompositor"
+msgstr "Στ_οιχειοθέτης"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+msgid "_Number of workspaces:"
+msgstr "Αρ_ιθμός χώρων εργασίας:"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
 msgstr "Διάταξη"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-msgid ""
-"Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα "
-"τοποθετηθούν παράθυρα"
-
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
 msgstr "Ονόματα"
 
@@ -612,12 +581,13 @@ msgid "_General"
 msgstr "_Γενικά"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "_Margins"
-msgstr "_Περιθώρια"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
+msgstr "Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα τοποθετηθούν παράθυρα"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-msgid "_Number of workspaces:"
-msgstr "Αρ_ιθμός χώρων εργασίας:"
+msgid "_Margins"
+msgstr "_Περιθώρια"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -763,9 +733,7 @@ msgstr "%s: Αδύνατος ο προσδιορισμός του χρώματο
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Αδύνατη ο προσδιορισμός του χρώματος: το GValue για το χρώμα δεν είναι "
-"αλφαριθμητικός τύπος"
+msgstr "%s: Αδύνατη ο προσδιορισμός του χρώματος: το GValue για το χρώμα δεν είναι αλφαριθμητικός τύπος"
 
 #: ../src/settings.c:282
 #, c-format
@@ -775,9 +743,7 @@ msgstr "%s: Αδύνατη η ανάλυση του χρώματος %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-"%s: Αδύνατη η ανάλυση του χρώματος: Το GValue για το χρώμα δεν είναι "
-"αλφαριθμητικός τύπος"
+msgstr "%s: Αδύνατη η ανάλυση του χρώματος: Το GValue για το χρώμα δεν είναι αλφαριθμητικός τύπος"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -788,232 +754,3 @@ msgstr "Σφάλμα ανάγνωσης δεδομένων από την διε�
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Δεν είναι δυνατή η έναρξη του διαλόγου: %s\n"
-
-#~ msgid "<b>Box move and resize</b>"
-#~ msgstr "<b>Συμπαγής μετακίνηση και αλλαγή μεγέθους</b>"
-
-#~ msgid "<b>Window _shortcuts</b>"
-#~ msgstr "<b>Σ_υντόμευση παραθύρου</b>"
-
-#~ msgid "<b>Wrap workspaces</b>"
-#~ msgstr "<b>Αναδίπλωση χώρων εργασίας</b>"
-
-#~ msgid "Hide content of windows when _resizing"
-#~ msgstr "Απόκρυψη των περιεχομένων των αραθύρων κατά τη α_λλαγή μεγέθους"
-
-#~ msgid "Snap windows to other _windows"
-#~ msgstr "Ταίριασμα παραθύρων στα άλλα π_αράθυρα"
-
-#~ msgid "Wrap workspaces when _dragging a window off the screen"
-#~ msgstr ""
-#~ "Αναδίπλωση χώρων εργασίας όταν σ_ύρεται ένα παράθυρο έξω από την οθόνη"
-
-#~ msgid "Window operations menu"
-#~ msgstr "Λειτουργίες παραθύρων"
-
-#~ msgid "Up"
-#~ msgstr "Πάνω"
-
-#~ msgid "Down"
-#~ msgstr "Κάτω"
-
-#~ msgid "Cancel"
-#~ msgstr "Άκυρο"
-
-#~ msgid "Cycle windows"
-#~ msgstr "Εναλλαγή παραθύρων"
-
-#~ msgid "Cycle windows (Reverse)"
-#~ msgstr "Εναλλαγή παραθύρων (Αντίστροφα)"
-
-#~ msgid "Switch window for same application"
-#~ msgstr "Εναλλαγή παραθύρου για την ίδια εφαρμογή"
-
-#~ msgid "Switch application"
-#~ msgstr "Εναλλαγή εφαρμογής"
-
-#~ msgid "Close window"
-#~ msgstr "Κλείσιμο παραθύρου"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Μεγιστοποίηση ενός παραθύρου οριζόντια"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Μεγιστοποίηση ενός παραθύρου κάθετα"
-
-#~ msgid "Move window"
-#~ msgstr "Μετακίνηση παραθύρου"
-
-#~ msgid "Resize window"
-#~ msgstr "Αλλαγή μεγέθους παραθύρου"
-
-#~ msgid "Stick window"
-#~ msgstr "Επικόλληση παραθύρου"
-
-#~ msgid "Raise window"
-#~ msgstr "Ανύψωση παραθύρου "
-
-#~ msgid "Raise or lower window"
-#~ msgstr "Ανύψωση ή κατέβασμα παραθύρου "
-
-#~ msgid "Fill window horizontally"
-#~ msgstr "Οριζόντια μεγιστοποίηση παραθύρου"
-
-#~ msgid "Fill window vertically"
-#~ msgstr "Κάθετη μεγιστοποίηση παραθύρου"
-
-#~ msgid "Toggle above"
-#~ msgstr "Εναλλαγή με το παραπάνω"
-
-#~ msgid "Toggle fullscreen"
-#~ msgstr "Σε πλήρη οθόνη"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Μετακίνηση παραθύρου στον πάνω χώρο εργασίας"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Μετακίνηση παραθύρου στον κάτω χώρο εργασίας"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας αριστερά"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας δεξιά"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Μετακίνηση παραθύρου στον προηγούμενο χώρο εργασίας"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Μετακίνηση παραθύρου στον επόμενο χώρο εργασίας"
-
-#~ msgid "Move window to workspace 1"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 1"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 2"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 3"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 4"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 5"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 6"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 7"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 8"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 9"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 10"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 11"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας 12"
-
-#~ msgid "Tile window to the top"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας στην κορυφή"
-
-#~ msgid "Tile window to the bottom"
-#~ msgstr "Μετακίνηση παραθύρου στον κάτω χώρο εργασίας"
-
-#~ msgid "Tile window to the left"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας αριστερά"
-
-#~ msgid "Tile window to the right"
-#~ msgstr "Μετακίνηση παραθύρου στο χώρο εργασίας δεξιά"
-
-#~ msgid "Show desktop"
-#~ msgstr "Εμφάνιση επιφάνειας εργασίας"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Πάνω χώρος εργασίας"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Κάτω χώρος εργασίας"
-
-#~ msgid "Left workspace"
-#~ msgstr "Χώρος εργασίας αριστερά"
-
-#~ msgid "Right workspace"
-#~ msgstr "Χώρος εργασίας δεξιά"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Προηγούμενος χώρος εργασίας"
-
-#~ msgid "Next workspace"
-#~ msgstr "Επόμενος χώρος εργασίας"
-
-#~ msgid "Workspace 1"
-#~ msgstr "Χώρος εργασίας 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "Χώρος εργασίας 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "Χώρος εργασίας 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "Χώρος εργασίας 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "Χώρος εργασίας 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "Χώρος εργασίας 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "Χώρος εργασίας 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "Χώρος εργασίας 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "Χώρος εργασίας 9"
-
-#~ msgid "Workspace 10"
-#~ msgstr "Χώρος εργασίας 10"
-
-#~ msgid "Workspace 11"
-#~ msgstr "Χώρος εργασίας 11"
-
-#~ msgid "Workspace 12"
-#~ msgstr "Χώρος εργασίας 12"
-
-#~ msgid "Add workspace"
-#~ msgstr "Προσθήκη χώρου εργασίας"
-
-#~ msgid "Add adjacent workspace"
-#~ msgstr "Προσθήκη γειτονικού χώρου εργασίας"
-
-#~ msgid "Delete last workspace"
-#~ msgstr "Διαγραφή του τελευταίου χώρου εργασίας"
-
-#~ msgid "Delete active workspace"
-#~ msgstr "Διαγραφή ενεργού χώρου εργασίας"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "Ορισμός αριθμού και όνομα του χώρου εργασίας"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>Xώρoι εργασίας</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "Αλλαγή ονομάτων χώρων εργασίας"
-
-#~ msgid "Hide"
-#~ msgstr "Απόκρυψη"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Σφάλμα κατάτμησης"
