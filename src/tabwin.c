@@ -309,6 +309,22 @@ getMinMonitorWidth (ScreenInfo *screen_info)
     return min_width;
 }
 
+static gboolean
+cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
+{
+    Tabwin *t = user_data;
+
+    TRACE ("entering");
+
+    g_return_val_if_fail (t != NULL, FALSE);
+
+    /* On mouse over we grab the focus for the window button and select it */
+    gtk_widget_grab_focus (widget);
+    tabwinSelectWidget (t, widget);
+
+    return FALSE;
+}
+
 static GtkWidget *
 createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 {
@@ -343,6 +359,9 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
         gtk_button_set_relief (GTK_BUTTON (window_button), GTK_RELIEF_NONE);
         gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+24);
         g_object_set_data (G_OBJECT (window_button), "client-ptr-val", c);
+        g_signal_connect (window_button, "enter-notify-event", G_CALLBACK (cb_window_button_enter), t);
+        gtk_widget_add_events (window_button, GDK_ENTER_NOTIFY_MASK);
+
         buttonbox = gtk_vbox_new (FALSE, 0);
         gtk_container_add (GTK_CONTAINER (window_button), buttonbox);
         
