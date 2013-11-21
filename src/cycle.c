@@ -227,6 +227,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     DisplayInfo *display_info;
     ClientCycleData *passdata;
     Client *c, *removed;
+    static Client *last_selected = NULL;
     eventFilterStatus status;
     KeyCode cancel, left, right, up, down;
     int key, modifiers;
@@ -328,18 +329,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     {
                         cycling = FALSE;
                     }
-                }
 
-                if (cycling)
-                {
-                    if (c)
-                    {
-                        if (passdata->wireframe)
-                        {
-                            wireframeUpdate (c, passdata->wireframe);
-                        }
-                    }
-                    else
+                    if (!c)
                     {
                         cycling = FALSE;
                     }
@@ -361,11 +352,16 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             break;
         case ButtonPress:
         case ButtonRelease:
-            status = EVENT_FILTER_CONTINUE;
+            status = EVENT_FILTER_STOP;
+            cycling = FALSE;
             /* window of the event, we might accept it later */
             mouse_window = xevent->xbutton.window;
             break;
-
+        case MotionNotify:
+            status = EVENT_FILTER_CONTINUE;
+            /* window of the event, we might accept it later */
+            mouse_window = xevent->xcrossing.window;
+            break;
         default:
             status = EVENT_FILTER_CONTINUE;
             break;
@@ -373,38 +369,26 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     
     if (mouse_window != 0)
     {
-        Client *c2 = NULL;
-
         /* only accept events for the tab windows */
         for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
         {
             if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == mouse_window)
             {
-                c2 = tabwinSelectWidget (passdata->tabwin, li->data);
-                if (c2)
-                {
-                    c = c2;
-                }
-
-                if (c)
-                {
-                    if (passdata->wireframe)
-                    {
-                        wireframeUpdate (c, passdata->wireframe);
-                    }
-                }
-                else
-                {
-                    cycling = FALSE;
-                }
+                c = tabwinSelectWidget (passdata->tabwin, li->data);
                 break;
             }
         }
+    }
 
-        if (c2 == NULL)
+    if (cycling)
+    {
+        if (c)
         {
-            status = EVENT_FILTER_STOP;
-            cycling = FALSE;
+            if (passdata->wireframe && last_selected != c)
+            {
+                last_selected = c;
+                wireframeUpdate (c, passdata->wireframe);
+            }
         }
     }
 
