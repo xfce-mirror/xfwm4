@@ -1332,6 +1332,10 @@ wait_vblank (ScreenInfo *screen_info)
     }
 }
 
+#endif /* TIMEOUT_REPAINT */
+
+#endif /* HAVE_LIBDRM */
+
 #ifdef HAVE_RANDR
 static void
 get_refresh_rate (ScreenInfo* screen_info)
@@ -1350,10 +1354,6 @@ get_refresh_rate (ScreenInfo* screen_info)
     }
 }
 #endif /* HAVE_RANDR */
-
-#endif /* TIMEOUT_REPAINT */
-
-#endif /* HAVE_LIBDRM */
 
 static void
 paint_all (ScreenInfo *screen_info, XserverRegion region)
@@ -2724,7 +2724,6 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
     }
 }
 
-#ifdef HAVE_LIBDRM
 #ifdef HAVE_RANDR
 static void
 compositorHandleRandrNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEvent *ev)
@@ -2742,7 +2741,6 @@ compositorHandleRandrNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEve
     XRRUpdateConfiguration ((XEvent *) ev);
 }
 #endif /* HAVE_RANDR */
-#endif /* HAVE_LIBDRM */
 
 static void
 compositorSetCMSelection (ScreenInfo *screen_info, Window w)
@@ -2954,14 +2952,12 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
-#ifdef HAVE_LIBDRM
 #ifdef HAVE_RANDR
     else if (ev->type == (display_info->xrandr_event_base + RRScreenChangeNotify))
     {
         compositorHandleRandrNotify (display_info, (XRRScreenChangeNotifyEvent *) ev);
     }
 #endif /* HAVE_RANDR */
-#endif /* HAVE_LIBDRM */
 
 #if TIMEOUT_REPAINT == 0
     repair_display (display_info);

@@ -188,11 +188,11 @@ struct _ScreenInfo
     gboolean dri_success;
     gint64 dri_time;
     gint64 vblank_time;
+#endif /* HAVE_LIBDRM */
 
 #ifdef HAVE_RANDR
     gint refresh_rate;
 #endif /* HAVE_RANDR */
-#endif /* HAVE_LIBDRM */
 
 #endif /* HAVE_COMPOSITOR */
 };
