@@ -40,6 +40,7 @@ struct _Tabwin
     GList *tabwin_list;
     GList **client_list;
     GList *selected;
+    GtkWidget *hovered;
     gboolean display_workspace;
 };
 
@@ -75,7 +76,8 @@ Client                  *tabwinSelectHead                       (Tabwin *);
 Client                  *tabwinSelectNext                       (Tabwin *);
 Client                  *tabwinSelectPrev                       (Tabwin *);
 Client                  *tabwinSelectDelta                      (Tabwin *, int, int);
-Client                  *tabwinSelectWidget                     (Tabwin *, GtkWidget *);
+Client                  *tabwinSelectWidget                     (Tabwin *);
+Client                  *tabwinSelectHoveredWidget              (Tabwin *);
 Client                  *tabwinRemoveClient                     (Tabwin *,
                                                                  Client *);
 void                    tabwinDestroy                           (Tabwin *);

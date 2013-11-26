@@ -312,15 +312,54 @@ getMinMonitorWidth (ScreenInfo *screen_info)
 static gboolean
 cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
-    Tabwin *t = user_data;
+    TabwinWidget *tbw = user_data;
+    Client *c;
+    GtkWidget *buttonbox, *buttonlabel;
+    gchar *classname;
 
     TRACE ("entering");
 
-    g_return_val_if_fail (t != NULL, FALSE);
+    g_return_val_if_fail (tbw != NULL, FALSE);
 
-    /* On mouse over we grab the focus for the window button and select it */
-    gtk_widget_grab_focus (widget);
-    tabwinSelectWidget (t, widget);
+    c = g_object_get_data (G_OBJECT (widget), "client-ptr-val");
+
+    /* keep track of which widget we're hovered over */
+    tbw->tabwin->hovered = widget;
+
+    /* when hovering over a window icon, display it's label but don't
+     * select it */
+    if (c != NULL)
+    {
+        buttonbox = GTK_WIDGET( gtk_container_get_children(GTK_CONTAINER(widget))[0].data );
+        buttonlabel = GTK_WIDGET( g_list_nth_data( gtk_container_get_children(GTK_CONTAINER(buttonbox)), 1) );
+
+        classname = g_strdup(c->class.res_class);
+        tabwinSetLabel (tbw, buttonlabel, classname, c->name, c->win_workspace);
+        g_free (classname);
+    }
+
+    return FALSE;
+}
+
+static gboolean
+cb_window_button_leave (GtkWidget *widget, GdkEvent *event, gpointer user_data)
+{
+    TabwinWidget *tbw = user_data;
+
+    TRACE ("entering");
+
+    g_return_val_if_fail (tbw != NULL, FALSE);
+
+    /* don't do anything if we have the focus */
+    if (gtk_widget_is_focus (widget))
+    {
+        return FALSE;
+    }
+
+    tbw->tabwin->hovered = NULL;
+
+    /* reselect the selected widget, it will clear everything else out */
+    tabwinSelectWidget (tbw->tabwin);
 
     return FALSE;
 }
@@ -359,7 +398,8 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
         gtk_button_set_relief (GTK_BUTTON (window_button), GTK_RELIEF_NONE);
         gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+24);
         g_object_set_data (G_OBJECT (window_button), "client-ptr-val", c);
-        g_signal_connect (window_button, "enter-notify-event", G_CALLBACK (cb_window_button_enter), t);
+        g_signal_connect (window_button, "enter-notify-event", G_CALLBACK (cb_window_button_enter), tbw);
+        g_signal_connect (window_button, "leave-notify-event", G_CALLBACK (cb_window_button_leave), tbw);
         gtk_widget_add_events (window_button, GDK_ENTER_NOTIFY_MASK);
 
         buttonbox = gtk_vbox_new (FALSE, 0);
@@ -800,7 +840,7 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
 }
 
 Client*
-tabwinSelectWidget (Tabwin *t, GtkWidget * w)
+tabwinSelectWidget (Tabwin *t)
 {
     GList *tabwin_list, *widgets, *selected;
     GtkWidget *window_button, *buttonbox, *buttonlabel;
@@ -838,6 +878,23 @@ tabwinSelectWidget (Tabwin *t, GtkWidget * w)
     }
 
     return tabwinGetSelected (t);
+}
+
+Client*
+tabwinSelectHoveredWidget (Tabwin *t)
+{
+    TRACE ("entering");
+
+    g_return_val_if_fail (t != NULL, NULL);
+
+    if (!t->hovered)
+    {
+        return NULL;
+    }
+
+    gtk_widget_grab_focus (t->hovered);
+
+    return tabwinSelectWidget (t);
 }
 
 void

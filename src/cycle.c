@@ -227,7 +227,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     DisplayInfo *display_info;
     ClientCycleData *passdata;
     Client *c, *removed;
-    static Client *last_selected = NULL;
     eventFilterStatus status;
     KeyCode cancel, left, right, up, down;
     int key, modifiers;
@@ -329,8 +328,18 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     {
                         cycling = FALSE;
                     }
+                }
 
-                    if (!c)
+                if (cycling)
+                {
+                    if (c)
+                    {
+                        if (passdata->wireframe)
+                        {
+                            wireframeUpdate (c, passdata->wireframe);
+                        }
+                    }
+                    else
                     {
                         cycling = FALSE;
                     }
@@ -357,11 +366,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             /* window of the event, we might accept it later */
             mouse_window = xevent->xbutton.window;
             break;
-        case MotionNotify:
-            status = EVENT_FILTER_CONTINUE;
-            /* window of the event, we might accept it later */
-            mouse_window = xevent->xcrossing.window;
-            break;
         default:
             status = EVENT_FILTER_CONTINUE;
             break;
@@ -374,20 +378,9 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
         {
             if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == mouse_window)
             {
-                c = tabwinSelectWidget (passdata->tabwin, li->data);
-                break;
-            }
-        }
-    }
+                c = tabwinSelectHoveredWidget (passdata->tabwin);
 
-    if (cycling)
-    {
-        if (c)
-        {
-            if (passdata->wireframe && last_selected != c)
-            {
-                last_selected = c;
-                wireframeUpdate (c, passdata->wireframe);
+                break;
             }
         }
     }
