@@ -787,10 +787,20 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
     if (col_current < 0)
     {
         col_current = cols - 1;
+        row_current--;
+        if (row_current < 0)
+        {
+            row_current = rows - 1;
+        }
     }
     else if (col_current >= cols)
     {
         col_current = 0;
+        row_current++;
+        if (row_current >= rows)
+        {
+            row_current = rows - 1;
+        }
     }
 
     /* Wrap row */
@@ -798,10 +808,29 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
     if (row_current < 0)
     {
         row_current = rows - 1;
+        col_current--;
+        if (col_current < 0)
+        {
+            col_current = cols - 1;
+        }
     }
     else if (row_current >= rows)
     {
         row_current = 0;
+        col_current++;
+        if (col_current >= cols)
+        {
+            if (rows != 1)
+            {
+                col_current = cols - 1;
+            }
+            else
+            {
+                /* If there's only 1 row then col needs to wrap back to
+                 * the head of the grid */
+                col_current = 0;
+            }
+        }
     }
 
     /* So here we are at the new (wrapped) position in the rectangle */
@@ -812,7 +841,10 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
         {
             if (col_delta > 0)
             {
+                /* In this case we're going past the tail, reset to the head
+                 * of the grid */
                 col_current = 0;
+                row_current = 0;
             }
             else
             {
@@ -824,6 +856,11 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
             if (row_delta > 0)
             {
                 row_current = 0;
+                col_current++;
+                if (col_current >= cols)
+                {
+                    col_current = 0;
+                }
             }
             else
             {
