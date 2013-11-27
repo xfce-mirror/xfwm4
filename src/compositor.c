@@ -2450,7 +2450,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 
     for (p = 0; p < 2; p++)
     {
-        if (ev->atom == backgroundProps[p])
+        if (ev->atom == backgroundProps[p] && ev->state == PropertyNewValue)
         {
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->rootTile))
