@@ -2458,7 +2458,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
                 XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (display_info->dpy, screen_info->rootTile);
                 screen_info->rootTile = None;
-                add_repair (screen_info);
+                damage_screen (screen_info);
 
                 return;
             }
