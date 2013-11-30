@@ -35,6 +35,13 @@ typedef struct _Tabwin Tabwin;
 typedef struct _TabwinWidget TabwinWidget;
 typedef struct _TabwinWidgetClass TabwinWidgetClass;
 
+typedef enum
+{
+    STANDARD_ICON_GRID,
+    OVERFLOW_COLUMN_GRID,
+}
+CYCLE_TABWIN_MODE;
+
 struct _Tabwin
 {
     GList *tabwin_list;

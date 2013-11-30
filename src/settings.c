@@ -678,6 +678,7 @@ loadSettings (ScreenInfo *screen_info)
         {"cycle_draw_frame", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_tabwin_mode", NULL, G_TYPE_INT, FALSE},
         {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
         {"double_click_time", NULL, G_TYPE_INT, TRUE},
         {"double_click_distance", NULL, G_TYPE_INT, TRUE},
@@ -768,6 +769,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("cycle_draw_frame", rc);
     screen_info->params->cycle_hidden =
         getBoolValue ("cycle_hidden", rc);
+    screen_info->params->cycle_tabwin_mode =
+        CLAMP (getIntValue ("cycle_tabwin_mode", rc), 0, 1);
     screen_info->params->cycle_workspaces =
         getBoolValue ("cycle_workspaces", rc);
     screen_info->params->focus_hint =
@@ -1185,6 +1188,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "placement_ratio"))
                 {
                     screen_info->params->placement_ratio = CLAMP (g_value_get_int(value), 0, 100);
+                }
+                else if (!strcmp (name, "cycle_tabwin_mode"))
+                {
+                    screen_info->params->cycle_tabwin_mode = CLAMP (g_value_get_int(value), 0, 1);
                 }
                 else if ((!strcmp (name, "button_offset"))
                       || (!strcmp (name, "button_spacing"))

@@ -174,6 +174,7 @@ struct _XfwmParams
     int activate_action;
     int button_offset;
     int button_spacing;
+    int cycle_tabwin_mode;
     int double_click_action;
     guint easy_click;
     int focus_delay;
