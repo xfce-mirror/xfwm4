@@ -55,6 +55,7 @@
 #include "icons.h"
 #include "focus.h"
 #include "tabwin.h"
+#include "settings.h"
 
 static void tabwin_widget_class_init (TabwinWidgetClass *klass);
 
@@ -118,7 +119,7 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
     gdouble border_alpha = WIN_BORDER_ALPHA;
     gdouble alpha = WIN_ALPHA;
     gint border_radius = WIN_BORDER_RADIUS;
-    gdouble degrees = 3.14 / 180.0;
+    gdouble degrees = G_PI / 180.0;
     gdouble width = tbw->allocation.width;
     gdouble height = tbw->allocation.height;
 
@@ -135,7 +136,8 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
                             NULL);
     cairo_set_line_width (cr, border_width);
     
-    if (gdk_screen_is_composited(screen)) {
+    if (gdk_screen_is_composited (screen))
+    {
         cairo_set_operator(cr, CAIRO_OPERATOR_CLEAR);
         gdk_cairo_region(cr, event->region);
         cairo_set_source_rgba(cr, 1.0, 1.0, 1.0, 0.0);
@@ -154,7 +156,8 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
         cairo_set_source_rgba (cr, bg_selected->red/65535.0, bg_selected->green/65535.0, bg_selected->blue/65535.0, border_alpha);
         cairo_stroke (cr);
     }
-    else{
+    else
+    {
         cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
         cairo_rectangle(cr, 0, 0, width, height);
         gdk_cairo_set_source_color(cr, bg_normal);
@@ -248,10 +251,17 @@ tabwinSetSelected (TabwinWidget *tbw, GtkWidget *w, GtkWidget *l)
                                                "expose-event",
                                                G_CALLBACK (paint_selected),
                                                NULL);
+
     c = g_object_get_data (G_OBJECT (tbw->selected), "client-ptr-val");
 
     if (c != NULL)
     {
+        /* We don't update labels here */
+        if (c->screen_info->params->cycle_tabwin_mode == OVERFLOW_COLUMN_GRID)
+        {
+            return;
+        }
+
         classname = g_strdup(c->class.res_class);
         tabwinSetLabel (tbw, l, classname, c->name, c->win_workspace);
         g_free (classname);
@@ -309,6 +319,20 @@ getMinMonitorWidth (ScreenInfo *screen_info)
     return min_width;
 }
 
+static int
+getMinMonitorHeight (ScreenInfo *screen_info)
+{
+    int i, min_height, num_monitors = myScreenGetNumMonitors (screen_info);
+    for (min_height = i = 0; i < num_monitors; i++)
+    {
+        GdkRectangle monitor;
+        gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        if (min_height == 0 || monitor.height < min_height)
+            min_height = monitor.height;
+    }
+    return min_height;
+}
+
 static gboolean
 cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
@@ -321,15 +345,21 @@ cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
     g_return_val_if_fail (tbw != NULL, FALSE);
 
-    c = g_object_get_data (G_OBJECT (widget), "client-ptr-val");
-
     /* keep track of which widget we're hovered over */
     tbw->tabwin->hovered = widget;
+
+    c = g_object_get_data (G_OBJECT (widget), "client-ptr-val");
 
     /* when hovering over a window icon, display it's label but don't
      * select it */
     if (c != NULL)
     {
+        /* we don't update the labels on mouse over for this mode */
+        if (c->screen_info->params->cycle_tabwin_mode == OVERFLOW_COLUMN_GRID)
+        {
+            return FALSE;
+        }
+
         buttonbox = GTK_WIDGET( gtk_container_get_children(GTK_CONTAINER(widget))[0].data );
         buttonlabel = GTK_WIDGET( g_list_nth_data( gtk_container_get_children(GTK_CONTAINER(buttonbox)), 1) );
 
@@ -345,6 +375,7 @@ static gboolean
 cb_window_button_leave (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     TabwinWidget *tbw = user_data;
+    Client *c;
 
     TRACE ("entering");
 
@@ -358,8 +389,21 @@ cb_window_button_leave (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
     tbw->tabwin->hovered = NULL;
 
-    /* reselect the selected widget, it will clear everything else out */
-    tabwinSelectWidget (tbw->tabwin);
+    c = g_object_get_data (G_OBJECT (widget), "client-ptr-val");
+
+    /* when hovering over a window icon, display it's label but don't
+     * select it */
+    if (c != NULL)
+    {
+        /* we don't update the labels for this mode */
+        if (c->screen_info->params->cycle_tabwin_mode == OVERFLOW_COLUMN_GRID)
+        {
+            return FALSE;
+        }
+
+        /* reselect the selected widget, it will clear everything else out */
+        tabwinSelectWidget (tbw->tabwin);
+    }
 
     return FALSE;
 }
@@ -370,7 +414,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     Client *c;
     GList *client_list;
     GtkWidget *windowlist, *icon, *selected, *window_button, *buttonbox, *buttonlabel, *selected_label;
-    int packpos, monitor_width;
+    int packpos, monitor_width, monitor_height;
     Tabwin *t;
     gint icon_size = WIN_ICON_SIZE;
 
@@ -381,13 +425,26 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     selected = NULL;
     t = tbw->tabwin;
     monitor_width = getMinMonitorWidth (screen_info);
+    monitor_height = getMinMonitorHeight (screen_info);
     g_return_val_if_fail (screen_info->client_count > 0, NULL);
 
     gtk_widget_style_get (GTK_WIDGET (tbw), "icon-size", &icon_size, NULL);
-    tbw->grid_cols = (monitor_width / (icon_size + 2 * WIN_ICON_BORDER)) * 0.75;
-    tbw->grid_rows = screen_info->client_count / tbw->grid_cols + 1;
     tbw->widgets = NULL;
+
+    if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+    {
+        tbw->grid_cols = (monitor_width / (icon_size + 2 * WIN_ICON_BORDER)) * 0.75;
+        tbw->grid_rows = screen_info->client_count / tbw->grid_cols + 1;
+    }
+    else
+    {
+        icon_size = 24;
+        tbw->grid_rows = (monitor_height / (icon_size + 2 * WIN_ICON_BORDER)) * 0.75;
+        tbw->grid_cols = screen_info->client_count / tbw->grid_rows + 1;
+    }
+
     windowlist = gtk_table_new (tbw->grid_rows, tbw->grid_cols, FALSE);
+
     /* pack the client icons */
     for (client_list = *t->client_list; client_list; client_list = g_list_next (client_list))
     {
@@ -396,28 +453,50 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 
         window_button = gtk_button_new ();
         gtk_button_set_relief (GTK_BUTTON (window_button), GTK_RELIEF_NONE);
-        gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+24);
         g_object_set_data (G_OBJECT (window_button), "client-ptr-val", c);
         g_signal_connect (window_button, "enter-notify-event", G_CALLBACK (cb_window_button_enter), tbw);
         g_signal_connect (window_button, "leave-notify-event", G_CALLBACK (cb_window_button_leave), tbw);
         gtk_widget_add_events (window_button, GDK_ENTER_NOTIFY_MASK);
 
-        buttonbox = gtk_vbox_new (FALSE, 0);
+        if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+        {
+            gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+24);
+            buttonbox = gtk_vbox_new (FALSE, 0);
+            buttonlabel = gtk_label_new ("");
+            gtk_misc_set_alignment (GTK_MISC (buttonlabel), 0.5, 1.0);
+        }
+        else
+        {
+            gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+256, icon_size+8);
+            buttonbox = gtk_hbox_new (FALSE, 6);
+            buttonlabel = gtk_label_new (c->name);
+            gtk_misc_set_alignment (GTK_MISC (buttonlabel), 0, 0.5);
+        }
+
         gtk_container_add (GTK_CONTAINER (window_button), buttonbox);
         
         icon = createWindowIcon (c, icon_size);
         gtk_box_pack_start (GTK_BOX (buttonbox), icon, FALSE, TRUE, 0);
-        
-        buttonlabel = gtk_label_new ("");
-        gtk_misc_set_alignment (GTK_MISC (buttonlabel), 0.5, 1.0);
+
         gtk_label_set_justify (GTK_LABEL (buttonlabel), GTK_JUSTIFY_CENTER);
         gtk_label_set_ellipsize (GTK_LABEL (buttonlabel), PANGO_ELLIPSIZE_END);
         gtk_box_pack_start (GTK_BOX (buttonbox), buttonlabel, TRUE, TRUE, 0);
 
-        gtk_table_attach (GTK_TABLE (windowlist), GTK_WIDGET (window_button),
-            packpos % tbw->grid_cols, packpos % tbw->grid_cols + 1,
-            packpos / tbw->grid_cols, packpos / tbw->grid_cols + 1,
-            GTK_FILL, GTK_FILL, 2, 2);
+        if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+        {
+            gtk_table_attach (GTK_TABLE (windowlist), GTK_WIDGET (window_button),
+                packpos % tbw->grid_cols, packpos % tbw->grid_cols + 1,
+                packpos / tbw->grid_cols, packpos / tbw->grid_cols + 1,
+                GTK_FILL, GTK_FILL, 2, 2);
+        }
+        else
+        {
+            gtk_table_attach (GTK_TABLE (windowlist), GTK_WIDGET (window_button),
+                packpos / tbw->grid_rows, packpos / tbw->grid_rows + 1,
+                packpos % tbw->grid_rows, packpos % tbw->grid_rows + 1,
+                GTK_FILL, GTK_FILL, 2, 2);
+        }
+
         tbw->widgets = g_list_append (tbw->widgets, window_button);
         packpos++;
         if (c == t->selected->data)
@@ -549,11 +628,14 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     vbox = gtk_vbox_new (FALSE, 3);
     gtk_container_add (GTK_CONTAINER (tbw), vbox);
 
-    tbw->label = gtk_label_new ("");
-    gtk_label_set_use_markup (GTK_LABEL (tbw->label), TRUE);
-    gtk_label_set_justify (GTK_LABEL (tbw->label), GTK_JUSTIFY_CENTER);
-    gtk_label_set_ellipsize (GTK_LABEL (tbw->label), PANGO_ELLIPSIZE_END);
-    gtk_box_pack_end (GTK_BOX (vbox), tbw->label, TRUE, TRUE, 0);
+    if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+    {
+        tbw->label = gtk_label_new ("");
+        gtk_label_set_use_markup (GTK_LABEL (tbw->label), TRUE);
+        gtk_label_set_justify (GTK_LABEL (tbw->label), GTK_JUSTIFY_CENTER);
+        gtk_label_set_ellipsize (GTK_LABEL (tbw->label), PANGO_ELLIPSIZE_END);
+        gtk_box_pack_end (GTK_BOX (vbox), tbw->label, TRUE, TRUE, 0);
+    }
 
     windowlist = createWindowlist (screen_info, tbw);
     tbw->container = windowlist;
@@ -574,6 +656,7 @@ tabwinChange2Selected (Tabwin *t, GList *selected)
     GList *tabwin_list, *widgets;
     GtkWidget *window_button, *buttonbox, *buttonlabel;
     TabwinWidget *tbw;
+    Client *c;
 
     t->selected = selected;
     for (tabwin_list = t->tabwin_list; tabwin_list; tabwin_list = g_list_next (tabwin_list))
@@ -585,12 +668,21 @@ tabwinChange2Selected (Tabwin *t, GList *selected)
             gtk_button_set_relief (GTK_BUTTON (window_button), GTK_RELIEF_NONE);
             buttonbox = GTK_WIDGET( gtk_container_get_children(GTK_CONTAINER(window_button))[0].data );
             buttonlabel = GTK_WIDGET( g_list_nth_data( gtk_container_get_children(GTK_CONTAINER(buttonbox)), 1) );
-            gtk_label_set_text (GTK_LABEL (buttonlabel), "");
 
-            if (((Client *) g_object_get_data (G_OBJECT(window_button), "client-ptr-val")) == t->selected->data)
+            c = g_object_get_data (G_OBJECT (window_button), "client-ptr-val");
+
+            if (c != NULL)
             {
+                if (c->screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+                {
+                    gtk_label_set_text (GTK_LABEL (buttonlabel), "");
+                }
+
+                if (c == t->selected->data)
+                {
                     tabwinSetSelected (tbw, window_button, buttonlabel);
                     gtk_widget_queue_draw (GTK_WIDGET(tbw));
+                }
             }
         }
     }
@@ -769,6 +861,8 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
     GList *selected;
     int pos_current, col_current, row_current, nitems, cols, rows;
     TabwinWidget *tbw;
+    Client *c;
+    ScreenInfo *screen_info;
 
     TRACE ("entering tabwinSelectDelta");
     g_return_val_if_fail (t != NULL, NULL);
@@ -777,10 +871,44 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
     pos_current = g_list_position (*t->client_list, t->selected);
     nitems = g_list_length (*t->client_list);
 
-    cols = MIN (nitems, tbw->grid_cols);
-    rows = (nitems - 1) / cols + 1;
-    col_current = pos_current % cols;
-    row_current = pos_current / cols;
+    if (t->selected)
+    {
+        c = (Client *)t->selected->data;
+        screen_info = c->screen_info;
+        if (!screen_info)
+        {
+            return NULL;
+        }
+    }
+    else if (t->client_list)
+    {
+        c = (Client *)t->client_list;
+        screen_info = c->screen_info;
+        if (!screen_info)
+        {
+            return NULL;
+        }
+    }
+    else
+    {
+        /* There's no items? */
+        return NULL;
+    }
+
+    if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+    {
+        cols = MIN (nitems, tbw->grid_cols);
+        rows = (nitems - 1) / cols + 1;
+        col_current = pos_current % cols;
+        row_current = pos_current / cols;
+    }
+    else
+    {
+        rows = MIN (nitems, tbw->grid_rows);
+        cols = (nitems - 1) / rows + 1;
+        row_current = pos_current % rows;
+        col_current = pos_current / rows;
+    }
 
     /* Wrap column */
     col_current += col_delta;
@@ -797,10 +925,6 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
     {
         col_current = 0;
         row_current++;
-        if (row_current >= rows)
-        {
-            row_current = rows - 1;
-        }
     }
 
     /* Wrap row */
@@ -834,21 +958,49 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
     }
 
     /* So here we are at the new (wrapped) position in the rectangle */
-    pos_current = col_current + row_current * cols;
+    if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+    {
+        pos_current = col_current + row_current * cols;
+    }
+    else
+    {
+        pos_current = row_current + col_current * rows;
+    }
+
     if (pos_current >= nitems)   /* If that position does not exist */
     {
         if (col_delta)            /* Let horizontal prevail */
         {
             if (col_delta > 0)
             {
-                /* In this case we're going past the tail, reset to the head
-                 * of the grid */
-                col_current = 0;
-                row_current = 0;
+                if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+                {
+                    /* In this case we're going past the tail, reset to the head
+                     * of the grid */
+                    col_current = 0;
+                    row_current = 0;
+                }
+                else
+                {
+                    col_current = 0;
+                    row_current++;
+                    if (row_current >= rows)
+                    {
+                        row_current = 0;
+                    }
+                }
             }
             else
             {
-                col_current = (nitems - 1) % cols;
+                if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+                {
+                    col_current = (nitems - 1) % cols;
+                }
+                else
+                {
+                    col_current = cols - 1;
+                    row_current = (nitems - 1) % rows;
+                }
             }
         }
         else
@@ -864,11 +1016,27 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
             }
             else
             {
-                row_current = row_current - 1;
+                if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+                {
+                    row_current = row_current - 1;
+                }
+                else
+                {
+                    row_current = (nitems - 1) % rows;
+                    col_current = cols - 1;
+                }
             }
 
         }
-        pos_current = col_current + row_current * cols;
+
+        if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+        {
+            pos_current = col_current + row_current * cols;
+        }
+        else
+        {
+            pos_current = row_current + col_current * rows;
+        }
     }
 
     selected = g_list_nth(*t->client_list, pos_current);
