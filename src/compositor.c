@@ -809,11 +809,10 @@ root_tile (ScreenInfo *screen_info)
     DisplayInfo *display_info;
     Display *dpy;
     Picture picture;
+#ifdef MONITOR_ROOT_PIXMAP
     Pixmap pixmap;
-    gboolean fill = FALSE;
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
-#ifdef MONITOR_ROOT_PIXMAP
     gint p;
     Atom backgroundProps[2];
 #endif
@@ -823,7 +822,6 @@ root_tile (ScreenInfo *screen_info)
 
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
-    pixmap = None;
 #ifdef MONITOR_ROOT_PIXMAP
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
@@ -848,24 +846,15 @@ root_tile (ScreenInfo *screen_info)
         {
             memcpy (&pixmap, prop, 4);
             XFree (prop);
-            fill = FALSE;
+            pa.repeat = TRUE;
+            format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
+            g_return_val_if_fail (format != NULL, None);
+            picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
             break;
         }
     }
 #endif
-    if (!pixmap)
-    {
-        pixmap = XCreatePixmap (dpy, screen_info->output, 1, 1,
-                                DefaultDepth (dpy, screen_info->screen));
-        g_return_val_if_fail (pixmap != None, None);
-        fill = TRUE;
-    }
-    pa.repeat = TRUE;
-    format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
-    g_return_val_if_fail (format != NULL, None);
-
-    picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
-    if ((picture != None) && (fill))
+    if (picture == None)
     {
         XRenderColor c;
 
@@ -874,9 +863,8 @@ root_tile (ScreenInfo *screen_info)
         c.green = 0x7f00;
         c.blue  = 0x7f00;
         c.alpha = 0xffff;
-        XRenderFillRectangle (dpy, PictOpSrc, picture, &c, 0, 0, 1, 1);
+        picture = XRenderCreateSolidFill (dpy, &c);
     }
-    XFreePixmap (dpy, pixmap);
     return picture;
 }
 
