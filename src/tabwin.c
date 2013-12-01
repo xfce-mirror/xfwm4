@@ -673,13 +673,17 @@ tabwinChange2Selected (Tabwin *t, GList *selected)
 
             if (c != NULL)
             {
-                if (c->screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
+                /* don't clear label if mouse is inside the previously
+                 * selected button */
+                if (c->screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID
+                    && window_button != t->hovered)
                 {
                     gtk_label_set_text (GTK_LABEL (buttonlabel), "");
                 }
 
                 if (c == t->selected->data)
                 {
+                    gtk_widget_grab_focus (window_button);
                     tabwinSetSelected (tbw, window_button, buttonlabel);
                     gtk_widget_queue_draw (GTK_WIDGET(tbw));
                 }
