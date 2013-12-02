@@ -414,8 +414,9 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     Client *c;
     GList *client_list;
     GtkWidget *windowlist, *icon, *selected, *window_button, *buttonbox, *buttonlabel, *selected_label;
-    int packpos, monitor_width, monitor_height;
+    int packpos, monitor_width, monitor_height, app_label_height;
     Tabwin *t;
+    PangoLayout *layout;
     gint icon_size = WIN_ICON_SIZE;
 
     TRACE ("entering createWindowlist");
@@ -460,7 +461,12 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 
         if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
         {
-            gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+24);
+            /* We need to account for changes to the font size in the user's
+             * appearance theme and gtkrc settings */
+            layout = gtk_widget_create_pango_layout (GTK_WIDGET (tbw), "");
+            pango_layout_get_pixel_size (layout, NULL, &app_label_height);
+
+            gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+app_label_height+8);
             buttonbox = gtk_vbox_new (FALSE, 0);
             buttonlabel = gtk_label_new ("");
             gtk_misc_set_alignment (GTK_MISC (buttonlabel), 0.5, 1.0);
