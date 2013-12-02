@@ -28,6 +28,10 @@
 #define WIN_ICON_SIZE 48
 #endif
 
+#ifndef LISTVIEW_WIN_ICON_SIZE
+#define LISTVIEW_WIN_ICON_SIZE 24
+#endif
+
 #ifndef WIN_ICON_BORDER
 #define WIN_ICON_BORDER 5
 #endif
@@ -439,7 +443,8 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     }
     else
     {
-        icon_size = 24;
+        icon_size = LISTVIEW_WIN_ICON_SIZE;
+        gtk_widget_style_get (GTK_WIDGET (tbw), "listview-icon-size", &icon_size, NULL);
         tbw->grid_rows = (monitor_height / (icon_size + 2 * WIN_ICON_BORDER)) * 0.75;
         tbw->grid_cols = screen_info->client_count / tbw->grid_rows + 1;
     }
@@ -559,6 +564,13 @@ tabwin_widget_class_init (TabwinWidgetClass *klass)
                                                                "the size of the application icon",
                                                                24, 128,
                                                                WIN_ICON_SIZE,
+                                                               G_PARAM_READABLE));
+    gtk_widget_class_install_style_property (widget_class,
+                                             g_param_spec_int("listview-icon-size",
+                                                              "listview icon size",
+                                                               "the size of the application icon in listview",
+                                                               16, 48,
+                                                               LISTVIEW_WIN_ICON_SIZE,
                                                                G_PARAM_READABLE));
     gtk_widget_class_install_style_property (widget_class,
                                              g_param_spec_int("border-width",
