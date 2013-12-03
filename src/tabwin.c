@@ -464,13 +464,13 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
         g_signal_connect (window_button, "leave-notify-event", G_CALLBACK (cb_window_button_leave), tbw);
         gtk_widget_add_events (window_button, GDK_ENTER_NOTIFY_MASK);
 
+        /* We need to account for changes to the font size in the user's
+         * appearance theme and gtkrc settings */
+        layout = gtk_widget_create_pango_layout (GTK_WIDGET (tbw), "");
+        pango_layout_get_pixel_size (layout, NULL, &app_label_height);
+
         if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
         {
-            /* We need to account for changes to the font size in the user's
-             * appearance theme and gtkrc settings */
-            layout = gtk_widget_create_pango_layout (GTK_WIDGET (tbw), "");
-            pango_layout_get_pixel_size (layout, NULL, &app_label_height);
-
             gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+app_label_height+8);
             buttonbox = gtk_vbox_new (FALSE, 0);
             buttonlabel = gtk_label_new ("");
@@ -478,7 +478,10 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
         }
         else
         {
-            gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+256, icon_size+8);
+            if (icon_size < app_label_height)
+                gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+256, app_label_height+8);
+            else
+                gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+256, icon_size+8);
             buttonbox = gtk_hbox_new (FALSE, 6);
             buttonlabel = gtk_label_new (c->name);
             gtk_misc_set_alignment (GTK_MISC (buttonlabel), 0, 0.5);
