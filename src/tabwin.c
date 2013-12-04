@@ -175,10 +175,21 @@ tabwin_expose (GtkWidget *tbw, GdkEventExpose *event, gpointer data)
 }
 
 static gboolean
-paint_selected (GtkWidget *w, GdkEventExpose *event, gpointer data)
+paint_selected (GtkWidget *w, GdkEventExpose *event, gpointer user_data)
 {
+    TabwinWidget *tbw = user_data;
+
     g_return_val_if_fail (GTK_IS_WIDGET(w), FALSE);
     TRACE ("entering paint_selected");
+
+    if (w == tbw->tabwin->hovered)
+    {
+        gtk_widget_set_state (w, GTK_STATE_ACTIVE);
+    }
+    else
+    {
+        gtk_widget_set_state (w, GTK_STATE_SELECTED);
+    }
 
     gtk_button_set_relief (GTK_BUTTON (w), GTK_RELIEF_NORMAL);
 
@@ -254,7 +265,7 @@ tabwinSetSelected (TabwinWidget *tbw, GtkWidget *w, GtkWidget *l)
     tbw->selected_callback = g_signal_connect (G_OBJECT (tbw->selected),
                                                "expose-event",
                                                G_CALLBACK (paint_selected),
-                                               NULL);
+                                               tbw);
 
     c = g_object_get_data (G_OBJECT (tbw->selected), "client-ptr-val");
 
@@ -358,6 +369,11 @@ cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
      * select it */
     if (c != NULL)
     {
+        if (gtk_widget_is_focus (widget))
+        {
+            gtk_widget_set_state (widget, GTK_STATE_ACTIVE);
+        }
+
         /* we don't update the labels on mouse over for this mode */
         if (c->screen_info->params->cycle_tabwin_mode == OVERFLOW_COLUMN_GRID)
         {
@@ -385,13 +401,14 @@ cb_window_button_leave (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
     g_return_val_if_fail (tbw != NULL, FALSE);
 
+    tbw->tabwin->hovered = NULL;
+
     /* don't do anything if we have the focus */
     if (gtk_widget_is_focus (widget))
     {
+        gtk_widget_set_state (widget, GTK_STATE_SELECTED);
         return FALSE;
     }
-
-    tbw->tabwin->hovered = NULL;
 
     c = g_object_get_data (G_OBJECT (widget), "client-ptr-val");
 
@@ -707,6 +724,14 @@ tabwinChange2Selected (Tabwin *t, GList *selected)
                     gtk_widget_grab_focus (window_button);
                     tabwinSetSelected (tbw, window_button, buttonlabel);
                     gtk_widget_queue_draw (GTK_WIDGET(tbw));
+                }
+                else if (window_button == t->hovered)
+                {
+                    gtk_widget_set_state (window_button, GTK_STATE_PRELIGHT);
+                }
+                else
+                {
+                    gtk_widget_set_state (window_button, GTK_STATE_NORMAL);
                 }
             }
         }
