@@ -235,7 +235,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XEvent * ev, gboolean allow_doub
     g_return_val_if_fail (w != None, XFWM_BUTTON_UNDEFINED);
 
     display_info = screen_info->display_info;
-    g = myScreenGrabPointer (screen_info, DOUBLE_CLICK_GRAB, None, ev->xbutton.time);
+    g = myScreenGrabPointer (screen_info, FALSE, DOUBLE_CLICK_GRAB, None, ev->xbutton.time);
 
     if (!g)
     {

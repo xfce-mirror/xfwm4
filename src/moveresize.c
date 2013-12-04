@@ -1123,7 +1123,9 @@ clientMove (Client * c, XEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, MOVERESIZE_EVENT_MASK,
+    g2 = myScreenGrabPointer (screen_info,
+                              FALSE,
+                              MOVERESIZE_EVENT_MASK,
                               myDisplayGetCursorMove (display_info),
                               myDisplayGetCurrentTime (display_info));
     if (!g1 || !g2)
@@ -1694,7 +1696,7 @@ clientResize (Client * c, int handle, XEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, MOVERESIZE_EVENT_MASK,
+    g2 = myScreenGrabPointer (screen_info, FALSE, MOVERESIZE_EVENT_MASK,
                               cursor, myDisplayGetCurrentTime (display_info));
 
     if (!g1 || !g2)

@@ -227,12 +227,14 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     DisplayInfo *display_info;
     ClientCycleData *passdata;
     Client *c, *removed;
+    Client *c2 = NULL;
     eventFilterStatus status;
     KeyCode cancel, left, right, up, down;
     int key, modifiers;
     gboolean key_pressed, cycling, gone;
     GList *li;
     Window mouse_window = 0;
+    XButtonEvent ev;
 
     TRACE ("entering clientCycleEventFilter");
 
@@ -281,7 +283,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             {
                 if (key_pressed)
                 {
-                    Client *c2 = NULL;
                     key = myScreenGetKeyPressed (screen_info, (XKeyEvent *) xevent);
                     /*
                      * We cannot simply check for key == KEY_CANCEL here because of the
@@ -360,43 +361,36 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             }
             break;
         case ButtonPress:
-        case ButtonRelease:
             status = EVENT_FILTER_STOP;
-            cycling = FALSE;
+            ev = xevent->xbutton;
             /* window of the event, we might accept it later */
             mouse_window = xevent->xbutton.window;
+            if (mouse_window != 0)
+            {
+                /* only accept events for the tab windows */
+                for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
+                {
+                    if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == mouse_window)
+                    {
+                        if  (ev.button == Button1)
+                        {
+                            cycling = FALSE;
+                            c = tabwinSelectHoveredWidget (passdata->tabwin);
+                            break;
+                        }
+                    }
+                }
+            }
             break;
         default:
             status = EVENT_FILTER_CONTINUE;
             break;
-    }
-    
-    if (mouse_window != 0)
-    {
-        /* only accept events for the tab windows */
-        for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
-        {
-            if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == mouse_window)
-            {
-                c = tabwinSelectHoveredWidget (passdata->tabwin);
-
-                break;
-            }
-        }
     }
 
     if (!cycling)
     {
         TRACE ("event loop now finished");
         gtk_main_quit ();
-    }
-
-    if (status == EVENT_FILTER_STOP)
-    {
-        /* If there's any chance of a leftover grab, release it. This happens
-         * when the user clicks outside of the tabwin window area onto another
-         * window */
-        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
     }
 
     return status;
@@ -409,7 +403,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     DisplayInfo *display_info;
     ClientCycleData passdata;
     GList *client_list, *selected;
-    gboolean g1;
+    gboolean g1, g2;
     int key, modifier;
     Client *c2;
 
@@ -456,13 +450,16 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, ev->time);
+    g2 = myScreenGrabPointer (screen_info, TRUE, LeaveWindowMask, None, ev->time);
 
-    if (!g1)
+
+    if (!g1 || !g2)
     {
         TRACE ("grab failed in clientCycle");
 
         gdk_beep ();
         myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
         g_list_free (client_list);
 
         return;
@@ -477,7 +474,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
     passdata.tabwin = tabwinCreate (&client_list, selected, screen_info->params->cycle_workspaces);
     eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
-    
+
     c2 = myScreenGetClientFromWindow (screen_info, GDK_WINDOW_XID (gtk_widget_get_window ( passdata.tabwin->tabwin_list->data)), SEARCH_FRAME);
     g_message ("%p", c2);
     clientSetFocus (screen_info, c2, ev->time, NO_FOCUS_FLAG);
@@ -502,6 +499,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     g_list_free (client_list);
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 }
 
 gboolean
