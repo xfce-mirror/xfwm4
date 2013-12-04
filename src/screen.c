@@ -456,7 +456,7 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, guint32 timestamp)
 }
 
 gboolean
-myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, guint32 timestamp)
+myScreenGrabPointer (ScreenInfo *screen_info, gboolean owner_events, unsigned int event_mask, Cursor cursor, guint32 timestamp)
 {
     gboolean grab;
 
@@ -468,7 +468,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cu
     {
         grab = (XGrabPointer (myScreenGetXDisplay (screen_info),
                               screen_info->xroot,
-                              FALSE, event_mask,
+                              owner_events, event_mask,
                               GrabModeAsync, GrabModeAsync,
                               screen_info->xroot,
                               cursor,

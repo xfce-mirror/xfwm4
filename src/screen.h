@@ -210,6 +210,7 @@ GdkWindow               *myScreenGetGdkWindow                   (ScreenInfo *);
 gboolean                 myScreenGrabKeyboard                   (ScreenInfo *,
                                                                  guint32);
 gboolean                 myScreenGrabPointer                    (ScreenInfo *,
+                                                                 gboolean,
                                                                  unsigned int,
                                                                  Cursor,
                                                                  guint32);
