@@ -330,21 +330,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                         cycling = FALSE;
                     }
                 }
-
-                if (cycling)
-                {
-                    if (c)
-                    {
-                        if (passdata->wireframe)
-                        {
-                            wireframeUpdate (c, passdata->wireframe);
-                        }
-                    }
-                    else
-                    {
-                        cycling = FALSE;
-                    }
-                }
             }
             break;
         case KeyRelease:
@@ -378,7 +363,23 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                             c = tabwinSelectHoveredWidget (passdata->tabwin);
                             break;
                         }
+                        else if  (ev.button == Button4)
+                        {
+                            /* Mouse wheel scroll up */
+                            TRACE ("Cycle: previous");
+                            c2 = tabwinSelectPrev(passdata->tabwin);
+                        }
+                        else if (ev.button == Button5)
+                        {
+                            /* Mouse wheel scroll down */
+                            TRACE ("Cycle: next");
+                            c2 = tabwinSelectNext(passdata->tabwin);
+                        }
                     }
+                }
+                if (c2)
+                {
+                    c = c2;
                 }
             }
             break;
@@ -391,6 +392,24 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     {
         TRACE ("event loop now finished");
         gtk_main_quit ();
+    }
+
+    if (status == EVENT_FILTER_STOP)
+    {
+        if (cycling)
+        {
+            if (c)
+            {
+                if (passdata->wireframe)
+                {
+                    wireframeUpdate (c, passdata->wireframe);
+                }
+            }
+            else
+            {
+                cycling = FALSE;
+            }
+        }
     }
 
     return status;
