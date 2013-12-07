@@ -808,7 +808,7 @@ root_tile (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     Display *dpy;
-    Picture picture;
+    Picture picture = None;
 #ifdef MONITOR_ROOT_PIXMAP
     Pixmap pixmap;
     XRenderPictureAttributes pa;
@@ -2420,7 +2420,7 @@ destroy_win (DisplayInfo *display_info, Window id)
     }
 }
 
-void
+static void
 recenter_zoomed_area (ScreenInfo *screen_info, int x_root, int y_root)
 {
     int zf = screen_info->transform.matrix[0][0];
