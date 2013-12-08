@@ -1059,6 +1059,10 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         TRACE ("event loop now finished");
         toggled_maximize = FALSE;
         clientMoveWarp (c, NULL);
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        {
+            clientSaveSizePos (c);
+        }
         gtk_main_quit ();
     }
 
