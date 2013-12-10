@@ -904,11 +904,13 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
             edgeButton (c, part, ev);
         }
 #ifdef HAVE_COMPOSITOR
-        else if ((ev->button == Button4) && (state) && (state == screen_info->params->easy_click))
+        else if ((ev->button == Button4) && (state) && (state == screen_info->params->easy_click)
+                  && (screen_info->compositor_active))
         {
             compositorZoomIn(screen_info, ev);
         }
-        else if ((ev->button == Button5) && (state) && (state == screen_info->params->easy_click))
+        else if ((ev->button == Button5) && (state) && (state == screen_info->params->easy_click)
+                  && (screen_info->compositor_active))
         {
             compositorZoomOut(screen_info, ev);
         }
