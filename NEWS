@@ -1,3 +1,23 @@
+4.11.0
+======
+- Fix duplicated accelerators (bug #5256).
+- Do not write empty session files.
+- Optimize smart placement (bug #5785).
+- Improvements in accelerator handling.
+- Remove unmaintained translations.
+- Make the xfwm4-settings dialog use less height.
+- Fixup padding in keyboard shortcuts tab.
+- Autotools updates.
+- Add Vsync support for the compositor (bug #8898).
+- Translation updates: Arabic, Azerbaijani, Belarusian, Bulgarian, 
+  Bengali (India), Catalan (Valencian), Czech, Danish, German, 
+  Dzongkha, Greek, English (United Kingdom), Spanish (Castilian), 
+  Basque, Persian, French, Gujarati, Hebrew, Hindi, Croatian, 
+  Hungarian, Indonesian, Icelandic, Italian, Georgian, Kazakh, Korean, 
+  Macedonian, Marathi, Malay, Dutch (Flemish), Polish, Portuguese, 
+  Portuguese (Brazilian), Russian, Slovak, Serbian, Tamil, Thai, 
+  Turkish, Uyghur, Ukrainian, Chinese (China), Chinese (Taiwan).
+
 4.10.0
 ======
 - Translation updates: Czech, English (United Kingdom), Spanish

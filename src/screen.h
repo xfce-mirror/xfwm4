@@ -182,17 +182,21 @@ struct _ScreenInfo
 
     guint compositor_timeout_id;
 
+    XTransform transform;
+    gboolean zoomed;
+    guint zoom_timeout_id;
+
 #ifdef HAVE_LIBDRM
     gint dri_fd;
     gboolean dri_secondary;
     gboolean dri_success;
     gint64 dri_time;
     gint64 vblank_time;
+#endif /* HAVE_LIBDRM */
 
 #ifdef HAVE_RANDR
     gint refresh_rate;
 #endif /* HAVE_RANDR */
-#endif /* HAVE_LIBDRM */
 
 #endif /* HAVE_COMPOSITOR */
 };

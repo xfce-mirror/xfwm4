@@ -808,12 +808,11 @@ root_tile (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     Display *dpy;
-    Picture picture;
+    Picture picture = None;
+#ifdef MONITOR_ROOT_PIXMAP
     Pixmap pixmap;
-    gboolean fill = FALSE;
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
-#ifdef MONITOR_ROOT_PIXMAP
     gint p;
     Atom backgroundProps[2];
 #endif
@@ -823,7 +822,6 @@ root_tile (ScreenInfo *screen_info)
 
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
-    pixmap = None;
 #ifdef MONITOR_ROOT_PIXMAP
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
@@ -848,24 +846,15 @@ root_tile (ScreenInfo *screen_info)
         {
             memcpy (&pixmap, prop, 4);
             XFree (prop);
-            fill = FALSE;
+            pa.repeat = TRUE;
+            format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
+            g_return_val_if_fail (format != NULL, None);
+            picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
             break;
         }
     }
 #endif
-    if (!pixmap)
-    {
-        pixmap = XCreatePixmap (dpy, screen_info->output, 1, 1,
-                                DefaultDepth (dpy, screen_info->screen));
-        g_return_val_if_fail (pixmap != None, None);
-        fill = TRUE;
-    }
-    pa.repeat = TRUE;
-    format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
-    g_return_val_if_fail (format != NULL, None);
-
-    picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
-    if ((picture != None) && (fill))
+    if (picture == None)
     {
         XRenderColor c;
 
@@ -874,9 +863,8 @@ root_tile (ScreenInfo *screen_info)
         c.green = 0x7f00;
         c.blue  = 0x7f00;
         c.alpha = 0xffff;
-        XRenderFillRectangle (dpy, PictOpSrc, picture, &c, 0, 0, 1, 1);
+        picture = XRenderCreateSolidFill (dpy, &c);
     }
-    XFreePixmap (dpy, pixmap);
     return picture;
 }
 
@@ -1344,6 +1332,10 @@ wait_vblank (ScreenInfo *screen_info)
     }
 }
 
+#endif /* TIMEOUT_REPAINT */
+
+#endif /* HAVE_LIBDRM */
+
 #ifdef HAVE_RANDR
 static void
 get_refresh_rate (ScreenInfo* screen_info)
@@ -1357,15 +1349,11 @@ get_refresh_rate (ScreenInfo* screen_info)
 
     if (refresh_rate != screen_info->refresh_rate)
     {
-        g_message ("Detected refreshrate:%i hertz", refresh_rate);
+        DBG ("Detected refreshrate: %i hertz", refresh_rate);
         screen_info->refresh_rate = refresh_rate;
     }
 }
 #endif /* HAVE_RANDR */
-
-#endif /* TIMEOUT_REPAINT */
-
-#endif /* HAVE_LIBDRM */
 
 static void
 paint_all (ScreenInfo *screen_info, XserverRegion region)
@@ -1397,14 +1385,17 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     {
         screen_info->rootBuffer = create_root_buffer (screen_info);
         g_return_if_fail (screen_info->rootBuffer != None);
+
+        memset(screen_info->transform.matrix, 0, 9);
+        screen_info->transform.matrix[0][0] = 1<<16;
+        screen_info->transform.matrix[1][1] = 1<<16;
+        screen_info->transform.matrix[2][2] = 1<<16;
+        screen_info->zoomed = 0;
     }
 
     /* Copy the original given region */
     paint_region = XFixesCreateRegion (dpy, NULL, 0);
     XFixesCopyRegion (dpy, paint_region, region);
-
-    /* Set clipping to the given region */
-    XFixesSetPictureClipRegion (dpy, screen_info->rootPicture, 0, 0, paint_region);
 
     /*
      * Painting from top to bottom, reducing the clipping area at each iteration.
@@ -1530,9 +1521,17 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     }
 
     TRACE ("Copying data back to screen");
-    /* Set clipping back to the given region */
-    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
-
+    if(screen_info->zoomed)
+    {
+        /* Fixme: copy back whole screen if zoomed 
+           It would be better to scale the clipping region if possible. */
+        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, None);
+    }
+    else
+    {
+        /* Set clipping back to the given region */
+        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
+    }
 #ifdef HAVE_LIBDRM
 #if TIMEOUT_REPAINT
     use_dri = dri_enabled (screen_info);
@@ -2422,6 +2421,61 @@ destroy_win (DisplayInfo *display_info, Window id)
 }
 
 static void
+recenter_zoomed_area (ScreenInfo *screen_info, int x_root, int y_root)
+{
+    int zf = screen_info->transform.matrix[0][0];
+    double zoom = XFixedToDouble(zf);
+    Display *dpy = screen_info->display_info->dpy;
+
+    if(screen_info->zoomed)
+    {
+        int xp = x_root * (1-zoom);
+        int yp = y_root * (1-zoom);
+        screen_info->transform.matrix[0][2] = (xp<<16);
+        screen_info->transform.matrix[1][2] = (yp<<16);
+    }
+
+    if(zf > (1<<14) && zf < (1<<16))
+        XRenderSetPictureFilter(dpy, screen_info->rootBuffer, "bilinear", NULL, 0);
+    else
+        XRenderSetPictureFilter(dpy, screen_info->rootBuffer, "nearest", NULL, 0);
+
+    XRenderSetPictureTransform(dpy, screen_info->rootBuffer, &screen_info->transform);
+
+    damage_screen(screen_info);
+}
+
+static gboolean
+zoom_timeout_cb (gpointer data)
+{
+    ScreenInfo   *screen_info;
+    Window       root_return;
+    Window       child_return;
+    int          x_root, y_root;
+    int          x_win, y_win;
+    unsigned int mask;
+    static int   x_old=-1, y_old=-1;
+
+    screen_info = (ScreenInfo *) data;
+    
+    if(!screen_info->zoomed)
+    {
+        screen_info->zoom_timeout_id = 0;
+        return FALSE; /* stop calling this callback */
+    }
+
+    XQueryPointer (screen_info->display_info->dpy, screen_info->xroot,
+			    &root_return, &child_return,
+			    &x_root, &y_root, &x_win, &y_win, &mask);
+    if(x_old != x_root || y_old != y_root)
+    {
+        x_old = x_root; y_old = y_root;
+        recenter_zoomed_area(screen_info, x_root, y_root);
+    }
+    return TRUE;
+}
+
+static void
 compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
 {
     ScreenInfo *screen_info;
@@ -2465,7 +2519,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 
     for (p = 0; p < 2; p++)
     {
-        if (ev->atom == backgroundProps[p])
+        if (ev->atom == backgroundProps[p] && ev->state == PropertyNewValue)
         {
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->rootTile))
@@ -2473,7 +2527,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
                 XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (display_info->dpy, screen_info->rootTile);
                 screen_info->rootTile = None;
-                add_repair (screen_info);
+                damage_screen (screen_info);
 
                 return;
             }
@@ -2739,7 +2793,6 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
     }
 }
 
-#ifdef HAVE_LIBDRM
 #ifdef HAVE_RANDR
 static void
 compositorHandleRandrNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEvent *ev)
@@ -2757,7 +2810,6 @@ compositorHandleRandrNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEve
     XRRUpdateConfiguration ((XEvent *) ev);
 }
 #endif /* HAVE_RANDR */
-#endif /* HAVE_LIBDRM */
 
 static void
 compositorSetCMSelection (ScreenInfo *screen_info, Window w)
@@ -2969,19 +3021,68 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
-#ifdef HAVE_LIBDRM
 #ifdef HAVE_RANDR
     else if (ev->type == (display_info->xrandr_event_base + RRScreenChangeNotify))
     {
         compositorHandleRandrNotify (display_info, (XRRScreenChangeNotifyEvent *) ev);
     }
 #endif /* HAVE_RANDR */
-#endif /* HAVE_LIBDRM */
 
 #if TIMEOUT_REPAINT == 0
     repair_display (display_info);
 #endif /* TIMEOUT_REPAINT */
 
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
+compositorZoomIn (ScreenInfo *screen_info, XButtonEvent *ev)
+{
+#ifdef HAVE_COMPOSITOR
+    screen_info->transform.matrix[0][0] -= 4096;
+    screen_info->transform.matrix[1][1] -= 4096;
+
+    if(screen_info->transform.matrix[0][0] < (1<<10))
+    {
+        screen_info->transform.matrix[0][0] = (1<<10);
+        screen_info->transform.matrix[1][1] = (1<<10);
+    }
+
+    screen_info->zoomed = 1;
+    if(!screen_info->zoom_timeout_id)
+    {
+        int timeout_rate = 30; /* per second */
+#ifdef HAVE_RANDR
+        if (screen_info->display_info->have_xrandr)
+        {
+            timeout_rate = screen_info->refresh_rate/2;
+        }
+#endif /* HAVE_RANDR */
+        screen_info->zoom_timeout_id = g_timeout_add ((1000/timeout_rate), zoom_timeout_cb, screen_info);
+    }
+    recenter_zoomed_area(screen_info, ev->x_root, ev->y_root);
+#endif /* HAVE_COMPOSITOR */
+}
+
+void
+compositorZoomOut (ScreenInfo *screen_info, XButtonEvent *ev)
+{
+#ifdef HAVE_COMPOSITOR
+    if(screen_info->zoomed)
+    {
+        screen_info->transform.matrix[0][0] += 4096;
+        screen_info->transform.matrix[1][1] += 4096;
+
+        if(screen_info->transform.matrix[0][0] >= (1<<16))
+        {
+            screen_info->transform.matrix[0][0] = (1<<16);
+            screen_info->transform.matrix[1][1] = (1<<16);
+            screen_info->zoomed = 0;
+            screen_info->transform.matrix[0][2] = 0;
+            screen_info->transform.matrix[1][2] = 0;
+        }
+        recenter_zoomed_area(screen_info, ev->x_root, ev->y_root);
+    }
 #endif /* HAVE_COMPOSITOR */
 }
 
@@ -3190,6 +3291,8 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->compositor_active = TRUE;
     screen_info->wins_unredirected = 0;
     screen_info->compositor_timeout_id = 0;
+    screen_info->zoomed = 0;
+    screen_info->zoom_timeout_id = 0;
     screen_info->damages_pending = FALSE;
 
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
