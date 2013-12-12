@@ -485,6 +485,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
          * appearance theme and gtkrc settings */
         layout = gtk_widget_create_pango_layout (GTK_WIDGET (tbw), "");
         pango_layout_get_pixel_size (layout, NULL, &app_label_height);
+        g_object_unref (layout);
 
         if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
         {
