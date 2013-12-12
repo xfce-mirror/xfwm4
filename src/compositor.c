@@ -3056,6 +3056,8 @@ compositorZoomIn (ScreenInfo *screen_info, XButtonEvent *ev)
         if (screen_info->display_info->have_xrandr)
         {
             timeout_rate = screen_info->refresh_rate/2;
+            if(timeout_rate < 1)
+                timeout_rate = 30;
         }
 #endif /* HAVE_RANDR */
         screen_info->zoom_timeout_id = g_timeout_add ((1000/timeout_rate), zoom_timeout_cb, screen_info);
