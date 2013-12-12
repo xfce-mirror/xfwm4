@@ -489,7 +489,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 
         if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
         {
-            gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+24, icon_size+app_label_height+8);
+            gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+app_label_height+10, icon_size+app_label_height+10);
             buttonbox = gtk_vbox_new (FALSE, 0);
             buttonlabel = gtk_label_new ("");
             gtk_misc_set_alignment (GTK_MISC (buttonlabel), 0.5, 1.0);
