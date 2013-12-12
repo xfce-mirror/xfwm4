@@ -974,7 +974,16 @@ tabwinSelectDelta (Tabwin *t, int row_delta, int col_delta)
     else if (col_current >= cols)
     {
         col_current = 0;
-        row_current++;
+        if (rows > 1)
+        {
+            row_current++;
+        }
+        else
+        {
+            /* If there's only 1 row then col needs to wrap back to
+             * the head of the grid */
+            col_current = 0;
+        }
     }
 
     /* Wrap row */
