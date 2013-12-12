@@ -435,7 +435,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     Client *c;
     GList *client_list;
     GtkWidget *windowlist, *icon, *selected, *window_button, *buttonbox, *buttonlabel, *selected_label;
-    int packpos, monitor_width, monitor_height, app_label_height;
+    int packpos, monitor_width, monitor_height, app_label_height, label_width;
     Tabwin *t;
     PangoLayout *layout;
     gint icon_size = WIN_ICON_SIZE;
@@ -495,10 +495,12 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
         }
         else
         {
+            label_width = monitor_width / (tbw->grid_cols + 1);
+
             if (icon_size < app_label_height)
-                gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+256, app_label_height+8);
+                gtk_widget_set_size_request (GTK_WIDGET (window_button), label_width, app_label_height+8);
             else
-                gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+256, icon_size+8);
+                gtk_widget_set_size_request (GTK_WIDGET (window_button), label_width, icon_size+8);
             buttonbox = gtk_hbox_new (FALSE, 6);
             buttonlabel = gtk_label_new (c->name);
             gtk_misc_set_alignment (GTK_MISC (buttonlabel), 0, 0.5);
