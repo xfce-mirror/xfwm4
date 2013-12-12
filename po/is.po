@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:21+0200\n"
-"PO-Revision-Date: 2013-11-06 22:53+0000\n"
-"Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
+"PO-Revision-Date: 2013-12-12 06:27+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -427,7 +427,7 @@ msgstr "Lykill notaður til _grípa í og færa glugga:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "_Lyfta gluggum þegar ýtt er á einhvern músahnapp"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide frame of windows when ma_ximized"
@@ -435,11 +435,11 @@ msgstr "_Fela gluggaramma þegar gluggar eru hámarkaðir"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
+msgstr "Endur_heimta upprunalega stærð hámarkaðra glugga þegar þeir eru færðir"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
+msgstr "_Flísaleggja glugga sjálfkrafa þegar þeir eru færðir að skjájaðri"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Notify of _urgency by making window's decoration blink"
@@ -447,7 +447,7 @@ msgstr "_Láta vita um áríðandi glugga með því að gluggaskreyting blikkar
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
-msgstr ""
+msgstr "Nota _viðnám á jöðrum í stað grips glugga"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
@@ -465,7 +465,7 @@ msgstr "Nota _músarhjólið til að skipta um vinnusvæði"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
+msgstr "_Muna og endurheimta fyrri vinnusvæði\nþegar skipt er með flýtilyklum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -481,7 +481,7 @@ msgstr "_Vinnusvæði"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
+msgstr "_Lágmarksstærð glugga til þess að virkja snjallstaðsetningu:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -579,7 +579,7 @@ msgstr "_Almennt"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "Spássíur eru svæði á skjájöðrum þar sem engir gluggar verða settir"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -593,23 +593,23 @@ msgstr "%s (á %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr ""
+msgstr "Kvísla á bakgrunn"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Kvísla á bakgrunn (er ekki stutt)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Setja ham skjásamsetningar"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Setja ham skjásamsetningar (er ekki stutt)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Skipta út núverandi gluggastýringu"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
@@ -719,34 +719,34 @@ msgstr "Endurræsa"
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: GtkMenu mistókst að nema bendilinn (pointer)\n"
 
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr ""
+msgstr "%s: Gat ekki úthlutað lit %s\n"
 
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Gat ekki úthlutað lit: GValue litsins er ekki af gerðinni STRING"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr ""
+msgstr "%s: Gat ekki þáttað lit %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Gat ekki þáttað lit: GValue litsins er ekki af gerðinni STRING"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Villa við lestur gagna frá undirferli: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Get ekki útbúið hjálparglugga (helper-dialog): %s\n"
