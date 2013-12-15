@@ -453,10 +453,32 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
     gtk_widget_style_get (GTK_WIDGET (tbw), "icon-size", &icon_size, NULL);
     tbw->widgets = NULL;
 
+    /* We need to account for changes to the font size in the user's
+     * appearance theme and gtkrc settings */
+    layout = gtk_widget_create_pango_layout (GTK_WIDGET (tbw), "");
+    pango_layout_get_pixel_size (layout, NULL, &app_label_height);
+    g_object_unref (layout);
+
     if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
     {
-        tbw->grid_cols = (monitor_width / (icon_size + 2 * WIN_ICON_BORDER)) * 0.75;
+        tbw->grid_cols = (monitor_width / (icon_size+app_label_height+10)) * 0.75;
         tbw->grid_rows = screen_info->client_count / tbw->grid_cols + 1;
+
+        /* If we run out of space, halve the icon size to make more room. */
+        while ((icon_size + app_label_height + 10) * tbw->grid_rows > monitor_height - app_label_height)
+        {
+            icon_size = icon_size / 2;
+            /* recalculate with new icon size */
+            tbw->grid_cols = (monitor_width / (icon_size+app_label_height+10)) * 0.75;
+            tbw->grid_rows = screen_info->client_count / tbw->grid_cols + 1;
+
+            /* Shrinking the icon too much makes it hard to see */
+            if (icon_size < 8)
+            {
+                icon_size = 8;
+                break;
+            }
+        }
     }
     else
     {
@@ -480,12 +502,6 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
         g_signal_connect (window_button, "enter-notify-event", G_CALLBACK (cb_window_button_enter), tbw);
         g_signal_connect (window_button, "leave-notify-event", G_CALLBACK (cb_window_button_leave), tbw);
         gtk_widget_add_events (window_button, GDK_ENTER_NOTIFY_MASK);
-
-        /* We need to account for changes to the font size in the user's
-         * appearance theme and gtkrc settings */
-        layout = gtk_widget_create_pango_layout (GTK_WIDGET (tbw), "");
-        pango_layout_get_pixel_size (layout, NULL, &app_label_height);
-        g_object_unref (layout);
 
         if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
         {
