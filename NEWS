@@ -1,3 +1,21 @@
+4.11.1
+======
+- Remove unnecessary clipping of the rootPicture.
+- If making a solid fill, use XRenderCreateSolidFill.
+- Repaint the screen when background changes.
+- Ignore when root atoms are unset.
+- Implement zooming.
+- Add tweak setting to toggle roll up feature (bug #10563).
+- Disable roll up feature by default (bug #10563).
+- Translation updates: Asturian, Bulgarian, Bengali, Catalan
+  (Valencian), Danish, German, Greek, Spanish (Castilian), Basque,
+  Finnish, Galician, Hungarian, Indonesian, Icelandic, Japanese,
+  Kazakh, Lithuanian, Latvian, Malay, Norwegian Bokmal, Norwegian
+  Nynorsk, Occitan (post 1500), Portuguese (Brazilian), Romanian,
+  Slovak, Albanian, Serbian, Swedish, Ukrainian, Urdu, Urdu (Pakistan),
+  Chinese (Hong Kong), Chinese (Taiwan).
+
+
 4.11.0
 ======
 - Fix duplicated accelerators (bug #5256).
@@ -9,13 +27,13 @@
 - Fixup padding in keyboard shortcuts tab.
 - Autotools updates.
 - Add Vsync support for the compositor (bug #8898).
-- Translation updates: Arabic, Azerbaijani, Belarusian, Bulgarian, 
-  Bengali (India), Catalan (Valencian), Czech, Danish, German, 
-  Dzongkha, Greek, English (United Kingdom), Spanish (Castilian), 
-  Basque, Persian, French, Gujarati, Hebrew, Hindi, Croatian, 
-  Hungarian, Indonesian, Icelandic, Italian, Georgian, Kazakh, Korean, 
-  Macedonian, Marathi, Malay, Dutch (Flemish), Polish, Portuguese, 
-  Portuguese (Brazilian), Russian, Slovak, Serbian, Tamil, Thai, 
+- Translation updates: Arabic, Azerbaijani, Belarusian, Bulgarian,
+  Bengali (India), Catalan (Valencian), Czech, Danish, German,
+  Dzongkha, Greek, English (United Kingdom), Spanish (Castilian),
+  Basque, Persian, French, Gujarati, Hebrew, Hindi, Croatian,
+  Hungarian, Indonesian, Icelandic, Italian, Georgian, Kazakh, Korean,
+  Macedonian, Marathi, Malay, Dutch (Flemish), Polish, Portuguese,
+  Portuguese (Brazilian), Russian, Slovak, Serbian, Tamil, Thai,
   Turkish, Uyghur, Ukrainian, Chinese (China), Chinese (Taiwan).
 
 4.10.0
