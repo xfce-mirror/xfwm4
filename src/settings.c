@@ -697,7 +697,7 @@ loadSettings (ScreenInfo *screen_info)
         {"placement_ratio", NULL, G_TYPE_INT, TRUE},
         {"placement_mode", NULL, G_TYPE_STRING, TRUE},
         {"popup_opacity", NULL, G_TYPE_INT, TRUE},
-        {"mousewheel_rollup", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"mousewheel_rollup", NULL, G_TYPE_BOOLEAN, FALSE},
         {"prevent_focus_stealing", NULL, G_TYPE_BOOLEAN, TRUE},
         {"raise_delay", NULL, G_TYPE_INT, TRUE},
         {"raise_on_click", NULL, G_TYPE_BOOLEAN, TRUE},
