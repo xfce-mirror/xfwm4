@@ -185,6 +185,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *snap_resist_check = GTK_WIDGET (gtk_builder_get_object (builder, "snap_resist_check"));
     GtkWidget *urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "urgent_blink"));
     GtkWidget *repeat_urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "repeat_urgent_blink"));
+    GtkWidget *mousewheel_rollup = GTK_WIDGET (gtk_builder_get_object (builder, "mousewheel_rollup"));
 
     /* Workspaces tab */
     GtkWidget *scroll_workspaces_check = GTK_WIDGET (gtk_builder_get_object (builder, "scroll_workspaces_check"));
@@ -356,6 +357,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/repeat_urgent_blink",
                             G_TYPE_BOOLEAN,
                             (GObject *)repeat_urgent_blink, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/mousewheel_rollup",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)mousewheel_rollup, "active");
     gtk_widget_set_sensitive (repeat_urgent_blink,
                               gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (urgent_blink)));
     gtk_widget_set_sensitive (tile_on_move_check,
