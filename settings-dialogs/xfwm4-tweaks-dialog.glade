@@ -447,22 +447,6 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="urgent_blink">
-                    <property name="label" translatable="yes">Notify of _urgency by making window's decoration blink</property>
-                    <property name="use_action_appearance">False</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="use_underline">True</property>
-                    <property name="draw_indicator">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">5</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkCheckButton" id="snap_resist_check">
                     <property name="label" translatable="yes">Use _edge resistance instead of window snapping</property>
                     <property name="use_action_appearance">False</property>
@@ -479,6 +463,22 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkCheckButton" id="urgent_blink">
+                    <property name="label" translatable="yes">Notify of _urgency by making window's decoration blink</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">6</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkCheckButton" id="repeat_urgent_blink">
                     <property name="label" translatable="yes">Keep urgent windows _blinking repeatedly</property>
                     <property name="use_action_appearance">False</property>
@@ -491,7 +491,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">6</property>
+                    <property name="position">7</property>
                   </packing>
                 </child>
               </object>
