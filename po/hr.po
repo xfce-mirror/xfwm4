@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# schizo <eveskovic@gmail.com>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2013-10-23 23:18+0000\n"
-"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
+"PO-Revision-Date: 2014-02-22 21:51+0000\n"
+"Last-Translator: schizo <eveskovic@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfce/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -273,11 +274,11 @@ msgstr "<b>Ljepljenje prozora</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr ""
+msgstr "Prelomi radne prostore kada _pokazivač dosegne rub zaslona"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
+msgstr "Prelomi ra_dne prostore pri povlačenju prozora sa zaslona"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -367,11 +368,11 @@ msgstr "Odustani"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cycle windows"
-msgstr ""
+msgstr "Izmjenjuj prozore"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows (Reverse)"
-msgstr ""
+msgstr "Izmjenjuj prozore (obrnutim redom)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
@@ -415,7 +416,7 @@ msgstr "Spusti prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Raise or lower window"
-msgstr ""
+msgstr "Podigni ili spusti prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -427,11 +428,11 @@ msgstr "Ispuni prozor okomito"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr ""
+msgstr "Postavi prozor ispred"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Upali/ugasi puni prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
@@ -603,7 +604,7 @@ msgstr "Dodaj radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:305
 msgid "Add adjacent workspace"
-msgstr ""
+msgstr "Dodaj susjedni radni prostor"
 
 #: ../settings-dialogs/xfwm4-settings.c:306
 msgid "Delete last workspace"
@@ -649,7 +650,7 @@ msgstr "Ovo će vratiti sve prečace na njihovu zadanu vrijednost.Želite li doi
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "Pre_skoči prozore koji imaju postavljen svojstvo \n\"preskoči straničenje\" ili \"preskoči traku zadataka\" "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -657,27 +658,27 @@ msgstr "_Uključi skrivene (tj. iconified) prozore"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr ""
+msgstr "Izmjenjuj prozore sa svih radnih pros_tora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "Nacrtaj obrub oko o_dabranih prozora tijekom izmjenjivanja"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "C_ycling"
-msgstr ""
+msgstr "Izm_jenjivanje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Activate _focus stealing prevention"
-msgstr ""
+msgstr "Aktiviraj prevenciju krađe _fokusa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "Poštuj ICCCM _standard fokusiranja"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Kada prozor podigne sebe:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "_Bring window on current workspace"
@@ -685,7 +686,7 @@ msgstr "_Dovedi prozor na trenutni radni prostor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Switch to win_dow's workspace"
-msgstr ""
+msgstr "Prebaci na ra_dni prostor prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
@@ -697,7 +698,7 @@ msgstr "Tipka za _uzimanje i premještanje prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Podigni p_rozor prilikom pritiska bilo kojeg gumba na mišu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide _frame of windows when maximized"
@@ -705,23 +706,23 @@ msgstr "Sakrij _okvir prozora kada je maksimiziran"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original _size of maximized windows when moving"
-msgstr ""
+msgstr "Vrati orginalnu veličinu mak_simiziranog prozora pri micanju"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
+msgstr "Automa_tski poploči prozore pri micanju prema rubu zaslona"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
-msgstr ""
+msgstr "Koriti otpornost rubova umj_esto ljepljenja prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "Obavijesti o _važnosti trperenjem dekoracije prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "Neka važni prozori trepere uzastopno"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
@@ -735,15 +736,15 @@ msgstr "Koristi _kotačić miša na radnoj površini za prebacivanje radnih pros
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
+msgstr "Zapamti i v_rati prethodni radni prostor\npri izmjeni kraticama tipkovnice"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
+msgstr "Pre_lomi radne prostore ovisno o stvarnom rasporedu radne površine"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr ""
+msgstr "Prelomi radne prostore kada je do_hvaćen prvi ili zadnji radni prostor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
@@ -751,7 +752,7 @@ msgstr "_Radni prostori"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
+msgstr "_Minimalna veličina prozora za aktiviranje pametnog postavljanja:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -772,15 +773,15 @@ msgstr "Ispod pokazivača _miša"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
-msgstr ""
+msgstr "_Postavljanje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
-msgstr ""
+msgstr "Omogući sloj_evito slaganje prikaza"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
-msgstr ""
+msgstr "Direktno prikazuj prozore u nadsloju punog zaslona"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "Show shadows under _regular windows"
@@ -788,11 +789,11 @@ msgstr "POkaži sjenu ispod _običnih prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
-msgstr ""
+msgstr "Pokaz_uj sjene ispod skočnih prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show shadows under _dock windows"
-msgstr ""
+msgstr "Pokazuj sjene ispod usi_drenih prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Opaci_ty of window decorations:"
@@ -820,11 +821,11 @@ msgstr "Neprozirnost prozora tijekom promije_ne veličine"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of popup window_s:"
-msgstr ""
+msgstr "Neprozirnost _skočnih prozora:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "C_ompositor"
-msgstr ""
+msgstr "Sla_gatelj"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
@@ -859,19 +860,19 @@ msgstr "%s (na %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr ""
+msgstr "Razdijeli u pozadinu"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Razdijeli u pozadinu (nije podržano)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Postavi način slaganja"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Postavi način slaganja (nije podržano)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
@@ -896,7 +897,7 @@ msgstr "Ma_ksimiziraj"
 
 #: ../src/menu.c:44
 msgid "Unma_ximize"
-msgstr ""
+msgstr "Poništi maksimiziranje"
 
 #: ../src/menu.c:45
 msgid "Mi_nimize"
@@ -933,11 +934,11 @@ msgstr "Uvijek ispod ostalih prozora"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
-msgstr ""
+msgstr "Podigni prozor"
 
 #: ../src/menu.c:55
 msgid "Roll Window Down"
-msgstr ""
+msgstr "Spusti prozor"
 
 #: ../src/menu.c:56
 msgid "_Fullscreen"
@@ -949,7 +950,7 @@ msgstr "Napusti _Cijeli zaslon"
 
 #: ../src/menu.c:58
 msgid "Context _Help"
-msgstr ""
+msgstr "Dodatna pomoć"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
@@ -985,7 +986,7 @@ msgstr "Ponovno pokreni"
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: GtkMenu nije uspio uhvatiti pokazivač\n\n"
 
 #: ../src/settings.c:273
 #, c-format
@@ -995,7 +996,7 @@ msgstr "%s: Ne mogu dodijeliti boju %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Ne mogu dodijeliti boju: GValue za boju nije tipa STRING"
 
 #: ../src/settings.c:282
 #, c-format
@@ -1005,14 +1006,14 @@ msgstr "%s: Ne mogu analizirati boju %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Ne mogu analizirati boju: GValue za boju nije tipa STRING"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Greška u čitanju podataka procesa djeteta: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Ne mogu stvoriti prozor pomoćnika: %s\n"
