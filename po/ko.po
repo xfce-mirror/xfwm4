@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-26 18:31+0100\n"
-"PO-Revision-Date: 2014-01-01 04:58+0000\n"
+"POT-Creation-Date: 2014-02-24 00:32+0100\n"
+"PO-Revision-Date: 2014-02-24 21:25+0000\n"
 "Last-Translator: Darkcircle <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/projects/p/xfce/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -33,29 +33,29 @@ msgstr "경고"
 msgid "None"
 msgstr "없음"
 
-#: ../settings-dialogs/tweaks-settings.c:468
+#: ../settings-dialogs/tweaks-settings.c:473
 msgid "Session manager socket"
 msgstr "세션 관리자 소켓"
 
-#: ../settings-dialogs/tweaks-settings.c:468
+#: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "<소켓 ID>"
 
-#: ../settings-dialogs/tweaks-settings.c:469
+#: ../settings-dialogs/tweaks-settings.c:474
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "버전 정보"
 
-#: ../settings-dialogs/tweaks-settings.c:487
+#: ../settings-dialogs/tweaks-settings.c:492
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/tweaks-settings.c:496
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -240,7 +240,7 @@ msgid "<b>Raise on click</b>"
 msgstr "<b>눌렀을 때 창 올리기</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Focus"
 msgstr "창 활성 방법(_F)"
 
@@ -259,7 +259,7 @@ msgstr "거리(_T):"
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "<i>Small</i>"
 msgstr "<i>작게</i>"
 
@@ -395,173 +395,177 @@ msgid "_Draw frame around selected windows while cycling"
 msgstr "순환하는 동안 선택한 창 테두리 그리기(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "Cycle through windows in a _list"
+msgstr "목록의 창을 대상으로 순환(_L)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "C_ycling"
 msgstr "창 순환(_Y)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Activate foc_us stealing prevention"
 msgstr "창 활성 강탈 방지 활성화(_U)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
 msgstr "표준 ICCCM 포커스 힌트 이행(_S)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
 msgstr "창이 위로 올라 올 때:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "_Bring window on current workspace"
 msgstr "창을 현재 작업 공간으로 이동(_B)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Switch to win_dow's workspace"
 msgstr "창의 작업 공간으로 이동(_D)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Do _nothing"
 msgstr "아무것도 안함(_N)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Key used to _grab and move windows:"
 msgstr "창을 잡고 움직이기 위한 키(_G):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "어떤 마우스 단추든 누르면 창을 맨 앞으로(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Hide frame of windows when ma_ximized"
 msgstr "창을 최대화 했을 때 테두리 숨기기(_X)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Restore original size of maximi_zed windows when moving"
 msgstr "최대화한 창을 움직일 때 원래 크기로(_Z)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "화면 모서리로 창을 옮길 때 자동으로 바둑판 배치(_T)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
 msgstr "창 맞춤 대신 모서리 저항을 사용(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "창의 장식을 깜빡여서 응급 상황임을 알림(_U)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "응급 창의 반복 깜빡임 유지(_B)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use mouse wheel on title bar to ro_ll up the window"
 msgstr "제목 표시줄에서 마우스 휠을 사용하여 창 말아올리기(_L)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "_Accessibility"
 msgstr "접근성(_A)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "데스크톱 상에서 마우스 휠을 돌려 작업 공간 전환(_M)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr "바로 가기 키로 바꿀 때 이전 작업 공간을 호출하고 복원(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "실제 데스크톱 배치에 따라 작업 공간 전환(_L)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "첫번째 또는 마지막 작업 공간에 도달하면 작업 공간 전환(_T)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
 msgstr "작업 공간(_W)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "똑똑한 배치를 적용할 창의 최소 크기(_M):"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "<i>Large</i>"
 msgstr "<i>크게</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "By default, place windows:"
 msgstr "기본 창 위치:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "At the c_enter of the screen"
 msgstr "화면 한 가운데(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "U_nder the mouse pointer"
 msgstr "마우스 포인터 위치 시키기(_N)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Placement"
 msgstr "배치(_P)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Enable display compositing"
 msgstr "디스플레이 합성 활성화(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Display _fullscreen overlay windows directly"
 msgstr "직접 창을 도배하여 전체 화면 표시(_F)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
 msgstr "수직 동기화시 그리기 동기화(_V)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
 msgstr "팝업 창에 그림자 표시(_U)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
 msgstr "도크 창에 그림자 표시(_D)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
 msgstr "보통 창에 그림자 표시(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
 msgstr "창 장식 불투명도(_T):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "<i>Transparent</i>"
 msgstr "<i>투명</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Opaque</i>"
 msgstr "<i>불투명</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of _inactive windows:"
 msgstr "비활성 창 불투명도(_I):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of windows during _move:"
 msgstr "창을 움직일 때 불투명도(_M):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during resi_ze:"
 msgstr "창 크기를 변경할 때 불투명도(_Z):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
 msgstr "팝업 창 불투명도(_N):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
 msgstr "합성 효과(_O)"
 
