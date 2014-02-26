@@ -126,7 +126,8 @@ sn_collect_timed_out_foreach (void *element, void *data)
 {
     CollectTimedOutData *ctod;
     SnStartupSequence *sequence;
-    long tv_sec, tv_usec;
+    time_t tv_sec;
+    suseconds_t tv_usec;
     double elapsed;
 
     g_return_if_fail (data != NULL);
