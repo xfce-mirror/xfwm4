@@ -5,14 +5,14 @@
 # Translators:
 # schizo <eveskovic@gmail.com>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2010
-# Ivica  Kolić <ikoli@yahoo.com>, 2013
+# Ivica  Kolić <ikoli@yahoo.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-02-28 23:00+0000\n"
-"Last-Translator: schizo <eveskovic@gmail.com>\n"
+"PO-Revision-Date: 2014-03-11 08:09+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfce/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Ime radnog prostora"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
-msgstr "Priključak upravitelja postavkama"
+msgstr ""
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -176,7 +176,7 @@ msgstr "_Stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Odredite kratice za upravljanje radnjama upra_vitelja prozorima:"
+msgstr "Odredite kratice za upravljanje radnjama _upravitelja prozorima:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -247,11 +247,11 @@ msgstr "_Fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
-msgstr "Do _granica prozora"
+msgstr "Do granica _prozora"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
-msgstr "Do _ostalih prozora"
+msgstr "Do ostalih _prozora"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
@@ -295,7 +295,7 @@ msgstr "Kada se _miče"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
-msgstr "Kada se mjenja vel_ičina"
+msgstr "Kada se _mjenja veličina"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
@@ -389,11 +389,11 @@ msgstr "_Uključi skrivene (tj. iconified) prozore"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr "Izmjenjuj prozore sa svih radnih pros_tora"
+msgstr "Izmjenjuj _prozore sa svih radnih prostora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr "Nacrtaj obrub oko o_dabranih prozora tijekom izmjenjivanja"
+msgstr "_Nacrtaj obrub oko odabranih prozora tijekom izmjenjivanja"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle through windows in a _list"
@@ -405,11 +405,11 @@ msgstr "Izm_jenjivanje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Activate foc_us stealing prevention"
-msgstr "Aktiviraj prevenciju krađe fok_usa"
+msgstr "Aktiviraj preven_ciju krađe fokusa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Poštuj ICCCM _standard fokusiranja"
+msgstr "Poštuj _ICCCM standard fokusiranja"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
@@ -433,7 +433,7 @@ msgstr "Tipka za _uzimanje i premještanje prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Podigni p_rozor prilikom pritiska bilo kojeg gumba na mišu"
+msgstr "_Podigni prozor prilikom pritiska bilo kojeg gumba na mišu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Hide frame of windows when ma_ximized"
@@ -445,11 +445,11 @@ msgstr "Vrati orginalnu veličinu mak_simiziranog prozora pri micanju"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automa_tski poploči prozore pri micanju prema rubu zaslona"
+msgstr "Automatski _poploči prozore pri micanju prema rubu zaslona"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Koriti otpornost rubova umj_esto ljepljenja prozora"
+msgstr "Koriti _otpornost rubova umjesto ljepljenja prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Notify of _urgency by making window's decoration blink"
@@ -457,11 +457,11 @@ msgstr "Obavijesti o _važnosti trperenjem dekoracije prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Neka važni prozori trepere uza_stopno"
+msgstr "Neka važni prozori _trepere uzastopno"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Podigni prozor korištenjem kotačića miša na nas_lovnici prozora "
+msgstr "Podigni prozor korištenjem kotačića miša na _naslovnici prozora "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "_Accessibility"
@@ -475,15 +475,15 @@ msgstr "Koristi _kotačić miša na radnoj površini za prebacivanje radnih pros
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Zapamti i v_rati prethodni radni prostor\npri izmjeni kraticama tipkovnice"
+msgstr "_Zapamti i vrati prethodni radni prostor\npri izmjeni kraticama tipkovnice"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Pre_lomi radne prostore ovisno o stvarnom rasporedu radne površine"
+msgstr "Omotaj radne prostore ovisno o stvarnom rasporedu radne _površine"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Prelomi radne prostore kada je do_hvaćen prvi ili zadnji radni prostor"
+msgstr "Omotaj radne prostore kada _je dohvaćen prvi ili zadnji radni prostor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
@@ -516,23 +516,23 @@ msgstr "_Postavljanje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Enable display compositing"
-msgstr "Omogući sloj_evito slaganje prikaza"
+msgstr "_Omogući slojevito slaganje prikaza"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Direktno prikazuj prozore u nadsloju punog zaslona"
+msgstr "Direktno _prikazuj prozore u nadsloju punog zaslona"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr "Sinkroniziraj crtenje s _vertical blank"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
-msgstr "Pokaz_uj sjene ispod skočnih prozora"
+msgstr "Pokazuj sjene ispod skoč_nih prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
-msgstr "Pokazuj sjene ispod usi_drenih prozora"
+msgstr "Pokazuj sjene ispod _usidrenih prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
@@ -564,11 +564,11 @@ msgstr "Neprozirnost prozora tijekom promije_ne veličine:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
-msgstr "Neprozirnost neaktivnih pro_zora:"
+msgstr "Neprozirnost skočnih pro_zora:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
-msgstr "Sla_gatelj"
+msgstr "S_lagatelj"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
@@ -693,7 +693,7 @@ msgstr "Napusti _cijeli zaslon"
 
 #: ../src/menu.c:58
 msgid "Context _Help"
-msgstr "Dodatna _pomoć"
+msgstr ""
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
@@ -759,4 +759,4 @@ msgstr "Greška u čitanju podataka procesa djeteta: %s\n"
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "Ne mogu stvoriti prozor pomoćnika: %s\n"
+msgstr ""
