@@ -448,6 +448,26 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                                frameY (c) + frameHeight (c) / 2,
                                TILE_UP, TRUE);
                 break;
+            case KEY_TILE_DOWN_LEFT:
+                clientTile (c, frameX (c) + frameWidth (c) / 2,
+                               frameY (c) + frameHeight (c) / 2,
+                               TILE_DOWN_LEFT, TRUE);
+                break;
+            case KEY_TILE_DOWN_RIGHT:
+                clientTile (c, frameX (c) + frameWidth (c) / 2,
+                               frameY (c) + frameHeight (c) / 2,
+                               TILE_DOWN_RIGHT, TRUE);
+                break;
+            case KEY_TILE_UP_LEFT:
+                clientTile (c, frameX (c) + frameWidth (c) / 2,
+                               frameY (c) + frameHeight (c) / 2,
+                               TILE_UP_LEFT, TRUE);
+                break;
+            case KEY_TILE_UP_RIGHT:
+                clientTile (c, frameX (c) + frameWidth (c) / 2,
+                               frameY (c) + frameHeight (c) / 2,
+                               TILE_UP_RIGHT, TRUE);
+                break;
             default:
                 break;
         }

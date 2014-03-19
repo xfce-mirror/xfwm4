@@ -3235,7 +3235,38 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
         return (wc->height <= c->size->max_height);
     }
 
-    return TRUE;
+    switch (tile)
+    {
+        case TILE_DOWN_LEFT:
+                wc->x = full_x + frameExtentLeft (c);
+                wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+                wc->y = full_y + full_h / 2 + frameExtentTop (c);
+                wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_DOWN_RIGHT:
+                wc->x = full_x + full_w /2 + frameExtentLeft (c);
+                wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+                wc->y = full_y + full_h / 2 + frameExtentTop (c);
+                wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_UP_LEFT:
+                wc->x = full_x + frameExtentLeft (c);
+                wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+                wc->y = full_y + frameExtentTop (c);
+                wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_UP_RIGHT:
+                wc->x = full_x + full_w /2 + frameExtentLeft (c);
+                wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+                wc->y = full_y + frameExtentTop (c);
+                wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        default:
+            return TRUE;
+            break;
+    }
+
+    return (wc->height <= c->size->max_height) && (wc->width <= c->size->max_width);
 }
 
 gboolean
@@ -3354,6 +3385,12 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
         case TILE_UP:
         case TILE_DOWN:
             mode = CLIENT_FLAG_MAXIMIZED_HORIZ;
+            break;
+        case TILE_DOWN_LEFT:
+        case TILE_DOWN_RIGHT:
+        case TILE_UP_LEFT:
+        case TILE_UP_RIGHT:
+            mode = 0;
             break;
         default:
             return FALSE;
