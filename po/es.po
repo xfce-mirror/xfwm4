@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-03-22 12:21+0000\n"
+"PO-Revision-Date: 2014-03-28 05:49+0000\n"
 "Last-Translator: Pablo Lezaeta <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -360,7 +360,7 @@ msgstr "Atajo"
 #: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Fallo al inicializar xfconf. Motivo: %s"
+msgstr "No se pudo inicializar xfconf. Motivo: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
