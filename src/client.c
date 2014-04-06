@@ -1459,14 +1459,10 @@ clientSaveSizePos (Client *c)
 {
     g_return_if_fail (c != NULL);
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
     {
         c->old_x = c->x;
         c->old_width = c->width;
-    }
-
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
-    {
         c->old_y = c->y;
         c->old_height = c->height;
     }
