@@ -1149,6 +1149,10 @@ clientGetWMNormalHints (Client *c, gboolean update)
     {
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
     }
+    else
+    {
+        FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | XFWM_FLAG_HAS_RESIZE);
+    }
 
     if (update)
     {
