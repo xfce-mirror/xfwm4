@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-04-13 18:54+0000\n"
+"PO-Revision-Date: 2014-04-20 22:59+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfce/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -106,11 +106,11 @@ msgstr "Estayes de trabayu"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "Configurar distribución del tecláu, nome y márxenes"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
-msgstr ""
+msgstr "<b>Te_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
@@ -186,7 +186,7 @@ msgstr "_Tecláu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr ""
+msgstr "Primi pa enfocar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
@@ -245,11 +245,11 @@ msgstr "_Focu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
-msgstr ""
+msgstr "A los bervesos la pantalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
-msgstr ""
+msgstr "A otres ventanes"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
@@ -289,7 +289,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
-msgstr ""
+msgstr "Al _mover"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
@@ -379,7 +379,7 @@ msgstr "Esto reafitará tolos accesos direutos a los sos valores por defeutu. ¿
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "Sa_ltar ventanes que tengan afitaes\nles propiedaes \"saltar paxinador\" o\n\"saltar barra de xeres\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -502,11 +502,11 @@ msgstr "Por defeutu, allugar ventanes:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "At the c_enter of the screen"
-msgstr ""
+msgstr "Nel centru la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "U_nder the mouse pointer"
-msgstr ""
+msgstr "Sol punteru'l mur"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Placement"
