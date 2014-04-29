@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-04-27 11:45+0000\n"
+"PO-Revision-Date: 2014-04-29 12:16+0000\n"
 "Last-Translator: haarek <haarektrans@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfwm4/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -248,11 +248,11 @@ msgstr "_Fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
-msgstr ""
+msgstr "Til _skjermkanter"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
-msgstr ""
+msgstr "Til andre _vinduer"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
@@ -280,7 +280,7 @@ msgstr "Med muse_pekeren"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr ""
+msgstr "Med et vindu som _drages"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -292,11 +292,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
-msgstr ""
+msgstr "Ved _flytting"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
-msgstr ""
+msgstr "Ved _endring av størrelse"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
@@ -438,15 +438,15 @@ msgstr "_Hev vinduer ved hvilket som helst museklikk"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Hide frame of windows when ma_ximized"
-msgstr ""
+msgstr "Skjul vindusrammer når ma_ksimert"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
+msgstr "Gjenopprett opprinnelig vindusstørrelse for maksimerte vinduer når de flyttes på"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
+msgstr "Automatisk _juster vinduer når de flyttes mot skjermkanten"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
@@ -462,7 +462,7 @@ msgstr "La kritiske vinduer _blinke gjentatte ganger"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr ""
+msgstr "Bruk musehjulet på tittellinjen for å ru_lle opp vinduet"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "_Accessibility"
