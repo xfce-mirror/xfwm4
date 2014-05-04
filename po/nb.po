@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-05-02 10:22+0000\n"
+"PO-Revision-Date: 2014-05-04 00:16+0000\n"
 "Last-Translator: kingu <comradekingu@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfwm4/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -289,7 +289,7 @@ msgstr "_Kantmotstand:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
+msgstr "<b>Bruk vindustilpasning for arbeidsområder når skjermens kanter nås<b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -383,7 +383,7 @@ msgstr "Dette vil tilbakestille alle snarveier til standardverdi. Ønsker du å 
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "H_opp over vinduer som har \"hopp over side\"\neller \"hopp over verktøylinge\" -parameter satt. "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -485,7 +485,7 @@ msgstr "Bryt arbeidsområdet avhengig av skrivebordets _utforming"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "Bruk vindustilpasning for arbeidsområder når _det første eller siste arbeidsområde nås"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
@@ -526,7 +526,7 @@ msgstr "Vis _fullskjermsvinduer direkte uten å bruke kompositt"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr ""
+msgstr "Synkroniser inntegning i henhold til _VBLANK intervall"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
