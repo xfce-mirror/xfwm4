@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Tornes Llume <l.lumex03.tornes@gmail.com>, 2014
+# Tornes Llume <l.lumex03.tornes@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2014-03-05 14:41+0000\n"
+"PO-Revision-Date: 2014-05-07 22:01+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
-"Language-Team: Asturian (http://www.transifex.com/projects/p/xfce/language/ast/)\n"
+"Language-Team: Asturian (http://www.transifex.com/projects/p/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -150,7 +151,7 @@ msgstr "Endolcar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
-msgstr ""
+msgstr "Minimizar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
@@ -199,12 +200,12 @@ msgstr "_Tiempu d'espera enantes que la ventana garre'l focu:"
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
-msgstr ""
+msgstr "<i>Curtiu</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "<i>Long</i>"
-msgstr ""
+msgstr "<i>Llargu</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "<b>Focus model</b>"
@@ -260,7 +261,7 @@ msgstr "Dis_tancia:"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "<i>Small</i>"
-msgstr ""
+msgstr "<i>Pequeñu</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
@@ -836,11 +837,11 @@ msgstr "Distribución"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
-msgstr ""
+msgstr "Nomes"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "_Xeneral"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
@@ -875,20 +876,20 @@ msgstr ""
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Trocar l'alministrador de ventanes esistente"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Amuesa la información de versión y cola"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENTOS...]"
 
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Escribi \"%s --help\" pal usu"
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
