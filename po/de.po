@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2014-01-02 01:56+0000\n"
+"PO-Revision-Date: 2014-05-09 14:09+0000\n"
 "Last-Translator: to_ba\n"
-"Language-Team: German (http://www.transifex.com/projects/p/xfce/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,7 +101,7 @@ msgstr "Feineinstellungen der Fensterverwaltung"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Nehmen Sie Feineinstellungen am Fensterverhalten und den Fenstereffekten vor"
+msgstr "Feineinstellungen des Fensterverhaltens und der Fenstereffekte"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -119,7 +119,7 @@ msgstr "<b>_Thema</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
-msgstr "<b>Sch_rift im Titel</b>"
+msgstr "<b>_Titelschrift</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
@@ -155,11 +155,11 @@ msgstr "Einrollen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
-msgstr "Minimieren"
+msgstr "Verkleinern"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
-msgstr "Maximieren"
+msgstr "Vergrößern"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Close"
@@ -179,7 +179,7 @@ msgstr "_Stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "_Reset to Defaults"
-msgstr "Sta_ndardwerte setzen"
+msgstr "_Auf Standardwerte zurücksetzen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "<b>Window _shortcuts</b>"
@@ -225,7 +225,7 @@ msgstr "<b>Fokus bei neuen Fenstern</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Fenster in den Vordergrund _bringen, wenn sie den Fokus erhalten"
+msgstr "_Fenster in den Vordergrund bringen, wenn sie den Fokus erhalten"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
@@ -237,7 +237,7 @@ msgstr "<b>Hervorheben bei Fokus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
-msgstr "H_ervorheben bei Klick in das Programmfenster"
+msgstr "_Hervorheben bei Klick in das Programmfenster"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
@@ -246,7 +246,7 @@ msgstr "<b>Hervorheben durch Klicken</b>"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "_Focus"
-msgstr "F_okus"
+msgstr "_Fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Snap windows to screen _border"
@@ -310,11 +310,11 @@ msgstr "Aktion, die bei Doppelklick auf die Titelleiste ausgeführt wird"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Double click _action</b>"
-msgstr "<b>Aktion bei _Doppelklick</b>"
+msgstr "<b>Aktion beim _Doppelklick</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "Ad_vanced"
-msgstr "_Weitere Optionen"
+msgstr "_Erweitert"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -329,7 +329,7 @@ msgstr "Fenster verstecken"
 #: ../settings-dialogs/xfwm4-settings.c:222
 #: ../settings-dialogs/xfwm4-settings.c:249
 msgid "Maximize window"
-msgstr "Fenster maximieren"
+msgstr "Fenster vergrößern"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:258
@@ -372,11 +372,11 @@ msgstr "Abbrechen"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cycle windows"
-msgstr "Fenster durchwechseln"
+msgstr "Fensterzyklus"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows (Reverse)"
-msgstr "Fenster durchwechseln (Rückwärts)"
+msgstr "Fensterzyklus (Rückwärts)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
@@ -392,11 +392,11 @@ msgstr "Fenster schließen"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Maximize window horizontally"
-msgstr "Fenster horizontal maximieren"
+msgstr "Fenster horizontal vergrößern"
 
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window vertically"
-msgstr "Fenster vertikal maximieren"
+msgstr "Fenster vertikal vergrößern"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Move window"
@@ -528,7 +528,7 @@ msgstr "Fenster nach rechts kacheln"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
-msgstr "Arbeitsoberfläche zeigen"
+msgstr "Schreibtisch anzeigen"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Upper workspace"
@@ -654,7 +654,7 @@ msgstr "Dies wird alle Tastenkürzel auf ihre Standardwerte zurücksetzen. Möch
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "F_enster, die nicht im Arbeitsflächenumschalter oder nicht in der Taskleiste erscheinen sollen, auch wirklich übergehen."
+msgstr "_Fenster, die nicht im Arbeitsflächenumschalter oder nicht in der \nAnwendungsliste erscheinen sollen, auch wirklich übergehen."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -662,11 +662,11 @@ msgstr "_Versteckte (z.B. minimierte) Fenster miteinbeziehen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr "Fe_nster aller Arbeitsflächen miteinbeziehen"
+msgstr "Fe_nsterzyklus durch alle Arbeitsflächen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Rahmen um die ausgewählten Fenster zeichnen während des Fensterwechsels"
+msgstr "_Während des Fensterwechsels einen Rahmen um die ausgewählten Fenster zeichnen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "C_ycling"
@@ -674,7 +674,7 @@ msgstr "_Fensterwechsel"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Activate _focus stealing prevention"
-msgstr "Fo_kusverlust verhindern"
+msgstr "_Fokusverlust verhindern"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
@@ -690,7 +690,7 @@ msgstr "F_enster auf die aktuelle Arbeitsfläche verschieben"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Switch to win_dow's workspace"
-msgstr "Zu_r Arbeitsfläche des Fensters wechseln"
+msgstr "_Zur Arbeitsfläche des Fensters wechseln"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
@@ -698,7 +698,7 @@ msgstr "_Nichts unternehmen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Key used to _grab and move windows:"
-msgstr "_Taste zum Verschieben der Fenster:"
+msgstr "_Taste zum Nehmen und Verschieben der Fenster:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
@@ -706,11 +706,11 @@ msgstr "F_enster hervorbringen, wenn eine beliebige Maustaste gedrückt wird"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide _frame of windows when maximized"
-msgstr "_Rahmen bei maximierten Fenstern nicht anzeigen"
+msgstr "_Rahmen bei vergrößerten Fenstern nicht anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Ur_sprüngliche Größe maximierter Fenster nach Verschieben wiederherstellen"
+msgstr "_Ursprüngliche Größe vergrößerter Fenster nach Verschieben wiederherstellen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -730,11 +730,11 @@ msgstr "Dr_ingende Fenster ununterbrochen in blinkendem Zustand lassen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
-msgstr "Z_ugreifbarkeit"
+msgstr "_Zugreifbarkeit"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "B_etätigung des Mausrads über der Arbeitsoberfläche zum Wechseln der Arbeitsfläche"
+msgstr "_Das Mausrads, über dem Schreibtisch, zum Wechseln der Arbeitsfläche benutzen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
@@ -744,11 +744,11 @@ msgstr "_Vorige Arbeitsfläche merken und wieder verwenden beim Wechseln mittels
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "A_rbeitsflächen in Abhängigkeit der derzeitigen Anordnung umbrechen"
+msgstr "A_rbeitsflächen in Abhängigkeit der derzeitigen Schreibtischanordnung umbrechen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "Arbe_itsflächen umbrechen, wenn die erste oder letzte Arbeitsfläche erreicht wird."
+msgstr "Arbeitsflächen _umbrechen, wenn die erste oder letzte Arbeitsfläche erreicht wird."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Workspaces"
@@ -756,7 +756,7 @@ msgstr "_Arbeitsflächen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "M_indestgröße zur intelligenten Fensterplatzierung:"
+msgstr "_Mindestgröße zur intelligenten Fensterplatzierung:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
@@ -773,7 +773,7 @@ msgstr "I_n der Mitte des Bildschirms"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "Under the mouse _pointer"
-msgstr "Un_terhalb des Mauszeigers"
+msgstr "_Unterhalb des Mauszeigers"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "_Placement"
@@ -909,7 +909,7 @@ msgstr "Mi_nimieren"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
-msgstr "_Alle anderen Fenster minimieren"
+msgstr "_Alle anderen Fenster verkleinern"
 
 #: ../src/menu.c:47
 msgid "S_how"
