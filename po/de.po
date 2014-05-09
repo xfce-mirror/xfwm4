@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-03-08 20:08+0000\n"
+"PO-Revision-Date: 2014-05-09 14:09+0000\n"
 "Last-Translator: to_ba\n"
-"Language-Team: German (http://www.transifex.com/projects/p/xfce/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -155,11 +155,11 @@ msgstr "Einrollen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
-msgstr "Minimieren"
+msgstr "Verkleinern"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
-msgstr "Maximieren"
+msgstr "Vergrößern"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Close"
@@ -326,7 +326,7 @@ msgstr "Fenster verstecken"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Maximize window"
-msgstr "Fenster maximieren"
+msgstr "Fenster vergrößern"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Fill window"
@@ -444,7 +444,7 @@ msgstr "_Rahmen bei maximierten Fenstern nicht anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Restore original size of maximi_zed windows when moving"
-msgstr "_Ursprüngliche Größe maximierter Fenster nach Verschieben wiederherstellen"
+msgstr "_Ursprüngliche Größe vergrößerten Fenster nach Verschieben wiederherstellen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -651,7 +651,7 @@ msgstr "Mi_nimieren"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
-msgstr "_Alle anderen Fenster minimieren"
+msgstr "_Alle anderen Fenster verkleinern"
 
 #: ../src/menu.c:47
 msgid "S_how"
