@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-02-24 21:25+0000\n"
+"PO-Revision-Date: 2014-05-14 12:43+0000\n"
 "Last-Translator: Darkcircle <darkcircle.0426@gmail.com>\n"
-"Language-Team: Korean (http://www.transifex.com/projects/p/xfce/language/ko/)\n"
+"Language-Team: Korean (http://www.transifex.com/projects/p/xfwm4/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "이 창은 사용중이며 응답이 없는 것 같습니다.\n이 프로그램을 중단하시렵니까?"
+msgstr "이 창은 사용 중이며 응답이 없는 것 같습니다.\n이 프로그램을 중단하시렵니까?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -62,7 +62,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\n사용가능한 명령줄 옵션의 전체 목록을 보시려면 %s --help를 입력하십시오.\n"
+msgstr "%s: %s\n사용 가능한 명령줄 옵션의 전체 목록을 보시려면 %s --help를 입력하십시오.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -221,15 +221,15 @@ msgstr "<b>새로운 창 활성화</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
-msgstr "활성된 창을 자동으로 최상위로 올리기(_R)"
+msgstr "활성화한 창을 자동으로 최상위로 올리기(_R)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr "활성된 창을 올리기까지의 지연 시간(_B):"
+msgstr "활성화한 창을 올리기까지의 지연 시간(_B):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr "<b>활성된 창 올리기</b>"
+msgstr "<b>활성화한 창 올리기</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
@@ -359,7 +359,7 @@ msgstr "바로 가기"
 #: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "xfconf를 초기화 하는데 실패했습니다. 원인: %s"
+msgstr "xfconf 초기화에 실패했습니다. 원인: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
@@ -408,11 +408,11 @@ msgstr "창 활성 강탈 방지 활성화(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
-msgstr "표준 ICCCM 포커스 힌트 이행(_S)"
+msgstr "표준 ICCCM 포커스 힌트 우선(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
-msgstr "창이 위로 올라 올 때:"
+msgstr "창이 위로 올라올 때:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "_Bring window on current workspace"
@@ -428,7 +428,7 @@ msgstr "아무것도 안함(_N)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Key used to _grab and move windows:"
-msgstr "창을 잡고 움직이기 위한 키(_G):"
+msgstr "창을 잡고 움직일 키(_G):"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "_Raise windows when any mouse button is pressed"
@@ -452,11 +452,11 @@ msgstr "창 맞춤 대신 모서리 저항을 사용(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "창의 장식을 깜빡여서 응급 상황임을 알림(_U)"
+msgstr "창의 장식을 깜빡여서 긴급 상황임을 알림(_U)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "응급 창의 반복 깜빡임 유지(_B)"
+msgstr "긴급 창의 반복 깜빡임 유지(_B)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use mouse wheel on title bar to ro_ll up the window"
@@ -507,7 +507,7 @@ msgstr "화면 한 가운데(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "U_nder the mouse pointer"
-msgstr "마우스 포인터 위치 시키기(_N)"
+msgstr "마우스 포인터 위치(_N)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Placement"
@@ -743,17 +743,17 @@ msgstr "%s: 색을 할당하지 못했습니다: 색의 GValue 형식이 문자�
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: %s색을 분석하지 못했습니다.\n"
+msgstr "%s: %s색을 해석하지 못했습니다.\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: 색을 분석하지 못 했습니다: 색의 GValue 형식이 문자열이 아닙니다."
+msgstr "%s: 색을 해석하지 못했습니다: 색의 GValue 형식이 문자열이 아닙니다."
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "자식 프로세스에서 데이터를 읽는동안 오류가 발생했습니다: %s\n"
+msgstr "자식 프로세스에서 데이터를 읽는 동안 오류가 발생했습니다: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
