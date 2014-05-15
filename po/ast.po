@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2014-05-07 22:01+0000\n"
+"PO-Revision-Date: 2014-05-15 07:15+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -266,7 +266,7 @@ msgstr "<i>Pequeñu</i>"
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "<i>Wide</i>"
-msgstr ""
+msgstr "<i>Anchor</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "<b>Windows snapping</b>"
@@ -757,7 +757,7 @@ msgstr "Tamañu _mínimu de ventana p'activar posicionamientu intelixente"
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "<i>Large</i>"
-msgstr ""
+msgstr "<i>Grandor</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "By default, place windows:"
@@ -850,7 +850,7 @@ msgstr "Los márxenes son estayes a los llaos de la pantalla au nun s'allugará 
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
-msgstr ""
+msgstr "_Márxenes"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -868,11 +868,11 @@ msgstr ""
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Afitar el mou compositor"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Afitar el mou compositor (non sofitáu)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
