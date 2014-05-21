@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-05-07 22:04+0000\n"
+"PO-Revision-Date: 2014-05-21 22:22+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -563,7 +563,7 @@ msgstr "Opacidá de ventanes durante _redimensionáu:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
-msgstr ""
+msgstr "Opacidá de los ventanos emerxentes:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
