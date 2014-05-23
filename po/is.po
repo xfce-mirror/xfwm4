@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-04-11 10:27+0000\n"
+"PO-Revision-Date: 2014-05-23 14:23+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
+"Language-Team: Icelandic (http://www.transifex.com/projects/p/xfwm4/language/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -286,7 +286,7 @@ msgstr "_Viðnám jaðars:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
+msgstr "<b>Samtengja vinnusvæði þegar nálgast er skjájaðar</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -478,11 +478,11 @@ msgstr "_Muna og endurheimta fyrri vinnusvæði\nþegar skipt er með flýtilykl
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
+msgstr "Samtengja vinnusvæði, _miðað við raunverulega framsetningu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "Sam_tengja vinnusvæði, fyrsta og síðasta vinnusvæðið eru samliggjandi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
@@ -519,11 +519,11 @@ msgstr "_Virkja skjásamsetningu á skjá"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Display _fullscreen overlay windows directly"
-msgstr ""
+msgstr "Birta y_firlagða heilskjásglugga beint"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr ""
+msgstr "Samstilla skjáteikningu _við millirammabil (vertical blank)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
