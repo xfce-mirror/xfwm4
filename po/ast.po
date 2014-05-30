@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-05-21 22:22+0000\n"
+"PO-Revision-Date: 2014-05-29 22:59+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -92,7 +92,7 @@ msgstr "Configura'l comportamientu de ventanes y atayos"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "Axustes del xestor de ventanes"
+msgstr "Axustes del alministrador de ventanes"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -388,7 +388,7 @@ msgstr "_Incluyir ventanes anubríes (i.e. miniaturizaes)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr "_Esbillar cíclicamente les ventanes de toles estayes de trabayu"
+msgstr "_Esbillar cíclicamente les ventanes en toles estayes de trabayu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
@@ -396,7 +396,7 @@ msgstr "_Dibuxar marcu al rodiu de les ventanes esbillaes na escoyeta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle through windows in a _list"
-msgstr ""
+msgstr "_Esbillar cíclicamente les ventanes nuna llista"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "C_ycling"
@@ -412,7 +412,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Cuando una ventana apaez por sí mesma:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "_Bring window on current workspace"
@@ -440,7 +440,7 @@ msgstr "Anubrir marcu de ventanes al maximizar"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Restore original size of maximi_zed windows when moving"
-msgstr ""
+msgstr "Restaurar el _tamañu orixinal de ventanes maximizaes al desplazase"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -575,7 +575,7 @@ msgstr "_Númberu d'estayes de trabayu:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr ""
+msgstr "Distribución"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
@@ -592,7 +592,7 @@ msgstr "Los márxenes son estayes a los llaos de la pantalla au nun s'allugará 
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
-msgstr ""
+msgstr "_Márxenes"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -610,15 +610,15 @@ msgstr ""
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Afitar el mou compositor"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Afitar el mou compositor (non sofitáu)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Trocar l'alministrador de ventanes esistente"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
