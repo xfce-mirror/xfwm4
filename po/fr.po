@@ -4,19 +4,20 @@
 # 
 # Translators:
 # tneskovic <antoine_ecuador@yahoo.fr>, 2014
-# glaville <laville.guillaume@gmail.com>, 2013-2014
+# Guillaume Laville <laville.guillaume@gmail.com>, 2013-2014
 # jc1 <jc1.quebecos@gmail.com>, 2013
 # jc1 <jc1.quebecos@gmail.com>, 2013-2014
-# m8t <mmassonnet@xfce.org>, 2008
-# Pedwo51 <pedwo51@gmail.com>, 2013
-# Pedwo51 <pedwo51@gmail.com>, 2013
+# Mike Massonnet <mmassonnet@xfce.org>, 2008
+# Pierre D <pedwo51@gmail.com>, 2013
+# Pierre D <pedwo51@gmail.com>, 2013
+# Yannick Le Guen <leguen.yannick@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-05-15 16:22+0000\n"
-"Last-Translator: glaville <laville.guillaume@gmail.com>\n"
+"PO-Revision-Date: 2014-07-03 20:41+0000\n"
+"Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,7 +113,7 @@ msgstr "Espaces de travail"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Configurer l'agencement, les noms et les marges"
+msgstr "Configurer la disposition, les noms et les marges"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
@@ -128,7 +129,7 @@ msgstr "<b>A_lignement du titre</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
-msgstr "Faire glisser les boutons pour modifier leur agencement"
+msgstr "Faire glisser les boutons pour modifier leur disposition"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Title"
@@ -172,7 +173,7 @@ msgstr "Éléments masqués"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "<b>Button layout</b>"
-msgstr "<b>Agencement des boutons</b>"
+msgstr "<b>Disposition des boutons</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "_Style"
@@ -283,7 +284,7 @@ msgstr "Avec le _pointeur de la souris"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr "Avec une fenêtre trainée"
+msgstr "Avec une fenêtre _trainée"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -295,11 +296,11 @@ msgstr "<b>Changer d'espace de travail lorsque le pointeur arrive au bord de l'�
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
-msgstr "Lors du déplacement"
+msgstr "Lors du _déplacement"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
-msgstr "Lors du redimensionnement"
+msgstr "Lors du _redimensionnement"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
@@ -335,7 +336,7 @@ msgstr "Étendre la fenêtre"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
-msgstr "Aucun"
+msgstr "Aucune"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Left"
@@ -483,7 +484,7 @@ msgstr "_Mémoriser l'espace de travail précédent et y revenir\nlors d'un chan
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Changer d'espace de travail en fonction de l'_agencement du bureau"
+msgstr "Changer d'espace de travail en fonction de la _disposition du bureau"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
@@ -540,7 +541,7 @@ msgstr "Afficher les ombres sous les fenêtres _dock"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
-msgstr "Afficher l'ombre sous les fenêtres no_rmales"
+msgstr "Afficher les ombres sous les fenêtres no_rmales"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
@@ -580,11 +581,11 @@ msgstr "_Nombre d'espaces de travail :"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr "Agencement"
+msgstr "Disposition"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
-msgstr "_Noms :"
+msgstr "Noms"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
@@ -607,19 +608,19 @@ msgstr "%s (sur %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr "Forker en arrière-plan"
+msgstr "Passer à l'arrière-plan"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr "Forker en arrière-plan (non supporté)"
+msgstr "Passer à l'arrière-plan (non pris en charge)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr "Appliquer le mode du compositeur"
+msgstr "Régler le mode du compositeur"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr "Appliquer le mode du compositeur (non supporté)"
+msgstr "Régler le mode du compositeur (non pris en charge)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
@@ -627,7 +628,7 @@ msgstr "Remplacer le gestionnaire de fenêtre actuel"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
-msgstr "Information sur la version et quitter"
+msgstr "Afficher les informations sur la version et quitter"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
@@ -636,7 +637,7 @@ msgstr "[ARGUMENTS...]"
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Saisissez « %s --help » pour l'usage."
+msgstr "Taper « %s --help » pour plus d'aide."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
