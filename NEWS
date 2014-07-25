@@ -1,3 +1,16 @@
+4.11.2
+======
+- Improve auto-maximize fn to maximize windows which size is equal to
+  the available size.
+- Restore original window size after untiling (Bug 8765).
+- Add improved tab-win dialog.
+- Translation updates: Asturian, Bulgarian, Czech, German, English 
+  (Australia), Spanish (Castilian), French, Croatian, Indonesian, 
+  Icelandic, Italian, Japanese, Kazakh, Korean, Malay, Norwegian 
+  Bokmal, Dutch (Flemish), Occitan (post 1500), Polish, Portuguese, 
+  Portuguese (Brazilian), Russian, Serbian, Swedish, Thai, Turkish, 
+  Ukrainian, Chinese (China), Chinese (Hong Kong), Chinese (Taiwan)
+
 4.11.1
 ======
 - Remove unnecessary clipping of the rootPicture.
