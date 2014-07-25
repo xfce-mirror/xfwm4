@@ -63,6 +63,7 @@ AC_C_INLINE
 
 dnl check for standard header files
 AC_HEADER_STDC
+AC_CHECK_HEADERS([stropts.h])
 AC_CHECK_FUNCS([daemon setsid])
 AC_CHECK_FUNCS(opendir)
 

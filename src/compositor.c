@@ -41,7 +41,9 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <drm.h>
+#ifdef HAVE_STROPTS_H
 #include <stropts.h>
+#endif
 #endif /* HAVE_LIBDRM */
 
 #include "display.h"
