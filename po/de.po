@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-08-25 21:23+0000\n"
+"PO-Revision-Date: 2014-08-26 00:20+0000\n"
 "Last-Translator: Tobias Bannert\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -527,11 +527,11 @@ msgstr "_Vollbildüberlagerungsfenster sofort anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr ""
+msgstr "_Zeichnung der vertikalen Austastlücke synchronisieren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
-msgstr "Scha_tten unter Popup-Fenstern anzeigen"
+msgstr "Scha_tten unter Benachrichtigungsfenstern anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
@@ -567,7 +567,7 @@ msgstr "Deckkraft bei _Größenänderung:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
-msgstr "Deckkraft von P_opup-Fenstern:"
+msgstr "Deckkraft von Be_nachrichtigungsfenstern:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
@@ -622,7 +622,7 @@ msgstr "Compositor-Modus einstellen (nicht unterstützt)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
-msgstr "Existierenden Fenstermanager ersetzen"
+msgstr "Existierende Fensterverwaltung ersetzen"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
@@ -630,24 +630,24 @@ msgstr "Versionsinformation anzeigen und beenden"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr "[ARGUMENTE…]"
+msgstr "[ARGUMENTE …]"
 
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Geben Sie »%s --help« für Nutzungsinformationen an."
+msgstr "»%s --help« für Benutzungsinformationen eingeben."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
-msgstr "Ma_ximieren"
+msgstr "Ver_größern"
 
 #: ../src/menu.c:44
 msgid "Unma_ximize"
-msgstr "_Maximierung aufheben"
+msgstr "_Wiederherstellen"
 
 #: ../src/menu.c:45
 msgid "Mi_nimize"
-msgstr "Mi_nimieren"
+msgstr "Ver_kleinern"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
@@ -655,7 +655,7 @@ msgstr "_Alle anderen Fenster verkleinern"
 
 #: ../src/menu.c:47
 msgid "S_how"
-msgstr "Z_eigen"
+msgstr "Anz_eigen"
 
 #: ../src/menu.c:48
 msgid "_Move"
@@ -732,7 +732,7 @@ msgstr "Neustarten"
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu konnte die Position des Mauszeigers nicht feststellen\n"
+msgstr "%s: GtkMenu konnte die Position des Mauszeigers nicht erhalten\n"
 
 #: ../src/settings.c:273
 #, c-format
