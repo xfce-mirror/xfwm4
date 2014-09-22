@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2014-08-25 18:43+0000\n"
+"PO-Revision-Date: 2014-09-22 14:04+0000\n"
 "Last-Translator: Tobias Bannert\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -809,7 +809,7 @@ msgstr "<i>Durchsichtig</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "<i>Opaque</i>"
-msgstr "<i>Undurchsichtig</i>"
+msgstr "<i>Deckend</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opacity of _inactive windows:"
@@ -825,7 +825,7 @@ msgstr "Deckkraft bei _Größenänderung:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of popup window_s:"
-msgstr "Deckkraft von P_opup-Fenstern:"
+msgstr "Deckkraft von Be_nachrichtigungsfenstern:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "C_ompositor"
