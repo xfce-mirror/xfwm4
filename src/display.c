@@ -75,6 +75,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
 {
     static const char *atom_names[] = {
         "COMPOSITING_MANAGER",
+        "_GTK_FRAME_EXTENTS",
         "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
         "_MOTIF_WM_HINTS",

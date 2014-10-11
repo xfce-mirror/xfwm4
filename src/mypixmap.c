@@ -939,7 +939,7 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, const gchar * dir, co
     gchar *filexpm;
     GdkPixbuf *pixbuf;
 
-    TRACE ("entering xfwmPixmapLoad");
+    TRACE ("entering xfwmPixmapLoad(%s)", file);
 
     g_return_val_if_fail (pm != NULL, FALSE);
     g_return_val_if_fail (dir != NULL, FALSE);

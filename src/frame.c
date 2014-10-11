@@ -210,6 +210,112 @@ frameHeight (Client * c)
     return c->height;
 }
 
+int
+frameExtentLeft (Client * c)
+{
+    TRACE ("entering frameExtentLeft");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (c->has_frame_extents)
+    {
+        return -c->frame_extents[SIDE_LEFT];
+    }
+    return frameLeft(c);
+}
+
+int
+frameExtentRight (Client * c)
+{
+    TRACE ("entering frameExtentRight");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (c->has_frame_extents)
+    {
+        return -c->frame_extents[SIDE_RIGHT];
+    }
+    return frameRight(c);
+}
+
+int
+frameExtentTop (Client * c)
+{
+    TRACE ("entering frameExtentTop");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (c->has_frame_extents)
+    {
+        return -c->frame_extents[SIDE_TOP];
+    }
+    return frameTop(c);
+}
+
+int
+frameExtentBottom (Client * c)
+{
+    TRACE ("entering frameExtentBottom");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (c->has_frame_extents)
+    {
+        return -c->frame_extents[SIDE_BOTTOM];
+    }
+    return frameBottom(c);
+}
+
+int
+frameExtentX (Client * c)
+{
+    TRACE ("entering frameExtentX");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (c->has_frame_extents)
+    {
+        return c->x + c->frame_extents[SIDE_LEFT];
+    }
+    return frameX(c);
+}
+
+int
+frameExtentY (Client * c)
+{
+    TRACE ("entering frameExtentY");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (c->has_frame_extents)
+    {
+        return c->y + c->frame_extents[SIDE_TOP];
+    }
+    return frameY(c);
+}
+
+int
+frameExtentWidth (Client * c)
+{
+    TRACE ("entering frameExtentWidth");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (c->has_frame_extents)
+    {
+        return MAX (0, c->width - c->frame_extents[SIDE_LEFT]
+                                - c->frame_extents[SIDE_RIGHT]);
+    }
+    return frameWidth(c);
+}
+
+int
+frameExtentHeight (Client * c)
+{
+    TRACE ("entering frameExtentHeight");
+
+    g_return_val_if_fail (c != NULL, 0);
+    if (c->has_frame_extents)
+    {
+        return MAX (0, c->height - c->frame_extents[SIDE_TOP]
+                                 - c->frame_extents[SIDE_BOTTOM]);
+    }
+    return frameHeight(c);
+}
+
 static int
 frameTopLeftWidth (Client * c, int state)
 {

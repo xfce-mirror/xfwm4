@@ -1734,6 +1734,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* workarea will be updated when shown, no need to worry here */
     clientGetNetStruts (c);
 
+    c->has_frame_extents = FALSE;
+    clientGetGtkFrameExtents(c);
+
     /* Once we know the type of window, we can initialize window position */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED))
     {
@@ -1825,8 +1828,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         xfwmPixmapInit (screen_info, &c->appmenu[i]);
     }
 
-    for (i = 0; i < SIDE_TOP; i++) /* Keep SIDE_TOP for later */
+    for (i = 0; i < SIDE_COUNT; i++)
     {
+        if (i == SIDE_TOP)
+            continue;  /* Keep SIDE_TOP for later */
+
         xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
             &c->sides[i], NoEventMask,
             myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + i));
@@ -1847,8 +1853,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     xfwmWindowCreate (screen_info, c->visual, c->depth, c->frame,
         &c->sides[SIDE_TOP], NoEventMask,
-        myDisplayGetCursorResize(screen_info->display_info,
-        CORNER_COUNT + SIDE_TOP));
+        myDisplayGetCursorResize(screen_info->display_info, CORNER_COUNT + SIDE_TOP));
 
     for (i = 0; i < BUTTON_COUNT; i++)
     {
@@ -3608,7 +3613,7 @@ clientUpdateCursor (Client *c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    for (i = 0; i <= SIDE_TOP; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         xfwmWindowSetCursor (&c->sides[i],
             myDisplayGetCursorResize(display_info, CORNER_COUNT + i));

@@ -309,6 +309,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     static const char *side_names[] = {
         "left",
         "right",
+        "top", /* ** unused ** */
         "bottom"
     };
 
@@ -488,8 +489,11 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     screen_info->white_gc = widget->style->white_gc;
     g_object_ref (G_OBJECT (widget->style->white_gc));
 
-    for (i = 0; i < SIDE_TOP; i++) /* Keep SIDE_TOP for later */
+    for (i = 0; i < SIDE_COUNT; i++)
     {
+        if (i == SIDE_TOP)
+            continue;  /* There is no top decoration per se. */
+
         g_snprintf(imagename, sizeof (imagename), "%s-active", side_names[i]);
         xfwmPixmapLoad (screen_info, &screen_info->sides[i][ACTIVE], theme, imagename, colsym);
 

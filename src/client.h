@@ -312,6 +312,8 @@ struct _Client
     unsigned long wm_flags;
     unsigned long xfwm_flags;
     gint fullscreen_monitors[4];
+    gboolean has_frame_extents;
+    gint frame_extents[SIDE_COUNT];
 
     /* Termination dialog */
     gint dialog_pid;

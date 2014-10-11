@@ -109,8 +109,8 @@ enum
 {
     SIDE_LEFT = 0,
     SIDE_RIGHT,
-    SIDE_BOTTOM,
     SIDE_TOP,
+    SIDE_BOTTOM,
     SIDE_COUNT
 };
 #define NO_HANDLE -1
@@ -170,6 +170,7 @@ enum
 enum
 {
     COMPOSITING_MANAGER = 0,
+    GTK_FRAME_EXTENTS,
     KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR,
     KWM_WIN_ICON,
     MOTIF_WM_HINTS,

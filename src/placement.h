@@ -40,7 +40,7 @@ void                     clientMaxSpace                         (ScreenInfo *,
                                                                  int *,
                                                                  int *,
                                                                  int *);
-gboolean                 clientCkeckTitle                       (Client *);
+gboolean                 clientCheckTitle                       (Client *);
 unsigned int             clientConstrainPos                     (Client *,
                                                                  gboolean);
 void                     clientInitPosition                     (Client *);

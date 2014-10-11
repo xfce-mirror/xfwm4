@@ -180,40 +180,40 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     switch (handle)
     {
         case CORNER_BOTTOM_LEFT:
-            px = frameX (c) + frameLeft(c) / 2;
-            py = frameY (c) + frameHeight (c) - frameBottom(c) / 2;
+            px = frameExtentX (c) + frameExtentLeft(c) / 2;
+            py = frameExtentY (c) + frameExtentHeight (c) - frameExtentBottom(c) / 2;
             break;
         case CORNER_BOTTOM_RIGHT:
-            px = frameX (c) + frameWidth (c) - frameRight(c) / 2;
-            py = frameY (c) + frameHeight (c) - frameBottom(c) / 2;
+            px = frameExtentX (c) + frameExtentWidth (c) - frameExtentRight(c) / 2;
+            py = frameExtentY (c) + frameExtentHeight (c) - frameExtentBottom(c) / 2;
             break;
         case CORNER_TOP_LEFT:
-            px = frameX (c) + frameLeft(c) / 2;
-            py = frameY (c);
+            px = frameExtentX (c) + frameExtentLeft(c) / 2;
+            py = frameExtentY (c);
             break;
         case CORNER_TOP_RIGHT:
-            px = frameX (c) + frameWidth (c) - frameRight(c) / 2;
-            py = frameY (c);
+            px = frameExtentX (c) + frameExtentWidth (c) - frameExtentRight(c) / 2;
+            py = frameExtentY (c);
             break;
         case CORNER_COUNT + SIDE_LEFT:
-            px = frameX (c) + frameLeft(c) / 2;
-            py = frameY (c) + frameHeight (c) / 2;
+            px = frameExtentX (c) + frameExtentLeft(c) / 2;
+            py = frameExtentY (c) + frameExtentHeight (c) / 2;
             break;
         case CORNER_COUNT + SIDE_RIGHT:
-            px = frameX (c) + frameWidth (c) - frameRight(c) / 2;
-            py = frameY (c) + frameHeight (c) / 2;
+            px = frameExtentX (c) + frameExtentWidth (c) - frameExtentRight(c) / 2;
+            py = frameExtentY (c) + frameExtentHeight (c) / 2;
             break;
         case CORNER_COUNT + SIDE_TOP:
-            px = frameX (c) + frameWidth (c) / 2;
-            py = frameY (c);
+            px = frameExtentX (c) + frameExtentWidth (c) / 2;
+            py = frameExtentY (c);
             break;
         case CORNER_COUNT + SIDE_BOTTOM:
-            px = frameX (c) + frameWidth (c) / 2;
-            py = frameY (c) + frameHeight (c) - frameBottom(c) / 2;
+            px = frameExtentX (c) + frameExtentWidth (c) / 2;
+            py = frameExtentY (c) + frameExtentHeight (c) - frameExtentBottom(c) / 2;
             break;
         default:
-            px = frameX (c) + frameWidth (c) / 2;
-            py = frameY (c) + frameHeight (c) / 2;
+            px = frameExtentX (c) + frameExtentWidth (c) / 2;
+            py = frameExtentY (c) + frameExtentHeight (c) / 2;
             break;
     }
 
@@ -222,8 +222,8 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     passdata->handle = handle;
     passdata->mx = px;
     passdata->my = py;
-    passdata->px = passdata->mx - frameX (c);
-    passdata->py = passdata->my - frameY (c);
+    passdata->px = passdata->mx - frameExtentX (c);
+    passdata->py = passdata->my - frameExtentY (c);
     passdata->ox = c->x;
     passdata->oy = c->y;
     passdata->ow = c->width;
@@ -320,8 +320,8 @@ clientDrawOutline (Client * c)
 {
     TRACE ("entering clientDrawOutline");
 
-    XDrawRectangle (clientGetXDisplay (c), c->screen_info->xroot, c->screen_info->box_gc, frameX (c), frameY (c),
-        frameWidth (c) - 1, frameHeight (c) - 1);
+    XDrawRectangle (clientGetXDisplay (c), c->screen_info->xroot, c->screen_info->box_gc, frameExtentX (c), frameExtentY (c),
+        frameExtentWidth (c) - 1, frameExtentHeight (c) - 1);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         &&!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_SHADED))
     {
@@ -369,15 +369,15 @@ clientFindClosestEdgeX (Client *c, int edge_pos)
                   && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))
         {
 
-            if (clientCheckOverlap (c->y - frameTop (c) - 1, c->y + c->height + frameBottom (c) + 1, c2->y - frameTop (c) - 1, c2->y + c2->height + frameBottom (c) + 1))
+            if (clientCheckOverlap (c->y - frameExtentTop (c) - 1, c->y + c->height + frameExtentBottom (c) + 1, c2->y - frameExtentTop (c) - 1, c2->y + c2->height + frameExtentBottom (c) + 1))
             {
-                if (abs (c2->x - frameLeft (c2) - edge_pos) < abs (closest - edge_pos))
+                if (abs (c2->x - frameExtentLeft (c2) - edge_pos) < abs (closest - edge_pos))
                 {
-                    closest = c2->x - frameLeft (c2);
+                    closest = c2->x - frameExtentLeft (c2);
                 }
-                if (abs ((c2->x + c2->width) + frameRight (c2) - edge_pos) < abs (closest - edge_pos))
+                if (abs ((c2->x + c2->width) + frameExtentRight (c2) - edge_pos) < abs (closest - edge_pos))
                 {
-                    closest = (c2->x + c2->width) + frameRight (c2);
+                    closest = (c2->x + c2->width) + frameExtentRight (c2);
                 }
             }
         }
@@ -416,15 +416,15 @@ clientFindClosestEdgeY (Client *c, int edge_pos)
                   && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))
         {
 
-            if (clientCheckOverlap (c->x - frameLeft (c) - 1, c->x + c->width + frameRight (c) + 1, c2->x - frameLeft (c) - 1, c2->x + c2->width + frameRight (c) + 1))
+            if (clientCheckOverlap (c->x - frameExtentLeft (c) - 1, c->x + c->width + frameExtentRight (c) + 1, c2->x - frameExtentLeft (c) - 1, c2->x + c2->width + frameExtentRight (c) + 1))
             {
-                if (abs (c2->y - frameTop(c2) - edge_pos) < abs (closest - edge_pos))
+                if (abs (c2->y - frameExtentTop(c2) - edge_pos) < abs (closest - edge_pos))
                 {
-                    closest = c2->y - frameTop (c2);
+                    closest = c2->y - frameExtentTop (c2);
                 }
-                if (abs ((c2->y + c2->height) + frameBottom (c2) - edge_pos) < abs (closest - edge_pos))
+                if (abs ((c2->y + c2->height) + frameExtentBottom (c2) - edge_pos) < abs (closest - edge_pos))
                 {
-                    closest = (c2->y + c2->height) + frameBottom (c2);
+                    closest = (c2->y + c2->height) + frameExtentBottom (c2);
                 }
             }
         }
@@ -462,12 +462,12 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     best_delta_x = screen_info->params->snap_width + 1;
     best_delta_y = screen_info->params->snap_width + 1;
 
-    frame_x = frameX (c);
-    frame_y = frameY (c);
-    frame_height = frameHeight (c);
-    frame_width = frameWidth (c);
-    frame_top = frameTop (c);
-    frame_left = frameLeft (c);
+    frame_x = frameExtentX (c);
+    frame_y = frameExtentY (c);
+    frame_height = frameExtentHeight (c);
+    frame_width = frameExtentWidth (c);
+    frame_top = frameExtentTop (c);
+    frame_left = frameExtentLeft (c);
 
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
@@ -529,10 +529,10 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
                   && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
                   && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))
         {
-            c_frame_x1 = frameX (c2);
-            c_frame_x2 = c_frame_x1 + frameWidth (c2);
-            c_frame_y1 = frameY (c2);
-            c_frame_y2 = c_frame_y1 + frameHeight (c2);
+            c_frame_x1 = frameExtentX (c2);
+            c_frame_x2 = c_frame_x1 + frameExtentWidth (c2);
+            c_frame_y1 = frameExtentY (c2);
+            c_frame_y2 = c_frame_y1 + frameExtentHeight (c2);
 
             if ((c_frame_y1 <= frame_y2) && (c_frame_y2 >= frame_y))
             {
@@ -958,8 +958,8 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 /* to keep the distance from the edges of the window proportional. */
                 double xratio, yratio;
 
-                xratio = (xevent->xmotion.x_root - frameX (c)) / (double) frameWidth (c);
-                yratio = (xevent->xmotion.y_root - frameY (c)) / (double) frameHeight (c);
+                xratio = (xevent->xmotion.x_root - frameExtentX (c)) / (double) frameExtentWidth (c);
+                yratio = (xevent->xmotion.y_root - frameExtentY (c)) / (double) frameExtentHeight (c);
 
                 if (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED))
                 {
@@ -970,17 +970,17 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                     passdata->move_resized = TRUE;
 
                     passdata->ox = c->x;
-                    passdata->mx =  frameX (c) + passdata->px;
-                    if ((passdata->mx <  frameX (c)) || (passdata->mx >  frameX (c) + frameWidth (c)))
+                    passdata->mx =  frameExtentX (c) + passdata->px;
+                    if ((passdata->mx <  frameExtentX (c)) || (passdata->mx >  frameExtentX (c) + frameExtentWidth (c)))
                     {
-                        passdata->mx = CLAMP(frameX (c) + frameWidth (c) * xratio, frameX (c), frameX (c) + frameWidth (c));
+                        passdata->mx = CLAMP(frameExtentX (c) + frameExtentWidth (c) * xratio, frameExtentX (c), frameExtentX (c) + frameExtentWidth (c));
                     }
 
                     passdata->oy = c->y;
-                    passdata->my = frameY (c) + passdata->py;
-                    if ((passdata->my < frameY (c)) || (passdata->my > frameY (c) + frameHeight (c)))
+                    passdata->my = frameExtentY (c) + passdata->py;
+                    if ((passdata->my < frameExtentY (c)) || (passdata->my > frameExtentY (c) + frameExtentHeight (c)))
                     {
-                        passdata->my = CLAMP(frameY (c) + frameHeight (c) * yratio, frameY (c), frameY (c) + frameHeight (c));
+                        passdata->my = CLAMP(frameExtentY (c) + frameExtentHeight (c) * yratio, frameExtentY (c), frameExtentY (c) + frameExtentHeight (c));
                     }
 
                     configure_flags = CFG_FORCE_REDRAW;
@@ -1117,8 +1117,8 @@ clientMove (Client * c, XEvent * ev)
         passdata.button = ev->xbutton.button;
         passdata.mx = ev->xbutton.x_root;
         passdata.my = ev->xbutton.y_root;
-        passdata.px = passdata.mx - frameX (c);
-        passdata.py = passdata.my - frameY (c);
+        passdata.px = passdata.mx - frameExtentX (c);
+        passdata.py = passdata.my - frameExtentY (c);
     }
     else
     {
@@ -1313,11 +1313,11 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
      */
     resizing = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
-    frame_x = frameX (c);
-    frame_y = frameY (c);
-    frame_height = frameHeight (c);
-    frame_width = frameWidth (c);
-    frame_top = frameTop (c);
+    frame_x = frameExtentX (c);
+    frame_y = frameExtentY (c);
+    frame_height = frameExtentHeight (c);
+    frame_width = frameExtentWidth (c);
+    frame_top = frameExtentTop (c);
     min_visible = MAX (frame_top, CLIENT_MIN_VISIBLE);
 
     cx = frame_x + (frame_width / 2);
@@ -1489,7 +1489,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             c->width = passdata->ow + (xevent->xmotion.x_root - passdata->mx);
 
             /* Attempt to snap the right edge to something. -Cliff */
-            c->width = clientFindClosestEdgeX (c, c->x + c->width + frameRight (c)) - c->x - frameRight (c);
+            c->width = clientFindClosestEdgeX (c, c->x + c->width + frameExtentRight (c)) - c->x - frameExtentRight (c);
 
         }
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
@@ -1503,7 +1503,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 c->height = passdata->oh + (xevent->xmotion.y_root - passdata->my);
 
                 /* Attempt to snap the bottom edge to something. -Cliff */
-                c->height = clientFindClosestEdgeY (c, c->y + c->height + frameBottom (c)) - c->y - frameBottom (c);
+                c->height = clientFindClosestEdgeY (c, c->y + c->height + frameExtentBottom (c)) - c->y - frameExtentBottom (c);
             }
         }
         clientConstrainRatio (c, passdata->handle);
@@ -1515,10 +1515,10 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
 
             /* Snap the left edge to something. -Cliff */
             right_edge = c->x + c->width;
-            c->x = clientFindClosestEdgeX (c, c->x - frameLeft (c)) + frameLeft (c);
+            c->x = clientFindClosestEdgeX (c, c->x - frameExtentLeft (c)) + frameExtentLeft (c);
             c->width = right_edge - c->x;
 
-            frame_x = frameX (c);
+            frame_x = frameExtentX (c);
         }
 
         clientSetHeight (c, c->height, FALSE);
@@ -1528,16 +1528,16 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
 
             /* Snap the top edge to something. -Cliff */
             bottom_edge = c->y + c->height;
-            c->y = clientFindClosestEdgeY (c, c->y - frameTop (c)) + frameTop (c);
+            c->y = clientFindClosestEdgeY (c, c->y - frameExtentTop (c)) + frameExtentTop (c);
             c->height = bottom_edge - c->y;
 
-            frame_y = frameY (c);
+            frame_y = frameExtentY (c);
         }
 
         if (move_top)
         {
             if ((c->y > MAX (disp_max_y - min_visible, screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible))
-                || (!clientCkeckTitle (c) && (frame_y < screen_info->margins [STRUTS_TOP])))
+                || (!clientCheckTitle (c) && (frame_y < screen_info->margins [STRUTS_TOP])))
             {
                 temp = c->y + c->height;
                 c->y = CLAMP (c->y, screen_info->margins [STRUTS_TOP] + frame_top,

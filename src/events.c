@@ -1905,6 +1905,11 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         {
             clientUpdateIcon (c);
         }
+        else if (ev->atom == GTK_FRAME_EXTENTS)
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a GTK_FRAME_EXTENTS notify", c->name, c->window);
+            clientGetGtkFrameExtents (c);
+        }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == display_info->atoms[NET_STARTUP_ID])
         {

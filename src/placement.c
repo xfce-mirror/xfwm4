@@ -160,17 +160,17 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 }
 
 gboolean
-clientCkeckTitle (Client * c)
+clientCheckTitle (Client * c)
 {
     Client *c2;
     ScreenInfo *screen_info;
     guint i;
     gint frame_x, frame_y, frame_width, frame_top;
 
-    frame_x = frameX (c);
-    frame_y = frameY (c);
-    frame_width = frameWidth (c);
-    frame_top = frameTop (c);
+    frame_x = frameExtentX (c);
+    frame_y = frameExtentY (c);
+    frame_width = frameExtentWidth (c);
+    frame_top = frameExtentTop (c);
 
     /* Struts and other partial struts */
     screen_info = c->screen_info;
@@ -214,12 +214,12 @@ clientConstrainPos (Client * c, gboolean show_full)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* We use a bunch of local vars to reduce the overhead of calling other functions all the time */
-    frame_x = frameX (c);
-    frame_y = frameY (c);
-    frame_height = frameHeight (c);
-    frame_width = frameWidth (c);
-    frame_top = frameTop (c);
-    frame_left = frameLeft (c);
+    frame_x = frameExtentX (c);
+    frame_y = frameExtentY (c);
+    frame_height = frameExtentHeight (c);
+    frame_width = frameExtentWidth (c);
+    frame_top = frameExtentTop (c);
+    frame_left = frameExtentLeft (c);
     frame_visible = (frame_top ? frame_top : frame_height);
     min_visible = MAX (frame_top, CLIENT_MIN_VISIBLE);
     ret = 0;
@@ -263,7 +263,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                                   screen_width))
                     {
                         c->x = screen_width - c2->struts[STRUTS_RIGHT] - frame_width + frame_left;
-                        frame_x = frameX (c);
+                        frame_x = frameExtentX (c);
                         ret |= CLIENT_CONSTRAINED_RIGHT;
                     }
                 }
@@ -277,7 +277,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                                   screen_height))
                     {
                         c->y = screen_height - c2->struts[STRUTS_BOTTOM] - frame_height + frame_top;
-                        frame_y = frameY (c);
+                        frame_y = frameExtentY (c);
                         ret |= CLIENT_CONSTRAINED_BOTTOM;
 
                     }
@@ -288,25 +288,25 @@ clientConstrainPos (Client * c, gboolean show_full)
         if (frame_x + frame_width >= disp_max_x)
         {
             c->x = disp_max_x - frame_width + frame_left;
-            frame_x = frameX (c);
+            frame_x = frameExtentX (c);
             ret |= CLIENT_CONSTRAINED_RIGHT;
         }
         if (frame_x <= disp_x)
         {
             c->x = disp_x + frame_left;
-            frame_x = frameX (c);
+            frame_x = frameExtentX (c);
             ret |= CLIENT_CONSTRAINED_LEFT;
         }
         if (frame_y + frame_height >= disp_max_y)
         {
             c->y = disp_max_y - frame_height + frame_top;
-            frame_y = frameY (c);
+            frame_y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_BOTTOM;
         }
         if (frame_y <= disp_y)
         {
             c->y = disp_y + frame_top;
-            frame_y = frameY (c);
+            frame_y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
 
@@ -324,7 +324,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                                   0, c2->struts[STRUTS_LEFT]))
                     {
                         c->x = c2->struts[STRUTS_LEFT] + frame_left;
-                        frame_x = frameX (c);
+                        frame_x = frameExtentX (c);
                         ret |= CLIENT_CONSTRAINED_LEFT;
                     }
                 }
@@ -339,7 +339,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                                   0, c2->struts[STRUTS_TOP]))
                     {
                         c->y = c2->struts[STRUTS_TOP] + frame_top;
-                        frame_y = frameY (c);
+                        frame_y = frameExtentY (c);
                         ret |= CLIENT_CONSTRAINED_TOP;
                     }
                 }
@@ -351,31 +351,31 @@ clientConstrainPos (Client * c, gboolean show_full)
         if (frame_x + frame_width <= disp_x + min_visible)
         {
             c->x = disp_x + min_visible - frame_width + frame_left;
-            frame_x = frameX (c);
+            frame_x = frameExtentX (c);
             ret |= CLIENT_CONSTRAINED_LEFT;
         }
         if (frame_x + min_visible >= disp_max_x)
         {
             c->x = disp_max_x - min_visible + frame_left;
-            frame_x = frameX (c);
+            frame_x = frameExtentX (c);
             ret |= CLIENT_CONSTRAINED_RIGHT;
         }
         if (frame_y + frame_height <= disp_y + min_visible)
         {
             c->y = disp_y + min_visible - frame_height + frame_top;
-            frame_y = frameY (c);
+            frame_y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
         if (frame_y + min_visible >= disp_max_y)
         {
             c->y = disp_max_y - min_visible + frame_top;
-            frame_y = frameY (c);
+            frame_y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_BOTTOM;
         }
         if ((frame_y <= disp_y) && (frame_y >= disp_y - frame_top))
         {
             c->y = disp_y + frame_top;
-            frame_y = frameY (c);
+            frame_y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
         /* Struts and other partial struts */
@@ -392,7 +392,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                     if (frame_x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible)
                     {
                         c->x = screen_width - c2->struts[STRUTS_RIGHT] - min_visible + frame_left;
-                        frame_x = frameX (c);
+                        frame_x = frameExtentX (c);
                         ret |= CLIENT_CONSTRAINED_RIGHT;
                     }
                 }
@@ -404,7 +404,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                     if (frame_x + frame_width <= c2->struts[STRUTS_LEFT] + min_visible)
                     {
                         c->x = c2->struts[STRUTS_LEFT] + min_visible - frame_width + frame_left;
-                        frame_x = frameX (c);
+                        frame_x = frameExtentX (c);
                         ret |= CLIENT_CONSTRAINED_LEFT;
                     }
                 }
@@ -416,7 +416,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                     if (frame_y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible)
                     {
                         c->y = screen_height - c2->struts[STRUTS_BOTTOM] - min_visible + frame_top;
-                        frame_y = frameY (c);
+                        frame_y = frameExtentY (c);
                         ret |= CLIENT_CONSTRAINED_BOTTOM;
                     }
                 }
@@ -428,13 +428,13 @@ clientConstrainPos (Client * c, gboolean show_full)
                     if (segment_overlap (frame_y, frame_y + frame_visible, 0, c2->struts[STRUTS_TOP]))
                     {
                         c->y = c2->struts[STRUTS_TOP] + frame_top;
-                        frame_y = frameY (c);
+                        frame_y = frameExtentY (c);
                         ret |= CLIENT_CONSTRAINED_TOP;
                     }
                     if (frame_y + frame_height <= c2->struts[STRUTS_TOP] + min_visible)
                     {
                         c->y = c2->struts[STRUTS_TOP] + min_visible - frame_height + frame_top;
-                        frame_y = frameY (c);
+                        frame_y = frameExtentY (c);
                         ret |= CLIENT_CONSTRAINED_TOP;
                     }
                 }
@@ -514,20 +514,20 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
     }
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) &&
-        (frameWidth (c) >= full_w))
+        (frameExtentWidth (c) >= full_w))
     {
         TRACE ("The application \"%s\" has requested a window width "
                "(%u) equal or larger than the actual width available in the workspace (%u), "
-               "the window will be maximized horizontally.", c->name, frameWidth (c), full_w);
+               "the window will be maximized horizontally.", c->name, frameExtentWidth (c), full_w);
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
     }
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) &&
-        (frameHeight (c) >= full_h))
+        (frameExtentHeight (c) >= full_h))
     {
         TRACE ("The application \"%s\" has requested a window height "
                "(%u) equal or larger than the actual height available in the workspace (%u), "
-               "the window will be maximized vertically.", c->name, frameHeight (c), full_h);
+               "the window will be maximized vertically.", c->name, frameExtentHeight (c), full_h);
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
     }
 }
@@ -548,18 +548,18 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     TRACE ("entering smartPlacement");
 
     screen_info = c->screen_info;
-    frame_height = frameHeight (c);
-    frame_width = frameWidth (c);
-    frame_left = frameLeft(c);
-    frame_top = frameTop (c);
+    frame_height = frameExtentHeight (c);
+    frame_width = frameExtentWidth (c);
+    frame_left = frameExtentLeft(c);
+    frame_top = frameExtentTop (c);
 
     /* max coordinates (bottom-right) */
-    xmax = full_x + full_w - c->width - frameRight (c);
-    ymax = full_y + full_h - c->height - frameBottom (c);
+    xmax = full_x + full_w - c->width - frameExtentRight (c);
+    ymax = full_y + full_h - c->height - frameExtentBottom (c);
 
     /* min coordinates (top-left) */
-    xmin = full_x + frameLeft (c);
-    ymin = full_y + frameTop (c);
+    xmin = full_x + frameExtentLeft (c);
+    ymin = full_y + frameExtentTop (c);
 
     /* start with worst-case position at top-left */
     best_overlaps = G_MAXFLOAT;
@@ -594,8 +594,8 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                     && (c->win_workspace == c2->win_workspace)
                     && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
-                    c2_x = frameX (c2);
-                    c2_frame_width = frameWidth (c2);
+                    c2_x = frameExtentX (c2);
+                    c2_frame_width = frameExtentWidth (c2);
                     if (c2_x >= full_x + full_w
                         || c2_x + c2_frame_width < full_x)
                     {
@@ -603,8 +603,8 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                         continue;
                     }
 
-                    c2_y = frameY (c2);
-                    c2_frame_height = frameHeight (c2);
+                    c2_y = frameExtentY (c2);
+                    c2_frame_height = frameExtentHeight (c2);
                     if (c2_y >= full_y + full_h
                         || c2_y + c2_frame_height < full_y)
                     {
@@ -632,7 +632,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                     if (c2_next_test_x < next_test_x
                         && c2_next_test_x > test_x)
                     {
-                        /* set new optimal next x step poistion */
+                        /* set new optimal next x step position */
                         next_test_x = c2_next_test_x;
                     }
 
@@ -649,7 +649,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                         if (c2_next_test_y < next_test_y
                             && c2_next_test_y > test_y)
                         {
-                            /* set new optimal next y step poistion */
+                            /* set new optimal next y step position */
                             next_test_y = c2_next_test_y;
                         }
                     }
@@ -676,7 +676,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 
             if (G_LIKELY (next_test_x != G_MAXINT))
             {
-                test_x = next_test_x + frameLeft (c);
+                test_x = MAX (next_test_x, next_test_x + frameExtentLeft (c));
                 if (test_x > xmax)
                 {
                    /* always clamp on the monitor */
@@ -688,11 +688,11 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                 test_x++;
             }
         }
-        while (test_x <= xmax);
+        while (test_x < xmax);
 
         if (G_LIKELY (next_test_y != G_MAXINT))
         {
-            test_y = next_test_y + frameTop (c);
+            test_y = MAX (next_test_y, next_test_y + frameExtentTop (c));
             if (test_y > ymax)
             {
                 /* always clamp on the monitor */
@@ -704,7 +704,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
             test_y++;
         }
     }
-    while (test_y <= ymax);
+    while (test_y < ymax);
 
     found_best:
 
@@ -720,8 +720,8 @@ centerPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     g_return_if_fail (c != NULL);
     TRACE ("entering centerPlacement");
 
-    c->x = MAX (full_x + frameLeft(c) + (full_w - frameWidth(c)) / 2, full_x + frameLeft(c));
-    c->y = MAX (full_y + frameTop(c) + (full_h - frameHeight(c)) / 2, full_y + frameTop(c));
+    c->x = MAX (full_x + frameExtentLeft(c) + (full_w - frameExtentWidth(c)) / 2, full_x + frameExtentLeft(c));
+    c->y = MAX (full_y + frameExtentTop(c) + (full_h - frameExtentHeight(c)) / 2, full_y + frameExtentTop(c));
 }
 
 static void
@@ -730,14 +730,14 @@ mousePlacement (Client * c, int full_x, int full_y, int full_w, int full_h, int 
     g_return_if_fail (c != NULL);
     TRACE ("entering mousePlacement");
 
-    c->x = mx + frameLeft(c) - frameWidth(c) / 2;
-    c->y = my + frameTop(c) - frameHeight(c) / 2;
+    c->x = mx + frameExtentLeft(c) - frameExtentWidth(c) / 2;
+    c->y = my + frameExtentTop(c) - frameExtentHeight(c) / 2;
 
-    c->x = MIN (c->x, full_x + full_w - frameWidth(c) + frameLeft(c));
-    c->y = MIN (c->y, full_y + full_h - frameHeight(c) + frameTop(c));
+    c->x = MIN (c->x, full_x + full_w - frameExtentWidth(c) + frameExtentLeft(c));
+    c->y = MIN (c->y, full_y + full_h - frameExtentHeight(c) + frameExtentTop(c));
 
-    c->x = MAX (c->x, full_x + frameLeft(c));
-    c->y = MAX (c->y, full_y + frameTop(c));
+    c->x = MAX (c->x, full_x + frameExtentLeft(c));
+    c->y = MAX (c->y, full_y + frameExtentTop(c));
 }
 
 void
@@ -779,8 +779,8 @@ clientInitPosition (Client * c)
 
             if (n_monitors > 1)
             {
-                msx = frameX (c) + (frameWidth (c) / 2);
-                msy = frameY (c) + (frameHeight (c) / 2);
+                msx = frameExtentX (c) + (frameExtentWidth (c) / 2);
+                msy = frameExtentY (c) + (frameExtentHeight (c) / 2);
                 myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
             }
         }
@@ -814,7 +814,7 @@ clientInitPosition (Client * c)
     if (place)
     {
         if ((screen_info->params->placement_ratio >= 100) ||
-            (100 * frameWidth(c) * frameHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
+            (100 * frameExtentWidth(c) * frameExtentHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
         {
             if (screen_info->params->placement_mode == PLACE_MOUSE)
             {
@@ -825,7 +825,7 @@ clientInitPosition (Client * c)
                 centerPlacement (c, full_x, full_y, full_w, full_h);
             }
         }
-        else if ((frameWidth(c) >= full_w) && (frameHeight(c) >= full_h))
+        else if ((frameExtentWidth(c) >= full_w) && (frameExtentHeight(c) >= full_h))
         {
             centerPlacement (c, full_x, full_y, full_w, full_h);
         }
@@ -888,16 +888,16 @@ clientFill (Client * c, int fill_type)
                  * check if the neigbour client (c2) is located
                  * east or west of our client.
                  */
-                if (segment_overlap (frameY(c), frameY(c) + frameHeight(c), frameY(c2), frameY(c2) + frameHeight(c2)))
+                if (segment_overlap (frameExtentY(c), frameExtentY(c) + frameExtentHeight(c), frameExtentY(c2), frameExtentY(c2) + frameExtentHeight(c2)))
                 {
-                    if ((frameX(c2) + frameWidth(c2)) <= frameX(c))
+                    if ((frameExtentX(c2) + frameExtentWidth(c2)) <= frameExtentX(c))
                     {
                         if (west_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the west neighbour already found
                              */
-                            if ((frameX(west_neighbour) + frameWidth(west_neighbour)) < (frameX(c2) + frameWidth(c2)))
+                            if ((frameExtentX(west_neighbour) + frameExtentWidth(west_neighbour)) < (frameExtentX(c2) + frameExtentWidth(c2)))
                             {
                                 west_neighbour = c2;
                             }
@@ -907,14 +907,14 @@ clientFill (Client * c, int fill_type)
                             west_neighbour = c2;
                         }
                     }
-                    if ((frameX(c) + frameWidth(c)) <= frameX(c2))
+                    if ((frameExtentX(c) + frameExtentWidth(c)) <= frameExtentX(c2))
                     {
                         /* Check if c2 is closer to the client
                          * then the west neighbour already found
                          */
                         if (east_neighbour)
                         {
-                            if (frameX(c2) < frameX(east_neighbour))
+                            if (frameExtentX(c2) < frameExtentX(east_neighbour))
                             {
                                 east_neighbour = c2;
                             }
@@ -933,16 +933,16 @@ clientFill (Client * c, int fill_type)
                 /* check if the neigbour client (c2) is located
                  * north or south of our client.
                  */
-                if (segment_overlap (frameX(c), frameX(c) + frameWidth(c), frameX(c2), frameX(c2) + frameWidth(c2)))
+                if (segment_overlap (frameExtentX(c), frameExtentX(c) + frameExtentWidth(c), frameExtentX(c2), frameExtentX(c2) + frameExtentWidth(c2)))
                 {
-                    if ((frameY(c2) + frameHeight(c2)) <= frameY(c))
+                    if ((frameExtentY(c2) + frameExtentHeight(c2)) <= frameExtentY(c))
                     {
                         if (north_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the north neighbour already found
                              */
-                            if ((frameY(north_neighbour) + frameHeight(north_neighbour)) < (frameY(c2) + frameHeight(c2)))
+                            if ((frameExtentY(north_neighbour) + frameExtentHeight(north_neighbour)) < (frameExtentY(c2) + frameExtentHeight(c2)))
                             {
                                 north_neighbour = c2;
                             }
@@ -952,14 +952,14 @@ clientFill (Client * c, int fill_type)
                             north_neighbour = c2;
                         }
                     }
-                    if ((frameY(c) + frameHeight(c)) <= frameY(c2))
+                    if ((frameExtentY(c) + frameExtentHeight(c)) <= frameExtentY(c2))
                     {
                         if (south_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the south neighbour already found
                              */
-                            if (frameY(c2) < frameY(south_neighbour))
+                            if (frameExtentY(c2) < frameExtentY(south_neighbour))
                             {
                                 south_neighbour = c2;
                             }
@@ -975,10 +975,10 @@ clientFill (Client * c, int fill_type)
     }
 
     /* Compute the largest size available, based on struts, margins and Xinerama layout */
-    tmp_x = frameX (c);
-    tmp_y = frameY (c);
-    tmp_h = frameHeight (c);
-    tmp_w = frameWidth (c);
+    tmp_x = frameExtentX (c);
+    tmp_y = frameExtentY (c);
+    tmp_h = frameExtentHeight (c);
+    tmp_w = frameExtentWidth (c);
 
     cx = tmp_x + (tmp_w / 2);
     cy = tmp_y + (tmp_h / 2);
@@ -1015,28 +1015,28 @@ clientFill (Client * c, int fill_type)
      * If not, resize to the largest size available that you just have computed.
      */
 
-    wc.x = full_x + frameLeft(c);
+    wc.x = full_x + frameExtentLeft(c);
     if (west_neighbour)
     {
-        wc.x += MAX (frameX(west_neighbour) + frameWidth(west_neighbour) - full_x, 0);
+        wc.x += MAX (frameExtentX(west_neighbour) + frameExtentWidth(west_neighbour) - full_x, 0);
     }
 
-    wc.width = full_w - frameRight(c) - (wc.x - full_x);
+    wc.width = full_w - frameExtentRight(c) - (wc.x - full_x);
     if (east_neighbour)
     {
-        wc.width -= MAX (full_w - (frameX(east_neighbour) - full_x), 0);
+        wc.width -= MAX (full_w - (frameExtentX(east_neighbour) - full_x), 0);
     }
 
-    wc.y = full_y + frameTop(c);
+    wc.y = full_y + frameExtentTop(c);
     if (north_neighbour)
     {
-        wc.y += MAX (frameY(north_neighbour) + frameHeight(north_neighbour) - full_y, 0);
+        wc.y += MAX (frameExtentY(north_neighbour) + frameExtentHeight(north_neighbour) - full_y, 0);
     }
 
-    wc.height = full_h - frameBottom(c) - (wc.y - full_y);
+    wc.height = full_h - frameExtentBottom(c) - (wc.y - full_y);
     if (south_neighbour)
     {
-        wc.height -= MAX (full_h - (frameY(south_neighbour) - full_y), 0);
+        wc.height -= MAX (full_h - (frameExtentY(south_neighbour) - full_y), 0);
     }
 
     TRACE ("Fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
