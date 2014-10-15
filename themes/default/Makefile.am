@@ -207,5 +207,5 @@ vacuum-defs:
 update-png:
 	for svg_file in $(SVG_FILES); do \
 		image=$${svg_file%.svg}; \
-		rsvg -f png $$svg_file $$image.png; \
+		rsvg-convert -f png $$svg_file > $$image.png; \
 	done

@@ -12,174 +12,150 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="top-left-active.svg"
    version="1.0"
-   inkscape:version="0.47 r22583"
+   inkscape:version="0.48.5 r10040"
    sodipodi:version="0.32"
    id="svg2"
-   height="22"
    width="8"
+   height="29"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata26" />
   <defs
-     id="defs4">
-    <linearGradient
-       id="linearGradient3143">
-      <stop
-         style="stop-color:#ffffff;stop-opacity:0.0;"
-         offset="0"
-         id="stop3145" />
-      <stop
-         style="stop-color:#ffffff;stop-opacity:0.00;"
-         offset="1"
-         id="stop3147" />
-    </linearGradient>
-    <linearGradient
-       id="linearGradient5847">
-      <stop
-         id="stop5849"
-         offset="0"
-         style="stop-color:#ffffff;stop-opacity:0.75;" />
-      <stop
-         id="stop5851"
-         offset="0.75"
-         style="stop-color:#ffffff;stop-opacity:0.15;" />
-      <stop
-         id="stop14"
-         offset="1"
-         style="stop-color:#ffffff;stop-opacity:0.00;" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient5847"
-       id="linearGradient3148"
-       x1="0"
-       y1="0"
-       x2="0"
-       y2="15"
-       gradientUnits="userSpaceOnUse"
-       spreadMethod="none" />
-    <linearGradient
-       id="linearGradient5873">
-      <stop
-         id="stop5875"
-         offset="0"
-         style="stop-color:#ffffff;stop-opacity:0.15;" />
-      <stop
-         id="stop5877"
-         offset="0.5"
-         style="stop-color:#ffffff;stop-opacity:0.00;" />
-      <stop
-         id="stop5879"
-         offset="1"
-         style="stop-color:#ffffff;stop-opacity:0;" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient5873"
-       id="linearGradient6962"
-       x1="0"
-       y1="0"
-       x2="0"
-       y2="8"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.2,0,1)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3143"
-       id="linearGradient3149"
-       x1="0"
-       y1="13"
-       x2="0"
-       y2="22"
-       gradientUnits="userSpaceOnUse" />
-  </defs>
+     id="defs24" />
   <sodipodi:namedview
-     id="base"
      pagecolor="#ffffff"
      bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="10"
-     inkscape:cx="0"
-     inkscape:cy="0"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="true"
-     inkscape:grid-bbox="true"
-     inkscape:grid-points="true"
-     gridtolerance="0.5px"
-     guidetolerance="1px"
      inkscape:window-width="640"
-     inkscape:window-height="733"
-     inkscape:window-x="187"
-     inkscape:window-y="724"
-     inkscape:guide-bbox="true"
-     inkscape:guide-points="false"
-     showguides="true">
-    <inkscape:grid
-       id="GridFromPre046Settings"
-       type="xygrid"
-       originx="0px"
-       originy="0px"
-       spacingx="0px"
-       spacingy="1px"
-       color="#0000ff"
-       empcolor="#0000ff"
-       opacity="0.2"
-       empopacity="0.4"
-       empspacing="5" />
-  </sodipodi:namedview>
-  <metadata
-     id="metadata7">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Top Corner</dc:title>
-        <dc:creator>
-          <cc:Agent>
-            <dc:title>Olivier Fourdan</dc:title>
-          </cc:Agent>
-        </dc:creator>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
+     inkscape:window-height="480"
+     id="namedview22" />
   <g
-     style="display:inline"
-     id="layer1"
-     inkscape:groupmode="layer"
-     inkscape:label="Border">
-    <path
-       id="rect1319"
-       d="M 8,0 8,1 5,1 C 5,1 1,2 1,7 1,23 1,22 1,22 L 0,22 0,0 z"
-       style="fill:#a0a0a0;fill-opacity:0.25" />
-  </g>
-  <g
-     style="display:inline"
-     inkscape:label="Grad"
-     id="layer2"
-     inkscape:groupmode="layer">
-    <path
-       id="path6057"
-       style="fill:url(#linearGradient3148);fill-opacity:0;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
-      d="M 8,1 7,1 C 6,1 1,1 1,7 c 0,3 0,5 0,15 l 7,0 0,0 z" />
-  </g>
-  <g
-     inkscape:label="hilight"
-     id="layer3"
-     inkscape:groupmode="layer">
-    <path
-       id="path6061"
-       d="M 8,1 6,1 C 6,1 3,1 3,5 l 1,0 4,0 0,0 z"
-       style="fill:url(#linearGradient6962);fill-opacity:0.15;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linejoin:miter;stroke-opacity:1" />
-    <path
-       style="fill:url(#linearGradient3149);fill-opacity:0.05;stroke:none;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 2,12 6,0 0,10 -6,0 z"
-       id="path2396" />
-    <path
-       style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.0"
-       d="m 8,1.5 -3,0 c 0,0 -3.5,0 -3.5,4.5 0,3 0,15.5 0,15.5 l 0,0 0,0"
-       id="path2170" />
+     transform="scale(1)"
+     id="g3">
+    <defs
+       id="defs4">
+      <linearGradient
+         id="linearGradient1886">
+        <stop
+           style="stop-color:white;stop-opacity:1;"
+           offset="0"
+           id="stop1888" />
+        <stop
+           style="stop-color:white;stop-opacity:0.15;"
+           offset="1"
+           id="stop1890" />
+      </linearGradient>
+      <linearGradient
+         inkscape:collect="always"
+         xlink:href="#linearGradient1886"
+         id="linearGradient1892"
+         x1="0"
+         y1="1"
+         x2="0"
+         y2="18"
+         gradientUnits="userSpaceOnUse"
+         gradientTransform="matrix(1,0,0,1,0,0)" />
+    </defs>
+    <sodipodi:namedview
+       id="base"
+       pagecolor="white"
+       bordercolor="#666666"
+       borderopacity="1.0"
+       inkscape:pageopacity="0.0"
+       inkscape:pageshadow="2"
+       inkscape:zoom="10"
+       inkscape:cx="0"
+       inkscape:cy="0"
+       inkscape:document-units="px"
+       inkscape:current-layer="layer1"
+       showgrid="true"
+       inkscape:grid-bbox="true"
+       inkscape:grid-points="true"
+       gridtolerance="0.5px"
+       guidetolerance="1px"
+       inkscape:window-width="640"
+       inkscape:window-height="733"
+       inkscape:window-x="187"
+       inkscape:window-y="728"
+       inkscape:guide-bbox="true"
+       inkscape:guide-points="false"
+       showguides="true">
+      <inkscape:grid
+         id="GridFromPre046Settings"
+         type="xygrid"
+         originx="0px"
+         originy="0px"
+         spacingx="1px"
+         spacingy="1px"
+         color="#3f3fff"
+         empcolor="#3f3fff"
+         opacity="0.15"
+         empopacity="0.38"
+         empspacing="5" />
+    </sodipodi:namedview>
+    <metadata
+       id="metadata7">
+      <rdf:RDF>
+        <cc:Work
+           rdf:about="">
+          <dc:format>image/svg+xml</dc:format>
+          <dc:type
+             rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+          <dc:title>Top Corner</dc:title>
+          <dc:creator>
+            <cc:Agent>
+              <dc:title>Olivier Fourdan</dc:title>
+            </cc:Agent>
+          </dc:creator>
+        </cc:Work>
+      </rdf:RDF>
+    </metadata>
+    <g
+       style="display:inline"
+       inkscape:label="Grad"
+       id="layer2"
+       inkscape:groupmode="layer">
+      <path
+         id="path6057"
+         style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+         d="M 8,1 L 5,1 C 5,1 1.5,1.5 1,6 L 1,23 C 1,23 1,28 6,28 L 8,28 L 8,28 L 8,1 z " />
+    </g>
+    <g
+       inkscape:label="hilight"
+       id="layer3"
+       inkscape:groupmode="layer">
+      <path
+         id="path6061"
+         d="M 8,1 L 6.75,1 C 6.75,1 2,1 2,4 C 2,4 2.75,4 2.75,4 L 8,4 L 8,4 z "
+         style="fill:none;fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 8,1 L 5,1 C 5,1 1.5,1.5 1,6 L 1,14 C 1,14 1,19 6,19 L 8,19 L 8,19 L 8,1 z "
+         id="path1884" />
+    </g>
+    <g
+       style="display:inline"
+       id="layer1"
+       inkscape:groupmode="layer"
+       inkscape:label="Border">
+      <path
+         id="rect1319"
+         d="M 8,0 L 8,1 L 5,1 C 5,1 1.5,1.5 1,6 C 1,29 1,29 1,29 L 0,29 L 0,0 L 8,0 z "
+         style="fill:black;fill-opacity:0.50" />
+    </g>
+    <g
+       inkscape:label="Shadow"
+       id="layer5"
+       inkscape:groupmode="layer">
+      <path
+         style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.0"
+         d="M 2.5,28.5 L 7.5,28.5"
+         id="path6989" />
+    </g>
   </g>
 </svg>

@@ -246,6 +246,8 @@ src/Makefile
 themes/Makefile
 themes/daloa/Makefile
 themes/default/Makefile
+themes/default-hdpi/Makefile
+themes/default-xhdpi/Makefile
 themes/kokodi/Makefile
 themes/moheli/Makefile
 ])
