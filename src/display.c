@@ -44,9 +44,9 @@
 #include "client.h"
 #include "compositor.h"
 
-#ifndef MAX_HOSTNAME_LENGTH
-#define MAX_HOSTNAME_LENGTH 32
-#endif /* MAX_HOSTNAME_LENGTH */
+#ifndef HOST_NAME_MAX
+#define HOST_NAME_MAX 255
+#endif /* HOST_NAME_MAX */
 
 #ifndef CURSOR_ROOT
 #define CURSOR_ROOT XC_left_ptr
@@ -313,9 +313,10 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->nb_screens = 0;
     display->current_time = CurrentTime;
 
-    display->hostname = g_new0 (gchar, (size_t) MAX_HOSTNAME_LENGTH);
-    if (gethostname ((char *) display->hostname, MAX_HOSTNAME_LENGTH - 1))
+    display->hostname = g_new0 (gchar, (size_t) HOST_NAME_MAX + 1);
+    if (gethostname ((char *) display->hostname, HOST_NAME_MAX + 1))
     {
+        g_warning ("The display's hostname could not be determined.");
         g_free (display->hostname);
         display->hostname = NULL;
     }

@@ -2573,7 +2573,7 @@ clientTerminate (Client *c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if ((c->hostname) && (c->pid > 0))
+    if ((c->hostname) && (display_info->hostname) && (c->pid > 0))
     {
         if (!strcmp (display_info->hostname, c->hostname))
         {
