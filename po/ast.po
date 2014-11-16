@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-08-15 19:56+0000\n"
+"PO-Revision-Date: 2014-11-16 01:07+0000\n"
 "Last-Translator: Ḷḷumex03 <tornes@opmbx.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
-msgstr "_Reafitar valores predeterminaos"
+msgstr "_Reafitar valores"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "_Keyboard"
@@ -702,7 +702,7 @@ msgstr "Siempre na estaya de trabayu visible"
 
 #: ../src/menu.c:61
 msgid "Only on This Workspace"
-msgstr "Sólo nesta estaya de trabayu"
+msgstr "Namái nesta estaya de trabayu"
 
 #: ../src/menu.c:62
 msgid "Move to Another Workspace"
