@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-11-16 01:07+0000\n"
+"PO-Revision-Date: 2014-11-24 16:36+0000\n"
 "Last-Translator: Ḷḷumex03 <tornes@opmbx.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -693,7 +693,7 @@ msgstr "Abandonar _pantalla completa"
 
 #: ../src/menu.c:58
 msgid "Context _Help"
-msgstr "A_ida contestual"
+msgstr "A_yuda contestual"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
@@ -759,4 +759,4 @@ msgstr "Fallu al lleer datos del procesu fíu: %s\n"
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "Nun puede estenderexase'l diálogu d'aida: %s\n"
+msgstr "Nun puede estenderexase'l diálogu d'ayuda: %s\n"
