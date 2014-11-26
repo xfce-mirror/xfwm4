@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-08-28 09:14+0000\n"
+"PO-Revision-Date: 2014-11-26 21:01+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -304,7 +304,7 @@ msgstr "Lors du _redimensionnement"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
-msgstr "<b>Cacher le contenu des fenêtres</b>"
+msgstr "<b>Masquer le contenu des fenêtres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
@@ -505,7 +505,7 @@ msgstr "<i>Large</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "By default, place windows:"
-msgstr "Par défaut, placer la fenêtre :"
+msgstr "Par défaut, placer les fenêtres :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "At the c_enter of the screen"
@@ -608,11 +608,11 @@ msgstr "%s (sur %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr "Passer à l'arrière-plan"
+msgstr "Basculer à l'arrière-plan"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr "Passer à l'arrière-plan (non pris en charge)"
+msgstr "Basculer à l'arrière-plan (non pris en charge)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
