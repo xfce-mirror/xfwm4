@@ -22,7 +22,7 @@ m4_define([intltool_minimum_version], [0.31])
 m4_define([libdrm_minimum_version], [2.4])
 
 dnl init autoconf
-AC_COPYRIGHT([Copyright (c) 2002-2011
+AC_COPYRIGHT([Copyright (c) 2002-2014
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
