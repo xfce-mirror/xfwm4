@@ -495,9 +495,8 @@ clientCycle (Client * c, XKeyEvent * ev)
     eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
 
     c2 = myScreenGetClientFromWindow (screen_info, GDK_WINDOW_XID (gtk_widget_get_window ( passdata.tabwin->tabwin_list->data)), SEARCH_FRAME);
-    g_message ("%p", c2);
     clientSetFocus (screen_info, c2, ev->time, NO_FOCUS_FLAG);
-    
+
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving cycle loop");
