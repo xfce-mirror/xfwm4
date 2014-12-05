@@ -130,6 +130,11 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : demands_attention");
         data[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
     }
+    if (c == clientGetFocus ())
+    {
+        TRACE ("clientSetNetState : focused");
+        data[i++] = display_info->atoms[NET_WM_STATE_FOCUSED];
+    }
     XChangeProperty (display_info->dpy, c->window,
                      display_info->atoms[NET_WM_STATE], XA_ATOM, 32,
                      PropModeReplace, (unsigned char *) data, i);

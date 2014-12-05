@@ -462,6 +462,7 @@ clientFocusNone (ScreenInfo *screen_info, Client *previous, guint32 timestamp)
 
     if (previous)
     {
+        clientSetNetState (previous);
         frameQueueDraw (previous, FALSE);
         if (previous->screen_info != screen_info)
         {
@@ -497,6 +498,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     client_focus = c;
     if (c2)
     {
+        clientSetNetState (c2);
         clientAdjustFullscreenLayer (c2, FALSE);
         frameQueueDraw (c2, FALSE);
         clientUpdateOpacity (c2);
@@ -513,8 +515,8 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         {
             TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
-            clientSetNetState (c);
         }
+        clientSetNetState (c);
         clientAdjustFullscreenLayer (c, TRUE);
         frameQueueDraw (c, FALSE);
         clientUpdateOpacity (c);

@@ -389,6 +389,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_STATE_ABOVE];
     atoms[i++] = display_info->atoms[NET_WM_STATE_BELOW];
     atoms[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
+    atoms[i++] = display_info->atoms[NET_WM_STATE_FOCUSED];
     atoms[i++] = display_info->atoms[NET_WM_STATE_FULLSCREEN];
     atoms[i++] = display_info->atoms[NET_WM_STATE_HIDDEN];
     atoms[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ];

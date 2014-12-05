@@ -126,6 +126,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_STATE_ABOVE",
         "_NET_WM_STATE_BELOW",
         "_NET_WM_STATE_DEMANDS_ATTENTION",
+        "_NET_WM_STATE_FOCUSED",
         "_NET_WM_STATE_FULLSCREEN",
         "_NET_WM_STATE_HIDDEN",
         "_NET_WM_STATE_MAXIMIZED_HORZ",
