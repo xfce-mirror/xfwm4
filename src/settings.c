@@ -745,6 +745,7 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_resistance", NULL, G_TYPE_INT, TRUE},
         {"wrap_windows", NULL, G_TYPE_BOOLEAN, TRUE},
         {"wrap_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"zoom_desktop", NULL, G_TYPE_BOOLEAN, TRUE},
         {NULL, NULL, G_TYPE_INVALID, FALSE}
     };
 
@@ -843,6 +844,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("use_compositing", rc);
     screen_info->params->wrap_workspaces =
         getBoolValue ("wrap_workspaces", rc);
+    screen_info->params->zoom_desktop =
+        getBoolValue ("zoom_desktop", rc);
 
     screen_info->params->wrap_layout =
         getBoolValue ("wrap_layout", rc);
@@ -1265,6 +1268,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     screen_info->params->wrap_workspaces = g_value_get_boolean (value);
                     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
+                }
+                else if (!strcmp (name, "zoom_desktop"))
+                {
+                    screen_info->params->zoom_desktop = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "wrap_windows"))
                 {

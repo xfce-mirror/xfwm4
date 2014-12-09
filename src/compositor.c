@@ -3041,6 +3041,10 @@ void
 compositorZoomIn (ScreenInfo *screen_info, XButtonEvent *ev)
 {
 #ifdef HAVE_COMPOSITOR
+    /* don't do anything if the user disabled the zoom feature */
+    if (!screen_info->params->zoom_desktop)
+        return;
+
     screen_info->transform.matrix[0][0] -= 4096;
     screen_info->transform.matrix[1][1] -= 4096;
 
@@ -3072,6 +3076,10 @@ void
 compositorZoomOut (ScreenInfo *screen_info, XButtonEvent *ev)
 {
 #ifdef HAVE_COMPOSITOR
+    /* don't do anything if the user disabled the zoom feature */
+    if (!screen_info->params->zoom_desktop)
+        return;
+
     if(screen_info->zoomed)
     {
         screen_info->transform.matrix[0][0] += 4096;
