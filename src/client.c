@@ -981,8 +981,12 @@ clientGetMWMHints (Client *c, gboolean update)
         wc.width = c->width;
         wc.height = c->height;
 
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+        {
+            clientUpdateFullscreenSize (c);
+        }
         /* If client is maximized, we need to update its coordonates and size as well */
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             GdkRectangle rect;
             myScreenFindMonitorAtPoint (screen_info,
@@ -3543,8 +3547,12 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
             continue;
         }
 
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+        {
+            clientUpdateFullscreenSize (c);
+        }
         /* Recompute size and position of maximized windows */
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             maximization_flags = c->flags & CLIENT_FLAG_MAXIMIZED;
 
@@ -3557,10 +3565,6 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
             wc.width = c->width;
             wc.height = c->height;
             clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
-        }
-        else if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-        {
-            clientUpdateFullscreenSize (c);
         }
         else
         {
