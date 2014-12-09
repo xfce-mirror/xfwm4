@@ -1,32 +1,30 @@
-# translation of he.po to Hebrew
-# Hebrew translations for xfwm4 package.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-#
-# Dotan Kamber <kamberd@yahoo.com>, 2004.
-# Jonatan Perry <Jonatan443@walla.co.il>, 2004.
-# Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Dotan Kamber <kamberd@yahoo.com>, 2004
+# Jonatan Perry <Jonatan443@walla.co.il>, 2004
+# Yuval Tanny <tanai@int.gov.il>, 2004,2006
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 18:54+0200\n"
-"PO-Revision-Date: 2006-11-11 21:28+0200\n"
-"Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
-"Language-Team: Hebrew\n"
-"Language: \n"
+"POT-Creation-Date: 2013-07-02 23:22+0200\n"
+"PO-Revision-Date: 2014-12-09 12:43+0000\n"
+"Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
+"Language-Team: Hebrew (http://www.transifex.com/projects/p/xfwm4/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: he\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"יתכן כי חלון זה עסוק ואינו מגיב.\n"
-"האם ברצונך לחסל את היישום?"
+msgstr "יתכן כי חלון זה עסוק ואינו מגיב.\nהאם ברצונך לסיים את היישום?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -34,23 +32,23 @@ msgstr "אזהרה"
 
 #: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
-msgstr "כלום"
+msgstr "ללא"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
-msgstr ""
+msgstr "Session manager socket"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:455
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:317
 msgid "Version information"
-msgstr "פרטי הגרסה"
+msgstr "Version information"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
@@ -65,22 +63,22 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
+msgstr "%s: %s\nTry %s --help to see a full list of available command line options.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
 #, c-format
 msgid "Workspace %d"
-msgstr "סביבת עבודה %d"
+msgstr "משטח עבודה %d"
 
 #: ../settings-dialogs/workspace-settings.c:275
 msgid "Workspace Name"
-msgstr "שם סביבת העבודה"
+msgstr "שם משטח עבודה"
 
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Settings manager socket"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -89,62 +87,56 @@ msgstr "מנהל חלונות"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "בטל פעולת חלון"
+msgstr "הגדר התנהגות, נגיעות וקיצורי דרך חלון"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "הגדרות נוספות של מנהל החלונות"
+msgstr "התאמות מנגנון מנהל חלונות"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "בטל פעולת חלון"
+msgstr "לטש התנהגות ואפקט חלון"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
-msgstr "סביבות עבודה"
+msgstr "משטחי עבודה"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "הגדר מערך, שמות ושוליים"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>_Theme</b>"
-msgstr "<b>_ערכת נושא</b>"
+msgstr "<b>ערכת _נושא</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
 msgid "<b>Title fon_t</b>"
-msgstr "גופן כותרת"
+msgstr "<b>_גופן כותרת</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
 msgid "<b>Title _alignment</b>"
-msgstr "יישור כותרת"
+msgstr "<b>_יישור כותרת</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
 msgid "Click and drag the buttons to change the layout"
-msgstr "לחץ ושחרר לחצן כדי לשנות את הפריסה"
+msgstr "לחץ וגרור את הלחצנים כדי לשנות את סידורם"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Title"
 msgstr "כותרת"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
 msgid "The window title cannot be removed"
-msgstr "החלון מסומן, אין אפשרות להסיר אותו"
+msgstr "כותרת חלון לא ניתנת להסרה"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Active"
-msgstr "פעיל"
+msgstr "פעילים"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "Menu"
@@ -159,9 +151,8 @@ msgid "Shade"
 msgstr "גלול"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "Minimize"
-msgstr "_הגדל"
+msgstr "מזער"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
@@ -173,188 +164,154 @@ msgstr "סגור"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Hidden"
-msgstr "מוסתר"
+msgstr "מוסתרים"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
 msgid "<b>Button layout</b>"
-msgstr "פרישת כפתורים"
+msgstr "<b>מערך לחצנים</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#, fuzzy
 msgid "_Style"
-msgstr "סגנון"
+msgstr "_סגנון"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "_Reset to Defaults"
-msgstr ""
+msgstr "_אפס לברירות מחדל"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
-#, fuzzy
 msgid "<b>Window _shortcuts</b>"
-msgstr "קיצורי דרך לחלונות"
+msgstr "<b>_קיצורי דרך חלון</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
 msgid "Ke_yboard"
-msgstr "מקלדת"
+msgstr "מ_קלדת"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
 msgid "Clic_k to focus"
-msgstr "לחיצה להתמקדות"
+msgstr "לחץ כדי למק_ד"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
 msgid "Focus follows _mouse"
-msgstr "התמקדות עוקבת אחר העכבר"
+msgstr "מיקוד _עוקב עכבר"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
 msgid "_Delay before window receives focus:"
-msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
+msgstr "_שיהוי טרם חלון מקבל מיקוד:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
 msgid "<i>Short</i>"
-msgstr "שקיפות"
+msgstr "<i>קצר</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
 msgid "<i>Long</i>"
-msgstr "גדול"
+msgstr "<i>ארוך</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
 msgid "<b>Focus model</b>"
-msgstr "אופן ההתמקדות"
+msgstr "<b>מודל מיקוד</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
 msgid "Automatically give focus to _newly created windows"
-msgstr "התמקד באופן אוטומטי על חלון חדש שנוצר"
+msgstr "מסור מיקוד אוטומטית לחלונות _חדשים שנוצרו"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
 msgid "<b>New window focus</b>"
-msgstr "התמקדות על חלון חדש"
+msgstr "<b>מיקוד חלון חדש</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
 msgid "Automatically _raise windows when they receive focus"
-msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
+msgstr "_הרם חלונות אוטומטית כאשר הם מקבלים מיקוד"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
 msgid "Delay _before raising focused window:"
-msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
+msgstr "שיהוי _טרם הרמת חלון ממוקד:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
 msgid "<b>Raise on focus</b>"
-msgstr "הבא לחזית בהתמקדות"
+msgstr "<b>הרם במיקוד</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
 msgid "Raise window when clicking _inside application window"
-msgstr "הבא חלון לחזית כאשר לוחצים בתוך חלון היישום"
+msgstr "הרם חלון בהקלקה _בתוך חלון יישום"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
 msgid "<b>Raise on click</b>"
-msgstr "הבא לחזית בלחיצה"
+msgstr "<b>הרם בלחיצה</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
 msgid "_Focus"
-msgstr "התמקדות"
+msgstr "_מיקוד"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
 msgid "Snap windows to screen _border"
-msgstr "הצמד חלונות לגבולות המרקע"
+msgstr "הצמד חלונות אל מס_גרת מרקע"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
 msgid "Snap windows to other _windows"
-msgstr "הצמד חלונות לחלונות סמוכים"
+msgstr "הצמד חלונות אל _חלונות אחרים"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
 msgid "Dis_tance:"
-msgstr "מרחק:"
+msgstr "מ_רחק:"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#, fuzzy
 msgid "<i>Small</i>"
-msgstr "קטן"
+msgstr "<i>קטנה</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
 msgid "<i>Wide</i>"
-msgstr "גדול"
+msgstr "<i>רחב</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
 msgid "<b>Windows snapping</b>"
-msgstr "הצמדת חלונות"
+msgstr "<b>הצמדת פתע של חלונות</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#, fuzzy
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
-msgstr "גלוש בין סביבות עבודה כאשר המצביע מגיע לגבול המסך"
+msgstr "כרוך משטחי עבודה כאשר הסמן מגיע לק_צה מרקע"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
-#, fuzzy
 msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr "גלוש בין סביבות עבודה כאשר חלון נגרר אל מחוץ למסך"
+msgstr "כרוך משטחי עבודה כאשר חלון _נגרר מחוץ למרקע"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
 msgid "_Edge resistance:"
-msgstr "התנגדות למעבר:"
+msgstr "התנג_דות קצה:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
 msgid "<b>Wrap workspaces</b>"
-msgstr "גלישת סביבות עבודה"
+msgstr "<b>כריכת משטחי עבודה</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
 msgid "Hide content of windows when _resizing"
-msgstr "הצג את תוכן החלון בעת שינוי גודל"
+msgstr "הסתר תוכן חלון בזמן _שינוי גודל"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
 msgid "Hide content of windows when _moving"
-msgstr "הצג את תוכן החלון בעת הזזה"
+msgstr "הסתר תוכן חלון בזמן ת_זוזה"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
 msgid "<b>Box move and resize</b>"
-msgstr "הזזה ושינוי גודל"
+msgstr "<b>תזוזת ושינוי גודל תא</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#, fuzzy
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "פעולה לביצוע בעת לחיצה כפולה בשורת הכותרת"
+msgstr "הפעולה לביצוע כאשר שורת כותרת נלחצת פעמיים"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-#, fuzzy
 msgid "<b>Double click _action</b>"
-msgstr "פעולת לחיצה כפולה"
+msgstr "<b>_פעולת לחיצה כפולה</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "מתקדם"
+msgstr "מ_תקדם"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
@@ -373,9 +330,8 @@ msgstr "הגדל חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 #: ../settings-dialogs/xfwm4-settings.c:258
-#, fuzzy
 msgid "Fill window"
-msgstr "הסתר חלון"
+msgstr "מלא חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
@@ -401,33 +357,31 @@ msgstr "תפריט פעולות חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Up"
-msgstr ""
+msgstr "מעלה"
 
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Down"
-msgstr ""
+msgstr "מטה"
 
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Cycle windows"
-msgstr "עבור בין חלונות"
+msgstr "נתר בין חלונות"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
 msgid "Cycle windows (Reverse)"
-msgstr "עבור בין חלונות"
+msgstr "נתר בין חלונות (הפוך)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
 msgid "Switch window for same application"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "החלף חלון עבור אותו יישום"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
-msgstr ""
+msgstr "החלף יישום"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
@@ -442,14 +396,12 @@ msgid "Maximize window vertically"
 msgstr "הגדל חלון אנכית"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
-#, fuzzy
 msgid "Move window"
-msgstr "הזז חלון למעלה"
+msgstr "העבר חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
 msgid "Resize window"
-msgstr "הזז קצה עליון של חלון"
+msgstr "שנה גודל חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
@@ -457,138 +409,119 @@ msgstr "הדבק חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Raise window"
-msgstr "שנה גודל של חלון"
+msgstr "הרם חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Lower window"
-msgstr "העבר חלון לרקע"
+msgstr "הנמך חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "שנה גודל של חלון"
+msgstr "הרם או הנמך חלון"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
 msgid "Fill window horizontally"
-msgstr "הגדל חלון אופקית"
+msgstr "מלא חלון במאוזן"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
 msgid "Fill window vertically"
-msgstr "הגדל חלון אנכית"
+msgstr "מלא חלון במאונך"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr ""
+msgstr "החלף מצב מעל"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
-msgstr "חלון במצב מסך מלא"
+msgstr "החלף מצב מסך מלא"
 
 #: ../settings-dialogs/xfwm4-settings.c:263
 msgid "Move window to upper workspace"
-msgstr "העבר חלון לסביבת העבודה העליונה"
+msgstr "העבר חלון למשטח עבודה עליון"
 
 #: ../settings-dialogs/xfwm4-settings.c:264
 msgid "Move window to bottom workspace"
-msgstr "העבר חלון לסביבת העבודה התחתונה"
+msgstr "העבר חלון למשטח עבודה תחתון"
 
 #: ../settings-dialogs/xfwm4-settings.c:265
 msgid "Move window to left workspace"
-msgstr "העבר חלון לסביבת העבודה השמאלית"
+msgstr "העבר חלון למשטח עבודה שמאלי"
 
 #: ../settings-dialogs/xfwm4-settings.c:266
 msgid "Move window to right workspace"
-msgstr "העבר חלון לסביבת העבודה הימינית"
+msgstr "העבר חלון למשטח עבודה ימני"
 
 #: ../settings-dialogs/xfwm4-settings.c:267
 msgid "Move window to previous workspace"
-msgstr "העבר חלון לסביבת העבודה הקודמת"
+msgstr "העבר חלון למשטח עבודה קודם"
 
 #: ../settings-dialogs/xfwm4-settings.c:268
 msgid "Move window to next workspace"
-msgstr "העבר חלון לסביבת העבודה ההבאה"
+msgstr "העבר חלון למשטח עבודה הבאה"
 
 #: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
 msgid "Move window to workspace 1"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
 msgid "Move window to workspace 2"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
 msgid "Move window to workspace 3"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
 msgid "Move window to workspace 4"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
 msgid "Move window to workspace 5"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
 msgid "Move window to workspace 6"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
 msgid "Move window to workspace 7"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
 msgid "Move window to workspace 8"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
 msgid "Move window to workspace 9"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
 msgid "Move window to workspace 10"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
 msgid "Move window to workspace 11"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
 msgid "Move window to workspace 12"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "העבר חלון למשטח עבודה 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "העבר חלון לסביבת העבודה השמאלית"
+msgstr "רצף חלון לשיא"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "העבר חלון לסביבת העבודה התחתונה"
+msgstr "רצף חלון לחתית"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "הזז קצה שמאלי של חלון"
+msgstr "רצף חלון לשמאל"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "הזז קצה ימני של חלון"
+msgstr "רצף חלון לימין"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -596,377 +529,320 @@ msgstr "הצג שולחן עבודה"
 
 #: ../settings-dialogs/xfwm4-settings.c:286
 msgid "Upper workspace"
-msgstr "סביבת עבודה עליונה"
+msgstr "משטח עבודה עליון"
 
 #: ../settings-dialogs/xfwm4-settings.c:287
 msgid "Bottom workspace"
-msgstr "סביבת עבודה תחתונה"
+msgstr "משטח עבודה תחתון"
 
 #: ../settings-dialogs/xfwm4-settings.c:288
 msgid "Left workspace"
-msgstr "סביבת עבודה משמאל"
+msgstr "משטח עבודה שמאלי"
 
 #: ../settings-dialogs/xfwm4-settings.c:289
 msgid "Right workspace"
-msgstr "סביבת עבודה מימין"
+msgstr "משטח עבודה ימני"
 
 #: ../settings-dialogs/xfwm4-settings.c:290
 msgid "Previous workspace"
-msgstr "סביבת עבודה קודמת"
+msgstr "משטח עבודה קודם"
 
 #: ../settings-dialogs/xfwm4-settings.c:291
 msgid "Next workspace"
-msgstr "סביבת עבודה הבאה"
+msgstr "משטח עבודה הבא"
 
 #: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
 msgid "Workspace 1"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 1"
 
 #: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
 msgid "Workspace 2"
-msgstr "סביבת עבודה %d"
+msgstr "משטח עבודה 2"
 
 #: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
 msgid "Workspace 3"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 3"
 
 #: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
 msgid "Workspace 4"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 4"
 
 #: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
 msgid "Workspace 5"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 5"
 
 #: ../settings-dialogs/xfwm4-settings.c:297
-#, fuzzy
 msgid "Workspace 6"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 6"
 
 #: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
 msgid "Workspace 7"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 7"
 
 #: ../settings-dialogs/xfwm4-settings.c:299
-#, fuzzy
 msgid "Workspace 8"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 8"
 
 #: ../settings-dialogs/xfwm4-settings.c:300
-#, fuzzy
 msgid "Workspace 9"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 9"
 
 #: ../settings-dialogs/xfwm4-settings.c:301
-#, fuzzy
 msgid "Workspace 10"
-msgstr "סביבת עבודה %d"
+msgstr "משטח עבודה 10"
 
 #: ../settings-dialogs/xfwm4-settings.c:302
-#, fuzzy
 msgid "Workspace 11"
-msgstr "סביבת עבודה %i"
+msgstr "משטח עבודה 11"
 
 #: ../settings-dialogs/xfwm4-settings.c:303
-#, fuzzy
 msgid "Workspace 12"
-msgstr "סביבת עבודה %d"
+msgstr "משטח עבודה 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:304
 msgid "Add workspace"
-msgstr "הוסף סביבת עבודה"
+msgstr "הוסף משטח עבודה"
 
 #: ../settings-dialogs/xfwm4-settings.c:305
-#, fuzzy
 msgid "Add adjacent workspace"
-msgstr "הוסף סביבת עבודה"
+msgstr "הוסף משטח עבודה סמוך"
 
 #: ../settings-dialogs/xfwm4-settings.c:306
-#, fuzzy
 msgid "Delete last workspace"
-msgstr "מחק סביבת עבודה"
+msgstr "מחק משטח עבודה אחרון"
 
 #: ../settings-dialogs/xfwm4-settings.c:307
-#, fuzzy
 msgid "Delete active workspace"
-msgstr "מחק סביבת עבודה"
+msgstr "מחק משטח עבודה פעיל"
 
 #: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
-msgstr ""
+msgstr "ערכת נושא"
 
 #: ../settings-dialogs/xfwm4-settings.c:602
-#, fuzzy
 msgid "Action"
-msgstr "פעיל"
+msgstr "פעולה"
 
 #: ../settings-dialogs/xfwm4-settings.c:607
-#, fuzzy
 msgid "Shortcut"
-msgstr "אין קיצור"
+msgstr "קיצור דרך"
 
 #: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Failed to initialize xfconf. Reason: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
-msgid "Reset to Defaults"
-msgstr ""
+msgstr "Could not create the settings dialog."
 
 #: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
+msgid "Reset to Defaults"
+msgstr "אפס לברירות מחדל"
+
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "פעולה זו תאפס את כל הקיצורי דרך לערכיהם השגרתיים. האם אתה באמת רוצה לעשות זאת?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#, fuzzy
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"דלג על חלונות שהמאפיין \"דלג מחליף סביבות עבודה\"\n"
-"או \"דלג שרות משימות\" בהם מאפשר"
+msgstr "_דלג על חלונות להם נקבעו מאפיינים\n\"דלג על עמודן\" או \"דלג על שורת משימות\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "שתף חלונות ממוזערים"
+msgstr "_כלול חלונות מוסתרים (דהיינו, ממוזערים)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-#, fuzzy
 msgid "Cycle _through windows on all workspaces"
-msgstr "עבור דרך חלונות מכל סביבות העבודה"
+msgstr "נתר _בין חלונות בכל משטחי העבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr ""
+msgstr "_צייר מסגרת סביב חלונות נבחרים במהלך ניתור"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
 msgid "C_ycling"
-msgstr "מעבר מחזורי"
+msgstr "מ_חזוריות"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
 msgid "Activate _focus stealing prevention"
-msgstr "מנע גנבת מיקוד חלונות"
+msgstr "הפעל _מניעת חטיפת מיקוד"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
 msgid "Honor _standard ICCCM focus hint"
-msgstr "כבד את סטנדרט סימני מיקוד החלונות ICCCM"
+msgstr "כבד רמז מיקוד ICCCM _תקני"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "כאשר חלון מרים עצמו:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
 msgid "_Bring window on current workspace"
-msgstr "העבר חלון לסביבת העבודה ההבאה"
+msgstr "שלח חלון אל מש_טח עבודה נוכחי"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-#, fuzzy
 msgid "Switch to win_dow's workspace"
-msgstr "העבר חלון לסביבת עבודה %d"
+msgstr "_החלף למשטח עבודה של חלון"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
 msgid "Do _nothing"
-msgstr "כלום"
+msgstr "_אל תעשה דבר"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-#, fuzzy
 msgid "Key used to _grab and move windows:"
-msgstr "מקש המשמש לתפיסת והזזת חלונות"
+msgstr "קליד בשימוש כדי ל_אחוז ולהזיז חלונות:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "הבא חלון לקדימה עבור כל לחיצת עכבר"
+msgstr "_הרם חלון כאשר איזה מן לחצני העכבר נלחץ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-#, fuzzy
 msgid "Hide _frame of windows when maximized"
-msgstr "הסתר את מסגרת החלון כאשר הוא בגודל מרבי"
+msgstr "הסתר מס_גרת חלון כאשר מוגדל"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
 msgid "Restore original _size of maximized windows when moving"
-msgstr "החזר את הגודל המקורי של החלון המוגדל כאשר הוא מוזז"
+msgstr "שחזר מידה מקורית של חלון מוגדל בעת ה_זזה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
+msgstr "_רצף חלונות אוטומטית בזמן הזזה לעבר קצה המרקע"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
 msgid "Use _edge resistance instead of window snapping"
-msgstr "השתמש בהתנגדות שוליים במקום הצמדת החלונות אליהם"
+msgstr "השתמש בהתנגדות ק_צה במקום בהצמדת פתע של חלון"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "הודע על _דחיפות על ידי גרימת הבהוב עיטור חלון"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "השאר חלונות דחופים מה_בהבים שוב ושוב"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-#, fuzzy
 msgid "_Accessibility"
-msgstr "נגישות"
+msgstr "_נגישות"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "השתמש בגלגל ה_עכבר על שולחן העבודה כדי להחליף משטחי עבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-#, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "זכור והחזר את סביבת העבודה הקודמת כאשר מחליפים באמצעות קיצורי המקדלת."
+msgstr "_הזכר וזכור משטח עבודה קודם כאשר\nמחליפים באמצעות קיצורי דרך מקלדת"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-#, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "גלוש בין סביבות עבודה לפי פריסת השולחנות האמתית"
+msgstr "_כרוך משטחי עבודה לפי מערך ממשי של שולחן עבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-#, fuzzy
 msgid "Wrap workspaces when the _first or the last workspace is reached"
-msgstr "אפשר גלישה גם בין סביבות העבודה הראשונה והאחרונה"
+msgstr "כרוך משטחי עבודה בהגעה אל משטח עבודה ר_אשון ואחרון"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
-#, fuzzy
 msgid "_Workspaces"
-msgstr "סביבות עבודה"
+msgstr "מ_שטחי עבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "גודל חלון מינימלי להפעלת התמקמות חכמה"
+msgstr "מידת חלון נומינלית כדי להפעיל _השמה חכמה:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
-#, fuzzy
 msgid "<i>Large</i>"
-msgstr "גדול"
+msgstr "<i>גדולה</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "By default, place windows:"
-msgstr ""
+msgstr "באופן שגרתי, מקם חלונות:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "At the _center of the screen"
-msgstr ""
+msgstr "במרכ_זו של המרקע"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "Under the mouse _pointer"
-msgstr ""
+msgstr "_תחת סמן העכבר"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
 msgid "_Placement"
-msgstr "התמקמות"
+msgstr "מי_קום"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-#, fuzzy
 msgid "_Enable display compositing"
-msgstr "אפשר compositing לתצוגה"
+msgstr "_אפשר תצוגת קומפוזיצייה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-#, fuzzy
 msgid "Display _fullscreen overlay windows directly"
-msgstr "הצג חלונות במצב מסך מלא ישירות"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
 msgid "Show shadows under _regular windows"
-msgstr "הראה צל מתחת לחלון רגיל"
+msgstr "הצג צללים תחת חלונות _רגילים"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-#, fuzzy
 msgid "Show shadows under pop_up windows"
-msgstr "הראה צל מתחת לחלון קופץ"
+msgstr "הצג צללים תחת חלונות קופ_צים"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-#, fuzzy
 msgid "Show shadows under _dock windows"
-msgstr "הראה צל מתחת לחלון קופץ"
+msgstr "הצג צללים תחת חלונות _עוגן"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-#, fuzzy
 msgid "Opaci_ty of window decorations:"
-msgstr "אטימות של קישוטי חלונות"
+msgstr "א_טימות של עיטורי חלון:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-#, fuzzy
 msgid "<i>Transparent</i>"
-msgstr "שקיפות"
+msgstr "<i>שקוף</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#, fuzzy
 msgid "<i>Opaque</i>"
-msgstr "אטום"
+msgstr "<i>אטום</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-#, fuzzy
 msgid "Opacity of _inactive windows:"
-msgstr "אטימות של חלונות לא פעילים"
+msgstr "אטימות של חלונות _לא פעילים:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
 msgid "Opacity of windows during _move:"
-msgstr "אטימות של חלונות בזמן גרירה"
+msgstr "אטימות חלון בזמן _הזזה:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#, fuzzy
 msgid "Opacity of windows during resi_ze:"
-msgstr "אטימות של חלונות בזמן שינוי גודל"
+msgstr "אטימות חלון בזמן שינוי _גודל:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#, fuzzy
 msgid "Opacity of popup window_s:"
-msgstr "אטימות של חלונות קופצים"
+msgstr "אטימות של חלונו_ת קופצים:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
-#, fuzzy
 msgid "C_ompositor"
-msgstr "Compositor"
+msgstr "קומ_פוזיטור"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "מספר סביבות עבודה:"
+msgstr "_מספר של משטחי עבודה:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr ""
+msgstr "מערך"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Names"
-msgstr "שם:"
+msgstr "שמות"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "_כללי"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
@@ -974,9 +850,8 @@ msgid ""
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Margins"
-msgstr "שוליים"
+msgstr "_שוליים"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
@@ -986,55 +861,52 @@ msgstr "%s (על %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr ""
+msgstr "Fork to the background"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr ""
+msgstr "Fork to the background (not supported)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Set the compositor mode"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr ""
+msgstr "Set the compositor mode (not supported)"
 
 #: ../src/main.c:549
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "הגדרות מנהל חלונות Xfce4"
+msgstr "Replace the existing window manager"
 
 #: ../src/main.c:550
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Print version information and exit"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENTS...]"
 
 #: ../src/main.c:565
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Type \"%s --help\" for usage."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
-msgstr "_הגדל"
+msgstr "ה_גדל"
 
 #: ../src/menu.c:44
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "_שחזר"
+msgstr "בטל הג_דל"
 
 #: ../src/menu.c:45
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_הגדל"
+msgstr "מ_זער"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
-msgstr ""
+msgstr "מזער את _כל החלונות האחרים"
 
 #: ../src/menu.c:47
 msgid "S_how"
@@ -1042,66 +914,57 @@ msgstr "הצ_ג"
 
 #: ../src/menu.c:48
 msgid "_Move"
-msgstr ""
+msgstr "_הזז"
 
 #: ../src/menu.c:49
 msgid "_Resize"
-msgstr ""
+msgstr "ש_נה גודל"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-#, fuzzy
 msgid "Always on Top"
-msgstr "תמיד עליון"
+msgstr "תמיד מעל"
 
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Same as Other Windows"
-msgstr "הצמד חלונות לחלונות סמוכים"
+msgstr "ברמה זהה לחלונות אחרים"
 
 #: ../src/menu.c:53
 msgid "Always Below Other Windows"
-msgstr ""
+msgstr "תמיד מתחת לחלונות אחרים"
 
 #: ../src/menu.c:54
-#, fuzzy
 msgid "Roll Window Up"
-msgstr "הסתר חלון"
+msgstr "גלול חלון מעלה"
 
 #: ../src/menu.c:55
-#, fuzzy
 msgid "Roll Window Down"
-msgstr "הזז חלון למטה"
+msgstr "גלול חלון מטה"
 
 #: ../src/menu.c:56
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "חלון במצב מסך מלא"
+msgstr "_מסך מלא"
 
 #: ../src/menu.c:57
-#, fuzzy
 msgid "Leave _Fullscreen"
-msgstr "חלון במצב מסך מלא"
+msgstr "עזוב _מסך מלא"
 
 #: ../src/menu.c:58
-#, fuzzy
 msgid "Context _Help"
-msgstr "_עזרה"
+msgstr "_עזרת הקשר"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-#, fuzzy
 msgid "Always on Visible Workspace"
-msgstr "תמיד עליון"
+msgstr "תמיד במשטח עבודה נראה"
 
 #: ../src/menu.c:61
 msgid "Only on This Workspace"
-msgstr ""
+msgstr "רק במשטח עבודה זה"
 
 #: ../src/menu.c:62
-#, fuzzy
 msgid "Move to Another Workspace"
-msgstr "העבר חלון לסביבת העבודה ההבאה"
+msgstr "העבר למשטח עבודה אחר"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -1115,520 +978,43 @@ msgstr "ה_שמד"
 
 #: ../src/menu.c:70
 msgid "_Quit"
-msgstr "_צא"
+msgstr "י_ציאה"
 
 #: ../src/menu.c:71
 msgid "Restart"
-msgstr "_אתחל"
+msgstr "_הפעל מחדש"
 
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu כשל בלכידת המצביע \n"
+msgstr "%s: GtkMenu failed to grab the pointer\n"
 
 #: ../src/settings.c:273
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: לא ניתן להקצות צבע %s\n"
+msgstr "%s: Cannot allocate color %s\n"
 
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Cannot allocate color: GValue for color is not of type STRING"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: לא ניתן לקרוא צבע %s\n"
+msgstr "%s: Cannot parse color %s\n"
 
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
+msgstr "%s: Cannot parse color: GValue for color is not of type STRING"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Error reading data from child process: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
-
-#, fuzzy
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "מספר סביבות עבודה:"
-
-#, fuzzy
-#~ msgid "<b>Margins</b>"
-#~ msgstr "שוליים"
-
-#, fuzzy
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "גלישת סביבות עבודה"
-
-#, fuzzy
-#~ msgid "Change workspace name"
-#~ msgstr "שמות סביבות עבודה"
-
-#, fuzzy
-#~ msgid "_Name:"
-#~ msgstr "שם:"
-
-#~ msgid "Hide"
-#~ msgstr "הסתר"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: Segmentation fault"
-
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "קטן"
-
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "חלשה"
-
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "חזקה"
-
-#~ msgid ">Window Manager"
-#~ msgstr "מנהל חלונות"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "שולי סביבת העבודה"
-
-#~ msgid "Left :"
-#~ msgstr "שמאל:"
-
-#~ msgid "Right :"
-#~ msgstr "ימין:"
-
-#~ msgid "Top :"
-#~ msgstr "למעלה:"
-
-#~ msgid "Bottom :"
-#~ msgstr "למטה:"
-
-#~ msgid "Bring window on current workspace"
-#~ msgstr "העבר חלון לסביבת העבודה ההבאה"
-
-#~ msgid "Do nothing"
-#~ msgstr "כלום"
-
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "דלג על חלונות שהמאפיין \"דלג מחליף סביבות עבודה\"\n"
-#~ "או \"דלג שרות משימות\" בהם מאפשר"
-
-#~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "שתף חלונות ממוזערים"
-
-#~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "עבור דרך חלונות מכל סביבות העבודה"
-
-#~ msgid "Cycling"
-#~ msgstr "מעבר מחזורי"
-
-#~ msgid "Activate focus stealing prevention"
-#~ msgstr "מנע גנבת מיקוד חלונות"
-
-#~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "כבד את סטנדרט סימני מיקוד החלונות ICCCM"
-
-#~ msgid "Focus"
-#~ msgstr "התמקדות"
-
-#~ msgid "Key used to grab and move windows"
-#~ msgstr "מקש המשמש לתפיסת והזזת חלונות"
-
-#~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "הבא חלון לקדימה עבור כל לחיצת עכבר"
-
-#~ msgid "Hide frame of windows when maximized"
-#~ msgstr "הסתר את מסגרת החלון כאשר הוא בגודל מרבי"
-
-#~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "החזר את הגודל המקורי של החלון המוגדל כאשר הוא מוזז"
-
-#~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "השתמש בהתנגדות שוליים במקום הצמדת החלונות אליהם"
-
-#~ msgid "Accessibility"
-#~ msgstr "נגישות"
-
-#~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr "החלף סביבות עבודה באמצעות גלגלת העכבר על שולחן העבודה"
-
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "זכור והחזר את סביבת העבודה הקודמת כאשר מחליפים באמצעות קיצורי המקדלת."
-
-#~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr "גלוש בין סביבות עבודה לפי פריסת השולחנות האמתית"
-
-#~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "אפשר גלישה גם בין סביבות העבודה הראשונה והאחרונה"
-
-#~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "גודל חלון מינימלי להפעלת התמקמות חכמה"
-
-#~ msgid "Size|Small"
-#~ msgstr "קטן"
-
-#~ msgid "Size|Large"
-#~ msgstr "גדול"
-
-#~ msgid "Default positionning of windows without smart placement:"
-#~ msgstr "גודל חלון מינימלי להפעלת התמקמות חכמה"
-
-#~ msgid "Placement"
-#~ msgstr "התמקמות"
-
-#~ msgid "Enable display compositing"
-#~ msgstr "אפשר compositing לתצוגה"
-
-#~ msgid "Display full screen overlay windows directly"
-#~ msgstr "הצג חלונות במצב מסך מלא ישירות"
-
-#~ msgid "Show shadows under dock windows"
-#~ msgstr "הראה צל מתחת לחלון קופץ"
-
-#~ msgid "Show shadows under regular windows"
-#~ msgstr "הראה צל מתחת לחלון רגיל"
-
-#~ msgid "Show shadows under popup windows"
-#~ msgstr "הראה צל מתחת לחלון קופץ"
-
-#~ msgid "Opacity of window decorations"
-#~ msgstr "אטימות של קישוטי חלונות"
-
-#~ msgid "Transparent"
-#~ msgstr "שקיפות"
-
-#~ msgid "Opaque"
-#~ msgstr "אטום"
-
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "אטימות של חלונות לא פעילים"
-
-#~ msgid "Opacity of windows during move"
-#~ msgstr "אטימות של חלונות בזמן גרירה"
-
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "אטימות של חלונות בזמן שינוי גודל"
-
-#~ msgid "Opacity of popup windows"
-#~ msgstr "אטימות של חלונות קופצים"
-
-#~ msgid "Compositor"
-#~ msgstr "Compositor"
-
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "הגדרות נוספות של מנהל החלונות"
-
-#~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr "הגדרות אלה לא יכולות לעבוד עם מנהל החלונות הנוכחי שלך (%s)"
-
-#~ msgid "Change name"
-#~ msgstr "שנה שם"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "לחץ על שם סביבת העבודה כדי לערוך אותו"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "מספר סביבות עבודה:"
-
-#~ msgid "Workspace names"
-#~ msgstr "שמות סביבות עבודה"
-
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "סביבות עבודה ושוליים"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "סביבות עבודה ושוליים"
-
-#~ msgid "Window Manager Settings"
-#~ msgstr "הגדרות מנהל חלונות"
-
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "הגדרות מנהל חלונות Xfce4"
-
-#~ msgid "Advanced Configuration"
-#~ msgstr "הגדרות מתקדמות"
-
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "הגדרות נספות של מנהל החלונות Xfce 4"
-
-#~ msgid "Workspaces Settings"
-#~ msgstr "הגדרות סביבות עבודה"
-
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "הגדרות סביבות עבודה Xfce 4"
-
-#~ msgid "Click and drag buttons to change the layout"
-#~ msgstr "לחץ ושחרר לחצן כדי לשנות את הפריסה"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "תיבת בחירת גופנים"
-
-#~ msgid "Title font"
-#~ msgstr "גופן כותרת"
-
-#~ msgid "Title Alignment"
-#~ msgstr "יישור כותרת"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "יישור טקסט בשורת הכותרת:"
-
-#~ msgid "Button layout"
-#~ msgstr "פרישת כפתורים"
-
-#~ msgid "Style"
-#~ msgstr "סגנון"
-
-#~ msgid "Window shortcuts"
-#~ msgstr "קיצורי דרך לחלונות"
-
-#~ msgid "Command"
-#~ msgstr "פקודה"
-
-#~ msgid "Keyboard"
-#~ msgstr "מקלדת"
-
-#~ msgid "Focus model"
-#~ msgstr "אופן ההתמקדות"
-
-#~ msgid "Click to focus"
-#~ msgstr "לחיצה להתמקדות"
-
-#~ msgid "Focus follows mouse"
-#~ msgstr "התמקדות עוקבת אחר העכבר"
-
-#~ msgid "Delay before window receives focus"
-#~ msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
-
-#~ msgid "Slow"
-#~ msgstr "קצרה"
-
-#~ msgid "Fast"
-#~ msgstr "ארוכה"
-
-#~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "התמקד באופן אוטומטי על חלון חדש שנוצר"
-
-#~ msgid "New window focus"
-#~ msgstr "התמקדות על חלון חדש"
-
-#~ msgid "Raise on focus"
-#~ msgstr "הבא לחזית בהתמקדות"
-
-#~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "הבא חלונות לחזית באופן אוטומטי כאשר מתמקדים עליהן"
-
-#~ msgid "Delay before raising focused window :"
-#~ msgstr "השהיה בטרם הבאת חלונות לחזית כאשר מתמקדים עליהן:"
-
-#~ msgid "Raise window when clicking inside application window"
-#~ msgstr "הבא חלון לחזית כאשר לוחצים בתוך חלון היישום"
-
-#~ msgid "Raise on click"
-#~ msgstr "הבא לחזית בלחיצה"
-
-#~ msgid "Windows snapping"
-#~ msgstr "הצמדת חלונות"
-
-#~ msgid "Snap windows to screen border"
-#~ msgstr "הצמד חלונות לגבולות המרקע"
-
-#~ msgid "Snap windows to other windows"
-#~ msgstr "הצמד חלונות לחלונות סמוכים"
-
-#~ msgid "Distance :"
-#~ msgstr "מרחק:"
-
-#~ msgid "Distance|Small"
-#~ msgstr "קטן"
-
-#~ msgid "Distance|Wide"
-#~ msgstr "גדול"
-
-#~ msgid "Wrap workspaces"
-#~ msgstr "גלישת סביבות עבודה"
-
-#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "גלוש בין סביבות עבודה כאשר המצביע מגיע לגבול המסך"
-
-#~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "גלוש בין סביבות עבודה כאשר חלון נגרר אל מחוץ למסך"
-
-#~ msgid "Edge Resistance :"
-#~ msgstr "התנגדות למעבר:"
-
-#~ msgid "Resistance|Small"
-#~ msgstr "חלשה"
-
-#~ msgid "Resistance|Wide"
-#~ msgstr "חזקה"
-
-#~ msgid "Opaque move and resize"
-#~ msgstr "הזזה ושינוי גודל"
-
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "הצג את תוכן החלון בעת שינוי גודל"
-
-#~ msgid "Display content of windows when moving"
-#~ msgstr "הצג את תוכן החלון בעת הזזה"
-
-#~ msgid "Double click action"
-#~ msgstr "פעולת לחיצה כפולה"
-
-#~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "פעולה לביצוע בעת לחיצה כפולה בשורת הכותרת"
-
-#~ msgid "Advanced"
-#~ msgstr "מתקדם"
-
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "מנהל חלונות"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "האם אתה בטוח שאתה רוצה להסיר את הערכת הנושא של קיצורי הדרך?"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "הוסף ערכת נושא של קיצורי דרך"
-
-#~ msgid "Enter a name for the theme:"
-#~ msgstr "הכנס שם לערכת הנושא:"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "שם זה כבר קיים לערכה אחרת"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "יש צורך בשם בשביל ערכת הנושא"
-
-#~ msgid "Move window to workspace %d"
-#~ msgstr "העבר חלון לסביבת עבודה %d"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "אין אפשרות לפתוח את תיקיית ערכת הנושא."
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "אין אפשרות לפתוח %s : \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "אין אפשרות לכתוב  %s : \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "קיצור כבר בשימוש.\n"
-#~ "האם ברצונך להשתמש בו בכל זאת?"
-
-#~ msgid "Compose shortcut for :"
-#~ msgstr "צור קיצור ל:"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "צור קיצור"
-
-#~ msgid "No shortcut"
-#~ msgstr "צור קיצור"
-
-#~ msgid "Change the name of workspace %d"
-#~ msgstr "מספר סביבות עבודה:"
-
-#~ msgid "Advanced window manager settings"
-#~ msgstr "הגדרות מנהל חלונות Xfce4"
-
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "קיצור כבר בשימוש.\n"
-#~ "האם ברצונך להשתמש בו בכל זאת?"
-
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "קיצור כבר בשימוש.\n"
-#~ "האם ברצונך להשתמש בו בכל זאת?"
-
-#~ msgid "The shortcut is already being used for something else."
-#~ msgstr ""
-#~ "קיצור כבר בשימוש.\n"
-#~ "האם ברצונך להשתמש בו בכל זאת?"
-
-#~ msgid "Enter window manager action shortcut"
-#~ msgstr "הגדרות מנהל חלונות Xfce4"
-
-#~ msgid "Action: %s"
-#~ msgstr "פעיל"
-
-#~ msgid "Enter shortcut"
-#~ msgstr "אין קיצור"
-
-#~ msgid "Shortcut:"
-#~ msgstr "אין קיצור"
-
-#~ msgid "(Un)Ma_ximize"
-#~ msgstr "_הגדל"
-
-#~ msgid "Hide _all others"
-#~ msgstr "מזער את _כל האחרים"
-
-#~ msgid "_Shade"
-#~ msgstr "ג_לול"
-
-#~ msgid "(Un)_Shade"
-#~ msgstr "_בטל גלילה"
-
-#~ msgid "S_tick"
-#~ msgstr "_דביק"
-
-#~ msgid "(Un)S_tick"
-#~ msgstr "ב_טל דביק"
-
-#~ msgid "Below"
-#~ msgstr "קצרה"
-
-#~ msgid "Send to..."
-#~ msgstr "שלח אל..."
-
-#~ msgid "Workspace %i (%s)"
-#~ msgstr "סביבת עבודה %i (%s)"
-
-#~ msgid "Ctrl"
-#~ msgstr "מרכז"
-
-#~ msgid "Button"
-#~ msgstr "פרישת כפתורים"
-
-#~ msgid "Add Shortcut Theme"
-#~ msgstr "קיצור דרך"
-
-#~ msgid "Move window left"
-#~ msgstr "הזז חלון שמאלה"
-
-#~ msgid "Move window right"
-#~ msgstr "הזז חלון ימינה"
-
-#~ msgid "Resize window down"
-#~ msgstr "הזז קצה תחתון של חלון"
-
-#~ msgid "Cancel move/resize window"
-#~ msgstr "בטל הזזה או שינוי גודל של חלון"
-
-#~ msgid "_Hide"
-#~ msgstr "_מזער"
+msgstr "Cannot spawn helper-dialog: %s\n"
