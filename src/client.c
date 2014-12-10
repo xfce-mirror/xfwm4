@@ -2511,12 +2511,12 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
         }
         clientRaise (sibling, None);
         clientShow (sibling, TRUE);
-        if (source_is_application || screen_info->params->click_to_focus || (c->type & WINDOW_TYPE_DONT_FOCUS))
+        if (!source_is_application || screen_info->params->click_to_focus || (c->type & WINDOW_TYPE_DONT_FOCUS))
         {
             /*
                It's a bit tricky here, we want to honor the activate request only if:
 
-               - The window use the _NET_ACTIVE_WINDOW protocol and identify itself as an application,
+               - The window use the _NET_ACTIVE_WINDOW protocol and identify itself as a pager,
                - Or we use the click to focus model, in that case we focus the raised window anyway,
                - Or the request comes from an application that we would not focus by default,
                  such as panels for example
