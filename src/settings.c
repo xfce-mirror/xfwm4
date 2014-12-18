@@ -46,7 +46,7 @@
 
 #define CHANNEL_XFWM            "xfwm4"
 #define THEMERC                 "themerc"
-#define XPM_COLOR_SYMBOL_SIZE   22
+#define XPM_COLOR_SYMBOL_SIZE   24
 
 /* Forward static decls. */
 
@@ -351,6 +351,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "light",
         "dark",
         "mid",
+        "fg",
         "bg",
         "light",
         "dark",
@@ -359,6 +360,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "light",
         "dark",
         "mid",
+        "fg",
         "bg",
         "light",
         "dark",
@@ -381,6 +383,8 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "normal",
         "normal",
         "normal",
+        "normal",
+        "insensitive",
         "insensitive",
         "insensitive",
         "insensitive",
@@ -409,18 +413,41 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     desc = NULL;
     i = 0;
 
-    while (ui_part[i] && ui_state[i])
+    /* Load gtk theme colors first */
+    for (i = 0; i < XPM_COLOR_SYMBOL_SIZE; i++)
     {
         gchar *color;
 
         color = getUIStyle  (widget, ui_part[i], ui_state[i]);
         setStringValue (rc[i].option, color, rc);
         g_free (color);
-        ++i;
     }
 
+    /* Then load xfwm4 theme values */
     theme = getThemeDir (getStringValue ("theme", rc), THEMERC);
     parseRc (THEMERC, theme, rc);
+
+    /* And finally redo a pass for transitive definitions of colors */
+    for (i = 0; i < XPM_COLOR_SYMBOL_SIZE; i++)
+    {
+        const gchar *value;
+
+        /*
+         * Allow color definition based on another, e.g:
+         * active_text_color=active_text_color_2
+         * active_text_shadow_color=active_hilight_2
+         * etc.
+         */
+        value = g_value_get_string(rc[i].value);
+        for (j = 0; j < XPM_COLOR_SYMBOL_SIZE; j++)
+        {
+            if (!g_ascii_strcasecmp (value, rc[j].option))
+            {
+                setStringValue (rc[i].option, g_value_get_string(rc[j].value), rc);
+                break;
+            }
+        }
+    }
 
     screen_info->params->shadow_delta_x =
         - getIntValue ("shadow_delta_x", rc);
@@ -656,6 +683,7 @@ loadSettings (ScreenInfo *screen_info)
         {"active_hilight_1", NULL, G_TYPE_STRING, FALSE},
         {"active_shadow_1", NULL, G_TYPE_STRING, FALSE},
         {"active_mid_1", NULL, G_TYPE_STRING, FALSE},
+        {"active_text_color_2", NULL, G_TYPE_STRING, FALSE},
         {"active_color_2", NULL, G_TYPE_STRING, FALSE},
         {"active_hilight_2", NULL, G_TYPE_STRING, FALSE},
         {"active_shadow_2", NULL, G_TYPE_STRING, FALSE},
@@ -664,6 +692,7 @@ loadSettings (ScreenInfo *screen_info)
         {"inactive_hilight_1", NULL, G_TYPE_STRING, FALSE},
         {"inactive_shadow_1", NULL, G_TYPE_STRING, FALSE},
         {"inactive_mid_1", NULL, G_TYPE_STRING, FALSE},
+        {"inactive_text_color_2", NULL, G_TYPE_STRING, FALSE},
         {"inactive_color_2", NULL, G_TYPE_STRING, FALSE},
         {"inactive_hilight_2", NULL, G_TYPE_STRING, FALSE},
         {"inactive_shadow_2", NULL, G_TYPE_STRING, FALSE},
