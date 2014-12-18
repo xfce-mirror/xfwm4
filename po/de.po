@@ -8,14 +8,14 @@
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2012
 # Moritz Heiber <moe@xfce.org>, 2003
 # Nico Schümann <nico@prog.nico22.de>, 2007
-# Tobias Bannert, 2014
+# Tobias Bannert <tobannert@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2014-09-22 14:04+0000\n"
-"Last-Translator: Tobias Bannert\n"
+"PO-Revision-Date: 2014-12-18 14:28+0000\n"
+"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -702,7 +702,7 @@ msgstr "_Taste zum Nehmen und Verschieben der Fenster:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "F_enster hervorbringen, wenn eine beliebige Maustaste gedrückt wird"
+msgstr "Fenster _automatisch hervorheben, wenn sie den Fokus erhalten"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide _frame of windows when maximized"
