@@ -359,8 +359,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     {
                         if  (ev.button == Button1)
                         {
+                            c2 = tabwinSelectHovered (passdata->tabwin);
                             cycling = FALSE;
-                            c = tabwinSelectHoveredWidget (passdata->tabwin);
                             break;
                         }
                         else if  (ev.button == Button4)
