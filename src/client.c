@@ -243,6 +243,22 @@ clientUpdateName (Client *c)
     }
 }
 
+static void
+clientRecomputeMaximizeSize (Client *c)
+{
+    unsigned long maximization_flags = 0L;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientRecomputeMaximizeSize");
+
+    /* Recompute size and position of maximized windows */
+    maximization_flags = c->flags & CLIENT_FLAG_MAXIMIZED;
+
+    /* Force an update by clearing the internal flags */
+    FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
+    clientToggleMaximized (c, maximization_flags, FALSE);
+}
+
 void
 clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 {
@@ -282,16 +298,10 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (mask & UPDATE_MAXIMIZE)
         {
-            unsigned long maximization_flags = 0L;
-
             /* Recompute size and position of maximized windows */
             if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
             {
-                maximization_flags = c->flags & CLIENT_FLAG_MAXIMIZED;
-
-                /* Force an update by clearing the internal flags */
-                FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT);
-                clientToggleMaximized (c, maximization_flags, FALSE);
+                clientRecomputeMaximizeSize (c);
 
                 configure_flags |= CFG_FORCE_REDRAW;
                 mask &= ~UPDATE_FRAME;
@@ -2912,7 +2922,6 @@ clientUpdateFullscreenSize (Client *c)
         wc.width = rect.width;
         wc.height = rect.height;
     }
-
     else
     {
         wc.x = c->fullscreen_old_x;
@@ -3049,6 +3058,28 @@ void clientSetLayerNormal (Client *c)
 }
 
 void
+clientUpdateMaximizeSize (Client *c)
+{
+    XWindowChanges wc;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("entering clientUpdateMaximizeSize");
+    TRACE ("Update maximized size for client \"%s\" (0x%lx)", c->name, c->window);
+
+    /* Recompute size and position of maximized windows */
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+    {
+        clientRecomputeMaximizeSize (c);
+
+        wc.x = c->x;
+        wc.y = c->y;
+        wc.width = c->width;
+        wc.height = c->height;
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
+    }
+}
+
+void
 clientRemoveMaximizeFlag (Client *c)
 {
     g_return_if_fail (c != NULL);
@@ -3134,10 +3165,10 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
     int full_x, full_y, full_w, full_h;
     int tmp_x, tmp_y, tmp_w, tmp_h;
 
-    tmp_x = frameX (c);
-    tmp_y = frameY (c);
-    tmp_h = frameHeight (c);
-    tmp_w = frameWidth (c);
+    tmp_x = frameExtentX (c);
+    tmp_y = frameExtentY (c);
+    tmp_h = frameExtentHeight (c);
+    tmp_w = frameExtentWidth (c);
     screen_info = c->screen_info;
 
     full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect->x);
@@ -3151,10 +3182,10 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
     {
         /* Adjust size to the largest size available, not covering struts */
         clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
-        wc->x = full_x + frameLeft (c);
-        wc->y = full_y + frameTop (c);
-        wc->width = full_w - frameLeft (c) - frameRight (c);
-        wc->height = full_h - frameTop (c) - frameBottom (c);
+        wc->x = full_x + frameExtentLeft (c);
+        wc->y = full_y + frameExtentTop (c);
+        wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
+        wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
 
         return ((wc->width <= c->size->max_width) && (wc->height <= c->size->max_height));
     }
@@ -3168,23 +3199,23 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
                 tmp_h = full_h / 2;
                 tmp_y = full_y;
                 clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
-                wc->y = tmp_y + frameTop (c);
-                wc->height = tmp_h - frameTop (c) - frameBottom (c);
+                wc->y = tmp_y + frameExtentTop (c);
+                wc->height = tmp_h - frameExtentTop (c) - frameExtentBottom (c);
                 break;
             case TILE_DOWN:
                 tmp_h = full_h / 2;
                 tmp_y = full_y + full_h / 2;
                 clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
-                wc->y = tmp_y + frameTop (c);
-                wc->height = tmp_h - frameTop (c) - frameBottom (c);
+                wc->y = tmp_y + frameExtentTop (c);
+                wc->height = tmp_h - frameExtentTop (c) - frameExtentBottom (c);
                 break;
             default:
                 clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
                 break;
         }
 
-        wc->x = full_x + frameLeft (c);
-        wc->width = full_w - frameLeft (c) - frameRight (c);
+        wc->x = full_x + frameExtentLeft (c);
+        wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
 
         return (wc->width <= c->size->max_width);
     }
@@ -3198,23 +3229,23 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
                 tmp_x = full_x;
                 tmp_w = full_w / 2;
                 clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
-                wc->x = tmp_x + frameLeft (c);
-                wc->width = tmp_w - frameLeft (c) - frameRight (c);
+                wc->x = tmp_x + frameExtentLeft (c);
+                wc->width = tmp_w - frameExtentLeft (c) - frameExtentRight (c);
                 break;
             case TILE_RIGHT:
                 tmp_x = full_x + full_w /2;
                 tmp_w = full_w / 2;
                 clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
-                wc->x = tmp_x + frameLeft (c);
-                wc->width = tmp_w - frameLeft (c) - frameRight (c);
+                wc->x = tmp_x + frameExtentLeft (c);
+                wc->width = tmp_w - frameExtentLeft (c) - frameExtentRight (c);
                 break;
             default:
                 clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
                 break;
         }
 
-        wc->y = full_y + frameTop (c);
-        wc->height = full_h - frameTop (c) - frameBottom (c);
+        wc->y = full_y + frameExtentTop (c);
+        wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
 
         return (wc->height <= c->size->max_height);
     }
@@ -3544,8 +3575,6 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
 
     for (list = list_of_windows; list; list = g_list_next (list))
     {
-        unsigned long maximization_flags = 0L;
-
         c = (Client *) list->data;
         if (!CONSTRAINED_WINDOW (c))
         {
@@ -3556,20 +3585,9 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
         {
             clientUpdateFullscreenSize (c);
         }
-        /* Recompute size and position of maximized windows */
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
-            maximization_flags = c->flags & CLIENT_FLAG_MAXIMIZED;
-
-            /* Force an update by clearing the internal flags */
-            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-            clientToggleMaximized (c, maximization_flags, FALSE);
-
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
+            clientUpdateMaximizeSize (c);
         }
         else
         {

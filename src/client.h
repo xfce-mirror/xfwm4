@@ -435,6 +435,7 @@ void                     clientToggleLayerAbove                 (Client *);
 void                     clientToggleLayerBelow                 (Client *);
 void                     clientSetLayerNormal                   (Client *);
 void                     clientRemoveMaximizeFlag               (Client *);
+void                     clientUpdateMaximizeSize               (Client *);
 gboolean                 clientToggleMaximized                  (Client *,
                                                                  int,
                                                                  gboolean);
