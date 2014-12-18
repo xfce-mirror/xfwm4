@@ -1,7 +1,7 @@
-active_text_color=#0c0c0f
-active_text_shadow_color=#fcfcff
-inactive_text_color=#6c6c70
-inactive_text_shadow_color=#fcfcff
+active_text_color=active_text_color_2
+active_text_shadow_color=active_hilight_2
+inactive_text_color=inactive_text_color_2
+inactive_text_shadow_color=inactive_hilight_2
 button_offset=2
 button_spacing=0
 full_width_title=true
