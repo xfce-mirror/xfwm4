@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Dotan Kamber <kamberd@yahoo.com>, 2004
+# GenghisKhan <genghiskhan@gmx.ca>, 2014
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004
 # Yuval Tanny <tanai@int.gov.il>, 2004,2006
 msgid ""
@@ -11,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-12-09 12:44+0000\n"
+"PO-Revision-Date: 2014-12-20 18:43+0000\n"
 "Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
 "Language-Team: Hebrew (http://www.transifex.com/projects/p/xfwm4/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -271,7 +272,7 @@ msgstr "רחב"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "<b>Windows snapping</b>"
-msgstr "<b>הצמדת פתע של חלונות</b>"
+msgstr "<b>הצמדת חלונות</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "With the mouse _pointer"
@@ -449,7 +450,7 @@ msgstr "_רצף חלונות אוטומטית בזמן הזזה לעבר קצה 
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
-msgstr "השתמש בהתנגדות ק_צה במקום בהצמדת פתע של חלון"
+msgstr "השתמש בהתנגדות ק_צה במקום בהצמדת חלון"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Notify of _urgency by making window's decoration blink"
@@ -665,11 +666,11 @@ msgstr "ש_נה גודל"
 #. --------------------------------------------------------
 #: ../src/menu.c:51
 msgid "Always on Top"
-msgstr "תמיד מעל"
+msgstr "מעל כל שאר החלונות"
 
 #: ../src/menu.c:52
 msgid "Same as Other Windows"
-msgstr "ברמה זהה לחלונות אחרים"
+msgstr "בדומה לחלונות אחרים"
 
 #: ../src/menu.c:53
 msgid "Always Below Other Windows"
