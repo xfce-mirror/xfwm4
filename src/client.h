@@ -203,9 +203,9 @@
 #define OPACITY_INACTIVE                (1<<2)
 
 /* Convenient macros */
-#define FLAG_TEST(flag,bits)                   (flag & (bits))
-#define FLAG_TEST_ALL(flag,bits)               ((flag & (bits)) == (bits))
-#define FLAG_TEST_AND_NOT(flag,bits1,bits2)    ((flag & (bits1 | bits2)) == (bits1))
+#define FLAG_TEST(flag,bits)                   ((flag) & (bits))
+#define FLAG_TEST_ALL(flag,bits)               (((flag) & (bits)) == (bits))
+#define FLAG_TEST_AND_NOT(flag,bits1,bits2)    (((flag) & ((bits1) | (bits2))) == (bits1))
 #define FLAG_SET(flag,bits)                    (flag |= (bits))
 #define FLAG_UNSET(flag,bits)                  (flag &= ~(bits))
 #define FLAG_TOGGLE(flag,bits)                 (flag ^= (bits))

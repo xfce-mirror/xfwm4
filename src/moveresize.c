@@ -69,6 +69,7 @@ struct _MoveResizeData
     guint button;
     gint cancel_x, cancel_y;
     gint cancel_w, cancel_h;
+    unsigned long cancel_flags;
     guint cancel_workspace;
     gint mx, my;
     gint px, py; /* pointer relative position */
@@ -830,6 +831,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     gboolean moving;
     XWindowChanges wc;
     int prev_x, prev_y;
+    unsigned long cancel_maximize_flags;
 
     TRACE ("entering clientMoveEventFilter");
 
@@ -892,6 +894,9 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
             c->x = passdata->cancel_x;
             c->y = passdata->cancel_y;
+            /* Restore the width height to correct the outline */
+            c->width = passdata->cancel_w;
+            c->height = passdata->cancel_h;
 
             if (screen_info->params->box_move)
             {
@@ -907,10 +912,12 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             {
                 workspaceSwitch (screen_info, passdata->cancel_workspace, c, FALSE, xevent->xkey.time);
             }
-            if (toggled_maximize)
+            cancel_maximize_flags = passdata->cancel_flags & CLIENT_FLAG_MAXIMIZED;
+            if (!FLAG_TEST_AND_NOT(c->flags, cancel_maximize_flags, CLIENT_FLAG_MAXIMIZED))
             {
-                toggled_maximize = FALSE;
-                if (clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE))
+                /* Toggle maximize on the differences between the current state and the canceled state */
+                cancel_maximize_flags ^= c->flags & CLIENT_FLAG_MAXIMIZED;
+                if (clientToggleMaximized (c, cancel_maximize_flags, FALSE))
                 {
                     configure_flags = CFG_FORCE_REDRAW;
                     passdata->move_resized = TRUE;
@@ -997,6 +1004,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
         clientSnapPosition (c, prev_x, prev_y);
+        /* This allows for moving fullscreen windows between monitors */
         if (screen_info->params->restore_on_move && toggled_maximize)
         {
             if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) &&
@@ -1102,6 +1110,9 @@ clientMove (Client * c, XEvent * ev)
     passdata.c = c;
     passdata.cancel_x = passdata.ox = c->x;
     passdata.cancel_y = passdata.oy = c->y;
+    passdata.cancel_w = c->width;
+    passdata.cancel_h = c->height;
+    passdata.cancel_flags = c->flags;
     passdata.cancel_workspace = c->win_workspace;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
