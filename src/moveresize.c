@@ -1033,7 +1033,12 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
         clientSnapPosition (c, prev_x, prev_y);
-        if (!clientMoveTile (c, (XMotionEvent *) xevent))
+        if (clientMoveTile (c, (XMotionEvent *) xevent))
+        {
+            passdata->configure_flags = CFG_FORCE_REDRAW;
+            passdata->move_resized = TRUE;
+        }
+        else
         {
             clientConstrainPos(c, FALSE);
         }
