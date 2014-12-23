@@ -299,7 +299,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         if (mask & UPDATE_MAXIMIZE)
         {
             /* Recompute size and position of maximized windows */
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_MAXIMIZED_VERT))
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
                 clientRecomputeMaximizeSize (c);
 
@@ -1498,13 +1498,32 @@ clientSaveSizePos (Client *c)
 {
     g_return_if_fail (c != NULL);
 
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
     {
         c->old_x = c->x;
         c->old_width = c->width;
         c->old_y = c->y;
         c->old_height = c->height;
     }
+}
+
+gboolean
+clientRestoreSizePos (Client *c)
+{
+    g_return_if_fail (c != NULL);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
+    {
+        c->x = c->old_x;
+        c->width = c->old_width;
+        c->y = c->old_y;
+        c->height = c->old_height;
+
+        FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 Client *
@@ -3090,7 +3109,7 @@ clientRemoveMaximizeFlag (Client *c)
     TRACE ("Removing maximize flag on client \"%s\" (0x%lx)", c->name,
         c->window);
 
-    FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_RESTORE_SIZE_POS);
     frameQueueDraw (c, FALSE);
     clientSetNetActions (c);
     clientSetNetState (c);
@@ -3108,7 +3127,7 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
          */
         if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
-            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
+            FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_RESTORE_SIZE_POS);
             wc->x = c->old_x;
             wc->y = c->old_y;
             wc->width = c->old_width;
@@ -3132,11 +3151,15 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_RESTORE_SIZE_POS);
         }
         else
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+            {
+                FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
+            }
             wc->x = c->old_x;
             wc->y = c->old_y;
             wc->width = c->old_width;
@@ -3148,11 +3171,15 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
     {
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_RESTORE_SIZE_POS);
         }
         else
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+            if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+            {
+                FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
+            }
             wc->x = c->old_x;
             wc->y = c->old_y;
             wc->width = c->old_width;
@@ -3300,8 +3327,7 @@ clientToggleMaximized (Client *c, int mode, gboolean restore_position)
     wc.height = c->height;
 
     if (restore_position &&
-        FLAG_TEST (mode, CLIENT_FLAG_MAXIMIZED) &&
-        !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        FLAG_TEST (mode, CLIENT_FLAG_MAXIMIZED))
     {
         clientSaveSizePos (c);
     }
@@ -3348,7 +3374,7 @@ clientToggleMaximized (Client *c, int mode, gboolean restore_position)
 }
 
 gboolean
-clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure)
+clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure, gboolean restore_position)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -3397,6 +3423,11 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
             break;
     }
 
+    if (restore_position)
+    {
+        clientSaveSizePos (c);
+    }
+
     old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
     clientNewMaxState (c, &wc, mode);
@@ -3405,6 +3436,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
         c->flags = old_flags;
         return FALSE;
     }
+    FLAG_SET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
 
     c->x = wc.x;
     c->y = wc.y;

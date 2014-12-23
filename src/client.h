@@ -171,6 +171,7 @@
 #define CLIENT_FLAG_XSYNC_ENABLED       (1L<<23)
 #define CLIENT_FLAG_XSYNC_EXT_COUNTER   (1L<<24)
 #define CLIENT_FLAG_XSYNC_CONFIGURE     (1L<<25)
+#define CLIENT_FLAG_RESTORE_SIZE_POS    (1L<<26)
 
 #define WM_FLAG_DELETE                  (1L<<0)
 #define WM_FLAG_INPUT                   (1L<<1)
@@ -400,6 +401,7 @@ void                     clientGetWMNormalHints                 (Client *,
 void                     clientGetWMProtocols                   (Client *);
 void                     clientUpdateIcon                       (Client *);
 void                     clientSaveSizePos                      (Client *);
+gboolean                 clientRestoreSizePos                   (Client *);
 Client                  *clientFrame                            (DisplayInfo *,
                                                                  Window,
                                                                  gboolean);
@@ -466,6 +468,7 @@ gboolean                 clientTile                             (Client *,
                                                                  gint,
                                                                  gint,
                                                                  tilePositionType,
+                                                                 gboolean,
                                                                  gboolean);
 void                     clientUpdateOpacity                    (Client *);
 void                     clientUpdateAllOpacity                 (ScreenInfo *);

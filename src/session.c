@@ -710,7 +710,8 @@ sessionMatchWinToSM (Client * c)
             FLAG_SET (c->flags,
                 matches[i].
                 flags & (CLIENT_FLAG_STICKY | CLIENT_FLAG_SHADED |
-                    CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_ICONIFIED));
+                    CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_ICONIFIED |
+                    CLIENT_FLAG_RESTORE_SIZE_POS));
             FLAG_SET (c->xfwm_flags, XFWM_FLAG_WORKSPACE_SET);
             return TRUE;
         }

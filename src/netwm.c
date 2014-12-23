@@ -172,12 +172,12 @@ clientGetNetState (Client * c)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
             TRACE ("clientGetNetState : maximized horiz from session management");
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_RESTORE_SIZE_POS);
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
             TRACE ("clientGetNetState : maximized vert from session management");
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_RESTORE_SIZE_POS);
         }
     }
 
@@ -202,12 +202,12 @@ clientGetNetState (Client * c)
             else if ((atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
             {
                 TRACE ("clientGetNetState : maximized horiz");
-                FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+                FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_RESTORE_SIZE_POS);
             }
             else if ((atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]))
             {
                 TRACE ("clientGetNetState : maximized vert");
-                FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+                FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_RESTORE_SIZE_POS);
             }
             else if ((atoms[i] == display_info->atoms[NET_WM_STATE_FULLSCREEN]))
             {
