@@ -3,18 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Adolfo Jayme Barrientos <fitoschido@ubuntu.com>, 2013
-# Adolfo Jayme Barrientos <fitoschido@ubuntu.com>, 2014
+# Adolfo Jayme Barrientos <fito@libreoffice.org>, 2013
+# Adolfo Jayme Barrientos <fito@libreoffice.org>, 2014
 # Edscott Wilson Garcia <edscott@xfce.org>, 2004
-# Pablo Lezaeta <prflr88@gmail.com>, 2013-2014
+# Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-03-30 18:21+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitoschido@ubuntu.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/xfce/language/es/)\n"
+"PO-Revision-Date: 2014-12-26 05:54+0000\n"
+"Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +43,7 @@ msgstr "Socket del gestor de sesión"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
-msgstr "ID de SOCKET"
+msgstr "Id. del SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:474
 #: ../settings-dialogs/workspace-settings.c:382
@@ -79,7 +79,7 @@ msgstr "Nombre del área de trabajo"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
-msgstr "«Socket» del gestor de configuración"
+msgstr "Socket del gestor de configuración"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -361,7 +361,7 @@ msgstr "Atajo"
 #: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "No se pudo inicializar xfconf. Motivo: %s"
+msgstr "No se pudo inicializar le servicio de configuración de Xfce. Motivo: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
@@ -382,7 +382,7 @@ msgstr "¿Está seguro de que quiere restablecer todos los atajos a sus valores 
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Omitir ventanas que tienen activas las\npropiedades \"omitir selector de tareas\" y \"omitir barra de tareas\""
+msgstr "_Omitir ventanas que tienen activas las\npropiedades «omitir selector de tareas» y «omitir barra de tareas»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -501,7 +501,7 @@ msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "By default, place windows:"
-msgstr "Por defecto, situar ventanas:"
+msgstr "Por omisión, situar ventanas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "At the c_enter of the screen"
@@ -703,7 +703,7 @@ msgstr "Siempre en el área de trabajo visible"
 
 #: ../src/menu.c:61
 msgid "Only on This Workspace"
-msgstr "Sólo en esta área de trabajo"
+msgstr "Solamente en esta área de trabajo"
 
 #: ../src/menu.c:62
 msgid "Move to Another Workspace"
@@ -730,7 +730,7 @@ msgstr "Reiniciar"
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu falló al intentar conseguir el puntero\n"
+msgstr "%s: GtkMenu no pudo capturar el puntero\n"
 
 #: ../src/settings.c:273
 #, c-format
@@ -740,7 +740,7 @@ msgstr "%s: No se puede reservar el color %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: No se puede reservar espacio para el color: GValue para el color no es de tipo STRING"
+msgstr "%s: No se puede reservar espacio para el color: GValue para el color no es de tipo CADENA"
 
 #: ../src/settings.c:282
 #, c-format
@@ -750,7 +750,7 @@ msgstr "%s: No se puede procesar el color %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: No se puede procesar color: GValue para color no es de tipo STRING"
+msgstr "%s: No se puede procesar color: GValue para color no es de tipo CADENA"
 
 #: ../src/terminate.c:75
 #, c-format
