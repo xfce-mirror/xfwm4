@@ -1925,8 +1925,8 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 #ifdef HAVE_XSYNC
         else if (ev->atom == display_info->atoms[NET_WM_SYNC_REQUEST_COUNTER])
         {
-            getXSyncCounter (display_info, c->window, &c->xsync_counter);
-            TRACE ("Window 0x%lx has NET_WM_SYNC_REQUEST_COUNTER set to 0x%lx", c->window, c->xsync_counter);
+            TRACE ("Window 0x%lx has received NET_WM_SYNC_REQUEST_COUNTER", c->window);
+            clientGetXSyncCounter (c);
         }
 #endif /* HAVE_XSYNC */
 
@@ -2214,20 +2214,14 @@ handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
     Client *c;
 
     TRACE ("entering handleXSyncAlarmNotify");
-
-    if (!display_info->have_xsync)
+    if (display_info->have_xsync)
     {
-        return EVENT_FILTER_REMOVE;
+        c = myDisplayGetClientFromXSyncAlarm (display_info, ev->alarm);
+        if (c)
+        {
+            clientXSyncUpdateValue (c, ev->counter_value);
+        }
     }
-
-    c = myDisplayGetClientFromXSyncAlarm (display_info, ev->alarm);
-    if (c)
-    {
-        c->xsync_waiting = FALSE;
-        c->xsync_value = ev->counter_value;
-        clientXSyncClearTimeout (c);
-    }
-
     return EVENT_FILTER_REMOVE;
 }
 #endif /* HAVE_XSYNC */

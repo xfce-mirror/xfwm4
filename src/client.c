@@ -80,6 +80,7 @@
     PropertyChangeMask
 
 #define CLIENT_EVENT_MASK \
+    SubstructureNotifyMask|\
     StructureNotifyMask|\
     FocusChangeMask|\
     PropertyChangeMask
@@ -633,6 +634,7 @@ clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsi
         change_values.height = c->height;
         XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
+
     if (WIN_RESIZED)
     {
         compositorResizeWindow (display_info, c->frame, frameX (c), frameY (c), frameWidth (c), frameHeight (c));
@@ -640,9 +642,33 @@ clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsi
 }
 
 void
-clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
+clientSendConfigureNotify (Client *c)
 {
     XConfigureEvent ce;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    DBG ("Sending ConfigureNotify");
+    ce.type = ConfigureNotify;
+    ce.display = clientGetXDisplay (c);
+    ce.send_event = TRUE;
+    ce.event = c->window;
+    ce.window = c->window;
+    ce.x = c->x;
+    ce.y = c->y;
+    ce.width = c->width;
+    ce.height = c->height;
+    ce.border_width = 0;
+    ce.above = None;
+    ce.override_redirect = FALSE;
+    XSendEvent (clientGetXDisplay (c), c->window, TRUE,
+                StructureNotifyMask, (XEvent *) & ce);
+}
+
+void
+clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
+{
     int px, py, pwidth, pheight;
 
     g_return_if_fail (c != NULL);
@@ -784,23 +810,23 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     if ((WIN_MOVED) || (flags & CFG_NOTIFY) ||
         ((flags & CFG_REQUEST) && !(WIN_MOVED || WIN_RESIZED)))
     {
-        DBG ("Sending ConfigureNotify");
-        ce.type = ConfigureNotify;
-        ce.display = clientGetXDisplay (c);
-        ce.event = c->window;
-        ce.window = c->window;
-        ce.x = c->x;
-        ce.y = c->y;
-        ce.width = c->width;
-        ce.height = c->height;
-        ce.border_width = 0;
-        ce.above = c->frame;
-        ce.override_redirect = FALSE;
-        XSendEvent (clientGetXDisplay (c), c->window, FALSE,
-                    StructureNotifyMask, (XEvent *) & ce);
+        clientSendConfigureNotify (c);
     }
 #undef WIN_MOVED
 #undef WIN_RESIZED
+}
+
+void
+clientReconfigure (Client *c)
+{
+    XWindowChanges wc;
+
+    TRACE ("entering clientReconfigure");
+    wc.x = c->x;
+    wc.y = c->y;
+    wc.width = c->width;
+    wc.height = c->height;
+    clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
 }
 
 void
@@ -1256,14 +1282,6 @@ clientFree (Client *c)
     {
         clientRemoveNetWMPing (c);
     }
-    if (c->name)
-    {
-        g_free (c->name);
-    }
-    if (c->hostname)
-    {
-        g_free (c->hostname);
-    }
 #ifdef HAVE_XSYNC
     if (c->xsync_alarm != None)
     {
@@ -1280,6 +1298,14 @@ clientFree (Client *c)
         g_free (c->startup_id);
     }
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
+    if (c->name)
+    {
+        g_free (c->name);
+    }
+    if (c->hostname)
+    {
+        g_free (c->hostname);
+    }
     if (c->size)
     {
         XFree (c->size);
@@ -1594,22 +1620,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->startup_id = NULL;
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 
-#ifdef HAVE_XSYNC
-    c->xsync_waiting = FALSE;
-    c->xsync_enabled = FALSE;
-    c->xsync_counter = None;
-    c->xsync_alarm = None;
-    c->xsync_timeout_id = 0;
-    if (display_info->have_xsync)
-    {
-        getXSyncCounter (display_info, c->window, &c->xsync_counter);
-        if ((c->xsync_counter) && clientCreateXSyncAlarm (c))
-        {
-            c->xsync_enabled = TRUE;
-        }
-    }
-#endif /* HAVE_XSYNC */
-
     clientGetWMNormalHints (c, FALSE);
 
     c->size->x = c->x;
@@ -1920,6 +1930,18 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
                                                  frameRight (c), frameBottom (c));
     clientSetNetState (c);
+
+#ifdef HAVE_XSYNC
+    c->xsync_waiting = FALSE;
+    c->xsync_enabled = FALSE;
+    c->xsync_counter = None;
+    c->xsync_alarm = None;
+    c->xsync_timeout_id = 0;
+    if (display_info->have_xsync)
+    {
+        clientGetXSyncCounter (c);
+    }
+#endif /* HAVE_XSYNC */
 
     /* Window is reparented now, so we can safely release the grab
      * on the server

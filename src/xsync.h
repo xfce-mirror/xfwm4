@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2014 Olivier Fourdan
 
  */
 
@@ -45,18 +45,14 @@
 #define INC_XSYNC_H
 
 #ifdef HAVE_XSYNC
-gboolean                 getXSyncCounter                        (DisplayInfo *,
-                                                                 Window,
-                                                                 XSyncCounter *);
-void                     sendXSyncRequest                       (DisplayInfo *,
-                                                                 Window,
-                                                                 XSyncValue);
-void                     clientIncrementXSyncValue              (Client *);
 gboolean                 clientCreateXSyncAlarm                 (Client *);
 void                     clientDestroyXSyncAlarm                (Client *);
+gboolean                 clientGetXSyncCounter                  (Client *);
 void                     clientXSyncClearTimeout                (Client *);
 void                     clientXSyncRequest                     (Client *);
-gboolean                 clientXSyncEnable                      (Client *);
+void                     clientXSyncUpdateValue                 (Client *,
+                                                                 XSyncValue);
+
 #endif /* HAVE_XSYNC */
 
 #endif /* INC_XSYNC_H */

@@ -1249,7 +1249,7 @@ clientChangeHandle(MoveResizeData *passdata, int handle)
 }
 
 static void
-clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
+clientResizeConfigure (Client *c, int pw, int ph)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1258,24 +1258,24 @@ clientResizeConfigure (Client *c, int px, int py, int pw, int ph)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-#ifdef HAVE_XSYNC
-    if (c->xsync_waiting)
+    if (pw == c->width && ph == c->height)
     {
+        /* Not a resize */
         return;
     }
-    else
+#ifdef HAVE_XSYNC
+    if (!c->xsync_waiting)
     {
         if ((display_info->have_xsync) && (c->xsync_enabled) && (c->xsync_counter))
         {
             clientXSyncRequest (c);
         }
+        else
+        {
 #endif /* HAVE_XSYNC */
-        wc.x = c->x;
-        wc.y = c->y;
-        wc.width = c->width;
-        wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+            clientReconfigure (c);
 #ifdef HAVE_XSYNC
+        }
     }
 #endif /* HAVE_XSYNC */
 }
@@ -1447,7 +1447,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             }
             else
             {
-                clientResizeConfigure (c, prev_x, prev_y, prev_width, prev_height);
+                clientResizeConfigure (c, prev_width, prev_height);
             }
         }
         else if (passdata->use_keys)
@@ -1590,7 +1590,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         else
         {
-            clientResizeConfigure (c, prev_x, prev_y, prev_width, prev_height);
+            clientResizeConfigure (c, prev_width, prev_height);
         }
     }
     else if (xevent->type == ButtonRelease)
@@ -1627,7 +1627,6 @@ clientResize (Client * c, int handle, XEvent * ev)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XWindowChanges wc;
     MoveResizeData passdata;
     int w_orig, h_orig;
     Cursor cursor;
@@ -1724,10 +1723,6 @@ clientResize (Client * c, int handle, XEvent * ev)
         poswinShow (passdata.poswin);
     }
 
-#ifdef HAVE_XSYNC
-    clientXSyncEnable (c);
-#endif /* HAVE_XSYNC */
-
     /* Set window translucent while resizing */
     if ((screen_info->params->resize_opacity < 100) &&
         !(screen_info->params->box_resize) &&
@@ -1738,6 +1733,10 @@ clientResize (Client * c, int handle, XEvent * ev)
 
     /* Clear any previously saved pos flag from screen resize */
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SAVED_POS);
+
+#ifdef HAVE_XSYNC
+    clientCreateXSyncAlarm (c);
+#endif /* HAVE_XSYNC */
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
@@ -1764,15 +1763,11 @@ clientResize (Client * c, int handle, XEvent * ev)
         clientRemoveMaximizeFlag (c);
     }
 
-    wc.x = c->x;
-    wc.y = c->y;
-    wc.width = c->width;
-    wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, NO_CFG_FLAG);
 #ifdef HAVE_XSYNC
-    clientXSyncClearTimeout (c);
-    c->xsync_waiting = FALSE;
+    clientDestroyXSyncAlarm (c);
 #endif /* HAVE_XSYNC */
+
+    clientReconfigure (c);
 
     if (!passdata.released)
     {

@@ -101,7 +101,7 @@
 #endif
 
 #ifndef CLIENT_XSYNC_TIMEOUT
-#define CLIENT_XSYNC_TIMEOUT            1000 /* ms */
+#define CLIENT_XSYNC_TIMEOUT            500  /* ms */
 #endif
 
 #ifndef CLIENT_BLINK_TIMEOUT
@@ -340,9 +340,11 @@ struct _Client
     XSyncAlarm  xsync_alarm;
     XSyncCounter xsync_counter;
     XSyncValue xsync_value;
+    XSyncValue next_xsync_value;
     guint xsync_timeout_id;
     gboolean xsync_waiting;
     gboolean xsync_enabled;
+    gboolean xsync_extended_counter;
 #endif /* HAVE_XSYNC */
 };
 
@@ -363,10 +365,12 @@ void                     clientAdjustCoordGravity               (Client *,
                                                                  int,
                                                                  unsigned long *,
                                                                  XWindowChanges *);
+void                     clientSendConfigureNotify              (Client *);
 void                     clientConfigure                        (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long,
                                                                  unsigned short);
+void                     clientReconfigure                      (Client *);
 void                     clientMoveResizeWindow                 (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long);
