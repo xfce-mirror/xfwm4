@@ -424,7 +424,6 @@ clientCycle (Client * c, XKeyEvent * ev)
     GList *client_list, *selected;
     gboolean g1, g2;
     int key, modifier;
-    Client *c2;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientCycle");
@@ -471,7 +470,6 @@ clientCycle (Client * c, XKeyEvent * ev)
     g1 = myScreenGrabKeyboard (screen_info, ev->time);
     g2 = myScreenGrabPointer (screen_info, TRUE, LeaveWindowMask, None, ev->time);
 
-
     if (!g1 || !g2)
     {
         TRACE ("grab failed in clientCycle");
@@ -493,9 +491,6 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
     passdata.tabwin = tabwinCreate (&client_list, selected, screen_info->params->cycle_workspaces);
     eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);
-
-    c2 = myScreenGetClientFromWindow (screen_info, GDK_WINDOW_XID (gtk_widget_get_window ( passdata.tabwin->tabwin_list->data)), SEARCH_FRAME);
-    clientSetFocus (screen_info, c2, ev->time, NO_FOCUS_FLAG);
 
     gtk_main ();
     eventFilterPop (display_info->xfilter);

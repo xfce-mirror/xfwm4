@@ -805,8 +805,8 @@ tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
     ScreenInfo *screen_info;
     Client *c;
     Tabwin *tabwin;
-    int num_monitors, i;
     TabwinWidget *win;
+    int num_monitors, i;
 
     g_return_val_if_fail (selected, NULL);
     g_return_val_if_fail (client_list, NULL);
