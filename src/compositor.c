@@ -18,7 +18,7 @@
 
         xcompmgr - (c) 2003 Keith Packard
         metacity - (c) 2003, 2004 Red Hat, Inc.
-        xfwm4    - (c) 2005-2011 Olivier Fourdan
+        xfwm4    - (c) 2005-2014 Olivier Fourdan
 
 */
 
@@ -1525,7 +1525,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     TRACE ("Copying data back to screen");
     if(screen_info->zoomed)
     {
-        /* Fixme: copy back whole screen if zoomed 
+        /* Fixme: copy back whole screen if zoomed
            It would be better to scale the clipping region if possible. */
         XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, None);
     }
@@ -1537,7 +1537,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
 #ifdef HAVE_LIBDRM
 #if TIMEOUT_REPAINT
     use_dri = dri_enabled (screen_info);
-    
+
     if (use_dri)
     {
         /* sync all previous rendering commands, tell xlib to render the pixmap
@@ -2095,8 +2095,14 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     TRACE ("entering add_win: 0x%lx", id);
 
-    new = g_new0 (CWindow, 1);
+    new = find_cwindow_in_display (display_info, id);
+    if (new)
+    {
+        TRACE ("Window 0x%lx already added", id);
+        return;
+    }
 
+    new = g_new0 (CWindow, 1);
     myDisplayGrabServer (display_info);
     if (!XGetWindowAttributes (display_info->dpy, id, &new->attr))
     {
@@ -2459,7 +2465,7 @@ zoom_timeout_cb (gpointer data)
     static int   x_old=-1, y_old=-1;
 
     screen_info = (ScreenInfo *) data;
-    
+
     if(!screen_info->zoomed)
     {
         screen_info->zoom_timeout_id = 0;
