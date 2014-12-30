@@ -54,6 +54,7 @@ struct _ClientCycleData
 {
     Tabwin *tabwin;
     Window wireframe;
+    gboolean inside;
 };
 
 static gint
@@ -233,8 +234,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     int key, modifiers;
     gboolean key_pressed, cycling, gone;
     GList *li;
-    Window mouse_window = 0;
-    XButtonEvent ev;
 
     TRACE ("entering clientCycleEventFilter");
 
@@ -346,40 +345,44 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             }
             break;
         case ButtonPress:
-            status = EVENT_FILTER_STOP;
-            ev = xevent->xbutton;
-            /* window of the event, we might accept it later */
-            mouse_window = xevent->xbutton.window;
-            if (mouse_window != 0)
+            /* only accept events for the tab windows */
+            for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
             {
-                /* only accept events for the tab windows */
-                for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
+                if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == xevent->xbutton.window)
                 {
-                    if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == mouse_window)
+                    if  (xevent->xbutton.button == Button1)
                     {
-                        if  (ev.button == Button1)
-                        {
-                            c2 = tabwinSelectHovered (passdata->tabwin);
-                            cycling = FALSE;
-                            break;
-                        }
-                        else if  (ev.button == Button4)
-                        {
-                            /* Mouse wheel scroll up */
-                            TRACE ("Cycle: previous");
-                            c2 = tabwinSelectPrev(passdata->tabwin);
-                        }
-                        else if (ev.button == Button5)
-                        {
-                            /* Mouse wheel scroll down */
-                            TRACE ("Cycle: next");
-                            c2 = tabwinSelectNext(passdata->tabwin);
-                        }
+                        c2 = tabwinSelectHovered (passdata->tabwin);
+                        cycling = FALSE;
+                        break;
+                    }
+                    else if  (xevent->xbutton.button == Button4)
+                    {
+                        /* Mouse wheel scroll up */
+                        TRACE ("Cycle: previous");
+                        c2 = tabwinSelectPrev(passdata->tabwin);
+                    }
+                    else if (xevent->xbutton.button == Button5)
+                    {
+                        /* Mouse wheel scroll down */
+                        TRACE ("Cycle: next");
+                        c2 = tabwinSelectNext(passdata->tabwin);
                     }
                 }
-                if (c2)
+            }
+            if (c2)
+            {
+                c = c2;
+            }
+            break;
+        case EnterNotify:
+        case LeaveNotify:
+            /* Track whether the pointer is inside one of the tab-windows */
+            for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
+            {
+                if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == xevent->xcrossing.window)
                 {
-                    c = c2;
+                    passdata->inside = (xevent->xcrossing.type == EnterNotify);
                 }
             }
             break;
@@ -413,6 +416,26 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     }
 
     return status;
+}
+
+static eventFilterStatus
+clientCycleFlushEventFilter (XEvent * xevent, gpointer data)
+{
+    DisplayInfo *display_info = (DisplayInfo *) data;
+
+    /* Update the display time */
+    myDisplayUpdateCurrentTime (display_info, xevent);
+
+    switch (xevent->type)
+    {
+        case EnterNotify:
+            gtk_main_quit ();
+            return EVENT_FILTER_STOP;
+            break;
+        default:
+            break;
+    }
+    return EVENT_FILTER_CONTINUE;
 }
 
 void
@@ -483,6 +506,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
 
     passdata.wireframe = None;
+    passdata.inside = FALSE;
 
     TRACE ("entering cycle loop");
     if (screen_info->params->cycle_draw_frame)
@@ -510,6 +534,15 @@ clientCycle (Client * c, XKeyEvent * ev)
     tabwinDestroy (passdata.tabwin);
     g_free (passdata.tabwin);
     g_list_free (client_list);
+
+    if (passdata.inside)
+    {
+        /* A bit of a hack, flush EnterNotify if the pointer is inside
+         * the tabwin to defeat focus-follow-mouse tracking */
+        eventFilterPush (display_info->xfilter, clientCycleFlushEventFilter, display_info);
+        gtk_main ();
+        eventFilterPop (display_info->xfilter);
+    }
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
