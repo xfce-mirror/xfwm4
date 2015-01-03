@@ -1545,51 +1545,12 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             frame_y = frameExtentY (c);
         }
 
-        if (move_top)
-        {
-            if ((c->y > MAX (disp_max_y - min_visible, screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible))
-                || (!clientCheckTitle (c) && (frame_y < screen_info->margins [STRUTS_TOP])))
-            {
-                temp = c->y + c->height;
-                c->y = CLAMP (c->y, screen_info->margins [STRUTS_TOP] + frame_top,
-                         MAX (disp_max_y - min_visible,  screen_info->height - screen_info->margins [STRUTS_BOTTOM] - min_visible));
-                clientSetHeight (c, temp - c->y, FALSE);
-                c->y = temp - c->height;
-            }
-            else if (frame_y < 0)
-            {
-                temp = c->y + c->height;
-                c->y = frame_top;
-                clientSetHeight (c, temp - c->y, FALSE);
-                c->y = temp - c->height;
-            }
-        }
-        else if (move_bottom)
-        {
-            if (c->y + c->height < MAX (disp_y + min_visible, screen_info->margins [STRUTS_TOP] + min_visible))
-            {
-                temp = MAX (disp_y + min_visible, screen_info->margins [STRUTS_TOP] + min_visible);
-                clientSetHeight (c, temp - c->y, FALSE);
-            }
-        }
-        if (move_left)
-        {
-            if (c->x > MIN (disp_max_x - min_visible, screen_info->width - screen_info->margins [STRUTS_RIGHT] - min_visible))
-            {
-                temp = c->x + c->width;
-                c->x = MIN (disp_max_x - min_visible, screen_info->width - screen_info->margins [STRUTS_RIGHT] - min_visible);
-                clientSetWidth (c, temp - c->x, FALSE);
-                c->x = temp - c->width;
-            }
-        }
-        else if (move_right)
-        {
-            if (c->x + c->width < MAX (disp_x + min_visible, screen_info->margins [STRUTS_LEFT] + min_visible))
-            {
-                temp = MAX (disp_x + min_visible, screen_info->margins [STRUTS_LEFT] + min_visible);
-                clientSetWidth (c, temp - c->x, FALSE);
-            }
-        }
+        /* Make sure the title remains visible on screen, adjust size if moved */
+        cx = c->x;
+        cy = c->y;
+        clientConstrainPos (c, FALSE);
+        c->height -= c->y - cy;
+        c->width -= c->x - cx;
 
         if (passdata->poswin)
         {
