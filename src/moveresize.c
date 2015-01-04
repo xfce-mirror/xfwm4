@@ -1302,9 +1302,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     eventFilterStatus status;
     int prev_x, prev_y, prev_width, prev_height;
     int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
-    int frame_x, frame_y, frame_height, frame_width, frame_top;
     int move_top, move_bottom, move_left, move_right;
-    int temp;
     gint min_visible;
     gboolean resizing;
     int right_edge; /* -Cliff */
@@ -1324,15 +1322,10 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
      */
     resizing = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
-    frame_x = frameExtentX (c);
-    frame_y = frameExtentY (c);
-    frame_height = frameExtentHeight (c);
-    frame_width = frameExtentWidth (c);
-    frame_top = frameExtentTop (c);
-    min_visible = MAX (frame_top, CLIENT_MIN_VISIBLE);
+    min_visible = MAX (frameExtentTop (c), CLIENT_MIN_VISIBLE);
 
-    cx = frame_x + (frame_width / 2);
-    cy = frame_y + (frame_height / 2);
+    cx = frameExtentX (c) + (frameExtentWidth (c) / 2);
+    cy = frameExtentY (c) + (frameExtentHeight (c) / 2);
 
     move_top = ((passdata->handle == CORNER_TOP_RIGHT)
             || (passdata->handle == CORNER_TOP_LEFT)
@@ -1490,10 +1483,17 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         passdata->oldw = c->width;
         passdata->oldh = c->height;
+        right_edge = c->x + c->width;
+        bottom_edge = c->y + c->height;
 
         if (move_left)
         {
             c->width = passdata->ow - (xevent->xmotion.x_root - passdata->mx);
+            c->x = c->x - (c->width - passdata->oldw);
+
+            /* Snap the left edge to something. -Cliff */
+            c->x = clientFindClosestEdgeX (c, c->x - frameExtentLeft (c)) + frameExtentLeft (c);
+            c->width = right_edge - c->x;
         }
         else if (move_right)
         {
@@ -1508,6 +1508,11 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             if (move_top)
             {
                 c->height = passdata->oh - (xevent->xmotion.y_root - passdata->my);
+                c->y = c->y - (c->height - passdata->oldh);
+
+                /* Snap the top edge to something. -Cliff */
+                c->y = clientFindClosestEdgeY (c, c->y - frameExtentTop (c)) + frameExtentTop (c);
+                c->height = bottom_edge - c->y;
             }
             else if (move_bottom)
             {
@@ -1517,33 +1522,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
                 c->height = clientFindClosestEdgeY (c, c->y + c->height + frameExtentBottom (c)) - c->y - frameExtentBottom (c);
             }
         }
-        clientConstrainRatio (c, passdata->handle);
-
-        clientSetWidth (c, c->width, FALSE);
-        if (move_left)
-        {
-            c->x = c->x - (c->width - passdata->oldw);
-
-            /* Snap the left edge to something. -Cliff */
-            right_edge = c->x + c->width;
-            c->x = clientFindClosestEdgeX (c, c->x - frameExtentLeft (c)) + frameExtentLeft (c);
-            c->width = right_edge - c->x;
-
-            frame_x = frameExtentX (c);
-        }
-
-        clientSetHeight (c, c->height, FALSE);
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
-        {
-            c->y = c->y - (c->height - passdata->oldh);
-
-            /* Snap the top edge to something. -Cliff */
-            bottom_edge = c->y + c->height;
-            c->y = clientFindClosestEdgeY (c, c->y - frameExtentTop (c)) + frameExtentTop (c);
-            c->height = bottom_edge - c->y;
-
-            frame_y = frameExtentY (c);
-        }
 
         /* Make sure the title remains visible on screen, adjust size if moved */
         cx = c->x;
@@ -1551,6 +1529,21 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         clientConstrainPos (c, FALSE);
         c->height -= c->y - cy;
         c->width -= c->x - cx;
+
+        /* Apply contrain ratio if any, only once the expected size is set */
+        clientConstrainRatio (c, passdata->handle);
+
+        clientSetWidth (c, c->width, FALSE);
+        if (move_left)
+        {
+            c->x = right_edge - c->width;
+        }
+
+        clientSetHeight (c, c->height, FALSE);
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
+        {
+            c->y =  bottom_edge - c->height;
+        }
 
         if (passdata->poswin)
         {
