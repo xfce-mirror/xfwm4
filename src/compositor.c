@@ -969,7 +969,7 @@ win_extents (CWindow *cw)
               WIN_IS_DOCK(cw) &&
               !WIN_NO_SHADOW(cw) &&
               !WIN_IS_OVERRIDE(cw) &&
-              (!(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)))))
+              (!WIN_IS_SHAPED(cw))))
     {
         XRectangle sr;
 
