@@ -202,7 +202,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     guint i;
     gint cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
     gint frame_height, frame_width, frame_top, frame_left;
-    gint frame_x, frame_y, frame_visible;
+    gint frame_x, frame_y, title_visible;
     gint screen_width, screen_height;
     guint ret;
     GdkRectangle rect;
@@ -213,6 +213,8 @@ clientConstrainPos (Client * c, gboolean show_full)
         show_full ? "(with show full)" : "(w/out show full)");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
+    screen_info = c->screen_info;
+
     /* We use a bunch of local vars to reduce the overhead of calling other functions all the time */
     frame_x = frameExtentX (c);
     frame_y = frameExtentY (c);
@@ -220,14 +222,18 @@ clientConstrainPos (Client * c, gboolean show_full)
     frame_width = frameExtentWidth (c);
     frame_top = frameExtentTop (c);
     frame_left = frameExtentLeft (c);
-    frame_visible = (frame_top ? frame_top : frame_height);
-    min_visible = MAX (frame_top, CLIENT_MIN_VISIBLE);
+    title_visible = frame_top;
+    if (title_visible <= 0)
+    {
+        /* CSD window, use the title height from the theme */
+        title_visible = frameDecorationTop (screen_info);
+    }
+    min_visible = MAX (title_visible, CLIENT_MIN_VISIBLE);
     ret = 0;
 
     cx = frame_x + (frame_width / 2);
     cy = frame_y + (frame_height / 2);
 
-    screen_info = c->screen_info;
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     screen_width = screen_info->width;
@@ -425,7 +431,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (segment_overlap (frame_x, frame_x + frame_width,
                               c2->struts[STRUTS_TOP_START_X], c2->struts[STRUTS_TOP_END_X]))
                 {
-                    if (segment_overlap (frame_y, frame_y + frame_visible, 0, c2->struts[STRUTS_TOP]))
+                    if (segment_overlap (frame_y, frame_y + title_visible, 0, c2->struts[STRUTS_TOP]))
                     {
                         c->y = c2->struts[STRUTS_TOP] + frame_top;
                         frame_y = frameExtentY (c);
