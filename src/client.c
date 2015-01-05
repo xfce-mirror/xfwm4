@@ -463,46 +463,46 @@ clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
     switch (gravity)
     {
         case CenterGravity:
-            dx = (c->border_width * 2) - ((frameLeft (c) +
-                    frameRight (c)) / 2);
-            dy = (c->border_width * 2) - ((frameTop (c) +
-                    frameBottom (c)) / 2);
+            dx = (c->border_width * 2) - ((frameExtentLeft (c) +
+                    frameExtentRight (c)) / 2);
+            dy = (c->border_width * 2) - ((frameExtentTop (c) +
+                    frameExtentBottom (c)) / 2);
             break;
         case NorthGravity:
-            dx = (c->border_width * 2) - ((frameLeft (c) +
-                    frameRight (c)) / 2);
-            dy = frameTop (c);
+            dx = (c->border_width * 2) - ((frameExtentLeft (c) +
+                    frameExtentRight (c)) / 2);
+            dy = frameExtentTop (c);
             break;
         case SouthGravity:
-            dx = (c->border_width * 2) - ((frameLeft (c) +
-                    frameRight (c)) / 2);
-            dy = (c->border_width * 2) - frameBottom (c);
+            dx = (c->border_width * 2) - ((frameExtentLeft (c) +
+                    frameExtentRight (c)) / 2);
+            dy = (c->border_width * 2) - frameExtentBottom (c);
             break;
         case EastGravity:
-            dx = (c->border_width * 2) - frameRight (c);
-            dy = (c->border_width * 2) - ((frameTop (c) +
-                    frameBottom (c)) / 2);
+            dx = (c->border_width * 2) - frameExtentRight (c);
+            dy = (c->border_width * 2) - ((frameExtentTop (c) +
+                    frameExtentBottom (c)) / 2);
             break;
         case WestGravity:
-            dx = frameLeft (c);
-            dy = (c->border_width * 2) - ((frameTop (c) +
-                    frameBottom (c)) / 2);
+            dx = frameExtentLeft (c);
+            dy = (c->border_width * 2) - ((frameExtentTop (c) +
+                    frameExtentBottom (c)) / 2);
             break;
         case NorthWestGravity:
-            dx = frameLeft (c);
-            dy = frameTop (c);
+            dx = frameExtentLeft (c);
+            dy = frameExtentTop (c);
             break;
         case NorthEastGravity:
-            dx = (c->border_width * 2) - frameRight (c);
-            dy = frameTop (c);
+            dx = (c->border_width * 2) - frameExtentRight (c);
+            dy = frameExtentTop (c);
             break;
         case SouthWestGravity:
-            dx = frameLeft (c);
-            dy = (c->border_width * 2) - frameBottom (c);
+            dx = frameExtentLeft (c);
+            dy = (c->border_width * 2) - frameExtentBottom (c);
             break;
         case SouthEastGravity:
-            dx = (c->border_width * 2) - frameRight (c);
-            dy = (c->border_width * 2) - frameBottom (c);
+            dx = (c->border_width * 2) - frameExtentRight (c);
+            dy = (c->border_width * 2) - frameExtentBottom (c);
             break;
         default:
             dx = 0;
