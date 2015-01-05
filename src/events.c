@@ -1880,7 +1880,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
         {
-            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_OPACITY notify", c->name, c->window);
+            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_WINDOW_OPACITY notify", c->name, c->window);
             if (!getOpacity (display_info, c->window, &c->opacity))
             {
                 c->opacity =  NET_WM_OPAQUE;
@@ -1889,7 +1889,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY_LOCKED])
         {
-            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_OPACITY_LOCKED notify", c->name, c->window);
+            TRACE ("client \"%s\" (0x%lx) has received a NET_WM_WINDOW_OPACITY_LOCKED notify", c->name, c->window);
             if (getOpacityLock (display_info, c->window))
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED);
