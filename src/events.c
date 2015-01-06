@@ -1885,7 +1885,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             {
                 c->opacity =  NET_WM_OPAQUE;
             }
-            compositorWindowSetOpacity (display_info, c->frame, c->opacity);
+            clientSetOpacity (c, c->opacity, 0, 0);
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY_LOCKED])
         {
