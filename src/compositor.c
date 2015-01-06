@@ -141,7 +141,7 @@ struct _CWindow
     gint shadow_width;
     gint shadow_height;
 
-    guint opacity;
+    guint32 opacity;
 };
 
 static CWindow*
@@ -1926,7 +1926,7 @@ expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
 }
 
 static void
-set_win_opacity (CWindow *cw, guint opacity)
+set_win_opacity (CWindow *cw, guint32 opacity)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -2060,7 +2060,7 @@ init_opacity (CWindow *cw)
     DisplayInfo *display_info;
     Client *c;
 
-    TRACE ("set_opacity");
+    TRACE ("init_opacity");
     g_return_if_fail (cw != NULL);
 
     screen_info = cw->screen_info;
@@ -3541,7 +3541,7 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
 }
 
 void
-compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint opacity)
+compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint32 opacity)
 {
 #ifdef HAVE_COMPOSITOR
     CWindow *cw;

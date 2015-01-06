@@ -327,8 +327,8 @@ struct _Client
     /* Timout for asynchronous icon update */
     guint ping_timeout_id;
     /* Opacity for the compositor */
-    guint opacity;
-    guint opacity_applied;
+    guint32 opacity;
+    guint32 opacity_applied;
     guint opacity_flags;
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
@@ -451,8 +451,9 @@ gboolean                 clientTile                             (Client *,
 void                     clientUpdateOpacity                    (Client *);
 void                     clientUpdateAllOpacity                 (ScreenInfo *);
 void                     clientSetOpacity                       (Client *,
-                                                                 guint,
-                                                                 guint, guint);
+                                                                 guint32,
+                                                                 guint32,
+                                                                 guint32);
 void                     clientIncOpacity                       (Client *);
 void                     clientDecOpacity                       (Client *);
 void                     clientUpdateCursor                     (Client *);

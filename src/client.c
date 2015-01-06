@@ -3471,11 +3471,11 @@ clientUpdateAllOpacity (ScreenInfo *screen_info)
 }
 
 void
-clientSetOpacity (Client *c, guint opacity, guint clear, guint xor)
+clientSetOpacity (Client *c, guint32 opacity, guint32 clear, guint32 xor)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    guint applied;
+    guint32 applied;
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -3513,7 +3513,7 @@ clientSetOpacity (Client *c, guint opacity, guint clear, guint xor)
             divisor *= 100;
         }
 
-        applied = (guint) ((long long) applied * multiplier / divisor);
+        applied = (guint32) (((long long) applied * multiplier / divisor) & G_MAXUINT32);
     }
 
     if (applied != c->opacity_applied)

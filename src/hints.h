@@ -105,7 +105,7 @@
 #define NET_WM_BOTTOMRIGHT                      2
 #define NET_WM_BOTTOMLEFT                       3
 
-#define NET_WM_OPAQUE                           0xffffffff
+#define NET_WM_OPAQUE                           G_MAXUINT32
 
 #define STRUTS_LEFT                             0
 #define STRUTS_RIGHT                            1
@@ -260,7 +260,7 @@ gboolean                 getRGBIconData                         (DisplayInfo *,
                                                                  unsigned long *);
 gboolean                 getOpacity                             (DisplayInfo *,
                                                                  Window,
-                                                                 guint *);
+                                                                 guint32 *);
 gboolean                 getOpacityLock                         (DisplayInfo *,
                                                                  Window);
 gboolean                 setXAtomManagerOwner                   (DisplayInfo *,

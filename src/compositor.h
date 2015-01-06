@@ -70,7 +70,7 @@ void                     compositorUpdateScreenSize             (ScreenInfo *);
 
 void                     compositorWindowSetOpacity             (DisplayInfo *,
                                                                  Window,
-                                                                 guint);
+                                                                 guint32);
 void                     compositorRebuildScreen                (ScreenInfo *);
 gboolean                 compositorTestServer                   (DisplayInfo *);
 

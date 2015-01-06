@@ -242,7 +242,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
                              FALSE, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left,
                              (unsigned char **) &data) == Success) && (items_read))
     {
-        *value = *((long *) data) & 0xffffffff;
+        *value = *((long *) data) & ((1L << real_format) - 1);
         if (data)
         {
             XFree (data);
@@ -507,7 +507,7 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     *n_cardinals_p = n_cardinals;
     for (i = 0; i < n_cardinals; i++)
     {
-        (*cardinals_p)[i] = (*cardinals_p)[i] & 0xffffffff;
+        (*cardinals_p)[i] = (*cardinals_p)[i] & ((1L << format) - 1);
     }
 
     return TRUE;
@@ -1118,7 +1118,7 @@ getRGBIconData (DisplayInfo *display_info, Window window, unsigned long **data, 
 }
 
 gboolean
-getOpacity (DisplayInfo *display_info, Window window, guint *opacity)
+getOpacity (DisplayInfo *display_info, Window window, guint32 *opacity)
 {
     long val;
 
@@ -1129,7 +1129,7 @@ getOpacity (DisplayInfo *display_info, Window window, guint *opacity)
     val = 0;
     if (getHint (display_info, window, NET_WM_WINDOW_OPACITY, &val))
     {
-        *opacity = (guint) val;
+        *opacity = (guint32) val;
         return TRUE;
     }
 
