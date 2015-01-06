@@ -801,11 +801,14 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
     else if (ev->button == Button4)
     {
         /* Mouse wheel scroll up */
-        if (state == AltMask)
+#ifdef HAVE_COMPOSITOR
+        if ((state) && (state == screen_info->params->easy_click) && (screen_info->compositor_active))
         {
             clientIncOpacity(c);
         }
-        else if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+        else
+#endif /* HAVE_COMPOSITOR */
+        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             if (screen_info->params->mousewheel_rollup)
             {
@@ -816,11 +819,14 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
     else if (ev->button == Button5)
     {
         /* Mouse wheel scroll down */
-        if (state == AltMask)
+#ifdef HAVE_COMPOSITOR
+        if ((state) && (state == screen_info->params->easy_click) && (screen_info->compositor_active))
         {
             clientDecOpacity(c);
         }
-        else if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+        else
+#endif /* HAVE_COMPOSITOR */
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             if (screen_info->params->mousewheel_rollup)
             {
@@ -904,13 +910,13 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
             edgeButton (c, part, ev);
         }
 #ifdef HAVE_COMPOSITOR
-        else if ((ev->button == Button4) && (state) && (state == screen_info->params->easy_click)
-                  && (screen_info->compositor_active))
+        else if ((ev->button == Button4) && (state) && (state == screen_info->params->easy_click) &&
+                 (screen_info->compositor_active))
         {
             compositorZoomIn(screen_info, ev);
         }
-        else if ((ev->button == Button5) && (state) && (state == screen_info->params->easy_click)
-                  && (screen_info->compositor_active))
+        else if ((ev->button == Button5) && (state) && (state == screen_info->params->easy_click) &&
+                 (screen_info->compositor_active))
         {
             compositorZoomOut(screen_info, ev);
         }
