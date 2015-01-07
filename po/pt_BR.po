@@ -5,6 +5,7 @@
 # Translators:
 # Adriano Winter Bess <awbess@gmail.com>, 2006
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008
+# Miguel Frasson <mvsfrasson@gmail.com>, 2015
 # Rafael Ferreira <rafael.f.f1@gmail.com>, 2013-2014
 # Rodrigo Coacci <rcoacci@gmail.com>, 2004
 # Vladimir Melo <vmelo@gnome.org>, 2008
@@ -13,9 +14,9 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-03-24 13:22+0000\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfce/language/pt_BR/)\n"
+"PO-Revision-Date: 2015-01-07 16:46+0000\n"
+"Last-Translator: Miguel Frasson <mvsfrasson@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfwm4/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -85,7 +86,7 @@ msgstr "Socket do gerenciador de configurações"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
-msgstr "Gerenciador de Janelas"
+msgstr "Gerenciador de janelas"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
@@ -95,7 +96,7 @@ msgstr "Configure o comportamento e atalhos das janelas"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "Ajustes do gerenciador de Janelas"
+msgstr "Ajustes do gerenciador de janelas"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -110,7 +111,7 @@ msgstr "Espaços de trabalho"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Configura layout, nomes e margens"
+msgstr "Configure layout, nomes e margens"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
@@ -126,7 +127,7 @@ msgstr "<b>_Alinhamento do título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
-msgstr "Clicar e arrastar os botões para alterar o layout"
+msgstr "Clique e arraste os botões para alterar o layout"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Title"
@@ -154,7 +155,7 @@ msgstr "Enrolar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
-msgstr "Mi_nimizar"
+msgstr "Minimizar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
@@ -178,7 +179,7 @@ msgstr "E_stilo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Defina o atalho para realizar as ações do gerenciador de _janelas:"
+msgstr "Defina atalhos para realizar as ações do gerenciador de _janelas:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -281,7 +282,7 @@ msgstr "Com o _ponteiro do mouse"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr "Com uma janela envolvi_da"
+msgstr "Com uma janela arrasta_da"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -293,11 +294,11 @@ msgstr "<b>Mudar de espaço de trabalho quando o _ponteiro alcançar a borda da 
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
-msgstr "Quando estiver _movendo"
+msgstr "Quando _mover"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
-msgstr "Quando estiver _redimensionando"
+msgstr "Quando _redimensionar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
@@ -447,7 +448,7 @@ msgstr "Restaurar o tamanho original de janelas maximizadas ao movê-las"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Alinhar janelas au_tomaticamente ao movê-las em relação aos cantos da tela"
+msgstr "Alinhar janelas au_tomaticamente ao movê-las para as bordas da tela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
@@ -481,11 +482,11 @@ msgstr "Lembra_r e retornar ao espaço de trabalho anterior ao mudar através do
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Envolver o primeiro e o último espaço de traba_lho ao arrastar janela"
+msgstr "Alterar espaços de traba_lho dependendo do layout atual da área de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Envolver o primeiro e o úl_timo espaço de trabalho ao alternar com a roda do mouse"
+msgstr "Alterar espaços de trabalho quando alcançar o primeiro ou o úl_timo espaço de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
@@ -506,7 +507,7 @@ msgstr "Por padrão, posicionar janelas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "At the c_enter of the screen"
-msgstr "No _centro do monitor"
+msgstr "No _centro da tela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "U_nder the mouse pointer"
