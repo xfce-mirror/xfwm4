@@ -1275,16 +1275,18 @@ clientResizeConfigure (Client *c, int pw, int ph)
         return;
     }
 #ifdef HAVE_XSYNC
-    if (!c->xsync_waiting)
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_XSYNC_WAITING))
     {
-        if ((display_info->have_xsync) && (c->xsync_enabled) && (c->xsync_counter))
+        if ((display_info->have_xsync) &&
+            (FLAG_TEST (c->flags, CLIENT_FLAG_XSYNC_ENABLED)) &&
+            (c->xsync_counter))
         {
             clientXSyncRequest (c);
         }
         else
         {
 #endif /* HAVE_XSYNC */
-            clientReconfigure (c);
+            clientReconfigure (c, NO_CFG_FLAG);
 #ifdef HAVE_XSYNC
         }
     }
@@ -1732,7 +1734,7 @@ clientResize (Client * c, int handle, XEvent * ev)
     clientDestroyXSyncAlarm (c);
 #endif /* HAVE_XSYNC */
 
-    clientReconfigure (c);
+    clientReconfigure (c, NO_CFG_FLAG);
 
     if (!passdata.released)
     {

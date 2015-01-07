@@ -264,7 +264,6 @@ void
 clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 {
     Client *c;
-    XWindowChanges wc;
     guint i;
 
     g_return_if_fail (screen_info != NULL);
@@ -272,7 +271,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
     TRACE ("entering clientRedrawAllFrames");
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        unsigned long configure_flags = 0L;
+        unsigned short configure_flags = 0;
 
         if (mask & UPDATE_BUTTON_GRABS)
         {
@@ -310,11 +309,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         }
         if (configure_flags != 0L)
         {
-            wc.x = c->x;
-            wc.y = c->y;
-            wc.width = c->width;
-            wc.height = c->height;
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, configure_flags);
+            clientReconfigure (c, configure_flags);
         }
         if (mask & UPDATE_FRAME)
         {
@@ -817,7 +812,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
 }
 
 void
-clientReconfigure (Client *c)
+clientReconfigure (Client *c, unsigned short flags)
 {
     XWindowChanges wc;
 
@@ -826,7 +821,7 @@ clientReconfigure (Client *c)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, NO_CFG_FLAG);
+    clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, flags);
 }
 
 void
@@ -1517,7 +1512,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 {
     ScreenInfo *screen_info;
     XWindowAttributes attr;
-    XWindowChanges wc;
     XSetWindowAttributes attributes;
     Client *c = NULL;
     gboolean shaped;
@@ -1754,8 +1748,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* workarea will be updated when shown, no need to worry here */
     clientGetNetStruts (c);
 
-    c->has_frame_extents = FALSE;
+    /* GTK 3.x stuff */
     clientGetGtkFrameExtents(c);
+    clientGetGtkHideTitlebar(c);
 
     /* Once we know the type of window, we can initialize window position */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED))
@@ -1887,11 +1882,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XRaiseWindow (display_info->dpy, c->window);
 
     TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name, c->window);
-    wc.x = c->x;
-    wc.y = c->y;
-    wc.width = c->width;
-    wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWHeight | CWWidth, CFG_NOTIFY | CFG_FORCE_REDRAW);
+    clientReconfigure (c, CFG_NOTIFY | CFG_FORCE_REDRAW);
 
     /* Notify the compositor about this new window */
     compositorAddWindow (display_info, c->frame, c);
@@ -1932,8 +1923,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientSetNetState (c);
 
 #ifdef HAVE_XSYNC
-    c->xsync_waiting = FALSE;
-    c->xsync_enabled = FALSE;
     c->xsync_counter = None;
     c->xsync_alarm = None;
     c->xsync_timeout_id = 0;
@@ -3082,8 +3071,6 @@ void clientSetLayerNormal (Client *c)
 void
 clientUpdateMaximizeSize (Client *c)
 {
-    XWindowChanges wc;
-
     g_return_if_fail (c != NULL);
     TRACE ("entering clientUpdateMaximizeSize");
     TRACE ("Update maximized size for client \"%s\" (0x%lx)", c->name, c->window);
@@ -3092,12 +3079,7 @@ clientUpdateMaximizeSize (Client *c)
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         clientRecomputeMaximizeSize (c);
-
-        wc.x = c->x;
-        wc.y = c->y;
-        wc.width = c->width;
-        wc.height = c->height;
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_NOTIFY);
+        clientReconfigure (c, CFG_NOTIFY);
     }
 }
 
@@ -3417,8 +3399,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
                             frameBottom (c));
 
         clientSetNetActions (c);
-
-        clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
+        clientReconfigure (c, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
 
@@ -3941,6 +3922,64 @@ clientGetLeader (Client *c)
         return myScreenGetClientFromWindow (c->screen_info, c->client_leader, SEARCH_WINDOW);
     }
     return NULL;
+}
+
+gboolean
+clientGetGtkFrameExtents (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    gulong *extents;
+    int nitems;
+    int i;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("entering clientGetGtkFrameExtents for \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    extents = NULL;
+    FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS);
+
+    if (getCardinalList (display_info, c->window, GTK_FRAME_EXTENTS, &extents, &nitems))
+    {
+        if (nitems == SIDE_COUNT)
+        {
+            FLAG_SET (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS);
+            for (i = 0; i < SIDE_COUNT; i++)
+            {
+                c->frame_extents[i] = (int) extents[i];
+            }
+        }
+    }
+
+    if (extents)
+    {
+        XFree (extents);
+    }
+
+    return FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS);
+}
+
+gboolean
+clientGetGtkHideTitlebar (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    long val;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("entering clientGetGtkHideTitlebar for \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    FLAG_UNSET (c->flags, CLIENT_FLAG_HIDE_TITLEBAR);
+
+    if (getHint (display_info, c->window, GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED, &val) &&( val != 0))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_HIDE_TITLEBAR);
+    }
+    return FLAG_TEST (c->flags, CLIENT_FLAG_HIDE_TITLEBAR);
 }
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION

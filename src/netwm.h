@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -68,6 +68,5 @@ void                     clientReceiveNetWMPong                 (ScreenInfo *,
 gboolean                 clientGetUserTime                      (Client *);
 void                     clientAddUserTimeWin                   (Client *);
 void                     clientRemoveUserTimeWin                (Client *);
-gboolean                 clientGetGtkFrameExtents               (Client *);
 
 #endif /* INC_NETWM_H */

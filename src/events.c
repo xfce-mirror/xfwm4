@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -1916,6 +1916,16 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a GTK_FRAME_EXTENTS notify", c->name, c->window);
             clientGetGtkFrameExtents (c);
             clientUpdateMaximizeSize (c);
+        }
+        else if (ev->atom == display_info->atoms[GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED])
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED notify", c->name, c->window);
+            clientGetGtkHideTitlebar (c);
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+            {
+                clientUpdateMaximizeSize (c);
+                clientReconfigure (c, CFG_FORCE_REDRAW);
+            }
         }
 #ifdef HAVE_STARTUP_NOTIFICATION
         else if (ev->atom == display_info->atoms[NET_STARTUP_ID])

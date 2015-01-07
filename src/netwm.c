@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -1590,41 +1590,3 @@ clientRemoveUserTimeWin (Client * c)
         XSelectInput (display_info->dpy, c->user_time_win, NoEventMask);
     }
 }
-
-gboolean
-clientGetGtkFrameExtents (Client * c)
-{
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
-    gulong *extents;
-    int nitems;
-    int i;
-
-    g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientGetGtkFrameExtents for \"%s\" (0x%lx)", c->name, c->window);
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-    c->has_frame_extents = FALSE;
-    extents = NULL;
-
-    if (getCardinalList (display_info, c->window, GTK_FRAME_EXTENTS, &extents, &nitems))
-    {
-        if (nitems == SIDE_COUNT)
-        {
-            c->has_frame_extents = TRUE;
-            for (i = 0; i < SIDE_COUNT; i++)
-            {
-                c->frame_extents[i] = (int) extents[i];
-            }
-        }
-    }
-
-    if (extents)
-    {
-        XFree (extents);
-    }
-
-    return c->has_frame_extents;
-}
-

@@ -18,7 +18,7 @@
 
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -273,7 +273,6 @@ gboolean                 setAtomIdManagerOwner                  (DisplayInfo *,
                                                                  Window);
 void                     updateXserverTime                      (DisplayInfo *);
 guint32                  getXServerTime                         (DisplayInfo *);
-
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
 gboolean                 checkKdeSystrayWindow                  (DisplayInfo *,
                                                                  Window);

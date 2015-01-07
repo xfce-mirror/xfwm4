@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -76,6 +76,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
     static const char *atom_names[] = {
         "COMPOSITING_MANAGER",
         "_GTK_FRAME_EXTENTS",
+        "_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED",
         "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
         "_MOTIF_WM_HINTS",

@@ -161,6 +161,11 @@
 #define CLIENT_FLAG_DEMANDS_ATTENTION   (1L<<17)
 #define CLIENT_FLAG_HAS_SHAPE           (1L<<18)
 #define CLIENT_FLAG_FULLSCREN_MONITORS  (1L<<19)
+#define CLIENT_FLAG_HAS_FRAME_EXTENTS   (1L<<20)
+#define CLIENT_FLAG_HIDE_TITLEBAR       (1L<<21)
+#define CLIENT_FLAG_XSYNC_WAITING       (1L<<22)
+#define CLIENT_FLAG_XSYNC_ENABLED       (1L<<23)
+#define CLIENT_FLAG_XSYNC_EXT_COUNTER   (1L<<24)
 
 #define WM_FLAG_DELETE                  (1L<<0)
 #define WM_FLAG_INPUT                   (1L<<1)
@@ -312,7 +317,6 @@ struct _Client
     unsigned long wm_flags;
     unsigned long xfwm_flags;
     gint fullscreen_monitors[4];
-    gboolean has_frame_extents;
     gint frame_extents[SIDE_COUNT];
 
     /* Termination dialog */
@@ -342,9 +346,6 @@ struct _Client
     XSyncValue xsync_value;
     XSyncValue next_xsync_value;
     guint xsync_timeout_id;
-    gboolean xsync_waiting;
-    gboolean xsync_enabled;
-    gboolean xsync_extended_counter;
 #endif /* HAVE_XSYNC */
 };
 
@@ -370,7 +371,8 @@ void                     clientConfigure                        (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long,
                                                                  unsigned short);
-void                     clientReconfigure                      (Client *);
+void                     clientReconfigure                      (Client *,
+                                                                 unsigned short);
 void                     clientMoveResizeWindow                 (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long);
@@ -470,6 +472,8 @@ int                      clientGetButtonState                   (Client *,
                                                                  int,
                                                                  int);
 Client                  *clientGetLeader                        (Client *);
+gboolean                 clientGetGtkFrameExtents               (Client *);
+gboolean                 clientGetGtkHideTitlebar               (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 char                    *clientGetStartupId                     (Client *);
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */

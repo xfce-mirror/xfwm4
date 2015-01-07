@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -171,6 +171,7 @@ enum
 {
     COMPOSITING_MANAGER = 0,
     GTK_FRAME_EXTENTS,
+    GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED,
     KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR,
     KWM_WIN_ICON,
     MOTIF_WM_HINTS,
