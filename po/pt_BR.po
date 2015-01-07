@@ -5,6 +5,7 @@
 # Translators:
 # Adriano Winter Bess <awbess@gmail.com>, 2006
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008
+# Miguel Frasson <mvsfrasson@gmail.com>, 2015
 # Rodrigo Coacci <rcoacci@gmail.com>, 2004
 # Vladimir Melo <vmelo@gnome.org>, 2008
 msgid ""
@@ -12,9 +13,9 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2013-11-19 15:10+0000\n"
-"Last-Translator: Nick <nick@xfce.org>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfce/language/pt_BR/)\n"
+"PO-Revision-Date: 2015-01-07 17:05+0000\n"
+"Last-Translator: Miguel Frasson <mvsfrasson@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfwm4/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,7 +85,7 @@ msgstr "Socket do gerenciador de configurações"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
-msgstr "Gerenciador de Janelas"
+msgstr "Gerenciador de janelas"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
@@ -94,7 +95,7 @@ msgstr "Configure o comportamento e atalhos das janelas"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "Ajustes do Gerenciador de Janelas"
+msgstr "Ajustes do gerenciador de janelas"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -153,7 +154,7 @@ msgstr "Enrolar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
-msgstr "Mi_nimizar"
+msgstr "Minimizar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
@@ -414,11 +415,11 @@ msgstr "Levantar janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Lower window"
-msgstr "Baixar janela"
+msgstr "Abaixar janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Raise or lower window"
-msgstr "Levantar janela"
+msgstr "Levantar ou abaixar janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -430,7 +431,7 @@ msgstr "Preencher janela verticalmente"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr "Alternar \"Sempre no topo\""
+msgstr "Alternar acima"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
@@ -712,7 +713,7 @@ msgstr "Restaurar o tamanho original das janelas _maximizadas ao movê-las"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Alinhar janelas au_tomaticamente ao movê-las em relação aos cantos da tela"
+msgstr "Alinhar janelas au_tomaticamente ao movê-las para as bordas da tela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
@@ -742,7 +743,7 @@ msgstr "Lembra_r e retornar ao espaço de trabalho anterior ao mudar através do
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Envolver o primeiro e o último espaço de traba_lho ao arrastar janela"
+msgstr "Alterar espaços de trabalho dependendo do _layout atual da área de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
