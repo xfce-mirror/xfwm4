@@ -2827,6 +2827,8 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
 
         setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                         screen_info->width, screen_info->height, screen_info->margins);
+        setNetDesktopInfo (display_info, screen_info->xroot, screen_info->current_ws,
+                           screen_info->width, screen_info->height);
 
         placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
 
@@ -2880,6 +2882,8 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
 
         setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                         screen_info->width, screen_info->height, screen_info->margins);
+        setNetDesktopInfo (display_info, screen_info->xroot, screen_info->current_ws,
+                           screen_info->width, screen_info->height);
 
         placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
     }

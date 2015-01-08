@@ -589,10 +589,10 @@ setNetCurrentDesktop (DisplayInfo *display_info, Window root, int workspace)
 }
 
 void
-initNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int width, int height)
+setNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int width, int height)
 {
     unsigned long data[2];
-    TRACE ("entering initNetDesktopInfo");
+    TRACE ("entering setNetDesktopInfo");
     data[0] = width;
     data[1] = height;
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_GEOMETRY],

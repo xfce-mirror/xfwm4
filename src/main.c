@@ -497,7 +497,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
         screen_info->current_ws = getNetCurrentDesktop (main_display_info, screen_info->xroot);
         setUTF8StringHint (main_display_info, screen_info->xfwm4_win, NET_WM_NAME, "Xfwm4");
         setNetSupportedHint (main_display_info, screen_info->xroot, screen_info->xfwm4_win);
-        initNetDesktopInfo (main_display_info, screen_info->xroot, screen_info->current_ws,
+        setNetDesktopInfo (main_display_info, screen_info->xroot, screen_info->current_ws,
                                    screen_info->width,
                                    screen_info->height);
         workspaceUpdateArea (screen_info);
