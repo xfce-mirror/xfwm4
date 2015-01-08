@@ -843,7 +843,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
         mask &= ~(CWSibling | CWStackMode);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        || (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+        || (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED)
             && (screen_info->params->borderless_maximize)))
     {
         /* Not allowed in fullscreen or maximzed mode */
