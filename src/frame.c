@@ -39,19 +39,11 @@
 #include "frame.h"
 #include "compositor.h"
 
-#define CLIENT_HAS_TITLE(c) \
-        (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) &&    \
-         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) &&      \
-         (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED) ||  \
-          !(FLAG_TEST (c->flags, CLIENT_FLAG_HIDE_TITLEBAR) && \
-            (c->screen_info->params->borderless_maximize))))
-
 typedef struct
 {
     xfwmPixmap pm_title;
     xfwmPixmap pm_sides[SIDE_COUNT];
 } FramePixmap;
-
 
 int
 frameDecorationLeft (ScreenInfo *screen_info)

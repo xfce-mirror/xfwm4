@@ -2697,10 +2697,9 @@ clientShade (Client *c)
     TRACE ("entering clientToggleShaded");
     TRACE ("shading client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-        || FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    if (!CLIENT_HAS_TITLE(c))
     {
-        TRACE ("cowardly refusing to shade \"%s\" (0x%lx) because it has no border", c->name, c->window);
+        TRACE ("cowardly refusing to shade \"%s\" (0x%lx) because it has no title", c->name, c->window);
         return;
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
@@ -2977,7 +2976,7 @@ void clientToggleFullscreen (Client *c)
         }
     }
 
-    if (!clientIsTransientOrModal (c) && (c->type == WINDOW_NORMAL))
+    if (!clientIsTransientOrModal (c) && (c->type == WINDOW_NORMAL) && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
         clientUpdateFullscreenState (c);

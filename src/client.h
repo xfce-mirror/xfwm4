@@ -226,7 +226,15 @@
                                                                   XFWM_FLAG_IS_RESIZABLE) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_MAXIMIZED))
 #define CLIENT_CAN_TILE_WINDOW(c)       (CLIENT_CAN_MAXIMIZE_WINDOW(c) && \
+                                         !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && \
                                          (c->type & WINDOW_NORMAL))
+#define CLIENT_HAS_TITLE(c)             (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
+                                         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && \
+                                         (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) || \
+                                          !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED) ||  \
+                                          !(FLAG_TEST (c->flags, CLIENT_FLAG_HIDE_TITLEBAR) && \
+                                            (c->screen_info->params->borderless_maximize))))
+
 
 typedef enum
 {
