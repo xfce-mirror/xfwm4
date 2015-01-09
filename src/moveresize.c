@@ -70,6 +70,7 @@ struct _MoveResizeData
     gint cancel_x, cancel_y;
     gint cancel_w, cancel_h;
     unsigned long cancel_flags;
+    unsigned long configure_flags;
     guint cancel_workspace;
     gint mx, my;
     gint px, py; /* pointer relative position */
@@ -822,7 +823,6 @@ static eventFilterStatus
 clientMoveEventFilter (XEvent * xevent, gpointer data)
 {
     static gboolean toggled_maximize = FALSE;
-    unsigned long configure_flags;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     eventFilterStatus status = EVENT_FILTER_STOP;
@@ -840,7 +840,6 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     prev_y=c->y;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    configure_flags = NO_CFG_FLAG;
 
     /*
      * Clients may choose to end the move operation,
@@ -898,16 +897,6 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             c->width = passdata->cancel_w;
             c->height = passdata->cancel_h;
 
-            if (screen_info->params->box_move)
-            {
-                clientDrawOutline (c);
-            }
-            else
-            {
-                wc.x = c->x;
-                wc.y = c->y;
-                clientConfigure (c, &wc, CWX | CWY, configure_flags);
-            }
             if (screen_info->current_ws != passdata->cancel_workspace)
             {
                 workspaceSwitch (screen_info, passdata->cancel_workspace, c, FALSE, xevent->xkey.time);
@@ -915,13 +904,17 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             cancel_maximize_flags = passdata->cancel_flags & CLIENT_FLAG_MAXIMIZED;
             if (!FLAG_TEST_AND_NOT(c->flags, cancel_maximize_flags, CLIENT_FLAG_MAXIMIZED))
             {
-                /* Toggle maximize on the differences between the current state and the canceled state */
+                /* Toggle maximize on the differences between the current state and the cancelled state */
                 cancel_maximize_flags ^= c->flags & CLIENT_FLAG_MAXIMIZED;
                 if (clientToggleMaximized (c, cancel_maximize_flags, FALSE))
                 {
-                    configure_flags = CFG_FORCE_REDRAW;
+                    passdata->configure_flags = CFG_FORCE_REDRAW;
                     passdata->move_resized = TRUE;
                 }
+            }
+            if (screen_info->params->box_move)
+            {
+                clientDrawOutline (c);
             }
         }
         else if (passdata->use_keys)
@@ -990,7 +983,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                         passdata->my = CLAMP(frameExtentY (c) + frameExtentHeight (c) * yratio, frameExtentY (c), frameExtentY (c) + frameExtentHeight (c));
                     }
 
-                    configure_flags = CFG_FORCE_REDRAW;
+                    passdata->configure_flags = CFG_FORCE_REDRAW;
                 }
             }
             else
@@ -1010,7 +1003,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) &&
                  clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE))
             {
-                configure_flags = CFG_FORCE_REDRAW;
+                passdata->configure_flags = CFG_FORCE_REDRAW;
                 toggled_maximize = FALSE;
                 passdata->move_resized = TRUE;
             }
@@ -1044,7 +1037,9 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure (c, &wc, changes, configure_flags);
+            clientConfigure (c, &wc, changes, passdata->configure_flags);
+            /* Configure applied, clear the flags */
+            passdata->configure_flags = NO_CFG_FLAG;
         }
     }
     else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
@@ -1113,6 +1108,7 @@ clientMove (Client * c, XEvent * ev)
     passdata.cancel_w = c->width;
     passdata.cancel_h = c->height;
     passdata.cancel_flags = c->flags;
+    passdata.configure_flags = NO_CFG_FLAG;
     passdata.cancel_workspace = c->win_workspace;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
@@ -1210,7 +1206,7 @@ clientMove (Client * c, XEvent * ev)
         wc.height = c->height;
         changes |= CWWidth | CWHeight;
     }
-    clientConfigure (c, &wc, changes, NO_CFG_FLAG);
+    clientConfigure (c, &wc, changes, passdata.configure_flags);
 
     if (!passdata.released)
     {
