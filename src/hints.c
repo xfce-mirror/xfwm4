@@ -242,7 +242,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
                              FALSE, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left,
                              (unsigned char **) &data) == Success) && (items_read))
     {
-        *value = *((long *) data) & ((1L << real_format) - 1);
+        *value = *((long *) data) & ((1LL << real_format) - 1);
         if (data)
         {
             XFree (data);
@@ -507,7 +507,7 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     *n_cardinals_p = n_cardinals;
     for (i = 0; i < n_cardinals; i++)
     {
-        (*cardinals_p)[i] = (*cardinals_p)[i] & ((1L << format) - 1);
+        (*cardinals_p)[i] = (*cardinals_p)[i] & ((1LL << format) - 1);
     }
 
     return TRUE;
