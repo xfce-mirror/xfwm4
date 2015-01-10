@@ -762,14 +762,7 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
 
     screen_info = c->screen_info;
 
-    /*
-     * Tiling when moving really relies on restore_on_move to work
-     * reliably so just don't do anything if any of the above requirement
-     * is not met (restore_on_move being disabled is from another time,
-     * we should really not have such an option, I must have been weaked
-     * in the past...)
-     */
-    if (!(screen_info->params->tile_on_move && screen_info->params->restore_on_move))
+    if (!screen_info->params->tile_on_move)
     {
         return FALSE;
     }
@@ -949,7 +942,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             clientMoveWarp (c, (XMotionEvent *) xevent);
         }
 
-        if ((screen_info->params->restore_on_move) && FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
 
             if ((ABS (xevent->xmotion.x_root - passdata->mx) > 15) ||
@@ -998,7 +991,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
         clientSnapPosition (c, prev_x, prev_y);
         /* This allows for moving fullscreen windows between monitors */
-        if (screen_info->params->restore_on_move && toggled_maximize)
+        if (toggled_maximize)
         {
             if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) &&
                  clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE))

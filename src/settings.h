@@ -215,7 +215,6 @@ struct _XfwmParams
     gboolean raise_on_focus;
     gboolean raise_with_any_button;
     gboolean repeat_urgent_blink;
-    gboolean restore_on_move;
     gboolean scroll_workspaces;
     gboolean show_app_icon;
     gboolean show_dock_shadow;

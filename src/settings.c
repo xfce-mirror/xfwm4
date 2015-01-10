@@ -739,7 +739,6 @@ loadSettings (ScreenInfo *screen_info)
         {"raise_with_any_button", NULL, G_TYPE_BOOLEAN, TRUE},
         {"repeat_urgent_blink", NULL, G_TYPE_BOOLEAN, TRUE},
         {"resize_opacity", NULL, G_TYPE_INT, TRUE},
-        {"restore_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"scroll_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
         {"shadow_delta_height", NULL, G_TYPE_INT, TRUE},
         {"shadow_delta_width", NULL, G_TYPE_INT, TRUE},
@@ -829,8 +828,6 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("repeat_urgent_blink", rc);
     screen_info->params->urgent_blink =
         getBoolValue ("urgent_blink", rc);
-    screen_info->params->restore_on_move =
-        getBoolValue ("restore_on_move", rc);
     screen_info->params->frame_opacity =
         CLAMP (getIntValue ("frame_opacity", rc), 0, 100);
     screen_info->params->inactive_opacity =
@@ -1347,10 +1344,6 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     screen_info->params->raise_with_any_button = g_value_get_boolean (value);
                     update_grabs (screen_info);
-                }
-                else if (!strcmp (name, "restore_on_move"))
-                {
-                    screen_info->params->restore_on_move = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "scroll_workspaces"))
                 {
