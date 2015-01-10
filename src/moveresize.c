@@ -55,7 +55,7 @@
     ButtonReleaseMask | \
     LeaveWindowMask
 
-#define TILE_DISTANCE 2
+#define TILE_DISTANCE 10
 
 typedef struct _MoveResizeData MoveResizeData;
 struct _MoveResizeData
@@ -799,13 +799,7 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
         if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
             (y >= disp_y - 1) && (y < disp_y + dist))
         {
-            return clientTile (c, x, y, TILE_UP, !screen_info->params->box_move);
-        }
-
-        if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
-            (y >= disp_max_y - dist) && (y < disp_max_y + 1))
-        {
-            return clientTile (c, x, y, TILE_DOWN, !screen_info->params->box_move);
+            return clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
         }
     }
 
@@ -815,7 +809,6 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
 static eventFilterStatus
 clientMoveEventFilter (XEvent * xevent, gpointer data)
 {
-    static gboolean toggled_maximize = FALSE;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     eventFilterStatus status = EVENT_FILTER_STOP;
@@ -954,10 +947,6 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
                 xratio = (xevent->xmotion.x_root - frameExtentX (c)) / (double) frameExtentWidth (c);
                 yratio = (xevent->xmotion.y_root - frameExtentY (c)) / (double) frameExtentHeight (c);
 
-                if (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED))
-                {
-                    toggled_maximize = TRUE;
-                }
                 if (clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE))
                 {
                     passdata->move_resized = TRUE;
@@ -990,18 +979,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
 
         clientSnapPosition (c, prev_x, prev_y);
-        /* This allows for moving fullscreen windows between monitors */
-        if (toggled_maximize)
-        {
-            if ((clientConstrainPos (c, FALSE) & CLIENT_CONSTRAINED_TOP) &&
-                 clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE))
-            {
-                passdata->configure_flags = CFG_FORCE_REDRAW;
-                toggled_maximize = FALSE;
-                passdata->move_resized = TRUE;
-            }
-        }
-        else if (!clientMoveTile (c, (XMotionEvent *) xevent))
+        if (!clientMoveTile (c, (XMotionEvent *) xevent))
         {
             clientConstrainPos(c, FALSE);
         }
@@ -1053,7 +1031,6 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     if (!moving)
     {
         TRACE ("event loop now finished");
-        toggled_maximize = FALSE;
         clientMoveWarp (c, NULL);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
