@@ -779,28 +779,22 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
     layout = screen_info->desktop_layout;
     dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
 
-    if (!screen_info->params->wrap_windows || layout.cols < 2)
+    if ((x >= disp_x - 1) && (x < disp_x + dist) &&
+        (y >= disp_y - 1) && (y < disp_max_y + 1))
     {
-        if ((x >= disp_x - 1) && (x < disp_x + dist) &&
-            (y >= disp_y - 1) && (y < disp_max_y + 1))
-        {
-            return clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move);
-        }
-
-        if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
-            (y >= disp_y - 1) && (y < disp_max_y + 1))
-        {
-            return clientTile (c, x, y, TILE_RIGHT, !screen_info->params->box_move);
-        }
+        return clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move);
     }
 
-    if (!screen_info->params->wrap_windows || layout.rows < 2)
+    if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
+        (y >= disp_y - 1) && (y < disp_max_y + 1))
     {
-        if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
-            (y >= disp_y - 1) && (y < disp_y + dist))
-        {
-            return clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
-        }
+        return clientTile (c, x, y, TILE_RIGHT, !screen_info->params->box_move);
+    }
+
+    if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
+        (y >= disp_y - 1) && (y < disp_y + dist))
+    {
+        return clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
     }
 
     return FALSE;
