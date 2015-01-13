@@ -82,8 +82,6 @@
 
 static GdkAtom atom_rcfiles = GDK_NONE;
 static xfwmWindow menu_event_window;
-static int edge_scroll_x = 0;
-static int edge_scroll_y = 0;
 
 /* Forward decl. */
 
@@ -1441,107 +1439,9 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
         return EVENT_FILTER_PASS;
     }
 
-    if (screen_info->workspace_count && screen_info->params->wrap_workspaces
-        && screen_info->params->wrap_resistance)
+    if (screen_info->params->wrap_workspaces && screen_info->workspace_count > 1)
     {
-        int msx, msy, maxx, maxy;
-        int rx, ry, delta;
-
-        msx = ev->x_root;
-        msy = ev->y_root;
-        maxx = screen_info->width - 1;
-        maxy = screen_info->height - 1;
-        rx = 0;
-        ry = 0;
-        warp_pointer = FALSE;
-
-        if ((msx == 0) || (msx == maxx))
-        {
-            if ((ev->time - lastresist) > 250)  /* ms */
-            {
-                edge_scroll_x = 0;
-            }
-            else
-            {
-                edge_scroll_x++;
-            }
-            if (msx == 0)
-            {
-                rx = 1;
-            }
-            else
-            {
-                rx = -1;
-            }
-            warp_pointer = TRUE;
-            lastresist = ev->time;
-        }
-        if ((msy == 0) || (msy == maxy))
-        {
-            if ((ev->time - lastresist) > 250)  /* ms */
-            {
-                edge_scroll_y = 0;
-            }
-            else
-            {
-                edge_scroll_y++;
-            }
-            if (msy == 0)
-            {
-                ry = 1;
-            }
-            else
-            {
-                ry = -1;
-            }
-            warp_pointer = TRUE;
-            lastresist = ev->time;
-        }
-
-        if (edge_scroll_x > screen_info->params->wrap_resistance)
-        {
-            edge_scroll_x = 0;
-            delta = MAX (9 * maxx / 10, maxx - 5 * screen_info->params->wrap_resistance);
-            if (msx == 0)
-            {
-                if (workspaceMove (screen_info, 0, -1, NULL, ev->time))
-                {
-                    rx = delta;
-                }
-            }
-            else
-            {
-                if (workspaceMove (screen_info, 0, 1, NULL, ev->time))
-                {
-                    rx = -delta;
-                }
-            }
-            warp_pointer = TRUE;
-        }
-        if (edge_scroll_y > screen_info->params->wrap_resistance)
-        {
-            edge_scroll_y = 0;
-            delta = MAX (9 * maxy / 10, maxy - 5 * screen_info->params->wrap_resistance);
-            if (msy == 0)
-            {
-                if (workspaceMove (screen_info, -1, 0, NULL, ev->time))
-                {
-                    ry = delta;
-                }
-            }
-            else
-            {
-                if (workspaceMove (screen_info, 1, 0, NULL, ev->time))
-                {
-                    ry = -delta;
-                }
-            }
-            warp_pointer = TRUE;
-        }
-        if (warp_pointer)
-        {
-            XWarpPointer (display_info->dpy, None, None, 0, 0, 0, 0, rx, ry);
-        }
+        clientMoveWarp (NULL, screen_info, ev->x_root, ev->y_root, ev->time);
     }
 
     return EVENT_FILTER_REMOVE;

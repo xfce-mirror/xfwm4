@@ -116,6 +116,10 @@
 #define MAX_BLINK_ITERATIONS            5
 #endif
 
+#ifndef MAX_SNAP_DRIFT
+#define MAX_SNAP_DRIFT                  5
+#endif
+
 #define XFWM_FLAG_HAS_BORDER            (1L<<0)
 #define XFWM_FLAG_HAS_MENU              (1L<<1)
 #define XFWM_FLAG_HAS_MAXIMIZE          (1L<<2)

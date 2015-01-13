@@ -611,144 +611,140 @@ clientButtonReleaseFilter (XEvent * xevent, gpointer data)
     return EVENT_FILTER_CONTINUE;
 }
 
-static void
-clientMoveWarp (Client * c, XMotionEvent *xevent)
+void
+clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, guint32 timestamp)
 {
     static guint32 lastresist = 0;
     static int edge_scroll_x = 0;
     static int edge_scroll_y = 0;
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    static int original_x = 0;
+    static int original_y = 0;
     gboolean warp_pointer = FALSE;
-    int msx, msy, maxx, maxy;
+    int maxx, maxy;
     int rx, ry, delta;
 
-    g_return_if_fail (c != NULL);
+    g_return_if_fail (screen_info != NULL);
     TRACE ("entering clientMoveWarp");
 
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-
-    if (xevent == NULL)
+    if ((c != NULL) && !(screen_info->params->wrap_windows))
     {
-        /* Cleanup */
-        edge_scroll_x = 0;
-        edge_scroll_y = 0;
         return;
     }
 
-    if ((screen_info->params->wrap_windows) && (screen_info->params->wrap_resistance))
+    if (!(screen_info->params->wrap_resistance) || !(screen_info->workspace_count > 1))
     {
+        return;
+    }
 
-        msx = xevent->x_root;
-        msy = xevent->y_root;
-        maxx = screen_info->width - 1;
-        maxy = screen_info->height - 1;
-        rx = 0;
-        ry = 0;
-        warp_pointer = FALSE;
+    maxx = screen_info->width - 1;
+    maxy = screen_info->height - 1;
+    rx = 0;
+    ry = 0;
+    warp_pointer = FALSE;
 
-        if ((msx == 0) || (msx == maxx))
-        {
-            if ((xevent->time - lastresist) > 250)  /* ms */
-            {
-                edge_scroll_x = 0;
-            }
-            else
-            {
-                edge_scroll_x++;
-            }
-            if (msx == 0)
-            {
-                rx = 1;
-            }
-            else
-            {
-                rx = -1;
-            }
-            warp_pointer = TRUE;
-            lastresist = xevent->time;
-        }
-        if ((msy == 0) || (msy == maxy))
-        {
-            if ((xevent->time - lastresist) > 250)  /* ms */
-            {
-                edge_scroll_y = 0;
-            }
-            else
-            {
-                edge_scroll_y++;
-            }
-            if (msy == 0)
-            {
-                ry = 1;
-            }
-            else
-            {
-                ry = -1;
-            }
-            warp_pointer = TRUE;
-            lastresist = xevent->time;
-        }
-
-        if (edge_scroll_x > screen_info->params->wrap_resistance)
+    if (edge_scroll_x == 0)
+    {
+        original_y = y_root;
+    }
+    if (edge_scroll_y == 0)
+    {
+        original_x = x_root;
+    }
+    if ((x_root == 0) || (x_root == maxx))
+    {
+        if ((timestamp - lastresist) > 250)  /* ms */
         {
             edge_scroll_x = 0;
-            if ((msx == 0) || (msx == maxx))
-            {
-                delta = MAX (9 * maxx / 10, maxx - 5 * screen_info->params->wrap_resistance);
-                if (msx == 0)
-                {
-                    if (workspaceMove (screen_info, 0, -1, c, xevent->time))
-                    {
-                        rx = delta;
-                    }
-                }
-                else
-                {
-                    if (workspaceMove (screen_info, 0, 1, c, xevent->time))
-                    {
-                        rx = -delta;
-                    }
-                }
-                warp_pointer = TRUE;
-            }
-            lastresist = 0;
         }
-        if (edge_scroll_y > screen_info->params->wrap_resistance)
+        else
+        {
+            edge_scroll_x++;
+        }
+        if (x_root == 0)
+        {
+            rx = 1;
+        }
+        else
+        {
+            rx = -1;
+        }
+        warp_pointer = TRUE;
+        lastresist = timestamp;
+    }
+    if ((y_root == 0) || (y_root == maxy))
+    {
+        if ((timestamp - lastresist) > 250)  /* ms */
         {
             edge_scroll_y = 0;
-            if ((msy == 0) || (msy == maxy))
-            {
-                delta = MAX (9 * maxy / 10, maxy - 5 * screen_info->params->wrap_resistance);
-                if (msy == 0)
-                {
-                    if (workspaceMove (screen_info, -1, 0, c, xevent->time))
-                    {
-                        ry = delta;
-                    }
-                }
-                else
-                {
-                    if (workspaceMove (screen_info, 1, 0, c, xevent->time))
-                    {
-                        ry = -delta;
-                    }
-                }
-                warp_pointer = TRUE;
-            }
-            lastresist = 0;
         }
-
-        if (warp_pointer)
+        else
         {
-            XWarpPointer (display_info->dpy, None, None, 0, 0, 0, 0, rx, ry);
-            msx += rx;
-            msy += ry;
+            edge_scroll_y++;
         }
+        if (y_root == 0)
+        {
+            ry = 1;
+        }
+        else
+        {
+            ry = -1;
+        }
+        warp_pointer = TRUE;
+        lastresist = timestamp;
+    }
 
-        xevent->x_root = msx;
-        xevent->y_root = msy;
+    if (edge_scroll_x > screen_info->params->wrap_resistance)
+    {
+        edge_scroll_x = 0;
+        if ((ABS(y_root - original_y) < MAX_SNAP_DRIFT) && ((x_root == 0) || (x_root == maxx)))
+        {
+            delta = MAX (9 * maxx / 10, maxx - 5 * screen_info->params->wrap_resistance);
+            if (x_root == 0)
+            {
+                if (workspaceMove (screen_info, 0, -1, c, timestamp))
+                {
+                    rx = delta;
+                }
+            }
+            else
+            {
+                if (workspaceMove (screen_info, 0, 1, c, timestamp))
+                {
+                    rx = -delta;
+                }
+            }
+            warp_pointer = TRUE;
+        }
+        lastresist = 0;
+    }
+    if (edge_scroll_y > screen_info->params->wrap_resistance)
+    {
+        edge_scroll_y = 0;
+        if ((ABS(x_root - original_x) < MAX_SNAP_DRIFT) && ((y_root == 0) || (y_root == maxy)))
+        {
+            delta = MAX (9 * maxy / 10, maxy - 5 * screen_info->params->wrap_resistance);
+            if (y_root == 0)
+            {
+                if (workspaceMove (screen_info, -1, 0, c, timestamp))
+                {
+                    ry = delta;
+                }
+            }
+            else
+            {
+                if (workspaceMove (screen_info, 1, 0, c, timestamp))
+                {
+                    ry = -delta;
+                }
+            }
+            warp_pointer = TRUE;
+        }
+        lastresist = 0;
+    }
+
+    if (warp_pointer)
+    {
+        XWarpPointer (myScreenGetXDisplay(screen_info), None, None, 0, 0, 0, 0, rx, ry);
     }
 }
 
@@ -926,7 +922,10 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         }
         if ((screen_info->workspace_count > 1) && !(passdata->is_transient))
         {
-            clientMoveWarp (c, (XMotionEvent *) xevent);
+            clientMoveWarp (c, screen_info,
+                            xevent->xmotion.x_root,
+                            xevent->xmotion.y_root,
+                            xevent->xmotion.time);
         }
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -1025,7 +1024,6 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     if (!moving)
     {
         TRACE ("event loop now finished");
-        clientMoveWarp (c, NULL);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             clientSaveSizePos (c);

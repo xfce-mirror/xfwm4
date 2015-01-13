@@ -39,6 +39,11 @@ void                     clientSetWidth                         (Client *,
 void                     clientSetHeight                        (Client *,
                                                                  int,
                                                                  gboolean);
+void                     clientMoveWarp                         (Client *,
+                                                                 ScreenInfo *,
+                                                                 int,
+                                                                 int,
+                                                                 guint32);
 void                     clientMove                             (Client *,
                                                                  XEvent *);
 void                     clientResize                           (Client *,
