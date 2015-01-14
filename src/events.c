@@ -1441,7 +1441,7 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 
     if (screen_info->params->wrap_workspaces && screen_info->workspace_count > 1)
     {
-        clientMoveWarp (NULL, screen_info, ev->x_root, ev->y_root, ev->time);
+        clientMoveWarp (NULL, screen_info, &ev->x_root, &ev->y_root, ev->time);
     }
 
     return EVENT_FILTER_REMOVE;

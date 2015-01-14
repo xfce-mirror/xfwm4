@@ -612,7 +612,7 @@ clientButtonReleaseFilter (XEvent * xevent, gpointer data)
 }
 
 void
-clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, guint32 timestamp)
+clientMoveWarp (Client * c, ScreenInfo * screen_info, int * x_root, int * y_root, guint32 timestamp)
 {
     static guint32 lastresist = 0;
     static int edge_scroll_x = 0;
@@ -624,6 +624,8 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, gu
     int rx, ry, delta;
 
     g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (x_root != NULL);
+    g_return_if_fail (y_root != NULL);
     TRACE ("entering clientMoveWarp");
 
     if ((c != NULL) && !(screen_info->params->wrap_windows))
@@ -644,13 +646,13 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, gu
 
     if (edge_scroll_x == 0)
     {
-        original_y = y_root;
+        original_y = *y_root;
     }
     if (edge_scroll_y == 0)
     {
-        original_x = x_root;
+        original_x = *x_root;
     }
-    if ((x_root == 0) || (x_root == maxx))
+    if ((*x_root == 0) || (*x_root == maxx))
     {
         if ((timestamp - lastresist) > 250)  /* ms */
         {
@@ -660,7 +662,7 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, gu
         {
             edge_scroll_x++;
         }
-        if (x_root == 0)
+        if (*x_root == 0)
         {
             rx = 1;
         }
@@ -671,7 +673,7 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, gu
         warp_pointer = TRUE;
         lastresist = timestamp;
     }
-    if ((y_root == 0) || (y_root == maxy))
+    if ((*y_root == 0) || (*y_root == maxy))
     {
         if ((timestamp - lastresist) > 250)  /* ms */
         {
@@ -681,7 +683,7 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, gu
         {
             edge_scroll_y++;
         }
-        if (y_root == 0)
+        if (*y_root == 0)
         {
             ry = 1;
         }
@@ -696,10 +698,10 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, gu
     if (edge_scroll_x > screen_info->params->wrap_resistance)
     {
         edge_scroll_x = 0;
-        if ((ABS(y_root - original_y) < MAX_SNAP_DRIFT) && ((x_root == 0) || (x_root == maxx)))
+        if ((ABS(*y_root - original_y) < MAX_SNAP_DRIFT) && ((*x_root == 0) || (*x_root == maxx)))
         {
             delta = MAX (9 * maxx / 10, maxx - 5 * screen_info->params->wrap_resistance);
-            if (x_root == 0)
+            if (*x_root == 0)
             {
                 if (workspaceMove (screen_info, 0, -1, c, timestamp))
                 {
@@ -720,10 +722,10 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, gu
     if (edge_scroll_y > screen_info->params->wrap_resistance)
     {
         edge_scroll_y = 0;
-        if ((ABS(x_root - original_x) < MAX_SNAP_DRIFT) && ((y_root == 0) || (y_root == maxy)))
+        if ((ABS(*x_root - original_x) < MAX_SNAP_DRIFT) && ((*y_root == 0) || (*y_root == maxy)))
         {
             delta = MAX (9 * maxy / 10, maxy - 5 * screen_info->params->wrap_resistance);
-            if (y_root == 0)
+            if (*y_root == 0)
             {
                 if (workspaceMove (screen_info, -1, 0, c, timestamp))
                 {
@@ -745,6 +747,8 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int x_root, int y_root, gu
     if (warp_pointer)
     {
         XWarpPointer (myScreenGetXDisplay(screen_info), None, None, 0, 0, 0, 0, rx, ry);
+        *x_root += rx;
+        *y_root += ry;
     }
 }
 
@@ -923,8 +927,8 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         if ((screen_info->workspace_count > 1) && !(passdata->is_transient))
         {
             clientMoveWarp (c, screen_info,
-                            xevent->xmotion.x_root,
-                            xevent->xmotion.y_root,
+                            &xevent->xmotion.x_root,
+                            &xevent->xmotion.y_root,
                             xevent->xmotion.time);
         }
 

@@ -41,8 +41,8 @@ void                     clientSetHeight                        (Client *,
                                                                  gboolean);
 void                     clientMoveWarp                         (Client *,
                                                                  ScreenInfo *,
-                                                                 int,
-                                                                 int,
+                                                                 int *,
+                                                                 int *,
                                                                  guint32);
 void                     clientMove                             (Client *,
                                                                  XEvent *);
