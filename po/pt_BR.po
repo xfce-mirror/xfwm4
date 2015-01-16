@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Adriano Winter Bess <awbess@gmail.com>, 2006
+# André Miranda <andreldm1989@gmail.com>, 2015
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008
 # Miguel Frasson <mvsfrasson@gmail.com>, 2015
 # Rafael Ferreira <rafael.f.f1@gmail.com>, 2013-2014
@@ -13,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2015-01-07 16:46+0000\n"
-"Last-Translator: Miguel Frasson <mvsfrasson@gmail.com>\n"
+"POT-Creation-Date: 2015-01-11 18:32+0100\n"
+"PO-Revision-Date: 2015-01-16 17:39+0000\n"
+"Last-Translator: André Miranda <andreldm1989@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfwm4/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,29 +38,29 @@ msgstr "Aviso"
 msgid "None"
 msgstr "Nenhuma"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:467
 msgid "Session manager socket"
 msgstr "Socket do gerenciador de sessão"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:467
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:474
+#: ../settings-dialogs/tweaks-settings.c:468
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informações de versão"
 
-#: ../settings-dialogs/tweaks-settings.c:492
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -443,8 +444,8 @@ msgid "Hide frame of windows when ma_ximized"
 msgstr "Ocultar _bordas das janelas quando maximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "Restaurar o tamanho original de janelas maximizadas ao movê-las"
+msgid "Hide title of windows when maximized"
+msgstr "Ocultar título das janelas quando maximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -599,7 +600,7 @@ msgid "_Margins"
 msgstr "_Margens"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
