@@ -7,18 +7,18 @@
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2012
 # Hunt Xu <huntxu@live.cn>,2008, 2010,2012
 # wuli <wurisky@gmail.com>,2007, 2008
-# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013-2014
+# 周潇波 <zhouxiaobo.500@gmail.com>, 2013-2014
 # 玉堂白鹤 <yjwork@qq.com>, 2014
 # Yongtao Yang <yongtao.yang@telia.com>, 2004
-# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013
-# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2014
+# 周潇波 <zhouxiaobo.500@gmail.com>, 2013
+# 周潇波 <zhouxiaobo.500@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-05-09 06:54+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
+"POT-Creation-Date: 2015-01-11 18:32+0100\n"
+"PO-Revision-Date: 2015-01-17 13:06+0000\n"
+"Last-Translator: 周潇波 <zhouxiaobo.500@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,29 +40,29 @@ msgstr "警告"
 msgid "None"
 msgstr "无"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:467
 msgid "Session manager socket"
 msgstr "会话管理器套接字"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:467
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: ../settings-dialogs/tweaks-settings.c:474
+#: ../settings-dialogs/tweaks-settings.c:468
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../settings-dialogs/tweaks-settings.c:492
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -446,8 +446,8 @@ msgid "Hide frame of windows when ma_ximized"
 msgstr "最大化时隐藏窗口边框(_X)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "移动时恢复已最大化窗口的原大小(_Z)"
+msgid "Hide title of windows when maximized"
+msgstr "最大化窗口时隐藏标题"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -602,7 +602,7 @@ msgid "_Margins"
 msgstr "边缘(_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s(于 %s)"
