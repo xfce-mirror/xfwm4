@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# salepetronije <salepetronije@gmail.com>, 2012,2014
-# salepetronije <salepetronije@gmail.com>, 2014
+# Саша Петровић <salepetronije@gmail.com>, 2012,2014
+# Саша Петровић <salepetronije@gmail.com>, 2012,2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-02-25 18:36+0000\n"
-"Last-Translator: salepetronije <salepetronije@gmail.com>\n"
-"Language-Team: Serbian (http://www.transifex.com/projects/p/xfce/language/sr/)\n"
+"POT-Creation-Date: 2015-01-11 18:32+0100\n"
+"PO-Revision-Date: 2015-01-17 07:05+0000\n"
+"Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
+"Language-Team: Serbian (http://www.transifex.com/projects/p/xfwm4/language/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,29 +33,29 @@ msgstr "Упозорење"
 msgid "None"
 msgstr "Ништа"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:467
 msgid "Session manager socket"
 msgstr "Утичница управника сесије"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:467
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ЛБ УТИЧНИЦЕ"
 
-#: ../settings-dialogs/tweaks-settings.c:474
+#: ../settings-dialogs/tweaks-settings.c:468
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Подаци о издању"
 
-#: ../settings-dialogs/tweaks-settings.c:492
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -439,8 +439,8 @@ msgid "Hide frame of windows when ma_ximized"
 msgstr "Сакриј оквир прозора при уве_ћању"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "Врати почетну _величину увећаних прозора приликом померања"
+msgid "Hide title of windows when maximized"
+msgstr "Сакриј наслове увећаних прозора"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -595,7 +595,7 @@ msgid "_Margins"
 msgstr "_Ивице"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
@@ -626,7 +626,7 @@ msgstr "Штампај податке о издању и изађи"
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr "[АРГУМЕНТИ...]"
+msgstr "[ОДРЕДНИЦЕ...]"
 
 #: ../src/main.c:565
 #, c-format
@@ -684,7 +684,7 @@ msgstr "Размотај прозор"
 
 #: ../src/menu.c:56
 msgid "_Fullscreen"
-msgstr "_Преко целог екана"
+msgstr "_Преко целог екрана"
 
 #: ../src/menu.c:57
 msgid "Leave _Fullscreen"
