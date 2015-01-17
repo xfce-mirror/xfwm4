@@ -504,7 +504,7 @@ myScreenUngrabKeyboard (ScreenInfo *screen_info, guint32 timestamp)
     g_return_val_if_fail (screen_info, 0);
     TRACE ("entering myScreenUngrabKeyboard");
 
-    screen_info->key_grabs = screen_info->key_grabs - 1;
+    screen_info->key_grabs--;
     if (screen_info->key_grabs < 0)
     {
         screen_info->key_grabs = 0;
@@ -524,7 +524,7 @@ myScreenUngrabPointer (ScreenInfo *screen_info, guint32 timestamp)
     g_return_val_if_fail (screen_info, 0);
     TRACE ("entering myScreenUngrabPointer");
 
-    screen_info->pointer_grabs = screen_info->pointer_grabs - 1;
+    screen_info->pointer_grabs--;
     if (screen_info->pointer_grabs < 0)
     {
         screen_info->pointer_grabs = 0;

@@ -547,11 +547,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    if (g2)
-    {
-        /* If we succeeded in grabbing the pointer, release it */
-        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
-    }
+    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 }
 
 gboolean
