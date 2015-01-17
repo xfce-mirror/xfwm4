@@ -375,6 +375,8 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                 c = c2;
             }
             break;
+        case ButtonRelease:
+            break;
         case EnterNotify:
         case LeaveNotify:
             /* Track whether the pointer is inside one of the tab-windows */
@@ -492,8 +494,8 @@ clientCycle (Client * c, XKeyEvent * ev)
 
     g1 = myScreenGrabKeyboard (screen_info, ev->time);
     g2 = myScreenGrabPointer (screen_info, TRUE, LeaveWindowMask, None, ev->time);
-
-    if (!g1 || !g2)
+    /* Grabbing the pointer may fail e.g. if the user is doing a drag'n drop */
+    if (!g1)
     {
         TRACE ("grab failed in clientCycle");
 
@@ -545,7 +547,11 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+    if (g2)
+    {
+        /* If we succeeded in grabbing the pointer, release it */
+        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+    }
 }
 
 gboolean
