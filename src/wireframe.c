@@ -53,12 +53,17 @@ wireframeUpdate (Client *c, Window xwindow)
     Visual *xvisual;
     cairo_surface_t *surface;
     cairo_t *cr;
+    gboolean composited = FALSE;
+    gdouble rgba = 1.0;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (xwindow != None);
 
     TRACE ("entering wireframeUpdate 0x%lx", xwindow);
     screen_info = c->screen_info;
+    composited = screen_info->compositor_active;
+    if (composited)
+        rgba = 0.2;
     XUnmapWindow (clientGetXDisplay (c), xwindow);
     XMoveResizeWindow (clientGetXDisplay (c), xwindow,
                        frameX (c), frameY (c), frameWidth (c), frameHeight (c));
@@ -103,27 +108,31 @@ wireframeUpdate (Client *c, Window xwindow)
 
         XSubtractRegion (outer_xregion, inner_xregion, outer_xregion);
 
-        XShapeCombineRegion (clientGetXDisplay (c), xwindow, ShapeBounding,
-                             0, 0, outer_xregion, ShapeSet);
+        if (composited == FALSE)
+            XShapeCombineRegion (clientGetXDisplay (c), xwindow, ShapeBounding,
+                                 0, 0, outer_xregion, ShapeSet);
 
         XDestroyRegion (outer_xregion);
         XDestroyRegion (inner_xregion);
         XMapWindow (clientGetXDisplay (c), xwindow);
 
-        cairo_set_source_rgba (cr, 0, 0, 0, 1);
+        cairo_set_source_rgba (cr, 0, 0, 0, rgba);
         cairo_paint (cr);
 
         cairo_set_line_width (cr, 1);
-        cairo_set_line_join (cr, CAIRO_LINE_JOIN_MITER); 
-        cairo_set_source_rgba (cr, 1, 1, 1, 1);
+        cairo_set_line_join (cr, CAIRO_LINE_JOIN_MITER);
+        cairo_set_source_rgba (cr, rgba, rgba, rgba, rgba + 0.2);
         cairo_rectangle (cr, 0.5, 0.5, frameWidth (c) - 1, frameHeight (c) - 1);
         cairo_stroke (cr);
 
-        cairo_rectangle (cr,
-                         OUTLINE_WIDTH - 0.5, OUTLINE_WIDTH - 0.5,
-                         frameWidth (c) - 2 * (OUTLINE_WIDTH - 1) - 1,
-                         frameHeight (c)- 2 * (OUTLINE_WIDTH - 1) - 1);
-        cairo_stroke (cr);
+        if (composited == FALSE)
+        {
+            cairo_rectangle (cr,
+                             OUTLINE_WIDTH - 0.5, OUTLINE_WIDTH - 0.5,
+                             frameWidth (c) - 2 * (OUTLINE_WIDTH - 1) - 1,
+                             frameHeight (c)- 2 * (OUTLINE_WIDTH - 1) - 1);
+            cairo_stroke (cr);
+        }
     }
     else
     {
@@ -132,12 +141,12 @@ wireframeUpdate (Client *c, Window xwindow)
                            ShapeBounding, 0, 0, None, ShapeSet);
         XMapWindow (clientGetXDisplay (c), xwindow);
 
-        cairo_set_source_rgba (cr, 0, 0, 0, 1);
+        cairo_set_source_rgba (cr, 0, 0, 0, rgba);
         cairo_paint (cr);
 
         cairo_set_line_width (cr, 1);
-        cairo_set_line_join (cr, CAIRO_LINE_JOIN_MITER); 
-        cairo_set_source_rgba (cr, 1, 1, 1, 1);
+        cairo_set_line_join (cr, CAIRO_LINE_JOIN_MITER);
+        cairo_set_source_rgba (cr, rgba, rgba, rgba, rgba + 0.2);
         cairo_rectangle (cr, 0.5, 0.5, frameWidth (c) - 1, frameHeight (c) - 1);
         cairo_stroke (cr);
     }
