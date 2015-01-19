@@ -29,13 +29,30 @@
 #endif
 
 #include <X11/Xlib.h>
+#include <cairo.h>
+#include <cairo-xlib.h>
 #include "screen.h"
 #include "client.h"
 
-void                     wireframeUpdate                        (Client *c,
-                                                                 Window);
-Window                   wireframeCreate                        (Client *c);
-void                     wireframeDelete                        (ScreenInfo *,
-                                                                 Window);
+typedef struct _WireFrame WireFrame;
+struct _WireFrame
+{
+    ScreenInfo *screen_info;
+    Window xwindow;
+    int width;
+    int height;
+    Colormap xcolormap;
+    cairo_surface_t *surface;
+    cairo_t *cr;
+    gdouble red;
+    gdouble green;
+    gdouble blue;
+    gdouble alpha;
+};
+
+void                     wireframeUpdate                        (Client *,
+                                                                 WireFrame *);
+WireFrame *              wireframeCreate                        (Client *);
+void                     wireframeDelete                        (WireFrame *);
 
 #endif /* INC_WIREFRAME_H */

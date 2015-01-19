@@ -33,58 +33,23 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
-#include <cairo.h>
-#include <cairo-xlib.h>
-
 #include "screen.h"
 #include "client.h"
 #include "frame.h"
+#include "ui_style.h"
 #include "wireframe.h"
 
 #ifndef OUTLINE_WIDTH
 #define OUTLINE_WIDTH 5
 #endif
 
-void
-wireframeUpdate (Client *c, Window xwindow)
+static void
+wireframeDrawXlib (WireFrame *wireframe)
 {
-    ScreenInfo *screen_info;
-    XVisualInfo xvisual_info;
-    Visual *xvisual;
-    cairo_surface_t *surface;
-    cairo_t *cr;
-    gboolean composited = FALSE;
-    gdouble rgba = 1.0;
+    ScreenInfo *screen_info = wireframe->screen_info;
 
-    g_return_if_fail (c != NULL);
-    g_return_if_fail (xwindow != None);
-
-    TRACE ("entering wireframeUpdate 0x%lx", xwindow);
-    screen_info = c->screen_info;
-    composited = screen_info->compositor_active;
-    if (composited)
-        rgba = 0.2;
-    XUnmapWindow (clientGetXDisplay (c), xwindow);
-    XMoveResizeWindow (clientGetXDisplay (c), xwindow,
-                       frameX (c), frameY (c), frameWidth (c), frameHeight (c));
-
-    if (XMatchVisualInfo (clientGetXDisplay (c), screen_info->screen,
-                          32, TrueColor, &xvisual_info))
-    {
-        /* RGBA window, if compositing is enabled */
-        xvisual = xvisual_info.visual;
-    }
-    else
-    {
-        xvisual = screen_info->visual;
-    }
-
-    surface = cairo_xlib_surface_create (clientGetXDisplay (c),
-                                         xwindow, xvisual,
-                                         frameWidth (c), frameHeight (c));
-    cr = cairo_create (surface);
-
-    if ((frameWidth (c) > OUTLINE_WIDTH * 2) && (frameHeight (c) > OUTLINE_WIDTH * 2))
+    XUnmapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    if ((wireframe->width > OUTLINE_WIDTH * 2) && (wireframe->height > OUTLINE_WIDTH * 2))
     {
         XRectangle xrect;
         Region inner_xregion;
@@ -95,8 +60,8 @@ wireframeUpdate (Client *c, Window xwindow)
 
         xrect.x = 0;
         xrect.y = 0;
-        xrect.width = frameWidth (c);
-        xrect.height = frameHeight (c);
+        xrect.width = wireframe->width;
+        xrect.height = wireframe->height;
         XUnionRectWithRegion (&xrect, outer_xregion, outer_xregion);
 
         xrect.x += OUTLINE_WIDTH;
@@ -108,64 +73,123 @@ wireframeUpdate (Client *c, Window xwindow)
 
         XSubtractRegion (outer_xregion, inner_xregion, outer_xregion);
 
-        if (composited == FALSE)
-            XShapeCombineRegion (clientGetXDisplay (c), xwindow, ShapeBounding,
-                                 0, 0, outer_xregion, ShapeSet);
+        XShapeCombineRegion (myScreenGetXDisplay (screen_info), wireframe->xwindow, ShapeBounding,
+                             0, 0, outer_xregion, ShapeSet);
 
         XDestroyRegion (outer_xregion);
         XDestroyRegion (inner_xregion);
-        XMapWindow (clientGetXDisplay (c), xwindow);
+        XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
 
-        cairo_set_source_rgba (cr, 0, 0, 0, rgba);
-        cairo_paint (cr);
+        XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        0, 0, wireframe->width - 1, wireframe->height - 1);
 
-        cairo_set_line_width (cr, 1);
-        cairo_set_line_join (cr, CAIRO_LINE_JOIN_MITER);
-        cairo_set_source_rgba (cr, rgba, rgba, rgba, rgba + 0.2);
-        cairo_rectangle (cr, 0.5, 0.5, frameWidth (c) - 1, frameHeight (c) - 1);
-        cairo_stroke (cr);
-
-        if (composited == FALSE)
-        {
-            cairo_rectangle (cr,
-                             OUTLINE_WIDTH - 0.5, OUTLINE_WIDTH - 0.5,
-                             frameWidth (c) - 2 * (OUTLINE_WIDTH - 1) - 1,
-                             frameHeight (c)- 2 * (OUTLINE_WIDTH - 1) - 1);
-            cairo_stroke (cr);
-        }
+        XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        OUTLINE_WIDTH - 1, OUTLINE_WIDTH - 1,
+                        wireframe->width - 2 * (OUTLINE_WIDTH - 1) - 1,
+                        wireframe->height- 2 * (OUTLINE_WIDTH - 1) - 1);
     }
     else
     {
         /* Unset the shape */
-        XShapeCombineMask (clientGetXDisplay (c), xwindow,
+        XShapeCombineMask (myScreenGetXDisplay (screen_info), wireframe->xwindow,
                            ShapeBounding, 0, 0, None, ShapeSet);
-        XMapWindow (clientGetXDisplay (c), xwindow);
+        XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
 
-        cairo_set_source_rgba (cr, 0, 0, 0, rgba);
-        cairo_paint (cr);
-
-        cairo_set_line_width (cr, 1);
-        cairo_set_line_join (cr, CAIRO_LINE_JOIN_MITER);
-        cairo_set_source_rgba (cr, rgba, rgba, rgba, rgba + 0.2);
-        cairo_rectangle (cr, 0.5, 0.5, frameWidth (c) - 1, frameHeight (c) - 1);
-        cairo_stroke (cr);
+        XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        0, 0, wireframe->width - 1, wireframe->height - 1);
     }
-
-    cairo_destroy (cr);
-    cairo_surface_destroy (surface);
-
-    XFlush (clientGetXDisplay (c));
+    XFlush (myScreenGetXDisplay (screen_info));
 }
 
-Window
+static void
+wireframeDrawCairo (WireFrame *wireframe)
+{
+    ScreenInfo *screen_info = wireframe->screen_info;
+
+    cairo_xlib_surface_set_size(wireframe->surface, wireframe->width, wireframe->height);
+    XClearWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    cairo_set_source_rgba (wireframe->cr, wireframe->red, wireframe->green, wireframe->blue, wireframe->alpha);
+    cairo_paint (wireframe->cr);
+
+    cairo_set_source_rgba (wireframe->cr, wireframe->red, wireframe->green, wireframe->blue, 1.0);
+    cairo_rectangle (wireframe->cr,
+                     OUTLINE_WIDTH - 0.5, OUTLINE_WIDTH - 0.5,
+                     wireframe->width - 2 * (OUTLINE_WIDTH - 1) - 1,
+                     wireframe->height- 2 * (OUTLINE_WIDTH - 1) - 1);
+    cairo_stroke (wireframe->cr);
+}
+
+void
+wireframeUpdate (Client *c, WireFrame *wireframe)
+{
+    ScreenInfo *screen_info;
+    int width, height;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (wireframe != NULL);
+    TRACE ("entering wireframeUpdate");
+
+    screen_info = wireframe->screen_info;
+    width = frameExtentWidth (c);
+    height = frameExtentHeight (c);
+
+    XMoveResizeWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+                       frameExtentX (c), frameExtentY (c), width, height);
+
+    if ((width == wireframe->width) && (height == wireframe->height))
+    {
+        /* Moving only */
+        return;
+    }
+    wireframe->width = width;
+    wireframe->height = height;
+
+    if (screen_info->compositor_active)
+    {
+         wireframeDrawCairo (wireframe);
+    }
+    else
+    {
+         wireframeDrawXlib (wireframe);
+    }
+}
+
+static void
+wireframeInitColor (WireFrame *wireframe)
+{
+    ScreenInfo *screen_info;
+    gchar *color;
+    GdkColor gcolor;
+
+    screen_info = wireframe->screen_info;
+    color = getUIStyle  (myScreenGetGtkWidget (screen_info), "bg", "selected");
+    if (gdk_color_parse (color, &gcolor))
+    {
+        wireframe->red   = (gdouble) gcolor.red / (gdouble) 65535;
+        wireframe->green = (gdouble) gcolor.green / (gdouble) 65535;
+        wireframe->blue  = (gdouble) gcolor.blue / (gdouble) 65535;
+    }
+    else
+    {
+        g_warning ("Cannot parse color %s", color);
+        wireframe->red   = 0.0;
+        wireframe->green = 0.5;
+        wireframe->blue  = 1.0;
+    }
+    g_free (color);
+}
+
+WireFrame *
 wireframeCreate (Client *c)
 {
     ScreenInfo *screen_info;
+    WireFrame *wireframe;
     XSetWindowAttributes attrs;
-    Window xwindow;
     XVisualInfo xvisual_info;
     Visual *xvisual;
-    Colormap xcolormap;
     int depth;
 
     g_return_val_if_fail (c != NULL, None);
@@ -173,48 +197,83 @@ wireframeCreate (Client *c)
     TRACE ("entering wireframeCreate");
 
     screen_info = c->screen_info;
+    wireframe = g_new0 (WireFrame, 1);
+    wireframe->screen_info = screen_info;
+    wireframe->width = 0;
+    wireframe->height = 0;
+    wireframe->cr = NULL;
+    wireframe->surface = NULL;
+    wireframe->alpha = (screen_info->compositor_active ? 0.5 : 1.0);
 
-    if (XMatchVisualInfo (clientGetXDisplay (c), screen_info->screen,
+    if (screen_info->compositor_active &&
+        XMatchVisualInfo (myScreenGetXDisplay (screen_info), screen_info->screen,
                           32, TrueColor, &xvisual_info))
     {
         xvisual = xvisual_info.visual;
         depth = xvisual_info.depth;
-        xcolormap = XCreateColormap (clientGetXDisplay (c), screen_info->xroot,
+        wireframe->xcolormap = XCreateColormap (myScreenGetXDisplay (screen_info), screen_info->xroot,
                                      xvisual, AllocNone);
     }
     else
     {
         xvisual = screen_info->visual;
         depth = screen_info->depth;
-        xcolormap = screen_info->cmap;
+        wireframe->xcolormap = screen_info->cmap;
     }
 
     attrs.override_redirect = True;
-    attrs.colormap = xcolormap;
-    attrs.background_pixel = BlackPixel (clientGetXDisplay (c),
+    attrs.colormap = wireframe->xcolormap;
+    attrs.background_pixel = BlackPixel (myScreenGetXDisplay (screen_info),
                                          screen_info->screen);
-    attrs.border_pixel = BlackPixel (clientGetXDisplay (c),
+    attrs.border_pixel = BlackPixel (myScreenGetXDisplay (screen_info),
                                      screen_info->screen);
-    xwindow = XCreateWindow (clientGetXDisplay (c),
-                             screen_info->xroot,
-                             frameX (c), frameY (c),
-                             frameWidth (c), frameHeight (c),
-                             0, depth, InputOutput,
-                             xvisual,
-                             CWOverrideRedirect | CWColormap | CWBackPixel | CWBorderPixel,
-                             &attrs);
-    wireframeUpdate (c, xwindow);
+    wireframe->xwindow = XCreateWindow (myScreenGetXDisplay (screen_info), screen_info->xroot,
+                                        frameExtentX (c), frameExtentY (c),
+                                        frameExtentWidth (c), frameExtentHeight (c),
+                                        0, depth, InputOutput, xvisual,
+                                        CWOverrideRedirect | CWColormap | CWBackPixel | CWBorderPixel,
+                                        &attrs);
 
-    return (xwindow);
+    if (screen_info->compositor_active)
+    {
+        /* Cairo */
+        wireframeInitColor (wireframe);
+        wireframe->surface = cairo_xlib_surface_create (myScreenGetXDisplay (screen_info),
+                                                        wireframe->xwindow, xvisual,
+                                                        frameExtentWidth (c), frameExtentHeight (c));
+        wireframe->cr = cairo_create (wireframe->surface);
+        cairo_set_line_width (wireframe->cr, OUTLINE_WIDTH);
+        cairo_set_line_join (wireframe->cr, CAIRO_LINE_JOIN_MITER);
+    }
+
+    XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    wireframeUpdate (c, wireframe);
+
+    return (wireframe);
 }
 
 void
-wireframeDelete (ScreenInfo *screen_info, Window xwindow)
+wireframeDelete (WireFrame *wireframe)
 {
-    g_return_if_fail (screen_info != NULL);
-    g_return_if_fail (xwindow != None);
+    ScreenInfo *screen_info;
 
-    TRACE ("entering wireframeDelete 0x%lx", xwindow);
-    XUnmapWindow (myScreenGetXDisplay (screen_info), xwindow);
-    XDestroyWindow (myScreenGetXDisplay (screen_info), xwindow);
+    g_return_if_fail (wireframe != None);
+    TRACE ("entering wireframeDelete");
+
+    screen_info = wireframe->screen_info;
+    XUnmapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    XDestroyWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    if (wireframe->xcolormap != screen_info->cmap)
+    {
+        XFreeColormap (myScreenGetXDisplay (screen_info), wireframe->xcolormap);
+    }
+    if (wireframe->cr)
+    {
+        cairo_destroy (wireframe->cr);
+    }
+    if (wireframe->surface)
+    {
+        cairo_surface_destroy (wireframe->surface);
+    }
+    g_free (wireframe);
 }

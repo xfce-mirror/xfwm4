@@ -53,7 +53,7 @@ typedef struct _ClientCycleData ClientCycleData;
 struct _ClientCycleData
 {
     Tabwin *tabwin;
-    Window wireframe;
+    WireFrame *wireframe;
     gboolean inside;
 };
 
@@ -497,7 +497,7 @@ clientCycle (Client * c, XKeyEvent * ev)
         return;
     }
 
-    passdata.wireframe = None;
+    passdata.wireframe = NULL;
     passdata.inside = FALSE;
 
     TRACE ("entering cycle loop");
@@ -513,7 +513,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     TRACE ("leaving cycle loop");
     if (passdata.wireframe)
     {
-        wireframeDelete (screen_info, passdata.wireframe);
+        wireframeDelete (passdata.wireframe);
     }
     updateXserverTime (display_info);
 
