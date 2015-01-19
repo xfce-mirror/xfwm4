@@ -376,6 +376,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             }
             break;
         case ButtonRelease:
+            return EVENT_FILTER_STOP;
             break;
         case EnterNotify:
         case LeaveNotify:
@@ -387,6 +388,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     passdata->inside = (xevent->xcrossing.type == EnterNotify);
                 }
             }
+            return EVENT_FILTER_STOP;
             break;
         default:
             status = EVENT_FILTER_CONTINUE;
@@ -493,7 +495,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
 
     g1 = myScreenGrabKeyboard (screen_info, ev->time);
-    g2 = myScreenGrabPointer (screen_info, TRUE, LeaveWindowMask, None, ev->time);
+    g2 = myScreenGrabPointer (screen_info, TRUE, NoEventMask, None, ev->time);
     /* Grabbing the pointer may fail e.g. if the user is doing a drag'n drop */
     if (!g1)
     {
