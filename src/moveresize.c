@@ -1693,7 +1693,11 @@ clientResize (Client * c, int handle, XEvent * ev)
         return;
     }
 
-    if (screen_info->params->box_resize && screen_info->compositor_active)
+    if (!screen_info->params->box_resize)
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_XSYNC_CONFIGURE);
+    }
+    else if (screen_info->compositor_active)
     {
         passdata.wireframe = wireframeCreate (c);
     }
@@ -1730,6 +1734,7 @@ clientResize (Client * c, int handle, XEvent * ev)
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
+    FLAG_UNSET (c->flags, CLIENT_FLAG_XSYNC_CONFIGURE);
 
     if (passdata.poswin)
     {
