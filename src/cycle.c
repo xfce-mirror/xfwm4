@@ -221,6 +221,20 @@ clientCycleActivate (Client *c)
     clientCycleFocusAndRaise (c);
 }
 
+static gboolean
+clientCycleUpdateWireframe (Client *c, ClientCycleData *passdata)
+{
+    if (c)
+    {
+        if (passdata->wireframe)
+        {
+            wireframeUpdate (c, passdata->wireframe);
+        }
+        return TRUE;
+    }
+    return FALSE;
+}
+
 static eventFilterStatus
 clientCycleEventFilter (XEvent * xevent, gpointer data)
 {
@@ -275,60 +289,54 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                 break; /* No need to go any further */
             gone |= (c == removed);
             c = tabwinRemoveClient(passdata->tabwin, removed);
-            /* Walk through */
+            cycling = clientCycleUpdateWireframe (c, passdata);
+            break;
         case KeyPress:
-            key_pressed = (xevent->type == KeyPress);
-            if (gone || key_pressed)
+            key = myScreenGetKeyPressed (screen_info, (XKeyEvent *) xevent);
+            /*
+             * We cannot simply check for key == KEY_CANCEL here because of the
+             * modidier being pressed, so we need to look at the keycode directly.
+             */
+            if (xevent->xkey.keycode == cancel)
             {
-                if (key_pressed)
-                {
-                    key = myScreenGetKeyPressed (screen_info, (XKeyEvent *) xevent);
-                    /*
-                     * We cannot simply check for key == KEY_CANCEL here because of the
-                     * modidier being pressed, so we need to look at the keycode directly.
-                     */
-                    if (xevent->xkey.keycode == cancel)
-                    {
-                        c2 = tabwinSelectHead (passdata->tabwin);
-                        cycling = FALSE;
-                    }
-                    else if (xevent->xkey.keycode == up)
-                    {
-                        c2 = tabwinSelectDelta(passdata->tabwin, -1, 0);
-                    }
-                    else if (xevent->xkey.keycode == down)
-                    {
-                        c2 = tabwinSelectDelta(passdata->tabwin, 1, 0);
-                    }
-                    else if (xevent->xkey.keycode == left)
-                    {
-                        c2 = tabwinSelectDelta(passdata->tabwin, 0, -1);
-                    }
-                    else if (xevent->xkey.keycode == right)
-                    {
-                        c2 = tabwinSelectDelta(passdata->tabwin, -0, 1);
-                    }
-                    else if (key == KEY_CYCLE_REVERSE_WINDOWS)
-                    {
-                        TRACE ("Cycle: previous");
-                        c2 = tabwinSelectPrev(passdata->tabwin);
-                    }
-                    else if (key == KEY_CYCLE_WINDOWS)
-                    {
-                        TRACE ("Cycle: next");
-                        c2 = tabwinSelectNext(passdata->tabwin);
-                    }
-                    if (c2)
-                    {
-                        c = c2;
-                    }
+                c2 = tabwinSelectHead (passdata->tabwin);
+                cycling = FALSE;
+            }
+            else if (xevent->xkey.keycode == up)
+            {
+                c2 = tabwinSelectDelta(passdata->tabwin, -1, 0);
+            }
+            else if (xevent->xkey.keycode == down)
+            {
+                c2 = tabwinSelectDelta(passdata->tabwin, 1, 0);
+            }
+            else if (xevent->xkey.keycode == left)
+            {
+                c2 = tabwinSelectDelta(passdata->tabwin, 0, -1);
+            }
+            else if (xevent->xkey.keycode == right)
+            {
+                c2 = tabwinSelectDelta(passdata->tabwin, -0, 1);
+            }
+            else if (key == KEY_CYCLE_REVERSE_WINDOWS)
+            {
+                TRACE ("Cycle: previous");
+                c2 = tabwinSelectPrev(passdata->tabwin);
+            }
+            else if (key == KEY_CYCLE_WINDOWS)
+            {
+                TRACE ("Cycle: next");
+                c2 = tabwinSelectNext(passdata->tabwin);
+            }
+            if (c2)
+            {
+                clientCycleUpdateWireframe (c2, passdata);
+            }
 
-                    /* If last key press event had not our modifiers pressed, finish cycling */
-                    if (!(xevent->xkey.state & modifiers))
-                    {
-                        cycling = FALSE;
-                    }
-                }
+            /* If last key press event had not our modifiers pressed, finish cycling */
+            if (!(xevent->xkey.state & modifiers))
+            {
+                cycling = FALSE;
             }
             break;
         case KeyRelease:
@@ -369,14 +377,13 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                         c2 = tabwinSelectNext(passdata->tabwin);
                     }
                 }
-            }
-            if (c2)
-            {
-                c = c2;
+                if (c2)
+                {
+                    clientCycleUpdateWireframe (c2, passdata);
+                }
             }
             break;
         case ButtonRelease:
-            return EVENT_FILTER_STOP;
             break;
         case EnterNotify:
         case LeaveNotify:
@@ -388,7 +395,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     passdata->inside = (xevent->xcrossing.type == EnterNotify);
                 }
             }
-            return EVENT_FILTER_STOP;
             break;
         default:
             status = EVENT_FILTER_CONTINUE;
@@ -399,24 +405,6 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     {
         TRACE ("event loop now finished");
         gtk_main_quit ();
-    }
-
-    if (status == EVENT_FILTER_STOP)
-    {
-        if (cycling)
-        {
-            if (c)
-            {
-                if (passdata->wireframe)
-                {
-                    wireframeUpdate (c, passdata->wireframe);
-                }
-            }
-            else
-            {
-                cycling = FALSE;
-            }
-        }
     }
 
     return status;
