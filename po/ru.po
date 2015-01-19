@@ -12,18 +12,19 @@
 # Denis Koryavov <dkoryavov@yandex.ru>, 2009-2010
 # Dmitrij Smirnov <other@igus.lv>, 2010
 # Dmitriy Kudryashov <overmailed@gmail.com>, 2009
+# AlexanderFilev <ifillrok@gmail.com>, 2015
 # Poul Ionkin <wizzard@nmg.lv>, 2003
-# asvl <alyoshin.s@gmail.com>, 2014
+# Sergey Alyoshin <alyoshin.s@gmail.com>, 2014
 # Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006
 # Someniatko <someniatko@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-03-02 08:33+0000\n"
-"Last-Translator: asvl <alyoshin.s@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/xfce/language/ru/)\n"
+"POT-Creation-Date: 2015-01-11 18:32+0100\n"
+"PO-Revision-Date: 2015-01-19 09:20+0000\n"
+"Last-Translator: AlexanderFilev <ifillrok@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/xfwm4/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,29 +45,29 @@ msgstr "Внимание"
 msgid "None"
 msgstr "Отсутствует"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:467
 msgid "Session manager socket"
 msgstr "Сокет менеджера настроек"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:467
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
-#: ../settings-dialogs/tweaks-settings.c:474
+#: ../settings-dialogs/tweaks-settings.c:468
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Информация о версии"
 
-#: ../settings-dialogs/tweaks-settings.c:492
+#: ../settings-dialogs/tweaks-settings.c:486
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -450,8 +451,8 @@ msgid "Hide frame of windows when ma_ximized"
 msgstr "Скрывать _границы развёрнутого окна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "Восстанавливать _исходный размер развёрнутого окна при перемещении"
+msgid "Hide title of windows when maximized"
+msgstr "Скрыть заголовок окна при развертывании"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -606,7 +607,7 @@ msgid "_Margins"
 msgstr "_Поля"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
