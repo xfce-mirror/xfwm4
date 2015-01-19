@@ -46,6 +46,7 @@
 #include "settings.h"
 #include "transients.h"
 #include "event_filter.h"
+#include "wireframe.h"
 #include "workspaces.h"
 #include "xsync.h"
 
@@ -56,11 +57,14 @@
     LeaveWindowMask
 
 #define TILE_DISTANCE 10
+#define use_xor_move(screen_info) (screen_info->params->box_move && !screen_info->compositor_active)
+#define use_xor_resize(screen_info) (screen_info->params->box_resize && !screen_info->compositor_active)
 
 typedef struct _MoveResizeData MoveResizeData;
 struct _MoveResizeData
 {
     Client *c;
+    WireFrame *wireframe;
     gboolean use_keys;
     gboolean grab;
     gboolean is_transient;
@@ -868,7 +872,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
             if (screen_info->params->box_move)
             {
-                clientDrawOutline (c);
+                if (passdata->wireframe)
+                {
+                    wireframeUpdate  (c, passdata->wireframe);
+                }
+                else
+                {
+                    clientDrawOutline (c);
+                }
             }
 
             c->x = passdata->cancel_x;
@@ -894,7 +905,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             }
             if (screen_info->params->box_move)
             {
-                clientDrawOutline (c);
+                if (passdata->wireframe)
+                {
+                    wireframeUpdate  (c, passdata->wireframe);
+                }
+                else
+                {
+                    clientDrawOutline (c);
+                }
             }
         }
         else if (passdata->use_keys)
@@ -914,13 +932,13 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             /* Update the display time */
             myDisplayUpdateCurrentTime (display_info, xevent);
         }
-        if (!passdata->grab && screen_info->params->box_move)
+        if (!passdata->grab && use_xor_move(screen_info))
         {
             myDisplayGrabServer (display_info);
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
-        if (screen_info->params->box_move)
+        if (use_xor_move(screen_info))
         {
             clientDrawOutline (c);
         }
@@ -989,7 +1007,14 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 #endif /* SHOW_POSITION */
         if (screen_info->params->box_move)
         {
-            clientDrawOutline (c);
+            if (passdata->wireframe)
+            {
+                wireframeUpdate  (c, passdata->wireframe);
+            }
+            else
+            {
+                clientDrawOutline (c);
+            }
         }
         else
         {
@@ -1082,6 +1107,7 @@ clientMove (Client * c, XEvent * ev)
     passdata.button = 0;
     passdata.is_transient = clientIsValidTransientOrModal (c);
     passdata.move_resized = FALSE;
+    passdata.wireframe = NULL;
 
     clientSaveSizePos (c);
 
@@ -1114,6 +1140,11 @@ clientMove (Client * c, XEvent * ev)
         myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
+    }
+
+    if (screen_info->params->box_move && screen_info->compositor_active)
+    {
+        passdata.wireframe = wireframeCreate (c);
     }
 
     passdata.poswin = NULL;
@@ -1160,6 +1191,11 @@ clientMove (Client * c, XEvent * ev)
     if (passdata.grab && screen_info->params->box_move)
     {
         clientDrawOutline (c);
+    }
+
+    if (passdata.wireframe)
+    {
+        wireframeDelete (passdata.wireframe);
     }
     /* Set window opacity to its original value */
     clientSetOpacity (c, c->opacity, OPACITY_MOVE, 0);
@@ -1399,7 +1435,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             resizing = FALSE;
             passdata->released = passdata->use_keys;
 
-            if (screen_info->params->box_resize)
+            if (use_xor_resize(screen_info))
             {
                 clientDrawOutline (c);
             }
@@ -1411,7 +1447,14 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             c->height = passdata->cancel_h;
             if (screen_info->params->box_resize)
             {
-                clientDrawOutline (c);
+                if (passdata->wireframe)
+                {
+                    wireframeUpdate  (c, passdata->wireframe);
+                }
+                else
+                {
+                    clientDrawOutline (c);
+                }
             }
             else
             {
@@ -1435,13 +1478,13 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         {
             resizing = FALSE;
         }
-        if (!passdata->grab && screen_info->params->box_resize)
+        if (!passdata->grab && use_xor_resize(screen_info))
         {
             myDisplayGrabServer (display_info);
             passdata->grab = TRUE;
             clientDrawOutline (c);
         }
-        if (screen_info->params->box_resize)
+        if (use_xor_resize(screen_info))
         {
             clientDrawOutline (c);
         }
@@ -1515,7 +1558,14 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         if (screen_info->params->box_resize)
         {
-            clientDrawOutline (c);
+            if (passdata->wireframe)
+            {
+                wireframeUpdate  (c, passdata->wireframe);
+            }
+            else
+            {
+                clientDrawOutline (c);
+            }
         }
         else
         {
@@ -1604,6 +1654,7 @@ clientResize (Client * c, int handle, XEvent * ev)
     passdata.released = FALSE;
     passdata.button = 0;
     passdata.handle = handle;
+    passdata.wireframe = NULL;
     w_orig = c->width;
     h_orig = c->height;
 
@@ -1640,6 +1691,11 @@ clientResize (Client * c, int handle, XEvent * ev)
         myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
         return;
+    }
+
+    if (screen_info->params->box_resize && screen_info->compositor_active)
+    {
+        passdata.wireframe = wireframeCreate (c);
     }
 
     passdata.poswin = NULL;
@@ -1683,6 +1739,11 @@ clientResize (Client * c, int handle, XEvent * ev)
     {
         clientDrawOutline (c);
     }
+    if (passdata.wireframe)
+    {
+        wireframeDelete (passdata.wireframe);
+    }
+
     /* Set window opacity to its original value */
     clientSetOpacity (c, c->opacity, OPACITY_RESIZE, 0);
 
