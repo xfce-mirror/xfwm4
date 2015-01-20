@@ -1737,7 +1737,10 @@ clientResize (Client * c, int handle, XEvent * ev)
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SAVED_POS);
 
 #ifdef HAVE_XSYNC
-    clientCreateXSyncAlarm (c);
+    if (c->xsync_counter)
+    {
+        clientCreateXSyncAlarm (c);
+    }
 #endif /* HAVE_XSYNC */
 
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
@@ -1772,7 +1775,10 @@ clientResize (Client * c, int handle, XEvent * ev)
     }
 
 #ifdef HAVE_XSYNC
-    clientDestroyXSyncAlarm (c);
+    if (c->xsync_counter)
+    {
+        clientDestroyXSyncAlarm (c);
+    }
 #endif /* HAVE_XSYNC */
 
     clientReconfigure (c, NO_CFG_FLAG);
