@@ -1200,6 +1200,12 @@ clientMove (Client * c, XEvent * ev)
     /* Set window opacity to its original value */
     clientSetOpacity (c, c->opacity, OPACITY_MOVE, 0);
 
+    /* Update state if changed */
+    if (passdata.cancel_flags != c->flags)
+    {
+        clientSetNetState (c);
+    }
+
     wc.x = c->x;
     wc.y = c->y;
     if (passdata.move_resized)

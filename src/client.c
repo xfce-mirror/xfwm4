@@ -3307,7 +3307,11 @@ clientToggleMaximized (Client *c, int mode, gboolean restore_position)
     {
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
     }
-    clientSetNetState (c);
+    /* Do not update the state while moving/resizing, CSD windows may resize */
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
+    {
+        clientSetNetState (c);
+    }
 
     return TRUE;
 }
@@ -3382,7 +3386,11 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
         clientSetNetActions (c);
         clientReconfigure (c, CFG_FORCE_REDRAW);
     }
-    clientSetNetState (c);
+    /* Do not update the state while moving/resizing, CSD windows may resize */
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
+    {
+        clientSetNetState (c);
+    }
 
     return TRUE;
 }
