@@ -43,6 +43,10 @@
 #define OUTLINE_WIDTH 5
 #endif
 
+#ifndef OUTLINE_WIDTH_CAIRO
+#define OUTLINE_WIDTH_CAIRO 2
+#endif
+
 static void
 wireframeDrawXlib (WireFrame *wireframe)
 {
@@ -116,9 +120,9 @@ wireframeDrawCairo (WireFrame *wireframe)
 
     cairo_set_source_rgba (wireframe->cr, wireframe->red, wireframe->green, wireframe->blue, 1.0);
     cairo_rectangle (wireframe->cr,
-                     OUTLINE_WIDTH - 0.5, OUTLINE_WIDTH - 0.5,
-                     wireframe->width - 2 * (OUTLINE_WIDTH - 1) - 1,
-                     wireframe->height- 2 * (OUTLINE_WIDTH - 1) - 1);
+                     OUTLINE_WIDTH_CAIRO / 2, OUTLINE_WIDTH_CAIRO / 2,
+                     wireframe->width - OUTLINE_WIDTH_CAIRO,
+                     wireframe->height - OUTLINE_WIDTH_CAIRO);
     cairo_stroke (wireframe->cr);
 }
 
@@ -242,7 +246,7 @@ wireframeCreate (Client *c)
                                                         wireframe->xwindow, xvisual,
                                                         frameExtentWidth (c), frameExtentHeight (c));
         wireframe->cr = cairo_create (wireframe->surface);
-        cairo_set_line_width (wireframe->cr, OUTLINE_WIDTH);
+        cairo_set_line_width (wireframe->cr, OUTLINE_WIDTH_CAIRO);
         cairo_set_line_join (wireframe->cr, CAIRO_LINE_JOIN_MITER);
     }
 
