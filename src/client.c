@@ -3195,12 +3195,12 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
         switch (tile)
         {
             case TILE_UP:
-                wc->y = full_y + frameTop (c);
-                wc->height = full_h / 2 - frameTop (c) - frameBottom (c);
+                wc->y = full_y + frameExtentTop (c);
+                wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
                 break;
             case TILE_DOWN:
-                wc->y = full_y + full_h / 2 + frameTop (c);
-                wc->height = full_h - full_h / 2 - frameTop (c) - frameBottom (c);
+                wc->y = full_y + full_h / 2 + frameExtentTop (c);
+                wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
                 break;
             default:
                 break;
@@ -3218,12 +3218,12 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
         switch (tile)
         {
             case TILE_LEFT:
-                wc->x = full_x + frameLeft (c);
-                wc->width = full_w / 2 - frameLeft (c) - frameRight (c);
+                wc->x = full_x + frameExtentLeft (c);
+                wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
                 break;
             case TILE_RIGHT:
-                wc->x = full_x + full_w / 2 + frameLeft (c);
-                wc->width = full_w - full_w / 2 - frameLeft (c) - frameRight (c);
+                wc->x = full_x + full_w / 2 + frameExtentLeft (c);
+                wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
                 break;
             default:
                 break;
