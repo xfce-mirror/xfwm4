@@ -39,6 +39,9 @@ struct _WireFrame
 {
     ScreenInfo *screen_info;
     Window xwindow;
+    gboolean mapped;
+    int x;
+    int y;
     int width;
     int height;
     Colormap xcolormap;

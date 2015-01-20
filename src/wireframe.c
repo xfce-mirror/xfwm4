@@ -48,11 +48,23 @@
 #endif
 
 static void
-wireframeDrawXlib (WireFrame *wireframe)
+wireframeDrawXlib (WireFrame *wireframe, int width, int height)
 {
     ScreenInfo *screen_info = wireframe->screen_info;
 
+    wireframe->mapped = FALSE;
     XUnmapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    XMoveResizeWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+                       wireframe->x, wireframe->y, width, height);
+
+    if ((width == wireframe->width) && (height == wireframe->height))
+    {
+        /* Moving only */
+        return;
+    }
+    wireframe->width = width;
+    wireframe->height = height;
+
     if ((wireframe->width > OUTLINE_WIDTH * 2) && (wireframe->height > OUTLINE_WIDTH * 2))
     {
         XRectangle xrect;
@@ -83,6 +95,7 @@ wireframeDrawXlib (WireFrame *wireframe)
         XDestroyRegion (outer_xregion);
         XDestroyRegion (inner_xregion);
         XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+        wireframe->mapped = TRUE;
 
         XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
                         gdk_x11_gc_get_xgc (screen_info->white_gc),
@@ -100,6 +113,7 @@ wireframeDrawXlib (WireFrame *wireframe)
         XShapeCombineMask (myScreenGetXDisplay (screen_info), wireframe->xwindow,
                            ShapeBounding, 0, 0, None, ShapeSet);
         XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+        wireframe->mapped = TRUE;
 
         XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
                         gdk_x11_gc_get_xgc (screen_info->white_gc),
@@ -109,9 +123,24 @@ wireframeDrawXlib (WireFrame *wireframe)
 }
 
 static void
-wireframeDrawCairo (WireFrame *wireframe)
+wireframeDrawCairo (WireFrame *wireframe, int width, int height)
 {
     ScreenInfo *screen_info = wireframe->screen_info;
+
+    XMoveResizeWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+                       wireframe->x, wireframe->y, width, height);
+    if (!wireframe->mapped)
+    {
+        XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+        wireframe->mapped = TRUE;
+    }
+    if ((width == wireframe->width) && (height == wireframe->height))
+    {
+        /* Moving only */
+        return;
+    }
+    wireframe->width = width;
+    wireframe->height = height;
 
     cairo_xlib_surface_set_size(wireframe->surface, wireframe->width, wireframe->height);
     XClearWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
@@ -130,34 +159,22 @@ void
 wireframeUpdate (Client *c, WireFrame *wireframe)
 {
     ScreenInfo *screen_info;
-    int width, height;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (wireframe != NULL);
     TRACE ("entering wireframeUpdate");
 
+    wireframe->x = frameExtentX (c);
+    wireframe->y = frameExtentY (c);
+
     screen_info = wireframe->screen_info;
-    width = frameExtentWidth (c);
-    height = frameExtentHeight (c);
-
-    XMoveResizeWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow,
-                       frameExtentX (c), frameExtentY (c), width, height);
-
-    if ((width == wireframe->width) && (height == wireframe->height))
-    {
-        /* Moving only */
-        return;
-    }
-    wireframe->width = width;
-    wireframe->height = height;
-
     if (screen_info->compositor_active)
     {
-         wireframeDrawCairo (wireframe);
+         wireframeDrawCairo (wireframe, frameExtentWidth (c), frameExtentHeight (c));
     }
     else
     {
-         wireframeDrawXlib (wireframe);
+         wireframeDrawXlib (wireframe, frameExtentWidth (c), frameExtentHeight (c));
     }
 }
 
@@ -203,6 +220,7 @@ wireframeCreate (Client *c)
     screen_info = c->screen_info;
     wireframe = g_new0 (WireFrame, 1);
     wireframe->screen_info = screen_info;
+    wireframe->mapped = FALSE;
     wireframe->width = 0;
     wireframe->height = 0;
     wireframe->cr = NULL;
@@ -250,7 +268,6 @@ wireframeCreate (Client *c)
         cairo_set_line_join (wireframe->cr, CAIRO_LINE_JOIN_MITER);
     }
 
-    XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
     wireframeUpdate (c, wireframe);
 
     return (wireframe);
