@@ -1816,10 +1816,16 @@ clientResize (Client * c, int handle, XEvent * ev)
     /* Set window opacity to its original value */
     clientSetOpacity (c, c->opacity, OPACITY_RESIZE, 0);
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED) &&
-        ((w_orig != c->width) || (h_orig != c->height)))
+    if ((w_orig != c->width) || (h_orig != c->height))
     {
-        clientRemoveMaximizeFlag (c);
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+        {
+            clientRemoveMaximizeFlag (c);
+        }
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
+        }
     }
 
 #ifdef HAVE_XSYNC
