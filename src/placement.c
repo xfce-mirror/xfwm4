@@ -525,7 +525,7 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
         TRACE ("The application \"%s\" has requested a window width "
                "(%u) equal or larger than the actual width available in the workspace (%u), "
                "the window will be maximized horizontally.", c->name, frameExtentWidth (c), full_w);
-        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_RESTORE_SIZE_POS);
     }
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) &&
@@ -534,7 +534,7 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
         TRACE ("The application \"%s\" has requested a window height "
                "(%u) equal or larger than the actual height available in the workspace (%u), "
                "the window will be maximized vertically.", c->name, frameExtentHeight (c), full_h);
-        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_RESTORE_SIZE_POS);
     }
 }
 
