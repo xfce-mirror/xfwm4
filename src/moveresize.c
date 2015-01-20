@@ -86,10 +86,8 @@ struct _MoveResizeData
 };
 
 static void
-clientSetSize (Client * c, int *size, int size_min, int size_max, int size_inc, gboolean source_is_application)
+clientSetSize (Client * c, int *size, int base, int min, int max, int incr, gboolean source_is_application)
 {
-    int temp;
-
     g_return_if_fail (c != NULL);
     g_return_if_fail (size != NULL);
     TRACE ("entering clientSetSize");
@@ -99,25 +97,34 @@ clientSetSize (Client * c, int *size, int size_min, int size_max, int size_inc, 
         && !(FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED)
              && (c->screen_info->params->borderless_maximize)))
     {
-        if (!source_is_application && (c->size->flags & PResizeInc) && (size_inc))
+
+        if (!source_is_application && (c->size->flags & PResizeInc) && (incr))
         {
-            temp = (*size - size_min) / size_inc;
-            *size = size_min + (temp * size_inc);
+            int a;
+            int b = 0;
+
+            if (c->size->flags & PBaseSize)
+            {
+                b = base;
+            }
+
+            a = (*size - b) / incr;
+            *size = b + (a * incr);
         }
         if (c->size->flags & PMaxSize)
         {
-            if (*size > size_max)
+            if (*size > max)
             {
-                *size = size_max;
+                *size = max;
             }
         }
     }
 
     if (c->size->flags & PMinSize)
     {
-        if (*size < size_min)
+        if (*size < min)
         {
-            *size = size_min;
+            *size = min;
         }
     }
     if (*size < 1)
@@ -136,7 +143,7 @@ clientSetWidth (Client * c, int w, gboolean source_is_application)
     TRACE ("setting width %i for client \"%s\" (0x%lx)", w, c->name, c->window);
 
     temp = w;
-    clientSetSize (c, &temp, c->size->min_width, c->size->max_width, c->size->width_inc, source_is_application);
+    clientSetSize (c, &temp,  c->size->base_width, c->size->min_width, c->size->max_width, c->size->width_inc, source_is_application);
     c->width = temp;
 }
 
@@ -150,7 +157,7 @@ clientSetHeight (Client * c, int h, gboolean source_is_application)
     TRACE ("setting height %i for client \"%s\" (0x%lx)", h, c->name, c->window);
 
     temp = h;
-    clientSetSize (c, &temp, c->size->min_height, c->size->max_height, c->size->height_inc, source_is_application);
+    clientSetSize (c, &temp, c->size->base_height, c->size->min_height, c->size->max_height, c->size->height_inc, source_is_application);
     c->height = temp;
 }
 
@@ -1553,7 +1560,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
 
         clientSetHeight (c, c->height, FALSE);
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && move_top)
+        if (move_top && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             c->y =  bottom_edge - c->height;
         }
