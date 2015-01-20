@@ -35,6 +35,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include "screen.h"
 #include "client.h"
+#include "compositor.h"
 #include "frame.h"
 #include "ui_style.h"
 #include "wireframe.h"
@@ -153,6 +154,10 @@ wireframeDrawCairo (WireFrame *wireframe, int width, int height)
                      wireframe->width - OUTLINE_WIDTH_CAIRO,
                      wireframe->height - OUTLINE_WIDTH_CAIRO);
     cairo_stroke (wireframe->cr);
+    /* Force a resize of the compositor window to avoid flickering */
+    compositorResizeWindow (screen_info->display_info, wireframe->xwindow,
+                            wireframe->x, wireframe->y,
+                            wireframe->width, wireframe->height);
 }
 
 void
