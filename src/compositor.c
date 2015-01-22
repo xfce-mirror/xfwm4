@@ -124,6 +124,8 @@ struct _CWindow
     Damage damage;
 #if HAVE_NAME_WINDOW_PIXMAP
     Pixmap name_window_pixmap;
+    /* Save a copy for use when the window is unmapped */
+    Pixmap saved_window_pixmap;
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
     Picture picture;
     Picture shadow;
@@ -732,9 +734,22 @@ free_win_data (CWindow *cw, gboolean delete)
     display_info = screen_info->display_info;
 
 #if HAVE_NAME_WINDOW_PIXMAP
+    if (cw->saved_window_pixmap)
+    {
+        XFreePixmap (display_info->dpy, cw->saved_window_pixmap);
+        cw->saved_window_pixmap = None;
+    }
+
     if (cw->name_window_pixmap)
     {
-        XFreePixmap (display_info->dpy, cw->name_window_pixmap);
+        if (delete)
+        {
+            XFreePixmap (display_info->dpy, cw->name_window_pixmap);
+        }
+        else
+        {
+            cw->saved_window_pixmap = cw->name_window_pixmap;
+        }
         cw->name_window_pixmap = None;
     }
 #endif
@@ -2172,6 +2187,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     }
 #if HAVE_NAME_WINDOW_PIXMAP
     new->name_window_pixmap = None;
+    new->saved_window_pixmap = None;
 #endif
     new->picture = None;
     new->alphaPict = None;
@@ -2292,6 +2308,11 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
         {
             XFreePixmap (display_info->dpy, cw->name_window_pixmap);
             cw->name_window_pixmap = None;
+        }
+        if (cw->saved_window_pixmap)
+        {
+            XFreePixmap (display_info->dpy, cw->saved_window_pixmap);
+            cw->saved_window_pixmap = None;
         }
 #endif
         if (cw->picture)
@@ -2971,6 +2992,48 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int 
         resize_win (cw, x, y, width, height, 0);
     }
 #endif /* HAVE_COMPOSITOR */
+}
+
+/* May return None if:
+ * - The xserver does not support name window pixmaps
+ * - The compositor is disabled at run time
+ * - The compositor is disabled at build time
+ * The pixmap may be an older copy of the last know good pixmap
+ * if the window is unmapped.
+ */
+Pixmap
+compositorGetWindowPixmap (DisplayInfo *display_info, Window id)
+{
+#ifdef HAVE_NAME_WINDOW_PIXMAP
+#ifdef HAVE_COMPOSITOR
+    CWindow *cw;
+
+    g_return_val_if_fail (id != None, None);
+    TRACE ("entering compositorGetPixmap: 0x%lx", id);
+
+    if (!compositorIsUsable (display_info))
+    {
+        return None;
+    }
+
+    if (!display_info->have_name_window_pixmap)
+    {
+        return None;
+    }
+
+    cw = find_cwindow_in_display (display_info, id);
+    if (cw)
+    {
+        if (cw->name_window_pixmap != None)
+        {
+            return cw->name_window_pixmap;
+        }
+        return cw->saved_window_pixmap;
+    }
+#endif /* HAVE_COMPOSITOR */
+#endif /* HAVE_NAME_WINDOW_PIXMAP */
+
+    return None;
 }
 
 void
