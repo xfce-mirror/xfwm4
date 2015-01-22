@@ -32,11 +32,15 @@
 #include <X11/Xutil.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-#include "display.h"
+#include "screen.h"
+#include "client.h"
 
-GdkPixbuf               *getAppIcon                             (DisplayInfo *,
+GdkPixbuf               *getAppIcon                             (ScreenInfo *,
                                                                  Window,
                                                                  int,
                                                                  int);
+GdkPixbuf               *getClientIcon                          (Client *,
+                                                                 int width,
+                                                                 int height);
 
 #endif /* INC_ICONS_H */

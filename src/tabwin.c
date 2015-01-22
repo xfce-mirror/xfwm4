@@ -334,7 +334,7 @@ createWindowIcon (Client *c, gint icon_size)
     g_return_val_if_fail (c, NULL);
     TRACE ("entering createWindowIcon");
 
-    icon_pixbuf = getAppIcon (c->screen_info->display_info, c->window, icon_size, icon_size);
+    icon_pixbuf = getClientIcon (c, icon_size, icon_size);
     icon_pixbuf_stated = NULL;
     icon = gtk_image_new ();
 
@@ -421,10 +421,10 @@ cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
             return FALSE;
         }
 
-        buttonbox = GTK_WIDGET( gtk_container_get_children(GTK_CONTAINER(widget))[0].data );
-        buttonlabel = GTK_WIDGET( g_list_nth_data( gtk_container_get_children(GTK_CONTAINER(buttonbox)), 1) );
+        buttonbox = GTK_WIDGET (gtk_container_get_children(GTK_CONTAINER(widget))[0].data);
+        buttonlabel = GTK_WIDGET (g_list_nth_data( gtk_container_get_children(GTK_CONTAINER(buttonbox)), 1));
 
-        classname = g_strdup(c->class.res_class);
+        classname = g_strdup (c->class.res_class);
         tabwinSetLabel (tbw, buttonlabel, classname, c->name, c->win_workspace);
         g_free (classname);
     }
@@ -502,7 +502,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 
     if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
     {
-        tbw->grid_cols = (monitor_width / (icon_size+app_label_height+10)) * 0.75;
+        tbw->grid_cols = (monitor_width / (icon_size + app_label_height + 10)) * 0.75;
         tbw->grid_rows = screen_info->client_count / tbw->grid_cols + 1;
 
         /* If we run out of space, halve the icon size to make more room. */
@@ -510,7 +510,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
         {
             icon_size = icon_size / 2;
             /* recalculate with new icon size */
-            tbw->grid_cols = (monitor_width / (icon_size+app_label_height+10)) * 0.75;
+            tbw->grid_cols = (monitor_width / (icon_size + app_label_height + 10)) * 0.75;
             tbw->grid_rows = screen_info->client_count / tbw->grid_cols + 1;
 
             /* Shrinking the icon too much makes it hard to see */
@@ -546,7 +546,9 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
 
         if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
         {
-            gtk_widget_set_size_request (GTK_WIDGET (window_button), icon_size+app_label_height+10, icon_size+app_label_height+10);
+            gtk_widget_set_size_request (GTK_WIDGET (window_button),
+                                         icon_size + app_label_height + 10,
+                                         icon_size+app_label_height + 10);
             buttonbox = gtk_vbox_new (FALSE, 0);
             buttonlabel = gtk_label_new ("");
             gtk_misc_set_alignment (GTK_MISC (buttonlabel), 0.5, 1.0);
@@ -567,7 +569,8 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tbw)
         gtk_container_add (GTK_CONTAINER (window_button), buttonbox);
 
         icon = createWindowIcon (c, icon_size);
-        gtk_box_pack_start (GTK_BOX (buttonbox), icon, FALSE, TRUE, 0);
+        gtk_misc_set_alignment (GTK_MISC (icon), 0.5, 1.0);
+        gtk_box_pack_start (GTK_BOX (buttonbox), icon, TRUE, TRUE, 0);
 
         gtk_label_set_justify (GTK_LABEL (buttonlabel), GTK_JUSTIFY_CENTER);
         gtk_label_set_ellipsize (GTK_LABEL (buttonlabel), PANGO_ELLIPSIZE_END);

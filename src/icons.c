@@ -18,7 +18,7 @@
 
         Metacity - (c) 2001 Havoc Pennington
         libwnck  - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
  */
 
 #ifdef HAVE_CONFIG_H
@@ -36,15 +36,41 @@
 #include "inline-default-icon.h"
 #include "icons.h"
 #include "display.h"
+#include "screen.h"
+#include "client.h"
+#include "compositor.h"
 #include "hints.h"
+
+static void
+downsize_ratio (int *width, int *height, int dest_w, int dest_h)
+{
+    gdouble ratio;
+    int size;
+
+    g_return_if_fail (width != NULL);
+    g_return_if_fail (height != NULL);
+    g_return_if_fail (dest_w > 0 && dest_w > 0);
+
+    size = MIN (dest_w, dest_h);
+    if (*width > *height)
+    {
+        ratio = ((gdouble) *width) / size;
+        *width = (int) size;
+        *height = (int) (((gdouble) *height) / ratio);
+    }
+    else
+    {
+        ratio = ((gdouble) *height) / size;
+        *height = (int) size;
+        *width = (int) (((gdouble) *width) / ratio);
+    }
+}
 
 /*
  * create a GdkPixbuf from inline data and scale it to a given size
  */
 static GdkPixbuf *
-inline_icon_at_size (const guint8 *data,
-                          int width,
-                          int height)
+inline_icon_at_size (const guint8 *data, int width, int height)
 {
     GdkPixbuf *base;
 
@@ -52,23 +78,20 @@ inline_icon_at_size (const guint8 *data,
 
     g_return_val_if_fail (base, NULL);
 
-    if ((width < 0 && height < 0)
-        || (gdk_pixbuf_get_width (base) == width
-            && gdk_pixbuf_get_height (base) == height))
+    if ((width <= 0 || height <= 0) ||
+        (gdk_pixbuf_get_width (base) == width && gdk_pixbuf_get_height (base) == height))
     {
         return base;
     }
     else
     {
         GdkPixbuf *scaled;
+        int w, h;
 
-        scaled = gdk_pixbuf_scale_simple (base,
-                                          width >
-                                          0 ? width : gdk_pixbuf_get_width (base),
-                                          height >
-                                          0 ? height :
-                                          gdk_pixbuf_get_height (base),
-                                          GDK_INTERP_BILINEAR);
+        w = gdk_pixbuf_get_width (base);
+        h = gdk_pixbuf_get_height (base);
+        downsize_ratio (&w, &h, width, height);
+        scaled = gdk_pixbuf_scale_simple (base, w, h, GDK_INTERP_NEAREST);
 
         g_object_unref (G_OBJECT (base));
 
@@ -328,7 +351,7 @@ apply_mask (GdkPixbuf * pixbuf, GdkPixbuf * mask)
 }
 
 static GdkColormap *
-get_cmap (GdkPixmap * pixmap)
+get_cmap (GdkPixmap * pixmap, GdkScreen *gscreen)
 {
     GdkColormap *cmap;
 
@@ -337,6 +360,7 @@ get_cmap (GdkPixmap * pixmap)
     cmap = gdk_drawable_get_colormap (pixmap);
     if (cmap)
     {
+        g_message ("Drawable colormap");
         g_object_ref (G_OBJECT (cmap));
     }
     else
@@ -345,6 +369,12 @@ get_cmap (GdkPixmap * pixmap)
         {
             /* try null cmap */
             cmap = NULL;
+        }
+        else if ((gdk_drawable_get_depth (pixmap) == 32) && (gscreen != NULL))
+        {
+            /* Try ARGB cmap */
+            cmap = gdk_screen_get_rgba_colormap(gscreen);
+            g_object_ref (G_OBJECT (cmap));
         }
         else
         {
@@ -365,9 +395,8 @@ get_cmap (GdkPixmap * pixmap)
 }
 
 static GdkPixbuf *
-get_pixbuf_from_pixmap (GdkPixbuf * dest, Pixmap xpixmap,
-                        int src_x, int src_y, int dest_x,
-                        int dest_y, int width, int height)
+get_pixbuf_from_pixmap (GdkScreen *gscreen, Pixmap xpixmap, int src_x, int src_y,
+                        int dest_x, int dest_y, int width, int height)
 {
     GdkDrawable *drawable;
     GdkPixbuf *retval;
@@ -392,9 +421,9 @@ get_pixbuf_from_pixmap (GdkPixbuf * dest, Pixmap xpixmap,
         return NULL;
     }
 
-    cmap = get_cmap (drawable);
+    cmap = get_cmap (drawable, gscreen);
 
-    retval = gdk_pixbuf_get_from_drawable (dest, drawable, cmap, src_x, src_y,
+    retval = gdk_pixbuf_get_from_drawable (NULL, drawable, cmap, src_x, src_y,
                                            dest_x, dest_y, width, height);
 
     if (G_LIKELY(cmap))
@@ -407,7 +436,7 @@ get_pixbuf_from_pixmap (GdkPixbuf * dest, Pixmap xpixmap,
 }
 
 static GdkPixbuf *
-try_pixmap_and_mask (Display *dpy, Pixmap src_pixmap, Pixmap src_mask, int width, int height)
+try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask, int width, int height)
 {
     GdkPixbuf *unscaled;
     GdkPixbuf *icon;
@@ -420,15 +449,15 @@ try_pixmap_and_mask (Display *dpy, Pixmap src_pixmap, Pixmap src_mask, int width
     }
 
     gdk_error_trap_push ();
-    get_pixmap_geometry (dpy, src_pixmap, &w, &h);
-    unscaled = get_pixbuf_from_pixmap (NULL, src_pixmap, 0, 0, 0, 0, w, h);
+    get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_pixmap, &w, &h);
+    unscaled = get_pixbuf_from_pixmap (screen_info->gscr, src_pixmap, 0, 0, 0, 0, w, h);
     icon = NULL;
     mask = NULL;
 
     if (unscaled && src_mask)
     {
-        get_pixmap_geometry (dpy, src_mask, &w, &h);
-        mask = get_pixbuf_from_pixmap (NULL, src_mask, 0, 0, 0, 0, w, h);
+        get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h);
+        mask = get_pixbuf_from_pixmap (screen_info->gscr, src_mask, 0, 0, 0, 0, w, h);
     }
     gdk_error_trap_pop ();
 
@@ -446,7 +475,8 @@ try_pixmap_and_mask (Display *dpy, Pixmap src_pixmap, Pixmap src_mask, int width
 
     if (unscaled)
     {
-        icon = gdk_pixbuf_scale_simple (unscaled, width, height, GDK_INTERP_BILINEAR);
+        downsize_ratio (&w, &h, width, height);
+        icon = gdk_pixbuf_scale_simple (unscaled, w, h, GDK_INTERP_BILINEAR);
         g_object_unref (G_OBJECT (unscaled));
         return icon;
     }
@@ -461,7 +491,7 @@ free_pixels (guchar * pixels, gpointer data)
 }
 
 static GdkPixbuf *
-scaled_from_pixdata (guchar * pixdata, int w, int h, int new_w, int new_h)
+scaled_from_pixdata (guchar * pixdata, int w, int h, int dest_w, int dest_h)
 {
     GdkPixbuf *src;
     GdkPixbuf *dest;
@@ -475,25 +505,10 @@ scaled_from_pixdata (guchar * pixdata, int w, int h, int new_w, int new_h)
         return NULL;
     }
 
-    if (w != h)
+    if (w != dest_w || h != dest_h)
     {
-        size = MAX (w, h);
-
-        tmp = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
-
-        if (G_LIKELY(tmp != NULL))
-        {
-            gdk_pixbuf_fill (tmp, 0);
-            gdk_pixbuf_copy_area (src, 0, 0, w, h, tmp, (size - w) / 2, (size - h) / 2);
-
-            g_object_unref (src);
-            src = tmp;
-        }
-    }
-
-    if (w != new_w || h != new_h)
-    {
-        dest = gdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
+        downsize_ratio (&w, &h, dest_w, dest_h);
+        dest = gdk_pixbuf_scale_simple (src, w, h, GDK_INTERP_NEAREST);
         g_object_unref (G_OBJECT (src));
     }
     else
@@ -505,7 +520,7 @@ scaled_from_pixdata (guchar * pixdata, int w, int h, int new_w, int new_h)
 }
 
 GdkPixbuf *
-getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
+getAppIcon (ScreenInfo *screen_info, Window window, int width, int height)
 {
     XWMHints *hints;
     Pixmap pixmap;
@@ -517,13 +532,13 @@ getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
     pixmap = None;
     mask = None;
 
-    if (read_rgb_icon (display_info, window, width, height, &w, &h, &pixdata))
+    if (read_rgb_icon (screen_info->display_info, window, width, height, &w, &h, &pixdata))
     {
         return scaled_from_pixdata (pixdata, w, h, width, height);
     }
 
     gdk_error_trap_push ();
-    hints = XGetWMHints (display_info->dpy, window);
+    hints = XGetWMHints (myScreenGetXDisplay(screen_info), window);
     gdk_error_trap_pop ();
 
     if (hints)
@@ -543,17 +558,17 @@ getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
 
     if (pixmap != None)
     {
-        GdkPixbuf *icon = try_pixmap_and_mask (display_info->dpy, pixmap, mask, width, height);
+        GdkPixbuf *icon = try_pixmap_and_mask (screen_info, pixmap, mask, width, height);
         if (icon)
         {
             return icon;
         }
     }
 
-    getKDEIcon (display_info, window, &pixmap, &mask);
+    getKDEIcon (screen_info->display_info, window, &pixmap, &mask);
     if (pixmap != None)
     {
-        GdkPixbuf *icon = try_pixmap_and_mask (display_info->dpy, pixmap, mask, width, height);
+        GdkPixbuf *icon = try_pixmap_and_mask (screen_info, pixmap, mask, width, height);
         if (icon)
         {
             return icon;
@@ -561,4 +576,28 @@ getAppIcon (DisplayInfo *display_info, Window window, int width, int height)
     }
 
     return inline_icon_at_size (default_icon_data, width, height);
+}
+
+GdkPixbuf *
+getClientIcon (Client *c, int width, int height)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Pixmap pixmap;
+
+    g_return_val_if_fail (c != NULL, NULL);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    pixmap = compositorGetWindowPixmap (display_info, c->frame);
+    if (pixmap != None)
+    {
+        GdkPixbuf *icon = try_pixmap_and_mask (screen_info, pixmap, None, width, height);
+        if (icon)
+        {
+            return icon;
+        }
+    }
+
+    return getAppIcon (screen_info, c->window, width, height);
 }
