@@ -1949,6 +1949,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         clientGetXSyncCounter (c);
     }
+    if (c->xsync_counter)
+    {
+        clientCreateXSyncAlarm (c);
+    }
 #endif /* HAVE_XSYNC */
 
     /* Window is reparented now, so we can safely release the grab

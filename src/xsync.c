@@ -171,10 +171,6 @@ clientXSyncClearTimeout (Client * c)
     TRACE ("entering clientXSyncClearTimeout");
 
     FLAG_UNSET (c->flags, CLIENT_FLAG_XSYNC_WAITING);
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_XSYNC_CONFIGURE))
-    {
-        clientReconfigure (c, NO_CFG_FLAG);
-    }
     if (c->xsync_timeout_id)
     {
         g_source_remove (c->xsync_timeout_id);

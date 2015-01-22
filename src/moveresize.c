@@ -1352,12 +1352,9 @@ clientResizeConfigure (Client *c, int pw, int ph)
         {
             clientXSyncRequest (c);
         }
-        else
-        {
 #endif /* HAVE_XSYNC */
-            clientReconfigure (c, NO_CFG_FLAG);
+        clientReconfigure (c, NO_CFG_FLAG);
 #ifdef HAVE_XSYNC
-        }
     }
 #endif /* HAVE_XSYNC */
 }
@@ -1764,11 +1761,7 @@ clientResize (Client * c, int handle, XEvent * ev)
         return;
     }
 
-    if (!screen_info->params->box_resize)
-    {
-        FLAG_SET (c->flags, CLIENT_FLAG_XSYNC_CONFIGURE);
-    }
-    else if (screen_info->compositor_active)
+    if (screen_info->params->box_resize && screen_info->compositor_active)
     {
         passdata.wireframe = wireframeCreate (c);
     }
@@ -1794,13 +1787,6 @@ clientResize (Client * c, int handle, XEvent * ev)
     /* Clear any previously saved pos flag from screen resize */
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SAVED_POS);
 
-#ifdef HAVE_XSYNC
-    if (c->xsync_counter)
-    {
-        clientCreateXSyncAlarm (c);
-    }
-#endif /* HAVE_XSYNC */
-
     FLAG_SET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
     TRACE ("entering resize loop");
     eventFilterPush (display_info->xfilter, clientResizeEventFilter, &passdata);
@@ -1808,7 +1794,6 @@ clientResize (Client * c, int handle, XEvent * ev)
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving resize loop");
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
-    FLAG_UNSET (c->flags, CLIENT_FLAG_XSYNC_CONFIGURE);
 
     if (passdata.poswin)
     {
@@ -1837,14 +1822,6 @@ clientResize (Client * c, int handle, XEvent * ev)
             FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
         }
     }
-
-#ifdef HAVE_XSYNC
-    if (c->xsync_counter)
-    {
-        clientDestroyXSyncAlarm (c);
-    }
-#endif /* HAVE_XSYNC */
-
     clientReconfigure (c, NO_CFG_FLAG);
 
     if (!passdata.released)

@@ -170,8 +170,7 @@
 #define CLIENT_FLAG_XSYNC_WAITING       (1L<<22)
 #define CLIENT_FLAG_XSYNC_ENABLED       (1L<<23)
 #define CLIENT_FLAG_XSYNC_EXT_COUNTER   (1L<<24)
-#define CLIENT_FLAG_XSYNC_CONFIGURE     (1L<<25)
-#define CLIENT_FLAG_RESTORE_SIZE_POS    (1L<<26)
+#define CLIENT_FLAG_RESTORE_SIZE_POS    (1L<<25)
 
 #define WM_FLAG_DELETE                  (1L<<0)
 #define WM_FLAG_INPUT                   (1L<<1)
