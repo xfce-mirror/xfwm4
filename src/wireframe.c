@@ -120,7 +120,6 @@ wireframeDrawXlib (WireFrame *wireframe, int width, int height)
                         gdk_x11_gc_get_xgc (screen_info->white_gc),
                         0, 0, wireframe->width - 1, wireframe->height - 1);
     }
-    XFlush (myScreenGetXDisplay (screen_info));
 }
 
 static void
@@ -181,6 +180,7 @@ wireframeUpdate (Client *c, WireFrame *wireframe)
     {
          wireframeDrawXlib (wireframe, frameExtentWidth (c), frameExtentHeight (c));
     }
+    XFlush (myScreenGetXDisplay (screen_info));
 }
 
 static void
