@@ -246,7 +246,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     eventFilterStatus status;
     KeyCode cancel, left, right, up, down;
     int key, modifiers;
-    gboolean key_pressed, cycling, gone;
+    gboolean cycling, gone;
     GList *li;
 
     TRACE ("entering clientCycleEventFilter");
@@ -437,7 +437,6 @@ clientCycle (Client * c, XKeyEvent * ev)
     DisplayInfo *display_info;
     ClientCycleData passdata;
     GList *client_list, *selected;
-    gboolean g1, g2;
     int key, modifier;
 
     g_return_if_fail (c != NULL);
@@ -482,10 +481,9 @@ clientCycle (Client * c, XKeyEvent * ev)
         return;
     }
 
-    g1 = myScreenGrabKeyboard (screen_info, ev->time);
-    g2 = myScreenGrabPointer (screen_info, TRUE, NoEventMask, None, ev->time);
+    myScreenGrabPointer (screen_info, TRUE, NoEventMask, None, ev->time);
     /* Grabbing the pointer may fail e.g. if the user is doing a drag'n drop */
-    if (!g1)
+    if (!myScreenGrabKeyboard (screen_info, ev->time))
     {
         TRACE ("grab failed in clientCycle");
 

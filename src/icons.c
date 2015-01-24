@@ -42,10 +42,10 @@
 #include "hints.h"
 
 static void
-downsize_ratio (int *width, int *height, int dest_w, int dest_h)
+downsize_ratio (guint *width, guint *height, guint dest_w, guint dest_h)
 {
     gdouble ratio;
-    int size;
+    guint size;
 
     g_return_if_fail (width != NULL);
     g_return_if_fail (height != NULL);
@@ -55,14 +55,14 @@ downsize_ratio (int *width, int *height, int dest_w, int dest_h)
     if (*width > *height)
     {
         ratio = ((gdouble) *width) / size;
-        *width = (int) size;
-        *height = (int) (((gdouble) *height) / ratio);
+        *width = (guint) size;
+        *height = (guint) (((gdouble) *height) / ratio);
     }
     else
     {
         ratio = ((gdouble) *height) / size;
-        *height = (int) size;
-        *width = (int) (((gdouble) *width) / ratio);
+        *height = (guint) size;
+        *width = (guint) (((gdouble) *width) / ratio);
     }
 }
 
@@ -70,7 +70,7 @@ downsize_ratio (int *width, int *height, int dest_w, int dest_h)
  * create a GdkPixbuf from inline data and scale it to a given size
  */
 static GdkPixbuf *
-inline_icon_at_size (const guint8 *data, int width, int height)
+inline_icon_at_size (const guint8 *data, guint width, guint height)
 {
     GdkPixbuf *base;
 
@@ -79,14 +79,15 @@ inline_icon_at_size (const guint8 *data, int width, int height)
     g_return_val_if_fail (base, NULL);
 
     if ((width <= 0 || height <= 0) ||
-        (gdk_pixbuf_get_width (base) == width && gdk_pixbuf_get_height (base) == height))
+        ((guint) gdk_pixbuf_get_width (base) == width &&
+         (guint) gdk_pixbuf_get_height (base) == height))
     {
         return base;
     }
     else
     {
         GdkPixbuf *scaled;
-        int w, h;
+        guint w, h;
 
         w = gdk_pixbuf_get_width (base);
         h = gdk_pixbuf_get_height (base);
@@ -101,9 +102,9 @@ inline_icon_at_size (const guint8 *data, int width, int height)
 
 
 static gboolean
-find_largest_sizes (gulong * data, gulong nitems, int *width, int *height)
+find_largest_sizes (gulong * data, gulong nitems, guint *width, guint *height)
 {
-    int w, h;
+    guint w, h;
 
     *width = 0;
     *height = 0;
@@ -134,13 +135,13 @@ find_largest_sizes (gulong * data, gulong nitems, int *width, int *height)
 }
 
 static gboolean
-find_best_size (gulong * data, gulong nitems, int ideal_width, int ideal_height,
-                int *width, int *height, gulong ** start)
+find_best_size (gulong * data, gulong nitems, gint ideal_width, gint ideal_height,
+                guint *width, guint *height, gulong ** start)
 {
     gulong *best_start;
-    int ideal_size;
-    int w, h, best_size, this_size;
-    int best_w, best_h, max_width, max_height;
+    guint ideal_size;
+    guint w, h, best_size, this_size;
+    guint best_w, best_h, max_width, max_height;
 
     *width = 0;
     *height = 0;
@@ -234,12 +235,12 @@ find_best_size (gulong * data, gulong nitems, int ideal_width, int ideal_height,
 }
 
 static void
-argbdata_to_pixdata (gulong * argb_data, int len, guchar ** pixdata)
+argbdata_to_pixdata (gulong * argb_data, guint len, guchar ** pixdata)
 {
     guchar *p;
     guint argb;
     guint rgba;
-    int i;
+    guint i;
 
     *pixdata = g_new (guchar, len * 4);
     p = *pixdata;
@@ -260,13 +261,13 @@ argbdata_to_pixdata (gulong * argb_data, int len, guchar ** pixdata)
 }
 
 static gboolean
-read_rgb_icon (DisplayInfo *display_info, Window window, int ideal_width, int ideal_height,
-               int *width, int *height, guchar ** pixdata)
+read_rgb_icon (DisplayInfo *display_info, Window window, guint ideal_width, guint ideal_height,
+               guint *width, guint *height, guchar ** pixdata)
 {
     gulong nitems;
     gulong *data;
     gulong *best;
-    int w, h;
+    guint w, h;
 
     data = NULL;
 
@@ -292,7 +293,7 @@ read_rgb_icon (DisplayInfo *display_info, Window window, int ideal_width, int id
 }
 
 static void
-get_pixmap_geometry (Display *dpy, Pixmap pixmap, unsigned int *w, unsigned int *h)
+get_pixmap_geometry (Display *dpy, Pixmap pixmap, guint *w, guint *h)
 {
     Window root;
     guint border_width;
@@ -308,8 +309,8 @@ apply_mask (GdkPixbuf * pixbuf, GdkPixbuf * mask)
     GdkPixbuf *with_alpha;
     guchar *src;
     guchar *dest;
-    int w, h, i, j;
-    int src_stride, dest_stride;
+    guint w, h, i, j;
+    guint src_stride, dest_stride;
 
     w = MIN (gdk_pixbuf_get_width (mask), gdk_pixbuf_get_width (pixbuf));
     h = MIN (gdk_pixbuf_get_height (mask), gdk_pixbuf_get_height (pixbuf));
@@ -395,8 +396,8 @@ get_cmap (GdkPixmap * pixmap, GdkScreen *gscreen)
 }
 
 static GdkPixbuf *
-get_pixbuf_from_pixmap (GdkScreen *gscreen, Pixmap xpixmap, int src_x, int src_y,
-                        int dest_x, int dest_y, int width, int height)
+get_pixbuf_from_pixmap (GdkScreen *gscreen, Pixmap xpixmap, guint src_x, guint src_y,
+                        gint dest_x, gint dest_y, guint width, guint height)
 {
     GdkDrawable *drawable;
     GdkPixbuf *retval;
@@ -436,12 +437,12 @@ get_pixbuf_from_pixmap (GdkScreen *gscreen, Pixmap xpixmap, int src_x, int src_y
 }
 
 static GdkPixbuf *
-try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask, int width, int height)
+try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask, guint width, guint height)
 {
     GdkPixbuf *unscaled;
     GdkPixbuf *icon;
     GdkPixbuf *mask;
-    unsigned int w, h;
+    guint w, h;
 
     if (src_pixmap == None)
     {
@@ -491,12 +492,10 @@ free_pixels (guchar * pixels, gpointer data)
 }
 
 static GdkPixbuf *
-scaled_from_pixdata (guchar * pixdata, int w, int h, int dest_w, int dest_h)
+scaled_from_pixdata (guchar * pixdata, guint w, guint h, guint dest_w, guint dest_h)
 {
     GdkPixbuf *src;
     GdkPixbuf *dest;
-    GdkPixbuf *tmp;
-    int size;
 
     src = gdk_pixbuf_new_from_data (pixdata, GDK_COLORSPACE_RGB, TRUE, 8, w, h, w * 4, free_pixels, NULL);
 
@@ -520,13 +519,13 @@ scaled_from_pixdata (guchar * pixdata, int w, int h, int dest_w, int dest_h)
 }
 
 GdkPixbuf *
-getAppIcon (ScreenInfo *screen_info, Window window, int width, int height)
+getAppIcon (ScreenInfo *screen_info, Window window, guint width, guint height)
 {
     XWMHints *hints;
     Pixmap pixmap;
     Pixmap mask;
     guchar *pixdata;
-    int w, h;
+    guint w, h;
 
     pixdata = NULL;
     pixmap = None;
@@ -579,7 +578,7 @@ getAppIcon (ScreenInfo *screen_info, Window window, int width, int height)
 }
 
 GdkPixbuf *
-getClientIcon (Client *c, int width, int height)
+getClientIcon (Client *c, guint width, guint height)
 {
     ScreenInfo *screen_info;
     GdkPixbuf *icon_pixbuf;

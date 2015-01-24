@@ -477,7 +477,8 @@ gboolean
 getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long **cardinals_p, int *n_cardinals_p)
 {
     Atom type;
-    int i, format;
+    int format;
+    unsigned int i;
     unsigned long n_cardinals;
     unsigned long bytes_after;
     unsigned char *data;

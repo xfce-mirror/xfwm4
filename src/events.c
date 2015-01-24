@@ -1374,11 +1374,10 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
 static eventFilterStatus
 handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 {
-    static guint32 lastresist = CurrentTime;
     ScreenInfo *screen_info;
     Client *c;
     int b;
-    gboolean warp_pointer, need_redraw;
+    gboolean need_redraw;
 
     /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
@@ -1393,7 +1392,6 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
 
     TRACE ("EnterNotify on window (0x%lx)", ev->window);
 
-    warp_pointer = FALSE;
     need_redraw = FALSE;
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_BUTTON);
     if (c)

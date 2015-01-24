@@ -18,7 +18,7 @@
 
         xcompmgr - (c) 2003 Keith Packard
         metacity - (c) 2003, 2004 Red Hat, Inc.
-        xfwm4    - (c) 2005-2014 Olivier Fourdan
+        xfwm4    - (c) 2005-2015 Olivier Fourdan
 
 */
 
@@ -26,6 +26,7 @@
 #include "config.h"
 #endif
 
+#include <sys/ioctl.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>

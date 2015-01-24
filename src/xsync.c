@@ -48,7 +48,6 @@ clientCreateXSyncAlarm (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XSyncValue current_value, next_value;
     XSyncAlarmAttributes attrs;
 
     g_return_val_if_fail (c != NULL, FALSE);

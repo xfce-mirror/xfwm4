@@ -205,6 +205,11 @@ void                     initNetDesktopInfo                     (DisplayInfo *,
                                                                  int,
                                                                  int,
                                                                  int);
+void                     setNetDesktopInfo                      (DisplayInfo *,
+                                                                 Window,
+                                                                 int,
+                                                                 int,
+                                                                 int);
 void                     setUTF8StringHint                      (DisplayInfo *,
                                                                  Window,
                                                                  int,

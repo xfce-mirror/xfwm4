@@ -18,7 +18,7 @@
 
         Metacity - (c) 2001 Havoc Pennington
         libwnck  - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
  */
 
 #ifndef INC_ICONS_H
@@ -37,10 +37,10 @@
 
 GdkPixbuf               *getAppIcon                             (ScreenInfo *,
                                                                  Window,
-                                                                 int,
-                                                                 int);
+                                                                 guint,
+                                                                 guint);
 GdkPixbuf               *getClientIcon                          (Client *,
-                                                                 int width,
-                                                                 int height);
+                                                                 guint,
+                                                                 guint);
 
 #endif /* INC_ICONS_H */

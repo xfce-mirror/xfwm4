@@ -41,6 +41,7 @@
 #include "focus.h"
 #include "frame.h"
 #include "moveresize.h"
+#include "netwm.h"
 #include "placement.h"
 #include "poswin.h"
 #include "screen.h"
@@ -771,7 +772,6 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
     ScreenInfo *screen_info;
     GdkRectangle rect;
     int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_corner;
-    NetWmDesktopLayout layout;
 
     screen_info = c->screen_info;
 
@@ -789,7 +789,6 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
     disp_max_x = rect.x + rect.width;
     disp_max_y = rect.y + rect.height;
 
-    layout = screen_info->desktop_layout;
     dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
     dist_corner = (MIN (disp_max_x, disp_max_y)) / BORDER_TILE_LENGTH_RELATIVE;
 
@@ -1334,7 +1333,6 @@ clientResizeConfigure (Client *c, int pw, int ph)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XWindowChanges wc;
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -1369,10 +1367,9 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     GdkRectangle rect;
     MoveResizeData *passdata;
     eventFilterStatus status;
-    int prev_x, prev_y, prev_width, prev_height;
-    int cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
+    int prev_width, prev_height;
+    int cx, cy;
     int move_top, move_bottom, move_left, move_right;
-    gint min_visible;
     gboolean resizing;
     int right_edge; /* -Cliff */
     int bottom_edge; /* -Cliff */
@@ -1390,8 +1387,6 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
      * we use XFWM_FLAG_MOVING_RESIZING for that.
      */
     resizing = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
-
-    min_visible = MAX (frameExtentTop (c), CLIENT_MIN_VISIBLE);
 
     cx = frameExtentX (c) + (frameExtentWidth (c) / 2);
     cy = frameExtentY (c) + (frameExtentHeight (c) / 2);
@@ -1415,14 +1410,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
 
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
-    disp_x = rect.x;
-    disp_y = rect.y;
-    disp_max_x = rect.x + rect.width;
-    disp_max_y = rect.y + rect.height;
-
     /* Store previous values in case the resize puts the window title off bounds */
-    prev_x = c->x;
-    prev_y = c->y;
     prev_width = c->width;
     prev_height = c->height;
 

@@ -603,7 +603,6 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
 static gboolean
 tabwinConfigure (TabwinWidget *tabwin_widget, GdkEventConfigure *event)
 {
-    Tabwin *tabwin;
     GtkWindow *window;
     GdkRectangle monitor;
     GdkScreen *screen;
@@ -686,14 +685,13 @@ tabwin_widget_class_init (TabwinWidgetClass *klass)
                                                                   G_PARAM_READABLE));
 }
 
-void
+static void
 computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
 {
     Tabwin *tabwin;
     GdkPixbuf *icon_pixbuf;
     PangoLayout *layout;
     GList *client_list;
-    gint packpos;
     gint size_request;
     gboolean preview;
 
@@ -1093,14 +1091,12 @@ tabwinSelectDelta (Tabwin *tabwin, int row_delta, int col_delta)
 {
     GList *selected;
     int pos_current, col_current, row_current, nitems, cols, rows;
-    TabwinWidget *tabwin_widget;
     Client *c;
     ScreenInfo *screen_info;
 
     TRACE ("entering tabwinSelectDelta");
     g_return_val_if_fail (tabwin != NULL, NULL);
 
-    tabwin_widget = (TabwinWidget *) tabwin->tabwin_list->data;
     pos_current = g_list_position (*tabwin->client_list, tabwin->selected);
     nitems = g_list_length (*tabwin->client_list);
 

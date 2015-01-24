@@ -1410,7 +1410,6 @@ static void
 clientUpdateIconPix (Client *c)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     gint size;
     GdkPixbuf *icon;
     int i;
@@ -1421,8 +1420,6 @@ clientUpdateIconPix (Client *c)
     TRACE ("entering clientUpdateIconPix for \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-
     for (i = 0; i < STATE_TOGGLED; i++)
     {
         xfwmPixmapFree (&c->appmenu[i]);
@@ -1510,7 +1507,7 @@ clientSaveSizePos (Client *c)
 gboolean
 clientRestoreSizePos (Client *c)
 {
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, FALSE);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
     {
