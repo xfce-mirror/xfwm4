@@ -2876,9 +2876,8 @@ compositorIsUsable (DisplayInfo *display_info)
         return FALSE;
     }
     return TRUE;
-#else
-    return FALSE;
 #endif /* HAVE_COMPOSITOR */
+    return FALSE;
 }
 
 void
@@ -2994,6 +2993,29 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int 
 #endif /* HAVE_COMPOSITOR */
 }
 
+gboolean
+compositorWindowPixmapAvailable (ScreenInfo *screen_info)
+{
+#ifdef HAVE_NAME_WINDOW_PIXMAP
+#ifdef HAVE_COMPOSITOR
+    if (!screen_info->compositor_active)
+    {
+        return FALSE;
+    }
+    if (!compositorIsUsable (screen_info->display_info))
+    {
+        return FALSE;
+    }
+    else if (!screen_info->display_info->have_name_window_pixmap)
+    {
+        return FALSE;
+    }
+    return TRUE;
+#endif /* HAVE_COMPOSITOR */
+#endif /* HAVE_NAME_WINDOW_PIXMAP */
+    return FALSE;
+}
+
 /* May return None if:
  * - The xserver does not support name window pixmaps
  * - The compositor is disabled at run time
@@ -3002,7 +3024,7 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int 
  * if the window is unmapped.
  */
 Pixmap
-compositorGetWindowPixmap (DisplayInfo *display_info, Window id)
+compositorGetWindowPixmap (ScreenInfo *screen_info, Window id)
 {
 #ifdef HAVE_NAME_WINDOW_PIXMAP
 #ifdef HAVE_COMPOSITOR
@@ -3011,17 +3033,12 @@ compositorGetWindowPixmap (DisplayInfo *display_info, Window id)
     g_return_val_if_fail (id != None, None);
     TRACE ("entering compositorGetPixmap: 0x%lx", id);
 
-    if (!compositorIsUsable (display_info))
+    if (!compositorWindowPixmapAvailable (screen_info))
     {
         return None;
     }
 
-    if (!display_info->have_name_window_pixmap)
-    {
-        return None;
-    }
-
-    cw = find_cwindow_in_display (display_info, id);
+    cw = find_cwindow_in_screen (screen_info, id);
     if (cw)
     {
         if (cw->name_window_pixmap != None)

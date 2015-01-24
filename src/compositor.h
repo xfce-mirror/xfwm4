@@ -51,7 +51,8 @@ void                     compositorResizeWindow                 (DisplayInfo *,
                                                                  int,
                                                                  int,
                                                                  int);
-Pixmap                   compositorGetWindowPixmap              (DisplayInfo *,
+gboolean                 compositorWindowPixmapAvailable        (ScreenInfo *);
+Pixmap                   compositorGetWindowPixmap              (ScreenInfo *,
                                                                  Window);
 void                     compositorHandleEvent                  (DisplayInfo *,
                                                                  XEvent *);
