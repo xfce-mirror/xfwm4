@@ -820,7 +820,7 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
     {
         /* Mouse wheel scroll up */
 #ifdef HAVE_COMPOSITOR
-        if ((state) && (state == screen_info->params->easy_click) && (screen_info->compositor_active))
+        if ((state) && (state == screen_info->params->easy_click) && compositorIsActive (screen_info))
         {
             clientIncOpacity(c);
         }
@@ -838,7 +838,7 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
     {
         /* Mouse wheel scroll down */
 #ifdef HAVE_COMPOSITOR
-        if ((state) && (state == screen_info->params->easy_click) && (screen_info->compositor_active))
+        if ((state) && (state == screen_info->params->easy_click) && compositorIsActive (screen_info))
         {
             clientDecOpacity(c);
         }
@@ -929,12 +929,12 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
         }
 #ifdef HAVE_COMPOSITOR
         else if ((ev->button == Button4) && (screen_info->params->zoom_desktop) && (state) &&
-                 (state == screen_info->params->easy_click) && (screen_info->compositor_active))
+                 (state == screen_info->params->easy_click) && compositorIsActive (screen_info))
         {
             compositorZoomIn(screen_info, ev);
         }
         else if ((ev->button == Button5) && (screen_info->params->zoom_desktop) && (state) &&
-                 (state == screen_info->params->easy_click) && (screen_info->compositor_active))
+                 (state == screen_info->params->easy_click) && compositorIsActive (screen_info))
         {
             compositorZoomOut(screen_info, ev);
         }

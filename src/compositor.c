@@ -2880,6 +2880,17 @@ compositorIsUsable (DisplayInfo *display_info)
     return FALSE;
 }
 
+gboolean
+compositorIsActive (ScreenInfo *screen_info)
+{
+#ifdef HAVE_COMPOSITOR
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+
+    return screen_info->compositor_active;
+#endif /* HAVE_COMPOSITOR */
+    return FALSE;
+}
+
 void
 compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
 {

@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -37,6 +37,7 @@
 #include <gtk/gtk.h>
 
 #include "client.h"
+#include "compositor.h"
 #include "focus.h"
 #include "frame.h"
 #include "moveresize.h"
@@ -58,8 +59,8 @@
 
 #define TILE_DISTANCE 10
 #define BORDER_TILE_LENGTH_RELATIVE 5
-#define use_xor_move(screen_info) (screen_info->params->box_move && !screen_info->compositor_active)
-#define use_xor_resize(screen_info) (screen_info->params->box_resize && !screen_info->compositor_active)
+#define use_xor_move(screen_info) (screen_info->params->box_move && !compositorIsActive (screen_info))
+#define use_xor_resize(screen_info) (screen_info->params->box_resize && !compositorIsActive (screen_info))
 
 typedef struct _MoveResizeData MoveResizeData;
 struct _MoveResizeData
@@ -1207,7 +1208,7 @@ clientMove (Client * c, XEvent * ev)
         return;
     }
 
-    if (screen_info->params->box_move && screen_info->compositor_active)
+    if (screen_info->params->box_move && compositorIsActive (screen_info))
     {
         passdata.wireframe = wireframeCreate (c);
     }
@@ -1761,7 +1762,7 @@ clientResize (Client * c, int handle, XEvent * ev)
         return;
     }
 
-    if (screen_info->params->box_resize && screen_info->compositor_active)
+    if (screen_info->params->box_resize && compositorIsActive (screen_info))
     {
         passdata.wireframe = wireframeCreate (c);
     }

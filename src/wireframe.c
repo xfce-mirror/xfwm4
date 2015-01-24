@@ -17,7 +17,7 @@
 
 
         metacity - (c) 2001 Anders Carlsson, Havoc Pennington
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -172,7 +172,7 @@ wireframeUpdate (Client *c, WireFrame *wireframe)
     wireframe->y = frameExtentY (c);
 
     screen_info = wireframe->screen_info;
-    if (screen_info->compositor_active)
+    if (compositorIsActive (screen_info))
     {
          wireframeDrawCairo (wireframe, frameExtentWidth (c), frameExtentHeight (c));
     }
@@ -230,9 +230,9 @@ wireframeCreate (Client *c)
     wireframe->height = 0;
     wireframe->cr = NULL;
     wireframe->surface = NULL;
-    wireframe->alpha = (screen_info->compositor_active ? 0.5 : 1.0);
+    wireframe->alpha = (compositorIsActive (screen_info) ? 0.5 : 1.0);
 
-    if (screen_info->compositor_active &&
+    if (compositorIsActive (screen_info) &&
         XMatchVisualInfo (myScreenGetXDisplay (screen_info), screen_info->screen,
                           32, TrueColor, &xvisual_info))
     {
@@ -261,7 +261,7 @@ wireframeCreate (Client *c)
                                         CWOverrideRedirect | CWColormap | CWBackPixel | CWBorderPixel,
                                         &attrs);
 
-    if (screen_info->compositor_active)
+    if (compositorIsActive (screen_info))
     {
         /* Cairo */
         wireframeInitColor (wireframe);
