@@ -46,7 +46,14 @@ struct _Tabwin
 {
     GList *tabwin_list;
     GList **client_list;
+    GList *icon_list;
     GList *selected;
+    gint monitor_width;
+    gint monitor_height;
+    gint grid_cols;
+    gint grid_rows;
+    gint icon_size;
+    gint label_height;
     gboolean display_workspace;
 };
 
@@ -64,10 +71,9 @@ struct _TabwinWidget
     GtkWidget *hovered;
 
     gulong selected_callback;
+    gint width;
+    gint height;
     gint monitor_num;
-    gint width, height;
-    gint grid_cols;
-    gint grid_rows;
 };
 
 struct _TabwinWidgetClass
