@@ -91,7 +91,7 @@ inline_icon_at_size (const guint8 *data, int width, int height)
         w = gdk_pixbuf_get_width (base);
         h = gdk_pixbuf_get_height (base);
         downsize_ratio (&w, &h, width, height);
-        scaled = gdk_pixbuf_scale_simple (base, w, h, GDK_INTERP_NEAREST);
+        scaled = gdk_pixbuf_scale_simple (base, w, h, GDK_INTERP_BILINEAR);
 
         g_object_unref (G_OBJECT (base));
 
@@ -508,7 +508,7 @@ scaled_from_pixdata (guchar * pixdata, int w, int h, int dest_w, int dest_h)
     if (w != dest_w || h != dest_h)
     {
         downsize_ratio (&w, &h, dest_w, dest_h);
-        dest = gdk_pixbuf_scale_simple (src, w, h, GDK_INTERP_NEAREST);
+        dest = gdk_pixbuf_scale_simple (src, w, h, GDK_INTERP_BILINEAR);
         g_object_unref (G_OBJECT (src));
     }
     else
@@ -582,22 +582,31 @@ GdkPixbuf *
 getClientIcon (Client *c, int width, int height)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
+    GdkPixbuf *icon_pixbuf;
+    GdkPixbuf *icon_pixbuf_stated;
     Pixmap pixmap;
 
     g_return_val_if_fail (c != NULL, NULL);
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-    pixmap = compositorGetWindowPixmap (display_info, c->frame);
+    icon_pixbuf = NULL;
+    pixmap = compositorGetWindowPixmap (screen_info, c->frame);
     if (pixmap != None)
     {
-        GdkPixbuf *icon = try_pixmap_and_mask (screen_info, pixmap, None, width, height);
-        if (icon)
-        {
-            return icon;
-        }
+        icon_pixbuf = try_pixmap_and_mask (screen_info, pixmap, None, width, height);
+    }
+    if (!icon_pixbuf)
+    {
+        icon_pixbuf = getAppIcon (screen_info, c->window, width, height);
     }
 
-    return getAppIcon (screen_info, c->window, width, height);
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+    {
+        icon_pixbuf_stated = gdk_pixbuf_copy (icon_pixbuf);
+        gdk_pixbuf_saturate_and_pixelate (icon_pixbuf, icon_pixbuf_stated, 0.55, TRUE);
+        g_object_unref (icon_pixbuf);
+        icon_pixbuf = icon_pixbuf_stated;
+    }
+
+    return icon_pixbuf;
 }

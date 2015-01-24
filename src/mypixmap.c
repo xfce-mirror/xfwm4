@@ -784,7 +784,7 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, const gchar * dir, const gchar * file)
                   gdk_pixbuf_get_height (alpha));
 
     gdk_pixbuf_composite (alpha, pixbuf, 0, 0, width, height,
-                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 0xFF);
+                          0, 0, 1.0, 1.0, GDK_INTERP_BILINEAR, 0xFF);
 
     g_object_unref (alpha);
 
@@ -921,7 +921,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap,
                                         dest_x, dest_y, 0, 0, width, height);
     gdk_pixbuf_composite (pixbuf, src, 0, 0, width, height,
-                          0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 0xFF);
+                          0, 0, 1.0, 1.0, GDK_INTERP_BILINEAR, 0xFF);
     gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, dest_x, dest_y,
                      width, height, GDK_RGB_DITHER_NONE, 0, 0);
 
