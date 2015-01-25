@@ -50,6 +50,7 @@ struct _Tabwin
     GList *selected;
     gint monitor_width;
     gint monitor_height;
+    gint client_count;
     gint grid_cols;
     gint grid_rows;
     gint icon_size;

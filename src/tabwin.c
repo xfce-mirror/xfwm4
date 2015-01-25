@@ -502,12 +502,13 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
     Tabwin *tabwin;
 
     TRACE ("entering createWindowlist");
-    g_return_val_if_fail (screen_info->client_count > 0, NULL);
+    g_return_val_if_fail (tabwin_widget != NULL, NULL);
+    tabwin = tabwin_widget->tabwin;
+    g_return_val_if_fail (tabwin->client_count > 0, NULL);
 
     packpos = 0;
     c = NULL;
     selected = NULL;
-    tabwin = tabwin_widget->tabwin;
     tabwin_widget->widgets = NULL;
     size_request = tabwin->icon_size + tabwin->label_height + 2 * WIN_ICON_BORDER;
 
@@ -697,9 +698,9 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
 
     TRACE ("entering computeTabwinData");
     g_return_if_fail (GTK_IS_WIDGET(tabwin_widget));
-    g_return_if_fail (screen_info->client_count > 0);
-
     tabwin = tabwin_widget->tabwin;
+    g_return_if_fail (tabwin->client_count > 0);
+
     tabwin->monitor_width = getMinMonitorWidth (screen_info);
     tabwin->monitor_height = getMinMonitorHeight (screen_info);
     tabwin->label_height = 30;
@@ -727,7 +728,7 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
         }
         size_request = tabwin->icon_size + tabwin->label_height + 2 * WIN_ICON_BORDER;
         tabwin->grid_cols = (tabwin->monitor_width / (size_request)) * 0.75;
-        tabwin->grid_rows = screen_info->client_count / tabwin->grid_cols;
+        tabwin->grid_rows = tabwin->client_count / tabwin->grid_cols;
 
         /* If we run out of space, halve the icon size to make more room. */
         while ((size_request) * tabwin->grid_rows > tabwin->monitor_height - tabwin->label_height)
@@ -749,7 +750,7 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
 
             /* Recalculate with new icon size */
             tabwin->grid_cols = (tabwin->monitor_width / (size_request)) * 0.75;
-            tabwin->grid_rows = screen_info->client_count / tabwin->grid_cols + 1;
+            tabwin->grid_rows = tabwin->client_count / tabwin->grid_cols + 1;
 
             /* Shrinking the icon too much makes it hard to see */
             if (tabwin->icon_size < 8)
@@ -937,6 +938,7 @@ tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
     screen_info = c->screen_info;
     tabwin->display_workspace = display_workspace;
     tabwin->client_list = client_list;
+    tabwin->client_count = g_list_length (*client_list);
     tabwin->selected = selected;
     tabwin->tabwin_list = NULL;
     tabwin->icon_list = NULL;
