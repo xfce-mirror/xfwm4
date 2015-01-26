@@ -67,6 +67,11 @@ AC_CHECK_HEADERS([stropts.h])
 AC_CHECK_FUNCS([daemon setsid])
 AC_CHECK_FUNCS(opendir)
 
+dnl Math lib is required (if available)
+MATH_LIBS=""
+AC_CHECK_LIB(m, ceil, MATH_LIBS="-lm")
+AC_SUBST([MATH_LIBS])
+
 dnl Check for i18n support
 XDT_I18N([@LINGUAS@])
 
@@ -184,7 +189,7 @@ dnl Xcomposite and related extensions
 dnl
 compositor="no"
 ENABLE_COMPOSITOR=""
-MATH_LIBS=""
+
 AC_ARG_ENABLE([compositor],
 AC_HELP_STRING([--enable-compositor], [enable compositor in xfwm4 (default)])
 AC_HELP_STRING([--disable-compositor], [disable compositor in xfwm4]),
@@ -198,12 +203,9 @@ if test x"$enable_compositor" = x"yes"; then
       ENABLE_COMPOSITOR="--enable-compositor"
       AC_DEFINE([HAVE_COMPOSITOR], [1], [Define to enable compositor])
       compositor="yes"
-      dnl Math lib is required for compositor internals
-      MATH_LIBS=" -lm"
     fi
   fi
 fi
-AC_SUBST([MATH_LIBS])
 AC_SUBST(ENABLE_COMPOSITOR)
 
 dnl

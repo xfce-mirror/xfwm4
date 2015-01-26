@@ -44,6 +44,10 @@
 #define WIN_BORDER_WIDTH 1
 #endif
 
+#ifndef WIN_MAX_RATIO
+#define WIN_MAX_RATIO 0.80
+#endif
+
 #ifndef WIN_ALPHA
 #define WIN_ALPHA 0.85
 #endif
@@ -56,6 +60,7 @@
 #define WIN_BORDER_RADIUS 10
 #endif
 
+#include <math.h>
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
@@ -727,11 +732,14 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
                                   "icon-size", &tabwin->icon_size, NULL);
         }
         size_request = tabwin->icon_size + tabwin->label_height + 2 * WIN_ICON_BORDER;
-        tabwin->grid_cols = (tabwin->monitor_width / (size_request)) * 0.75;
-        tabwin->grid_rows = tabwin->client_count / tabwin->grid_cols;
+        tabwin->grid_cols = (int) (floor ((double) tabwin->monitor_width * WIN_MAX_RATIO /
+                                          (double) size_request));
+        tabwin->grid_rows = (int) (ceil ((double) tabwin->client_count /
+                                         (double) tabwin->grid_cols));
 
         /* If we run out of space, halve the icon size to make more room. */
-        while ((size_request) * tabwin->grid_rows > tabwin->monitor_height - tabwin->label_height)
+        while ((size_request) * tabwin->grid_rows + tabwin->label_height >
+               ((double) tabwin->monitor_height) * WIN_MAX_RATIO)
         {
             /* Disable preview otherwise it'd be too slow */
             if (preview)
@@ -749,8 +757,10 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
             size_request = tabwin->icon_size + tabwin->label_height + 2 * WIN_ICON_BORDER;
 
             /* Recalculate with new icon size */
-            tabwin->grid_cols = (tabwin->monitor_width / (size_request)) * 0.75;
-            tabwin->grid_rows = tabwin->client_count / tabwin->grid_cols + 1;
+            tabwin->grid_cols = (int) (floor ((double) tabwin->monitor_width * WIN_MAX_RATIO /
+                                              (double) size_request));
+            tabwin->grid_rows = (int) (ceil ((double) tabwin->client_count /
+                                             (double) tabwin->grid_cols));
 
             /* Shrinking the icon too much makes it hard to see */
             if (tabwin->icon_size < 8)
