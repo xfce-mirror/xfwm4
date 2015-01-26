@@ -102,7 +102,11 @@
 #define TIMEOUT_REPAINT_MAX   20
 #define TIMEOUT_DRI           10 /* seconds */
 
+#ifdef __OpenBSD__
+#define DRM_CARD0             "/dev/drm0"
+#else
 #define DRM_CARD0             "/dev/dri/card0"
+#endif
 
 typedef struct _CWindow CWindow;
 struct _CWindow
