@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2015 Olivier Fourdan
 
  */
 
@@ -210,6 +210,7 @@ struct _XfwmParams
     gboolean cycle_draw_frame;
     gboolean cycle_hidden;
     gboolean cycle_minimum;
+    gboolean cycle_preview;
     gboolean cycle_workspaces;
     gboolean focus_hint;
     gboolean focus_new;

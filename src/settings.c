@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2011 Olivier Fourdan,
+        xfwm4    - (c) 2002-2015 Olivier Fourdan,
                        2008 Jannis Pohlmann
 
  */
@@ -716,6 +716,7 @@ loadSettings (ScreenInfo *screen_info)
         {"cycle_draw_frame", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_preview", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_tabwin_mode", NULL, G_TYPE_INT, FALSE},
         {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
         {"double_click_time", NULL, G_TYPE_INT, TRUE},
@@ -809,6 +810,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("cycle_draw_frame", rc);
     screen_info->params->cycle_hidden =
         getBoolValue ("cycle_hidden", rc);
+    screen_info->params->sync_to_vblank =
+        getBoolValue ("cycle_preview", rc);
     screen_info->params->cycle_tabwin_mode =
         CLAMP (getIntValue ("cycle_tabwin_mode", rc), 0, 1);
     screen_info->params->cycle_workspaces =
@@ -1339,6 +1342,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "cycle_apps_only"))
                 {
                     screen_info->params->cycle_apps_only = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_preview"))
+                {
+                    screen_info->params->cycle_preview = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "focus_hint"))
                 {
