@@ -775,6 +775,10 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
         tabwin->icon_size = LISTVIEW_WIN_ICON_SIZE;
         gtk_widget_style_get (GTK_WIDGET (tabwin_widget),
                               "listview-icon-size", &tabwin->icon_size, NULL);
+        tabwin->grid_rows = (int) (floor ((double) tabwin->monitor_height * WIN_MAX_RATIO /
+                                          (double) (tabwin->icon_size + 2 * WIN_ICON_BORDER)));
+        tabwin->grid_cols = (int) (ceil ((double) tabwin->client_count /
+                                         (double) tabwin->grid_rows));
     }
 
     /* pack the client icons */
