@@ -2499,8 +2499,8 @@ zoom_timeout_cb (gpointer data)
     }
 
     XQueryPointer (screen_info->display_info->dpy, screen_info->xroot,
-			    &root_return, &child_return,
-			    &x_root, &y_root, &x_win, &y_win, &mask);
+                            &root_return, &child_return,
+                            &x_root, &y_root, &x_win, &y_win, &mask);
     if (x_old != x_root || y_old != y_root)
     {
         x_old = x_root; y_old = y_root;
@@ -3216,11 +3216,10 @@ compositorInitDisplay (DisplayInfo *display_info)
     {
         display_info->have_composite = TRUE;
         XCompositeQueryVersion (display_info->dpy, &composite_major, &composite_minor);
-#if DEBUG
-        g_print ("composite event base: %i\n", display_info->composite_event_base);
-        g_print ("composite error base: %i\n", display_info->composite_error_base);
-        g_print ("composite version: %i.%i\n", composite_major, composite_minor);
-#endif
+
+        DBG ("composite event base: %i", display_info->composite_event_base);
+        DBG ("composite error base: %i", display_info->composite_error_base);
+        DBG ("composite version: %i.%i", composite_major, composite_minor);
     }
 
     if (!XDamageQueryExtension (display_info->dpy,
@@ -3235,10 +3234,9 @@ compositorInitDisplay (DisplayInfo *display_info)
     else
     {
         display_info->have_damage = TRUE;
-#if DEBUG
-        g_print ("damage event base: %i\n", display_info->damage_event_base);
-        g_print ("damage error base: %i\n", display_info->damage_error_base);
-#endif
+
+        DBG ("damage event base: %i", display_info->damage_event_base);
+        DBG ("damage error base: %i", display_info->damage_error_base);
     }
 
     if (!XFixesQueryExtension (display_info->dpy,
@@ -3253,10 +3251,9 @@ compositorInitDisplay (DisplayInfo *display_info)
     else
     {
         display_info->have_fixes = TRUE;
-#if DEBUG
-        g_print ("fixes event base: %i\n", display_info->fixes_event_base);
-        g_print ("fixes error base: %i\n", display_info->fixes_error_base);
-#endif /* DEBUG */
+
+        DBG ("fixes event base: %i", display_info->fixes_event_base);
+        DBG ("fixes error base: %i", display_info->fixes_error_base);
     }
 
     display_info->enable_compositor = ((display_info->have_render)

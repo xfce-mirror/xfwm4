@@ -24,6 +24,7 @@
 #include "config.h"
 #endif
 
+#include <stdio.h>
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -63,8 +64,8 @@ handleXError (Display * dpy, XErrorEvent * err)
     char buf[64];
 
     XGetErrorText (dpy, err->error_code, buf, 63);
-    g_print ("XError: %s\n", buf);
-    g_print ("==>  XID 0x%lx, Request %d, Error %d <==\n",
+    fprintf (stderr, "XError: %s\n", buf);
+    fprintf (stderr, "==>  XID 0x%lx, Request %d, Error %d <==\n",
               err->resourceid, err->request_code, err->error_code);
 #endif
     return 0;

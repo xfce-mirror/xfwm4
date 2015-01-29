@@ -40,6 +40,7 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -94,6 +95,47 @@ static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISIO
 
 static DisplayInfo *main_display_info = NULL;
 static gint compositor = COMPOSITOR_MODE_MANUAL;
+
+#ifdef DEBUG
+static gboolean
+setupLog (void)
+{
+    const gchar *str;
+    gchar *logfile;
+    int fd;
+
+    str = g_getenv ("XFWM4_LOG_FILE");
+    if (str)
+    {
+        logfile = g_strdup (str);
+    }
+    else
+    {
+        logfile = g_strdup_printf ("xfwm4-debug-%d.log", (int) getpid ());
+    }
+
+    fd = dup(fileno(stderr));
+    if (fd == -1)
+    {
+        g_warning ("Fail to open %s: %s", logfile, g_strerror (errno));
+        g_free (logfile);
+        return FALSE;
+    }
+
+    if (!freopen (logfile, "w", stderr))
+    {
+        g_warning ("Fail to redirect stderr: %s", g_strerror (errno));
+        g_free (logfile);
+        close (fd);
+        return FALSE;
+    }
+
+    g_print ("Logging to %s\n", logfile);
+    g_free (logfile);
+
+    return TRUE;
+}
+#endif /* DEBUG */
 
 static void
 handleSignal (int sig)
@@ -522,6 +564,25 @@ initialize (gint compositor_mode, gboolean replace_wm)
     return sessionStart (main_display_info);
 }
 
+static void
+init_pango_cache (void)
+{
+    GtkWidget *tmp_win;
+    PangoLayout *layout;
+
+    /*
+     * The first time the first Gtk application on a display uses pango,
+     * pango grabs the XServer while it creates the font cache window.
+     * Therefore, force the cache window to be created now instead of
+     * trying to do it while we have another grab and deadlocking the server.
+     */
+    tmp_win = gtk_window_new (GTK_WINDOW_POPUP);
+    layout = gtk_widget_create_pango_layout (tmp_win, "-");
+    pango_layout_get_pixel_extents (layout, NULL, NULL);
+    g_object_unref (G_OBJECT (layout));
+    gtk_widget_destroy (GTK_WIDGET (tmp_win));
+}
+
 int
 main (int argc, char **argv)
 {
@@ -531,6 +592,7 @@ main (int argc, char **argv)
     int status;
     GOptionContext *context;
     GError *error = NULL;
+
 #ifndef HAVE_COMPOSITOR
     gchar *compositor_foo = NULL;
 #endif
@@ -551,6 +613,9 @@ main (int argc, char **argv)
         { NULL }
     };
 
+#ifdef DEBUG
+    setupLog ();
+#endif /* DEBUG */
     DBG ("xfwm4 starting");
 
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
@@ -577,6 +642,7 @@ main (int argc, char **argv)
          print_version ();
          return EXIT_SUCCESS;
     }
+    init_pango_cache ();
 
     status = initialize (compositor, replace_wm);
     /*
