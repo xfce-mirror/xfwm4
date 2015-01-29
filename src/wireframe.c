@@ -288,11 +288,6 @@ wireframeDelete (WireFrame *wireframe)
 
     screen_info = wireframe->screen_info;
     XUnmapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
-    XDestroyWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
-    if (wireframe->xcolormap != screen_info->cmap)
-    {
-        XFreeColormap (myScreenGetXDisplay (screen_info), wireframe->xcolormap);
-    }
     if (wireframe->cr)
     {
         cairo_destroy (wireframe->cr);
@@ -301,5 +296,10 @@ wireframeDelete (WireFrame *wireframe)
     {
         cairo_surface_destroy (wireframe->surface);
     }
+    if (wireframe->xcolormap != screen_info->cmap)
+    {
+        XFreeColormap (myScreenGetXDisplay (screen_info), wireframe->xcolormap);
+    }
+    XDestroyWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
     g_free (wireframe);
 }
