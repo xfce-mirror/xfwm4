@@ -810,7 +810,7 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("cycle_draw_frame", rc);
     screen_info->params->cycle_hidden =
         getBoolValue ("cycle_hidden", rc);
-    screen_info->params->sync_to_vblank =
+    screen_info->params->cycle_preview =
         getBoolValue ("cycle_preview", rc);
     screen_info->params->cycle_tabwin_mode =
         CLAMP (getIntValue ("cycle_tabwin_mode", rc), 0, 1);
