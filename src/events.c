@@ -1230,18 +1230,18 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         return status;
     }
 
-    screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
-    if (screen_info && (ev->event != ev->window) && (ev->event != screen_info->xroot || !ev->send_event))
-    {
-        TRACE ("handleUnmapNotify (): Event ignored");
-        return status;
-    }
-
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
         TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
         TRACE ("ignore_unmap for \"%s\" is %i", c->name, c->ignore_unmap);
+
+        screen_info = c->screen_info;
+        if ((ev->event != ev->window) && (ev->event != screen_info->xroot || !ev->send_event))
+        {
+            TRACE ("handleUnmapNotify (): Event ignored");
+            return status;
+        }
 
         status = EVENT_FILTER_REMOVE;
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
@@ -1254,8 +1254,6 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
             TRACE ("Client \"%s\" is not mapped, event ignored", c->name);
             return status;
         }
-
-        screen_info = c->screen_info;
 
         /*
          * ICCCM spec states that a client wishing to switch
