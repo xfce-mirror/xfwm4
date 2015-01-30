@@ -618,17 +618,20 @@ myDisplayGetRootFromWindow(DisplayInfo *display, Window w)
 ScreenInfo *
 myDisplayGetScreenFromWindow (DisplayInfo *display, Window w)
 {
-    Window root;
+    GSList *list;
 
     g_return_val_if_fail (w != None, NULL);
     g_return_val_if_fail (display != NULL, NULL);
 
-    root = myDisplayGetRootFromWindow (display, w);
-    if (root != None)
+    for (list = display->screens; list; list = g_slist_next (list))
     {
-        return myDisplayGetScreenFromRoot (display, root);
+        ScreenInfo *screen = (ScreenInfo *) list->data;
+        if (screen->xroot == w)
+        {
+            return screen;
+        }
     }
-    TRACE ("myDisplayGetScreenFromWindow: no screen found");
+    TRACE ("myDisplayGetScreenFromWindow: no screen found for 0x%lx", w);
 
     return NULL;
 }

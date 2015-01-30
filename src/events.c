@@ -1540,16 +1540,16 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 "NotifyDetailNone" :
                 "(unknown)");
 
-    screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
-    if (!screen_info)
+    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab))
     {
-        /* Not for us */
+        /* We're not interested in such notifications */
         return EVENT_FILTER_PASS;
     }
 
-    if ((ev->window == screen_info->xroot)
-        && ((ev->detail == NotifyDetailNone)
-            || ((ev->mode == NotifyNormal) && (ev->detail == NotifyInferior))))
+    screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
+    if (screen_info &&
+        ((ev->detail == NotifyDetailNone) ||
+         ((ev->mode == NotifyNormal) && (ev->detail == NotifyInferior))))
     {
         /*
            Handle unexpected focus transition to root (means that an unknown
@@ -1559,11 +1559,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         clientSetFocus (screen_info, c, getXServerTime (display_info), FOCUS_FORCE);
         return EVENT_FILTER_PASS;
     }
-    if ((ev->mode == NotifyGrab) || (ev->mode == NotifyUngrab))
-    {
-        /* We're not interested in such notifications */
-        return EVENT_FILTER_PASS;
-    }
+
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_WINDOW);
     user_focus = clientGetUserFocus ();
     current_focus = clientGetFocus ();
@@ -2016,7 +2012,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 
             TRACE ("window (0x%lx) has received a MANAGER event", ev->window);
             selection = (Atom) ev->data.l[1];
-
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
             if (selection == screen_info->net_system_tray_selection)
             {
@@ -2052,12 +2047,24 @@ static eventFilterStatus
 handleSelectionClear (DisplayInfo *display_info, XSelectionClearEvent * ev)
 {
     eventFilterStatus status;
-    ScreenInfo *screen_info;
+    ScreenInfo *screen_info, *pscreen;
+    GSList *list;
 
-    TRACE ("entering handleSelectionClear");
+    DBG ("entering handleSelectionClear 0x%lx", ev->window);
 
     status = EVENT_FILTER_PASS;
-    screen_info = myDisplayGetScreenFromWindow (display_info, ev->window);
+    screen_info = NULL;
+
+    for (list = display_info->screens; list; list = g_slist_next (list))
+    {
+        pscreen = (ScreenInfo *) list->data;
+        if (ev->window == pscreen->xfwm4_win)
+        {
+            screen_info = pscreen;
+            break;
+        }
+    }
+
     if (screen_info)
     {
         if (myScreenCheckWMAtom (screen_info, ev->selection))
