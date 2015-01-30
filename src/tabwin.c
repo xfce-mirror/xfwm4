@@ -29,7 +29,7 @@
 #endif
 
 #ifndef WIN_PREVIEW_SIZE
-#define WIN_PREVIEW_SIZE (5 * WIN_ICON_SIZE)
+#define WIN_PREVIEW_SIZE (4 * WIN_ICON_SIZE)
 #endif
 
 #ifndef LISTVIEW_WIN_ICON_SIZE
@@ -699,6 +699,7 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
     PangoLayout *layout;
     GList *client_list;
     gint size_request;
+    gint standard_icon_size;
     gboolean preview;
 
     TRACE ("entering computeTabwinData");
@@ -720,6 +721,10 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
 
     if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
     {
+        standard_icon_size = tabwin->icon_size = WIN_ICON_SIZE;
+        gtk_widget_style_get (GTK_WIDGET (tabwin_widget),
+                              "icon-size", &tabwin->icon_size, NULL);
+
         if (preview)
         {
             tabwin->icon_size = WIN_PREVIEW_SIZE;
@@ -728,9 +733,7 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
         }
         else
         {
-            tabwin->icon_size = WIN_ICON_SIZE;
-            gtk_widget_style_get (GTK_WIDGET (tabwin_widget),
-                                  "icon-size", &tabwin->icon_size, NULL);
+            tabwin->icon_size = standard_icon_size;
         }
         size_request = tabwin->icon_size + tabwin->label_height + 2 * WIN_ICON_BORDER;
         tabwin->grid_cols = (int) (floor ((double) tabwin->monitor_width * WIN_MAX_RATIO /
@@ -742,18 +745,13 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
         while ((size_request) * tabwin->grid_rows + tabwin->label_height >
                ((double) tabwin->monitor_height) * WIN_MAX_RATIO)
         {
-            /* Disable preview otherwise it'd be too slow */
-            if (preview)
+            tabwin->icon_size = tabwin->icon_size / 2;
+            if (preview && tabwin->icon_size <= standard_icon_size)
             {
+                /* Disable preview otherwise it'd be too slow */
                 preview = FALSE;
                 /* switch back to regular icon size */
-                tabwin->icon_size = WIN_ICON_SIZE;
-                gtk_widget_style_get (GTK_WIDGET (tabwin_widget),
-                                      "icon-size", &tabwin->icon_size, NULL);
-            }
-            else
-            {
-                tabwin->icon_size = tabwin->icon_size / 2;
+                tabwin->icon_size = standard_icon_size;
             }
             size_request = tabwin->icon_size + tabwin->label_height + 2 * WIN_ICON_BORDER;
 
@@ -846,7 +844,6 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
         computeTabwinData (screen_info, tabwin_widget);
     }
     gtk_widget_style_get (GTK_WIDGET(tabwin_widget), "border-radius", &border_radius, NULL);
-    gtk_widget_realize (GTK_WIDGET (tabwin_widget));
     gtk_container_set_border_width (GTK_CONTAINER (tabwin_widget), border_radius + 4);
     gtk_widget_set_app_paintable (GTK_WIDGET (tabwin_widget), TRUE);
     gtk_window_set_position (GTK_WINDOW (tabwin_widget), GTK_WIN_POS_NONE);
