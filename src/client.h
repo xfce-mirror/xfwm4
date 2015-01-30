@@ -117,7 +117,7 @@
 #endif
 
 #ifndef MAX_SNAP_DRIFT
-#define MAX_SNAP_DRIFT                  5
+#define MAX_SNAP_DRIFT                  15
 #endif
 
 #define XFWM_FLAG_HAS_BORDER            (1L<<0)
