@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 18:32+0100\n"
-"PO-Revision-Date: 2015-01-17 07:05+0000\n"
+"POT-Creation-Date: 2015-01-30 00:32+0100\n"
+"PO-Revision-Date: 2015-01-30 19:13+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: Serbian (http://www.transifex.com/projects/p/xfwm4/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -33,29 +33,29 @@ msgstr "Упозорење"
 msgid "None"
 msgstr "Ништа"
 
-#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
 msgstr "Утичница управника сесије"
 
-#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ЛБ УТИЧНИЦЕ"
 
-#: ../settings-dialogs/tweaks-settings.c:468
+#: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Подаци о издању"
 
-#: ../settings-dialogs/tweaks-settings.c:486
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:494
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -526,46 +526,50 @@ msgid "Synchronize drawing to the _vertical blank"
 msgstr "Усклади исцртавање са _усправном празнином"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show windows preview in place of icons when cycling"
+msgstr "Приказуј преглед прозора уместо иконица при кружењу"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
 msgstr "Прикажи сене испод искачућ_их прозора"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _dock windows"
 msgstr "Прикажи _сене испод усидрених прозора"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under _regular windows"
 msgstr "Прикажи сене испод _обичних прозора"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
 msgstr "Прозирност_ст украса прозора:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
 msgstr "<i>Прозирни</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "<i>Opaque</i>"
 msgstr "<i>Непрозирни</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
 msgstr "Прозирност не_радних прозора:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
 msgstr "Прозирност прозора приликом _померања:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
 msgstr "Прозирност прозора приликом промене величи_не:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
 msgstr "Прозирност искачућих прозор_а:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
 msgstr "С_лагач приказа"
 
@@ -600,35 +604,35 @@ msgstr "_Ивице"
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:602
 msgid "Fork to the background"
 msgstr "Рачвај у позадину"
 
-#: ../src/main.c:542
+#: ../src/main.c:604
 msgid "Fork to the background (not supported)"
 msgstr "Рачвај у позадину (није подржано)"
 
-#: ../src/main.c:545
+#: ../src/main.c:607
 msgid "Set the compositor mode"
 msgstr "Подеси начин слагања"
 
-#: ../src/main.c:547
+#: ../src/main.c:609
 msgid "Set the compositor mode (not supported)"
 msgstr "Подеси начин слагања (није подржано)"
 
-#: ../src/main.c:549
+#: ../src/main.c:611
 msgid "Replace the existing window manager"
 msgstr "Замени тренутног управника прозора"
 
-#: ../src/main.c:550
+#: ../src/main.c:612
 msgid "Print version information and exit"
 msgstr "Штампај податке о издању и изађи"
 
-#: ../src/main.c:558
+#: ../src/main.c:623
 msgid "[ARGUMENTS...]"
 msgstr "[ОДРЕДНИЦЕ...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:630
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Куцајте „%s --help“ за упутство."
