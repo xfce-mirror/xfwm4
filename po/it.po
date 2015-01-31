@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 18:32+0100\n"
-"PO-Revision-Date: 2015-01-13 07:10+0000\n"
+"POT-Creation-Date: 2015-01-30 00:32+0100\n"
+"PO-Revision-Date: 2015-01-31 12:03+0000\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -34,29 +34,29 @@ msgstr "Avviso"
 msgid "None"
 msgstr "Nessuno"
 
-#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
 msgstr "Socket del gestore della sessione"
 
-#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:468
+#: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informazioni di versione"
 
-#: ../settings-dialogs/tweaks-settings.c:486
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:494
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -527,46 +527,50 @@ msgid "Synchronize drawing to the _vertical blank"
 msgstr "Sincronizza il disegno allo spazio vuoto _verticale"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show windows preview in place of icons when cycling"
+msgstr "Mostra le anteprime delle finestre in luogo delle icone quando si scorre"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
 msgstr "Mostra l'ombra sotto alle finestre a co_mparsa"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _dock windows"
 msgstr "Mostra l'ombra al di sotto delle finestre della doc_k"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under _regular windows"
 msgstr "Mostra l'ombra sotto le finestre no_rmali"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
 msgstr "Opacità delle d_ecorazioni della finestra:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
 msgstr "<i>Trasparente</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "<i>Opaque</i>"
 msgstr "<i>Opaca</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
 msgstr "Opacità delle finestre i_nattive:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
 msgstr "Opacità delle finestre _durante lo spostamento:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacità delle finestre _durante il ridimensionamento:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opacità de_lle finestre a comparsa:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
 msgstr "C_ompositore"
 
@@ -601,35 +605,35 @@ msgstr "_Margini"
 msgid "%s (on %s)"
 msgstr "%s (su %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:602
 msgid "Fork to the background"
 msgstr "Esegue il fork in background"
 
-#: ../src/main.c:542
+#: ../src/main.c:604
 msgid "Fork to the background (not supported)"
 msgstr "Esegue il fork in background (non supportato)"
 
-#: ../src/main.c:545
+#: ../src/main.c:607
 msgid "Set the compositor mode"
 msgstr "Imposta la modalità del compositore"
 
-#: ../src/main.c:547
+#: ../src/main.c:609
 msgid "Set the compositor mode (not supported)"
 msgstr " Imposta la modalità del compositore (non supportato) "
 
-#: ../src/main.c:549
+#: ../src/main.c:611
 msgid "Replace the existing window manager"
 msgstr "Sostituisce il gestore di finestre esistente"
 
-#: ../src/main.c:550
+#: ../src/main.c:612
 msgid "Print version information and exit"
 msgstr "Stampa le informazioni di versione ed esce"
 
-#: ../src/main.c:558
+#: ../src/main.c:623
 msgid "[ARGUMENTS...]"
 msgstr "[ARGOMENTI...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:630
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Digitare \"%s --help\" per le informazioni di utilizzo"
