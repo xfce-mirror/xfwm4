@@ -2476,9 +2476,9 @@ recenter_zoomed_area (ScreenInfo *screen_info, int x_root, int y_root)
     }
 
     if (zf > (1 << 14) && zf < (1 << 16))
-        XRenderSetPictureFilter (dpy, screen_info->rootBuffer, "bilinear", NULL, 0);
+        XRenderSetPictureFilter (dpy, screen_info->rootBuffer, FilterBilinear, NULL, 0);
     else
-        XRenderSetPictureFilter (dpy, screen_info->rootBuffer, "nearest", NULL, 0);
+        XRenderSetPictureFilter (dpy, screen_info->rootBuffer, FilterNearest, NULL, 0);
 
     XRenderSetPictureTransform (dpy, screen_info->rootBuffer, &screen_info->transform);
 
@@ -3038,6 +3038,104 @@ compositorWindowPixmapAvailable (ScreenInfo *screen_info)
     return FALSE;
 }
 
+static Pixmap
+compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
+{
+    Display *dpy;
+    ScreenInfo *screen_info;
+    Picture srcPicture, destPicture;
+    Pixmap source, pixmap;
+    XTransform transform;
+    XRenderPictFormat *render_format;
+    double scale;
+    int x, y, src_size, dest_size;
+    unsigned int source_w, source_h;
+    unsigned int dest_w, dest_h;
+    XRenderColor c = { 0, 0, 0, 0 };
+
+    screen_info = cw->screen_info;
+    dpy = myScreenGetXDisplay (screen_info);
+
+    source = None;
+    if (cw->name_window_pixmap != None)
+    {
+        source = cw->name_window_pixmap;
+    }
+    else
+    {
+        source = cw->saved_window_pixmap;
+    }
+    if (!source)
+    {
+        return None;
+    }
+
+    /* Get the source pixmap size to compute the scale */
+    source_w = cw->attr.width;
+    source_h = cw->attr.height;
+    src_size = MAX (source_w, source_h);
+
+    /*/
+     * Caller may pass either NULL or 0.
+     * If 0, we return the actual unscalled size.
+     */
+    dest_w = (width != NULL && *width > 0) ? *width : source_w;
+    dest_h = (height != NULL && *height > 0) ? *height : source_h;
+    dest_size = MIN (dest_w, dest_h);
+
+    scale = (double) dest_size / (double) src_size;
+    dest_w = source_w * scale;
+    dest_h = source_h * scale;
+
+    transform.matrix[0][0] = XDoubleToFixed(1.0);
+    transform.matrix[0][1] = XDoubleToFixed(0.0);
+    transform.matrix[0][2] = XDoubleToFixed(0.0);
+    transform.matrix[1][0] = XDoubleToFixed(0.0);
+    transform.matrix[1][1] = XDoubleToFixed(1.0);
+    transform.matrix[1][2] = XDoubleToFixed(0.0);
+    transform.matrix[2][0] = XDoubleToFixed(0.0);
+    transform.matrix[2][1] = XDoubleToFixed(0.0);
+    transform.matrix[2][2] = XDoubleToFixed(scale);
+
+    pixmap = XCreatePixmap (dpy, screen_info->output, dest_w, dest_h, 32);
+    if (!pixmap)
+    {
+        return None;
+    }
+
+    render_format = get_window_format (cw);
+    if (!render_format)
+    {
+        return None;
+    }
+
+    srcPicture = XRenderCreatePicture (dpy, source, render_format, 0, NULL);
+    XRenderSetPictureFilter (dpy, srcPicture, FilterBilinear, 0, 0);
+    XRenderSetPictureTransform (dpy, srcPicture, &transform);
+
+    render_format = XRenderFindStandardFormat (dpy, PictStandardARGB32);
+    destPicture = XRenderCreatePicture (dpy, pixmap, render_format, 0, NULL);
+
+    XRenderFillRectangle (dpy, PictOpSrc, destPicture, &c, 0, 0, dest_w, dest_h);
+    XRenderComposite (dpy, PictOpSrc, srcPicture, None, destPicture,
+                      0, 0, 0, 0, 0, 0, dest_w, dest_h);
+
+    XRenderFreePicture (dpy, srcPicture);
+    XRenderFreePicture (dpy, destPicture);
+
+    /* Update given size if requested */
+    if (width != NULL)
+    {
+        *width = dest_w;
+    }
+    if (height != NULL)
+    {
+        *height = dest_h;
+    }
+
+    return pixmap;
+}
+
 /* May return None if:
  * - The xserver does not support name window pixmaps
  * - The compositor is disabled at run time
@@ -3046,13 +3144,14 @@ compositorWindowPixmapAvailable (ScreenInfo *screen_info)
  * if the window is unmapped.
  */
 Pixmap
-compositorGetWindowPixmap (ScreenInfo *screen_info, Window id)
+compositorGetWindowPixmapAtSize (ScreenInfo *screen_info, Window id, guint *width, guint *height)
 {
 #ifdef HAVE_NAME_WINDOW_PIXMAP
 #ifdef HAVE_COMPOSITOR
     CWindow *cw;
 
     g_return_val_if_fail (id != None, None);
+
     TRACE ("entering compositorGetPixmap: 0x%lx", id);
 
     if (!compositorWindowPixmapAvailable (screen_info))
@@ -3063,11 +3162,7 @@ compositorGetWindowPixmap (ScreenInfo *screen_info, Window id)
     cw = find_cwindow_in_screen (screen_info, id);
     if (cw)
     {
-        if (cw->name_window_pixmap != None)
-        {
-            return cw->name_window_pixmap;
-        }
-        return cw->saved_window_pixmap;
+        return compositorScaleWindowPixmap (cw, width, height);
     }
 #endif /* HAVE_COMPOSITOR */
 #endif /* HAVE_NAME_WINDOW_PIXMAP */

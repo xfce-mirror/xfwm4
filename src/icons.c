@@ -423,9 +423,9 @@ get_pixbuf_from_pixmap (GdkScreen *gscreen, Pixmap xpixmap, guint src_x, guint s
     }
 
     cmap = get_cmap (drawable, gscreen);
-
-    retval = gdk_pixbuf_get_from_drawable (NULL, drawable, cmap, src_x, src_y,
-                                           dest_x, dest_y, width, height);
+    retval = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
+    gdk_pixbuf_get_from_drawable (retval, drawable, cmap, src_x, src_y,
+                                  dest_x, dest_y, width, height);
 
     if (G_LIKELY(cmap))
     {
@@ -583,18 +583,52 @@ getClientIcon (Client *c, guint width, guint height)
     ScreenInfo *screen_info;
     GdkPixbuf *icon_pixbuf;
     GdkPixbuf *icon_pixbuf_stated;
+    guint app_icon_width, app_icon_height;
     Pixmap pixmap;
 
     g_return_val_if_fail (c != NULL, NULL);
 
     screen_info = c->screen_info;
     icon_pixbuf = NULL;
-    pixmap = compositorGetWindowPixmap (screen_info, c->frame);
+    app_icon_width = width; /* Set to 0 to use gdk pixbuf scaling */
+    app_icon_height = height; /* Set to 0 to use gdk pixbuf scaling */
+
+    pixmap = compositorGetWindowPixmapAtSize (screen_info, c->frame, &app_icon_width, &app_icon_height);
     if (pixmap != None)
     {
-        icon_pixbuf = try_pixmap_and_mask (screen_info, pixmap, None, width, height);
+        GdkPixbuf *app_content;
+        GdkPixbuf *small_icon;
+        guint small_icon_size;
+
+        icon_pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
+        gdk_pixbuf_fill (icon_pixbuf, 0x00);
+
+        app_content = try_pixmap_and_mask (screen_info, pixmap, None, width, height);
+        XFreePixmap (myScreenGetXDisplay (screen_info), pixmap);
+
+        app_icon_width = (guint) gdk_pixbuf_get_width (app_content);
+        app_icon_height = (guint) gdk_pixbuf_get_height (app_content);
+
+        gdk_pixbuf_copy_area (app_content, 0, 0, app_icon_width, app_icon_height, icon_pixbuf,
+                              (width - app_icon_width) / 2, (height - app_icon_height) / 2);
+        g_object_unref (app_content);
+
+        small_icon_size = MIN (width / 4, height / 4);
+        small_icon_size = MIN (small_icon_size, 48);
+
+        small_icon = getAppIcon (screen_info, c->window, small_icon_size, small_icon_size);
+
+        gdk_pixbuf_composite (small_icon, icon_pixbuf,
+                              (width - small_icon_size) / 2, height - small_icon_size,
+                              small_icon_size, small_icon_size,
+                              (width - small_icon_size) / 2, height - small_icon_size,
+                              1.0, 1.0,
+                              GDK_INTERP_BILINEAR,
+                              0xff);
+
+        g_object_unref (small_icon);
     }
-    if (!icon_pixbuf)
+    else
     {
         icon_pixbuf = getAppIcon (screen_info, c->window, width, height);
     }
