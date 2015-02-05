@@ -831,7 +831,6 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
 
     gtk_window_set_screen (GTK_WINDOW (tabwin_widget), screen_info->gscr);
     gtk_widget_set_name (GTK_WIDGET (tabwin_widget), "xfwm4-tabwin");
-    gtk_widget_realize (GTK_WIDGET (tabwin_widget));
 
     /* Check for compositing and set colormap for it */
     screen = gtk_widget_get_screen (GTK_WIDGET (tabwin_widget));
@@ -840,6 +839,8 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
         if(cmap)
             gtk_widget_set_colormap (GTK_WIDGET (tabwin_widget), cmap);
     }
+    gtk_widget_set_app_paintable (GTK_WIDGET (tabwin_widget), TRUE);
+    gtk_widget_realize (GTK_WIDGET (tabwin_widget));
 
     if (tabwin->icon_list == NULL)
     {
@@ -847,7 +848,6 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     }
     gtk_widget_style_get (GTK_WIDGET(tabwin_widget), "border-radius", &border_radius, NULL);
     gtk_container_set_border_width (GTK_CONTAINER (tabwin_widget), border_radius + 4);
-    gtk_widget_set_app_paintable (GTK_WIDGET (tabwin_widget), TRUE);
     gtk_window_set_position (GTK_WINDOW (tabwin_widget), GTK_WIN_POS_NONE);
     gdk_screen_get_monitor_geometry (screen_info->gscr, tabwin_widget->monitor_num, &monitor);
     gtk_window_move (GTK_WINDOW (tabwin_widget), monitor.x + monitor.width / 2,
