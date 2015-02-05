@@ -721,9 +721,10 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
 
     if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
     {
-        standard_icon_size = tabwin->icon_size = WIN_ICON_SIZE;
+        tabwin->icon_size = WIN_ICON_SIZE;
         gtk_widget_style_get (GTK_WIDGET (tabwin_widget),
                               "icon-size", &tabwin->icon_size, NULL);
+        standard_icon_size = tabwin->icon_size;
 
         if (preview)
         {
@@ -830,6 +831,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
 
     gtk_window_set_screen (GTK_WINDOW (tabwin_widget), screen_info->gscr);
     gtk_widget_set_name (GTK_WIDGET (tabwin_widget), "xfwm4-tabwin");
+    gtk_widget_realize (GTK_WIDGET (tabwin_widget));
 
     /* Check for compositing and set colormap for it */
     screen = gtk_widget_get_screen (GTK_WIDGET (tabwin_widget));
