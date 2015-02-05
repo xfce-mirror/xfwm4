@@ -3048,7 +3048,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XTransform transform;
     XRenderPictFormat *render_format;
     double scale;
-    int x, y, src_size, dest_size;
+    int src_size, dest_size;
     unsigned int source_w, source_h;
     unsigned int dest_w, dest_h;
     XRenderColor c = { 0, 0, 0, 0 };
