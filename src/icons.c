@@ -423,9 +423,8 @@ get_pixbuf_from_pixmap (GdkScreen *gscreen, Pixmap xpixmap, guint src_x, guint s
     }
 
     cmap = get_cmap (drawable, gscreen);
-    retval = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
-    gdk_pixbuf_get_from_drawable (retval, drawable, cmap, src_x, src_y,
-                                  dest_x, dest_y, width, height);
+    retval = gdk_pixbuf_get_from_drawable (NULL, drawable, cmap, src_x, src_y,
+                                           dest_x, dest_y, width, height);
 
     if (G_LIKELY(cmap))
     {
