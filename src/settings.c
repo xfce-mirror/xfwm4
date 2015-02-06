@@ -48,6 +48,9 @@
 #define THEMERC                 "themerc"
 #define XPM_COLOR_SYMBOL_SIZE   24
 
+#define KEYMAP_UPDATE_TIMEOUT   250 /* ms */
+static guint keymap_timeout   = 0;
+
 /* Forward static decls. */
 
 static void              update_grabs      (ScreenInfo *);
@@ -1441,18 +1444,46 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
     }
 }
 
-static void
-cb_keys_changed (GdkKeymap *keymap, ScreenInfo *screen_info)
+
+static gboolean
+keymap_reload (gpointer data)
 {
+    ScreenInfo *screen_info = (ScreenInfo *) data;
+
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+    TRACE ("entering keymap_reload");
+
     /* Recompute modifiers mask in case it changed */
     initModifiers (myScreenGetXDisplay (screen_info));
 
-    /* Ungrab/regrab shortcuts */
+    /* Ungrab shortcuts and clear existing bindings */
     myScreenUngrabKeys (screen_info);
+    unloadKeyBindings (screen_info);
+
+    /* Reload new key bindings and regrab shortcuts */
+    loadKeyBindings  (screen_info);
     myScreenGrabKeys (screen_info);
 
-    /* Uupdate all grabs for mouse buttons */
+    /* Update all grabs for mouse buttons */
     clientUpdateAllFrames (screen_info, UPDATE_BUTTON_GRABS);
+
+    /* We're done */
+    keymap_timeout = 0;
+
+    return FALSE;
+}
+
+static void
+cb_keys_changed (GdkKeymap *keymap, ScreenInfo *screen_info)
+{
+    if (keymap_timeout)
+    {
+        g_source_remove (keymap_timeout);
+    }
+    keymap_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
+                                         KEYMAP_UPDATE_TIMEOUT,
+                                         (GSourceFunc) keymap_reload,
+                                         (gpointer) screen_info, NULL);
 }
 
 static void
