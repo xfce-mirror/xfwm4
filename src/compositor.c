@@ -739,7 +739,7 @@ free_win_data (CWindow *cw, gboolean delete)
     display_info = screen_info->display_info;
 
 #if HAVE_NAME_WINDOW_PIXMAP
-    if (cw->saved_window_pixmap)
+    if (cw->name_window_pixmap || delete)
     {
         XFreePixmap (display_info->dpy, cw->saved_window_pixmap);
         cw->saved_window_pixmap = None;
@@ -3115,6 +3115,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
 
     render_format = XRenderFindStandardFormat (dpy, PictStandardARGB32);
     destPicture = XRenderCreatePicture (dpy, pixmap, render_format, 0, NULL);
+    XRenderSetPictureFilter (dpy, destPicture, FilterBilinear, 0, 0);
 
     XRenderFillRectangle (dpy, PictOpSrc, destPicture, &c, 0, 0, dest_w, dest_h);
     XRenderComposite (dpy, PictOpSrc, srcPicture, None, destPicture,
@@ -3759,7 +3760,7 @@ compositorRebuildScreen (ScreenInfo *screen_info)
     GList *list;
 
     g_return_if_fail (screen_info != NULL);
-    TRACE ("entering compositorRepairScreen");
+    TRACE ("entering compositorRebuildScreen");
 
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
