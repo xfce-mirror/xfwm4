@@ -238,8 +238,9 @@ wireframeCreate (Client *c)
     {
         xvisual = xvisual_info.visual;
         depth = xvisual_info.depth;
-        wireframe->xcolormap = XCreateColormap (myScreenGetXDisplay (screen_info), screen_info->xroot,
-                                     xvisual, AllocNone);
+        wireframe->xcolormap = XCreateColormap (myScreenGetXDisplay (screen_info),
+                                                screen_info->xroot,
+                                                xvisual, AllocNone);
     }
     else
     {

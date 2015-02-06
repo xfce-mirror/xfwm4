@@ -763,7 +763,7 @@ delayed_focus_cb (gpointer data)
 void
 clientClearDelayedFocus (void)
 {
-    if(focus_timeout)
+    if (focus_timeout)
     {
         g_source_remove (focus_timeout);
         focus_timeout = 0;
