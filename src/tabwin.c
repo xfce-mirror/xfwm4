@@ -644,7 +644,7 @@ tabwin_widget_class_init (TabwinWidgetClass *klass)
                                              g_param_spec_int ("preview-size",
                                                                "preview size",
                                                                 "the size of the application preview",
-                                                                24, 256,
+                                                                48, 512,
                                                                 WIN_PREVIEW_SIZE,
                                                                 G_PARAM_READABLE));
     gtk_widget_class_install_style_property (widget_class,
