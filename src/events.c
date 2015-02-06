@@ -411,7 +411,7 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 if ((guint) (key - KEY_MOVE_WORKSPACE_1) < screen_info->workspace_count)
                 {
                     clientRaise (c, None);
-                    workspaceSwitch (screen_info, key - KEY_MOVE_WORKSPACE_1, c, TRUE, ev->time);
+                    clientSetWorkspace (c, key - KEY_MOVE_WORKSPACE_1, TRUE);
                 }
                 break;
             case KEY_POPUP_MENU:
