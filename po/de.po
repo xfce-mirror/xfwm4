@@ -8,13 +8,13 @@
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2012
 # Moritz Heiber <moe@xfce.org>, 2003
 # Nico Schümann <nico@prog.nico22.de>, 2007
-# Tobias Bannert <tobannert@gmail.com>, 2014
+# Tobias Bannert <tobannert@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2014-12-18 14:28+0000\n"
+"PO-Revision-Date: 2015-02-08 15:35+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -781,7 +781,7 @@ msgstr "_Platzierung"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
-msgstr "A_nzeigen-Compositing aktivieren"
+msgstr "A_nzeigenkomposit aktivieren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
@@ -872,11 +872,11 @@ msgstr "Prozess in den Hintergrund abspalten (nicht unterstützt)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr "Compositor-Modus einstellen"
+msgstr "Kompositmodus einstellen"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr "Compositor-Modus einstellen (nicht unterstützt)"
+msgstr "Kompositmodus einstellen (nicht unterstützt)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
