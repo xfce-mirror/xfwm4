@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2007
-# Yarema aka Knedlyk <yupadmin@gmail.com>, 2013-2014
+# Yarema aka Knedlyk <yupadmin@gmail.com>, 2013-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-05-18 12:17+0000\n"
+"POT-Creation-Date: 2015-01-30 00:32+0100\n"
+"PO-Revision-Date: 2015-02-08 19:43+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfwm4/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -33,29 +33,29 @@ msgstr "Попередження"
 msgid "None"
 msgstr "Нічого"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
 msgstr "Сокет Менеджера властивостей"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
-#: ../settings-dialogs/tweaks-settings.c:474
+#: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Інформація про версію"
 
-#: ../settings-dialogs/tweaks-settings.c:492
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:494
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -439,8 +439,8 @@ msgid "Hide frame of windows when ma_ximized"
 msgstr "Ховати р_амку розгорнутих вікон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "Відновлювати початковий розм_ір розгорнутого вікна при переміщенні"
+msgid "Hide title of windows when maximized"
+msgstr "Приховувати назву вікна при максимізуванні"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -526,46 +526,50 @@ msgid "Synchronize drawing to the _vertical blank"
 msgstr "Синхронізація малювання до пропусків по _вертикалі"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show windows preview in place of icons when cycling"
+msgstr "Показати попередній перегляд на місці іконки при прокрутці"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
 msgstr "Відображати тіні під сп_ливаючими вікнами"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _dock windows"
 msgstr "Відображати тіні під ш_вартованими вікнами"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under _regular windows"
 msgstr "Відображати тіні під звичайними ві_кнами"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
 msgstr "Н_епрозорість оформлення вікон:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
 msgstr "<i>Прозорі</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "<i>Opaque</i>"
 msgstr "<i>Непрозорі</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
 msgstr "Непрозорість _неактивних вікон:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
 msgstr "Непрозорість вікон при пере_міщенні:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
 msgstr "Непрозорість вікон при зміні ро_зміру:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
 msgstr "Непрозорість спливаючих в_ікон:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
 msgstr "_Укладач"
 
@@ -595,40 +599,40 @@ msgid "_Margins"
 msgstr "_Поля"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:602
 msgid "Fork to the background"
 msgstr "Перевести у фоновий режим"
 
-#: ../src/main.c:542
+#: ../src/main.c:604
 msgid "Fork to the background (not supported)"
 msgstr "Перевести у фоновий режим (не підтримується)"
 
-#: ../src/main.c:545
+#: ../src/main.c:607
 msgid "Set the compositor mode"
 msgstr "Призначити композитний режим"
 
-#: ../src/main.c:547
+#: ../src/main.c:609
 msgid "Set the compositor mode (not supported)"
 msgstr "Призначити композитний режим (не підтримується)"
 
-#: ../src/main.c:549
+#: ../src/main.c:611
 msgid "Replace the existing window manager"
 msgstr "Замінти існуючий менеджер вікон"
 
-#: ../src/main.c:550
+#: ../src/main.c:612
 msgid "Print version information and exit"
 msgstr "Показати інформацію про версію і вийти"
 
-#: ../src/main.c:558
+#: ../src/main.c:623
 msgid "[ARGUMENTS...]"
 msgstr "[АРГУМЕНТИ...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:630
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Введіть \"%s --help\" для допомоги по використанню."
