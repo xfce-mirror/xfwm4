@@ -3110,15 +3110,14 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     }
 
     srcPicture = XRenderCreatePicture (dpy, source, render_format, 0, NULL);
-    XRenderSetPictureFilter (dpy, srcPicture, FilterBilinear, 0, 0);
     XRenderSetPictureTransform (dpy, srcPicture, &transform);
+    XRenderSetPictureFilter (dpy, srcPicture, FilterBest, 0, 0);
 
     render_format = XRenderFindStandardFormat (dpy, PictStandardARGB32);
     destPicture = XRenderCreatePicture (dpy, pixmap, render_format, 0, NULL);
-    XRenderSetPictureFilter (dpy, destPicture, FilterBilinear, 0, 0);
 
     XRenderFillRectangle (dpy, PictOpSrc, destPicture, &c, 0, 0, dest_w, dest_h);
-    XRenderComposite (dpy, PictOpSrc, srcPicture, None, destPicture,
+    XRenderComposite (dpy, PictOpOver, srcPicture, None, destPicture,
                       0, 0, 0, 0, 0, 0, dest_w, dest_h);
 
     XRenderFreePicture (dpy, srcPicture);
