@@ -52,7 +52,6 @@ void                     compositorResizeWindow                 (DisplayInfo *,
                                                                  int,
                                                                  int,
                                                                  int);
-gboolean                 compositorWindowPixmapAvailable        (ScreenInfo *);
 Pixmap                   compositorGetWindowPixmapAtSize        (ScreenInfo *,
                                                                  Window,
                                                                  guint *,

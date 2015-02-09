@@ -133,6 +133,7 @@ struct _CWindow
     Pixmap saved_window_pixmap;
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
     Picture picture;
+    Picture saved_picture;
     Picture shadow;
     Picture alphaPict;
     Picture shadowPict;
@@ -722,6 +723,7 @@ border_size (CWindow *cw)
     border = XFixesCreateRegionFromWindow (display_info->dpy,
                                            cw->id, WindowRegionBounding);
     g_return_val_if_fail (border != None, None);
+    XFixesSetPictureClipRegion (display_info->dpy, cw->picture, 0, 0, border);
     XFixesTranslateRegion (display_info->dpy, border,
                            cw->attr.x + cw->attr.border_width,
                            cw->attr.y + cw->attr.border_width);
@@ -739,7 +741,7 @@ free_win_data (CWindow *cw, gboolean delete)
     display_info = screen_info->display_info;
 
 #if HAVE_NAME_WINDOW_PIXMAP
-    if (cw->name_window_pixmap || delete)
+    if (cw->saved_window_pixmap)
     {
         XFreePixmap (display_info->dpy, cw->saved_window_pixmap);
         cw->saved_window_pixmap = None;
@@ -759,9 +761,22 @@ free_win_data (CWindow *cw, gboolean delete)
     }
 #endif
 
+    if (cw->saved_picture)
+    {
+        XRenderFreePicture (display_info->dpy, cw->saved_picture);
+        cw->saved_picture = None;
+    }
+
     if (cw->picture)
     {
-        XRenderFreePicture (display_info->dpy, cw->picture);
+        if (delete)
+        {
+            XRenderFreePicture (display_info->dpy, cw->picture);
+        }
+        else
+        {
+            cw->saved_picture = cw->picture;
+        }
         cw->picture = None;
     }
 
@@ -1050,7 +1065,7 @@ win_extents (CWindow *cw)
 }
 
 static void
-get_paint_bounds (CWindow *cw, gint *x, gint *y, gint *w, gint *h)
+get_paint_bounds (CWindow *cw, gint *x, gint *y, guint *w, guint *h)
 {
     TRACE ("entering get_paint_bounds");
 
@@ -1122,6 +1137,7 @@ get_window_picture (CWindow *cw)
         pa.subwindow_mode = IncludeInferiors;
         return XRenderCreatePicture (display_info->dpy, draw, format, CPSubwindowMode, &pa);
     }
+
     return None;
 }
 
@@ -1258,7 +1274,8 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
     }
     else
     {
-        gint x, y, w, h;
+        gint x, y;
+        guint w, h;
 
         get_paint_bounds (cw, &x, &y, &w, &h);
         if (paint_solid)
@@ -1459,6 +1476,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         {
             cw->extents = win_extents (cw);
         }
+        if (cw->picture == None)
+        {
+            cw->picture = get_window_picture (cw);
+        }
         if (cw->borderSize == None)
         {
             cw->borderSize = border_size (cw);
@@ -1466,10 +1487,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         if (cw->clientSize == None)
         {
             cw->clientSize = client_size (cw);
-        }
-        if (cw->picture == None)
-        {
-            cw->picture = get_window_picture (cw);
         }
         if (WIN_IS_OPAQUE(cw))
         {
@@ -1769,6 +1786,10 @@ fix_region (CWindow *cw, XserverRegion region)
         else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE(cw2))
         {
             /* Make sure the window's areas are up-to-date... */
+            if (cw2->picture == None)
+            {
+                cw2->picture = get_window_picture (cw2);
+            }
             if (cw2->borderSize == None)
             {
                 cw2->borderSize = border_size (cw2);
@@ -2201,6 +2222,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->saved_window_pixmap = None;
 #endif
     new->picture = None;
+    new->saved_picture = None;
     new->alphaPict = None;
     new->alphaBorderPict = None;
     new->shadowPict = None;
@@ -2330,6 +2352,12 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
         {
             XRenderFreePicture (display_info->dpy, cw->picture);
             cw->picture = None;
+        }
+
+        if (cw->saved_picture)
+        {
+            XRenderFreePicture (display_info->dpy, cw->saved_picture);
+            cw->saved_picture = None;
         }
 
         if (cw->shadow)
@@ -3015,125 +3043,112 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int 
 #endif /* HAVE_COMPOSITOR */
 }
 
-gboolean
-compositorWindowPixmapAvailable (ScreenInfo *screen_info)
-{
-#ifdef HAVE_NAME_WINDOW_PIXMAP
-#ifdef HAVE_COMPOSITOR
-    if (!screen_info->compositor_active)
-    {
-        return FALSE;
-    }
-    if (!compositorIsUsable (screen_info->display_info))
-    {
-        return FALSE;
-    }
-    else if (!screen_info->display_info->have_name_window_pixmap)
-    {
-        return FALSE;
-    }
-    return TRUE;
-#endif /* HAVE_COMPOSITOR */
-#endif /* HAVE_NAME_WINDOW_PIXMAP */
-    return FALSE;
-}
-
 static Pixmap
 compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
 {
     Display *dpy;
     ScreenInfo *screen_info;
-    Picture srcPicture, destPicture;
-    Pixmap source, pixmap;
+    Picture srcPicture, tmpPicture, destPicture;
+    Pixmap tmpPixmap, dstPixmap;
     XTransform transform;
     XRenderPictFormat *render_format;
     double scale;
-    int src_size, dest_size;
-    unsigned int source_w, source_h;
-    unsigned int dest_w, dest_h;
-    XRenderColor c = { 0, 0, 0, 0 };
+    int tx, ty, src_size, dest_size;
+    unsigned int src_w, src_h;
+    unsigned int dst_w, dst_h;
+    XRenderColor c = { 0xffff, 0xffff, 0xffff, 0xffff };
 
     screen_info = cw->screen_info;
     dpy = myScreenGetXDisplay (screen_info);
 
-    source = None;
-    if (cw->name_window_pixmap != None)
+    srcPicture = cw->picture;
+    if (!srcPicture)
     {
-        source = cw->name_window_pixmap;
+        srcPicture = cw->saved_picture;
     }
-    else
-    {
-        source = cw->saved_window_pixmap;
-    }
-    if (!source)
+    /* Could not get a usable picture, bail out */
+    if (!srcPicture)
     {
         return None;
     }
 
     /* Get the source pixmap size to compute the scale */
-    source_w = cw->attr.width;
-    source_h = cw->attr.height;
-    src_size = MAX (source_w, source_h);
+    get_paint_bounds (cw, &tx, &ty, &src_w, &src_h);
+    src_size = MAX (src_w, src_h);
 
     /*/
      * Caller may pass either NULL or 0.
      * If 0, we return the actual unscalled size.
      */
-    dest_w = (width != NULL && *width > 0) ? *width : source_w;
-    dest_h = (height != NULL && *height > 0) ? *height : source_h;
-    dest_size = MIN (dest_w, dest_h);
+    dst_w = (width != NULL && *width > 0) ? *width : src_w;
+    dst_h = (height != NULL && *height > 0) ? *height : src_h;
+    dest_size = MIN (dst_w, dst_h);
 
     scale = (double) dest_size / (double) src_size;
-    dest_w = source_w * scale;
-    dest_h = source_h * scale;
+    dst_w = src_w * scale;
+    dst_h = src_h * scale;
 
-    transform.matrix[0][0] = XDoubleToFixed(1.0);
-    transform.matrix[0][1] = XDoubleToFixed(0.0);
-    transform.matrix[0][2] = XDoubleToFixed(0.0);
-    transform.matrix[1][0] = XDoubleToFixed(0.0);
-    transform.matrix[1][1] = XDoubleToFixed(1.0);
-    transform.matrix[1][2] = XDoubleToFixed(0.0);
-    transform.matrix[2][0] = XDoubleToFixed(0.0);
-    transform.matrix[2][1] = XDoubleToFixed(0.0);
-    transform.matrix[2][2] = XDoubleToFixed(scale);
+    transform.matrix[0][0] = XDoubleToFixed (1.0);
+    transform.matrix[0][1] = XDoubleToFixed (0.0);
+    transform.matrix[0][2] = XDoubleToFixed (0.0);
+    transform.matrix[1][0] = XDoubleToFixed (0.0);
+    transform.matrix[1][1] = XDoubleToFixed (1.0);
+    transform.matrix[1][2] = XDoubleToFixed (0.0);
+    transform.matrix[2][0] = XDoubleToFixed (0.0);
+    transform.matrix[2][1] = XDoubleToFixed (0.0);
+    transform.matrix[2][2] = XDoubleToFixed (scale);
 
-    pixmap = XCreatePixmap (dpy, screen_info->output, dest_w, dest_h, 32);
-    if (!pixmap)
+    tmpPixmap = XCreatePixmap (dpy, screen_info->output, src_w, src_h, 32);
+    if (!tmpPixmap)
     {
         return None;
     }
+
+    dstPixmap = XCreatePixmap (dpy, screen_info->output, dst_w, dst_h, 32);
+    if (!dstPixmap)
+    {
+        XFreePixmap (dpy, tmpPixmap);
+        return None;
+    }
+
 
     render_format = get_window_format (cw);
     if (!render_format)
     {
+        XFreePixmap (dpy, dstPixmap);
+        XFreePixmap (dpy, tmpPixmap);
         return None;
     }
 
-    srcPicture = XRenderCreatePicture (dpy, source, render_format, 0, NULL);
-    XRenderSetPictureTransform (dpy, srcPicture, &transform);
-    XRenderSetPictureFilter (dpy, srcPicture, FilterBest, 0, 0);
-
     render_format = XRenderFindStandardFormat (dpy, PictStandardARGB32);
-    destPicture = XRenderCreatePicture (dpy, pixmap, render_format, 0, NULL);
+    tmpPicture = XRenderCreatePicture (dpy, tmpPixmap, render_format, 0, NULL);
+    XRenderFillRectangle (dpy, PictOpSrc, tmpPicture, &c, 0, 0, src_w, src_h);
+    XFixesSetPictureClipRegion (dpy, tmpPicture, 0, 0, None);
+    XRenderComposite (dpy, PictOpOver, srcPicture, None, tmpPicture,
+                      0, 0, 0, 0, 0, 0, src_w, src_h);
 
-    XRenderFillRectangle (dpy, PictOpSrc, destPicture, &c, 0, 0, dest_w, dest_h);
-    XRenderComposite (dpy, PictOpOver, srcPicture, None, destPicture,
-                      0, 0, 0, 0, 0, 0, dest_w, dest_h);
+    XRenderSetPictureFilter (dpy, tmpPicture, FilterBest, NULL, 0);
+    XRenderSetPictureTransform (dpy, tmpPicture, &transform);
 
-    XRenderFreePicture (dpy, srcPicture);
+    destPicture = XRenderCreatePicture (dpy, dstPixmap, render_format, 0, NULL);
+    XRenderComposite (dpy, PictOpOver, tmpPicture, None, destPicture,
+                      0, 0, 0, 0, 0, 0, dst_w, dst_h);
+
+    XRenderFreePicture (dpy, tmpPicture);
     XRenderFreePicture (dpy, destPicture);
+    XFreePixmap (dpy, tmpPixmap);
 
     /* Update given size if requested */
     if (width != NULL)
     {
-        *width = dest_w;
+        *width = dst_w;
     }
     if (height != NULL)
     {
-        *height = dest_h;
+        *height = dst_h;
     }
 
-    return pixmap;
+    return dstPixmap;
 }
 
 /* May return None if:
@@ -3154,7 +3169,7 @@ compositorGetWindowPixmapAtSize (ScreenInfo *screen_info, Window id, guint *widt
 
     TRACE ("entering compositorGetPixmap: 0x%lx", id);
 
-    if (!compositorWindowPixmapAvailable (screen_info))
+    if (!compositorIsActive (screen_info))
     {
         return None;
     }

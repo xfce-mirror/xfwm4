@@ -710,8 +710,7 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
     tabwin->monitor_width = getMinMonitorWidth (screen_info);
     tabwin->monitor_height = getMinMonitorHeight (screen_info);
     tabwin->label_height = 30;
-    preview = screen_info->params->cycle_preview &
-              compositorWindowPixmapAvailable (screen_info);
+    preview = screen_info->params->cycle_preview && compositorIsActive (screen_info);
 
     /* We need to account for changes to the font size in the user's
      * appearance theme and gtkrc settings */
