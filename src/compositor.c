@@ -129,8 +129,6 @@ struct _CWindow
     Damage damage;
 #if HAVE_NAME_WINDOW_PIXMAP
     Pixmap name_window_pixmap;
-    /* Save a copy for use when the window is unmapped */
-    Pixmap saved_window_pixmap;
 #endif /* HAVE_NAME_WINDOW_PIXMAP */
     Picture picture;
     Picture saved_picture;
@@ -741,22 +739,9 @@ free_win_data (CWindow *cw, gboolean delete)
     display_info = screen_info->display_info;
 
 #if HAVE_NAME_WINDOW_PIXMAP
-    if (cw->saved_window_pixmap)
-    {
-        XFreePixmap (display_info->dpy, cw->saved_window_pixmap);
-        cw->saved_window_pixmap = None;
-    }
-
     if (cw->name_window_pixmap)
     {
-        if (delete)
-        {
-            XFreePixmap (display_info->dpy, cw->name_window_pixmap);
-        }
-        else
-        {
-            cw->saved_window_pixmap = cw->name_window_pixmap;
-        }
+        XFreePixmap (display_info->dpy, cw->name_window_pixmap);
         cw->name_window_pixmap = None;
     }
 #endif
@@ -2219,7 +2204,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     }
 #if HAVE_NAME_WINDOW_PIXMAP
     new->name_window_pixmap = None;
-    new->saved_window_pixmap = None;
 #endif
     new->picture = None;
     new->saved_picture = None;
@@ -2341,11 +2325,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
         {
             XFreePixmap (display_info->dpy, cw->name_window_pixmap);
             cw->name_window_pixmap = None;
-        }
-        if (cw->saved_window_pixmap)
-        {
-            XFreePixmap (display_info->dpy, cw->saved_window_pixmap);
-            cw->saved_window_pixmap = None;
         }
 #endif
         if (cw->picture)
@@ -3056,7 +3035,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     int tx, ty, src_size, dest_size;
     unsigned int src_w, src_h;
     unsigned int dst_w, dst_h;
-    XRenderColor c = { 0xffff, 0xffff, 0xffff, 0xffff };
+    XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
 
     screen_info = cw->screen_info;
     dpy = myScreenGetXDisplay (screen_info);
@@ -3124,7 +3103,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     tmpPicture = XRenderCreatePicture (dpy, tmpPixmap, render_format, 0, NULL);
     XRenderFillRectangle (dpy, PictOpSrc, tmpPicture, &c, 0, 0, src_w, src_h);
     XFixesSetPictureClipRegion (dpy, tmpPicture, 0, 0, None);
-    XRenderComposite (dpy, PictOpOver, srcPicture, None, tmpPicture,
+    XRenderComposite (dpy, PictOpSrc, srcPicture, None, tmpPicture,
                       0, 0, 0, 0, 0, 0, src_w, src_h);
 
     XRenderSetPictureFilter (dpy, tmpPicture, FilterBest, NULL, 0);
