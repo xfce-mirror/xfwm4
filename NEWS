@@ -1,3 +1,47 @@
+4.11.3
+======
+ - Add a zoom_desktop xfconf setting
+ - Add corner tiling
+ - Add support for extended XSync counter
+ - Add support for GTK frame extents
+ - Add support for GTK hide titlebar on maximize
+ - Add support for NET_WM_STATE_FOCUSED
+ - Add titleless maximization feature
+ - Allow color substitution in themerc
+ - Allow cycling during drag'n drop
+ - Allow shadow under dock ARGB windows
+ - Allow tiling and workspace wrap on move
+ - Changed wireframe to cairo drawing when using the compositor
+ - Fix cycle vs. focus follow mouse
+ - Fix fullscreen mode not working correctly for QT apps)
+ - Fix gravity on configure request
+ - Fix keyboard shortcuts after keyboard layout changes
+ - Fix maximizing when window is tiled vertically or horizontally
+ - Fix maximum host name length.
+ - Fix opacity being reset on theme change
+ - Fix reparenting with compositor
+ - Fix selection with mouse in multi-monitor alt-tab dialog
+ - Fix size increment
+ - Limit parallel pointer moves before wrapping
+ - New default window decoration themes (including HDPI and xHDPI)
+ - On canceled move, restore all maximizations states
+ - Optionally remove frame on tiling as well
+ - Optionnally use window preview in tabwin
+ - Prevent CSD windows from being moved too far up
+ - Remove horizontal tyling on move
+ - Remove maximize button from non-resizable windows
+ - Remove restore-on-move option
+ - Send debug messages to a log file
+ - Update desktop geometry on xrandr events
+ - Use cairo wireframe for move/resize
+ - Use correct type on platforms where time_t is 64bits like OpenBSD
+ - Use source indication in activate window
+ - Use the correct drm/dri device on OpenBSD
+ - Workaround for NET_WORKAREA with multimonitor
+ - Lot of translations updates (ast, bg, cs, da ,de, en_AU, es, fi, fr,
+   he ,hr ,hu, id, it, ja ,kk, ko, ms ,nl, pl, pt_BR, ru ,sr ,th, tr,
+   uk, zh_CN)
+
 4.11.2
 ======
 - Improve auto-maximize fn to maximize windows which size is equal to
