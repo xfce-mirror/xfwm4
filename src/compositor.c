@@ -2877,6 +2877,114 @@ compositorSetCMSelection (ScreenInfo *screen_info, Window w)
     setAtomIdManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, w);
 }
 
+static Pixmap
+compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
+{
+    Display *dpy;
+    ScreenInfo *screen_info;
+    Picture srcPicture, tmpPicture, destPicture;
+    Pixmap tmpPixmap, dstPixmap;
+    XTransform transform;
+    XRenderPictFormat *render_format;
+    double scale;
+    int tx, ty, src_size, dest_size;
+    unsigned int src_w, src_h;
+    unsigned int dst_w, dst_h;
+    XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
+
+    screen_info = cw->screen_info;
+    dpy = myScreenGetXDisplay (screen_info);
+
+    srcPicture = cw->picture;
+    if (!srcPicture)
+    {
+        srcPicture = cw->saved_picture;
+    }
+    /* Could not get a usable picture, bail out */
+    if (!srcPicture)
+    {
+        return None;
+    }
+
+    /* Get the source pixmap size to compute the scale */
+    get_paint_bounds (cw, &tx, &ty, &src_w, &src_h);
+    src_size = MAX (src_w, src_h);
+
+    /*/
+     * Caller may pass either NULL or 0.
+     * If 0, we return the actual unscalled size.
+     */
+    dst_w = (width != NULL && *width > 0) ? *width : src_w;
+    dst_h = (height != NULL && *height > 0) ? *height : src_h;
+    dest_size = MIN (dst_w, dst_h);
+
+    scale = (double) dest_size / (double) src_size;
+    dst_w = src_w * scale;
+    dst_h = src_h * scale;
+
+    transform.matrix[0][0] = XDoubleToFixed (1.0);
+    transform.matrix[0][1] = XDoubleToFixed (0.0);
+    transform.matrix[0][2] = XDoubleToFixed (0.0);
+    transform.matrix[1][0] = XDoubleToFixed (0.0);
+    transform.matrix[1][1] = XDoubleToFixed (1.0);
+    transform.matrix[1][2] = XDoubleToFixed (0.0);
+    transform.matrix[2][0] = XDoubleToFixed (0.0);
+    transform.matrix[2][1] = XDoubleToFixed (0.0);
+    transform.matrix[2][2] = XDoubleToFixed (scale);
+
+    tmpPixmap = XCreatePixmap (dpy, screen_info->output, src_w, src_h, 32);
+    if (!tmpPixmap)
+    {
+        return None;
+    }
+
+    dstPixmap = XCreatePixmap (dpy, screen_info->output, dst_w, dst_h, 32);
+    if (!dstPixmap)
+    {
+        XFreePixmap (dpy, tmpPixmap);
+        return None;
+    }
+
+
+    render_format = get_window_format (cw);
+    if (!render_format)
+    {
+        XFreePixmap (dpy, dstPixmap);
+        XFreePixmap (dpy, tmpPixmap);
+        return None;
+    }
+
+    render_format = XRenderFindStandardFormat (dpy, PictStandardARGB32);
+    tmpPicture = XRenderCreatePicture (dpy, tmpPixmap, render_format, 0, NULL);
+    XRenderFillRectangle (dpy, PictOpSrc, tmpPicture, &c, 0, 0, src_w, src_h);
+    XFixesSetPictureClipRegion (dpy, tmpPicture, 0, 0, None);
+    XRenderComposite (dpy, PictOpOver, srcPicture, None, tmpPicture,
+                      0, 0, 0, 0, 0, 0, src_w, src_h);
+
+    XRenderSetPictureFilter (dpy, tmpPicture, FilterBest, NULL, 0);
+    XRenderSetPictureTransform (dpy, tmpPicture, &transform);
+
+    destPicture = XRenderCreatePicture (dpy, dstPixmap, render_format, 0, NULL);
+    XRenderComposite (dpy, PictOpOver, tmpPicture, None, destPicture,
+                      0, 0, 0, 0, 0, 0, dst_w, dst_h);
+
+    XRenderFreePicture (dpy, tmpPicture);
+    XRenderFreePicture (dpy, destPicture);
+    XFreePixmap (dpy, tmpPixmap);
+
+    /* Update given size if requested */
+    if (width != NULL)
+    {
+        *width = dst_w;
+    }
+    if (height != NULL)
+    {
+        *height = dst_h;
+    }
+
+    return dstPixmap;
+}
+
 #endif /* HAVE_COMPOSITOR */
 
 gboolean
@@ -3020,114 +3128,6 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int 
         resize_win (cw, x, y, width, height, 0);
     }
 #endif /* HAVE_COMPOSITOR */
-}
-
-static Pixmap
-compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
-{
-    Display *dpy;
-    ScreenInfo *screen_info;
-    Picture srcPicture, tmpPicture, destPicture;
-    Pixmap tmpPixmap, dstPixmap;
-    XTransform transform;
-    XRenderPictFormat *render_format;
-    double scale;
-    int tx, ty, src_size, dest_size;
-    unsigned int src_w, src_h;
-    unsigned int dst_w, dst_h;
-    XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
-
-    screen_info = cw->screen_info;
-    dpy = myScreenGetXDisplay (screen_info);
-
-    srcPicture = cw->picture;
-    if (!srcPicture)
-    {
-        srcPicture = cw->saved_picture;
-    }
-    /* Could not get a usable picture, bail out */
-    if (!srcPicture)
-    {
-        return None;
-    }
-
-    /* Get the source pixmap size to compute the scale */
-    get_paint_bounds (cw, &tx, &ty, &src_w, &src_h);
-    src_size = MAX (src_w, src_h);
-
-    /*/
-     * Caller may pass either NULL or 0.
-     * If 0, we return the actual unscalled size.
-     */
-    dst_w = (width != NULL && *width > 0) ? *width : src_w;
-    dst_h = (height != NULL && *height > 0) ? *height : src_h;
-    dest_size = MIN (dst_w, dst_h);
-
-    scale = (double) dest_size / (double) src_size;
-    dst_w = src_w * scale;
-    dst_h = src_h * scale;
-
-    transform.matrix[0][0] = XDoubleToFixed (1.0);
-    transform.matrix[0][1] = XDoubleToFixed (0.0);
-    transform.matrix[0][2] = XDoubleToFixed (0.0);
-    transform.matrix[1][0] = XDoubleToFixed (0.0);
-    transform.matrix[1][1] = XDoubleToFixed (1.0);
-    transform.matrix[1][2] = XDoubleToFixed (0.0);
-    transform.matrix[2][0] = XDoubleToFixed (0.0);
-    transform.matrix[2][1] = XDoubleToFixed (0.0);
-    transform.matrix[2][2] = XDoubleToFixed (scale);
-
-    tmpPixmap = XCreatePixmap (dpy, screen_info->output, src_w, src_h, 32);
-    if (!tmpPixmap)
-    {
-        return None;
-    }
-
-    dstPixmap = XCreatePixmap (dpy, screen_info->output, dst_w, dst_h, 32);
-    if (!dstPixmap)
-    {
-        XFreePixmap (dpy, tmpPixmap);
-        return None;
-    }
-
-
-    render_format = get_window_format (cw);
-    if (!render_format)
-    {
-        XFreePixmap (dpy, dstPixmap);
-        XFreePixmap (dpy, tmpPixmap);
-        return None;
-    }
-
-    render_format = XRenderFindStandardFormat (dpy, PictStandardARGB32);
-    tmpPicture = XRenderCreatePicture (dpy, tmpPixmap, render_format, 0, NULL);
-    XRenderFillRectangle (dpy, PictOpSrc, tmpPicture, &c, 0, 0, src_w, src_h);
-    XFixesSetPictureClipRegion (dpy, tmpPicture, 0, 0, None);
-    XRenderComposite (dpy, PictOpOver, srcPicture, None, tmpPicture,
-                      0, 0, 0, 0, 0, 0, src_w, src_h);
-
-    XRenderSetPictureFilter (dpy, tmpPicture, FilterBest, NULL, 0);
-    XRenderSetPictureTransform (dpy, tmpPicture, &transform);
-
-    destPicture = XRenderCreatePicture (dpy, dstPixmap, render_format, 0, NULL);
-    XRenderComposite (dpy, PictOpOver, tmpPicture, None, destPicture,
-                      0, 0, 0, 0, 0, 0, dst_w, dst_h);
-
-    XRenderFreePicture (dpy, tmpPicture);
-    XRenderFreePicture (dpy, destPicture);
-    XFreePixmap (dpy, tmpPixmap);
-
-    /* Update given size if requested */
-    if (width != NULL)
-    {
-        *width = dst_w;
-    }
-    if (height != NULL)
-    {
-        *height = dst_h;
-    }
-
-    return dstPixmap;
 }
 
 /* May return None if:
