@@ -746,12 +746,6 @@ free_win_data (CWindow *cw, gboolean delete)
     }
 #endif
 
-    if (cw->saved_picture)
-    {
-        XRenderFreePicture (display_info->dpy, cw->saved_picture);
-        cw->saved_picture = None;
-    }
-
     if (cw->picture)
     {
         if (delete)
@@ -760,6 +754,10 @@ free_win_data (CWindow *cw, gboolean delete)
         }
         else
         {
+            if (cw->saved_picture)
+            {
+                XRenderFreePicture (display_info->dpy, cw->saved_picture);
+            }
             cw->saved_picture = cw->picture;
         }
         cw->picture = None;
@@ -815,6 +813,13 @@ free_win_data (CWindow *cw, gboolean delete)
 
     if (delete)
     {
+        /* No need to keep this around */
+        if (cw->saved_picture)
+        {
+            XRenderFreePicture (display_info->dpy, cw->saved_picture);
+            cw->saved_picture = None;
+        }
+
         if (cw->damage)
         {
             /* The damage may be already destroyed along with the attached resource,
