@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Sveinn í Felli <sv1@fellsnet.is>, 2014
-# Sveinn í Felli <sveinki@nett.is>, 2011,2013
+# Sveinn í Felli <sveinki@nett.is>, 2011,2013,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-05-23 14:23+0000\n"
+"POT-Creation-Date: 2015-01-30 00:32+0100\n"
+"PO-Revision-Date: 2015-02-18 13:41+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/xfwm4/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -33,29 +33,29 @@ msgstr "Aðvörun"
 msgid "None"
 msgstr "Ekkert"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
 msgstr "Sökkull setustjórnunar"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "AUÐKENNI SÖKKULS - ID"
 
-#: ../settings-dialogs/tweaks-settings.c:474
+#: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Útgáfuupplýsingar"
 
-#: ../settings-dialogs/tweaks-settings.c:492
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:494
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -439,8 +439,8 @@ msgid "Hide frame of windows when ma_ximized"
 msgstr "_Fela gluggaramma þegar gluggar eru hámarkaðir"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "Endur_heimta upprunalega stærð hámarkaðra glugga þegar þeir eru færðir"
+msgid "Hide title of windows when maximized"
+msgstr "Fela gluggatitil þegar gluggar eru hámarkaðir"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -526,46 +526,50 @@ msgid "Synchronize drawing to the _vertical blank"
 msgstr "Samstilla skjáteikningu _við millirammabil (vertical blank)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "Show shadows under pop_up windows"
-msgstr "Sýna skugga undir _sprettgluggum"
+msgid "Show windows preview in place of icons when cycling"
+msgstr "Birta smámynd glugga í stað táknmynda þegar flett er"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-msgid "Show shadows under _dock windows"
-msgstr "Sýna skugga undir s_pjaldgluggum"
+msgid "Show shadows under pop_up windows"
+msgstr "Birta skugga undir _sprettgluggum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-msgid "Show shadows under _regular windows"
-msgstr "Sýna skugga undir _venjulegum gluggum"
+msgid "Show shadows under _dock windows"
+msgstr "Birta skugga undir s_pjaldgluggum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+msgid "Show shadows under _regular windows"
+msgstr "Birta skugga undir _venjulegum gluggum"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
 msgstr "_Gegnsæi gluggaskreytingar:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
 msgstr "<i>Gegnsætt</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "<i>Opaque</i>"
 msgstr "<i>Ógegnsætt</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
 msgstr "Gegnsæi óv_irkra glugga:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
 msgstr "Gegnsæi glugga sem verið er að _færa:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
 msgstr "Gegnsæi glugga þegar verið er að b_reyta stærð:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
 msgstr "Gegnsæi _sprettglugga:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
 msgstr "S_kjásamsetning"
 
@@ -595,40 +599,40 @@ msgid "_Margins"
 msgstr "S_pássíur"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (á %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:602
 msgid "Fork to the background"
 msgstr "Kvísla á bakgrunn"
 
-#: ../src/main.c:542
+#: ../src/main.c:604
 msgid "Fork to the background (not supported)"
 msgstr "Kvísla á bakgrunn (er ekki stutt)"
 
-#: ../src/main.c:545
+#: ../src/main.c:607
 msgid "Set the compositor mode"
 msgstr "Setja ham skjásamsetningar"
 
-#: ../src/main.c:547
+#: ../src/main.c:609
 msgid "Set the compositor mode (not supported)"
 msgstr "Setja ham skjásamsetningar (er ekki stutt)"
 
-#: ../src/main.c:549
+#: ../src/main.c:611
 msgid "Replace the existing window manager"
 msgstr "Skipta út núverandi gluggastýringu"
 
-#: ../src/main.c:550
+#: ../src/main.c:612
 msgid "Print version information and exit"
 msgstr "Prenta upplýsingar um útgáfu og hætta"
 
-#: ../src/main.c:558
+#: ../src/main.c:623
 msgid "[ARGUMENTS...]"
 msgstr "[VIÐFÖNG...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:630
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skrifa \"%s --help\"  fyrir notkun."
@@ -651,7 +655,7 @@ msgstr "Lágmarka _alla aðra glugga"
 
 #: ../src/menu.c:47
 msgid "S_how"
-msgstr "_Sýna"
+msgstr "_Birta"
 
 #: ../src/menu.c:48
 msgid "_Move"
