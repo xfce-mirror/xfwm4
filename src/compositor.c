@@ -2891,7 +2891,9 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XTransform transform;
     XRenderPictFormat *render_format;
     double scale;
-    int tx, ty, src_size, dest_size;
+    int tx, ty;
+    int src_x, src_y;
+    int src_size, dest_size;
     unsigned int src_w, src_h;
     unsigned int dst_w, dst_h;
     XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
@@ -2912,6 +2914,18 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
 
     /* Get the source pixmap size to compute the scale */
     get_paint_bounds (cw, &tx, &ty, &src_w, &src_h);
+    if (WIN_HAS_CLIENT(cw))
+    {
+        src_x = ABS(frameExtentLeft (cw->c));
+        src_y = ABS(frameExtentTop (cw->c));
+        src_w = src_w - src_x - ABS(frameExtentRight (cw->c));
+        src_h = src_h - src_y - ABS(frameExtentBottom (cw->c));
+    }
+    else
+    {
+        src_x = 0;
+        src_y = 0;
+    }
     src_size = MAX (src_w, src_h);
 
     /*/
@@ -2963,7 +2977,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XRenderFillRectangle (dpy, PictOpSrc, tmpPicture, &c, 0, 0, src_w, src_h);
     XFixesSetPictureClipRegion (dpy, tmpPicture, 0, 0, None);
     XRenderComposite (dpy, PictOpOver, srcPicture, None, tmpPicture,
-                      0, 0, 0, 0, 0, 0, src_w, src_h);
+                      src_x, src_y, 0, 0, 0, 0, src_w, src_h);
 
     XRenderSetPictureFilter (dpy, tmpPicture, FilterBest, NULL, 0);
     XRenderSetPictureTransform (dpy, tmpPicture, &transform);
