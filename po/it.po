@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-01-31 12:03+0000\n"
+"PO-Revision-Date: 2015-02-21 13:52+0000\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -461,7 +461,7 @@ msgstr "Fa _lampeggiare ripetutamente le finestre urgenti"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Usa la rotella del mouse sulla abrra del titolo per a_vvolgere la finestra"
+msgstr "Usa la rotella del mouse sulla barra del titolo per a_vvolgere la finestra"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "_Accessibility"
