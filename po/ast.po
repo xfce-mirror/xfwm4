@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# enolp <enolp@softastur.org>, 2014
+# enolp <enolp@softastur.org>, 2014-2015
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2014-12-13 20:25+0000\n"
+"POT-Creation-Date: 2015-01-30 00:32+0100\n"
+"PO-Revision-Date: 2015-02-21 15:19+0000\n"
 "Last-Translator: enolp <enolp@softastur.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -35,29 +35,29 @@ msgstr "Avisu"
 msgid "None"
 msgstr "Dengún"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
 msgstr "Socket del xestor de sesión"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID de SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:474
+#: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Información de versión"
 
-#: ../settings-dialogs/tweaks-settings.c:492
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:494
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -280,7 +280,7 @@ msgstr "Col _mur"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr ""
+msgstr "Con una ventana _arrastrada"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -296,7 +296,7 @@ msgstr "Al _mover"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
-msgstr ""
+msgstr "Al _redimensionar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
@@ -441,8 +441,8 @@ msgid "Hide frame of windows when ma_ximized"
 msgstr "Anubrir marcu de ventanes al maximizar"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "Restaurar el _tamañu orixinal de ventanes maximizaes al desplazase"
+msgid "Hide title of windows when maximized"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -528,46 +528,50 @@ msgid "Synchronize drawing to the _vertical blank"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show windows preview in place of icons when cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
 msgstr "Amosar somlobres baxo ventanos _emerxentes"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _dock windows"
 msgstr "Amosar solombres baxo ventanes _empotrables"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under _regular windows"
 msgstr "Amosar somlobres baxo ventanes _normales"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
 msgstr "Opaci_dá de la decoración de ventanes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
 msgstr "<i>Tresparente</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "<i>Opaque</i>"
 msgstr "<i>Opacu</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
 msgstr "Opacidá de ventanes _inactives:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
 msgstr "Opacidá de ventanes al des_plazase:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacidá de ventanes durante _redimensionáu:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opacidá de los ventanos emerxentes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
 msgstr "C_ompositor"
 
@@ -597,40 +601,40 @@ msgid "_Margins"
 msgstr "_Márxenes"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (en %s)"
 
-#: ../src/main.c:540
+#: ../src/main.c:602
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:542
+#: ../src/main.c:604
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:545
+#: ../src/main.c:607
 msgid "Set the compositor mode"
 msgstr "Afitar el mou compositor"
 
-#: ../src/main.c:547
+#: ../src/main.c:609
 msgid "Set the compositor mode (not supported)"
 msgstr "Afitar el mou compositor (non sofitáu)"
 
-#: ../src/main.c:549
+#: ../src/main.c:611
 msgid "Replace the existing window manager"
 msgstr "Trocar l'alministrador de ventanes esistente"
 
-#: ../src/main.c:550
+#: ../src/main.c:612
 msgid "Print version information and exit"
 msgstr "Amuesa la información de la versión y cola"
 
-#: ../src/main.c:558
+#: ../src/main.c:623
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:630
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Escribi \"%s --help\" pal usu."
