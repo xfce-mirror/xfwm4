@@ -233,7 +233,7 @@
 #define CLIENT_CAN_TILE_WINDOW(c)       (CLIENT_CAN_MAXIMIZE_WINDOW(c) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && \
                                          (c->type & WINDOW_NORMAL))
-#define CLIENT_HAS_TITLE(c)             (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
+#define CLIENT_HAS_FRAME(c)             (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && \
                                          (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) || \
                                           !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED) ||  \

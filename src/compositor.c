@@ -74,8 +74,7 @@
 
 /* Some convenient macros */
 #define WIN_HAS_CLIENT(cw)              (cw->c)
-#define WIN_HAS_FRAME(cw)               (WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
-                                         !FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN))
+#define WIN_HAS_FRAME(cw)               (WIN_HAS_CLIENT(cw) && CLIENT_HAS_FRAME(cw->c))
 #define WIN_NO_SHADOW(cw)               ((cw->c) && \
                                            (FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW) || \
                                             (cw->c->type & WINDOW_DESKTOP)))

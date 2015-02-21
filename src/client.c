@@ -2717,7 +2717,7 @@ clientShade (Client *c)
     TRACE ("entering clientToggleShaded");
     TRACE ("shading client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!CLIENT_HAS_TITLE(c))
+    if (!CLIENT_HAS_FRAME(c))
     {
         TRACE ("cowardly refusing to shade \"%s\" (0x%lx) because it has no title", c->name, c->window);
         return;

@@ -119,7 +119,7 @@ frameTop (Client * c)
     TRACE ("entering frameTop");
 
     g_return_val_if_fail (c != NULL, 0);
-    if (CLIENT_HAS_TITLE (c))
+    if (CLIENT_HAS_FRAME (c))
     {
         return c->screen_info->title[TITLE_3][ACTIVE].height;
     }
@@ -1058,7 +1058,7 @@ frameDrawWin (Client * c)
         }
     }
 
-    if (CLIENT_HAS_TITLE (c))
+    if (CLIENT_HAS_FRAME (c))
     {
         /* First, hide the buttons that we don't have... */
         for (i = 0; i < BUTTON_COUNT; i++)
