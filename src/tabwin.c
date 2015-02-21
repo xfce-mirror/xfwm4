@@ -29,7 +29,7 @@
 #endif
 
 #ifndef WIN_PREVIEW_SIZE
-#define WIN_PREVIEW_SIZE (4 * WIN_ICON_SIZE)
+#define WIN_PREVIEW_SIZE (6 * WIN_ICON_SIZE)
 #endif
 
 #ifndef LISTVIEW_WIN_ICON_SIZE
