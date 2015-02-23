@@ -5,13 +5,14 @@
 # Translators:
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2012
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2013-2015
+# Lyubomir Vasilev, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-01-30 17:12+0000\n"
-"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
+"PO-Revision-Date: 2015-02-23 14:58+0000\n"
+"Last-Translator: Lyubomir Vasilev\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/xfwm4/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +63,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nИзпълнете %s --help за да видите пълният списък с достъпните команди.\n"
+msgstr "%s: %s\nОпитайте с %s --help , за да видите пълният списък с достъпните команди.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -380,7 +381,7 @@ msgstr "Това действие ще възстанови всички кла�
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Пропускане на прозорците, които имат зададено свойство\n \"пропусни превключвателя на работните места\" или\n\"пропусни лентата на задачите\" в настройките"
+msgstr "Пропускане на прозорците, които имат зададено свойство\n„пропускане на превключвателя на работните места“ или\n„пропускане на лентата на задачите“ в настройките"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -404,7 +405,7 @@ msgstr "Превключване на прозорците"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Activate foc_us stealing prevention"
-msgstr "Активиране на фокус \"Превенция от кражби\""
+msgstr "Активиране на предотвратяването на отнемането на фокуса"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
@@ -468,7 +469,7 @@ msgstr "Достъпност"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Използване на показалеца на мишката в работният плот за смяна на работните места"
+msgstr "Използване на колелото на мишката върху работния плот за смяна работните места"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
@@ -478,7 +479,7 @@ msgstr "Запомняне и връщане на предишното рабо�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Превъртане на работните места в зависимост от действителното разположение на десктопа"
+msgstr "Превъртане на работните места в зависимост от действителната подредба на работния плот"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
@@ -635,7 +636,7 @@ msgstr "[ПАРАМЕТРИ...]"
 #: ../src/main.c:630
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Напиши \"%s --help\" за получаване на потребителска информация"
+msgstr "Въведете „%s --help“ за показване на потребителското ръководство"
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
@@ -742,7 +743,7 @@ msgstr "%s: Не може да бъде определен цвета %s\n"
 #: ../src/settings.c:275
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: Грешка при определяне на цвета: Стойността за цвета не е от типа STRING"
+msgstr "%s: Грешка при определяне на цвета: Стойността за цвета не е от тип НИЗ"
 
 #: ../src/settings.c:282
 #, c-format
@@ -752,7 +753,7 @@ msgstr "%s: Не може да бъде обработен цвета %s\n"
 #: ../src/settings.c:284
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: Не може да бъде обработен цвета: Стойността за цвета не е от типа STRING"
+msgstr "%s: Не може да бъде обработен цвета: Стойността за цвета не е от тип НИЗ"
 
 #: ../src/terminate.c:75
 #, c-format
