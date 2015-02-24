@@ -417,6 +417,10 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_TOOLBAR];
     atoms[i++] = display_info->atoms[NET_WM_WINDOW_TYPE_UTILITY];
     atoms[i++] = display_info->atoms[NET_WORKAREA];
+    /* GTK specific hints */
+    atoms[i++] = display_info->atoms[GTK_FRAME_EXTENTS];
+    atoms[i++] = display_info->atoms[GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED];
+    atoms[i++] = display_info->atoms[GTK_SHOW_WINDOW_MENU];
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     atoms[i++] = display_info->atoms[NET_STARTUP_ID];
 #endif

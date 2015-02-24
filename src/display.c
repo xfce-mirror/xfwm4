@@ -78,6 +78,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "COMPOSITING_MANAGER",
         "_GTK_FRAME_EXTENTS",
         "_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED",
+        "_GTK_SHOW_WINDOW_MENU",
         "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
         "_MOTIF_WM_HINTS",

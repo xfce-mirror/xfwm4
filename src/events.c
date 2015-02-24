@@ -1960,6 +1960,12 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
             clientSetFullscreenMonitor (c, (gint) ev->data.l[0], (gint) ev->data.l[1],
                                            (gint) ev->data.l[2], (gint) ev->data.l[3]);
         }
+        else if ((ev->message_type == display_info->atoms[GTK_SHOW_WINDOW_MENU]) && (ev->format == 32))
+        {
+            TRACE ("client \"%s\" (0x%lx) has received a GTK_SHOW_WINDOW_MENU event", c->name, c->window);
+            show_window_menu (c, (gint) ev->data.l[1], (gint) ev->data.l[2], Button3, (Time) myDisplayGetCurrentTime (display_info));
+        }
+
     }
     else
     {
@@ -2414,7 +2420,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
         return;
     }
 
-    if (!c || !FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_MENU | XFWM_FLAG_VISIBLE))
+    if (!c || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         return;
     }
@@ -2472,6 +2478,12 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
     {
         ops |= MENU_OP_STICK;
     }
+
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
+    {
+        insensitive |= MENU_OP_SHADE | MENU_OP_UNSHADE;
+    }
+
 
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
     {
