@@ -627,6 +627,7 @@ myScreenComputeSize (ScreenInfo *screen_info)
 {
     gint num_monitors, i;
     gint width, height;
+    gint screen_width, screen_height;
     GdkRectangle monitor;
     gboolean changed;
 
@@ -648,6 +649,22 @@ myScreenComputeSize (ScreenInfo *screen_info)
         gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
         width = MAX (monitor.x + monitor.width, width);
         height = MAX (monitor.y + monitor.height, height);
+    }
+
+    /* Keep the smallest size between what we computed and the
+     * reported size for the screen.
+     */
+    screen_width = gdk_screen_get_width (screen_info->gscr);
+    screen_height = gdk_screen_get_height (screen_info->gscr);
+
+    if (width == 0 || width > screen_width)
+    {
+        width = screen_width;
+    }
+
+    if (height == 0 || height > screen_height)
+    {
+        height = screen_height;
     }
 
     changed = ((screen_info->width != width) | (screen_info->height != height));
