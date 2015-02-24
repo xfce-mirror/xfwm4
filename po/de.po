@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-08 15:34+0000\n"
+"PO-Revision-Date: 2015-02-24 12:12+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -527,7 +527,7 @@ msgstr "_Vollbildüberlagerungsfenster sofort anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr "_Zeichnung der vertikalen Austastlücke synchronisieren"
+msgstr "_Zeichnung der senkrechten Austastlücke synchronisieren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
