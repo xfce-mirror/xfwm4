@@ -3214,7 +3214,8 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
         wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
         wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
 
-        return ((wc->width <= c->size->max_width) && (wc->height <= c->size->max_height));
+        return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
+                (wc->width >= c->size->min_width) && (wc->width <= c->size->max_width));
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
@@ -3236,8 +3237,6 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
 
         wc->x = full_x + frameExtentLeft (c);
         wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
-
-        return (wc->width <= c->size->max_width);
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
@@ -3259,8 +3258,6 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
 
         wc->y = full_y + frameExtentTop (c);
         wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
-
-        return (wc->height <= c->size->max_height);
     }
 
     switch (tile)
@@ -3290,11 +3287,11 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
                 wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         default:
-            return TRUE;
             break;
     }
 
-    return (wc->height <= c->size->max_height) && (wc->width <= c->size->max_width);
+    return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
+            (wc->width >= c->size->min_width) && (wc->width <= c->size->max_width));
 }
 
 gboolean
