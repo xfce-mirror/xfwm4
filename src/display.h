@@ -350,6 +350,13 @@ struct _DisplayInfo
     gboolean have_overlays;
 #endif /* HAVE_OVERLAYS */
 
+#ifdef HAVE_PRESENT_EXTENSION
+    gboolean have_present;
+    gint present_opcode;
+    gint present_error_base;
+    gint present_event_base;
+#endif /* HAVE_PRESENT_EXTENSION */
+
 #endif /* HAVE_COMPOSITOR */
 };
 

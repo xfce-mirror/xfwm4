@@ -72,17 +72,19 @@ xfwm4_SOURCES =								\
 	xpm-color-table.h
 
 xfwm4_CFLAGS =								\
-	$(GTK_CFLAGS) 							\
 	$(GLIB_CFLAGS) 							\
-	$(LIBX11_CFLAGS)						\
-	$(LIBXFCONF_CFLAGS)						\
-	$(LIBXFCE4UTIL_CFLAGS)						\
-	$(LIBXFCE4UI_CFLAGS)						\
-	$(LIBXFCE4KBD_PRIVATE_CFLAGS)					\
-	$(RENDER_CFLAGS)						\
-	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
+	$(GTK_CFLAGS) 							\
 	$(COMPOSITOR_CFLAGS)						\
 	$(EPOXY_CFLAGS)							\
+	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
+	$(LIBX11_CFLAGS)						\
+	$(LIBXFCE4KBD_PRIVATE_CFLAGS)					\
+	$(LIBXFCE4UI_CFLAGS)						\
+	$(LIBXFCE4UTIL_CFLAGS)						\
+	$(LIBXFCONF_CFLAGS)						\
+	$(PRESENT_EXTENSION_CFLAGS)					\
+	$(RANDR_CFLAGS)							\
+	$(RENDER_CFLAGS)						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DHELPERDIR=\"$(HELPER_PATH_PREFIX)\"				\
@@ -90,19 +92,20 @@ xfwm4_CFLAGS =								\
 	-DG_LOG_DOMAIN=\"xfwm4\"
 
 xfwm4_LDADD =								\
-	$(GTK_LIBS) 							\
 	$(GLIB_LIBS) 							\
-	$(LIBX11_LIBS)							\
-	$(LIBX11_LDFLAGS)						\
-	$(LIBXFCONF_LIBS)						\
-	$(LIBXFCE4UTIL_LIBS)						\
-	$(LIBXFCE4UI_LIBS)						\
-	$(LIBXFCE4KBD_PRIVATE_LIBS)					\
-	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
-	$(RENDER_LIBS)							\
+	$(GTK_LIBS) 							\
 	$(COMPOSITOR_LIBS)						\
-	$(RANDR_LIBS) 							\
 	$(EPOXY_LIBS)							\
+	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
+	$(LIBX11_LDFLAGS)						\
+	$(LIBX11_LIBS)							\
+	$(LIBXFCE4KBD_PRIVATE_LIBS)					\
+	$(LIBXFCE4UI_LIBS)						\
+	$(LIBXFCE4UTIL_LIBS)						\
+	$(LIBXFCONF_LIBS)						\
+	$(PRESENT_EXTENSION_LIBS)					\
+	$(RANDR_LIBS) 							\
+	$(RENDER_LIBS)							\
 	$(MATH_LIBS)
 
 EXTRA_DIST = 								\

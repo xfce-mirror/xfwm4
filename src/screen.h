@@ -61,6 +61,7 @@
                                  SuperMask | \
                                  HyperMask)
 
+
 #ifdef HAVE_COMPOSITOR
 struct _gaussian_conv {
     int     size;
@@ -176,10 +177,14 @@ struct _ScreenInfo
     guchar *shadowCorner;
     guchar *shadowTop;
 
+    gushort current_buffer;
+    Pixmap rootPixmap[2];
+    Picture rootBuffer[2];
+    Picture zoomBuffer;
     Picture rootPicture;
-    Picture rootBuffer;
     Picture blackPicture;
     Picture rootTile;
+    XserverRegion prevDamage;
     XserverRegion allDamage;
     unsigned long cursorSerial;
     Picture cursorPicture;
@@ -205,6 +210,10 @@ struct _ScreenInfo
     GLXContext glx_context;
     GLXWindow glx_window;
 #endif /* HAVE_EPOXY */
+
+#ifdef HAVE_PRESENT_EXTENSION
+    gboolean present_pending;
+#endif /* HAVE_PRESENT_EXTENSION */
 
 #endif /* HAVE_COMPOSITOR */
 };

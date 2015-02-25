@@ -364,6 +364,12 @@ print_version (void)
     g_print ("No\n");
 #endif
 
+    g_print ("\t- Xpresent support:                             ");
+#ifdef HAVE_PRESENT_EXTENSION
+    g_print ("Yes\n");
+#else
+    g_print ("No\n");
+#endif
     g_print ("\t- Embedded compositor:                          ");
 #ifdef HAVE_COMPOSITOR
     g_print ("Yes\n");
