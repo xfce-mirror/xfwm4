@@ -415,8 +415,8 @@ handleKeyPress (DisplayInfo *display_info, XKeyEvent * ev)
                 }
                 break;
             case KEY_POPUP_MENU:
-                show_window_menu (c, frameX (c) + frameLeft (c),
-                                     frameY (c) + frameTop (c),
+                show_window_menu (c, frameExtentX (c) + frameLeft (c),
+                                     frameExtentY (c) + frameTop (c),
                                      Button1, ev->time);
                 break;
             case KEY_FILL_WINDOW:
@@ -2413,7 +2413,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
     gboolean is_transient;
     gint x, y;
 
-    TRACE ("entering show_window_menu");
+    TRACE ("entering show_window_menu (%d,%d)", px, py);
 
     if ((button != Button1) && (button != Button3))
     {
@@ -2434,7 +2434,10 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
 
     c->button_status[MENU_BUTTON] = BUTTON_STATE_PRESSED;
     frameQueueDraw (c, FALSE);
-    y = (gdouble) c->y;
+    if (CLIENT_HAS_FRAME (c))
+    {
+        y = c->y;
+    }
     ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MOVE | MENU_OP_RESIZE;
     insensitive = 0;
 
