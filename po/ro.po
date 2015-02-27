@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mișu Moldovan <dumol@xfce.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2013-11-19 15:10+0000\n"
-"Last-Translator: Nick <nick@xfce.org>\n"
-"Language-Team: Romanian (http://www.transifex.com/projects/p/xfce/language/ro/)\n"
+"PO-Revision-Date: 2015-02-27 20:17+0000\n"
+"Last-Translator: Mișu Moldovan <dumol@l10n.ro>\n"
+"Language-Team: Romanian (http://www.transifex.com/projects/p/xfwm4/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,11 +22,11 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Această fereastră nu răspunde, fiind poate ocupată cu altceva.\nDoriți să forțați terminarea programului?"
+msgstr "Această fereastră nu pare să mai răspundă.\nDoriți să forțați terminarea programului?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
-msgstr "Avertizare"
+msgstr "Atenționare"
 
 #: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
@@ -85,12 +86,12 @@ msgstr "Manager de ferestre"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Schimbați comportamentul ferestrelor și scurtăturile"
+msgstr "Schimbați comportamentul ferestrelor și combinațiile de taste"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "Ajustări pentru ferestre"
+msgstr "Manager de ferestre (ajustări)"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -113,7 +114,7 @@ msgstr "<b>Te_mă</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
-msgstr "<b>F_ont pentru titlu</b>"
+msgstr "<b>_Font pentru titlu</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
@@ -133,7 +134,7 @@ msgstr "Titlul ferestrei nu poate fi exclus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Active"
-msgstr "Active"
+msgstr "Vizibile"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "Menu"
@@ -141,23 +142,23 @@ msgstr "Meniu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Stick"
-msgstr "Lipește"
+msgstr "Persistență"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Shade"
-msgstr "Strânge"
+msgstr "Strângere"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
-msgstr "Minimizează"
+msgstr "Minimizare"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
-msgstr "Maximizează"
+msgstr "Maximizare"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Close"
-msgstr "Închide"
+msgstr "Închidere"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Hidden"
@@ -169,11 +170,11 @@ msgstr "<b>Aranjare a butoanelor</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "_Style"
-msgstr "_Stil"
+msgstr "Sti_l"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "_Reset to Defaults"
-msgstr "_Reinițializează"
+msgstr "_Reinițializare"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "<b>Window _shortcuts</b>"
@@ -227,7 +228,7 @@ msgstr "Întârziere la r_idicarea deasupra a ferestrelor cu focus:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Trecere deasupra la focalizare</b>"
+msgstr "<b>Trecere deasupra la primirea focusului</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
@@ -240,7 +241,7 @@ msgstr "<b>Trecere deasupra la clic</b>"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "_Focus"
-msgstr "_Focus"
+msgstr "F_ocus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Snap windows to screen _border"
@@ -304,7 +305,7 @@ msgstr "Acțiune de efectuat la dublu-clic pe bara de titlu:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Double click _action</b>"
-msgstr "<b>Acțiune du_blu-clic</b>"
+msgstr "<b>Acțiune pentru du_blu-clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "Ad_vanced"
@@ -656,7 +657,7 @@ msgstr "Include ferestrele ascunse (_minimizate)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr "Ciclează ferestrele din t_oate spațiile de lucru"
+msgstr "Ciclează _ferestrele din toate spațiile de lucru"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
@@ -684,7 +685,7 @@ msgstr "A_du fereastra în spațiul de lucru curent"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Switch to win_dow's workspace"
-msgstr "Du-_mă în spațiul de lucru al ferestrei"
+msgstr "Schi_mbă în spațiul de lucru al ferestrei"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Do _nothing"
@@ -728,7 +729,7 @@ msgstr "Accesi_bilitate"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Schimbă spațiul de lucru curent când utilizez rotița de _maus pe desktop"
+msgstr "Schimbă spațiul de lucru curent la utilizarea rotiței de _maus pe desktop"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
@@ -775,7 +776,7 @@ msgstr "_Plasare"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "_Enable display compositing"
-msgstr "Acti_vează compozitorul ecranului"
+msgstr "Acti_vează compoziția pentru ecran"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
@@ -823,7 +824,7 @@ msgstr "Opacitate a ferestrelor de tip p_opup:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "C_ompositor"
-msgstr "Compo_zitor"
+msgstr "Compo_ziție"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
@@ -858,19 +859,19 @@ msgstr "%s (pe %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr "Clonează în fundal"
+msgstr "Fă fork în fundal"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr "Clonează în fundal (nesuportat)"
+msgstr "Fă fork în fundal (nesuportat)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
-msgstr "Alege modul compozitorului"
+msgstr "Schimbă modul compoziției"
 
 #: ../src/main.c:547
 msgid "Set the compositor mode (not supported)"
-msgstr "Alege modul compozitorului (nesuportat)"
+msgstr "Schimbă modul compoziției (nesuportat)"
 
 #: ../src/main.c:549
 msgid "Replace the existing window manager"
@@ -975,7 +976,7 @@ msgstr "Distruge"
 
 #: ../src/menu.c:70
 msgid "_Quit"
-msgstr "_Ieși"
+msgstr "_Ieșire"
 
 #: ../src/menu.c:71
 msgid "Restart"
