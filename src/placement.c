@@ -38,6 +38,7 @@
 #include "frame.h"
 #include "netwm.h"
 
+#define MAX_VALID_STRUT(n) (n / 4) /* 25% of available space */
 
 /* Compute rectangle overlap area */
 
@@ -102,12 +103,15 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
     Client *c2;
     guint i;
     gint delta, screen_width, screen_height;
+    gint original_w, original_h;
 
     g_return_if_fail (x != NULL);
     g_return_if_fail (y != NULL);
     g_return_if_fail (w != NULL);
     g_return_if_fail (h != NULL);
 
+    original_w = *w;
+    original_h = *h;
     screen_width = 0;
     screen_height = 0;
     delta = 0;
@@ -125,8 +129,11 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
                          0, c2->struts[STRUTS_LEFT_START_Y], c2->struts[STRUTS_LEFT], c2->struts[STRUTS_LEFT_END_Y]))
             {
                 delta = c2->struts[STRUTS_LEFT] - *x;
-                *x = *x + delta;
-                *w = *w - delta;
+                if (delta < MAX_VALID_STRUT(original_w))
+                {
+                    *x = *x + delta;
+                    *w = *w - delta;
+                }
             }
 
             /* Right */
@@ -135,7 +142,10 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
                          screen_width, c2->struts[STRUTS_RIGHT_END_Y]))
             {
                 delta = (*x + *w) - screen_width + c2->struts[STRUTS_RIGHT];
-                *w = *w - delta;
+                if (delta < MAX_VALID_STRUT(original_w))
+                {
+                    *w = *w - delta;
+                }
             }
 
             /* Top */
@@ -143,8 +153,11 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
                          c2->struts[STRUTS_TOP_START_X], 0, c2->struts[STRUTS_TOP_END_X], c2->struts[STRUTS_TOP]))
             {
                 delta = c2->struts[STRUTS_TOP] - *y;
-                *y = *y + delta;
-                *h = *h - delta;
+                if (delta < MAX_VALID_STRUT(original_h))
+                {
+                    *y = *y + delta;
+                    *h = *h - delta;
+                }
             }
 
             /* Bottom */
@@ -153,7 +166,10 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
                          c2->struts[STRUTS_BOTTOM_END_X], screen_height))
             {
                 delta = (*y + *h) - screen_height + c2->struts[STRUTS_BOTTOM];
-                *h = *h - delta;
+                if (delta < MAX_VALID_STRUT(original_h))
+                {
+                    *h = *h - delta;
+                }
             }
         }
     }
