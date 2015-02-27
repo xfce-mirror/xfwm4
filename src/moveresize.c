@@ -97,7 +97,7 @@ clientSetSize (Client * c, int *size, int base, int min, int max, int incr, gboo
 
     /* Bypass resize increment and max sizes for fullscreen */
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && !(FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED)
+        && !(FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
              && (c->screen_info->params->borderless_maximize)))
     {
 
