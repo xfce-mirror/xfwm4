@@ -203,10 +203,9 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->screen = gdk_screen_get_number (gscr);
     screen_info->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_rgb_colormap (gscr));
     screen_info->depth = DefaultDepth (display_info->dpy, screen_info->screen);
-    screen_info->width = WidthOfScreen (screen_info->xscreen);
-    screen_info->height = HeightOfScreen (screen_info->xscreen);
     screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
     screen_info->shape_win = (Window) None;
+    myScreenComputeSize (screen_info);
 
     screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
     if (!myScreenSetWMAtom (screen_info, replace_wm))
@@ -627,7 +626,6 @@ myScreenComputeSize (ScreenInfo *screen_info)
 {
     gint num_monitors, i;
     gint width, height;
-    gint screen_width, screen_height;
     GdkRectangle monitor;
     gboolean changed;
 
@@ -651,20 +649,25 @@ myScreenComputeSize (ScreenInfo *screen_info)
         height = MAX (monitor.y + monitor.height, height);
     }
 
+    screen_info->logical_width = gdk_screen_get_width (screen_info->gscr);
+    screen_info->logical_height = gdk_screen_get_height (screen_info->gscr);
+    if ((width != screen_info->logical_width) || (height != screen_info->logical_height))
+    {
+        g_warning ("output size (%dx%d) and logical screen size (%dx%d) do not match",
+                   width, height, screen_info->logical_width, screen_info->logical_height);
+    }
+
     /* Keep the smallest size between what we computed and the
      * reported size for the screen.
      */
-    screen_width = gdk_screen_get_width (screen_info->gscr);
-    screen_height = gdk_screen_get_height (screen_info->gscr);
-
-    if (width == 0 || width > screen_width)
+    if (width == 0 || width > screen_info->logical_width)
     {
-        width = screen_width;
+        width = screen_info->logical_width;
     }
 
-    if (height == 0 || height > screen_height)
+    if (height == 0 || height > screen_info->logical_height)
     {
-        height = screen_height;
+        height = screen_info->logical_height;
     }
 
     changed = ((screen_info->width != width) | (screen_info->height != height));

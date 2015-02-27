@@ -117,8 +117,8 @@ clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
         if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
             && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
-            screen_width = c2->screen_info->width;
-            screen_height = c2->screen_info->height;
+            screen_width = c2->screen_info->logical_width;
+            screen_height = c2->screen_info->logical_height;
 
             /* Left */
             if (overlap (*x, *y, *x + *w, *y + *h,
@@ -236,8 +236,8 @@ clientConstrainPos (Client * c, gboolean show_full)
 
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
-    screen_width = screen_info->width;
-    screen_height = screen_info->height;
+    screen_width = screen_info->logical_width;
+    screen_height = screen_info->logical_height;
 
     disp_x = rect.x;
     disp_y = rect.y;

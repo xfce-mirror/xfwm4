@@ -454,7 +454,7 @@ workspaceSetCount (ScreenInfo * screen_info, guint count)
         workspaceSwitch (screen_info, count - 1, NULL, TRUE, myDisplayGetCurrentTime (display_info));
     }
     setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
-                    screen_info->width, screen_info->height, screen_info->margins);
+                    screen_info->logical_width, screen_info->logical_height, screen_info->margins);
     /* Recompute the layout based on the (changed) number of desktops */
     getDesktopLayout (display_info, screen_info->xroot, screen_info->workspace_count,
                      &screen_info->desktop_layout);
@@ -575,7 +575,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
             if(c->struts[STRUTS_BOTTOM])
             {
                 struttmp.x = c->struts[STRUTS_BOTTOM_START_X];
-                struttmp.y = screen_info->height - c->struts[STRUTS_BOTTOM];
+                struttmp.y = screen_info->logical_height - c->struts[STRUTS_BOTTOM];
                 struttmp.width = c->struts[STRUTS_BOTTOM_END_X] - c->struts[STRUTS_BOTTOM_START_X];
                 struttmp.height = c->struts[STRUTS_BOTTOM];
 
@@ -596,7 +596,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
 
             if(c->struts[STRUTS_RIGHT])
             {
-                struttmp.x = screen_info->width - c->struts[STRUTS_RIGHT];
+                struttmp.x = screen_info->logical_width - c->struts[STRUTS_RIGHT];
                 struttmp.y = c->struts[STRUTS_RIGHT_START_Y];
                 struttmp.width = c->struts[STRUTS_RIGHT];
                 struttmp.height = c->struts[STRUTS_RIGHT_END_Y] - c->struts[STRUTS_RIGHT_START_Y];
@@ -618,7 +618,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
     {
         TRACE ("Margins have changed, updating net_workarea");
         setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
-                        screen_info->width, screen_info->height, screen_info->margins);
+                        screen_info->logical_width, screen_info->logical_height, screen_info->margins);
         /* Also prevent windows from being off screen, just like when screen is resized */
         clientScreenResize(screen_info, FALSE);
     }

@@ -100,8 +100,10 @@ struct _ScreenInfo
     GdkScreen *gscr;
     Screen *xscreen;
     gint depth;
-    gint width;
-    gint height;
+    gint width;  /* Size of all output combined */
+    gint height; /* Size of all output combined */
+    gint logical_width;  /* Xorg reported size */
+    gint logical_height; /* Xorg reported size */
     Visual *visual;
 
     GtkWidget *gtk_win;
