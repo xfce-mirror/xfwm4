@@ -1,3 +1,24 @@
+4.12.0
+======
+ - Add support for gtk window menu
+ - Avoid window decorations in preview
+ - Clean-up compositor state in case of error
+ - Compute struts based on reported screen size
+ - Do not tile windows if they don't fit in
+ - Enable compositing by default
+ - Enable window preview in cycling by default
+ - Fix build with compositor disabled
+ - Fix window menu positioning with CSD
+ - Fix window preview disappearing on themes reload
+ - Reuse client macros in compositor
+ - Revert "Optionally remove frame on tiling as well"
+ - Set maximum valid struts values
+ - Use larger window preview by default
+ - Use opaque background color for preview
+ - Use smallest screen area
+ - Translation Updates (ast, bg, de, es, fi, he, is, it, nb, pt, ro,
+   sk, sl, tr, zh_CN)
+
 4.11.3
 ======
  - Add a zoom_desktop xfconf setting
