@@ -3419,20 +3419,23 @@ compositorManageScreen (ScreenInfo *screen_info)
     DisplayInfo *display_info;
     XRenderPictureAttributes pa;
     XRenderPictFormat *visual_format;
+    gint xerror;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering compositorManageScreen");
 
     display_info = screen_info->display_info;
-    screen_info->compositor_active = FALSE;
+    screen_info->compositor_active = TRUE;
 
     gdk_error_trap_push ();
     XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
     XSync (display_info->dpy, FALSE);
+    xerror = gdk_error_trap_pop ();
 
-    if (gdk_error_trap_pop ())
+    if (xerror == BadAccess)
     {
         g_warning ("Another compositing manager is running on screen %i", screen_info->screen);
+        compositorUnmanageScreen (screen_info);
         return FALSE;
     }
 
@@ -3449,6 +3452,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     if (!visual_format)
     {
         g_warning ("Cannot find visual format on screen %i", screen_info->screen);
+        compositorUnmanageScreen (screen_info);
         return FALSE;
     }
 
@@ -3489,6 +3493,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     if (screen_info->rootPicture == None)
     {
         g_warning ("Cannot create root picture on screen %i", screen_info->screen);
+        compositorUnmanageScreen (screen_info);
         return FALSE;
     }
 
@@ -3506,7 +3511,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->rootTile = None;
     screen_info->allDamage = None;
     screen_info->cwindows = NULL;
-    screen_info->compositor_active = TRUE;
     screen_info->wins_unredirected = 0;
     screen_info->compositor_timeout_id = 0;
     screen_info->zoomed = 0;
