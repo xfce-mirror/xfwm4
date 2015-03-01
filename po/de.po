@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-24 12:12+0000\n"
+"PO-Revision-Date: 2015-03-01 15:18+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -531,7 +531,7 @@ msgstr "_Zeichnung der senkrechten Austastlücke synchronisieren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Beim Fensterwechsel eine Fenstervorschau anstelle der Symbole anzeigen"
+msgstr "_Beim Fensterwechsel eine Fenstervorschau anstelle der Symbole anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
@@ -563,7 +563,7 @@ msgstr "Dec_kkraft von inaktiven Fenstern:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
-msgstr "Deckk_raft beim Verschieben:"
+msgstr "Deckkraft beim _Verschieben:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
@@ -575,7 +575,7 @@ msgstr "Deckkraft von Be_nachrichtigungsfenstern:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
-msgstr "Co_mpositor"
+msgstr "_Komposit"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
