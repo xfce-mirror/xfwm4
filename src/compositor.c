@@ -2863,6 +2863,34 @@ compositorHandleRandrNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEve
 }
 #endif /* HAVE_RANDR */
 
+static gboolean
+compositorCheckCMSelection (ScreenInfo *screen_info)
+{
+    DisplayInfo *display_info;
+    gchar selection[32];
+    Window w;
+    Atom a;
+
+    display_info = screen_info->display_info;
+
+    /* Newer EWMH standard property "_NET_WM_CM_S<n>" */
+    g_snprintf (selection, sizeof (selection), "_NET_WM_CM_S%d", screen_info->screen);
+    a = XInternAtom (display_info->dpy, selection, FALSE);
+    if (XGetSelectionOwner (display_info->dpy, a) != None)
+    {
+        return TRUE;
+    }
+
+    /* Older property "COMPOSITING_MANAGER" */
+    a = XInternAtom (display_info->dpy, COMPOSITING_MANAGER, FALSE);
+    if (XGetSelectionOwner (display_info->dpy, a) != None)
+    {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 static void
 compositorSetCMSelection (ScreenInfo *screen_info, Window w)
 {
@@ -3425,20 +3453,16 @@ compositorManageScreen (ScreenInfo *screen_info)
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering compositorManageScreen");
 
-    display_info = screen_info->display_info;
-    screen_info->compositor_active = TRUE;
-
-    gdk_error_trap_push ();
-    XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
-    XSync (display_info->dpy, FALSE);
-    xerror = gdk_error_trap_pop ();
-
-    if (xerror == BadAccess)
+    if (compositorCheckCMSelection (screen_info))
     {
         g_warning ("Another compositing manager is running on screen %i", screen_info->screen);
-        compositorUnmanageScreen (screen_info);
         return FALSE;
     }
+
+    compositorSetCMSelection (screen_info, screen_info->xfwm4_win);
+    display_info = screen_info->display_info;
+    XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
+    screen_info->compositor_active = TRUE;
 
     if (display_info->composite_mode == CompositeRedirectAutomatic)
     {
@@ -3519,7 +3543,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->damages_pending = FALSE;
 
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
-    compositorSetCMSelection (screen_info, screen_info->xfwm4_win);
     TRACE ("Manual compositing enabled");
 
 #ifdef HAVE_LIBDRM
