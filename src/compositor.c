@@ -2856,9 +2856,10 @@ compositorHandleRandrNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEve
 
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
     if (screen_info)
+    {
         get_refresh_rate (screen_info);
-
-    XRRUpdateConfiguration ((XEvent *) ev);
+    }
+    /* No need for RRUpdateConfiguration() here, leave that to gtk+ */
 }
 #endif /* HAVE_RANDR */
 
