@@ -2868,7 +2868,6 @@ compositorCheckCMSelection (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     gchar selection[32];
-    Window w;
     Atom a;
 
     display_info = screen_info->display_info;
@@ -3448,7 +3447,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     DisplayInfo *display_info;
     XRenderPictureAttributes pa;
     XRenderPictFormat *visual_format;
-    gint xerror;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering compositorManageScreen");
