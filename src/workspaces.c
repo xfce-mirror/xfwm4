@@ -521,13 +521,13 @@ workspaceUpdateArea (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     Client *c;
+    GdkRectangle top, left, right, bottom, workarea;
     int prev_top;
     int prev_left;
     int prev_right;
     int prev_bottom;
     guint i;
 
-    GdkRectangle workarea,struttmp;
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (screen_info->margins != NULL);
@@ -550,8 +550,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT)
-            && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+        if (strutsToRectangles (c, &left, &right, &top, &bottom))
         {
             /*
              * NET_WORKAREA doesn't support L shaped displays at all.
@@ -560,61 +559,40 @@ workspaceUpdateArea (ScreenInfo *screen_info)
              * Mimic this behaviour by ignoring struts not on the primary
              * display when calculating NET_WORKAREA
              */
-
-            if(c->struts[STRUTS_TOP])
+            if (checkValidStruts (&left, &workarea, STRUTS_LEFT) &&
+                gdk_rectangle_intersect (&left, &workarea, NULL))
             {
-                struttmp.x = c->struts[STRUTS_TOP_START_X];
-                struttmp.y = 0;
-                struttmp.width = c->struts[STRUTS_TOP_END_X] - c->struts[STRUTS_TOP_START_X];
-                struttmp.height = c->struts[STRUTS_TOP];
-
-                if (!gdk_rectangle_intersect (&workarea, &struttmp, NULL))
-                    continue;
+                screen_info->margins[STRUTS_LEFT] = MAX(screen_info->margins[STRUTS_LEFT],
+                                                         c->struts[STRUTS_LEFT]);
             }
 
-            if(c->struts[STRUTS_BOTTOM])
+            if (checkValidStruts (&right, &workarea, STRUTS_RIGHT) &&
+                gdk_rectangle_intersect (&right, &workarea, NULL))
             {
-                struttmp.x = c->struts[STRUTS_BOTTOM_START_X];
-                struttmp.y = screen_info->logical_height - c->struts[STRUTS_BOTTOM];
-                struttmp.width = c->struts[STRUTS_BOTTOM_END_X] - c->struts[STRUTS_BOTTOM_START_X];
-                struttmp.height = c->struts[STRUTS_BOTTOM];
-
-                if (!gdk_rectangle_intersect (&workarea, &struttmp, NULL))
-                    continue;
+                screen_info->margins[STRUTS_RIGHT] = MAX(screen_info->margins[STRUTS_RIGHT],
+                                                         c->struts[STRUTS_RIGHT]);
             }
 
-            if(c->struts[STRUTS_LEFT])
+            if (checkValidStruts (&top, &workarea, STRUTS_TOP) &&
+                gdk_rectangle_intersect (&top, &workarea, NULL))
             {
-                struttmp.x = 0;
-                struttmp.y = c->struts[STRUTS_LEFT_START_Y];
-                struttmp.width = c->struts[STRUTS_LEFT];
-                struttmp.height = c->struts[STRUTS_LEFT_END_Y] - c->struts[STRUTS_LEFT_START_Y];
-
-                if (!gdk_rectangle_intersect (&workarea, &struttmp, NULL))
-                    continue;
+                screen_info->margins[STRUTS_TOP] = MAX(screen_info->margins[STRUTS_TOP],
+                                                       c->struts[STRUTS_TOP]);
             }
 
-            if(c->struts[STRUTS_RIGHT])
+            if (!checkValidStruts (&bottom, &workarea, STRUTS_BOTTOM) ||
+                !gdk_rectangle_intersect (&bottom, &workarea, NULL))
             {
-                struttmp.x = screen_info->logical_width - c->struts[STRUTS_RIGHT];
-                struttmp.y = c->struts[STRUTS_RIGHT_START_Y];
-                struttmp.width = c->struts[STRUTS_RIGHT];
-                struttmp.height = c->struts[STRUTS_RIGHT_END_Y] - c->struts[STRUTS_RIGHT_START_Y];
-
-                if (!gdk_rectangle_intersect (&workarea, &struttmp, NULL))
-                    continue;
+                screen_info->margins[STRUTS_BOTTOM] = MAX(screen_info->margins[STRUTS_BOTTOM],
+                                                          c->struts[STRUTS_BOTTOM]);
             }
-
-            screen_info->margins[STRUTS_TOP]    = MAX (screen_info->margins[STRUTS_TOP],    c->struts[STRUTS_TOP]);
-            screen_info->margins[STRUTS_LEFT]   = MAX (screen_info->margins[STRUTS_LEFT],   c->struts[STRUTS_LEFT]);
-            screen_info->margins[STRUTS_RIGHT]  = MAX (screen_info->margins[STRUTS_RIGHT],  c->struts[STRUTS_RIGHT]);
-            screen_info->margins[STRUTS_BOTTOM] = MAX (screen_info->margins[STRUTS_BOTTOM], c->struts[STRUTS_BOTTOM]);
         }
     }
 
-    if ((prev_top != screen_info->margins[STRUTS_TOP]) || (prev_left != screen_info->margins[STRUTS_LEFT])
-        || (prev_right != screen_info->margins[STRUTS_RIGHT])
-        || (prev_bottom != screen_info->margins[STRUTS_BOTTOM]))
+    if ((prev_top != screen_info->margins[STRUTS_TOP]) ||
+        (prev_left != screen_info->margins[STRUTS_LEFT]) ||
+        (prev_right != screen_info->margins[STRUTS_RIGHT]) ||
+        (prev_bottom != screen_info->margins[STRUTS_BOTTOM]))
     {
         TRACE ("Margins have changed, updating net_workarea");
         setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,

@@ -35,6 +35,7 @@
 #include <glib.h>
 
 #include "screen.h"
+#include "placement.h"
 #include "client.h"
 
 gboolean                workspaceMove                           (ScreenInfo *,

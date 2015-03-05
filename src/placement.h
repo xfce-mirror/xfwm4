@@ -35,12 +35,19 @@
 #define CLIENT_CONSTRAINED_LEFT    1<<2
 #define CLIENT_CONSTRAINED_RIGHT   1<<3
 
+gboolean                 strutsToRectangles                     (Client *,
+                                                                 GdkRectangle * /* left */,
+                                                                 GdkRectangle * /* right */,
+                                                                 GdkRectangle * /* top */,
+                                                                 GdkRectangle * /* bottom */);
+gboolean                 checkValidStruts                       (GdkRectangle * /* struts */,
+                                                                 GdkRectangle * /* monitor */,
+                                                                 int);
 void                     clientMaxSpace                         (ScreenInfo *,
                                                                  int *,
                                                                  int *,
                                                                  int *,
                                                                  int *);
-gboolean                 clientCheckTitle                       (Client *);
 unsigned int             clientConstrainPos                     (Client *,
                                                                  gboolean);
 void                     clientInitPosition                     (Client *);

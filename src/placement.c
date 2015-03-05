@@ -39,6 +39,8 @@
 #include "netwm.h"
 
 #define MAX_VALID_STRUT(n) (n / 4) /* 25% of available space */
+#define USE_CLIENT_STRUTS(c) (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && \
+                              FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
 
 /* Compute rectangle overlap area */
 
@@ -68,136 +70,161 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
             * segment_overlap (y0, y1, ty0, ty1));
 }
 
-static unsigned long
-clientStrutAreaOverlap (int x, int y, int w, int h, Client * c)
+static void
+set_rectangle (GdkRectangle * rect, gint x, gint y, gint width, gint height)
 {
-    unsigned long sigma = 0;
+    g_return_if_fail (rect != NULL);
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT)
-        && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
+    rect->x = x;
+    rect->y = y;
+    rect->width = width;
+    rect->height = height;
+}
+
+gboolean
+strutsToRectangles (Client *c,
+                    GdkRectangle *left,
+                    GdkRectangle *right,
+                    GdkRectangle *top,
+                    GdkRectangle *bottom)
+{
+    ScreenInfo *screen_info;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("entering strut_to_rectangle");
+
+    screen_info = c->screen_info;
+
+    if (!USE_CLIENT_STRUTS (c))
     {
-        sigma = overlap (x, y, x + w, y + h,
-                         0, c->struts[STRUTS_LEFT_START_Y],
-                         c->struts[STRUTS_LEFT],
-                         c->struts[STRUTS_LEFT_END_Y])
-              + overlap (x, y, x + w, y + h,
-                         c->screen_info->width - c->struts[STRUTS_RIGHT],
-                         c->struts[STRUTS_RIGHT_START_Y],
-                         c->screen_info->width, c->struts[STRUTS_RIGHT_END_Y])
-              + overlap (x, y, x + w, y + h,
-                         c->struts[STRUTS_TOP_START_X], 0,
-                         c->struts[STRUTS_TOP_END_X],
-                         c->struts[STRUTS_TOP])
-              + overlap (x, y, x + w, y + h,
-                         c->struts[STRUTS_BOTTOM_START_X],
-                         c->screen_info->height - c->struts[STRUTS_BOTTOM],
-                         c->struts[STRUTS_BOTTOM_END_X],
-                         c->screen_info->height);
+        return FALSE;
     }
-    return sigma;
+
+    if (left)
+    {
+        set_rectangle (left,
+                       0,
+                       c->struts[STRUTS_LEFT_START_Y],
+                       c->struts[STRUTS_LEFT],
+                       c->struts[STRUTS_LEFT_END_Y] - c->struts[STRUTS_LEFT_START_Y]);
+    }
+
+    if (right)
+    {
+        set_rectangle (right,
+                       screen_info->logical_width - c->struts[STRUTS_RIGHT],
+                       c->struts[STRUTS_RIGHT_START_Y],
+                       c->struts[STRUTS_RIGHT],
+                       c->struts[STRUTS_RIGHT_END_Y] - c->struts[STRUTS_RIGHT_START_Y]);
+    }
+
+    if (top)
+    {
+        set_rectangle (top,
+                       c->struts[STRUTS_TOP_START_X],
+                       0,
+                       c->struts[STRUTS_TOP_END_X] - c->struts[STRUTS_TOP_START_X],
+                       c->struts[STRUTS_TOP]);
+    }
+
+    if (bottom)
+    {
+        set_rectangle (bottom,
+                       c->struts[STRUTS_BOTTOM_START_X],
+                       screen_info->logical_height - c->struts[STRUTS_BOTTOM],
+                       c->struts[STRUTS_BOTTOM_END_X] - c->struts[STRUTS_BOTTOM_START_X],
+                       c->struts[STRUTS_BOTTOM]);
+    }
+
+    return TRUE;
+}
+
+gboolean
+checkValidStruts (GdkRectangle *struts,
+                  GdkRectangle *monitor,
+                  int side)
+{
+    GdkRectangle intersect;
+
+    if (gdk_rectangle_intersect (struts, monitor, &intersect))
+    {
+        switch (side)
+        {
+            case STRUTS_LEFT:
+            case STRUTS_RIGHT:
+                return (intersect.width < MAX_VALID_STRUT(monitor->width));
+                break;
+            case STRUTS_TOP:
+            case STRUTS_BOTTOM:
+                return (intersect.height < MAX_VALID_STRUT(monitor->height));
+                break;
+            default:
+                TRACE ("Unhandled strut side");
+                break;
+        }
+    }
+    return TRUE;
 }
 
 void
 clientMaxSpace (ScreenInfo *screen_info, int *x, int *y, int *w, int *h)
 {
-    Client *c2;
+    Client *c;
     guint i;
-    gint delta, screen_width, screen_height;
-    gint original_w, original_h;
+    GdkRectangle top, left, right, bottom, area, initial, intersect;
 
     g_return_if_fail (x != NULL);
     g_return_if_fail (y != NULL);
     g_return_if_fail (w != NULL);
     g_return_if_fail (h != NULL);
 
-    original_w = *w;
-    original_h = *h;
-    screen_width = 0;
-    screen_height = 0;
-    delta = 0;
+    set_rectangle (&area, *x, *y, *w, *h);
+    set_rectangle (&initial, *x, *y, *w, *h);
 
-    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
-            && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
+        if (!USE_CLIENT_STRUTS(c))
         {
-            screen_width = c2->screen_info->logical_width;
-            screen_height = c2->screen_info->logical_height;
+            continue;
+        }
 
+        if (strutsToRectangles (c, &left, &right, &top, &bottom))
+        {
             /* Left */
-            if (overlap (*x, *y, *x + *w, *y + *h,
-                         0, c2->struts[STRUTS_LEFT_START_Y], c2->struts[STRUTS_LEFT], c2->struts[STRUTS_LEFT_END_Y]))
+            if (checkValidStruts (&left, &initial, STRUTS_LEFT) &&
+                gdk_rectangle_intersect (&left, &area, &intersect))
             {
-                delta = c2->struts[STRUTS_LEFT] - *x;
-                if (delta < MAX_VALID_STRUT(original_w))
-                {
-                    *x = *x + delta;
-                    *w = *w - delta;
-                }
+                *x = *x + intersect.width;
+                *w = *w - intersect.width;
+                 set_rectangle (&area, *x, *y, *w, *h);
             }
 
             /* Right */
-            if (overlap (*x, *y, *x + *w, *y + *h,
-                         screen_width - c2->struts[STRUTS_RIGHT], c2->struts[STRUTS_RIGHT_START_Y],
-                         screen_width, c2->struts[STRUTS_RIGHT_END_Y]))
+            if (checkValidStruts (&right, &initial, STRUTS_RIGHT) &&
+                gdk_rectangle_intersect (&right, &area, &intersect))
             {
-                delta = (*x + *w) - screen_width + c2->struts[STRUTS_RIGHT];
-                if (delta < MAX_VALID_STRUT(original_w))
-                {
-                    *w = *w - delta;
-                }
+                *w = *w - intersect.width;
+                set_rectangle (&area, *x, *y, *w, *h);
             }
 
             /* Top */
-            if (overlap (*x, *y, *x + *w, *y + *h,
-                         c2->struts[STRUTS_TOP_START_X], 0, c2->struts[STRUTS_TOP_END_X], c2->struts[STRUTS_TOP]))
+            if (checkValidStruts (&top, &initial, STRUTS_TOP) &&
+                gdk_rectangle_intersect (&top, &area, &intersect))
             {
-                delta = c2->struts[STRUTS_TOP] - *y;
-                if (delta < MAX_VALID_STRUT(original_h))
-                {
-                    *y = *y + delta;
-                    *h = *h - delta;
-                }
+                *y = *y + intersect.height;
+                *h = *h - intersect.height;
+                set_rectangle (&area, *x, *y, *w, *h);
             }
 
             /* Bottom */
-            if (overlap (*x, *y, *x + *w, *y + *h,
-                         c2->struts[STRUTS_BOTTOM_START_X], screen_height - c2->struts[STRUTS_BOTTOM],
-                         c2->struts[STRUTS_BOTTOM_END_X], screen_height))
+            if (checkValidStruts (&bottom, &initial, STRUTS_BOTTOM) &&
+                gdk_rectangle_intersect (&bottom, &area, &intersect))
             {
-                delta = (*y + *h) - screen_height + c2->struts[STRUTS_BOTTOM];
-                if (delta < MAX_VALID_STRUT(original_h))
-                {
-                    *h = *h - delta;
-                }
+                *h = *h - intersect.height;
+                set_rectangle (&area, *x, *y, *w, *h);
             }
         }
     }
-}
-
-gboolean
-clientCheckTitle (Client * c)
-{
-    Client *c2;
-    ScreenInfo *screen_info;
-    guint i;
-    gint frame_x, frame_y, frame_width, frame_top;
-
-    frame_x = frameExtentX (c);
-    frame_y = frameExtentY (c);
-    frame_width = frameExtentWidth (c);
-    frame_top = frameExtentTop (c);
-
-    /* Struts and other partial struts */
-    screen_info = c->screen_info;
-    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
-    {
-        if ((c2 != c) && clientStrutAreaOverlap (frame_x, frame_y, frame_width, frame_top, c2))
-        {
-            return FALSE;
-        }
-    }
-    return TRUE;
 }
 
 /* clientConstrainPos() is used when moving windows
@@ -216,12 +243,12 @@ clientConstrainPos (Client * c, gboolean show_full)
     Client *c2;
     ScreenInfo *screen_info;
     guint i;
-    gint cx, cy, disp_x, disp_y, disp_max_x, disp_max_y;
-    gint frame_height, frame_width, frame_top, frame_left;
-    gint frame_x, frame_y, title_visible;
+    gint cx, cy;
+    gint frame_top, frame_left;
+    gint title_visible;
     gint screen_width, screen_height;
     guint ret;
-    GdkRectangle rect;
+    GdkRectangle top, left, right, bottom, win, monitor;
     gint min_visible;
 
     g_return_val_if_fail (c != NULL, 0);
@@ -232,12 +259,10 @@ clientConstrainPos (Client * c, gboolean show_full)
     screen_info = c->screen_info;
 
     /* We use a bunch of local vars to reduce the overhead of calling other functions all the time */
-    frame_x = frameExtentX (c);
-    frame_y = frameExtentY (c);
-    frame_height = frameExtentHeight (c);
-    frame_width = frameExtentWidth (c);
     frame_top = frameExtentTop (c);
     frame_left = frameExtentLeft (c);
+    set_rectangle (&win, frameExtentX (c), frameExtentY (c), frameExtentWidth (c), frameExtentHeight (c));
+
     title_visible = frame_top;
     if (title_visible <= 0)
     {
@@ -247,18 +272,12 @@ clientConstrainPos (Client * c, gboolean show_full)
     min_visible = MAX (title_visible, CLIENT_MIN_VISIBLE);
     ret = 0;
 
-    cx = frame_x + (frame_width / 2);
-    cy = frame_y + (frame_height / 2);
-
-    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
+    cx = win.x + (win.width / 2);
+    cy = win.y + (win.height / 2);
+    myScreenFindMonitorAtPoint (screen_info, cx, cy, &monitor);
 
     screen_width = screen_info->logical_width;
     screen_height = screen_info->logical_height;
-
-    disp_x = rect.x;
-    disp_y = rect.y;
-    disp_max_x = rect.x + rect.width;
-    disp_max_y = rect.y + rect.height;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -268,197 +287,175 @@ clientConstrainPos (Client * c, gboolean show_full)
     }
     if (show_full)
     {
-        /* Struts and other partial struts */
-
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
-                && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)
-                && (c2 != c))
+            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
             {
-                /* Right */
-                if (segment_overlap (frame_y, frame_y + frame_height,
-                              c2->struts[STRUTS_RIGHT_START_Y], c2->struts[STRUTS_RIGHT_END_Y]))
-                {
-                    if (segment_overlap (frame_x, frame_x + frame_width,
-                                  screen_width - c2->struts[STRUTS_RIGHT],
-                                  screen_width))
-                    {
-                        c->x = screen_width - c2->struts[STRUTS_RIGHT] - frame_width + frame_left;
-                        frame_x = frameExtentX (c);
-                        ret |= CLIENT_CONSTRAINED_RIGHT;
-                    }
-                }
+                continue;
+            }
 
-                /* Bottom */
-                if (segment_overlap (frame_x, frame_x + frame_width,
-                              c2->struts[STRUTS_BOTTOM_START_X], c2->struts[STRUTS_BOTTOM_END_X]))
-                {
-                    if (segment_overlap (frame_y, frame_y + frame_height,
-                                  screen_height - c2->struts[STRUTS_BOTTOM],
-                                  screen_height))
-                    {
-                        c->y = screen_height - c2->struts[STRUTS_BOTTOM] - frame_height + frame_top;
-                        frame_y = frameExtentY (c);
-                        ret |= CLIENT_CONSTRAINED_BOTTOM;
+            /* right */
+            if (checkValidStruts (&right, &monitor, STRUTS_RIGHT) &&
+                gdk_rectangle_intersect (&right, &win, NULL))
+            {
+                c->x = screen_width - c2->struts[STRUTS_RIGHT] - win.width + frame_left;
+                win.x = frameExtentX (c);
+                ret |= CLIENT_CONSTRAINED_RIGHT;
+            }
 
-                    }
-                }
+            /* Bottom */
+            if (checkValidStruts (&bottom, &monitor, STRUTS_BOTTOM) &&
+                gdk_rectangle_intersect (&bottom, &win, NULL))
+            {
+                c->y = screen_height - c2->struts[STRUTS_BOTTOM] - win.height + frame_top;
+                win.y = frameExtentY (c);
+                ret |= CLIENT_CONSTRAINED_BOTTOM;
             }
         }
 
-        if (frame_x + frame_width >= disp_max_x)
+        if (win.x + win.width >= monitor.x + monitor.width)
         {
-            c->x = disp_max_x - frame_width + frame_left;
-            frame_x = frameExtentX (c);
+            c->x = monitor.x + monitor.width - win.width + frame_left;
+            win.x = frameExtentX (c);
             ret |= CLIENT_CONSTRAINED_RIGHT;
         }
-        if (frame_x <= disp_x)
+        if (win.x <= monitor.x)
         {
-            c->x = disp_x + frame_left;
-            frame_x = frameExtentX (c);
+            c->x = monitor.x + frame_left;
+            win.x = frameExtentX (c);
             ret |= CLIENT_CONSTRAINED_LEFT;
         }
-        if (frame_y + frame_height >= disp_max_y)
+        if (win.y + win.height >= monitor.y + monitor.height)
         {
-            c->y = disp_max_y - frame_height + frame_top;
-            frame_y = frameExtentY (c);
+            c->y = monitor.y + monitor.height - win.height + frame_top;
+            win.y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_BOTTOM;
         }
-        if (frame_y <= disp_y)
+        if (win.y <= monitor.y)
         {
-            c->y = disp_y + frame_top;
-            frame_y = frameExtentY (c);
+            c->y = monitor.y + frame_top;
+            win.y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
 
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
-                && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)
-                && (c2 != c))
+            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
             {
-                /* Left */
-                if (segment_overlap (frame_y, frame_y + frame_height,
-                              c2->struts[STRUTS_LEFT_START_Y], c2->struts[STRUTS_LEFT_END_Y]))
-                {
-                    if (segment_overlap (frame_x, frame_x + frame_width,
-                                  0, c2->struts[STRUTS_LEFT]))
-                    {
-                        c->x = c2->struts[STRUTS_LEFT] + frame_left;
-                        frame_x = frameExtentX (c);
-                        ret |= CLIENT_CONSTRAINED_LEFT;
-                    }
-                }
+                continue;
+            }
 
-                /* Top */
-                if (segment_overlap (frame_x,
-                              frame_x + frame_width,
-                              c2->struts[STRUTS_TOP_START_X],
-                              c2->struts[STRUTS_TOP_END_X]))
-                {
-                    if (segment_overlap (frame_y, frame_y + frame_height,
-                                  0, c2->struts[STRUTS_TOP]))
-                    {
-                        c->y = c2->struts[STRUTS_TOP] + frame_top;
-                        frame_y = frameExtentY (c);
-                        ret |= CLIENT_CONSTRAINED_TOP;
-                    }
-                }
+            /* Left */
+            if (checkValidStruts (&left, &monitor, STRUTS_LEFT) &&
+                gdk_rectangle_intersect (&left, &win, NULL))
+            {
+                c->x = c2->struts[STRUTS_LEFT] + frame_left;
+                win.x = frameExtentX (c);
+                ret |= CLIENT_CONSTRAINED_LEFT;
+            }
+
+            /* Top */
+            if (checkValidStruts (&top, &monitor, STRUTS_TOP) &&
+                gdk_rectangle_intersect (&top, &win, NULL))
+            {
+                c->y = c2->struts[STRUTS_TOP] + frame_top;
+                win.y = frameExtentY (c);
+                ret |= CLIENT_CONSTRAINED_TOP;
             }
         }
     }
     else
     {
-        if (frame_x + frame_width <= disp_x + min_visible)
+        if (win.x + win.width <= monitor.x + min_visible)
         {
-            c->x = disp_x + min_visible - frame_width + frame_left;
-            frame_x = frameExtentX (c);
+            c->x = monitor.x + min_visible - win.width + frame_left;
+            win.x = frameExtentX (c);
             ret |= CLIENT_CONSTRAINED_LEFT;
         }
-        if (frame_x + min_visible >= disp_max_x)
+        if (win.x + min_visible >= monitor.x + monitor.width)
         {
-            c->x = disp_max_x - min_visible + frame_left;
-            frame_x = frameExtentX (c);
+            c->x = monitor.x + monitor.width - min_visible + frame_left;
+            win.x = frameExtentX (c);
             ret |= CLIENT_CONSTRAINED_RIGHT;
         }
-        if (frame_y + frame_height <= disp_y + min_visible)
+        if (win.y + win.height <= monitor.y + min_visible)
         {
-            c->y = disp_y + min_visible - frame_height + frame_top;
-            frame_y = frameExtentY (c);
+            c->y = monitor.y + min_visible - win.height + frame_top;
+            win.y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
-        if (frame_y + min_visible >= disp_max_y)
+        if (win.y + min_visible >= monitor.y + monitor.height)
         {
-            c->y = disp_max_y - min_visible + frame_top;
-            frame_y = frameExtentY (c);
+            c->y = monitor.y + monitor.height - min_visible + frame_top;
+            win.y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_BOTTOM;
         }
-        if ((frame_y <= disp_y) && (frame_y >= disp_y - frame_top))
+        if ((win.y <= monitor.y) && (win.y >= monitor.y - frame_top))
         {
-            c->y = disp_y + frame_top;
-            frame_y = frameExtentY (c);
+            c->y = monitor.y + frame_top;
+            win.y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
+
         /* Struts and other partial struts */
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if (FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
-                && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)
-                && (c2 != c))
+            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
             {
-                /* Right */
-                if (segment_overlap (frame_y, frame_y + frame_height,
-                              c2->struts[STRUTS_RIGHT_START_Y], c2->struts[STRUTS_RIGHT_END_Y]))
-                {
-                    if (frame_x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible)
-                    {
-                        c->x = screen_width - c2->struts[STRUTS_RIGHT] - min_visible + frame_left;
-                        frame_x = frameExtentX (c);
-                        ret |= CLIENT_CONSTRAINED_RIGHT;
-                    }
-                }
+                continue;
+            }
 
-                /* Left */
-                if (segment_overlap (frame_y, frame_y + frame_height,
-                              c2->struts[STRUTS_LEFT_START_Y], c2->struts[STRUTS_LEFT_END_Y]))
+            /* Right */
+            if (checkValidStruts (&right, &monitor, STRUTS_RIGHT) &&
+                gdk_rectangle_intersect (&right, &win, NULL))
+            {
+                if (win.x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible)
                 {
-                    if (frame_x + frame_width <= c2->struts[STRUTS_LEFT] + min_visible)
-                    {
-                        c->x = c2->struts[STRUTS_LEFT] + min_visible - frame_width + frame_left;
-                        frame_x = frameExtentX (c);
-                        ret |= CLIENT_CONSTRAINED_LEFT;
-                    }
+                    c->x = screen_width - c2->struts[STRUTS_RIGHT] - min_visible + frame_left;
+                    win.x = frameExtentX (c);
+                    ret |= CLIENT_CONSTRAINED_RIGHT;
                 }
+            }
 
-                /* Bottom */
-                if (segment_overlap (frame_x, frame_x + frame_width,
-                              c2->struts[STRUTS_BOTTOM_START_X], c2->struts[STRUTS_BOTTOM_END_X]))
+            /* Left */
+            if (checkValidStruts (&left, &monitor, STRUTS_LEFT) &&
+                gdk_rectangle_intersect (&left, &win, NULL))
+            {
+                if (win.x + win.width <= c2->struts[STRUTS_LEFT] + min_visible)
                 {
-                    if (frame_y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible)
-                    {
-                        c->y = screen_height - c2->struts[STRUTS_BOTTOM] - min_visible + frame_top;
-                        frame_y = frameExtentY (c);
-                        ret |= CLIENT_CONSTRAINED_BOTTOM;
-                    }
+                    c->x = c2->struts[STRUTS_LEFT] + min_visible - win.width + frame_left;
+                    win.x = frameExtentX (c);
+                    ret |= CLIENT_CONSTRAINED_LEFT;
                 }
+            }
 
-                /* Top */
-                if (segment_overlap (frame_x, frame_x + frame_width,
-                              c2->struts[STRUTS_TOP_START_X], c2->struts[STRUTS_TOP_END_X]))
+            /* Bottom */
+            if (checkValidStruts (&bottom, &monitor, STRUTS_BOTTOM) &&
+                gdk_rectangle_intersect (&bottom, &win, NULL))
+            {
+                if (win.y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible)
                 {
-                    if (segment_overlap (frame_y, frame_y + title_visible, 0, c2->struts[STRUTS_TOP]))
-                    {
-                        c->y = c2->struts[STRUTS_TOP] + frame_top;
-                        frame_y = frameExtentY (c);
-                        ret |= CLIENT_CONSTRAINED_TOP;
-                    }
-                    if (frame_y + frame_height <= c2->struts[STRUTS_TOP] + min_visible)
-                    {
-                        c->y = c2->struts[STRUTS_TOP] + min_visible - frame_height + frame_top;
-                        frame_y = frameExtentY (c);
-                        ret |= CLIENT_CONSTRAINED_TOP;
-                    }
+                    c->y = screen_height - c2->struts[STRUTS_BOTTOM] - min_visible + frame_top;
+                    win.y = frameExtentY (c);
+                    ret |= CLIENT_CONSTRAINED_BOTTOM;
+                }
+            }
+
+            /* Top */
+            if (checkValidStruts (&top, &monitor, STRUTS_TOP) &&
+                gdk_rectangle_intersect (&top, &win, NULL))
+            {
+                if (segment_overlap (win.y, win.y + title_visible, 0, c2->struts[STRUTS_TOP]))
+                {
+                    c->y = c2->struts[STRUTS_TOP] + frame_top;
+                    win.y = frameExtentY (c);
+                    ret |= CLIENT_CONSTRAINED_TOP;
+                }
+                if (win.y + win.height <= c2->struts[STRUTS_TOP] + min_visible)
+                {
+                    c->y = c2->struts[STRUTS_TOP] + min_visible - win.height + frame_top;
+                    win.y = frameExtentY (c);
+                    ret |= CLIENT_CONSTRAINED_TOP;
                 }
             }
         }
@@ -538,18 +535,18 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ) &&
         (frameExtentWidth (c) >= full_w))
     {
-        TRACE ("The application \"%s\" has requested a window width "
-               "(%u) equal or larger than the actual width available in the workspace (%u), "
-               "the window will be maximized horizontally.", c->name, frameExtentWidth (c), full_w);
+        DBG ("The application \"%s\" has requested a window width "
+             "(%u) equal or larger than the actual width available in the workspace (%u), "
+             "the window will be maximized horizontally.", c->name, frameExtentWidth (c), full_w);
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_RESTORE_SIZE_POS);
     }
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT) &&
         (frameExtentHeight (c) >= full_h))
     {
-        TRACE ("The application \"%s\" has requested a window height "
-               "(%u) equal or larger than the actual height available in the workspace (%u), "
-               "the window will be maximized vertically.", c->name, frameExtentHeight (c), full_h);
+        DBG ("The application \"%s\" has requested a window height "
+             "(%u) equal or larger than the actual height available in the workspace (%u), "
+             "the window will be maximized vertically.", c->name, frameExtentHeight (c), full_h);
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_RESTORE_SIZE_POS);
     }
 }
@@ -862,7 +859,6 @@ clientInitPosition (Client * c)
         clientAutoMaximize (c, full_w, full_h);
     }
 }
-
 
 void
 clientFill (Client * c, int fill_type)
