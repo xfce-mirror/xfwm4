@@ -580,8 +580,8 @@ workspaceUpdateArea (ScreenInfo *screen_info)
                                                        c->struts[STRUTS_TOP]);
             }
 
-            if (!checkValidStruts (&bottom, &workarea, STRUTS_BOTTOM) ||
-                !gdk_rectangle_intersect (&bottom, &workarea, NULL))
+            if (checkValidStruts (&bottom, &workarea, STRUTS_BOTTOM) ||
+                gdk_rectangle_intersect (&bottom, &workarea, NULL))
             {
                 screen_info->margins[STRUTS_BOTTOM] = MAX(screen_info->margins[STRUTS_BOTTOM],
                                                           c->struts[STRUTS_BOTTOM]);
