@@ -707,7 +707,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                 test_x++;
             }
         }
-        while (test_x < xmax);
+        while (test_x <= xmax);
 
         if (G_LIKELY (next_test_y != G_MAXINT))
         {
@@ -723,7 +723,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
             test_y++;
         }
     }
-    while (test_y < ymax);
+    while (test_y <= ymax);
 
     found_best:
 
