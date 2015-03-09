@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Harald Judt <h.judt@gmx.at>, 2015
 # Jakob Kramer <jakob.kramer@gmx.de>, 2011
 # Jannis Pohlmann <jannis@xfce.org>, 2008
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2012
@@ -14,8 +15,8 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-03-01 15:18+0000\n"
-"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
+"PO-Revision-Date: 2015-03-09 21:23+0000\n"
+"Last-Translator: Harald Judt <h.judt@gmx.at>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -384,7 +385,7 @@ msgstr "Das wird alle Tastenkombinationen auf ihre Vorgabewerte zurücksetzen. M
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Fenster _überspringen, bei denen, »Arbeitsflächenumschalter überspringen« oder »Fensterleiste überspringen«, eingestellt ist."
+msgstr "Fenster _überspringen, bei denen »Arbeitsflächenumschalter überspringen« oder »Fensterleiste überspringen« eingestellt ist."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -472,13 +473,13 @@ msgstr "_Zugreifbarkeit"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "_Das Mausrads, über dem Schreibtisch, zum Wechseln der Arbeitsfläche benutzen"
+msgstr "_Das Mausrad über dem Schreibtisch zum Wechseln der Arbeitsfläche benutzen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Vorige Arbeitsfläche merken und wieder verwenden, beim Wechsel mit Tastenkombinationen"
+msgstr "_Vorige Arbeitsfläche merken und beim Wechsel mit Tastenkombinationen wiederherstellen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -527,7 +528,7 @@ msgstr "_Vollbildüberlagerungsfenster sofort anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr "_Zeichnung der senkrechten Austastlücke synchronisieren"
+msgstr "_Zeichnen mit der vertikalen Austastlücke synchronisieren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
