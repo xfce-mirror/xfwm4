@@ -447,6 +447,28 @@ clientUpdateUrgency (Client *c)
     }
 }
 
+/* ICCCM Section 4 - Client to Window Manager Communication
+ *
+ * The win_gravity may be any of the values specified for WINGRAVITY in the core
+ * protocol  except  for  Unmap  :  NorthWest (1),  North  (2),  NorthEast  (3),
+ * West (4), Center (5), East (6), SouthWest (7), South (8),  and SouthEast (9).
+ * It specifies how  and whether the client  window wants to be shifted to  make
+ * room for the window manager frame.
+ *
+ * If the win_gravity is Static , the window manager frame is positioned so that
+ * the  inside  border of  the  client  window  inside the frame  is in the same
+ * position  on the screen  as it was when the client  requested  the transition
+ * from Withdrawn state.  Other values of win_gravity specify a window reference
+ * point.  For NorthWest ,  NorthEast ,  SouthWest , and SouthEast the reference
+ * point  is  the  specified outer  corner of the window  (on the outside border
+ * edge).  For North , South , East , and West the reference point is the center
+ * of the specified  outer edge of the window border.   For Center the reference
+ * point is the center of the window.  The reference point of the window manager
+ * frame is placed  at the location on the screen  where the reference point  of
+ * the client window was when the client requested the transition from Withdrawn
+ * state.
+ */
+
 void
 clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
 {
@@ -458,46 +480,40 @@ clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
     switch (gravity)
     {
         case CenterGravity:
-            dx = (c->border_width * 2) - ((frameExtentLeft (c) +
-                    frameExtentRight (c)) / 2);
-            dy = (c->border_width * 2) - ((frameExtentTop (c) +
-                    frameExtentBottom (c)) / 2);
+            dx = (c->border_width * 2) - (frameExtentWidth (c) / 2) + frameExtentLeft (c);
+            dy = (c->border_width * 2) - (frameExtentHeight (c) / 2) + frameExtentTop (c);
             break;
         case NorthGravity:
-            dx = (c->border_width * 2) - ((frameExtentLeft (c) +
-                    frameExtentRight (c)) / 2);
+            dx = (c->border_width * 2) - (frameExtentWidth (c) / 2) + frameExtentLeft (c);
             dy = frameExtentTop (c);
             break;
         case SouthGravity:
-            dx = (c->border_width * 2) - ((frameExtentLeft (c) +
-                    frameExtentRight (c)) / 2);
-            dy = (c->border_width * 2) - frameExtentBottom (c);
+            dx = (c->border_width * 2) - (frameExtentWidth (c) / 2) + frameExtentLeft (c);
+            dy = (c->border_width * 2) - c->height - frameExtentBottom (c);
             break;
         case EastGravity:
-            dx = (c->border_width * 2) - frameExtentRight (c);
-            dy = (c->border_width * 2) - ((frameExtentTop (c) +
-                    frameExtentBottom (c)) / 2);
+            dx = (c->border_width * 2) - c->width - frameExtentRight (c);
+            dy = (c->border_width * 2) - (frameExtentHeight (c) / 2) + frameExtentTop (c);
             break;
         case WestGravity:
             dx = frameExtentLeft (c);
-            dy = (c->border_width * 2) - ((frameExtentTop (c) +
-                    frameExtentBottom (c)) / 2);
+            dy = (c->border_width * 2) - (frameExtentHeight (c) / 2) + frameExtentTop (c);
             break;
         case NorthWestGravity:
             dx = frameExtentLeft (c);
             dy = frameExtentTop (c);
             break;
         case NorthEastGravity:
-            dx = (c->border_width * 2) - frameExtentRight (c);
+            dx = (c->border_width * 2) - c->width - frameExtentRight (c);
             dy = frameExtentTop (c);
             break;
         case SouthWestGravity:
             dx = frameExtentLeft (c);
-            dy = (c->border_width * 2) - frameExtentBottom (c);
+            dy = (c->border_width * 2) - c->height - frameExtentBottom (c);
             break;
         case SouthEastGravity:
-            dx = (c->border_width * 2) - frameExtentRight (c);
-            dy = (c->border_width * 2) - frameExtentBottom (c);
+            dx = (c->border_width * 2) - c->width - frameExtentRight (c);
+            dy = (c->border_width * 2) - c->height - frameExtentBottom (c);
             break;
         default:
             dx = 0;
@@ -509,7 +525,7 @@ clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
 }
 
 void
-clientAdjustCoordGravity (Client *c, int gravity, unsigned long *mask, XWindowChanges *wc)
+clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned long *mask)
 {
     int tx, ty, dw, dh;
 

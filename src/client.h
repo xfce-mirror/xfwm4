@@ -381,8 +381,8 @@ void                     clientCoordGravitate                   (Client *,
                                                                  int *);
 void                     clientAdjustCoordGravity               (Client *,
                                                                  int,
-                                                                 unsigned long *,
-                                                                 XWindowChanges *);
+                                                                 XWindowChanges *,
+                                                                 unsigned long *);
 void                     clientSendConfigureNotify              (Client *);
 void                     clientConfigure                        (Client *,
                                                                  XWindowChanges *,
