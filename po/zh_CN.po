@@ -12,14 +12,15 @@
 # Yongtao Yang <yongtao.yang@telia.com>, 2004
 # 周潇波 <zhouxiaobo.500@gmail.com>, 2013
 # 周潇波 <zhouxiaobo.500@gmail.com>, 2014-2015
+# 玉堂白鹤 <yjwork@qq.com>, 2015
 # 白铭骢 <jeffbaichina@members.fsf.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-20 23:39+0000\n"
-"Last-Translator: 白铭骢 <jeffbaichina@members.fsf.org>\n"
+"PO-Revision-Date: 2015-03-11 08:10+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -286,7 +287,7 @@ msgstr "在鼠标指针下(_P)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr "一个拖动窗口"
+msgstr "一个拖动窗口(_D)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -306,7 +307,7 @@ msgstr "当调整大小(_R)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
-msgstr "<b>移动时隐藏窗口内容</b>"
+msgstr "<b>隐藏窗口内容</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
@@ -531,7 +532,7 @@ msgstr "直接覆盖窗口显示全屏(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr "同步绘制了 _vertical 空白"
+msgstr "同步绘制垂直回扫(_V)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
