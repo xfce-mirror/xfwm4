@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-03-11 19:47+0000\n"
+"PO-Revision-Date: 2015-03-12 08:42+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr "_Klaviatūra"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr ""
+msgstr "Dėmesys sutelkiamas, spustelėjus pelės mygtuką"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
@@ -218,7 +218,7 @@ msgstr "Automatiškai sutelkti _dėmesį į naujai sukurtus langus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>New window focus</b>"
-msgstr "<b>Naujo lango fokusavimas<b>"
+msgstr "<b>Naujo lango fokusavimas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
@@ -247,11 +247,11 @@ msgstr "_Fokusavimas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
-msgstr ""
+msgstr "Prie ekrano kraš_tų"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
-msgstr ""
+msgstr "Prie kitų _langų"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
