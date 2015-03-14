@@ -37,7 +37,9 @@ gboolean                 clientIsTransientOrModal               (Client *);
 gboolean                 clientIsValidTransientOrModal          (Client *);
 gboolean                 clientSameGroup                        (Client *,
                                                                  Client *);
-gboolean                 clientSameLeader                        (Client *,
+gboolean                 clientSameLeader                       (Client *,
+                                                                 Client *);
+gboolean                 clientSameName                         (Client *,
                                                                  Client *);
 gboolean                 clientSameApplication                  (Client *,
                                                                  Client *);
