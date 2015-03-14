@@ -1,3 +1,14 @@
+4.12.1
+======
+ - Fix issue with XRandR (Bug 11059, 11683, 11695)
+ - Rework struts support to be more error proof
+ - Fix smart placement and windows overlapping (Bug 11671)
+ - Fix window positioning and gravity (Bug 11670, 11693)
+ - Fix issue with _NET_REQUEST_FRAME_EXTENTS being ignored (blocking
+   for GLFW apps) (Bug 11664)
+ - Check class hint name for same applications (Bug 11685)
+ - Make horizontal scrolling/window opacity optional (Bug 10372)
+
 4.12.0
 ======
  - Add support for gtk window menu
