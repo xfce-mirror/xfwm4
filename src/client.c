@@ -480,41 +480,42 @@ clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
     switch (gravity)
     {
         case CenterGravity:
-            dx = (c->border_width * 2) - (frameExtentWidth (c) / 2) + frameExtentLeft (c);
-            dy = (c->border_width * 2) - (frameExtentHeight (c) / 2) + frameExtentTop (c);
+            dx = (frameLeft (c) - frameRight (c) + 1) / 2;
+            dy = (frameTop (c) - frameBottom (c) + 1) / 2;
             break;
         case NorthGravity:
-            dx = (c->border_width * 2) - (frameExtentWidth (c) / 2) + frameExtentLeft (c);
-            dy = frameExtentTop (c);
+            dx = (frameLeft (c) - frameRight (c) + 1) / 2;
+            dy = frameTop (c);
             break;
         case SouthGravity:
-            dx = (c->border_width * 2) - (frameExtentWidth (c) / 2) + frameExtentLeft (c);
-            dy = (c->border_width * 2) - c->height - frameExtentBottom (c);
+            dx = (frameLeft (c) - frameRight (c) + 1) / 2;
+            dy = - frameBottom (c);
             break;
         case EastGravity:
-            dx = (c->border_width * 2) - c->width - frameExtentRight (c);
-            dy = (c->border_width * 2) - (frameExtentHeight (c) / 2) + frameExtentTop (c);
+            dx = - frameRight (c);
+            dy = (frameTop (c) - frameBottom (c) + 1) / 2;
             break;
         case WestGravity:
-            dx = frameExtentLeft (c);
-            dy = (c->border_width * 2) - (frameExtentHeight (c) / 2) + frameExtentTop (c);
+            dx = frameLeft (c);
+            dy = (frameTop (c) - frameBottom (c) + 1) / 2;
             break;
         case NorthWestGravity:
-            dx = frameExtentLeft (c);
-            dy = frameExtentTop (c);
+            dx = frameLeft (c);
+            dy = frameTop (c);
             break;
         case NorthEastGravity:
-            dx = (c->border_width * 2) - c->width - frameExtentRight (c);
-            dy = frameExtentTop (c);
+            dx = - frameRight (c);
+            dy = frameTop (c);
             break;
         case SouthWestGravity:
-            dx = frameExtentLeft (c);
-            dy = (c->border_width * 2) - c->height - frameExtentBottom (c);
+            dx = frameLeft (c);
+            dy = - frameBottom (c);
             break;
         case SouthEastGravity:
-            dx = (c->border_width * 2) - c->width - frameExtentRight (c);
-            dy = (c->border_width * 2) - c->height - frameExtentBottom (c);
+            dx = - frameRight (c);
+            dy = - frameBottom (c);
             break;
+        case StaticGravity:
         default:
             dx = 0;
             dy = 0;
@@ -534,12 +535,26 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
 
     tx = wc->x;
     ty = wc->y;
-    clientCoordGravitate (c, gravity, APPLY, &tx, &ty);
+
+    if (*mask & (CWX | CWY))
+    {
+        clientCoordGravitate (c, gravity, APPLY, &tx, &ty);
+    }
+
+    if (*mask & CWWidth)
+    {
+        wc->width = clientCheckHeight (c, wc->width, TRUE);
+    }
+
+    if (*mask & CWWidth)
+    {
+        wc->height = clientCheckWidth (c, wc->height, TRUE);
+    }
 
     switch (gravity)
     {
         case CenterGravity:
-            dw = (c->width  - wc->width)  / 2;
+            dw = (c->width - wc->width) / 2;
             dh = (c->height - wc->height) / 2;
             break;
         case NorthGravity:
@@ -574,6 +589,7 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
             dw = (c->width  - wc->width);
             dh = (c->height - wc->height);
             break;
+        case StaticGravity:
         default:
             dw = 0;
             dh = 0;
@@ -710,11 +726,11 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     }
     if (mask & CWWidth)
     {
-        clientSetWidth (c, wc->width, flags & CFG_REQUEST);
+        c-> width = clientCheckWidth (c, wc->width, flags & CFG_REQUEST);
     }
     if (mask & CWHeight)
     {
-        clientSetHeight (c, wc->height, flags & CFG_REQUEST);
+        c->height = clientCheckHeight (c, wc->height, flags & CFG_REQUEST);
     }
     if (mask & CWBorderWidth)
     {

@@ -88,12 +88,15 @@ struct _MoveResizeData
     Poswin *poswin;
 };
 
-static void
-clientSetSize (Client * c, int *size, int base, int min, int max, int incr, gboolean source_is_application)
+static int
+clientCheckSize (Client * c, int size, int base, int min, int max, int incr, gboolean source_is_application)
 {
+    int size_return;
+
     g_return_if_fail (c != NULL);
-    g_return_if_fail (size != NULL);
-    TRACE ("entering clientSetSize");
+    TRACE ("entering clientCheckSize");
+
+    size_return = size;
 
     /* Bypass resize increment and max sizes for fullscreen */
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
@@ -111,57 +114,60 @@ clientSetSize (Client * c, int *size, int base, int min, int max, int incr, gboo
                 b = base;
             }
 
-            a = (*size - b) / incr;
-            *size = b + (a * incr);
+            a = (size_return - b) / incr;
+            size_return = b + (a * incr);
         }
         if (c->size->flags & PMaxSize)
         {
-            if (*size > max)
+            if (size_return > max)
             {
-                *size = max;
+                size_return = max;
             }
         }
     }
 
     if (c->size->flags & PMinSize)
     {
-        if (*size < min)
+        if (size_return < min)
         {
-            *size = min;
+            size_return = min;
         }
     }
-    if (*size < 1)
+    if (size_return < 1)
     {
-        *size = 1;
+        size_return = 1;
     }
+    return size_return;
 }
 
-void
-clientSetWidth (Client * c, int w, gboolean source_is_application)
+int
+clientCheckWidth (Client * c, int w, gboolean source_is_application)
 {
-    int temp;
-
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetWidth");
+    TRACE ("entering clientCheckWidth");
     TRACE ("setting width %i for client \"%s\" (0x%lx)", w, c->name, c->window);
 
-    temp = w;
-    clientSetSize (c, &temp,  c->size->base_width, c->size->min_width, c->size->max_width, c->size->width_inc, source_is_application);
-    c->width = temp;
+    return clientCheckSize (c, w,
+                            c->size->base_width,
+                            c->size->min_width,
+                            c->size->max_width,
+                            c->size->width_inc,
+                            source_is_application);
 }
 
-void
-clientSetHeight (Client * c, int h, gboolean source_is_application)
+int
+clientCheckHeight (Client * c, int h, gboolean source_is_application)
 {
-    int temp;
-
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetHeight");
+    TRACE ("entering clientCheckHeight");
     TRACE ("setting height %i for client \"%s\" (0x%lx)", h, c->name, c->window);
 
-    temp = h;
-    clientSetSize (c, &temp, c->size->base_height, c->size->min_height, c->size->max_height, c->size->height_inc, source_is_application);
-    c->height = temp;
+    return clientCheckSize (c, h,
+                            c->size->base_height,
+                            c->size->min_height,
+                            c->size->max_height,
+                            c->size->height_inc,
+                            source_is_application);
 }
 
 static void
@@ -1597,13 +1603,13 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         /* Apply contrain ratio if any, only once the expected size is set */
         clientConstrainRatio (c, passdata->handle);
 
-        clientSetWidth (c, c->width, FALSE);
+        clientCheckWidth (c, c->width, FALSE);
         if (move_left)
         {
             c->x = right_edge - c->width;
         }
 
-        clientSetHeight (c, c->height, FALSE);
+        clientCheckHeight (c, c->height, FALSE);
         if (move_top && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             c->y =  bottom_edge - c->height;
