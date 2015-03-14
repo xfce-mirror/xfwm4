@@ -33,10 +33,10 @@
 
 #ifndef INC_MOVERESIZE_H
 #define INC_MOVERESIZE_H
-void                     clientSetWidth                         (Client *,
+int                      clientCheckWidth                       (Client *,
                                                                  int,
                                                                  gboolean);
-void                     clientSetHeight                        (Client *,
+int                      clientCheckHeight                      (Client *,
                                                                  int,
                                                                  gboolean);
 void                     clientMoveWarp                         (Client *,
