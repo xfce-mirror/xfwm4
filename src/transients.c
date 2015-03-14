@@ -113,6 +113,20 @@ clientSameLeader (Client * c1, Client * c2)
 }
 
 gboolean
+clientSameName (Client * c1, Client * c2)
+{
+    g_return_val_if_fail (c1 != NULL, FALSE);
+    g_return_val_if_fail (c2 != NULL, FALSE);
+
+    TRACE ("entering clientSameName");
+
+    return ((c1 != c2) &&
+            (c1->class.res_class != NULL) &&
+            (c2->class.res_class != NULL) &&
+            (strcmp (c1->class.res_name, c2->class.res_name) == 0));
+}
+
+gboolean
 clientIsTransientFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -445,6 +459,7 @@ clientSameApplication (Client *c1, Client *c2)
             clientIsTransientOrModalFor (c2, c1) ||
             clientSameGroup (c1, c2) ||
             clientSameLeader (c1, c2) ||
+            clientSameName (c1, c2) ||
             (c1->pid != 0 && c1->pid == c2->pid &&
              c1->hostname && c2->hostname &&
              !g_ascii_strcasecmp (c1->hostname, c2->hostname)));
