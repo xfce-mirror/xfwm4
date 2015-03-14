@@ -93,7 +93,7 @@ clientCheckSize (Client * c, int size, int base, int min, int max, int incr, gbo
 {
     int size_return;
 
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, size);
     TRACE ("entering clientCheckSize");
 
     size_return = size;
@@ -143,7 +143,7 @@ clientCheckSize (Client * c, int size, int base, int min, int max, int incr, gbo
 int
 clientCheckWidth (Client * c, int w, gboolean source_is_application)
 {
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, w);
     TRACE ("entering clientCheckWidth");
     TRACE ("setting width %i for client \"%s\" (0x%lx)", w, c->name, c->window);
 
@@ -158,7 +158,7 @@ clientCheckWidth (Client * c, int w, gboolean source_is_application)
 int
 clientCheckHeight (Client * c, int h, gboolean source_is_application)
 {
-    g_return_if_fail (c != NULL);
+    g_return_val_if_fail (c != NULL, h);
     TRACE ("entering clientCheckHeight");
     TRACE ("setting height %i for client \"%s\" (0x%lx)", h, c->name, c->window);
 
@@ -1603,13 +1603,13 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         /* Apply contrain ratio if any, only once the expected size is set */
         clientConstrainRatio (c, passdata->handle);
 
-        clientCheckWidth (c, c->width, FALSE);
+        c->width = clientCheckWidth (c, c->width, FALSE);
         if (move_left)
         {
             c->x = right_edge - c->width;
         }
 
-        clientCheckHeight (c, c->height, FALSE);
+        c->height = clientCheckHeight (c, c->height, FALSE);
         if (move_top && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             c->y =  bottom_edge - c->height;
