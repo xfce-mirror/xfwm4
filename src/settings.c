@@ -707,14 +707,12 @@ loadSettings (ScreenInfo *screen_info)
         /* You can change the order of the following parameters */
         {"activate_action", NULL, G_TYPE_STRING, TRUE},
         {"borderless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
-        {"titleless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
         {"box_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"box_resize", NULL, G_TYPE_BOOLEAN, TRUE},
         {"button_layout", NULL, G_TYPE_STRING, TRUE},
         {"button_offset", NULL, G_TYPE_INT, TRUE},
         {"button_spacing", NULL, G_TYPE_INT, TRUE},
         {"click_to_focus", NULL, G_TYPE_BOOLEAN, TRUE},
-        {"focus_delay", NULL, G_TYPE_INT, TRUE},
         {"cycle_apps_only", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_draw_frame", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -722,25 +720,27 @@ loadSettings (ScreenInfo *screen_info)
         {"cycle_preview", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_tabwin_mode", NULL, G_TYPE_INT, FALSE},
         {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
-        {"double_click_time", NULL, G_TYPE_INT, TRUE},
-        {"double_click_distance", NULL, G_TYPE_INT, TRUE},
         {"double_click_action", NULL, G_TYPE_STRING, TRUE},
+        {"double_click_distance", NULL, G_TYPE_INT, TRUE},
+        {"double_click_time", NULL, G_TYPE_INT, TRUE},
         {"easy_click", NULL, G_TYPE_STRING, TRUE},
+        {"focus_delay", NULL, G_TYPE_INT, TRUE},
         {"focus_hint", NULL, G_TYPE_BOOLEAN, TRUE},
         {"focus_new", NULL, G_TYPE_BOOLEAN,TRUE},
         {"frame_opacity", NULL, G_TYPE_INT, TRUE},
         {"full_width_title", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"horiz_scroll_opacity", NULL, G_TYPE_BOOLEAN, FALSE},
         {"inactive_opacity", NULL, G_TYPE_INT, TRUE},
         {"margin_bottom", NULL, G_TYPE_INT, FALSE},
         {"margin_left", NULL, G_TYPE_INT, FALSE},
         {"margin_right", NULL, G_TYPE_INT, FALSE},
         {"margin_top", NULL, G_TYPE_INT, FALSE},
         {"maximized_offset", NULL, G_TYPE_INT, TRUE},
-        {"move_opacity", NULL, G_TYPE_INT, TRUE},
-        {"placement_ratio", NULL, G_TYPE_INT, TRUE},
-        {"placement_mode", NULL, G_TYPE_STRING, TRUE},
-        {"popup_opacity", NULL, G_TYPE_INT, TRUE},
         {"mousewheel_rollup", NULL, G_TYPE_BOOLEAN, FALSE},
+        {"move_opacity", NULL, G_TYPE_INT, TRUE},
+        {"placement_mode", NULL, G_TYPE_STRING, TRUE},
+        {"placement_ratio", NULL, G_TYPE_INT, TRUE},
+        {"popup_opacity", NULL, G_TYPE_INT, TRUE},
         {"prevent_focus_stealing", NULL, G_TYPE_BOOLEAN, TRUE},
         {"raise_delay", NULL, G_TYPE_INT, TRUE},
         {"raise_on_click", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -768,6 +768,7 @@ loadSettings (ScreenInfo *screen_info)
         {"title_alignment", NULL, G_TYPE_STRING, TRUE},
         {"title_font", NULL, G_TYPE_STRING, FALSE},
         {"title_horizontal_offset", NULL, G_TYPE_INT, TRUE},
+        {"titleless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
         {"title_shadow_active", NULL, G_TYPE_STRING, TRUE},
         {"title_shadow_inactive", NULL, G_TYPE_STRING, TRUE},
         {"title_vertical_offset_active", NULL, G_TYPE_INT, TRUE},
@@ -823,6 +824,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("focus_hint", rc);
     screen_info->params->focus_new =
         getBoolValue ("focus_new", rc);
+    screen_info->params->horiz_scroll_opacity =
+        getBoolValue ("horiz_scroll_opacity", rc);
     screen_info->params->mousewheel_rollup =
         getBoolValue ("mousewheel_rollup", rc);
     screen_info->params->prevent_focus_stealing =
@@ -1353,6 +1356,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "focus_hint"))
                 {
                     screen_info->params->focus_hint = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "horiz_scroll_opacity"))
+                {
+                    screen_info->params->horiz_scroll_opacity = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "mousewheel_rollup"))
                 {

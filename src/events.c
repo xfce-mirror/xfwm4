@@ -852,16 +852,21 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
             }
         }
     }
-    else if (ev->button == Button6)
+#ifdef HAVE_COMPOSITOR
+    else if (screen_info->params->horiz_scroll_opacity)
     {
-        /* Mouse wheel scroll left, or left side button */
-        clientDecOpacity(c);
+        if (ev->button == Button6)
+        {
+            /* Mouse wheel scroll left, or left side button */
+            clientDecOpacity(c);
+        }
+        else if (ev->button == Button7)
+        {
+            /* Mouse wheel scroll right, or right side button */
+            clientIncOpacity(c);
+        }
     }
-    else if (ev->button == Button7)
-    {
-        /* Mouse wheel scroll right, or right side button */
-        clientIncOpacity(c);
-    }
+#endif /* HAVE_COMPOSITOR */
 }
 
 static void
