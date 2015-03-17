@@ -938,6 +938,69 @@ create_root_buffer (ScreenInfo *screen_info)
     return pict;
 }
 
+static Picture
+cursor_to_picture (ScreenInfo *screen_info, XFixesCursorImage *cursor)
+{
+    DisplayInfo *display_info;
+    Pixmap pixmap;
+    Picture picture;
+    XRenderPictureAttributes pa;
+    XRenderPictFormat *render_format;
+    XRenderColor c;
+    gint width, height;
+    gint x, y;
+
+    g_return_val_if_fail (screen_info, None);
+    TRACE ("entering solid_picture");
+
+    display_info = screen_info->display_info;
+    width = cursor->width;
+    height = cursor->height;
+    render_format = XRenderFindStandardFormat (display_info->dpy, PictStandardARGB32);
+    g_return_val_if_fail (render_format != NULL , None);
+
+    pixmap = XCreatePixmap (display_info->dpy,
+                            screen_info->output, width, height, 32);
+    g_return_val_if_fail (pixmap != None, None);
+
+    picture = XRenderCreatePicture (display_info->dpy, pixmap,
+                                    render_format, 0, NULL);
+    if (picture == None)
+    {
+        XFreePixmap (display_info->dpy, pixmap);
+        g_warning ("(picture != None) failed");
+        return None;
+    }
+
+    c.alpha = 0;
+    c.red   = 0;
+    c.green = 0;
+    c.blue  = 0;
+
+    XRenderFillRectangle (display_info->dpy, PictOpSrc,
+                          picture, &c, 0, 0, width, height);
+
+    for (y = 0; y < height; y++)
+    {
+        for (x = 0; x < width; x++)
+        {
+            guint32 argb = cursor->pixels[y * width + x];
+
+            c.alpha = ((argb >> 16) & 0xff00) | ((argb >> 24) & 0xff);
+            c.red   = ((argb >>  8) & 0xff00) | ((argb >> 16) & 0xff);
+            c.green = ((argb      ) & 0xff00) | ((argb >>  8) & 0xff);
+            c.blue  = ((argb <<  8) & 0xff00) | ((argb      ) & 0xff);
+
+            XRenderFillRectangle (display_info->dpy, PictOpSrc,
+                                  picture, &c, x, y, 1, 1);
+        }
+    }
+
+    XFreePixmap (display_info->dpy, pixmap);
+
+    return picture;
+}
+
 static void
 paint_root (ScreenInfo *screen_info)
 {
@@ -1425,6 +1488,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         screen_info->transform.matrix[1][1] = 1 << 16;
         screen_info->transform.matrix[2][2] = 1 << 16;
         screen_info->zoomed = 0;
+
+        XFixesShowCursor (display_info->dpy, screen_info->xroot);
     }
 
     /* Copy the original given region */
@@ -1551,6 +1616,23 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         {
             XFixesDestroyRegion (dpy, cw->borderClip);
             cw->borderClip = None;
+        }
+    }
+
+    if (screen_info->zoomed)
+    {
+        TRACE ("Drawing the scaled cursor");
+        if (screen_info->cursorPicture)
+        {
+            /* Switch back to the original region */
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
+            XRenderComposite (dpy, PictOpOver, screen_info->cursorPicture,
+                              None, screen_info->rootBuffer,
+                              0, 0, 0, 0,
+                              screen_info->cursorLocation.x,
+                              screen_info->cursorLocation.y,
+                              screen_info->cursorLocation.width,
+                              screen_info->cursorLocation.height);
         }
     }
 
@@ -2500,11 +2582,9 @@ static gboolean
 zoom_timeout_cb (gpointer data)
 {
     ScreenInfo   *screen_info;
-    Window       root_return;
-    Window       child_return;
-    int          x_root, y_root;
-    int          x_win, y_win;
-    unsigned int mask;
+    XFixesCursorImage *cursor;
+    XRectangle   r_old;
+    gboolean     damage_cursor = FALSE;
     static int   x_old = -1, y_old = -1;
 
     screen_info = (ScreenInfo *) data;
@@ -2515,14 +2595,40 @@ zoom_timeout_cb (gpointer data)
         return FALSE; /* stop calling this callback */
     }
 
-    XQueryPointer (screen_info->display_info->dpy, screen_info->xroot,
-                            &root_return, &child_return,
-                            &x_root, &y_root, &x_win, &y_win, &mask);
-    if (x_old != x_root || y_old != y_root)
+    cursor = XFixesGetCursorImage (screen_info->display_info->dpy);
+
+    r_old = screen_info->cursorLocation;
+    screen_info->cursorLocation.x = cursor->x - cursor->xhot;
+    screen_info->cursorLocation.y = cursor->y - cursor->yhot;
+    screen_info->cursorLocation.width = cursor->width;
+    screen_info->cursorLocation.height = cursor->height;
+
+    if (screen_info->cursorSerial != cursor->cursor_serial)
     {
-        x_old = x_root; y_old = y_root;
-        recenter_zoomed_area (screen_info, x_root, y_root);
+        if (screen_info->cursorPicture)
+            XRenderFreePicture (screen_info->display_info->dpy, screen_info->cursorPicture);
+        screen_info->cursorPicture = cursor_to_picture (screen_info, cursor);
+        screen_info->cursorSerial = cursor->cursor_serial;
+        damage_cursor = TRUE;
     }
+    else if (memcmp (&screen_info->cursorLocation, &r_old, sizeof(r_old)))
+    {
+        damage_cursor = TRUE;
+    }
+
+    if (x_old != cursor->x || y_old != cursor->y)
+    {
+        x_old = cursor->x; y_old = cursor->y;
+        recenter_zoomed_area (screen_info, cursor->x, cursor->y);
+    }
+    else if (damage_cursor)
+    {
+        expose_area (screen_info, &r_old, 1);
+        expose_area (screen_info, &screen_info->cursorLocation, 1);
+    }
+
+    XFree (cursor);
+
     return TRUE;
 }
 
@@ -3293,6 +3399,27 @@ compositorZoomIn (ScreenInfo *screen_info, XButtonEvent *ev)
         screen_info->transform.matrix[1][1] = (1 << 10);
     }
 
+    if (!screen_info->zoomed)
+    {
+        XFixesCursorImage *cursor;
+
+        XFixesHideCursor (screen_info->display_info->dpy, screen_info->xroot);
+
+        cursor = XFixesGetCursorImage (screen_info->display_info->dpy);
+
+        screen_info->cursorLocation.x = cursor->x - cursor->xhot;
+        screen_info->cursorLocation.y = cursor->y - cursor->yhot;
+        screen_info->cursorLocation.width = cursor->width;
+        screen_info->cursorLocation.height = cursor->height;
+
+        if (screen_info->cursorPicture)
+            XRenderFreePicture (screen_info->display_info->dpy, screen_info->cursorPicture);
+        screen_info->cursorPicture = cursor_to_picture (screen_info, cursor);
+        screen_info->cursorSerial = cursor->cursor_serial;
+
+        XFree (cursor);
+    }
+
     screen_info->zoomed = 1;
     if (!screen_info->zoom_timeout_id)
     {
@@ -3329,6 +3456,11 @@ compositorZoomOut (ScreenInfo *screen_info, XButtonEvent *ev)
             screen_info->zoomed = 0;
             screen_info->transform.matrix[0][2] = 0;
             screen_info->transform.matrix[1][2] = 0;
+
+            XFixesShowCursor (screen_info->display_info->dpy, screen_info->xroot);
+            if (screen_info->cursorPicture)
+                XRenderFreePicture (screen_info->display_info->dpy, screen_info->cursorPicture);
+            screen_info->cursorPicture = None;
         }
         recenter_zoomed_area (screen_info, ev->x_root, ev->y_root);
     }
@@ -3524,6 +3656,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->gaussianMap = make_gaussian_map(SHADOW_RADIUS);
     presum_gaussian (screen_info);
     screen_info->rootBuffer = None;
+    screen_info->cursorPicture = None;
     /* Change following argb values to play with shadow colors */
     screen_info->blackPicture = solid_picture (screen_info,
                                                TRUE,
@@ -3625,6 +3758,11 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         XRenderFreePicture (display_info->dpy, screen_info->blackPicture);
         screen_info->blackPicture = None;
     }
+    if (screen_info->cursorPicture)
+    {
+        XRenderFreePicture (display_info->dpy, screen_info->cursorPicture);
+        screen_info->cursorPicture = None;
+    }
 
     if (screen_info->shadowTop)
     {
@@ -3646,6 +3784,11 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 
     screen_info->gaussianSize = -1;
     screen_info->wins_unredirected = 0;
+
+    if (screen_info->zoomed)
+    {
+        XFixesShowCursor (display_info->dpy, screen_info->xroot);
+    }
 
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot,
                                     display_info->composite_mode);
