@@ -5,13 +5,13 @@
 # Translators:
 # Edin Veskovic <edin.veskovic@openmailbox.org>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2010
-# Ivica  Kolić <ikoli@yahoo.com>, 2014
+# Ivica  Kolić <ikoli@yahoo.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2014-10-09 16:11+0000\n"
+"PO-Revision-Date: 2015-03-18 17:44+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfwm4/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -699,7 +699,7 @@ msgstr "Tipka za _uzimanje i premještanje prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Podigni p_rozor prilikom pritiska bilo kojeg gumba na mišu"
+msgstr "_Podigni prozor prilikom pritiska bilo kojeg gumba na mišu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide _frame of windows when maximized"
@@ -707,7 +707,7 @@ msgstr "Sakrij _okvir prozora kada je maksimiziran"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original _size of maximized windows when moving"
-msgstr "Vrati orginalnu veličinu mak_simiziranog prozora pri micanju"
+msgstr "Vrati orginalnu _veličinu maksimiziranog prozora pri micanju"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -715,15 +715,15 @@ msgstr "Automa_tski poploči prozore pri micanju prema rubu zaslona"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Koriti otpornost rubova umj_esto ljepljenja prozora"
+msgstr "Koriti _otpornost rubova umjesto ljepljenja prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Obavijesti o _važnosti trperenjem dekoracije prozora"
+msgstr "Obavijesti o _važnosti treperenjem dekoracije prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Neka važni prozori trepere uzastopno"
+msgstr "Neka važni prozori _trepere uzastopno"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
@@ -737,7 +737,7 @@ msgstr "Koristi _kotačić miša na radnoj površini za prebacivanje radnih pros
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Zapamti i v_rati prethodni radni prostor\npri izmjeni kraticama tipkovnice"
+msgstr "Zapamti i vrati prethodni radni prostor\npri izmjeni kraticama tipkovnice"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
