@@ -177,6 +177,8 @@ struct _ScreenInfo
     XserverRegion allDamage;
     unsigned long cursorSerial;
     Picture cursorPicture;
+    gint cursorOffsetX;
+    gint cursorOffsetY;
     XRectangle cursorLocation;
 
     guint wins_unredirected;

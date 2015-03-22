@@ -1490,6 +1490,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         screen_info->zoomed = 0;
 
         XFixesShowCursor (display_info->dpy, screen_info->xroot);
+        XFixesSelectCursorInput (screen_info->display_info->dpy, screen_info->xroot, 0);
     }
 
     /* Copy the original given region */
@@ -2582,9 +2583,11 @@ static gboolean
 zoom_timeout_cb (gpointer data)
 {
     ScreenInfo   *screen_info;
-    XFixesCursorImage *cursor;
-    XRectangle   r_old;
-    gboolean     damage_cursor = FALSE;
+    Window       root_return;
+    Window       child_return;
+    int          x_root, y_root;
+    int          x_win, y_win;
+    unsigned int mask;
     static int   x_old = -1, y_old = -1;
 
     screen_info = (ScreenInfo *) data;
@@ -2595,39 +2598,16 @@ zoom_timeout_cb (gpointer data)
         return FALSE; /* stop calling this callback */
     }
 
-    cursor = XFixesGetCursorImage (screen_info->display_info->dpy);
-
-    r_old = screen_info->cursorLocation;
-    screen_info->cursorLocation.x = cursor->x - cursor->xhot;
-    screen_info->cursorLocation.y = cursor->y - cursor->yhot;
-    screen_info->cursorLocation.width = cursor->width;
-    screen_info->cursorLocation.height = cursor->height;
-
-    if (screen_info->cursorSerial != cursor->cursor_serial)
+    XQueryPointer (screen_info->display_info->dpy, screen_info->xroot,
+                            &root_return, &child_return,
+                            &x_root, &y_root, &x_win, &y_win, &mask);
+    if (x_old != x_root || y_old != y_root)
     {
-        if (screen_info->cursorPicture)
-            XRenderFreePicture (screen_info->display_info->dpy, screen_info->cursorPicture);
-        screen_info->cursorPicture = cursor_to_picture (screen_info, cursor);
-        screen_info->cursorSerial = cursor->cursor_serial;
-        damage_cursor = TRUE;
+        x_old = x_root; y_old = y_root;
+        screen_info->cursorLocation.x = x_root - screen_info->cursorOffsetX;
+        screen_info->cursorLocation.y = y_root - screen_info->cursorOffsetY;
+        recenter_zoomed_area (screen_info, x_root, y_root);
     }
-    else if (memcmp (&screen_info->cursorLocation, &r_old, sizeof(r_old)))
-    {
-        damage_cursor = TRUE;
-    }
-
-    if (x_old != cursor->x || y_old != cursor->y)
-    {
-        x_old = cursor->x; y_old = cursor->y;
-        recenter_zoomed_area (screen_info, cursor->x, cursor->y);
-    }
-    else if (damage_cursor)
-    {
-        expose_area (screen_info, &r_old, 1);
-        expose_area (screen_info, &screen_info->cursorLocation, 1);
-    }
-
-    XFree (cursor);
 
     return TRUE;
 }
@@ -2947,6 +2927,40 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
                 cw->shaped = TRUE;
             }
         }
+    }
+}
+
+static void
+compositorHandleCursorNotify (DisplayInfo *display_info, XFixesCursorNotifyEvent *ev)
+{
+    ScreenInfo *screen_info;
+
+    g_return_if_fail (display_info != NULL);
+    g_return_if_fail (ev != NULL);
+    TRACE ("entering compositorHandleCursorNotify for 0x%lx", ev->window);
+
+    screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
+    if (screen_info)
+    {
+        XFixesCursorImage *cursor;
+        cursor = XFixesGetCursorImage (screen_info->display_info->dpy);
+
+        if (screen_info->cursorSerial != cursor->cursor_serial)
+        {
+            if (screen_info->cursorPicture)
+                XRenderFreePicture (screen_info->display_info->dpy, screen_info->cursorPicture);
+            screen_info->cursorPicture = cursor_to_picture (screen_info, cursor);
+            screen_info->cursorSerial = cursor->cursor_serial;
+            screen_info->cursorOffsetX = cursor->xhot;
+            screen_info->cursorOffsetY = cursor->xhot;
+            expose_area (screen_info, &screen_info->cursorLocation, 1);
+            screen_info->cursorLocation.x = cursor->x - cursor->xhot;
+            screen_info->cursorLocation.y = cursor->y - cursor->yhot;
+            screen_info->cursorLocation.width = cursor->width;
+            screen_info->cursorLocation.height = cursor->height;
+            expose_area (screen_info, &screen_info->cursorLocation, 1);
+        }
+        XFree (cursor);
     }
 }
 
@@ -3372,6 +3386,10 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
+    else if (ev->type == (display_info->fixes_event_base + XFixesCursorNotify))
+    {
+        compositorHandleCursorNotify (display_info, (XFixesCursorNotifyEvent *) ev);
+    }
 #ifdef HAVE_RANDR
     else if (ev->type == (display_info->xrandr_event_base + RRScreenChangeNotify))
     {
@@ -3404,6 +3422,7 @@ compositorZoomIn (ScreenInfo *screen_info, XButtonEvent *ev)
         XFixesCursorImage *cursor;
 
         XFixesHideCursor (screen_info->display_info->dpy, screen_info->xroot);
+        XFixesSelectCursorInput (screen_info->display_info->dpy, screen_info->xroot, XFixesDisplayCursorNotifyMask);
 
         cursor = XFixesGetCursorImage (screen_info->display_info->dpy);
 
@@ -3458,6 +3477,7 @@ compositorZoomOut (ScreenInfo *screen_info, XButtonEvent *ev)
             screen_info->transform.matrix[1][2] = 0;
 
             XFixesShowCursor (screen_info->display_info->dpy, screen_info->xroot);
+            XFixesSelectCursorInput (screen_info->display_info->dpy, screen_info->xroot, 0);
             if (screen_info->cursorPicture)
                 XRenderFreePicture (screen_info->display_info->dpy, screen_info->cursorPicture);
             screen_info->cursorPicture = None;
@@ -3788,6 +3808,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     if (screen_info->zoomed)
     {
         XFixesShowCursor (display_info->dpy, screen_info->xroot);
+        XFixesSelectCursorInput (screen_info->display_info->dpy, screen_info->xroot, 0);
     }
 
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot,
