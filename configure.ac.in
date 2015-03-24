@@ -19,7 +19,7 @@ m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.22])
 m4_define([startup_notification_minimum_version], [0.5])
 m4_define([intltool_minimum_version], [0.31])
-m4_define([libdrm_minimum_version], [2.4])
+m4_define([libepoxy_minimum_version], [1.0])
 
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2014
@@ -99,10 +99,10 @@ XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [0.72])
 dnl
 dnl Sync to vblank support
 dnl
-XDT_CHECK_OPTIONAL_PACKAGE([LIBDRM],
-                       [libdrm], [libdrm_minimum_version],
-                       [libdrm],
-                       [userspace interface to the kernel DRM services], [yes])
+XDT_CHECK_OPTIONAL_PACKAGE([EPOXY],
+                       [epoxy], [libepoxy_minimum_version],
+                       [epoxy],
+                       [library for handling OpenGL function pointer management], [yes])
 
 dnl
 dnl Startup notification support

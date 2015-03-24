@@ -37,15 +37,10 @@
 #include <string.h>
 #include <libxfce4util/libxfce4util.h>
 
-#ifdef HAVE_LIBDRM
-#include <stdint.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <drm.h>
-#ifdef HAVE_STROPTS_H
-#include <stropts.h>
-#endif
-#endif /* HAVE_LIBDRM */
+#ifdef HAVE_EPOXY
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
+#endif /* HAVE_EPOXY */
 
 #include "display.h"
 #include "screen.h"
@@ -97,15 +92,6 @@
 
 /* Set TIMEOUT_REPAINT to 0 to disable timeout repaint */
 #define TIMEOUT_REPAINT       10 /* msec */
-#define TIMEOUT_REPAINT_MIN    1
-#define TIMEOUT_REPAINT_MAX   20
-#define TIMEOUT_DRI           10 /* seconds */
-
-#ifdef __OpenBSD__
-#define DRM_CARD0             "/dev/drm0"
-#else
-#define DRM_CARD0             "/dev/dri/card0"
-#endif
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -1282,112 +1268,136 @@ paint_win (CWindow *cw, XserverRegion region, gboolean solid_part)
     }
 }
 
-#if HAVE_LIBDRM
-#if TIMEOUT_REPAINT
-
-static void
-open_dri (ScreenInfo *screen_info)
+#if HAVE_EPOXY
+static gboolean
+vblank_enabled (ScreenInfo *screen_info)
 {
-    screen_info->dri_fd = open (DRM_CARD0, O_RDWR);
-    if (screen_info->dri_fd == -1)
-    {
-        g_warning ("Error opening %s: %s", DRM_CARD0, g_strerror (errno));
-    }
-}
-
-static void
-close_dri (ScreenInfo *screen_info)
-{
-    if (screen_info->dri_fd != -1)
-    {
-        close (screen_info->dri_fd);
-        screen_info->dri_fd = -1;
-    }
+    return (screen_info->params->sync_to_vblank &&
+            (screen_info->has_glx_video_sync || screen_info->has_glx_sync_control));
 }
 
 static gboolean
-dri_enabled (ScreenInfo *screen_info)
+vblank_init(ScreenInfo *screen_info)
 {
-    return (screen_info->dri_fd != -1 && screen_info->params->sync_to_vblank);
+    static int visual_attribs[] = {
+        GLX_X_RENDERABLE,  True,
+        GLX_DRAWABLE_TYPE, GLX_WINDOW_BIT,
+        None
+    };
+    int version;
+    int n_configs;
+    int i;
+    GLXFBConfig* configs, fb_config;
+    gboolean fb_match;
+    VisualID xvisual_id;
+
+    version = epoxy_glx_version (myScreenGetXDisplay (screen_info), screen_info->screen);
+    if (version < 13)
+    {
+        g_warning ("GLX version %d is too old, vsync disabled.");
+        return FALSE;
+    }
+
+    configs = glXChooseFBConfig(myScreenGetXDisplay (screen_info),
+                                screen_info->screen,
+                                visual_attribs,
+                                &n_configs);
+    if (configs == NULL)
+    {
+        g_warning ("Cannot retrieve frame buffer config, vsync disabled.");
+        return FALSE;
+    }
+
+    fb_match = FALSE;
+    xvisual_id = XVisualIDFromVisual (screen_info->visual);
+    for (i = 0; i < n_configs; i++)
+    {
+        XVisualInfo *visual_info;
+
+        visual_info = glXGetVisualFromFBConfig (myScreenGetXDisplay (screen_info),
+                                                configs[i]);
+        if (visual_info == NULL)
+        {
+            continue;
+        }
+        if (visual_info->visualid == xvisual_id)
+        {
+            fb_config = configs[i];
+            fb_match = TRUE;
+            XFree (visual_info);
+            break;
+        }
+
+        XFree (visual_info);
+    }
+    XFree(configs);
+
+    if (fb_match == FALSE)
+    {
+        g_warning ("Cannot find a matching visual for the frame buffer config, vsync disabled.");
+        return FALSE;
+    }
+
+    screen_info->has_glx_sync_control =
+        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen,
+                                 "GLX_OML_sync_control");
+
+    screen_info->has_glx_video_sync =
+        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen,
+                                 "GLX_SGI_video_sync");
+
+    if (!screen_info->has_glx_video_sync && !screen_info->has_glx_sync_control)
+    {
+        g_warning ("Screen is missing required GLX extension, vsync disabled.");
+        return FALSE;
+    }
+
+    screen_info->glx_context = glXCreateNewContext(myScreenGetXDisplay (screen_info),
+                                                   fb_config,
+                                                   GLX_RGBA_TYPE,
+                                                   0,
+                                                   TRUE);
+
+    screen_info->glx_window = glXCreateWindow (myScreenGetXDisplay (screen_info),
+                                               fb_config,
+                                               screen_info->output,
+                                               NULL);
+
+    glXMakeContextCurrent (myScreenGetXDisplay (screen_info),
+                           screen_info->glx_window,
+                           screen_info->glx_window,
+                           screen_info->glx_context);
+
+    return TRUE;
 }
 
 static void
 wait_vblank (ScreenInfo *screen_info)
 {
-    int retval;
-    drm_wait_vblank_t vblank;
+    guint32 current_count;
+    GLXDrawable  drawable;
 
-    if (screen_info->dri_time > g_get_monotonic_time())
+    if (screen_info->has_glx_sync_control)
     {
-        return;
+        gint64 ust, msc, sbc;
+
+        glXGetSyncValuesOML (myScreenGetXDisplay (screen_info),
+                             screen_info->glx_window,
+                             &ust, &msc, &sbc);
+        glXWaitForMscOML (myScreenGetXDisplay (screen_info),
+                          screen_info->glx_window,
+                          0, 2, (msc + 1) % 2,
+                          &ust, &msc, &sbc);
     }
-
-    vblank.request.sequence = 1;
-    vblank.request.type = _DRM_VBLANK_RELATIVE;
-    if (screen_info->dri_secondary)
+    else if (screen_info->has_glx_video_sync)
     {
-        vblank.request.type |= _DRM_VBLANK_SECONDARY;
-    }
-
-    do
-    {
-       retval = ioctl (screen_info->dri_fd, DRM_IOCTL_WAIT_VBLANK, &vblank);
-       vblank.request.type &= ~_DRM_VBLANK_RELATIVE;
-    }
-    while (retval == -1 && errno == EINTR);
-
-    screen_info->vblank_time = g_get_monotonic_time ();
-
-    if (retval == -1)
-    {
-        if (screen_info->dri_success)
-        {
-            screen_info->dri_success = FALSE;
-            g_warning ("Error waiting on vblank with DRI: %s", g_strerror (errno));
-        }
-
-        /* if getting the vblank fails, try to get it from the other output */
-        screen_info->dri_secondary = !screen_info->dri_secondary;
-
-        /* the output that we tried to get the vblank from might be disabled,
-           if that's the case, the device needs to be reopened, or it will continue to fail */
-        close_dri (screen_info);
-        open_dri (screen_info);
-
-        /* retry in 10 seconds */
-        screen_info->dri_time = g_get_monotonic_time() + TIMEOUT_DRI * 1000000;
-    }
-    else if (!screen_info->dri_success)
-    {
-        g_message ("Using vertical blank of %s DRI output",
-                   screen_info->dri_secondary ? "secondary" : "primary");
-
-        screen_info->dri_success = TRUE;
+        glXGetVideoSyncSGI (&current_count);
+        glXWaitVideoSyncSGI (2, (current_count + 1) % 2, &current_count);
     }
 }
-
-#endif /* TIMEOUT_REPAINT */
-
-#endif /* HAVE_LIBDRM */
-
-#ifdef HAVE_RANDR
-static void
-get_refresh_rate (ScreenInfo* screen_info)
-{
-    gint refresh_rate;
-    XRRScreenConfiguration* randr_info;
-
-    randr_info = XRRGetScreenInfo (screen_info->display_info->dpy, screen_info->xroot);
-    refresh_rate = XRRConfigCurrentRate (randr_info);
-    XRRFreeScreenConfigInfo (randr_info);
-
-    if (refresh_rate != screen_info->refresh_rate)
-    {
-        DBG ("Detected refreshrate: %i hertz", refresh_rate);
-        screen_info->refresh_rate = refresh_rate;
-    }
-}
-#endif /* HAVE_RANDR */
+#endif /* HAVE_EPOXY */
 
 static void
 paint_all (ScreenInfo *screen_info, XserverRegion region)
@@ -1399,12 +1409,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
     gint screen_width;
     gint screen_height;
     CWindow *cw;
-
-#ifdef HAVE_LIBDRM
-#if TIMEOUT_REPAINT
-    gboolean use_dri;
-#endif /* TIMEOUT_REPAINT */
-#endif /* HAVE_LIBDRM */
 
     TRACE ("entering paint_all");
     g_return_if_fail (screen_info);
@@ -1566,32 +1570,17 @@ paint_all (ScreenInfo *screen_info, XserverRegion region)
         /* Set clipping back to the given region */
         XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer, 0, 0, region);
     }
-#ifdef HAVE_LIBDRM
-#if TIMEOUT_REPAINT
-    use_dri = dri_enabled (screen_info);
-
-    if (use_dri)
+#ifdef HAVE_EPOXY
+    if (vblank_enabled (screen_info))
     {
-        /* sync all previous rendering commands, tell xlib to render the pixmap
-         * onto the root window, wait for the vblank, then flush, this minimizes
-         * tearing*/
         XFlush (dpy);
+        wait_vblank (screen_info);
     }
-#endif /* TIMEOUT_REPAINT */
-#endif /* HAVE_LIBDRM */
+#endif /* HAVE_EPOXY */
 
     XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer, None, screen_info->rootPicture,
                       0, 0, 0, 0, 0, 0, screen_width, screen_height);
-
-#ifdef HAVE_LIBDRM
-#if TIMEOUT_REPAINT
-    if (use_dri)
-    {
-        wait_vblank (screen_info);
-        XFlush (dpy);
-    }
-#endif /* TIMEOUT_REPAINT */
-#endif /* HAVE_LIBDRM */
+    XFlush (dpy);
 
     XFixesDestroyRegion (dpy, paint_region);
 }
@@ -1652,57 +1641,9 @@ static void
 add_repair (ScreenInfo *screen_info)
 {
 #if TIMEOUT_REPAINT
-#ifdef HAVE_LIBDRM
-    gint64 interval;
-#endif /* HAVE_LIBDRM */
-
-    if (screen_info->compositor_timeout_id != 0)
-    {
-        return;
-    }
-
-#ifdef HAVE_LIBDRM
-    if (dri_enabled (screen_info))
-    {
-        /* schedule the next render to be half a refresh period after the last vertical blank,
-           but at least 1 ms in the future so that all queued events can be processed,
-           and to reduce latency if we didn't render for a while */
-#ifdef HAVE_RANDR
-        if (screen_info->refresh_rate > 0)
-        {
-            interval = (screen_info->vblank_time + 500000 / screen_info->refresh_rate -
-                        g_get_monotonic_time ()) / 1000;
-        }
-        else
-#endif /* HAVE_RANDR */
-        {
-            interval = TIMEOUT_REPAINT - ((g_get_monotonic_time () - screen_info->vblank_time) / 1000);
-        }
-
-        if (interval > TIMEOUT_REPAINT_MAX)
-        {
-            interval = TIMEOUT_REPAINT_MAX;
-        }
-        else if (interval < TIMEOUT_REPAINT_MIN)
-        {
-            interval = TIMEOUT_REPAINT_MIN;
-        }
-    }
-    else
-    {
-        interval = TIMEOUT_REPAINT;
-    }
-#endif /* HAVE_LIBDRM */
-
     screen_info->compositor_timeout_id =
-#ifdef HAVE_LIBDRM
-        g_timeout_add (interval,
-                       compositor_timeout_cb, screen_info);
-#else
         g_timeout_add (TIMEOUT_REPAINT,
                        compositor_timeout_cb, screen_info);
-#endif /*HAVE_LIBDRM */
-
 #endif /* TIMEOUT_REPAINT */
 }
 
@@ -2844,25 +2785,6 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
     }
 }
 
-#ifdef HAVE_RANDR
-static void
-compositorHandleRandrNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEvent *ev)
-{
-    ScreenInfo *screen_info;
-
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleRandrNotify for 0x%lx", ev->window);
-
-    screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
-    if (screen_info)
-    {
-        get_refresh_rate (screen_info);
-    }
-    /* No need for RRUpdateConfiguration() here, leave that to gtk+ */
-}
-#endif /* HAVE_RANDR */
-
 static gboolean
 compositorCheckCMSelection (ScreenInfo *screen_info)
 {
@@ -3266,12 +3188,6 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     {
         compositorHandleShapeNotify (display_info, (XShapeEvent *) ev);
     }
-#ifdef HAVE_RANDR
-    else if (ev->type == (display_info->xrandr_event_base + RRScreenChangeNotify))
-    {
-        compositorHandleRandrNotify (display_info, (XRRScreenChangeNotifyEvent *) ev);
-    }
-#endif /* HAVE_RANDR */
 
 #if TIMEOUT_REPAINT == 0
     repair_display (display_info);
@@ -3297,14 +3213,6 @@ compositorZoomIn (ScreenInfo *screen_info, XButtonEvent *ev)
     if (!screen_info->zoom_timeout_id)
     {
         int timeout_rate = 30; /* per second */
-#ifdef HAVE_RANDR
-        if (screen_info->display_info->have_xrandr)
-        {
-            timeout_rate = screen_info->refresh_rate / 2;
-            if (timeout_rate < 1)
-                timeout_rate = 30;
-        }
-#endif /* HAVE_RANDR */
         screen_info->zoom_timeout_id = g_timeout_add ((1000 / timeout_rate),
                                                       zoom_timeout_cb, screen_info);
     }
@@ -3543,21 +3451,11 @@ compositorManageScreen (ScreenInfo *screen_info)
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     TRACE ("Manual compositing enabled");
 
-#ifdef HAVE_LIBDRM
-    open_dri (screen_info);
-    screen_info->dri_success = TRUE;
-    screen_info->dri_secondary = FALSE;
-    screen_info->dri_time = 0;
-    screen_info->vblank_time = 0;
-
-#ifdef HAVE_RANDR
-    if (display_info->have_xrandr)
-    {
-        get_refresh_rate(screen_info);
-        XRRSelectInput(display_info->dpy, screen_info->xroot, RRScreenChangeNotifyMask);
-    }
-#endif /* HAVE_RANDR */
-#endif /* HAVE_LIBDRM */
+#ifdef HAVE_EPOXY
+    screen_info->glx_context = None;
+    screen_info->glx_window = None;
+    vblank_init (screen_info);
+#endif /* HAVE_EPOXY */
 
     return TRUE;
 #else
@@ -3643,6 +3541,19 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         g_free (screen_info->gaussianMap);
         screen_info->gaussianMap = NULL;
     }
+#ifdef HAVE_EPOXY
+    if (screen_info->glx_context)
+    {
+        glXDestroyContext (display_info->dpy, screen_info->glx_context);
+        screen_info->glx_context = None;
+    }
+
+    if (screen_info->glx_window)
+    {
+        glXDestroyWindow (display_info->dpy, screen_info->glx_window);
+        screen_info->glx_window = None;
+    }
+#endif /* HAVE_EPOXY */
 
     screen_info->gaussianSize = -1;
     screen_info->wins_unredirected = 0;
@@ -3651,18 +3562,6 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
                                     display_info->composite_mode);
 
     compositorSetCMSelection (screen_info, None);
-
-#ifdef HAVE_LIBDRM
-    close_dri (screen_info);
-
-#ifdef HAVE_RANDR
-    if (display_info->have_xrandr)
-    {
-        XRRSelectInput (display_info->dpy, screen_info->xroot, 0);
-    }
-#endif /* HAVE_RANDR */
-#endif /* HAVE_LIBDRM */
-
 #endif /* HAVE_COMPOSITOR */
 }
 
