@@ -109,7 +109,7 @@ struct _ButtonPressData
 static void
 clientUpdateIconPix (Client *c);
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *, tilePositionType tile);
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *);
 
 Display *
 clientGetXDisplay (Client *c)
@@ -1055,7 +1055,7 @@ clientGetMWMHints (Client *c, gboolean update)
             myScreenFindMonitorAtPoint (screen_info,
                                         frameX (c) + (frameWidth (c) / 2),
                                         frameY (c) + (frameHeight (c) / 2), &rect);
-            clientNewMaxSize (c, &wc, &rect, TILE_NONE);
+            clientNewMaxSize (c, &wc, &rect);
         }
 
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
@@ -3222,7 +3222,7 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 }
 
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
+clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
 {
     ScreenInfo *screen_info;
     int full_x, full_y, full_w, full_h;
@@ -3235,38 +3235,85 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
                   rect->x + rect->width) - full_x;
     full_h = MIN (screen_info->logical_height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect->y + rect->height) - full_y;
-
-    /* Adjust size to the largest size available, not covering struts */
     clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
 
-    if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+    switch (tile)
     {
-        wc->x = full_x + frameExtentLeft (c);
-        wc->y = full_y + frameExtentTop (c);
-        wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
-        wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
-
-        return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
-                (wc->width >= c->size->min_width) && (wc->width <= c->size->max_width));
+        case TILE_UP:
+            wc->x = full_x + frameExtentLeft (c);
+            wc->y = full_y + frameExtentTop (c);
+            wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_DOWN:
+            wc->x = full_x + frameExtentLeft (c);
+            wc->y = full_y + full_h / 2 + frameExtentTop (c);
+            wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_LEFT:
+            wc->x = full_x + frameExtentLeft (c);
+            wc->y = full_y + frameExtentTop (c);
+            wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_RIGHT:
+            wc->x = full_x + full_w / 2 + frameExtentLeft (c);
+            wc->y = full_y + frameExtentTop (c);
+            wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_DOWN_LEFT:
+            wc->x = full_x + frameExtentLeft (c);
+            wc->y = full_y + full_h / 2 + frameExtentTop (c);
+            wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_DOWN_RIGHT:
+            wc->x = full_x + full_w /2 + frameExtentLeft (c);
+            wc->y = full_y + full_h / 2 + frameExtentTop (c);
+            wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_UP_LEFT:
+            wc->x = full_x + frameExtentLeft (c);
+            wc->y = full_y + frameExtentTop (c);
+            wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        case TILE_UP_RIGHT:
+            wc->x = full_x + full_w /2 + frameExtentLeft (c);
+            wc->y = full_y + frameExtentTop (c);
+            wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            break;
+        default:
+            break;
     }
+
+    return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
+            (wc->width >= c->size->min_width) && (wc->width <= c->size->max_width));
+}
+
+static gboolean
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
+{
+    ScreenInfo *screen_info;
+    int full_x, full_y, full_w, full_h;
+
+    screen_info = c->screen_info;
+
+    full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect->x);
+    full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect->y);
+    full_w = MIN (screen_info->logical_width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
+                  rect->x + rect->width) - full_x;
+    full_h = MIN (screen_info->logical_height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
+                  rect->y + rect->height) - full_y;
+    clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
         /* Adjust size to the widest size available, for the current vertical position/height */
-        switch (tile)
-        {
-            case TILE_UP:
-                wc->y = full_y + frameExtentTop (c);
-                wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
-                break;
-            case TILE_DOWN:
-                wc->y = full_y + full_h / 2 + frameExtentTop (c);
-                wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
-                break;
-            default:
-                break;
-        }
-
         wc->x = full_x + frameExtentLeft (c);
         wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
     }
@@ -3274,52 +3321,8 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositio
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
     {
         /* Adjust size to the tallest size available, for the current horizontal position/width */
-        switch (tile)
-        {
-            case TILE_LEFT:
-                wc->x = full_x + frameExtentLeft (c);
-                wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-                break;
-            case TILE_RIGHT:
-                wc->x = full_x + full_w / 2 + frameExtentLeft (c);
-                wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-                break;
-            default:
-                break;
-        }
-
         wc->y = full_y + frameExtentTop (c);
         wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
-    }
-
-    switch (tile)
-    {
-        case TILE_DOWN_LEFT:
-                wc->x = full_x + frameExtentLeft (c);
-                wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-                wc->y = full_y + full_h / 2 + frameExtentTop (c);
-                wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
-            break;
-        case TILE_DOWN_RIGHT:
-                wc->x = full_x + full_w /2 + frameExtentLeft (c);
-                wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-                wc->y = full_y + full_h / 2 + frameExtentTop (c);
-                wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
-            break;
-        case TILE_UP_LEFT:
-                wc->x = full_x + frameExtentLeft (c);
-                wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-                wc->y = full_y + frameExtentTop (c);
-                wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
-            break;
-        case TILE_UP_RIGHT:
-                wc->x = full_x + full_w /2 + frameExtentLeft (c);
-                wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-                wc->y = full_y + frameExtentTop (c);
-                wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
-            break;
-        default:
-            break;
     }
 
     return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
@@ -3368,7 +3371,7 @@ clientToggleMaximized (Client *c, int mode, gboolean restore_position)
     clientNewMaxState (c, &wc, mode);
 
     /* 2) Compute the new size, based on the state */
-    if (!clientNewMaxSize (c, &wc, &rect, TILE_NONE))
+    if (!clientNewMaxSize (c, &wc, &rect))
     {
         c->flags = old_flags;
         return FALSE;
@@ -3432,27 +3435,6 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     wc.width = c->width;
     wc.height = c->height;
 
-    switch (tile)
-    {
-        case TILE_LEFT:
-        case TILE_RIGHT:
-            mode = CLIENT_FLAG_MAXIMIZED_VERT;
-            break;
-        case TILE_UP:
-        case TILE_DOWN:
-            mode = CLIENT_FLAG_MAXIMIZED_HORIZ;
-            break;
-        case TILE_DOWN_LEFT:
-        case TILE_DOWN_RIGHT:
-        case TILE_UP_LEFT:
-        case TILE_UP_RIGHT:
-            mode = 0;
-            break;
-        default:
-            return FALSE;
-            break;
-    }
-
     if (restore_position)
     {
         clientSaveSizePos (c);
@@ -3460,8 +3442,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 
     old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    clientNewMaxState (c, &wc, mode);
-    if (!clientNewMaxSize (c, &wc, &rect, tile))
+    if (!clientNewTileSize (c, &wc, &rect, tile))
     {
         c->flags = old_flags;
         return FALSE;
