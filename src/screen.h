@@ -181,6 +181,11 @@ struct _ScreenInfo
     Picture blackPicture;
     Picture rootTile;
     XserverRegion allDamage;
+    unsigned long cursorSerial;
+    Picture cursorPicture;
+    gint cursorOffsetX;
+    gint cursorOffsetY;
+    XRectangle cursorLocation;
 
     guint wins_unredirected;
     gboolean compositor_active;
