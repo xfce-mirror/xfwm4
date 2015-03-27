@@ -1804,7 +1804,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED))
     {
         clientCoordGravitate (c, c->gravity, APPLY, &c->x, &c->y);
-        if ((attr.map_state == IsUnmapped))
+        if (attr.map_state == IsUnmapped)
         {
             clientInitPosition (c);
         }

@@ -189,27 +189,27 @@ clientGetNetState (Client * c)
         i = 0;
         while (i < n_atoms)
         {
-            if ((atoms[i] == display_info->atoms[NET_WM_STATE_SHADED]))
+            if (atoms[i] == display_info->atoms[NET_WM_STATE_SHADED])
             {
                 TRACE ("clientGetNetState : shaded");
                 FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
             }
-            else if ((atoms[i] == display_info->atoms[NET_WM_STATE_STICKY]))
+            else if (atoms[i] == display_info->atoms[NET_WM_STATE_STICKY])
             {
                 TRACE ("clientGetNetState : sticky");
                 FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
             }
-            else if ((atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
+            else if (atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ])
             {
                 TRACE ("clientGetNetState : maximized horiz");
                 FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_RESTORE_SIZE_POS);
             }
-            else if ((atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT]))
+            else if (atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT])
             {
                 TRACE ("clientGetNetState : maximized vert");
                 FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_RESTORE_SIZE_POS);
             }
-            else if ((atoms[i] == display_info->atoms[NET_WM_STATE_FULLSCREEN]))
+            else if (atoms[i] == display_info->atoms[NET_WM_STATE_FULLSCREEN])
             {
                 if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
                 {
@@ -217,7 +217,7 @@ clientGetNetState (Client * c)
                     FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
                 }
             }
-            else if ((atoms[i] == display_info->atoms[NET_WM_STATE_ABOVE]))
+            else if (atoms[i] == display_info->atoms[NET_WM_STATE_ABOVE])
             {
                 if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
                 {
@@ -225,7 +225,7 @@ clientGetNetState (Client * c)
                     FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
                 }
             }
-            else if ((atoms[i] == display_info->atoms[NET_WM_STATE_BELOW]))
+            else if (atoms[i] == display_info->atoms[NET_WM_STATE_BELOW])
             {
                 if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
                 {
