@@ -32,11 +32,17 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
 
-
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #define SN_API_NOT_YET_FROZEN
 #include <libsn/sn.h>
 #endif
+
+#ifdef HAVE_COMPOSITOR
+#ifdef HAVE_EPOXY
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
+#endif /* HAVE_EPOXY */
+#endif /* HAVE_COMPOSITOR */
 
 #ifndef INC_SCREEN_H
 #define INC_SCREEN_H
@@ -188,17 +194,12 @@ struct _ScreenInfo
     gboolean zoomed;
     guint zoom_timeout_id;
 
-#ifdef HAVE_LIBDRM
-    gint dri_fd;
-    gboolean dri_secondary;
-    gboolean dri_success;
-    gint64 dri_time;
-    gint64 vblank_time;
-#endif /* HAVE_LIBDRM */
-
-#ifdef HAVE_RANDR
-    gint refresh_rate;
-#endif /* HAVE_RANDR */
+#ifdef HAVE_EPOXY
+    gboolean has_glx_sync_control;
+    gboolean has_glx_video_sync;
+    GLXContext glx_context;
+    GLXWindow glx_window;
+#endif /* HAVE_EPOXY */
 
 #endif /* HAVE_COMPOSITOR */
 };

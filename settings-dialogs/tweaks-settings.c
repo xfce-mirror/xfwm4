@@ -399,7 +399,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/unredirect_overlays",
                             G_TYPE_BOOLEAN,
                             (GObject *)unredirect_overlays_check, "active");
-#ifdef HAVE_LIBDRM
+#ifdef HAVE_EPOXY
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/sync_to_vblank",
                             G_TYPE_BOOLEAN,
