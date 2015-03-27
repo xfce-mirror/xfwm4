@@ -57,19 +57,6 @@ getMouseXY (ScreenInfo *screen_info, Window w, int *x2, int *y2)
     return mask;
 }
 
-Window
-getMouseWindow (ScreenInfo *screen_info, Window w)
-{
-    Window w1, w2;
-    unsigned int mask;
-    int x1, y1, x2, y2;
-
-    TRACE ("entering getMouseWindow");
-
-    XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, &x2, &y2, &mask);
-    return w2;
-}
-
 GC
 createGC (ScreenInfo *screen_info, char *col, int func, XFontStruct * font,
           int line_width, gboolean inc_sw)

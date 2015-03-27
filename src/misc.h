@@ -50,8 +50,6 @@ unsigned int             getMouseXY                             (ScreenInfo *,
                                                                  Window,
                                                                  int *,
                                                                  int *);
-Window                   getMouseWindow                         (ScreenInfo *,
-                                                                 Window);
 GC                       createGC                               (ScreenInfo *,
                                                                  char *,
                                                                  int,
