@@ -1353,7 +1353,7 @@ vblank_init(ScreenInfo *screen_info)
     version = epoxy_glx_version (myScreenGetXDisplay (screen_info), screen_info->screen);
     if (version < 13)
     {
-        g_warning ("GLX version %d is too old, vsync disabled.");
+        g_warning ("GLX version %d is too old, vsync disabled.", version);
         return FALSE;
     }
 
@@ -1436,7 +1436,6 @@ static void
 wait_vblank (ScreenInfo *screen_info)
 {
     guint32 current_count;
-    GLXDrawable  drawable;
 
     if (screen_info->has_glx_sync_control)
     {
@@ -2915,25 +2914,6 @@ compositorHandleCursorNotify (DisplayInfo *display_info, XFixesCursorNotifyEvent
         update_cursor (screen_info);
     }
 }
-
-#ifdef HAVE_RANDR
-static void
-compositorHandleRandrNotify (DisplayInfo *display_info, XRRScreenChangeNotifyEvent *ev)
-{
-    ScreenInfo *screen_info;
-
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleRandrNotify for 0x%lx", ev->window);
-
-    screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
-    if (screen_info)
-    {
-        get_refresh_rate (screen_info);
-    }
-    /* No need for RRUpdateConfiguration() here, leave that to gtk+ */
-}
-#endif /* HAVE_RANDR */
 
 static gboolean
 compositorCheckCMSelection (ScreenInfo *screen_info)

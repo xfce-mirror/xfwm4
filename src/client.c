@@ -3414,7 +3414,6 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     XWindowChanges wc;
     GdkRectangle rect;
     unsigned long old_flags;
-    int mode;
 
     g_return_val_if_fail (c != NULL, FALSE);
 
