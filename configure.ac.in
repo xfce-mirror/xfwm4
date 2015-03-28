@@ -18,7 +18,7 @@ m4_define([xfconf_minimum_version], [4.8.0])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [2.22])
 m4_define([startup_notification_minimum_version], [0.5])
-m4_define([intltool_minimum_version], [0.31])
+m4_define([intltool_minimum_version], [0.35])
 m4_define([libepoxy_minimum_version], [1.0])
 
 dnl init autoconf
@@ -52,7 +52,7 @@ dnl check for basic programs
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
-AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
+IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 dnl check for libtool
 LT_PREREQ([2.2.6])
