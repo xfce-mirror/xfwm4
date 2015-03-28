@@ -1432,6 +1432,7 @@ vblank_init(ScreenInfo *screen_info)
     return TRUE;
 }
 
+/* Following routine is taken from gdk GL context code by Alexander Larsson */
 static void
 wait_vblank (ScreenInfo *screen_info)
 {

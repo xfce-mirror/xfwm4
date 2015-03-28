@@ -99,6 +99,7 @@ XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [0.72])
 dnl
 dnl Sync to vblank support
 dnl
+EPOXY_FOUND="no"
 XDT_CHECK_OPTIONAL_PACKAGE([EPOXY],
                        [epoxy], [libepoxy_minimum_version],
                        [epoxy],
@@ -261,5 +262,6 @@ echo "  XSync support:                $have_xsync"
 echo "  Render support:               $have_render"
 echo "  Xrandr support:               $have_xrandr"
 echo "  Embedded compositor:          $compositor"
+echo "  Epoxy support:                $EPOXY_FOUND"
 echo "  KDE systray protocol proxy:   $kde_systray"
 echo
