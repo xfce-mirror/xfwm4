@@ -26,7 +26,6 @@
 #include "config.h"
 #endif
 
-#include <sys/ioctl.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -868,7 +867,7 @@ root_tile (ScreenInfo *screen_info)
             memcpy (&pixmap, prop, 4);
             XFree (prop);
             pa.repeat = TRUE;
-            format = XRenderFindVisualFormat (dpy, DefaultVisual (dpy, screen_info->screen));
+            format = XRenderFindVisualFormat (dpy, screen_info->visual);
             g_return_val_if_fail (format != NULL, None);
             picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
             break;
@@ -912,16 +911,13 @@ create_root_buffer (ScreenInfo *screen_info, Pixmap pixmap)
     DisplayInfo *display_info;
     Picture pict;
     XRenderPictFormat *format;
-    Visual *visual;
 
     g_return_val_if_fail (screen_info != NULL, None);
     g_return_val_if_fail (pixmap != None, None);
     TRACE ("entering create_root_buffer");
 
     display_info = screen_info->display_info;
-    visual = DefaultVisual (display_info->dpy, screen_info->screen);
-
-    format = XRenderFindVisualFormat (display_info->dpy, visual);
+    format = XRenderFindVisualFormat (display_info->dpy, screen_info->visual);
     g_return_val_if_fail (format != NULL, None);
 
     pict = XRenderCreatePicture (display_info->dpy,
@@ -955,7 +951,7 @@ cursor_to_picture (ScreenInfo *screen_info, XFixesCursorImage *cursor)
     }
 
     ximage = XCreateImage (display_info->dpy,
-                           DefaultVisual(display_info->dpy, screen_info->screen),
+                           screen_info->visual,
                            32, ZPixmap, 0, (char *) data,
                            cursor->width, cursor->height, 32,
                            cursor->width * sizeof (guint32));
@@ -989,7 +985,7 @@ cursor_to_picture (ScreenInfo *screen_info, XFixesCursorImage *cursor)
     return picture;
 }
 
-#if HAVE_EPOXY
+#ifdef HAVE_EPOXY
 static gboolean
 vblank_enabled (ScreenInfo *screen_info)
 {
@@ -998,66 +994,46 @@ vblank_enabled (ScreenInfo *screen_info)
 }
 
 static gboolean
-vblank_init(ScreenInfo *screen_info)
+check_glx_renderer (ScreenInfo *screen_info)
 {
-    static int visual_attribs[] = {
-        GLX_X_RENDERABLE,  True,
-        GLX_DRAWABLE_TYPE, GLX_WINDOW_BIT,
-        None
+    const char *glRenderer;
+    const char *blacklisted[] = {
+        "Software Rasterizer",
+        "Mesa X11",
+        "llvmpipe",
+        NULL
     };
-    int version;
-    int n_configs;
     int i;
-    GLXFBConfig* configs, fb_config;
-    gboolean fb_match;
-    VisualID xvisual_id;
 
-    version = epoxy_glx_version (myScreenGetXDisplay (screen_info), screen_info->screen);
-    if (version < 13)
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+
+    TRACE ("entering check_glx_renderer");
+
+    glRenderer = (const char *) glGetString (GL_RENDERER);
+    if (glRenderer == NULL)
     {
-        g_warning ("GLX version %d is too old, vsync disabled.", version);
+        g_warning ("Cannot identify GLX renderer.");
         return FALSE;
     }
 
-    configs = glXChooseFBConfig(myScreenGetXDisplay (screen_info),
-                                screen_info->screen,
-                                visual_attribs,
-                                &n_configs);
-    if (configs == NULL)
+    i = 0;
+    while (blacklisted[i] && !strcasestr (glRenderer, blacklisted[i]))
+        i++;
+    if (blacklisted[i])
     {
-        g_warning ("Cannot retrieve frame buffer config, vsync disabled.");
+        g_warning ("Unsupported OpenGL renderer (%s).", glRenderer);
         return FALSE;
     }
 
-    fb_match = FALSE;
-    xvisual_id = XVisualIDFromVisual (screen_info->visual);
-    for (i = 0; i < n_configs; i++)
-    {
-        XVisualInfo *visual_info;
+    return TRUE;
+}
 
-        visual_info = glXGetVisualFromFBConfig (myScreenGetXDisplay (screen_info),
-                                                configs[i]);
-        if (visual_info == NULL)
-        {
-            continue;
-        }
-        if (visual_info->visualid == xvisual_id)
-        {
-            fb_config = configs[i];
-            fb_match = TRUE;
-            XFree (visual_info);
-            break;
-        }
+static void
+init_glx_extensions (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info != NULL);
 
-        XFree (visual_info);
-    }
-    XFree(configs);
-
-    if (fb_match == FALSE)
-    {
-        g_warning ("Cannot find a matching visual for the frame buffer config, vsync disabled.");
-        return FALSE;
-    }
+    TRACE ("entering init_glx_extensions");
 
     screen_info->has_glx_sync_control =
         epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
@@ -1069,36 +1045,244 @@ vblank_init(ScreenInfo *screen_info)
                                  screen_info->screen,
                                  "GLX_SGI_video_sync");
 
-    if (!screen_info->has_glx_video_sync && !screen_info->has_glx_sync_control)
+    screen_info->has_texture_from_pixmap =
+        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen,
+                                 "GLX_EXT_texture_from_pixmap");
+
+    screen_info->has_texture_rectangle =
+        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen,
+                                 "GL_ARB_texture_rectangle");
+
+    screen_info->has_texture_non_power_of_two =
+        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen,
+                                 "GL_ARB_texture_non_power_of_two");
+}
+
+static gboolean
+choose_glx_settings (ScreenInfo *screen_info)
+{
+    static GLint visual_attribs[] = {
+        GLX_DRAWABLE_TYPE, GLX_PIXMAP_BIT | GLX_WINDOW_BIT,
+        GLX_X_RENDERABLE,  True,
+        GLX_DOUBLEBUFFER,  True,
+        GLX_CONFIG_CAVEAT, GLX_NONE,
+        GLX_DEPTH_SIZE,    1,
+        GLX_ALPHA_SIZE,    1,
+        GLX_RED_SIZE,      1,
+        GLX_GREEN_SIZE,    1,
+        GLX_BLUE_SIZE,     1,
+        GLX_RENDER_TYPE,   GLX_RGBA_BIT,
+        None
+    };
+    GLint texture_target = 0;
+    GLint texture_format = 0;
+    gboolean texture_inverted = FALSE;
+    int n_configs;
+    int i, value;
+    GLXFBConfig *configs, fb_config;
+    XVisualInfo *visual_info;
+    gboolean fb_match;
+    VisualID xvisual_id;
+
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+
+    TRACE ("entering choose_glx_settings");
+
+    configs = glXChooseFBConfig (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen,
+                                 visual_attribs,
+                                 &n_configs);
+    if (configs == NULL)
     {
-        g_warning ("Screen is missing required GLX extension, vsync disabled.");
+        g_warning ("Cannot retrieve GLX frame buffer config.");
         return FALSE;
     }
 
-    screen_info->glx_context = glXCreateNewContext(myScreenGetXDisplay (screen_info),
-                                                   fb_config,
-                                                   GLX_RGBA_TYPE,
-                                                   0,
-                                                   TRUE);
+    if (screen_info->has_texture_rectangle)
+    {
+        screen_info->texture_type = GL_TEXTURE_RECTANGLE_ARB;
+    }
+    else
+    {
+        screen_info->texture_type = GL_TEXTURE_2D;
+    }
+
+    fb_match = FALSE;
+    xvisual_id = XVisualIDFromVisual (screen_info->visual);
+    for (i = 0; i < n_configs; i++)
+    {
+        visual_info = glXGetVisualFromFBConfig (myScreenGetXDisplay (screen_info),
+                                                configs[i]);
+        if (!visual_info)
+        {
+            continue;
+        }
+
+        if (visual_info->visualid != xvisual_id)
+        {
+            XFree (visual_info);
+            continue;
+        }
+        XFree (visual_info);
+
+        glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                              configs[i],
+                              GLX_DRAWABLE_TYPE, &value);
+
+        if (!(value & GLX_PIXMAP_BIT))
+        {
+            continue;
+        }
+
+        glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                              configs[i],
+                              GLX_BIND_TO_TEXTURE_TARGETS_EXT,
+                              &value);
+
+        if (screen_info->texture_type == GL_TEXTURE_RECTANGLE_ARB)
+        {
+            if (value & GLX_TEXTURE_RECTANGLE_BIT_EXT)
+            {
+                texture_target = GLX_TEXTURE_RECTANGLE_EXT;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        else if (screen_info->texture_type == GL_TEXTURE_2D)
+        {
+            if (value & GLX_TEXTURE_2D_BIT_EXT)
+            {
+                texture_target = GLX_TEXTURE_2D_EXT;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        else
+        {
+            continue;
+        }
+
+        glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                              configs[i],
+                              GLX_BIND_TO_TEXTURE_RGB_EXT,
+                              &value);
+        if (!value)
+        {
+            continue;
+        }
+
+        texture_format = GLX_TEXTURE_FORMAT_RGB_EXT;
+
+        glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                              configs[i],
+                              GLX_Y_INVERTED_EXT,
+                              &value);
+        if (value == TRUE)
+        {
+            texture_inverted = TRUE;
+        }
+
+        fb_config = configs[i];
+        fb_match = TRUE;
+        break;
+    }
+    XFree(configs);
+
+    if (fb_match == FALSE)
+    {
+        g_warning ("Cannot find a matching visual for the frame buffer config.");
+        return FALSE;
+    }
+
+    screen_info->texture_target = texture_target;
+    screen_info->texture_format = texture_format;
+    screen_info->texture_inverted = texture_inverted;
+    screen_info->glx_fbconfig = fb_config;
+
+    return TRUE;
+}
+
+static gboolean
+init_glx (ScreenInfo *screen_info)
+{
+    int version;
+
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+
+    TRACE ("entering init_glx");
+
+    version = epoxy_glx_version (myScreenGetXDisplay (screen_info), screen_info->screen);
+    if (version < 13)
+    {
+        g_warning ("GLX version %d is too old, GLX support disabled.", version);
+        return FALSE;
+    }
+
+    init_glx_extensions (screen_info);
+    if (!screen_info->has_glx_video_sync && !screen_info->has_glx_sync_control)
+    {
+        g_warning ("Screen is missing required GLX extension, vsync disabled.");
+        /*
+         * Strictly speaking, we /could/ be using GLX without VSync support, but what
+         * would be the point? Chances are we'd be using swrast anyway...
+         */
+        return FALSE;
+    }
+
+    if (!choose_glx_settings (screen_info))
+    {
+        g_warning ("Cannot find a matching GLX config, vsync disabled.");
+        return FALSE;
+    }
+
+    screen_info->glx_context = glXCreateNewContext (myScreenGetXDisplay (screen_info),
+                                                    screen_info->glx_fbconfig,
+                                                    GLX_RGBA_TYPE,
+                                                    0,
+                                                    TRUE);
 
     screen_info->glx_window = glXCreateWindow (myScreenGetXDisplay (screen_info),
-                                               fb_config,
+                                               screen_info->glx_fbconfig,
                                                screen_info->output,
                                                NULL);
+    glXMakeCurrent (myScreenGetXDisplay (screen_info),
+                    screen_info->glx_window,
+                    screen_info->glx_context);
 
-    glXMakeContextCurrent (myScreenGetXDisplay (screen_info),
-                           screen_info->glx_window,
-                           screen_info->glx_window,
-                           screen_info->glx_context);
+    if (!check_glx_renderer (screen_info))
+    {
+        g_warning ("Screen is missing required OpenGL renderer, OpenGL support disabled.");
+
+        glXDestroyContext (myScreenGetXDisplay (screen_info), screen_info->glx_context);
+        screen_info->glx_context = None;
+
+        glXDestroyWindow (myScreenGetXDisplay (screen_info), screen_info->glx_window);
+        screen_info->glx_window = None;
+
+        return FALSE;
+    }
+
+    glLoadIdentity();
 
     return TRUE;
 }
 
 /* Following routine is taken from gdk GL context code by Alexander Larsson */
 static void
-wait_vblank (ScreenInfo *screen_info)
+wait_glx_vblank (ScreenInfo *screen_info)
 {
     guint32 current_count;
+
+    g_return_if_fail (screen_info != NULL);
+
+    TRACE ("entering wait_glx_vblank");
 
     if (screen_info->has_glx_sync_control)
     {
@@ -1118,6 +1302,135 @@ wait_vblank (ScreenInfo *screen_info)
         glXWaitVideoSyncSGI (2, (current_count + 1) % 2, &current_count);
     }
 }
+
+static GLXDrawable
+create_glx_drawable (ScreenInfo *screen_info, Pixmap pixmap)
+{
+    int pixmap_attribs[] = {
+        GLX_TEXTURE_TARGET_EXT, GLX_TEXTURE_2D_EXT,
+        GLX_TEXTURE_FORMAT_EXT, GLX_TEXTURE_FORMAT_RGB_EXT,
+        None
+    };
+    GLXDrawable glx_drawable;
+
+    g_return_val_if_fail (screen_info != NULL, None);
+    g_return_val_if_fail (pixmap != None, None);
+
+    TRACE ("entering create_glx_drawable");
+
+    pixmap_attribs[1] = screen_info->texture_target;
+    pixmap_attribs[3] = screen_info->texture_format;
+
+    glx_drawable = glXCreatePixmap (myScreenGetXDisplay (screen_info),
+                                    screen_info->glx_fbconfig,
+                                    pixmap, pixmap_attribs);
+
+    return glx_drawable;
+}
+
+static void
+unbind_glx_texture (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info != NULL);
+
+    TRACE ("entering unbind_glx_texture");
+
+    if (screen_info->glx_drawable)
+    {
+        glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
+                               screen_info->glx_drawable, GLX_FRONT_EXT);
+        glXDestroyPixmap(myScreenGetXDisplay (screen_info), screen_info->glx_drawable);
+        screen_info->glx_drawable = None;
+    }
+
+    if (screen_info->rootTexture)
+    {
+        glBindTexture (GL_TEXTURE_2D, None);
+        glDeleteTextures (1, &screen_info->rootTexture);
+        screen_info->rootTexture = None;
+    }
+}
+
+static void
+bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
+{
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (pixmap != None);
+
+    TRACE ("entering bind_glx_texture");
+
+    if (screen_info->rootTexture == None)
+    {
+        glGenTextures(1, &screen_info->rootTexture);
+    }
+
+    glBindTexture (GL_TEXTURE_2D, screen_info->rootTexture);
+
+    if (screen_info->glx_drawable == None)
+    {
+        screen_info->glx_drawable = create_glx_drawable (screen_info, pixmap);
+        glEnable(GL_TEXTURE_2D);
+    }
+    else
+    {
+        glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
+                               screen_info->glx_drawable, GLX_FRONT_EXT);
+    }
+
+    glXBindTexImageEXT (myScreenGetXDisplay (screen_info),
+                        screen_info->glx_drawable, GLX_FRONT_EXT, NULL);
+
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, screen_info->texture_filter);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, screen_info->texture_filter);
+}
+
+static void
+redraw_glx_texture (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info != NULL);
+
+    TRACE ("entering redraw_glx_texture");
+
+    glPushMatrix();
+
+    if (screen_info->zoomed)
+    {
+        /* Reuse the values from the XRender matrix */
+        XFixed zf = screen_info->transform.matrix[0][0];
+        XFixed xp = screen_info->transform.matrix[0][2];
+        XFixed yp = screen_info->transform.matrix[1][2];
+
+        double zoom = XFixedToDouble (zf);
+        double x = (2.0 * XFixedToDouble (xp)) / screen_info->width - (1.0 - zoom);
+        double y = (2.0 * XFixedToDouble (yp)) / screen_info->height -  (1.0 - zoom);
+
+        glScaled(1.0 / zoom, 1.0 / zoom, 1.0);
+        glTranslated (-x, y, 0.0);
+    }
+    else
+    {
+        glScaled(1.0, 1.0, 1.0);
+        glTranslated (0.0, 0.0, 0.0);
+    }
+
+    glViewport(0, 0, screen_info->width, screen_info->height);
+
+    glBegin(GL_QUADS);
+    glTexCoord2f(0.0, screen_info->texture_inverted ? 1.0 : 0.0);
+    glVertex3f(-1.0,  1.0, 0.0);
+    glTexCoord2f(1.0, screen_info->texture_inverted ? 1.0 : 0.0);
+    glVertex3f( 1.0,  1.0, 0.0);
+    glTexCoord2f(1.0, screen_info->texture_inverted ? 0.0 : 1.0);
+    glVertex3f( 1.0, -1.0, 0.0);
+    glTexCoord2f(0.0, screen_info->texture_inverted ? 0.0 : 1.0);
+    glVertex3f(-1.0, -1.0, 0.0);
+    glEnd();
+
+    glPopMatrix();
+
+    glXSwapBuffers (myScreenGetXDisplay (screen_info),
+                    screen_info->glx_window);
+}
 #endif /* HAVE_EPOXY */
 
 #ifdef HAVE_PRESENT_EXTENSION
@@ -1125,6 +1438,12 @@ static void
 present_flip (ScreenInfo *screen_info, XserverRegion region, Pixmap pixmap)
 {
     static guint32 present_serial;
+
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (region != None);
+    g_return_if_fail (pixmap != None);
+
+    TRACE ("entering present_flip (serial %d)", present_serial);
 
     XPresentPixmap (myScreenGetXDisplay (screen_info), screen_info->output,
                     pixmap, present_serial++, None, region, 0, 0, None, None, None,
@@ -1527,16 +1846,16 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
             create_root_buffer (screen_info, screen_info->rootPixmap[buffer]);
     }
 
-    if (screen_info->zoomBuffer == None)
+    if (screen_info->zoomed && !screen_info->use_glx)
     {
-        Pixmap pixmap;
+        if (screen_info->zoomBuffer == None)
+        {
+            Pixmap pixmap;
 
-        pixmap = create_root_pixmap (screen_info);
-        screen_info->zoomBuffer = create_root_buffer (screen_info, pixmap);
-        XFreePixmap (display_info->dpy, pixmap);
-    }
-    if (screen_info->zoomed)
-    {
+            pixmap = create_root_pixmap (screen_info);
+            screen_info->zoomBuffer = create_root_buffer (screen_info, pixmap);
+            XFreePixmap (display_info->dpy, pixmap);
+        }
         paint_buffer = screen_info->zoomBuffer;
     }
     else
@@ -1672,25 +1991,30 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     }
 
     TRACE ("Copying data back to screen");
-    if (screen_info->zoomed)
-    {
-        /* Fixme: copy back whole screen if zoomed
-           It would be better to scale the clipping region if possible. */
-        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer],
-                                    0, 0, None);
-        paint_cursor (screen_info, region, screen_info->zoomBuffer);
-        XFixesSetPictureClipRegion (dpy, screen_info->zoomBuffer,
-                                    0, 0, None);
-    }
-    else
+    if (screen_info->use_glx)
     {
         /* Set clipping back to the given region */
+        if (screen_info->zoomed)
+        {
+            paint_cursor (screen_info, region, screen_info->rootBuffer[buffer]);
+        }
         XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer],
                                     0, 0, region);
     }
+    else
+    {
+        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer],
+                                    0, 0, None);
+        if (screen_info->zoomed)
+        {
+            paint_cursor (screen_info, region, paint_buffer);
+            XFixesSetPictureClipRegion (dpy, paint_buffer,
+                                        0, 0, None);
+        }
+    }
 
 #ifdef HAVE_PRESENT_EXTENSION
-    if (display_info->have_present)
+    if (screen_info->use_present) /* present first if available */
     {
         if (screen_info->zoomed)
         {
@@ -1701,20 +2025,38 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         }
         present_flip (screen_info, region, screen_info->rootPixmap[buffer]);
         screen_info->present_pending = TRUE;
+        DBG ("present flip requested, present pending...");
     }
     else
 #endif /* HAVE_PRESENT_EXTENSION */
-    {
 #ifdef HAVE_EPOXY
+    if (screen_info->use_glx) /* then glx if available */
+    {
+        XFlush (dpy);
         if (vblank_enabled (screen_info))
         {
-            XFlush (dpy);
-            wait_vblank (screen_info);
+            wait_glx_vblank (screen_info);
         }
+        bind_glx_texture (screen_info,
+                          screen_info->rootPixmap[buffer]);
+        redraw_glx_texture (screen_info);
+    }
+    else
 #endif /* HAVE_EPOXY */
-        XRenderComposite (dpy, PictOpSrc, paint_buffer,
-                          None, screen_info->rootPicture,
-                          0, 0, 0, 0, 0, 0, screen_width, screen_height);
+    {
+        if (screen_info->zoomed)
+        {
+            XRenderComposite (dpy, PictOpSrc,
+                              screen_info->zoomBuffer,
+                              None,  screen_info->rootPicture,
+                              0, 0, 0, 0, 0, 0, screen_width, screen_height);
+        }
+        else
+        {
+            XRenderComposite (dpy, PictOpSrc, paint_buffer,
+                              None, screen_info->rootPicture,
+                              0, 0, 0, 0, 0, 0, screen_width, screen_height);
+        }
         XFlush (dpy);
     }
 
@@ -1750,7 +2092,7 @@ repair_screen (ScreenInfo *screen_info)
     if (screen_info->allDamage)
     {
 #ifdef HAVE_PRESENT_EXTENSION
-        if (display_info->have_present)
+        if (screen_info->use_present)
         {
             if (!screen_info->present_pending)
             {
@@ -2637,7 +2979,6 @@ recenter_zoomed_area (ScreenInfo *screen_info, int x_root, int y_root)
 {
     int zf = screen_info->transform.matrix[0][0];
     double zoom = XFixedToDouble (zf);
-    Display *dpy = screen_info->display_info->dpy;
 
     if (screen_info->zoomed)
     {
@@ -2648,11 +2989,26 @@ recenter_zoomed_area (ScreenInfo *screen_info, int x_root, int y_root)
     }
 
     if (zf > (1 << 14) && zf < (1 << 16))
-        XRenderSetPictureFilter (dpy, screen_info->zoomBuffer, FilterBilinear, NULL, 0);
+    {
+        XRenderSetPictureFilter (myScreenGetXDisplay (screen_info),
+                                 screen_info->zoomBuffer,
+                                 FilterBilinear, NULL, 0);
+#ifdef HAVE_EPOXY
+        screen_info->texture_filter = GL_LINEAR;
+#endif /* HAVE_EPOXY */
+    }
     else
-        XRenderSetPictureFilter (dpy, screen_info->zoomBuffer, FilterNearest, NULL, 0);
-
-    XRenderSetPictureTransform (dpy, screen_info->zoomBuffer, &screen_info->transform);
+    {
+        XRenderSetPictureFilter (myScreenGetXDisplay (screen_info),
+                                 screen_info->zoomBuffer,
+                                 FilterNearest, NULL, 0);
+#ifdef HAVE_EPOXY
+        screen_info->texture_filter = GL_NEAREST;
+#endif /* HAVE_EPOXY */
+    }
+    XRenderSetPictureTransform (myScreenGetXDisplay (screen_info),
+                                screen_info->zoomBuffer,
+                                &screen_info->transform);
 
     damage_screen (screen_info);
 }
@@ -2668,6 +3024,14 @@ zoom_timeout_cb (gpointer data)
     if (!screen_info->zoomed)
     {
         screen_info->zoom_timeout_id = 0;
+
+        if (screen_info->zoomBuffer)
+        {
+            XRenderFreePicture (myScreenGetXDisplay (screen_info),
+                                screen_info->zoomBuffer);
+            screen_info->zoomBuffer = None;
+        }
+
         return FALSE; /* stop calling this callback */
     }
 
@@ -3061,6 +3425,7 @@ compositorHandlePresentCompleteNotify (DisplayInfo *display_info, XPresentComple
         screen_info = (ScreenInfo *) list->data;
         if (screen_info->output == ev->window)
         {
+             DBG ("present completed, present pending cleared");
              screen_info->present_pending = FALSE;
              break;
         }
@@ -3602,9 +3967,9 @@ compositorInitDisplay (DisplayInfo *display_info)
 
 #ifdef HAVE_PRESENT_EXTENSION
     if (!XPresentQueryExtension (display_info->dpy,
-                            &display_info->present_opcode,
-                            &display_info->present_event_base,
-                            &display_info->present_error_base))
+                                 &display_info->present_opcode,
+                                 &display_info->present_event_base,
+                                 &display_info->present_error_base))
     {
         g_warning ("The display does not support the XPresent extension.");
         display_info->have_present = FALSE;
@@ -3780,18 +4145,34 @@ compositorManageScreen (ScreenInfo *screen_info)
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     TRACE ("Manual compositing enabled");
 
-#ifdef HAVE_EPOXY
-    screen_info->glx_context = None;
-    screen_info->glx_window = None;
-    vblank_init (screen_info);
-#endif /* HAVE_EPOXY */
-
 #ifdef HAVE_PRESENT_EXTENSION
-    screen_info->present_pending = FALSE;
-    XPresentSelectInput (display_info->dpy,
-                         screen_info->output,
-                         PresentCompleteNotifyMask);
+    /* Prefer present over glx if available (it's faster on my hardware) */
+    screen_info->use_present = display_info->have_present;
+    if (screen_info->use_present)
+    {
+        screen_info->present_pending = FALSE;
+        XPresentSelectInput (display_info->dpy,
+                             screen_info->output,
+                             PresentCompleteNotifyMask);
+    }
+#else /* HAVE_PRESENT_EXTENSION */
+    screen_info->use_present = FALSE;
 #endif /* HAVE_PRESENT_EXTENSION */
+
+#ifdef HAVE_EPOXY
+    screen_info->use_glx = !screen_info->use_present;
+    if (screen_info->use_glx)
+    {
+        screen_info->glx_context = None;
+        screen_info->glx_window = None;
+        screen_info->rootTexture = None;
+        screen_info->glx_drawable = None;
+        screen_info->texture_filter = GL_LINEAR;
+        screen_info->use_glx = init_glx (screen_info);
+    }
+#else /* HAVE_EPOXY */
+    screen_info->use_glx = FALSE;
+#endif /* HAVE_EPOXY */
 
     XFixesSelectCursorInput (display_info->dpy,
                              screen_info->xroot,
@@ -3853,6 +4234,25 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         screen_info->overlay = None;
     }
 #endif /* HAVE_OVERLAYS */
+
+#ifdef HAVE_EPOXY
+    if (screen_info->use_glx)
+    {
+        unbind_glx_texture (screen_info);
+    }
+
+    if (screen_info->glx_context)
+    {
+        glXDestroyContext (display_info->dpy, screen_info->glx_context);
+        screen_info->glx_context = None;
+    }
+
+    if (screen_info->glx_window)
+    {
+        glXDestroyWindow (display_info->dpy, screen_info->glx_window);
+        screen_info->glx_window = None;
+    }
+#endif /* HAVE_EPOXY */
 
     for (buffer = 0; buffer < 2; buffer++)
     {
@@ -3920,20 +4320,6 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         g_free (screen_info->gaussianMap);
         screen_info->gaussianMap = NULL;
     }
-
-#ifdef HAVE_EPOXY
-    if (screen_info->glx_context)
-    {
-        glXDestroyContext (display_info->dpy, screen_info->glx_context);
-        screen_info->glx_context = None;
-    }
-
-    if (screen_info->glx_window)
-    {
-        glXDestroyWindow (display_info->dpy, screen_info->glx_window);
-        screen_info->glx_window = None;
-    }
-#endif /* HAVE_EPOXY */
 
     screen_info->gaussianSize = -1;
     screen_info->wins_unredirected = 0;
@@ -4048,6 +4434,13 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
         screen_info->zoomBuffer = None;
     }
 
+#ifdef HAVE_EPOXY
+    if (screen_info->use_glx)
+    {
+        unbind_glx_texture (screen_info);
+    }
+#endif /* HAVE_EPOXY */
+
     for (buffer = 0; buffer < 2; buffer++)
     {
         if (screen_info->rootPixmap[buffer])
@@ -4061,6 +4454,7 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
             screen_info->rootBuffer[buffer] = None;
         }
     }
+
     damage_screen (screen_info);
 #endif /* HAVE_COMPOSITOR */
 }

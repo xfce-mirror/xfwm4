@@ -203,10 +203,24 @@ struct _ScreenInfo
     XTransform transform;
     gboolean zoomed;
     guint zoom_timeout_id;
+    gboolean use_glx;
+    gboolean use_present;
 
 #ifdef HAVE_EPOXY
     gboolean has_glx_sync_control;
     gboolean has_glx_video_sync;
+    gboolean has_texture_from_pixmap;
+    gboolean has_texture_rectangle;
+    gboolean has_texture_non_power_of_two;
+    gboolean texture_inverted;
+
+    GLuint rootTexture;
+    GLenum texture_format;
+    GLenum texture_target;
+    GLenum texture_type;
+    GLfloat texture_filter;
+    GLXDrawable glx_drawable;
+    GLXFBConfig glx_fbconfig;
     GLXContext glx_context;
     GLXWindow glx_window;
 #endif /* HAVE_EPOXY */
