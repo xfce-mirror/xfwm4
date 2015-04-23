@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-04-08 22:05+0000\n"
+"PO-Revision-Date: 2015-04-23 08:43+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -381,7 +381,7 @@ msgstr "Visi susiejimai bus atstatyti į jų numatytąsias reikšmes. Ar jūs ti
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "Praleisti langus, _kurie turi \"praleisti pranešimų gaviklį\"\nar \"praleisti užduočių juostą\" savybių rinkinį"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -524,7 +524,7 @@ msgstr "Rodyti _persidengiančius langus visame ekrane tiesiogiai"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr ""
+msgstr "Sinchronizuoti braižymą su tuščia _vertikalia vieta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
