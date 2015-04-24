@@ -1345,7 +1345,7 @@ unbind_glx_texture (ScreenInfo *screen_info)
 
     if (screen_info->rootTexture)
     {
-        glBindTexture (GL_TEXTURE_2D, None);
+        glBindTexture (screen_info->texture_type, None);
         glDeleteTextures (1, &screen_info->rootTexture);
         screen_info->rootTexture = None;
     }
@@ -1364,12 +1364,12 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
         glGenTextures(1, &screen_info->rootTexture);
     }
 
-    glBindTexture (GL_TEXTURE_2D, screen_info->rootTexture);
+    glBindTexture (screen_info->texture_type, screen_info->rootTexture);
 
     if (screen_info->glx_drawable == None)
     {
         screen_info->glx_drawable = create_glx_drawable (screen_info, pixmap);
-        glEnable(GL_TEXTURE_2D);
+        glEnable(screen_info->texture_type);
     }
     else
     {
@@ -1380,8 +1380,12 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
     glXBindTexImageEXT (myScreenGetXDisplay (screen_info),
                         screen_info->glx_drawable, GLX_FRONT_EXT, NULL);
 
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, screen_info->texture_filter);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, screen_info->texture_filter);
+    glTexParameterf(screen_info->texture_type,
+                    GL_TEXTURE_MIN_FILTER,
+                    screen_info->texture_filter);
+    glTexParameterf(screen_info->texture_type,
+                    GL_TEXTURE_MAG_FILTER,
+                    screen_info->texture_filter);
 }
 
 static void
