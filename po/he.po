@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-26 12:08+0000\n"
+"PO-Revision-Date: 2015-04-24 12:00+0000\n"
 "Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
 "Language-Team: Hebrew (http://www.transifex.com/projects/p/xfwm4/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -231,7 +231,7 @@ msgstr "שיהוי _טרם הרמת חלון ממוקד:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr "<b>הרם במיקוד</b>"
+msgstr "<b>הרמה בעת מיקוד</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
@@ -239,7 +239,7 @@ msgstr "הרם חלון בהקלקה _בתוך חלון יישום"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
-msgstr "<b>הרם בלחיצה</b>"
+msgstr "<b>הרמה בעת לחיצה</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
@@ -248,7 +248,7 @@ msgstr "_מיקוד"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
-msgstr "אל _מסגרת מרקע"
+msgstr "אל _מסגרות מסך"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
@@ -263,7 +263,7 @@ msgstr "מ_רחק:"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "<i>Small</i>"
-msgstr "<i>קטנה</i>"
+msgstr "<i>צר</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
@@ -288,7 +288,7 @@ msgstr "התנג_דות קצה:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>כרוך משטחי עבודה בהגעה אל קצה מרקע</b>"
+msgstr "<b>כריכת משטחי עבודה בהגעה לקצה מסך</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -300,7 +300,7 @@ msgstr "כאשר _משנים גודל"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
-msgstr "<b>הסתר תוכן של חלונות</b>"
+msgstr "<b>הסתרת תוכן של חלונות</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
@@ -446,7 +446,7 @@ msgstr "הסתר כותרת חלון כאשר מוגדל"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "_רצף חלונות אוטומטית בזמן הזזה לעבר קצה המרקע"
+msgstr "_רצף חלונות אוטומטית בזמן הזזה לעבר קצה המסך"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
@@ -505,7 +505,7 @@ msgstr "באופן שגרתי, מקם חלונות:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "At the c_enter of the screen"
-msgstr "במרכ_זו של המרקע"
+msgstr "במרכ_זו של המסך"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "U_nder the mouse pointer"
