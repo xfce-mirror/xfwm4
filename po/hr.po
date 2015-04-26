@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2015-03-18 17:44+0000\n"
+"PO-Revision-Date: 2015-04-26 09:07+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfwm4/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -987,7 +987,7 @@ msgstr "Ponovno pokreni"
 #: ../src/menu.c:412
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu nije uspio uhvatiti pokazivač\n\n"
+msgstr "%s: GtkMenu nije uspio uhvatiti pokazivač\n"
 
 #: ../src/settings.c:273
 #, c-format
