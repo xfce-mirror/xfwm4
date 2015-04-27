@@ -1995,20 +1995,19 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     }
 
     TRACE ("Copying data back to screen");
+    /* Set clipping back to the given region */
+    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer],
+                                0, 0, region);
     if (screen_info->use_glx)
     {
-        /* Set clipping back to the given region */
         if (screen_info->zoomed)
         {
-            paint_cursor (screen_info, region, screen_info->rootBuffer[buffer]);
+            paint_cursor (screen_info, region,
+                          screen_info->rootBuffer[buffer]);
         }
-        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer],
-                                    0, 0, region);
     }
     else
     {
-        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer],
-                                    0, 0, None);
         if (screen_info->zoomed)
         {
             paint_cursor (screen_info, region, paint_buffer);
