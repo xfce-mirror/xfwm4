@@ -2017,8 +2017,22 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         }
     }
 
+#ifdef HAVE_EPOXY
+    if (screen_info->use_glx) /* glx first if available */
+    {
+        XFlush (dpy);
+        if (vblank_enabled (screen_info))
+        {
+            wait_glx_vblank (screen_info);
+        }
+        bind_glx_texture (screen_info,
+                          screen_info->rootPixmap[buffer]);
+        redraw_glx_texture (screen_info);
+    }
+    else
+#endif /* HAVE_EPOXY */
 #ifdef HAVE_PRESENT_EXTENSION
-    if (screen_info->use_present) /* present first if available */
+    if (screen_info->use_present) /* otherwise present if available */
     {
         if (screen_info->zoomed)
         {
@@ -2033,20 +2047,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     }
     else
 #endif /* HAVE_PRESENT_EXTENSION */
-#ifdef HAVE_EPOXY
-    if (screen_info->use_glx) /* then glx if available */
-    {
-        XFlush (dpy);
-        if (vblank_enabled (screen_info))
-        {
-            wait_glx_vblank (screen_info);
-        }
-        bind_glx_texture (screen_info,
-                          screen_info->rootPixmap[buffer]);
-        redraw_glx_texture (screen_info);
-    }
-    else
-#endif /* HAVE_EPOXY */
     {
         if (screen_info->zoomed)
         {
@@ -4149,9 +4149,20 @@ compositorManageScreen (ScreenInfo *screen_info)
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     TRACE ("Manual compositing enabled");
 
+#ifdef HAVE_EPOXY
+    screen_info->glx_context = None;
+    screen_info->glx_window = None;
+    screen_info->rootTexture = None;
+    screen_info->glx_drawable = None;
+    screen_info->texture_filter = GL_LINEAR;
+    screen_info->use_glx = init_glx (screen_info);
+#else /* HAVE_EPOXY */
+    screen_info->use_glx = FALSE;
+#endif /* HAVE_EPOXY */
+
 #ifdef HAVE_PRESENT_EXTENSION
     /* Prefer present over glx if available (it's faster on my hardware) */
-    screen_info->use_present = display_info->have_present;
+    screen_info->use_present = display_info->have_present && !screen_info->use_glx;
     if (screen_info->use_present)
     {
         screen_info->present_pending = FALSE;
@@ -4162,21 +4173,6 @@ compositorManageScreen (ScreenInfo *screen_info)
 #else /* HAVE_PRESENT_EXTENSION */
     screen_info->use_present = FALSE;
 #endif /* HAVE_PRESENT_EXTENSION */
-
-#ifdef HAVE_EPOXY
-    screen_info->use_glx = !screen_info->use_present;
-    if (screen_info->use_glx)
-    {
-        screen_info->glx_context = None;
-        screen_info->glx_window = None;
-        screen_info->rootTexture = None;
-        screen_info->glx_drawable = None;
-        screen_info->texture_filter = GL_LINEAR;
-        screen_info->use_glx = init_glx (screen_info);
-    }
-#else /* HAVE_EPOXY */
-    screen_info->use_glx = FALSE;
-#endif /* HAVE_EPOXY */
 
     XFixesSelectCursorInput (display_info->dpy,
                              screen_info->xroot,
