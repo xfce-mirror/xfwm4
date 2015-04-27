@@ -192,7 +192,7 @@ dnl XPresent support
 dnl
 AC_ARG_ENABLE([xpresent],
 AC_HELP_STRING([--enable-xpresent], [try to use the xpresent extension])
-AC_HELP_STRING([--disable-render], [don't try to use the xpresent extension]),
+AC_HELP_STRING([--disable-xpresent], [don't try to use the xpresent extension]),
   [], [enable_xpresent=yes])
 have_xpresent="no"
 XPRESENT_LIBS=
