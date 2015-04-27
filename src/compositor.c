@@ -2947,6 +2947,11 @@ update_cursor(ScreenInfo *screen_info)
     TRACE ("entering update_cursor");
 
     cursor = XFixesGetCursorImage (screen_info->display_info->dpy);
+    if (cursor == NULL)
+    {
+        g_warning ("Failed to retrieve cursor image!");
+        return;
+    }
 
     if (screen_info->cursorSerial != cursor->cursor_serial)
     {
