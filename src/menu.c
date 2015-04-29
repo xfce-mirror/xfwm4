@@ -48,18 +48,18 @@ static MenuItem menuitems[] = {
     {MENU_OP_MOVE,         NULL,                 N_("_Move")},
     {MENU_OP_RESIZE,       NULL,                 N_("_Resize")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_ABOVE,        NULL,                 N_("Always on Top")},
-    {MENU_OP_NORMAL,       NULL,                 N_("Same as Other Windows")},
-    {MENU_OP_BELOW,        NULL,                 N_("Always Below Other Windows")},
+    {MENU_OP_ABOVE,        NULL,                 N_("Always on _Top")},
+    {MENU_OP_NORMAL,       NULL,                 N_("_Same as Other Windows")},
+    {MENU_OP_BELOW,        NULL,                 N_("Always _Below Other Windows")},
     {MENU_OP_SHADE,        "xfce-wm-shade",      N_("Roll Window Up")},
     {MENU_OP_UNSHADE,      "xfce-wm-unshade",    N_("Roll Window Down")},
     {MENU_OP_FULLSCREEN,   "gtk-fullscreen",     N_("_Fullscreen")},
     {MENU_OP_UNFULLSCREEN, "gtk-fullscreen",     N_("Leave _Fullscreen")},
     {MENU_OP_CONTEXT_HELP, "gtk-help",           N_("Context _Help")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_STICK,        "xfce-wm-stick",      N_("Always on Visible Workspace")},
-    {MENU_OP_UNSTICK,      "xfce-wm-unstick",    N_("Only on This Workspace")},
-    {MENU_OP_WORKSPACES,   NULL,                 N_("Move to Another Workspace")},
+    {MENU_OP_STICK,        "xfce-wm-stick",      N_("Always on _Visible Workspace")},
+    {MENU_OP_UNSTICK,      "xfce-wm-unstick",    N_("Only _Visible on This Workspace")},
+    {MENU_OP_WORKSPACES,   NULL,                 N_("Move to Another _Workspace")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
     {MENU_OP_DELETE,       "xfce-wm-close",      N_("_Close")},
 #if 0
@@ -181,15 +181,34 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
 
     for (i = 0; i < nws; i++)
     {
-        if ((i < wsn_items) && wsn[i])
+        if ((i < wsn_items) && wsn[i] && *(wsn[i]))
         {
-            name = g_strdup_printf ("%i (%s)", i+ 1, wsn[i]);
+            if (((i+1) < 10) && (strchr(wsn[i],'_')==NULL))
+            {
+                /* In the 1st 10, there is a name, but it doesn't have _ */
+                name = g_strdup_printf ("_%i (%s)", i + 1, wsn[i]);
+                menuitem = gtk_menu_item_new_with_mnemonic (name);
+            }
+            else
+            {
+                name = g_strdup_printf ("%i (%s)", i + 1, wsn[i]);
+                menuitem = gtk_menu_item_new_with_label (name);
+            }
         }
         else
         {
-            name = g_strdup_printf ("%i", i + 1);
+	    /* No workspace name */
+            if ((i+1) < 10)
+            {
+		name = g_strdup_printf ("_%i", i + 1);
+		menuitem = gtk_menu_item_new_with_mnemonic (name);
+            }
+            else
+            {
+		name = g_strdup_printf ("%i", i + 1);
+		menuitem = gtk_menu_item_new_with_label (name);
+            }
         }
-        menuitem = gtk_menu_item_new_with_label (name);
         g_free (name);
         gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_WORKSPACES) && (i != ws));
         gtk_widget_show (menuitem);
