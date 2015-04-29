@@ -96,6 +96,17 @@ XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([DBUS], [dbus-1], [1.0.0])
 XDT_CHECK_PACKAGE([DBUS_GLIB], [dbus-glib-1], [0.72])
 
+AS_IF([test "x$USE_MAINTAINER_MODE" = "xyes"],
+[
+  AC_PATH_PROG([EXO_CSOURCE], [exo-csource])
+  AS_IF([test -z "$EXO_CSOURCE"],
+  [
+    echo '*** The program "exo-csource" is required to build when --enable-maintainer-mode'
+    echo '*** is specified.'
+    exit 1
+  ])
+])
+
 dnl
 dnl Sync to vblank support
 dnl
