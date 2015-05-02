@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-10 00:49+0000\n"
+"POT-Creation-Date: 2015-04-29 18:31+0200\n"
+"PO-Revision-Date: 2015-05-02 20:20+0000\n"
 "Last-Translator: André Miranda <andreldm1989@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfwm4/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -609,35 +609,35 @@ msgstr "_Margens"
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
 
-#: ../src/main.c:602
+#: ../src/main.c:617
 msgid "Fork to the background"
 msgstr "Bifurcar para o segundo plano"
 
-#: ../src/main.c:604
+#: ../src/main.c:619
 msgid "Fork to the background (not supported)"
 msgstr "Bifurcar para o segundo plano (não suportado)"
 
-#: ../src/main.c:607
+#: ../src/main.c:622
 msgid "Set the compositor mode"
 msgstr "Definir o modo compositor"
 
-#: ../src/main.c:609
+#: ../src/main.c:624
 msgid "Set the compositor mode (not supported)"
 msgstr "Definir o modo compositor (não suportado)"
 
-#: ../src/main.c:611
+#: ../src/main.c:626
 msgid "Replace the existing window manager"
 msgstr "Substituir o gerenciador de janelas existente"
 
-#: ../src/main.c:612
+#: ../src/main.c:627
 msgid "Print version information and exit"
 msgstr "Imprimir informação de versão e sair"
 
-#: ../src/main.c:623
+#: ../src/main.c:638
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:645
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Digite \"%s --help\" para as opções de uso."
@@ -672,16 +672,16 @@ msgstr "_Redimensionar"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Sempre no topo"
+msgid "Always on _Top"
+msgstr "Sempre no _topo"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "O mesmo que as outras janelas"
+msgid "_Same as Other Windows"
+msgstr "Como a_s outras janelas"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Sempre abaixo das outras janelas"
+msgid "Always _Below Other Windows"
+msgstr "Sempre a_baixo das outras janelas"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -705,15 +705,15 @@ msgstr "A_juda de contexto"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Sempre no espaço de trabalho visível"
+msgid "Always on _Visible Workspace"
+msgstr "Sempre no espaço de trabalho _visível"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Apenas neste espaço de trabalho"
+msgid "Only _Visible on This Workspace"
+msgstr "Somente _visível neste espaço de trabalho"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
+msgid "Move to Another _Workspace"
 msgstr "Mover para outro espaço de trabalho"
 
 #. --------------------------------------------------------
@@ -734,27 +734,27 @@ msgstr "_Sair"
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: o GtkMenu falhou ao capturar o ponteiro\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: não é possível alocar a cor %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: não é possível alocar a cor: o GValue para a cor não é do tipo STRING"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: não é possível analisar a cor %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: não é possível analisar a cor: o GValue para a cor não é do tipo STRING"
