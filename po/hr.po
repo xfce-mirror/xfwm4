@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2015-04-26 09:07+0000\n"
+"PO-Revision-Date: 2015-05-03 05:00+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfwm4/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -711,7 +711,7 @@ msgstr "Vrati orginalnu _veličinu maksimiziranog prozora pri micanju"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automa_tski poploči prozore pri micanju prema rubu zaslona"
+msgstr "Automatski _poploči prozore pri micanju prema rubu zaslona"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
@@ -790,11 +790,11 @@ msgstr "POkaži sjenu ispod _običnih prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
-msgstr "Pokaz_uj sjene ispod skočnih prozora"
+msgstr "Pokazuj sjene ispod skočnih prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show shadows under _dock windows"
-msgstr "Pokazuj sjene ispod usi_drenih prozora"
+msgstr "Pokazuj sjene ispod _usidrenih prozora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Opaci_ty of window decorations:"
@@ -822,7 +822,7 @@ msgstr "Neprozirnost prozora tijekom promije_ne veličine"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of popup window_s:"
-msgstr "Neprozirnost _skočnih prozora:"
+msgstr "Neprozirnost skočnih prozor_a:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "C_ompositor"
