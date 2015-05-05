@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-03-11 08:10+0000\n"
+"POT-Creation-Date: 2015-04-29 18:31+0200\n"
+"PO-Revision-Date: 2015-05-05 02:31+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -613,35 +613,35 @@ msgstr "边缘(_M)"
 msgid "%s (on %s)"
 msgstr "%s(于 %s)"
 
-#: ../src/main.c:602
+#: ../src/main.c:617
 msgid "Fork to the background"
 msgstr "转入后台"
 
-#: ../src/main.c:604
+#: ../src/main.c:619
 msgid "Fork to the background (not supported)"
 msgstr "转入后台(不支持)"
 
-#: ../src/main.c:607
+#: ../src/main.c:622
 msgid "Set the compositor mode"
 msgstr "设置合成器模式"
 
-#: ../src/main.c:609
+#: ../src/main.c:624
 msgid "Set the compositor mode (not supported)"
 msgstr "设置合成器模式(不支持)"
 
-#: ../src/main.c:611
+#: ../src/main.c:626
 msgid "Replace the existing window manager"
 msgstr "替换已存在的窗口管理器"
 
-#: ../src/main.c:612
+#: ../src/main.c:627
 msgid "Print version information and exit"
 msgstr "列印版本信息后退出"
 
-#: ../src/main.c:623
+#: ../src/main.c:638
 msgid "[ARGUMENTS...]"
 msgstr "[参数...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:645
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "输入 “%s --help” 获取用法。"
@@ -676,16 +676,16 @@ msgstr "调整大小(_R)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "总是最前"
+msgid "Always on _Top"
+msgstr "总是最前(_T)"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "与其它窗口相同"
+msgid "_Same as Other Windows"
+msgstr ""
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "总是在其它窗口下"
+msgid "Always _Below Other Windows"
+msgstr ""
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -709,16 +709,16 @@ msgstr "交互菜单帮助(_H)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "总是在可见工作区上"
+msgid "Always on _Visible Workspace"
+msgstr ""
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "仅在此工作区上"
+msgid "Only _Visible on This Workspace"
+msgstr ""
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "移至另一工作区"
+msgid "Move to Another _Workspace"
+msgstr ""
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -738,27 +738,27 @@ msgstr "退出(_Q) "
 msgid "Restart"
 msgstr "重启"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s：GtkMenu 无法获取光标\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s：未能分配颜色 %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s：未能分配颜色：颜色的 GValue 不是 STRING 类型"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s：未能解析颜色 %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s：未能解析颜色：颜色的 GValue 不是 STRING 类型"
