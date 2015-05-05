@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-03-09 21:23+0000\n"
+"POT-Creation-Date: 2015-04-29 18:31+0200\n"
+"PO-Revision-Date: 2015-05-05 07:48+0000\n"
 "Last-Translator: Harald Judt <h.judt@gmx.at>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -609,35 +609,35 @@ msgstr "_Ränder"
 msgid "%s (on %s)"
 msgstr "%s (auf %s)"
 
-#: ../src/main.c:602
+#: ../src/main.c:617
 msgid "Fork to the background"
 msgstr "Prozess in den Hintergrund abspalten"
 
-#: ../src/main.c:604
+#: ../src/main.c:619
 msgid "Fork to the background (not supported)"
 msgstr "Prozess in den Hintergrund abspalten (nicht unterstützt)"
 
-#: ../src/main.c:607
+#: ../src/main.c:622
 msgid "Set the compositor mode"
 msgstr "Kompositmodus einstellen"
 
-#: ../src/main.c:609
+#: ../src/main.c:624
 msgid "Set the compositor mode (not supported)"
 msgstr "Kompositmodus einstellen (nicht unterstützt)"
 
-#: ../src/main.c:611
+#: ../src/main.c:626
 msgid "Replace the existing window manager"
 msgstr "Existierende Fensterverwaltung ersetzen"
 
-#: ../src/main.c:612
+#: ../src/main.c:627
 msgid "Print version information and exit"
 msgstr "Versionsinformation anzeigen und beenden"
 
-#: ../src/main.c:623
+#: ../src/main.c:638
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTE …]"
 
-#: ../src/main.c:630
+#: ../src/main.c:645
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "»%s --help« für Benutzungsinformationen eingeben."
@@ -672,20 +672,20 @@ msgstr "_Größe ändern"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Immer oberhalb"
+msgid "Always on _Top"
+msgstr "_Immer oberhalb"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Wie bei anderen Fenstern"
+msgid "_Same as Other Windows"
+msgstr "G_leiche Ebene wie andere Fenster"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Immer unterhalb anderer Fenster"
+msgid "Always _Below Other Windows"
+msgstr "Immer _unterhalb anderer Fenster"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
-msgstr "Fenster einrollen"
+msgstr "Fenster ein_rollen"
 
 #: ../src/menu.c:55
 msgid "Roll Window Down"
@@ -705,16 +705,16 @@ msgstr "Kontext_hilfe"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Immer auf sichtbarer Arbeitsfläche"
+msgid "Always on _Visible Workspace"
+msgstr "Immer auf _sichtbarer Arbeitsfläche"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Nur auf dieser Arbeitsfläche"
+msgid "Only _Visible on This Workspace"
+msgstr "Nur _sichtbar auf dieser Arbeitsfläche"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Fenster auf eine andere Arbeitsfläche verschieben"
+msgid "Move to Another _Workspace"
+msgstr "Auf andere Ar_beitsfläche verschieben"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -734,27 +734,27 @@ msgstr "_Beenden"
 msgid "Restart"
 msgstr "Neustarten"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu konnte die Position des Mauszeigers nicht erhalten\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Farbe »%s« kann nicht zugewiesen werden\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Farbe kann nicht angelegt werden: GValue für die Farbe ist nicht vom Typ STRING"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Farbe »%s« kann nicht eingelesen werden\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Farbe kann nicht eingelesen werden: GValue der Farbe ist nicht vom Typ STRING"
