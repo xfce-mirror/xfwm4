@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-07 12:30+0000\n"
+"POT-Creation-Date: 2015-04-29 18:31+0200\n"
+"PO-Revision-Date: 2015-05-06 12:45+0000\n"
 "Last-Translator: Masato HASHIMOTO <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/xfwm4/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -604,35 +604,35 @@ msgstr "余白(_M)"
 msgid "%s (on %s)"
 msgstr "%s (ホスト %s)"
 
-#: ../src/main.c:602
+#: ../src/main.c:617
 msgid "Fork to the background"
 msgstr "バックグラウンドに fork する"
 
-#: ../src/main.c:604
+#: ../src/main.c:619
 msgid "Fork to the background (not supported)"
 msgstr "バックグラウンドに fork する (未サポート)"
 
-#: ../src/main.c:607
+#: ../src/main.c:622
 msgid "Set the compositor mode"
 msgstr "コンポジット処理モードを設定する"
 
-#: ../src/main.c:609
+#: ../src/main.c:624
 msgid "Set the compositor mode (not supported)"
 msgstr "コンポジット処理モードを設定する (未サポート)"
 
-#: ../src/main.c:611
+#: ../src/main.c:626
 msgid "Replace the existing window manager"
 msgstr "既存のウィンドウマネージャーを置き換える"
 
-#: ../src/main.c:612
+#: ../src/main.c:627
 msgid "Print version information and exit"
 msgstr "バージョン情報を表示して終了する"
 
-#: ../src/main.c:623
+#: ../src/main.c:638
 msgid "[ARGUMENTS...]"
 msgstr "[引数...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:645
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "\"%s --help\" と入力すると使用法が表示されます。"
@@ -667,16 +667,16 @@ msgstr "サイズ変更(_R)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "常に最前面へ"
+msgid "Always on _Top"
+msgstr "常に最前面へ(_T)"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "元に戻す"
+msgid "_Same as Other Windows"
+msgstr "元に戻す(_S)"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "常に最後面へ"
+msgid "Always _Below Other Windows"
+msgstr "常に最後面へ(_B)"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -700,16 +700,16 @@ msgstr "コンテキストヘルプ(_H)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "常に表示中のワークスペースに置く"
+msgid "Always on _Visible Workspace"
+msgstr "常に表示中のワークスペースに置く(_V)"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "元に戻す"
+msgid "Only _Visible on This Workspace"
+msgstr "元に戻す(_V)"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "他のワークスペースへ移動"
+msgid "Move to Another _Workspace"
+msgstr "他のワークスペースへ移動(_W)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -729,27 +729,27 @@ msgstr "終了(_Q)"
 msgid "Restart"
 msgstr "再起動"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインターを取得できませんでした\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: 色 %s を割り当てられません\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: 色を割り当てられません: 色の GValue が STRING 型ではありません"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 色 %s を解析できません\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: 色を解析できません: 色の GValue が STRING 型ではありません"
