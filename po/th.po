@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-01 15:12+0000\n"
+"POT-Creation-Date: 2015-04-29 18:31+0200\n"
+"PO-Revision-Date: 2015-05-12 04:48+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/projects/p/xfwm4/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -604,35 +604,35 @@ msgstr "แนว_ขอบ"
 msgid "%s (on %s)"
 msgstr "%s (ที่เครื่อง %s)"
 
-#: ../src/main.c:602
+#: ../src/main.c:617
 msgid "Fork to the background"
 msgstr "แตกโพรเซสไปทำงานเบื้องหลัง"
 
-#: ../src/main.c:604
+#: ../src/main.c:619
 msgid "Fork to the background (not supported)"
 msgstr "แตกโพรเซสไปทำงานเบื้องหลัง (ไม่รองรับ)"
 
-#: ../src/main.c:607
+#: ../src/main.c:622
 msgid "Set the compositor mode"
 msgstr "กำหนดโหมด composite"
 
-#: ../src/main.c:609
+#: ../src/main.c:624
 msgid "Set the compositor mode (not supported)"
 msgstr "กำหนดโหมด composite (ไม่รองรับ)"
 
-#: ../src/main.c:611
+#: ../src/main.c:626
 msgid "Replace the existing window manager"
 msgstr "แทนที่โปรแกรมจัดการหน้าต่างเดิมที่ทำงานอยู่"
 
-#: ../src/main.c:612
+#: ../src/main.c:627
 msgid "Print version information and exit"
 msgstr "แสดงข้อมูลรุ่นแล้วจบโปรแกรม"
 
-#: ../src/main.c:623
+#: ../src/main.c:638
 msgid "[ARGUMENTS...]"
 msgstr "[อาร์กิวเมนต์...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:645
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "สั่ง \"%s --help\" เพื่อดูวิธีใช้"
@@ -667,16 +667,16 @@ msgstr "_ปรับขนาด"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "อยู่บนสุด"
+msgid "Always on _Top"
+msgstr "อยู่_บนสุด"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "อยู่ระดับเดียวกับหน้าต่างอื่น"
+msgid "_Same as Other Windows"
+msgstr "อยู่_ระดับเดียวกับหน้าต่างอื่น"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "อยู่ล่างสุด"
+msgid "Always _Below Other Windows"
+msgstr "อยู่_ล่างสุด"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -700,16 +700,16 @@ msgstr "_วิธีใช้ตามบริบท"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "แสดงบนพื้นที่ทำงานเสมอ"
+msgid "Always on _Visible Workspace"
+msgstr "แสดงบนพื้นที่ทำงานเ_สมอ"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "แสดงบนพื้นที่ทำงานนี้เท่านั้น"
+msgid "Only _Visible on This Workspace"
+msgstr "แสดงบนพื้นที่ทำงาน_นี้เท่านั้น"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "ย้ายไปพื้นที่ทำงานอื่น"
+msgid "Move to Another _Workspace"
+msgstr "ย้ายไปพื้นที่ทำงานอื่_น"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -729,27 +729,27 @@ msgstr "_ออก"
 msgid "Restart"
 msgstr "เริ่มทำงานใหม่"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu ยึดตัวชี้เมาส์ไม่สำเร็จ\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: ไม่สามารถจองหน่วยความจำสำหรับสี %s ได้\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: ไม่สามารถจองหน่วยความจำสำหรับสี: GValue สำหรับสีไม่ได้เป็นชนิด STRING"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: ไม่สามารถแจงสี %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: ไม่สามารถแจงสี: GValue สำหรับสีไม่ได้เป็นชนิด STRING"
