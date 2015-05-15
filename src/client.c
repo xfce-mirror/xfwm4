@@ -80,7 +80,6 @@
     PropertyChangeMask
 
 #define CLIENT_EVENT_MASK \
-    SubstructureNotifyMask|\
     StructureNotifyMask|\
     FocusChangeMask|\
     PropertyChangeMask
