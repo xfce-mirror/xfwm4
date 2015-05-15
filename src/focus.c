@@ -159,8 +159,13 @@ clientFocusNew(Client * c)
     {
         give_focus = FALSE;
     }
-    else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME) && (c->user_time == (guint32) 0))
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_USER_TIME) && (c->user_time == (guint32) 0))
     {
+        /*
+         *  _NET_WM_USER_TIME definition from http://standards.freedesktop.org/wm-spec
+         * [...] "The special value of zero on a newly mapped window can be used to
+         * request that the window not be initially focused when it is mapped."
+         */
         TRACE ("Given startup time is nil, not focusing \"%s\"", c->name);
         give_focus = FALSE;
         prevented = FALSE;
