@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-29 18:31+0200\n"
-"PO-Revision-Date: 2015-05-16 17:54+0000\n"
+"PO-Revision-Date: 2015-05-17 11:24+0000\n"
 "Last-Translator: Sergey Alyoshin <alyoshin.s@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/xfwm4/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Данное окно занято и не отвечает.\nХотите принудительно завершить работу приложения?"
+msgstr "Данное окно занято и не отвечает.\nЗавершить работу приложения принудительно?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -47,7 +47,7 @@ msgstr "Отсутствует"
 
 #: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
-msgstr "Сокет менеджера настроек"
+msgstr "Сокет менеджера сеансов"
 
 #: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
