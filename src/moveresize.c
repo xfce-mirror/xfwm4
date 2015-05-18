@@ -618,11 +618,19 @@ static eventFilterStatus
 clientButtonReleaseFilter (XEvent * xevent, gpointer data)
 {
     MoveResizeData *passdata = (MoveResizeData *) data;
+    ScreenInfo *screen_info;
+    Client *c;
+
+    c = passdata->c;
+    screen_info = c->screen_info;
 
     TRACE ("entering clientButtonReleaseFilter");
 
-    if ((xevent->type == ButtonRelease) &&
-        (xevent->xbutton.button == passdata->button))
+    if ((xevent->type == ButtonRelease &&
+         (passdata->button == AnyButton ||
+          passdata->button == xevent->xbutton.button)) ||
+        (xevent->type == KeyPress &&
+         xevent->xkey.keycode == screen_info->params->keys[KEY_CANCEL].keycode))
     {
         gtk_main_quit ();
         return EVENT_FILTER_STOP;
@@ -986,7 +994,9 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     else if (xevent->type == ButtonRelease)
     {
         moving = FALSE;
-        passdata->released = passdata->use_keys || (xevent->xbutton.button == passdata->button);
+        passdata->released = (passdata->use_keys ||
+                              passdata->button == AnyButton ||
+                              passdata->button == xevent->xbutton.button);
     }
     else if (xevent->type == MotionNotify)
     {
@@ -1175,7 +1185,7 @@ clientMove (Client * c, XEvent * ev)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.released = FALSE;
-    passdata.button = 0;
+    passdata.button = AnyButton;
     passdata.is_transient = clientIsValidTransientOrModal (c);
     passdata.move_resized = FALSE;
     passdata.wireframe = NULL;
@@ -1287,7 +1297,7 @@ clientMove (Client * c, XEvent * ev)
     }
     clientConfigure (c, &wc, changes, passdata.configure_flags);
 
-    if (!passdata.released)
+    if (passdata.button != AnyButton && !passdata.released)
     {
         /* If this is a drag-move, wait for the button to be released.
          * If we don't, we might get release events in the wrong place.
@@ -1638,7 +1648,9 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     else if (xevent->type == ButtonRelease)
     {
         resizing = FALSE;
-        passdata->released = (passdata->use_keys || (xevent->xbutton.button == passdata->button));
+        passdata->released = (passdata->use_keys ||
+                              passdata->button == AnyButton ||
+                              passdata->button == xevent->xbutton.button);
     }
     else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
     {
@@ -1715,7 +1727,7 @@ clientResize (Client * c, int handle, XEvent * ev)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.released = FALSE;
-    passdata.button = 0;
+    passdata.button = AnyButton;
     passdata.handle = handle;
     passdata.wireframe = NULL;
     w_orig = c->width;
@@ -1819,7 +1831,7 @@ clientResize (Client * c, int handle, XEvent * ev)
     }
     clientReconfigure (c, NO_CFG_FLAG);
 
-    if (!passdata.released)
+    if (passdata.button != AnyButton && !passdata.released)
     {
         /* If this is a drag-resize, wait for the button to be released.
          * If we don't, we might get release events in the wrong place.
