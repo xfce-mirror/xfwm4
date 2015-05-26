@@ -5,6 +5,7 @@
 # Translators:
 # Erçin EKER <erc.caldera@gmx.net>, 2003
 # erenturkay <turkay.eren@gmail.com>, 2007
+# erenturkay <turkay.eren@gmail.com>, 2007
 # Gökmen Görgen <gkmngrgn@gmail.com>, 2008
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2015
 # Necdet Yücel <necdetyucel@gmail.com>, 2014
@@ -13,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-17 12:14+0000\n"
-"Last-Translator: Natavan Mirzayeva <mirzayevanatavan@gmail.com>\n"
+"POT-Creation-Date: 2015-04-29 18:31+0200\n"
+"PO-Revision-Date: 2015-05-26 09:41+0000\n"
+"Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfwm4/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -531,7 +532,7 @@ msgstr "_Dikey boşluk çizimine eşitle"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "Döndürürken simgeler yerine pencerelerin ön izlemesini göster"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
@@ -608,35 +609,35 @@ msgstr "_Boşluklar"
 msgid "%s (on %s)"
 msgstr "%s (%s üzerinde)"
 
-#: ../src/main.c:602
+#: ../src/main.c:617
 msgid "Fork to the background"
 msgstr "Arka planda çalıştır"
 
-#: ../src/main.c:604
+#: ../src/main.c:619
 msgid "Fork to the background (not supported)"
 msgstr "Arka planda çalıştır (desteklenmiyor)"
 
-#: ../src/main.c:607
+#: ../src/main.c:622
 msgid "Set the compositor mode"
 msgstr "Compositor modunu ayarla"
 
-#: ../src/main.c:609
+#: ../src/main.c:624
 msgid "Set the compositor mode (not supported)"
 msgstr "Compositor modunu ayarla (desteklenmiyor)"
 
-#: ../src/main.c:611
+#: ../src/main.c:626
 msgid "Replace the existing window manager"
 msgstr "Var olan pencere yöneticisi ile değiştir"
 
-#: ../src/main.c:612
+#: ../src/main.c:627
 msgid "Print version information and exit"
 msgstr "Sürüm bilgisini göster ve çık."
 
-#: ../src/main.c:623
+#: ../src/main.c:638
 msgid "[ARGUMENTS...]"
 msgstr "[ARGÜMANLAR]"
 
-#: ../src/main.c:630
+#: ../src/main.c:645
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Kullanım bilgisi için \"%s --help\" yazın"
@@ -671,16 +672,16 @@ msgstr "Yeniden boyutlandı_r"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Her Zaman Üstte"
+msgid "Always on _Top"
+msgstr "Her Zaman Ü_stte"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Diğer Pencereler Gibi"
+msgid "_Same as Other Windows"
+msgstr "_Diğer Pencereler Gibi"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Her Zaman Diğer Pencerelerin Altında"
+msgid "Always _Below Other Windows"
+msgstr "Her _Zaman Diğer Pencerelerin Altında"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -704,16 +705,16 @@ msgstr "_Yardım İçeriği"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Her Zaman Görünür Çalışma Alanında"
+msgid "Always on _Visible Workspace"
+msgstr "Her Zaman _Görünür Çalışma Alanında"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Sadece Bu Çalışma Alanında"
+msgid "Only _Visible on This Workspace"
+msgstr "Sadece Bu Çalışma Alanında _Görünür"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Pencereyi Sonraki Çalışma Alanına Taşı"
+msgid "Move to Another _Workspace"
+msgstr "Başka Bir Çalışma Ala_nına Taşı"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -733,27 +734,27 @@ msgstr "_Çıkış"
 msgid "Restart"
 msgstr "Yeni_den Başlat"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Renk ayarlanamadı: GValue için renk bir STRING tipi değil"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Renk ayrıştırılamadı: GValue için renk bir STRING tipi değil"
