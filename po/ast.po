@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-22 23:58+0000\n"
+"POT-Creation-Date: 2015-04-29 18:31+0200\n"
+"PO-Revision-Date: 2015-06-09 16:27+0000\n"
 "Last-Translator: enolp <enolp@softastur.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -606,35 +606,35 @@ msgstr "_Márxenes"
 msgid "%s (on %s)"
 msgstr "%s (en %s)"
 
-#: ../src/main.c:602
+#: ../src/main.c:617
 msgid "Fork to the background"
 msgstr ""
 
-#: ../src/main.c:604
+#: ../src/main.c:619
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:607
+#: ../src/main.c:622
 msgid "Set the compositor mode"
 msgstr "Afitar el mou compositor"
 
-#: ../src/main.c:609
+#: ../src/main.c:624
 msgid "Set the compositor mode (not supported)"
 msgstr "Afitar el mou compositor (non sofitáu)"
 
-#: ../src/main.c:611
+#: ../src/main.c:626
 msgid "Replace the existing window manager"
 msgstr "Trocar el xestor de ventanes esistente"
 
-#: ../src/main.c:612
+#: ../src/main.c:627
 msgid "Print version information and exit"
 msgstr "Amuesa la información de la versión y cola"
 
-#: ../src/main.c:623
+#: ../src/main.c:638
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:645
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Escribi \"%s --help\" pal usu."
@@ -669,16 +669,16 @@ msgstr "_Redimensionar"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Siempre enriba"
+msgid "Always on _Top"
+msgstr "Siempres _enriba"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Igual qu'otres ventanes"
+msgid "_Same as Other Windows"
+msgstr "_Lo mesmo qu'otres ventanes"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Siempre per debaxo d'otres ventanes"
+msgid "Always _Below Other Windows"
+msgstr "Siempres _embaxo d'otres ventanes"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -702,16 +702,16 @@ msgstr "A_yuda contestual"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Siempre na estaya de trabayu visible"
+msgid "Always on _Visible Workspace"
+msgstr "Siempres nel espaciu de trabayu _visible"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Namái nesta estaya de trabayu"
+msgid "Only _Visible on This Workspace"
+msgstr "Namái _visible nesti espaciu de trabayu"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Mover a otra estaya de trabayu"
+msgid "Move to Another _Workspace"
+msgstr "Mover a otru espaciu de _trabayu"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -731,27 +731,27 @@ msgstr "_Colar"
 msgid "Restart"
 msgstr "Reaniciar"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar consiguir el punteru\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nun puede reservase'l color %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Nun puede reservase espaciu pal color: GValue pal color nun ye de triba STRING"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nun puede procesase'l color %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Nun puede procesase color: GValue pa color nun ye de triba STRING"
