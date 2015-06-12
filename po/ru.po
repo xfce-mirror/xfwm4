@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-29 18:31+0200\n"
-"PO-Revision-Date: 2015-05-17 11:24+0000\n"
+"PO-Revision-Date: 2015-06-12 18:46+0000\n"
 "Last-Translator: Sergey Alyoshin <alyoshin.s@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/xfwm4/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -119,7 +119,7 @@ msgstr "Рабочие места"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Настроить  поведение окон и комбинаций клавиш"
+msgstr "Настройка поведения окон и комбинаций клавиш"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
@@ -480,7 +480,7 @@ msgstr "_Доступность"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Переключать рабочие места с помощью прокручивания колёсика _мыши над рабочим столом"
+msgstr "_Переключать рабочие места прокручиванием колёсика мыши над рабочим столом"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
@@ -595,7 +595,7 @@ msgstr "Раскладка"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
-msgstr "Названия:"
+msgstr "Названия"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
