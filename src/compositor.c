@@ -179,6 +179,30 @@ find_cwindow_in_display (DisplayInfo *display_info, Window id)
 }
 
 static gboolean
+is_output (DisplayInfo *display_info, Window id)
+{
+    GSList *list;
+
+    g_return_val_if_fail (id != None, FALSE);
+    g_return_val_if_fail (display_info != NULL, FALSE);
+    TRACE ("entering is_output");
+
+    for (list = display_info->screens; list; list = g_slist_next (list))
+    {
+        ScreenInfo *screen_info = (ScreenInfo *) list->data;
+#if HAVE_OVERLAYS
+        if (id == screen_info->output || id == screen_info->overlay)
+#else
+        if (id == screen_info->output)
+#endif
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+static gboolean
 is_shaped (DisplayInfo *display_info, Window id)
 {
     int xws, yws, xbs, ybs;
@@ -891,18 +915,11 @@ root_tile (ScreenInfo *screen_info)
 static Pixmap
 create_root_pixmap (ScreenInfo *screen_info)
 {
-    Pixmap pixmap;
-    gint depth;
-
-    depth = DefaultDepth (myScreenGetXDisplay (screen_info),
-                          screen_info->screen);
-
-    pixmap = XCreatePixmap (myScreenGetXDisplay (screen_info),
-                            screen_info->xroot,
-                            screen_info->width,
-                            screen_info->height, depth);
-
-    return pixmap;
+    return XCreatePixmap (myScreenGetXDisplay (screen_info),
+                          screen_info->xroot,
+                          screen_info->width,
+                          screen_info->height,
+                          screen_info->depth);
 }
 
 static Picture
@@ -987,6 +1004,42 @@ cursor_to_picture (ScreenInfo *screen_info, XFixesCursorImage *cursor)
 
 #ifdef HAVE_EPOXY
 static gboolean
+check_gl_error (void)
+{
+    GLenum error;
+    gboolean clean = TRUE;
+
+     error = glGetError();
+     while (error != GL_NO_ERROR);
+     {
+        clean = FALSE;
+        switch (error)
+        {
+            case GL_INVALID_ENUM:
+                g_warning ("GL error: Invalid enum");
+                break;
+            case GL_INVALID_VALUE:
+                g_warning ("GL error: Invalid value");
+                break;
+            case GL_INVALID_OPERATION:
+                g_warning ("GL error: Invalid operation");
+                break;
+            case GL_INVALID_FRAMEBUFFER_OPERATION:
+                g_warning ("GL error: Invalid frame buffer operation");
+                break;
+            case GL_OUT_OF_MEMORY:
+                g_warning ("GL error: Out of memory");
+                break;
+            default:
+                break;
+        }
+        error = glGetError();
+    }
+
+    return clean;
+}
+
+static gboolean
 vblank_enabled (ScreenInfo *screen_info)
 {
     return (screen_info->params->sync_to_vblank &&
@@ -1068,9 +1121,8 @@ choose_glx_settings (ScreenInfo *screen_info)
         GLX_DRAWABLE_TYPE, GLX_PIXMAP_BIT | GLX_WINDOW_BIT,
         GLX_X_RENDERABLE,  True,
         GLX_DOUBLEBUFFER,  True,
-        GLX_CONFIG_CAVEAT, GLX_NONE,
+        GLX_CONFIG_CAVEAT, GLX_DONT_CARE,
         GLX_DEPTH_SIZE,    1,
-        GLX_ALPHA_SIZE,    1,
         GLX_RED_SIZE,      1,
         GLX_GREEN_SIZE,    1,
         GLX_BLUE_SIZE,     1,
@@ -1080,8 +1132,8 @@ choose_glx_settings (ScreenInfo *screen_info)
     GLint texture_target = 0;
     GLint texture_format = 0;
     gboolean texture_inverted = FALSE;
-    int n_configs;
-    int i, value;
+    int n_configs, i;
+    int value, status;
     GLXFBConfig *configs, fb_config;
     XVisualInfo *visual_info;
     gboolean fb_match;
@@ -1103,10 +1155,12 @@ choose_glx_settings (ScreenInfo *screen_info)
 
     if (screen_info->has_texture_rectangle)
     {
+        DBG ("Using texture type GL_TEXTURE_RECTANGLE_ARB");
         screen_info->texture_type = GL_TEXTURE_RECTANGLE_ARB;
     }
     else
     {
+        DBG ("Using texture type GL_TEXTURE_2D");
         screen_info->texture_type = GL_TEXTURE_2D;
     }
 
@@ -1118,38 +1172,48 @@ choose_glx_settings (ScreenInfo *screen_info)
                                                 configs[i]);
         if (!visual_info)
         {
+            DBG ("%i/%i: no visual info, skipped", i + 1, n_configs);
             continue;
         }
 
         if (visual_info->visualid != xvisual_id)
         {
+            DBG ("%i/%i: xvisual id 0x%lx != 0x%lx, skipped", i + 1, n_configs, visual_info->visualid, xvisual_id);
             XFree (visual_info);
             continue;
         }
         XFree (visual_info);
 
-        glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
-                              configs[i],
-                              GLX_DRAWABLE_TYPE, &value);
+        status = glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                                       configs[i],
+                                       GLX_DRAWABLE_TYPE, &value);
 
-        if (!(value & GLX_PIXMAP_BIT))
+        if (status != Success || !(value & GLX_PIXMAP_BIT))
         {
+            DBG ("%i/%i: No GLX_PIXMAP_BIT, skipped", i + 1, n_configs);
             continue;
         }
 
-        glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
-                              configs[i],
-                              GLX_BIND_TO_TEXTURE_TARGETS_EXT,
-                              &value);
+        status = glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                                       configs[i],
+                                       GLX_BIND_TO_TEXTURE_TARGETS_EXT,
+                                       &value);
+        if (status != Success)
+        {
+            DBG ("%i/%i: No GLX_BIND_TO_TEXTURE_TARGETS_EXT, skipped", i + 1, n_configs);
+            continue;
+        }
 
         if (screen_info->texture_type == GL_TEXTURE_RECTANGLE_ARB)
         {
             if (value & GLX_TEXTURE_RECTANGLE_BIT_EXT)
             {
                 texture_target = GLX_TEXTURE_RECTANGLE_EXT;
+                DBG ("Using texture target GLX_TEXTURE_RECTANGLE_EXT");
             }
             else
             {
+                DBG ("%i/%i: No GLX_TEXTURE_RECTANGLE_BIT_EXT, skipped", i + 1, n_configs);
                 continue;
             }
         }
@@ -1158,37 +1222,57 @@ choose_glx_settings (ScreenInfo *screen_info)
             if (value & GLX_TEXTURE_2D_BIT_EXT)
             {
                 texture_target = GLX_TEXTURE_2D_EXT;
+                DBG ("Using texture target GLX_TEXTURE_2D_EXT");
             }
             else
             {
+                DBG ("%i/%i: No GLX_TEXTURE_2D_BIT_EXT, skipped", i + 1, n_configs);
                 continue;
             }
         }
         else
         {
+            DBG ("%i/%i: No GLX_TEXTURE_*_BIT_EXT, skipped", i + 1, n_configs);
             continue;
         }
 
-        glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
-                              configs[i],
-                              GLX_BIND_TO_TEXTURE_RGB_EXT,
-                              &value);
-        if (!value)
+        status = glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                                       configs[i],
+                                       GLX_BIND_TO_TEXTURE_RGBA_EXT,
+                                       &value);
+        if (status == Success && value == TRUE)
         {
-            continue;
+            texture_format = GLX_TEXTURE_FORMAT_RGBA_EXT;
+            DBG ("Using texture format GLX_TEXTURE_FORMAT_RGBA_EXT");
         }
-
-        texture_format = GLX_TEXTURE_FORMAT_RGB_EXT;
-
-        glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
-                              configs[i],
-                              GLX_Y_INVERTED_EXT,
-                              &value);
-        if (value == TRUE)
+        else
         {
-            texture_inverted = TRUE;
+            status = glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                                           configs[i],
+                                           GLX_BIND_TO_TEXTURE_RGB_EXT,
+                                           &value);
+            if (status == Success && value == TRUE)
+            {
+                DBG ("Using texture format GLX_TEXTURE_FORMAT_RGB_EXT");
+                texture_format = GLX_TEXTURE_FORMAT_RGB_EXT;
+            }
+            else
+            {
+                DBG ("%i/%i: No GLX_BIND_TO_TEXTURE_RGB/RGBA_EXT, skipped", i + 1, n_configs);
+                continue;
+            }
         }
-
+#if 0
+        status = glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                                       configs[i],
+                                       GLX_Y_INVERTED_EXT,
+                                       &value);
+        texture_inverted = (status == Success && value == True);
+        if (texture_inverted)
+        {
+            DBG ("Using texture attribute GLX_Y_INVERTED_EXT");
+        }
+#endif
         fb_config = configs[i];
         fb_match = TRUE;
         break;
@@ -1200,7 +1284,8 @@ choose_glx_settings (ScreenInfo *screen_info)
         g_warning ("Cannot find a matching visual for the frame buffer config.");
         return FALSE;
     }
-
+    DBG ("Selected texture target 0x%x format 0x%x (%s)", texture_target,
+         texture_format, texture_inverted ? "inverted" : "non inverted");
     screen_info->texture_target = texture_target;
     screen_info->texture_format = texture_format;
     screen_info->texture_inverted = texture_inverted;
@@ -1219,6 +1304,7 @@ init_glx (ScreenInfo *screen_info)
     TRACE ("entering init_glx");
 
     version = epoxy_glx_version (myScreenGetXDisplay (screen_info), screen_info->screen);
+    DBG ("Using GLX version %d", version);
     if (version < 13)
     {
         g_warning ("GLX version %d is too old, GLX support disabled.", version);
@@ -1247,14 +1333,29 @@ init_glx (ScreenInfo *screen_info)
                                                     GLX_RGBA_TYPE,
                                                     0,
                                                     TRUE);
+    if (!screen_info->glx_context)
+    {
+        g_warning ("Could not create GLX context.");
+        return FALSE;
+    }
 
     screen_info->glx_window = glXCreateWindow (myScreenGetXDisplay (screen_info),
                                                screen_info->glx_fbconfig,
                                                screen_info->output,
                                                NULL);
-    glXMakeCurrent (myScreenGetXDisplay (screen_info),
-                    screen_info->glx_window,
-                    screen_info->glx_context);
+    if (!screen_info->glx_window)
+    {
+        g_warning ("Could not create GLX window.");
+        return FALSE;
+    }
+
+    if (!glXMakeCurrent (myScreenGetXDisplay (screen_info),
+                         screen_info->glx_window,
+                         screen_info->glx_context))
+    {
+        g_warning ("Could not make OpenGL context current.");
+        return FALSE;
+    }
 
     if (!check_glx_renderer (screen_info))
     {
@@ -1262,14 +1363,21 @@ init_glx (ScreenInfo *screen_info)
 
         glXDestroyContext (myScreenGetXDisplay (screen_info), screen_info->glx_context);
         screen_info->glx_context = None;
-
-        glXDestroyWindow (myScreenGetXDisplay (screen_info), screen_info->glx_window);
-        screen_info->glx_window = None;
-
+        if (screen_info->glx_window)
+        {
+            glXDestroyWindow (myScreenGetXDisplay (screen_info), screen_info->glx_window);
+            screen_info->glx_window = None;
+        }
         return FALSE;
     }
 
+    glDisable(GL_DEPTH_TEST);
+    glDepthMask(GL_FALSE);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    glDisable(GL_BLEND);
+
     glLoadIdentity();
+    check_gl_error();
 
     return TRUE;
 }
@@ -1324,8 +1432,33 @@ create_glx_drawable (ScreenInfo *screen_info, Pixmap pixmap)
     glx_drawable = glXCreatePixmap (myScreenGetXDisplay (screen_info),
                                     screen_info->glx_fbconfig,
                                     pixmap, pixmap_attribs);
+    check_gl_error();
+    TRACE ("Created GLX pixmap 0x%lx from Pixmap 0x%lx", glx_drawable, pixmap);
 
     return glx_drawable;
+}
+
+static void
+enable_glx_texture (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info != NULL);
+
+    TRACE ("entering enable_glx_texture");
+
+    glBindTexture(screen_info->texture_type, screen_info->rootTexture);
+    glEnable(screen_info->texture_type);
+}
+
+
+static void
+disable_glx_texture (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info != NULL);
+
+    TRACE ("entering disable_glx_texture");
+
+    glBindTexture(screen_info->texture_type, None);
+    glDisable(screen_info->texture_type);
 }
 
 static void
@@ -1337,6 +1470,7 @@ unbind_glx_texture (ScreenInfo *screen_info)
 
     if (screen_info->glx_drawable)
     {
+        TRACE ("Unbinding GLX drawable 0x%lx", screen_info->glx_drawable);
         glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
                                screen_info->glx_drawable, GLX_FRONT_EXT);
         glXDestroyPixmap(myScreenGetXDisplay (screen_info), screen_info->glx_drawable);
@@ -1345,10 +1479,11 @@ unbind_glx_texture (ScreenInfo *screen_info)
 
     if (screen_info->rootTexture)
     {
-        glBindTexture (screen_info->texture_type, None);
+        disable_glx_texture (screen_info);
         glDeleteTextures (1, &screen_info->rootTexture);
         screen_info->rootTexture = None;
     }
+    check_gl_error();
 }
 
 static void
@@ -1362,30 +1497,26 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
     if (screen_info->rootTexture == None)
     {
         glGenTextures(1, &screen_info->rootTexture);
+        TRACE ("Generated texture 0x%x", screen_info->rootTexture);
     }
-
-    glBindTexture (screen_info->texture_type, screen_info->rootTexture);
-
     if (screen_info->glx_drawable == None)
     {
         screen_info->glx_drawable = create_glx_drawable (screen_info, pixmap);
-        glEnable(screen_info->texture_type);
-    }
-    else
-    {
-        glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
-                               screen_info->glx_drawable, GLX_FRONT_EXT);
     }
 
+    TRACE ("(Re)Binding GLX pixmap 0x%lx to texture 0x%x",
+           screen_info->glx_drawable, screen_info->rootTexture);
+    enable_glx_texture (screen_info);
     glXBindTexImageEXT (myScreenGetXDisplay (screen_info),
                         screen_info->glx_drawable, GLX_FRONT_EXT, NULL);
-
-    glTexParameterf(screen_info->texture_type,
+    glTexParameteri(screen_info->texture_type,
                     GL_TEXTURE_MIN_FILTER,
                     screen_info->texture_filter);
-    glTexParameterf(screen_info->texture_type,
+    glTexParameteri(screen_info->texture_type,
                     GL_TEXTURE_MAG_FILTER,
                     screen_info->texture_filter);
+
+    check_gl_error();
 }
 
 static void
@@ -1394,7 +1525,8 @@ redraw_glx_texture (ScreenInfo *screen_info)
     g_return_if_fail (screen_info != NULL);
 
     TRACE ("entering redraw_glx_texture");
-
+    TRACE ("(Re)Drawing GLX pixmap 0x%lx/texture 0x%x",
+           screen_info->glx_drawable, screen_info->rootTexture);
     glPushMatrix();
 
     if (screen_info->zoomed)
@@ -1434,6 +1566,15 @@ redraw_glx_texture (ScreenInfo *screen_info)
 
     glXSwapBuffers (myScreenGetXDisplay (screen_info),
                     screen_info->glx_window);
+
+    disable_glx_texture (screen_info);
+
+    TRACE ("Releasing bind GLX pixmap 0x%lx to texture 0x%x",
+           screen_info->glx_drawable, screen_info->rootTexture);
+    glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
+                           screen_info->glx_drawable, GLX_FRONT_EXT);
+
+    check_gl_error();
 }
 #endif /* HAVE_EPOXY */
 
@@ -2019,7 +2160,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx) /* glx first if available */
     {
-        XFlush (dpy);
+        glXWaitX ();
         if (vblank_enabled (screen_info))
         {
             wait_glx_vblank (screen_info);
@@ -2597,6 +2738,12 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     TRACE ("entering add_win: 0x%lx", id);
 
+    if (is_output (display_info, id))
+    {
+        TRACE ("Not adding output window 0x%lx", id);
+        return;
+    }
+
     new = find_cwindow_in_display (display_info, id);
     if (new)
     {
@@ -2660,11 +2807,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->shaped = is_shaped (display_info, id);
     new->viewable = (new->attr.map_state == IsViewable);
 
-    if ((new->attr.class != InputOnly)
-#if HAVE_OVERLAYS
-         && ((!display_info->have_overlays) || (id != screen_info->overlay))
-#endif
-         && (id != screen_info->output))
+    if (new->attr.class != InputOnly)
     {
         new->damage = XDamageCreate (display_info->dpy, id, XDamageReportNonEmpty);
     }
@@ -4058,6 +4201,44 @@ compositorManageScreen (ScreenInfo *screen_info)
 
     compositorSetCMSelection (screen_info, screen_info->xfwm4_win);
     display_info = screen_info->display_info;
+
+    screen_info->output = screen_info->xroot;
+#if HAVE_OVERLAYS
+    if (display_info->have_overlays)
+    {
+        screen_info->overlay = XCompositeGetOverlayWindow (display_info->dpy, screen_info->xroot);
+        if (screen_info->overlay != None)
+        {
+            XserverRegion region;
+            XSetWindowAttributes attributes;
+
+            XMapRaised (display_info->dpy, screen_info->overlay);
+
+            region = XFixesCreateRegion (display_info->dpy, NULL, 0);
+            XFixesSetWindowShapeRegion (display_info->dpy, screen_info->overlay,
+                                        ShapeBounding, 0, 0, 0);
+            XFixesSetWindowShapeRegion (display_info->dpy, screen_info->overlay,
+                                        ShapeInput, 0, 0, region);
+            XFixesDestroyRegion (display_info->dpy, region);
+
+            screen_info->root_overlay = XCreateWindow (display_info->dpy, screen_info->overlay,
+                                                       0, 0, screen_info->width, screen_info->height, 0, screen_info->depth,
+                                                       InputOutput, screen_info->visual, 0, &attributes);
+            XMapRaised (display_info->dpy, screen_info->root_overlay);
+
+            screen_info->output = screen_info->root_overlay;
+            DBG ("Overlay enabled (0x%lx -> 0x%lx)", screen_info->overlay, screen_info->root_overlay);
+        }
+        else
+        {
+            /* Something is wrong with overlay support */
+            DBG ("Cannot get root window overlay, overlay support disabled");
+            display_info->have_overlays = FALSE;
+        }
+    }
+#endif /* HAVE_OVERLAYS */
+    DBG ("Window used for output: 0x%lx (%s)", screen_info->output, display_info->have_overlays ? "overlay" : "root");
+
     XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
     screen_info->compositor_active = TRUE;
 
@@ -4077,36 +4258,6 @@ compositorManageScreen (ScreenInfo *screen_info)
         compositorUnmanageScreen (screen_info);
         return FALSE;
     }
-
-    screen_info->output = screen_info->xroot;
-#if HAVE_OVERLAYS
-    if (display_info->have_overlays)
-    {
-        screen_info->overlay = XCompositeGetOverlayWindow (display_info->dpy, screen_info->xroot);
-        if (screen_info->overlay != None)
-        {
-            XSetWindowAttributes attributes;
-
-            screen_info->root_overlay = XCreateWindow (display_info->dpy, screen_info->overlay,
-                                                       0, 0, screen_info->width, screen_info->height, 0, screen_info->depth,
-                                                       InputOutput, screen_info->visual, 0, &attributes);
-            XMapWindow (display_info->dpy, screen_info->root_overlay);
-            XRaiseWindow (display_info->dpy, screen_info->overlay);
-            XShapeCombineRectangles (display_info->dpy, screen_info->overlay,
-                                     ShapeInput, 0, 0, NULL, 0, ShapeSet, Unsorted);
-            XShapeCombineRectangles (display_info->dpy, screen_info->root_overlay,
-                                     ShapeInput, 0, 0, NULL, 0, ShapeSet, Unsorted);
-            screen_info->output = screen_info->root_overlay;
-            TRACE ("Overlay enabled");
-        }
-        else
-        {
-            /* Something is wrong with overlay support */
-            TRACE ("Cannot get root window overlay, overlay support disabled");
-            display_info->have_overlays = FALSE;
-        }
-    }
-#endif /* HAVE_OVERLAYS */
 
     pa.subwindow_mode = IncludeInferiors;
     screen_info->rootPicture = XRenderCreatePicture (display_info->dpy, screen_info->output,
