@@ -613,11 +613,7 @@ main (int argc, char **argv)
 #endif
     GOptionEntry option_entries[] =
     {
-#ifdef HAVE_DAEMON
-        { "daemon", '\0', 0, G_OPTION_ARG_NONE, &daemon_mode, N_("Fork to the background"), NULL },
-#else
         { "daemon", '\0', 0, G_OPTION_ARG_NONE, &daemon_mode, N_("Fork to the background (not supported)"), NULL },
-#endif
 #ifdef HAVE_COMPOSITOR
         { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK, compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
 #else
@@ -677,33 +673,6 @@ main (int argc, char **argv)
             break;
         case 0:
         case 1:
-            if (daemon_mode)
-            {
-#ifdef HAVE_DAEMON
-                if (daemon (TRUE, TRUE) < 0)
-                {
-                        g_warning ("Failed to enter daemon mode: %s", g_strerror(errno));
-                        exit(EXIT_FAILURE);
-                }
-#else /* !HAVE_DAEMON */
-                switch (fork ())
-                {
-                    case -1:
-                        g_warning ("Failed to create new process: %s", g_strerror(errno));
-                        exit (1);
-                        break;
-                    case 0:    /* child */
-#ifdef HAVE_SETSID
-                        /* detach from terminal session */
-                        (void)setsid();
-#endif /* !HAVE_SETSID */
-                        break;
-                    default:   /* parent */
-                        _exit (0);
-                        break;
-                }
-#endif /* !HAVE_DAEMON */
-            }
             /* enter GTK main loop */
             gtk_main ();
             break;
