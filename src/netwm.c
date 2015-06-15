@@ -594,8 +594,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    unsigned int button_mask;
-    int x_root, y_root, dx, dy, action, button;
+    int x_root, y_root, action, button;
     int corner;
     gboolean resize; /* true == resize, false == move */
     XEvent *event;
