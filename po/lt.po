@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-04-23 08:43+0000\n"
+"POT-Creation-Date: 2015-06-16 00:31+0200\n"
+"PO-Revision-Date: 2015-06-16 12:41+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -600,40 +600,36 @@ msgid "_Margins"
 msgstr "_Paraštės"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (ant %s)"
 
-#: ../src/main.c:602
-msgid "Fork to the background"
-msgstr "Prijungti prie fono"
-
-#: ../src/main.c:604
+#: ../src/main.c:616
 msgid "Fork to the background (not supported)"
 msgstr "Prijungti prie fono (nepalaikoma)"
 
-#: ../src/main.c:607
+#: ../src/main.c:618
 msgid "Set the compositor mode"
 msgstr "Nustatyti kompozicionavimo režimą"
 
-#: ../src/main.c:609
+#: ../src/main.c:620
 msgid "Set the compositor mode (not supported)"
 msgstr "Nustatyti kompozicionavimo režimą (nepalaikoma)"
 
-#: ../src/main.c:611
+#: ../src/main.c:622
 msgid "Replace the existing window manager"
 msgstr "Pakeisti dabartinę langų tvarkytuvę"
 
-#: ../src/main.c:612
+#: ../src/main.c:623
 msgid "Print version information and exit"
 msgstr "Parodyti versiją ir išeiti"
 
-#: ../src/main.c:623
+#: ../src/main.c:634
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTAI...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:641
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Naudojimui įrašykite „%s --help“."
@@ -668,16 +664,16 @@ msgstr "_Keisti dydį"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Visada viršuje"
+msgid "Always on _Top"
+msgstr "Visada _viršuje"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Taip pat kaip ir kituose languose"
+msgid "_Same as Other Windows"
+msgstr "_Taip pat kaip kiti langai"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Visada po kitais langais"
+msgid "Always _Below Other Windows"
+msgstr "Visada _po kitais langais"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -701,16 +697,16 @@ msgstr "Konteksto _pagalba"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Visada matomoje darbo srityje"
+msgid "Always on _Visible Workspace"
+msgstr "Visada _matomoje darbo srityje"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Tik šioje darbo srityje"
+msgid "Only _Visible on This Workspace"
+msgstr "Matoma tik šio_je darbo srityje"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Perkelti į kitą darbo sritį"
+msgid "Move to Another _Workspace"
+msgstr "Perkelti į _kitą darbo sritį"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -730,27 +726,27 @@ msgstr "_Baigti"
 msgid "Restart"
 msgstr "Perkrauti"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nesugebėjo paimti žymeklio\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nepavyko rasti spalvos %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Nepavyko rasti spalvos: spalvos GValue reikšmė nėra STRING tipo"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nepavyko apdoroti spalvos %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: nepavyko apdoroti spalvos: spalvos GValue reikšmė nėra STRING tipo"
