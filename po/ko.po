@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-08 11:40+0000\n"
+"POT-Creation-Date: 2015-06-16 00:31+0200\n"
+"PO-Revision-Date: 2015-06-16 17:36+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/projects/p/xfwm4/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -599,40 +599,36 @@ msgid "_Margins"
 msgstr "여백(_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (%s 에서)"
 
-#: ../src/main.c:602
-msgid "Fork to the background"
-msgstr "배경으로 쪼개기"
-
-#: ../src/main.c:604
+#: ../src/main.c:616
 msgid "Fork to the background (not supported)"
 msgstr "배경으로 쪼개기(지원하지 않음)"
 
-#: ../src/main.c:607
+#: ../src/main.c:618
 msgid "Set the compositor mode"
 msgstr "합성 처리 모드 설정"
 
-#: ../src/main.c:609
+#: ../src/main.c:620
 msgid "Set the compositor mode (not supported)"
 msgstr "합성 처리 모드 설정(지원하지 않음)"
 
-#: ../src/main.c:611
+#: ../src/main.c:622
 msgid "Replace the existing window manager"
 msgstr "기존 창 관리자 바꾸기"
 
-#: ../src/main.c:612
+#: ../src/main.c:623
 msgid "Print version information and exit"
 msgstr "버전 정보"
 
-#: ../src/main.c:623
+#: ../src/main.c:634
 msgid "[ARGUMENTS...]"
 msgstr "<인자…>"
 
-#: ../src/main.c:630
+#: ../src/main.c:641
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "사용법을 보려면 \"%s --help\"를 입력하십시오."
@@ -667,16 +663,16 @@ msgstr "크기 조절(_R)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "항상 위"
+msgid "Always on _Top"
+msgstr "항상 위(_T)"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "다른 창과 맞춤"
+msgid "_Same as Other Windows"
+msgstr "다른 창과 맞춤(_S)"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "항상 다른 창의 아래로"
+msgid "Always _Below Other Windows"
+msgstr "항상 다른 창의 아래로(_B)"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -700,16 +696,16 @@ msgstr "상황 도움말(_H)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "항상 보이는 작업 공간으로"
+msgid "Always on _Visible Workspace"
+msgstr "항상 보이는 작업공간으로(_V)"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "이 작업 공간에만"
+msgid "Only _Visible on This Workspace"
+msgstr "항상 보이는 작업공간에만(_V)"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "다른 작업 공간으로 이동"
+msgid "Move to Another _Workspace"
+msgstr "다른 작업공간으로 이동(_W)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -729,27 +725,27 @@ msgstr "끝내기(_Q)"
 msgid "Restart"
 msgstr "다시 시작"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu가 포인터를 얻지 못했습니다.\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: %s색을 할당하지 못했습니다.\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: 색을 할당하지 못했습니다: 색의 GValue 형식이 문자열이 아닙니다."
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: %s색을 해석하지 못했습니다.\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: 색을 해석하지 못했습니다: 색의 GValue 형식이 문자열이 아닙니다."
