@@ -58,11 +58,6 @@ wireframeDrawXlib (WireFrame *wireframe, int width, int height)
     XMoveResizeWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow,
                        wireframe->x, wireframe->y, width, height);
 
-    if ((width == wireframe->width) && (height == wireframe->height))
-    {
-        /* Moving only */
-        return;
-    }
     wireframe->width = width;
     wireframe->height = height;
 
