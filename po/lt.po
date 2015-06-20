@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-06-16 12:41+0000\n"
+"PO-Revision-Date: 2015-06-20 18:09+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -196,7 +196,7 @@ msgstr "Dėmesys _sutelkiamas pagal pelės poziciją"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Delay before window receives focus:"
-msgstr "_Užlaikyti prieš iškeliant fokusuotą langą:"
+msgstr "_Užlaikymas, prieš langui įgijant fokusą:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
@@ -226,7 +226,7 @@ msgstr "Automatiškai iškelti _langus kai jie dėmesio centre"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr "_Užlaikyti prieš iškeliant fokusuotą langą:"
+msgstr "_Užlaikymas, prieš iškeliant fokusuotą langą:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
@@ -287,7 +287,7 @@ msgstr "_Kraštų atsparumas :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Laužyti darbo sritis, kai žymeklis pasiekia ekrano kraštą</b>"
+msgstr "<b>Perjunginėti darbo sritis, pasiekus ekrano kraštą</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -469,7 +469,7 @@ msgstr "_Prieinamumas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Perjungti darbo _sritims, naudoti pelės ratuką darbalaukyje"
+msgstr "Darbo _sričių perjungimui naudoti pelės ratuką darbalaukyje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
@@ -479,11 +479,11 @@ msgstr "_Prisiminti ir atkurti ankstesnę darbo sritį\nperjungiant klaviatūros
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Laužyti darbo sritis, priklausomai nuo tikro darbalaukio _išdėstymo"
+msgstr "Perjunginėti darbo sritis, priklausomai nuo esamo darbalaukio _išdėstymo"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Laužyti darbo sritis, kai pasiekiama pirma a_rba paskutinė darbo sritis"
+msgstr "Perjunginėti darbo sritis, kai pasiekiama pirma a_rba paskutinė darbo sritis"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
