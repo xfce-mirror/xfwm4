@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-04 15:36+0000\n"
+"POT-Creation-Date: 2015-06-16 00:31+0200\n"
+"PO-Revision-Date: 2015-06-27 08:50+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/xfwm4/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -602,40 +602,36 @@ msgid "_Margins"
 msgstr "O_kraje"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/main.c:602
-msgid "Fork to the background"
-msgstr "Přesunou do pozadí"
-
-#: ../src/main.c:604
+#: ../src/main.c:616
 msgid "Fork to the background (not supported)"
 msgstr "Přesunou do pozadí (nepodporováno)"
 
-#: ../src/main.c:607
+#: ../src/main.c:618
 msgid "Set the compositor mode"
 msgstr "Nastavit režim kompozitoru"
 
-#: ../src/main.c:609
+#: ../src/main.c:620
 msgid "Set the compositor mode (not supported)"
 msgstr "Nastavit režim kompozitoru (nepodporováno)"
 
-#: ../src/main.c:611
+#: ../src/main.c:622
 msgid "Replace the existing window manager"
 msgstr "Nahradit stávající správce oken"
 
-#: ../src/main.c:612
+#: ../src/main.c:623
 msgid "Print version information and exit"
 msgstr "Zobrazí informace o verzi a ukončí se"
 
-#: ../src/main.c:623
+#: ../src/main.c:634
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRY...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:641
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informace o použití získáte příkazem \"%s --help\" ."
@@ -670,16 +666,16 @@ msgstr "Změnit _velikost"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Vždy nahoře"
+msgid "Always on _Top"
+msgstr "Vždy _nahoře"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Stejně jako ostatní okna"
+msgid "_Same as Other Windows"
+msgstr "_Stejně jako ostatní okna"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Vždy pod ostatními okny"
+msgid "Always _Below Other Windows"
+msgstr "Vždy _pod ostatními okny"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -703,16 +699,16 @@ msgstr "Kontextová _nápověda"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Vždy na viditelné pracovní ploše"
+msgid "Always on _Visible Workspace"
+msgstr "Vždy na _viditelné pracovní ploše"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Pouze na této pracovní ploše"
+msgid "Only _Visible on This Workspace"
+msgstr "Vi_ditelné pouze na této pracovní ploše"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Přesunout na jinou pracovní plochu"
+msgid "Move to Another _Workspace"
+msgstr "Přesu_nout na jinou pracovní plochu"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -732,27 +728,27 @@ msgstr "_Ukončit"
 msgid "Restart"
 msgstr "Restart"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponentě GtkMenu se nepodařilo uchopit ukazatel\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nelze přidělit barvu %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Nelze přidělit barvu: Hodnota GValue pro barvu není typu ŘETĚZEC"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nelze zpracovat barvu %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Nelze zpracovat barvu: Hodnota GValue pro barvu není typu ŘETĚZEC"
