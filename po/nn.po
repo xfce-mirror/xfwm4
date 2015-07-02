@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-06-22 07:56+0000\n"
+"PO-Revision-Date: 2015-07-02 09:17+0000\n"
 "Last-Translator: Kevin Brubeck Unhammer <unhammer+dill@mm.st>\n"
 "Language-Team: Norwegian Nynorsk (http://www.transifex.com/projects/p/xfwm4/language/nn/)\n"
 "MIME-Version: 1.0\n"
@@ -249,7 +249,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
-msgstr ""
+msgstr "Til andre _vindauge"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
@@ -663,11 +663,11 @@ msgstr "End_ra storleik"
 #. --------------------------------------------------------
 #: ../src/menu.c:51
 msgid "Always on _Top"
-msgstr ""
+msgstr "Alltid _øvst"
 
 #: ../src/menu.c:52
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "_Same som andre vindauge"
 
 #: ../src/menu.c:53
 msgid "Always _Below Other Windows"
