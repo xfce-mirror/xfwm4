@@ -12,10 +12,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 18:31+0200\n"
-"PO-Revision-Date: 2015-06-03 16:08+0000\n"
+"POT-Creation-Date: 2015-06-16 00:31+0200\n"
+"PO-Revision-Date: 2015-07-19 17:36+0000\n"
 "Last-Translator: Påvel Nicklasson <pavelnicklasson@bahnhof.se>\n"
-"Language-Team: Swedish (http://www.transifex.com/projects/p/xfwm4/language/sv/)\n"
+"Language-Team: Swedish (http://www.transifex.com/p/xfwm4/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -146,7 +146,7 @@ msgstr "Meny"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Stick"
-msgstr "Klistra fast"
+msgstr "Fäst"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Shade"
@@ -366,7 +366,7 @@ msgstr "Misslyckades med att initiera xfconf. Anledning: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
-msgstr "Kunde inte skapa inställningsdialogen."
+msgstr "Det gick inte att skapa inställningsdialogen."
 
 #: ../settings-dialogs/xfwm4-settings.c:1901
 #: ../settings-dialogs/xfwm4-settings.c:1902
@@ -526,7 +526,7 @@ msgstr "Visa överliggande _fönster direkt i fullskärmsläge"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr "Synkronisera ritning till det _vertikala tomrummet"
+msgstr "Synkronisera ritning till _vertical blank"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
@@ -602,40 +602,36 @@ msgid "_Margins"
 msgstr "_Marginaler"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/main.c:617
-msgid "Fork to the background"
-msgstr "Kör i bakgrunden"
-
-#: ../src/main.c:619
+#: ../src/main.c:616
 msgid "Fork to the background (not supported)"
 msgstr "Kör i bakgrunden (stöds inte)"
 
-#: ../src/main.c:622
+#: ../src/main.c:618
 msgid "Set the compositor mode"
 msgstr "Ställ in compositor-läge"
 
-#: ../src/main.c:624
+#: ../src/main.c:620
 msgid "Set the compositor mode (not supported)"
 msgstr "Ställ in compositor-läge (stöds inte)"
 
-#: ../src/main.c:626
+#: ../src/main.c:622
 msgid "Replace the existing window manager"
 msgstr "Ersätt befintlig fönsterhanterare"
 
-#: ../src/main.c:627
+#: ../src/main.c:623
 msgid "Print version information and exit"
 msgstr "Visa versionsinformation och avsluta"
 
-#: ../src/main.c:638
+#: ../src/main.c:634
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENT...]"
 
-#: ../src/main.c:645
+#: ../src/main.c:641
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skriv \"%s --help\" för användningsinformation."
@@ -740,7 +736,7 @@ msgstr "%s: GtkMenu misslyckades med att fånga pekaren\n"
 #: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Kunde inte allokera färgen %s\n"
+msgstr "%s: Kan inte allokera färgen %s\n"
 
 #: ../src/settings.c:278
 #, c-format
@@ -750,7 +746,7 @@ msgstr "%s: Kan inte allokera färg: GValue för färgen är inte av typen STRIN
 #: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Kunde inte tolka färgen %s\n"
+msgstr "%s: Kan inte tolka färgen %s\n"
 
 #: ../src/settings.c:287
 #, c-format
