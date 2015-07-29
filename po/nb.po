@@ -3,7 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Allan Nordhøy <comradekingu@gmail.com>, 2014-2015
+# Allan Nordhøy <epost@anotheragency.no>, 2014-2015
+# Allan Nordhøy <epost@anotheragency.no>, 2015
 # Eskild Hustvedt <eskild@goldenfiles.com>, 2004
 # Harald <haarektrans@gmail.com>, 2014
 # Terje Uriansrud <terje@uriansrud.net>, 2009
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-20 20:18+0000\n"
-"Last-Translator: Allan Nordhøy <comradekingu@gmail.com>\n"
+"POT-Creation-Date: 2015-06-16 00:31+0200\n"
+"PO-Revision-Date: 2015-07-29 01:13+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfwm4/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -602,40 +603,36 @@ msgid "_Margins"
 msgstr "_Marginer"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/main.c:602
-msgid "Fork to the background"
-msgstr "Forgren til bakgrunnen"
-
-#: ../src/main.c:604
+#: ../src/main.c:616
 msgid "Fork to the background (not supported)"
 msgstr "Forgren til bakgrunn (ikke støttet)"
 
-#: ../src/main.c:607
+#: ../src/main.c:618
 msgid "Set the compositor mode"
 msgstr "Sett komposittmodus"
 
-#: ../src/main.c:609
+#: ../src/main.c:620
 msgid "Set the compositor mode (not supported)"
 msgstr "Sett komposittmodus (ikke støttet)"
 
-#: ../src/main.c:611
+#: ../src/main.c:622
 msgid "Replace the existing window manager"
 msgstr "Erstatt den eksisterende vindusbehandleren"
 
-#: ../src/main.c:612
+#: ../src/main.c:623
 msgid "Print version information and exit"
 msgstr "Skriv ut versjonsinformasjon og avslutt"
 
-#: ../src/main.c:623
+#: ../src/main.c:634
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTER...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:641
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skriv \"%s --help\" for informasjon om bruk."
@@ -670,16 +667,16 @@ msgstr "_Endre størrelse"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Alltid øverst"
+msgid "Always on _Top"
+msgstr "Alltid _Øverst"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Samme som andre vinduer"
+msgid "_Same as Other Windows"
+msgstr "_Samme som andre vinduer"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Alltid under andre vinduer"
+msgid "Always _Below Other Windows"
+msgstr "Alltid _under andre vinduer"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -703,16 +700,16 @@ msgstr "Kontekst _hjelp"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Alltid på synlig arbeidsområde"
+msgid "Always on _Visible Workspace"
+msgstr "Alltid på _synlig arbeidsområde"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Bare på dette arbeidsområdet"
+msgid "Only _Visible on This Workspace"
+msgstr "Bare _synlig på dette arbeidsområdet"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Flytt til annet arbeidsområde"
+msgid "Move to Another _Workspace"
+msgstr "Flytt til et annet _arbeidsområde"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -732,27 +729,27 @@ msgstr "_Avslutt"
 msgid "Restart"
 msgstr "Start på nytt"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke fange opp pekeren\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Kan ikke tildele farge %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Kan ikke tildele farge: GValue for fargen er ikke av typen STRING"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Kan ikke tyde farge %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Kan ikke tyde farge: GValue for fargen er ikke av typen STRING"
