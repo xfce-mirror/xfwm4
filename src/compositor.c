@@ -1010,8 +1010,9 @@ cursor_to_picture (ScreenInfo *screen_info, XFixesCursorImage *cursor)
 static gboolean
 check_gl_error (void)
 {
-    GLenum error;
     gboolean clean = TRUE;
+#ifdef DEBUG /* glGetError() is expensive, keep it for debug only */
+    GLenum error;
 
      error = glGetError();
      while (error != GL_NO_ERROR);
@@ -1039,7 +1040,7 @@ check_gl_error (void)
         }
         error = glGetError();
     }
-
+#endif
     return clean;
 }
 
