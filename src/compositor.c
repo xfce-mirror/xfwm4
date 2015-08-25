@@ -105,6 +105,10 @@
 #define MONITOR_ROOT_PIXMAP   1
 #endif /* MONITOR_ROOT_PIXMAP */
 
+#ifndef MONITOR_ROOT_PIXMAP
+#define MONITOR_ROOT_PIXMAP   1
+#endif /* MONITOR_ROOT_PIXMAP */
+
 typedef struct _CWindow CWindow;
 struct _CWindow
 {
