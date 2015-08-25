@@ -254,7 +254,8 @@ typedef enum
     WINDOW_TOOLBAR      = (1 << 5),
     WINDOW_MENU         = (1 << 6),
     WINDOW_UTILITY      = (1 << 7),
-    WINDOW_SPLASHSCREEN = (1 << 8)
+    WINDOW_SPLASHSCREEN = (1 << 8),
+    WINDOW_NOTIFICATION = (1 << 9)
 }
 netWindowType;
 

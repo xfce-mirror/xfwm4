@@ -155,6 +155,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_WINDOW_TYPE_SPLASH",
         "_NET_WM_WINDOW_TYPE_TOOLBAR",
         "_NET_WM_WINDOW_TYPE_UTILITY",
+        "_NET_WM_WINDOW_TYPE_NOTIFICATION",
         "_NET_WORKAREA",
         "MANAGER",
         "PIXMAP",

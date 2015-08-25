@@ -82,6 +82,7 @@
 #define WIN_LAYER_DOCK                          8
 #define WIN_LAYER_ABOVE_DOCK                    10
 #define WIN_LAYER_FULLSCREEN                    12
+#define WIN_LAYER_NOTIFICATION                  14
 
 #define NET_WM_MOVERESIZE_SIZE_TOPLEFT          0
 #define NET_WM_MOVERESIZE_SIZE_TOP              1

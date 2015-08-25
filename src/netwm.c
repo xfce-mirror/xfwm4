@@ -833,7 +833,8 @@ clientGetNetWmType (Client * c)
                 (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG])  ||
                 (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL])  ||
                 (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_UTILITY]) ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_SPLASH]))
+                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_SPLASH])  ||
+                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_NOTIFICATION]))
             {
                 c->type_atom = atoms[i];
                 break;
@@ -1292,6 +1293,18 @@ clientWindowType (Client * c)
                 XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_HIDE |
                 XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_MOVE |
                 XFWM_FLAG_HAS_RESIZE);
+        }
+        else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_NOTIFICATION])
+        {
+            TRACE ("atom net_wm_window_type_notification detected");
+            c->type = WINDOW_NOTIFICATION;
+            c->initial_layer = WIN_LAYER_NOTIFICATION;
+            /* We unset these because CLIENT_FLAG_ABOVE will interfere with
+               our layer placement and put the window in the ABOVE_DOCK
+               layer, which is below the FULLSCREEN layer when the flags
+               are processed later. */
+            FLAG_UNSET (c->flags,
+                CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW);
         }
     }
     else
