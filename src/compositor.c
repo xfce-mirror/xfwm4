@@ -95,6 +95,10 @@
 /* Set TIMEOUT_REPAINT to 0 to disable timeout repaint */
 #define TIMEOUT_REPAINT       10 /* msec */
 
+#ifndef MONITOR_ROOT_PIXMAP
+#define MONITOR_ROOT_PIXMAP   1
+#endif /* MONITOR_ROOT_PIXMAP */
+
 typedef struct _CWindow CWindow;
 struct _CWindow
 {
@@ -853,7 +857,7 @@ root_tile (ScreenInfo *screen_info)
     DisplayInfo *display_info;
     Display *dpy;
     Picture picture = None;
-#ifdef MONITOR_ROOT_PIXMAP
+#if MONITOR_ROOT_PIXMAP
     Pixmap pixmap;
     XRenderPictureAttributes pa;
     XRenderPictFormat *format;
@@ -866,7 +870,7 @@ root_tile (ScreenInfo *screen_info)
 
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
-#ifdef MONITOR_ROOT_PIXMAP
+#if MONITOR_ROOT_PIXMAP
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
 
@@ -3228,7 +3232,7 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
 static void
 compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 {
-#ifdef MONITOR_ROOT_PIXMAP
+#if MONITOR_ROOT_PIXMAP
     gint p;
     Atom backgroundProps[2];
 #endif
@@ -3237,7 +3241,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     g_return_if_fail (ev != NULL);
     TRACE ("entering compositorHandlePropertyNotify for 0x%lx", ev->window);
 
-#ifdef MONITOR_ROOT_PIXMAP
+#if MONITOR_ROOT_PIXMAP
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
     backgroundProps[1] = display_info->atoms[XSETROOT];
 
