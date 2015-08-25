@@ -4320,7 +4320,7 @@ compositorManageScreen (ScreenInfo *screen_info)
 #endif /* HAVE_EPOXY */
 
 #ifdef HAVE_PRESENT_EXTENSION
-    /* Prefer present over glx if available (it's faster on my hardware) */
+    /* Prefer glx over xpresent if available */
     screen_info->use_present = display_info->have_present && !screen_info->use_glx;
     if (screen_info->use_present)
     {
@@ -4332,6 +4332,20 @@ compositorManageScreen (ScreenInfo *screen_info)
 #else /* HAVE_PRESENT_EXTENSION */
     screen_info->use_present = FALSE;
 #endif /* HAVE_PRESENT_EXTENSION */
+
+    if (screen_info->use_glx)
+    {
+        DBG ("Compositor using GLX for vsync");
+    }
+    else if (screen_info->use_present)
+    {
+        DBG ("Compositor using XPresent for vsync");
+    }
+    else
+    {
+        g_warning ("No vsync support in compositor");
+    }
+
 
     XFixesSelectCursorInput (display_info->dpy,
                              screen_info->xroot,
