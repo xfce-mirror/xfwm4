@@ -229,7 +229,9 @@
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
 #define CLIENT_CAN_FILL_WINDOW(c)       (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | \
                                                                   XFWM_FLAG_IS_RESIZABLE) && \
-                                         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_MAXIMIZED))
+                                         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | \
+                                                               CLIENT_FLAG_MAXIMIZED | \
+                                                               CLIENT_FLAG_SHADED))
 #define CLIENT_CAN_TILE_WINDOW(c)       (CLIENT_CAN_MAXIMIZE_WINDOW(c) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && \
                                          (c->type & WINDOW_NORMAL))

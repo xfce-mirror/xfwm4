@@ -3394,6 +3394,11 @@ clientToggleMaximized (Client *c, int mode, gboolean restore_position)
     clientSetNetActions (c);
     if (restore_position && FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+        {
+            /* It's a shame, we are configuring the same client twice in a row */
+            clientUnshade (c);
+        }
         clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
     }
     /* Do not update the state while moving/resizing, CSD windows may resize */
