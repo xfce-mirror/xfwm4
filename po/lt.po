@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-09-30 19:04+0000\n"
+"PO-Revision-Date: 2015-10-07 21:51+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -677,11 +677,11 @@ msgstr "Visada _po kitais langais"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
-msgstr "Perstumti langą aukštyn"
+msgstr "Užraityti langą aukštyn"
 
 #: ../src/menu.c:55
 msgid "Roll Window Down"
-msgstr "Perstumti langą žemyn"
+msgstr "Nuraityti langą žemyn"
 
 #: ../src/menu.c:56
 msgid "_Fullscreen"
