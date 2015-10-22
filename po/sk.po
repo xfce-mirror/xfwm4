@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Dušan Kazik <prescott66@gmail.com>, 2015
 # Juraj Brosz <juro@jurajbrosz.info>, 2004
 # Robert Hartl <hartl.robert@gmail.com>, 2009-2010
 # Slavko <linux@slavino.sk>, 2015
@@ -12,10 +13,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-26 10:07+0000\n"
-"Last-Translator: Slavko <linux@slavino.sk>\n"
-"Language-Team: Slovak (http://www.transifex.com/projects/p/xfwm4/language/sk/)\n"
+"POT-Creation-Date: 2015-06-16 00:31+0200\n"
+"PO-Revision-Date: 2015-10-22 08:56+0000\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"Language-Team: Slovak (http://www.transifex.com/xfce/xfwm4/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -602,40 +603,36 @@ msgid "_Margins"
 msgstr "_Okraje"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/main.c:602
-msgid "Fork to the background"
-msgstr "Presunúť do pozadia"
-
-#: ../src/main.c:604
+#: ../src/main.c:616
 msgid "Fork to the background (not supported)"
 msgstr "Presunúť do pozadia (nepodporované)"
 
-#: ../src/main.c:607
+#: ../src/main.c:618
 msgid "Set the compositor mode"
 msgstr "Nastaviť režim kompozitora"
 
-#: ../src/main.c:609
+#: ../src/main.c:620
 msgid "Set the compositor mode (not supported)"
 msgstr "Nastaviť režim kompozitora (nepodporované)"
 
-#: ../src/main.c:611
+#: ../src/main.c:622
 msgid "Replace the existing window manager"
 msgstr "Nahradiť existujúceho správcu okien"
 
-#: ../src/main.c:612
+#: ../src/main.c:623
 msgid "Print version information and exit"
 msgstr "Zobrazí informácie o verzii a ukončí sa"
 
-#: ../src/main.c:623
+#: ../src/main.c:634
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRE...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:641
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informácie o použití získate príkazom \"%s --help\" ."
@@ -670,16 +667,16 @@ msgstr "Zmeniť _veľkosť"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Vždy navrchu"
+msgid "Always on _Top"
+msgstr "Vždy _navrchu"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Rovnako ako ostatné okná"
+msgid "_Same as Other Windows"
+msgstr "_Rovnako ako ostatné okná"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Vždy pod ostatnými oknami"
+msgid "Always _Below Other Windows"
+msgstr "Vždy _pod ostatnými oknami"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -703,16 +700,16 @@ msgstr "Kontextový _pomocník"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Vždy na viditeľnej pracovnej ploche"
+msgid "Always on _Visible Workspace"
+msgstr "Vždy na v_iditeľnej pracovnej ploche"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Iba na tejto pracovnej ploche"
+msgid "Only _Visible on This Workspace"
+msgstr "Viditeľné i_ba na tejto pracovnej ploche"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Presunúť okno na inú pracovnú plochu"
+msgid "Move to Another _Workspace"
+msgstr "Presunúť na inú pracovnú plochu"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -732,27 +729,27 @@ msgstr "_Ukončiť"
 msgid "Restart"
 msgstr "Reštartovať"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponente GtkMenu sa nepodarilo uchopiť ukazovateľ\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nie je možné prideliť farbu %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Nie je možné prideliť farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nie je možné spracovať farbu %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Nie je možné spracovať farbu: Hodnota GValue pre farbu nie je typu REŤAZEC"
