@@ -1107,16 +1107,6 @@ init_glx_extensions (ScreenInfo *screen_info)
         epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
                                  screen_info->screen,
                                  "GLX_EXT_texture_from_pixmap");
-
-    screen_info->has_texture_rectangle =
-        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
-                                 screen_info->screen,
-                                 "GL_ARB_texture_rectangle");
-
-    screen_info->has_texture_non_power_of_two =
-        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
-                                 screen_info->screen,
-                                 "GL_ARB_texture_non_power_of_two");
 }
 
 static gboolean
@@ -1134,6 +1124,7 @@ choose_glx_settings (ScreenInfo *screen_info)
         GLX_RENDER_TYPE,   GLX_RGBA_BIT,
         None
     };
+    GLint texture_type = 0;
     GLint texture_target = 0;
     GLint texture_format = 0;
     gboolean texture_inverted = FALSE;
@@ -1156,17 +1147,6 @@ choose_glx_settings (ScreenInfo *screen_info)
     {
         g_warning ("Cannot retrieve GLX frame buffer config.");
         return FALSE;
-    }
-
-    if (screen_info->has_texture_rectangle)
-    {
-        DBG ("Using texture type GL_TEXTURE_RECTANGLE_ARB");
-        screen_info->texture_type = GL_TEXTURE_RECTANGLE_ARB;
-    }
-    else
-    {
-        DBG ("Using texture type GL_TEXTURE_2D");
-        screen_info->texture_type = GL_TEXTURE_2D;
     }
 
     fb_match = FALSE;
@@ -1209,31 +1189,17 @@ choose_glx_settings (ScreenInfo *screen_info)
             continue;
         }
 
-        if (screen_info->texture_type == GL_TEXTURE_RECTANGLE_ARB)
+        if (value & GLX_TEXTURE_RECTANGLE_BIT_EXT)
         {
-            if (value & GLX_TEXTURE_RECTANGLE_BIT_EXT)
-            {
-                texture_target = GLX_TEXTURE_RECTANGLE_EXT;
-                DBG ("Using texture target GLX_TEXTURE_RECTANGLE_EXT");
-            }
-            else
-            {
-                DBG ("%i/%i: No GLX_TEXTURE_RECTANGLE_BIT_EXT, skipped", i + 1, n_configs);
-                continue;
-            }
+            DBG ("Using texture GL_TEXTURE_RECTANGLE_ARB target GLX_TEXTURE_RECTANGLE_EXT");
+            texture_type = GL_TEXTURE_RECTANGLE_ARB;
+            texture_target = GLX_TEXTURE_RECTANGLE_EXT;
         }
-        else if (screen_info->texture_type == GL_TEXTURE_2D)
+        else if (value & GLX_TEXTURE_2D_BIT_EXT)
         {
-            if (value & GLX_TEXTURE_2D_BIT_EXT)
-            {
-                texture_target = GLX_TEXTURE_2D_EXT;
-                DBG ("Using texture target GLX_TEXTURE_2D_EXT");
-            }
-            else
-            {
-                DBG ("%i/%i: No GLX_TEXTURE_2D_BIT_EXT, skipped", i + 1, n_configs);
-                continue;
-            }
+            DBG ("Using texture GL_TEXTURE_2D target GLX_TEXTURE_2D_EXT");
+            texture_type = GL_TEXTURE_2D;
+            texture_target = GLX_TEXTURE_2D_EXT;
         }
         else
         {
@@ -1247,8 +1213,8 @@ choose_glx_settings (ScreenInfo *screen_info)
                                        &value);
         if (status == Success && value == TRUE)
         {
-            texture_format = GLX_TEXTURE_FORMAT_RGBA_EXT;
             DBG ("Using texture format GLX_TEXTURE_FORMAT_RGBA_EXT");
+            texture_format = GLX_TEXTURE_FORMAT_RGBA_EXT;
         }
         else
         {
@@ -1289,8 +1255,11 @@ choose_glx_settings (ScreenInfo *screen_info)
         g_warning ("Cannot find a matching visual for the frame buffer config.");
         return FALSE;
     }
-    DBG ("Selected texture target 0x%x format 0x%x (%s)", texture_target,
-         texture_format, texture_inverted ? "inverted" : "non inverted");
+    DBG ("Selected texture type 0x%x target 0x%x format 0x%x (%s)",
+         texture_type, texture_target, texture_format,
+         texture_inverted ? "inverted" : "non inverted");
+
+    screen_info->texture_type = texture_type;
     screen_info->texture_target = texture_target;
     screen_info->texture_format = texture_format;
     screen_info->texture_inverted = texture_inverted;
@@ -1525,6 +1494,19 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
 }
 
 static void
+scale_glx_texture (ScreenInfo *screen_info, gint width, gint height, double zoom)
+{
+    if (screen_info->texture_type == GL_TEXTURE_RECTANGLE_ARB)
+    {
+        glScaled ((double) width * zoom, (double) height * zoom, 1.0);
+    }
+    else
+    {
+        glScaled(1.0 * zoom, 1.0 * zoom, 1.0);
+    }
+}
+
+static void
 redraw_glx_texture (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
@@ -1532,6 +1514,8 @@ redraw_glx_texture (ScreenInfo *screen_info)
     TRACE ("entering redraw_glx_texture");
     TRACE ("(Re)Drawing GLX pixmap 0x%lx/texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
+
+    glMatrixMode(GL_TEXTURE);
     glPushMatrix();
 
     if (screen_info->zoomed)
@@ -1542,18 +1526,17 @@ redraw_glx_texture (ScreenInfo *screen_info)
         XFixed yp = screen_info->transform.matrix[1][2];
 
         double zoom = XFixedToDouble (zf);
-        double x = (2.0 * XFixedToDouble (xp)) / screen_info->width - (1.0 - zoom);
-        double y = (2.0 * XFixedToDouble (yp)) / screen_info->height -  (1.0 - zoom);
+        double x = XFixedToDouble (xp) / (screen_info->width * zoom);
+        double y = XFixedToDouble (yp) / (screen_info->height * zoom);
 
-        glScaled(1.0 / zoom, 1.0 / zoom, 1.0);
-        glTranslated (-x, y, 0.0);
+        scale_glx_texture (screen_info, screen_info->width, screen_info->height, zoom);
+        glTranslated (x, y, 0.0);
     }
     else
     {
-        glScaled(1.0, 1.0, 1.0);
+        scale_glx_texture (screen_info, screen_info->width, screen_info->height, 1.0);
         glTranslated (0.0, 0.0, 0.0);
     }
-
     glViewport(0, 0, screen_info->width, screen_info->height);
 
     glBegin(GL_QUADS);

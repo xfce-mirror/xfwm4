@@ -210,8 +210,6 @@ struct _ScreenInfo
     gboolean has_glx_sync_control;
     gboolean has_glx_video_sync;
     gboolean has_texture_from_pixmap;
-    gboolean has_texture_rectangle;
-    gboolean has_texture_non_power_of_two;
     gboolean texture_inverted;
 
     GLuint rootTexture;
