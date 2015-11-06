@@ -73,6 +73,7 @@
 #define FRAME_EVENT_MASK \
     SubstructureNotifyMask|\
     SubstructureRedirectMask|\
+    PointerMotionHintMask|\
     PointerMotionMask|\
     ButtonMotionMask|\
     FocusChangeMask|\

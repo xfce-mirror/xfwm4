@@ -53,6 +53,7 @@
 #include "xsync.h"
 
 #define MOVERESIZE_EVENT_MASK \
+    PointerMotionHintMask | \
     PointerMotionMask | \
     ButtonMotionMask | \
     ButtonReleaseMask | \
