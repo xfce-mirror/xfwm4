@@ -1118,8 +1118,8 @@ check_gl_extensions (ScreenInfo *screen_info)
     if (screen_info->texture_type == GL_TEXTURE_2D)
     {
         /*
-         *  If all we have is GLX_TEXTURE_RECTANGLE_BIT_EXT then we ought to
-         * have GL_ARB_texture_non_power_of_two, otherwise we'll fail.
+         * If all we have is GL_TEXTURE_2D then we ought to have
+         * GL_ARB_texture_non_power_of_two, otherwise we'll fail.
          */
         return (epoxy_has_gl_extension ("GL_ARB_texture_non_power_of_two"));
     }
@@ -1381,7 +1381,7 @@ init_glx (ScreenInfo *screen_info)
 
     if (!check_gl_extensions (screen_info))
     {
-        g_warning ("Selected GLX_TEXTURE_2D but no NPOT available, GL support disabled.");
+        g_warning ("Screen is missing required GL extension, GL support disabled.");
         free_glx_data (screen_info);
 
         return FALSE;
