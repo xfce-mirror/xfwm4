@@ -1079,7 +1079,7 @@ check_glx_renderer (ScreenInfo *screen_info)
         i++;
     if (blacklisted[i])
     {
-        g_warning ("Unsupported OpenGL renderer (%s).", glRenderer);
+        g_warning ("Unsupported GL renderer (%s).", glRenderer);
         return FALSE;
     }
 
@@ -1107,6 +1107,24 @@ init_glx_extensions (ScreenInfo *screen_info)
         epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
                                  screen_info->screen,
                                  "GLX_EXT_texture_from_pixmap");
+}
+
+static gboolean
+check_gl_extensions (ScreenInfo *screen_info)
+{
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+
+    /* Note: the GL context must be current for this to work */
+    if (screen_info->texture_type == GL_TEXTURE_2D)
+    {
+        /*
+         *  If all we have is GLX_TEXTURE_RECTANGLE_BIT_EXT then we ought to
+         * have GL_ARB_texture_non_power_of_two, otherwise we'll fail.
+         */
+        return (epoxy_has_gl_extension ("GL_ARB_texture_non_power_of_two"));
+    }
+
+    return TRUE;
 }
 
 static gboolean
@@ -1268,6 +1286,24 @@ choose_glx_settings (ScreenInfo *screen_info)
     return TRUE;
 }
 
+static void
+free_glx_data (ScreenInfo *screen_info)
+{
+    g_return_if_fail (screen_info != NULL);
+
+    if (screen_info->glx_context)
+    {
+        glXDestroyContext (myScreenGetXDisplay (screen_info), screen_info->glx_context);
+        screen_info->glx_context = None;
+    }
+
+    if (screen_info->glx_window)
+    {
+        glXDestroyWindow (myScreenGetXDisplay (screen_info), screen_info->glx_window);
+        screen_info->glx_window = None;
+    }
+}
+
 static gboolean
 init_glx (ScreenInfo *screen_info)
 {
@@ -1320,6 +1356,8 @@ init_glx (ScreenInfo *screen_info)
     if (!screen_info->glx_window)
     {
         g_warning ("Could not create GLX window.");
+        free_glx_data (screen_info);
+
         return FALSE;
     }
 
@@ -1327,24 +1365,27 @@ init_glx (ScreenInfo *screen_info)
                          screen_info->glx_window,
                          screen_info->glx_context))
     {
-        g_warning ("Could not make OpenGL context current.");
+        g_warning ("Could not make GL context current.");
+        free_glx_data (screen_info);
+
         return FALSE;
     }
 
     if (!check_glx_renderer (screen_info))
     {
-        g_warning ("Screen is missing required OpenGL renderer, OpenGL support disabled.");
+        g_warning ("Screen is missing required GL renderer, GL support disabled.");
+        free_glx_data (screen_info);
 
-        glXDestroyContext (myScreenGetXDisplay (screen_info), screen_info->glx_context);
-        screen_info->glx_context = None;
-        if (screen_info->glx_window)
-        {
-            glXDestroyWindow (myScreenGetXDisplay (screen_info), screen_info->glx_window);
-            screen_info->glx_window = None;
-        }
         return FALSE;
     }
 
+    if (!check_gl_extensions (screen_info))
+    {
+        g_warning ("Selected GLX_TEXTURE_2D but no NPOT available, GL support disabled.");
+        free_glx_data (screen_info);
+
+        return FALSE;
+    }
     glDisable(GL_DEPTH_TEST);
     glDepthMask(GL_FALSE);
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
@@ -4397,18 +4438,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     {
         unbind_glx_texture (screen_info);
     }
-
-    if (screen_info->glx_context)
-    {
-        glXDestroyContext (display_info->dpy, screen_info->glx_context);
-        screen_info->glx_context = None;
-    }
-
-    if (screen_info->glx_window)
-    {
-        glXDestroyWindow (display_info->dpy, screen_info->glx_window);
-        screen_info->glx_window = None;
-    }
+    free_glx_data (screen_info);
 #endif /* HAVE_EPOXY */
 
     for (buffer = 0; buffer < 2; buffer++)
