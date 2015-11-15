@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-10-07 21:51+0000\n"
+"PO-Revision-Date: 2015-11-15 22:00+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Šis langas gali būti užsiėmęs ir neatsakyti.\nAr norite uždaryti programą?"
+msgstr "Šis langas gali būti užsiėmęs ir neatsakyti.\nAr norite užverti programą?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -160,7 +160,7 @@ msgstr "Išskleisti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Close"
-msgstr "Uždaryti"
+msgstr "Užverti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Hidden"
@@ -564,7 +564,7 @@ msgstr "_Perkeliamų langų permatomumas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
-msgstr "_Keičiant lango dydį permatomumas:"
+msgstr "P_ermatomumas, keičiant lango dydį:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
@@ -711,7 +711,7 @@ msgstr "Perkelti į _kitą darbo sritį"
 #. --------------------------------------------------------
 #: ../src/menu.c:64
 msgid "_Close"
-msgstr "_Uždaryti"
+msgstr "_Užverti"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:67
