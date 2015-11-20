@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-11-15 22:00+0000\n"
+"PO-Revision-Date: 2015-11-20 20:58+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -311,7 +311,7 @@ msgstr "<b>Veiksmas dukart _spragtelėjus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "Ad_vanced"
-msgstr "Iš_plėstas"
+msgstr "Iš_plėstiniai"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Shade window"
