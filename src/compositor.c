@@ -4225,6 +4225,9 @@ compositorManageScreen (ScreenInfo *screen_info)
     XRenderPictureAttributes pa;
     XRenderPictFormat *visual_format;
     gushort buffer;
+#ifdef HAVE_PRESENT_EXTENSION
+    const gchar *use_present_env;
+#endif /* HAVE_PRESENT_EXTENSION */
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering compositorManageScreen");
@@ -4346,7 +4349,17 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->rootTexture = None;
     screen_info->glx_drawable = None;
     screen_info->texture_filter = GL_LINEAR;
-    screen_info->use_glx = init_glx (screen_info);
+#ifdef HAVE_PRESENT_EXTENSION
+    use_present_env = g_getenv ("XFWM4_USE_PRESENT");
+    if (g_strcmp0 (use_present_env, "1") == 0)
+    {
+        screen_info->use_glx = FALSE;
+    }
+    else
+#endif /* HAVE_PRESENT_EXTENSION */
+    {
+        screen_info->use_glx = init_glx (screen_info);
+    }
 #else /* HAVE_EPOXY */
     screen_info->use_glx = FALSE;
 #endif /* HAVE_EPOXY */
