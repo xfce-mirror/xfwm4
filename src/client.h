@@ -300,6 +300,7 @@ struct _Client
     XClassHint class;
     Client *next;
     Client *prev;
+    PropMwmHints *mwm_hints;
     netWindowType type;
     gint x;
     gint y;
@@ -395,7 +396,8 @@ void                     clientReconfigure                      (Client *,
 void                     clientMoveResizeWindow                 (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long);
-void                     clientGetMWMHints                      (Client *,
+void                     clientGetMWMHints                      (Client *);
+void                     clientApplyMWMHints                    (Client *,
                                                                  gboolean);
 void                     clientGetWMNormalHints                 (Client *,
                                                                  gboolean);

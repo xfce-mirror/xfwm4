@@ -1195,6 +1195,8 @@ clientWindowType (Client * c)
 
     old_type = c->type;
     c->initial_layer = c->win_layer;
+    clientApplyMWMHints (c, FALSE);
+
     if (c->type_atom != None)
     {
         if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP])

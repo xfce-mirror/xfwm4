@@ -952,7 +952,27 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
 }
 
 void
-clientGetMWMHints (Client *c, gboolean update)
+clientGetMWMHints (Client *c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->window != None);
+
+    TRACE ("entering clientGetMWMHints client \"%s\" (0x%lx)", c->name, c->window);
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (c->mwm_hints)
+    {
+        g_free (c->mwm_hints);
+    }
+    c->mwm_hints = getMotifHints (display_info, c->window);
+}
+
+void
+clientApplyMWMHints (Client *c, gboolean update)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -962,29 +982,28 @@ clientGetMWMHints (Client *c, gboolean update)
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
-    TRACE ("entering clientGetMWMHints client \"%s\" (0x%lx)", c->name,
+    TRACE ("entering clientApplyMWMHints client \"%s\" (0x%lx)", c->name,
         c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    mwm_hints = getMotifHints (display_info, c->window);
-    if (mwm_hints)
+    if (c->mwm_hints)
     {
-        if ((mwm_hints->flags & MWM_HINTS_DECORATIONS))
+        if ((c->mwm_hints->flags & MWM_HINTS_DECORATIONS))
         {
             if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
             {
-                if (mwm_hints->decorations & MWM_DECOR_ALL)
+                if (c->mwm_hints->decorations & MWM_DECOR_ALL)
                 {
                     FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_MENU);
                 }
                 else
                 {
                     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_MENU);
-                    FLAG_SET (c->xfwm_flags, (mwm_hints-> decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER))
+                    FLAG_SET (c->xfwm_flags, (c->mwm_hints-> decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER))
                                              ? XFWM_FLAG_HAS_BORDER : 0);
-                    FLAG_SET (c->xfwm_flags, (mwm_hints->decorations & (MWM_DECOR_MENU))
+                    FLAG_SET (c->xfwm_flags, (c->mwm_hints->decorations & (MWM_DECOR_MENU))
                                              ? XFWM_FLAG_HAS_MENU : 0);
                     /*
                        FLAG_UNSET(c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
@@ -996,9 +1015,9 @@ clientGetMWMHints (Client *c, gboolean update)
             }
         }
         /* The following is from Metacity : */
-        if (mwm_hints->flags & MWM_HINTS_FUNCTIONS)
+        if (c->mwm_hints->flags & MWM_HINTS_FUNCTIONS)
         {
-            if (!(mwm_hints->functions & MWM_FUNC_ALL))
+            if (!(c->mwm_hints->functions & MWM_FUNC_ALL))
             {
                 FLAG_UNSET (c->xfwm_flags,
                     XFWM_FLAG_HAS_CLOSE | XFWM_FLAG_HAS_HIDE |
@@ -1013,28 +1032,27 @@ clientGetMWMHints (Client *c, gboolean update)
                     XFWM_FLAG_HAS_RESIZE);
             }
 
-            if (mwm_hints->functions & MWM_FUNC_CLOSE)
+            if (c->mwm_hints->functions & MWM_FUNC_CLOSE)
             {
                 FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE);
             }
-            if (mwm_hints->functions & MWM_FUNC_MINIMIZE)
+            if (c->mwm_hints->functions & MWM_FUNC_MINIMIZE)
             {
                 FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
             }
-            if (mwm_hints->functions & MWM_FUNC_MAXIMIZE)
+            if (c->mwm_hints->functions & MWM_FUNC_MAXIMIZE)
             {
                 FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE);
             }
-            if (mwm_hints->functions & MWM_FUNC_RESIZE)
+            if (c->mwm_hints->functions & MWM_FUNC_RESIZE)
             {
                 FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE);
             }
-            if (mwm_hints->functions & MWM_FUNC_MOVE)
+            if (c->mwm_hints->functions & MWM_FUNC_MOVE)
             {
                 FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_HAS_MOVE);
             }
         }
-        g_free (mwm_hints);
     }
 
     if (update)
@@ -1336,6 +1354,10 @@ clientFree (Client *c)
     if (c->wmhints)
     {
         XFree (c->wmhints);
+    }
+    if (c->mwm_hints)
+    {
+        g_free (c->mwm_hints);
     }
     if ((c->ncmap > 0) && (c->cmap_windows))
     {
@@ -1659,7 +1681,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 
     clientGetWMNormalHints (c, FALSE);
-
+    clientGetMWMHints (c);
     c->size->x = c->x;
     c->size->y = c->y;
     c->size->width = c->width;
@@ -1761,7 +1783,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     FLAG_SET (c->wm_flags, HINTS_ACCEPT_INPUT (c->wmhints) ? WM_FLAG_INPUT : 0);
 
     clientGetWMProtocols (c);
-    clientGetMWMHints (c, FALSE);
     c->win_layer = WIN_LAYER_NORMAL;
     c->fullscreen_old_layer = c->win_layer;
 

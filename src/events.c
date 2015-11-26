@@ -1704,7 +1704,8 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[MOTIF_WM_HINTS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a MOTIF_WM_HINTS notify", c->name, c->window);
-            clientGetMWMHints (c, TRUE);
+            clientGetMWMHints (c);
+            clientApplyMWMHints (c, TRUE);
         }
         else if (ev->atom == XA_WM_HINTS)
         {
@@ -2112,13 +2113,15 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
             {
                 update = TRUE;
                 FLAG_SET (c->flags, CLIENT_FLAG_HAS_SHAPE);
-                clientGetMWMHints (c, update);
+                clientGetMWMHints (c);
+                clientApplyMWMHints (c, TRUE);
             }
             else if (!(ev->shaped) && FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
             {
                 update = TRUE;
                 FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_SHAPE);
-                clientGetMWMHints (c, update);
+                clientGetMWMHints (c);
+                clientApplyMWMHints (c, TRUE);
             }
         }
         if (!update)
