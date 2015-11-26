@@ -1307,11 +1307,18 @@ free_glx_data (ScreenInfo *screen_info)
 static gboolean
 init_glx (ScreenInfo *screen_info)
 {
+    int error_base, event_base;
     int version;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
 
     TRACE ("entering init_glx");
+
+    if (!glXQueryExtension (myScreenGetXDisplay (screen_info), &error_base, &event_base))
+    {
+        g_warning ("GLX extension missing, GLX support disabled.");
+        return FALSE;
+    }
 
     version = epoxy_glx_version (myScreenGetXDisplay (screen_info), screen_info->screen);
     DBG ("Using GLX version %d", version);
