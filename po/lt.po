@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-11-20 20:58+0000\n"
+"PO-Revision-Date: 2015-11-28 16:10+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -192,11 +192,11 @@ msgstr "Dėmesys sutelkiamas, spustelėjus pelės mygtuką"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
-msgstr "Dėmesys _sutelkiamas pagal pelės poziciją"
+msgstr "Fokusavimas _seka paskui pelės poziciją"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Delay before window receives focus:"
-msgstr "_Užlaikymas, prieš langui įgijant fokusą:"
+msgstr "_Užlaikymas, prieš langui įgaunant fokusavimą:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
@@ -214,7 +214,7 @@ msgstr "<b>Fokusavimo modelis</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Automatically give focus to _newly created windows"
-msgstr "Automatiškai sutelkti _dėmesį į naujai sukurtus langus"
+msgstr "Automatiškai f_okusuoti naujai sukurtus langus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>New window focus</b>"
@@ -222,7 +222,7 @@ msgstr "<b>Naujo lango fokusavimas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Automatiškai iškelti _langus kai jie dėmesio centre"
+msgstr "Automatiškai iškelti _langus, kai jie įgauna fokusavimą"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
@@ -230,7 +230,7 @@ msgstr "_Užlaikymas, prieš iškeliant fokusuotą langą:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Iškelti kai fokusuojama</b>"
+msgstr "<b>Iškelti, kai fokusuojama</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
