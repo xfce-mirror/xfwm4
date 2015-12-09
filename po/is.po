@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Sveinn í Felli <sv1@fellsnet.is>, 2014
+# Sveinn í Felli <sv1@fellsnet.is>, 2014-2015
 # Sveinn í Felli <sveinki@nett.is>, 2011,2013,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-11-22 10:57+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2015-12-09 13:39+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfwm4/language/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -664,15 +664,15 @@ msgstr "_Breyta stærð"
 #. --------------------------------------------------------
 #: ../src/menu.c:51
 msgid "Always on _Top"
-msgstr ""
+msgstr "All_taf efst"
 
 #: ../src/menu.c:52
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "_Sama og aðrir gluggar"
 
 #: ../src/menu.c:53
 msgid "Always _Below Other Windows"
-msgstr ""
+msgstr "Alltaf _undir öðrum gluggum"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -697,15 +697,15 @@ msgstr "Samhengis_hjálp"
 #. --------------------------------------------------------
 #: ../src/menu.c:60
 msgid "Always on _Visible Workspace"
-msgstr ""
+msgstr "Alltaf á sjáanlegu _vinnusvæði"
 
 #: ../src/menu.c:61
 msgid "Only _Visible on This Workspace"
-msgstr ""
+msgstr "Einungis _sýnilegt á þessu vinnusvæði"
 
 #: ../src/menu.c:62
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Fl_ytja á annað vinnusvæði"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
