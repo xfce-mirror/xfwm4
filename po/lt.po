@@ -5,13 +5,13 @@
 # Translators:
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012
 # Mantas Zapolskas <mantaz@users.sf.net>, 2003
-# Moo, 2015
+# Moo, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-11-28 16:10+0000\n"
+"PO-Revision-Date: 2016-02-17 19:26+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -516,7 +516,7 @@ msgstr "_Išdėstymas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Enable display compositing"
-msgstr "Į_jungti ekrano kompozicionavimą"
+msgstr "Į_jungti ekrano komponavimą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Display _fullscreen overlay windows directly"
@@ -611,11 +611,11 @@ msgstr "Prijungti prie fono (nepalaikoma)"
 
 #: ../src/main.c:618
 msgid "Set the compositor mode"
-msgstr "Nustatyti kompozicionavimo veikseną"
+msgstr "Nustatyti komponavimo veikseną"
 
 #: ../src/main.c:620
 msgid "Set the compositor mode (not supported)"
-msgstr "Nustatyti kompozicionavimo veikseną (nepalaikoma)"
+msgstr "Nustatyti komponavimo veikseną (nepalaikoma)"
 
 #: ../src/main.c:622
 msgid "Replace the existing window manager"
