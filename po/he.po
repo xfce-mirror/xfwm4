@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2016-03-08 11:28+0000\n"
+"PO-Revision-Date: 2016-03-08 12:07+0000\n"
 "Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfwm4/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nTry %s --help to see a full list of available command line options.\n"
+msgstr "%s: %s\nנסה %s --help לראות רשימה מלאה של אפשרויות שורת פקודות זמינות.\n\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -383,11 +383,11 @@ msgstr "פעולה זו תאפס את כל הקיצורים לערכי בריר�
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_דלג על חלונות להם נקבעו מאפיינים\n\"דלג על עמודן\" או \"דלג על שורת משימות\""
+msgstr "_דלג על חלונות להם נקבעו מאפיינים\n\"דלג על פייג'ר\" או \"דלג על סרגל משימות\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_כלול חלונות מוסתרים (דהיינו, ממוזערים)"
+msgstr "_כלול חלונות מוסתרים (זאת אומרת שהפכו לאיקון)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
@@ -407,11 +407,11 @@ msgstr "מ_חזוריות"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Activate foc_us stealing prevention"
-msgstr "הפעל _מניעת חטיפת מיקוד"
+msgstr "הפעל _מניעת גניבת פוקוס"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
-msgstr "כבד רמז מיקוד ICCCM _תקני"
+msgstr "כבד רמז פוקוס ICCCM _תקני"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
@@ -471,21 +471,21 @@ msgstr "_נגישות"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "השתמש בגלגל ה_עכבר על שולחן העבודה כדי להחליף משטחי עבודה"
+msgstr "השתמש בגלגל ה_עכבר על שולחן העבודה כדי להחליף מרחבי עבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_הזכר וזכור משטח עבודה קודם כאשר\nמחליפים באמצעות קיצורי דרך מקלדת"
+msgstr "_זכור והחזר מרחב עבודה קודם כאשר\nמעבירים באמצעות קיצורי מקלדת"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "_כרוך משטחי עבודה לפי מערך ממשי של שולחן עבודה"
+msgstr "_עטוף מרחבי עבודה לפי סידור ממשי של שולחן עבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "כרוך משטחי עבודה בהגעה אל משטח עבודה ר_אשון ואחרון"
+msgstr "עטוף מרחבי עבודה בהגעה אל מרחב עבודה ר_אשון או אחרון"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
@@ -493,7 +493,7 @@ msgstr "מ_שטחי עבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "מידת חלון נומינלית כדי להפעיל _השמה חכמה:"
+msgstr "מידת חלונות מינימלית כדי להפעיל _השמה חכמה:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
@@ -530,7 +530,7 @@ msgstr "סנכרן ציור ל_ריק האנכי"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
-msgstr "הצג תצוגה מקדימה של חלונות במקום סמלים בעת ניתור"
+msgstr "הצג תצוגה מקדימה של חלונות במקום איקונים בעת ביצוע מחזורי"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
@@ -546,7 +546,7 @@ msgstr "הצג צללים תחת חלונות _רגילים"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
-msgstr "א_טימות של עיטורי חלון:"
+msgstr "א_טימות של קישוטי חלון:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
@@ -609,7 +609,7 @@ msgstr "%s (על %s)"
 
 #: ../src/main.c:616
 msgid "Fork to the background (not supported)"
-msgstr "פנה לרקע (לא נתמך)"
+msgstr "פצל לרקע (לא נתמך)"
 
 #: ../src/main.c:618
 msgid "Set the compositor mode"
@@ -736,7 +736,7 @@ msgstr "%s: תפריט Gtk נכשל בתפיסת הסמן\n\n"
 #: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Cannot allocate color %s\n"
+msgstr "%s: לא יכול להקצות צבע %s \n\n"
 
 #: ../src/settings.c:278
 #, c-format
@@ -746,7 +746,7 @@ msgstr "%s: לא יכול להקצות צבע: ערך G לצבע אינו מסו
 #: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Cannot parse color %s\n"
+msgstr "%s: לא יכול לנתח צבע %s \n\n"
 
 #: ../src/settings.c:287
 #, c-format
@@ -756,7 +756,7 @@ msgstr "%s: לא יכול לנתח צבע: ערך G לצבע אינו מסוג �
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Error reading data from child process: %s\n"
+msgstr "שגיאה בקריאת מידע מתהליך בן: %s \n\n"
 
 #: ../src/terminate.c:123
 #, c-format
