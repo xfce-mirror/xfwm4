@@ -1589,13 +1589,13 @@ redraw_glx_texture (ScreenInfo *screen_info)
 
     glBegin(GL_QUADS);
     glTexCoord2f(0.0, screen_info->texture_inverted ? 1.0 : 0.0);
-    glVertex3f(-1.0,  1.0, 0.0);
+    glVertex2f(-1.0,  1.0);
     glTexCoord2f(1.0, screen_info->texture_inverted ? 1.0 : 0.0);
-    glVertex3f( 1.0,  1.0, 0.0);
+    glVertex2f( 1.0,  1.0);
     glTexCoord2f(1.0, screen_info->texture_inverted ? 0.0 : 1.0);
-    glVertex3f( 1.0, -1.0, 0.0);
+    glVertex2f( 1.0, -1.0);
     glTexCoord2f(0.0, screen_info->texture_inverted ? 0.0 : 1.0);
-    glVertex3f(-1.0, -1.0, 0.0);
+    glVertex2f(-1.0, -1.0);
     glEnd();
 
     glPopMatrix();
