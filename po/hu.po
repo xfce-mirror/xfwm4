@@ -6,17 +6,17 @@
 # Benedek Imre <nucleo@indamail.hu>, 2014
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2009
-# Gyönki Bendegúz <gyonkibendeguz@gmail.com>, 2014
+# gyeben <gyonkibendeguz@gmail.com>, 2014
 # Nagy Gábor <jackson.gabor@gmail.com>, 2015
 # Somogyi Peter <jerry@gnu>, 2003
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 18:32+0100\n"
-"PO-Revision-Date: 2015-01-24 22:23+0000\n"
-"Last-Translator: Nagy Gábor <jackson.gabor@gmail.com>\n"
-"Language-Team: Hungarian (http://www.transifex.com/projects/p/xfwm4/language/hu/)\n"
+"POT-Creation-Date: 2015-06-16 00:31+0200\n"
+"PO-Revision-Date: 2016-03-29 15:16+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"Language-Team: Hungarian (http://www.transifex.com/xfce/xfwm4/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,29 +37,29 @@ msgstr "Figyelmeztetés"
 msgid "None"
 msgstr "Nincs"
 
-#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
 msgstr "Munkamenet-kezelő foglalat"
 
-#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "FOGLALATAZONOSÍTÓ"
 
-#: ../settings-dialogs/tweaks-settings.c:468
+#: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Verzióinformációk"
 
-#: ../settings-dialogs/tweaks-settings.c:486
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:494
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -530,46 +530,50 @@ msgid "Synchronize drawing to the _vertical blank"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show windows preview in place of icons when cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
 msgstr "Árn_yékok megjelenítése felugró ablakok alatt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _dock windows"
 msgstr "Árnyékok megjelenítése _dokkolt ablakok alatt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under _regular windows"
 msgstr "Árnyékok megjelenítése _normál ablakok alatt"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
 msgstr "Ablakdekorá_ciók átlátszatlansága:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
 msgstr "<i>Átlátszó</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "<i>Opaque</i>"
 msgstr "<i>Átlátszatlan</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
 msgstr "_Inaktív ablakok átlátszatlansága:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
 msgstr "Ablakok átlátszatlansága _mozgatáskor:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
 msgstr "Ablakok átlátszatlansága átmé_retezéskor:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
 msgstr "Felu_gró ablakok átlátszatlansága:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
 msgstr "K_ompozitálás"
 
@@ -599,40 +603,36 @@ msgid "_Margins"
 msgstr "_Margók"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (ezen: %s)"
 
-#: ../src/main.c:540
-msgid "Fork to the background"
-msgstr "Indítás a háttérbe"
-
-#: ../src/main.c:542
+#: ../src/main.c:616
 msgid "Fork to the background (not supported)"
 msgstr "Indítás a háttérbe (nem támogatott)"
 
-#: ../src/main.c:545
+#: ../src/main.c:618
 msgid "Set the compositor mode"
 msgstr "Kompozitáló mód beállítása"
 
-#: ../src/main.c:547
+#: ../src/main.c:620
 msgid "Set the compositor mode (not supported)"
 msgstr "Kompozitáló mód beállítása (nem támogatott)"
 
-#: ../src/main.c:549
+#: ../src/main.c:622
 msgid "Replace the existing window manager"
 msgstr "Meglévő ablakkezelő cseréje"
 
-#: ../src/main.c:550
+#: ../src/main.c:623
 msgid "Print version information and exit"
 msgstr "Verzióinformációk kiírása és kilépés"
 
-#: ../src/main.c:558
+#: ../src/main.c:634
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTUMOK]…"
 
-#: ../src/main.c:565
+#: ../src/main.c:641
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Segítségért adja ki a „%s --help” parancsot."
@@ -667,16 +667,16 @@ msgstr "Át_méretezés"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Mindig felül"
+msgid "Always on _Top"
+msgstr ""
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Mint a többi ablak"
+msgid "_Same as Other Windows"
+msgstr ""
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Mindig más ablakok alatt"
+msgid "Always _Below Other Windows"
+msgstr ""
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -700,16 +700,16 @@ msgstr "_Környezetérzékeny súgó"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Mindig a látható munkaterületen"
+msgid "Always on _Visible Workspace"
+msgstr ""
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Csak ezen a munkaterületen"
+msgid "Only _Visible on This Workspace"
+msgstr ""
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Áthelyezés másik munkaterületre"
+msgid "Move to Another _Workspace"
+msgstr ""
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -729,27 +729,27 @@ msgstr "_Kilépés"
 msgid "Restart"
 msgstr "Újraindítás"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: A GtkMenu nem tudta megragadni a mutatót\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:276
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nem foglalható le a szín (%s)\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:278
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Nem foglalható le a szín: a színhez tartozó GValue nem STRING típusú"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:285
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: A szín (%s) nem dolgozható fel\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: A szín nem dolgozható fel: a színhez tartozó GValue nem STRING típusú"
