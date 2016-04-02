@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Nuno Donato <nunodonato@gmail.com>, 2004
-# Nuno Miguel <nunomgue@gmail.com>, 2013,2015
+# Nuno Miguel <nunomgue@gmail.com>, 2013,2015-2016
 # Sérgio Marques <smarquespt@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-10-31 16:50+0000\n"
+"PO-Revision-Date: 2016-04-02 15:14+0000\n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -275,7 +275,7 @@ msgstr "<b>Alinhamento de janelas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "With the mouse _pointer"
-msgstr "Com o_ponteiro do rato"
+msgstr "Com o _ponteiro do rato"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
