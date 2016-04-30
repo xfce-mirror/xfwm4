@@ -9,13 +9,13 @@
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2012
 # Moritz Heiber <moe@xfce.org>, 2003
 # Nico Schümann <nico@prog.nico22.de>, 2007
-# Tobias Bannert <tobannert@gmail.com>, 2014-2015
+# Tobias Bannert <tobannert@gmail.com>, 2014-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-11-26 14:01+0000\n"
+"PO-Revision-Date: 2016-04-30 15:04+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/xfce/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -597,7 +597,7 @@ msgstr "_Allgemein"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Ränder sind Bereiche, an den Kanten des Bildschirms, wo kein Fenster platziert werden."
+msgstr "Die Ränder sind die Bereiche an den Kanten des Bildschirms, dort werden keine Fenster platziert."
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
