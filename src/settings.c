@@ -155,7 +155,11 @@ set_easy_click (ScreenInfo *screen_info, const char *modifier)
     else
     {
         modstr = g_strdup_printf ("<%s>", modifier);
-        screen_info->params->easy_click = getModifierMap (modstr);
+        if (!getModifierMap (modstr, &screen_info->params->easy_click))
+        {
+            g_message (_("Unsupported keyboard modifier '%s'"), modstr);
+            screen_info->params->easy_click = 0;
+        }
         g_free (modstr);
     }
 }

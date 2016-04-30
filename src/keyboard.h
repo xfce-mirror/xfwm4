@@ -45,7 +45,8 @@ extern unsigned int ScrollLockMask;
 extern unsigned int SuperMask;
 extern unsigned int HyperMask;
 
-guint                    getModifierMap                         (const char *);
+gboolean                 getModifierMap                         (const char *,
+                                                                 guint *);
 void                     parseKeyString                         (Display *,
                                                                  MyKey *,
                                                                  const char *);
