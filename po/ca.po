@@ -5,13 +5,14 @@
 # Translators:
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2013
 # Davidmp <medipas@gmail.com>, 2015
+# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-12-09 18:07+0000\n"
-"Last-Translator: Davidmp <medipas@gmail.com>\n"
+"PO-Revision-Date: 2016-04-30 11:12+0000\n"
+"Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,7 +180,7 @@ msgstr "Establiu les dreceres per les accions del _gestor de finestres:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
-msgstr "_Torna als valors per defecte"
+msgstr "_Torna als valors predeterminats"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "_Keyboard"
@@ -187,7 +188,7 @@ msgstr "_Teclat"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr "Clic per en_focar"
+msgstr "Feu clic per en_focar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
@@ -229,11 +230,11 @@ msgstr "Retard a_bans de posar en primer pla la finestra enfocada:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Primer pla al enfocar</b>"
+msgstr "<b>Primer pla en enfocar</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
-msgstr "Posa en primer pla la finestra quan es p_itgi dins la finestra de l'aplicació"
+msgstr "Posa en primer pla la finestra quan es faci clic d_ins de la finestra de l'aplicació"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
@@ -250,7 +251,7 @@ msgstr "A les _vores de les finestres"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
-msgstr "A altres _finestres"
+msgstr "A les altres _finestres"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
@@ -290,11 +291,11 @@ msgstr "<b>Canvia d'espai de treball quan arribeu a l'extrem de la pantalla</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
-msgstr "Al _moure"
+msgstr "En _moure"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
-msgstr "Al canviar de mi_da"
+msgstr "En canviar la mi_da"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
@@ -338,7 +339,7 @@ msgstr "Esquerra"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
-msgstr "Centrat"
+msgstr "Centre"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Right"
@@ -515,7 +516,7 @@ msgstr "_Posicionament"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Enable display compositing"
-msgstr "_Habilita el «composite»"
+msgstr "_Habilita la composició de pantalles"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Display _fullscreen overlay windows directly"
@@ -559,11 +560,11 @@ msgstr "Opacitat de les finestres _inactives:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
-msgstr "Opacitat de les finestres al _moure-les:"
+msgstr "Opacitat de les finestres en _moure-les:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
-msgstr "Opacitat de les finestres al re_dimensionar-les:"
+msgstr "Opacitat de les finestres en re_dimensionar-les:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
@@ -626,12 +627,12 @@ msgstr "Mostrar informació de la versió i sortir"
 
 #: ../src/main.c:634
 msgid "[ARGUMENTS...]"
-msgstr "[PARÀMETRES...]"
+msgstr "[ARGUMENTS...]"
 
 #: ../src/main.c:641
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Escriviu «%s --help» per a obtenir ajuda"
+msgstr "Teclegeu «%s --help» per a obtenir ajuda"
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
@@ -748,12 +749,12 @@ msgstr "%s: no s'ha pogut analitzar el color %s\n"
 #: ../src/settings.c:287
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: No pot analitzar el calor: «Gvalue» no és de tipus «STRING»"
+msgstr "%s: No pot analitzar el color: «Gvalue» no és de tipus «STRING»"
 
 #: ../src/terminate.c:75
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Error al llegir dades del procés fill: %s\n"
+msgstr "Error en llegir dades del procés fill: %s\n"
 
 #: ../src/terminate.c:123
 #, c-format
