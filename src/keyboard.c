@@ -110,6 +110,8 @@ getModifierMap (const char *str, guint *map)
         ret &= addModifierMap (map, MetaMask);
     }
 
+    *map &= MODIFIER_MASK & ~IGNORE_MASK;
+
     return ret;
 }
 
