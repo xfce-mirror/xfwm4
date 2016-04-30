@@ -73,29 +73,44 @@ getKeycode (Display *dpy, const char *str)
     return XKeysymToKeycode (dpy, keysym);
 }
 
-guint
-getModifierMap (const char *str)
+static gboolean
+addModifierMap (guint *map, guint mask)
 {
-    guint map;
-
-    gtk_accelerator_parse (str, NULL, &map);
-
-    if ((map & GDK_SUPER_MASK) == GDK_SUPER_MASK)
+    if (!mask)
     {
-        map |= SuperMask;
+        return FALSE;
     }
 
-    if ((map & GDK_HYPER_MASK) == GDK_HYPER_MASK)
+    *map |= mask;
+
+    return TRUE;
+}
+
+gboolean
+getModifierMap (const char *str, guint *map)
+{
+    gboolean ret;
+
+    ret = TRUE;
+    gtk_accelerator_parse (str, NULL, map);
+
+    ret = TRUE;
+    if ((*map & GDK_SUPER_MASK) == GDK_SUPER_MASK)
     {
-        map |= HyperMask;
+        ret &= addModifierMap (map, SuperMask);
     }
 
-    if ((map & GDK_META_MASK) == GDK_META_MASK)
+    if ((*map & GDK_HYPER_MASK) == GDK_HYPER_MASK)
     {
-        map |= MetaMask;
+        ret &= addModifierMap (map, HyperMask);
     }
 
-    return map & MODIFIER_MASK & ~IGNORE_MASK;
+    if ((*map & GDK_META_MASK) == GDK_META_MASK)
+    {
+        ret &= addModifierMap (map, MetaMask);
+    }
+
+    return ret;
 }
 
 void
@@ -119,8 +134,13 @@ parseKeyString (Display * dpy, MyKey * key, const char *str)
         return;
     }
 
+    if (!getModifierMap (str, &key->modifier))
+    {
+        g_message (_("Unsupported keyboard modifier '%s'"), str);
+        key->modifier = 0;
+        return;
+    }
     key->keycode = getKeycode (dpy, str);
-    key->modifier = getModifierMap (str);
 
     TRACE ("keycode = 0x%x, modifier = 0x%x", key->keycode, key->modifier);
 }
