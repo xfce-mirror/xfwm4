@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-01 13:45+0000\n"
+"PO-Revision-Date: 2016-05-01 17:47+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -429,7 +429,7 @@ msgstr "_No facis res"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Key used to _grab and move windows:"
-msgstr "Tecla emprada per arrosse_gar i moure finestres:"
+msgstr "La tecla que s'utilitza per arrosse_gar i moure les finestres:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "_Raise windows when any mouse button is pressed"
@@ -449,7 +449,7 @@ msgstr "Organitza automàticament les finestres en un mosaic en moure's cap a l'
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Empra resistència a les _vores en lloc de l'alineació de les finestres"
+msgstr "Utilitza la resistència de les _vores en lloc de l'alineació de les finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Notify of _urgency by making window's decoration blink"
@@ -469,7 +469,7 @@ msgstr "_Accessibilitat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Empra la roda del _ratolí a l'escriptori per canviar d'espai de treball"
+msgstr "Utilitza la roda del _ratolí a l'escriptori per canviar d'espai de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
