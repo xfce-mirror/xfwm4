@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2016-04-30 11:12+0000\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-05-01 13:45+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -453,7 +453,7 @@ msgstr "Empra resistència a les _vores en lloc de l'alineació de les finestres
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Notifica l'_urgència fent que la decoració de la finestra fassi pampallugues"
+msgstr "Notifica la _urgència en fer que la decoració de la finestra parpellegi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Keep urgent windows _blinking repeatedly"
@@ -465,7 +465,7 @@ msgstr "Usa la rodeta del ratolí sobre ela barra del títol per enrot_llar la f
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "_Accessibility"
-msgstr "_Accesibilitat"
+msgstr "_Accessibilitat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -600,36 +600,41 @@ msgid "_Margins"
 msgstr "_Marges"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (a %s)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "No s'admet el modificador de teclat «%s»"
+
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Executar-se com a procés de fons (no suportat)"
 
-#: ../src/main.c:618
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Estableix el mode «composite»"
 
-#: ../src/main.c:620
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Estableix el mode «composite» (no suportat)"
 
-#: ../src/main.c:622
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Reemplaça el gestor de finestres existent"
 
-#: ../src/main.c:623
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Mostrar informació de la versió i sortir"
 
-#: ../src/main.c:634
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:641
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Teclegeu «%s --help» per a obtenir ajuda"
@@ -731,22 +736,22 @@ msgstr "Reinicia"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut captura el punter\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: no s'ha pogut situar el color %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: No es pot posar el color: «GValue» del color no és del tipus «STRING»"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: no s'ha pogut analitzar el color %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: No pot analitzar el color: «Gvalue» no és de tipus «STRING»"
