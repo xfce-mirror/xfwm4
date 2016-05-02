@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-02 10:19+0000\n"
+"PO-Revision-Date: 2016-05-02 20:29+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgstr "Nom de l'espai de treball"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
-msgstr "Sòcol del gestor d'ajustaments"
+msgstr "Sòcol del gestor d'ajusts"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -93,7 +93,7 @@ msgstr "Configureu el comportament de les finestres i de les dreceres"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "Ajustaments avançats del gestor de finestres"
+msgstr "Retocs del gestor de finestres"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -389,15 +389,15 @@ msgstr "_Inclou les finestres amagades (i.e. les iconificades)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr "Rota en_tre les finestres de tots els espais de treball"
+msgstr "Recorre les finestres en tots els espais de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Dibuixa el marc al voltant de les finestres seleccionades al rotar-les"
+msgstr "_Dibuixa el marc al voltant de les finestres seleccionades mentre es recorrin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle through windows in a _list"
-msgstr "Rota entre les finestres d'una _llista"
+msgstr "Recorre les finestres en una _llista"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "C_ycling"
@@ -409,11 +409,11 @@ msgstr "Activa la prevenció de f_urt d'enfocament"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Fes cas de la senyal e_standard d'enfocament ICCCM"
+msgstr "Fes cas de senyal e_standard d'enfocament ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
-msgstr "Quan una finestra s’alça:"
+msgstr "Quan una finestra es passa al primer pla:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "_Bring window on current workspace"
@@ -461,7 +461,7 @@ msgstr "Manté les finestres urgents fent _pampallugues"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Usa la rodeta del ratolí sobre ela barra del títol per enrot_llar la finestra"
+msgstr "Utilitzeu la roda del ratolí damunt de la barra de títol per enrot_llar la finestra"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "_Accessibility"
@@ -491,7 +491,7 @@ msgstr "_Espais de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Mida _mínima de les finestres per emplaçar-les inteŀligentment:"
+msgstr "Mida _mínima de les finestres per accionar l'emplaçament intel·ligentment:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
@@ -637,7 +637,7 @@ msgstr "[ARGUMENTS...]"
 #: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Teclegeu «%s --help» per a obtenir ajuda"
+msgstr "Teclegeu «%s --help» per a obtenir ajuda."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
