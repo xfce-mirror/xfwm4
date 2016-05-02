@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-01 17:47+0000\n"
+"PO-Revision-Date: 2016-05-02 10:19+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nFeu %s --help per veure la llista sencera d'opcions.\n"
+msgstr "%s: %s\nProveu %s --help per veure la llista completa de les opcions disponibles de la línia d'ordres.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -88,7 +88,7 @@ msgstr "Gestor de finestres"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Configura el comportament de les finestres i de les dreceres"
+msgstr "Configureu el comportament de les finestres i de les dreceres"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -108,7 +108,7 @@ msgstr "Espais de treball"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Configura la disposició, els noms i els marges"
+msgstr "Configureu la disposició, els noms i els marges"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
@@ -124,7 +124,7 @@ msgstr "<b>_Alineació del títol</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
-msgstr "Pitgeu i arrossegueu els botons per canviar el disseny"
+msgstr "Feu clic i arrossegueu els botons per canviar la disposició"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Title"
@@ -168,7 +168,7 @@ msgstr "Ocult"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "<b>Button layout</b>"
-msgstr "<b>Disseny dels botons</b>"
+msgstr "<b>Disposició dels botons</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "_Style"
@@ -238,7 +238,7 @@ msgstr "Posa en primer pla la finestra quan es faci clic d_ins de la finestra de
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
-msgstr "<b>Primer pla al pitjar</b>"
+msgstr "<b>Primer pla en fer clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
@@ -520,7 +520,7 @@ msgstr "_Habilita la composició de pantalles"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Mostra directament a pantalla sencera les _finestres"
+msgstr "Mostra directament a pantalla completa les _finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
@@ -593,7 +593,7 @@ msgstr "_General"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Els marges són uns espais a les vores de la pantalla on no s'emplaçarà cap finestra"
+msgstr "Els marges són les àrees a les vores de la pantalla on no s'emplaçarà cap finestra"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -674,11 +674,11 @@ msgstr "Sempre a _dalt"
 
 #: ../src/menu.c:52
 msgid "_Same as Other Windows"
-msgstr "_Igual que la resta de finestres"
+msgstr "_Igual que les altres finestres"
 
 #: ../src/menu.c:53
 msgid "Always _Below Other Windows"
-msgstr "Sempre _sota les altres finestres"
+msgstr "Sempre per _sota de les altres finestres"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -690,11 +690,11 @@ msgstr "Enrotlla la finestra cap a baix"
 
 #: ../src/menu.c:56
 msgid "_Fullscreen"
-msgstr "_Pantalla sencera"
+msgstr "_Pantalla completa"
 
 #: ../src/menu.c:57
 msgid "Leave _Fullscreen"
-msgstr "Surt de la _pantalla sencera"
+msgstr "Surt de la _pantalla completa"
 
 #: ../src/menu.c:58
 msgid "Context _Help"
