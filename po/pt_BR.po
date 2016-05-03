@@ -4,20 +4,20 @@
 # 
 # Translators:
 # Adriano Winter Bess <awbess@gmail.com>, 2006
-# André Miranda <andreldm1989@gmail.com>, 2015
+# André Miranda <andreldm1989@gmail.com>, 2015-2016
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008
 # Miguel Frasson <mvsfrasson@gmail.com>, 2015
-# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013-2014
+# Rafael Fontenelle <rffontenelle@gmail.com>, 2013-2014
 # Rodrigo Coacci <rcoacci@gmail.com>, 2004
 # Vladimir Melo <vmelo@gnome.org>, 2008
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 18:31+0200\n"
-"PO-Revision-Date: 2015-05-02 20:20+0000\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-05-02 23:43+0000\n"
 "Last-Translator: André Miranda <andreldm1989@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfwm4/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/xfce/xfwm4/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -609,35 +609,36 @@ msgstr "_Margens"
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
 
-#: ../src/main.c:617
-msgid "Fork to the background"
-msgstr "Bifurcar para o segundo plano"
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "Modificador de tecla '%s' não suportado"
 
-#: ../src/main.c:619
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Bifurcar para o segundo plano (não suportado)"
 
-#: ../src/main.c:622
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Definir o modo compositor"
 
-#: ../src/main.c:624
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Definir o modo compositor (não suportado)"
 
-#: ../src/main.c:626
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Substituir o gerenciador de janelas existente"
 
-#: ../src/main.c:627
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Imprimir informação de versão e sair"
 
-#: ../src/main.c:638
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:645
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Digite \"%s --help\" para as opções de uso."
@@ -739,22 +740,22 @@ msgstr "Reiniciar"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: o GtkMenu falhou ao capturar o ponteiro\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: não é possível alocar a cor %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: não é possível alocar a cor: o GValue para a cor não é do tipo STRING"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: não é possível analisar a cor %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: não é possível analisar a cor: o GValue para a cor não é do tipo STRING"
