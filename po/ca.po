@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-03 10:24+0000\n"
+"PO-Revision-Date: 2016-05-04 12:54+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -364,7 +364,7 @@ msgstr "No s'ha pogut iniciar «xfconf». Motiu: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
-msgstr "No s'ha pogut mostrar el diàleg de propietats."
+msgstr "No s'ha pogut mostrar el diàleg d'ajusts."
 
 #: ../settings-dialogs/xfwm4-settings.c:1901
 #: ../settings-dialogs/xfwm4-settings.c:1902
@@ -401,7 +401,7 @@ msgstr "Recorre les finestres en una _llista"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "C_ycling"
-msgstr "_Rotació"
+msgstr "_Recorregut"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Activate foc_us stealing prevention"
@@ -628,7 +628,7 @@ msgstr "Reemplaça el gestor de finestres existent"
 
 #: ../src/main.c:632
 msgid "Print version information and exit"
-msgstr "Mostrar informació de la versió i sortir"
+msgstr "Mostra la informació de la versió i surt"
 
 #: ../src/main.c:643
 msgid "[ARGUMENTS...]"
