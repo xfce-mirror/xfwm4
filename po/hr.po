@@ -5,13 +5,13 @@
 # Translators:
 # Edin Veskovic <edin.veskovic@openmailbox.org>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2010
-# Ivica  Kolić <ikoli@yahoo.com>, 2014-2015
+# Ivica  Kolić <ikoli@yahoo.com>, 2014-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2015-12-06 09:13+0000\n"
+"PO-Revision-Date: 2016-05-08 05:42+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfwm4/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -116,11 +116,11 @@ msgstr "<b>_Tema</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
-msgstr "<b>Fon_t Natpisa</b>"
+msgstr "<b>Fon_t natpisa</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
-msgstr "<b>_Centriranje natpisa</b>"
+msgstr "<b>Centriranje _natpisa</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
@@ -180,7 +180,7 @@ msgstr "_Postavi na uobičajene vrijednosti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "<b>Window _shortcuts</b>"
-msgstr "<b>Kratice pro_zora</b>"
+msgstr "<b>Kratice _prozora</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Ke_yboard"
@@ -196,7 +196,7 @@ msgstr "Fokus slijedi _miša"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Delay before window receives focus:"
-msgstr "Stanka prije nego prozor _primi  fokus"
+msgstr "_Odgoda prije nego prozor primi  fokus:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
