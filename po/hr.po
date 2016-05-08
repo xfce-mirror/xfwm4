@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-08 13:24+0000\n"
+"PO-Revision-Date: 2016-05-08 19:52+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfwm4/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -525,7 +525,7 @@ msgstr "Direktno _prikazuj prozore u nadsloju punog zaslona"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Synchronize drawing to the _vertical blank"
-msgstr "Sinkroniziraj crtenje s _vertical blank"
+msgstr "Sinkroniziraj osvježavanje slike s hardverskim osvježavanjem monitora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
