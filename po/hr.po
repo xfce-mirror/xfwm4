@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2016-05-08 05:42+0000\n"
+"PO-Revision-Date: 2016-05-08 19:54+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfwm4/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -861,11 +861,11 @@ msgstr "%s (na %s)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
-msgstr "Razdijeli u pozadinu"
+msgstr "Prebaci proces u pozadinsko izvršavanje"
 
 #: ../src/main.c:542
 msgid "Fork to the background (not supported)"
-msgstr "Razdijeli u pozadinu (nije podržano)"
+msgstr "Prebaci proces u pozadinsko izvršavanje (nije podržano)"
 
 #: ../src/main.c:545
 msgid "Set the compositor mode"
