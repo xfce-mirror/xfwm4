@@ -5,18 +5,18 @@
 # Translators:
 # Adam Stachowicz <saibamenppl@gmail.com>, 2015
 # Daniel Mróz <beorn@alpha.pl>, 2003
-# Dawid <hoek@hoek.pl>, 2014-2015
+# Dawid, 2014-2015
 # Paweł Pastuła <pastulap@poczta.onet.pl>, 2003
-# Piotr Sokół <psokol@jabster.pl>, 2009,2011-2014
-# Piotr Strębski <strebski@o2.pl>, 2013,2015
+# Piotr Sokół <psokol.l10n@gmail.com>, 2009,2011-2014
+# Piotr Strębski <strebski@o2.pl>, 2013,2015-2016
 # Robert Kurowski <koorek@o2.pl>, 2005
 # Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-09-17 06:55+0000\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-05-11 11:38+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfwm4/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -605,36 +605,41 @@ msgid "_Margins"
 msgstr "_Marginesy"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "Nieobsługiwany modyfikator klawiatury „%s”"
+
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Uruchamia w tle (nie obsługiwane)"
 
-#: ../src/main.c:618
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Przełącza obsługę kompozycji"
 
-#: ../src/main.c:620
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Przełącza obsługę kompozycji (nie obsługiwane)"
 
-#: ../src/main.c:622
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Zastępuje bieżący menedżer okien"
 
-#: ../src/main.c:623
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Wypisuje informacje o wersji i kończy"
 
-#: ../src/main.c:634
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETR...]"
 
-#: ../src/main.c:641
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy."
@@ -736,22 +741,22 @@ msgstr "Uruchom ponownie"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: widżetowi GtkMenu nie udało się pozyskać kursora myszy\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nie można przypisać koloru %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Nie można przypisać koloru: wartość GValue dla koloru nie jest typu STRING"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nie można przetworzyć koloru %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Nie można przetworzyć koloru: wartość GValue dla koloru nie jest typu STRING"
