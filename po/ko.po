@@ -4,15 +4,15 @@
 # 
 # Translators:
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2015
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-06-16 17:36+0000\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-05-13 19:44+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
-"Language-Team: Korean (http://www.transifex.com/projects/p/xfwm4/language/ko/)\n"
+"Language-Team: Korean (http://www.transifex.com/xfce/xfwm4/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -599,36 +599,41 @@ msgid "_Margins"
 msgstr "여백(_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (%s 에서)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "지원하지 않는 '%s' 특수키 입니다"
+
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "배경으로 쪼개기(지원하지 않음)"
 
-#: ../src/main.c:618
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "합성 처리 모드 설정"
 
-#: ../src/main.c:620
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "합성 처리 모드 설정(지원하지 않음)"
 
-#: ../src/main.c:622
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "기존 창 관리자 바꾸기"
 
-#: ../src/main.c:623
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "버전 정보"
 
-#: ../src/main.c:634
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "<인자…>"
 
-#: ../src/main.c:641
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "사용법을 보려면 \"%s --help\"를 입력하십시오."
@@ -730,22 +735,22 @@ msgstr "다시 시작"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu가 포인터를 얻지 못했습니다.\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: %s색을 할당하지 못했습니다.\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: 색을 할당하지 못했습니다: 색의 GValue 형식이 문자열이 아닙니다."
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: %s색을 해석하지 못했습니다.\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: 색을 해석하지 못했습니다: 색의 GValue 형식이 문자열이 아닙니다."
