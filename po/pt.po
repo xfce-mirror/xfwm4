@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2016-04-02 15:14+0000\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-05-15 16:56+0000\n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -600,36 +600,41 @@ msgid "_Margins"
 msgstr "_Margens"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (em %s)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "Modificador de teclado não suportado '%s'"
+
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Enviar para segundo plano (não suportado)"
 
-#: ../src/main.c:618
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Definir modo de composição"
 
-#: ../src/main.c:620
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Definir modo de composição (não suportado)"
 
-#: ../src/main.c:622
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Substituir o gestor de janelas existente"
 
-#: ../src/main.c:623
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Mostra as informações da versão e sai"
 
-#: ../src/main.c:634
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:641
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Digite \"%s --help\" para instruções de utilização."
@@ -731,22 +736,22 @@ msgstr "Reiniciar"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falhou a capturar o ponteiro\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: incapaz de alocar a cor %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: incapaz de alocar cor. GValue para cor não é do tipo STRING"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: incapaz de processar a cor %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: incapaz de processar a cor. GValue para cor não é do tipo STRING"
