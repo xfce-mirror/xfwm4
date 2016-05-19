@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008,2016
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 18:31+0200\n"
-"PO-Revision-Date: 2015-05-06 12:45+0000\n"
-"Last-Translator: Masato HASHIMOTO <cabezon.hashimoto@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/xfwm4/language/ja/)\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-05-19 03:19+0000\n"
+"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>\n"
+"Language-Team: Japanese (http://www.transifex.com/xfce/xfwm4/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -604,35 +604,36 @@ msgstr "余白(_M)"
 msgid "%s (on %s)"
 msgstr "%s (ホスト %s)"
 
-#: ../src/main.c:617
-msgid "Fork to the background"
-msgstr "バックグラウンドに fork する"
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "サポートされていない修飾キー '%s'"
 
-#: ../src/main.c:619
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "バックグラウンドに fork する (未サポート)"
 
-#: ../src/main.c:622
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "コンポジット処理モードを設定する"
 
-#: ../src/main.c:624
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "コンポジット処理モードを設定する (未サポート)"
 
-#: ../src/main.c:626
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "既存のウィンドウマネージャーを置き換える"
 
-#: ../src/main.c:627
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "バージョン情報を表示して終了する"
 
-#: ../src/main.c:638
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[引数...]"
 
-#: ../src/main.c:645
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "\"%s --help\" と入力すると使用法が表示されます。"
@@ -734,22 +735,22 @@ msgstr "再起動"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインターを取得できませんでした\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: 色 %s を割り当てられません\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: 色を割り当てられません: 色の GValue が STRING 型ではありません"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: 色 %s を解析できません\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: 色を解析できません: 色の GValue が STRING 型ではありません"
