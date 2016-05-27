@@ -472,10 +472,8 @@ static void
 clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
 {
     ScreenInfo *screen_info;
-    GdkRectangle rect;
     gboolean centered;
     int diff_x, diff_y;
-    int monitor_nbr;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientKeepVisible");
@@ -484,27 +482,20 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
     screen_info = c->screen_info;
 
     centered = FALSE;
-    if ((c->size->x == 0) && (c->size->y == 0) && (c->type & (WINDOW_TYPE_DIALOG)))
+    /* We only center dialogs */
+    if (c->type & (WINDOW_TYPE_DIALOG))
     {
-        /* Dialogs that place temselves in (0,0) will be centered */
-        centered = TRUE;
-    }
-    else if (n_monitors > 1)
-    {
-        /* First, check if the window is centered on the whole screen */
-        diff_x = abs (c->size->x - ((c->screen_info->width - c->size->width) / 2));
-        diff_y = abs (c->size->y - ((c->screen_info->height - c->size->height) / 2));
-
-        monitor_nbr = 0;
-        centered = ((diff_x < 25) && (diff_y < 25));
-
-        while ((!centered) && (monitor_nbr < n_monitors))
+        if ((c->size->x == 0) && (c->size->y == 0))
         {
-            gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_nbr, &rect);
-            diff_x = abs (c->size->x - ((rect.width - c->size->width) / 2));
-            diff_y = abs (c->size->y - ((rect.height - c->size->height) / 2));
+            /* Dialogs that place temselves in (0,0) will be centered */
+            centered = TRUE;
+        }
+        else if ((n_monitors > 1) && (c->size->x > 0) && (c->size->y > 0))
+        {
+            /* Check if the window is centered on the whole screen */
+            diff_x = ABS(c->size->x - ((c->screen_info->width - c->size->width) / 2));
+            diff_y = ABS(c->size->y - ((c->screen_info->height - c->size->height) / 2));
             centered = ((diff_x < 25) && (diff_y < 25));
-            monitor_nbr++;
         }
     }
     if (centered)
@@ -769,6 +760,7 @@ clientInitPosition (Client * c)
     gint n_monitors;
     gboolean place;
     gboolean position;
+    gboolean is_transient;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientInitPosition");
@@ -779,30 +771,25 @@ clientInitPosition (Client * c)
     position = (c->size->flags & (PPosition | USPosition));
 
     n_monitors = myScreenGetNumMonitors (c->screen_info);
-    if ((n_monitors > 1) || (screen_info->params->placement_mode == PLACE_MOUSE))
+    gdk_screen_get_monitor_geometry (screen_info->gscr, 0, &rect);
+    is_transient = clientIsTransient (c);
+
+    if (position || is_transient || (c->type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)))
     {
-        getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
-        myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
-    }
-    else
-    {
-        gdk_screen_get_monitor_geometry (screen_info->gscr, 0, &rect);
-    }
-    if (position || (c->type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)) || clientIsTransient (c))
-    {
-        if (!position && clientIsTransient (c) && (c2 = clientGetTransient (c)))
+        if (!position && is_transient && (c2 = clientGetTransient (c)))
         {
             /* Center transient relative to their parent window */
             c->x = c2->x + (c2->width - c->width) / 2;
             c->y = c2->y + (c2->height - c->height) / 2;
-
-            if (n_monitors > 1)
-            {
-                msx = frameExtentX (c) + (frameExtentWidth (c) / 2);
-                msy = frameExtentY (c) + (frameExtentHeight (c) / 2);
-                myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
-            }
         }
+
+        if (n_monitors > 1)
+        {
+            msx = frameExtentX (c) + (frameExtentWidth (c) / 2);
+            msy = frameExtentY (c) + (frameExtentHeight (c) / 2);
+            myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
+        }
+
         if (CONSTRAINED_WINDOW (c))
         {
             clientKeepVisible (c, n_monitors, &rect);
@@ -811,6 +798,8 @@ clientInitPosition (Client * c)
     }
     else
     {
+        getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
+        myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
         place = TRUE;
     }
 
