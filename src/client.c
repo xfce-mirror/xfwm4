@@ -1872,8 +1872,21 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         XUnmapWindow (display_info->dpy, c->window);
     }
     XReparentWindow (display_info->dpy, c->window, c->frame, frameLeft (c), frameTop (c));
-    valuemask = CWEventMask;
+    valuemask = CWEventMask|CWWinGravity;
+
+    /* Force win_gravity to NorthWest. Any other gravity has the
+     * window move relative to its parent when the parent resizes.
+     *
+     * There are many bug reports related to libreoffice using
+     * StaticGravity, including:
+     *
+     * http://www.linuxquestions.org/questions/linux-desktop-74/strange-libreoffice-problem-on-debian-with-xfce-4175469847/
+     * https://bugs.launchpad.net/ubuntu/+source/nvidia-graphics-drivers/+bug/889212
+     * https://bbs.archlinux.org/viewtopic.php?id=133137
+     * http://forums.debian.net/viewtopic.php?f=6&t=105757
+     */
     attributes.event_mask = (CLIENT_EVENT_MASK);
+    attributes.win_gravity = NorthWestGravity;
     XChangeWindowAttributes (display_info->dpy, c->window, valuemask, &attributes);
     if (display_info->have_shape)
     {
