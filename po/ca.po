@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-04 12:54+0000\n"
+"PO-Revision-Date: 2016-06-05 16:31+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -287,7 +287,7 @@ msgstr "Resistència de les _vores:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Canvia d'espai de treball quan arribeu a l'extrem de la pantalla</b>"
+msgstr "<b>Canvia d'espai de treball quan s'arribi a la vora de la pantalla</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -299,7 +299,7 @@ msgstr "En canviar la mi_da"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
-msgstr "<b>Amaga el contingut de les finestres</b>"
+msgstr "<b>Oculta el contingut de les finestres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
@@ -319,7 +319,7 @@ msgstr "Enrotlla la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Hide window"
-msgstr "Amaga la finestra"
+msgstr "Oculta la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Maximize window"
@@ -475,7 +475,7 @@ msgstr "Utilitza la roda del _ratolí a l'escriptori per canviar d'espai de treb
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Recorda i torna a cridar a l'espai de treball previ\nquan canvii mitjançant les dreceres de teclat"
+msgstr "_Recorda i torna a cridar a l'espai de treball anterior\nquan es canviï a través de les dreceres de teclat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
