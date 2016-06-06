@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-06-05 16:33+0000\n"
+"PO-Revision-Date: 2016-06-06 00:33+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -479,7 +479,7 @@ msgstr "_Recorda i torna a cridar a l'espai de treball anterior\nquan es canviï
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Canvia d'espai de treball en funció del _format actual de l'escriptori"
+msgstr "Canvia d'espai de treball en funció del _format real de l'escriptori"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
