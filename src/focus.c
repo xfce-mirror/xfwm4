@@ -482,6 +482,7 @@ void
 clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 {
     Client *c2;
+    gboolean restacked;
 
     TRACE ("entering clientUpdateFocus");
 
@@ -522,7 +523,13 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         }
         clientSetNetState (c);
-        clientAdjustFullscreenLayer (c, TRUE);
+        restacked = clientAdjustFullscreenLayer (c, TRUE);
+
+        if (!restacked && screen_info->params->click_to_focus)
+        {
+            clientRaise (c, None);
+            clientSetLastRaise (c);
+        }
         frameQueueDraw (c, FALSE);
         clientUpdateOpacity (c);
     }

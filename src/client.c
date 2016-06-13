@@ -2612,21 +2612,25 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
                 workspaceSwitch (screen_info, c->win_workspace, NULL, FALSE, timestamp);
             }
         }
-        clientRaise (sibling, None);
         clientShow (sibling, TRUE);
+        if (!screen_info->params->click_to_focus)
+        {
+            clientRaise (sibling, None);
+            clientSetLastRaise (c);
+        }
         if (!source_is_application || screen_info->params->click_to_focus || (c->type & WINDOW_TYPE_DONT_FOCUS))
         {
             /*
                It's a bit tricky here, we want to honor the activate request only if:
 
                - The window use the _NET_ACTIVE_WINDOW protocol and identify itself as a pager,
-               - Or we use the click to focus model, in that case we focus the raised window anyway,
+               - Or we use the click to focus model, in that case we focus the window anyway,
                - Or the request comes from an application that we would not focus by default,
                  such as panels for example
              */
+
             clientSetFocus (screen_info, c, timestamp, NO_FOCUS_FLAG);
         }
-        clientSetLastRaise (c);
     }
     else
     {
