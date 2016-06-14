@@ -944,6 +944,15 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
             compositorZoomOut(screen_info, ev);
         }
 #endif /* HAVE_COMPOSITOR */
+        else if ((ev->button == Button8) && (state) && (state == screen_info->params->easy_click))
+        {
+            workspaceSwitch (screen_info, screen_info->current_ws - 1, NULL, TRUE, ev->time);
+        }
+        else if ((ev->button == Button9) && (state) && (state == screen_info->params->easy_click))
+        {
+            workspaceSwitch (screen_info, screen_info->current_ws + 1, NULL, TRUE, ev->time);
+        }
+
         else if (WIN_IS_BUTTON (win))
         {
             if (ev->button <= Button3)

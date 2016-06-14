@@ -46,6 +46,14 @@
 #define Button7 7
 #endif
 
+#ifndef Button8
+#define Button8 8
+#endif
+
+#ifndef Button9
+#define Button9 9
+#endif
+
 unsigned int             getMouseXY                             (ScreenInfo *,
                                                                  Window,
                                                                  int *,
