@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-06-06 00:33+0000\n"
+"PO-Revision-Date: 2016-06-18 06:51+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -624,7 +624,7 @@ msgstr "Estableix el mode «composite» (no suportat)"
 
 #: ../src/main.c:631
 msgid "Replace the existing window manager"
-msgstr "Reemplaça el gestor de finestres existent"
+msgstr "Substitueix el gestor de finestres existent"
 
 #: ../src/main.c:632
 msgid "Print version information and exit"
@@ -739,22 +739,22 @@ msgstr "%s: GtkMenu no ha pogut captura el punter\n"
 #: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: no s'ha pogut situar el color %s\n"
+msgstr "%s: No es pot assignar el color %s\n"
 
 #: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: No es pot posar el color: «GValue» del color no és del tipus «STRING»"
+msgstr "%s: No es pot assignar el color: «GValue» per al color no és del tipus «STRING»"
 
 #: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
-msgstr "%s: no s'ha pogut analitzar el color %s\n"
+msgstr "%s: No es pot analitzar el color %s\n"
 
 #: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: No pot analitzar el color: «Gvalue» no és de tipus «STRING»"
+msgstr "%s: No es pot analitzar el color: «Gvalue» per al color no és de tipus «STRING»"
 
 #: ../src/terminate.c:75
 #, c-format
@@ -764,4 +764,4 @@ msgstr "Error en llegir dades del procés fill: %s\n"
 #: ../src/terminate.c:123
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "No s'ha pogut generar el diàleg d'ajuda: %s\n"
+msgstr "No es pot generar el diàleg d'ajuda: %s\n"
