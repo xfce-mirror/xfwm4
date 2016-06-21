@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michael Findlay <keltoiboy@gmail.com>, 2013-2015
+# Michael Findlay <translate@cobber-linux.org>, 2013-2015
+# Michael Findlay <translate@cobber-linux.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 18:31+0200\n"
-"PO-Revision-Date: 2015-06-11 05:38+0000\n"
-"Last-Translator: Michael Findlay <keltoiboy@gmail.com>\n"
-"Language-Team: English (Australia) (http://www.transifex.com/projects/p/xfwm4/language/en_AU/)\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-06-21 08:52+0000\n"
+"Last-Translator: Michael Findlay <translate@cobber-linux.org>\n"
+"Language-Team: English (Australia) (http://www.transifex.com/xfce/xfwm4/language/en_AU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -603,35 +604,36 @@ msgstr "_Margins"
 msgid "%s (on %s)"
 msgstr "%s (on %s)"
 
-#: ../src/main.c:617
-msgid "Fork to the background"
-msgstr "Fork to the background"
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "Unsupported keyboard modifier '%s'"
 
-#: ../src/main.c:619
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Fork to the background (not supported)"
 
-#: ../src/main.c:622
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Set the compositor mode"
 
-#: ../src/main.c:624
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Set the compositor mode (not supported)"
 
-#: ../src/main.c:626
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Replace the existing window manager"
 
-#: ../src/main.c:627
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Print version information and exit"
 
-#: ../src/main.c:638
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:645
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Type \"%s --help\" for usage."
@@ -733,22 +735,22 @@ msgstr "Restart"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Cannot allocate colour %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Cannot allocate colour: GValue for colour is not of type STRING"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Cannot parse colour %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Cannot parse colour: GValue for colour is not of type STRING"
