@@ -8,16 +8,16 @@
 # erenturkay <turkay.eren@gmail.com>, 2007
 # Gökmen Görgen <gkmngrgn@gmail.com>, 2008
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2015
-# Necdet Yücel <necdetyucel@gmail.com>, 2014
+# Necdet Yücel <necdetyucel@gmail.com>, 2014,2016
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 18:31+0200\n"
-"PO-Revision-Date: 2015-05-26 09:41+0000\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-07-24 20:00+0000\n"
 "Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
-"Language-Team: Turkish (http://www.transifex.com/projects/p/xfwm4/language/tr/)\n"
+"Language-Team: Turkish (http://www.transifex.com/xfce/xfwm4/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -609,35 +609,36 @@ msgstr "_Boşluklar"
 msgid "%s (on %s)"
 msgstr "%s (%s üzerinde)"
 
-#: ../src/main.c:617
-msgid "Fork to the background"
-msgstr "Arka planda çalıştır"
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "Desteklenmeyen klavye düzenleyicisi '%s'"
 
-#: ../src/main.c:619
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Arka planda çalıştır (desteklenmiyor)"
 
-#: ../src/main.c:622
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Compositor modunu ayarla"
 
-#: ../src/main.c:624
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Compositor modunu ayarla (desteklenmiyor)"
 
-#: ../src/main.c:626
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Var olan pencere yöneticisi ile değiştir"
 
-#: ../src/main.c:627
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Sürüm bilgisini göster ve çık."
 
-#: ../src/main.c:638
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ARGÜMANLAR]"
 
-#: ../src/main.c:645
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Kullanım bilgisi için \"%s --help\" yazın"
@@ -739,22 +740,22 @@ msgstr "Yeni_den Başlat"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Aktif renk algılanamıyor %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Renk ayarlanamadı: GValue için renk bir STRING tipi değil"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Aktif renk çözümlenemiyor %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Renk ayrıştırılamadı: GValue için renk bir STRING tipi değil"
