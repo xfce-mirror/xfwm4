@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-07-01 19:17+0000\n"
+"PO-Revision-Date: 2016-07-31 15:16+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr "_Klaviatūra"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr "Dėmesys sutelkiamas, spustelėjus pelės mygtuką"
+msgstr "Fokusuojama, spustelėjus pelės mygtuką"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
@@ -234,7 +234,7 @@ msgstr "<b>Iškelti, kai fokusuojama</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
-msgstr "Iškelti langą kai _spaudžiama programos lango viduje"
+msgstr "Iškelti langą, kai _spaudžiama programos lango viduje"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
@@ -405,11 +405,11 @@ msgstr "_Perjungimas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Activate foc_us stealing prevention"
-msgstr "Aktyvuoti _fokuso nukreipimo draudimą"
+msgstr "Aktyvuoti _fokusavimo nukreipimo draudimą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Garbingas _standartinis ICCCM fokuso patarimas"
+msgstr "Garbingas _standartinis ICCCM fokusavimo patarimas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
