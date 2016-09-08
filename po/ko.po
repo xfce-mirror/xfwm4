@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-13 19:44+0000\n"
+"PO-Revision-Date: 2016-09-08 11:22+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfwm4/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -92,7 +92,7 @@ msgstr "창 동작 및 바로 가기를 설정합니다"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "창 관리자 기능향상"
+msgstr "창 관리자 기능 개선"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -282,11 +282,11 @@ msgstr "끌어 놓은 창에 따라(_D)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
-msgstr "화면 모서리 저항(_E):"
+msgstr "화면 가장자리 저항(_E):"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>화면 모서리에 도달하면 작업 공간 전환</b>"
+msgstr "<b>화면 가장자리에 도달하면 작업 공간 전환</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -444,11 +444,11 @@ msgstr "창을 최대화하면 제목 숨기기"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "화면 모서리로 창을 옮길 때 자동으로 바둑판 배치(_T)"
+msgstr "화면 가장자리로 창을 옮길 때 자동으로 바둑판 배치(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
-msgstr "창 맞춤 대신 모서리 저항을 사용(_E)"
+msgstr "창 맞춤 대신 가장자리 저항을 사용(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Notify of _urgency by making window's decoration blink"
