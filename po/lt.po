@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-09-07 15:17+0000\n"
+"PO-Revision-Date: 2016-09-16 11:00+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "Langų tvarkytuvės patobulinimai"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Konfigūruokite langų elgseną ir efektus"
+msgstr "Konfigūruoti langų elgseną ir efektus"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -108,7 +108,7 @@ msgstr "Darbo sritys"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Konfigūruokite išdėstymus, pavadinimus ir paraštes"
+msgstr "Konfigūruoti išdėstymus, pavadinimus ir paraštes"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
