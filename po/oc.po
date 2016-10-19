@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2016-03-11 16:01+0000\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2016-10-19 20:46+0000\n"
 "Last-Translator: Cédric Valmary <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/xfce/xfwm4/language/oc/)\n"
 "MIME-Version: 1.0\n"
@@ -599,36 +599,41 @@ msgid "_Margins"
 msgstr "_Marges"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (sus %s)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr ""
+
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Forker en rèire plan (pas suportat)"
 
-#: ../src/main.c:618
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Aplicar lo mòde del composidor"
 
-#: ../src/main.c:620
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Aplicar lo mòde del composidor (pas suportat)"
 
-#: ../src/main.c:622
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Remplaçar lo gestionari de fenèstra actual"
 
-#: ../src/main.c:623
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Informacion sus la version e quitar"
 
-#: ../src/main.c:634
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:641
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Picatz « %s --help » per l'usatge."
@@ -668,11 +673,11 @@ msgstr "Totjorn en a_mont"
 
 #: ../src/menu.c:52
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "Coma las autra_s fenèstras"
 
 #: ../src/menu.c:53
 msgid "Always _Below Other Windows"
-msgstr ""
+msgstr "Totjorn _jos las autras fenèstras"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -697,15 +702,15 @@ msgstr "A_juda contextuala"
 #. --------------------------------------------------------
 #: ../src/menu.c:60
 msgid "Always on _Visible Workspace"
-msgstr ""
+msgstr "Totjorn _visible suls espacis de trabalh"
 
 #: ../src/menu.c:61
 msgid "Only _Visible on This Workspace"
-msgstr ""
+msgstr "_Visible unicament sus aqueste espaci de trabalh"
 
 #: ../src/menu.c:62
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Desplaçar cap a un autre espaci de _trabalh"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -730,22 +735,22 @@ msgstr "Reamodar"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s : GtkMenu a pas pogut capturar lo puntador\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s : Impossible d'atribuir la color %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s : Impossible d'atribuir la color : la GValue de la color es pas de tipe STRING"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s : Impossible d'analisar la color %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s : Impossible d'analisar la color : la GValue de la color es pas de tipe STRING"
