@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-10-22 19:15+0000\n"
+"PO-Revision-Date: 2016-10-23 07:57+0000\n"
 "Last-Translator: Igor <f2404@yandex.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/xfce/xfwm4/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -393,7 +393,7 @@ msgstr "Это действие сбросит все настройки ком�
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Пропускать окна, у которых установлено свойство\n«не показывать в переключателе рабочих мест»\nили «не показывать на панели задач»"
+msgstr "_Пропускать окна, у которых установлено свойство «не показывать в переключателе рабочих мест»\nили «не показывать на панели задач»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -433,7 +433,7 @@ msgstr "_Переместить окно на текущее рабочее ме
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Switch to win_dow's workspace"
-msgstr "Переключится на _рабочее место окна"
+msgstr "Переключиться на _рабочее место окна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Do _nothing"
@@ -473,7 +473,7 @@ msgstr "_Непрерывно мигать срочными окнами"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Используйте колесо мыши на заголовке, чтобы свернуть его в заголовок."
+msgstr "Использовать колесо мыши на заголовке, чтобы свернуть его в заголовок"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "_Accessibility"
