@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-10-19 20:46+0000\n"
+"PO-Revision-Date: 2016-11-07 09:10+0000\n"
 "Last-Translator: Cédric Valmary <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/xfce/xfwm4/language/oc/)\n"
 "MIME-Version: 1.0\n"
@@ -440,7 +440,7 @@ msgstr "A_magar la bordadura de las fenèstras maximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Hide title of windows when maximized"
-msgstr ""
+msgstr "Amagar lo títol de las fenèstras agrandidas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -527,7 +527,7 @@ msgstr "Sincronizar lo rendut amb lo refrescament _vertical"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "Afichar una previsualizacion de las fenèstras a la plaça de las icònas al moment de la navigacion"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
@@ -607,7 +607,7 @@ msgstr "%s (sus %s)"
 #: ../src/keyboard.c:141 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "Tòca de combinason « %s » pas presa en carga"
 
 #: ../src/main.c:625
 msgid "Fork to the background (not supported)"
