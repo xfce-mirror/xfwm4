@@ -465,6 +465,11 @@ void                     clientUpdateMaximizeSize               (Client *);
 gboolean                 clientToggleMaximized                  (Client *,
                                                                  int,
                                                                  gboolean);
+gboolean                 clientToggleMaximizedAtPoint           (Client *,
+                                                                 gint,
+                                                                 gint,
+                                                                 int,
+                                                                 gboolean);
 gboolean                 clientTile                             (Client *,
                                                                  gint,
                                                                  gint,

@@ -832,7 +832,7 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
             /* mouse pointer on top edge excluding corners */
             if (y < disp_y + dist)
             {
-                return clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, FALSE);
+                return clientToggleMaximizedAtPoint (c, x, y, CLIENT_FLAG_MAXIMIZED, FALSE);
             }
         }
 
