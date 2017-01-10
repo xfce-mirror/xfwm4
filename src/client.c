@@ -3360,6 +3360,24 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
 gboolean
 clientToggleMaximized (Client *c, int mode, gboolean restore_position)
 {
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("entering clientToggleMaximized");
+
+    if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
+    {
+        return FALSE;
+    }
+
+    return clientToggleMaximizedAtPoint(c,
+                                frameX (c) + (frameWidth (c) / 2),
+                                frameY (c) + (frameHeight (c) / 2),
+                                mode, restore_position);
+}
+
+gboolean
+clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean restore_position)
+{
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
     XWindowChanges wc;
@@ -3368,8 +3386,8 @@ clientToggleMaximized (Client *c, int mode, gboolean restore_position)
 
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientToggleMaximized");
-    TRACE ("maximzing/unmaximizing client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("entering clientToggleMaximizedAtPoint");
+    TRACE ("maximizing/unmaximizing client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
     {
@@ -3378,9 +3396,7 @@ clientToggleMaximized (Client *c, int mode, gboolean restore_position)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    myScreenFindMonitorAtPoint (screen_info,
-                                frameX (c) + (frameWidth (c) / 2),
-                                frameY (c) + (frameHeight (c) / 2), &rect);
+    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     wc.x = c->x;
     wc.y = c->y;
