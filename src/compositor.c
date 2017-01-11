@@ -99,6 +99,10 @@
 #define MONITOR_ROOT_PIXMAP   1
 #endif /* MONITOR_ROOT_PIXMAP */
 
+#ifdef HAVE_PRESENT_EXTENSION
+static int (*default_error_handler) (Display *, XErrorEvent *);
+#endif /* HAVE_PRESENT_EXTENSION */
+
 typedef struct _CWindow CWindow;
 struct _CWindow
 {
@@ -1615,6 +1619,37 @@ redraw_glx_texture (ScreenInfo *screen_info)
 #endif /* HAVE_EPOXY */
 
 #ifdef HAVE_PRESENT_EXTENSION
+static int
+present_error_handler (Display * dpy, XErrorEvent * err)
+{
+    DisplayInfo *display_info;
+
+    display_info = myDisplayGetDefault ();
+    g_return_val_if_fail (display_info, 0);
+
+    /* XPresentPixmap() can trigger a BadWindow rather than a BadMatch */
+    if (err->request_code == display_info->present_opcode && err->error_code == BadWindow)
+    {
+        ScreenInfo *screen_info;
+        screen_info = myDisplayGetScreenFromOutput (display_info, err->resourceid);
+
+        if (screen_info != NULL)
+        {
+            g_warning ("Disabling XPresent, error %d on window 0x%lx for request %d",
+                       err->error_code, err->resourceid, err->request_code);
+            screen_info->present_pending = FALSE;
+            screen_info->use_present = FALSE;
+        }
+    }
+
+    /* Chain with our default error handler if available */
+    if (default_error_handler)
+    {
+        return (default_error_handler (dpy, err));
+    }
+    return 0;
+}
+
 static void
 present_flip (ScreenInfo *screen_info, XserverRegion region, Pixmap pixmap)
 {
@@ -4167,7 +4202,7 @@ compositorInitDisplay (DisplayInfo *display_info)
     else
     {
         display_info->have_present = TRUE;
-
+        default_error_handler = XSetErrorHandler (present_error_handler);
         DBG ("present opcode:  %i", display_info->present_opcode);
         DBG ("present event base: %i", display_info->present_event_base);
         DBG ("present error base: %i", display_info->present_error_base);
