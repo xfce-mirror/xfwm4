@@ -3,17 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Aputsiaĸ Niels Janussen <aj@isit.gl>, 2013-2016
+# Aputsiak Niels Janussen <aj@isit.gl>, 2013-2016
 # Lars Nielsen <lars@mit-web.dk>, 2008
 # Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2016
 # Per Kongstad <p_kongstad@op.pl>, 2009,2015
+# scootergrisen, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-06-23 18:18+0000\n"
-"Last-Translator: Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>\n"
+"PO-Revision-Date: 2017-01-14 11:40+0000\n"
+"Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -361,7 +362,7 @@ msgstr "Genvej"
 #: ../settings-dialogs/xfwm4-settings.c:924
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Kunne ikke klargøre xfconf. Årsag:%s"
+msgstr "Kunne ikke klargøre xfconf. Årsag: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:935
 msgid "Could not create the settings dialog."
