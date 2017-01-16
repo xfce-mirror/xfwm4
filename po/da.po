@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2017-01-14 11:40+0000\n"
+"PO-Revision-Date: 2017-01-16 12:34+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -305,7 +305,7 @@ msgstr "<b>Skjul vinduernes indhold</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Handlingen der udføres når der dobbelt-klikkes på titellinjen"
+msgstr "Handlingen der udføres når der dobbeltklikkes på titellinjen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Double click _action</b>"
@@ -639,7 +639,7 @@ msgstr "[ARGUMENTER...]"
 #: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Indtast \"%s --help\" for brugsvejledning."
+msgstr "Skriv \"%s --help\" for brugsvejledning."
 
 #: ../src/menu.c:43
 msgid "Ma_ximize"
