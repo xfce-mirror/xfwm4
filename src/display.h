@@ -363,6 +363,7 @@ struct _DisplayInfo
 
 DisplayInfo             *myDisplayInit                          (GdkDisplay *);
 DisplayInfo             *myDisplayClose                         (DisplayInfo *);
+DisplayInfo             *myDisplayGetDefault                    (void);
 gboolean                 myDisplayHaveShape                     (DisplayInfo *);
 gboolean                 myDisplayHaveShapeInput                (DisplayInfo *);
 gboolean                 myDisplayHaveRender                    (DisplayInfo *);

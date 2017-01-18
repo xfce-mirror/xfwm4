@@ -57,6 +57,8 @@
 #define CURSOR_MOVE XC_fleur
 #endif
 
+static DisplayInfo *default_display;
+
 static int
 handleXError (Display * dpy, XErrorEvent * err)
 {
@@ -208,6 +210,11 @@ myDisplayInit (GdkDisplay *gdisplay)
 
     display = g_new0 (DisplayInfo, 1);
 
+    if (!default_display)
+    {
+      default_display = display;
+    }
+
     display->gdisplay = gdisplay;
     display->dpy = (Display *) gdk_x11_display_get_xdisplay (gdisplay);
 
@@ -254,8 +261,8 @@ myDisplayInit (GdkDisplay *gdisplay)
     minor = SYNC_MINOR_VERSION;
 
     if (XSyncQueryExtension (display->dpy,
-                              &display->xsync_event_base,
-                              &display->xsync_error_base)
+                             &display->xsync_event_base,
+                             &display->xsync_error_base)
          && XSyncInitialize (display->dpy,
                              &major,
                              &minor))
@@ -291,8 +298,8 @@ myDisplayInit (GdkDisplay *gdisplay)
 
 #ifdef HAVE_RANDR
     if (XRRQueryExtension (display->dpy,
-                            &display->xrandr_event_base,
-                            &display->xrandr_error_base))
+                           &display->xrandr_event_base,
+                           &display->xrandr_error_base))
     {
         display->have_xrandr = TRUE;
     }
@@ -343,6 +350,11 @@ myDisplayClose (DisplayInfo *display)
     XDestroyWindow (display->dpy, display->timestamp_win);
     display->timestamp_win = None;
 
+    if (default_display == display)
+    {
+      default_display = NULL;
+    }
+
     if (display->hostname)
     {
         g_free (display->hostname);
@@ -356,6 +368,12 @@ myDisplayClose (DisplayInfo *display)
     display->screens = NULL;
 
     return display;
+}
+
+DisplayInfo *
+myDisplayGetDefault (void)
+{
+    return default_display;
 }
 
 gboolean
