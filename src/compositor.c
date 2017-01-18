@@ -4262,6 +4262,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     gushort buffer;
 #ifdef HAVE_PRESENT_EXTENSION
     const gchar *use_present_env;
+    gboolean present_requested;
 #endif /* HAVE_PRESENT_EXTENSION */
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
@@ -4386,7 +4387,8 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->texture_filter = GL_LINEAR;
 #ifdef HAVE_PRESENT_EXTENSION
     use_present_env = g_getenv ("XFWM4_USE_PRESENT");
-    if (g_strcmp0 (use_present_env, "1") == 0)
+    present_requested = (g_strcmp0 (use_present_env, "1") == 0);
+    if (present_requested)
     {
         screen_info->use_glx = FALSE;
     }
@@ -4408,6 +4410,10 @@ compositorManageScreen (ScreenInfo *screen_info)
         XPresentSelectInput (display_info->dpy,
                              screen_info->output,
                              PresentCompleteNotifyMask);
+    }
+    else if (present_requested)
+    {
+        g_warning ("XPresent requested but unavailable");
     }
 #else /* HAVE_PRESENT_EXTENSION */
     screen_info->use_present = FALSE;
