@@ -600,6 +600,27 @@ myDisplayGetScreenFromRoot (DisplayInfo *display, Window root)
 }
 
 ScreenInfo *
+myDisplayGetScreenFromOutput (DisplayInfo *display, Window output)
+{
+    GSList *list;
+
+    g_return_val_if_fail (display != NULL, NULL);
+
+    for (list = display->screens; list; list = g_slist_next (list))
+    {
+        ScreenInfo *screen = (ScreenInfo *) list->data;
+        if (screen->output == output)
+        {
+            return screen;
+        }
+    }
+    TRACE ("myDisplayGetScreenFromOutput: no screen found for output window %p", output);
+
+    return NULL;
+}
+
+
+ScreenInfo *
 myDisplayGetScreenFromNum (DisplayInfo *display, int num)
 {
     GSList *list;

@@ -389,6 +389,8 @@ void                     myDisplayRemoveScreen                  (DisplayInfo *,
                                                                  ScreenInfo *);
 ScreenInfo              *myDisplayGetScreenFromRoot             (DisplayInfo *,
                                                                  Window);
+ScreenInfo              *myDisplayGetScreenFromOutput           (DisplayInfo *,
+                                                                 Window);
 ScreenInfo              *myDisplayGetScreenFromNum              (DisplayInfo *,
                                                                  int);
 Window                   myDisplayGetRootFromWindow             (DisplayInfo *,
