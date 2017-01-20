@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2017-01-17 13:24+0000\n"
+"PO-Revision-Date: 2017-01-20 13:41+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Ingen"
 
 #: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
-msgstr "Indstillingshåndtering for sokkel"
+msgstr "Indstillingshåndteringssokkel"
 
 #: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
@@ -80,7 +80,7 @@ msgstr "Arbejdsområdenavn"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
-msgstr "Indstillingshåndtering for sokkel"
+msgstr "Indstillingshåndteringssokkel"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
