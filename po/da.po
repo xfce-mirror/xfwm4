@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2017-01-21 17:19+0000\n"
+"PO-Revision-Date: 2017-01-21 18:06+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -153,11 +153,11 @@ msgstr "Skygge"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
-msgstr "Minimér"
+msgstr "Minimer"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
-msgstr "Maksimér"
+msgstr "Maksimer"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Close"
@@ -907,7 +907,7 @@ msgstr "Mi_nimer"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
-msgstr "Minimér alle _andre vinduer"
+msgstr "Minimer alle _andre vinduer"
 
 #: ../src/menu.c:47
 msgid "S_how"
