@@ -5,13 +5,13 @@
 # Translators:
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012
 # Mantas Zapolskas <mantaz@users.sf.net>, 2003
-# Moo, 2015-2016
+# Moo, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-09-16 11:00+0000\n"
+"PO-Revision-Date: 2017-01-23 13:05+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Šis langas gali būti užsiėmęs ir neatsakyti.\nAr norite užverti programą?"
+msgstr "Gali būti, kad šis langas yra užsiėmęs ir neatsako.\nAr norite baigti programos darbą?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
