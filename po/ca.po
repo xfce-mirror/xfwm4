@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2017-02-14 12:47+0000\n"
+"PO-Revision-Date: 2017-02-15 19:44+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -177,11 +177,11 @@ msgstr "E_stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Establiu les dreceres per les accions del _gestor de finestres:"
+msgstr "Definiu les dreceres per realitzar les accions del _gestor de finestres:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
-msgstr "_Torna als valors predeterminats"
+msgstr "_Restableix als valors predeterminats"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "_Keyboard"
@@ -189,15 +189,15 @@ msgstr "_Teclat"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr "Feu clic per en_focar"
+msgstr "Fer clic per al _focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
-msgstr "L'enfocament segueix el _ratolí"
+msgstr "El focus segueix el _ratolí"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Delay before window receives focus:"
-msgstr "Retar_d abans que la finestra guanyi l'enfocament:"
+msgstr "Retar_d abans que la finestra rebi el focus:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
@@ -211,44 +211,44 @@ msgstr "<i>Llarg</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "<b>Focus model</b>"
-msgstr "<b>Tipus d'enfocament</b>"
+msgstr "<b>Model del focus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Automatically give focus to _newly created windows"
-msgstr "Enfoca automàticament les finestres _noves"
+msgstr "Dóna automàticament el focus a les finestres creades de _nou"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>New window focus</b>"
-msgstr "<b>Enfocament de les finestres noves</b>"
+msgstr "<b>Focus de finestra nova</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Posa en _primer pla automàticament les finestres enfocades"
+msgstr "Alça automàticament les finest_res quan rebin el focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr "Retard a_bans de posar en primer pla la finestra enfocada:"
+msgstr "Retard a_bans de l'alçament de la finestra amb focus:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Primer pla en enfocar</b>"
+msgstr "<b>Alçament amb el focus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
-msgstr "Posa en primer pla la finestra quan es faci clic d_ins de la finestra de l'aplicació"
+msgstr "Alça la finestra quan es faci clic d_ins de la finestra d'aplicació"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
-msgstr "<b>Primer pla en fer clic</b>"
+msgstr "<b>Alçament amb el clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Focus"
-msgstr "En_focament"
+msgstr "_Focus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
-msgstr "A les _vores de les finestres"
+msgstr "Als _marges de la pantalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "To other _windows"
@@ -268,11 +268,11 @@ msgstr "<i>Petita</i>"
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "<i>Wide</i>"
-msgstr "<i>Forta</i>"
+msgstr "<i>Extensa</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Alineació de les finestres</b>"
+msgstr "<b>Col·lisió de les finestres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "With the mouse _pointer"
@@ -292,11 +292,11 @@ msgstr "<b>Canvia d'espai de treball quan s'arribi a la vora de la pantalla</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
-msgstr "En _moure"
+msgstr "Quan es _moguin"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "When _resizing"
-msgstr "En canviar la mi_da"
+msgstr "Quan es _redimensionin"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Hide content of windows</b>"
@@ -370,7 +370,7 @@ msgstr "No s'ha pogut mostrar el diàleg d'ajusts."
 #: ../settings-dialogs/xfwm4-settings.c:1901
 #: ../settings-dialogs/xfwm4-settings.c:1902
 msgid "Reset to Defaults"
-msgstr "Torna als valors per defecte"
+msgstr "Restableix als valors predeterminats"
 
 #: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
@@ -406,19 +406,19 @@ msgstr "_Recorregut"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Activate foc_us stealing prevention"
-msgstr "Activa la prevenció del robatori de l'en_focament"
+msgstr "Activa la prevenció del robatori del foc_us"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Fes cas del senyal e_stàndard d'enfocament ICCCM"
+msgstr "Fes cas de la indicació de focus ICCCM e_stàndard"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
-msgstr "Quan una finestra es passi al primer pla:"
+msgstr "Quan una finestra s'alci a ella mateixa:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "_Bring window on current workspace"
-msgstr "_Porta la finestra a l'actual espai de treball"
+msgstr "_Porta la finestra a l'espai de treball actual"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Switch to win_dow's workspace"
@@ -434,7 +434,7 @@ msgstr "La tecla que s'utilitza per arrosse_gar i moure les finestres:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Posa en p_rimer pla les finestres quan es premi qualsevol botó del ratolí"
+msgstr "Alça les finest_res quan es premi qualsevol botó del ratolí"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Hide frame of windows when ma_ximized"
@@ -450,7 +450,7 @@ msgstr "Organitza automà_ticament les finestres en un mosaic en moure's cap a l
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Utilitza la resistència de les _vores en lloc de l'alineació de les finestres"
+msgstr "Utilitza la resistència de les _vores en lloc de la col·lisió de les finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Notify of _urgency by making window's decoration blink"
@@ -484,7 +484,7 @@ msgstr "Canvia d'espai de treball en funció del _format real de l'escriptori"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Dóna la volta als espais de treball quan s'arribi al _primer o a l'últim"
+msgstr "Dóna la volta als espais de treball quan s'assoleixi el primer o l'últim espai de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
@@ -492,7 +492,7 @@ msgstr "_Espais de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Mida _mínima de les finestres per accionar l'emplaçament intel·ligentment:"
+msgstr "Mida _mínima de les finestres per a accionar el posicionament intel·ligent:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
@@ -529,19 +529,19 @@ msgstr "Sincronitza el dibuix al blanc _vertical"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Mostra una previsualització de les finestres en lloc d'icones quan es faci rotació"
+msgstr "Mostra la vista prèvia de les finestres en lloc de les icones quan es recorrin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
-msgstr "Mostra ombres a les finestres _emergents"
+msgstr "Mostra les ombres a sota de les finestres _emergents"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _dock windows"
-msgstr "Mostra ombres a les finestres ancora_des"
+msgstr "Mostra les ombres a sota de les finestres acobla_des"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under _regular windows"
-msgstr "Mostra ombres a les finestres no_rmals"
+msgstr "Mostra les ombres a sota de les finestres no_rmals"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
@@ -561,11 +561,11 @@ msgstr "Opacitat de les finestres _inactives:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
-msgstr "Opacitat de les finestres en _moure-les:"
+msgstr "Opacitat de les finestres mentre es _mouen:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
-msgstr "Opacitat de les finestres en re_dimensionar-les:"
+msgstr "Opacitat de les finestres mentre es re_dimensionen:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
@@ -594,7 +594,7 @@ msgstr "_General"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Els marges són les àrees a les vores de la pantalla on no s'emplaçarà cap finestra"
+msgstr "Els marges són les àrees en les vores de la pantalla on no es posicionarà cap finestra"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -613,7 +613,7 @@ msgstr "No s'admet el modificador de teclat «%s»"
 
 #: ../src/main.c:625
 msgid "Fork to the background (not supported)"
-msgstr "Executar-se com a procés de fons (no suportat)"
+msgstr "Bifurca al fons (no compatible)"
 
 #: ../src/main.c:627
 msgid "Set the compositor mode"
@@ -621,7 +621,7 @@ msgstr "Estableix el mode «composite»"
 
 #: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
-msgstr "Estableix el mode «composite» (no suportat)"
+msgstr "Estableix el mode «composite» (no compatible)"
 
 #: ../src/main.c:631
 msgid "Replace the existing window manager"
