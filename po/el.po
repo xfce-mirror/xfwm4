@@ -3,7 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Apostolos Papadimitriu <apostolos.papadimitriu@gmail.com>, 2016
+# Apóstolos Papaðimitríu <apostolos.papadimitriu@gmail.com>, 2016
+# Apóstolos Papaðimitríu <apostolos.papadimitriu@gmail.com>, 2017
 # Efstathios Iosifidis <iefstathios@gmail.com>, 2015
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2012
 # ebal <ebalaskas@ebalaskas.gr>, 2009
@@ -15,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2016-02-04 17:05+0000\n"
-"Last-Translator: Apostolos Papadimitriu <apostolos.papadimitriu@gmail.com>\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2017-02-21 11:20+0000\n"
+"Last-Translator: Apóstolos Papaðimitríu <apostolos.papadimitriu@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfwm4/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -605,36 +606,41 @@ msgid "_Margins"
 msgstr "_Περιθώρια"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (στο %s)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "Μη υποστηριζόμενος τροποποιητής πληκτρολογίου  '%s'"
+
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Διακλάδωση στο παρασκήνιο (δεν υποστηρίζεται)"
 
-#: ../src/main.c:618
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Ρύθμιση της λειτουργίας σύνθεσης"
 
-#: ../src/main.c:620
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Ρύθμιση της λειτουργίας σύνθεσης (δεν υποστηρίζεται)"
 
-#: ../src/main.c:622
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Αντικατάσταση του τρέχοντος διαχειριστή παραθύρων"
 
-#: ../src/main.c:623
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"
 
-#: ../src/main.c:634
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ΟΡΙΣΜΑΤΑ...]"
 
-#: ../src/main.c:641
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Πληκτρολογήστε \"% s - help \" για χρήση."
@@ -736,22 +742,22 @@ msgstr "Επανεκκίνηση"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Το GtkMenu απέτυχε να αρπάξει τον δείκτη\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Αδύνατος ο προσδιορισμός του χρώματος %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Αδύνατη ο προσδιορισμός του χρώματος: το GValue για το χρώμα δεν είναι αλφαριθμητικός τύπος"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Αδύνατη η ανάλυση του χρώματος %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Αδύνατη η ανάλυση του χρώματος: Το GValue για το χρώμα δεν είναι αλφαριθμητικός τύπος"
