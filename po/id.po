@@ -5,15 +5,16 @@
 # Translators:
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2008
 # Ardjuna <Asyura.x@gmail.com>, 2014
-# Hasan Al Banna, 2015
+# Mohamad Hasan Al Banna <se7entime@protonmail.com>, 2015
+# Mohamad Hasan Al Banna <se7entime@protonmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:32+0100\n"
-"PO-Revision-Date: 2015-01-04 23:32+0000\n"
-"Last-Translator: Hasan Al Banna\n"
-"Language-Team: Indonesian (http://www.transifex.com/projects/p/xfwm4/language/id/)\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2017-02-26 05:21+0000\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"Language-Team: Indonesian (http://www.transifex.com/xfce/xfwm4/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,29 +35,29 @@ msgstr "Peringatan"
 msgid "None"
 msgstr "Tak ada"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:471
 msgid "Session manager socket"
 msgstr "Soket manajer sesi"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:471
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
-#: ../settings-dialogs/tweaks-settings.c:474
+#: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informasi versi"
 
-#: ../settings-dialogs/tweaks-settings.c:492
+#: ../settings-dialogs/tweaks-settings.c:490
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:494
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -440,8 +441,8 @@ msgid "Hide frame of windows when ma_ximized"
 msgstr "Sembunyikan _bingkai ketika jendela dimaksimalkan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "Kembalikan ukuran asli dari jendela yang dimaksimalkan ketika memindahkan"
+msgid "Hide title of windows when maximized"
+msgstr "Sembunyikan judul jendela saat dimaksimalkan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -527,46 +528,50 @@ msgid "Synchronize drawing to the _vertical blank"
 msgstr "Sinkronisasi penggambaran ke VBLANK"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show windows preview in place of icons when cycling"
+msgstr "Tampilkan jendela pratinjau di tempat ikon saat bersepeda"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
 msgstr "Tampilkan bayangan di bawah jendela p_opup"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _dock windows"
 msgstr "Tampilkan bayangan di bawah jendela _dok"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under _regular windows"
 msgstr "Tampilkan bayangan di bawah jendela _reguler"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
 msgstr "Opasi_tas dekorasi jendela:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
 msgstr "<i>Transparan</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "<i>Opaque</i>"
 msgstr "<i>Opasitas</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
 msgstr "Opasitas _jendela tidak aktif:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
 msgstr "Opasitas jendela ketika _pindah:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opasitas jendela ketika mengubah uku_ran:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opasitas jendela pop_up:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
 msgstr "K_ompositor"
 
@@ -596,40 +601,41 @@ msgid "_Margins"
 msgstr "_Marjin"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (pada %s)"
 
-#: ../src/main.c:540
-msgid "Fork to the background"
-msgstr "Jalankan di latar belakang"
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "Modifikasi papan tik '%s' tidak didukung"
 
-#: ../src/main.c:542
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr "Jalankan di latar belakang (tidak didukung)"
 
-#: ../src/main.c:545
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Atur mode kompositor"
 
-#: ../src/main.c:547
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Atur mode kompositor (tidak didukung)"
 
-#: ../src/main.c:549
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Ganti manajer jendela yang ada"
 
-#: ../src/main.c:550
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Tampilkan informasi versi lalu keluar"
 
-#: ../src/main.c:558
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMEN...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Ketik \"%s --help\" untuk bantuan penggunaan."
@@ -664,16 +670,16 @@ msgstr "_Ubah Ukuran"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Selalu di Atas Jendela Lain"
+msgid "Always on _Top"
+msgstr "Selalu di A_tas"
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Samakan seperti Jendela Lain"
+msgid "_Same as Other Windows"
+msgstr "_Sama Seperti Jendela Lainnya"
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Selalu di Bawah Jendela Lain"
+msgid "Always _Below Other Windows"
+msgstr "Selalu di _Bawah Jendela Lainnya"
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -697,16 +703,16 @@ msgstr "_Bantuan Terkait"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Selalu di Ruang Kerja yang Sedang Tampak"
+msgid "Always on _Visible Workspace"
+msgstr "Selalu _Terlihat di Area Kerja"
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Hanya di Ruang Kerja Ini"
+msgid "Only _Visible on This Workspace"
+msgstr "Hanya _Terlihat di Area Kerja Ini"
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Pindah ke Ruang Kerja Lain"
+msgid "Move to Another _Workspace"
+msgstr "Pindahkan ke Area Kerja _Lain"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -726,27 +732,27 @@ msgstr "_Keluar"
 msgid "Restart"
 msgstr "Start Ulang"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu gagal mengambil penunjuk tetikus\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Tak dapat mengalokasi warna %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Tak dapat mengalokasi warna: GValue untuk warna tidak bertipe STRING"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Tak dapat membaca warna %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Tak dapat membaca warna: GValue untuk warna bukan tipe STRING"
