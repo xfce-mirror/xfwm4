@@ -206,6 +206,8 @@
                                          WINDOW_UTILITY)
 #define WINDOW_TYPE_DONT_FOCUS          (WINDOW_SPLASHSCREEN | \
                                          WINDOW_DOCK)
+#define WINDOW_TYPE_STATE_FOCUSED       (WINDOW_SPLASHSCREEN | \
+                                         WINDOW_DOCK )
 
 /* Which bits of opacity are applied */
 #define OPACITY_MOVE                    (1<<0)
