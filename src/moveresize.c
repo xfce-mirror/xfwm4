@@ -73,6 +73,7 @@ struct _MoveResizeData
     gboolean is_transient;
     gboolean move_resized;
     gboolean released;
+    gboolean client_gone;
     guint button;
     gint cancel_x, cancel_y;
     gint cancel_w, cancel_h;
@@ -1122,6 +1123,12 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
     {
         moving = FALSE;
+        status = EVENT_FILTER_CONTINUE;
+        passdata->client_gone = TRUE;
+        if (use_xor_move(screen_info))
+        {
+            clientDrawOutline (c);
+        }
     }
     else if (xevent->type == EnterNotify)
     {
@@ -1185,6 +1192,7 @@ clientMove (Client * c, XEvent * ev)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.released = FALSE;
+    passdata.client_gone = FALSE;
     passdata.button = AnyButton;
     passdata.is_transient = clientIsValidTransientOrModal (c);
     passdata.move_resized = FALSE;
@@ -1258,26 +1266,17 @@ clientMove (Client * c, XEvent * ev)
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving move loop");
+    if (passdata.client_gone)
+    {
+        goto move_cleanup;
+    }
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
-    /* Put back the sidewalks as they ought to be */
-    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
-
-#ifdef SHOW_POSITION
-    if (passdata.poswin)
-    {
-        poswinDestroy (passdata.poswin);
-    }
-#endif /* SHOW_POSITION */
     if (passdata.grab && screen_info->params->box_move)
     {
         clientDrawOutline (c);
     }
 
-    if (passdata.wireframe)
-    {
-        wireframeDelete (passdata.wireframe);
-    }
     /* Set window opacity to its original value */
     clientSetOpacity (c, c->opacity, OPACITY_MOVE, 0);
 
@@ -1305,6 +1304,22 @@ clientMove (Client * c, XEvent * ev)
         eventFilterPush (display_info->xfilter, clientButtonReleaseFilter, &passdata);
         gtk_main ();
         eventFilterPop (display_info->xfilter);
+    }
+
+move_cleanup:
+    /* Put back the sidewalks as they ought to be */
+    placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
+
+#ifdef SHOW_POSITION
+    if (passdata.poswin)
+    {
+        poswinDestroy (passdata.poswin);
+    }
+#endif /* SHOW_POSITION */
+
+    if (passdata.wireframe)
+    {
+        wireframeDelete (passdata.wireframe);
     }
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
@@ -1655,6 +1670,12 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
     {
         resizing = FALSE;
+        status = EVENT_FILTER_CONTINUE;
+        passdata->client_gone = TRUE;
+        if (use_xor_resize(screen_info))
+        {
+            clientDrawOutline (c);
+        }
     }
     else if (xevent->type == EnterNotify)
     {
@@ -1727,6 +1748,7 @@ clientResize (Client * c, int handle, XEvent * ev)
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.released = FALSE;
+    passdata.client_gone = FALSE;
     passdata.button = AnyButton;
     passdata.handle = handle;
     passdata.wireframe = NULL;
@@ -1800,19 +1822,15 @@ clientResize (Client * c, int handle, XEvent * ev)
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving resize loop");
+    if (passdata.client_gone)
+    {
+        goto resize_cleanup;
+    }
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
-    if (passdata.poswin)
-    {
-        poswinDestroy (passdata.poswin);
-    }
     if (passdata.grab && screen_info->params->box_resize)
     {
         clientDrawOutline (c);
-    }
-    if (passdata.wireframe)
-    {
-        wireframeDelete (passdata.wireframe);
     }
 
     /* Set window opacity to its original value */
@@ -1839,6 +1857,16 @@ clientResize (Client * c, int handle, XEvent * ev)
         eventFilterPush (display_info->xfilter, clientButtonReleaseFilter, &passdata);
         gtk_main ();
         eventFilterPop (display_info->xfilter);
+    }
+
+resize_cleanup:
+    if (passdata.poswin)
+    {
+        poswinDestroy (passdata.poswin);
+    }
+    if (passdata.wireframe)
+    {
+        wireframeDelete (passdata.wireframe);
     }
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
