@@ -130,7 +130,7 @@ clientSetNetState (Client * c)
         TRACE ("clientSetNetState : demands_attention");
         data[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
     }
-    if (c == clientGetFocus ())
+    if (c == clientGetFocus () || c->type & WINDOW_TYPE_STATE_FOCUSED)
     {
         TRACE ("clientSetNetState : focused");
         data[i++] = display_info->atoms[NET_WM_STATE_FOCUSED];
