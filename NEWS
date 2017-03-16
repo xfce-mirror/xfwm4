@@ -1,3 +1,23 @@
+4.12.4
+======
+
+ - moveresize: Cancel move/resize if client is gone (Bug 13344)
+ - netwm: Make docks and spash screens appear focused
+ - placement: Relocate dialogs only (Bug 12587)
+ - Force application win_gravity to NorthWestGravity (Bug 12617)
+ - keyboard: Re-apply modifiers masks
+ - keyboard: Ignore unsupported modifiers (Bug 10760)
+ - don't block display events when time is set backwards (Bug 10184)
+ - Fix rendering with 30-bit colormap (Bug 12344)
+ - Only check for known buttons in _NET_WM_MOVERESIZE
+
+4.12.3
+======
+ - events: do not monitor SubstructureNotifyMask (Bug 11893)
+ - focus: Ignore zero timestamp from s/n 
+ - configure: check for exo-csource (Bug 11870)
+ - Fix compiler warnings (Bug 11723)
+
 4.12.2
 ======
  - Fix a mishmash between width and height (Bug 11700)
