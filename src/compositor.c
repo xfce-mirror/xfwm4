@@ -2144,7 +2144,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         g_free (new);
         myDisplayUngrabServer (display_info);
-        TRACE ("An error occured getting window attributes, 0x%lx not added", id);
+        TRACE ("An error occurred getting window attributes, 0x%lx not added", id);
         return;
     }
 
