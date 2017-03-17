@@ -691,7 +691,7 @@ main (int argc, char **argv)
             gtk_main ();
             break;
         default:
-            g_warning ("Unknown error occured");
+            g_warning ("Unknown error occurred");
             exit (1);
             break;
     }
