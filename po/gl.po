@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006,2008-2010
-# Xosé <xosecalvo@gmail.com>, 2015
+# Xosé <xosecalvo@gmail.com>, 2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-09-21 19:33+0000\n"
+"POT-Creation-Date: 2016-05-01 00:32+0200\n"
+"PO-Revision-Date: 2017-03-20 22:38+0000\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfwm4/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -187,7 +187,7 @@ msgstr "_Teclado"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr ""
+msgstr "Prema para pór o foc_o"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
@@ -599,36 +599,41 @@ msgid "_Margins"
 msgstr "_Marxes"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:185
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (en %s)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr ""
+
+#: ../src/main.c:625
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:618
+#: ../src/main.c:627
 msgid "Set the compositor mode"
 msgstr "Definir o modo de composición"
 
-#: ../src/main.c:620
+#: ../src/main.c:629
 msgid "Set the compositor mode (not supported)"
 msgstr "Definir o modo de composición (non admitido)"
 
-#: ../src/main.c:622
+#: ../src/main.c:631
 msgid "Replace the existing window manager"
 msgstr "Substituír o xestor de xanelas existente"
 
-#: ../src/main.c:623
+#: ../src/main.c:632
 msgid "Print version information and exit"
 msgstr "Mostrar información da versión e saír"
 
-#: ../src/main.c:634
+#: ../src/main.c:643
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:641
+#: ../src/main.c:650
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Introduza «%s --help» para obter información sobre o modo de uso."
@@ -730,22 +735,22 @@ msgstr "Reiniciar"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu fallou ao obter o punteiro\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Non foi posíbel asignar a cor %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Non foi posíbel asignar a cor: o GValue da cor non é de tipo STRING"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Non foi posíbel analizar a cor %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Non foi posíbel analizar a cor: o GValue da cor non é de tipo STRING"
