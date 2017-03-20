@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2017-01-23 13:05+0000\n"
+"PO-Revision-Date: 2017-03-20 11:21+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -389,7 +389,7 @@ msgstr "Į_traukti paslėptus (t.y. neatpažintus) langus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr "Perjungti t_arp langų iš visų darbo sričių"
+msgstr "Perjunginėti t_arp langų iš visų darbo sričių"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
@@ -483,7 +483,7 @@ msgstr "Perjunginėti darbo sritis, priklausomai nuo esamo darbalaukio _išdėst
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Perjunginėti darbo sritis, kai pasiekiama pirma a_rba paskutinė darbo sritis"
+msgstr "Cikliškai perjunginėti darbo sritis, kai pasiekiama pirma a_rba paskutinė darbo sritis"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
