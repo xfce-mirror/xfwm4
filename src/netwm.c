@@ -258,6 +258,10 @@ clientGetNetState (Client * c)
                 TRACE ("clientGetNetState : demands_attention");
                 FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             }
+            else if (atoms[i] == display_info->atoms[NET_WM_STATE_FOCUSED])
+            {
+                TRACE ("clientGetNetState : focused, ignored...");
+            }
             else
             {
                 gchar *atom_name;
