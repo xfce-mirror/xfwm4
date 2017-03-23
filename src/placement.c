@@ -487,7 +487,7 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
     {
         if ((c->size->x == 0) && (c->size->y == 0))
         {
-            /* Dialogs that place temselves in (0,0) will be centered */
+            /* Dialogs that place themselves in (0,0) will be centered */
             centered = TRUE;
         }
         else if ((n_monitors > 1) && (c->size->x > 0) && (c->size->y > 0))
@@ -771,7 +771,9 @@ clientInitPosition (Client * c)
     position = (c->size->flags & (PPosition | USPosition));
 
     n_monitors = myScreenGetNumMonitors (c->screen_info);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, 0, &rect);
+    gdk_screen_get_monitor_geometry (screen_info->gscr,
+                                     gdk_screen_get_primary_monitor (screen_info->gscr),
+                                     &rect);
     is_transient = clientIsTransient (c);
 
     if (position || is_transient || (c->type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)))
@@ -783,7 +785,7 @@ clientInitPosition (Client * c)
             c->y = c2->y + (c2->height - c->height) / 2;
         }
 
-        if (n_monitors > 1)
+        if (position && n_monitors > 1)
         {
             msx = frameExtentX (c) + (frameExtentWidth (c) / 2);
             msy = frameExtentY (c) + (frameExtentHeight (c) / 2);
