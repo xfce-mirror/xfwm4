@@ -85,6 +85,7 @@ xfwm4_CFLAGS =								\
 	$(PRESENT_EXTENSION_CFLAGS)					\
 	$(RANDR_CFLAGS)							\
 	$(RENDER_CFLAGS)						\
+	$(XINERAMA_CFLAGS)						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DHELPERDIR=\"$(HELPER_PATH_PREFIX)\"				\
@@ -106,6 +107,7 @@ xfwm4_LDADD =								\
 	$(PRESENT_EXTENSION_LIBS)					\
 	$(RANDR_LIBS) 							\
 	$(RENDER_LIBS)							\
+	$(XINERAMA_LIBS)						\
 	$(MATH_LIBS)
 
 EXTRA_DIST = 								\
