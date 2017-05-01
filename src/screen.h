@@ -247,5 +247,7 @@ void                     myScreenFindMonitorAtPoint             (ScreenInfo *,
                                                                  gint,
                                                                  GdkRectangle *);
 gboolean                 myScreenUpdateFontHeight               (ScreenInfo *);
-
+void                     myScreenGetXineramaMonitorGeometry     (ScreenInfo *,
+                                                                 gint,
+                                                                 GdkRectangle *);
 #endif /* INC_SCREEN_H */

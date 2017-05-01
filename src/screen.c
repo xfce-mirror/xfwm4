@@ -27,6 +27,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/extensions/shape.h>
+#include <X11/extensions/Xinerama.h>
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
@@ -820,6 +821,31 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
     *rect = screen_info->cache_monitor;
 }
 
+void
+myScreenGetXineramaMonitorGeometry (ScreenInfo *screen_info, gint monitor_num, GdkRectangle *rect)
+{
+    XineramaScreenInfo *infos;
+    int n;
+
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (rect != NULL);
+    g_return_if_fail (XineramaIsActive (myScreenGetXDisplay (screen_info)));
+
+    infos = XineramaQueryScreens (myScreenGetXDisplay (screen_info), &n);
+    if (infos == NULL || n <= 0 || monitor_num < n || monitor_num > n)
+    {
+        XFree (infos);
+        return;
+    }
+
+    rect->x = infos[monitor_num].x_org;
+    rect->y = infos[monitor_num].y_org;
+    rect->width = infos[monitor_num].width;
+    rect->height = infos[monitor_num].height;
+
+    XFree (infos);
+}
+
 gboolean
 myScreenUpdateFontHeight (ScreenInfo *screen_info)
 {
@@ -848,3 +874,4 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
 
     return FALSE;
 }
+

@@ -2974,10 +2974,11 @@ clientUpdateFullscreenSize (Client *c)
     {
         if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS))
         {
-            gdk_screen_get_monitor_geometry (screen_info->gscr, c->fullscreen_monitors[0], &rect);
+            /* Monitor numbering is from Xinerama */
+            myScreenGetXineramaMonitorGeometry (screen_info, c->fullscreen_monitors[0], &rect);
             for (i = 1; i < 4; i++)
             {
-                gdk_screen_get_monitor_geometry (screen_info->gscr, c->fullscreen_monitors[i], &monitor);
+                myScreenGetXineramaMonitorGeometry (screen_info, c->fullscreen_monitors[i], &monitor);
                 gdk_rectangle_union (&rect, &monitor, &rect);
             }
         }
