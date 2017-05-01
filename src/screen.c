@@ -108,6 +108,7 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
         gdk_error_trap_push ();
         attrs.event_mask = StructureNotifyMask;
         XChangeWindowAttributes (display_info->dpy, current_wm, CWEventMask, &attrs);
+        gdk_flush ();
         if (gdk_error_trap_pop ())
         {
             current_wm = None;
