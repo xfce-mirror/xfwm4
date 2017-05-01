@@ -2993,7 +2993,7 @@ clientUpdateFullscreenSize (Client *c)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN_MONITORS))
         {
             /* Monitor numbering is from Xinerama */
             myScreenGetXineramaMonitorGeometry (screen_info, c->fullscreen_monitors[0], &rect);
@@ -3091,7 +3091,7 @@ void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gi
         c->fullscreen_monitors[1] = bottom;
         c->fullscreen_monitors[2] = left;
         c->fullscreen_monitors[3] = right;
-        FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS);
+        FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN_MONITORS);
     }
     else
     {
@@ -3099,13 +3099,13 @@ void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gi
         c->fullscreen_monitors[1] = 0;
         c->fullscreen_monitors[2] = 0;
         c->fullscreen_monitors[3] = 0;
-        FLAG_UNSET (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS);
+        FLAG_UNSET (c->flags, CLIENT_FLAG_FULLSCREEN_MONITORS);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         clientUpdateFullscreenSize (c);
     }
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREN_MONITORS))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN_MONITORS))
     {
         setNetFullscreenMonitors (display_info, c->window, top, bottom, left, right);
     }
