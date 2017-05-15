@@ -230,7 +230,6 @@ struct _XfwmParams
     gboolean snap_resist;
     gboolean snap_to_border;
     gboolean snap_to_windows;
-    gboolean sync_to_vblank;
     gboolean tile_on_move;
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;

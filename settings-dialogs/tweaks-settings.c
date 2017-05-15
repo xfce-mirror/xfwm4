@@ -205,7 +205,6 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *use_compositing_box = GTK_WIDGET (gtk_builder_get_object (builder, "use_compositing_box"));
 
     GtkWidget *unredirect_overlays_check = GTK_WIDGET (gtk_builder_get_object (builder, "unredirect_overlays_check"));
-    GtkWidget *sync_to_vblank_check = GTK_WIDGET (gtk_builder_get_object (builder, "sync_to_vblank_check"));
     GtkWidget *cycle_preview_check = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_preview_check"));
     GtkWidget *show_frame_shadow_check = GTK_WIDGET (gtk_builder_get_object (builder, "show_frame_shadow_check"));
     GtkWidget *show_popup_shadow_check = GTK_WIDGET (gtk_builder_get_object (builder, "show_popup_shadow_check"));
@@ -399,14 +398,6 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/unredirect_overlays",
                             G_TYPE_BOOLEAN,
                             (GObject *)unredirect_overlays_check, "active");
-#ifdef HAVE_EPOXY
-    xfconf_g_property_bind (xfwm4_channel,
-                            "/general/sync_to_vblank",
-                            G_TYPE_BOOLEAN,
-                            (GObject *)sync_to_vblank_check, "active");
-#else
-    gtk_widget_hide (sync_to_vblank_check);
-#endif
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/cycle_preview",
                             G_TYPE_BOOLEAN,

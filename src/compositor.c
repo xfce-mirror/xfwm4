@@ -1049,13 +1049,6 @@ check_gl_error (void)
 }
 
 static gboolean
-vblank_enabled (ScreenInfo *screen_info)
-{
-    return (screen_info->params->sync_to_vblank &&
-            (screen_info->has_glx_video_sync || screen_info->has_glx_sync_control));
-}
-
-static gboolean
 check_glx_renderer (ScreenInfo *screen_info)
 {
     const char *glRenderer;
@@ -2232,10 +2225,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     if (screen_info->use_glx) /* glx first if available */
     {
         glXWaitX ();
-        if (vblank_enabled (screen_info))
-        {
-            wait_glx_vblank (screen_info);
-        }
+        wait_glx_vblank (screen_info);
         bind_glx_texture (screen_info,
                           screen_info->rootPixmap[buffer]);
         redraw_glx_texture (screen_info);
@@ -4431,7 +4421,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     {
         g_warning ("No vsync support in compositor");
     }
-
 
     XFixesSelectCursorInput (display_info->dpy,
                              screen_info->xroot,
