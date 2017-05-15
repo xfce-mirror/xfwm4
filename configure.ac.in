@@ -21,6 +21,7 @@ m4_define([startup_notification_minimum_version], [0.5])
 m4_define([intltool_minimum_version], [0.35])
 m4_define([libepoxy_minimum_version], [1.0])
 m4_define([xpresent_minimum_version], [1.0])
+m4_define([presentproto_minimum_version], [1.1])
 
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2015
@@ -210,7 +211,7 @@ have_xpresent="no"
 XPRESENT_LIBS=
 if test x"$enable_xpresent" = x"yes"; then
   if $PKG_CONFIG --print-errors --exists xpresent 2>&1; then
-    PKG_CHECK_MODULES(PRESENT_EXTENSION, xpresent)
+    PKG_CHECK_MODULES(PRESENT_EXTENSION, presentproto >= [presentproto_minimum_version] xpresent)
     have_xpresent="yes"
     AC_DEFINE([HAVE_PRESENT_EXTENSION], [1], [Define to enable xpresent])
   fi
