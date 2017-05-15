@@ -4250,10 +4250,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     XRenderPictureAttributes pa;
     XRenderPictFormat *visual_format;
     gushort buffer;
-#ifdef HAVE_PRESENT_EXTENSION
-    const gchar *use_present_env;
-    gboolean present_requested;
-#endif /* HAVE_PRESENT_EXTENSION */
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering compositorManageScreen");
@@ -4369,30 +4365,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     TRACE ("Manual compositing enabled");
 
-#ifdef HAVE_EPOXY
-    screen_info->glx_context = None;
-    screen_info->glx_window = None;
-    screen_info->rootTexture = None;
-    screen_info->glx_drawable = None;
-    screen_info->texture_filter = GL_LINEAR;
 #ifdef HAVE_PRESENT_EXTENSION
-    use_present_env = g_getenv ("XFWM4_USE_PRESENT");
-    present_requested = (g_strcmp0 (use_present_env, "1") == 0);
-    if (present_requested)
-    {
-        screen_info->use_glx = FALSE;
-    }
-    else
-#endif /* HAVE_PRESENT_EXTENSION */
-    {
-        screen_info->use_glx = init_glx (screen_info);
-    }
-#else /* HAVE_EPOXY */
-    screen_info->use_glx = FALSE;
-#endif /* HAVE_EPOXY */
-
-#ifdef HAVE_PRESENT_EXTENSION
-    /* Prefer glx over xpresent if available */
     screen_info->use_present = display_info->have_present && !screen_info->use_glx;
     if (screen_info->use_present)
     {
@@ -4401,13 +4374,31 @@ compositorManageScreen (ScreenInfo *screen_info)
                              screen_info->output,
                              PresentCompleteNotifyMask);
     }
-    else if (present_requested)
+    else
     {
-        g_warning ("XPresent requested but unavailable");
+        g_warning ("XPresent not available");
     }
 #else /* HAVE_PRESENT_EXTENSION */
     screen_info->use_present = FALSE;
 #endif /* HAVE_PRESENT_EXTENSION */
+
+#ifdef HAVE_EPOXY
+    if (!screen_info->use_present)
+    {
+        screen_info->glx_context = None;
+        screen_info->glx_window = None;
+        screen_info->rootTexture = None;
+        screen_info->glx_drawable = None;
+        screen_info->texture_filter = GL_LINEAR;
+        screen_info->use_glx = init_glx (screen_info);
+    }
+    else
+    {
+        g_warning ("GL not available");
+    }
+#else /* HAVE_EPOXY */
+    screen_info->use_glx = FALSE;
+#endif /* HAVE_EPOXY */
 
     if (screen_info->use_glx)
     {

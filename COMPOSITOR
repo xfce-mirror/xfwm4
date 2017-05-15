@@ -40,13 +40,13 @@ The following tips apply to the X.org Xserver X11R6.8.x
 Section "Extensions"
       Option "Composite" "Enable"
 EndSection
-                                                                                                              
+
 - Save the configuration file and restart the Xserver.
 
 3) Troubleshooting
 ------------------
 
-The composite extensions in X.org look fairly new and there are several problems 
+The composite extensions in X.org look fairly new and there are several problems
 that may arise when using the compositing manager in xfwm4:
 
 - Windows aren't correctly refreshed
@@ -66,7 +66,7 @@ are a few hints that could help categorizing the problem:
   ie, when running "xfwm4 --compositor=off; xcompmgr -c"
 - Does it show with the Xserver embedded compositor manager?
   ie, when running "xfwm4 --compositor=auto"
-  
+
 If the problem with xcompmgr and/or with the Xserver compositor, then there
 is a good chance that the problem is not with xfwm4...
 
@@ -85,8 +85,8 @@ card, feel free to submit your own tips.
 The XRender extension can be very CPU consuming. The NVidia binary closed source
 drivers are able to perform the rendering in hardware.
 
-If you have an NVidia video card and the NVidia binary closed source drivers, 
-you can enable the XRender in hardwareby adding the following option to your 
+If you have an NVidia video card and the NVidia binary closed source drivers,
+you can enable the XRender in hardwareby adding the following option to your
 xorg.conf file:
 
         Option      "RenderAccel" "true"
@@ -105,7 +105,7 @@ EndSection
 4.2) EXA
 ~~~~~~~~
 
-On some card, you may want to try the EXA acceleration by adding 
+On some card, you may want to try the EXA acceleration by adding
 
         Option "AccelMethod" "exa"
 
@@ -128,9 +128,5 @@ Support for those features can be checked using "xfwm4 --version":
 	- Epoxy support:                                Yes
         ...
 
-If both VSYNC methods are available, xfwm4 will prefer OpenGL. To force the
-use of the present extension, set the environment variable XFWM4_USE_PRESENT
-prior to run xfwm4, e.g.:
-
-    $ XFWM4_USE_PRESENT=1 xfwm4 --replace &
+If both VSYNC methods are available, xfwm4 will prefer Present over OpenGL.
 
