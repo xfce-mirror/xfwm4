@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# José Vieira <jvieira33@sapo.pt>, 2017
 # Nuno Donato <nunodonato@gmail.com>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2015-10-31 16:50+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"PO-Revision-Date: 2017-05-23 13:02+0000\n"
+"Last-Translator: José Vieira <jvieira33@sapo.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,7 +147,7 @@ msgstr "Prender"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Shade"
-msgstr "Enrolar"
+msgstr "Recolher"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
@@ -220,15 +221,15 @@ msgstr "<b>Foco em novas janelas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
-msgstr "_Subir janelas automaticamente quando recebem foco"
+msgstr "Trazer janelas para a _frente automaticamente quando recebem foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr "Atraso antes de su_bir a janela focada:"
+msgstr "_Atraso antes de trazer para a frente a janela focada:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Levantar ao focar</b>"
+msgstr "<b>Trazer para a frente ao focar</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
@@ -236,7 +237,7 @@ msgstr "Trazer janela para a frente ao _clicar na janela da aplicação"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
-msgstr "<b>Levantar com clique</b>"
+msgstr "<b>Trazer para a frente com clique</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
@@ -245,11 +246,11 @@ msgstr "F_oco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Snap windows to screen _border"
-msgstr "Alinhar janelas ao limite do e_crã"
+msgstr "Posicionar janelas no limite do e_crã"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Snap windows to other _windows"
-msgstr "Alinhar janelas com outras ja_nelas"
+msgstr "Posicionar janelas com outras ja_nelas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "Dis_tance:"
@@ -269,7 +270,7 @@ msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:45
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Alinhamento de janelas</b>"
+msgstr "<b>Posicionamento de janelas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "Wrap workspaces when the _pointer reaches the screen edge"
@@ -297,7 +298,7 @@ msgstr "Ocultar conteúdo das janelas ao _mover"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Box move and resize</b>"
-msgstr "<b>Mover e redimensionar</b>"
+msgstr "<b>Mover e redimensionar a caixa</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
@@ -314,7 +315,7 @@ msgstr "A_vançado"
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
-msgstr "Enrolar janela"
+msgstr "Recolher janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
@@ -371,7 +372,7 @@ msgstr "Percorrer janelas"
 
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Cycle windows (Reverse)"
-msgstr "Percorrer janelas (invertido)"
+msgstr "Percorrer janelas (sentido inverso)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
@@ -403,19 +404,19 @@ msgstr "Redimensionar janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
-msgstr "Prender janela"
+msgstr "Fixar janela"
 
 #: ../settings-dialogs/xfwm4-settings.c:255
 msgid "Raise window"
-msgstr "Colocar janela à frente"
+msgstr "Trazer janela para a frente"
 
 #: ../settings-dialogs/xfwm4-settings.c:256
 msgid "Lower window"
-msgstr "Colocar janela atrás"
+msgstr "Mandar janela para trás"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Raise or lower window"
-msgstr "Subir ou baixar janela"
+msgstr "Janela para a frente ou para trás"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -427,7 +428,7 @@ msgstr "Preencher janela verticalmente"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
-msgstr "Colocar por cima"
+msgstr "Trocar para cima"
 
 #: ../settings-dialogs/xfwm4-settings.c:262
 msgid "Toggle fullscreen"
@@ -607,11 +608,11 @@ msgstr "Adicionar área de trabalho adjacente"
 
 #: ../settings-dialogs/xfwm4-settings.c:306
 msgid "Delete last workspace"
-msgstr "Apagar última área de trabalho"
+msgstr "Eliminar última área de trabalho"
 
 #: ../settings-dialogs/xfwm4-settings.c:307
 msgid "Delete active workspace"
-msgstr "Apagar área de trabalho ativa"
+msgstr "Eliminar área de trabalho ativa"
 
 #: ../settings-dialogs/xfwm4-settings.c:453
 msgid "Theme"
@@ -632,18 +633,18 @@ msgstr "Falha ao iniciar xfconf. Motivo: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:1004
 msgid "Could not create the settings dialog."
-msgstr "Incapaz de criar o diálogo de definições."
+msgstr "Incapaz de criar a caixa de diálogo de definições."
 
 #: ../settings-dialogs/xfwm4-settings.c:1893
 #: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
-msgstr "Repor omissões"
+msgstr "Repor Pré-definições"
 
 #: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Vai repor todos os atalhos para os seus valores originais. Deseja mesmo fazer isto?"
+msgstr "Isto irá repor todos os atalhos nos seus valores pré-definidos. Deseja mesmo fazer isto?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
@@ -661,7 +662,7 @@ msgstr "Pe_rcorrer janelas de todas as áreas de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Desenhar moldura das janelas selecionadas ao percorrer"
+msgstr "_Desenhar caixilho em torno das janelas selecionadas ao percorrer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "C_ycling"
@@ -673,11 +674,11 @@ msgstr "Ati_var foco retirando a prevenção"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Re_speitar o padrão de foco ICCCM "
+msgstr "Re_speitar a dica de padrão de foco ICCCM "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "When a window raises itself:"
-msgstr "Quando uma janela se levanta:"
+msgstr "Quando uma janela vem para a frente por si própria:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "_Bring window on current workspace"
@@ -697,11 +698,11 @@ msgstr "Tecla usada para a_garrar e mover janelas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Subi_r janelas ao pressionar qualquer botão do rato"
+msgstr "Trazer janelas para a f_rente ao pressionar qualquer botão do rato"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide _frame of windows when maximized"
-msgstr "Ocultar _moldura das janelas maximizadas"
+msgstr "Ocultar _caixilho das janelas maximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original _size of maximized windows when moving"
@@ -717,7 +718,7 @@ msgstr "Utilizar resistê_ncia de limites ao invés do alinhamento de janelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Avisar da _urgência fazendo piscar a decoração da janela"
+msgstr "Avisar da _urgência fazendo piscar a muldura da janela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Keep urgent windows _blinking repeatedly"
@@ -725,11 +726,11 @@ msgstr "Manter janelas urgentes a pi_scar repetidamente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
-msgstr "Acessi_bilidade"
+msgstr "_Acessibilidade"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "_Utilizar roda do rato para trocar entre áreas de trabalho"
+msgstr "Utilizar r_oda do rato para trocar entre áreas de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid ""
@@ -780,11 +781,11 @@ msgstr "_Ligar composição de ecrã"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "Display _fullscreen overlay windows directly"
-msgstr "O ecrã completo cobre as ja_nelas"
+msgstr "O ecrã _completo cobre as janelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "Show shadows under _regular windows"
-msgstr "Mostrar somb_ras por baixo das janelas normais"
+msgstr "Mostrar sombras por baixo das janelas _normais"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Show shadows under pop_up windows"
@@ -796,7 +797,7 @@ msgstr "Mostrar sombras por baixo das janelas acopla_das"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Opaci_ty of window decorations:"
-msgstr "Opac_idade das decorações de janela:"
+msgstr "Opacid_ade da moldura de janela:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "<i>Transparent</i>"
@@ -816,7 +817,7 @@ msgstr "Opacidade das janelas em _movimento:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Opacity of windows during resi_ze:"
-msgstr "Opacidade das janelas ao redi_mensionar:"
+msgstr "Opacidade das janelas ao redime_nsionar:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of popup window_s:"
@@ -949,7 +950,7 @@ msgstr "Sair de _ecrã completo"
 
 #: ../src/menu.c:58
 msgid "Context _Help"
-msgstr "Ajuda de _contexto"
+msgstr "_Ajuda de contexto"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
