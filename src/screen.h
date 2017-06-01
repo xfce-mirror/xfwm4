@@ -207,9 +207,6 @@ struct _ScreenInfo
     gboolean use_present;
 
 #ifdef HAVE_EPOXY
-    gboolean has_glx_sync_control;
-    gboolean has_glx_video_sync;
-    gboolean has_texture_from_pixmap;
     gboolean texture_inverted;
 
     GLuint rootTexture;

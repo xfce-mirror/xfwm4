@@ -1083,29 +1083,6 @@ check_glx_renderer (ScreenInfo *screen_info)
     return TRUE;
 }
 
-static void
-init_glx_extensions (ScreenInfo *screen_info)
-{
-    g_return_if_fail (screen_info != NULL);
-
-    TRACE ("entering init_glx_extensions");
-
-    screen_info->has_glx_sync_control =
-        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
-                                 screen_info->screen,
-                                 "GLX_OML_sync_control");
-
-    screen_info->has_glx_video_sync =
-        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
-                                 screen_info->screen,
-                                 "GLX_SGI_video_sync");
-
-    screen_info->has_texture_from_pixmap =
-        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
-                                 screen_info->screen,
-                                 "GLX_EXT_texture_from_pixmap");
-}
-
 static gboolean
 check_gl_extensions (ScreenInfo *screen_info)
 {
@@ -1325,17 +1302,6 @@ init_glx (ScreenInfo *screen_info)
         return FALSE;
     }
 
-    init_glx_extensions (screen_info);
-    if (!screen_info->has_glx_video_sync && !screen_info->has_glx_sync_control)
-    {
-        g_warning ("Screen is missing required GLX extension, vsync disabled.");
-        /*
-         * Strictly speaking, we /could/ be using GLX without VSync support, but what
-         * would be the point? Chances are we'd be using swrast anyway...
-         */
-        return FALSE;
-    }
-
     if (!choose_glx_settings (screen_info))
     {
         g_warning ("Cannot find a matching GLX config, vsync disabled.");
@@ -1399,35 +1365,6 @@ init_glx (ScreenInfo *screen_info)
     check_gl_error();
 
     return TRUE;
-}
-
-/* Following routine is taken from gdk GL context code by Alexander Larsson */
-static void
-wait_glx_vblank (ScreenInfo *screen_info)
-{
-    guint32 current_count;
-
-    g_return_if_fail (screen_info != NULL);
-
-    TRACE ("entering wait_glx_vblank");
-
-    if (screen_info->has_glx_sync_control)
-    {
-        gint64 ust, msc, sbc;
-
-        glXGetSyncValuesOML (myScreenGetXDisplay (screen_info),
-                             screen_info->glx_window,
-                             &ust, &msc, &sbc);
-        glXWaitForMscOML (myScreenGetXDisplay (screen_info),
-                          screen_info->glx_window,
-                          0, 2, (msc + 1) % 2,
-                          &ust, &msc, &sbc);
-    }
-    else if (screen_info->has_glx_video_sync)
-    {
-        glXGetVideoSyncSGI (&current_count);
-        glXWaitVideoSyncSGI (2, (current_count + 1) % 2, &current_count);
-    }
 }
 
 static GLXDrawable
@@ -2225,7 +2162,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     if (screen_info->use_glx) /* glx first if available */
     {
         glXWaitX ();
-        wait_glx_vblank (screen_info);
         bind_glx_texture (screen_info,
                           screen_info->rootPixmap[buffer]);
         redraw_glx_texture (screen_info);
