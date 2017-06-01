@@ -828,9 +828,17 @@ myScreenGetXineramaMonitorGeometry (ScreenInfo *screen_info, gint monitor_num, G
     g_return_if_fail (XineramaIsActive (myScreenGetXDisplay (screen_info)));
 
     infos = XineramaQueryScreens (myScreenGetXDisplay (screen_info), &n);
-    if (infos == NULL || n <= 0 || monitor_num < n || monitor_num > n)
+    if (infos == NULL || n <= 0 || monitor_num > n)
     {
+        g_warning ("Cannot query Xinerama!");
         XFree (infos);
+
+        /* Using screen size as fallback, safer than some random values */
+        rect->x = 0;
+        rect->y = 0;
+        rect->width = screen_info->width;
+        rect->height = screen_info->height;
+
         return;
     }
 
