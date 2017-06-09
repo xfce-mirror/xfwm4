@@ -1558,15 +1558,18 @@ present_error_handler (Display * dpy, XErrorEvent * err)
     g_return_val_if_fail (display_info, 0);
 
     /* XPresentPixmap() can trigger a BadWindow rather than a BadMatch */
-    if (err->request_code == display_info->present_opcode && err->error_code == BadWindow)
+    if (err->request_code == display_info->present_opcode &&
+        (err->error_code == BadWindow || err->error_code == BadMatch))
     {
-        ScreenInfo *screen_info;
-        screen_info = myDisplayGetScreenFromOutput (display_info, err->resourceid);
+        GSList *screens;
 
-        if (screen_info != NULL)
+        g_warning ("Dismissing XPresent as unusable, error %d for request %d",
+                    err->error_code, err->request_code);
+
+        for (screens = display_info->screens; screens; screens = g_slist_next (screens))
         {
-            g_warning ("Disabling XPresent, error %d on window 0x%lx for request %d",
-                       err->error_code, err->resourceid, err->request_code);
+            ScreenInfo *screen_info = ((ScreenInfo *) screens->data);
+
             screen_info->present_pending = FALSE;
             screen_info->use_present = FALSE;
         }
