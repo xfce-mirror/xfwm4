@@ -41,8 +41,10 @@ on_realize (GtkWidget *dialog,
 
     xid = (Window) GPOINTER_TO_INT (data);
     gdk_error_trap_push ();
-    XSetTransientForHint (gdk_display, GDK_WINDOW_XID (dialog->window), xid);
-    gdk_error_trap_pop ();
+    XSetTransientForHint (gdk_x11_get_default_xdisplay (),
+                          GDK_WINDOW_XID (gtk_widget_get_window (dialog)),
+                          xid);
+    gdk_error_trap_pop_ignored ();
 }
 
 int
@@ -85,7 +87,7 @@ main (int argc, char **argv)
                                        "Do you want to terminate the application?"));
 
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_NO);
-    gtk_widget_set (GTK_WIDGET (dialog), "secondary-text", title, NULL);
+    g_object_set (GTK_WIDGET (dialog), "secondary-text", title, NULL);
     gtk_window_set_title (GTK_WINDOW (dialog), _("Warning"));
     g_signal_connect (G_OBJECT (dialog), "realize",
                       G_CALLBACK (on_realize), (gpointer) GINT_TO_POINTER (xid));

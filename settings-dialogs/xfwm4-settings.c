@@ -37,6 +37,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <gtk/gtkx.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -47,6 +48,7 @@
 
 #include "xfwm4-dialog_ui.h"
 #include "xfwm4-settings.h"
+#include "common.h"
 
 
 
@@ -132,6 +134,7 @@ static void       xfwm_settings_create_indicator                     (GtkWidget 
                                                                       gint                  y,
                                                                       gint                  width,
                                                                       gint                  height);
+static gboolean   xfwm_settings_title_button_press_event             (GtkWidget            *widget);
 static void       xfwm_settings_title_button_drag_data               (GtkWidget            *widget,
                                                                       GdkDragContext       *drag_context,
                                                                       GtkSelectionData     *data,
@@ -235,7 +238,7 @@ static const MenuTemplate title_align_values[] = {
 
 
 static gboolean           opt_version = FALSE;
-static GdkNativeWindow    opt_socket_id = 0;
+static Window             opt_socket_id = 0;
 static GOptionEntry       opt_entries[] = {
   { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id,
     N_("Settings manager socket"), N_("SOCKET ID") },
@@ -467,7 +470,7 @@ xfwm_settings_constructed (GObject *object)
         g_signal_connect (button, "drag_end", G_CALLBACK (xfwm_settings_title_button_drag_end),
                           NULL);
         g_signal_connect (button, "button_press_event",
-                          G_CALLBACK (xfwm_settings_signal_blocker), NULL);
+                          G_CALLBACK (xfwm_settings_title_button_press_event), NULL);
         g_signal_connect (button, "enter_notify_event",
                           G_CALLBACK (xfwm_settings_signal_blocker), NULL);
         g_signal_connect (button, "focus",  G_CALLBACK (xfwm_settings_signal_blocker), NULL);
@@ -490,7 +493,7 @@ xfwm_settings_constructed (GObject *object)
           g_signal_connect (button, "drag_end", G_CALLBACK (xfwm_settings_title_button_drag_end),
                             NULL);
           g_signal_connect (button, "button_press_event",
-                            G_CALLBACK (xfwm_settings_signal_blocker), NULL);
+                            G_CALLBACK (xfwm_settings_title_button_press_event), NULL);
           g_signal_connect (button, "enter_notify_event",
                             G_CALLBACK (xfwm_settings_signal_blocker), NULL);
           g_signal_connect (button, "focus",  G_CALLBACK (xfwm_settings_signal_blocker), NULL);
@@ -514,8 +517,8 @@ xfwm_settings_constructed (GObject *object)
 
   /* Set reset button icon */
   gtk_button_set_image (GTK_BUTTON (shortcuts_reset_button),
-                        gtk_image_new_from_stock (GTK_STOCK_REVERT_TO_SAVED,
-                                                  GTK_ICON_SIZE_BUTTON));
+                        gtk_image_new_from_icon_name ("document-revert",
+                                                      GTK_ICON_SIZE_BUTTON));
 
   /* Keyboard tab: Shortcuts tree view */
   {
@@ -842,7 +845,7 @@ xfwm_settings_create_dialog (XfwmSettings *settings)
 
 static GtkWidget *
 xfwm_settings_create_plug (XfwmSettings   *settings,
-                           GdkNativeWindow socket_id)
+                           Window          socket_id)
 {
   GtkWidget *plug;
   GtkWidget *child;
@@ -853,7 +856,7 @@ xfwm_settings_create_plug (XfwmSettings   *settings,
   gtk_widget_show (plug);
 
   child = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "plug-child"));
-  gtk_widget_reparent (child, plug);
+  xfwm_widget_reparent (child, plug);
   gtk_widget_show (child);
 
   return plug;
@@ -944,7 +947,7 @@ main (int    argc,
       g_signal_connect (dialog, "response", G_CALLBACK (xfwm_settings_response), NULL);
 
       /* To prevent the settings dialog to be saved in the session */
-      gdk_set_sm_client_id ("FAKE ID");
+      gdk_x11_set_sm_client_id ("FAKE ID");
 
       gtk_main ();
 
@@ -956,7 +959,7 @@ main (int    argc,
       g_signal_connect (plug, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
 
       /* To prevent the settings dialog to be saved in the session */
-      gdk_set_sm_client_id ("FAKE ID");
+      gdk_x11_set_sm_client_id ("FAKE ID");
 
       /* Stop startup notification */
       gdk_notify_startup_complete ();
@@ -1049,13 +1052,14 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
                                       guint             timestamp,
                                       XfwmSettings     *settings)
 {
-  GtkWidget *source;
-  GtkWidget *parent;
-  GtkWidget *active_box;
-  GList     *children;
-  GList     *iter;
-  gint       xoffset;
-  gint       i;
+  GtkWidget     *source;
+  GtkWidget     *parent;
+  GtkWidget     *active_box;
+  GList         *children;
+  GList         *iter;
+  GtkAllocation  allocation;
+  gint           xoffset;
+  gint           i;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
@@ -1070,17 +1074,20 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
   gtk_box_pack_start (GTK_BOX (active_box), source, info == 3, info == 3, 0);
   g_object_unref (source);
 
-  xoffset = widget->allocation.x;
+  gtk_widget_get_allocation (widget, &allocation);
+
+  xoffset = allocation.x;
 
   children = gtk_container_get_children (GTK_CONTAINER (active_box));
 
   for (i = 0, iter = children; iter != NULL; ++i, iter = g_list_next (iter))
-    if (GTK_WIDGET_VISIBLE (iter->data))
-      if (x < (GTK_WIDGET (iter->data)->allocation.width / 2 +
-               GTK_WIDGET (iter->data)->allocation.x - xoffset))
-        {
+    if (gtk_widget_get_visible (GTK_WIDGET (iter->data)))
+      {
+        gtk_widget_get_allocation (GTK_WIDGET (iter->data), &allocation);
+
+        if (x < allocation.width / 2 + allocation.x - xoffset)
           break;
-        }
+      }
 
   g_list_free (children);
 
@@ -1099,16 +1106,21 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
                                         guint           timestamp,
                                         XfwmSettings   *settings)
 {
-  GtkWidget *active_box;
-  GdkWindow *indicator;
-  GList     *children;
-  GList     *iter;
-  gint       xoffset = widget->allocation.x;
-  gint       height;
-  gint       ix;
-  gint       iy;
+  GtkWidget      *active_box;
+  GdkWindow      *indicator;
+  GList          *children;
+  GList          *iter;
+  GtkAllocation  allocation;
+  gint           xoffset;
+  gint           height;
+  gint           ix;
+  gint           iy;
 
   g_return_val_if_fail (XFWM_IS_SETTINGS (settings), FALSE);
+
+  gtk_widget_get_allocation (widget, &allocation);
+
+  xoffset = allocation.x;
 
   active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
   children = gtk_container_get_children (GTK_CONTAINER (active_box));
@@ -1117,30 +1129,33 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
   ix = INDICATOR_SIZE;
   for (iter = children; iter != NULL; iter = g_list_next (iter))
     {
-      if (GTK_WIDGET_VISIBLE (iter->data))
+      if (gtk_widget_get_visible (GTK_WIDGET (iter->data)))
         {
-          if (x < (GTK_WIDGET (iter->data)->allocation.width / 2 +
-                   GTK_WIDGET (iter->data)->allocation.x - xoffset))
+          gtk_widget_get_allocation (GTK_WIDGET (iter->data), &allocation);
+
+          if (x < (allocation.width / 2 + allocation.x - xoffset))
             {
-              ix = GTK_WIDGET (iter->data)->allocation.x;
+              ix = allocation.x;
               break;
             }
 
-          ix = GTK_WIDGET (iter->data)->allocation.x + GTK_WIDGET (iter->data)->allocation.width;
+          ix = allocation.x + allocation.width;
         }
     }
 
   g_list_free (children);
 
+  gtk_widget_get_allocation (active_box, &allocation);
+
   ix -= INDICATOR_SIZE / 2 + 1;
-  iy = active_box->allocation.y - INDICATOR_SIZE / 2 +
+  iy = allocation.y - INDICATOR_SIZE / 2 +
        gtk_container_get_border_width (GTK_CONTAINER (active_box));
 
   indicator = g_object_get_data (G_OBJECT (active_box), "indicator_window");
 
   if (G_UNLIKELY (indicator == NULL))
     {
-      height = active_box->allocation.height + INDICATOR_SIZE -
+      height = allocation.height + INDICATOR_SIZE -
                gtk_container_get_border_width (GTK_CONTAINER (active_box)) * 2;
       xfwm_settings_create_indicator (active_box, ix, iy, INDICATOR_SIZE, height);
     }
@@ -1209,11 +1224,11 @@ xfwm_settings_create_indicator (GtkWidget *widget,
                                 gint       width,
                                 gint       height)
 {
-  GdkWindowAttr attributes;
-  GdkWindow    *indicator;
-  GdkRegion    *shape;
-  GdkPoint      points[9];
-  gint          attr_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_COLORMAP | GDK_WA_VISUAL;
+  GdkWindowAttr   attributes;
+  GdkWindow      *indicator;
+  cairo_region_t *shape;
+  GdkPoint        points[9];
+  gint            attr_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
   g_return_if_fail (GTK_IS_WIDGET (widget));
 
@@ -1225,18 +1240,20 @@ xfwm_settings_create_indicator (GtkWidget *widget,
   attributes.height = height;
   attributes.wclass = GDK_INPUT_OUTPUT;
   attributes.visual = gtk_widget_get_visual (widget);
-  attributes.colormap = gtk_widget_get_colormap (widget);
   attributes.window_type = GDK_WINDOW_CHILD;
   attributes.cursor = NULL;
   attributes.wmclass_name = NULL;
   attributes.wmclass_class = NULL;
   attributes.override_redirect = FALSE;
+  attributes.type_hint = GDK_WINDOW_TYPE_HINT_NORMAL;
+
+  /* TODO implement a new method of displaying DND */
 
   indicator = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attr_mask);
   gdk_window_set_user_data (indicator, widget);
   g_object_set_data (G_OBJECT (widget), "indicator_window", indicator);
 
-  points[0].x = 0;
+ /* points[0].x = 0;
   points[0].y = 0;
   points[1].x = width;
   points[1].y = 0;
@@ -1256,7 +1273,7 @@ xfwm_settings_create_indicator (GtkWidget *widget,
   points[8].y = 0;
 
   shape = gdk_region_polygon (points, 9, GDK_WINDING_RULE);
-  gdk_window_shape_combine_region (indicator, shape, 0, 0);
+  gdk_window_shape_combine_region (indicator, shape, 0, 0);*/
 
   gdk_window_show (indicator);
   gdk_window_raise (indicator);
@@ -1278,6 +1295,23 @@ xfwm_settings_delete_indicator (GtkWidget *widget)
       gdk_window_destroy (indicator);
       g_object_set_data (G_OBJECT (widget), "indicator_window", NULL);
     }
+}
+
+
+
+static gboolean
+xfwm_settings_title_button_press_event (GtkWidget *widget)
+{
+  GdkPixbuf *pixbuf;
+
+  g_return_if_fail (GTK_IS_WIDGET (widget));
+
+  /* set pixbuf before drag begin cause it can be not displayed */
+  pixbuf = xfwm_settings_create_icon_from_widget (widget);
+  gtk_drag_source_set_icon_pixbuf (widget, pixbuf);
+  g_object_unref (pixbuf);
+
+  return TRUE;
 }
 
 
@@ -1304,13 +1338,7 @@ static void
 xfwm_settings_title_button_drag_begin (GtkWidget      *widget,
                                        GdkDragContext *drag_context)
 {
-  GdkPixbuf *pixbuf;
-
   g_return_if_fail (GTK_IS_WIDGET (widget));
-
-  pixbuf = xfwm_settings_create_icon_from_widget (widget);
-  gtk_drag_source_set_icon_pixbuf (widget, pixbuf);
-  g_object_unref (pixbuf);
 
   gtk_widget_hide (widget);
 }
@@ -1337,14 +1365,16 @@ xfwm_settings_signal_blocker (GtkWidget *widget)
 static GdkPixbuf *
 xfwm_settings_create_icon_from_widget (GtkWidget *widget)
 {
-  GdkWindow *drawable;
+  GdkWindow     *window;
+  GtkAllocation  allocation;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
 
-  drawable = GDK_DRAWABLE (gtk_widget_get_parent_window (widget));
-  return gdk_pixbuf_get_from_drawable (NULL, drawable, NULL,
-                                       widget->allocation.x, widget->allocation.y, 0, 0,
-                                       widget->allocation.width, widget->allocation.height);
+  gtk_widget_get_allocation (widget, &allocation);
+  window = gtk_widget_get_parent_window (widget);
+  return gdk_pixbuf_get_from_window (window,
+                                     allocation.x, allocation.y,
+                                     allocation.width, allocation.height);
 }
 
 
@@ -1893,20 +1923,17 @@ static void
 xfwm_settings_shortcut_reset_clicked (GtkButton    *button,
                                       XfwmSettings *settings)
 {
-  gint response;
+  gint confirm;
 
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
   g_return_if_fail (XFCE_IS_SHORTCUTS_PROVIDER (settings->priv->provider));
 
-  response = xfce_message_dialog (NULL, _("Reset to Defaults"), GTK_STOCK_DIALOG_QUESTION,
-                                  _("Reset to Defaults"),
+  confirm = xfce_dialog_confirm (NULL, "gtk-yes", NULL,
                                   _("This will reset all shortcuts to their default "
                                     "values. Do you really want to do this?"),
-                                  GTK_STOCK_NO, GTK_RESPONSE_NO,
-                                  GTK_STOCK_YES, GTK_RESPONSE_YES,
-                                  NULL);
+                                  _("Reset to Defaults"));
 
-  if (G_LIKELY (response == GTK_RESPONSE_YES))
+  if (confirm)
     xfce_shortcuts_provider_reset_to_defaults (settings->priv->provider);
 }
 

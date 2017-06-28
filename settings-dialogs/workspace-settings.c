@@ -26,22 +26,27 @@
 #include <string.h>
 
 #include <glib.h>
+#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <gtk/gtkx.h>
+
 #include <dbus/dbus-glib.h>
 #include <libwnck/libwnck.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
+
 #include "xfwm4-workspace-dialog_ui.h"
 #include "monitor-icon.h"
+#include "common.h"
 
 #define WORKSPACES_CHANNEL         "xfwm4"
 
 #define WORKSPACE_NAMES_PROP       "/general/workspace_names"
 #define WORKSPACE_COUNT_PROP       "/general/workspace_count"
 
-static GdkNativeWindow opt_socket_id = 0;
+static Window opt_socket_id = 0;
 static gboolean opt_version = FALSE;
 
 
@@ -435,7 +440,7 @@ main(int argc, gchar **argv)
             g_signal_connect (dialog, "response", G_CALLBACK (workspace_dialog_response), NULL);
 
             /* To prevent the settings dialog to be saved in the session */
-            gdk_set_sm_client_id ("FAKE ID");
+            gdk_x11_set_sm_client_id ("FAKE ID");
 
             gtk_main ();
 
@@ -448,11 +453,11 @@ main(int argc, gchar **argv)
 
             /* Get plug child widget */
             plug_child = GTK_WIDGET (gtk_builder_get_object (builder, "plug-child"));
-            gtk_widget_reparent (plug_child, plug);
+            xfwm_widget_reparent (plug_child, plug);
             gtk_widget_show (plug_child);
 
             /* To prevent the settings dialog to be saved in the session */
-            gdk_set_sm_client_id ("FAKE ID");
+            gdk_x11_set_sm_client_id ("FAKE ID");
 
             /* Stop startup notification */
             gdk_notify_startup_complete ();
