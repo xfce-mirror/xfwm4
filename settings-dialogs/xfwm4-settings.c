@@ -55,8 +55,6 @@
 
 #define DEFAULT_THEME                   "Default"
 
-#define INDICATOR_SIZE                  9
-
 #define SHORTCUTS_NAME_COLUMN           0
 #define SHORTCUTS_FEATURE_COLUMN        1
 #define SHORTCUTS_SHORTCUT_COLUMN       2
@@ -129,12 +127,6 @@ static void       xfwm_settings_hidden_frame_drag_data               (GtkWidget 
                                                                       guint                 info,
                                                                       guint                 timestamp,
                                                                       XfwmSettings         *settings);
-static void       xfwm_settings_delete_indicator                     (GtkWidget            *widget);
-static void       xfwm_settings_create_indicator                     (GtkWidget            *widget,
-                                                                      gint                  x,
-                                                                      gint                  y,
-                                                                      gint                  width,
-                                                                      gint                  height);
 static gboolean   xfwm_settings_title_button_press_event             (GtkWidget            *widget);
 static void       xfwm_settings_title_button_drag_data               (GtkWidget            *widget,
                                                                       GdkDragContext       *drag_context,
@@ -145,6 +137,9 @@ static void       xfwm_settings_title_button_drag_begin              (GtkWidget 
                                                                       GdkDragContext       *drag_context);
 static void       xfwm_settings_title_button_drag_end                (GtkWidget            *widget,
                                                                       GdkDragContext       *drag_context);
+static gboolean   xfwm_settings_active_frame_draw                    (GtkWidget            *widget,
+                                                                      cairo_t              *cr,
+                                                                      XfwmSettings         *settings);
 static gboolean   xfwm_settings_signal_blocker                       (GtkWidget            *widget);
 static GdkPixbuf *xfwm_settings_create_icon_from_widget              (GtkWidget            *widget);
 
@@ -446,6 +441,10 @@ xfwm_settings_constructed (GObject *object)
 
     g_signal_connect (hidden_frame, "drag-data-received",
                       G_CALLBACK (xfwm_settings_hidden_frame_drag_data), settings);
+
+    g_object_set_data (G_OBJECT (active_frame), "indicator-position", GINT_TO_POINTER (-1));
+    g_signal_connect (active_frame, "draw",
+                      G_CALLBACK (xfwm_settings_active_frame_draw), settings);
 
     children = gtk_container_get_children (GTK_CONTAINER (active_box));
     for (list_iter = children; list_iter != NULL; list_iter = g_list_next (list_iter))
@@ -1107,15 +1106,12 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
                                         guint           timestamp,
                                         XfwmSettings   *settings)
 {
-  GtkWidget      *active_box;
-  GdkWindow      *indicator;
-  GList          *children;
-  GList          *iter;
+  GtkWidget     *active_box;
+  GList         *children;
+  GList         *iter;
   GtkAllocation  allocation;
   gint           xoffset;
-  gint           height;
-  gint           ix;
-  gint           iy;
+  gint           index = -1;
 
   g_return_val_if_fail (XFWM_IS_SETTINGS (settings), FALSE);
 
@@ -1127,41 +1123,23 @@ xfwm_settings_active_frame_drag_motion (GtkWidget      *widget,
   children = gtk_container_get_children (GTK_CONTAINER (active_box));
 
   /* Set a value so that the compiler does not (rightfully) complain */
-  ix = INDICATOR_SIZE;
-  for (iter = children; iter != NULL; iter = g_list_next (iter))
+  for (iter = children, index = 0; iter != NULL; iter = g_list_next (iter))
     {
       if (gtk_widget_get_visible (GTK_WIDGET (iter->data)))
         {
           gtk_widget_get_allocation (GTK_WIDGET (iter->data), &allocation);
 
           if (x < (allocation.width / 2 + allocation.x - xoffset))
-            {
-              ix = allocation.x;
-              break;
-            }
+            break;
 
-          ix = allocation.x + allocation.width;
+          index++;
         }
     }
 
   g_list_free (children);
 
-  gtk_widget_get_allocation (active_box, &allocation);
-
-  ix -= INDICATOR_SIZE / 2 + 1;
-  iy = allocation.y - INDICATOR_SIZE / 2 +
-       gtk_container_get_border_width (GTK_CONTAINER (active_box));
-
-  indicator = g_object_get_data (G_OBJECT (active_box), "indicator_window");
-
-  if (G_UNLIKELY (indicator == NULL))
-    {
-      height = allocation.height + INDICATOR_SIZE -
-               gtk_container_get_border_width (GTK_CONTAINER (active_box)) * 2;
-      xfwm_settings_create_indicator (active_box, ix, iy, INDICATOR_SIZE, height);
-    }
-  else
-    gdk_window_move (indicator, ix, iy);
+  g_object_set_data (G_OBJECT (widget), "indicator-position", GINT_TO_POINTER (index));
+  gtk_widget_queue_draw (widget);
 
   return FALSE;
 }
@@ -1176,7 +1154,8 @@ xfwm_settings_active_frame_drag_leave (GtkWidget      *widget,
 {
   g_return_if_fail (XFWM_IS_SETTINGS (settings));
 
-  xfwm_settings_delete_indicator (GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box")));
+  g_object_set_data (G_OBJECT (widget), "indicator-position", GINT_TO_POINTER (-1));
+  gtk_widget_queue_draw (widget);
 }
 
 
@@ -1218,94 +1197,12 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
 
 
 
-static void
-xfwm_settings_create_indicator (GtkWidget *widget,
-                                gint       x,
-                                gint       y,
-                                gint       width,
-                                gint       height)
-{
-  GdkWindowAttr   attributes;
-  GdkWindow      *indicator;
-  cairo_region_t *shape;
-  GdkPoint        points[9];
-  gint            attr_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
-
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-
-  attributes.title = NULL;
-  attributes.event_mask = 0;
-  attributes.x = x;
-  attributes.y = y;
-  attributes.width = width;
-  attributes.height = height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
-  attributes.visual = gtk_widget_get_visual (widget);
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.cursor = NULL;
-  attributes.wmclass_name = NULL;
-  attributes.wmclass_class = NULL;
-  attributes.override_redirect = FALSE;
-  attributes.type_hint = GDK_WINDOW_TYPE_HINT_NORMAL;
-
-  /* TODO implement a new method of displaying DND */
-
-  indicator = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attr_mask);
-  gdk_window_set_user_data (indicator, widget);
-  g_object_set_data (G_OBJECT (widget), "indicator_window", indicator);
-
- /* points[0].x = 0;
-  points[0].y = 0;
-  points[1].x = width;
-  points[1].y = 0;
-  points[2].x = width / 2 + 1;
-  points[2].y = width / 2;
-  points[3].x = width / 2 + 1;
-  points[3].y = height - 1 - width / 2;
-  points[4].x = width;
-  points[4].y = height;
-  points[5].x = 0;
-  points[5].y = height - 1;
-  points[6].x = width / 2;
-  points[6].y = height - 1 - width / 2;
-  points[7].x = width / 2;
-  points[7].y = width / 2;
-  points[8].x = 0;
-  points[8].y = 0;
-
-  shape = gdk_region_polygon (points, 9, GDK_WINDING_RULE);
-  gdk_window_shape_combine_region (indicator, shape, 0, 0);*/
-
-  gdk_window_show (indicator);
-  gdk_window_raise (indicator);
-}
-
-
-
-static void
-xfwm_settings_delete_indicator (GtkWidget *widget)
-{
-  GdkWindow *indicator;
-
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-
-  indicator = g_object_get_data (G_OBJECT (widget), "indicator_window");
-
-  if (G_LIKELY (indicator != NULL))
-    {
-      gdk_window_destroy (indicator);
-      g_object_set_data (G_OBJECT (widget), "indicator_window", NULL);
-    }
-}
-
-
-
 static gboolean
 xfwm_settings_title_button_press_event (GtkWidget *widget)
 {
   GdkPixbuf *pixbuf;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), TRUE);
 
   /* set pixbuf before drag begin cause it can be not displayed */
   pixbuf = xfwm_settings_create_icon_from_widget (widget);
@@ -1351,6 +1248,83 @@ xfwm_settings_title_button_drag_end (GtkWidget      *widget,
                                      GdkDragContext *drag_context)
 {
   gtk_widget_show (widget);
+}
+
+
+
+static gboolean
+xfwm_settings_active_frame_draw (GtkWidget    *widget,
+                                 cairo_t      *cr,
+                                 XfwmSettings *settings)
+{
+  GtkWidget     *active_box;
+  gint           position;
+  GList         *children;
+  GList         *iter;
+  GtkAllocation  widget_allocation;
+  GtkAllocation  box_allocation;
+  gint           index;
+  gint           x;
+  gint           spacing;
+  gint           hshift;
+  GdkRGBA        color;
+
+  active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
+
+  position = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "indicator-position"));
+
+  if (position >= 0)
+    {
+      gtk_widget_get_allocation (active_box, &box_allocation);
+
+      spacing = gtk_box_get_spacing (GTK_BOX (active_box));
+      x = box_allocation.x - spacing;
+
+      children = gtk_container_get_children (GTK_CONTAINER (active_box));
+
+      for (iter = children, index = 1; iter != NULL; iter = g_list_next (iter))
+        {
+          if (gtk_widget_get_visible (GTK_WIDGET (iter->data)))
+            {
+              if (index == position)
+                {
+                  gtk_widget_get_allocation (GTK_WIDGET (iter->data), &widget_allocation);
+                  x = widget_allocation.x + widget_allocation.width;
+                }
+
+              index++;
+            }
+        }
+
+      g_list_free (children);
+
+      gtk_widget_get_allocation (widget, &widget_allocation);
+
+      gtk_style_context_get_color (gtk_widget_get_style_context (widget),
+                                   GTK_STATE_FLAG_NORMAL, &color);
+
+      cairo_translate (cr,
+                       box_allocation.x - widget_allocation.x,
+                       box_allocation.y - widget_allocation.y);
+
+      hshift = spacing * 5 / 3;
+      x -= box_allocation.x + (hshift - spacing) / 2;
+
+      gdk_cairo_set_source_rgba (cr, &color);
+      cairo_move_to (cr, x, -spacing);
+      cairo_rel_line_to (cr, hshift, 0);
+      cairo_rel_line_to (cr, -(hshift / 2 - 1), spacing);
+      cairo_rel_line_to (cr, 0, box_allocation.height);
+      cairo_rel_line_to (cr, hshift / 2 - 1, spacing);
+      cairo_rel_line_to (cr, -hshift, 0);
+      cairo_rel_line_to (cr, hshift / 2 - 1, -spacing);
+      cairo_rel_line_to (cr, 0, -box_allocation.height);
+      cairo_rel_line_to (cr, -(hshift / 2 - 1), -spacing);
+      cairo_close_path (cr);
+      cairo_fill (cr);
+    }
+
+  return FALSE;
 }
 
 
