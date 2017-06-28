@@ -48,6 +48,7 @@
 
 #include "xfwm4-dialog_ui.h"
 #include "xfwm4-settings.h"
+#include "range-debouncer.h"
 #include "common.h"
 
 
@@ -561,9 +562,9 @@ xfwm_settings_constructed (GObject *object)
 
   /* Focus tab */
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/focus_delay", G_TYPE_INT,
-                          gtk_range_get_adjustment (GTK_RANGE (focus_delay_scale)), "value");
+                          range_debouncer_bind (GTK_RANGE (focus_delay_scale)), "value");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/raise_delay", G_TYPE_INT,
-                          gtk_range_get_adjustment (GTK_RANGE (focus_raise_delay_scale)), "value");
+                          range_debouncer_bind (GTK_RANGE (focus_raise_delay_scale)), "value");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/raise_on_click", G_TYPE_BOOLEAN,
                           raise_on_click_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/raise_on_focus", G_TYPE_BOOLEAN,
@@ -630,9 +631,9 @@ xfwm_settings_constructed (GObject *object)
 
   /* Advanced tab */
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/snap_width", G_TYPE_INT,
-                          gtk_range_get_adjustment (GTK_RANGE (snap_width_scale)), "value");
+                          range_debouncer_bind (GTK_RANGE (snap_width_scale)), "value");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/wrap_resistance", G_TYPE_INT,
-                          gtk_range_get_adjustment (GTK_RANGE (wrap_resistance_scale)), "value");
+                          range_debouncer_bind (GTK_RANGE (wrap_resistance_scale)), "value");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/box_move", G_TYPE_BOOLEAN,
                           box_move_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/box_resize", G_TYPE_BOOLEAN,

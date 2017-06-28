@@ -44,6 +44,7 @@
 #include <xfconf/xfconf.h>
 
 #include "xfwm4-tweaks-dialog_ui.h"
+#include "range-debouncer.h"
 #include "common.h"
 
 static Window opt_socket_id = 0;
@@ -420,23 +421,23 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/frame_opacity",
                             G_TYPE_INT,
-                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (frame_opacity_scale)), "value");
+                            (GObject *) range_debouncer_bind (GTK_RANGE (frame_opacity_scale)), "value");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/resize_opacity",
                             G_TYPE_INT,
-                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (resize_opacity_scale)), "value");
+                            (GObject *) range_debouncer_bind (GTK_RANGE (resize_opacity_scale)), "value");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/move_opacity",
                             G_TYPE_INT,
-                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (move_opacity_scale)), "value");
+                            (GObject *) range_debouncer_bind (GTK_RANGE (move_opacity_scale)), "value");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/inactive_opacity",
                             G_TYPE_INT,
-                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (inactive_opacity_scale)), "value");
+                            (GObject *) range_debouncer_bind (GTK_RANGE (inactive_opacity_scale)), "value");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/popup_opacity",
                             G_TYPE_INT,
-                            (GObject *) gtk_range_get_adjustment (GTK_RANGE (popup_opacity_scale)), "value");
+                            (GObject *) range_debouncer_bind (GTK_RANGE (popup_opacity_scale)), "value");
 
     vbox = GTK_WIDGET (gtk_builder_get_object (builder, "main-vbox"));
     gtk_widget_show_all (vbox);

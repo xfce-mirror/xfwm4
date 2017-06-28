@@ -36,6 +36,8 @@ xfwm4_settings_SOURCES = \
 	xfwm4-settings.c \
 	xfwm4-settings.h \
 	xfwm4-dialog_ui.h \
+	range-debouncer.c \
+	range-debouncer.h \
 	common.c \
 	common.h
 
@@ -61,6 +63,8 @@ xfwm4_settings_LDADD = \
 xfwm4_tweaks_settings_SOURCES = \
 	tweaks-settings.c \
 	xfwm4-tweaks-dialog_ui.h \
+	range-debouncer.c \
+	range-debouncer.h \
 	common.c \
 	common.h
 
