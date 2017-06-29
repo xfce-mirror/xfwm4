@@ -108,6 +108,13 @@ AS_IF([test "x$USE_MAINTAINER_MODE" = "xyes"],
     echo '*** is specified.'
     exit 1
   ])
+  AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
+  AS_IF([test -z "$GLIB_COMPILE_RESOURCES"],
+  [
+    echo '*** The program "glib-compile-resources" is required to build when --enable-maintainer-mode'
+    echo '*** is specified.'
+    exit 1
+  ])
 ])
 
 dnl

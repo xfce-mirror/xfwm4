@@ -38,7 +38,6 @@
 #include <xfconf/xfconf.h>
 
 #include "xfwm4-workspace-dialog_ui.h"
-#include "monitor-icon.h"
 #include "common.h"
 
 #define WORKSPACES_CHANNEL         "xfwm4"
@@ -320,10 +319,13 @@ workspace_dialog_configure_widgets (GtkBuilder *builder,
     GtkWidget *margin_left_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "margin_left_spinbutton"));
 
     /* Set monitor icon */
-    monitor = gdk_pixbuf_new_from_inline (-1, monitor_icon_data, TRUE, NULL);
-    image = GTK_WIDGET (gtk_builder_get_object (builder, "monitor_icon"));
-    gtk_image_set_from_pixbuf (GTK_IMAGE (image), monitor);
-    g_object_unref (monitor);
+    monitor = gdk_pixbuf_new_from_resource ("/org/xfce/xfwm4/monitor-icon.pixdata", NULL);
+    if(G_LIKELY (monitor != NULL))
+    {
+        image = GTK_WIDGET (gtk_builder_get_object (builder, "monitor_icon"));
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image), monitor);
+        g_object_unref (monitor);
+    }
 
     /* Set max margins range */
     wmax = gdk_screen_width () / 4;

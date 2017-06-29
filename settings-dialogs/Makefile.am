@@ -6,7 +6,8 @@ bin_PROGRAMS = \
 xfwm4_workspace_settings_SOURCES = \
 	workspace-settings.c \
 	xfwm4-workspace-dialog_ui.h \
-	monitor-icon.h \
+	workspace-resource.c \
+	workspace-resource.h \
 	common.c \
 	common.h
 
@@ -91,10 +92,11 @@ AM_CPPFLAGS = \
 if MAINTAINER_MODE
 
 BUILT_SOURCES = \
-	monitor-icon.h \
 	xfwm4-dialog_ui.h \
 	xfwm4-tweaks-dialog_ui.h \
-	xfwm4-workspace-dialog_ui.h
+	xfwm4-workspace-dialog_ui.h \
+	workspace-resource.h \
+	workspace-resource.c
 
 xfwm4-workspace-dialog_ui.h: xfwm4-workspace-dialog.glade
 	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=workspace_dialog_ui $< >$@
@@ -105,9 +107,11 @@ xfwm4-dialog_ui.h: xfwm4-dialog.glade
 xfwm4-tweaks-dialog_ui.h: xfwm4-tweaks-dialog.glade
 	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=tweaks_dialog_ui $< >$@
 
-monitor-icon.h: $(srcdir)/monitor-icon.png
-	$(AM_V_GEN) gdk-pixbuf-csource --raw --build-list \
-	monitor_icon_data $(srcdir)/monitor-icon.png > monitor-icon.h
+workspace-resource.h:
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/workspace.gresource.xml --target=$@ --generate-header
+
+workspace-resource.c:
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/workspace.gresource.xml --target=$@ --generate-source
 
 endif
 
@@ -125,7 +129,8 @@ EXTRA_DIST = \
 	xfwm4-workspace-dialog.glade  \
 	xfwm4-tweaks-dialog.glade  \
 	xfwm4-dialog.glade \
-	monitor-icon.png
+	workspace.gresource.xml \
+	monitor-icon.svg
 
 DISTCLEANFILES = \
 	$(desktop_DATA)
