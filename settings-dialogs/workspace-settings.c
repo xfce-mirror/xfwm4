@@ -300,6 +300,30 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
                      G_CALLBACK(xfconf_workspace_names_changed), treeview);
 }
 
+
+
+static void
+workspace_dialog_get_screen_dimensions (gint *width, gint *height)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+    GdkDisplay   *display;
+    GdkMonitor   *monitor;
+    GdkRectangle  geometry;
+
+    display = gdk_display_get_default ();
+    monitor = gdk_display_get_primary_monitor (display);
+    gdk_monitor_get_geometry (monitor, &geometry);
+
+    *width = geometry.width;
+    *height = geometry.height;
+#else
+    *width = gdk_screen_width ();
+    *height = gdk_screen_height ();
+#endif
+}
+
+
+
 static void
 workspace_dialog_configure_widgets (GtkBuilder *builder,
                                     XfconfChannel *channel)
@@ -328,8 +352,9 @@ workspace_dialog_configure_widgets (GtkBuilder *builder,
     }
 
     /* Set max margins range */
-    wmax = gdk_screen_width () / 4;
-    hmax = gdk_screen_height () / 4;
+    workspace_dialog_get_screen_dimensions (&wmax, &hmax);
+    wmax /= 4;
+    hmax /= 4;
 
     gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_top_spinbutton), 0, hmax);
     gtk_spin_button_set_range (GTK_SPIN_BUTTON (margin_right_spinbutton), 0, wmax);
