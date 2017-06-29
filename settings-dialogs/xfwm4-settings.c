@@ -1525,6 +1525,8 @@ xfwm_settings_title_button_alignment_changed (GtkComboBox *combo,
   GtkTreeIter   iter;
   gchar        *value;
   float         align = 0.5f;
+  GList        *children;
+  GList        *citer;
 
   model = gtk_combo_box_get_model (combo);
   if (gtk_combo_box_get_active_iter (combo, &iter))
@@ -1539,7 +1541,16 @@ xfwm_settings_title_button_alignment_changed (GtkComboBox *combo,
       g_free (value);
     }
 
-  gtk_button_set_alignment (GTK_BUTTON (button), align, 0.5f);
+  children = gtk_container_get_children (GTK_CONTAINER (button));
+  for (citer = children; citer != NULL; citer = g_list_next (citer))
+    {
+      if (GTK_IS_LABEL (citer->data))
+        {
+          gtk_label_set_xalign (GTK_LABEL (citer->data), align);
+          break;
+        }
+    }
+  g_list_free (children);
 }
 
 
