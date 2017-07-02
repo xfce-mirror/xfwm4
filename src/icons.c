@@ -32,6 +32,9 @@
 #include <gdk/gdkx.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo/cairo-xlib.h>
+#ifdef HAVE_COMPOSITOR
+#include <cairo/cairo-xlib-xrender.h>
+#endif
 #include <libxfce4util/libxfce4util.h>
 
 #include "icons.h"
@@ -292,18 +295,27 @@ read_rgb_icon (DisplayInfo *display_info, Window window, guint ideal_width, guin
 }
 
 static void
-get_pixmap_geometry (Display *dpy, Pixmap pixmap, guint *w, guint *h, gboolean *bitmap)
+get_pixmap_geometry (Display *dpy, Pixmap pixmap, guint *out_width, guint *out_height, guint *out_depth)
 {
     Window root;
     guint border_width;
+    gint x, y;
+    guint width, height;
     guint depth;
-    int x, y;
 
-    XGetGeometry (dpy, pixmap, &root, &x, &y, w, h, &border_width, &depth);
+    XGetGeometry (dpy, pixmap, &root, &x, &y, &width, &height, &border_width, &depth);
 
-    if (bitmap != NULL)
+    if (out_width != NULL)
     {
-        *bitmap = depth == 1;
+        *out_width = width;
+    }
+    if (out_height != NULL)
+    {
+        *out_height = height;
+    }
+    if (out_depth != NULL)
+    {
+        *out_depth = depth;
     }
 }
 
@@ -355,20 +367,35 @@ apply_mask (GdkPixbuf * pixbuf, GdkPixbuf * mask)
 }
 
 static GdkPixbuf *
-get_pixbuf_from_pixmap (ScreenInfo *screen_info, Pixmap xpixmap, guint width, guint height, gboolean bitmap)
+get_pixbuf_from_pixmap (ScreenInfo *screen_info, Pixmap xpixmap, guint width, guint height, guint depth)
 {
     cairo_surface_t *surface;
     GdkPixbuf *retval;
+#ifdef HAVE_COMPOSITOR
+    XRenderPictFormat *render_format;
+#endif
 
     retval = NULL;
 
-    if (bitmap)
+    if (depth == 1)
     {
         surface = cairo_xlib_surface_create_for_bitmap (screen_info->display_info->dpy,
                                                         xpixmap,
                                                         screen_info->xscreen,
                                                         width, height);
     }
+#ifdef HAVE_COMPOSITOR
+    else if (depth == 32)
+    {
+        render_format = XRenderFindStandardFormat (screen_info->display_info->dpy,
+                                                   PictStandardARGB32);
+        surface = cairo_xlib_surface_create_with_xrender_format (screen_info->display_info->dpy,
+                                                                 xpixmap,
+                                                                 screen_info->xscreen,
+                                                                 render_format,
+                                                                 width, height);
+    }
+#endif
     else
     {
         surface = cairo_xlib_surface_create (screen_info->display_info->dpy,
@@ -396,8 +423,7 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
     GdkPixbuf *unscaled;
     GdkPixbuf *icon;
     GdkPixbuf *mask;
-    guint w, h;
-    gboolean bitmap;
+    guint w, h, depth;
 
     if (src_pixmap == None)
     {
@@ -405,15 +431,15 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
     }
 
     gdk_error_trap_push ();
-    get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_pixmap, &w, &h, &bitmap);
-    unscaled = get_pixbuf_from_pixmap (screen_info, src_pixmap, w, h, bitmap);
+    get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_pixmap, &w, &h, &depth);
+    unscaled = get_pixbuf_from_pixmap (screen_info, src_pixmap, w, h, depth);
     icon = NULL;
     mask = NULL;
 
     if (unscaled && src_mask)
     {
-        get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h, &bitmap);
-        mask = get_pixbuf_from_pixmap (screen_info, src_mask, w, h, bitmap);
+        get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h, &depth);
+        mask = get_pixbuf_from_pixmap (screen_info, src_mask, w, h, depth);
     }
     gdk_error_trap_pop_ignored ();
 
