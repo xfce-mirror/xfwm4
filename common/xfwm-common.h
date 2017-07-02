@@ -29,4 +29,13 @@ void              xfwm_widget_reparent                  (GtkWidget    *widget,
 void              xfwm_get_screen_dimensions            (gint         *width,
                                                          gint         *height);
 
+void              xfwm_get_monitor_geometry             (GdkScreen    *screen,
+                                                         gint          monitor_num,
+                                                         GdkRectangle *geometry);
+
+void              xfwm_get_primary_monitor_geometry     (GdkScreen    *screen,
+                                                         GdkRectangle *geometry);
+
+gint              xfwm_get_n_monitors                   (GdkScreen    *screen);
+
 #endif /* !__COMMON_H__ */

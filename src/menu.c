@@ -34,6 +34,8 @@
 #include <string.h>
 #include <libxfce4util/libxfce4util.h>
 
+#include <common/xfwm-common.h>
+
 #include "event_filter.h"
 #include "menu.h"
 #include "misc.h"
@@ -98,35 +100,50 @@ popup_position_func (GtkMenu * menu, gint * x, gint * y, gboolean * push_in,
 {
     GtkRequisition req;
     GdkPoint *pos;
-    gint monitor;
+#if GTK_CHECK_VERSION(3, 22, 0)
+    GdkDisplay *display;
+    GdkMonitor *monitor;
+#else
     GdkScreen *screen;
+    gint monitor_num;
+#endif
+    gint width;
+    gint height;
 
     pos = user_data;
 
     gtk_widget_size_request (GTK_WIDGET (menu), &req);
 
+    xfwm_get_screen_dimensions (&width, &height);
+
     if (pos->x >= 0)
     {
         *x = pos->x;
-        *x = CLAMP (*x, 0, MAX (0, gdk_screen_width () - req.width));
+        *x = CLAMP (*x, 0, MAX (0, width - req.width));
     }
     else
     {
-        *x = (gdk_screen_width () - req.width) / 2;
+        *x = (width - req.width) / 2;
     }
     if (pos->x >= 0)
     {
         *y = pos->y;
-        *y = CLAMP (*y, 0, MAX (0, gdk_screen_height () - req.height));
+        *y = CLAMP (*y, 0, MAX (0, height - req.height));
     }
     else
     {
-        *y = (gdk_screen_height () - req.height) / 2;
+        *y = (height - req.height) / 2;
     }
 
-    screen = gtk_widget_get_screen (GTK_WIDGET(menu));
-    monitor = gdk_screen_get_monitor_at_point (screen, *x, *y);
-    gtk_menu_set_monitor (GTK_MENU (menu), monitor);
+#if GTK_CHECK_VERSION(3, 22, 0)
+    display = gtk_widget_get_display (GTK_WIDGET (menu));
+    monitor = gdk_display_get_monitor_at_point (display, *x, *y);
+    gtk_menu_place_on_monitor (GTK_MENU (menu), monitor);
+#else
+    screen = gtk_widget_get_screen (GTK_WIDGET (menu));
+    monitor_num = gdk_screen_get_monitor_at_point (screen, *x, *y);
+    gtk_menu_set_monitor (GTK_MENU (menu), monitor_num);
+#endif
 
     g_free (user_data);
 }

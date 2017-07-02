@@ -44,6 +44,8 @@
 #include <libsn/sn.h>
 #endif
 
+#include <common/xfwm-common.h>
+
 #include "display.h"
 #include "screen.h"
 #include "misc.h"
@@ -632,7 +634,7 @@ myScreenComputeSize (ScreenInfo *screen_info)
 
     width = 0;
     height = 0;
-    num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+    num_monitors = xfwm_get_n_monitors (screen_info->gscr);
 
     if (num_monitors == 0)
     {
@@ -641,13 +643,13 @@ myScreenComputeSize (ScreenInfo *screen_info)
 
     for (i = 0; i < num_monitors; i++)
     {
-        gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor);
         width = MAX (monitor.x + monitor.width, width);
         height = MAX (monitor.y + monitor.height, height);
     }
 
-    screen_info->logical_width = gdk_screen_get_width (screen_info->gscr);
-    screen_info->logical_height = gdk_screen_get_height (screen_info->gscr);
+    screen_info->logical_width = WidthOfScreen (screen_info->xscreen);
+    screen_info->logical_height = HeightOfScreen (screen_info->xscreen);
     if ((width != screen_info->logical_width) || (height != screen_info->logical_height))
     {
         g_warning ("output size (%dx%d) and logical screen size (%dx%d) do not match",
@@ -718,14 +720,14 @@ myScreenRebuildMonitorIndex (ScreenInfo *screen_info)
      * the bigger ones first (giving preference to taller monitors
      * over wider monitors)
      */
-    num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+    num_monitors = xfwm_get_n_monitors (screen_info->gscr);
     for (i = 0; i < num_monitors; i++)
     {
-        gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor);
         cloned = FALSE;
         for (j = 0; j < (gint) screen_info->monitors_index->len; j++)
         {
-            gdk_screen_get_monitor_geometry (screen_info->gscr, j, &previous);
+            xfwm_get_monitor_geometry (screen_info->gscr, j, &previous);
             if ((previous.x == monitor.x) && (previous.y == monitor.y))
             {
                 cloned = TRUE;
@@ -788,7 +790,7 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
         gint monitor_index;
 
         monitor_index = myScreenGetMonitorIndex (screen_info, i);
-        gdk_screen_get_monitor_geometry (screen_info->gscr, monitor_index, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, monitor_index, &monitor);
 
         if ((x >= monitor.x) && (x < (monitor.x + monitor.width)) &&
             (y >= monitor.y) && (y < (monitor.y + monitor.height)))

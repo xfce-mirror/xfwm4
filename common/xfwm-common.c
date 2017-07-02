@@ -72,3 +72,54 @@ xfwm_get_screen_dimensions (gint *width, gint *height)
     *height = gdk_screen_height ();
 #endif
 }
+
+
+
+void
+xfwm_get_monitor_geometry (GdkScreen    *screen,
+                           gint          monitor_num,
+                           GdkRectangle *geometry)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+  GdkDisplay *display;
+  GdkMonitor *monitor;
+
+  display = gdk_screen_get_display (screen);
+  monitor = gdk_display_get_monitor (display, monitor_num);
+  gdk_monitor_get_geometry (monitor, geometry);
+#else
+  gdk_screen_get_monitor_geometry (screen, monitor_num, geometry);
+#endif
+}
+
+
+
+void
+xfwm_get_primary_monitor_geometry (GdkScreen    *screen,
+                                   GdkRectangle *geometry)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+  GdkDisplay *display;
+  GdkMonitor *monitor;
+
+  display = gdk_screen_get_display (screen);
+  monitor = gdk_display_get_primary_monitor (display);
+  gdk_monitor_get_geometry (monitor, geometry);
+#else
+  gdk_screen_get_monitor_geometry (screen,
+                                   gdk_screen_get_primary_monitor (screen),
+                                   geometry);
+#endif
+}
+
+
+
+gint
+xfwm_get_n_monitors (GdkScreen *screen)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+  return gdk_display_get_n_monitors (gdk_screen_get_display (screen));
+#else
+  return gdk_screen_get_n_monitors (screen);
+#endif
+}

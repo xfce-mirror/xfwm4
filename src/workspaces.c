@@ -35,6 +35,8 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
 
+#include <common/xfwm-common.h>
+
 #include "display.h"
 #include "screen.h"
 #include "misc.h"
@@ -546,7 +548,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         screen_info->margins[i] = screen_info->gnome_margins[i];
     }
 
-    gdk_screen_get_monitor_geometry (screen_info->gscr, gdk_screen_get_primary_monitor(screen_info->gscr), &workarea);
+    xfwm_get_primary_monitor_geometry (screen_info->gscr, &workarea);
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {

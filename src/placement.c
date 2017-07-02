@@ -29,6 +29,8 @@
 #include <glib.h>
 #include <libxfce4util/libxfce4util.h>
 
+#include <common/xfwm-common.h>
+
 #include "screen.h"
 #include "misc.h"
 #include "client.h"
@@ -771,9 +773,7 @@ clientInitPosition (Client * c)
     position = (c->size->flags & (PPosition | USPosition));
 
     n_monitors = myScreenGetNumMonitors (c->screen_info);
-    gdk_screen_get_monitor_geometry (screen_info->gscr,
-                                     gdk_screen_get_primary_monitor (screen_info->gscr),
-                                     &rect);
+    xfwm_get_primary_monitor_geometry (screen_info->gscr, &rect);
     is_transient = clientIsTransient (c);
 
     if (position || is_transient || (c->type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)))

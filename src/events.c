@@ -43,6 +43,8 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 
+#include <common/xfwm-common.h>
+
 #include "misc.h"
 #include "workspaces.h"
 #include "settings.h"
@@ -2765,7 +2767,7 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
     g_return_if_fail (screen_info);
     display_info = screen_info->display_info;
 
-    if (gdk_screen_get_n_monitors (screen_info->gscr) == 0)
+    if (xfwm_get_n_monitors (screen_info->gscr) == 0)
     {
         /*
          * Recent Xorg drivers disable the output when the lid
@@ -2811,7 +2813,7 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
     g_return_if_fail (screen_info);
     display_info = screen_info->display_info;
 
-    if (gdk_screen_get_n_monitors (screen_info->gscr) == 0)
+    if (xfwm_get_n_monitors (screen_info->gscr) == 0)
     {
         /*
          * Recent Xorg drivers disable the output when the lid

@@ -42,6 +42,8 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
 
+#include <common/xfwm-common.h>
+
 #include "client.h"
 #include "compositor.h"
 #include "focus.h"
@@ -3079,7 +3081,7 @@ void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gi
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    num_monitors = gdk_screen_get_n_monitors (screen_info->gscr);
+    num_monitors = xfwm_get_n_monitors (screen_info->gscr);
     if ((top >= 0)    && (top < num_monitors)    &&
         (bottom >= 0) && (bottom < num_monitors) &&
         (left >= 0)   && (left < num_monitors)   &&

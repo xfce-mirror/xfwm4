@@ -65,6 +65,9 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
+
+#include <common/xfwm-common.h>
+
 #include "icons.h"
 #include "focus.h"
 #include "tabwin.h"
@@ -383,7 +386,7 @@ getMinMonitorWidth (ScreenInfo *screen_info)
     for (min_width = i = 0; i < num_monitors; i++)
     {
         GdkRectangle monitor;
-        gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor);
         if (min_width == 0 || monitor.width < min_width)
             min_width = monitor.width;
     }
@@ -397,7 +400,7 @@ getMinMonitorHeight (ScreenInfo *screen_info)
     for (min_height = i = 0; i < num_monitors; i++)
     {
         GdkRectangle monitor;
-        gdk_screen_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor);
         if (min_height == 0 || monitor.height < min_height)
         {
             min_height = monitor.height;
@@ -609,9 +612,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
 static gboolean
 tabwinConfigure (TabwinWidget *tabwin_widget, GdkEventConfigure *event)
 {
-    GtkWindow *window;
     GdkRectangle monitor;
-    GdkScreen *screen;
     gint x, y;
 
     g_return_val_if_fail (tabwin_widget != NULL, FALSE);
@@ -622,12 +623,11 @@ tabwinConfigure (TabwinWidget *tabwin_widget, GdkEventConfigure *event)
         return FALSE;
     }
 
-    window = GTK_WINDOW(tabwin_widget);
-    screen = gtk_window_get_screen(window);
-    gdk_screen_get_monitor_geometry (screen, tabwin_widget->monitor_num, &monitor);
+    xfwm_get_monitor_geometry (gtk_widget_get_screen (GTK_WIDGET (tabwin_widget)),
+                               tabwin_widget->monitor_num, &monitor);
     x = monitor.x + (monitor.width - event->width) / 2;
     y = monitor.y + (monitor.height - event->height) / 2;
-    gtk_window_move (window, x, y);
+    gtk_window_move (GTK_WINDOW (tabwin_widget), x, y);
 
     tabwin_widget->width = event->width;
     tabwin_widget->height = event->height;
@@ -848,7 +848,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     gtk_widget_style_get (GTK_WIDGET(tabwin_widget), "border-radius", &border_radius, NULL);
     gtk_container_set_border_width (GTK_CONTAINER (tabwin_widget), border_radius + 4);
     gtk_window_set_position (GTK_WINDOW (tabwin_widget), GTK_WIN_POS_NONE);
-    gdk_screen_get_monitor_geometry (screen_info->gscr, tabwin_widget->monitor_num, &monitor);
+    xfwm_get_monitor_geometry (screen_info->gscr, tabwin_widget->monitor_num, &monitor);
     gtk_window_move (GTK_WINDOW (tabwin_widget), monitor.x + monitor.width / 2,
                                       monitor.y + monitor.height / 2);
 
