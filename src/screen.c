@@ -203,15 +203,15 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     g_object_unref (G_OBJECT (layout));
 
     screen_info->xscreen = gdk_x11_screen_get_xscreen (gscr);
-    screen_info->xroot = (Window) GDK_DRAWABLE_XID(gdk_screen_get_root_window (gscr));
-    screen_info->screen = gdk_screen_get_number (gscr);
-    screen_info->cmap = GDK_COLORMAP_XCOLORMAP(gdk_screen_get_system_colormap (gscr));
+    screen_info->xroot = gdk_x11_window_get_xid (gdk_screen_get_root_window (gscr));
+    screen_info->screen = gdk_x11_screen_get_screen_number (gscr);
+    screen_info->cmap = DefaultColormapOfScreen (screen_info->xscreen);
     screen_info->depth = DefaultDepth (display_info->dpy, screen_info->screen);
     screen_info->visual = DefaultVisual (display_info->dpy, screen_info->screen);
     screen_info->shape_win = (Window) None;
     myScreenComputeSize (screen_info);
 
-    screen_info->xfwm4_win = GDK_WINDOW_XWINDOW (screen_info->gtk_win->window);
+    screen_info->xfwm4_win = gdk_x11_window_get_xid (gtk_widget_get_window (screen_info->gtk_win));
     if (!myScreenSetWMAtom (screen_info, replace_wm))
     {
         gtk_widget_destroy (screen_info->gtk_win);
@@ -431,7 +431,7 @@ myScreenGetGdkWindow (ScreenInfo *screen_info)
     g_return_val_if_fail (screen_info, NULL);
     TRACE ("entering myScreenGetGdkWindow");
 
-    return screen_info->gtk_win->window;
+    return gtk_widget_get_window (screen_info->gtk_win);
 }
 
 gboolean

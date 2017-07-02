@@ -212,8 +212,8 @@ eventFilterAddWin (GdkScreen *gscr, long event_mask)
     g_return_val_if_fail (GDK_IS_SCREEN (gscr), NULL);
 
     event_win = gdk_screen_get_root_window (gscr);
-    xroot = (Window) GDK_DRAWABLE_XID(event_win);
-    dpy = GDK_DRAWABLE_XDISPLAY(event_win);
+    xroot = gdk_x11_window_get_xid (event_win);
+    dpy = gdk_x11_display_get_xdisplay (gdk_window_get_display (event_win));
 
     gdk_error_trap_push ();
     gdk_x11_grab_server ();

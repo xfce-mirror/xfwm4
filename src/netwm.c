@@ -1517,8 +1517,7 @@ clientSendNetWMPing (Client *c, guint32 timestamp)
     c->ping_timeout_id =
         g_timeout_add_full (G_PRIORITY_DEFAULT,
                             CLIENT_PING_TIMEOUT,
-                            (GtkFunction) ping_timeout_cb,
-                            (gpointer) c, NULL);
+                            ping_timeout_cb, c, NULL);
     return (TRUE);
 }
 

@@ -435,8 +435,7 @@ clientUpdateUrgency (Client *c)
             c->blink_timeout_id =
                 g_timeout_add_full (G_PRIORITY_DEFAULT,
                                     CLIENT_BLINK_TIMEOUT,
-                                    (GtkFunction) urgent_cb,
-                                    (gpointer) c, NULL);
+                                    urgent_cb, c, NULL);
         }
     }
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE)
@@ -975,7 +974,6 @@ clientApplyMWMHints (Client *c, gboolean update)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    PropMwmHints *mwm_hints;
     XWindowChanges wc;
 
     g_return_if_fail (c != NULL);

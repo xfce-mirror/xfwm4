@@ -811,10 +811,10 @@ titleButton (Client * c, guint state, XButtonEvent * ev)
             ev->window = ev->root;
             if (screen_info->button_handler_id)
             {
-                g_signal_handler_disconnect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), screen_info->button_handler_id);
+                g_signal_handler_disconnect (G_OBJECT (myScreenGetGtkWidget (screen_info)), screen_info->button_handler_id);
             }
-            screen_info->button_handler_id = g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)),
-                                                      "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) c);
+            screen_info->button_handler_id = g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)),
+                                                      "button_press_event", G_CALLBACK (show_popup_cb), (gpointer) c);
             /* Let GTK handle this for us. */
         }
     }
@@ -1001,10 +1001,10 @@ handleButtonPress (DisplayInfo *display_info, XButtonEvent * ev)
                     ev->window = ev->root;
                     if (screen_info->button_handler_id)
                     {
-                        g_signal_handler_disconnect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), screen_info->button_handler_id);
+                        g_signal_handler_disconnect (G_OBJECT (myScreenGetGtkWidget (screen_info)), screen_info->button_handler_id);
                     }
-                    screen_info->button_handler_id = g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)),
-                                                              "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) c);
+                    screen_info->button_handler_id = g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)),
+                                                              "button_press_event", G_CALLBACK (show_popup_cb), (gpointer) c);
                     /* Let GTK handle this for us. */
                 }
             }
@@ -2591,10 +2591,10 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
 
     if (screen_info->button_handler_id)
     {
-        g_signal_handler_disconnect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)), screen_info->button_handler_id);
+        g_signal_handler_disconnect (G_OBJECT (myScreenGetGtkWidget (screen_info)), screen_info->button_handler_id);
     }
-    screen_info->button_handler_id = g_signal_connect (GTK_OBJECT (myScreenGetGtkWidget (screen_info)),
-                                              "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
+    screen_info->button_handler_id = g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)),
+                                              "button_press_event", G_CALLBACK (show_popup_cb), (gpointer) NULL);
 
     if (!xfwmWindowDeleted(&menu_event_window))
     {
@@ -2860,9 +2860,9 @@ initPerScreenCallbacks (ScreenInfo *screen_info)
 
     screen_info->button_handler_id =
         g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)),
-                          "button_press_event", GTK_SIGNAL_FUNC (show_popup_cb), (gpointer) NULL);
+                          "button_press_event", G_CALLBACK (show_popup_cb), (gpointer) NULL);
     g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
-                      GTK_SIGNAL_FUNC (client_event_cb), NULL);
+                      G_CALLBACK (client_event_cb), NULL);
     g_object_connect (G_OBJECT(screen_info->gscr),
                       "signal::size-changed",
                       G_CALLBACK(size_changed_cb), (gpointer) (screen_info),

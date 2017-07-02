@@ -167,7 +167,7 @@ getUIStyle (GtkWidget * win, const gchar * name, const gchar * state)
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
     style = gtk_rc_get_style (win);
     if (!style)
@@ -231,7 +231,7 @@ getUIStyle_gc (GtkWidget * win, const gchar * name, const gchar * state)
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
     style = gtk_rc_get_style (win);
     if (!style)
@@ -252,7 +252,7 @@ getUIPangoFontDesc (GtkWidget * win)
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
     return (win->style->font_desc);
 }
@@ -264,7 +264,7 @@ getUIPangoContext (GtkWidget * win)
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
     return (gtk_widget_get_pango_context (win));
 }

@@ -110,7 +110,7 @@ get_color (GtkWidget *win, GtkStateType state_type)
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (win), NULL);
+    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
     style = gtk_rc_get_style (win);
     if (!style)
@@ -137,11 +137,16 @@ tabwin_expose (GtkWidget *tabwin_widget, GdkEventExpose *event, gpointer data)
     gdouble alpha = WIN_ALPHA;
     gint border_radius = WIN_BORDER_RADIUS;
     gdouble degrees = G_PI / 180.0;
-    gdouble width = tabwin_widget->allocation.width;
-    gdouble height = tabwin_widget->allocation.height;
+    GtkAllocation allocation;
+    gdouble width;
+    gdouble height;
+
+    gtk_widget_get_allocation (tabwin_widget, &allocation);
+    width = allocation.width;
+    height = allocation.height;
 
     screen = gtk_widget_get_screen (GTK_WIDGET(tabwin_widget));
-    cr = gdk_cairo_create (tabwin_widget->window);
+    cr = gdk_cairo_create (gtk_widget_get_window (tabwin_widget));
     if (G_UNLIKELY (cr == NULL))
       return FALSE;
 
@@ -869,11 +874,11 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     gtk_box_pack_start (GTK_BOX (vbox), windowlist, TRUE, TRUE, 0);
 
     g_signal_connect_swapped (tabwin_widget, "configure-event",
-                              GTK_SIGNAL_FUNC (tabwinConfigure),
+                              G_CALLBACK (tabwinConfigure),
                               (gpointer) tabwin_widget);
 
     g_signal_connect (tabwin_widget, "expose-event",
-                      GTK_SIGNAL_FUNC (tabwin_expose),
+                      G_CALLBACK (tabwin_expose),
                       (gpointer) tabwin_widget);
 
     gtk_widget_show_all (GTK_WIDGET (tabwin_widget));

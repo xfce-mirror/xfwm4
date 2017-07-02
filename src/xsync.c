@@ -206,8 +206,7 @@ clientXSyncResetTimeout (Client * c)
     clientXSyncClearTimeout (c);
     c->xsync_timeout_id = g_timeout_add_full (G_PRIORITY_DEFAULT,
                                               CLIENT_XSYNC_TIMEOUT,
-                                              (GtkFunction) clientXSyncTimeout,
-                                              (gpointer) c, NULL);
+                                              clientXSyncTimeout, c, NULL);
 }
 
 void

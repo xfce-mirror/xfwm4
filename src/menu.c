@@ -286,7 +286,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     }
                     ws_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsn_items);
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), ws_menu);
-                    g_signal_connect (GTK_OBJECT (ws_menu), "selection-done", GTK_SIGNAL_FUNC (menu_closed), menu);
+                    g_signal_connect (G_OBJECT (ws_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                     break;
                 default:
                     if (menuitems[i].image_name)
@@ -318,7 +318,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
         }
         ++i;
     }
-    g_signal_connect (GTK_OBJECT (menu->menu), "selection-done", GTK_SIGNAL_FUNC (menu_closed), menu);
+    g_signal_connect (G_OBJECT (menu->menu), "selection-done", G_CALLBACK (menu_closed), menu);
 
     return (menu);
 }
@@ -340,8 +340,8 @@ menu_item_connect (GtkWidget * item, MenuData * item_data)
     TRACE ("entering menu_item_connect");
     g_return_val_if_fail (item != NULL, NULL);
     g_return_val_if_fail (GTK_IS_MENU_ITEM (item), NULL);
-    g_signal_connect_closure (GTK_OBJECT (item), "activate",
-        g_cclosure_new (GTK_SIGNAL_FUNC (activate_cb), item_data,
+    g_signal_connect_closure (G_OBJECT (item), "activate",
+        g_cclosure_new (G_CALLBACK (activate_cb), item_data,
             (GClosureNotify) closure_notify), FALSE);
     return (item);
 }
@@ -360,7 +360,7 @@ menu_check_and_close (void)
     if (menu_open)
     {
         TRACE ("menu open, emitting deactivate signal");
-        g_signal_emit_by_name (GTK_OBJECT (menu_open), "deactivate");
+        g_signal_emit_by_name (G_OBJECT (menu_open), "deactivate");
         menu_open = NULL;
         return (TRUE);
     }
