@@ -46,10 +46,11 @@
 #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
 #include <libxfce4kbd-private/xfce-shortcuts-xfwm4.h>
 
+#include <common/xfwm-common.h>
+
 #include "xfwm4-dialog_ui.h"
 #include "xfwm4-settings.h"
 #include "range-debouncer.h"
-#include "common.h"
 
 
 

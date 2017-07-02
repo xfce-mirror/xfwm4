@@ -23,7 +23,10 @@
 
 #include <gtk/gtk.h>
 
-void              xfwm_widget_reparent                  (GtkWidget *widget,
-                                                         GtkWidget *new_parent);
+void              xfwm_widget_reparent                  (GtkWidget    *widget,
+                                                         GtkWidget    *new_parent);
+
+void              xfwm_get_screen_dimensions            (gint         *width,
+                                                         gint         *height);
 
 #endif /* !__COMMON_H__ */

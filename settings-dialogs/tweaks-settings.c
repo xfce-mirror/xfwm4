@@ -43,9 +43,10 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
 
+#include <common/xfwm-common.h>
+
 #include "xfwm4-tweaks-dialog_ui.h"
 #include "range-debouncer.h"
-#include "common.h"
 
 static Window opt_socket_id = 0;
 static gboolean opt_version = FALSE;

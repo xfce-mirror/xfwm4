@@ -18,7 +18,10 @@
  * MA 02110-1301, USA.
  */
 
-#include <gtk/gtk.h>
+#include <string.h>
+#include <gdk/gdkx.h>
+
+#include "xfwm-common.h"
 
 
 
@@ -44,3 +47,28 @@ xfwm_widget_reparent (GtkWidget *widget,
     }
 }
 
+
+
+void
+xfwm_get_screen_dimensions (gint *width, gint *height)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+  GdkDisplay   *display;
+  GdkMonitor   *monitor;
+  GdkRectangle  geometry;
+
+  display = gdk_display_get_default ();
+  monitor = gdk_display_get_primary_monitor (display);
+  gdk_monitor_get_geometry (monitor, &geometry);
+
+  if (width != NULL)
+    *width = geometry.width;
+  if (height != NULL)
+    *height = geometry.height;
+#else
+  if (width != NULL)
+    *width = gdk_screen_width ();
+  if (height != NULL)
+    *height = gdk_screen_height ();
+#endif
+}

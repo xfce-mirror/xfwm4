@@ -17,6 +17,7 @@ SUBDIRS = 								\
 	helper-dialog 							\
 	icons 								\
 	po 								\
+	common 								\
 	settings-dialogs						\
 	src 								\
 	themes

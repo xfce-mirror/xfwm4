@@ -7,9 +7,7 @@ xfwm4_workspace_settings_SOURCES = \
 	workspace-settings.c \
 	xfwm4-workspace-dialog_ui.h \
 	workspace-resource.c \
-	workspace-resource.h \
-	common.c \
-	common.h
+	workspace-resource.h
 
 xfwm4_workspace_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
@@ -25,6 +23,7 @@ xfwm4_workspace_settings_CFLAGS = \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE
 
 xfwm4_workspace_settings_LDADD = \
+	$(top_builddir)/common/libxfwm-common.la \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
@@ -38,9 +37,7 @@ xfwm4_settings_SOURCES = \
 	xfwm4-settings.h \
 	xfwm4-dialog_ui.h \
 	range-debouncer.c \
-	range-debouncer.h \
-	common.c \
-	common.h
+	range-debouncer.h
 
 xfwm4_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
@@ -54,6 +51,7 @@ xfwm4_settings_CFLAGS = \
 	-DLOCALEDIR=\"$(localedir)\"
 
 xfwm4_settings_LDADD = \
+	$(top_builddir)/common/libxfwm-common.la \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
@@ -65,9 +63,7 @@ xfwm4_tweaks_settings_SOURCES = \
 	tweaks-settings.c \
 	xfwm4-tweaks-dialog_ui.h \
 	range-debouncer.c \
-	range-debouncer.h \
-	common.c \
-	common.h
+	range-debouncer.h
 
 xfwm4_tweaks_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
@@ -80,6 +76,7 @@ xfwm4_tweaks_settings_CFLAGS = \
 	-DLOCALEDIR=\"$(localedir)\"
 
 xfwm4_tweaks_settings_LDADD = \
+	$(top_builddir)/common/libxfwm-common.la \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
@@ -87,7 +84,8 @@ xfwm4_tweaks_settings_LDADD = \
 	$(LIBXFCONF_LIBS)
 
 AM_CPPFLAGS = \
-	-I${top_srcdir}
+	-I${top_srcdir} \
+	$(PLATFORM_CPPFLAGS)
 
 if MAINTAINER_MODE
 

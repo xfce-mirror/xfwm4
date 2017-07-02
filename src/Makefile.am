@@ -93,6 +93,7 @@ xfwm4_CFLAGS =								\
 	-DG_LOG_DOMAIN=\"xfwm4\"
 
 xfwm4_LDADD =								\
+	$(top_builddir)/common/libxfwm-common.la 			\
 	$(GLIB_LIBS) 							\
 	$(GTK_LIBS) 							\
 	$(COMPOSITOR_LIBS)						\
@@ -109,6 +110,10 @@ xfwm4_LDADD =								\
 	$(RENDER_LIBS)							\
 	$(XINERAMA_LIBS)						\
 	$(MATH_LIBS)
+
+AM_CPPFLAGS = 								\
+	-I${top_srcdir} 						\
+	$(PLATFORM_CPPFLAGS)
 
 EXTRA_DIST = 								\
 	default_icon.png						\
