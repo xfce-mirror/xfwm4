@@ -33,7 +33,6 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libxfce4util/libxfce4util.h>
 
-#include "inline-default-icon.h"
 #include "icons.h"
 #include "display.h"
 #include "screen.h"
@@ -70,34 +69,33 @@ downsize_ratio (guint *width, guint *height, guint dest_w, guint dest_h)
  * create a GdkPixbuf from inline data and scale it to a given size
  */
 static GdkPixbuf *
-inline_icon_at_size (const guint8 *data, guint width, guint height)
+default_icon_at_size (GdkScreen *screen, guint width, guint height)
 {
+    GtkIconTheme *icon_theme;
     GdkPixbuf *base;
+    GdkPixbuf *scaled;
 
-    base = gdk_pixbuf_new_from_inline (-1, data, FALSE, NULL);
+    icon_theme = gtk_icon_theme_get_for_screen (screen);
 
-    g_return_val_if_fail (base, NULL);
+    g_return_val_if_fail (icon_theme != NULL, NULL);
 
-    if ((width <= 0 || height <= 0) ||
-        ((guint) gdk_pixbuf_get_width (base) == width &&
-         (guint) gdk_pixbuf_get_height (base) == height))
+    if (width <= 0 || height <= 0)
     {
-        return base;
+        width = 160;
+        height = 160;
     }
-    else
+
+    base = gtk_icon_theme_load_icon (icon_theme, "xfwm4-default",
+                                     MAX (width, height), 0, NULL);
+
+    if (base != NULL && width != height)
     {
-        GdkPixbuf *scaled;
-        guint w, h;
-
-        w = gdk_pixbuf_get_width (base);
-        h = gdk_pixbuf_get_height (base);
-        downsize_ratio (&w, &h, width, height);
-        scaled = gdk_pixbuf_scale_simple (base, w, h, GDK_INTERP_BILINEAR);
-
+        scaled = gdk_pixbuf_scale_simple (base, width, height, GDK_INTERP_BILINEAR);
         g_object_unref (G_OBJECT (base));
-
         return scaled;
     }
+
+    return base;
 }
 
 
@@ -573,7 +571,7 @@ getAppIcon (ScreenInfo *screen_info, Window window, guint width, guint height)
         }
     }
 
-    return inline_icon_at_size (default_icon_data, width, height);
+    return default_icon_at_size (screen_info->gscr, width, height);
 }
 
 GdkPixbuf *
@@ -606,7 +604,7 @@ getClientIcon (Client *c, guint width, guint height)
     }
     else
     {
-        app_content = inline_icon_at_size (default_icon_data, width, height);
+        app_content = default_icon_at_size (screen_info->gscr, width, height);
     }
 
     app_icon_width = (guint) gdk_pixbuf_get_width (app_content);

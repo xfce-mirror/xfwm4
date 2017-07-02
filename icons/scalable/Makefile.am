@@ -2,7 +2,8 @@ appiconsdir = $(datadir)/icons/hicolor/scalable/apps
 appicons_DATA =								\
 	wmtweaks.svg							\
 	xfce4-workspaces.svg						\
-	xfwm4.svg
+	xfwm4.svg							\
+	xfwm4-default.svg
 
 actionsiconsdir = $(datadir)/icons/hicolor/scalable/actions
 actionsicons_DATA =							\

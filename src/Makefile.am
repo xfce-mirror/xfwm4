@@ -21,7 +21,6 @@ xfwm4_SOURCES =								\
 	hints.h								\
 	icons.c								\
 	icons.h								\
-	inline-default-icon.h						\
 	keyboard.c							\
 	keyboard.h							\
 	main.c								\
@@ -116,17 +115,4 @@ AM_CPPFLAGS = 								\
 	$(PLATFORM_CPPFLAGS)
 
 EXTRA_DIST = 								\
-	default_icon.png						\
-	default_icon.svg						\
 	gen-color-table.pl
-
-if MAINTAINER_MODE
-
-BUILT_SOURCES =								\
-	inline-default-icon.h
-
-inline-default-icon.h: $(srcdir)/default_icon.png
-	$(AM_V_GEN) gdk-pixbuf-csource --raw --build-list 		\
-	default_icon_data $(srcdir)/default_icon.png > inline-default-icon.h
-
-endif
