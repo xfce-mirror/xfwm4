@@ -31,6 +31,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cairo/cairo-xlib.h>
 #include <libxfce4util/libxfce4util.h>
 
 #include "icons.h"
@@ -291,7 +292,7 @@ read_rgb_icon (DisplayInfo *display_info, Window window, guint ideal_width, guin
 }
 
 static void
-get_pixmap_geometry (Display *dpy, Pixmap pixmap, guint *w, guint *h)
+get_pixmap_geometry (Display *dpy, Pixmap pixmap, guint *w, guint *h, gboolean *bitmap)
 {
     Window root;
     guint border_width;
@@ -299,6 +300,11 @@ get_pixmap_geometry (Display *dpy, Pixmap pixmap, guint *w, guint *h)
     int x, y;
 
     XGetGeometry (dpy, pixmap, &root, &x, &y, w, h, &border_width, &depth);
+
+    if (bitmap != NULL)
+    {
+        *bitmap = depth == 1;
+    }
 }
 
 static GdkPixbuf *
@@ -309,6 +315,7 @@ apply_mask (GdkPixbuf * pixbuf, GdkPixbuf * mask)
     guchar *dest;
     guint w, h, i, j;
     guint src_stride, dest_stride;
+    guint src_bpx, dest_bpx;
 
     w = MIN (gdk_pixbuf_get_width (mask), gdk_pixbuf_get_width (pixbuf));
     h = MIN (gdk_pixbuf_get_height (mask), gdk_pixbuf_get_height (pixbuf));
@@ -321,26 +328,24 @@ apply_mask (GdkPixbuf * pixbuf, GdkPixbuf * mask)
     dest_stride = gdk_pixbuf_get_rowstride (with_alpha);
     src_stride = gdk_pixbuf_get_rowstride (mask);
 
+    dest_bpx = dest_stride / gdk_pixbuf_get_width (with_alpha);
+    src_bpx = src_stride / gdk_pixbuf_get_width (mask);
+
+    if (G_UNLIKELY (dest_bpx != 4))
+    {
+        g_object_unref (with_alpha);
+        g_return_val_if_reached (NULL);
+    }
+
     i = 0;
     while (i < h)
     {
         j = 0;
         while (j < w)
         {
-            guchar *s = src + i * src_stride + j * 3;
-            guchar *d = dest + i * dest_stride + j * 4;
-
-            /* s[0] == s[1] == s[2], they are 255 if the bit was set, 0
-             * otherwise
-             */
-            if (s[0] == 0)
-            {
-                d[3] = 0;       /* transparent */
-            }
-            else
-            {
-                d[3] = 255;     /* opaque */
-            }
+            guchar *s = src + i * src_stride + j * src_bpx;
+            guchar *d = dest + i * dest_stride + j * dest_bpx;
+            d[dest_bpx - 1] = s[src_bpx - 1];
             ++j;
         }
         ++i;
@@ -349,86 +354,38 @@ apply_mask (GdkPixbuf * pixbuf, GdkPixbuf * mask)
     return with_alpha;
 }
 
-static GdkColormap *
-get_cmap (GdkPixmap * pixmap, GdkScreen *gscreen)
-{
-    GdkColormap *cmap;
-
-    g_return_val_if_fail (pixmap != NULL, NULL);
-
-    cmap = gdk_drawable_get_colormap (pixmap);
-    if (cmap)
-    {
-        g_message ("Drawable colormap");
-        g_object_ref (G_OBJECT (cmap));
-    }
-    else
-    {
-        if (gdk_drawable_get_depth (pixmap) == 1)
-        {
-            /* try null cmap */
-            cmap = NULL;
-        }
-        else if ((gdk_drawable_get_depth (pixmap) == 32) && (gscreen != NULL))
-        {
-            /* Try ARGB cmap */
-            cmap = gdk_screen_get_rgba_colormap(gscreen);
-            g_object_ref (G_OBJECT (cmap));
-        }
-        else
-        {
-            /* Try system cmap */
-            cmap = gdk_colormap_get_system ();
-            g_object_ref (G_OBJECT (cmap));
-        }
-    }
-
-    /* Be sure we aren't going to blow up due to visual mismatch */
-    if (cmap && (gdk_colormap_get_visual (cmap)->depth != gdk_drawable_get_depth (pixmap)))
-    {
-        g_object_unref (G_OBJECT (cmap));
-        cmap = NULL;
-    }
-
-    return cmap;
-}
-
 static GdkPixbuf *
-get_pixbuf_from_pixmap (GdkScreen *gscreen, Pixmap xpixmap, guint src_x, guint src_y,
-                        gint dest_x, gint dest_y, guint width, guint height)
+get_pixbuf_from_pixmap (ScreenInfo *screen_info, Pixmap xpixmap, guint width, guint height, gboolean bitmap)
 {
-    GdkDrawable *drawable;
+    cairo_surface_t *surface;
     GdkPixbuf *retval;
-    GdkColormap *cmap;
 
     retval = NULL;
 
-    drawable = gdk_xid_table_lookup (xpixmap);
-
-    if (drawable)
+    if (bitmap)
     {
-        g_object_ref (G_OBJECT (drawable));
+        surface = cairo_xlib_surface_create_for_bitmap (screen_info->display_info->dpy,
+                                                        xpixmap,
+                                                        screen_info->xscreen,
+                                                        width, height);
     }
     else
     {
-        drawable = gdk_pixmap_foreign_new (xpixmap);
+        surface = cairo_xlib_surface_create (screen_info->display_info->dpy,
+                                             xpixmap,
+                                             screen_info->visual,
+                                             width, height);
     }
 
-    if (G_UNLIKELY(!drawable))
+    if (G_UNLIKELY(!surface))
     {
         /* Pixmap is gone ?? */
         return NULL;
     }
 
-    cmap = get_cmap (drawable, gscreen);
-    retval = gdk_pixbuf_get_from_drawable (NULL, drawable, cmap, src_x, src_y,
-                                           dest_x, dest_y, width, height);
+    retval = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
 
-    if (G_LIKELY(cmap))
-    {
-        g_object_unref (G_OBJECT (cmap));
-    }
-    g_object_unref (G_OBJECT (drawable));
+    cairo_surface_destroy (surface);
 
     return retval;
 }
@@ -440,6 +397,7 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
     GdkPixbuf *icon;
     GdkPixbuf *mask;
     guint w, h;
+    gboolean bitmap;
 
     if (src_pixmap == None)
     {
@@ -447,15 +405,15 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
     }
 
     gdk_error_trap_push ();
-    get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_pixmap, &w, &h);
-    unscaled = get_pixbuf_from_pixmap (screen_info->gscr, src_pixmap, 0, 0, 0, 0, w, h);
+    get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_pixmap, &w, &h, &bitmap);
+    unscaled = get_pixbuf_from_pixmap (screen_info, src_pixmap, w, h, bitmap);
     icon = NULL;
     mask = NULL;
 
     if (unscaled && src_mask)
     {
-        get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h);
-        mask = get_pixbuf_from_pixmap (screen_info->gscr, src_mask, 0, 0, 0, 0, w, h);
+        get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h, &bitmap);
+        mask = get_pixbuf_from_pixmap (screen_info, src_mask, w, h, bitmap);
     }
     gdk_error_trap_pop_ignored ();
 
@@ -464,8 +422,12 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
         GdkPixbuf *masked;
 
         masked = apply_mask (unscaled, mask);
-        g_object_unref (G_OBJECT (unscaled));
-        unscaled = masked;
+
+        if (masked != NULL)
+        {
+            g_object_unref (G_OBJECT (unscaled));
+            unscaled = masked;
+        }
 
         g_object_unref (G_OBJECT (mask));
         mask = NULL;
