@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-06-17 23:49+0000\n"
+"PO-Revision-Date: 2017-07-02 20:29+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -445,7 +445,7 @@ msgstr "Išskleidus, slėpti lango pavadinimą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automatiškai iškelti _langus kai jie stumiami link lango krašto"
+msgstr "Automatiškai iškelti _langus kai jie perkeliami link lango krašto"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
@@ -721,7 +721,7 @@ msgstr "Sunaikinti"
 
 #: ../src/menu.c:70
 msgid "_Quit"
-msgstr "_Baigti"
+msgstr "_Išeiti"
 
 #: ../src/menu.c:71
 msgid "Restart"
