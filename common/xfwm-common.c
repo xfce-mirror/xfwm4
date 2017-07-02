@@ -123,3 +123,40 @@ xfwm_get_n_monitors (GdkScreen *screen)
   return gdk_screen_get_n_monitors (screen);
 #endif
 }
+
+
+
+static gchar *
+substitute_screen_number (const gchar *display_name,
+                          gint         screen_number)
+{
+  GString *str;
+  gchar   *p;
+
+  str = g_string_new (display_name);
+
+  p = strrchr (str->str, '.');
+  if (p != NULL && p > strchr (str->str, ':'))
+    {
+      /* remove screen number from string */
+      g_string_truncate (str, p - str->str);
+    }
+
+  g_string_append_printf (str, ".%d", screen_number);
+
+  return g_string_free (str, FALSE);
+}
+
+
+
+gchar *
+xfwm_make_display_name (GdkScreen *screen)
+{
+  const gchar *name;
+  gint         number;
+
+  name = gdk_display_get_name (gdk_screen_get_display (screen));
+  number = gdk_x11_screen_get_screen_number (screen);
+
+  return substitute_screen_number (name, number);
+}

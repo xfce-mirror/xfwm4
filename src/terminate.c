@@ -29,6 +29,8 @@
 #include <unistd.h>
 #include <errno.h>
 
+#include <common/xfwm-common.h>
+
 #include "client.h"
 #include "terminate.h"
 
@@ -91,6 +93,14 @@ terminateProcessIO (GIOChannel   *channel,
     return FALSE;
 }
 
+static void
+terminateShowDialogSetEnvironment (gpointer user_data)
+{
+    GdkScreen *screen = user_data;
+
+    g_setenv ("DISPLAY", xfwm_make_display_name (screen), TRUE);
+}
+
 gboolean
 terminateShowDialog (Client *c)
 {
@@ -116,9 +126,11 @@ terminateShowDialog (Client *c)
     argv[3] = NULL;
 
     err = NULL;
-    if (!gdk_spawn_on_screen_with_pipes (screen_info->gscr, NULL, argv, NULL,
-                                 0, NULL, NULL, &child_pid, NULL, &outpipe,
-                                 NULL, &err))
+    if (!g_spawn_async_with_pipes (NULL, argv, NULL, 0,
+                                   terminateShowDialogSetEnvironment,
+                                   screen_info->gscr,
+                                   &child_pid, NULL, &outpipe,
+                                   NULL, &err))
     {
         g_warning (_("Cannot spawn helper-dialog: %s\n"), err->message);
         g_error_free (err);

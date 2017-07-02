@@ -38,4 +38,6 @@ void              xfwm_get_primary_monitor_geometry     (GdkScreen    *screen,
 
 gint              xfwm_get_n_monitors                   (GdkScreen    *screen);
 
+gchar            *xfwm_make_display_name                (GdkScreen    *screen);
+
 #endif /* !__COMMON_H__ */

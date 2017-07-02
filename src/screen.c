@@ -92,7 +92,7 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
     display_info = screen_info->display_info;
     g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
     wm_sn_atom = XInternAtom (display_info->dpy, selection, FALSE);
-    display_name = gdk_screen_make_display_name (screen_info->gscr);
+    display_name = xfwm_make_display_name (screen_info->gscr);
     wm_name = gdk_x11_screen_get_window_manager_name (screen_info->gscr);
 
     XSync (display_info->dpy, FALSE);
