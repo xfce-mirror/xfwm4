@@ -457,7 +457,7 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
         get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h);
         mask = get_pixbuf_from_pixmap (screen_info->gscr, src_mask, 0, 0, 0, 0, w, h);
     }
-    gdk_error_trap_pop ();
+    gdk_error_trap_pop_ignored ();
 
     if (mask)
     {
@@ -535,7 +535,7 @@ getAppIcon (ScreenInfo *screen_info, Window window, guint width, guint height)
 
     gdk_error_trap_push ();
     hints = XGetWMHints (myScreenGetXDisplay(screen_info), window);
-    gdk_error_trap_pop ();
+    gdk_error_trap_pop_ignored ();
 
     if (hints)
     {

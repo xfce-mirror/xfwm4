@@ -1597,7 +1597,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         g_warning ("Cannot get window attributes for window (0x%lx)", w);
         myDisplayUngrabServer (display_info);
-        gdk_error_trap_pop ();
+        gdk_error_trap_pop_ignored ();
         return NULL;
     }
 
@@ -1606,7 +1606,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         g_warning ("Cannot determine screen info from window (0x%lx)", w);
         myDisplayUngrabServer (display_info);
-        gdk_error_trap_pop ();
+        gdk_error_trap_pop_ignored ();
         return NULL;
     }
 
@@ -1615,7 +1615,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         TRACE ("Not managing our own event window");
         compositorAddWindow (display_info, w, NULL);
         myDisplayUngrabServer (display_info);
-        gdk_error_trap_pop ();
+        gdk_error_trap_pop_ignored ();
         return NULL;
     }
 
@@ -1627,7 +1627,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         {
             sendSystrayReqDock (display_info, w, screen_info->systray);
             myDisplayUngrabServer (display_info);
-            gdk_error_trap_pop ();
+            gdk_error_trap_pop_ignored ();
             return NULL;
         }
         TRACE ("No systray found for this screen");
@@ -1639,7 +1639,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         TRACE ("Override redirect window 0x%lx", w);
         compositorAddWindow (display_info, w, NULL);
         myDisplayUngrabServer (display_info);
-        gdk_error_trap_pop ();
+        gdk_error_trap_pop_ignored ();
         return NULL;
     }
 
@@ -1648,7 +1648,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     {
         TRACE ("Cannot allocate memory for the window structure");
         myDisplayUngrabServer (display_info);
-        gdk_error_trap_pop ();
+        gdk_error_trap_pop_ignored ();
         return NULL;
     }
 
@@ -2017,7 +2017,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
      * on the server
      */
     myDisplayUngrabServer (display_info);
-    gdk_error_trap_pop ();
+    gdk_error_trap_pop_ignored ();
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
     DBG ("client_count=%d", screen_info->client_count);
@@ -2108,7 +2108,7 @@ clientUnframe (Client *c, gboolean remap)
     XDestroyWindow (display_info->dpy, c->frame);
 
     myDisplayUngrabServer (display_info);
-    gdk_error_trap_pop ();
+    gdk_error_trap_pop_ignored ();
     clientFree (c);
 }
 

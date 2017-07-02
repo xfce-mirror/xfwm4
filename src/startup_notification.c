@@ -67,7 +67,7 @@ sn_error_trap_push (SnDisplay * d, Display * dpy)
 static void
 sn_error_trap_pop (SnDisplay * d, Display * dpy)
 {
-    gdk_error_trap_pop ();
+    gdk_error_trap_pop_ignored ();
 }
 
 static void
