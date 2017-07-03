@@ -443,6 +443,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     }
 
     layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), c->name);
+    pango_layout_set_font_description (layout, myScreenGetFontDescription (screen_info));
     pango_layout_set_auto_dir (layout, FALSE);
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 

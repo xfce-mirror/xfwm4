@@ -367,13 +367,11 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     GtkWidget *widget;
     gchar *theme;
     const gchar *font;
-    PangoFontDescription *desc;
     guint i, j;
 
     widget = myScreenGetGtkWidget (screen_info);
     display_info = screen_info->display_info;
 
-    desc = NULL;
     i = 0;
 
     /* Load gtk theme colors first */
@@ -451,14 +449,9 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     font = getStringValue ("title_font", rc);
     if (font && strlen (font))
     {
-        desc = pango_font_description_from_string (font);
-        if (desc)
-        {
-            gtk_widget_modify_font (widget, desc);
-            pango_font_description_free (desc);
-            myScreenUpdateFontHeight (screen_info);
-        }
+        screen_info->font_desc = pango_font_description_from_string (font);
     }
+    myScreenUpdateFontHeight (screen_info);
 
     gdk_rgba_parse (&screen_info->title_colors[ACTIVE], getStringValue ("active_text_color", rc));
     gdk_rgba_parse (&screen_info->title_colors[INACTIVE], getStringValue ("inactive_text_color", rc));
@@ -894,6 +887,12 @@ unloadTheme (ScreenInfo *screen_info)
     int i, j;
 
     TRACE ("entering unloadTheme");
+
+    if (screen_info->font_desc != NULL)
+    {
+        pango_font_description_free (screen_info->font_desc);
+        screen_info->font_desc = NULL;
+    }
 
     for (i = 0; i < SIDE_COUNT; i++)
     {

@@ -305,6 +305,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 #endif
 
     screen_info->font_height = 0;
+    screen_info->font_desc = NULL;
     screen_info->box_gc = None;
 
     for (i = 0; i < SIDE_COUNT; i++)
@@ -842,6 +843,23 @@ myScreenGetXineramaMonitorGeometry (ScreenInfo *screen_info, gint monitor_num, G
     XFree (infos);
 }
 
+PangoFontDescription *
+myScreenGetFontDescription (ScreenInfo *screen_info)
+{
+    GtkWidget *widget;
+
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+    TRACE ("entering myScreenGetFontDescription");
+
+    if (screen_info->font_desc != NULL)
+    {
+        return screen_info->font_desc;
+    }
+
+    widget = myScreenGetGtkWidget (screen_info);
+    return getUIPangoFontDesc (widget);
+}
+
 gboolean
 myScreenUpdateFontHeight (ScreenInfo *screen_info)
 {
@@ -854,10 +872,10 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
     TRACE ("entering myScreenUpdateFontHeight");
 
     widget = myScreenGetGtkWidget (screen_info);
+    desc = myScreenGetFontDescription (screen_info);
     context = getUIPangoContext (widget);
-    desc = getUIPangoFontDesc (widget);
 
-    if (desc && context)
+    if (desc != NULL && context != NULL)
     {
         metrics = pango_context_get_metrics (context, desc, NULL);
         screen_info->font_height =

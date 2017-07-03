@@ -112,7 +112,7 @@ popup_position_func (GtkMenu * menu, gint * x, gint * y, gboolean * push_in,
 
     pos = user_data;
 
-    gtk_widget_size_request (GTK_WIDGET (menu), &req);
+    gtk_widget_get_preferred_size (GTK_WIDGET (menu), NULL, &req);
 
     xfwm_get_screen_dimensions (&width, &height);
 
@@ -291,12 +291,16 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                 default:
                     if (menuitems[i].image_name)
                     {
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                         menuitem = gtk_image_menu_item_new_with_mnemonic (label);
+G_GNUC_END_IGNORE_DEPRECATIONS
                         image =
                             gtk_image_new_from_icon_name (menuitems[i].image_name,
                             GTK_ICON_SIZE_MENU);
                         gtk_widget_show (image);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                         gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem), image);
+G_GNUC_END_IGNORE_DEPRECATIONS
                     }
                     else
                     {

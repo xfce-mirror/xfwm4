@@ -473,15 +473,12 @@ clientConstrainPos (Client * c, gboolean show_full)
 static void
 clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
 {
-    ScreenInfo *screen_info;
     gboolean centered;
     int diff_x, diff_y;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientKeepVisible");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    screen_info = c->screen_info;
 
     centered = FALSE;
     /* We only center dialogs */

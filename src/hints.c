@@ -652,8 +652,9 @@ text_property_to_utf8 (DisplayInfo *display_info, const XTextProperty * prop)
     TRACE ("entering text_property_to_utf8");
 
     list = NULL;
-    count = gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->encoding),
-                                            prop->format, prop->value, prop->nitems, &list);
+    count = gdk_text_property_to_utf8_list_for_display (display_info->gdisplay,
+                                                        gdk_x11_xatom_to_atom (prop->encoding),
+                                                        prop->format, prop->value, prop->nitems, &list);
     if (count == 0)
     {
         TRACE ("gdk_text_property_to_utf8_list returned 0");

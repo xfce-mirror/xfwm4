@@ -97,8 +97,9 @@ struct _ScreenInfo
     /* Per screen graphic contexts */
     GC box_gc;
 
-    /* Title font height */
+    /* Title font */
     gint font_height;
+    PangoFontDescription *font_desc;
 
     /* Screen data */
     Colormap cmap;
@@ -268,6 +269,7 @@ void                     myScreenFindMonitorAtPoint             (ScreenInfo *,
                                                                  gint,
                                                                  gint,
                                                                  GdkRectangle *);
+PangoFontDescription *   myScreenGetFontDescription             (ScreenInfo *);
 gboolean                 myScreenUpdateFontHeight               (ScreenInfo *);
 void                     myScreenGetXineramaMonitorGeometry     (ScreenInfo *,
                                                                  gint,
