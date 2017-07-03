@@ -248,50 +248,6 @@ loadXfconfData (ScreenInfo *screen_info, Settings *rc)
 
 }
 
-/* Simple helper function to avoid copy/paste of code */
-static void
-setXfwmColor (ScreenInfo *screen_info, XfwmColor *color, Settings *rc, int id, const gchar * name, const gchar * state)
-{
-    if (color->allocated)
-    {
-        gdk_colormap_free_colors (gdk_screen_get_system_colormap (screen_info->gscr), &color->col, 1);
-        color->allocated = FALSE;
-    }
-
-    /** do a direct value_get_string */
-    if (gdk_color_parse (g_value_get_string(rc[id].value), &color->col))
-    {
-        if (gdk_colormap_alloc_color (gdk_screen_get_system_colormap (screen_info->gscr),
-                                      &color->col, FALSE, FALSE))
-        {
-            color->allocated = TRUE;
-            if (color->gc)
-            {
-                g_object_unref (G_OBJECT (color->gc));
-            }
-            color->gc = gdk_gc_new (myScreenGetGdkWindow (screen_info));
-            gdk_gc_copy (color->gc, getUIStyle_gc (myScreenGetGtkWidget (screen_info), name, state));
-            gdk_gc_set_foreground (color->gc, &color->col);
-        }
-        else
-        {
-            gdk_beep ();
-            if (G_VALUE_TYPE(rc[id].value) == G_TYPE_STRING)
-                g_message (_("%s: Cannot allocate color %s\n"), g_get_prgname (), g_value_get_string(rc[id].value));
-            else
-                g_critical (_("%s: Cannot allocate color: GValue for color is not of type STRING"), g_get_prgname ());
-        }
-    }
-    else
-    {
-        gdk_beep ();
-        if (G_VALUE_TYPE(rc[id].value) == G_TYPE_STRING)
-            g_message (_("%s: Cannot parse color %s\n"), g_get_prgname (), g_value_get_string(rc[id].value));
-        else
-            g_critical (_("%s: Cannot parse color: GValue for color is not of type STRING"), g_get_prgname ());
-    }
-}
-
 static int
 getTitleShadow (Settings *rc, const gchar * name)
 {
@@ -425,7 +381,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     {
         gchar *color;
 
-        color = getUIStyle  (widget, ui_part[i], ui_state[i]);
+        color = getUIStyleString (widget, ui_part[i], ui_state[i]);
         setStringValue (rc[i].option, color, rc);
         g_free (color);
     }
@@ -504,10 +460,10 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         }
     }
 
-    setXfwmColor (screen_info, &screen_info->title_colors[ACTIVE], rc, 0, "fg", "selected");
-    setXfwmColor (screen_info, &screen_info->title_colors[INACTIVE], rc, 1, "fg", "insensitive");
-    setXfwmColor (screen_info, &screen_info->title_shadow_colors[ACTIVE], rc, 2, "dark", "selected");
-    setXfwmColor (screen_info, &screen_info->title_shadow_colors[INACTIVE], rc, 3, "dark", "insensitive");
+    gdk_rgba_parse (&screen_info->title_colors[ACTIVE], getStringValue ("active_text_color", rc));
+    gdk_rgba_parse (&screen_info->title_colors[INACTIVE], getStringValue ("inactive_text_color", rc));
+    gdk_rgba_parse (&screen_info->title_shadow_colors[ACTIVE], getStringValue ("active_text_shadow_color", rc));
+    gdk_rgba_parse (&screen_info->title_shadow_colors[INACTIVE], getStringValue ("inactive_text_shadow_color", rc));
 
     for (i = 0; i < SIDE_COUNT; i++)
     {

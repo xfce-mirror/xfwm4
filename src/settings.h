@@ -155,13 +155,6 @@ enum
     PLACE_CENTER
 };
 
-struct _XfwmColor
-{
-    GdkColor col;
-    GdkGC *gc;
-    gboolean allocated;
-};
-
 struct _Settings
 {
     gchar  *option;

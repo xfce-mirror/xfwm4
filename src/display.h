@@ -275,7 +275,6 @@ enum
 
 typedef struct _Client            Client;
 typedef struct _DisplayInfo       DisplayInfo;
-typedef struct _XfwmColor         XfwmColor;
 typedef struct _xfwmPixmap        xfwmPixmap;
 typedef struct _XfwmParams        XfwmParams;
 typedef struct _ScreenInfo        ScreenInfo;

@@ -181,26 +181,14 @@ wireframeUpdate (Client *c, WireFrame *wireframe)
 static void
 wireframeInitColor (WireFrame *wireframe)
 {
-    ScreenInfo *screen_info;
-    gchar *color;
-    GdkColor gcolor;
+    GdkRGBA rgba;
 
-    screen_info = wireframe->screen_info;
-    color = getUIStyle  (myScreenGetGtkWidget (screen_info), "bg", "selected");
-    if (gdk_color_parse (color, &gcolor))
+    if (getUIStyleColor (myScreenGetGtkWidget (wireframe->screen_info), "bg", "selected", &rgba))
     {
-        wireframe->red   = (gdouble) gcolor.red / (gdouble) 65535;
-        wireframe->green = (gdouble) gcolor.green / (gdouble) 65535;
-        wireframe->blue  = (gdouble) gcolor.blue / (gdouble) 65535;
+        wireframe->red = rgba.red;
+        wireframe->green = rgba.green;
+        wireframe->blue = rgba.blue;
     }
-    else
-    {
-        g_warning ("Cannot parse color %s", color);
-        wireframe->red   = 0.0;
-        wireframe->green = 0.5;
-        wireframe->blue  = 1.0;
-    }
-    g_free (color);
 }
 
 WireFrame *

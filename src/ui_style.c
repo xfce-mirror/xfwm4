@@ -45,16 +45,23 @@ char *states[] = {
 };
 
 char *names[] = {
-    "fg", "bg", "text", "base", "light", "dark", "mid", NULL
+    "fg", "bg", "light", "dark", "mid", NULL
 };
 
 #define GTKSTYLE_FG    0
 #define GTKSTYLE_BG    1
-#define GTKSTYLE_TEXT  2
-#define GTKSTYLE_BASE  3
-#define GTKSTYLE_LIGHT 4
-#define GTKSTYLE_DARK  5
-#define GTKSTYLE_MID   6
+#define GTKSTYLE_LIGHT 2
+#define GTKSTYLE_DARK  3
+#define GTKSTYLE_MID   4
+
+#define GTKSTATE_NORMAL      0
+#define GTKSTATE_ACTIVE      1
+#define GTKSTATE_PRELIGHT    2
+#define GTKSTATE_SELECTED    3
+#define GTKSTATE_INSENSITIVE 4
+
+#define LIGHTNESS_MULT 1.3
+#define DARKNESS_MULT  0.7
 
 static gint
 state_value (const gchar * s)
@@ -69,7 +76,7 @@ state_value (const gchar * s)
     {
         return (u);
     }
-    return (0);
+    return (-1);
 }
 
 static gint
@@ -85,176 +92,277 @@ name_value (const gchar * s)
     {
         return (u);
     }
-    return (0);
+    return (-1);
 }
 
-static gchar *
-print_color (GtkWidget * win, GdkColor * c)
+static void
+rgb_to_hls (gdouble * r, gdouble * g, gdouble * b)
 {
-    gchar *s;
-    GdkColor real_color;
-    GdkColormap *cmap;
+    /* from gtkstyle.c in gtk2 branch */
 
-    s = g_new (gchar, 14);
-    cmap = gtk_widget_get_colormap (GTK_WIDGET (win));
-    if (cmap && GDK_IS_COLORMAP (cmap))
+    gdouble min;
+    gdouble max;
+    gdouble red;
+    gdouble green;
+    gdouble blue;
+    gdouble h, l, s;
+    gdouble delta;
+
+    red = *r;
+    green = *g;
+    blue = *b;
+
+    max = MAX (red, MAX (green, blue));
+    min = MIN (red, MIN (green, blue));
+
+    l = (max + min) / 2;
+    s = 0;
+    h = 0;
+
+    if (max != min)
     {
-        gdk_colormap_query_color (cmap, c->pixel, &real_color);
-        g_snprintf (s, 14, "#%04x%04x%04x", real_color.red, real_color.green,
-                    real_color.blue);
+        if (l <= 0.5)
+            s = (max - min) / (max + min);
+        else
+            s = (max - min) / (2 - max - min);
+
+        delta = max - min;
+        if (red == max)
+            h = (green - blue) / delta;
+        else if (green == max)
+            h = 2 + (blue - red) / delta;
+        else if (blue == max)
+            h = 4 + (red - green) / delta;
+
+        h *= 60;
+        if (h < 0.0)
+            h += 360;
+    }
+
+    *r = h;
+    *g = l;
+    *b = s;
+}
+
+static void
+hls_to_rgb (gdouble * h, gdouble * l, gdouble * s)
+{
+    /* from gtkstyle.c in gtk2 branch */
+
+    gdouble hue;
+    gdouble lightness;
+    gdouble saturation;
+    gdouble m1, m2;
+    gdouble r, g, b;
+
+    lightness = *l;
+    saturation = *s;
+
+    if (lightness <= 0.5)
+        m2 = lightness * (1 + saturation);
+    else
+        m2 = lightness + saturation - lightness * saturation;
+    m1 = 2 * lightness - m2;
+
+    if (saturation == 0)
+    {
+        *h = lightness;
+        *l = lightness;
+        *s = lightness;
     }
     else
     {
-        g_snprintf (s, 14, "#%04x%04x%04x", c->red, c->green, c->blue);
+        hue = *h + 120;
+        while (hue > 360)
+            hue -= 360;
+        while (hue < 0)
+            hue += 360;
+
+        if (hue < 60)
+            r = m1 + (m2 - m1) * hue / 60;
+        else if (hue < 180)
+            r = m2;
+        else if (hue < 240)
+            r = m1 + (m2 - m1) * (240 - hue) / 60;
+        else
+            r = m1;
+
+        hue = *h;
+        while (hue > 360)
+            hue -= 360;
+        while (hue < 0)
+            hue += 360;
+
+        if (hue < 60)
+            g = m1 + (m2 - m1) * hue / 60;
+        else if (hue < 180)
+            g = m2;
+        else if (hue < 240)
+            g = m1 + (m2 - m1) * (240 - hue) / 60;
+        else
+            g = m1;
+
+        hue = *h - 120;
+        while (hue > 360)
+            hue -= 360;
+        while (hue < 0)
+            hue += 360;
+
+        if (hue < 60)
+            b = m1 + (m2 - m1) * hue / 60;
+        else if (hue < 180)
+            b = m2;
+        else if (hue < 240)
+            b = m1 + (m2 - m1) * (240 - hue) / 60;
+        else
+            b = m1;
+
+        *h = r;
+        *l = g;
+        *s = b;
     }
-    return (s);
 }
 
-static gchar *
-print_colors (GtkWidget * win, GdkColor * x, int n)
+static void
+rgba_shade (GdkRGBA * color, gdouble value)
 {
-    return (print_color (win, x + n));
+  rgb_to_hls (&color->red, &color->green, &color->blue);
+  color->green = MAX (MIN (color->green * value, 1), 0);
+  color->blue = MAX (MIN (color->blue * value, 1), 0);
+  hls_to_rgb (&color->red, &color->green, &color->blue);
 }
 
-static gchar *
-print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
-                GtkStyle * style)
+gboolean
+getUIStyleColor (GtkWidget * win, const gchar * name, const gchar * state, GdkRGBA * rgba)
 {
-    gchar *s;
-    gint n, m;
+    GtkStyleContext *ctx;
+    GdkRGBA         *result;
+    GtkStateFlags    flags;
+    gint             gtkstyle;
+    gchar           *property;
 
-    g_return_val_if_fail (state != NULL, NULL);
-    g_return_val_if_fail (name != NULL, NULL);
+    TRACE ("entering getUIStyleColor");
 
-    n = state_value (state);
-    m = name_value (name);
+    g_return_val_if_fail (win != NULL, FALSE);
+    g_return_val_if_fail (GTK_IS_WIDGET (win), FALSE);
+    g_return_val_if_fail (gtk_widget_get_realized (win), FALSE);
 
-    switch (m)
+    gtkstyle = name_value (name);
+
+    switch (gtkstyle)
     {
         case GTKSTYLE_FG:
-            s = print_colors (win, style->fg, n);
+            property = GTK_STYLE_PROPERTY_COLOR;
             break;
         case GTKSTYLE_BG:
-            s = print_colors (win, style->bg, n);
-            break;
-        case GTKSTYLE_TEXT:
-            s = print_colors (win, style->text, n);
-            break;
-        case GTKSTYLE_BASE:
-            s = print_colors (win, style->base, n);
-            break;
         case GTKSTYLE_LIGHT:
-            s = print_colors (win, style->light, n);
-            break;
         case GTKSTYLE_DARK:
-            s = print_colors (win, style->dark, n);
+        case GTKSTYLE_MID:
+            property = GTK_STYLE_PROPERTY_BACKGROUND_COLOR;
             break;
         default:
+            return FALSE;
+    }
+
+    switch (state_value (state))
+    {
+        case GTKSTATE_NORMAL:
+            flags = GTK_STATE_FLAG_NORMAL;
+            break;
+        case GTKSTATE_ACTIVE:
+            flags = GTK_STATE_FLAG_ACTIVE;
+            break;
+        case GTKSTATE_PRELIGHT:
+            flags = GTK_STATE_FLAG_PRELIGHT;
+            break;
+        case GTKSTATE_SELECTED:
+            flags = GTK_STATE_FLAG_SELECTED;
+            break;
+        case GTKSTATE_INSENSITIVE:
+            flags = GTK_STATE_FLAG_INSENSITIVE;
+            break;
+        default:
+            return FALSE;
+    }
+
+    ctx = gtk_widget_get_style_context (win);
+
+    gtk_style_context_save (ctx);
+    gtk_style_context_add_class (ctx, "gtkstyle-fallback");
+    gtk_style_context_get (ctx, flags, property, &result, NULL);
+    gtk_style_context_restore (ctx);
+
+    *rgba = *result;
+
+    switch (gtkstyle)
+    {
+        case GTKSTYLE_LIGHT:
+            rgba_shade (rgba, LIGHTNESS_MULT);
+            break;
+        case GTKSTYLE_DARK:
+            rgba_shade (rgba, DARKNESS_MULT);
+            break;
         case GTKSTYLE_MID:
-            s = print_colors (win, style->mid, n);
+            rgba_shade (rgba, LIGHTNESS_MULT);
+            rgba_shade (result, DARKNESS_MULT);
+            rgba->red = (rgba->red + result->red) / 2;
+            rgba->green = (rgba->green + result->green) / 2;
+            rgba->blue = (rgba->blue + result->blue) / 2;
             break;
     }
-    return (s);
+
+    gdk_rgba_free (result);
+
+    return TRUE;
 }
 
 gchar *
-getUIStyle (GtkWidget * win, const gchar * name, const gchar * state)
+getUIStyleString (GtkWidget * win, const gchar * name, const gchar * state)
 {
-    GtkStyle *style;
-    gchar *s;
+    GdkRGBA color = {0, };
+    GdkRGBA bg = {0, };
+    gint red;
+    gint green;
+    gint blue;
 
-    TRACE ("entering getUIStyle");
+    TRACE ("entering getUIStyleString");
 
-    g_return_val_if_fail (win != NULL, NULL);
-    g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
-
-    style = gtk_rc_get_style (win);
-    if (!style)
+    if (getUIStyleColor (win, name, state, &color))
     {
-        style = gtk_widget_get_style (win);
-    }
-    s = print_rc_style (win, name, state, style);
-    TRACE ("%s[%s]=%s", name, state, s);
-    return (s);
-}
-
-static GdkGC *
-_getUIStyle_gc (const gchar * name, const gchar * state, GtkStyle * style)
-{
-    GdkGC *gc;
-    gint n, m;
-
-    g_return_val_if_fail (state != NULL, NULL);
-    g_return_val_if_fail (name != NULL, NULL);
-    g_return_val_if_fail (style != NULL, NULL);
-    g_return_val_if_fail (GTK_IS_STYLE(style), NULL);
-
-    n = state_value (state);
-    m = name_value (name);
-
-    switch (m)
-    {
-        case GTKSTYLE_FG:
-            gc = style->fg_gc[n];
-            break;
-        case GTKSTYLE_BG:
-            gc = style->bg_gc[n];
-            break;
-        case GTKSTYLE_TEXT:
-            gc = style->text_gc[n];
-            break;
-        case GTKSTYLE_BASE:
-            gc = style->base_gc[n];
-            break;
-        case GTKSTYLE_LIGHT:
-            gc = style->light_gc[n];
-            break;
-        case GTKSTYLE_DARK:
-            gc = style->dark_gc[n];
-            break;
-        default:
-        case GTKSTYLE_MID:
-            gc = style->mid_gc[n];
-            break;
+        if (color.alpha < 1 && g_strcmp0 (name, "bg") && getUIStyleColor (win, "bg", state, &bg))
+        {
+            /* compose bg and fg colors to get opaque color */
+            color.red = color.red * color.alpha + bg.red * (1 - color.alpha);
+            color.green = color.green * color.alpha + bg.green * (1 - color.alpha);
+            color.blue = color.blue * color.alpha + bg.blue * (1 - color.alpha);
+        }
     }
 
-    return (gc);
-}
+    red = color.red * 0xff;
+    green = color.green * 0xff;
+    blue = color.blue * 0xff;
 
-GdkGC *
-getUIStyle_gc (GtkWidget * win, const gchar * name, const gchar * state)
-{
-    GtkStyle *style;
-
-    TRACE ("entering getUIStyle_gc");
-
-    g_return_val_if_fail (win != NULL, NULL);
-    g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
-
-    style = gtk_rc_get_style (win);
-    if (!style)
-    {
-        style = gtk_widget_get_style (win);
-    }
-    if (!style)
-    {
-        style = gtk_widget_get_default_style ();
-    }
-    return (_getUIStyle_gc (name, state, style));
+    return g_strdup_printf ("#%02x%02x%02x%02x%02x%02x", red, red, green, green, blue, blue);
 }
 
 PangoFontDescription *
 getUIPangoFontDesc (GtkWidget * win)
 {
+    GtkStyleContext      *ctx;
+    PangoFontDescription *font_desc;
+
     TRACE ("entering getUIPangoFontDesc");
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
     g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
-    return (win->style->font_desc);
+    ctx = gtk_widget_get_style_context (win);
+    gtk_style_context_get (ctx, GTK_STATE_FLAG_NORMAL,
+                           GTK_STYLE_PROPERTY_FONT, &font_desc,
+                           NULL);
+
+    return font_desc;
 }
 
 PangoContext *

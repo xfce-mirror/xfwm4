@@ -31,10 +31,11 @@
 #include <gtk/gtk.h>
 #include <pango/pango-font.h>
 
-gchar                   *getUIStyle                             (GtkWidget *,
+gboolean                 getUIStyleColor                        (GtkWidget *,
                                                                  const gchar *,
-                                                                 const gchar *);
-GdkGC                   *getUIStyle_gc                          (GtkWidget *,
+                                                                 const gchar *,
+                                                                 GdkRGBA *);
+gchar                   *getUIStyleString                       (GtkWidget *,
                                                                  const gchar *,
                                                                  const gchar *);
 PangoFontDescription    *getUIPangoFontDesc                     (GtkWidget *);

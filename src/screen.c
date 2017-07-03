@@ -306,14 +306,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 
     screen_info->font_height = 0;
     screen_info->box_gc = None;
-    screen_info->title_colors[ACTIVE].gc = NULL;
-    screen_info->title_colors[ACTIVE].allocated = FALSE;
-    screen_info->title_colors[INACTIVE].gc = NULL;
-    screen_info->title_colors[INACTIVE].allocated = FALSE;
-    screen_info->title_shadow_colors[ACTIVE].gc = NULL;
-    screen_info->title_shadow_colors[ACTIVE].allocated = FALSE;
-    screen_info->title_shadow_colors[INACTIVE].gc = NULL;
-    screen_info->title_shadow_colors[INACTIVE].allocated = FALSE;
 
     for (i = 0; i < SIDE_COUNT; i++)
     {

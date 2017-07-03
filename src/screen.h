@@ -86,8 +86,8 @@ struct _ScreenInfo
     gint pointer_grabs;
 
     /* Theme pixmaps and other params, per screen */
-    XfwmColor title_colors[2];
-    XfwmColor title_shadow_colors[2];
+    GdkRGBA title_colors[2];
+    GdkRGBA title_shadow_colors[2];
     xfwmPixmap buttons[BUTTON_COUNT][STATE_COUNT];
     xfwmPixmap corners[CORNER_COUNT][2];
     xfwmPixmap sides[SIDE_COUNT][2];
