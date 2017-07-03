@@ -82,7 +82,6 @@
                                  ButtonPressMask | \
                                  ButtonReleaseMask)
 
-static GdkAtom atom_rcfiles = GDK_NONE;
 static xfwmWindow menu_event_window;
 
 /* Forward decl. */
@@ -102,9 +101,7 @@ static void show_window_menu         (Client *c,
 static gboolean show_popup_cb        (GtkWidget * widget,
                                       GdkEventButton * ev,
                                       gpointer data);
-static gboolean client_event_cb      (GtkWidget * widget,
-                                      GdkEventClient * ev,
-                                      gpointer data);
+static gboolean set_reload           (DisplayInfo *display_info);
 
 typedef enum
 {
@@ -2057,6 +2054,11 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
                 clientReceiveNetWMPong (screen_info, (guint32) ev->data.l[1]);
             }
         }
+        else if (ev->message_type == display_info->atoms[GTK_READ_RCFILES])
+        {
+            TRACE ("window (0x%lx) has received a GTK_READ_RCFILES event", ev->window);
+            set_reload (display_info);
+        }
         else
         {
             TRACE ("unidentified client message for window 0x%lx", ev->window);
@@ -2646,13 +2648,10 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 }
 
 static gboolean
-set_reload (GObject * obj, GdkEvent * ev, gpointer data)
+set_reload (DisplayInfo *display_info)
 {
-    DisplayInfo *display_info;
-
     TRACE ("setting reload flag so all prefs will be reread at next event loop");
 
-    display_info = (DisplayInfo *) data;
     display_info->reload = TRUE;
     return (TRUE);
 }
@@ -2711,24 +2710,6 @@ cursor_theme_cb (GObject * obj, GParamSpec * pspec, gpointer data)
         clientUpdateAllCursor (screen_info);
         XDefineCursor (display_info->dpy, screen_info->xroot, display_info->root_cursor);
    }
-}
-
-static gboolean
-client_event_cb (GtkWidget * widget, GdkEventClient * ev, gpointer data)
-{
-    TRACE ("entering client_event_cb");
-
-    if (!atom_rcfiles)
-    {
-        atom_rcfiles = gdk_atom_intern ("_GTK_READ_RCFILES", FALSE);
-    }
-
-    if (ev->message_type == atom_rcfiles)
-    {
-        set_reload (G_OBJECT (widget), (GdkEvent *) ev, data);
-    }
-
-    return (FALSE);
 }
 
 static gboolean
@@ -2861,8 +2842,6 @@ initPerScreenCallbacks (ScreenInfo *screen_info)
     screen_info->button_handler_id =
         g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)),
                           "button_press_event", G_CALLBACK (show_popup_cb), (gpointer) NULL);
-    g_signal_connect (G_OBJECT (myScreenGetGtkWidget (screen_info)), "client_event",
-                      G_CALLBACK (client_event_cb), NULL);
     g_object_connect (G_OBJECT(screen_info->gscr),
                       "signal::size-changed",
                       G_CALLBACK(size_changed_cb), (gpointer) (screen_info),
@@ -2880,9 +2859,9 @@ initPerDisplayCallbacks (DisplayInfo *display_info)
 
     settings = gtk_settings_get_default ();
     g_object_connect (settings,
-                      "signal::notify::gtk-theme-name",
-                      G_CALLBACK (set_reload),  (gpointer) (display_info),
-                      "signal::notify::gtk-font-name",
+                      "swapped-signal::notify::gtk-theme-name",
+                      G_CALLBACK (set_reload), (gpointer) (display_info),
+                      "swapped-signal::notify::gtk-font-name",
                       G_CALLBACK (set_reload), (gpointer) (display_info),
                       "signal::notify::gtk-double-click-time",
                       G_CALLBACK (double_click_time_cb), (gpointer) (display_info),
