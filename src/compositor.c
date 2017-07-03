@@ -1019,7 +1019,7 @@ check_gl_error (void)
     GLenum error;
 
      error = glGetError();
-     while (error != GL_NO_ERROR);
+     while (error != GL_NO_ERROR)
      {
         clean = FALSE;
         switch (error)
