@@ -509,20 +509,6 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     setXfwmColor (screen_info, &screen_info->title_shadow_colors[ACTIVE], rc, 2, "dark", "selected");
     setXfwmColor (screen_info, &screen_info->title_shadow_colors[INACTIVE], rc, 3, "dark", "insensitive");
 
-    if (screen_info->black_gc)
-    {
-        g_object_unref (G_OBJECT (screen_info->black_gc));
-    }
-    screen_info->black_gc = widget->style->black_gc;
-    g_object_ref (G_OBJECT (widget->style->black_gc));
-
-    if (screen_info->white_gc)
-    {
-        g_object_unref (G_OBJECT (screen_info->white_gc));
-    }
-    screen_info->white_gc = widget->style->white_gc;
-    g_object_ref (G_OBJECT (widget->style->white_gc));
-
     for (i = 0; i < SIDE_COUNT; i++)
     {
         if (i == SIDE_TOP)

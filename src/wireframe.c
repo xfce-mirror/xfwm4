@@ -94,11 +94,11 @@ wireframeDrawXlib (WireFrame *wireframe, int width, int height)
         wireframe->mapped = TRUE;
 
         XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
-                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        screen_info->box_gc,
                         0, 0, wireframe->width - 1, wireframe->height - 1);
 
         XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
-                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        screen_info->box_gc,
                         OUTLINE_WIDTH - 1, OUTLINE_WIDTH - 1,
                         wireframe->width - 2 * (OUTLINE_WIDTH - 1) - 1,
                         wireframe->height- 2 * (OUTLINE_WIDTH - 1) - 1);
@@ -112,7 +112,7 @@ wireframeDrawXlib (WireFrame *wireframe, int width, int height)
         wireframe->mapped = TRUE;
 
         XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
-                        gdk_x11_gc_get_xgc (screen_info->white_gc),
+                        screen_info->box_gc,
                         0, 0, wireframe->width - 1, wireframe->height - 1);
     }
 }

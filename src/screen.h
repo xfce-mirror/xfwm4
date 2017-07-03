@@ -96,8 +96,6 @@ struct _ScreenInfo
 
     /* Per screen graphic contexts */
     GC box_gc;
-    GdkGC *black_gc;
-    GdkGC *white_gc;
 
     /* Title font height */
     gint font_height;
