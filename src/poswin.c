@@ -74,6 +74,7 @@ poswinCreate (GdkScreen *gscr)
 {
     Poswin *poswin;
     GtkWidget *frame;
+    GtkCssProvider *provider;
 
     poswin = g_object_new (poswin_widget_get_type(), "type", GTK_WINDOW_POPUP, NULL);
 
@@ -87,8 +88,16 @@ poswinCreate (GdkScreen *gscr)
     gtk_container_add (GTK_CONTAINER (poswin), frame);
 
     poswin->label = gtk_label_new ("");
-    gtk_misc_set_alignment (GTK_MISC (poswin->label), 0.5, 0.5);
-    gtk_misc_set_padding (GTK_MISC (poswin->label), 3, 3);
+    gtk_label_set_xalign (GTK_LABEL (poswin->label), 0.5);
+    gtk_label_set_yalign (GTK_LABEL (poswin->label), 0.5);
+
+    provider = gtk_css_provider_new ();
+    gtk_css_provider_load_from_data (provider, "label { padding: 3px; }", -1, NULL);
+    gtk_style_context_add_provider (gtk_widget_get_style_context (poswin->label),
+                                    GTK_STYLE_PROVIDER (provider),
+                                    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    g_object_unref (provider);
+
     gtk_widget_show (poswin->label);
     gtk_container_add(GTK_CONTAINER(frame), poswin->label);
     gtk_widget_show_all (frame);
