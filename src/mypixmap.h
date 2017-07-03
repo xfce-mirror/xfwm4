@@ -26,6 +26,7 @@
 #endif
 
 #include <glib.h>
+#include <cairo/cairo.h>
 #include "screen.h"
 
 #ifdef HAVE_RENDER
@@ -78,4 +79,6 @@ void                     xfwmPixmapFill                         (xfwmPixmap *,
                                                                  gint);
 void                     xfwmPixmapDuplicate                    (xfwmPixmap *,
                                                                  xfwmPixmap *);
+cairo_surface_t         *xfwmPixmapCreateSurface                (xfwmPixmap *,
+                                                                 gboolean);
 #endif /* INC_MYPIXMAP_H */

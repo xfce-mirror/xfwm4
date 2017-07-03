@@ -42,6 +42,7 @@
 #include <glib/gstdio.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <cairo/cairo-xlib.h>
 #include <libxfce4util/libxfce4util.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -794,27 +795,21 @@ xfwmPixmapCompose (GdkPixbuf *pixbuf, const gchar * dir, const gchar * file)
 static gboolean
 xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
 {
-    GdkPixmap *dest_pixmap;
-    GdkPixmap *dest_bitmap;
-    GdkVisual *gvisual;
-    GdkColormap *cmap;
+    cairo_surface_t *dest_pixmap;
+    cairo_surface_t *dest_bitmap;
+    cairo_t *cr;
     gint width, height;
     gint dest_x, dest_y;
-    gint alpha_threshold;
+    guchar *pixels;
+    gint dpx;
+    gboolean status, start_status;
+    gint x, y, start;
 
     g_return_val_if_fail (pm != NULL, FALSE);
     g_return_val_if_fail (pm->pixmap != None, FALSE);
     g_return_val_if_fail (pm->mask != None, FALSE);
 
-    dest_pixmap = gdk_xid_table_lookup (pm->pixmap);
-    if (dest_pixmap)
-    {
-        g_object_ref (G_OBJECT (dest_pixmap));
-    }
-    else
-    {
-        dest_pixmap = gdk_pixmap_foreign_new (pm->pixmap);
-    }
+    dest_pixmap = xfwmPixmapCreateSurface (pm, FALSE);
 
     if (!dest_pixmap)
     {
@@ -822,31 +817,12 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
         return FALSE;
     }
 
-    dest_bitmap = gdk_xid_table_lookup (pm->mask);
-    if (dest_bitmap)
-    {
-        g_object_ref (G_OBJECT (dest_bitmap));
-    }
-    else
-    {
-        dest_bitmap = gdk_pixmap_foreign_new (pm->mask);
-    }
+    dest_bitmap = xfwmPixmapCreateSurface (pm, TRUE);
 
     if (!dest_bitmap)
     {
         g_warning ("Cannot get bitmap");
-        g_object_unref (dest_pixmap);
-        return FALSE;
-    }
-
-    gvisual = gdk_screen_get_system_visual (pm->screen_info->gscr);
-    cmap = gdk_x11_colormap_foreign_new (gvisual, pm->screen_info->cmap);
-
-    if (!cmap)
-    {
-        g_warning ("Cannot create colormap");
-        g_object_unref (dest_pixmap);
-        g_object_unref (dest_bitmap);
+        cairo_surface_destroy (dest_pixmap);
         return FALSE;
     }
 
@@ -855,18 +831,63 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     dest_x = (pm->width - width) / 2;
     dest_y = (pm->height - height) / 2;
 
-    gdk_drawable_set_colormap (GDK_DRAWABLE (dest_pixmap), cmap);
-    gdk_draw_pixbuf (GDK_DRAWABLE (dest_pixmap), NULL, pixbuf, 0, 0, dest_x, dest_y,
-                     width, height, GDK_RGB_DITHER_NONE, 0, 0);
+    cr = cairo_create (dest_pixmap);
+    gdk_cairo_set_source_pixbuf (cr, pixbuf, dest_x, dest_y);
+    cairo_paint (cr);
+    cairo_destroy (cr);
 
-    alpha_threshold = (gdk_pixbuf_get_has_alpha (pixbuf) ? 0xFF : 0);
-    gdk_pixbuf_render_threshold_alpha (pixbuf, dest_bitmap,
-                                       0, 0, dest_x, dest_y,
-                                       width, height, alpha_threshold);
+    cr = cairo_create (dest_bitmap);
+    if (gdk_pixbuf_get_has_alpha (pixbuf) && width > 0)
+    {
+        /* draw alpha with threshold as gdk_pixbuf_render_threshold_alpha did before */
 
-    g_object_unref (cmap);
-    g_object_unref (dest_pixmap);
-    g_object_unref (dest_bitmap);
+        pixels = gdk_pixbuf_get_pixels (pixbuf);
+        dpx = gdk_pixbuf_get_rowstride (pixbuf) / gdk_pixbuf_get_width (pixbuf);
+
+        cairo_translate (cr, dest_x, dest_y);
+        cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
+        cairo_rectangle (cr, 0, 0, width, height);
+        cairo_fill (cr);
+
+        for (y = 0; y < height; y++)
+        {
+            start_status = FALSE;
+            start = 0;
+            for (x = 0; x < width; x++)
+            {
+                status = pixels[(y * width + x + 1) * dpx - 1] == 0xff;
+                if (status != start_status)
+                {
+                    if (!status)
+                    {
+                        /* draw line from previous start point to current point */
+                        cairo_rectangle (cr, start, y, x - start, 1);
+                    }
+                    start_status = status;
+                    start = x;
+                }
+            }
+            if (start_status)
+            {
+                /* draw finishing line */
+                cairo_rectangle (cr, start, y, width - start, 1);
+            }
+        }
+
+        cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
+        cairo_set_source_rgba (cr, 0, 0, 0, 1);
+        cairo_fill (cr);
+    }
+    else
+    {
+        cairo_set_source_rgba (cr, 0, 0, 0, 1);
+        cairo_rectangle (cr, dest_x, dest_y, width, height);
+        cairo_fill (cr);
+    }
+    cairo_destroy (cr);
+
+    cairo_surface_destroy (dest_pixmap);
+    cairo_surface_destroy (dest_bitmap);
 
     return TRUE;
 }
@@ -875,9 +896,8 @@ gboolean
 xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
 {
     GdkPixbuf *src;
-    GdkPixmap *destw;
-    GdkVisual *gvisual;
-    GdkColormap *cmap;
+    cairo_surface_t *surface;
+    cairo_t *cr;
     gint width, height;
     gint dest_x, dest_y;
 
@@ -885,29 +905,11 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     g_return_val_if_fail (pm->pixmap != None, FALSE);
     g_return_val_if_fail (pm->mask != None, FALSE);
 
-    destw = gdk_xid_table_lookup (pm->pixmap);
-    if (destw)
-    {
-        g_object_ref (G_OBJECT (destw));
-    }
-    else
-    {
-        destw = gdk_pixmap_foreign_new (pm->pixmap);
-    }
+    surface = xfwmPixmapCreateSurface (pm, FALSE);
 
-    if (!destw)
+    if (!surface)
     {
         g_warning ("Cannot get pixmap");
-        return FALSE;
-    }
-
-    gvisual = gdk_screen_get_system_visual (pm->screen_info->gscr);
-    cmap = gdk_x11_colormap_foreign_new (gvisual, pm->screen_info->cmap);
-
-    if (!cmap)
-    {
-        g_warning ("Cannot create colormap");
-        g_object_unref (destw);
         return FALSE;
     }
 
@@ -918,16 +920,16 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     dest_x = (pm->width - width + 1) / 2;
     dest_y = (pm->height - height + 1) / 2;
 
-    src = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE (destw), cmap,
-                                        dest_x, dest_y, 0, 0, width, height);
+    src = gdk_pixbuf_get_from_surface (surface, dest_x, dest_y, width, height);
     gdk_pixbuf_composite (pixbuf, src, 0, 0, width, height,
                           0, 0, 1.0, 1.0, GDK_INTERP_BILINEAR, 0xFF);
-    gdk_draw_pixbuf (GDK_DRAWABLE (destw), NULL, src, 0, 0, dest_x, dest_y,
-                     width, height, GDK_RGB_DITHER_NONE, 0, 0);
+    cr = cairo_create (surface);
+    gdk_cairo_set_source_pixbuf (cr, pixbuf, dest_x, dest_y);
+    cairo_paint (cr);
 
-    g_object_unref (cmap);
     g_object_unref (src);
-    g_object_unref (destw);
+    cairo_destroy (cr);
+    cairo_surface_destroy (surface);
 
     return TRUE;
 }
@@ -1123,4 +1125,25 @@ xfwmPixmapDuplicate (xfwmPixmap * src, xfwmPixmap * dst)
 
     xfwmPixmapCreate (src->screen_info, dst, src->width, src->height);
     xfwmPixmapFill (src, dst, 0, 0, src->width, src->height);
+}
+
+cairo_surface_t *
+xfwmPixmapCreateSurface (xfwmPixmap *pm, gboolean bitmap)
+{
+    g_return_val_if_fail (pm != NULL, NULL);
+
+    if (bitmap)
+    {
+        return cairo_xlib_surface_create_for_bitmap (pm->screen_info->display_info->dpy,
+                                                     pm->mask,
+                                                     pm->screen_info->xscreen,
+                                                     pm->width, pm->height);
+    }
+    else
+    {
+        return cairo_xlib_surface_create (pm->screen_info->display_info->dpy,
+                                          pm->pixmap,
+                                          pm->screen_info->visual,
+                                          pm->width, pm->height);
+    }
 }
