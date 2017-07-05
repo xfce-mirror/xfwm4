@@ -603,6 +603,7 @@ myDisplayGetScreenFromRoot (DisplayInfo *display, Window root)
 ScreenInfo *
 myDisplayGetScreenFromOutput (DisplayInfo *display, Window output)
 {
+#ifdef HAVE_COMPOSITOR
     GSList *list;
 
     g_return_val_if_fail (display != NULL, NULL);
@@ -616,6 +617,7 @@ myDisplayGetScreenFromOutput (DisplayInfo *display, Window output)
         }
     }
     TRACE ("myDisplayGetScreenFromOutput: no screen found for output window %p", output);
+#endif
 
     return NULL;
 }
