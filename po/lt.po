@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-07-02 20:29+0000\n"
+"PO-Revision-Date: 2017-07-06 22:30+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -124,7 +124,7 @@ msgstr "<b>Pavadinimo _lygiavimas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
-msgstr "Paspauskite ir tempkite norėdami pakeisti išdėstymą"
+msgstr "Norėdami pakeisti išdėstymą, spustelėkite ir tempkite"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Title"
@@ -196,17 +196,17 @@ msgstr "Fokusavimas _seka paskui pelės poziciją"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Delay before window receives focus:"
-msgstr "_Užlaikymas, prieš langui įgaunant fokusavimą:"
+msgstr "_Delsa, prieš langui įgaunant fokusavimą:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
-msgstr "<i>Trumpas</i>"
+msgstr "<i>Trumpa</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "<i>Long</i>"
-msgstr "<i>Ilgas</i>"
+msgstr "<i>Ilga</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "<b>Focus model</b>"
@@ -226,7 +226,7 @@ msgstr "Automatiškai iškelti _langus, kai jie įgauna fokusavimą"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr "_Užlaikymas, prieš iškeliant fokusuotą langą:"
+msgstr "_Delsa, prieš iškeliant fokusuotą langą:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
@@ -234,11 +234,11 @@ msgstr "<b>Iškelti, kai fokusuojama</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
-msgstr "Iškelti langą, kai _spaudžiama programos lango viduje"
+msgstr "Iškelti langą, kai _spustelėjama programos lango viduje"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
-msgstr "<b>Iškelti paspaudus</b>"
+msgstr "<b>Iškelti spustelėjus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
@@ -433,7 +433,7 @@ msgstr "Klavišas langų _paėmimui ir perkėlimui:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Iškelti langus paspaudus bet kurį pelės mygtuką"
+msgstr "_Iškelti langus, spustelėjus bet kurį pelės mygtuką"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Hide frame of windows when ma_ximized"
