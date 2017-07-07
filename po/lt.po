@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-07-06 22:30+0000\n"
+"PO-Revision-Date: 2017-07-06 22:53+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr "Langų tvarkytuvė"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Konfigūruoti lango elgseną ir susiejimus"
+msgstr "Konfigūruoti langų elgseną ir sparčiuosius klavišus"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -180,7 +180,7 @@ msgstr "Apibrėžkite sparčiuosius klavišus, skirtus langų tvark_ytuvės veik
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
-msgstr "_Atstatyti į numatytąsias"
+msgstr "_Atstatyti į numatytuosius"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "_Keyboard"
@@ -369,7 +369,7 @@ msgstr "Nepavyko sukurti nustatymų dialogo."
 #: ../settings-dialogs/xfwm4-settings.c:1901
 #: ../settings-dialogs/xfwm4-settings.c:1902
 msgid "Reset to Defaults"
-msgstr "Atstatyti numatytasias"
+msgstr "Atstatyti į numatytuosius"
 
 #: ../settings-dialogs/xfwm4-settings.c:1903
 msgid ""
@@ -475,7 +475,7 @@ msgstr "Darbo _sričių perjungimui naudoti pelės ratuką darbalaukyje"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Prisiminti ir atkurti ankstesnę darbo sritį\nperjungiant klaviatūros susiejimais"
+msgstr "_Prisiminti ir atkurti ankstesnę darbo sritį,\nperjungiant klaviatūros susiejimais"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
