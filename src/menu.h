@@ -112,9 +112,9 @@ GtkWidget               *menu_item_connect                      (GtkWidget *,
 gboolean                 menu_is_opened                         (void);
 gboolean                 menu_check_and_close                   (void);
 gboolean                 menu_popup                             (Menu *,
-                                                                 int,
-                                                                 int,
-                                                                 int,
+                                                                 gint,
+                                                                 gint,
+                                                                 guint,
                                                                  guint32);
 void                     menu_free                              (Menu *);
 

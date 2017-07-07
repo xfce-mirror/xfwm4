@@ -40,6 +40,12 @@
 #include "menu.h"
 #include "misc.h"
 
+enum
+{
+    GRAB_DEVICE_POINTER,
+    GRAB_DEVICE_KEYBOARD
+};
+
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
     {MENU_OP_MAXIMIZE,     "xfce-wm-maximize",   N_("Ma_ximize")},
@@ -94,19 +100,15 @@ menu_filter (XEvent * xevent, gpointer data)
 }
 
 
+#if !GTK_CHECK_VERSION(3, 22, 0)
 static void
 popup_position_func (GtkMenu * menu, gint * x, gint * y, gboolean * push_in,
     gpointer user_data)
 {
     GtkRequisition req;
     GdkPoint *pos;
-#if GTK_CHECK_VERSION(3, 22, 0)
-    GdkDisplay *display;
-    GdkMonitor *monitor;
-#else
     GdkScreen *screen;
     gint monitor_num;
-#endif
     gint width;
     gint height;
 
@@ -135,18 +137,13 @@ popup_position_func (GtkMenu * menu, gint * x, gint * y, gboolean * push_in,
         *y = (height - req.height) / 2;
     }
 
-#if GTK_CHECK_VERSION(3, 22, 0)
-    display = gtk_widget_get_display (GTK_WIDGET (menu));
-    monitor = gdk_display_get_monitor_at_point (display, *x, *y);
-    gtk_menu_place_on_monitor (GTK_MENU (menu), monitor);
-#else
     screen = gtk_widget_get_screen (GTK_WIDGET (menu));
     monitor_num = gdk_screen_get_monitor_at_point (screen, *x, *y);
     gtk_menu_set_monitor (GTK_MENU (menu), monitor_num);
-#endif
 
     g_free (user_data);
 }
+#endif
 
 static gboolean
 activate_cb (GtkWidget * menuitem, gpointer data)
@@ -371,10 +368,59 @@ menu_check_and_close (void)
     return (FALSE);
 }
 
+static GdkDevice *
+menu_get_device (GdkWindow *win, gint grab_device_type)
+{
+    GdkDisplay *display;
+    GdkSeat *seat;
+
+    display = gdk_window_get_display (win);
+    seat = gdk_display_get_default_seat (display);
+
+    switch (grab_device_type)
+    {
+        case GRAB_DEVICE_POINTER:
+            return gdk_seat_get_pointer (seat);
+        case GRAB_DEVICE_KEYBOARD:
+            return gdk_seat_get_keyboard (seat);
+        default:
+            return NULL;
+    }
+}
+
+static GdkGrabStatus
+menu_device_grab (GdkWindow *win, gint grab_device_type, GdkEventMask event_mask, guint32 timestamp)
+{
+    GdkDevice *device;
+
+    device = menu_get_device (win, grab_device_type);
+
+    g_return_val_if_fail (device != NULL, GDK_GRAB_FAILED);
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    return gdk_device_grab (device, win, GDK_OWNERSHIP_NONE, TRUE, event_mask, NULL, timestamp);
+G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
+static void
+menu_device_ungrab (GdkWindow *win, gint grab_device_type, guint32 timestamp)
+{
+    GdkDevice *device;
+
+    device = menu_get_device (win, grab_device_type);
+
+    g_return_if_fail (device != NULL);
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gdk_device_ungrab (device, timestamp);
+G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
 static gboolean
 grab_available (GdkWindow *win, guint32 timestamp)
 {
-    GdkEventMask mask;
+    GdkEventMask pointer_mask;
+    GdkEventMask keyboard_mask;
     GdkGrabStatus g1;
     GdkGrabStatus g2;
     gboolean grab_failed;
@@ -382,11 +428,12 @@ grab_available (GdkWindow *win, guint32 timestamp)
 
     TRACE ("entering grab_available");
 
-    mask = GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-           GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
-           GDK_POINTER_MOTION_MASK;
-    g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
-    g2 = gdk_keyboard_grab (win, TRUE, timestamp);
+    pointer_mask = GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+                   GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
+                   GDK_POINTER_MOTION_MASK;
+    keyboard_mask = GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK;
+    g1 = menu_device_grab (win, GRAB_DEVICE_POINTER, pointer_mask, timestamp);
+    g2 = menu_device_grab (win, GRAB_DEVICE_KEYBOARD, keyboard_mask, timestamp);
     grab_failed = FALSE;
 
     i = 0;
@@ -397,31 +444,73 @@ grab_available (GdkWindow *win, guint32 timestamp)
         g_usleep (100);
         if (g1 != GDK_GRAB_SUCCESS)
         {
-            g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
+            g1 = menu_device_grab (win, GRAB_DEVICE_POINTER, pointer_mask, timestamp);
         }
         if (g2 != GDK_GRAB_SUCCESS)
         {
-            g2 = gdk_keyboard_grab (win, TRUE, timestamp);
+            g2 = menu_device_grab (win, GRAB_DEVICE_KEYBOARD, keyboard_mask, timestamp);
         }
     }
 
     if (g1 == GDK_GRAB_SUCCESS)
     {
-        gdk_pointer_ungrab (timestamp);
+        menu_device_ungrab (win, GRAB_DEVICE_POINTER, timestamp);
     }
     if (g2 == GDK_GRAB_SUCCESS)
     {
-        gdk_keyboard_ungrab (timestamp);
+        menu_device_ungrab (win, GRAB_DEVICE_KEYBOARD, timestamp);
     }
 
     return (!grab_failed);
 }
 
+#if GTK_CHECK_VERSION(3, 22, 0)
+static GdkEvent *
+menu_popup_event (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestamp,
+                  GdkWindow *window)
+{
+    GdkEvent *event;
+    GdkSeat *seat;
+    GdkDevice *device;
+
+    TRACE ("entering menu_popup_event");
+
+    event = gtk_get_current_event ();
+
+    if (event != NULL)
+    {
+        event = gdk_event_copy (event);
+    }
+    else
+    {
+        /* Create fake event since menu can be show without any events */
+
+        seat = gdk_display_get_default_seat (gdk_window_get_display (window));
+        device = gdk_seat_get_pointer (seat);
+
+        event = gdk_event_new (GDK_BUTTON_PRESS);
+        event->button.window = g_object_ref (window);
+        event->button.time = timestamp;
+        event->button.x = event->button.x_root = root_x;
+        event->button.y = event->button.y_root = root_y;
+        event->button.button = button;
+        event->button.device = device;
+        gdk_event_set_device (event, device);
+    }
+
+    return event;
+}
+#endif
+
 gboolean
-menu_popup (Menu * menu, int root_x, int root_y, int button,
-    guint32 timestamp)
+menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestamp)
 {
     GdkPoint *pt;
+    GdkWindow *window;
+#if GTK_CHECK_VERSION(3, 22, 0)
+    GdkEvent *event;
+    GdkRectangle rectangle;
+#endif
 
     TRACE ("entering menu_popup");
 
@@ -432,9 +521,11 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
     pt->x = root_x;
     pt->y = root_y;
 
+    window = gdk_screen_get_root_window (menu->screen);
+
     if (!menu_check_and_close ())
     {
-        if (!grab_available (gdk_screen_get_root_window (menu->screen), timestamp))
+        if (!grab_available (window, timestamp))
         {
             g_free (pt);
             TRACE ("Cannot get grab on pointer/keyboard, cancel.");
@@ -443,10 +534,23 @@ menu_popup (Menu * menu, int root_x, int root_y, int button,
         TRACE ("opening new menu");
         menu_open = menu->menu;
         eventFilterPush (menu->filter_setup, menu_filter, NULL);
+
+#if GTK_CHECK_VERSION(3, 22, 0)
+        rectangle.x = root_x;
+        rectangle.y = root_y;
+        rectangle.width = 1;
+        rectangle.height = 1;
+
+        event = menu_popup_event (menu, root_x, root_y, button, timestamp, window);
+        gtk_menu_popup_at_rect (GTK_MENU (menu->menu), window, &rectangle,
+                                GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, event);
+        gdk_event_free (event);
+#else
         gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
             popup_position_func, pt, 0, timestamp);
+#endif
 
-        if (!GTK_MENU_SHELL (GTK_MENU (menu->menu))->have_xgrab)
+        if (g_object_get_data (G_OBJECT (menu->menu), "gtk-menu-transfer-window") == NULL)
         {
             gdk_beep ();
             g_message (_("%s: GtkMenu failed to grab the pointer\n"), g_get_prgname ());
