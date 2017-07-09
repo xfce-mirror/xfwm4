@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-07-08 06:29+0000\n"
+"PO-Revision-Date: 2017-07-09 11:16+0000\n"
 "Last-Translator: وجدي أبو سلطان\n"
 "Language-Team: Arabic (http://www.transifex.com/xfce/xfwm4/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -532,7 +532,7 @@ msgstr "عرض نوافذ تملئ الشاشة مباشرة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "عرض معاينة النوافذ بدلا من الرموز عند الدوران"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
@@ -612,7 +612,7 @@ msgstr "%s (على %s)"
 #: ../src/keyboard.c:141 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "مبدل لوحة المفاتيح غير مدعوم '%s'"
 
 #: ../src/main.c:630
 msgid "Fork to the background (not supported)"
