@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-07-06 22:53+0000\n"
+"PO-Revision-Date: 2017-07-20 21:15+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -315,7 +315,7 @@ msgstr "Iš_plėstiniai"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Shade window"
-msgstr "Uždengti langą"
+msgstr "Pridengti langą"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Hide window"
