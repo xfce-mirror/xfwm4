@@ -11,13 +11,13 @@
 # Pierre D <pedwo51@gmail.com>, 2013
 # Pierre D <pedwo51@gmail.com>, 2013
 # Urien Desterres <urien.desterres@gmail.com>, 2015
-# Yannick Le Guen <leguen.yannick@gmail.com>, 2014-2016
+# Yannick Le Guen <leguen.yannick@gmail.com>, 2014-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-02 06:55+0000\n"
+"POT-Creation-Date: 2017-05-15 12:31+0200\n"
+"PO-Revision-Date: 2017-08-18 08:14+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -40,29 +40,29 @@ msgstr "Avertissement"
 msgid "None"
 msgstr "Aucun"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 msgid "Session manager socket"
 msgstr "Socket du gestionnaire de sessions"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informations sur la version"
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:481
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:494
+#: ../settings-dialogs/tweaks-settings.c:485
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -182,7 +182,7 @@ msgstr "_Style"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Définir des raccourcis pour effectuer des actions du gestionnaire de fenêtres :"
+msgstr "Définir des raccourcis pour effectuer des actions du _gestionnaire de fenêtres :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -497,7 +497,7 @@ msgstr "_Espaces de travail"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Taille_ minimale des fenêtres pour déclencher le placement intelligent :"
+msgstr "Taille _minimale des fenêtres pour déclencher le placement intelligent :"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
@@ -529,54 +529,50 @@ msgid "Display _fullscreen overlay windows directly"
 msgstr "Affichage direct des _fenêtres plein écran"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "Synchronize drawing to the _vertical blank"
-msgstr "Synchroniser le rendu avec le rafraîchissement _vertical"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
 msgstr "Afficher une prévisualisation des fenêtres à la place des icônes lors de la navigation"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
 msgstr "Afficher des ombres sous les fenêtres context_uelles"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
 msgstr "Afficher des ombres sous les fenêtres _dock"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
 msgstr "Afficher des ombres sous les fenêtres no_rmales"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
 msgstr "Opaci_té des décorations des fenêtres :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "<i>Transparent</i>"
 msgstr "<i>Transparent</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Opaque</i>"
 msgstr "<i>Opaque</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of _inactive windows:"
 msgstr "Opacité des fenêtres _inactives :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of windows during _move:"
 msgstr "Opacité des fenêtres durant leur déplace_ment :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacité des fenêtres durant leur _redimensionnement :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opacité des fenêtres contextuelle_s :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
 msgstr "C_ompositeur"
 
@@ -606,7 +602,7 @@ msgid "_Margins"
 msgstr "_Marges"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (sur %s)"
@@ -616,31 +612,31 @@ msgstr "%s (sur %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Touche de combinaison « %s » non prise en charge"
 
-#: ../src/main.c:625
+#: ../src/main.c:630
 msgid "Fork to the background (not supported)"
 msgstr "Basculer à l’arrière-plan (non pris en charge)"
 
-#: ../src/main.c:627
+#: ../src/main.c:632
 msgid "Set the compositor mode"
 msgstr "Régler le mode du compositeur"
 
-#: ../src/main.c:629
+#: ../src/main.c:634
 msgid "Set the compositor mode (not supported)"
 msgstr "Régler le mode du compositeur (non pris en charge)"
 
-#: ../src/main.c:631
+#: ../src/main.c:636
 msgid "Replace the existing window manager"
-msgstr "Remplacer le gestionnaire de fenêtre actuel"
+msgstr "Remplacer le gestionnaire de fenêtres actuel"
 
-#: ../src/main.c:632
+#: ../src/main.c:637
 msgid "Print version information and exit"
 msgstr "Afficher les informations sur la version et quitter"
 
-#: ../src/main.c:643
+#: ../src/main.c:648
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:650
+#: ../src/main.c:655
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Taper « %s --help » pour plus d’aide."
