@@ -30,7 +30,9 @@
 #include <gtk/gtk.h>
 #include <gtk/gtkx.h>
 
+#ifdef XFCONF_LEGACY
 #include <dbus/dbus-glib.h>
+#endif
 #include <libwnck/libwnck.h>
 
 #include <libxfce4util/libxfce4util.h>
@@ -216,8 +218,12 @@ xfconf_workspace_names_changed(XfconfChannel *channel,
 {
     GPtrArray *names;
 
+#ifdef XFCONF_LEGACY
     if(G_VALUE_TYPE(value) !=  dbus_g_type_get_collection("GPtrArray",
                                                           G_TYPE_VALUE))
+#else
+    if(G_VALUE_TYPE(value) != G_TYPE_PTR_ARRAY)
+#endif
     {
         g_warning("(workspace names) Expected boxed GPtrArray property, got %s",
                   G_VALUE_TYPE_NAME(value));
