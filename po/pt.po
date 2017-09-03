@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2017-05-23 13:02+0000\n"
+"PO-Revision-Date: 2017-09-03 17:00+0000\n"
 "Last-Translator: José Vieira <jvieira33@sapo.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -837,7 +837,7 @@ msgstr "Esquema"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
-msgstr "Nome"
+msgstr "Nomes"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
@@ -905,7 +905,7 @@ msgstr "Mi_nimizar"
 
 #: ../src/menu.c:46
 msgid "Minimize _All Other Windows"
-msgstr "Minimizar todas _as outras janelas"
+msgstr "Minimizar tod_as as outras janelas"
 
 #: ../src/menu.c:47
 msgid "S_how"
