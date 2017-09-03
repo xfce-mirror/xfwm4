@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-05-23 13:31+0000\n"
+"PO-Revision-Date: 2017-09-03 16:52+0000\n"
 "Last-Translator: José Vieira <jvieira33@sapo.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -605,7 +605,7 @@ msgstr "%s (em %s)"
 #: ../src/keyboard.c:141 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr "Modificador de teclas não suportado '%s'"
+msgstr "Modificador de teclas não aceite '%s'"
 
 #: ../src/main.c:630
 msgid "Fork to the background (not supported)"
