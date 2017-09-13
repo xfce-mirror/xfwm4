@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Aputsiak Niels Janussen <aj@isit.gl>, 2016
+# Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2016
 # Lars Nielsen <lars@mit-web.dk>, 2008
 # Per Kongstad <p_kongstad@op.pl>, 2009
 # scootergrisen, 2017
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2017-01-21 18:06+0000\n"
+"PO-Revision-Date: 2017-09-13 16:29+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "Ingen"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 msgid "Session manager socket"
-msgstr "Indstillingshåndteringssokkel"
+msgstr "Sokkel til indstillingshåndtering"
 
 #: ../settings-dialogs/tweaks-settings.c:454
 #: ../settings-dialogs/workspace-settings.c:381
@@ -79,7 +79,7 @@ msgstr "Arbejdsområdenavn"
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:315
 msgid "Settings manager socket"
-msgstr "Indstillingshåndteringssokkel"
+msgstr "Sokkel til indstillingshåndtering"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
