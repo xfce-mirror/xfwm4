@@ -1103,6 +1103,7 @@ xfwm_settings_active_frame_drag_data (GtkWidget        *widget,
   gtk_box_reorder_child (GTK_BOX (active_box), source, i);
 
   xfwm_settings_save_button_layout (settings, GTK_CONTAINER (active_box));
+  gtk_widget_show (source);
 }
 
 
@@ -1193,15 +1194,17 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
   hidden_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "hidden-box"));
   active_box = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "active-box"));
 
-  if (G_UNLIKELY (parent == hidden_box))
-    return;
+  if (G_LIKELY (parent != hidden_box))
+    {
+      g_object_ref (source);
+      gtk_container_remove (GTK_CONTAINER (parent), source);
+      gtk_box_pack_start (GTK_BOX (hidden_box), source, FALSE, FALSE, 0);
+      g_object_unref (source);
 
-  g_object_ref (source);
-  gtk_container_remove (GTK_CONTAINER (parent), source);
-  gtk_box_pack_start (GTK_BOX (hidden_box), source, FALSE, FALSE, 0);
-  g_object_unref (source);
+      xfwm_settings_save_button_layout (settings, GTK_CONTAINER (active_box));
+    }
 
-  xfwm_settings_save_button_layout (settings, GTK_CONTAINER (active_box));
+  gtk_widget_show (source);
 }
 
 
@@ -1236,7 +1239,6 @@ xfwm_settings_title_button_drag_data (GtkWidget        *widget,
 
   name = gtk_buildable_get_name (GTK_BUILDABLE (widget));
 
-  gtk_widget_hide (widget);
   gtk_selection_data_set (data, gdk_atom_intern ("_xfwm4_button_layout", FALSE), 8,
                           (const guchar *)name, strlen (name));
 }
