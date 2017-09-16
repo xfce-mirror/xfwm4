@@ -5,14 +5,14 @@
 # Translators:
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005
 # 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2017
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-06-12 17:51+0000\n"
-"Last-Translator: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>\n"
+"PO-Revision-Date: 2017-09-16 11:01+0000\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfwm4/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -699,15 +699,15 @@ msgstr "상황 도움말(_H)"
 #. --------------------------------------------------------
 #: ../src/menu.c:60
 msgid "Always on _Visible Workspace"
-msgstr "항상 보이는 작업공간으로(_V)"
+msgstr "항상 보이는 작업 공간으로(_V)"
 
 #: ../src/menu.c:61
 msgid "Only _Visible on This Workspace"
-msgstr "항상 보이는 작업공간에만(_V)"
+msgstr "항상 보이는 작업 공간에만(_V)"
 
 #: ../src/menu.c:62
 msgid "Move to Another _Workspace"
-msgstr "다른 작업공간으로 이동(_W)"
+msgstr "다른 작업 공간으로 이동(_W)"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
