@@ -3,18 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Noskcaj <noskcaj@ubuntu.com>, 2013
+# Jackson Doak <noskcaj@ubuntu.com>, 2013
 # Jeff Bailes <thepizzaking@gmail.com>, 2009
+# Robert Readman <robert_readman@hotmail.com>, 2013
 # Translate.org.za <info@translate.org.za>, 2007
 # Zuza Software Foundation (Translate.org.za), 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 22:21+0200\n"
-"PO-Revision-Date: 2013-07-23 22:04+0000\n"
-"Last-Translator: Noskcaj <noskcaj@ubuntu.com>\n"
-"Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/xfce/language/en_GB/)\n"
+"POT-Creation-Date: 2017-05-15 12:31+0200\n"
+"PO-Revision-Date: 2017-09-19 18:01+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"Language-Team: English (United Kingdom) (http://www.transifex.com/xfce/xfwm4/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,29 +36,29 @@ msgstr "Warning"
 msgid "None"
 msgstr "None"
 
-#: ../settings-dialogs/tweaks-settings.c:463
+#: ../settings-dialogs/tweaks-settings.c:462
 msgid "Session manager socket"
 msgstr "Session manager socket"
 
-#: ../settings-dialogs/tweaks-settings.c:463
+#: ../settings-dialogs/tweaks-settings.c:462
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:464
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Version information"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:481
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:486
+#: ../settings-dialogs/tweaks-settings.c:485
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -242,7 +243,7 @@ msgid "<b>Raise on click</b>"
 msgstr "<b>Raise on click</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Focus"
 msgstr "_Focus"
 
@@ -261,7 +262,7 @@ msgstr "Dis_tance:"
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "<i>Small</i>"
 msgstr "<i>Small</i>"
 
@@ -397,169 +398,177 @@ msgid "_Draw frame around selected windows while cycling"
 msgstr "_Draw frame around selected windows while cycling"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "Cycle through windows in a _list"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "C_ycling"
 msgstr "C_ycling"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "Activate foc_us stealing prevention"
 msgstr "Activate foc_us stealing prevention"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Honor _standard ICCCM focus hint"
 msgstr "Honour _standard ICCCM focus hint"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "When a window raises itself:"
 msgstr "When a window raises itself:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "_Bring window on current workspace"
 msgstr "_Bring window on current workspace"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Switch to win_dow's workspace"
 msgstr "Switch to win_dow's workspace"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Do _nothing"
 msgstr "Do _nothing"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Key used to _grab and move windows:"
 msgstr "Key used to _grab and move windows:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "_Raise windows when any mouse button is pressed"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Hide frame of windows when ma_ximized"
 msgstr "Hide frame of windows when ma_ximised"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-msgid "Restore original size of maximi_zed windows when moving"
-msgstr "Restore original size of maximi_sed windows when moving"
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automatically _tile windows when moving towards the screen edge"
+msgid "Hide title of windows when maximized"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Notify of _urgency by making window's decoration blink"
+msgid "Automatically _tile windows when moving toward the screen edge"
+msgstr "Automatically _tile windows when moving towards the screen edge"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Use _edge resistance instead of window snapping"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr "Notify of _urgency by making window's decoration blink"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "Keep urgent windows _blinking repeatedly"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+msgid "Use mouse wheel on title bar to ro_ll up the window"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "_Accessibility"
 msgstr "_Accessibility"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "Use the _mouse wheel on the desktop to switch workspaces"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr "_Remember and recall previous workspace\nwhen switching via keyboard shortcuts"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Wrap workspaces depending on the actual desktop _layout"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "Wrap workspaces when _the first or the last workspace is reached"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "_Workspaces"
 msgstr "_Workspaces"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "_Minimum size of windows to trigger smart placement:"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "<i>Large</i>"
 msgstr "<i>Large</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "By default, place windows:"
 msgstr "By default, place windows:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "At the c_enter of the screen"
 msgstr "At the c_entre of the screen"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "U_nder the mouse pointer"
 msgstr "U_nder the mouse pointer"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "_Placement"
 msgstr "_Placement"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Enable display compositing"
 msgstr "_Enable display compositing"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "Display _fullscreen overlay windows directly"
 msgstr "Display _fullscreen overlay windows directly"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-msgid "Synchronize drawing to the _vertical blank"
-msgstr "Synchronize drawing to the _vertical blank"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Show windows preview in place of icons when cycling"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
 msgstr "Show shadows under pop_up windows"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
 msgstr "Show shadows under _dock windows"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
 msgstr "Show shadows under _regular windows"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
 msgstr "Opaci_ty of window decorations:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "<i>Transparent</i>"
 msgstr "<i>Transparent</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Opaque</i>"
 msgstr "<i>Opaque</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of _inactive windows:"
 msgstr "Opacity of _inactive windows:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of windows during _move:"
 msgstr "Opacity of windows during _move:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacity of windows during resi_ze:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opacity of popup wi_ndows:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
 msgstr "C_ompositor"
 
@@ -594,35 +603,36 @@ msgstr "_Margins"
 msgid "%s (on %s)"
 msgstr "%s (on %s)"
 
-#: ../src/main.c:540
-msgid "Fork to the background"
-msgstr "Fork to the background"
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr ""
 
-#: ../src/main.c:542
+#: ../src/main.c:630
 msgid "Fork to the background (not supported)"
 msgstr "Fork to the background (not supported)"
 
-#: ../src/main.c:545
+#: ../src/main.c:632
 msgid "Set the compositor mode"
 msgstr "Set the compositor mode"
 
-#: ../src/main.c:547
+#: ../src/main.c:634
 msgid "Set the compositor mode (not supported)"
 msgstr "Set the compositor mode (not supported)"
 
-#: ../src/main.c:549
+#: ../src/main.c:636
 msgid "Replace the existing window manager"
 msgstr "Replace the existing window manager"
 
-#: ../src/main.c:550
+#: ../src/main.c:637
 msgid "Print version information and exit"
 msgstr "Print version information and exit"
 
-#: ../src/main.c:558
+#: ../src/main.c:648
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:565
+#: ../src/main.c:655
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Type \"%s --help\" for usage."
@@ -657,16 +667,16 @@ msgstr "_Resize"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Always on Top"
+msgid "Always on _Top"
+msgstr ""
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Same as Other Windows"
+msgid "_Same as Other Windows"
+msgstr ""
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Always Below Other Windows"
+msgid "Always _Below Other Windows"
+msgstr ""
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -690,16 +700,16 @@ msgstr "Context _Help"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "Always on Visible Workspace"
+msgid "Always on _Visible Workspace"
+msgstr ""
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Only on This Workspace"
+msgid "Only _Visible on This Workspace"
+msgstr ""
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Move to Another Workspace"
+msgid "Move to Another _Workspace"
+msgstr ""
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -719,27 +729,27 @@ msgstr "_Quit"
 msgid "Restart"
 msgstr "Restart"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu failed to grab the pointer\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Cannot allocate colour %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Cannot allocate colour: GValue for colour is not of type STRING"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Cannot parse colour %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Cannot parse colour: GValue for colour is not of type STRING"
