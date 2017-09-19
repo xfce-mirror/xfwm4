@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-11-22 16:54+0000\n"
+"POT-Creation-Date: 2017-05-15 12:31+0200\n"
+"PO-Revision-Date: 2017-09-19 18:01+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Basque (http://www.transifex.com/xfce/xfwm4/language/eu/)\n"
 "MIME-Version: 1.0\n"
@@ -34,29 +34,29 @@ msgstr "Abisua"
 msgid "None"
 msgstr "Batez"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 msgid "Session manager socket"
 msgstr "Saio kudeatzaile socketa"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET IDa"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Bertsio argibideak"
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:481
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:494
+#: ../settings-dialogs/tweaks-settings.c:485
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -523,54 +523,50 @@ msgid "Display _fullscreen overlay windows directly"
 msgstr "Zuzenean leihoak _pantaila osoan bistarazi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "Synchronize drawing to the _vertical blank"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
 msgstr "Itzalak bistarazi popup leihoen azpian"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
 msgstr "Itzalak bistarazi _blokeaturiko leihoen azpian"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
 msgstr "Itzalak bistarazi leiho _arrunten azpian"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
 msgstr "Leiho dekorazioaren opako_tasuna"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "<i>Transparent</i>"
 msgstr "<i>Gardena</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Opaque</i>"
 msgstr "<i>Opakoa</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of _inactive windows:"
 msgstr "Leiho _inaktiboen opakotasuna"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of windows during _move:"
 msgstr "_Mugitzerakoan leihoaren opakotasuna"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during resi_ze:"
 msgstr "Tamaina_z aldatzean leihoaren opakotasuna"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
 msgstr "Popup leihoen opakota_suna:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
 msgstr "S_ortzailea"
 
@@ -605,31 +601,36 @@ msgstr "_Ertzak"
 msgid "%s (on %s)"
 msgstr "%s (%s-(e)n)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr ""
+
+#: ../src/main.c:630
 msgid "Fork to the background (not supported)"
 msgstr "Banandu atzealdera (euskarririk gabe)"
 
-#: ../src/main.c:618
+#: ../src/main.c:632
 msgid "Set the compositor mode"
 msgstr "Ezarri konposizio modua"
 
-#: ../src/main.c:620
+#: ../src/main.c:634
 msgid "Set the compositor mode (not supported)"
 msgstr "Ezarri konposizio modua (euskarririk gabe)"
 
-#: ../src/main.c:622
+#: ../src/main.c:636
 msgid "Replace the existing window manager"
 msgstr "Ordeztu dagoen leiho kudeatzailea"
 
-#: ../src/main.c:623
+#: ../src/main.c:637
 msgid "Print version information and exit"
 msgstr "Bertsio argibideak inprimatu eta irten"
 
-#: ../src/main.c:634
+#: ../src/main.c:648
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTUAK...]"
 
-#: ../src/main.c:641
+#: ../src/main.c:655
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Idatzi \"%s --help\" erabilerarako."
@@ -731,22 +732,22 @@ msgstr "Berrabiarazi"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu errorea sagu markatzailea eskuratzerakoan\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Ezin da %s kolorea esleitu\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Ezin da kolorea esleitu: kolorearen GValue balioa ez da KATE motakoa"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Ezin da %s kolorea analizatu\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Ezin da kolorea analizatu: kolorearen GValue balioa ez da KATE motakoa"
