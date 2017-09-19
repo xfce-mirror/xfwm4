@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Alex Dupre <ale@FreeBSD.org>, 2004-2005
-# cri <cri.penta@gmail.com>, 2009
+# Cristian Marchi <cri.penta@gmail.com>, 2009
 # Gabriele Modena <randall@email.it>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2013-11-19 15:10+0000\n"
-"Last-Translator: Nick <nick@xfce.org>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/xfce/language/it/)\n"
+"PO-Revision-Date: 2017-09-19 18:03+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"Language-Team: Italian (http://www.transifex.com/xfce/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
