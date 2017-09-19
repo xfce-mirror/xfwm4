@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-30 00:32+0100\n"
-"PO-Revision-Date: 2015-02-27 20:03+0000\n"
-"Last-Translator: Mișu Moldovan <dumol@l10n.ro>\n"
-"Language-Team: Romanian (http://www.transifex.com/projects/p/xfwm4/language/ro/)\n"
+"POT-Creation-Date: 2017-05-15 12:31+0200\n"
+"PO-Revision-Date: 2017-09-19 18:01+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"Language-Team: Romanian (http://www.transifex.com/xfce/xfwm4/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,29 +32,29 @@ msgstr "Atenționare"
 msgid "None"
 msgstr "Niciuna"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 msgid "Session manager socket"
 msgstr "Socket al managerului de sesiune"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Detalii despre versiune"
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:481
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:494
+#: ../settings-dialogs/tweaks-settings.c:485
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -521,54 +521,50 @@ msgid "Display _fullscreen overlay windows directly"
 msgstr "Randează direct ferestrele pe tot _ecranul de tip overlay"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "Synchronize drawing to the _vertical blank"
-msgstr "Sincronizează afișarea cu intervalul _vertical (vblank)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
 msgstr "Arată previzualizări ale ferestrelor la ciclare"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
 msgstr "Arată umbre pentru ferestrele de tip pop_up"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
 msgstr "Arată umbre pentru ferestrele de tip doc_k"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
 msgstr "Arată umbre pentru ferestrele obiș_nuite"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
 msgstr "Opacitate a _decorațiunilor ferestrelor:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "<i>Transparent</i>"
 msgstr "<i>Transparente</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Opaque</i>"
 msgstr "<i>Opace</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of _inactive windows:"
 msgstr "Opacitate a ferestrelor _inactive:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of windows during _move:"
 msgstr "Opacitate a ferestrelor în curs de _mutare:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacitate a ferestrelor în curs de _redimensionare:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opacitate a _ferestrelor de tip popup"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
 msgstr "Compo_ziție"
 
@@ -598,40 +594,41 @@ msgid "_Margins"
 msgstr "_Margini"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (pe %s)"
 
-#: ../src/main.c:602
-msgid "Fork to the background"
-msgstr "Fă fork în fundal"
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr ""
 
-#: ../src/main.c:604
+#: ../src/main.c:630
 msgid "Fork to the background (not supported)"
 msgstr "Fă fork în fundal (nesuportat)"
 
-#: ../src/main.c:607
+#: ../src/main.c:632
 msgid "Set the compositor mode"
 msgstr "Schimbă modul compoziției"
 
-#: ../src/main.c:609
+#: ../src/main.c:634
 msgid "Set the compositor mode (not supported)"
 msgstr "Schimbă modul compoziției (nesuportat)"
 
-#: ../src/main.c:611
+#: ../src/main.c:636
 msgid "Replace the existing window manager"
 msgstr "Înlocuiește managerul de ferestre activ"
 
-#: ../src/main.c:612
+#: ../src/main.c:637
 msgid "Print version information and exit"
 msgstr "Arată detalii despre versiune și ieși"
 
-#: ../src/main.c:623
+#: ../src/main.c:648
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTE...]"
 
-#: ../src/main.c:630
+#: ../src/main.c:655
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Încercați „%s --help” pentru detalii de utilizare."
@@ -666,16 +663,16 @@ msgstr "_Redimensionare"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
-msgid "Always on Top"
-msgstr "Mereu deasupra"
+msgid "Always on _Top"
+msgstr ""
 
 #: ../src/menu.c:52
-msgid "Same as Other Windows"
-msgstr "Ca toate celelalte ferestre"
+msgid "_Same as Other Windows"
+msgstr ""
 
 #: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr "Întotdeauna sub celelalte ferestre"
+msgid "Always _Below Other Windows"
+msgstr ""
 
 #: ../src/menu.c:54
 msgid "Roll Window Up"
@@ -699,16 +696,16 @@ msgstr "_Ajutor contextual"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:60
-msgid "Always on Visible Workspace"
-msgstr "În toate spațiile de lucru"
+msgid "Always on _Visible Workspace"
+msgstr ""
 
 #: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr "Doar în acest spațiu de lucru"
+msgid "Only _Visible on This Workspace"
+msgstr ""
 
 #: ../src/menu.c:62
-msgid "Move to Another Workspace"
-msgstr "Mutare în alt spațiu de lucru"
+msgid "Move to Another _Workspace"
+msgstr ""
 
 #. --------------------------------------------------------
 #: ../src/menu.c:64
@@ -728,27 +725,27 @@ msgstr "_Ieșire"
 msgid "Restart"
 msgstr "Repornește"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:431
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nu a putut captura cursorul\n"
 
-#: ../src/settings.c:273
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nu se poate aloca culoarea %s\n"
 
-#: ../src/settings.c:275
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Nu se poate aloca culoarea, GValue pentru această culoare nu este de tipul STRING"
 
-#: ../src/settings.c:282
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nu se poate prelucra culoarea %s\n"
 
-#: ../src/settings.c:284
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Nu se poate prelucra culoarea, GValue pentru această culoare nu este de tipul STRING"
