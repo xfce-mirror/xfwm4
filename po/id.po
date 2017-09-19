@@ -5,15 +5,15 @@
 # Translators:
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2008
 # Ardjuna <Asyura.x@gmail.com>, 2014
-# Mohamad Hasan Al Banna <se7entime@protonmail.com>, 2015
-# Mohamad Hasan Al Banna <se7entime@protonmail.com>, 2015
+# Mohamad Hasan Al Banna <se7entime@openmailbox.org>, 2015
+# Mohamad Hasan Al Banna <se7entime@openmailbox.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2017-02-26 05:21+0000\n"
-"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"POT-Creation-Date: 2017-05-15 12:31+0200\n"
+"PO-Revision-Date: 2017-09-19 18:01+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfwm4/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,29 +35,29 @@ msgstr "Peringatan"
 msgid "None"
 msgstr "Tak ada"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 msgid "Session manager socket"
 msgstr "Soket manajer sesi"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informasi versi"
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:481
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:494
+#: ../settings-dialogs/tweaks-settings.c:485
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -524,54 +524,50 @@ msgid "Display _fullscreen overlay windows directly"
 msgstr "Tampilkan secara langsung jendela lapisan layar penuh"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "Synchronize drawing to the _vertical blank"
-msgstr "Sinkronisasi penggambaran ke VBLANK"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
 msgstr "Tampilkan jendela pratinjau di tempat ikon saat bersepeda"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
 msgstr "Tampilkan bayangan di bawah jendela p_opup"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
 msgstr "Tampilkan bayangan di bawah jendela _dok"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
 msgstr "Tampilkan bayangan di bawah jendela _reguler"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
 msgstr "Opasi_tas dekorasi jendela:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "<i>Transparent</i>"
 msgstr "<i>Transparan</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Opaque</i>"
 msgstr "<i>Opasitas</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of _inactive windows:"
 msgstr "Opasitas _jendela tidak aktif:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of windows during _move:"
 msgstr "Opasitas jendela ketika _pindah:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opasitas jendela ketika mengubah uku_ran:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opasitas jendela pop_up:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
 msgstr "K_ompositor"
 
@@ -601,7 +597,7 @@ msgid "_Margins"
 msgstr "_Marjin"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (pada %s)"
@@ -611,31 +607,31 @@ msgstr "%s (pada %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Modifikasi papan tik '%s' tidak didukung"
 
-#: ../src/main.c:625
+#: ../src/main.c:630
 msgid "Fork to the background (not supported)"
 msgstr "Jalankan di latar belakang (tidak didukung)"
 
-#: ../src/main.c:627
+#: ../src/main.c:632
 msgid "Set the compositor mode"
 msgstr "Atur mode kompositor"
 
-#: ../src/main.c:629
+#: ../src/main.c:634
 msgid "Set the compositor mode (not supported)"
 msgstr "Atur mode kompositor (tidak didukung)"
 
-#: ../src/main.c:631
+#: ../src/main.c:636
 msgid "Replace the existing window manager"
 msgstr "Ganti manajer jendela yang ada"
 
-#: ../src/main.c:632
+#: ../src/main.c:637
 msgid "Print version information and exit"
 msgstr "Tampilkan informasi versi lalu keluar"
 
-#: ../src/main.c:643
+#: ../src/main.c:648
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMEN...]"
 
-#: ../src/main.c:650
+#: ../src/main.c:655
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Ketik \"%s --help\" untuk bantuan penggunaan."
