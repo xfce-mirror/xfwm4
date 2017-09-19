@@ -4,19 +4,19 @@
 # 
 # Translators:
 # Adolfo Jayme Barrientos, 2013-2014
-# Fitoschido, 2013
-# Fitoschido, 2014
+# Adolfo Jayme Barrientos, 2013
+# Adolfo Jayme Barrientos, 2014
 # Edscott Wilson Garcia <edscott@xfce.org>, 2004
 # gabrieltandil <gabriel.tandil@gmail.com>, 2015
 # gabrieltandil <gabriel.tandil@gmail.com>, 2015-2016
-# Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>, 2013-2015
+# Pablo Lezaeta Reyes [pˈaβ̞lo lˌe̞θaˈeta rˈejɛ] <prflr88@gmail.com>, 2013-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-01 00:32+0200\n"
-"PO-Revision-Date: 2016-05-03 11:21+0000\n"
-"Last-Translator: gabrieltandil <gabriel.tandil@gmail.com>\n"
+"POT-Creation-Date: 2017-05-15 12:31+0200\n"
+"PO-Revision-Date: 2017-09-19 18:01+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,29 +38,29 @@ msgstr "Atención"
 msgid "None"
 msgstr "Ninguno"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 msgid "Session manager socket"
 msgstr "Socket del gestor de sesión"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "Id. del SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Información de versión"
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:481
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:494
+#: ../settings-dialogs/tweaks-settings.c:485
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -527,54 +527,50 @@ msgid "Display _fullscreen overlay windows directly"
 msgstr "Mostrar directamente superposición de ventanas a _pantalla completa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "Synchronize drawing to the _vertical blank"
-msgstr "Sincronizar redibujado en las líneas _verticales"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
 msgstr "Mostrar vistas previas de ventanas lugar de los iconos durante la selección"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
 msgstr "Mostrar sombra bajo ventanas _emergentes"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
 msgstr "Mostrar sombra bajo ventanas _empotrables"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
 msgstr "Mostrar sombra bajo ventanas _normales"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
 msgstr "Opaci_dad de la decoración de ventanas:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "<i>Transparent</i>"
 msgstr "<i>Trasparente</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Opaque</i>"
 msgstr "<i>Opaco</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of _inactive windows:"
 msgstr "Opacidad de ventanas _inactivas:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of windows during _move:"
 msgstr "Opacidad de ventanas al des_plazarse:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacidad de ventanas durante _redimensionado:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opacidad de ve_ntanas emergentes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
 msgstr "C_ompositor"
 
@@ -604,7 +600,7 @@ msgid "_Margins"
 msgstr "Márgenes"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:185
+#: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (en %s)"
@@ -614,31 +610,31 @@ msgstr "%s (en %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Modificador de teclado '%s' no soportado"
 
-#: ../src/main.c:625
+#: ../src/main.c:630
 msgid "Fork to the background (not supported)"
 msgstr "Modo de segundo plano no soportado"
 
-#: ../src/main.c:627
+#: ../src/main.c:632
 msgid "Set the compositor mode"
 msgstr "Activa la composición"
 
-#: ../src/main.c:629
+#: ../src/main.c:634
 msgid "Set the compositor mode (not supported)"
 msgstr "Composición no soportada"
 
-#: ../src/main.c:631
+#: ../src/main.c:636
 msgid "Replace the existing window manager"
 msgstr "Mantener acción del gestor de ventanas"
 
-#: ../src/main.c:632
+#: ../src/main.c:637
 msgid "Print version information and exit"
 msgstr "Información de versión"
 
-#: ../src/main.c:643
+#: ../src/main.c:648
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS…]"
 
-#: ../src/main.c:650
+#: ../src/main.c:655
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Escriba «%s --help» para instrucciones de uso."
