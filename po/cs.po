@@ -7,15 +7,15 @@
 # Alois Nešpor <info@aloisnespor.info>, 2014
 # hsn <kolar.radim@gmail.com>, 2013
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003
-# Michal Várady <miko.vaji@gmail.com>, 2014-2015
+# Michal Várady <miko.vaji@gmail.com>, 2014-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 00:31+0200\n"
-"PO-Revision-Date: 2015-06-27 08:50+0000\n"
-"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
-"Language-Team: Czech (http://www.transifex.com/projects/p/xfwm4/language/cs/)\n"
+"POT-Creation-Date: 2017-05-15 12:31+0200\n"
+"PO-Revision-Date: 2017-09-19 18:01+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"Language-Team: Czech (http://www.transifex.com/xfce/xfwm4/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,29 +36,29 @@ msgstr "Varování"
 msgid "None"
 msgstr "Nic"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 msgid "Session manager socket"
 msgstr "Soket správce relace"
 
-#: ../settings-dialogs/tweaks-settings.c:471
+#: ../settings-dialogs/tweaks-settings.c:462
 #: ../settings-dialogs/workspace-settings.c:381
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:463
 #: ../settings-dialogs/workspace-settings.c:382
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informace o verzi"
 
-#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/tweaks-settings.c:481
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:895
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:494
+#: ../settings-dialogs/tweaks-settings.c:485
 #: ../settings-dialogs/workspace-settings.c:403
 #: ../settings-dialogs/xfwm4-settings.c:899
 #, c-format
@@ -525,54 +525,50 @@ msgid "Display _fullscreen overlay windows directly"
 msgstr "Použít přímé zobrazo_vání pro okna v režimu celá obrazovka"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "Synchronize drawing to the _vertical blank"
-msgstr "Vertikální synchronizace při vykreslování"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
 msgstr "Při procházení zobrazit náhledy oken v místě ikon"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show shadows under pop_up windows"
 msgstr "Zobr_azovat stíny pod vyskakovacími okny"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under _dock windows"
 msgstr "Zobrazova_t stíny pod dokovacími okny"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _regular windows"
 msgstr "Zobrazovat stíny pod _běžnými okny"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Opaci_ty of window decorations:"
 msgstr "Průhlednost _dekorací oken"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "<i>Transparent</i>"
 msgstr "<i>Průhledné</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Opaque</i>"
 msgstr "<i>Neprůhledné</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opacity of _inactive windows:"
 msgstr "Prů_hlednost neaktivních oken"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of windows during _move:"
 msgstr "Průhl_ednost oken při přesunu"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during resi_ze:"
 msgstr "Průh_lednost oken při změně velikosti"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of popup wi_ndows:"
 msgstr "Průhlednost _vyskakovacích oken:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "C_ompositor"
 msgstr "_Kompozitor"
 
@@ -607,31 +603,36 @@ msgstr "O_kraje"
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/main.c:616
+#: ../src/keyboard.c:141 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
+msgstr "Nepodporovaný modifikátor klávesnice '%s'"
+
+#: ../src/main.c:630
 msgid "Fork to the background (not supported)"
 msgstr "Přesunou do pozadí (nepodporováno)"
 
-#: ../src/main.c:618
+#: ../src/main.c:632
 msgid "Set the compositor mode"
 msgstr "Nastavit režim kompozitoru"
 
-#: ../src/main.c:620
+#: ../src/main.c:634
 msgid "Set the compositor mode (not supported)"
 msgstr "Nastavit režim kompozitoru (nepodporováno)"
 
-#: ../src/main.c:622
+#: ../src/main.c:636
 msgid "Replace the existing window manager"
 msgstr "Nahradit stávající správce oken"
 
-#: ../src/main.c:623
+#: ../src/main.c:637
 msgid "Print version information and exit"
 msgstr "Zobrazí informace o verzi a ukončí se"
 
-#: ../src/main.c:634
+#: ../src/main.c:648
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRY...]"
 
-#: ../src/main.c:641
+#: ../src/main.c:655
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informace o použití získáte příkazem \"%s --help\" ."
@@ -733,22 +734,22 @@ msgstr "Restart"
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponentě GtkMenu se nepodařilo uchopit ukazatel\n"
 
-#: ../src/settings.c:276
+#: ../src/settings.c:280
 #, c-format
 msgid "%s: Cannot allocate color %s\n"
 msgstr "%s: Nelze přidělit barvu %s\n"
 
-#: ../src/settings.c:278
+#: ../src/settings.c:282
 #, c-format
 msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
 msgstr "%s: Nelze přidělit barvu: Hodnota GValue pro barvu není typu ŘETĚZEC"
 
-#: ../src/settings.c:285
+#: ../src/settings.c:289
 #, c-format
 msgid "%s: Cannot parse color %s\n"
 msgstr "%s: Nelze zpracovat barvu %s\n"
 
-#: ../src/settings.c:287
+#: ../src/settings.c:291
 #, c-format
 msgid "%s: Cannot parse color: GValue for color is not of type STRING"
 msgstr "%s: Nelze zpracovat barvu: Hodnota GValue pro barvu není typu ŘETĚZEC"
