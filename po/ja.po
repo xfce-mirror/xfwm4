@@ -1,39 +1,29 @@
-# $Id$
-#
-# Japanese translations for xfwm4 package.
-# Copyright (C) 2002-2012 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-# Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
-# Daichi Kawahata <daichi@xfce.org>, 2005-2007.
-# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008.
-# Masato Hashimoto <cabezon.hashimoto@gmail.com>, 2010-2012.
-#
-# 対訳一覧:
-#
-# composite     合成
-# compositing   合成処理
-# compositor    コンポジター
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008
+# Zhao Ji <zhao-ji@awz.ne.jp>, 2003
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.5.91\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-11 21:59+0900\n"
-"PO-Revision-Date: 2012-04-11 22:03+0900\n"
-"Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
-"Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
-"Language: ja\n"
+"POT-Creation-Date: 2013-07-02 23:22+0200\n"
+"PO-Revision-Date: 2017-09-19 18:03+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"Language-Team: Japanese (http://www.transifex.com/xfce/xfwm4/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../helper-dialog/helper-dialog.c:84
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"このウィンドウはビジーのようで応答がありません。\n"
-"アプリケーションを終了させますか?"
+msgstr "このウィンドウはビジーのようで応答がありません。\nアプリケーションを終了させますか?"
 
 #: ../helper-dialog/helper-dialog.c:89
 msgid "Warning"
@@ -72,9 +62,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"%s --help で使用可能なすべてのコマンドラインオプションが表示されます。\n"
+msgstr "%s: %s\n%s --help で使用可能なすべてのコマンドラインオプションが表示されます。\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -101,7 +89,6 @@ msgstr "ウィンドウマネージャー"
 msgid "Configure window behavior and shortcuts"
 msgstr "ウィンドウの振る舞いとショートカットキーを設定します"
 
-# FIXME: Q_()
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -154,12 +141,10 @@ msgstr "表示する"
 msgid "Menu"
 msgstr "メニュー"
 
-# FIXME:
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Stick"
 msgstr "貼る"
 
-# FIXME:
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Shade"
 msgstr "折り畳む"
@@ -168,7 +153,6 @@ msgstr "折り畳む"
 msgid "Minimize"
 msgstr "最小化"
 
-# FIXME:
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
 msgstr "最大化"
@@ -651,22 +635,22 @@ msgstr "xfconf の初期化に失敗しました。理由: %s"
 msgid "Could not create the settings dialog."
 msgstr "設定ダイアログボックスの生成ができませんでした。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "デフォルトに戻す"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
-msgid "This will reset all shortcuts to their default values. Do you really want to do this?"
+#: ../settings-dialogs/xfwm4-settings.c:1895
+msgid ""
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
 msgstr "これはすべてのショートカットキーをデフォルト値にリセットします。本当によろしいですか?"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"\"ページャーを飛ばす\" または \"タスクバーを飛ばす\" というプロパティが\n"
-"設定されているウィンドウを飛ばす(_S)"
+msgstr "\"ページャーを飛ばす\" または \"タスクバーを飛ばす\" というプロパティが\n設定されているウィンドウを飛ばす(_S)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -728,7 +712,6 @@ msgstr "最大化されたウィンドウを移動する時は大きさを元に
 msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "ウィンドウが画面端に移動された時自動的にタイル表示する(_R)"
 
-# FIXME: should be revised
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
 msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E)"
@@ -741,7 +724,6 @@ msgstr "緊急通知のあるウィンドウの枠を点滅する(_U)"
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "緊急通知のあるウィンドウは点滅を続ける(_B)"
 
-# FIXME: i hate this transliteration
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
 msgstr "アクセシビリティ(_A)"
@@ -754,9 +736,7 @@ msgstr "ワークスペースの切り替えにデスクトップ上でのマウ
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"ショートカットキーを使用して切り替える時に\n"
-"以前のワークスペースを覚えておく(_R)"
+msgstr "ショートカットキーを使用して切り替える時に\n以前のワークスペースを覚えておく(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -864,7 +844,8 @@ msgid "_General"
 msgstr "全般(_G)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
-msgid "Margins are areas on the edges of the screen where no window will be placed"
+msgid ""
+"Margins are areas on the edges of the screen where no window will be placed"
 msgstr "余白とは画面端のウィンドウが置かれない空間のことです"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
@@ -1036,4 +1017,3 @@ msgstr "子プロセスからのデータ読み込みエラーです: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "ヘルパーダイアログを生成できませんでした: %s\n"
-
