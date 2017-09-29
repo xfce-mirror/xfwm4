@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2017-09-29 14:06+0000\n"
+"PO-Revision-Date: 2017-09-29 16:51+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -94,7 +94,7 @@ msgstr "Indstil vindueopførsel og genveje"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "Vindueshåndtering tweaks"
+msgstr "Vindueshåndtering finjusteringer"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -402,7 +402,7 @@ msgstr "Flyt vindue"
 
 #: ../settings-dialogs/xfwm4-settings.c:252
 msgid "Resize window"
-msgstr "Ændr vinduets størrelse"
+msgstr "Tilpas vinduets størrelse"
 
 #: ../settings-dialogs/xfwm4-settings.c:254
 msgid "Stick window"
@@ -919,7 +919,7 @@ msgstr "_Flyt"
 
 #: ../src/menu.c:49
 msgid "_Resize"
-msgstr "_Ændr størrelse"
+msgstr "_Tilpas størrelse"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:51
