@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2017-09-29 16:51+0000\n"
+"PO-Revision-Date: 2017-09-30 12:25+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -742,7 +742,7 @@ msgstr "_Husk og genkald foregående arbejdsområde\nnår der skiftes via tastat
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Fold arbejdsområder afhængig af det aktuelle skrivebords_layout"
+msgstr "Fold arbejdsområder afhængig af det nuværende skrivebords_layout"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Wrap workspaces when the _first or the last workspace is reached"
