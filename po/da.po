@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2017-09-30 19:46+0000\n"
+"PO-Revision-Date: 2017-11-01 05:23+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -390,11 +390,11 @@ msgstr "Luk vindue"
 
 #: ../settings-dialogs/xfwm4-settings.c:247
 msgid "Maximize window horizontally"
-msgstr "Maksimer vindue horisontalt"
+msgstr "Maksimer vindue vandret"
 
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Maximize window vertically"
-msgstr "Maksimer vindue vertikalt"
+msgstr "Maksimer vindue lodret"
 
 #: ../settings-dialogs/xfwm4-settings.c:251
 msgid "Move window"
@@ -422,11 +422,11 @@ msgstr "Rul vindue ud eller sammen"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
-msgstr "Udfyld vinduet horisontalt"
+msgstr "Udfyld vinduet vandret"
 
 #: ../settings-dialogs/xfwm4-settings.c:260
 msgid "Fill window vertically"
-msgstr "Fyld vinduet vertikalt"
+msgstr "Udfyld vinduet lodret"
 
 #: ../settings-dialogs/xfwm4-settings.c:261
 msgid "Toggle above"
