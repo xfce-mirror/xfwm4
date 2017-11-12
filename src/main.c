@@ -481,7 +481,7 @@ static int
 initialize (gint compositor_mode, gboolean replace_wm)
 {
     DisplayInfo *display_info;
-    gint i, nscreens;
+    gint i, nscreens, default_screen;
 
     TRACE ("entering initialize");
 
@@ -514,13 +514,41 @@ initialize (gint compositor_mode, gboolean replace_wm)
 
     setupHandler (TRUE);
 
-    nscreens = gdk_display_get_n_screens (display_info->gdisplay);
+    nscreens = ScreenCount (display_info->dpy);
+    default_screen = DefaultScreen (display_info->dpy);
     for(i = 0; i < nscreens; i++)
     {
         ScreenInfo *screen_info;
         GdkScreen *gscr;
+        Window temp_xwindow;
+        GdkWindow *screen_window;
 
-        gscr = gdk_display_get_screen (display_info->gdisplay, i);
+        if (i == default_screen)
+        {
+            gscr = gdk_display_get_default_screen (display_info->gdisplay);
+        }
+        else
+        {
+            /* create temp 1x1 child window on this screen */
+            temp_xwindow = XCreateSimpleWindow (display_info->dpy, RootWindow (display_info->dpy, i),
+                                                0, 0, 1, 1, 0, 0, 0);
+            /* allocate new GdkWindow with GdkScreen for this window */
+            screen_window = gdk_x11_window_foreign_new_for_display (display_info->gdisplay,
+                                                                    temp_xwindow);
+            XDestroyWindow (display_info->dpy, temp_xwindow);
+
+            if (screen_window == NULL)
+            {
+                g_warning ("Cannot create GdkScreen for screen %i", i);
+                continue;
+            }
+
+            gscr = gdk_window_get_screen (screen_window);
+
+            /* foreign windows have 2 references */
+            g_object_unref (screen_window);
+            g_object_unref (screen_window);
+        }
         screen_info = myScreenInit (display_info, gscr, MAIN_EVENT_MASK, replace_wm);
 
         if (!screen_info)
