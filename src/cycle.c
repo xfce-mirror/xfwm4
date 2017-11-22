@@ -282,7 +282,7 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
             if ((removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
                 break; /* No need to go any further */
             gone |= (c == removed);
-            /* Walk through */
+            FALLTHROUGH;
         case UnmapNotify:
             status = EVENT_FILTER_CONTINUE;
             if (!removed && (removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)

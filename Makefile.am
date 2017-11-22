@@ -1,5 +1,7 @@
 @SET_MAKE@
 
+ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+
 EXTRA_DIST =								\
 	example.gtkrc-2.0						\
 	intltool-extract.in						\

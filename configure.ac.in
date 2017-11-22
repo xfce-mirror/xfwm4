@@ -32,6 +32,7 @@ Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
 AC_INIT([xfwm4], [xfwm4_version], [xfce4-dev@xfce.org])
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip])
 
+AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_HEADERS([config.h])
 
 AM_MAINTAINER_MODE()

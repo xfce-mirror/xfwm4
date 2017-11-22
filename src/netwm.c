@@ -692,7 +692,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
             break;
         case NET_WM_MOVERESIZE_CANCEL:
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
-            /* Walk through */
+            FALLTHROUGH;
         default: /* Do nothing */
             return;
             break;
