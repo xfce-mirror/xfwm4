@@ -124,6 +124,11 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
 #ifdef HAVE_RENDER
     win->pict_format = XRenderFindVisualFormat (myScreenGetXDisplay (screen_info), win->visual);
 #endif
+#ifdef HAVE_XI2
+    xfwm_device_configure_xi2_event_mask (screen_info->display_info->devices,
+                                          screen_info->display_info->dpy,
+                                          win->window, eventmask);
+#endif
 }
 
 void
@@ -266,6 +271,11 @@ xfwmWindowTemp (ScreenInfo *screen_info, Visual *visual,
     win->width = width;
     win->height = height;
     xfwmWindowSetVisual (win, visual, depth);
+#ifdef HAVE_XI2
+    xfwm_device_configure_xi2_event_mask (screen_info->display_info->devices,
+                                          screen_info->display_info->dpy,
+                                          win->window, eventmask);
+#endif
 }
 
 #ifdef HAVE_RENDER

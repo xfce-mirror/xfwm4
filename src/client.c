@@ -1872,6 +1872,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->frame =
         XCreateWindow (display_info->dpy, screen_info->xroot, 0, 0, 1, 1, 0,
         c->depth, InputOutput, c->visual, valuemask, &attributes);
+#ifdef HAVE_XI2
+    xfwm_device_configure_xi2_event_mask (display_info->devices, display_info->dpy,
+                                          c->frame, attributes.event_mask);
+#endif
 
     XSelectInput (display_info->dpy, c->window, NoEventMask);
     XSetWindowBorderWidth (display_info->dpy, c->window, 0);

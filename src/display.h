@@ -299,6 +299,7 @@ struct _DisplayInfo
     Atom atoms[ATOM_COUNT];
 
     eventFilterSetup *xfilter;
+    XfwmDevices *devices;
     GSList *screens;
     GSList *clients;
 

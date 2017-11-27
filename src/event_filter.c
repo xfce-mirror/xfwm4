@@ -200,7 +200,7 @@ eventFilterPop (eventFilterSetup *setup)
 }
 
 GdkWindow *
-eventFilterAddWin (GdkScreen *gscr, long event_mask)
+eventFilterAddWin (GdkScreen *gscr, XfwmDevices *devices, long event_mask)
 {
     XWindowAttributes attribs;
     Display *dpy;
@@ -220,6 +220,9 @@ eventFilterAddWin (GdkScreen *gscr, long event_mask)
 
     XGetWindowAttributes (dpy, xroot, &attribs);
     XSelectInput (dpy, xroot, attribs.your_event_mask | event_mask);
+#ifdef HAVE_XI2
+    xfwm_device_configure_xi2_event_mask (devices, dpy, xroot, attribs.your_event_mask | event_mask);
+#endif
 
     gdk_x11_ungrab_server ();
     gdk_flush ();
@@ -235,12 +238,13 @@ eventFilterAddWin (GdkScreen *gscr, long event_mask)
 }
 
 eventFilterSetup *
-eventFilterInit (gpointer data)
+eventFilterInit (XfwmDevices *devices, gpointer data)
 {
     eventFilterSetup *setup;
 
     setup = g_new0 (eventFilterSetup, 1);
     setup->filterstack = NULL;
+    setup->devices = devices;
     eventFilterPush (setup, default_event_filter, data);
     gdk_window_add_filter (NULL, eventXfwmFilter, (gpointer) setup);
 

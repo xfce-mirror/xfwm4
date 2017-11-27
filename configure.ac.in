@@ -91,6 +91,15 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
     fi
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
+dnl Check for Xi library
+AC_CHECK_LIB([Xi], [XISelectEvents],
+  [
+    if ! echo $LIBX11_LIBS | grep -q -- '-lXi'; then
+      LIBX11_LIBS="$LIBX11_LIBS -lXi"
+      AC_DEFINE([HAVE_XI2], [1], [Define to enable XI2])
+    fi
+  ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
+
 XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], libxfce4ui-2, [libxfce4ui_minimum_version])

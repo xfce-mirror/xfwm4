@@ -219,7 +219,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
         return NULL;
     }
 
-    event_win = eventFilterAddWin (gscr, event_mask);
+    event_win = eventFilterAddWin (gscr, display_info->devices, event_mask);
     if (!event_win)
     {
         gtk_widget_destroy (screen_info->gtk_win);
